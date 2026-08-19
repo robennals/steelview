@@ -1,0 +1,185 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { validateTopic } from './validate';
+import type { Topic, Fact, Viewpoint, Principle, Crux } from './types';
+
+function fact(over: Partial<Fact> & { id: string }): Fact {
+  return {
+    claim: 'A claim',
+    status: 'well-supported',
+    sources: [
+      {
+        stance: 'supports',
+        quote: 'q',
+        title: 't',
+        url: 'https://example.org/a',
+        publisher: 'p',
+        date: '2024',
+      },
+    ],
+    body: '',
+    ...over,
+  };
+}
+
+function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
+  return {
+    name: 'A viewpoint',
+    summary: 'One line.',
+    citesFacts: [],
+    acknowledges: [],
+    setsAside: [],
+    principles: [],
+    body: 'The argument.',
+    ...over,
+  };
+}
+
+function principle(over: Partial<Principle> & { id: string }): Principle {
+  return { name: 'A principle', heldBy: [], body: '', ...over };
+}
+
+function crux(over: Partial<Crux> & { id: string }): Crux {
+  return {
+    question: 'A question?',
+    kind: 'prediction',
+    divides: [],
+    positions: [],
+    body: '',
+    ...over,
+  };
+}
+
+/** A topic that satisfies every rule; each test perturbs one thing. */
+function soundTopic(): Topic {
+  return {
+    slug: 'example',
+    title: 'Example',
+    subtitle: 'Sub',
+    lastUpdated: '2026-08-18',
+    intro: 'Intro.',
+    facts: [fact({ id: 'alpha' }), fact({ id: 'gamma' })],
+    viewpoints: [
+      viewpoint({ id: 'one', citesFacts: ['alpha'], acknowledges: ['gamma'], principles: ['fairness'] }),
+      viewpoint({ id: 'two', citesFacts: ['gamma'], acknowledges: ['alpha'], principles: ['fairness'] }),
+    ],
+    principles: [principle({ id: 'fairness', heldBy: ['one', 'two'] })],
+    cruxes: [
+      crux({
+        id: 'timing',
+        divides: ['one', 'two'],
+        positions: [
+          { viewpoint: 'one', holds: 'Soon.' },
+          { viewpoint: 'two', holds: 'Later.' },
+        ],
+      }),
+    ],
+  };
+}
+
+test('a sound topic produces no errors', () => {
+  assert.deepEqual(validateTopic(soundTopic()), []);
+});
+
+test('rule 1: an unknown fact id in citesFacts is reported', () => {
+  const t = soundTopic();
+  t.viewpoints[0].citesFacts = ['nope'];
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('nope')), errors.join('\n'));
+});
+
+test('rule 1: an unknown principle id on a viewpoint is reported', () => {
+  const t = soundTopic();
+  t.viewpoints[0].principles = ['nope'];
+  assert.ok(validateTopic(t).some((e) => e.includes('nope')));
+});
+
+test('rule 2: citesFacts may not include a not-supported fact', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta', status: 'not-supported' }));
+  t.viewpoints[0].citesFacts.push('delta');
+  assert.ok(validateTopic(t).some((e) => e.includes('delta') && e.includes('citesFacts')));
+});
+
+test('rule 2: acknowledges may only include well-supported facts', () => {
+  const t = soundTopic();
+  t.facts.push(
+    fact({
+      id: 'delta',
+      status: 'contested',
+      body: 'Why it is contested.',
+      sources: [
+        { stance: 'supports', quote: 'q', title: 't', url: 'https://example.org/a', publisher: 'p', date: '2024' },
+        { stance: 'contests', quote: 'q', title: 't', url: 'https://example.org/b', publisher: 'p', date: '2024' },
+      ],
+    })
+  );
+  t.viewpoints[0].acknowledges.push('delta');
+  assert.ok(validateTopic(t).some((e) => e.includes('delta') && e.includes('acknowledges')));
+});
+
+test('rule 2: a fact may not appear twice on the same viewpoint', () => {
+  const t = soundTopic();
+  t.viewpoints[0].setsAside = ['alpha'];
+  assert.ok(validateTopic(t).some((e) => e.includes('alpha') && e.includes('both')));
+});
+
+test('rule 3: a well-supported fact needs at least one source', () => {
+  const t = soundTopic();
+  t.facts[0].sources = [];
+  assert.ok(validateTopic(t).some((e) => e.includes('alpha') && e.includes('source')));
+});
+
+test('rule 4: a contested fact needs sources on both sides and a body', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta', status: 'contested', body: '' }));
+  t.viewpoints[0].setsAside = ['delta'];
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('delta') && e.includes('contests')), errors.join('\n'));
+  assert.ok(errors.some((e) => e.includes('delta') && e.includes('body')), errors.join('\n'));
+});
+
+test('rule 5: a viewpoint that acknowledges nothing is rejected', () => {
+  const t = soundTopic();
+  t.viewpoints[0].acknowledges = [];
+  assert.ok(validateTopic(t).some((e) => e.includes('one') && e.includes('acknowledges')));
+});
+
+test('rule 6: a crux must give a position for every viewpoint it divides', () => {
+  const t = soundTopic();
+  t.cruxes[0].positions = [{ viewpoint: 'one', holds: 'Soon.' }];
+  assert.ok(validateTopic(t).some((e) => e.includes('timing') && e.includes('two')));
+});
+
+test('rule 6: a crux may not divide an unknown viewpoint', () => {
+  const t = soundTopic();
+  t.cruxes[0].divides = ['one', 'nope'];
+  assert.ok(validateTopic(t).some((e) => e.includes('nope')));
+});
+
+test('rule 7: a fact no viewpoint references is an orphan', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'lonely' }));
+  assert.ok(validateTopic(t).some((e) => e.includes('lonely') && e.includes('orphan')));
+});
+
+test('rule 7: setsAside is enough to keep a fact from being an orphan', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'sidelined', status: 'complicated' }));
+  t.viewpoints[0].setsAside = ['sidelined'];
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('rule 7: a principle held by no real viewpoint is an orphan', () => {
+  const t = soundTopic();
+  t.principles.push(principle({ id: 'lonely', heldBy: ['ghost'] }));
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('ghost')));
+  assert.ok(errors.some((e) => e.includes('lonely') && e.includes('orphan')));
+});
+
+test('every error message names the offending item', () => {
+  const t = soundTopic();
+  t.viewpoints[0].citesFacts = ['nope'];
+  for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |principle |crux /);
+});
