@@ -8,9 +8,25 @@ import {
   principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
+  FACT_STATUSES,
 } from './schema';
 import { validateTopic } from './validate';
-import type { Topic, Item } from './types';
+import type { Topic, Item, Fact } from './types';
+
+/**
+ * Editorial reading order for facts, not the declaration order of
+ * `FACT_STATUSES`. The healthy shape of a topic is "mostly well-supported, a
+ * few contested that genuinely divide the sides, and a short tail of the
+ * rest defusing familiar talking points" — sorting facts into this order
+ * makes the Facts section render that shape directly, backbone first.
+ */
+const FACT_STATUS_ORDER: readonly (typeof FACT_STATUSES)[number][] = [
+  'well-supported',
+  'contested',
+  'complicated',
+  'unknown',
+  'not-supported',
+];
 
 export const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
@@ -65,6 +81,17 @@ async function readItems<S extends z.ZodTypeAny>(
   );
 }
 
+/**
+ * Sort facts by status in editorial order, then by id within each status.
+ * `readItems` already returns facts sorted by id (filename order), so a
+ * stable sort on status alone is sufficient to get both orderings.
+ */
+function sortFactsByStatus(facts: Fact[]): void {
+  facts.sort(
+    (a, b) => FACT_STATUS_ORDER.indexOf(a.status) - FACT_STATUS_ORDER.indexOf(b.status)
+  );
+}
+
 export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Promise<Topic> {
   const dir = path.join(root, slug);
   const topicFile = path.join(dir, 'topic.md');
@@ -82,11 +109,14 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
     throw new ContentError(`${topicFile}: ${formatIssues(parsed.error)}`);
   }
 
+  const facts = await readItems(path.join(dir, 'facts'), factFrontmatterSchema);
+  sortFactsByStatus(facts);
+
   const topic: Topic = {
     ...parsed.data,
     slug,
     intro: content.trim(),
-    facts: await readItems(path.join(dir, 'facts'), factFrontmatterSchema),
+    facts,
     viewpoints: await readItems(path.join(dir, 'viewpoints'), viewpointFrontmatterSchema),
     principles: await readItems(path.join(dir, 'principles'), principleFrontmatterSchema),
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),

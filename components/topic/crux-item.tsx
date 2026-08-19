@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { Crux, Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
 import { Disclosure } from './disclosure';
@@ -36,7 +37,10 @@ export function CruxItem({
       }
     >
       <Prose html={bodyHtml} />
-      <dl className="sv-positions">
+      <dl
+        className="sv-positions"
+        style={{ '--sv-position-count': crux.positions.length } as CSSProperties}
+      >
         {crux.positions.map((position) => (
           <div key={position.viewpoint} className="sv-position">
             <dt>

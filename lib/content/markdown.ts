@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
-import type { Root } from 'mdast';
+import type { Root, Text } from 'mdast';
 
 /**
  * Turn raw-HTML nodes into plain text before they reach rehype, so markup in
@@ -16,7 +16,10 @@ import type { Root } from 'mdast';
 function remarkEscapeHtml() {
   return (tree: Root) => {
     visit(tree, 'html', (node) => {
-      (Object.assign(node, { type: 'text', value: node.value }) as any);
+      // `Html` and `Text` nodes share the same `value: string` shape; only
+      // the `type` tag differs, so mutating it in place is a narrow cast
+      // rather than a structural change.
+      (node as unknown as Text).type = 'text';
     });
   };
 }

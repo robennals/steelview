@@ -540,6 +540,7 @@
   .sv-chips__list a {
     display: flex;
     align-items: flex-start;
+    min-height: 44px;
     padding: 0.72rem 0;
     text-decoration: none;
     line-height: 1.4;
@@ -747,18 +748,26 @@
     max-width: none;
   }
 
+  /* Column count follows the number of positions (`--sv-position-count`, set
+     inline per crux) rather than a fixed 2, so a divider sits between every
+     pair of adjacent columns for two, three, or more positions — not just an
+     even count. The first column needs no left divider or left padding, and
+     the last needs no right padding since there is no column after it. */
   @media (min-width: 46rem) {
     .sv-positions {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(var(--sv-position-count, 1), minmax(0, 1fr));
     }
 
     .sv-position {
       padding-right: 2rem;
     }
 
-    .sv-position:nth-child(even) {
+    .sv-position:not(:first-child) {
       border-left: 1px solid var(--rule);
       padding-left: 2rem;
+    }
+
+    .sv-position:last-child {
       padding-right: 0;
     }
   }

@@ -27,9 +27,11 @@ test('loads every item in a topic', async () => {
 
 test('an item id is its filename without the extension', async () => {
   const topic = await loadTopic('example', FIXTURES);
+  // beta is `complicated`, alpha and gamma are `well-supported` — facts sort
+  // by status before id, so alpha and gamma sort ahead of beta.
   assert.deepEqual(
     topic.facts.map((f) => f.id),
-    ['alpha', 'beta', 'gamma']
+    ['alpha', 'gamma', 'beta']
   );
 });
 
@@ -149,6 +151,48 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
   const fact = topic.facts[0];
   assert.equal(fact.sources[0].date, '2024-11-28');
   assert.equal(fact.sources[1].date, '2024');
+});
+
+test('facts sort by status in editorial order, then by id within status', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const dir = path.join(root, 'ordering');
+  await mkdir(path.join(dir, 'facts'), { recursive: true });
+  await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
+  await mkdir(path.join(dir, 'principles'), { recursive: true });
+  await writeFile(
+    path.join(dir, 'topic.md'),
+    '---\ntitle: Ordering\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
+  );
+
+  // One fact per status, plus a second well-supported fact to check the
+  // within-status id ordering. `d1` (contested) needs both a "supports" and
+  // a "contests" source plus a body to pass shape validation; the others
+  // need only what their own status requires.
+  const facts: Record<string, string> = {
+    z1: `---\nclaim: z1\nstatus: unknown\nsources: []\n---\n`,
+    a1: `---\nclaim: a1\nstatus: not-supported\nsources:\n  - stance: contests\n    quote: q\n    title: t\n    url: https://example.org/a1\n    publisher: p\n    date: "2024"\n---\n`,
+    b1: `---\nclaim: b1\nstatus: well-supported\nsources:\n  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/b1\n    publisher: p\n    date: "2024"\n---\n`,
+    c1: `---\nclaim: c1\nstatus: complicated\nsources: []\n---\n`,
+    d1: `---\nclaim: d1\nstatus: contested\nsources:\n  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/d1\n    publisher: p\n    date: "2024"\n  - stance: contests\n    quote: q2\n    title: t2\n    url: https://example.org/d1b\n    publisher: p\n    date: "2024"\n---\nWhy the sides disagree on d1.\n`,
+    b2: `---\nclaim: b2\nstatus: well-supported\nsources:\n  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/b2\n    publisher: p\n    date: "2024"\n---\n`,
+  };
+  await Promise.all(
+    Object.entries(facts).map(([id, md]) => writeFile(path.join(dir, 'facts', `${id}.md`), md))
+  );
+  // Every fact must be referenced (rule 7) and `acknowledges` may only hold
+  // well-supported facts (rule 2), so spread the facts across all three
+  // relationships a viewpoint can have with a fact.
+  await writeFile(
+    path.join(dir, 'viewpoints', 'v.md'),
+    '---\nname: V\nsummary: s\nacknowledges: [b1]\ncitesFacts: [b2, d1]\nsetsAside: [c1, z1, a1]\nprinciples: [p]\n---\nBody.\n'
+  );
+  await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
+
+  const topic = await loadTopic('ordering', root);
+  assert.deepEqual(
+    topic.facts.map((f) => f.id),
+    ['b1', 'b2', 'd1', 'c1', 'z1', 'a1']
+  );
 });
 
 test('listTopicSlugs returns directory names, sorted', async () => {
