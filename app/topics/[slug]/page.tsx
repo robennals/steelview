@@ -3,6 +3,7 @@ import { renderMarkdown } from '@/lib/content/markdown';
 import { anchorFor } from '@/lib/content/types';
 import { Disclosure } from '@/components/topic/disclosure';
 import { Prose } from '@/components/topic/prose';
+import { HashSync } from '@/components/topic/hash-sync';
 
 export async function generateStaticParams() {
   return (await listTopicSlugs()).map((slug) => ({ slug }));
@@ -24,6 +25,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   return (
     <main>
+      <HashSync />
       <h1>{topic.title}</h1>
       <p>{topic.subtitle}</p>
       <p>Last updated {topic.lastUpdated}</p>
