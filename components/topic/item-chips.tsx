@@ -11,7 +11,7 @@ import { anchorFor } from '@/lib/content/types';
  * `accepts` is the page's evidence that it is steelmanning rather than
  * advocating, so it is framed and raised — never a footnote.
  */
-export type ChipRelation = 'builds' | 'accepts' | 'aside';
+type ChipRelation = 'builds' | 'accepts' | 'aside';
 
 export function ItemChips({
   label,

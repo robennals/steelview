@@ -197,6 +197,55 @@ test('rule 7: a principle held by no real viewpoint is an orphan', () => {
   assert.ok(errors.some((e) => e.includes('lonely') && e.includes('orphan')));
 });
 
+test('rule 8: a topic needs at least 1 fact', () => {
+  const t = soundTopic();
+  t.facts = [];
+  // Emptying facts also empties every viewpoint's fact lists, so no fact
+  // rule fires — only rule 8 should be left.
+  t.viewpoints.forEach((v) => {
+    v.citesFacts = [];
+    v.acknowledges = [];
+    v.setsAside = [];
+  });
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('at least 1 fact')),
+    errors.join('\n')
+  );
+});
+
+test('rule 8: a topic needs at least 2 viewpoints', () => {
+  const t = soundTopic();
+  t.viewpoints = [t.viewpoints[0]];
+  t.principles[0].heldBy = ['one'];
+  t.cruxes = [];
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('at least 2 viewpoints')),
+    errors.join('\n')
+  );
+});
+
+test('rule 9: a principle heldBy that a viewpoint does not reciprocate is reported', () => {
+  const t = soundTopic();
+  t.viewpoints[0].principles = [];
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('fairness') && e.includes('one') && e.includes('heldBy')),
+    errors.join('\n')
+  );
+});
+
+test('rule 9: a viewpoint principle that a principle does not reciprocate is reported', () => {
+  const t = soundTopic();
+  t.principles[0].heldBy = ['two'];
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('one') && e.includes('fairness') && e.includes('principles')),
+    errors.join('\n')
+  );
+});
+
 test('every error message names the offending item', () => {
   const t = soundTopic();
   t.viewpoints[0].citesFacts = ['nope'];

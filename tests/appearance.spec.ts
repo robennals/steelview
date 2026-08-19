@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+// These assertions depend on authored uk-immigration content: the fact ids
+// `net-migration-peak-and-fall` (status well-supported) and
+// `public-opinion-on-immigration` (status complicated). Narrowing either
+// fact's status in content/ will turn this suite red.
 test('the topic page renders at phone width without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/topics/uk-immigration');

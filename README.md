@@ -41,9 +41,9 @@ content/topics/uk-immigration/
     will-integration-keep-pace.md
 ```
 
-The filename is the item's id, and the id is permanent — it's the URL anchor
-for that item (`/topics/uk-immigration#net-migration-2024`), so renaming a
-file breaks every link and cross-reference to it. Each file is YAML
+The filename is the item's id, and the id is permanent — it forms the URL
+anchor for that item, prefixed with its kind (`/topics/uk-immigration#fact-net-migration-2024`),
+so renaming a file breaks every link and cross-reference to it. Each file is YAML
 frontmatter (the structured fields — claim, status, sources, cross-references
 to other items) plus a markdown body (the prose). Facts render sorted by
 `status`, not by filename, so file order in the directory doesn't matter.
@@ -53,7 +53,7 @@ to other items) plus a markdown body (the prose). Facts render sorted by
 `lib/content/load.ts` loads and validates the whole tree at build time. A
 malformed file, or a cross-reference to something that doesn't exist, fails
 `pnpm build` (and CI) with a message naming the offending item — it never
-renders a broken page. Beyond the zod schema shape, seven rules are enforced
+renders a broken page. Beyond the zod schema shape, these rules are enforced
 and unit-tested:
 
 1. Every id referenced in `citesFacts`, `acknowledges`, `setsAside`,
@@ -71,6 +71,9 @@ and unit-tested:
 7. No orphans — every fact must appear in some viewpoint's `citesFacts`,
    `acknowledges`, or `setsAside`, and every principle must be held by at
    least one viewpoint.
+8. A topic needs at least 1 fact and at least 2 viewpoints.
+9. A principle's `heldBy` and a viewpoint's `principles` must agree with
+   each other — each is the same relationship stated from the other end.
 
 ## Adding a topic
 

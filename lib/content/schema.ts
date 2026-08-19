@@ -13,8 +13,7 @@ export const SOURCE_STANCES = ['supports', 'contests', 'complicates'] as const;
 export const CRUX_KINDS = ['prediction', 'assumption', 'tradeoff', 'priority'] as const;
 
 // Dates are strings, not Date objects: frontmatter dates are deliberately
-// imprecise ("2024-11" for a monthly release) and YAML would coerce a bare
-// date into a Date in the wrong timezone.
+// imprecise ("2024-11" for a monthly release).
 //
 // YAML coerces bare scalars before we ever see them: `2024-11-28` arrives as
 // a JS Date and `2024` as a number. Normalize both back to the string forms
@@ -25,9 +24,17 @@ const fromYamlScalar = (value: unknown): unknown => {
   return value;
 };
 
+// Bounded, not just positional: month must be 01-12 and day 01-31, so
+// `2024-13-45` fails instead of passing on shape alone. A wrong date on a
+// citation is exactly what this project is judged on.
+const MONTH = '(0[1-9]|1[0-2])';
+const DAY = '(0[1-9]|[12]\\d|3[01])';
+
 const partialDate = z.preprocess(
   fromYamlScalar,
-  z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, 'must be YYYY, YYYY-MM or YYYY-MM-DD')
+  z
+    .string()
+    .regex(new RegExp(`^\\d{4}(-${MONTH}(-${DAY})?)?$`), 'must be YYYY, YYYY-MM or YYYY-MM-DD')
 );
 
 export const sourceSchema = z.object({
@@ -76,6 +83,6 @@ export const topicFrontmatterSchema = z.object({
   subtitle: z.string().min(1),
   lastUpdated: z.preprocess(
     fromYamlScalar,
-    z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be YYYY-MM-DD')
+    z.string().regex(new RegExp(`^\\d{4}-${MONTH}-${DAY}$`), 'must be YYYY-MM-DD')
   ),
 });

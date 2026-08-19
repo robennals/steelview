@@ -1,5 +1,12 @@
 import { test, expect } from '@playwright/test';
 
+// These assertions depend on authored uk-immigration content: the topic
+// title "UK immigration", the fact `net-migration-peak-and-fall` (claim
+// text "Net migration in YE December 2025 was 171,000"), the viewpoint
+// `restore-control`, and the facts it cites/acknowledges — claims "Net
+// migration to the UK peaked at 944,000 in the year to March 2023" and
+// "Health and care is the sector most dependent on migrant labour". Editing
+// any of that content's wording or cross-references will turn this suite red.
 test('the topic page shows all four sections', async ({ page }) => {
   await page.goto('/topics/uk-immigration');
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();

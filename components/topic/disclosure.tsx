@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { FactStatus } from '@/lib/content/types';
 
 /**
  * Every expandable item on the page. Native <details> so expansion works
@@ -23,7 +24,7 @@ export function Disclosure({
   /** Extra class on the <details>, for per-kind row treatment. */
   className?: string;
   /** Fact status, which drives the left-edge rule style. */
-  status?: string;
+  status?: FactStatus;
 }) {
   return (
     <details

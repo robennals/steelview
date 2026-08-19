@@ -11,6 +11,8 @@ import type { Topic } from './types';
 export function validateTopic(topic: Topic): string[] {
   const errors: string[] = [];
   const factById = new Map(topic.facts.map((f) => [f.id, f]));
+  const viewpointById = new Map(topic.viewpoints.map((v) => [v.id, v]));
+  const principleById = new Map(topic.principles.map((p) => [p.id, p]));
   const viewpointIds = new Set(topic.viewpoints.map((v) => v.id));
   const principleIds = new Set(topic.principles.map((p) => p.id));
 
@@ -98,8 +100,30 @@ export function validateTopic(topic: Topic): string[] {
       // rule 1
       if (!viewpointIds.has(id)) {
         errors.push(`principle ${p.id}: heldBy references unknown viewpoint "${id}"`);
-      } else {
-        heldPrinciples.add(p.id);
+        continue;
+      }
+      heldPrinciples.add(p.id);
+
+      // rule 9 — heldBy and principles are the same relationship stated from
+      // two ends; if they disagree, the disagreeing end renders with no
+      // inbound link from anywhere on the page.
+      const v = viewpointById.get(id);
+      if (v && !v.principles.includes(p.id)) {
+        errors.push(
+          `principle ${p.id}: heldBy lists viewpoint "${id}", but ${id}.principles does not list "${p.id}" — add it there too`
+        );
+      }
+    }
+  }
+
+  for (const v of topic.viewpoints) {
+    for (const id of v.principles) {
+      const p = principleById.get(id);
+      // rule 9, the other direction
+      if (p && !p.heldBy.includes(v.id)) {
+        errors.push(
+          `viewpoint ${v.id}: principles lists "${id}", but principle ${id}.heldBy does not list "${v.id}" — add it there too`
+        );
       }
     }
   }
@@ -124,6 +148,16 @@ export function validateTopic(topic: Topic): string[] {
         errors.push(`crux ${c.id}: gives a position for "${p.viewpoint}", which it does not list in divides`);
       }
     }
+  }
+
+  // rule 8 — a page showing "all sides" needs at least a fact to found itself
+  // on and two sides to show; catches a mistyped directory name (`crux/`
+  // instead of `cruxes/`) that would otherwise ship a silently empty section.
+  if (topic.facts.length < 1) {
+    errors.push('topic: needs at least 1 fact — add a fact under facts/');
+  }
+  if (topic.viewpoints.length < 2) {
+    errors.push('topic: needs at least 2 viewpoints — add another viewpoint under viewpoints/');
   }
 
   // rule 7

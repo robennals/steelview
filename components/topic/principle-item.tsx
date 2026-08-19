@@ -7,7 +7,6 @@ export function PrincipleItem({ principle, bodyHtml }: { principle: Principle; b
   return (
     <Disclosure
       anchor={anchorFor('principle', principle.id)}
-      className="sv-principle"
       summary={<span className="sv-item__claim">{principle.name}</span>}
     >
       <Prose html={bodyHtml} />

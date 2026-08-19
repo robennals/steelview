@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { mkdtemp, mkdir, writeFile, cp } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, cp, rm } from 'node:fs/promises';
 import os from 'node:os';
 import { loadTopic, listTopicSlugs, ContentError } from './load';
 
@@ -102,6 +102,12 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
     path.join(dir, 'viewpoints', 'v.md'),
     '---\nname: V\nsummary: s\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
+  // Rule 8 needs at least two viewpoints; this one carries no principle so it
+  // doesn't need to appear in any heldBy.
+  await writeFile(
+    path.join(dir, 'viewpoints', 'v2.md'),
+    '---\nname: V2\nsummary: s\nacknowledges: [a]\n---\nBody.\n'
+  );
   await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
   const topic = await loadTopic('bare', root);
   assert.deepEqual(topic.cruxes, []);
@@ -146,6 +152,11 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
     path.join(dir, 'viewpoints', 'v.md'),
     '---\nname: V\nsummary: s\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
+  // Rule 8 needs at least two viewpoints.
+  await writeFile(
+    path.join(dir, 'viewpoints', 'v2.md'),
+    '---\nname: V2\nsummary: s\nacknowledges: [a]\n---\nBody.\n'
+  );
   await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
   const topic = await loadTopic('dates', root);
   const fact = topic.facts[0];
@@ -186,6 +197,11 @@ test('facts sort by status in editorial order, then by id within status', async 
     path.join(dir, 'viewpoints', 'v.md'),
     '---\nname: V\nsummary: s\nacknowledges: [b1]\ncitesFacts: [b2, d1]\nsetsAside: [c1, z1, a1]\nprinciples: [p]\n---\nBody.\n'
   );
+  // Rule 8 needs at least two viewpoints.
+  await writeFile(
+    path.join(dir, 'viewpoints', 'v2.md'),
+    '---\nname: V2\nsummary: s\nacknowledges: [b1]\n---\nBody.\n'
+  );
   await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
 
   const topic = await loadTopic('ordering', root);
@@ -197,4 +213,14 @@ test('facts sort by status in editorial order, then by id within status', async 
 
 test('listTopicSlugs returns directory names, sorted', async () => {
   assert.deepEqual(await listTopicSlugs(FIXTURES), ['example']);
+});
+
+test('an unreadable item directory (e.g. a file where a directory belongs) fails the build, not silently empties the section', async () => {
+  // A missing directory (ENOENT) is legal — "no cruxes" — but a file sitting
+  // where `cruxes/` should be is a different, real error and must not be
+  // indistinguishable from "no cruxes".
+  const root = await fixtureCopy();
+  await rm(path.join(root, 'example', 'cruxes'), { recursive: true });
+  await writeFile(path.join(root, 'example', 'cruxes'), 'not a directory');
+  await assert.rejects(() => loadTopic('example', root));
 });

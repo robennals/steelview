@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:unit": "tsx --test lib/*.test.ts lib/**/*.test.ts",
+    "test:unit": "tsx --test lib/*.test.ts lib/**/*.test.ts app/**/*.test.ts",
     "test:e2e": "playwright test",
     "check": "pnpm test:unit && pnpm build"
   },

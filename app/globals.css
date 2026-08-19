@@ -962,3 +962,14 @@
     text-wrap: pretty;
   }
 }
+
+/* A reader who has asked the OS for less motion gets no animated transitions
+   anywhere on the page, and hash-sync.tsx checks the same preference before
+   choosing a scroll behaviour. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

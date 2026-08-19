@@ -28,7 +28,7 @@ const FACT_STATUS_ORDER: readonly (typeof FACT_STATUSES)[number][] = [
   'not-supported',
 ];
 
-export const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
+const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
 /**
  * Thrown for any content problem: a missing file, frontmatter that does not
@@ -49,7 +49,11 @@ function formatIssues(error: z.ZodError): string {
 /**
  * Read every `.md` file in `dir`, validate its frontmatter, and return items
  * sorted by id. A missing directory yields no items — a topic with no cruxes
- * is legal, a topic with a malformed crux is not.
+ * is legal, a topic with a malformed crux is not. Any other `readdir` failure
+ * (a permissions error, or a file sitting where a directory should be) is
+ * rethrown rather than swallowed as "no items" — that would be indistinguishable
+ * from a mistyped directory name (`crux/` instead of `cruxes/`) silently
+ * emptying a section.
  */
 async function readItems<S extends z.ZodTypeAny>(
   dir: string,
@@ -58,8 +62,9 @@ async function readItems<S extends z.ZodTypeAny>(
   let names: string[];
   try {
     names = await readdir(dir);
-  } catch {
-    return [];
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return [];
+    throw err;
   }
 
   const files = names.filter((n) => n.endsWith('.md')).sort();

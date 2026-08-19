@@ -74,6 +74,22 @@ test('a source date given as the number 2024 (YAML-coerced) normalizes to "2024"
   assert.equal(parsed.sources[0].date, '2024');
 });
 
+test('a date regex checks month and day ranges, not just digit positions', () => {
+  for (const date of ['2024-13-01', '2024-00-01', '2024-01-32', '2024-01-00', '2024-13']) {
+    assert.equal(
+      factFrontmatterSchema.safeParse({ claim: 'c', status: 'well-supported', sources: [{ ...source, date }] })
+        .success,
+      false,
+      date
+    );
+  }
+});
+
+test('lastUpdated also checks month and day ranges, not just digit positions', () => {
+  const base = { title: 'Immigration', subtitle: 'What is actually being argued about.' };
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: '2026-13-45' }).success, false);
+});
+
 test('a genuinely malformed date is still rejected after normalization', () => {
   const result = factFrontmatterSchema.safeParse({
     claim: 'c',
