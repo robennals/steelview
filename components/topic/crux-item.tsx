@@ -15,6 +15,11 @@ const KIND_LABELS = {
  * The positions are laid out as columns of equal width and identical styling,
  * side by side on a wide screen and stacked on a narrow one, so the
  * disagreement is legible at a glance and neither side is given the floor.
+ *
+ * Four or more positions no longer fit one row at a comfortably readable
+ * width, so `sv-positions--wrap` (added purely from the position count, the
+ * same structural fact every position already keys its styling to) switches
+ * to a two-column grid instead of continuing to shrink every column.
  */
 export function CruxItem({
   crux,
@@ -38,7 +43,9 @@ export function CruxItem({
     >
       <Prose html={bodyHtml} />
       <dl
-        className="sv-positions"
+        className={
+          crux.positions.length > 3 ? 'sv-positions sv-positions--wrap' : 'sv-positions'
+        }
         style={{ '--sv-position-count': crux.positions.length } as CSSProperties}
       >
         {crux.positions.map((position) => (

@@ -770,6 +770,39 @@
     .sv-position:last-child {
       padding-right: 0;
     }
+
+    /* At four or more positions, one row no longer leaves each column
+       comfortably readable, so the grid wraps to two columns instead —
+       holding column width roughly constant (the same width the
+       two-position case already renders at) no matter how many positions a
+       crux has. Divider placement switches from first/last-child to
+       odd/even, which is the correct "start/end of row" test for a *fixed*
+       two-column track (unlike the single-row case above, where the column
+       count varies, so first/last-child was the only count-agnostic test).
+       A trailing odd item (an odd total, e.g. five positions) spans both
+       columns so it doesn't dangle half-width under an empty cell. */
+    .sv-positions--wrap {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sv-positions--wrap .sv-position {
+      border-left: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .sv-positions--wrap .sv-position:nth-child(odd) {
+      padding-right: 2rem;
+    }
+
+    .sv-positions--wrap .sv-position:nth-child(even) {
+      border-left: 1px solid var(--rule);
+      padding-left: 2rem;
+    }
+
+    .sv-positions--wrap .sv-position:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
   }
 
   /* ---------------------------------------------------------------- prose */
