@@ -359,12 +359,34 @@ submission and display, Haiku moderation.
 **4. Suggestions and admin.** The suggestion form, the admin review list for
 flagged items, and comment deletion.
 
-**First two topics: immigration and the Israel–Gaza conflict.** Both are hot
-enough to stress-test the model — if the fact rubric and the steelman
-requirement hold up there, they hold up. Immigration comes first in milestone
-1 because its facts are more quantitative and so exercise the source and
-status machinery harder; Israel–Gaza follows in milestone 2 and will stress
-`contested` and `complicated` more.
+### Choosing topics
+
+The site's purpose is to turn the heat down on subjects people get angry
+about, and to let everyone in the argument feel heard. That makes anger a
+selection criterion rather than something to avoid: a topic earns its place
+by being one where the disagreement is real, the sides talk past each other,
+and a reader arrives already holding a position. Soft-ball topics — ones
+where the evidence quietly settles it, or where nobody's identity is at stake
+— prove nothing about whether this format works.
+
+The test the format has to pass is that a partisan on either side reads their
+own viewpoint and finds it fair, and reads the other one and finds it
+recognizable rather than a caricature. That is much harder on hot topics,
+which is exactly why the early ones should be hot.
+
+**Starting topics: immigration, then the Israel–Gaza conflict, then what to
+do about climate change.** All three are hard in different ways, and each
+stresses a different part of the model: immigration is quantitative and
+exercises the source and status machinery hardest; Israel–Gaza puts the most
+weight on `contested` and on whether a steelman can stay recognizable to its
+holders; climate splits mainly on cruxes rather than facts — discount rates,
+technology forecasts, and how to weigh costs now against costs later — so it
+tests whether the Cruxes section can carry a disagreement on its own.
+
+Immigration goes first in milestone 1 because a quantitative topic surfaces
+schema problems soonest. Swapping the first topic is cheap — it changes which
+content files get authored, not any code — so this order is a recommendation,
+not a commitment.
 
 ## Open questions
 
