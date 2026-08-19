@@ -18,6 +18,7 @@ acknowledges:
   - non-citizens-share-of-convictions-and-prisons
   - health-and-care-relies-on-migrant-workers
   - asylum-backlog-and-hotel-use-have-fallen
+  - immigration-is-salient-and-objection-varies-by-route
 setsAside:
   - illegal-arrivals-drove-the-net-migration-rise
   - deterrence-would-reduce-channel-crossings
@@ -113,9 +114,12 @@ number is arguing about the visa system whether they know it or not. It will not
 claim that offshore deterrence is proven to work — it has never been tested at
 scale here, and Australia's collapse in arrivals is best explained by
 interception at sea rather than by processing elsewhere. It will not rest on the
-polls, tempting as they are: measured opposition to immigration swings twenty
-points on question wording, and an argument that needs a majority to be right is
-not much of an argument. And it will not reach for social cohesion, which is the
+polls, tempting as they are. That salience has stayed high since 2022 and that
+objection sorts sharply by route — asylum most, work and study least — are
+stable findings, not artefacts of wording. But the size of the headline
+aggregate, "the public wants immigration reduced", swings twenty points on
+question wording, and an argument that needs a majority to be right is not much
+of an argument. And it will not reach for social cohesion, which is the
 argument this position is usually assumed to be making. There is no good British
 evidence that rising local immigration erodes trust: the research measures ethnic
 diversity rather than immigration, the association weakens or disappears once

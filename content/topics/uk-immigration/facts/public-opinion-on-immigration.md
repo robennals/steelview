@@ -38,7 +38,8 @@ only to Norway. And salience is not direction: the rise after 2022 mixes people
 who want less immigration with people angry about small boats, hotels, or a
 system that visibly does not work, and no poll separates them.
 
-**A note on the Ipsos page cited here and on the fact above.** Its headline and
+**A note on the Ipsos page cited here and on the fact *Immigration has been a
+top-tier public concern since 2022…*.** Its headline and
 opening line say two-thirds of Britons think the total number too high; its own
 first key finding puts the figure at 46%. The two are not reconcilable as
 written, and this page uses the key findings rather than the headline. A reader
