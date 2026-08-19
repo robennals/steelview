@@ -15,9 +15,20 @@ export const CRUX_KINDS = ['prediction', 'assumption', 'tradeoff', 'priority'] a
 // Dates are strings, not Date objects: frontmatter dates are deliberately
 // imprecise ("2024-11" for a monthly release) and YAML would coerce a bare
 // date into a Date in the wrong timezone.
-const partialDate = z
-  .string()
-  .regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, 'must be YYYY, YYYY-MM or YYYY-MM-DD');
+//
+// YAML coerces bare scalars before we ever see them: `2024-11-28` arrives as
+// a JS Date and `2024` as a number. Normalize both back to the string forms
+// the content model uses, so authors never have to remember to quote a date.
+const fromYamlScalar = (value: unknown): unknown => {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  if (typeof value === 'number') return String(value);
+  return value;
+};
+
+const partialDate = z.preprocess(
+  fromYamlScalar,
+  z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/, 'must be YYYY, YYYY-MM or YYYY-MM-DD')
+);
 
 export const sourceSchema = z.object({
   stance: z.enum(SOURCE_STANCES),
@@ -63,5 +74,8 @@ export const cruxFrontmatterSchema = z.object({
 export const topicFrontmatterSchema = z.object({
   title: z.string().min(1),
   subtitle: z.string().min(1),
-  lastUpdated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be YYYY-MM-DD'),
+  lastUpdated: z.preprocess(
+    fromYamlScalar,
+    z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be YYYY-MM-DD')
+  ),
 });

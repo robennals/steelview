@@ -105,6 +105,52 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   assert.deepEqual(topic.cruxes, []);
 });
 
+test('unquoted YAML dates in source frontmatter normalize to strings, not Date or number', async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const dir = path.join(root, 'dates');
+  await mkdir(path.join(dir, 'facts'), { recursive: true });
+  await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
+  await mkdir(path.join(dir, 'principles'), { recursive: true });
+  await writeFile(
+    path.join(dir, 'topic.md'),
+    '---\ntitle: Dates\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
+  );
+  // Both dates are unquoted: a full date (YAML timestamp -> Date) and a bare
+  // year (YAML int -> number). Both must come back as strings.
+  await writeFile(
+    path.join(dir, 'facts', 'a.md'),
+    [
+      '---',
+      'claim: A',
+      'status: well-supported',
+      'sources:',
+      '  - stance: supports',
+      '    quote: q',
+      '    title: t',
+      '    url: https://example.org/a',
+      '    publisher: p',
+      '    date: 2024-11-28',
+      '  - stance: supports',
+      '    quote: q2',
+      '    title: t2',
+      '    url: https://example.org/a2',
+      '    publisher: p',
+      '    date: 2024',
+      '---',
+      '',
+    ].join('\n')
+  );
+  await writeFile(
+    path.join(dir, 'viewpoints', 'v.md'),
+    '---\nname: V\nsummary: s\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
+  );
+  await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
+  const topic = await loadTopic('dates', root);
+  const fact = topic.facts[0];
+  assert.equal(fact.sources[0].date, '2024-11-28');
+  assert.equal(fact.sources[1].date, '2024');
+});
+
 test('listTopicSlugs returns directory names, sorted', async () => {
   assert.deepEqual(await listTopicSlugs(FIXTURES), ['example']);
 });

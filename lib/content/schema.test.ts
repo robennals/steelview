@@ -56,6 +56,42 @@ test('a source date accepts YYYY, YYYY-MM and YYYY-MM-DD but not prose', () => {
   );
 });
 
+test('a source date given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'c',
+    status: 'well-supported',
+    sources: [{ ...source, date: new Date('2024-11-28T00:00:00.000Z') }],
+  });
+  assert.equal(parsed.sources[0].date, '2024-11-28');
+});
+
+test('a source date given as the number 2024 (YAML-coerced) normalizes to "2024"', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'c',
+    status: 'well-supported',
+    sources: [{ ...source, date: 2024 }],
+  });
+  assert.equal(parsed.sources[0].date, '2024');
+});
+
+test('a genuinely malformed date is still rejected after normalization', () => {
+  const result = factFrontmatterSchema.safeParse({
+    claim: 'c',
+    status: 'well-supported',
+    sources: [{ ...source, date: 'Nov 2024' }],
+  });
+  assert.equal(result.success, false);
+});
+
+test('lastUpdated given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', () => {
+  const parsed = topicFrontmatterSchema.parse({
+    title: 'Immigration',
+    subtitle: 'What is actually being argued about.',
+    lastUpdated: new Date('2026-08-18T00:00:00.000Z'),
+  });
+  assert.equal(parsed.lastUpdated, '2026-08-18');
+});
+
 test('a viewpoint defaults all four reference lists to empty arrays', () => {
   const parsed = viewpointFrontmatterSchema.parse({ name: 'Control first', summary: 'One line.' });
   assert.deepEqual(parsed.citesFacts, []);

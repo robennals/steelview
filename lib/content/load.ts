@@ -31,16 +31,6 @@ function formatIssues(error: z.ZodError): string {
 }
 
 /**
- * gray-matter's YAML engine parses a bare full date (`YYYY-MM-DD`, no quotes)
- * as a JS `Date` — but every content schema treats dates as strings (see the
- * comment in schema.ts). Coerce it back before validating, so authors can
- * write `lastUpdated: 2026-08-18` without quoting it.
- */
-function unparseDate(value: unknown): unknown {
-  return value instanceof Date ? value.toISOString().slice(0, 10) : value;
-}
-
-/**
  * Read every `.md` file in `dir`, validate its frontmatter, and return items
  * sorted by id. A missing directory yields no items — a topic with no cruxes
  * is legal, a topic with a malformed crux is not.
@@ -87,7 +77,7 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
   }
 
   const { data, content } = matter(raw);
-  const parsed = topicFrontmatterSchema.safeParse({ ...data, lastUpdated: unparseDate(data.lastUpdated) });
+  const parsed = topicFrontmatterSchema.safeParse(data);
   if (!parsed.success) {
     throw new ContentError(`${topicFile}: ${formatIssues(parsed.error)}`);
   }
