@@ -10,6 +10,11 @@ const KIND_LABELS = {
   priority: 'Different priorities',
 } as const;
 
+/**
+ * The positions are laid out as columns of equal width and identical styling,
+ * side by side on a wide screen and stacked on a narrow one, so the
+ * disagreement is legible at a glance and neither side is given the floor.
+ */
 export function CruxItem({
   crux,
   bodyHtml,
@@ -22,16 +27,18 @@ export function CruxItem({
   return (
     <Disclosure
       anchor={anchorFor('crux', crux.id)}
+      className="sv-crux"
       summary={
         <>
-          <span>{crux.question}</span> <span>{KIND_LABELS[crux.kind]}</span>
+          <span className="sv-item__claim">{crux.question}</span>{' '}
+          <span className="sv-crux__kind">{KIND_LABELS[crux.kind]}</span>
         </>
       }
     >
       <Prose html={bodyHtml} />
-      <dl>
+      <dl className="sv-positions">
         {crux.positions.map((position) => (
-          <div key={position.viewpoint}>
+          <div key={position.viewpoint} className="sv-position">
             <dt>
               <a href={`#${anchorFor('viewpoint', position.viewpoint)}`}>
                 {viewpointsById.get(position.viewpoint)?.name ?? position.viewpoint}

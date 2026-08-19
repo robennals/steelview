@@ -1,26 +1,922 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   Steelview — a reading surface, not an app surface.
+   Register: a well-set policy brief. Ink on paper. Structure is carried by
+   type, rule and space; never by boxes, badges or shadows.
+   ========================================================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-newsreader), Iowan Old Style, Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-rule: var(--rule);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Paper */
+  --paper: #f6f3ec;
+  --paper-raised: #fbf9f4;
+  --paper-sunk: #efeade;
+
+  /* Ink, in four strengths. The whole palette is one warm neutral. */
+  --ink: #191814;
+  --ink-2: #45423a;
+  --ink-3: #6f6a5e;
+  --ink-4: #928c7d;
+
+  /* Rules */
+  --rule: #ded8ca;
+  --rule-strong: #b3ab98;
+
+  /* One structural accent. It marks apparatus — never a side of an argument. */
+  --accent: #2c4d55;
+
+  --measure: 34rem;
+  --wrap: 44rem;
+  --grain-opacity: 0.035;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: dark;
+
+    --paper: #131310;
+    --paper-raised: #1c1b17;
+    --paper-sunk: #0e0e0c;
+
+    --ink: #ece7db;
+    --ink-2: #c0baac;
+    --ink-3: #948d7e;
+    --ink-4: #726c5f;
+
+    --rule: #33322b;
+    --rule-strong: #55534a;
+
+    --accent: #9dc4cb;
+
+    --grain-opacity: 0.05;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 40rem) {
+    body {
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+  }
+
+  /* Paper tooth. Fixed, inert, and faint enough to read as texture, not noise. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  ::selection {
+    background: var(--rule-strong);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.18em;
+    text-decoration-color: var(--rule-strong);
+    transition: text-decoration-color 120ms ease, color 120ms ease;
+  }
+
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------- shell */
+
+  .sv-wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-wrap {
+      padding-inline: 2rem;
+    }
+  }
+
+  .sv-masthead {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-masthead__inner {
+    display: flex;
+    align-items: center;
+    min-height: 3.25rem;
+  }
+
+  .sv-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-right: 0.5rem;
+  }
+
+  .sv-wordmark:hover {
+    color: var(--ink);
+  }
+
+  .sv-footer {
+    margin-top: 5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-footer__inner {
+    display: flex;
+    align-items: center;
+    min-height: 4rem;
+  }
+
+  /* ------------------------------------------------------------ page head */
+
+  .sv-pagehead {
+    padding-top: 3rem;
+    padding-bottom: 2.25rem;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-pagehead {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  .sv-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 1.4rem + 4.2vw, 3.75rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .sv-subtitle {
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+    line-height: 1.45;
+    max-width: var(--measure);
+    text-wrap: pretty;
+    margin: 0.85rem 0 0;
+  }
+
+  .sv-rule {
+    height: 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 1.75rem 0;
+  }
+
+  .sv-meta {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  /* -------------------------------------------------------------- section */
+
+  .sv-sections {
+    counter-reset: sv-section;
+  }
+
+  .sv-section {
+    counter-increment: sv-section;
+    position: relative;
+    padding-top: 2.75rem;
+  }
+
+  .sv-section + .sv-section {
+    padding-top: 3.5rem;
+  }
+
+  .sv-section__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.55rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Decorative numeral. Lives on the head wrapper, never inside the heading,
+     so it stays out of the heading's accessible name. */
+  .sv-section__head::before {
+    content: counter(sv-section, decimal-leading-zero);
+    font-family: var(--font-serif);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+    color: var(--ink-4);
+  }
+
+  .sv-section__title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  /* ----------------------------------------------------------- disclosure */
+
+  .sv-item {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-item__summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    min-height: 44px;
+    padding: 0.9rem 2rem 0.9rem 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sv-item__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* A drawn plus that loses its stem when open. Quieter than a chevron. */
+  .sv-item__summary::before,
+  .sv-item__summary::after {
+    content: "";
+    position: absolute;
+    right: 0.15rem;
+    top: 1.55rem;
+    background: var(--ink-3);
+    transition: opacity 140ms ease, background-color 140ms ease;
+  }
+
+  .sv-item__summary::after {
+    width: 11px;
+    height: 1px;
+    margin-top: 0;
+  }
+
+  .sv-item__summary::before {
+    width: 1px;
+    height: 11px;
+    margin-right: 5px;
+    margin-top: -5px;
+  }
+
+  .sv-item[open] > .sv-item__summary::before {
+    opacity: 0;
+  }
+
+  .sv-item__summary:hover::before,
+  .sv-item__summary:hover::after {
+    background: var(--ink);
+  }
+
+  .sv-item__body {
+    padding: 0 0 1.75rem;
+    max-width: var(--measure);
+  }
+
+  .sv-item__claim {
+    display: block;
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+    color: var(--ink);
+  }
+
+  @media (min-width: 40rem) {
+    .sv-item__claim {
+      font-size: 1.1875rem;
+    }
+  }
+
+  .sv-item__note {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--ink-2);
+    font-style: italic;
+    line-height: 1.45;
+    font-size: 1rem;
+    text-wrap: pretty;
+  }
+
+  /* ------------------------------------------------------------- statuses */
+
+  /* Status is carried by three channels at once: the text label, a geometric
+     glyph, and the rule down the left edge of the row. Colour is the fourth
+     and least of them — a single hue at varying strength, never red/green,
+     so "not supported" reads as unsupported rather than as condemned. */
+
+  .sv-fact {
+    padding-left: 0.9rem;
+    border-left: 3px solid transparent;
+  }
+
+  .sv-fact[data-status="well-supported"] {
+    border-left-color: var(--ink);
+  }
+
+  .sv-fact[data-status="contested"] {
+    border-left-style: double;
+    border-left-color: var(--ink-2);
+  }
+
+  .sv-fact[data-status="complicated"] {
+    border-left-style: dashed;
+    border-left-color: var(--ink-3);
+  }
+
+  .sv-fact[data-status="not-supported"] {
+    border-left-width: 2px;
+    border-left-style: dotted;
+    border-left-color: var(--ink-3);
+    padding-left: 0.965rem;
+  }
+
+  .sv-fact[data-status="unknown"] {
+    border-left-width: 1px;
+    border-left-color: var(--rule-strong);
+    padding-left: 1.025rem;
+  }
+
+  .sv-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .sv-status[data-status="well-supported"] {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .sv-status[data-status="contested"] {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  .sv-status[data-status="complicated"] {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  .sv-status[data-status="not-supported"] {
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-status[data-status="unknown"] {
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-glyph {
+    flex: none;
+    width: 0.75em;
+    height: 0.75em;
+    overflow: visible;
+  }
+
+  /* ---------------------------------------------------------- fact bodies */
+
+  .sv-stance {
+    margin-top: 1.5rem;
+  }
+
+  .sv-stance__head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-source {
+    margin: 0 0 1.15rem;
+    padding-left: 0.9rem;
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .sv-source blockquote {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .sv-source blockquote::before {
+    content: "\201C";
+  }
+
+  .sv-source blockquote::after {
+    content: "\201D";
+  }
+
+  .sv-source figcaption {
+    margin-top: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: var(--ink-3);
+  }
+
+  /* The citation link sits inside a sentence, so it is an inline link rather
+     than a control, and takes the WCAG 2.5.8 inline exception rather than the
+     44px minimum. It still gets as much vertical room as the line allows. */
+  .sv-source figcaption a {
+    color: var(--ink-2);
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+
+  /* ------------------------------------------------------------- chipsets */
+
+  /* The three relationships a viewpoint has to the facts must read as three
+     different relationships. Each gets its own frame, not its own colour. */
+
+  .sv-chips {
+    margin-top: 1.6rem;
+  }
+
+  .sv-chips__label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    color: var(--ink-3);
+    text-wrap: balance;
+  }
+
+  .sv-chips__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-chips__list > li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chips__list > li:first-child {
+    border-top: 0;
+  }
+
+  .sv-chips__list a {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.72rem 0;
+    text-decoration: none;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .sv-chips__list a::before {
+    content: "";
+    flex: none;
+    width: 0.55rem;
+    height: 1px;
+    margin-top: 0.68em;
+    margin-right: 0.6rem;
+    background: var(--rule-strong);
+  }
+
+  .sv-chips__list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  /* Builds on — plain, load-bearing. */
+  .sv-chips--builds .sv-chips__list {
+    border-left: 3px solid var(--ink);
+    padding-left: 0.9rem;
+  }
+
+  /* Accepts, though it cuts against this view — the page's proof that it is
+     steelmanning. Framed, on raised paper, at least as present as "Builds on". */
+  .sv-chips--accepts {
+    margin-top: 1.6rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule-strong);
+    padding: 1rem 1.05rem 0.65rem;
+  }
+
+  .sv-chips--accepts .sv-chips__label {
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .sv-chips--accepts .sv-chips__label::before {
+    content: "";
+    flex: none;
+    align-self: center;
+    width: 0.85rem;
+    height: 0.85rem;
+    border: 1px solid currentColor;
+    background: linear-gradient(135deg, currentColor 0 50%, transparent 50% 100%);
+  }
+
+  .sv-chips--accepts .sv-chips__list a {
+    font-size: 1.0625rem;
+    color: var(--ink);
+  }
+
+  .sv-chips--accepts .sv-chips__list a::before {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--accent);
+    background: none;
+    margin-top: 0.46em;
+  }
+
+  .sv-chips--accepts .sv-chips__list > li {
+    border-top-color: var(--rule);
+  }
+
+  /* Sets aside — present and checkable, deliberately the quietest. */
+  .sv-chips--aside .sv-chips__list {
+    border-left: 1px dotted var(--rule-strong);
+    padding-left: 0.9rem;
+  }
+
+  .sv-chips--aside .sv-chips__list a {
+    color: var(--ink-2);
+    font-size: 1rem;
+  }
+
+  .sv-chips--aside .sv-chips__list a::before {
+    width: 0.55rem;
+    border-top: 1px dotted var(--ink-4);
+    background: none;
+    height: 0;
+    margin-top: 0.68em;
+  }
+
+  /* Rests on — principles, not facts. Short names, so a row of tags. */
+  .sv-tags {
+    margin-top: 1.6rem;
+  }
+
+  .sv-tags__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-tags__list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.85rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+
+  .sv-tags__list a:hover {
+    border-color: var(--ink-2);
+    color: var(--ink);
+  }
+
+  /* ------------------------------------------------------------ viewpoint */
+
+  .sv-viewpoint .sv-item__claim {
+    font-size: 1.1875rem;
+    font-weight: 500;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-viewpoint .sv-item__claim {
+      font-size: 1.375rem;
+    }
+  }
+
+  /* A viewpoint body is the argument itself, so it reads at full ink. */
+  .sv-viewpoint > .sv-item__body > .prose-body {
+    color: var(--ink);
+  }
+
+  /* --------------------------------------------------------------- cruxes */
+
+  .sv-crux__kind {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-crux__kind::before {
+    content: "";
+    width: 0.85rem;
+    height: 1px;
+    background: var(--ink-4);
+  }
+
+  .sv-positions {
+    display: grid;
+    gap: 0;
+    margin: 1.5rem 0 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .sv-position {
+    padding: 1rem 0 1.15rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-position dt {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 0.15rem;
+  }
+
+  .sv-position dt a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration-color: var(--rule);
+  }
+
+  .sv-position dd {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* The positions grid is the one thing on the page allowed past the reading
+     measure — it is a comparison, not a paragraph. The prose above it keeps
+     its own max-width. */
+  .sv-crux > .sv-item__body {
+    max-width: none;
+  }
+
+  @media (min-width: 46rem) {
+    .sv-positions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sv-position {
+      padding-right: 2rem;
+    }
+
+    .sv-position:nth-child(even) {
+      border-left: 1px solid var(--rule);
+      padding-left: 2rem;
+      padding-right: 0;
+    }
+  }
+
+  /* ---------------------------------------------------------------- prose */
+
+  .prose-body {
+    max-width: var(--measure);
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .prose-body > * {
+    margin-block: 0 1.05em;
+  }
+
+  .prose-body > :last-child {
+    margin-bottom: 0;
+  }
+
+  .prose-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .prose-body em {
+    font-style: italic;
+  }
+
+  .prose-body ul,
+  .prose-body ol {
+    padding-left: 1.25rem;
+  }
+
+  .prose-body ul {
+    list-style: none;
+  }
+
+  .prose-body ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--rule-strong);
+    vertical-align: 0.35em;
+    margin-left: -1.25rem;
+    margin-right: 0.85rem;
+  }
+
+  .prose-body ol {
+    list-style: decimal;
+  }
+
+  .prose-body li + li {
+    margin-top: 0.4em;
+  }
+
+  .prose-body h3,
+  .prose-body h4 {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 1.8em;
+  }
+
+  .prose-body blockquote {
+    padding-left: 1rem;
+    border-left: 1px solid var(--rule-strong);
+    font-style: italic;
+  }
+
+  .prose-body code {
+    font-family: var(--font-sans);
+    font-size: 0.9em;
+    background: var(--paper-sunk);
+    padding: 0.1em 0.3em;
+  }
+
+  .prose-body--lede {
+    color: var(--ink);
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: 40rem) {
+    .prose-body--lede {
+      font-size: 1.1875rem;
+    }
+  }
+
+  /* ------------------------------------------------------------ home page */
+
+  .sv-index__lede {
+    font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--ink-2);
+    max-width: 30rem;
+    text-wrap: pretty;
+    margin: 1.25rem 0 0;
+  }
+
+  .sv-topics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .sv-topics > li {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-topics a {
+    display: block;
+    padding: 1.4rem 2rem 1.5rem 0;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .sv-topics a::after {
+    content: "";
+    position: absolute;
+    right: 0.2rem;
+    top: 2.15rem;
+    width: 0.9rem;
+    height: 1px;
+    background: var(--ink-3);
+    transition: width 160ms ease, background-color 160ms ease;
+  }
+
+  .sv-topics a:hover::after {
+    width: 1.4rem;
+    background: var(--ink);
+  }
+
+  .sv-topics__title {
+    display: block;
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .sv-topics a:hover .sv-topics__title {
+    text-decoration: underline;
+    text-decoration-color: var(--rule-strong);
+    text-underline-offset: 0.14em;
+  }
+
+  .sv-topics__blurb {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--ink-2);
+    font-style: italic;
+    max-width: var(--measure);
+    text-wrap: pretty;
+  }
 }

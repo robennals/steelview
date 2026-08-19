@@ -36,24 +36,30 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   return (
-    <main>
+    <main className="sv-wrap">
       <HashSync />
-      <header>
-        <h1>{topic.title}</h1>
-        <p>{topic.subtitle}</p>
-        <Prose html={intro} />
-        <p>Last updated {topic.lastUpdated}</p>
+      <header className="sv-pagehead">
+        <h1 className="sv-title">{topic.title}</h1>
+        <p className="sv-subtitle">{topic.subtitle}</p>
+        <hr className="sv-rule" />
+        <Prose html={intro} className="prose-body--lede" />
+        <p className="sv-meta mt-8">Last updated {topic.lastUpdated}</p>
       </header>
 
-      <section>
-        <h2>Facts</h2>
+      <div className="sv-sections">
+      <section className="sv-section">
+        <div className="sv-section__head">
+          <h2 className="sv-section__title">Facts</h2>
+        </div>
         {topic.facts.map((fact) => (
           <FactItem key={fact.id} fact={fact} bodyHtml={bodies.get(fact.id) ?? ''} />
         ))}
       </section>
 
-      <section>
-        <h2>Viewpoints</h2>
+      <section className="sv-section">
+        <div className="sv-section__head">
+          <h2 className="sv-section__title">Viewpoints</h2>
+        </div>
         {topic.viewpoints.map((viewpoint) => (
           <ViewpointItem
             key={viewpoint.id}
@@ -65,19 +71,24 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         ))}
       </section>
 
-      <section>
-        <h2>Principles</h2>
+      <section className="sv-section">
+        <div className="sv-section__head">
+          <h2 className="sv-section__title">Principles</h2>
+        </div>
         {topic.principles.map((principle) => (
           <PrincipleItem key={principle.id} principle={principle} bodyHtml={bodies.get(principle.id) ?? ''} />
         ))}
       </section>
 
-      <section>
-        <h2>Cruxes</h2>
+      <section className="sv-section">
+        <div className="sv-section__head">
+          <h2 className="sv-section__title">Cruxes</h2>
+        </div>
         {topic.cruxes.map((crux) => (
           <CruxItem key={crux.id} crux={crux} bodyHtml={bodies.get(crux.id) ?? ''} viewpointsById={viewpointsById} />
         ))}
       </section>
+      </div>
     </main>
   );
 }

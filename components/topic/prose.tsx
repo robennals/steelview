@@ -3,7 +3,12 @@
  * markdown in this repository, and renderMarkdown escapes raw HTML, so there
  * is no untrusted input on this path.
  */
-export function Prose({ html }: { html: string }) {
+export function Prose({ html, className }: { html: string; className?: string }) {
   if (!html) return null;
-  return <div className="prose-body" dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div
+      className={className ? `prose-body ${className}` : 'prose-body'}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 }
