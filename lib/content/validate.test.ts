@@ -94,6 +94,13 @@ test('rule 1: an unknown principle id on a viewpoint is reported', () => {
   assert.ok(validateTopic(t).some((e) => e.includes('nope')));
 });
 
+test('rule 1: a crux position may not reference an unknown viewpoint', () => {
+  const t = soundTopic();
+  t.cruxes[0].positions[0].viewpoint = 'nope';
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('nope') && e.includes('position')), errors.join('\n'));
+});
+
 test('rule 2: citesFacts may not include a not-supported fact', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'delta', status: 'not-supported' }));
@@ -155,6 +162,18 @@ test('rule 6: a crux may not divide an unknown viewpoint', () => {
   const t = soundTopic();
   t.cruxes[0].divides = ['one', 'nope'];
   assert.ok(validateTopic(t).some((e) => e.includes('nope')));
+});
+
+test('rule 6: a crux may not give a position for a viewpoint it does not divide', () => {
+  const t = soundTopic();
+  t.cruxes[0].divides = ['one', 'two'];
+  t.cruxes[0].positions.push({ viewpoint: 'three', holds: 'A third position.' });
+  t.viewpoints.push(
+    viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'], principles: ['fairness'] })
+  );
+  t.principles[0].heldBy.push('three');
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('three') && e.includes('divides')), errors.join('\n'));
 });
 
 test('rule 7: a fact no viewpoint references is an orphan', () => {
