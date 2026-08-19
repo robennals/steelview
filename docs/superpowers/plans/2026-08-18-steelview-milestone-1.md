@@ -606,7 +606,7 @@ Expected: FAIL — cannot find module `./validate`.
 Create `lib/content/validate.ts`:
 
 ```ts
-import type { Topic, ItemKind } from './types';
+import type { Topic } from './types';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -750,9 +750,6 @@ export function validateTopic(topic: Topic): string[] {
 
   return errors;
 }
-
-/** Anchor ids are `<kind>-<id>`; kinds are singular. */
-export const ITEM_KINDS: ItemKind[] = ['fact', 'viewpoint', 'principle', 'crux'];
 ```
 
 - [ ] **Step 4: Run the tests and verify they pass**
