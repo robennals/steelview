@@ -6,8 +6,7 @@ test('loading a fact anchor opens that fact', async ({ page }) => {
   await expect(
     page
       .locator('#fact-net-migration-peak-and-fall')
-      .getByText('Long-term international migration, provisional: year ending December 2025')
-      .first()
+      .getByText('Net migration in YE December 2025 was 171,000.', { exact: false })
   ).toBeVisible();
 });
 

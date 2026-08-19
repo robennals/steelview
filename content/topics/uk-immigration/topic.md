@@ -18,10 +18,12 @@ separate topics.
 ten people who looked carefully at the evidence would agree it is established —
 most facts here are, because most claims can be narrowed until they clear that
 bar. A *contested* fact is one that cannot be narrowed and that the sides really
-are arguing about; each one carries sources on both sides and an explanation of
-why the evidence points both ways. *Complicated*, *unknown* and *not supported*
-are for claims you have heard often that do not hold up as stated — they are here
-so that no reader thinks the question was ducked.
+are arguing about; on this topic every candidate for that label turned out either
+to narrow into something firmer or to rest on evidence that does not reach the
+question, so none remain and the live disagreements sit in Cruxes instead.
+*Complicated*, *unknown* and *not supported* are for claims you have heard often
+that do not hold up as stated — they are here so that no reader thinks the
+question was ducked.
 
 Every viewpoint below lists the facts it rests on, the well-supported facts that
 cut against it, and the familiar talking points it declines to use. None of them

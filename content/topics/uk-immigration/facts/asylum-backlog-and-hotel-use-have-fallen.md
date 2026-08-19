@@ -15,7 +15,15 @@ sources:
     publisher: "Home Office"
     date: "2026-05-21"
 ---
-The backlog fell while small boat arrivals did not, which isolates the cause:
-this was decision-making capacity, not border control. It is the strongest
-available evidence that a large part of what the public experiences as an
-immigration crisis is an administrative one.
+These are counts of two different things and it is worth keeping them apart. The
+first is the number of people waiting for an initial decision, which fell from
+175,000 at the June 2023 peak to 49,000 at the end of March 2026, as the Home
+Office raised its rate of initial decisions. The second is the share of supported
+asylum seekers housed in hotels, down 35% in a year to 21,000 people.
+
+Neither figure is a count of arrivals, and neither fell because fewer people
+came: small boat arrivals over the same period did not fall. What the numbers
+show is that the queue and the hotel population respond to decision-making
+capacity. What they do not show is anything about who should be admitted, whether
+the decisions were right, or what happens to those refused — a backlog can be
+cleared by deciding faster in either direction.

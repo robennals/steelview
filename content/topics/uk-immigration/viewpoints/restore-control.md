@@ -9,18 +9,20 @@ citesFacts:
   - care-worker-route-fiscally-negative
   - asylum-accommodation-cost-overrun
   - asylum-grant-rate-fell
-  - overseas-recruitment-and-domestic-training
-  - immigration-and-local-social-trust
+  - deportable-offenders-living-in-the-community
 acknowledges:
   - skilled-worker-fiscal-gain-concentrated
   - wage-effects-small-and-uneven
   - housing-cost-effect-positive-but-small
+  - overseas-recruitment-and-domestic-training
+  - non-citizens-share-of-convictions-and-prisons
   - health-and-care-relies-on-migrant-workers
   - asylum-backlog-and-hotel-use-have-fallen
 setsAside:
   - illegal-arrivals-drove-the-net-migration-rise
   - deterrence-would-reduce-channel-crossings
   - public-opinion-on-immigration
+  - immigration-and-local-social-trust
 principles:
   - democratic-consent-over-membership
   - rules-must-mean-what-they-say
@@ -65,12 +67,23 @@ paid least. The Migration Advisory Committee estimates that a care worker
 admitted in 2022–23 is a lifetime net fiscal cost of about £36,000, while other
 health and care staff on the same visa are worth about £166,000 each. The country
 was not importing doctors; it was importing the lowest-paid work in the economy,
-on a route whose dependants cost more again, and calling it a skills policy.
+on a route whose dependants cost more again, and calling it a skills policy. The
+Migration Advisory Committee's own age-matched comparison sharpens the point:
+against residents of the same age, health and care dependants contribute −£67,000
+over a lifetime where the comparator is +£84,000, and even skilled-worker
+dependants outside health and care manage +£3,000 against a comparator of
++£107,000.
+
 Meanwhile employer investment in training kept falling and economic inactivity
-among British working-age adults kept rising. The direct research on that link is
-genuinely contested and this argument does not claim it as settled — but a policy
-that makes it permanently cheaper to sponsor a trained adult from abroad than to
-train one here does not need a regression to be recognised as a bad design.
+among British working-age adults kept rising. Be careful here, because the direct
+evidence goes the other way: when the effect of migration on the training of
+UK-born workers was measured, no negative effect was found and one study found a
+positive one. That research covered EEA free movement before 2018 — no
+sponsorship, no salary floor, nothing to arbitrage — and nobody has evaluated the
+system actually in dispute. So this argument does not claim the link is proven.
+It claims something narrower and sufficient: a policy that makes it permanently
+cheaper to sponsor a trained adult from abroad than to train one here is a bad
+design whether or not a regression has caught it yet.
 
 On asylum, the objection is to a system that does not do what it says. Contracts
 originally costed at £4.5 billion are now expected to cost £15.3 billion, with a
@@ -83,16 +96,39 @@ the outcome for the claimant is not a strict system or a generous one; it is an
 incoherent one, and incoherence is what corrodes public consent for the genuine
 refugees it is supposed to protect.
 
-Three things this argument will not do. It will not blame small boats for the
+The same gap between the rule and its execution shows up where the law is at its
+most emphatic. The Home Secretary is *required* to pursue deportation of a
+foreign national sentenced to twelve months or more; the number of such people
+living here — out of prison, out of detention, with no leave to remain — grew by
+36% between the end of 2022 and March 2026, about 1,600 a year, while removals
+themselves were rising. A duty that accumulates a backlog faster than it
+discharges one is not a duty being performed. It is worth being precise about what
+this does and does not show, because the temptation is to overreach: it is a
+failure of execution, not evidence of anything about who commits crimes.
+
+Four things this argument will not do. It will not blame small boats for the
 numbers: illegal arrivals have never exceeded about 46,000 a year against
 immigration of 1.47 million at peak, and anyone who wants a smaller headline
 number is arguing about the visa system whether they know it or not. It will not
 claim that offshore deterrence is proven to work — it has never been tested at
 scale here, and Australia's collapse in arrivals is best explained by
-interception at sea rather than by processing elsewhere. And it will not rest on
-the polls, tempting as they are: measured opposition to immigration swings twenty
+interception at sea rather than by processing elsewhere. It will not rest on the
+polls, tempting as they are: measured opposition to immigration swings twenty
 points on question wording, and an argument that needs a majority to be right is
-not much of an argument.
+not much of an argument. And it will not reach for social cohesion, which is the
+argument this position is usually assumed to be making. There is no good British
+evidence that rising local immigration erodes trust: the research measures ethnic
+diversity rather than immigration, the association weakens or disappears once
+deprivation is controlled for, and the survey behind it was discontinued in 2011.
+The case here is about who decides and at what scale, and it neither needs that
+claim nor is entitled to it.
+
+This argument also declines the worst of the country's fears. Where the fear can
+be measured, it is not there: non-UK citizens are about 13% of convictions
+and 12% of the prison population against roughly 13.5% of the adult population,
+and less than that once their youth is accounted for. Whatever is wrong here, it
+is not that Britain imported a crime wave, and an argument that says otherwise
+forfeits the right to be believed on the numbers where it is correct.
 
 Nor does this require pretending the country can do without the people already
 here. Health and social care would stop tomorrow without migrant workers; a

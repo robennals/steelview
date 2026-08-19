@@ -7,9 +7,12 @@ citesFacts:
   - wage-effects-small-and-uneven
   - housing-cost-effect-positive-but-small
   - migration-is-the-only-source-of-population-growth
+  - overseas-recruitment-and-domestic-training
+  - non-citizens-share-of-convictions-and-prisons
   - asylum-backlog-and-hotel-use-have-fallen
 acknowledges:
   - net-migration-peak-and-fall
+  - immigration-is-salient-and-objection-varies-by-route
   - care-worker-route-fiscally-negative
   - asylum-accommodation-cost-overrun
 setsAside:
@@ -21,7 +24,7 @@ principles:
   - obligation-to-people-in-danger
   - democratic-consent-over-membership
 ---
-Take the three charges in turn, at their strongest, and look at what the evidence
+Take the charges in turn, each at its strongest, and look at what the evidence
 actually shows.
 
 **Wages.** The claim is that immigration undercut British workers. The Migration
@@ -43,6 +46,26 @@ Britain's own doing — a planning system that lets a minority of existing owner
 veto construction, decades of not building social housing, and a tax system that
 treats a house as a pension. Blaming migrants for that is blaming the passengers
 for the size of the bus.
+
+**Training.** The claim is that cheap overseas labour let employers stop training
+British workers. This one was actually tested. The research the Migration Advisory
+Committee commissioned found no negative effect of migration on the training of
+UK-born workers, and found some evidence of a positive one — more skilled
+migrants, more training available. Employer training spending has been falling
+for twenty years, including in sectors that never saw a migrant worker, and it
+fell because British firms stopped investing in general. The honest caveat is that
+this evidence comes from the free-movement era and nobody has studied the
+sponsored system that replaced it, which is a reason to run the study rather than
+to assume its result.
+
+**Crime.** The claim barely gets made in policy documents and is made constantly
+everywhere else. Non-UK citizens are about 13% of cautions and convictions and 12%
+of the prison population, against roughly 13.5% of the adult population — and
+because they are younger than average, and offending is a young person's activity,
+the age-adjusted comparison is better still. The figures vary by nationality and by
+offence, and conviction data is not offending data, so nobody should claim the
+reverse either. But the specific fear, measured in the one place it can be
+measured, is not there.
 
 **The public finances.** The claim is that migrants take out more than they put
 in. The Migration Advisory Committee's own lifetime modelling finds the Skilled
@@ -85,9 +108,11 @@ hotel use fell by a third in a year. That is the proof that the crisis was
 administrative all along.
 
 Two things this argument declines to use. It will not claim the public secretly
-agrees: majorities really do say numbers are too high, and the fact that the
-figure moves twenty points with question wording is a reason for humility on both
-sides, not a licence to pick the friendly poll. And it will not say migrants
+agrees. Immigration has been a top-tier concern since 2022, around half the public
+says numbers are too high whenever it is asked plainly, and the strength of
+objection to asylum is not an artefact of any pollster. That the aggregate figure
+moves twenty points with question wording is a reason for humility on both sides,
+not a licence to pick the friendly poll. And it will not say migrants
 cannot claim benefits. Most cannot, for at least five years, under the No
 Recourse to Public Funds rule — but refugees can from the day they are recognised,
 and everyone uses the NHS from day one. The case does not need the tidier version.

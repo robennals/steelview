@@ -1,6 +1,6 @@
 ---
 claim: "Rising local immigration lowers trust and cohesion within the receiving community"
-status: contested
+status: unknown
 sources:
   - stance: supports
     quote: "Most of the empirical literature on this subject finds that the relationship between diversity and trust is negative – the more diverse a community is, the less likely individuals in it are to be trusting."
@@ -42,6 +42,12 @@ discontinued in 2011, so there is no good evidence at all on the period this pag
 covers. And "cohesion" is measured mostly by survey questions about trusting
 neighbours, which is one narrow slice of what people mean by the word.
 
-This is left contested rather than resolved because it is genuinely unresolved,
-and because both convenient conclusions — that rapid local change costs nothing,
-and that it obviously corrodes community life — outrun what has been shown.
+This is tagged *unknown* rather than *contested* for a specific reason. A
+contested fact is one where good evidence points both ways on a live question;
+here the evidence does not reach the question at all. It is about a different
+variable, from a survey that stopped fifteen years ago, in a literature whose
+strongest finding dissolves under a control that plainly belongs in the model.
+Nobody on this page is entitled to build on it, in either direction: not the
+claim that rapid local change costs nothing, and not the claim that it obviously
+corrodes community life. The honest statement is that Britain stopped collecting
+the data needed to find out.

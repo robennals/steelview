@@ -6,8 +6,9 @@ citesFacts:
   - care-worker-route-fiscally-negative
   - immigration-shifted-from-eu-to-non-eu
   - care-worker-route-opened-then-closed
-  - overseas-recruitment-and-domestic-training
+  - immigration-is-salient-and-objection-varies-by-route
 acknowledges:
+  - overseas-recruitment-and-domestic-training
   - health-and-care-relies-on-migrant-workers
   - migration-is-the-only-source-of-population-growth
   - wage-effects-small-and-uneven
@@ -50,17 +51,27 @@ year before closing it again, down to 1,400. Britain took back control and used
 it to select, deliberately and at scale, for the lowest-paid work in the economy.
 The system worked exactly as designed. The design was the problem.
 
-The same logic explains the training argument, which is worth stating carefully
-because the direct evidence is genuinely contested and this view does not claim
-it as proven. What is not in dispute is the incentive. When an employer can
-sponsor a fully trained worker at a salary floor set below the market clearing
-wage, the cheapest way to fill a vacancy is always recruitment and never
-training. The 2025 White Paper asserted that link; the Migration Advisory
-Committee's own commissioned research found no such effect. But that research was
-run on EEA free movement before 2018, where there was no sponsorship and no
-salary floor to arbitrage. It does not test the mechanism at issue. The prudent
-conclusion is not "immigration suppresses training" but "a salary floor below the
-market wage is a subsidy to not training, and Britain should stop paying it".
+The same logic explains the training argument, which has to be stated against the
+evidence rather than with it. When the effect of migration on the training of
+UK-born workers was measured directly, no negative effect was found and one study
+found a positive one. This view accepts that finding and does not claim the
+crowding-out link is proven. What it claims is the incentive, which nobody
+disputes: when an employer can sponsor a fully trained worker at a salary floor
+set below the market clearing wage, the cheapest way to fill a vacancy is always
+recruitment and never training. The research that found nothing was run on EEA
+free movement before 2018, where there was no sponsorship and no salary floor to
+arbitrage, so it does not test the mechanism at issue — but "not tested" is not
+"established", and the honest conclusion is not "immigration suppresses training"
+but "a salary floor below the market wage is a subsidy to not training, and
+Britain should stop paying it".
+
+The public, incidentally, is already there. Asked about immigration as a single
+quantity it gives an unstable answer, but asked route by route it discriminates
+sharply and consistently: in February 2026, 67% thought asylum numbers too high
+and 39% said the same of students, and majorities want it made *easier* for care
+and health workers to come. That is a public asking about who and on what terms,
+not about a headline total. A policy of thresholds rather than caps is closer to
+what people actually say than a policy of numbers is.
 
 So the policy follows from the diagnosis. Set the price, not the quantity: a
 salary threshold high enough that anyone admitted is a clear net contributor,
@@ -86,7 +97,8 @@ finances, which is a different and smaller claim.
 Two things it will not use. Not small boats: illegal arrivals are around 3% of
 peak immigration and are simply not what changed the numbers, however much
 coverage they get. And not social cohesion: it would be convenient to argue that
-higher-skilled migrants integrate more easily, but the British evidence on
-diversity and trust is contested, mostly measures ethnicity rather than
-immigration, and largely predates this period. An argument this confident about
-the fiscal data should not lean on the one place where the data is weak.
+higher-skilled migrants integrate more easily, but there is no good British
+evidence either way. What exists mostly measures ethnicity rather than
+immigration, weakens or vanishes under deprivation controls, and rests on a survey
+discontinued in 2011. An argument this confident about the fiscal data should not
+lean on a place where there is no data at all.

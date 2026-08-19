@@ -8,6 +8,8 @@ citesFacts:
 acknowledges:
   - asylum-accommodation-cost-overrun
   - asylum-grant-rate-fell
+  - immigration-is-salient-and-objection-varies-by-route
+  - deportable-offenders-living-in-the-community
 setsAside:
   - deterrence-would-reduce-channel-crossings
   - migrants-access-to-benefits
@@ -65,6 +67,16 @@ on the promise above has to be able to say so and act on it, or it forfeits the
 authority to say the opposite. Equally, £15.3 billion against an original £4.5
 billion estimate is not a smear invented by opponents; it is the National Audit
 Office, and the money came from people with no say in how it was spent.
+
+Two further concessions, both of which this view would rather not make. The public
+is not simply reacting to disorder in general: asked route by route, it objects to
+asylum far more than to anything else — 67% say asylum numbers are too high,
+against 39% for students — so the claim that people are only upset about
+competence has to survive the fact that they name this route in particular.
+And the removal half of the programme above is not being delivered. The number of
+foreign national offenders liable for deportation and living in the community grew
+36% between the end of 2022 and March 2026. A view that argues removal is what
+keeps the promise credible cannot treat that as somebody else's problem.
 
 Two arguments this view refuses, though allies make both. It will not assert that
 deterrence has been disproved. The measured effects are small and asylum seekers
