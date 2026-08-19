@@ -49,7 +49,7 @@ One directory per topic, one markdown file per item. Item IDs are filenames,
 so a cross-reference can never point at a typo'd ID that happens to parse.
 
 ```
-content/topics/immigration/
+content/topics/uk-immigration/
   topic.md
   facts/
     net-migration-2024.md
@@ -369,21 +369,42 @@ and a reader arrives already holding a position. Soft-ball topics — ones
 where the evidence quietly settles it, or where nobody's identity is at stake
 — prove nothing about whether this format works.
 
-The test the format has to pass is that a partisan on either side reads their
-own viewpoint and finds it fair, and reads the other one and finds it
-recognizable rather than a caricature. That is much harder on hot topics,
-which is exactly why the early ones should be hot.
+The test the format has to pass is stronger than fairness. A partisan reading
+their own viewpoint should find it **better argued than the version they would
+have written themselves** — resting on firmer facts than the ones they had to
+hand, and reaching for the strongest available support rather than the most
+familiar. Where it reads as less strident than they would put it, that should
+be for a reason they would concede on reflection: it declines to lean on a
+claim they thought was established but which turns out to be contested or
+unsupported, or it grants a well-supported fact that cuts against them and
+which they cannot honestly deny. And reading the *other* viewpoints, they
+should find them recognizable rather than caricatured.
 
-**Starting topics: immigration, then the Israel–Gaza conflict, then what to
+Passing that test is what earns the site the right to be trusted by people on
+both sides at once, and it is much harder on hot topics — which is exactly why
+the early ones should be hot.
+
+**A topic is scoped to one argument, not one subject area.** Where the same
+subject is argued in different countries from genuinely different facts, those
+are separate topics: UK immigration and US immigration share a name and almost
+nothing else — different numbers, different legal machinery, different
+viewpoints, different cruxes. Merging them would produce facts that are true
+in one place and false in the other, which is exactly the failure the status
+rubric exists to prevent. Slugs are scoped accordingly (`uk-immigration`,
+`us-immigration`).
+
+**Starting topics: UK immigration, then the Israel–Gaza conflict, then what to
 do about climate change.** All three are hard in different ways, and each
 stresses a different part of the model: immigration is quantitative and
 exercises the source and status machinery hardest; Israel–Gaza puts the most
 weight on `contested` and on whether a steelman can stay recognizable to its
 holders; climate splits mainly on cruxes rather than facts — discount rates,
 technology forecasts, and how to weigh costs now against costs later — so it
-tests whether the Cruxes section can carry a disagreement on its own.
+tests whether the Cruxes section can carry a disagreement on its own. US
+immigration is an obvious fourth, and a useful test of whether two topics that
+share a name stay properly separate.
 
-Immigration goes first in milestone 1 because a quantitative topic surfaces
+UK immigration goes first in milestone 1 because a quantitative topic surfaces
 schema problems soonest. Swapping the first topic is cheap — it changes which
 content files get authored, not any code — so this order is a recommendation,
 not a commitment.
