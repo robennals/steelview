@@ -3,13 +3,28 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
+import { visit } from 'unist-util-visit';
+import type { Root } from 'mdast';
 
-// remark-rehype drops raw HTML nodes unless rehype-raw is added. That is the
-// behaviour we want: content is authored in this repo, but escaping raw HTML
-// keeps a copy-pasted quote from silently injecting markup into the page.
+/**
+ * Turn raw-HTML nodes into plain text before they reach rehype, so markup in
+ * content is escaped and shown rather than executed — or, as remark-rehype
+ * would otherwise do, silently dropped. Content is authored in this repo, but
+ * a source quote that happens to contain angle brackets must survive to the
+ * page intact: losing part of a citation is worse than showing it verbatim.
+ */
+function remarkEscapeHtml() {
+  return (tree: Root) => {
+    visit(tree, 'html', (node) => {
+      (Object.assign(node, { type: 'text', value: node.value }) as any);
+    });
+  };
+}
+
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
+  .use(remarkEscapeHtml)
   .use(remarkRehype)
   .use(rehypeStringify);
 

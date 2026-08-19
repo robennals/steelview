@@ -22,7 +22,13 @@ test('empty input renders an empty string', async () => {
   assert.equal(await renderMarkdown('   \n  '), '');
 });
 
-test('raw HTML in content is escaped, not passed through', async () => {
+test('raw HTML in content is escaped to visible text, not executed or dropped', async () => {
   const html = await renderMarkdown('<script>alert(1)</script>');
   assert.doesNotMatch(html, /<script>/);
+  assert.match(html, /&#x3C;script>|&lt;script>/);
+});
+
+test('angle brackets in prose survive to the page', async () => {
+  const html = await renderMarkdown('The report named the <Home Office> directly.');
+  assert.match(html, /Home Office/);
 });
