@@ -240,10 +240,10 @@ test('a crux requires a known kind, two viewpoints and two positions', () => {
   assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, divides: ['one'] }).success, false);
 });
 
-test('a topic requires an ISO lastReviewed date', () => {
+test('a topic requires an ISO lastUpdated date', () => {
   const base = { title: 'Immigration', subtitle: 'What is actually being argued about.' };
-  assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastReviewed: '2026-08-18' }).success, true);
-  assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastReviewed: 'August 2026' }).success, false);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: '2026-08-18' }).success, true);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: 'August 2026' }).success, false);
 });
 ```
 
@@ -322,7 +322,7 @@ export const cruxFrontmatterSchema = z.object({
 export const topicFrontmatterSchema = z.object({
   title: z.string().min(1),
   subtitle: z.string().min(1),
-  lastReviewed: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be YYYY-MM-DD'),
+  lastUpdated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be YYYY-MM-DD'),
 });
 ```
 
@@ -467,7 +467,7 @@ function soundTopic(): Topic {
     slug: 'example',
     title: 'Example',
     subtitle: 'Sub',
-    lastReviewed: '2026-08-18',
+    lastUpdated: '2026-08-18',
     intro: 'Intro.',
     facts: [fact({ id: 'alpha' }), fact({ id: 'gamma' })],
     viewpoints: [
@@ -789,7 +789,7 @@ Create `lib/content/__fixtures__/topics/example/topic.md`:
 ---
 title: Example
 subtitle: A fixture topic used by the loader tests.
-lastReviewed: 2026-08-18
+lastUpdated: 2026-08-18
 ---
 The introduction to the example topic.
 ```
@@ -992,7 +992,7 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   await mkdir(path.join(dir, 'principles'), { recursive: true });
   await writeFile(
     path.join(dir, 'topic.md'),
-    '---\ntitle: Bare\nsubtitle: s\nlastReviewed: 2026-08-18\n---\nIntro.\n'
+    '---\ntitle: Bare\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
   );
   await writeFile(
     path.join(dir, 'facts', 'a.md'),
@@ -1397,7 +1397,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     <main>
       <h1>{topic.title}</h1>
       <p>{topic.subtitle}</p>
-      <p>Last reviewed {topic.lastReviewed}</p>
+      <p>Last updated {topic.lastUpdated}</p>
       <Prose html={intro} />
 
       <h2>Facts</h2>
@@ -1878,7 +1878,7 @@ Replace the body of `app/topics/[slug]/page.tsx` below the data loading with:
         <h1>{topic.title}</h1>
         <p>{topic.subtitle}</p>
         <Prose html={intro} />
-        <p>Last reviewed {topic.lastReviewed}</p>
+        <p>Last updated {topic.lastUpdated}</p>
       </header>
 
       <section>
@@ -2143,7 +2143,7 @@ Create `content/topics/uk-immigration/topic.md`:
 ---
 title: Immigration
 subtitle: What the UK argument is actually about, and where it genuinely divides.
-lastReviewed: 2026-08-18
+lastUpdated: 2026-08-18
 ---
 A short, calm introduction: what this page covers, what it deliberately leaves out, and how to read the fact statuses.
 ```

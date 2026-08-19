@@ -409,18 +409,53 @@ schema problems soonest. Swapping the first topic is cheap — it changes which
 content files get authored, not any code — so this order is a recommendation,
 not a commitment.
 
-## Open questions
+## Editorial policy
 
-Deferred deliberately; none block milestone 1.
+The site has no bylines and makes no claim to neutrality-by-abstention. It
+makes a much more specific claim: that each viewpoint is the strongest
+available version of itself. These policies are what back that claim.
 
-- **Content freshness.** A topic's facts go stale. `topic.md` carries a
-  `lastReviewed` date displayed on the page; whether anything stronger is
-  needed (per-fact review dates, a staleness warning) waits until there are
-  enough topics for it to matter.
-- **Viewpoint completeness.** Nothing currently guarantees the set of
-  viewpoints covers the real distribution of opinion. That is an editorial
-  judgment, and the suggestion mechanism in milestone 4 is the intended
-  feedback loop.
-- **Attribution of authorship.** The page states positions but not who wrote
-  them. Whether topics carry an author or an explicit editorial-standards page
-  is worth deciding before the site is public.
+**No attributed authors.** Viewpoints carry no byline. In practice one
+editorial voice — a human, or a human and Claude working together from that
+human's direction — drafts all of them for a topic, which is what makes it
+possible to hold every viewpoint to the same standard. A page where each
+viewpoint had a different author would be a debate; the point here is that one
+party wrote all sides as well as they could be written, and can be judged on
+whether they succeeded.
+
+**Covering the viewpoints is an editorial duty, not a mechanism.** Nothing in
+the system can guarantee the listed viewpoints span the real distribution of
+opinion. Editorial makes its best attempt; readers who think a view is missing
+say so in a comment; editorial adds it or explains why not. That loop is the
+guarantee, and it only works if the second half actually happens — see the
+comment commitment below.
+
+**Every comment gets one of two responses.** A comment is either *factored in*
+— the content changes, the comment is badged as incorporated, and the
+commenter is credited as a contributor at the bottom of the topic — or it is
+*answered*, with a public reply saying why not. Silence is not an option: a
+site that asks people to point out its holes and then ignores them teaches
+readers not to bother, and the only mechanism guaranteeing viewpoint coverage
+dies with it. The reply and badge UI ship in a later milestone; the commitment
+is a standing constraint on how the site is run, not a feature.
+
+**Topics carry a `lastUpdated` date**, shown on the page. A topic whose facts
+have gone stale is worse than no topic, and the date is the reader's cue to
+weigh what they are reading.
+
+## Deferred
+
+Mechanisms whose need is established but which are not built yet. None block
+milestone 1.
+
+- **A per-topic changelog.** A returning reader should be able to see what has
+  changed since they were last here — which facts were added, which statuses
+  moved, which viewpoints were revised — rather than re-reading the page to
+  find out. This matters more as topics accumulate revisions, so it waits
+  until they have. Not in V1.
+- **Editor replies and contributor credit.** The UI for the comment commitment
+  above: replying to a comment, badging one as incorporated, and listing
+  contributors at the foot of the topic. Milestone 4 or later.
+- **Per-fact review dates.** Whether `lastUpdated` on the topic is granular
+  enough, or individual facts need their own staleness signal, waits until
+  there are enough topics for the answer to be observable.
