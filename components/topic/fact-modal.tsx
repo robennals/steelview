@@ -9,6 +9,17 @@ const FACT_PREFIX = anchorFor('fact', '');
 /** The id lent to the open fact's claim so the dialog can be labelled by it. */
 const TITLE_ID = 'sv-modal-title';
 
+/**
+ * Marks the supporting fact a citation actually asked for, when the panel is
+ * showing its parent headline claim. The reader followed a link to one
+ * specific item; without this the panel is a wall of prose in which that item
+ * is indistinguishable from its siblings.
+ */
+const REQUESTED = 'svRequested';
+
+/** Breathing room between the panel's sticky claim and the fact scrolled under it. */
+const SCROLL_GAP = 12;
+
 const FOCUSABLE = [
   'a[href]',
   'button:not([disabled])',
@@ -86,8 +97,17 @@ export function FactModal() {
 
     const hashFor = (id: string) => `${location.pathname}${location.search}#${id}`;
 
+    const clearRequested = () => {
+      dialog.removeAttribute('data-sv-followed');
+      for (const marked of Array.from(document.querySelectorAll<HTMLElement>('[data-sv-requested]'))) {
+        delete marked.dataset[REQUESTED];
+        marked.removeAttribute('aria-current');
+      }
+    };
+
     /** Put the borrowed fact back exactly where and how it was. */
     const detach = (state: OpenFact) => {
+      clearRequested();
       state.placeholder.parentNode?.insertBefore(state.details, state.placeholder);
       state.placeholder.remove();
       state.details.open = state.wasOpen;
@@ -122,6 +142,7 @@ export function FactModal() {
 
       const previous = current;
       if (previous) detach(previous);
+      else clearRequested();
 
       const placeholder = document.createElement('div');
       placeholder.className = 'sv-fact-placeholder';
@@ -143,7 +164,18 @@ export function FactModal() {
       panelFact.open = true;
       host.appendChild(panelFact);
       current = state;
-      if (panelFact !== el) el.open = true;
+      // Whether the reader asked for a fact *inside* the panel's claim rather
+      // than the claim itself. The stylesheet reads it to pin the claim while
+      // the panel is scrolled down to that fact.
+      dialog.toggleAttribute('data-sv-followed', panelFact !== el);
+      if (panelFact !== el) {
+        el.open = true;
+        // Both channels, because they answer different readers: the attribute
+        // is what a screen reader announces as the current item, the data
+        // attribute is what the stylesheet marks it with.
+        el.setAttribute('aria-current', 'location');
+        el.dataset[REQUESTED] = 'true';
+      }
 
       const claim = panelFact.querySelector('.sv-item__claim');
       if (claim) {
@@ -163,15 +195,41 @@ export function FactModal() {
         root.classList.add('sv-modal-open');
         dialog.showModal();
       }
-      host.parentElement?.scrollTo({ top: 0 });
+      const scroller = host.parentElement;
+      scroller?.scrollTo({ top: 0 });
       dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
-      // A deep link to a supporting fact opens its headline claim, then
-      // brings the fact that was actually asked for into view. Waiting a
-      // frame lets the panel lay out first, so the scroll has somewhere to go.
+      /*
+       * A deep link to a supporting fact opens its headline claim, then
+       * brings the fact that was actually asked for into view. Waiting a
+       * frame lets the panel lay out first, so the scroll has somewhere to go.
+       *
+       * `scrollIntoView({ block: 'start' })` is what this used to do, and it
+       * put the supporting fact flush against the top of the scrollport —
+       * which on a panel whose title is *inside* that scrollport means the
+       * headline claim the fact is evidence for scrolls out of sight. A
+       * supporting fact read without the claim it supports is exactly the
+       * out-of-context number this page exists to prevent, so the scroll is
+       * computed instead: stop with the requested fact just below the claim,
+       * which is sticky and therefore stays put for the rest of the read.
+       */
       if (panelFact !== el) {
-        requestAnimationFrame(() => {
-          if (host.contains(el)) el.scrollIntoView({ block: 'start' });
-        });
+        const settle = () => {
+          if (current !== state || !scroller || !host.contains(el)) return;
+          const claim = panelFact.querySelector<HTMLElement>(':scope > .sv-item__summary');
+          const headroom = claim ? claim.getBoundingClientRect().height : 0;
+          const top =
+            el.getBoundingClientRect().top -
+            scroller.getBoundingClientRect().top -
+            headroom -
+            SCROLL_GAP;
+          scroller.scrollBy({ top });
+        };
+        requestAnimationFrame(settle);
+        // The panel is set in a webfont, so its metrics — and therefore every
+        // offset measured above — can still change after the first frame.
+        // Settling again once the fonts have loaded costs nothing and is the
+        // difference between landing on the fact and landing near it.
+        document.fonts?.ready.then(settle);
       }
       return true;
     };

@@ -2,6 +2,7 @@ import type { Fact, SourceStance } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
 import { Disclosure } from './disclosure';
 import { Prose } from './prose';
+import { SeriesChart } from './series-chart';
 import { StatusBadge } from './status-badge';
 import { Glyph, type GlyphShape } from './glyph';
 
@@ -82,6 +83,14 @@ export function FactDetail({
   return (
     <>
       <Prose html={bodyHtml} />
+      {/*
+       * The series sits between the body and the sources: the body says what
+       * the number measures, the chart says what it has done over the whole
+       * range the source publishes, and the quotes then back both. A chart
+       * placed after the sources would be read as an appendix, when it is the
+       * answer to "compared to what?" that the claim above it invites.
+       */}
+      {fact.series && <SeriesChart factId={fact.id} series={fact.series} />}
       <Sources fact={fact} />
       {supporting.length > 0 && (
         /*

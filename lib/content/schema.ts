@@ -46,6 +46,104 @@ export const sourceSchema = z.object({
   date: partialDate,
 });
 
+/* ------------------------------------------------------------------ series */
+
+/**
+ * One observation. `period` is a partial date like every other date on the
+ * page, so a series can be annual ("1964"), monthly ("2021-06") or daily.
+ *
+ * `value` is a plain number in the reading's own unit: people for a `count`
+ * reading, *percentage points* for a `percent` one — `0.39` means 0.39%, not
+ * 39%. Storing the number the reader is shown keeps the frontmatter checkable
+ * against the source table by eye, which is the point of publishing it.
+ */
+export const seriesPointSchema = z.object({
+  period: partialDate,
+  value: z.number(),
+});
+
+/** One line on the chart: immigration, emigration and net migration are three. */
+export const seriesLineSchema = z.object({
+  name: z.string().min(1),
+  points: z
+    .array(seriesPointSchema)
+    .min(2, 'a series line needs at least two points — one point is not a trend'),
+});
+
+/**
+ * One *reading* of the same data. The owner asked for migration both in
+ * absolute numbers and as a share of the UK population, and both are needed:
+ * a raw count in a growing population is its own misleading framing, and a
+ * share alone hides that the growth is mostly in the numerator. So a series
+ * carries one or more readings and the chart draws every one of them, rather
+ * than offering a control that lets an author ship the flattering default.
+ *
+ * A reading may carry its own `source` on top of the series' — the
+ * share-of-population reading rests on a population series the migration
+ * workbook does not publish, and that denominator is a factual claim too.
+ */
+export const seriesReadingSchema = z.object({
+  id: z.string().min(1),
+  /** What this reading is called in the UI: "In people", "As a share of the UK population". */
+  label: z.string().min(1),
+  /** `count` formats 1,441,000 and 1.4m; `percent` formats 2.10%. */
+  unit: z.enum(['count', 'percent']),
+  /** The value-axis label — what one unit on the vertical axis means. */
+  valueLabel: z.string().min(1),
+  /** Anything the reader must know to read this reading honestly, e.g. that it is derived. */
+  note: z.string().optional(),
+  source: sourceSchema.optional(),
+  lines: z.array(seriesLineSchema).min(1),
+});
+
+/**
+ * The full range the *source* publishes — not the range the author chose to
+ * plot. Every line must run end to end across it (checked in validate.ts),
+ * which is what stops the chart from becoming the cherry-pick it exists to
+ * expose.
+ */
+export const seriesCoverageSchema = z.object({
+  from: partialDate,
+  to: partialDate,
+  /** Why the range stops where it does, and any vintage caveat on the numbers. */
+  note: z.string().optional(),
+});
+
+/**
+ * A definitional discontinuity: the point at which the source changed what it
+ * was measuring or how. The series still runs end to end — the break is
+ * annotated and drawn as a break, never smoothed over or trimmed away.
+ */
+export const seriesBreakSchema = z.object({
+  period: partialDate,
+  /** Short name for the break, e.g. "LTIM replaces IPS-alone". */
+  label: z.string().min(1),
+  /** What actually changed, in the source's own terms. */
+  note: z.string().min(1),
+});
+
+export const seriesSchema = z.object({
+  title: z.string().min(1),
+  /**
+   * What the chart shows, in words. This is the screen-reader description and
+   * the sighted reader's orientation, so it is required rather than derived
+   * from the data: a generated sentence would say what the numbers are, not
+   * what they mean.
+   */
+  description: z.string().min(1),
+  /** The time-axis label: "Year", "Quarter", "Year ending". */
+  periodLabel: z.string().min(1),
+  coverage: seriesCoverageSchema,
+  breaks: z.array(seriesBreakSchema).default([]),
+  readings: z.array(seriesReadingSchema).min(1),
+  /**
+   * A chart is a factual assertion, and nothing on this page is asserted
+   * without a quoted source behind it. Same shape as a fact's sources, so it
+   * renders the same way and `check-figures.ts` audits its quote the same way.
+   */
+  source: sourceSchema,
+});
+
 export const factFrontmatterSchema = z.object({
   claim: z.string().min(1),
   status: z.enum(FACT_STATUSES),
@@ -75,6 +173,15 @@ export const factFrontmatterSchema = z.object({
    */
   supports: z.string().min(1).optional(),
   sources: z.array(sourceSchema).default([]),
+  /**
+   * A time series for a fact whose claim is about a number.
+   *
+   * Optional, because some facts are point-in-time and have no series to
+   * show. Where one exists it is not optional *in effect*: a single year is
+   * the easiest way to mislead honestly, and `check-figures.ts` already
+   * reports a fact with a figure in its claim and no series here.
+   */
+  series: seriesSchema.optional(),
 });
 
 export const viewpointFrontmatterSchema = z.object({

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { validateTopic } from './validate';
-import type { Topic, Fact, Viewpoint, Principle, Crux } from './types';
+import type { Topic, Fact, Viewpoint, Principle, Crux, Series } from './types';
 
 function fact(over: Partial<Fact> & { id: string }): Fact {
   return {
@@ -428,5 +428,152 @@ test('rule 13 does not apply to fact, principle or crux bodies', () => {
   const t = soundTopic();
   t.facts[0].body = 'Compare [gamma](#fact-gamma).';
   t.cruxes[0].body = 'Compare [alpha](#fact-alpha).';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+/* ------------------------------------------------------- rule 14: series */
+
+function series(over: Partial<Series> = {}): Series {
+  return {
+    title: 'A series',
+    description: 'What it shows.',
+    periodLabel: 'Year',
+    coverage: { from: '1990', to: '1993' },
+    breaks: [],
+    source: {
+      stance: 'supports',
+      quote: 'q',
+      title: 't',
+      url: 'https://example.org/data.xlsx',
+      publisher: 'p',
+      date: '2024',
+    },
+    readings: [
+      {
+        id: 'people',
+        label: 'In people',
+        unit: 'count',
+        valueLabel: 'People a year',
+        lines: [
+          {
+            name: 'Immigration',
+            points: [
+              { period: '1990', value: 10 },
+              { period: '1991', value: 20 },
+              { period: '1992', value: 30 },
+              { period: '1993', value: 40 },
+            ],
+          },
+        ],
+      },
+    ],
+    ...over,
+  };
+}
+
+function topicWithSeries(over: Partial<Series> = {}): Topic {
+  const t = soundTopic();
+  t.facts[0].series = series(over);
+  return t;
+}
+
+test('rule 14: a full-coverage series produces no errors', () => {
+  assert.deepEqual(validateTopic(topicWithSeries()), []);
+});
+
+test('rule 14: a series trimmed to a window inside its declared coverage fails', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines[0].points.shift();
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('starts at "1991"') && e.includes('publishes from "1990"')),
+    errors.join('\n')
+  );
+});
+
+test('rule 14: a series that stops short of its declared coverage fails', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines[0].points.pop();
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('ends at "1992"') && e.includes('publishes to "1993"')),
+    errors.join('\n')
+  );
+});
+
+test('rule 14: every line of every reading is checked against the coverage', () => {
+  const t = topicWithSeries();
+  const reading = t.facts[0].series!.readings[0];
+  reading.lines.push({
+    name: 'Net migration',
+    points: [
+      { period: '1992', value: 1 },
+      { period: '1993', value: 2 },
+    ],
+  });
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('line "Net migration"') && e.includes('starts at "1992"')),
+    errors.join('\n')
+  );
+});
+
+test('rule 14: out-of-order and repeated points are reported', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines[0].points[2].period = '1990';
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('ascending order with no repeats')),
+    errors.join('\n')
+  );
+});
+
+test('rule 14: backwards coverage is reported', () => {
+  const t = topicWithSeries({ coverage: { from: '1993', to: '1990' } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('coverage runs backwards')), errors.join('\n'));
+});
+
+test('rule 14: a break annotated outside the coverage is reported', () => {
+  const t = topicWithSeries({
+    breaks: [{ period: '2001', label: 'method change', note: 'the source changed basis' }],
+  });
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('break at "2001"') && e.includes('outside the declared coverage')),
+    errors.join('\n')
+  );
+});
+
+test('rule 14: two readings may not share an id', () => {
+  const t = topicWithSeries();
+  const s = t.facts[0].series!;
+  s.readings.push({ ...s.readings[0] });
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('two readings with id "people"')), errors.join('\n'));
+});
+
+test('rule 14: mixed period granularity orders the way a reader would order it', () => {
+  const t = topicWithSeries({
+    coverage: { from: '1990', to: '1993-06' },
+    readings: [
+      {
+        id: 'people',
+        label: 'In people',
+        unit: 'count',
+        valueLabel: 'People a year',
+        lines: [
+          {
+            name: 'Immigration',
+            points: [
+              { period: '1990', value: 1 },
+              { period: '1990-06', value: 2 },
+              { period: '1993-06', value: 3 },
+            ],
+          },
+        ],
+      },
+    ],
+  });
   assert.deepEqual(validateTopic(t), []);
 });

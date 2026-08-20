@@ -1,5 +1,6 @@
 import { citedFactIds } from './markdown';
-import type { Fact, Topic } from './types';
+import { comparePeriods } from './period';
+import type { Fact, Series, Topic } from './types';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -111,6 +112,8 @@ export function validateTopic(topic: Topic): string[] {
         );
       }
     }
+    // rule 14
+    if (f.series) errors.push(...seriesErrors(f.id, f.series));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -207,6 +210,93 @@ export function validateTopic(topic: Topic): string[] {
   }
 
   errors.push(...citationErrors(topic, factById));
+
+  return errors;
+}
+
+/**
+ * Rule 14 — a fact's time series.
+ *
+ * The shape is already guaranteed by the schema: a title, a description, a
+ * period label, a declared coverage, at least one reading, each with a unit,
+ * a value-axis label and at least one line of at least two points, and a
+ * complete quoted source. What the schema cannot see is whether the data
+ * *keeps the promise the coverage makes*, and that is the whole feature:
+ *
+ * > It's very easy to give a misleading picture by cherry picking dates.
+ * > Harder if we require always showing a time series.
+ *
+ * A series that declares 1964–2025 and supplies 1990–2025 is exactly the
+ * cherry-pick the chart exists to expose, dressed up as the fix for it. So the
+ * coverage is not a caption: every line must begin at `coverage.from` and end
+ * at `coverage.to`, or the build fails. Trimming a line to a flattering window
+ * is then impossible without also editing the claim about what the source
+ * publishes — which is a lie a reader can check against the cited workbook,
+ * rather than an omission they cannot see.
+ *
+ * The remaining rules keep the drawing honest: points strictly ascending (an
+ * unordered or duplicated period draws a line that doubles back on itself),
+ * and every annotated break inside the range it is annotating.
+ */
+function seriesErrors(factId: string, series: Series): string[] {
+  const errors: string[] = [];
+  const where = `fact ${factId}: series`;
+
+  if (comparePeriods(series.coverage.from, series.coverage.to) > 0) {
+    errors.push(
+      `${where} coverage runs backwards — from "${series.coverage.from}" to "${series.coverage.to}"`
+    );
+  }
+
+  const seenReadings = new Set<string>();
+  for (const reading of series.readings) {
+    if (seenReadings.has(reading.id)) {
+      errors.push(`${where} has two readings with id "${reading.id}"`);
+    }
+    seenReadings.add(reading.id);
+
+    for (const line of reading.lines) {
+      const at = `${where} reading "${reading.id}" line "${line.name}"`;
+
+      let ordered = true;
+      for (let i = 1; i < line.points.length; i += 1) {
+        const previous = line.points[i - 1].period;
+        const period = line.points[i].period;
+        if (comparePeriods(previous, period) >= 0) {
+          errors.push(
+            `${at}: point "${period}" does not come after "${previous}" — points must be in ascending order with no repeats`
+          );
+          ordered = false;
+          break;
+        }
+      }
+      if (!ordered) continue;
+
+      const first = line.points[0].period;
+      const last = line.points[line.points.length - 1].period;
+      if (comparePeriods(first, series.coverage.from) !== 0) {
+        errors.push(
+          `${at}: starts at "${first}" but the series says the source publishes from "${series.coverage.from}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
+        );
+      }
+      if (comparePeriods(last, series.coverage.to) !== 0) {
+        errors.push(
+          `${at}: ends at "${last}" but the series says the source publishes to "${series.coverage.to}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
+        );
+      }
+    }
+  }
+
+  for (const gap of series.breaks) {
+    if (
+      comparePeriods(gap.period, series.coverage.from) < 0 ||
+      comparePeriods(gap.period, series.coverage.to) > 0
+    ) {
+      errors.push(
+        `${where} annotates a break at "${gap.period}", which is outside the declared coverage ${series.coverage.from}–${series.coverage.to}`
+      );
+    }
+  }
 
   return errors;
 }

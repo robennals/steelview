@@ -42,6 +42,19 @@
   --accent: #b3350a;
   --accent-wash: #fdf2ec;
 
+  /* Chart series, in fixed slot order. Not decoration and not a fifth ink:
+     three hues that stay apart under deuteranopia and protanopia as well as
+     for a full-colour reader, checked with the data-viz palette validator
+     against this page's own paper rather than eyeballed. Slot 2 is the
+     page accent, so the family sits in the same register as the rest of the
+     type. Every slot clears 3:1 on --paper.
+       node scripts/validate_palette.js "#1f5c9e,#b3350a,#007551" \
+         --mode light --surface "#ffffff" --pairs all   → all checks pass
+     Worst all-pairs CVD dE 9.2, worst normal-vision dE 16.6. */
+  --sv-series-1: #1f5c9e;
+  --sv-series-2: #b3350a;
+  --sv-series-3: #007551;
+
   --measure: 34rem;
   --wrap: 44rem;
   --grain-opacity: 0.02;
@@ -67,6 +80,14 @@
 
     --accent: #ff8a4c;
     --accent-wash: #241812;
+
+    /* The same three hues, re-stepped for the dark paper rather than flipped:
+         node scripts/validate_palette.js "#3987e5,#d95926,#199e70" \
+           --mode dark --surface "#0e0e0d" --pairs all   → all checks pass
+       Worst all-pairs CVD dE 9.4, worst normal-vision dE 20.9. */
+    --sv-series-1: #3987e5;
+    --sv-series-2: #d95926;
+    --sv-series-3: #199e70;
 
     --grain-opacity: 0.04;
   }
@@ -675,6 +696,368 @@
     color: var(--accent);
     display: inline-block;
     padding: 0.5rem 0;
+  }
+
+  /* Present to a screen reader, absent to the eye. Used for a chart's text
+     description, which the plot points at with aria-describedby. */
+  .sv-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ------------------------------------------------------- series charts */
+
+  /* A chart is an argument about context, so it is set like one: hairline
+     grid, ink labels, three series hues and nothing else. The plot is inline
+     SVG generated on the server — it themes with the page's own tokens via
+     currentColor, prints, and is there with JavaScript off. */
+
+  .sv-chart {
+    margin: 1.9rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chart__caption {
+    margin-bottom: 1.2rem;
+  }
+
+  .sv-chart__title {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+    text-wrap: balance;
+  }
+
+  .sv-chart__desc,
+  .sv-chart__range,
+  .sv-chart__note {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--ink-3);
+    margin: 0 0 0.4rem;
+    text-wrap: pretty;
+  }
+
+  .sv-chart__range strong {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .sv-chart__reading + .sv-chart__reading {
+    margin-top: 1.9rem;
+  }
+
+  .sv-chart__reading-head {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.15rem;
+  }
+
+  .sv-chart__axis-label {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+    margin: 0 0 0.5rem;
+  }
+
+  /* Identity never rests on colour alone: the legend is always present, and
+     it also carries the one direct label each line gets — its latest value.
+     On the plot those labels would collide where the lines converge. */
+  .sv-chart__legend {
+    list-style: none;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 1.15rem;
+  }
+
+  .sv-chart__key {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .sv-chart__swatch {
+    width: 20px;
+    height: 8px;
+    flex: none;
+  }
+
+  /* Text wears text tokens; the swatch beside it carries the series colour. */
+  .sv-chart__key-name {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .sv-chart__key-value {
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Two renderings of the same scales, one shown. An SVG viewBox scales its
+     type along with the plot, so one chart cannot be legible both in a 390px
+     modal and across a desktop panel; the hidden one is display:none and so
+     is out of the accessibility tree rather than doubled in it. */
+  .sv-chart__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sv-chart__svg[data-variant="wide"] {
+    display: none;
+  }
+
+  @media (min-width: 34rem) {
+    .sv-chart__svg[data-variant="narrow"] {
+      display: none;
+    }
+
+    .sv-chart__svg[data-variant="wide"] {
+      display: block;
+    }
+  }
+
+  /* On paper there is no media query and no room to choose: print the wide
+     plot, and print the numbers with it. */
+  @media print {
+    .sv-chart__svg[data-variant="narrow"] {
+      display: none;
+    }
+
+    .sv-chart__svg[data-variant="wide"] {
+      display: block;
+    }
+
+    .sv-chart__table-scroll {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+  .sv-chart__grid {
+    stroke: var(--rule);
+    fill: none;
+  }
+
+  .sv-chart__zero,
+  .sv-chart__axis {
+    stroke: var(--rule-strong);
+    fill: none;
+  }
+
+  .sv-chart__break {
+    stroke: var(--ink-4);
+    stroke-dasharray: 2 4;
+    fill: none;
+  }
+
+  .sv-chart__break-flag {
+    fill: var(--ink-4);
+  }
+
+  .sv-chart__line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  /* The step across a definitional break, drawn as a step and not as trend. */
+  .sv-chart__bridge {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-dasharray: 3 4;
+    stroke-linecap: round;
+    opacity: 0.5;
+  }
+
+  /* The 2px ring is paper, not a border: it is what keeps the end markers
+     legible where two lines cross under them. */
+  .sv-chart__end {
+    fill: currentColor;
+    stroke: var(--paper);
+    stroke-width: 2;
+  }
+
+  .sv-chart__tick {
+    fill: var(--ink-3);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-chart__breaks {
+    margin-top: 1.4rem;
+  }
+
+  .sv-chart__breaks-head,
+  .sv-chart__source-head,
+  .sv-chart__reading-source-head {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-chart__breaks dl {
+    margin: 0;
+  }
+
+  .sv-chart__break-item + .sv-chart__break-item {
+    margin-top: 0.7rem;
+  }
+
+  .sv-chart__break-item dt {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .sv-chart__break-item dd {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--ink-3);
+    text-wrap: pretty;
+  }
+
+  .sv-chart__source {
+    margin-top: 1.4rem;
+  }
+
+  .sv-chart__reading-source {
+    margin-top: 0.8rem;
+  }
+
+  /* The numbers themselves: the screen-reader alternative to the plot, and
+     the thing a reader who does not believe the line can check. */
+  .sv-chart__data {
+    margin-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chart__data-summary {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .sv-chart__data-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sv-chart__data-summary::before {
+    content: "+";
+    display: inline-block;
+    width: 1rem;
+    font-weight: 400;
+    color: var(--ink-4);
+  }
+
+  .sv-chart__data[open] > .sv-chart__data-summary::before {
+    content: "\2212";
+  }
+
+  .sv-chart__table-scroll {
+    max-height: 24rem;
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chart__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-chart__table caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.5rem 0;
+    color: var(--ink-3);
+    font-size: 0.75rem;
+  }
+
+  .sv-chart__table th,
+  .sv-chart__table td {
+    padding: 0.28rem 0.55rem;
+    text-align: right;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-chart__table thead th {
+    background: var(--paper);
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  /* Only the row carrying the column names sticks: two sticky rows at the
+     same offset would sit on top of one another. */
+  .sv-chart__table thead tr:last-child th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .sv-chart__table thead tr:first-child th {
+    border-bottom: 0;
+    padding-bottom: 0;
+    color: var(--ink-3);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sv-chart__table tbody th[scope="row"] {
+    text-align: left;
+    color: var(--ink-2);
+    font-weight: 400;
+  }
+
+  .sv-chart__table tbody td {
+    color: var(--ink);
   }
 
   /* ------------------------------------------------------------- chipsets */
@@ -1363,6 +1746,45 @@
 
   .sv-modal__body > .sv-item > .sv-item__body {
     padding-bottom: 0;
+  }
+
+  /* When a citation was followed to a *supporting* fact, the panel opens the
+     headline claim that fact is evidence for and scrolls down to it — and a
+     supporting fact read with its headline claim off-screen is the
+     out-of-context number this whole page exists to prevent. So in that case
+     the claim stays put: sticky is the only fix that still holds after the
+     reader carries on scrolling.
+
+     Only in that case. A reader who opened a fact from the list is already
+     at its claim, and a permanently pinned four-line heading would spend a
+     third of a phone screen to tell them what they just tapped.
+
+     The negative margins let the backing bleed to the scrollport's side
+     padding; the upward shadow paints over its top padding, so body text
+     passes behind the claim rather than appearing above it. */
+  .sv-modal[data-sv-followed] .sv-modal__body > .sv-item > .sv-item__summary {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin: 0 -1.4rem 0 -1.25rem;
+    padding: 0.15rem 1.4rem 0.5rem 1.25rem;
+    background: var(--paper);
+    box-shadow: 0 1px 0 var(--rule), 0 -2.5rem 0 var(--paper);
+  }
+
+  /* Which item the reader actually asked for. `aria-current="location"` on
+     the same element is what a screen reader announces; this is the sighted
+     half of the same answer, in the one accent the page has. */
+  .sv-subfact[data-sv-requested] {
+    box-shadow: inset 2px 0 0 var(--accent);
+  }
+
+  .sv-subfact[data-sv-requested] > .sv-item__summary::before {
+    background: var(--accent-wash);
+  }
+
+  .sv-subfact[data-sv-requested] > .sv-item__summary .sv-item__claim {
+    color: var(--ink);
   }
 }
 

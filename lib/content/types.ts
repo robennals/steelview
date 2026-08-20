@@ -1,6 +1,11 @@
 import { z } from 'zod';
 import {
   sourceSchema,
+  seriesSchema,
+  seriesLineSchema,
+  seriesPointSchema,
+  seriesReadingSchema,
+  seriesBreakSchema,
   factFrontmatterSchema,
   viewpointFrontmatterSchema,
   principleFrontmatterSchema,
@@ -17,6 +22,12 @@ export type SourceStance = (typeof SOURCE_STANCES)[number];
 export type Item<T> = T & { id: string; body: string };
 
 export type Source = z.infer<typeof sourceSchema>;
+
+export type SeriesPoint = z.infer<typeof seriesPointSchema>;
+export type SeriesLine = z.infer<typeof seriesLineSchema>;
+export type SeriesReading = z.infer<typeof seriesReadingSchema>;
+export type SeriesBreak = z.infer<typeof seriesBreakSchema>;
+export type Series = z.infer<typeof seriesSchema>;
 
 export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
 export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
