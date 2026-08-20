@@ -45,30 +45,27 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-05-21"
 ---
-**The denominator is shown on purpose.** Both figures below are the same twelve
-months — calendar year 2025 — from the two bodies responsible for them. Detected
-arrivals by illegal routes: 46,497, of which 41,472 were small boats. Long-term
-immigration: 813,000. That is 46,497 ÷ 813,000 = **5.7%** for all detected illegal
-arrivals and 41,472 ÷ 813,000 = **5.1%** for small boats alone.
+The denominator is shown on purpose, and both sides of it are the same twelve
+months — calendar 2025 — from the two bodies responsible for them.
 
-Smaller percentages circulate, and they are usually produced by dividing a recent
-year's arrivals into the 1,469,000 peak of the year to March 2023, which gives
-about 3%. That comparison is not wrong so much as mismatched: it puts one year's
-numerator over a different year's denominator, and it happens to flatter one side
-of the argument. The same-period figure is the one to use, and it is roughly one in
-eighteen.
-
-The rest of the shape, for non-EU+ arrivals in the same year: 47% came for study,
-23% for work, 14% were asylum applicants, 7% for family and 6% on humanitarian
-routes. Study, not asylum and not small boats, is the largest single reason anyone
-moves to Britain.
-
-**Three traps.** First, detections are a floor, not a total: the Home Office says
-plainly that it cannot know how many people enter illegally or how many are here
-without permission, and declines to publish an estimate, so nobody — in either
-direction — is entitled to a confident number for the true figure. Second, "asylum"
-and "small boats" overlap but are not nested: just over half of asylum claimants
-arrived by illegal routes and 39% arrived on a visa, so the 14% asylum share and
-the 5.7% irregular share cannot be added. Third, ONS's 88,000 people immigrating
-for asylum in 2025 counts long-term asylum immigrants however they arrived, and is
-a different measurement again.
+- **Detected illegal arrivals were about one in eighteen of everyone who moved
+  here.** 46,497 detected arrivals via illegal routes against 813,000 people
+  moving to the UK long-term: 46,497 divided by 813,000 is 5.7%. Small boats were
+  41,472 of those, or 5.1%.
+- **Study is the largest single reason anyone moves to Britain.** Of non-EU+
+  arrivals in the same year, 47% came for study, 23% for work, 14% were asylum
+  applicants, 7% for family and 6% on humanitarian routes.
+- **The smaller percentages in circulation use a mismatched denominator.**
+  Dividing a recent year's arrivals into the 1,469,000 peak of the year to March
+  2023 gives about 3%. That is one year's numerator over a different year's
+  denominator, and it happens to flatter one side.
+- **Detections are a floor, not a total.** The Home Office says plainly that it
+  cannot know how many people enter illegally or how many are here without
+  permission, and publishes no estimate. Nobody, in either direction, is entitled
+  to a confident number for the true figure.
+- **"Asylum" and "small boats" overlap but are not nested.** Just over half of
+  asylum claimants arrived by illegal routes and 39% arrived on a visa, so the
+  14% asylum share and the 5.7% irregular share cannot be added together.
+- **A third measure again.** ONS counts 88,000 people immigrating for asylum in
+  2025, however they arrived. That is not the same statistic as either of the
+  other two.

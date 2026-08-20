@@ -15,9 +15,16 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-04-28"
 ---
-This fact is genuinely double-edged and both sides should be careful with it.
-It means that any chosen migration level is a chosen population trajectory, which
-is a real argument for treating the number as a democratic decision rather than a
-by-product of visa rules. It equally means that near-zero net migration is a
-choice for a shrinking, ageing population, with the tax and care consequences
-that follow — not a return to some prior normal.
+This one is genuinely double-edged, and both sides should handle it carefully.
+
+- **On official projections, migration is the only thing keeping the population
+  from shrinking.** ONS projects deaths to exceed births by 2.5 million over
+  twenty-five years.
+- **So any chosen migration level is a chosen population trajectory.** That is a
+  real argument for treating the number as a democratic decision rather than a
+  by-product of visa rules.
+- **And near-zero net migration is a choice for a shrinking, ageing population**,
+  with the tax and care consequences that follow — not a return to a prior
+  normal.
+- **A projection is not a forecast.** ONS says so itself: the long-term
+  assumption "should not be viewed as a forecast, but as a scenario".

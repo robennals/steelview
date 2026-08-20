@@ -39,24 +39,26 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-08-09"
 ---
-This is a *stock*, not a flow. It answers "how many people living here were born
-somewhere else", not "how many arrived last year", and it counts alike the person
-who landed in March and the person who arrived from Jamaica in 1961 and has held a
-British passport for fifty years. It is also the number least vulnerable to how you
-choose your window: annual flows swing by hundreds of thousands and get revised;
-a census count of country of birth does not.
+This is a stock, not a flow. It answers "how many people living here were born
+somewhere else", and it counts alike the person who landed in March and the
+person who arrived from Jamaica in 1961 and has held a British passport for
+fifty years.
 
-The long series is England and Wales: 4.3% born abroad in 1951, 8.9% in 2001,
-13.4% in 2011, 16.8% in 2021 — about one person in six, and roughly a quadrupling
-of the non-UK-born population against a total population that grew by 28% over the
-same period.
-
-**Three different geographies get mixed up here, and they should not be.** The
-1951–2021 series above is England and Wales only. The UK-wide figure at the
-2021/22 censuses is about 10.7 million, or 16%. The 13.1 million figure — a share
-of about 19% — is the UK at mid-2024, and it is not a count: it is the ONS rolling
-the census forward with migration and death data, labelled "official statistics in
-development", with no equivalent published for mid-2025. Do not read the three as
-one continuous line. On the mid-2024 estimate the UK's foreign-born share is
-similar to Spain's and Germany's, and lower than Australia's, Canada's or New
-Zealand's.
+- **The share has roughly quadrupled since the war.** In England and Wales, 4.3%
+  of residents were born abroad in 1951, 8.9% in 2001, 13.4% in 2011 and 16.8% in
+  2021 — about one person in six.
+- **It is the number least vulnerable to your choice of window.** Annual flows
+  swing by hundreds of thousands and get revised. A census count of country of
+  birth does not.
+- **Three different geographies get mixed up here.** The 1951-2021 series is
+  England and Wales. The UK-wide census figure is about 10.7 million, or 16%. The
+  13.1 million figure is the UK at mid-2024. They are not one continuous line.
+- **The 13.1 million is an estimate, not a count.** ONS rolls the census forward
+  with migration and death data and labels the result "official statistics in
+  development"; there is no equivalent for mid-2025.
+- **Against comparable countries the UK is unremarkable.** On the mid-2024
+  estimate its foreign-born share is similar to Spain's and Germany's, and lower
+  than Australia's, Canada's or New Zealand's.
+- **Commonly mistaken for a measure of recent arrivals.** It is not. ONS makes
+  the point itself: over three quarters of the non-UK-born who arrived before
+  1981 held a UK passport by 2011.

@@ -22,25 +22,23 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-05-21"
 ---
-The arithmetic settles this, and the denominator has to be stated or the
-arithmetic proves nothing. In calendar year 2025 there were 46,497 detected
-arrivals by illegal routes against 813,000 people moving to the UK long-term —
-the same twelve months on both sides, and **5.7%**, or about one in eighteen.
-Irregular arrivals also did not rise during the surge in the way visa grants did:
-the post-2021 increase was made of student, work and family visas issued by the
-Home Office under rules Parliament set.
+The arithmetic settles this, and the denominator has to be in the sentence or
+the arithmetic proves nothing.
 
-**An earlier version of this page said "roughly three per cent", and that figure
-should not be used.** It comes from putting a recent year's arrivals over the
-1,469,000 peak of the year to March 2023 — one year's numerator over a different
-year's denominator. Both percentages can be defended against some denominator,
-which is exactly why the denominator belongs in the sentence; the smaller one
-flatters this fact's own conclusion, and that is not a good enough reason to keep
-it.
-
-This is worth stating plainly precisely because small boats dominate coverage and
-polling. Someone who wants a much smaller headline number is talking about the
-visa system, whether or not that is the argument they think they are having. What
-this fact does not claim is that the true number of illegal entries is known: the
-Home Office counts detections and says explicitly that it cannot estimate the
-rest.
+- **The share is 5.7%, on matched periods.** 46,497 detected arrivals by illegal
+  routes in calendar 2025 against 813,000 people moving to the UK long-term in
+  the same twelve months — about one in eighteen.
+- **Irregular arrivals did not rise during the surge in the way visas did.** The
+  post-2021 increase was student, work and family visas issued by the Home Office
+  under rules Parliament set.
+- **An earlier version of this page said "roughly three per cent", and that
+  figure should not be used.** It came from putting a recent year's arrivals over
+  the 1,469,000 peak of the year to March 2023. Both percentages can be defended
+  against some denominator, which is exactly why the denominator belongs in the
+  sentence — and the smaller one flattered this fact's own conclusion.
+- **Worth stating plainly, because coverage and polling run the other way.**
+  Someone who wants a much smaller headline number is talking about the visa
+  system, whether or not that is the argument they think they are having.
+- **What this does not claim.** That the true number of illegal entries is known.
+  The Home Office counts detections and says explicitly that it cannot estimate
+  the rest.

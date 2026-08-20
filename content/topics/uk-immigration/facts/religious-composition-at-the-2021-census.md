@@ -46,6 +46,12 @@ sources:
     publisher: "Office for National Statistics"
     date: "2015-06-18"
   - stance: complicates
+    quote: "The 'Create a custom dataset' enables users to find and download multiple combinations of data they are most interested in. You can cross tabulate variables -- in this case religion by country of birth: Census 2021 Country of birth and religion."
+    title: "Number of immigrants and refugees in the UK and religion (FOI-2023-1412)"
+    url: https://www.ons.gov.uk/aboutus/transparencyandgovernance/freedomofinformationfoi/numberofimmigrantsandrefugeesintheukandreligion
+    publisher: "Office for National Statistics"
+    date: "2023-10-09"
+  - stance: complicates
     quote: "A total of 51.1% in Scotland’s Census 2022 responded ‘no religion’ – up from 36.7% in 2011. ‘No religion’ was the most common response in almost every council area in Scotland."
     title: "Scotland’s Census – religion, ethnic group, language and national identity results"
     url: https://www.scotlandscensus.gov.uk/news-and-events/scotland-s-census-religion-ethnic-group-language-and-national-identity-results/
@@ -53,38 +59,31 @@ sources:
     date: "2024-05-21"
 ---
 The Muslim share of England and Wales did rise, and this page states it plainly:
-6.5% at the 2021 Census, 3.9 million people, up from 4.9% and 2.7 million in 2011.
-Hindus rose from 1.5% to 1.7%. Those are the census counts and nothing here
-disputes them.
+6.5% at the 2021 Census, 3.9 million people, up from 4.9% and 2.7 million in
+2011. Hindus rose from 1.5% to 1.7%. The claim built on top of those counts is
+what fails.
 
-**The claim as stated fails on three separate counts.**
-
-**It is the wrong row of the table.** By far the largest movements in British
-religion are not about Islam. Christian affiliation fell from 71.7% in 2001 to
-59.3% in 2011 to 46.2% in 2021 — below half for the first time in the history of
-the census — and "no religion" rose from 25.2% to 37.2%. Each of those is roughly
-eight times the size of the Muslim change, and neither is a migration effect. In
-Scotland "no religion" is now the majority answer at 51.1%. The dominant religious
-change in Britain is secularisation, and quoting the 6.5% without the 46.2% and the
-37.2% describes a different country than the one the data describes.
-
-**It measures affiliation, not belief, practice or arrival.** The census question is
-voluntary — 94.0% answered it in 2021 — and asks which religion a person connects
-or identifies with, expressly not what they believe or how often they attend. ONS
-itself warns against comparing across censuses without allowing for the changing
-response rate.
-
-**And it is only partly a migration statistic.** At the 2011 Census, 19% of the
-foreign-born population of England and Wales was Muslim and 48% was Christian — so
-about four in five people who migrated to Britain were not Muslim, and the single
-largest religious group among migrants was the same as the largest among the
-UK-born.
-
-**On the question everyone asks next, the data does not exist.** At the 2011
-Census, 47.2% of Muslims in England and Wales were UK-born — close to half, but a
-minority. ONS has published no equivalent figure for 2021. So the familiar
-reassurance "most British Muslims were born here" was *not* true on the most recent
-published breakdown, and whether it became true in the decade since is genuinely
-unknown. This page will not assert it, and neither should anyone else without a
-2021 source. What is on the record is the 2011 figure, its date, and the fact that
-the 2021 equivalent has not been published.
+- **It is the wrong row of the table.** Christian affiliation fell from 71.7% in
+  2001 to 59.3% in 2011 to 46.2% in 2021 — below half for the first time in the
+  history of the census — and "no religion" rose from 25.2% to 37.2%. Each of
+  those movements is roughly eight times the size of the Muslim change, and
+  neither is a migration effect. In Scotland "no religion" is now the majority
+  answer at 51.1%.
+- **It measures affiliation, not belief, practice or arrival.** The question is
+  voluntary, 94.0% answered it in 2021, and it asks which religion a person
+  connects or identifies with. ONS warns against comparing across censuses
+  without allowing for the changing response rate.
+- **Most Muslims in England and Wales were born here, as of 2021 — and only
+  just.** Summing the Census 2021 religion-by-year-of-arrival table charted under
+  *The UK does not record the religion of immigrants* gives 51.0% UK-born. At the
+  2011 Census the same figure was 47.2%, so it crossed half between the two
+  censuses, and asserting it of any earlier date is wrong.
+- **It is only partly a migration statistic in the other direction too.** At the
+  2011 Census, 19% of the foreign-born population was Muslim and 48% was
+  Christian. About four in five people who migrated to Britain were not Muslim,
+  and the largest religious group among migrants was the same as among the
+  UK-born.
+- **And the Muslim share of arrivals has been falling since 2001**, even as the
+  numbers rose — see the chart on the fact above.
+- **Commonly mistaken for a projection.** A decennial stock count of affiliation
+  in two countries of the UK is not a forecast of anything.

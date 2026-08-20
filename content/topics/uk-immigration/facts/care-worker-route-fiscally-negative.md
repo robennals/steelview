@@ -18,13 +18,19 @@ sources:
 ---
 The mechanism is wages, not nationality. Care work is paid too little for anyone
 doing it to be a net contributor under a progressive tax system, and the same
-arithmetic applies to a British care worker on the same pay. The Migration
-Advisory Committee's own comparison makes the point: at −£36,000 the care worker
-is "broadly similar to the UK median for the age group", while other staff on the
-identical visa are +£166,000.
+arithmetic applies to a British care worker on the same pay.
 
-Two limits on the number. It is a lifetime projection from one cohort's early
-earnings, not an observation. And it counts fiscal flows only — the MAC says
-explicitly that it excludes any effect these workers have on the cost of
-providing health and care to everyone else. What conclusion to draw from it is
-contested, and the viewpoints below draw opposite ones.
+- **The estimate is -£36,000 over a lifetime for care workers, +£166,000 for
+  everyone else on the same visa.** The gap is pay: nurses and doctors on the
+  Health and Care route earn far more than care workers do.
+- **-£36,000 is close to the domestic benchmark, not far below it.** The MAC's
+  own comparison puts care workers "broadly similar to the UK median for the age
+  group".
+- **It is a projection, not an observation.** A lifetime figure modelled from one
+  cohort's early earnings.
+- **It counts fiscal flows only.** The MAC says explicitly that it excludes any
+  effect these workers have on the cost of providing health and care to everyone
+  else.
+- **What follows from it is contested, and this page does not pretend
+  otherwise.** The viewpoints below draw opposite conclusions from the same
+  number.

@@ -1,7 +1,7 @@
 ---
 claim: "The share of asylum claims granted at initial decision has fallen from a peak of 77% in 2022 to 39%"
 status: well-supported
-supports: asylum-claims-in-historical-and-european-context
+supports: asylum-accommodation-cost-overrun
 sources:
   - stance: supports
     quote: "the grant rate in the YE March 2026 was 39% and has now returned to a similar level to the period before 2020, down from 49% in the previous year and substantially below the peak grant rate of 77% in the YE September 2022"
@@ -11,10 +11,14 @@ sources:
     date: "2026-05-21"
 ---
 Both the high figure and the low one get quoted as though they were stable
-properties of the people arriving. They are not. The 2022 peak partly reflects a
-deliberate policy of clearing straightforward cases from high-grant nationalities
-quickly; the return to about 39% reflects a different case mix and a stricter
-decision-making posture. A grant rate is a fact about the caseload and the
-decision-maker together, and neither number tells you what proportion of arrivals
-"really are" refugees. Appeals, which overturn a substantial minority of refusals,
-are not counted in it at all.
+properties of the people arriving. They are not.
+
+- **The grant rate fell from 77% to 39% in three and a half years** — 77% at the
+  peak in the year to September 2022, 49% the year before last, 39% in the year
+  to March 2026, back to roughly its pre-2020 level.
+- **The 2022 peak partly reflects a deliberate policy** of clearing
+  straightforward cases from high-grant nationalities quickly.
+- **A grant rate is a fact about the caseload and the decision-maker together.**
+  Neither number tells you what proportion of arrivals "really are" refugees.
+- **Appeals are not in it at all**, and they overturn a substantial minority of
+  refusals.

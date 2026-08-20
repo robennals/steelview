@@ -22,18 +22,19 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-06-23"
 ---
-Both familiar versions of this are wrong. Most people arriving on work, study
-or family visas cannot claim Universal Credit, Child Benefit or most other
-welfare, usually for at least five years, because of the No Recourse to Public
-Funds condition; the Migration Advisory Committee's fiscal modelling treats that
-restriction as worth about £17,000 per person on the family route alone.
+Both familiar versions of this are wrong, which is why it is filed as
+complicated rather than settled either way.
 
-But "migrants can't claim benefits" is also wrong. The condition lifts on
-indefinite leave to remain. Refugees granted status are eligible immediately and
-have low employment rates. Asylum seekers receive accommodation and a small
-subsistence allowance while barred from working. And people use the NHS and
-schools from day one, which is most of the public spending attributable to any
-resident.
-
-The honest statement is that access depends entirely on route and length of stay,
-which is why fiscal estimates are done per route and never for "migrants".
+- **Most people arriving on visas cannot claim most benefits, usually for at
+  least five years.** The No Recourse to Public Funds condition blocks Universal
+  Credit, Child Benefit and most other welfare until indefinite leave to remain.
+  The MAC's modelling treats that restriction as worth about £17,000 per person
+  on the family route alone.
+- **But "migrants can't claim benefits" is also wrong.** The condition lifts on
+  indefinite leave. Refugees granted status are eligible immediately and have low
+  employment rates. Asylum seekers get accommodation and a small subsistence
+  allowance while barred from working.
+- **Everyone uses the NHS and schools from day one**, and that is most of the
+  public spending attributable to any resident, migrant or not.
+- **So access depends on route and length of stay**, which is why fiscal
+  estimates are published per route and never for "migrants" as a class.

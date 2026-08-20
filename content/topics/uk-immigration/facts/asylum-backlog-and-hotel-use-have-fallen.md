@@ -1,7 +1,7 @@
 ---
 claim: "The asylum backlog is 72% below its 2023 peak and the number of asylum seekers in hotels has fallen by about a third in a year"
 status: well-supported
-supports: asylum-claims-in-historical-and-european-context
+supports: asylum-accommodation-cost-overrun
 sources:
   - stance: supports
     quote: "there were 49,000 people awaiting an initial decision (relating to 36,000 cases) at the end of March 2026, 55% fewer than at the end of March 2025 and 72% lower than the peak at the end of June 2023 (175,000 people), following an increase in the number of initial outcomes in recent years"
@@ -16,15 +16,17 @@ sources:
     publisher: "Home Office"
     date: "2026-05-21"
 ---
-These are counts of two different things and it is worth keeping them apart. The
-first is the number of people waiting for an initial decision, which fell from
-175,000 at the June 2023 peak to 49,000 at the end of March 2026, as the Home
-Office raised its rate of initial decisions. The second is the share of supported
-asylum seekers housed in hotels, down 35% in a year to 21,000 people.
+Two different counts, and keeping them apart is most of the work.
 
-Neither figure is a count of arrivals, and neither fell because fewer people
-came: small boat arrivals over the same period did not fall. What the numbers
-show is that the queue and the hotel population respond to decision-making
-capacity. What they do not show is anything about who should be admitted, whether
-the decisions were right, or what happens to those refused — a backlog can be
-cleared by deciding faster in either direction.
+- **The initial-decision queue is 72% below its peak.** 49,000 people awaiting an
+  initial decision at the end of March 2026, against 175,000 at the peak in June
+  2023, as the Home Office raised its rate of decisions.
+- **Hotel use fell by about a third in a year**, to 21,000 supported asylum
+  seekers, 21% of the total.
+- **Neither fell because fewer people came.** Small boat arrivals over the same
+  period rose.
+- **What moves these numbers is decision-making capacity**, which is a fact about
+  the Home Office, not about arrivals.
+- **What they do not show** is who should be admitted, whether the decisions were
+  right, or what happens to those refused. A queue can be cleared by deciding
+  faster in either direction.

@@ -21,14 +21,18 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2026-06-19"
 ---
-The claim that survives scrutiny is deliberately narrow. More people in a place
-where building is hard does raise prices there — the direction is not in doubt and
-denying it is not a defensible position. The magnitude is the part people get
-wrong in both directions: the systematic review commissioned for the Migration
-Advisory Committee puts immigration at roughly 4–6% of the rise in UK house prices
-over three decades, which is real but nowhere near a dominant cause.
+The claim that survives scrutiny is deliberately narrow, and both sides
+overshoot it in opposite directions.
 
-UK-specific studies are messier still. Several find local house prices *falling*
-where immigrant shares rise, because existing residents move out; there is, at the
-time of writing, no UK study of the effect on rents at all. Anyone quoting a
-confident UK rent number is quoting something that has not been measured.
+- **The direction is not in doubt.** More people in a place where building is
+  hard raises prices there, and the Migration Advisory Committee's review says
+  planning constraints are what decide how much.
+- **The magnitude is modest.** Median and mean estimates imply immigration
+  explains "approximately 4-6% of the total increase in UK house prices over the
+  last three decades".
+- **The review's own summary is that immigration is "unlikely to be a dominant
+  driver" of UK housing costs.**
+- **UK-specific studies are messier still.** Several find local house prices
+  falling where immigrant shares rise, because existing residents move out.
+- **On rents there is no UK study at all.** Anyone quoting a confident UK rent
+  number is quoting something that has not been measured.

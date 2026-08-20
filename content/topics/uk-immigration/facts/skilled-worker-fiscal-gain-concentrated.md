@@ -33,17 +33,28 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2025-12"
 ---
-The complicating sources matter more than they look. In a country running a
-structural deficit, the median resident is also a lifetime net fiscal cost, so
-"does this group pay for itself?" is the wrong question unless you ask it of
-everybody.
+In a country running a structural deficit the median resident is also a lifetime
+net fiscal cost, so "does this group pay for itself?" only means something if you
+ask it of everybody.
 
-The comparator has to be stated, because the answer on dependants flips with it.
-Against the resident population as a whole — mean −£39,000 — dependants look
-roughly level. Against a resident group matched on age, which is the comparison
-the Migration Advisory Committee itself constructs, they fall well short:
-skilled-worker dependants outside health and care contribute +£3,000 against a
-+£107,000 comparator, and health and care dependants −£67,000 against +£84,000.
-Main applicants outside health and care are far ahead of their +£117,000
-comparator on the same basis. The age-matched comparison is the honest one, and
-it is less flattering to dependants than the headline suggests.
+- **The route as a whole is clearly positive.** The Migration Advisory Committee:
+  "Overall, the SW visa route is clearly fiscally positive for the UK." That is
+  close to guaranteed by the design, since main applicants need a job offer above
+  a salary floor.
+- **The whole of the gain comes from main applicants.** Dependants have small
+  lifetime contributions that are negative in aggregate, and within main
+  applicants outside health and care, 72% of the gain comes from the top 30% of
+  earners.
+- **The comparator decides the answer on dependants, so it has to be stated.**
+  Against the resident population as a whole — mean -£39,000 — dependants look
+  roughly level. Against residents matched on age, which is the comparison the
+  MAC itself builds, they fall well short: skilled-worker dependants outside
+  health and care contribute +£3,000 against a +£107,000 comparator, and health
+  and care dependants -£67,000 against +£84,000.
+- **Main applicants beat their own age-matched comparator by a wide margin.**
+  Outside health and care they are far ahead of the +£117,000 age-matched
+  comparator the MAC constructs for them.
+- **Commonly mistaken for a claim about immigration.** It is one route, one
+  cohort, one year, projected over a lifetime, on a route that requires a job
+  offer above a salary floor. The MAC has not modelled the asylum, refugee,
+  student or resettlement routes at all.

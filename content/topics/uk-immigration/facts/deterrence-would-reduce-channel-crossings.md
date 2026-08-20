@@ -19,18 +19,17 @@ sources:
 Nobody knows, and the people most confident on both sides are the ones least
 entitled to be.
 
-Against deterrence: the measured effects of asylum deterrence policies are
-generally small, interviews with asylum seekers repeatedly find they know little
-about destination policy before travelling, and the Home Office's own impact
-assessment conceded its estimates rested on official judgement rather than
-objective evidence. The Rwanda scheme never removed anyone, so it tested nothing.
-
-For deterrence: the Australian comparison is not empty. Arrivals there did
-collapse. The most careful reading is that this was driven by physical
-interception at sea rather than by the offshore processing that gets cited, which
-is a different policy with different legal and practical obstacles in the Channel.
-
-So the claim is not refuted; it is untested at the scale and in the form proposed.
-It is tagged unknown because "we tried something adjacent and it did not work"
-and "a stronger version elsewhere coincided with a collapse in arrivals" are both
-true, and neither settles it.
+- **Against deterrence: the measured effects are small.** The Migration
+  Observatory's reading of the evidence is that "the deterrent effect of asylum
+  policies tends to be small". Interviews with asylum seekers repeatedly find
+  they know little about destination policy before travelling, and the Rwanda
+  scheme removed nobody, so it tested nothing.
+- **For deterrence: the Australian comparison is not empty.** Arrivals there did
+  collapse.
+- **But the mechanism there was probably interception at sea, not offshore
+  processing.** That is a different policy with different legal and practical
+  obstacles in the Channel.
+- **So the claim is untested at the scale and in the form proposed** rather than
+  refuted. It is tagged unknown because "we tried something adjacent and it did
+  not work" and "a stronger version elsewhere coincided with a collapse in
+  arrivals" are both true, and neither settles it.

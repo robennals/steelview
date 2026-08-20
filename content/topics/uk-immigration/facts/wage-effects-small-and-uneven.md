@@ -16,7 +16,16 @@ sources:
     date: "2018-09"
 ---
 This is the narrowed form of "immigration lowers wages", which is not
-established. What is established is a small, unevenly distributed effect. Two
-honest caveats: the best UK evidence predates the post-2021 system and was
-estimated on EEA migration, and "small on average" is compatible with being
-noticeable in a particular occupation in a particular town.
+established as stated.
+
+- **What is established is a small, unevenly distributed effect.** The Migration
+  Advisory Committee found migration "is not a major determinate of the wages of
+  UK-born workers", with some evidence of a negative effect on lower-skilled
+  workers and a positive one on higher-skilled workers.
+- **Employment effects are smaller still and less certain.** The MAC found "no or
+  little impact" on employment and unemployment, and said its own robustness
+  checks left those findings uncertain.
+- **The best UK evidence predates the system in dispute.** It was estimated on
+  EEA free movement before 2018 — no sponsorship, no salary floor.
+- **"Small on average" is compatible with "noticeable here".** A national average
+  does not tell a particular occupation in a particular town what happened to it.

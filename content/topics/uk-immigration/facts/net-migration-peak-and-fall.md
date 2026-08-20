@@ -16,15 +16,21 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-05-21"
 ---
-Net migration is a *balance*, not an arrival count: it is everyone who moves to
-the UK for twelve months or more, minus everyone who leaves for twelve months or
-more. Both halves move. The 2025 figure is low partly because arrivals fell and
-partly because the very large 2022–23 cohort of students and workers is now
-leaving.
+Net migration is a balance, not an arrival count: everyone who moves to the UK
+for twelve months or more, minus everyone who leaves for twelve months or more.
 
-The headline number has also been revised repeatedly — the 2023 peak has been
-reported at various times as roughly 745,000, 906,000 and 944,000 as the ONS
-improved its methods and got better Home Office and HMRC data. Arguments that
-turn on a precise figure for a single year are therefore weaker than they look;
-arguments that turn on the shape of the curve are not, because every revision has
-preserved it.
+- **Both halves move, and right now both are moving the same way.** The 2025
+  figure of 171,000 is low partly because arrivals fell and partly because the
+  very large 2022-23 cohort of students and workers is now leaving.
+- **The peak figure has been revised repeatedly.** The 2023 peak has been
+  published at various times as roughly 745,000, 906,000 and 944,000 as ONS
+  improved its methods and got better Home Office and HMRC data.
+- **So arguments built on one year's precise number are weak, and arguments
+  built on the shape of the curve are not.** Every revision has preserved the
+  shape.
+- **Provisional means provisional.** ONS: "Estimates stay provisional for a year,
+  until we replace them with more complete revised estimates, based on updated
+  data."
+- **Commonly mistaken for a count of arrivals.** A fall in net migration is
+  compatible with arrivals staying high, which is exactly what happened between
+  2023 and 2025.

@@ -27,25 +27,25 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-08-18"
 ---
-This is the narrowest claim the data will carry, and it is worth being clear
-about what it is not. It is not a measurement of offending. Most crimes never
-lead to a conviction, so nobody knows the true offending rate of any group,
-British or foreign. What can be counted is who ends up in the criminal justice
-system, and on that count non-citizens are roughly where their numbers in the
-adult population would put them: 13.1% of cautions and convictions in 2024 and
-12.1% of the prison population in mid-2025, against an estimated 13.5% of adults.
-Because non-citizens are younger than the population as a whole, and offending is
-concentrated among the young, adjusting for age moves the comparison further in
-their favour.
+This is the narrowest claim the data will carry, and what it is not matters as
+much as what it is.
 
-Two things complicate any use of that headline. Nationality-level rates vary a
-great deal — Indians, Pakistanis, French and Chinese citizens are convicted less
-often than their numbers imply, Albanians, Iraqis and Afghans more often — and
-the denominators are poor, because there is no reliable count of how many people
-of each nationality live here. So is the offence mix: non-citizens are
-over-represented in drug and fraud convictions and under-represented in violence.
-
-And the categories are not the ones most arguments use. Naturalised citizens are
-recorded as British, and the statistics carry no country of birth at all, so
-these figures say nothing about people who came to Britain and became citizens,
-or about their children.
+- **It is not a measurement of offending.** Most crimes never lead to a
+  conviction, so nobody knows the true offending rate of any group, British or
+  foreign.
+- **On what can be counted, non-citizens are roughly where their numbers put
+  them.** 13.1% of people cautioned or convicted in 2024 and 12.1% of the prison
+  population in June 2025, against an adult population share the Migration
+  Observatory describes as "roughly similar".
+- **Adjusting for age moves the comparison further in their favour**, because
+  non-citizens are younger and offending is concentrated among the young.
+- **Nationality-level rates vary a great deal, and the denominators are poor.**
+  The most common non-UK nationalities in prison at the end of 2025 were
+  Albanian, Irish and Polish; the Migration Observatory says comparing rates
+  accurately is difficult because of data gaps.
+- **So does the offence mix.** Non-citizens are over-represented in drug
+  convictions and under-represented in violent ones.
+- **The categories are not the ones most arguments use.** Naturalised citizens
+  are recorded as British and the statistics carry no country of birth at all, so
+  these figures say nothing about people who came to Britain and became citizens,
+  or about their children.

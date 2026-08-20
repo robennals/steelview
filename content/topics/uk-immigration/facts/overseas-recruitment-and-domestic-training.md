@@ -22,25 +22,25 @@ sources:
     publisher: "HM Government"
     date: "2025-05-12"
 ---
-This fact is deliberately narrow, and the narrowness is the point. What has been
-measured, has been measured well: the two studies the Migration Advisory
-Committee commissioned looked for an effect of migration on the training of
-UK-born workers and did not find a negative one, and one found a positive one.
-Anyone arguing that the link is established has to answer that.
+The narrowness of this fact is the point: what has been measured has been
+measured well, and it does not cover the system now in dispute.
 
-What those studies cannot do is settle the argument now being had. They were
-estimated on EEA free movement before 2018 — no sponsorship, no salary floor, no
-employer able to import a trained adult at a price the state had set. That is
-not the system in dispute. Nobody has yet evaluated employer training or capital
-investment under the post-2021 sponsored routes, so on the mechanism people
-actually argue about there is no direct evidence either way.
-
-The government's 2025 White Paper reads the same period the opposite way, from a
-co-movement rather than a study: employer training expenditure per employee has
-fallen for two decades, economic inactivity rose, and overseas recruitment
-quadrupled in the same window. Co-movement is not causation — training was
-falling before the surge and kept falling in sectors with almost no migrant
-labour — but the co-movement is real and the mechanism is not silly. That open
-remainder is a crux, not a fact, and it lives in
-*Does access to sponsored overseas labour stop employers investing in British
-workers and equipment?*
+- **No negative effect on training was found, and one study found a positive
+  one.** The Migration Advisory Committee commissioned the research and reported
+  "no evidence that migration has had a negative impact on the training of the
+  UK-born workforce".
+- **On investment there is not enough evidence to conclude anything.** The MAC's
+  own words: "extremely limited" and "not possible to draw robust conclusions".
+- **Those studies were estimated on pre-2018 EEA free movement.** No sponsorship,
+  no salary floor, no employer able to import a trained adult at a price the
+  state had set. Nobody has evaluated employer training under the post-2021
+  sponsored routes.
+- **The government reads the same period the other way, from co-movement rather
+  than a study.** Its 2025 White Paper: "Economic migration shot up while
+  training of the domestic workforce has fallen, and lower skilled migration
+  soared while the proportion of UK residents in work fell."
+- **Co-movement is not causation, and the mechanism is not silly either.**
+  Training was falling before the surge and kept falling in sectors with almost
+  no migrant labour. That open remainder is a crux, not a fact, and it lives in
+  *Does access to sponsored overseas labour stop employers investing in British
+  workers and equipment?*

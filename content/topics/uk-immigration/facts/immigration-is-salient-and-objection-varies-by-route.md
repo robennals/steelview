@@ -57,43 +57,30 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2025-01-24"
 ---
-This is the part of British public opinion that survives every reasonable way of
-asking, and it is worth stating separately from the parts that do not.
+This is the part of British opinion that survives every reasonable way of
+asking. What does not survive is kept separate, in *The British public wants
+immigration reduced*.
 
-Salience is not in doubt. Immigration went from being named as an important issue
-by 6% of people in April 2022 to 38% in October 2024, the first time it had been
-a top issue since 2016. On direction, roughly half the public says numbers should
-come down when asked directly — 48% in Ipsos's 2023 series, 52% in Kantar's, 46%
-in Ipsos's February 2026 poll — and that share has moved within a fairly narrow
-band for three years.
-
-The most robust finding is the least quoted: the public does not hold one view of
-"immigration" but sorts sharply by route. In February 2026, 67% thought asylum
-numbers too high, 56% family migration, 43% work and 39% study. Asked about
-particular jobs rather than skill categories, majorities favour making it *easier*
-for health and care workers to come. Any claim about what the public wants that
-does not survive being asked route by route is a claim about a poll question
-rather than about the public.
-
-Asking which routes should be made *easier* — a different question from "too
-high" — produces the same shape and some results neither side expects. In April
-2023, 37% wanted migration made more difficult for asylum seekers against 30% for
-Afghans, 21% for Hong Kongers and 14% for Ukrainians. Preferences on students, EU
-nationals and family visas were net liberal: more people wanted those made easier
-than harder. And asked about particular jobs rather than skill bands, 54% favoured
-easing migration for care workers, 45% for agricultural workers and 38% for
-construction workers — against 27% for financial-sector workers, who are the
-high-skilled group a points system is built to prefer. The public is not sorting by
-skill. It is sorting by whether it thinks the work needs doing.
-
-Two caveats on that survey. Those data are from April 2023 and are better evidence
-for the shape of preferences than for their current level. And the briefing is
-internally inconsistent on one figure: its summary says "over a third of people
-(36%)" want low-skilled worker migration made more difficult while its body text
-says "over a quarter" of the same question. This page quotes the body text, and a
-reader following the link should know the discrepancy is in the source.
-
-What this fact does not establish — whether that adds up to a settled majority
-demand for lower immigration overall, and whether salience measures wanting less
-or wanting it to work — is a separate and messier matter, and it is kept
-separate: see *The British public wants immigration reduced*.
+- **Salience is not in doubt.** Immigration went from being named as an important
+  issue by 6% of people in April 2022 to 38% in October 2024 — a top issue for
+  the first time since 2016.
+- **Roughly half want lower numbers, and that has been stable for three years.**
+  48% in Ipsos's 2023 series, 52% in Kantar's, 46% in Ipsos's February 2026 poll.
+- **The public does not hold one view of "immigration"; it sorts by route.** In
+  February 2026, 67% thought asylum numbers too high, 56% family migration, 43%
+  work and 39% study.
+- **Asked which routes should be made easier — a different question — the shape
+  repeats.** In April 2023, 37% wanted migration made more difficult for asylum
+  seekers, against 30% for Afghans, 21% for Hong Kongers and 14% for Ukrainians.
+  Students, EU nationals and family visas were net liberal.
+- **And the public is not sorting by skill.** 54% favoured easing migration for
+  care workers, 45% for agricultural workers and 38% for construction workers —
+  against 27% for financial-sector workers, the high-skilled group a points
+  system is built to prefer. It is sorting by whether it thinks the work needs
+  doing.
+- **How confident to be.** The route-by-route data are from April 2023 and are
+  better evidence for the shape of preferences than their current level.
+- **A discrepancy in the source, reproduced rather than smoothed.** The briefing's
+  summary says "over a third of people (36%)" want low-skilled worker migration
+  made more difficult while its body text says "over a quarter" of the same
+  question. This page quotes the body text.

@@ -22,21 +22,20 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-08-18"
 ---
-The law says the Home Secretary must pursue deportation of a foreign national
-sentenced to twelve months or more. The stock of people to whom that duty applies
-and who are nonetheless living here — not in prison, not in detention, and
-without any grant of leave to remain — has grown by about 1,600 a year since the
-end of 2022.
+The law requires the Home Secretary to pursue deportation of a foreign national
+sentenced to twelve months or more. This is a fact about the gap between that
+rule and its execution.
 
-This is a fact about a gap between a rule and its execution, not about crime
-rates, and it is worth separating from the arguments it usually gets attached to.
-Removals themselves went *up* over the same period, to 5,850 in the year to March
-2026; the stock grew anyway, because releases from prison outran them. Some of
-the shortfall is legal — successful human rights appeals run at a few hundred a
-year — and much of it is practical, because some countries will not take their
-nationals back on any terms.
-
-The government does not publish the share of foreign national offenders who are
-actually removed, which is why this fact is about a stock and a growth rate
-rather than a percentage. That absence is itself part of what people are
-complaining about.
+- **The stock of deportable offenders living in the community grew 36% between
+  the end of 2022 and March 2026** — about 1,600 people a year who are neither in
+  prison nor detention and have no grant of leave to remain.
+- **Removals went up over the same period, to 5,850 in the year to March 2026.**
+  The stock grew anyway, because releases from prison outran removals.
+- **Some of the shortfall is legal and much of it is practical.** Successful human
+  rights appeals run at a few hundred a year; some countries will not take their
+  nationals back on any terms.
+- **The share actually removed is not published.** That is why this is a stock and
+  a growth rate rather than a percentage — and the absence is itself part of what
+  people are complaining about.
+- **This is not a fact about crime rates.** It sits next to them in argument and
+  is worth keeping apart from them.

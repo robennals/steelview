@@ -31,7 +31,7 @@ sources:
     title: "Immigration, emigration and net migration into the UK, 1964 - 2025 (data download)"
     url: https://www.ons.gov.uk/visualisations/dvc3417/line-chart/datadownload.xlsx
     publisher: "Office for National Statistics"
-    date: "2025-11-18"
+    date: "2026-05-21"
   - stance: complicates
     quote: "Net migration was 171,000 in 2025, lower than the levels seen during the 2010s and a sharp decline from the unusually high levels in 2022 and 2023. In 2025, 67% of non-EU immigration was for work and study purposes."
     title: "Net migration to the UK"
@@ -429,27 +429,33 @@ series:
           - { period: "2024", value: 0.48 }
           - { period: "2025", value: 0.25 }
 ---
-This is the number every other number on this page sits inside, and it is the one
-that is almost never given with a baseline. The Office for National Statistics has
-measured long-term international migration for over sixty years and publishes the
-whole series back to 1964. Averaged over that series, gross immigration ran at
-about 325,000 a year in the 1990s, about 547,000 in the 2000s and about 722,000 in
-the 2010s. It reached 1,469,000 in the year to March 2023 and was 813,000 in 2025.
-The decade figures are simple means of the ONS series, taken from the data
-download attached to the article cited above rather than from any sentence in it.
+Every other number on this page sits inside this one, and it is almost never
+given with a baseline. The Office for National Statistics has measured migration
+since 1964 and publishes the whole run, so "compared to what?" has an answer.
 
-**The honest headline is two-sided, and that is the point.** On gross immigration,
-2025 is far above any historical norm even after two years of falling: 813,000 is
-higher than every year in the series before 2018, and about two and a half times
-the 1990s average. On net migration — arrivals minus departures — 2025 is not
-unusual at all: 171,000 is below the 2010s average of about 240,000, though still
-close to three times the 1990s average of about 62,000. Whichever measure
-someone picks decides which sentence they get, and the argument is frequently
-conducted by picking one and not saying so.
-
-Two limits. The ONS changed its method in June 2021 and says comparisons across
-that break should be treated with caution — nothing in the 1990s-versus-now
-comparison depends on year-to-year precision around 2021, but the caveat travels
-with the series. And 2025 is not a record: it is well down from the 2022–23 peak
-and should not be called unprecedented. What it is, is higher than any year before
-2018.
+- **Gross immigration is far above any historical norm, even after two years of
+  falling.** 813,000 people moved to the UK for a year or more in 2025, down from
+  the peak of 1,469,000 in the year to March 2023. It is still higher than every
+  year in the series before 2018. Averaged over the chart's own data, the 1990s
+  ran at about 325,000 a year.
+- **Net migration is not unusual at all.** Net migration was 171,000 in 2025 —
+  "lower than the levels seen during the 2010s", in the Migration Observatory's
+  words, and a sharp fall from 2022 and 2023.
+- **Which of those two you mean decides which sentence you get.** Gross is at a
+  historic high; net is back to something like a 2010s normal. Both are true, and
+  arguments are routinely conducted by picking one and not saying which.
+- **Britain spent fifteen straight years losing people.** In every year from 1964
+  to 1978 more people left than arrived. ONS: "From the late 1960s to the early
+  1980s, net migration was consistently negative". The reversal came in the late
+  1990s.
+- **The share-of-population reading is on the chart because the count alone is
+  not enough.** The UK population grew from 54.0 million to 69.5 million over the
+  series, and immigration is part of why — so dividing by it understates the
+  change rather than explaining it away. Both readings are shown; neither rescues
+  either side.
+- **How confident to be.** ONS changed method in June 2021 and says comparisons
+  across that break "should be treated with caution". Nothing in the
+  1990s-versus-now comparison turns on year-to-year precision around 2021, but
+  the caveat travels with the series.
+- **Not a record.** 2025 is well down from the 2022-23 peak. What it is, is
+  higher than any year before 2018.

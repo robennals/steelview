@@ -10,8 +10,14 @@ sources:
     publisher: "Home Office"
     date: "2026-05-21"
 ---
-One rule change, made in February 2022 and largely reversed from 2024, accounts
-for a large share of both the rise and the fall in the headline number. The
-dependants of care workers were also admitted until early 2024 and then were not.
-This is the clearest evidence available that UK net migration in this period was
-policy-driven and policy-reversible.
+- **One rule change accounts for much of both the rise and the fall in the
+  headline number.** Care workers were made eligible for skilled work visas in
+  February 2022; grants to main applicants in caring personal service occupations
+  went from about 108,000 a year to 1,400.
+- **Dependants followed the same curve.** They were admitted until early 2024 and
+  then were not.
+- **Skilled Worker visas overall fell 76% from their December 2023 peak**, to
+  111,000 in the latest year, and the fall is almost entirely this one route.
+- **This is the clearest available evidence that the period's net migration was
+  policy-driven and policy-reversible.** Nothing about the demand for care changed
+  between 2022 and 2025; the rules did.

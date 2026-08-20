@@ -15,7 +15,14 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-05-15"
 ---
-Note what this does and does not show. It establishes present dependence — the
-services would not run tomorrow without these workers. It does not by itself
-establish that the dependence is necessary, because a shortage at a given wage is
-not the same as a shortage. That distinction is where the argument actually is.
+- **A quarter of the jobs held by recent non-EU migrants are in health and
+  care.** That share was 22% in February 2022 and rose sharply after care workers
+  became eligible for Skilled Worker visas; 161,000 such visas had gone to non-EU
+  care workers by the end of 2025.
+- **Care and health professional roles have the highest non-EU-born shares of any
+  occupation** in the UK labour market.
+- **This establishes present dependence, and only that.** The services would not
+  run tomorrow without these workers.
+- **It does not establish that the dependence is necessary.** A shortage at a
+  given wage is not the same thing as a shortage, and that distinction is where
+  the argument actually is.
