@@ -99,3 +99,10 @@ editorial judgement, and a checklist to run before opening a PR.
 Then add a new directory under `content/topics/`, following the structure
 above, and run `pnpm build` and `pnpm check:figures` to check the new content
 validates.
+
+## Licence
+
+Code is MIT — see [`LICENSE`](LICENSE). Editorial content under `content/`
+is CC BY 4.0 — see [`content/LICENSE`](content/LICENSE), which also states
+the boundary: the quoted source material inside each fact is not Steelview's
+to license and carries its own terms.

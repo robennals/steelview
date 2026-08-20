@@ -252,6 +252,58 @@ the two authors skip. Do not skip them.
 
 ## Sourcing
 
+### What needs a source
+
+The sourcing rule is about the world, not about sentences. It does not mean
+every assertion anywhere needs a citation — it means every claim about the
+world that a reader could reasonably challenge needs one.
+
+**The test is world versus logic.** Ask what kind of statement it is:
+
+- **Analytic** — logic, definitions, or arithmetic on figures already cited
+  elsewhere on the page. It does not need its own source, because there is
+  nothing to check beyond the reasoning itself. If the reasoning is
+  arithmetic, show the derivation where you make the claim (as with the
+  share-of-population reading above) so a reader can follow it rather than
+  take it on trust.
+- **Empirical** — a claim about the world that could be false: a number, a
+  trend, a fact about what has or has not been studied, a state of affairs. If
+  a reader could reasonably ask "is that actually true? what is the number?",
+  it needs a real fact behind it, not a sentence that merely sounds
+  reasonable.
+
+Three worked examples, all real cases from a style pass on `uk-immigration`:
+
+- *"A shortage at a given wage is not the same thing as a shortage."*
+  Analytic — it is a definitional point about what the word "shortage" means
+  once a price is specified, true by the meaning of the terms. It stands on
+  its own.
+- *"Everyone uses the NHS from day one, whatever they pay in."* Looks like
+  background colour, but it is empirical and genuinely contestable — the
+  immigration health surcharge means some new arrivals do pay in specifically
+  for NHS access before using it. Needs a fact.
+- *"No UK study of the effect on rents exists."* Empirical: it is a claim
+  about the state of a literature, not a logical point, and literatures move
+  — a claim like this goes stale the day someone publishes the study. It
+  needs a source, and if no source can be found to support it as current, it
+  goes.
+
+**The failure runs in both directions.** An empirical claim phrased as though
+it were common sense is exactly what this rule exists to catch — "obviously
+most people who come here stay" is a claim about actual retention rates
+wearing the grammar of a truism. Sounding self-evident is not the same as
+being analytic; check what kind of statement it is, not how confident it
+sounds.
+
+**Why the line matters.** If every sentence needs a citation, two things go
+wrong, both against the point of the sourcing rule: authors pad prose with
+links that carry no real evidentiary weight just to clear the bar, or they
+stop writing the connective reasoning — "and therefore", "which is not the
+same as" — that makes a fact comprehensible, because writing it risks
+tripping the same rule. Either way the sourcing gate stops meaning anything:
+a page where everything has a citation, useful or not, teaches a reader to
+stop checking them.
+
 **Nothing should be presented as a fact without a quoted source.** Every fact
 carries at least one source — the build requires it whatever the status,
 because a `complicated` or `unknown` fact is making a claim about the
@@ -640,13 +692,18 @@ viewpoint is the strongest version of itself, that concessions read in the
 flow, or that the prose is free of the six patterns above. Those are caught
 in review or not at all.
 
-Two rules in particular have no field behind them today:
+**Not yet implemented.** Two things this document describes have no field or
+check behind them today — do not rely on the build to catch either:
 
-- **Counter-points are not a distinct field.** A counter-point is a
-  supporting fact whose content cuts against its parent; the schema has only
-  `supports`, and nothing distinguishes a corroborating child from a
-  contradicting one. Whether the fact detail should give counter-points their
-  own section is an open design question, not shipped behaviour.
+- **Counter-points (`qualifies`) are not a distinct field.** This document
+  describes a counter-point as a supporting fact that cuts *against* its
+  parent rather than for it. There is no `qualifies` field, or any field, that
+  says so. The schema has only `supports`, and nothing in it distinguishes a
+  corroborating child from a contradicting one — today a contradicting fact
+  can only be expressed as a plain `supports`, identically to a corroborating
+  one, and neither the build nor the rendered page can tell them apart. Author
+  the body so the "cuts against" relationship is clear in prose, because
+  nothing else will surface it. Planned; not shipped.
 - **A numeric fact without a series is an advisory, not an error.**
   `check:figures` reports it and exits 0.
 
@@ -745,7 +802,9 @@ covers the real distribution of opinion is readers saying what is missing,
 and that loop dies the first time a comment is ignored. The reply and badge
 UI ship in a later milestone; the commitment holds now.
 
-**Licensing.** Content in `content/` is CC BY 4.0. Quoted sources carry their
-own terms — quotation for this purpose is fair dealing, and the quote,
-publisher, date and URL on every source are what make that defensible.
-Reproduce, do not relicense.
+**Licensing.** Content in `content/` is CC BY 4.0 — see
+[`content/LICENSE`](LICENSE), attributed to the project (no bylines), not to
+an author. Quoted sources carry their own terms — quotation for this purpose
+is fair dealing, and the quote, publisher, date and URL on every source are
+what make that defensible. Reproduce, do not relicense. `LICENSE` at the repo
+root covers the code separately (MIT).

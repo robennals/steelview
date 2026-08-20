@@ -152,8 +152,8 @@ is precisely the work this page exists to do for them.
   reader benefit is a two-level structure, not a taxonomy.
 
 The target shape is a headline list a reader can hold in their head — roughly 8
-to 12 items on a topic the size of uk-immigration, which has 11 headline facts
-and 17 supporting ones.
+to 12 items on a topic the size of uk-immigration, which has 12 headline facts
+and 20 supporting ones.
 
 **At least one source, whatever the status.** A `complicated` or `unknown`
 fact is making a claim about the evidence just as firmly as a `well-supported`

@@ -1,0 +1,61 @@
+Content licence
+================
+
+This covers the editorial content under `content/` — the claims, bodies,
+viewpoints, principles and cruxes that Steelview writes. It does not cover
+the code, which is MIT-licensed; see the `LICENSE` file at the repository
+root.
+
+Steelview's own writing
+------------------------
+
+The text Steelview itself writes — every fact's claim and body, every
+viewpoint's argument, every principle and every crux — is licensed under
+
+    Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Deed:       https://creativecommons.org/licenses/by/4.0/
+Legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+You may copy, redistribute, remix, and build on this material for any
+purpose, including commercially, as long as you give attribution.
+
+**Attribution.** Because Steelview's editorial policy is deliberately
+bylineless — no individual writer is credited for a viewpoint, so that every
+side can be held to the same standard — attribution is to the project, not
+to a person. Credit it as:
+
+    Steelview (https://steelview.vercel.app/topics/<topic-slug>)
+
+substituting the slug of the topic you are reusing, e.g. for the UK
+immigration topic:
+
+    Steelview (https://steelview.vercel.app/topics/uk-immigration)
+
+What this licence does NOT cover
+---------------------------------
+
+**The quoted source material is not Steelview's to license.** Every fact on
+this site is built on verbatim quotes from third parties — the Office for
+National Statistics, the Home Office, the Migration Advisory Committee, the
+National Audit Office, the Migration Observatory, Ipsos, and others. Those
+quotes are reproduced under quotation for the purpose of letting a reader
+check a claim against its source; they are not Steelview's work, and CC BY
+4.0 above applies only to Steelview's own surrounding text, not to the
+quotations embedded in it.
+
+Each quote carries its own terms, set by its own publisher, and those terms
+vary: UK government statistical material (ONS, Home Office, NAO) is
+generally published under the Open Government Licence, but other cited
+sources — the Migration Advisory Committee, the Migration Observatory,
+Ipsos, and any source added to a future topic — set their own terms, which
+may differ. **Do not assume a quote is available under CC BY 4.0, or under
+the Open Government Licence, or under any single licence.** Every source
+record on this site (`stance`, `quote`, `title`, `url`, `publisher`, `date`)
+names exactly where the quote came from — check the terms posted at that
+`url` before reusing the quoted material itself.
+
+In short: reproduce Steelview's own claims, bodies, viewpoints, principles
+and cruxes under CC BY 4.0 with attribution to the project as above; for any
+quoted figure or sentence inside them, follow the link to the source and
+respect that source's own licence.

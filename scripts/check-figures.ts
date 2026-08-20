@@ -24,10 +24,10 @@
  *
  * Second, advisory, output: the owner wants a fact carrying a number to show a
  * time series wherever the source publishes one, because a single year is the
- * easiest way to give a misleading picture honestly. The `series` field does
- * not exist yet (it is a later round), so the advisory reads the raw
- * frontmatter for it and reports every numeric fact that lacks one. Advisories
- * never fail the build.
+ * easiest way to give a misleading picture honestly. The `series` field exists
+ * (`lib/content/schema.ts`) but is optional — some facts are point-in-time and
+ * have nothing to chart — so this reads the raw frontmatter for it and reports
+ * every numeric fact that lacks one. Advisories never fail the build.
  *
  * Usage: `pnpm check:figures`. Exit 1 on unmatched figures, 0 otherwise.
  */
@@ -98,9 +98,9 @@ async function auditTopic(slug: string): Promise<{ unmatched: Finding[]; advisor
       }
     }
 
-    // Advisory: a numeric claim with no time series behind it. `series` is a
-    // later round; until it exists this reports every numeric fact, which is
-    // the intended starting point rather than a bug.
+    // Advisory: a numeric claim with no time series behind it. `series` is
+    // optional on a fact, so this reports every numeric fact that omits it —
+    // an advisory, not an error, since some facts are point-in-time.
     if (item.kind === 'fact') {
       const claim = typeof item.data.claim === 'string' ? item.data.claim : '';
       const claimFigures = figuresIn(claim);
