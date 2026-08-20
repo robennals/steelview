@@ -90,10 +90,12 @@ source on the same topic. It runs in CI.
 
 ## Adding a topic
 
-Add a new directory under `content/topics/`, following the structure above.
-The fact-status rubric (`well-supported` / `contested` / `not-supported` /
-`complicated` / `unknown`) is the normative editorial standard for what
-belongs in each status — it's detailed, so it lives in
-[`docs/superpowers/specs/2026-08-18-steelview-design.md`](docs/superpowers/specs/2026-08-18-steelview-design.md)
-rather than here. Run `pnpm build` to check the new content validates before
-opening a PR.
+**Read [`content/AUTHORING.md`](content/AUTHORING.md) first.** It is the
+authoring guide: the fact-status rubric, how to phrase a claim and its body,
+the sourcing and time-series rules, what makes a viewpoint a steelman, the
+prose patterns to avoid, which rules the build enforces and which are
+editorial judgement, and a checklist to run before opening a PR.
+
+Then add a new directory under `content/topics/`, following the structure
+above, and run `pnpm build` and `pnpm check:figures` to check the new content
+validates.
