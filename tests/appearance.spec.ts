@@ -24,6 +24,9 @@ test('every fact status is announced in text, not colour alone', async ({ page }
     page.locator('#fact-net-migration-peak-and-fall').getByText('Well supported', { exact: true })
   ).toBeVisible();
 
+  // Facts open in a modal panel over the page, so the panel has to be closed
+  // before the page behind it can be reached again.
+  await page.keyboard.press('Escape');
   await page.locator('details.sv-more > summary').click();
   await page
     .locator('#fact-immigration-is-salient-and-objection-varies-by-route > summary')

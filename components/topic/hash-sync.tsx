@@ -1,6 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
+import { anchorFor } from '@/lib/content/types';
+
+/** Fact anchors are handled by the fact panel, not here. */
+const FACT_PREFIX = anchorFor('fact', '');
 
 /**
  * Opens the disclosure named by the URL hash, and every disclosure containing
@@ -27,6 +31,12 @@ export function HashSync() {
   useEffect(() => {
     const openById = (id: string, scroll: boolean) => {
       if (!id) return;
+      // Facts belong to components/topic/fact-modal.tsx, which opens them in
+      // the shared panel instead. Both scripts reacting to the same anchor
+      // would mean expanding the fact in the list on the way to moving it out
+      // of the list — one visible action too many, and a scroll to a row that
+      // is about to be covered by the panel.
+      if (id.startsWith(FACT_PREFIX)) return;
       const el = document.getElementById(id);
       if (!(el instanceof HTMLDetailsElement)) return;
       // The Facts section collapses everything past the first few into a

@@ -355,3 +355,78 @@ test('every error message names the offending item', () => {
   t.viewpoints[0].citesFacts = ['nope'];
   for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |principle |crux /);
 });
+
+test('rule 12: a body linking to a fact that does not exist is reported', () => {
+  const t = soundTopic();
+  t.cruxes[0].body = 'As [shown here](#fact-nope), the sides differ.';
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('crux timing') && e.includes('#fact-nope')),
+    errors.join('\n')
+  );
+});
+
+test('rule 12: a dead citation in a fact body is reported too', () => {
+  const t = soundTopic();
+  t.facts[0].body = 'Compare [this](#fact-nope).';
+  assert.ok(validateTopic(t).some((e) => e.includes('fact alpha') && e.includes('#fact-nope')));
+});
+
+test('rule 12: a citation of a real fact is accepted', () => {
+  const t = soundTopic();
+  t.principles[0].body = 'See [alpha](#fact-alpha).';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('rule 13: a viewpoint may cite a fact it lists', () => {
+  const t = soundTopic();
+  t.viewpoints[0].body = 'It rests on [alpha](#fact-alpha) and concedes [gamma](#fact-gamma).';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('rule 13: a viewpoint may cite a fact it only sets aside', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta', status: 'complicated' }));
+  t.viewpoints[0].setsAside = ['delta'];
+  t.viewpoints[0].body = 'It does not lean on [delta](#fact-delta).';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('rule 13: a viewpoint may not cite a fact missing from all three lists', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta' }));
+  t.viewpoints[1].setsAside = ['delta']; // referenced somewhere, so not an orphan
+  t.viewpoints[0].body = 'It leans on [delta](#fact-delta).';
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('viewpoint one') && e.includes('delta') && e.includes('citesFacts')),
+    errors.join('\n')
+  );
+});
+
+test('rule 13: citing a supporting fact counts when its parent is listed', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'alpha-detail', supports: 'alpha' }));
+  t.viewpoints[0].body = 'The detail is [here](#fact-alpha-detail).';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('rule 13: citing a supporting fact whose parent is unlisted is reported', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta' }));
+  t.facts.push(fact({ id: 'delta-detail', supports: 'delta' }));
+  t.viewpoints[1].setsAside = ['delta'];
+  t.viewpoints[0].body = 'The detail is [here](#fact-delta-detail).';
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('viewpoint one') && e.includes('delta-detail') && e.includes('"delta"')),
+    errors.join('\n')
+  );
+});
+
+test('rule 13 does not apply to fact, principle or crux bodies', () => {
+  const t = soundTopic();
+  t.facts[0].body = 'Compare [gamma](#fact-gamma).';
+  t.cruxes[0].body = 'Compare [alpha](#fact-alpha).';
+  assert.deepEqual(validateTopic(t), []);
+});

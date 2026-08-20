@@ -14,27 +14,29 @@ import { test, expect } from '@playwright/test';
 // derived diversity ranking (two viewpoints rank it first) and so renders
 // outside the Facts collapse.
 
-// `non-citizens-share-of-convictions-and-prisons` sits past the third headline
-// fact, so it is inside the collapsed group: the anchor has to reveal the
-// group as well as open the fact, or the link scrolls to something the reader
-// cannot see.
-test('loading a fact anchor opens that fact, and the group hiding it', async ({ page }) => {
+// A fact anchor now opens the shared fact panel (components/topic/fact-modal.tsx)
+// rather than expanding the row in place: the fact element is moved into the
+// dialog, so it is still the one element carrying that anchor. The collapsed
+// Facts group no longer has to be revealed to show a fact behind it — the
+// panel is above the whole page.
+test('loading a fact anchor opens that fact in the panel', async ({ page }) => {
   const anchor = '#fact-non-citizens-share-of-convictions-and-prisons';
   await page.goto(`/topics/uk-immigration${anchor}`);
-  await expect(page.locator('details.sv-more')).toHaveAttribute('open', '');
+  await expect(page.locator(`dialog.sv-modal ${anchor}`)).toBeVisible();
   await expect(page.locator(anchor)).toHaveAttribute('open', '');
-  await expect(page.locator(anchor)).toBeVisible();
   await expect(
     page.locator(anchor).getByText('It is not a measurement of offending', { exact: false })
   ).toBeVisible();
 });
 
-// A supporting fact's `#fact-<id>` anchor is a permanent address, and it now
-// sits inside the headline fact it supports — so the anchor has to open that
-// parent too.
+// A supporting fact's `#fact-<id>` anchor is a permanent address, and it sits
+// inside the headline fact it supports — so the anchor opens that parent's
+// panel with the supporting fact expanded inside it.
 test('loading a supporting fact anchor opens the headline fact holding it', async ({ page }) => {
   await page.goto('/topics/uk-immigration#fact-net-migration-peak-and-fall');
-  await expect(page.locator('#fact-immigration-against-the-long-run')).toHaveAttribute('open', '');
+  await expect(
+    page.locator('dialog.sv-modal #fact-immigration-against-the-long-run')
+  ).toHaveAttribute('open', '');
   await expect(page.locator('#fact-net-migration-peak-and-fall')).toHaveAttribute('open', '');
   await expect(page.locator('#fact-net-migration-peak-and-fall')).toBeVisible();
   await expect(
@@ -57,9 +59,9 @@ test('clicking a cross-reference chip opens the fact it points at', async ({ pag
     'open',
     ''
   );
-  // The cited fact is also inside the collapsed group, so following the chip
-  // has to reveal the group too.
-  await expect(page.locator('#fact-health-and-care-relies-on-migrant-workers')).toBeVisible();
+  await expect(
+    page.locator('dialog.sv-modal #fact-health-and-care-relies-on-migrant-workers')
+  ).toBeVisible();
 });
 
 test('other items stay closed', async ({ page }) => {
@@ -67,10 +69,28 @@ test('other items stay closed', async ({ page }) => {
   await expect(page.locator('#fact-public-opinion-on-immigration')).not.toHaveAttribute('open', '');
 });
 
+// Anchors are permanent addresses and must keep working with no JavaScript to
+// interpret them: the fact is still an element with that id, in the document,
+// and the browser's own fragment navigation takes the reader to it.
+test.describe('with JavaScript disabled', () => {
+  test.use({ javaScriptEnabled: false });
+
+  test('a fact anchor still resolves to the fact in the list', async ({ page }) => {
+    const anchor = '#fact-immigration-against-the-long-run';
+    await page.goto(`/topics/uk-immigration${anchor}`);
+    await expect(page.locator(anchor)).toHaveCount(1);
+    await expect(page.locator(anchor)).toBeVisible();
+    await expect(page.locator('dialog.sv-modal')).toBeHidden();
+    // And it opens where it stands, with a click on its summary.
+    await page.locator(`${anchor} > summary`).click();
+    await expect(page.locator(anchor)).toHaveAttribute('open', '');
+  });
+});
+
 // A page that works without JavaScript must not be destroyed by its
 // JavaScript: `decodeURIComponent` throws on a malformed escape like `%zz`,
-// and an uncaught throw in hash-sync's mount effect would otherwise replace
-// the already-delivered static HTML with Next's default error boundary.
+// and an uncaught throw in a mount effect would otherwise replace the
+// already-delivered static HTML with Next's default error boundary.
 test('a malformed hash does not break the page', async ({ page }) => {
   await page.goto('/topics/uk-immigration#%zz');
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();

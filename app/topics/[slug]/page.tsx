@@ -2,6 +2,7 @@ import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts, supportingFactsByParent } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { HashSync } from '@/components/topic/hash-sync';
+import { FactModal } from '@/components/topic/fact-modal';
 import { FactItem } from '@/components/topic/fact-item';
 import { ViewpointItem } from '@/components/topic/viewpoint-item';
 import { PrincipleItem } from '@/components/topic/principle-item';
@@ -195,6 +196,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   return (
     <main className="sv-wrap">
       <HashSync />
+      <FactModal />
       <header className="sv-pagehead">
         <h1 className="sv-title">{topic.title}</h1>
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>

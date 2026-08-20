@@ -1144,6 +1144,226 @@
     max-width: var(--measure);
     text-wrap: pretty;
   }
+
+  /* ------------------------------------------------------ fact citations */
+
+  /* An inline citation: prose saying, at the point of use, that this clause
+     is standing on a fact the page will show you. It is the page's main
+     honesty signal, so it is deliberately louder than a footnote — the text
+     keeps full ink strength for readability and the accent rule under it
+     carries the signal, closed by the same filled disc the fact statuses use
+     for "the evidence is solid". */
+  .prose-body a.sv-cite {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 0.18em;
+    border-radius: 2px;
+    transition: background-color 120ms ease, box-shadow 120ms ease;
+  }
+
+  .prose-body a.sv-cite::after {
+    content: "";
+    display: inline-block;
+    width: 0.34em;
+    height: 0.34em;
+    margin-left: 0.18em;
+    border-radius: 999px;
+    background: var(--accent);
+    vertical-align: 0.42em;
+  }
+
+  .prose-body a.sv-cite:hover,
+  .prose-body a.sv-cite:focus-visible {
+    background-color: var(--accent-wash);
+    box-shadow: 0 0 0 0.18em var(--accent-wash);
+  }
+
+  /* --------------------------------------------------------- fact panel */
+
+  /* The row the panel is currently holding. Keeping its height means the
+     list behind the panel does not reflow while a fact is borrowed, so
+     closing puts the reader back exactly where they were. */
+  .sv-fact-placeholder {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Background scroll lock. Chrome inerts the page behind a modal dialog but
+     does not stop it scrolling, and on a phone that means the panel and the
+     page moving at once. */
+  .sv-modal-open,
+  .sv-modal-open body {
+    overflow: hidden;
+  }
+
+  .sv-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  /* Flex rather than grid so the panel's `max-height: 100%` resolves against
+     the dialog's own viewport-sized box: in an auto-sized grid track the
+     percentage has nothing definite to measure against, and the panel grows
+     to its content instead of scrolling inside itself. */
+  .sv-modal[open] {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .sv-modal::backdrop {
+    background: rgb(0 0 0 / 0.66);
+    backdrop-filter: blur(2px);
+  }
+
+  /* On a phone the panel is the screen: a fact can run to several hundred
+     words plus quotes plus nested supporting facts, and a centred box with
+     margins would spend the width that prose needs. */
+  .sv-modal__panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background: var(--paper);
+    animation: sv-modal-in 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  @media (min-width: 40rem) {
+    .sv-modal {
+      padding: 2.5rem 1.5rem;
+    }
+
+    .sv-modal[open] {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sv-modal__panel {
+      width: min(42rem, 100%);
+      height: auto;
+      border: 1px solid var(--ink);
+      box-shadow: 0 30px 70px -24px rgb(0 0 0 / 0.55);
+    }
+  }
+
+  @keyframes sv-modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+  }
+
+  /* The bar never scrolls away: on a long fact the close affordance has to
+     be reachable without scrolling back to the top. */
+  .sv-modal__bar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0.75rem 0.35rem 1.4rem;
+    padding-top: max(0.35rem, env(safe-area-inset-top));
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-raised);
+  }
+
+  .sv-modal__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  .sv-modal__close {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: color 120ms ease;
+  }
+
+  .sv-modal__close svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    stroke-linecap: round;
+  }
+
+  .sv-modal__close:hover {
+    color: var(--accent);
+  }
+
+  .sv-modal__scroll {
+    flex: 1 1 auto;
+    /* Without this a flex child refuses to shrink below its content and the
+       panel, not the panel's body, is what would have to scroll. */
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1.5rem 1.4rem;
+    padding-bottom: max(2.25rem, env(safe-area-inset-bottom));
+  }
+
+  /* The fact itself is the same <details> element that was in the list —
+     moved here, not copied — so it arrives with its status edge, its claim
+     and its whole body intact. What changes is only presentation: it is
+     already open, its summary is the panel's title rather than a control,
+     and it carries no row rule of its own. */
+  .sv-modal__body > .sv-item {
+    border-bottom: 0;
+    margin-left: -0.15rem;
+  }
+
+  .sv-modal__body > .sv-item > .sv-item__summary {
+    cursor: default;
+    padding: 0 0 0.35rem;
+    min-height: 0;
+  }
+
+  .sv-modal__body > .sv-item > .sv-item__summary::before,
+  .sv-modal__body > .sv-item > .sv-item__summary::after {
+    display: none;
+  }
+
+  .sv-modal__body > .sv-item > .sv-item__summary:hover .sv-item__claim {
+    text-decoration: none;
+  }
+
+  .sv-modal__body > .sv-item > .sv-item__summary .sv-item__claim {
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.55rem);
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .sv-modal__body > .sv-item > .sv-item__body {
+    padding-bottom: 0;
+  }
 }
 
 /* A reader who has asked the OS for less motion gets no animated transitions

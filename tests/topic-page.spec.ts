@@ -19,7 +19,10 @@ test('the topic page shows all four sections', async ({ page }) => {
   }
 });
 
-test('a fact is collapsed until it is expanded', async ({ page }) => {
+// The claim is readable in the list without opening anything; the context
+// behind it opens in the shared fact panel (components/topic/fact-modal.tsx),
+// which is where a fact's body, sources and supporting facts are read.
+test('a fact is collapsed until it is opened', async ({ page }) => {
   await page.goto('/topics/uk-immigration');
   // This headline fact sits past the third, so it is behind the Facts collapse.
   await page.locator('details.sv-more > summary').click();
@@ -29,6 +32,9 @@ test('a fact is collapsed until it is expanded', async ({ page }) => {
   await expect(body).toBeHidden();
   await fact.locator('summary').first().click();
   await expect(body).toBeVisible();
+  await expect(
+    page.locator('dialog.sv-modal #fact-non-citizens-share-of-convictions-and-prisons')
+  ).toBeVisible();
 });
 
 // Facts are two levels: headline claims in the list, and the facts that are
@@ -43,6 +49,9 @@ test('a supporting fact is reached through the headline fact it supports', async
   await parent.locator('summary').first().click();
   await expect(child).toBeVisible();
   await expect(child).toHaveClass(/sv-subfact/);
+  // The headline fact is read in the panel, and the supporting fact travelled
+  // with it — it is one element, moved, not a copy left behind in the list.
+  await expect(page.locator('dialog.sv-modal').locator(child)).toHaveCount(1);
 
   const quote = child.getByText('Net migration in YE December 2025 was 171,000', { exact: false });
   await expect(quote).toBeHidden();

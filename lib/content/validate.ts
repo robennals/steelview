@@ -1,4 +1,5 @@
-import type { Topic } from './types';
+import { citedFactIds } from './markdown';
+import type { Fact, Topic } from './types';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -202,6 +203,65 @@ export function validateTopic(topic: Topic): string[] {
   for (const p of topic.principles) {
     if (!heldPrinciples.has(p.id)) {
       errors.push(`principle ${p.id}: orphan — no real viewpoint holds it`);
+    }
+  }
+
+  errors.push(...citationErrors(topic, factById));
+
+  return errors;
+}
+
+/**
+ * Rules 12 and 13 — inline fact citations in prose.
+ *
+ * A body may cite a fact by linking to its anchor:
+ * `[net migration reached 944,000](#fact-net-migration-2024)`. That link is
+ * the page's honesty signal at the point of use, so it gets the same
+ * treatment as every other cross-reference on the page:
+ *
+ * 12. it must resolve to a real fact in this topic — a dead citation is a
+ *     claim that looks sourced and is not, which is worse than an unlinked
+ *     one;
+ * 13. in a *viewpoint*, it must point at a fact that viewpoint already lists
+ *     in `citesFacts`, `acknowledges` or `setsAside`. The frontmatter lists
+ *     are what the ranking, the chips and the orphan rule all read; if the
+ *     prose could lean on a fact the lists do not mention, the page would be
+ *     saying two different things about what the viewpoint rests on, and the
+ *     one a reader can see would be the one nothing checks. A supporting fact
+ *     counts when its parent headline fact is listed — a viewpoint relying on
+ *     a detail is relying on the claim that detail supports, which is exactly
+ *     how the fact ranking already rolls citations up.
+ */
+function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
+  const errors: string[] = [];
+
+  const check = (what: string, body: string) => {
+    for (const id of citedFactIds(body)) {
+      if (!factById.has(id)) {
+        errors.push(`${what}: body links to "#fact-${id}", which is not a fact in this topic`);
+      }
+    }
+  };
+
+  check('topic intro', topic.intro);
+  for (const f of topic.facts) check(`fact ${f.id}`, f.body);
+  for (const p of topic.principles) check(`principle ${p.id}`, p.body);
+  for (const c of topic.cruxes) check(`crux ${c.id}`, c.body);
+
+  for (const v of topic.viewpoints) {
+    check(`viewpoint ${v.id}`, v.body);
+
+    const listed = new Set([...v.citesFacts, ...v.acknowledges, ...v.setsAside]);
+    for (const id of citedFactIds(v.body)) {
+      const cited = factById.get(id);
+      if (!cited) continue; // already reported by rule 12
+      if (listed.has(id)) continue;
+      if (cited.supports !== undefined && listed.has(cited.supports)) continue;
+      const via =
+        cited.supports !== undefined ? `, nor is its parent fact "${cited.supports}"` : '';
+      errors.push(
+        `viewpoint ${v.id}: body cites fact "${id}", which is not in citesFacts, acknowledges or setsAside${via} — add it to one of those lists, or cite a fact the viewpoint already relates to`
+      );
     }
   }
 
