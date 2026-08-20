@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-// The Facts section shows its first three facts and puts the rest behind a
-// native <details> group. These assertions are content-independent: they
+// The Facts section shows its first three *headline* facts and puts the rest
+// behind a native <details> group. Supporting facts render inside the headline
+// fact they are evidence for and never as top-level rows, so `details.sv-fact`
+// counts exactly the top-level list. These assertions are content-independent: they
 // count the facts the page actually renders rather than naming any of them,
 // so re-ranking or adding facts in content/ does not turn this suite red.
 
@@ -55,8 +57,13 @@ test('only the Facts section collapses', async ({ page }) => {
   await page.goto('/topics/uk-immigration');
   await expect(page.locator('details.sv-more')).toHaveCount(1);
 
-  const others = page.locator('details.sv-item:not(.sv-fact)');
+  // Supporting facts (`.sv-subfact`) are excluded: they sit inside the
+  // headline fact they are evidence for, so they are hidden until it is
+  // opened — that nesting is the point, not a second collapse.
+  const others = page.locator('details.sv-item:not(.sv-fact):not(.sv-subfact)');
   const count = await others.count();
   expect(count).toBeGreaterThan(0);
-  await expect(page.locator('details.sv-item:not(.sv-fact):visible')).toHaveCount(count);
+  await expect(
+    page.locator('details.sv-item:not(.sv-fact):not(.sv-subfact):visible')
+  ).toHaveCount(count);
 });

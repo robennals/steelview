@@ -138,3 +138,55 @@ test('a section with items renders its heading', () => {
   assert.match(html, /Principles/);
   assert.match(html, /Cruxes/);
 });
+
+/**
+ * The Facts list is headline facts only: a supporting fact is evidence for a
+ * larger claim and reads inside it, not beside it. Its `#fact-<id>` anchor is
+ * a permanent address a viewpoint chip may point at, so it has to survive the
+ * move inwards.
+ */
+test('a supporting fact renders inside its parent, not as a top-level row', () => {
+  const factOf = (id: string, supports?: string) => ({
+    id,
+    claim: `Claim ${id}`,
+    status: 'well-supported' as const,
+    sources: [],
+    body: '',
+    ...(supports === undefined ? {} : { supports }),
+  });
+  const viewpointOf = (id: string, order: number) => ({
+    id,
+    name: id,
+    summary: 's',
+    order,
+    citesFacts: [],
+    acknowledges: ['parent'],
+    setsAside: [],
+    principles: [],
+    body: '',
+  });
+  const topic: Topic = {
+    slug: 'nested',
+    title: 'Nested',
+    subtitle: 'Sub',
+    lastUpdated: '2026-08-18',
+    intro: '',
+    facts: [factOf('parent'), factOf('child', 'parent')],
+    viewpoints: [viewpointOf('one', 1), viewpointOf('two', 2)],
+    principles: [],
+    cruxes: [],
+  };
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
+
+  // One top-level fact row, and the child is not one of them.
+  assert.equal(html.match(/class="sv-item sv-fact"/g)?.length, 1);
+  assert.match(html, /id="fact-parent"/);
+  // The child keeps its anchor, and sits inside the parent's body.
+  assert.match(html, /id="fact-child"/);
+  assert.match(html, /class="sv-item sv-subfact"/);
+  assert.ok(
+    html.indexOf('id="fact-child"') > html.indexOf('id="fact-parent"'),
+    'the child must render within the parent it supports'
+  );
+  assert.match(html, /Supporting fact</);
+});

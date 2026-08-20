@@ -1,6 +1,7 @@
 ---
 claim: "The number of foreign national offenders liable for deportation but living in the community grew by 36% between the end of 2022 and March 2026, even as removals of offenders rose"
 status: well-supported
+supports: non-citizens-share-of-convictions-and-prisons
 sources:
   - stance: supports
     quote: "One indication that FNO removals may not have kept pace with prison releases is that the number of deportable offenders living in the community has risen (i.e., people who were neither in prison nor immigration detention, and had not been granted the right to remain in the UK long term on human rights or other grounds) (Figure 10). The size of this group grew by 36% from the end of 2022 to March 2026, equivalent to 1,600 people per year. In mid-2022, when the data were last published, a majority of FNOs living in the community had finished their sentence at least 2 years earlier."

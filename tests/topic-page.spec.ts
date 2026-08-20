@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test';
 
 // These assertions depend on authored uk-immigration content: the topic
-// title "UK immigration", the fact `net-migration-peak-and-fall` (claim
-// text "Net migration in YE December 2025 was 171,000"), the viewpoint
+// title "UK immigration", the headline fact
+// `non-citizens-share-of-convictions-and-prisons`, the supporting fact
+// `net-migration-peak-and-fall` (body text "Net migration in YE December 2025
+// was 171,000") and the headline fact `immigration-against-the-long-run` it
+// supports, the viewpoint
 // `a-country-should-decide-who-joins-it`, and the facts it
 // cites/acknowledges — claims "Net
 // migration to the UK peaked at 944,000 in the year to March 2023" and
@@ -18,13 +21,32 @@ test('the topic page shows all four sections', async ({ page }) => {
 
 test('a fact is collapsed until it is expanded', async ({ page }) => {
   await page.goto('/topics/uk-immigration');
-  // This fact sits past the third, so it is behind the Facts collapse.
+  // This headline fact sits past the third, so it is behind the Facts collapse.
   await page.locator('details.sv-more > summary').click();
-  const fact = page.locator('#fact-net-migration-peak-and-fall');
+  const fact = page.locator('#fact-non-citizens-share-of-convictions-and-prisons');
   await expect(fact).toBeVisible();
-  const quote = fact.getByText('Net migration in YE December 2025 was 171,000');
+  const body = fact.getByText('It is not a measurement of offending', { exact: false });
+  await expect(body).toBeHidden();
+  await fact.locator('summary').first().click();
+  await expect(body).toBeVisible();
+});
+
+// Facts are two levels: headline claims in the list, and the facts that are
+// evidence for them inside. A supporting fact must not appear as a top-level
+// row, and must be reachable by opening the claim it supports.
+test('a supporting fact is reached through the headline fact it supports', async ({ page }) => {
+  await page.goto('/topics/uk-immigration');
+  const parent = page.locator('#fact-immigration-against-the-long-run');
+  const child = page.locator('#fact-net-migration-peak-and-fall');
+  await expect(child).toBeHidden();
+
+  await parent.locator('summary').first().click();
+  await expect(child).toBeVisible();
+  await expect(child).toHaveClass(/sv-subfact/);
+
+  const quote = child.getByText('Net migration in YE December 2025 was 171,000', { exact: false });
   await expect(quote).toBeHidden();
-  await fact.locator('summary').click();
+  await child.locator('summary').click();
   await expect(quote).toBeVisible();
 });
 

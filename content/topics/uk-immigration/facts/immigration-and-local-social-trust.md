@@ -1,6 +1,7 @@
 ---
 claim: "Rising local immigration lowers trust and cohesion within the receiving community"
 status: unknown
+supports: share-of-the-population-born-abroad
 sources:
   - stance: supports
     quote: "Most of the empirical literature on this subject finds that the relationship between diversity and trust is negative – the more diverse a community is, the less likely individuals in it are to be trusting."

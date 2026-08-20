@@ -1,13 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { rankFacts, sortViewpoints } from './rank-facts';
+import { rankFacts, sortViewpoints, headlineFacts, supportingFactsByParent } from './rank-facts';
 import type { Fact, FactStatus, Viewpoint } from './types';
 
-function fact(id: string, status: FactStatus = 'well-supported'): Fact {
+function fact(id: string, status: FactStatus = 'well-supported', supports?: string): Fact {
   return {
     id,
     claim: id,
     status,
+    ...(supports === undefined ? {} : { supports }),
     sources: [
       {
         stance: 'supports',
@@ -126,21 +127,41 @@ test('within a round, a fact more viewpoints pick comes first', () => {
   assert.deepEqual(ids, ['wide', 'narrow']);
 });
 
-test('a within-round tie breaks on total references, then on id', () => {
+test('a within-round tie breaks on how many viewpoints rank the fact, then on id', () => {
   // Round 1 is a shared pick of `x`. In round 2, `p` and `q` are each picked
-  // by exactly one viewpoint, so breadth within the round ties and both are
-  // referenced twice by the two ranking viewpoints. A third viewpoint sets
-  // `q` aside, giving it three references in all — so `q` leads, even though
-  // `p` sorts earlier by id and would win a pure id tie-break.
+  // by exactly one viewpoint, so breadth within the round ties. A third
+  // viewpoint acknowledges `q`, giving it three ranking viewpoints to `p`'s
+  // two — so `q` leads, even though `p` sorts earlier by id and would win a
+  // pure id tie-break.
   const ids = order(
     ['x', 'p', 'q'],
     [
       viewpoint('a', { citesFacts: ['x', 'p'], acknowledges: ['q'] }),
       viewpoint('b', { citesFacts: ['x', 'q'], acknowledges: ['p'] }),
-      viewpoint('c', { acknowledges: ['x'], setsAside: ['q'] }),
+      viewpoint('c', { acknowledges: ['x', 'q'] }),
     ]
   );
   assert.deepEqual(ids, ['x', 'q', 'p']);
+});
+
+/**
+ * `setsAside` says a claim does not hold up as stated and does no work for
+ * this viewpoint. Counting it in the tie-break boosted exactly the facts the
+ * sides agree are not load-bearing, which is the opposite of what the tie-break
+ * is for.
+ */
+test('setsAside does not count towards the tie-break', () => {
+  const ids = order(
+    ['x', 'p', 'q'],
+    [
+      viewpoint('a', { citesFacts: ['x', 'p'], acknowledges: ['q'] }),
+      viewpoint('b', { citesFacts: ['x', 'q'], acknowledges: ['p'] }),
+      // `c` sets `q` aside. If that counted, `q` would lead round 2; it must
+      // not, so the tie falls through to id and `p` leads.
+      viewpoint('c', { acknowledges: ['x'], setsAside: ['q'] }),
+    ]
+  );
+  assert.deepEqual(ids, ['x', 'p', 'q']);
 });
 
 test('the order does not depend on the order of the viewpoints or the facts', () => {
@@ -236,5 +257,102 @@ test('sortViewpoints sorts by order, with id as tie-break', () => {
   assert.deepEqual(
     vps.map((v) => v.id),
     ['b', 'c', 'a']
+  );
+});
+
+// ------------------------------------------------------- the fact hierarchy
+
+/** Rank facts given as `id` or `[id, status, supports]`, returning headline ids only. */
+function headlineOrder(
+  factSpec: Array<string | [string, FactStatus, string?]>,
+  viewpoints: Viewpoint[]
+): string[] {
+  const facts = factSpec.map((f) => (typeof f === 'string' ? fact(f) : fact(f[0], f[1], f[2])));
+  return headlineFacts(rankFacts(facts, viewpoints)).map((f) => f.id);
+}
+
+test('a supporting fact is not ranked, and does not appear in the headline list', () => {
+  assert.deepEqual(
+    headlineOrder(
+      ['parent', ['child', 'well-supported', 'parent']],
+      [viewpoint('v', { citesFacts: ['parent'], acknowledges: ['child'] })]
+    ),
+    ['parent']
+  );
+});
+
+test('citing a supporting fact counts towards its parent', () => {
+  // `v` opens on `child`, which supports `parent`. Relying on a detail is
+  // relying on the claim the detail supports, so `parent` takes round 1 —
+  // ahead of `other`, which two viewpoints rank first between them.
+  const ids = headlineOrder(
+    ['parent', ['child', 'well-supported', 'parent'], 'other'],
+    [
+      viewpoint('v', { citesFacts: ['child'], acknowledges: ['other'] }),
+      viewpoint('w', { citesFacts: ['parent'], acknowledges: ['other'] }),
+    ]
+  );
+  assert.deepEqual(ids, ['parent', 'other']);
+});
+
+test('rolling up a citation onto a fact already ranked keeps the earlier position', () => {
+  // `v` ranks `parent` first and `child` (which supports `parent`) second.
+  // The roll-up must not spend a second turn on `parent` or displace `late`
+  // from round 2.
+  const ids = headlineOrder(
+    ['parent', ['child', 'well-supported', 'parent'], 'late'],
+    [viewpoint('v', { citesFacts: ['parent', 'child'], acknowledges: ['late'] })]
+  );
+  assert.deepEqual(ids, ['parent', 'late']);
+});
+
+test('an unranked headline fact still reaches the tail, but a supporting one does not', () => {
+  const ids = headlineOrder(
+    ['ranked', 'unranked', ['child', 'well-supported', 'unranked']],
+    [viewpoint('v', { citesFacts: ['ranked'], acknowledges: ['child'] })]
+  );
+  // `unranked` is ranked only through its child's roll-up, so it is placed;
+  // `child` is nowhere in the headline list.
+  assert.deepEqual(ids, ['ranked', 'unranked']);
+});
+
+test('rankFacts returns every fact, each supporting fact after its parent', () => {
+  const facts = [
+    fact('parent'),
+    fact('b-child', 'well-supported', 'parent'),
+    fact('a-child', 'complicated', 'parent'),
+    fact('other'),
+  ];
+  assert.deepEqual(
+    rankFacts(facts, [viewpoint('v', { citesFacts: ['parent'], acknowledges: ['other'] })]).map(
+      (f) => f.id
+    ),
+    // Children sort by status then id, so the well-supported one leads.
+    ['parent', 'b-child', 'a-child', 'other']
+  );
+});
+
+test('supportingFactsByParent groups children under their parent, by status then id', () => {
+  const groups = supportingFactsByParent([
+    fact('parent'),
+    fact('z', 'well-supported', 'parent'),
+    fact('a', 'unknown', 'parent'),
+    fact('m', 'well-supported', 'parent'),
+    fact('elsewhere'),
+  ]);
+  assert.deepEqual([...groups.keys()], ['parent']);
+  assert.deepEqual(groups.get('parent')!.map((f) => f.id), ['m', 'z', 'a']);
+});
+
+test('a fact whose supports points at nothing is kept visible as a headline fact', () => {
+  // The validator reports this; the ranker must not disappear the fact in the
+  // meantime, or a content error would render as a missing fact rather than a
+  // failed build.
+  assert.deepEqual(
+    headlineOrder(
+      ['a', ['stray', 'well-supported', 'no-such-fact']],
+      [viewpoint('v', { citesFacts: ['a'], acknowledges: ['stray'] })]
+    ),
+    ['a', 'stray']
   );
 });

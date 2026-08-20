@@ -1,6 +1,7 @@
 ---
 claim: "The rise in UK immigration after 2021 was driven by people arriving illegally"
 status: not-supported
+supports: how-people-actually-arrive
 sources:
   - stance: contests
     quote: "there were 44,000 detected arrivals via illegal entry routes, in the YE March 2026 - small boat arrivals accounted for 39,000 (90%) of these"

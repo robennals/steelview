@@ -239,6 +239,60 @@ test('rule 8: setsAside is enough to keep a fact from being an orphan', () => {
   assert.deepEqual(validateTopic(t), []);
 });
 
+test('rule 8: a supporting fact is exempt from the orphan rule', () => {
+  // Its parent is what justifies it being on the page, and it is read inside
+  // that parent — so no viewpoint has to name it.
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'detail', supports: 'alpha' }));
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('rule 8: a headline fact is still an orphan if nothing references it', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'lonely-headline' }));
+  t.facts.push(fact({ id: 'detail', supports: 'lonely-headline' }));
+  assert.ok(
+    validateTopic(t).some((e) => e.includes('lonely-headline') && e.includes('orphan')),
+    'a headline fact no viewpoint uses does no work on the page'
+  );
+});
+
+test('rule 11: supports must resolve to a fact in the same topic', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'detail', supports: 'no-such-fact' }));
+  t.viewpoints[0].setsAside = ['detail'];
+  assert.ok(
+    validateTopic(t).some((e) => e.includes('detail') && e.includes('no-such-fact')),
+    validateTopic(t).join('\n')
+  );
+});
+
+test('rule 11: a fact may not support itself', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'detail', supports: 'detail' }));
+  assert.ok(validateTopic(t).some((e) => e.includes('detail') && e.includes('supports itself')));
+});
+
+test('rule 11: the hierarchy is exactly one level deep — no chains', () => {
+  // `grandchild -> child -> alpha`. Arbitrary nesting would produce a tree
+  // nobody can hold in their head, so the chain is rejected rather than
+  // silently flattened onto `alpha`.
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'child', supports: 'alpha' }));
+  t.facts.push(fact({ id: 'grandchild', supports: 'child' }));
+  const errors = validateTopic(t);
+  assert.equal(errors.length, 1, errors.join('\n'));
+  assert.ok(errors[0].includes('grandchild') && errors[0].includes('one level deep'), errors[0]);
+});
+
+test('rule 11: a two-fact cycle is rejected from both ends', () => {
+  const t = soundTopic();
+  t.facts = [fact({ id: 'alpha', supports: 'gamma' }), fact({ id: 'gamma', supports: 'alpha' })];
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.startsWith('fact alpha:')), errors.join('\n'));
+  assert.ok(errors.some((e) => e.startsWith('fact gamma:')), errors.join('\n'));
+});
+
 test('rule 8: a principle held by no real viewpoint is an orphan', () => {
   const t = soundTopic();
   t.principles.push(principle({ id: 'lonely', heldBy: ['ghost'] }));

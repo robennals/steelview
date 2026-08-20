@@ -92,6 +92,24 @@ export function validateTopic(topic: Topic): string[] {
         `fact ${f.id}: every fact needs a body giving its context — what it measures and does not, how it compares, how confident to be, and what it is commonly mistaken for`
       );
     }
+    // rule 11 — the fact hierarchy is exactly two levels deep. A supporting
+    // fact is evidence for one headline claim; a headline claim stands on its
+    // own. Chains and cycles are rejected rather than flattened, because a
+    // tree of arbitrary depth is not something a reader can hold in their
+    // head, and because a silently flattened chain would put a fact somewhere
+    // its author did not intend.
+    if (f.supports !== undefined) {
+      const parent = factById.get(f.supports);
+      if (!parent) {
+        errors.push(`fact ${f.id}: supports references unknown fact "${f.supports}"`);
+      } else if (parent.id === f.id) {
+        errors.push(`fact ${f.id}: supports itself`);
+      } else if (parent.supports !== undefined) {
+        errors.push(
+          `fact ${f.id}: supports "${parent.id}", which is itself a supporting fact (it supports "${parent.supports}") — the hierarchy is exactly one level deep, so point at a headline fact instead`
+        );
+      }
+    }
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -168,8 +186,13 @@ export function validateTopic(topic: Topic): string[] {
     errors.push('topic: needs at least 2 viewpoints — add another viewpoint under viewpoints/');
   }
 
-  // rule 8
+  // rule 8. A supporting fact is exempt: its parent is what justifies it
+  // being on the page, so it need not be referenced by any viewpoint. The
+  // rule still bites on headline facts, which is where it does its work —
+  // keeping the top-level Facts list from silting up with true-but-irrelevant
+  // material.
   for (const f of topic.facts) {
+    if (f.supports !== undefined && factById.has(f.supports)) continue;
     if (!referencedFacts.has(f.id)) {
       errors.push(
         `fact ${f.id}: orphan — no viewpoint cites, acknowledges or sets it aside, so it does no work on the page`

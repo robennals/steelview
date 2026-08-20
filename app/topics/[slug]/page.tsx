@@ -1,4 +1,5 @@
 import { loadTopic, listTopicSlugs } from '@/lib/content/load';
+import { headlineFacts, supportingFactsByParent } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { HashSync } from '@/components/topic/hash-sync';
 import { FactItem } from '@/components/topic/fact-item';
@@ -54,7 +55,7 @@ export async function buildBodies(topic: {
 }
 
 /**
- * How many facts the Facts section shows before it collapses the rest.
+ * How many headline facts the Facts section shows before it collapses the rest.
  * Facts arrive in diversity-ranked order (see lib/content/rank-facts.ts), so
  * for most readers these three *are* the page — which is why that ranking is
  * derived from what every viewpoint ranks first, rather than authored.
@@ -73,15 +74,31 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
   const principlesById = new Map(topic.principles.map((p) => [p.id, p]));
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
-  const shownFacts = topic.facts.slice(0, FACTS_SHOWN);
-  const restFacts = topic.facts.slice(FACTS_SHOWN);
+  /*
+   * Only headline facts are listed. A fact with `supports` is evidence for a
+   * larger claim and reads inside that claim, so the list is the set of
+   * things the argument is actually about rather than every checkable item on
+   * the page — which is what made it unreadably long.
+   */
+  const supportingByParent = supportingFactsByParent(topic.facts);
+  const headline = headlineFacts(topic.facts);
+  const shownFacts = headline.slice(0, FACTS_SHOWN);
+  const restFacts = headline.slice(FACTS_SHOWN);
   const renderFact = (fact: Topic['facts'][number]) => (
-    <FactItem key={fact.id} fact={fact} bodyHtml={bodies.get(bodyKey('fact', fact.id)) ?? ''} />
+    <FactItem
+      key={fact.id}
+      fact={fact}
+      bodyHtml={bodies.get(bodyKey('fact', fact.id)) ?? ''}
+      supporting={(supportingByParent.get(fact.id) ?? []).map((child) => ({
+        fact: child,
+        bodyHtml: bodies.get(bodyKey('fact', child.id)) ?? '',
+      }))}
+    />
   );
 
   return (
     <div className="sv-sections">
-      {topic.facts.length > 0 && (
+      {headline.length > 0 && (
         <section className="sv-section">
           <div className="sv-section__head">
             <h2 className="sv-section__title">Facts</h2>

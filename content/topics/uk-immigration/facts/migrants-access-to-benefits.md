@@ -1,6 +1,7 @@
 ---
 claim: "People coming to the UK on visas can claim benefits"
 status: complicated
+supports: skilled-worker-fiscal-gain-concentrated
 sources:
   - stance: complicates
     quote: "For example, the No Recourse to Public Funds condition (NRPF) prevents non-EU citizens on work, study, or family visas from accessing most benefits, including Universal Credit or Child Benefit, until the visa holder has been granted indefinite leave to remain (ILR). The government has said that NRPF is designed to prevent fiscal costs resulting from the payment of benefits."

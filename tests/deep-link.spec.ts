@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-// These assertions depend on authored uk-immigration content: the fact
+// These assertions depend on authored uk-immigration content: the headline
+// fact `non-citizens-share-of-convictions-and-prisons`, the supporting fact
 // `net-migration-peak-and-fall` (body text "Net migration in YE December
-// 2025 was 171,000."), the fact `public-opinion-on-immigration`, the
+// 2025 was 171,000.") and the headline fact
+// `immigration-against-the-long-run` it supports, the fact
+// `public-opinion-on-immigration`, the
 // viewpoint `a-country-should-decide-who-joins-it`, and the fact
 // `health-and-care-relies-on-migrant-workers` (claim "Health and care is the
 // sector most dependent on migrant labour") that that viewpoint cites. Editing any of that content's wording, ids, or
@@ -11,12 +14,27 @@ import { test, expect } from '@playwright/test';
 // derived diversity ranking (two viewpoints rank it first) and so renders
 // outside the Facts collapse.
 
-// `net-migration-peak-and-fall` sits past the third fact, so it is inside the
-// collapsed group: the anchor has to reveal the group as well as open the
-// fact, or the link scrolls to something the reader cannot see.
+// `non-citizens-share-of-convictions-and-prisons` sits past the third headline
+// fact, so it is inside the collapsed group: the anchor has to reveal the
+// group as well as open the fact, or the link scrolls to something the reader
+// cannot see.
 test('loading a fact anchor opens that fact, and the group hiding it', async ({ page }) => {
-  await page.goto('/topics/uk-immigration#fact-net-migration-peak-and-fall');
+  const anchor = '#fact-non-citizens-share-of-convictions-and-prisons';
+  await page.goto(`/topics/uk-immigration${anchor}`);
   await expect(page.locator('details.sv-more')).toHaveAttribute('open', '');
+  await expect(page.locator(anchor)).toHaveAttribute('open', '');
+  await expect(page.locator(anchor)).toBeVisible();
+  await expect(
+    page.locator(anchor).getByText('It is not a measurement of offending', { exact: false })
+  ).toBeVisible();
+});
+
+// A supporting fact's `#fact-<id>` anchor is a permanent address, and it now
+// sits inside the headline fact it supports — so the anchor has to open that
+// parent too.
+test('loading a supporting fact anchor opens the headline fact holding it', async ({ page }) => {
+  await page.goto('/topics/uk-immigration#fact-net-migration-peak-and-fall');
+  await expect(page.locator('#fact-immigration-against-the-long-run')).toHaveAttribute('open', '');
   await expect(page.locator('#fact-net-migration-peak-and-fall')).toHaveAttribute('open', '');
   await expect(page.locator('#fact-net-migration-peak-and-fall')).toBeVisible();
   await expect(

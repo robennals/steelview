@@ -56,6 +56,24 @@ export const factFrontmatterSchema = z.object({
    * facts a reader sees first. The reading order is derived instead, by
    * round-robin across the viewpoints' own rankings — see rank-facts.ts.
    */
+  /**
+   * The id of the headline fact this fact is evidence for, or absent if this
+   * fact is itself a headline claim.
+   *
+   * Facts are not a flat list of equally-weighted items. Some are what the
+   * argument is actually about ("most immigration is due to study and work");
+   * others — a contract overrun, a grant-rate movement, a route-level fiscal
+   * breakdown — are real, checkable, and uninteresting on their own: they are
+   * evidence for a larger claim. A flat list of both makes the reader work out
+   * which items are load-bearing, which is the reader's problem this field
+   * removes.
+   *
+   * **Depth is exactly one**: a fact that is itself supported may not carry
+   * `supports` (enforced in validate.ts). Arbitrary nesting would produce a
+   * tree nobody can hold in their head; the reader benefit here is a
+   * two-level structure, not a taxonomy.
+   */
+  supports: z.string().min(1).optional(),
   sources: z.array(sourceSchema).default([]),
 });
 

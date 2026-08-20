@@ -1,6 +1,7 @@
 ---
 claim: "Care workers admitted on the Health and Care visa are estimated to be a net fiscal cost over their lifetimes, unlike other health and care staff on the same route"
 status: well-supported
+supports: skilled-worker-fiscal-gain-concentrated
 sources:
   - stance: supports
     quote: "For care workers, the lifetime contribution is estimated to be -£36,000, whilst for the other occupations it is +£166,000. Care Workers are therefore fiscally negative over their lifetimes and broadly similar to the UK median for the age group."

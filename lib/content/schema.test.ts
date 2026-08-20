@@ -138,6 +138,25 @@ test('a fact may not carry an order — the field was removed, not renamed', () 
   assert.equal('order' in parsed, false);
 });
 
+test('a fact carries an optional supports pointing at the fact it is evidence for', () => {
+  const headline = factFrontmatterSchema.parse({ claim: 'A claim', status: 'well-supported' });
+  assert.equal(headline.supports, undefined);
+  const supporting = factFrontmatterSchema.parse({
+    claim: 'A detail',
+    status: 'well-supported',
+    supports: 'a-headline-fact',
+  });
+  assert.equal(supporting.supports, 'a-headline-fact');
+});
+
+test('an empty supports is rejected rather than read as "no parent"', () => {
+  assert.equal(
+    factFrontmatterSchema.safeParse({ claim: 'A claim', status: 'well-supported', supports: '' })
+      .success,
+    false
+  );
+});
+
 test('a principle requires at least one holder', () => {
   assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness', heldBy: [] }).success, false);
   assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness', heldBy: ['one'] }).success, true);

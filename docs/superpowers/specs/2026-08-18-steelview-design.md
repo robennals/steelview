@@ -129,6 +129,32 @@ The context. Required — see the checklist below.
 A fact has **no `order` field**. Reading order is derived from what the
 viewpoints rank; see [Ordering](#ordering).
 
+**Headline facts and supporting facts.** An optional `supports` field carries
+the id of the headline fact this fact is evidence for:
+
+```yaml
+supports: how-people-actually-arrive
+```
+
+Facts are not a flat list of equally-weighted items. Some are what the argument
+is actually about — "immigration has increased significantly in recent years",
+"skilled worker immigration is fiscally positive", "most immigration is due to
+study and work". Others are real, checkable and uninteresting standing alone: a
+contract overrun, a grant-rate movement, a route-level fiscal breakdown. Listing
+both at one level makes the reader work out which items are load-bearing, which
+is precisely the work this page exists to do for them.
+
+- A fact **with** `supports` does not appear in the top-level Facts list; it
+  renders inside its parent's detail, keeping its own `#fact-<id>` anchor.
+- A fact **without** `supports` is a headline fact and appears in the list.
+- **Depth is exactly one.** A supporting fact may not itself be supported.
+  Arbitrary nesting would produce a tree nobody can hold in their head, and the
+  reader benefit is a two-level structure, not a taxonomy.
+
+The target shape is a headline list a reader can hold in their head — roughly 8
+to 12 items on a topic the size of uk-immigration, which has 11 headline facts
+and 17 supporting ones.
+
 **At least one source, whatever the status.** A `complicated` or `unknown`
 fact is making a claim about the evidence just as firmly as a `well-supported`
 one is making a claim about the world, and an unsourced one is an assertion in
@@ -252,11 +278,14 @@ enforced and each has a unit test:
    source.
 6. Every viewpoint has a non-empty `acknowledges`.
 7. Every crux `divides` at least two viewpoints and gives a position for each.
-8. No orphans: every fact appears in some viewpoint's `citesFacts`,
-   `acknowledges`, or `setsAside`, and every principle is held by at least one
-   viewpoint.
+8. No orphans: every **headline** fact appears in some viewpoint's
+   `citesFacts`, `acknowledges`, or `setsAside`, and every principle is held by
+   at least one viewpoint. A supporting fact is exempt — its parent is what
+   justifies it being on the page.
 9. A topic has at least one fact and at least two viewpoints.
 10. `heldBy` and a viewpoint's `principles` agree in both directions.
+11. A fact's `supports` resolves to another fact in the same topic, and that
+    fact is itself a headline fact — no self-reference, no chains, no cycles.
 
 Rules 3 and 4 are the sourcing rule and the context requirement from
 [Purpose](#purpose), in their enforceable form. Both used to be conditional on
@@ -295,6 +324,11 @@ set prioritised to be the facts considered most important by a **diverse** set
 of views. Nothing gets its second-best fact shown before every viewpoint has
 had its first.
 
+0. **Only headline facts are ranked and listed.** A citation of a supporting
+   fact counts towards its parent — a viewpoint relying on a detail is relying
+   on the claim that detail supports. Where rolling up duplicates a headline
+   fact the viewpoint already ranked, the earlier position stands and the
+   duplicate is dropped.
 1. **A viewpoint's ranking** is its `citesFacts`, in the order written, then
    its `acknowledges`, in the order written. What it argues *from* outranks
    what it concedes. Facts it only `setsAside` are not ranked by it at all —
@@ -310,21 +344,22 @@ had its first.
    substitute something else into round 1. Agreeing about what matters does
    not win a side extra slots.
 4. **Within a round, breadth of agreement orders the picks.** A fact chosen by
-   more viewpoints in that round comes first. Ties break on the total number
-   of viewpoints referencing the fact anywhere (including `setsAside`), then
-   on id. Deliberately **not** on file order or on a viewpoint's position in
+   more viewpoints in that round comes first. Ties break on the number of
+   viewpoints that rank the fact at all — `citesFacts` or `acknowledges`, and
+   deliberately **not** `setsAside`, which counted a viewpoint saying the claim
+   does *not* hold up as a vote for showing it earlier — then on id. Deliberately **not** on file order or on a viewpoint's position in
    the section: either would permanently hand slot 1 to the same side, and
    even-handedness between viewpoints is a hard requirement, not a preference.
-5. **Unranked facts form a tail**, ordered by status (`well-supported`,
+5. **Unranked headline facts form a tail**, ordered by status (`well-supported`,
    `contested`, `complicated`, `unknown`, `not-supported`) then id. Per rule 2
    above, every `complicated`, `unknown` and `not-supported` fact lands here.
 
 The result does not depend on the order of the viewpoint files or the fact
 files. On uk-immigration it opens on `immigration-against-the-long-run` (the
-first-ranked fact of two viewpoints), then
-`skilled-worker-fiscal-gain-concentrated` and `how-people-actually-arrive` —
-the first-ranked facts of the expansive and the technocratic viewpoints
-respectively. Three facts, three different sides' opening move.
+first-ranked fact of two viewpoints), then `how-people-actually-arrive` and
+`skilled-worker-fiscal-gain-concentrated` — the first-ranked facts of the
+technocratic and the expansive viewpoints respectively. Three facts, three
+different sides' opening move.
 
 ### Viewpoint order
 
@@ -448,12 +483,15 @@ client component layers on URL-hash sync so `#fact-net-migration-2024`
 deep-links to an open item, and clicking a cross-reference chip scrolls to its
 target and opens it.
 
-**Facts.** Collapsed: the claim plus its status. Expanded: the body, then the
+**Facts.** The list shows headline facts only. Collapsed: the claim plus its
+status. Expanded: the body, then the
 sources grouped by stance — supports / contests / complicates — each showing
 quote, publisher, and a dated link. The five statuses get five distinct
 treatments that do not rely on color alone (a shape or label carries the
 meaning too), because red/green on a politics site reads as a verdict on the
-politics.
+politics. After the sources come the supporting facts, each an expandable row
+of its own carrying its claim, status, body and sources — so the evidence for a
+claim is read inside the claim rather than beside it in the list.
 
 **Viewpoints.** Collapsed: name and one-line summary. Expanded: the full
 argument, then three chip groups — "builds on" (cited), "accepts" (cuts

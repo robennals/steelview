@@ -1,6 +1,7 @@
 ---
 claim: "Britain is becoming a Muslim country, and immigration is why"
 status: complicated
+supports: share-of-the-population-born-abroad
 sources:
   - stance: supports
     quote: "There were increases in the number of people who described themselves as \"Muslim\" (3.9 million, 6.5% in 2021, up from 2.7 million, 4.9% in 2011) and \"Hindu\" (1.0 million, 1.7% in 2021, up from 818,000, 1.5% in 2011)."

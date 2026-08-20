@@ -434,33 +434,35 @@
      and least of them — a single hue at varying strength, never red/green,
      so "not supported" reads as unsupported rather than as condemned. */
 
-  .sv-fact {
+  /* Supporting facts carry the same status alphabet as headline facts: the
+     reader learns one set of edges, wherever a fact appears. */
+  :is(.sv-fact, .sv-subfact) {
     padding-left: 0.9rem;
     border-left: 3px solid transparent;
   }
 
-  .sv-fact[data-status="well-supported"] {
+  :is(.sv-fact, .sv-subfact)[data-status="well-supported"] {
     border-left-color: var(--ink);
   }
 
-  .sv-fact[data-status="contested"] {
+  :is(.sv-fact, .sv-subfact)[data-status="contested"] {
     border-left-style: double;
     border-left-color: var(--ink-2);
   }
 
-  .sv-fact[data-status="complicated"] {
+  :is(.sv-fact, .sv-subfact)[data-status="complicated"] {
     border-left-style: dashed;
     border-left-color: var(--ink-3);
   }
 
-  .sv-fact[data-status="not-supported"] {
+  :is(.sv-fact, .sv-subfact)[data-status="not-supported"] {
     border-left-width: 2px;
     border-left-style: dotted;
     border-left-color: var(--ink-3);
     padding-left: 0.965rem;
   }
 
-  .sv-fact[data-status="unknown"] {
+  :is(.sv-fact, .sv-subfact)[data-status="unknown"] {
     border-left-width: 1px;
     border-left-color: var(--rule-strong);
     padding-left: 1.025rem;
@@ -575,6 +577,45 @@
   /* The revealed facts are the same rows as the ones above the control and
      carry no frame of their own, so the section reads as one list with the
      control sitting inside it. */
+
+  /* -------------------------------------------------- supporting facts */
+
+  /* A headline fact is a claim the argument is about; the facts under it are
+     evidence for it and say little standing alone. They are nested inside the
+     open headline rather than listed beside it, so the Facts list stays a set
+     of claims a reader can hold in their head. Each keeps its own anchor —
+     these are permanent addresses. */
+
+  .sv-supporting {
+    margin-top: 1.75rem;
+  }
+
+  .sv-supporting__head {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* One step down in weight from the headline row it sits under, so the
+     hierarchy is visible without reading the heading above it. */
+  .sv-subfact > .sv-item__summary {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .sv-subfact .sv-item__claim {
+    font-size: 1rem;
+  }
+
+  .sv-subfact > .sv-item__body {
+    padding-bottom: 1.25rem;
+  }
 
   /* ---------------------------------------------------------- fact bodies */
 
