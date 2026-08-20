@@ -13,9 +13,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm test:unit
-      # The figures audit: a money/percentage/thousands figure asserted in a
-      # markdown body must appear in a quoted source on the same topic.
-      - run: pnpm check:figures
       # No standalone `pnpm build` here: playwright.config.ts's webServer
       # already runs `pnpm build && pnpm start`, and a build failure comes
       # through in the test:e2e output with the same ContentError message
@@ -24,3 +21,9 @@ jobs:
       # confirming `pnpm test:e2e` alone surfaced it clearly.
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
+      # The figures audit: a money/percentage/thousands figure asserted in a
+      # markdown body must appear in a quoted source on the same topic. Runs
+      # last: it currently has known (genuine, content-round) findings, and
+      # while its count is non-zero it must not stand ahead of lint, the
+      # unit tests, the build, or e2e and hide a failure in any of them.
+      - run: pnpm check:figures

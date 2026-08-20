@@ -47,19 +47,51 @@ export function figuresIn(text: string): string[] {
 }
 
 /**
- * Is `figure` present in the canonicalised quote corpus as a figure in its own
- * right, rather than as a fragment of a longer number? `500` must not count as
- * matched because the corpus happens to contain `1,500`.
+ * A looser cousin of `FIGURE`, used only to tokenise *quotes*.
+ *
+ * Quotes are free to write a plain thousands figure without a comma
+ * (`46500`), so — unlike `FIGURE` — the comma group here is optional, not
+ * required. That does mean this also matches bare years and small integers
+ * (`18`, `2024`), but that is harmless: `figuresIn` never produces a bare
+ * small integer as a needle (money needs `£`, thousands need a comma group,
+ * percentages need `%`), so a stray token like `18` can never accidentally
+ * satisfy a real figure.
+ *
+ * Matching a maximal digit run this way — rather than stripping all
+ * whitespace first and substring-searching — is what keeps number
+ * boundaries intact: in a quote like `£22,300 30-39 £28,000`, the space
+ * before `30-39` stops the match, so `£22,300` is never fused with the
+ * digits that happen to sit next to it in running prose.
  */
-export function quotedSomewhere(figure: string, corpus: string): boolean {
+const QUOTE_NUMBER =
+  /£?\d(?:[\d,]*\d)?(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?\s*%?/gi;
+
+/**
+ * The set of figures — each in `canonical` form — found in a topic's quotes.
+ * Comparing a body figure against this set (exact membership, not substring
+ * search) is what makes the match immune to whatever punctuation, sentence
+ * digits, or line-wrapping happen to sit next to the figure inside its quote.
+ */
+export type QuoteCorpus = ReadonlySet<string>;
+
+/**
+ * Is `figure` present in the quote corpus as a figure in its own right,
+ * rather than as a fragment of a longer number? `500` must not count as
+ * matched because the corpus happens to contain `1,500`; `£22,300` must not
+ * count as matched because the corpus happens to contain `£122,300` — both
+ * are excluded by construction, because the corpus only ever holds whole
+ * tokens, never substrings of them.
+ *
+ * This does not attempt to equate a unit-word figure with an equivalent
+ * digit-grouped one (`£2.2 million` vs `£2,200,000`): doing that would mean
+ * parsing arbitrary numeric magnitudes, which risks matching figures that
+ * only coincidentally share a value, for a case that has not come up in
+ * practice. A quote restating the same figure should restate it recognisably.
+ */
+export function quotedSomewhere(figure: string, corpus: QuoteCorpus): boolean {
   const needle = canonical(figure);
   if (needle.length === 0) return true;
-  for (let at = corpus.indexOf(needle); at !== -1; at = corpus.indexOf(needle, at + 1)) {
-    const before = at === 0 ? '' : corpus[at - 1];
-    const after = corpus[at + needle.length] ?? '';
-    if (!/[\d.]/.test(before) && !/[\d.]/.test(after)) return true;
-  }
-  return false;
+  return corpus.has(needle);
 }
 
 /** Every string under a `quote` key, anywhere in a frontmatter tree. */
@@ -77,7 +109,14 @@ export function collectQuotes(node: unknown, into: string[] = []): string[] {
   return into;
 }
 
-/** The canonical searchable form of every quote on a topic. */
-export function quoteCorpus(quotes: readonly string[]): string {
-  return canonical(quotes.join(' | '));
+/** The set of canonical figure tokens found across every quote on a topic. */
+export function quoteCorpus(quotes: readonly string[]): QuoteCorpus {
+  const tokens = new Set<string>();
+  for (const quote of quotes) {
+    for (const match of quote.match(QUOTE_NUMBER) ?? []) {
+      const token = canonical(match);
+      if (token.length > 0) tokens.add(token);
+    }
+  }
+  return tokens;
 }

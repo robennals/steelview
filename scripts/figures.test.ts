@@ -66,3 +66,66 @@ test('canonical folds case, separators and scale words onto one form', () => {
   assert.equal(canonical('1,469,000'), '1469000');
   assert.equal(canonical('£4.5m'), '£4.5mn');
 });
+
+// Regression coverage for the false-positive bug: a figure genuinely quoted
+// verbatim was reported as unmatched purely because of what sat next to it
+// inside the quote (punctuation, another number, or a line wrap), because
+// the old implementation stripped all whitespace and substring-searched a
+// single blob, so anything non-digit-non-dot adjacent to the figure read as
+// "still part of the number".
+
+test('a full stop immediately after a figure in its own quote does not break the match', () => {
+  const corpus = quoteCorpus(['whilst for the other occupations it is +£166,000. Care workers are...']);
+  assert.equal(quotedSomewhere('£166,000', corpus), true);
+});
+
+test('a comma, closing parenthesis or quote mark immediately after a figure does not break the match', () => {
+  assert.equal(quotedSomewhere('£166,000', quoteCorpus(['the estimate was £166,000, according to the report'])), true);
+  assert.equal(quotedSomewhere('£166,000', quoteCorpus(['the estimate (£166,000) was disputed'])), true);
+  assert.equal(quotedSomewhere('£166,000', quoteCorpus(['described as "£166,000" in the filing'])), true);
+});
+
+test('a figure immediately followed by an unrelated digit in running prose still matches', () => {
+  // The actual bug that shipped: "Age band ... £22,300 30-39 £28,000 ..." —
+  // stripping all whitespace before searching fused "£22,300" with the "30"
+  // that starts the next age band, so the genuine quote read as unmatched.
+  const corpus = quoteCorpus(['Age band fiscal breakeven estimate 18-29 £22,300 30-39 £28,000 40-49 £32,300']);
+  assert.equal(quotedSomewhere('£22,300', corpus), true);
+  assert.equal(quotedSomewhere('£28,000', corpus), true);
+  assert.equal(quotedSomewhere('£32,300', corpus), true);
+});
+
+test('a figure is not matched by a quote that only contains a longer number sharing its digits', () => {
+  // The inverse of the case above: £22,300 must not be considered quoted
+  // merely because the corpus contains £122,300.
+  const corpus = quoteCorpus(['the record year saw £122,300 spent per claimant']);
+  assert.equal(quotedSomewhere('£22,300', corpus), false);
+  assert.equal(quotedSomewhere('£122,300', corpus), true);
+});
+
+test('a quote split across YAML lines still matches, including mid-quote punctuation', () => {
+  const corpus = quoteCorpus([
+    'contracts costed at £4.5 billion over ten years are now expected to\ncost £15.3\n  billion, driven by hotel use.',
+  ]);
+  assert.equal(quotedSomewhere('£4.5 billion', corpus), true);
+  assert.equal(quotedSomewhere('£15.3 billion', corpus), true);
+});
+
+test('non-breaking or unusual whitespace inside a quoted figure still matches', () => {
+  const corpus = quoteCorpus(['the contracts are now expected to cost £15.3 billion in total']);
+  assert.equal(quotedSomewhere('£15.3 billion', corpus), true);
+});
+
+test('a unit-word figure is not treated as equivalent to a fully digit-grouped restatement', () => {
+  // Deliberate choice: "£2.2 million" in prose is not considered sourced by
+  // a quote that only ever writes "£2,200,000" (or vice versa). Equating
+  // them would mean parsing numeric magnitude out of arbitrary text, which
+  // risks matching figures that merely share a value by coincidence.
+  const corpus = quoteCorpus(['the total came to £2,200,000 across the period']);
+  assert.equal(quotedSomewhere('£2.2 million', corpus), false);
+});
+
+test('a unit-word figure matches a quote that restates it the same way', () => {
+  const corpus = quoteCorpus(['average lifetime contribution of £2.2 million. This accounts for 39% of the total.']);
+  assert.equal(quotedSomewhere('£2.2 million', corpus), true);
+});
