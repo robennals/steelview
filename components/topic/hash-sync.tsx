@@ -1,14 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { anchorFor } from '@/lib/content/types';
-
-/** Fact anchors are handled by the fact panel, not here. */
-const FACT_PREFIX = anchorFor('fact', '');
 
 /**
  * Opens the disclosure named by the URL hash, and every disclosure containing
- * it. Two triggers are needed:
+ * it. Viewpoints, principles and cruxes only — a fact is addressed by its own
+ * URL now, not by an anchor on this page. Two triggers are needed:
  * `hashchange` covers back/forward navigation and pasted links, but does not
  * fire when a link points at the hash the page is already on — so in-page
  * anchor clicks are handled directly as well.
@@ -31,12 +28,6 @@ export function HashSync() {
   useEffect(() => {
     const openById = (id: string, scroll: boolean) => {
       if (!id) return;
-      // Facts belong to components/topic/fact-modal.tsx, which opens them in
-      // the shared panel instead. Both scripts reacting to the same anchor
-      // would mean expanding the fact in the list on the way to moving it out
-      // of the list — one visible action too many, and a scroll to a row that
-      // is about to be covered by the panel.
-      if (id.startsWith(FACT_PREFIX)) return;
       const el = document.getElementById(id);
       if (!(el instanceof HTMLDetailsElement)) return;
       // The Facts section collapses everything past the first few into a

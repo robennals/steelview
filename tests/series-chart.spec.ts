@@ -5,8 +5,11 @@ import { test, expect } from '@playwright/test';
 // two readings (people, share of population) and three annotated breaks, and
 // holds the supporting fact `net-migration-peak-and-fall`.
 
-const HEADLINE = '#fact-immigration-against-the-long-run';
-const SUPPORTING = '#fact-net-migration-peak-and-fall';
+const TOPIC = '/topics/uk-immigration';
+const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
+const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
+const HEADLINE = 'immigration-against-the-long-run';
+const SUPPORTING = 'net-migration-peak-and-fall';
 const dialog = 'dialog.sv-modal';
 
 test.describe('with JavaScript disabled', () => {
@@ -14,10 +17,12 @@ test.describe('with JavaScript disabled', () => {
 
   // The whole point of server-rendered SVG: the chart is markup, so it is
   // there for a reader with no JavaScript, and so is every number behind it.
+  // The fact's own page is exactly where such a reader arrives, having
+  // followed an ordinary link from the list.
   test('the chart and its numbers are in the page without any script', async ({ page }) => {
-    await page.goto('/topics/uk-immigration');
-    const fact = page.locator(HEADLINE);
-    await fact.locator('> summary').click();
+    await page.goto(TOPIC);
+    await page.locator(row(HEADLINE)).click();
+    const fact = page.locator('article.sv-factpage');
 
     const charts = fact.locator('.sv-chart__svg[data-variant="wide"]');
     await expect(charts).toHaveCount(2); // one per reading
@@ -45,8 +50,8 @@ test.describe('with JavaScript disabled', () => {
 test('the chart draws both readings, and marks the breaks rather than smoothing them', async ({
   page,
 }) => {
-  await page.goto('/topics/uk-immigration');
-  await page.locator(`${HEADLINE} > summary`).click();
+  await page.goto(TOPIC);
+  await page.locator(row(HEADLINE)).click();
   const chart = page.locator(`${dialog} .sv-chart`);
 
   await expect(chart.locator('.sv-chart__reading')).toHaveCount(2);
@@ -69,38 +74,37 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   );
 });
 
-test('a deep link to a supporting fact keeps the headline claim in view and marks the fact asked for', async ({
-  page,
-}) => {
-  await page.goto(`/topics/uk-immigration#${SUPPORTING.slice(1)}`);
+// The bug this replaced: a supporting fact arriving above the fold with the
+// claim it is evidence for scrolled off the top. The fix is structural now —
+// the claim it supports is stated *above* it, before any of the detail — so
+// the assertion is that it is on screen without any scrolling at all.
+test('a supporting fact opens with the claim it supports already in view', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(TOPIC);
+  await page.locator(row(SUPPORTING)).click();
 
-  const child = page.locator(`${dialog} ${SUPPORTING}`);
-  await expect(child).toBeVisible();
-  // Which item the reader asked for, for a screen reader and for the eye.
-  await expect(child).toHaveAttribute('aria-current', 'location');
-
-  const claim = page.locator(`${dialog} .sv-modal__body > .sv-item > summary`);
+  const parent = page.locator(`${dialog} .sv-parentnote`);
+  const claim = page.locator(`${dialog} #sv-modal-title`);
   const scroller = page.locator(`${dialog} .sv-modal__scroll`);
 
+  const parentBox = await parent.boundingBox();
   const claimBox = await claim.boundingBox();
-  const childBox = await child.boundingBox();
   const scrollBox = await scroller.boundingBox();
-  if (!claimBox || !childBox || !scrollBox) throw new Error('expected all three to be laid out');
+  if (!parentBox || !claimBox || !scrollBox) throw new Error('expected all three to be laid out');
 
-  // The headline claim the supporting fact is evidence for has not scrolled
-  // away above the panel — that was the bug: the fact arrived above the fold
-  // with its context off-screen.
-  expect(claimBox.y).toBeGreaterThanOrEqual(scrollBox.y - 1);
+  // Both the claim asked for and the claim it is evidence for are inside the
+  // panel's viewport, in that order, with nothing scrolled.
+  expect(parentBox.y).toBeGreaterThanOrEqual(scrollBox.y - 1);
+  expect(parentBox.y + parentBox.height).toBeLessThan(claimBox.y + claimBox.height);
   expect(claimBox.y + claimBox.height).toBeLessThanOrEqual(scrollBox.y + scrollBox.height);
-  // …and the fact that was asked for is in the panel's viewport, below the
-  // claim rather than scrolled off the top of it.
-  expect(childBox.y).toBeGreaterThanOrEqual(claimBox.y);
-  expect(childBox.y).toBeLessThan(scrollBox.y + scrollBox.height);
+  expect(await scroller.evaluate((el) => el.scrollTop)).toBe(0);
 });
 
-test('closing the panel takes the requested marker off with it', async ({ page }) => {
-  await page.goto(`/topics/uk-immigration#${SUPPORTING.slice(1)}`);
-  await expect(page.locator(`${dialog} ${SUPPORTING}`)).toBeVisible();
+test('closing the panel takes the chart off the page with it', async ({ page }) => {
+  await page.goto(TOPIC);
+  await page.locator(row(HEADLINE)).click();
+  await expect(page.locator(`${dialog} .sv-chart`)).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(page.locator(SUPPORTING)).not.toHaveAttribute('aria-current');
+  await expect(page.locator('.sv-chart')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
 });

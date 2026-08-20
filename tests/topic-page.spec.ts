@@ -3,64 +3,58 @@ import { test, expect } from '@playwright/test';
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the headline fact
 // `non-citizens-share-of-convictions-and-prisons`, the supporting fact
-// `net-migration-peak-and-fall` (body text "Net migration in YE December 2025
-// was 171,000") and the headline fact `immigration-against-the-long-run` it
-// supports, the viewpoint
+// `net-migration-peak-and-fall` and the headline fact
+// `immigration-against-the-long-run` it supports, the viewpoint
 // `a-country-should-decide-who-joins-it`, and the facts it
-// cites/acknowledges — claims "Net
-// migration to the UK peaked at 944,000 in the year to March 2023" and
-// "Health and care is the sector most dependent on migrant labour". Editing
-// any of that content's wording or cross-references will turn this suite red.
+// cites/acknowledges — claims "Net migration to the UK peaked at 944,000 in
+// the year to March 2023" and "Health and care is the sector most dependent on
+// migrant labour". Editing any of that content's wording or cross-references
+// will turn this suite red.
+
+const TOPIC = '/topics/uk-immigration';
+const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
+
 test('the topic page shows all four sections', async ({ page }) => {
-  await page.goto('/topics/uk-immigration');
+  await page.goto(TOPIC);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
   for (const section of ['Facts', 'Viewpoints', 'Principles', 'Cruxes']) {
     await expect(page.getByRole('heading', { name: section, level: 2 })).toBeVisible();
   }
 });
 
-// The claim is readable in the list without opening anything; the context
-// behind it opens in the shared fact panel (components/topic/fact-modal.tsx),
-// which is where a fact's body, sources and supporting facts are read.
-test('a fact is collapsed until it is opened', async ({ page }) => {
-  await page.goto('/topics/uk-immigration');
-  // This headline fact sits past the third, so it is behind the Facts collapse.
-  await page.locator('details.sv-more > summary').click();
-  const fact = page.locator('#fact-non-citizens-share-of-convictions-and-prisons');
-  await expect(fact).toBeVisible();
-  const body = fact.getByText('It is not a measurement of offending', { exact: false });
-  await expect(body).toBeHidden();
-  await fact.locator('summary').first().click();
-  await expect(body).toBeVisible();
-  await expect(
-    page.locator('dialog.sv-modal #fact-non-citizens-share-of-convictions-and-prisons')
-  ).toBeVisible();
+// The list is a set of claims a reader can skim: every row states its claim
+// and its status with nothing opened, and no JavaScript involved in either.
+test('the Facts list states every claim and status without opening anything', async ({ page }) => {
+  await page.goto(TOPIC);
+  const first = page.locator('.sv-fact').first();
+  await expect(first.locator('.sv-item__claim').first()).toBeVisible();
+  await expect(first.locator('.sv-status').first()).toBeVisible();
+  await expect(first.locator('.sv-status').first()).toHaveText('Well supported');
+  // The context behind a claim is not in the list — it is at the fact's URL.
+  await expect(page.getByText('It is not a measurement of offending', { exact: false })).toHaveCount(
+    0
+  );
 });
 
-// Facts are two levels: headline claims in the list, and the facts that are
-// evidence for them inside. A supporting fact must not appear as a top-level
-// row, and must be reachable by opening the claim it supports.
-test('a supporting fact is reached through the headline fact it supports', async ({ page }) => {
-  await page.goto('/topics/uk-immigration');
-  const parent = page.locator('#fact-immigration-against-the-long-run');
-  const child = page.locator('#fact-net-migration-peak-and-fall');
-  await expect(child).toBeHidden();
-
-  await parent.locator('summary').first().click();
+// Facts are two levels: headline claims, and the facts that are evidence for
+// them. A supporting fact must not be a top-level row, and the reader must be
+// able to see which detail carries which claim without following a link.
+test('a supporting fact is listed under the headline fact it supports', async ({ page }) => {
+  await page.goto(TOPIC);
+  const parent = page.locator('.sv-fact', {
+    has: page.locator(`a.sv-factrow[href="${factUrl('immigration-against-the-long-run')}"]`),
+  });
+  const child = parent.locator(`a.sv-factrow[href="${factUrl('net-migration-peak-and-fall')}"]`);
   await expect(child).toBeVisible();
-  await expect(child).toHaveClass(/sv-subfact/);
-  // The headline fact is read in the panel, and the supporting fact travelled
-  // with it — it is one element, moved, not a copy left behind in the list.
-  await expect(page.locator('dialog.sv-modal').locator(child)).toHaveCount(1);
-
-  const quote = child.getByText('Net migration in YE December 2025 was 171,000', { exact: false });
-  await expect(quote).toBeHidden();
-  await child.locator('summary').click();
-  await expect(quote).toBeVisible();
+  await expect(parent.locator('.sv-factlist__childlabel')).toHaveText('Supporting fact');
+  // …and it is not one of the top-level rows.
+  await expect(
+    page.locator(`.sv-factlist > .sv-fact > a[href="${factUrl('net-migration-peak-and-fall')}"]`)
+  ).toHaveCount(0);
 });
 
 test('a viewpoint lists the facts it builds on and accepts', async ({ page }) => {
-  await page.goto('/topics/uk-immigration');
+  await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
   await viewpoint.locator('summary').click();
   await expect(

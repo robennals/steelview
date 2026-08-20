@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import type { Fact } from '@/lib/content/types';
-import { anchorFor } from '@/lib/content/types';
+import { factPath } from '@/lib/content/types';
 
 /**
  * A labelled row of links to facts elsewhere on the page. Renders nothing when
@@ -14,10 +15,12 @@ import { anchorFor } from '@/lib/content/types';
 type ChipRelation = 'builds' | 'accepts' | 'aside';
 
 export function ItemChips({
+  slug,
   label,
   facts,
   relation,
 }: {
+  slug: string;
   label: string;
   facts: Fact[];
   relation: ChipRelation;
@@ -29,7 +32,7 @@ export function ItemChips({
       <ul className="sv-chips__list">
         {facts.map((fact) => (
           <li key={fact.id}>
-            <a href={`#${anchorFor('fact', fact.id)}`}>{fact.claim}</a>
+            <Link href={factPath(slug, fact.id)}>{fact.claim}</Link>
           </li>
         ))}
       </ul>

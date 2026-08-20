@@ -1,9 +1,11 @@
+import type { Metadata } from 'next';
 import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts, supportingFactsByParent } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
+import { topicPath } from '@/lib/content/types';
+import { absoluteUrl } from '@/lib/site';
 import { HashSync } from '@/components/topic/hash-sync';
-import { FactModal } from '@/components/topic/fact-modal';
-import { FactItem } from '@/components/topic/fact-item';
+import { FactList } from '@/components/topic/fact-list';
 import { ViewpointItem } from '@/components/topic/viewpoint-item';
 import { PrincipleItem } from '@/components/topic/principle-item';
 import { CruxItem } from '@/components/topic/crux-item';
@@ -15,10 +17,27 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const topic = await loadTopic(slug);
-  return { title: topic.title, description: topic.subtitle };
+  const url = absoluteUrl(topicPath(slug));
+  return {
+    title: topic.title,
+    description: topic.subtitle,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      title: topic.title,
+      description: topic.subtitle,
+      url,
+      siteName: 'Steelview',
+    },
+    twitter: { card: 'summary_large_image', title: topic.title, description: topic.subtitle },
+  };
 }
 
 /** The key `bodies` is keyed on. Exported so the collision it guards against is unit-tested. */
@@ -31,25 +50,29 @@ export function bodyKey(kind: ItemKind, id: string): string {
  * Ids are filenames and are unique only *within* a kind's directory — a fact
  * and a principle may legitimately share an id — so the map key must carry
  * the kind too, or one kind's prose silently overwrites another's.
+ *
+ * `slug` is needed because a fact citation in prose renders as a link to that
+ * fact's page, which is inside the topic.
  */
 type BodiedItem = { id: string; body: string };
 
-export async function buildBodies(topic: {
-  facts: BodiedItem[];
-  viewpoints: BodiedItem[];
-  principles: BodiedItem[];
-  cruxes: BodiedItem[];
-}): Promise<Map<string, string>> {
+export async function buildBodies(
+  topic: {
+    viewpoints: BodiedItem[];
+    principles: BodiedItem[];
+    cruxes: BodiedItem[];
+  },
+  slug: string
+): Promise<Map<string, string>> {
   const bodies = new Map<string, string>();
   const kinds: Array<[ItemKind, BodiedItem[]]> = [
-    ['fact', topic.facts],
     ['viewpoint', topic.viewpoints],
     ['principle', topic.principles],
     ['crux', topic.cruxes],
   ];
   for (const [kind, items] of kinds) {
     for (const item of items) {
-      bodies.set(bodyKey(kind, item.id), await renderMarkdown(item.body));
+      bodies.set(bodyKey(kind, item.id), await renderMarkdown(item.body, slug));
     }
   }
   return bodies;
@@ -79,23 +102,14 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
    * Only headline facts are listed. A fact with `supports` is evidence for a
    * larger claim and reads inside that claim, so the list is the set of
    * things the argument is actually about rather than every checkable item on
-   * the page — which is what made it unreadably long.
+   * the page — which is what made it unreadably long. The supporting facts
+   * are still named under the claim they support, so the shape of the
+   * argument is visible without following a link.
    */
   const supportingByParent = supportingFactsByParent(topic.facts);
   const headline = headlineFacts(topic.facts);
   const shownFacts = headline.slice(0, FACTS_SHOWN);
   const restFacts = headline.slice(FACTS_SHOWN);
-  const renderFact = (fact: Topic['facts'][number]) => (
-    <FactItem
-      key={fact.id}
-      fact={fact}
-      bodyHtml={bodies.get(bodyKey('fact', fact.id)) ?? ''}
-      supporting={(supportingByParent.get(fact.id) ?? []).map((child) => ({
-        fact: child,
-        bodyHtml: bodies.get(bodyKey('fact', child.id)) ?? '',
-      }))}
-    />
-  );
 
   return (
     <div className="sv-sections">
@@ -104,11 +118,15 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           <div className="sv-section__head">
             <h2 className="sv-section__title">Facts</h2>
           </div>
-          {shownFacts.map(renderFact)}
+          <FactList
+            slug={topic.slug}
+            facts={shownFacts}
+            supportingByParent={supportingByParent}
+          />
           {restFacts.length > 0 && (
             /*
-             * A native <details> again, for the same reason every item on this
-             * page is one: the collapse has to work with JavaScript off, and
+             * A native <details> again, for the same reason every collapse on
+             * this page is one: it has to work with JavaScript off, and
              * find-in-page, printing and screen readers all understand it.
              * The count is in the label because a bare "Show more" hides how
              * much is behind it — on this page that is most of the evidence.
@@ -122,7 +140,13 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
                   Show fewer
                 </span>
               </summary>
-              <div className="sv-more__body">{restFacts.map(renderFact)}</div>
+              <div className="sv-more__body">
+                <FactList
+                  slug={topic.slug}
+                  facts={restFacts}
+                  supportingByParent={supportingByParent}
+                />
+              </div>
             </details>
           )}
         </section>
@@ -136,6 +160,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           {topic.viewpoints.map((viewpoint) => (
             <ViewpointItem
               key={viewpoint.id}
+              slug={topic.slug}
               viewpoint={viewpoint}
               bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
               factsById={factsById}
@@ -184,7 +209,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   const topic = await loadTopic(slug);
 
-  const bodies = await buildBodies(topic);
+  const bodies = await buildBodies(topic, slug);
 
   /*
    * The page head is the title and nothing else: readers came for the facts,
@@ -196,7 +221,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   return (
     <main className="sv-wrap">
       <HashSync />
-      <FactModal />
       <header className="sv-pagehead">
         <h1 className="sv-title">{topic.title}</h1>
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>

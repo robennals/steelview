@@ -5,7 +5,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import type { Link, Root, Text } from 'mdast';
-import { anchorFor } from './types';
+import { anchorFor, factPath } from './types';
 
 /**
  * Turn raw-HTML nodes into plain text before they reach rehype, so markup in
@@ -45,15 +45,23 @@ function citedFactId(href: string): string | undefined {
 }
 
 /**
- * Mark fact citations so the page can style them and script can intercept
- * them: `class="sv-cite"` carries the citation treatment, `data-fact-id`
- * carries the fact without anything having to re-parse the href.
+ * Rewrite fact citations to the cited fact's own URL, and mark them.
+ *
+ * The *authoring* syntax is unchanged and deliberately so: an author writes
+ * `[reached 944,000](#fact-net-migration-2024)`, exactly as before, and
+ * validation still reads that form. What ships to the page is a real link to
+ * `/topics/<slug>/facts/<id>` — the fact's canonical address — so a citation
+ * is an ordinary link that a crawler can follow, an importer can resolve and a
+ * reader with no JavaScript can click. `class="sv-cite"` carries the citation
+ * treatment; `data-fact-id` names the fact so the client router can turn the
+ * click into a modal without re-parsing the href.
  */
-function remarkMarkFactCitations() {
+function remarkMarkFactCitations(slug: string) {
   return (tree: Root) => {
     visit(tree, 'link', (node: Link) => {
       const factId = citedFactId(node.url);
       if (!factId) return;
+      node.url = factPath(slug, factId);
       const data = (node.data ??= {});
       const props = ((data as { hProperties?: Record<string, unknown> }).hProperties ??= {});
       props.className = ['sv-cite'];
@@ -62,16 +70,33 @@ function remarkMarkFactCitations() {
   };
 }
 
-const processor = unified()
-  .use(remarkParse)
-  .use(remarkGfm)
-  .use(remarkEscapeHtml)
-  .use(remarkMarkFactCitations)
-  .use(remarkRehype)
-  .use(rehypeStringify);
+/**
+ * `slug` is required rather than optional: a citation rendered without one
+ * could only fall back to the old in-page anchor, which no longer exists on
+ * any page — a silent dead link is exactly what the citation rules exist to
+ * prevent, so the type system asks for the topic instead.
+ */
+/** One processor per topic — the only thing that varies between them is the slug. */
+const processors = new Map<string, ReturnType<typeof buildProcessor>>();
 
-export async function renderMarkdown(md: string): Promise<string> {
+function buildProcessor(slug: string) {
+  return unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkEscapeHtml)
+    .use(remarkMarkFactCitations, slug)
+    .use(remarkRehype)
+    .use(rehypeStringify)
+    .freeze();
+}
+
+export async function renderMarkdown(md: string, slug: string): Promise<string> {
   if (!md.trim()) return '';
+  let processor = processors.get(slug);
+  if (!processor) {
+    processor = buildProcessor(slug);
+    processors.set(slug, processor);
+  }
   const file = await processor.process(md);
   return String(file).trim();
 }

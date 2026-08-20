@@ -457,33 +457,33 @@
 
   /* Supporting facts carry the same status alphabet as headline facts: the
      reader learns one set of edges, wherever a fact appears. */
-  :is(.sv-fact, .sv-subfact) {
+  :is(.sv-fact, .sv-subfact, .sv-factpage) {
     padding-left: 0.9rem;
     border-left: 3px solid transparent;
   }
 
-  :is(.sv-fact, .sv-subfact)[data-status="well-supported"] {
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="well-supported"] {
     border-left-color: var(--ink);
   }
 
-  :is(.sv-fact, .sv-subfact)[data-status="contested"] {
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="contested"] {
     border-left-style: double;
     border-left-color: var(--ink-2);
   }
 
-  :is(.sv-fact, .sv-subfact)[data-status="complicated"] {
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="complicated"] {
     border-left-style: dashed;
     border-left-color: var(--ink-3);
   }
 
-  :is(.sv-fact, .sv-subfact)[data-status="not-supported"] {
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="not-supported"] {
     border-left-width: 2px;
     border-left-style: dotted;
     border-left-color: var(--ink-3);
     padding-left: 0.965rem;
   }
 
-  :is(.sv-fact, .sv-subfact)[data-status="unknown"] {
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="unknown"] {
     border-left-width: 1px;
     border-left-color: var(--rule-strong);
     padding-left: 1.025rem;
@@ -636,6 +636,75 @@
 
   .sv-subfact > .sv-item__body {
     padding-bottom: 1.25rem;
+  }
+
+  /* ------------------------------------------------------------- facts list */
+
+  /* A fact row is a link to that fact's own page, not a control that reveals
+     it in place. Both readings still exist — with JavaScript the link is
+     intercepted into the panel over this page, without it the page loads —
+     but either way it is a reference, so the marker is an arrow rather than
+     the plus a disclosure uses. Two different behaviours must not wear the
+     same affordance. */
+
+  .sv-factlist,
+  .sv-factlist__childlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-factrow {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .sv-factrow::after {
+    top: 50%;
+    right: 0.35rem;
+    width: 0.46rem;
+    height: 0.46rem;
+    border: 0;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    border-radius: 0;
+    background: none;
+    color: var(--ink-3);
+    transform: translateY(-50%) rotate(45deg);
+    transition: transform 140ms ease, color 120ms ease;
+  }
+
+  .sv-factrow:hover::after {
+    color: var(--accent);
+    transform: translate(0.2rem, -50%) rotate(45deg);
+  }
+
+  /* The supporting facts are named under the claim they are evidence for
+     rather than listed beside it. They are links like any other row, so the
+     shape of the argument — which detail carries which claim — is legible
+     from the list itself, and reading any of it is one click, not two. */
+  .sv-factlist__children {
+    padding: 0 0 1rem 0.9rem;
+  }
+
+  .sv-factlist__childlabel {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.1rem;
+  }
+
+  .sv-factlist__childlist > .sv-item:last-child {
+    border-bottom: 0;
+  }
+
+  .sv-factlist__childlist .sv-item__summary {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
   }
 
   /* ---------------------------------------------------------- fact bodies */
@@ -1564,14 +1633,130 @@
     box-shadow: 0 0 0 0.18em var(--accent-wash);
   }
 
-  /* --------------------------------------------------------- fact panel */
+  /* --------------------------------------------------- a fact's own page */
 
-  /* The row the panel is currently holding. Keeping its height means the
-     list behind the panel does not reflow while a fact is borrowed, so
-     closing puts the reader back exactly where they were. */
-  .sv-fact-placeholder {
-    border-bottom: 1px solid var(--rule);
+  .sv-factmain {
+    padding-bottom: 3rem;
   }
+
+  .sv-crumbs {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-top: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  @media (min-width: 40rem) {
+    .sv-crumbs {
+      padding-top: 3.5rem;
+    }
+  }
+
+  .sv-crumbs a {
+    color: var(--ink-2);
+  }
+
+  .sv-crumbs a:hover {
+    color: var(--accent);
+  }
+
+  /* A supporting fact says little standing alone — a grant-rate movement or a
+     contract overrun is the out-of-context number this whole site exists to
+     defuse. So the claim it is evidence for is stated above it, in the one
+     accent the page has, before the reader has read a word of the detail. */
+  .sv-parentnote {
+    margin: 0 0 1.4rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--accent);
+  }
+
+  .sv-parentnote__label {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.15rem;
+  }
+
+  .sv-parentnote__claim {
+    display: inline-block;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+    text-wrap: pretty;
+    color: var(--ink);
+  }
+
+  .sv-factpage {
+    /* The status rule runs the height of the fact, as it does on every row. */
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+  }
+
+  .sv-factpage[data-variant="page"] {
+    margin-top: 1.25rem;
+  }
+
+  .sv-factpage__claim {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 1.15rem + 2.1vw, 2.4rem);
+    line-height: 1.13;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .sv-factpage__head .sv-status {
+    margin-top: 0.75rem;
+  }
+
+  .sv-factpage__body {
+    margin-top: 1.5rem;
+    max-width: var(--measure);
+  }
+
+  /* In the panel the claim is the dialog's title, so it is set a step down —
+     it is naming what the reader just asked for, not opening a page. */
+  .sv-factpage[data-variant="modal"] .sv-factpage__claim {
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.55rem);
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+  }
+
+  .sv-factpage[data-variant="modal"] .sv-parentnote {
+    margin-top: 0;
+    margin-bottom: 1.1rem;
+  }
+
+  .sv-factpage[data-variant="modal"] .sv-factpage__body {
+    margin-top: 1.1rem;
+  }
+
+  /* The fact's permanent address, stated on the page rather than left to the
+     URL bar: this is the link a reader is meant to be able to take away. */
+  .sv-permalink {
+    margin: 1.75rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .sv-permalink a {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  /* --------------------------------------------------------- fact panel */
 
   /* Background scroll lock. Chrome inerts the page behind a modal dialog but
      does not stop it scrolling, and on a phone that means the panel and the
@@ -1710,81 +1895,6 @@
     overscroll-behavior: contain;
     padding: 1.5rem 1.4rem;
     padding-bottom: max(2.25rem, env(safe-area-inset-bottom));
-  }
-
-  /* The fact itself is the same <details> element that was in the list —
-     moved here, not copied — so it arrives with its status edge, its claim
-     and its whole body intact. What changes is only presentation: it is
-     already open, its summary is the panel's title rather than a control,
-     and it carries no row rule of its own. */
-  .sv-modal__body > .sv-item {
-    border-bottom: 0;
-    margin-left: -0.15rem;
-  }
-
-  .sv-modal__body > .sv-item > .sv-item__summary {
-    cursor: default;
-    padding: 0 0 0.35rem;
-    min-height: 0;
-  }
-
-  .sv-modal__body > .sv-item > .sv-item__summary::before,
-  .sv-modal__body > .sv-item > .sv-item__summary::after {
-    display: none;
-  }
-
-  .sv-modal__body > .sv-item > .sv-item__summary:hover .sv-item__claim {
-    text-decoration: none;
-  }
-
-  .sv-modal__body > .sv-item > .sv-item__summary .sv-item__claim {
-    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.55rem);
-    line-height: 1.22;
-    letter-spacing: -0.015em;
-    font-weight: 500;
-  }
-
-  .sv-modal__body > .sv-item > .sv-item__body {
-    padding-bottom: 0;
-  }
-
-  /* When a citation was followed to a *supporting* fact, the panel opens the
-     headline claim that fact is evidence for and scrolls down to it — and a
-     supporting fact read with its headline claim off-screen is the
-     out-of-context number this whole page exists to prevent. So in that case
-     the claim stays put: sticky is the only fix that still holds after the
-     reader carries on scrolling.
-
-     Only in that case. A reader who opened a fact from the list is already
-     at its claim, and a permanently pinned four-line heading would spend a
-     third of a phone screen to tell them what they just tapped.
-
-     The negative margins let the backing bleed to the scrollport's side
-     padding; the upward shadow paints over its top padding, so body text
-     passes behind the claim rather than appearing above it. */
-  .sv-modal[data-sv-followed] .sv-modal__body > .sv-item > .sv-item__summary {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    margin: 0 -1.4rem 0 -1.25rem;
-    padding: 0.15rem 1.4rem 0.5rem 1.25rem;
-    background: var(--paper);
-    box-shadow: 0 1px 0 var(--rule), 0 -2.5rem 0 var(--paper);
-  }
-
-  /* Which item the reader actually asked for. `aria-current="location"` on
-     the same element is what a screen reader announces; this is the sighted
-     half of the same answer, in the one accent the page has. */
-  .sv-subfact[data-sv-requested] {
-    box-shadow: inset 2px 0 0 var(--accent);
-  }
-
-  .sv-subfact[data-sv-requested] > .sv-item__summary::before {
-    background: var(--accent-wash);
-  }
-
-  .sv-subfact[data-sv-requested] > .sv-item__summary .sv-item__claim {
-    color: var(--ink);
   }
 }
 

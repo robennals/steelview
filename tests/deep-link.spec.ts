@@ -3,51 +3,57 @@ import { test, expect } from '@playwright/test';
 // These assertions depend on authored uk-immigration content: the headline
 // fact `non-citizens-share-of-convictions-and-prisons`, the supporting fact
 // `net-migration-peak-and-fall` (body text "Net migration in YE December
-// 2025 was 171,000.") and the headline fact
-// `immigration-against-the-long-run` it supports, the fact
-// `public-opinion-on-immigration`, the
-// viewpoint `a-country-should-decide-who-joins-it`, and the fact
-// `health-and-care-relies-on-migrant-workers` (claim "Health and care is the
-// sector most dependent on migrant labour") that that viewpoint cites. Editing any of that content's wording, ids, or
-// cross-references will turn this suite red. The malformed-hash test also
-// names `immigration-against-the-long-run`, which is the first fact in the
-// derived diversity ranking (two viewpoints rank it first) and so renders
-// outside the Facts collapse.
+// 2025 was 171,000.") and the headline fact `immigration-against-the-long-run`
+// it supports, the viewpoint `a-country-should-decide-who-joins-it`, and the
+// fact `health-and-care-relies-on-migrant-workers` (claim "Health and care is
+// the sector most dependent on migrant labour") that that viewpoint lists.
+// Editing any of that content's wording, ids, or cross-references will turn
+// this suite red.
 
-// A fact anchor now opens the shared fact panel (components/topic/fact-modal.tsx)
-// rather than expanding the row in place: the fact element is moved into the
-// dialog, so it is still the one element carrying that anchor. The collapsed
-// Facts group no longer has to be revealed to show a fact behind it — the
-// panel is above the whole page.
-test('loading a fact anchor opens that fact in the panel', async ({ page }) => {
-  const anchor = '#fact-non-citizens-share-of-convictions-and-prisons';
-  await page.goto(`/topics/uk-immigration${anchor}`);
-  await expect(page.locator(`dialog.sv-modal ${anchor}`)).toBeVisible();
-  await expect(page.locator(anchor)).toHaveAttribute('open', '');
+// A fact is addressed by its own URL now, not by an anchor on the topic page:
+// a cold load of that URL is the fact's standalone page, and a click from
+// within the topic is the same route intercepted into a panel over it.
+
+const TOPIC = '/topics/uk-immigration';
+const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
+
+test('a fact URL loaded cold renders the standalone page', async ({ page }) => {
+  await page.goto(factUrl('non-citizens-share-of-convictions-and-prisons'));
+  await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
+  await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
   await expect(
-    page.locator(anchor).getByText('It is not a measurement of offending', { exact: false })
+    page.getByText('It is not a measurement of offending', { exact: false })
   ).toBeVisible();
+  // The page says which topic it belongs to and links back to it.
+  await expect(page.locator('.sv-crumbs').getByRole('link', { name: 'UK immigration' })).toHaveAttribute(
+    'href',
+    TOPIC
+  );
 });
 
-// A supporting fact's `#fact-<id>` anchor is a permanent address, and it sits
-// inside the headline fact it supports — so the anchor opens that parent's
-// panel with the supporting fact expanded inside it.
-test('loading a supporting fact anchor opens the headline fact holding it', async ({ page }) => {
-  await page.goto('/topics/uk-immigration#fact-net-migration-peak-and-fall');
+// A supporting fact is evidence for a headline claim and says little standing
+// alone, so its page states that claim before any of the detail and links to it.
+test('a supporting fact page makes its parent obvious and links to it', async ({ page }) => {
+  await page.goto(factUrl('net-migration-peak-and-fall'));
+  const parent = page.locator('.sv-parentnote__claim');
+  await expect(parent).toBeVisible();
+  await expect(parent).toHaveAttribute('href', factUrl('immigration-against-the-long-run'));
+  await expect(page.locator('.sv-parentnote__label')).toHaveText('Evidence for');
   await expect(
-    page.locator('dialog.sv-modal #fact-immigration-against-the-long-run')
-  ).toHaveAttribute('open', '');
-  await expect(page.locator('#fact-net-migration-peak-and-fall')).toHaveAttribute('open', '');
-  await expect(page.locator('#fact-net-migration-peak-and-fall')).toBeVisible();
-  await expect(
-    page
-      .locator('#fact-net-migration-peak-and-fall')
-      .getByText('Net migration in YE December 2025 was 171,000.', { exact: false })
+    page.getByText('Net migration in YE December 2025 was 171,000.', { exact: false })
   ).toBeVisible();
+
+  // Following it goes to the parent's address. Within a topic a fact always
+  // opens over whatever the reader was reading, so from here that is the
+  // panel — one Back from the fact they came from, and the URL is the
+  // parent's either way.
+  await parent.click();
+  await expect(page).toHaveURL(new RegExp(`${factUrl('immigration-against-the-long-run')}$`));
+  await expect(page.locator('#sv-modal-title')).toContainText('Long-term immigration');
 });
 
 test('clicking a cross-reference chip opens the fact it points at', async ({ page }) => {
-  await page.goto('/topics/uk-immigration');
+  await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
   await viewpoint.locator('summary').click();
   await viewpoint
@@ -55,35 +61,46 @@ test('clicking a cross-reference chip opens the fact it points at', async ({ pag
       name: 'Health and care is the sector most dependent on migrant labour',
     })
     .click();
-  await expect(page.locator('#fact-health-and-care-relies-on-migrant-workers')).toHaveAttribute(
-    'open',
-    ''
+  await expect(page).toHaveURL(new RegExp(`${factUrl('health-and-care-relies-on-migrant-workers')}$`));
+  await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
+    'Health and care is the sector most dependent on migrant labour'
   );
-  await expect(
-    page.locator('dialog.sv-modal #fact-health-and-care-relies-on-migrant-workers')
-  ).toBeVisible();
 });
 
-test('other items stay closed', async ({ page }) => {
-  await page.goto('/topics/uk-immigration#fact-net-migration-peak-and-fall');
-  await expect(page.locator('#fact-public-opinion-on-immigration')).not.toHaveAttribute('open', '');
+// Every fact is addressable, headline and supporting alike, because both are
+// cited — and the topic page is where a crawler finds them.
+test('every fact in the list links to its own page', async ({ page }) => {
+  await page.goto(TOPIC);
+  const rows = page.locator('a.sv-factrow');
+  const total = await rows.count();
+  expect(total).toBeGreaterThan(12);
+  const hrefs = await rows.evaluateAll((links) =>
+    links.map((l) => l.getAttribute('href') ?? '')
+  );
+  for (const href of hrefs) {
+    expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+$/);
+  }
+  expect(new Set(hrefs).size).toBe(total);
 });
 
-// Anchors are permanent addresses and must keep working with no JavaScript to
-// interpret them: the fact is still an element with that id, in the document,
-// and the browser's own fragment navigation takes the reader to it.
+// Addresses are permanent and must keep working with no JavaScript to
+// interpret them: the fact URL is a real, statically generated page.
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('a fact anchor still resolves to the fact in the list', async ({ page }) => {
-    const anchor = '#fact-immigration-against-the-long-run';
-    await page.goto(`/topics/uk-immigration${anchor}`);
-    await expect(page.locator(anchor)).toHaveCount(1);
-    await expect(page.locator(anchor)).toBeVisible();
-    await expect(page.locator('dialog.sv-modal')).toBeHidden();
-    // And it opens where it stands, with a click on its summary.
-    await page.locator(`${anchor} > summary`).click();
-    await expect(page.locator(anchor)).toHaveAttribute('open', '');
+  test('a fact URL still delivers the whole fact', async ({ page }) => {
+    await page.goto(factUrl('immigration-against-the-long-run'));
+    await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
+    await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
+    await expect(page.locator('.sv-stance blockquote').first()).toBeVisible();
+    // Its supporting fact travels with it, and opens where it stands.
+    const child = page.locator('details.sv-subfact').first();
+    const quote = child.getByText('Net migration in YE December 2025 was 171,000', {
+      exact: false,
+    });
+    await expect(quote).toBeHidden();
+    await child.locator('summary').click();
+    await expect(quote).toBeVisible();
   });
 });
 
@@ -92,7 +109,7 @@ test.describe('with JavaScript disabled', () => {
 // and an uncaught throw in a mount effect would otherwise replace the
 // already-delivered static HTML with Next's default error boundary.
 test('a malformed hash does not break the page', async ({ page }) => {
-  await page.goto('/topics/uk-immigration#%zz');
+  await page.goto(`${TOPIC}#%zz`);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  await expect(page.locator('#fact-immigration-against-the-long-run')).toBeVisible();
+  await expect(page.locator('a.sv-factrow').first()).toBeVisible();
 });

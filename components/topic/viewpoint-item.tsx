@@ -16,11 +16,13 @@ function resolve(ids: string[], byId: Map<string, Fact>): Fact[] {
  * stops being a place a partisan will trust.
  */
 export function ViewpointItem({
+  slug,
   viewpoint,
   bodyHtml,
   factsById,
   principlesById,
 }: {
+  slug: string;
   viewpoint: Viewpoint;
   bodyHtml: string;
   factsById: Map<string, Fact>;
@@ -39,16 +41,19 @@ export function ViewpointItem({
     >
       <Prose html={bodyHtml} />
       <ItemChips
+        slug={slug}
         relation="builds"
         label="Builds on"
         facts={resolve(viewpoint.citesFacts, factsById)}
       />
       <ItemChips
+        slug={slug}
         relation="accepts"
         label="Accepts, though it cuts against this view"
         facts={resolve(viewpoint.acknowledges, factsById)}
       />
       <ItemChips
+        slug={slug}
         relation="aside"
         label="Sets aside"
         facts={resolve(viewpoint.setsAside, factsById)}

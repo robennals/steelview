@@ -6,36 +6,47 @@ import type { Topic } from '@/lib/content/types';
 
 /**
  * Regression test for the silent-misattribution bug: ids are filenames and
- * are unique only *within* a kind's directory, so a fact and a principle can
- * legitimately share an id (e.g. both named `democratic-consent`). If the
+ * are unique only *within* a kind's directory, so a viewpoint and a principle
+ * can legitimately share an id (e.g. both named `democratic-consent`). If the
  * `bodies` map is keyed on the bare id, the later kind's body silently
- * overwrites the earlier kind's — the fact would render the principle's
- * prose under its own claim and status badge, with no error anywhere.
+ * overwrites the earlier kind's — one item would render the other's prose
+ * under its own heading, with no error anywhere.
  */
-test('a fact and a principle sharing an id do not overwrite each other in the body map', async () => {
+test('a viewpoint and a principle sharing an id do not overwrite each other in the body map', async () => {
   const topic = {
-    facts: [{ id: 'democratic-consent', body: 'Fact body.' }],
-    viewpoints: [],
+    viewpoints: [{ id: 'democratic-consent', body: 'Viewpoint body.' }],
     principles: [{ id: 'democratic-consent', body: 'Principle body.' }],
     cruxes: [],
   };
-  const bodies = await buildBodies(topic);
-  const factHtml = bodies.get(bodyKey('fact', 'democratic-consent'));
+  const bodies = await buildBodies(topic, 'example');
+  const viewpointHtml = bodies.get(bodyKey('viewpoint', 'democratic-consent'));
   const principleHtml = bodies.get(bodyKey('principle', 'democratic-consent'));
-  assert.ok(factHtml?.includes('Fact body.'), factHtml);
+  assert.ok(viewpointHtml?.includes('Viewpoint body.'), viewpointHtml);
   assert.ok(principleHtml?.includes('Principle body.'), principleHtml);
-  assert.notEqual(factHtml, principleHtml);
+  assert.notEqual(viewpointHtml, principleHtml);
 });
 
-test('items with distinct ids across all four kinds each get their own body', async () => {
+test('items with distinct ids across the kinds each get their own body', async () => {
   const topic = {
-    facts: [{ id: 'a', body: 'fact a' }],
     viewpoints: [{ id: 'a', body: 'viewpoint a' }],
     principles: [{ id: 'a', body: 'principle a' }],
     cruxes: [{ id: 'a', body: 'crux a' }],
   };
-  const bodies = await buildBodies(topic);
-  assert.equal(bodies.size, 4);
+  const bodies = await buildBodies(topic, 'example');
+  assert.equal(bodies.size, 3);
+});
+
+/**
+ * Fact bodies are no longer rendered here: a fact is read on its own page or
+ * in the panel that intercepts it, both of which load it themselves. The map
+ * must not silently keep a stale fact body around for something to render.
+ */
+test('the body map holds no fact bodies', async () => {
+  const bodies = await buildBodies(
+    { viewpoints: [{ id: 'a', body: 'viewpoint a' }], principles: [], cruxes: [] },
+    'example'
+  );
+  assert.equal(bodies.get(bodyKey('fact', 'a')), undefined);
 });
 
 /**
@@ -140,12 +151,12 @@ test('a section with items renders its heading', () => {
 });
 
 /**
- * The Facts list is headline facts only: a supporting fact is evidence for a
- * larger claim and reads inside it, not beside it. Its `#fact-<id>` anchor is
- * a permanent address a viewpoint chip may point at, so it has to survive the
- * move inwards.
+ * The Facts list is headline facts only, with the facts that are evidence for
+ * each named underneath it. A supporting fact must never be a top-level row —
+ * it is evidence for a larger claim and reads inside it — and every row is a
+ * link to that fact's own page, which is where its context and sources live.
  */
-test('a supporting fact renders inside its parent, not as a top-level row', () => {
+test('a supporting fact is listed under its parent, not as a top-level row', () => {
   const factOf = (id: string, supports?: string) => ({
     id,
     claim: `Claim ${id}`,
@@ -180,13 +191,20 @@ test('a supporting fact renders inside its parent, not as a top-level row', () =
 
   // One top-level fact row, and the child is not one of them.
   assert.equal(html.match(/class="sv-item sv-fact"/g)?.length, 1);
-  assert.match(html, /id="fact-parent"/);
-  // The child keeps its anchor, and sits inside the parent's body.
-  assert.match(html, /id="fact-child"/);
-  assert.match(html, /class="sv-item sv-subfact"/);
+  assert.equal(html.match(/class="sv-item sv-subfact"/g)?.length, 1);
+  // Every fact is addressed by its own URL. The in-page `#fact-<id>` anchors
+  // are gone: one thing, one address.
+  assert.doesNotMatch(html, /id="fact-/);
+  assert.match(html, /href="\/topics\/nested\/facts\/parent"/);
+  assert.match(html, /href="\/topics\/nested\/facts\/child"/);
   assert.ok(
-    html.indexOf('id="fact-child"') > html.indexOf('id="fact-parent"'),
-    'the child must render within the parent it supports'
+    html.indexOf('/facts/child') > html.indexOf('/facts/parent'),
+    'the child must be listed under the parent it supports'
   );
   assert.match(html, /Supporting fact</);
+  // The claim and the status of every fact are readable in the list itself,
+  // with nothing opened and no JavaScript run.
+  assert.match(html, /Claim parent/);
+  assert.match(html, /Claim child/);
+  assert.equal(html.match(/Well supported/g)?.length, 2);
 });
