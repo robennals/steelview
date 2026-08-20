@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { lastTrigger } from './cite-nav';
+import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 
 const FOCUSABLE = [
   'a[href]',
@@ -27,38 +28,55 @@ const FOCUSABLE = [
  * Closing is always `router.back()`, whichever way the reader asks for it, so
  * the panel is one entry in their history rather than a mode they can get
  * stuck in: Back leaves it, and the URL they were on returns.
+ *
+ * The route is what is open — this component does not own that state, it
+ * reflects it. `<dialog>`'s own imperative `showModal`/`close` still has to
+ * be driven from an effect, but the effect must survive being mounted,
+ * cleaned up and mounted again without navigating anywhere: React's
+ * StrictMode does exactly that on every first mount in development, and a
+ * `close` *event* fired during that churn used to be read as the reader
+ * asking to leave, snapping the URL back to the topic page before the reader
+ * had touched anything. So `close` is no longer listened for at all — only
+ * the three real exits (Escape, the backdrop, the close button) call
+ * `router.back()`, directly, once, and never from a DOM event or from
+ * cleanup.
  */
 export function FactModal({ labelledBy, children }: { labelledBy: string; children: ReactNode }) {
   const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const leavingRef = useRef(false);
+
+  // The element that opened this modal, captured once per modal instance
+  // rather than re-read from the effect: the effect body runs again on a
+  // StrictMode remount, and `lastTrigger.el` is already nulled by then, which
+  // used to lose the focus-restoration target on every dev-mode open.
+  const [trigger] = useState<HTMLElement | null>(() => {
+    const el = lastTrigger.el;
+    lastTrigger.el = null;
+    return el;
+  });
+
+  const leave = useCallback(() => {
+    if (leavingRef.current) return;
+    leavingRef.current = true;
+    router.back();
+  }, [router]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
     const root = document.documentElement;
-    // Whatever the reader clicked to get here — read once, then released, so a
-    // later navigation cannot restore focus to a stale element.
-    const trigger = lastTrigger.el;
-    lastTrigger.el = null;
 
-    // Set as soon as the panel starts going away, so neither the `close` event
-    // nor the effect's own teardown can ask the router to go back twice.
-    let leaving = false;
-    const leave = () => {
-      if (leaving) return;
-      leaving = true;
-      router.back();
-    };
-
-    // Escape closes the dialog natively, which fires `close`; so does the
-    // backdrop handler and the close button. One exit, one handler.
-    const onClose = () => leave();
+    // Escape (as `dialog`'s `cancel` event) and the initial `showModal` are
+    // both wired here, in a way proven idempotent under mount -> cleanup ->
+    // mount — see lib/modal/wire-modal-exit.ts and its test.
+    const unwireExit = wireModalExit(dialog, leave);
 
     const onClick = (event: MouseEvent) => {
       // The panel does not fill the dialog, so a click that lands on the
       // dialog itself is a click on the backdrop.
-      if (event.target === dialog) dialog.close();
+      if (event.target === dialog) leave();
     };
 
     /**
@@ -102,11 +120,9 @@ export function FactModal({ labelledBy, children }: { labelledBy: string; childr
       }
     };
 
-    dialog.addEventListener('close', onClose);
     dialog.addEventListener('click', onClick);
     dialog.addEventListener('keydown', onKeyDown);
 
-    if (!dialog.open) dialog.showModal();
     // Chrome inerts the page behind a modal dialog but does not stop it
     // scrolling, and on a phone that means the panel and the page moving at
     // once.
@@ -114,26 +130,25 @@ export function FactModal({ labelledBy, children }: { labelledBy: string; childr
     dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
 
     return () => {
-      leaving = true;
-      dialog.removeEventListener('close', onClose);
+      // Deliberately does not close the dialog or navigate: this cleanup
+      // runs on a StrictMode remount as well as on the real unmount that
+      // follows a genuine close, and the two are indistinguishable from
+      // here. The dialog element itself goes away with the component when
+      // the route that renders it stops matching — that is the real close.
+      unwireExit();
       dialog.removeEventListener('click', onClick);
       dialog.removeEventListener('keydown', onKeyDown);
       root.classList.remove('sv-modal-open');
-      if (dialog.open) dialog.close();
       if (trigger?.isConnected) trigger.focus();
     };
-  }, [router]);
+  }, [leave, trigger]);
 
   return (
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
       <div className="sv-modal__panel">
         <div className="sv-modal__bar">
           <p className="sv-modal__eyebrow">Fact</p>
-          <button
-            type="button"
-            className="sv-modal__close"
-            onClick={() => dialogRef.current?.close()}
-          >
+          <button type="button" className="sv-modal__close" onClick={leave}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
               <path d="M2 2 L12 12 M12 2 L2 12" stroke="currentColor" strokeWidth="1.5" />

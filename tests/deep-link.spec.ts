@@ -67,13 +67,17 @@ test('clicking a cross-reference chip opens the fact it points at', async ({ pag
   );
 });
 
-// Every fact is addressable, headline and supporting alike, because both are
-// cited — and the topic page is where a crawler finds them.
-test('every fact in the list links to its own page', async ({ page }) => {
+// Every headline fact in the list links to its own page. A supporting fact is
+// addressable too — it is cited just as readily — but it is not a row in this
+// list; it is reachable from the headline fact it supports, or directly by
+// its own URL (see crawlability.spec.ts for both being in the sitemap).
+test('every headline fact in the list links to its own page', async ({ page }) => {
   await page.goto(TOPIC);
+  // The rest of the headline facts sit behind the Facts collapse.
+  await page.locator('details.sv-more > summary').click();
   const rows = page.locator('a.sv-factrow');
   const total = await rows.count();
-  expect(total).toBeGreaterThan(12);
+  expect(total).toBe(12);
   const hrefs = await rows.evaluateAll((links) =>
     links.map((l) => l.getAttribute('href') ?? '')
   );

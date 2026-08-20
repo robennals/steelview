@@ -36,21 +36,31 @@ test('the Facts list states every claim and status without opening anything', as
   );
 });
 
-// Facts are two levels: headline claims, and the facts that are evidence for
-// them. A supporting fact must not be a top-level row, and the reader must be
-// able to see which detail carries which claim without following a link.
-test('a supporting fact is listed under the headline fact it supports', async ({ page }) => {
+// Regression pin: the Facts list used to render each headline fact's
+// supporting facts inline — claim, status and a "Supporting fact" label —
+// before the reader had opened anything. That content was not clickable (the
+// row's link only covered the headline claim above it), so a reader clicking
+// what looked like part of a fact got nothing, and a crawler indexed
+// "supporting fact" text no link on the page actually led to. A row in the
+// list is the claim and its status, nothing else: the supporting fact and its
+// own address live on the parent fact's own reading, not in this list.
+test('the Facts list shows no supporting fact before anything is opened', async ({ page }) => {
   await page.goto(TOPIC);
-  const parent = page.locator('.sv-fact', {
-    has: page.locator(`a.sv-factrow[href="${factUrl('immigration-against-the-long-run')}"]`),
+  const factsSection = page.locator('.sv-section', {
+    has: page.getByRole('heading', { name: 'Facts', level: 2 }),
   });
-  const child = parent.locator(`a.sv-factrow[href="${factUrl('net-migration-peak-and-fall')}"]`);
-  await expect(child).toBeVisible();
-  await expect(parent.locator('.sv-factlist__childlabel')).toHaveText('Supporting fact');
-  // …and it is not one of the top-level rows.
+
+  // The supporting fact's own claim text is nowhere in the section...
   await expect(
-    page.locator(`.sv-factlist > .sv-fact > a[href="${factUrl('net-migration-peak-and-fall')}"]`)
+    factsSection.getByText('Net migration in YE December 2025 was 171,000', { exact: false })
   ).toHaveCount(0);
+  // ...and neither is any trace of the label that used to introduce it.
+  await expect(factsSection.getByText('Supporting fact', { exact: false })).toHaveCount(0);
+  await expect(factsSection.locator('.sv-subfact')).toHaveCount(0);
+  // The headline fact it supports is still there, as an ordinary row.
+  await expect(
+    factsSection.locator(`a.sv-factrow[href="${factUrl('immigration-against-the-long-run')}"]`)
+  ).toBeVisible();
 });
 
 test('a viewpoint lists the facts it builds on and accepts', async ({ page }) => {

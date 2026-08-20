@@ -9,7 +9,6 @@ const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
 const HEADLINE = 'immigration-against-the-long-run';
-const SUPPORTING = 'net-migration-peak-and-fall';
 const dialog = 'dialog.sv-modal';
 
 test.describe('with JavaScript disabled', () => {
@@ -81,7 +80,16 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
 test('a supporting fact opens with the claim it supports already in view', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(TOPIC);
-  await page.locator(row(SUPPORTING)).click();
+  // The supporting fact is not a row in the Facts list; it is reached the way
+  // a reader actually reaches it, via the "Builds on" citation chip in the
+  // viewpoint that cites it.
+  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
+  await viewpoint.locator('summary').first().click();
+  await viewpoint
+    .getByRole('link', {
+      name: 'Net migration to the UK peaked at 944,000 in the year to March 2023 and had fallen to 171,000 by the year to December 2025',
+    })
+    .click();
 
   const parent = page.locator(`${dialog} .sv-parentnote`);
   const claim = page.locator(`${dialog} #sv-modal-title`);

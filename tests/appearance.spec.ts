@@ -7,7 +7,6 @@ import { test, expect } from '@playwright/test';
 
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
-const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
 
 test('the topic page renders at phone width without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -27,21 +26,16 @@ test('a fact page renders at phone width without horizontal overflow', async ({ 
   expect(overflows).toBe(false);
 });
 
-// Status is announced in text wherever a fact appears — now including the
-// list itself, where every claim carries its status without anything opened.
+// Status is announced in text wherever a fact appears: on a headline row in
+// the list, and on a supporting fact's own page — the list itself carries
+// only headline claims now, so a supporting fact's status is checked where
+// it actually renders.
 test('every fact status is announced in text, not colour alone', async ({ page }) => {
-  await page.goto(TOPIC);
+  await page.goto(factUrl('net-migration-peak-and-fall'));
   await expect(
-    page.locator(row('net-migration-peak-and-fall')).getByText('Well supported', { exact: true })
+    page.locator('.sv-factpage__head').getByText('Well supported', { exact: true })
   ).toBeVisible();
 
-  // Facts past the third sit behind the Facts collapse, group and all.
-  await page.locator('details.sv-more > summary').click();
-  await expect(
-    page.locator(row('public-opinion-on-immigration')).getByText('Complicated', { exact: true })
-  ).toBeVisible();
-
-  // And again on the fact's own page.
   await page.goto(factUrl('public-opinion-on-immigration'));
   await expect(
     page.locator('.sv-factpage__head').getByText('Complicated', { exact: true })

@@ -33,6 +33,25 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
   await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(1);
 });
 
+// Regression pin: the row's link used to end where the claim text did, so
+// only the top slice of the row actually opened anything — the rest looked
+// like part of a clickable row but silently did nothing. The whole row is
+// now the link, so a click anywhere in it, including its bottom edge where
+// no text sits, must open the fact.
+test('the whole fact row is clickable, not just the claim text', async ({ page }) => {
+  await page.goto(TOPIC);
+  const link = page.locator(row(HEADLINE));
+  const box = await link.boundingBox();
+  if (!box) throw new Error('fact row has no layout box');
+
+  // A point just inside the row's bottom edge, away from the claim text and
+  // the status badge, which both sit nearer the top.
+  await page.mouse.click(box.x + box.width / 2, box.y + box.height - 2);
+
+  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
+  await expect(page.locator(dialog)).toBeVisible();
+});
+
 test('a fact chip in a viewpoint opens the same panel', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
@@ -115,12 +134,21 @@ test('closing the panel takes the fact off the URL', async ({ page }) => {
 
 // A supporting fact has an address of its own, and its panel opens by naming
 // the headline claim it is evidence for — a supporting fact read without that
-// claim is the out-of-context number this page exists to prevent.
+// claim is the out-of-context number this page exists to prevent. It is not a
+// row in the Facts list (see topic-page.spec.ts), so it is reached here the
+// way a reader actually reaches it outside its parent's detail: a citation
+// chip, in this case the "Builds on" chip in the viewpoint that cites it.
 test('a supporting fact opens its own panel, which names the claim it supports', async ({
   page,
 }) => {
   await page.goto(TOPIC);
-  await page.locator(row(SUPPORTING)).click();
+  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
+  await viewpoint.locator('summary').first().click();
+  await viewpoint
+    .getByRole('link', {
+      name: 'Net migration to the UK peaked at 944,000 in the year to March 2023 and had fallen to 171,000 by the year to December 2025',
+    })
+    .click();
 
   await expect(page).toHaveURL(new RegExp(`${factUrl(SUPPORTING)}$`));
   await expect(page.locator(`${dialog} .sv-parentnote__claim`)).toHaveAttribute(

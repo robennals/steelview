@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { loadTopic, listTopicSlugs } from '@/lib/content/load';
-import { headlineFacts, supportingFactsByParent } from '@/lib/content/rank-facts';
+import { headlineFacts } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
 import { absoluteUrl } from '@/lib/site';
@@ -99,14 +99,14 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   /*
-   * Only headline facts are listed. A fact with `supports` is evidence for a
-   * larger claim and reads inside that claim, so the list is the set of
-   * things the argument is actually about rather than every checkable item on
-   * the page — which is what made it unreadably long. The supporting facts
-   * are still named under the claim they support, so the shape of the
-   * argument is visible without following a link.
+   * Only headline facts are listed, and a row is only its claim and status.
+   * A fact with `supports` is evidence for a larger claim and reads inside
+   * that claim, so the list is the set of things the argument is actually
+   * about rather than every checkable item on the page — which is what made
+   * it unreadably long. The supporting facts, and the shape of the argument
+   * they carry, live on the parent fact's own reading (its modal or page),
+   * not in this list — see `FactList` for why.
    */
-  const supportingByParent = supportingFactsByParent(topic.facts);
   const headline = headlineFacts(topic.facts);
   const shownFacts = headline.slice(0, FACTS_SHOWN);
   const restFacts = headline.slice(FACTS_SHOWN);
@@ -118,11 +118,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           <div className="sv-section__head">
             <h2 className="sv-section__title">Facts</h2>
           </div>
-          <FactList
-            slug={topic.slug}
-            facts={shownFacts}
-            supportingByParent={supportingByParent}
-          />
+          <FactList slug={topic.slug} facts={shownFacts} />
           {restFacts.length > 0 && (
             /*
              * A native <details> again, for the same reason every collapse on
@@ -141,11 +137,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
                 </span>
               </summary>
               <div className="sv-more__body">
-                <FactList
-                  slug={topic.slug}
-                  facts={restFacts}
-                  supportingByParent={supportingByParent}
-                />
+                <FactList slug={topic.slug} facts={restFacts} />
               </div>
             </details>
           )}

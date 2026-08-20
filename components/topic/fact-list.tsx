@@ -4,71 +4,31 @@ import { factPath } from '@/lib/content/types';
 import { StatusBadge } from './status-badge';
 
 /**
- * The link that is a fact row: its claim, then its status.
+ * The Facts list: headline claims and nothing else.
  *
- * The whole row is the link. Every fact is a real page now, so the row does
- * not need to be a control that reveals something — it needs to be what it
- * always was semantically, a reference to a fact, and the honest markup for
- * that is an anchor. With JavaScript it is intercepted into the modal over
- * this page; without it, it loads the fact's page. Either way the reader gets
- * the same fact, and a crawler gets a link it can follow.
- */
-function FactRowLink({ slug, fact }: { slug: string; fact: Fact }) {
-  return (
-    <Link className="sv-item__summary sv-factrow" href={factPath(slug, fact.id)}>
-      <span className="sv-item__claim">{fact.claim}</span> <StatusBadge status={fact.status} />
-    </Link>
-  );
-}
-
-/**
- * The Facts list: headline claims, each with the facts that are evidence for
- * it named underneath.
+ * A row is the claim and its status — full stop. Supporting facts, bodies,
+ * charts and sources all belong to the fact's own reading, which is the
+ * modal or the standalone page, not this list. Naming a supporting fact's
+ * claim here used to seem like a shortcut for the reader, but it put
+ * unclickable text under a row that looked, and was described in its
+ * accessible text, like part of a single control — a reader (or a crawler)
+ * could not tell the two apart. The nesting relationship — which fact is
+ * evidence for which claim — is still visible: it is on the parent fact's
+ * page and in the modal, right above the supporting fact it belongs to.
  *
- * The nesting is kept even though every fact now has a page of its own,
- * because the shape of the argument — which detail is evidence for which claim
- * — is itself a fact about the topic, and a reader should be able to see it
- * without a round trip. What no longer happens here is the *reading*: a fact's
- * context, chart and sources are on the fact's page, or in the modal over this
- * one, not expanded inside the list.
+ * The whole row is the link, with JavaScript intercepted into the modal over
+ * this page and, without it, an ordinary navigation to the fact's page.
  */
-export function FactList({
-  slug,
-  facts,
-  supportingByParent,
-}: {
-  slug: string;
-  facts: Fact[];
-  supportingByParent: Map<string, Fact[]>;
-}) {
+export function FactList({ slug, facts }: { slug: string; facts: Fact[] }) {
   return (
     <ol className="sv-factlist">
-      {facts.map((fact) => {
-        const children = supportingByParent.get(fact.id) ?? [];
-        return (
-          <li key={fact.id} className="sv-item sv-fact" data-status={fact.status}>
-            <FactRowLink slug={slug} fact={fact} />
-            {children.length > 0 && (
-              <div className="sv-factlist__children">
-                <p className="sv-factlist__childlabel">
-                  Supporting {children.length === 1 ? 'fact' : 'facts'}
-                </p>
-                <ol className="sv-factlist__childlist">
-                  {children.map((child) => (
-                    <li
-                      key={child.id}
-                      className="sv-item sv-subfact"
-                      data-status={child.status}
-                    >
-                      <FactRowLink slug={slug} fact={child} />
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-          </li>
-        );
-      })}
+      {facts.map((fact) => (
+        <li key={fact.id} className="sv-item sv-fact" data-status={fact.status}>
+          <Link className="sv-item__summary sv-factrow" href={factPath(slug, fact.id)}>
+            <span className="sv-item__claim">{fact.claim}</span> <StatusBadge status={fact.status} />
+          </Link>
+        </li>
+      ))}
     </ol>
   );
 }

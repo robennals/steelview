@@ -189,22 +189,21 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
   };
   const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
 
-  // One top-level fact row, and the child is not one of them.
+  // Only the headline fact is a row in the list — a fact that supports
+  // another is not, whatever the reader has or hasn't clicked yet.
   assert.equal(html.match(/class="sv-item sv-fact"/g)?.length, 1);
-  assert.equal(html.match(/class="sv-item sv-subfact"/g)?.length, 1);
+  assert.equal(html.match(/class="sv-item sv-subfact"/g), null);
   // Every fact is addressed by its own URL. The in-page `#fact-<id>` anchors
   // are gone: one thing, one address.
   assert.doesNotMatch(html, /id="fact-/);
   assert.match(html, /href="\/topics\/nested\/facts\/parent"/);
-  assert.match(html, /href="\/topics\/nested\/facts\/child"/);
-  assert.ok(
-    html.indexOf('/facts/child') > html.indexOf('/facts/parent'),
-    'the child must be listed under the parent it supports'
-  );
-  assert.match(html, /Supporting fact</);
-  // The claim and the status of every fact are readable in the list itself,
-  // with nothing opened and no JavaScript run.
+  // The child's claim, its status and the fact that it supports something are
+  // all reading a reader would only get by opening the parent fact — none of
+  // it belongs in the list itself, so none of it is here.
+  assert.doesNotMatch(html, /href="\/topics\/nested\/facts\/child"/);
+  assert.doesNotMatch(html, /Claim child/);
+  assert.doesNotMatch(html, /Supporting fact/);
+  // The headline row itself still reads: claim and status, nothing else.
   assert.match(html, /Claim parent/);
-  assert.match(html, /Claim child/);
-  assert.equal(html.match(/Well supported/g)?.length, 2);
+  assert.equal(html.match(/Well supported/g)?.length, 1);
 });
