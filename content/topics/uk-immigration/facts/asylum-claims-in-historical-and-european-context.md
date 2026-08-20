@@ -1,7 +1,6 @@
 ---
 claim: "Around 108,000 people claimed asylum in the UK in 2024, the highest since records began in 1979 and just above the 2002 peak — but per head of population that was only the seventeenth-largest intake in the EU+, at 16 claims per 10,000 residents"
 status: well-supported
-order: 4
 sources:
   - stance: supports
     quote: "In 2024, around 108,000 people claimed asylum in the UK, the highest since records began in 1979. This surpassed the previous record of around 103,000 people in 2002, driven by wars in Somalia, Afghanistan, and Iraq (Figure 1)."

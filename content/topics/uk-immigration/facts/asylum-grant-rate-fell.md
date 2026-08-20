@@ -1,7 +1,6 @@
 ---
 claim: "The share of asylum claims granted at initial decision has fallen from a peak of 77% in 2022 to 39%"
 status: well-supported
-order: 21
 sources:
   - stance: supports
     quote: "the grant rate in the YE March 2026 was 39% and has now returned to a similar level to the period before 2020, down from 49% in the previous year and substantially below the peak grant rate of 77% in the YE September 2022"

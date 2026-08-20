@@ -1,7 +1,6 @@
 ---
 claim: "Immigration raises housing costs, by a small amount on average and by more where planning constraints prevent supply responding"
 status: well-supported
-order: 16
 sources:
   - stance: supports
     quote: "Second, we highlight that estimated effects vary across contexts and methodologies. Housing supply responsiveness plays a key role: in dense areas or where planning constraints limit construction, immigration-driven demand shocks are more likely to raise prices."

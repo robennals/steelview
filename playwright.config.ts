@@ -1,11 +1,17 @@
 import { defineConfig } from '@playwright/test';
 
+// The port is configurable so a stray dev server on 3000 cannot silently
+// serve stale content to the suite: `PORT=3111 pnpm test:e2e` starts and
+// tests its own build.
+const PORT = process.env.PORT ?? '3000';
+const baseURL = `http://localhost:${PORT}`;
+
 export default defineConfig({
   testDir: './tests',
-  use: { baseURL: 'http://localhost:3000' },
+  use: { baseURL },
   webServer: {
-    command: 'pnpm build && pnpm start',
-    url: 'http://localhost:3000',
+    command: `pnpm build && pnpm start --port ${PORT}`,
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
   },

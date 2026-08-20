@@ -1,6 +1,7 @@
 ---
 name: We have a moral duty to help people fleeing danger
 summary: The duty is owed to people, not managed as a quota, and it is owed whether or not the people owed it turn out to be profitable.
+order: 5
 citesFacts:
   - asylum-backlog-and-hotel-use-have-fallen
   - how-people-actually-arrive

@@ -1,7 +1,6 @@
 ---
 claim: "Of the 813,000 people who moved to the UK long-term in 2025, about 46,500 were detected arriving by illegal routes — 5.7% — while study was the largest single reason for non-EU+ arrivals at 47%, ahead of work at 23% and asylum at 14%"
 status: well-supported
-order: 3
 sources:
   - stance: supports
     quote: "The provisional estimate for total long-term immigration YE December 2025 is 813,000, a decrease of 20% from the updated YE December 2024 estimate of 1,012,000; this continues a downward trend in our long-term immigration estimates from the peak at 1,469,000 in March 2023."

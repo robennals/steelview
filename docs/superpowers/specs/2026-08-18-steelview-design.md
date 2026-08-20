@@ -10,11 +10,53 @@ Signed-in readers can comment on any individual item and suggest facts or
 viewpoints that are missing. Editorial content lives in the repo as markdown;
 comments live in Neon Postgres.
 
+## Purpose
+
+> The goal of this project is to avoid misleading arguments and ground stuff
+> in context.
+
+That is the whole of it, and everything below is machinery in its service.
+The failure this site exists to prevent is not the *false* claim — false
+claims are easy to catch and rare in serious argument. It is the **true claim
+that misleads**: the real number on the wrong denominator, the real trend
+measured from a cherry-picked start date, the real fact that only sounds
+decisive because nothing is standing next to it.
+
+Four mechanisms carry that purpose, and an author working on a new topic
+should understand what each is *for*, not just what it requires:
+
+- **[The status rubric](#the-fact-status-rubric)** stops a viewpoint being
+  built on a claim that cannot bear the weight. Its centre is the instruction
+  to *narrow before you contest*: a claim stated so broadly that it needs a
+  `contested` badge is usually a claim someone is going to overstate.
+- **[The sourcing rule](#validation)** — every fact carries at least one
+  quoted source, whatever its status, and every figure asserted in prose is
+  [audited against those quotes](#the-figures-audit). Nothing is presented as
+  a fact on this page without a quote a reader can go and check.
+- **[The context requirement](#fact)** — every fact carries a body saying what
+  it measures and does not, how it compares, how confident to be, and what it
+  is commonly mistaken for. A number alone is the raw material of a misleading
+  argument; the body is where it is defused, at the point of use.
+- **[The time-series requirement](#time-series-on-facts)** — a fact that moves
+  over time should show its whole published series, not a window an author
+  chose. Picking the start date is the single easiest way to mislead with
+  entirely true numbers.
+
+A fifth mechanism serves it structurally: **[fact order is derived, not
+authored](#ordering)**. The Facts section shows three facts before it
+collapses, so whatever picks those three is, in practice, the page's opening
+argument — and handing that choice to one editor's ranking would be a
+misleading argument built out of true facts and nothing else.
+
 ## Contents
 
+- [Purpose](#purpose)
 - [Stack](#stack)
 - [Content model](#content-model)
+- [Ordering](#ordering)
 - [The fact-status rubric](#the-fact-status-rubric)
+- [The figures audit](#the-figures-audit)
+- [Time series on facts](#time-series-on-facts)
 - [Reading experience](#reading-experience)
 - [Auth](#auth)
 - [Comments and moderation](#comments-and-moderation)
@@ -81,11 +123,38 @@ sources:
     publisher: Office for National Statistics
     date: 2024-11
 ---
-Optional prose: what this number does and does not measure.
+The context. Required — see the checklist below.
 ```
 
-The body is optional for a plainly-established fact and expected for anything
-tagged `contested` or `complicated`, where it must explain *why*.
+A fact has **no `order` field**. Reading order is derived from what the
+viewpoints rank; see [Ordering](#ordering).
+
+**At least one source, whatever the status.** A `complicated` or `unknown`
+fact is making a claim about the evidence just as firmly as a `well-supported`
+one is making a claim about the world, and an unsourced one is an assertion in
+a badge. The build rejects a sourceless fact.
+
+**The body is required, on every fact.** A claim plus a status badge is
+exactly the true-but-misleading number this project exists to defuse; the body
+is where it gets grounded. The build enforces that a body exists; whether it
+is a *good* body is editorial judgement, against this checklist:
+
+1. **What it measures and what it does not.** Scope and denominator. Most
+   misleading immigration numbers are definitional rather than false — net
+   versus gross, long-term versus all arrivals, applications versus grants,
+   foreign-born versus foreign-national. Say which one this is, and say which
+   one a reader may be assuming.
+2. **How it compares.** The time series where one exists, and a baseline where
+   one is meaningful: other countries, other categories, the historical norm.
+   A number with nothing beside it can be made to mean anything.
+3. **How confident to be.** Provisional status, known revisions, sample
+   limits, and how much the figure has moved between releases.
+4. **What it is commonly mistaken for.** Name the misleading argument this
+   fact is most often recruited into, and defuse it here, at the point of use
+   — not in a viewpoint, where only one side's readers will meet it.
+
+Items 1 and 4 are what stop a fact being quoted against itself, and are the
+two authors skip. Do not skip them.
 
 ### Viewpoint
 
@@ -93,6 +162,7 @@ tagged `contested` or `complicated`, where it must explain *why*.
 ---
 name: Control first
 summary: One line a holder of this view would accept as fair.
+order: 1                  # position in the Viewpoints section — see below
 citesFacts: [net-migration-2024, wage-effect-low-skill]
 acknowledges: [fiscal-contribution-net-positive]
 setsAside: [benefit-tourism-scale]
@@ -113,6 +183,28 @@ A viewpoint relates to a fact in exactly one of three ways:
   `unknown` facts live. The body should say briefly why the viewpoint does not
   lean on them; naming them is what stops a reader thinking the page ducked
   the question.
+
+The order of `citesFacts` and of `acknowledges` is meaningful — it is this
+viewpoint's own ranking of what matters, and it feeds the derived fact order
+(see [Ordering](#ordering)). Put the fact the argument would open on first.
+
+**`order` is required, and choosing it is an editorial decision.** Sorting
+viewpoints by id meant a retitle silently reordered the sides and the page
+opened on whichever one happened to sort first. The rule for choosing it:
+
+> **The order must not group one side of the argument together.** It should
+> alternate across the spectrum, so that no run of adjacent viewpoints reads
+> as the page's own position and no side is presented as the "and also" at the
+> bottom.
+
+Prefer to open on a viewpoint that is not at either pole, so the first thing a
+reader meets cannot be read as an endorsement, and then alternate. The
+uk-immigration ordering is: `the-right-kind-of-immigration-not-less-of-it`
+(1, hardest to place on the axis), then `too-much-too-fast-damages-the-social-fabric`
+(2), `immigration-makes-britain-better-off` (3),
+`a-country-should-decide-who-joins-it` (4),
+`moral-duty-to-help-people-fleeing-danger` (5) — restrictive and expansive
+alternating, no two adjacent on the same side.
 
 ### Principle
 
@@ -154,20 +246,148 @@ enforced and each has a unit test:
 2. `citesFacts` contains only `well-supported` or `contested` facts;
    `acknowledges` contains only `well-supported` facts; a fact appears at most
    once across the three lists on any one viewpoint.
-3. A `well-supported` or `not-supported` fact has at least one source.
-4. A `contested` fact has at least one `supports` **and** one `contests`
-   source, and a non-empty body.
-5. Every viewpoint has a non-empty `acknowledges`.
-6. Every crux `divides` at least two viewpoints and gives a position for each.
-7. No orphans: every fact appears in some viewpoint's `citesFacts`,
+3. **Every fact has at least one source**, whatever its status.
+4. **Every fact has a non-empty body.**
+5. A `contested` fact has at least one `supports` **and** one `contests`
+   source.
+6. Every viewpoint has a non-empty `acknowledges`.
+7. Every crux `divides` at least two viewpoints and gives a position for each.
+8. No orphans: every fact appears in some viewpoint's `citesFacts`,
    `acknowledges`, or `setsAside`, and every principle is held by at least one
    viewpoint.
+9. A topic has at least one fact and at least two viewpoints.
+10. `heldBy` and a viewpoint's `principles` agree in both directions.
 
-Rule 7 keeps the Facts section from silting up with true-but-irrelevant
+Rules 3 and 4 are the sourcing rule and the context requirement from
+[Purpose](#purpose), in their enforceable form. Both used to be conditional on
+status — sources for `well-supported` and `not-supported`, a body for
+`contested` — which left the exact gap the rules exist to close: a
+`complicated` or `unknown` fact could ship as a sourceless, contextless
+assertion, and those are precisely the facts a reader is least equipped to
+check.
+
+Rule 2 also does load-bearing work for ordering. Because `citesFacts` accepts
+only `well-supported` or `contested` facts and `acknowledges` only
+`well-supported` ones, a `complicated`, `unknown` or `not-supported` fact can
+appear in no list but `setsAside` — and `setsAside` is not ranked. So those
+three statuses can never reach the top of the Facts section, without the
+ranking algorithm needing a special case: *complicated and unknown are less
+important, because they are not claiming anything.*
+
+Rule 8 keeps the Facts section from silting up with true-but-irrelevant
 material. A fact that matters only because readers expect to hear about it
 belongs in the `setsAside` list of the viewpoint that would otherwise raise
 it — that is the honest place for it, and it forces someone to say out loud
 which side the talking point was doing work for.
+
+## Ordering
+
+Reading order is a claim about importance, so on this page it is derived
+rather than authored. There is no `order` on a fact.
+
+### Fact order: diversity ranking
+
+Implemented in `lib/content/rank-facts.ts`, with unit tests in
+`rank-facts.test.ts`.
+
+Each viewpoint gets to rank the facts *it* thinks matter, and the page shows a
+set prioritised to be the facts considered most important by a **diverse** set
+of views. Nothing gets its second-best fact shown before every viewpoint has
+had its first.
+
+1. **A viewpoint's ranking** is its `citesFacts`, in the order written, then
+   its `acknowledges`, in the order written. What it argues *from* outranks
+   what it concedes. Facts it only `setsAside` are not ranked by it at all —
+   setting a claim aside is a statement that it does no work here.
+2. **Round-robin by rank.** Round 1 places every viewpoint's 1st-ranked fact,
+   round 2 every viewpoint's 2nd, and so on. No viewpoint's *k+1*th fact may
+   be placed before every viewpoint's *k*th has been placed or that viewpoint
+   has run out. A viewpoint with twenty ranked facts cannot bury one with
+   three.
+3. **A shared pick costs both viewpoints their turn.** Indexing is into the
+   viewpoint's own list, not into "its highest unplaced fact". If two
+   viewpoints both rank fact X first, X is placed once and *neither* may
+   substitute something else into round 1. Agreeing about what matters does
+   not win a side extra slots.
+4. **Within a round, breadth of agreement orders the picks.** A fact chosen by
+   more viewpoints in that round comes first. Ties break on the total number
+   of viewpoints referencing the fact anywhere (including `setsAside`), then
+   on id. Deliberately **not** on file order or on a viewpoint's position in
+   the section: either would permanently hand slot 1 to the same side, and
+   even-handedness between viewpoints is a hard requirement, not a preference.
+5. **Unranked facts form a tail**, ordered by status (`well-supported`,
+   `contested`, `complicated`, `unknown`, `not-supported`) then id. Per rule 2
+   above, every `complicated`, `unknown` and `not-supported` fact lands here.
+
+The result does not depend on the order of the viewpoint files or the fact
+files. On uk-immigration it opens on `immigration-against-the-long-run` (the
+first-ranked fact of two viewpoints), then
+`skilled-worker-fiscal-gain-concentrated` and `how-people-actually-arrive` —
+the first-ranked facts of the expansive and the technocratic viewpoints
+respectively. Three facts, three different sides' opening move.
+
+### Viewpoint order
+
+Explicit, required, and editorial: the `order` field, described under
+[Viewpoint](#viewpoint). Sorted ascending, id as tie-break.
+
+## The figures audit
+
+`scripts/check-figures.ts`, run as `pnpm check:figures` and in CI.
+
+The sourcing rule extends to prose. A figure asserted in a viewpoint, a crux
+or a fact body is presented as a fact just as firmly as one in a `claim`
+field, and nothing was checking it. The audit:
+
+- scans the markdown **bodies** of every content item (not frontmatter —
+  `claim` is already covered by the fact's own sources, and a crux `holds` is
+  a statement of belief rather than an assertion of fact);
+- extracts money (`£1,234`, `£15.3 billion`), percentage (`5.7%`) and
+  comma-grouped thousands (`46,500`) patterns, and deliberately not years,
+  ordinals or bare small integers — those are not figures anyone can
+  cherry-pick, and matching them would bury the findings;
+- reports any figure that appears in no `quote` on the same topic, normalising
+  for line-wrapped quotes, thousands separators and scale words so a real
+  match is not missed on formatting alone;
+- **fails the build** on an unmatched figure;
+- reports, **advisorily and without failing**, any fact whose `claim` carries
+  a figure but which has no [time series](#time-series-on-facts).
+
+The right fix for an unmatched figure is usually not to delete it but to add
+the source that already justifies it — or, where the figure is a ratio the
+author computed from two sourced numbers, to show the arithmetic in the body
+so a reader can follow it from quoted inputs.
+
+## Time series on facts
+
+*Not built. This section specifies the next round.*
+
+A `series` field on a fact: time-series data plus its own quoted source,
+rendered as a small SVG chart in the expanded fact.
+
+The motivation is the sharpest case of a true-but-misleading claim:
+
+> It's very easy to give a misleading picture by cherry picking dates. Harder
+> if we require always showing a time series.
+
+Two rules make it work, and the second is the one that actually does the
+anti-cherry-picking:
+
+1. **A series carries its own source**, quoted, like any other claim on the
+   page. The chart is a factual assertion and gets the same treatment as one.
+2. **A series must span the full range the source publishes**, not a window
+   the author chose. An author-chosen window is precisely the abuse the
+   feature exists to prevent, so "show the series" without "show all of it"
+   would ship the problem inside the solution. Where a source genuinely
+   changes basis part-way (a definitional break, a new collection method),
+   the series still runs end to end and the break is annotated rather than
+   trimmed away.
+
+Series are wanted "ideally", not always — some facts are point-in-time and
+have no series to show. That is why `check-figures.ts` reports missing series
+as an advisory rather than an error, and why its advisory output already reads
+a `series` key from raw frontmatter: when the field lands, the advisory list
+shrinks on its own with no change to the script.
 
 ## The fact-status rubric
 
@@ -207,7 +427,10 @@ a definition most people do not have in mind (`complicated`), the evidence
 genuinely does not settle it (`unknown`), or it is contrary to the evidence
 (`not-supported`). Their job is to stop a reader thinking "they ignored X",
 not to carry argumentative weight. None of these may be cited by a viewpoint
-as support; they may appear only in a viewpoint's `setsAside` list.
+as support; they may appear only in a viewpoint's `setsAside` list, which is
+also why they can never reach the top of the Facts section — see
+[Ordering](#ordering). They are less important precisely because they are not
+claiming anything.
 
 The healthy shape of a topic is: mostly `well-supported`, a few `contested`
 that genuinely divide the sides, and a short tail of the rest defusing

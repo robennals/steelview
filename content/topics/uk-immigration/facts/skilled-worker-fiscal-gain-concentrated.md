@@ -1,7 +1,6 @@
 ---
 claim: "The Skilled Worker route is fiscally positive over migrants' lifetimes, but the gain comes almost entirely from main applicants and is concentrated among the highest earners"
 status: well-supported
-order: 12
 sources:
   - stance: supports
     quote: "Overall, the SW visa route is clearly fiscally positive for the UK. This is almost inevitable given that main applicants on the route must have a job offer paying above a set of salary thresholds."

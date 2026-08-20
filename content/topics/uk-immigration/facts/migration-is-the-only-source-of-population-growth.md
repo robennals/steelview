@@ -1,7 +1,6 @@
 ---
 claim: "On official projections, net migration is now the only source of UK population growth, because deaths are projected to exceed births"
 status: well-supported
-order: 10
 sources:
   - stance: supports
     quote: "Net migration is projected to be the only source of population growth in the UK over the next 25 years, as deaths are expected to exceed births by 2.5 million."

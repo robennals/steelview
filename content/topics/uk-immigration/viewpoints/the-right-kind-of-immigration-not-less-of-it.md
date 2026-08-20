@@ -1,6 +1,7 @@
 ---
 name: We need the right kind of immigration, not simply less of it
 summary: Earnings explain almost everything the argument cares about, and dispersion within the migrant population dwarfs the gap between migrants and residents — so a cap is the wrong dial.
+order: 1
 citesFacts:
   - how-people-actually-arrive
   - skilled-worker-fiscal-gain-concentrated

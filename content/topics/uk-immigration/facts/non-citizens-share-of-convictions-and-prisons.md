@@ -1,7 +1,6 @@
 ---
 claim: "Non-UK citizens' share of convictions and of the prison population is close to their share of the adult population — and lower once age is taken into account — with wide variation by nationality and by type of offence"
 status: well-supported
-order: 23
 sources:
   - stance: supports
     quote: "Most offences never lead to a conviction, so actual rates of offending among different groups in the population are unknown. However, non-UK citizens made up 13.1% of people given cautions or convictions in 2024, and 12.1% of the prison population in June 2025. This was roughly similar to their share of the adult population. The share of non-citizens among people convicted or incarcerated is lower when taking age into account. This is because non-citizens tend to be younger, and criminal offending takes place primarily among young men."

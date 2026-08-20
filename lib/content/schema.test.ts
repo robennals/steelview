@@ -109,11 +109,33 @@ test('lastUpdated given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', (
 });
 
 test('a viewpoint defaults all four reference lists to empty arrays', () => {
-  const parsed = viewpointFrontmatterSchema.parse({ name: 'Control first', summary: 'One line.' });
+  const parsed = viewpointFrontmatterSchema.parse({
+    name: 'Control first',
+    summary: 'One line.',
+    order: 1,
+  });
   assert.deepEqual(parsed.citesFacts, []);
   assert.deepEqual(parsed.acknowledges, []);
   assert.deepEqual(parsed.setsAside, []);
   assert.deepEqual(parsed.principles, []);
+});
+
+test('a viewpoint without an explicit order is rejected', () => {
+  // Sorting viewpoints by id let a retitle silently reorder the sides; the
+  // position each viewpoint holds in the section is now an editorial choice
+  // that has to be written down.
+  const parsed = viewpointFrontmatterSchema.safeParse({ name: 'Control first', summary: 'One line.' });
+  assert.equal(parsed.success, false);
+});
+
+test('a fact may not carry an order — the field was removed, not renamed', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'A claim',
+    status: 'well-supported',
+    order: 1,
+    sources: [],
+  });
+  assert.equal('order' in parsed, false);
 });
 
 test('a principle requires at least one holder', () => {

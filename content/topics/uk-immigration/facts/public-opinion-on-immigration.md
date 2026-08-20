@@ -1,7 +1,6 @@
 ---
 claim: "The British public wants immigration reduced"
 status: complicated
-order: 26
 sources:
   - stance: complicates
     quote: "In April 2023, 32% thought immigration was a very bad or a bad thing, while 52% thought their numbers should be reduced (a little or a lot) (Figure 1). These differences likely reflect the fact that people are thinking about different phenomena (current immigration inflows vs. overall impact of immigration) for each of the two questions."

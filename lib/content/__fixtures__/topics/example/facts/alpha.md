@@ -9,3 +9,4 @@ sources:
     publisher: Example Institute
     date: 2024-03
 ---
+Alpha is measured on the narrow definition, and has been stable for a decade.

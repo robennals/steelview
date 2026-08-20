@@ -1,6 +1,7 @@
 ---
 name: A country should decide who joins it, and Britain never did
 summary: The record years came after Britain took back the legal power to prevent them — every arrival through a route the Home Office designed, at a scale no manifesto contained.
+order: 4
 citesFacts:
   - immigration-against-the-long-run
   - how-people-actually-arrive

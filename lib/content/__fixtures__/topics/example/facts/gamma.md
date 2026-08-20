@@ -9,3 +9,4 @@ sources:
     publisher: Example Institute
     date: 2024-04
 ---
+Gamma counts the same population as alpha but over a different window.

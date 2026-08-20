@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { mkdtemp, mkdir, writeFile, cp, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, readFile, cp, rm } from 'node:fs/promises';
 import os from 'node:os';
 import { loadTopic, listTopicSlugs, ContentError } from './load';
 
@@ -43,9 +43,11 @@ test('frontmatter and body are both loaded', async () => {
   assert.equal(one?.body, 'The full argument for viewpoint one.');
 });
 
-test('a fact with no body loads with an empty string body', async () => {
+test('an item with no body loads with an empty string body', async () => {
+  // Facts must now carry a body (validation rule 4), but the other kinds may
+  // legitimately be frontmatter only — the loader must not invent a body.
   const topic = await loadTopic('example', FIXTURES);
-  assert.equal(topic.facts.find((f) => f.id === 'alpha')?.body, '');
+  assert.equal(topic.cruxes.find((c) => c.id === 'timing')?.body, '');
 });
 
 test('a missing topic throws ContentError naming the slug', async () => {
@@ -74,7 +76,7 @@ test('a cross-reference violation throws ContentError listing every problem', as
   const root = await fixtureCopy();
   await writeFile(
     path.join(root, 'example', 'viewpoints', 'one.md'),
-    '---\nname: One\nsummary: s\ncitesFacts: [ghost]\nacknowledges: [gamma]\n---\nBody.\n'
+    '---\nname: One\nsummary: s\norder: 1\ncitesFacts: [ghost]\nacknowledges: [gamma]\n---\nBody.\n'
   );
   await assert.rejects(() => loadTopic('example', root), (e: Error) => {
     assert.ok(e instanceof ContentError);
@@ -96,17 +98,17 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   );
   await writeFile(
     path.join(dir, 'facts', 'a.md'),
-    '---\nclaim: A\nstatus: well-supported\nsources:\n  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/a\n    publisher: p\n    date: "2024"\n---\n'
+    '---\nclaim: A\nstatus: well-supported\nsources:\n  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/a\n    publisher: p\n    date: "2024"\n---\nContext for A.\n'
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nsummary: s\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
+    '---\nname: V\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
-  // Rule 8 needs at least two viewpoints; this one carries no principle so it
+  // Rule 9 needs at least two viewpoints; this one carries no principle so it
   // doesn't need to appear in any heldBy.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nsummary: s\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
   );
   await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
   const topic = await loadTopic('bare', root);
@@ -145,17 +147,18 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
       '    publisher: p',
       '    date: 2024',
       '---',
+      'Context for A.',
       '',
     ].join('\n')
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nsummary: s\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
+    '---\nname: V\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
-  // Rule 8 needs at least two viewpoints.
+  // Rule 9 needs at least two viewpoints.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nsummary: s\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
   );
   await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
   const topic = await loadTopic('dates', root);
@@ -165,127 +168,122 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
 });
 
 /**
- * Build a topic whose facts are given as `{id: [status, order?]}`, with the
- * cross-reference graph wired up so it passes validation, and return the
- * loaded fact ids in render order.
+ * Build a topic on disk from `facts` (`{id: status}`) and `viewpoints`
+ * (`{id: {cites, acknowledges, setsAside}}`) and return the loaded fact ids
+ * in render order. The unit tests for the ranking itself live in
+ * rank-facts.test.ts; this exercises the same thing through real files, so a
+ * wiring mistake in the loader cannot pass unnoticed.
  */
-async function factOrder(facts: Record<string, [string, number?]>): Promise<string[]> {
+type VpSpec = { cites?: string[]; acknowledges?: string[]; setsAside?: string[] };
+
+async function loadOrdered(
+  facts: Record<string, string>,
+  viewpoints: Record<string, VpSpec>
+): Promise<string[]> {
   const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
   const dir = path.join(root, 'ordering');
   await mkdir(path.join(dir, 'facts'), { recursive: true });
   await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
-  await mkdir(path.join(dir, 'principles'), { recursive: true });
   await writeFile(
     path.join(dir, 'topic.md'),
     '---\ntitle: Ordering\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
   );
 
-  const ids = Object.keys(facts);
   await Promise.all(
-    ids.map((id) => {
-      const [status, order] = facts[id];
-      const orderLine = order === undefined ? '' : `order: ${order}\n`;
-      // Sources are whatever each status needs to pass validation: a
-      // supports source everywhere, plus a contests source and a body for
-      // `contested`, and a contests source for `not-supported`.
+    Object.entries(facts).map(([id, status]) => {
+      // Sources are whatever each status needs to pass validation: every fact
+      // needs at least one, `contested` needs both stances, and every fact
+      // needs a body.
       const supports = `  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/${id}\n    publisher: p\n    date: "2024"\n`;
       const contests = `  - stance: contests\n    quote: q2\n    title: t2\n    url: https://example.org/${id}b\n    publisher: p\n    date: "2024"\n`;
-      const sources =
-        status === 'contested'
-          ? supports + contests
-          : status === 'not-supported'
-            ? contests
-            : status === 'well-supported'
-              ? supports
-              : '';
-      const body = status === 'contested' ? `Why the sides disagree on ${id}.\n` : '';
+      const sources = status === 'contested' ? supports + contests : status === 'not-supported' ? contests : supports;
       return writeFile(
         path.join(dir, 'facts', `${id}.md`),
-        `---\nclaim: ${id}\nstatus: ${status}\n${orderLine}sources:${sources ? '\n' + sources : ' []\n'}---\n${body}`
+        `---\nclaim: ${id}\nstatus: ${status}\nsources:\n${sources}---\nContext for ${id}.\n`
       );
     })
   );
 
-  // Every fact must be referenced (rule 7), `citesFacts` takes only
-  // well-supported or contested facts and `acknowledges` only well-supported
-  // ones (rule 2), so route each fact into the list its status allows.
-  const acknowledges = ids.filter((id) => facts[id][0] === 'well-supported');
-  const cites = ids.filter((id) => facts[id][0] === 'contested');
-  const aside = ids.filter((id) => !acknowledges.includes(id) && !cites.includes(id));
-  await writeFile(
-    path.join(dir, 'viewpoints', 'v.md'),
-    `---\nname: V\nsummary: s\nacknowledges: [${acknowledges}]\ncitesFacts: [${cites}]\nsetsAside: [${aside}]\nprinciples: [p]\n---\nBody.\n`
+  await Promise.all(
+    Object.entries(viewpoints).map(([id, spec], i) =>
+      writeFile(
+        path.join(dir, 'viewpoints', `${id}.md`),
+        `---\nname: ${id}\nsummary: s\norder: ${i + 1}\ncitesFacts: [${spec.cites ?? []}]\nacknowledges: [${spec.acknowledges ?? []}]\nsetsAside: [${spec.setsAside ?? []}]\n---\nBody.\n`
+      )
+    )
   );
-  // Rule 8 needs at least two viewpoints.
-  await writeFile(
-    path.join(dir, 'viewpoints', 'v2.md'),
-    `---\nname: V2\nsummary: s\nacknowledges: [${acknowledges}]\n---\nBody.\n`
-  );
-  await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
 
   const topic = await loadTopic('ordering', root);
   return topic.facts.map((f) => f.id);
 }
 
-test('an ordered fact sorts ahead of every unordered one, however well supported', async () => {
+test('fact order is derived from the viewpoints, round-robin by rank', async () => {
   assert.deepEqual(
-    await factOrder({
-      a: ['well-supported'],
-      b: ['well-supported'],
-      // `unknown` is last in status order, but ranked first editorially.
-      z: ['unknown', 1],
-    }),
-    ['z', 'a', 'b']
+    await loadOrdered(
+      { a1: 'well-supported', a2: 'well-supported', b1: 'well-supported', shared: 'well-supported' },
+      {
+        // Both viewpoints rank `shared` first, so it takes round 1 alone and
+        // costs both of them their turn; round 2 places one fact from each.
+        alpha: { cites: ['shared', 'a1'], acknowledges: ['a2'] },
+        beta: { cites: ['shared', 'b1'], acknowledges: ['a2'] },
+      }
+    ),
+    ['shared', 'a1', 'b1', 'a2']
   );
 });
 
-test('ordered facts sort by order ascending', async () => {
+test('facts nothing ranks fall to a tail in status order', async () => {
   assert.deepEqual(
-    await factOrder({ a: ['well-supported', 3], b: ['well-supported', 1], c: ['well-supported', 2] }),
-    ['b', 'c', 'a']
+    await loadOrdered(
+      { keeper: 'well-supported', muddle: 'complicated', dunno: 'unknown', wrong: 'not-supported' },
+      {
+        one: { acknowledges: ['keeper'], setsAside: ['muddle', 'dunno', 'wrong'] },
+        two: { acknowledges: ['keeper'], setsAside: ['muddle'] },
+      }
+    ),
+    ['keeper', 'muddle', 'dunno', 'wrong']
   );
 });
 
-test('facts sharing an order fall back to status, then to id', async () => {
-  assert.deepEqual(
-    await factOrder({
-      // All three carry order 1, so status decides: well-supported, then
-      // contested, then unknown. `a` and `b` are both well-supported, so id
-      // decides between them.
-      b: ['well-supported', 1],
-      a: ['well-supported', 1],
-      c: ['contested', 1],
-      d: ['unknown', 1],
-    }),
-    ['a', 'b', 'c', 'd']
-  );
-});
-
-test('unordered facts keep the status order they had before order existed', async () => {
-  assert.deepEqual(
-    await factOrder({
-      z1: ['unknown'],
-      a1: ['not-supported'],
-      b1: ['well-supported'],
-      c1: ['complicated'],
-      d1: ['contested'],
-      b2: ['well-supported'],
-    }),
-    ['b1', 'b2', 'd1', 'c1', 'z1', 'a1']
-  );
-});
-
-test('a non-integer or non-positive order is rejected', async () => {
+test('viewpoints render in their explicit order, not in id order', async () => {
   const root = await fixtureCopy();
-  await writeFile(
-    path.join(root, 'example', 'facts', 'alpha.md'),
-    '---\nclaim: Alpha\nstatus: well-supported\norder: 0\nsources:\n  - stance: supports\n    quote: q\n    title: t\n    url: https://example.org/a\n    publisher: p\n    date: "2024"\n---\n'
+  // `one` is order 1 and `two` order 2 in the fixture; swap them and the
+  // section must swap too, even though the ids sort the other way.
+  for (const [file, order] of [
+    ['one.md', 2],
+    ['two.md', 1],
+  ] as const) {
+    const p = path.join(root, 'example', 'viewpoints', file);
+    const text = await readFile(p, 'utf8');
+    await writeFile(p, text.replace(/^order: \d+$/m, `order: ${order}`));
+  }
+  const topic = await loadTopic('example', root);
+  assert.deepEqual(
+    topic.viewpoints.map((v) => v.id),
+    ['two', 'one']
   );
+});
+
+test('a viewpoint with no order is rejected', async () => {
+  const root = await fixtureCopy();
+  const p = path.join(root, 'example', 'viewpoints', 'one.md');
+  const text = await readFile(p, 'utf8');
+  await writeFile(p, text.replace(/^order: \d+\n/m, ''));
   await assert.rejects(() => loadTopic('example', root), (e: Error) => {
     assert.ok(e instanceof ContentError);
+    assert.match(e.message, /one\.md/);
     assert.match(e.message, /order/);
     return true;
   });
+});
+
+test('a fact may no longer carry an order — the field is gone from the model', async () => {
+  const root = await fixtureCopy();
+  const p = path.join(root, 'example', 'facts', 'alpha.md');
+  const text = await readFile(p, 'utf8');
+  await writeFile(p, text.replace('claim: Alpha is established', 'claim: Alpha is established\norder: 1'));
+  const topic = await loadTopic('example', root);
+  assert.equal('order' in topic.facts[0], false);
 });
 
 test('listTopicSlugs returns directory names, sorted', async () => {

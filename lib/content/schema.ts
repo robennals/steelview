@@ -49,19 +49,27 @@ export const sourceSchema = z.object({
 export const factFrontmatterSchema = z.object({
   claim: z.string().min(1),
   status: z.enum(FACT_STATUSES),
-  /**
-   * Editorial importance, 1 = most important. Optional, because a topic is
-   * usually only half-ranked: the few facts that carry the argument get an
-   * `order`, everything else falls back to status order (see load.ts). It is
-   * a rank, not a score, so it must be a positive integer.
+  /*
+   * There is deliberately no `order` field. A hand-assigned rank on a fact is
+   * one editor's opinion of what matters, and on a page whose whole claim is
+   * even-handedness that opinion is exactly what must not decide which three
+   * facts a reader sees first. The reading order is derived instead, by
+   * round-robin across the viewpoints' own rankings — see rank-facts.ts.
    */
-  order: z.number().int().positive().optional(),
   sources: z.array(sourceSchema).default([]),
 });
 
 export const viewpointFrontmatterSchema = z.object({
   name: z.string().min(1),
   summary: z.string().min(1),
+  /**
+   * Where this viewpoint sits in the Viewpoints section. Required and
+   * explicit, because the alternative — sorting by id — let a retitle
+   * silently reorder the sides and decide which viewpoint the section opens
+   * on. The editorial rule for choosing it (alternate across the spectrum,
+   * never group one side together) is in the design spec.
+   */
+  order: z.number().int(),
   citesFacts: z.array(z.string()).default([]),
   acknowledges: z.array(z.string()).default([]),
   setsAside: z.array(z.string()).default([]),

@@ -1,7 +1,6 @@
 ---
 claim: "In 2024, more than one in three children born in England and Wales had a foreign-born mother, up from around one in four in 2008 — and to 2021 the rise was driven by falling fertility among UK-born women rather than rising fertility among migrants"
 status: well-supported
-order: 11
 sources:
   - stance: supports
     quote: "In 2024, more than one in three children born in England and Wales had a foreign-born mother, and this share has been rising."

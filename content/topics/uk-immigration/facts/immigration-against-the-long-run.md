@@ -1,7 +1,6 @@
 ---
 claim: "Long-term immigration to the UK was 813,000 in 2025 — down from the peak of 1,469,000 in the year to March 2023, but still around two and a half times the 1990s average of about 325,000 a year"
 status: well-supported
-order: 1
 sources:
   - stance: supports
     quote: "A provisionally estimated 813,000 people made a long-term move to the UK in year ending (YE) December 2025. Immigration dropped compared with our updated estimate for YE December 2024, when it was 1,012,000, continuing a downward trend from the peak of 1,469,000 in March 2023."

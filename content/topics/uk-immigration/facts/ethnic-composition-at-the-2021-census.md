@@ -1,7 +1,6 @@
 ---
 claim: "A quarter of England and Wales is no longer British, and immigration is what changed it"
 status: complicated
-order: 7
 sources:
   - stance: supports
     quote: "As part of the \"White\" ethnic group, 74.4% (44.4 million) of the total population in England and Wales identified their ethnic group as \"English, Welsh, Scottish, Northern Irish or British\", this is a continued decrease from 80.5% (45.1 million) in 2011, and from 87.5% (45.5 million) who identified this way in 2001."

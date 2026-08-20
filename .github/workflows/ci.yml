@@ -13,6 +13,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm test:unit
+      # The figures audit: a money/percentage/thousands figure asserted in a
+      # markdown body must appear in a quoted source on the same topic.
+      - run: pnpm check:figures
       # No standalone `pnpm build` here: playwright.config.ts's webServer
       # already runs `pnpm build && pnpm start`, and a build failure comes
       # through in the test:e2e output with the same ContentError message

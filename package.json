@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:unit": "tsx --test lib/*.test.ts lib/**/*.test.ts app/**/*.test.ts",
+    "test:unit": "tsx --test lib/*.test.ts lib/**/*.test.ts app/**/*.test.ts scripts/*.test.ts",
     "test:e2e": "playwright test",
-    "check": "pnpm test:unit && pnpm build"
+    "check:figures": "tsx scripts/check-figures.ts",
+    "check": "pnpm lint && pnpm test:unit && pnpm check:figures && pnpm build"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

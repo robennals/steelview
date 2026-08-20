@@ -1,6 +1,7 @@
 ---
 name: Immigration makes Britain better off, and we should welcome it
 summary: Every charge laid against immigration has been measured, and the measurements come back small — while the gains, in wards and labs and building sites, are large and immediate.
+order: 3
 citesFacts:
   - skilled-worker-fiscal-gain-concentrated
   - health-and-care-relies-on-migrant-workers

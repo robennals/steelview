@@ -55,9 +55,9 @@ export async function buildBodies(topic: {
 
 /**
  * How many facts the Facts section shows before it collapses the rest.
- * Facts are sorted by editorial importance (see lib/content/load.ts), so for
- * most readers these three *are* the page — which is why the loader's `order`
- * field matters more than its size suggests.
+ * Facts arrive in diversity-ranked order (see lib/content/rank-facts.ts), so
+ * for most readers these three *are* the page — which is why that ranking is
+ * derived from what every viewpoint ranks first, rather than authored.
  */
 export const FACTS_SHOWN = 3;
 

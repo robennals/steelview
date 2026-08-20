@@ -8,29 +8,10 @@ import {
   principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
-  FACT_STATUSES,
 } from './schema';
+import { rankFacts, sortViewpoints } from './rank-facts';
 import { validateTopic } from './validate';
-import type { Topic, Item, Fact } from './types';
-
-/**
- * The fallback reading order for facts that carry no explicit `order`, not
- * the declaration order of `FACT_STATUSES`. The healthy shape of a topic is
- * "mostly well-supported, a few contested that genuinely divide the sides,
- * and a short tail of the rest defusing familiar talking points".
- *
- * Status is the *fallback* axis, not the primary one: the Facts section shows
- * only its first few facts before collapsing, so the top of the list has to
- * be the biggest facts, which is an editorial judgement (`order`) rather than
- * an evidential one.
- */
-const FACT_STATUS_ORDER: readonly (typeof FACT_STATUSES)[number][] = [
-  'well-supported',
-  'contested',
-  'complicated',
-  'unknown',
-  'not-supported',
-];
+import type { Topic, Item } from './types';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
@@ -90,28 +71,6 @@ async function readItems<S extends z.ZodTypeAny>(
   );
 }
 
-/**
- * Sort facts by editorial importance: explicit `order` ascending first, then
- * every unordered fact, by status in editorial order. A half-ranked topic —
- * the expected state — puts its ranked facts at the top and leaves the rest
- * in exactly the order they had before `order` existed.
- *
- * `readItems` already returns facts sorted by id (filename order) and
- * `Array.prototype.sort` is stable, so id is the final tiebreak for free,
- * both between two facts sharing an `order` and within a status.
- */
-export function sortFacts(facts: Fact[]): void {
-  facts.sort((a, b) => {
-    if (a.order !== undefined || b.order !== undefined) {
-      // An unordered fact sorts after every ordered one.
-      if (a.order === undefined) return 1;
-      if (b.order === undefined) return -1;
-      if (a.order !== b.order) return a.order - b.order;
-    }
-    return FACT_STATUS_ORDER.indexOf(a.status) - FACT_STATUS_ORDER.indexOf(b.status);
-  });
-}
-
 export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Promise<Topic> {
   const dir = path.join(root, slug);
   const topicFile = path.join(dir, 'topic.md');
@@ -130,14 +89,17 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
   }
 
   const facts = await readItems(path.join(dir, 'facts'), factFrontmatterSchema);
-  sortFacts(facts);
+  const viewpoints = await readItems(path.join(dir, 'viewpoints'), viewpointFrontmatterSchema);
+  sortViewpoints(viewpoints);
 
   const topic: Topic = {
     ...parsed.data,
     slug,
     intro: content.trim(),
-    facts,
-    viewpoints: await readItems(path.join(dir, 'viewpoints'), viewpointFrontmatterSchema),
+    // Fact order is derived from what the viewpoints rank, so it can only be
+    // computed once both are loaded. See rank-facts.ts.
+    facts: rankFacts(facts, viewpoints),
+    viewpoints,
     principles: await readItems(path.join(dir, 'principles'), principleFrontmatterSchema),
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),
   };

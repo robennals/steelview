@@ -1,7 +1,6 @@
 ---
 claim: "Immigration has been a top-tier public concern since 2022, roughly half the public says overall numbers are too high, and preference sorts sharply by route — objection is far stronger to asylum than to work or study, and majorities want migration made easier for care workers"
 status: well-supported
-order: 6
 sources:
   - stance: supports
     quote: "from a low of 6% in April 2022, salience rose and stayed consistently above 20% from March 2023 to May 2024, before rising further above 30% after June 2024. In October 2024, the figure reached 38%, showing immigration to be a top issue of concern for the first time since 2016."

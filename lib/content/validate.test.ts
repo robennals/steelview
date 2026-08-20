@@ -17,7 +17,7 @@ function fact(over: Partial<Fact> & { id: string }): Fact {
         date: '2024',
       },
     ],
-    body: '',
+    body: 'What it measures, how it compares, how confident to be.',
     ...over,
   };
 }
@@ -26,6 +26,7 @@ function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
   return {
     name: 'A viewpoint',
     summary: 'One line.',
+    order: 1,
     citesFacts: [],
     acknowledges: [],
     setsAside: [],
@@ -125,6 +126,30 @@ test('rule 2: acknowledges may only include well-supported facts', () => {
   assert.ok(validateTopic(t).some((e) => e.includes('delta') && e.includes('acknowledges')));
 });
 
+test('rule 2: citesFacts may not include a complicated or unknown fact', () => {
+  // This gate is what makes "complicated and unknown are less important"
+  // true of the rendered page: a fact with either status can reach no list
+  // but `setsAside`, and `setsAside` is not ranked, so it can only ever land
+  // in the unranked tail. See rank-facts.ts.
+  for (const status of ['complicated', 'unknown'] as const) {
+    const t = soundTopic();
+    t.facts.push(fact({ id: 'delta', status }));
+    t.viewpoints[0].citesFacts.push('delta');
+    const errors = validateTopic(t);
+    assert.ok(errors.some((e) => e.includes('delta') && e.includes('citesFacts')), errors.join('\n'));
+  }
+});
+
+test('rule 2: acknowledges may not include a complicated or unknown fact', () => {
+  for (const status of ['complicated', 'unknown'] as const) {
+    const t = soundTopic();
+    t.facts.push(fact({ id: 'delta', status }));
+    t.viewpoints[0].acknowledges.push('delta');
+    const errors = validateTopic(t);
+    assert.ok(errors.some((e) => e.includes('delta') && e.includes('acknowledges')), errors.join('\n'));
+  }
+});
+
 test('rule 2: a fact may not appear twice on the same viewpoint', () => {
   const t = soundTopic();
   t.viewpoints[0].setsAside = ['alpha'];
@@ -137,7 +162,32 @@ test('rule 3: a well-supported fact needs at least one source', () => {
   assert.ok(validateTopic(t).some((e) => e.includes('alpha') && e.includes('source')));
 });
 
-test('rule 4: a contested fact needs sources on both sides and a body', () => {
+test('rule 3: a complicated fact needs a source too — every status does', () => {
+  // The old rule only covered well-supported and not-supported, so a
+  // `complicated` or `unknown` fact could ship as a bare assertion in a badge.
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta', status: 'complicated', sources: [] }));
+  t.viewpoints[0].setsAside = ['delta'];
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('delta') && e.includes('source')), errors.join('\n'));
+});
+
+test('rule 4: every fact needs a body, whatever its status', () => {
+  const t = soundTopic();
+  t.facts[0].body = '   ';
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('alpha') && e.includes('body')), errors.join('\n'));
+});
+
+test('rule 4: a well-supported fact with no body is rejected, not waved through', () => {
+  const t = soundTopic();
+  t.facts.push(fact({ id: 'delta', body: '' }));
+  t.viewpoints[0].acknowledges.push('delta');
+  const errors = validateTopic(t);
+  assert.ok(errors.some((e) => e.includes('delta') && e.includes('body')), errors.join('\n'));
+});
+
+test('rule 5: a contested fact needs sources on both sides', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'delta', status: 'contested', body: '' }));
   t.viewpoints[0].setsAside = ['delta'];
@@ -146,25 +196,25 @@ test('rule 4: a contested fact needs sources on both sides and a body', () => {
   assert.ok(errors.some((e) => e.includes('delta') && e.includes('body')), errors.join('\n'));
 });
 
-test('rule 5: a viewpoint that acknowledges nothing is rejected', () => {
+test('rule 6: a viewpoint that acknowledges nothing is rejected', () => {
   const t = soundTopic();
   t.viewpoints[0].acknowledges = [];
   assert.ok(validateTopic(t).some((e) => e.includes('one') && e.includes('acknowledges')));
 });
 
-test('rule 6: a crux must give a position for every viewpoint it divides', () => {
+test('rule 7: a crux must give a position for every viewpoint it divides', () => {
   const t = soundTopic();
   t.cruxes[0].positions = [{ viewpoint: 'one', holds: 'Soon.' }];
   assert.ok(validateTopic(t).some((e) => e.includes('timing') && e.includes('two')));
 });
 
-test('rule 6: a crux may not divide an unknown viewpoint', () => {
+test('rule 7: a crux may not divide an unknown viewpoint', () => {
   const t = soundTopic();
   t.cruxes[0].divides = ['one', 'nope'];
   assert.ok(validateTopic(t).some((e) => e.includes('nope')));
 });
 
-test('rule 6: a crux may not give a position for a viewpoint it does not divide', () => {
+test('rule 7: a crux may not give a position for a viewpoint it does not divide', () => {
   const t = soundTopic();
   t.cruxes[0].divides = ['one', 'two'];
   t.cruxes[0].positions.push({ viewpoint: 'three', holds: 'A third position.' });
@@ -176,20 +226,20 @@ test('rule 6: a crux may not give a position for a viewpoint it does not divide'
   assert.ok(errors.some((e) => e.includes('three') && e.includes('divides')), errors.join('\n'));
 });
 
-test('rule 7: a fact no viewpoint references is an orphan', () => {
+test('rule 8: a fact no viewpoint references is an orphan', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'lonely' }));
   assert.ok(validateTopic(t).some((e) => e.includes('lonely') && e.includes('orphan')));
 });
 
-test('rule 7: setsAside is enough to keep a fact from being an orphan', () => {
+test('rule 8: setsAside is enough to keep a fact from being an orphan', () => {
   const t = soundTopic();
   t.facts.push(fact({ id: 'sidelined', status: 'complicated' }));
   t.viewpoints[0].setsAside = ['sidelined'];
   assert.deepEqual(validateTopic(t), []);
 });
 
-test('rule 7: a principle held by no real viewpoint is an orphan', () => {
+test('rule 8: a principle held by no real viewpoint is an orphan', () => {
   const t = soundTopic();
   t.principles.push(principle({ id: 'lonely', heldBy: ['ghost'] }));
   const errors = validateTopic(t);
@@ -197,11 +247,11 @@ test('rule 7: a principle held by no real viewpoint is an orphan', () => {
   assert.ok(errors.some((e) => e.includes('lonely') && e.includes('orphan')));
 });
 
-test('rule 8: a topic needs at least 1 fact', () => {
+test('rule 9: a topic needs at least 1 fact', () => {
   const t = soundTopic();
   t.facts = [];
   // Emptying facts also empties every viewpoint's fact lists, so no fact
-  // rule fires — only rule 8 should be left.
+  // rule fires — only rule 9 should be left.
   t.viewpoints.forEach((v) => {
     v.citesFacts = [];
     v.acknowledges = [];
@@ -214,7 +264,7 @@ test('rule 8: a topic needs at least 1 fact', () => {
   );
 });
 
-test('rule 8: a topic needs at least 2 viewpoints', () => {
+test('rule 9: a topic needs at least 2 viewpoints', () => {
   const t = soundTopic();
   t.viewpoints = [t.viewpoints[0]];
   t.principles[0].heldBy = ['one'];
@@ -226,7 +276,7 @@ test('rule 8: a topic needs at least 2 viewpoints', () => {
   );
 });
 
-test('rule 9: a principle heldBy that a viewpoint does not reciprocate is reported', () => {
+test('rule 10: a principle heldBy that a viewpoint does not reciprocate is reported', () => {
   const t = soundTopic();
   t.viewpoints[0].principles = [];
   const errors = validateTopic(t);
@@ -236,7 +286,7 @@ test('rule 9: a principle heldBy that a viewpoint does not reciprocate is report
   );
 });
 
-test('rule 9: a viewpoint principle that a principle does not reciprocate is reported', () => {
+test('rule 10: a viewpoint principle that a principle does not reciprocate is reported', () => {
   const t = soundTopic();
   t.principles[0].heldBy = ['two'];
   const errors = validateTopic(t);

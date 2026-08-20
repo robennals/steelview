@@ -7,7 +7,8 @@ import { test, expect } from '@playwright/test';
 // `health-and-care-relies-on-migrant-workers` (claim "Health and care is the
 // sector most dependent on migrant labour") that that viewpoint cites. Editing any of that content's wording, ids, or
 // cross-references will turn this suite red. The malformed-hash test also
-// names `immigration-against-the-long-run`, which is `order: 1` and so renders
+// names `immigration-against-the-long-run`, which is the first fact in the
+// derived diversity ranking (two viewpoints rank it first) and so renders
 // outside the Facts collapse.
 
 // `net-migration-peak-and-fall` sits past the third fact, so it is inside the

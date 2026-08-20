@@ -1,7 +1,6 @@
 ---
 claim: "The share of people in England and Wales born outside the UK rose from 4.3% in 1951 to 8.9% in 2001 and 16.8% at the 2021 Census, and the ONS provisionally estimates the UK-wide non-UK-born population reached 13.1 million by mid-2024"
 status: well-supported
-order: 2
 sources:
   - stance: supports
     quote: "Migration is an important driver of population change, currently accounting for around half of the population growth in England and Wales (natural change, that is the difference between births and deaths, accounting for the remainder). This is reflected in the increase in the proportion of the usually resident population1 born abroad2 from 4.3 per cent (1.9 million) recorded in the 1951 Census to 13 per cent (7.5 million) in the 2011 Census (see figure 1). While the total resident population of England and Wales increased by 28 per cent (from 43.7 million to 56.1 million) between 1951 and 2011, the non-UK born population3 almost quadrupled. There was a particularly marked increase in the latest inter-censal period, from 8.9 per cent (4.6 million)4 in 2001."

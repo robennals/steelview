@@ -17,7 +17,7 @@ export function validateTopic(topic: Topic): string[] {
   const principleIds = new Set(topic.principles.map((p) => p.id));
 
   // Facts referenced by any viewpoint in any way, and principles claimed by a
-  // real viewpoint — used for the orphan check (rule 7).
+  // real viewpoint — used for the orphan check (rule 8).
   const referencedFacts = new Set<string>();
   const heldPrinciples = new Set<string>();
 
@@ -63,7 +63,7 @@ export function validateTopic(topic: Topic): string[] {
       }
     }
 
-    // rule 5
+    // rule 6
     if (v.acknowledges.length === 0) {
       errors.push(
         `viewpoint ${v.id}: acknowledges is empty — a viewpoint that concedes nothing is advocacy, not a steelman`
@@ -77,20 +77,28 @@ export function validateTopic(topic: Topic): string[] {
   }
 
   for (const f of topic.facts) {
-    // rule 3
-    if ((f.status === 'well-supported' || f.status === 'not-supported') && f.sources.length === 0) {
-      errors.push(`fact ${f.id}: status ${f.status} requires at least one source`);
+    // rule 3 — every fact, whatever its status. Nothing is presented as a
+    // fact on this page without a quoted source behind it; a `complicated` or
+    // `unknown` fact makes a claim about the evidence too, and an unsourced
+    // one is just an assertion in a badge.
+    if (f.sources.length === 0) {
+      errors.push(`fact ${f.id}: every fact needs at least one source, whatever its status`);
     }
-    // rule 4
+    // rule 4 — every fact needs a body. A bare claim plus a status badge is
+    // exactly the misleading-in-isolation number this project exists to
+    // avoid; the body is where scope, denominator and comparison live.
+    if (f.body.trim().length === 0) {
+      errors.push(
+        `fact ${f.id}: every fact needs a body giving its context — what it measures and does not, how it compares, how confident to be, and what it is commonly mistaken for`
+      );
+    }
+    // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
         errors.push(`fact ${f.id}: a contested fact needs at least one "supports" source`);
       }
       if (!f.sources.some((s) => s.stance === 'contests')) {
         errors.push(`fact ${f.id}: a contested fact needs at least one "contests" source`);
-      }
-      if (f.body.trim().length === 0) {
-        errors.push(`fact ${f.id}: a contested fact needs a body explaining the shape of the disagreement`);
       }
     }
   }
@@ -104,7 +112,7 @@ export function validateTopic(topic: Topic): string[] {
       }
       heldPrinciples.add(p.id);
 
-      // rule 9 — heldBy and principles are the same relationship stated from
+      // rule 10 — heldBy and principles are the same relationship stated from
       // two ends; if they disagree, the disagreeing end renders with no
       // inbound link from anywhere on the page.
       const v = viewpointById.get(id);
@@ -119,7 +127,7 @@ export function validateTopic(topic: Topic): string[] {
   for (const v of topic.viewpoints) {
     for (const id of v.principles) {
       const p = principleById.get(id);
-      // rule 9, the other direction
+      // rule 10, the other direction
       if (p && !p.heldBy.includes(v.id)) {
         errors.push(
           `viewpoint ${v.id}: principles lists "${id}", but principle ${id}.heldBy does not list "${v.id}" — add it there too`
@@ -136,7 +144,7 @@ export function validateTopic(topic: Topic): string[] {
         errors.push(`crux ${c.id}: divides references unknown viewpoint "${id}"`);
         continue;
       }
-      // rule 6
+      // rule 7
       if (!positioned.has(id)) {
         errors.push(`crux ${c.id}: no position given for viewpoint "${id}"`);
       }
@@ -150,7 +158,7 @@ export function validateTopic(topic: Topic): string[] {
     }
   }
 
-  // rule 8 — a page showing "all sides" needs at least a fact to found itself
+  // rule 9 — a page showing "all sides" needs at least a fact to found itself
   // on and two sides to show; catches a mistyped directory name (`crux/`
   // instead of `cruxes/`) that would otherwise ship a silently empty section.
   if (topic.facts.length < 1) {
@@ -160,7 +168,7 @@ export function validateTopic(topic: Topic): string[] {
     errors.push('topic: needs at least 2 viewpoints — add another viewpoint under viewpoints/');
   }
 
-  // rule 7
+  // rule 8
   for (const f of topic.facts) {
     if (!referencedFacts.has(f.id)) {
       errors.push(

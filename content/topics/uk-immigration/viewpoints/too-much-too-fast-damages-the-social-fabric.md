@@ -1,6 +1,7 @@
 ---
 name: Too much immigration too fast damages the fabric of our society
 summary: The complaint is about the speed of joining, not the identity of the joiner — and a rate of change this large has never been put to anyone.
+order: 2
 citesFacts:
   - immigration-against-the-long-run
   - share-of-the-population-born-abroad

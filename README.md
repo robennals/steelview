@@ -20,6 +20,7 @@ pnpm dev        # dev server at localhost:3000
 pnpm test:unit  # node:test via tsx — content validation and pure logic
 pnpm test:e2e   # Playwright — builds the app, then drives it in a browser
 pnpm lint       # eslint
+pnpm check:figures  # audits figures asserted in prose against the quoted sources
 pnpm build      # production build (this is what fails if content is invalid)
 ```
 
@@ -45,8 +46,14 @@ The filename is the item's id, and the id is permanent — it forms the URL
 anchor for that item, prefixed with its kind (`/topics/uk-immigration#fact-net-migration-2024`),
 so renaming a file breaks every link and cross-reference to it. Each file is YAML
 frontmatter (the structured fields — claim, status, sources, cross-references
-to other items) plus a markdown body (the prose). Facts render sorted by
-`status`, not by filename, so file order in the directory doesn't matter.
+to other items) plus a markdown body (the prose).
+
+Neither facts nor file order decide reading order. **Fact order is derived**:
+each viewpoint ranks the facts it cites and then those it acknowledges, and
+the page interleaves those rankings round-robin, so no viewpoint's second
+fact appears before every viewpoint has had its first
+(`lib/content/rank-facts.ts`). **Viewpoint order is an explicit `order` field**
+on each viewpoint, chosen so the sides alternate rather than cluster.
 
 ## Invalid content fails the build
 
@@ -62,18 +69,24 @@ and unit-tested:
 2. `citesFacts` may only contain `well-supported` or `contested` facts;
    `acknowledges` may only contain `well-supported` facts; a fact can appear
    at most once across those three lists on any one viewpoint.
-3. A `well-supported` or `not-supported` fact needs at least one source.
-4. A `contested` fact needs at least one `supports` source, at least one
-   `contests` source, and a non-empty body.
-5. Every viewpoint's `acknowledges` list is non-empty.
-6. Every crux `divides` at least two viewpoints and gives a position for
+3. Every fact needs at least one source, whatever its status — nothing is
+   presented as a fact without a quoted source.
+4. Every fact needs a non-empty body giving its context.
+5. A `contested` fact needs at least one `supports` source and at least one
+   `contests` source.
+6. Every viewpoint's `acknowledges` list is non-empty.
+7. Every crux `divides` at least two viewpoints and gives a position for
    each one.
-7. No orphans — every fact must appear in some viewpoint's `citesFacts`,
+8. No orphans — every fact must appear in some viewpoint's `citesFacts`,
    `acknowledges`, or `setsAside`, and every principle must be held by at
    least one viewpoint.
-8. A topic needs at least 1 fact and at least 2 viewpoints.
-9. A principle's `heldBy` and a viewpoint's `principles` must agree with
-   each other — each is the same relationship stated from the other end.
+9. A topic needs at least 1 fact and at least 2 viewpoints.
+10. A principle's `heldBy` and a viewpoint's `principles` must agree with
+    each other — each is the same relationship stated from the other end.
+
+`pnpm check:figures` extends the sourcing rule to prose: a money, percentage
+or thousands figure asserted in any markdown body must appear in a quoted
+source on the same topic. It runs in CI.
 
 ## Adding a topic
 
