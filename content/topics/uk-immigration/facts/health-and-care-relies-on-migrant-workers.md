@@ -1,6 +1,7 @@
 ---
 claim: "Health and care is the sector most dependent on migrant labour: a quarter of jobs held by recent non-EU migrants are in it, and care and health professional roles have the highest non-EU-born shares of any occupations"
 status: well-supported
+order: 17
 sources:
   - stance: supports
     quote: "In December 2025, a quarter of the jobs held by employees with non-EU nationalities when they registered for a national insurance number (‘adult migrants’) were in the health and care sector (Figure 7). This share stood at 22% in February 2022 but rose sharply after care workers were made eligible for Skilled Worker visas—161,000 Skilled Worker visas had been granted to non-EU care workers by the end of 2025."

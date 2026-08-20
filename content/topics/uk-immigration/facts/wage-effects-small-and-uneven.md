@@ -1,6 +1,7 @@
 ---
 claim: "Migration has not been a major determinant of UK-born workers' wages, though the effect is mildly negative for lower-paid workers and mildly positive for higher-paid ones"
 status: well-supported
+order: 15
 sources:
   - stance: supports
     quote: "In terms of wages the existing evidence and the analysis we present in the report suggests that migration is not a major determinate of the wages of UK-born workers. We found some evidence suggesting that lower-skilled workers face a negative impact while higher-skilled workers benefit, however the magnitude of the impacts are generally small."

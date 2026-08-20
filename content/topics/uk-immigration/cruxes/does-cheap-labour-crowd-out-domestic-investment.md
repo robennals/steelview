@@ -1,13 +1,13 @@
 ---
 question: Does access to sponsored overseas labour stop employers investing in British workers and equipment?
 kind: assumption
-divides: [select-for-contribution, restore-control, open-and-welcoming]
+divides: [the-right-kind-of-immigration-not-less-of-it, a-country-should-decide-who-joins-it, immigration-makes-britain-better-off]
 positions:
-  - viewpoint: select-for-contribution
+  - viewpoint: the-right-kind-of-immigration-not-less-of-it
     holds: The incentive is undeniable even if the effect is unproven. A salary floor below the market clearing wage is a public subsidy to recruiting rather than training, and it should be removed on that ground alone.
-  - viewpoint: restore-control
+  - viewpoint: a-country-should-decide-who-joins-it
     holds: Yes, and the co-movement is too large to dismiss — employer training fell and inactivity rose exactly as overseas recruitment quadrupled, in the same sectors.
-  - viewpoint: open-and-welcoming
+  - viewpoint: immigration-makes-britain-better-off
     holds: No. When this was studied directly, no negative effect on the training of UK-born workers was found, and one study found a positive one. Employer training was falling long before the surge and in sectors with almost no migrant labour.
 ---
 Everything downstream turns on this. If sponsored migration genuinely suppresses

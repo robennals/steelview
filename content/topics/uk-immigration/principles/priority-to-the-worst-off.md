@@ -1,6 +1,6 @@
 ---
 name: Priority to the worst off
-heldBy: [open-and-welcoming, restore-control, honour-the-refugee-obligation, keep-the-place-recognisable]
+heldBy: [immigration-makes-britain-better-off, a-country-should-decide-who-joins-it, moral-duty-to-help-people-fleeing-danger, too-much-too-fast-damages-the-social-fabric]
 ---
 A policy should be judged first by what it does to the people with the least
 bargaining power, not by its effect on the average. Averages hide distribution,

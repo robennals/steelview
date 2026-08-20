@@ -1,7 +1,9 @@
 ---
-name: Restore control
-summary: A country is entitled to decide the pace and scale of its own population change, and for four years Britain did not decide it.
+name: A country should decide who joins it, and Britain never did
+summary: The record years came after Britain took back the legal power to prevent them — every arrival through a route the Home Office designed, at a scale no manifesto contained.
 citesFacts:
+  - immigration-against-the-long-run
+  - how-people-actually-arrive
   - net-migration-peak-and-fall
   - immigration-shifted-from-eu-to-non-eu
   - migration-is-the-only-source-of-population-growth
@@ -11,6 +13,7 @@ citesFacts:
   - asylum-grant-rate-fell
   - deportable-offenders-living-in-the-community
 acknowledges:
+  - asylum-claims-in-historical-and-european-context
   - skilled-worker-fiscal-gain-concentrated
   - wage-effects-small-and-uneven
   - housing-cost-effect-positive-but-small
@@ -41,6 +44,14 @@ delivered the highest in the country's history, and the mechanism was a series o
 administrative decisions — most consequentially opening the skilled worker route
 to care workers in February 2022, which took visas for that one occupation group
 from a standing start to 108,000 a year and their dependants alongside them.
+
+And the scale is not a trick of the window chosen. Long-term immigration averaged
+about 325,000 a year in the 1990s and about 722,000 in the 2010s; it hit 1,469,000
+in the year to March 2023 and, after the sharpest fall on record, is still 813,000
+— higher than every year before 2018. Nor was it made of the arrivals that dominate
+the coverage: 47% of non-EU arrivals in 2025 came to study, 23% to work, and
+detected illegal arrivals were 5.7% of the total. Every one of those numbers is the
+output of a rule somebody wrote.
 
 That is the argument, and it is a democratic one before it is an economic one. A
 settled population is entitled to decide who joins it and how fast. Not because
@@ -108,8 +119,10 @@ this does and does not show, because the temptation is to overreach: it is a
 failure of execution, not evidence of anything about who commits crimes.
 
 Four things this argument will not do. It will not blame small boats for the
-numbers: illegal arrivals have never exceeded about 46,000 a year against
-immigration of 1.47 million at peak, and anyone who wants a smaller headline
+numbers: in the twelve months of 2025 there were 46,497 detected illegal arrivals
+against 813,000 people moving here long-term, which is 5.7% on matched periods —
+not the 3% that gets quoted, which divides one year into another year's peak, and
+not a share large enough to matter either way. Anyone who wants a smaller headline
 number is arguing about the visa system whether they know it or not. It will not
 claim that offshore deterrence is proven to work — it has never been tested at
 scale here, and Australia's collapse in arrivals is best explained by
@@ -126,6 +139,15 @@ diversity rather than immigration, the association weakens or disappears once
 deprivation is controlled for, and the survey behind it was discontinued in 2011.
 The case here is about who decides and at what scale, and it neither needs that
 claim nor is entitled to it.
+
+On asylum specifically there is a comparison this argument has to accept and would
+rather not. Claims did hit about 108,000 in 2024, the highest since the records
+begin in 1979 — but that is fifth in the EU+ by volume and only seventeenth per
+head of population, at 16 per 10,000 residents, and fourteenth per head on grants
+of protection. Britain is not carrying a disproportionate share of Europe's asylum
+burden, and a case built on who decides cannot pretend that it is. The complaint
+here is about a system that does not do what it says, not about a volume that is
+out of line with the neighbours.
 
 This argument also declines the worst of the country's fears. Where the fear can
 be measured, it is not there: non-UK citizens are about 13% of convictions

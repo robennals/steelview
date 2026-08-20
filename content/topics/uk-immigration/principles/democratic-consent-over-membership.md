@@ -1,6 +1,6 @@
 ---
 name: Democratic consent over membership
-heldBy: [restore-control, keep-the-place-recognisable, select-for-contribution, honour-the-refugee-obligation, open-and-welcoming]
+heldBy: [a-country-should-decide-who-joins-it, too-much-too-fast-damages-the-social-fabric, the-right-kind-of-immigration-not-less-of-it, moral-duty-to-help-people-fleeing-danger, immigration-makes-britain-better-off]
 ---
 Decisions that change who belongs to a political community should be made by that
 community, openly, and by people who can be removed for making them badly. This is

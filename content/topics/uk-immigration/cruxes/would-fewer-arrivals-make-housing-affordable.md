@@ -1,11 +1,11 @@
 ---
 question: Would substantially lower migration make housing affordable?
 kind: prediction
-divides: [restore-control, open-and-welcoming]
+divides: [a-country-should-decide-who-joins-it, immigration-makes-britain-better-off]
 positions:
-  - viewpoint: restore-control
+  - viewpoint: a-country-should-decide-who-joins-it
     holds: In a country that has decided not to build, demand is the only variable left. Lower migration is the one lever that works without planning reform, which has failed for forty years.
-  - viewpoint: open-and-welcoming
+  - viewpoint: immigration-makes-britain-better-off
     holds: No. Immigration explains a small share of the rise; the binding constraint is supply, and cutting migration would relieve pressure briefly while leaving the cause untouched and the workforce that builds houses smaller.
 ---
 Both sides accept the same well-supported fact — that immigration raises housing

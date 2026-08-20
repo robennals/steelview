@@ -1,15 +1,15 @@
 ---
 question: Would public consent return if the numbers fell, or only if the system visibly worked?
 kind: prediction
-divides: [restore-control, keep-the-place-recognisable, open-and-welcoming, honour-the-refugee-obligation]
+divides: [a-country-should-decide-who-joins-it, too-much-too-fast-damages-the-social-fabric, immigration-makes-britain-better-off, moral-duty-to-help-people-fleeing-danger]
 positions:
-  - viewpoint: restore-control
+  - viewpoint: a-country-should-decide-who-joins-it
     holds: Numbers. The objection is to scale and pace, and no amount of administrative competence reconciles people to a population change they were never asked about.
-  - viewpoint: keep-the-place-recognisable
+  - viewpoint: too-much-too-fast-damages-the-social-fabric
     holds: Neither on its own. Consent tracks pace and having been asked, so numbers falling by administrative decision restores no more consent than raising them by administrative decision destroyed.
-  - viewpoint: open-and-welcoming
+  - viewpoint: immigration-makes-britain-better-off
     holds: Competence, and material conditions. Hostility tracks the visible failure of housing, GP access and public services far more closely than it tracks migration statistics.
-  - viewpoint: honour-the-refugee-obligation
+  - viewpoint: moral-duty-to-help-people-fleeing-danger
     holds: Visible order. What people object to is boats, hotels and the sense that nobody is in charge — which is why the backlog falling by 72% matters more to consent than any headline figure.
 ---
 The next two years are close to a controlled experiment. Net migration has already

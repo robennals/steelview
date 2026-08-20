@@ -1,13 +1,13 @@
 ---
 question: Are Britain's protection obligations a constraint to be worked within, or a policy that can be revised like any other?
 kind: priority
-divides: [honour-the-refugee-obligation, restore-control, select-for-contribution]
+divides: [moral-duty-to-help-people-fleeing-danger, a-country-should-decide-who-joins-it, the-right-kind-of-immigration-not-less-of-it]
 positions:
-  - viewpoint: honour-the-refugee-obligation
+  - viewpoint: moral-duty-to-help-people-fleeing-danger
     holds: A constraint. A protection guarantee honoured only when convenient is not a weaker promise but the absence of one, and the cost of keeping it is what makes it worth anything.
-  - viewpoint: restore-control
+  - viewpoint: a-country-should-decide-who-joins-it
     holds: A policy. Treaties written in 1951 for a different world bind a Parliament that never voted for them, and no generation can commit its successors to an open-ended liability it cannot quantify.
-  - viewpoint: select-for-contribution
+  - viewpoint: the-right-kind-of-immigration-not-less-of-it
     holds: A constraint on procedure rather than on volume. Individual claims must be heard honestly, but nothing obliges Britain to make its own asylum system the most attractive in Europe.
 ---
 This is the one crux on the page that no evidence can settle, which is why it is

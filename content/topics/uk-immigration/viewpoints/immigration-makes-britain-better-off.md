@@ -1,6 +1,6 @@
 ---
-name: Open and welcoming
-summary: Almost everything blamed on immigration is a British policy failure with a British solution, and the people who came are holding the country up while it fails to fix them.
+name: Immigration makes Britain better off, and we should welcome it
+summary: Every charge laid against immigration has been measured, and the measurements come back small — while the gains, in wards and labs and building sites, are large and immediate.
 citesFacts:
   - skilled-worker-fiscal-gain-concentrated
   - health-and-care-relies-on-migrant-workers
@@ -9,21 +9,30 @@ citesFacts:
   - migration-is-the-only-source-of-population-growth
   - overseas-recruitment-and-domestic-training
   - non-citizens-share-of-convictions-and-prisons
-  - asylum-backlog-and-hotel-use-have-fallen
 acknowledges:
+  - immigration-against-the-long-run
+  - share-of-the-population-born-abroad
   - net-migration-peak-and-fall
   - immigration-is-salient-and-objection-varies-by-route
   - care-worker-route-fiscally-negative
-  - asylum-accommodation-cost-overrun
 setsAside:
   - public-opinion-on-immigration
   - migrants-access-to-benefits
 principles:
   - priority-to-the-worst-off
   - gains-from-open-exchange
-  - obligation-to-people-in-danger
   - democratic-consent-over-membership
 ---
+This is an argument about whether Britain is better off, and it is worth saying at
+the top what it is not. It is not the claim that Britain owes anybody entry. That
+case is made elsewhere on this page and it is a good one, but it is a different
+case, and tangling the two has done the openness argument real damage: it lets an
+economic claim be answered with "we cannot take everyone" and a moral claim be
+answered with a spreadsheet. The claim here is narrower and, on the evidence,
+stronger. Britain is materially better off for the people who came. Every charge
+laid against them has been measured, in most cases by the government's own
+advisers, and the measurements come back small.
+
 Take the charges in turn, each at its strongest, and look at what the evidence
 actually shows.
 
@@ -75,7 +84,8 @@ resident is also a lifetime net fiscal cost, with a median of about minus
 £145,000, because the country runs a structural deficit. Any test that migrants
 are asked to pass and residents are not is a test designed to be failed.
 
-Then there is the part that is not a defence but a debt. Health and social care is
+Then there is the part that is not a defence but an accounting of what the country
+has been getting for free. Health and social care is
 the most migrant-dependent sector in the economy: a quarter of all jobs held by
 recent non-EU migrants are in it, and care and health professional roles have the
 highest non-EU-born shares of any occupation in the country. The people who
@@ -93,19 +103,20 @@ so, a proposal for a smaller and older population — fewer working-age taxpayer
 funding more pensioners and more care. The people who most want that outcome are
 generally the people who will need the care.
 
-What this view concedes, and should. Net migration of 944,000 in one year was too
-fast, and pretending otherwise insults people whose GP surgery and school and
-rented flat all got harder to get in the same eighteen months. The care worker
-route was badly designed: admitting people to a job priced below the level at
-which anyone can be a net contributor, and then acting surprised at the fiscal
-result, was a failure of policy that fell hardest on the workers it recruited,
-many of whom were exploited by the sponsors who held their visas. And £15.3
-billion for asylum accommodation, three-quarters of it going to hotels housing a
-third of the people, is indefensible — not because asylum seekers cost too much
-but because a competent state would have decided their claims instead of storing
-them. When the government finally did decide claims, the backlog fell 72% and
-hotel use fell by a third in a year. That is the proof that the crisis was
-administrative all along.
+What this view concedes, and should. The scale was real and it was fast. Net
+migration of 944,000 in one year was too fast, and pretending otherwise insults
+people whose GP surgery and school and rented flat all got harder to get in the
+same eighteen months. Nor can this argument wave away the long run: gross
+immigration ran at about 325,000 a year in the 1990s and is 813,000 now, higher
+than every year before 2018, and the share of England and Wales born outside the UK
+has gone from 4.3% in 1951 to 16.8% in 2021. Those are large changes by any
+standard, and "the effects we can measure are small" is a claim about effects, not
+a claim that nothing happened. Someone who finds the pace itself objectionable has
+not been refuted by any number on this page. And the care worker route was badly
+designed: admitting people to a job priced below the level at which anyone can be a
+net contributor, and then acting surprised at the fiscal result, was a failure of
+policy that fell hardest on the workers it recruited, many of whom were exploited
+by the sponsors who held their visas.
 
 Two things this argument declines to use. It will not claim the public secretly
 agrees. Immigration has been a top-tier concern since 2022, around half the public

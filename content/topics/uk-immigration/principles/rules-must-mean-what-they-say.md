@@ -1,6 +1,6 @@
 ---
 name: Rules must mean what they say
-heldBy: [restore-control, honour-the-refugee-obligation, select-for-contribution]
+heldBy: [a-country-should-decide-who-joins-it, moral-duty-to-help-people-fleeing-danger, the-right-kind-of-immigration-not-less-of-it]
 ---
 A rule that is announced but not applied is worse than no rule. It misleads the
 people who plan their lives around it, rewards those who correctly guess it is

@@ -1,6 +1,7 @@
 ---
 claim: "Since free movement ended, EU net migration has been negative and non-EU nationals have accounted for the great majority of immigration"
 status: well-supported
+order: 9
 sources:
   - stance: supports
     quote: "Net migration for EU+ nationals in YE December 2025 was negative 42,000, it has been negative since YE June 2022."

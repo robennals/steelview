@@ -1,6 +1,7 @@
 ---
 claim: "Deterrence policies such as offshoring or restricted status would substantially reduce Channel crossings"
 status: unknown
+order: 28
 sources:
   - stance: complicates
     quote: "It is therefore difficult to state conclusively what the impact of these new policies will be. However, the available evidence suggests that the deterrent effect of asylum policies tends to be small."

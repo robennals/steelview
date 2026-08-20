@@ -1,6 +1,6 @@
 ---
 name: Continuity of a shared way of life
-heldBy: [keep-the-place-recognisable]
+heldBy: [too-much-too-fast-damages-the-social-fabric]
 ---
 People have a legitimate interest in the continuity of the shared life of the
 place they live in — its habits, its calendar, its ordinary unspoken expectations

@@ -1,10 +1,10 @@
 ---
-name: Honour the obligation
-summary: Protection from persecution is a promise made to people, not a quota to be managed, and Britain's asylum failures have been administrative rather than moral.
+name: We have a moral duty to help people fleeing danger
+summary: The duty is owed to people, not managed as a quota, and it is owed whether or not the people owed it turn out to be profitable.
 citesFacts:
   - asylum-backlog-and-hotel-use-have-fallen
-  - health-and-care-relies-on-migrant-workers
-  - wage-effects-small-and-uneven
+  - how-people-actually-arrive
+  - asylum-claims-in-historical-and-european-context
 acknowledges:
   - asylum-accommodation-cost-overrun
   - asylum-grant-rate-fell
@@ -29,13 +29,23 @@ be sent back to face it. Promises of that kind are worth exactly as much as they
 cost to keep. A protection guarantee that is honoured only when the numbers are
 convenient is not a weaker version of the promise; it is the absence of one.
 
-The distinction matters practically, not just morally. Roughly 40,000 people a
-year arrive by small boat against long-term immigration that peaked near 1.5
-million. Asylum is a rounding error in the numbers and the overwhelming majority
-of the political argument. That mismatch is the tell: what people object to is
+The distinction matters practically, not just morally, and the arithmetic has to
+be done on matched periods or it proves nothing. In calendar year 2025, 41,472
+people arrived by small boat and 46,497 were detected arriving by illegal routes
+of any kind, against 813,000 people who moved to Britain long-term over the same
+twelve months. That is 5.7% — about one in eighteen. Study alone accounted for 47%
+of non-EU arrivals. Asylum takes a small share of the numbers and the overwhelming
+majority of the political argument. That mismatch is the tell: what people object to is
 not the scale but the visible disorder — the boats, the hotels, the sense that
 nobody is in charge. Those are real objections and they are answerable, because
 the disorder was administrative.
+
+Nor is Britain carrying an unusual share of Europe's asylum claims. In 2024 the UK received the
+fifth-largest number of asylum claims in the EU+ and the seventeenth-largest per
+head of population — 16 per 10,000 residents — and it granted protection to the
+fourth-largest number, fourteenth per head. A country that ranks mid-table among
+its neighbours on the measure that adjusts for size is not being overwhelmed; it
+is being asked to do roughly what everyone else is doing.
 
 Look at what happened when the state simply did its job. The backlog of people
 awaiting an initial decision fell from 175,000 at its 2023 peak to 49,000, down
@@ -57,6 +67,16 @@ the reason people are in dinghies is that there is no queue to join: refugee
 family reunion and resettlement are the only mechanisms that have ever moved
 people out of the smugglers' hands, and Britain paused family reunion in 2025.
 
+One thing this view refuses on principle, and it is the reason it does not reach
+for the fiscal chapters of this page. There is a good economic case for immigration
+and it is made elsewhere here; this argument does not rest on it and would not
+change if it collapsed. A duty to someone in danger is not a claim about their
+productivity. Making the argument that way concedes the crucial premise — that
+people fleeing persecution have to earn their place by being useful — and once that
+is conceded, the answer to a refugee who turns out to be expensive is that Britain
+owes them nothing. It does. That is what the word obligation means, and it is why
+this view accepts the bill below rather than arguing the bill away.
+
 What this view has to concede, and does. The grant rate at initial decision has
 fallen to 39%, well below its 2022 peak of 77%. That is uncomfortable, and the
 comfortable answers are not good enough. It is true that appeals overturn a
@@ -67,6 +87,13 @@ on the promise above has to be able to say so and act on it, or it forfeits the
 authority to say the opposite. Equally, £15.3 billion against an original £4.5
 billion estimate is not a smear invented by opponents; it is the National Audit
 Office, and the money came from people with no say in how it was spent.
+
+The scale figure also has to be stated rather than buried: around 108,000 people
+claimed asylum in the UK in 2024, the highest number since the records begin in
+1979. It exceeded the 2002 peak of about 103,000, and the level moves mostly with
+wars abroad rather than with anything Britain announces — but "highest on record"
+is true, and a view that quoted only the per-head ranking would be doing the same
+denominator trick it complains about.
 
 Two further concessions, both of which this view would rather not make. The public
 is not simply reacting to disorder in general: asked route by route, it objects to

@@ -1,6 +1,7 @@
 ---
 claim: "The asylum backlog is 72% below its 2023 peak and the number of asylum seekers in hotels has fallen by about a third in a year"
 status: well-supported
+order: 20
 sources:
   - stance: supports
     quote: "there were 49,000 people awaiting an initial decision (relating to 36,000 cases) at the end of March 2026, 55% fewer than at the end of March 2025 and 72% lower than the peak at the end of June 2023 (175,000 people), following an increase in the number of initial outcomes in recent years"

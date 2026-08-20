@@ -1,6 +1,6 @@
 ---
 name: Gains from open exchange
-heldBy: [select-for-contribution, open-and-welcoming]
+heldBy: [the-right-kind-of-immigration-not-less-of-it, immigration-makes-britain-better-off]
 ---
 When people, goods and ideas can move to where they are most useful, more is
 produced than when they cannot, and both sides of the exchange are usually better

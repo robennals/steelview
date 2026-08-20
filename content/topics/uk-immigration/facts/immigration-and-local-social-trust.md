@@ -1,6 +1,7 @@
 ---
 claim: "Rising local immigration lowers trust and cohesion within the receiving community"
 status: unknown
+order: 27
 sources:
   - stance: supports
     quote: "Most of the empirical literature on this subject finds that the relationship between diversity and trust is negative – the more diverse a community is, the less likely individuals in it are to be trusting."
@@ -36,8 +37,11 @@ that the two cannot be separated with the data available.
 
 Three further problems keep this from being narrowed into something
 well-supported. Almost all of the research measures ethnic diversity rather than
-immigration, which are different things in a country where most non-white
-residents were born here. The best British data come from the Citizenship Survey,
+immigration, which are demonstrably different variables: at the 2021 Census 16.8%
+of England and Wales was born outside the UK while 25.6% did not identify as White
+British, and nearly half the foreign-born population identified as White. A study
+of ethnic composition is not a study of migration, whichever way the numbers come
+out. The best British data come from the Citizenship Survey,
 discontinued in 2011, so there is no good evidence at all on the period this page
 covers. And "cohesion" is measured mostly by survey questions about trusting
 neighbours, which is one narrow slice of what people mean by the word.

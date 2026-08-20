@@ -1,6 +1,7 @@
 ---
 claim: "Asylum accommodation contracts originally costed at £4.5 billion over ten years are now expected to cost £15.3 billion, with hotels taking about three-quarters of the spending"
 status: well-supported
+order: 19
 sources:
   - stance: supports
     quote: "It originally estimated that the total contract cost would be £4.5 billion over 10 years. However, the current estimated total is £15.3 billion over the same period."

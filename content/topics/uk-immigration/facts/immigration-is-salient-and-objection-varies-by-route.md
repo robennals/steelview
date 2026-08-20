@@ -1,6 +1,7 @@
 ---
-claim: "Immigration has been a top-tier public concern since 2022, roughly half the public says overall numbers are too high, and objection is far stronger to asylum than to work or study routes"
+claim: "Immigration has been a top-tier public concern since 2022, roughly half the public says overall numbers are too high, and preference sorts sharply by route — objection is far stronger to asylum than to work or study, and majorities want migration made easier for care workers"
 status: well-supported
+order: 6
 sources:
   - stance: supports
     quote: "from a low of 6% in April 2022, salience rose and stayed consistently above 20% from March 2023 to May 2024, before rising further above 30% after June 2024. In October 2024, the figure reached 38%, showing immigration to be a top issue of concern for the first time since 2016."
@@ -32,6 +33,30 @@ sources:
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/
     publisher: "The Migration Observatory, University of Oxford"
     date: "2025-01-24"
+  - stance: supports
+    quote: "Attitudes towards asylum seekers tend to be more restrictive compared to other groups of people moving to the UK. In April 2023, 37% of the British public said that migration to the UK should be made more difficult for asylum seekers, while this share was lower for Ukrainians (14%), Hong Kongers (21%) and Afghans (30%) (Figure 6)."
+    title: "UK Public Opinion toward Immigration: Overall Attitudes and Level of Concern"
+    url: https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/
+    publisher: "The Migration Observatory, University of Oxford"
+    date: "2025-01-24"
+  - stance: supports
+    quote: "Admission preferences towards international students, EU nationals and people coming on family visas are relatively liberal, with more people in favour of making their migration to the UK easier rather than difficult (Figure 6)."
+    title: "UK Public Opinion toward Immigration: Overall Attitudes and Level of Concern"
+    url: https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/
+    publisher: "The Migration Observatory, University of Oxford"
+    date: "2025-01-24"
+  - stance: supports
+    quote: "When people are asked about their preferences for the admission of migrants coming to specific low- and high-skilled jobs, the picture is more complex. The share of people in favour of easing the migration of care, agricultural and construction workers was 54%, 45%, and 38%, respectively, despite the fact that these jobs are often considered low-skilled. By contrast, the share of people in favour of easing the migration of financial sector workers was only 27% despite the fact that these are high-skilled migrants."
+    title: "UK Public Opinion toward Immigration: Overall Attitudes and Level of Concern"
+    url: https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/
+    publisher: "The Migration Observatory, University of Oxford"
+    date: "2025-01-24"
+  - stance: complicates
+    quote: "In April 2023, over a quarter of the British public thought that the migration of low-skilled workers should be made more difficult, while this share was of 8% for high-skilled migrant workers (Figure 7)."
+    title: "UK Public Opinion toward Immigration: Overall Attitudes and Level of Concern"
+    url: https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/
+    publisher: "The Migration Observatory, University of Oxford"
+    date: "2025-01-24"
 ---
 This is the part of British public opinion that survives every reasonable way of
 asking, and it is worth stating separately from the parts that do not.
@@ -50,6 +75,24 @@ particular jobs rather than skill categories, majorities favour making it *easie
 for health and care workers to come. Any claim about what the public wants that
 does not survive being asked route by route is a claim about a poll question
 rather than about the public.
+
+Asking which routes should be made *easier* — a different question from "too
+high" — produces the same shape and some results neither side expects. In April
+2023, 37% wanted migration made more difficult for asylum seekers against 30% for
+Afghans, 21% for Hong Kongers and 14% for Ukrainians. Preferences on students, EU
+nationals and family visas were net liberal: more people wanted those made easier
+than harder. And asked about particular jobs rather than skill bands, 54% favoured
+easing migration for care workers, 45% for agricultural workers and 38% for
+construction workers — against 27% for financial-sector workers, who are the
+high-skilled group a points system is built to prefer. The public is not sorting by
+skill. It is sorting by whether it thinks the work needs doing.
+
+Two caveats on that survey. Those data are from April 2023 and are better evidence
+for the shape of preferences than for their current level. And the briefing is
+internally inconsistent on one figure: its summary says "over a third of people
+(36%)" want low-skilled worker migration made more difficult while its body text
+says "over a quarter" of the same question. This page quotes the body text, and a
+reader following the link should know the discrepancy is in the source.
 
 What this fact does not establish — whether that adds up to a settled majority
 demand for lower immigration overall, and whether salience measures wanting less

@@ -1,6 +1,7 @@
 ---
 claim: "Net migration to the UK peaked at 944,000 in the year to March 2023 and had fallen to 171,000 by the year to December 2025"
 status: well-supported
+order: 5
 sources:
   - stance: supports
     quote: "The line chart in Figure 2 shows there has been a drop in net migration since year ending (YE) March 2023, based on our most recent early estimates. Net migration in YE December 2025 was 171,000. This was down from the peak of 944,000 in YE March 2023."

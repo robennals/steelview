@@ -1,13 +1,13 @@
 ---
 question: Is there a rate at which a society can absorb new arrivals, and did Britain exceed it?
 kind: assumption
-divides: [keep-the-place-recognisable, open-and-welcoming, select-for-contribution]
+divides: [too-much-too-fast-damages-the-social-fabric, immigration-makes-britain-better-off, the-right-kind-of-immigration-not-less-of-it]
 positions:
-  - viewpoint: keep-the-place-recognisable
+  - viewpoint: too-much-too-fast-damages-the-social-fabric
     holds: Yes. Integration is a social process with a rate, set by school places, housing, and how many people in a street have the time to get to know anybody. Britain went past it, and the cost appears as parallel lives rather than as conflict, which is why the usual indicators show nothing.
-  - viewpoint: open-and-welcoming
+  - viewpoint: immigration-makes-britain-better-off
     holds: There is no fixed rate. What people call absorption capacity is the capacity of public services, which is a funding decision, and Britain has absorbed comparable inflows before and converged within a generation each time.
-  - viewpoint: select-for-contribution
+  - viewpoint: the-right-kind-of-immigration-not-less-of-it
     holds: The question is real but the variable is wrong. Whatever absorption capacity exists tracks language, earnings and whether people settle, not headcount — which is why the same number of arrivals produces completely different outcomes on different routes.
 ---
 This is the cultural axis of the argument, and it is the one place on this page

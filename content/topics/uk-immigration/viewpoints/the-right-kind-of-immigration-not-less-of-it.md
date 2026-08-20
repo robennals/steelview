@@ -1,7 +1,8 @@
 ---
-name: Select for contribution
-summary: The headline number is the wrong dial. Who comes, and what they earn, decides everything the argument is really about.
+name: We need the right kind of immigration, not simply less of it
+summary: Earnings explain almost everything the argument cares about, and dispersion within the migrant population dwarfs the gap between migrants and residents — so a cap is the wrong dial.
 citesFacts:
+  - how-people-actually-arrive
   - skilled-worker-fiscal-gain-concentrated
   - care-worker-route-fiscally-negative
   - immigration-shifted-from-eu-to-non-eu
@@ -23,6 +24,14 @@ principles:
 Both of the loud positions are arguing about a number that does not determine
 anything they care about. The evidence is unusually clear on this, and it points
 somewhere neither side wants to go.
+
+Start with what the number is actually made of, because almost nobody has the
+composition right. Of non-EU arrivals in 2025, 47% came to study, 23% to work, 14%
+were asylum applicants, 7% came on family routes and 6% on humanitarian ones. The
+largest category by a distance is students, who are the group generating the least
+public objection and who mostly leave. "Immigration" is not one substance whose
+quantity can be turned down; it is at least five different policies bundled under
+one word, and the effects of each are wildly different.
 
 The Migration Advisory Committee's lifetime modelling of the 2022–23 cohort finds
 that skilled workers outside health and care contribute an average of about
@@ -94,9 +103,11 @@ argument at all — migration is not a major determinant of UK-born pay, so nobo
 should claim selectivity protects British workers' wages. It protects the public
 finances, which is a different and smaller claim.
 
-Two things it will not use. Not small boats: illegal arrivals are around 3% of
-peak immigration and are simply not what changed the numbers, however much
-coverage they get. And not social cohesion: it would be convenient to argue that
+Two things it will not use. Not small boats: detected illegal arrivals were 46,497
+in 2025 against 813,000 long-term arrivals in the same twelve months — 5.7%, and
+the smaller "about 3%" that circulates is that year's arrivals divided into the
+1,469,000 peak of a different year. Either figure is a fraction, and neither is
+what changed the numbers, however much coverage they get. And not social cohesion: it would be convenient to argue that
 higher-skilled migrants integrate more easily, but there is no good British
 evidence either way. What exists mostly measures ethnicity rather than
 immigration, weakens or vanishes under deprivation controls, and rests on a survey

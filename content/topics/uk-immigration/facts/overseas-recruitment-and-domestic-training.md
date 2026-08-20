@@ -1,6 +1,7 @@
 ---
 claim: "When the effect of migration on employer training of UK-born workers was measured directly, no negative effect was found and one study found a positive one — but that research covered pre-2018 EEA free movement, and nobody has studied the post-2021 sponsored system"
 status: well-supported
+order: 18
 sources:
   - stance: supports
     quote: "The research we commissioned showed that overall there is no evidence that migration has had a negative impact on the training of the UK-born workforce. Moreover, there is some evidence to suggest that skilled migrants have a positive impact on the quantity of training available to the UK-born workforce."
