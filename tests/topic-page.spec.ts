@@ -17,6 +17,8 @@ test('the topic page shows all four sections', async ({ page }) => {
 
 test('a fact is collapsed until it is expanded', async ({ page }) => {
   await page.goto('/topics/uk-immigration');
+  // This fact sits past the third, so it is behind the Facts collapse.
+  await page.locator('details.sv-more > summary').click();
   const fact = page.locator('#fact-net-migration-peak-and-fall');
   await expect(fact).toBeVisible();
   const quote = fact.getByText('Net migration in YE December 2025 was 171,000');

@@ -6,10 +6,18 @@ import { test, expect } from '@playwright/test';
 // viewpoint `restore-control`, and the fact `health-and-care-relies-on-migrant-workers`
 // (claim "Health and care is the sector most dependent on migrant labour")
 // that restore-control cites. Editing any of that content's wording, ids, or
-// cross-references will turn this suite red.
-test('loading a fact anchor opens that fact', async ({ page }) => {
+// cross-references will turn this suite red. The malformed-hash test also
+// names `asylum-accommodation-cost-overrun`, which is one of the first three
+// facts and so renders outside the Facts collapse.
+
+// `net-migration-peak-and-fall` sits past the third fact, so it is inside the
+// collapsed group: the anchor has to reveal the group as well as open the
+// fact, or the link scrolls to something the reader cannot see.
+test('loading a fact anchor opens that fact, and the group hiding it', async ({ page }) => {
   await page.goto('/topics/uk-immigration#fact-net-migration-peak-and-fall');
+  await expect(page.locator('details.sv-more')).toHaveAttribute('open', '');
   await expect(page.locator('#fact-net-migration-peak-and-fall')).toHaveAttribute('open', '');
+  await expect(page.locator('#fact-net-migration-peak-and-fall')).toBeVisible();
   await expect(
     page
       .locator('#fact-net-migration-peak-and-fall')
@@ -30,6 +38,9 @@ test('clicking a cross-reference chip opens the fact it points at', async ({ pag
     'open',
     ''
   );
+  // The cited fact is also inside the collapsed group, so following the chip
+  // has to reveal the group too.
+  await expect(page.locator('#fact-health-and-care-relies-on-migrant-workers')).toBeVisible();
 });
 
 test('other items stay closed', async ({ page }) => {
@@ -44,5 +55,5 @@ test('other items stay closed', async ({ page }) => {
 test('a malformed hash does not break the page', async ({ page }) => {
   await page.goto('/topics/uk-immigration#%zz');
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  await expect(page.locator('#fact-net-migration-peak-and-fall')).toBeVisible();
+  await expect(page.locator('#fact-asylum-accommodation-cost-overrun')).toBeVisible();
 });

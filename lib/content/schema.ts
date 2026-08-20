@@ -49,6 +49,13 @@ export const sourceSchema = z.object({
 export const factFrontmatterSchema = z.object({
   claim: z.string().min(1),
   status: z.enum(FACT_STATUSES),
+  /**
+   * Editorial importance, 1 = most important. Optional, because a topic is
+   * usually only half-ranked: the few facts that carry the argument get an
+   * `order`, everything else falls back to status order (see load.ts). It is
+   * a rank, not a score, so it must be a positive integer.
+   */
+  order: z.number().int().positive().optional(),
   sources: z.array(sourceSchema).default([]),
 });
 

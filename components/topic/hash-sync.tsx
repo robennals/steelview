@@ -3,7 +3,8 @@
 import { useEffect } from 'react';
 
 /**
- * Opens the disclosure named by the URL hash. Two triggers are needed:
+ * Opens the disclosure named by the URL hash, and every disclosure containing
+ * it. Two triggers are needed:
  * `hashchange` covers back/forward navigation and pasted links, but does not
  * fire when a link points at the hash the page is already on — so in-page
  * anchor clicks are handled directly as well.
@@ -28,7 +29,19 @@ export function HashSync() {
       if (!id) return;
       const el = document.getElementById(id);
       if (!(el instanceof HTMLDetailsElement)) return;
-      el.open = true;
+      // The Facts section collapses everything past the first few into a
+      // <details> group, so the target may sit inside one or more closed
+      // ancestors. Opening only the target would leave a link into the
+      // collapsed group scrolling to something the reader cannot see, so open
+      // the whole chain outwards. Outermost first, so the target's own
+      // position is settled before the scroll below measures it.
+      const chain: HTMLDetailsElement[] = [el];
+      let ancestor: Element | null | undefined = el.parentElement?.closest('details');
+      while (ancestor instanceof HTMLDetailsElement) {
+        chain.push(ancestor);
+        ancestor = ancestor.parentElement?.closest('details');
+      }
+      for (const details of chain.reverse()) details.open = true;
       if (scroll) {
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });

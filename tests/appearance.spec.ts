@@ -15,6 +15,8 @@ test('the topic page renders at phone width without horizontal overflow', async 
 
 test('every fact status is announced in text, not colour alone', async ({ page }) => {
   await page.goto('/topics/uk-immigration');
+  // Both facts sit past the third, so they are behind the Facts collapse.
+  await page.locator('details.sv-more > summary').click();
   await expect(
     page.locator('#fact-net-migration-peak-and-fall').getByText('Well supported', { exact: true })
   ).toBeVisible();

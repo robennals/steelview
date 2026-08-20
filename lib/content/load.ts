@@ -14,11 +14,15 @@ import { validateTopic } from './validate';
 import type { Topic, Item, Fact } from './types';
 
 /**
- * Editorial reading order for facts, not the declaration order of
- * `FACT_STATUSES`. The healthy shape of a topic is "mostly well-supported, a
- * few contested that genuinely divide the sides, and a short tail of the
- * rest defusing familiar talking points" — sorting facts into this order
- * makes the Facts section render that shape directly, backbone first.
+ * The fallback reading order for facts that carry no explicit `order`, not
+ * the declaration order of `FACT_STATUSES`. The healthy shape of a topic is
+ * "mostly well-supported, a few contested that genuinely divide the sides,
+ * and a short tail of the rest defusing familiar talking points".
+ *
+ * Status is the *fallback* axis, not the primary one: the Facts section shows
+ * only its first few facts before collapsing, so the top of the list has to
+ * be the biggest facts, which is an editorial judgement (`order`) rather than
+ * an evidential one.
  */
 const FACT_STATUS_ORDER: readonly (typeof FACT_STATUSES)[number][] = [
   'well-supported',
@@ -87,14 +91,25 @@ async function readItems<S extends z.ZodTypeAny>(
 }
 
 /**
- * Sort facts by status in editorial order, then by id within each status.
- * `readItems` already returns facts sorted by id (filename order), so a
- * stable sort on status alone is sufficient to get both orderings.
+ * Sort facts by editorial importance: explicit `order` ascending first, then
+ * every unordered fact, by status in editorial order. A half-ranked topic —
+ * the expected state — puts its ranked facts at the top and leaves the rest
+ * in exactly the order they had before `order` existed.
+ *
+ * `readItems` already returns facts sorted by id (filename order) and
+ * `Array.prototype.sort` is stable, so id is the final tiebreak for free,
+ * both between two facts sharing an `order` and within a status.
  */
-function sortFactsByStatus(facts: Fact[]): void {
-  facts.sort(
-    (a, b) => FACT_STATUS_ORDER.indexOf(a.status) - FACT_STATUS_ORDER.indexOf(b.status)
-  );
+export function sortFacts(facts: Fact[]): void {
+  facts.sort((a, b) => {
+    if (a.order !== undefined || b.order !== undefined) {
+      // An unordered fact sorts after every ordered one.
+      if (a.order === undefined) return 1;
+      if (b.order === undefined) return -1;
+      if (a.order !== b.order) return a.order - b.order;
+    }
+    return FACT_STATUS_ORDER.indexOf(a.status) - FACT_STATUS_ORDER.indexOf(b.status);
+  });
 }
 
 export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Promise<Topic> {
@@ -115,7 +130,7 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
   }
 
   const facts = await readItems(path.join(dir, 'facts'), factFrontmatterSchema);
-  sortFactsByStatus(facts);
+  sortFacts(facts);
 
   const topic: Topic = {
     ...parsed.data,

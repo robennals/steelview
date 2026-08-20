@@ -17,48 +17,58 @@
 :root {
   color-scheme: light;
 
-  /* Paper */
-  --paper: #f6f3ec;
-  --paper-raised: #fbf9f4;
-  --paper-sunk: #efeade;
+  /* Paper. A white ground: the argument has to be legible before it can be
+     elegant, and a tinted paper spends contrast the text needs. */
+  --paper: #ffffff;
+  --paper-raised: #faf9f7;
+  --paper-sunk: #f2f0ec;
 
-  /* Ink, in four strengths. The whole palette is one warm neutral. */
-  --ink: #191814;
-  --ink-2: #45423a;
-  --ink-3: #6f6a5e;
-  --ink-4: #928c7d;
+  /* Ink, in four strengths, near-black at the top. Ratios against --paper:
+     ink 18.9:1, ink-2 12.6:1, ink-3 7.6:1, ink-4 5.7:1 — every one of them
+     clears WCAG AA for body text, so hierarchy comes from size and weight
+     rather than from fading text out. */
+  --ink: #111111;
+  --ink-2: #333333;
+  --ink-3: #57534e;
+  --ink-4: #6b6660;
 
   /* Rules */
-  --rule: #ded8ca;
-  --rule-strong: #b3ab98;
+  --rule: #e2dfd9;
+  --rule-strong: #b5afa6;
 
-  /* One structural accent. It marks apparatus — never a side of an argument. */
-  --accent: #2c4d55;
+  /* One accent, a printer's vermilion, at 6.1:1 on paper so it can carry
+     link text and not only decoration. It marks apparatus — never a side of
+     an argument, and never a fact status. */
+  --accent: #b3350a;
+  --accent-wash: #fdf2ec;
 
   --measure: 34rem;
   --wrap: 44rem;
-  --grain-opacity: 0.035;
+  --grain-opacity: 0.02;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
 
-    --paper: #131310;
-    --paper-raised: #1c1b17;
-    --paper-sunk: #0e0e0c;
+    /* Ratios against --paper: ink 17.4:1, ink-2 12.4:1, ink-3 7.8:1,
+       ink-4 5.3:1, accent 8.3:1. */
+    --paper: #0e0e0d;
+    --paper-raised: #1a1a17;
+    --paper-sunk: #191916;
 
-    --ink: #ece7db;
-    --ink-2: #c0baac;
-    --ink-3: #948d7e;
-    --ink-4: #726c5f;
+    --ink: #f5f3ef;
+    --ink-2: #d3cfc7;
+    --ink-3: #a9a49b;
+    --ink-4: #8a857c;
 
-    --rule: #33322b;
-    --rule-strong: #55534a;
+    --rule: #2e2e2a;
+    --rule-strong: #56534c;
 
-    --accent: #9dc4cb;
+    --accent: #ff8a4c;
+    --accent-wash: #241812;
 
-    --grain-opacity: 0.05;
+    --grain-opacity: 0.04;
   }
 }
 
@@ -182,15 +192,17 @@
 
   /* ------------------------------------------------------------ page head */
 
+  /* With the intro gone the head is a title and a date, so it needs far
+     less room under it — the first fact should be close to the fold. */
   .sv-pagehead {
     padding-top: 3rem;
-    padding-bottom: 2.25rem;
+    padding-bottom: 0.5rem;
   }
 
   @media (min-width: 40rem) {
     .sv-pagehead {
-      padding-top: 5rem;
-      padding-bottom: 3rem;
+      padding-top: 4.5rem;
+      padding-bottom: 1rem;
     }
   }
 
@@ -212,6 +224,12 @@
     max-width: var(--measure);
     text-wrap: pretty;
     margin: 0.85rem 0 0;
+  }
+
+  /* Small, and under the title rather than over the facts: it is provenance,
+     not an introduction. */
+  .sv-pagehead__meta {
+    margin-top: 1rem;
   }
 
   .sv-rule {
@@ -283,51 +301,100 @@
     border-bottom: 1px solid var(--rule);
   }
 
+  /* The whole row is the control, and it has to look like one: the page's
+     entire value is behind these rows, so an affordance nobody notices
+     defeats the product. Three signals, all of them on the row rather than
+     on the glyph alone — a hover wash, a marker that reads as a button, and
+     a persistent wash plus a rule while open. */
   .sv-item__summary {
     list-style: none;
     cursor: pointer;
     display: block;
     position: relative;
     min-height: 44px;
-    padding: 0.9rem 2rem 0.9rem 0;
+    padding: 0.9rem 3rem 0.9rem 0;
     -webkit-tap-highlight-color: transparent;
+    transition: background-color 120ms ease;
   }
 
   .sv-item__summary::-webkit-details-marker {
     display: none;
   }
 
-  /* A drawn plus that loses its stem when open. Quieter than a chevron. */
-  .sv-item__summary::before,
-  .sv-item__summary::after {
+  /* The row wash. A pseudo-element rather than a background on the summary
+     so it can bleed into the page gutters and read as a full-width row,
+     without moving a single character of the text. */
+  .sv-item__summary::before {
     content: "";
     position: absolute;
-    right: 0.15rem;
-    top: 1.55rem;
-    background: var(--ink-3);
-    transition: opacity 140ms ease, background-color 140ms ease;
-  }
-
-  .sv-item__summary::after {
-    width: 11px;
-    height: 1px;
-    margin-top: 0;
-  }
-
-  .sv-item__summary::before {
-    width: 1px;
-    height: 11px;
-    margin-right: 5px;
-    margin-top: -5px;
-  }
-
-  .sv-item[open] > .sv-item__summary::before {
-    opacity: 0;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: -0.75rem;
+    right: -0.75rem;
+    background: transparent;
+    transition: background-color 120ms ease;
   }
 
   .sv-item__summary:hover::before,
+  .sv-item[open] > .sv-item__summary::before {
+    background: var(--paper-sunk);
+  }
+
+  /* The marker: a drawn plus inside a ring, which loses its stem when open.
+     Ringed rather than bare so it reads as a control at a glance; drawn in
+     gradients rather than borders so the two strokes can be toggled
+     independently. */
+  .sv-item__summary::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.72rem;
+    width: 1.65rem;
+    height: 1.65rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    color: var(--ink-3);
+    background-image:
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: center, center;
+    background-size: 11px 1.5px, 1.5px 11px;
+    transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease,
+      background-size 140ms ease;
+  }
+
+  .sv-item[open] > .sv-item__summary::after {
+    background-size: 11px 1.5px, 1.5px 0;
+    color: var(--paper);
+    background-color: var(--ink);
+    border-color: var(--ink);
+  }
+
   .sv-item__summary:hover::after {
-    background: var(--ink);
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .sv-item[open] > .sv-item__summary:hover::after {
+    color: var(--paper);
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* An underline on hover, the oldest "this is a link" signal there is. */
+  .sv-item__summary:hover .sv-item__claim {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+    text-decoration-color: var(--accent);
+  }
+
+  /* A darker closing rule under an open row, so a reader scrolling a long
+     expanded body can still see where the item ends. */
+  .sv-item[open] {
+    border-bottom-color: var(--ink);
   }
 
   .sv-item__body {
@@ -443,6 +510,72 @@
     overflow: visible;
   }
 
+  /* ------------------------------------------------ the rest of the facts */
+
+  /* The Facts section shows its most important few and puts the rest behind
+     this control. It is a native <details> like everything else on the page,
+     so it opens with JavaScript off, prints open, and is reachable by
+     keyboard and screen reader without any of that being re-implemented.
+     The count is in the label: "Show more" alone hides how much is behind
+     it, and here that is most of the evidence on the page. */
+
+  .sv-more__summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0.9rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sv-more__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* A chevron, pointing the way the control moves the page. */
+  .sv-more__summary::after {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-0.15em) rotate(45deg);
+    transition: transform 140ms ease;
+  }
+
+  .sv-more[open] > .sv-more__summary::after {
+    transform: translateY(0.1em) rotate(225deg);
+  }
+
+  .sv-more__summary:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  /* Only one of the two labels is ever shown, so the control names both what
+     it will do and how much it is hiding. */
+  .sv-more__label[data-when="open"],
+  .sv-more[open] > .sv-more__summary > .sv-more__label[data-when="closed"] {
+    display: none;
+  }
+
+  .sv-more[open] > .sv-more__summary > .sv-more__label[data-when="open"] {
+    display: inline;
+  }
+
+  /* The revealed facts are the same rows as the ones above the control and
+     carry no frame of their own, so the section reads as one list with the
+     control sitting inside it. */
+
   /* ---------------------------------------------------------- fact bodies */
 
   .sv-stance {
@@ -498,7 +631,7 @@
      than a control, and takes the WCAG 2.5.8 inline exception rather than the
      44px minimum. It still gets as much vertical room as the line allows. */
   .sv-source figcaption a {
-    color: var(--ink-2);
+    color: var(--accent);
     display: inline-block;
     padding: 0.5rem 0;
   }
@@ -558,7 +691,9 @@
   }
 
   .sv-chips__list a:hover {
+    color: var(--accent);
     text-decoration: underline;
+    text-decoration-color: currentColor;
     text-underline-offset: 0.18em;
   }
 
@@ -661,8 +796,8 @@
   }
 
   .sv-tags__list a:hover {
-    border-color: var(--ink-2);
-    color: var(--ink);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   /* ------------------------------------------------------------ viewpoint */
@@ -821,6 +956,13 @@
     margin-bottom: 0;
   }
 
+  /* Links in prose take the one accent. Nothing else on the page is this
+     colour, so a coloured word is always something you can follow. */
+  .prose-body a {
+    color: var(--accent);
+    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
   .prose-body strong {
     color: var(--ink);
     font-weight: 600;
@@ -936,7 +1078,7 @@
 
   .sv-topics a:hover::after {
     width: 1.4rem;
-    background: var(--ink);
+    background: var(--accent);
   }
 
   .sv-topics__title {
@@ -949,7 +1091,7 @@
 
   .sv-topics a:hover .sv-topics__title {
     text-decoration: underline;
-    text-decoration-color: var(--rule-strong);
+    text-decoration-color: var(--accent);
     text-underline-offset: 0.14em;
   }
 
