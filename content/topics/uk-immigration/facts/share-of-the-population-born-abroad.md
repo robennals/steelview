@@ -47,9 +47,9 @@ fifty years.
 - **The share has roughly quadrupled since the war.** In England and Wales, 4.3%
   of residents were born abroad in 1951, 8.9% in 2001, 13.4% in 2011 and 16.8% in
   2021 — about one person in six.
-- **It is the number least vulnerable to your choice of window.** Annual flows
-  swing by hundreds of thousands and get revised. A census count of country of
-  birth does not.
+- **A census count does not get revised the way annual flows do.** Annual flow
+  estimates swing by hundreds of thousands and are revised afterwards; a census
+  count of country of birth is not.
 - **Three different geographies get mixed up here.** The 1951-2021 series is
   England and Wales. The UK-wide census figure is about 10.7 million, or 16%. The
   13.1 million figure is the UK at mid-2024. They are not one continuous line.

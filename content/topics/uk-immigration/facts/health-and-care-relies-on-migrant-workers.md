@@ -21,8 +21,6 @@ sources:
   care workers by the end of 2025.
 - **Care and health professional roles have the highest non-EU-born shares of any
   occupation** in the UK labour market.
-- **This establishes present dependence, and only that.** The services would not
-  run tomorrow without these workers.
-- **It does not establish that the dependence is necessary.** A shortage at a
-  given wage is not the same thing as a shortage, and that distinction is where
-  the argument actually is.
+- **This measures who currently holds the jobs.** It does not measure whether
+  those jobs could be filled another way, at another wage, or after training —
+  none of which is in these figures.

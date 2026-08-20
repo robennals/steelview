@@ -25,7 +25,7 @@ established as stated.
 - **Employment effects are smaller still and less certain.** The MAC found "no or
   little impact" on employment and unemployment, and said its own robustness
   checks left those findings uncertain.
-- **The best UK evidence predates the system in dispute.** It was estimated on
-  EEA free movement before 2018 — no sponsorship, no salary floor.
-- **"Small on average" is compatible with "noticeable here".** A national average
-  does not tell a particular occupation in a particular town what happened to it.
+- **The evidence predates the system in dispute.** It was estimated on EEA free
+  movement before 2018, without sponsorship and without a salary floor.
+- **These are national averages.** They do not say what happened to a particular
+  occupation in a particular town.

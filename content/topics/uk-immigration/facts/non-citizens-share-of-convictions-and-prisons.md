@@ -27,8 +27,7 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-08-18"
 ---
-This is the narrowest claim the data will carry, and what it is not matters as
-much as what it is.
+These are counts of cautions, convictions and prison places by nationality.
 
 - **It is not a measurement of offending.** Most crimes never lead to a
   conviction, so nobody knows the true offending rate of any group, British or
@@ -37,15 +36,15 @@ much as what it is.
   them.** 13.1% of people cautioned or convicted in 2024 and 12.1% of the prison
   population in June 2025, against an adult population share the Migration
   Observatory describes as "roughly similar".
-- **Adjusting for age moves the comparison further in their favour**, because
-  non-citizens are younger and offending is concentrated among the young.
+- **Adjusting for age lowers the share further**, because non-citizens are
+  younger and offending is concentrated among the young.
 - **Nationality-level rates vary a great deal, and the denominators are poor.**
   The most common non-UK nationalities in prison at the end of 2025 were
   Albanian, Irish and Polish; the Migration Observatory says comparing rates
   accurately is difficult because of data gaps.
-- **So does the offence mix.** Non-citizens are over-represented in drug
-  convictions and under-represented in violent ones.
-- **The categories are not the ones most arguments use.** Naturalised citizens
-  are recorded as British and the statistics carry no country of birth at all, so
-  these figures say nothing about people who came to Britain and became citizens,
-  or about their children.
+- **The offence mix differs too.** Non-citizens are more likely to be convicted
+  or incarcerated for drug offences and less likely for violent ones.
+- **Nationality is not country of birth.** Naturalised citizens are recorded as
+  British and the statistics carry no country of birth at all, so these figures
+  say nothing about people who came to Britain and became citizens, or about
+  their children.

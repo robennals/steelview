@@ -45,8 +45,8 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-05-21"
 ---
-The denominator is shown on purpose, and both sides of it are the same twelve
-months — calendar 2025 — from the two bodies responsible for them.
+Both halves of this cover the same twelve months — calendar 2025 — from the two
+bodies that publish them.
 
 - **Detected illegal arrivals were about one in eighteen of everyone who moved
   here.** 46,497 detected arrivals via illegal routes against 813,000 people
@@ -55,14 +55,12 @@ months — calendar 2025 — from the two bodies responsible for them.
 - **Study is the largest single reason anyone moves to Britain.** Of non-EU+
   arrivals in the same year, 47% came for study, 23% for work, 14% were asylum
   applicants, 7% for family and 6% on humanitarian routes.
-- **The smaller percentages in circulation use a mismatched denominator.**
-  Dividing a recent year's arrivals into the 1,469,000 peak of the year to March
-  2023 gives about 3%. That is one year's numerator over a different year's
-  denominator, and it happens to flatter one side.
-- **Detections are a floor, not a total.** The Home Office says plainly that it
-  cannot know how many people enter illegally or how many are here without
-  permission, and publishes no estimate. Nobody, in either direction, is entitled
-  to a confident number for the true figure.
+- **A mismatched denominator gives a much smaller share.** Dividing a recent
+  year's arrivals into the 1,469,000 peak of the year to March 2023 gives about
+  3% — one year's numerator over a different year's denominator.
+- **Detections are a floor, not a total.** The Home Office says it is "not
+  possible to know the exact number of people currently resident in the UK
+  without permission", and publishes no estimate of it.
 - **"Asylum" and "small boats" overlap but are not nested.** Just over half of
   asylum claimants arrived by illegal routes and 39% arrived on a visa, so the
   14% asylum share and the 5.7% irregular share cannot be added together.

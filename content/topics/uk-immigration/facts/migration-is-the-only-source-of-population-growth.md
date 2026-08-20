@@ -15,16 +15,13 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-04-28"
 ---
-This one is genuinely double-edged, and both sides should handle it carefully.
+ONS projects net migration to be the only source of UK population growth over
+the next twenty-five years, with deaths exceeding births by 2.5 million.
 
-- **On official projections, migration is the only thing keeping the population
-  from shrinking.** ONS projects deaths to exceed births by 2.5 million over
-  twenty-five years.
-- **So any chosen migration level is a chosen population trajectory.** That is a
-  real argument for treating the number as a democratic decision rather than a
+- **So a chosen migration level is a chosen population trajectory.** That is an
+  argument for treating the number as a democratic decision rather than a
   by-product of visa rules.
-- **And near-zero net migration is a choice for a shrinking, ageing population**,
-  with the tax and care consequences that follow — not a return to a prior
-  normal.
+- **Near-zero net migration is a choice for a shrinking, ageing population**,
+  with the tax and care consequences that follow.
 - **A projection is not a forecast.** ONS says so itself: the long-term
   assumption "should not be viewed as a forecast, but as a scenario".

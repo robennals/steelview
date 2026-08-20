@@ -57,9 +57,9 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2025-01-24"
 ---
-This is the part of British opinion that survives every reasonable way of
-asking. What does not survive is kept separate, in *The British public wants
-immigration reduced*.
+Two things in British opinion hold across pollsters and question wordings:
+immigration is salient, and objection varies sharply by route. The aggregate
+question is a separate fact, *The British public wants immigration reduced*.
 
 - **Salience is not in doubt.** Immigration went from being named as an important
   issue by 6% of people in April 2022 to 38% in October 2024 — a top issue for
@@ -73,14 +73,13 @@ immigration reduced*.
   repeats.** In April 2023, 37% wanted migration made more difficult for asylum
   seekers, against 30% for Afghans, 21% for Hong Kongers and 14% for Ukrainians.
   Students, EU nationals and family visas were net liberal.
-- **And the public is not sorting by skill.** 54% favoured easing migration for
-  care workers, 45% for agricultural workers and 38% for construction workers —
+- **The sorting does not follow skill.** 54% favoured easing migration for care
+  workers, 45% for agricultural workers and 38% for construction workers —
   against 27% for financial-sector workers, the high-skilled group a points
-  system is built to prefer. It is sorting by whether it thinks the work needs
-  doing.
+  system is built to prefer.
 - **How confident to be.** The route-by-route data are from April 2023 and are
   better evidence for the shape of preferences than their current level.
-- **A discrepancy in the source, reproduced rather than smoothed.** The briefing's
-  summary says "over a third of people (36%)" want low-skilled worker migration
-  made more difficult while its body text says "over a quarter" of the same
-  question. This page quotes the body text.
+- **The source contradicts itself on one figure.** The briefing's summary says
+  "over a third of people (36%)" want low-skilled worker migration made more
+  difficult while its body text says "over a quarter" of the same question. This
+  page quotes the body text.

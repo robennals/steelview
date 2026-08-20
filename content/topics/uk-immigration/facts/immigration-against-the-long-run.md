@@ -429,9 +429,9 @@ series:
           - { period: "2024", value: 0.48 }
           - { period: "2025", value: 0.25 }
 ---
-Every other number on this page sits inside this one, and it is almost never
-given with a baseline. The Office for National Statistics has measured migration
-since 1964 and publishes the whole run, so "compared to what?" has an answer.
+The Office for National Statistics has measured migration since 1964 and
+publishes the whole run, so both gross and net immigration can be read against
+their own history.
 
 - **Gross immigration is far above any historical norm, even after two years of
   falling.** 813,000 people moved to the UK for a year or more in 2025, down from
@@ -441,21 +441,20 @@ since 1964 and publishes the whole run, so "compared to what?" has an answer.
 - **Net migration is not unusual at all.** Net migration was 171,000 in 2025 —
   "lower than the levels seen during the 2010s", in the Migration Observatory's
   words, and a sharp fall from 2022 and 2023.
-- **Which of those two you mean decides which sentence you get.** Gross is at a
-  historic high; net is back to something like a 2010s normal. Both are true, and
-  arguments are routinely conducted by picking one and not saying which.
+- **Gross and net give opposite sentences about the same year.** Gross is at a
+  historic high; net is back to something like a 2010s level. Which one is meant
+  has to be said.
 - **Britain spent fifteen straight years losing people.** In every year from 1964
   to 1978 more people left than arrived. ONS: "From the late 1960s to the early
   1980s, net migration was consistently negative". The reversal came in the late
   1990s.
-- **The share-of-population reading is on the chart because the count alone is
-  not enough.** The UK population grew from 54.0 million to 69.5 million over the
-  series, and immigration is part of why — so dividing by it understates the
-  change rather than explaining it away. Both readings are shown; neither rescues
-  either side.
+- **The chart also shows immigration as a share of population.** The UK
+  population grew from 54.0 million to 69.5 million over the series, and
+  immigration is part of that growth, so dividing by it understates the change
+  rather than explaining it away.
 - **How confident to be.** ONS changed method in June 2021 and says comparisons
   across that break "should be treated with caution". Nothing in the
   1990s-versus-now comparison turns on year-to-year precision around 2021, but
   the caveat travels with the series.
-- **Not a record.** 2025 is well down from the 2022-23 peak. What it is, is
-  higher than any year before 2018.
+- **2025 is not a record.** It is well down from the 2022-23 peak, and higher
+  than any year before 2018.

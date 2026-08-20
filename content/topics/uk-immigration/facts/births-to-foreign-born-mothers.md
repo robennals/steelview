@@ -34,20 +34,20 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2025-11-07"
 ---
-The flow figures say who arrived and the stock figures say who is here. This one
-says what the next cohort of Britons looks like.
+This counts births in England and Wales by the mother's country of birth. It is
+a birth statistic, not a migration flow.
 
 - **More than one in three babies born in England and Wales in 2024 had a
-  foreign-born mother**, up from about one in four in 2008. Those children are
-  British from birth and appear in no migration statistic.
-- **The ratio is rising substantially because its denominator is shrinking.** To
-  2021 — the last year with official fertility estimates — migrant fertility was
-  flat while UK-born fertility fell.
+  foreign-born mother**, up from about one in four in 2008. These are births
+  recorded here rather than moves across a border, so they appear in no migration
+  statistic.
+- **The ratio is rising because its denominator is shrinking.** To 2021 — the
+  last year with official fertility estimates — migrant fertility was flat while
+  UK-born fertility fell.
 - **What happened after 2021 is not decomposed, and that is where the steepest
-  rise is.** The share rose fastest between 2021 and 2024, and fertility data
-  stop in 2021, so anyone attributing the recent steepening to either cause is
-  guessing.
+  rise is.** The share rose fastest between 2021 and 2024, and the fertility data
+  stop in 2021.
 - **The growth is in children with two foreign-born parents.** The share with one
-  UK-born and one foreign-born parent has stayed roughly flat at about 13% for
-  years, which is what distinguishes this from a restatement of "more migrants
-  arrived".
+  UK-born and one foreign-born parent has stayed roughly flat at about 13%. A
+  reader who takes this as a restatement of "more migrants arrived" is missing
+  that: the mixed-parent share did not move.

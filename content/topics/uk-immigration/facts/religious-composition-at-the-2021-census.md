@@ -58,17 +58,14 @@ sources:
     publisher: "National Records of Scotland"
     date: "2024-05-21"
 ---
-The Muslim share of England and Wales did rise, and this page states it plainly:
-6.5% at the 2021 Census, 3.9 million people, up from 4.9% and 2.7 million in
-2011. Hindus rose from 1.5% to 1.7%. The claim built on top of those counts is
-what fails.
+The Muslim share of England and Wales rose from 4.9% and 2.7 million people in
+2011 to 6.5% and 3.9 million in 2021. Hindus rose from 1.5% to 1.7%.
 
-- **It is the wrong row of the table.** Christian affiliation fell from 71.7% in
-  2001 to 59.3% in 2011 to 46.2% in 2021 — below half for the first time in the
-  history of the census — and "no religion" rose from 25.2% to 37.2%. Each of
-  those movements is roughly eight times the size of the Muslim change, and
-  neither is a migration effect. In Scotland "no religion" is now the majority
-  answer at 51.1%.
+- **The larger movements in the table are elsewhere.** Christian affiliation fell
+  from 71.7% in 2001 to 59.3% in 2011 to 46.2% in 2021 — below half for the first
+  time in the history of the census — and "no religion" rose from 25.2% to 37.2%.
+  Each of those movements is roughly eight times the size of the Muslim change.
+  In Scotland "no religion" is now the majority answer at 51.1%.
 - **It measures affiliation, not belief, practice or arrival.** The question is
   voluntary, 94.0% answered it in 2021, and it asks which religion a person
   connects or identifies with. ONS warns against comparing across censuses
@@ -84,6 +81,6 @@ what fails.
   and the largest religious group among migrants was the same as among the
   UK-born.
 - **And the Muslim share of arrivals has been falling since 2001**, even as the
-  numbers rose — see the chart on the fact above.
+  numbers rose — see *The UK does not record the religion of immigrants*.
 - **Commonly mistaken for a projection.** A decennial stock count of affiliation
   in two countries of the UK is not a forecast of anything.

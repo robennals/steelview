@@ -33,9 +33,10 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2025-12"
 ---
-In a country running a structural deficit the median resident is also a lifetime
-net fiscal cost, so "does this group pay for itself?" only means something if you
-ask it of everybody.
+The comparator decides what these numbers mean. The MAC puts the UK resident
+population at a mean lifetime fiscal contribution of -£39,000 and a median of
+-£145,000, so "does this group pay for itself?" is a question worth asking of
+everybody.
 
 - **The route as a whole is clearly positive.** The Migration Advisory Committee:
   "Overall, the SW visa route is clearly fiscally positive for the UK." That is
@@ -45,7 +46,7 @@ ask it of everybody.
   lifetime contributions that are negative in aggregate, and within main
   applicants outside health and care, 72% of the gain comes from the top 30% of
   earners.
-- **The comparator decides the answer on dependants, so it has to be stated.**
+- **On dependants the comparator changes the answer, so it has to be stated.**
   Against the resident population as a whole — mean -£39,000 — dependants look
   roughly level. Against residents matched on age, which is the comparison the
   MAC itself builds, they fall well short: skilled-worker dependants outside
@@ -54,7 +55,6 @@ ask it of everybody.
 - **Main applicants beat their own age-matched comparator by a wide margin.**
   Outside health and care they are far ahead of the +£117,000 age-matched
   comparator the MAC constructs for them.
-- **Commonly mistaken for a claim about immigration.** It is one route, one
-  cohort, one year, projected over a lifetime, on a route that requires a job
-  offer above a salary floor. The MAC has not modelled the asylum, refugee,
-  student or resettlement routes at all.
+- **This is one route, not immigration.** One cohort, one year, projected over a
+  lifetime, on a route that requires a job offer above a salary floor. The MAC
+  has not modelled the asylum, refugee, student or resettlement routes at all.

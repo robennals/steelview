@@ -22,12 +22,11 @@ for twelve months or more, minus everyone who leaves for twelve months or more.
 - **Both halves move, and right now both are moving the same way.** The 2025
   figure of 171,000 is low partly because arrivals fell and partly because the
   very large 2022-23 cohort of students and workers is now leaving.
-- **The peak figure has been revised repeatedly.** The 2023 peak has been
-  published at various times as roughly 745,000, 906,000 and 944,000 as ONS
-  improved its methods and got better Home Office and HMRC data.
-- **So arguments built on one year's precise number are weak, and arguments
-  built on the shape of the curve are not.** Every revision has preserved the
-  shape.
+- **The peak figure has been revised more than once**, as ONS improved its
+  methods and got better Home Office and HMRC data. The published peak is now
+  944,000.
+- **So one year's precise number carries less weight than the shape of the
+  curve.** The revisions moved the level and left the rise and fall intact.
 - **Provisional means provisional.** ONS: "Estimates stay provisional for a year,
   until we replace them with more complete revised estimates, based on updated
   data."

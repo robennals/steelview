@@ -33,9 +33,7 @@ sources:
     publisher: "Home Office"
     date: "2026-02-26"
 ---
-Housing people while their claims are decided is the largest single cost of the
-asylum system, and most of that cost is a processing problem rather than an
-arrivals problem.
+This is the cost of housing people while their asylum claims are decided.
 
 - **The contracts are running at more than three times their original price.**
   The National Audit Office reports that the Home Office "originally estimated
@@ -49,12 +47,10 @@ arrivals problem.
 - **The cost is coming down, and not because fewer people arrived.** People
   waiting for an initial decision are 72% below the June 2023 peak, and hotel
   numbers fell 35% in a year to 21,000. Over the same period small boat arrivals
-  went up, not down: 41,472 in the year to December 2025, 13% higher than the
-  year before.
-- **This measures the system, not the people in it.** It says nothing about who
-  should be admitted, whether the decisions were right, or what becomes of
-  people who are refused — a queue can be cleared by deciding faster in either
-  direction.
-- **Commonly quoted as the price of arrivals.** It is the price of delay. The
-  same number of people, decided on faster and housed in dispersed
-  accommodation, would have cost a fraction of it.
+  went up: 41,472 in the year to December 2025, 13% higher than the year before.
+- **What it does not measure.** It says nothing about who should be admitted,
+  whether the decisions were right, or what becomes of people who are refused —
+  a queue can be cleared by deciding faster in either direction.
+- **Read as the price of arrivals, this is the wrong number.** The cost tracks
+  the decision queue rather than the number of people arriving: the queue is 72%
+  below its peak while small boat arrivals rose 13%.

@@ -16,7 +16,8 @@ sources:
     publisher: "Home Office"
     date: "2026-05-21"
 ---
-Two different counts, and keeping them apart is most of the work.
+Two separate counts: people waiting for an initial decision, and people housed
+in hotels.
 
 - **The initial-decision queue is 72% below its peak.** 49,000 people awaiting an
   initial decision at the end of March 2026, against 175,000 at the peak in June
@@ -25,8 +26,8 @@ Two different counts, and keeping them apart is most of the work.
   seekers, 21% of the total.
 - **Neither fell because fewer people came.** Small boat arrivals over the same
   period rose.
-- **What moves these numbers is decision-making capacity**, which is a fact about
-  the Home Office, not about arrivals.
+- **Both track the Home Office's decision rate.** The fall in the queue followed
+  an increase in the number of initial decisions.
 - **What they do not show** is who should be admitted, whether the decisions were
   right, or what happens to those refused. A queue can be cleared by deciding
   faster in either direction.

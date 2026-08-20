@@ -16,20 +16,18 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-01-23"
 ---
-Nobody knows, and the people most confident on both sides are the ones least
-entitled to be.
+Whether deterrence policies would substantially reduce Channel crossings is not
+settled by the available evidence.
 
-- **Against deterrence: the measured effects are small.** The Migration
-  Observatory's reading of the evidence is that "the deterrent effect of asylum
-  policies tends to be small". Interviews with asylum seekers repeatedly find
-  they know little about destination policy before travelling, and the Rwanda
-  scheme removed nobody, so it tested nothing.
-- **For deterrence: the Australian comparison is not empty.** Arrivals there did
-  collapse.
-- **But the mechanism there was probably interception at sea, not offshore
-  processing.** That is a different policy with different legal and practical
-  obstacles in the Channel.
-- **So the claim is untested at the scale and in the form proposed** rather than
-  refuted. It is tagged unknown because "we tried something adjacent and it did
-  not work" and "a stronger version elsewhere coincided with a collapse in
-  arrivals" are both true, and neither settles it.
+- **The measured deterrent effects are small.** The Migration Observatory's
+  reading of the evidence is that "the deterrent effect of asylum policies tends
+  to be small", and that it is "difficult to state conclusively" what new
+  policies will do.
+- **Australian arrivals did fall, but the mechanism is disputed.** The Migration
+  Observatory cites analysts arguing that the main reason Australia reduced small
+  boat arrivals was turning boats around at sea — physical enforcement rather
+  than offshore processing, and a different policy with different legal and
+  practical obstacles in the Channel.
+- **So the claim is untested in the form proposed** rather than refuted. It is
+  tagged unknown because the evidence on deterrence policy and the Australian
+  episode point different ways, and neither settles it.

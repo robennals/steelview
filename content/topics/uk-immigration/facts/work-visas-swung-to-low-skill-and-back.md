@@ -91,23 +91,21 @@ degree level.
   Committee: visas for RQF 6+ jobs "have largely stayed consistent across time,
   with a yearly average of around 74,000 between 2021-2023". The surge was
   additional, not a substitution.
-- **The pay gap between routes is large and is what the skill split is really
-  about.** Median earnings in 2023/24 were £56,600 for Skilled Worker main
-  applicants and £30,900 for Health and Care Worker main applicants. Health and
-  care roles on national pay scales face a salary floor of £25,000 against
-  £41,700 for a standard Skilled Worker, and Seasonal Workers in horticulture
-  have no annual threshold at all — only £12.71 an hour for at least 32 hours a
-  week.
-- **The public does not sort by skill, so "low-skill" is the wrong axis for the
-  politics.** Asked which routes should be made easier, 54% said care workers and
-  38% construction workers against 27% for financial-sector workers — see
-  *Immigration has been a top-tier public concern since 2022*. The route the
-  public most wants to protect is the low-paid one the fiscal arithmetic most
-  penalises, and it is now closed.
-- **The volumes rose and fell with the rules, not with demand.** Work visas
-  peaked at 613,627 in the year to December 2023 — 336,007 main applicants and
-  277,620 dependants — and were 252,775 in the year to March 2026, 59% down. For
-  the eleven years to March 2021 the annual total was under 200,000.
+- **The pay gap between routes is large.** Median earnings in 2023/24 were
+  £56,600 for Skilled Worker main applicants and £30,900 for Health and Care
+  Worker main applicants. Health and care roles on national pay scales face a
+  salary floor of £25,000 against £41,700 for a standard Skilled Worker, and
+  Seasonal Workers in horticulture have no annual threshold at all — only £12.71
+  an hour for at least 32 hours a week.
+- **Public preference does not track skill.** Asked which routes should be made
+  easier, 54% said care workers and 38% construction workers against 27% for
+  financial-sector workers — see *Immigration has been a top-tier public concern
+  since 2022*. The route with the most public support is the low-paid one the
+  fiscal estimates penalise most, and it is now closed.
+- **The volumes rose and fell with the rules.** Work visas peaked at 613,627 in
+  the year to December 2023 — 336,007 main applicants and 277,620 dependants —
+  and were 252,775 in the year to March 2026, 59% down. For the eleven years to
+  March 2021 the annual total was under 200,000.
 - **How confident to be, and what is missing.** The skill-share numbers are
   three published points, not a series: the government charts the share as an
   image and publishes no annual table behind it, so this fact carries no chart.

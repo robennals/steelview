@@ -22,23 +22,19 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-05-21"
 ---
-The arithmetic settles this, and the denominator has to be in the sentence or
-the arithmetic proves nothing.
+This is the share of long-term immigration made up of detected illegal arrivals,
+on matched twelve-month periods.
 
-- **The share is 5.7%, on matched periods.** 46,497 detected arrivals by illegal
-  routes in calendar 2025 against 813,000 people moving to the UK long-term in
-  the same twelve months — about one in eighteen.
+- **The share is 5.7%.** 46,497 detected arrivals by illegal routes in calendar
+  2025 against 813,000 people moving to the UK long-term in the same twelve
+  months — about one in eighteen.
 - **Irregular arrivals did not rise during the surge in the way visas did.** The
   post-2021 increase was student, work and family visas issued by the Home Office
   under rules Parliament set.
-- **An earlier version of this page said "roughly three per cent", and that
-  figure should not be used.** It came from putting a recent year's arrivals over
-  the 1,469,000 peak of the year to March 2023. Both percentages can be defended
-  against some denominator, which is exactly why the denominator belongs in the
-  sentence — and the smaller one flattered this fact's own conclusion.
-- **Worth stating plainly, because coverage and polling run the other way.**
-  Someone who wants a much smaller headline number is talking about the visa
-  system, whether or not that is the argument they think they are having.
+- **The denominator has to match the numerator.** Putting a recent year's
+  arrivals over the 1,469,000 peak of the year to March 2023 gives about 3%
+  instead. Either percentage can be defended against some denominator, which is
+  why the denominator belongs in the sentence.
 - **What this does not claim.** That the true number of illegal entries is known.
   The Home Office counts detections and says explicitly that it cannot estimate
   the rest.

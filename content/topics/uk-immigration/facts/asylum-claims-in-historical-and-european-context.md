@@ -178,8 +178,8 @@ series:
           - { period: "2024", value: 82368 }
           - { period: "2025", value: 82140 }
 ---
-Two true sentences about the same year point in opposite directions, and each
-side quotes only one of them.
+Asylum claims in 2024 were the highest in the modern UK record, and the UK
+ranked mid-table in Europe per head of population. Both describe the same year.
 
 - **Claims are at their highest in the modern record, but only just.** Around
   108,000 people claimed asylum in 2024, the highest since records began in 1979
@@ -188,10 +188,9 @@ side quotes only one of them.
 - **They have since come down.** 93,525 people claimed asylum in the year to
   March 2026, 12% fewer than the year before, after a peak of 110,051 in the year
   to September 2025.
-- **The middle of the series is the part nobody quotes.** Between 2004 and 2020
-  yearly totals ran "between 22,000 and 46,000". The current level is roughly
-  three times that, and roughly equal to 2002. The chart shows the whole run
-  rather than any pair of endpoints.
+- **Between 2004 and 2020 the yearly total ran "between 22,000 and 46,000".** The
+  current level is roughly three times that, and roughly equal to 2002. The chart
+  shows the whole run rather than any pair of endpoints.
 - **Per head of population the UK is mid-table, not top.** Fifth in the EU+ by
   number of claims in 2024 and seventeenth per head, at 16 claims per 10,000
   residents. On grants of protection, fourth by number and fourteenth per head,

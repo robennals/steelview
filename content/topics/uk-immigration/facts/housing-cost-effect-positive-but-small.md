@@ -21,18 +21,19 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2026-06-19"
 ---
-The claim that survives scrutiny is deliberately narrow, and both sides
-overshoot it in opposite directions.
+This is the Migration Advisory Committee's review of the international evidence
+on immigration and housing costs, read across to the UK.
 
 - **The direction is not in doubt.** More people in a place where building is
-  hard raises prices there, and the Migration Advisory Committee's review says
-  planning constraints are what decide how much.
+  constrained raises prices there, and the review says planning constraints are
+  what decide how much.
 - **The magnitude is modest.** Median and mean estimates imply immigration
   explains "approximately 4-6% of the total increase in UK house prices over the
   last three decades".
 - **The review's own summary is that immigration is "unlikely to be a dominant
   driver" of UK housing costs.**
-- **UK-specific studies are messier still.** Several find local house prices
-  falling where immigrant shares rise, because existing residents move out.
-- **On rents there is no UK study at all.** Anyone quoting a confident UK rent
-  number is quoting something that has not been measured.
+- **It is a review, not a single UK estimate.** The MAC says the evidence "does
+  not point to a single precise estimate", and that estimates "vary across
+  contexts and methodologies".
+- **These figures are about house prices.** Rents are a different measure and
+  none of the numbers here cover them.

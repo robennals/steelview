@@ -447,9 +447,8 @@ series:
           - { period: "2025-09", value: -132000 }
           - { period: "2025-12", value: -136000 }
 ---
-Free movement ended in January 2021. What followed was not less immigration but
-a different set of people arriving under a different set of rules — rules
-Parliament wrote.
+Free movement ended in January 2021. Immigration after that ran almost entirely
+through non-EU visa routes.
 
 - **EU+ migration reversed.** Net migration of EU+ nationals has been negative
   every quarter since the year to June 2022 and was -42,000 in 2025. More
@@ -457,21 +456,19 @@ Parliament wrote.
 - **Non-EU+ migration became almost the whole of it.** 627,000 of the 813,000
   people who moved to the UK long-term in 2025 were non-EU+ nationals, down from
   780,000 the year before but still the great majority.
-- **This was the controlled part of the system all along.** Non-EU migration has
-  always run through visa rules the UK sets for itself. Whatever drove the
-  2021-23 surge, it was not an absence of legal control.
+- **Non-EU migration runs through visa rules the UK sets for itself.** It always
+  has, and the 2021-23 surge happened under those rules.
 - **The turn started before the law changed.** The Migration Observatory notes
   that EU net migration "began to fall immediately after the referendum",
   four and a half years before free movement actually ended.
 - **Departures lag arrivals, which is why EU+ net migration keeps falling.** EU
   emigration now is people who came when EU immigration was high; there is no
   matching inflow behind them.
-- **The chart is one series, not two, on purpose.** ONS publishes this split back
-  to 2012 on the current method. An older survey-based series carries an EU
-  split back to 1975, but it uses a different method and a narrower definition
-  of the group — "EU" before mid-2021, "EU+" after, which adds Norway, Iceland,
-  Liechtenstein and Switzerland. Splicing them would invent a trend, so the
-  break is drawn where it falls rather than smoothed away.
+- **The chart is one series, with the break drawn where it falls.** ONS publishes
+  this split back to 2012 on the current method. An older survey-based series
+  carries an EU split back to 1975, but it uses a different method and a narrower
+  definition of the group — "EU" before mid-2021, "EU+" after, which adds Norway,
+  Iceland, Liechtenstein and Switzerland. Splicing them would invent a trend.
 - **Flow is not stock.** Non-EU+ nationals being most of one year's arrivals is
   not the same claim as most foreign-born residents being non-EU. At the 2021
   Census, EU-born residents were 3.6 million of the non-UK-born population, up

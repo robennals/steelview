@@ -22,20 +22,16 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-08-18"
 ---
-The law requires the Home Secretary to pursue deportation of a foreign national
-sentenced to twelve months or more. This is a fact about the gap between that
-rule and its execution.
+"Deportable offenders living in the community" means foreign national offenders
+who are neither in prison nor in immigration detention and who have not been
+granted the right to remain in the UK long term.
 
-- **The stock of deportable offenders living in the community grew 36% between
-  the end of 2022 and March 2026** — about 1,600 people a year who are neither in
-  prison nor detention and have no grant of leave to remain.
+- **That group grew 36% between the end of 2022 and March 2026** — equivalent to
+  about 1,600 people a year.
 - **Removals went up over the same period, to 5,850 in the year to March 2026.**
   The stock grew anyway, because releases from prison outran removals.
-- **Some of the shortfall is legal and much of it is practical.** Successful human
-  rights appeals run at a few hundred a year; some countries will not take their
-  nationals back on any terms.
-- **The share actually removed is not published.** That is why this is a stock and
-  a growth rate rather than a percentage — and the absence is itself part of what
-  people are complaining about.
-- **This is not a fact about crime rates.** It sits next to them in argument and
-  is worth keeping apart from them.
+- **The share actually removed is not published.** The government publishes no
+  data on what proportion of foreign national offenders are deported, which is
+  why this is a stock and a growth rate rather than a percentage.
+- **This is a count of people, not a crime rate.** It says nothing about how
+  often anyone offends.

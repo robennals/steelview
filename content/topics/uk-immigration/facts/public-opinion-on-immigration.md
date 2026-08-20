@@ -22,9 +22,8 @@ sources:
     publisher: "Ipsos"
     date: "2026-02-17"
 ---
-The solid core of British opinion is a separate fact on this page. What is left
-here is the aggregate sentence "the public wants immigration reduced", which is
-true, unhelpful, and easy to misuse.
+"The public wants immigration reduced" is true, and the measured level moves
+about twenty points depending on how the question is asked.
 
 - **The measured level swings about twenty points on question wording.** In April
   2023, 32% said immigration was a bad thing while 52% said numbers should be
@@ -39,6 +38,6 @@ true, unhelpful, and easy to misuse.
 - **The source cited here contradicts itself, and a reader should know.** The
   Ipsos page's headline says two-thirds of Britons think the total too high; its
   own first key finding puts it at 46%. This page uses the key findings.
-- **There is a real democratic argument in the vicinity**, and two viewpoints
-  here make it — but about a specific policy on a specific route, because the
-  aggregate is not stable enough to bear weight.
+- **The aggregate is too unstable to carry a policy conclusion.** The
+  route-by-route questions are steadier, and they are a separate fact:
+  *Immigration has been a top-tier public concern since 2022*.

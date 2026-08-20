@@ -118,9 +118,8 @@ series:
           - { period: "2019", value: 269673 }
           - { period: "2021", value: 121058 }
 ---
-The question people want answered is "how many of the people arriving are
-Muslim". No official statistic answers it, and the absence is worth stating as
-plainly as any number.
+No official statistic records the religion of people arriving in the UK. The
+only measurement that exists is the Census.
 
 - **Religion is not collected anywhere in migration data.** ONS said so in a
   published FOI response: its Census 2021 international migration release "does
@@ -132,14 +131,13 @@ plainly as any number.
   England and Wales, or a count of arrivals from Muslim-majority countries
   presented as a religion figure. This page publishes the first and not the
   second.
-- **What the Census shows is the opposite of the usual assumption.** The Muslim
-  share of arrival cohorts peaked at around 27% for people who arrived in the
-  1980s and 1990s and has run between 16% and 19% for every cohort arriving
-  since 2001. The share fell.
+- **The Muslim share of arrival cohorts has fallen.** It peaked at around 27% for
+  people who arrived in the 1980s and 1990s and has run between 16% and 19% for
+  every cohort arriving since 2001.
 - **The absolute numbers rose, because total arrivals rose.** The 2017-2019
   cohort contains more Muslim residents than the whole 1981-1990 cohort does.
-  Share down, volume up: the chart carries both readings, and quoting either one
-  alone is the misleading move here.
+  Share down, volume up; the chart carries both readings, and either one quoted
+  alone gives the wrong picture.
 - **Nationality is a bad proxy for religion in both directions.** Fewer than one
   in ten India-born residents are Muslim, and India is the largest single
   country of birth outside the UK, at 920,000 people. About one in twenty-five

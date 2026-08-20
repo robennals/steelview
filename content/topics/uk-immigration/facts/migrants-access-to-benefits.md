@@ -22,19 +22,20 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-06-23"
 ---
-Both familiar versions of this are wrong, which is why it is filed as
-complicated rather than settled either way.
+What a migrant can claim depends on the visa route and on length of stay.
 
 - **Most people arriving on visas cannot claim most benefits, usually for at
   least five years.** The No Recourse to Public Funds condition blocks Universal
-  Credit, Child Benefit and most other welfare until indefinite leave to remain.
-  The MAC's modelling treats that restriction as worth about £17,000 per person
-  on the family route alone.
-- **But "migrants can't claim benefits" is also wrong.** The condition lifts on
-  indefinite leave. Refugees granted status are eligible immediately and have low
-  employment rates. Asylum seekers get accommodation and a small subsistence
-  allowance while barred from working.
-- **Everyone uses the NHS and schools from day one**, and that is most of the
-  public spending attributable to any resident, migrant or not.
+  Credit, Child Benefit and most other welfare until indefinite leave to remain,
+  which normally follows "at least five years of stay".
+- **"Migrants can't claim benefits" is wrong too.** The condition lifts on
+  indefinite leave, and it attaches to work, study and family visas rather than
+  to everyone who arrives.
+- **Refugees are a separate case, and are not in the fiscal modelling at all.**
+  The MAC says it has not assessed them: a group "likely to affect the public
+  finances more negatively than the groups discussed above because they have
+  lower employment rates".
+- **Asylum seekers are separate again**, supported through asylum accommodation
+  rather than through the benefit system.
 - **So access depends on route and length of stay**, which is why fiscal
   estimates are published per route and never for "migrants" as a class.

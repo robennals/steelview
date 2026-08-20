@@ -70,9 +70,9 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2025-12-17"
 ---
-"Only high earners pay their way" is testable, and the Migration Advisory
-Committee has tested it. There is a break-even salary, it is published, and it
-sits below the threshold the route already applies.
+The Migration Advisory Committee publishes a break-even salary: the pay at which
+a work-visa main applicant is projected to pay in over a lifetime as much as
+they take out.
 
 - **The break-even is roughly £29,000 a year.** That is the MAC's estimate for a
   main applicant on a route that allows dependants, over a lifetime, in its
@@ -86,26 +86,24 @@ sits below the threshold the route already applies.
   Worker threshold is £41,700 a year. The MAC's conclusion is that after the 2024
   and 2025 increases "effectively all Skilled Workers are now projected, at the
   point they arrive in the UK, to be net fiscally positive".
-- **So no, it is not only the highest earners.** Every tenth of the earnings
+- **Every earnings decile on the route clears it.** Every tenth of the earnings
   distribution on the Skilled Worker route outside health and care is projected
-  to pay in more than it takes out. What is true is that the *gain* is
-  concentrated: the top tenth accounts for 39% of it and the bottom tenth for 1%.
+  to pay in more than it takes out. The *gain* is concentrated: the top tenth
+  accounts for 39% of it and the bottom tenth for 1%.
 - **The sign flips on specific routes, not at a salary line.** Care workers on
   the Health and Care visa are projected at -£36,000 each and partners of British
   citizens on the Family route at -£109,000. Neither route is bound by the
   £41,700 threshold.
-- **Two MAC reports six days apart give different top-decile figures, and this
-  page does not smooth that over.** The December 2025 *Fiscal Impact* report says
-  the top 10% "make an average lifetime contribution of £2.7m"; the *Review of
-  Salary Requirements* says "£2.2 million". Both give the same 39% share, and
-  GOV.UK records no correction to either. Which figure the MAC now stands behind
-  is not established.
-- **"Break-even" means nothing without its unit.** The £29,000 is a lifetime
-  break-even for one visa main applicant who may bring dependants. Oxford
-  Economics' widely quoted "just over £10,000" is a single childless
-  twenty-year-old in a single year, and its higher figure is a household of four
-  with two children. Quoting any of them without saying which unit it applies to
-  is the move this page exists to catch.
+- **Two MAC reports six days apart give different top-decile figures.** The
+  December 2025 *Fiscal Impact* report says the top 10% "make an average lifetime
+  contribution of £2.7m"; the *Review of Salary Requirements* says "£2.2
+  million". Both give the same 39% share, and GOV.UK records no correction to
+  either. Which figure the MAC now stands behind is not established.
+- **The figure depends on its unit.** The £29,000 is a lifetime break-even for
+  one visa main applicant who may bring dependants. Oxford Economics' "just over
+  £10,000" is a single childless twenty-year-old in a single year, and its higher
+  figure is a household of four with two children. The three numbers are not
+  comparable with each other.
 - **How confident to be.** This is a model, not a measurement. The MAC says so
   itself — "working out the precise point at which someone becomes fiscally
   positive is difficult" — and advises that a government might sensibly set a

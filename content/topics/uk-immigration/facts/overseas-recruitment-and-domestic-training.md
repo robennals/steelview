@@ -22,8 +22,8 @@ sources:
     publisher: "HM Government"
     date: "2025-05-12"
 ---
-The narrowness of this fact is the point: what has been measured has been
-measured well, and it does not cover the system now in dispute.
+What has been measured is the effect of pre-2018 EEA free movement on employer
+training. The post-2021 sponsored routes have not been evaluated.
 
 - **No negative effect on training was found, and one study found a positive
   one.** The Migration Advisory Committee commissioned the research and reported
@@ -31,16 +31,14 @@ measured well, and it does not cover the system now in dispute.
   UK-born workforce".
 - **On investment there is not enough evidence to conclude anything.** The MAC's
   own words: "extremely limited" and "not possible to draw robust conclusions".
-- **Those studies were estimated on pre-2018 EEA free movement.** No sponsorship,
-  no salary floor, no employer able to import a trained adult at a price the
-  state had set. Nobody has evaluated employer training under the post-2021
-  sponsored routes.
+- **Those studies were estimated on EEA free movement**, without sponsorship and
+  without a salary floor. Nobody has evaluated employer training under the
+  post-2021 sponsored routes.
 - **The government reads the same period the other way, from co-movement rather
   than a study.** Its 2025 White Paper: "Economic migration shot up while
   training of the domestic workforce has fallen, and lower skilled migration
   soared while the proportion of UK residents in work fell."
-- **Co-movement is not causation, and the mechanism is not silly either.**
-  Training was falling before the surge and kept falling in sectors with almost
-  no migrant labour. That open remainder is a crux, not a fact, and it lives in
-  *Does access to sponsored overseas labour stop employers investing in British
-  workers and equipment?*
+- **Co-movement is not causation.** Whether access to sponsored overseas labour
+  stops employers investing in British workers is a crux, not a fact, and it
+  lives in *Does access to sponsored overseas labour stop employers investing in
+  British workers and equipment?*

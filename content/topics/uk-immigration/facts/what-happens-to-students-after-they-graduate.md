@@ -170,9 +170,9 @@ series:
           - { period: "2019", value: 13.9 }
           - { period: "2020", value: 25.9 }
 ---
-Study is the largest single reason people move to Britain, so whether a student
-is really an immigrant decides how big the immigration numbers are. The
-measurements answer that in two halves that point in different directions.
+Study is the largest single reason people move to Britain, so whether students
+count as immigrants moves the headline number. Two things bear on it: the
+definition the count uses, and how long students actually stay.
 
 - **A student counts as a long-term immigrant on arrival, because the count uses
   a twelve-month rule.** ONS follows the UN definition: anyone moving for a year
@@ -200,14 +200,13 @@ measurements answer that in two halves that point in different directions.
   study visas for dependants were 87% below their peak in the year to December
   2025, at 19,647, after dependants were restricted for courses starting from
   January 2024. Dependants per student fell from 0.31 in 2023 to 0.05 in 2025.
-- **On "loophole", the MAC draws the distinction the argument needs.** It found
-  no evidence of widespread abuse of the Graduate route — and said in the same
-  report that whether the route's scale, or the work people do on it, matches
-  what the government intended is a different question, which it does not call
-  abuse. Both readings of the word have evidence behind them.
+- **On "loophole", the MAC drew a distinction.** It found no evidence of
+  widespread abuse of the Graduate route, and said in the same report that
+  whether the route's scale, or the work people do on it, matches what the
+  government intended is a different question, which it does not call abuse.
 - **Averages hide most of it.** In the 2020 cohort, 14% of Chinese nationals held
   leave five years later against 58% of Indian nationals.
-- **Commonly mistaken for.** "Students are 47% of non-EU+ arrivals" gets heard as
-  "half of immigration is students settling here". The settlement grants say
-  otherwise; the cohort stay rates say the gap is closing. Both are on this page
-  because both are true.
+- **A reader who turns "students are 47% of non-EU+ arrivals" into "half of
+  immigration is students settling here" has the wrong measure.** Study routes
+  were 11% of settlement grants in 2025. The cohort stay rates are rising, so the
+  gap is narrowing, but the two numbers are not the same thing.

@@ -10,15 +10,11 @@ sources:
     publisher: "Home Office"
     date: "2026-05-21"
 ---
-Both the high figure and the low one get quoted as though they were stable
-properties of the people arriving. They are not.
+The grant rate is the share of initial asylum decisions that grant protection.
 
-- **The grant rate fell from 77% to 39% in three and a half years** — 77% at the
-  peak in the year to September 2022, 49% the year before last, 39% in the year
-  to March 2026, back to roughly its pre-2020 level.
-- **The 2022 peak partly reflects a deliberate policy** of clearing
-  straightforward cases from high-grant nationalities quickly.
+- **It fell from 77% to 39% in three and a half years** — 77% at the peak in the
+  year to September 2022, 49% the year before last, 39% in the year to March
+  2026, back to roughly its pre-2020 level.
 - **A grant rate is a fact about the caseload and the decision-maker together.**
   Neither number tells you what proportion of arrivals "really are" refugees.
-- **Appeals are not in it at all**, and they overturn a substantial minority of
-  refusals.
+- **Appeals are not in it.** These are initial decisions only.
