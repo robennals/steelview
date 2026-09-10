@@ -16,11 +16,10 @@ import { anchorFor, factPath } from './types';
  */
 function remarkEscapeHtml() {
   return (tree: Root) => {
-    visit(tree, 'html', (node) => {
-      // `Html` and `Text` nodes share the same `value: string` shape; only
-      // the `type` tag differs, so mutating it in place is a narrow cast
-      // rather than a structural change.
-      (node as unknown as Text).type = 'text';
+    visit(tree, 'html', (node, index, parent) => {
+      if (parent === undefined || index === undefined) return;
+      const text: Text = { type: 'text', value: node.value };
+      parent.children[index] = text;
     });
   };
 }
@@ -112,7 +111,7 @@ export async function renderMarkdown(md: string, slug: string): Promise<string> 
  */
 export function citedFactIds(md: string): string[] {
   if (!md.trim()) return [];
-  const tree = unified().use(remarkParse).use(remarkGfm).parse(md) as Root;
+  const tree: Root = unified().use(remarkParse).use(remarkGfm).parse(md);
   const ids: string[] = [];
   visit(tree, 'link', (node: Link) => {
     const factId = citedFactId(node.url);

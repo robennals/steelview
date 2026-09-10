@@ -62,7 +62,7 @@ async function readMarkdown(dir: string): Promise<Array<{ id: string; data: Reco
       .sort()
       .map(async (name) => {
         const { data, content } = matter(await readFile(path.join(dir, name), 'utf8'));
-        return { id: path.basename(name, '.md'), data: data as Record<string, unknown>, body: content };
+        return { id: path.basename(name, '.md'), data, body: content };
       })
   );
 }
@@ -72,7 +72,7 @@ async function auditTopic(slug: string): Promise<{ unmatched: Finding[]; advisor
   const topicFile = matter(await readFile(path.join(dir, 'topic.md'), 'utf8'));
 
   const items: Array<{ kind: string; id: string; data: Record<string, unknown>; body: string }> = [
-    { kind: 'topic', id: slug, data: topicFile.data as Record<string, unknown>, body: topicFile.content },
+    { kind: 'topic', id: slug, data: topicFile.data, body: topicFile.content },
   ];
   for (const kind of KINDS) {
     for (const item of await readMarkdown(path.join(dir, kind))) {

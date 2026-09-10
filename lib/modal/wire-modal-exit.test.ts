@@ -9,7 +9,7 @@ import { wireModalExit, type ModalDialog } from './wire-modal-exit';
  */
 function fakeDialog(): ModalDialog & { dispatch(type: string): void } {
   let open = false;
-  const listeners = new Map<string, Set<EventListener>>();
+  const listeners = new Map<string, Set<EventListenerOrEventListenerObject>>();
   return {
     get open() {
       return open;
@@ -17,19 +17,25 @@ function fakeDialog(): ModalDialog & { dispatch(type: string): void } {
     showModal() {
       open = true;
     },
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject) {
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject | null) {
+      if (listener === null) return;
       const set = listeners.get(type) ?? new Set();
-      set.add(listener as EventListener);
+      set.add(listener);
       listeners.set(type, set);
     },
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject) {
-      listeners.get(type)?.delete(listener as EventListener);
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject | null) {
+      if (listener === null) return;
+      listeners.get(type)?.delete(listener);
     },
     dispatch(type: string) {
-      const event = { type, preventDefault() {} } as unknown as Event;
-      for (const listener of listeners.get(type) ?? []) listener(event);
+      // A real, cancelable Event, so `preventDefault` behaves as it does in a browser.
+      const event = new Event(type, { cancelable: true });
+      for (const listener of listeners.get(type) ?? []) {
+        if (typeof listener === 'function') listener(event);
+        else listener.handleEvent(event);
+      }
     },
-  } as ModalDialog & { dispatch(type: string): void };
+  };
 }
 
 // The regression: React's StrictMode mounts an effect, cleans it up, and

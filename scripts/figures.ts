@@ -101,7 +101,7 @@ export function collectQuotes(node: unknown, into: string[] = []): string[] {
     return into;
   }
   if (node && typeof node === 'object') {
-    for (const [key, value] of Object.entries(node as Record<string, unknown>)) {
+    for (const [key, value] of Object.entries(node)) {
       if (key === 'quote' && typeof value === 'string') into.push(value);
       else collectQuotes(value, into);
     }

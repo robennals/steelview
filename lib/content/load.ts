@@ -40,15 +40,17 @@ function formatIssues(error: z.ZodError): string {
  * from a mistyped directory name (`crux/` instead of `cruxes/`) silently
  * emptying a section.
  */
-async function readItems<S extends z.ZodTypeAny>(
+// Typed by the schema's output (what `safeParse` returns), with the input left
+// open: frontmatter schemas use `.default([])`, so input and output differ.
+async function readItems<T extends Record<string, unknown>>(
   dir: string,
-  schema: S
-): Promise<Array<Item<z.infer<S>>>> {
+  schema: z.ZodType<T, unknown>
+): Promise<Array<Item<T>>> {
   let names: string[];
   try {
     names = await readdir(dir);
   } catch (err) {
-    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return [];
+    if (err instanceof Error && 'code' in err && err.code === 'ENOENT') return [];
     throw err;
   }
 
@@ -61,12 +63,11 @@ async function readItems<S extends z.ZodTypeAny>(
       if (!parsed.success) {
         throw new ContentError(`${full}: ${formatIssues(parsed.error)}`);
       }
-      const frontmatter = parsed.data as Record<string, unknown>;
       return {
-        ...frontmatter,
+        ...parsed.data,
         id: path.basename(file, '.md'),
         body: content.trim(),
-      } as Item<z.infer<S>>;
+      };
     })
   );
 }
