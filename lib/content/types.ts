@@ -1,0 +1,69 @@
+import { z } from 'zod';
+import {
+  sourceSchema,
+  seriesSchema,
+  seriesLineSchema,
+  seriesPointSchema,
+  seriesReadingSchema,
+  seriesBreakSchema,
+  factFrontmatterSchema,
+  viewpointFrontmatterSchema,
+  principleFrontmatterSchema,
+  cruxFrontmatterSchema,
+  topicFrontmatterSchema,
+  FACT_STATUSES,
+  SOURCE_STANCES,
+} from './schema';
+
+export type FactStatus = (typeof FACT_STATUSES)[number];
+export type SourceStance = (typeof SOURCE_STANCES)[number];
+
+/** Every content item is its frontmatter plus an id (its filename) and its markdown body. */
+export type Item<T> = T & { id: string; body: string };
+
+export type Source = z.infer<typeof sourceSchema>;
+
+export type SeriesPoint = z.infer<typeof seriesPointSchema>;
+export type SeriesLine = z.infer<typeof seriesLineSchema>;
+export type SeriesReading = z.infer<typeof seriesReadingSchema>;
+export type SeriesBreak = z.infer<typeof seriesBreakSchema>;
+export type Series = z.infer<typeof seriesSchema>;
+
+export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
+export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
+export type Principle = Item<z.infer<typeof principleFrontmatterSchema>>;
+export type Crux = Item<z.infer<typeof cruxFrontmatterSchema>>;
+
+export type Topic = z.infer<typeof topicFrontmatterSchema> & {
+  slug: string;
+  /** The markdown body of topic.md — the page's introduction. */
+  intro: string;
+  facts: Fact[];
+  viewpoints: Viewpoint[];
+  principles: Principle[];
+  cruxes: Crux[];
+};
+
+/** The four kinds of item, as they appear in anchor ids: `fact-net-migration-2024`. */
+export type ItemKind = 'fact' | 'viewpoint' | 'principle' | 'crux';
+
+export function anchorFor(kind: ItemKind, id: string): string {
+  return `${kind}-${id}`;
+}
+
+/**
+ * The canonical URL path of a topic, and of a single fact within it.
+ *
+ * Every fact — headline and supporting alike — is addressable: facts are what
+ * the rest of the site cites, so they need a real address a crawler can index,
+ * an importer can quote and a reader can paste. `anchorFor('fact', …)` is now
+ * only the *authoring* syntax (`[…](#fact-<id>)`); what ships to the page is
+ * one of these paths.
+ */
+export function topicPath(slug: string): string {
+  return `/topics/${slug}`;
+}
+
+export function factPath(slug: string, factId: string): string {
+  return `/topics/${slug}/facts/${factId}`;
+}

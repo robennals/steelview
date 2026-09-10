@@ -1,0 +1,1882 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Steelview — a reading surface, not an app surface.
+   Register: a well-set policy brief. Ink on paper. Structure is carried by
+   type, rule and space; never by boxes, badges or shadows.
+   ========================================================================== */
+
+@theme inline {
+  --font-serif: var(--font-newsreader), Iowan Old Style, Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-rule: var(--rule);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Paper. A white ground: the argument has to be legible before it can be
+     elegant, and a tinted paper spends contrast the text needs. */
+  --paper: #ffffff;
+  --paper-raised: #faf9f7;
+  --paper-sunk: #f2f0ec;
+
+  /* Ink, in four strengths, near-black at the top. Ratios against --paper:
+     ink 18.9:1, ink-2 12.6:1, ink-3 7.6:1, ink-4 5.7:1 — every one of them
+     clears WCAG AA for body text, so hierarchy comes from size and weight
+     rather than from fading text out. */
+  --ink: #111111;
+  --ink-2: #333333;
+  --ink-3: #57534e;
+  --ink-4: #6b6660;
+
+  /* Rules */
+  --rule: #e2dfd9;
+  --rule-strong: #b5afa6;
+
+  /* One accent, a printer's vermilion, at 6.1:1 on paper so it can carry
+     link text and not only decoration. It marks apparatus — never a side of
+     an argument, and never a fact status. */
+  --accent: #b3350a;
+  --accent-wash: #fdf2ec;
+
+  /* Chart series, in fixed slot order. Not decoration and not a fifth ink:
+     three hues that stay apart under deuteranopia and protanopia as well as
+     for a full-colour reader, checked with the data-viz palette validator
+     against this page's own paper rather than eyeballed. Slot 2 is the
+     page accent, so the family sits in the same register as the rest of the
+     type. Every slot clears 3:1 on --paper.
+       node scripts/validate_palette.js "#1f5c9e,#b3350a,#007551" \
+         --mode light --surface "#ffffff" --pairs all   → all checks pass
+     Worst all-pairs CVD dE 9.2, worst normal-vision dE 16.6. */
+  --sv-series-1: #1f5c9e;
+  --sv-series-2: #b3350a;
+  --sv-series-3: #007551;
+
+  --measure: 34rem;
+  --wrap: 44rem;
+  --grain-opacity: 0.02;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    /* Ratios against --paper: ink 17.4:1, ink-2 12.4:1, ink-3 7.8:1,
+       ink-4 5.3:1, accent 8.3:1. */
+    --paper: #0e0e0d;
+    --paper-raised: #1a1a17;
+    --paper-sunk: #191916;
+
+    --ink: #f5f3ef;
+    --ink-2: #d3cfc7;
+    --ink-3: #a9a49b;
+    --ink-4: #8a857c;
+
+    --rule: #2e2e2a;
+    --rule-strong: #56534c;
+
+    --accent: #ff8a4c;
+    --accent-wash: #241812;
+
+    /* The same three hues, re-stepped for the dark paper rather than flipped:
+         node scripts/validate_palette.js "#3987e5,#d95926,#199e70" \
+           --mode dark --surface "#0e0e0d" --pairs all   → all checks pass
+       Worst all-pairs CVD dE 9.4, worst normal-vision dE 20.9. */
+    --sv-series-1: #3987e5;
+    --sv-series-2: #d95926;
+    --sv-series-3: #199e70;
+
+    --grain-opacity: 0.04;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 40rem) {
+    body {
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+  }
+
+  /* Paper tooth. Fixed, inert, and faint enough to read as texture, not noise. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  ::selection {
+    background: var(--rule-strong);
+    color: var(--paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.18em;
+    text-decoration-color: var(--rule-strong);
+    transition: text-decoration-color 120ms ease, color 120ms ease;
+  }
+
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------- shell */
+
+  .sv-wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-wrap {
+      padding-inline: 2rem;
+    }
+  }
+
+  .sv-masthead {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-masthead__inner {
+    display: flex;
+    align-items: center;
+    min-height: 3.25rem;
+  }
+
+  .sv-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-right: 0.5rem;
+  }
+
+  .sv-wordmark:hover {
+    color: var(--ink);
+  }
+
+  .sv-footer {
+    margin-top: 5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-footer__inner {
+    display: flex;
+    align-items: center;
+    min-height: 4rem;
+  }
+
+  /* ------------------------------------------------------------ page head */
+
+  /* With the intro gone the head is a title and a date, so it needs far
+     less room under it — the first fact should be close to the fold. */
+  .sv-pagehead {
+    padding-top: 3rem;
+    padding-bottom: 0.5rem;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-pagehead {
+      padding-top: 4.5rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  .sv-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 1.4rem + 4.2vw, 3.75rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .sv-subtitle {
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
+    line-height: 1.45;
+    max-width: var(--measure);
+    text-wrap: pretty;
+    margin: 0.85rem 0 0;
+  }
+
+  /* Small, and under the title rather than over the facts: it is provenance,
+     not an introduction. */
+  .sv-pagehead__meta {
+    margin-top: 1rem;
+  }
+
+  .sv-rule {
+    height: 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 1.75rem 0;
+  }
+
+  .sv-meta {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  /* -------------------------------------------------------------- section */
+
+  .sv-sections {
+    counter-reset: sv-section;
+  }
+
+  .sv-section {
+    counter-increment: sv-section;
+    position: relative;
+    padding-top: 2.75rem;
+  }
+
+  .sv-section + .sv-section {
+    padding-top: 3.5rem;
+  }
+
+  .sv-section__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 0.55rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Decorative numeral. Lives on the head wrapper, never inside the heading,
+     so it stays out of the heading's accessible name. */
+  .sv-section__head::before {
+    content: counter(sv-section, decimal-leading-zero);
+    font-family: var(--font-serif);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+    color: var(--ink-4);
+  }
+
+  .sv-section__title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  /* ----------------------------------------------------------- disclosure */
+
+  .sv-item {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* The whole row is the control, and it has to look like one: the page's
+     entire value is behind these rows, so an affordance nobody notices
+     defeats the product. Three signals, all of them on the row rather than
+     on the glyph alone — a hover wash, a marker that reads as a button, and
+     a persistent wash plus a rule while open. */
+  .sv-item__summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    min-height: 44px;
+    padding: 0.9rem 3rem 0.9rem 0;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  .sv-item__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* The row wash. A pseudo-element rather than a background on the summary
+     so it can bleed into the page gutters and read as a full-width row,
+     without moving a single character of the text. */
+  .sv-item__summary::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: -0.75rem;
+    right: -0.75rem;
+    background: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  .sv-item__summary:hover::before,
+  .sv-item[open] > .sv-item__summary::before {
+    background: var(--paper-sunk);
+  }
+
+  /* The marker: a drawn plus inside a ring, which loses its stem when open.
+     Ringed rather than bare so it reads as a control at a glance; drawn in
+     gradients rather than borders so the two strokes can be toggled
+     independently. */
+  .sv-item__summary::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0.72rem;
+    width: 1.65rem;
+    height: 1.65rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    color: var(--ink-3);
+    background-image:
+      linear-gradient(currentColor, currentColor),
+      linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: center, center;
+    background-size: 11px 1.5px, 1.5px 11px;
+    transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease,
+      background-size 140ms ease;
+  }
+
+  .sv-item[open] > .sv-item__summary::after {
+    background-size: 11px 1.5px, 1.5px 0;
+    color: var(--paper);
+    background-color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .sv-item__summary:hover::after {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .sv-item[open] > .sv-item__summary:hover::after {
+    color: var(--paper);
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* An underline on hover, the oldest "this is a link" signal there is. */
+  .sv-item__summary:hover .sv-item__claim {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+    text-decoration-color: var(--accent);
+  }
+
+  /* A darker closing rule under an open row, so a reader scrolling a long
+     expanded body can still see where the item ends. */
+  .sv-item[open] {
+    border-bottom-color: var(--ink);
+  }
+
+  .sv-item__body {
+    padding: 0 0 1.75rem;
+    max-width: var(--measure);
+  }
+
+  .sv-item__claim {
+    display: block;
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+    color: var(--ink);
+  }
+
+  @media (min-width: 40rem) {
+    .sv-item__claim {
+      font-size: 1.1875rem;
+    }
+  }
+
+  .sv-item__note {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--ink-2);
+    font-style: italic;
+    line-height: 1.45;
+    font-size: 1rem;
+    text-wrap: pretty;
+  }
+
+  /* ------------------------------------------------------------- statuses */
+
+  /* Status is carried by three channels at once: the text label, a geometric
+     glyph, and the rule down the left edge of the row. Colour is the fourth
+     and least of them — a single hue at varying strength, never red/green,
+     so "not supported" reads as unsupported rather than as condemned. */
+
+  /* Supporting facts carry the same status alphabet as headline facts: the
+     reader learns one set of edges, wherever a fact appears. */
+  :is(.sv-fact, .sv-subfact, .sv-factpage) {
+    padding-left: 0.9rem;
+    border-left: 3px solid transparent;
+  }
+
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="well-supported"] {
+    border-left-color: var(--ink);
+  }
+
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="contested"] {
+    border-left-style: double;
+    border-left-color: var(--ink-2);
+  }
+
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="complicated"] {
+    border-left-style: dashed;
+    border-left-color: var(--ink-3);
+  }
+
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="not-supported"] {
+    border-left-width: 2px;
+    border-left-style: dotted;
+    border-left-color: var(--ink-3);
+    padding-left: 0.965rem;
+  }
+
+  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="unknown"] {
+    border-left-width: 1px;
+    border-left-color: var(--rule-strong);
+    padding-left: 1.025rem;
+  }
+
+  .sv-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .sv-status[data-status="well-supported"] {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .sv-status[data-status="contested"] {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  .sv-status[data-status="complicated"] {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  .sv-status[data-status="not-supported"] {
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-status[data-status="unknown"] {
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-glyph {
+    flex: none;
+    width: 0.75em;
+    height: 0.75em;
+    overflow: visible;
+  }
+
+  /* ------------------------------------------------ the rest of the facts */
+
+  /* The Facts section shows its most important few and puts the rest behind
+     this control. It is a native <details> like everything else on the page,
+     so it opens with JavaScript off, prints open, and is reachable by
+     keyboard and screen reader without any of that being re-implemented.
+     The count is in the label: "Show more" alone hides how much is behind
+     it, and here that is most of the evidence on the page. */
+
+  .sv-more__summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    padding: 0.9rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sv-more__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* A chevron, pointing the way the control moves the page. */
+  .sv-more__summary::after {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: translateY(-0.15em) rotate(45deg);
+    transition: transform 140ms ease;
+  }
+
+  .sv-more[open] > .sv-more__summary::after {
+    transform: translateY(0.1em) rotate(225deg);
+  }
+
+  .sv-more__summary:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  /* Only one of the two labels is ever shown, so the control names both what
+     it will do and how much it is hiding. */
+  .sv-more__label[data-when="open"],
+  .sv-more[open] > .sv-more__summary > .sv-more__label[data-when="closed"] {
+    display: none;
+  }
+
+  .sv-more[open] > .sv-more__summary > .sv-more__label[data-when="open"] {
+    display: inline;
+  }
+
+  /* The revealed facts are the same rows as the ones above the control and
+     carry no frame of their own, so the section reads as one list with the
+     control sitting inside it. */
+
+  /* -------------------------------------------------- supporting facts */
+
+  /* A headline fact is a claim the argument is about; the facts under it are
+     evidence for it and say little standing alone. They are nested inside the
+     open headline rather than listed beside it, so the Facts list stays a set
+     of claims a reader can hold in their head. Each keeps its own anchor —
+     these are permanent addresses. */
+
+  .sv-supporting {
+    margin-top: 1.75rem;
+  }
+
+  .sv-supporting__head {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* One step down in weight from the headline row it sits under, so the
+     hierarchy is visible without reading the heading above it. */
+  .sv-subfact > .sv-item__summary {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .sv-subfact .sv-item__claim {
+    font-size: 1rem;
+  }
+
+  .sv-subfact > .sv-item__body {
+    padding-bottom: 1.25rem;
+  }
+
+  /* ------------------------------------------------------------- facts list */
+
+  /* A fact row is a link to that fact's own page, not a control that reveals
+     it in place. Both readings still exist — with JavaScript the link is
+     intercepted into the panel over this page, without it the page loads —
+     but either way it is a reference, so the marker is an arrow rather than
+     the plus a disclosure uses. Two different behaviours must not wear the
+     same affordance. */
+
+  .sv-factlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-factrow {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .sv-factrow::after {
+    top: 50%;
+    right: 0.35rem;
+    width: 0.46rem;
+    height: 0.46rem;
+    border: 0;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    border-radius: 0;
+    background: none;
+    color: var(--ink-3);
+    transform: translateY(-50%) rotate(45deg);
+    transition: transform 140ms ease, color 120ms ease;
+  }
+
+  .sv-factrow:hover::after {
+    color: var(--accent);
+    transform: translate(0.2rem, -50%) rotate(45deg);
+  }
+
+  /* ---------------------------------------------------------- fact bodies */
+
+  .sv-stance {
+    margin-top: 1.5rem;
+  }
+
+  .sv-stance__head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-source {
+    margin: 0 0 1.15rem;
+    padding-left: 0.9rem;
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .sv-source blockquote {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .sv-source blockquote::before {
+    content: "\201C";
+  }
+
+  .sv-source blockquote::after {
+    content: "\201D";
+  }
+
+  .sv-source figcaption {
+    margin-top: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: var(--ink-3);
+  }
+
+  /* The citation link sits inside a sentence, so it is an inline link rather
+     than a control, and takes the WCAG 2.5.8 inline exception rather than the
+     44px minimum. It still gets as much vertical room as the line allows. */
+  .sv-source figcaption a {
+    color: var(--accent);
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
+
+  /* Present to a screen reader, absent to the eye. Used for a chart's text
+     description, which the plot points at with aria-describedby. */
+  .sv-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ------------------------------------------------------- series charts */
+
+  /* A chart is an argument about context, so it is set like one: hairline
+     grid, ink labels, three series hues and nothing else. The plot is inline
+     SVG generated on the server — it themes with the page's own tokens via
+     currentColor, prints, and is there with JavaScript off. */
+
+  .sv-chart {
+    margin: 1.9rem 0 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chart__caption {
+    margin-bottom: 1.2rem;
+  }
+
+  .sv-chart__title {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+    text-wrap: balance;
+  }
+
+  .sv-chart__desc,
+  .sv-chart__range,
+  .sv-chart__note {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--ink-3);
+    margin: 0 0 0.4rem;
+    text-wrap: pretty;
+  }
+
+  .sv-chart__range strong {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .sv-chart__reading + .sv-chart__reading {
+    margin-top: 1.9rem;
+  }
+
+  .sv-chart__reading-head {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.15rem;
+  }
+
+  .sv-chart__axis-label {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+    margin: 0 0 0.5rem;
+  }
+
+  /* Identity never rests on colour alone: the legend is always present, and
+     it also carries the one direct label each line gets — its latest value.
+     On the plot those labels would collide where the lines converge. */
+  .sv-chart__legend {
+    list-style: none;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 1.15rem;
+  }
+
+  .sv-chart__key {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .sv-chart__swatch {
+    width: 20px;
+    height: 8px;
+    flex: none;
+  }
+
+  /* Text wears text tokens; the swatch beside it carries the series colour. */
+  .sv-chart__key-name {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .sv-chart__key-value {
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Two renderings of the same scales, one shown. An SVG viewBox scales its
+     type along with the plot, so one chart cannot be legible both in a 390px
+     modal and across a desktop panel; the hidden one is display:none and so
+     is out of the accessibility tree rather than doubled in it. */
+  .sv-chart__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sv-chart__svg[data-variant="wide"] {
+    display: none;
+  }
+
+  @media (min-width: 34rem) {
+    .sv-chart__svg[data-variant="narrow"] {
+      display: none;
+    }
+
+    .sv-chart__svg[data-variant="wide"] {
+      display: block;
+    }
+  }
+
+  /* On paper there is no media query and no room to choose: print the wide
+     plot, and print the numbers with it. */
+  @media print {
+    .sv-chart__svg[data-variant="narrow"] {
+      display: none;
+    }
+
+    .sv-chart__svg[data-variant="wide"] {
+      display: block;
+    }
+
+    .sv-chart__table-scroll {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+  .sv-chart__grid {
+    stroke: var(--rule);
+    fill: none;
+  }
+
+  .sv-chart__zero,
+  .sv-chart__axis {
+    stroke: var(--rule-strong);
+    fill: none;
+  }
+
+  .sv-chart__break {
+    stroke: var(--ink-4);
+    stroke-dasharray: 2 4;
+    fill: none;
+  }
+
+  .sv-chart__break-flag {
+    fill: var(--ink-4);
+  }
+
+  .sv-chart__line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  /* The step across a definitional break, drawn as a step and not as trend. */
+  .sv-chart__bridge {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-dasharray: 3 4;
+    stroke-linecap: round;
+    opacity: 0.5;
+  }
+
+  /* The 2px ring is paper, not a border: it is what keeps the end markers
+     legible where two lines cross under them. */
+  .sv-chart__end {
+    fill: currentColor;
+    stroke: var(--paper);
+    stroke-width: 2;
+  }
+
+  .sv-chart__tick {
+    fill: var(--ink-3);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-chart__breaks {
+    margin-top: 1.4rem;
+  }
+
+  .sv-chart__breaks-head,
+  .sv-chart__source-head,
+  .sv-chart__reading-source-head {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-chart__breaks dl {
+    margin: 0;
+  }
+
+  .sv-chart__break-item + .sv-chart__break-item {
+    margin-top: 0.7rem;
+  }
+
+  .sv-chart__break-item dt {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .sv-chart__break-item dd {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--ink-3);
+    text-wrap: pretty;
+  }
+
+  .sv-chart__source {
+    margin-top: 1.4rem;
+  }
+
+  .sv-chart__reading-source {
+    margin-top: 0.8rem;
+  }
+
+  /* The numbers themselves: the screen-reader alternative to the plot, and
+     the thing a reader who does not believe the line can check. */
+  .sv-chart__data {
+    margin-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chart__data-summary {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .sv-chart__data-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sv-chart__data-summary::before {
+    content: "+";
+    display: inline-block;
+    width: 1rem;
+    font-weight: 400;
+    color: var(--ink-4);
+  }
+
+  .sv-chart__data[open] > .sv-chart__data-summary::before {
+    content: "\2212";
+  }
+
+  .sv-chart__table-scroll {
+    max-height: 24rem;
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chart__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-chart__table caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.5rem 0;
+    color: var(--ink-3);
+    font-size: 0.75rem;
+  }
+
+  .sv-chart__table th,
+  .sv-chart__table td {
+    padding: 0.28rem 0.55rem;
+    text-align: right;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-chart__table thead th {
+    background: var(--paper);
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  /* Only the row carrying the column names sticks: two sticky rows at the
+     same offset would sit on top of one another. */
+  .sv-chart__table thead tr:last-child th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .sv-chart__table thead tr:first-child th {
+    border-bottom: 0;
+    padding-bottom: 0;
+    color: var(--ink-3);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sv-chart__table tbody th[scope="row"] {
+    text-align: left;
+    color: var(--ink-2);
+    font-weight: 400;
+  }
+
+  .sv-chart__table tbody td {
+    color: var(--ink);
+  }
+
+  /* ------------------------------------------------------------- chipsets */
+
+  /* The three relationships a viewpoint has to the facts must read as three
+     different relationships. Each gets its own frame, not its own colour. */
+
+  .sv-chips {
+    margin-top: 1.6rem;
+  }
+
+  .sv-chips__label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    color: var(--ink-3);
+    text-wrap: balance;
+  }
+
+  .sv-chips__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-chips__list > li {
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-chips__list > li:first-child {
+    border-top: 0;
+  }
+
+  .sv-chips__list a {
+    display: flex;
+    align-items: flex-start;
+    min-height: 44px;
+    padding: 0.72rem 0;
+    text-decoration: none;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .sv-chips__list a::before {
+    content: "";
+    flex: none;
+    width: 0.55rem;
+    height: 1px;
+    margin-top: 0.68em;
+    margin-right: 0.6rem;
+    background: var(--rule-strong);
+  }
+
+  .sv-chips__list a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.18em;
+  }
+
+  /* Builds on — plain, load-bearing. */
+  .sv-chips--builds .sv-chips__list {
+    border-left: 3px solid var(--ink);
+    padding-left: 0.9rem;
+  }
+
+  /* Accepts, though it cuts against this view — the page's proof that it is
+     steelmanning. Framed, on raised paper, at least as present as "Builds on". */
+  .sv-chips--accepts {
+    margin-top: 1.6rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule-strong);
+    padding: 1rem 1.05rem 0.65rem;
+  }
+
+  .sv-chips--accepts .sv-chips__label {
+    color: var(--accent);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .sv-chips--accepts .sv-chips__label::before {
+    content: "";
+    flex: none;
+    align-self: center;
+    width: 0.85rem;
+    height: 0.85rem;
+    border: 1px solid currentColor;
+    background: linear-gradient(135deg, currentColor 0 50%, transparent 50% 100%);
+  }
+
+  .sv-chips--accepts .sv-chips__list a {
+    font-size: 1.0625rem;
+    color: var(--ink);
+  }
+
+  .sv-chips--accepts .sv-chips__list a::before {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--accent);
+    background: none;
+    margin-top: 0.46em;
+  }
+
+  .sv-chips--accepts .sv-chips__list > li {
+    border-top-color: var(--rule);
+  }
+
+  /* Sets aside — present and checkable, deliberately the quietest. */
+  .sv-chips--aside .sv-chips__list {
+    border-left: 1px dotted var(--rule-strong);
+    padding-left: 0.9rem;
+  }
+
+  .sv-chips--aside .sv-chips__list a {
+    color: var(--ink-2);
+    font-size: 1rem;
+  }
+
+  .sv-chips--aside .sv-chips__list a::before {
+    width: 0.55rem;
+    border-top: 1px dotted var(--ink-4);
+    background: none;
+    height: 0;
+    margin-top: 0.68em;
+  }
+
+  /* Rests on — principles, not facts. Short names, so a row of tags. */
+  .sv-tags {
+    margin-top: 1.6rem;
+  }
+
+  .sv-tags__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-tags__list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 0.85rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+
+  .sv-tags__list a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ------------------------------------------------------------ viewpoint */
+
+  .sv-viewpoint .sv-item__claim {
+    font-size: 1.1875rem;
+    font-weight: 500;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-viewpoint .sv-item__claim {
+      font-size: 1.375rem;
+    }
+  }
+
+  /* A viewpoint body is the argument itself, so it reads at full ink. */
+  .sv-viewpoint > .sv-item__body > .prose-body {
+    color: var(--ink);
+  }
+
+  /* --------------------------------------------------------------- cruxes */
+
+  .sv-crux__kind {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.45rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-crux__kind::before {
+    content: "";
+    width: 0.85rem;
+    height: 1px;
+    background: var(--ink-4);
+  }
+
+  .sv-positions {
+    display: grid;
+    gap: 0;
+    margin: 1.5rem 0 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .sv-position {
+    padding: 1rem 0 1.15rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-position dt {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 0.15rem;
+  }
+
+  .sv-position dt a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration-color: var(--rule);
+  }
+
+  .sv-position dd {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* The positions grid is the one thing on the page allowed past the reading
+     measure — it is a comparison, not a paragraph. The prose above it keeps
+     its own max-width. */
+  .sv-crux > .sv-item__body {
+    max-width: none;
+  }
+
+  /* Column count follows the number of positions (`--sv-position-count`, set
+     inline per crux) rather than a fixed 2, so a divider sits between every
+     pair of adjacent columns for two, three, or more positions — not just an
+     even count. The first column needs no left divider or left padding, and
+     the last needs no right padding since there is no column after it. */
+  @media (min-width: 46rem) {
+    .sv-positions {
+      grid-template-columns: repeat(var(--sv-position-count, 1), minmax(0, 1fr));
+    }
+
+    .sv-position {
+      padding-right: 2rem;
+    }
+
+    .sv-position:not(:first-child) {
+      border-left: 1px solid var(--rule);
+      padding-left: 2rem;
+    }
+
+    .sv-position:last-child {
+      padding-right: 0;
+    }
+
+    /* At four or more positions, one row no longer leaves each column
+       comfortably readable, so the grid wraps to two columns instead —
+       holding column width roughly constant (the same width the
+       two-position case already renders at) no matter how many positions a
+       crux has. Divider placement switches from first/last-child to
+       odd/even, which is the correct "start/end of row" test for a *fixed*
+       two-column track (unlike the single-row case above, where the column
+       count varies, so first/last-child was the only count-agnostic test).
+       A trailing odd item (an odd total, e.g. five positions) spans both
+       columns so it doesn't dangle half-width under an empty cell. */
+    .sv-positions--wrap {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sv-positions--wrap .sv-position {
+      border-left: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .sv-positions--wrap .sv-position:nth-child(odd) {
+      padding-right: 2rem;
+    }
+
+    .sv-positions--wrap .sv-position:nth-child(even) {
+      border-left: 1px solid var(--rule);
+      padding-left: 2rem;
+    }
+
+    .sv-positions--wrap .sv-position:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* ---------------------------------------------------------------- prose */
+
+  .prose-body {
+    max-width: var(--measure);
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .prose-body > * {
+    margin-block: 0 1.05em;
+  }
+
+  .prose-body > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Links in prose take the one accent. Nothing else on the page is this
+     colour, so a coloured word is always something you can follow. */
+  .prose-body a {
+    color: var(--accent);
+    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
+  .prose-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .prose-body em {
+    font-style: italic;
+  }
+
+  .prose-body ul,
+  .prose-body ol {
+    padding-left: 1.25rem;
+  }
+
+  .prose-body ul {
+    list-style: none;
+  }
+
+  .prose-body ul > li::before {
+    content: "";
+    display: inline-block;
+    width: 0.4rem;
+    height: 1px;
+    background: var(--rule-strong);
+    vertical-align: 0.35em;
+    margin-left: -1.25rem;
+    margin-right: 0.85rem;
+  }
+
+  .prose-body ol {
+    list-style: decimal;
+  }
+
+  .prose-body li + li {
+    margin-top: 0.4em;
+  }
+
+  .prose-body h3,
+  .prose-body h4 {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 1.8em;
+  }
+
+  .prose-body blockquote {
+    padding-left: 1rem;
+    border-left: 1px solid var(--rule-strong);
+    font-style: italic;
+  }
+
+  .prose-body code {
+    font-family: var(--font-sans);
+    font-size: 0.9em;
+    background: var(--paper-sunk);
+    padding: 0.1em 0.3em;
+  }
+
+  .prose-body--lede {
+    color: var(--ink);
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: 40rem) {
+    .prose-body--lede {
+      font-size: 1.1875rem;
+    }
+  }
+
+  /* ------------------------------------------------------------ home page */
+
+  .sv-index__lede {
+    font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--ink-2);
+    max-width: 30rem;
+    text-wrap: pretty;
+    margin: 1.25rem 0 0;
+  }
+
+  .sv-topics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .sv-topics > li {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-topics a {
+    display: block;
+    padding: 1.4rem 2rem 1.5rem 0;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .sv-topics a::after {
+    content: "";
+    position: absolute;
+    right: 0.2rem;
+    top: 2.15rem;
+    width: 0.9rem;
+    height: 1px;
+    background: var(--ink-3);
+    transition: width 160ms ease, background-color 160ms ease;
+  }
+
+  .sv-topics a:hover::after {
+    width: 1.4rem;
+    background: var(--accent);
+  }
+
+  .sv-topics__title {
+    display: block;
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+  }
+
+  .sv-topics a:hover .sv-topics__title {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 0.14em;
+  }
+
+  .sv-topics__blurb {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--ink-2);
+    font-style: italic;
+    max-width: var(--measure);
+    text-wrap: pretty;
+  }
+
+  /* ------------------------------------------------------ fact citations */
+
+  /* An inline citation: prose saying, at the point of use, that this clause
+     is standing on a fact the page will show you. It is the page's main
+     honesty signal, so it is deliberately louder than a footnote — the text
+     keeps full ink strength for readability and the accent rule under it
+     carries the signal, closed by the same filled disc the fact statuses use
+     for "the evidence is solid". */
+  .prose-body a.sv-cite {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 0.18em;
+    border-radius: 2px;
+    transition: background-color 120ms ease, box-shadow 120ms ease;
+  }
+
+  .prose-body a.sv-cite::after {
+    content: "";
+    display: inline-block;
+    width: 0.34em;
+    height: 0.34em;
+    margin-left: 0.18em;
+    border-radius: 999px;
+    background: var(--accent);
+    vertical-align: 0.42em;
+  }
+
+  .prose-body a.sv-cite:hover,
+  .prose-body a.sv-cite:focus-visible {
+    background-color: var(--accent-wash);
+    box-shadow: 0 0 0 0.18em var(--accent-wash);
+  }
+
+  /* --------------------------------------------------- a fact's own page */
+
+  .sv-factmain {
+    padding-bottom: 3rem;
+  }
+
+  .sv-crumbs {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-top: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  @media (min-width: 40rem) {
+    .sv-crumbs {
+      padding-top: 3.5rem;
+    }
+  }
+
+  .sv-crumbs a {
+    color: var(--ink-2);
+  }
+
+  .sv-crumbs a:hover {
+    color: var(--accent);
+  }
+
+  /* A supporting fact says little standing alone — a grant-rate movement or a
+     contract overrun is the out-of-context number this whole site exists to
+     defuse. So the claim it is evidence for is stated above it, in the one
+     accent the page has, before the reader has read a word of the detail. */
+  .sv-parentnote {
+    margin: 0 0 1.4rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--accent);
+  }
+
+  .sv-parentnote__label {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.15rem;
+  }
+
+  .sv-parentnote__claim {
+    display: inline-block;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+    text-wrap: pretty;
+    color: var(--ink);
+  }
+
+  .sv-factpage {
+    /* The status rule runs the height of the fact, as it does on every row. */
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+  }
+
+  .sv-factpage[data-variant="page"] {
+    margin-top: 1.25rem;
+  }
+
+  .sv-factpage__claim {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 1.15rem + 2.1vw, 2.4rem);
+    line-height: 1.13;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .sv-factpage__head .sv-status {
+    margin-top: 0.75rem;
+  }
+
+  .sv-factpage__body {
+    margin-top: 1.5rem;
+    max-width: var(--measure);
+  }
+
+  /* In the panel the claim is the dialog's title, so it is set a step down —
+     it is naming what the reader just asked for, not opening a page. */
+  .sv-factpage[data-variant="modal"] .sv-factpage__claim {
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.55rem);
+    line-height: 1.22;
+    letter-spacing: -0.015em;
+  }
+
+  .sv-factpage[data-variant="modal"] .sv-parentnote {
+    margin-top: 0;
+    margin-bottom: 1.1rem;
+  }
+
+  .sv-factpage[data-variant="modal"] .sv-factpage__body {
+    margin-top: 1.1rem;
+  }
+
+  /* The fact's permanent address, stated on the page rather than left to the
+     URL bar: this is the link a reader is meant to be able to take away. */
+  .sv-permalink {
+    margin: 1.75rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .sv-permalink a {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  /* --------------------------------------------------------- fact panel */
+
+  /* Background scroll lock. Chrome inerts the page behind a modal dialog but
+     does not stop it scrolling, and on a phone that means the panel and the
+     page moving at once. */
+  .sv-modal-open,
+  .sv-modal-open body {
+    overflow: hidden;
+  }
+
+  .sv-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  /* Flex rather than grid so the panel's `max-height: 100%` resolves against
+     the dialog's own viewport-sized box: in an auto-sized grid track the
+     percentage has nothing definite to measure against, and the panel grows
+     to its content instead of scrolling inside itself. */
+  .sv-modal[open] {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .sv-modal::backdrop {
+    background: rgb(0 0 0 / 0.66);
+    backdrop-filter: blur(2px);
+  }
+
+  /* On a phone the panel is the screen: a fact can run to several hundred
+     words plus quotes plus nested supporting facts, and a centred box with
+     margins would spend the width that prose needs. */
+  .sv-modal__panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    background: var(--paper);
+    animation: sv-modal-in 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  @media (min-width: 40rem) {
+    .sv-modal {
+      padding: 2.5rem 1.5rem;
+    }
+
+    .sv-modal[open] {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sv-modal__panel {
+      width: min(42rem, 100%);
+      height: auto;
+      border: 1px solid var(--ink);
+      box-shadow: 0 30px 70px -24px rgb(0 0 0 / 0.55);
+    }
+  }
+
+  @keyframes sv-modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+  }
+
+  /* The bar never scrolls away: on a long fact the close affordance has to
+     be reachable without scrolling back to the top. */
+  .sv-modal__bar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.35rem 0.75rem 0.35rem 1.4rem;
+    padding-top: max(0.35rem, env(safe-area-inset-top));
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-raised);
+  }
+
+  .sv-modal__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  .sv-modal__close {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: color 120ms ease;
+  }
+
+  .sv-modal__close svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    stroke-linecap: round;
+  }
+
+  .sv-modal__close:hover {
+    color: var(--accent);
+  }
+
+  .sv-modal__scroll {
+    flex: 1 1 auto;
+    /* Without this a flex child refuses to shrink below its content and the
+       panel, not the panel's body, is what would have to scroll. */
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1.5rem 1.4rem;
+    padding-bottom: max(2.25rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* A reader who has asked the OS for less motion gets no animated transitions
+   anywhere on the page, and hash-sync.tsx checks the same preference before
+   choosing a scroll behaviour. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
