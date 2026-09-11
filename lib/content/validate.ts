@@ -13,15 +13,11 @@ import type { Fact, Series, Topic } from './types';
 export function validateTopic(topic: Topic): string[] {
   const errors: string[] = [];
   const factById = new Map(topic.facts.map((f) => [f.id, f]));
-  const viewpointById = new Map(topic.viewpoints.map((v) => [v.id, v]));
-  const principleById = new Map(topic.principles.map((p) => [p.id, p]));
   const viewpointIds = new Set(topic.viewpoints.map((v) => v.id));
   const principleIds = new Set(topic.principles.map((p) => p.id));
 
-  // Facts referenced by any viewpoint in any way, and principles claimed by a
-  // real viewpoint — used for the orphan check (rule 8).
+  // Facts referenced by any viewpoint — used for the orphan check (rule 8).
   const referencedFacts = new Set<string>();
-  const heldPrinciples = new Set<string>();
 
   const CITABLE_STATUSES = new Set(['well-supported', 'contested']);
 
@@ -74,7 +70,7 @@ export function validateTopic(topic: Topic): string[] {
 
     // rule 1
     for (const id of v.principles) {
-      if (!principleIds.has(id)) errors.push(`viewpoint ${v.id}: references unknown principle "${id}"`);
+      if (!principleIds.has(id)) errors.push(`viewpoint ${v.id}: references unknown principle "${id}" — list it in topic.md principles`);
     }
   }
 
@@ -125,39 +121,6 @@ export function validateTopic(topic: Topic): string[] {
     }
   }
 
-  for (const p of topic.principles) {
-    for (const id of p.heldBy) {
-      // rule 1
-      if (!viewpointIds.has(id)) {
-        errors.push(`principle ${p.id}: heldBy references unknown viewpoint "${id}"`);
-        continue;
-      }
-      heldPrinciples.add(p.id);
-
-      // rule 10 — heldBy and principles are the same relationship stated from
-      // two ends; if they disagree, the disagreeing end renders with no
-      // inbound link from anywhere on the page.
-      const v = viewpointById.get(id);
-      if (v && !v.principles.includes(p.id)) {
-        errors.push(
-          `principle ${p.id}: heldBy lists viewpoint "${id}", but ${id}.principles does not list "${p.id}" — add it there too`
-        );
-      }
-    }
-  }
-
-  for (const v of topic.viewpoints) {
-    for (const id of v.principles) {
-      const p = principleById.get(id);
-      // rule 10, the other direction
-      if (p && !p.heldBy.includes(v.id)) {
-        errors.push(
-          `viewpoint ${v.id}: principles lists "${id}", but principle ${id}.heldBy does not list "${v.id}" — add it there too`
-        );
-      }
-    }
-  }
-
   for (const c of topic.cruxes) {
     const positioned = new Set(c.positions.map((p) => p.viewpoint));
     for (const id of c.divides) {
@@ -201,11 +164,6 @@ export function validateTopic(topic: Topic): string[] {
       errors.push(
         `fact ${f.id}: orphan — no viewpoint cites, acknowledges or sets it aside, so it does no work on the page`
       );
-    }
-  }
-  for (const p of topic.principles) {
-    if (!heldPrinciples.has(p.id)) {
-      errors.push(`principle ${p.id}: orphan — no real viewpoint holds it`);
     }
   }
 

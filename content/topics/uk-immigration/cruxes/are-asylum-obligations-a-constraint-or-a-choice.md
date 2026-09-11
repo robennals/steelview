@@ -10,14 +10,18 @@ positions:
   - viewpoint: the-right-kind-of-immigration-not-less-of-it
     holds: A constraint on procedure rather than on volume. Individual claims must be heard honestly, but nothing obliges Britain to make its own asylum system the most attractive in Europe.
 ---
-This is the one crux on the page that no evidence can settle, which is why it is
-worth naming rather than arguing past. It is a disagreement about the standing of
-prior commitments, and its structure is the same whether the subject is refugee
-law, pension promises or a constitution.
+[Democratic consent](#principle-democratic-consent-over-membership) gives people
+control over their government's choices. The
+[duty to people in danger](#principle-obligation-to-people-in-danger) and the
+[keeping of public promises](#principle-rules-must-mean-what-they-say) can require
+protection even when a majority wants to withdraw it. The collision arises when
+voters want a restriction that would deny someone that protection.
 
-It has practical force. Almost every concrete asylum proposal of the past five
-years — offshore processing, differentiated refugee status, disapplying parts of
-the European Convention — depends on the answer, and the arguments about
-effectiveness are usually proxies for it. A restrictionist who holds the
-constraint view and a refugee advocate who holds the policy view would each find
-most of their own side's rhetoric unusable.
+If protection takes priority, the national-control argument must pursue public
+consent within that obligation. If democratic choice includes withdrawing the
+guarantee, the protection argument must persuade voters to retain it. The selective
+admission position draws the boundary differently: fair assessment is binding,
+while the terms of access remain open to political choice.
+
+Evidence about cost or deterrence can change the practical stakes. It cannot by
+itself decide which obligation should take precedence when the conflict remains.

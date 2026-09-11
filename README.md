@@ -26,21 +26,32 @@ pnpm build      # production build (this is what fails if content is invalid)
 
 ## Content
 
-One directory per topic, one markdown file per item:
+Principles are shared across topics; facts, viewpoints and cruxes belong to a topic:
 
 ```
-content/topics/uk-immigration/
-  topic.md
-  facts/
-    net-migration-2024.md
-    wage-effect-low-skill.md
-  viewpoints/
-    control-first.md
+content/
   principles/
-    national-self-determination.md
-  cruxes/
-    will-integration-keep-pace.md
+    democratic-consent-over-membership.md
+  topics/
+    uk-immigration/
+      topic.md
+      facts/
+      viewpoints/
+      cruxes/
 ```
+
+A shared principle contains a `name` and markdown body, with no topic-specific
+`heldBy` list. Each `topic.md` lists the shared IDs it employs:
+
+```yaml
+principles: [democratic-consent-over-membership, obligation-to-people-in-danger]
+```
+
+Viewpoints list the subset they rest on in their own `principles` field. The
+loader resolves the topic's IDs from `content/principles/`, preserving existing
+in-page anchors. Editing one definition updates every topic that references it.
+The topic lists also provide the relationships for future principle-to-topic
+backlinks without maintaining a second list in each principle.
 
 The filename is the item's id, and the id is permanent — it forms the URL
 anchor for that item, prefixed with its kind (`/topics/uk-immigration#fact-net-migration-2024`),
@@ -64,7 +75,7 @@ renders a broken page. Beyond the zod schema shape, these rules are enforced
 and unit-tested:
 
 1. Every id referenced in `citesFacts`, `acknowledges`, `setsAside`,
-   `principles`, `heldBy`, `divides`, and `positions[].viewpoint` must
+   `principles`, `divides`, and `positions[].viewpoint` must
    resolve to a real item.
 2. `citesFacts` may only contain `well-supported` or `contested` facts;
    `acknowledges` may only contain `well-supported` facts; a fact can appear
@@ -77,12 +88,12 @@ and unit-tested:
 6. Every viewpoint's `acknowledges` list is non-empty.
 7. Every crux `divides` at least two viewpoints and gives a position for
    each one.
-8. No orphans — every fact must appear in some viewpoint's `citesFacts`,
-   `acknowledges`, or `setsAside`, and every principle must be held by at
-   least one viewpoint.
+8. No orphan headline facts — each must appear in some viewpoint's
+   `citesFacts`, `acknowledges`, or `setsAside`.
 9. A topic needs at least 1 fact and at least 2 viewpoints.
-10. A principle's `heldBy` and a viewpoint's `principles` must agree with
-    each other — each is the same relationship stated from the other end.
+10. Topic principle IDs must be unique and exist in the shared catalog. Each
+    viewpoint's principle IDs must be included in its topic's list. Topic-local
+    principle definitions and shared definitions with `heldBy` are rejected.
 
 `pnpm check:figures` extends the sourcing rule to prose: a money, percentage
 or thousands figure asserted in any markdown body must appear in a quoted

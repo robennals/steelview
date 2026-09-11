@@ -157,9 +157,16 @@ test('an empty supports is rejected rather than read as "no parent"', () => {
   );
 });
 
-test('a principle requires at least one holder', () => {
-  assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness', heldBy: [] }).success, false);
-  assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness', heldBy: ['one'] }).success, true);
+test('a shared principle has no topic-specific holders', () => {
+  assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness' }).success, true);
+  assert.equal(principleFrontmatterSchema.safeParse({ name: 'Fairness', heldBy: ['one'] }).success, false);
+});
+
+test('topic principle references default to empty and reject duplicates or empty IDs', () => {
+  const topic = { title: 'Example', subtitle: 's', lastUpdated: '2026-08-18' };
+  assert.deepEqual(topicFrontmatterSchema.parse(topic).principles, []);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: ['p', 'p'] }).success, false);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: [''] }).success, false);
 });
 
 test('a crux requires a known kind, two viewpoints and two positions', () => {
