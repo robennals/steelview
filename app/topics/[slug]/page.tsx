@@ -1,3 +1,5 @@
+import { InstantFacts } from '@/components/topic/instant-facts';
+import { factPath } from '@/lib/content/types';
 import type { Metadata } from 'next';
 import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts } from '@/lib/content/rank-facts';
@@ -202,6 +204,10 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const topic = await loadTopic(slug);
 
   const bodies = await buildBodies(topic, slug);
+  // Warm the visible headline rows first, then the remaining facts and citations.
+  const previews = [...headlineFacts(topic.facts), ...topic.facts.filter((fact) => fact.supports)].map((fact) => ({
+    href: factPath(slug, fact.id), id: fact.id, claim: fact.claim,
+  }));
 
   /*
    * The page head is the title and nothing else: readers came for the facts,
@@ -211,14 +217,16 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
    * model — neither is rendered here.
    */
   return (
-    <main className="sv-wrap">
-      <HashSync />
-      <header className="sv-pagehead">
-        <h1 className="sv-title">{topic.title}</h1>
-        <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
-      </header>
+    <InstantFacts slug={slug} previews={previews}>
+      <main className="sv-wrap">
+        <HashSync />
+        <header className="sv-pagehead">
+          <h1 className="sv-title">{topic.title}</h1>
+          <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
+        </header>
 
-      <TopicSections topic={topic} bodies={bodies} />
-    </main>
+        <TopicSections topic={topic} bodies={bodies} />
+      </main>
+    </InstantFacts>
   );
 }

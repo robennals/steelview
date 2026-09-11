@@ -15,33 +15,13 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(', ');
 
-/**
- * The sheet a fact is read in when the reader is already on its topic page.
- *
- * It holds a fact rendered from data by the intercepting route above it — it
- * does not borrow anything from the page behind. The previous version moved
- * the fact's `<details>` element out of the list and into the dialog, which it
- * had to do because the fact existed only as markup on the topic page; now
- * that a fact is a route, the modal and the fact's own page render the same
- * component from the same content and there is nothing to move.
- *
- * Closing is always `router.back()`, whichever way the reader asks for it, so
- * the panel is one entry in their history rather than a mode they can get
- * stuck in: Back leaves it, and the URL they were on returns.
- *
- * The route is what is open — this component does not own that state, it
- * reflects it. `<dialog>`'s own imperative `showModal`/`close` still has to
- * be driven from an effect, but the effect must survive being mounted,
- * cleaned up and mounted again without navigating anywhere: React's
- * StrictMode does exactly that on every first mount in development, and a
- * `close` *event* fired during that churn used to be read as the reader
- * asking to leave, snapping the URL back to the topic page before the reader
- * had touched anything. So `close` is no longer listened for at all — only
- * the three real exits (Escape, the backdrop, the close button) call
- * `router.back()`, directly, once, and never from a DOM event or from
- * cleanup.
- */
-export function FactModal({ labelledBy, children }: { labelledBy: string; children: ReactNode }) {
+/** Accessible sheet shared by instant topic previews and intercepted routes. */
+export function FactModal({ labelledBy, children, href, onClose }: {
+  labelledBy: string;
+  children: ReactNode;
+  href: string;
+  onClose?: () => void;
+}) {
   const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const leavingRef = useRef(false);
@@ -59,8 +39,9 @@ export function FactModal({ labelledBy, children }: { labelledBy: string; childr
   const leave = useCallback(() => {
     if (leavingRef.current) return;
     leavingRef.current = true;
-    router.back();
-  }, [router]);
+    if (onClose) onClose();
+    else router.back();
+  }, [router, onClose]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -133,8 +114,7 @@ export function FactModal({ labelledBy, children }: { labelledBy: string; childr
       // Deliberately does not close the dialog or navigate: this cleanup
       // runs on a StrictMode remount as well as on the real unmount that
       // follows a genuine close, and the two are indistinguishable from
-      // here. The dialog element itself goes away with the component when
-      // the route that renders it stops matching — that is the real close.
+      // here. The dialog element goes away when its owner dismisses it.
       unwireExit();
       dialog.removeEventListener('click', onClick);
       dialog.removeEventListener('keydown', onKeyDown);
@@ -143,11 +123,20 @@ export function FactModal({ labelledBy, children }: { labelledBy: string; childr
     };
   }, [leave, trigger]);
 
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.querySelector('.sv-modal__scroll')?.scrollTo(0, 0);
+    dialog?.querySelector<HTMLElement>('.sv-modal__close')?.focus();
+  }, [href]);
+
   return (
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
       <div className="sv-modal__panel">
         <div className="sv-modal__bar">
           <p className="sv-modal__eyebrow">Fact</p>
+          <a className="sv-modal__expand" href={href} data-fact-expand>
+            Expand <span aria-hidden="true">↗</span>
+          </a>
           <button type="button" className="sv-modal__close" onClick={leave}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">

@@ -25,9 +25,7 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
   await page.locator(row(HEADLINE)).click();
 
   await expect(page.locator(dialog)).toBeVisible();
-  // The panel is rendered from the fact's own route, so it holds the whole
-  // fact — claim, status, body, chart, sources and supporting facts — not a
-  // borrowed piece of the list behind it.
+  // The prefetched article includes its chart and evidence.
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-chart`)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(1);
@@ -235,4 +233,95 @@ test.describe('with JavaScript disabled', () => {
       'Health and care is the sector most dependent on migrant labour'
     );
   });
+});
+
+// Once prefetched, opening and reopening facts needs no network response.
+test('facts open with the network offline and Forward restores the modal', async ({ page, context }) => {
+  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  await context.setOffline(true);
+  await page.locator(row(HEADLINE)).click();
+  await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
+  await expect(page.locator(`${dialog} .sv-chart`)).toBeVisible();
+  await page.goBack();
+  await expect(page.locator(dialog)).toHaveCount(0);
+  await page.goForward();
+  await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
+  await page.locator('.sv-modal__close').click();
+  await expect(page.locator(dialog)).toHaveCount(0);
+  await expect(page.locator(row(HEADLINE))).toBeFocused();
+});
+
+test('Expand loads the standalone fact page', async ({ page }) => {
+  await page.goto(TOPIC);
+  await page.locator(row(HEADLINE)).click();
+  await page.getByRole('link', { name: 'Expand', exact: true }).click();
+  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
+  await expect(page.locator(dialog)).toHaveCount(0);
+  await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
+});
+
+
+test('a slow fact response never delays opening or switching the modal', async ({ page }) => {
+  let release!: () => void;
+  const gate = new Promise<void>((resolve) => { release = resolve; });
+  await page.route('**/api/topics/**/facts/**', async (route) => {
+    await gate;
+    await route.continue();
+  });
+  try {
+    await page.goto(TOPIC);
+    await page.locator(row(HEADLINE)).click();
+    await expect(page.locator(dialog)).toBeVisible();
+    await expect(page.locator(`${dialog} ${title}`)).toContainText('immigration');
+    await expect(page.getByRole('status')).toHaveText('Loading fact…');
+    await page.locator('.sv-modal__close').click();
+    await expect(page.locator(dialog)).toHaveCount(0);
+    const other = page.locator('a.sv-factrow').nth(1);
+    const claim = await other.locator('.sv-item__claim').textContent();
+    await other.click();
+    await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
+    release();
+    await expect(page.locator(`${dialog} .sv-factpage__body`)).toBeVisible();
+    await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
+  } finally {
+    release();
+  }
+});
+
+test('modified fact clicks are left to the browser', async ({ page }) => {
+  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  // Observe the event after application handlers, then suppress the browser's
+  // platform-specific new-tab/context-menu default inside this test only.
+  for (const modifier of ['ctrlKey', 'metaKey'] as const) {
+    const prevented = await page.locator(row(HEADLINE)).evaluate((link, key) => {
+      let intercepted = false;
+      document.addEventListener('click', (event) => {
+        intercepted = event.defaultPrevented;
+        event.preventDefault();
+      }, { once: true });
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, [key]: true }));
+      return intercepted;
+    }, modifier);
+    expect(prevented).toBe(false);
+  }
+  await expect(page.locator(dialog)).toHaveCount(0);
+  await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
+});
+
+
+test('a preview using the loopback IP loads its JavaScript and opens facts in place', async ({ page }) => {
+  // Embedded/local previews can send this origin while accessing the dev server
+  // by its localhost name. Next's dev-origin guard must allow their scripts.
+  await page.setExtraHTTPHeaders({ Origin: 'http://127.0.0.1' });
+  const blockedScripts: string[] = [];
+  page.on('response', (response) => {
+    if (response.url().includes('/_next/') && response.status() === 403) {
+      blockedScripts.push(response.url());
+    }
+  });
+  await page.goto(TOPIC);
+  await page.locator(row(HEADLINE)).click();
+  await expect(page.locator(dialog)).toBeVisible();
+  await expect(page.locator(`${dialog} .sv-factpage__body`)).toBeVisible();
+  expect(blockedScripts).toEqual([]);
 });
