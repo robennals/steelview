@@ -1,3 +1,4 @@
+import { factPath } from '@/lib/content/types';
 import { notFound } from 'next/navigation';
 import { allFactParams, loadFactPage } from '@/lib/content/fact-page';
 import { FactArticle } from '@/components/topic/fact-article';
@@ -36,7 +37,7 @@ export default async function FactModalPage({
   const { fact, bodyHtml, supporting, parent } = data;
 
   return (
-    <FactModal labelledBy={TITLE_ID}>
+    <FactModal labelledBy={TITLE_ID} href={factPath(slug, factId)}>
       <FactArticle
         variant="modal"
         headingId={TITLE_ID}

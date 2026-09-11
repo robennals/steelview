@@ -97,7 +97,7 @@ function SupportingFact({ slug, fact, bodyHtml }: BodiedFact & { slug: string })
         <p className="sv-permalink">
           {/* A plain anchor, not a <Link>: this says "on its own page", so it
               must load that page rather than be intercepted into a modal. */}
-          <a href={factPath(slug, fact.id)}>Open this fact on its own page</a>
+          <a href={factPath(slug, fact.id)} data-fact-expand>Open this fact on its own page</a>
         </p>
       </div>
     </details>
@@ -193,7 +193,7 @@ export function FactArticle({
 
         {variant === 'modal' && (
           <p className="sv-permalink">
-            <a href={factPath(slug, fact.id)}>Open this fact on its own page</a>
+            <a href={factPath(slug, fact.id)} data-fact-expand>Open this fact on its own page</a>
           </p>
         )}
       </div>

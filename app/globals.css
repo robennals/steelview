@@ -1679,8 +1679,8 @@
   .sv-factpage__claim {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.6rem, 1.15rem + 2.1vw, 2.4rem);
-    line-height: 1.13;
+    font-size: clamp(1.3rem, 1.15rem + 0.7vw, 1.65rem);
+    line-height: 1.3;
     letter-spacing: -0.02em;
     text-wrap: balance;
     margin: 0;
@@ -1698,8 +1698,8 @@
   /* In the panel the claim is the dialog's title, so it is set a step down —
      it is naming what the reader just asked for, not opening a page. */
   .sv-factpage[data-variant="modal"] .sv-factpage__claim {
-    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.55rem);
-    line-height: 1.22;
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+    line-height: 1.35;
     letter-spacing: -0.015em;
   }
 
@@ -1754,55 +1754,40 @@
     overflow: hidden;
   }
 
-  /* Flex rather than grid so the panel's `max-height: 100%` resolves against
-     the dialog's own viewport-sized box: in an auto-sized grid track the
-     percentage has nothing definite to measure against, and the panel grows
-     to its content instead of scrolling inside itself. */
+  /* Center the sheet while keeping the rest of the dialog as a click-to-close area. */
   .sv-modal[open] {
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
   }
 
   .sv-modal::backdrop {
-    background: rgb(0 0 0 / 0.66);
-    backdrop-filter: blur(2px);
+    background: transparent;
   }
 
-  /* On a phone the panel is the screen: a fact can run to several hundred
-     words plus quotes plus nested supporting facts, and a centred box with
-     margins would spend the width that prose needs. */
+  /* Keep the topic visible around the sheet, even on a phone. Long facts
+     scroll inside it while the controls remain within reach. */
   .sv-modal__panel {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
-    max-height: 100%;
+    height: auto;
+    max-height: min(78dvh, 48rem);
     background: var(--paper);
-    animation: sv-modal-in 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    border: 1px solid var(--rule);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
   }
 
   @media (min-width: 40rem) {
-    .sv-modal {
-      padding: 2.5rem 1.5rem;
-    }
-
     .sv-modal[open] {
-      align-items: center;
-      justify-content: center;
+      padding: 2.5rem 1.5rem;
     }
 
     .sv-modal__panel {
       width: min(42rem, 100%);
-      height: auto;
-      border: 1px solid var(--ink);
-      box-shadow: 0 30px 70px -24px rgb(0 0 0 / 0.55);
-    }
-  }
-
-  @keyframes sv-modal-in {
-    from {
-      opacity: 0;
-      transform: translateY(0.75rem);
     }
   }
 
@@ -1828,6 +1813,22 @@
     text-transform: uppercase;
     color: var(--ink-3);
     margin: 0;
+  }
+
+  .sv-modal__expand {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    color: var(--ink-2);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+
+  .sv-modal__expand:hover {
+    color: var(--accent);
   }
 
   .sv-modal__close {

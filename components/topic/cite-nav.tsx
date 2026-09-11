@@ -40,6 +40,9 @@ export function CiteNav() {
       const link = target instanceof Element ? target.closest('a[href]') : null;
       if (!(link instanceof HTMLAnchorElement)) return;
 
+      // Topic previews handle all their own fact links before any routing.
+      if (link.closest('[data-instant-facts]')) return;
+
       // Recorded for every link, not just citations: a fact row is a
       // `next/link` and still has to get focus back when its modal closes.
       lastTrigger.el = link;
