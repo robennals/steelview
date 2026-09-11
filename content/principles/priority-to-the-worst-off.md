@@ -1,6 +1,5 @@
 ---
 name: Priority to the worst off
-heldBy: [immigration-makes-britain-better-off, a-country-should-decide-who-joins-it, moral-duty-to-help-people-fleeing-danger, too-much-too-fast-damages-the-social-fabric]
 ---
 The people in greatest need deserve our first concern. A decent society pays
 special attention to those with the least power, fewest resources and least

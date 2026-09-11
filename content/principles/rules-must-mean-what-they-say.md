@@ -1,6 +1,5 @@
 ---
 name: Rules must mean what they say
-heldBy: [a-country-should-decide-who-joins-it, moral-duty-to-help-people-fleeing-danger, the-right-kind-of-immigration-not-less-of-it]
 ---
 Public rules and promises should be dependable, and the powerful should be bound
 by them too. People deserve to know where they stand and to trust that a right

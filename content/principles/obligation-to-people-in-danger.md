@@ -1,6 +1,5 @@
 ---
 name: Obligation to people in danger
-heldBy: [moral-duty-to-help-people-fleeing-danger, a-country-should-decide-who-joins-it]
 ---
 We have a duty to help people facing grave danger, even when they are strangers.
 A human life has a claim on our care that does not depend on friendship,

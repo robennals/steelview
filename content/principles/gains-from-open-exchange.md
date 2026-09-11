@@ -1,6 +1,5 @@
 ---
 name: Freedom to cooperate and exchange
-heldBy: [the-right-kind-of-immigration-not-less-of-it, immigration-makes-britain-better-off]
 ---
 People should be free to trade, share knowledge and work together for mutual
 benefit. Those who cherish open exchange see cooperation as a way for people to

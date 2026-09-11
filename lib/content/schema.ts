@@ -201,9 +201,9 @@ export const viewpointFrontmatterSchema = z.object({
   principles: z.array(z.string()).default([]),
 });
 
-export const principleFrontmatterSchema = z.object({
+// Shared definitions must not carry topic-specific viewpoint relationships.
+export const principleFrontmatterSchema = z.strictObject({
   name: z.string().min(1),
-  heldBy: z.array(z.string()).min(1, 'a principle nobody holds does not belong on the page'),
 });
 
 export const cruxPositionSchema = z.object({
@@ -219,6 +219,10 @@ export const cruxFrontmatterSchema = z.object({
 });
 
 export const topicFrontmatterSchema = z.object({
+  principles: z.array(z.string().min(1)).default([]).refine(
+    (ids) => new Set(ids).size === ids.length,
+    'principle references must be unique'
+  ),
   title: z.string().min(1),
   subtitle: z.string().min(1),
   lastUpdated: z.preprocess(

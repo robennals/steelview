@@ -1,6 +1,5 @@
 ---
 name: Democratic consent
-heldBy: [a-country-should-decide-who-joins-it, too-much-too-fast-damages-the-social-fabric, the-right-kind-of-immigration-not-less-of-it, moral-duty-to-help-people-fleeing-danger, immigration-makes-britain-better-off]
 ---
 People should have the power to choose their own leaders and shape the decisions
 that govern their lives. Political authority rests on the consent of the governed,

@@ -37,7 +37,7 @@ function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
 }
 
 function principle(over: Partial<Principle> & { id: string }): Principle {
-  return { name: 'A principle', heldBy: [], body: '', ...over };
+  return { name: 'A principle', body: '', ...over };
 }
 
 function crux(over: Partial<Crux> & { id: string }): Crux {
@@ -64,7 +64,7 @@ function soundTopic(): Topic {
       viewpoint({ id: 'one', citesFacts: ['alpha'], acknowledges: ['gamma'], principles: ['fairness'] }),
       viewpoint({ id: 'two', citesFacts: ['gamma'], acknowledges: ['alpha'], principles: ['fairness'] }),
     ],
-    principles: [principle({ id: 'fairness', heldBy: ['one', 'two'] })],
+    principles: [principle({ id: 'fairness' })],
     cruxes: [
       crux({
         id: 'timing',
@@ -221,7 +221,6 @@ test('rule 7: a crux may not give a position for a viewpoint it does not divide'
   t.viewpoints.push(
     viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'], principles: ['fairness'] })
   );
-  t.principles[0].heldBy.push('three');
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('three') && e.includes('divides')), errors.join('\n'));
 });
@@ -293,12 +292,11 @@ test('rule 11: a two-fact cycle is rejected from both ends', () => {
   assert.ok(errors.some((e) => e.startsWith('fact gamma:')), errors.join('\n'));
 });
 
-test('rule 8: a principle held by no real viewpoint is an orphan', () => {
+test('a topic may employ a shared principle in a crux without a viewpoint claiming it', () => {
   const t = soundTopic();
-  t.principles.push(principle({ id: 'lonely', heldBy: ['ghost'] }));
-  const errors = validateTopic(t);
-  assert.ok(errors.some((e) => e.includes('ghost')));
-  assert.ok(errors.some((e) => e.includes('lonely') && e.includes('orphan')));
+  t.principles.push(principle({ id: 'care' }));
+  t.cruxes[0].body = 'How does [care](#principle-care) apply?';
+  assert.deepEqual(validateTopic(t), []);
 });
 
 test('rule 9: a topic needs at least 1 fact', () => {
@@ -321,7 +319,6 @@ test('rule 9: a topic needs at least 1 fact', () => {
 test('rule 9: a topic needs at least 2 viewpoints', () => {
   const t = soundTopic();
   t.viewpoints = [t.viewpoints[0]];
-  t.principles[0].heldBy = ['one'];
   t.cruxes = [];
   const errors = validateTopic(t);
   assert.ok(
@@ -330,24 +327,10 @@ test('rule 9: a topic needs at least 2 viewpoints', () => {
   );
 });
 
-test('rule 10: a principle heldBy that a viewpoint does not reciprocate is reported', () => {
+test('a viewpoint can stop using a principle without changing its shared definition', () => {
   const t = soundTopic();
   t.viewpoints[0].principles = [];
-  const errors = validateTopic(t);
-  assert.ok(
-    errors.some((e) => e.includes('fairness') && e.includes('one') && e.includes('heldBy')),
-    errors.join('\n')
-  );
-});
-
-test('rule 10: a viewpoint principle that a principle does not reciprocate is reported', () => {
-  const t = soundTopic();
-  t.principles[0].heldBy = ['two'];
-  const errors = validateTopic(t);
-  assert.ok(
-    errors.some((e) => e.includes('one') && e.includes('fairness') && e.includes('principles')),
-    errors.join('\n')
-  );
+  assert.deepEqual(validateTopic(t), []);
 });
 
 test('every error message names the offending item', () => {

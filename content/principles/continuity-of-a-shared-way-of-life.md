@@ -1,6 +1,5 @@
 ---
 name: Continuity of a shared way of life
-heldBy: [too-much-too-fast-damages-the-social-fabric]
 ---
 People should be able to cherish a shared way of life and pass it on to their
 children. A language, a tradition or a community's memory can be precious to the

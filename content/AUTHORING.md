@@ -43,14 +43,15 @@ settles it proves nothing about whether this format works. The disagreement
 should be real, the sides should be talking past each other, and the reader
 should arrive already holding a position.
 
-Four kinds of item, one markdown file each, under
-`content/topics/<slug>/`:
+Four kinds of item, one markdown file each. Facts, viewpoints and cruxes live
+under `content/topics/<slug>/`; principles live in the shared `content/principles/`
+collection:
 
 | Kind | What it is |
 | --- | --- |
 | **Fact** | A claim about the world with a status label, quoted sources, and a body giving its context. |
 | **Viewpoint** | One side of the argument, written as well as it can be written, listing the facts it cites, concedes and sets aside. |
-| **Principle** | A perennial value one or more viewpoints rest on. |
+| **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A specific question whose resolution would move someone. |
 
 The filename is the id. **Ids are permanent.** An id is the anchor a citation
@@ -498,7 +499,7 @@ Four frontmatter lists:
 | `citesFacts` | Facts the viewpoint argues *from* | `well-supported` or `contested` only |
 | `acknowledges` | Facts it concedes | `well-supported` only; must be non-empty |
 | `setsAside` | Facts it says do no work | any status |
-| `principles` | Principles it rests on | must agree with the principle's `heldBy` |
+| `principles` | Principles it rests on | must be included in `topic.md`'s `principles` list |
 
 A fact may appear in at most one of the three fact lists per viewpoint.
 
@@ -553,10 +554,36 @@ should express a value, not disguise a disputed prediction as a moral ideal:
 "Freedom to cooperate and exchange" expresses a value; "Open exchange always
 makes everyone richer" asserts a consequence that belongs among empirical claims.
 
-`heldBy` and the viewpoint's `principles` are the same relationship written
-from two ends, and the build fails if they disagree. A principle nobody holds
-is rejected by the schema. This metadata records which arguments rest on an
-ideal; omission does not mean that a viewpoint rejects it.
+Define each principle once at `content/principles/<id>.md`:
+
+```markdown
+---
+name: Democratic consent
+---
+People should have the power to choose their own leaders...
+```
+
+List the shared IDs a topic employs in `content/topics/<slug>/topic.md`:
+
+```yaml
+principles: [democratic-consent-over-membership, obligation-to-people-in-danger]
+```
+
+This list determines which principles appear on the topic page, in that order.
+It defaults to empty and must contain unique IDs from the shared collection.
+Each viewpoint's `principles` list must be a subset of its topic's list. A topic
+may also employ a principle in a crux without a viewpoint claiming it. A shared
+principle can exist before any topic uses it.
+
+Do not create a topic-local `principles/` directory or add `heldBy` to a shared
+definition; both fail loading. Viewpoint relationships belong to viewpoints,
+and topic relationships belong to topics. Omission does not mean rejection of
+an ideal. Future backlinks from a principle to relevant topics can be derived
+from the topic lists, without duplicating them in the shared definition.
+
+Editing a shared principle updates every topic that references it. Read its uses
+before changing its meaning. Existing `#principle-<id>` links still open the
+principle within the topic page.
 
 A principle held by every viewpoint can be especially useful. State its shared
 appeal here and explore disagreements over its application or priority in the
@@ -700,8 +727,8 @@ them.
 | Fact hierarchy is exactly one level deep; no self-support | `lib/content/validate.ts:97` |
 | Every viewpoint's `acknowledges` is non-empty | `lib/content/validate.ts:71` |
 | Every crux divides ≥2 viewpoints and positions each one | `lib/content/validate.ts:169` |
-| No orphan headline facts, no orphan principles | `lib/content/validate.ts:193` |
-| `heldBy` and `principles` agree in both directions | `lib/content/validate.ts:137` |
+| No orphan headline facts | `lib/content/validate.ts:193` |
+| Topic principles resolve to shared definitions; viewpoints use only their topic’s listed principles | `lib/content/load.ts`, `lib/content/validate.ts` |
 | Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
 | Series lines span the declared coverage exactly, end to end | `lib/content/validate.ts:279` |
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
@@ -791,7 +818,8 @@ Run this before opening a pull request.
 - [ ] Expresses an enduring value someone could hold sacred.
 - [ ] Includes recognisable examples where the principle has clear appeal.
 - [ ] Focuses on the positive case; applications, limits and collisions are in cruxes.
-- [ ] Does not equate a viewpoint's missing `heldBy` link with rejection of the ideal.
+- [ ] Defined once in `content/principles/`, with no topic-specific `heldBy`.
+- [ ] Referencing topics list its ID; their viewpoints use only listed principles.
 
 **Every crux**
 

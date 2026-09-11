@@ -34,11 +34,13 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { loadPrinciples, ContentError } from '../lib/content/load';
+import { topicFrontmatterSchema } from '../lib/content/schema';
 import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere } from './figures';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
-const KINDS = ['facts', 'viewpoints', 'principles', 'cruxes'] as const;
+const KINDS = ['facts', 'viewpoints', 'cruxes'] as const;
 
 type Finding = { item: string; figure: string; context: string };
 
@@ -78,6 +80,14 @@ async function auditTopic(slug: string): Promise<{ unmatched: Finding[]; advisor
     for (const item of await readMarkdown(path.join(dir, kind))) {
       items.push({ kind: kind.replace(/e?s$/, ''), ...item });
     }
+  }
+
+  const references = topicFrontmatterSchema.parse(topicFile.data).principles;
+  const catalog = new Map((await loadPrinciples()).map((p) => [p.id, p]));
+  for (const id of references) {
+    const principle = catalog.get(id);
+    if (!principle) throw new ContentError(`topic ${slug}: references unknown shared principle "${id}"`);
+    items.push({ kind: 'principle', id, data: { name: principle.name }, body: principle.body });
   }
 
   const quotes: string[] = [];
