@@ -534,28 +534,54 @@ too-much-too-fast (2), makes-Britain-better-off (3), country-should-decide
 
 ## Principles
 
-A principle is perennial, and statable without mentioning the topic.
-"Democratic consent over membership" and "Obligation to people in danger"
-would both make sense on a page about something else; "The Home Office should
-publish route-level data" would not.
+A principle is an enduring ideal that some people hold sacred. Its **name and
+entire body** should stand alone, unchanged, on a page about another issue.
+"Democratic consent" and "Obligation to people in danger" qualify; a prescription
+for a particular immigration system does not.
+
+State the ideal plainly, then make its appeal concrete with one or two iconic
+examples where readers are likely to support it: sanctuary for Jews fleeing
+Hitler, democracy giving people the power to elect their own leaders, or feeding
+children during a famine. Explain what makes the principle worth cherishing.
+Choose recognisable, accurate examples; do not imply that an example settles the
+current debate or that everyone must accept the principle.
+
+Keep the principle focused on its positive case. Do not discuss this topic's
+policies, which viewpoints hold it, exceptions, limits, or competing values in its
+body. Put the difficult applications and collisions in **Cruxes**. A principle
+should express a value, not disguise a disputed prediction as a moral ideal:
+"Freedom to cooperate and exchange" expresses a value; "Open exchange always
+makes everyone richer" asserts a consequence that belongs among empirical claims.
 
 `heldBy` and the viewpoint's `principles` are the same relationship written
 from two ends, and the build fails if they disagree. A principle nobody holds
-is rejected by the schema.
+is rejected by the schema. This metadata records which arguments rest on an
+ideal; omission does not mean that a viewpoint rejects it.
 
-A principle held by every viewpoint is not a failure — it is often the most
-useful entry on the page, because it locates the disagreement one level down.
-`democratic-consent-over-membership` is held by all five viewpoints in
-`uk-immigration`, and its body spends its second paragraph on what each side
-takes it to license. That is the content: not the shared words, but the split
-underneath them.
+A principle held by every viewpoint can be especially useful. State its shared
+appeal here and explore disagreements over its application or priority in the
+cruxes below. Keep existing filenames even when simplifying principle names,
+because those IDs are permanent links.
 
 ---
 
 ## Cruxes
 
-A crux names something that, **if resolved, would move someone**. Four kinds:
-`prediction`, `assumption`, `tradeoff`, `priority`.
+A crux names something that, **if resolved, would move someone**. This is where
+the topic's difficult cases belong: principles collide, predictions of
+consequences differ, or people hold competing hypotheses about something unknown.
+Four kinds:
+
+- `prediction`: different expectations about what a policy will cause.
+- `assumption`: different hypotheses about how the world works or what is unknown.
+- `tradeoff`: different judgments about how much of one good to sacrifice for another.
+- `priority`: different judgments about which principle or obligation comes first.
+
+For a collision of principles, name and link the relevant principles, give a
+concrete situation in which they pull in different directions, and show how each
+viewpoint resolves it. For an empirical disagreement, describe the evidence that
+would distinguish the predictions or hypotheses. Be clear when evidence can
+inform the stakes but cannot settle a choice between values.
 
 A crux restating a viewpoint's conclusion is not a crux. "Is immigration good
 for Britain?" is the argument, not a crux of it. "Is it the total number that
@@ -758,6 +784,14 @@ Run this before opening a pull request.
 - [ ] `citesFacts` is ordered deliberately — first entry is the fact the
       argument actually rests on.
 - [ ] Every fact it leans on is in one of its three lists.
+
+**Every principle**
+
+- [ ] Name and entire body make sense without the current topic.
+- [ ] Expresses an enduring value someone could hold sacred.
+- [ ] Includes recognisable examples where the principle has clear appeal.
+- [ ] Focuses on the positive case; applications, limits and collisions are in cruxes.
+- [ ] Does not equate a viewpoint's missing `heldBy` link with rejection of the ideal.
 
 **Every crux**
 
