@@ -1,80 +1,66 @@
+import type { ReactNode } from 'react';
 import Link from 'next/link';
-import type { Fact, SourceStance } from '@/lib/content/types';
+import { chartObservations, methodChanges } from '@/lib/content/chart-observations';
+import type { Fact } from '@/lib/content/types';
 import { factPath, topicPath } from '@/lib/content/types';
 import { Prose } from './prose';
 import { SeriesChart } from './series-chart';
+import { ComparisonChart } from './comparison-chart';
 import { StatusBadge } from './status-badge';
-import { Glyph, type GlyphShape } from './glyph';
+import { EvidenceNavigation } from './evidence-navigation';
 
-const STANCE_HEADINGS: Record<SourceStance, string> = {
-  supports: 'Supporting',
-  contests: 'Contesting',
-  complicates: 'Complicating',
-};
-
-// The same glyph family as the fact statuses, so a reader learns one alphabet.
-const STANCE_SHAPES: Record<SourceStance, GlyphShape> = {
-  supports: 'solid',
-  contests: 'split',
-  complicates: 'quartered',
-};
-
-const STANCE_ORDER: SourceStance[] = ['supports', 'contests', 'complicates'];
-
-/** A fact and its rendered markdown body, paired because the page renders bodies up front. */
+/** A fact and its rendered body, shared by full pages and previews. */
 export type BodiedFact = { fact: Fact; bodyHtml: string };
 
-function Sources({ fact }: { fact: Fact }) {
-  return (
-    <>
-      {STANCE_ORDER.map((stance) => {
-        const sources = fact.sources.filter((s) => s.stance === stance);
-        if (sources.length === 0) return null;
-        return (
-          <section key={stance} className="sv-stance">
-            <h4 className="sv-stance__head">
-              <Glyph shape={STANCE_SHAPES[stance]} />
-              {STANCE_HEADINGS[stance]}
-            </h4>
-            {sources.map((source, i) => (
-              <figure key={`${stance}-${i}`} className="sv-source">
-                <blockquote cite={source.url}>{source.quote}</blockquote>
-                <figcaption>
-                  <a href={source.url} target="_blank" rel="noreferrer noopener">
-                    {source.title}
-                  </a>
-                  , {source.publisher}, {source.date}
-                </figcaption>
-              </figure>
-            ))}
-          </section>
-        );
-      })}
-    </>
-  );
+function allSources(fact: Fact) {
+  return [...fact.sources, ...[...(fact.series ? [fact.series] : []), ...(fact.additionalSeries ?? [])].flatMap(series => [series.source, ...series.readings.flatMap(r => r.source ? [r.source] : [])])];
 }
 
-/**
- * Everything a reader sees of one fact once it is open: its context, its
- * series, then its sources. The same element in every place a fact is read —
- * its own page, the modal over the topic, and nested under the headline claim
- * it is evidence for.
- */
-function FactBody({ fact, bodyHtml }: BodiedFact) {
-  return (
-    <>
-      <Prose html={bodyHtml} />
-      {/*
-       * The series sits between the body and the sources: the body says what
-       * the number measures, the chart says what it has done over the whole
-       * range the source publishes, and the quotes then back both. A chart
-       * placed after the sources would be read as an appendix, when it is the
-       * answer to "compared to what?" that the claim above it invites.
-       */}
-      {fact.series && <SeriesChart factId={fact.id} series={fact.series} />}
-      <Sources fact={fact} />
-    </>
-  );
+function Sources({ facts }: { facts: Fact[] }) {
+  return <details className="sv-references">
+    <summary>Sources</summary>
+    {facts.map(fact => <div key={fact.id} className="sv-reference-group">
+      {facts.length > 1 && <p className="sv-reference-group__title">{fact.title ?? fact.claim}</p>}
+      <ol>{allSources(fact).map((source, i) => <li id={`source-${fact.id}-${i + 1}`} key={i} className="sv-source">
+        <a href={source.url} target="_blank" rel="noreferrer noopener">{source.title}</a>
+        <p>{source.publisher}, {source.date} · {source.stance}</p>
+        <details className="sv-source-quote">
+          <summary>
+            <span className="sv-source-quote__preview">“{source.quote}”</span>
+            <span className="sv-source-quote__expanded">Hide quote</span>
+          </summary>
+          <blockquote cite={source.url}>{source.quote}</blockquote>
+        </details>
+      </li>)}</ol>
+    </div>)}
+  </details>;
+}
+
+function FactCharts({ fact, observations = {}, subtleties = {}, afterSeries }: { fact: Fact; observations?: Record<string, string>; subtleties?: Record<string, string>; afterSeries?: ReactNode }) {
+  return <>
+    {fact.series && <SeriesChart factId={fact.id} series={fact.series} sourceOffset={fact.sources.length} observations={Object.fromEntries(fact.series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, fact.series!.breaks, fact.sources.length + 1)} className="sv-graph-observations" />]))} />}
+    {fact.additionalSeries?.map((series, i) => {
+      const sourceOffset = fact.sources.length + (fact.series ? 1 + fact.series.readings.filter(r => r.source).length : 0) + fact.additionalSeries!.slice(0, i).reduce((n, s) => n + 1 + s.readings.filter(r => r.source).length, 0);
+      return <SeriesChart key={series.id} chartId={series.id} factId={fact.id} series={series} sourceOffset={sourceOffset} observations={Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1)} className="sv-graph-observations" />]))} />;
+    })}
+    {afterSeries}
+    {fact.comparisons?.map(chart => <ComparisonChart key={chart.id} fact={fact} chart={chart} sources={allSources(fact)} observations={(observations[chart.id] || subtleties[chart.id]) && <Prose html={(observations[chart.id] ?? "") + (subtleties[chart.id] ?? "")} className="sv-graph-observations" />} />)}
+  </>;
+}
+
+function FactBody({ fact, bodyHtml, featured = [], hideCharts = false }: BodiedFact & { featured?: BodiedFact[]; hideCharts?: boolean }) {
+  const grouped = chartObservations(bodyHtml, fact.id, [...(fact.series?.readings.map(r => r.id) ?? []), ...(fact.additionalSeries?.flatMap(s => s.readings.map(r => r.id)) ?? []), ...(fact.comparisons?.map(c => c.id) ?? [])]);
+  return <>
+    <p className="sv-finding" id={`${fact.id}--finding`}>
+      {fact.claim}{' '}
+      {(fact.claimSources ?? [1]).map(n => <a key={n} className="sv-footnote" href={`#source-${fact.id}-${n}`} aria-label={`Source ${n}`}>[{n}]</a>)}
+    </p>
+    {!hideCharts && <FactCharts fact={fact} observations={grouped.observations} subtleties={grouped.subtleties} afterSeries={featured.map(child => {
+      const childGroups = chartObservations(child.bodyHtml, child.fact.id, [...(child.fact.series?.readings.map(r => r.id) ?? []), ...(child.fact.comparisons?.map(c => c.id) ?? [])]);
+      return <FactCharts key={child.fact.id} fact={child.fact} observations={childGroups.observations} subtleties={childGroups.subtleties} />;
+    })} />}
+    <Prose html={grouped.bodyHtml} />
+  </>;
 }
 
 /**
@@ -86,18 +72,18 @@ function FactBody({ fact, bodyHtml }: BodiedFact) {
  * correct. Its claim links to its own page, because it has one — but the
  * evidence is right here, so reading it is not a round trip.
  */
-function SupportingFact({ slug, fact, bodyHtml }: BodiedFact & { slug: string }) {
+function SupportingFact({ slug, fact, bodyHtml, hideCharts }: BodiedFact & { slug: string; hideCharts?: boolean }) {
   return (
-    <details className="sv-item sv-subfact" data-status={fact.status}>
+    <details id={`evidence-${fact.id}`} className="sv-item sv-subfact" data-status={fact.status}>
       <summary className="sv-item__summary">
-        <span className="sv-item__claim">{fact.claim}</span> <StatusBadge status={fact.status} />
+        <span className="sv-item__claim">{fact.title ?? fact.claim}</span> <StatusBadge status={fact.status} />
       </summary>
       <div className="sv-item__body">
-        <FactBody fact={fact} bodyHtml={bodyHtml} />
+        <FactBody fact={fact} bodyHtml={bodyHtml} hideCharts={hideCharts} />
         <p className="sv-permalink">
           {/* A plain anchor, not a <Link>: this says "on its own page", so it
               must load that page rather than be intercepted into a modal. */}
-          <a href={factPath(slug, fact.id)} data-fact-expand>Open this fact on its own page</a>
+          <a href={factPath(slug, fact.id)} data-fact-expand>Open this data collection on its own page</a>
         </p>
       </div>
     </details>
@@ -113,7 +99,7 @@ export function FactCrumbs({ slug, topicTitle }: { slug: string; topicTitle: str
     <nav className="sv-crumbs" aria-label="Breadcrumb">
       <Link href={topicPath(slug)}>{topicTitle}</Link>
       <span aria-hidden="true">/</span>
-      <span>Fact</span>
+      <span>Data</span>
     </nav>
   );
 }
@@ -149,6 +135,7 @@ export function FactArticle({
   const Claim = variant === 'page' ? 'h1' : 'h2';
   return (
     <article className="sv-factpage" data-status={fact.status} data-variant={variant}>
+      <EvidenceNavigation />
       {/*
        * A supporting fact is evidence for a larger claim and says little
        * standing alone — the out-of-context number this whole site exists to
@@ -158,22 +145,22 @@ export function FactArticle({
        */}
       {parent && (
         <div className="sv-parentnote">
-          <p className="sv-parentnote__label">Evidence for</p>
+          <p className="sv-parentnote__label">Related to</p>
           <Link className="sv-parentnote__claim" href={factPath(slug, parent.id)}>
-            {parent.claim}
+            {parent.title ?? parent.claim}
           </Link>
         </div>
       )}
 
       <header className="sv-factpage__head">
         <Claim className="sv-factpage__claim" id={headingId}>
-          {fact.claim}
+          {fact.title ?? fact.claim}
         </Claim>
-        <StatusBadge status={fact.status} />
+        {fact.assessedClaim ? <p className="sv-assessed">Claim assessed: “{fact.assessedClaim}” <StatusBadge status={fact.status} /></p> : <StatusBadge status={fact.status} />}
       </header>
 
       <div className="sv-factpage__body">
-        <FactBody fact={fact} bodyHtml={bodyHtml} />
+        <FactBody fact={fact} bodyHtml={bodyHtml} featured={supporting.filter(({ fact: child }) => fact.featuredCharts?.includes(child.id)) } />
 
         {supporting.length > 0 && (
           /*
@@ -183,17 +170,19 @@ export function FactArticle({
            */
           <section className="sv-supporting">
             <h3 className="sv-supporting__head">
-              Supporting {supporting.length === 1 ? 'fact' : 'facts'}
+              Related Data
             </h3>
             {supporting.map(({ fact: child, bodyHtml: childBody }) => (
-              <SupportingFact key={child.id} slug={slug} fact={child} bodyHtml={childBody} />
+              <SupportingFact key={child.id} slug={slug} fact={child} bodyHtml={childBody} hideCharts={fact.featuredCharts?.includes(child.id)} />
             ))}
           </section>
         )}
 
+        <Sources facts={[fact, ...supporting.map(({ fact: child }) => child)]} />
+
         {variant === 'modal' && (
           <p className="sv-permalink">
-            <a href={factPath(slug, fact.id)} data-fact-expand>Open this fact on its own page</a>
+            <a href={factPath(slug, fact.id)} data-fact-expand>Open this data collection on its own page</a>
           </p>
         )}
       </div>

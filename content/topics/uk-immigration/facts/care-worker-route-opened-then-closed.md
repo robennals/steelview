@@ -1,5 +1,7 @@
 ---
-claim: "Care workers were made eligible for skilled work visas in 2022 and then effectively removed from the route, with grants falling from about 108,000 to 1,400 a year"
+title: Care Worker Visas
+claimSources: [1]
+claim: "Visa grants to main applicants in caring personal service occupations fell from about 108,000 at the year-ending December 2023 peak to 1,400 in the year ending March 2026."
 status: well-supported
 supports: health-and-care-relies-on-migrant-workers
 sources:
@@ -10,12 +12,19 @@ sources:
     publisher: "Home Office"
     date: "2026-05-21"
 ---
-- **One rule change accounts for much of both the rise and the fall in the
-  headline number.** Care workers were made eligible for skilled work visas in
-  2022; grants to main applicants in caring personal service occupations went
-  from about 108,000 a year to 1,400.
-- **Skilled Worker visas overall fell 76% from their December 2023 peak**, to
-  111,000 in the latest year. The Home Office attributes that fall to this one
-  route.
-- **This counts visas granted, not care jobs.** Nothing here measures how many
-  care posts existed or went unfilled in either year.
+## Observations {#care-worker-route-opened-then-closed--context}
+
+### One rule change accounts for much of both the rise and the fall in the
+  headline number {#care-worker-route-opened-then-closed--one-rule-change-accounts-for-much-of-both-the-rise-and-the-fall-in-the-headline-numbe}
+
+Care workers were made eligible for skilled work visas in 2022; grants to main applicants in caring personal service occupations went from about 108,000 a year to 1,400. [1](#source-care-worker-route-opened-then-closed-1)
+
+### Skilled Worker visas overall fell 76% from their December 2023 peak {#care-worker-route-opened-then-closed--skilled-worker-visas-overall-fell-76-from-their-december-2023-peak}
+
+, to 111,000 in the latest year. The Home Office attributes that fall to this one route. [1](#source-care-worker-route-opened-then-closed-1)
+
+## Subtleties {#care-worker-route-opened-then-closed--subtleties}
+
+### This counts visas granted, not care jobs {#care-worker-route-opened-then-closed--this-counts-visas-granted-not-care-jobs}
+
+Nothing here measures how many care posts existed or went unfilled in either year. [1](#source-care-worker-route-opened-then-closed-1)

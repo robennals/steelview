@@ -1,5 +1,8 @@
 ---
-claim: "Rising local immigration lowers trust and cohesion within the receiving community"
+title: Immigration, Diversity and Social Trust
+claimSources: [1,3,4]
+assessedClaim: "Rising local immigration lowers trust and cohesion within the receiving community"
+claim: "British studies disagree about the relationship between ethnic diversity and social trust; some find no strong erosion of cohesion after accounting for deprivation. These studies do not directly establish the effect of immigration."
 status: unknown
 supports: share-of-the-population-born-abroad
 sources:
@@ -28,24 +31,30 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2019-12-13"
 ---
-The research here measures neighbourhood trust against ethnic diversity, mostly
-in surveys that stopped collecting more than a decade ago.
+## Observations {#immigration-and-local-social-trust--context}
 
-- **Most of the literature finds a negative association**: "the more diverse a
-  community is, the less likely individuals in it are to be trusting."
-- **The association shrinks or disappears once deprivation is controlled for.**
-  Laurence and Heath (2008) and Letki (2008) found "no strong evidence for an
-  eroding effect of diversity once the association between diversity and economic
-  deprivation is taken into account".
-- **Almost all of the research measures ethnic diversity, not immigration.** The
-  Migration Observatory makes the point itself, and the two are demonstrably
-  different variables: at the 2021 Census 16.8% of England and Wales was born
-  outside the UK while a quarter did not identify as White British, and nearly
-  half the foreign-born identified as White.
-- **The British estimates come from the Citizenship Surveys of 2001 and 2005.**
-  There is no comparable evidence for the years since.
-- **"Cohesion" here means survey questions about trusting neighbours**, which is
-  one narrow slice of what people mean by the word.
-- **Unknown rather than contested.** The studies measure a different variable, on
-  a different period, and the association they do find does not survive controls
-  for deprivation. The evidence does not reach the question.
+### Most of the literature finds a negative association {#immigration-and-local-social-trust--most-of-the-literature-finds-a-negative-association}
+
+: "the more diverse a community is, the less likely individuals in it are to be trusting." [1](#source-immigration-and-local-social-trust-1) [2](#source-immigration-and-local-social-trust-2)
+
+### The association shrinks or disappears once deprivation is controlled for {#immigration-and-local-social-trust--the-association-shrinks-or-disappears-once-deprivation-is-controlled-for}
+
+Laurence and Heath (2008) and Letki (2008) found "no strong evidence for an eroding effect of diversity once the association between diversity and economic deprivation is taken into account". [3](#source-immigration-and-local-social-trust-3)
+
+## Subtleties {#immigration-and-local-social-trust--subtleties}
+
+### Almost all of the research measures ethnic diversity, not immigration {#immigration-and-local-social-trust--almost-all-of-the-research-measures-ethnic-diversity-not-immigration}
+
+The Migration Observatory makes the point itself, and the two are demonstrably different variables: at the 2021 Census 16.8% of England and Wales was born outside the UK while a quarter did not identify as White British, and nearly half the foreign-born identified as White. [4](#source-immigration-and-local-social-trust-4)
+
+### The British estimates come from the Citizenship Surveys of 2001 and 2005 {#immigration-and-local-social-trust--the-british-estimates-come-from-the-citizenship-surveys-of-2001-and-2005}
+
+There is no comparable evidence for the years since. [2](#source-immigration-and-local-social-trust-2) [3](#source-immigration-and-local-social-trust-3)
+
+### "Cohesion" here means survey questions about trusting neighbours {#immigration-and-local-social-trust--cohesion-here-means-survey-questions-about-trusting-neighbours}
+
+, which is one narrow slice of what people mean by the word. [1](#source-immigration-and-local-social-trust-1) [4](#source-immigration-and-local-social-trust-4)
+
+### Unknown rather than contested {#immigration-and-local-social-trust--unknown-rather-than-contested}
+
+The studies measure a different variable, on a different period, and the association they do find does not survive controls for deprivation. The evidence does not reach the question. [1](#source-immigration-and-local-social-trust-1) [3](#source-immigration-and-local-social-trust-3) [4](#source-immigration-and-local-social-trust-4)

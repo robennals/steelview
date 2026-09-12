@@ -1,4 +1,6 @@
 ---
+title: Nationality, Crime and Imprisonment
+claimSources: [1]
 claim: "Non-UK citizens' share of convictions and of the prison population is close to their share of the adult population — and lower once age is taken into account — with wide variation by nationality and by type of offence"
 status: well-supported
 sources:
@@ -27,24 +29,30 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-08-18"
 ---
-These are counts of cautions, convictions and prison places by nationality.
+## Observations {#non-citizens-share-of-convictions-and-prisons--context}
 
-- **It is not a measurement of offending.** Most crimes never lead to a
-  conviction, so nobody knows the true offending rate of any group, British or
-  foreign.
-- **On what can be counted, non-citizens are roughly where their numbers put
-  them.** 13.1% of people cautioned or convicted in 2024 and 12.1% of the prison
-  population in June 2025, against an adult population share the Migration
-  Observatory describes as "roughly similar".
-- **Adjusting for age lowers the share further**, because non-citizens are
-  younger and offending is concentrated among the young.
-- **Nationality-level rates vary a great deal, and the denominators are poor.**
-  The most common non-UK nationalities in prison at the end of 2025 were
-  Albanian, Irish and Polish; the Migration Observatory says comparing rates
-  accurately is difficult because of data gaps.
-- **The offence mix differs too.** Non-citizens are more likely to be convicted
-  or incarcerated for drug offences and less likely for violent ones.
-- **Nationality is not country of birth.** Naturalised citizens are recorded as
-  British and the statistics carry no country of birth at all, so these figures
-  say nothing about people who came to Britain and became citizens, or about
-  their children.
+### It is not a measurement of offending {#non-citizens-share-of-convictions-and-prisons--it-is-not-a-measurement-of-offending}
+
+Most crimes never lead to a conviction, so nobody knows the true offending rate of any group, British or foreign. [1](#source-non-citizens-share-of-convictions-and-prisons-1)
+
+### On what can be counted, non-citizens are roughly where their numbers put them {#non-citizens-share-of-convictions-and-prisons--on-what-can-be-counted-non-citizens-are-roughly-where-their-numbers-put-them}
+
+13.1% of people cautioned or convicted in 2024 and 12.1% of the prison population in June 2025, against an adult population share the Migration Observatory describes as "roughly similar". [1](#source-non-citizens-share-of-convictions-and-prisons-1)
+
+## Subtleties {#non-citizens-share-of-convictions-and-prisons--subtleties}
+
+### Adjusting for age lowers the share further {#non-citizens-share-of-convictions-and-prisons--adjusting-for-age-lowers-the-share-further}
+
+, because non-citizens are younger and offending is concentrated among the young. [1](#source-non-citizens-share-of-convictions-and-prisons-1)
+
+### Nationality-level rates vary a great deal, and the denominators are poor {#non-citizens-share-of-convictions-and-prisons--nationality-level-rates-vary-a-great-deal-and-the-denominators-are-poor}
+
+The most common non-UK nationalities in prison at the end of 2025 were Albanian, Irish and Polish; the Migration Observatory says comparing rates accurately is difficult because of data gaps. [2](#source-non-citizens-share-of-convictions-and-prisons-2)
+
+### The offence mix differs too {#non-citizens-share-of-convictions-and-prisons--the-offence-mix-differs-too}
+
+Non-citizens are more likely to be convicted or incarcerated for drug offences and less likely for violent ones. [3](#source-non-citizens-share-of-convictions-and-prisons-3)
+
+### Nationality is not country of birth {#non-citizens-share-of-convictions-and-prisons--nationality-is-not-country-of-birth}
+
+Naturalised citizens are recorded as British and the statistics carry no country of birth at all, so these figures say nothing about people who came to Britain and became citizens, or about their children. [4](#source-non-citizens-share-of-convictions-and-prisons-4)

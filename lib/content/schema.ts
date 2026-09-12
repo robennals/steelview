@@ -144,8 +144,30 @@ export const seriesSchema = z.object({
   source: sourceSchema,
 });
 
+/** Snapshot comparisons use the fact's existing numbered citations. */
+export const comparisonChartSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  unit: z.enum(['count', 'percent', 'pounds']),
+  valueLabel: z.string().min(1),
+  sources: z.array(z.number().int().positive()).min(1),
+  note: z.string().optional(),
+  groups: z.array(z.string().min(1)).min(2).optional(),
+  defaultGroup: z.number().int().nonnegative().optional(),
+  items: z.array(z.object({
+    label: z.string().min(1),
+    value: z.number().finite(),
+    highlight: z.boolean().optional(),
+    values: z.array(z.number().finite().nonnegative()).optional(),
+  })).min(2),
+});
+
 export const factFrontmatterSchema = z.object({
+  title: z.string().min(1).optional(),
   claim: z.string().min(1),
+  claimSources: z.array(z.number().int().positive()).optional(),
+  assessedClaim: z.string().optional(),
   status: z.enum(FACT_STATUSES),
   /*
    * There is deliberately no `order` field. A hand-assigned rank on a fact is
@@ -155,21 +177,10 @@ export const factFrontmatterSchema = z.object({
    * round-robin across the viewpoints' own rankings — see rank-facts.ts.
    */
   /**
-   * The id of the headline fact this fact is evidence for, or absent if this
-   * fact is itself a headline claim.
-   *
-   * Facts are not a flat list of equally-weighted items. Some are what the
-   * argument is actually about ("most immigration is due to study and work");
-   * others — a contract overrun, a grant-rate movement, a route-level fiscal
-   * breakdown — are real, checkable, and uninteresting on their own: they are
-   * evidence for a larger claim. A flat list of both makes the reader work out
-   * which items are load-bearing, which is the reader's problem this field
-   * removes.
-   *
-   * **Depth is exactly one**: a fact that is itself supported may not carry
-   * `supports` (enforced in validate.ts). Arbitrary nesting would produce a
-   * tree nobody can hold in their head; the reader benefit here is a
-   * two-level structure, not a taxonomy.
+   * Legacy grouping: present this smaller fact within a broader fact rather
+   * than as a separate top-level row. The UI calls these Related Data;
+   * the relationship can qualify or contextualise the broader claim.
+   * Grouping stays one level deep. Use relatedFacts for other cross-links.
    */
   supports: z.string().min(1).optional(),
   sources: z.array(sourceSchema).default([]),
@@ -182,6 +193,12 @@ export const factFrontmatterSchema = z.object({
    * reports a fact with a figure in its claim and no series here.
    */
   series: seriesSchema.optional(),
+  /** Additional datasets with their own coverage and methods; reading IDs must be unique. */
+  additionalSeries: z.array(seriesSchema.extend({ id: z.string().regex(/^[a-z0-9-]+$/) })).optional(),
+  comparisons: z.array(comparisonChartSchema).optional(),
+  featuredCharts: z.array(z.string()).optional(),
+  /** Contextual connections, including qualifications and contrasting evidence. */
+  relatedFacts: z.array(z.string()).optional(),
 });
 
 export const viewpointFrontmatterSchema = z.object({

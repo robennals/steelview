@@ -1,5 +1,7 @@
 ---
-claim: "Immigration raises housing costs, by a small amount on average and by more where planning constraints prevent supply responding"
+title: Immigration and Housing Costs
+claimSources: [2,3]
+claim: "A MAC-commissioned review estimates that immigration could explain roughly 4–6% of the rise in UK house prices over three decades. This is an illustrative application of international evidence, not a precise causal estimate for the UK."
 status: well-supported
 sources:
   - stance: supports
@@ -21,19 +23,26 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2026-06-19"
 ---
-This is the Migration Advisory Committee's review of the international evidence
-on immigration and housing costs, read across to the UK.
+## Observations {#housing-cost-effect-positive-but-small--context}
 
-- **The direction is not in doubt.** More people in a place where building is
-  constrained raises prices there, and the review says planning constraints are
-  what decide how much.
-- **The magnitude is modest.** Median and mean estimates imply immigration
-  explains "approximately 4-6% of the total increase in UK house prices over the
-  last three decades".
-- **The review's own summary is that immigration is "unlikely to be a dominant
-  driver" of UK housing costs.**
-- **It is a review, not a single UK estimate.** The MAC says the evidence "does
-  not point to a single precise estimate", and that estimates "vary across
-  contexts and methodologies".
-- **These figures are about house prices.** Rents are a different measure and
-  none of the numbers here cover them.
+### Supply constraints affect the size of the effect {#housing-cost-effect-positive-but-small--the-direction-is-not-in-doubt}
+
+The review finds that immigration-driven demand is more likely to raise prices where housing supply cannot respond. Estimates vary across settings and methods. [1](#source-housing-cost-effect-positive-but-small-1)
+
+### The magnitude is modest {#housing-cost-effect-positive-but-small--the-magnitude-is-modest}
+
+Median and mean estimates imply immigration explains "approximately 4-6% of the total increase in UK house prices over the last three decades". [2](#source-housing-cost-effect-positive-but-small-2)
+
+## Subtleties {#housing-cost-effect-positive-but-small--subtleties}
+
+### The review's own summary is that immigration is "unlikely to be a dominant driver" of UK housing costs {#housing-cost-effect-positive-but-small--the-review-s-own-summary-is-that-immigration-is-unlikely-to-be-a-dominant-driver-of-u}
+
+ [3](#source-housing-cost-effect-positive-but-small-3)
+
+### It is a review, not a single UK estimate {#housing-cost-effect-positive-but-small--it-is-a-review-not-a-single-uk-estimate}
+
+The MAC says the evidence "does not point to a single precise estimate", and that estimates "vary across contexts and methodologies". [3](#source-housing-cost-effect-positive-but-small-3)
+
+### These figures are about house prices {#housing-cost-effect-positive-but-small--these-figures-are-about-house-prices}
+
+Rents are a different measure and none of the numbers here cover them. [2](#source-housing-cost-effect-positive-but-small-2)

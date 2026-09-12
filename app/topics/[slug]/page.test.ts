@@ -90,7 +90,7 @@ test('a section with no items renders no heading for that section', () => {
     cruxes: [],
   };
   const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
-  assert.match(html, /Facts/);
+  assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.doesNotMatch(html, /Principles/);
   assert.doesNotMatch(html, /Cruxes/);
@@ -144,7 +144,7 @@ test('a section with items renders its heading', () => {
     ],
   };
   const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
-  assert.match(html, /Facts/);
+  assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.match(html, /Principles/);
   assert.match(html, /Cruxes/);

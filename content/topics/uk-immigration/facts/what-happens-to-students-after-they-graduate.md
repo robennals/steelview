@@ -1,4 +1,6 @@
 ---
+title: Student Migration and Subsequent Residence
+claimSources: [4]
 claim: "Study is counted as long-term immigration because the count uses a twelve-month definition, and most students used to leave — but the share of a study cohort still holding UK leave five years on rose from 17-18% for 2012-2016 arrivals to 41% for the 2020 cohort"
 status: well-supported
 supports: how-people-actually-arrive
@@ -170,43 +172,42 @@ series:
           - { period: "2019", value: 13.9 }
           - { period: "2020", value: 25.9 }
 ---
-Study is the largest single reason people move to Britain, so whether students
-count as immigrants moves the headline number. Two things bear on it: the
-definition the count uses, and how long students actually stay.
+## Observations {#what-happens-to-students-after-they-graduate--context}
 
-- **A student counts as a long-term immigrant on arrival, because the count uses
-  a twelve-month rule.** ONS follows the UN definition: anyone moving for a year
-  or more. Most courses are three-year undergraduate or one-year master's
-  degrees, so a degree clears the bar on day one. Nothing about intent is being
-  measured.
-- **The visa is not a settlement route, and the settlement figures show it.**
-  Time on a study or Graduate visa does not count towards the five years of
-  residence settlement normally requires. Study routes were the largest source of
-  new journeys but "only 11% of settlement grants in 2025".
-- **Most students used to leave, and that has changed sharply.** Around 17% to
-  18% of the 2012-2016 arrivals still held leave after five years. For the 2020
-  cohort it was 41%, and 26 percentage points of that were people on work routes
-  — mostly Skilled Worker — against 3% to 4% for cohorts arriving 2011-2015.
-- **The three-year figures are moving the same way and faster.** 34% of
-  2011-2018 arrivals still held leave three years on; 58% of the 2020 cohort;
-  64% of the 2022 cohort.
-- **"Still holds leave" is not "is still in the country".** The Home Office
-  measures valid leave in its own systems and says outright that the data
-  "cannot be used to provide a definitive view of a person's status at an
-  individual level". Nobody publishes departures or overstaying — the Migration
-  Advisory Committee could not assess overstaying either, "due to a lack of data
-  on this from the Home Office".
-- **The one rule change with a visible effect was on dependants.** Sponsored
-  study visas for dependants were 87% below their peak in the year to December
-  2025, at 19,647, after dependants were restricted for courses starting from
-  January 2024. Dependants per student fell from 0.31 in 2023 to 0.05 in 2025.
-- **On "loophole", the MAC drew a distinction.** It found no evidence of
-  widespread abuse of the Graduate route, and said in the same report that
-  whether the route's scale, or the work people do on it, matches what the
-  government intended is a different question, which it does not call abuse.
-- **Averages hide most of it.** In the 2020 cohort, 14% of Chinese nationals held
-  leave five years later against 58% of Indian nationals.
-- **A reader who turns "students are 47% of non-EU+ arrivals" into "half of
-  immigration is students settling here" has the wrong measure.** Study routes
-  were 11% of settlement grants in 2025. The cohort stay rates are rising, so the
-  gap is narrowing, but the two numbers are not the same thing.
+### A student counts as a long-term immigrant on arrival, because the count uses a twelve-month rule {#what-happens-to-students-after-they-graduate--a-student-counts-as-a-long-term-immigrant-on-arrival-because-the-count-uses-a-twelve}
+
+ONS follows the UN definition: anyone moving for a year or more. Most courses are three-year undergraduate or one-year master's degrees, so a degree clears the bar on day one. Nothing about intent is being measured. [1](#source-what-happens-to-students-after-they-graduate-1) [2](#source-what-happens-to-students-after-they-graduate-2)
+
+### The visa is not a settlement route, and the settlement figures show it {#what-happens-to-students-after-they-graduate--the-visa-is-not-a-settlement-route-and-the-settlement-figures-show-it}
+
+Time on a study or Graduate visa does not count towards the five years of residence settlement normally requires. Study routes were the largest source of new journeys but "only 11% of settlement grants in 2025". [3](#source-what-happens-to-students-after-they-graduate-3) [7](#source-what-happens-to-students-after-they-graduate-7)
+
+## Subtleties {#what-happens-to-students-after-they-graduate--subtleties}
+
+### Most students used to leave, and that has changed sharply {#what-happens-to-students-after-they-graduate--most-students-used-to-leave-and-that-has-changed-sharply}
+
+Around 17% to 18% of the 2012-2016 arrivals still held leave after five years. For the 2020 cohort it was 41%, and 26 percentage points of that were people on work routes — mostly Skilled Worker — against 3% to 4% for cohorts arriving 2011-2015. [4](#source-what-happens-to-students-after-they-graduate-4) [5](#source-what-happens-to-students-after-they-graduate-5)
+
+### The three-year figures are moving the same way and faster {#what-happens-to-students-after-they-graduate--the-three-year-figures-are-moving-the-same-way-and-faster}
+
+34% of 2011-2018 arrivals still held leave three years on; 58% of the 2020 cohort; 64% of the 2022 cohort. [6](#source-what-happens-to-students-after-they-graduate-6)
+
+### "Still holds leave" is not "is still in the country" {#what-happens-to-students-after-they-graduate--still-holds-leave-is-not-is-still-in-the-country}
+
+The Home Office measures valid leave in its own systems and says outright that the data "cannot be used to provide a definitive view of a person's status at an individual level". Nobody publishes departures or overstaying — the Migration Advisory Committee could not assess overstaying either, "due to a lack of data on this from the Home Office". [10](#source-what-happens-to-students-after-they-graduate-10) [13](#source-what-happens-to-students-after-they-graduate-13)
+
+### The one rule change with a visible effect was on dependants {#what-happens-to-students-after-they-graduate--the-one-rule-change-with-a-visible-effect-was-on-dependants}
+
+Sponsored study visas for dependants were 87% below their peak in the year to December 2025, at 19,647, after dependants were restricted for courses starting from January 2024. Dependants per student fell from 0.31 in 2023 to 0.05 in 2025. [8](#source-what-happens-to-students-after-they-graduate-8) [9](#source-what-happens-to-students-after-they-graduate-9)
+
+### On "loophole", the MAC drew a distinction {#what-happens-to-students-after-they-graduate--on-loophole-the-mac-drew-a-distinction}
+
+It found no evidence of widespread abuse of the Graduate route, and said in the same report that whether the route's scale, or the work people do on it, matches what the government intended is a different question, which it does not call abuse. [13](#source-what-happens-to-students-after-they-graduate-13) [14](#source-what-happens-to-students-after-they-graduate-14)
+
+### Averages hide most of it {#what-happens-to-students-after-they-graduate--averages-hide-most-of-it}
+
+In the 2020 cohort, 14% of Chinese nationals held leave five years later against 58% of Indian nationals. [12](#source-what-happens-to-students-after-they-graduate-12)
+
+### A reader who turns "students are 47% of non-EU+ arrivals" into "half of immigration is students settling here" has the wrong measure {#what-happens-to-students-after-they-graduate--a-reader-who-turns-students-are-47-of-non-eu-arrivals-into-half-of-immigration-is-stu}
+
+Study routes were 11% of settlement grants in 2025. The cohort stay rates are rising, so the gap is narrowing, but the two numbers are not the same thing. [4](#source-what-happens-to-students-after-they-graduate-4) [7](#source-what-happens-to-students-after-they-graduate-7)

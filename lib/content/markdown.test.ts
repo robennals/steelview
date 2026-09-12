@@ -79,3 +79,31 @@ test('citedFactIds ignores a fact anchor that is not a link', () => {
   assert.deepEqual(citedFactIds('The text #fact-alpha on its own.'), []);
   assert.deepEqual(citedFactIds(''), []);
 });
+
+test('section citations retain a stable fragment and sections wrap their explanation', async () => {
+  const html = await renderMarkdown('[the number](#fact-alpha/comparison)', 'example');
+  assert.match(html, /href="\/topics\/example\/facts\/alpha#alpha--comparison"/);
+  assert.match(html, /data-fact-id="alpha"/);
+  const body = await renderMarkdown('### Comparison {#alpha--comparison}\n\nMeasured here. [1](#source-alpha-1)', 'example');
+  assert.match(body, /<section id="alpha--comparison"/);
+  assert.match(body, /class="sv-footnote"/);
+  assert.doesNotMatch(body, /\{#alpha/);
+});
+
+test('observations and subtleties collapse details and retain targets', async () => {
+  const html = await renderMarkdown('## Observations {#alpha--observations}\n\n### A jump {#alpha--jump}\n\nWhy it jumped. [1](#source-alpha-1)\n\n### Another observation\n\nMore detail.\n\n## Subtleties {#alpha--subtleties}\n\n### Caveat {#alpha--caveat}\n\nStill visible.', 'example');
+  assert.match(html, /<details id="alpha--jump" class="sv-observation"><summary>A jump<\/summary><div class="sv-observation__body">/);
+  assert.match(html, /Why it jumped\. <a href="#source-alpha-1"/);
+  assert.equal((html.match(/<details/g) ?? []).length, 3);
+  assert.doesNotMatch(html, /<details[^>]*\sopen/);
+  assert.match(html, /<details id="alpha--caveat" class="sv-observation"><summary>Caveat<\/summary>/);
+});
+
+test('glossary terms render native popovers with distinct targets', async () => {
+  const html = await renderMarkdown('[arrivals](#glossary-gross-arrivals) and [net](#glossary-net-migration)', SLUG);
+  assert.match(html, /popover="auto" role="dialog"/);
+  const targets = [...html.matchAll(/popovertarget="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(targets).size, 2);
+  assert.match(html, /before subtracting anyone leaving/);
+  await assert.rejects(renderMarkdown('[oops](#glossary-missing)', SLUG), /Unknown glossary term/);
+});

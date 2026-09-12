@@ -1,4 +1,6 @@
 ---
+title: Work Visas and Skill Levels
+claimSources: [1,2,3]
 claim: "The 2020 reforms cut the work-visa skill bar from degree level to A-level equivalent; the below-degree share of skilled work visas went from under 10% in early 2021 to nearly 60% in early 2024, and the bar went back to degree level on 22 July 2025"
 status: well-supported
 supports: how-people-actually-arrive
@@ -75,40 +77,41 @@ sources:
     url: https://www.gov.uk/government/publications/sponsor-a-skilled-worker/workers-and-temporary-workers-sponsor-a-skilled-worker-accessible
     publisher: "UK Visas and Immigration"
     date: "2026-04-08"
+  - stance: supports
+    quote: "When people are asked about their preferences for the admission of migrants coming to specific low- and high-skilled jobs, the picture is more complex. The share of people in favour of easing the migration of care, agricultural and construction workers was 54%, 45%, and 38%, respectively, despite the fact that these jobs are often considered low-skilled. By contrast, the share of people in favour of easing the migration of financial sector workers was only 27% despite the fact that these are high-skilled migrants."
+    title: "UK Public Opinion toward Immigration: Overall Attitudes and Level of Concern"
+    url: "https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/"
+    publisher: "The Migration Observatory, University of Oxford"
+    date: "2025-01-24"
 ---
-"Skilled Worker" is a visa name, not a description of the job. Between 2020 and
-2025 the route ran at A-level equivalent, and the growth in it happened below
-degree level.
+## Observations {#work-visas-swung-to-low-skill-and-back--context}
 
-- **The bar was lowered, then raised again.** The 2020 system cut the skills
-  threshold "from degree-level (Regulated Qualifications Framework Level 6 or RQF
-  6) to A-Level-equivalent (RQF 3)". On 22 July 2025 the government put it back
-  to RQF 6.
-- **In between, the mix swung hard.** The share of skilled work visas issued for
-  occupations below degree level went "from under 10% in Q1 2021 to nearly 60% in
-  Q1 2024", and was 48% between May 2024 and January 2025 after the salary rise.
-- **The graduate-level part of the system barely moved.** The Migration Advisory
-  Committee: visas for RQF 6+ jobs "have largely stayed consistent across time,
-  with a yearly average of around 74,000 between 2021-2023". The surge was
-  additional, not a substitution.
-- **The pay gap between routes is large.** Median earnings in 2023/24 were
-  £56,600 for Skilled Worker main applicants and £30,900 for Health and Care
-  Worker main applicants. Health and care roles on national pay scales face a
-  salary floor of £25,000 against £41,700 for a standard Skilled Worker, and
-  Seasonal Workers in horticulture have no annual threshold at all — only £12.71
-  an hour for at least 32 hours a week.
-- **Public preference does not track skill.** Asked which routes should be made
-  easier, 54% said care workers and 38% construction workers against 27% for
-  financial-sector workers — see *Immigration has been a top-tier public concern
-  since 2022*. The route with the most public support is the low-paid one the
-  fiscal estimates penalise most, and it is now closed.
-- **The volumes rose and fell with the rules.** Work visas peaked at 613,627 in
-  the year to December 2023 — 336,007 main applicants and 277,620 dependants —
-  and were 252,775 in the year to March 2026, 59% down. For the eleven years to
-  March 2021 the annual total was under 200,000.
-- **How confident to be, and what is missing.** The skill-share numbers are
-  three published points, not a series: the government charts the share as an
-  image and publishes no annual table behind it, so this fact carries no chart.
-  The earnings figures cover one financial year and have not been repeated, and
-  the Home Office warns against comparing medians across routes whose
-  requirements differ.
+### The bar was lowered, then raised again {#work-visas-swung-to-low-skill-and-back--the-bar-was-lowered-then-raised-again}
+
+The 2020 system cut the skills threshold "from degree-level (Regulated Qualifications Framework Level 6 or RQF 6) to A-Level-equivalent (RQF 3)". On 22 July 2025 the government put it back to RQF 6. [1](#source-work-visas-swung-to-low-skill-and-back-1) [3](#source-work-visas-swung-to-low-skill-and-back-3)
+
+### In between, the mix swung hard {#work-visas-swung-to-low-skill-and-back--in-between-the-mix-swung-hard}
+
+The share of skilled work visas issued for occupations below degree level went "from under 10% in Q1 2021 to nearly 60% in Q1 2024", and was 48% between May 2024 and January 2025 after the salary rise. [2](#source-work-visas-swung-to-low-skill-and-back-2) [9](#source-work-visas-swung-to-low-skill-and-back-9)
+
+## Subtleties {#work-visas-swung-to-low-skill-and-back--subtleties}
+
+### The graduate-level part of the system barely moved {#work-visas-swung-to-low-skill-and-back--the-graduate-level-part-of-the-system-barely-moved}
+
+The Migration Advisory Committee: visas for RQF 6+ jobs "have largely stayed consistent across time, with a yearly average of around 74,000 between 2021-2023". The surge was additional, not a substitution. [4](#source-work-visas-swung-to-low-skill-and-back-4)
+
+### The pay gap between routes is large {#work-visas-swung-to-low-skill-and-back--the-pay-gap-between-routes-is-large}
+
+Median earnings in 2023/24 were £56,600 for Skilled Worker main applicants and £30,900 for Health and Care Worker main applicants. Health and care roles on national pay scales face a salary floor of £25,000 against £41,700 for a standard Skilled Worker, and Seasonal Workers in horticulture have no annual threshold at all — only £12.71 an hour for at least 32 hours a week. [7](#source-work-visas-swung-to-low-skill-and-back-7) [8](#source-work-visas-swung-to-low-skill-and-back-8) [10](#source-work-visas-swung-to-low-skill-and-back-10) [11](#source-work-visas-swung-to-low-skill-and-back-11) [12](#source-work-visas-swung-to-low-skill-and-back-12)
+
+### Public preference does not track skill {#work-visas-swung-to-low-skill-and-back--public-preference-does-not-track-skill}
+
+Asked which routes should be made easier, 54% said care workers and 38% construction workers against 27% for financial-sector workers — see *Immigration has been a top-tier public concern since 2022*. The route with the most public support is the low-paid one the fiscal estimates penalise most, and it is now closed. [13](#source-work-visas-swung-to-low-skill-and-back-13)
+
+### The volumes rose and fell with the rules {#work-visas-swung-to-low-skill-and-back--the-volumes-rose-and-fell-with-the-rules}
+
+Work visas peaked at 613,627 in the year to December 2023 — 336,007 main applicants and 277,620 dependants — and were 252,775 in the year to March 2026, 59% down. For the eleven years to March 2021 the annual total was under 200,000. [5](#source-work-visas-swung-to-low-skill-and-back-5) [6](#source-work-visas-swung-to-low-skill-and-back-6)
+
+### How confident to be, and what is missing {#work-visas-swung-to-low-skill-and-back--how-confident-to-be-and-what-is-missing}
+
+The skill-share numbers are three published points, not a series: the government charts the share as an image and publishes no annual table behind it, so this fact carries no chart. The earnings figures cover one financial year and have not been repeated, and the Home Office warns against comparing medians across routes whose requirements differ. [7](#source-work-visas-swung-to-low-skill-and-back-7) [8](#source-work-visas-swung-to-low-skill-and-back-8)

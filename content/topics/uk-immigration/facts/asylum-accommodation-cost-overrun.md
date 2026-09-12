@@ -1,4 +1,6 @@
 ---
+title: Asylum Accommodation and Costs
+claimSources: [1,3,4]
 claim: "Asylum accommodation contracts costed at £4.5 billion over ten years are now expected to cost £15.3 billion, driven by hotel use — and the cost is coming back down as the backlog clears"
 status: well-supported
 sources:
@@ -33,24 +35,26 @@ sources:
     publisher: "Home Office"
     date: "2026-02-26"
 ---
-This is the cost of housing people while their asylum claims are decided.
+## Observations {#asylum-accommodation-cost-overrun--context}
 
-- **The contracts are running at more than three times their original price.**
-  The National Audit Office reports that the Home Office "originally estimated
-  that the total contract cost would be £4.5 billion over 10 years", against a
-  current estimate of £15.3 billion for the same ten years.
-- **Hotels are the reason.** People in hotels were about 35% of everyone in
-  asylum accommodation and about 76% of the cost — £1.3 billion out of an
-  estimated £1.7 billion across seven months of 2024-25. A hotel is what the
-  Home Office falls back on when claims are not decided fast enough to move
-  people into ordinary dispersed housing.
-- **The cost is coming down, and not because fewer people arrived.** People
-  waiting for an initial decision are 72% below the June 2023 peak, and hotel
-  numbers fell 35% in a year to 21,000. Over the same period small boat arrivals
-  went up: 41,472 in the year to December 2025, 13% higher than the year before.
-- **What it does not measure.** It says nothing about who should be admitted,
-  whether the decisions were right, or what becomes of people who are refused —
-  a queue can be cleared by deciding faster in either direction.
-- **Read as the price of arrivals, this is the wrong number.** The cost tracks
-  the decision queue rather than the number of people arriving: the queue is 72%
-  below its peak while small boat arrivals rose 13%.
+### The contracts are running at more than three times their original price {#asylum-accommodation-cost-overrun--the-contracts-are-running-at-more-than-three-times-their-original-price}
+
+The National Audit Office reports that the Home Office "originally estimated that the total contract cost would be £4.5 billion over 10 years", against a current estimate of £15.3 billion for the same ten years. [1](#source-asylum-accommodation-cost-overrun-1)
+
+### Hotels account for a disproportionate share of costs {#asylum-accommodation-cost-overrun--hotels-are-the-reason}
+
+People in hotels were about 35% of everyone in asylum accommodation and about 76% of the cost — £1.3 billion out of an estimated £1.7 billion across seven months of 2024-25.  [2](#source-asylum-accommodation-cost-overrun-2)
+
+## Subtleties {#asylum-accommodation-cost-overrun--subtleties}
+
+### Hotel use and the decision queue have fallen {#asylum-accommodation-cost-overrun--the-cost-is-coming-down-and-not-because-fewer-people-arrived}
+
+People waiting for an initial decision are 72% below the June 2023 peak, and hotel numbers fell 35% in a year to 21,000. Over the same period small boat arrivals went up: 41,472 in the year to December 2025, 13% higher than the year before. [3](#source-asylum-accommodation-cost-overrun-3) [4](#source-asylum-accommodation-cost-overrun-4) [5](#source-asylum-accommodation-cost-overrun-5)
+
+### What it does not measure {#asylum-accommodation-cost-overrun--what-it-does-not-measure}
+
+It says nothing about who should be admitted, whether the decisions were right, or what becomes of people who are refused — a queue can be cleared by deciding faster in either direction. [1](#source-asylum-accommodation-cost-overrun-1)
+
+### The queue and arrivals are different measures {#asylum-accommodation-cost-overrun--read-as-the-price-of-arrivals-this-is-the-wrong-number}
+
+The initial-decision queue fell 72% from its peak. Small-boat arrivals increased 13% in calendar 2025. These are different periods and populations; the comparison does not isolate the causes of accommodation costs. [3](#source-asylum-accommodation-cost-overrun-3) [5](#source-asylum-accommodation-cost-overrun-5)

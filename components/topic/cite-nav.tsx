@@ -54,7 +54,7 @@ export function CiteNav() {
       if (url.origin !== location.origin) return;
 
       event.preventDefault();
-      router.push(`${url.pathname}${url.search}`);
+      router.push(`${url.pathname}${url.search}${url.hash}`);
     };
 
     // Capture phase, so the trigger is recorded before `next/link` handles its

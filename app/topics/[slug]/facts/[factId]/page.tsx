@@ -24,17 +24,17 @@ export async function generateMetadata({
   const url = absoluteUrl(factPath(slug, factId));
   const description = factDescription(fact);
   return {
-    title: fact.claim,
+    title: fact.title ?? fact.claim,
     description,
     alternates: { canonical: url },
     openGraph: {
       type: 'article',
-      title: fact.claim,
+      title: fact.title ?? fact.claim,
       description,
       url,
       siteName: 'Steelview',
     },
-    twitter: { card: 'summary_large_image', title: fact.claim, description },
+    twitter: { card: 'summary_large_image', title: fact.title ?? fact.claim, description },
     other: { 'article:section': topic.title },
   };
 }

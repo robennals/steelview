@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+import { glossary } from './glossary';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
@@ -5,6 +7,8 @@ import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import type { Link, Root, Text } from 'mdast';
+import type { Root as HtmlRoot, Element } from 'hast';
+import type { Fact } from './types';
 import { anchorFor, factPath } from './types';
 
 /**
@@ -39,7 +43,7 @@ const FACT_HREF_PREFIX = `#${anchorFor('fact', '')}`;
 /** The id cited by `href`, or undefined if it is not a fact citation. */
 function citedFactId(href: string): string | undefined {
   if (!href.startsWith(FACT_HREF_PREFIX)) return undefined;
-  const id = href.slice(FACT_HREF_PREFIX.length);
+  const id = href.slice(FACT_HREF_PREFIX.length).split('/')[0];
   return id.length > 0 ? id : undefined;
 }
 
@@ -55,12 +59,15 @@ function citedFactId(href: string): string | undefined {
  * treatment; `data-fact-id` names the fact so the client router can turn the
  * click into a modal without re-parsing the href.
  */
-function remarkMarkFactCitations(slug: string) {
+function remarkMarkFactCitations({ slug, facts }: { slug: string; facts: Fact[] }) {
   return (tree: Root) => {
     visit(tree, 'link', (node: Link) => {
       const factId = citedFactId(node.url);
       if (!factId) return;
-      node.url = factPath(slug, factId);
+      const fact = facts.find((item) => item.id === factId);
+      const section = node.url.slice(FACT_HREF_PREFIX.length).split('/')[1];
+      const target = section ? `${factId}--${section}` : fact?.supports ? `evidence-${factId}` : '';
+      node.url = factPath(slug, fact?.supports ?? factId) + (target ? `#${target}` : '');
       const data = (node.data ??= {});
       const props = ((data as { hProperties?: Record<string, unknown> }).hProperties ??= {});
       props.className = ['sv-cite'];
@@ -78,20 +85,23 @@ function remarkMarkFactCitations(slug: string) {
 /** One processor per topic — the only thing that varies between them is the slug. */
 const processors = new Map<string, ReturnType<typeof buildProcessor>>();
 
-function buildProcessor(slug: string) {
+function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug) {
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkEscapeHtml)
-    .use(remarkMarkFactCitations, slug)
+    .use(remarkMarkFactCitations, { slug, facts })
+    .use(remarkEvidenceAnchors)
     .use(remarkRehype)
+    .use(rehypeGlossary, { namespace })
+    .use(rehypeEvidenceSections)
     .use(rehypeStringify)
     .freeze();
 }
 
-export async function renderMarkdown(md: string, slug: string): Promise<string> {
+export async function renderMarkdown(md: string, slug: string, facts: Fact[] = []): Promise<string> {
   if (!md.trim()) return '';
-  let processor = processors.get(slug);
+  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16)) : facts.length ? buildProcessor(slug, facts) : processors.get(slug);
   if (!processor) {
     processor = buildProcessor(slug);
     processors.set(slug, processor);
@@ -118,4 +128,92 @@ export function citedFactIds(md: string): string[] {
     if (factId) ids.push(factId);
   });
   return ids;
+}
+
+/** Explicit heading IDs survive editorial retitling; source links stay native anchors. */
+function remarkEvidenceAnchors() {
+  return (tree: Root) => {
+    visit(tree, 'heading', (node) => {
+      const last = node.children.at(-1);
+      if (last?.type !== 'text') return;
+      const match = last.value.match(/ \{#([a-z0-9-]+)\}$/);
+      if (!match) return;
+      last.value = last.value.slice(0, -match[0].length);
+      node.data = { ...node.data, hProperties: { id: match[1] } };
+    });
+    visit(tree, 'link', (node) => {
+      if (!node.url.startsWith('#source-')) return;
+      node.data = { ...node.data, hProperties: { className: ['sv-footnote'], 'aria-label': `Source ${node.children.map(n => n.type === 'text' ? n.value : '').join('')}` } };
+    });
+  };
+}
+
+export function citedFactTargets(md: string): Array<{ id: string; section?: string }> {
+  const tree: Root = unified().use(remarkParse).use(remarkGfm).parse(md);
+  const targets: Array<{ id: string; section?: string }> = [];
+  visit(tree, 'link', (node) => {
+    const id = citedFactId(node.url);
+    if (id) targets.push({ id, section: node.url.slice(FACT_HREF_PREFIX.length).split('/')[1] });
+  });
+  return targets;
+}
+
+/** A finding's heading and explanation form one scroll/highlight target. */
+function rehypeEvidenceSections() {
+  return (tree: HtmlRoot) => {
+    const children: HtmlRoot['children'] = [];
+    let section: Element | undefined;
+    let disclosures = false;
+    for (const node of tree.children) {
+      if (node.type === 'element' && /^h[1-3]$/.test(node.tagName)) {
+        section = undefined;
+        if (node.tagName === 'h1' || node.tagName === 'h2') {
+          disclosures = node.tagName === 'h2' && (
+            /--(observations|subtleties)$/.test(String(node.properties.id ?? '')) ||
+            node.children.map(child => child.type === 'text' ? child.value : '').join('').trim().toLowerCase().match(/^(observations|subtleties)$/) !== null
+          );
+        }
+        if (node.tagName === 'h3' && disclosures) {
+          const summary: Element = { type: 'element', tagName: 'summary', properties: {}, children: node.children };
+          section = { type: 'element', tagName: 'div', properties: { className: ['sv-observation__body'] }, children: [] };
+          children.push({ type: 'element', tagName: 'details', properties: { ...(node.properties.id ? { id: node.properties.id } : {}), className: ['sv-observation'] }, children: [summary, section] });
+          continue;
+        }
+        if (node.tagName === 'h3' && node.properties.id) {
+          section = { type: 'element', tagName: 'section', properties: { id: node.properties.id, className: ['sv-evidence-section'] }, children: [node] };
+          delete node.properties.id;
+          children.push(section);
+          continue;
+        }
+      }
+      if (section) section.children.push(node as Element);
+      else children.push(node);
+    }
+    tree.children = children;
+  };
+}
+
+/** Native popovers stay above a fact dialog and work without hydration. */
+function rehypeGlossary({ namespace }: { namespace: string }) {
+  return (tree: HtmlRoot) => {
+    let index = 0;
+    visit(tree, 'element', (node: Element) => {
+      if (node.tagName !== 'a' || typeof node.properties.href !== 'string' || !node.properties.href.startsWith('#glossary-')) return;
+      const key = node.properties.href.slice('#glossary-'.length);
+      const entry = glossary[key];
+      if (!entry) throw new Error(`Unknown glossary term: ${key}`);
+      const id = `glossary-${namespace}-${index++}`;
+      const label = node.children;
+      node.tagName = 'span';
+      node.properties = { className: ['sv-glossary'] };
+      node.children = [
+        { type: 'element', tagName: 'button', properties: { type: 'button', className: ['sv-glossary__term'], popovertarget: id, 'aria-haspopup': 'dialog' }, children: label },
+        { type: 'element', tagName: 'span', properties: { id, popover: 'auto', role: 'dialog', 'aria-label': entry.title, className: ['sv-glossary__popup'] }, children: [
+          { type: 'element', tagName: 'strong', properties: {}, children: [{ type: 'text', value: entry.title }] },
+          { type: 'element', tagName: 'span', properties: { className: ['sv-glossary__definition'] }, children: [{ type: 'text', value: entry.definition }] },
+          { type: 'element', tagName: 'button', properties: { type: 'button', popovertarget: id, popovertargetaction: 'hide', className: ['sv-glossary__close'], 'aria-label': 'Close definition', autoFocus: true }, children: [{ type: 'text', value: '×' }] },
+        ] },
+      ];
+    });
+  };
 }

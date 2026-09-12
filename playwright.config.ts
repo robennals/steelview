@@ -8,7 +8,7 @@ const baseURL = `http://localhost:${PORT}`;
 
 export default defineConfig({
   testDir: './tests',
-  use: { baseURL },
+  use: { baseURL, channel: process.env.PLAYWRIGHT_CHANNEL },
   webServer: {
     command: `pnpm build && pnpm start --port ${PORT}`,
     url: baseURL,

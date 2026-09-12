@@ -1,4 +1,6 @@
 ---
+title: Immigration and Wages
+claimSources: [1]
 claim: "Migration has not been a major determinant of UK-born workers' wages, though the effect is mildly negative for lower-paid workers and mildly positive for higher-paid ones"
 status: well-supported
 sources:
@@ -15,17 +17,22 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2018-09"
 ---
-This is the narrowed form of "immigration lowers wages", which is not
-established as stated.
+## Observations {#wage-effects-small-and-uneven--context}
 
-- **What is established is a small, unevenly distributed effect.** The Migration
-  Advisory Committee found migration "is not a major determinate of the wages of
-  UK-born workers", with some evidence of a negative effect on lower-skilled
-  workers and a positive one on higher-skilled workers.
-- **Employment effects are smaller still and less certain.** The MAC found "no or
-  little impact" on employment and unemployment, and said its own robustness
-  checks left those findings uncertain.
-- **The evidence predates the system in dispute.** It was estimated on EEA free
-  movement before 2018, without sponsorship and without a salary floor.
-- **These are national averages.** They do not say what happened to a particular
-  occupation in a particular town.
+### What is established is a small, unevenly distributed effect {#wage-effects-small-and-uneven--what-is-established-is-a-small-unevenly-distributed-effect}
+
+The Migration Advisory Committee found migration "is not a major determinate of the wages of UK-born workers", with some evidence of a negative effect on lower-skilled workers and a positive one on higher-skilled workers. [1](#source-wage-effects-small-and-uneven-1)
+
+### Employment effects are smaller still and less certain {#wage-effects-small-and-uneven--employment-effects-are-smaller-still-and-less-certain}
+
+The MAC found "no or little impact" on employment and unemployment, and said its own robustness checks left those findings uncertain. [2](#source-wage-effects-small-and-uneven-2)
+
+## Subtleties {#wage-effects-small-and-uneven--subtleties}
+
+### The evidence predates the system in dispute {#wage-effects-small-and-uneven--the-evidence-predates-the-system-in-dispute}
+
+It was estimated on EEA free movement before 2018, without sponsorship and without a salary floor. [1](#source-wage-effects-small-and-uneven-1)
+
+### These are national averages {#wage-effects-small-and-uneven--these-are-national-averages}
+
+They do not say what happened to a particular occupation in a particular town. [1](#source-wage-effects-small-and-uneven-1) [2](#source-wage-effects-small-and-uneven-2)

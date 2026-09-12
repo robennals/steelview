@@ -27,14 +27,14 @@ export const metadata: Metadata = {
   // so a fact's address is absolute wherever it is quoted.
   metadataBase: new URL(SITE_URL),
   title: { default: 'Steelview', template: '%s — Steelview' },
-  description: 'The strongest version of every side of an argument, and the facts underneath it.',
+  description: 'The strongest version of every side of an argument, and the data underneath it.',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: 'Steelview',
     title: 'Steelview',
     description:
-      'The strongest version of every side of an argument, and the facts underneath it.',
+      'The strongest version of every side of an argument, and the data underneath it.',
     url: '/',
   },
 };

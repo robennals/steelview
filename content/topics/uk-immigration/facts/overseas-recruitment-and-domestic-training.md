@@ -1,4 +1,6 @@
 ---
+title: Immigration and Domestic Workforce Training
+claimSources: [1]
 claim: "When the effect of migration on employer training of UK-born workers was measured directly, no negative effect was found and one study found a positive one — but that research covered pre-2018 EEA free movement, and nobody has studied the post-2021 sponsored system"
 status: well-supported
 supports: wage-effects-small-and-uneven
@@ -22,23 +24,26 @@ sources:
     publisher: "HM Government"
     date: "2025-05-12"
 ---
-What has been measured is the effect of pre-2018 EEA free movement on employer
-training. The post-2021 sponsored routes have not been evaluated.
+## Observations {#overseas-recruitment-and-domestic-training--context}
 
-- **No negative effect on training was found, and one study found a positive
-  one.** The Migration Advisory Committee commissioned the research and reported
-  "no evidence that migration has had a negative impact on the training of the
-  UK-born workforce".
-- **On investment there is not enough evidence to conclude anything.** The MAC's
-  own words: "extremely limited" and "not possible to draw robust conclusions".
-- **Those studies were estimated on EEA free movement**, without sponsorship and
-  without a salary floor. Nobody has evaluated employer training under the
-  post-2021 sponsored routes.
-- **The government reads the same period the other way, from co-movement rather
-  than a study.** Its 2025 White Paper: "Economic migration shot up while
-  training of the domestic workforce has fallen, and lower skilled migration
-  soared while the proportion of UK residents in work fell."
-- **Co-movement is not causation.** Whether access to sponsored overseas labour
-  stops employers investing in British workers is a crux, not a fact, and it
-  lives in *Does access to sponsored overseas labour stop employers investing in
-  British workers and equipment?*
+### No negative effect on training was found, and one study found a positive one {#overseas-recruitment-and-domestic-training--no-negative-effect-on-training-was-found-and-one-study-found-a-positive-one}
+
+The Migration Advisory Committee commissioned the research and reported "no evidence that migration has had a negative impact on the training of the UK-born workforce". [1](#source-overseas-recruitment-and-domestic-training-1)
+
+### On investment there is not enough evidence to conclude anything {#overseas-recruitment-and-domestic-training--on-investment-there-is-not-enough-evidence-to-conclude-anything}
+
+The MAC's own words: "extremely limited" and "not possible to draw robust conclusions". [2](#source-overseas-recruitment-and-domestic-training-2)
+
+## Subtleties {#overseas-recruitment-and-domestic-training--subtleties}
+
+### Those studies were estimated on EEA free movement {#overseas-recruitment-and-domestic-training--those-studies-were-estimated-on-eea-free-movement}
+
+, without sponsorship and without a salary floor. Nobody has evaluated employer training under the post-2021 sponsored routes. [1](#source-overseas-recruitment-and-domestic-training-1)
+
+### The government reads the same period the other way, from co-movement rather than a study {#overseas-recruitment-and-domestic-training--the-government-reads-the-same-period-the-other-way-from-co-movement-rather-than-a-stu}
+
+Its 2025 White Paper: "Economic migration shot up while training of the domestic workforce has fallen, and lower skilled migration soared while the proportion of UK residents in work fell." [3](#source-overseas-recruitment-and-domestic-training-3)
+
+### Co-movement is not causation {#overseas-recruitment-and-domestic-training--co-movement-is-not-causation}
+
+Whether access to sponsored overseas labour stops employers investing in British workers is a crux, not a fact, and it lives in *Does access to sponsored overseas labour stop employers investing in British workers and equipment?* [1](#source-overseas-recruitment-and-domestic-training-1) [2](#source-overseas-recruitment-and-domestic-training-2) [3](#source-overseas-recruitment-and-domestic-training-3)

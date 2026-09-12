@@ -1,4 +1,6 @@
 ---
+title: Earnings, Age and Fiscal Contributions
+claimSources: [1,4]
 claim: "The Migration Advisory Committee puts the salary at which a work-visa main applicant breaks even fiscally over a lifetime at roughly £29,000 — well below the £41,700 general Skilled Worker threshold"
 status: well-supported
 supports: skilled-worker-fiscal-gain-concentrated
@@ -70,42 +72,38 @@ sources:
     publisher: "Migration Advisory Committee"
     date: "2025-12-17"
 ---
-The Migration Advisory Committee publishes a break-even salary: the pay at which
-a work-visa main applicant is projected to pay in over a lifetime as much as
-they take out.
+## Observations {#fiscal-break-even-salary--context}
 
-- **The break-even is roughly £29,000 a year.** That is the MAC's estimate for a
-  main applicant on a route that allows dependants, over a lifetime, in its
-  baseline model.
-- **It rises with age at entry.** The MAC's Figure 3.1 runs from £22,300 for
-  someone arriving aged 18-29 up to £34,400 for someone arriving at 50 or over,
-  with the two middle age bands in between. Someone arriving young has more
-  working years to pay for their own retirement; someone arriving at 50 does
-  not.
-- **The threshold is above every one of those numbers.** The general Skilled
-  Worker threshold is £41,700 a year. The MAC's conclusion is that after the 2024
-  and 2025 increases "effectively all Skilled Workers are now projected, at the
-  point they arrive in the UK, to be net fiscally positive".
-- **Every earnings decile on the route clears it.** Every tenth of the earnings
-  distribution on the Skilled Worker route outside health and care is projected
-  to pay in more than it takes out. The *gain* is concentrated: the top tenth
-  accounts for 39% of it and the bottom tenth for 1%.
-- **The sign flips on specific routes, not at a salary line.** Care workers on
-  the Health and Care visa are projected at -£36,000 each and partners of British
-  citizens on the Family route at -£109,000. Neither route is bound by the
-  £41,700 threshold.
-- **Two MAC reports six days apart give different top-decile figures.** The
-  December 2025 *Fiscal Impact* report says the top 10% "make an average lifetime
-  contribution of £2.7m"; the *Review of Salary Requirements* says "£2.2
-  million". Both give the same 39% share, and GOV.UK records no correction to
-  either. Which figure the MAC now stands behind is not established.
-- **The figure depends on its unit.** The £29,000 is a lifetime break-even for
-  one visa main applicant who may bring dependants. Oxford Economics' "just over
-  £10,000" is a single childless twenty-year-old in a single year, and its higher
-  figure is a household of four with two children. The three numbers are not
-  comparable with each other.
-- **How confident to be.** This is a model, not a measurement. The MAC says so
-  itself — "working out the precise point at which someone becomes fiscally
-  positive is difficult" — and advises that a government might sensibly set a
-  threshold above its estimate to cover the risk that the true break-even is
-  higher.
+### The break-even is roughly £29,000 a year {#fiscal-break-even-salary--the-break-even-is-roughly-29-000-a-year}
+
+That is the MAC's estimate for a main applicant on a route that allows dependants, over a lifetime, in its baseline model. [1](#source-fiscal-break-even-salary-1)
+
+### It rises with age at entry {#fiscal-break-even-salary--it-rises-with-age-at-entry}
+
+The MAC's Figure 3.1 runs from £22,300 for someone arriving aged 18-29 up to £34,400 for someone arriving at 50 or over, with the two middle age bands in between. Someone arriving young has more working years to pay for their own retirement; someone arriving at 50 does not. [2](#source-fiscal-break-even-salary-2) [3](#source-fiscal-break-even-salary-3)
+
+## Subtleties {#fiscal-break-even-salary--subtleties}
+
+### The threshold is above every one of those numbers {#fiscal-break-even-salary--the-threshold-is-above-every-one-of-those-numbers}
+
+The general Skilled Worker threshold is £41,700 a year. The MAC's conclusion is that after the 2024 and 2025 increases "effectively all Skilled Workers are now projected, at the point they arrive in the UK, to be net fiscally positive". [4](#source-fiscal-break-even-salary-4) [5](#source-fiscal-break-even-salary-5)
+
+### Every earnings decile on the route clears it {#fiscal-break-even-salary--every-earnings-decile-on-the-route-clears-it}
+
+Every tenth of the earnings distribution on the Skilled Worker route outside health and care is projected to pay in more than it takes out. The *gain* is concentrated: the top tenth accounts for 39% of it and the bottom tenth for 1%. [6](#source-fiscal-break-even-salary-6)
+
+### The sign flips on specific routes, not at a salary line {#fiscal-break-even-salary--the-sign-flips-on-specific-routes-not-at-a-salary-line}
+
+Care workers on the Health and Care visa are projected at -£36,000 each and partners of British citizens on the Family route at -£109,000. Neither route is bound by the £41,700 threshold. [11](#source-fiscal-break-even-salary-11)
+
+### Two MAC reports six days apart give different top-decile figures {#fiscal-break-even-salary--two-mac-reports-six-days-apart-give-different-top-decile-figures}
+
+The December 2025 *Fiscal Impact* report says the top 10% "make an average lifetime contribution of £2.7m"; the *Review of Salary Requirements* says "£2.2 million". Both give the same 39% share, and GOV.UK records no correction to either. Which figure the MAC now stands behind is not established. [6](#source-fiscal-break-even-salary-6) [7](#source-fiscal-break-even-salary-7)
+
+### The figure depends on its unit {#fiscal-break-even-salary--the-figure-depends-on-its-unit}
+
+The £29,000 is a lifetime break-even for one visa main applicant who may bring dependants. Oxford Economics' "just over £10,000" is a single childless twenty-year-old in a single year, and its higher figure is a household of four with two children. The three numbers are not comparable with each other. [10](#source-fiscal-break-even-salary-10)
+
+### How confident to be {#fiscal-break-even-salary--how-confident-to-be}
+
+This is a model, not a measurement. The MAC says so itself — "working out the precise point at which someone becomes fiscally positive is difficult" — and advises that a government might sensibly set a threshold above its estimate to cover the risk that the true break-even is higher. [8](#source-fiscal-break-even-salary-8) [9](#source-fiscal-break-even-salary-9)

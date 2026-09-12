@@ -1,4 +1,6 @@
 ---
+title: Migration and Population Composition
+claimSources: [1,2,3]
 claim: "The share of people in England and Wales born outside the UK rose from 4.3% in 1951 to 8.9% in 2001 and 16.8% at the 2021 Census, and the ONS provisionally estimates the UK-wide non-UK-born population reached 13.1 million by mid-2024"
 status: well-supported
 sources:
@@ -39,26 +41,31 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-08-09"
 ---
-This is a stock, not a flow. It answers "how many people living here were born
-somewhere else", and it counts alike the person who landed in March and the
-person who arrived from Jamaica in 1961 and has held a British passport for
-fifty years.
+## Observations {#share-of-the-population-born-abroad--context}
 
-- **The share has roughly quadrupled since the war.** In England and Wales, 4.3%
-  of residents were born abroad in 1951, 8.9% in 2001, 13.4% in 2011 and 16.8% in
-  2021 — about one person in six.
-- **A census count does not get revised the way annual flows do.** Annual flow
-  estimates swing by hundreds of thousands and are revised afterwards; a census
-  count of country of birth is not.
-- **Three different geographies get mixed up here.** The 1951-2021 series is
-  England and Wales. The UK-wide census figure is about 10.7 million, or 16%. The
-  13.1 million figure is the UK at mid-2024. They are not one continuous line.
-- **The 13.1 million is an estimate, not a count.** ONS rolls the census forward
-  with migration and death data and labels the result "official statistics in
-  development"; there is no equivalent for mid-2025.
-- **Against comparable countries the UK is unremarkable.** On the mid-2024
-  estimate its foreign-born share is similar to Spain's and Germany's, and lower
-  than Australia's, Canada's or New Zealand's.
-- **Commonly mistaken for a measure of recent arrivals.** It is not. ONS makes
-  the point itself: over three quarters of the non-UK-born who arrived before
-  1981 held a UK passport by 2011.
+### The share has roughly quadrupled since the war {#share-of-the-population-born-abroad--the-share-has-roughly-quadrupled-since-the-war}
+
+In England and Wales, 4.3% of residents were born abroad in 1951, 8.9% in 2001, 13.4% in 2011 and 16.8% in 2021 — about one person in six. [1](#source-share-of-the-population-born-abroad-1) [2](#source-share-of-the-population-born-abroad-2)
+
+### A census count does not get revised the way annual flows do {#share-of-the-population-born-abroad--a-census-count-does-not-get-revised-the-way-annual-flows-do}
+
+Annual flow estimates swing by hundreds of thousands and are revised afterwards; a census count of country of birth is not. [2](#source-share-of-the-population-born-abroad-2)
+
+### Against comparable countries the UK is unremarkable {#share-of-the-population-born-abroad--against-comparable-countries-the-uk-is-unremarkable}
+
+On the mid-2024 estimate its foreign-born share is similar to Spain's and Germany's, and lower than Australia's, Canada's or New Zealand's. [4](#source-share-of-the-population-born-abroad-4)
+
+## Subtleties {#share-of-the-population-born-abroad--subtleties}
+
+### Three different geographies get mixed up here {#share-of-the-population-born-abroad--three-different-geographies-get-mixed-up-here}
+
+The 1951-2021 series is England and Wales. The UK-wide census figure is about 10.7 million, or 16%. The 13.1 million figure is the UK at mid-2024. They are not one continuous line. [1](#source-share-of-the-population-born-abroad-1) [2](#source-share-of-the-population-born-abroad-2) [3](#source-share-of-the-population-born-abroad-3) [6](#source-share-of-the-population-born-abroad-6)
+
+### The 13.1 million is an estimate, not a count {#share-of-the-population-born-abroad--the-13-1-million-is-an-estimate-not-a-count}
+
+ONS rolls the census forward with migration and death data and labels the result "official statistics in development"; there is no equivalent for mid-2025. [3](#source-share-of-the-population-born-abroad-3) [5](#source-share-of-the-population-born-abroad-5)
+
+
+### Commonly mistaken for a measure of recent arrivals {#share-of-the-population-born-abroad--commonly-mistaken-for-a-measure-of-recent-arrivals}
+
+It is not. ONS makes the point itself: over three quarters of the non-UK-born who arrived before 1981 held a UK passport by 2011. [2](#source-share-of-the-population-born-abroad-2)

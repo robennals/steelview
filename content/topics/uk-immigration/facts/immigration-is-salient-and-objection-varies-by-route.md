@@ -1,4 +1,6 @@
 ---
+title: Public Attitudes to Immigration
+claimSources: [3]
 claim: "Immigration has been a top-tier public concern since 2022, roughly half the public says overall numbers are too high, and preference sorts sharply by route — objection is far stronger to asylum than to work or study, and majorities want migration made easier for care workers"
 status: well-supported
 sources:
@@ -57,29 +59,34 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2025-01-24"
 ---
-Two things in British opinion hold across pollsters and question wordings:
-immigration is salient, and objection varies sharply by route. The aggregate
-question is a separate fact, *The British public wants immigration reduced*.
+## Observations {#immigration-is-salient-and-objection-varies-by-route--context}
 
-- **Salience is not in doubt.** Immigration went from being named as an important
-  issue by 6% of people in April 2022 to 38% in October 2024 — a top issue for
-  the first time since 2016.
-- **Roughly half want lower numbers, and that has been stable for three years.**
-  48% in Ipsos's 2023 series, 52% in Kantar's, 46% in Ipsos's February 2026 poll.
-- **The public does not hold one view of "immigration"; it sorts by route.** In
-  February 2026, 67% thought asylum numbers too high, 56% family migration, 43%
-  work and 39% study.
-- **Asked which routes should be made easier — a different question — the shape
-  repeats.** In April 2023, 37% wanted migration made more difficult for asylum
-  seekers, against 30% for Afghans, 21% for Hong Kongers and 14% for Ukrainians.
-  Students, EU nationals and family visas were net liberal.
-- **The sorting does not follow skill.** 54% favoured easing migration for care
-  workers, 45% for agricultural workers and 38% for construction workers —
-  against 27% for financial-sector workers, the high-skilled group a points
-  system is built to prefer.
-- **How confident to be.** The route-by-route data are from April 2023 and are
-  better evidence for the shape of preferences than their current level.
-- **The source contradicts itself on one figure.** The briefing's summary says
-  "over a third of people (36%)" want low-skilled worker migration made more
-  difficult while its body text says "over a quarter" of the same question. This
-  page quotes the body text.
+### Salience is not in doubt {#immigration-is-salient-and-objection-varies-by-route--salience-is-not-in-doubt}
+
+Immigration went from being named as an important issue by 6% of people in April 2022 to 38% in October 2024 — a top issue for the first time since 2016. [1](#source-immigration-is-salient-and-objection-varies-by-route-1)
+
+### Roughly half want lower numbers, and that has been stable for three years {#immigration-is-salient-and-objection-varies-by-route--roughly-half-want-lower-numbers-and-that-has-been-stable-for-three-years}
+
+48% in Ipsos's 2023 series, 52% in Kantar's, 46% in Ipsos's February 2026 poll. [2](#source-immigration-is-salient-and-objection-varies-by-route-2) [4](#source-immigration-is-salient-and-objection-varies-by-route-4)
+
+## Subtleties {#immigration-is-salient-and-objection-varies-by-route--subtleties}
+
+### The public does not hold one view of "immigration"; it sorts by route {#immigration-is-salient-and-objection-varies-by-route--the-public-does-not-hold-one-view-of-immigration-it-sorts-by-route}
+
+In February 2026, 67% thought asylum numbers too high, 56% family migration, 43% work and 39% study. [3](#source-immigration-is-salient-and-objection-varies-by-route-3)
+
+### Asked which routes should be made easier — a different question — the shape repeats {#immigration-is-salient-and-objection-varies-by-route--asked-which-routes-should-be-made-easier-a-different-question-the-shape-repeats}
+
+In April 2023, 37% wanted migration made more difficult for asylum seekers, against 30% for Afghans, 21% for Hong Kongers and 14% for Ukrainians. Students, EU nationals and family visas were net liberal. [6](#source-immigration-is-salient-and-objection-varies-by-route-6) [7](#source-immigration-is-salient-and-objection-varies-by-route-7)
+
+### The sorting does not follow skill {#immigration-is-salient-and-objection-varies-by-route--the-sorting-does-not-follow-skill}
+
+54% favoured easing migration for care workers, 45% for agricultural workers and 38% for construction workers — against 27% for financial-sector workers, the high-skilled group a points system is built to prefer. [8](#source-immigration-is-salient-and-objection-varies-by-route-8)
+
+### How confident to be {#immigration-is-salient-and-objection-varies-by-route--how-confident-to-be}
+
+The route-by-route data are from April 2023 and are better evidence for the shape of preferences than their current level. [2](#source-immigration-is-salient-and-objection-varies-by-route-2) [3](#source-immigration-is-salient-and-objection-varies-by-route-3)
+
+### The source contradicts itself on one figure {#immigration-is-salient-and-objection-varies-by-route--the-source-contradicts-itself-on-one-figure}
+
+The briefing's summary says "over a third of people (36%)" want low-skilled worker migration made more difficult while its body text says "over a quarter" of the same question. This page quotes the body text. [2](#source-immigration-is-salient-and-objection-varies-by-route-2)

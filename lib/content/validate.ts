@@ -1,4 +1,4 @@
-import { citedFactIds } from './markdown';
+import { citedFactIds, citedFactTargets } from './markdown';
 import { comparePeriods } from './period';
 import type { Fact, Series, Topic } from './types';
 
@@ -112,8 +112,45 @@ export function validateTopic(topic: Topic): string[] {
         );
       }
     }
+    for (const id of f.relatedFacts ?? []) {
+      if (id === f.id || !topic.facts.some(fact => fact.id === id)) errors.push(`fact ${f.id}: related fact ${id} must name another fact`);
+    }
     // rule 14
-    if (f.series) errors.push(...seriesErrors(f.id, f.series));
+    const datasets = [...(f.series ? [f.series] : []), ...(f.additionalSeries ?? [])];
+    for (const series of datasets) errors.push(...seriesErrors(f.id, series));
+    const artifactIds = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...datasets.flatMap(s => s.readings.map(r => r.id)), ...(f.comparisons ?? []).map(c => c.id)];
+    if (new Set(artifactIds).size !== artifactIds.length) errors.push(`fact ${f.id}: chart IDs must be unique`);
+    const sourceCount = f.sources.length + datasets.reduce((n, series) => n + 1 + series.readings.filter(r => r.source).length, 0);
+    const chartIds = new Set<string>();
+    for (const chart of f.comparisons ?? []) {
+      if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
+      chartIds.add(chart.id);
+      if (chart.groups) {
+        if (chart.defaultGroup !== undefined && chart.defaultGroup >= chart.groups.length) errors.push(`fact ${f.id}: invalid default comparison group`);
+        if (new Set(chart.groups).size !== chart.groups.length) errors.push(`fact ${f.id}: duplicate comparison group`);
+        for (const item of chart.items) {
+          if (!item.values || item.values.length !== chart.groups.length || Math.abs(item.values.reduce((a, b) => a + b, 0) - item.value) > 1e-8) errors.push(`fact ${f.id}: comparison components must match groups and sum to the total for ${item.label}`);
+        }
+      } else if (chart.defaultGroup !== undefined || chart.items.some(item => item.values)) errors.push(`fact ${f.id}: comparison breakdown requires group labels`);
+
+      for (const n of chart.sources) {
+        if (n > sourceCount) errors.push(`fact ${f.id}: unknown comparison source ${n}`);
+      }
+    }
+    for (const id of f.featuredCharts ?? []) {
+      const child = factById.get(id);
+      if (!child || child.supports !== f.id || (!child.series && !child.comparisons?.length)) {
+        errors.push(`fact ${f.id}: featured chart ${id} must belong to a supporting fact with charts`);
+      }
+    }
+    for (const n of f.claimSources ?? []) {
+      if (n > sourceCount) errors.push(`fact ${f.id}: unknown lead source ${n}`);
+    }
+    const anchors = [...f.body.matchAll(/\{#([a-z0-9-]+)\}/g)].map(m => m[1]);
+    if (new Set(anchors).size !== anchors.length) errors.push(`fact ${f.id}: duplicate section id`);
+    for (const match of f.body.matchAll(/\]\(#source-([a-z0-9-]+)-(\d+)\)/g)) {
+      if (match[1] !== f.id || Number(match[2]) > sourceCount || Number(match[2]) < 1) errors.push(`fact ${f.id}: unknown source reference ${match[1]}-${match[2]}`);
+    }
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -326,7 +363,11 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   const errors: string[] = [];
 
   const check = (what: string, body: string) => {
-    for (const id of citedFactIds(body)) {
+    for (const { id, section } of citedFactTargets(body)) {
+      const fact = factById.get(id);
+      if (fact && section && section !== 'finding' && !(section === 'chart-series' && fact.series) && !fact.series?.readings.some(reading => section === `chart-${reading.id}`) && !fact.additionalSeries?.some(s => section === `chart-${s.id}` || s.readings.some(r => section === `chart-${r.id}`)) && !fact.comparisons?.some(chart => section === `chart-${chart.id}`) && !fact.body.includes(`{#${id}--${section}}`)) {
+        errors.push(`${what}: unknown section "${section}" in fact "${id}"`);
+      }
       if (!factById.has(id)) {
         errors.push(`${what}: body links to "#fact-${id}", which is not a fact in this topic`);
       }
@@ -339,10 +380,10 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   for (const c of topic.cruxes) check(`crux ${c.id}`, c.body);
 
   for (const v of topic.viewpoints) {
-    check(`viewpoint ${v.id}`, v.body);
+    check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
     const listed = new Set([...v.citesFacts, ...v.acknowledges, ...v.setsAside]);
-    for (const id of citedFactIds(v.body)) {
+    for (const id of citedFactIds(v.body + '\n' + v.summary)) {
       const cited = factById.get(id);
       if (!cited) continue; // already reported by rule 12
       if (listed.has(id)) continue;

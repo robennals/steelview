@@ -1,4 +1,6 @@
 ---
+title: Immigration and Population Growth
+claimSources: [1]
 claim: "On official projections, net migration is now the only source of UK population growth, because deaths are projected to exceed births"
 status: well-supported
 sources:
@@ -15,13 +17,18 @@ sources:
     publisher: "Office for National Statistics"
     date: "2026-04-28"
 ---
-ONS projects net migration to be the only source of UK population growth over
-the next twenty-five years, with deaths exceeding births by 2.5 million.
+## Observations {#migration-is-the-only-source-of-population-growth--context}
 
-- **So a chosen migration level is a chosen population trajectory.** That is an
-  argument for treating the number as a democratic decision rather than a
-  by-product of visa rules.
-- **Near-zero net migration is a choice for a shrinking, ageing population**,
-  with the tax and care consequences that follow.
-- **A projection is not a forecast.** ONS says so itself: the long-term
-  assumption "should not be viewed as a forecast, but as a scenario".
+### So a chosen migration level is a chosen population trajectory {#migration-is-the-only-source-of-population-growth--so-a-chosen-migration-level-is-a-chosen-population-trajectory}
+
+That is an argument for treating the number as a democratic decision rather than a by-product of visa rules. [1](#source-migration-is-the-only-source-of-population-growth-1)
+
+### Near-zero net migration is a choice for a shrinking, ageing population {#migration-is-the-only-source-of-population-growth--near-zero-net-migration-is-a-choice-for-a-shrinking-ageing-population}
+
+, with the tax and care consequences that follow. [1](#source-migration-is-the-only-source-of-population-growth-1) [2](#source-migration-is-the-only-source-of-population-growth-2)
+
+## Subtleties {#migration-is-the-only-source-of-population-growth--subtleties}
+
+### A projection is not a forecast {#migration-is-the-only-source-of-population-growth--a-projection-is-not-a-forecast}
+
+ONS says so itself: the long-term assumption "should not be viewed as a forecast, but as a scenario". [2](#source-migration-is-the-only-source-of-population-growth-2)

@@ -1,5 +1,9 @@
 ---
-claim: "A quarter of England and Wales is no longer British, and immigration is what changed it"
+derivedFigures: [{method: complement-percent, figure: "25.6%", percent: 74.4, decimals: 1}]
+title: Ethnic Composition of the Population
+claimSources: [1]
+assessedClaim: "A quarter of England and Wales is no longer British, and immigration is what changed it"
+claim: "In the 2021 Census, 74.4% of residents of England and Wales identified as White British, down from 80.5% in 2011. This measures ethnic identity, not whether someone is a British citizen."
 status: complicated
 supports: share-of-the-population-born-abroad
 sources:
@@ -52,30 +56,34 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-02-23"
 ---
-This is a count of how people described their own ethnic group at the census. It
-is not a count of migrants.
+## Observations {#ethnic-composition-at-the-2021-census--context}
 
-- **74.4% of England and Wales identified as "English, Welsh, Scottish, Northern
-  Irish or British" in 2021**, down from 80.5% in 2011 and 87.5% in 2001. Within
-  the broader "White" category the figure was 81.7%, down from 86.0%. In
-  Scotland's 2022 census the minority ethnic share rose from 8.2% to 12.9%.
-- **The census asks which ethnic group a person feels they belong to.** Not where
-  they were born, not what passport they hold. It is a question about identity,
-  answered by the person themselves.
-- **The largest single increase was white Europeans.** Across the 19 ethnic
-  groups, the biggest percentage-point rise between 2011 and 2021 was "White:
-  Other White", from 4.4% to 6.2% — and ONS notes part of even that may be an
-  artefact of the new search-as-you-type box on the online form.
-- **Migrants are not a proxy for minorities.** At the 2011 Census almost half the
-  foreign-born population identified as White, 13% as White British and 5% as
-  Irish. One third identified as Asian.
-- **Nor are minorities a proxy for migrants.** 16.8% of England and Wales was
-  born outside the UK in 2021 and 25.6% did not identify as White British. Those
-  are not the same people.
-- **The UK-born share of minority groups is not published for 2021.** At the 2011
-  Census about 48% of people in the Asian, Black, Mixed and Other groups combined
-  were born in the UK — a large minority, not a majority. ONS has published no
-  2021 equivalent, so whether it has since crossed half is unknown.
-- **What can be said about the foreign-born half** is that they have mostly been
-  here a long time: over three quarters of those who arrived before 1981 held UK
-  passports by 2011.
+### 74.4% of England and Wales identified as "English, Welsh, Scottish, Northern Irish or British" in 2021 {#ethnic-composition-at-the-2021-census--74-4-of-england-and-wales-identified-as-english-welsh-scottish-northern-irish-or-brit}
+
+, down from 80.5% in 2011 and 87.5% in 2001. Within the broader "White" category the figure was 81.7%, down from 86.0%. In Scotland's 2022 census the minority ethnic share rose from 8.2% to 12.9%. [1](#source-ethnic-composition-at-the-2021-census-1) [2](#source-ethnic-composition-at-the-2021-census-2) [3](#source-ethnic-composition-at-the-2021-census-3) [4](#source-ethnic-composition-at-the-2021-census-4)
+
+### The census asks which ethnic group a person feels they belong to {#ethnic-composition-at-the-2021-census--the-census-asks-which-ethnic-group-a-person-feels-they-belong-to}
+
+Not where they were born, not what passport they hold. It is a question about identity, answered by the person themselves. [1](#source-ethnic-composition-at-the-2021-census-1)
+
+## Subtleties {#ethnic-composition-at-the-2021-census--subtleties}
+
+### The largest single increase was white Europeans {#ethnic-composition-at-the-2021-census--the-largest-single-increase-was-white-europeans}
+
+Across the 19 ethnic groups, the biggest percentage-point rise between 2011 and 2021 was "White: Other White", from 4.4% to 6.2% — and ONS notes part of even that may be an artefact of the new search-as-you-type box on the online form. [5](#source-ethnic-composition-at-the-2021-census-5)
+
+### Migrants are not a proxy for minorities {#ethnic-composition-at-the-2021-census--migrants-are-not-a-proxy-for-minorities}
+
+At the 2011 Census almost half the foreign-born population identified as White, 13% as White British and 5% as Irish. One third identified as Asian. [6](#source-ethnic-composition-at-the-2021-census-6)
+
+### Nor are minorities a proxy for migrants {#ethnic-composition-at-the-2021-census--nor-are-minorities-a-proxy-for-migrants}
+
+16.8% of England and Wales was born outside the UK in 2021 and 25.6% did not identify as White British. Those are not the same people. [7](#source-ethnic-composition-at-the-2021-census-7) [8](#source-ethnic-composition-at-the-2021-census-8)
+
+### The UK-born share of minority groups is not published for 2021 {#ethnic-composition-at-the-2021-census--the-uk-born-share-of-minority-groups-is-not-published-for-2021}
+
+At the 2011 Census about 48% of people in the Asian, Black, Mixed and Other groups combined were born in the UK — a large minority, not a majority. ONS has published no 2021 equivalent, so whether it has since crossed half is unknown. [8](#source-ethnic-composition-at-the-2021-census-8)
+
+### What can be said about the foreign-born half {#ethnic-composition-at-the-2021-census--what-can-be-said-about-the-foreign-born-half}
+
+is that they have mostly been here a long time: over three quarters of those who arrived before 1981 held UK passports by 2011. [6](#source-ethnic-composition-at-the-2021-census-6) [7](#source-ethnic-composition-at-the-2021-census-7)
