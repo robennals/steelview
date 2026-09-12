@@ -128,7 +128,7 @@ test('a section with items renders its heading', () => {
         body: '',
       },
     ],
-    principles: [{ id: 'p', name: 'P', heldBy: ['one'], body: '' }],
+    principles: [{ id: 'p', name: 'P', body: '' }],
     cruxes: [
       {
         id: 'timing',

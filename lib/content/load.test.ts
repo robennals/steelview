@@ -3,14 +3,22 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import { mkdtemp, mkdir, writeFile, readFile, cp, rm } from 'node:fs/promises';
 import os from 'node:os';
-import { loadTopic, listTopicSlugs, ContentError } from './load';
+import { loadTopic, loadPrinciples, listTopicSlugs, ContentError } from './load';
 
 const FIXTURES = path.join(import.meta.dirname, '__fixtures__', 'topics');
 
+async function tempTopicsRoot(): Promise<string> {
+  const dir = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const root = path.join(dir, 'topics');
+  await mkdir(root);
+  return root;
+}
+
 /** Copy the example fixture into a temp root so a test can corrupt one file. */
 async function fixtureCopy(): Promise<string> {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const root = await tempTopicsRoot();
   await cp(FIXTURES, root, { recursive: true });
+  await cp(path.join(FIXTURES, '..', 'principles'), path.join(root, '..', 'principles'), { recursive: true });
   return root;
 }
 
@@ -87,14 +95,14 @@ test('a cross-reference violation throws ContentError listing every problem', as
 });
 
 test('a topic with no cruxes directory loads with an empty cruxes array', async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const root = await tempTopicsRoot();
   const dir = path.join(root, 'bare');
   await mkdir(path.join(dir, 'facts'), { recursive: true });
   await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
-  await mkdir(path.join(dir, 'principles'), { recursive: true });
+  await mkdir(path.join(root, '..', 'principles'), { recursive: true });
   await writeFile(
     path.join(dir, 'topic.md'),
-    '---\ntitle: Bare\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
+    '---\ntitle: Bare\nprinciples: [p]\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
   );
   await writeFile(
     path.join(dir, 'facts', 'a.md'),
@@ -104,26 +112,25 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
     path.join(dir, 'viewpoints', 'v.md'),
     '---\nname: V\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
-  // Rule 9 needs at least two viewpoints; this one carries no principle so it
-  // doesn't need to appear in any heldBy.
+  // Rule 9 needs at least two viewpoints; this one uses no principles.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
     '---\nname: V2\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
   );
-  await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
+  await writeFile(path.join(root, '..', 'principles', 'p.md'), '---\nname: P\n---\n');
   const topic = await loadTopic('bare', root);
   assert.deepEqual(topic.cruxes, []);
 });
 
 test('unquoted YAML dates in source frontmatter normalize to strings, not Date or number', async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const root = await tempTopicsRoot();
   const dir = path.join(root, 'dates');
   await mkdir(path.join(dir, 'facts'), { recursive: true });
   await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
-  await mkdir(path.join(dir, 'principles'), { recursive: true });
+  await mkdir(path.join(root, '..', 'principles'), { recursive: true });
   await writeFile(
     path.join(dir, 'topic.md'),
-    '---\ntitle: Dates\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
+    '---\ntitle: Dates\nprinciples: [p]\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
   );
   // Both dates are unquoted: a full date (YAML timestamp -> Date) and a bare
   // year (YAML int -> number). Both must come back as strings.
@@ -160,7 +167,7 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
     path.join(dir, 'viewpoints', 'v2.md'),
     '---\nname: V2\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
   );
-  await writeFile(path.join(dir, 'principles', 'p.md'), '---\nname: P\nheldBy: [v]\n---\n');
+  await writeFile(path.join(root, '..', 'principles', 'p.md'), '---\nname: P\n---\n');
   const topic = await loadTopic('dates', root);
   const fact = topic.facts[0];
   assert.equal(fact.sources[0].date, '2024-11-28');
@@ -180,7 +187,7 @@ async function loadOrdered(
   facts: Record<string, string>,
   viewpoints: Record<string, VpSpec>
 ): Promise<string[]> {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'steelview-content-'));
+  const root = await tempTopicsRoot();
   const dir = path.join(root, 'ordering');
   await mkdir(path.join(dir, 'facts'), { recursive: true });
   await mkdir(path.join(dir, 'viewpoints'), { recursive: true });
@@ -298,4 +305,48 @@ test('an unreadable item directory (e.g. a file where a directory belongs) fails
   await rm(path.join(root, 'example', 'cruxes'), { recursive: true });
   await writeFile(path.join(root, 'example', 'cruxes'), 'not a directory');
   await assert.rejects(() => loadTopic('example', root));
+});
+
+test('two topics resolve one shared definition and both pick up edits without leaking other principles', async () => {
+  const root = await fixtureCopy();
+  await cp(path.join(root, 'example'), path.join(root, 'second'), { recursive: true });
+  const sharedRoot = path.join(root, '..', 'principles');
+  await writeFile(path.join(sharedRoot, 'unused.md'), '---\nname: Unused\n---\nAnother ideal.\n');
+  const first = await loadTopic('example', root);
+  const second = await loadTopic('second', root);
+  assert.deepEqual(first.principles, second.principles);
+  assert.deepEqual(first.principles.map((p) => p.id), ['fairness']);
+  assert.equal('heldBy' in first.principles[0], false);
+  assert.equal((await loadPrinciples(sharedRoot)).length, 2);
+
+  await writeFile(path.join(sharedRoot, 'fairness.md'), '---\nname: Equal treatment\n---\nTreat people fairly.\n');
+  for (const slug of ['example', 'second']) {
+    const topic = await loadTopic(slug, root);
+    assert.equal(topic.principles[0].name, 'Equal treatment');
+    assert.equal(topic.principles[0].body, 'Treat people fairly.');
+    assert.equal(topic.principles[0].id, 'fairness');
+  }
+});
+
+test('a topic reference to a missing shared principle fails with its ID and topic file', async () => {
+  const root = await fixtureCopy();
+  await rm(path.join(root, '..', 'principles', 'fairness.md'));
+  await assert.rejects(() => loadTopic('example', root), /topic\.md: references unknown shared principle "fairness"/);
+});
+
+test('a viewpoint cannot use a catalog principle that its topic does not list', async () => {
+  const root = await fixtureCopy();
+  const file = path.join(root, 'example', 'topic.md');
+  await writeFile(file, (await readFile(file, 'utf8')).replace('principles: [fairness]', 'principles: []'));
+  await assert.rejects(() => loadTopic('example', root), /viewpoint one: references unknown principle "fairness"/);
+});
+
+test('malformed shared definitions and obsolete local definitions fail explicitly', async () => {
+  const root = await fixtureCopy();
+  const file = path.join(root, '..', 'principles', 'fairness.md');
+  await writeFile(file, '---\nname: Fairness\nheldBy: [one]\n---\n');
+  await assert.rejects(() => loadTopic('example', root), /fairness\.md:.*heldBy/);
+  await writeFile(file, '---\nname: Fairness\n---\n');
+  await mkdir(path.join(root, 'example', 'principles'));
+  await assert.rejects(() => loadTopic('example', root), /move topic-local principles/);
 });

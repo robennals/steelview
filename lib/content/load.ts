@@ -11,7 +11,7 @@ import {
 } from './schema';
 import { rankFacts, sortViewpoints } from './rank-facts';
 import { validateTopic } from './validate';
-import type { Topic, Item } from './types';
+import type { Topic, Item, Principle } from './types';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
@@ -72,6 +72,11 @@ async function readItems<T extends Record<string, unknown>>(
   );
 }
 
+/** Load the shared catalog independently of any topic. */
+export async function loadPrinciples(root: string = path.join(CONTENT_ROOT, '..', 'principles')): Promise<Principle[]> {
+  return readItems(root, principleFrontmatterSchema);
+}
+
 export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Promise<Topic> {
   const dir = path.join(root, slug);
   const topicFile = path.join(dir, 'topic.md');
@@ -89,6 +94,22 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
     throw new ContentError(`${topicFile}: ${formatIssues(parsed.error)}`);
   }
 
+  // Reject the old layout so a local copy cannot silently shadow the shared definition.
+  try {
+    await readdir(path.join(dir, 'principles'));
+    throw new ContentError(`${topicFile}: move topic-local principles to content/principles and reference their IDs in topic.md`);
+  } catch (error) {
+    if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) throw error;
+  }
+
+  const catalog = await loadPrinciples(path.join(root, '..', 'principles'));
+  const byId = new Map(catalog.map((principle) => [principle.id, principle]));
+  const principles = parsed.data.principles.map((id) => {
+    const principle = byId.get(id);
+    if (!principle) throw new ContentError(`${topicFile}: references unknown shared principle "${id}"`);
+    return principle;
+  });
+
   const facts = await readItems(path.join(dir, 'facts'), factFrontmatterSchema);
   const viewpoints = await readItems(path.join(dir, 'viewpoints'), viewpointFrontmatterSchema);
   sortViewpoints(viewpoints);
@@ -101,7 +122,7 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
     // computed once both are loaded. See rank-facts.ts.
     facts: rankFacts(facts, viewpoints),
     viewpoints,
-    principles: await readItems(path.join(dir, 'principles'), principleFrontmatterSchema),
+    principles,
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),
   };
 
