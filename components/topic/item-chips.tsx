@@ -32,7 +32,7 @@ export function ItemChips({
       <ul className="sv-chips__list">
         {facts.map((fact) => (
           <li key={fact.id}>
-            <Link href={factPath(slug, fact.id)}>{fact.claim}</Link>
+            <Link href={factPath(slug, fact.id)}>{fact.title ?? fact.claim}</Link>
           </li>
         ))}
       </ul>

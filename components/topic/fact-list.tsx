@@ -24,7 +24,7 @@ export function FactList({ slug, facts }: { slug: string; facts: Fact[] }) {
       {facts.map((fact) => (
         <li key={fact.id} className="sv-item sv-fact" data-status={fact.status}>
           <a className="sv-item__summary sv-factrow" href={factPath(slug, fact.id)}>
-            <span className="sv-item__claim">{fact.claim}</span> <StatusBadge status={fact.status} />
+            <span className="sv-item__claim">{fact.title ?? fact.claim}</span> <StatusBadge status={fact.status} />
           </a>
         </li>
       ))}

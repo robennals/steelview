@@ -49,14 +49,15 @@ collection:
 
 | Kind | What it is |
 | --- | --- |
-| **Fact** | A claim about the world with a status label, quoted sources, and a body giving its context. |
+| **Data** | A collection of datasets and artifacts exploring one aspect of the topic, with observations, context, methods and sources. |
+| **Observation** | An addressable finding about a graph or dataset, explaining what to notice and why. Usually the target of a viewpoint’s factual citation. |
 | **Viewpoint** | One side of the argument, written as well as it can be written, listing the facts it cites, concedes and sets aside. |
 | **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A specific question whose resolution would move someone. |
 
 The filename is the id. **Ids are permanent.** An id is the anchor a citation
-points at (`#fact-net-migration-peak-and-fall`) and the URL of the fact's own
-page (`/topics/uk-immigration/facts/net-migration-peak-and-fall`, from
+points at (`#fact-immigration-against-the-long-run/nationality-shift`) and the URL of the fact's own
+page (`/topics/uk-immigration/facts/immigration-against-the-long-run`, from
 `factPath` in `lib/content/types.ts`). Renaming a file breaks every inbound
 link from outside the repo, so a rename needs a redirect, not just a
 find-and-replace.
@@ -67,49 +68,74 @@ own rankings by `lib/content/rank-facts.ts`; viewpoint order is the explicit
 
 ---
 
-## Facts
+## Data
 
-### Headline facts, supporting facts and counter-points
+### Data Collections, Datasets and Observations
 
-Most true statements are not interesting on their own. A contract overrun, a
-grant-rate movement, a route-level fiscal breakdown — all real, all
-checkable, none of them what the argument is about. They can be useful as
-supporting facts for larger claims, but aren't that valuable in themselves.
+The reader-facing section is **Data**, and each popup is a **data collection**:
+a set of datasets, graphs and other evidence breaking down one aspect of the
+topic. An individual graph or table is a dataset or artifact within that
+collection. An **observation** explains a finding in those data. Do not equate
+the whole collection with a single factual assertion.
 
-So facts are two levels. A fact with no `supports` field is a **headline
-fact** and appears in the top-level Facts list. A fact with
-`supports: <parent-id>` is evidence for that headline claim and renders
-inside it, keeping its own anchor and its own page.
+Lead with a short title, introduction and key finding, then show the data with
+time, place and relevant group comparisons. Put observations next to the graph
+they explain. Keep methods, useful subtleties and sources in their own expandos.
+Several observations can support different viewpoints while sharing one collection.
 
-Aim for **8 to 12 headline claims** — a list a reader can hold in their head.
-`uk-immigration` currently runs 12 headline facts with 20 supporting ones.
+**Cite observations by default.** When a viewpoint makes a factual assertion,
+link its pill to the specific observation that supports or qualifies it. That
+opens the collection, expands the observation and scrolls it into view. Link to
+a graph or the collection’s lead finding when that is the actual evidence;
+use a whole-collection link for a broad reference or an evidence index. Do not
+create a separate collection just to make a finding clickable.
 
-Depth is exactly one: a supporting fact may not itself be supported. The
-build rejects a chain.
+**Related Data** is for distinct collections that answer other useful questions.
+A point about the same plotted data normally belongs in Observations. Existing
+`supports` relationships still group smaller collections within broader ones,
+with only one level of nesting. They do not make every child a separate fact
+that the reader must accept.
 
-A **counter-point** is a supporting fact that cuts *against* its parent
-rather than for it — a decomposition, or a benchmark that makes the parent
-prove less than it appears to. Two worked examples in `uk-immigration`:
+**Compatibility terminology.** Storage and code retain `Fact`, `facts/`,
+`citesFacts`, `relatedFacts`, `/facts/` URLs and `#fact-` citation syntax so
+existing links and content remain valid. In technical examples below, these
+legacy names refer to data collections. In product copy, use **Data**, **data
+collection**, **dataset** and **observation** according to what is being named.
 
-- `skilled-worker-fiscal-gain-concentrated` says the Skilled Worker route is
-  fiscally positive. Under it sits
-  `care-worker-route-fiscally-negative`: care workers on the Health and Care
-  visa are a net lifetime cost. The headline stands; the decomposition stops
-  it being quoted as "work visas pay for themselves".
-- `non-citizens-share-of-convictions-and-prisons` carries
-  `deportable-offenders-living-in-the-community` underneath it, so a reader
-  meeting the aggregate meets the specific complaint at the same time.
+### Neutral Reports Must Answer All Viewpoints’ Questions
 
-Put the counter-point where the reader meets the claim, not where one side's
-readers meet it.
+Each data report serves the topic, rather than a particular viewpoint. Its
+scope is the combined set of relevant empirical questions raised by all the
+viewpoints. Collect the analyses, breakdowns and comparisons needed to answer
+those questions, including evidence that challenges each side’s preferred
+interpretation. This shared requirement is what makes the report comprehensive.
 
-**Anything a viewpoint will need to lean on when conceding must be its own
-fact.** A qualification buried in a paragraph cannot be cited: the citation
-machinery resolves ids, and the chips on a viewpoint read the frontmatter
-lists. If a viewpoint wants to say "yes, but the gain is concentrated", the
-concentration has to exist as a fact with an id.
+Before considering a report complete:
+
+- Review every viewpoint’s claims and identify the measures, time periods,
+  populations and comparisons needed to examine them.
+- Check that each relevant question has a visible artifact and a linked
+  observation, or a clear account of unavailable evidence. Retain relevant
+  breakdowns even when they weaken the report’s opening finding.
+- Show changes over time, international comparisons and meaningful subgroups;
+  distinguish aggregate effects from their distribution, counts from rates,
+  and correlation from evidence of causation where these distinctions matter.
+- Apply the same standards of sourcing, uncertainty and methodological scrutiny
+  to evidence congenial to either side. Present supported conclusions plainly;
+  neutrality does not mean equal weight for claims with unequal evidence.
+- Revisit coverage when a viewpoint adds a substantive empirical question.
+  Prefer expanding the shared report to creating a separate report designed
+  around that viewpoint’s preferred conclusion.
+
+Observations state what the evidence shows, its limits and plausible explanations.
+Viewpoints make the value judgments and policy arguments. A report should not
+select its graphs or headline to advance one of those arguments. Renaming a
+report alone does not establish that its coverage is complete.
 
 ### Status
+
+The existing status assesses the collection’s lead finding or explicitly
+assessed claim. It is not a blanket truth rating for every dataset or observation.
 
 Five statuses: `well-supported`, `contested`, `not-supported`,
 `complicated`, `unknown`.
@@ -172,82 +198,117 @@ The healthy shape of a topic is mostly `well-supported`, a few `contested`
 that genuinely divide the sides, and a short tail of the rest defusing
 familiar talking points.
 
-### The claim line
+### Titles and opening findings
 
-The `claim` is the sentence the reader meets first and the sentence a
-partisan will quote. Phrase it as **the strongest formulation that is true
-and that serves the viewpoints relying on it.**
+`title` names the subject of the data collection in short, neutral Title Case:
+“UK Immigration Trends”, “Immigration and Public Finances”, or “Asylum
+Applications in the UK and Europe”. It describes the scope, not a conclusion
+such as “Immigration Is Too High” or “Immigration Benefits Public Finances”.
+Choose a scope the collection can actually cover: a fiscal analysis alone
+should not be titled “Economic Impact of Immigration”, which also implies
+coverage of wages, employment, productivity and other economic effects.
 
-Hedges and qualifications do not belong in the claim line. They belong in the
-body and in the counter-points, where a reader who wants them will find them
-and a reader skimming will not be slowed by them. A claim line hedged into
-safety says nothing and gets cited by nobody.
+Specific factual conclusions belong in the cited opening finding and in
+addressable observations beneath the relevant artifacts. A neutral title does
+not require vague observations or withholding conclusions supported by data.
 
-The status rubric is the safeguard on the other side. If the strongest
-phrasing pushes the claim out of the 90% bar, it has gone too far — narrow it
-until it clears, then stop narrowing.
+`claim` leads the popup with a concrete, detailed factual statement: give the
+measure, population, period, numbers and essential qualifications. For example,
+state both the UK asylum total and its per-person European comparison. Do not
+remove qualifications needed to make a claim true, or strengthen it to serve a
+viewpoint. `claimSources` lists the one-based sources supporting the lead.
+For unsupported or uncertain assertions, `assessedClaim` preserves the assertion
+being assessed separately from the corrective finding.
 
-**When two viewpoints want opposite emphases from one dataset, that is
-usually two facts**, each true, each phrased for its use. `uk-immigration`
-splits the ONS migration series exactly this way:
-`immigration-against-the-long-run` leads on gross immigration against sixty
-years of history, and `net-migration-peak-and-fall` leads on the fall. Both
-are well-supported, both draw on the same workbook, and the restrictionist
-and the liberal viewpoints cite the one that carries their argument. Neither
-is a spin of the other, because each says in its body what the other says
-too.
+### The body and reading order
 
-Facts nobody cites stay plainly phrased. Strength of phrasing is work done
-for a viewpoint; where no viewpoint is leaning on it, that work has no
-customer.
+Every fact requires a body. Put the most useful evidence first:
 
-### The body
+1. **Intro and key point**, with a concrete finding and linked citations.
+2. **A sequence of graphs, artifacts or data**, using different slices to supply
+   time, place and group context. Each artifact is a main heading; omit umbrella
+   headings that merely repeat its contents. Put its Observations and, when
+   genuinely interesting, Subtleties directly beneath it in collapsed expandos.
+   Keep essential qualifications visible beside the data.
+3. **Related Data**, only for distinct questions that deserve their own
+   evidence and treatment. Findings about the displayed data belong in that
+   graph’s Observations, with viewpoint pills linking directly to the observation.
+4. **One Sources expando at the end**, with footnotes opening the relevant citation.
 
-Required on every fact, whatever its status — the build rejects an empty one.
-A claim plus a status badge is exactly the true-but-misleading number this
-project exists to defuse.
 
-**Format: short lead, then bullets.** Each bullet opens with a bold one-line
-claim that stands alone, followed by the sentence or two backing it. Reading
-only the bold lines should give the reader the fact. From
-`immigration-against-the-long-run`:
+**Graphs provide the context.** Show change over time and comparisons between
+countries wherever these are meaningful. Missing comparisons need a specific,
+defensible reason, documented in the chart note or an addressable Subtlety:
+for example, a one-off measurement or incompatible national definitions. Country
+comparison is not required for topics that cannot sensibly be sliced by country;
+use the relevant groups instead. Lack of effort is not a reason. Search for data
+before claiming it is unavailable, and offer the closest useful comparison with
+its limits made explicit. Similarity or rarity alone does not make something
+good or bad. Never substitute asylum claims for illegal entries or stocks for flows.
 
-> - **Gross immigration is far above any historical norm, even after two
->   years of falling.** 813,000 people moved to the UK for a year or more in
->   2025, down from the peak of 1,469,000 in the year to March 2023. …
-> - **Net migration is not unusual at all.** Net migration was 171,000 in
->   2025 — "lower than the levels seen during the 2010s", in the Migration
->   Observatory's words …
-> - **Gross and net give opposite sentences about the same year.** Gross is
->   at a historic high; net is back to something like a 2010s level. Which
->   one is meant has to be said.
+**Important sub-slices belong in the opening graphs.** If a slice is central to
+the argument—especially if a viewpoint cites it—show it there rather than hiding
+it inside a Subtlety. Link the viewpoint pill directly to its chart. A secondary
+slice may stay in Subtleties until its importance warrants promotion.
 
-**Four obligations.** Every body owes the reader all four:
+**Observations and Subtleties are scannable disclosures.** Write a short `###`
+summary under `## Observations` or `## Subtleties`, followed by the detail and
+citations. Both render as native expandos, collapsed by default. Their stable
+finding IDs let links open, scroll to and highlight a specific item. Let summary
+lines wrap on narrow screens rather than truncate meaning. Observations help
+readers interpret the charts; Subtleties qualify the conclusions they can draw.
 
-1. **What it measures and what it does not.** Scope and denominator. Most
-   misleading numbers are definitional rather than false — net versus gross,
-   long-term versus all arrivals, applications versus grants, foreign-born
-   versus foreign-national. Say which one this is, and say which one a reader
-   may be assuming.
-2. **How it compares.** Across time: the series, and where the current
-   reading sits in it. Across space: comparable countries, other categories,
-   the historical norm. A number with nothing beside it can be made to mean
-   anything.
-3. **How confident to be.** Provisional status, known revisions, sample
-   limits, how much the figure has moved between releases.
-   `immigration-against-the-long-run` gives this a bullet of its own —
-   "**How confident to be.** ONS changed method in June 2021 and says
-   comparisons across that break 'should be treated with caution'."
-4. **What it is commonly mistaken for, stated concretely.** Name the
-   misleading argument this fact gets recruited into and defuse it here, at
-   the point of use — not in a viewpoint, where only one side's readers will
-   meet it. `religion-of-arrivals-is-not-recorded` names its four:
-   "**Four things the chart is not.** It is a stock measured on one day in
-   2021 … It covers England and Wales only. And it records affiliation … not
-   belief or practice."
+Use a consistent editorial hierarchy. The article title is the largest type.
+Major section labels (Observations, Subtleties, Sources) use uppercase sans-serif,
+letter spacing, a dividing rule and generous space before them. Finding headings
+use sentence-case serif type, larger than body text and moderately bold. Keep
+paragraphs regular weight at body size; reserve bold for short emphasis. Chart
+descriptions are minor subtitles: smaller, regular-weight sans-serif in secondary
+text color beneath the chart title. Chart titles use sans-serif, with smaller uppercase reading
+labels and quiet source credits. Never give every heading level the same style.
 
-Items 1 and 4 are what stop a fact being quoted against itself, and they are
-the two authors skip. Do not skip them.
+The design references are [LessWrong](https://www.lesswrong.com/),
+[Substack](https://substack.com/) and
+[Our World in Data](https://ourworldindata.org/population-growth): borrow their
+attention to reading measure, whitespace and distinct editorial/chart typography.
+Check long and short facts in both the popup and standalone page, on desktop and
+mobile. Hierarchy must survive without relying on bold everywhere.
+
+Long explanations of sourcing, collation, derivation and methodology belong in
+an expando, normally the chart's **About this data**. This includes “derived,
+not published”, denominator provenance, coverage details and calculation steps.
+Keep publisher names visible below plots, and keep material interpretive caveats
+visible beside affected claims. The explanation of why a curve rose or fell is
+reader-facing Observations, not methodology to hide.
+
+Every body must explain what is measured and excluded, how it compares over time
+and across countries, how confident to be, and what it is commonly mistaken for.
+
+### Addressable findings and source footnotes
+
+One popup may contain several statistics. Give each finding a stable section ID:
+
+```markdown
+## Observations {#example--observations}
+
+### Why arrivals fell {#example--why-arrivals-fell}
+
+The factual explanation. [1](#source-example-1)
+
+## Subtleties {#example--subtleties}
+```
+
+Link a pill to `#fact-example/why-arrivals-fell`; it opens the fact, scrolls the
+section into view and highlights it. Keep IDs when rewriting headings. A link to
+a supporting fact opens its parent article at that finding; standalone URLs
+remain usable. `/finding` targets the opening finding.
+
+Footnote-link each sourced statement or number where it appears, rather than
+leaving readers to infer which reference supports it. A chart must also show a
+subtle publisher name immediately below each plot, linked to its full citation.
+Source numbers follow fact frontmatter order, then the series source, then each
+reading's additional source. Update footnotes and `claimSources` if that order
+changes. Full references, including quoted evidence, belong at the article end.
 
 ---
 
@@ -321,26 +382,18 @@ date right — a wrong date on a citation is exactly what this project is
 judged on, which is why the schema validates the date shape down to the month
 range rather than accepting any string.
 
-**Every figure asserted in any prose must trace to a quote on the page.**
-`pnpm check:figures` reads the markdown bodies of every fact, viewpoint,
-principle and crux and fails the build if a money, percentage or thousands
-figure in them appears in no `quote` anywhere in the topic. It runs in CI. It
-does not check frontmatter, because claims and crux positions are covered
-elsewhere; bodies are the gap, and prose is where an unsourced figure hides.
+**Every prose figure must be sourced or reproducibly derived.**
+`pnpm check:figures` checks prose numbers against topic source quotes and
+validated `derivedFigures` calculations. A passing check does not establish
+that the citation supports the meaning, scope or causal interpretation.
 
-In practice this means: when you write a number into a body, either it is
-already in a source quote you have, or you go and get the quote.
-
-**Derived figures: show the derivation and quote its inputs.** The worked
-example is the share-of-population reading on
-`immigration-against-the-long-run`. ONS publishes no share-of-population
-migration series, so the reading divides each year's flow by the ONS mid-year
-population estimate, carries its own `source` for that denominator, and says
-so in its note — including that the denominators for 1964–1970 come from an
-older ONS vintage that differs by a few thousand where the two overlap, and
-that immigration is part of why the denominator grew, so dividing by it
-understates the change. A reader can reproduce the arithmetic and disagree
-with the choice. That is the standard.
+**Derived figures: quote the inputs and document the calculation.**
+`derivedFigures` supports `ratio-percent`, `complement-percent` and `series-mean`.
+The audit checks the arithmetic and inputs. Readers should be able to reproduce
+it from the collapsed methodology explanation. For population-adjusted migration,
+source the population denominator and explain its vintages there. Absolute flows
+and population shares answer different questions; neither substitutes for the
+other. Do not let lengthy collation notes crowd out the evidence.
 
 **An honest gap beats a plausible number.** `religion-of-arrivals-is-not-recorded`
 opens by stating that no official statistic records the religion of people
@@ -353,6 +406,20 @@ it does not exist and say what gets substituted for it.
 ---
 
 ## Charts
+
+Time series use `series`. Snapshot bars use `comparisons`, each with a stable
+`id`, `title`, `description`, `unit` (`count`, `percent`, `pounds`), `valueLabel`,
+numbered `sources`, and `items` containing `label` and `value`. Optional `highlight`
+marks the subject country; `note` contains collapsed methodology. Values share a
+zero baseline and signed values extend on the correct side of it. Label scope and
+period in the visible description. Source indexes reuse the fact's citation list.
+
+`#fact-example/chart-series` targets its time series;
+`#fact-example/chart-country-comparison` targets a bar chart whose id is
+`country-comparison`. `featuredCharts` lists supporting fact IDs whose charts
+should appear among the parent's opening graphs. They render once, and citations
+still point to the supporting fact's sources in the single Sources expando.
+
 
 For facts about numbers, show the trend over time. It's very easy to give a
 misleading picture by cherry picking dates; harder if we require always
@@ -410,9 +477,23 @@ claims per 10,000 residents." Time and space in one sentence, and the
 position in the distribution given as a rank rather than as two flattering
 neighbours.
 
-**Charts come first in the fact detail**, before the prose. The reader who
-came for the number should meet the shape of the data before they meet
-anyone's account of it.
+**Charts follow the concrete opening finding**, ahead of the detailed context
+and Subtleties. Keep the graph's publisher credit visible below the plot.
+
+**Narrate the major movements.** When a graph has an obvious spike, drop,
+reversal, plateau or change of pace, explain what happened at each important
+turning point in concise, dated Observations directly beneath the relevant graph.
+Do not merely repeat its values. For migration, explain the expansion of study,
+care and humanitarian routes behind the spike, then the recruitment slowdown and
+restrictions behind the decline. Distinguish fewer arrivals from more departures;
+the explanation can change between years even while the line keeps falling.
+
+Source these explanations at the point of use. Separate a measured contribution
+from a causal explanation, and a supported cause from a plausible hypothesis.
+Check policy dates: a later restriction cannot explain an earlier turn. Note
+lags and incomplete effects when relevant. Do not manufacture a story for every
+small wiggle; if a major movement has no established explanation, say what is
+unknown. Explain measurement breaks in Method Changes so readers do not mistake them for events.
 
 ---
 
@@ -508,14 +589,21 @@ drives the page's fact order.** `rank-facts.ts` takes each viewpoint's
 `citesFacts` then `acknowledges`, in written order, and interleaves them
 round-robin: every viewpoint's first-ranked fact is placed before any
 viewpoint's second. So the first item in your `citesFacts` is your claim on
-the top of the Facts section, and reordering that list reorders the page. Put
+the top of the Data section, and reordering that list reorders the page. Put
 the fact your argument actually rests on first, not the one you happened to
 write first.
 
-Cite facts inline in prose with a plain markdown link to the anchor:
+Every empirical assertion in viewpoint prose **and summaries** should be a
+linked observation pill, including non-numeric statements and key premises that are not
+obviously true. Link the relevant phrase each time it appears; a list at the
+bottom is not a substitute. Include essential qualifications inside the pill.
+Values, preferences and purely logical reasoning remain ordinary prose.
+
+Cite observations inline with a plain markdown link to the collection and
+observation ID. The existing `#fact-` prefix remains the citation syntax:
 
 ```markdown
-[migration is not a major determinant of UK-born wages](#fact-wage-effects-small-and-uneven)
+[immigration shifted from EU to non-EU nationals](#fact-immigration-against-the-long-run/nationality-shift)
 ```
 
 The build checks that the id resolves and, in a viewpoint, that the fact is
@@ -676,8 +764,8 @@ and defeats the point of the status label.
 > After: The MAC-commissioned review puts immigration at roughly 4–6% of the
 > total rise in UK house prices over three decades.
 
-If the claim needs that much hedging, its status is not `well-supported` and
-the hedge belongs in the status field, not in the sentence.
+Replace vague hedge stacks with precise scope and evidence status. Keep any
+qualification necessary for the sentence to remain true beside the assertion.
 
 **5. An abstract summary where the concrete number would do.**
 
@@ -734,7 +822,7 @@ them.
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
-| Every money / percentage / thousands figure in a body is in a quote | `scripts/check-figures.ts` |
+| Every prose figure is quoted or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is
@@ -766,7 +854,7 @@ check behind them today — do not rely on the build to catch either:
 
 Run this before opening a pull request.
 
-**Every fact**
+**Every data collection**
 
 - [ ] Status defended under the 90% test — not "how sure do I feel", but what
       careful examination of the evidence yields.
@@ -774,17 +862,32 @@ Run this before opening a pull request.
       plus a crux? If yes, do that instead.
 - [ ] If `not-supported`: is there a positive restatement that would displace
       it? If yes, write that fact instead.
-- [ ] Claim line is the strongest true formulation, with the hedges moved
-      into the body.
-- [ ] Body: short lead, then bullets, each opening with a bold standalone
-      claim. Bold lines alone give the fact.
+- [ ] Short plain title names the point and comparison without excess numbers.
+- [ ] Detailed opening finding gives scope, period, numbers and essential
+      qualifications, with `claimSources`.
+- [ ] Opening graphs include trends and meaningful international comparisons;
+      missing comparisons have specific, defensible reasons. No Context section.
+- [ ] Important sub-slices, especially those cited by viewpoints, appear in the
+      opening graphs and pills link to the relevant chart.
+- [ ] Each Observation and Subtlety is a short, collapsed summary with details
+      and citations on expansion.
+- [ ] Observations identifies important patterns, country differences and
+      discontinuities; substantial movements have reasonable explanations with
+      citations where available and causal uncertainty made explicit.
+- [ ] Reading order: finding, each graph followed by its Observations, optional Subtleties, Sources.
+- [ ] Title, uppercase section labels, finding headings and chart labels have
+      distinct roles. Body and chart descriptions use regular weight; spacing
+      separates sections and bold is selective.
+- [ ] Long sourcing, derivation and collation explanations are collapsed.
+- [ ] Footnotes sit beside each assertion; publisher credits sit below graphs;
+      full references are at the end and every link reaches the right source.
+- [ ] Multiple findings have stable targets that pills scroll to and highlight.
 - [ ] Body covers all four obligations — what it measures and does not; how
       it compares across time and space; how confident to be; what it is
       commonly mistaken for, stated concretely.
 - [ ] Every source quote fetched and copied verbatim, with the right
       publisher and date. None written from memory.
-- [ ] Every figure in the body appears in a quote somewhere in the topic
-      (`pnpm check:figures`).
+- [ ] Every figure is quoted or has a validated derivation (`pnpm check:figures`).
 - [ ] Numeric fact carries a series, or the body says why none exists.
 - [ ] Series spans the source's full published range, marks its
       discontinuities, and carries its own source; derived readings show
@@ -811,6 +914,8 @@ Run this before opening a pull request.
 - [ ] `citesFacts` is ordered deliberately — first entry is the fact the
       argument actually rests on.
 - [ ] Every fact it leans on is in one of its three lists.
+- [ ] Every empirical assertion in prose and summaries is a pill targeting the
+      relevant finding, including key non-obvious, non-numeric premises.
 
 **Every principle**
 
@@ -870,3 +975,132 @@ an author. Quoted sources carry their own terms — quotation for this purpose
 is fair dealing, and the quote, publisher, date and URL on every source are
 what make that defensible. Reproduce, do not relicense. `LICENSE` at the repo
 root covers the code separately (MIT).
+
+### Glossary Popups
+
+Use `[gross arrivals](#glossary-gross-arrivals)` or
+`[net migration](#glossary-net-migration)` for terminology that could interrupt a
+reader. Definitions live in `lib/content/glossary.ts`; reuse the same definition
+across facts. Unknown glossary IDs fail rendering. Keep each definition short,
+plain and specific about the measurement; factual claims needing evidence belong
+in a linked fact rather than a glossary. Explain the term without opening another
+definition. The native popup works above a fact popup, dismisses on Escape or an
+outside click, and has a close button. It works without JavaScript.
+
+### Show the Parts of a Total
+
+When a chart includes a total and component lines, show every part needed to add
+up to that total. Combine minor components into a clearly named remainder if
+necessary; do not leave an unexplained gap. Use the same dates, units and coverage
+for every component. Explain any derived subtraction under “About this data” and
+verify the sum for every period. For example, detected illegal arrivals are split
+into small-boat and non-boat detected arrivals; “non-boat” here does not include
+legal immigration. If components overlap, do not present them as an additive
+breakdown.
+
+### Keep Observations With Their Graph
+
+Each graph is a main section with an h2 heading. Put its observations immediately
+below it, before the next graph, inside an Observations expando that starts closed.
+Each individual observation is also an expando, so readers choose how far to drill down. For a series reading with ID `people`, write
+`## Observations {#my-fact--observations-people}`. For a comparison with ID
+`international`, use `## Observations {#my-fact--observations-international}`.
+The renderer places these groups beneath their respective charts. Keep the `###`
+observation IDs stable when moving existing content, so viewpoint pills keep
+opening the same evidence. Graphs can be linked as `#fact-my-fact/chart-people`.
+
+Subtleties is optional. Omit it when the contents merely repeat the finding,
+describe an obvious chart feature, or explain routine methodology. Keep necessary
+measurement caveats with the graph (briefly visible if they change its meaning,
+otherwise in About this data). Reserve Subtleties for a surprising, consequential
+qualification worth the reader's attention.
+
+### Keep Observations Off the Plot
+
+Do not overlay observation circles on the plotted data. Keep vertical dashed
+lines for measurement changes, with a brief key linking to their explanations.
+Observations belong in the collapsed Observations group beneath the graph.
+Measurement changes have their own collapsed Method Changes section beside it.
+Both use expandable summaries and stable IDs for direct links. Method-change summaries identify the date and change;
+they do not need matching numbers. The `series.breaks` metadata generates these
+explanations automatically. Keep dashed segments along the data series where
+methods change, so incompatible measurements do not appear to be a continuous trend.
+
+### Nationality Breakdowns and Selectable Country Comparisons
+
+If an argument distinguishes EU from non-EU immigration, expose those series in
+the main charts. Keep a country's own nationals separate rather than folding
+returnees into a foreign-national group. Say whether the grouping is nationality,
+birthplace or previous residence; they cannot be substituted for one another.
+State membership changes and EU versus EU+ (EU plus EFTA) differences visibly.
+Country comparisons should use a consistent grouping and common year. Use the
+same population-adjusted measure for each destination, with denominator timing
+and refugee-coverage differences disclosed.
+
+A comparison can define `groups`, a `defaultGroup` index, and a `values` array on
+every item in the same group order. The default can show the slice the argument
+concerns. Readers can switch groups or select All arrivals to see a stacked total;
+the full table remains available without JavaScript. Components must sum to the
+total. Keep unknown citizenship and statelessness identifiable. If published
+rounded components do not add to the rounded total, label the adjustment and
+explain it—do not quietly count it as a measured group of migrants.
+
+Use `featuredCharts` to bring an existing supporting fact's breakdown into the
+main graph sequence, including its observation groups and measurement-change explanations. Keep
+one data definition and one set of source citations instead of copying numbers
+into a second fact.
+
+### Method Changes Have Their Own Section
+
+Keep Observations focused on patterns in the data and explanations of real-world
+events. Changes in measurement, definitions or coverage belong in a separate
+**Method Changes** expando beneath each affected graph, after Observations and
+any Subtleties. Omit this section when there are no changes to explain.
+
+Series `breaks` automatically generate dated, individually expandable entries in
+Method Changes. Keep the vertical dashed lines and their link to the relevant
+explanation, without circles. Source links refer to the series source. Preserve
+stable entry IDs so existing links still open the right explanation. Do not
+duplicate these entries under About this data; reserve that expando for general
+collation, calculations and coverage notes.
+
+### One Data Collection Can Contain Several Observations
+
+A statistic or trend already explained by a graph normally belongs in an
+observation, not in another fact card. Viewpoint pills can link directly to that
+observation. For example, the fall from the UK net-migration peak lives in the
+immigration-rates fact. Preserve old URLs with redirects when merging facts.
+
+For artifact-specific subtleties, use
+`## Subtleties {#my-fact--subtleties-people}` for the `people` reading (or a
+comparison's ID). Only include useful qualifications. The renderer places this
+expando after that artifact's Observations. General collation notes stay in About
+this data.
+
+`relatedFacts: [another-fact-id]` adds contextual connections without claiming
+that one fact supports the other, and without nesting it out of the top fact
+list. Existing `supports` values remain a legacy grouping mechanism for smaller
+facts presented within a broader fact; the UI calls these Related Data too.
+A relationship need not be strictly supportive. Avoid creating a separate fact
+when a link to an observation will do.
+
+A nationality shift, peak, decline, or explanation of a displayed pattern is
+normally an observation, even when a viewpoint cites it as a key argument. Do
+not repeat it as a Related Data card. Keep a separate related fact only when
+it answers a distinct question, rather than reinterpreting the same graph.
+
+Use `additionalSeries` for further datasets owned by the same fact, each with
+a unique `id` and the same fields as `series`. Each keeps its own coverage,
+methods, and source. Reading IDs must be unique across the fact. Sources are
+numbered in this order: fact sources, primary series and its reading sources,
+then each additional series and its reading sources. Put observations under
+`## Observations {#fact-id--observations-reading-id}`. A dataset does not need
+a separate fact simply to appear in the graph sequence.
+
+When an observation attributes a major movement to a particular country or
+route, show that contribution separately in the opening artifacts where the
+source allows. Keep the remaining category exclusive of the highlighted slice,
+and show both parts when showing their total. If the slice has a shorter
+published history, retain the long-run chart and add a clearly dated breakdown;
+never fill unavailable earlier values with zero. Distinguish nationality from
+visa route, and document coverage differences and subtraction in About this data.

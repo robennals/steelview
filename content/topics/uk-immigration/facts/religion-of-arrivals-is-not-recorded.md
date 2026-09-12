@@ -1,4 +1,7 @@
 ---
+title: Religion and Migrant Arrival Cohorts
+claimSources: [1,3,9]
+assessedClaim: "The UK does not record the religion of immigrants — the only measurement that exists is the Census, which shows the Muslim share of arrival cohorts peaking around 27% in the 1980s and 1990s and running at 16-19% for every cohort since 2001"
 claim: "The UK does not record the religion of immigrants — the only measurement that exists is the Census, which shows the Muslim share of arrival cohorts peaking around 27% in the 1980s and 1990s and running at 16-19% for every cohort since 2001"
 status: complicated
 supports: share-of-the-population-born-abroad
@@ -118,38 +121,34 @@ series:
           - { period: "2019", value: 269673 }
           - { period: "2021", value: 121058 }
 ---
-No official statistic records the religion of people arriving in the UK. The
-only measurement that exists is the Census.
+## Observations {#religion-of-arrivals-is-not-recorded--context}
 
-- **Religion is not collected anywhere in migration data.** ONS said so in a
-  published FOI response: its Census 2021 international migration release "does
-  not contain any religion statistics", and the Census holds nothing at all on
-  refugees by religion. Home Office visa and asylum datasets record nationality,
-  age, sex, route and outcome — not religion.
-- **So any per-year figure for "Muslim immigration" is one of two things.**
-  Either a Census cross-tabulation, which is a decennial stock of residents in
-  England and Wales, or a count of arrivals from Muslim-majority countries
-  presented as a religion figure. This page publishes the first and not the
-  second.
-- **The Muslim share of arrival cohorts has fallen.** It peaked at around 27% for
-  people who arrived in the 1980s and 1990s and has run between 16% and 19% for
-  every cohort arriving since 2001.
-- **The absolute numbers rose, because total arrivals rose.** The 2017-2019
-  cohort contains more Muslim residents than the whole 1981-1990 cohort does.
-  Share down, volume up; the chart carries both readings, and either one quoted
-  alone gives the wrong picture.
-- **Nationality is a bad proxy for religion in both directions.** Fewer than one
-  in ten India-born residents are Muslim, and India is the largest single
-  country of birth outside the UK, at 920,000 people. About one in twenty-five
-  England-born residents are Muslim. Sorting arrivals by passport does not sort
-  them by faith.
-- **Four things the chart is not.** It is a stock measured on one day in 2021, so
-  older cohorts have been thinned by emigration and death. The religion question
-  is voluntary, and part of every cohort did not answer it — they are in the
-  denominator of every share on the chart. It covers England and
-  Wales only. And it records affiliation — the religion someone "connects or
-  identifies with" — not belief or practice.
-- **It is not in any bulletin, which is why the reproduction is given.** The
-  table comes from the ONS custom-dataset service that the FOI response itself
-  points people to; the query is in the chart's note and its cohort totals match
-  ONS's own published year-of-arrival figures.
+### Religion is not collected anywhere in migration data {#religion-of-arrivals-is-not-recorded--religion-is-not-collected-anywhere-in-migration-data}
+
+ONS said so in a published FOI response: its Census 2021 international migration release "does not contain any religion statistics", and the Census holds nothing at all on refugees by religion. Home Office visa and asylum datasets record nationality, age, sex, route and outcome — not religion. [1](#source-religion-of-arrivals-is-not-recorded-1) [2](#source-religion-of-arrivals-is-not-recorded-2)
+
+### So any per-year figure for "Muslim immigration" is one of two things {#religion-of-arrivals-is-not-recorded--so-any-per-year-figure-for-muslim-immigration-is-one-of-two-things}
+
+Either a Census cross-tabulation, which is a decennial stock of residents in England and Wales, or a count of arrivals from Muslim-majority countries presented as a religion figure. This page publishes the first and not the second. [3](#source-religion-of-arrivals-is-not-recorded-3) [5](#source-religion-of-arrivals-is-not-recorded-5)
+
+## Subtleties {#religion-of-arrivals-is-not-recorded--subtleties}
+
+### The Muslim share of arrival cohorts has fallen {#religion-of-arrivals-is-not-recorded--the-muslim-share-of-arrival-cohorts-has-fallen}
+
+It peaked at around 27% for people who arrived in the 1980s and 1990s and has run between 16% and 19% for every cohort arriving since 2001. [9](#source-religion-of-arrivals-is-not-recorded-9)
+
+### The absolute numbers rose, because total arrivals rose {#religion-of-arrivals-is-not-recorded--the-absolute-numbers-rose-because-total-arrivals-rose}
+
+The 2017-2019 cohort contains more Muslim residents than the whole 1981-1990 cohort does. Share down, volume up; the chart carries both readings, and either one quoted alone gives the wrong picture. [9](#source-religion-of-arrivals-is-not-recorded-9)
+
+### Nationality is a bad proxy for religion in both directions {#religion-of-arrivals-is-not-recorded--nationality-is-a-bad-proxy-for-religion-in-both-directions}
+
+Fewer than one in ten India-born residents are Muslim, and India is the largest single country of birth outside the UK, at 920,000 people. About one in twenty-five England-born residents are Muslim. Sorting arrivals by passport does not sort them by faith. [5](#source-religion-of-arrivals-is-not-recorded-5) [6](#source-religion-of-arrivals-is-not-recorded-6)
+
+### Four things the chart is not {#religion-of-arrivals-is-not-recorded--four-things-the-chart-is-not}
+
+It is a stock measured on one day in 2021, so older cohorts have been thinned by emigration and death. The religion question is voluntary, and part of every cohort did not answer it — they are in the denominator of every share on the chart. It covers England and Wales only. And it records affiliation — the religion someone "connects or identifies with" — not belief or practice. [4](#source-religion-of-arrivals-is-not-recorded-4) [9](#source-religion-of-arrivals-is-not-recorded-9)
+
+### It is not in any bulletin, which is why the reproduction is given {#religion-of-arrivals-is-not-recorded--it-is-not-in-any-bulletin-which-is-why-the-reproduction-is-given}
+
+The table comes from the ONS custom-dataset service that the FOI response itself points people to; the query is in the chart's note and its cohort totals match ONS's own published year-of-arrival figures. [3](#source-religion-of-arrivals-is-not-recorded-3) [9](#source-religion-of-arrivals-is-not-recorded-9)

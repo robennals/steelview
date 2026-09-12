@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the headline fact
 // `non-citizens-share-of-convictions-and-prisons`, the supporting fact
-// `net-migration-peak-and-fall` and the headline fact
+// `immigration-shifted-from-eu-to-non-eu` and the headline fact
 // `immigration-against-the-long-run` it supports, the viewpoint
 // `a-country-should-decide-who-joins-it`, and the facts it
 // cites/acknowledges — claims "Net migration to the UK peaked at 944,000 in
@@ -17,7 +17,7 @@ const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 test('the topic page shows all four sections', async ({ page }) => {
   await page.goto(TOPIC);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  for (const section of ['Facts', 'Viewpoints', 'Principles', 'Cruxes']) {
+  for (const section of ['Data', 'Viewpoints', 'Principles', 'Cruxes']) {
     await expect(page.getByRole('heading', { name: section, level: 2 })).toBeVisible();
   }
 });
@@ -47,7 +47,7 @@ test('the Facts list states every claim and status without opening anything', as
 test('the Facts list shows no supporting fact before anything is opened', async ({ page }) => {
   await page.goto(TOPIC);
   const factsSection = page.locator('.sv-section', {
-    has: page.getByRole('heading', { name: 'Facts', level: 2 }),
+    has: page.getByRole('heading', { name: 'Data', level: 2 }),
   });
 
   // The supporting fact's own claim text is nowhere in the section...
@@ -66,15 +66,16 @@ test('the Facts list shows no supporting fact before anything is opened', async 
 test('a viewpoint lists the facts it builds on and accepts', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary').click();
+  await viewpoint.locator('summary .sv-item__claim').first().click();
+  await viewpoint.locator('.sv-evidence-index > summary').click();
   await expect(
     viewpoint.getByRole('link', {
-      name: 'Net migration to the UK peaked at 944,000 in the year to March 2023',
+      name: 'UK Immigration Trends', exact: true,
     })
   ).toBeVisible();
   await expect(
     viewpoint.getByRole('link', {
-      name: 'Health and care is the sector most dependent on migrant labour',
+      name: 'Immigration and the Health and Care Workforce', exact: true,
     })
   ).toBeVisible();
 });

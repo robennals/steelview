@@ -613,12 +613,12 @@
 
   .sv-supporting__head {
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     color: var(--ink-3);
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.75rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--rule);
   }
@@ -772,16 +772,25 @@
 
   .sv-chart__title {
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
     font-weight: 600;
-    line-height: 1.35;
+    line-height: 1.4;
     letter-spacing: -0.005em;
     color: var(--ink);
     margin: 0 0 0.4rem;
     text-wrap: balance;
   }
 
-  .sv-chart__desc,
+  .sv-chart__desc {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink-3);
+    margin: 0 0 0.75rem;
+    text-wrap: pretty;
+  }
+
   .sv-chart__range,
   .sv-chart__note {
     font-family: var(--font-sans);
@@ -909,14 +918,12 @@
     fill: none;
   }
 
+
+
   .sv-chart__break {
     stroke: var(--ink-4);
     stroke-dasharray: 2 4;
     fill: none;
-  }
-
-  .sv-chart__break-flag {
-    fill: var(--ink-4);
   }
 
   .sv-chart__line {
@@ -1465,15 +1472,63 @@
     margin-top: 0.4em;
   }
 
-  .prose-body h3,
+  .prose-body :is(h2, h3, h4) {
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  /* Section labels and finding headlines have distinct editorial roles. */
+  .prose-body h2 {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-block: 3rem 1.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .prose-body h3 {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin-block: 2rem 0.65rem;
+  }
+
   .prose-body h4 {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-top: 1.8em;
+    line-height: 1.4;
+    margin-block: 1.5rem 0.6rem;
+  }
+
+  /* Keep spacing on the section itself so margins cannot collapse through
+     addressable wrappers or disappear when the popup scrolls to a finding. */
+  .prose-body > .sv-evidence-section {
+    display: flow-root;
+    margin-block: 2rem 0;
+  }
+
+  .prose-body .sv-evidence-section > h3 {
+    margin-top: 0;
+  }
+
+  .prose-body h2 + .sv-evidence-section {
+    margin-top: 0;
+  }
+
+  .sv-evidence-section > p {
+    margin-block: 0 1em;
+  }
+
+  .sv-evidence-section > :last-child {
+    margin-bottom: 0;
   }
 
   .prose-body blockquote {
@@ -1555,7 +1610,11 @@
   }
 
   .sv-topics a:hover .sv-topics__title {
-    text-decoration: underline;
+    text-decoration: none;
+    background: var(--accent-wash);
+    padding: 0.08em 0.3em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
     text-decoration-color: var(--accent);
     text-underline-offset: 0.14em;
   }
@@ -1579,12 +1638,16 @@
      for "the evidence is solid". */
   .prose-body a.sv-cite {
     color: var(--ink);
-    text-decoration: underline;
+    text-decoration: none;
+    background: var(--accent-wash);
+    padding: 0.08em 0.3em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
     text-decoration-color: var(--accent);
     text-decoration-thickness: 2px;
     text-decoration-skip-ink: none;
     text-underline-offset: 0.18em;
-    border-radius: 2px;
+    border-radius: 0.55em;
     transition: background-color 120ms ease, box-shadow 120ms ease;
   }
 
@@ -1679,7 +1742,7 @@
   .sv-factpage__claim {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.3rem, 1.15rem + 0.7vw, 1.65rem);
+    font-size: clamp(1.875rem, 1.4rem + 1.4vw, 2.5rem);
     line-height: 1.3;
     letter-spacing: -0.02em;
     text-wrap: balance;
@@ -1695,10 +1758,9 @@
     max-width: var(--measure);
   }
 
-  /* In the panel the claim is the dialog's title, so it is set a step down —
-     it is naming what the reader just asked for, not opening a page. */
+  /* The popup title stays clearly above every heading inside the article. */
   .sv-factpage[data-variant="modal"] .sv-factpage__claim {
-    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+    font-size: clamp(1.75rem, 1.35rem + 1vw, 2.125rem);
     line-height: 1.35;
     letter-spacing: -0.015em;
   }
@@ -1881,3 +1943,210 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Evidence remains addressable in both a sheet and the full article. */
+.sv-finding { font-size: 1.15rem; line-height: 1.65; margin-block: 1rem 1.5rem; }
+.sv-footnote { vertical-align: super; font-size: .72em; white-space: nowrap; margin-inline: .15em; }
+.sv-chart__credit, .sv-references p { font-size: .8rem; color: var(--ink-3); margin-block: .5rem; }
+.sv-references { margin-top: 2.5rem; }
+.sv-references li { padding: .5rem; scroll-margin-top: 1.5rem; }
+.sv-target, .sv-factpage :target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+.sv-factpage [id] { scroll-margin-top: 1.5rem; }
+h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
+.sv-evidence-index { margin-top: 1.5rem; }
+.sv-evidence-index > summary { cursor: pointer; font-size: .85rem; }
+
+.sv-chart__methodology { margin-top: 1rem; font-size: .875rem; color: var(--ink-3); overflow-wrap: anywhere; }
+.sv-chart__methodology > summary { cursor: pointer; }
+.sv-chart__methodology[open] > summary { margin-bottom: 1rem; }
+.sv-chart__method-note { margin-block: 1rem; }
+
+/* References and supporting evidence are apparatus, not more finding headlines. */
+.sv-references > summary {
+  display: flex;
+  align-items: baseline;
+  gap: .65rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-size: .8125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--rule-strong);
+  padding-block: 1.1rem;
+}
+.sv-references > summary::-webkit-details-marker { display: none; }
+.sv-references > summary::before { content: '+'; }
+.sv-references[open] > summary::before { content: '−'; }
+.sv-references > summary:hover { color: var(--accent); }
+.sv-references > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sv-references .sv-reference-group__title {
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin-block: 1rem .5rem;
+}
+.sv-reference-group + .sv-reference-group { margin-top: 1.5rem; }
+.sv-references ol { padding-left: 1.4rem; list-style: decimal; }
+.sv-references .sv-source {
+  border-left: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  padding: .75rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.sv-references blockquote { margin-top: .65rem; color: var(--ink-2); }
+.sv-chart__credit { font-family: var(--font-sans); line-height: 1.5; }
+
+/* Observations reveal their explanation only when the reader asks for it. */
+.prose-body > .sv-observation {
+  margin: 0;
+  border-bottom: 1px solid var(--rule);
+}
+.sv-observation > summary {
+  display: flex;
+  align-items: baseline;
+  gap: .65rem;
+  padding-block: .8rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.sv-observation > summary::-webkit-details-marker { display: none; }
+.sv-observation > summary::before {
+  content: '+';
+  flex: 0 0 .7rem;
+  font-family: var(--font-sans);
+  color: var(--ink-3);
+}
+.sv-observation[open] > summary::before { content: '−'; }
+.sv-observation > summary:hover { color: var(--accent); }
+.sv-observation > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sv-observation__body { padding: .1rem 0 1rem 1.35rem; }
+.sv-observation__body > * { margin-block: 0 1em; }
+.sv-observation__body > :last-child { margin-bottom: 0; }
+
+/* The source list stays compact; a quote opens independently of its citation. */
+.sv-source-quote { margin-top: .6rem; min-width: 0; }
+.sv-source-quote > summary {
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+  list-style: none;
+  cursor: pointer;
+  color: var(--ink-3);
+}
+.sv-source-quote > summary::-webkit-details-marker { display: none; }
+.sv-source-quote > summary::before { content: '+'; flex: none; font-family: var(--font-sans); }
+.sv-source-quote[open] > summary::before { content: '−'; }
+.sv-source-quote__preview {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sv-source-quote__expanded { display: none; font-family: var(--font-sans); font-size: .8rem; }
+.sv-source-quote[open] .sv-source-quote__preview { display: none; }
+.sv-source-quote[open] .sv-source-quote__expanded { display: inline; }
+.sv-source-quote > summary:hover { color: var(--accent); }
+.sv-source-quote > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sv-references .sv-source-quote blockquote { margin-top: .65rem; border: 0; padding: 0; }
+
+.sv-comparison__rows { list-style: none; padding: 0; margin: 1rem 0 .4rem; }
+.sv-comparison__rows > li { margin-bottom: .75rem; }
+.sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
+.sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
+.sv-comparison__track { position: relative; height: .9rem; background: var(--paper-sunk); }
+.sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
+.sv-comparison__bar[data-highlight] { background: var(--accent); }
+.sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
+.sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
+.sv-comparison__rows[data-dense] > li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
+.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
+.sv-comparison__rows[data-dense] .sv-comparison__label > :last-child { grid-column: 3; text-align: right; }
+.sv-comparison__rows[data-dense] .sv-comparison__track { grid-column: 2; grid-row: 1; }
+@media (max-width: 40rem) {
+  .sv-comparison__rows[data-dense] > li { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
+}
+
+/* Definitions are a small second layer above the fact sheet. */
+.prose-body .sv-glossary__term {
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+.sv-glossary__popup {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(360px, calc(100vw - 32px));
+  height: fit-content;
+  padding: 24px 42px 24px 24px;
+  border: 1px solid #d8d4cc;
+  border-radius: 10px;
+  background: #fffdf8;
+  color: #302f2c;
+  box-shadow: 0 12px 48px #0003;
+  font: 16px/1.55 var(--font-sans), sans-serif;
+}
+.sv-glossary__popup strong { display: block; font-size: 18px; margin-bottom: 10px; }
+.sv-glossary__definition { display: block; }
+.sv-glossary__close { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; font-size: 24px; cursor: pointer; }
+.sv-glossary__term:focus-visible, .sv-glossary__close:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.sv-chart .sv-graph-heading {
+  margin: 32px 0 12px;
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+.sv-graph-observations { margin: 20px 0 32px; }
+.sv-graph-observations h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.sv-observations-group > summary, .sv-subtleties-group > summary, .sv-method-changes-group > summary {
+  cursor: pointer;
+  font: 600 15px/1.5 var(--font-sans);
+  padding: 12px 0;
+}
+.sv-observations-count { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.sv-observation-number { font: 600 12px var(--font-sans); margin-right: 6px; }
+.sv-chart__annotation-key { margin: 6px 0; font: 13px/1.5 var(--font-sans); color: #666; }
+
+.sv-comparison {
+  --sv-group-0: #1767a4;
+  --sv-group-1: #b64a22;
+  --sv-group-2: #07815f;
+  --sv-group-3: #8c8c8c;
+}
+.sv-comparison-controls { border: 0; padding: 0; margin: 18px 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.sv-comparison-controls legend { font: 600 13px var(--font-sans); margin-bottom: 8px; }
+.sv-comparison-controls button { font: 13px/1.4 var(--font-sans); padding: 7px 10px; border: 1px solid #ccc; border-radius: 5px; cursor: pointer; }
+.sv-comparison-controls button[aria-pressed="true"] { background: #222; color: white; border-color: #222; }
+.sv-comparison-legend { display: flex; flex-wrap: wrap; gap: 10px; font: 12px var(--font-sans); }
+.sv-comparison-legend i { display: inline-block; width: 10px; height: 10px; margin-right: 4px; }
+.sv-breakdown-table { overflow-x: auto; }
+.sv-breakdown-table table { width: 100%; font: 12px/1.5 var(--font-sans); border-collapse: collapse; }
+.sv-breakdown-table th, .sv-breakdown-table td { padding: 6px; border-bottom: 1px solid #ddd; text-align: right; }
+.sv-breakdown-table th:first-child { text-align: left; }

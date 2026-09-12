@@ -560,3 +560,73 @@ test('rule 14: mixed period granularity orders the way a reader would order it',
   });
   assert.deepEqual(validateTopic(t), []);
 });
+
+test('evidence targets and source footnotes must resolve, including summaries', () => {
+  const topic = soundTopic();
+  topic.facts[0].body = '## Context {#alpha--context}\n\nMeasured. [1](#source-alpha-1)';
+  topic.viewpoints[0].summary = '[finding](#fact-alpha/context)';
+  assert.deepEqual(validateTopic(topic), []);
+  topic.viewpoints[0].summary = '[finding](#fact-alpha/missing)';
+  assert.ok(validateTopic(topic).some(error => error.includes('unknown section')));
+  topic.facts[0].claimSources = [9];
+  topic.facts[0].body += '\n[9](#source-alpha-9)';
+  assert.ok(validateTopic(topic).some(error => error.includes('unknown lead source')));
+  assert.ok(validateTopic(topic).some(error => error.includes('unknown source reference')));
+});
+
+test('comparison charts require valid citations and unique IDs', () => {
+  const topic = soundTopic();
+  const chart = { id: 'countries', title: 'Comparison', description: 'Same period', unit: 'count' as const, valueLabel: 'People', sources: [2], items: [{ label: 'A', value: 10 }, { label: 'B', value: 20 }] };
+  topic.facts[0].comparisons = [chart, chart];
+  const errors = validateTopic(topic);
+  assert.ok(errors.some(e => e.includes('unknown comparison source 2')));
+  assert.ok(errors.some(e => e.includes('duplicate comparison chart id countries')));
+});
+
+test('featured charts must come from supporting facts with visual evidence', () => {
+  const topic = soundTopic();
+  topic.facts[0].featuredCharts = ['gamma'];
+  assert.ok(validateTopic(topic).some(e => e.includes('featured chart gamma')));
+  topic.facts[1].supports = 'alpha';
+  topic.facts[1].comparisons = [{ id: 'groups', title: 'Groups', description: 'Modelled values', unit: 'count', valueLabel: 'Count', sources: [1], items: [{ label: 'A', value: 10 }, { label: 'B', value: 20 }] }];
+  topic.facts[0].body = '[The slice](#fact-gamma/chart-groups)';
+  assert.ok(!validateTopic(topic).some(e => e.includes('featured chart') || e.includes('unknown section')));
+});
+
+
+
+test('comparison groups must cover every component and sum to the total', () => {
+  const topic = soundTopic();
+  const chart = { id: 'countries', title: 'Countries', description: 'Nationality', unit: 'count' as const, valueLabel: 'People', sources: [1], groups: ['EU', 'Non-EU'], defaultGroup: 1, items: [{ label: 'A', value: 10, values: [3, 7] }, { label: 'B', value: 20, values: [5, 15] }] };
+  topic.facts[0].comparisons = [chart];
+  assert.deepEqual(validateTopic(topic), []);
+  chart.items[0].values = [3, 6];
+  assert.ok(validateTopic(topic).some(e => e.includes('sum to the total')));
+  chart.defaultGroup = 2;
+  assert.ok(validateTopic(topic).some(e => e.includes('invalid default comparison group')));
+});
+
+test('related facts permit contextual connections but must resolve', () => {
+  const topic = soundTopic();
+  topic.facts[0].relatedFacts = [topic.facts[1].id];
+  assert.deepEqual(validateTopic(topic), []);
+  topic.facts[0].relatedFacts.push('missing');
+  assert.ok(validateTopic(topic).some(error => error.includes('related fact missing')));
+});
+
+test('additional datasets validate their own coverage and share the fact source list', () => {
+  const topic = topicWithSeries();
+  const extra = { id: 'nationality', ...series() };
+  extra.readings[0].id = 'nationality-arrivals';
+  topic.facts[0].additionalSeries = [extra];
+  topic.facts[0].claimSources = [3];
+  assert.deepEqual(validateTopic(topic), []);
+  extra.readings[0].lines[0].points.shift();
+  assert.ok(validateTopic(topic).some(error => error.includes('starts at')));
+});
+
+test('datasets cannot reuse reading IDs, which would make observation links ambiguous', () => {
+  const topic = topicWithSeries();
+  topic.facts[0].additionalSeries = [{ id: 'nationality', ...series() }];
+  assert.ok(validateTopic(topic).some(error => error.includes('chart IDs must be unique')));
+});

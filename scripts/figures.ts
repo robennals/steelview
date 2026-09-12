@@ -30,6 +30,7 @@ export const FIGURE =
 export function canonical(text: string): string {
   return text
     .toLowerCase()
+    .replace(/per cent/g, '%')
     .replace(/[   ]/g, ' ')
     .replace(/(\d),(\d{3})/g, '$1$2')
     .replace(/(\d),(\d{3})/g, '$1$2') // twice: 1,234,567 has overlapping groups
@@ -113,7 +114,7 @@ export function collectQuotes(node: unknown, into: string[] = []): string[] {
 export function quoteCorpus(quotes: readonly string[]): QuoteCorpus {
   const tokens = new Set<string>();
   for (const quote of quotes) {
-    for (const match of quote.match(QUOTE_NUMBER) ?? []) {
+    for (const match of quote.replace(/per cent/gi, '%').match(QUOTE_NUMBER) ?? []) {
       const token = canonical(match);
       if (token.length > 0) tokens.add(token);
     }

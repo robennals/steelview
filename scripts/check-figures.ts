@@ -38,6 +38,8 @@ import { loadPrinciples, ContentError } from '../lib/content/load';
 import { topicFrontmatterSchema } from '../lib/content/schema';
 import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere } from './figures';
 
+import { verifiedDerivedFigures } from './derived-figures';
+
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
 const KINDS = ['facts', 'viewpoints', 'cruxes'] as const;
@@ -92,7 +94,8 @@ async function auditTopic(slug: string): Promise<{ unmatched: Finding[]; advisor
 
   const quotes: string[] = [];
   for (const item of items) collectQuotes(item.data, quotes);
-  const corpus = quoteCorpus(quotes);
+  const derived = items.flatMap(item => verifiedDerivedFigures(item.data));
+  const corpus = quoteCorpus([...quotes, ...derived]);
 
   const unmatched: Finding[] = [];
   const advisories: Finding[] = [];

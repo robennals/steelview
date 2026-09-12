@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // These assertions depend on authored uk-immigration content: the headline
 // fact `non-citizens-share-of-convictions-and-prisons`, the supporting fact
-// `net-migration-peak-and-fall` (body text "Net migration in YE December
+// `immigration-shifted-from-eu-to-non-eu` (body text "Net migration in YE December
 // 2025 was 171,000.") and the headline fact `immigration-against-the-long-run`
 // it supports, the viewpoint `a-country-should-decide-who-joins-it`, and the
 // fact `health-and-care-relies-on-migrant-workers` (claim "Health and care is
@@ -34,13 +34,13 @@ test('a fact URL loaded cold renders the standalone page', async ({ page }) => {
 // A supporting fact is evidence for a headline claim and says little standing
 // alone, so its page states that claim before any of the detail and links to it.
 test('a supporting fact page makes its parent obvious and links to it', async ({ page }) => {
-  await page.goto(factUrl('net-migration-peak-and-fall'));
+  await page.goto(factUrl('care-worker-route-fiscally-negative'));
   const parent = page.locator('.sv-parentnote__claim');
   await expect(parent).toBeVisible();
-  await expect(parent).toHaveAttribute('href', factUrl('immigration-against-the-long-run'));
-  await expect(page.locator('.sv-parentnote__label')).toHaveText('Evidence for');
+  await expect(parent).toHaveAttribute('href', factUrl('skilled-worker-fiscal-gain-concentrated'));
+  await expect(page.locator('.sv-parentnote__label')).toHaveText('Related to');
   await expect(
-    page.getByText('Net migration in YE December 2025 was 171,000.', { exact: false })
+    page.locator('.sv-finding').filter({ hasText: '36,000' })
   ).toBeVisible();
 
   // Following it goes to the parent's address. Within a topic a fact always
@@ -48,22 +48,22 @@ test('a supporting fact page makes its parent obvious and links to it', async ({
   // panel — one Back from the fact they came from, and the URL is the
   // parent's either way.
   await parent.click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl('immigration-against-the-long-run')}$`));
-  await expect(page.locator('#sv-modal-title')).toContainText('Long-term immigration');
+  await expect(page).toHaveURL(new RegExp(`${factUrl('skilled-worker-fiscal-gain-concentrated')}$`));
+  await expect(page.locator('#sv-modal-title')).toContainText('Immigration and Public Finances');
 });
 
 test('clicking a cross-reference chip opens the fact it points at', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary').click();
+  await viewpoint.locator('summary .sv-item__claim').first().click();
   await viewpoint
     .getByRole('link', {
-      name: 'Health and care is the sector most dependent on migrant labour',
+      name: 'Immigration and the Health and Care Workforce', exact: true,
     })
     .click();
   await expect(page).toHaveURL(new RegExp(`${factUrl('health-and-care-relies-on-migrant-workers')}$`));
   await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
-    'Health and care is the sector most dependent on migrant labour'
+    'Immigration and the Health and Care Workforce'
   );
 });
 
@@ -96,14 +96,16 @@ test.describe('with JavaScript disabled', () => {
     await page.goto(factUrl('immigration-against-the-long-run'));
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
     await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
-    await expect(page.locator('.sv-stance blockquote').first()).toBeVisible();
-    // Its supporting fact travels with it, and opens where it stands.
-    const child = page.locator('details.sv-subfact').first();
-    const quote = child.getByText('Net migration in YE December 2025 was 171,000', {
-      exact: false,
-    });
+    await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
+    await page.locator('.sv-references > summary').click();
+    await page.locator('.sv-source-quote > summary').first().click();
+    await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
+    // The merged observation and its graph work without JavaScript too.
+    await page.locator('#immigration-against-the-long-run--observations-nationality-arrivals > summary').click();
+    const child = page.locator('#immigration-against-the-long-run--nationality-shift');
+    const quote = child.locator('.sv-observation__body');
     await expect(quote).toBeHidden();
-    await child.locator('summary').click();
+    await child.locator(':scope > summary').click();
     await expect(quote).toBeVisible();
   });
 });

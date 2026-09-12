@@ -60,7 +60,8 @@ type BodiedItem = { id: string; body: string };
 
 export async function buildBodies(
   topic: {
-    viewpoints: BodiedItem[];
+    facts?: Topic['facts'];
+    viewpoints: (BodiedItem & { summary?: string })[];
     principles: BodiedItem[];
     cruxes: BodiedItem[];
   },
@@ -74,7 +75,8 @@ export async function buildBodies(
   ];
   for (const [kind, items] of kinds) {
     for (const item of items) {
-      bodies.set(bodyKey(kind, item.id), await renderMarkdown(item.body, slug));
+      bodies.set(bodyKey(kind, item.id), await renderMarkdown(item.body, slug, topic.facts));
+      if ('summary' in item && typeof item.summary === 'string') bodies.set(`summary:${item.id}`, await renderMarkdown(item.summary, slug, topic.facts));
     }
   }
   return bodies;
@@ -118,7 +120,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
       {headline.length > 0 && (
         <section className="sv-section">
           <div className="sv-section__head">
-            <h2 className="sv-section__title">Facts</h2>
+            <h2 className="sv-section__title">Data</h2>
           </div>
           <FactList slug={topic.slug} facts={shownFacts} />
           {restFacts.length > 0 && (
@@ -132,7 +134,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
             <details className="sv-more">
               <summary className="sv-more__summary">
                 <span className="sv-more__label" data-when="closed">
-                  Show {restFacts.length} more {restFacts.length === 1 ? 'fact' : 'facts'}
+                  Show {restFacts.length} more data {restFacts.length === 1 ? 'collection' : 'collections'}
                 </span>
                 <span className="sv-more__label" data-when="open">
                   Show fewer
@@ -157,6 +159,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
               slug={topic.slug}
               viewpoint={viewpoint}
               bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
+              summaryHtml={bodies.get(`summary:${viewpoint.id}`)}
               factsById={factsById}
               principlesById={principlesById}
             />
@@ -206,7 +209,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const bodies = await buildBodies(topic, slug);
   // Warm the visible headline rows first, then the remaining facts and citations.
   const previews = [...headlineFacts(topic.facts), ...topic.facts.filter((fact) => fact.supports)].map((fact) => ({
-    href: factPath(slug, fact.id), id: fact.id, claim: fact.claim,
+    href: factPath(slug, fact.id), id: fact.id, claim: fact.title ?? fact.claim,
   }));
 
   /*

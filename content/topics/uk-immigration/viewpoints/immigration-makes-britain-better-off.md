@@ -1,6 +1,6 @@
 ---
 name: Immigration makes Britain better off, and we should welcome it
-summary: Every charge laid against immigration has been measured, and the measurements come back small — while the gains, in wards and labs and building sites, are large and immediate.
+summary: "The [estimated wage effects are small](#fact-wage-effects-small-and-uneven/what-is-established-is-a-small-unevenly-distributed-effect) and [skilled-worker fiscal contributions are positive](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive). Britain should welcome immigration and address pressures where they arise."
 order: 3
 citesFacts:
   - skilled-worker-fiscal-gain-concentrated
@@ -13,7 +13,6 @@ citesFacts:
 acknowledges:
   - immigration-against-the-long-run
   - share-of-the-population-born-abroad
-  - net-migration-peak-and-fall
   - immigration-is-salient-and-objection-varies-by-route
   - care-worker-route-fiscally-negative
 setsAside:
@@ -24,107 +23,18 @@ principles:
   - gains-from-open-exchange
   - democratic-consent-over-membership
 ---
-This is an argument about whether Britain is better off, and it is worth saying at
-the top what it is not. It is not the claim that Britain owes anybody entry. That
-case is made elsewhere on this page and it is a good one, but it is a different
-case, and tangling the two has done the openness argument real damage: it lets an
-economic claim be answered with "we cannot take everyone" and a moral claim be
-answered with a spreadsheet. The claim here is narrower and, on the evidence,
-stronger. Britain is materially better off for the people who came. Every charge
-laid against them has been measured, in most cases by the government's own
-advisers, and the measurements come back small.
+The case for welcoming immigration should answer the strongest objections, not dismiss them. I favour openness because the evidence gives good reasons to welcome people, alongside reasons to manage particular pressures. It does not require pretending that every route, every worker or every neighbourhood has the same experience.
 
-Take the charges in turn, each at its strongest, and look at what the evidence
-actually shows.
+**Wages.** [The MAC found migration was not a major determinant of UK-born wages, with small negative effects for lower-skilled workers and small positive effects for higher-skilled workers](#fact-wage-effects-small-and-uneven/what-is-established-is-a-small-unevenly-distributed-effect). [The employment findings were also small and subject to uncertainty](#fact-wage-effects-small-and-uneven/employment-effects-are-smaller-still-and-less-certain). That is a reason to target help at affected workers, rather than make immigration the general explanation for weak living standards.
 
-**Wages.** The claim is that immigration undercut British workers. The Migration
-Advisory Committee, after commissioning new research specifically to find this
-effect, concluded that migration is not a major determinant of UK-born wages —
-mildly negative at the bottom, mildly positive at the top, small either way. Real
-wages in Britain stagnated for fifteen years. That happened because of a
-financial crisis, a decade of weak investment and the worst productivity
-performance in the G7, and no serious economist attributes it to migration.
-Whoever told a warehouse worker in Doncaster that Poles took his pay rise was
-selling him something.
+**Housing.** [A MAC-commissioned review suggests immigration could explain roughly 4–6% of the rise in UK house prices over three decades](#fact-housing-cost-effect-positive-but-small/finding). [The estimate draws on international research and is not a precise UK causal estimate](#fact-housing-cost-effect-positive-but-small/it-is-a-review-not-a-single-uk-estimate). I accept that extra demand matters, especially [where construction cannot respond](#fact-housing-cost-effect-positive-but-small/the-direction-is-not-in-doubt). My preferred response is to allow more housing and provide infrastructure, rather than ask a migration cap to solve the whole problem.
 
-**Housing.** The claim is that immigration priced people out. The systematic
-review commissioned for the Migration Advisory Committee puts immigration at
-roughly 4–6% of the total rise in UK house prices over three decades. This is not
-a rounding error and this argument does not pretend it is zero: more people in a
-place where building is blocked does raise prices there. But the other 94% is
-Britain's own doing — a planning system that lets a minority of existing owners
-veto construction, decades of not building social housing, and a tax system that
-treats a house as a pension. Blaming migrants for that is blaming the passengers
-for the size of the bus.
+**Training.** [Research commissioned by the MAC found no negative effect on training of UK-born workers, and some evidence of a positive effect](#fact-overseas-recruitment-and-domestic-training/no-negative-effect-on-training-was-found-and-one-study-found-a-positive-one). [Those studies predate the post-2021 sponsored system](#fact-overseas-recruitment-and-domestic-training/those-studies-were-estimated-on-eea-free-movement). That limitation should prompt further research. It should not license either side to assert the result in advance.
 
-**Training.** The claim is that cheap overseas labour let employers stop training
-British workers. This one was actually tested. The research the Migration Advisory
-Committee commissioned found no negative effect of migration on the training of
-UK-born workers, and found some evidence of a positive one — more skilled
-migrants, more training available. Employer training spending has been falling
-for twenty years, including in sectors that never saw a migrant worker, and it
-fell because British firms stopped investing in general. The honest caveat is that
-this evidence comes from the free-movement era and nobody has studied the
-sponsored system that replaced it, which is a reason to run the study rather than
-to assume its result.
+**Crime.** [Non-UK citizens accounted for 13.1% of cautions or convictions in 2024 and 12.1% of the prison population in June 2025, roughly matching their adult population share](#fact-non-citizens-share-of-convictions-and-prisons/on-what-can-be-counted-non-citizens-are-roughly-where-their-numbers-put-them). [The comparison is lower after accounting for age](#fact-non-citizens-share-of-convictions-and-prisons/adjusting-for-age-lowers-the-share-further). But [convictions do not measure all offending](#fact-non-citizens-share-of-convictions-and-prisons/it-is-not-a-measurement-of-offending), and [nationality does not identify everyone who migrated](#fact-non-citizens-share-of-convictions-and-prisons/nationality-is-not-country-of-birth). I would not turn these figures into a claim that every concern is imaginary; I would insist on evidence for the particular concern.
 
-**Crime.** The claim barely gets made in policy documents and is made constantly
-everywhere else. Non-UK citizens are about 13% of cautions and convictions and 12%
-of the prison population, against roughly 13.5% of the adult population — and
-because they are younger than average, and offending is a young person's activity,
-the age-adjusted comparison is better still. The figures vary by nationality and by
-offence, and conviction data is not offending data, so nobody should claim the
-reverse either. But the specific fear, measured in the one place it can be
-measured, is not there.
+**Public finances and services.** [The Skilled Worker route is modelled as fiscally positive over a lifetime](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive). [The gain is concentrated among main applicants and higher earners](#fact-skilled-worker-fiscal-gain-concentrated/chart-earnings-concentration), so this is not proof that all immigration pays for itself. [Health and care accounts for a quarter of jobs held by employees registered with non-EU nationality](#fact-health-and-care-relies-on-migrant-workers/a-quarter-of-the-jobs-held-by-recent-non-eu-migrants-are-in-health-and-care). The work matters alongside its fiscal balance, and [the care-worker fiscal model omits potentially important wider benefits](#fact-care-worker-route-fiscally-negative/it-counts-fiscal-flows-only).
 
-**The public finances.** The claim is that migrants take out more than they put
-in. The Migration Advisory Committee's own lifetime modelling finds the Skilled
-Worker route clearly fiscally positive, with a cohort contribution measured in
-tens of billions. And note the comparator that rarely gets quoted: the average UK
-resident is also a lifetime net fiscal cost, with a median of about minus
-£145,000, because the country runs a structural deficit. Any test that migrants
-are asked to pass and residents are not is a test designed to be failed.
+The concessions are real. [Gross immigration remains high against the historical series](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling), and [the foreign-born share of England and Wales rose from 4.3% in 1951 to 16.8% in 2021](#fact-share-of-the-population-born-abroad/the-share-has-roughly-quadrupled-since-the-war). [Care workers are modelled as a lifetime fiscal cost](#fact-care-worker-route-fiscally-negative/finding). [Public concern varies sharply by route](#fact-immigration-is-salient-and-objection-varies-by-route/the-public-does-not-hold-one-view-of-immigration-it-sorts-by-route). An openness policy owes people an answer about capacity, funding and consent, not just an aggregate gain.
 
-Then there is the part that is not a defence but an accounting of what the country
-has been getting for free. Health and social care is
-the most migrant-dependent sector in the economy: a quarter of all jobs held by
-recent non-EU migrants are in it, and care and health professional roles have the
-highest non-EU-born shares of any occupation in the country. The people who
-staffed the wards through the pandemic and who wash and feed other people's
-parents for a little over minimum wage are the same people now being described in
-policy documents as a fiscal problem. They are a fiscal problem for exactly one
-reason: Britain decided care work should be paid badly. That is a decision about
-British wages, not about foreign workers, and the honest way to fix it is to pay
-more, not to deport the consequence.
-
-And the demography is not optional. Deaths now exceed births. Net migration is
-the only source of population growth the country has for the next twenty-five
-years. Every proposal for drastically lower numbers is, whether or not it says
-so, a proposal for a smaller and older population — fewer working-age taxpayers
-funding more pensioners and more care. The people who most want that outcome are
-generally the people who will need the care.
-
-What this view concedes, and should. The scale was real and it was fast. Net
-migration of 944,000 in one year was too fast, and pretending otherwise insults
-people whose GP surgery and school and rented flat all got harder to get in the
-same eighteen months. Nor can this argument wave away the long run: gross
-immigration ran at about 325,000 a year in the 1990s and is 813,000 now, higher
-than every year before 2018, and the share of England and Wales born outside the UK
-has gone from 4.3% in 1951 to 16.8% in 2021. Those are large changes by any
-standard, and "the effects we can measure are small" is a claim about effects, not
-a claim that nothing happened. Someone who finds the pace itself objectionable has
-not been refuted by any number on this page. And the care worker route was badly
-designed: admitting people to a job priced below the level at which anyone can be a
-net contributor, and then acting surprised at the fiscal result, was a failure of
-policy that fell hardest on the workers it recruited, many of whom were exploited
-by the sponsors who held their visas.
-
-Two things this argument declines to use. It will not claim the public secretly
-agrees. Immigration has been a top-tier concern since 2022, around half the public
-says numbers are too high whenever it is asked plainly, and the strength of
-objection to asylum is not an artefact of any pollster. That the aggregate figure
-moves twenty points with question wording is a reason for humility on both sides,
-not a licence to pick the friendly poll. And it will not say migrants
-cannot claim benefits. Most cannot, for at least five years, under the No
-Recourse to Public Funds rule — but refugees can from the day they are recognised,
-and everyone uses the NHS from day one. The case does not need the tidier version.
+Finally, [official projections attribute future population growth to net migration because deaths are projected to exceed births](#fact-migration-is-the-only-source-of-population-growth/finding). That does not dictate an ideal number. It does mean that the choice should be made with its demographic assumptions visible. My preference is to welcome people and invest in the places where they live, while confronting the costs honestly.

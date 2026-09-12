@@ -1,5 +1,7 @@
 ---
-claim: "Deterrence policies such as offshoring or restricted status would substantially reduce Channel crossings"
+title: Asylum Policy and Deterrence
+claimSources: [1]
+claim: "Available research suggests asylum-policy deterrent effects tend to be small; it does not establish how much proposed UK offshoring policies would reduce Channel crossings."
 status: unknown
 supports: asylum-claims-in-historical-and-european-context
 sources:
@@ -16,18 +18,18 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-01-23"
 ---
-Whether deterrence policies would substantially reduce Channel crossings is not
-settled by the available evidence.
+## Observations {#deterrence-would-reduce-channel-crossings--context}
 
-- **The measured deterrent effects are small.** The Migration Observatory's
-  reading of the evidence is that "the deterrent effect of asylum policies tends
-  to be small", and that it is "difficult to state conclusively" what new
-  policies will do.
-- **Australian arrivals did fall, but the mechanism is disputed.** The Migration
-  Observatory cites analysts arguing that the main reason Australia reduced small
-  boat arrivals was turning boats around at sea — physical enforcement rather
-  than offshore processing, and a different policy with different legal and
-  practical obstacles in the Channel.
-- **So the claim is untested in the form proposed** rather than refuted. It is
-  tagged unknown because the evidence on deterrence policy and the Australian
-  episode point different ways, and neither settles it.
+### The measured deterrent effects are small {#deterrence-would-reduce-channel-crossings--the-measured-deterrent-effects-are-small}
+
+The Migration Observatory's reading of the evidence is that "the deterrent effect of asylum policies tends to be small", and that it is "difficult to state conclusively" what new policies will do. [1](#source-deterrence-would-reduce-channel-crossings-1)
+
+### Australian arrivals did fall, but the mechanism is disputed {#deterrence-would-reduce-channel-crossings--australian-arrivals-did-fall-but-the-mechanism-is-disputed}
+
+The Migration Observatory cites analysts arguing that the main reason Australia reduced small boat arrivals was turning boats around at sea — physical enforcement rather than offshore processing, and a different policy with different legal and practical obstacles in the Channel. [2](#source-deterrence-would-reduce-channel-crossings-2)
+
+## Subtleties {#deterrence-would-reduce-channel-crossings--subtleties}
+
+### So the claim is untested in the form proposed {#deterrence-would-reduce-channel-crossings--so-the-claim-is-untested-in-the-form-proposed}
+
+rather than refuted. It is tagged unknown because the evidence on deterrence policy and the Australian episode point different ways, and neither settles it. [2](#source-deterrence-would-reduce-channel-crossings-2)

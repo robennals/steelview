@@ -60,7 +60,7 @@ test('a fact page states in machine-readable form what it is', async ({ page }) 
   await page.goto(FACT);
   const raw = await page.locator('script[type="application/ld+json"]').textContent();
   const data = JSON.parse(raw ?? '{}');
-  expect(data['@type']).toBe('Claim');
+  expect(data['@type']).toBe('CollectionPage');
   expect(new URL(data.url).pathname).toBe(FACT);
   expect(data.name).toBe(await page.locator('h1.sv-factpage__claim').textContent());
   expect(new URL(data.isPartOf['@id']).pathname).toBe(TOPIC);

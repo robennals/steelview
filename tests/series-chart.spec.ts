@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 // Depends on authored uk-immigration content: the headline fact
 // `immigration-against-the-long-run` carries the ONS 1964–2025 series, with
 // two readings (people, share of population) and three annotated breaks, and
-// holds the supporting fact `net-migration-peak-and-fall`.
+// holds the supporting fact `immigration-shifted-from-eu-to-non-eu`.
 
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
@@ -23,7 +23,7 @@ test.describe('with JavaScript disabled', () => {
     await page.locator(row(HEADLINE)).click();
     const fact = page.locator('article.sv-factpage');
 
-    const charts = fact.locator('.sv-chart__svg[data-variant="wide"]');
+    const charts = fact.locator(`#${HEADLINE}--chart-series .sv-chart__svg[data-variant="wide"]`);
     await expect(charts).toHaveCount(2); // one per reading
 
     // Each plot is an image with a name and a description, both real elements
@@ -32,12 +32,12 @@ test.describe('with JavaScript disabled', () => {
     await expect(plot).toHaveAttribute('role', 'img');
     await expect(plot).toHaveAttribute(
       'aria-label',
-      /UK immigration, emigration and net migration, 1964.2025 . In people/
+      /UK immigration, emigration and net migration, 1964.2025 . UK Migration Over Time/
     );
     const descId = await plot.getAttribute('aria-describedby');
     await expect(fact.locator(`#${descId}`)).toHaveText(/definitional breaks/);
 
-    const table = fact.locator('.sv-chart__data');
+    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`);
     await table.locator('> summary').click();
     // Every published year, not a sample: 1964–2025 inclusive.
     await expect(table.locator('tbody tr')).toHaveCount(62);
@@ -51,24 +51,24 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
 }) => {
   await page.goto(TOPIC);
   await page.locator(row(HEADLINE)).click();
-  const chart = page.locator(`${dialog} .sv-chart`);
+  const chart = page.locator(`${dialog} .sv-chart`).first();
 
   await expect(chart.locator('.sv-chart__reading')).toHaveCount(2);
   await expect(
-    chart.getByRole('heading', { name: 'As a share of the UK population' })
+    chart.getByRole('heading', { name: 'As a Share of the UK Population' })
   ).toBeVisible();
-  await expect(chart.getByRole('heading', { name: 'In people' })).toBeVisible();
+  await expect(chart.getByRole('heading', { name: 'UK Migration Over Time' })).toBeVisible();
   await expect(chart.locator('.sv-chart__range')).toContainText('Full published range: 1964–2025');
 
   // Three definitional breaks, each drawn in the plot and explained below it.
-  await expect(chart.locator('.sv-chart__breaks .sv-chart__break-item')).toHaveCount(3);
+  await expect(chart.locator('.sv-method-observation')).toHaveCount(6);
   const visiblePlot = chart.locator('.sv-chart__svg:visible').first();
   await expect(visiblePlot.locator('.sv-chart__break')).toHaveCount(3);
   // A line crossing a break is cut and bridged, never drawn straight through.
   await expect(visiblePlot.locator('.sv-chart__bridge').first()).toBeAttached();
 
   // A chart is a factual claim, so it carries its own quoted source.
-  await expect(chart.locator('.sv-chart__source blockquote')).toContainText(
+  await expect(page.locator(`${dialog} #source-${HEADLINE}-22 blockquote`)).toContainText(
     'comparisons between pre-June 2021 and post-June 2021 estimates should be treated with caution'
   );
 });
@@ -84,10 +84,11 @@ test('a supporting fact opens with the claim it supports already in view', async
   // a reader actually reaches it, via the "Builds on" citation chip in the
   // viewpoint that cites it.
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary').first().click();
+  await viewpoint.locator('summary .sv-item__claim').first().click();
+  await viewpoint.locator('.sv-evidence-index > summary').click();
   await viewpoint
     .getByRole('link', {
-      name: 'Net migration to the UK peaked at 944,000 in the year to March 2023 and had fallen to 171,000 by the year to December 2025',
+      name: 'Fiscal Contributions of Care Workers', exact: true,
     })
     .click();
 
@@ -111,7 +112,7 @@ test('a supporting fact opens with the claim it supports already in view', async
 test('closing the panel takes the chart off the page with it', async ({ page }) => {
   await page.goto(TOPIC);
   await page.locator(row(HEADLINE)).click();
-  await expect(page.locator(`${dialog} .sv-chart`)).toBeVisible();
+  await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator('.sv-chart')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();

@@ -15,9 +15,9 @@ export type FactPageData = {
   topic: Topic;
   fact: Fact;
   bodyHtml: string;
-  /** The facts that are evidence for this one. Empty unless it is a headline fact. */
+  /** Related data collections: grouped details and contextual cross-links. */
   supporting: BodiedFact[];
-  /** The headline claim this fact is evidence for, when it has one. */
+  /** The broader fact this detail is grouped with, when it has one. */
   parent?: Fact;
 };
 
@@ -26,17 +26,18 @@ export async function loadFactPage(slug: string, factId: string): Promise<FactPa
   const fact = topic.facts.find((f) => f.id === factId);
   if (!fact) return null;
 
+  const relatedIds = new Set([...(supportingFactsByParent(topic.facts).get(fact.id) ?? []).map(child => child.id), ...(fact.relatedFacts ?? [])]);
   const supporting = await Promise.all(
-    (supportingFactsByParent(topic.facts).get(fact.id) ?? []).map(async (child) => ({
+    topic.facts.filter(child => relatedIds.has(child.id)).map(async (child) => ({
       fact: child,
-      bodyHtml: await renderMarkdown(child.body, slug),
+      bodyHtml: await renderMarkdown(child.body, slug, topic.facts),
     }))
   );
 
   return {
     topic,
     fact,
-    bodyHtml: await renderMarkdown(fact.body, slug),
+    bodyHtml: await renderMarkdown(fact.body, slug, topic.facts),
     supporting,
     parent: fact.supports ? topic.facts.find((f) => f.id === fact.supports) : undefined,
   };
@@ -63,7 +64,7 @@ export async function allFactParams(): Promise<Array<{ slug: string; factId: str
  * the claim safe to quote actually lives.
  */
 export function factDescription(fact: Fact, limit = 200): string {
-  const text = fact.body
+  const text = fact.claim
     .replace(/^#+ .*$/gm, '')
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/[*_`>#]/g, '')

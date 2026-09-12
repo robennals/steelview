@@ -3,14 +3,15 @@ import { test, expect } from '@playwright/test';
 // These assertions depend on authored uk-immigration content: the headline
 // fact `immigration-against-the-long-run` (first in the derived ranking, so it
 // renders outside the Facts collapse), the supporting fact
-// `net-migration-peak-and-fall` it holds, and the viewpoint
+// `immigration-shifted-from-eu-to-non-eu` it holds, and the viewpoint
 // `a-country-should-decide-who-joins-it`, which lists the fact
 // `health-and-care-relies-on-migrant-workers` (claim "Health and care is the
 // sector most dependent on migrant labour").
 
 const TOPIC = '/topics/uk-immigration';
 const HEADLINE = 'immigration-against-the-long-run';
-const SUPPORTING = 'net-migration-peak-and-fall';
+const SUPPORTING = 'care-worker-route-fiscally-negative';
+const FISCAL = 'skilled-worker-fiscal-gain-concentrated';
 const CARE = 'health-and-care-relies-on-migrant-workers';
 
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
@@ -25,10 +26,11 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
   await page.locator(row(HEADLINE)).click();
 
   await expect(page.locator(dialog)).toBeVisible();
+  await expect(page.locator(`${dialog} .sv-modal__eyebrow`)).toHaveText('Data');
   // The prefetched article includes its chart and evidence.
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
-  await expect(page.locator(`${dialog} .sv-chart`)).toBeVisible();
-  await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(1);
+  await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
+  await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(0);
 });
 
 // Regression pin: the row's link used to end where the claim text did, so
@@ -53,17 +55,17 @@ test('the whole fact row is clickable, not just the claim text', async ({ page }
 test('a fact chip in a viewpoint opens the same panel', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary').first().click();
+  await viewpoint.locator('summary .sv-item__claim').first().click();
   await viewpoint
     .getByRole('link', {
-      name: 'Health and care is the sector most dependent on migrant labour',
+      name: 'Immigration and the Health and Care Workforce', exact: true,
     })
     .click();
 
   await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}$`));
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} ${title}`)).toContainText(
-    'Health and care is the sector most dependent on migrant labour'
+    'Immigration and the Health and Care Workforce'
   );
 });
 
@@ -141,32 +143,31 @@ test('a supporting fact opens its own panel, which names the claim it supports',
 }) => {
   await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary').first().click();
+  await viewpoint.locator('summary .sv-item__claim').first().click();
+  await viewpoint.locator('.sv-evidence-index > summary').click();
   await viewpoint
     .getByRole('link', {
-      name: 'Net migration to the UK peaked at 944,000 in the year to March 2023 and had fallen to 171,000 by the year to December 2025',
+      name: 'Fiscal Contributions of Care Workers', exact: true,
     })
     .click();
 
   await expect(page).toHaveURL(new RegExp(`${factUrl(SUPPORTING)}$`));
   await expect(page.locator(`${dialog} .sv-parentnote__claim`)).toHaveAttribute(
     'href',
-    factUrl(HEADLINE)
+    factUrl(FISCAL)
   );
   await expect(
-    page.locator(dialog).getByText('Net migration in YE December 2025 was 171,000.', {
-      exact: false,
-    })
+    page.locator(`${dialog} .sv-finding`).filter({ hasText: '36,000' }).first()
   ).toBeVisible();
 });
 
 test('a supporting fact inside the panel still expands and collapses', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await page.locator(row(FISCAL)).click();
   const child = page.locator(`${dialog} details.sv-subfact`).first();
-  const quote = child.getByText('Net migration in YE December 2025 was 171,000', { exact: false });
+  const quote = child.locator('.sv-finding');
   await expect(quote).toBeHidden();
-  await child.locator('summary').click();
+  await child.locator(':scope > summary').click();
   await expect(quote).toBeVisible();
 });
 
@@ -213,16 +214,19 @@ test.describe('with JavaScript disabled', () => {
     // The whole fact is there: claim, status, context, chart, sources.
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
     await expect(page.locator('.sv-factpage .sv-status').first()).toBeVisible();
-    await expect(page.locator('.sv-chart')).toBeVisible();
-    await expect(page.locator('.sv-stance blockquote').first()).toBeVisible();
+    await expect(page.locator('.sv-chart').first()).toBeVisible();
+    await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
+    await page.locator('.sv-references > summary').click();
+    await page.locator('.sv-source-quote > summary').first().click();
+    await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
   });
 
   test('a fact chip in a viewpoint is an ordinary link to the fact page', async ({ page }) => {
     await page.goto(TOPIC);
     const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-    await viewpoint.locator('summary').first().click();
+    await viewpoint.locator('summary .sv-item__claim').first().click();
     const link = viewpoint.getByRole('link', {
-      name: 'Health and care is the sector most dependent on migrant labour',
+      name: 'Immigration and the Health and Care Workforce', exact: true,
     });
     await expect(link).toHaveAttribute('href', factUrl(CARE));
 
@@ -230,7 +234,7 @@ test.describe('with JavaScript disabled', () => {
     await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}$`));
     await expect(page.locator(dialog)).toHaveCount(0);
     await expect(page.locator('h1.sv-factpage__claim')).toContainText(
-      'Health and care is the sector most dependent on migrant labour'
+      'Immigration and the Health and Care Workforce'
     );
   });
 });
@@ -241,7 +245,7 @@ test('facts open with the network offline and Forward restores the modal', async
   await context.setOffline(true);
   await page.locator(row(HEADLINE)).click();
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
-  await expect(page.locator(`${dialog} .sv-chart`)).toBeVisible();
+  await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await page.goBack();
   await expect(page.locator(dialog)).toHaveCount(0);
   await page.goForward();
@@ -272,8 +276,8 @@ test('a slow fact response never delays opening or switching the modal', async (
     await page.goto(TOPIC);
     await page.locator(row(HEADLINE)).click();
     await expect(page.locator(dialog)).toBeVisible();
-    await expect(page.locator(`${dialog} ${title}`)).toContainText('immigration');
-    await expect(page.getByRole('status')).toHaveText('Loading fact…');
+    await expect(page.locator(`${dialog} ${title}`)).toHaveText('UK Immigration Trends');
+    await expect(page.getByRole('status')).toHaveText('Loading data…');
     await page.locator('.sv-modal__close').click();
     await expect(page.locator(dialog)).toHaveCount(0);
     const other = page.locator('a.sv-factrow').nth(1);

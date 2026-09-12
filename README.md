@@ -1,7 +1,7 @@
 # Steelview
 
-Steelview presents all sides of a divisive news issue on one page: the facts
-that are actually established, the strongest version of each major viewpoint,
+Steelview presents all sides of a divisive news issue on one page: the data
+and what it shows, the strongest version of each major viewpoint,
 the moral principles underneath them, and the specific reasons the sides
 disagree. Each viewpoint is steelmanned — written so that a partisan reading
 their own position finds it better argued than the version they would have
@@ -117,3 +117,13 @@ Code is MIT — see [`LICENSE`](LICENSE). Editorial content under `content/`
 is CC BY 4.0 — see [`content/LICENSE`](content/LICENSE), which also states
 the boundary: the quoted source material inside each fact is not Steelview's
 to license and carries its own terms.
+
+### Evidence in viewpoints and facts
+
+The [fact-writing guide](content/AUTHORING.md#titles-and-opening-findings) is the
+authoritative specification for titles, detailed findings, linked pills, graph
+narratives, context, subtleties, source footnotes and collapsed methodology.
+Use its checklist when adding or revising facts and viewpoints.
+
+If bundled Chromium cannot run locally, browser tests can use installed Chrome:
+`PLAYWRIGHT_CHANNEL=chrome pnpm test:e2e`.

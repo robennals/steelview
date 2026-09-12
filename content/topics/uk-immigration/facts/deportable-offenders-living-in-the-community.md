@@ -1,4 +1,6 @@
 ---
+title: Foreign National Offenders and Deportation
+claimSources: [1]
 claim: "The number of foreign national offenders liable for deportation but living in the community grew by 36% between the end of 2022 and March 2026, even as removals of offenders rose"
 status: well-supported
 supports: non-citizens-share-of-convictions-and-prisons
@@ -22,16 +24,22 @@ sources:
     publisher: "The Migration Observatory, University of Oxford"
     date: "2026-08-18"
 ---
-"Deportable offenders living in the community" means foreign national offenders
-who are neither in prison nor in immigration detention and who have not been
-granted the right to remain in the UK long term.
+## Observations {#deportable-offenders-living-in-the-community--context}
 
-- **That group grew 36% between the end of 2022 and March 2026** — equivalent to
-  about 1,600 people a year.
-- **Removals went up over the same period, to 5,850 in the year to March 2026.**
-  The stock grew anyway, because releases from prison outran removals.
-- **The share actually removed is not published.** The government publishes no
-  data on what proportion of foreign national offenders are deported, which is
-  why this is a stock and a growth rate rather than a percentage.
-- **This is a count of people, not a crime rate.** It says nothing about how
-  often anyone offends.
+### That group grew 36% between the end of 2022 and March 2026 {#deportable-offenders-living-in-the-community--that-group-grew-36-between-the-end-of-2022-and-march-2026}
+
+— equivalent to about 1,600 people a year. [1](#source-deportable-offenders-living-in-the-community-1)
+
+### Removals went up over the same period, to 5,850 in the year to March 2026 {#deportable-offenders-living-in-the-community--removals-went-up-over-the-same-period-to-5-850-in-the-year-to-march-2026}
+
+The Migration Observatory interprets the growing stock as suggesting returns have not kept pace with releases. [2](#source-deportable-offenders-living-in-the-community-2) [3](#source-deportable-offenders-living-in-the-community-3)
+
+## Subtleties {#deportable-offenders-living-in-the-community--subtleties}
+
+### The share actually removed is not published {#deportable-offenders-living-in-the-community--the-share-actually-removed-is-not-published}
+
+The government publishes no data on what proportion of foreign national offenders are deported, which is why this is a stock and a growth rate rather than a percentage. [3](#source-deportable-offenders-living-in-the-community-3)
+
+### This is a count of people, not a crime rate {#deportable-offenders-living-in-the-community--this-is-a-count-of-people-not-a-crime-rate}
+
+It says nothing about how often anyone offends. [1](#source-deportable-offenders-living-in-the-community-1)

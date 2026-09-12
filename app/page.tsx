@@ -10,7 +10,7 @@ export default async function HomePage() {
       <header className="sv-pagehead">
         <h1 className="sv-title">Steelview</h1>
         <p className="sv-index__lede">
-          The strongest version of every side of an argument, and the facts underneath it.
+          The strongest version of every side of an argument, and the data underneath it.
         </p>
       </header>
       <ul className="sv-topics">

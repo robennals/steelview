@@ -20,7 +20,7 @@ test('only the first three facts are visible until the group is opened', async (
   await expect(page.locator('.sv-fact:visible')).toHaveCount(FACTS_SHOWN);
 
   // The control says how many are behind it, not just "show more".
-  await expect(page.locator(closedLabel)).toHaveText(`Show ${total - FACTS_SHOWN} more facts`);
+  await expect(page.locator(closedLabel)).toHaveText(`Show ${total - FACTS_SHOWN} more data collections`);
   await expect(page.locator(openLabel)).toBeHidden();
 });
 

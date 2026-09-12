@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { FactModal } from './fact-modal';
+import { revealEvidence } from '@/lib/content/evidence-target';
 import { lastTrigger } from './cite-nav';
 import { FactArticle } from './fact-article';
 import { cachedFact, prefetchFact } from '@/lib/content/fact-preview-cache';
@@ -26,11 +27,11 @@ function PreviewBody({ slug, preview }: { slug: string; preview: Preview }) {
     <article className="sv-factpage" data-variant="modal" aria-busy={!failed}>
       <h2 className="sv-factpage__claim" id="sv-modal-title">{preview.claim}</h2>
       {failed ? (
-        <p role="alert">Couldn’t load this fact. <button type="button" onClick={() => {
+        <p role="alert">Couldn’t load this data collection. <button type="button" onClick={() => {
           setFailed(false);
           setAttempt((value) => value + 1);
         }}>Try again</button></p>
-      ) : <p role="status">Loading fact…</p>}
+      ) : <p role="status">Loading data…</p>}
     </article>
   );
 }
@@ -43,12 +44,12 @@ export function InstantFacts({ slug, previews, children }: {
 }) {
   const triggerRef = useRef<HTMLElement | null>(null);
   const [active, setActive] = useState<string | null>(null);
-  const preview = previews.find(({ href }) => href === active);
+  const preview = previews.find(({ href }) => href === active?.split('#')[0]);
 
   useEffect(() => {
     const restore = () => {
       lastTrigger.el = triggerRef.current;
-      setActive(previews.some(({ href }) => href === location.pathname) ? location.pathname : null);
+      setActive(previews.some(({ href }) => href === location.pathname) ? location.pathname + location.hash : null);
     };
     window.addEventListener('popstate', restore);
     return () => window.removeEventListener('popstate', restore);
@@ -95,7 +96,7 @@ export function InstantFacts({ slug, previews, children }: {
     if (link.hasAttribute('download') || link.hasAttribute('data-fact-expand')) return;
     if (link.target && link.target !== '_self') return;
     const url = new URL(link.href);
-    if (url.origin !== location.origin || url.search || url.hash) return;
+    if (url.origin !== location.origin || url.search) return;
     if (!previews.some(({ href }) => href === url.pathname)) return;
 
     event.preventDefault();
@@ -106,9 +107,13 @@ export function InstantFacts({ slug, previews, children }: {
       lastTrigger.el = link;
     }
     // One history entry per sheet: following evidence keeps Close returning to the topic.
-    if (active) window.history.replaceState(null, '', url.pathname);
-    else window.history.pushState(null, '', url.pathname);
-    setActive(url.pathname);
+    if (active) window.history.replaceState(null, '', url.pathname + url.hash);
+    else window.history.pushState(null, '', url.pathname + url.hash);
+    setActive(url.pathname + url.hash);
+    if (active === url.pathname + url.hash) {
+      const dialog = link.closest<HTMLElement>('dialog');
+      if (dialog) revealEvidence(dialog, url.hash);
+    }
   };
 
   return (
@@ -116,7 +121,7 @@ export function InstantFacts({ slug, previews, children }: {
       onPointerOver={(event) => warm(event.target)} onFocusCapture={(event) => warm(event.target)}>
       {children}
       {preview && (
-        <FactModal labelledBy="sv-modal-title" href={preview.href} onClose={close}>
+        <FactModal labelledBy="sv-modal-title" href={active ?? preview.href} onClose={close}>
           <PreviewBody key={preview.href} slug={slug} preview={preview} />
         </FactModal>
       )}

@@ -1,4 +1,5 @@
-import type { Series, SeriesReading, Source } from '@/lib/content/types';
+import type { ReactNode } from 'react';
+import type { Series, SeriesReading } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
   formatValue,
@@ -32,20 +33,6 @@ import {
  */
 
 const NBSP_DASH = '–';
-
-function Quote({ source, className }: { source: Source; className?: string }) {
-  return (
-    <figure className={className ? `sv-source ${className}` : 'sv-source'}>
-      <blockquote>{source.quote}</blockquote>
-      <figcaption>
-        <a href={source.url} target="_blank" rel="noreferrer noopener">
-          {source.title}
-        </a>
-        , {source.publisher}, {source.date}
-      </figcaption>
-    </figure>
-  );
-}
 
 function Plot({
   series,
@@ -115,23 +102,12 @@ function Plot({
         vectorEffect="non-scaling-stroke"
       />
 
-      {/* Definitional breaks, marked in the plot rather than smoothed away. */}
-      {layout.breaks.map((gap) => (
-        <g key={`break-${gap.period}`}>
-          <line
-            className="sv-chart__break"
-            x1={gap.x}
-            x2={gap.x}
-            y1={g.top}
-            y2={bottom}
-            vectorEffect="non-scaling-stroke"
-          />
-          <path
-            className="sv-chart__break-flag"
-            d={`M${gap.x - 4} ${g.top} L${gap.x + 4} ${g.top} L${gap.x} ${g.top + 6} Z`}
-          />
-        </g>
-      ))}
+      {layout.breaks.map(gap => <line
+        key={`break-${gap.period}`}
+        className="sv-chart__break"
+        x1={gap.x} x2={gap.x} y1={g.top} y2={bottom}
+        vectorEffect="non-scaling-stroke"
+      />)}
 
       {layout.lines.map((line) => (
         <g key={line.name} style={{ color: `var(--sv-series-${line.slot})` }}>
@@ -203,10 +179,16 @@ function Reading({
   series,
   reading,
   factId,
+  sourceNumber,
+  observations,
+  intro,
 }: {
   series: Series;
   reading: SeriesReading;
   factId: string;
+  sourceNumber: number;
+  observations?: ReactNode;
+  intro?: string;
 }) {
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
@@ -214,7 +196,7 @@ function Reading({
     series.description,
     `Read as ${reading.label.toLowerCase()}: ${reading.valueLabel}.`,
     series.breaks.length > 0
-      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, which are listed under the charts.`
+      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
       : null,
     'The same numbers are in the table below.',
   ]
@@ -222,8 +204,9 @@ function Reading({
     .join(' ');
 
   return (
-    <div className="sv-chart__reading">
-      <h5 className="sv-chart__reading-head">{reading.label}</h5>
+    <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
+      <h2 className="sv-graph-heading">{reading.label}</h2>
+      {intro && <p className="sv-chart__desc">{intro}</p>}
       <p className="sv-chart__axis-label">
         {reading.valueLabel}, by {series.periodLabel.toLowerCase()}
       </p>
@@ -262,13 +245,15 @@ function Reading({
         <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
       </div>
 
-      {reading.note && <p className="sv-chart__note">{reading.note}</p>}
-      {reading.source && <Quote source={reading.source} className="sv-chart__reading-source" />}
-    </div>
+      {series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={`#${factId}--${reading.id}-method-${series.breaks[0].period}`}>See method changes</a>.</p>}
+      <p className="sv-chart__credit">Source: <a href={`#source-${factId}-${sourceNumber}`}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>
+
+      {observations}
+    </section>
   );
 }
 
-export function SeriesChart({ factId, series }: { factId: string; series: Series }) {
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {} }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode> }) {
   const { columns, rows } = seriesTable(series);
 
   // Group the table's columns by reading, so a two-reading series reads as
@@ -281,44 +266,30 @@ export function SeriesChart({ factId, series }: { factId: string; series: Series
   }
 
   return (
-    <figure className="sv-chart">
-      <figcaption className="sv-chart__caption">
-        <h4 className="sv-chart__title">{series.title}</h4>
-        <p className="sv-chart__desc">{series.description}</p>
+    <figure className="sv-chart" id={`${factId}--chart-${chartId}`}>
+      <figcaption className="sv-visually-hidden">{series.title}</figcaption>
+
+      {series.readings.map((reading, i) => (
+        <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
+      ))}
+
+      <details className="sv-chart__methodology" id={`${factId}--chart-${chartId}-methodology`}>
+        <summary className="sv-chart__data-summary">About this data</summary>
         <p className="sv-chart__range">
           <strong>Full published range:</strong> {series.coverage.from}
           {NBSP_DASH}
-          {series.coverage.to}. Every line below runs the whole of it{' '}
+          {series.coverage.to}. Every plotted line runs the whole of it{' '}
           {series.coverage.note ? `${NBSP_DASH} ${series.coverage.note}` : ''}
         </p>
-      </figcaption>
+        {series.readings.filter(reading => reading.note).map(reading => (
+          <section key={reading.id} className="sv-chart__method-note">
+            <h3 className="sv-chart__reading-head">{reading.label}</h3>
+            <p className="sv-chart__note">{reading.note}</p>
+          </section>
+        ))}
 
-      {series.readings.map((reading) => (
-        <Reading key={reading.id} series={series} reading={reading} factId={factId} />
-      ))}
 
-      {series.breaks.length > 0 && (
-        <section className="sv-chart__breaks">
-          <h5 className="sv-chart__breaks-head">
-            Breaks in the series {NBSP_DASH} marked ▾ on the charts
-          </h5>
-          <dl>
-            {series.breaks.map((gap) => (
-              <div key={gap.period} className="sv-chart__break-item">
-                <dt>
-                  {gap.period} {NBSP_DASH} {gap.label}
-                </dt>
-                <dd>{gap.note}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      )}
-
-      <div className="sv-chart__source">
-        <h5 className="sv-chart__source-head">Series source</h5>
-        <Quote source={series.source} />
-      </div>
+      </details>
 
       {/*
        * The numbers, as a real table. This is the screen-reader alternative to
