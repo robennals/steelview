@@ -1636,6 +1636,22 @@
      keeps full ink strength for readability and the accent rule under it
      carries the signal, closed by the same filled disc the fact statuses use
      for "the evidence is solid". */
+  .prose-body a.sv-principle-cite {
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--accent-wash);
+    border: 1px solid var(--accent);
+    border-radius: 0.55em;
+    padding: 0.08em 0.3em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .prose-body a.sv-principle-cite:hover,
+  .prose-body a.sv-principle-cite:focus-visible {
+    box-shadow: 0 0 0 0.18em var(--accent-wash);
+  }
+
   .prose-body a.sv-cite {
     color: var(--ink);
     text-decoration: none;
