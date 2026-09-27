@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { bodyKey, buildBodies, TopicSections } from './page';
+import { bodyKey, buildBodies, orderHeadlineFacts, TopicSections } from './page';
 import type { Topic } from '@/lib/content/types';
 
 /**
@@ -148,6 +148,20 @@ test('a section with items renders its heading', () => {
   assert.match(html, /Viewpoints/);
   assert.match(html, /Principles/);
   assert.match(html, /Cruxes/);
+});
+
+test('topic dataOrder places an explicitly commissioned collection before the derived tail', () => {
+  const facts = [
+    { id: 'first', claim: 'First', status: 'well-supported' as const, sources: [], body: '' },
+    { id: 'second', claim: 'Second', status: 'well-supported' as const, sources: [], body: '' },
+    { id: 'third', claim: 'Third', status: 'well-supported' as const, sources: [], body: '' },
+  ];
+  const topic = {
+    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', intro: '',
+    dataOrder: ['first', 'third'], facts,
+    viewpoints: [], principles: [], cruxes: [],
+  } as Topic;
+  assert.deepEqual(orderHeadlineFacts(topic).map((fact) => fact.id), ['first', 'third', 'second']);
 });
 
 /**

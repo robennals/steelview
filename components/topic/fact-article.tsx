@@ -36,6 +36,24 @@ function Sources({ facts }: { facts: Fact[] }) {
   </details>;
 }
 
+/** A transparent record of the measurements that would change this report. */
+function DataStillNeeded({ fact }: { fact: Fact }) {
+  if (!fact.dataStillNeeded?.length) return null;
+  return (
+    <section className="sv-data-needed" aria-labelledby={`${fact.id}--data-still-needed`}>
+      <h3 id={`${fact.id}--data-still-needed`}>Data still needed</h3>
+      <ul>
+        {fact.dataStillNeeded.map((item) => (
+          <li key={item.measure}>
+            <strong>{item.measure}</strong>
+            <span>{item.why}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function FactCharts({ fact, observations = {}, subtleties = {}, afterSeries }: { fact: Fact; observations?: Record<string, string>; subtleties?: Record<string, string>; afterSeries?: ReactNode }) {
   return <>
     {fact.series && <SeriesChart factId={fact.id} series={fact.series} sourceOffset={fact.sources.length} observations={Object.fromEntries(fact.series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, fact.series!.breaks, fact.sources.length + 1)} className="sv-graph-observations" />]))} />}
@@ -178,6 +196,7 @@ export function FactArticle({
           </section>
         )}
 
+        <DataStillNeeded fact={fact} />
         <Sources facts={[fact, ...supporting.map(({ fact: child }) => child)]} />
 
         {variant === 'modal' && (

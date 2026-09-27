@@ -1171,6 +1171,8 @@ comparisons:
       - EU+ nationals
       - Own-country nationals
       - Other / rounding
+    groupLabel: nationality
+    allGroupsLabel: All arrivals
     defaultGroup: 0
 additionalSeries:
   - id: nationality

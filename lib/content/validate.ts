@@ -16,6 +16,17 @@ export function validateTopic(topic: Topic): string[] {
   const viewpointIds = new Set(topic.viewpoints.map((v) => v.id));
   const principleIds = new Set(topic.principles.map((p) => p.id));
 
+  if (topic.dataOrder) {
+    const seen = new Set<string>();
+    for (const id of topic.dataOrder) {
+      const fact = factById.get(id);
+      if (!fact) errors.push(`topic: dataOrder references unknown fact "${id}"`);
+      else if (fact.supports) errors.push(`topic: dataOrder may only name headline facts, not supporting fact "${id}"`);
+      if (seen.has(id)) errors.push(`topic: dataOrder contains "${id}" more than once`);
+      seen.add(id);
+    }
+  }
+
   // Facts referenced by any viewpoint — used for the orphan check (rule 8).
   const referencedFacts = new Set<string>();
 
@@ -121,6 +132,9 @@ export function validateTopic(topic: Topic): string[] {
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
       chartIds.add(chart.id);
+      if (chart.domainMax !== undefined && chart.items.some(item => item.value > chart.domainMax!)) {
+        errors.push(`fact ${f.id}: comparison domainMax must be at least every item value`);
+      }
       if (chart.groups) {
         if (chart.defaultGroup !== undefined && chart.defaultGroup >= chart.groups.length) errors.push(`fact ${f.id}: invalid default comparison group`);
         if (new Set(chart.groups).size !== chart.groups.length) errors.push(`fact ${f.id}: duplicate comparison group`);
