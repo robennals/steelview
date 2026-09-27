@@ -1,8 +1,20 @@
 ---
-title: Migration and Population Composition
+title: Population Composition
 claimSources: [1,2,3]
 claim: "The share of people in England and Wales born outside the UK rose from 4.3% in 1951 to 8.9% in 2001 and 16.8% at the 2021 Census, and the ONS provisionally estimates the UK-wide non-UK-born population reached 13.1 million by mid-2024"
 status: well-supported
+featuredCharts:
+  - religious-composition-at-the-2021-census
+  - ethnic-composition-at-the-2021-census
+dataStillNeeded:
+  - measure: 'A comparable religion trend before 2001'
+    why: >-
+      England and Wales first asked the voluntary religion question in the
+      2001 Census, so no equivalent official Census series exists before it.
+  - measure: 'A comparable ethnicity trend before 1991'
+    why: >-
+      The England-and-Wales Census first asked an ethnic-group question in
+      1991. Earlier categories are not a comparable population series.
 sources:
   - stance: supports
     quote: "Migration is an important driver of population change, currently accounting for around half of the population growth in England and Wales (natural change, that is the difference between births and deaths, accounting for the remainder). This is reflected in the increase in the proportion of the usually resident population1 born abroad2 from 4.3 per cent (1.9 million) recorded in the 1951 Census to 13 per cent (7.5 million) in the 2011 Census (see figure 1). While the total resident population of England and Wales increased by 28 per cent (from 43.7 million to 56.1 million) between 1951 and 2011, the non-UK born population3 almost quadrupled. There was a particularly marked increase in the latest inter-censal period, from 8.9 per cent (4.6 million)4 in 2001."
@@ -40,6 +52,38 @@ sources:
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/migrants-in-the-uk-an-overview/
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-08-09"
+series:
+  title: 'Foreign-born share of the resident population, England and Wales, Census 1951–2021'
+  description: >-
+    The share of usual residents born outside the UK at each Census. This is a
+    resident stock, not a count of arrivals in the year shown.
+  periodLabel: Census year
+  coverage:
+    from: '1951'
+    to: '2021'
+    note: >-
+      The ONS historical Census series is available at ten-year intervals.
+      The 1951–2011 values use the original published Census tables; 2021 is
+      the later Census release for the same England-and-Wales geography.
+  breaks: []
+  source:
+    stance: supports
+    quote: >-
+      Figure 1 reports the non-UK-born share of England and Wales as 4.3% in
+      1951, 5.0% in 1961, 6.4% in 1971, 6.7% in 1981, 7.3% in 1991, 8.9% in
+      2001 and 13.4% in 2011.
+    title: '2011 Census analysis: Immigration Patterns of Non-UK Born Populations in England and Wales'
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/articles/immigrationpatternsofnonukbornpopulationsinenglandandwales/2013-12-17
+    publisher: Office for National Statistics
+    date: '2013-12-17'
+  readings:
+    - id: foreign-born-share
+      label: Born outside the UK
+      unit: percent
+      valueLabel: Share of usual residents born outside the UK
+      lines:
+        - name: Born outside the UK
+          points: [{period: '1951', value: 4.3}, {period: '1961', value: 5.0}, {period: '1971', value: 6.4}, {period: '1981', value: 6.7}, {period: '1991', value: 7.3}, {period: '2001', value: 8.9}, {period: '2011', value: 13.4}, {period: '2021', value: 16.8}]
 ---
 ## Observations {#share-of-the-population-born-abroad--context}
 

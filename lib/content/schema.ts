@@ -131,7 +131,10 @@ export const seriesSchema = z.object({
    * what they mean.
    */
   description: z.string().min(1),
-  /** The time-axis label: "Year", "Quarter", "Year ending". */
+  /**
+   * The source's period wording, used in descriptions and the data table.
+   * SeriesChart itself always labels its visible x-axis in calendar years.
+   */
   periodLabel: z.string().min(1),
   coverage: seriesCoverageSchema,
   breaks: z.array(seriesBreakSchema).default([]),
@@ -151,8 +154,15 @@ export const comparisonChartSchema = z.object({
   description: z.string().min(1),
   unit: z.enum(['count', 'percent', 'pounds']),
   valueLabel: z.string().min(1),
+  /** When values are slices of a shared total, show each bar's share alongside its value. */
+  shareTotal: z.number().positive().optional(),
+  /** A fixed upper bound prevents a percentage comparison from visually filling its scale at (say) 22%. */
+  domainMax: z.number().positive().optional(),
   sources: z.array(z.number().int().positive()).min(1),
   note: z.string().optional(),
+  /** Labels for an optional grouped comparison. Kept in content so the shared UI never assumes a subject such as nationality. */
+  groupLabel: z.string().min(1).optional(),
+  allGroupsLabel: z.string().min(1).optional(),
   groups: z.array(z.string().min(1)).min(2).optional(),
   defaultGroup: z.number().int().nonnegative().optional(),
   items: z.array(z.object({
@@ -199,6 +209,15 @@ export const factFrontmatterSchema = z.object({
   featuredCharts: z.array(z.string()).optional(),
   /** Contextual connections, including qualifications and contrasting evidence. */
   relatedFacts: z.array(z.string()).optional(),
+  /**
+   * Specific measurements that would materially improve this report but are
+   * not currently published in a compatible form. Kept separate from the
+   * findings so an absence of data is never presented as a finding.
+   */
+  dataStillNeeded: z.array(z.object({
+    measure: z.string().min(1),
+    why: z.string().min(1),
+  })).optional(),
 });
 
 export const viewpointFrontmatterSchema = z.object({
@@ -242,6 +261,13 @@ export const topicFrontmatterSchema = z.object({
   ),
   title: z.string().min(1),
   subtitle: z.string().min(1),
+  /**
+   * An explicitly commissioned reading order for a topic's headline data
+   * collections. Entries here lead the otherwise viewpoint-derived order;
+   * this is deliberately rare, for a collection the editor needs a reader to
+   * encounter at a particular point in the list.
+   */
+  dataOrder: z.array(z.string().min(1)).optional(),
   lastUpdated: z.preprocess(
     fromYamlScalar,
     z.string().regex(new RegExp(`^\\d{4}-${MONTH}-${DAY}$`), 'must be YYYY-MM-DD')

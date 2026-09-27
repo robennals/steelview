@@ -1,4 +1,6 @@
 import type { ReactNode } from 'react';
+import { ChartViewToggle } from './chart-view-toggle';
+import { SeriesHighlight } from './series-highlight';
 import type { Series, SeriesReading } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
@@ -6,7 +8,7 @@ import {
   layoutReading,
   pathFor,
   seriesSlots,
-  seriesTable,
+  seriesStrokeDash,
   type ChartVariant,
 } from '@/lib/chart/series-chart';
 
@@ -110,7 +112,7 @@ function Plot({
       />)}
 
       {layout.lines.map((line) => (
-        <g key={line.name} style={{ color: `var(--sv-series-${line.slot})` }}>
+        <g key={line.name} data-series={line.name} style={{ color: `var(--sv-series-${line.slot})` }}>
           {/* A bridge is the step across a break: same colour, dashed and
               faded, so the eye reads "these two ends are not the same
               measurement" instead of one continuous trend. */}
@@ -126,12 +128,19 @@ function Plot({
             />
           ))}
           {line.runs.map((run, i) => (
-            <path
-              key={`run-${i}`}
-              className="sv-chart__line"
-              d={pathFor(run)}
-              vectorEffect="non-scaling-stroke"
-            />
+            <g key={`run-${i}`}>
+              <path
+                className="sv-chart__line"
+                d={pathFor(run)}
+                strokeDasharray={seriesStrokeDash(line.slot) ?? undefined}
+                vectorEffect="non-scaling-stroke"
+              />
+              <path
+                className="sv-chart__line-hit"
+                d={pathFor(run)}
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
           ))}
           <circle
             className="sv-chart__end"
@@ -175,6 +184,35 @@ function Plot({
   );
 }
 
+function ReadingTable({ series, reading }: { series: Series; reading: SeriesReading }) {
+  const periods = reading.lines[0].points.map(point => point.period);
+  const values = reading.lines.map(line => new Map(line.points.map(point => [point.period, point.value])));
+  return (
+    <div className="sv-chart__table-scroll">
+      <table className="sv-chart__table">
+        <caption>{series.title} {NBSP_DASH} {reading.label}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{series.periodLabel}</th>
+            {reading.lines.map(line => <th key={line.name} scope="col">{line.name}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {periods.map(period => (
+            <tr key={period}>
+              <th scope="row">{period}</th>
+              {values.map((line, index) => {
+                const value = line.get(period);
+                return <td key={reading.lines[index].name}>{value === undefined ? '—' : formatValue(value, reading.unit)}</td>;
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function Reading({
   series,
   reading,
@@ -198,7 +236,7 @@ function Reading({
     series.breaks.length > 0
       ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
       : null,
-    'The same numbers are in the table below.',
+    'Use the Table switch to see every value.',
   ]
     .filter(Boolean)
     .join(' ');
@@ -211,39 +249,39 @@ function Reading({
         {reading.valueLabel}, by {series.periodLabel.toLowerCase()}
       </p>
 
-      {/* The legend is always present, and carries the latest value for each
-          line: a direct label on the plot would collide where the lines
-          converge, and a number on every point is unreadable. */}
-      <ul className="sv-chart__legend">
-        {reading.lines.map((line) => {
-          const last = line.points[line.points.length - 1];
-          return (
-            <li
-              key={line.name}
-              className="sv-chart__key"
-              style={{ color: `var(--sv-series-${slots.get(line.name) ?? 1})` }}
-            >
-              <svg className="sv-chart__swatch" viewBox="0 0 20 8" aria-hidden="true" focusable="false">
-                <line x1="1" y1="4" x2="19" y2="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                <circle cx="10" cy="4" r="3" fill="currentColor" />
-              </svg>
-              <span className="sv-chart__key-name">{line.name}</span>
-              <span className="sv-chart__key-value">
-                {formatValue(last.value, reading.unit)} in {last.period}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-
       <p className="sv-visually-hidden" id={descriptionId}>
         {description}
       </p>
 
-      <div className="sv-chart__plot">
-        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
-        <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
-      </div>
+      <ChartViewToggle
+        label={reading.label}
+        graph={<>
+          {/* The legend is part of the graph, not its data table: it identifies
+              the rendered lines without repeating a dated value beside each name. */}
+          <ul className="sv-chart__legend">
+            {reading.lines.map((line) => (
+              <li
+                key={line.name}
+                className="sv-chart__key"
+                data-series={line.name}
+                tabIndex={0}
+                style={{ color: `var(--sv-series-${slots.get(line.name) ?? 1})` }}
+              >
+                <svg className="sv-chart__swatch" viewBox="0 0 20 8" aria-hidden="true" focusable="false">
+                  <line x1="1" y1="4" x2="19" y2="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray={seriesStrokeDash(slots.get(line.name) ?? 1)} />
+                  <circle cx="10" cy="4" r="3" fill="currentColor" />
+                </svg>
+                <span className="sv-chart__key-name">{line.name}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="sv-chart__plot">
+            <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
+            <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
+          </div>
+        </>}
+        table={<ReadingTable series={series} reading={reading} />}
+      />
 
       {series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={`#${factId}--${reading.id}-method-${series.breaks[0].period}`}>See method changes</a>.</p>}
       <p className="sv-chart__credit">Source: <a href={`#source-${factId}-${sourceNumber}`}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>
@@ -254,24 +292,15 @@ function Reading({
 }
 
 export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {} }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode> }) {
-  const { columns, rows } = seriesTable(series);
-
-  // Group the table's columns by reading, so a two-reading series reads as
-  // two blocks of columns under one period column rather than six unrelated ones.
-  const groups: Array<{ label: string; span: number }> = [];
-  for (const column of columns) {
-    const last = groups[groups.length - 1];
-    if (last && last.label === column.readingLabel) last.span += 1;
-    else groups.push({ label: column.readingLabel, span: 1 });
-  }
-
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`}>
       <figcaption className="sv-visually-hidden">{series.title}</figcaption>
 
-      {series.readings.map((reading, i) => (
-        <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
-      ))}
+      <SeriesHighlight>
+        {series.readings.map((reading, i) => (
+          <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
+        ))}
+      </SeriesHighlight>
 
       <details className="sv-chart__methodology" id={`${factId}--chart-${chartId}-methodology`}>
         <summary className="sv-chart__data-summary">About this data</summary>
@@ -287,56 +316,6 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
             <p className="sv-chart__note">{reading.note}</p>
           </section>
         ))}
-
-
-      </details>
-
-      {/*
-       * The numbers, as a real table. This is the screen-reader alternative to
-       * the plot, and it is also the honesty mechanism: a reader who does not
-       * believe the line can read the series off the page and check it against
-       * the cited workbook, which no amount of accessible naming on an SVG
-       * would let them do.
-       */}
-      <details className="sv-chart__data">
-        <summary className="sv-chart__data-summary">
-          Show the numbers ({rows.length} {series.periodLabel.toLowerCase()}s)
-        </summary>
-        <div className="sv-chart__table-scroll">
-          <table className="sv-chart__table">
-            <caption>
-              {series.title} {NBSP_DASH} every published point
-            </caption>
-            <thead>
-              <tr>
-                <td />
-                {groups.map((group) => (
-                  <th key={group.label} scope="colgroup" colSpan={group.span}>
-                    {group.label}
-                  </th>
-                ))}
-              </tr>
-              <tr>
-                <th scope="col">{series.periodLabel}</th>
-                {columns.map((column) => (
-                  <th key={`${column.readingId}-${column.name}`} scope="col">
-                    {column.name}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.period}>
-                  <th scope="row">{row.period}</th>
-                  {row.cells.map((cell, i) => (
-                    <td key={i}>{cell ?? '—'}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </details>
     </figure>
   );

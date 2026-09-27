@@ -90,6 +90,20 @@ export async function buildBodies(
  */
 export const FACTS_SHOWN = 3;
 
+/** Apply a rare, topic-level editorial placement before the derived tail. */
+export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
+  const headline = headlineFacts(topic.facts);
+  if (!topic.dataOrder?.length) return headline;
+
+  const byId = new Map(headline.map((fact) => [fact.id, fact]));
+  const placed = topic.dataOrder.flatMap((id) => {
+    const fact = byId.get(id);
+    return fact ? [fact] : [];
+  });
+  const placedIds = new Set(placed.map((fact) => fact.id));
+  return [...placed, ...headline.filter((fact) => !placedIds.has(fact.id))];
+}
+
 /**
  * The four item sections. A topic that is only `topic.md` — or whose
  * `cruxes/` directory is simply absent, which is legal — must not ship a
@@ -111,7 +125,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
    * they carry, live on the parent fact's own reading (its modal or page),
    * not in this list — see `FactList` for why.
    */
-  const headline = headlineFacts(topic.facts);
+  const headline = orderHeadlineFacts(topic);
   const shownFacts = headline.slice(0, FACTS_SHOWN);
   const restFacts = headline.slice(FACTS_SHOWN);
 
@@ -208,7 +222,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   const bodies = await buildBodies(topic, slug);
   // Warm the visible headline rows first, then the remaining facts and citations.
-  const previews = [...headlineFacts(topic.facts), ...topic.facts.filter((fact) => fact.supports)].map((fact) => ({
+  const previews = [...orderHeadlineFacts(topic), ...topic.facts.filter((fact) => fact.supports)].map((fact) => ({
     href: factPath(slug, fact.id), id: fact.id, claim: fact.title ?? fact.claim,
   }));
 

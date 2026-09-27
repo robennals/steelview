@@ -233,7 +233,11 @@ Every fact requires a body. Put the most useful evidence first:
 3. **Related Data**, only for distinct questions that deserve their own
    evidence and treatment. Findings about the displayed data belong in that
    graph’s Observations, with viewpoint pills linking directly to the observation.
-4. **One Sources expando at the end**, with footnotes opening the relevant citation.
+4. **Data still needed**, when a missing measurement would materially improve
+   the report. Use `dataStillNeeded` in frontmatter, with a specific `measure`
+   and a short explanation of why it matters. This is an explicit statement of
+   what the report cannot establish, not a place for generic research wishes.
+5. **One Sources expando at the end**, with footnotes opening the relevant citation.
 
 
 **Graphs provide the context.** Show change over time and comparisons between
@@ -413,6 +417,52 @@ numbered `sources`, and `items` containing `label` and `value`. Optional `highli
 marks the subject country; `note` contains collapsed methodology. Values share a
 zero baseline and signed values extend on the correct side of it. Label scope and
 period in the visible description. Source indexes reuse the fact's citation list.
+
+**Charts are shared product primitives, not report-specific artwork.** Use the
+existing `SeriesChart` and `ComparisonChart` data shapes for every report. If a
+new visual capability is genuinely needed, add it to the reusable chart component,
+its schema and its tests so it works for every topic; do not add a topic-specific
+renderer, CSS branch or inline SVG to one data collection. Labels for grouped bars
+belong in `groupLabel` and `allGroupsLabel`, rather than being assumed by the UI.
+Linked line/legend highlighting is likewise a shared `SeriesHighlight` behavior,
+available to every series chart and usable with a mouse or keyboard focus.
+
+**Every time series has years on its x-axis.** All time-series data renders
+through `SeriesChart`; it derives visible year ticks from the declared coverage
+and the actual dates in the source. Do not replace that axis with undated point
+positions, hide it for a compact layout, or build a one-off time chart. For a
+short annual run the component labels every year; for a longer run it labels
+readable interval years and always names both ends of the source range.
+
+### Selection is part of the evidence, not decoration
+
+**A breakdown must never feel editorially selective.** For a categorical
+dimension, start from the source's complete published distribution. Show the
+largest source-defined categories in descending order until the residual is no
+longer the largest displayed category, then put every remaining category into a
+clearly named residual such as “Other non-EU+”. This prevents “Other” from
+being a larger, unexplained bucket than any category the reader can inspect.
+Do not elevate a smaller category because it makes a preferred story look
+stronger. If the report genuinely needs a named smaller category (for example,
+a distinct legal route), say why in the chart note and retain the residual so
+the reader can see what was left out.
+
+The denominator and the selection rule must be visible. A category included in
+one displayed period cannot disappear from another merely because it later
+falls in rank. Where the source itself publishes only a top-N table, name that
+limit and make the residual the difference between its published total and every
+named category; never imply that the named categories are exhaustive when they
+are not. If the published top-N cannot shrink the residual below the largest
+named category, show that limitation instead of inventing regional totals.
+
+**Country comparisons must not be cherry-picked.** Use the complete set of
+comparable countries supplied by the source dataset, using its own definitions,
+year and denominator. If that set is too large for a compact bar chart, the
+chart may emphasize the subject country and show its rank, but the full source
+set must remain available in the chart's Table view. Never select only the
+neighbours that flatter or discredit the subject. If a source offers several
+legitimate comparator universes (for example, EU and OECD), state which one is
+used and why before displaying any countries.
 
 `#fact-example/chart-series` targets its time series;
 `#fact-example/chart-country-comparison` targets a bar chart whose id is
@@ -875,6 +925,9 @@ Run this before opening a pull request.
       discontinuities; substantial movements have reasonable explanations with
       citations where available and causal uncertainty made explicit.
 - [ ] Reading order: finding, each graph followed by its Observations, optional Subtleties, Sources.
+- [ ] If a material measurement is unavailable, `dataStillNeeded` names the
+      exact measure and why it would improve the report; absence is never
+      presented as evidence of absence.
 - [ ] Title, uppercase section labels, finding headings and chart labels have
       distinct roles. Body and chart descriptions use regular weight; spacing
       separates sections and bold is selective.

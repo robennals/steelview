@@ -55,6 +55,41 @@ sources:
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/who-counts-as-a-migrant-definitions-and-their-consequences/
     publisher: "The Migration Observatory, University of Oxford"
     date: "2024-02-23"
+series:
+  title: 'High-level ethnic identity, England and Wales, Census 1991–2021'
+  description: >-
+    The full population split between the Census high-level White category and
+    all other self-identified ethnic groups. This is not a migration or
+    citizenship measure.
+  periodLabel: Census year
+  coverage:
+    from: '1991'
+    to: '2021'
+    note: >-
+      The ethnic-group question began in the 1991 Census. The high-level
+      White category is comparable across these four censuses; all other
+      high-level groups are combined so the chart remains a complete
+      distribution despite changing detailed labels.
+  breaks: []
+  source:
+    stance: supports
+    quote: >-
+      The high-level White ethnic group accounted for 94.1% of England and
+      Wales in 1991, 91.3% in 2001, 86.0% in 2011 and 81.7% in 2021.
+    title: 'Ethnicity and National Identity in England and Wales: Census 2011'
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/ethnicity/articles/ethnicityandnationalidentityinenglandandwales/2012-12-11
+    publisher: Office for National Statistics
+    date: '2012-12-11'
+  readings:
+    - id: high-level-ethnicity
+      label: High-level ethnic identity
+      unit: percent
+      valueLabel: Share of all usual residents
+      lines:
+        - name: White
+          points: [{period: '1991', value: 94.1}, {period: '2001', value: 91.3}, {period: '2011', value: 86.0}, {period: '2021', value: 81.7}]
+        - name: All other ethnic groups
+          points: [{period: '1991', value: 5.9}, {period: '2001', value: 8.7}, {period: '2011', value: 14.0}, {period: '2021', value: 18.3}]
 ---
 ## Observations {#ethnic-composition-at-the-2021-census--context}
 
