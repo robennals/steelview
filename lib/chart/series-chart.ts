@@ -102,11 +102,20 @@ export function niceTicks(min: number, max: number, target = 7): number[] {
   return ticks;
 }
 
-/** Whole decades (or 20-year steps) inside the span — the labels on the time axis. */
+/**
+ * Labels on the time axis. Short annual series label each year: using only
+ * decade ticks for a 2019–2025 chart silently produces no labels at all.
+ * Longer series retain the sparse decade-style ticks, while always naming
+ * both ends of the published range.
+ */
 export function yearTicks(fromYear: number, toYear: number, step: number): number[] {
+  if (toYear - fromYear <= 10) {
+    return Array.from({ length: toYear - fromYear + 1 }, (_, i) => fromYear + i);
+  }
+
   const ticks: number[] = [];
   for (let year = Math.ceil(fromYear / step) * step; year <= toYear; year += step) ticks.push(year);
-  return ticks;
+  return [...new Set([fromYear, ...ticks, toYear])].sort((a, b) => a - b);
 }
 
 /* ------------------------------------------------------------- formatting */
@@ -145,8 +154,8 @@ export function formatTick(value: number, unit: SeriesUnit): string {
  * "Immigration" gets the same slot in the absolute chart and the
  * share-of-population chart, so a reader learns the key once. Slots are
  * assigned in first-appearance order across the whole series and never
- * recycled — the palette carries three, which is also the cap at which the
- * data-viz validator clears every all-pairs colour-vision gate.
+ * recycled. The shared palette carries eight slots, enough for substantive
+ * breakdowns while keeping a line's colour stable across every reading.
  */
 export function seriesSlots(series: Series): Map<string, number> {
   const slots = new Map<string, number>();
@@ -156,6 +165,11 @@ export function seriesSlots(series: Series): Map<string, number> {
     }
   }
   return slots;
+}
+
+/** A second, non-colour cue once a chart has more than three lines. */
+export function seriesStrokeDash(slot: number): string | undefined {
+  return [undefined, undefined, undefined, undefined, '8 3', '4 2', '10 3 2 3', '2 3'][slot];
 }
 
 /* ------------------------------------------------------------------ layout */

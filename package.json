@@ -9,8 +9,9 @@
     "lint": "eslint",
     "test:unit": "tsx --test lib/*.test.ts lib/**/*.test.ts app/**/*.test.ts scripts/*.test.ts",
     "test:e2e": "playwright test",
+    "check:integrity": "tsx scripts/check-integrity.ts",
     "check:figures": "tsx scripts/check-figures.ts",
-    "check": "pnpm lint && pnpm test:unit && pnpm check:figures && pnpm build"
+    "check": "pnpm lint && pnpm test:unit && pnpm check:integrity && pnpm check:figures && pnpm build"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

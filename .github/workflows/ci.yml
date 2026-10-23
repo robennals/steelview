@@ -13,12 +13,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm test:unit
-      # No standalone `pnpm build` here: playwright.config.ts's webServer
-      # already runs `pnpm build && pnpm start`, and a build failure comes
-      # through in the test:e2e output with the same ContentError message
-      # (file, field, and reason) as a standalone build — verified by
-      # breaking content/topics/uk-immigration/topic.md locally and
-      # confirming `pnpm test:e2e` alone surfaced it clearly.
+      # The production build is covered by playwright.config.ts's webServer,
+      # which runs `pnpm build && pnpm start`. Publication-time editorial
+      # integrity is deliberately separate from CI so in-progress edits do not
+      # prevent a development build from rendering.
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
       # The figures audit: a money/percentage/thousands figure asserted in a

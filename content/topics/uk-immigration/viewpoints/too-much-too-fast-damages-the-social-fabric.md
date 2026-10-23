@@ -5,6 +5,7 @@ order: 2
 citesFacts:
   - immigration-against-the-long-run
   - share-of-the-population-born-abroad
+  - incoming-immigration-composition
   - migration-is-the-only-source-of-population-growth
   - births-to-foreign-born-mothers
   - immigration-is-salient-and-objection-varies-by-route
