@@ -2,40 +2,15 @@
 name: A country should have a meaningful say over who joins it
 summary: "Immigration policy should be an explicit democratic choice. Government should explain the scale it intends, fund its commitments and answer for whether its rules work."
 order: 4
-citesFacts:
-  - immigration-against-the-long-run
-  - how-people-actually-arrive
-  - migration-is-the-only-source-of-population-growth
-  - care-worker-route-opened-then-closed
-  - care-worker-route-fiscally-negative
-  - asylum-accommodation-cost-overrun
-  - asylum-grant-rate-fell
-  - deportable-offenders-living-in-the-community
-acknowledges:
-  - asylum-claims-in-historical-and-european-context
-  - skilled-worker-fiscal-gain-concentrated
-  - wage-effects-small-and-uneven
-  - housing-cost-effect-positive-but-small
-  - overseas-recruitment-and-domestic-training
-  - non-citizens-share-of-convictions-and-prisons
-  - health-and-care-relies-on-migrant-workers
-  - asylum-backlog-and-hotel-use-have-fallen
-  - immigration-is-salient-and-objection-varies-by-route
-setsAside:
-  - illegal-arrivals-drove-the-net-migration-rise
-  - deterrence-would-reduce-channel-crossings
-  - public-opinion-on-immigration
-  - immigration-and-local-social-trust
-principles:
-  - democratic-consent-over-membership
-  - rules-must-mean-what-they-say
 ---
-The people who live in a country should have a meaningful say over who joins it. Immigration shapes the community they share and the commitments their government makes on their behalf. [Democratic consent](#principle-democratic-consent-over-membership) means being able to choose a policy, understand its consequences and hold someone responsible for carrying it out.
+Britain is a democracy. Government is not the master of the people; it is their representative. Its job is to carry out the choices citizens make through elections and Parliament, and to answer to them when it fails. [Democratic consent](#principle-democratic-consent-over-membership) matters especially for immigration, because immigration changes the community people share and the public commitments made in their name.
 
-Britain’s recent experience shows how much is at stake. [Changes to visa routes helped drive a sharp rise in immigration and its subsequent fall](#fact-immigration-against-the-long-run/why-immigration-spiked). [The care-worker route expanded rapidly and then contracted after restrictions](#fact-care-worker-route-opened-then-closed/one-rule-change-accounts-for-much-of-both-the-rise-and-the-fall-in-the-headline-numbe). Decisions like these should come with an explanation of the intended scale, the likely costs and the provision for homes and services. Ministers should be accountable for the combined result of their decisions.
+That does not mean a vote can erase every duty or that every individual case should be settled by public opinion. It means that the overall rules, scale and aims of immigration should be chosen openly by the people who must live with them. Ministers should not treat large changes in population as an accidental by-product of separate schemes. They should propose a plan, explain it to Parliament and ask voters to judge it.
 
-That requires looking beyond border enforcement. [Study and work account for the largest routes of non-EU immigration](#fact-how-people-actually-arrive/study-is-the-largest-single-reason-anyone-moves-to-britain). Government must therefore explain its choices about legal migration as clearly as its plans for irregular arrivals. I would require Parliament to debate the overall plan, scrutinise its assumptions and review what actually happened. Voters deserve a policy they can judge before the consequences arrive.
+Britain’s recent record shows why this is necessary. [Changes to visa routes helped drive the sharp rise in immigration and its later fall](#fact-immigration-against-the-long-run/why-immigration-spiked), while [the care-worker route expanded rapidly and then contracted after restrictions](#fact-care-worker-route-opened-then-closed/one-rule-change-accounts-for-much-of-both-the-rise-and-the-fall-in-the-headline-numbe). Those were political choices with large consequences. A democratic government should state the consequences it expects for housing, services, wages and the character of local communities before it makes them.
 
-Consent also depends on dependable rules. [Asylum accommodation costs have greatly exceeded the original contract estimates](#fact-asylum-accommodation-cost-overrun/the-contracts-are-running-at-more-than-three-times-their-original-price). We should expect prompt decisions, proper control of spending and lawful enforcement when someone has no right to stay. The principle that [rules must mean what they say](#principle-rules-must-mean-what-they-say) also binds government: people entitled to protection should receive it, and everyone should have due process.
+This cannot be reduced to border control. [Study and work are the largest routes of non-EU immigration](#fact-how-people-actually-arrive/study-is-the-largest-single-reason-anyone-moves-to-britain). A government that promises control while allowing major changes through legal routes without candid debate has not earned public trust. Parliament should set the overall framework, inspect the assumptions behind it and regularly compare promises with outcomes.
 
-[The asylum decision backlog has fallen substantially](#fact-asylum-backlog-and-hotel-use-have-fallen/the-initial-decision-queue-is-72-below-its-peak), so improvement deserves recognition. [Skilled migration is projected to benefit the public finances](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive), which gives voters a good reason to support it. A democratic policy could be generous. What matters is that the government makes the choice openly, provides for it and delivers what it promises. People should be able to welcome immigration because they have confidence in the terms on which it happens.
+Government must also keep the rules it sets. [Asylum accommodation costs have far exceeded the original contract estimates](#fact-asylum-accommodation-cost-overrun/the-contracts-are-running-at-more-than-three-times-their-original-price). The public is entitled to timely decisions, honest accounting and enforcement that follows due process. People found to need protection are entitled to protection; people whose claims finally fail are entitled to fair treatment, not endless uncertainty. [Rules must mean what they say](#principle-rules-must-mean-what-they-say).
+
+[The asylum backlog has fallen substantially](#fact-asylum-backlog-and-hotel-use-have-fallen/the-initial-decision-queue-is-72-below-its-peak), and a democratic immigration policy may well choose generosity. The principle is not that the public must always choose lower immigration. It is that citizens must be able to choose, know what their government has chosen on their behalf, and remove it if it does not deliver.

@@ -2,33 +2,15 @@
 name: Too much immigration too fast damages the fabric of our society
 summary: "A shared way of life deserves care. Immigration should move at a pace that gives people time to build a common life and a meaningful say over how their communities change."
 order: 2
-citesFacts:
-  - immigration-against-the-long-run
-  - share-of-the-population-born-abroad
-  - migration-is-the-only-source-of-population-growth
-  - births-to-foreign-born-mothers
-  - immigration-is-salient-and-objection-varies-by-route
-acknowledges:
-  - non-citizens-share-of-convictions-and-prisons
-  - wage-effects-small-and-uneven
-  - skilled-worker-fiscal-gain-concentrated
-  - health-and-care-relies-on-migrant-workers
-setsAside:
-  - immigration-and-local-social-trust
-  - public-opinion-on-immigration
-  - illegal-arrivals-drove-the-net-migration-rise
-  - ethnic-composition-at-the-2021-census
-  - religious-composition-at-the-2021-census
-principles:
-  - continuity-of-a-shared-way-of-life
-  - democratic-consent-over-membership
 ---
-A country is a community as well as an economy. People should be able to feel at home where they live, recognise the institutions and customs around them, and pass something familiar on to their children. [Continuity of a shared way of life](#principle-continuity-of-a-shared-way-of-life) deserves weight when we decide how much immigration to allow. Higher tax receipts cannot, by themselves, settle that choice.
+Britain’s prosperity rests on more than its geography. It rests on [habits that took generations to build: trust that strangers will follow the rules, a willingness to improve institutions through experiment, tolerance of eccentricity and new ideas, and enough fellow feeling to accept obligations to people we do not know](#needed). Those habits are precious. [Continuity of a shared way of life](#principle-continuity-of-a-shared-way-of-life) means taking care of the culture that sustains them.
 
-Britain has reason to take the pace of change seriously. [Annual arrivals remain far above the levels typical of the 1990s, even after falling sharply from their recent peak](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling). [The share of people born abroad in England and Wales has also risen substantially over the longer term](#fact-share-of-the-population-born-abroad/the-share-has-roughly-quadrupled-since-the-war). [Net migration has fallen much further than arrivals](#fact-immigration-against-the-long-run/net-migration-is-not-unusual-at-all), which eases the population pressure. It still leaves a legitimate choice about the scale of future immigration and the kind of shared life we want to build.
+That culture is neither ethnic nor fixed in the past. [Britain has absorbed newcomers for centuries, and many have enriched it](#needed). But integration asks something of both sides. Newcomers need a real invitation into a British common life, and [English, the rule of law, equal citizenship and loyalty to shared institutions are conditions of successful integration](#needed).
 
-Integration should mean more than living alongside one another. We should want neighbours who can communicate, children who share opportunities and institutions that bring people together. The risk of moving too quickly is that we ask communities to accommodate change without giving that common life enough attention. There is [no established immigration threshold beyond which social trust breaks down](#fact-immigration-and-local-social-trust/finding). We can still choose a cautious pace because we value continuity, rather than wait for a precise measure of what would be too much to lose.
+The speed of change matters because integration takes time. [Annual arrivals remain much higher than the levels typical of the 1990s, despite falling from their recent peak](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling), and [the foreign-born share of England and Wales has risen substantially over the long run](#fact-share-of-the-population-born-abroad/the-share-has-roughly-quadrupled-since-the-war). A country can welcome people and still judge that this is too much change to absorb well, especially where [a rapid rate of arrivals or greater cultural distance makes integration harder](#needed).
 
-That choice has costs. [Skilled migration brings projected gains to the public finances](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive), and [health and care rely heavily on workers born outside Europe](#fact-health-and-care-relies-on-migrant-workers/care-and-health-professional-roles-have-the-highest-non-eu-born-shares-of-any-occupat). A slower pace should therefore come with a plan for staffing essential services. Economic benefits are a reason to make reductions carefully; they do not make every level of immigration desirable.
+There is [no settled evidence of a precise immigration rate at which social trust fails](#fact-immigration-and-local-social-trust/finding). But we do not need to prove a cliff-edge before acting with care. If [groups increasingly see one another as competitors for scarce housing, services and political power, rather than as citizens with a shared future](#needed), the solidarity that supports a generous and stable country weakens. [A slower pace gives communities time to form the relationships on which trust depends](#needed).
 
-I would favour lower arrivals alongside investment in language learning, housing and places where people meet. Everyone who belongs to Britain should have an equal place in that shared future, whatever their ancestry. Through [democratic consent](#principle-democratic-consent-over-membership), people should be able to choose a slower pace of future change and give both established residents and newcomers a better chance to build a common life.
+That choice has costs. [Skilled migration brings projected gains to the public finances](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive), and [health and care rely heavily on workers born outside Europe](#fact-health-and-care-relies-on-migrant-workers/care-and-health-professional-roles-have-the-highest-non-eu-born-shares-of-any-occupat). Reducing immigration must therefore go with a plan to train, retain and pay British workers, and with investment in the institutions that help people integrate. It cannot be an excuse to blame people already here or deny their equal place in the country.
+
+I would choose lower immigration, stronger expectations of integration and more support for the shared institutions that bind the country together. Through [democratic consent](#principle-democratic-consent-over-membership), Britain can decide the pace of future change before it loses the confidence and common purpose that make it worth joining.

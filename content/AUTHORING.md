@@ -623,7 +623,8 @@ Use this sequence when asked to create or improve viewpoints on any topic:
    that interrupt the thought. Revise the summary after the body.
 5. **Audit the evidence.** Inventory every empirical premise, including those
    in the title and summary. Map each to a specific **Observation** in a neutral
-   data report, and check that observation against real, credible sources.
+   data report, or mark it `#needed` for the research queue. Check each
+   observation against real, credible sources.
    Prefer official statistics, primary research and authoritative legal texts
    as appropriate. Check scope, date, comparison and uncertainty. A plausible
    phrase or a resolving link is not proof of support. Expand the shared report,
@@ -635,11 +636,11 @@ Use this sequence when asked to create or improve viewpoints on any topic:
    or principle modal. Run the content checks, then reread the essay as prose.
 
 **An explicitly requested argument-first pass may stop before the full evidence
-audit.** Keep useful existing links and record unresolved support in the handoff;
-do not present them as verified. Avoid adding speculative facts just to make
-an argument sound stronger. The later audit is required before calling a new
-topic fully sourced. It must preserve readable prose rather than turn the essay
-back into a string of source notes.
+audit.** Keep useful existing links and mark unresolved empirical premises with
+`#needed`; do not present them as verified. Avoid adding speculative facts just
+to make an argument sound stronger. The later audit is required before calling a
+new topic fully sourced. It must preserve readable prose rather than turn the
+essay back into a string of source notes.
 
 The finished evidence chain is: **viewpoint claim → report Observation → credible
 source or dataset**. Graph and whole-report links are useful navigation, but an
@@ -647,33 +648,47 @@ empirical argument needs an observation that actually states its premise. A
 missing observation is work to finish in the report, not permission to bury the
 premise in a chart or leave it supported only by an external link.
 
-### Citations and lists
+### Citations and data order
 
-Four frontmatter lists:
+Viewpoint frontmatter contains only `name`, `summary` and `order`. There are
+no `citesFacts`, `acknowledges`, `setsAside` or viewpoint-level `principles`
+lists. The prose itself shows what the argument builds on, concedes or sets
+aside through inline citations.
 
-| Field | Contains | Enforced |
-| --- | --- | --- |
-| `citesFacts` | Facts the viewpoint argues *from* | `well-supported` or `contested` only |
-| `acknowledges` | Facts it concedes | `well-supported` only; must be non-empty |
-| `setsAside` | Facts it says do no work | any status |
-| `principles` | Principles it rests on | must be included in `topic.md`'s `principles` list |
-
-A fact may appear in at most one of the three fact lists per viewpoint.
-
-**`citesFacts` order is that viewpoint's own ranking of what matters, and it
-drives the page's fact order.** `rank-facts.ts` takes each viewpoint's
-`citesFacts` then `acknowledges`, in written order, and interleaves them
-round-robin: every viewpoint's first-ranked fact is placed before any
-viewpoint's second. So the first item in your `citesFacts` is your claim on
-the top of the Data section, and reordering that list reorders the page. Put
-the fact your argument actually rests on first, not the one you happened to
-write first.
+`topic.md` contains `dataOrder`: the explicit order of headline Data
+collections on the page. List every headline collection once, by filename ID.
+Supporting collections belong under their parent and are not included. Data
+order is an editorial decision about reading flow, not a reward for whichever
+viewpoint happens to cite something first.
 
 Every empirical assertion in viewpoint prose **and summaries** should be a
 linked observation pill, including non-numeric statements and key premises that are not
 obviously true. Link the relevant phrase each time it appears; a list at the
 bottom is not a substitute. Include essential qualifications inside the pill.
 Values, preferences and purely logical reasoning remain ordinary prose.
+
+### Research-needed citations
+
+An argument-first draft may contain an empirical premise that deserves research
+but does not yet have a report. Mark the exact claim with a `#needed` link:
+
+```markdown
+[integration succeeds at different rates](#needed)
+```
+
+This renders as a muted, dashed **Research needed** pill. Clicking it opens a
+simple popup: “Research needed to see if this is true.” It is visibly
+different from a data citation, so an unverified premise cannot be mistaken for
+evidence. `#needed` has no frontmatter entry and is not counted as a fact
+citation or a viewpoint relationship.
+
+Use it for a concrete empirical claim that a future data report could confirm,
+qualify or disprove. Link the claim itself, not a vague sentence such as “more
+research is needed.” Do not use it for values, policy preferences, logic, or a
+fact already supported by an observation. It is a research queue: when evidence
+is found, replace it with the appropriate `#fact-...` observation link. When
+evidence cuts the other way or
+cannot be found, rewrite or remove the premise.
 
 Cite observations inline with a plain markdown link to the collection and
 observation ID. The existing `#fact-` prefix remains the citation syntax:
@@ -682,10 +697,8 @@ observation ID. The existing `#fact-` prefix remains the citation syntax:
 [immigration shifted from EU to non-EU nationals](#fact-immigration-against-the-long-run/nationality-shift)
 ```
 
-The build checks that the id resolves and, in a viewpoint, that the fact is
-already in one of that viewpoint's three lists — citing a supporting fact
-counts when its parent is listed. Links render as the fact's own URL, so a
-citation works without JavaScript.
+The build checks that the id resolves. Links render as the Data collection's
+own URL, so a citation works without JavaScript.
 
 ### Principle pills
 
@@ -1008,7 +1021,7 @@ Run this before opening a pull request.
 - [ ] The conclusion follows from the reasons, with a concrete choice or judgment.
 - [ ] Applied principles are inline pills, listed in frontmatter, opening the right modal.
 - [ ] Each empirical premise maps to a report Observation backed by credible evidence;
-      any deferred audit is explicitly identified in the handoff.
+      otherwise it is marked `#needed` and explicitly queued for research.
 - [ ] Where it is milder than a partisan would put it, that traces to
       something they would concede.
 - [ ] Could be published standalone elsewhere, unchanged. No sentence refers
@@ -1021,7 +1034,8 @@ Run this before opening a pull request.
       argument actually rests on.
 - [ ] Every fact it leans on is in one of its three lists.
 - [ ] Every empirical assertion in prose and summaries is a pill targeting the
-      relevant finding, including key non-obvious, non-numeric premises.
+      relevant finding, or a visibly distinct `#needed` research pill until the
+      evidence audit is complete.
 
 **Every principle**
 

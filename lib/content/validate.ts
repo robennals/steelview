@@ -1,4 +1,4 @@
-import { citedFactIds, citedFactTargets } from './markdown';
+import { citedFactTargets } from './markdown';
 import { comparePeriods } from './period';
 import type { Fact, Series, Topic } from './types';
 
@@ -16,62 +16,26 @@ export function validateTopic(topic: Topic): string[] {
   const viewpointIds = new Set(topic.viewpoints.map((v) => v.id));
   const principleIds = new Set(topic.principles.map((p) => p.id));
 
-  // Facts referenced by any viewpoint — used for the orphan check (rule 8).
-  const referencedFacts = new Set<string>();
-
-  const CITABLE_STATUSES = new Set(['well-supported', 'contested']);
-
+  // Legacy relationship lists remain readable for old topics, but new
+  // viewpoints omit them and express every relationship inline.
   for (const v of topic.viewpoints) {
-    const lists: Array<[string, string[]]> = [
+    const lists: Array<[string, string[] | undefined]> = [
       ['citesFacts', v.citesFacts],
       ['acknowledges', v.acknowledges],
       ['setsAside', v.setsAside],
     ];
     const listOfFact = new Map<string, string>();
-
-    for (const [listName, ids] of lists) {
-      for (const id of ids) {
-        const f = factById.get(id);
-        if (!f) {
-          // rule 1
-          errors.push(`viewpoint ${v.id}: ${listName} references unknown fact "${id}"`);
-          continue;
-        }
-        referencedFacts.add(id);
-
-        // rule 2 — one relationship per fact per viewpoint
-        const previous = listOfFact.get(id);
-        if (previous) {
-          errors.push(`viewpoint ${v.id}: fact "${id}" appears in both ${previous} and ${listName}`);
-        } else {
-          listOfFact.set(id, listName);
-        }
-
-        // rule 2 — status gates
-        if (listName === 'citesFacts' && !CITABLE_STATUSES.has(f.status)) {
-          errors.push(
-            `viewpoint ${v.id}: citesFacts may not include "${id}" (status ${f.status}) — only well-supported or contested facts can be built on; put it in setsAside instead`
-          );
-        }
-        if (listName === 'acknowledges' && f.status !== 'well-supported') {
-          errors.push(
-            `viewpoint ${v.id}: acknowledges may only include well-supported facts, but "${id}" is ${f.status}`
-          );
-        }
-      }
+    for (const [listName, ids] of lists) for (const id of ids ?? []) {
+      const fact = factById.get(id);
+      if (!fact) { errors.push(`viewpoint ${v.id}: ${listName} references unknown fact "${id}"`); continue; }
+      const previous = listOfFact.get(id);
+      if (previous) errors.push(`viewpoint ${v.id}: fact "${id}" appears in both ${previous} and ${listName}`);
+      else listOfFact.set(id, listName);
+      if (listName === 'citesFacts' && !new Set(['well-supported', 'contested']).has(fact.status)) errors.push(`viewpoint ${v.id}: citesFacts may not include "${id}" (status ${fact.status})`);
+      if (listName === 'acknowledges' && fact.status !== 'well-supported') errors.push(`viewpoint ${v.id}: acknowledges may only include well-supported facts, but "${id}" is ${fact.status}`);
     }
-
-    // rule 6
-    if (v.acknowledges.length === 0) {
-      errors.push(
-        `viewpoint ${v.id}: acknowledges is empty — a viewpoint that concedes nothing is advocacy, not a steelman`
-      );
-    }
-
-    // rule 1
-    for (const id of v.principles) {
-      if (!principleIds.has(id)) errors.push(`viewpoint ${v.id}: references unknown principle "${id}" — list it in topic.md principles`);
-    }
+    if (v.acknowledges !== undefined && v.acknowledges.length === 0) errors.push(`viewpoint ${v.id}: acknowledges is empty — a viewpoint that concedes nothing is advocacy, not a steelman`);
+    for (const id of v.principles ?? []) if (!principleIds.has(id)) errors.push(`viewpoint ${v.id}: references unknown principle "${id}" — list it in topic.md principles`);
   }
 
   for (const f of topic.facts) {
@@ -190,18 +154,12 @@ export function validateTopic(topic: Topic): string[] {
     errors.push('topic: needs at least 2 viewpoints — add another viewpoint under viewpoints/');
   }
 
-  // rule 8. A supporting fact is exempt: its parent is what justifies it
-  // being on the page, so it need not be referenced by any viewpoint. The
-  // rule still bites on headline facts, which is where it does its work —
-  // keeping the top-level Facts list from silting up with true-but-irrelevant
-  // material.
-  for (const f of topic.facts) {
-    if (f.supports !== undefined && factById.has(f.supports)) continue;
-    if (!referencedFacts.has(f.id)) {
-      errors.push(
-        `fact ${f.id}: orphan — no viewpoint cites, acknowledges or sets it aside, so it does no work on the page`
-      );
-    }
+  const headlines = topic.facts.filter((f) => f.supports === undefined).map((f) => f.id);
+  for (const id of topic.dataOrder ?? []) {
+    if (!headlines.includes(id)) errors.push(`topic: dataOrder references unknown or supporting data "${id}"`);
+  }
+  for (const id of headlines) {
+    if ((topic.dataOrder?.length ?? 0) > 0 && !(topic.dataOrder ?? []).includes(id)) errors.push(`topic: dataOrder is missing headline data "${id}"`);
   }
 
   errors.push(...citationErrors(topic, factById));
@@ -337,22 +295,7 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   for (const p of topic.principles) check(`principle ${p.id}`, p.body);
   for (const c of topic.cruxes) check(`crux ${c.id}`, c.body);
 
-  for (const v of topic.viewpoints) {
-    check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
-
-    const listed = new Set([...v.citesFacts, ...v.acknowledges, ...v.setsAside]);
-    for (const id of citedFactIds(v.body + '\n' + v.summary)) {
-      const cited = factById.get(id);
-      if (!cited) continue; // already reported by rule 12
-      if (listed.has(id)) continue;
-      if (cited.supports !== undefined && listed.has(cited.supports)) continue;
-      const via =
-        cited.supports !== undefined ? `, nor is its parent fact "${cited.supports}"` : '';
-      errors.push(
-        `viewpoint ${v.id}: body cites fact "${id}", which is not in citesFacts, acknowledges or setsAside${via} — add it to one of those lists, or cite a fact the viewpoint already relates to`
-      );
-    }
-  }
+  for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
   return errors;
 }

@@ -1,4 +1,5 @@
-import type { Fact, FactStatus, Viewpoint } from './types';
+import type { Fact, FactStatus } from './types';
+import { citedFactIds } from './markdown';
 
 /**
  * The reading order for facts nobody ranks — the tail below. Not the
@@ -16,33 +17,6 @@ export const FACT_STATUS_ORDER: readonly FactStatus[] = [
 
 function byId(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
-}
-
-/**
- * What one viewpoint would put at the top of the Facts section, most
- * important first: the facts it argues *from* (`citesFacts`, in the order
- * written), then the facts it concedes (`acknowledges`, in the order
- * written). A fact it only sets aside is not ranked by it at all — setting a
- * claim aside is a statement that it does no work for this viewpoint.
- *
- * Duplicates are collapsed to their first appearance so a repeated id cannot
- * buy a viewpoint two turns in the round-robin below.
- */
-function rankingFor(viewpoint: Viewpoint, headlineOf: (id: string) => string | undefined): string[] {
-  const seen = new Set<string>();
-  const ranking: string[] = [];
-  for (const id of [...viewpoint.citesFacts, ...viewpoint.acknowledges]) {
-    const headline = headlineOf(id);
-    // A citation of a supporting fact counts for its parent: a viewpoint
-    // relying on a detail is relying on the claim that detail supports. If
-    // rolling up lands on a headline fact this viewpoint already ranked
-    // higher, the earlier position wins and the duplicate is dropped — the
-    // same rule that already stops a repeated id buying two turns.
-    if (headline === undefined || seen.has(headline)) continue;
-    seen.add(headline);
-    ranking.push(headline);
-  }
-  return ranking;
 }
 
 /**
@@ -143,52 +117,24 @@ function byStatusThenId(a: Fact, b: Fact): number {
  *
  * The result does not depend on the order of `viewpoints` or of `facts`.
  */
-export function rankFacts(facts: readonly Fact[], viewpoints: readonly Viewpoint[]): Fact[] {
+export function rankFacts(
+  facts: readonly Fact[],
+  dataOrder: readonly string[] | readonly { summary: string; body: string }[]
+): Fact[] {
   const headlineOf = headlineIds(facts);
-  const asHeadline = (id: string) => headlineOf.get(id);
-  const rankings = viewpoints.map((v) => rankingFor(v, asHeadline));
-
-  // How many viewpoints rank each headline fact at all — the first tie-break
-  // within a round. `setsAside` is deliberately *not* counted: a viewpoint
-  // setting a claim aside is saying it does not hold up as stated, and
-  // counting it here boosted facts the sides agree do no work.
-  const references = new Map<string, number>();
-  for (const v of viewpoints) {
-    const ranked = new Set<string>();
-    for (const id of [...v.citesFacts, ...v.acknowledges]) {
-      const headline = asHeadline(id);
-      if (headline !== undefined) ranked.add(headline);
-    }
-    for (const id of ranked) references.set(id, (references.get(id) ?? 0) + 1);
-  }
-
-  const placed: string[] = [];
-  const isPlaced = new Set<string>();
-  const rounds = rankings.reduce((max, r) => Math.max(max, r.length), 0);
-
-  for (let k = 0; k < rounds; k++) {
-    const picks = new Map<string, number>();
-    for (const ranking of rankings) {
-      const id = ranking[k];
-      // An already-placed fact still spends this viewpoint's turn — it just
-      // adds nothing new to the round.
-      if (id === undefined || isPlaced.has(id)) continue;
-      picks.set(id, (picks.get(id) ?? 0) + 1);
-    }
-    const round = [...picks.entries()].sort(
-      ([idA, countA], [idB, countB]) =>
-        countB - countA ||
-        (references.get(idB) ?? 0) - (references.get(idA) ?? 0) ||
-        byId(idA, idB)
-    );
-    for (const [id] of round) {
-      isPlaced.add(id);
-      placed.push(id);
-    }
-  }
-
   const factById = new Map(facts.map((f) => [f.id, f]));
-  const ranked = placed.map((id) => factById.get(id)!);
+  const orderIsExplicit = dataOrder.every((item) => typeof item === 'string');
+  const rankedIds = orderIsExplicit
+    ? (dataOrder as readonly string[])
+    : (dataOrder as readonly { summary: string; body: string }[]).flatMap((viewpoint) =>
+        citedFactIds(`${viewpoint.summary}\n${viewpoint.body}`)
+      );
+  const ranked = rankedIds
+    .map((id) => headlineOf.get(id))
+    .filter((id): id is string => id !== undefined)
+    .filter((id, index, ids) => ids.indexOf(id) === index)
+    .map((id) => factById.get(id)!);
+  const isPlaced = new Set(ranked.map((f) => f.id));
   const tail = facts
     .filter((f) => isHeadline(f, headlineOf) && !isPlaced.has(f.id))
     .sort(byStatusThenId);
@@ -208,6 +154,6 @@ export function rankFacts(facts: readonly Fact[], viewpoints: readonly Viewpoint
  * the reader meet first — and because the two must not drift apart into
  * "one section is derived, the other is whatever the filenames happen to be".
  */
-export function sortViewpoints(viewpoints: Viewpoint[]): void {
+export function sortViewpoints(viewpoints: Array<{ id: string; order: number }>): void {
   viewpoints.sort((a, b) => a.order - b.order || byId(a.id, b.id));
 }

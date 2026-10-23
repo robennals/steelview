@@ -2,22 +2,6 @@
 name: We have a moral duty to help people fleeing danger
 summary: "People fleeing persecution deserve safety and a fair hearing. Britain should meet that duty through a humane, workable asylum system, even when doing so has a cost."
 order: 5
-citesFacts:
-  - asylum-backlog-and-hotel-use-have-fallen
-  - how-people-actually-arrive
-  - asylum-claims-in-historical-and-european-context
-acknowledges:
-  - asylum-accommodation-cost-overrun
-  - asylum-grant-rate-fell
-  - immigration-is-salient-and-objection-varies-by-route
-  - deportable-offenders-living-in-the-community
-setsAside:
-  - deterrence-would-reduce-channel-crossings
-  - migrants-access-to-benefits
-principles:
-  - obligation-to-people-in-danger
-  - rules-must-mean-what-they-say
-  - priority-to-the-worst-off
 ---
 Someone fleeing persecution needs a place where they can be safe. Their claim on our help does not depend on whether they are highly paid, speak our language or happen to have been born nearby. Our [obligation to people in danger](#principle-obligation-to-people-in-danger) is a reason to offer protection even when there is little in it for us. That is what makes asylum a duty worth honouring.
 

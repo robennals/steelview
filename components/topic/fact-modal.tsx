@@ -22,7 +22,7 @@ export function FactModal({ labelledBy, children, href, onClose, kind = 'Data' }
   children: ReactNode;
   href: string;
   onClose?: () => void;
-  kind?: 'Data' | 'Principle';
+  kind?: 'Data' | 'Principle' | 'Research needed';
 }) {
   const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);
