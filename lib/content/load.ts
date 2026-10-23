@@ -130,7 +130,7 @@ export async function loadTopic(
     intro: content.trim(),
     // Fact order is derived from what the viewpoints rank, so it can only be
     // computed once both are loaded. See rank-facts.ts.
-    facts: rankFacts(facts, viewpoints),
+    facts: rankFacts(facts, parsed.data.dataOrder),
     viewpoints,
     principles,
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),

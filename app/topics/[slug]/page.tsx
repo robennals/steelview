@@ -10,6 +10,8 @@ import { HashSync } from '@/components/topic/hash-sync';
 import { FactList } from '@/components/topic/fact-list';
 import { ViewpointItem } from '@/components/topic/viewpoint-item';
 import { PrincipleItem } from '@/components/topic/principle-item';
+import { PrincipleModals } from '@/components/topic/principle-modals';
+import { ResearchNeededModal } from '@/components/topic/research-needed-modal';
 import { CruxItem } from '@/components/topic/crux-item';
 import type { ItemKind, Topic } from '@/lib/content/types';
 
@@ -112,8 +114,6 @@ export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
  * without a real content directory.
  */
 export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<string, string> }) {
-  const factsById = new Map(topic.facts.map((f) => [f.id, f]));
-  const principlesById = new Map(topic.principles.map((p) => [p.id, p]));
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   /*
@@ -131,6 +131,12 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
 
   return (
     <div className="sv-sections">
+      <ResearchNeededModal />
+      <PrincipleModals principles={topic.principles.map((principle) => ({
+        id: principle.id,
+        name: principle.name,
+        bodyHtml: bodies.get(bodyKey('principle', principle.id)) ?? '',
+      }))} />
       {headline.length > 0 && (
         <section className="sv-section">
           <div className="sv-section__head">
@@ -170,12 +176,9 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           {topic.viewpoints.map((viewpoint) => (
             <ViewpointItem
               key={viewpoint.id}
-              slug={topic.slug}
               viewpoint={viewpoint}
               bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
               summaryHtml={bodies.get(`summary:${viewpoint.id}`)}
-              factsById={factsById}
-              principlesById={principlesById}
             />
           ))}
         </section>
