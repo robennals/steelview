@@ -2,20 +2,6 @@ import { test, expect } from '@playwright/test';
 const topic = '/topics/uk-immigration';
 const viewpoint = '#viewpoint-the-right-kind-of-immigration-not-less-of-it';
 
-test('a summary pill opens its exact finding without toggling the viewpoint', async ({ page }) => {
-  await page.goto(topic);
-  const view = page.locator(viewpoint);
-  const pill = view.locator('summary .sv-cite').first();
-  await pill.click();
-  await expect(view).not.toHaveAttribute('open', '');
-  const target = page.locator('dialog .sv-target');
-  await expect(target).toContainText('72%');
-  await expect(target).toBeInViewport();
-  await expect(page.locator('.sv-modal__expand')).toHaveAttribute('href', /#skilled-worker-fiscal/);
-  await page.keyboard.press('Escape');
-  await expect(pill).toBeFocused();
-});
-
 test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
   await page.route('**/api/topics/**', async route => {
     await new Promise(resolve => setTimeout(resolve, 250));
@@ -135,7 +121,7 @@ test('opening graphs include all asylum comparators and details remain collapsed
 
 test('glossary popup closes before its containing fact and restores keyboard focus', async ({ page }) => {
   await page.goto(topic);
-  await page.locator('a[data-fact-id="immigration-against-the-long-run"]').first().click();
+  await page.locator('a.sv-factrow[href$="/facts/immigration-against-the-long-run"]').click();
   const fact = page.locator('dialog.sv-modal');
   await fact.locator('#immigration-against-the-long-run--observations-international-immigration > summary').click();
   await fact.locator('#immigration-against-the-long-run--international-differences > summary').click();

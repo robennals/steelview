@@ -19,14 +19,12 @@ export function ViewpointItem({
   slug,
   viewpoint,
   bodyHtml,
-  summaryHtml,
   factsById,
   principlesById,
 }: {
   slug: string;
   viewpoint: Viewpoint;
   bodyHtml: string;
-  summaryHtml?: string;
   factsById: Map<string, Fact>;
   principlesById: Map<string, Principle>;
 }) {
@@ -34,12 +32,7 @@ export function ViewpointItem({
     <Disclosure
       anchor={anchorFor('viewpoint', viewpoint.id)}
       className="sv-viewpoint"
-      summary={
-        <>
-          <span className="sv-item__claim">{viewpoint.name}</span>{' '}
-          <span className="sv-item__note">{summaryHtml ? <span className="prose-body" dangerouslySetInnerHTML={{ __html: summaryHtml.replace(/^<p>|<\/p>$/g, '') }} /> : viewpoint.summary}</span>
-        </>
-      }
+      summary={<span className="sv-item__claim">{viewpoint.name}</span>}
     >
       <Prose html={bodyHtml} />
       <details className="sv-evidence-index"><summary>Evidence used by this viewpoint</summary>
