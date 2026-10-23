@@ -17,11 +17,12 @@ const FOCUSABLE = [
 ].join(', ');
 
 /** Accessible sheet shared by instant topic previews and intercepted routes. */
-export function FactModal({ labelledBy, children, href, onClose }: {
+export function FactModal({ labelledBy, children, href, onClose, kind = 'Data' }: {
   labelledBy: string;
   children: ReactNode;
   href: string;
   onClose?: () => void;
+  kind?: 'Data' | 'Principle' | 'Research needed';
 }) {
   const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -158,10 +159,10 @@ export function FactModal({ labelledBy, children, href, onClose }: {
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
       <div className="sv-modal__panel">
         <div className="sv-modal__bar">
-          <p className="sv-modal__eyebrow">Data</p>
-          <a className="sv-modal__expand" href={href} data-fact-expand>
+          <p className="sv-modal__eyebrow">{kind}</p>
+          {kind === 'Data' && <a className="sv-modal__expand" href={href} data-fact-expand>
             Expand <span aria-hidden="true">↗</span>
-          </a>
+          </a>}
           <button type="button" className="sv-modal__close" onClick={leave}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
