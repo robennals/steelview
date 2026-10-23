@@ -9,6 +9,7 @@ import {
   niceTicks,
   pathFor,
   seriesSlots,
+  seriesStrokeDash,
   seriesTable,
   splitAtBreaks,
   yearTicks,
@@ -96,9 +97,10 @@ test('niceTicks does not degenerate on a flat series', () => {
   assert.deepEqual(niceTicks(0, 0), [-1, 0, 1]);
 });
 
-test('yearTicks gives whole decades inside the span', () => {
-  assert.deepEqual(yearTicks(1964, 2025, 10), [1970, 1980, 1990, 2000, 2010, 2020]);
-  assert.deepEqual(yearTicks(1964, 2025, 20), [1980, 2000, 2020]);
+test('yearTicks labels every year for short series and names both ends of longer ones', () => {
+  assert.deepEqual(yearTicks(2021, 2025, 20), [2021, 2022, 2023, 2024, 2025]);
+  assert.deepEqual(yearTicks(1964, 2025, 10), [1964, 1970, 1980, 1990, 2000, 2010, 2020, 2025]);
+  assert.deepEqual(yearTicks(1964, 2025, 20), [1964, 1980, 2000, 2020, 2025]);
 });
 
 test('formatValue is the exact number, formatTick the compact one', () => {
@@ -119,6 +121,37 @@ test('a line keeps its colour slot across every reading it appears in', () => {
     ['Immigration', 1],
     ['Net migration', 2],
   ]);
+});
+
+test('a substantive four-way breakdown receives a fourth stable colour slot', () => {
+  const s = series();
+  s.readings[0].lines.push({
+    name: 'Third group',
+    points: [
+      { period: '1990', value: 1 },
+      { period: '1991', value: 1 },
+      { period: '1992', value: 1 },
+      { period: '1993', value: 1 },
+    ],
+  });
+  assert.equal(seriesSlots(s).get('Third group'), 3);
+  s.readings[0].lines.push({
+    name: 'Fourth group',
+    points: [
+      { period: '1990', value: 1 },
+      { period: '1991', value: 1 },
+      { period: '1992', value: 1 },
+      { period: '1993', value: 1 },
+    ],
+  });
+  assert.equal(seriesSlots(s).get('Fourth group'), 4);
+});
+
+test('later series slots add a distinct non-colour cue', () => {
+  assert.equal(seriesStrokeDash(1), undefined);
+  assert.equal(seriesStrokeDash(3), undefined);
+  assert.equal(seriesStrokeDash(4), '8 3');
+  assert.equal(seriesStrokeDash(7), '2 3');
 });
 
 test('splitAtBreaks cuts the line at the break and bridges the gap', () => {
@@ -158,6 +191,10 @@ test('layout puts the coverage ends at the plot edges and marks zero', () => {
   const last = layout.lines[0].last;
   assert.equal(Number(first.x.toFixed(4)), g.left);
   assert.equal(Number(last.x.toFixed(4)), g.left + g.plotWidth);
+
+  // The shared time-series renderer never leaves the x-axis as anonymous
+  // positions: it labels the calendar years represented by the source dates.
+  assert.deepEqual(layout.timeTicks.map((tick) => tick.label), ['1990', '1991', '1992', '1993']);
 
   assert.ok(layout.zeroY !== null);
   assert.ok(layout.zeroY! > g.top && layout.zeroY! < g.top + g.plotHeight);

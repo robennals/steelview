@@ -14,28 +14,16 @@ export function validateTopic(topic: Topic): string[] {
   const errors: string[] = [];
   const factById = new Map(topic.facts.map((f) => [f.id, f]));
   const viewpointIds = new Set(topic.viewpoints.map((v) => v.id));
-  const principleIds = new Set(topic.principles.map((p) => p.id));
 
-  // Legacy relationship lists remain readable for old topics, but new
-  // viewpoints omit them and express every relationship inline.
-  for (const v of topic.viewpoints) {
-    const lists: Array<[string, string[] | undefined]> = [
-      ['citesFacts', v.citesFacts],
-      ['acknowledges', v.acknowledges],
-      ['setsAside', v.setsAside],
-    ];
-    const listOfFact = new Map<string, string>();
-    for (const [listName, ids] of lists) for (const id of ids ?? []) {
+  if (topic.dataOrder) {
+    const seen = new Set<string>();
+    for (const id of topic.dataOrder) {
       const fact = factById.get(id);
-      if (!fact) { errors.push(`viewpoint ${v.id}: ${listName} references unknown fact "${id}"`); continue; }
-      const previous = listOfFact.get(id);
-      if (previous) errors.push(`viewpoint ${v.id}: fact "${id}" appears in both ${previous} and ${listName}`);
-      else listOfFact.set(id, listName);
-      if (listName === 'citesFacts' && !new Set(['well-supported', 'contested']).has(fact.status)) errors.push(`viewpoint ${v.id}: citesFacts may not include "${id}" (status ${fact.status})`);
-      if (listName === 'acknowledges' && fact.status !== 'well-supported') errors.push(`viewpoint ${v.id}: acknowledges may only include well-supported facts, but "${id}" is ${fact.status}`);
+      if (!fact) errors.push(`topic: dataOrder references unknown data "${id}"`);
+      else if (fact.supports) errors.push(`topic: dataOrder may only name headline data, not supporting data "${id}"`);
+      if (seen.has(id)) errors.push(`topic: dataOrder contains "${id}" more than once`);
+      seen.add(id);
     }
-    if (v.acknowledges !== undefined && v.acknowledges.length === 0) errors.push(`viewpoint ${v.id}: acknowledges is empty — a viewpoint that concedes nothing is advocacy, not a steelman`);
-    for (const id of v.principles ?? []) if (!principleIds.has(id)) errors.push(`viewpoint ${v.id}: references unknown principle "${id}" — list it in topic.md principles`);
   }
 
   for (const f of topic.facts) {
@@ -85,6 +73,9 @@ export function validateTopic(topic: Topic): string[] {
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
       chartIds.add(chart.id);
+      if (chart.domainMax !== undefined && chart.items.some(item => item.value > chart.domainMax!)) {
+        errors.push(`fact ${f.id}: comparison domainMax must be at least every item value`);
+      }
       if (chart.groups) {
         if (chart.defaultGroup !== undefined && chart.defaultGroup >= chart.groups.length) errors.push(`fact ${f.id}: invalid default comparison group`);
         if (new Set(chart.groups).size !== chart.groups.length) errors.push(`fact ${f.id}: duplicate comparison group`);
@@ -255,25 +246,18 @@ function seriesErrors(factId: string, series: Series): string[] {
 }
 
 /**
- * Rules 12 and 13 — inline fact citations in prose.
+ * Inline data citations in prose.
  *
  * A body may cite a fact by linking to its anchor:
  * `[net migration reached 944,000](#fact-net-migration-2024)`. That link is
  * the page's honesty signal at the point of use, so it gets the same
  * treatment as every other cross-reference on the page:
  *
- * 12. it must resolve to a real fact in this topic — a dead citation is a
+ * 1. it must resolve to real data in this topic — a dead citation is a
  *     claim that looks sourced and is not, which is worse than an unlinked
  *     one;
- * 13. in a *viewpoint*, it must point at a fact that viewpoint already lists
- *     in `citesFacts`, `acknowledges` or `setsAside`. The frontmatter lists
- *     are what the ranking, the chips and the orphan rule all read; if the
- *     prose could lean on a fact the lists do not mention, the page would be
- *     saying two different things about what the viewpoint rests on, and the
- *     one a reader can see would be the one nothing checks. A supporting fact
- *     counts when its parent headline fact is listed — a viewpoint relying on
- *     a detail is relying on the claim that detail supports, which is exactly
- *     how the fact ranking already rolls citations up.
+ * Links in viewpoints are the complete, reader-visible record of the data
+ * their argument relies on. There is no second structured list to maintain.
  */
 function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   const errors: string[] = [];

@@ -20,8 +20,9 @@ pnpm dev        # dev server at localhost:3000
 pnpm test:unit  # node:test via tsx — content validation and pure logic
 pnpm test:e2e   # Playwright — builds the app, then drives it in a browser
 pnpm lint       # eslint
+pnpm check:integrity # publication-time cross-item and editorial integrity checks
 pnpm check:figures  # audits figures asserted in prose against the quoted sources
-pnpm build      # production build (this is what fails if content is invalid)
+pnpm build      # production build
 ```
 
 ## Content
@@ -66,13 +67,13 @@ fact appears before every viewpoint has had its first
 (`lib/content/rank-facts.ts`). **Viewpoint order is an explicit `order` field**
 on each viewpoint, chosen so the sides alternate rather than cluster.
 
-## Invalid content fails the build
+## Content validation and publication checks
 
-`lib/content/load.ts` loads and validates the whole tree at build time. A
-malformed file, or a cross-reference to something that doesn't exist, fails
-`pnpm build` (and CI) with a message naming the offending item — it never
-renders a broken page. Beyond the zod schema shape, these rules are enforced
-and unit-tested:
+`lib/content/load.ts` always rejects malformed frontmatter and files that
+cannot be rendered. Cross-item integrity runs only when explicitly requested
+with `pnpm check:integrity`, so a dev server and ordinary CI remain useful
+while a report is part-way through an edit. Run that command before publishing. Beyond
+the zod schema shape, it enforces and unit-tests these rules:
 
 1. Every id referenced in `citesFacts`, `acknowledges`, `setsAside`,
    `principles`, `divides`, and `positions[].viewpoint` must
@@ -108,8 +109,8 @@ prose patterns to avoid, which rules the build enforces and which are
 editorial judgement, and a checklist to run before opening a PR.
 
 Then add a new directory under `content/topics/`, following the structure
-above, and run `pnpm build` and `pnpm check:figures` to check the new content
-validates.
+above, and run `pnpm check:integrity` and `pnpm check:figures` before
+publishing to check the new content validates.
 
 ## Licence
 

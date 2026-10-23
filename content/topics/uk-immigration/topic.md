@@ -4,6 +4,7 @@ subtitle: What the British argument is actually about, and where it genuinely di
 lastUpdated: 2026-08-19
 dataOrder:
   - immigration-against-the-long-run
+  - incoming-immigration-composition
   - skilled-worker-fiscal-gain-concentrated
   - how-people-actually-arrive
   - health-and-care-relies-on-migrant-workers

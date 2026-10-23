@@ -1,5 +1,4 @@
 import type { Fact, FactStatus } from './types';
-import { citedFactIds } from './markdown';
 
 /**
  * The reading order for facts nobody ranks — the tail below. Not the
@@ -80,56 +79,17 @@ function byStatusThenId(a: Fact, b: Fact): number {
 }
 
 /**
- * Order facts by *diversity of support* rather than by any one editor's or
- * any one viewpoint's judgement.
- *
- * The Facts section shows only its first three facts before collapsing, so
- * whatever decides that top three is, in practice, the page's opening
- * argument. Letting an author hand-rank it — or letting file order decide —
- * hands that opening to one side. So the order is derived:
- *
- * 0. **Only headline facts are ranked.** A fact with `supports` is evidence
- *    for a larger claim, and reads inside that claim rather than competing
- *    with it for the top of the page. A viewpoint citing a supporting fact
- *    counts towards its parent — relying on a detail is relying on the claim
- *    the detail supports.
- * 1. **Each viewpoint ranks its own facts** (see `rankingFor`).
- * 2. **Round-robin by rank.** Round 1 places every viewpoint's 1st-ranked
- *    fact, round 2 every viewpoint's 2nd, and so on. No viewpoint's (k+1)th
- *    fact can be placed before every viewpoint's kth has been placed or that
- *    viewpoint has run out of facts. A viewpoint that ranks twenty facts
- *    therefore cannot bury a viewpoint that ranks three.
- * 3. **A shared pick costs both viewpoints their turn.** Indexing is into the
- *    viewpoint's own list, not into "its highest unplaced fact": if two
- *    viewpoints both rank X first, X is placed once and neither gets to
- *    substitute something else into round 1. Agreeing on what matters is not
- *    supposed to win a side extra slots.
- * 4. **Within a round, breadth of agreement wins.** A fact picked by more
- *    viewpoints in that round comes first; ties break on how many viewpoints
- *    rank the fact at all (`citesFacts` or `acknowledges` — *not*
- *    `setsAside`, which says the claim does no work), then on id.
- *    Deliberately *not* on file order or on a viewpoint's position in the
- *    section — either would permanently hand slot 1 to the same side.
- * 5. **Unranked headline facts form a tail**, by status then id. A `complicated`,
- *    `unknown` or `not-supported` fact can only ever reach `setsAside` (the
- *    schema and validator allow it nowhere else), so it always lands here:
- *    those statuses claim nothing, so they should not open the page.
- *
- * The result does not depend on the order of `viewpoints` or of `facts`.
+ * Order data exactly as the topic declares it. Supporting data follows its
+ * headline item; any headline omitted from the list forms a predictable tail
+ * while validation reports the incomplete metadata.
  */
 export function rankFacts(
   facts: readonly Fact[],
-  dataOrder: readonly string[] | readonly { summary: string; body: string }[]
+  dataOrder: readonly string[]
 ): Fact[] {
   const headlineOf = headlineIds(facts);
   const factById = new Map(facts.map((f) => [f.id, f]));
-  const orderIsExplicit = dataOrder.every((item) => typeof item === 'string');
-  const rankedIds = orderIsExplicit
-    ? (dataOrder as readonly string[])
-    : (dataOrder as readonly { summary: string; body: string }[]).flatMap((viewpoint) =>
-        citedFactIds(`${viewpoint.summary}\n${viewpoint.body}`)
-      );
-  const ranked = rankedIds
+  const ranked = dataOrder
     .map((id) => headlineOf.get(id))
     .filter((id): id is string => id !== undefined)
     .filter((id, index, ids) => ids.indexOf(id) === index)

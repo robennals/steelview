@@ -60,6 +60,48 @@ sources:
     url: https://www.scotlandscensus.gov.uk/news-and-events/scotland-s-census-religion-ethnic-group-language-and-national-identity-results/
     publisher: "National Records of Scotland"
     date: "2024-05-21"
+series:
+  title: 'Religious affiliation of the population, England and Wales, Census 2001–2021'
+  description: >-
+    The shares of all usual residents identifying with the largest Census
+    responses. “Other responses” is the complete residual: smaller religions
+    and people who did not state a religion.
+  periodLabel: Census year
+  coverage:
+    from: '2001'
+    to: '2021'
+    note: >-
+      The voluntary Census religion question began in 2001. It measures the
+      religion with which a person connects or identifies, not belief,
+      practice, nationality or country of birth.
+  breaks: []
+  source:
+    stance: supports
+    quote: >-
+      In England and Wales, Christian affiliation was 71.7% in 2001, 59.3% in
+      2011 and 46.2% in 2021; no religion was 14.8%, 25.1% and 37.2%; Muslim
+      affiliation was 3.0%, 4.8% and 6.5%; Hindu affiliation was 1.1%, 1.5%
+      and 1.7%.
+    title: 'Religion, England and Wales: Census 2021'
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/religion/bulletins/religionenglandandwales/census2021
+    publisher: Office for National Statistics
+    date: '2022-11-29'
+  readings:
+    - id: religious-affiliation
+      label: Religious affiliation
+      unit: percent
+      valueLabel: Share of all usual residents
+      lines:
+        - name: Christian
+          points: [{period: '2001', value: 71.7}, {period: '2011', value: 59.3}, {period: '2021', value: 46.2}]
+        - name: No religion
+          points: [{period: '2001', value: 14.8}, {period: '2011', value: 25.1}, {period: '2021', value: 37.2}]
+        - name: Muslim
+          points: [{period: '2001', value: 3.0}, {period: '2011', value: 4.8}, {period: '2021', value: 6.5}]
+        - name: Hindu
+          points: [{period: '2001', value: 1.1}, {period: '2011', value: 1.5}, {period: '2021', value: 1.7}]
+        - name: Other responses
+          points: [{period: '2001', value: 9.4}, {period: '2011', value: 9.3}, {period: '2021', value: 8.4}]
 ---
 ## Observations {#religious-composition-at-the-2021-census--context}
 

@@ -79,13 +79,14 @@ test('bad frontmatter throws ContentError naming the file and the field', async 
   });
 });
 
-test('a cross-reference violation throws ContentError listing every problem', async () => {
+test('cross-reference integrity is deferred until the publication check', async () => {
   const root = await fixtureCopy();
   await writeFile(
     path.join(root, 'example', 'viewpoints', 'one.md'),
     '---\nname: One\nsummary: s\norder: 1\ncitesFacts: [ghost]\nacknowledges: [gamma]\n---\nBody.\n'
   );
-  await assert.rejects(() => loadTopic('example', root), (e: Error) => {
+  await assert.doesNotReject(() => loadTopic('example', root));
+  await assert.rejects(() => loadTopic('example', root, { validateIntegrity: true }), (e: Error) => {
     assert.ok(e instanceof ContentError);
     assert.match(e.message, /ghost/);
     return true;
@@ -336,7 +337,11 @@ test.skip('a viewpoint cannot use a catalog principle that its topic does not li
   const root = await fixtureCopy();
   const file = path.join(root, 'example', 'topic.md');
   await writeFile(file, (await readFile(file, 'utf8')).replace('principles: [fairness]', 'principles: []'));
-  await assert.rejects(() => loadTopic('example', root), /viewpoint one: references unknown principle "fairness"/);
+  await assert.doesNotReject(() => loadTopic('example', root));
+  await assert.rejects(
+    () => loadTopic('example', root, { validateIntegrity: true }),
+    /viewpoint one: references unknown principle "fairness"/
+  );
 });
 
 test('malformed shared definitions and obsolete local definitions fail explicitly', async () => {

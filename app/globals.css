@@ -42,18 +42,17 @@
   --accent: #b3350a;
   --accent-wash: #fdf2ec;
 
-  /* Chart series, in fixed slot order. Not decoration and not a fifth ink:
-     three hues that stay apart under deuteranopia and protanopia as well as
-     for a full-colour reader, checked with the data-viz palette validator
-     against this page's own paper rather than eyeballed. Slot 2 is the
-     page accent, so the family sits in the same register as the rest of the
-     type. Every slot clears 3:1 on --paper.
-       node scripts/validate_palette.js "#1f5c9e,#b3350a,#007551" \
-         --mode light --surface "#ffffff" --pairs all   → all checks pass
-     Worst all-pairs CVD dE 9.2, worst normal-vision dE 16.6. */
+  /* Chart series, in fixed slot order. Charts can carry several meaningful
+     groups, so the shared palette provides eight durable hues rather than
+     silently falling back to the page ink after the third line. */
   --sv-series-1: #1f5c9e;
   --sv-series-2: #b3350a;
   --sv-series-3: #007551;
+  --sv-series-4: #6941a5;
+  --sv-series-5: #a32f6b;
+  --sv-series-6: #006d7c;
+  --sv-series-7: #8a5a00;
+  --sv-series-8: #5d6b31;
 
   --measure: 34rem;
   --wrap: 44rem;
@@ -81,13 +80,15 @@
     --accent: #ff8a4c;
     --accent-wash: #241812;
 
-    /* The same three hues, re-stepped for the dark paper rather than flipped:
-         node scripts/validate_palette.js "#3987e5,#d95926,#199e70" \
-           --mode dark --surface "#0e0e0d" --pairs all   → all checks pass
-       Worst all-pairs CVD dE 9.4, worst normal-vision dE 20.9. */
+    /* The shared series palette, re-stepped for the dark paper. */
     --sv-series-1: #3987e5;
     --sv-series-2: #d95926;
     --sv-series-3: #199e70;
+    --sv-series-4: #b889dd;
+    --sv-series-5: #e06f9b;
+    --sv-series-6: #55b9c8;
+    --sv-series-7: #d9a13d;
+    --sv-series-8: #a9ba62;
 
     --grain-opacity: 0.04;
   }
@@ -623,6 +624,51 @@
     border-bottom: 1px solid var(--rule);
   }
 
+  /* --------------------------------------------- data still needed */
+
+  .sv-data-needed {
+    margin-top: 2.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-data-needed h3 {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.75rem;
+  }
+
+  .sv-data-needed ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-data-needed li {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--rule-light);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .sv-data-needed li:last-child {
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  .sv-data-needed strong {
+    color: var(--ink-1);
+  }
+
+  .sv-data-needed span {
+    color: var(--ink-2);
+  }
+
   /* One step down in weight from the headline row it sits under, so the
      hierarchy is visible without reading the heading above it. */
   .sv-subfact > .sv-item__summary {
@@ -756,7 +802,7 @@
   /* ------------------------------------------------------- series charts */
 
   /* A chart is an argument about context, so it is set like one: hairline
-     grid, ink labels, three series hues and nothing else. The plot is inline
+     grid, ink labels, distinct series hues and nothing else. The plot is inline
      SVG generated on the server — it themes with the page's own tokens via
      currentColor, prints, and is there with JavaScript off. */
 
@@ -860,9 +906,32 @@
     font-weight: 600;
   }
 
-  .sv-chart__key-value {
-    color: var(--ink-3);
-    font-variant-numeric: tabular-nums;
+  /* Hovering or keyboard-focusing a legend key highlights its matching line,
+     and vice versa. The link is a shared data attribute, so every chart gets
+     the same behaviour without chart-specific client code. */
+  .sv-chart__highlight [data-series] {
+    transition: opacity 140ms ease, background-color 140ms ease;
+  }
+
+  .sv-chart__highlight [data-highlighted="false"] {
+    opacity: 0.24;
+  }
+
+  .sv-chart__highlight [data-highlighted="true"] .sv-chart__line {
+    stroke-width: 3.25;
+  }
+
+  .sv-chart__key[data-highlighted="true"] {
+    background: color-mix(in srgb, currentColor 10%, transparent);
+  }
+
+  .sv-chart__key {
+    cursor: pointer;
+  }
+
+  .sv-chart__key:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 
   /* Two renderings of the same scales, one shown. An SVG viewBox scales its
@@ -932,6 +1001,16 @@
     stroke-width: 2;
     stroke-linejoin: round;
     stroke-linecap: round;
+    transition: stroke-width 140ms ease;
+  }
+
+  /* Wider transparent stroke makes a thin data line practical to target. */
+  .sv-chart__line-hit {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 16;
+    stroke-linecap: round;
+    cursor: pointer;
   }
 
   /* The step across a definitional break, drawn as a step and not as trend. */
@@ -1042,6 +1121,39 @@
 
   .sv-chart__data[open] > .sv-chart__data-summary::before {
     content: "\2212";
+  }
+
+  .sv-chart__view-controls {
+    display: inline-flex;
+    margin-top: 0.35rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 0.3rem;
+    overflow: hidden;
+  }
+
+  .sv-chart__view-controls button {
+    min-height: 2rem;
+    padding: 0.2rem 0.65rem;
+    border: 0;
+    border-right: 1px solid var(--rule-strong);
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+    font: 600 0.72rem/1 var(--font-sans);
+  }
+
+  .sv-chart__view-controls button:last-child {
+    border-right: 0;
+  }
+
+  .sv-chart__view-controls button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .sv-chart__view-controls button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
   }
 
   .sv-chart__table-scroll {

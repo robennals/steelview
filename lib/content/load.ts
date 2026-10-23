@@ -17,8 +17,9 @@ const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
 /**
  * Thrown for any content problem: a missing file, frontmatter that does not
- * match its schema, or a cross-reference violation. Content problems must fail
- * the build rather than render a partial page, so nothing catches this.
+ * match its schema. Cross-item integrity is checked separately by
+ * `pnpm check:integrity`, so authors can work through an in-progress edit in
+ * the dev server without being blocked by temporary reference gaps.
  */
 export class ContentError extends Error {
   constructor(message: string) {
@@ -77,7 +78,16 @@ export async function loadPrinciples(root: string = path.join(CONTENT_ROOT, '..'
   return readItems(root, principleFrontmatterSchema);
 }
 
-export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Promise<Topic> {
+export type LoadTopicOptions = {
+  /** Run the publication-time cross-item integrity checks. */
+  validateIntegrity?: boolean;
+};
+
+export async function loadTopic(
+  slug: string,
+  root: string = CONTENT_ROOT,
+  options: LoadTopicOptions = {}
+): Promise<Topic> {
   const dir = path.join(root, slug);
   const topicFile = path.join(dir, 'topic.md');
 
@@ -126,9 +136,11 @@ export async function loadTopic(slug: string, root: string = CONTENT_ROOT): Prom
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),
   };
 
-  const errors = validateTopic(topic);
-  if (errors.length > 0) {
-    throw new ContentError(`Topic "${slug}" has ${errors.length} problem(s):\n  - ${errors.join('\n  - ')}`);
+  if (options.validateIntegrity) {
+    const errors = validateTopic(topic);
+    if (errors.length > 0) {
+      throw new ContentError(`Topic "${slug}" has ${errors.length} problem(s):\n  - ${errors.join('\n  - ')}`);
+    }
   }
 
   return topic;
