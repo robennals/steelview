@@ -83,7 +83,7 @@ test('cross-reference integrity is deferred until the publication check', async 
   const root = await fixtureCopy();
   await writeFile(
     path.join(root, 'example', 'viewpoints', 'one.md'),
-    '---\nname: One\nsummary: s\norder: 1\ncitesFacts: [ghost]\nacknowledges: [gamma]\n---\nBody.\n'
+    '---\nname: One\nsummary: s\norder: 1\n---\n[Claim](#fact-ghost).\n'
   );
   await assert.doesNotReject(() => loadTopic('example', root));
   await assert.rejects(() => loadTopic('example', root, { validateIntegrity: true }), (e: Error) => {

@@ -63,19 +63,15 @@ test('the Facts list shows no supporting fact before anything is opened', async 
   ).toBeVisible();
 });
 
-test('a viewpoint lists the facts it builds on and accepts', async ({ page }) => {
+test('a viewpoint makes its supporting data available inline', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
   await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.locator('.sv-evidence-index > summary').click();
-  await expect(
-    viewpoint.getByRole('link', {
-      name: 'UK Immigration Trends', exact: true,
-    })
-  ).toBeVisible();
-  await expect(
-    viewpoint.getByRole('link', {
-      name: 'Immigration and the Health and Care Workforce', exact: true,
-    })
-  ).toBeVisible();
+  const dataLink = viewpoint.getByRole('link', {
+    name: 'Changes to visa routes helped drive the sharp rise in immigration and its later fall',
+    exact: true,
+  });
+  await expect(dataLink).toBeVisible();
+  await dataLink.click();
+  await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText('UK Immigration Trends');
 });
