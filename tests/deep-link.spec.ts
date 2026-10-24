@@ -54,14 +54,14 @@ test('a supporting fact page makes its parent obvious and links to it', async ({
 
 test('clicking a cross-reference chip opens the fact it points at', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
+  const viewpoint = page.locator('#viewpoint-immigration-makes-britain-better-off');
   await viewpoint.locator('summary .sv-item__claim').first().click();
   await viewpoint
     .getByRole('link', {
-      name: 'Immigration and the Health and Care Workforce', exact: true,
+      name: 'Health and care rely heavily on workers born outside Europe', exact: true,
     })
     .click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl('health-and-care-relies-on-migrant-workers')}$`));
+  await expect(page).toHaveURL(new RegExp(`${factUrl('health-and-care-relies-on-migrant-workers')}#`));
   await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
     'Immigration and the Health and Care Workforce'
   );
@@ -77,7 +77,7 @@ test('every headline fact in the list links to its own page', async ({ page }) =
   await page.locator('details.sv-more > summary').click();
   const rows = page.locator('a.sv-factrow');
   const total = await rows.count();
-  expect(total).toBe(12);
+  expect(total).toBe(13);
   const hrefs = await rows.evaluateAll((links) =>
     links.map((l) => l.getAttribute('href') ?? '')
   );
