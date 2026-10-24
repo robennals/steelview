@@ -102,6 +102,10 @@ source on the same topic. It runs in CI.
 
 ## Adding a topic
 
+**Follow [`content/WORKFLOW.md`](content/WORKFLOW.md)** — the six stages a
+human editor and an agent go through to produce a topic, from choosing it to
+publishing, with the review points between them.
+
 **Read [`content/AUTHORING.md`](content/AUTHORING.md) first.** It is the
 authoring guide: the fact-status rubric, how to phrase a claim and its body,
 the sourcing and time-series rules, what makes a viewpoint a steelman, the
