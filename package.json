@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node scripts/start.mjs",
     "lint": "eslint",
     "test:unit": "tsx --test lib/*.test.ts lib/**/*.test.ts app/**/*.test.ts scripts/*.test.ts",
     "test:e2e": "playwright test",
