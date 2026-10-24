@@ -219,6 +219,7 @@ function Reading({
   factId,
   sourceNumber,
   observations,
+  belowPlot,
   intro,
 }: {
   series: Series;
@@ -226,6 +227,7 @@ function Reading({
   factId: string;
   sourceNumber: number;
   observations?: ReactNode;
+  belowPlot?: ReactNode;
   intro?: string;
 }) {
   const slots = seriesSlots(series);
@@ -279,6 +281,10 @@ function Reading({
             <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
             <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
           </div>
+          {/* Anything aligned to the plot's time axis, such as an event strip,
+              goes here: directly under the plot, before the source line, and
+              hidden with the graph when the reader switches to the table. */}
+          {belowPlot}
         </>}
         table={<ReadingTable series={series} reading={reading} />}
       />
@@ -291,14 +297,14 @@ function Reading({
   );
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {} }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode> }) {
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, belowPlot = {} }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode>; /** Content placed directly under a reading's plot, keyed by reading id. */ belowPlot?: Record<string, ReactNode> }) {
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`}>
       <figcaption className="sv-visually-hidden">{series.title}</figcaption>
 
       <SeriesHighlight>
         {series.readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} belowPlot={belowPlot[reading.id]} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 

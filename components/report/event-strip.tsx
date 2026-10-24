@@ -134,7 +134,9 @@ export function EventKey({ events, keyId, title }: { events: StripEvent[]; keyId
 /**
  * A thin strip of numbered event markers on a time axis, meant to sit
  * directly under a line chart so a trend can be read against the decisions
- * around it, with the events listed in a key below.
+ * around it, with the events listed in a key below. Under a topic
+ * SeriesChart, pass it through the chart's `belowPlot` slot, which puts it
+ * between the plot and the source line.
  *
  * It marks when things happened and nothing more: a marker beside a turn in
  * the line is an invitation to look, not a claim that one caused the other.
