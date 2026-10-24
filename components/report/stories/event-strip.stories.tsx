@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A thin strip of numbered event markers on a time axis, meant to sit directly under a line chart so a trend can be read against the decisions around it; the events are listed in a numbered key below. With `align="series-chart"` (the default) its axis lines up with the plot area of the topic SeriesChart at both of that chart\'s sizes. It marks when things happened and nothing more — a marker beside a turn in the line is an invitation to look, not a claim of cause.',
+          'A thin strip of numbered event markers on a time axis, meant to sit directly under a line chart so a trend can be read against the decisions around it; the events are listed in a numbered key below. With `align="series-chart"` (the default) its axis lines up with the plot area of the topic SeriesChart at both of that chart\'s sizes; pass it to SeriesChart\'s `belowPlot` (keyed by reading id) so it sits between the plot and the source line. It marks when things happened and nothing more — a marker beside a turn in the line is an invitation to look, not a claim of cause.',
       },
     },
   },
@@ -38,10 +38,11 @@ type Story = StoryObj<typeof meta>;
  */
 export const UnderSeriesChart: Story = {
   render: args => (
-    <>
-      <SeriesChart factId="story-asylum" series={ASYLUM_CLAIMS_SERIES} />
-      <EventStrip {...args} />
-    </>
+    <SeriesChart
+      factId="story-asylum"
+      series={ASYLUM_CLAIMS_SERIES}
+      belowPlot={Object.fromEntries(ASYLUM_CLAIMS_SERIES.readings.map(reading => [reading.id, <EventStrip key={reading.id} {...args} />]))}
+    />
   ),
 };
 
