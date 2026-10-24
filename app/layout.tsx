@@ -1,26 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { fontVariables } from "./fonts";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-// Newsreader carries the reading: a screen-first text serif with enough
-// character to read as a publication rather than as a document viewer.
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-});
-
-// Plex Sans is the apparatus voice — section labels, status labels, captions.
-// Kept small and letterspaced so it never competes with the argument.
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
 
 export const metadata: Metadata = {
   // Every canonical and Open Graph URL on the site is resolved against this,
@@ -43,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${plexSans.variable} h-full antialiased`}
+      className={`${fontVariables} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <div className="sv-masthead">
