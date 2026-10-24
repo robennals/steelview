@@ -34,7 +34,9 @@ export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
 export type Principle = Item<z.infer<typeof principleFrontmatterSchema>>;
 export type Crux = Item<z.infer<typeof cruxFrontmatterSchema>>;
 
-export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'principles'> & {
+export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'principles' | 'dataOrder'> & {
+  /** Required in authored topic.md; optional here to ease in-memory test fixtures. */
+  dataOrder?: string[];
   slug: string;
   /** The markdown body of topic.md — the page's introduction. */
   intro: string;

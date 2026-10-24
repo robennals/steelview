@@ -100,7 +100,7 @@ export function FactSheet({ modal }: { modal: ReactNode }) {
   // pending fact is the one its article arrives in.
   if (routed && abandoned === pathname) return null;
   if (routed) {
-    return <FactModal labelledBy={SHEET_TITLE_ID} href={pathname} loading={false}>{modal}</FactModal>;
+    return <FactModal labelledBy={SHEET_TITLE_ID} href={pathname}>{modal}</FactModal>;
   }
   if (!pending) return null;
   return (

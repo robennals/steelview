@@ -17,27 +17,29 @@ const FOCUSABLE = [
 ].join(', ');
 
 /**
- * The sheet a fact is read in when the reader is already on its topic page.
+ * The sheet a fact is read in when the reader is already on its topic page,
+ * also used for a principle or a research-needed note opened from it.
  *
- * `FactSheet` renders it — from the click, while the fact loads, and then
- * for as long as the intercepting route `@modal/(.)facts` matches — so it
- * stays mounted while the reader follows links from one fact to another
+ * For a fact, `FactSheet` renders it — from the click, while the fact loads,
+ * and then for as long as the intercepting route `@modal/(.)facts` matches —
+ * so it stays mounted while the reader follows links from one fact to another
  * inside it, and only the article in it changes.
  *
- * Once the fact has loaded, closing is always `router.back()`, whichever way
+ * Once a fact has loaded, closing is always `router.back()`, whichever way
  * the reader asks for it, so the panel is one entry in their history rather
  * than a mode they can get stuck in: Back leaves it, and the URL they were on
- * returns. Before then there is no entry to go back from, and `onClose` says
- * what closing means instead.
+ * returns. A sheet that is not a route, or a fact not yet loaded, has no entry
+ * to go back from, and `onClose` says what closing means instead.
  */
-export function FactModal({ labelledBy, children, href, loading, onClose }: {
+export function FactModal({ labelledBy, children, href, loading = false, onClose, kind = 'Data' }: {
   labelledBy: string;
   children: ReactNode;
-  /** The fact's own page, for Expand. */
+  /** Where Expand leads — the fact's own page. Only a Data sheet shows it. */
   href: string;
   /** The article has not arrived yet; the sheet is showing a placeholder. */
-  loading: boolean;
+  loading?: boolean;
   onClose?: () => void;
+  kind?: 'Data' | 'Principle' | 'Research needed';
 }) {
   const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -177,10 +179,10 @@ export function FactModal({ labelledBy, children, href, loading, onClose }: {
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
       <div className="sv-modal__panel">
         <div className="sv-modal__bar">
-          <p className="sv-modal__eyebrow">Data</p>
-          <a className="sv-modal__expand" href={href} data-fact-expand>
+          <p className="sv-modal__eyebrow">{kind}</p>
+          {kind === 'Data' && <a className="sv-modal__expand" href={href} data-fact-expand>
             Expand <span aria-hidden="true">↗</span>
-          </a>
+          </a>}
           <button type="button" className="sv-modal__close" onClick={leave}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
