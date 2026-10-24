@@ -1,0 +1,529 @@
+/* Fact-report library — timelines components. */
+
+@layer components {
+  /* ----------------------------------------------------------- Timeline */
+
+  .sv-timeline__controls {
+    margin-bottom: 0.25rem;
+  }
+
+  .sv-timeline__chip-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  /* The chip's icon wears the category hue; its text stays in the chip's own
+     ink so the pressed (inverted) state stays legible. */
+  .sv-timeline__chip-icon {
+    fill: currentColor;
+    stroke: var(--paper);
+    stroke-width: 1;
+  }
+
+  .sv-timeline__chip-text {
+    color: var(--ink-3);
+  }
+
+  .sv-control__chip[aria-pressed="true"] .sv-timeline__chip-text {
+    color: var(--paper);
+  }
+
+  .sv-timeline__key {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-timeline__key-icon {
+    color: var(--ink-3);
+  }
+
+  /* Filled vs hollow markers: significance, independent of the category hue. */
+  .sv-timeline svg[data-filled="true"] > * {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .sv-timeline svg[data-filled="false"] > * {
+    fill: var(--paper);
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .sv-timeline__body {
+    margin-top: 0.25rem;
+  }
+
+  /* The year is a margin note, set in the apparatus voice; the rule beneath
+     the events is the spine of the timeline. */
+  .sv-timeline__year-head {
+    margin: 1.1rem 0 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-2);
+  }
+
+  .sv-timeline__year:first-child .sv-timeline__year-head {
+    margin-top: 0.25rem;
+  }
+
+  .sv-timeline__events {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.4rem;
+    border-left: 1px solid var(--rule-strong);
+    margin-left: 0.45rem;
+  }
+
+  .sv-timeline__event {
+    position: relative;
+    padding: 0.15rem 0 0.95rem;
+    color: var(--sv-timeline-color);
+  }
+
+  .sv-timeline__event:last-child {
+    padding-bottom: 0.4rem;
+  }
+
+  /* Centred on the spine: the list is padded 1.4rem and the 12px icon's
+     centre sits half its width left of the rule. */
+  .sv-timeline__marker {
+    position: absolute;
+    left: calc(-1.4rem - 6px);
+    top: 0.35rem;
+    background: var(--paper);
+    box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  .sv-timeline__event[data-significance="major"] .sv-timeline__marker {
+    width: 14px;
+    height: 14px;
+    left: calc(-1.4rem - 7px);
+    top: 0.3rem;
+  }
+
+  .sv-timeline__date {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
+
+  .sv-timeline__category {
+    color: var(--ink-3);
+  }
+
+  .sv-timeline__title {
+    margin: 0.1rem 0 0;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  .sv-timeline__event[data-significance="major"] .sv-timeline__title {
+    font-weight: 600;
+    font-size: 1.0625rem;
+  }
+
+  .sv-timeline__title a {
+    color: inherit;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 0.18em;
+  }
+
+  .sv-timeline__desc {
+    margin: 0.2rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: var(--measure);
+    text-wrap: pretty;
+  }
+
+  .sv-timeline__event .sv-chart__credit {
+    margin: 0.2rem 0 0;
+    font-size: 0.75rem;
+  }
+
+  /* ----------------------------------------------------- PeriodTimeline */
+
+  .sv-periods {
+    --sv-periods-label: 9.5rem;
+    margin-top: 0.75rem;
+    font-family: var(--font-sans);
+  }
+
+  .sv-periods__legend {
+    margin-bottom: 0.75rem;
+  }
+
+  .sv-periods__legend-key {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .sv-periods__swatch {
+    width: 0.9rem;
+    height: 0.6rem;
+    background: color-mix(in oklab, var(--sv-period-color) 24%, var(--paper));
+    border-left: 3px solid var(--sv-period-color);
+  }
+
+  /* Narrow: each row's label sits above its track, so the track keeps the
+     full width. Wide: label column and track side by side. */
+  .sv-periods__line {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sv-periods__line--axis .sv-periods__label-cell {
+    display: none;
+  }
+
+  @media (min-width: 34rem) {
+    .sv-periods__line {
+      grid-template-columns: var(--sv-periods-label) minmax(0, 1fr);
+      column-gap: 0.75rem;
+      align-items: start;
+    }
+
+    .sv-periods__line--axis .sv-periods__label-cell {
+      display: block;
+    }
+  }
+
+  .sv-periods__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-periods__row {
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-periods__row:first-child {
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-periods__row-label {
+    margin: 0 0 0.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  @media (min-width: 34rem) {
+    .sv-periods__row-label {
+      margin: 0;
+      padding-top: 0.2rem;
+    }
+  }
+
+  .sv-periods__cell {
+    position: relative;
+    min-width: 0;
+  }
+
+  .sv-periods__track {
+    position: relative;
+    height: 1.6rem;
+  }
+
+  .sv-periods__grid {
+    position: absolute;
+    top: -0.45rem;
+    bottom: -0.45rem;
+    width: 0;
+    border-left: 1px dotted var(--rule-strong);
+  }
+
+  /* A tint of the hue with a solid start edge: the start date is the precise
+     part, and ink text stays readable on the tint in both themes. */
+  .sv-periods__bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    min-width: 3px;
+    background: color-mix(in oklab, var(--sv-period-color) 24%, var(--paper));
+    border-left: 3px solid var(--sv-period-color);
+    overflow: hidden;
+  }
+
+  /* Still in force: the bar ends in an arrowhead at the axis edge instead of
+     a flat end, so "ongoing" never reads as "ended on this date". */
+  .sv-periods__bar[data-open="true"] {
+    clip-path: polygon(0 0, calc(100% - 0.55rem) 0, 100% 50%, calc(100% - 0.55rem) 100%, 0 100%);
+  }
+
+  .sv-periods__bar-label {
+    padding: 0 0.4rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+
+  .sv-periods__outside-label {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .sv-periods__axis {
+    position: relative;
+    height: 1.3rem;
+  }
+
+  .sv-periods__tick {
+    position: absolute;
+    top: 0.2rem;
+    transform: translateX(-50%);
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 33.99rem) {
+    .sv-periods__tick[data-minor] {
+      visibility: hidden;
+    }
+  }
+
+  .sv-periods__tick[data-edge="start"],
+  .sv-event-strip__tick[data-edge="start"] {
+    transform: none;
+  }
+
+  .sv-periods__tick[data-edge="end"],
+  .sv-event-strip__tick[data-edge="end"] {
+    transform: translateX(-100%);
+  }
+
+  .sv-periods__line--events {
+    padding-top: 0.45rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-periods__line--events .sv-event-strip__lane {
+    padding-bottom: 0.3rem;
+  }
+
+  .sv-periods__open-key {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.35rem 0 0;
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-periods__open-icon {
+    width: 1.1rem;
+    height: 0.6rem;
+    background: var(--ink-4);
+    clip-path: polygon(0 0, calc(100% - 0.35rem) 0, 100% 50%, calc(100% - 0.35rem) 100%, 0 100%);
+  }
+
+  .sv-periods__table td {
+    text-align: left;
+  }
+
+  .sv-periods__table td:nth-child(3),
+  .sv-periods__table td:nth-child(4) {
+    text-align: right;
+  }
+
+  /* --------------------------------------------------------- EventStrip */
+
+  /* Insets match the plot area of the chart above at each of its two sizes,
+     switching at the same breakpoint as .sv-chart__svg. */
+  .sv-event-strip {
+    --sv-strip-left: var(--sv-strip-left-narrow, 0%);
+    --sv-strip-right: var(--sv-strip-right-narrow, 0%);
+    margin-top: 0.25rem;
+    font-family: var(--font-sans);
+  }
+
+  @media (min-width: 34rem) {
+    .sv-event-strip[data-align="series-chart"] {
+      --sv-strip-left: var(--sv-strip-left-wide);
+      --sv-strip-right: var(--sv-strip-right-wide);
+    }
+  }
+
+  .sv-event-strip > .sv-event-strip__lane {
+    margin-left: var(--sv-strip-left);
+    margin-right: var(--sv-strip-right);
+  }
+
+  .sv-event-strip__lane {
+    min-width: 0;
+  }
+
+  .sv-event-strip__track {
+    position: relative;
+    height: calc(var(--sv-strip-levels) * 1.55rem + 0.4rem);
+  }
+
+  .sv-event-strip__rule {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  /* A numbered disc on a stem down to the rule; the stem's foot is the date. */
+  .sv-event-strip__marker {
+    position: absolute;
+    bottom: calc(var(--sv-strip-level) * 1.55rem + 0.4rem);
+    transform: translateX(-50%);
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-decoration: none;
+    box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  .sv-event-strip__stem {
+    position: absolute;
+    bottom: 0;
+    height: calc(var(--sv-strip-level) * 1.55rem + 0.4rem);
+    border-left: 1px solid var(--ink-3);
+  }
+
+  .sv-event-strip__marker:hover {
+    background: var(--accent);
+  }
+
+  .sv-event-strip__marker:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .sv-event-strip__axis {
+    position: relative;
+    height: 1.3rem;
+  }
+
+  .sv-event-strip__tick {
+    position: absolute;
+    top: 0.2rem;
+    transform: translateX(-50%);
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 33.99rem) {
+    .sv-event-strip__tick[data-minor] {
+      visibility: hidden;
+    }
+  }
+
+  .sv-event-strip__key-title {
+    margin: 0.9rem 0 0.4rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-event-strip__key {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+  }
+
+  .sv-event-strip__key-title + .sv-event-strip__key {
+    margin-top: 0;
+  }
+
+  .sv-event-strip__item {
+    display: grid;
+    grid-template-columns: 1.35rem minmax(0, 1fr);
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-event-strip__item:target {
+    background: var(--accent-wash);
+  }
+
+  .sv-event-strip__number {
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  .sv-event-strip__item-head {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .sv-event-strip__item-head time {
+    margin-right: 0.3rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
+
+  .sv-event-strip__label {
+    font-weight: 600;
+  }
+
+  .sv-event-strip__desc {
+    margin: 0.1rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  .sv-event-strip__item .sv-chart__credit {
+    margin: 0.15rem 0 0;
+    font-size: 0.75rem;
+  }
+}

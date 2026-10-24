@@ -1,0 +1,883 @@
+/* Fact-report library — data components. */
+
+@layer components {
+  /* ------------------------------------------------------------ shared */
+
+  /* Text columns in a numeric table read left-aligned. */
+  .sv-chart__table .sv-data__th-text,
+  .sv-chart__table .sv-data__td-text {
+    text-align: left;
+  }
+
+  .sv-chart__table tbody tr[data-highlight] th,
+  .sv-chart__table tbody tr[data-highlight] td {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .sv-data__legend {
+    margin-top: 0.75rem;
+  }
+
+  /* Legend keys that identify, rather than toggle, a series. */
+  .sv-bars__key {
+    cursor: default;
+  }
+
+  .sv-bars__swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    flex: none;
+  }
+
+  /* -------------------------------------------------------- bar rows */
+
+  /* Label | bar | value on a column wide enough for it; label and value
+     above a full-width bar on a phone. A container query, not a media
+     query, because the same chart sits in a page column and in a modal. */
+  .sv-bars {
+    container-type: inline-size;
+    --sv-bars-label: minmax(6rem, 30%);
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  .sv-bars__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-bars__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "label value"
+      "track track";
+    align-items: baseline;
+    column-gap: 0.75rem;
+    row-gap: 0.25rem;
+    margin-bottom: 0.7rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+
+  .sv-bars__label {
+    grid-area: label;
+    color: var(--ink-2);
+    min-width: 0;
+  }
+
+  .sv-bars__value {
+    grid-area: value;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .sv-bars__row[data-highlight] .sv-bars__label,
+  .sv-bars__row[data-highlight] .sv-bars__value {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .sv-bars__track {
+    grid-area: track;
+    position: relative;
+    display: block;
+    height: 0.9rem;
+    background: var(--paper-sunk);
+  }
+
+  .sv-bars[data-layout="grouped"] .sv-bars__track {
+    height: calc(0.5rem * var(--sv-bars-count, 2) + 0.2rem);
+  }
+
+  .sv-bars__bar {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--sv-series-1);
+  }
+
+  /* A hairline of paper between stacked segments, so two neighbouring parts
+     never merge into one even where their hues are close. */
+  .sv-bars[data-layout="stacked"] .sv-bars__bar {
+    box-shadow: inset -1px 0 0 var(--paper);
+  }
+
+  .sv-bars[data-layout="grouped"] .sv-bars__bar {
+    border-block: 1px solid var(--paper-sunk);
+  }
+
+  .sv-bars__row[data-highlight] .sv-bars__bar {
+    background: var(--accent);
+  }
+
+  .sv-bars__zero {
+    position: absolute;
+    top: -0.15rem;
+    bottom: -0.15rem;
+    width: 1px;
+    background: var(--ink-3);
+    z-index: 1;
+  }
+
+  /* Same type as the rows, so the ch-sized value column is the same width
+     and the ticks line up with the tracks above them. */
+  .sv-bars__axis,
+  .sv-estimates__axis {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+  }
+
+  .sv-bars__axis {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: -0.2rem;
+  }
+
+  .sv-bars__ticks,
+  .sv-estimates__ticks {
+    position: relative;
+    display: block;
+    height: 1.1rem;
+  }
+
+  .sv-bars__tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+
+  .sv-bars__tick[data-edge="start"] {
+    transform: none;
+  }
+
+  .sv-bars__tick[data-edge="end"] {
+    transform: translateX(-100%);
+  }
+
+  /* A long ranking keeps label, bar and value on one line even on a phone:
+     stacked, thirty rows would run to several screens. */
+  .sv-bars[data-dense] .sv-bars__row,
+  .sv-bars[data-dense] .sv-bars__axis {
+    grid-template-columns: minmax(5.5rem, 32%) minmax(0, 1fr) var(--sv-bars-value, 6ch);
+    grid-template-areas: "label track value";
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+
+  .sv-bars[data-dense] .sv-bars__row {
+    margin-bottom: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .sv-bars[data-dense] .sv-bars__label {
+    text-align: right;
+  }
+
+  .sv-bars[data-dense] .sv-bars__axis {
+    grid-template-areas: ". track .";
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+  }
+
+  .sv-bars[data-dense] .sv-bars__ticks {
+    grid-area: track;
+  }
+
+  @container (min-width: 30rem) {
+    .sv-bars__row,
+    .sv-bars__axis {
+      grid-template-columns: var(--sv-bars-label) minmax(0, 1fr) var(--sv-bars-value, 6ch);
+      grid-template-areas: "label track value";
+      align-items: center;
+    }
+
+    .sv-bars__row {
+      margin-bottom: 0.45rem;
+    }
+
+    .sv-bars[data-dense] .sv-bars__row {
+      margin-bottom: 0.25rem;
+      font-size: 0.75rem;
+    }
+
+    .sv-bars__label {
+      text-align: right;
+    }
+
+    .sv-bars__axis {
+      grid-template-areas: ". track .";
+      column-gap: 0.75rem;
+      margin-top: 0.15rem;
+    }
+
+    .sv-bars__ticks {
+      grid-area: track;
+    }
+  }
+
+  /* ---------------------------------------------------- slice explorer */
+
+  .sv-slice__controls {
+    margin: 0 0 0.5rem;
+  }
+
+  .sv-slice__filters {
+    margin: 0.35rem 0 0;
+    padding: 0.6rem 0 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    min-width: 0;
+  }
+
+  .sv-slice__filters-legend {
+    float: left;
+    width: 100%;
+    margin: 0 0 0.5rem;
+    padding: 0;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-slice__filters > .sv-control {
+    clear: both;
+  }
+
+  /* Inside the filter block a dimension's name is a quiet row heading,
+     not a second level of small capitals. */
+  .sv-slice__filters .sv-control__label {
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-size: 0.75rem;
+    min-width: 4.5rem;
+  }
+
+  .sv-slice__select {
+    width: auto;
+    max-width: 100%;
+  }
+
+  /* ------------------------------------------------------- key figures */
+
+  /* One column on a phone, then two; three or four across only when each
+     still has room for a large numeral. Four never wraps three-and-one. */
+  .sv-key-figures__frame {
+    container-type: inline-size;
+  }
+
+  .sv-key-figures__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem 1.75rem;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  @container (min-width: 22rem) {
+    .sv-key-figures__value {
+      font-size: 2.25rem;
+    }
+
+    .sv-key-figures__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @container (min-width: 36rem) {
+    .sv-key-figures__list[data-count="3"] {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @container (min-width: 50rem) {
+    .sv-key-figures__list[data-count="4"] {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .sv-key-figures__item {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .sv-key-figures__item dd {
+    margin: 0;
+  }
+
+  /* The number comes first to the eye, the label first to the ear (dt
+     before dd in the markup). */
+  .sv-key-figures__value {
+    order: -1;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .sv-key-figures__label {
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .sv-key-figures__meta,
+  .sv-key-figures__change {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-key-figures__meta {
+    margin-top: 0.3rem;
+  }
+
+  .sv-key-figures__change {
+    margin-top: 0.15rem;
+    color: var(--ink-2);
+  }
+
+  .sv-key-figures__source {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  a.sv-key-figures__source:hover {
+    text-decoration: underline;
+  }
+
+  a.sv-key-figures__source:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* ------------------------------------------------- composition bars */
+
+  .sv-composition__rows {
+    container-type: inline-size;
+    list-style: none;
+    margin: 0.25rem 0 0.5rem;
+    padding: 0;
+  }
+
+  .sv-composition__row + .sv-composition__row {
+    margin-top: 0.85rem;
+  }
+
+  .sv-composition__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+
+  .sv-composition__label {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .sv-composition__total {
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-composition__bar {
+    display: flex;
+    height: 1.75rem;
+    background: var(--paper-sunk);
+  }
+
+  .sv-composition__segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+    min-width: 0;
+    overflow: hidden;
+    box-shadow: inset -1px 0 0 var(--paper);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* Labels appear only where they fit: names on wide, roomy segments,
+     shares on medium ones, nothing on slivers (the legend and table name
+     those). Decided by share and container width, so it holds on the
+     server with no measuring. */
+  .sv-composition__segment-name,
+  .sv-composition__segment-share {
+    display: none;
+  }
+
+  .sv-composition__segment[data-fit="large"] .sv-composition__segment-share,
+  .sv-composition__segment[data-fit="medium"] .sv-composition__segment-share {
+    display: inline;
+  }
+
+  @container (min-width: 30rem) {
+    .sv-composition__segment[data-fit="small"] .sv-composition__segment-share,
+    .sv-composition__segment[data-fit="large"] .sv-composition__segment-name {
+      display: inline;
+    }
+  }
+
+  .sv-composition__count {
+    color: var(--ink-3);
+  }
+
+  /* --------------------------------------------------- small multiples */
+
+  .sv-multiples__grid {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+    gap: 1.4rem 1.5rem;
+  }
+
+  .sv-multiples__panel {
+    min-width: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .sv-multiples__name {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .sv-multiples__latest {
+    margin: 0.1rem 0 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-multiples__latest-value {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Left gutter holds the tick labels; the line itself spans the rest. */
+  .sv-multiples__plot {
+    position: relative;
+    height: 4.75rem;
+    margin-left: 2.1rem;
+  }
+
+  .sv-multiples__tick {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-multiples__tick-label {
+    position: absolute;
+    right: calc(100% + 0.3rem);
+    top: 0;
+    transform: translateY(-50%);
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    line-height: 1;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .sv-multiples__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .sv-multiples__line {
+    fill: none;
+    stroke: var(--sv-series-1);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .sv-multiples__end {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: -0.25rem 0 0 -0.25rem;
+    border-radius: 50%;
+    background: var(--sv-series-1);
+    box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  .sv-multiples__range {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.3rem 0 0 2.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ----------------------------------------------------- estimate range */
+
+  .sv-estimates {
+    container-type: inline-size;
+    --sv-estimates-label: minmax(9rem, 36%);
+    margin: 0.25rem 0;
+  }
+
+  .sv-estimates__key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.1rem;
+    margin: 0 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  .sv-estimates__key-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sv-estimates__key-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+
+  .sv-estimates__key-line {
+    width: 1.2rem;
+    height: 2px;
+    background: var(--sv-series-1);
+  }
+
+  .sv-estimates__key-null {
+    width: 0;
+    height: 0.8rem;
+    border-left: 1px dashed var(--ink-3);
+  }
+
+  .sv-estimates__group {
+    margin: 0.9rem 0 0.4rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-estimates__rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* The printed estimate sits under the study name rather than in a third
+     column: a column wide enough for "+0.2% (−0.05% to +0.45%)" would
+     leave the plot too narrow to read. */
+  .sv-estimates__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "label"
+      "track";
+    align-items: center;
+    column-gap: 0.85rem;
+    row-gap: 0.25rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+
+  .sv-estimates__label {
+    grid-area: label;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0 0.75rem;
+    min-width: 0;
+  }
+
+  .sv-estimates__name {
+    color: var(--ink-2);
+  }
+
+  .sv-estimates__year {
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-estimates__note {
+    flex-basis: 100%;
+    font-size: 0.6875rem;
+    color: var(--ink-3);
+  }
+
+  .sv-estimates__value {
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .sv-estimates__track {
+    grid-area: track;
+    position: relative;
+    display: block;
+    height: 1rem;
+  }
+
+  .sv-estimates__null {
+    position: absolute;
+    top: -0.4rem;
+    bottom: -0.4rem;
+    border-left: 1px dashed var(--ink-3);
+  }
+
+  .sv-estimates__whisker {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    background: var(--sv-series-1);
+  }
+
+  /* End caps; a clipped end gets an arrowhead instead, so an interval cut
+     off by a fixed axis never looks as if it ended there. */
+  .sv-estimates__whisker::before,
+  .sv-estimates__whisker::after {
+    content: "";
+    position: absolute;
+    top: -0.3rem;
+    height: calc(0.6rem + 2px);
+    width: 2px;
+    background: var(--sv-series-1);
+  }
+
+  .sv-estimates__whisker::before {
+    left: 0;
+  }
+
+  .sv-estimates__whisker::after {
+    right: 0;
+  }
+
+  .sv-estimates__whisker[data-clip-start]::before,
+  .sv-estimates__whisker[data-clip-end]::after {
+    width: 0;
+    height: 0;
+    top: -0.3rem;
+    background: none;
+    border-block: calc(0.3rem + 1px) solid transparent;
+  }
+
+  .sv-estimates__whisker[data-clip-start]::before {
+    left: -0.4rem;
+    border-right: 0.4rem solid var(--sv-series-1);
+  }
+
+  .sv-estimates__whisker[data-clip-end]::after {
+    right: -0.4rem;
+    border-left: 0.4rem solid var(--sv-series-1);
+  }
+
+  .sv-estimates__dot {
+    position: absolute;
+    top: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin: -0.3rem 0 0 -0.3rem;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  .sv-estimates__axis {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "track";
+    column-gap: 0.85rem;
+  }
+
+  .sv-estimates__ticks {
+    grid-area: track;
+  }
+
+  @container (min-width: 32rem) {
+    .sv-estimates__row,
+    .sv-estimates__axis {
+      grid-template-columns: var(--sv-estimates-label) minmax(0, 1fr);
+      grid-template-areas: "label track";
+    }
+
+    .sv-estimates__row {
+      margin-bottom: 0.55rem;
+    }
+
+    .sv-estimates__label {
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .sv-estimates__note {
+      flex-basis: auto;
+    }
+  }
+
+  /* ------------------------------------------------------- data table */
+
+  .sv-data__scroll {
+    overflow: auto;
+    overscroll-behavior: contain;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .sv-data__scroll:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .sv-data__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-data__caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.5rem 0;
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-data__table th,
+  .sv-data__table td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .sv-data__table [data-align="right"] {
+    text-align: right;
+  }
+
+  .sv-data__table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule-strong);
+    color: var(--ink-2);
+    font-weight: 600;
+    vertical-align: bottom;
+  }
+
+  .sv-data__table tbody th {
+    color: var(--ink-2);
+    font-weight: 400;
+  }
+
+  .sv-data__table tbody td {
+    color: var(--ink);
+  }
+
+  .sv-data__table tbody tr[data-highlight] th,
+  .sv-data__table tbody tr[data-highlight] td {
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--paper-raised);
+  }
+
+  .sv-data__table tbody tr[data-highlight] > :first-child {
+    box-shadow: inset 2px 0 0 var(--accent);
+  }
+
+  .sv-data__sort {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-align: inherit;
+  }
+
+  [data-align="right"] > .sv-data__sort {
+    flex-direction: row-reverse;
+  }
+
+  .sv-data__sort:hover {
+    color: var(--ink);
+  }
+
+  .sv-data__sort:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .sv-data__sort-mark {
+    color: var(--ink-4);
+    font-weight: 400;
+  }
+
+  .sv-data__sort-mark[data-active] {
+    color: var(--accent);
+  }
+}

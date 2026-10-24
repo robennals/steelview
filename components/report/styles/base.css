@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Fact-report library — shared apparatus.
+   Same register as the topic charts: type, rule and space; one accent for
+   apparatus; series hues only where they identify data.
+   ========================================================================== */
+
+@layer components {
+  /* Storybook canvas: the page's own vertical rhythm around a story. */
+  .sv-story {
+    padding-block: 1.5rem 3rem;
+  }
+
+  /* --------------------------------------------------------- controls */
+
+  .sv-control {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.75rem;
+    margin: 0 0 0.85rem;
+  }
+
+  .sv-control__label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-control__options {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--rule-strong);
+    border-radius: 0.3rem;
+    overflow: hidden;
+  }
+
+  .sv-control__options[data-kind="chips"] {
+    border: 0;
+    border-radius: 0;
+    gap: 0.35rem;
+    overflow: visible;
+  }
+
+  .sv-control__option,
+  .sv-control__chip,
+  .sv-control__clear {
+    min-height: 2rem;
+    padding: 0.2rem 0.65rem;
+    border: 0;
+    background: transparent;
+    color: var(--ink-3);
+    cursor: pointer;
+    font: 600 0.75rem/1.2 var(--font-sans);
+  }
+
+  .sv-control__option + .sv-control__option {
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .sv-control__option[aria-pressed="true"],
+  .sv-control__chip[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .sv-control__option:hover:not([aria-pressed="true"]),
+  .sv-control__chip:hover:not([aria-pressed="true"]) {
+    color: var(--ink);
+    background: var(--paper-raised);
+  }
+
+  .sv-control__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+  }
+
+  .sv-control__chip[aria-pressed="true"] {
+    border-color: var(--ink);
+  }
+
+  .sv-control__swatch {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    flex: none;
+  }
+
+  .sv-control__count {
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.8;
+  }
+
+  .sv-control__clear {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    padding-inline: 0.35rem;
+  }
+
+  .sv-control__option:focus-visible,
+  .sv-control__chip:focus-visible,
+  .sv-control__clear:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+  }
+
+  /* A search box in the same voice as the buttons beside it. */
+  .sv-control__search {
+    min-height: 2rem;
+    width: min(100%, 18rem);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 0.3rem;
+    background: var(--paper);
+    color: var(--ink);
+    font: 0.8125rem/1.3 var(--font-sans);
+  }
+
+  .sv-control__search:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  /* "Showing 12 of 40" — always said, so a filter never hides that it is filtering. */
+  .sv-control__status {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+    margin: 0 0 0.75rem;
+  }
+
+  /* An empty result says so, in the reading voice, rather than leaving a gap. */
+  .sv-report__empty {
+    font-style: italic;
+    color: var(--ink-3);
+    padding-block: 1rem;
+    margin: 0;
+  }
+}
