@@ -45,3 +45,5 @@ next-env.d.ts
 
 # superpowers process scratch files
 .superpowers/
+storybook-static/
+*storybook.log
