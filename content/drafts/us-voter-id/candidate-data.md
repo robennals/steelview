@@ -687,6 +687,26 @@ One row per empirical question in the outline, in outline order. **Answers it** 
 - **Helps:** `prove-identity` (ID is ordinary in France). **Hurts:** `prove-identity` (Germany asks only on request; both countries issue national ID cards).
 - **Likely status:** well-supported per country. No neutral count yet.
 
+## Stage-4 review decisions
+
+Recorded 2026-10-23 from the human's review ([stage 4 gate](../../WORKFLOW.md#4b-plan-the-combined-reports)).
+
+- **Approved for stage 5** as planned: the revised outline (draft 4) and the seven reports below.
+- **R5 must show how each documented fraud was carried out** and whether a polling-place ID check would have reached it (artifact 7), because the assumption that historical fraud was mostly impersonation at the polls is widespread and testable.
+- **A data gap becomes a crux only if its answer would change which viewpoint has the better case.** Gaps that would not swing the balance go to `dataStillNeeded`.
+
+Report ids (filenames, permanent once published):
+
+| Report | Fact id |
+|---|---|
+| R1 | `voter-id-rules-in-the-us-and-abroad` |
+| R2 | `burdens-of-id-and-citizenship-rules` |
+| R3 | `non-citizens-on-voter-rolls` |
+| R4 | `voter-roll-maintenance` |
+| R5 | `election-fraud-and-voter-exclusion-history` |
+| R6 | `opinion-and-confidence-in-elections` |
+| R7 | `federal-and-state-power-over-voting-rules` |
+
 ---
 
 ## 3c. Proposed reports
@@ -876,3 +896,33 @@ Observations are written as the finding each viewpoint would link, with the cand
 - the merits of EO 14399;
 - the revived SAVE system;
 - the 2026 EAVS, due mid-2027.
+
+---
+
+## Coverage check (stage 5)
+
+Every stage-3 question mapped to the observations that answer it, as
+`report-id/observation-id`. Observation ids and the gaps each builder found
+are in [stage5-results.md](stage5-results.md).
+
+| # | Answered by | Gap recorded |
+|---|---|---|
+| I1a | `election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted`, `/case-table`, `/remedies-timeline` | Chicago 1982 grand jury report not online |
+| I1a (method) | `election-fraud-and-voter-exclusion-history/case-table`, `/id-would-not-reach`, `/officials-did-the-fraud` | two cases "method not confirmed" |
+| I1b | `voter-id-rules-in-the-us-and-abroad/photo-id-common-in-g7`, `/northern-ireland-after-personation`, `/ni-after-photo-id`, `/britain-turnaways-small-and-falling` | OECD-wide comparison (Barton 2022) blocked |
+| I1c | `non-citizens-on-voter-rolls/found-on-rolls`, `/hundredths-of-a-percent`, `/votes-per-ballots`, `/below-margins` | undetected registration (`dataStillNeeded`; crux) |
+| I1d | `opinion-and-confidence-in-elections/photo-id-majorities`, `/photo-id-across-races`, `/proof-of-citizenship-support` | proof-of-citizenship support only for 2024 |
+| I2a | `burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens`, `/texas-march-2022-spike`, `/texas-still-above-baseline` | eligibility of rejected people known only for Kansas (crux candidate) |
+| I2b | `burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect`, `/gao-larger-drops-young-new-black`, `/burden-without-turnout-effect` | no national study of proof-of-citizenship rules |
+| I2c | `burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id`, `/dpoc-not-readily-available`, `/who-ran-the-survey` | cost and travel time to obtain documents |
+| I2d | `election-fraud-and-voter-exclusion-history/louisiana-registration-collapse`, `/florida-2000-list`, `/georgia-exact-match`; `voter-roll-maintenance/bulk-matching-errs` | USCCR 1968 tables blocked |
+| I3a | `voter-roll-maintenance/removals-21-million`, `/mostly-moves-deaths-nonresponse`, `/pew-only-direct-measure` | no measure since 2011 |
+| I3b | `non-citizens-on-voter-rolls/texas-save-reversals`, `/flag-lists-shrink`; `voter-roll-maintenance/save-flags-citizens`; `federal-and-state-power-over-voting-rules/save-database-revived` | no national SAVE error rate |
+| I4a | `opinion-and-confidence-in-elections/overlap-not-published` | no published crosstab |
+| I4b | `opinion-and-confidence-in-elections/confidence-follows-power`, `/post-election-winner-swing`, `/studies-find-no-effect`, `/milyo-finds-effect` | — |
+| I4c | `burdens-of-id-and-citizenship-rules/georgia-rejections-near-national`, `/two-states-opposite`; `opinion-and-confidence-in-elections/georgia-rebound` | Georgia is the only test |
+| I5a | `federal-and-state-power-over-voting-rules/save-america-act-status`, `/eo-14248-blocked`, `/eo-14399-allowed` | no appellate merits ruling |
+| I5b | `voter-id-rules-in-the-us-and-abroad/us-36-states-up-from-13`, `/rules-vary-widely`; `federal-and-state-power-over-voting-rules/state-rules-vary` | nothing links rule adoption to results |
+| S1 | `election-fraud-and-voter-exclusion-history/case-table`, `/officials-did-the-fraud`, `/no-common-measure` | no common measure (crux) |
+
+No question is left unanswered or unrecorded.
