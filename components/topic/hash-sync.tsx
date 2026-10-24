@@ -52,6 +52,7 @@ export function HashSync() {
     const onHashChange = () => openById(decodeHash(window.location.hash.slice(1)), true);
 
     const onClick = (event: MouseEvent) => {
+      if (event.defaultPrevented) return;
       const target = event.target;
       if (!(target instanceof Element)) return;
       const anchor = target.closest('a[href^="#"]');

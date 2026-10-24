@@ -1749,6 +1749,53 @@
      keeps full ink strength for readability and the accent rule under it
      carries the signal, closed by the same filled disc the fact statuses use
      for "the evidence is solid". */
+  .prose-body a.sv-principle-cite {
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--accent-wash);
+    border: 1px solid var(--accent);
+    border-radius: 0.55em;
+    padding: 0.08em 0.3em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .prose-body a.sv-principle-cite:hover,
+  .prose-body a.sv-principle-cite:focus-visible {
+    box-shadow: 0 0 0 0.18em var(--accent-wash);
+  }
+
+  /* An unresolved premise should remain visible in the argument without
+     borrowing the solid citation treatment reserved for evidence we have. */
+  .prose-body a.sv-needed-cite {
+    color: var(--ink-2);
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--rule-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    border-radius: 0.3em;
+    padding: 0.08em 0.2em;
+  }
+
+  .prose-body a.sv-needed-cite::after {
+    content: " research needed";
+    display: inline-block;
+    margin-left: 0.28em;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .prose-body a.sv-needed-cite:hover,
+  .prose-body a.sv-needed-cite:focus-visible {
+    background: var(--paper-sunk);
+    box-shadow: 0 0 0 0.18em var(--paper-sunk);
+  }
+
   .prose-body a.sv-cite {
     color: var(--ink);
     text-decoration: none;
@@ -1942,13 +1989,14 @@
   }
 
   /* Keep the topic visible around the sheet, even on a phone. Long facts
-     scroll inside it while the controls remain within reach. */
+     scroll inside it while the controls remain within reach. The sheet is
+     always its full height, not sized to its content, so it opens at the size
+     it will have rather than growing when the article arrives. */
   .sv-modal__panel {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: auto;
-    max-height: min(78dvh, 48rem);
+    height: min(78dvh, 48rem);
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 1rem;

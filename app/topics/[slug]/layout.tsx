@@ -1,4 +1,5 @@
 import { CiteNav } from '@/components/topic/cite-nav';
+import { FactSheet } from '@/components/topic/fact-sheet';
 
 /**
  * The topic segment, and the modal slot that sits over it.
@@ -8,7 +9,8 @@ import { CiteNav } from '@/components/topic/cite-nav';
  * reader left it — while a fact is open above it. The interception itself
  * lives in `@modal/(.)facts/[factId]`; on a cold load of a fact URL nothing
  * intercepts, the slot falls back to `@modal/default.tsx`, and `children` is
- * the fact's own page.
+ * the fact's own page. `FactSheet` puts the slot in a dialog, opening it as
+ * soon as a fact link is clicked.
  */
 export default function TopicLayout({
   children,
@@ -18,7 +20,7 @@ export default function TopicLayout({
     <>
       <CiteNav />
       {children}
-      {modal}
+      <FactSheet modal={modal} />
     </>
   );
 }

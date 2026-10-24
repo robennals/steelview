@@ -1,5 +1,3 @@
-import { InstantFacts } from '@/components/topic/instant-facts';
-import { factPath } from '@/lib/content/types';
 import type { Metadata } from 'next';
 import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts } from '@/lib/content/rank-facts';
@@ -10,6 +8,8 @@ import { HashSync } from '@/components/topic/hash-sync';
 import { FactList } from '@/components/topic/fact-list';
 import { ViewpointItem } from '@/components/topic/viewpoint-item';
 import { PrincipleItem } from '@/components/topic/principle-item';
+import { PrincipleModals } from '@/components/topic/principle-modals';
+import { ResearchNeededModal } from '@/components/topic/research-needed-modal';
 import { CruxItem } from '@/components/topic/crux-item';
 import type { ItemKind, Topic } from '@/lib/content/types';
 
@@ -112,8 +112,6 @@ export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
  * without a real content directory.
  */
 export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<string, string> }) {
-  const factsById = new Map(topic.facts.map((f) => [f.id, f]));
-  const principlesById = new Map(topic.principles.map((p) => [p.id, p]));
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   /*
@@ -131,6 +129,12 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
 
   return (
     <div className="sv-sections">
+      <ResearchNeededModal />
+      <PrincipleModals principles={topic.principles.map((principle) => ({
+        id: principle.id,
+        name: principle.name,
+        bodyHtml: bodies.get(bodyKey('principle', principle.id)) ?? '',
+      }))} />
       {headline.length > 0 && (
         <section className="sv-section">
           <div className="sv-section__head">
@@ -170,12 +174,9 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           {topic.viewpoints.map((viewpoint) => (
             <ViewpointItem
               key={viewpoint.id}
-              slug={topic.slug}
               viewpoint={viewpoint}
               bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
               summaryHtml={bodies.get(`summary:${viewpoint.id}`)}
-              factsById={factsById}
-              principlesById={principlesById}
             />
           ))}
         </section>
@@ -221,10 +222,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const topic = await loadTopic(slug);
 
   const bodies = await buildBodies(topic, slug);
-  // Warm the visible headline rows first, then the remaining facts and citations.
-  const previews = [...orderHeadlineFacts(topic), ...topic.facts.filter((fact) => fact.supports)].map((fact) => ({
-    href: factPath(slug, fact.id), id: fact.id, claim: fact.title ?? fact.claim,
-  }));
 
   /*
    * The page head is the title and nothing else: readers came for the facts,
@@ -234,16 +231,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
    * model — neither is rendered here.
    */
   return (
-    <InstantFacts slug={slug} previews={previews}>
-      <main className="sv-wrap">
-        <HashSync />
-        <header className="sv-pagehead">
-          <h1 className="sv-title">{topic.title}</h1>
-          <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
-        </header>
+    <main className="sv-wrap">
+      <HashSync />
+      <header className="sv-pagehead">
+        <h1 className="sv-title">{topic.title}</h1>
+        <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
+      </header>
 
-        <TopicSections topic={topic} bodies={bodies} />
-      </main>
-    </InstantFacts>
+      <TopicSections topic={topic} bodies={bodies} />
+    </main>
   );
 }

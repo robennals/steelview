@@ -559,7 +559,7 @@ better off, and we should welcome it" is a claim. The five in
 - We need the right kind of immigration, not simply less of it
 - Too much immigration too fast damages the fabric of our society
 - Immigration makes Britain better off, and we should welcome it
-- A country should decide who joins it, and Britain never did
+- A country should have a meaningful say over who joins it
 - We have a moral duty to help people fleeing danger
 
 **The set should match what people actually argue**, not an analyst's
@@ -592,62 +592,153 @@ The build enforces that `acknowledges` is non-empty, with the message "a
 viewpoint that concedes nothing is advocacy, not a steelman". That is the
 floor, not the target.
 
-### No self-referential commentary
+### Write an argument someone can follow
 
-A viewpoint should read as if it could be anywhere. Not talking about other
-viewpoints here, not saying "this is something people often get wrong". Just
-make the argument crisply, clearly, in a data-driven and reasonable way.
+A viewpoint is a short persuasive essay in plain English. Its job is to make
+the opening proposition compelling. The data report holds the detailed evidence;
+the viewpoint explains why that evidence gives someone a reason to act.
 
-**The test: could this be published standalone, elsewhere, unchanged?** If a
-sentence only makes sense on this page, cut it.
+Start with the belief or choice being defended. Build two or three connected
+reasons for it, deal with the strongest relevant difficulty where it arises,
+and finish with the policy or judgment those reasons support. Each paragraph
+should move the argument forward. A sequence of unrelated true statements is
+not an argument, however good its citations.
 
-**Concessions land in the flow of the argument**, not in a labelled section.
-The frontmatter lists and the chips already record what the viewpoint cites,
-concedes and sets aside; prose that narrates that structure is saying the
-page's own furniture back to the reader. From
-`immigration-makes-britain-better-off`, on housing:
+Use familiar words and concrete consequences. Prefer “contributes more in taxes
+than it receives in public spending” to “fiscally positive”. Explain the step
+from evidence to conclusion: a projected tax contribution gives a reason to
+welcome a worker; it does not, by itself, settle every immigration policy.
+A principle supplies a value judgment, not empirical proof.
 
-> The systematic review commissioned for the Migration Advisory Committee
-> puts immigration at roughly 4–6% of the total rise in UK house prices over
-> three decades. This is not a rounding error and this argument does not
-> pretend it is zero: more people in a place where building is blocked does
-> raise prices there. But the other 94% is Britain's own doing …
+**Use numbers only when the number matters to the reasoning.** In a viewpoint,
+“arrivals remain much higher than in the 1990s” will usually do more useful work
+than a string of annual totals. Keep the exact measure, dates, denominators and
+comparisons in the linked report. Retain a number when a threshold, magnitude
+or comparison is necessary to understand the conclusion. “Large” and “small”
+are still factual claims: they need a defensible baseline and evidence.
 
-The concession is inside the sentence that makes the argument. There is no
-"what this view concedes" heading anywhere on the page.
+Keep qualifications that change the meaning beside the claim: “projected”,
+“among lower-paid workers”, “in England and Wales”. Move methodological detail
+that does not change the argument into the report. Never simplify a projection
+into a certainty, a correlation into a cause, or one subgroup into everyone.
+For legal claims, distinguish an obligation to hear a claim from an obligation
+to grant protection; everyday wording must preserve the actual scope of the law.
 
-**A viewpoint concedes a point while citing the counter-point that
-contextualises it.** That is what the counter-point facts are for: conceding
-with a link is a concession the reader can check, and it costs the viewpoint
-nothing it was not already going to give up.
+Aim initially for about 300–450 words in four to six connected paragraphs.
+These are editing defaults, not quotas. Use fewer words when they suffice.
+Avoid bold mini-headings that turn the essay into a checklist of issues. The
+summary should give the central reason and direction in one or two natural
+sentences, rather than compressing the evidence inventory.
 
-### Citations and lists
+### Concessions and an independent voice
 
-Four frontmatter lists:
+**Could this be published standalone, elsewhere, unchanged?** Do not mention
+other viewpoints, the site, the data presentation or the act of steelmanning.
+Delete phrases such as “this argument must concede”, “the evidence should be
+stated honestly”, “neither side should claim” and “the moral case should be
+stated openly”. Make the case itself.
 
-| Field | Contains | Enforced |
-| --- | --- | --- |
-| `citesFacts` | Facts the viewpoint argues *from* | `well-supported` or `contested` only |
-| `acknowledges` | Facts it concedes | `well-supported` only; must be non-empty |
-| `setsAside` | Facts it says do no work | any status |
-| `principles` | Principles it rests on | must be included in `topic.md`'s `principles` list |
+Integrate a real concession where it affects the proposed choice. Explain how
+the policy responds, or why the benefit is still worth the cost. For example:
 
-A fact may appear in at most one of the three fact lists per viewpoint.
+> Immigration adds to housing pressure where building cannot respond.
+> Welcoming more people therefore carries a responsibility to provide more
+> homes and infrastructure.
 
-**`citesFacts` order is that viewpoint's own ranking of what matters, and it
-drives the page's fact order.** `rank-facts.ts` takes each viewpoint's
-`citesFacts` then `acknowledges`, in written order, and interleaves them
-round-robin: every viewpoint's first-ranked fact is placed before any
-viewpoint's second. So the first item in your `citesFacts` is your claim on
-the top of the Data section, and reordering that list reorders the page. Put
-the fact your argument actually rests on first, not the one you happened to
-write first.
+Link the factual premise to its observation in the finished version. Do not
+append a catalogue of every possible objection. Frontmatter is an evidence
+index; its existence does not require every listed item to become a paragraph.
+A concession should sharpen the decision, not dissolve the viewpoint into a
+neutral report. The final paragraph should follow from the reasons given.
+
+### A repeatable writing workflow
+
+Use this sequence when asked to create or improve viewpoints on any topic:
+
+1. **Define the real disagreement.** Identify propositions people would actually
+   defend. Give each a distinct central reason, not merely different adjectives
+   for the same conclusion. Check that titles do not promise an unsupported
+   historical or causal claim.
+2. **Sketch the argument.** For each proposition, write a private outline:
+   central value → factual premises → why those premises matter → strongest
+   relevant cost or objection → response → conclusion. Pick the existing shared
+   principles that actually do work. Do not force every principle into every essay.
+3. **Draft for reading.** Write continuous prose using the best available
+   evidence, with qualitative factual phrases where exact numbers add little.
+   Read it without the links: does it still make a coherent, persuasive case?
+   Remove any paragraph whose deletion makes no difference to the conclusion.
+4. **Revise for force and honesty.** Check that each paragraph supports the
+   title, transitions explain the reasoning, and concessions lead somewhere.
+   Read aloud for jargon, cumbersome sentences, repeated caveats and statistics
+   that interrupt the thought. Revise the summary after the body.
+5. **Audit the evidence.** Inventory every empirical premise, including those
+   in the title and summary. Map each to a specific **Observation** in a neutral
+   data report, or mark it `#needed` for the research queue. Check each
+   observation against real, credible sources.
+   Prefer official statistics, primary research and authoritative legal texts
+   as appropriate. Check scope, date, comparison and uncertainty. A plausible
+   phrase or a resolving link is not proof of support. Expand the shared report,
+   narrow the claim or remove it when support is missing; never invent support
+   to preserve a pleasing argument.
+6. **Wire and review.** Link factual phrases to those observations and value
+   phrases to shared principles. Align frontmatter, preserving permanent IDs.
+   Check rendered reading flow and that pills open the intended observation
+   or principle modal. Run the content checks, then reread the essay as prose.
+
+**An explicitly requested argument-first pass may stop before the full evidence
+audit.** Keep useful existing links and mark unresolved empirical premises with
+`#needed`; do not present them as verified. Avoid adding speculative facts just
+to make an argument sound stronger. The later audit is required before calling a
+new topic fully sourced. It must preserve readable prose rather than turn the
+essay back into a string of source notes.
+
+The finished evidence chain is: **viewpoint claim → report Observation → credible
+source or dataset**. Graph and whole-report links are useful navigation, but an
+empirical argument needs an observation that actually states its premise. A
+missing observation is work to finish in the report, not permission to bury the
+premise in a chart or leave it supported only by an external link.
+
+### Citations and data order
+
+Viewpoint frontmatter contains only `name`, `summary` and `order`. There are
+no `citesFacts`, `acknowledges`, `setsAside` or viewpoint-level `principles`
+lists. The prose itself shows what the argument builds on, concedes or sets
+aside through inline citations.
+
+`topic.md` contains `dataOrder`: the explicit order of headline Data
+collections on the page. List every headline collection once, by filename ID.
+Supporting collections belong under their parent and are not included. Data
+order is an editorial decision about reading flow, not a reward for whichever
+viewpoint happens to cite something first.
 
 Every empirical assertion in viewpoint prose **and summaries** should be a
 linked observation pill, including non-numeric statements and key premises that are not
 obviously true. Link the relevant phrase each time it appears; a list at the
 bottom is not a substitute. Include essential qualifications inside the pill.
 Values, preferences and purely logical reasoning remain ordinary prose.
+
+### Research-needed citations
+
+An argument-first draft may contain an empirical premise that deserves research
+but does not yet have a report. Mark the exact claim with a `#needed` link:
+
+```markdown
+[integration succeeds at different rates](#needed)
+```
+
+This renders as a muted, dashed **Research needed** pill. Clicking it opens a
+simple popup: “Research needed to see if this is true.” It is visibly
+different from a data citation, so an unverified premise cannot be mistaken for
+evidence. `#needed` has no frontmatter entry and is not counted as a fact
+citation or a viewpoint relationship.
+
+Use it for a concrete empirical claim that a future data report could confirm,
+qualify or disprove. Link the claim itself, not a vague sentence such as “more
+research is needed.” Do not use it for values, policy preferences, logic, or a
+fact already supported by an observation. It is a research queue: when evidence
+is found, replace it with the appropriate `#fact-...` observation link. When
+evidence cuts the other way or
+cannot be found, rewrite or remove the premise.
 
 Cite observations inline with a plain markdown link to the collection and
 observation ID. The existing `#fact-` prefix remains the citation syntax:
@@ -656,10 +747,25 @@ observation ID. The existing `#fact-` prefix remains the citation syntax:
 [immigration shifted from EU to non-EU nationals](#fact-immigration-against-the-long-run/nationality-shift)
 ```
 
-The build checks that the id resolves and, in a viewpoint, that the fact is
-already in one of that viewpoint's three lists — citing a supporting fact
-counts when its parent is listed. Links render as the fact's own URL, so a
-citation works without JavaScript.
+The build checks that the id resolves. Links render as the Data collection's
+own URL, so a citation works without JavaScript.
+
+### Principle pills
+
+When a shared principle supplies a reason for the conclusion, link a short,
+natural phrase at the point where it is applied:
+
+```markdown
+Giving [priority to the worst off](#principle-priority-to-the-worst-off)
+means being willing to devote resources to people in grave danger.
+```
+
+List that ID in the viewpoint's `principles` and in the topic's `principles`.
+These links render as clickable pills opening a modal with the shared principle.
+Use the shared name or a faithful short phrase, not a sentence that smuggles in
+an empirical prediction. The surrounding prose must explain the application;
+the pill alone does not make the argument. Link where useful, normally once
+per principle, rather than decorating every mention of a value.
 
 ### Order
 
@@ -817,12 +923,18 @@ and defeats the point of the status label.
 Replace vague hedge stacks with precise scope and evidence status. Keep any
 qualification necessary for the sentence to remain true beside the assertion.
 
-**5. An abstract summary where the concrete number would do.**
+**5. Precision in the wrong place.** A report needs exact quantities and their
+context; a viewpoint usually needs the meaning of the comparison.
 
-> Before: Arrivals have risen substantially in recent years.
+> Viewpoint: Annual arrivals remain far above the levels typical of the 1990s,
+> even after falling sharply from their recent peak.
 >
-> After: 813,000 people moved to the UK for a year or more in 2025, against a
-> 1990s average of about 325,000 a year.
+> Linked report: Give the annual totals, historical baseline, population-adjusted
+> comparison, dates and sources in the relevant Observation and graph.
+
+Do not strip useful precision from reports, and do not import every report
+number into the argument. Keep a number in the viewpoint only when the reader
+needs it to understand the reason being offered.
 
 **6. Unsourced empirical claims dressed as commentary.** The most damaging of
 the six.
@@ -956,6 +1068,13 @@ Run this before opening a pull request.
 - [ ] A partisan would find it better argued than their own version, and
       would recognise themselves in it.
 - [ ] It has real argumentative force. It is not merely inoffensive.
+- [ ] Every paragraph advances a connected argument for the opening proposition.
+- [ ] Plain English, readable aloud; no statistics inventory or methodological detours.
+- [ ] Exact numbers appear only where necessary to understand the reasoning.
+- [ ] The conclusion follows from the reasons, with a concrete choice or judgment.
+- [ ] Applied principles are inline pills, listed in frontmatter, opening the right modal.
+- [ ] Each empirical premise maps to a report Observation backed by credible evidence;
+      otherwise it is marked `#needed` and explicitly queued for research.
 - [ ] Where it is milder than a partisan would put it, that traces to
       something they would concede.
 - [ ] Could be published standalone elsewhere, unchanged. No sentence refers
@@ -968,7 +1087,8 @@ Run this before opening a pull request.
       argument actually rests on.
 - [ ] Every fact it leans on is in one of its three lists.
 - [ ] Every empirical assertion in prose and summaries is a pill targeting the
-      relevant finding, including key non-obvious, non-numeric premises.
+      relevant finding, or a visibly distinct `#needed` research pill until the
+      evidence audit is complete.
 
 **Every principle**
 

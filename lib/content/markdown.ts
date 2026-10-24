@@ -39,6 +39,7 @@ function remarkEscapeHtml() {
  * absent.
  */
 const FACT_HREF_PREFIX = `#${anchorFor('fact', '')}`;
+const NEEDED_HREF = '#needed';
 
 /** The id cited by `href`, or undefined if it is not a fact citation. */
 function citedFactId(href: string): string | undefined {
@@ -62,6 +63,14 @@ function citedFactId(href: string): string | undefined {
 function remarkMarkFactCitations({ slug, facts }: { slug: string; facts: Fact[] }) {
   return (tree: Root) => {
     visit(tree, 'link', (node: Link) => {
+      if (node.url === NEEDED_HREF) {
+        node.data = { ...node.data, hProperties: { className: ['sv-needed-cite'] } };
+        return;
+      }
+      if (node.url.startsWith('#principle-')) {
+        node.data = { ...node.data, hProperties: { className: ['sv-principle-cite'] } };
+        return;
+      }
       const factId = citedFactId(node.url);
       if (!factId) return;
       const fact = facts.find((item) => item.id === factId);

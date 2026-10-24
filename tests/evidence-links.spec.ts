@@ -17,8 +17,8 @@ test('a summary pill opens its exact finding without toggling the viewpoint', as
 });
 
 test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
-  await page.route('**/api/topics/**', async route => {
-    await new Promise(resolve => setTimeout(resolve, 250));
+  await page.route(url => url.pathname.includes('/facts/'), async route => {
+    if (route.request().headers()['rsc'] === '1') await new Promise(resolve => setTimeout(resolve, 250));
     await route.continue();
   });
   await page.goto(topic);
@@ -43,6 +43,8 @@ test('the same sheet can target another section and expand at that position', as
   await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
   await page.locator(`${viewpoint} a[data-fact-id="care-worker-route-fiscally-negative"]`).first().click();
   const expand = page.locator('.sv-modal__expand');
+  // The sheet points Expand at the cited section once it has revealed it.
+  await expect(expand).toHaveAttribute('href', /#/);
   const href = await expand.getAttribute('href');
   await expand.click();
   await expect(page.locator('dialog')).toHaveCount(0);

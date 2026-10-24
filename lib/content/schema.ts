@@ -229,12 +229,14 @@ export const viewpointFrontmatterSchema = z.object({
    * silently reorder the sides and decide which viewpoint the section opens
    * on. The editorial rule for choosing it (alternate across the spectrum,
    * never group one side together) is in the design spec.
-   */
+  */
   order: z.number().int(),
-  citesFacts: z.array(z.string()).default([]),
-  acknowledges: z.array(z.string()).default([]),
-  setsAside: z.array(z.string()).default([]),
-  principles: z.array(z.string()).default([]),
+  // Accepted only so existing topic files can migrate gradually. New
+  // viewpoints derive all relationships from inline citations instead.
+  citesFacts: z.array(z.string()).optional(),
+  acknowledges: z.array(z.string()).optional(),
+  setsAside: z.array(z.string()).optional(),
+  principles: z.array(z.string()).optional(),
 });
 
 // Shared definitions must not carry topic-specific viewpoint relationships.
@@ -255,19 +257,17 @@ export const cruxFrontmatterSchema = z.object({
 });
 
 export const topicFrontmatterSchema = z.object({
+  /** Explicit reader-facing order for headline Data collections. */
+  dataOrder: z.array(z.string().min(1)).default([]).refine(
+    (ids) => new Set(ids).size === ids.length,
+    'dataOrder references must be unique'
+  ),
   principles: z.array(z.string().min(1)).default([]).refine(
     (ids) => new Set(ids).size === ids.length,
     'principle references must be unique'
   ),
   title: z.string().min(1),
   subtitle: z.string().min(1),
-  /**
-   * An explicitly commissioned reading order for a topic's headline data
-   * collections. Entries here lead the otherwise viewpoint-derived order;
-   * this is deliberately rare, for a collection the editor needs a reader to
-   * encounter at a particular point in the list.
-   */
-  dataOrder: z.array(z.string().min(1)).optional(),
   lastUpdated: z.preprocess(
     fromYamlScalar,
     z.string().regex(new RegExp(`^\\d{4}-${MONTH}-${DAY}$`), 'must be YYYY-MM-DD')

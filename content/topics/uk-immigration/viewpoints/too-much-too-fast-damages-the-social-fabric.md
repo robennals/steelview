@@ -1,42 +1,16 @@
 ---
 name: Too much immigration too fast damages the fabric of our society
-summary: "Even with economic gains, the [historical scale of arrivals](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling) warrants a public choice about the pace of change."
+summary: "A shared way of life deserves care. Immigration should move at a pace that gives people time to build a common life and a meaningful say over how their communities change."
 order: 2
-citesFacts:
-  - immigration-against-the-long-run
-  - share-of-the-population-born-abroad
-  - incoming-immigration-composition
-  - migration-is-the-only-source-of-population-growth
-  - births-to-foreign-born-mothers
-  - immigration-is-salient-and-objection-varies-by-route
-acknowledges:
-  - non-citizens-share-of-convictions-and-prisons
-  - wage-effects-small-and-uneven
-  - skilled-worker-fiscal-gain-concentrated
-  - health-and-care-relies-on-migrant-workers
-setsAside:
-  - immigration-and-local-social-trust
-  - public-opinion-on-immigration
-  - illegal-arrivals-drove-the-net-migration-rise
-  - ethnic-composition-at-the-2021-census
-  - religious-composition-at-the-2021-census
-principles:
-  - continuity-of-a-shared-way-of-life
-  - democratic-consent-over-membership
-  - priority-to-the-worst-off
 ---
-Suppose every arrival were a net fiscal contributor and houses were built to match. I would still want a public choice about how quickly a community changes. Continuity, familiarity and a shared civic life are things people are entitled to value. A balance sheet does not decide how much weight those values deserve.
+Britain’s prosperity rests on more than its geography. It rests on [habits that took generations to build: trust that strangers will follow the rules, a willingness to improve institutions through experiment, tolerance of eccentricity and new ideas, and enough fellow feeling to accept obligations to people we do not know](#needed). Those habits are precious. [Continuity of a shared way of life](#principle-continuity-of-a-shared-way-of-life) means taking care of the culture that sustains them.
 
-The scale needs a baseline. [Long-term immigration was about 813,000 in 2025, compared with a 1990s average of about 325,000](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling). [It had fallen from a peak of about 1.47 million in the year to March 2023](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling). Those are gross arrivals. [Net migration had fallen much further, to 171,000 in 2025](#fact-immigration-against-the-long-run/net-migration-is-not-unusual-at-all). A case about pace should state both rather than select whichever sounds most dramatic.
+That culture is neither ethnic nor fixed in the past. [Britain has absorbed newcomers for centuries, and many have enriched it](#needed). But integration asks something of both sides. Newcomers need a real invitation into a British common life, and [English, the rule of law, equal citizenship and loyalty to shared institutions are conditions of successful integration](#needed).
 
-The resident population has changed too: [the share of England and Wales born abroad rose from 4.3% in 1951 to 8.9% in 2001 and 16.8% in 2021](#fact-share-of-the-population-born-abroad/the-share-has-roughly-quadrupled-since-the-war). [More than a third of babies born there in 2024 had a foreign-born mother, compared with about a quarter in 2008](#fact-births-to-foreign-born-mothers/more-than-one-in-three-babies-born-in-england-and-wales-in-2024-had-a-foreign-born-mo). But [the available fertility analysis through 2021 attributes the rising share to declining UK-born fertility rather than rising migrant fertility](#fact-births-to-foreign-born-mothers/the-ratio-is-rising-because-its-denominator-is-shrinking). Births are not arrivals, and children born here should not be described as newcomers.
+The speed of change matters because integration takes time. [Annual arrivals remain much higher than the levels typical of the 1990s, despite falling from their recent peak](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling), and [the foreign-born share of England and Wales has risen substantially over the long run](#fact-share-of-the-population-born-abroad/the-share-has-roughly-quadrupled-since-the-war). [Most recent long-term arrivals were non-EU+ nationals, with study the most commonly stated reason for moving](#fact-incoming-immigration-composition/finding). A country can welcome people and still judge that this is too much change to absorb well, especially where [a rapid rate of arrivals or greater cultural distance makes integration harder](#needed).
 
-My concern is that integration may require time and institutional capacity that a national total does not measure. That is a concern to investigate, not a proven threshold Britain has crossed. [The available social-trust research mostly measures ethnic diversity, not immigration](#fact-immigration-and-local-social-trust/almost-all-of-the-research-measures-ethnic-diversity-not-immigration); [some British studies find the association weakens or disappears after accounting for deprivation](#fact-immigration-and-local-social-trust/the-association-shrinks-or-disappears-once-deprivation-is-controlled-for). I cannot use those studies to assert that immigration has already destroyed trust. I can argue for giving the risk and the preference for continuity weight in policy.
+There is [no settled evidence of a precise immigration rate at which social trust fails](#fact-immigration-and-local-social-trust/finding). But we do not need to prove a cliff-edge before acting with care. If [groups increasingly see one another as competitors for scarce housing, services and political power, rather than as citizens with a shared future](#needed), the solidarity that supports a generous and stable country weakens. [A slower pace gives communities time to form the relationships on which trust depends](#needed).
 
-Nor should this become an argument about who is really British. [Ethnic identity and citizenship are different measures](#fact-ethnic-composition-at-the-2021-census/finding). [The census records changing religious affiliations, with a much larger rise in no religion than in the Muslim share](#fact-religious-composition-at-the-2021-census/finding). Those figures do not justify treating minority citizens as outsiders. The principle I am defending is a say over the rate of future change, not a hierarchy of membership among people already here.
+That choice has costs. [Skilled migration brings projected gains to the public finances](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive), and [health and care rely heavily on workers born outside Europe](#fact-health-and-care-relies-on-migrant-workers/care-and-health-professional-roles-have-the-highest-non-eu-born-shares-of-any-occupat). Reducing immigration must therefore go with a plan to train, retain and pay British workers, and with investment in the institutions that help people integrate. It cannot be an excuse to blame people already here or deny their equal place in the country.
 
-There is evidence of public concern: [immigration rose in political salience after 2022](#fact-immigration-is-salient-and-objection-varies-by-route/salience-is-not-in-doubt), and [people express different preferences for asylum, work and study routes](#fact-immigration-is-salient-and-objection-varies-by-route/the-public-does-not-hold-one-view-of-immigration-it-sorts-by-route). But [wanting lower numbers and saying immigration is bad produce different poll answers](#fact-public-opinion-on-immigration/finding). No single percentage can settle the moral or practical question.
-
-This argument must concede the evidence that cuts against it. [Measured wage effects are generally small](#fact-wage-effects-small-and-uneven/what-is-established-is-a-small-unevenly-distributed-effect). [The Skilled Worker route is modelled as fiscally positive](#fact-skilled-worker-fiscal-gain-concentrated/the-route-as-a-whole-is-clearly-positive). [Health and care relies substantially on migrant workers](#fact-health-and-care-relies-on-migrant-workers/finding), and [non-citizens’ conviction and prison shares are broadly similar to their population share](#fact-non-citizens-share-of-convictions-and-prisons/on-what-can-be-counted-non-citizens-are-roughly-where-their-numbers-put-them). Those are reasons to reject indiscriminate blame.
-
-I would still prefer a slower, explicitly chosen pace, alongside investment in language learning, housing and shared institutions. That is a judgment about priorities under uncertainty. It should be argued as such, with [the demographic consequences of lower migration](#fact-migration-is-the-only-source-of-population-growth/finding) acknowledged, rather than presented as a scientific finding about the number a society can absorb.
+I would choose lower immigration, stronger expectations of integration and more support for the shared institutions that bind the country together. Through [democratic consent](#principle-democratic-consent-over-membership), Britain can decide the pace of future change before it loses the confidence and common purpose that make it worth joining.
