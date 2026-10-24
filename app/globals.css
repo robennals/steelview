@@ -1941,13 +1941,14 @@
   }
 
   /* Keep the topic visible around the sheet, even on a phone. Long facts
-     scroll inside it while the controls remain within reach. */
+     scroll inside it while the controls remain within reach. The sheet is
+     always its full height, not sized to its content, so it opens at the size
+     it will have rather than growing when the article arrives. */
   .sv-modal__panel {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: auto;
-    max-height: min(78dvh, 48rem);
+    height: min(78dvh, 48rem);
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 1rem;

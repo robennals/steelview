@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import { revealEvidence } from '@/lib/content/evidence-target';
+import { moveSheetToEvidence, showEvidenceInSheet } from '@/lib/content/evidence-target';
 import { lastTrigger } from './cite-nav';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 
@@ -16,11 +16,27 @@ const FOCUSABLE = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(', ');
 
-/** Accessible sheet shared by instant topic previews and intercepted routes. */
-export function FactModal({ labelledBy, children, href, onClose }: {
+/**
+ * The sheet a fact is read in when the reader is already on its topic page.
+ *
+ * `FactSheet` renders it — from the click, while the fact loads, and then
+ * for as long as the intercepting route `@modal/(.)facts` matches — so it
+ * stays mounted while the reader follows links from one fact to another
+ * inside it, and only the article in it changes.
+ *
+ * Once the fact has loaded, closing is always `router.back()`, whichever way
+ * the reader asks for it, so the panel is one entry in their history rather
+ * than a mode they can get stuck in: Back leaves it, and the URL they were on
+ * returns. Before then there is no entry to go back from, and `onClose` says
+ * what closing means instead.
+ */
+export function FactModal({ labelledBy, children, href, loading, onClose }: {
   labelledBy: string;
   children: ReactNode;
+  /** The fact's own page, for Expand. */
   href: string;
+  /** The article has not arrived yet; the sheet is showing a placeholder. */
+  loading: boolean;
   onClose?: () => void;
 }) {
   const router = useRouter();
@@ -29,13 +45,14 @@ export function FactModal({ labelledBy, children, href, onClose }: {
 
   // The element that opened this modal, captured once per modal instance
   // rather than re-read from the effect: the effect body runs again on a
-  // StrictMode remount, and `lastTrigger.el` is already nulled by then, which
-  // used to lose the focus-restoration target on every dev-mode open.
-  const [trigger] = useState<HTMLElement | null>(() => {
-    const el = lastTrigger.el;
-    lastTrigger.el = null;
-    return el;
-  });
+  // StrictMode remount. It is only cleared from `lastTrigger` by that effect,
+  // never here — React can discard a render (a navigation that waits on a slow
+  // response does), and a render that cleared it would leave the instance that
+  // actually mounts with nothing to return focus to.
+  const [trigger] = useState<HTMLElement | null>(() => lastTrigger.el);
+  // Forward reopens the sheet with no click to return to; the fact's own link
+  // on the topic page is the next best place.
+  const [openedAt] = useState(href);
 
   const leave = useCallback(() => {
     if (leavingRef.current) return;
@@ -54,17 +71,27 @@ export function FactModal({ labelledBy, children, href, onClose }: {
     // both wired here, in a way proven idempotent under mount -> cleanup ->
     // mount — see lib/modal/wire-modal-exit.ts and its test.
     const unwireExit = wireModalExit(dialog, leave);
+    if (lastTrigger.el === trigger) lastTrigger.el = null;
 
     const onClick = (event: MouseEvent) => {
       // The panel does not fill the dialog, so a click that lands on the
       // dialog itself is a click on the backdrop.
       if (event.target === dialog) leave();
-      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[data-fact-expand]') : null;
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
+      if (!link) return;
       // A same-URL fragment link is only an in-document jump in browsers.
       // Expand must reload the canonical page, including its evidence fragment.
-      if (link && link.href === location.href && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      if (link.hasAttribute('data-fact-expand')) {
+        if (link.href === location.href) {
+          event.preventDefault();
+          location.reload();
+        }
+      } else if (link.getAttribute('href')?.startsWith('#')) {
+        // A source footnote moves within the sheet without stacking history,
+        // so Close still returns to the topic in one step.
         event.preventDefault();
-        location.reload();
+        moveSheetToEvidence(dialog, link.hash, router);
       }
     };
 
@@ -122,37 +149,29 @@ export function FactModal({ labelledBy, children, href, onClose }: {
       // Deliberately does not close the dialog or navigate: this cleanup
       // runs on a StrictMode remount as well as on the real unmount that
       // follows a genuine close, and the two are indistinguishable from
-      // here. The dialog element goes away when its owner dismisses it.
+      // here. The dialog element goes away when the route stops matching.
       unwireExit();
       dialog.removeEventListener('click', onClick);
       dialog.removeEventListener('keydown', onKeyDown);
       root.classList.remove('sv-modal-open');
-      if (trigger?.isConnected) trigger.focus();
+      const returnTo = trigger?.isConnected ? trigger
+        : Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href]'))
+          .find((link) => link.pathname === openedAt && !link.closest('dialog'));
+      returnTo?.focus();
     };
-  }, [leave, trigger]);
+  }, [leave, router, trigger, openedAt]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
     dialog?.querySelector('.sv-modal__scroll')?.scrollTo(0, 0);
     dialog?.querySelector<HTMLElement>('.sv-modal__close')?.focus();
-    if (!dialog) return;
-    const reveal = () => {
-      const url = new URL(href, location.href);
-      if (!url.hash && url.pathname === location.pathname) url.hash = location.hash;
-      dialog.querySelectorAll<HTMLAnchorElement>('a[data-fact-expand]').forEach(link => {
-        if (new URL(link.href).pathname === url.pathname) link.href = url.pathname + url.hash;
-      });
-      return revealEvidence(dialog, url.hash);
-    };
+    if (!dialog || loading) return;
+    // A fact URL can name one section of the article, e.g. a citation's finding.
+    const reveal = () => showEvidenceInSheet(dialog, location.hash);
+    reveal();
     window.addEventListener('hashchange', reveal);
-    // An uncached article arrives after the sheet opens.
-    const observer = new MutationObserver(() => { if (reveal()) observer.disconnect(); });
-    if (!reveal()) observer.observe(dialog, { childList: true, subtree: true });
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('hashchange', reveal);
-    };
-  }, [href]);
+    return () => window.removeEventListener('hashchange', reveal);
+  }, [href, loading]);
 
   return (
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>

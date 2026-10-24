@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { moveSheetToEvidence } from '@/lib/content/evidence-target';
 
 /**
  * The element that started the navigation currently on screen.
@@ -13,6 +14,14 @@ import { useRouter } from 'next/navigation';
  * state update on every click would be a re-render for no reason.
  */
 export const lastTrigger: { el: HTMLElement | null } = { el: null };
+
+/** The same-origin fact a citation points at, or null for any other link. */
+function citationUrl(link: HTMLAnchorElement): URL | null {
+  if (!link.dataset.factId) return null;
+  if (link.target && link.target !== '_self') return null;
+  const url = new URL(link.href, location.href);
+  return url.origin === location.origin ? url : null;
+}
 
 /**
  * Turns inline fact citations into client-side navigations.
@@ -28,6 +37,12 @@ export const lastTrigger: { el: HTMLElement | null } = { el: null };
  * including `next/link`'s own — to be handled normally. Modified clicks
  * (new tab, new window, download) are left alone too, and with JavaScript off
  * none of this runs and a citation is simply a link to the fact's page.
+ *
+ * A `next/link` prefetches as it scrolls into view; a citation, with no
+ * component to do that, is prefetched once the reader hovers or focuses it.
+ * Inside an open sheet, a citation replaces the open fact rather than adding
+ * a history entry, so Close returns to the topic in one step; a citation of
+ * the fact already open just reveals its section.
  */
 export function CiteNav() {
   const router = useRouter();
@@ -40,27 +55,37 @@ export function CiteNav() {
       const link = target instanceof Element ? target.closest('a[href]') : null;
       if (!(link instanceof HTMLAnchorElement)) return;
 
-      // Topic previews handle all their own fact links before any routing.
-      if (link.closest('[data-instant-facts]')) return;
-
       // Recorded for every link, not just citations: a fact row is a
       // `next/link` and still has to get focus back when its modal closes.
       lastTrigger.el = link;
 
-      const factId = link.dataset.factId;
-      if (!factId) return;
-      if (link.target && link.target !== '_self') return;
-      const url = new URL(link.href, location.href);
-      if (url.origin !== location.origin) return;
+      const url = citationUrl(link);
+      if (!url) return;
 
       event.preventDefault();
-      router.push(`${url.pathname}${url.search}${url.hash}`);
+      const sheet = link.closest('dialog');
+      if (sheet && url.pathname === location.pathname) moveSheetToEvidence(sheet, url.hash, router);
+      else if (sheet) router.replace(`${url.pathname}${url.search}${url.hash}`, { scroll: false });
+      else router.push(`${url.pathname}${url.search}${url.hash}`, { scroll: false });
+    };
+
+    const onIntent = (event: Event) => {
+      const target = event.target;
+      const link = target instanceof Element ? target.closest('a[data-fact-id]') : null;
+      const url = link instanceof HTMLAnchorElement ? citationUrl(link) : null;
+      if (url && url.pathname !== location.pathname) router.prefetch(url.pathname);
     };
 
     // Capture phase, so the trigger is recorded before `next/link` handles its
     // own click and navigates away.
     document.addEventListener('click', onClick, true);
-    return () => document.removeEventListener('click', onClick, true);
+    document.addEventListener('pointerover', onIntent);
+    document.addEventListener('focusin', onIntent);
+    return () => {
+      document.removeEventListener('click', onClick, true);
+      document.removeEventListener('pointerover', onIntent);
+      document.removeEventListener('focusin', onIntent);
+    };
   }, [router]);
 
   return null;
