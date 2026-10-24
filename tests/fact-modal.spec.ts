@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page, type Request } from '@playwright/test';
 
 // These assertions depend on authored uk-immigration content: the headline
 // fact `immigration-against-the-long-run` (first in the derived ranking, so it
@@ -27,7 +27,7 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
 
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-modal__eyebrow`)).toHaveText('Data');
-  // The prefetched article includes its chart and evidence.
+  // The article includes its chart and evidence.
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(0);
@@ -239,7 +239,27 @@ test.describe('with JavaScript disabled', () => {
   });
 });
 
-// Once prefetched, opening and reopening facts needs no network response.
+// Next.js prefetches a fact as its link scrolls into view — not every fact
+// the page links to, most of which sit in collapsed sections.
+const factData = (request: Request) =>
+  request.headers()['rsc'] === '1' && new URL(request.url()).pathname.includes('/facts/');
+
+test('the topic page prefetches only the fact links on screen', async ({ page }) => {
+  const requested = new Set<string>();
+  page.on('request', (request) => {
+    if (factData(request)) requested.add(new URL(request.url()).pathname);
+  });
+  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  const onScreen = await page.locator('a[href*="/facts/"]').evaluateAll((links) =>
+    links.filter((link) => {
+      const box = link.getBoundingClientRect();
+      return box.width > 0 && box.bottom > 0 && box.top < innerHeight;
+    }).map((link) => new URL((link as HTMLAnchorElement).href).pathname));
+  expect(requested.size).toBeGreaterThan(0);
+  expect([...requested].filter((path) => !onScreen.includes(path))).toEqual([]);
+});
+
+// Once prefetched, opening and reopening a fact needs no network response.
 test('facts open with the network offline and Forward restores the modal', async ({ page, context }) => {
   await page.goto(TOPIC, { waitUntil: 'networkidle' });
   await context.setOffline(true);
@@ -265,28 +285,56 @@ test('Expand loads the standalone fact page', async ({ page }) => {
 });
 
 
-test('a slow fact response never delays opening or switching the modal', async ({ page }) => {
+// The sheet opens on the click, not when the fact arrives: a fact that was not
+// prefetched waits on the server, and the sheet must not wait with it.
+const holdFactData = async (page: Page) => {
   let release!: () => void;
   const gate = new Promise<void>((resolve) => { release = resolve; });
-  await page.route('**/api/topics/**/facts/**', async (route) => {
-    await gate;
+  await page.route((url) => url.pathname.includes('/facts/'), async (route) => {
+    if (route.request().headers()['rsc'] === '1') await gate;
     await route.continue();
   });
+  return () => release();
+};
+
+test('a slow fact response never delays opening the sheet', async ({ page }) => {
+  const release = await holdFactData(page);
   try {
     await page.goto(TOPIC);
-    await page.locator(row(HEADLINE)).click();
-    await expect(page.locator(dialog)).toBeVisible();
-    await expect(page.locator(`${dialog} ${title}`)).toHaveText('UK Immigration Trends');
-    await expect(page.getByRole('status')).toHaveText('Loading data…');
+    const first = page.locator('a.sv-factrow:visible').nth(0);
+    const second = page.locator('a.sv-factrow:visible').nth(1);
+    const claim = await second.locator('.sv-item__claim').textContent();
+    await first.click();
+    await expect(page.locator(`${dialog} ${title}`)).toHaveText((await first.locator('.sv-item__claim').textContent())!);
+    // A loading message only once the wait is noticeable, never as a flash.
+    await expect(page.getByRole('status')).toHaveCount(0);
+    await expect(page.getByRole('status')).toHaveText('Loading data…', { timeout: 4000 });
+    // Closing while it loads, then choosing another fact, gets the other fact.
     await page.locator('.sv-modal__close').click();
-    await expect(page.locator(dialog)).toHaveCount(0);
-    const other = page.locator('a.sv-factrow').nth(1);
-    const claim = await other.locator('.sv-item__claim').textContent();
-    await other.click();
+    await second.click();
     await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
     release();
     await expect(page.locator(`${dialog} .sv-factpage__body`)).toBeVisible();
     await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
+    await expect(page).toHaveURL(new RegExp(`${await second.getAttribute('href')}$`));
+  } finally {
+    release();
+  }
+});
+
+test('closing a sheet before its fact arrives keeps it closed', async ({ page }) => {
+  const release = await holdFactData(page);
+  try {
+    await page.goto(TOPIC);
+    await page.locator(row(HEADLINE)).click();
+    await expect(page.locator(`${dialog} [aria-busy="true"]`)).toBeVisible();
+    await page.locator('.sv-modal__close').click();
+    await expect(page.locator(dialog)).toHaveCount(0);
+    await expect(page.locator(row(HEADLINE))).toBeFocused();
+    release();
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator(dialog)).toHaveCount(0);
+    await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
   } finally {
     release();
   }

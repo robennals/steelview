@@ -1,17 +1,13 @@
-import { factPath } from '@/lib/content/types';
 import { notFound } from 'next/navigation';
 import { allFactParams, loadFactPage } from '@/lib/content/fact-page';
 import { FactArticle } from '@/components/topic/fact-article';
-import { FactModal } from '@/components/topic/fact-modal';
+import { SHEET_TITLE_ID } from '@/lib/modal/sheet-title';
 
 export async function generateStaticParams() {
   return allFactParams();
 }
 
 export const dynamicParams = false;
-
-/** The id the dialog is labelled by — the claim itself, so it is announced as its title. */
-const TITLE_ID = 'sv-modal-title';
 
 /**
  * The same fact, intercepted.
@@ -24,7 +20,8 @@ const TITLE_ID = 'sv-modal-title';
  * `facts/[factId]/page.tsx`, the standalone page.
  *
  * There is no second copy of the fact to keep in step, because both routes
- * render `FactArticle` from the same loaded content.
+ * render `FactArticle` from the same loaded content. The sheet around it is
+ * `FactSheet`, in the topic layout.
  */
 export default async function FactModalPage({
   params,
@@ -37,16 +34,14 @@ export default async function FactModalPage({
   const { fact, bodyHtml, supporting, parent } = data;
 
   return (
-    <FactModal labelledBy={TITLE_ID} href={factPath(slug, factId)}>
-      <FactArticle
-        variant="modal"
-        headingId={TITLE_ID}
-        slug={slug}
-        fact={fact}
-        bodyHtml={bodyHtml}
-        supporting={supporting}
-        parent={parent}
-      />
-    </FactModal>
+    <FactArticle
+      variant="modal"
+      headingId={SHEET_TITLE_ID}
+      slug={slug}
+      fact={fact}
+      bodyHtml={bodyHtml}
+      supporting={supporting}
+      parent={parent}
+    />
   );
 }

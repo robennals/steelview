@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Fact } from '@/lib/content/types';
 import { factPath } from '@/lib/content/types';
 import { StatusBadge } from './status-badge';
@@ -15,17 +16,18 @@ import { StatusBadge } from './status-badge';
  * evidence for which claim — is still visible: it is on the parent fact's
  * page and in the modal, right above the supporting fact it belongs to.
  *
- * The whole row is a link. InstantFacts opens its prefetched article locally;
- * without JavaScript it navigates to the fact's page.
+ * The whole row is the link, with JavaScript intercepted into the modal over
+ * this page and, without it, an ordinary navigation to the fact's page. The
+ * modal manages its own scroll, so Next.js is told not to scroll for it.
  */
 export function FactList({ slug, facts }: { slug: string; facts: Fact[] }) {
   return (
     <ol className="sv-factlist">
       {facts.map((fact) => (
         <li key={fact.id} className="sv-item sv-fact" data-status={fact.status}>
-          <a className="sv-item__summary sv-factrow" href={factPath(slug, fact.id)}>
+          <Link className="sv-item__summary sv-factrow" href={factPath(slug, fact.id)} scroll={false}>
             <span className="sv-item__claim">{fact.title ?? fact.claim}</span> <StatusBadge status={fact.status} />
-          </a>
+          </Link>
         </li>
       ))}
     </ol>

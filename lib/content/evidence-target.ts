@@ -1,3 +1,5 @@
+import type { useRouter } from 'next/navigation';
+
 /** Reveal a linked section without scrolling the topic behind an open dialog. */
 export function revealEvidence(root: HTMLElement, hash: string): boolean {
   let id: string;
@@ -16,4 +18,22 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
   if (scroll) scroll.scrollTop += target.getBoundingClientRect().top - scroll.getBoundingClientRect().top - 24;
   else target.scrollIntoView({ block: 'start' });
   return true;
+}
+
+/** Reveal a section in an open fact sheet, and point its own-page links at it. */
+export function showEvidenceInSheet(dialog: HTMLElement, hash: string) {
+  dialog.querySelectorAll<HTMLAnchorElement>('a[data-fact-expand]').forEach((link) => {
+    if (link.pathname === location.pathname) link.hash = hash;
+  });
+  revealEvidence(dialog, hash);
+}
+
+/**
+ * Move an open fact sheet to another section of the same fact. The URL
+ * follows without a new history entry, so Close still returns to the topic in
+ * one step, and `scroll: false` leaves the scrolling to the reveal.
+ */
+export function moveSheetToEvidence(dialog: HTMLElement, hash: string, router: ReturnType<typeof useRouter>) {
+  if (location.hash !== hash) router.replace(location.pathname + hash, { scroll: false });
+  showEvidenceInSheet(dialog, hash);
 }
