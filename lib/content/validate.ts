@@ -242,10 +242,12 @@ function seriesErrors(factId: string, series: Series): string[] {
     }
   }
 
+  // A coverage end of "2026" runs to the end of 2026, so an event dated
+  // "2026-03" is inside it; compare against the end's own precision.
   for (const event of series.events) {
     if (
       comparePeriods(event.period, series.coverage.from) < 0 ||
-      comparePeriods(event.period, series.coverage.to) > 0
+      (comparePeriods(event.period, series.coverage.to) > 0 && !event.period.startsWith(series.coverage.to))
     ) {
       errors.push(
         `${where} marks an event at "${event.period}", which is outside the declared coverage ${series.coverage.from}–${series.coverage.to} — it would sit off the end of the chart`

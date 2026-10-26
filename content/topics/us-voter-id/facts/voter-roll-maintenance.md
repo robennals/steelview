@@ -8,15 +8,13 @@ derivedFigures:
 title: Voter Roll Maintenance in the US
 claimSources: [1, 2, 16, 27, 21]
 claim: >-
-  States removed 21,298,175 voter registration records between the 2022 and
-  2024 registration deadlines, equal to 9.1% of registrants, up from about 12.5
-  million (8.3%) in 2002–04. The three largest reasons were failing to answer a
-  confirmation notice and then missing two federal elections (33.5%), moving
-  away (30.8%) and death (21.6%). The only direct national estimate found of how many
-  registrations are inaccurate is Pew's, from data up to March 2011: about 24
-  million, or one in eight. Bulk matching programs have repeatedly flagged
-  eligible citizens, and federal law bars systematic removal programs in the 90
-  days before a federal election.
+  States removed about 21 million registration records in the two years
+  to 2024, a slightly larger share of registrants than two decades earlier;
+  most were unanswered confirmation notices, moves and deaths. The only direct
+  national estimate of inaccurate registrations, Pew's from 2011 data, found
+  about one in eight. Bulk matching programs have repeatedly flagged eligible
+  citizens, and federal law bars systematic removals in the 90 days before a
+  federal election.
 status: well-supported
 sources:
   - stance: supports
@@ -747,6 +745,15 @@ series:
         and registration transactions rather than forms, and added "duplicate
         voter registration record" as a separate removal reason, so the 2024
         total is not strictly comparable with earlier cycles.
+  events:
+    - period: '2013'
+      label: ERIC sends its first list-maintenance reports
+      note: 'The Electronic Registration Information Center, a compact of state election offices, begins sending members reports of out-of-date or inaccurate records to check.'
+      source: 51
+    - period: '2018-06'
+      label: 'Husted v. A. Philip Randolph Institute'
+      note: 'The Supreme Court upholds Ohio''s use of non-voting as the trigger for a confirmation notice, followed by removal after two federal elections without a reply or a vote.'
+      source: 18
   source:
     stance: supports
     quote: >-
@@ -914,6 +921,18 @@ additionalSeries:
         Every year ERIC has published since it began list-maintenance reports
         in 2013. 2026 runs only to 30 September 2026.
     breaks: []
+    events:
+      - period: '2023-10'
+        label: NPR reports nine states have left ERIC
+        note: 'NPR: all nine were Republican-led, and all left without a plan to replace it.'
+        source: 25
+      - period: '2024-07'
+        label: Hawaii joins ERIC
+        source: 26
+      - period: '2026-03'
+        label: Virginia ordered to rejoin ERIC
+        note: 'Governor Abigail Spanberger signed an executive order directing the Commissioner of Elections to rejoin (from a secondary source).'
+        source: 26
     source:
       stance: supports
       quote: >-
@@ -934,7 +953,9 @@ additionalSeries:
           another member state; in-state updates have a newer address in the
           motor-vehicle record; duplicates are two registrations for one person
           in the same state; deceased records match the Social Security death
-          file.
+          file. Each value is a row of the report-type table on ERIC's
+          Statistics page ("Year States Cross-State Movers In-State Updates
+          In-State Duplicates Deceased"), as of 30 September 2026.
         lines:
           - name: In-state updates
             points:
@@ -1035,7 +1056,9 @@ comparisons:
     domainMax: 25
     sources: [1]
     note: >-
-      EAC 2024 EAVS, Voter Registration Table 5 (A12a/A1a). North Dakota has
+      Each bar is the "Voters Removed, % of Reg. Voters" column of EAC 2024
+      EAVS Voter Registration Table 5 (A12a/A1a x 100); the February 2026
+      errata did not change any state's removal total. North Dakota has
       no voter registration; Guam and the Northern Mariana Islands did not
       report a total. A high rate can reflect a population that moves a lot,
       a state catching up on a backlog, or duplicates now counted as removals
@@ -1161,10 +1184,13 @@ comparisons:
     domainMax: 100
     sources: [17]
     note: >-
-      EAC 2024 EAVS Table 1, as corrected by the February 2026 errata. Shares
-      are national figures computed by the EAC over the states reporting each
-      item and add to 99.9% because of rounding. An unreturned notice starts
-      the NVRA's two-federal-election clock; it is not itself a removal.
+      EAC 2024 EAVS Table 1 ("Most Confirmation Notices Sent Were Unreturned
+      by Voters"), as corrected by the February 2026 errata. Shares are
+      national figures computed by the EAC, each over only the states
+      reporting that item, so they do not add to 100% (they sum to 109.9%). Notices sent equalled 19.1%
+      of active voters in 2024, against 13.7% in 2022 and 14.3% in 2020. An
+      unreturned notice starts the NVRA's two-federal-election clock; it is
+      not itself a removal.
     items:
       - label: Unreturned (no reply and not returned undeliverable)
         value: 68.9
@@ -1259,65 +1285,100 @@ dataStillNeeded:
 
 ### About 21 million records were removed in 2022–24 {#voter-roll-maintenance--removals-21-million}
 
-States reported removing 21,298,175 records between the 2022 and 2024 registration deadlines, equal to 9.1% of registrants. Most states removed between 3% and 10% of their lists. [1](#source-voter-roll-maintenance-1) These are records taken off the lists, not people found to have voted illegally: the same report counts moves, deaths and unanswered notices as the main reasons (see the next chart).
+The chart shows the count and the share of registrants for each cycle. In the latest, most states removed between 3% and 10% of their lists. [1](#source-voter-roll-maintenance-1) These are records taken off the lists, not people found to have voted illegally: the same report counts moves, deaths and unanswered notices as the main reasons (see the next chart).
 
 ### The number removed has grown; the share removed has stayed in a band {#voter-roll-maintenance--removals-trend}
 
-The count rose from about 12.5 million in 2002–04 to 21.3 million in 2022–24, while the share of registrants removed ranged from a low of 6.6% in 2006–08 to a high of 9.1% in 2022–24. [16](#source-voter-roll-maintenance-16) [14](#source-voter-roll-maintenance-14) [1](#source-voter-roll-maintenance-1) Part of the rise in the count is more states reporting (42 states answered in 2004–06; every state with registration from 2018), and because the share removed has moved much less than the count, most of the rest reflects longer lists rather than a higher removal rate. [15](#source-voter-roll-maintenance-15) [7](#source-voter-roll-maintenance-7) No source links the rise to a change in how often voters move or die.
+The count climbed through most cycles, while the share of registrants removed stayed in a band, from a low in the 2008 cycle to a high in 2024. [16](#source-voter-roll-maintenance-16) [14](#source-voter-roll-maintenance-14) [1](#source-voter-roll-maintenance-1) Part of the rise in the count is more states reporting: 42 answered in the 2006 cycle, and every state with registration from 2018. [15](#source-voter-roll-maintenance-15) [7](#source-voter-roll-maintenance-7)
+
+Because the share has moved much less than the count, most of the rest reflects longer lists rather than a higher removal rate. No source links the rise to a change in how often voters move or die.
 
 ### Lists always carry some ineligible records {#voter-roll-maintenance--lists-contain-ineligible}
 
-The Election Assistance Commission (EAC) says that because removal "can take up to two federal general election cycles", "it is inevitable that voter lists will contain some number of voter records for individuals who are no longer eligible to vote." [3](#source-voter-roll-maintenance-3) This is a statement about records, built into the federal process; it is not an estimate of how many there are.
+The Election Assistance Commission (EAC) says that because removal "can take up to two federal general election cycles", "it is inevitable that voter lists will contain some number of voter records for individuals who are no longer eligible to vote." [3](#source-voter-roll-maintenance-3)
+
+This is a statement about records, built into the federal process; it is not an estimate of how many there are.
 
 ## Observations {#voter-roll-maintenance--observations-reasons-count}
 
 ### Unanswered notices, moves and deaths are most removals {#voter-roll-maintenance--mostly-moves-deaths-nonresponse}
 
-In 2022–24, 33.5% of removals were registrants who did not answer a confirmation notice and then missed two federal general elections, 30.8% had moved out of the jurisdiction and 21.6% had died. Duplicates were 8.1%, voter requests 2.6% and criminal convictions 1.5%. [2](#source-voter-roll-maintenance-2) The same three were the largest named reasons in every cycle since 2004–06, although in 2004–06 the catch-all "other" category, which then included duplicates, was larger than any of them. [15](#source-voter-roll-maintenance-15) [7](#source-voter-roll-maintenance-7) In 2022–24 both moves and non-response reached their highest counts in the series. [2](#source-voter-roll-maintenance-2)
+| Reason for removal, 2022–24 | Share of removals |
+| --- | --- |
+| No reply to a confirmation notice, then missed two federal general elections | 33.5% |
+| Moved out of the jurisdiction | 30.8% |
+| Died | 21.6% |
+| Duplicate record | 8.1% |
+| Other | 3.4% |
+| Voter's request | 2.6% |
+| Criminal conviction or incarceration | 1.5% |
+
+The shares are from the EAC's corrected 2024 figures. [2](#source-voter-roll-maintenance-2) The same three were the largest named reasons in every cycle since 2006, although in the 2006 cycle the catch-all "other" category, which then included duplicates, was larger than any of them. [15](#source-voter-roll-maintenance-15) [7](#source-voter-roll-maintenance-7) In the latest cycle both moves and non-response reached their highest counts in the series. [2](#source-voter-roll-maintenance-2)
 
 ### The non-response route is the largest and least certain {#voter-roll-maintenance--nonresponse-largest}
 
-Non-response has been the single largest reason in most cycles: 40.7% in 2008–10, 35.3 percent in 2016–18, 32.1% in 2018–20 and 33.5% in 2022–24. [13](#source-voter-roll-maintenance-13) [8](#source-voter-roll-maintenance-8) [7](#source-voter-roll-maintenance-7) [2](#source-voter-roll-maintenance-2) It rests on silence rather than on a record that the voter moved: the registrant did not return a card and did not vote for about four years. How many of these people were still living at their address is not measured nationally (see the Ohio chart below and Data still needed).
+Non-response has been the single largest reason in most cycles, at between about a third and two-fifths of removals. [13](#source-voter-roll-maintenance-13) [8](#source-voter-roll-maintenance-8) [7](#source-voter-roll-maintenance-7) [2](#source-voter-roll-maintenance-2)
+
+It rests on silence rather than on a record that the voter moved: the registrant did not return a card and did not vote for about four years. How many of these people were still living at their address is not measured nationally (see the Ohio chart below and Data still needed).
 
 ## Observations {#voter-roll-maintenance--observations-state-removal-rates}
 
 ### States' removal rates differ more than their populations do {#voter-roll-maintenance--state-range}
 
-Utah removed 0.8% of its registrants in 2022–24 and Puerto Rico 22.2%; 62.3% of states fell between 3% and 10%. [1](#source-voter-roll-maintenance-1) Some of the spread is definitional: half of Texas's 2022–24 removals (50.9%) were duplicate records, a category first counted in 2024, and states that merge duplicates rather than delete them report fewer removals. [4](#source-voter-roll-maintenance-4)
+The chart runs from Utah at the bottom to Puerto Rico at the top, while nearly two-thirds of states removed between 3% and 10%. [1](#source-voter-roll-maintenance-1) Some of the spread is definitional: half of Texas's latest removals were duplicate records, a category first counted in 2024; states that merge duplicates rather than delete them report fewer removals. [4](#source-voter-roll-maintenance-4)
 
 ## Observations {#voter-roll-maintenance--observations-notice-outcomes}
 
 ### Notices are sent widely and rarely answered {#voter-roll-maintenance--notices-mostly-unreturned}
 
-States sent 38,803,086 confirmation notices in 2022–24, equal to 19.1% of active voters, up from 13.7% in 2022 and 14.3% in 2020. 68.9% were neither returned by the voter nor returned as undeliverable, and 8.5% came back undeliverable. [17](#source-voter-roll-maintenance-17) An unreturned notice is what starts the non-response route in the reasons chart.
+States sent notices to more of their active voters in the latest cycle than in either of the two before (see the chart note). Most were never returned, and fewer than one in ten came back undeliverable. [17](#source-voter-roll-maintenance-17) An unreturned notice is what starts the non-response route in the reasons chart.
 
 ## Observations {#voter-roll-maintenance--observations-ohio-2012-notices}
 
 ### In Ohio's 2012 mailing, more recipients said they had not moved than had {#voter-roll-maintenance--ohio-notice-replies}
 
-Ohio sent about 1.5 million notices in 2012, mostly to registrants flagged for not voting. About 60,000 (4%) replied that they had moved, about 235,000 replied that they had not, and more than 1,000,000 did not reply. [19](#source-voter-roll-maintenance-19) Justice Breyer read the silence as showing "nothing at all that is statutorily significant"; the Court's majority held that federal law nonetheless makes removal "mandatory" once the notice and two-election conditions are met. [18](#source-voter-roll-maintenance-18) Amici cited by Justice Sotomayor reported that African-American-majority neighbourhoods in downtown Cincinnati had 10% of voters removed for inactivity against 4% in a majority-white suburb. [20](#source-voter-roll-maintenance-20)
+Most recipients never replied, and of those who did, about four times as many said they had not moved as said they had. [19](#source-voter-roll-maintenance-19)
+
+Justice Breyer read the silence as showing "nothing at all that is statutorily significant"; the Court's majority held that federal law nonetheless makes removal "mandatory" once the notice and two-election conditions are met. [18](#source-voter-roll-maintenance-18)
+
+Amici cited by Justice Sotomayor reported that African-American-majority neighbourhoods in downtown Cincinnati had 10% of voters removed for inactivity, against 4% in a majority-white suburb. [20](#source-voter-roll-maintenance-20)
 
 ## Observations {#voter-roll-maintenance--observations-eric-count}
 
 ### ERIC has flagged 14.6 million cross-state movers since 2013 {#voter-roll-maintenance--eric-cross-state-movers}
 
-The Electronic Registration Information Center (ERIC), a members' compact of state election offices, matches voter files against motor-vehicle and Social Security death data and sends members leads to check. To 30 September 2026 it had reported 14,600,683 cross-state movers, 31,170,181 in-state address updates, 1,459,110 in-state duplicates and 681,231 deceased registrants. [23](#source-voter-roll-maintenance-23) These are leads, not removals: members must still contact movers under federal and state law. [23](#source-voter-roll-maintenance-23) ERIC itself says "Illegal voting is exceedingly rare". [24](#source-voter-roll-maintenance-24)
+The Electronic Registration Information Center (ERIC), a members' compact of state election offices, matches voter files against motor-vehicle and Social Security death data and sends members leads to check. Its totals to the end of September 2026: [23](#source-voter-roll-maintenance-23)
+
+- **In-state address updates:** 31,170,181
+- **Cross-state movers:** 14,600,683
+- **In-state duplicates:** 1,459,110
+- **Deceased registrants:** 681,231
+
+These are leads, not removals: members must still contact movers under federal and state law. [23](#source-voter-roll-maintenance-23) ERIC itself says "Illegal voting is exceedingly rare". [24](#source-voter-roll-maintenance-24)
 
 ### Cross-state mover reports fell after 2021 as members left {#voter-roll-maintenance--eric-reports-fell}
 
-Cross-state mover reports peaked at 3,490,162 in 2021 and were 701,420 in 2024 and 668,803 in the first nine months of 2026, as the members covered fell from 32 in 2022 to 22 in 2024. [23](#source-voter-roll-maintenance-23) A cross-state match needs both states in the compact, so fewer members means fewer possible matches; ERIC does not say how much of the fall is due to departures rather than fewer moves.
+Cross-state mover reports peaked in 2021 and fell steeply as members left; the members reading shows the drop. [23](#source-voter-roll-maintenance-23)
+
+A cross-state match needs both states in the compact, so fewer members means fewer possible matches. ERIC does not say how much of the fall is due to departures rather than fewer moves.
 
 ## Observations {#voter-roll-maintenance--observations-eric-members}
 
 ### Nine Republican-led states left ERIC in 2022–23 {#voter-roll-maintenance--eric-departures}
 
-NPR reported in October 2023 that "Nine states — all Republican-led — have now withdrawn from ERIC" without a replacement. [25](#source-voter-roll-maintenance-25) In order of departure they were Louisiana, Alabama, Missouri, Florida, West Virginia, Iowa, Ohio, Virginia and Texas. Iowa objected to ERIC's bylaws, including its requirement that members contact eligible but unregistered people; Virginia cited data security. Hawaii joined in 2024, and Virginia's governor ordered it to rejoin in March 2026 (from a secondary source). [26](#source-voter-roll-maintenance-26) ERIC's current list has 27 states and the District of Columbia. [24](#source-voter-roll-maintenance-24)
+NPR reported in October 2023 that "Nine states — all Republican-led — have now withdrawn from ERIC" without a replacement. [25](#source-voter-roll-maintenance-25) In order of departure they were Louisiana, Alabama, Missouri, Florida, West Virginia, Iowa, Ohio, Virginia and Texas. [26](#source-voter-roll-maintenance-26) The chart marks the report, Hawaii's joining and Virginia's order to rejoin.
+
+Iowa objected to ERIC's bylaws, including its requirement that members contact eligible but unregistered people; Virginia cited data security. [26](#source-voter-roll-maintenance-26) ERIC's current list has 27 states and the District of Columbia. [24](#source-voter-roll-maintenance-24)
 
 ## Observations {#voter-roll-maintenance--observations-pew-2011-baseline}
 
 ### The only direct measure of inaccurate registrations dates from 2011 {#voter-roll-maintenance--pew-only-direct-measure}
 
-Pew's study, using data from 2004 to March 2011 and published in February 2012, estimated about 24 million records, nearly 13 percent of the national total, were inaccurate or no longer valid, including more than 1.8 million deceased registrants and 2,758,578 people registered in more than one state. Pew said the analysis "likely underestimates" the problem. [27](#source-voter-roll-maintenance-27) The Supreme Court's majority in *Husted* (2018) opened with this estimate. [18](#source-voter-roll-maintenance-18) ERIC's website still cites the same 2012 study for the scale of the problem, [24](#source-voter-roll-maintenance-24) and no later national estimate of the same kind was found. The figure predates ERIC, which began in 2012, and the growth in removals shown above, so it cannot be read as the size of the problem today.
+Pew's study, using data from 2004 to March 2011 and published in February 2012, put inaccurate or no-longer-valid records at nearly 13 percent of the national total; the chart breaks that down by type. Pew said the analysis "likely underestimates" the problem. [27](#source-voter-roll-maintenance-27)
+
+The Supreme Court's majority in *Husted* (2018) opened with this estimate, [18](#source-voter-roll-maintenance-18) and ERIC's website still cites the same 2012 study for the scale of the problem. [24](#source-voter-roll-maintenance-24) No later national estimate of the same kind was found.
+
+The figure predates ERIC, which began in 2012, and the growth in removals shown above, so it cannot be read as the size of the problem today.
 
 ### "Inaccurate" in Pew's count is not "ineligible", and stale records are not votes {#voter-roll-maintenance--pew-not-fraud}
 
@@ -1325,13 +1386,21 @@ Pew counted as "inaccurate" an eligible voter whose file has wrong details, such
 
 ## The federal rules for removing voters {#voter-roll-maintenance--nvra-rules}
 
-The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections. States must run "a general program that makes a reasonable effort" to remove registrants who have died or moved; must finish any program "to systematically remove the names of ineligible voters" no later than 90 days before a federal primary or general election; and may remove someone for a move only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections. [21](#source-voter-roll-maintenance-21)
+The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections. States:
+
+- **must run** "a general program that makes a reasonable effort" to remove registrants who have died or moved;
+- **must finish** any program "to systematically remove the names of ineligible voters" no later than 90 days before a federal primary or general election;
+- **may remove someone for a move** only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections. [21](#source-voter-roll-maintenance-21)
 
 ## Observations {#voter-roll-maintenance--observations-nvra-rules}
 
 ### The 90-day limit has stopped late programs {#voter-roll-maintenance--nvra-90-day-rule}
 
-The Eleventh Circuit held in 2014 that Florida's 2012 non-citizen program, first using motor-vehicle records and then the federal SAVE database, broke the 90-day limit; two named plaintiffs flagged by it were citizens. The court said eligible voters "removed days or weeks before Election Day will likely not be able to correct the State's errors in time to vote." [22](#source-voter-roll-maintenance-22) In October 2024 a federal judge blocked Alabama's program on the same ground, finding it began "eighty-four days before" the election. [37](#source-voter-roll-maintenance-37) The limit does not cover individual removals for death, request or conviction. [21](#source-voter-roll-maintenance-21)
+The Eleventh Circuit held in 2014 that Florida's 2012 non-citizen program, first using motor-vehicle records and then the federal SAVE database, broke the 90-day limit; two named plaintiffs flagged by it were citizens. [22](#source-voter-roll-maintenance-22)
+
+The court said eligible voters "removed days or weeks before Election Day will likely not be able to correct the State's errors in time to vote." [22](#source-voter-roll-maintenance-22) In October 2024 a federal judge blocked Alabama's program on the same ground, finding it began "eighty-four days before" the election. [37](#source-voter-roll-maintenance-37)
+
+The limit does not cover individual removals for death, request or conviction. [21](#source-voter-roll-maintenance-21)
 
 ### The Supreme Court upheld non-voting as a trigger for notices {#voter-roll-maintenance--husted-ruling}
 
@@ -1339,7 +1408,9 @@ In *Husted v. A. Philip Randolph Institute* (2018), the Court ruled 5–4 that O
 
 ### The Supreme Court let Virginia's 2024 removals stand {#voter-roll-maintenance--virginia-2024-stay}
 
-On 30 October 2024 the Supreme Court stayed a district-court order that had required Virginia to restore registrants removed under its non-citizen program; three justices would have denied the stay. [38](#source-voter-roll-maintenance-38) The district court had found, according to the challengers' filing, that the state "failed to show that any of the 1,610 people removed" were non-citizens; no count of citizens among the 1,610 has been published. [39](#source-voter-roll-maintenance-39)
+On 30 October 2024 the Supreme Court stayed a district-court order that had required Virginia to restore registrants removed under its non-citizen program; three justices would have denied the stay. [38](#source-voter-roll-maintenance-38)
+
+The district court had found, according to the challengers' filing, that the state "failed to show that any of the 1,610 people removed" were non-citizens. No count of citizens among them has been published. [39](#source-voter-roll-maintenance-39)
 
 ## Bulk removals that reached eligible voters {#voter-roll-maintenance--bulk-errors}
 
@@ -1363,19 +1434,36 @@ Programs that match whole voter lists against another database, rather than acti
 
 ### Bulk matches have repeatedly flagged eligible voters {#voter-roll-maintenance--bulk-matching-errs}
 
-Every programme in the table flagged people who were eligible. The Brennan Center describes the two usual causes as bad source data (Arkansas's felony list) and loose matching rules (Texas's "weak" death matches, Crosscheck's name-and-birth-date match). [29](#source-voter-roll-maintenance-29) A 2017 Stanford-led study estimated that Crosscheck applied nationally would "impede 300 legal votes for every double vote prevented." [30](#source-voter-roll-maintenance-30) In North Carolina, the challengers' brief quotes the Fourth Circuit as finding "97.6% of persons identified by the DMV as noncitizens, in fact were citizens". [39](#source-voter-roll-maintenance-39)
+Every programme in the table flagged people who were eligible. The Brennan Center describes the two usual causes as bad source data (Arkansas's felony list) and loose matching rules (Texas's "weak" death matches, Crosscheck's name-and-birth-date match). [29](#source-voter-roll-maintenance-29)
+
+A 2017 Stanford-led study estimated that Crosscheck applied nationally would "impede 300 legal votes for every double vote prevented." [30](#source-voter-roll-maintenance-30) In North Carolina, the challengers' brief quotes the Fourth Circuit as finding "97.6% of persons identified by the DMV as noncitizens, in fact were citizens". [39](#source-voter-roll-maintenance-39)
 
 ### Florida's 2000 list was inaccurate; whether errors fell more on Black voters is disputed {#voter-roll-maintenance--florida-2000-list}
 
-A Harvard Kennedy School analysis estimated that "probably more than 25%" of names on the list were there in error, that more Black registrants were wrongly listed than white or Latino ones, and that Republican county supervisors were more likely to use it. [32](#source-voter-roll-maintenance-32) In Miami-Dade, over half of the African Americans who appealed were reinstated. [31](#source-voter-roll-maintenance-31) Abigail Thernstrom, a dissenting member of the US Commission on Civil Rights, testified that the commission's own data showed "whites were erroneously placed on the purge list at almost twice the rate of blacks." [33](#source-voter-roll-maintenance-33)
+A Harvard Kennedy School analysis estimated that "probably more than 25%" of names on the list were there in error, that more Black registrants were wrongly listed than white or Latino ones, and that Republican county supervisors were more likely to use it. [32](#source-voter-roll-maintenance-32) In Miami-Dade, over half of the African Americans who appealed were reinstated. [31](#source-voter-roll-maintenance-31)
+
+Abigail Thernstrom, a dissenting member of the US Commission on Civil Rights, testified that the commission's own data showed "whites were erroneously placed on the purge list at almost twice the rate of blacks." [33](#source-voter-roll-maintenance-33)
 
 ### SAVE flags include citizens, at an unknown rate {#voter-roll-maintenance--save-flags-citizens}
 
-The federal SAVE database, overhauled in 2025 to check citizenship in bulk, had been run against more than 65 million registrants in 26 states and flagged 28,635, according to the Solicitor General; these figures are not audited. [46](#source-voter-roll-maintenance-46) Texas's 2,724 flags were about 0.015% of its registrants; in July 2026 its elections director said SAVE had "some inaccurate information" while "most of the data" matched the licence agency's, and by September the state said 578 of the 2,724 (21.2%) had demonstrated citizenship, 506 of them because passport information was added to SAVE after the first run. [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-maintenance-45) [48](#source-voter-roll-maintenance-48) Flagged Texans who do not reply within 30 days are cancelled but can be reinstated at the polls with proof of citizenship. [44](#source-voter-roll-maintenance-44) The non-citizen findings themselves are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls).
+The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's figures, which are not audited: [46](#source-voter-roll-maintenance-46)
+
+- **Checked:** more than 65 million registrants in 26 states.
+- **Flagged as potential non-citizens:** 28,635.
+
+In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-maintenance-45) [48](#source-voter-roll-maintenance-48)
+
+- **Flagged:** 2,724, about 0.015% of its registrants.
+- **July 2026:** the elections director said SAVE had "some inaccurate information" while "most of the data" matched the licence agency's.
+- **September 2026:** 578 of the 2,724 (21.2%) had demonstrated citizenship, 506 of them because passport information was added to SAVE after the first run.
+
+Flagged Texans who do not reply within 30 days are cancelled but can be reinstated at the polls with proof of citizenship. [44](#source-voter-roll-maintenance-44) The non-citizen findings themselves are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls).
 
 ### Advocates' purge totals are mostly the lawful removals in the federal data {#voter-roll-maintenance--purge-totals-mostly-lawful}
 
-The Brennan Center's "almost 16 million voters" purged in 2014–16 is the EAC's total of 16,696,470 removals for every reason, of which 31.1 percent were moves and 24.6 percent deaths. [29](#source-voter-roll-maintenance-29) [9](#source-voter-roll-maintenance-9) The Brennan Center itself says that "When done correctly, purges ensure the voter rolls are accurate and up-to-date." [29](#source-voter-roll-maintenance-29) The errors in the table are real but are thousands to hundreds of thousands of records against removals in the tens of millions; no national count of wrongful removals exists.
+The Brennan Center's "almost 16 million voters" purged between 2014 and 2016 is the EAC's total of removals for every reason, more than half of them moves and deaths (see the first two charts). [29](#source-voter-roll-maintenance-29) [9](#source-voter-roll-maintenance-9)
+
+The Brennan Center itself says that "When done correctly, purges ensure the voter rolls are accurate and up-to-date." [29](#source-voter-roll-maintenance-29) The errors in the table are real but are thousands to hundreds of thousands of records against removals in the tens of millions; no national count of wrongful removals exists.
 
 ## Claims of bloated rolls, and what they counted {#voter-roll-maintenance--bloated-roll-claims}
 
@@ -1384,14 +1472,16 @@ The Brennan Center's "almost 16 million voters" purged in 2014–16 is the EAC's
 | Judicial Watch, 2019: 378 counties above 100% registration | EAC registration data against Census survey estimates for 2013–17 | Registrations, including inactive ones, against a sample estimate of eligible citizens [40](#source-voter-roll-maintenance-40) | — |
 | Judicial Watch, October 2020: 353 counties with 1.8 million more registrants than eligible citizens | State-posted registration against Census survey estimates for 2014–18 | The same; a statistician called including inactive voters "misleading" [40](#source-voter-roll-maintenance-40) [41](#source-voter-roll-maintenance-41) | — |
 | Public Interest Legal Foundation, October 2020: more than 21,000 dead Pennsylvania registrants | Group's own death matching | More than half of its earlier 9,300 names were missing from the later list [42](#source-voter-roll-maintenance-42) | Removal order refused; settled April 2021 with an agreement to use ERIC death data [42](#source-voter-roll-maintenance-42) |
-| Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017 | Removals states made under settlements | Registrations removed through the NVRA process, e.g. 1.2 million in Los Angeles County [43](#source-voter-roll-maintenance-43) | Reported April 2025 |
+| Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017 | Removals states made under settlements | Registrations removed through the NVRA process: 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky [43](#source-voter-roll-maintenance-43) | Reported April 2025 |
 
 ## Observations {#voter-roll-maintenance--observations-bloated-roll-claims}
 
 ### Lawsuits have pushed states to remove millions of stale registrations {#voter-roll-maintenance--litigation-driven-removals}
 
-Judicial Watch counts more than five million names removed since 2017 after its NVRA suits, including 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky. [43](#source-voter-roll-maintenance-43) These were registrations removed through the notice-and-wait process; the group describes them as ineligible, and they are part of the national totals in the first chart.
+Judicial Watch counts more than five million names removed since 2017 after its NVRA suits, the largest in Los Angeles County, New York City and Kentucky (see the table). [43](#source-voter-roll-maintenance-43) These were registrations removed through the notice-and-wait process; the group describes them as ineligible, and they are part of the national totals in the first chart.
 
 ### Over-100% claims count inactive records against survey estimates {#voter-roll-maintenance--bloated-claims-count-inactive}
 
-The county claims compare registrations, including inactive registrants awaiting the two-election clock, with sample-based Census estimates of eligible citizens. Judicial Watch's release says inactive voters "are still registered voters"; the statistician quoted by Snopes said "If you haven't voted, you haven't voted fraudulently." [40](#source-voter-roll-maintenance-40) [41](#source-voter-roll-maintenance-41) A registration rate above 100% therefore measures stale records the process has not yet removed, which the EAC says lists will always carry, rather than ballots cast. [3](#source-voter-roll-maintenance-3)
+The county claims compare registrations, including inactive registrants awaiting the two-election clock, with sample-based Census estimates of eligible citizens. Judicial Watch's release says inactive voters "are still registered voters"; the statistician quoted by Snopes said "If you haven't voted, you haven't voted fraudulently." [40](#source-voter-roll-maintenance-40) [41](#source-voter-roll-maintenance-41)
+
+A registration rate above 100% therefore measures stale records the process has not yet removed, which the EAC says lists will always carry, rather than ballots cast. [3](#source-voter-roll-maintenance-3)

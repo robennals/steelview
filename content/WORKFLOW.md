@@ -283,6 +283,15 @@ topics it serves before the report plans are redone.
 quoted sources, full-range series, the source's comparator set, observations
 beneath each chart, method changes, sources at the end.
 
+**Every chart value is audited against its source** before the gate.
+`pnpm check:figures` checks numbers in prose only; it does not look at
+`series` points or `comparisons` items. An agent that did not build the
+report re-fetches each chart's source data and confirms every value, or the
+inputs and arithmetic of a derived one, and makes sure the chart's quote or
+note names the table the values come from. In the first trial topic this
+caught a published figure entered wrongly and a chart built from levels the
+source never published.
+
 **Readability is checked before the gate**, against
 [Readability](AUTHORING.md#readability): a brief overview at the top, no
 paragraph longer than four lines, statistics shown in the charts rather than
@@ -400,6 +409,10 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   of the record and the mechanism, as the plan asks; material gaps go in
   `dataStillNeeded`, and only gaps that would change which viewpoint has the
   better case are reported as crux candidates.
+- **Chart values come from the source's data**, each confirmed at source;
+  name the table in the chart's quote or note, and say how any derived value
+  was calculated. A level the source does not publish is not read off its
+  chart image.
 - **Checks:** `heavy run -- pnpm check:figures` and `heavy run -- pnpm
   test:unit`, fixing only the agent's own file; other builders' files may be
   mid-edit.
