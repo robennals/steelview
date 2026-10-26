@@ -2,6 +2,8 @@
 
 Stage 3 output, researched 2026-10-23, ten days before the 3 November 2026 midterms. Divided on 2026-10-23 from the combined [US voting rules candidate data](../us-voting-rules/candidate-data.md), with this topic's report plan (3c, [stage 4b](../../WORKFLOW.md#4b-plan-the-combined-reports)) added. The outline is [outline.md](outline.md) (draft 3; being revised against the evidence in parallel, so 3c may need adjusting to the revised arguments).
 
+> **Deep research, 2026-10-26.** Every candidate a viewpoint or planned observation uses was checked at source. Results are at the end of this file: [Stage 4 verification](#stage-4-verification-2026-10-26), [Viewpoint grounding](#viewpoint-grounding), [Visualization plan](#visualization-plan), [Visualizations needed](#visualizations-needed). The verbatim quotes are in four working files beside this one: [verify-privacy.md](verify-privacy.md) (D65, D70–D73), [verify-signatures.md](verify-signatures.md) (D66–D69, R1 candidates), [verify-international-deadlines.md](verify-international-deadlines.md) (D61–D64, R3 candidates) and [verify-confidence-federal-fraud.md](verify-confidence-federal-fraud.md) (R7, R6, R4, D56, new D76). The 3b entries above are left as stage 3 wrote them; where they differ from the verification, the verification wins.
+
 - **How the file was divided.** Every question and candidate in the combined file was tagged **[ID]** (`us-voter-id`), **[MAIL]** (`us-vote-by-mail`) or **[BOTH]**. This file holds the [MAIL] and [BOTH] items. [BOTH] candidates are copied into the [voter-ID file](../us-voter-id/candidate-data.md) as well, identical except that viewpoint labels use each file's ids, so a correction to one must be made in both.
 - **Candidate numbers are the combined file's** (D1–D69), so cross-references hold. Gaps in the numbering are ID-only candidates.
 - **Retagged in the split** (for the human to confirm; see 3d):
@@ -813,3 +815,452 @@ Observations are written as the finding each viewpoint would link, with the cand
 - the merits of EO 14399;
 - the Paterson appeal;
 - the 2026 EAVS, due mid-2027.
+
+---
+
+## Stage 4 verification (2026-10-26)
+
+Each candidate was checked at its primary source with `curl` (PDFs to text). **Reused** means the quote was already confirmed while building `content/topics/us-voter-id/facts/` and is copied from there, not refetched. This covers most [BOTH] candidates: EAVS 2016–2022, the TX and GA briefs, Gallup, Pew (including the Oct 2026 D74 release), Carter–Baker, NC-09, East Chicago, Paterson, Chicago 1982, Heritage, *Burson*, *ITCA*, *Trump v. California* and the SAVE America coverage. Quotes, URLs, publishers and dates are in the four `verify-*.md` files.
+
+**Counts (47 candidates, including new D76): 34 verified, 9 corrected, 4 partly unverifiable, 0 dropped.**
+
+| Cand. | Status | What changed or was confirmed |
+|---|---|---|
+| D1 | verified | 2024: 584,463 rejected, 1.2% of returned; reasons "non-matching **or incomplete**" signature 40.7%, late 17.8%, unsigned 10%; all-mail "not significantly different"; **585,457** entered cure, **317,191 (54.3%)** cured. Series added: 1.0% (2016), 1.4% (2018), 0.8% (2020), 1.5% (2022), 1.2% (2024). |
+| D2 | verified | SPAE 2024: Democrats 37% by mail, Republicans 24%; the gap narrowed because Democrats pulled back. |
+| D3 | **corrected** | CPS 2024: 39.6 / 30.7 / 29.0% confirmed. The mode series is confirmed only for **2004–2024** (CRS); the 1996 start is unconfirmed. |
+| D5 | verified | 35 states require receipt by Election Day; 15 plus DC and three territories accept later ballots; ND, OH, UT ended grace periods in 2025; Kansas enjoined (3 days). |
+| D6 | **corrected** | Adoption dates added (OR 1998 initiative/2000, WA 2011/2012, CO 2013/2014, UT 2012/2019, HI 2019/2020, CA, NV, VT 2021/2022, DC 2022/2023). **Utah HB 300 (2025) makes mail opt-in from 2029**; NCSL's table does not show it yet. |
+| D10 | verified | Turnout +2.1–2.2 pts of citizen voting-age population; Democratic turnout share +0.1 with trends (upper bound about 0.3); CA, UT, WA 1996–2018. |
+| D13 | verified | Heritage file, archived Jul 2026: **1,619 records, 387 tagged absentee, 34 impersonation** (my count). Heritage calls it "a sampling ... not comprehensive". |
+| D16, D31 | verified (reused) | TX Mar 2022 12.38% (24,636); TX 2018 1.5%, 2020 0.8% (EAC via TPR); TX 2022 3.4%, 2024 about 3.5%; GA 2022 1.5%, 2024 about 1.7%. **GA 2018 0.15% still unverified.** |
+| D18, D19, D41, D42 | verified (reused) | As in the voter-ID report: Gallup accuracy series 2004–2024; Pew 2020–2026; winner effect; PEI. |
+| D22 | verified | Majority counted in about 2 hours, 75% in about 3; TX and FL more than 10m within about a day; hours to 95%: AZ 73→147, NV 159→51, PA 49→8. |
+| D23 | verified | About 9,500 + 2,400 late of nearly 1.3m in Clark and Washoe 2024. "About 2% of mail ballots" and the statewide margins are still unverified. |
+| D24 | verified | *Watson* (5–4, 29 Jun 2026): "roughly 30 States"; "appearance of fraud from late-arriving ballots"; "properly directed to legislatures". *USPS v. California*: stay denied; Alito and Thomas: "Congress may create such rules". |
+| D25, D38, D48, D51, D52 | verified (reused) | As before. East Chicago's 155 invalidated votes and Carter–Baker's third-party-handling line need re-quoting at stage 5. |
+| D26 | partly unverifiable | 2020: "More than 53%" of disabled voters voted by mail, against 42%. The 2022 "6% vs under 1%" figure is not in the blog text. |
+| D27 | verified | Being 65 in Texas in 2020 raised turnout by 0.02 pts (upper bound 0.26); it shifted voters between methods. |
+| D43 | verified | 44 states plus DC, PR **and USVI** may pre-process; 6 only on Election Day. Stewart: 63% vs 78% at four hours; "the gap between states had essentially disappeared" at 24 hours. |
+| D44 | verified | Grace-period states: 13 (2016), 15 + DC (Jan 2020), 21 + DC (Nov 2020), 19 + DC, 18 + DC, 15 + DC (2026). 2026 primaries: WI about 5,000 late (78%), **compared with spring 2023, not 2024**; MI over 10,000; WA late arrivals 16,000 → over 20,000, 75% of rejections. |
+| D45, D46, D47 | verified (reused/fetched) | No-excuse or all-mail: 30 + DC (2016), 38 + DC (Nov 2020), 35 + DC, 36 + DC, 37 + DC (2026). |
+| D50 | **corrected** | Kansas City 1936: "a total of 259 convictions" (US Attorney W.D. Mo.), not "259 of 278 defendants". |
+| D55 | partly unverifiable | Otero and Cochise verified (Crosby awaiting trial). Box 13, Wayne County and the Georgia board are still secondary only. |
+| D56 | **corrected** | US adoption from *Burson*: Louisville, Massachusetts and New York in 1888; "almost 90 percent of the States" by 1896. Chile 1958 confirmed (AER abstract; no numbers). The Australian 1856 dates, SC 1950 and the Chartist quote are still secondary. |
+| D61 | verified | The 1988 official answer gives fraud as the reason: postal voting "était l'occasion de fraudes graves", allowing "électeurs fictifs"; proxy voting was widened at the same time. Abstention table confirmed. **The 2020 restoration bill was rejected on 3 Feb 2022; the 2023 Senate bill (presidential only) has lapsed.** No source mentions Corsica. |
+| D62 | **corrected** | [2013] EWHC 2572 is **Woking** (*Ali v Bashir*), not Slough; the **Slough** case was **2008** and was register fraud. Birmingham "banana republic" confirmed in the 2005 Afterword. Tower Hamlets 2015 voided. UK postal share is **18.8% (2010), 20.5% (2015), 21.7% (2017), 21.0% (2019)** of valid votes (Commons Library, 1945–2019), not Full Fact's 15.3% and 18%. Electoral Commission: 1,462 alleged cases in 2019–23, 11 convictions; 6 postal allegations in 2023. |
+| D63 | **corrected** | IDEA, Aug 2025: **11 countries allow in-country postal voting for all voters** (Canada, Germany, Iceland, South Korea, Liechtenstein, Luxembourg, New Zealand, Poland, Switzerland, UK, US); **21 for some** (France and Australia among them); out of **204** coded. 2021 data: 27% of OECD countries for all voters. The PDF's pie chart contradicts its own list; cite the list. |
+| D64 | verified | Official Bundeswahlleiterin series 1957–2025 (4.9% to 47.3% in 2021, 37.0% in 2025). No reason needed since 2008. BVerfG 2013 (a European-election case) quotes confirmed. Switzerland "around 90%" is still journalism-sourced; Upper Valais 2017: at least 193 forged ballots, suspended sentence. |
+| D65 | verified | All figures confirmed: 1,085 likely voters, 30 Nov–6 Dec 2023, phone and online, Pulse; 30% voted by mail (about 326 weighted); 21% filled out someone else's ballot "in part or in full"; 19% had theirs filled out; 17% signed for someone; 17% voted where no longer resident. Critiques confirmed (Krosnick, Levitt, disability advocates, 30% vs 43%). A weighted crosstab is public: 34% of under-40 mail voters said someone else filled in theirs, against 2% of those 65+. |
+| D66 | **corrected** | WA 2020: Black 2.49%, Native American 1.59%, Hispanic 1.57%, Asian/PI 1.24%, white 0.63%; Black voters twice as likely after controls; ages 18–21 2.68% vs 65+ 0.17%; men 42% more likely. The **"4–7 times" county gap counts mismatched *or unsigned* ballots**, after controls for age, race, education and income; for mismatches alone, two counties were 18 times another. **The candidate's "no bias" quote does not exist**; use "We found no evidence of bias when counties accepted or rejected ballots". 98.7% of decisions appropriate; reviewers, including auditors, disagreed. EAVS 2024 state extremes confirmed in EAVS itself (AR 8.8%; VT, ME, IN 0.2%). |
+| D67 | verified | NCSL Table 14 (updated 23 Oct 2026) and Table 15 (31 Aug 2026) counts confirmed. Ohio and Texas appear in both the signature and the ID-number lists. Colorado refers uncured mismatches to the district attorney. |
+| D68 | **corrected** | The Texas "about 5,000 mismatch rejections in 2016 and 2018" is from **Judge Higginbotham's concurrence**, not the majority; the due-process point is a stay-stage "likely to show". NH 2018 opinion quoted directly (0.35% of absentee ballots rejected for mismatch in 2016). PA 2020 holding confirmed. |
+| D69 | verified | GA SOS release (archived): 15,118 envelopes, "no fraudulent absentee ballots", 99.99% accuracy. **One missed envelope was signed by the voter's spouse and passed the county's check.** The audit sampled accepted ballots only. |
+| D70 | partly unverifiable | The Conversation (Orr and Johnson, 2020) confirmed: "as many as a third ... while others were present", "1%, or fewer" pressured. **Its link is to Southwell & Burchett 1997, a survey of the January 1996 special Senate election, not "after 1998".** The paper itself is paywalled. |
+| D71 | **corrected** | The original is the LA Times, 11 Dec 2000: Melody Rose's unpublished pilot of 818 Washington County voters: "About 5%" said others marked their ballots, 2.4% that others signed envelopes. Heritage dropped "About", "pilot" and "preliminary". |
+| D72 | verified | BJPS 2013 (Gerber, Huber, Doherty, Dowling; no Hill): 25% doubt secrecy. Field experiment: +3.4 pts turnout among people with no voting record. **New: Dowling et al., PLOS ONE 2019 (YouGov, Dec 2010): over 23% of mail voters had someone else in the room, 17.8% discussed their vote there, more than 6% showed their ballot; mail voters were almost 10 points likelier than Election Day voters to say their choices were not secret.** In person: 22% had no privacy screen. |
+| D73 | verified | Birch & Watt 2004 via Essex REF. Democracy Volunteers 2024: family voting seen in 21% of UK polling stations observed; postal family voting "we are unable to collect data on". Pickles 2016: household undue influence is hard to prove, for reasons "similar to those which prevent sufferers of domestic abuse from coming forward"; R18 would extend secrecy offences to postal ballots. |
+| D74 | verified (reused) | Pew Oct 2026: 76% of mail voters vs 47% of in-person voters confident that mail votes are counted as intended; Republicans 42%, Democrats 64%. Mail is below in-person in all four readings, 2020–2026. |
+| D75 | verified | Six disputes sourced: Florida 2000, Ohio 2004, Georgia 2018, 2020, Arizona 2022 (Lake's signature-verification claim, rejected May 2023), Bridgeport 2023. Mail ballots were central in 2020, Arizona 2022 and Bridgeport. **No survey measures confidence just before and after each dispute.** |
+| D76 (new) | verified | Elections voided over absentee ballots beyond the three named cases: Bridgeport 2023 (CT Mirror), plus Heritage's own file, in which most of about 25 whole-election voidings involve absentee or mail ballots, and none is in CO, OR, UT or WA. News21 (2012): 491 absentee cases against 10 impersonation, of 2,068. Exact Heritage counts need hand-coding in stage 5. |
+
+**[BOTH] corrections to copy to the voter-ID candidate file** (which this brief does not let me edit): D50 (259 convictions), D56 (*Burson* dates), D13 (counts from the data file), D2 (party shares confirmed). Its finished facts already use the corrected forms of D50 and D56.
+
+**Blocked, for a human to fetch:**
+- **Survey texts:** Southwell & Burchett, *PS* 1997, and Southwell, *PS* 2004 (Cambridge, paywalled). These hold the original Oregon question wording, sample and figures.
+- **Other journal texts:** the BJPS 2013 full text; the Baringer, Herron & Smith ELJ 2020 full text (Sage Cloudflare).
+- **Paywalled journalism:** the Washington Post Rasmussen critiques (Bump, 12 Dec 2023 and 8 Mar 2024).
+- **Government sites that refused automated fetching:**
+  - Legifrance (loi n° 75-1329).
+  - The Electoral Commission's 2024 general election report.
+  - senate.gov roll-call pages, and the Congressional Record pages saying which states the 6–7 Jan 2021 House objections concerned.
+  - The 2008 SPAE report (MIT DSpace, HTTP 429).
+- **Data not published in a usable form:** IDEA's Looker dashboards (no export; the country lists came from the PDF text); any official Swiss national postal-share statistic (none found).
+- **Primary sources for officials' manipulation (D55):** Box 13, Wayne County 2020 and the Georgia State Election Board.
+
+---
+
+## Viewpoint grounding
+
+For each argument: the verified facts it rests on (candidate, confirmed figure), then its strongest well-supported concession. **Unsupported** marks an argument left without a verified fact; each was dropped or narrowed in outline draft 5.
+
+### `mail-exception`
+
+1. **Mail gives up the secret ballot.** *Grounded.*
+   - The secret ballot was adopted so a vote buyer could not "watch until he placed it in the polling box". Massachusetts and New York adopted it in 1888, and "almost 90 percent of the States" had by 1896 (D56, *Burson*). In Chile, the right's stronger vote in landlord-patronage areas "completely disappeared" after the 1958 reform (D56).
+   - In a December 2010 national survey, over 23% of mail voters had someone else in the room, 17.8% discussed their vote there, and more than 6% showed their ballot. Mail voters were almost 10 points likelier than Election Day voters to say their choices were not secret (D72, Dowling et al.).
+   - Secrecy beliefs change behaviour: reassurance letters raised turnout among people with no voting record by 3.4 points (D72).
+   - Germany's court, while upholding postal voting, conceded that "public control of how the vote is cast is reduced" and integrity "not equally guaranteed" (D64). The UK's 2016 Pickles review recorded the argument that unrestricted postal voting "undermines the fundamental secrecy of the ballot" (D73).
+   - Weaker surveys give higher figures:
+     - Rasmussen–Heartland: 19% of mail voters said someone else filled in theirs "in part or in full" (D65; opt-in, about 326 weighted respondents, asked three years later).
+     - A 2000 Oregon county pilot (818 respondents): "About 5%" said others marked their ballots (D71).
+     - Early Oregon surveys, reported second-hand: "as many as a third" with others present (D70; a 1996 survey, not "after 1998").
+   - *Strongest concession:*
+     - The presence figures mostly describe benign shared voting, and few report pressure: "1%, or fewer" in Oregon (D70).
+     - In-person voting is not fully private either: 22% of in-person voters had no privacy screen (D72), and observers saw family voting in 21% of UK polling stations (D73).
+     - Oregon's researcher found "no evidence that undue influence ... has been a problem" (D70).
+2. **Detected fraud is a floor, not a measure** (the human's note). *Grounded as a point about detection; the size of the gap is an `assumption` crux.*
+   - Household pressure is rarely reported, for reasons the Pickles review likened to domestic abuse (D73, para 192).
+   - Signature review passed an envelope signed by the voter's spouse in Cobb County's 2020 audit (D69).
+   - The researcher behind the Oregon pilot suspected under-reporting, "because people are reluctant to admit being party to a crime" (D71).
+   - Heritage calls its own list "a sampling ... not comprehensive" (D13).
+   - *Strongest concession:*
+     - Large organised schemes leave traces and are caught. NC-09 was found through an outlier rate of unreturned ballots and voter interviews (D25), and Bridgeport on drop-box video (D76).
+     - Levitt: the survey results are "wildly out of line" with signature-mismatch flag rates everywhere (D65).
+3. **Trust matters as much as honesty.** *Grounded.*
+   - Confidence that mail votes are counted as intended is below in-person in every Pew reading: 59/62/61/53% for mail against 91/84/85/79% in person (2020–2026). It is split by party: Republicans 42%, Democrats 64% in Oct 2026 (D74).
+   - Losers disputed Florida 2000, Ohio 2004, Georgia 2018, 2020 and Arizona 2022. Mail ballots were central in 2020 (Gallup links that year's fall in Republican confidence to "public questioning of the validity of mail voting") and in Arizona's signature-verification suit (D75, D18).
+   - *Strongest concession:*
+     - Confidence follows who won more than how votes were cast (D41).
+     - In 2026, US confidence ran against the global winner–loser pattern (D18).
+     - Every dispute ended with the result standing (D75).
+4. **The elections voided for fraud in modern America mostly involved absentee ballots.** *Grounded, narrowed from "were absentee cases".*
+   - Named cases: East Chicago 2003 (D51), NC-09 2018, where the board found the result "corrupted by fraud" (D25), Paterson 2020 (D52), and Bridgeport's 2023 mayoral primary, voided after video of drop-box stuffing (D76).
+   - Heritage's file holds about 25 whole-election voidings; most involve absentee ballots, but not all — Georgia's HD-28 in 2018 and Compton in 2001 were not absentee cases (D76).
+   - News21 found 491 absentee cases against 10 impersonation cases, among 2,068 (D76).
+   - Carter–Baker: "Absentee ballots remain the largest source of potential voter fraud" (D38).
+   - *Strongest concession:*
+     - Every case was local or a single district, caught and remedied. The Paterson indictments were dismissed in 2026 (D52).
+     - Against roughly 47.6 million mail ballots counted in 2024 (D1), the cases are few.
+     - None of the voidings is in a long-standing all-mail state (D76).
+5. **Most democracies do not offer postal voting on demand.** *Grounded; restored from draft 3 in narrowed form.*
+   - IDEA: 11 of 204 countries offer in-country postal voting to all voters; 27% of OECD members (2021) (D63).
+   - France abolished postal voting in 1975 over "fraudes graves" and "électeurs fictifs", widened proxy voting instead, and rejected restoring it in 2022 (D61).
+   - British election courts found mass postal fraud in Birmingham in 2005 ("would disgrace a banana republic") and voided Woking 2013 and Tower Hamlets 2015. Britain added identifiers in 2006 and handling limits and three-year renewal in 2022 (D62).
+   - *Strongest concession:*
+     - The 11 include the US, UK, Germany, Switzerland and Canada (D63).
+     - Germany's postal share reached 47.3% in 2021 (D64). Switzerland is about 90%, without "major political debates about security or fraud" (D64).
+     - The UK recorded 11 convictions from 1,462 allegations in 2019–23 (D62).
+- **Status: well grounded** on lost secrecy, the absentee fraud record and international practice. The step from lost secrecy to coercion and fraud rests on the floor argument, which is an assumption.
+
+### `mail-works`
+
+1. **Mail raises turnout modestly and favours neither party.**
+   - Universal mail raised turnout by about 2.1–2.2 points; Democratic turnout share rose by +0.1 (D10).
+   - No-excuse eligibility at 65 in Texas barely moved turnout in 2020 (D27).
+   - *Concession:* the effect is small (D10, D27).
+   - *Draft 4's "high turnout" in all-mail states:* **unsupported** (no state turnout candidate). Narrowed.
+2. **All-mail states show none of the organised fraud seen elsewhere.**
+   - No whole-election voiding in Colorado, Oregon, Utah or Washington appears in Heritage's own file. Their listed cases are individuals, mostly casting a dead or absent relative's ballot, and they were caught (D76).
+   - Rejection rates are "not significantly different" between all-mail and other states (D1).
+   - *Concession:* detection is a floor (`mail-exception` 2). Heritage's file is a sample.
+   - *Draft 4's "no higher rate of detected fraud":* **unsupported as a rate** (no per-ballot measure exists). Narrowed to the case record.
+3. **Mail has checks that in-person voting lacks.**
+   - 585,457 ballots entered cure in 2024 and 54.3% were cured (D1).
+   - Cobb County's audit found "no fraudulent absentee ballots" and 99.99% accuracy (D69).
+   - NC-09 was caught through the ballots' own paper trail (D25).
+   - *Concession:* 584,463 returned ballots were rejected in 2024 (D1), and rejection falls unevenly (D66).
+4. **Mail serves voters who cannot easily get to a polling place.**
+   - More than 53% of disabled voters voted by mail in 2020, against 42% of other voters (D26).
+   - *Draft 4's "rural, elderly and shift-working":* **unsupported** (no candidate). Dropped.
+5. **Mature democracies vote by post on demand without scandal** (new).
+   - Germany: 47.3% in 2021, and its court upheld postal voting (D64).
+   - Switzerland: about 90% (D64).
+   - UK: "no evidence of large-scale electoral fraud" in the past five years (D62).
+   - *Concession:*
+     - Britain's worst postal frauds came under on-demand postal voting and needed new laws (D62).
+     - Germany's court conceded reduced integrity (D64).
+     - Universal postal voting is unusual worldwide (D63).
+- **Other concessions to carry:**
+  - Texas's 2022 primary rejected 12.38% of mail ballots (D16).
+  - Democrats vote by mail far more than Republicans, 37% to 24% (D2).
+  - Utah makes mail opt-in from 2029 (D6).
+  - Trust in mail counting is lower than in in-person counting (D74).
+  - Mail is not private (D72).
+- **Status: well grounded,** after dropping the unsourced turnout and rurality claims.
+
+### `signature-discretion`
+
+1. **Standards differ by state and county.** *Grounded.*
+   - 32 states check signatures, 9 plus DC do not, and 6 use ID digits; Utah switches in 2029 (D67).
+   - Pennsylvania's code "does not authorize or require" rejection on signature analysis (D68).
+   - New Hampshire's process was "fundamentally flawed": no notice, "no training in handwriting analysis", no standards, no appeal (D68).
+   - *Concession:* Washington requires training, Colorado requires bipartisan review, and 35 states plus DC have statewide cure (D67).
+2. **Rejections fall unevenly.** *Grounded.*
+   - Washington 2020: Black voters 2.49% against 0.63% for white voters, twice as likely after controls; ages 18–21 at 2.68% against 0.17% for those 65+; some counties 4–7 times likelier to reject (mismatch or unsigned, after controls), and 18 times for mismatches alone. Even the auditors disagreed among themselves (D66).
+   - Florida 2018: young voters and voters needing assistance were rejected disproportionately, with "significant variation" across counties (D66).
+   - States ranged from 0.2% to 8.8% in 2024 (D66).
+   - *Concession:*
+     - The auditor found "no evidence of bias" in decisions, and 98.7% of them appropriate (D66).
+     - The racial gaps include unsigned ballots; only the age gap is reported for mismatches alone (D66).
+3. **Discretion is an opening for officials or partisans.** *Rests mainly on values,* with the risk illustrated:
+   - Arizona's losing candidate for governor sued over signature review in 2022 to overturn the result (D75).
+   - Officials refused to certify in Otero and Cochise in 2022 (D55).
+   - No case of signature review used to change a result was found (D69, search incomplete).
+   - *Concession:*
+     - Objective checks also reject valid ballots: Texas's ID-number rule produced 12.38% in a primary (D16).
+     - Washington's lower-rejection counties accepted less conclusive signatures (D66).
+     - A signature check is one of the few checks on a ballot cast out of sight, and it already misses household signing (D69).
+- **New, strongest available:**
+  - Judge Higginbotham's concurrence: about 5,000 Texas ballots were rejected for "perceived" mismatches in 2016 and 2018 (D68).
+  - Signatures' share of rejections swings from 15.8% to 40.7% across EAVS cycles (D1).
+- **Status: well grounded** on variation and disparity. **Thin** on bias and corruption, where it argues from risk.
+
+### `election-day-receipt`
+
+1. **Late ballots were not in the count when the election was held.** *Grounded.*
+   - 15 states plus DC and three territories count them. ND, OH and UT ended this in 2025; Kansas's change is enjoined (D5).
+   - The number of grace-period states has fallen from 21 plus DC (Nov 2020) to 15 plus DC, the 2016 level (D44).
+   - *Watson* recognises the "appearance of fraud from late-arriving ballots" as a legislature's reason (D24).
+   - *Concession:*
+     - Late ballots were under 1% of votes in Clark and Washoe counties in 2024 (D23).
+     - Deadlines caused 17.8% of 2024 rejections (D1).
+     - In 2026 primaries, lateness caused 78% of Wisconsin's rejections and 75% of Washington's (D44).
+     - The USPS says over 95% of ballots arrive on time (D44).
+2. **Slow counts are a choice.** *Grounded for counting speed.*
+   - Texas and Florida counted more than 10 million votes each within about a day, while California reported about a third of its vote over a month and Arizona took 147 hours to reach 95% (D22).
+   - States that allowed pre-processing had reported 78% of votes four hours after polls closed, against 63% for those that did not (D43).
+   - **Unsupported: "the lead changes and suspicion grows".** No candidate links count length to confidence or disputes. It is kept as an argument from values, flagged.
+   - *Concession:* the pre-processing gap "had essentially disappeared" by 24 hours, and Arizona and Nevada pre-process yet count slowly (D43, D22).
+- **Status: well grounded** on rules and speed. **Thin** on its trust mechanism.
+
+### `states-decide`
+
+1. **The president has no role; courts blocked the Postal Service rule.** *Grounded.* The Supreme Court refused to stay the injunction against the USPS rule (D24).
+   - *Concession:*
+     - The Court let the March 2026 order itself stand as "an internal directive" (D24).
+     - Alito and Thomas: "Congress may create such rules under the Elections Clause" (D24).
+     - *ITCA* calls Congress's Elections Clause power "paramount" (D46).
+2. **States choose and revise their own systems.** *Grounded, narrowed.*
+   - Oregon adopted all-mail voting by citizen initiative in 1998 (D6).
+   - Utah's legislature is moving back to opt-in mail from 2029 (D6).
+   - Three states ended grace periods in 2025 (D5).
+   - No-excuse states went 30 → 38 → 35 → 37 (D47).
+   - *Watson*: policy arguments "are properly directed to legislatures, not courts" (D24).
+   - **Unsupported: "Mississippi's excuse-only system was chosen by its own voters"** (no source). Dropped.
+   - *Concession:*
+     - Congress has set national mail-ballot rules for military and overseas voters (D45).
+     - The House passed the SAVE America Act 218–213 (D24).
+- **Status: well grounded,** but it rests mainly on a value, decisions made closest to the people.
+
+### Crux check (stage 4a rule)
+
+- **Kept:**
+  - *Undetected household fraud and pressure* (`assumption`): the answer decides whether `mail-exception`'s strongest argument stands.
+  - *Secrecy vs access* (`tradeoff`).
+  - *Strict and fair checks* (`tradeoff`).
+  - *Would restricting mail raise the losing side's confidence?* (`prediction`): no study measures it.
+- **Dropped as a crux: "fraud by outsiders or manipulation by officials".** The record answers the narrow question. Organised outsider schemes have voided elections; no case of officials using signature review to change a result was found. What remains is a research task (`dataStillNeeded` in R2 and R4), not a disagreement that would change which viewpoint has the better case. *Decision for the human.*
+- **Resolved, not a crux: "is restricting postal voting the democratic norm?"** IDEA's counts answer it (D63).
+
+---
+
+## Visualization plan
+
+Each report opens with a two- or three-sentence overview. Statistics are carried by the artifacts. Dated policy changes and events go on an **EventStrip** under the relevant chart (series `events`, being wired now). Artifacts are listed in reading order. **[wired]** marks components already usable from fact frontmatter (SeriesChart, ComparisonChart, and EventStrip as series events); every other component needs wiring.
+
+Reading-order caveat: until the rendering limit in WORKFLOW stage 5 changes, series render before snapshots and tables, so some orders below can hold only within those groups.
+
+### R1. Mail Voting in the US: Who Uses It, Where, and Its Effects on Turnout and Party, 2004–2026
+(Renamed from 1996: the CPS mode series is confirmed only from 2004.)
+
+1. **SeriesChart [wired]: national shares of votes by mail, early in person and on Election Day, 2004–2024.**
+   - *Data:* CPS supplement (Census tables, every cycle 2004–2024, as charted by CRS IF11477); a second reading for EAVS mail share of turnout (2020 43%, 2024 30.3%; whether every EAVS report back to 2004 prints a comparable share is still to confirm).
+   - *Events:* 2020 COVID rule changes (NCSL: 38 + DC no-excuse plus 10 COVID-excuse states).
+   - *Why:* the long run, with the 2020 spike shown against the trend.
+2. **TileMap (US states): mail share of 2024 turnout by state.**
+   - *Data:* EAVS 2024 Overview Table; the eight mostly-mail states and DC highlighted.
+   - *Why:* place is the slice; tiles keep small states legible.
+3. **PeriodTimeline: when each mostly-mail state adopted it.**
+   - *Data:* NCSL Table 18a, enacted/implemented years, OR 1998/2000 to DC 2022/2023. Utah's 2029 opt-in goes on as a marked future change (HB 300).
+   - *Why:* adoption periods by state are periods, not points.
+4. **CompositionBar: states by mail rule (no-excuse or all-mail / excuse required / COVID excuse added), one bar per cycle.**
+   - *Data:* NCSL Evolution table, Nov 2016–Nov 2026 (full published range).
+   - *Why:* shows the parts of a 50-state total.
+5. **ComparisonChart [wired]: mail use by party and by disability.**
+   - *Data:* SPAE 2024 (Democrats 37%, Republicans 24%), and SPAE Figure 4 by party 2008–2024 if its values can be read; Rutgers/EAC 2020 (more than 53% vs 42%).
+   - *Why:* group comparison at one date.
+6. **EstimateRange: estimated effects of mail rules on turnout and party share, with confidence intervals and a zero line.**
+   - *Data:* Thompson et al. 2020 (turnout +2.1 to 2.2; Democratic turnout share +0.1, upper bound about 0.3); Yoder et al. 2021 (+0.02, upper bound 0.26).
+   - *Why:* effect sizes need their uncertainty beside a null.
+7. **SeriesChart [wired]: support for no-excuse mail voting by party.**
+   - *Data:* Pew, every published reading from 2018 to Aug 2025 (2025: all 58%, Republicans 32%, Democrats 83%).
+   - *Events:* Trump's 2020 statements on mail voting (Gallup's 2020 note).
+
+### R2. Mail Ballot Rejection, Signature Checks and Curing, 2016–2026
+
+1. **SeriesChart [wired]: national rejection rate, % of returned mail ballots, 2016–2024.**
+   - *Data:* EAVS (1.0, 1.4, 0.8, 1.5, 1.2).
+   - *Note:* MIT's per-vote-cast rate (0.34% in 2020 and 2024) appears only in the note, as a second denominator.
+   - *Events:* PA court ruling (Oct 2020), TX SB 1 and GA SB 202 (2021).
+2. **BarChart: rejection reasons, 2024, with signature share per cycle in the table view.**
+   - *Data:* EAVS Table 1.
+   - *Why BarChart, not CompositionBar:* the shares use casewise deletion and do not total 100%, so a parts-of-a-whole bar would mislead.
+3. **TileMap (US states): rejection rate by state, 2024.**
+   - *Data:* EAVS Overview Table 1 (0.2% to 8.8%); all-mail states highlighted.
+   - *Observation beneath:* "not significantly different" for all-mail states.
+4. **BarChart: Washington 2020 rejection rate by race, age, sex and first-time voting.**
+   - *Data:* State Auditor Exhibits 5–7 (e.g. Black 2.49%, white 0.63%; ages 18–21 2.68%, 65+ 0.17%).
+   - *Then* a **DataTable** of the 39 county rates (Exhibit 3) and the controlled county ratios (4–7×; 18× for mismatches).
+   - *Why not SliceExplorer:* it needs row-level data the audit does not publish.
+5. **KeyFigures: the audit's own re-check.**
+   - *Data:* more than 7,200 signatures; 98.7% of decisions appropriate; "no evidence of bias"; cure rates 65% vs 50%.
+6. **DataTable: how each state verifies and cures mail ballots.**
+   - *Data:* NCSL Tables 14 and 15 (signature / ID digits / witness / notary; statewide cure; training; bipartisan review).
+   - *Ideally* a categorical state map; see Visualizations needed.
+7. **SeriesChart [wired]: Texas and Georgia rejection rates beside the national rate, 2018–2024.**
+   - *Data:* TPR/EAC, EAVS briefs. The March 2022 Texas primary (12.38%) is a marked separate point, since it is a primary.
+   - *Events:* SB 1 and SB 202 (2021).
+8. **KeyFigures: curing, 2024.**
+   - *Data:* 585,457 set aside, 317,191 cured (54.3%); Texas 5.8% entered cure.
+9. **QuoteComparison: "May officials reject a ballot on their own judgement of a signature?"**
+   - *Data:* New Hampshire 2018, Fifth Circuit 2020 (majority and Higginbotham), Pennsylvania 2020, Arizona 2023 (Lake).
+   - *Why:* courts answering one question in different ways.
+10. **CaveatList.**
+    - Cobb's audit (no fraudulent ballots; a spouse-signed envelope passed).
+    - `dataStillNeeded`: signature review used to change a result; mismatch-only rejection by race.
+
+### R3. Ballot Receipt Deadlines, Late Ballots and Counting Speed, 2016–2026
+
+1. **TileMap (US states): days after Election Day a postmarked ballot may arrive, 2026.**
+   - *Data:* NCSL Table 11; 0 for receipt by Election Day, up to 21 for Washington.
+   - *Note:* military and overseas rules.
+   - *Why:* numeric, so no categorical map is needed.
+2. **SeriesChart [wired]: number of states counting late-arriving ballots, Nov 2016–Nov 2026.**
+   - *Data:* NCSL Evolution table, all six readings.
+   - *Events:* ND, OH and UT changes (2025); *Watson* (Jun 2026); Kansas injunction (Jul 2026).
+3. **DataTable: late ballots against their denominators.**
+   - *Data:*
+     - Nevada 2024: Clark and Washoe, 11,900 of nearly 1.3m.
+     - 2026 primaries: WI about 5,000 (78% of rejections) against 2,300 in spring 2023; MI more than 10,000; WA 16,000 → 20,000+ late arrivals.
+     - National: 17.8% of 2024 rejections.
+   - *Why a table:* the denominators differ, so a single chart would mislead.
+4. **ComparisonChart [wired]: hours to count 95% of the vote, seven swing states, 2020 and 2024.**
+   - *Data:* MIT Table 1.
+5. **DataTable: when processing may begin, by state, beside hours to count and mail share.**
+   - *Data:* NCSL Table 16, MIT, EAVS. A scatter would show this better (see Visualizations needed).
+   - *Then* **KeyFigures:** Stewart's 63% vs 78% at four hours.
+6. **PullQuote: *Watson*.**
+   - "Appearance of fraud" and "properly directed to legislatures", with "roughly 30 States" reconciled against NCSL's 15 in the description.
+
+### R4. Absentee and Mail Ballot Fraud and Manipulation of the Count in the US, 1936–2026
+
+1. **Timeline: cases by category.**
+   - *Categories:*
+     - organised absentee or mail fraud: Philadelphia 1993, East Chicago 2003, NC-09 2018, Paterson 2020, Bridgeport 2023, Aberdeen 2020, Caddo 2023;
+     - officials and certification: Box 13 1948, Wayne 2020, Otero and Cochise 2022;
+     - in-person and machine fraud: Kansas City 1936, Chicago 1982.
+   - *Why:* one view of the whole record, filterable, so no category is read alone.
+2. **DataTable: the organised absentee cases.**
+   - *Columns:* method; ballots at issue; margin; how detected; remedy; criminal outcome; outcome as of.
+   - *Data:* NCSBE order, *Pabey*, NJ Globe, CT Mirror, Heritage records.
+3. **ComparisonChart [wired]: ballots at issue against the winning margin, per case.**
+   - *Data:*
+     - NC-09: margin 905 (and the board's "undeterminable").
+     - East Chicago: margin 278; 155 votes invalidated.
+     - Bridgeport: margin 251; 1,253 drop-box ballots against about 420 people seen on video.
+     - Caddo: margin of 1; at least 11 illegal votes.
+   - *Why:* shows whether fraud could have changed the result.
+4. **DataTable: officials and certification.**
+   - Same columns, plus Lake's 2022 signature-review suit.
+5. **BarChart: fraud records by type, in two independent compilations.**
+   - *Data:* Heritage's file (1,619 records; 387 absentee; 34 impersonation) and News21 (2,068; 491 absentee; 10 impersonation).
+   - *Then* **KeyFigures** for the denominator: 47,629,437 mail ballots counted in 2024.
+6. **CaveatList: "detected fraud is a floor, not a measure"** (the human's note), with its reasons:
+   - household pressure goes unreported (Pickles);
+   - signature review passed a spouse's signature (Cobb);
+   - Heritage's list is a sample.
+   - `dataStillNeeded`: any estimate of undetected mail fraud.
+7. **ClaimCheck: "One in five mail-in voters admit they cheated" (Rasmussen–Heartland, Dec 2023).**
+   - *Status:* likely `not-supported` as a fraud estimate.
+   - *Finding:* the method and critiques, linking to R5's privacy table for what the survey can support.
+8. **PullQuote: Carter–Baker,** "Absentee ballots remain the largest source of potential voter fraud", with its "no evidence of extensive fraud" sentence in the description.
+
+### R5. The Secret Ballot and Postal Voting in Other Democracies, 1856–2026
+
+1. **Timeline: secret-ballot adoption.**
+   - *Data:* Australia 1856 (secondary), Britain 1872, Louisville, Massachusetts and New York 1888 (*Burson*), "almost 90 percent" of states by 1896, Chile 1958.
+2. **PullQuote: Baland & Robinson on Chile.**
+   - *Note:* the abstract gives no numbers, so no chart until the paper's table is read.
+3. **DataTable: how private is a mail ballot? Every survey, ranked by method.**
+   - *Rows:*
+     - Dowling et al. 2010 (YouGov matched sample): more than 23% someone in the room; 17.8% discussed; more than 6% showed the ballot; mail voters about 10 pts likelier to doubt secrecy.
+     - The same survey's in-person items: 22% no screen; more than 20% could be seen.
+     - Rasmussen–Heartland 2023 (opt-in): 19% and 21%.
+     - Rose 2000 pilot (818): about 5%, 2.4%.
+     - Oregon 1996 (second-hand): a third present, 1% or fewer pressured.
+     - Democracy Volunteers 2024: UK polling-station family voting, 21% of stations.
+   - *Columns:* source, year, sample and method, exact question, figure, mail or in person.
+   - *Why a table:* the questions differ, so the figures cannot share an axis.
+4. **GeoMap (world): IDEA in-country postal voting — all voters / some voters / none, Aug 2025.**
+   - *Data:* 204 countries.
+   - *Then* **KeyFigures:** 11 all; 21 some; 27% of OECD members.
+   - Needs a categorical map (see Visualizations needed).
+5. **SeriesChart [wired]: postal share of the vote, Germany 1957–2025 and UK 1945–2019.**
+   - *Data:* Bundeswahlleiterin; Commons Library CBP-7529.
+   - *Note:* Switzerland's about 90% (journalism) and the West-Germany-only period to 1987.
+   - *Events:* Germany drops the reason requirement (2008); UK personal identifiers (2006), Elections Act (2022). The UK's 2001 move to postal voting on demand needs a source first.
+6. **ComparisonChart [wired]: French abstention before and after the 1975 abolition, four election types.**
+   - *Data:* 1988 ministerial answer.
+   - *Description:* the stated reason, and the 2022 rejection of restoration.
+7. **DataTable: British election-court cases and the reforms that followed.**
+   - *Data:* Birmingham 2005, Slough 2008, Woking 2013, Tower Hamlets 2015; 2006 and 2022 Acts.
+   - *Then* **KeyFigures:** 1,462 allegations, 11 convictions (2019–23); 6 postal allegations (2023).
+8. **QuoteComparison: "Does postal voting weaken the secret ballot?"**
+   - *Data:* BVerfG 2013, Mawrey 2005, Pickles 2016, Southwell 2020, swissinfo 2026.
+
+### R6. Federal and State Power Over Mail Voting Rules, 1986–2026
+
+1. **Timeline: federal laws, bills, orders and rulings.**
+   - UOCAVA 1986, NVRA 1993, HAVA 2002, MOVE 2009; the Freedom to Vote Act cloture failures (2021, Jan 2022); SAVE America House votes (2025, Feb and Jul 2026); EO 14399 (Mar 2026); *Watson* (Jun 2026); *Trump v. California* (Aug 2026); *USPS v. California* (Sep 2026).
+2. **DataTable: live measures and their status as of the build date.**
+3. **QuoteComparison: "Who may set mail-voting rules?"**
+   - *Data:* *ITCA*, *Watson*, *Trump v. California* (majority and Sotomayor), *USPS* (Alito).
+4. **CompositionBar: state rule mix 2016–2026.**
+   - The same data as R1 artifact 4. The **receipt-deadline series** links to R3.
+
+### R7. Confidence in US Elections and Disputed Results, 2000–2026
+
+1. **SeriesChart [wired]: Gallup, confident votes are counted accurately, by party, 2004–2024.**
+   - *Events:* changes of president; Florida 2000 (just before the series starts, in the note); Ohio 2004; Georgia 2018; 2020 mail-voting claims; Arizona 2022.
+   - *Why:* the full series with disputes placed on it.
+2. **SeriesChart [wired], two readings: Pew, confident votes cast in person / by mail will be counted as intended, by party, Oct 2020–Oct 2026.**
+   - *Data:* reused from the voter-ID series.
+   - *Then* **KeyFigures:** 76% of mail voters vs 47% of in-person voters (Oct 2026).
+3. **DataTable: disputed outcomes.**
+   - *Columns:* election, what was alleged, whether mail was central, how it was resolved, source.
+   - *Data:* the six cases in D75.
+   - *Why a table:* the cases are categorical, and confidence before and after each was not measured.
+4. **ComparisonChart [wired]: winner–loser confidence gap.**
+   - *Data:* world median (70% vs 30%) against the US (41% approvers, 52% disapprovers; Gallup World Poll).
+   - *Then* **SeriesChart [wired]:** Gallup honesty series 2006–2026.
+5. **CaveatList.**
+   - No survey measures confidence just before and after each dispute.
+   - No study tests whether restricting mail voting raises losers' confidence (the `prediction` crux).
+
+---
+
+## Visualizations needed
+
+**(a) Library components the plan uses that are not yet wired into fact frontmatter** (`lib/content/schema.ts` accepts only series and comparisons; EventStrip is arriving as series `events`):
+
+| Component | Reports | Uses |
+|---|---|---|
+| DataTable | R2, R3, R4, R5, R6, R7 | case records, state rules, survey-quality table, disputes; the most needed |
+| KeyFigures | R2, R3, R4, R5, R7 | audit re-check, cure counts, denominators, IDEA counts |
+| TileMap (US) | R1, R2, R3 | mail share, rejection rate, receipt window by state |
+| Timeline | R4, R5, R6 | case record, secret-ballot adoption, federal record |
+| QuoteComparison | R2, R5, R6 | courts on signatures; secrecy; who sets rules |
+| PullQuote | R3, R4, R5 | *Watson*, Carter–Baker, Chile |
+| CaveatList | R2, R4, R7 | "detected fraud is a floor"; dataStillNeeded items |
+| ClaimCheck | R4 | Rasmussen–Heartland |
+| BarChart | R2, R4 | rejection reasons; Washington groups; fraud by type |
+| CompositionBar | R1, R6 | state mail-rule mix per cycle |
+| EstimateRange | R1 | turnout and partisan effect estimates |
+| PeriodTimeline | R1 | all-mail adoption periods |
+| GeoMap (world) | R5 | IDEA postal voting (needs (b)1) |
+
+**(b) Visualizations no component provides:**
+
+1. **Categorical choropleth (a categorical mode for TileMap and GeoMap).**
+   - *What it shows:* a rule or category per area, such as IDEA's postal voting for all, some or no voters by country, or each state's ballot-verification method.
+   - *Inputs:* area id → category key, a category list with labels and an order, and an optional per-area note.
+   - *Requirements:* each category needs a pattern or label as well as a colour, to meet the never-colour-alone rule. The table view lists the area under its category.
+   - *Why no existing component fits:* `MapDatum` is `{ value: number }` with a sequential or diverging ramp. Coding categories as numbers would show a false order and a false legend.
+2. **Scatter plot (two measures per area, with labels).**
+   - *What it shows:* each state's mail-processing lead time (days before Election Day) against hours to count 95% of its vote, sized or marked by mail share. A second use is mail-share against rejection rate.
+   - *Inputs:* rows of {id, label, x, y, optional group}, axis labels and formats, optional highlighted ids.
+   - *Requirements:* a table view and a label for every point.
+   - *Why no existing component fits:* no library component plots two quantities against each other. The plan's DataTable fallback leaves the reader to find the relationship.
+
+**Not needed as new components:** before-and-after comparisons (ComparisonChart handles France's abstention); evidence-quality ranking (DataTable with a method column); the case-margin comparison (ComparisonChart).
