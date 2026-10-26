@@ -242,6 +242,17 @@ function seriesErrors(factId: string, series: Series): string[] {
     }
   }
 
+  for (const event of series.events) {
+    if (
+      comparePeriods(event.period, series.coverage.from) < 0 ||
+      comparePeriods(event.period, series.coverage.to) > 0
+    ) {
+      errors.push(
+        `${where} marks an event at "${event.period}", which is outside the declared coverage ${series.coverage.from}–${series.coverage.to} — it would sit off the end of the chart`
+      );
+    }
+  }
+
   return errors;
 }
 

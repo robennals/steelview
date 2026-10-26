@@ -217,19 +217,41 @@ Specific factual conclusions belong in the cited opening finding and in
 addressable observations beneath the relevant artifacts. A neutral title does
 not require vague observations or withholding conclusions supported by data.
 
-`claim` leads the popup with a concrete, detailed factual statement: give the
-measure, population, period, numbers and essential qualifications. For example,
-state both the UK asylum total and its per-person European comparison. Do not
-remove qualifications needed to make a claim true, or strengthen it to serve a
-viewpoint. `claimSources` lists the one-based sources supporting the lead.
+`claim` leads the popup with a **brief overview**: two or three short
+sentences saying what the report covers and what it mainly finds, specific
+enough to be checkable but without a list of figures. The figures appear in
+the charts directly below it. Do not remove qualifications needed to make the
+overview true, or strengthen it to serve a viewpoint. `claimSources` lists the
+one-based sources supporting the lead.
 For unsupported or uncertain assertions, `assessedClaim` preserves the assertion
 being assessed separately from the corrective finding.
+
+### Readability
+
+A report is read on a screen, often on a phone, by someone checking one claim.
+It has to be easy to take in at a glance.
+
+- **No paragraph longer than four lines** at reading width — about 60 words.
+  Split it, or turn it into a short list.
+- **Statistics live in the visualizations.** A number belongs in a chart,
+  table or key-figure display, where it sits beside its comparisons. Prose
+  says what to notice in the chart, not what its values are. State a figure
+  in prose only when it is the point of the sentence and is shown nowhere
+  else — and then one or two per paragraph at most. If a finding needs
+  several numbers, it needs a chart.
+- **Dated events go on the timeline.** When a law, policy or event bears on a
+  movement in a series, add it to the series' `events`: it appears as a
+  numbered marker under the chart, with its details one click away. Do not
+  narrate the sequence of changes in a block of text.
+- **Observations are short.** A summary heading, then one to three short
+  sentences and their footnotes. Longer qualifications go in Subtleties or
+  About this data, both collapsed.
 
 ### The body and reading order
 
 Every fact requires a body. Put the most useful evidence first:
 
-1. **Intro and key point**, with a concrete finding and linked citations.
+1. **A brief overview** (the `claim`), with linked citations.
 2. **A sequence of graphs, artifacts or data**, using different slices to supply
    time, place and group context. Each artifact is a main heading; omit umbrella
    headings that merely repeat its contents. Put its Observations and, when
@@ -498,6 +520,14 @@ against the cited workbook. `immigration-against-the-long-run` runs 1964 to
 sources, because a chart is a factual assertion like any other. A reading
 that rests on a different dataset — a derived denominator — carries a second
 source of its own.
+
+**Events are marked, not narrated.** The `events` array on a series takes a
+period, a short label, an optional one-sentence note and the number of the
+fact citation that dates it. Each event becomes a numbered marker on a strip
+under the chart, lined up with the time axis. An event marks when something
+happened; it does not claim the movement beside it was caused by it — that
+claim, if the evidence supports one, belongs in an observation with its
+source. A change in how the data was *measured* is a break, not an event.
 
 **Definitional discontinuities are marked, not smoothed.** The `breaks` array
 takes a period, a short label and a note in the source's own terms.
@@ -1039,8 +1069,11 @@ Run this before opening a pull request.
 - [ ] If `not-supported`: is there a positive restatement that would displace
       it? If yes, write that fact instead.
 - [ ] Short plain title names the point and comparison without excess numbers.
-- [ ] Detailed opening finding gives scope, period, numbers and essential
-      qualifications, with `claimSources`.
+- [ ] Opening is a brief overview of two or three short sentences, with
+      `claimSources`; its figures are in the charts below it.
+- [ ] No paragraph longer than four lines. Numbers sit in charts, tables or
+      key figures, not recited in prose; dated events are `events` on the
+      series, not narrated.
 - [ ] Opening graphs include trends and meaningful international comparisons;
       missing comparisons have specific, defensible reasons. No Context section.
 - [ ] Important sub-slices, especially those cited by viewpoints, appear in the
