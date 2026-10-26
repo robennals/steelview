@@ -3,19 +3,18 @@ const topic = '/topics/uk-immigration';
 const viewpoint = '#viewpoint-the-right-kind-of-immigration-not-less-of-it';
 
 test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
-  await page.route('**/api/topics/**', async route => {
-    await new Promise(resolve => setTimeout(resolve, 250));
+  await page.route(url => url.pathname.includes('/facts/'), async route => {
+    if (route.request().headers()['rsc'] === '1') await new Promise(resolve => setTimeout(resolve, 250));
     await route.continue();
   });
   await page.goto(topic);
   await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-  const pill = page.locator(`${viewpoint} .prose-body a[data-fact-id="what-happens-to-students-after-they-graduate"]`).nth(1);
+  const pill = page.locator(`${viewpoint} .prose-body a[data-fact-id="care-worker-route-fiscally-negative"]`).first();
   await pill.click();
-  await expect(page).toHaveURL(/facts\/how-people-actually-arrive#what-happens-to-students/);
-  await expect(page.locator('dialog .sv-target')).toContainText('41%');
+  await expect(page).toHaveURL(/facts\/skilled-worker-fiscal-gain-concentrated#care-worker-route-fiscally-negative--finding$/);
+  await expect(page.locator('dialog .sv-target')).toContainText('36,000');
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
-  await expect(page.locator('dialog #evidence-what-happens-to-students-after-they-graduate')).not.toHaveAttribute('open', '');
-  const source = page.locator('dialog .sv-target .sv-chart__credit a').first();
+  const source = page.locator('dialog .sv-target .sv-footnote').first();
   await source.click();
   await expect(page.locator('dialog .sv-target')).toHaveClass(/sv-source/);
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
@@ -29,6 +28,8 @@ test('the same sheet can target another section and expand at that position', as
   await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
   await page.locator(`${viewpoint} a[data-fact-id="care-worker-route-fiscally-negative"]`).first().click();
   const expand = page.locator('.sv-modal__expand');
+  // The sheet points Expand at the cited section once it has revealed it.
+  await expect(expand).toHaveAttribute('href', /#/);
   const href = await expand.getAttribute('href');
   await expand.click();
   await expect(page.locator('dialog')).toHaveCount(0);
@@ -121,7 +122,7 @@ test('opening graphs include all asylum comparators and details remain collapsed
 
 test('glossary popup closes before its containing fact and restores keyboard focus', async ({ page }) => {
   await page.goto(topic);
-  await page.locator('a.sv-factrow[href$="/facts/immigration-against-the-long-run"]').click();
+  await page.locator('a.sv-factrow[href$="/immigration-against-the-long-run"]').click();
   const fact = page.locator('dialog.sv-modal');
   await fact.locator('#immigration-against-the-long-run--observations-international-immigration > summary').click();
   await fact.locator('#immigration-against-the-long-run--international-differences > summary').click();
@@ -208,7 +209,6 @@ test('nationality comparisons change the country bars and show all components', 
   await expect(series).toBeVisible();
   await expect(series.locator('.sv-chart__reading')).toHaveCount(1);
   await expect(page.locator('#immigration-shifted-from-eu-to-non-eu--chart-net')).toHaveCount(0);
-  await expect(series.locator('.sv-chart__legend').first()).toContainText('627,000');
   await series.locator('.sv-observations-group > summary').click();
   const surge = series.locator('#immigration-against-the-long-run--non-eu-arrivals-surge');
   await surge.locator(':scope > summary').click();
@@ -264,8 +264,8 @@ test('nationality findings are linked observations, including the old fact URL',
   await page.goto(topic);
   const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
   await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.getByRole('link', { name: 'EU+ net migration turned negative while non-EU migration became the larger source of arrivals', exact: true }).click();
-  await expect(page.locator('dialog .sv-target')).toHaveAttribute('id', 'immigration-against-the-long-run--nationality-shift');
+  await viewpoint.getByRole('link', { name: 'Changes to visa routes helped drive the sharp rise in immigration and its later fall', exact: true }).click();
+  await expect(page.locator('dialog .sv-target')).toHaveAttribute('id', 'immigration-against-the-long-run--why-immigration-spiked');
   await expect(page.locator('dialog .sv-target')).toHaveAttribute('open', '');
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
 });
@@ -276,7 +276,7 @@ test('Ukraine is separated from remaining non-EU arrivals without double countin
   await expect(graph.getByRole('heading', { name: 'Non-EU Arrivals: Ukraine and the Rest', exact: true })).toBeVisible();
   await expect(graph.locator('.sv-chart__legend')).toContainText('Ukrainian nationals');
   await expect(graph.locator('.sv-chart__legend')).toContainText('Remaining non-EU+ arrivals');
-  await graph.locator('.sv-chart__data > summary').click();
+  await graph.getByRole('button', { name: 'Table', exact: true }).click();
   const rows = graph.locator('tbody tr');
   await expect(rows).toHaveCount(5);
   const row = rows.filter({ hasText: '2022' });

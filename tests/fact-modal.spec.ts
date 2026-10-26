@@ -1,18 +1,19 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page, type Request } from '@playwright/test';
 
 // These assertions depend on authored uk-immigration content: the headline
 // fact `immigration-against-the-long-run` (first in the derived ranking, so it
 // renders outside the Facts collapse), the supporting fact
 // `immigration-shifted-from-eu-to-non-eu` it holds, and the viewpoint
-// `a-country-should-decide-who-joins-it`, which lists the fact
-// `health-and-care-relies-on-migrant-workers` (claim "Health and care is the
-// sector most dependent on migrant labour").
+// `immigration-makes-britain-better-off`, whose prose cites a section of the
+// fact `health-and-care-relies-on-migrant-workers`.
 
 const TOPIC = '/topics/uk-immigration';
 const HEADLINE = 'immigration-against-the-long-run';
 const SUPPORTING = 'care-worker-route-fiscally-negative';
 const FISCAL = 'skilled-worker-fiscal-gain-concentrated';
 const CARE = 'health-and-care-relies-on-migrant-workers';
+const VIEWPOINT = '#viewpoint-immigration-makes-britain-better-off';
+const CARE_LINK = 'Health and care rely heavily on workers born outside Europe';
 
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
@@ -27,7 +28,7 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
 
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-modal__eyebrow`)).toHaveText('Data');
-  // The prefetched article includes its chart and evidence.
+  // The article includes its chart and evidence.
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(0);
@@ -54,15 +55,11 @@ test('the whole fact row is clickable, not just the claim text', async ({ page }
 
 test('a fact chip in a viewpoint opens the same panel', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
+  const viewpoint = page.locator(VIEWPOINT);
   await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint
-    .getByRole('link', {
-      name: 'Immigration and the Health and Care Workforce', exact: true,
-    })
-    .click();
+  await viewpoint.getByRole('link', { name: CARE_LINK, exact: true }).click();
 
-  await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}$`));
+  await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} ${title}`)).toContainText(
     'Immigration and the Health and Care Workforce'
@@ -132,33 +129,18 @@ test('closing the panel takes the fact off the URL', async ({ page }) => {
   await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
 });
 
-// A supporting fact has an address of its own, and its panel opens by naming
+// A supporting fact has an address of its own, and its page opens by naming
 // the headline claim it is evidence for — a supporting fact read without that
 // claim is the out-of-context number this page exists to prevent. It is not a
-// row in the Facts list (see topic-page.spec.ts), so it is reached here the
-// way a reader actually reaches it outside its parent's detail: a citation
-// chip, in this case the "Builds on" chip in the viewpoint that cites it.
-test('a supporting fact opens its own panel, which names the claim it supports', async ({
+// row in the Facts list (see topic-page.spec.ts), and a citation of it opens
+// its parent at that section, so it is reached here by its address.
+test('a supporting fact has its own page, which names the claim it supports', async ({
   page,
 }) => {
-  await page.goto(TOPIC);
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.locator('.sv-evidence-index > summary').click();
-  await viewpoint
-    .getByRole('link', {
-      name: 'Fiscal Contributions of Care Workers', exact: true,
-    })
-    .click();
+  await page.goto(factUrl(SUPPORTING));
 
-  await expect(page).toHaveURL(new RegExp(`${factUrl(SUPPORTING)}$`));
-  await expect(page.locator(`${dialog} .sv-parentnote__claim`)).toHaveAttribute(
-    'href',
-    factUrl(FISCAL)
-  );
-  await expect(
-    page.locator(`${dialog} .sv-finding`).filter({ hasText: '36,000' }).first()
-  ).toBeVisible();
+  await expect(page.locator('.sv-parentnote__claim')).toHaveAttribute('href', factUrl(FISCAL));
+  await expect(page.locator('.sv-finding').filter({ hasText: '36,000' }).first()).toBeVisible();
 });
 
 test('a supporting fact inside the panel still expands and collapses', async ({ page }) => {
@@ -223,15 +205,13 @@ test.describe('with JavaScript disabled', () => {
 
   test('a fact chip in a viewpoint is an ordinary link to the fact page', async ({ page }) => {
     await page.goto(TOPIC);
-    const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
+    const viewpoint = page.locator(VIEWPOINT);
     await viewpoint.locator('summary .sv-item__claim').first().click();
-    const link = viewpoint.getByRole('link', {
-      name: 'Immigration and the Health and Care Workforce', exact: true,
-    });
-    await expect(link).toHaveAttribute('href', factUrl(CARE));
+    const link = viewpoint.getByRole('link', { name: CARE_LINK, exact: true });
+    await expect(link).toHaveAttribute('href', new RegExp(`^${factUrl(CARE)}#${CARE}--`));
 
     await link.click();
-    await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}$`));
+    await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
     await expect(page.locator(dialog)).toHaveCount(0);
     await expect(page.locator('h1.sv-factpage__claim')).toContainText(
       'Immigration and the Health and Care Workforce'
@@ -239,7 +219,27 @@ test.describe('with JavaScript disabled', () => {
   });
 });
 
-// Once prefetched, opening and reopening facts needs no network response.
+// Next.js prefetches a fact as its link scrolls into view — not every fact
+// the page links to, most of which sit in collapsed sections.
+const factData = (request: Request) =>
+  request.headers()['rsc'] === '1' && new URL(request.url()).pathname.includes('/facts/');
+
+test('the topic page prefetches only the fact links on screen', async ({ page }) => {
+  const requested = new Set<string>();
+  page.on('request', (request) => {
+    if (factData(request)) requested.add(new URL(request.url()).pathname);
+  });
+  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  const onScreen = await page.locator('a[href*="/facts/"]').evaluateAll((links) =>
+    links.filter((link) => {
+      const box = link.getBoundingClientRect();
+      return box.width > 0 && box.bottom > 0 && box.top < innerHeight;
+    }).map((link) => new URL((link as HTMLAnchorElement).href).pathname));
+  expect(requested.size).toBeGreaterThan(0);
+  expect([...requested].filter((path) => !onScreen.includes(path))).toEqual([]);
+});
+
+// Once prefetched, opening and reopening a fact needs no network response.
 test('facts open with the network offline and Forward restores the modal', async ({ page, context }) => {
   await page.goto(TOPIC, { waitUntil: 'networkidle' });
   await context.setOffline(true);
@@ -265,28 +265,56 @@ test('Expand loads the standalone fact page', async ({ page }) => {
 });
 
 
-test('a slow fact response never delays opening or switching the modal', async ({ page }) => {
+// The sheet opens on the click, not when the fact arrives: a fact that was not
+// prefetched waits on the server, and the sheet must not wait with it.
+const holdFactData = async (page: Page) => {
   let release!: () => void;
   const gate = new Promise<void>((resolve) => { release = resolve; });
-  await page.route('**/api/topics/**/facts/**', async (route) => {
-    await gate;
+  await page.route((url) => url.pathname.includes('/facts/'), async (route) => {
+    if (route.request().headers()['rsc'] === '1') await gate;
     await route.continue();
   });
+  return () => release();
+};
+
+test('a slow fact response never delays opening the sheet', async ({ page }) => {
+  const release = await holdFactData(page);
   try {
     await page.goto(TOPIC);
-    await page.locator(row(HEADLINE)).click();
-    await expect(page.locator(dialog)).toBeVisible();
-    await expect(page.locator(`${dialog} ${title}`)).toHaveText('UK Immigration Trends');
-    await expect(page.getByRole('status')).toHaveText('Loading data…');
+    const first = page.locator('a.sv-factrow:visible').nth(0);
+    const second = page.locator('a.sv-factrow:visible').nth(1);
+    const claim = await second.locator('.sv-item__claim').textContent();
+    await first.click();
+    await expect(page.locator(`${dialog} ${title}`)).toHaveText((await first.locator('.sv-item__claim').textContent())!);
+    // A loading message only once the wait is noticeable, never as a flash.
+    await expect(page.getByRole('status')).toHaveCount(0);
+    await expect(page.getByRole('status')).toHaveText('Loading data…', { timeout: 4000 });
+    // Closing while it loads, then choosing another fact, gets the other fact.
     await page.locator('.sv-modal__close').click();
-    await expect(page.locator(dialog)).toHaveCount(0);
-    const other = page.locator('a.sv-factrow').nth(1);
-    const claim = await other.locator('.sv-item__claim').textContent();
-    await other.click();
+    await second.click();
     await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
     release();
     await expect(page.locator(`${dialog} .sv-factpage__body`)).toBeVisible();
     await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
+    await expect(page).toHaveURL(new RegExp(`${await second.getAttribute('href')}$`));
+  } finally {
+    release();
+  }
+});
+
+test('closing a sheet before its fact arrives keeps it closed', async ({ page }) => {
+  const release = await holdFactData(page);
+  try {
+    await page.goto(TOPIC);
+    await page.locator(row(HEADLINE)).click();
+    await expect(page.locator(`${dialog} [aria-busy="true"]`)).toBeVisible();
+    await page.locator('.sv-modal__close').click();
+    await expect(page.locator(dialog)).toHaveCount(0);
+    await expect(page.locator(row(HEADLINE))).toBeFocused();
+    release();
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator(dialog)).toHaveCount(0);
+    await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
   } finally {
     release();
   }

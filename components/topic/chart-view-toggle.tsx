@@ -21,6 +21,14 @@ export function ChartViewToggle({
         <button type="button" aria-pressed={view === 'table'} onClick={() => setView('table')}>Table</button>
       </div>
       {view === 'graph' ? graph : table}
+      {/* The switch needs script, but every value must stay readable without
+          it, so a no-JS reader gets the table as a collapsed disclosure. */}
+      <noscript>
+        <details className="sv-chart__data">
+          <summary className="sv-chart__data-summary">Show the numbers</summary>
+          {table}
+        </details>
+      </noscript>
     </div>
   );
 }

@@ -164,7 +164,11 @@ export function FactArticle({
       {parent && (
         <div className="sv-parentnote">
           <p className="sv-parentnote__label">Related to</p>
-          <Link className="sv-parentnote__claim" href={factPath(slug, parent.id)}>
+          {/* Inside the sheet this replaces the open fact rather than stacking
+              history, so Close still returns to the topic in one step, and the
+              sheet manages its own scroll. */}
+          <Link className="sv-parentnote__claim" href={factPath(slug, parent.id)}
+            replace={variant === 'modal'} scroll={variant === 'page'}>
             {parent.title ?? parent.claim}
           </Link>
         </div>

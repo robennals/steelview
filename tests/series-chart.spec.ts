@@ -37,7 +37,9 @@ test.describe('with JavaScript disabled', () => {
     const descId = await plot.getAttribute('aria-describedby');
     await expect(fact.locator(`#${descId}`)).toHaveText(/definitional breaks/);
 
-    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`);
+    // The Graph/Table switch needs script, so each reading's table sits in a
+    // collapsed disclosure instead.
+    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`).first();
     await table.locator('> summary').click();
     // Every published year, not a sample: 1964–2025 inclusive.
     await expect(table.locator('tbody tr')).toHaveCount(62);
@@ -76,37 +78,23 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
 // The bug this replaced: a supporting fact arriving above the fold with the
 // claim it is evidence for scrolled off the top. The fix is structural now —
 // the claim it supports is stated *above* it, before any of the detail — so
-// the assertion is that it is on screen without any scrolling at all.
+// the assertion is that it is on screen without any scrolling at all. A
+// citation of a supporting fact opens its parent at that section, so a reader
+// reaches the supporting fact on its own only by its address.
 test('a supporting fact opens with the claim it supports already in view', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(TOPIC);
-  // The supporting fact is not a row in the Facts list; it is reached the way
-  // a reader actually reaches it, via the "Builds on" citation chip in the
-  // viewpoint that cites it.
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.locator('.sv-evidence-index > summary').click();
-  await viewpoint
-    .getByRole('link', {
-      name: 'Fiscal Contributions of Care Workers', exact: true,
-    })
-    .click();
+  await page.goto(factUrl('care-worker-route-fiscally-negative'));
 
-  const parent = page.locator(`${dialog} .sv-parentnote`);
-  const claim = page.locator(`${dialog} #sv-modal-title`);
-  const scroller = page.locator(`${dialog} .sv-modal__scroll`);
-
+  const parent = page.locator('.sv-parentnote');
+  const claim = page.locator('h1.sv-factpage__claim');
+  await expect(parent).toBeInViewport();
+  await expect(claim).toBeInViewport();
   const parentBox = await parent.boundingBox();
   const claimBox = await claim.boundingBox();
-  const scrollBox = await scroller.boundingBox();
-  if (!parentBox || !claimBox || !scrollBox) throw new Error('expected all three to be laid out');
-
-  // Both the claim asked for and the claim it is evidence for are inside the
-  // panel's viewport, in that order, with nothing scrolled.
-  expect(parentBox.y).toBeGreaterThanOrEqual(scrollBox.y - 1);
-  expect(parentBox.y + parentBox.height).toBeLessThan(claimBox.y + claimBox.height);
-  expect(claimBox.y + claimBox.height).toBeLessThanOrEqual(scrollBox.y + scrollBox.height);
-  expect(await scroller.evaluate((el) => el.scrollTop)).toBe(0);
+  if (!parentBox || !claimBox) throw new Error('expected both to be laid out');
+  expect(parentBox.y + parentBox.height).toBeLessThanOrEqual(claimBox.y);
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  await expect(parent).toContainText('Immigration and Public Finances');
 });
 
 test('closing the panel takes the chart off the page with it', async ({ page }) => {
