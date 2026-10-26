@@ -641,9 +641,7 @@ series:
   description: >-
     Share of returned mail ballots that were rejected (2024: not counted) in
     each November general election, as reported by states to the federal
-    Election Administration and Voting Survey. Texas added an ID-number rule
-    for mail ballots in 2021 (SB 1); Georgia replaced signature checks with an
-    ID-number check in 2021 (SB 202).
+    Election Administration and Voting Survey.
   periodLabel: November general election
   coverage:
     from: '2016'
@@ -656,6 +654,15 @@ series:
       comparable for this chart. Every general election from 2016 to the
       latest release (2024) is shown. Primaries are not covered by the survey;
       Texas's March 2022 primary is shown separately below.
+  events:
+    - period: '2021'
+      label: 'Texas SB 1: ID number required on mail ballots'
+      note: 'The ID number on the envelope must match the one on the voter''s registration record.'
+      source: 16
+    - period: '2021'
+      label: 'Georgia SB 202: ID number replaces signature matching'
+      note: 'Absentee applications and ballots are checked against an ID number instead of a signature.'
+      source: 33
   breaks:
     - period: '2020'
       label: Georgia's 2020 rejections incomplete
