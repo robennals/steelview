@@ -926,3 +926,14 @@ are in [stage5-results.md](stage5-results.md).
 | S1 | `election-fraud-and-voter-exclusion-history/case-table`, `/officials-did-the-fraud`, `/no-common-measure` | no common measure (crux) |
 
 No question is left unanswered or unrecorded.
+
+## Corrections from the vote-by-mail deep research (2026-10-26)
+
+Shared [BOTH] candidates re-verified while researching
+[`us-vote-by-mail`](../us-vote-by-mail/candidate-data.md). The finished
+voter-ID reports already use the corrected forms.
+
+- **D13 (Heritage database):** counts are from the archived data file — 1,619 records, 387 tagged absentee, 34 impersonation; Heritage calls it "a sampling ... not comprehensive".
+- **D50 (Kansas City 1936):** "a total of 259 convictions" (US Attorney, W.D. Mo.), not "259 of 278 defendants".
+- **D56 (secret ballot):** US adoption from *Burson v. Freeman* — Louisville, Massachusetts and New York in 1888; "almost 90 percent of the States" by 1896.
+- **D2 (MIT party shares of mail voting):** confirmed.
