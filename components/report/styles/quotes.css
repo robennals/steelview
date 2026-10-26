@@ -1,0 +1,467 @@
+/* Fact-report library — quotes and claims components. */
+
+@layer components {
+  /* ------------------------------------------------------------ a quote */
+
+  /* The words are set as reading text, in the serif; everything around them
+     — who, where, when, source — is apparatus, in the sans. That contrast is
+     what keeps a reader from mistaking the attribution for the quote. */
+
+  .sv-quote {
+    margin: 0;
+    min-width: 0;
+  }
+
+  /* Reset the prose's own blockquote rule and italic: the figure carries the
+     rule, so a quote dropped into running text is not ruled twice. */
+  .sv-quote .sv-quote__text {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-style: normal;
+    font-family: var(--font-serif);
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  .sv-quote__text > p {
+    margin: 0;
+  }
+
+  .sv-quote__text > p::before {
+    content: "\201C";
+  }
+
+  .sv-quote__text > p::after {
+    content: "\201D";
+  }
+
+  .sv-quote__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.75rem;
+    margin: 0 0 0.4rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* Every position in the same weight and ink: no side reads as the headline. */
+  .sv-quote__position {
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .sv-quote__tag {
+    font-weight: 400;
+  }
+
+  .sv-quote__attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-top: 0.55rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+
+  .sv-quote__speaker {
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+
+  .sv-quote__speaker cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .sv-quote__attribution a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  .sv-quote__permalink {
+    white-space: nowrap;
+  }
+
+  /* Long quotes clamp to a few lines; opening the disclosure lifts the clamp.
+     The full text stays in the page either way, for find-in-page and screen
+     readers. */
+  .sv-quote__text[data-clamp] {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+
+  .sv-quote:has(> .sv-quote__more[open]) > .sv-quote__text[data-clamp] {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: none;
+    overflow: visible;
+  }
+
+  .sv-quote__more > summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .sv-quote__more > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sv-quote__more > summary:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .sv-quote__more > summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .sv-quote__more [data-when="open"],
+  .sv-quote__more[open] [data-when="closed"] {
+    display: none;
+  }
+
+  .sv-quote__more[open] [data-when="open"] {
+    display: inline;
+  }
+
+  /* ------------------------------------------------------ quote browser */
+
+  .sv-quote-browser__controls {
+    margin-bottom: 0.5rem;
+  }
+
+  .sv-quote-browser__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .sv-quote-browser__row .sv-control {
+    margin: 0;
+  }
+
+  .sv-quote-browser__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-quote-browser__item {
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 1.5rem;
+  }
+
+  .sv-quote-browser__item:target {
+    background: var(--accent-wash);
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .sv-quote[data-variant="listed"] .sv-quote__text {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  /* --------------------------------------------------------- pull quote */
+
+  .sv-pull-quote[data-variant="pull"] {
+    margin-block: 2.25rem;
+    padding-block: 1.25rem;
+    border-block: 1px solid var(--rule-strong);
+  }
+
+  .sv-pull-quote[data-variant="pull"] .sv-quote__text {
+    font-size: 1.375rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  @media (min-width: 40rem) {
+    .sv-pull-quote[data-variant="pull"] .sv-quote__text {
+      font-size: 1.625rem;
+    }
+  }
+
+  .sv-pull-quote[data-variant="pull"] .sv-quote__attribution {
+    margin-top: 0.85rem;
+  }
+
+  /* Inline: the prose's own blockquote, a rule down the left and the text a
+     step quieter than the paragraph around it. */
+  .sv-pull-quote[data-variant="inline"] {
+    margin-block: 1.25rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .sv-pull-quote[data-variant="inline"] .sv-quote__text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  /* --------------------------------------------------- quote comparison */
+
+  /* Explicit column counts rather than auto-fit, so four answers never wrap
+     into three-and-one — an orphaned last column reads as an afterthought.
+     Four go two-by-two: four abreast is too narrow to read in a 44rem column. */
+  .sv-quote-comparison__columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 36rem) {
+    .sv-quote-comparison__columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sv-quote-comparison__columns[data-count="3"] {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .sv-quote-comparison__column {
+    padding-top: 0.7rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .sv-quote[data-variant="compared"] .sv-quote__text {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  /* -------------------------------------------------------- claim check */
+
+  /* Same status alphabet as a fact row: the left rule's style changes with
+     the status (solid, double, dashed, dotted, hairline), mirroring the
+     .sv-fact rules in globals.css. */
+  .sv-claim {
+    margin-block: 1.75rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid transparent;
+  }
+
+  .sv-claim[data-status="well-supported"] {
+    border-left-color: var(--ink);
+  }
+
+  .sv-claim[data-status="contested"] {
+    border-left-style: double;
+    border-left-color: var(--ink-2);
+  }
+
+  .sv-claim[data-status="complicated"] {
+    border-left-style: dashed;
+    border-left-color: var(--ink-3);
+  }
+
+  .sv-claim[data-status="not-supported"] {
+    border-left-width: 2px;
+    border-left-style: dotted;
+    border-left-color: var(--ink-3);
+    padding-left: 0.965rem;
+  }
+
+  .sv-claim[data-status="unknown"] {
+    border-left-width: 1px;
+    border-left-color: var(--rule-strong);
+    padding-left: 1.025rem;
+  }
+
+  .sv-claim__label {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .sv-claim__claim {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  .sv-claim__claim > p {
+    margin: 0;
+  }
+
+  .sv-claim__claim > p::before {
+    content: "\201C";
+  }
+
+  .sv-claim__claim > p::after {
+    content: "\201D";
+  }
+
+  .sv-claim__attribution {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+
+  .sv-claim__claimant {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+
+  .sv-claim__finding {
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-claim__finding-text,
+  .sv-claim__finding > p:not(.sv-claim__label) {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .sv-claim .sv-chart__credit {
+    margin-bottom: 0;
+  }
+
+  .sv-claim a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+
+  .sv-claim__evidence {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .sv-claim__evidence a::after {
+    content: " \2192";
+  }
+
+  /* Compact: for a run of checks. The claim drops to reading size, the
+     labels go (the layout carries them), and each check is ruled off from
+     the next rather than spaced apart. */
+  .sv-claim[data-variant="compact"] {
+    margin-block: 0;
+    padding-block: 0.9rem;
+  }
+
+  .sv-claim[data-variant="compact"] + .sv-claim[data-variant="compact"] {
+    margin-top: 0.35rem;
+  }
+
+  .sv-claim[data-variant="compact"] > .sv-claim__label,
+  .sv-claim[data-variant="compact"] .sv-claim__finding > .sv-claim__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .sv-claim[data-variant="compact"] .sv-claim__claim {
+    font-size: 1.0625rem;
+    line-height: 1.45;
+  }
+
+  .sv-claim[data-variant="compact"] .sv-claim__finding {
+    margin-top: 0.4rem;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .sv-claim[data-variant="compact"] .sv-claim__finding-text,
+  .sv-claim[data-variant="compact"] .sv-claim__finding > p:not(.sv-claim__label) {
+    font-size: 0.9375rem;
+  }
+
+  /* --------------------------------------------------------- caveat list */
+
+  /* The fact page's "Data still needed", generalised. Rules between items
+     rather than bullets, the measure in ink and the reason a step quieter. */
+  .sv-caveats {
+    margin-top: 2.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-caveats__heading {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 0.75rem;
+  }
+
+  .sv-caveats__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sv-caveats__item {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .sv-caveats__item:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sv-caveats__measure {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .sv-caveats__why {
+    color: var(--ink-2);
+  }
+}
