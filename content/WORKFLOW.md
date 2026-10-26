@@ -283,6 +283,13 @@ topics it serves before the report plans are redone.
 quoted sources, full-range series, the source's comparator set, observations
 beneath each chart, method changes, sources at the end.
 
+**Readability is checked before the gate**, against
+[Readability](AUTHORING.md#readability): a brief overview at the top, no
+paragraph longer than four lines, statistics shown in the charts rather than
+recited in prose, and dated events as numbered markers on the timeline. Look
+at each report rendered, on a narrow screen as well as a wide one; a wall of
+text is easy to miss in the markdown and obvious on the page.
+
 Reports are independent, so **one agent per report can build them in
 parallel** from a shared brief (see [Brief for a report
 builder](#brief-for-a-report-builder)). Each returns its observation ids
@@ -315,9 +322,13 @@ now costs one file; found later it costs every viewpoint that cites it.
   so a planned reading order can be kept only within those groups;
 - an observation group not tied to a chart needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos;
-- there is no chart shape for a categorical table (a rule per country) or a
-  policy date on a series; use a markdown table, and name the policy in the
-  chart description;
+- there is no chart shape for a categorical table (a rule per country); use
+  a markdown table. Policy dates on a series go in its `events`;
+- only `SeriesChart`, `ComparisonChart` and the `EventStrip` under a series
+  can be used from a fact file today. The rest of the component library
+  (`components/report`, shown in Storybook) has to be wired into the fact
+  schema before a report can use it, so a report plan that needs another
+  component says so at stage 4b;
 - `check:figures` matches a figure only in the same form the source prints
   it ("1.4 percent" and "1.4%" differ), and accepts a figure quoted anywhere
   on the topic, not only in the report's own sources.
@@ -382,6 +393,9 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   that cannot be confirmed at source is dropped or stated as unconfirmed.
 - **One observation per planned finding**, for every viewpoint the plan
   lists, including the findings against each, worded neutrally.
+- **Readable at a glance:** a two- or three-sentence overview; paragraphs of
+  four lines at most; numbers in charts, not recited in prose; laws and
+  policy changes as `events` on the series they bear on.
 - **Context and gaps:** the longer run, comparators, denominators, the rest
   of the record and the mechanism, as the plan asks; material gaps go in
   `dataStillNeeded`, and only gaps that would change which viewpoint has the

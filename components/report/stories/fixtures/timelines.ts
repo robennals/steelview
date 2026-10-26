@@ -259,6 +259,7 @@ export const ASYLUM_CLAIMS_SERIES: Series = {
   periodLabel: 'Year',
   coverage: { from: '2001', to: '2025' },
   breaks: [],
+  events: [],
   source: {
     stance: 'supports',
     quote: 'Asy_D01: Asylum claims, 2001 Q1 to 2026 Q1 - dataset',

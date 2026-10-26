@@ -345,6 +345,7 @@ function series(over: Partial<Series> = {}): Series {
     periodLabel: 'Year',
     coverage: { from: '1990', to: '1993' },
     breaks: [],
+    events: [],
     source: {
       stance: 'supports',
       quote: 'q',
@@ -437,6 +438,17 @@ test('rule 14: backwards coverage is reported', () => {
   const t = topicWithSeries({ coverage: { from: '1993', to: '1990' } });
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('coverage runs backwards')), errors.join('\n'));
+});
+
+test('rule 14: an event marked outside the coverage is reported', () => {
+  const t = topicWithSeries({
+    events: [{ period: '2001', label: 'law takes effect' }],
+  });
+  const errors = validateTopic(t);
+  assert.ok(
+    errors.some((e) => e.includes('event at "2001"') && e.includes('outside the declared coverage')),
+    errors.join('\n')
+  );
 });
 
 test('rule 14: a break annotated outside the coverage is reported', () => {

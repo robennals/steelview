@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
+import { EventStrip, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
 import { SeriesHighlight } from './series-highlight';
-import type { Series, SeriesReading } from '@/lib/content/types';
+import type { Series, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
   formatValue,
@@ -220,6 +221,7 @@ function Reading({
   sourceNumber,
   observations,
   intro,
+  events,
 }: {
   series: Series;
   reading: SeriesReading;
@@ -227,6 +229,7 @@ function Reading({
   sourceNumber: number;
   observations?: ReactNode;
   intro?: string;
+  events: StripEvent[];
 }) {
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
@@ -235,6 +238,9 @@ function Reading({
     `Read as ${reading.label.toLowerCase()}: ${reading.valueLabel}.`,
     series.breaks.length > 0
       ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
+      : null,
+    events.length > 0
+      ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed below it.`
       : null,
     'Use the Table switch to see every value.',
   ]
@@ -279,6 +285,7 @@ function Reading({
             <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
             <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
           </div>
+          {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={series.coverage.to} events={events} showAxis={false} />}
         </>}
         table={<ReadingTable series={series} reading={reading} />}
       />
@@ -291,14 +298,28 @@ function Reading({
   );
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {} }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode> }) {
+/** A series' events as strip markers, each crediting the fact citation that dates it. */
+function stripEvents(series: Series, factId: string, sources: Source[]): StripEvent[] {
+  return series.events.map(event => {
+    const cited = event.source === undefined ? undefined : sources[event.source - 1];
+    return {
+      date: event.period,
+      label: event.label,
+      description: event.note,
+      source: cited && { label: cited.publisher, href: `#source-${factId}-${event.source}`, number: event.source },
+    };
+  });
+}
+
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [] }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode>; sources?: Source[] }) {
+  const events = stripEvents(series, factId, sources);
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`}>
       <figcaption className="sv-visually-hidden">{series.title}</figcaption>
 
       <SeriesHighlight>
         {series.readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} events={events} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 
