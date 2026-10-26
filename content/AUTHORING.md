@@ -24,6 +24,11 @@ design and the milestone plan live in
 the file layout and command list live in [`README.md`](../README.md). Where
 this document and the spec disagree about authoring, this one wins.
 
+**Process.** The stages a human and an agent go through to produce a topic —
+outline, candidate data, reports, viewpoints — are in
+[`WORKFLOW.md`](WORKFLOW.md). This document is the standard each stage's
+output must meet.
+
 **Enforcement.** Some rules below fail `pnpm build`. Most are editorial
 judgement with nothing behind them but review. [What the build
 enforces](#what-the-build-enforces) lists which is which. Read it before you
@@ -848,6 +853,15 @@ Four kinds:
 - `tradeoff`: different judgments about how much of one good to sacrifice for another.
 - `priority`: different judgments about which principle or obligation comes first.
 
+Most cruxes are a trade-off between values, a different prediction, or a
+different assumption about something the data cannot answer. The last kind
+comes straight out of the evidence work: when a report has to say "no good
+data exists" on a question the viewpoints answer differently, and the answer
+would change which of them has the better case, that gap is a crux. Naming it
+tells the reader exactly what evidence would settle part of the argument. A
+gap whose answer would not swing the balance is not a crux; record it as
+`dataStillNeeded` instead.
+
 For a collision of principles, name and link the relevant principles, give a
 concrete situation in which they pull in different directions, and show how each
 viewpoint resolves it. For an empirical disagreement, describe the evidence that
@@ -1110,7 +1124,9 @@ Run this before opening a pull request.
 
 **Whole topic**
 
-- [ ] 8 to 12 headline facts. A reader can hold the list in their head.
+- [ ] At most about seven combined reports, plus an optional Other facts
+      report. Each is read as a whole; viewpoints citing the same area point
+      to different observations in the same report.
 - [ ] Status mix is mostly `well-supported`, few or no `contested`, short
       tail of the rest.
 - [ ] Viewpoint set matches what people actually argue and spans the real
