@@ -1,21 +1,12 @@
 ---
 title: 'Burdens of ID and Citizenship-Proof Rules: Missing Documents, Rejections and Turnout'
 claim: >-
-  A 2023 survey estimated that about 2.6 million US adult citizens (just over
-  1%) have no government photo ID of any kind, while 28.6 million hold an
-  unexpired driver's licence without their current name or address, and 21.3
-  million cannot readily reach a document proving their citizenship. Where
-  rules have bitten directly, the counts are large: Kansas's proof-of-citizenship
-  law suspended or cancelled 31,089 registration applications from 2013, against
-  at most 39 non-citizens a court found had reached its rolls in 19 years; and
-  Texas's 2021 ID-number rule for mail ballots lifted rejections to 12.38% in
-  the March 2022 primary and left about 3.5% of returned mail ballots uncounted
-  in November 2024, against 1.2% nationally. Turnout effects are smaller and
-  disputed: the largest national study (2008–2018) finds strict ID laws had no
-  detectable effect on registration or turnout, overall or for any group,
-  while the GAO estimated turnout fell 1.9 to 3.2 points more in Kansas and
-  Tennessee in 2012 than in comparison states, most among young, newly
-  registered and Black registrants.
+  This report counts the US citizens who lack the documents that ID and
+  proof-of-citizenship rules ask for, and the applications and mail ballots
+  those rules have blocked. Few citizens have no photo ID at all, but millions
+  hold an outdated licence or cannot readily reach proof of citizenship, and
+  rules in Kansas and Texas blocked tens of thousands. Effects on overall
+  turnout are small and disputed.
 claimSources: [1, 2, 14, 16, 20, 24, 27, 28]
 status: well-supported
 derivedFigures:
@@ -698,11 +689,13 @@ series:
       unit: percent
       valueLabel: Rejected, % of returned mail ballots
       note: >-
-        2016: rejected divided by returned, calculated from the 2016 report's
-        counts (its own percentage column divides by ballots transmitted).
+        2016: rejected divided by returned, calculated from the counts in the
+        2016 report's Overview Table 2 (its own percentage column divides by
+        ballots transmitted): Texas 8,177 / 468,150 = 1.75%, Georgia 13,677 /
+        213,033 = 6.42%, US 318,728 / 33,378,450 = 0.95%.
         2018 and 2020: the reports' rejected share of returned ballots. 2022:
         the state and national data briefs' rejected share. 2024: 100 minus the
-        briefs' counted share. National figures are the EAC's US totals, which
+        briefs' counted share (US 2024: 100 − 98.8 = 1.2). National figures are the EAC's US totals, which
         include Texas and Georgia.
       lines:
         - name: Texas
@@ -747,8 +740,10 @@ additionalSeries:
         unit: percent
         valueLabel: White turnout minus group turnout (percentage points)
         note: >-
-          Values are read from the data behind the article's two gap charts and
-          rounded to one decimal. Race is self-reported or modelled by the data
+          Values are the article's Datawrapper chart data ("White-Nonwhite
+          Turnout Gap in Georgia, 2014–2022" and "White-Black Turnout Gap in
+          Georgia, 2014–2022"), rounded to one decimal; for example the
+          published 2022 gaps are 8.5546 and 7.3364. Race is self-reported or modelled by the data
           vendor; turnout is ballots cast over citizen voting-age population.
           The vertical unit is percentage points of turnout, not a percentage
           of the electorate.
@@ -790,7 +785,11 @@ additionalSeries:
         label: Turnout by race
         unit: percent
         valueLabel: Turnout, % of citizen voting-age population
-        note: Values are read from the data behind the article's turnout chart and rounded to one decimal.
+        note: >-
+          Values are the data behind the article's Datawrapper chart "Turnout
+          Rates by Race, 2016–2024", published as fractions (e.g. white 2024
+          0.7471, Black 2024 0.5927) and shown here as percentages rounded to
+          one decimal.
         lines:
           - name: White
             points: [{period: '2016', value: 63.7}, {period: '2020', value: 72.4}, {period: '2024', value: 74.7}]
@@ -829,6 +828,39 @@ comparisons:
         highlight: true
       - label: Cannot readily reach proof of citizenship (includes none)
         value: 21300000
+  - id: why-no-licence
+    title: Reasons given for having no driver's licence, 2023
+    description: >-
+      Share of adult citizens without a driver's licence giving each reason.
+      The four bureaucratic or economic reasons (cost, fines, time and
+      documents) together come to 19%.
+    unit: percent
+    valueLabel: Share of those without a licence (%)
+    domainMax: 40
+    sources: [8]
+    note: >-
+      Reasons as listed in the survey report; not every reason respondents
+      gave is listed, so the bars do not sum to 100. "Unpaid fines" is the
+      report's "financial/legal difficulties including unpaid tickets/fines".
+    items:
+      - label: Don't drive or don't like driving
+        value: 31
+      - label: Not interested
+        value: 8
+      - label: Anxiety about driving
+        value: 3
+      - label: Cost of a licence
+        value: 8
+        highlight: true
+      - label: Unpaid fines or other financial or legal difficulties
+        value: 4
+        highlight: true
+      - label: Lack of time
+        value: 4
+        highlight: true
+      - label: Lack of underlying documents
+        value: 3
+        highlight: true
   - id: licence-by-group
     title: No licence, or a licence without current name or address, by race and party, 2023
     description: >-
@@ -1143,99 +1175,113 @@ dataStillNeeded:
 ---
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-rejection-rate}
 
-### Texas's rejection rate stayed above its 2020 level and the national rate {#burdens-of-id-and-citizenship-rules--texas-still-above-baseline}
+### Texas has stayed well above its 2020 rate and the national rate {#burdens-of-id-and-citizenship-rules--texas-still-above-baseline}
 
-Texas rejected 0.8% of returned mail ballots in November 2020, the same as the national rate. [25](#source-burdens-of-id-and-citizenship-rules-25) After SB 1 required an ID number on the mail-ballot envelope, Texas rejected 3.4% in November 2022, against 1.5% nationally, and in November 2024 about 3.5% of returned mail ballots were not counted, against 1.2% nationally — more than four times its 2020 rate in both years. [19](#source-burdens-of-id-and-citizenship-rules-19) [20](#source-burdens-of-id-and-citizenship-rules-20) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) In 2024, 5.8% of Texas's mail ballots entered the curing process that lets voters fix errors, against 1.5% nationally. [20](#source-burdens-of-id-and-citizenship-rules-20) [24](#source-burdens-of-id-and-citizenship-rules-24) The general-election figures are not split by reason, so the share due to the ID rule is not published.
+Texas's line rises after its ID-number rule and stays well above both its 2020 rate and the national line. [19](#source-burdens-of-id-and-citizenship-rules-19) [20](#source-burdens-of-id-and-citizenship-rules-20) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [25](#source-burdens-of-id-and-citizenship-rules-25) Texas also sent 5.8% of its 2024 mail ballots into curing, the process for fixing errors, against 1.5% nationally. [20](#source-burdens-of-id-and-citizenship-rules-20) [24](#source-burdens-of-id-and-citizenship-rules-24) The figures are not split by reason, so the share due to the ID rule is unknown.
 
 ### Texas's rate fell sharply after the first primary {#burdens-of-id-and-citizenship-rules--texas-rate-fell-after-primary}
 
-The 12.38% rejection rate of the March 2022 primary (chart below) was not repeated: the November 2022 rate was 3.4%. [16](#source-burdens-of-id-and-citizenship-rules-16) [19](#source-burdens-of-id-and-citizenship-rules-19) Texas's state election office credited redesigned envelopes in some counties, extra instructions in ballot packets and voter education, and said rates were always likely to improve as voters got used to the rule. [16](#source-burdens-of-id-and-citizenship-rules-16) Before SB 1, Texas's general-election rate was 1.76% in 2018 and about the same in 2016, so 2020's 0.8% was its low point. [26](#source-burdens-of-id-and-citizenship-rules-26)
+The March 2022 primary's spike (chart below) was not repeated in November. [16](#source-burdens-of-id-and-citizenship-rules-16) [19](#source-burdens-of-id-and-citizenship-rules-19) The state election office credited redesigned envelopes, extra instructions, voter education and voters getting used to the rule. [16](#source-burdens-of-id-and-citizenship-rules-16) Note too that 2020 was Texas's low point: its 2016 and 2018 rates were about twice as high. [26](#source-burdens-of-id-and-citizenship-rules-26)
 
 ### Georgia's rate fell after SB 202 and has sat near the national rate {#burdens-of-id-and-citizenship-rules--georgia-rejections-near-national}
 
-Georgia rejected 1.5% of returned mail ballots in 2022, equal to the national rate, and about 1.7% were not counted in 2024, against 1.2% nationally. [21](#source-burdens-of-id-and-citizenship-rules-21) [22](#source-burdens-of-id-and-citizenship-rules-22) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) Under signature matching, before SB 202, Georgia rejected more: about 6.4% of returned mail ballots in 2016 and 3.1% in 2018. [37](#source-burdens-of-id-and-citizenship-rules-37) [26](#source-burdens-of-id-and-citizenship-rules-26) Its recorded 2020 rate, 0.4%, is a floor, because the state's count missed some county rejections. [25](#source-burdens-of-id-and-citizenship-rules-25) SB 202 switched Georgia's absentee checks from signatures to an ID number; 32% of county election offices surveyed said fewer mail ballots were rejected in 2022, though a plurality said the new verification did not reduce rejections. [33](#source-burdens-of-id-and-citizenship-rules-33)
+Georgia's line, high under signature matching in 2016 and 2018, has sat close to the national line since SB 202 replaced signatures with an ID number. [21](#source-burdens-of-id-and-citizenship-rules-21) [22](#source-burdens-of-id-and-citizenship-rules-22) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [37](#source-burdens-of-id-and-citizenship-rules-37) [26](#source-burdens-of-id-and-citizenship-rules-26) Its 2020 point is a floor, because the state's count missed some county rejections. [25](#source-burdens-of-id-and-citizenship-rules-25)
+
+In a survey of county election offices, 32% said fewer mail ballots were rejected in 2022, though a plurality said the new verification had not reduced rejections. [33](#source-burdens-of-id-and-citizenship-rules-33)
 
 ### The two states' ID-number rules produced opposite movements {#burdens-of-id-and-citizenship-rules--two-states-opposite}
 
-Both states adopted an ID-number check on mail ballots in 2021. In Texas the number had to match whichever one was on the voter's registration record, and rejections rose; in Georgia it replaced signature matching, and rejections fell from their 2016–2018 levels. [16](#source-burdens-of-id-and-citizenship-rules-16) [33](#source-burdens-of-id-and-citizenship-rules-33) The comparison shows that an ID requirement's effect on rejections depends on how it is designed and what it replaces; it is not evidence about polling-place photo ID.
+Texas's number had to match whichever one was on the voter's registration record, and rejections rose; Georgia's replaced signature matching, and rejections fell. [16](#source-burdens-of-id-and-citizenship-rules-16) [33](#source-burdens-of-id-and-citizenship-rules-33) So an ID requirement's effect on rejections depends on its design and what it replaces. It is not evidence about polling-place photo ID.
 
 ## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-rejection-rate}
 
 ### Published Texas 2018 figures differ by denominator {#burdens-of-id-and-citizenship-rules--texas-2018-denominator}
 
-NPR's 1.5% for Texas in 2018 matches rejected ballots divided by ballots sent out (1.51%); divided by ballots returned, as on this chart, it is 1.76%. [16](#source-burdens-of-id-and-citizenship-rules-16) [26](#source-burdens-of-id-and-citizenship-rules-26) Comparisons should use the same denominator on both sides.
+NPR's 1.5% for Texas in 2018 divides rejected ballots by ballots sent out; this chart divides by ballots returned, which gives 1.76%. [16](#source-burdens-of-id-and-citizenship-rules-16) [26](#source-burdens-of-id-and-citizenship-rules-26) Comparisons should use the same denominator on both sides.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-georgia-gap}
 
 ### Georgia's racial turnout gap widened in 2022, the first general election under SB 202 {#burdens-of-id-and-citizenship-rules--georgia-gap-widened-2022}
 
-In November 2022 white turnout was 8.6 percentage points above nonwhite turnout, the widest gap since at least 2014. [34](#source-burdens-of-id-and-citizenship-rules-34)
+In November 2022 the gap between white and nonwhite turnout was the widest since at least 2014. [34](#source-burdens-of-id-and-citizenship-rules-34)
 
 ### The gap was already moving before SB 202, and its authors do not attribute it to the law {#burdens-of-id-and-citizenship-rules--georgia-gap-predates-sb202}
 
-The white–Black gap also rose between 2014 and 2016 and between 2018 and 2020, before the law, and fell in the 2018 midterm. [38](#source-burdens-of-id-and-citizenship-rules-38) The Brennan Center, which wrote that SB 202 "erected multiple barriers to voting", says "we cannot say whether the passage of S.B. 202 is the cause" of the 2022 widening. [34](#source-burdens-of-id-and-citizenship-rules-34) Its 2024 analysis found the white–Black gap grew about as much from 2020 to 2024 as from 2016 to 2020 (next chart). [35](#source-burdens-of-id-and-citizenship-rules-35)
+The white–Black gap also rose in 2016 and 2020 before the law and fell in the 2018 midterm. [38](#source-burdens-of-id-and-citizenship-rules-38) The Brennan Center, which wrote that SB 202 "erected multiple barriers to voting", says "we cannot say whether the passage of S.B. 202 is the cause" of the 2022 widening. [34](#source-burdens-of-id-and-citizenship-rules-34) Its 2024 analysis is in the next chart. [35](#source-burdens-of-id-and-citizenship-rules-35)
 
 ### Georgia voters reported few problems in 2022 {#burdens-of-id-and-citizenship-rules--georgia-few-problems-2022}
 
-In a post-election survey of more than 1,200 Georgians who voted in 2022, 1.1% said they had a problem casting a ballot, 75% of in-person voters waited ten minutes or less, and 72% rated their experience excellent, up from 55% after 2020. [32](#source-burdens-of-id-and-citizenship-rules-32) The survey reached only people who voted, so it cannot show how many were deterred.
+In a survey of more than 1,200 Georgians who voted in 2022, few reported problems: [32](#source-burdens-of-id-and-citizenship-rules-32)
+
+- 1.1% said they had a problem casting a ballot.
+- 75% of in-person voters waited ten minutes or less.
+- 72% rated their experience excellent, up from 55% after 2020.
+
+The survey reached only people who voted, so it cannot show how many were deterred.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-georgia-presidential-turnout}
 
 ### Black turnout in Georgia dipped in 2024 while white turnout rose {#burdens-of-id-and-citizenship-rules--georgia-2024-turnout}
 
-The white–Black gap grew by 3 points between 2020 and 2024, roughly the same as between 2016 and 2020; the difference is that Black turnout fell slightly in 2024 (by 0.6 points) while in 2016–2020 both groups rose. [35](#source-burdens-of-id-and-citizenship-rules-35) [39](#source-burdens-of-id-and-citizenship-rules-39) This analysis uses a different turnout estimate from the 2014–2022 chart, so the two sets of gaps are not comparable.
+The white–Black gap grew about as much from 2020 to 2024 as from 2016 to 2020, but for a different reason: this time Black turnout fell slightly, where before both groups rose. [35](#source-burdens-of-id-and-citizenship-rules-35) [39](#source-burdens-of-id-and-citizenship-rules-39) This analysis uses a different turnout estimate from the 2014–2022 chart, so the two sets of gaps are not comparable.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-documents-held}
 
 ### Few citizens have no photo ID at all; many more hold an outdated licence {#burdens-of-id-and-citizenship-rules--no-id-versus-outdated-id}
 
-The 2023 survey estimated that just over 1% of adult citizens, nearly 2.6 million people, have no government photo ID of any kind. [1](#source-burdens-of-id-and-citizenship-rules-1) A much larger group, 12% or 28.6 million, has an unexpired licence that does not show both their current name and address — in nearly all of those cases the address is out of date. [1](#source-burdens-of-id-and-citizenship-rules-1) Whether that second group is burdened depends on the state's rule: a law that accepts any current government photo ID does not touch them, while one that requires the address to match the registration would.
+The bar for no photo ID of any kind, about 1% of adult citizens, is a fraction of the bar for a licence without current name or address, nearly always an old address. [1](#source-burdens-of-id-and-citizenship-rules-1) Whether that group is burdened depends on the rule: a law accepting any current photo ID does not touch them; one requiring a matching address would.
 
 ### About one citizen in ten cannot readily produce proof of citizenship {#burdens-of-id-and-citizenship-rules--dpoc-not-readily-available}
 
-Over 9%, or 21.3 million adult citizens, said they either have no birth certificate, passport, naturalization or citizenship certificate, or could not get to one by the next day; just under 2%, over 3.8 million, have none at all. [2](#source-burdens-of-id-and-citizenship-rules-2) The survey did not ask about marriage or divorce records, which people who changed their name usually need to match their birth certificate, so its authors call the estimate for women a lower bound. [9](#source-burdens-of-id-and-citizenship-rules-9)
+Over 9% of adult citizens have no birth certificate, passport, naturalization or citizenship certificate, or could not get to one by the next day; far fewer have none at all. [2](#source-burdens-of-id-and-citizenship-rules-2) The survey did not ask about the marriage or divorce records people who changed their name usually need, so its authors call the estimate for women a lower bound. [9](#source-burdens-of-id-and-citizenship-rules-9)
 
 ### The survey was commissioned by voting-access groups and run by an independent firm {#burdens-of-id-and-citizenship-rules--who-ran-the-survey}
 
-The 2023 survey was sponsored by VoteRiders (which helps voters get ID), Public Wise, the Brennan Center and the University of Maryland's Center for Democracy and Civic Engagement, and fielded by the survey firm SSRS with 2,386 respondents, weighted to the adult citizen population. [7](#source-burdens-of-id-and-citizenship-rules-7) It is self-reported and is the only recent national measure; no survey by a government statistical agency or a group favouring ID laws was found to compare it with.
-
-### A licence is often missing for reasons other than cost {#burdens-of-id-and-citizenship-rules--why-no-licence}
-
-Of those without a licence, 31% said they do not drive or do not like driving, and 19% cited bureaucratic or economic reasons: the cost of a licence (8%), unpaid fines, lack of time, or lack of the underlying documents (3%). [8](#source-burdens-of-id-and-citizenship-rules-8) In 2014 GAO found driver's licence fees in strict-ID states ranged from $14.50 to $58.50. [30](#source-burdens-of-id-and-citizenship-rules-30) No source measures the time and travel needed to obtain documents.
+Its sponsors were VoteRiders (which helps voters get ID), Public Wise, the Brennan Center and the University of Maryland's Center for Democracy and Civic Engagement; the firm SSRS fielded it. [7](#source-burdens-of-id-and-citizenship-rules-7) It is self-reported and the only recent national measure; no survey by a government agency or a group favouring ID laws was found to compare it with.
 
 ## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-documents-held}
 
 ### The 2006 survey's larger figure measured something else {#burdens-of-id-and-citizenship-rules--2006-survey-not-comparable}
 
-A 2006 Brennan Center telephone survey found 11% of adult citizens, more than 21 million, lacked "current, unexpired" government photo ID, and 7% lacked ready access to proof of citizenship. [10](#source-burdens-of-id-and-citizenship-rules-10) It asked whether people had unexpired photo ID; the 2023 survey's 2.6 million counts people with no photo ID of any kind. The two figures are not a trend, and the 11% figure is not the number of citizens with no ID.
+A 2006 Brennan Center survey found 11% of adult citizens lacked "current, unexpired" government photo ID, and 7% lacked ready access to proof of citizenship. [10](#source-burdens-of-id-and-citizenship-rules-10) The 2023 survey's smallest bar counts people with no photo ID of any kind. The two are not a trend, and the 2006 figure is not the number of citizens with no ID.
+
+## Observations {#burdens-of-id-and-citizenship-rules--observations-why-no-licence}
+
+### A licence is often missing for reasons other than cost {#burdens-of-id-and-citizenship-rules--why-no-licence}
+
+Not driving is by far the most common reason for having no licence; cost and other bureaucratic or economic reasons together account for about a fifth. [8](#source-burdens-of-id-and-citizenship-rules-8) In 2014 GAO found licence fees in strict-ID states ranged from $14.50 to $58.50. [30](#source-burdens-of-id-and-citizenship-rules-30) No source measures the time and travel needed to obtain documents.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-licence-by-group}
 
 ### Black, Hispanic and independent citizens are most likely to have no licence at all {#burdens-of-id-and-citizenship-rules--no-licence-by-race-party}
 
-18% of Black and 15% of Hispanic adult citizens have no driver's licence, against 5% of white citizens; among white citizens the more common problem is an outdated licence (18% in total lack one with current details). [3](#source-burdens-of-id-and-citizenship-rules-3) By party, 18% of independents have no licence, against 9% of Democrats and 6% of Republicans. [5](#source-burdens-of-id-and-citizenship-rules-5) A missing licence is not the same as missing photo ID, which the survey does not break down by group.
+On the chart's default view, no licence at all, Black, Hispanic and independent citizens are about three times as likely as white citizens or Republicans to have none. [3](#source-burdens-of-id-and-citizenship-rules-3) [5](#source-burdens-of-id-and-citizenship-rules-5) For white citizens the more common problem is an outdated licence. [3](#source-burdens-of-id-and-citizenship-rules-3) A missing licence is not the same as missing photo ID, which the survey does not break down by group.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-licence-by-age-income}
 
 ### The young and the poor are most likely to lack a licence with current details {#burdens-of-id-and-citizenship-rules--licence-by-age-income}
 
-41% of 18–24-year-olds, and thirty-nine percent of people earning under $30,000, do not have a licence with their current name and address, against 11% of those over 65 and 9% of those earning over $100,000. [6](#source-burdens-of-id-and-citizenship-rules-6) Among those with incomes under $30,000, 23% have no licence at all. [6](#source-burdens-of-id-and-citizenship-rules-6) For the young the gap is mostly addresses: people who have recently moved.
+The share falls steadily with age and with income. [6](#source-burdens-of-id-and-citizenship-rules-6) For the young the gap is mostly addresses: people who have recently moved. For those earning under $30,000, most of it is having no licence at all. [6](#source-burdens-of-id-and-citizenship-rules-6)
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-dpoc-by-group}
 
 ### Gaps in proof of citizenship cut across parties {#burdens-of-id-and-citizenship-rules--dpoc-by-group}
 
-11% of people of color and 8% of white citizens cannot readily reach proof of citizenship; 3% and 1% have none. By party it is 13% of independents, 10% of Democrats and 7% of Republicans. [4](#source-burdens-of-id-and-citizenship-rules-4) Because there are more white than nonwhite citizens, more white citizens in total lack ready access — over 12.9 million against over 8.4 million. [4](#source-burdens-of-id-and-citizenship-rules-4)
+Every group has a gap, Republicans included; independents and people of color have the largest. [4](#source-burdens-of-id-and-citizenship-rules-4) Because there are more white than nonwhite citizens, more white citizens in total lack ready access: over 12.9 million against over 8.4 million. [4](#source-burdens-of-id-and-citizenship-rules-4)
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-kansas-dpoc}
 
 ### Kansas blocked 31,089 applicants against at most 39 non-citizens on its rolls {#burdens-of-id-and-citizenship-rules--kansas-blocked-vs-noncitizens}
 
-From 1 January 2013, Kansas required documentary proof of citizenship to register. Before a court's preliminary injunction in May 2016, 31,089 applications had been suspended or cancelled for lack of it — 12.4% of new registrations from January 2013 to December 2015. [14](#source-burdens-of-id-and-citizenship-rules-14) [13](#source-burdens-of-id-and-citizenship-rules-13) The trial court found at most 67 non-citizens had registered or tried to in about 19 years, and 39 confirmed non-citizens had registered from 1999 to 2013, 0.002% of Kansas's registered voters. [15](#source-burdens-of-id-and-citizenship-rules-15) It found more than 99% of suspended applicants were citizens who would otherwise have been able to vote. [15](#source-burdens-of-id-and-citizenship-rules-15) The Tenth Circuit upheld the injunction in 2020, holding that the requirement unconstitutionally burdened the right to vote and was preempted by federal registration law. [15](#source-burdens-of-id-and-citizenship-rules-15)
+The blocked applications were 12.4% of new registrations from 2013 to 2015; the confirmed non-citizens on the rolls were 0.002% of registered voters. [14](#source-burdens-of-id-and-citizenship-rules-14) [15](#source-burdens-of-id-and-citizenship-rules-15)
+
+The trial court found more than 99% of suspended applicants were citizens who could otherwise have voted. [15](#source-burdens-of-id-and-citizenship-rules-15) In 2020 the Tenth Circuit upheld its injunction, holding that the requirement unconstitutionally burdened the right to vote and was preempted by federal registration law. [15](#source-burdens-of-id-and-citizenship-rules-15)
 
 ### Non-citizen registrations in Kansas were real but few {#burdens-of-id-and-citizenship-rules--kansas-noncitizens-not-zero}
 
-The court did find confirmed non-citizen registrations, at most 39 on the rolls. [15](#source-burdens-of-id-and-citizenship-rules-15) Kansas also presented anecdotes, including a county clerk's letter saying employees of a hog farm were taken by their employer to register and felt pressured "even though they may not be legal"; the court found that evidence "insufficient to show that noncitizens actually voted", and said "administrative anomalies" might explain even the few cases it did find. [13](#source-burdens-of-id-and-citizenship-rules-13)
+The court did find confirmed non-citizen registrations. [15](#source-burdens-of-id-and-citizenship-rules-15) Kansas also offered anecdotes, including a clerk's letter about hog-farm employees taken by their employer to register who felt pressured "even though they may not be legal". [13](#source-burdens-of-id-and-citizenship-rules-13)
+
+The court found that evidence "insufficient to show that noncitizens actually voted", and said "administrative anomalies" might explain even the few cases it did find. [13](#source-burdens-of-id-and-citizenship-rules-13)
 
 ## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-kansas-dpoc}
 
@@ -1247,29 +1293,33 @@ The 31,089 are applicants who did not supply a document in time. The court said 
 
 ### Arizona found 218,000 long-registered voters without proof of citizenship on file {#burdens-of-id-and-citizenship-rules--arizona-218000}
 
-Arizona has required proof of citizenship to register for state elections since 2004 and accepts a post-1996 licence as proof. Its motor vehicle records coded everyone licensed before 1996 as a citizen without having seen proof, so at least 218,000 registered voters had full-ballot status without the document on file. [11](#source-burdens-of-id-and-citizenship-rules-11) All had sworn to their citizenship, and when the number was announced in October 2024 two had been identified as non-citizens. [11](#source-burdens-of-id-and-citizenship-rules-11) The case shows both that long-registered citizens often have never been asked for documents and that the records used to check citizenship can be wrong.
+Arizona has required proof of citizenship for state elections since 2004, and accepts a licence issued after 1996 as proof. Its motor-vehicle records coded everyone licensed earlier as a citizen without seeing proof, so at least 218,000 voters had full-ballot status without the document on file. [11](#source-burdens-of-id-and-citizenship-rules-11)
+
+All had sworn to their citizenship, and when this was announced in October 2024 two had been identified as non-citizens. [11](#source-burdens-of-id-and-citizenship-rules-11) The case shows that long-registered citizens have often never been asked for documents, and that the records used to check citizenship can be wrong.
 
 ### The same records gap let a few non-citizens vote in Maricopa County {#burdens-of-id-and-citizenship-rules--arizona-eight-noncitizens}
 
-In September 2026 Maricopa County's attorney reported that of 207 registrants referred as suspected non-citizens, 60 had voted, and 8 of those were non-citizens — all licensed before October 1996, the group whose records had wrongly shown citizenship. [12](#source-burdens-of-id-and-citizenship-rules-12) The county has more than 2.5 million registered voters. No statewide outcome for the 218,000 has been published.
+Only a handful of the referrals proved to be non-citizens who had voted, all licensed before October 1996, the group whose records had wrongly shown citizenship. [12](#source-burdens-of-id-and-citizenship-rules-12) No statewide outcome for Arizona's 218,000 has been published.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-texas-march-2022}
 
 ### Texas rejected 12.38% of mail ballots in the first primary under SB 1 {#burdens-of-id-and-citizenship-rules--texas-march-2022-spike}
 
-In the March 2022 primary Texas rejected 24,636 mail ballots, 12.38%. [16](#source-burdens-of-id-and-citizenship-rules-16) Harris County rejected 19% (6,888), against 135 of more than 48,000 in its 2018 primary, and Williamson County 11.5%. [17](#source-burdens-of-id-and-citizenship-rules-17) Officials said most rejections were for a missing or mismatched ID number, often because voters missed the field under the envelope flap, and the number had to match whichever one was on their registration record, sometimes decades old. [16](#source-burdens-of-id-and-citizenship-rules-16) [17](#source-burdens-of-id-and-citizenship-rules-17)
+Statewide, 24,636 mail ballots were rejected, and Harris County's rate leapt from almost none in its 2018 primary. [16](#source-burdens-of-id-and-citizenship-rules-16) [17](#source-burdens-of-id-and-citizenship-rules-17) Officials said most were rejected for a missing or mismatched ID number: voters missed the field under the envelope flap, or the number had to match one on a registration record that could be decades old. [16](#source-burdens-of-id-and-citizenship-rules-16) [17](#source-burdens-of-id-and-citizenship-rules-17)
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-texas-what-next}
 
 ### About 90% of rejected Texas mail voters did not vote another way {#burdens-of-id-and-citizenship-rules--rejected-texans-did-not-vote}
 
-Of roughly 215,000 Texans who requested a mail ballot for the March 2022 primary, 30,000 had their application or ballot rejected, and "roughly 90%" of them did not vote in that primary. Of more than 18,000 whose ballots were rejected, 344 voted in person. [18](#source-burdens-of-id-and-citizenship-rules-18) About 85% of those rejected had voted in the 2016, 2018 and 2020 general elections, and Texas allows mail voting only for certain groups, including voters aged 65 and over and people with disabilities. [18](#source-burdens-of-id-and-citizenship-rules-18) The study covers one primary; no equivalent follow-up exists for the general elections, where rejection rates were lower.
+Very few rejected voters found another way: "roughly 90%" did not take part in the primary at all. [18](#source-burdens-of-id-and-citizenship-rules-18) They were not occasional voters; about 85% had voted in every general election from 2016 to 2020. [18](#source-burdens-of-id-and-citizenship-rules-18)
+
+Texas allows mail voting only for certain groups, including voters aged 65 and over and people with disabilities. [18](#source-burdens-of-id-and-citizenship-rules-18) The study covers one primary; no follow-up exists for the general elections, where rejection rates were lower.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-turnout-overall}
 
 ### The national panel finds no turnout or registration effect from strict ID laws {#burdens-of-id-and-citizenship-rules--national-panel-no-turnout-effect}
 
-Cantoni and Pons used a nationwide panel of 1.6 billion voter-record observations from 2008 to 2018 and found strict ID laws had "no negative effect on registration or turnout, overall or for any group defined by race, gender, age, or party affiliation", with a turnout estimate of −0.1 points. [27](#source-burdens-of-id-and-citizenship-rules-27) The study covers ID at the polls, not proof of citizenship at registration or ID numbers on mail ballots.
+Cantoni and Pons's nationwide panel of 1.6 billion voter-record observations, 2008–2018, found strict ID laws had "no negative effect on registration or turnout, overall or for any group defined by race, gender, age, or party affiliation". [27](#source-burdens-of-id-and-citizenship-rules-27) It covers ID at the polls, not proof of citizenship at registration or ID numbers on mail ballots.
 
 ### The same study finds no effect on fraud, actual or perceived {#burdens-of-id-and-citizenship-rules--no-effect-on-fraud}
 
@@ -1277,27 +1327,31 @@ The panel also finds "strict ID requirements have no effect on fraud – actual 
 
 ### GAO estimated turnout fell 2 to 3 points more in Kansas and Tennessee {#burdens-of-id-and-citizenship-rules--gao-kansas-tennessee}
 
-GAO compared Kansas and Tennessee, which tightened their ID rules for the 2012 general election, with four states that did not, and estimated turnout declined 1.9 to 2.2 points more in Kansas and 2.2 to 3.2 points more in Tennessee. [28](#source-burdens-of-id-and-citizenship-rules-28) GAO says the estimates do not apply to other states or years, and the Kansas and Tennessee election offices disputed its choice of comparison states and one of its datasets. [31](#source-burdens-of-id-and-citizenship-rules-31) Of the ten earlier studies GAO reviewed, five found no significant turnout effect, four a decrease and one an increase. [30](#source-burdens-of-id-and-citizenship-rules-30)
+GAO compared Kansas and Tennessee, which tightened their ID rules for the 2012 general election, with four states that did not, and found turnout fell more in both. [28](#source-burdens-of-id-and-citizenship-rules-28) GAO says the estimates do not apply to other states or years; the two states' election offices disputed its comparison states and one dataset. [31](#source-burdens-of-id-and-citizenship-rules-31)
+
+Of the ten earlier studies GAO reviewed, five found no significant turnout effect, four a decrease and one an increase. [30](#source-burdens-of-id-and-citizenship-rules-30)
 
 ### The national and state estimates are less opposed than they look {#burdens-of-id-and-citizenship-rules--burden-without-turnout-effect}
 
-GAO's estimates for Kansas and Tennessee (about −2 to −3 points) lie inside the national study's 95 percent confidence interval for the average effect (−3.0 to +2.8). [27](#source-burdens-of-id-and-citizenship-rules-27) [28](#source-burdens-of-id-and-citizenship-rules-28) The national study rules out large average effects; it does not rule out effects of that size in particular states or elections. Neither measures burden directly: the blocked applicants in Kansas, the rejected mail ballots in Texas and the people without ID above are counts of people who met an obstacle, while turnout studies measure whether the total number voting changed.
+GAO's Kansas and Tennessee estimates lie inside the national study's 95 percent confidence interval for the average effect. [27](#source-burdens-of-id-and-citizenship-rules-27) [28](#source-burdens-of-id-and-citizenship-rules-28) The national study rules out large average effects, not effects of that size in particular states or elections.
+
+Neither measures burden directly. The blocked applicants, rejected ballots and people without ID in this report met an obstacle; turnout studies measure whether the total number voting changed.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-turnout-by-group}
 
 ### GAO found larger drops among young, newly registered and Black registrants {#burdens-of-id-and-citizenship-rules--gao-larger-drops-young-new-black}
 
-In Kansas, the turnout effect was 7.1 points larger for 18-year-olds than for 44–53-year-olds, 5.2 points larger for those registered under a year than for those registered 20 years or more, and 3.7 points larger for Black than white registrants; Tennessee showed the same pattern, smaller for age and race. GAO found no larger effect for Hispanic or Asian-American registrants. [29](#source-burdens-of-id-and-citizenship-rules-29)
+In Kansas the extra drop was largest for 18-year-olds, then for the newly registered, then for Black registrants; Tennessee showed the same pattern, smaller for age and race. GAO found no larger effect for Hispanic or Asian-American registrants. [29](#source-burdens-of-id-and-citizenship-rules-29)
 
 ### The national panel finds no extra effect on non-white voters, and more campaign contact {#burdens-of-id-and-citizenship-rules--mobilisation-may-offset}
 
-Across all strict-ID states the national study estimates non-white turnout changed by +1.4 points relative to white turnout, not significantly different from zero. It also found campaigns became 4.7 points more likely to contact non-white voters, and suggests that parties' mobilisation "might have offset modest effects" of the laws. [27](#source-burdens-of-id-and-citizenship-rules-27) If so, the absence of a turnout effect would partly reflect effort spent overcoming the rule rather than the rule imposing no cost.
+The national study's estimate for non-white relative to white turnout is slightly positive and not significantly different from zero. Campaigns became 4.7 points more likely to contact non-white voters, which "might have offset modest effects" of the laws. [27](#source-burdens-of-id-and-citizenship-rules-27) If so, the lack of a turnout effect partly reflects effort spent overcoming the rule, not a rule with no cost.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-great-britain}
 
 ### Great Britain's turnaways were small and fell in the second year {#burdens-of-id-and-citizenship-rules--gb-turnaways-small}
 
-At the July 2024 general election 0.08% of people who tried to vote in person, about 16,000, could not for lack of accepted ID, down from 0.25% in May 2023; a further share were turned away at first but came back with ID. [36](#source-burdens-of-id-and-citizenship-rules-36)
+The share unable to vote fell between the first two rounds; at the July 2024 general election it came to about 16,000 people. [36](#source-burdens-of-id-and-citizenship-rules-36) Most of those first turned away in 2024 came back with ID and voted. [36](#source-burdens-of-id-and-citizenship-rules-36)
 
 ### Some British non-voters say the ID rule kept them away {#burdens-of-id-and-citizenship-rules--gb-non-voters-cite-id}
 
@@ -1305,4 +1359,8 @@ Around 4% of people who did not vote in 2024 said their decision was related to 
 
 ## What this does and does not measure {#burdens-of-id-and-citizenship-rules--scope}
 
-This report counts people who met an obstacle — no document, a blocked application, a rejected ballot — and estimates whether total turnout changed. It does not measure whether the people affected were eligible in every case (Kansas's court found more than 99% of suspended applicants were citizens; elsewhere it is unknown), and it does not measure fraud prevented: the national panel finds no effect on fraud, and the size of non-citizen registration is covered in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls). [15](#source-burdens-of-id-and-citizenship-rules-15) [27](#source-burdens-of-id-and-citizenship-rules-27) Comparisons between states use the federal survey's definitions. The only other country shown is Great Britain, because its Electoral Commission publishes counts of people turned away for lack of ID; other democracies' rules are in [Voter ID Rules in the US and Other Democracies](#fact-voter-id-rules-in-the-us-and-abroad).
+This report counts people who met an obstacle — no document, a blocked application, a rejected ballot — and estimates whether total turnout changed.
+
+It does not establish that everyone affected was eligible: Kansas's court found more than 99% of suspended applicants were citizens; elsewhere it is unknown. [15](#source-burdens-of-id-and-citizenship-rules-15) Nor does it measure fraud prevented. The national panel finds no effect on fraud, and non-citizen registration is covered in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls). [27](#source-burdens-of-id-and-citizenship-rules-27)
+
+State comparisons use the federal survey's definitions. Great Britain is the only other country shown, because its Electoral Commission publishes counts of people turned away for lack of ID; other democracies' rules are in [Voter ID Rules in the US and Other Democracies](#fact-voter-id-rules-in-the-us-and-abroad).

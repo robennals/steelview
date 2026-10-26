@@ -1,21 +1,13 @@
 ---
 title: Voter ID and Citizenship-Proof Rules in the US and Other Democracies
 claim: >-
-  In 2026, 36 US states ask voters for identification at the polls, up from 13
-  in 2000: 24 ask for photo ID, and 10 of those are "strict", meaning a voter
-  without ID casts a provisional ballot that counts only if they return with
-  ID. Another 14 states and Washington, D.C. ask for no document. Thirteen
-  states have passed laws requiring documentary proof of citizenship to
-  register, though not all are in effect. Among the G7 democracies, Italy,
-  Canada (since 2007), Great Britain (since 2023) and France (in communes of
-  1,000 or more people) require ID from in-person voters; Germany asks for it
-  only on request and Japan does not ask. Northern Ireland adopted ID in 1985
-  after organised personation; Britain and Canada adopted it to close a gap
-  their officials saw in the rules, not after documented fraud. At Britain's
-  July 2024 general election, 0.08% of people who tried to vote in person
-  could not because they lacked accepted ID, down from 0.25% at the May 2023
-  English local elections.
-claimSources: [1, 2, 5, 17, 18, 23, 25, 27, 29, 32, 33, 37, 38, 41, 42]
+  This report compares the ID that US states ask of voters, at the polls and
+  at registration, with the rules in the other G7 democracies. Most US states
+  now ask for ID, increasingly photo ID, and laws requiring proof of
+  citizenship to register are spreading. Most G7 democracies also check ID at
+  the polls, but of the places that adopted it recently, only Northern Ireland
+  acted after documented fraud.
+claimSources: [1, 6, 7, 17, 18, 23, 25, 27, 32, 33, 37, 38, 41, 42]
 status: well-supported
 sources:
   # 1
@@ -678,6 +670,27 @@ series:
         voter identification requirements than what HAVA mandates"; from 2012:
         laws "in place" or "in force"). Earlier points come from NCSL's
         retrospective histories.
+  events:
+    - period: '1950'
+      label: 'South Carolina asks voters for a document'
+      note: 'The first state to do so; no photo was required, just a document bearing the voter''s name.'
+      source: 5
+    - period: '2008'
+      label: 'First strict laws take effect in Georgia and Indiana'
+      note: 'Indiana''s law went ahead after the Supreme Court upheld it in Crawford v. Marion County.'
+      source: 5
+    - period: '2014'
+      label: 'Supreme Court blocks Wisconsin''s law for 2014'
+      note: 'Pending a court case, so the law was passed but not in force at that election.'
+      source: 16
+    - period: '2020'
+      label: 'North Carolina''s law on hold'
+      note: 'Under a temporary injunction from a federal judge, so NCSL counted it as passed but not in force.'
+      source: 13
+    - period: '2021'
+      label: 'Wyoming enacts its first ID law'
+      note: 'After similar bills failed in 2013, 2017 and 2020.'
+      source: 6
   source:
     stance: supports
     quote: >-
@@ -736,6 +749,29 @@ additionalSeries:
         omitted because that year's page split only enacted laws, not laws in
         force.
     breaks: []
+    events:
+      - period: '2017'
+        label: 'Texas eases its law'
+        note: 'After its 2011 law was found to intentionally discriminate against Latino and Black voters.'
+        source: 6
+      - period: '2020'
+        label: 'Virginia eases its law'
+        source: 6
+      - period: '2025'
+        label: 'West Virginia switches to photo ID'
+        note: 'Its law previously required non-photo ID.'
+        source: 4
+      - period: '2025'
+        label: 'Wisconsin writes photo ID into its constitution'
+        note: 'Voters approved an amendment enshrining the existing requirement.'
+        source: 4
+      - period: '2026'
+        label: 'Louisiana drops its affidavit option, from 2027'
+        note: 'NCSL says this will make Louisiana the 11th strict photo-ID state once it takes effect.'
+        source: 4
+      - period: '2026'
+        label: 'New Hampshire drops student IDs'
+        source: 4
     source:
       stance: supports
       quote: >-
@@ -808,6 +844,11 @@ additionalSeries:
         list. Alabama's and Kansas's laws are not in effect; Florida's takes
         effect on 1 January 2027.
     breaks: []
+    events:
+      - period: '2026'
+        label: 'Judge reinstates New Hampshire''s affidavit alternative'
+        note: 'A federal injunction on 28 May 2026 ruled that removing the qualified voter affidavit is unconstitutional.'
+        source: 17
     source:
       stance: supports
       quote: >-
@@ -897,6 +938,10 @@ additionalSeries:
         label: 'Share of people trying to vote in person'
         unit: percent
         valueLabel: '% of in-person voters'
+        note: >-
+          In people: around 14,000 did not get a ballot in May 2023. In July
+          2024 around 50,000 were first turned away and 16,000 did not return
+          and vote.
         lines:
           - name: Initially turned away
             points:
@@ -1103,71 +1148,80 @@ dataStillNeeded:
       Statistics Canada publishes only the combined category, so the burden of
       Canada's ID rule cannot be read off the series directly.
 ---
-Thirty-six US states ask voters for identification at the polls, up from 13 in 2000. Twenty-four ask for photo ID, and 10 of those are "strict": a voter without ID casts a provisional ballot that counts only if they come back with ID. The remaining 14 states and Washington, D.C. ask for no document. [1](#source-voter-id-rules-in-the-us-and-abroad-1) [2](#source-voter-id-rules-in-the-us-and-abroad-2) [6](#source-voter-id-rules-in-the-us-and-abroad-6) Separately, 13 states have passed laws requiring documentary proof of citizenship to register, though not all are in effect. [18](#source-voter-id-rules-in-the-us-and-abroad-18)
-
-Outside the US, Italy, Canada, Great Britain and France (in communes of 1,000 or more people) require ID from voters at the polls; Germany asks for it only on request and Japan does not ask. [23](#source-voter-id-rules-in-the-us-and-abroad-23) [33](#source-voter-id-rules-in-the-us-and-abroad-33) [37](#source-voter-id-rules-in-the-us-and-abroad-37) [38](#source-voter-id-rules-in-the-us-and-abroad-38) [41](#source-voter-id-rules-in-the-us-and-abroad-41) [42](#source-voter-id-rules-in-the-us-and-abroad-42) Of Northern Ireland, Britain and Canada, only Northern Ireland adopted ID after organised personation was recorded. [27](#source-voter-id-rules-in-the-us-and-abroad-27) Britain and Canada adopted it because officials judged the lack of any check at the polling station to be a weakness. [25](#source-voter-id-rules-in-the-us-and-abroad-25) [32](#source-voter-id-rules-in-the-us-and-abroad-32) Britain has the best record of what happened next: 0.08% of people who tried to vote in person at the July 2024 general election could not, down from 0.25% at the May 2023 local elections. [29](#source-voter-id-rules-in-the-us-and-abroad-29)
-
 This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-states-with-id}
 
 ### Thirty-six states now ask for ID, up from 13 in 2000 {#voter-id-rules-in-the-us-and-abroad--us-36-states-up-from-13}
 
-NCSL counted 13 states with ID requirements in 2000 and 34 by 2020; Wyoming's first law in 2021 and later enactments brought it to 36. [6](#source-voter-id-rules-in-the-us-and-abroad-6) [1](#source-voter-id-rules-in-the-us-and-abroad-1) Most of the change was laws being added or tightened rather than loosened: of 21 states that began with non-photo, non-strict laws, nine had made them stricter by 2021, while only Texas (2017) and Virginia (2020) had eased theirs. [6](#source-voter-id-rules-in-the-us-and-abroad-6)
+The count has nearly tripled since 2000, and the chart marks Wyoming's first law in 2021. [6](#source-voter-id-rules-in-the-us-and-abroad-6) [1](#source-voter-id-rules-in-the-us-and-abroad-1) Most of the change was laws being added or tightened rather than loosened: of 21 states that began with non-photo, non-strict laws, nine had made them stricter by 2021; only Texas and Virginia had eased theirs. [6](#source-voter-id-rules-in-the-us-and-abroad-6)
 
 ### Voter ID began in 1950, and states under both parties had adopted it by 2000 {#voter-id-rules-in-the-us-and-abroad--early-adopters}
 
-South Carolina first asked voters for a document in 1950, with no photo required; Hawaii, Texas, Florida and Alaska followed between 1970 and 1980. NCSL notes that the states with ID rules by 2000 "had Democratic and Republican majorities". [5](#source-voter-id-rules-in-the-us-and-abroad-5) Since then, NCSL says, "virtually all" bills to add or tighten ID have come from Republican-led states. [6](#source-voter-id-rules-in-the-us-and-abroad-6)
+South Carolina first asked voters for a document in 1950; Hawaii, Texas, Florida and Alaska followed by 1980. The states with ID rules by 2000 "had Democratic and Republican majorities". [5](#source-voter-id-rules-in-the-us-and-abroad-5) Since then, NCSL says, "virtually all" bills to add or tighten ID have come from Republican-led states. [6](#source-voter-id-rules-in-the-us-and-abroad-6)
 
 ### Adoption sped up in 2011–2013, then levelled off {#voter-id-rules-in-the-us-and-abroad--pace-of-adoption}
 
-NCSL dates the acceleration to 2011, 2012 and 2013, when states without ID adopted it and others tightened theirs. [5](#source-voter-id-rules-in-the-us-and-abroad-5) Its count of laws in force rose from 26 in 2010 to 32 in 2014 and has moved by only one or two since. [8](#source-voter-id-rules-in-the-us-and-abroad-8) [10](#source-voter-id-rules-in-the-us-and-abroad-10) [1](#source-voter-id-rules-in-the-us-and-abroad-1)
+NCSL dates the acceleration to 2011, 2012 and 2013, when states without ID adopted it and others tightened theirs. [5](#source-voter-id-rules-in-the-us-and-abroad-5) On the chart, that is the steep climb from 2010 to 2014; the count has barely moved since. [8](#source-voter-id-rules-in-the-us-and-abroad-8) [10](#source-voter-id-rules-in-the-us-and-abroad-10) [1](#source-voter-id-rules-in-the-us-and-abroad-1)
 
 ### Courts have repeatedly kept passed laws out of force {#voter-id-rules-in-the-us-and-abroad--courts-blocked-laws}
 
-The count of laws passed has run ahead of the count in force. In October 2014, 34 states had passed ID laws but 32 were in force; within weeks the Supreme Court blocked Wisconsin's for that year's election. [10](#source-voter-id-rules-in-the-us-and-abroad-10) [16](#source-voter-id-rules-in-the-us-and-abroad-16) North Carolina's law was enjoined in 2020, which is why NCSL counted 36 laws but 35 in force that year. [13](#source-voter-id-rules-in-the-us-and-abroad-13)
+The count of laws passed has run ahead of the count in force: 34 states had passed ID laws in October 2014 but 32 were in force. [10](#source-voter-id-rules-in-the-us-and-abroad-10) The chart marks two court blocks, Wisconsin's in 2014 and North Carolina's in 2020. [16](#source-voter-id-rules-in-the-us-and-abroad-16) [13](#source-voter-id-rules-in-the-us-and-abroad-13)
 
 ## Subtleties {#voter-id-rules-in-the-us-and-abroad--subtleties-states-with-id}
 
 ### NCSL gives two different counts for 2000 {#voter-id-rules-in-the-us-and-abroad--two-counts-for-2000}
 
-NCSL's History of Voter ID page says 14 states asked for ID by 2000; its 2021 newsletter says 13. [5](#source-voter-id-rules-in-the-us-and-abroad-5) [6](#source-voter-id-rules-in-the-us-and-abroad-6) The chart uses 13. Likewise, the newsletter's 34 for 2020 differs from the 35 laws "in force in 2020" on NCSL's page at the time. [13](#source-voter-id-rules-in-the-us-and-abroad-13) Neither difference changes the direction of the trend.
+NCSL's History of Voter ID page says 14 states asked for ID by 2000; its 2021 newsletter, which the chart uses, says 13. [5](#source-voter-id-rules-in-the-us-and-abroad-5) [6](#source-voter-id-rules-in-the-us-and-abroad-6)
+
+The newsletter's figure for 2020 is also one lower than the 35 laws "in force in 2020" on NCSL's page at the time. [13](#source-voter-id-rules-in-the-us-and-abroad-13) Neither difference changes the direction of the trend.
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-photo-split}
 
 ### Photo ID has replaced non-photo ID, and strict photo laws grew from two to ten {#voter-id-rules-in-the-us-and-abroad--shift-to-photo}
 
-In 2009, 7 of 25 ID states asked for photo ID, and only Georgia and Indiana made voters without it return later. [7](#source-voter-id-rules-in-the-us-and-abroad-7) In 2026, 24 of 36 ask for photo ID and 10 are strict. [1](#source-voter-id-rules-in-the-us-and-abroad-1) [2](#source-voter-id-rules-in-the-us-and-abroad-2) Recent moves include West Virginia switching to photo ID (2025), Wisconsin writing photo ID into its constitution (2025), and Louisiana removing its affidavit option from 2027, which NCSL says will make it the 11th strict photo state. [4](#source-voter-id-rules-in-the-us-and-abroad-4) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
+In 2009 photo-ID states were a minority, and only Georgia and Indiana made voters without ID return later. [7](#source-voter-id-rules-in-the-us-and-abroad-7) By 2026 photo-ID states outnumber non-photo ones two to one. [1](#source-voter-id-rules-in-the-us-and-abroad-1) [2](#source-voter-id-rules-in-the-us-and-abroad-2) The chart marks the latest moves; Louisiana's, which takes effect in 2027, will make it the 11th strict photo state, NCSL says. [4](#source-voter-id-rules-in-the-us-and-abroad-4) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
 
 ### The strict-photo count has gone down as well as up {#voter-id-rules-in-the-us-and-abroad--strict-count-fell-then-rose}
 
-NCSL listed nine strict-photo states in 2014, including Texas and Arkansas, and six in 2020. [10](#source-voter-id-rules-in-the-us-and-abroad-10) [13](#source-voter-id-rules-in-the-us-and-abroad-13) The dip reflects court rulings and amendments: Texas eased its law in 2017 after its 2011 law was found to intentionally discriminate against Latino and Black voters, and Virginia eased its rule in 2020. [6](#source-voter-id-rules-in-the-us-and-abroad-6) Arkansas and Missouri were back on the strict list by 2022, North Carolina and Ohio by 2024 and New Hampshire by 2026; Missouri had left it again by 2026. [14](#source-voter-id-rules-in-the-us-and-abroad-14) [15](#source-voter-id-rules-in-the-us-and-abroad-15) [2](#source-voter-id-rules-in-the-us-and-abroad-2)
+NCSL's strict list included Texas and Arkansas in 2014 but shrank by 2020 as courts and legislatures eased laws, including Texas's and Virginia's. [10](#source-voter-id-rules-in-the-us-and-abroad-10) [13](#source-voter-id-rules-in-the-us-and-abroad-13) [6](#source-voter-id-rules-in-the-us-and-abroad-6) It then grew again: Arkansas and Missouri were back by 2022, North Carolina and Ohio joined by 2024 and New Hampshire by 2026, while Missouri left again. [14](#source-voter-id-rules-in-the-us-and-abroad-14) [15](#source-voter-id-rules-in-the-us-and-abroad-15) [2](#source-voter-id-rules-in-the-us-and-abroad-2)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-us-rules-2026}
 
 ### State rules differ along two lines: photo or not, and what happens without ID {#voter-id-rules-in-the-us-and-abroad--rules-vary-widely}
 
-In 2026, 10 states are strict photo, 14 non-strict photo, 4 strict non-photo and 8 non-strict non-photo; 14 states and D.C. ask for no document and check voters in other ways, most often by signature. [1](#source-voter-id-rules-in-the-us-and-abroad-1) [2](#source-voter-id-rules-in-the-us-and-abroad-2) The rules also keep changing: NCSL's change log lists several 2026 changes, from Louisiana dropping its affidavit option to New Hampshire dropping student IDs. [4](#source-voter-id-rules-in-the-us-and-abroad-4)
+The two lines cut across each other, so every combination exists, and the states that ask for no document check voters in other ways, most often by signature. [1](#source-voter-id-rules-in-the-us-and-abroad-1) [2](#source-voter-id-rules-in-the-us-and-abroad-2) The rules keep changing: NCSL's change log lists several changes in 2026 alone, two of them marked on the photo-ID chart above. [4](#source-voter-id-rules-in-the-us-and-abroad-4)
 
 ### Even strict states have exceptions and some offer free ID {#voter-id-rules-in-the-us-and-abroad--strict-states-exceptions}
 
-Georgia accepts a "free voter ID card issued by the state or county"; Wisconsin's law was allowed to stand on the state's pledge "to provide temporary free IDs to those in need"; Tennessee lets an indigent voter who cannot get ID without paying a fee sign an affidavit instead. [3](#source-voter-id-rules-in-the-us-and-abroad-3) NCSL's tables do not say whether every strict state offers a free ID card.
+Some strict states make room for voters who cannot easily get ID:
+
+- **Georgia** accepts a "free voter ID card issued by the state or county". [3](#source-voter-id-rules-in-the-us-and-abroad-3)
+- **Wisconsin**'s law was allowed to stand on the state's pledge "to provide temporary free IDs to those in need". [3](#source-voter-id-rules-in-the-us-and-abroad-3)
+- **Tennessee** lets an indigent voter who cannot get ID without paying a fee sign an affidavit instead. [3](#source-voter-id-rules-in-the-us-and-abroad-3)
+
+NCSL's tables do not say whether every strict state offers a free ID card.
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-dpoc-states}
 
 ### Proof-of-citizenship laws more than doubled in 2024–2026 {#voter-id-rules-in-the-us-and-abroad--dpoc-surge}
 
-Five states had enacted documentary-proof-of-citizenship laws by 2011. Eight more followed in 2024–2026: three in 2024, Wyoming in 2025 and four in 2026, for 13 in total. [17](#source-voter-id-rules-in-the-us-and-abroad-17) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
+After five states enacted documentary-proof-of-citizenship laws by 2011, the count did not move until 2024. Eight states then acted in three years. [17](#source-voter-id-rules-in-the-us-and-abroad-17) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
 
 ### Many proof-of-citizenship laws are not in force, or only ask when records cannot confirm citizenship {#voter-id-rules-in-the-us-and-abroad--dpoc-not-all-in-effect}
 
-Alabama's and Kansas's laws are not in effect, Kansas's "due to court decision"; Florida's begins in 2027; and a federal judge reinstated New Hampshire's affidavit alternative in May 2026. [17](#source-voter-id-rules-in-the-us-and-abroad-17) Six of the 13 states, including Georgia and Florida, ask for documents only if state records cannot confirm citizenship, and Utah and South Dakota let voters without proof vote in federal but not state races. [17](#source-voter-id-rules-in-the-us-and-abroad-17) [18](#source-voter-id-rules-in-the-us-and-abroad-18) The DPOC chart counts laws enacted, not laws applied to every registrant.
+The chart counts laws enacted, not laws applied to every registrant:
+
+- **Not in force:** Alabama's and Kansas's laws, Kansas's "due to court decision". Florida's begins in 2027. [17](#source-voter-id-rules-in-the-us-and-abroad-17)
+- **Partly blocked:** a federal judge reinstated New Hampshire's affidavit alternative in May 2026. [17](#source-voter-id-rules-in-the-us-and-abroad-17)
+- **Only when records fail:** six of the 13 states, including Georgia and Florida, ask for documents only if state records cannot confirm citizenship. [17](#source-voter-id-rules-in-the-us-and-abroad-17) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
+- **Federal races only:** Utah and South Dakota let voters without proof vote in federal but not state races. [18](#source-voter-id-rules-in-the-us-and-abroad-18)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-early-voting-strict-states}
 
 ### Eight of the 10 strict-photo states also offer early voting to everyone, starting two to four weeks out {#voter-id-rules-in-the-us-and-abroad--strict-states-early-voting}
 
-Ohio starts 29 days before Election Day, Indiana 28, Georgia on the fourth Monday before, and Wisconsin 14 days before. [19](#source-voter-id-rules-in-the-us-and-abroad-19) Strict ID and early voting already sit together in most strict states, without any national agreement pairing them.
+Ohio and Indiana open earliest, about four weeks before Election Day, and Wisconsin latest, two weeks before. [19](#source-voter-id-rules-in-the-us-and-abroad-19) Strict ID and early voting already sit together in most strict states, without any national agreement pairing them.
 
 ### Two strict-photo states offer no early voting {#voter-id-rules-in-the-us-and-abroad--strict-states-without-early-voting}
 
@@ -1197,7 +1251,9 @@ Three commissioners dissented from the ID recommendation. [21](#source-voter-id-
 
 ## Polling-place ID in the G7 democracies
 
-**Why this set.** The G7 is the complete group of large, high-income democracies most often compared with the US, and each member's rule can be checked against its own election law. A wider universe such as the OECD's 38 members would be better, but no neutral, fetchable source classifies all of them (see Data still needed). The table shows every G7 member, not a chosen subset.
+**Why this set.** The G7 is the complete group of large, high-income democracies most often compared with the US, and each member's rule can be checked against its own election law. The table shows every member, not a chosen subset.
+
+A wider group such as the OECD's 38 members would be better, but no neutral, fetchable source classifies all of them (see Data still needed).
 
 | Country | Must in-person voters show ID? | Photo? | If a voter has no ID | Since |
 |---|---|---|---|---|
@@ -1223,7 +1279,9 @@ German voters must identify themselves "auf Verlangen" (on request), especially 
 
 ### Where ID is required or expected, the state often supplies the document or the registration {#voter-id-rules-in-the-us-and-abroad--state-supplies-id}
 
-Germany requires every citizen aged 16 or over to hold a valid ID card, and enters eligible voters on the register automatically from residence records. [39](#source-voter-id-rules-in-the-us-and-abroad-39) [40](#source-voter-id-rules-in-the-us-and-abroad-40) Britain offers a free Voter Authority Certificate, and the Carter–Baker report observed that "most advanced democracies have fraud-proof voting or national ID cards". [23](#source-voter-id-rules-in-the-us-and-abroad-23) [20](#source-voter-id-rules-in-the-us-and-abroad-20) Whether each comparator's ID card is free or universal was not checked country by country.
+Germany requires every citizen aged 16 or over to hold a valid ID card, and registers eligible voters automatically from residence records. [39](#source-voter-id-rules-in-the-us-and-abroad-39) [40](#source-voter-id-rules-in-the-us-and-abroad-40) Britain offers a free Voter Authority Certificate. [23](#source-voter-id-rules-in-the-us-and-abroad-23)
+
+The Carter–Baker report observed that "most advanced democracies have fraud-proof voting or national ID cards". [20](#source-voter-id-rules-in-the-us-and-abroad-20) Whether each comparator's ID card is free or universal was not checked country by country.
 
 ### Most comparators keep a fallback for voters without ID {#voter-id-rules-in-the-us-and-abroad--fallbacks-abroad}
 
@@ -1251,7 +1309,9 @@ Northern Ireland's Chief Electoral Officer reported personation "on a planned an
 
 ### Even in Northern Ireland, personation's scale was never measured {#voter-id-rules-in-the-us-and-abroad--ni-personation-unquantified}
 
-A 1998 government review found postal-vote malpractice but said personation at polling stations "has, however, been impossible to quantify", while police experience "certainly suggests that abuse is taking place". The Electoral Commission later wrote that the extent of fraud "has never been quantified", so the impact of the measures could not be assessed accurately. [31](#source-voter-id-rules-in-the-us-and-abroad-31)
+A 1998 government review found postal-vote malpractice but said personation at polling stations "has, however, been impossible to quantify", while police experience "certainly suggests that abuse is taking place". [31](#source-voter-id-rules-in-the-us-and-abroad-31)
+
+The Electoral Commission later wrote that the extent of fraud "has never been quantified", so the impact of the measures could not be assessed accurately. [31](#source-voter-id-rules-in-the-us-and-abroad-31)
 
 ### Britain adopted ID to close a gap, not after a rise in detected personation {#voter-id-rules-in-the-us-and-abroad--britain-precaution-not-fraud}
 
@@ -1265,7 +1325,7 @@ Canada's 2007 law followed a Commons committee that was "struck by the absence o
 
 ### Britain's turnaways were small, and fell between the first two elections {#voter-id-rules-in-the-us-and-abroad--britain-turnaways-small-and-falling}
 
-At the May 2023 English local elections, at least 0.7% of in-person voters were first turned away and at least 0.25%, about 14,000 people, did not get a ballot. At the July 2024 general election, 0.25% were turned away and 0.08%, about 16,000 people or one in every 1,200 in-person voters, did not return and vote. [26](#source-voter-id-rules-in-the-us-and-abroad-26) [29](#source-voter-id-rules-in-the-us-and-abroad-29)
+Both lines fell by about two-thirds from the 2023 local elections to the 2024 general election. [26](#source-voter-id-rules-in-the-us-and-abroad-26) [29](#source-voter-id-rules-in-the-us-and-abroad-29) At the general election, about 16,000 people, one in every 1,200 in-person voters, did not return and vote. [26](#source-voter-id-rules-in-the-us-and-abroad-26) [29](#source-voter-id-rules-in-the-us-and-abroad-29)
 
 ### The turnaway figures undercount, and some people stayed home because of the rule {#voter-id-rules-in-the-us-and-abroad--britain-turnaways-undercount}
 
@@ -1273,29 +1333,40 @@ People turned back by "greeters" outside polling stations were not counted, and 
 
 ### Confidence in Britain's elections rose, but the effect on personation is unknown {#voter-id-rules-in-the-us-and-abroad--britain-confidence-and-personation}
 
-87% of people thought voting was safe from fraud in 2024, against 72% in 2019. The government's evaluation said it "cannot be determined" whether the checks made personation easier to detect. [28](#source-voter-id-rules-in-the-us-and-abroad-28) Seven polling-station personation allegations in 2024 led to no prosecution. [24](#source-voter-id-rules-in-the-us-and-abroad-24)
+The share of people who thought voting was safe from fraud rose from 72% in 2019 to 87% in 2024. [28](#source-voter-id-rules-in-the-us-and-abroad-28)
+
+The government's evaluation said it "cannot be determined" whether the checks made personation easier to detect. [28](#source-voter-id-rules-in-the-us-and-abroad-28) Seven polling-station personation allegations in 2024 led to no prosecution. [24](#source-voter-id-rules-in-the-us-and-abroad-24)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-gb-awareness}
 
 ### Awareness of Britain's rule was lower among young and ethnic-minority voters {#voter-id-rules-in-the-us-and-abroad--britain-awareness-gaps}
 
-87% of people in Great Britain knew they needed photo ID in July 2024, but only 71% of young people and 76% of people from ethnic minority communities. [29](#source-voter-id-rules-in-the-us-and-abroad-29) Awareness in Northern Ireland, where ID has been required for decades, was 89%, similar to Scotland and Wales at their first ID election. [29](#source-voter-id-rules-in-the-us-and-abroad-29)
+Young people and ethnic-minority communities sit well below the Great Britain average. [29](#source-voter-id-rules-in-the-us-and-abroad-29) Northern Ireland, where ID has been required for decades, was about level with Scotland and Wales at their first ID election. [29](#source-voter-id-rules-in-the-us-and-abroad-29)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-ni-register-2002}
 
 ### Northern Ireland's register fell 10% in 2002, mostly from new registration rules {#voter-id-rules-in-the-us-and-abroad--ni-register-fell}
 
-The register fell by 119,790 names, from 1,192,136 to 1,072,346, between August and December 2002. The Electoral Commission attributed this mainly to ending the practice of carrying names forward, rejected the claim that 120,000 people were disenfranchised, but found "some evidence" that eligible people previously registered had not re-enrolled. [30](#source-voter-id-rules-in-the-us-and-abroad-30) The fall measures the registration reform passed with photo ID, not people turned away at the polls.
+The Electoral Commission attributed the fall mainly to ending the practice of carrying names forward. It rejected the claim that 120,000 people were disenfranchised, but found "some evidence" that eligible people previously registered had not re-enrolled. [30](#source-voter-id-rules-in-the-us-and-abroad-30)
+
+The fall measures the registration reform passed with photo ID, not people turned away at the polls.
 
 ### After photo ID, Northern Ireland recorded much less suspected personation and no fall in turnout {#voter-id-rules-in-the-us-and-abroad--ni-after-photo-id}
 
-Researcher Stuart Wilks-Heeg, quoted by the Commons Library, found "no evidence to suggest a fall in turnout": only 55 tendered ballots were issued at the 2005 general election, a 94% reduction from 1983, and there has been one personation conviction since 2002. The share of electors who believed fraud was commonplace fell from 66% in the early 2000s to 28% thinking at least some fraud took place by 2017. [27](#source-voter-id-rules-in-the-us-and-abroad-27)
+Researcher Stuart Wilks-Heeg, quoted by the Commons Library, found "no evidence to suggest a fall in turnout". The other measures cited: [27](#source-voter-id-rules-in-the-us-and-abroad-27)
+
+| Measure | Figure |
+|---|---|
+| Tendered ballots issued, 2005 general election | 55, a 94% reduction from 1983 [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
+| Personation convictions since 2002 | One [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
+| Electors who believed fraud was commonplace, early 2000s | 66% [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
+| Electors thinking at least some fraud took place, 2017 | 28% [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-canada-process-reasons}
 
 ### Few Canadian non-voters cite process problems, including ID {#voter-id-rules-in-the-us-and-abroad--canada-nonvoters}
 
-Electoral-process reasons, which include being unable to prove identity or address, were the main reason for 8% of non-voters in 2015, 5% in 2019 and 7% in 2021. [34](#source-voter-id-rules-in-the-us-and-abroad-34) [35](#source-voter-id-rules-in-the-us-and-abroad-35) [36](#source-voter-id-rules-in-the-us-and-abroad-36) The category also includes other problems, so the share blocked by ID alone is smaller and is not published.
+Electoral-process reasons, which include being unable to prove identity or address, stayed a small share of non-voters' main reasons at all three elections. [34](#source-voter-id-rules-in-the-us-and-abroad-34) [35](#source-voter-id-rules-in-the-us-and-abroad-35) [36](#source-voter-id-rules-in-the-us-and-abroad-36) The category also includes other problems, so the share blocked by ID alone is smaller and is not published.
 
 ### Canada keeps vouching as a fallback {#voter-id-rules-in-the-us-and-abroad--canada-vouching}
 
@@ -1313,13 +1384,16 @@ The people turned away were people without accepted ID, not detected impostors; 
 
 ## About this data {#voter-id-rules-in-the-us-and-abroad--about}
 
-**US series.** NCSL has published no single historical table, so the 1950–2026 line combines NCSL's two retrospective accounts with its voter-ID page as archived by the Internet Archive in the autumn of each federal election year from 2010 (September 2009 for the first point). Each count is the figure NCSL stated at the time, not a reconstruction. Points are uneven, and the straight line between them is not annual data. The photo split uses NCSL's own photo/non-photo figures; strict-photo counts are counted from each archived Table 1.
+**US series.** NCSL has published no single historical table, so the 1950–2026 line combines NCSL's two retrospective accounts with its voter-ID page as archived by the Internet Archive in the autumn of each federal election year from 2010 (September 2009 for the first point).
+
+Each count is the figure NCSL stated at the time, not a reconstruction. Points are uneven, and the straight line between them is not annual data. The photo split uses NCSL's own photo/non-photo figures; strict-photo counts are counted from each archived Table 1.
 
 **Proof of citizenship.** The cumulative line is derived from the enactment years on NCSL's current list of 13 states. It counts laws enacted, so it includes Alabama's and Kansas's laws that are not in effect and Florida's law that starts in 2027.
 
 **Early voting.** Start days come from NCSL's state table; two are converted from day-of-week wording, as the chart note explains.
 
-**Comparators.** Each G7 rule is taken from that country's own election law or official guidance, read in the original language; quotations in French, German, Italian and Japanese are given in the sources as published, with translations in the text. Northern Ireland, Britain and Canada are given adoption histories because they are the cases most often cited in US debate.
+**Comparators.** Each G7 rule is taken from that country's own election law or official guidance, read in the original language; quotations in French, German, Italian and Japanese are given in the sources as published, with translations in the text.
+
+Northern Ireland, Britain and Canada are given adoption histories because they are the cases most often cited in US debate.
 
 **Britain.** Turnaway figures are from polling-station records reported to the Electoral Commission; the awareness figures are from a YouGov survey for the Commission. The Commission's own website refused automated downloads, so its figures are quoted from the House of Commons Library briefing and from the Commission's press release as reprinted by Wired-Gov.
-

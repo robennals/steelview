@@ -451,6 +451,14 @@ test('rule 14: an event marked outside the coverage is reported', () => {
   );
 });
 
+test('rule 14: an event inside the final year of a year-precision coverage is accepted', () => {
+  const t = topicWithSeries({
+    events: [{ period: '1993-03', label: 'law takes effect' }],
+  });
+  const errors = validateTopic(t);
+  assert.ok(!errors.some((e) => e.includes('event at')), errors.join('\n'));
+});
+
 test('rule 14: a break annotated outside the coverage is reported', () => {
   const t = topicWithSeries({
     breaks: [{ period: '2001', label: 'method change', note: 'the source changed basis' }],

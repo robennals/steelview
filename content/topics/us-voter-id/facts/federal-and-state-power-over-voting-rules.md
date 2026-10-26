@@ -1,22 +1,14 @@
 ---
 title: Federal and State Power Over Voter ID and Registration Rules
 claim: >-
-  The Constitution lets each state legislature set the "times, places and
-  manner" of congressional elections and lets Congress "make or alter" those
-  rules; the clause gives the President no role beyond signing or vetoing
-  the laws Congress passes. Congress has used that power for registration (the NVRA, 1993) and for
-  one narrow ID rule (HAVA, 2002, covering first-time voters who registered by
-  mail). In 2013 the Supreme Court called Congress's power "paramount", but
-  held that it covers how federal elections are held, "but not who may vote in
-  them". Since 2021 the two main national bills have both stalled short of 60
-  Senate votes: the Democrats' Freedom to Vote Act and the Republicans' SAVE
-  America Act, which passed the House on 11 February 2026. As of 23 October
-  2026, two federal district courts have permanently blocked the 2025
-  executive order's proof-of-citizenship requirement as beyond presidential
-  power. The Supreme Court has let the March 2026 order's citizenship lists
-  and the revamped SAVE database go ahead, on standing and stay grounds,
-  without ruling on whether they are lawful.
-claimSources: [1, 2, 3, 4, 17, 19, 22, 23, 25, 27, 30, 31, 35, 36, 38]
+  This report covers who sets US voter ID and registration rules. The
+  Constitution names state legislatures and Congress, not the President, and
+  the Supreme Court says Congress's power covers how federal elections are
+  held, not who may vote. National bills from both parties have stalled in the
+  Senate; in court, the 2025 executive order's proof-of-citizenship rule is
+  blocked, while the 2026 order may proceed without a ruling on its
+  lawfulness.
+claimSources: [1, 2, 3, 4, 22, 23, 27, 30, 31, 34, 35]
 status: well-supported
 sources:
   # 1
@@ -613,15 +605,13 @@ dataStillNeeded:
       Circuit appeals and any certiorari petition will settle whether the
       district courts' view holds.
 ---
-The Constitution gives the first say over congressional election rules to each state legislature and lets Congress "make or alter" them at any time. [1](#source-federal-and-state-power-over-voting-rules-1) Congress has used that power for registration and for a narrow ID rule in HAVA; the Supreme Court has called its power "paramount" but said it reaches how federal elections are held, not who may vote. [3](#source-federal-and-state-power-over-voting-rules-3) [4](#source-federal-and-state-power-over-voting-rules-4) [19](#source-federal-and-state-power-over-voting-rules-19) National bills from both parties have since stalled in the Senate. The President's two election orders have had different outcomes in court: the 2025 order's proof-of-citizenship section is permanently blocked, while the Supreme Court let the 2026 order and the revamped SAVE database go ahead without ruling on the merits. [30](#source-federal-and-state-power-over-voting-rules-30) [31](#source-federal-and-state-power-over-voting-rules-31) [35](#source-federal-and-state-power-over-voting-rules-35) [37](#source-federal-and-state-power-over-voting-rules-37)
-
 This report is a dated legal record. It is as of 23 October 2026, ten days before the midterms, and several items will change soon: the SAVE America Act in a lame-duck session, the First Circuit appeals, and the litigation over the SAVE database.
 
 ## Observations {#federal-and-state-power-over-voting-rules--observations-senate-votes}
 
 ### Both parties' recent national bills stalled at the Senate's 60-vote threshold {#federal-and-state-power-over-voting-rules--national-bills-stalled}
 
-The Democrats' Freedom to Vote Act failed cloture on 20 October 2021, and its successor vehicle failed 49–51 on 19 January 2022, when 60 votes were required. [22](#source-federal-and-state-power-over-voting-rules-22) [23](#source-federal-and-state-power-over-voting-rules-23) On 8 August 2026 a photo-ID-only version of the Republicans' SAVE America Act failed 52–46. [27](#source-federal-and-state-power-over-voting-rules-27) Neither became law.
+Both bills in the chart failed to end debate: the Democrats' in January 2022 and a photo-ID-only version of the Republicans' SAVE America Act in August 2026. [23](#source-federal-and-state-power-over-voting-rules-23) [27](#source-federal-and-state-power-over-voting-rules-27) The Freedom to Vote Act had already failed cloture once, in October 2021. [22](#source-federal-and-state-power-over-voting-rules-22) Neither became law.
 
 ### The House has passed the SAVE Act or SAVE America Act three times {#federal-and-state-power-over-voting-rules--house-passed-save-america-act}
 
@@ -635,7 +625,9 @@ After the 8 August vote, Republicans looked to the budget reconciliation process
 
 ### The Freedom to Vote Act would have set national access rules and required ID states to accept alternatives {#federal-and-state-power-over-voting-rules--freedom-to-vote-act-provisions}
 
-The bill would have required early voting, no-excuse absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22) The two parties' main bills of the past five years therefore both sought national standards, in opposite directions: one mandating ID and proof of citizenship, the other limiting what ID states could demand.
+The bill would have required early voting, no-excuse absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
+
+The two parties' main bills of the past five years therefore both sought national standards, in opposite directions: one mandating ID and proof of citizenship, the other limiting what ID states could demand.
 
 ## Federal voting laws and bills, 1965–2026
 
@@ -652,11 +644,20 @@ The bill would have required early voting, no-excuse absentee voting and same-da
 
 ### Federal law already contains an ID rule, for first-time voters who registered by mail {#federal-and-state-power-over-voting-rules--hava-id-rule}
 
-Since 2002, HAVA has required a first-time voter who registered by mail to show "a current and valid photo identification" or a copy of a utility bill, bank statement, government check, paycheck or other government document with their name and address. A voter without one may cast a provisional ballot. [19](#source-federal-and-state-power-over-voting-rules-19) HAVA also bars states from processing a federal registration without a driver's licence number or the last four digits of a Social Security number. [20](#source-federal-and-state-power-over-voting-rules-20) The rule accepts non-photo documents and covers only first-time voters who registered by mail; it does not ask for proof of citizenship. [19](#source-federal-and-state-power-over-voting-rules-19)
+Since 2002, HAVA has required a first-time voter who registered by mail to show one of these: [19](#source-federal-and-state-power-over-voting-rules-19)
+
+- "a current and valid photo identification"
+- a copy of a utility bill, bank statement, government check, paycheck or other government document with their name and address
+
+A voter without one may cast a provisional ballot. [19](#source-federal-and-state-power-over-voting-rules-19) HAVA also bars states from processing a federal registration without a driver's licence number or the last four digits of a Social Security number. [20](#source-federal-and-state-power-over-voting-rules-20)
+
+The rule accepts non-photo documents and covers only first-time voters who registered by mail; it does not ask for proof of citizenship. [19](#source-federal-and-state-power-over-voting-rules-19)
 
 ### Congress has set national floors for registration and voting several times since 1965 {#federal-and-state-power-over-voting-rules--congress-has-set-national-floors}
 
-The Voting Rights Act (1965), the NVRA (1993) and HAVA (2002) each imposed rules on how states run federal elections. Together they govern how people register, how rolls are cleaned and what new mail registrants must show. [16](#source-federal-and-state-power-over-voting-rules-16) [17](#source-federal-and-state-power-over-voting-rules-17) [18](#source-federal-and-state-power-over-voting-rules-18) These laws leave each state to choose what ID to ask for at the polls and whether to demand documents proving citizenship, within the limits *ITCA* set for the federal form. [5](#source-federal-and-state-power-over-voting-rules-5)
+The Voting Rights Act, the NVRA and HAVA each imposed rules on how states run federal elections: how people register, how rolls are cleaned and what new mail registrants must show. [16](#source-federal-and-state-power-over-voting-rules-16) [17](#source-federal-and-state-power-over-voting-rules-17) [18](#source-federal-and-state-power-over-voting-rules-18)
+
+They leave each state to choose what ID to ask for at the polls and whether to demand documents proving citizenship, within the limits *ITCA* set for the federal form. [5](#source-federal-and-state-power-over-voting-rules-5)
 
 ### The federal registration form asks only for a sworn statement of citizenship {#federal-and-state-power-over-voting-rules--federal-form-sworn-citizenship}
 
@@ -681,23 +682,33 @@ The *ITCA* vote of 7–2 is from the opinion's own line-up: Justice Scalia wrote
 
 ### The Elections Clause names state legislatures and Congress, not the President {#federal-and-state-power-over-voting-rules--elections-clause-text}
 
-The clause says the times, places and manner of congressional elections "shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations". [1](#source-federal-and-state-power-over-voting-rules-1) The President's part is the ordinary one for any law: every bill is presented to him to sign or veto. [2](#source-federal-and-state-power-over-voting-rules-2) The clause gives him no power to set election rules by order.
+The clause says the times, places and manner of congressional elections "shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations". [1](#source-federal-and-state-power-over-voting-rules-1)
+
+The President's part is the ordinary one for any law: every bill is presented to him to sign or veto. [2](#source-federal-and-state-power-over-voting-rules-2) The clause gives him no power to set election rules by order.
 
 ### The Supreme Court calls Congress's power over federal elections "paramount" {#federal-and-state-power-over-voting-rules--congress-power-paramount}
 
-In *Arizona v. Inter Tribal Council* (2013) the Court quoted its 1880 ruling: Congress's power over the times, places and manner of congressional elections "is paramount, and may be exercised at any time, and to any extent which it deems expedient". [3](#source-federal-and-state-power-over-voting-rules-3) On that basis it held that the NVRA overrode Arizona's demand for documentary proof of citizenship from people using the federal form. [5](#source-federal-and-state-power-over-voting-rules-5) A national ID or proof-of-citizenship law for federal elections would rest on this power.
+In *Arizona v. Inter Tribal Council* (2013) the Court quoted its 1880 ruling: Congress's power over the times, places and manner of congressional elections "is paramount, and may be exercised at any time, and to any extent which it deems expedient". [3](#source-federal-and-state-power-over-voting-rules-3)
+
+On that basis it held that the NVRA overrode Arizona's demand for documentary proof of citizenship from people using the federal form. [5](#source-federal-and-state-power-over-voting-rules-5) A national ID or proof-of-citizenship law for federal elections would rest on this power.
 
 ### The same ruling held that who may vote is for the states {#federal-and-state-power-over-voting-rules--not-who-may-vote}
 
-The Court said the Elections Clause "empowers Congress to regulate how federal elections are held, but not who may vote in them". [4](#source-federal-and-state-power-over-voting-rules-4) It added that Arizona could ask the Election Assistance Commission to add its requirement to the form's state-specific instructions, and go to court if refused. [5](#source-federal-and-state-power-over-voting-rules-5) Voter qualifications such as citizenship are set by the states; checking them at registration sits where the two powers meet.
+The Court said the Elections Clause "empowers Congress to regulate how federal elections are held, but not who may vote in them". [4](#source-federal-and-state-power-over-voting-rules-4) It added that Arizona could ask the Election Assistance Commission to add its requirement to the form's state-specific instructions, and go to court if refused. [5](#source-federal-and-state-power-over-voting-rules-5)
+
+Voter qualifications such as citizenship are set by the states; checking them at registration sits where the two powers meet.
 
 ### *Crawford* (2008) upheld Indiana's photo-ID law without proof of impersonation in Indiana {#federal-and-state-power-over-voting-rules--crawford-upheld-photo-id}
 
-Justice Stevens's lead opinion accepted Indiana's interests in deterring fraud and in public confidence, which "has independent significance, because it encourages citizen participation in the democratic process". [9](#source-federal-and-state-power-over-voting-rules-9) It held those interests "both neutral and sufficiently strong" to defeat the facial challenge. [10](#source-federal-and-state-power-over-voting-rules-10) Three more justices concurred, finding the burden of a free photo ID "simply not severe". [7](#source-federal-and-state-power-over-voting-rules-7) [13](#source-federal-and-state-power-over-voting-rules-13) The vote was 6–3, with no opinion joined by a majority. [7](#source-federal-and-state-power-over-voting-rules-7)
+Justice Stevens's lead opinion accepted Indiana's interests in deterring fraud and in public confidence, which "has independent significance, because it encourages citizen participation in the democratic process". [9](#source-federal-and-state-power-over-voting-rules-9) It held those interests "both neutral and sufficiently strong" to defeat the facial challenge. [10](#source-federal-and-state-power-over-voting-rules-10)
+
+Three more justices concurred, finding the burden of a free photo ID "simply not severe". [7](#source-federal-and-state-power-over-voting-rules-7) [13](#source-federal-and-state-power-over-voting-rules-13) The vote was 6–3, with no opinion joined by a majority. [7](#source-federal-and-state-power-over-voting-rules-7)
 
 ### The *Crawford* record contained no in-person impersonation in Indiana, and an estimated 43,000 residents without ID {#federal-and-state-power-over-voting-rules--crawford-record}
 
-The lead opinion said the only fraud the law addresses is in-person impersonation, and "the record contains no evidence of any such fraud actually occurring in Indiana at any time in its history". It relied instead on documented cases elsewhere. [8](#source-federal-and-state-power-over-voting-rules-8) It also recorded the trial court's estimate that around 43,000 Indiana residents lacked a state licence or ID card. [11](#source-federal-and-state-power-over-voting-rules-11) The dissent said the law "threatens to impose nontrivial burdens on the voting right of tens of thousands of the State's citizens". [12](#source-federal-and-state-power-over-voting-rules-12)
+The lead opinion said the only fraud the law addresses is in-person impersonation, and "the record contains no evidence of any such fraud actually occurring in Indiana at any time in its history". It relied instead on documented cases elsewhere. [8](#source-federal-and-state-power-over-voting-rules-8)
+
+It also recorded the trial court's estimate that around 43,000 Indiana residents lacked a state licence or ID card. [11](#source-federal-and-state-power-over-voting-rules-11) The dissent said the law "threatens to impose nontrivial burdens on the voting right of tens of thousands of the State's citizens". [12](#source-federal-and-state-power-over-voting-rules-12)
 
 ### State courts can review state legislatures' election rules {#federal-and-state-power-over-voting-rules--moore-state-courts}
 
@@ -716,29 +727,49 @@ The lead opinion said the only fraud the law addresses is in-person impersonatio
 
 ### Two courts held the 2025 order's proof-of-citizenship section beyond presidential power {#federal-and-state-power-over-voting-rules--eo-14248-blocked}
 
-Executive Order 14248 told the Election Assistance Commission to require "documentary proof of United States citizenship" on the national mail registration form. [29](#source-federal-and-state-power-over-voting-rules-29) On 31 October 2025 the federal court in Washington, D.C. permanently barred the commission from implementing that section, on the plaintiffs' separation-of-powers claims. [30](#source-federal-and-state-power-over-voting-rules-30) On 24 June 2026 the federal court in Massachusetts held that the challenged sections "exceeded the President's constitutional authority" and conflicted with the NVRA, UOCAVA and HAVA, and it entered a permanent injunction on 13 July. The government has appealed. [31](#source-federal-and-state-power-over-voting-rules-31) [32](#source-federal-and-state-power-over-voting-rules-32)
+Executive Order 14248 told the Election Assistance Commission to require "documentary proof of United States citizenship" on the national mail registration form. [29](#source-federal-and-state-power-over-voting-rules-29)
+
+The federal court in Washington, D.C. permanently barred the commission from implementing that section in October 2025, on the plaintiffs' separation-of-powers claims. [30](#source-federal-and-state-power-over-voting-rules-30) The federal court in Massachusetts followed in June 2026, holding that the challenged sections "exceeded the President's constitutional authority" and conflicted with the NVRA, UOCAVA and HAVA. The government has appealed. [31](#source-federal-and-state-power-over-voting-rules-31) [32](#source-federal-and-state-power-over-voting-rules-32)
 
 ### The Supreme Court let the 2026 order's citizenship lists proceed {#federal-and-state-power-over-voting-rules--eo-14399-allowed}
 
-Executive Order 14399 directs DHS to send each state a list of adult citizens built from federal citizenship, Social Security and SAVE records. [33](#source-federal-and-state-power-over-voting-rules-33) On 24 August 2026 the Supreme Court stayed the injunction against it, calling the order "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch". It held the states were unlikely to have standing, since they need not use the lists. [34](#source-federal-and-state-power-over-voting-rules-34)
+Executive Order 14399 directs DHS to send each state a list of adult citizens built from federal citizenship, Social Security and SAVE records. [33](#source-federal-and-state-power-over-voting-rules-33)
+
+On 24 August 2026 the Supreme Court stayed the injunction against it, calling the order "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch". It held the states were unlikely to have standing, since they need not use the lists. [34](#source-federal-and-state-power-over-voting-rules-34)
 
 ### That stay was not a ruling on whether the order is lawful {#federal-and-state-power-over-voting-rules--no-merits-ruling}
 
-The majority wrote that its ruling "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful. On that score, time will tell." [35](#source-federal-and-state-power-over-voting-rules-35) The dissent said the decision "merely postpones adjudication" of whether the President's actions are lawful. [36](#source-federal-and-state-power-over-voting-rules-36) The only merits rulings on presidential power so far are the two district-court rulings on the 2025 order. [31](#source-federal-and-state-power-over-voting-rules-31)
+The majority wrote that its ruling "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful. On that score, time will tell." [35](#source-federal-and-state-power-over-voting-rules-35) The dissent said the decision "merely postpones adjudication" of whether the President's actions are lawful. [36](#source-federal-and-state-power-over-voting-rules-36)
+
+The only merits rulings on presidential power so far are the two district-court rulings on the 2025 order. [31](#source-federal-and-state-power-over-voting-rules-31)
 
 ### The revamped SAVE database is back in use, with no published error rate {#federal-and-state-power-over-voting-rules--save-database-revived}
 
-A district judge blocked the revamped SAVE system in June 2026 under the Social Security Act, the Privacy Act and the Administrative Procedure Act. [39](#source-federal-and-state-power-over-voting-rules-39) On 25 September 2026 the Supreme Court stayed that order, saying it stopped "individualized inquiries, which are permitted under federal law" during the 90 days before an election. [37](#source-federal-and-state-power-over-voting-rules-37) The Solicitor General told the Court that SAVE had verified more than 65 million voters in 26 states and flagged 28,635 as potential non-citizens. Those figures are the government's own, and its opponents said no error rate had been released. [38](#source-federal-and-state-power-over-voting-rules-38) What those flags turned out to be is in [the report on non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls).
+A district judge blocked the revamped SAVE system in June 2026 under the Social Security Act, the Privacy Act and the Administrative Procedure Act. [39](#source-federal-and-state-power-over-voting-rules-39) In September the Supreme Court stayed that order, saying it stopped "individualized inquiries, which are permitted under federal law" during the 90 days before an election. [37](#source-federal-and-state-power-over-voting-rules-37)
+
+The Solicitor General gave the Court these figures for SAVE's checks so far: [38](#source-federal-and-state-power-over-voting-rules-38)
+
+| SAVE checks, as reported by the government | Figure |
+|---|---|
+| Voters verified | More than 65 million [38](#source-federal-and-state-power-over-voting-rules-38) |
+| States | 26 [38](#source-federal-and-state-power-over-voting-rules-38) |
+| Flagged as potential non-citizens | 28,635 [38](#source-federal-and-state-power-over-voting-rules-38) |
+
+The figures are the government's own, and its opponents said no error rate had been released. [38](#source-federal-and-state-power-over-voting-rules-38) What those flags turned out to be is in [the report on non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls).
 
 ### States still set most ID rules, and those rules keep changing {#federal-and-state-power-over-voting-rules--state-rules-vary}
 
-The number of states requesting or requiring ID at the polls rose from 13 in 2000 to 34 in 2020, and was 36 in September 2026. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41) Thirteen states had laws requiring documentary proof of citizenship to register by July 2026, though not all are in effect because of court rulings. [42](#source-federal-and-state-power-over-voting-rules-42) On 22 October 2026 the Supreme Court let New Hampshire enforce a new law dropping student IDs, saying lower federal courts "should ordinarily not alter the election rules on the eve of an election". [43](#source-federal-and-state-power-over-voting-rules-43) The state-by-state detail and its trend are in [the report on voter ID rules](#fact-voter-id-rules-in-the-us-and-abroad).
+The number of states asking for ID at the polls has nearly tripled since 2000, reaching 36 in September 2026. Thirteen states had passed proof-of-citizenship laws by July 2026; not all are in effect because of court rulings. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41) [42](#source-federal-and-state-power-over-voting-rules-42)
+
+The Supreme Court let New Hampshire enforce a new law dropping student IDs on 22 October 2026, saying lower federal courts "should ordinarily not alter the election rules on the eve of an election". [43](#source-federal-and-state-power-over-voting-rules-43) The state-by-state detail and its trend are in [the report on voter ID rules](#fact-voter-id-rules-in-the-us-and-abroad).
 
 ## Subtleties {#federal-and-state-power-over-voting-rules--subtleties}
 
 ### This is a legal record, so it has no trend chart {#federal-and-state-power-over-voting-rules--no-time-series}
 
-Laws, orders and rulings are dated events, not quantities measured each year, so there is no time series of federal power to plot. The one countable trend in this area, the number of states with ID laws, is charted in [the voter ID rules report](#fact-voter-id-rules-in-the-us-and-abroad) to keep one copy of that data. Its NCSL counts are quoted above. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41) The chart in this report compares Senate votes instead.
+Laws, orders and rulings are dated events, not quantities measured each year, so there is no time series of federal power to plot. This report's chart compares Senate votes instead.
+
+The one countable trend in this area, the number of states with ID laws, is charted in [the voter ID rules report](#fact-voter-id-rules-in-the-us-and-abroad) to keep one copy of that data. Its NCSL counts are quoted above. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41)
 
 ### "The courts blocked Trump's election order" mixes up two orders {#federal-and-state-power-over-voting-rules--two-orders-two-outcomes}
 
@@ -750,4 +781,6 @@ The lead opinion rejected a facial challenge "on the basis of the record that ha
 
 ### *ITCA* did not decide whether states may ever require proof of citizenship {#federal-and-state-power-over-voting-rules--itca-left-open}
 
-The ruling covered applicants using the federal form, and left Arizona free to ask the Election Assistance Commission to add proof of citizenship to its state instructions. [5](#source-federal-and-state-power-over-voting-rules-5) It also said it "would raise serious constitutional doubts" if federal law kept a state from getting the information needed to enforce its voter qualifications — a route by which a state could seek the information it needs. [4](#source-federal-and-state-power-over-voting-rules-4)
+The ruling covered applicants using the federal form, and left Arizona free to ask the Election Assistance Commission to add proof of citizenship to its state instructions. [5](#source-federal-and-state-power-over-voting-rules-5)
+
+It also said it "would raise serious constitutional doubts" if federal law kept a state from getting the information needed to enforce its voter qualifications — a route by which a state could seek the information it needs. [4](#source-federal-and-state-power-over-voting-rules-4)

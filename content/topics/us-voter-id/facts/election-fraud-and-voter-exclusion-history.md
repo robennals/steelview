@@ -2,23 +2,12 @@
 title: Election Fraud and Voter Exclusion in the US, 1870s–2026
 claimSources: [3, 7, 8, 12, 24, 26, 31, 32, 38]
 claim: >-
-  In the US election-fraud cases whose court or prosecution record says how the
-  fraud was done, from Baltimore in 1878 to North Carolina's 9th District in
-  2018, most was carried out by election officials (stuffing ballot boxes,
-  writing in ballots for dead, absent or invented registrants, or miscounting),
-  through absentee ballots, or by buying votes. A check of voters' ID at the
-  polling place reaches none of those methods, because the people checking ID
-  were committing the fraud or no voter came to the polls. Voting in person
-  under someone else's name, or more than once, does appear in the record:
-  Tammany Hall's paid "repeaters", and Chicago's "ghost voters" cast with the
-  help of complicit election judges. In modern case lists it is the smallest
-  category: 10 of 2,068 alleged cases in News21's 2000–2012 database, and
-  about 31 incidents among more than 1 billion ballots in Justin Levitt's
-  2000–2014 count. Over the same era, officials kept eligible citizens from
-  voting at scale. In 1965 Mississippi had registered 6.7 percent of
-  voting-age Black residents and 69.9 percent of whites; by 2004 the gap had
-  closed. Detected fraud is a floor, and no source measures how much goes
-  undetected.
+  This report sets out how documented US election fraud was done, 1878–2020,
+  and how officials kept eligible citizens from voting. Most fraud was
+  done by election officials, by absentee ballot or by buying votes, which a
+  polling-place ID check does not reach; impersonation at the polls is the
+  smallest category among detected cases. Exclusion ran statewide: in 1965
+  Mississippi had registered 6.7 percent of voting-age Black residents.
 status: well-supported
 sources:
   - stance: supports
@@ -677,63 +666,56 @@ sources:
     date: '1969-09'
 comparisons:
   - id: case-methods
-    title: Documented US fraud cases in this report, by main method
+    title: The twenty cases, by method and whether a polling-place ID check would reach them
     description: >-
-      Twenty named cases, 1878–2020, each counted once under the method its
-      court or prosecution record describes as central. Cases whose record does
-      not say how the fraud was done are shown separately.
+      Each documented case from 1878 to 2020, counted once under the method its
+      court or prosecution record puts at the centre. Colours show whether
+      checking each in-person voter's ID would have touched that method.
     unit: count
     valueLabel: Cases in this report
-    sources: [1, 3, 4, 5, 8, 9, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 28]
+    sources: [1, 3, 4, 5, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 28, 32, 35]
+    groupLabel: whether an ID check would reach it
+    allGroupsLabel: All cases
+    groups:
+      - 'No: no one voted under a false identity'
+      - 'Partly: judges took part'
+      - 'Yes: in-person impersonation'
+      - Method not confirmed
     items:
       - label: Officials stuffing, forging or miscounting ballots
         value: 8
+        values: [6, 2, 0, 0]
       - label: Absentee or mail ballot fraud
         value: 6
+        values: [6, 0, 0, 0]
       - label: Vote buying
         value: 2
+        values: [2, 0, 0, 0]
       - label: Voting in person in another's name, or repeatedly
         value: 2
         highlight: true
+        values: [0, 0, 2, 0]
       - label: Method not confirmed from a primary or court source
         value: 2
+        values: [0, 0, 0, 2]
     note: >-
       This is the report's own classification of the cases it lists, not a
-      sample of all US fraud. Officials: Baltimore 1878, Blaine County OK
-      (indictment upheld 1915), Kansas City 1936, New Orleans 1940, Harlan
-      County KY 1942, Logan County WV 1970, Darlington County SC 1982, Chicago
-      1982. Absentee or mail: St. Louis 1980, Luzerne County PA 1981, Alexander
-      County NC 1982, East Chicago 2003, North Carolina's 9th District 2018,
-      Paterson 2020. Vote buying: Duval County TX 1982, Clay County NC 1982. In
-      person: Tammany Hall's "repeaters" (late 19th century, known from a
-      historian quoted by the Supreme Court) and Washington 2004 (one voter
-      confirmed). Not confirmed: Texas 1948 (Box 13) and Illinois 1960. Several
-      cases used more than one method; Chicago 1982 also involved vote buying,
-      false registrations and absentee ballots, and Kansas City 1936 also
-      involved padded registrations and some repeat voting. Each is counted
-      once, under the method the record puts at its centre.
-  - id: id-reach
-    title: Would a polling-place ID check have reached it?
-    description: >-
-      The same twenty cases, by whether checking each in-person voter's ID
-      would have touched the method used.
-    unit: count
-    valueLabel: Cases in this report
-    sources: [3, 5, 8, 10, 13, 15, 32, 35]
-    items:
-      - label: 'No: done by officials, by mail or by buying votes'
-        value: 14
-      - label: 'Partly: in-person votes in others'' names, but cast with judges'' help'
-        value: 2
-      - label: 'Yes: the in-person impersonation an ID check targets'
-        value: 2
-        highlight: true
-      - label: Method not confirmed
-        value: 2
-    note: >-
-      "No" means no voter came to the polls under a false identity: officials
-      wrote in or altered ballots, ballots went by mail, or real voters sold
-      their votes. "Partly" covers Chicago 1982, where the 7th Circuit described
+      sample of all US fraud; the table under Observations gives each case's
+      source. Officials: Baltimore 1878, Blaine County OK (indictment upheld
+      1915), Kansas City 1936, New Orleans 1940, Harlan County KY 1942, Logan
+      County WV 1970, Darlington County SC 1982, Chicago 1982. Absentee or mail:
+      St. Louis 1980, Luzerne County PA 1981, Alexander County NC 1982, East
+      Chicago 2003, North Carolina's 9th District 2018, Paterson 2020. Vote
+      buying: Duval County TX 1982, Clay County NC 1982. In person: Tammany
+      Hall's "repeaters" (late 19th century, known from a historian quoted by
+      the Supreme Court) and Washington 2004 (one voter confirmed). Not
+      confirmed: Texas 1948 (Box 13) and Illinois 1960. Several cases used more
+      than one method; Chicago 1982 also involved vote buying, false
+      registrations and absentee ballots, and Kansas City 1936 also involved
+      padded registrations and some repeat voting. Each is counted once, under
+      the method the record puts at its centre. "No" means officials wrote in
+      or altered ballots, ballots went by mail, or real voters sold their
+      votes. "Partly" covers Chicago 1982, where the 7th Circuit described
       precinct captains or party members voting the names of dead and departed
       registrants while "cooperative election judges" failed to challenge
       them, and Kansas City 1936, where one witness saw a man vote two or three
@@ -759,7 +741,7 @@ comparisons:
       - label: False registration
         value: 386
       - label: Ineligible voting
-        value: 376
+        value: 380
       - label: Buying votes
         value: 208
       - label: Duplicate voting
@@ -779,8 +761,10 @@ comparisons:
         value: 8
     note: >-
       Counted by this report from the 1,619 rows of Heritage's own data file
-      (fraud_type column, case-insensitive match on each type name), covering
-      outcomes dated 1982–2025. Heritage calls the list "a sampling" that is
+      (fraud_type column, case-insensitive match on the key word of each type
+      name, so rows Heritage misspells, such as "Ineligable Voting" or
+      "Fraudlent use of absentee ballots", are counted), covering outcomes
+      dated 1982–2025. Heritage calls the list "a sampling" that is
       "not comprehensive", and it has no denominator of ballots cast. Of the 34 entries tagged
       "impersonation at the polls", 14 are also tagged as absentee-ballot fraud
       and 2 more describe mail ballots in their text, so at most 18 describe
@@ -806,7 +790,7 @@ comparisons:
         value: 1167
     note: >-
       News21 published counts only for these three categories. The residual is
-      2,068 minus the three named counts, which assumes the categories do not
+      2,068 minus the three named counts (2,068 − 491 − 400 − 10 = 1,167), which assumes the categories do not
       overlap; News21's statement that there were "207 cases of other types of
       fraud for every case of voter impersonation" is consistent with that.
       The residual is larger than any named category because the source does
@@ -928,48 +912,60 @@ dataStillNeeded:
 
 ### Case by case: how each fraud was done, and what happened {#election-fraud-and-voter-exclusion-history--case-table}
 
-| Case | How it was done (from the court or prosecution record) | Outcome, as of |
-| --- | --- | --- |
-| Baltimore, 1878 | Election judges put "twenty (and more)" unvoted ballots into the box: ballot-box stuffing [12](#source-election-fraud-and-voter-exclusion-history-12) | Convicted and sentenced; Supreme Court heard their challenge (October 1879 term) |
-| Tammany Hall, New York, late 1800s | Paid "repeaters" voted several times in person, changing their whiskers between votes; known from a 1928 history quoted by the Supreme Court [13](#source-election-fraud-and-voter-exclusion-history-13) | No prosecution record read |
-| Blaine County, Oklahoma | County election board left lawful precinct returns out of the count [16](#source-election-fraud-and-voter-exclusion-history-16) | Indictment reinstated by the Supreme Court, 1915 |
-| Kansas City, 1936 | Registration padded with "ghosts and sleepers"; officials wrote in ballots for them, stuffed the box, did not count real votes and changed Republican ballots to Democratic ones; one witness saw a man vote two or three times [8](#source-election-fraud-and-voter-exclusion-history-8) [9](#source-election-fraud-and-voter-exclusion-history-9) [10](#source-election-fraud-and-voter-exclusion-history-10) | 259 convictions [7](#source-election-fraud-and-voter-exclusion-history-7); appeals read here affirmed, 1937–39 |
-| New Orleans, 1940 primary | Commissioners of election altered eighty-three and fourteen ballots and falsely certified the totals [17](#source-election-fraud-and-voter-exclusion-history-17) | Indictment reached the Supreme Court, 1941; trial outcome not read |
-| Harlan County, Kentucky, 1942 | Election officers tore out blank ballots, marked and forged them, and put them in the box [18](#source-election-fraud-and-voter-exclusion-history-18) | Supreme Court reversed the dismissal of the indictment, 1944; trial outcome not read |
-| Texas Senate primary, 1948 (Box 13) | **Method not confirmed.** The court record shows only that Stevenson alleged votes "fraudulently counted for Johnson" [20](#source-election-fraud-and-voter-exclusion-history-20) | Outcome not covered by the record read |
-| Illinois, 1960 | **Method not confirmed.** A recount of paper-ballot precincts found votes stolen from the Republican state's attorney, far fewer from Nixon [21](#source-election-fraud-and-voter-exclusion-history-21) | Kennedy's win stood |
-| Logan County, West Virginia, 1970 primary | Three election officials cast "false and fictitious votes" on the machines and destroyed poll slips [19](#source-election-fraud-and-voter-exclusion-history-19) | Convictions affirmed by the Supreme Court, 1974 |
-| St. Louis, 1980 | Ward organisation opened absentee ballots and re-punched them [23](#source-election-fraud-and-voter-exclusion-history-23) | Affirmed in part, reversed in part, 1988 |
-| Luzerne County, Pennsylvania, 1981 | False and fraudulent absentee ballot materials [22](#source-election-fraud-and-voter-exclusion-history-22) | Two convicted (by April 1984) |
-| Darlington County, South Carolina, 1982 primary | Poll officials forged names on the poll list and voted ballots for "no show" voters [22](#source-election-fraud-and-voter-exclusion-history-22) | Two guilty pleas (by April 1984) |
-| Alexander County, North Carolina, 1982 | A deputy sheriff and deputy court clerk voted nursing-home residents' absentee ballots [22](#source-election-fraud-and-voter-exclusion-history-22) | Five convicted (by April 1984) |
-| Clay County, North Carolina, 1982 | Votes bought for $50 to $125, by workers for both parties [22](#source-election-fraud-and-voter-exclusion-history-22) | Eight convicted, the defeated sheriff pleaded guilty (by April 1984) |
-| Duval County, Texas, 1982 primary | Votes bought with food stamps and welfare benefits [1](#source-election-fraud-and-voter-exclusion-history-1) | 21 of 29 indicted convicted (by April 1985) |
-| Chicago, 1982 | Election judges cast ballots in the names of voters who had died or moved; judges voted nursing-home residents' ballots; voters paid $2.00; non-residents falsely registered; dead and departed names left on the rolls [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) | 58 convicted by April 1985 [1](#source-election-fraud-and-voter-exclusion-history-1); 63 of 65 prosecuted [2](#source-election-fraud-and-voter-exclusion-history-2) |
-| East Chicago, Indiana, 2003 primary | Absentee ballots held, marked in voters' presence, and bought for cash [24](#source-election-fraud-and-voter-exclusion-history-24) | Special election ordered, August 2004; 47 convicted or pleaded guilty (by October 2008) [25](#source-election-fraud-and-voter-exclusion-history-25) |
-| Washington governor's race, 2004 | 19 "ghost voters" found; one voter confirmed to have voted in person in another's name [15](#source-election-fraud-and-voter-exclusion-history-15) | One confirmed case (as of 2008) |
-| North Carolina 9th District, 2018 | Paid workers collected absentee request forms and ballots, falsified witness signatures and filled out ballots [26](#source-election-fraud-and-voter-exclusion-history-26) | New election ordered, March 2019; all workers but Dowless pleaded guilty, Dowless died before trial (as of March 2025) [27](#source-election-fraud-and-voter-exclusion-history-27) |
-| Paterson, New Jersey, 2020 | Hundreds of mail ballots found bundled in mailboxes; the winner charged with mail-ballot fraud [28](#source-election-fraud-and-voter-exclusion-history-28) [29](#source-election-fraud-and-voter-exclusion-history-29) | New election ordered, August 2020; Mendez indictment dismissed April 2026, state appealing; Jackson's charges being dropped (as of May 2026) [30](#source-election-fraud-and-voter-exclusion-history-30) |
+| Case | How it was done | ID check reaches it? | Outcome, as of |
+| --- | --- | --- | --- |
+| Baltimore, 1878 | Election judges stuffed the box with "twenty (and more)" unvoted ballots [12](#source-election-fraud-and-voter-exclusion-history-12) | No | Convicted; Supreme Court heard their challenge, 1879 |
+| Tammany Hall, New York, late 1800s | Paid "repeaters" voted several times in person, changing their whiskers between votes [13](#source-election-fraud-and-voter-exclusion-history-13) | Yes | No prosecution record read |
+| Blaine County, Oklahoma | County election board left lawful precinct returns out of the count [16](#source-election-fraud-and-voter-exclusion-history-16) | No | Indictment reinstated by the Supreme Court, 1915 |
+| Kansas City, 1936 | Officials wrote in ballots for padded "ghosts and sleepers", stuffed boxes and changed votes; one man seen voting two or three times [8](#source-election-fraud-and-voter-exclusion-history-8) [9](#source-election-fraud-and-voter-exclusion-history-9) [10](#source-election-fraud-and-voter-exclusion-history-10) | Partly | 259 convictions [7](#source-election-fraud-and-voter-exclusion-history-7); appeals read here affirmed, 1937–39 |
+| New Orleans, 1940 primary | Commissioners altered eighty-three and fourteen ballots and falsely certified the totals [17](#source-election-fraud-and-voter-exclusion-history-17) | No | Indictment reached the Supreme Court, 1941; trial outcome not read |
+| Harlan County, Kentucky, 1942 | Election officers forged blank ballots and put them in the box [18](#source-election-fraud-and-voter-exclusion-history-18) | No | Supreme Court reinstated the indictment, 1944; trial outcome not read |
+| Texas Senate primary, 1948 (Box 13) | Not confirmed: Stevenson alleged votes "fraudulently counted for Johnson" [20](#source-election-fraud-and-voter-exclusion-history-20) | Not known | Not covered by the record read |
+| Illinois, 1960 | Not confirmed: a recount found votes stolen from the Republican state's attorney, far fewer from Nixon [21](#source-election-fraud-and-voter-exclusion-history-21) | Not known | Kennedy's win stood |
+| Logan County, West Virginia, 1970 primary | Three officials cast "false and fictitious votes" on the machines and destroyed poll slips [19](#source-election-fraud-and-voter-exclusion-history-19) | No | Convictions affirmed by the Supreme Court, 1974 |
+| St. Louis, 1980 | Ward organisation opened absentee ballots and re-punched them [23](#source-election-fraud-and-voter-exclusion-history-23) | No | Affirmed in part, reversed in part, 1988 |
+| Luzerne County, Pennsylvania, 1981 | False and fraudulent absentee ballot materials [22](#source-election-fraud-and-voter-exclusion-history-22) | No | Two convicted (by April 1984) |
+| Darlington County, South Carolina, 1982 primary | Poll officials forged names on the poll list and voted for "no show" voters [22](#source-election-fraud-and-voter-exclusion-history-22) | No | Two guilty pleas (by April 1984) |
+| Alexander County, North Carolina, 1982 | A deputy sheriff and deputy court clerk voted nursing-home residents' absentee ballots [22](#source-election-fraud-and-voter-exclusion-history-22) | No | Five convicted (by April 1984) |
+| Clay County, North Carolina, 1982 | Votes bought for $50 to $125 by workers for both parties [22](#source-election-fraud-and-voter-exclusion-history-22) | No | Eight convicted; the defeated sheriff pleaded guilty (by April 1984) |
+| Duval County, Texas, 1982 primary | Votes bought with food stamps and welfare benefits [1](#source-election-fraud-and-voter-exclusion-history-1) | No | 21 of 29 indicted convicted (by April 1985) |
+| Chicago, 1982 | Judges cast ballots in the names of dead or departed voters and of nursing-home residents; voters paid $2.00; false registrations [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) | Partly | 58 convicted by April 1985 [1](#source-election-fraud-and-voter-exclusion-history-1); 63 of 65 prosecuted [2](#source-election-fraud-and-voter-exclusion-history-2) |
+| East Chicago, Indiana, 2003 primary | Absentee ballots held, marked in voters' presence and bought for cash [24](#source-election-fraud-and-voter-exclusion-history-24) | No | Special election ordered, August 2004; 47 convicted or pleaded guilty (by October 2008) [25](#source-election-fraud-and-voter-exclusion-history-25) |
+| Washington governor's race, 2004 | 19 "ghost voters" found; one confirmed to have voted in person in another's name [15](#source-election-fraud-and-voter-exclusion-history-15) | Yes | One confirmed case (as of 2008) |
+| North Carolina 9th District, 2018 | Paid workers collected absentee requests and ballots, faked witness signatures and filled out ballots [26](#source-election-fraud-and-voter-exclusion-history-26) | No | New election ordered, March 2019; all workers but Dowless pleaded guilty, and Dowless died before trial (as of March 2025) [27](#source-election-fraud-and-voter-exclusion-history-27) |
+| Paterson, New Jersey, 2020 | Hundreds of mail ballots found bundled in mailboxes; the winner charged with mail-ballot fraud [28](#source-election-fraud-and-voter-exclusion-history-28) [29](#source-election-fraud-and-voter-exclusion-history-29) | No | New election ordered, August 2020; Mendez indictment dismissed April 2026, state appealing; Jackson's charges being dropped (as of May 2026) [30](#source-election-fraud-and-voter-exclusion-history-30) |
 
 ### Most documented fraud was done by the people running the election {#election-fraud-and-voter-exclusion-history--officials-did-the-fraud}
 
-In eight of the twenty cases the record puts election officials at the centre: judges and commissioners stuffing the box, forging ballots or leaving returns out of the count. [12](#source-election-fraud-and-voter-exclusion-history-12) [16](#source-election-fraud-and-voter-exclusion-history-16) [17](#source-election-fraud-and-voter-exclusion-history-17) [18](#source-election-fraud-and-voter-exclusion-history-18) [19](#source-election-fraud-and-voter-exclusion-history-19) [22](#source-election-fraud-and-voter-exclusion-history-22) In Chicago in 1982 the 7th Circuit found that election judges themselves filled out ballot applications in the names of voters who had moved away or died and cast the ballots, so that more than one-third of the 330 votes in one precinct were fraudulent. [3](#source-election-fraud-and-voter-exclusion-history-3) In a second Chicago precinct, a Republican election judge cast ballots for names a Democratic precinct captain gave her on slips of paper. [4](#source-election-fraud-and-voter-exclusion-history-4)
+In eight of the twenty cases, election officials did the fraud themselves: stuffing the box, forging ballots or leaving returns out of the count. [12](#source-election-fraud-and-voter-exclusion-history-12) [16](#source-election-fraud-and-voter-exclusion-history-16) [17](#source-election-fraud-and-voter-exclusion-history-17) [18](#source-election-fraud-and-voter-exclusion-history-18) [19](#source-election-fraud-and-voter-exclusion-history-19) [22](#source-election-fraud-and-voter-exclusion-history-22)
+
+In Chicago in 1982, election judges cast ballots in the names of voters who had moved or died, more than one-third of the votes in one precinct. [3](#source-election-fraud-and-voter-exclusion-history-3) In another precinct, a Republican judge voted names a Democratic precinct captain gave her on slips of paper. [4](#source-election-fraud-and-voter-exclusion-history-4)
 
 ### Machine fraud was large, and was prosecuted {#election-fraud-and-voter-exclusion-history--machine-fraud-real-and-prosecuted}
 
-After Kansas City's 1936 election, federal prosecutors won 259 convictions; the district judge noted that in the ninth trial in the series no defendant had yet been acquitted by a jury. [7](#source-election-fraud-and-voter-exclusion-history-7) [11](#source-election-fraud-and-voter-exclusion-history-11) In one Kansas City precinct the Republican congressional candidate received 120 votes and was credited with 46. [8](#source-election-fraud-and-voter-exclusion-history-8) After Chicago's 1982 election, 58 people, including city employees and election judges, had been convicted by April 1985; the US Attorney's office later put it at 63 of 65 prosecuted. [1](#source-election-fraud-and-voter-exclusion-history-1) [2](#source-election-fraud-and-voter-exclusion-history-2)
+Kansas City's 1936 fraud led to hundreds of convictions and Chicago's 1982 fraud to dozens (see the table). [7](#source-election-fraud-and-voter-exclusion-history-7) [1](#source-election-fraud-and-voter-exclusion-history-1) [2](#source-election-fraud-and-voter-exclusion-history-2) In Kansas City's ninth trial, the judge noted no jury had yet acquitted a defendant. [11](#source-election-fraud-and-voter-exclusion-history-11)
+
+In one Kansas City precinct, the Republican congressional candidate received 120 votes and was credited with 46. [8](#source-election-fraud-and-voter-exclusion-history-8)
 
 ### Kansas City's organisers chose not to send impersonators {#election-fraud-and-voter-exclusion-history--kansas-city-no-repeaters}
 
-A precinct captain testified that he put about 150 "ghosts and sleepers" on the registration list, and that when he asked whether people would be sent to cast their votes, his ward bosses said they were "not sending repeaters" because "it would be easier to write in the votes". He then stuffed the box himself. [8](#source-election-fraud-and-voter-exclusion-history-8) In another precinct about 150 names were written into the poll book after the polls closed and the same number of ballots added. [9](#source-election-fraud-and-voter-exclusion-history-9) One witness in a third precinct did see a man vote two or three times. [10](#source-election-fraud-and-voter-exclusion-history-10)
+A precinct captain testified that he put about 150 "ghosts and sleepers" on the roll. His ward bosses were "not sending repeaters" because "it would be easier to write in the votes", so he stuffed the box himself. [8](#source-election-fraud-and-voter-exclusion-history-8)
+
+In another precinct about 150 names were written into the poll book after the polls closed, with as many ballots added. [9](#source-election-fraud-and-voter-exclusion-history-9) In a third, one witness did see a man vote two or three times. [10](#source-election-fraud-and-voter-exclusion-history-10)
 
 ### In-person voting in other people's names is in the record too {#election-fraud-and-voter-exclusion-history--in-person-ghost-voting}
 
-The record does contain the kind of fraud a polling-place ID check is aimed at. Tammany Hall's paid "repeaters" voted several times each, changing their facial hair between votes. [13](#source-election-fraud-and-voter-exclusion-history-13) The 7th Circuit described Chicago's "ghost voters" in 1987: precinct captains "vote their proxies on election day or find some reliable party member to do so", while "cooperative election judges refrain from challenging multiple votes by the same person under different names". [5](#source-election-fraud-and-voter-exclusion-history-5) In Washington in 2004, one of 19 suspected "ghost voters" was confirmed to have voted in person in someone else's name. [15](#source-election-fraud-and-voter-exclusion-history-15)
+The record does contain the fraud a polling-place ID check is aimed at. Tammany Hall's paid "repeaters" voted several times each, changing their facial hair between votes. [13](#source-election-fraud-and-voter-exclusion-history-13)
+
+In Chicago, the 7th Circuit wrote in 1987, precinct captains "vote their proxies on election day or find some reliable party member to do so", while "cooperative election judges refrain from challenging multiple votes by the same person under different names". [5](#source-election-fraud-and-voter-exclusion-history-5)
+
+In Washington in 2004, one of 19 suspected "ghost voters" was confirmed to have voted in person in someone else's name. [15](#source-election-fraud-and-voter-exclusion-history-15)
 
 ### Stale rolls supplied the names the fraud used {#election-fraud-and-voter-exclusion-history--stale-rolls-enabled-fraud}
 
-The Chicago fraud ran on registrations that should have been removed. Precinct workers found during the 1982 canvass that registrants had died or moved and left them on the list; ballots were then cast in those names. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) A 1987 lawsuit put the share of Chicago registrants who were "tombstones, vacant lots, and people who have moved out of the city" at 9%, an estimate made by a party to that lawsuit. [5](#source-election-fraud-and-voter-exclusion-history-5) Kansas City's fraud began with a padded registration list. [8](#source-election-fraud-and-voter-exclusion-history-8)
+Chicago's 1982 fraud used registrants whom precinct workers knew had died or moved but left on the list; ballots were then cast in their names. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) Kansas City's fraud began with a padded roll. [8](#source-election-fraud-and-voter-exclusion-history-8)
+
+A party to a 1987 lawsuit estimated that 9% of Chicago registrants were "tombstones, vacant lots, and people who have moved out of the city". [5](#source-election-fraud-and-voter-exclusion-history-5)
 
 ### The fraud was caught by investigators and courts, not by ID rules {#election-fraud-and-voter-exclusion-history--caught-by-prosecutors}
 
@@ -977,7 +973,9 @@ Chicago's 1982 fraud was exposed by an FBI investigation and a special grand jur
 
 ### Illinois 1960: fraud that was smaller than the presidential margin {#election-fraud-and-voter-exclusion-history--illinois-1960}
 
-Kennedy carried Illinois by about 9,000 votes. Edmund Kallina's study of the recount finds that paper-ballot precincts showed "a considerable number of votes" stolen from the Republican Cook County state's attorney, Benjamin Adamowski, and far fewer from Nixon; on his reading Adamowski would have won and Nixon would still have lost. How the votes were stolen is not described in the account read here. [21](#source-election-fraud-and-voter-exclusion-history-21)
+Kennedy carried Illinois by about 9,000 votes. Edmund Kallina's study of the recount finds "a considerable number of votes" stolen in paper-ballot precincts from the Republican state's attorney, Benjamin Adamowski, and far fewer from Nixon. [21](#source-election-fraud-and-voter-exclusion-history-21)
+
+On his reading, Adamowski would have won and Nixon would still have lost. How the votes were stolen is not described in the account read here. [21](#source-election-fraud-and-voter-exclusion-history-21)
 
 ### Chicago 1982's fraud favoured the candidate who lost the governor's race {#election-fraud-and-voter-exclusion-history--chicago-1982-margin}
 
@@ -985,27 +983,39 @@ The 1982 governor's race was decided by 5,074 votes statewide. [6](#source-elect
 
 ### The modern cases that changed results were absentee {#election-fraud-and-voter-exclusion-history--modern-result-changing-cases-absentee}
 
-In East Chicago in 2003, the challenger won the votes cast in person by 199 and lost the 1,950 absentee ballots by 477. [24](#source-election-fraud-and-voter-exclusion-history-24) In North Carolina's 9th District in 2018, Harris led by 905 votes, and the state board found the result "corrupted" by an absentee-ballot operation. [26](#source-election-fraud-and-voter-exclusion-history-26) Paterson's 2020 council election was rerun after mail-ballot problems. [28](#source-election-fraud-and-voter-exclusion-history-28) The Supreme Court noted in 2008 that East Chicago's fraud was "perpetrated using absentee ballots and not in-person fraud". [14](#source-election-fraud-and-voter-exclusion-history-14)
+All three modern results that were voided or rerun turned on absentee or mail ballots:
 
-## Observations {#election-fraud-and-voter-exclusion-history--observations-id-reach}
+| Election | The margin | What the record found |
+| --- | --- | --- |
+| East Chicago, 2003 primary | Challenger won the in-person vote by 199 and lost the 1,950 absentee ballots by 477 [24](#source-election-fraud-and-voter-exclusion-history-24) | Absentee fraud; special election ordered |
+| North Carolina 9th District, 2018 | Harris led by 905 votes [26](#source-election-fraud-and-voter-exclusion-history-26) | Result "corrupted" by an absentee-ballot operation; new election |
+| Paterson, 2020 council election | Not given in the record read | Mail-ballot problems; rerun [28](#source-election-fraud-and-voter-exclusion-history-28) |
+
+The Supreme Court noted in 2008 that East Chicago's fraud was "perpetrated using absentee ballots and not in-person fraud". [14](#source-election-fraud-and-voter-exclusion-history-14)
 
 ### An ID check would not have touched 14 of the 20 cases {#election-fraud-and-voter-exclusion-history--id-would-not-reach}
 
-In fourteen cases nobody came to the polls under a false identity: officials changed or added ballots, ballots went by mail, or real voters sold their votes. A check of each voter's ID at the door confirms that the voter is the person registered under that name, which the fraud in these cases never relied on. Levitt describes polling-place ID rules as designed for "people showing up at the polls pretending to be somebody else". [32](#source-election-fraud-and-voter-exclusion-history-32)
+In fourteen cases nobody came to the polls under a false identity: officials changed or added ballots, ballots went by mail, or real voters sold their votes.
+
+An ID check confirms that the voter is the person registered under that name, which this fraud never relied on. Levitt describes polling-place ID rules as designed for "people showing up at the polls pretending to be somebody else". [32](#source-election-fraud-and-voter-exclusion-history-32)
 
 ### Where in-person fraud happened, the people checking were often part of it {#election-fraud-and-voter-exclusion-history--checkers-complicit}
 
-In Chicago and Kansas City, votes were cast in other people's names at the polls, but with election judges taking part or looking away. [5](#source-election-fraud-and-voter-exclusion-history-5) [10](#source-election-fraud-and-voter-exclusion-history-10) An ID rule is enforced by those same judges. Whether a photo requirement would still have made the ghost voting harder (by forcing judges to accept missing ID openly, or deterring party workers) is not something the records measure.
+In Chicago and Kansas City, votes were cast in other people's names at the polls with election judges taking part or looking away. [5](#source-election-fraud-and-voter-exclusion-history-5) [10](#source-election-fraud-and-voter-exclusion-history-10) An ID rule is enforced by those same judges.
+
+Whether a photo requirement would still have made the ghost voting harder (by forcing judges to accept missing ID openly, or by deterring party workers) is not something the records measure.
 
 ### The Carter–Baker Commission held that ID would deter some of these methods {#election-fraud-and-voter-exclusion-history--carter-baker-id-deters}
 
-The 2005 commission found "no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election". It judged that a good ID system "could deter, detect, or eliminate" multiple voting and voting "using the identities of others or those who are deceased", the method in Chicago's ghost voting, and also called absentee ballots "the largest source of potential voter fraud". [35](#source-election-fraud-and-voter-exclusion-history-35)
+The 2005 commission found "no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election". [35](#source-election-fraud-and-voter-exclusion-history-35)
+
+It judged that a good ID system "could deter, detect, or eliminate" multiple voting and voting "using the identities of others or those who are deceased", the method of Chicago's ghost voting. It also called absentee ballots "the largest source of potential voter fraud". [35](#source-election-fraud-and-voter-exclusion-history-35)
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-heritage-methods}
 
 ### In Heritage's own list, impersonation at the polls is among the smallest categories {#election-fraud-and-voter-exclusion-history--heritage-impersonation-small}
 
-The Heritage Foundation's list of proven fraud cases tags 34 entries as "impersonation fraud at the polls", against 387 for absentee-ballot fraud, 386 for false registration and 208 for vote buying. Only "illegal assistance" and "altering the vote count" are smaller. [33](#source-election-fraud-and-voter-exclusion-history-33) [34](#source-election-fraud-and-voter-exclusion-history-34)
+Heritage tags far fewer entries as "impersonation fraud at the polls" than as absentee-ballot fraud, false registration or vote buying. Only "illegal assistance" and "altering the vote count" are smaller. [33](#source-election-fraud-and-voter-exclusion-history-33) [34](#source-election-fraud-and-voter-exclusion-history-34)
 
 ### Many of Heritage's impersonation entries involve mail ballots {#election-fraud-and-voter-exclusion-history--heritage-impersonation-mail}
 
@@ -1013,7 +1023,9 @@ Fourteen of the 34 impersonation entries are also tagged as absentee-ballot frau
 
 ### Indiana's ID law was upheld with no Indiana impersonation on record {#election-fraud-and-voter-exclusion-history--indiana-no-impersonation}
 
-When the Supreme Court upheld Indiana's photo-ID law in 2008, the lead opinion said the only fraud the law addresses is in-person impersonation, and "the record contains no evidence of any such fraud actually occurring in Indiana at any time in its history". It upheld the law anyway, citing "flagrant examples" documented elsewhere in US history and the risk to close elections. [14](#source-election-fraud-and-voter-exclusion-history-14)
+When the Supreme Court upheld Indiana's photo-ID law in 2008, the lead opinion said the only fraud the law addresses is in-person impersonation, and "the record contains no evidence of any such fraud actually occurring in Indiana at any time in its history". [14](#source-election-fraud-and-voter-exclusion-history-14)
+
+It upheld the law anyway, citing "flagrant examples" documented elsewhere in US history and the risk to close elections. [14](#source-election-fraud-and-voter-exclusion-history-14)
 
 ## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-heritage-methods}
 
@@ -1025,27 +1037,49 @@ Heritage calls its list "a sampling" that is "not comprehensive". [34](#source-e
 
 ### Two independent counts find impersonation rare among detected fraud {#election-fraud-and-voter-exclusion-history--impersonation-rare-modern}
 
-News21's 2012 database of 2,068 alleged cases since 2000 found 10 cases of in-person voter impersonation, against 491 of absentee-ballot fraud and 400 of registration fraud. [31](#source-election-fraud-and-voter-exclusion-history-31) Justin Levitt, counting every specific, credible allegation from 2000 to 2014 rather than prosecutions, found about 31 incidents while more than 1 billion ballots were cast in general and primary elections. [32](#source-election-fraud-and-voter-exclusion-history-32) Both share the detection limit above.
+In News21's database of alleged cases since 2000, in-person impersonation is by far the smallest named category. [31](#source-election-fraud-and-voter-exclusion-history-31)
+
+Justin Levitt, counting every specific, credible allegation from 2000 to 2014 rather than prosecutions, found about 31 incidents among more than 1 billion ballots cast in general and primary elections. [32](#source-election-fraud-and-voter-exclusion-history-32) Both counts share the detection limit above.
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
 
 ### Louisiana: from 44% of registrants to under 1% {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
 
-When Louisiana adopted its 1898 constitution, about 44% of its registered voters were Black. Under a "grandfather clause" and then, from 1921, an "interpretation test", the Black share of registrants "never exceeded one percent" until 1944. It rose to about 15% by 1956, after which a legislative committee and the Citizens Councils challenged Black voters on the rolls, and "thousands of Negroes, but virtually no whites, were purged". [36](#source-election-fraud-and-voter-exclusion-history-36)
+As the Supreme Court recounted in Louisiana v. United States (1965) [36](#source-election-fraud-and-voter-exclusion-history-36):
+
+| Year | Black share of Louisiana's registered voters |
+| --- | --- |
+| 1898, new constitution adopted | about 44% |
+| Under a "grandfather clause" and, from 1921, an "interpretation test", until 1944 | "never exceeded one percent" |
+| 1956 | about 15% |
+
+After 1956 a legislative committee and the Citizens Councils challenged Black voters on the rolls, and "thousands of Negroes, but virtually no whites, were purged". [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 ### Before the Voting Rights Act, registration barely moved {#election-fraud-and-voter-exclusion-history--pre-vra-stagnation}
 
-The Attorney General's estimates before Congress in 1965: Black registration in Alabama rose from 14.2% to 19.4% between 1958 and 1964, in Louisiana from 31.7% to 31.8% between 1956 and 1965, and in Mississippi from 4.4% to 6.4% between 1954 and 1964, with white registration "roughly 50 percentage points or more ahead". [37](#source-election-fraud-and-voter-exclusion-history-37) In the table Congress used in 2006, Mississippi's 1965 rates were 6.7 percent for Black residents and 69.9 percent for white residents. [38](#source-election-fraud-and-voter-exclusion-history-38)
+By the Attorney General's estimates to Congress in 1965, Black registration barely moved in the decade before the Act, with white registration "roughly 50 percentage points or more ahead". [37](#source-election-fraud-and-voter-exclusion-history-37)
+
+| State | Black registration, earlier | Black registration, latest |
+| --- | --- | --- |
+| Alabama | 14.2% (1958) | 19.4% (1964) |
+| Louisiana | 31.7% (1956) | 31.8% (1965) |
+| Mississippi | 4.4% (1954) | 6.4% (1964) |
+
+The table Congress used in 2006, charted above, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
 
 ### The tools turned on officials' discretion {#election-fraud-and-voter-exclusion-history--jim-crow-tools-discretionary}
 
-The courts found that Louisiana's interpretation test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not", and that registrars in 21 parishes used it against Black applicants. [36](#source-election-fraud-and-voter-exclusion-history-36) The other main tool, the poll tax, was a charge for voting; the Supreme Court struck it down for state elections in 1966. [40](#source-election-fraud-and-voter-exclusion-history-40) Whether a uniform, free photo ID resembles these tools is a judgement the sources do not settle.
+The courts found that Louisiana's interpretation test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not", and that registrars in 21 parishes used it against Black applicants. [36](#source-election-fraud-and-voter-exclusion-history-36)
+
+The other main tool, the poll tax, was a charge for voting; the Supreme Court struck it down for state elections in 1966. [40](#source-election-fraud-and-voter-exclusion-history-40) Whether a uniform, free photo ID resembles these tools is a judgement the sources do not settle.
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-2004}
 
 ### By 2004 the gaps had closed or nearly closed {#election-fraud-and-voter-exclusion-history--registration-gap-closed}
 
-In 2004 Black registration in Mississippi was 76.1 percent against 72.3 percent for whites; Black registration was higher than white in Georgia and Mississippi, and the largest remaining gap was Virginia's (68.2 against 57.4). The Supreme Court majority wrote that "there is no doubt that these improvements are in large part because of the Voting Rights Act". [38](#source-election-fraud-and-voter-exclusion-history-38)
+By 2004 Black registration was higher than white in Georgia and Mississippi; the largest remaining gap was Virginia's (57.4 percent against 68.2). [38](#source-election-fraud-and-voter-exclusion-history-38)
+
+The Supreme Court majority wrote that "there is no doubt that these improvements are in large part because of the Voting Rights Act". [38](#source-election-fraud-and-voter-exclusion-history-38)
 
 ### Remedies, in order {#election-fraud-and-voter-exclusion-history--remedies-timeline}
 
@@ -1060,7 +1094,18 @@ The spread of state voter-ID laws since 2000 is covered in [the report on ID rul
 
 ### Florida 2000: a removal list with many errors {#election-fraud-and-voter-exclusion-history--florida-2000-list}
 
-Florida's first 2000 list of supposed felons, dead people and duplicates had 181,157 names, about 65,776 of them identified as felons; about 8,000 were found to have been wrongly added in May 2000. Leon County could confirm 34 of nearly 700 names sent to it, and in Miami-Dade over half of the Black voters who appealed were reinstated. [43](#source-election-fraud-and-voter-exclusion-history-43) Stuart's analysis put errors at "probably more than 25%" of the list, with Black registrants more often listed in error and Republican county supervisors more likely to use it. [44](#source-election-fraud-and-voter-exclusion-history-44)
+Florida's first 2000 removal list, by the Civil Rights Commission's account [43](#source-election-fraud-and-voter-exclusion-history-43):
+
+| Category | Names |
+| --- | --- |
+| Supposed felons, dead people and duplicates | 181,157 |
+| Of those, identified as felons | about 65,776 |
+| Found in May 2000 to have been wrongly added | about 8,000 |
+| Leon County could confirm | 34 of nearly 700 sent to it |
+
+In Miami-Dade, over half of the Black voters who appealed were reinstated. [43](#source-election-fraud-and-voter-exclusion-history-43)
+
+Stuart's analysis put errors at "probably more than 25%" of the list, with Black registrants more often listed in error and Republican county supervisors more likely to use it. [44](#source-election-fraud-and-voter-exclusion-history-44)
 
 ### A competing reading of the Florida data {#election-fraud-and-voter-exclusion-history--florida-counter-reading}
 
@@ -1068,11 +1113,15 @@ Abigail Thernstrom testified to the Senate in 2001 that the Commission's own dat
 
 ### Georgia 2018: registrations on hold, with photo ID as the fallback {#election-fraud-and-voter-exclusion-history--georgia-exact-match}
 
-Under Georgia's "exact match" rule, more than 53,000 registrations were on hold in October 2018, nearly 70 percent of them from Black applicants by the Associated Press's analysis. Those voters could still vote by showing a driver's licence or state photo ID at the polls. [46](#source-election-fraud-and-voter-exclusion-history-46)
+In October 2018 more than 53,000 registrations were on hold under Georgia's "exact match" rule, nearly 70 percent of them from Black applicants by the Associated Press's analysis. [46](#source-election-fraud-and-voter-exclusion-history-46)
+
+Those voters could still vote by showing a driver's licence or state photo ID at the polls. [46](#source-election-fraud-and-voter-exclusion-history-46)
 
 ### Officials who refused to certify were made to certify {#election-fraud-and-voter-exclusion-history--certification-refusals}
 
-In June 2022, Otero County, New Mexico, certified its primary only after the state supreme court ordered it to. [47](#source-election-fraud-and-voter-exclusion-history-47) In November 2022, two Cochise County, Arizona, supervisors voted to delay certification past the legal deadline; a judge ordered certification, both were indicted, Peggy Judd pleaded guilty to a misdemeanour, and Tom Crosby was awaiting trial as of September 2025 (no later outcome found). [48](#source-election-fraud-and-voter-exclusion-history-48) Refusals in 2025–26 were not searched.
+In June 2022, Otero County, New Mexico, certified its primary only after the state supreme court ordered it to. [47](#source-election-fraud-and-voter-exclusion-history-47)
+
+In November 2022, two Cochise County, Arizona, supervisors voted to delay certification past the legal deadline. A judge ordered certification and both were indicted: Peggy Judd pleaded guilty to a misdemeanour, and Tom Crosby was awaiting trial as of September 2025 (no later outcome found). [48](#source-election-fraud-and-voter-exclusion-history-48) Refusals in 2025–26 were not searched.
 
 ### Northern Ireland: exclusion through the franchise and ward lines {#election-fraud-and-voter-exclusion-history--northern-ireland-comparator}
 
@@ -1084,7 +1133,11 @@ The fraud cases are counted in convictions and altered ballots per precinct; the
 
 ## About this data {#election-fraud-and-voter-exclusion-history--about}
 
-**What is measured.** Named cases where a court opinion, a Justice Department report or a state election board describes how fraud or exclusion was done, plus three compilations of detected modern fraud (Heritage, News21, Levitt) and the registration tables the Supreme Court reproduced. Court opinions are read in the Caselaw Access Project's text, which contains some scanning errors (for example "62.[6]"); quotes keep those errors rather than correcting them. The two case charts are this report's classification of the cases listed, and each case's row in the table gives the source for its method.
+**What is measured.** Named cases where a court opinion, a Justice Department report or a state election board describes how fraud or exclusion was done. Added to these are three compilations of detected modern fraud (Heritage, News21, Levitt) and the registration tables the Supreme Court reproduced.
+
+**How the cases are classified.** The case chart is this report's own classification of the cases listed; each case's row in the table gives the source for its method.
+
+**Scanning errors.** Court opinions are read in the Caselaw Access Project's text, which contains some scanning errors (for example "62.[6]"). Quotes keep those errors rather than correcting them.
 
 **Why there is no time series.** No source publishes a consistent count of election-crime prosecutions by year or method: the Justice Department's annual reports list examples, not totals, and the compilations differ in method and coverage. The registration figures are published for 1965 and 2004 in one table; the annual state tables that would make a series were not reached (see Data still needed).
 
