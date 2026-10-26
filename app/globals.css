@@ -653,17 +653,17 @@
     display: grid;
     gap: 0.2rem;
     padding: 0.7rem 0;
-    border-top: 1px solid var(--rule-light);
+    border-top: 1px solid var(--rule);
     font-size: 0.9375rem;
     line-height: 1.55;
   }
 
   .sv-data-needed li:last-child {
-    border-bottom: 1px solid var(--rule-light);
+    border-bottom: 1px solid var(--rule);
   }
 
   .sv-data-needed strong {
-    color: var(--ink-1);
+    color: var(--ink);
   }
 
   .sv-data-needed span {
@@ -2291,7 +2291,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   font: 600 15px/1.5 var(--font-sans);
   padding: 12px 0;
 }
-.sv-observations-count { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.sv-observations-count { color: var(--ink-3); font-weight: 400; margin-left: 6px; }
 .sv-observation-number { font: 600 12px var(--font-sans); margin-right: 6px; }
 .sv-chart__annotation-key { margin: 6px 0; font: 13px/1.5 var(--font-sans); color: #666; }
 
