@@ -341,9 +341,17 @@ export const qualifiedRangeSchema = z.strictObject(qualifiedRangeFields).refine(
  */
 export const figureNumberSchema = z.union([z.number().finite(), qualifiedPointSchema, qualifiedRangeSchema]);
 
+/**
+ * The body anchors this figure stands in for, when prose with its own
+ * `{#<fact>--<anchor>}` became this figure: each becomes an alias at the
+ * figure, so links written as `#fact-<fact>/<anchor>` still land on it.
+ */
+const replaces = z.array(slugId).min(1).optional();
+
 /** Fields every component figure shares. */
 const figureBase = {
   id: slugId,
+  replaces,
   title: z.string().min(1),
   /** The visible one-sentence orientation, and the screen-reader description. */
   description: z.string().min(1),
@@ -758,6 +766,7 @@ const figureQuoteSchema = z.object({
 export const quoteComparisonFigureSchema = z.object({
   kind: z.literal('quoteComparison'),
   id: slugId,
+  replaces,
   /** The question every quote answers; it is the figure's heading. */
   question: z.string().min(1),
   description: z.string().min(1).optional(),
@@ -768,6 +777,7 @@ export const quoteComparisonFigureSchema = z.object({
 export const pullQuoteFigureSchema = z.object({
   kind: z.literal('pullQuote'),
   id: slugId,
+  replaces,
   description: z.string().min(1).optional(),
   note: z.string().optional(),
   variant: z.enum(['pull', 'inline']).optional(),
@@ -779,6 +789,7 @@ export const pullQuoteFigureSchema = z.object({
 export const claimCheckFigureSchema = z.object({
   kind: z.literal('claimCheck'),
   id: slugId,
+  replaces,
   /** Verbatim, checked against `claimSource`'s quote (rule F11). */
   claim: z.string().min(1),
   claimant: z.object({ name: z.string().min(1), role: z.string().min(1).optional() }).optional(),
@@ -797,6 +808,7 @@ export const claimCheckFigureSchema = z.object({
 export const caveatListFigureSchema = z.object({
   kind: z.literal('caveatList'),
   id: slugId,
+  replaces,
   heading: z.string().min(1).default('What this does not show'),
   items: z
     .array(z.object({ measure: z.string().min(1), why: z.string().min(1), sources: z.array(citation).default([]) }))

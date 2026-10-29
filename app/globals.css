@@ -2874,6 +2874,11 @@
 .sv-target, .sv-factpage :target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
 .sv-factpage [id] { scroll-margin-top: 1.5rem; }
 h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
+/* A replaced anchor (`replaces`) is an empty mark before its figure: the
+   figure takes the highlight, without JavaScript too. */
+.sv-anchor-aliases > span { display: block; }
+.sv-factpage .sv-anchor-aliases > :target { background: none; outline: none; }
+.sv-factpage .sv-anchor-aliases:has(:target) + * { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
 .sv-evidence-index { margin-top: 1.5rem; }
 .sv-evidence-index > summary { cursor: pointer; font-size: .85rem; }
 

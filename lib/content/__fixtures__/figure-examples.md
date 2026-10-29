@@ -234,6 +234,7 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: federal-laws
+    replaces: [federal-laws-list]   # the bulleted list this table replaced; old links land here
     title: Federal voting laws and bills on registration and ID, 1965–2026
     description: >-
       The federal laws in force on registration and ID, and the two parties'

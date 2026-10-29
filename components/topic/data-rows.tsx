@@ -18,6 +18,7 @@ type ChartStepProps = { step: DataStep; number: number };
 function ChartStep({ step, number }: ChartStepProps) {
   return (
     <div className="sv-walk__step" data-chart>
+      {step.anchors.map(anchor => <span key={anchor} hidden data-chart-anchor={anchor} />)}
       <div className="sv-walk__chart">
         <ObservationStep observations={step.observations}>
           <div className="sv-slide">

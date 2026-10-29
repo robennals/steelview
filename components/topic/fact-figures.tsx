@@ -193,10 +193,26 @@ export function FactFigures({ fact, observations, subtleties, sections, featured
         return <Prose key={`section-${figure.id}`} html={(sections[figure.id] ?? '') + (observations[figure.id] ?? '') + (subtleties[figure.id] ?? '')} />;
       default:
         return <Viz key={`${figure.kind}-${figure.id}-${i}`} fact={fact} chart={figure.id} label={figureLabel(figure)}>
+          {figure.replaces && <AnchorAliases factId={fact.id} anchors={figure.replaces} target={figureDomId(fact, figure.id)} />}
           <FactFigure figure={figure} context={context} page={page} footer={groupProse(figure.id, { observations, subtleties })} />
         </Viz>;
     }
   });
+}
+
+/**
+ * The old anchors of prose a figure replaced (`replaces`), as empty elements
+ * just before it, so a link written before the conversion still lands on the
+ * figure. Placed before the figure rather than inside it, every kind gets
+ * them without passing them through its component; the highlight follows to
+ * the figure (globals.css with JavaScript off, revealEvidence with it on).
+ */
+function AnchorAliases({ factId, anchors, target }: { factId: string; anchors: string[]; target: string }) {
+  return (
+    <div className="sv-anchor-aliases">
+      {anchors.map(anchor => <span key={anchor} id={`${factId}--${anchor}`} data-alias-for={target} />)}
+    </div>
+  );
 }
 
 /** One library figure: the adapter's props into its component, with Observations as the frame's footer. */

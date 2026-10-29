@@ -1,6 +1,6 @@
 import { citedFactTargets, renderMarkdown } from './markdown';
 import { headlineFacts } from './rank-facts';
-import { componentFigure, factPath, figureLabel } from './types';
+import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
 import { factSlides, type PreviewSlide } from './preview';
 
@@ -110,8 +110,9 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
     const markdown = rest.join('\n').trim();
     for (const { id, section: observation } of citedFactTargets(markdown)) {
       const fact = topic.facts.find(f => f.id === id);
-      // A citation can also name a chart outright: `#fact-<fact>/chart-<id>`.
-      const key = observation && (groups.get(id)?.get(observation) ?? observation.match(/^chart-(.+)$/)?.[1]);
+      // A citation can also name a chart outright, `#fact-<fact>/chart-<id>`, or
+      // an old anchor of prose a figure now stands in for (`replaces`).
+      const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
       const chart = fact && key && chartFor(topic.slug, fact, key, observation);
       if (chart) return { heading: heading.trim(), markdown, chart, citation: `#fact-${id}/${observation}`, observation: `${id}--${observation}` };
     }
@@ -164,7 +165,15 @@ export type DataStep = {
   observations: { id: string; heading: string; html: string; mark?: ObservationMark }[];
   /** What the chart shows, for a chart with no observations of its own. */
   description: string;
+  /** The element ids a citation can name this chart by, so a viewpoint's step opens on it. */
+  anchors: string[];
 };
+
+/** A chart's own address, and each old anchor it stands in for (`replaces`). */
+function chartAnchors(fact: Fact, { chart, reading }: PreviewSlide): string[] {
+  const replaced = componentFigure(fact, chart)?.replaces ?? [];
+  return [`chart-${chart}`, ...(reading ? [`chart-${reading}`] : []), ...replaced].map(anchor => `${fact.id}--${anchor}`);
+}
 
 /**
  * Each data collection as a walkthrough of its charts, keyed by fact id: every
@@ -185,6 +194,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
       return {
         chart,
         description,
+        anchors: chartAnchors(fact, chart),
         observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
           id: `${fact.id}--${o.id}`,
           heading: o.heading,

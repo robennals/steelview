@@ -5,7 +5,7 @@ import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-e
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure } from './types';
-import { viewpointWalkthrough } from './walkthrough';
+import { renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -37,6 +37,27 @@ test('a citation of a chart by name picks that chart for its step', async () => 
   const viewpoint = topic.viewpoints.find(v => v.id === 'tighten-within-the-echr')!;
   const charts = viewpointWalkthrough(topic, { ...viewpoint, body: '### A step\n\n[The Bill](#fact-asylum-law-and-the-echr/chart-immigration-and-asylum-bill)' }).steps.map(s => s.chart?.chart);
   assert.deepEqual(charts, ['immigration-and-asylum-bill']);
+});
+
+test('a citation of an anchor a figure replaced picks that figure for its step', () => {
+  const topic = figureExamplesTopic();
+  const viewpoint = { ...topic.viewpoints[0], body: '### A step\n\n[The laws](#fact-figure-examples/federal-laws-list)' };
+  assert.deepEqual(viewpointWalkthrough(topic, viewpoint).steps.map(s => s.chart?.chart), ['federal-laws']);
+});
+
+test('a citation of a chart a figure replaced picks that figure, not the chart it no longer is', () => {
+  const topic = figureExamplesTopic();
+  const table = topic.facts[0].figures!.filter(isComponentFigure).find(f => f.id === 'federal-laws')!;
+  table.replaces = ['chart-old-laws'];
+  const viewpoint = { ...topic.viewpoints[0], body: '### A step\n\n[The laws](#fact-figure-examples/chart-old-laws)' };
+  assert.deepEqual(viewpointWalkthrough(topic, viewpoint).steps.map(s => s.chart?.chart), ['federal-laws']);
+});
+
+test('a data step answers to its chart\'s address and to each anchor its figure replaced, so a viewpoint opens on it', async () => {
+  const topic = figureExamplesTopic();
+  const steps = (await renderDataWalkthroughs(topic, topic.facts)).get(topic.facts[0].id)!;
+  const step = steps.find(s => s.chart.chart === 'federal-laws')!;
+  assert.deepEqual(step.anchors, ['figure-examples--chart-federal-laws', 'figure-examples--federal-laws-list']);
 });
 
 test('every headline data collection has something to walk through', async () => {

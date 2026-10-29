@@ -128,6 +128,11 @@ test('the body before its first heading reads after the claim and before the fir
   }
 });
 
+test('a replaced anchor is an alias just before its figure, so an old link lands on the figure', async () => {
+  const html = await renderFixture();
+  assert.match(html, /<div class="sv-anchor-aliases"><span id="figure-examples--federal-laws-list" data-alias-for="figure-examples--chart-federal-laws"><\/span><\/div><figure[^>]*id="figure-examples--chart-federal-laws"/);
+});
+
 test('with JavaScript off, a figure table is in default order and a map\'s areas are in its noscript table', async () => {
   const html = await renderFixture();
   const table = figureMarkup(html, 'figure-examples--chart-federal-laws');

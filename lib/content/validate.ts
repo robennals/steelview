@@ -408,7 +408,7 @@ function knownSection(fact: Fact, section: string): boolean {
     fact.series?.readings.some(reading => section === `chart-${reading.id}`) === true ||
     fact.additionalSeries?.some(s => section === `chart-${s.id}` || s.readings.some(r => section === `chart-${r.id}`)) === true ||
     fact.comparisons?.some(chart => section === `chart-${chart.id}`) === true ||
-    fact.figures?.some(figure => isComponentFigure(figure) && section === `chart-${figure.id}`) === true ||
+    fact.figures?.some(figure => isComponentFigure(figure) && (section === `chart-${figure.id}` || figure.replaces?.includes(section) === true)) === true ||
     fact.body.includes(`{#${fact.id}--${section}}`);
 }
 
@@ -481,6 +481,19 @@ export function figureErrors(f: Fact, topic: Topic): string[] {
     if (!isComponentFigure(figure) && figure.kind !== 'section') return;
     if (taken.has(figure.id)) errors.push(`${at(figure, i)} id "${figure.id}" is already used by another chart, reading or figure`);
     taken.add(figure.id);
+  });
+  // A replaced anchor becomes an element id on the page too, so it may not
+  // still be in the body, name a chart, or be replaced twice.
+  const chartAnchors = new Set([...taken].map(id => `chart-${id}`));
+  const replaced = new Set<string>();
+  figures.forEach((figure, i) => {
+    if (!isComponentFigure(figure)) return;
+    for (const anchor of figure.replaces ?? []) {
+      if (replaced.has(anchor)) errors.push(`${at(figure, i)} replaces "${anchor}", which another figure already replaces`);
+      else if (chartAnchors.has(anchor)) errors.push(`${at(figure, i)} replaces "${anchor}", which is the id of a chart or figure`);
+      else if (f.body.includes(`{#${f.id}--${anchor}}`)) errors.push(`${at(figure, i)} replaces "${anchor}", which is still an anchor in the body`);
+      replaced.add(anchor);
+    }
   });
 
   // F3 — once present, `figures` is the whole reading order: every chart

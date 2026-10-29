@@ -10,8 +10,11 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
     if (article) focusViz(article, null);
     return true;
   }
-  const target = Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === id);
-  if (!target) return false;
+  const found = Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === id);
+  if (!found) return false;
+  // An old anchor of prose a figure replaced stands in for that figure.
+  const aliasFor = found.dataset.aliasFor;
+  const target = (aliasFor && Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === aliasFor)) || found;
   // A target inside one visualization shows that visualization on its own;
   // anything else but a source, which every view keeps, shows the whole report.
   if (article && !target.closest('.sv-references')) focusViz(article, ownViz(target));

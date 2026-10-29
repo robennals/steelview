@@ -1006,6 +1006,16 @@ test('scatter plot: highlight ids are point ids', () => {
   assert.ok(hasError(topic, 'figure count-speed: highlight "tx" is not a point'));
 });
 
+test('a figure\'s replaced anchors are link targets, and may not clash with another id', () => {
+  const { topic, fact } = figuresTopic();
+  topic.viewpoints[0].body = 'See [the laws](#fact-figure-examples/federal-laws-list).';
+  assert.deepEqual(validateTopic(topic), []);
+  figureOf(fact, 'barChart').replaces = ['federal-laws-list', 'chart-federal-laws', 'older-law'];
+  assert.ok(hasError(topic, 'figure wa-by-race: replaces "federal-laws-list", which another figure already replaces'));
+  assert.ok(hasError(topic, 'figure wa-by-race: replaces "chart-federal-laws", which is the id of a chart or figure'));
+  assert.ok(hasError(topic, 'figure wa-by-race: replaces "older-law", which is still an anchor in the body'));
+});
+
 test('a viewpoint may cite a component figure by its chart id', () => {
   const { topic } = figuresTopic();
   topic.viewpoints[0].body = 'See [the rates](#fact-figure-examples/chart-wa-by-race).';

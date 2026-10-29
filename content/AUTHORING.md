@@ -356,7 +356,9 @@ The factual explanation. [1](#source-example-1)
 ```
 
 Link a pill to `#fact-example/why-arrivals-fell`; it opens the fact, scrolls the
-section into view and highlights it. Keep IDs when rewriting headings. A link to
+section into view and highlights it. Keep IDs when rewriting headings, and
+when prose becomes a figure, list its old IDs in the figure's `replaces` (see
+[Figures](#figures)) so existing links still land. A link to
 a supporting fact opens its parent article at that finding; standalone URLs
 remain usable. `/finding` targets the opening finding.
 
@@ -972,6 +974,22 @@ table view — when the value is qualified; on an exact value it is only what
 `check:figures` looks for, so a fragment such as "(76%)" never replaces a
 number that says the same thing. Labels set as graphics (a bar's value, a
 key figure, a tile) use the short form, "at least 159".
+
+**Old links survive a conversion.** When a figure replaces prose that had
+its own anchors — a bulleted list headed `### The laws {#<fact>--laws-list}`
+turned into a `dataTable` — list them in the figure's `replaces`:
+
+```yaml
+  - kind: dataTable
+    id: federal-laws
+    replaces: [laws-list]     # #fact-<fact>/laws-list now lands on this table
+```
+
+Each becomes an empty anchor just before the figure, so links written as
+`#fact-<fact>/laws-list` scroll to the figure and highlight it, and the
+validator accepts them as link targets. Remove the heading from the body:
+an anchor may not be both replaced and still in the body, name a chart
+(`chart-<id>`), or be replaced by two figures.
 
 **Numbers stay traceable.** `asPublished` on a value gives the figure in the
 source's own words ("more than 7,200", "8.8%"); `check:figures` looks for that
@@ -1684,7 +1702,7 @@ them.
 | Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a tile map's `data` and `valueLabel` | `lib/content/schema.ts` (`figureSchema`) |
 | Qualified numbers: a known `qualifier`, ranges with `low` ≤ `high` and no `value`, no unknown keys, no range on a scatter point | `lib/content/schema.ts` (`figureNumberSchema`) |
 | A key figure gives its qualifier in its `value` or beside it, not both | `lib/content/validate.ts` (F8) |
-| Figure ids are unique and do not reuse a series, reading or comparison id | `lib/content/validate.ts` (`figureErrors`, F1) |
+| Figure ids are unique and do not reuse a series, reading or comparison id; a `replaces` anchor is not still in the body, not a chart id, and replaced once | `lib/content/validate.ts` (`figureErrors`, F1) |
 | Every figure citation — every number of every item's `sources` — is one of the fact's numbered sources, and every figure but a caveat list has one; an item gives `source` or `sources`, not both | `lib/content/validate.ts` (F2, F5), `lib/content/schema.ts` |
 | A series event's `sources` are the fact's numbered sources | `lib/content/validate.ts`, `seriesErrors` |
 | Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |

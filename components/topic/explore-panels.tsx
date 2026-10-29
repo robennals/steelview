@@ -120,7 +120,8 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
     dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
 
     // Straight to the chart holding the observation, with nothing to scroll past.
-    const slide = dialog.querySelector(`[data-observation="${CSS.escape(observation)}"]`)?.closest('.sv-walk__slide');
+    const target = CSS.escape(observation);
+    const slide = dialog.querySelector(`[data-observation="${target}"], [data-chart-anchor="${target}"]`)?.closest('.sv-walk__slide');
     const strip = slide?.parentElement;
     if (slide && strip) strip.scrollLeft = Array.from(strip.children).indexOf(slide) * strip.clientWidth;
 

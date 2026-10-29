@@ -340,6 +340,9 @@ export const figureExamplesFact: Fact = {
     {
       "kind": "dataTable",
       "id": "federal-laws",
+      "replaces": [
+        "federal-laws-list"
+      ],
       "title": "Federal voting laws and bills on registration and ID, 1965–2026",
       "description": "The federal laws in force on registration and ID, and the two parties' main bills of the past five years, with what became of each.",
       "sources": [],
