@@ -1826,8 +1826,7 @@
   /* An inline citation: prose saying, at the point of use, that this clause
      is standing on a fact the page will show you. The text keeps full ink
      strength for readability and a quiet dotted accent rule under it
-     carries the signal, closed by the same filled disc the fact statuses use for "the
-     evidence is solid". A principle citation gets the same rule in the
+     carries the signal. A principle citation gets the same rule in the
      principle hue, so the two kinds of support stay distinguishable. */
   .prose-body a.sv-cite,
   .prose-body a.sv-principle-cite {
@@ -1886,17 +1885,6 @@
   .prose-body a.sv-needed-cite:focus-visible {
     background: var(--paper-sunk);
     box-shadow: 0 0 0 0.18em var(--paper-sunk);
-  }
-
-  .prose-body a.sv-cite::after {
-    content: "";
-    display: inline-block;
-    width: 0.34em;
-    height: 0.34em;
-    margin-left: 0.18em;
-    border-radius: 999px;
-    background: var(--accent);
-    vertical-align: 0.42em;
   }
 
   /* --------------------------------------------------- a fact's own page */
