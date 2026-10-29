@@ -662,9 +662,19 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       }
       break;
     }
-    case 'quoteComparison':
+    case 'quotes': {
       for (const quote of figure.quotes) errors.push(...verbatimErrors(where, quote.text, quote.sources, f));
+      // A stance names a category; a category no quote takes would be an empty filter.
+      const ids = (figure.categories ?? []).map(c => c.id);
+      if (new Set(ids).size !== ids.length) errors.push(`${where} category ids must be unique`);
+      for (const quote of figure.quotes) {
+        if (quote.stance === undefined) continue;
+        if (!figure.categories) errors.push(`${where} quote by "${quote.speaker}" has stance "${quote.stance}", but the figure has no \`categories\``);
+        else if (!ids.includes(quote.stance)) errors.push(`${where} quote by "${quote.speaker}" has unknown stance "${quote.stance}"`);
+      }
+      for (const id of ids) if (!figure.quotes.some(quote => quote.stance === id)) errors.push(`${where} category "${id}" has no quote`);
       break;
+    }
     case 'pullQuote':
       errors.push(...verbatimErrors(where, figure.quote.text, figure.quote.sources, f));
       break;

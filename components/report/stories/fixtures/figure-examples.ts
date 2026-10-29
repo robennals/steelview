@@ -259,6 +259,38 @@ export const figureExamplesFact: Fact = {
       "url": "https://example.org/fixture/31",
       "publisher": "Fixture Casualty Counter",
       "date": "2026-05"
+    },
+    {
+      "stance": "complicates",
+      "quote": "Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen. Die Zulassung der Briefwahl dient aber dem Ziel, eine möglichst umfassende Wahlbeteiligung zu erreichen.",
+      "title": "Fixture: Federal Constitutional Court, 2 BvC 7/10",
+      "url": "https://example.org/fixture/32",
+      "publisher": "Federal Constitutional Court of Germany",
+      "date": "2013-07-09"
+    },
+    {
+      "stance": "complicates",
+      "quote": "All political parties welcomed and supported postal voting on demand. Until very recently, none has treated electoral fraud as representing a problem.",
+      "title": "Fixture: Birmingham election court judgment",
+      "url": "https://example.org/fixture/33",
+      "publisher": "Election Court",
+      "date": "2005-04-04"
+    },
+    {
+      "stance": "complicates",
+      "quote": "It was argued that unrestricted postal voting undermines the fundamental secrecy of the ballot.",
+      "title": "Fixture: Securing the ballot (Pickles review)",
+      "url": "https://example.org/fixture/34",
+      "publisher": "UK Cabinet Office",
+      "date": "2016-08"
+    },
+    {
+      "stance": "supports",
+      "quote": "There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail. Oregon voters report high satisfaction with voting by mail.",
+      "title": "Fixture: Oregon's mail elections",
+      "url": "https://example.org/fixture/35",
+      "publisher": "The Conversation",
+      "date": "2020-09-03"
     }
   ],
   "series": {
@@ -805,7 +837,7 @@ export const figureExamplesFact: Fact = {
       ]
     },
     {
-      "kind": "quoteComparison",
+      "kind": "quotes",
       "id": "damage-claims",
       "question": "What did the strikes do to Iran's enriched uranium?",
       "description": "Four answers from the US government, an independent institute and the IAEA.",
@@ -834,6 +866,79 @@ export const figureExamplesFact: Fact = {
           "context": "Report to the Board of Governors",
           "sources": [
             1
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "quotes",
+      "id": "postal-secrecy",
+      "question": "Does postal voting give up the secrecy of the ballot?",
+      "description": "Two courts, a government review and a researcher, on what is lost when a ballot is filled in at home.",
+      "categoryLabel": "Who is speaking",
+      "categories": [
+        {
+          "id": "court",
+          "label": "Courts"
+        },
+        {
+          "id": "review",
+          "label": "Government reviews"
+        },
+        {
+          "id": "research",
+          "label": "Researchers"
+        }
+      ],
+      "quotes": [
+        {
+          "text": "Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen … eine möglichst umfassende Wahlbeteiligung zu erreichen",
+          "speaker": "Federal Constitutional Court of Germany",
+          "date": "2013-07-09",
+          "stance": "court",
+          "translation": "With postal voting, public control of how the vote is cast is reduced … [it serves the aim of] the widest possible turnout. (This report's translation.)",
+          "lang": "de",
+          "sources": [
+            32
+          ]
+        },
+        {
+          "text": "Until very recently, none has treated electoral fraud as representing a problem.",
+          "speaker": "Richard Mawrey QC",
+          "role": "Election commissioner",
+          "date": "2005-04-04",
+          "context": "Birmingham election court judgment",
+          "stance": "court",
+          "sources": [
+            33
+          ]
+        },
+        {
+          "text": "unrestricted postal voting undermines the fundamental secrecy of the ballot",
+          "speaker": "Sir Eric Pickles's review",
+          "date": "2016-08",
+          "context": "Reporting submissions to the review",
+          "stance": "review",
+          "sources": [
+            34
+          ]
+        },
+        {
+          "text": "There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail.",
+          "speaker": "Priscilla Southwell",
+          "date": "2020-09-03",
+          "stance": "research",
+          "sources": [
+            35
+          ]
+        },
+        {
+          "text": "Oregon voters report high satisfaction with voting by mail.",
+          "speaker": "Priscilla Southwell",
+          "date": "2020-09-03",
+          "stance": "research",
+          "sources": [
+            35
           ]
         }
       ]

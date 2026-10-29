@@ -2321,6 +2321,7 @@
   .sv-slide__figure .sv-footnote,
   .sv-slide__figure .sv-timeline__controls,
   .sv-slide__figure .sv-timeline__key,
+  .sv-slide__figure .sv-quote-browser__controls,
   .sv-slide__figure .sv-control__status { display: none; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }

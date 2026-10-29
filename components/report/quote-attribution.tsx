@@ -13,6 +13,10 @@ export type Quote = {
   id?: string;
   /** The words, verbatim. Never paraphrased: a paraphrase is the editor speaking. */
   text: string;
+  /** The language of `text` when it is not the page's (a BCP 47 tag, "de"), so it is read aloud in that language. */
+  lang?: string;
+  /** The words in the page's language when `text` is not in it. Shown beside the quote, never as the quote. */
+  translation?: string;
   speaker: string;
   /** Role or affiliation: "Shadow Home Secretary", "Official statistics". */
   role?: string;
@@ -30,6 +34,19 @@ export function quoteAnchor(quote: Quote): string {
   if (quote.id) return `quote-${quote.id}`;
   const opening = quote.text.split(/\s+/).slice(0, 6).join(' ');
   return `quote-${slugify([quote.speaker, quote.date ?? '', opening].join(' '))}`;
+}
+
+/**
+ * The translation of a quote in another language, set beside the verbatim
+ * words in the apparatus voice and labelled, without quotation marks: the
+ * translation is somebody's rendering, not what was said.
+ */
+export function QuoteTranslation({ translation }: { translation: string }) {
+  return (
+    <p className="sv-quote__translation">
+      <span className="sv-quote__translation-label">Translation:</span> {translation}
+    </p>
+  );
 }
 
 /**

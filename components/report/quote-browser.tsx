@@ -4,7 +4,7 @@ import { useId, useMemo, useState, type ReactNode } from 'react';
 import { ChoiceGroup, FilterChips } from './controls';
 import { ReportFigure } from './figure';
 import { compareDates } from './format';
-import { QuoteAttribution, quoteAnchor, type Quote } from './quote-attribution';
+import { QuoteAttribution, QuoteTranslation, quoteAnchor, type Quote } from './quote-attribution';
 import type { SourceCredit } from './types';
 
 export type QuoteSort = 'oldest' | 'newest';
@@ -21,12 +21,18 @@ export type QuoteBrowserProps = {
   /** Order of the position chips. Alphabetical when omitted, so no side is listed first by editorial choice. */
   positions?: string[];
   tagLabel?: string;
+  /** Heading of the speaker filter, shown only when some speaker is quoted more than once. */
+  speakerLabel?: string;
   /** Chronological either way; oldest first by default, so the record reads in the order it was made. */
   defaultSort?: QuoteSort;
   /** Quotes longer than this many characters are clamped behind "Read full quote". */
   clampAt?: number;
   /** Words to start the search with, e.g. from a link that points at one speaker's quotes. */
   initialSearch?: string;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
 };
 
 const SORTS = [
@@ -35,8 +41,8 @@ const SORTS = [
 ];
 
 /**
- * A collection of sourced quotes a reader can narrow by position, topic and
- * words, shown in date order.
+ * A collection of sourced quotes a reader can narrow by position, topic,
+ * speaker and words, shown in date order.
  *
  * Neutrality is structural here: every position is set in the same type, the
  * order is the calendar's rather than the editor's, and the "Showing n of m"
@@ -53,13 +59,17 @@ export function QuoteBrowser({
   positionLabel = 'Position',
   positions,
   tagLabel = 'Topic',
+  speakerLabel = 'Speaker',
   defaultSort = 'oldest',
   clampAt = 320,
   initialSearch = '',
+  footer,
+  panel,
 }: QuoteBrowserProps) {
   const searchId = useId();
   const [selectedPositions, setSelectedPositions] = useState<Set<string>>(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [selectedSpeakers, setSelectedSpeakers] = useState<Set<string>>(new Set());
   const [query, setQuery] = useState(initialSearch);
   const [sort, setSort] = useState<QuoteSort>(defaultSort);
 
@@ -68,6 +78,7 @@ export function QuoteBrowser({
     [quotes, positions],
   );
   const tagChoices = useMemo(() => chipChoices(quotes.flatMap(q => q.tags ?? [])), [quotes]);
+  const speakerChoices = useMemo(() => chipChoices(quotes.map(q => q.speaker)), [quotes]);
 
   const shown = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -75,7 +86,8 @@ export function QuoteBrowser({
       q =>
         (selectedPositions.size === 0 || (q.position !== undefined && selectedPositions.has(q.position))) &&
         (selectedTags.size === 0 || (q.tags ?? []).some(tag => selectedTags.has(tag))) &&
-        (needle === '' || q.text.toLowerCase().includes(needle) || q.speaker.toLowerCase().includes(needle)),
+        (selectedSpeakers.size === 0 || selectedSpeakers.has(q.speaker)) &&
+        (needle === '' || [q.text, q.translation ?? '', q.speaker].some(field => field.toLowerCase().includes(needle))),
     );
     // Undated quotes go last in either direction: they cannot be placed, and
     // putting them first would give them prominence they have not earned.
@@ -83,16 +95,20 @@ export function QuoteBrowser({
       if (!a.date || !b.date) return a.date ? -1 : b.date ? 1 : 0;
       return sort === 'oldest' ? compareDates(a.date, b.date) : compareDates(b.date, a.date);
     });
-  }, [quotes, selectedPositions, selectedTags, query, sort]);
+  }, [quotes, selectedPositions, selectedTags, selectedSpeakers, query, sort]);
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} className="sv-quote-browser">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-quote-browser">
       <div className="sv-quote-browser__controls">
         {/* A single position is not a choice, so the filter only appears when there is something to compare. */}
         {positionChoices.length > 1 && (
           <FilterChips label={positionLabel} choices={positionChoices} selected={selectedPositions} onChange={setSelectedPositions} />
         )}
         {tagChoices.length > 1 && <FilterChips label={tagLabel} choices={tagChoices} selected={selectedTags} onChange={setSelectedTags} />}
+        {/* With every speaker quoted once, a speaker chip picks one quote: the search does that already. */}
+        {speakerChoices.length > 1 && speakerChoices.length < quotes.length && (
+          <FilterChips label={speakerLabel} choices={speakerChoices} selected={selectedSpeakers} onChange={setSelectedSpeakers} />
+        )}
         <div className="sv-quote-browser__row">
           <label className="sv-visually-hidden" htmlFor={searchId}>Search quotes and speakers</label>
           <input
@@ -126,7 +142,7 @@ export function QuoteBrowser({
                     {quote.tags?.map(tag => <span key={tag} className="sv-quote__tag">{tag}</span>)}
                   </p>
                 )}
-                <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href} data-clamp={quote.text.length > clampAt || undefined}>
+                <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href} lang={quote.lang} data-clamp={quote.text.length > clampAt || undefined}>
                   <p>{quote.text}</p>
                 </blockquote>
                 {quote.text.length > clampAt && (
@@ -140,6 +156,7 @@ export function QuoteBrowser({
                     </summary>
                   </details>
                 )}
+                {quote.translation && <QuoteTranslation translation={quote.translation} />}
                 <QuoteAttribution quote={quote} permalink />
               </figure>
             </li>

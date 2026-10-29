@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { compositionSumError, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesTopic } from './__fixtures__/figure-examples';
+import { factSources } from './sources';
 
 function fact(over: Partial<Fact> & { id: string }): Fact {
   return {
@@ -652,7 +653,7 @@ test('F1: a figure id may not repeat another figure, chart or reading id', () =>
 test('F2: every figure citation is one of the fact\'s numbered sources', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'timeline').events[0].sources = [99];
-  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 32'));
+  assert.ok(hasError(topic, `figure court-record: cites source 99, but the fact has ${factSources(fact).length}`));
 });
 
 test('F2: every number in an item\'s `sources` is checked, not only the first', () => {
@@ -661,7 +662,7 @@ test('F2: every number in an item\'s `sources` is checked, not only the first', 
   figureOf(fact, 'keyFigures').figures[0].sources = [11, 97];
   figureOf(fact, 'periodTimeline').rows[0].periods[0].sources = [2, 96];
   const errors = validateTopic(topic);
-  for (const n of [98, 97, 96]) assert.ok(errors.some(e => e.includes(`cites source ${n}, but the fact has 32`)), `source ${n}`);
+  for (const n of [98, 97, 96]) assert.ok(errors.some(e => e.includes(`cites source ${n}, but the fact has ${factSources(fact).length}`)), `source ${n}`);
 });
 
 test('a series event citing an unknown source is reported', () => {
@@ -792,7 +793,7 @@ test('F11: quotes and claims are verbatim, allowing omissions, curly quotes and 
   const { topic, fact } = figuresTopic();
   const pull = figureOf(fact, 'pullQuote');
   pull.quote.text = 'ABSENTEE ballots remain … source of potential voter fraud…';
-  const compared = figureOf(fact, 'quoteComparison');
+  const compared = figureOf(fact, 'quotes', 'damage-claims');
   compared.quotes[0].text = 'buried and we’re watching it';
   assert.deepEqual(validateTopic(topic), []);
   pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
@@ -808,6 +809,26 @@ test('F11: a quote citing several sources need only appear in one of them', () =
   assert.deepEqual(validateTopic(topic), []);
   pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
   assert.ok(hasError(topic, 'is not in the quote of any of sources 24, 21'));
+});
+
+test('F11: every quote of a long quotes figure is verbatim, the non-English one in its own words', () => {
+  const { topic, fact } = figuresTopic();
+  const quotes = figureOf(fact, 'quotes', 'postal-secrecy');
+  quotes.quotes[0].text = 'With postal voting, public control of how the vote is cast is reduced';
+  assert.ok(hasError(topic, 'figure postal-secrecy: "with postal voting, public control of how the vote is cast is reduced" is not in the quote of source 32'));
+});
+
+test('quotes: a stance names one of the figure\'s categories, and every category has a quote', () => {
+  const { topic, fact } = figuresTopic();
+  const quotes = figureOf(fact, 'quotes', 'postal-secrecy');
+  quotes.quotes[2].stance = 'nope';
+  assert.ok(hasError(topic, 'figure postal-secrecy: quote by "Sir Eric Pickles\'s review" has unknown stance "nope"'));
+  assert.ok(hasError(topic, 'figure postal-secrecy: category "review" has no quote'));
+  quotes.categories?.push({ id: 'court', label: 'Again' });
+  assert.ok(hasError(topic, 'figure postal-secrecy: category ids must be unique'));
+  const pair = figureOf(fact, 'quotes', 'damage-claims');
+  pair.quotes[0].stance = 'court';
+  assert.ok(hasError(topic, 'figure damage-claims: quote by "Pete Hegseth" has stance "court", but the figure has no `categories`'));
 });
 
 test('F6: a date column holds partial dates', () => {
@@ -1211,7 +1232,7 @@ test('preview charts: a graph-like figure of every previewable kind may be previ
 test('preview charts: a text figure is rejected, naming its kind', () => {
   const t = previewedFigures(['federal-laws', 'damage-claims', 'carter-baker', 'one-in-five', 'detected-is-a-floor'].map(chart => ({ fact: 'figure-examples', chart })));
   const errors = validateTopic(t);
-  for (const [id, kind] of [['federal-laws', 'dataTable'], ['damage-claims', 'quoteComparison'], ['carter-baker', 'pullQuote'], ['one-in-five', 'claimCheck'], ['detected-is-a-floor', 'caveatList']]) {
+  for (const [id, kind] of [['federal-laws', 'dataTable'], ['damage-claims', 'quotes'], ['carter-baker', 'pullQuote'], ['one-in-five', 'claimCheck'], ['detected-is-a-floor', 'caveatList']]) {
     assert.ok(errors.some(e => e.startsWith(`topic: preview chart figure-examples/${id} is a ${kind} figure, which has no graph to preview`)), errors.join('\n'));
   }
 });

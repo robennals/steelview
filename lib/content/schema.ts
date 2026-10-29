@@ -756,27 +756,54 @@ export const scatterPlotFigureSchema = z.object({
 
 /* --- quotes --------------------------------------------------------------- */
 
-const figureQuoteSchema = z.object({
+/** What every quote on the page gives: the words, who said them, when and where, and where to check. */
+const quoteFields = {
   /** Verbatim. "…" marks an omission; each fragment must appear in a cited source's quote (rule F11). */
   text: z.string().min(1),
   speaker: z.string().min(1),
   role: z.string().min(1).optional(),
-  position: z.string().min(1).optional(),
   date: partialDate.optional(),
   context: z.string().min(1).optional(),
   ...citationFields,
+};
+
+const figureQuoteSchema = z.object({
+  ...quoteFields,
+  position: z.string().min(1).optional(),
 }).superRefine(citationRule({ required: true })).transform(toSources);
 
-export const quoteComparisonFigureSchema = z.object({
-  kind: z.literal('quoteComparison'),
+/** One quote of a `quotes` figure. */
+const quotesItemSchema = z.object({
+  ...quoteFields,
+  /** A `categories` id: the side, body or kind of view the quote speaks for. Labels the quote and filters a long list. */
+  stance: slugId.optional(),
+  /** The words in English when `text` is not: shown beside the quote, marked as a translation, never in quotation marks. */
+  translation: z.string().min(1).optional(),
+  /** The language of `text` when it is not English, as a BCP 47 tag ("de"), so a screen reader pronounces it in that language. */
+  lang: z.string().regex(/^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/, 'a BCP 47 language tag such as "de" or "pt-BR"').optional(),
+}).superRefine(citationRule({ required: true })).transform(toSources);
+
+const quotesFields = {
   id: slugId,
   replaces,
   /** The question every quote answers; it is the figure's heading. */
   question: z.string().min(1),
   description: z.string().min(1).optional(),
   note: z.string().optional(),
-  quotes: z.array(figureQuoteSchema).min(2).max(4),
-});
+  /** What `categories` sort the quotes by, naming the filter: "Who is speaking". Defaults to "Category". */
+  categoryLabel: z.string().min(1).optional(),
+  /** The ids a quote's `stance` may name; each must be used. */
+  categories: z.array(categorySchema).min(2).optional(),
+  /** Two or more. Up to four are set side by side in the order given; more become a list in date order that a reader can filter. */
+  quotes: z.array(quotesItemSchema).min(2),
+};
+
+export const quotesFigureSchema = z.object({ kind: z.literal('quotes'), ...quotesFields });
+
+/** The kind's earlier name, from when it took at most four quotes: parses, and is validated, as `quotes`. */
+export const quoteComparisonFigureSchema = z
+  .object({ kind: z.literal('quoteComparison'), ...quotesFields })
+  .transform(figure => ({ ...figure, kind: 'quotes' as const }));
 
 export const pullQuoteFigureSchema = z.object({
   kind: z.literal('pullQuote'),
@@ -834,6 +861,7 @@ export const figureSchema = z.discriminatedUnion('kind', [
   compositionBarFigureSchema,
   estimateRangeFigureSchema,
   scatterPlotFigureSchema,
+  quotesFigureSchema,
   quoteComparisonFigureSchema,
   pullQuoteFigureSchema,
   claimCheckFigureSchema,

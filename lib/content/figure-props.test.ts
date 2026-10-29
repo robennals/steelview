@@ -17,6 +17,7 @@ import {
   keyFiguresProps,
   periodTimelineProps,
   pullQuoteProps,
+  quoteBrowserProps,
   quoteComparisonProps,
   scatterPlotProps,
   tileMapProps,
@@ -42,11 +43,11 @@ test('a citation becomes a credit naming its publisher and linking to its number
 test('ids carry the fact prefix, the same scheme as comparisons', () => {
   assert.equal(dataTableProps(figureOf('dataTable'), context).id, 'figure-examples--chart-federal-laws');
   assert.equal(barChartProps(figureOf('barChart'), context).id, 'figure-examples--chart-wa-by-race');
-  assert.equal(quoteComparisonProps(figureOf('quoteComparison'), context).id, 'figure-examples--chart-damage-claims');
+  assert.equal(quoteComparisonProps(figureOf('quotes', 'damage-claims'), context).id, 'figure-examples--chart-damage-claims');
 });
 
 test('quote ids are numbered within their figure, so quote anchors stay unique on the page', () => {
-  assert.deepEqual(quoteComparisonProps(figureOf('quoteComparison'), context).quotes.map(q => q.id), [
+  assert.deepEqual(quoteComparisonProps(figureOf('quotes', 'damage-claims'), context).quotes.map(q => q.id), [
     'figure-examples--damage-claims-1', 'figure-examples--damage-claims-2', 'figure-examples--damage-claims-3',
   ]);
   assert.equal(pullQuoteProps(figureOf('pullQuote'), context).quote.id, 'figure-examples--carter-baker-1');
@@ -214,4 +215,15 @@ test('claim evidence links like an inline citation: to the parent page when the 
   const supporting = [{ id: 'mail-ballot-privacy', supports: 'mail-voting' }];
   assert.equal(claimCheckProps({ ...check, evidence: { fact: 'mail-ballot-privacy' } }, { ...context, slug: 'vbm', facts: supporting }).evidence?.href, '/topics/vbm/facts/mail-voting#evidence-mail-ballot-privacy');
   assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).claimSource?.number, 22);
+});
+
+test('a quote\'s stance becomes its position, by its category\'s label; language and translation pass through', () => {
+  const props = quoteBrowserProps(figureOf('quotes', 'postal-secrecy'), context);
+  assert.equal(props.title, 'Does postal voting give up the secrecy of the ballot?');
+  assert.equal(props.positionLabel, 'Who is speaking');
+  assert.deepEqual(props.quotes.map(q => q.position), ['Courts', 'Courts', 'Government reviews', 'Researchers', 'Researchers']);
+  assert.equal(props.quotes[0].lang, 'de');
+  assert.match(props.quotes[0].translation ?? '', /^With postal voting/);
+  assert.deepEqual(props.sources?.map(s => s.number), [32, 33, 34, 35]);
+  assert.equal(quoteComparisonProps(figureOf('quotes', 'damage-claims'), context).quotes[0].position, undefined);
 });

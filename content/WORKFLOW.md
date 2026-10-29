@@ -362,9 +362,9 @@ now costs one file; found later it costs every viewpoint that cites it.
 - a fact file reaches the component library through `figures`
   ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
   reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
-  `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
-  `SmallMultiples` are not yet, so a report plan that needs one says so at
-  stage 4b;
+  `scatterPlot`) are figure kinds, and `QuoteBrowser` is what a `quotes`
+  figure of more than four becomes; `SliceExplorer` and `SmallMultiples`
+  are not yet, so a report plan that needs one says so at stage 4b;
 - a number the source gives as a bound, an approximation or a range is a
   qualified value (`{ value, qualifier }` or `{ low, high }`, see
   [AUTHORING.md, Figures](AUTHORING.md#figures)) on tables, key figures,

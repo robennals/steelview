@@ -195,6 +195,30 @@ sources:
     url: https://example.org/fixture/31
     publisher: Fixture Casualty Counter
     date: 2026-05
+  - stance: complicates
+    quote: "Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen. Die Zulassung der Briefwahl dient aber dem Ziel, eine möglichst umfassende Wahlbeteiligung zu erreichen."
+    title: "Fixture: Federal Constitutional Court, 2 BvC 7/10"
+    url: https://example.org/fixture/32
+    publisher: Federal Constitutional Court of Germany
+    date: 2013-07-09
+  - stance: complicates
+    quote: "All political parties welcomed and supported postal voting on demand. Until very recently, none has treated electoral fraud as representing a problem."
+    title: "Fixture: Birmingham election court judgment"
+    url: https://example.org/fixture/33
+    publisher: Election Court
+    date: 2005-04-04
+  - stance: complicates
+    quote: "It was argued that unrestricted postal voting undermines the fundamental secrecy of the ballot."
+    title: "Fixture: Securing the ballot (Pickles review)"
+    url: https://example.org/fixture/34
+    publisher: UK Cabinet Office
+    date: 2016-08
+  - stance: supports
+    quote: "There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail. Oregon voters report high satisfaction with voting by mail."
+    title: "Fixture: Oregon's mail elections"
+    url: https://example.org/fixture/35
+    publisher: The Conversation
+    date: 2020-09-03
 series:
   title: Mail ballots rejected nationally, 2016–2024
   description: Share of returned mail ballots rejected in each federal general election.
@@ -401,7 +425,7 @@ figures:
       - { label: CSIS, year: Jun 2026, estimate: 40, low: 34, high: 42, source: 15 }
       - { label: CBO, year: 1 Aug 2026, estimate: 38, source: 16 }
       - { label: Department of Defense, year: 3 Sep 2026, estimate: 43.6, source: 17 }
-  - kind: quoteComparison
+  - kind: quotes
     id: damage-claims
     question: What did the strikes do to Iran's enriched uranium?
     description: Four answers from the US government, an independent institute and the IAEA.
@@ -413,6 +437,49 @@ figures:
         context: Report to the Board of Governors
         date: '2026-06'
         source: 1
+  # More than four quotes (spec 3): a list in date order, filtered by
+  # category and speaker. A quote not in English carries its language and a
+  # translation, shown beside it.
+  - kind: quotes
+    id: postal-secrecy
+    question: Does postal voting give up the secrecy of the ballot?
+    description: Two courts, a government review and a researcher, on what is lost when a ballot is filled in at home.
+    categoryLabel: Who is speaking
+    categories:
+      - { id: court, label: Courts }
+      - { id: review, label: Government reviews }
+      - { id: research, label: Researchers }
+    quotes:
+      - text: Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen … eine möglichst umfassende Wahlbeteiligung zu erreichen
+        lang: de
+        translation: With postal voting, public control of how the vote is cast is reduced … [it serves the aim of] the widest possible turnout. (This report's translation.)
+        speaker: Federal Constitutional Court of Germany
+        stance: court
+        date: '2013-07-09'
+        source: 32
+      - text: Until very recently, none has treated electoral fraud as representing a problem.
+        speaker: Richard Mawrey QC
+        role: Election commissioner
+        context: Birmingham election court judgment
+        stance: court
+        date: '2005-04-04'
+        source: 33
+      - text: unrestricted postal voting undermines the fundamental secrecy of the ballot
+        speaker: Sir Eric Pickles's review
+        context: Reporting submissions to the review
+        stance: review
+        date: '2016-08'
+        source: 34
+      - text: There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail.
+        speaker: Priscilla Southwell
+        stance: research
+        date: '2020-09-03'
+        source: 35
+      - text: Oregon voters report high satisfaction with voting by mail.
+        speaker: Priscilla Southwell
+        stance: research
+        date: '2020-09-03'
+        source: 35
   - kind: pullQuote
     id: carter-baker
     description: >-

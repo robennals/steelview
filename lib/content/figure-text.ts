@@ -8,8 +8,9 @@ import type { Figure, FigureOf, FigureValueFormat } from './types';
  * - `figureValues` is every number a figure draws, audited like a chart value.
  *
  * Quote `text` and a claim check's `claim` are not prose here: they are
- * checked verbatim against their source (validate.ts, rule F11). `asPublished`
- * travels with its value instead.
+ * checked verbatim against their source (validate.ts, rule F11). A quote's
+ * `translation` is prose — the report's words, or a translator's.
+ * `asPublished` travels with its value instead.
  */
 
 /**
@@ -69,8 +70,15 @@ export function figureProse(figure: Figure): string[] {
         return [...base(figure), ...figure.rows.map(row => row.label)];
       case 'estimateRange':
         return [...base(figure), ...figure.estimates.flatMap(e => [e.label, e.note])];
-      case 'quoteComparison':
-        return [figure.question, figure.description, figure.note, ...figure.quotes.flatMap(quoteProse)];
+      case 'quotes':
+        return [
+          figure.question,
+          figure.description,
+          figure.note,
+          figure.categoryLabel,
+          ...(figure.categories ?? []).map(c => c.label),
+          ...figure.quotes.flatMap(q => [...quoteProse(q), q.translation]),
+        ];
       case 'pullQuote':
         return [figure.description, figure.note, ...quoteProse(figure.quote)];
       case 'claimCheck':
@@ -137,7 +145,7 @@ export function figureValues(figure: Figure): FigureValue[] {
     case 'section':
     case 'timeline':
     case 'periodTimeline':
-    case 'quoteComparison':
+    case 'quotes':
     case 'pullQuote':
     case 'claimCheck':
     case 'caveatList':

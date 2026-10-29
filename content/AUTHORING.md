@@ -749,7 +749,7 @@ key, notes or sources. Long figures are clamped to the slide's fixed height,
 never cut: over six rows become thin one-line rows, a bar chart of more than
 twelve exact values becomes ranked columns (as a long comparison does), and a
 timeline of more than twelve events becomes one marker per event on a time
-axis. Text figures — `dataTable`, `quoteComparison`, `pullQuote`,
+axis. Text figures — `dataTable`, `quotes` (and `quoteComparison`), `pullQuote`,
 `claimCheck`, `caveatList` — and placed `section`s have no graph, and the
 build rejects them. Each kind's thumbnail on a closed row is drawn from the
 same layout; kinds set as type, such as `keyFigures`, thumbnail as plain rows.
@@ -795,7 +795,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
-| `quoteComparison` | two to four answers to one `question` |
+| `quotes` | two or more quotes answering one `question`: up to four side by side in the order written, more as a list in date order a reader can filter by category and speaker (every quote listed with JavaScript off). A quote may name a `stance` from the figure's `categories` (with `categoryLabel` naming the filter), and a quote not in English gives its `lang` and a `translation`, shown beside it. `quoteComparison`, the kind's earlier name, still parses as `quotes` |
 | `pullQuote` | one quote set apart |
 | `claimCheck` | a well-known claim, quoted, set against the evidence, with a link to the fact that sets it out |
 | `caveatList` | what the figures above do not show |
@@ -1018,10 +1018,37 @@ any body heading written `{#<fact>--<id>}` (`### Why arrivals fell
 `one-in-five` check names `chart-detected-is-a-floor`, a caveat list on the
 same fact.
 
-**Quotes are verbatim.** A `quoteComparison` or `pullQuote` text, or a
+**Quotes are verbatim.** A `quotes` or `pullQuote` text, or a
 `claimCheck` claim, must appear in a cited source's `quote`. Mark an
 omission with "…"; each fragment between omissions is checked on its own,
-ignoring case, curly quotes and spacing.
+ignoring case, curly quotes and spacing. A quote not in English is checked
+in its own language; its `translation` is the report's words (or a named
+translator's — say whose in it), audited as prose, and never set in
+quotation marks.
+
+**Quotes may be grouped.** `categories` on a `quotes` figure lists the
+groups its quotes fall in (`{ id, label }`, two or more); each quote's
+`stance` names one, and every category must have a quote. In a list of more
+than four the category chips are alphabetical, so no side is listed first by
+the order written; side by side, the quotes keep the order written.
+
+```yaml
+  - kind: quotes
+    id: postal-secrecy
+    question: Does postal voting give up the secrecy of the ballot?
+    categoryLabel: Who is speaking
+    categories:
+      - { id: court, label: Courts }
+      - { id: research, label: Researchers }
+    quotes:
+      - text: Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen
+        lang: de
+        translation: With postal voting, public control of how the vote is cast is reduced. (This report's translation.)
+        speaker: Federal Constitutional Court of Germany
+        stance: court
+        date: '2013-07-09'
+        source: 32
+```
 
 **A map shows a number or a category, never both.** A numeric map gives
 `data` (area id → number, or `{ value, asPublished }`) and `valueLabel`, with
@@ -1735,6 +1762,7 @@ them.
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
 | A composition row sums to its `total`, or to 100 with `unit: percent`, within half a unit in each part's last published place | `lib/content/validate.ts` (F10, `compositionSumError`) |
 | Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
+| A `quotes` figure has two or more quotes; a `stance` names one of its `categories`, category ids are unique and each has a quote | `lib/content/schema.ts`, `lib/content/validate.ts` (`kindErrors`) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |

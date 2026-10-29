@@ -202,7 +202,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   const parsed = factFrontmatterSchema.parse(figureExamplesFrontmatter());
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
-    'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
+    'barChart', 'compositionBar', 'estimateRange', 'quotes', 'quotes', 'pullQuote', 'claimCheck', 'caveatList',
     'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'compositionBar', 'dataTable', 'section',
   ]);
 });
@@ -460,4 +460,19 @@ test('a table column may be a date column, and an unquoted YAML date in a cell s
   assert.ok(table?.kind === 'dataTable');
   assert.equal(table.columns[1].format, 'date');
   assert.equal(table.rows[0].b, '2024-06-12');
+});
+
+test('`quoteComparison`, the earlier name, parses as `quotes`, with no limit of four', () => {
+  const quote = (n: number) => ({ text: `Quote ${n}`, speaker: `Speaker ${n}`, source: 1 });
+  const figures = [{ kind: 'quoteComparison', id: 'old-name', question: 'Who said what?', quotes: [1, 2, 3, 4, 5].map(quote) }];
+  const parsed = factFrontmatterSchema.parse({ claim: 'c', status: 'complicated', figures });
+  assert.equal(parsed.figures?.[0].kind, 'quotes');
+  assert.equal(parsed.figures?.[0].kind === 'quotes' && parsed.figures[0].quotes.length, 5);
+});
+
+test('a quotes figure needs two quotes, each citing a source; a language is a BCP 47 tag', () => {
+  const index = figureIndex('postal-secrecy');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as unknown[]).slice(0, 1) })), [`figures.${index}.quotes`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as Record<string, unknown>[]).map((q, i) => (i === 0 ? { ...q, source: undefined } : q)) })), [`figures.${index}.quotes.0`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as Record<string, unknown>[]).map((q, i) => (i === 0 ? { ...q, lang: 'German' } : q)) })), [`figures.${index}.quotes.0.lang`]);
 });

@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
 import { ReportFigure } from './figure';
-import { QuoteAttribution, quoteAnchor, type Quote } from './quote-attribution';
+import { QuoteAttribution, QuoteTranslation, quoteAnchor, type Quote } from './quote-attribution';
 import type { SourceCredit } from './types';
 
 export type QuoteComparisonProps = {
   /** The question every quote answers, shown as the heading: "What should happen to Channel crossings?" */
   question: string;
-  /** Two to four quotes, shown in the order given. */
+  /** Two to four quotes, shown in the order given. More than four do not fit side by side: use QuoteBrowser. */
   quotes: Quote[];
   id?: string;
   description?: ReactNode;
@@ -35,9 +35,10 @@ export function QuoteComparison({ question, quotes, id, description, sources, no
           <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-comparison__column">
             <figure className="sv-quote" data-variant="compared">
               {quote.position && <p className="sv-quote__meta"><span className="sv-quote__position">{quote.position}</span></p>}
-              <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href}>
+              <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href} lang={quote.lang}>
                 <p>{quote.text}</p>
               </blockquote>
+              {quote.translation && <QuoteTranslation translation={quote.translation} />}
               <QuoteAttribution quote={quote} />
             </figure>
           </li>

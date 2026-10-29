@@ -29,7 +29,7 @@ test('table prose: title, description, caption, column labels and every string c
 });
 
 test('prose leaves out verbatim quotes and claims, and asPublished', () => {
-  const quotes = figureProse(figureOf('quoteComparison'));
+  const quotes = figureProse(figureOf('quotes'));
   assert.ok(quotes.includes("What did the strikes do to Iran's enriched uranium?"));
   assert.ok(quotes.includes('Secretary of Defense'));
   assert.ok(quotes.includes('Report to the Board of Governors'));
@@ -47,6 +47,12 @@ test('prose covers each kind\'s reader-facing strings', () => {
   assert.ok(figureProse(figureOf('tileMap')).some(s => s.startsWith('Fixture: only six states')));
   assert.ok(figureProse(figureOf('compositionBar')).includes('HRANA, 7 Apr'));
   assert.ok(figureProse(figureOf('estimateRange')).includes('Department of Defense'));
+  const secrecy = fact.figures?.find((f): f is FigureOf<'quotes'> => f.kind === 'quotes' && f.id === 'postal-secrecy');
+  assert.ok(secrecy);
+  const secrecyProse = figureProse(secrecy);
+  assert.ok(secrecyProse.includes('Who is speaking') && secrecyProse.includes('Government reviews'));
+  assert.ok(secrecyProse.some(s => s.startsWith('With postal voting, public control')), 'a translation is prose');
+  assert.ok(!secrecyProse.some(s => s.startsWith('Bei der Briefwahl')), 'the verbatim quote is not');
   assert.ok(figureProse(figureOf('pullQuote')).includes('The same report found "no evidence of extensive fraud" in US elections.'));
   assert.deepEqual(figureProse(figureOf('caveatList')).slice(0, 3), ['Detected fraud is a floor, not a measure', 'Household pressure', 'Pressure inside a home is rarely reported, so it rarely becomes a case.']);
 });
@@ -179,7 +185,7 @@ test('a scatter point is two values, x and y, each with its own asPublished', ()
 });
 
 test('quotes, timelines and caveats draw no numbers', () => {
-  for (const kind of ['timeline', 'periodTimeline', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList'] as const) {
+  for (const kind of ['timeline', 'periodTimeline', 'quotes', 'pullQuote', 'claimCheck', 'caveatList'] as const) {
     assert.deepEqual(figureValues(figureOf(kind)), [], kind);
   }
 });

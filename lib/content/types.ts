@@ -52,7 +52,7 @@ export function componentFigure(fact: Pick<Fact, 'figures'>, id: string): Compon
 /** A library figure's name on its tab: its title, or the heading the kinds without one are drawn under. */
 export function figureLabel(figure: ComponentFigure): string {
   switch (figure.kind) {
-    case 'quoteComparison':
+    case 'quotes':
       return figure.question;
     case 'pullQuote':
       return `Quote: ${figure.quote.speaker}`;

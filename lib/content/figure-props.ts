@@ -287,7 +287,7 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
   };
 }
 
-type FigureQuote = FigureOf<'pullQuote'>['quote'];
+type FigureQuote = FigureOf<'pullQuote'>['quote'] | FigureOf<'quotes'>['quotes'][number];
 
 /** Quote ids are `<fact>--<figure id>-<n>`, one-based, so `quoteAnchor` stays unique on the page. */
 function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): R.Quote {
@@ -296,14 +296,28 @@ function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): 
     text: q.text,
     speaker: q.speaker,
     role: q.role,
-    position: q.position,
     date: q.date,
     context: q.context,
     sources: q.sources.map(c.credit),
   };
 }
 
-export function quoteComparisonProps(f: FigureOf<'quoteComparison'>, c: FigureContext): R.QuoteComparisonProps {
+/** Up to this many quotes are set side by side (QuoteComparison); more become a filterable list (QuoteBrowser). */
+export const SIDE_BY_SIDE_QUOTES = 4;
+
+/** A `quotes` figure's quotes, each with its stance's label as its position. */
+function quotesOf(f: FigureOf<'quotes'>, c: FigureContext): R.Quote[] {
+  const labelOf = new Map((f.categories ?? []).map(category => [category.id, category.label]));
+  return f.quotes.map((q, i) => ({
+    ...quote(q, i + 1, f, c),
+    position: q.stance && labelOf.get(q.stance),
+    lang: q.lang,
+    translation: q.translation,
+  }));
+}
+
+/** A `quotes` figure of up to four, side by side in the order written. */
+export function quoteComparisonProps(f: FigureOf<'quotes'>, c: FigureContext): R.QuoteComparisonProps {
   return {
     id: figureDomId(c.fact, f.id),
     question: f.question,
@@ -311,13 +325,31 @@ export function quoteComparisonProps(f: FigureOf<'quoteComparison'>, c: FigureCo
     note: f.note,
     sources: figureCredits(f, c),
     panel: c.panel,
-    quotes: f.quotes.map((q, i) => quote(q, i + 1, f, c)),
+    quotes: quotesOf(f, c),
+  };
+}
+
+/**
+ * A `quotes` figure of more than four, as a list in date order with filters
+ * by category and speaker. Category chips stay alphabetical (QuoteBrowser's
+ * default), so no side is listed first by the author's ordering.
+ */
+export function quoteBrowserProps(f: FigureOf<'quotes'>, c: FigureContext): R.QuoteBrowserProps {
+  return {
+    id: figureDomId(c.fact, f.id),
+    title: f.question,
+    description: f.description,
+    note: f.note,
+    sources: figureCredits(f, c),
+    panel: c.panel,
+    positionLabel: f.categoryLabel ?? 'Category',
+    quotes: quotesOf(f, c),
   };
 }
 
 /** The quote alone; the renderer frames it (id, description, Observations, note) in a ReportFigure. */
 export function pullQuoteProps(f: FigureOf<'pullQuote'>, c: FigureContext): R.PullQuoteProps {
-  return { quote: quote(f.quote, 1, f, c), variant: f.variant };
+  return { quote: { ...quote(f.quote, 1, f, c), position: f.quote.position }, variant: f.variant };
 }
 
 /**

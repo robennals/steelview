@@ -12,6 +12,7 @@ import {
   KeyFigures,
   PeriodTimeline,
   PullQuote,
+  QuoteBrowser,
   QuoteComparison,
   ReportFigure,
   ScatterPlot,
@@ -33,10 +34,12 @@ import {
   keyFiguresProps,
   periodTimelineProps,
   pullQuoteProps,
+  quoteBrowserProps,
   quoteComparisonProps,
   scatterPlotProps,
   tileMapProps,
   timelineProps,
+  SIDE_BY_SIDE_QUOTES,
   type FigureContext,
 } from '@/lib/content/figure-props';
 import type { PreviewSlide } from '@/lib/content/preview';
@@ -243,8 +246,10 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
       return <CompositionBar {...compositionBarProps(figure, context)} footer={footer} />;
     case 'estimateRange':
       return <EstimateRange {...estimateRangeProps(figure, context)} footer={footer} />;
-    case 'quoteComparison':
-      return <QuoteComparison {...quoteComparisonProps(figure, context)} footer={footer} />;
+    case 'quotes':
+      return figure.quotes.length <= SIDE_BY_SIDE_QUOTES
+        ? <QuoteComparison {...quoteComparisonProps(figure, context)} footer={footer} />
+        : <QuoteBrowser {...quoteBrowserProps(figure, context)} footer={footer} />;
     // These three draw no frame of their own; one without a title gives them
     // the figure's id, description, Observations and note like every other.
     case 'pullQuote':
