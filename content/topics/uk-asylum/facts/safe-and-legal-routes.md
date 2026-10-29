@@ -506,12 +506,11 @@ series:
       Hum_01 runs from 2010 to June 2026; the chart ends at the last complete
       calendar year, and the first half of 2026 is given in the text. Ukraine
       and BN(O) lines are the out-of-country rows of tables Ukr_01 and BNO_01
-      in the same workbook; resettlement is split by scheme from Res_01. A
-      route is plotted as zero in years when the Home Office table marks it "z"
-      (scheme not open): BN(O) opened in January 2021, the Ukraine schemes in
-      March 2022, the UK Resettlement Scheme in February 2021 and the Afghan
-      Resettlement Programme in 2021. Every year's components add up to the
-      published out-of-country total. Visa grants are counted at the date of
+      in the same workbook; resettlement is split by scheme from Res_01. Each
+      scheme's line starts in the year it opened: BN(O) in January 2021, the
+      Ukraine schemes in March 2022, the UK Resettlement Scheme in February
+      2021 and the Afghan Resettlement Programme in 2021. Every year's
+      components add up to the published out-of-country total. Visa grants are counted at the date of
       grant and resettlement at the date of arrival.
   breaks:
     - period: '2023'
@@ -557,31 +556,12 @@ series:
         date: '2026-08-27'
       lines:
         - name: Ukraine schemes
+          coverage:
+            from: '2022'
+            to: '2025'
+            note: >-
+              The Ukraine schemes opened in March 2022. The Home Office table marks earlier years "z" (scheme not open).
           points:
-            - period: '2010'
-              value: 0
-            - period: '2011'
-              value: 0
-            - period: '2012'
-              value: 0
-            - period: '2013'
-              value: 0
-            - period: '2014'
-              value: 0
-            - period: '2015'
-              value: 0
-            - period: '2016'
-              value: 0
-            - period: '2017'
-              value: 0
-            - period: '2018'
-              value: 0
-            - period: '2019'
-              value: 0
-            - period: '2020'
-              value: 0
-            - period: '2021'
-              value: 0
             - period: '2022'
               value: 209706
             - period: '2023'
@@ -591,29 +571,12 @@ series:
             - period: '2025'
               value: 14895
         - name: BN(O) route
+          coverage:
+            from: '2021'
+            to: '2025'
+            note: >-
+              The BN(O) route opened in January 2021. The Home Office table marks earlier years "z" (scheme not open).
           points:
-            - period: '2010'
-              value: 0
-            - period: '2011'
-              value: 0
-            - period: '2012'
-              value: 0
-            - period: '2013'
-              value: 0
-            - period: '2014'
-              value: 0
-            - period: '2015'
-              value: 0
-            - period: '2016'
-              value: 0
-            - period: '2017'
-              value: 0
-            - period: '2018'
-              value: 0
-            - period: '2019'
-              value: 0
-            - period: '2020'
-              value: 0
             - period: '2021'
               value: 75579
             - period: '2022'
@@ -659,29 +622,12 @@ series:
             - period: '2025'
               value: 18577
         - name: Afghan Resettlement Programme
+          coverage:
+            from: '2021'
+            to: '2025'
+            note: >-
+              The Afghan resettlement schemes opened in 2021. The Home Office table marks earlier years "z" (scheme not open).
           points:
-            - period: '2010'
-              value: 0
-            - period: '2011'
-              value: 0
-            - period: '2012'
-              value: 0
-            - period: '2013'
-              value: 0
-            - period: '2014'
-              value: 0
-            - period: '2015'
-              value: 0
-            - period: '2016'
-              value: 0
-            - period: '2017'
-              value: 0
-            - period: '2018'
-              value: 0
-            - period: '2019'
-              value: 0
-            - period: '2020'
-              value: 0
             - period: '2021'
               value: 16445
             - period: '2022'
@@ -693,29 +639,12 @@ series:
             - period: '2025'
               value: 5874
         - name: UK Resettlement Scheme
+          coverage:
+            from: '2021'
+            to: '2025'
+            note: >-
+              The UK Resettlement Scheme opened in February 2021. The Home Office table marks earlier years "z" (scheme not open).
           points:
-            - period: '2010'
-              value: 0
-            - period: '2011'
-              value: 0
-            - period: '2012'
-              value: 0
-            - period: '2013'
-              value: 0
-            - period: '2014'
-              value: 0
-            - period: '2015'
-              value: 0
-            - period: '2016'
-              value: 0
-            - period: '2017'
-              value: 0
-            - period: '2018'
-              value: 0
-            - period: '2019'
-              value: 0
-            - period: '2020'
-              value: 0
             - period: '2021'
               value: 1269
             - period: '2022'
@@ -846,29 +775,12 @@ series:
             - period: '2025'
               value: 18577
         - name: Afghan Resettlement Programme
+          coverage:
+            from: '2021'
+            to: '2025'
+            note: >-
+              The Afghan resettlement schemes opened in 2021. The Home Office table marks earlier years "z" (scheme not open).
           points:
-            - period: '2010'
-              value: 0
-            - period: '2011'
-              value: 0
-            - period: '2012'
-              value: 0
-            - period: '2013'
-              value: 0
-            - period: '2014'
-              value: 0
-            - period: '2015'
-              value: 0
-            - period: '2016'
-              value: 0
-            - period: '2017'
-              value: 0
-            - period: '2018'
-              value: 0
-            - period: '2019'
-              value: 0
-            - period: '2020'
-              value: 0
             - period: '2021'
               value: 16445
             - period: '2022'
@@ -880,29 +792,12 @@ series:
             - period: '2025'
               value: 5874
         - name: UK Resettlement Scheme
+          coverage:
+            from: '2021'
+            to: '2025'
+            note: >-
+              The UK Resettlement Scheme opened in February 2021. The Home Office table marks earlier years "z" (scheme not open).
           points:
-            - period: '2010'
-              value: 0
-            - period: '2011'
-              value: 0
-            - period: '2012'
-              value: 0
-            - period: '2013'
-              value: 0
-            - period: '2014'
-              value: 0
-            - period: '2015'
-              value: 0
-            - period: '2016'
-              value: 0
-            - period: '2017'
-              value: 0
-            - period: '2018'
-              value: 0
-            - period: '2019'
-              value: 0
-            - period: '2020'
-              value: 0
             - period: '2021'
               value: 1269
             - period: '2022'

@@ -1832,7 +1832,7 @@ An independent study estimates that, over a lifetime and including the second ge
 
 ### Region of origin produces gaps as large as reason for migrating {#integration-outcomes--netherlands-by-region}
 
-Western immigrants contribute €25,000 on average and non-Western immigrants cost nearly €275,000; Morocco, the Horn of Africa and Sudan sit at roughly €0.55–0.6 million of net cost per immigrant. The authors find that where the first generation is a large net cost, the second generation is usually also negative or at best budget-neutral. [28](#source-integration-outcomes-28) [29](#source-integration-outcomes-29)
+Western immigrants contribute €25,000 on average and non-Western immigrants cost nearly €275,000; Morocco, the Horn of Africa and Sudan sit at a net cost of "€550,000 to €600.000" per immigrant, in the study's own words. The authors find that where the first generation is a large net cost, the second generation is usually also negative or at best budget-neutral. [28](#source-integration-outcomes-28) [29](#source-integration-outcomes-29)
 
 ## Subtleties {#integration-outcomes--subtleties-netherlands-by-region}
 
