@@ -56,7 +56,7 @@ collection:
 | --- | --- |
 | **Data** | A collection of datasets and artifacts exploring one aspect of the topic, with observations, context, methods and sources. |
 | **Observation** | An addressable finding about a graph or dataset, explaining what to notice and why. Usually the target of a viewpoint’s factual citation. |
-| **Viewpoint** | One side of the argument, written as well as it can be written, listing the facts it cites, concedes and sets aside. |
+| **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then headed sections whose claims add up to its title, in plain language, citing inline the observations it rests on and concedes. |
 | **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A specific question whose resolution would move someone. |
 
@@ -1259,7 +1259,9 @@ The "before" tells the reader to be impressed and gives them nothing to be
 impressed by. Say the thing.
 
 **2. Portentous standalone one-liners used for rhythm.** A short sentence
-alone on its own line, doing emphasis rather than work.
+alone on its own line, doing emphasis rather than work. Short sentences are
+not the problem: a viewpoint should be written in them. The problem is a
+sentence that carries no information.
 
 > Before: The numbers are not the argument. They never were.
 >
