@@ -90,6 +90,58 @@
     box-shadow: inset 0 0 0 1px var(--rule-strong);
   }
 
+  /* ------------------------------------------- qualified numeric figures */
+
+  /* A figure that is a bound, an approximation or a range keeps its colour
+     and gains a stipple of fine dots in the tile's text colour: texture, so
+     "not exact" survives greyscale and colour blindness. The SVG pattern on
+     GeoMap uses the same dot. */
+  .sv-map-legend__stipple,
+  .sv-tile-map__tile[data-stippled="true"] {
+    background-image: radial-gradient(circle, color-mix(in srgb, currentColor 40%, transparent) 0 0.75px, transparent 1.05px);
+    background-size: 5px 5px;
+  }
+
+  .sv-map-legend__stipple {
+    display: inline-block;
+    width: 1.4rem;
+    height: 0.75rem;
+    vertical-align: -0.1rem;
+    color: var(--ink);
+    background-color: var(--paper-sunk);
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+  }
+
+  .sv-map-legend__qualifications {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  .sv-map-legend__glyph {
+    color: var(--ink);
+    font-size: 0.6875rem;
+  }
+
+  .sv-geo-map__stipple {
+    pointer-events: none;
+  }
+
+  .sv-geo-map__stipple-dot {
+    fill: var(--ink);
+    fill-opacity: 0.45;
+  }
+
+  /* A range ("0.4–0.8%") may break after its dash rather than run off the tile. */
+  .sv-tile-map__tile[data-range="true"] .sv-tile-map__value {
+    white-space: normal;
+  }
+
   /* -------------------------------------------------- categorical maps */
 
   /* One look per category slot, shared by tiles, legend swatches (CSS
@@ -481,6 +533,12 @@
 
     .sv-tile-map__grid[data-cols="many"] .sv-tile-map__value {
       font-size: 0.6875rem;
+    }
+
+    /* A range takes two short lines rather than one that runs off the tile. */
+    .sv-tile-map__grid[data-cols="many"] .sv-tile-map__tile[data-range="true"] .sv-tile-map__value {
+      font-size: 0.5rem;
+      line-height: 0.95;
     }
   }
 }

@@ -127,7 +127,7 @@ export function DataTable({
                   return (
                     <Cell key={column.key} scope={Cell === 'th' ? 'row' : undefined} data-align={alignOf(column)}>
                       {cellText(cell, column.format)}
-                      {cell !== null && typeof cell === 'object' && <Footnotes sources={cell.sources} />}
+                      {cell !== null && typeof cell === 'object' && cell.sources && <Footnotes sources={cell.sources} />}
                     </Cell>
                   );
                 })}

@@ -28,8 +28,9 @@ import type { Fact, FigureKind, FigureOf } from './types';
 const fact = figureExamplesFact();
 const context = figureContext(fact, '2026-10-29');
 
-function figureOf<K extends FigureKind>(kind: K): FigureOf<K> {
-  const found = fact.figures?.find((f): f is FigureOf<K> => f.kind === kind);
+/** The fixture's first figure of `kind`, or the one with `id`. */
+function figureOf<K extends FigureKind>(kind: K, id?: string): FigureOf<K> {
+  const found = fact.figures?.find((f): f is FigureOf<K> => f.kind === kind && (id === undefined || ('id' in f && f.id === id)));
   if (!found) throw new Error(`no ${kind} figure`);
   return found;
 }
@@ -68,7 +69,7 @@ test('cited table cells keep their value and turn citations into credits', () =>
 
 test('item citations become item credits', () => {
   assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].sources?.map(s => s.number), [11]);
-  assert.equal(keyFiguresProps(figureOf('keyFigures'), context).figures[0].qualifier, 'more than');
+  assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].value, { value: 7200, qualifier: 'more than', asPublished: 'more than 7,200' });
   assert.equal(timelineProps(figureOf('timeline'), context).events[1].sources?.[0].label, 'Court of First Instance, Antwerp');
   assert.deepEqual(compositionBarProps(figureOf('compositionBar'), context).rows[1].sources?.map(s => s.number), [13]);
   assert.deepEqual(estimateRangeProps(figureOf('estimateRange'), context).estimates[3].sources?.map(s => s.number), [17]);
@@ -101,12 +102,35 @@ test('an item citing several sources gets a credit for each, in the order writte
   assert.deepEqual(periodTimelineProps(cited, context).rows[0].periods[0].sources?.map(s => s.label), ['Congressional Research Service', 'US Department of State']);
 });
 
+test('qualified bar values and table cells reach the components as written', () => {
+  const bars = barChartProps(figureOf('barChart', 'deaths-by-region'), context);
+  assert.deepEqual(bars.items.map(item => item.value), [
+    { value: 159, qualifier: 'at least', asPublished: 'at least 159' },
+    { value: 40, qualifier: 'fewer than', asPublished: 'fewer than 40' },
+    { value: 90, qualifier: 'about', asPublished: 'about 90' },
+    { low: 60, high: 80, asPublished: 'between 60 and 80' },
+    120,
+  ]);
+  const table = figureOf('dataTable');
+  const qualified = { ...table, rows: [{ ...table.rows[0], year: { value: 2025, qualifier: 'about' as const, sources: [24] } }, { ...table.rows[1], year: { low: 1964, high: 1965 } }] };
+  const rows = dataTableProps(qualified, context).rows;
+  assert.deepEqual(rows[0].year, { value: 2025, qualifier: 'about', asPublished: undefined, sources: [context.credit(24)] });
+  assert.deepEqual(rows[1].year, { low: 1964, high: 1965, asPublished: undefined, sources: undefined });
+});
+
+test('a key figure\'s sibling qualifier folds into its value', () => {
+  const keys = figureOf('keyFigures');
+  assert.deepEqual(keyFiguresProps(keys, context).figures.map(f => f.value), [{ value: 7200, qualifier: 'more than', asPublished: 'more than 7,200' }, 98.7]);
+  const ranged = { ...keys, figures: [{ ...keys.figures[1], value: { low: 98, high: 99 } }] };
+  assert.deepEqual(keyFiguresProps(ranged, context).figures[0].value, { low: 98, high: 99 });
+});
+
 test('map presets resolve to their tiles and bare numbers become data', () => {
   const props = tileMapProps(figureOf('tileMap'), context);
   assert.equal(props.tiles, US_STATE_TILES);
   assert.ok(props.data, 'a numeric tile map keeps its data');
   assert.deepEqual(props.data.DE, { value: 5.1 });
-  assert.deepEqual(props.data.AR, { value: 8.8, label: undefined });
+  assert.deepEqual(props.data.AR, { value: 8.8, asPublished: '8.8%' });
   assert.equal(props.note?.endsWith('Values from EAVS 2024 Overview Table 1.'), true);
 });
 

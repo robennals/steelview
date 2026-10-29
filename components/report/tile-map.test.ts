@@ -88,3 +88,32 @@ test('a GeoMap outlines its highlighted regions without changing their fill', ()
   assert.doesNotMatch(path('london'), /data-highlight/);
   assert.equal(path('wales').match(/fill:[^;"]+/)?.[0], path('london').match(/fill:[^;"]+/)?.[0]);
 });
+
+test('a bounded tile prints its glyph, every inexact tile is stippled, and the legend explains only the marks used', () => {
+  const html = renderToStaticMarkup(createElement(TileMap, {
+    tiles: US_STATE_TILES,
+    valueLabel: 'Deaths',
+    data: { CA: { value: 159, qualifier: 'at least', asPublished: 'at least 159' }, TX: { value: 90, qualifier: 'about' }, NY: { low: 60, high: 80 }, FL: { value: 120 } },
+  }));
+  assert.match(tileHtml(html, 'CA'), /data-stippled="true"/);
+  assert.match(tileHtml(html, 'CA'), />▲159<\/span>/);
+  assert.match(tileHtml(html, 'CA'), /aria-label="California: at least 159"/);
+  assert.match(tileHtml(html, 'TX'), /data-stippled="true"[^>]*>.*>90<\/span>/);
+  assert.match(tileHtml(html, 'NY'), />60–\u200b80<\/span>/);
+  assert.doesNotMatch(tileHtml(html, 'FL'), /data-stippled/);
+  assert.match(html, /▲<\/span> At least this value/);
+  assert.doesNotMatch(html, /▼<\/span>/);
+  assert.match(html, /Stippled: not an exact figure — approximate, a bound or a range \(shaded at its midpoint\)/);
+});
+
+test('a numeric GeoMap draws a stipple over each inexact area, never instead of its fill', () => {
+  const html = renderToStaticMarkup(createElement(GeoMap, {
+    regions: UK_ITL1_REGIONS,
+    valueLabel: 'Share',
+    format: { unit: 'percent' },
+    data: { london: { value: 40, qualifier: 'over' }, wales: { value: 7 } },
+  }));
+  assert.match(html, /<path class="sv-geo-map__region"[^>]*data-region="london"[^>]*><\/path><path class="sv-geo-map__stipple"/);
+  assert.equal(html.match(/sv-geo-map__stipple"/g)?.length, 1);
+  assert.match(html, /aria-label="London: over 40%"/);
+});

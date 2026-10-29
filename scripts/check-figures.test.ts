@@ -90,3 +90,23 @@ test('figure values reach the chart-value audit', () => {
   const values = auditTopic([figureFixture()]).values.filter((v) => v.chart === 'figure wa-by-race');
   assert.equal(values.length, 5);
 });
+
+test('qualified bars are traced by their wording, and a range by both ends', () => {
+  const values = auditTopic([figureFixture()]).values.filter((v) => v.chart === 'figure deaths-by-region');
+  assert.deepEqual(values.map((v) => [v.where, v.verdict]), [
+    ['figure deaths-by-region bar "North"', 'quoted'],
+    ['figure deaths-by-region bar "West"', 'quoted'],
+    ['figure deaths-by-region bar "South"', 'quoted'],
+    ['figure deaths-by-region bar "East" low', 'quoted'],
+    ['figure deaths-by-region bar "East" high', 'quoted'],
+    ['figure deaths-by-region bar "Capital"', 'quoted'],
+  ]);
+});
+
+test('a range with no wording of its own is untraced unless both ends are quoted', () => {
+  const item = figureFixture();
+  const bars = (item.data.figures as Array<{ id?: string; items?: Array<Record<string, unknown>> }>).find((f) => f.id === 'deaths-by-region')!;
+  bars.items![3].value = { low: 60, high: 85 };
+  const verdicts = auditTopic([item]).values.filter((v) => v.where.includes('"East"')).map((v) => v.verdict);
+  assert.deepEqual(verdicts, ['quoted', 'untraced']);
+});

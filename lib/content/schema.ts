@@ -308,6 +308,27 @@ export const valueFormatSchema = z
  */
 const asPublished = z.string().min(1).optional();
 
+/** How a source qualifies a number. Mirrors `Qualifier` in components/report/qualified.ts. */
+export const QUALIFIERS = ['about', 'at least', 'at most', 'more than', 'fewer than', 'under', 'over', 'nearly'] as const;
+const qualifierSchema = z.enum(QUALIFIERS);
+
+const qualifiedPointFields = { value: z.number().finite(), qualifier: qualifierSchema.optional(), asPublished };
+const qualifiedRangeFields = { low: z.number().finite(), high: z.number().finite(), asPublished };
+const lowToHigh = { check: (r: { low: number; high: number }) => r.low <= r.high, message: 'a range runs from `low` up to `high`' };
+
+/** `{ value: 159, qualifier: at least, asPublished: "At least 159" }`: one number, as the source qualifies it. */
+export const qualifiedPointSchema = z.strictObject(qualifiedPointFields);
+/** `{ low: 4, high: 6, asPublished: "4–6%" }`: a range the source publishes instead of one number. */
+export const qualifiedRangeSchema = z.strictObject(qualifiedRangeFields).refine(lowToHigh.check, lowToHigh.message);
+
+/**
+ * A number a figure draws: bare (`159`), qualified, or a published range.
+ * Strict objects, so a misspelt key or a `value` beside `low` and `high`
+ * fails instead of being dropped. See components/report/qualified.ts for
+ * how each kind draws a qualification.
+ */
+export const figureNumberSchema = z.union([z.number().finite(), qualifiedPointSchema, qualifiedRangeSchema]);
+
 /** Fields every component figure shares. */
 const figureBase = {
   id: slugId,
@@ -341,9 +362,33 @@ export const sectionRefSchema = z.object({ kind: z.literal('section'), id: slugI
 /* --- dataTable ------------------------------------------------------------ */
 
 const plainCell = z.union([z.string(), z.number().finite(), z.null()]);
-/** A cell with its own footnotes, rendered as "[n]" links after the text. */
-const citedCell = z.object({ value: plainCell, sources: z.array(citation).min(1), asPublished });
-export const tableCellSchema = z.union([plainCell, citedCell]);
+/**
+ * A cell object: a value with its own footnotes (`sources`, rendered as "[n]"
+ * links after the text), a qualified number (`qualifier`), a published range
+ * (`low` and `high` instead of `value`), or any of these together.
+ */
+const cellObject = z
+  .object({
+    value: plainCell.optional(),
+    qualifier: qualifierSchema.optional(),
+    low: z.number().finite().optional(),
+    high: z.number().finite().optional(),
+    sources: z.array(citation).min(1).optional(),
+    asPublished,
+  })
+  .superRefine((cell, ctx) => {
+    const issue = (message: string) => ctx.addIssue({ code: 'custom', message });
+    if (cell.low !== undefined || cell.high !== undefined) {
+      if (cell.low === undefined || cell.high === undefined || cell.value !== undefined) issue('a range cell gives `low` and `high`, and no `value`');
+      else if (!lowToHigh.check({ low: cell.low, high: cell.high })) issue(lowToHigh.message);
+      if (cell.qualifier) issue('a range takes no `qualifier`: its ends are the qualification');
+    } else if (cell.value === undefined) {
+      issue('a cell object needs `value`, or `low` and `high`');
+    } else if (cell.qualifier && typeof cell.value !== 'number') {
+      issue('a `qualifier` qualifies a number');
+    }
+  });
+export const tableCellSchema = z.union([plainCell, cellObject]);
 
 export const dataTableFigureSchema = z.object({
   kind: z.literal('dataTable'),
@@ -384,10 +429,10 @@ export const keyFiguresFigureSchema = z.object({
   figures: z
     .array(
       z.object({
-        value: z.number().finite(),
+        value: figureNumberSchema,
         format: valueFormatSchema.optional(),
-        /** Printed before the number: "more than 7,200". */
-        qualifier: z.enum(['about', 'more than', 'at least', 'fewer than', 'at most']).optional(),
+        /** Printed before the number: "more than 7,200". The same as a qualified `value`'s; give it in one place. */
+        qualifier: qualifierSchema.optional(),
         label: z.string().min(1),
         period: partialDate,
         periodLabel: z.string().min(1).optional(),
@@ -466,9 +511,11 @@ export const periodTimelineFigureSchema = z.object({
 export const MAP_TILE_PRESETS = ['us-states', 'europe-countries', 'uk-regions'] as const;
 export const GEO_MAP_PRESETS = ['world', 'europe', 'uk-itl1'] as const;
 
+/** An area's number: bare, qualified or a range, with an optional `label` that replaces the formatted value ("<0.1"). */
 const mapDatum = z.union([
   z.number().finite(),
-  z.object({ value: z.number().finite(), label: z.string().min(1).optional(), asPublished }),
+  z.strictObject({ ...qualifiedPointFields, label: z.string().min(1).optional() }),
+  z.strictObject({ ...qualifiedRangeFields, label: z.string().min(1).optional() }).refine(lowToHigh.check, lowToHigh.message),
 ]);
 
 /** An area's category: its slug alone, or the slug with a note for the readout and table. */
@@ -565,7 +612,7 @@ export const barChartFigureSchema = z.object({
   sort: z.enum(['value', 'none']).optional(),
   domainMax: z.number().positive().optional(),
   items: z
-    .array(z.object({ label: z.string().min(1), value: z.number().finite(), highlight: z.boolean().optional(), asPublished }))
+    .array(z.object({ label: z.string().min(1), value: figureNumberSchema, highlight: z.boolean().optional(), asPublished }))
     .min(2),
 });
 
@@ -579,7 +626,8 @@ export const compositionBarFigureSchema = z.object({
     .array(
       z.object({
         label: z.string().min(1),
-        values: z.record(z.string(), z.number().finite().nonnegative()),
+        /** Part sizes by category key. A qualified part ("about 30") keeps its words in the labels and table. */
+        values: z.record(z.string(), figureNumberSchema),
         // `source` / `sources`: a row from a different counter cites its own.
         ...citationFields,
       }).superRefine(citationRule({ required: false })).transform(toSources)
@@ -610,7 +658,8 @@ export const estimateRangeFigureSchema = z.object({
         label: z.string().min(1),
         /** Shown after the label: "May 2025". */
         year: z.union([z.string().min(1), z.number().int()]).optional(),
-        estimate: z.number().finite().optional(),
+        /** A central estimate the source qualifies ("about 40") may say so; a range is `low` and `high`. */
+        estimate: z.union([z.number().finite(), qualifiedPointSchema]).optional(),
         /** Omit `high` for "at least …", `low` for "at most …". */
         low: z.number().finite().optional(),
         high: z.number().finite().optional(),
@@ -653,8 +702,9 @@ export const scatterPlotFigureSchema = z.object({
         label: z.string().min(1).max(4),
         /** For the readout and the table: "Arizona". */
         name: z.string().min(1),
-        x: z.number().finite(),
-        y: z.number().finite(),
+        /** Qualified coordinates keep their words in the readout; no ranges, since a dot at a midpoint claims a figure the source never gave. */
+        x: z.union([z.number().finite(), qualifiedPointSchema]),
+        y: z.union([z.number().finite(), qualifiedPointSchema]),
         group: slugId.optional(),
         note: z.string().min(1).optional(),
         xAsPublished: asPublished,

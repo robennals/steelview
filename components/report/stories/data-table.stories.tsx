@@ -73,3 +73,32 @@ export const CitedCells: Story = {
     sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }, { label: 'Second illustrative source', href: '#source-example-3', number: 3 }],
   },
 };
+
+/**
+ * Cells the source qualifies read in its own words — "at least 159",
+ * "between 60 and 80" — and still sort by their number; a range sorts by its
+ * midpoint.
+ */
+export const QualifiedValues: Story = {
+  args: {
+    title: 'Deaths and displacement by region, May 2026',
+    description: 'Illustrative: sort the Deaths column to see bounds and ranges placed by their numbers.',
+    caption: 'One row per region, in the counter’s own words where it qualifies a figure.',
+    columns: [
+      { key: 'region', label: 'Region', rowHeader: true },
+      { key: 'deaths', label: 'Deaths', format: { unit: 'count' } },
+      { key: 'displaced', label: 'Share displaced', format: { unit: 'percent', decimals: 0 } },
+    ],
+    rows: [
+      { region: 'North', deaths: { value: 159, qualifier: 'at least', asPublished: 'at least 159', sources: [{ label: 'Illustrative source', number: 1 }] }, displaced: 12 },
+      { region: 'Capital', deaths: 120, displaced: { value: 3, qualifier: 'under' } },
+      { region: 'South', deaths: { value: 90, qualifier: 'about', asPublished: 'about 90' }, displaced: 8 },
+      { region: 'East', deaths: { low: 60, high: 80, asPublished: 'between 60 and 80' }, displaced: { low: 4, high: 6 } },
+      { region: 'West', deaths: { value: 40, qualifier: 'fewer than', asPublished: 'fewer than 40' }, displaced: null },
+    ],
+    highlight: [],
+    defaultSort: { key: 'deaths', direction: 'descending' },
+    sources: [{ label: 'Illustrative source', number: 1 }],
+    note: undefined,
+  },
+};

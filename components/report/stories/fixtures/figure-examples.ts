@@ -251,6 +251,14 @@ export const figureExamplesFact: Fact = {
       "url": "https://example.org/fixture/30",
       "publisher": "National Conference of State Legislatures",
       "date": "2026"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: at least 159 deaths in the north, fewer than 40 in the west, about 90 in the south, between 60 and 80 in the east, and 120 in the capital.",
+      "title": "Fixture: deaths by region, as the counter qualifies them",
+      "url": "https://example.org/fixture/31",
+      "publisher": "Fixture Casualty Counter",
+      "date": "2026-05"
     }
   ],
   "series": {
@@ -1109,6 +1117,58 @@ export const figureExamplesFact: Fact = {
           "x": 35,
           "y": 6,
           "group": "mostly-in-person"
+        }
+      ]
+    },
+    {
+      "kind": "barChart",
+      "id": "deaths-by-region",
+      "title": "Deaths by region, as the counter gives them, May 2026",
+      "description": "The counter gives some regions only as a bound, an approximation or a range; each bar shows which.",
+      "sources": [
+        31
+      ],
+      "valueLabel": "Deaths",
+      "categoryLabel": "Region",
+      "format": {
+        "unit": "count"
+      },
+      "items": [
+        {
+          "label": "North",
+          "value": {
+            "value": 159,
+            "qualifier": "at least",
+            "asPublished": "at least 159"
+          }
+        },
+        {
+          "label": "West",
+          "value": {
+            "value": 40,
+            "qualifier": "fewer than",
+            "asPublished": "fewer than 40"
+          }
+        },
+        {
+          "label": "South",
+          "value": {
+            "value": 90,
+            "qualifier": "about",
+            "asPublished": "about 90"
+          }
+        },
+        {
+          "label": "East",
+          "value": {
+            "low": 60,
+            "high": 80,
+            "asPublished": "between 60 and 80"
+          }
+        },
+        {
+          "label": "Capital",
+          "value": 120
         }
       ]
     }

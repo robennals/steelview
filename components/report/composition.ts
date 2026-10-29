@@ -3,6 +3,7 @@
  * of that row's total, and optionally fold small parts into "Other".
  */
 
+import { pointValue, type FigureNumber } from './qualified';
 import { seriesColor } from './scale';
 import type { SourceCredit } from './types';
 
@@ -10,8 +11,8 @@ export type CompositionCategory = { key: string; label: string };
 
 export type CompositionRowInput = {
   label: string;
-  /** Part sizes by category key, as counts or as percentages — shares are recomputed either way. */
-  values: Record<string, number>;
+  /** Part sizes by category key, as counts or as percentages — shares are recomputed either way. A qualified part is sized by its number (a range by its midpoint). */
+  values: Record<string, FigureNumber>;
   /** A row from a different counter or survey cites its own sources, shown after the row label. */
   sources?: SourceCredit[];
 };
@@ -20,6 +21,8 @@ export type CompositionSegment = {
   key: string;
   label: string;
   value: number;
+  /** The part as the source gives it, qualifier and wording included; absent for a folded "Other". */
+  published?: FigureNumber;
   /** Share of the row total, 0–100. */
   share: number;
 };
@@ -39,9 +42,12 @@ export function compose(
   rows: CompositionRowInput[],
   { otherThreshold, otherLabel = 'Other' }: { otherThreshold?: number; otherLabel?: string } = {},
 ): { categories: CompositionCategory[]; rows: CompositionRow[] } {
-  const totals = rows.map(row => categories.reduce((sum, category) => sum + Math.max(0, row.values[category.key] ?? 0), 0));
-  const shareOf = (rowIndex: number, key: string) =>
-    totals[rowIndex] > 0 ? (Math.max(0, rows[rowIndex].values[key] ?? 0) / totals[rowIndex]) * 100 : 0;
+  const size = (row: CompositionRowInput, key: string) => {
+    const part = row.values[key];
+    return part === undefined ? 0 : Math.max(0, pointValue(part));
+  };
+  const totals = rows.map(row => categories.reduce((sum, category) => sum + size(row, category.key), 0));
+  const shareOf = (rowIndex: number, key: string) => (totals[rowIndex] > 0 ? (size(rows[rowIndex], key) / totals[rowIndex]) * 100 : 0);
 
   const folded = new Set(
     otherThreshold === undefined
@@ -60,11 +66,12 @@ export function compose(
       const segments: CompositionSegment[] = kept.map(category => ({
         key: category.key,
         label: category.label,
-        value: Math.max(0, row.values[category.key] ?? 0),
+        value: size(row, category.key),
+        published: row.values[category.key],
         share: shareOf(i, category.key),
       }));
       if (folded.size > 0) {
-        const value = [...folded].reduce((sum, key) => sum + Math.max(0, row.values[key] ?? 0), 0);
+        const value = [...folded].reduce((sum, key) => sum + size(row, key), 0);
         segments.push({ key: OTHER_KEY, label: otherLabel, value, share: totals[i] > 0 ? (value / totals[i]) * 100 : 0 });
       }
       return { label: row.label, total: totals[i], segments, ...(row.sources ? { sources: row.sources } : {}) };

@@ -646,7 +646,7 @@ test('F1: a figure id may not repeat another figure, chart or reading id', () =>
 test('F2: every figure citation is one of the fact\'s numbered sources', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'timeline').events[0].sources = [99];
-  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 31'));
+  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 32'));
 });
 
 test('F2: every number in an item\'s `sources` is checked, not only the first', () => {
@@ -655,7 +655,7 @@ test('F2: every number in an item\'s `sources` is checked, not only the first', 
   figureOf(fact, 'keyFigures').figures[0].sources = [11, 97];
   figureOf(fact, 'periodTimeline').rows[0].periods[0].sources = [2, 96];
   const errors = validateTopic(topic);
-  for (const n of [98, 97, 96]) assert.ok(errors.some(e => e.includes(`cites source ${n}, but the fact has 31`)), `source ${n}`);
+  for (const n of [98, 97, 96]) assert.ok(errors.some(e => e.includes(`cites source ${n}, but the fact has 32`)), `source ${n}`);
 });
 
 test('a series event citing an unknown source is reported', () => {
@@ -798,6 +798,29 @@ test('F11: a quote citing several sources need only appear in one of them', () =
   assert.deepEqual(validateTopic(topic), []);
   pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
   assert.ok(hasError(topic, 'is not in the quote of any of sources 24, 21'));
+});
+
+test('F8: a key figure qualifies its value in one place', () => {
+  const { topic, fact } = figuresTopic();
+  const audit = figureOf(fact, 'keyFigures').figures[0];
+  audit.value = { value: 7200, qualifier: 'more than' };
+  assert.ok(hasError(topic, '"signatures re-examined" gives its qualifier or wording beside a qualified value'));
+  audit.qualifier = undefined;
+  audit.asPublished = undefined;
+  assert.deepEqual(validateTopic(topic), []);
+});
+
+test('F10: a range\'s high end counts for domainMax, and a composition part may not be negative', () => {
+  const { topic, fact } = figuresTopic();
+  const bars = figureOf(fact, 'barChart', 'deaths-by-region');
+  bars.domainMax = 150;
+  bars.items = bars.items.map(item => (item.label === 'East' ? item : { ...item, value: 10 }));
+  assert.deepEqual(validateTopic(topic), []);
+  bars.domainMax = 70;
+  assert.ok(hasError(topic, "domainMax must be at least every value, a range's high end included"));
+  bars.domainMax = undefined;
+  figureOf(fact, 'compositionBar').rows[0].values.civilian = { low: -1, high: 2 };
+  assert.ok(hasError(topic, 'row "HRANA, 7 Apr" has a negative part'));
 });
 
 test('F12: a claim check\'s evidence is a fact, and its section exists', () => {

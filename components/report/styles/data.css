@@ -95,10 +95,11 @@
   }
 
   .sv-bars__bar {
+    --sv-bar-fill: var(--sv-series-1);
     position: absolute;
     top: 0;
     height: 100%;
-    background: var(--sv-series-1);
+    background: var(--sv-bar-fill);
   }
 
   /* A hairline of paper between stacked segments, so two neighbouring parts
@@ -112,7 +113,113 @@
   }
 
   .sv-bars__row[data-highlight] .sv-bars__bar {
-    background: var(--accent);
+    --sv-bar-fill: var(--accent);
+  }
+
+  /* ------------------------------------------ qualified values on bars */
+
+  /* A bound ends in an open arrowhead just past the bar's value end, in ink,
+     pointing the way the true value lies: right for "at least", left for
+     "at most". Shape and direction, not colour, carry the meaning, so it
+     reads in greyscale and in both themes. */
+  .sv-bars__bar[data-qualification="lower-bound"]::after,
+  .sv-bars__bar[data-qualification="upper-bound"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 0.2rem);
+    width: 0.42rem;
+    height: 0.42rem;
+    border: solid var(--ink);
+    border-width: 2px 2px 0 0;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .sv-bars__bar[data-qualification="upper-bound"]::after {
+    left: calc(100% + 0.35rem);
+    transform: translateY(-50%) rotate(-135deg);
+  }
+
+  .sv-bars__bar[data-negative][data-qualification="lower-bound"]::after,
+  .sv-bars__bar[data-negative][data-qualification="upper-bound"]::after {
+    left: auto;
+    right: calc(100% + 0.2rem);
+  }
+
+  .sv-bars__bar[data-negative][data-qualification="upper-bound"]::after {
+    right: calc(100% + 0.05rem);
+  }
+
+  /* An approximation: the bar's last stretch is dotted, so its end is soft. */
+  .sv-bars__bar[data-qualification="approximate"] {
+    --sv-bar-soft: min(1rem, 50%);
+    background: linear-gradient(to right, var(--sv-bar-fill) calc(100% - var(--sv-bar-soft)), transparent 0);
+  }
+
+  .sv-bars__bar[data-negative][data-qualification="approximate"] {
+    background: linear-gradient(to left, var(--sv-bar-fill) calc(100% - var(--sv-bar-soft)), transparent 0);
+  }
+
+  .sv-bars__bar[data-qualification="approximate"]::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    width: var(--sv-bar-soft);
+    background: radial-gradient(circle, var(--sv-bar-fill) 0 1.6px, transparent 1.9px) right center / 0.3rem 0.3rem repeat-x;
+  }
+
+  .sv-bars__bar[data-negative][data-qualification="approximate"]::after {
+    right: auto;
+    left: 0;
+    background-position: left center;
+  }
+
+  /* A range: the bar runs to the low end; an ink whisker with an end cap
+     runs on to the high end. */
+  .sv-bars__whisker {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    background: var(--ink);
+    transform: translateY(-50%);
+  }
+
+  .sv-bars__whisker::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -0.3rem;
+    width: 2px;
+    height: calc(0.6rem + 2px);
+    background: var(--ink);
+  }
+
+  .sv-bars__qualification-key {
+    list-style: none;
+    margin: 0.25rem 0 0.5rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  .sv-bars__qualification-key li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sv-bars__key-track {
+    position: relative;
+    display: inline-block;
+    flex: none;
+    width: 2.25rem;
+    height: 0.7rem;
+    margin-right: 0.4rem;
   }
 
   .sv-bars__zero {

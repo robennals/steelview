@@ -116,3 +116,22 @@ test('a text with words of its own is not a whole quote', () => {
   assert.equal(isWholeQuote(splitQuoted('"One" and "two"')), false);
   assert.equal(isWholeQuote(splitQuoted('plain')), false);
 });
+
+test('a qualified cell reads in the source\'s words and sorts by its number, a range by its midpoint', () => {
+  const qualified: DataTableRow[] = [
+    { area: 'North', deaths: { value: 159, qualifier: 'at least', asPublished: 'At least 159' } },
+    { area: 'East', deaths: { low: 60, high: 80 } },
+    { area: 'South', deaths: { value: 90, qualifier: 'about' } },
+    { area: 'Capital', deaths: 120 },
+  ];
+  assert.deepEqual(sortRows(qualified, 'deaths', 'descending').map(r => r.area), ['North', 'Capital', 'South', 'East']);
+  const html = renderToStaticMarkup(createElement(DataTable, {
+    caption: 'One row per area',
+    columns: [{ key: 'area', label: 'Area', rowHeader: true }, { key: 'deaths', label: 'Deaths', format: { unit: 'count' } }],
+    rows: qualified,
+  }));
+  assert.match(html, />At least 159</);
+  assert.match(html, />60–80</);
+  assert.match(html, />about 90</);
+  assert.match(html, />120</);
+});

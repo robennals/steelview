@@ -103,7 +103,22 @@ export type FigureValue = {
   valuesFrom?: string;
 };
 
-/** Every number a figure draws: key figures, bars, map data, scatter coordinates, composition parts, estimate bounds, numeric table cells. */
+/** A number as content writes it: bare, qualified (`{ value, qualifier, asPublished }`) or a range (`{ low, high, asPublished }`). */
+type WrittenNumber = number | { value: number; asPublished?: string } | { low: number; high: number; asPublished?: string };
+
+/**
+ * A written number as audited values: one for a bare or qualified number,
+ * two for a range, since both ends are figures the source must state. The
+ * number's own `asPublished` takes the place of the item's.
+ */
+function numberValues(where: string, n: WrittenNumber, rest: Omit<FigureValue, 'where' | 'value'>): FigureValue[] {
+  if (typeof n === 'number') return [{ ...rest, asPublished: rest.asPublished, where, value: n }];
+  const asPublished = n.asPublished ?? rest.asPublished;
+  if ('low' in n) return [{ ...rest, asPublished, where: `${where} low`, value: n.low }, { ...rest, asPublished, where: `${where} high`, value: n.high }];
+  return [{ ...rest, asPublished, where, value: n.value }];
+}
+
+/** Every number a figure draws: key figures, bars, map data, scatter coordinates, composition parts, estimate bounds, numeric table cells — both ends of a range. */
 export function figureValues(figure: Figure): FigureValue[] {
   switch (figure.kind) {
     case 'series':
@@ -125,22 +140,22 @@ export function figureValues(figure: Figure): FigureValue[] {
         return figure.columns.flatMap(column => {
           const cell = row[column.key];
           const cited = cell !== null && typeof cell === 'object' ? cell : undefined;
-          const value = cited ? cited.value : cell;
-          if (typeof value !== 'number') return [];
-          return [{
-            where: `table row "${rowName}" column ${column.key}`,
-            value,
+          const written: WrittenNumber | undefined = cited
+            ? cited.low !== undefined && cited.high !== undefined ? { low: cited.low, high: cited.high } : typeof cited.value === 'number' ? { value: cited.value } : undefined
+            : typeof cell === 'number' ? cell : undefined;
+          if (written === undefined) return [];
+          return numberValues(`table row "${rowName}" column ${column.key}`, written, {
             format: typeof column.format === 'object' ? column.format : undefined,
-            citations: cited ? cited.sources : figure.sources,
+            citations: cited?.sources ?? figure.sources,
             asPublished: cited?.asPublished,
             valuesFrom: figure.valuesFrom,
-          }];
+          });
         });
       });
     }
     case 'keyFigures':
       return figure.figures.flatMap(f => [
-        { where: `key figure "${f.label}"`, value: f.value, format: f.format, citations: f.sources, asPublished: f.asPublished, valuesFrom: figure.valuesFrom },
+        ...numberValues(`key figure "${f.label}"`, f.value, { format: f.format, citations: f.sources, asPublished: f.asPublished, valuesFrom: figure.valuesFrom }),
         ...(f.change
           ? [{
             where: `key figure "${f.label}" change`,
@@ -155,57 +170,40 @@ export function figureValues(figure: Figure): FigureValue[] {
     // A categorical map draws no numbers; its `data` is absent.
     case 'tileMap':
     case 'geoMap':
-      return Object.entries(figure.data ?? {}).map(([area, datum]) => ({
-        where: `map area ${area}`,
-        value: typeof datum === 'number' ? datum : datum.value,
-        format: figure.format,
-        citations: figure.sources,
-        asPublished: typeof datum === 'number' ? undefined : datum.asPublished,
-        valuesFrom: figure.valuesFrom,
-      }));
+      return Object.entries(figure.data ?? {}).flatMap(([area, datum]) =>
+        numberValues(`map area ${area}`, datum, { format: figure.format, citations: figure.sources, valuesFrom: figure.valuesFrom }),
+      );
     case 'scatterPlot':
       return figure.points.flatMap(p =>
-        (['x', 'y'] as const).map(axis => ({
-          where: `point "${p.name}" ${axis}`,
-          value: p[axis],
-          format: figure[axis].format,
-          citations: figure.sources,
-          asPublished: axis === 'x' ? p.xAsPublished : p.yAsPublished,
-          valuesFrom: figure.valuesFrom,
-        })),
+        (['x', 'y'] as const).flatMap(axis =>
+          numberValues(`point "${p.name}" ${axis}`, p[axis], {
+            format: figure[axis].format,
+            citations: figure.sources,
+            asPublished: axis === 'x' ? p.xAsPublished : p.yAsPublished,
+            valuesFrom: figure.valuesFrom,
+          }),
+        ),
       );
     case 'barChart':
-      return figure.items.map(item => ({
-        where: `bar "${item.label}"`,
-        value: item.value,
-        format: figure.format,
-        citations: figure.sources,
-        asPublished: item.asPublished,
-        valuesFrom: figure.valuesFrom,
-      }));
+      return figure.items.flatMap(item =>
+        numberValues(`bar "${item.label}"`, item.value, { format: figure.format, citations: figure.sources, asPublished: item.asPublished, valuesFrom: figure.valuesFrom }),
+      );
     case 'compositionBar':
       return figure.rows.flatMap(row =>
-        Object.entries(row.values).map(([key, value]) => ({
-          where: `composition row "${row.label}" ${key}`,
-          value,
-          format: figure.countFormat,
-          citations: row.sources.length > 0 ? row.sources : figure.sources,
-          valuesFrom: figure.valuesFrom,
-        })),
+        Object.entries(row.values).flatMap(([key, value]) =>
+          numberValues(`composition row "${row.label}" ${key}`, value, {
+            format: figure.countFormat,
+            citations: row.sources.length > 0 ? row.sources : figure.sources,
+            valuesFrom: figure.valuesFrom,
+          }),
+        ),
       );
     case 'estimateRange':
       return figure.estimates.flatMap(e =>
         (['estimate', 'low', 'high'] as const).flatMap(bound => {
           const value = e[bound];
           if (value === undefined) return [];
-          return [{
-            where: `estimate "${e.label}" ${bound}`,
-            value,
-            format: figure.format,
-            citations: e.sources,
-            asPublished: e.asPublished,
-            valuesFrom: figure.valuesFrom,
-          }];
+          return numberValues(`estimate "${e.label}" ${bound}`, value, { format: figure.format, citations: e.sources, asPublished: e.asPublished, valuesFrom: figure.valuesFrom });
         }),
       );
   }

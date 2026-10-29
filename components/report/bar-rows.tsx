@@ -1,5 +1,6 @@
-import type { ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { tickLabels, type BarScale, type Span } from './bar-layout';
+import { QUALIFICATION_KEY, type Qualification } from './qualified';
 import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
 import type { ValueFormat } from './types';
 
@@ -20,6 +21,17 @@ export type BarSegment = Span & {
   color?: string;
   /** Spoken name of the segment, for the row's text equivalent. */
   name?: string;
+  /**
+   * How the source qualifies the value the segment ends at: a bound ends in
+   * an open arrowhead pointing the way the true value lies, an approximation
+   * in a dotted end, a range in a whisker (`whisker`). The row's printed
+   * value says the same in words.
+   */
+  qualification?: Qualification;
+  /** A range's span from `low` to `high`, drawn as a whisker beyond the bar. */
+  whisker?: Span;
+  /** The segment runs left of zero, so its value end is its left edge. */
+  negative?: boolean;
 };
 
 export type BarRowData = {
@@ -75,20 +87,25 @@ export function BarRows({
               aria-hidden="true"
               style={layout === 'grouped' ? { '--sv-bars-count': row.segments.length } : undefined}
             >
-              {row.segments.map((segment, i) =>
-                segment.width > 0 ? (
-                  <span
-                    key={i}
-                    className="sv-bars__bar"
-                    style={{
-                      left: `${segment.left}%`,
-                      width: `${segment.width}%`,
-                      ...(segment.color ? { background: segment.color } : null),
-                      ...(layout === 'grouped' ? { top: `${(i / row.segments.length) * 100}%`, height: `${100 / row.segments.length}%` } : null),
-                    }}
-                  />
-                ) : null,
-              )}
+              {row.segments.map((segment, i) => (
+                <Fragment key={i}>
+                  {/* A zero-width bar still carries its end mark: "fewer than 1" must not vanish. */}
+                  {(segment.width > 0 || (segment.qualification && segment.qualification !== 'exact')) && (
+                    <span
+                      className="sv-bars__bar"
+                      data-qualification={segment.qualification === 'exact' ? undefined : segment.qualification}
+                      data-negative={segment.negative || undefined}
+                      style={{
+                        left: `${segment.left}%`,
+                        width: `${segment.width}%`,
+                        ...(segment.color ? { '--sv-bar-fill': segment.color } : null),
+                        ...(layout === 'grouped' ? { top: `${(i / row.segments.length) * 100}%`, height: `${100 / row.segments.length}%` } : null),
+                      }}
+                    />
+                  )}
+                  {segment.whisker && <span className="sv-bars__whisker" style={{ left: `${segment.whisker.left}%`, width: `${segment.whisker.width}%` }} />}
+                </Fragment>
+              ))}
               <span className="sv-bars__zero" style={{ left: `${scale.zero}%` }} />
             </span>
           </li>
@@ -112,6 +129,32 @@ export function BarRows({
       </div>}
     </div>
   );
+}
+
+/**
+ * The key to the end marks a qualified bar can carry — only those that
+ * appear — each drawn as a small bar with the same classes as the rows, so
+ * the key and the chart cannot disagree.
+ */
+export function BarQualificationKey({ qualifications }: { qualifications: Array<Exclude<Qualification, 'exact'>> }) {
+  if (qualifications.length === 0) return null;
+  return (
+    <ul className="sv-bars__qualification-key">
+      {qualifications.map(qualification => (
+        <li key={qualification}>
+          <span className="sv-bars__key-track" aria-hidden="true">
+            <span className="sv-bars__bar" data-qualification={qualification} style={{ left: 0, width: qualification === 'range' ? '45%' : '70%' }} />
+            {qualification === 'range' && <span className="sv-bars__whisker" style={{ left: '45%', width: '40%' }} />}
+          </span>
+          {sentenceCase(QUALIFICATION_KEY[qualification])}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function sentenceCase(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 /** Swatch + name for each split value. Identity never rests on colour alone: the table view names every cell. */

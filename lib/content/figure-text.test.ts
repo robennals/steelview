@@ -183,3 +183,29 @@ test('quotes, timelines and caveats draw no numbers', () => {
     assert.deepEqual(figureValues(figureOf(kind)), [], kind);
   }
 });
+
+test('a qualified value is traced by its own wording; a range by both its ends', () => {
+  const bars = fact.figures?.find((f): f is FigureOf<'barChart'> => f.kind === 'barChart' && f.id === 'deaths-by-region');
+  assert.ok(bars);
+  assert.deepEqual(figureValues(bars).map(v => [v.where, v.value, v.asPublished]), [
+    ['bar "North"', 159, 'at least 159'],
+    ['bar "West"', 40, 'fewer than 40'],
+    ['bar "South"', 90, 'about 90'],
+    ['bar "East" low', 60, 'between 60 and 80'],
+    ['bar "East" high', 80, 'between 60 and 80'],
+    ['bar "Capital"', 120, undefined],
+  ]);
+});
+
+test('a range table cell is two values, each citing the cell\'s sources', () => {
+  const table: FigureOf<'dataTable'> = {
+    kind: 'dataTable', id: 't', title: 't', description: 'd', sources: [1], caption: 'c', highlight: [],
+    columns: [{ key: 'name', label: 'Name' }, { key: 'share', label: 'Share', format: { unit: 'percent' } }],
+    rows: [{ name: 'A', share: { low: 4, high: 6, sources: [3] } }, { name: 'B', share: { value: 5, qualifier: 'about', asPublished: 'about 5%' } }],
+  };
+  assert.deepEqual(figureValues(table).map(v => [v.where, v.value, v.citations, v.asPublished]), [
+    ['table row "A" column share low', 4, [3], undefined],
+    ['table row "A" column share high', 6, [3], undefined],
+    ['table row "B" column share', 5, [1], 'about 5%'],
+  ]);
+});

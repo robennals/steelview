@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from 'react';
+import { Fragment, useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { ReportFigure } from './figure';
 import { formatValue, slugify } from './format';
@@ -7,11 +7,12 @@ import type { GeoRegion } from './geo/types';
 import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, type MapEncoding } from './geo/categorical';
 import { CategoryLegend } from './geo/category-legend';
 import { CategoryTable } from './geo/category-table';
-import { PREVIEW_CLOSING, mapScale, mapSummary, readoutText, datumText } from './geo/choropleth';
+import { PREVIEW_CLOSING, isStippled, mapScale, mapSummary, readoutText, datumText } from './geo/choropleth';
 import { MapLegend } from './geo/map-legend';
 import { MapReadout } from './geo/map-readout';
 import { MapTable } from './geo/map-table';
 import { MarkerIcon, MarkerShape, shapeForSlot } from './marker-shape';
+import { pointValue, qualificationsIn } from './qualified';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 /** A point of interest drawn over the shading: a port, a centre, a site. */
@@ -87,7 +88,8 @@ type GeoMapCommon = {
 export type GeoMapProps = GeoMapCommon & MapEncoding;
 
 /** How one region is drawn and read, whichever way the map is shaded. */
-type RegionLook = { fill: string; readout: string; ariaLabel: string; missing: boolean; insetText: string };
+/** `stippled`: the figure is a bound, an approximation or a range, so a stipple is drawn over the fill. */
+type RegionLook = { fill: string; readout: string; ariaLabel: string; missing: boolean; insetText: string; stippled?: boolean };
 
 /** The drawing is sized to the geography: as wide as this, unless that would make it taller than MAP_MAX_HEIGHT. */
 const MAP_MAX_WIDTH = 560;
@@ -201,6 +203,7 @@ export function GeoMap(props: GeoMapProps) {
   const reactId = useId();
   const baseId = `sv-geo-map-${id ?? slugify(title ?? what)}-${reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
   const hatchId = `${baseId}-hatch`;
+  const stippleId = `${baseId}-stipple`;
   const descriptionId = `${baseId}-desc`;
 
   const resolvedInsets = (insets ?? [])
@@ -266,9 +269,11 @@ export function GeoMap(props: GeoMapProps) {
     lookFor = region => {
       const datum = data[region.id];
       const text = readoutText(region.name, datum, format);
-      return { fill: datum ? scale.color(datum.value) : `url(#${hatchId})`, readout: text, ariaLabel: text, missing: !datum, insetText: datumText(datum, format) };
+      return { fill: datum ? scale.color(pointValue(datum)) : `url(#${hatchId})`, readout: text, ariaLabel: text, missing: !datum, insetText: datumText(datum, format), stippled: isStippled(datum) };
     };
-    legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={regions.some(region => !data[region.id])} />;
+    // The key to the qualification marks explains method, so a preview leaves it to the full figure.
+    const qualifications = preview ? [] : qualificationsIn(regions.flatMap(region => (data[region.id] ? [data[region.id]] : [])));
+    legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={regions.some(region => !data[region.id])} qualifications={qualifications} />;
     summary = mapSummary(`Map of ${regions.length} areas shaded by ${valueLabel.toLowerCase()}.`, regions, data, format, markerSentence, preview ? PREVIEW_CLOSING : undefined);
     areaTable = <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={regions} data={data} format={format} />;
   }
@@ -292,20 +297,24 @@ export function GeoMap(props: GeoMapProps) {
   const regionPaths = (projectionToUse: Projection, list: GeoRegion[], interactive: boolean) =>
     list.map(region => {
       const look = lookFor(region);
+      const d = pathFor(region.coordinates, projectionToUse);
       return (
-        <path
-          key={region.id}
-          className="sv-geo-map__region"
-          d={pathFor(region.coordinates, projectionToUse)}
-          fillRule="evenodd"
-          style={{ fill: look.fill }}
-          data-region={region.id}
-          data-readout={look.readout}
-          data-missing={look.missing ? 'true' : undefined}
-          data-highlight={highlight.includes(region.id) ? 'true' : undefined}
-          vectorEffect="non-scaling-stroke"
-          {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true })}
-        />
+        <Fragment key={region.id}>
+          <path
+            className="sv-geo-map__region"
+            d={d}
+            fillRule="evenodd"
+            style={{ fill: look.fill }}
+            data-region={region.id}
+            data-readout={look.readout}
+            data-missing={look.missing ? 'true' : undefined}
+            data-highlight={highlight.includes(region.id) ? 'true' : undefined}
+            vectorEffect="non-scaling-stroke"
+            {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true })}
+          />
+          {/* Over the fill, never instead of it: the colour still reads the value. */}
+          {look.stippled && <path className="sv-geo-map__stipple" d={d} fillRule="evenodd" style={{ fill: `url(#${stippleId})` }} aria-hidden="true" />}
+        </Fragment>
       );
     });
 
@@ -325,6 +334,9 @@ export function GeoMap(props: GeoMapProps) {
         <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
           <rect className="sv-geo-map__hatch-ground" width="5" height="5" />
           <line className="sv-geo-map__hatch-line" x1="0" y1="0" x2="0" y2="5" />
+        </pattern>
+        <pattern id={stippleId} patternUnits="userSpaceOnUse" width="4" height="4">
+          <circle className="sv-geo-map__stipple-dot" cx="2" cy="2" r="0.7" />
         </pattern>
         <clipPath id={clipId}>
           <rect x={frame.x - PADDING} y={frame.y - PADDING} width={frame.width + 2 * PADDING} height={frame.height + 2 * PADDING} />

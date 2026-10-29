@@ -3,6 +3,7 @@ import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { compose, compositionColor, type CompositionCategory, type CompositionRowInput } from './composition';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
+import { qualifiedText } from './qualified';
 import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
@@ -144,7 +145,7 @@ export function CompositionBar({
               {row.segments.map(segment => (
                 <td key={segment.key}>
                   {segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%
-                  {showCounts && <span className="sv-composition__count"> ({formatValue(segment.value, countFormat)})</span>}
+                  {showCounts && <span className="sv-composition__count"> ({segment.published === undefined ? formatValue(segment.value, countFormat) : qualifiedText(segment.published, countFormat)})</span>}
                 </td>
               ))}
               {showCounts && <td>{formatValue(row.total, countFormat)}</td>}

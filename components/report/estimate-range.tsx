@@ -3,6 +3,7 @@ import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { crossesNull, estimateScale, whiskerSpan } from './estimate-layout';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
+import { pointValue, qualifiedLabel, qualifiedText, type QualifiedPoint } from './qualified';
 import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
@@ -10,8 +11,8 @@ export type Estimate = {
   /** The study or model: "Dustmann, Frattini & Preston". */
   label: string;
   year?: number | string;
-  /** The central estimate. Omit for a source that publishes only a range: no dot is drawn. */
-  estimate?: number;
+  /** The central estimate, qualified if the source says "about". Omit for a source that publishes only a range: no dot is drawn. */
+  estimate?: number | QualifiedPoint;
   /**
    * Lower and upper bounds of the reported interval (state which interval in
    * `intervalLabel`). Omit `high` for "at least …" and `low` for "at most …":
@@ -86,11 +87,13 @@ export function EstimateRange({
   panel,
   preview,
 }: EstimateRangeProps) {
-  const scale = estimateScale(estimates, nullValue, domain);
+  // Layout reads the central estimate's number; its qualifier is for the text.
+  const bounds = (e: Estimate) => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) });
+  const scale = estimateScale(estimates.map(bounds), nullValue, domain);
   // Signs say which side of "no effect" a value is on; with no such value they say nothing.
   const signed: ValueFormat = nullValue === null ? format : { ...format, signed: true };
   const groups = [...new Set(estimates.map(e => e.group ?? ''))];
-  const show = (value: number | undefined) => (value === undefined ? '—' : formatValue(value, signed));
+  const show = (value: number | QualifiedPoint | undefined) => (value === undefined ? '—' : qualifiedLabel(value, signed));
   const rangeText = (e: Estimate) => {
     const interval =
       e.low !== undefined && e.high !== undefined ? `${show(e.low)} to ${show(e.high)}`
@@ -118,8 +121,9 @@ export function EstimateRange({
             {estimates
               .filter(e => (e.group ?? '') === group)
               .map((e, i) => {
-                const whisker = whiskerSpan(e, scale.x);
-                const crosses = crossesNull(e, nullValue);
+                const whisker = whiskerSpan(bounds(e), scale.x);
+                const crosses = crossesNull(bounds(e), nullValue);
+                const central = bounds(e).estimate;
                 return (
                   <li key={`${e.label}-${i}`} className="sv-estimates__row">
                     <span className="sv-estimates__label">
@@ -148,7 +152,7 @@ export function EstimateRange({
                           style={{ left: `${whisker.left}%`, width: `${Math.max(0, whisker.right - whisker.left)}%` }}
                         />
                       )}
-                      {e.estimate !== undefined && <span className="sv-estimates__dot" style={{ left: `${scale.x(e.estimate)}%` }} />}
+                      {central !== undefined && <span className="sv-estimates__dot" style={{ left: `${scale.x(central)}%` }} />}
                     </span>
                   </li>
                 );
@@ -198,10 +202,10 @@ export function EstimateRange({
                 {e.sources && <SourceCredits sources={e.sources} />}
               </th>
               <td>{e.year ?? '—'}</td>
-              <td>{e.asPublished ?? show(e.estimate)}</td>
+              <td>{e.asPublished ?? (e.estimate === undefined ? '—' : qualifiedText(e.estimate, signed))}</td>
               <td>{show(e.low)}</td>
               <td>{show(e.high)}</td>
-              {nullValue !== null && <td className="sv-data__td-text">{yesNo(crossesNull(e, nullValue))}</td>}
+              {nullValue !== null && <td className="sv-data__td-text">{yesNo(crossesNull(bounds(e), nullValue))}</td>}
             </tr>
           ))}
         </tbody>

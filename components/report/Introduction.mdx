@@ -14,6 +14,7 @@ Each component takes plain data (numbers, labels, dates, sources), not the site'
 - **Every figure has a source.** Each component ends with a source line that links to the quoted reference it rests on. An item with sources of its own — a key figure, an event, a period, an estimate, a quote — takes `sources` (an array) and lists every one.
 - **Every number can be checked.** Charts offer a Graph/Table switch, so the exact values sit one click away.
 - **Never colour alone.** Series, statuses and categories are also told apart by labels, shapes or line styles, so they survive colour blindness and a black-and-white printout.
+- **A number keeps its qualification.** Every component that takes a number also takes a `QualifiedValue` — `{ value, qualifier }` ("at least 159", "about 30") or `{ low, high }` (a published range) — and draws it: an arrowhead, a dotted end or a whisker on a bar, ▲/▼ and a stipple on a map, the source's words in a table. `qualifiedLabel`, `qualifiedText`, `pointValue` and `qualificationOf` (in `qualified.ts`) are the shared helpers.
 - **Neutral ordering.** Items appear in data order, date order or alphabetical order, never in an order that puts one side first. No position is styled as more important than another.
 - **Works without JavaScript.** Components render their full default view on the server. Filters and toggles add to the page; they are never needed to read it.
 - **Design tokens, not colours.** Styles use the site's ink, paper, rule and series tokens, so dark mode works with no extra effort.

@@ -1,5 +1,6 @@
 import { linearScale, zeroBasedDomain } from './scale';
 import { formatValue } from './format';
+import { isRange, pointValue, qualificationOf, type FigureNumber, type Qualification } from './qualified';
 import type { ValueFormat } from './types';
 
 /**
@@ -24,9 +25,9 @@ export function barScale(values: number[], domainMax?: number): BarScale {
   return { domain, ticks, x, zero: x(0) };
 }
 
-/** The order bars are drawn in: largest first for `value` (the default), as given for `none`. */
-export function orderBars<T extends { value: number }>(items: T[], sort: 'value' | 'none' = 'value'): T[] {
-  return sort === 'value' ? [...items].sort((a, b) => b.value - a.value) : items;
+/** The order bars are drawn in: largest first for `value` (the default; a range by its midpoint), as given for `none`. */
+export function orderBars<T extends { value: FigureNumber }>(items: T[], sort: 'value' | 'none' = 'value'): T[] {
+  return sort === 'value' ? [...items].sort((a, b) => pointValue(b.value) - pointValue(a.value)) : items;
 }
 
 export type Span = { left: number; width: number };
@@ -35,6 +36,25 @@ export type Span = { left: number; width: number };
 export function barSpan(value: number, scale: BarScale): Span {
   const end = scale.x(value);
   return { left: Math.min(end, scale.zero), width: Math.abs(end - scale.zero) };
+}
+
+/** A bar for a qualified value: its span, how it is qualified, and for a range the whisker beyond it. */
+export type QualifiedSpan = Span & { qualification: Qualification; whisker?: Span; negative?: boolean };
+
+/**
+ * One bar for a value as the source gives it: to the value — a bound or an
+ * approximation is marked at the end, not moved — or, for a range, to
+ * `low` with a whisker on to `high`, so the drawn bar never claims more than
+ * the source's smallest figure.
+ */
+export function qualifiedSpan(value: FigureNumber, scale: BarScale): QualifiedSpan {
+  const qualification = qualificationOf(value);
+  if (isRange(value)) {
+    const whisker = { left: scale.x(value.low), width: Math.max(0, scale.x(value.high) - scale.x(value.low)) };
+    return { ...barSpan(value.low, scale), qualification, whisker, ...(value.low < 0 ? { negative: true } : null) };
+  }
+  const point = pointValue(value);
+  return { ...barSpan(point, scale), qualification, ...(point < 0 ? { negative: true } : null) };
 }
 
 /**

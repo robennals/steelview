@@ -91,7 +91,7 @@ function CellContent({ row, column }: { row: DataTableRow; column: DataTableColu
   return (
     <>
       {splitQuoted(cellText(cell, column.format)).map((part, i) => (part.quoted ? <q key={i}>{part.text}</q> : part.text))}
-      {cell !== null && typeof cell === 'object' && <Footnotes sources={cell.sources} />}
+      {cell !== null && typeof cell === 'object' && cell.sources && <Footnotes sources={cell.sources} />}
     </>
   );
 }

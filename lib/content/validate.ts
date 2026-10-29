@@ -1,3 +1,4 @@
+import { extentValues, pointValue } from '@/components/report/qualified';
 import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
 import { comparePeriods } from './period';
@@ -582,7 +583,13 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     }
     case 'keyFigures':
       if (figure.figures.length > 6) errors.push(`${where} at most six key figures`);
-      for (const kf of figure.figures) if (kf.change && !Number.isFinite(kf.change.value)) errors.push(`${where} "${kf.label}" has a change that is not a finite number`);
+      for (const kf of figure.figures) {
+        if (kf.change && !Number.isFinite(kf.change.value)) errors.push(`${where} "${kf.label}" has a change that is not a finite number`);
+        // The older sibling `qualifier`/`asPublished` and a qualified `value` say the same thing; two places can disagree.
+        if (typeof kf.value === 'object' && (kf.qualifier !== undefined || kf.asPublished !== undefined)) {
+          errors.push(`${where} "${kf.label}" gives its qualifier or wording beside a qualified value — put them in \`value\` only`);
+        }
+      }
       break;
     case 'tileMap':
       errors.push(...mapErrors(figure, mapTiles(figure.map).map(tile => tile.id), figure.map, where));
@@ -606,13 +613,13 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
         const domain = figure[axis].domain;
         if (!domain) continue;
         if (!(domain[0] < domain[1])) errors.push(`${where} ${axis} domain must run from low to high`);
-        for (const p of figure.points) if (p[axis] < domain[0] || p[axis] > domain[1]) errors.push(`${where} point "${p.id}" falls outside the ${axis} domain`);
+        for (const p of figure.points) if (pointValue(p[axis]) < domain[0] || pointValue(p[axis]) > domain[1]) errors.push(`${where} point "${p.id}" falls outside the ${axis} domain`);
       }
       break;
     }
     case 'barChart': {
       const { domainMax } = figure;
-      if (domainMax !== undefined && figure.items.some(item => item.value > domainMax)) errors.push(`${where} domainMax must be at least every value`);
+      if (domainMax !== undefined && figure.items.some(item => extentValues(item.value).some(v => v > domainMax))) errors.push(`${where} domainMax must be at least every value, a range's high end included`);
       break;
     }
     case 'compositionBar': {
@@ -620,14 +627,16 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       if (new Set(keys).size !== keys.length) errors.push(`${where} category keys must be unique`);
       for (const row of figure.rows) {
         for (const key of Object.keys(row.values)) if (!keys.includes(key)) errors.push(`${where} row "${row.label}" has unknown category "${key}"`);
-        if (!(Object.values(row.values).reduce((a, b) => a + b, 0) > 0)) errors.push(`${where} row "${row.label}" totals zero`);
+        const parts = Object.values(row.values);
+        if (parts.some(part => extentValues(part).some(v => v < 0))) errors.push(`${where} row "${row.label}" has a negative part — a composition's parts are sizes`);
+        if (!(parts.reduce<number>((sum, part) => sum + pointValue(part), 0) > 0)) errors.push(`${where} row "${row.label}" totals zero`);
       }
       break;
     }
     case 'estimateRange': {
       const { domain } = figure;
       for (const e of figure.estimates) {
-        const present = [e.low, e.estimate, e.high].filter((v): v is number => v !== undefined);
+        const present = [e.low, e.estimate === undefined ? undefined : pointValue(e.estimate), e.high].filter((v): v is number => v !== undefined);
         if (present.length === 0) errors.push(`${where} "${e.label}" needs an estimate, a low or a high`);
         if (present.some((v, i) => i > 0 && v < present[i - 1])) errors.push(`${where} "${e.label}" must have low ≤ estimate ≤ high`);
         if (domain && present.some(v => v < domain[0] || v > domain[1])) errors.push(`${where} "${e.label}" falls outside the domain`);

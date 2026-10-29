@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ReportFigure } from './figure';
 import { formatDate, formatValue } from './format';
+import { isRange, rangeText, type FigureNumber } from './qualified';
 import type { FigurePreview, PartialDate, SourceCredit, ValueFormat } from './types';
 
 export type KeyFigureChange = {
@@ -12,10 +13,9 @@ export type KeyFigureChange = {
 };
 
 export type KeyFigure = {
-  value: number;
+  /** A bound or approximation (`{ value: 7200, qualifier: 'more than' }`) prints its word before the number; a range prints "4–6%". */
+  value: FigureNumber;
   format?: ValueFormat;
-  /** Printed before the number, for a figure the source gives as a bound or approximation: "more than 7,200". */
-  qualifier?: 'about' | 'more than' | 'at least' | 'fewer than' | 'at most';
   /** What the number is, in plain words: "people awaiting an initial asylum decision". */
   label: string;
   /** The period or date the figure is for — always shown, because a headline number without a date is the commonest way to mislead with a true one. */
@@ -58,8 +58,7 @@ export function KeyFigures({ figures, id, title, description, sources, note, foo
             <div key={`${figure.label}-${i}`} className="sv-key-figures__item">
               <dt className="sv-key-figures__label">{figure.label}</dt>
               <dd className="sv-key-figures__value">
-                {figure.qualifier && <span className="sv-key-figures__qualifier">{figure.qualifier} </span>}
-                {formatValue(figure.value, figure.format)}
+                <KeyValue value={figure.value} format={figure.format} />
               </dd>
               <dd className="sv-key-figures__meta">
                 <span className="sv-key-figures__period">{figure.periodLabel ?? formatDate(figure.period)}</span>
@@ -81,6 +80,18 @@ export function KeyFigures({ figures, id, title, description, sources, note, foo
         </dl>
       </div>
     </ReportFigure>
+  );
+}
+
+/** The large figure: its qualifier set small before it, a range written once. */
+function KeyValue({ value, format }: { value: FigureNumber; format?: ValueFormat }) {
+  if (typeof value === 'number') return formatValue(value, format);
+  if (isRange(value)) return rangeText(value.low, value.high, format);
+  return (
+    <>
+      {value.qualifier && <span className="sv-key-figures__qualifier">{value.qualifier} </span>}
+      {formatValue(value.value, format)}
+    </>
   );
 }
 

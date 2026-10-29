@@ -203,7 +203,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot',
+    'tileMap', 'geoMap', 'scatterPlot', 'barChart',
   ]);
 });
 
@@ -374,4 +374,68 @@ test('a series line may carry its own source', () => {
     },
   });
   assert.equal(parsed.series?.readings[0].lines[0].source?.publisher, 'Office for National Statistics');
+});
+
+/* ------------------------------------------------------- qualified numbers */
+
+/** The fixture's last figure (the qualified bar chart) with its first item's value replaced, parsed. */
+function barValue(value: unknown) {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const bars = figures.at(-1) as { items: Record<string, unknown>[] };
+  figures[figures.length - 1] = { ...bars, items: [{ ...bars.items[0], value }, ...bars.items.slice(1)] };
+  return factFrontmatterSchema.safeParse({ ...data, figures });
+}
+
+test('a figure number is bare, qualified with a known word, or a range running upwards', () => {
+  assert.ok(barValue(159).success);
+  assert.ok(barValue({ value: 159, qualifier: 'nearly', asPublished: 'nearly 160' }).success);
+  assert.ok(barValue({ low: 4, high: 6 }).success);
+  assert.equal(barValue({ value: 159, qualifier: 'roughly' }).success, false);
+  assert.equal(barValue({ low: 6, high: 4 }).success, false);
+  // Strict: a range with a value, or a misspelt key, fails rather than being dropped.
+  assert.equal(barValue({ value: 5, low: 4, high: 6 }).success, false);
+  assert.equal(barValue({ value: 5, qualifer: 'about' }).success, false);
+});
+
+test('a table cell may be a qualified number or a range, with or without sources', () => {
+  const cell = (value: unknown) => factFrontmatterSchema.safeParse({
+    claim: 'c', status: 'unknown',
+    figures: [{ kind: 'dataTable', id: 't', title: 't', description: 'd', sources: [1], caption: 'c', columns: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }], rows: [{ a: 'x', b: value }] }],
+  });
+  assert.ok(cell({ value: 159, qualifier: 'at least' }).success);
+  assert.ok(cell({ low: 4, high: 6, sources: [1] }).success);
+  assert.equal(cell({ low: 4 }).success, false);
+  assert.equal(cell({ low: 4, high: 6, value: 5 }).success, false);
+  assert.equal(cell({ value: 'text', qualifier: 'about' }).success, false);
+  assert.equal(cell({ low: 4, high: 6, qualifier: 'about' }).success, false);
+});
+
+test('key figures keep their sibling qualifier and accept the new words', () => {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const keys = figures[4] as { figures: Record<string, unknown>[] };
+  figures[4] = { ...keys, figures: [{ ...keys.figures[0], qualifier: 'over' }, { ...keys.figures[1], value: { low: 98, high: 99 } }] };
+  assert.ok(factFrontmatterSchema.safeParse({ ...data, figures }).success);
+});
+
+test('a scatter point takes a qualified coordinate but not a range', () => {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const index = figures.findIndex(f => f.kind === 'scatterPlot');
+  const scatter = figures[index] as { points: Record<string, unknown>[] };
+  const withX = (x: unknown) => {
+    figures[index] = { ...scatter, points: [{ ...scatter.points[0], x }, ...scatter.points.slice(1)] };
+    return factFrontmatterSchema.safeParse({ ...data, figures }).success;
+  };
+  assert.ok(withX({ value: 14, qualifier: 'about' }));
+  assert.equal(withX({ low: 10, high: 14 }), false);
+});
+
+test('a map datum may be qualified or a range, keeping its label', () => {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const map = figures[7] as { data: Record<string, unknown> };
+  figures[7] = { ...map, data: { ...map.data, OK: { value: 4.3, qualifier: 'about', label: '~4' }, DE: { low: 5, high: 6 } } };
+  assert.ok(factFrontmatterSchema.safeParse({ ...data, figures }).success);
 });

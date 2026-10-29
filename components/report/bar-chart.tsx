@@ -1,15 +1,17 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { barScale, barSpan, orderBars } from './bar-layout';
-import { BarRows } from './bar-rows';
+import { barScale, orderBars, qualifiedSpan } from './bar-layout';
+import { BarQualificationKey, BarRows } from './bar-rows';
 import { ReportFigure } from './figure';
 import { formatValue } from './format';
+import { extentValues, pointValue, qualificationOf, qualificationsIn, qualifiedLabel, qualifiedText, type FigureNumber } from './qualified';
 import { RankedColumns, fitsRankedColumns } from './ranked-columns';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type BarChartItem = {
   label: string;
-  value: number;
+  /** A bound ends in an arrowhead, an approximation in a dotted end, a range (`{ low, high }`) in a whisker. */
+  value: FigureNumber;
   /** Drawn in the accent and set in bold — for the one row the text is about (usually the UK). */
   highlight?: boolean;
 };
@@ -36,8 +38,9 @@ export type BarChartProps = {
   panel?: boolean;
   /**
    * Draw the compact preview: the linked title and the bars, every item. Over
-   * six items the rows are clamped thin; over twelve, with no negatives and
-   * at most one highlight, one ranked column per item.
+   * six items the rows are clamped thin; over twelve, with no negatives, no
+   * qualified values and at most one highlight, one ranked column per item.
+   * Qualified values keep their end marks; their key stays on the full figure.
    */
   preview?: FigurePreview;
 };
@@ -66,18 +69,20 @@ export function BarChart({
   preview,
 }: BarChartProps) {
   const ordered = orderBars(items, sort);
-  const scale = barScale(ordered.map(item => item.value), domainMax);
+  const scale = barScale(ordered.flatMap(item => extentValues(item.value)), domainMax);
   const rows = ordered.map((item, i) => ({
     key: `${item.label}-${i}`,
     label: item.label,
-    valueText: formatValue(item.value, format),
+    valueText: qualifiedLabel(item.value, format),
     highlight: item.highlight,
-    segments: [barSpan(item.value, scale)],
+    segments: [qualifiedSpan(item.value, scale)],
   }));
 
   if (preview) {
-    const graph = fitsRankedColumns(items)
-      ? <RankedColumns items={items} max={scale.domain[1]} format={value => formatValue(value, format)} />
+    // A column is a bare height, with no end mark: only a chart of exact values may become ranked columns.
+    const columns = items.every(item => qualificationOf(item.value) === 'exact') ? items.map(item => ({ ...item, value: pointValue(item.value) })) : [];
+    const graph = fitsRankedColumns(columns)
+      ? <RankedColumns items={columns} max={scale.domain[1]} format={value => formatValue(value, format)} />
       : <BarRows rows={rows} scale={scale} format={format} label={valueLabel} preview />;
     return <ReportFigure id={id} title={title} preview={preview} className="sv-bar-chart">{items.length > 0 && graph}</ReportFigure>;
   }
@@ -90,7 +95,12 @@ export function BarChart({
       ) : (
         <ChartViewToggle
           label={title ?? valueLabel}
-          graph={<BarRows rows={rows} scale={scale} format={format} label={valueLabel} />}
+          graph={
+            <>
+              <BarQualificationKey qualifications={qualificationsIn(items.map(item => item.value))} />
+              <BarRows rows={rows} scale={scale} format={format} label={valueLabel} />
+            </>
+          }
           table={
             <div className="sv-chart__table-scroll">
               <table className="sv-chart__table">
@@ -105,7 +115,7 @@ export function BarChart({
                   {ordered.map((item, i) => (
                     <tr key={`${item.label}-${i}`} data-highlight={item.highlight || undefined}>
                       <th scope="row">{item.label}</th>
-                      <td>{formatValue(item.value, format)}</td>
+                      <td>{qualifiedText(item.value, format)}</td>
                     </tr>
                   ))}
                 </tbody>

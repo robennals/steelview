@@ -54,6 +54,22 @@ test('a long bar chart preview clamps its rows, and past twelve becomes ranked c
   assert.match(dense, /United Kingdom: 24 — 17th of 32/);
 });
 
+test('a qualified bar chart preview keeps each bar\'s end mark and printed qualifier, but not their key', () => {
+  const html = preview('deaths-by-region');
+  for (const qualification of ['lower-bound', 'upper-bound', 'approximate', 'range']) assert.match(html, new RegExp(`data-qualification="${qualification}"`));
+  assert.match(html, /class="sv-bars__whisker"/);
+  assert.match(html, /at least 159/);
+  assert.doesNotMatch(html, /sv-bars__qualification-key/);
+});
+
+test('a long qualified bar chart preview stays as rows, since a column cannot carry an end mark', () => {
+  const items = Array.from({ length: 14 }, (_, i) => ({ label: `Region ${i}`, value: i === 3 ? { value: 20, qualifier: 'at least' as const } : 30 - i }));
+  const html = preview('deaths-by-region', variant('deaths-by-region', f => (f.kind === 'barChart' ? { ...f, items } : f)));
+  assert.doesNotMatch(html, /sv-comparison__column/);
+  assert.equal(html.match(/class="sv-bars__row"/g)?.length, 14);
+  assert.match(html, /data-qualification="lower-bound"/);
+});
+
 test('a composition preview keeps its key and every part, but not the row sources', () => {
   const html = preview('deaths-by-counter');
   assertCompact(html, 'deaths-by-counter', 'Iranian deaths in the war, by counter and category, early April 2026');

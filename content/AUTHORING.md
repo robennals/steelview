@@ -734,7 +734,7 @@ graph: every item, area, event and period, with the key where colours or
 shapes need one, but no description, Graph/Table switch, filters, method
 key, notes or sources. Long figures are clamped to the slide's fixed height,
 never cut: over six rows become thin one-line rows, a bar chart of more than
-twelve items becomes ranked columns (as a long comparison does), and a
+twelve exact values becomes ranked columns (as a long comparison does), and a
 timeline of more than twelve events becomes one marker per event on a time
 axis. Text figures — `dataTable`, `quoteComparison`, `pullQuote`,
 `claimCheck`, `caveatList` — and placed `section`s have no graph, and the
@@ -907,10 +907,47 @@ observationMarks:
 
 Marks are checked against the chart: every line, period and row must be on it.
 Other kinds of figure cannot show marks yet.
+**A number keeps the source's qualification.** Wherever a figure takes a
+number — a table's numeric cell, a key figure, a bar, a composition part, a
+map datum, a scatter coordinate, a central estimate — it may instead take
+the number as the source qualifies it:
+
+```yaml
+value: 159                                                     # exact
+value: { value: 159, qualifier: at least, asPublished: At least 159 }
+value: { low: 4, high: 6, asPublished: "4–6%" }                # a published range
+```
+
+`qualifier` is one of `about`, `nearly` (approximations), `at least`, `more
+than`, `over` (lower bounds) and `at most`, `fewer than`, `under` (upper
+bounds). A range has `low` and `high` and no `value`, and runs upwards. In a
+table the cell object is the same, with `sources` beside it if the cell has
+footnotes; on a map it may keep its `label`. A key figure's older
+`qualifier:` beside a bare `value` still works — give it in one place only.
+A scatter coordinate takes a qualifier but not a range: a dot at a range's
+midpoint would claim a figure the source never gave.
+
+Each kind draws the qualification, never only the number:
+
+| Kind | Bound up (`at least`, `more than`, `over`) | Bound down (`at most`, `fewer than`, `under`) | `about`, `nearly` | Range |
+| --- | --- | --- | --- | --- |
+| `dataTable` | the published wording; sorts by the number | same | same | "4–6", or the wording; sorts by the midpoint |
+| `keyFigures` | the word before the number | same | same | "4–6%" |
+| `barChart` | bar to the value, open arrowhead pointing right | arrowhead pointing left | dotted end | bar to `low`, whisker to `high` |
+| maps (numeric) | colour of the value, ▲ on the tile, stipple | ▼, stipple | stipple | colour of the midpoint, stipple |
+
+A legend line explains each mark that appears, and only those. The
+published wording (`asPublished`) is what a reader sees wherever the number
+is read as text — a table cell, a readout, a map's table, a bar chart's
+table view — when the value is qualified; on an exact value it is only what
+`check:figures` looks for, so a fragment such as "(76%)" never replaces a
+number that says the same thing. Labels set as graphics (a bar's value, a
+key figure, a tile) use the short form, "at least 159".
 
 **Numbers stay traceable.** `asPublished` on a value gives the figure in the
 source's own words ("more than 7,200", "8.8%"); `check:figures` looks for that
-text in the quote instead of the number. `valuesFrom` on a figure — and on a
+text in the quote instead of the number. A range without its own wording
+must have both ends quoted. `valuesFrom` on a figure — and on a
 series reading or a comparison — names the published table its values are read
 from when no quote can hold them all ("EAVS 2024 Overview Table 1"); it is
 shown in About this data.
@@ -1616,6 +1653,8 @@ them.
 | A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
 | Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a tile map's `data` and `valueLabel` | `lib/content/schema.ts` (`figureSchema`) |
+| Qualified numbers: a known `qualifier`, ranges with `low` ≤ `high` and no `value`, no unknown keys, no range on a scatter point | `lib/content/schema.ts` (`figureNumberSchema`) |
+| A key figure gives its qualifier in its `value` or beside it, not both | `lib/content/validate.ts` (F8) |
 | Figure ids are unique and do not reuse a series, reading or comparison id | `lib/content/validate.ts` (`figureErrors`, F1) |
 | Every figure citation — every number of every item's `sources` — is one of the fact's numbered sources, and every figure but a caveat list has one; an item gives `source` or `sources`, not both | `lib/content/validate.ts` (F2, F5), `lib/content/schema.ts` |
 | A series event's `sources` are the fact's numbered sources | `lib/content/validate.ts`, `seriesErrors` |
@@ -1625,12 +1664,13 @@ them.
 | Timeline categories exist and periods run forwards; period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
 | At most six key figures | `lib/content/validate.ts` (F8) |
 | Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
-| Bars fit `domainMax`; composition rows use known categories and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
+| Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
 | Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
 | Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
+| Chart values (advisory): a qualified value by its `asPublished`, both ends of a range, against any of the item's sources | `scripts/check-figures.ts`, `lib/content/figure-text.ts` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

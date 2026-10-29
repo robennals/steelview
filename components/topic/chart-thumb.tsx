@@ -15,7 +15,7 @@ import {
   timelineProps,
 } from '@/lib/content/figure-props';
 import type { BarChartProps, CompositionBarProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
-import { barScale, barSpan, orderBars } from '@/components/report/bar-layout';
+import { barScale, orderBars, qualifiedSpan } from '@/components/report/bar-layout';
 import { compose, compositionColor } from '@/components/report/composition';
 import { estimateScale, whiskerSpan } from '@/components/report/estimate-layout';
 import { categoryOf, categorySlots, isCategorical } from '@/components/report/geo/categorical';
@@ -23,6 +23,7 @@ import { mapScale } from '@/components/report/geo/choropleth';
 import { boundsOf, fitBounds, pathFor as geoPathFor } from '@/components/report/geo/project';
 import { periodSpan } from '@/components/report/period-timeline';
 import { seriesColor } from '@/components/report/scale';
+import { extentValues, pointValue } from '@/components/report/qualified';
 import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
 
 /**
@@ -133,16 +134,26 @@ function ColumnsThumb({ items }: { items: Array<{ value: number; highlight?: boo
   );
 }
 
-/** Horizontal bars in the chart's own order, on its zero-based scale. */
+/**
+ * Horizontal bars in the chart's own order, on its zero-based scale. A
+ * published range is a bar to its low end and a whisker on to its high end,
+ * as on the chart; a bound's arrowhead is too small to draw here.
+ */
 function BarsThumb({ items, sort, domainMax }: BarChartProps) {
   const ordered = orderBars(items, sort);
-  const scale = barScale(ordered.map(item => item.value), domainMax);
+  const scale = barScale(ordered.flatMap(item => extentValues(item.value)), domainMax);
   const row = 100 / Math.max(1, ordered.length);
   return (
     <Thumb>
       {ordered.map((item, i) => {
-        const span = barSpan(item.value, scale);
-        return <rect key={i} className="sv-thumb__column" data-highlight={item.highlight || undefined} x={span.left} width={Math.max(0.5, span.width)} y={i * row + row * 0.15} height={row * 0.7} />;
+        const span = qualifiedSpan(item.value, scale);
+        const middle = i * row + row / 2;
+        return (
+          <g key={i}>
+            <rect className="sv-thumb__column" data-highlight={item.highlight || undefined} x={span.left} width={Math.max(0.5, span.width)} y={i * row + row * 0.15} height={row * 0.7} />
+            {span.whisker && <line className="sv-thumb__whisker" x1={span.whisker.left} x2={span.whisker.left + span.whisker.width} y1={middle} y2={middle} vectorEffect="non-scaling-stroke" />}
+          </g>
+        );
       })}
     </Thumb>
   );
@@ -166,12 +177,14 @@ function CompositionThumb({ categories, rows, otherThreshold, otherLabel }: Comp
 
 /** Each estimate's interval as a line and its central estimate as a dot, against the no-effect line. */
 function EstimatesThumb({ estimates, nullValue = 0, domain }: EstimateRangeProps) {
-  const scale = estimateScale(estimates, nullValue, domain);
-  const row = 100 / Math.max(1, estimates.length);
+  // As on the chart, layout reads the central estimate's number; its qualifier is for the text.
+  const bounds = estimates.map(e => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) }));
+  const scale = estimateScale(bounds, nullValue, domain);
+  const row = 100 / Math.max(1, bounds.length);
   return (
     <Thumb>
       {scale.zero !== undefined && <line className="sv-thumb__rule" x1={scale.zero} x2={scale.zero} y1={0} y2={100} vectorEffect="non-scaling-stroke" />}
-      {estimates.map((e, i) => {
+      {bounds.map((e, i) => {
         const y = i * row + row / 2;
         const whisker = whiskerSpan(e, scale.x);
         return (
@@ -188,7 +201,7 @@ function EstimatesThumb({ estimates, nullValue = 0, domain }: EstimateRangeProps
 /** Every point, placed by the scatter plot's own narrow layout and cropped to (just round) its plot area. */
 function ScatterThumb({ points, x, y, groups = [], highlight = [] }: ScatterPlotProps) {
   const layout = layoutScatter(
-    points.map(p => ({ id: p.id, label: p.label, x: p.x, y: p.y })),
+    points.map(p => ({ id: p.id, label: p.label, x: pointValue(p.x), y: pointValue(p.y) })),
     { x: { ...x, format: String }, y: { ...y, format: String } },
     'narrow',
   );
@@ -216,7 +229,7 @@ function areaFill(encoding: MapEncoding): (id: string) => string | undefined {
     };
   }
   const scale = mapScale(encoding.data, { kind: encoding.scale, steps: encoding.steps, domain: encoding.domain, breaks: encoding.breaks });
-  return id => (encoding.data[id] ? scale.color(encoding.data[id].value) : undefined);
+  return id => (encoding.data[id] ? scale.color(pointValue(encoding.data[id])) : undefined);
 }
 
 /** Every tile in its grid place, shaded as on the map. */

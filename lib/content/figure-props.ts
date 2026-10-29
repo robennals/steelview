@@ -97,7 +97,7 @@ export function dataTableProps(f: FigureOf<'dataTable'>, c: FigureContext): R.Da
       Object.fromEntries(
         Object.entries(row).map(([key, cell]) => [
           key,
-          cell !== null && typeof cell === 'object' ? { value: cell.value, sources: cell.sources.map(c.credit) } : cell,
+          cell !== null && typeof cell === 'object' ? tableCell(cell, c) : cell,
         ]),
       ),
     ),
@@ -106,13 +106,33 @@ export function dataTableProps(f: FigureOf<'dataTable'>, c: FigureContext): R.Da
   };
 }
 
+type ContentCell = Exclude<FigureOf<'dataTable'>['rows'][number][string], string | number | null>;
+
+/** A content cell object as the table takes it: text, a qualified number or a range, with its footnotes as credits. */
+function tableCell(cell: ContentCell, c: FigureContext): R.CitedCell {
+  const sources = cell.sources?.map(c.credit);
+  if (cell.low !== undefined && cell.high !== undefined) return { low: cell.low, high: cell.high, asPublished: cell.asPublished, sources };
+  if (typeof cell.value === 'number') return { value: cell.value, qualifier: cell.qualifier, asPublished: cell.asPublished, sources };
+  return { value: cell.value ?? null, sources };
+}
+
+/**
+ * A key figure's number with its qualifier: the sibling `qualifier` and
+ * `asPublished` (the older shape) fold into the value, so the component
+ * sees one shape. The validator refuses a qualifier given in both places.
+ */
+function keyFigureValue(figure: FigureOf<'keyFigures'>['figures'][number]): R.FigureNumber {
+  const { value, qualifier, asPublished } = figure;
+  if (typeof value !== 'number') return value;
+  return qualifier ? { value, qualifier, asPublished } : value;
+}
+
 export function keyFiguresProps(f: FigureOf<'keyFigures'>, c: FigureContext): R.KeyFiguresProps {
   return {
     ...frame(f, c),
     figures: f.figures.map(figure => ({
-      value: figure.value,
+      value: keyFigureValue(figure),
       format: toValueFormat(figure.format),
-      qualifier: figure.qualifier,
       label: figure.label,
       period: figure.period,
       periodLabel: figure.periodLabel,
@@ -173,7 +193,7 @@ function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding
   if (!f.data || !f.valueLabel) throw new Error(`map ${f.id} needs \`data\` and \`valueLabel\``);
   return {
     data: Object.fromEntries(
-      Object.entries(f.data).map(([area, datum]) => [area, typeof datum === 'number' ? { value: datum } : { value: datum.value, label: datum.label }]),
+      Object.entries(f.data).map(([area, datum]) => [area, typeof datum === 'number' ? { value: datum } : datum]),
     ),
     valueLabel: f.valueLabel,
     format: toValueFormat(f.format),

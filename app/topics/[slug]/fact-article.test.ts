@@ -81,6 +81,7 @@ test('figures render in the order written, with unplaced body sections after the
     'figure-examples--chart-voter-id-rules',
     'figure-examples--chart-postal-voting',
     'figure-examples--chart-count-speed',
+    'figure-examples--chart-deaths-by-region',
     'figure-examples--remainder',
   ].map(id => html.indexOf(`id="${id}"`));
   assert.ok(order.every(i => i >= 0), `missing ids: ${order}`);

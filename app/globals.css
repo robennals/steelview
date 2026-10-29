@@ -3359,6 +3359,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-thumb { display: block; width: 100%; height: 100%; }
 .sv-thumb__column { fill: var(--sv-series-1); opacity: .35; }
 .sv-thumb__column[data-highlight] { fill: var(--accent); opacity: 1; }
+/* A published range runs on past its bar to the high end. */
+.sv-thumb__whisker { stroke: var(--ink-3); stroke-width: 1.5; }
 .sv-thumb__area { opacity: .8; }
 .sv-thumb__area[data-missing] { fill: var(--rule); }
 .sv-thumb__rule { stroke: var(--ink-4); stroke-width: 1; }

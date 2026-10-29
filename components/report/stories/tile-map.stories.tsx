@@ -120,3 +120,37 @@ export const CategoricalVoterIdRules: Story = {
     note: 'NCSL classifies each state by what happens to a voter who arrives without the requested ID. Table 2 of the same source lists the accepted documents state by state.',
   },
 };
+
+/**
+ * Numeric figures the source qualifies: each keeps its colour, a bound adds
+ * ▲ or ▼ to its tile, and every inexact tile is stippled, so "not exact"
+ * reads in greyscale. The legend explains each mark that appears; the
+ * readout and the Table view use the source's words.
+ */
+export const QualifiedValues: Story = {
+  args: {
+    title: 'Mail ballots rejected, by state',
+    description: 'Illustrative: some states publish only a bound, an approximation or a range.',
+    tiles: US_STATE_TILES,
+    valueLabel: 'Rejected, % of returned mail ballots',
+    format: { unit: 'percent', decimals: 1 },
+    breaks: [0, 0.5, 1, 2, 4, 9],
+    categories: undefined,
+    categoryLabel: undefined,
+    categoryData: undefined,
+    data: {
+      AR: { value: 8.8 },
+      TX: { value: 2, qualifier: 'at least', asPublished: 'at least 2%' },
+      CA: { value: 1, qualifier: 'under', asPublished: 'under 1%' },
+      NY: { value: 1.5, qualifier: 'about', asPublished: 'about 1.5%' },
+      FL: { low: 0.4, high: 0.8, asPublished: '0.4% to 0.8%' },
+      OH: { value: 0.9 },
+      GA: { value: 1.2 },
+      PA: { value: 0.7, qualifier: 'nearly' },
+    },
+    highlight: [],
+    areaLabel: 'State',
+    sources: ILLUSTRATIVE,
+    note: 'Illustrative: only eight states are given.',
+  },
+};

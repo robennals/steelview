@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { crossesNull, estimateScale, whiskerSpan } from './estimate-layout';
+import { BarChart } from './bar-chart';
 import { EstimateRange } from './estimate-range';
 import { layoutPanels } from './small-multiples-layout';
 
@@ -92,4 +93,38 @@ test('with a no-effect value, values are signed and the includes column stays', 
   assert.match(html, /\+0\.5/);
   assert.match(html, /Includes no effect\?/);
   assert.match(html, /sv-estimates__null/);
+});
+
+test('a qualified central estimate is placed at its number and read with its word', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, {
+    valueLabel: 'Cost, US$ billion',
+    nullValue: null,
+    format: { unit: 'number', decimals: 0 },
+    estimates: [{ label: 'CBO', estimate: { value: 38, qualifier: 'about', asPublished: 'about $38 billion' } }, { label: 'DoD', estimate: 43 }],
+  }));
+  assert.match(html, />about 38</);
+  assert.match(html, /<td>about \$38 billion<\/td>/);
+  assert.equal(html.match(/sv-estimates__dot/g)?.length, 2);
+});
+
+test('a qualified bar carries its mark, prints its words, and the key names only the marks drawn', () => {
+  const html = renderToStaticMarkup(createElement(BarChart, {
+    valueLabel: 'Deaths',
+    items: [
+      { label: 'North', value: { value: 159, qualifier: 'at least', asPublished: 'At least 159' } },
+      { label: 'East', value: { low: 60, high: 80 } },
+      { label: 'Capital', value: 120 },
+    ],
+  }));
+  assert.match(html, /<span class="sv-bars__value">at least 159<\/span>/);
+  assert.match(html, /<span class="sv-bars__value">60–80<\/span>/);
+  assert.match(html, /class="sv-bars__bar" data-qualification="lower-bound"/);
+  assert.match(html, /class="sv-bars__bar" data-qualification="range"[^>]*><\/span><span class="sv-bars__whisker"/);
+  assert.match(html, /At least this value: the source gives a lower bound/);
+  assert.match(html, /A range: the source gives a low and a high/);
+  assert.doesNotMatch(html, /Approximate:/);
+  // The table view reads the source's words.
+  assert.match(html, /<td>At least 159<\/td>/);
+  // Largest first by the number given, a range by its midpoint.
+  assert.ok(html.indexOf('North') < html.indexOf('Capital') && html.indexOf('Capital') < html.indexOf('East'));
 });

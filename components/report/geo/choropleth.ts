@@ -1,4 +1,5 @@
 import { formatValue } from '../format';
+import { boundGlyph, isRange, pointValue, qualificationOf, qualifiedText, rangeText, type QualifiedValue } from '../qualified';
 import { binColor, rampBins, rampColor } from '../scale';
 import type { ValueFormat } from '../types';
 
@@ -9,8 +10,12 @@ import type { ValueFormat } from '../types';
  * the same way, and so it can be tested without a renderer.
  */
 
-/** One area's figure. `label` overrides the formatted value, e.g. "<0.1". */
-export type MapDatum = { value: number; label?: string };
+/**
+ * One area's figure, as the source qualifies it: `{ value }`, a bound or an
+ * approximation (`qualifier`), or a range (`low`, `high`), shaded at its
+ * midpoint. `label` overrides the formatted value, e.g. "<0.1".
+ */
+export type MapDatum = QualifiedValue & { label?: string };
 
 /** Figures keyed by area id. An id that is absent is "No data", never zero. */
 export type MapData = Record<string, MapDatum>;
@@ -102,16 +107,34 @@ export function mapScale(data: MapData, { kind = 'sequential', steps, domain, br
     return { kind, domain: [breaks[0], breaks[n]], bins, color: (value: number) => binColor(value, bins) };
   }
   const count = steps ?? (kind === 'diverging' ? 6 : 5);
-  const values = Object.values(data).map(d => d.value);
+  const values = Object.values(data).map(pointValue);
   const resolved = domain ?? niceMapDomain(values, kind, count);
   const bins = rampBins(resolved, count, kind);
   return { kind, domain: resolved, bins, color: (value: number) => binColor(value, bins) };
 }
 
-/** The figure as written in a readout, a tile or a table cell. */
+/** The figure as written in a readout or a table cell: the source's wording for a qualified figure. */
 export function datumText(datum: MapDatum | undefined, format: ValueFormat = {}): string {
   if (!datum) return 'No data';
-  return datum.label ?? formatValue(datum.value, format);
+  return datum.label ?? qualifiedText(datum, format);
+}
+
+/**
+ * The figure as printed on a tile, where a phrase will not fit: "▲159" for
+ * "at least 159", "▼5" for "under 5", "4–6%" for a range, the bare number
+ * for an approximation (the stipple marks it).
+ */
+export function tileText(datum: MapDatum | undefined, format: ValueFormat = {}): string {
+  if (!datum) return '–';
+  if (datum.label) return datum.label;
+  // A zero-width space after the dash lets a range break onto two lines in a narrow tile.
+  if (isRange(datum)) return rangeText(datum.low, datum.high, format).replace('–', '–\u200b');
+  return `${boundGlyph(datum) ?? ''}${formatValue(datum.value, format)}`;
+}
+
+/** Whether an area is drawn with the stipple that marks a figure as not exact. */
+export function isStippled(datum: MapDatum | undefined): boolean {
+  return datum !== undefined && qualificationOf(datum) !== 'exact';
 }
 
 /** "London: 40.6%" — what the readout says, and what a focused area is called. */
@@ -135,7 +158,7 @@ export function mapSummary(
   /** Where the reader finds every value: a preview has no Table switch. */
   closing = 'Use the Table switch to see every value.',
 ): string {
-  const ranked = areas.filter(area => data[area.id]).sort((a, b) => data[b.id].value - data[a.id].value);
+  const ranked = areas.filter(area => data[area.id]).sort((a, b) => pointValue(data[b.id]) - pointValue(data[a.id]));
   const missing = areas.filter(area => !data[area.id]);
   const highest = ranked[0];
   const lowest = ranked[ranked.length - 1];

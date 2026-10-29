@@ -5,11 +5,12 @@ import { slugify } from './format';
 import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, type MapEncoding } from './geo/categorical';
 import { CategoryLegend } from './geo/category-legend';
 import { CategoryTable } from './geo/category-table';
-import { PREVIEW_CLOSING, datumText, mapScale, mapSummary, readoutText } from './geo/choropleth';
+import { PREVIEW_CLOSING, isStippled, mapScale, mapSummary, readoutText, tileText } from './geo/choropleth';
 import { MapLegend } from './geo/map-legend';
 import { MapReadout } from './geo/map-readout';
 import { MapTable } from './geo/map-table';
 import type { MapTile } from './geo/tiles';
+import { isRange, pointValue, qualificationsIn } from './qualified';
 import type { FigurePreview, SourceCredit } from './types';
 
 type TileMapCommon = {
@@ -53,6 +54,9 @@ type TileCell = {
   slot?: number;
   missing: boolean;
   dark: boolean;
+  /** The figure is a bound, an approximation or a range: drawn with a stipple. */
+  stippled?: boolean;
+  range?: boolean;
 };
 
 /**
@@ -107,7 +111,7 @@ export function TileMap(props: TileMapProps) {
     cellFor = tile => {
       const datum = data[tile.id];
       const text = readoutText(tile.name, datum, format);
-      const color = datum ? scale.color(datum.value) : undefined;
+      const color = datum ? scale.color(pointValue(datum)) : undefined;
       // Only the deepest sequential steps take paper-coloured text: on
       // the light theme ink stays above 4.5:1 up to about 75% of the hue,
       // and the dark theme keeps ink throughout (see maps.css).
@@ -115,13 +119,17 @@ export function TileMap(props: TileMapProps) {
       return {
         readout: text,
         ariaLabel: text,
-        text: datum ? datumText(datum, { ...format, compact: format?.compact ?? true }) : '–',
+        text: tileText(datum, { ...format, compact: format?.compact ?? true }),
         background: color,
         missing: !datum,
+        stippled: isStippled(datum),
+        range: datum !== undefined && isRange(datum),
         dark: kind === 'sequential' && binIndex >= 0 && (binIndex + 0.5) / scale.bins.length >= 0.8,
       };
     };
-    legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={tiles.some(tile => !data[tile.id])} />;
+    // The key to the qualification marks explains method, so a preview leaves it to the full figure.
+    const qualifications = preview ? [] : qualificationsIn(tiles.flatMap(tile => (data[tile.id] ? [data[tile.id]] : [])));
+    legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={tiles.some(tile => !data[tile.id])} qualifications={qualifications} />;
     summary = mapSummary(`${tiles.length} areas, each drawn as an equal tile and shaded by ${valueLabel.toLowerCase()}.`, tiles, data, format, undefined, preview ? PREVIEW_CLOSING : undefined);
     table = <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={tiles} data={data} format={format} />;
   }
@@ -140,11 +148,13 @@ export function TileMap(props: TileMapProps) {
           <li
             key={tile.id}
             className={cell.slot ? 'sv-tile-map__tile sv-cat-fill' : 'sv-tile-map__tile'}
-            style={{ gridRow: tile.row + 1, gridColumn: tile.col + 1, background: cell.background }}
+            style={{ gridRow: tile.row + 1, gridColumn: tile.col + 1, backgroundColor: cell.background }}
             data-region={tile.id}
             data-readout={cell.readout}
             data-slot={cell.slot}
             data-missing={cell.missing ? 'true' : undefined}
+            data-stippled={cell.stippled ? 'true' : undefined}
+            data-range={cell.range ? 'true' : undefined}
             data-tone={cell.dark ? 'dark' : undefined}
             data-highlight={highlight.includes(tile.id) ? 'true' : undefined}
             tabIndex={preview ? undefined : 0}

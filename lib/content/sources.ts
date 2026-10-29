@@ -69,7 +69,7 @@ export function figureCitations(figure: Figure): number[] {
     case 'section':
       return [];
     case 'dataTable':
-      return [...figure.sources, ...figure.rows.flatMap(row => Object.values(row).flatMap(cell => (cell !== null && typeof cell === 'object' ? cell.sources : [])))];
+      return [...figure.sources, ...figure.rows.flatMap(row => Object.values(row).flatMap(cell => (cell !== null && typeof cell === 'object' ? cell.sources ?? [] : [])))];
     case 'keyFigures':
       return [...figure.sources, ...figure.figures.flatMap(f => f.sources)];
     case 'timeline':

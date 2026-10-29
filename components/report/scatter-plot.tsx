@@ -6,6 +6,7 @@ import { ReportFigure } from './figure';
 import { countOf, formatValue, slugify } from './format';
 import { MapReadout } from './geo/map-readout';
 import { MarkerIcon, MarkerShape, shapeForSlot } from './marker-shape';
+import { pointValue, qualifiedText, type QualifiedPoint } from './qualified';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type ScatterPoint = {
@@ -14,8 +15,13 @@ export type ScatterPoint = {
   label: string;
   /** Full name for the readout and the table: "Arizona". */
   name: string;
-  x: number;
-  y: number;
+  /**
+   * A coordinate the source qualifies ("about 14") keeps its words in the
+   * readout and the table. No ranges: a dot at a range's midpoint would claim
+   * a figure the source never gave.
+   */
+  x: number | QualifiedPoint;
+  y: number | QualifiedPoint;
   /** A `groups` id. Groups differ by shape as well as colour. */
   group?: string;
   note?: string;
@@ -217,8 +223,8 @@ export function ScatterPlot({
   const slotOf = (point: ScatterPoint) => (groupList.length === 0 ? 1 : groupIndex.get(point.group ?? '') ?? groupList.length + 1);
   const legendGroups = hasOther ? [...groupList, OTHER_GROUP] : groupList;
 
-  const fx = (value: number) => formatValue(value, x.format);
-  const fy = (value: number) => formatValue(value, y.format);
+  const fx = (value: number | QualifiedPoint) => qualifiedText(value, x.format);
+  const fy = (value: number | QualifiedPoint) => qualifiedText(value, y.format);
   const readouts = new Map(
     points.map(point => {
       const group = groupList.length > 0 ? ` (${(groupOf(point) ?? OTHER_GROUP).label})` : '';
@@ -229,12 +235,12 @@ export function ScatterPlot({
   );
 
   const axes = { x: { ...x, format: fx }, y: { ...y, format: fy } };
-  const input = points.map(point => ({ id: point.id, label: point.label, x: point.x, y: point.y, highlight: highlighted.has(point.id) }));
+  const input = points.map(point => ({ id: point.id, label: point.label, x: pointValue(point.x), y: pointValue(point.y), highlight: highlighted.has(point.id) }));
   const variants: SeriesVariant[] = preview ? [...PREVIEW_VARIANTS[preview.fit ?? 'wide'], 'narrow'] : panel ? [...PREVIEW_VARIANTS.panel, 'narrow'] : ['narrow', 'wide'];
 
   const summary = [
     points.length > 0
-      ? `${countOf(points.length, pointLabel)}. ${x.label} from ${range(points.map(point => point.x), x.format)}; ${y.label} from ${range(points.map(point => point.y), y.format)}.`
+      ? `${countOf(points.length, pointLabel)}. ${x.label} from ${range(points.map(point => pointValue(point.x)), x.format)}; ${y.label} from ${range(points.map(point => pointValue(point.y)), y.format)}.`
       : null,
     legendGroups.length > 0 ? `Grouped as ${legendGroups.map(group => group.label).join(', ')}, told apart by marker shape.` : null,
     typeof description === 'string' ? description : null,

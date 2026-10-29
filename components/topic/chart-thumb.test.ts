@@ -45,6 +45,13 @@ test('a bar chart thumbnail draws one bar per item', () => {
   assert.equal(html.match(/class="sv-thumb__column"/g)?.length, 5);
 });
 
+test('a qualified bar chart thumbnail draws a published range as a bar and a whisker', () => {
+  const html = thumb('deaths-by-region');
+  assertDecorative(html);
+  assert.equal(html.match(/class="sv-thumb__column"/g)?.length, 5);
+  assert.equal(html.match(/class="sv-thumb__whisker"/g)?.length, 1);
+});
+
 test('a composition thumbnail draws every part of every row', () => {
   const html = thumb('deaths-by-counter');
   assertDecorative(html);
