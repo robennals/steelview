@@ -1833,7 +1833,7 @@
     color: var(--ink);
     text-decoration-line: underline;
     text-decoration-style: dotted;
-    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    text-decoration-color: color-mix(in srgb, var(--accent) 65%, transparent);
     text-decoration-thickness: 1px;
     text-decoration-skip-ink: none;
     text-underline-offset: 0.25em;
@@ -1841,7 +1841,7 @@
   }
 
   .prose-body a.sv-principle-cite {
-    text-decoration-color: color-mix(in srgb, var(--principle) 40%, transparent);
+    text-decoration-color: color-mix(in srgb, var(--principle) 65%, transparent);
   }
 
   .prose-body a.sv-cite:hover,
