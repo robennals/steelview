@@ -57,6 +57,8 @@ type GeoMapCommon = {
    * a capital city region, a small island state. None by default.
    */
   insets?: MapInset[];
+  /** Regions to outline in ink, e.g. the country a report is about. Never changes the fill. */
+  highlight?: string[];
   /** Column heading for the areas in the table. Defaults to "Region". */
   areaLabel?: string;
   id?: string;
@@ -174,6 +176,7 @@ export function GeoMap(props: GeoMapProps) {
     markerValueLabel,
     markerFormat,
     insets,
+    highlight = [],
     areaLabel = 'Region',
     id,
     title,
@@ -289,6 +292,7 @@ export function GeoMap(props: GeoMapProps) {
           data-region={region.id}
           data-readout={look.readout}
           data-missing={look.missing ? 'true' : undefined}
+          data-highlight={highlight.includes(region.id) ? 'true' : undefined}
           vectorEffect="non-scaling-stroke"
           {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true })}
         />

@@ -75,3 +75,16 @@ test('a categorical GeoMap fills regions with one pattern per category slot', ()
   assert.match(html, /aria-label="Wales: Rule B"/);
   assert.match(html, /data-readout="Wales: Rule B — Devolved"/);
 });
+
+test('a GeoMap outlines its highlighted regions without changing their fill', () => {
+  const html = renderToStaticMarkup(createElement(GeoMap, {
+    regions: UK_ITL1_REGIONS,
+    valueLabel: 'Share',
+    data: { london: { value: 3 }, wales: { value: 3 } },
+    highlight: ['wales'],
+  }));
+  const path = (id: string) => html.match(new RegExp(`<path[^>]*data-region="${id}"[^>]*>`))?.[0] ?? '';
+  assert.match(path('wales'), /data-highlight="true"/);
+  assert.doesNotMatch(path('london'), /data-highlight/);
+  assert.equal(path('wales').match(/fill:[^;"]+/)?.[0], path('london').match(/fill:[^;"]+/)?.[0]);
+});

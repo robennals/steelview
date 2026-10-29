@@ -417,14 +417,67 @@ export const periodTimelineFigureSchema = z.object({
   events: z.array(seriesEventSchema).default([]),
 });
 
-/* --- tileMap -------------------------------------------------------------- */
+/* --- maps: tileMap and geoMap --------------------------------------------- */
 
 export const MAP_TILE_PRESETS = ['us-states', 'europe-countries', 'uk-regions'] as const;
+export const GEO_MAP_PRESETS = ['world', 'europe', 'uk-itl1'] as const;
 
 const mapDatum = z.union([
   z.number().finite(),
   z.object({ value: z.number().finite(), label: z.string().min(1).optional(), asPublished }),
 ]);
+
+/** An area's category: its slug alone, or the slug with a note for the readout and table. */
+const categoryAssignment = z.union([slugId, z.object({ category: slugId, note: z.string().min(1).optional() })]);
+
+/**
+ * How a map is shaded: by a number (`data` + `valueLabel`, with `format`,
+ * `scale`, `steps`, `domain`, `breaks`) or by a category (`categoryLabel` +
+ * `categories` + `areas`). Exactly one; `mapEncodingRule` enforces it.
+ */
+const mapEncodingFields = {
+  // Numeric:
+  valueLabel: z.string().min(1).optional(),
+  format: valueFormatSchema.optional(),
+  scale: z.enum(['sequential', 'diverging']).optional(),
+  steps: z.number().int().min(2).max(9).optional(),
+  domain: z.tuple([z.number(), z.number()]).optional(),
+  breaks: z.array(z.number()).min(2).optional(),
+  data: z.record(z.string(), mapDatum).optional(),
+  // Categorical:
+  /** What the categories are: "ID rule at the polls". Legend and table heading. */
+  categoryLabel: z.string().min(1).optional(),
+  /** In legend order; the order fixes each category's fill and pattern. `mark` is printed on every tile in the category: "SP". */
+  categories: z
+    .array(z.object({ id: slugId, label: z.string().min(1), mark: z.string().min(1).max(3) }))
+    .min(2)
+    .max(6)
+    .optional(),
+  /** Area id → category slug, or `{ category, note }`. An area left out reads "No data". */
+  areas: z.record(z.string(), categoryAssignment).optional(),
+};
+
+const NUMERIC_KEYS = ['valueLabel', 'format', 'scale', 'steps', 'domain', 'breaks', 'data'] as const;
+const CATEGORICAL_KEYS = ['categoryLabel', 'categories', 'areas'] as const;
+type MapEncodingInput = { [K in keyof typeof mapEncodingFields]?: unknown };
+
+/**
+ * Exactly one of numeric (`data` + `valueLabel`) or categorical
+ * (`categoryLabel` + `categories` + `areas`). A numeric option such as
+ * `scale` on a categorical map counts as mixing the two.
+ */
+function mapEncodingRule(what: 'tile map' | 'geo map') {
+  const either = '`data` and `valueLabel`, or `categoryLabel`, `categories` and `areas`';
+  return (f: MapEncodingInput, ctx: z.RefinementCtx) => {
+    const numeric = NUMERIC_KEYS.some(key => f[key] !== undefined);
+    const categorical = CATEGORICAL_KEYS.some(key => f[key] !== undefined);
+    let message: string | undefined;
+    if (numeric && categorical) message = `a ${what} is shaded by a number or by a category, not both: give ${either}`;
+    else if (categorical && !CATEGORICAL_KEYS.every(key => f[key] !== undefined)) message = `a categorical ${what} needs \`categoryLabel\`, \`categories\` and \`areas\``;
+    else if (!categorical && (f.data === undefined || f.valueLabel === undefined)) message = `a ${what} needs ${either}`;
+    if (message) ctx.addIssue({ code: 'custom', message });
+  };
+}
 
 export const tileMapFigureSchema = z
   .object({
@@ -435,19 +488,25 @@ export const tileMapFigureSchema = z
     areaLabel: z.string().min(1),
     /** Outlined, never recoloured. */
     highlight: z.array(z.string()).default([]),
-    // Numeric mode (Phase 1):
-    valueLabel: z.string().min(1).optional(),
-    format: valueFormatSchema.optional(),
-    scale: z.enum(['sequential', 'diverging']).optional(),
-    steps: z.number().int().min(2).max(9).optional(),
-    domain: z.tuple([z.number(), z.number()]).optional(),
-    breaks: z.array(z.number()).min(2).optional(),
-    data: z.record(z.string(), mapDatum).optional(),
-    // Categorical mode (Phase 3a) adds `categoryLabel`, `categories`, `areas` here.
+    ...mapEncodingFields,
   })
-  .superRefine((f, ctx) => {
-    if (!f.data || !f.valueLabel) ctx.addIssue({ code: 'custom', message: 'a tile map needs `data` and `valueLabel`' });
-  });
+  .superRefine(mapEncodingRule('tile map'));
+
+export const geoMapFigureSchema = z
+  .object({
+    kind: z.literal('geoMap'),
+    ...figureBase,
+    /** The outline set: the world's countries, Europe and its neighbours, or the UK's twelve ITL1 regions. */
+    regions: z.enum(GEO_MAP_PRESETS),
+    /** Table heading for the areas: "Country". */
+    areaLabel: z.string().min(1),
+    /** Outlined, never recoloured. */
+    highlight: z.array(z.string()).default([]),
+    /** Areas too small to see at full scale, redrawn enlarged beside the map. */
+    insets: z.array(z.object({ regionIds: z.array(z.string().min(1)).min(1), label: z.string().min(1).optional() })).optional(),
+    ...mapEncodingFields,
+  })
+  .superRefine(mapEncodingRule('geo map'));
 
 /* --- barChart ------------------------------------------------------------- */
 
@@ -518,6 +577,47 @@ export const estimateRangeFigureSchema = z.object({
       })
     )
     .min(2),
+});
+
+/* --- scatterPlot ---------------------------------------------------------- */
+
+const scatterAxisSchema = z.object({
+  label: z.string().min(1),
+  format: valueFormatSchema.optional(),
+  /** Fix the axis ends exactly; must cover every point. */
+  domain: z.tuple([z.number(), z.number()]).optional(),
+  /** Defaults to true. */
+  includeZero: z.boolean().optional(),
+});
+
+export const scatterPlotFigureSchema = z.object({
+  kind: z.literal('scatterPlot'),
+  ...figureBase,
+  /** Table heading for the points: "State". */
+  pointLabel: z.string().min(1),
+  x: scatterAxisSchema,
+  y: scatterAxisSchema,
+  /** In legend order; each takes the next series colour and marker shape. */
+  groups: z.array(categorySchema).optional(),
+  /** Point ids to outline and label in bold; never recoloured. */
+  highlight: z.array(slugId).default([]),
+  points: z
+    .array(
+      z.object({
+        id: slugId,
+        /** Printed beside the point: "AZ". */
+        label: z.string().min(1).max(4),
+        /** For the readout and the table: "Arizona". */
+        name: z.string().min(1),
+        x: z.number().finite(),
+        y: z.number().finite(),
+        group: slugId.optional(),
+        note: z.string().min(1).optional(),
+        xAsPublished: asPublished,
+        yAsPublished: asPublished,
+      })
+    )
+    .min(3),
 });
 
 /* --- quotes --------------------------------------------------------------- */
@@ -591,9 +691,11 @@ export const figureSchema = z.discriminatedUnion('kind', [
   timelineFigureSchema,
   periodTimelineFigureSchema,
   tileMapFigureSchema,
+  geoMapFigureSchema,
   barChartFigureSchema,
   compositionBarFigureSchema,
   estimateRangeFigureSchema,
+  scatterPlotFigureSchema,
   quoteComparisonFigureSchema,
   pullQuoteFigureSchema,
   claimCheckFigureSchema,

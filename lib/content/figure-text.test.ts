@@ -113,6 +113,71 @@ test('numeric table cells are values; a cited cell uses its own sources', () => 
   assert.deepEqual(figureValues(figureOf('dataTable')), []);
 });
 
+/** The fixture's figure of `kind` with this id. */
+function figureById<K extends FigureKind>(kind: K, id: string): FigureOf<K> {
+  const found = fact.figures?.find((f): f is FigureOf<K> => f.kind === kind && 'id' in f && f.id === id);
+  if (!found) throw new Error(`no ${kind} figure ${id}`);
+  return found;
+}
+
+test('categorical map prose: category labels and area notes, but not bare slugs', () => {
+  const prose = figureProse(figureById('tileMap', 'voter-id-rules'));
+  assert.ok(prose.includes('ID asked of voters at the polls, by state, 2026'));
+  assert.ok(prose.includes('Strict photo ID') && prose.includes('No document requested'));
+  assert.ok(prose.includes('A free voter ID card is issued on request'));
+  assert.ok(prose.includes('First-time voters show ID'));
+  assert.ok(!prose.includes('strict-photo'));
+});
+
+test('geo map prose adds inset labels', () => {
+  const prose = figureProse(figureOf('geoMap'));
+  assert.ok(prose.includes('Some voters'));
+  assert.ok(prose.includes('Voters who cannot attend a polling place'));
+  assert.ok(prose.includes('Luxembourg'));
+});
+
+test('scatter prose: point names and notes, and group labels', () => {
+  const prose = figureProse(figureOf('scatterPlot'));
+  assert.ok(prose.includes('Arizona') && prose.includes('North Carolina'));
+  assert.ok(prose.includes('73 hours in 2020.'));
+  assert.ok(prose.includes('Mostly mail'));
+  assert.ok(!prose.includes('147 hours'));
+});
+
+test('a categorical map draws no numbers', () => {
+  assert.deepEqual(figureValues(figureById('tileMap', 'voter-id-rules')), []);
+  assert.deepEqual(figureValues(figureOf('geoMap')), []);
+});
+
+test('a numeric geo map\'s data are values, like a tile map\'s', () => {
+  const map: FigureOf<'geoMap'> = {
+    kind: 'geoMap',
+    id: 'share',
+    title: 't',
+    description: 'd',
+    sources: [2],
+    regions: 'uk-itl1',
+    areaLabel: 'Region',
+    highlight: [],
+    valueLabel: 'Share',
+    format: { unit: 'percent' },
+    data: { london: { value: 41, asPublished: '41 per cent' }, wales: 7 },
+  };
+  assert.deepEqual(figureValues(map), [
+    { where: 'map area london', value: 41, format: { unit: 'percent' }, citations: [2], asPublished: '41 per cent', valuesFrom: undefined },
+    { where: 'map area wales', value: 7, format: { unit: 'percent' }, citations: [2], asPublished: undefined, valuesFrom: undefined },
+  ]);
+});
+
+test('a scatter point is two values, x and y, each with its own asPublished', () => {
+  const values = figureValues(figureOf('scatterPlot'));
+  assert.equal(values.length, 10);
+  assert.deepEqual(values.slice(0, 2), [
+    { where: 'point "Arizona" x', value: 14, format: { unit: 'number' }, citations: [29, 30], asPublished: undefined, valuesFrom: undefined },
+    { where: 'point "Arizona" y', value: 147, format: { unit: 'number' }, citations: [29, 30], asPublished: '147 hours', valuesFrom: undefined },
+  ]);
+});
+
 test('quotes, timelines and caveats draw no numbers', () => {
   for (const kind of ['timeline', 'periodTimeline', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList'] as const) {
     assert.deepEqual(figureValues(figureOf(kind)), [], kind);
