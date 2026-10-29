@@ -1,18 +1,25 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import type { Series } from '@/lib/content/types';
+import type { Series, SeriesPoint } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
   formatTick,
   formatValue,
+  hasOwnSpans,
   layoutReading,
+  midSentence,
   niceTicks,
   pathFor,
+  readingRows,
   seriesSlots,
   seriesStrokeDash,
   seriesTable,
-  splitAtBreaks,
+  splitRuns,
   yearTicks,
+  dropCrowdedTicks,
+  tickLabelWidth,
+  decimate,
+  layoutContext,
 } from './series-chart';
 
 const source = {
@@ -155,15 +162,15 @@ test('later series slots add a distinct non-colour cue', () => {
   assert.equal(seriesStrokeDash(7), '2 3');
 });
 
-test('splitAtBreaks cuts the line at the break and bridges the gap', () => {
+test('splitRuns cuts the line at a break and bridges the gap', () => {
   const points = ['1990', '1991', '1992', '1993'].map((period, i) => ({
     x: i,
     y: 0,
     point: { period, value: i },
   }));
-  const { runs, bridges } = splitAtBreaks(points, ['1992']);
+  const { runs, bridges } = splitRuns(points, ['1992']);
   assert.deepEqual(
-    runs.map((run) => run.map((p) => p.point.period)),
+    runs.map((run) => run.points.map((p) => p.point.period)),
     [
       ['1990', '1991'],
       ['1992', '1993'],
@@ -178,7 +185,7 @@ test('splitAtBreaks cuts the line at the break and bridges the gap', () => {
 
 test('a series with no breaks is one unbroken run', () => {
   const points = ['1990', '1991'].map((period, i) => ({ x: i, y: 0, point: { period, value: i } }));
-  const { runs, bridges } = splitAtBreaks(points, []);
+  const { runs, bridges } = splitRuns(points, []);
   assert.equal(runs.length, 1);
   assert.equal(bridges.length, 0);
 });
@@ -188,7 +195,7 @@ test('layout puts the coverage ends at the plot edges and marks zero', () => {
   const g = CHART_GEOMETRY.wide;
   const layout = layoutReading(s, s.readings[0], 'wide');
 
-  const first = layout.lines[0].runs[0][0];
+  const first = layout.lines[0].runs[0].points[0];
   const last = layout.lines[0].last;
   assert.equal(Number(first.x.toFixed(4)), g.left);
   assert.equal(Number(last.x.toFixed(4)), g.left + g.plotWidth);
@@ -249,4 +256,191 @@ test('a period a reading does not cover leaves an empty cell rather than a wrong
   const { rows } = seriesTable(s);
   assert.equal(rows[0].cells[2], null);
   assert.equal(rows[2].cells[2], '0.30%');
+});
+
+/** A one-line annual series over `[from, to]`, for time-axis tests. */
+function span(from: number, to: number): Series {
+  const s = series();
+  return {
+    ...s,
+    coverage: { from: String(from), to: String(to) },
+    breaks: [],
+    readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points: [{ period: String(from), value: 1 }, { period: String(to), value: 2 }] }] }],
+  };
+}
+
+test('tickLabelWidth allows 0.6em per character plus a gap', () => {
+  assert.equal(tickLabelWidth('2020', 10), 30);
+});
+
+test('dropCrowdedTicks drops interior ticks that would print over an end tick, never the ends', () => {
+  const ticks = [{ x: 0, label: '1950' }, { x: 100, label: '2000' }, { x: 180, label: '2020' }, { x: 200, label: '2026' }];
+  assert.deepEqual(dropCrowdedTicks(ticks, 11).map((t) => t.label), ['1950', '2000', '2026']);
+  assert.deepEqual(dropCrowdedTicks(ticks.slice(2), 11).map((t) => t.label), ['2020', '2026']);
+});
+
+test('a 1950–2026 axis drops 2020 at narrow width and keeps it at wide width', () => {
+  const s = span(1950, 2026);
+  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow').timeTicks.map((t) => t.label), ['1950', '1960', '1980', '2000', '2026']);
+  assert.deepEqual(
+    layoutReading(s, s.readings[0], 'wide').timeTicks.map((t) => t.label),
+    ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020', '2026']
+  );
+});
+
+test('midSentence lower-cases only a first letter that is not an acronym or a month', () => {
+  assert.equal(midSentence('Year'), 'year');
+  assert.equal(midSentence('Year of NCSL count'), 'year of NCSL count');
+  assert.equal(midSentence('November general election'), 'November general election');
+  assert.equal(midSentence('EAVS cycle'), 'EAVS cycle');
+  assert.equal(midSentence('Survey fieldwork month'), 'survey fieldwork month');
+});
+
+/** Two lines on one axis, the second from a source that starts in 1992. */
+function perLine(): Series {
+  const s = series();
+  s.readings = [{
+    ...s.readings[0],
+    lines: [
+      s.readings[0].lines[0],
+      { name: 'Later source', coverage: { from: '1992', to: '1993' }, points: [{ period: '1992', value: 5 }, { period: '1993', value: 6 }] },
+    ],
+  }];
+  return s;
+}
+
+test('a reading table has a row for every period of any line, and marks periods outside a line’s own range', () => {
+  const s = perLine();
+  // The later line first, so rows taken from the first line alone would drop 1990–1991.
+  s.readings[0].lines.reverse();
+  const rows = readingRows(s, s.readings[0]);
+  assert.deepEqual(rows.map(r => r.period), ['1990', '1991', '1992', '1993']);
+  assert.deepEqual(rows[0].cells, ['outside', { period: '1990', value: 100 }]);
+  assert.deepEqual(rows[3].cells.map(c => typeof c === 'object' && c !== null ? c.value : c), [6, 400]);
+  assert.equal(hasOwnSpans(s), true);
+  assert.equal(hasOwnSpans(series()), false);
+});
+
+test('a line with its own range starts where its range does and ends on its own last point', () => {
+  const s = perLine();
+  const g = CHART_GEOMETRY.wide;
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const later = layout.lines[1];
+  assert.ok(later.runs[0].points[0].x > g.left);
+  assert.equal(Number(later.last.x.toFixed(4)), g.left + g.plotWidth);
+});
+
+const plotted = (statuses: Array<SeriesPoint['status']>) =>
+  statuses.map((status, i) => ({ x: i, y: 0, point: { period: String(1990 + i), value: i, ...(status ? { status } : {}) } }));
+
+test('splitRuns splits at status changes, and a segment touching an estimate is an estimate', () => {
+  const { runs, bridges } = splitRuns(plotted([undefined, undefined, 'estimate', undefined, 'forecast', 'forecast']), []);
+  assert.deepEqual(
+    runs.map((run) => [run.kind, run.points.map((p) => p.point.period)]),
+    [
+      ['measured', ['1990', '1991']],
+      ['estimate', ['1991', '1992', '1993']],
+      ['forecast', ['1993', '1994', '1995']],
+    ]
+  );
+  assert.equal(bridges.length, 0);
+});
+
+test('the forecast zone starts at the first forecast and estimates get hollow markers', () => {
+  const s = series();
+  const line = s.readings[0].lines[0];
+  line.points = line.points.map((p, i) => ({ ...p, status: i === 1 ? 'estimate' : i >= 2 ? 'forecast' : undefined }));
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const forecast = layout.lines[0].runs.find((run) => run.kind === 'forecast');
+  assert.equal(layout.forecastX, layout.lines[0].runs.flatMap((run) => run.points).find((p) => p.point.period === '1992')!.x);
+  assert.ok(forecast);
+  assert.deepEqual(layout.lines[0].hollow.map((p) => p.point.period), ['1991']);
+  assert.equal(layoutReading(series(), series().readings[0], 'wide').forecastX, null);
+});
+
+test('a "not measured since" band runs from the last point to the plot’s right edge', () => {
+  const s = series();
+  s.notMeasuredSince = { label: 'Not measured', note: 'Stopped.', until: '1995', source: 1 };
+  const g = CHART_GEOMETRY.wide;
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  assert.ok(layout.unmeasured);
+  assert.equal(layout.unmeasured.x0, layout.lines[0].last.x);
+  assert.equal(Number(layout.unmeasured.x1.toFixed(4)), g.left + g.plotWidth);
+  assert.equal(layout.timeTicks.at(-1)?.label, '1995');
+  assert.equal(layoutReading(series(), series().readings[0], 'wide').unmeasured, null);
+});
+
+/** Monthly, January 2020 to October 2026, rising by one a month, with a spike of 1,000 in June 2021. */
+function monthly(): Series {
+  const s = series();
+  const points: SeriesPoint[] = [];
+  for (let i = 0; i < 82; i += 1) {
+    const period = `${2020 + Math.floor(i / 12)}-${String((i % 12) + 1).padStart(2, '0')}`;
+    points.push({ period, value: period === '2021-06' ? 1000 : i });
+  }
+  return { ...s, breaks: [], coverage: { from: '2020-01', to: '2026-10' }, readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points }] }] };
+}
+
+const LAST_YEAR = { from: '2025-10', to: '2026-10' };
+
+test('a window layout puts the window ends at the plot edges and fits its y domain to the window', () => {
+  const s = monthly();
+  const g = CHART_GEOMETRY.wide;
+  const layout = layoutReading(s, s.readings[0], 'wide', LAST_YEAR);
+  const plotted = layout.lines[0].runs.flatMap((run) => run.points);
+  const at = (period: string) => plotted.find((p) => p.point.period === period)!.x;
+  assert.equal(Number(at('2025-10').toFixed(4)), g.left);
+  assert.equal(Number(at('2026-10').toFixed(4)), g.left + g.plotWidth);
+  // The nearest point outside the window is drawn too, off the plot's left edge, to be clipped.
+  assert.ok(at('2025-09') < g.left);
+  assert.ok(!plotted.some((p) => p.point.period === '2021-06'));
+  assert.ok(layout.valueTicks.at(-1)!.value < 1000);
+  assert.ok(layoutReading(s, s.readings[0], 'wide').valueTicks.at(-1)!.value >= 1000);
+});
+
+test('a one-year window has month ticks: every month wide, every third narrow, the year on the first and on January', () => {
+  const s = monthly();
+  const window = { from: '2025-10-20', to: '2026-10-20' };
+  assert.deepEqual(
+    layoutReading(s, s.readings[0], 'wide', window).timeTicks.map((t) => t.label),
+    ['Nov 2025', 'Dec', 'Jan 2026', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+  );
+  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow', window).timeTicks.map((t) => t.label), ['Jan 2026', 'Apr', 'Jul', 'Oct']);
+  assert.deepEqual(layoutReading(s, s.readings[0], 'wide', { from: '2020-01', to: '2026-10' }).timeTicks.map((t) => t.label).slice(0, 2), ['2020', '2021']);
+});
+
+test('decimate keeps both ends and the extremes of every column, so a spike survives', () => {
+  // A thousand consecutive days from 1 January 2000.
+  const points: SeriesPoint[] = Array.from({ length: 1000 }, (_, i) => ({
+    period: new Date(Date.UTC(2000, 0, 1 + i)).toISOString().slice(0, 10),
+    value: i === 500 ? 999 : i === 700 ? -999 : Math.sin(i),
+  }));
+  const thinned = decimate(points, 50);
+  assert.ok(thinned.length <= 2 * 50 + 2, `${thinned.length}`);
+  assert.equal(thinned[0], points[0]);
+  assert.equal(thinned.at(-1), points.at(-1));
+  assert.ok(thinned.some((p) => p.value === 999));
+  assert.ok(thinned.some((p) => p.value === -999));
+});
+
+test('the context strip spans the full range and outlines the window', () => {
+  const s = monthly();
+  const strip = layoutContext(s, s.readings[0], 'wide', LAST_YEAR);
+  assert.equal(strip.geometry.left, CHART_GEOMETRY.wide.left);
+  assert.equal(strip.geometry.plotWidth, CHART_GEOMETRY.wide.plotWidth);
+  assert.equal(Number(strip.lines[0].points[0].x.toFixed(4)), strip.geometry.left);
+  assert.equal(Number(strip.window.x1.toFixed(4)), strip.geometry.left + strip.geometry.plotWidth);
+  assert.ok(strip.window.x0 > strip.geometry.left);
+});
+
+test('a monthly series under three years long gets month ticks, not one year label', () => {
+  const s = series();
+  const months = ['2026-01', '2026-04', '2026-07', '2026-10', '2026-12'];
+  const monthly: Series = {
+    ...s,
+    coverage: { from: '2026-01', to: '2026-12' },
+    breaks: [],
+    readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points: months.map((period, i) => ({ period, value: i })) }] }],
+  };
+  assert.deepEqual(layoutReading(monthly, monthly.readings[0], 'narrow').timeTicks.map((t) => t.label), ['Jan 2026', 'Apr', 'Jul', 'Oct']);
 });

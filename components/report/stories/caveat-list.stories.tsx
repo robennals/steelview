@@ -35,3 +35,14 @@ export const SingleItem: Story = {
     items: [{ measure: 'The true number of illegal entries', why: 'The Home Office counts detections and says explicitly that it cannot estimate the rest.' }],
   },
 };
+
+/** Each gap with the source that documents it, printed after why it matters. Illustrative sources. */
+export const WithSources: Story = {
+  args: {
+    heading: 'Detected fraud is a floor, not a measure',
+    items: [
+      { measure: 'Household pressure', why: 'Pressure inside a home is rarely reported, so it rarely becomes a case.', sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }] },
+      { measure: 'Signature review', why: 'A spouse-signed envelope can pass signature review.', sources: [{ label: 'Second illustrative source', href: '#source-example-2', number: 2 }] },
+    ],
+  },
+};

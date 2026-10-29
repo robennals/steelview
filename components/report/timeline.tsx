@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { ChoiceGroup, FilterChips } from './controls';
 import { ReportFigure, SourceLine } from './figure';
 import { compareDates, formatDate } from './format';
@@ -41,6 +41,8 @@ export type TimelineProps = {
   sources?: SourceCredit[];
   note?: string;
   headingLevel?: 2 | 3;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 function yearOf(date: PartialDate) {
@@ -69,6 +71,7 @@ export function Timeline({
   description,
   sources,
   note,
+  footer,
   headingLevel = 2,
 }: TimelineProps) {
   const [selected, setSelected] = useState<Set<string>>(() => new Set(initialCategories));
@@ -93,7 +96,7 @@ export function Timeline({
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} headingLevel={headingLevel} className="sv-timeline">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-timeline">
       {(showChips || showMajorToggle) && (
         <div className="sv-timeline__controls">
           {showChips && (

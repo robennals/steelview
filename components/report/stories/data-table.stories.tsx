@@ -51,3 +51,25 @@ export const Short: Story = {
 export const Empty: Story = {
   args: { rows: [], title: 'No matching countries' },
 };
+
+/** Cells with their own footnotes: each cited cell prints its text, then a "[n]" link per source. */
+export const CitedCells: Story = {
+  args: {
+    title: 'Federal voting laws on registration and ID',
+    description: 'Illustrative: each cell that states what a law does cites the source that says so.',
+    caption: 'One row per law, bill or ruling',
+    columns: [
+      { key: 'year', label: 'Year', format: 'text' },
+      { key: 'measure', label: 'Law, bill or ruling', rowHeader: true },
+      { key: 'effect', label: 'What it does on registration and ID', sortable: false },
+    ],
+    rows: [
+      { year: '2025', measure: 'SAVE Act', effect: { value: 'Documentary proof of citizenship to register', sources: [{ label: 'Illustrative source', href: '#source-example-2', number: 2 }] } },
+      { year: '1993', measure: 'National Voter Registration Act', effect: { value: 'Registration when applying for a driving licence', sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }] } },
+      { year: '1965', measure: 'Voting Rights Act', effect: { value: 'Bars registration practices that discriminate by race', sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }, { label: 'Second illustrative source', href: '#source-example-3', number: 3 }] } },
+    ],
+    highlight: [],
+    defaultSort: { key: 'year', direction: 'ascending' },
+    sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }, { label: 'Second illustrative source', href: '#source-example-3', number: 3 }],
+  },
+};

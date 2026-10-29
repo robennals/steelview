@@ -12,6 +12,8 @@ import {
   principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
+  figureSchema,
+  valueFormatSchema,
   FACT_STATUSES,
   SOURCE_STANCES,
 } from './schema';
@@ -30,6 +32,18 @@ export type SeriesReading = z.infer<typeof seriesReadingSchema>;
 export type SeriesBreak = z.infer<typeof seriesBreakSchema>;
 export type SeriesEvent = z.infer<typeof seriesEventSchema>;
 export type Series = z.infer<typeof seriesSchema>;
+
+export type Figure = z.infer<typeof figureSchema>;
+export type FigureKind = Figure['kind'];
+export type FigureOf<K extends FigureKind> = Extract<Figure, { kind: K }>;
+/** Kinds that draw a library component, as opposed to references. */
+export type ComponentFigure = Exclude<Figure, { kind: 'series' | 'comparison' | 'featured' | 'section' }>;
+
+export function isComponentFigure(figure: Figure): figure is ComponentFigure {
+  return figure.kind !== 'series' && figure.kind !== 'comparison' && figure.kind !== 'featured' && figure.kind !== 'section';
+}
+/** How a figure value is written; mirrors `ValueFormat` in components/report/types.ts. */
+export type FigureValueFormat = z.infer<typeof valueFormatSchema>;
 
 export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
 export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;

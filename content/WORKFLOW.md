@@ -284,8 +284,11 @@ quoted sources, full-range series, the source's comparator set, observations
 beneath each chart, method changes, sources at the end.
 
 **Every chart value is audited against its source** before the gate.
-`pnpm check:figures` checks numbers in prose only; it does not look at
-`series` points or `comparisons` items. An agent that did not build the
+`pnpm check:figures` lists every `series` point and `comparisons` value
+that is not in a quote the chart cites, not a verified derivation, and not
+on a table the reading or comparison names in `valuesFrom`; the list is
+advisory until `--strict-values` becomes the default, and a named table is
+only as good as someone having read it. An agent that did not build the
 report re-fetches each chart's source data and confirms every value, or the
 inputs and arithmetic of a derived one, and makes sure the chart's quote or
 note names the table the values come from. In the first trial topic this
@@ -326,21 +329,18 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
-- time series always render before snapshot comparisons, and body sections
-  that are not charts — such as markdown tables — render after every chart,
-  so a planned reading order can be kept only within those groups;
 - an observation group not tied to a chart needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos;
-- there is no chart shape for a categorical table (a rule per country); use
-  a markdown table. Policy dates on a series go in its `events`;
-- only `SeriesChart`, `ComparisonChart` and the `EventStrip` under a series
-  can be used from a fact file today. The rest of the component library
-  (`components/report`, shown in Storybook) has to be wired into the fact
-  schema before a report can use it, so a report plan that needs another
-  component says so at stage 4b;
-- `check:figures` matches a figure only in the same form the source prints
-  it ("1.4 percent" and "1.4%" differ), and accepts a figure quoted anywhere
-  on the topic, not only in the report's own sources.
+- a rule or status per area (a rule per state or country) is a categorical
+  `tileMap` or `geoMap` figure; a categorical table with more than one
+  column per area is a `dataTable` figure. Policy dates on a series go in
+  its `events`;
+- a fact file reaches the component library through `figures`
+  ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
+  reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
+  `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
+  `SmallMultiples` are not yet, so a report plan that needs one says so at
+  stage 4b;
 
 ## 6. Write the viewpoints
 

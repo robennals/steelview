@@ -13,6 +13,8 @@ export type QuoteComparisonProps = {
   sources?: SourceCredit[];
   note?: ReactNode;
   headingLevel?: 2 | 3;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 /**
@@ -23,9 +25,9 @@ export type QuoteComparisonProps = {
  * style, and no automatic sort that could quietly put one side first. On a
  * narrow screen they stack in that same order.
  */
-export function QuoteComparison({ question, quotes, id, description, sources, note, headingLevel }: QuoteComparisonProps) {
+export function QuoteComparison({ question, quotes, id, description, sources, note, footer, headingLevel }: QuoteComparisonProps) {
   return (
-    <ReportFigure id={id} title={question} description={description} sources={sources} note={note} headingLevel={headingLevel} className="sv-quote-comparison">
+    <ReportFigure id={id} title={question} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-quote-comparison">
       <ul className="sv-quote-comparison__columns" data-count={quotes.length}>
         {quotes.map(quote => (
           <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-comparison__column">

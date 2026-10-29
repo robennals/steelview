@@ -8,6 +8,8 @@ import {
   BORN_ABROAD_BY_REGION_ILLUSTRATIVE,
   CHANGE_BY_REGION_ILLUSTRATIVE,
   ILLUSTRATIVE,
+  NCSL_VOTER_ID_SOURCES,
+  US_VOTER_ID_RULES_2026,
 } from './fixtures/maps';
 
 const meta = {
@@ -93,5 +95,28 @@ export const UkDiverging: Story = {
     areaLabel: 'Region',
     sources: ILLUSTRATIVE,
     note: undefined,
+  },
+};
+
+/**
+ * Categorical mode: a rule per state rather than a number. Each category has
+ * a tint, a pattern and a code printed on its tiles (SP, SN, P, N, —), so the
+ * map reads in greyscale; the legend counts each category, and the table
+ * groups the states under their rule.
+ */
+export const CategoricalVoterIdRules: Story = {
+  args: {
+    title: 'Voter ID rules at the polls, by state, 2026',
+    description: 'Thirty-six states ask voters for identification at the polls; fourteen and Washington, D.C., ask for no document. "Strict" states make a voter without ID cast a provisional ballot that counts only after further steps.',
+    tiles: US_STATE_TILES,
+    ...US_VOTER_ID_RULES_2026,
+    data: undefined,
+    valueLabel: undefined,
+    format: undefined,
+    breaks: undefined,
+    highlight: [],
+    areaLabel: 'State',
+    sources: NCSL_VOTER_ID_SOURCES,
+    note: 'NCSL classifies each state by what happens to a voter who arrives without the requested ID. Table 2 of the same source lists the accepted documents state by state.',
   },
 };

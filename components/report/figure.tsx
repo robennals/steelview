@@ -18,6 +18,7 @@ export function ReportFigure({
   description,
   sources,
   note,
+  footer,
   headingLevel = 2,
   className,
   children,
@@ -28,6 +29,8 @@ export function ReportFigure({
   sources?: SourceCredit[];
   /** Method notes, caveats, coverage: shown collapsed under "About this data". */
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": a figure's Observations. */
+  footer?: ReactNode;
   headingLevel?: 2 | 3;
   className?: string;
   children: ReactNode;
@@ -43,6 +46,7 @@ export function ReportFigure({
       )}
       {children}
       {sources && sources.length > 0 && <SourceLine sources={sources} />}
+      {footer}
       {note && (
         <details className="sv-chart__methodology">
           <summary>About this data</summary>
@@ -50,6 +54,28 @@ export function ReportFigure({
         </details>
       )}
     </figure>
+  );
+}
+
+/**
+ * An item's own sources, set inline after the item: "NCSL [2]; EAC [5]". Used
+ * where one row, estimate or caveat rests on a different source from the
+ * rest of its figure, so the reader can check that item without guessing.
+ */
+export function SourceCredits({ sources }: { sources: SourceCredit[] }) {
+  if (sources.length === 0) return null;
+  return (
+    <span className="sv-item-credit">
+      {sources.map((source, i) => {
+        const text = source.number ? `${source.label} [${source.number}]` : source.label;
+        return (
+          <span key={`${source.label}-${i}`}>
+            {i > 0 && '; '}
+            {source.href ? <a href={source.href}>{text}</a> : text}
+          </span>
+        );
+      })}
+    </span>
   );
 }
 

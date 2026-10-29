@@ -1,3 +1,4 @@
+import type { CategoryData, CategoryEncoding } from '../../geo/categorical';
 import type { MapData } from '../../geo/choropleth';
 import type { MapMarker } from '../../geo-map';
 import type { SourceCredit } from '../../types';
@@ -113,3 +114,63 @@ export const WORLD_SHARE_ILLUSTRATIVE: MapData = {
 
 /** Illustrative only: generated values for every state except Wyoming. Not Census Bureau figures. */
 export const US_STATES_ILLUSTRATIVE: MapData = { AK: { value: 9 }, ME: { value: 5 }, VT: { value: 11 }, NH: { value: 20 }, WA: { value: 3 }, ID: { value: 4 }, MT: { value: 15 }, ND: { value: 4 }, MN: { value: 9 }, IL: { value: 17 }, WI: { value: 3 }, MI: { value: 15 }, NY: { value: 6 }, RI: { value: 3 }, MA: { value: 4 }, OR: { value: 11 }, NV: { value: 11 }, SD: { value: 4 }, IA: { value: 6 }, IN: { value: 4 }, OH: { value: 15 }, PA: { value: 11 }, NJ: { value: 3 }, CT: { value: 17 }, CA: { value: 4 }, UT: { value: 6 }, CO: { value: 20 }, NE: { value: 20 }, MO: { value: 17 }, KY: { value: 3 }, WV: { value: 17 }, VA: { value: 17 }, MD: { value: 11 }, DE: { value: 3 }, AZ: { value: 6 }, NM: { value: 3 }, KS: { value: 15 }, AR: { value: 5 }, TN: { value: 8 }, NC: { value: 11 }, SC: { value: 5 }, DC: { value: 15 }, OK: { value: 4 }, LA: { value: 17 }, MS: { value: 8 }, AL: { value: 15 }, GA: { value: 20 }, HI: { value: 5 }, TX: { value: 4 }, FL: { value: 17 } };
+
+/** States by category id, so each list reads as NCSL prints it. */
+function assign(byCategory: Record<string, string[]>): CategoryData {
+  return Object.fromEntries(Object.entries(byCategory).flatMap(([category, ids]) => ids.map(id => [id, { category }])));
+}
+
+/**
+ * The ID each state asks of voters at the polls in 2026, from NCSL's Table 1
+ * ("Voter Identification Laws In Force in 2026") as quoted in source 2 of the
+ * `voter-id-rules-in-the-us-and-abroad` report: 10 + 4 + 14 + 8 + 15 = 51,
+ * matching the report's comparison (24 photo, 12 non-photo, 15 none incl. DC).
+ * "Strict" means a voter without ID casts a provisional ballot that counts
+ * only after further steps; "non-strict" lets them vote without that.
+ */
+export const US_VOTER_ID_RULES_2026: CategoryEncoding = {
+  categoryLabel: 'ID asked of voters at the polls, 2026',
+  categories: [
+    { id: 'strict-photo', label: 'Strict photo ID', mark: 'SP' },
+    { id: 'strict-non-photo', label: 'Strict non-photo ID', mark: 'SN' },
+    { id: 'non-strict-photo', label: 'Non-strict photo ID', mark: 'P' },
+    { id: 'non-strict-non-photo', label: 'Non-strict non-photo ID', mark: 'N' },
+    { id: 'none', label: 'No document requested', mark: '—' },
+  ],
+  categoryData: assign({
+    'strict-photo': ['AR', 'GA', 'IN', 'KS', 'MS', 'NH', 'NC', 'OH', 'TN', 'WI'],
+    'strict-non-photo': ['AZ', 'IA', 'ND', 'WY'],
+    'non-strict-photo': ['AL', 'FL', 'ID', 'KY', 'LA', 'MI', 'MO', 'MT', 'NE', 'RI', 'SC', 'SD', 'TX', 'WV'],
+    'non-strict-non-photo': ['AK', 'CO', 'CT', 'DE', 'OK', 'UT', 'VA', 'WA'],
+    none: ['CA', 'DC', 'HI', 'IL', 'MA', 'MD', 'ME', 'MN', 'NJ', 'NM', 'NV', 'NY', 'OR', 'PA', 'VT'],
+  }),
+};
+
+export const NCSL_VOTER_ID_SOURCES: SourceCredit[] = [
+  { label: 'National Conference of State Legislatures, Table 1', href: 'https://www.ncsl.org/elections-and-campaigns/voter-id' },
+];
+
+/**
+ * In-country postal voting by country, from International IDEA's Special
+ * Voting Arrangements data (postal data as of 20 August 2025). Only the
+ * countries the research draft confirms are assigned — eleven where postal
+ * voting is open to all voters, France and Australia where it is open to some
+ * — and every other country is left as "No data": IDEA's full country lists
+ * are published as images and have not yet been extracted. Liechtenstein is
+ * assigned but too small to appear in the world outlines.
+ */
+export const IDEA_POSTAL_VOTING_2025: CategoryEncoding = {
+  categoryLabel: 'Who may vote by post in-country, 2025',
+  categories: [
+    { id: 'all', label: 'All voters', mark: 'A' },
+    { id: 'some', label: 'Some voters', mark: 'S' },
+  ],
+  categoryData: assign({
+    all: ['CA', 'DE', 'IS', 'KR', 'LI', 'LU', 'NZ', 'PL', 'CH', 'GB', 'US'],
+    some: ['FR', 'AU'],
+  }),
+};
+
+export const IDEA_POSTAL_SOURCES: SourceCredit[] = [
+  { label: 'International IDEA, Special Voting Arrangements', href: 'https://www.idea.int/data-tools/tools/special-voting-arrangements/postal-in-country' },
+];

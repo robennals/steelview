@@ -10,7 +10,7 @@
 // Foundations
 export * from './types';
 export { formatValue, formatDate, dateToYear, compareDates } from './format';
-export { ReportFigure, SourceLine } from './figure';
+export { ReportFigure, SourceCredits, SourceLine } from './figure';
 export { ChoiceGroup, FilterChips, type Choice } from './controls';
 
 // Data
@@ -21,11 +21,13 @@ export * from './composition-bar';
 export * from './small-multiples';
 export * from './estimate-range';
 export * from './data-table';
+export * from './scatter-plot';
 
 // Maps
 export * from './geo-map';
 export * from './tile-map';
 export type { GeoRegion, LonLat } from './geo/types';
+export type { MapCategory, CategoryAssignment, CategoryData, CategoryEncoding, MapEncoding } from './geo/categorical';
 export type { Bounds, ProjectionKind } from './geo/project';
 export { partitionRegions } from './geo/regions';
 export { WORLD_COUNTRIES } from './geo/world-countries';

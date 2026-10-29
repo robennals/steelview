@@ -414,9 +414,26 @@ judged on, which is why the schema validates the date shape down to the month
 range rather than accepting any string.
 
 **Every prose figure must be sourced or reproducibly derived.**
-`pnpm check:figures` checks prose numbers against topic source quotes and
-validated `derivedFigures` calculations. A passing check does not establish
-that the citation supports the meaning, scope or causal interpretation.
+`pnpm check:figures` checks prose numbers against source quotes and
+validated `derivedFigures` calculations. A fact's figures must be in that
+fact's own sources; a viewpoint's, crux's or the topic intro's must be in the
+sources of the facts it cites (inline `#fact-` links); a shared principle's
+may be anywhere on the topic. Money in `£`, `$` or `€` and percentages written
+`%`, "percent" or "per cent" are all checked, and the forms match each other
+("1.4 percent" matches a quoted "1.4%", "1.0%" matches "1%"). A passing check
+does not establish that the citation supports the meaning, scope or causal
+interpretation.
+
+**Every chart value must be traceable too.** `pnpm check:figures` also
+audits the numbers charts draw: each `series` point must be in its reading's
+`source` quote (else the series `source`), each `comparisons` value — and
+each group value of a grouped comparison — in the quotes of the sources the
+comparison cites, or be a verified `derivedFigures` entry on the same fact.
+Values read from a table no quote can hold go through `valuesFrom` on the
+reading or comparison, naming the table ("EAVS 2024 Overview Table 1"); the
+check then counts them as resting on that table. The chart-value audit is
+advisory for now: it lists untraced values and exits 0, and
+`pnpm check:figures --strict-values` fails on them.
 
 **Derived figures: quote the inputs and document the calculation.**
 `derivedFigures` supports `ratio-percent`, `complement-percent` and `series-mean`.
@@ -446,7 +463,8 @@ zero baseline and signed values extend on the correct side of it. Label scope an
 period in the visible description. Source indexes reuse the fact's citation list.
 
 **Charts are shared product primitives, not report-specific artwork.** Use the
-existing `SeriesChart` and `ComparisonChart` data shapes for every report. If a
+existing `SeriesChart` and `ComparisonChart` data shapes, and the [`figures`](#figures)
+kinds, for every report. If a
 new visual capability is genuinely needed, add it to the reusable chart component,
 its schema and its tests so it works for every topic; do not add a topic-specific
 renderer, CSS branch or inline SVG to one data collection. Labels for grouped bars
@@ -516,6 +534,27 @@ also lying about what the source publishes, which is a lie a reader can check
 against the cited workbook. `immigration-against-the-long-run` runs 1964 to
 2025, all 62 points, because that is where the ONS method starts.
 
+**Comparable measures from sources with different ranges share one axis.**
+Give a line its own `coverage` when its source publishes a different range
+from the others — Brent daily from May 1987 beside WTI from 1986, or Amnesty's
+Iran count beside IHRNGO's from 2008. That line must then run the whole of its
+own range, and the series `coverage` must be exactly the union of the lines'
+ranges, so the axis is never stretched past the data. The legend names the
+line's range ("Brent (from May 1987)"), and the table marks the years outside
+it "—". Do not split such measures into separate charts to avoid the rule.
+
+**A dense series can focus on a short period without dropping the rest.**
+Daily Brent has over 9,000 points across 39 years, so a six-month shock is a
+sliver of the plot. Add `focus` with a `from` date, an optional `to` (it
+defaults to `coverage.to`) and a `label` for the switch ("Last 12 months").
+The chart then draws a small strip of the full range with the window
+outlined, says in words which period the plot shows, and draws the window at
+readable scale; a switch shows the full range instead, and the table still
+holds every value. The window must lie inside the coverage and hold at least
+two points of some line. Events outside it stay in the numbered key, marked
+"(outside the period shown)". `focus` is for reading the recent past
+closely, never for hiding the rest: the coverage rule is unchanged.
+
 **A series carries its own quoted source**, in the same shape as a fact's
 sources, because a chart is a factual assertion like any other. A reading
 that rests on a different dataset — a derived denominator — carries a second
@@ -534,6 +573,24 @@ takes a period, a short label and a note in the source's own terms.
 `immigration-against-the-long-run` marks three: LTIM replacing IPS-alone in
 1991, administrative data backdated to 2012, and the June 2021 method change.
 The line still runs through them; the reader is told what changed.
+
+**Estimates and forecasts are drawn, not dropped.** When a source mixes
+history with estimates, provisional values or forecasts, run the series to
+the source's end and give each such point a `status`: `estimate`,
+`provisional` or `forecast` (absent means measured). Estimates and provisional
+values are dotted with hollow markers; forecasts sit in a shaded zone labelled
+Forecast; the table adds "(est.)", "(prov.)" or "(forecast)". Forecasts must be
+a line's last points, and a series with any forecast needs a `coverage.note`
+naming the forecast's vintage ("EIA STEO, October 2026").
+
+**When measurement stops, say so on the chart.** If a series ends because
+nobody has measured since — not because the source ends — add
+`notMeasuredSince` with a short `label` (48 characters at most), a `note` in
+the source's terms, the numbered `source` that says so, and optionally `until`
+(it defaults to the topic's `lastUpdated`, and may not be later). The chart
+hatches the gap from the last point to `until`, writes a key line under the
+plot, and adds a Method Changes entry the key line links to. Events may fall
+inside the band.
 
 **Multiple readings, not a toggle you can ship the flattering half of.** A
 `series` carries one or more `readings` and the chart draws every one. The
@@ -579,6 +636,140 @@ Check policy dates: a later restriction cannot explain an earlier turn. Note
 lags and incomplete effects when relevant. Do not manufacture a story for every
 small wiggle; if a major movement has no established explanation, say what is
 unknown. Explain measurement breaks in Method Changes so readers do not mistake them for events.
+
+### Figures
+
+A fact can place any component from the report library — tables, key figures,
+timelines, maps, bars, estimate ranges, quotes, claim checks, caveats — by
+listing it in `figures`. The list is also the fact's **reading order**: its
+entries render in the order written, interleaved with the fact's series and
+comparisons and with sections of its body. A fact without `figures` renders
+as before: series, additional series, featured charts, comparisons, then the
+body.
+
+**Kinds.** Each entry has a `kind`. Four kinds place things the fact already
+has; the rest draw a component (see Storybook for each one's look):
+
+| Kind | Renders |
+| --- | --- |
+| `series` | the fact's `series`, or one `additionalSeries` by `id` |
+| `comparison` | one `comparisons` entry, by `id` |
+| `featured` | the charts of one supporting fact named in `featuredCharts` (`fact: <id>`) |
+| `section` | the body section headed `## … {#<fact>--<id>}`, moved to this place |
+| `dataTable` | a sortable table; a cell may be `{ value, sources }` to footnote it |
+| `keyFigures` | one to six headline numbers, each with a `period` and its own `source`; `qualifier: more than` for a bound |
+| `timeline` | dated events in `categories`, each with its own `source` |
+| `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated` |
+| `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
+| `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
+| `barChart` | ungrouped bars in any format, dollars included |
+| `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` |
+| `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most", `estimate` for range only; `nullValue: null` for costs |
+| `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
+| `quoteComparison` | two to four answers to one `question` |
+| `pullQuote` | one quote set apart |
+| `claimCheck` | a well-known claim, quoted, set against the evidence, with a link to the fact that sets it out |
+| `caveatList` | what the figures above do not show |
+
+Every component figure takes `id`, `title`, a one-sentence `description` (the
+visible orientation and the screen-reader text), `sources`, an optional `note`
+for About this data, and an optional `valuesFrom`. The quote, claim and caveat
+kinds have their own shapes; `lib/content/__fixtures__/figure-examples.md` has
+a worked example of every kind.
+
+```yaml
+figures:
+  - kind: comparison
+    id: senate-votes
+  - kind: dataTable
+    id: federal-laws        # its "## Observations {#…--observations-federal-laws}" attaches here
+    title: Federal voting laws and bills on registration and ID, 1965–2026
+    description: The federal laws in force on registration and ID, and the main bills since 2021.
+    caption: One row per law, bill or ruling
+    columns:
+      - { key: year, label: Year, format: text }
+      - { key: measure, label: 'Law, bill or ruling', rowHeader: true }
+      - { key: status, label: Status, sortable: false }
+    defaultSort: { key: year, direction: ascending }
+    rows:
+      - year: '2025'
+        measure: SAVE Act (Republican)
+        status: { value: 'Passed House, 220–208, 10 Apr 2025', sources: [24] }
+  - kind: section
+    id: freedom-to-vote-act-provisions
+```
+
+**Once present, `figures` places every chart.** Each `series`,
+`additionalSeries`, `comparisons` and `featuredCharts` entry must be
+referenced exactly once, so a chart can never silently drop to the end of a
+report. Body sections that no `section` entry names, and that are not a
+figure's Observations or Subtleties, render after the last figure.
+
+**Sources are the fact's own numbered citations**, exactly as for
+`comparisons`: `sources: [5]` is the fact's fifth citation. A figure's
+source line lists its `sources` and every item-level citation (a key
+figure's, an event's, a table cell's, an estimate's, a composition row's, a
+quote's), deduplicated, in ascending order, each a link to the quoted
+reference. Every figure but a `caveatList` needs at least one citation.
+
+**Observations attach by id.** A component figure's DOM id is
+`<fact>--chart-<id>`, so viewpoints cite it as `#fact-<fact>/chart-<id>`.
+`## Observations {#<fact>--observations-<id>}` and
+`## Subtleties {#<fact>--subtleties-<id>}` render inside the figure's frame,
+after its source line and before About this data, as they do for a
+comparison. A `section` entry's id takes Observations the same way.
+
+**Numbers stay traceable.** `asPublished` on a value gives the figure in the
+source's own words ("more than 7,200", "8.8%"); `check:figures` looks for that
+text in the quote instead of the number. `valuesFrom` on a figure — and on a
+series reading or a comparison — names the published table its values are read
+from when no quote can hold them all ("EAVS 2024 Overview Table 1"); it is
+shown in About this data.
+
+**Quotes are verbatim.** A `quoteComparison` or `pullQuote` text, or a
+`claimCheck` claim, must appear in its cited source's `quote`. Mark an
+omission with "…"; each fragment between omissions is checked on its own,
+ignoring case, curly quotes and spacing.
+
+**A map shows a number or a category, never both.** A numeric map gives
+`data` (area id → number, or `{ value, asPublished }`) and `valueLabel`, with
+optional `format`, `scale`, `steps`, `domain` or `breaks`. A categorical map
+shows a rule or status per area — the ID rule each state enforces — without
+coding it as a number, which would imply a false order:
+
+```yaml
+  - kind: tileMap
+    id: voter-id-rules
+    title: ID asked of voters at the polls, by state, 2026
+    description: The rule each state enforces when a voter arrives at the polls.
+    map: us-states
+    areaLabel: State
+    categoryLabel: ID asked of voters at the polls
+    sources: [2]
+    categories:              # two to six, in legend order
+      - { id: strict-photo, label: Strict photo ID, mark: SP }   # mark: 1–3 characters printed on each tile
+      - { id: none, label: No document requested, mark: "—" }
+    areas:                   # area id → category, or { category, note }
+      AR: { category: strict-photo, note: A free voter ID card is issued on request }
+      GA: strict-photo
+      CA: none
+```
+
+Category ids and marks are unique, and every area names one of the
+`categories`. A `geoMap` takes the same two encodings; its area ids are the
+outlines' own (ISO two-letter country codes for `world` and `europe`, slugs
+such as `london` for `uk-itl1`).
+
+**A map with gaps says why.** A `tileMap` or `geoMap` area with no datum or
+category reads "No data"; unexplained, a gap looks like a selection, so a map
+that leaves out any area of its preset needs a `note` saying why. A world map
+of a dozen countries therefore always has a note.
+
+**A scatter plot's points are named and checked.** Each point has a unique
+slug `id`, a short `label` printed beside it, a `name` for the readout and
+table, `x` and `y`, and optionally a `group` (one of `groups`), a `note`, and
+`xAsPublished`/`yAsPublished` for `check:figures`. An axis `domain`, if given,
+must cover every point, and `highlight` names point ids.
 
 ---
 
@@ -1024,11 +1215,26 @@ them.
 | No orphan headline facts | `lib/content/validate.ts:193` |
 | Topic principles resolve to shared definitions; viewpoints use only their topic’s listed principles | `lib/content/load.ts`, `lib/content/validate.ts` |
 | Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
-| Series lines span the declared coverage exactly, end to end | `lib/content/validate.ts:279` |
+| Series lines span the declared coverage (or the line's own `coverage`) exactly, end to end; the series coverage is the union of its lines' | `lib/content/validate.ts`, `seriesErrors` |
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
+| Forecast points are each line's tail, and need a `coverage.note` | `lib/content/validate.ts`, `seriesErrors` |
+| A series `focus` lies inside the coverage, runs forwards and holds two points of some line | `lib/content/validate.ts`, `seriesErrors` |
+| A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
-| Every prose figure is quoted or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
+| Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a tile map's `data` and `valueLabel` | `lib/content/schema.ts` (`figureSchema`) |
+| Figure ids are unique and do not reuse a series, reading or comparison id | `lib/content/validate.ts` (`figureErrors`, F1) |
+| Every figure citation is one of the fact's numbered sources, and every figure but a caveat list has one | `lib/content/validate.ts` (F2, F5) |
+| Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |
+| A `section` figure names an h2 in the body | `lib/content/validate.ts` (F4) |
+| Table columns, rows, sort and highlight agree; numeric columns hold numbers | `lib/content/validate.ts` (F6) |
+| Timeline categories exist and periods run forwards; period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
+| At most six key figures | `lib/content/validate.ts` (F8) |
+| Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
+| Bars fit `domainMax`; composition rows use known categories and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
+| Quotes and claim-check claims appear verbatim in their cited source's quote | `lib/content/validate.ts` (F11) |
+| A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
+| Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is
@@ -1053,6 +1259,8 @@ check behind them today — do not rely on the build to catch either:
   nothing else will surface it. Planned; not shipped.
 - **A numeric fact without a series is an advisory, not an error.**
   `check:figures` reports it and exits 0.
+- **An untraced chart value is an advisory, not an error, unless
+  `--strict-values` is given.** `check:figures` lists it and exits 0.
 
 ---
 
@@ -1266,6 +1474,12 @@ the full table remains available without JavaScript. Components must sum to the
 total. Keep unknown citizenship and statelessness identifiable. If published
 rounded components do not add to the rounded total, label the adjustment and
 explain it—do not quietly count it as a measured group of migrants.
+
+Name both dimensions of the breakdown table. `itemLabel` says what each bar is
+("Country", "Method") and heads the table's first column; without it the column
+reads "Category". `groupLabel` says what the groups are ("nationality", "whether
+an ID check would reach it") and goes in the table's caption, "{title}, by
+{groupLabel}".
 
 Use `featuredCharts` to bring an existing supporting fact's breakdown into the
 main graph sequence, including its observation groups and measurement-change explanations. Keep

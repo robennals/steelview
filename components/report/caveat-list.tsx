@@ -1,8 +1,13 @@
+import { SourceCredits } from './figure';
+import type { SourceCredit } from './types';
+
 export type Caveat = {
   /** The measurement that is missing or that this figure does not capture. */
   measure: string;
   /** Why it matters to a reader of this figure. */
   why: string;
+  /** Where the gap is documented, shown after `why`. */
+  sources?: SourceCredit[];
 };
 
 export type CaveatListProps = {
@@ -32,7 +37,10 @@ export function CaveatList({ items, heading = 'Data still needed', id, headingLe
         {items.map(item => (
           <li key={item.measure} className="sv-caveats__item">
             <strong className="sv-caveats__measure">{item.measure}</strong>
-            <span className="sv-caveats__why">{item.why}</span>
+            <span className="sv-caveats__why">
+              {item.why}
+              {item.sources && <SourceCredits sources={item.sources} />}
+            </span>
           </li>
         ))}
       </ul>
