@@ -1,6 +1,12 @@
 # US war with Iran — outline
 
-> **Status: agent draft 4, revised against figures verified at source (26 Oct 2026)**
+> **Status: agent draft 5, revised against the built reports (29 Oct 2026)**
+> ([stage 4a again](../../WORKFLOW.md#4a-rewrite-each-viewpoints-case-against-the-evidence)).
+> Draft 4's header follows; the viewpoint sections below are draft 4's text,
+> and draft 5's changes to each are in Revision notes, which win where they
+> differ. The finished viewpoints are in `content/topics/us-iran-war/viewpoints/`.
+>
+> Draft 4: **agent draft 4, revised against figures verified at source (26 Oct 2026)**
 > ([stage 4a](../../WORKFLOW.md#4a-rewrite-each-viewpoints-case-against-the-evidence)),
 > for human review together with [candidate-data.md](candidate-data.md).
 > `C` numbers are candidates there. All figures must be quoted verbatim in
@@ -15,7 +21,10 @@
   do now. A ceasefire from 8 April and a memorandum in June both broke down;
   the US blockade of Iranian ports resumed on 14 July; since 8 October the US
   has paused strikes ahead of the midterms while tanker attacks and blockade
-  seizures continue (as of 26 Oct 2026). The live choices are to resume strikes, hold the
+  seizures continue; on 28 Oct US officials told allies to prepare for
+  possible renewed strikes after the 3 Nov elections, while Qatari mediators
+  pressed a plan trading Hormuz's reopening for the blockade's end (as of
+  29 Oct 2026). The live choices are to resume strikes, hold the
   blockade and negotiate, or wind the war down.
 - **Scope boundaries:** The American argument — US decisions, costs and
   interests, including the international-law case as American lawyers and
@@ -122,8 +131,9 @@
 - **Arguments**
   - Wars cost more than promised: the White House put Iraq at $50–60 billion
     in 2002; Congress appropriated $815 billion for it through 2014 (C22).
-    This war had cost $38–44 billion by September by CBO's and the Defense
-    Department's counts, and 21 American lives, 865 wounded (C18, C19); CSIS
+    Official estimates of this war's cost have risen to $47.1 billion (the
+    Pentagon to Congress, as reported by AP on 29 Oct), and DCAS records
+    about two dozen US deaths, half non-hostile (C18, C19); CSIS
     estimates Patriot stocks are under 1,000 (C20).
   - Americans are paying at the pump: regular petrol rose from $2.94 a gallon
     before the war to $4.50 in May and was $4.28 in October; CBO attributes
@@ -190,8 +200,9 @@
     October, and US forces have destroyed 10 tankers since July (C35,
     timeline).
 - **Empirical questions** Q6.1–Q6.2. Q6.3 stays dropped as a general claim.
-- **Concedes:** the June memorandum broke down within three weeks, with
-  Iranian attacks on shipping and US strikes from 7 July (C12, C37); Iran
+- **Concedes:** the June memorandum held only nine days before Iranian
+  attacks on ships and US strikes in reply (26 and 28 June), with the larger
+  resumption on 7 July (C12, C37); Iran
   worked to reconstitute its missiles and drones throughout the ceasefire
   (C37); sanctions alone rarely reverse programmes (C72).
 - **Principles:** war only as a last resort; a government's first duty is to
@@ -211,8 +222,8 @@
   - States that back down face more challenges later (Weisiger and
     Yarhi-Milo, C75).
   - Iran is planning attacks on Americans now: the Director of National
-    Intelligence wrote on 23 October that plotting had reached "advanced
-    stages" (timeline; to confirm from the memo itself).
+    Intelligence warned on 23 October that plotting had reached "advanced
+    stages", as reported by ISW/CTP (the memo itself is blocked).
 - **Empirical questions** Q7.1–Q7.3.
 - **Concedes:** "finishing" has no agreed definition, and toppling the regime
   carries the regime-change record (C64–C66); strikes have usually delayed
@@ -256,6 +267,64 @@ one answer would knock out an argument a viewpoint relies on.
   nuclear risk?** `nuclear`, `america-first`, `finish-job`.
 
 ## Revision notes
+
+### Draft 5 (stage 4a again, against the seven built reports, 29 Oct 2026)
+
+Each change below follows what a report actually says; ids are
+`report/observation`.
+
+- **`nuclear`**: **strengthened** by `iran-nuclear-programme/sixty-percent-growth`
+  (the 60% stock more than doubled in the seven months before the June 2025
+  strikes) and the Board's referral to the UN. The stock is stated as the
+  IAEA's last estimate, mostly verified, unseen since. Concessions unchanged;
+  the 2026 ATA's silence (`ata-2026-silent`) means the 2025 "not building"
+  judgment is the latest. Grossi's "less than 70 percent" at Isfahan and
+  Araghchi's "under the rubble" cut both ways and are left in the report.
+- **`regime-change`**: **strengthened** by the execution rate under Pezeshkian
+  (`execution-rate-by-president`: the rate rose under every recent president,
+  fastest under the reformist-backed one) and `satisfaction-at-weakening`.
+  **New concessions**: HSEO's "destabilization … unlikely" from sanctions
+  (`sanctions-weak-against-adversaries`); `restoration-does-best` is the only
+  favourable regime-change finding and Iran has no ousted ruler to restore in
+  the sense coded, so the viewpoint does not lean on it. Plots abroad target
+  dissidents as a plurality (42 of 98), a majority only in Europe 2021–24.
+- **`war-powers`**: Senate party splits now counted (Republican yes votes 1 →
+  4). **New concession**: concurrent resolutions do not bind the President in
+  practice (`concurrent-resolutions-not-binding`, Chadha); the viewpoint now
+  argues that the votes show where Congress stands, not that they compelled
+  anything. `congress-as-constraint` (Kriner) added as support for the claim
+  that congressional opposition matters even without binding law.
+- **`america-first`**: costs updated to official estimates rising to $47.1 bn
+  (AP, Pentagon to Congress); US deaths stated with half non-hostile; petrol
+  rose by about half and has fallen only slightly. **New concession**: real
+  crude prices stayed below the 1981, 2008 and 2022 peaks
+  (`below-earlier-real-peaks`).
+- **`lost-path`**: the Geneva talks are now dated two days before the strikes.
+  **Narrowed**: the 2024 election is "the one moderate in the field" among
+  candidates the Guardian Council allowed; executions rose fastest under that
+  president, which the viewpoint now concedes in the flow. Bleek's
+  alternative coding of Iran as "exploring" after 2003 or 2015 (`iran-coding`)
+  added. The UN Charter point stays as the Oman foreign minister's statement,
+  not a legal finding.
+- **`deal-now`**: **corrected**: the MoU did not "break down within three
+  weeks" cleanly — US strikes came nine days after signing, answering Iranian
+  attacks on ships, and the larger resumption came on 7 July. **Added**: the
+  Qatari plan of 26 Oct (Hormuz reopened for the blockade lifted) and talks
+  continuing in October; HSEO's "carrots plus sticks"; ISIS's "no identifiable
+  route". The "risk at sea" argument now rests on the October attacks and
+  CENTCOM's own tallies of ships destroyed.
+- **`finish-job`**: **added** the DNI's 23 Oct warning as reported by ISW/CTP
+  ("advanced stages"; "substantially increased" efforts to target US
+  personnel) — the memo itself is still blocked — and the reported
+  post-midterm strike plans. Still the thinnest on evidence: Iraq ended only
+  after war plus intensive inspection, which no one now has; Kreps & Fuhrmann
+  say the conditions behind past successes are absent; the credibility
+  research is split.
+- **Cruxes**: all seven candidates kept. "Does force or a deal account for the
+  uranium?" is now sharper: the IAEA has seen none of it since June 2025 and
+  ISIS sees no route to weapons grade. The rally crux gains HRANA's lowest
+  full execution month (March 2026, the first war month) against political
+  executions peaking in April–May.
 
 ### Draft 4 (stage 4a, against figures verified at source, 26 Oct 2026)
 
