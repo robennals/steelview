@@ -88,6 +88,8 @@ test('open periods end at the topic\'s lastUpdated; closed ones leave the axis a
   const closed = { ...periods, rows: periods.rows.map(row => ({ ...row, periods: row.periods.map(p => ({ ...p, to: p.to ?? '2026-10-20' })) })) };
   assert.equal(periodTimelineProps(closed, context).to, undefined);
   assert.equal(periodTimelineProps({ ...periods, to: '2026-12' }, context).to, '2026-12');
+  // The component reads "still in force" only when the axis ends on this date.
+  assert.equal(periodTimelineProps(periods, context).asOf, '2026-10-29');
 });
 
 test('period-timeline events are strip events crediting their citation', () => {

@@ -156,6 +156,17 @@ test('a period timeline preview draws every period and event marker, but no even
   assert.equal(html.match(/class="sv-periods__bar"/g)?.length, 5);
   assert.match(html, /<span class="sv-event-strip__marker"[^>]*role="img"/);
   assert.doesNotMatch(html, /sv-event-strip__key|sv-periods__open-key|<a class="sv-event-strip__marker"/);
+  // Labels stay on their row, as on the full figure; a bar takes no focus and feeds no readout.
+  assert.match(html, /class="sv-periods__bar-label"[^>]*>Ceasefire</);
+  assert.match(html, /class="sv-periods__side-label"[^>]*>MoU</);
+  // A span under eighteen months counts months on its one axis.
+  assert.match(html, /class="sv-periods__tick"[^>]*>Mar 2026</);
+  assert.doesNotMatch(html, /tabindex|data-readout/);
+});
+
+test('a period timeline preview draws fewer ticks than the full figure, in the narrower track beside its row labels', () => {
+  const long = variant('war-periods', f => (f.kind === 'periodTimeline' ? { ...f, from: '1939', to: '2017' } : f));
+  assert.equal(preview('war-periods', long).match(/class="sv-periods__tick"/g)?.length, 4);
 });
 
 test('a key figures preview keeps every number, its label and period, but not its source mark', () => {

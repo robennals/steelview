@@ -239,13 +239,9 @@
     }
   }
 
-  .sv-periods__cell {
-    position: relative;
-    min-width: 0;
-  }
-
   .sv-periods__track {
     position: relative;
+    min-width: 0;
     height: 1.6rem;
   }
 
@@ -277,6 +273,17 @@
     clip-path: polygon(0 0, calc(100% - 0.55rem) 0, 100% 50%, calc(100% - 0.55rem) 100%, 0 100%);
   }
 
+  .sv-periods__bar:hover,
+  .sv-periods__bar[data-active] {
+    background: color-mix(in oklab, var(--sv-period-color) 40%, var(--paper));
+  }
+
+  .sv-periods__bar:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    z-index: 1;
+  }
+
   .sv-periods__bar-label {
     padding: 0 0.4rem;
     font-size: 0.6875rem;
@@ -285,14 +292,19 @@
     color: var(--ink);
   }
 
-  .sv-periods__outside-label {
-    display: block;
-    margin-top: 0.2rem;
+  /* A label too long for its bar, set just after the bar's end on the same
+     row: the layout only puts it here when that stretch holds nothing else. */
+  .sv-periods__side-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 0.3rem;
     font-size: 0.6875rem;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1;
     color: var(--ink-2);
     white-space: nowrap;
+    pointer-events: none;
   }
 
   .sv-periods__axis {
@@ -313,6 +325,12 @@
     .sv-periods__tick[data-minor] {
       visibility: hidden;
     }
+
+    /* With no label column to spill into, a first tick near the start
+       ("Mar 2026") is aligned inwards like an edge tick. */
+    .sv-periods__tick:first-child {
+      transform: none;
+    }
   }
 
   .sv-periods__tick[data-edge="start"],
@@ -332,6 +350,17 @@
 
   .sv-periods__line--events .sv-event-strip__lane {
     padding-bottom: 0.3rem;
+  }
+
+  /* A long chart's readout would sit far below the bar being read, so once
+     active it stays pinned to the bottom of the view while the chart is in
+     it. */
+  .sv-periods .sv-map__readout:not([data-idle]) {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    padding-block: 0.35rem;
+    background: var(--paper);
   }
 
   .sv-periods__open-key {

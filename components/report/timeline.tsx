@@ -8,7 +8,7 @@ import { compareDates, formatDate } from './format';
 import { MarkerIcon, shapeForSlot } from './marker-shape';
 import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
 import { seriesColor } from './scale';
-import { edgeOf, percentAlong, spanOf, stackLevels, toYear, yearTicks } from './time-axis';
+import { edgeOf, percentAlong, spanOf, stackLevels, timeTicks, toYear } from './time-axis';
 import type { FigurePreview, PartialDate, SourceCredit } from './types';
 
 export type TimelineEvent = {
@@ -255,7 +255,8 @@ export function Timeline({
 
 /**
  * A long timeline in a compact preview: every event a category marker on one
- * time axis, from the first event's year to the year after the last, stacked
+ * time axis, from the first event's year to the year after the last (month
+ * ticks when that is a single year), stacked
  * where markers would overlap. Each marker's date, title and category are in
  * visually hidden text, in order.
  */
@@ -279,9 +280,9 @@ function TimelineLane({ events, slotOf, labelOf }: { events: TimelineEvent[]; sl
         })}
       </ol>
       <div className="sv-timeline__lane-axis" aria-hidden="true">
-        {yearTicks(span).map(tick => (
-          <span key={tick.year} className="sv-periods__tick" data-edge={edgeOf(percentAlong(tick.year, span))} style={{ left: `${percentAlong(tick.year, span)}%` }}>
-            {tick.year}
+        {timeTicks(span).map(tick => (
+          <span key={tick.at} className="sv-periods__tick" data-minor={tick.minor || undefined} data-edge={edgeOf(percentAlong(tick.at, span))} style={{ left: `${percentAlong(tick.at, span)}%` }}>
+            {tick.label}
           </span>
         ))}
       </div>

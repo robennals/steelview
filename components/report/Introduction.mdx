@@ -18,7 +18,7 @@ Each component takes plain data (numbers, labels, dates, sources), not the site'
 - **Dates are as precise as the source.** A partial date ("2024", "2024-11") is never padded to a day. A DataTable date column sorts a coarser date before the finer dates inside it; a Timeline event may be dated to a decade ("1850s") or circa a year ("c. 1888"), shown as written.
 - **Neutral ordering.** Items appear in data order, date order or alphabetical order, never in an order that puts one side first. No position is styled as more important than another.
 - **Works without JavaScript.** Components render their full default view on the server. Filters and toggles add to the page; they are never needed to read it.
-- **Say when data is hidden.** Nothing is cut off silently: a long table shows its first rows, fading, above "Show all N rows" (and every row with JavaScript off); a table that scrolls sideways shades the side that has more.
+- **Say when data is hidden.** Nothing is cut off silently: a long table shows its first rows, fading, above "Show all N rows" (and every row with JavaScript off); a table that scrolls sideways shades the side that has more; a period label with no room on its row is left to the legend, the readout and the table rather than set on a line of its own.
 - **Design tokens, not colours.** Styles use the site's ink, paper, rule and series tokens, so dark mode works with no extra effort.
 
 ## Putting a figure in a report

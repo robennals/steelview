@@ -344,6 +344,12 @@ now costs one file; found later it costs every viewpoint that cites it.
   rests on come first; a highlighted row past the tenth is not lifted into
   the preview. Markdown tables in the body scroll sideways but have no
   edge shadow;
+- a `periodTimeline` label that fits neither inside its bar nor in free
+  space just right of it is not drawn (the legend, readout and table name
+  it), and the fit is judged for a phone-width track, so a label may be
+  left off on a desktop that had room. Stages drawn over one another
+  (explore, pursue, acquire) only show a label on a stage long enough to
+  hold it;
 - an observation group not tied to a visual needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos,
   and is missing from the topic page's walkthrough, so give it a

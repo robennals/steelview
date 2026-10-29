@@ -1,4 +1,4 @@
-import { dateToYear } from './format';
+import { dateToYear, formatDate } from './format';
 import type { PartialDate } from './types';
 
 /**
@@ -53,6 +53,38 @@ export function yearTicks({ from, to }: TimeSpan, maxTicks = 8): Array<{ year: n
   const ticks: Array<{ year: number; minor: boolean }> = [];
   for (let year = first, i = 0; year <= to + 1e-9; year += step, i++) {
     ticks.push({ year, minor: i % 2 === 1 });
+  }
+  return ticks;
+}
+
+/** A labelled tick on the time axis: `at` is a fractional year. */
+export type TimeTick = { at: number; label: string; minor: boolean };
+
+/** Below this span (in years) an axis of whole years has too few ticks to read, so it counts months. */
+const MONTH_TICKS_BELOW = 1.5;
+
+/**
+ * The ticks for a time axis: whole years (see `yearTicks`), or for a span
+ * under eighteen months, month starts on a 1-, 2-, 3- or 6-month step. A
+ * month tick names its year on the first tick and on each January ("Mar
+ * 2026", "Apr", … "Jan 2027"), so the axis never leaves the year to guess.
+ */
+export function timeTicks(span: TimeSpan, maxTicks = 8): TimeTick[] {
+  if (span.to - span.from >= MONTH_TICKS_BELOW) {
+    return yearTicks(span, maxTicks).map(tick => ({ at: tick.year, label: String(tick.year), minor: tick.minor }));
+  }
+  // Months counted from year 0, so a step lands on the same months every year (Jan, Mar, May… for two).
+  const from = Math.round(span.from * 12 * 1e6) / 1e6;
+  const to = span.to * 12 + 1e-6;
+  const firstOn = (step: number) => Math.ceil(from / step) * step;
+  const count = (step: number) => Math.floor((to - firstOn(step)) / step) + 1;
+  const step = [1, 2, 3, 6].find(s => count(s) <= maxTicks) ?? 6;
+  const ticks: TimeTick[] = [];
+  for (let month = firstOn(step), i = 0; month <= to; month += step, i++) {
+    const year = Math.floor(month / 12);
+    const date = `${year}-${String((month % 12) + 1).padStart(2, '0')}`;
+    const [name] = formatDate(date).split(' ');
+    ticks.push({ at: month / 12, label: i === 0 || month % 12 === 0 ? formatDate(date) : name, minor: i % 2 === 1 });
   }
   return ticks;
 }

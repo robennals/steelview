@@ -3,7 +3,7 @@ import { CHART_GEOMETRY } from '@/lib/chart/series-chart';
 import { DetailsTarget } from './details-target';
 import { SourceLine } from './figure';
 import { compareDates, formatDate } from './format';
-import { edgeOf, percentAlong, stackLevels, toYear, yearTicks, type TimeSpan } from './time-axis';
+import { edgeOf, percentAlong, stackLevels, timeTicks, toYear, type TimeSpan } from './time-axis';
 import type { PartialDate, SourceCredit } from './types';
 
 export type StripEvent = {
@@ -107,9 +107,9 @@ export function EventLane({
       </div>
       {showAxis && (
         <div className="sv-event-strip__axis" aria-hidden="true">
-          {yearTicks(span).map(tick => (
-            <span key={tick.year} className="sv-event-strip__tick" data-minor={tick.minor || undefined} data-edge={edgeOf(percentAlong(tick.year, span))} style={{ left: pct(percentAlong(tick.year, span)) }}>
-              {tick.year}
+          {timeTicks(span).map(tick => (
+            <span key={tick.at} className="sv-event-strip__tick" data-minor={tick.minor || undefined} data-edge={edgeOf(percentAlong(tick.at, span))} style={{ left: pct(percentAlong(tick.at, span)) }}>
+              {tick.label}
             </span>
           ))}
         </div>

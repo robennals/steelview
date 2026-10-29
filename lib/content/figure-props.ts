@@ -166,6 +166,7 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
     rowLabel: f.rowLabel,
     from: f.from,
     to: f.to ?? (open ? c.asOf : undefined),
+    asOf: c.asOf,
     categories: f.categories,
     rows: f.rows.map(row => ({
       label: row.label,
