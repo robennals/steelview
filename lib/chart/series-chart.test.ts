@@ -6,6 +6,7 @@ import {
   formatTick,
   formatValue,
   layoutReading,
+  midSentence,
   niceTicks,
   pathFor,
   seriesSlots,
@@ -281,4 +282,12 @@ test('a 1950–2026 axis drops 2020 at narrow width and keeps it at wide width',
     layoutReading(s, s.readings[0], 'wide').timeTicks.map((t) => t.label),
     ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020', '2026']
   );
+});
+
+test('midSentence lower-cases only a first letter that is not an acronym or a month', () => {
+  assert.equal(midSentence('Year'), 'year');
+  assert.equal(midSentence('Year of NCSL count'), 'year of NCSL count');
+  assert.equal(midSentence('November general election'), 'November general election');
+  assert.equal(midSentence('EAVS cycle'), 'EAVS cycle');
+  assert.equal(midSentence('Survey fieldwork month'), 'survey fieldwork month');
 });

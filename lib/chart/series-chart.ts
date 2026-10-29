@@ -139,6 +139,23 @@ export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: 
   return ticks.filter((tick, index) => index === 0 || index === ticks.length - 1 || (fits(tick, first) && fits(tick, last)));
 }
 
+const MONTH_NAMES = new Set([
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+]);
+
+/**
+ * Lower-case only the first letter, so a label can follow "by" mid-sentence:
+ * "Year of NCSL count" → "year of NCSL count". Leaves the label as written
+ * when its first word is an acronym (two or more capitals: "EAVS cycle") or
+ * a month ("November general election").
+ */
+export function midSentence(label: string): string {
+  const firstWord = label.split(/\s/, 1)[0];
+  if ((firstWord.match(/[A-Z]/g) ?? []).length >= 2 || MONTH_NAMES.has(firstWord)) return label;
+  return label.charAt(0).toLowerCase() + label.slice(1);
+}
+
 export type SeriesUnit = SeriesReading['unit'];
 
 const MINUS = '−';

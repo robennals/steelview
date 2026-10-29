@@ -179,6 +179,8 @@ export const comparisonChartSchema = z.object({
   note: z.string().optional(),
   /** Labels for an optional grouped comparison. Kept in content so the shared UI never assumes a subject such as nationality. */
   groupLabel: z.string().min(1).optional(),
+  /** What each bar is, e.g. "Method": heads the item column of the breakdown table. `groupLabel` names the columns. */
+  itemLabel: z.string().min(1).optional(),
   allGroupsLabel: z.string().min(1).optional(),
   groups: z.array(z.string().min(1)).min(2).optional(),
   defaultGroup: z.number().int().nonnegative().optional(),

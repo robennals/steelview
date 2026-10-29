@@ -1,5 +1,6 @@
 import { useId, type CSSProperties } from 'react';
 import { CHART_GEOMETRY } from '@/lib/chart/series-chart';
+import { DetailsTarget } from './details-target';
 import { SourceLine } from './figure';
 import { formatDate } from './format';
 import { edgeOf, percentAlong, stackLevels, toYear, yearTicks, type TimeSpan } from './time-axis';
@@ -106,26 +107,50 @@ export function EventLane({
   );
 }
 
-/** The numbered list the markers point at. */
+/**
+ * The numbered list the markers point at.
+ *
+ * An item with anything beyond its date and label is a closed `<details>`:
+ * five events otherwise make a fifteen-line key — the block of text the
+ * markers were meant to replace. The id sits on the `<details>`, so a
+ * marker's `#{keyId}-{n}` link lands on it, and DetailsTarget (or a fact
+ * page's own script) opens it. `href` goes in the body, not the summary: a
+ * link inside a `<summary>` is a second click target in one control.
+ */
 export function EventKey({ events, keyId, title }: { events: StripEvent[]; keyId: string; title?: string }) {
   return (
     <>
       {title && <p className="sv-event-strip__key-title">{title}</p>}
       <ol className="sv-event-strip__key">
-        {events.map((e, i) => (
-          <li key={i} id={`${keyId}-${i + 1}`} className="sv-event-strip__item">
-            <span className="sv-event-strip__number" aria-hidden="true">{i + 1}</span>
-            <div>
-              <p className="sv-event-strip__item-head">
+        {events.map((e, i) => {
+          const id = `${keyId}-${i + 1}`;
+          const head = (
+            <>
+              <span className="sv-event-strip__number" aria-hidden="true">{i + 1}</span>
+              <span className="sv-event-strip__item-head">
                 <time dateTime={e.date}>{formatDate(e.date)}</time>
                 {' '}
-                {e.href ? <a href={e.href}>{e.label}</a> : <span className="sv-event-strip__label">{e.label}</span>}
-              </p>
-              {e.description && <p className="sv-event-strip__desc">{e.description}</p>}
-              {e.source && <SourceLine sources={[e.source]} />}
-            </div>
-          </li>
-        ))}
+                <span className="sv-event-strip__label">{e.label}</span>
+              </span>
+            </>
+          );
+          // Nothing to expand: a plain item still carries the id the marker links to.
+          if (!e.description && !e.source && !e.href) {
+            return <li key={i} id={id} className="sv-event-strip__item" data-bare="">{head}</li>;
+          }
+          return (
+            <li key={i} className="sv-event-strip__item">
+              <details className="sv-event-strip__details" id={id}>
+                <summary className="sv-event-strip__summary">{head}</summary>
+                <div className="sv-event-strip__body">
+                  {e.description && <p className="sv-event-strip__desc">{e.description}</p>}
+                  {e.source && <SourceLine sources={[e.source]} />}
+                  {e.href && <p className="sv-event-strip__link"><a href={e.href}>See the evidence</a></p>}
+                </div>
+              </details>
+            </li>
+          );
+        })}
       </ol>
     </>
   );
@@ -144,10 +169,14 @@ export function EventStrip({ from, to, events, align = 'series-chart', showAxis 
   const keyId = `sv-event-strip-${id ?? reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
   const span = { from: toYear(from), to: toYear(to) };
   const ordered = [...events].sort((a, b) => toYear(a.date) - toYear(b.date));
+  // The island scopes itself to the strip's root; with no id given, the key's
+  // own prefix is unique and free.
+  const rootId = id ?? keyId;
   return (
-    <div className="sv-event-strip" id={id} data-align={typeof align === 'string' ? align : 'custom'} style={alignVars(align)}>
+    <div className="sv-event-strip" id={rootId} data-align={typeof align === 'string' ? align : 'custom'} style={alignVars(align)}>
       <EventLane span={span} events={ordered} keyId={keyId} showAxis={showAxis} />
       <EventKey events={ordered} keyId={keyId} title={keyTitle} />
+      <DetailsTarget rootId={rootId} />
     </div>
   );
 }

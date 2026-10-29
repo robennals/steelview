@@ -1650,6 +1650,47 @@
     font-style: italic;
   }
 
+  /* A body table scrolls inside its own box (see rehypeScrollableTables),
+     never the page. */
+  .prose-body .sv-prose-table {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    margin-block: 1rem 1.25rem;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .prose-body .sv-prose-table:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .prose-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  .prose-body th,
+  .prose-body td {
+    padding: 0.45rem 0.75rem 0.45rem 0;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    min-width: 6.5rem;
+    max-width: 22rem;
+  }
+
+  .prose-body :is(th, td):last-child {
+    padding-right: 0;
+  }
+
+  .prose-body thead th {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
   .prose-body code {
     font-family: var(--font-sans);
     font-size: 0.9em;
@@ -2311,3 +2352,4 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-breakdown-table table { width: 100%; font: 12px/1.5 var(--font-sans); border-collapse: collapse; }
 .sv-breakdown-table th, .sv-breakdown-table td { padding: 6px; border-bottom: 1px solid #ddd; text-align: right; }
 .sv-breakdown-table th:first-child { text-align: left; }
+.sv-breakdown-table caption { caption-side: top; text-align: left; padding: 6px 0; color: var(--ink-3); }

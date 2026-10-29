@@ -1267,6 +1267,12 @@ total. Keep unknown citizenship and statelessness identifiable. If published
 rounded components do not add to the rounded total, label the adjustment and
 explain it—do not quietly count it as a measured group of migrants.
 
+Name both dimensions of the breakdown table. `itemLabel` says what each bar is
+("Country", "Method") and heads the table's first column; without it the column
+reads "Category". `groupLabel` says what the groups are ("nationality", "whether
+an ID check would reach it") and goes in the table's caption, "{title}, by
+{groupLabel}".
+
 Use `featuredCharts` to bring an existing supporting fact's breakdown into the
 main graph sequence, including its observation groups and measurement-change explanations. Keep
 one data definition and one set of source citations instead of copying numbers

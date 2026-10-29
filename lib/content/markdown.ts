@@ -5,7 +5,7 @@ import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
-import { visit } from 'unist-util-visit';
+import { SKIP, visit } from 'unist-util-visit';
 import type { Link, Root, Text } from 'mdast';
 import type { Root as HtmlRoot, Element } from 'hast';
 import type { Fact } from './types';
@@ -104,6 +104,7 @@ function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug) {
     .use(remarkRehype)
     .use(rehypeGlossary, { namespace })
     .use(rehypeEvidenceSections)
+    .use(rehypeScrollableTables)
     .use(rehypeStringify)
     .freeze();
 }
@@ -199,6 +200,42 @@ function rehypeEvidenceSections() {
       else children.push(node);
     }
     tree.children = children;
+  };
+}
+
+/** The visible text of an element, for naming a region after it. */
+function textOf(node: Element | HtmlRoot['children'][number]): string {
+  if (node.type === 'text') return node.value;
+  if (node.type !== 'element') return '';
+  return node.children.map(textOf).join('');
+}
+
+/**
+ * Wrap every table in a labelled, focusable region that scrolls sideways on
+ * its own. A four-column table otherwise pushes the whole page sideways at
+ * 390px. The region and its tab stop let a keyboard user scroll it; a bare
+ * `overflow` on the table itself would drop its table semantics in some
+ * screen readers. The label is the nearest heading or Observation title
+ * before the table, so a screen-reader user hears which table it is.
+ */
+function rehypeScrollableTables() {
+  return (tree: HtmlRoot) => {
+    let label = 'Table';
+    visit(tree, 'element', (node: Element, index, parent) => {
+      if (node.tagName === 'h2' || node.tagName === 'h3' || node.tagName === 'summary') {
+        label = textOf(node).trim() || label;
+        return;
+      }
+      if (node.tagName !== 'table' || parent === undefined || index === undefined) return;
+      parent.children[index] = {
+        type: 'element',
+        tagName: 'div',
+        properties: { className: ['sv-prose-table'], role: 'region', tabIndex: 0, ariaLabel: label },
+        children: [node],
+      };
+      // The table is now the wrapper's child; skip it rather than visit it twice.
+      return [SKIP, index + 1];
+    });
   };
 }
 

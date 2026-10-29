@@ -7,6 +7,7 @@ import {
   CHART_GEOMETRY,
   formatValue,
   layoutReading,
+  midSentence,
   pathFor,
   seriesSlots,
   seriesStrokeDash,
@@ -235,7 +236,7 @@ function Reading({
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
   const description = [
     series.description,
-    `Read as ${reading.label.toLowerCase()}: ${reading.valueLabel}.`,
+    `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
     series.breaks.length > 0
       ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
       : null,
@@ -252,7 +253,7 @@ function Reading({
       <h2 className="sv-graph-heading">{reading.label}</h2>
       {intro && <p className="sv-chart__desc">{intro}</p>}
       <p className="sv-chart__axis-label">
-        {reading.valueLabel}, by {series.periodLabel.toLowerCase()}
+        {reading.valueLabel}, by {midSentence(series.periodLabel)}
       </p>
 
       <p className="sv-visually-hidden" id={descriptionId}>
