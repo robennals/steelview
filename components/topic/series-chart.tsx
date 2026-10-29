@@ -406,6 +406,25 @@ function ReadingTable({ series, reading }: { series: Series; reading: SeriesRead
   );
 }
 
+/**
+ * The reading whose panel carries the series' numbered event key: the last,
+ * so the key sits once after every panel instead of repeating under each.
+ */
+function eventKeyReadingId(series: Pick<Series, 'readings'>): string {
+  return series.readings[series.readings.length - 1].id;
+}
+
+/**
+ * The reading whose panel carries the series' Method Changes — its breaks
+ * and not-measured band, which belong to the series, not to one reading —
+ * so each is listed once. The first: right after the first panel to draw
+ * them, and its `<fact>--<reading>-method-<period>` anchors are the ones
+ * links have always used.
+ */
+export function methodChangesReadingId(series: Pick<Series, 'readings'>): string {
+  return series.readings[0].id;
+}
+
 function Reading({
   series,
   reading,
@@ -436,6 +455,10 @@ function Reading({
   marks?: MarkedObservation[];
 }) {
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
+  const keyHost = eventKeyReadingId(series);
+  const methodsHost = methodChangesReadingId(series);
+  // Other panels' markers point at the one key, after the last panel.
+  const keyIn = (suffix: string) => (reading.id === keyHost ? undefined : `${factId}--${keyHost}-events${suffix}`);
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
   const points = reading.lines.flatMap(line => line.points);
@@ -458,10 +481,10 @@ function Reading({
       ? `Each line runs its own source's published range: ${reading.lines.map(line => `${line.name}, ${spanText(lineSpan(series, line))}`).join('; ')}.`
       : null,
     series.breaks.length > 0
-      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source${preview ? '' : ', explained in Method Changes below this graph'}.`
+      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source${preview ? '' : `, explained in Method Changes below ${reading.id === methodsHost ? 'this' : 'the first'} graph`}.`
       : null,
     events.length > 0 && !preview
-      ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed below it.`
+      ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed ${reading.id === keyHost ? 'below it' : 'after the last graph'}.`
       : null,
     statusSentence ? `${statusSentence.charAt(0).toUpperCase()}${statusSentence.slice(1)}.` : null,
     unmeasured && series.notMeasuredSince ? `No values after ${formatDate(unmeasured.from)}: ${series.notMeasuredSince.label}.` : null,
@@ -535,19 +558,19 @@ function Reading({
                 windowLabel={series.focus?.label ?? 'Window'}
                 windowView={<>
                   {plots(window)}
-                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={window.from} to={window.to} window={window} events={events} showAxis={false} />}
+                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} keyIn={keyIn('')} from={window.from} to={window.to} window={window} events={events} showAxis={false} />}
                 </>}
                 fullView={<>
                   {plots()}
                   {/* Its own ids: both views are in the markup, one of them hidden. */}
-                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events-full`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events-full`} keyIn={keyIn('-full')} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
                 </>}
               />
             </>
           ) : (
             <>
               {plots()}
-              {!preview && events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+              {!preview && events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} keyIn={keyIn('')} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
             </>
           )}
         </>)}
@@ -561,11 +584,11 @@ function Reading({
       {!preview && unmeasured && series.notMeasuredSince && (
         <p className="sv-chart__annotation-key">
           Hatched: {series.notMeasuredSince.label}, {formatDate(unmeasured.from)} {NBSP_DASH} {formatDate(unmeasured.until)}.{' '}
-          <a data-evidence-link="true" href={at(`${factId}--${reading.id}-not-measured`)}>Why</a>
+          <a data-evidence-link="true" href={at(`${factId}--${methodsHost}-not-measured`)}>Why</a>
         </p>
       )}
 
-      {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
+      {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${methodsHost}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
       {!preview && <SourceLine sources={credits} />}
 
       {observations}

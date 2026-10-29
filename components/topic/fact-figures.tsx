@@ -46,7 +46,7 @@ import { componentFigure, figureLabel, isComponentFigure } from '@/lib/content/t
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { Prose } from './prose';
-import { SeriesChart } from './series-chart';
+import { SeriesChart, methodChangesReadingId } from './series-chart';
 
 /** A fact and its rendered body, shared by full pages and previews. */
 export type BodiedFact = { fact: Fact; bodyHtml: string };
@@ -90,7 +90,10 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
   const series = seriesId === undefined ? fact.series : fact.additionalSeries?.[index];
   if (!series) return null;
   const sourceOffset = seriesSourceOffset(fact, index);
-  const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series))} className="sv-graph-observations" />]));
+  // Breaks and the not-measured band belong to the series, not a reading: listed once.
+  const host = methodChangesReadingId(series);
+  const methods = (readingId: string) => (readingId === host ? methodChanges(fact.id, readingId, series.breaks, sourceOffset + 1, unmeasuredSpan(series)) : '');
+  const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methods(reading.id)} className="sv-graph-observations" />]));
   return <Viz fact={fact} chart={seriesId ?? 'series'} label={series.title}>
     <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />
   </Viz>;

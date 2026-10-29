@@ -40,6 +40,12 @@ export type EventStripProps = {
    * shown, so no event silently drops out of the chart.
    */
   window?: { from: PartialDate; to: PartialDate };
+  /**
+   * The `id` of another EventStrip on the page, for the same events, whose
+   * key these markers point at. This strip then shows no key of its own: the
+   * panels of a multi-panel series share one key, after the last panel.
+   */
+  keyIn?: string;
 };
 
 const pct = (n: number) => `${Math.round(n * 1000) / 1000}%`;
@@ -182,21 +188,24 @@ export function EventKey({ events, keyId, title, outside = [] }: {
  * It marks when things happened and nothing more: a marker beside a turn in
  * the line is an invitation to look, not a claim that one caused the other.
  */
-export function EventStrip({ from, to, events, align = 'series-chart', showAxis = true, keyTitle = 'Events marked above', id, window: shown }: EventStripProps) {
+export function EventStrip({ from, to, events, align = 'series-chart', showAxis = true, keyTitle = 'Events marked above', id, window: shown, keyIn }: EventStripProps) {
   const reactId = useId();
-  const keyId = `sv-event-strip-${id ?? reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const ownPrefix = `sv-event-strip-${id ?? reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const keyId = keyIn === undefined ? ownPrefix : `sv-event-strip-${keyIn}`;
   const span = { from: toYear(from), to: toYear(to) };
   const ordered = [...events].sort((a, b) => toYear(a.date) - toYear(b.date));
-  // The island scopes itself to the strip's root; with no id given, the key's
-  // own prefix is unique and free.
-  const rootId = id ?? keyId;
+  // The island scopes itself to the strip's root; with no id given, the
+  // strip's own key prefix is unique and free.
+  const rootId = id ?? ownPrefix;
   const outside = ordered.map(e => shown !== undefined && !(compareDates(e.date, shown.from) >= 0 && (compareDates(e.date, shown.to) <= 0 || e.date.startsWith(shown.to))));
   const marked = ordered.flatMap((e, i) => (outside[i] ? [] : [{ event: e, number: i + 1 }]));
   return (
     <div className="sv-event-strip" id={rootId} data-align={typeof align === 'string' ? align : 'custom'} style={alignVars(align)}>
       <EventLane span={span} events={marked.map(m => m.event)} numbers={marked.map(m => m.number)} keyId={keyId} showAxis={showAxis} />
-      <EventKey events={ordered} keyId={keyId} title={keyTitle} outside={outside} />
-      <DetailsTarget rootId={rootId} />
+      {keyIn === undefined && <>
+        <EventKey events={ordered} keyId={keyId} title={keyTitle} outside={outside} />
+        <DetailsTarget rootId={rootId} />
+      </>}
     </div>
   );
 }

@@ -657,6 +657,10 @@ own misleading framing, and a share alone hides that the growth is mostly in
 the numerator. `religion-of-arrivals-is-not-recorded` does the same with
 share and volume, and its body says why — "Share down, volume up; the chart
 carries both readings, and either one quoted alone gives the wrong picture."
+Every panel draws the series' event markers, breaks and not-measured band,
+but what they share is listed once: the numbered event key after the last
+panel, and Method Changes under the first (so its anchors are
+`<fact>--<first reading>-method-<period>`).
 
 A reading's `label` is a subheading, drawn only when a series has more than
 one reading, so it never stands in for the title: the series `title` is what

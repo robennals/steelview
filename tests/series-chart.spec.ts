@@ -61,8 +61,8 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   await expect(chart.getByRole('heading', { name: 'UK immigration, emigration and net migration, 1964–2025' })).toBeVisible();
   await expect(chart.locator('.sv-chart__range')).toContainText('Full published range: 1964–2025');
 
-  // Three definitional breaks, each drawn in the plot and explained below it.
-  await expect(chart.locator('.sv-method-observation')).toHaveCount(6);
+  // Three definitional breaks, each drawn in both plots and explained once, under the first.
+  await expect(chart.locator('.sv-method-observation')).toHaveCount(3);
   const visiblePlot = chart.locator('.sv-chart__svg:visible').first();
   await expect(visiblePlot.locator('.sv-chart__break')).toHaveCount(3);
   // A line crossing a break is cut and bridged, never drawn straight through.
