@@ -126,7 +126,7 @@ test('a timeline preview lists every event on one line, and past twelve marks ea
   assert.match(html, /Iran designated a state sponsor of terrorism/);
   assert.doesNotMatch(html, /sv-control__status|sv-timeline__controls/);
   const long = preview('court-record', variant('court-record', f => (f.kind === 'timeline'
-    ? { ...f, events: Array.from({ length: 15 }, (_, i) => ({ date: `${2000 + i}-06`, title: `Event ${i}`, category: 'charge', source: 8 })) }
+    ? { ...f, events: Array.from({ length: 15 }, (_, i) => ({ date: `${2000 + i}-06`, title: `Event ${i}`, category: 'charge', sources: [8] })) }
     : f)));
   assert.equal(long.match(/class="sv-timeline__lane-mark"/g)?.length, 15);
   assert.match(long, /Jun 2014: Event 14/);

@@ -772,13 +772,13 @@ has; the rest draw a component (see Storybook for each one's look):
 | `featured` | the charts of one supporting fact named in `featuredCharts` (`fact: <id>`) |
 | `section` | the body section headed `## … {#<fact>--<id>}`, moved to this place |
 | `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it |
-| `keyFigures` | one to six headline numbers, each with a `period` and its own `source`; `qualifier: more than` for a bound |
-| `timeline` | dated events in `categories`, each with its own `source` |
-| `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated` |
+| `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
+| `timeline` | dated events in `categories`, each with its own `source` (or `sources`) |
+| `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated`; a period or event may cite its own `sources` |
 | `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
 | `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
 | `barChart` | ungrouped bars in any format, dollars included |
-| `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` |
+| `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most", `estimate` for range only; `nullValue: null` for costs |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
 | `quoteComparison` | two to four answers to one `question` |
@@ -870,6 +870,22 @@ text figure's slide is its title and content. Either way its description, source
 line and About this data wait behind "Explore this data". Only graph-like
 figures can be home-page preview charts.
 
+**An item may rest on several sources.** Wherever an item takes `source: 5`
+— a key figure, a timeline event, a period or point event, an estimate, a
+composition row, a quote, a series event — it may instead take
+`sources: [5, 9]`. `source: 5` means `sources: [5]`; give one or the other,
+not both. The item's footnotes list every citation (`[5] [9]`), every number
+is checked against the fact's sources, and `check:figures` may trace the
+item's numbers to any of them. A quote citing several sources need only
+appear verbatim in one of their quotes.
+
+**A series line may name its own source.** A line from a different
+publisher from the rest of its reading — a second country's statistics office
+— takes `source:` with a full source object, as a reading does. It is
+numbered after the series' and readings' own sources, credited in the
+reading's source line, and the chart-value audit traces that line's points to
+its quote as well as the reading's.
+
 **Observations attach by id.** A component figure's DOM id is
 `<fact>--chart-<id>`, so viewpoints cite it as `#fact-<fact>/chart-<id>`.
 `## Observations {#<fact>--observations-<id>}` and
@@ -900,7 +916,7 @@ from when no quote can hold them all ("EAVS 2024 Overview Table 1"); it is
 shown in About this data.
 
 **Quotes are verbatim.** A `quoteComparison` or `pullQuote` text, or a
-`claimCheck` claim, must appear in its cited source's `quote`. Mark an
+`claimCheck` claim, must appear in a cited source's `quote`. Mark an
 omission with "…"; each fragment between omissions is checked on its own,
 ignoring case, curly quotes and spacing.
 
@@ -1601,7 +1617,8 @@ them.
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
 | Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a tile map's `data` and `valueLabel` | `lib/content/schema.ts` (`figureSchema`) |
 | Figure ids are unique and do not reuse a series, reading or comparison id | `lib/content/validate.ts` (`figureErrors`, F1) |
-| Every figure citation is one of the fact's numbered sources, and every figure but a caveat list has one | `lib/content/validate.ts` (F2, F5) |
+| Every figure citation — every number of every item's `sources` — is one of the fact's numbered sources, and every figure but a caveat list has one; an item gives `source` or `sources`, not both | `lib/content/validate.ts` (F2, F5), `lib/content/schema.ts` |
+| A series event's `sources` are the fact's numbered sources | `lib/content/validate.ts`, `seriesErrors` |
 | Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |
 | A `section` figure names an h2 in the body | `lib/content/validate.ts` (F4) |
 | Table columns, rows, sort and highlight agree; numeric columns hold numbers | `lib/content/validate.ts` (F6) |
@@ -1609,7 +1626,7 @@ them.
 | At most six key figures | `lib/content/validate.ts` (F8) |
 | Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars fit `domainMax`; composition rows use known categories and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
-| Quotes and claim-check claims appear verbatim in their cited source's quote | `lib/content/validate.ts` (F11) |
+| Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |

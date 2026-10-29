@@ -342,6 +342,9 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
       errors.push(`${where} cites unknown source ${band.source} for its "not measured since" note`);
     }
   }
+  for (const event of series.events) {
+    for (const n of event.sources) if (n > sourceCount) errors.push(`${where} event "${event.label}" cites unknown source ${n}`);
+  }
 
   // A coverage end of "2026" runs to the end of 2026, so an event dated
   // "2026-03" is inside it; compare against the end's own precision. Events
@@ -632,13 +635,13 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       break;
     }
     case 'quoteComparison':
-      for (const quote of figure.quotes) errors.push(...verbatimErrors(where, quote.text, quote.source, f));
+      for (const quote of figure.quotes) errors.push(...verbatimErrors(where, quote.text, quote.sources, f));
       break;
     case 'pullQuote':
-      errors.push(...verbatimErrors(where, figure.quote.text, figure.quote.source, f));
+      errors.push(...verbatimErrors(where, figure.quote.text, figure.quote.sources, f));
       break;
     case 'claimCheck': {
-      errors.push(...verbatimErrors(where, figure.claim, figure.claimSource, f));
+      errors.push(...verbatimErrors(where, figure.claim, [figure.claimSource], f));
       const { evidence } = figure;
       if (evidence) {
         const target = topic.facts.find(fact => fact.id === evidence.fact);
@@ -713,18 +716,20 @@ export function normaliseQuote(text: string): string {
 
 /**
  * F11 — a quote on the page is the source's words. Each fragment between
- * omission marks ("…" or "...") must appear in the cited source's quote;
- * fragments under four characters are too short to mean anything.
+ * omission marks ("…" or "...") must appear in the quote of one of the
+ * sources it cites; fragments under four characters are too short to mean
+ * anything.
  */
-function verbatimErrors(where: string, text: string, citation: number, f: Fact): string[] {
-  const quote = factSources(f)[citation - 1]?.quote;
-  if (quote === undefined) return []; // F2 reports the bad citation
-  const haystack = normaliseQuote(quote);
+function verbatimErrors(where: string, text: string, citations: number[], f: Fact): string[] {
+  const sources = factSources(f);
+  const quotes = citations.flatMap(n => (sources[n - 1] ? [normaliseQuote(sources[n - 1].quote)] : []));
+  if (quotes.length === 0) return []; // F2 reports the bad citation
+  const cited = citations.length === 1 ? `source ${citations[0]}` : `any of sources ${citations.join(', ')}`;
   return text
     .split(/…|\.\.\./)
     .map(fragment => normaliseQuote(fragment))
-    .filter(fragment => fragment.length >= 4 && !haystack.includes(fragment))
-    .map(fragment => `${where} "${fragment}" is not in the quote of source ${citation} — quotes must be verbatim`);
+    .filter(fragment => fragment.length >= 4 && !quotes.some(quote => quote.includes(fragment)))
+    .map(fragment => `${where} "${fragment}" is not in the quote of ${cited} — quotes must be verbatim`);
 }
 
 /**

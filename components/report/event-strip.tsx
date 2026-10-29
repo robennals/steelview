@@ -10,7 +10,8 @@ export type StripEvent = {
   date: PartialDate;
   label: string;
   description?: string;
-  source?: SourceCredit;
+  /** The citations that date the event, listed in its key entry. */
+  sources?: SourceCredit[];
   href?: string;
 };
 
@@ -152,7 +153,7 @@ export function EventKey({ events, keyId, title, outside = [] }: {
             </>
           );
           // Nothing to expand: a plain item still carries the id the marker links to.
-          if (!e.description && !e.source && !e.href) {
+          if (!e.description && !e.sources?.length && !e.href) {
             return <li key={i} id={id} className="sv-event-strip__item" data-bare="">{head}</li>;
           }
           return (
@@ -161,7 +162,7 @@ export function EventKey({ events, keyId, title, outside = [] }: {
                 <summary className="sv-event-strip__summary">{head}</summary>
                 <div className="sv-event-strip__body">
                   {e.description && <p className="sv-event-strip__desc">{e.description}</p>}
-                  {e.source && <SourceLine sources={[e.source]} />}
+                  {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
                   {e.href && <p className="sv-event-strip__link"><a href={e.href}>See the evidence</a></p>}
                 </div>
               </details>

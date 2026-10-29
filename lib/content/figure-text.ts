@@ -95,7 +95,7 @@ export type FigureValue = {
   where: string;
   value: number;
   format?: FigureValueFormat;
-  /** The item's own citation if it has one, else the figure's `sources`. */
+  /** The item's own citations if it has any (every one may hold the number), else the figure's `sources`. */
   citations: number[];
   /** The figure in the source's own words, looked for instead of the number. */
   asPublished?: string;
@@ -140,14 +140,14 @@ export function figureValues(figure: Figure): FigureValue[] {
     }
     case 'keyFigures':
       return figure.figures.flatMap(f => [
-        { where: `key figure "${f.label}"`, value: f.value, format: f.format, citations: [f.source], asPublished: f.asPublished, valuesFrom: figure.valuesFrom },
+        { where: `key figure "${f.label}"`, value: f.value, format: f.format, citations: f.sources, asPublished: f.asPublished, valuesFrom: figure.valuesFrom },
         ...(f.change
           ? [{
             where: `key figure "${f.label}" change`,
             value: f.change.value,
             // KeyFigures' own default for a change.
             format: f.change.format ?? { unit: 'percent' as const, decimals: 0, signed: true },
-            citations: [f.source],
+            citations: f.sources,
             valuesFrom: figure.valuesFrom,
           }]
           : []),
@@ -189,7 +189,7 @@ export function figureValues(figure: Figure): FigureValue[] {
           where: `composition row "${row.label}" ${key}`,
           value,
           format: figure.countFormat,
-          citations: row.source === undefined ? figure.sources : [row.source],
+          citations: row.sources.length > 0 ? row.sources : figure.sources,
           valuesFrom: figure.valuesFrom,
         })),
       );
@@ -202,7 +202,7 @@ export function figureValues(figure: Figure): FigureValue[] {
             where: `estimate "${e.label}" ${bound}`,
             value,
             format: figure.format,
-            citations: [e.source],
+            citations: e.sources,
             asPublished: e.asPublished,
             valuesFrom: figure.valuesFrom,
           }];

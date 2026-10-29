@@ -35,7 +35,7 @@ export function QuoteComparison({ question, quotes, id, description, sources, no
           <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-comparison__column">
             <figure className="sv-quote" data-variant="compared">
               {quote.position && <p className="sv-quote__meta"><span className="sv-quote__position">{quote.position}</span></p>}
-              <blockquote className="sv-quote__text" cite={quote.source?.href}>
+              <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href}>
                 <p>{quote.text}</p>
               </blockquote>
               <QuoteAttribution quote={quote} />

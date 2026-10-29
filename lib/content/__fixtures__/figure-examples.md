@@ -305,10 +305,11 @@ figures:
       - { id: pause, label: Strike pause }
     rows:
       - label: Ceasefire
-        periods: [{ from: '2026-04-08', to: '2026-07-07', category: ceasefire, label: Ceasefire }]
+        # A period may cite its own sources; several, like any item.
+        periods: [{ from: '2026-04-08', to: '2026-07-07', category: ceasefire, label: Ceasefire, sources: [2, 4] }]
       - label: US naval blockade
         periods:
-          - { from: '2026-04-13', to: '2026-06-18', category: blockade, label: First blockade }
+          - { from: '2026-04-13', to: '2026-06-18', category: blockade, label: First blockade, source: 3 }
           - { from: '2026-07-14', category: blockade, label: Second blockade }
       - label: Memorandum of understanding
         periods: [{ from: '2026-06-17', to: '2026-07-08', category: agreement, label: MoU }]

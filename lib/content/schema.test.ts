@@ -318,3 +318,60 @@ test('a series line may name a glossary entry, which must exist', () => {
   assert.equal(unknown.success, false);
   assert.equal(unknown.error?.issues[0].message, 'unknown glossary term "no-such-term"');
 });
+
+/* ---------------------------------------------------- several sources per item */
+
+/** The fixture's timeline (figure 5) with its first event changed, parsed. */
+function timelineEvent(change: (event: Record<string, unknown>) => Record<string, unknown>) {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const timeline = figures[5] as { events: Record<string, unknown>[] };
+  figures[5] = { ...timeline, events: [change(timeline.events[0]), ...timeline.events.slice(1)] };
+  return factFrontmatterSchema.safeParse({ ...data, figures });
+}
+
+test('an item\'s `source: n` parses as `sources: [n]`, and `sources` is kept as written', () => {
+  const one = timelineEvent(e => e);
+  const several = timelineEvent(({ source, ...e }) => ({ ...e, sources: [source, 9] }));
+  assert.ok(one.success && several.success);
+  const first = (r: typeof one) => (r.success && r.data.figures?.[5].kind === 'timeline' ? r.data.figures[5].events[0] : undefined);
+  assert.deepEqual(first(one)?.sources, [3]);
+  assert.equal(first(one) && 'source' in first(one)!, false);
+  assert.deepEqual(first(several)?.sources, [3, 9]);
+});
+
+test('an item gives `source` or `sources`, not both, and a required one gives one of them', () => {
+  const both = timelineEvent(e => ({ ...e, sources: [9] }));
+  assert.ok(!both.success && both.error.issues.some(i => i.message.includes('not both')));
+  const withoutSource = (e: Record<string, unknown>) => Object.fromEntries(Object.entries(e).filter(([key]) => key !== 'source'));
+  const neither = timelineEvent(withoutSource);
+  assert.ok(!neither.success && neither.error.issues.some(i => i.path.join('.') === 'figures.5.events.0'));
+  const empty = timelineEvent(e => ({ ...withoutSource(e), sources: [] }));
+  assert.equal(empty.success, false);
+});
+
+test('a series event and a period may cite several sources, or none', () => {
+  const event = { period: '2020', label: 'A law' };
+  const series = (events: unknown[]) => factFrontmatterSchema.parse({
+    claim: 'c', status: 'unknown',
+    series: {
+      title: 't', description: 'd', periodLabel: 'Year', coverage: { from: '2020', to: '2021' }, events,
+      readings: [{ id: 'r', label: 'l', unit: 'count', valueLabel: 'v', lines: [{ name: 'n', points: [{ period: '2020', value: 1 }, { period: '2021', value: 2 }] }] }],
+      source,
+    },
+  }).series?.events;
+  assert.deepEqual(series([event])?.[0].sources, []);
+  assert.deepEqual(series([{ ...event, sources: [1, 2] }])?.[0].sources, [1, 2]);
+});
+
+test('a series line may carry its own source', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'c', status: 'unknown',
+    series: {
+      title: 't', description: 'd', periodLabel: 'Year', coverage: { from: '2020', to: '2021' },
+      readings: [{ id: 'r', label: 'l', unit: 'count', valueLabel: 'v', lines: [{ name: 'n', source, points: [{ period: '2020', value: 1 }, { period: '2021', value: 2 }] }] }],
+      source,
+    },
+  });
+  assert.equal(parsed.series?.readings[0].lines[0].source?.publisher, 'Office for National Statistics');
+});

@@ -5,7 +5,7 @@ import { ASYLUM_CLAIMS_SERIES, ASYLUM_EVENTS, POLICY_MILESTONES, ROUTE_EVENTS } 
 
 const milestone = (date: string) => {
   const event = POLICY_MILESTONES.find(e => e.date === date)!;
-  return { date: event.date, label: event.title, source: event.source };
+  return { date: event.date, label: event.title, sources: event.sources };
 };
 
 const meta = {

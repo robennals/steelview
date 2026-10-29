@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { factSources, seriesSourceNumber, seriesSourceOffset } from './sources';
+import { factSources, figureCitations, lineSourceNumbers, seriesSourceNumber, seriesSourceOffset } from './sources';
 import type { Fact, Series, Source } from './types';
 
 const source = (name: string): Source => ({ stance: 'supports', quote: name, title: name, url: `https://example.org/${name}`, publisher: name, date: '2024' });
@@ -66,4 +66,25 @@ test('without a main series, additional series number from the fact sources', ()
   const rest = { ...fact, series: undefined };
   assert.equal(seriesSourceOffset(rest, 0), 2);
   assert.equal(seriesSourceNumber(rest, 1, 0), 2 + 3 + 1);
+});
+
+test('a line\'s own source follows every reading source of its series, and later series shift past it', () => {
+  const withLine: Fact = {
+    ...fact,
+    series: { ...fact.series!, readings: fact.series!.readings.map((r, i) => (i === 0 ? { ...r, lines: [{ ...r.lines[0], source: source('main-line-0') }, { ...r.lines[0], name: 'Other' }] } : r)) },
+  };
+  assert.deepEqual(factSources(withLine).map(s => s.publisher).slice(2, 6), ['main-source', 'main-reading-1', 'main-line-0', 'a-source']);
+  assert.equal(seriesSourceOffset(withLine, 0), 2 + 3);
+  assert.deepEqual(lineSourceNumbers(withLine.series!, seriesSourceOffset(withLine, -1), 0), [5, undefined]);
+  assert.equal(factSources(withLine)[5 - 1].publisher, 'main-line-0');
+  // Reading numbers are unchanged by a line source.
+  assert.equal(seriesSourceNumber(withLine, -1, 1), 4);
+});
+
+test('every citation an item makes is a figure citation, in the order written', () => {
+  const figure = {
+    kind: 'timeline' as const, id: 't', title: 't', description: 'd', sources: [1], categories: [{ id: 'c', label: 'C' }],
+    events: [{ date: '2020', title: 'a', category: 'c', sources: [3, 2] }, { date: '2021', title: 'b', category: 'c', sources: [2] }],
+  };
+  assert.deepEqual(figureCitations(figure), [1, 3, 2, 2]);
 });

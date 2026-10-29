@@ -3,8 +3,8 @@
  * one of
  *
  * 1. **its own source's quote** — a series reading's `source` (else the
- *    series `source`), or the fact's numbered sources a comparison or figure
- *    cites;
+ *    series `source`) and its line's `source`, or the fact's numbered
+ *    sources a comparison or figure cites;
  * 2. **a named table** — the reading, comparison or figure declares
  *    `valuesFrom` ("EAVS 2024 Overview Table 1"), shown to the reader; or
  * 3. **a verified derivation** — a `derivedFigures` entry on the same fact.
@@ -100,7 +100,8 @@ function seriesValues(series: Series, chart: string, prefix: string): ChartValue
         chart,
         where: `${prefix}reading ${reading.id} line ${line.name} ${point.period}`,
         renderings: seriesRenderings(point.value, reading.unit),
-        allowedQuotes: [(reading.source ?? series.source).quote],
+        // A line with its own source may be traced to it as well as to the reading's.
+        allowedQuotes: [...(line.source ? [line.source.quote] : []), (reading.source ?? series.source).quote],
         valuesFrom: reading.valuesFrom,
       }))
     )

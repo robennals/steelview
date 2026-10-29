@@ -92,7 +92,7 @@ export function CompositionBar({
             <p className="sv-composition__head">
               <span className="sv-composition__label">
                 {row.label}
-                {row.source && !preview && <SourceCredits sources={[row.source]} />}
+                {row.sources && !preview && <SourceCredits sources={row.sources} />}
               </span>
               {showCounts && <span className="sv-composition__total">{totalText(row.total)}<span className="sv-composition__total-word"> total</span></span>}
             </p>
@@ -139,7 +139,7 @@ export function CompositionBar({
             <tr key={row.label}>
               <th scope="row">
                 {row.label}
-                {row.source && <SourceCredits sources={[row.source]} />}
+                {row.sources && <SourceCredits sources={row.sources} />}
               </th>
               {row.segments.map(segment => (
                 <td key={segment.key}>

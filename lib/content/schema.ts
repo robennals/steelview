@@ -49,6 +49,32 @@ export const sourceSchema = z.object({
   date: partialDate,
 });
 
+/** A one-based index into the fact's numbered citations (see lib/content/sources.ts). */
+const citation = z.number().int().positive();
+
+/**
+ * An item's own citations: `source: n`, or `sources: [n, …]` for an item
+ * that rests on several. Spread `citationFields` into the item, refine with
+ * `citationRule` and transform with `toSources`: the parse turns either form
+ * into `sources`, so the renderer, the validator and `check:figures` see one
+ * shape. Giving both is refused rather than merged — an author who wrote
+ * both meant one of them.
+ */
+const citationFields = { source: citation.optional(), sources: z.array(citation).min(1).optional() };
+type Citations = { source?: number; sources?: number[] };
+
+function citationRule({ required }: { required: boolean }) {
+  return (item: Citations, ctx: z.RefinementCtx) => {
+    if (item.source !== undefined && item.sources !== undefined) ctx.addIssue({ code: 'custom', message: 'give `source` or `sources`, not both' });
+    else if (required && item.source === undefined && item.sources === undefined) ctx.addIssue({ code: 'custom', message: 'give `source: n` or `sources: [n, …]`' });
+  };
+}
+
+function toSources<T extends Citations>({ source, sources, ...rest }: T) {
+  const list: number[] = sources ?? (source === undefined ? [] : [source]);
+  return { ...rest, sources: list };
+}
+
 /* ------------------------------------------------------------------ series */
 
 /**
@@ -95,6 +121,13 @@ export const seriesLineSchema = z.object({
   coverage: seriesCoverageSchema.optional(),
   /** A glossary entry defining what this line measures, opened from its legend key. */
   glossary: z.string().refine(key => key in glossary, { error: issue => `unknown glossary term "${String(issue.input)}"` }).optional(),
+  /**
+   * This line's own source, when it comes from a different publisher from
+   * the rest of the reading — a second country's statistics office. Credited
+   * in the chart's source line, and the chart-value audit traces this line's
+   * points to its quote.
+   */
+  source: sourceSchema.optional(),
   points: z
     .array(seriesPointSchema)
     .min(2, 'a series line needs at least two points — one point is not a trend'),
@@ -157,9 +190,9 @@ export const seriesEventSchema = z.object({
   label: z.string().min(1),
   /** One or two sentences on what changed. */
   note: z.string().min(1).optional(),
-  /** The fact's numbered citation that dates the event. */
-  source: z.number().int().positive().optional(),
-});
+  // `source` / `sources`: the fact's numbered citations that date the event.
+  ...citationFields,
+}).superRefine(citationRule({ required: false })).transform(toSources);
 
 export const seriesSchema = z.object({
   title: z.string().min(1),
@@ -250,8 +283,6 @@ export const comparisonChartSchema = z.object({
 
 /* ----------------------------------------------------------------- figures */
 
-/** A one-based index into the fact's numbered citations (see lib/content/sources.ts). */
-const citation = z.number().int().positive();
 const slugId = z.string().regex(/^[a-z0-9-]+$/, 'lower-case letters, digits and hyphens only');
 
 /** Mirrors `ValueFormat` in components/report/types.ts. */
@@ -364,8 +395,8 @@ export const keyFiguresFigureSchema = z.object({
         change: z
           .object({ value: z.number().finite(), format: valueFormatSchema.optional(), comparison: z.string().min(1) })
           .optional(),
-        source: citation,
-      })
+        ...citationFields,
+      }).superRefine(citationRule({ required: true })).transform(toSources)
     )
     .min(1)
     .max(6),
@@ -389,8 +420,8 @@ export const timelineFigureSchema = z.object({
         description: z.string().min(1).optional(),
         category: slugId,
         significance: z.enum(['major', 'minor']).optional(),
-        source: citation,
-      })
+        ...citationFields,
+      }).superRefine(citationRule({ required: true })).transform(toSources)
     )
     .min(2),
 });
@@ -418,7 +449,9 @@ export const periodTimelineFigureSchema = z.object({
               to: partialDate.optional(),
               label: z.string().min(1).optional(),
               category: slugId.optional(),
-            })
+              // `source` / `sources`: a period dated by a source of its own.
+              ...citationFields,
+            }).superRefine(citationRule({ required: false })).transform(toSources)
           )
           .min(1),
       })
@@ -547,9 +580,9 @@ export const compositionBarFigureSchema = z.object({
       z.object({
         label: z.string().min(1),
         values: z.record(z.string(), z.number().finite().nonnegative()),
-        /** A row from a different counter cites its own source. */
-        source: citation.optional(),
-      })
+        // `source` / `sources`: a row from a different counter cites its own.
+        ...citationFields,
+      }).superRefine(citationRule({ required: false })).transform(toSources)
     )
     .min(1),
   showCounts: z.boolean().optional(),
@@ -584,8 +617,8 @@ export const estimateRangeFigureSchema = z.object({
         group: z.string().min(1).optional(),
         note: z.string().min(1).optional(),
         asPublished,
-        source: citation,
-      })
+        ...citationFields,
+      }).superRefine(citationRule({ required: true })).transform(toSources)
     )
     .min(2),
 });
@@ -634,15 +667,15 @@ export const scatterPlotFigureSchema = z.object({
 /* --- quotes --------------------------------------------------------------- */
 
 const figureQuoteSchema = z.object({
-  /** Verbatim. "…" marks an omission; each fragment must appear in the cited source's quote (rule F11). */
+  /** Verbatim. "…" marks an omission; each fragment must appear in a cited source's quote (rule F11). */
   text: z.string().min(1),
   speaker: z.string().min(1),
   role: z.string().min(1).optional(),
   position: z.string().min(1).optional(),
   date: partialDate.optional(),
   context: z.string().min(1).optional(),
-  source: citation,
-});
+  ...citationFields,
+}).superRefine(citationRule({ required: true })).transform(toSources);
 
 export const quoteComparisonFigureSchema = z.object({
   kind: z.literal('quoteComparison'),

@@ -19,7 +19,8 @@ export type TimelineEvent = {
   /** Joins to `categories[].id`. */
   category: string;
   significance?: 'major' | 'minor';
-  source?: SourceCredit;
+  /** Every citation the event rests on, listed under it. */
+  sources?: SourceCredit[];
   /** Where to read more, e.g. the fact this event is evidence in. */
   href?: string;
 };
@@ -216,7 +217,7 @@ export function Timeline({
                       </p>
                       <p className="sv-timeline__title">{e.href ? <a href={e.href}>{e.title}</a> : e.title}</p>
                       {e.description && <p className="sv-timeline__desc">{e.description}</p>}
-                      {e.source && <SourceLine sources={[e.source]} />}
+                      {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
                     </li>
                   );
                 })}

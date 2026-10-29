@@ -12,8 +12,8 @@ export type CompositionRowInput = {
   label: string;
   /** Part sizes by category key, as counts or as percentages — shares are recomputed either way. */
   values: Record<string, number>;
-  /** A row from a different counter or survey cites its own source, shown after the row label. */
-  source?: SourceCredit;
+  /** A row from a different counter or survey cites its own sources, shown after the row label. */
+  sources?: SourceCredit[];
 };
 
 export type CompositionSegment = {
@@ -24,7 +24,7 @@ export type CompositionSegment = {
   share: number;
 };
 
-export type CompositionRow = { label: string; total: number; segments: CompositionSegment[]; source?: SourceCredit };
+export type CompositionRow = { label: string; total: number; segments: CompositionSegment[]; sources?: SourceCredit[] };
 
 export const OTHER_KEY = '__other';
 
@@ -67,7 +67,7 @@ export function compose(
         const value = [...folded].reduce((sum, key) => sum + Math.max(0, row.values[key] ?? 0), 0);
         segments.push({ key: OTHER_KEY, label: otherLabel, value, share: totals[i] > 0 ? (value / totals[i]) * 100 : 0 });
       }
-      return { label: row.label, total: totals[i], segments, ...(row.source ? { source: row.source } : {}) };
+      return { label: row.label, total: totals[i], segments, ...(row.sources ? { sources: row.sources } : {}) };
     }),
   };
 }

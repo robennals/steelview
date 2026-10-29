@@ -483,7 +483,7 @@ test('rule 14: backwards coverage is reported', () => {
 
 test('rule 14: an event marked outside the coverage is reported', () => {
   const t = topicWithSeries({
-    events: [{ period: '2001', label: 'law takes effect' }],
+    events: [{ period: '2001', label: 'law takes effect', sources: [] }],
   });
   const errors = validateTopic(t);
   assert.ok(
@@ -494,7 +494,7 @@ test('rule 14: an event marked outside the coverage is reported', () => {
 
 test('rule 14: an event inside the final year of a year-precision coverage is accepted', () => {
   const t = topicWithSeries({
-    events: [{ period: '1993-03', label: 'law takes effect' }],
+    events: [{ period: '1993-03', label: 'law takes effect', sources: [] }],
   });
   const errors = validateTopic(t);
   assert.ok(!errors.some((e) => e.includes('event at')), errors.join('\n'));
@@ -645,8 +645,23 @@ test('F1: a figure id may not repeat another figure, chart or reading id', () =>
 
 test('F2: every figure citation is one of the fact\'s numbered sources', () => {
   const { topic, fact } = figuresTopic();
-  figureOf(fact, 'timeline').events[0].source = 99;
+  figureOf(fact, 'timeline').events[0].sources = [99];
   assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 31'));
+});
+
+test('F2: every number in an item\'s `sources` is checked, not only the first', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'timeline').events[0].sources = [3, 98];
+  figureOf(fact, 'keyFigures').figures[0].sources = [11, 97];
+  figureOf(fact, 'periodTimeline').rows[0].periods[0].sources = [2, 96];
+  const errors = validateTopic(topic);
+  for (const n of [98, 97, 96]) assert.ok(errors.some(e => e.includes(`cites source ${n}, but the fact has 31`)), `source ${n}`);
+});
+
+test('a series event citing an unknown source is reported', () => {
+  const { topic, fact } = figuresTopic();
+  fact.series!.events = [{ period: '2020', label: 'Law', sources: [1, 95] }];
+  assert.ok(hasError(topic, 'series event "Law" cites unknown source 95'));
 });
 
 test('F3: once present, figures place every chart exactly once and nothing else', () => {
@@ -753,7 +768,7 @@ test('F10: bars fit their axis, compositions their categories, estimates their o
   composition.rows[0].values = { civilian: 0, nope: 0 };
   const estimates = figureOf(fact, 'estimateRange');
   estimates.estimates[0] = { ...estimates.estimates[0], low: 40, high: 30 };
-  estimates.estimates[2] = { label: 'Empty', source: 16 };
+  estimates.estimates[2] = { label: 'Empty', sources: [16] };
   estimates.domain = [30, 41];
   assert.ok(hasError(topic, 'figure wa-by-race: domainMax must be at least every value'));
   assert.ok(hasError(topic, 'row "HRANA, 7 Apr" has unknown category "nope"'));
@@ -774,6 +789,15 @@ test('F11: quotes and claims are verbatim, allowing omissions, curly quotes and 
   assert.ok(hasError(topic, 'figure carter-baker: "absentee ballots are the largest source of voter fraud." is not in the quote of source 21'));
   figureOf(fact, 'claimCheck').claim = 'Half of mail-in voters cheated';
   assert.ok(hasError(topic, 'figure one-in-five: "half of mail-in voters cheated" is not in the quote of source 22'));
+});
+
+test('F11: a quote citing several sources need only appear in one of them', () => {
+  const { topic, fact } = figuresTopic();
+  const pull = figureOf(fact, 'pullQuote');
+  pull.quote.sources = [24, 21];
+  assert.deepEqual(validateTopic(topic), []);
+  pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
+  assert.ok(hasError(topic, 'is not in the quote of any of sources 24, 21'));
 });
 
 test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
@@ -995,7 +1019,7 @@ test('a "not measured since" band may not end after the topic was last updated, 
 test('an event inside a "not measured since" band passes; its end defaults to lastUpdated', () => {
   const t = topicWithSeries({
     notMeasuredSince: { label: 'Not verified', note: 'Access ended.', source: 1 },
-    events: [{ period: '2001', label: 'verification stops' }],
+    events: [{ period: '2001', label: 'verification stops', sources: [] }],
   });
   assert.deepEqual(validateTopic(t), []);
 });

@@ -76,8 +76,8 @@ export const RowSources: Story = {
       { key: 'other', label: 'Other' },
     ],
     rows: [
-      { label: 'Counter A', values: { civilian: 1701, military: 1221, unclassified: 714 }, source: { label: 'Illustrative source', href: '#source-example-1', number: 1 } },
-      { label: 'Counter B', values: { civilian: 1030, other: 6620 }, source: { label: 'Second illustrative source', href: '#source-example-2', number: 2 } },
+      { label: 'Counter A', values: { civilian: 1701, military: 1221, unclassified: 714 }, sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }] },
+      { label: 'Counter B', values: { civilian: 1030, other: 6620 }, sources: [{ label: 'Second illustrative source', href: '#source-example-2', number: 2 }] },
     ],
     showCounts: true,
     rowLabel: 'Counter',

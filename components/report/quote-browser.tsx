@@ -126,7 +126,7 @@ export function QuoteBrowser({
                     {quote.tags?.map(tag => <span key={tag} className="sv-quote__tag">{tag}</span>)}
                   </p>
                 )}
-                <blockquote className="sv-quote__text" cite={quote.source?.href} data-clamp={quote.text.length > clampAt || undefined}>
+                <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href} data-clamp={quote.text.length > clampAt || undefined}>
                   <p>{quote.text}</p>
                 </blockquote>
                 {quote.text.length > clampAt && (

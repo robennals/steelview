@@ -49,6 +49,17 @@ test('a reading’s own source takes the place of the series source', () => {
   assert.deepEqual(chartValues(fact({ series: s })).map((v) => auditValue(v, NO_DERIVED)), ['quoted', 'quoted']);
 });
 
+test('a line’s own source is traced for that line’s points, beside the reading’s', () => {
+  const s = series('3.4%', [3.4, 2.1]);
+  s.readings[0].lines[0].source = source('2.1%');
+  assert.deepEqual(chartValues(fact({ series: s })).map((v) => auditValue(v, NO_DERIVED)), ['quoted', 'quoted']);
+});
+
+test('a figure item citing several sources may be traced to any of them', () => {
+  const values = fromFigureValues('f', [{ where: 'bar "A"', value: 7200, format: { unit: 'count' }, citations: [1, 2] }], [source('none here'), source('7,200 signatures')]);
+  assert.equal(auditValue(values[0], NO_DERIVED), 'quoted');
+});
+
 test('the same value quoted only in another fact is untraced', () => {
   const items: AuditItem[] = [
     { kind: 'fact', id: 'a', body: '', data: { claim: 'c', status: 'well-supported', sources: [source('n/a')], series: series('nothing numeric', [3.4, 2.1]) } },

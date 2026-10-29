@@ -65,6 +65,13 @@ test('a line with its own range names it in the legend, the table and About this
   assert.match(html, /WTI, 1986–1990; Brent, 1987–1990/);
 });
 
+test('a line with its own source is credited after the reading\'s source, numbered after every reading source', () => {
+  const s = oilSeries();
+  s.readings[0].lines[1].source = { ...source, publisher: 'Brent publisher' };
+  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series: s, sourceOffset: 2 }));
+  assert.match(html, /Sources: <span><a href="#source-oil-3">Example publisher \[3\]<\/a><\/span><span>; <a href="#source-oil-4">Brent publisher \[4\]<\/a><\/span>/);
+});
+
 /** WTI alone, with an estimate in 1987 and forecasts for 1989–1990. */
 function statusSeries(): Series {
   const s = oilSeries();

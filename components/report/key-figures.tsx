@@ -23,7 +23,8 @@ export type KeyFigure = {
   /** Overrides the formatted period, e.g. "year ending March 2026". */
   periodLabel?: string;
   change?: KeyFigureChange;
-  source?: SourceCredit;
+  /** Every citation the figure rests on, as "[n]" marks after its period. */
+  sources?: SourceCredit[];
 };
 
 export type KeyFiguresProps = {
@@ -62,12 +63,12 @@ export function KeyFigures({ figures, id, title, description, sources, note, foo
               </dd>
               <dd className="sv-key-figures__meta">
                 <span className="sv-key-figures__period">{figure.periodLabel ?? formatDate(figure.period)}</span>
-                {figure.source && !preview && (
-                  <>
+                {!preview && figure.sources?.map((source, s) => (
+                  <span key={`${source.label}-${s}`}>
                     {' '}
-                    <SourceMark source={figure.source} />
-                  </>
-                )}
+                    <SourceMark source={source} />
+                  </span>
+                ))}
               </dd>
               {figure.change && (
                 <dd className="sv-key-figures__change">

@@ -419,7 +419,9 @@ export const figureExamplesFact: Fact = {
           "period": "2020",
           "periodLabel": "November 2020 general election",
           "asPublished": "more than 7,200",
-          "source": 11
+          "sources": [
+            11
+          ]
         },
         {
           "value": 98.7,
@@ -429,7 +431,9 @@ export const figureExamplesFact: Fact = {
           },
           "label": "of county decisions judged appropriate",
           "period": "2020",
-          "source": 11
+          "sources": [
+            11
+          ]
         }
       ]
     },
@@ -462,26 +466,34 @@ export const figureExamplesFact: Fact = {
           "date": "1984-01-19",
           "title": "Iran designated a state sponsor of terrorism",
           "category": "designation",
-          "source": 3
+          "sources": [
+            3
+          ]
         },
         {
           "date": "2021-02-04",
           "title": "Assadi convicted in Antwerp",
           "category": "conviction",
           "significance": "major",
-          "source": 6
+          "sources": [
+            6
+          ]
         },
         {
           "date": "2024-11",
           "title": "Shakeri charged in New York",
           "category": "charge",
-          "source": 8
+          "sources": [
+            8
+          ]
         },
         {
           "date": "2026-02-27",
           "title": "Wrongful-detention designation",
           "category": "designation",
-          "source": 9
+          "sources": [
+            9
+          ]
         }
       ]
     },
@@ -523,7 +535,11 @@ export const figureExamplesFact: Fact = {
               "from": "2026-04-08",
               "to": "2026-07-07",
               "label": "Ceasefire",
-              "category": "ceasefire"
+              "category": "ceasefire",
+              "sources": [
+                2,
+                4
+              ]
             }
           ]
         },
@@ -534,12 +550,16 @@ export const figureExamplesFact: Fact = {
               "from": "2026-04-13",
               "to": "2026-06-18",
               "label": "First blockade",
-              "category": "blockade"
+              "category": "blockade",
+              "sources": [
+                3
+              ]
             },
             {
               "from": "2026-07-14",
               "label": "Second blockade",
-              "category": "blockade"
+              "category": "blockade",
+              "sources": []
             }
           ]
         },
@@ -550,7 +570,8 @@ export const figureExamplesFact: Fact = {
               "from": "2026-06-17",
               "to": "2026-07-08",
               "label": "MoU",
-              "category": "agreement"
+              "category": "agreement",
+              "sources": []
             }
           ]
         },
@@ -560,7 +581,8 @@ export const figureExamplesFact: Fact = {
             {
               "from": "2026-10-08",
               "label": "Pause",
-              "category": "pause"
+              "category": "pause",
+              "sources": []
             }
           ]
         }
@@ -569,7 +591,9 @@ export const figureExamplesFact: Fact = {
         {
           "period": "2026-05-01",
           "label": "Letter says hostilities \"have terminated\"",
-          "source": 4
+          "sources": [
+            4
+          ]
         }
       ]
     },
@@ -691,7 +715,9 @@ export const figureExamplesFact: Fact = {
             "military": 1221,
             "unclassified": 714
           },
-          "source": 12
+          "sources": [
+            12
+          ]
         },
         {
           "label": "Hengaw, 8 Apr",
@@ -699,7 +725,9 @@ export const figureExamplesFact: Fact = {
             "civilian": 1030,
             "other": 6620
           },
-          "source": 13
+          "sources": [
+            13
+          ]
         }
       ],
       "showCounts": true,
@@ -724,7 +752,9 @@ export const figureExamplesFact: Fact = {
           "year": "8 Apr 2026",
           "low": 25,
           "high": 35,
-          "source": 14
+          "sources": [
+            14
+          ]
         },
         {
           "label": "CSIS",
@@ -732,19 +762,25 @@ export const figureExamplesFact: Fact = {
           "estimate": 40,
           "low": 34,
           "high": 42,
-          "source": 15
+          "sources": [
+            15
+          ]
         },
         {
           "label": "CBO",
           "year": "1 Aug 2026",
           "estimate": 38,
-          "source": 16
+          "sources": [
+            16
+          ]
         },
         {
           "label": "Department of Defense",
           "year": "3 Sep 2026",
           "estimate": 43.6,
-          "source": 17
+          "sources": [
+            17
+          ]
         }
       ]
     },
@@ -759,20 +795,26 @@ export const figureExamplesFact: Fact = {
           "speaker": "Pete Hegseth",
           "role": "Secretary of Defense",
           "date": "2026-04",
-          "source": 18
+          "sources": [
+            18
+          ]
         },
         {
           "text": "no identifiable route",
           "speaker": "Institute for Science and International Security",
           "date": "2026-06",
-          "source": 19
+          "sources": [
+            19
+          ]
         },
         {
           "text": "cannot provide any information on the current size, composition or whereabouts",
           "speaker": "IAEA Director General",
           "date": "2026-06",
           "context": "Report to the Board of Governors",
-          "source": 1
+          "sources": [
+            1
+          ]
         }
       ]
     },
@@ -784,7 +826,9 @@ export const figureExamplesFact: Fact = {
         "text": "Absentee ballots remain the largest source of potential voter fraud.",
         "speaker": "Commission on Federal Election Reform (Carter–Baker)",
         "date": "2005-09",
-        "source": 21
+        "sources": [
+          21
+        ]
       }
     },
     {

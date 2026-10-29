@@ -55,8 +55,8 @@ export const OpenBoundsAndNoNull: Story = {
     intervalLabel: 'Range the estimator published',
     nullValue: null,
     estimates: [
-      { label: 'Estimator A', year: 'Apr 2026', low: 25, high: 35, source: { label: 'Illustrative source', href: '#source-example-1', number: 1 } },
-      { label: 'Estimator B', year: 'Jun 2026', estimate: 40, low: 34, high: 42, source: { label: 'Illustrative source', href: '#source-example-2', number: 2 } },
+      { label: 'Estimator A', year: 'Apr 2026', low: 25, high: 35, sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }] },
+      { label: 'Estimator B', year: 'Jun 2026', estimate: 40, low: 34, high: 42, sources: [{ label: 'Illustrative source', href: '#source-example-2', number: 2 }] },
       { label: 'Estimator C', year: 'Jul 2026', low: 30, asPublished: 'at least $30 billion' },
       { label: 'Estimator D', year: 'Aug 2026', high: 45, asPublished: 'no more than $45 billion' },
       { label: 'Estimator E', year: 'Sep 2026', estimate: 43.6 },

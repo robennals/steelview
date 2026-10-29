@@ -117,7 +117,7 @@ export function keyFiguresProps(f: FigureOf<'keyFigures'>, c: FigureContext): R.
       period: figure.period,
       periodLabel: figure.periodLabel,
       change: figure.change && { value: figure.change.value, format: toValueFormat(figure.change.format), comparison: figure.change.comparison },
-      source: c.credit(figure.source),
+      sources: figure.sources.map(c.credit),
     })),
   };
 }
@@ -133,7 +133,7 @@ export function timelineProps(f: FigureOf<'timeline'>, c: FigureContext): R.Time
       description: event.description,
       category: event.category,
       significance: event.significance,
-      source: c.credit(event.source),
+      sources: event.sources.map(c.credit),
     })),
   };
 }
@@ -146,7 +146,10 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
     from: f.from,
     to: f.to ?? (open ? c.asOf : undefined),
     categories: f.categories,
-    rows: f.rows,
+    rows: f.rows.map(row => ({
+      label: row.label,
+      periods: row.periods.map(period => ({ from: period.from, to: period.to, label: period.label, category: period.category, sources: period.sources.map(c.credit) })),
+    })),
     events: stripEvents(f, c.fact.id, c.sources, c.panel),
   };
 }
@@ -233,7 +236,7 @@ export function compositionBarProps(f: FigureOf<'compositionBar'>, c: FigureCont
   return {
     ...frame(f, c),
     categories: f.categories,
-    rows: f.rows.map(row => ({ label: row.label, values: row.values, source: row.source === undefined ? undefined : c.credit(row.source) })),
+    rows: f.rows.map(row => ({ label: row.label, values: row.values, sources: row.sources.length > 0 ? row.sources.map(c.credit) : undefined })),
     showCounts: f.showCounts,
     countFormat: toValueFormat(f.countFormat),
     rowLabel: f.rowLabel,
@@ -260,7 +263,7 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
       group: e.group,
       note: e.note,
       asPublished: e.asPublished,
-      source: c.credit(e.source),
+      sources: e.sources.map(c.credit),
     })),
   };
 }
@@ -277,7 +280,7 @@ function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): 
     position: q.position,
     date: q.date,
     context: q.context,
-    source: c.credit(q.source),
+    sources: q.sources.map(c.credit),
   };
 }
 

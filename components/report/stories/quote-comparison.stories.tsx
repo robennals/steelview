@@ -35,7 +35,7 @@ export const ResearchFindings: Story = {
     question: 'Does ethnic diversity lower trust in a neighbourhood?',
     description: 'Three summaries of the British research, from the Migration Observatory’s review of immigration, diversity and social cohesion.',
     quotes: trustQuotes,
-    sources: [{ label: 'The Migration Observatory, University of Oxford', href: trustQuotes[0].source?.href }],
+    sources: [{ label: 'The Migration Observatory, University of Oxford', href: trustQuotes[0].sources?.[0]?.href }],
   },
 };
 

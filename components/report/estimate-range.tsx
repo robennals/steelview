@@ -25,8 +25,8 @@ export type Estimate = {
   note?: string;
   /** The estimate in the source's own words, shown in the table's Estimate column: "$25–35bn". */
   asPublished?: string;
-  /** This estimate's own source, printed after its label. */
-  source?: SourceCredit;
+  /** This estimate's own sources, printed after its label. */
+  sources?: SourceCredit[];
 };
 
 export type EstimateRangeProps = {
@@ -126,7 +126,7 @@ export function EstimateRange({
                       <span className="sv-estimates__name">
                         {e.label}
                         {e.year !== undefined && <span className="sv-estimates__year"> {e.year}</span>}
-                        {e.source && !preview && <SourceCredits sources={[e.source]} />}
+                        {e.sources && !preview && <SourceCredits sources={e.sources} />}
                       </span>
                       <span className="sv-estimates__value">
                         {rangeText(e)}
@@ -195,7 +195,7 @@ export function EstimateRange({
               <th scope="row">
                 {e.group ? `${e.group}: ` : ''}
                 {e.label}
-                {e.source && <SourceCredits sources={[e.source]} />}
+                {e.sources && <SourceCredits sources={e.sources} />}
               </th>
               <td>{e.year ?? '—'}</td>
               <td>{e.asPublished ?? show(e.estimate)}</td>

@@ -65,7 +65,7 @@ test('estimates read "at least", "at most" and range only, with sources and publ
     format: { unit: 'number', decimals: 1 },
     nullValue: null,
     estimates: [
-      { label: 'AEI', low: 25, high: 35, source: { label: 'AEI', href: '#source-x-14', number: 14 } },
+      { label: 'AEI', low: 25, high: 35, sources: [{ label: 'AEI', href: '#source-x-14', number: 14 }] },
       { label: 'Floor', low: 30 },
       { label: 'Ceiling', high: 50 },
       { label: 'CBO', estimate: 38, asPublished: '$38 billion' },

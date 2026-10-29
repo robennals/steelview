@@ -9,15 +9,15 @@ import { compose } from './composition';
 const hengaw = { label: 'Hengaw', href: '#source-x-13', number: 13 };
 
 test('a composition row keeps its own source through compose, and only when it has one', () => {
-  const { rows } = compose([{ key: 'a', label: 'A' }], [{ label: 'r', values: { a: 1 }, source: hengaw }, { label: 's', values: { a: 2 } }]);
-  assert.deepEqual(rows[0].source, hengaw);
-  assert.equal('source' in rows[1], false);
+  const { rows } = compose([{ key: 'a', label: 'A' }], [{ label: 'r', values: { a: 1 }, sources: [hengaw] }, { label: 's', values: { a: 2 } }]);
+  assert.deepEqual(rows[0].sources, [hengaw]);
+  assert.equal('sources' in rows[1], false);
 });
 
 test('a composition row\'s source is printed after its label, in the bar and in the table', () => {
   const html = renderToStaticMarkup(createElement(CompositionBar, {
     categories: [{ key: 'civilian', label: 'Civilian' }, { key: 'other', label: 'Other' }],
-    rows: [{ label: 'Hengaw, 8 Apr', values: { civilian: 1030, other: 6620 }, source: hengaw }],
+    rows: [{ label: 'Hengaw, 8 Apr', values: { civilian: 1030, other: 6620 }, sources: [hengaw] }],
   }));
   assert.equal(html.match(/Hengaw, 8 Apr<span class="sv-item-credit"><span><a href="#source-x-13">Hengaw \[13\]<\/a><\/span><\/span>/g)?.length, 2);
 });

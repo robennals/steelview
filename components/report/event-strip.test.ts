@@ -6,7 +6,7 @@ import { EventStrip, type StripEvent } from './event-strip';
 
 const events: StripEvent[] = [
   { date: '2011-01', label: 'Law passed', description: 'The legislature passed it.' },
-  { date: '2013-06', label: 'Court ruling', source: { label: 'Court', href: '#source-x-1', number: 1 } },
+  { date: '2013-06', label: 'Court ruling', sources: [{ label: 'Court', href: '#source-x-1', number: 1 }] },
   { date: '2016', label: 'Bare event' },
 ];
 

@@ -21,7 +21,8 @@ export type Quote = {
   date?: PartialDate;
   /** Where it was said or published: "House of Commons debate", a report title. */
   context?: string;
-  source?: SourceCredit;
+  /** Where to check it: one or more numbered references. */
+  sources?: SourceCredit[];
 };
 
 /** The DOM id of a quote, so a quote can be linked to and cited by address. */
@@ -39,10 +40,15 @@ export function QuoteAttribution({ quote, permalink = false }: { quote: Quote; p
   const details = [
     quote.context && <span key="context">{quote.context}</span>,
     quote.date && <time key="date" dateTime={quote.date}>{formatDate(quote.date)}</time>,
-    quote.source && (
+    quote.sources && quote.sources.length > 0 && (
       <span key="source">
-        Source:{' '}
-        {quote.source.href ? <a href={quote.source.href}>{sourceText(quote.source)}</a> : sourceText(quote.source)}
+        {quote.sources.length > 1 ? 'Sources' : 'Source'}:{' '}
+        {quote.sources.map((source, i) => (
+          <span key={`${source.label}-${i}`}>
+            {i > 0 && '; '}
+            {source.href ? <a href={source.href}>{sourceText(source)}</a> : sourceText(source)}
+          </span>
+        ))}
       </span>
     ),
     permalink && <a key="link" className="sv-quote__permalink" href={`#${quoteAnchor(quote)}`}>Link to this quote</a>,

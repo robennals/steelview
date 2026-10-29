@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChartAbout, EventStrip, formatDate, type StripEvent } from '@/components/report';
+import { ChartAbout, EventStrip, SourceLine, formatDate, type SourceCredit, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
@@ -8,6 +8,7 @@ import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
+import { lineSourceNumbers } from '@/lib/content/sources';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
@@ -399,7 +400,7 @@ function Reading({
   series,
   reading,
   factId,
-  sourceNumber,
+  credits,
   observations,
   intro,
   events,
@@ -411,7 +412,8 @@ function Reading({
   series: Series;
   reading: SeriesReading;
   factId: string;
-  sourceNumber: number;
+  /** The reading's source, then the sources of any of its lines that have their own. */
+  credits: SourceCredit[];
   observations?: ReactNode;
   intro?: string;
   events: StripEvent[];
@@ -554,22 +556,43 @@ function Reading({
       )}
 
       {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
-      {!preview && <p className="sv-chart__credit">Source: <a href={panel ? (reading.source ?? series.source).url : at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher}{panel ? '' : ` [${sourceNumber}]`}</a></p>}
+      {!preview && <SourceLine sources={credits} />}
 
       {observations}
     </section>
   );
 }
 
+/**
+ * The source line under one reading: the reading's own source (else the
+ * series'), then each line's own source, each linked to its numbered
+ * reference, or straight to the source where the fact's list is not on the page.
+ * Numbers follow `factSources`.
+ */
+export function readingCredits(series: Series, readingIndex: number, sourceOffset: number, factId: string, directSources = false): SourceCredit[] {
+  const reading = series.readings[readingIndex];
+  const own = reading.source ? series.readings.slice(0, readingIndex + 1).filter(r => r.source).length : 0;
+  const credit = (source: Source, number: number): SourceCredit =>
+    directSources ? { label: source.publisher, href: source.url } : { label: source.publisher, href: `#source-${factId}-${number}`, number };
+  const lineNumbers = lineSourceNumbers(series, sourceOffset, readingIndex);
+  const lines = reading.lines.flatMap((line, i) => {
+    const number = lineNumbers[i];
+    return line.source && number !== undefined ? [credit(line.source, number)] : [];
+  });
+  return [credit(reading.source ?? series.source, sourceOffset + 1 + own), ...lines];
+}
+
 /** A series' events as strip markers, each crediting the fact citation that dates it. */
 export function stripEvents(series: Pick<Series, 'events'>, factId: string, sources: Source[], directSources = false): StripEvent[] {
   return series.events.map(event => {
-    const cited = event.source === undefined ? undefined : sources[event.source - 1];
     return {
       date: event.period,
       label: event.label,
       description: event.note,
-      source: cited && { label: cited.publisher, href: directSources ? cited.url : `#source-${factId}-${event.source}`, number: event.source },
+      sources: event.sources.map(n => {
+        const cited = sources[n - 1];
+        return { label: cited?.publisher ?? `Source ${n}`, href: directSources && cited ? cited.url : `#source-${factId}-${n}`, number: n };
+      }),
     };
   });
 }
@@ -621,7 +644,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
 
       <SeriesHighlight>
         {readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} credits={readingCredits(series, series.readings.indexOf(reading), sourceOffset, factId, panel)} />
         ))}
       </SeriesHighlight>
 

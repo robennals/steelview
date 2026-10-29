@@ -67,11 +67,11 @@ test('cited table cells keep their value and turn citations into credits', () =>
 });
 
 test('item citations become item credits', () => {
-  assert.equal(keyFiguresProps(figureOf('keyFigures'), context).figures[0].source?.number, 11);
+  assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].sources?.map(s => s.number), [11]);
   assert.equal(keyFiguresProps(figureOf('keyFigures'), context).figures[0].qualifier, 'more than');
-  assert.equal(timelineProps(figureOf('timeline'), context).events[1].source?.label, 'Court of First Instance, Antwerp');
-  assert.equal(compositionBarProps(figureOf('compositionBar'), context).rows[1].source?.number, 13);
-  assert.equal(estimateRangeProps(figureOf('estimateRange'), context).estimates[3].source?.number, 17);
+  assert.equal(timelineProps(figureOf('timeline'), context).events[1].sources?.[0].label, 'Court of First Instance, Antwerp');
+  assert.deepEqual(compositionBarProps(figureOf('compositionBar'), context).rows[1].sources?.map(s => s.number), [13]);
+  assert.deepEqual(estimateRangeProps(figureOf('estimateRange'), context).estimates[3].sources?.map(s => s.number), [17]);
   assert.deepEqual(caveatListProps(figureOf('caveatList'), context).items[2].sources?.map(s => s.number), [26]);
 });
 
@@ -88,8 +88,17 @@ test('period-timeline events are strip events crediting their citation', () => {
     date: '2026-05-01',
     label: 'Letter says hostilities "have terminated"',
     description: undefined,
-    source: { label: 'The White House', href: '#source-figure-examples-4', number: 4 },
+    sources: [{ label: 'The White House', href: '#source-figure-examples-4', number: 4 }],
   }]);
+});
+
+test('an item citing several sources gets a credit for each, in the order written', () => {
+  const timeline = figureOf('timeline');
+  const several = { ...timeline, events: timeline.events.map((e, i) => (i === 0 ? { ...e, sources: [9, 3] } : e)) };
+  assert.deepEqual(timelineProps(several, context).events[0].sources?.map(s => s.number), [9, 3]);
+  const periods = figureOf('periodTimeline');
+  const cited = { ...periods, rows: periods.rows.map((row, i) => (i === 0 ? { ...row, periods: row.periods.map(p => ({ ...p, sources: [2, 3] })) } : row)) };
+  assert.deepEqual(periodTimelineProps(cited, context).rows[0].periods[0].sources?.map(s => s.label), ['Congressional Research Service', 'US Department of State']);
 });
 
 test('map presets resolve to their tiles and bare numbers become data', () => {

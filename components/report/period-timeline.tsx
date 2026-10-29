@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { EventKey, EventLane, type StripEvent } from './event-strip';
-import { ReportFigure } from './figure';
+import { ReportFigure, SourceCredits } from './figure';
 import { formatDate, slugify } from './format';
 import { seriesColor } from './scale';
 import { edgeOf, percentAlong, spanOf, toYear, yearTicks, type TimeSpan } from './time-axis';
@@ -15,6 +15,8 @@ export type Period = {
   label?: string;
   /** Joins to `categories[].id` for colour. Name the category in `label` too — colour alone is not enough. */
   category?: string;
+  /** A period dated by a source of its own: listed beside it in the table. */
+  sources?: SourceCredit[];
 };
 
 export type PeriodRow = { label: string; periods: Period[] };
@@ -210,7 +212,10 @@ export function PeriodTimeline({
             row.periods.map((p, i) => (
               <tr key={`${r}-${i}`}>
                 <th scope="row">{row.label}</th>
-                <td>{p.label ?? '—'}</td>
+                <td>
+                  {p.label ?? '—'}
+                  {p.sources && <SourceCredits sources={p.sources} />}
+                </td>
                 <td>{formatDate(p.from)}</td>
                 <td>{p.to ? formatDate(p.to) : 'Ongoing'}</td>
               </tr>
