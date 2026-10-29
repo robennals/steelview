@@ -13,6 +13,8 @@ import {
   seriesTable,
   splitAtBreaks,
   yearTicks,
+  dropCrowdedTicks,
+  tickLabelWidth,
 } from './series-chart';
 
 const source = {
@@ -249,4 +251,34 @@ test('a period a reading does not cover leaves an empty cell rather than a wrong
   const { rows } = seriesTable(s);
   assert.equal(rows[0].cells[2], null);
   assert.equal(rows[2].cells[2], '0.30%');
+});
+
+/** A one-line annual series over `[from, to]`, for time-axis tests. */
+function span(from: number, to: number): Series {
+  const s = series();
+  return {
+    ...s,
+    coverage: { from: String(from), to: String(to) },
+    breaks: [],
+    readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points: [{ period: String(from), value: 1 }, { period: String(to), value: 2 }] }] }],
+  };
+}
+
+test('tickLabelWidth allows 0.6em per character plus a gap', () => {
+  assert.equal(tickLabelWidth('2020', 10), 30);
+});
+
+test('dropCrowdedTicks drops interior ticks that would print over an end tick, never the ends', () => {
+  const ticks = [{ x: 0, label: '1950' }, { x: 100, label: '2000' }, { x: 180, label: '2020' }, { x: 200, label: '2026' }];
+  assert.deepEqual(dropCrowdedTicks(ticks, 11).map((t) => t.label), ['1950', '2000', '2026']);
+  assert.deepEqual(dropCrowdedTicks(ticks.slice(2), 11).map((t) => t.label), ['2020', '2026']);
+});
+
+test('a 1950–2026 axis drops 2020 at narrow width and keeps it at wide width', () => {
+  const s = span(1950, 2026);
+  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow').timeTicks.map((t) => t.label), ['1950', '1960', '1980', '2000', '2026']);
+  assert.deepEqual(
+    layoutReading(s, s.readings[0], 'wide').timeTicks.map((t) => t.label),
+    ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020', '2026']
+  );
 });

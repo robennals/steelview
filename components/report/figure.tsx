@@ -18,6 +18,7 @@ export function ReportFigure({
   description,
   sources,
   note,
+  footer,
   headingLevel = 2,
   className,
   children,
@@ -28,6 +29,8 @@ export function ReportFigure({
   sources?: SourceCredit[];
   /** Method notes, caveats, coverage: shown collapsed under "About this data". */
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": a figure's Observations. */
+  footer?: ReactNode;
   headingLevel?: 2 | 3;
   className?: string;
   children: ReactNode;
@@ -43,6 +46,7 @@ export function ReportFigure({
       )}
       {children}
       {sources && sources.length > 0 && <SourceLine sources={sources} />}
+      {footer}
       {note && (
         <details className="sv-chart__methodology">
           <summary>About this data</summary>

@@ -120,6 +120,25 @@ export function yearTicks(fromYear: number, toYear: number, step: number): numbe
 
 /* ------------------------------------------------------------- formatting */
 
+/** About 0.6em per digit in the sans tick face, plus a gap. */
+export function tickLabelWidth(label: string, fontSize: number): number {
+  return label.length * fontSize * 0.6 + 6;
+}
+
+/**
+ * Drop interior ticks too close to either end tick to fit their labels. The
+ * ends are always kept: they name the published range. A 1950–2026 axis at
+ * 390px otherwise prints "2020" over "2026".
+ */
+export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: T[], fontSize: number): T[] {
+  if (ticks.length <= 2) return ticks;
+  const first = ticks[0];
+  const last = ticks[ticks.length - 1];
+  const fits = (a: T, b: T) =>
+    Math.abs(a.x - b.x) >= (tickLabelWidth(a.label, fontSize) + tickLabelWidth(b.label, fontSize)) / 2;
+  return ticks.filter((tick, index) => index === 0 || index === ticks.length - 1 || (fits(tick, first) && fits(tick, last)));
+}
+
 export type SeriesUnit = SeriesReading['unit'];
 
 const MINUS = '−';
@@ -294,8 +313,11 @@ export function layoutReading(
       label:
         index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
     })),
-    timeTicks: yearTicks(periodYear(series.coverage.from), periodYear(series.coverage.to), geometry.yearTickStep).map(
-      (year) => ({ year, x: x(String(year)), label: String(year) })
+    timeTicks: dropCrowdedTicks(
+      yearTicks(periodYear(series.coverage.from), periodYear(series.coverage.to), geometry.yearTickStep).map(
+        (year) => ({ year, x: x(String(year)), label: String(year) })
+      ),
+      geometry.fontSize
     ),
     breaks: series.breaks.map((gap) => ({ ...gap, x: x(gap.period) })),
     zeroY: valueMin <= 0 && valueMax >= 0 ? y(0) : null,
