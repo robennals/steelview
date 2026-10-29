@@ -1,9 +1,10 @@
 # US voter ID and citizenship checks — outline
 
-> **Status: agent draft 4, revised against the evidence**
-> ([stage 4a](../../WORKFLOW.md#4a-rewrite-each-viewpoints-case-against-the-evidence)),
-> for human review with [candidate-data.md](candidate-data.md). `D` numbers
-> are candidates there. All figures must be quoted verbatim in stage 5.
+> **Status: agent draft 5, revised against the built reports** (stage 4a
+> repeated after stage 5, 2026-10-29). The viewpoints in
+> `content/topics/us-voter-id/viewpoints/` are written from this draft. `D`
+> numbers are candidates in [candidate-data.md](candidate-data.md); observation
+> ids are in [stage5-results.md](stage5-results.md).
 
 ## Topic
 
@@ -13,7 +14,8 @@
   ID to vote and documentary proof of citizenship to register, how voter
   rolls should be checked, and who sets those rules. The House has passed the
   SAVE America Act (national photo ID and proof of citizenship); the Senate
-  has not. Courts blocked the proof-of-citizenship part of the March 2025
+  has not voted on it. The Senate's 52–46 cloture vote of 8 August 2026 was
+  on S. 5271, a separate photo-ID-only bill, not on the SAVE America Act. Courts blocked the proof-of-citizenship part of the March 2025
   executive order. The Supreme Court let DHS's revamped SAVE citizenship
   database be used again in September 2026.
 - **Scope boundaries:** Identity and eligibility checks at registration and
@@ -34,15 +36,21 @@
     Chicago, where the 1982 federal investigation produced 58 convictions by
     1985 (D48, D49). Fraud of that kind is the reason to check identity
     before a ballot is cast, not only prosecute afterwards.
-  - Northern Ireland adopted photo ID after personation became widespread
-    (D58); Britain (2023) and Canada (2007) now require ID too (D57, D59).
-    The burden can be small: in Britain's 2024 general election, 0.08% of
-    in-person voters were turned away for lack of ID (D57).
+  - Northern Ireland adopted ID after organised personation (149 arrests at
+    the 1983 general election) and saw no fall in turnout afterwards (D58).
+    Britain (2023) and Canada (2007) now require ID too, but adopted it to
+    close a gap, not after detected fraud (D57, D59). The burden can be
+    small: in Britain's 2024 general election, 0.08% of in-person voters were
+    turned away and did not return (D57).
   - *Crawford* (2008) upheld Indiana's ID law on the state's interest in
     deterrence and confidence, without requiring proof of impersonation.
-  - Non-citizens do reach the rolls, mostly by administrative error: Ohio
-    referred 1,084 apparent non-citizen registrants in October 2025, 167 of
-    whom apparently voted. Checking at registration closes that gap.
+  - Non-citizens do reach the rolls, mostly by administrative error, and
+    every state that looked found some: Ohio referred 1,084 apparent
+    non-citizen registrants in October 2025, 167 of whom allegedly voted.
+    The routes all run through registration, so checking there closes them.
+  - Few citizens lack photo ID of any kind (about 1%), and the best national
+    study finds no turnout effect; a rule can be designed to ask for
+    documents only when records fail, as six proof-of-citizenship states do.
   - Large majorities across parties and races support photo ID.
 - **Empirical questions**
   - What is the documented history of in-person and registration fraud in the US, and how did it end where it ended?
@@ -55,8 +63,10 @@
     - *Context:* registrants checked (the denominator); flags later confirmed or reversed; margins of close races.
   - What share of Americans, by party and race, support photo ID and proof of citizenship?
     - *Context:* the same polls' support for access measures; change over time.
-- **Concedes:** detected impersonation today is rare, and Britain had one
-  personation conviction in the year before its law (D57); the Chicago fraud
+- **Concedes:** detected impersonation today is rare, and Britain had five
+  convictions and six cautions for personation since 2016 (D57); Kansas's
+  documents-first rule blocked 31,089 applicants against at most 39
+  non-citizens on its rolls, so design matters; the Chicago fraud
   was caught by prosecutors, not ID checks, and the modern cases (East
   Chicago, Paterson) were absentee fraud that polling-place ID would not
   reach (D48, D51, D52); the best national study finds ID laws do not
@@ -67,21 +77,27 @@
 ### `turned-away` — These rules turn away eligible citizens to fix a problem that barely exists
 
 - **Arguments**
-  - Kansas's proof-of-citizenship law blocked 31,089 applicants between 2013
-    and 2016, against at most 39 non-citizens found on its rolls in 19 years.
+  - Kansas's proof-of-citizenship law blocked 31,089 applicants, against at
+    most 39 non-citizens found on its rolls in 19 years. (The court found
+    "no evidence about how many" of the blocked applicants lacked a
+    document; the case is that they were eligible and kept off, not that
+    they could not have complied.)
   - Arizona's 2024 database error left about 218,000 long-registered voters
     without proof of citizenship on file.
   - When Texas began requiring an ID number on mail ballots, rejections rose
-    to 12.4% in the March 2022 primary before falling to about 3.5% (D16,
-    D31).
+    to 12.38% in the March 2022 primary, and about 90% of those rejected did
+    not vote another way; the rate then fell but stayed above Texas's 2020
+    rate and the national rate (D16, D31).
   - The burden falls hardest on young, new and Black registrants, as GAO
     found in Kansas and Tennessee, even where total turnout barely moves.
   - Officials have used eligibility rules to exclude voters before — poll
     taxes, literacy tests and selective purges (D53, D54) — so any rule that
     officials administer carries that risk.
   - Database matching wrongly flags citizens: about 2,000 of the 3,251 people
-    Alabama flagged as non-citizens in 2024 were citizens (D30); Iowa
-    confirmed 277 of 2,176 flags (D29).
+    Alabama flagged as non-citizens in 2024 were citizens (D30); 578 of the
+    2,724 voters SAVE flagged in Texas have shown they are citizens (D28).
+    (Iowa's 277 came from a separate, later check, not from its 2,176
+    flags, so it is not a reversal rate and is no longer used.)
 - **Empirical questions**
   - How many registrations and ballots have been rejected under ID and citizenship rules, and how many of those people were eligible?
     - *Context:* rates before the rule and in states without it; how many were cured.
@@ -133,8 +149,10 @@
   - Has any state combined strict ID with broad access, and what happened to turnout and confidence?
 - **Concedes:** confidence follows who won more than the rules (D18–D20);
   the only state test of the combination is Georgia (D39), where mail
-  rejections stayed near the national rate (D31) but confidence moved with
-  the result; neither party's leadership has offered this trade recently.
+  rejections fell after SB 202 to near the national rate (D31) but
+  confidence moved with the result and with party; neither party's
+  leadership has offered this trade recently: both main national bills
+  sought one-sided mandates.
 - **Principles:** results the losers can accept; an equal voice for every citizen.
 
 ### `states-decide` — Election rules belong to the states, and presidents have no say in them
@@ -193,6 +211,66 @@ Kind first; then the viewpoint ids divided.
   `states-decide` rejects both.
 
 ## Revision notes
+
+### Draft 5 (stage 4a repeated, against the built reports, 2026-10-29)
+
+What the seven reports showed that the draft-4 arguments had to absorb:
+
+- **`prove-identity`:**
+  - Britain's record is "five convictions and six cautions" for
+    polling-station personation since 2016, not "one conviction in 2019".
+  - "Other democracies adopted ID after fraud" holds only for Northern
+    Ireland; Britain and Canada adopted it to close a perceived gap. The
+    viewpoint now argues from Northern Ireland's record (personation, then no
+    fall in turnout) and from the G7 rule set, not from a fraud wave abroad.
+  - **Added:** non-citizens reach the rolls mostly through paperwork errors
+    at registration (`how-noncitizens-reach-rolls`), which is the argument
+    for checking there; few citizens lack photo ID of any kind
+    (`no-id-versus-outdated-id`).
+  - **Added concession:** Kansas's documents-first rule is the case against
+    its own preferred tool, so the viewpoint argues for records-first checks
+    with documents only when records fail.
+- **`turned-away`:**
+  - Iowa's 277 came from a separate check after federal records became
+    available, not from the 2,176 pre-election flags, so "Iowa confirmed 277
+    of 2,176" is wrong and is dropped. Texas's statewide figure (578 of 2,724
+    SAVE flags shown citizens, September 2026) replaces it.
+  - Kansas: the court found "no evidence about how many" of the 31,089
+    blocked applicants lacked documents. The argument now says they were
+    eligible applicants kept off, not that they could not comply; whether
+    they could have is a crux.
+  - Texas SB 1: 12.38% in the March 2022 primary (not 12.4%); the general
+    election rate fell but stayed above Texas's 2020 and the national rate.
+  - Georgia is no longer usable as evidence of harm from ID numbers: its
+    mail-ballot rejection rate fell after SB 202. The racial turnout gap
+    widened, but its authors do not attribute that to the law; conceded.
+- **`clean-rolls`:**
+  - Pew's inaccuracy study used data to March 2011 (published 2012); dated
+    accordingly.
+  - **Added:** ERIC's departures (nine Republican-led states, 2022–23)
+    reduce the cross-state matching the viewpoint relies on; the viewpoint
+    argues for rejoining or replacing it.
+  - **Added concession:** the non-response route, the largest single
+    reason for removal, rests on silence; Ohio's 2012 replies show many
+    recipients had not moved.
+- **`id-plus-access`:**
+  - Georgia's mail rejections *fell* after SB 202 (not "stayed near the
+    national rate"); that strengthens the Georgia example on access, but
+    confidence still moved by party (`sb202-self-reported`).
+  - **Added:** Clinton's finding that voters trust results less under
+    procedures they oppose, which is the mechanism behind "rules both sides
+    chose".
+- **`states-decide`:**
+  - The 52–46 Senate vote was on S. 5271, a separate photo-ID-only bill;
+    the SAVE America Act itself has not had a Senate vote. Both parties'
+    national bills still stalled at 60 votes.
+  - **Added:** *Moore v. Harper* — "the states" means each state's full
+    constitutional system, including its courts.
+
+Raised but not changed: `prove-identity` keeps the Chicago and Kansas City
+cases even though officials did most of that fraud, because ghost voting at
+the polls is in the same record (`in-person-ghost-voting`); the counter-record
+is conceded in the viewpoint rather than dropped.
 
 ### Draft 4 (stage 4a, against the evidence)
 
