@@ -1827,33 +1827,46 @@
      is standing on a fact the page will show you. The text keeps full ink
      strength for readability and a quiet dotted accent rule under it
      carries the signal. A principle citation gets the same rule in the
-     principle hue, so the two kinds of support stay distinguishable. */
+     principle hue, so the two kinds of support stay distinguishable.
+
+     The dots are a repeating background rather than a dotted
+     text-decoration, because browsers pack decoration dots so tightly they
+     read as a smudged solid line, and give no control over the spacing. */
   .prose-body a.sv-cite,
   .prose-body a.sv-principle-cite {
+    --sv-cite-hue: var(--accent);
+    --sv-cite-strength: 65%;
     color: var(--ink);
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: color-mix(in srgb, var(--accent) 65%, transparent);
-    text-decoration-thickness: 1px;
-    text-decoration-skip-ink: none;
-    text-underline-offset: 0.25em;
-    transition: text-decoration-color 120ms ease;
+    text-decoration: none;
+    background-image: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--sv-cite-hue) var(--sv-cite-strength), transparent) 0.8px,
+      transparent 1.2px
+    );
+    background-size: 5px 2.4px;
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    padding-bottom: 0.12em;
   }
 
   .prose-body a.sv-principle-cite {
-    text-decoration-color: color-mix(in srgb, var(--principle) 65%, transparent);
+    --sv-cite-hue: var(--principle);
+  }
+
+  /* On dark paper a part-transparent dot all but disappears. */
+  @media (prefers-color-scheme: dark) {
+    .prose-body a.sv-cite,
+    .prose-body a.sv-principle-cite {
+      --sv-cite-strength: 100%;
+    }
   }
 
   .prose-body a.sv-cite:hover,
   .prose-body a.sv-cite:focus-visible,
   .prose-body a.sv-principle-cite:hover,
   .prose-body a.sv-principle-cite:focus-visible {
-    text-decoration-color: var(--accent);
-  }
-
-  .prose-body a.sv-principle-cite:hover,
-  .prose-body a.sv-principle-cite:focus-visible {
-    text-decoration-color: var(--principle);
+    --sv-cite-strength: 100%;
+    background-size: 4px 2.4px;
   }
 
   /* An unresolved premise should remain visible in the argument without
