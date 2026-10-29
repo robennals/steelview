@@ -4,6 +4,7 @@ import { compositionSumError, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesTopic } from './__fixtures__/figure-examples';
 import { factSources } from './sources';
+import { US_STATE_TILES } from '../../components/report/geo/tiles';
 
 function fact(over: Partial<Fact> & { id: string }): Fact {
   return {
@@ -772,6 +773,17 @@ test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a 
   assert.ok(hasError(topic, 'say why in `note`'));
 });
 
+test('F9: the US territories are areas of us-states, and count as gaps only once a figure names one', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap');
+  map.note = undefined;
+  map.data = Object.fromEntries(US_STATE_TILES.map(tile => [tile.id, 1]));
+  assert.ok(!hasError(topic, `figure ${map.id}: has no data`), 'all 50 states and DC leave no gap');
+  map.data = { ...map.data, PR: 1.4 };
+  assert.ok(!hasError(topic, '"PR" is not an area'));
+  assert.ok(hasError(topic, `figure ${map.id}: has no data for GU, MP, AS, VI — say why in \`note\``));
+});
+
 test('F10: bars fit their axis, compositions their categories, estimates their order', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'barChart').domainMax = 1;
@@ -1036,10 +1048,10 @@ test('F9, categorical: an area with no category needs a note saying why', () => 
 test('F9, geo map: area, highlight and inset ids belong to the preset', () => {
   const { topic, fact } = figuresTopic();
   const map = figureOf(fact, 'geoMap');
-  map.areas = { ...map.areas, LI: 'all' };
+  map.areas = { ...map.areas, ZZ: 'all' };
   map.highlight = ['XX'];
   map.insets = [{ regionIds: ['YY'] }];
-  assert.ok(hasError(topic, 'figure postal-voting: "LI" is not an area of world'));
+  assert.ok(hasError(topic, 'figure postal-voting: "ZZ" is not an area of world'));
   assert.ok(hasError(topic, 'figure postal-voting: highlight "XX" is not an area of world'));
   assert.ok(hasError(topic, 'figure postal-voting: inset area "YY" is not an area of world'));
 });

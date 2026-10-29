@@ -204,7 +204,7 @@ function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding
 export function tileMapProps(f: FigureOf<'tileMap'>, c: FigureContext): R.TileMapProps {
   return {
     ...frame(f, c),
-    tiles: mapTiles(f.map),
+    tiles: mapTiles(f),
     areaLabel: f.areaLabel,
     highlight: f.highlight,
     ...mapEncoding(f),

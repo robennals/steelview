@@ -101,6 +101,9 @@ const INSET_BOX = { width: 116, height: 92 };
 const INSET_LABEL_SPACE = 42;
 const MARKER_MAX_RADIUS = 12;
 const MARKER_DEFAULT_RADIUS = 4.5;
+/** An area drawn as a dot: big enough to show its fill, inside an invisible hit area several times wider. The tile view is the roomier way in. */
+const DOT_RADIUS = 3.5;
+const DOT_HIT_RADIUS = 9;
 
 function inBounds({ lon, lat }: MapMarker, b: Bounds) {
   return lon >= b.minLon && lon <= b.maxLon && lat >= b.minLat && lat <= b.maxLat;
@@ -298,22 +301,38 @@ export function GeoMap(props: GeoMapProps) {
     list.map(region => {
       const look = lookFor(region);
       const d = pathFor(region.coordinates, projectionToUse);
+      const areaAttributes = {
+        'data-region': region.id,
+        'data-readout': look.readout,
+        'data-missing': look.missing ? 'true' : undefined,
+        'data-highlight': highlight.includes(region.id) ? 'true' : undefined,
+      };
+      // A dot, when there is one, is what a keyboard reaches; an outline under
+      // it (Washington DC's) still answers the pointer.
+      const focusable = interactive ? { tabIndex: 0, role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true };
+      const dot = region.point && projectionToUse.project(region.point);
       return (
         <Fragment key={region.id}>
-          <path
-            className="sv-geo-map__region"
-            d={d}
-            fillRule="evenodd"
-            style={{ fill: look.fill }}
-            data-region={region.id}
-            data-readout={look.readout}
-            data-missing={look.missing ? 'true' : undefined}
-            data-highlight={highlight.includes(region.id) ? 'true' : undefined}
-            vectorEffect="non-scaling-stroke"
-            {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true })}
-          />
+          {d && (
+            <path
+              className="sv-geo-map__region"
+              d={d}
+              fillRule="evenodd"
+              style={{ fill: look.fill }}
+              {...areaAttributes}
+              vectorEffect="non-scaling-stroke"
+              {...(dot ? { 'aria-hidden': true } : focusable)}
+            />
+          )}
           {/* Over the fill, never instead of it: the colour still reads the value. */}
-          {look.stippled && <path className="sv-geo-map__stipple" d={d} fillRule="evenodd" style={{ fill: `url(#${stippleId})` }} aria-hidden="true" />}
+          {d && look.stippled && <path className="sv-geo-map__stipple" d={d} fillRule="evenodd" style={{ fill: `url(#${stippleId})` }} aria-hidden="true" />}
+          {dot && (
+            <g className="sv-geo-map__dot" {...areaAttributes} {...focusable}>
+              <circle className="sv-geo-map__dot-hit" cx={dot[0]} cy={dot[1]} r={DOT_HIT_RADIUS} />
+              <circle className="sv-geo-map__dot-mark" cx={dot[0]} cy={dot[1]} r={DOT_RADIUS} style={{ fill: look.fill }} vectorEffect="non-scaling-stroke" />
+              {look.stippled && <circle className="sv-geo-map__stipple" cx={dot[0]} cy={dot[1]} r={DOT_RADIUS} style={{ fill: `url(#${stippleId})` }} />}
+            </g>
+          )}
         </Fragment>
       );
     });

@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { TileMap } from '../tile-map';
-import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES } from '../geo/tiles';
+import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TILES } from '../geo/tiles';
 import {
   ASYLUM_EUROPE_SOURCES,
   US_STATES_ILLUSTRATIVE,
+  US_TERRITORIES_ILLUSTRATIVE,
   ASYLUM_PER_10K_2024,
   BORN_ABROAD_BY_REGION_ILLUSTRATIVE,
   CHANGE_BY_REGION_ILLUSTRATIVE,
@@ -20,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A grid cartogram: every area one equal tile, placed roughly where it sits on the map, shaded on the same stepped scale as GeoMap and labelled with its code and value. Use it to compare areas of very different size fairly — European countries by asylum claims per head, states or regions by a rate — where a true-shape map would let the largest landmass dominate. Presets: `EUROPE_COUNTRY_TILES` (EU27 plus UK, Norway, Switzerland and Iceland, ISO 2-letter ids), `US_STATE_TILES` (50 states plus DC, USPS codes) and `UK_REGION_TILES` (ids match `UK_ITL1_REGIONS`). Any `MapTile[]` grid works.',
+          'A grid cartogram: every area one equal tile, placed roughly where it sits on the map, shaded on the same stepped scale as GeoMap and labelled with its code and value. Use it to compare areas of very different size fairly — European countries by asylum claims per head, states or regions by a rate — where a true-shape map would let the largest landmass dominate. Presets: `EUROPE_COUNTRY_TILES` (the EU27, the four EFTA states and the UK, ISO 2-letter ids), `US_STATE_TILES` (50 states plus DC, USPS codes; add `US_TERRITORY_TILES` for a row of the five territories) and `UK_REGION_TILES` (ids match `UK_ITL1_REGIONS`). Any `MapTile[]` grid works.',
       },
     },
   },
@@ -35,7 +36,7 @@ const meta = {
     highlight: ['GB'],
     areaLabel: 'Country',
     sources: ASYLUM_EUROPE_SOURCES,
-    note: 'Includes applicants and dependants, not grants of protection. Liechtenstein (21.2 per 10,000) is in the source but not in this tile layout.',
+    note: 'Includes applicants and dependants, not grants of protection.',
   },
 } satisfies Meta<typeof TileMap>;
 
@@ -58,6 +59,23 @@ export const UsStates: Story = {
     breaks: undefined,
     steps: 5,
     areaLabel: 'State',
+    sources: ILLUSTRATIVE,
+    note: undefined,
+  },
+};
+
+/** The states and, under them, the five territories: the row a US map gains when its data covers one. */
+export const UsStatesAndTerritories: Story = {
+  args: {
+    title: 'Share of residents born abroad, states and territories',
+    description: 'Illustrative data: values generated to exercise the layout, not Census Bureau figures. The territories sit in their own row under the states; Wyoming is left out to show how a missing state reads.',
+    tiles: [...US_STATE_TILES, ...US_TERRITORY_TILES],
+    data: { ...US_STATES_ILLUSTRATIVE, ...US_TERRITORIES_ILLUSTRATIVE },
+    valueLabel: 'Share of residents born abroad',
+    format: { unit: 'percent', decimals: 0 },
+    highlight: [],
+    breaks: [0, 5, 10, 20, 30, 50],
+    areaLabel: 'State or territory',
     sources: ILLUSTRATIVE,
     note: undefined,
   },

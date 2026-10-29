@@ -792,8 +792,8 @@ has; the rest draw a component (see Storybook for each one's look):
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` (or `sources`); a date may be a decade (`1850s`) or a circa year (`c. 1888`) |
 | `periodTimeline` | spans per row, with point `events`; a period or event may cite its own `sources`. A period with no `to` runs to the axis end: the topic's `lastUpdated` unless the figure sets `to`. It reads "still in force" when the axis ends on `lastUpdated`, and "no end by <axis end>" when the data stops earlier (`to: '2017-06'`). A label goes inside its bar if it fits, else just right of it if that part of the row is free, else only in the legend, the hover-and-focus readout and the table — so keep labels short and name categories in `categories`. Spans under 18 months get month ticks |
-| `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
-| `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
+| `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category. `us-states` adds a row for the five territories (`PR`, `VI`, `GU`, `AS`, `MP`) when the figure names one; `europe-countries` is the EU27, the four EFTA states and the UK |
+| `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas. Every sovereign state is drawable: the 29 too small for the world outlines (Liechtenstein, Monaco, Tuvalu, …) are dots |
 | `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
@@ -1177,7 +1177,9 @@ such as `london` for `uk-itl1`).
 **A map with gaps says why.** A `tileMap` or `geoMap` area with no datum or
 category reads "No data"; unexplained, a gap looks like a selection, so a map
 that leaves out any area of its preset needs a `note` saying why. A world map
-of a dozen countries therefore always has a note.
+of a dozen countries therefore always has a note. The US territories count
+only once the figure names one: a map of the 50 states and DC needs no note
+about Guam, but one that gives Puerto Rico must explain the other four.
 
 **A scatter plot's points are named and checked.** Each point has a unique
 slug `id`, a short `label` printed beside it, a `name` for the readout and
@@ -1853,7 +1855,7 @@ them.
 | A timeline date is a partial date, a decade or a circa year | `lib/content/schema.ts` |
 | A `format: date` column holds only YYYY, YYYY-MM or YYYY-MM-DD dates | `lib/content/validate.ts` (F6) |
 | At most six key figures | `lib/content/validate.ts` (F8) |
-| Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
+| Map areas belong to the preset (the US territories and the world's small states included), breaks ascend, and a gap among the areas drawn is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
 | A bar chart's rows give `value`, or with `series` a `values` map naming every series (`null` for none) and at least one number; `style` only with `series`; a dumbbell has exactly two series and only it labels ends, by series key | `lib/content/schema.ts`, `lib/content/validate.ts` (F10, `pairedBarErrors`) |
 | A slice explorer's rows name every dimension, no combination twice, values within a dimension's `values` (each used), numbers for measures; its defaults exist, never split by a `combinable: false` dimension or pick two of its values, and draw at least one bar | `lib/content/validate.ts` (`sliceErrors`) |

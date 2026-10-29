@@ -1,7 +1,7 @@
 import { extentValues, pointValue, type FigureNumber } from '@/components/report/qualified';
 import { appliedFilters, slice } from '@/components/report/slice';
 import { citedFactTargets, neededClaims } from './markdown';
-import { geoRegions, mapTiles } from './map-presets';
+import { geoRegions, mapTileIds, mapTiles } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
 import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
 import { factSources, figureCitations } from './sources';
@@ -610,11 +610,11 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       }
       break;
     case 'tileMap':
-      errors.push(...mapErrors(figure, mapTiles(figure.map).map(tile => tile.id), figure.map, where));
+      errors.push(...mapErrors(figure, mapTileIds(figure.map), mapTiles(figure).map(tile => tile.id), figure.map, where));
       break;
     case 'geoMap': {
       const areas = geoRegions(figure.regions).regions.map(region => region.id);
-      errors.push(...mapErrors(figure, areas, figure.regions, where));
+      errors.push(...mapErrors(figure, areas, areas, figure.regions, where));
       for (const inset of figure.insets ?? []) {
         for (const id of inset.regionIds) if (!areas.includes(id)) errors.push(`${where} inset area "${id}" is not an area of ${figure.regions}`);
       }
@@ -851,9 +851,11 @@ function decimalPlaces(n: number): number {
 /**
  * F9, for tile maps and geo maps alike: every area id belongs to the preset,
  * a numeric scale runs upwards, categories are distinct and every assignment
- * names one, and any area left without a value or category is explained.
+ * names one, and any area drawn without a value or category is explained.
+ * `areas` is every id the preset knows; `shown` the ones this figure draws —
+ * fewer when an optional row, such as the US territories, is left out.
  */
-function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>,areas: string[], preset: string, where: string): string[] {
+function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>, areas: string[], shown: string[], preset: string, where: string): string[] {
   const errors: string[] = [];
   const keyed = figure.categories ? figure.areas ?? {} : figure.data ?? {};
   for (const key of Object.keys(keyed)) if (!areas.includes(key)) errors.push(`${where} "${key}" is not an area of ${preset}`);
@@ -872,7 +874,7 @@ function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>,areas: strin
     }
   }
   // A missing area reads "No data"; unexplained, a gap looks like a selection.
-  const missing = areas.filter(id => !(id in keyed));
+  const missing = shown.filter(id => !(id in keyed));
   if (missing.length > 0 && !figure.note) {
     const shown = missing.length > 12 ? `${missing.slice(0, 12).join(', ')} and ${missing.length - 12} more` : missing.join(', ');
     errors.push(`${where} has no data for ${shown} — say why in \`note\``);

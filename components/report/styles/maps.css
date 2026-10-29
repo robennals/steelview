@@ -341,6 +341,37 @@
     }
   }
 
+  /* An area too small for its outline (Monaco, Tuvalu, Washington DC) is a
+     dot in its own fill, ringed in ink so a pale step still shows against the
+     sea, inside a transparent hit circle that takes the pointer. */
+  .sv-geo-map__dot {
+    cursor: pointer;
+  }
+
+  .sv-geo-map__dot:focus-visible {
+    outline: none;
+  }
+
+  .sv-geo-map__dot-hit {
+    fill: transparent;
+  }
+
+  .sv-geo-map__dot-mark {
+    stroke: var(--ink-3);
+    stroke-width: 1;
+  }
+
+  .sv-geo-map__dot[data-highlight="true"] .sv-geo-map__dot-mark {
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .sv-geo-map__dot[data-active="true"] .sv-geo-map__dot-mark,
+  .sv-geo-map__dot:focus-visible .sv-geo-map__dot-mark {
+    stroke: var(--ink);
+    stroke-width: 2.5;
+  }
+
   /* A highlighted region keeps its ink outline even with no data. */
   .sv-geo-map__region[data-missing="true"]:not([data-highlight="true"]) {
     stroke: var(--rule-strong);

@@ -37,9 +37,14 @@ export const UK_REGION_TILES: MapTile[] = [
 ];
 
 /**
- * The EU27 plus the UK, Norway, Switzerland and Iceland, keyed by ISO 3166-1
- * alpha-2 code ("GB" for the UK, shown as "UK"; "GR" for Greece, which
- * Eurostat writes "EL" — map Eurostat tables onto these ids when joining).
+ * The EU27, the four EFTA states (Iceland, Liechtenstein, Norway,
+ * Switzerland) and the UK — every country in Eurostat's "EU+" tables — keyed
+ * by ISO 3166-1 alpha-2 code ("GB" for the UK, shown as "UK"; "GR" for
+ * Greece, which Eurostat writes "EL" — map Eurostat tables onto these ids
+ * when joining). Liechtenstein takes the cell under Switzerland, with Italy
+ * one to the west of it, under France: there is no free cell between
+ * Switzerland and Austria, and Italy still borders France, Switzerland and
+ * Malta.
  */
 export const EUROPE_COUNTRY_TILES: MapTile[] = [
   { id: 'IS', code: 'IS', name: 'Iceland', row: 0, col: 0 },
@@ -66,11 +71,12 @@ export const EUROPE_COUNTRY_TILES: MapTile[] = [
   { id: 'RO', code: 'RO', name: 'Romania', row: 4, col: 7 },
   { id: 'PT', code: 'PT', name: 'Portugal', row: 5, col: 1 },
   { id: 'ES', code: 'ES', name: 'Spain', row: 5, col: 2 },
-  { id: 'IT', code: 'IT', name: 'Italy', row: 5, col: 4 },
+  { id: 'IT', code: 'IT', name: 'Italy', row: 5, col: 3 },
+  { id: 'LI', code: 'LI', name: 'Liechtenstein', row: 5, col: 4 },
   { id: 'SI', code: 'SI', name: 'Slovenia', row: 5, col: 5 },
   { id: 'HR', code: 'HR', name: 'Croatia', row: 5, col: 6 },
   { id: 'BG', code: 'BG', name: 'Bulgaria', row: 5, col: 7 },
-  { id: 'MT', code: 'MT', name: 'Malta', row: 6, col: 4 },
+  { id: 'MT', code: 'MT', name: 'Malta', row: 6, col: 3 },
   { id: 'GR', code: 'GR', name: 'Greece', row: 6, col: 7 },
   { id: 'CY', code: 'CY', name: 'Cyprus', row: 6, col: 8 },
 ];
@@ -132,4 +138,19 @@ export const US_STATE_TILES: MapTile[] = [
   { id: 'HI', code: 'HI', name: 'Hawaii', row: 7, col: 0 },
   { id: 'TX', code: 'TX', name: 'Texas', row: 7, col: 4 },
   { id: 'FL', code: 'FL', name: 'Florida', row: 7, col: 9 },
+];
+
+/**
+ * The five inhabited US territories, keyed by USPS code, as a row under the
+ * states: the Pacific three under Hawaii, Puerto Rico and the US Virgin
+ * Islands under Florida, one empty row above so they read as apart from the
+ * states. Shown only when a figure has data for one of them (see
+ * `mapAreas` in lib/content/map-presets.ts).
+ */
+export const US_TERRITORY_TILES: MapTile[] = [
+  { id: 'GU', code: 'GU', name: 'Guam', row: 9, col: 0 },
+  { id: 'MP', code: 'MP', name: 'Northern Mariana Islands', row: 9, col: 1 },
+  { id: 'AS', code: 'AS', name: 'American Samoa', row: 9, col: 2 },
+  { id: 'PR', code: 'PR', name: 'Puerto Rico', row: 9, col: 9 },
+  { id: 'VI', code: 'VI', name: 'US Virgin Islands', row: 9, col: 10 },
 ];

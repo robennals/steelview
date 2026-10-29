@@ -117,3 +117,26 @@ test('a numeric GeoMap draws a stipple over each inexact area, never instead of 
   assert.equal(html.match(/sv-geo-map__stipple"/g)?.length, 1);
   assert.match(html, /aria-label="London: over 40%"/);
 });
+
+test('an area too small for its outline is a focusable dot with a wider hit area', () => {
+  const html = renderToStaticMarkup(createElement(GeoMap, {
+    regions: [
+      { id: 'big', name: 'Big', coordinates: [[[[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]]]] },
+      { id: 'tiny', name: 'Tiny', coordinates: [], point: [5, 5] },
+      { id: 'both', name: 'Both', coordinates: [[[[1, 1], [1.1, 1], [1.1, 1.1], [1, 1]]]], point: [1.05, 1.05] },
+    ],
+    valueLabel: 'Share',
+    data: { tiny: { value: 2, qualifier: 'about' }, big: { value: 1 } },
+    highlight: ['tiny'],
+  }));
+  const dot = html.match(/<g class="sv-geo-map__dot"[^>]*data-region="tiny"[^>]*>.*?<\/g>/)?.[0] ?? '';
+  assert.match(dot, /tabindex="0"/);
+  assert.match(dot, /aria-label="Tiny: about 2"/);
+  assert.match(dot, /data-highlight="true"/);
+  assert.match(dot, /class="sv-geo-map__dot-hit"[^>]*r="9"/);
+  assert.match(dot, /class="sv-geo-map__stipple"/);
+  assert.doesNotMatch(html, /<path[^>]*data-region="tiny"/, 'no empty outline path');
+  // An outline under a dot answers the pointer, but only the dot takes focus.
+  assert.match(html, /<path class="sv-geo-map__region"[^>]*data-region="both"[^>]*aria-hidden="true"/);
+  assert.match(html, /<g class="sv-geo-map__dot"[^>]*data-region="both"[^>]*tabindex="0"/);
+});

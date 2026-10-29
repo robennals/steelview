@@ -40,19 +40,17 @@ export type FitOptions = {
   kind?: ProjectionKind | 'auto';
 };
 
-/** The bounding box of every point in every region. */
+/** The bounding box of every point in every region, dots included. */
 export function boundsOf(regions: GeoRegion[]): Bounds {
   const bounds = { minLon: Infinity, maxLon: -Infinity, minLat: Infinity, maxLat: -Infinity };
   for (const region of regions) {
-    for (const polygon of region.coordinates) {
-      for (const ring of polygon) {
-        for (const [lon, lat] of ring) {
-          if (lon < bounds.minLon) bounds.minLon = lon;
-          if (lon > bounds.maxLon) bounds.maxLon = lon;
-          if (lat < bounds.minLat) bounds.minLat = lat;
-          if (lat > bounds.maxLat) bounds.maxLat = lat;
-        }
-      }
+    const points = region.coordinates.flat(2);
+    if (region.point) points.push(region.point);
+    for (const [lon, lat] of points) {
+      if (lon < bounds.minLon) bounds.minLon = lon;
+      if (lon > bounds.maxLon) bounds.maxLon = lon;
+      if (lat < bounds.minLat) bounds.minLat = lat;
+      if (lat > bounds.maxLat) bounds.maxLat = lat;
     }
   }
   return bounds;
@@ -180,9 +178,11 @@ function thin(points: Array<[number, number]>, tolerance: number): Array<[number
 /**
  * The centre of a region's largest outline ring, by area: where a label or a
  * callout leader belongs. Area-weighted, so a coastline with many small
- * islands does not drag the point out to sea.
+ * islands does not drag the point out to sea. An area drawn as a dot is
+ * centred on its dot.
  */
 export function centroidOf(region: GeoRegion): LonLat {
+  if (region.point) return region.point;
   let best: LonLat[] = [];
   let bestArea = 0;
   for (const polygon of region.coordinates) {

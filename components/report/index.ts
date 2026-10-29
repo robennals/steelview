@@ -37,7 +37,7 @@ export { partitionRegions } from './geo/regions';
 export { WORLD_COUNTRIES } from './geo/world-countries';
 export { EUROPE_COUNTRIES, EUROPE_EXTENT } from './geo/europe-countries';
 export { UK_ITL1_REGIONS } from './geo/uk-itl1';
-export { EUROPE_COUNTRY_TILES, US_STATE_TILES, UK_REGION_TILES, type MapTile } from './geo/tiles';
+export { EUROPE_COUNTRY_TILES, US_STATE_TILES, US_TERRITORY_TILES, UK_REGION_TILES, type MapTile } from './geo/tiles';
 
 // Timelines
 export * from './timeline';
