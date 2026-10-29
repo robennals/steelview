@@ -1,6 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { EUROPE_COUNTRIES, EUROPE_EXTENT } from '@/components/report/geo/europe-countries';
 import { US_STATE_TILES } from '@/components/report/geo/tiles';
+import { UK_ITL1_REGIONS } from '@/components/report/geo/uk-itl1';
+import { WORLD_COUNTRIES } from '@/components/report/geo/world-countries';
 import { figureExamplesFact } from './__fixtures__/figure-examples';
 import {
   barChartProps,
@@ -10,10 +13,12 @@ import {
   dataTableProps,
   estimateRangeProps,
   figureContext,
+  geoMapProps,
   keyFiguresProps,
   periodTimelineProps,
   pullQuoteProps,
   quoteComparisonProps,
+  scatterPlotProps,
   tileMapProps,
   timelineProps,
   toValueFormat,
@@ -94,6 +99,59 @@ test('map presets resolve to their tiles and bare numbers become data', () => {
   assert.deepEqual(props.data.DE, { value: 5.1 });
   assert.deepEqual(props.data.AR, { value: 8.8, label: undefined });
   assert.equal(props.note?.endsWith('Values from EAVS 2024 Overview Table 1.'), true);
+});
+
+test('a categorical tile map turns bare slugs into assignments and keeps notes', () => {
+  const map = fact.figures?.find((f): f is FigureOf<'tileMap'> => f.kind === 'tileMap' && f.id === 'voter-id-rules');
+  assert.ok(map);
+  const props = tileMapProps(map, context);
+  assert.ok(props.categoryData, 'a categorical tile map has category data');
+  assert.equal(props.data, undefined);
+  assert.equal(props.categoryLabel, 'ID asked of voters at the polls');
+  assert.deepEqual(props.categoryData.GA, { category: 'strict-photo' });
+  assert.deepEqual(props.categoryData.AR, { category: 'strict-photo', note: 'A free voter ID card is issued on request' });
+  assert.equal(Object.keys(props.categoryData).length, 51);
+  assert.deepEqual(props.categories.map(c => c.mark), ['SP', 'SN', 'P', 'N', '—']);
+});
+
+test('geo map presets resolve to their outlines, Europe with its crop', () => {
+  const map = figureOf('geoMap');
+  const props = geoMapProps(map, context);
+  assert.equal(props.id, 'figure-examples--chart-postal-voting');
+  assert.equal(props.regions, WORLD_COUNTRIES);
+  assert.equal(props.extent, undefined);
+  assert.deepEqual(props.highlight, ['US']);
+  assert.deepEqual(props.insets, [{ regionIds: ['LU'], label: 'Luxembourg' }]);
+  assert.deepEqual(props.categoryData?.AU, { category: 'some', note: 'Voters who cannot attend a polling place' });
+  const europe = geoMapProps({ ...map, regions: 'europe' }, context);
+  assert.equal(europe.regions, EUROPE_COUNTRIES);
+  assert.equal(europe.extent, EUROPE_EXTENT);
+  assert.equal(geoMapProps({ ...map, regions: 'uk-itl1' }, context).regions, UK_ITL1_REGIONS);
+});
+
+test('a numeric geo map keeps its scale options', () => {
+  const props = geoMapProps({
+    ...figureOf('geoMap'),
+    categoryLabel: undefined,
+    categories: undefined,
+    areas: undefined,
+    valueLabel: 'Share',
+    format: { unit: 'percent' },
+    scale: 'diverging',
+    data: { US: 3, GB: { value: 4, label: 'about 4%' } },
+  }, context);
+  assert.deepEqual(props.data, { US: { value: 3 }, GB: { value: 4, label: 'about 4%' } });
+  assert.equal(props.scale, 'diverging');
+  assert.deepEqual(props.format, { unit: 'percent' });
+});
+
+test('a scatter plot maps axes, groups and points, dropping asPublished', () => {
+  const props = scatterPlotProps(figureOf('scatterPlot'), context);
+  assert.equal(props.id, 'figure-examples--chart-count-speed');
+  assert.deepEqual(props.x, { label: 'Days before Election Day processing may begin', format: { unit: 'number' }, domain: undefined, includeZero: undefined });
+  assert.deepEqual(props.points[0], { id: 'az', label: 'AZ', name: 'Arizona', x: 14, y: 147, group: 'mostly-mail', note: '73 hours in 2020.' });
+  assert.deepEqual(props.highlight, ['az']);
+  assert.deepEqual(props.sources?.map(s => s.number), [29, 30]);
 });
 
 test('formats convert to the library type, currency included', () => {

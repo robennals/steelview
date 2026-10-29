@@ -1,5 +1,7 @@
 ---
-# Every worked example in the visualization spec (section 2.11), in one fact.
+# Every worked example in the visualization spec (section 2.11), in one fact,
+# followed by the Phase 3 kinds (4.1, 4.2): a categorical tile map, a geo map
+# and a scatter plot.
 # Not a real report: the sources are fixtures whose quotes hold the words the
 # figures quote, so the validation rules (F1–F12) pass. Kept outside
 # __fixtures__/topics so the load tests keep their counts.
@@ -162,6 +164,30 @@ sources:
     title: "Fixture: Heritage election fraud database"
     url: https://example.org/fixture/26
     publisher: Heritage Foundation
+    date: 2026
+  - stance: supports
+    quote: "Table 1 lists each state's voter ID requirement as strict photo, strict non-photo, non-strict photo, non-strict non-photo, or no document requested."
+    title: "Fixture: NCSL voter ID requirements, Table 1"
+    url: https://example.org/fixture/27
+    publisher: National Conference of State Legislatures
+    date: 2026
+  - stance: supports
+    quote: "In-country postal voting is available to all voters in Canada, Germany, Iceland, Korea, Liechtenstein, Luxembourg, New Zealand, Poland, Switzerland, the United Kingdom and the United States, and to some voters in France and Australia."
+    title: "Fixture: International IDEA, Special Voting Arrangements"
+    url: https://example.org/fixture/28
+    publisher: International IDEA
+    date: 2025-08
+  - stance: supports
+    quote: "Counting 95% of the vote took 147 hours in Arizona, 51 in Nevada, 8 in Pennsylvania, 6 in North Carolina and 5 in Georgia."
+    title: "Fixture: how long it took to count the vote, 2024"
+    url: https://example.org/fixture/29
+    publisher: MIT Election Data and Science Lab
+    date: 2025-01
+  - stance: supports
+    quote: "Fixture: the days before Election Day on which each state lets officials begin processing mail ballots."
+    title: "Fixture: NCSL Table 16, when processing may begin"
+    url: https://example.org/fixture/30
+    publisher: National Conference of State Legislatures
     date: 2026
 series:
   title: Mail ballots rejected nationally, 2016–2024
@@ -410,6 +436,130 @@ figures:
       - measure: "Heritage's database"
         why: It is a sample of cases its compilers found, not a count of all cases.
         sources: [26]
+  - kind: tileMap
+    id: voter-id-rules
+    title: ID asked of voters at the polls, by state, 2026
+    description: >-
+      The rule each state enforces when a voter arrives at the polls, from the
+      strictest to none.
+    map: us-states
+    areaLabel: State
+    categoryLabel: ID asked of voters at the polls
+    sources: [27]
+    categories:
+      - { id: strict-photo, label: Strict photo ID, mark: SP }
+      - { id: strict-non-photo, label: Strict non-photo ID, mark: SN }
+      - { id: non-strict-photo, label: Non-strict photo ID, mark: P }
+      - { id: non-strict-non-photo, label: Non-strict non-photo ID, mark: N }
+      - { id: none, label: No document requested, mark: "—" }
+    areas:
+      AR: { category: strict-photo, note: A free voter ID card is issued on request }
+      GA: strict-photo
+      IN: strict-photo
+      KS: strict-photo
+      MS: strict-photo
+      NH: strict-photo
+      NC: strict-photo
+      OH: strict-photo
+      TN: strict-photo
+      WI: strict-photo
+      AZ: strict-non-photo
+      IA: strict-non-photo
+      ND: strict-non-photo
+      WY: strict-non-photo
+      AL: non-strict-photo
+      FL: non-strict-photo
+      ID: non-strict-photo
+      KY: non-strict-photo
+      LA: non-strict-photo
+      MI: non-strict-photo
+      MO: non-strict-photo
+      MT: non-strict-photo
+      NE: non-strict-photo
+      RI: non-strict-photo
+      SC: non-strict-photo
+      SD: non-strict-photo
+      TX: non-strict-photo
+      WV: non-strict-photo
+      AK: non-strict-non-photo
+      CO: non-strict-non-photo
+      CT: non-strict-non-photo
+      DE: non-strict-non-photo
+      OK: non-strict-non-photo
+      UT: non-strict-non-photo
+      VA: non-strict-non-photo
+      WA: non-strict-non-photo
+      CA: none
+      DC: none
+      HI: none
+      IL: none
+      MA: none
+      MD: none
+      ME: none
+      MN: none
+      NJ: none
+      NM: none
+      NV: none
+      NY: none
+      OR: none
+      PA: { category: none, note: First-time voters show ID }
+      VT: none
+  - kind: geoMap
+    id: postal-voting
+    title: Who may vote by post from inside the country, 2025
+    description: >-
+      Countries where in-country postal voting is open to all voters or to
+      some. The United States is outlined.
+    regions: world
+    areaLabel: Country
+    categoryLabel: Who may vote by post in-country
+    highlight: [US]
+    insets:
+      - { regionIds: [LU], label: Luxembourg }
+    sources: [28]
+    note: >-
+      Fixture: only the thirteen countries the source names are assigned, so
+      every other country reads "No data". Liechtenstein is too small to
+      appear in the world outlines.
+    categories:
+      - { id: all, label: All voters, mark: A }
+      - { id: some, label: Some voters, mark: S }
+    areas:
+      CA: all
+      DE: all
+      IS: all
+      KR: all
+      LU: all
+      NZ: all
+      PL: all
+      CH: all
+      GB: all
+      US: all
+      FR: some
+      AU: { category: some, note: Voters who cannot attend a polling place }
+  - kind: scatterPlot
+    id: count-speed
+    title: When mail processing may begin and how long the count took, 2024
+    description: >-
+      Each state's hours to count 95% of the vote against how many days
+      before Election Day it lets officials start processing mail ballots.
+    pointLabel: State
+    x: { label: Days before Election Day processing may begin, format: { unit: number } }
+    y: { label: Hours to count 95% of the vote, format: { unit: number } }
+    groups:
+      - { id: mostly-mail, label: Mostly mail }
+      - { id: mostly-in-person, label: Mostly in person }
+    highlight: [az]
+    sources: [29, 30]
+    note: >-
+      Fixture: the processing-start days are illustrative until NCSL Table 16
+      is read.
+    points:
+      - { id: az, label: AZ, name: Arizona, x: 14, y: 147, group: mostly-mail, yAsPublished: 147 hours, note: 73 hours in 2020. }
+      - { id: nv, label: NV, name: Nevada, x: 15, y: 51, group: mostly-mail }
+      - { id: pa, label: PA, name: Pennsylvania, x: 0, y: 8, group: mostly-in-person }
+      - { id: ga, label: GA, name: Georgia, x: 21, y: 5, group: mostly-in-person }
+      - { id: nc, label: NC, name: North Carolina, x: 35, y: 6, group: mostly-in-person }
 ---
 
 This fixture exists so every figure kind can be seen, tested and validated in

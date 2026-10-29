@@ -606,7 +606,7 @@ test('F1: a figure id may not repeat another figure, chart or reading id', () =>
 test('F2: every figure citation is one of the fact\'s numbered sources', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'timeline').events[0].source = 99;
-  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 27'));
+  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 31'));
 });
 
 test('F3: once present, figures place every chart exactly once and nothing else', () => {
@@ -727,6 +727,134 @@ test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
   assert.ok(hasError(topic, 'unknown section "nope" in fact "mail-ballot-privacy"'));
   check.evidence = { fact: 'nope' };
   assert.ok(hasError(topic, 'evidence names "nope", which is not a fact in this topic'));
+});
+
+/* ------------------------------- 4.1 and 4.2: categorical maps, geo maps, scatter plots */
+
+test('F1, F2, F5: the categorical tile map, geo map and scatter plot are held to the shared rules', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'tileMap', 'voter-id-rules').id = 'federal-laws';
+  figureOf(fact, 'geoMap').sources = [99];
+  figureOf(fact, 'scatterPlot').sources = [];
+  assert.ok(hasError(topic, 'figure federal-laws: id "federal-laws" is already used'));
+  assert.ok(hasError(topic, 'figure postal-voting: cites source 99'));
+  assert.ok(hasError(topic, 'figure count-speed: cites no source'));
+});
+
+test('F9, categorical: category ids are unique', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  map.categories![1] = { ...map.categories![1], id: 'strict-photo' };
+  assert.ok(hasError(topic, 'figure voter-id-rules: category ids must be unique'));
+});
+
+test('F9, categorical: category marks are unique', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  map.categories![1] = { ...map.categories![1], mark: 'SP' };
+  assert.ok(hasError(topic, 'figure voter-id-rules: category marks must be unique'));
+});
+
+test('F9, categorical: every assignment names a category, bare or with a note', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  map.areas = { ...map.areas, GA: 'nope', AR: { category: 'also-nope', note: 'n' } };
+  assert.ok(hasError(topic, '"GA" has unknown category "nope"'));
+  assert.ok(hasError(topic, '"AR" has unknown category "also-nope"'));
+});
+
+test('F9, categorical: area ids belong to the preset', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  map.areas = { ...map.areas, XX: 'none' };
+  assert.ok(hasError(topic, 'figure voter-id-rules: "XX" is not an area of us-states'));
+});
+
+test('F9, categorical: an area with no category needs a note saying why', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  delete map.areas!.VT;
+  assert.ok(hasError(topic, 'figure voter-id-rules: has no data for VT — say why in `note`'));
+  map.note = 'Vermont is not yet coded.';
+  assert.ok(!hasError(topic, 'figure voter-id-rules: has no data'));
+});
+
+test('F9, geo map: area, highlight and inset ids belong to the preset', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'geoMap');
+  map.areas = { ...map.areas, LI: 'all' };
+  map.highlight = ['XX'];
+  map.insets = [{ regionIds: ['YY'] }];
+  assert.ok(hasError(topic, 'figure postal-voting: "LI" is not an area of world'));
+  assert.ok(hasError(topic, 'figure postal-voting: highlight "XX" is not an area of world'));
+  assert.ok(hasError(topic, 'figure postal-voting: inset area "YY" is not an area of world'));
+});
+
+test('F9, geo map: a gap needs a note, and a long list of gaps is shortened', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'geoMap').note = undefined;
+  const error = validateTopic(topic).find(e => e.includes('figure postal-voting: has no data'));
+  assert.ok(error, 'expected a missing-note error');
+  assert.match(error, /and \d+ more — say why in `note`/);
+});
+
+test('F9, numeric geo map: the tile map\'s numeric rules apply', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'geoMap');
+  Object.assign(map, {
+    regions: 'uk-itl1',
+    categoryLabel: undefined,
+    categories: undefined,
+    areas: undefined,
+    highlight: [],
+    insets: undefined,
+    valueLabel: 'Share',
+    data: { london: 1, 'not-a-region': 2 },
+    breaks: [0, 2, 1],
+    domain: [5, 1],
+  });
+  assert.ok(hasError(topic, 'figure postal-voting: "not-a-region" is not an area of uk-itl1'));
+  assert.ok(hasError(topic, 'figure postal-voting: breaks must be strictly ascending'));
+  assert.ok(hasError(topic, 'figure postal-voting: domain must run from low to high'));
+});
+
+test('scatter plot: point ids are unique', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'scatterPlot').points[1].id = 'az';
+  assert.ok(hasError(topic, 'figure count-speed: point ids must be unique'));
+});
+
+test('scatter plot: group ids are unique', () => {
+  const { topic, fact } = figuresTopic();
+  const plot = figureOf(fact, 'scatterPlot');
+  plot.groups = [...plot.groups!, { id: 'mostly-mail', label: 'Again' }];
+  assert.ok(hasError(topic, 'figure count-speed: group ids must be unique'));
+});
+
+test('scatter plot: every point\'s group exists', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'scatterPlot').points[0].group = 'nope';
+  assert.ok(hasError(topic, 'figure count-speed: point "az" has unknown group "nope"'));
+  figureOf(fact, 'scatterPlot').groups = undefined;
+  assert.ok(hasError(topic, 'point "nv" has unknown group "mostly-mail"'));
+});
+
+test('scatter plot: a domain runs upwards and covers every point', () => {
+  const { topic, fact } = figuresTopic();
+  const plot = figureOf(fact, 'scatterPlot');
+  plot.x.domain = [0, 30];
+  plot.y.domain = [200, 0];
+  assert.ok(hasError(topic, 'figure count-speed: point "nc" falls outside the x domain'));
+  assert.ok(hasError(topic, 'figure count-speed: y domain must run from low to high'));
+  plot.x.domain = [0, 35];
+  plot.y.domain = [0, 150];
+  assert.ok(!hasError(topic, 'figure count-speed:'));
+});
+
+test('scatter plot: highlight ids are point ids', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'scatterPlot').highlight = ['tx'];
+  assert.ok(hasError(topic, 'figure count-speed: highlight "tx" is not a point'));
 });
 
 test('a viewpoint may cite a component figure by its chart id', () => {

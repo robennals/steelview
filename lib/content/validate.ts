@@ -1,9 +1,9 @@
 import { citedFactTargets } from './markdown';
-import { mapTiles } from './map-presets';
+import { geoRegions, mapTiles } from './map-presets';
 import { comparePeriods } from './period';
 import { factSources, figureCitations } from './sources';
 import { isComponentFigure } from './types';
-import type { ComponentFigure, Fact, Figure, Series, Topic } from './types';
+import type { ComponentFigure, Fact, Figure, FigureOf, Series, Topic } from './types';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -470,16 +470,30 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       if (figure.figures.length > 6) errors.push(`${where} at most six key figures`);
       for (const kf of figure.figures) if (kf.change && !Number.isFinite(kf.change.value)) errors.push(`${where} "${kf.label}" has a change that is not a finite number`);
       break;
-    case 'tileMap': {
-      const tiles = mapTiles(figure.map).map(tile => tile.id);
-      for (const key of Object.keys(figure.data ?? {})) if (!tiles.includes(key)) errors.push(`${where} "${key}" is not an area of ${figure.map}`);
-      for (const id of figure.highlight) if (!tiles.includes(id)) errors.push(`${where} highlight "${id}" is not an area of ${figure.map}`);
-      const { breaks, domain } = figure;
-      if (breaks?.some((b, i) => i > 0 && b <= breaks[i - 1])) errors.push(`${where} breaks must be strictly ascending`);
-      if (domain && !(domain[0] < domain[1])) errors.push(`${where} domain must run from low to high`);
-      // A missing area reads "No data"; unexplained, a gap looks like a selection.
-      const missing = tiles.filter(id => !(id in (figure.data ?? {})));
-      if (missing.length > 0 && !figure.note) errors.push(`${where} has no data for ${missing.join(', ')} — say why in \`note\``);
+    case 'tileMap':
+      errors.push(...mapErrors(figure, mapTiles(figure.map).map(tile => tile.id), figure.map, where));
+      break;
+    case 'geoMap': {
+      const areas = geoRegions(figure.regions).regions.map(region => region.id);
+      errors.push(...mapErrors(figure, areas, figure.regions, where));
+      for (const inset of figure.insets ?? []) {
+        for (const id of inset.regionIds) if (!areas.includes(id)) errors.push(`${where} inset area "${id}" is not an area of ${figure.regions}`);
+      }
+      break;
+    }
+    case 'scatterPlot': {
+      const ids = figure.points.map(p => p.id);
+      if (new Set(ids).size !== ids.length) errors.push(`${where} point ids must be unique`);
+      const groups = (figure.groups ?? []).map(g => g.id);
+      if (new Set(groups).size !== groups.length) errors.push(`${where} group ids must be unique`);
+      for (const p of figure.points) if (p.group !== undefined && !groups.includes(p.group)) errors.push(`${where} point "${p.id}" has unknown group "${p.group}"`);
+      for (const id of figure.highlight) if (!ids.includes(id)) errors.push(`${where} highlight "${id}" is not a point`);
+      for (const axis of ['x', 'y'] as const) {
+        const domain = figure[axis].domain;
+        if (!domain) continue;
+        if (!(domain[0] < domain[1])) errors.push(`${where} ${axis} domain must run from low to high`);
+        for (const p of figure.points) if (p[axis] < domain[0] || p[axis] > domain[1]) errors.push(`${where} point "${p.id}" falls outside the ${axis} domain`);
+      }
       break;
     }
     case 'barChart': {
@@ -524,6 +538,38 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     }
     case 'caveatList':
       break;
+  }
+  return errors;
+}
+
+/**
+ * F9, for tile maps and geo maps alike: every area id belongs to the preset,
+ * a numeric scale runs upwards, categories are distinct and every assignment
+ * names one, and any area left without a value or category is explained.
+ */
+function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>,areas: string[], preset: string, where: string): string[] {
+  const errors: string[] = [];
+  const keyed = figure.categories ? figure.areas ?? {} : figure.data ?? {};
+  for (const key of Object.keys(keyed)) if (!areas.includes(key)) errors.push(`${where} "${key}" is not an area of ${preset}`);
+  for (const id of figure.highlight) if (!areas.includes(id)) errors.push(`${where} highlight "${id}" is not an area of ${preset}`);
+  const { breaks, domain, categories } = figure;
+  if (breaks?.some((b, i) => i > 0 && b <= breaks[i - 1])) errors.push(`${where} breaks must be strictly ascending`);
+  if (domain && !(domain[0] < domain[1])) errors.push(`${where} domain must run from low to high`);
+  if (categories) {
+    const ids = categories.map(c => c.id);
+    if (new Set(ids).size !== ids.length) errors.push(`${where} category ids must be unique`);
+    const marks = categories.map(c => c.mark);
+    if (new Set(marks).size !== marks.length) errors.push(`${where} category marks must be unique`);
+    for (const [area, assignment] of Object.entries(figure.areas ?? {})) {
+      const category = typeof assignment === 'string' ? assignment : assignment.category;
+      if (!ids.includes(category)) errors.push(`${where} "${area}" has unknown category "${category}"`);
+    }
+  }
+  // A missing area reads "No data"; unexplained, a gap looks like a selection.
+  const missing = areas.filter(id => !(id in keyed));
+  if (missing.length > 0 && !figure.note) {
+    const shown = missing.length > 12 ? `${missing.slice(0, 12).join(', ')} and ${missing.length - 12} more` : missing.join(', ');
+    errors.push(`${where} has no data for ${shown} — say why in \`note\``);
   }
   return errors;
 }

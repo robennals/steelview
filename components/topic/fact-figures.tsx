@@ -6,11 +6,13 @@ import {
   CompositionBar,
   DataTable,
   EstimateRange,
+  GeoMap,
   KeyFigures,
   PeriodTimeline,
   PullQuote,
   QuoteComparison,
   ReportFigure,
+  ScatterPlot,
   TileMap,
   Timeline,
 } from '@/components/report';
@@ -25,10 +27,12 @@ import {
   estimateRangeProps,
   figureContext,
   figureDomId,
+  geoMapProps,
   keyFiguresProps,
   periodTimelineProps,
   pullQuoteProps,
   quoteComparisonProps,
+  scatterPlotProps,
   tileMapProps,
   timelineProps,
   type FigureContext,
@@ -157,6 +161,10 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
       return <PeriodTimeline {...periodTimelineProps(figure, context)} footer={footer} />;
     case 'tileMap':
       return <TileMap {...tileMapProps(figure, context)} footer={footer} />;
+    case 'geoMap':
+      return <GeoMap {...geoMapProps(figure, context)} footer={footer} />;
+    case 'scatterPlot':
+      return <ScatterPlot {...scatterPlotProps(figure, context)} footer={footer} />;
     case 'barChart':
       return <BarChart {...barChartProps(figure, context)} footer={footer} />;
     case 'compositionBar':

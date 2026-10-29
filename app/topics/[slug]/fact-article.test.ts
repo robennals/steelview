@@ -78,6 +78,9 @@ test('figures render in the order written, with unplaced body sections after the
     'figure-examples--chart-carter-baker',
     'figure-examples--chart-one-in-five',
     'figure-examples--chart-detected-is-a-floor',
+    'figure-examples--chart-voter-id-rules',
+    'figure-examples--chart-postal-voting',
+    'figure-examples--chart-count-speed',
     'figure-examples--remainder',
   ].map(id => html.indexOf(`id="${id}"`));
   assert.ok(order.every(i => i >= 0), `missing ids: ${order}`);
@@ -120,6 +123,18 @@ test('with JavaScript off, a figure table is in default order and a map\'s areas
   const map = figureMarkup(html, 'figure-examples--chart-rejection-by-state');
   const noscript = map.slice(map.indexOf('<noscript>'));
   for (const state of ['Arkansas', 'Delaware', 'Oklahoma', 'Vermont', 'Maine', 'Indiana']) assert.match(noscript, new RegExp(state));
+});
+
+test('a categorical tile map, a geo map and a scatter plot render from a fact file', async () => {
+  const html = await renderFixture();
+  const tiles = figureMarkup(html, 'figure-examples--chart-voter-id-rules');
+  assert.match(tiles, /aria-label="Arkansas: Strict photo ID"/);
+  assert.match(tiles, /scope="rowgroup"/);
+  const geo = figureMarkup(html, 'figure-examples--chart-postal-voting');
+  assert.match(geo, /<path[^>]*data-region="US"[^>]*data-highlight="true"/);
+  assert.match(geo, /aria-label="Australia: Some voters"/);
+  const scatter = figureMarkup(html, 'figure-examples--chart-count-speed');
+  assert.match(scatter, /data-region="az"[^>]*data-highlight="true"[^>]*aria-label="Arizona \(Mostly mail\)/);
 });
 
 test('the Storybook copy of the figure fixture matches the fixture file', async () => {

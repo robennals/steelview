@@ -198,6 +198,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
+    'tileMap', 'geoMap', 'scatterPlot',
   ]);
 });
 
@@ -233,6 +234,50 @@ test('a data table needs at least two columns', () => {
 test('a tile map without data or a value label fails in the schema', () => {
   assert.deepEqual(figureIssuePaths(7, f => ({ ...f, data: undefined })), ['figures.7']);
   assert.deepEqual(figureIssuePaths(7, f => ({ ...f, valueLabel: undefined })), ['figures.7']);
+});
+
+/** The index of the fixture's figure with this id. */
+function figureIndex(id: string) {
+  return (figureExamplesFrontmatter().figures as Array<{ id?: string }>).findIndex(f => f.id === id);
+}
+
+test('a map is shaded by a number or by a category, never both', () => {
+  const categorical = figureIndex('voter-id-rules');
+  assert.deepEqual(figureIssuePaths(categorical, f => ({ ...f, valueLabel: 'Rule' })), [`figures.${categorical}`]);
+  assert.deepEqual(figureIssuePaths(categorical, f => ({ ...f, scale: 'diverging' })), [`figures.${categorical}`]);
+  const geo = figureIndex('postal-voting');
+  assert.deepEqual(figureIssuePaths(geo, f => ({ ...f, data: { US: 1 } })), [`figures.${geo}`]);
+});
+
+test('a categorical map needs its label, categories and areas', () => {
+  const index = figureIndex('voter-id-rules');
+  for (const key of ['categoryLabel', 'areas']) {
+    assert.deepEqual(figureIssuePaths(index, f => ({ ...f, [key]: undefined })), [`figures.${index}`], key);
+  }
+  // Without categories it is neither encoding complete.
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, categories: undefined })), [`figures.${index}`]);
+});
+
+test('a map has two to six categories, each with a one-to-three-character mark', () => {
+  const index = figureIndex('voter-id-rules');
+  const category = (i: number, mark = `M${i}`) => ({ id: `c${i}`, label: `C${i}`, mark });
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, categories: [category(1)] })), [`figures.${index}.categories`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, categories: Array.from({ length: 7 }, (_, i) => category(i)) })), [`figures.${index}.categories`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, categories: [category(1, 'LONG'), category(2)] })), [`figures.${index}.categories.0.mark`]);
+});
+
+test('a geo map names one of the three outline presets', () => {
+  const index = figureIndex('postal-voting');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, regions: 'us-states' })), [`figures.${index}.regions`]);
+});
+
+test('a scatter plot has at least three points, each labelled in one to four characters', () => {
+  const index = figureIndex('count-speed');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, points: (f.points as unknown[]).slice(0, 2) })), [`figures.${index}.points`]);
+  assert.deepEqual(
+    figureIssuePaths(index, f => ({ ...f, points: (f.points as Record<string, unknown>[]).map((p, i) => (i === 0 ? { ...p, label: 'ARIZ.' } : p)) })),
+    [`figures.${index}.points.0.label`],
+  );
 });
 
 test('readings and comparisons may name the table their values come from', () => {

@@ -1,6 +1,6 @@
 import type * as R from '@/components/report';
 import { stripEvents } from '@/components/topic/series-chart';
-import { mapTiles } from './map-presets';
+import { geoRegions, mapTiles } from './map-presets';
 import { factSources, figureCitations } from './sources';
 import { factPath } from './types';
 import type { Fact, Figure, FigureOf, FigureValueFormat, Source } from './types';
@@ -142,23 +142,69 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
   };
 }
 
-export function tileMapProps(f: FigureOf<'tileMap'>, c: FigureContext): R.TileMapProps {
-  // The schema refuses a tile map without these; the check narrows the types.
-  if (!f.data || !f.valueLabel) throw new Error(`tile map ${f.id} needs \`data\` and \`valueLabel\``);
+/**
+ * A map figure's shading, numeric or categorical, as the components take it.
+ * A bare category slug becomes `{ category }`; a bare number `{ value }`.
+ */
+function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding {
+  if (f.categories) {
+    // The schema refuses a categorical map without all three; the check narrows the types.
+    if (!f.categoryLabel || !f.areas) throw new Error(`map ${f.id} needs \`categoryLabel\`, \`categories\` and \`areas\``);
+    return {
+      categoryLabel: f.categoryLabel,
+      categories: f.categories,
+      categoryData: Object.fromEntries(
+        Object.entries(f.areas).map(([area, a]) => [area, typeof a === 'string' ? { category: a } : { category: a.category, note: a.note }]),
+      ),
+    };
+  }
+  if (!f.data || !f.valueLabel) throw new Error(`map ${f.id} needs \`data\` and \`valueLabel\``);
   return {
-    ...frame(f, c),
-    tiles: mapTiles(f.map),
     data: Object.fromEntries(
       Object.entries(f.data).map(([area, datum]) => [area, typeof datum === 'number' ? { value: datum } : { value: datum.value, label: datum.label }]),
     ),
     valueLabel: f.valueLabel,
-    areaLabel: f.areaLabel,
-    highlight: f.highlight,
     format: toValueFormat(f.format),
     scale: f.scale,
     steps: f.steps,
     domain: f.domain,
     breaks: f.breaks,
+  };
+}
+
+export function tileMapProps(f: FigureOf<'tileMap'>, c: FigureContext): R.TileMapProps {
+  return {
+    ...frame(f, c),
+    tiles: mapTiles(f.map),
+    areaLabel: f.areaLabel,
+    highlight: f.highlight,
+    ...mapEncoding(f),
+  };
+}
+
+export function geoMapProps(f: FigureOf<'geoMap'>, c: FigureContext): R.GeoMapProps {
+  const { regions, extent } = geoRegions(f.regions);
+  return {
+    ...frame(f, c),
+    regions,
+    extent,
+    areaLabel: f.areaLabel,
+    highlight: f.highlight,
+    insets: f.insets,
+    ...mapEncoding(f),
+  };
+}
+
+export function scatterPlotProps(f: FigureOf<'scatterPlot'>, c: FigureContext): R.ScatterPlotProps {
+  const axis = (a: FigureOf<'scatterPlot'>['x']): R.ScatterAxis => ({ label: a.label, format: toValueFormat(a.format), domain: a.domain, includeZero: a.includeZero });
+  return {
+    ...frame(f, c),
+    pointLabel: f.pointLabel,
+    x: axis(f.x),
+    y: axis(f.y),
+    groups: f.groups,
+    highlight: f.highlight,
+    points: f.points.map(p => ({ id: p.id, label: p.label, name: p.name, x: p.x, y: p.y, group: p.group, note: p.note })),
   };
 }
 

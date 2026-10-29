@@ -1,4 +1,4 @@
-import type { Figure, FigureValueFormat } from './types';
+import type { Figure, FigureOf, FigureValueFormat } from './types';
 
 /**
  * What `check:figures` audits in a fact's `figures`, so that moving a
@@ -44,7 +44,15 @@ export function figureProse(figure: Figure): string[] {
           ...figure.events.flatMap(e => [e.label, e.note]),
         ];
       case 'tileMap':
-        return base(figure);
+        return mapProse(figure);
+      case 'geoMap':
+        return [...mapProse(figure), ...(figure.insets ?? []).map(inset => inset.label)];
+      case 'scatterPlot':
+        return [
+          ...base(figure),
+          ...(figure.groups ?? []).map(g => g.label),
+          ...figure.points.flatMap(p => [p.name, p.note]),
+        ];
       case 'barChart':
         return [...base(figure), ...figure.items.map(item => item.label)];
       case 'compositionBar':
@@ -68,6 +76,15 @@ function base(figure: { title: string; description: string; note?: string }) {
   return [figure.title, figure.description, figure.note];
 }
 
+/** A map's title, description and note, and in categorical mode each category's label and each area's note. */
+function mapProse(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>) {
+  return [
+    ...base(figure),
+    ...(figure.categories ?? []).map(c => c.label),
+    ...Object.values(figure.areas ?? {}).map(a => (typeof a === 'string' ? undefined : a.note)),
+  ];
+}
+
 function quoteProse(quote: { role?: string; position?: string; context?: string }) {
   return [quote.role, quote.position, quote.context];
 }
@@ -86,7 +103,7 @@ export type FigureValue = {
   valuesFrom?: string;
 };
 
-/** Every number a figure draws: key figures, bars, map data, composition parts, estimate bounds, numeric table cells. */
+/** Every number a figure draws: key figures, bars, map data, scatter coordinates, composition parts, estimate bounds, numeric table cells. */
 export function figureValues(figure: Figure): FigureValue[] {
   switch (figure.kind) {
     case 'series':
@@ -135,7 +152,9 @@ export function figureValues(figure: Figure): FigureValue[] {
           }]
           : []),
       ]);
+    // A categorical map draws no numbers; its `data` is absent.
     case 'tileMap':
+    case 'geoMap':
       return Object.entries(figure.data ?? {}).map(([area, datum]) => ({
         where: `map area ${area}`,
         value: typeof datum === 'number' ? datum : datum.value,
@@ -144,6 +163,17 @@ export function figureValues(figure: Figure): FigureValue[] {
         asPublished: typeof datum === 'number' ? undefined : datum.asPublished,
         valuesFrom: figure.valuesFrom,
       }));
+    case 'scatterPlot':
+      return figure.points.flatMap(p =>
+        (['x', 'y'] as const).map(axis => ({
+          where: `point "${p.name}" ${axis}`,
+          value: p[axis],
+          format: figure[axis].format,
+          citations: figure.sources,
+          asPublished: axis === 'x' ? p.xAsPublished : p.yAsPublished,
+          valuesFrom: figure.valuesFrom,
+        })),
+      );
     case 'barChart':
       return figure.items.map(item => ({
         where: `bar "${item.label}"`,
