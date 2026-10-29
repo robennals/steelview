@@ -264,6 +264,14 @@
     transition: stroke 120ms ease;
   }
 
+  /* An outlined region is a reader's anchor, drawn in ink like a highlighted
+     tile so it never reads as a different value. Before the hover rule, so
+     pointing at it still draws the full-weight outline. */
+  .sv-geo-map__region[data-highlight="true"] {
+    stroke: var(--ink);
+    stroke-width: 1.5;
+  }
+
   /* Hover and focus draw the outline in ink, never a colour change: the fill
      is the data and must stay readable while it is being pointed at. */
   .sv-geo-map__region[data-active="true"],
