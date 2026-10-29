@@ -92,7 +92,8 @@ export function SliceExplorer({
 
   const result = slice({ rows, breakdown, split, measure: measure.key, aggregation, filters });
   const allSplitValues = split ? dimensionValues(rows, split) : [];
-  const splitColor = (key: string) => seriesColor(allSplitValues.indexOf(key) + 1);
+  const splitSlot = (key: string) => allSplitValues.indexOf(key) + 1;
+  const splitColor = (key: string) => seriesColor(splitSlot(key));
 
   const domainValues = result.groups.flatMap(group =>
     layout === 'stacked' ? stackExtent(group.parts) : layout === 'grouped' ? group.parts.filter((v): v is number => v !== null) : [group.total ?? 0],
@@ -104,8 +105,8 @@ export function SliceExplorer({
     let segments: BarRowData['segments'];
     if (layout === 'single') segments = [barSpan(group.total ?? 0, scale)];
     else if (layout === 'stacked')
-      segments = stackSpans(group.parts, scale).map((span, i) => ({ ...(span ?? { left: 0, width: 0 }), color: splitColor(result.splitKeys[i]) }));
-    else segments = group.parts.map((value, i) => ({ ...barSpan(value ?? 0, scale), color: splitColor(result.splitKeys[i]) }));
+      segments = stackSpans(group.parts, scale).map((span, i) => ({ ...(span ?? { left: 0, width: 0 }), color: splitColor(result.splitKeys[i]), slot: splitSlot(result.splitKeys[i]) }));
+    else segments = group.parts.map((value, i) => ({ ...barSpan(value ?? 0, scale), color: splitColor(result.splitKeys[i]), slot: splitSlot(result.splitKeys[i]) }));
     return { key: group.key, label: group.key, valueText: group.total === null ? '—' : formatValue(group.total, format), segments };
   });
 
@@ -169,7 +170,7 @@ export function SliceExplorer({
           label={title ?? measure.label}
           graph={
             <>
-              {split && <BarLegend items={result.splitKeys.map(key => ({ key, label: key, color: splitColor(key) }))} />}
+              {split && <BarLegend items={result.splitKeys.map(key => ({ key, label: key, color: splitColor(key), slot: splitSlot(key) }))} />}
               <BarRows rows={barRows} scale={scale} format={format} layout={layout} label={`${measure.label} by ${breakdown.label.toLowerCase()}`} />
             </>
           }

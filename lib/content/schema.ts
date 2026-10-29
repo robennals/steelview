@@ -631,20 +631,56 @@ export const geoMapFigureSchema = z
 
 /* --- barChart ------------------------------------------------------------- */
 
-export const barChartFigureSchema = z.object({
-  kind: z.literal('barChart'),
-  ...figureBase,
-  valueLabel: z.string().min(1),
-  /** Table heading for the bar labels. */
-  categoryLabel: z.string().min(1).optional(),
-  format: valueFormatSchema.optional(),
-  /** 'none' keeps the given order, for ordered categories such as age bands. */
-  sort: z.enum(['value', 'none']).optional(),
-  domainMax: z.number().positive().optional(),
-  items: z
-    .array(z.object({ label: z.string().min(1), value: figureNumberSchema, highlight: z.boolean().optional(), asPublished }))
-    .min(2),
-});
+/** A row's end label in a dumbbell: a year, so YAML's bare 1958 is accepted and kept as text. */
+const endLabel = z.preprocess(value => (typeof value === 'number' ? String(value) : value), z.string().min(1));
+
+export const barChartFigureSchema = z
+  .object({
+    kind: z.literal('barChart'),
+    ...figureBase,
+    valueLabel: z.string().min(1),
+    /** Table heading for the bar labels. */
+    categoryLabel: z.string().min(1).optional(),
+    format: valueFormatSchema.optional(),
+    /** 'none' keeps the given order, for ordered categories such as age bands. With `series`, 'value' ranks by the first measure. */
+    sort: z.enum(['value', 'none']).optional(),
+    domainMax: z.number().positive().optional(),
+    /**
+     * Two or more measures per row, in the same unit: each row then gives
+     * `values` (series key → number) instead of `value`. Drawn side by side,
+     * never stacked, so no measure is read as a part of another.
+     */
+    series: z.array(z.object({ key: slugId, label: z.string().min(1) })).min(2).optional(),
+    /** With `series`: `paired` bars (the default), or a `dumbbell` — two dots joined by a line — for exactly two. */
+    style: z.enum(['paired', 'dumbbell']).optional(),
+    items: z
+      .array(
+        z.object({
+          label: z.string().min(1),
+          value: figureNumberSchema.optional(),
+          /** With `series`: every series key, `null` where the source publishes no figure. */
+          values: z.record(z.string(), figureNumberSchema.nullable()).optional(),
+          /** A dumbbell's end labels by series key, when the measures' dates differ by row: `{ earlier: 1958, latest: 1964 }`. */
+          labels: z.record(z.string(), endLabel).optional(),
+          highlight: z.boolean().optional(),
+          asPublished,
+        }),
+      )
+      .min(2),
+  })
+  .superRefine((f, ctx) => {
+    const issue = (message: string, path: PropertyKey[] = []) => ctx.addIssue({ code: 'custom', message, path });
+    if (f.style && !f.series) issue('`style` draws `series`; a bar chart without them has one bar a row', ['style']);
+    f.items.forEach((item, i) => {
+      if (f.series) {
+        if (item.values === undefined || item.value !== undefined) issue('with `series`, a row gives `values` (series key → number), not `value`', ['items', i]);
+        if (item.asPublished !== undefined) issue('with `series`, give each value its own `asPublished`', ['items', i, 'asPublished']);
+      } else {
+        if (item.value === undefined || item.values !== undefined) issue('a row gives `value`; `values` needs `series`', ['items', i]);
+        if (item.labels !== undefined) issue('`labels` name a dumbbell\'s ends', ['items', i, 'labels']);
+      }
+    });
+  });
 
 /* --- compositionBar ------------------------------------------------------- */
 

@@ -3257,6 +3257,12 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-bars[data-compact] .sv-bars__row { grid-template-columns: minmax(6rem, 34%) minmax(0, 1fr) var(--sv-bars-value, 6ch); grid-template-areas: "label track value"; align-items: center; column-gap: .4rem; font-size: .66rem; line-height: 1.15; }
 .sv-bars[data-compact] .sv-bars__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; }
 .sv-bars[data-compact] .sv-bars__track { height: .45rem; }
+/* Compact paired or dumbbell rows: each measure's figure side by side on the row's one line, its bars thin. */
+.sv-bars[data-compact]:has(.sv-bars__value[data-stacked]) .sv-bars__row { grid-template-columns: minmax(5rem, 26%) minmax(0, 1fr) calc(var(--sv-bars-value, 6ch) * 2); }
+.sv-bars[data-compact] .sv-bars__value[data-stacked] { flex-direction: row; justify-content: flex-end; gap: .5rem; }
+.sv-bars[data-compact] .sv-bars__value[data-stacked] .sv-bars__value-line { align-self: auto; line-height: 1.15; }
+.sv-bars[data-compact][data-layout="grouped"] .sv-bars__track { height: .7rem; }
+.sv-bars[data-compact][data-layout="dumbbell"] .sv-bars__track { height: .7rem; }
 /* Compact composition rows: name, bar and total on one line, the total in a column of its own width. */
 .sv-composition__rows[data-compact] .sv-composition__row { display: grid; grid-template-columns: minmax(4.5rem, 30%) minmax(0, 1fr) var(--sv-composition-total, 0); column-gap: .4rem; align-items: center; font: .62rem/1.15 var(--font-sans); }
 .sv-composition__rows[data-compact] .sv-composition__head { display: contents; font: inherit; }

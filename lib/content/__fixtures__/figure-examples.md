@@ -219,6 +219,18 @@ sources:
     url: https://example.org/fixture/35
     publisher: The Conversation
     date: 2020-09-03
+  - stance: supports
+    quote: "Fixture: counting 95% of the vote took 73 hours in Arizona in 2020 and 147 in 2024; 159 hours in Nevada in 2020 and 51 in 2024; 49 hours in Pennsylvania in 2020 and 8 in 2024; and at least 18 hours in Georgia in 2020, about 5 in 2024."
+    title: "Fixture: hours to count, 2020 and 2024"
+    url: https://example.org/fixture/36
+    publisher: MIT Election Data and Science Lab
+    date: 2025-03
+  - stance: supports
+    quote: "Fixture: Black registration was 14.2% in Alabama in 1958 and 19.4% in 1964; 31.7% in Louisiana in 1956 and 31.8% in 1965; 4.4% in Mississippi in 1954 and 6.4% in 1964."
+    title: "Fixture: the Attorney General's registration estimates"
+    url: https://example.org/fixture/37
+    publisher: US Department of Justice
+    date: 1965-03
 series:
   title: Mail ballots rejected nationally, 2016–2024
   description: Share of returned mail ballots rejected in each federal general election.
@@ -656,6 +668,42 @@ figures:
       - { label: South, value: { value: 90, qualifier: about, asPublished: about 90 } }
       - { label: East, value: { low: 60, high: 80, asPublished: between 60 and 80 } }
       - { label: Capital, value: 120 }
+  # Paired bars (spec 3): two measures per row, side by side and never
+  # stacked; a value may be qualified like any bar's.
+  - kind: barChart
+    id: hours-to-count
+    title: Hours to count 95% of the presidential vote, four states, 2020 and 2024
+    description: Hours after polls closed until 95% of the vote had been reported, in each election.
+    valueLabel: Hours
+    categoryLabel: State
+    format: { unit: count }
+    sources: [36]
+    series:
+      - { key: y2020, label: '2020' }
+      - { key: y2024, label: '2024' }
+    items:
+      - { label: Arizona, values: { y2020: 73, y2024: 147 } }
+      - { label: Nevada, values: { y2020: 159, y2024: 51 } }
+      - { label: Pennsylvania, values: { y2020: 49, y2024: 8 } }
+      - { label: Georgia, values: { y2020: { value: 18, qualifier: at least, asPublished: at least 18 hours }, y2024: { value: 5, qualifier: about, asPublished: about 5 } } }
+  # A dumbbell (spec 3): two dots joined by a line, each end labelled with
+  # its own year because the years differ by row.
+  - kind: barChart
+    id: pre-vra-registration
+    title: Black voter registration before the Voting Rights Act, three states, 1954–1965
+    description: The Attorney General's estimates at the earliest and latest year he gave for each state.
+    valueLabel: Black voting-age residents registered, %
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    sources: [37]
+    style: dumbbell
+    series:
+      - { key: earlier, label: Earliest estimate }
+      - { key: latest, label: Latest estimate }
+    items:
+      - { label: Alabama, values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: 1958, latest: 1964 } }
+      - { label: Louisiana, values: { earlier: 31.7, latest: 31.8 }, labels: { earlier: 1956, latest: 1965 } }
+      - { label: Mississippi, values: { earlier: 4.4, latest: 6.4 }, labels: { earlier: 1954, latest: 1964 } }
   # Parts that must add up (spec 1.4): percentages sum to 100 within rounding
   # (here 99.9, inside three parts' ±0.15), and print as published.
   - kind: compositionBar

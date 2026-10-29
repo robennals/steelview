@@ -203,7 +203,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quotes', 'quotes', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'compositionBar', 'dataTable', 'section',
+    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'compositionBar', 'dataTable', 'section',
   ]);
 });
 
@@ -475,4 +475,19 @@ test('a quotes figure needs two quotes, each citing a source; a language is a BC
   assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as unknown[]).slice(0, 1) })), [`figures.${index}.quotes`]);
   assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as Record<string, unknown>[]).map((q, i) => (i === 0 ? { ...q, source: undefined } : q)) })), [`figures.${index}.quotes.0`]);
   assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as Record<string, unknown>[]).map((q, i) => (i === 0 ? { ...q, lang: 'German' } : q)) })), [`figures.${index}.quotes.0.lang`]);
+});
+
+test('a bar chart\'s rows give `value`, or with `series` a `values` map; only series take a style', () => {
+  const index = figureIndex('hours-to-count');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, series: undefined })), [0, 1, 2, 3].map(i => `figures.${index}.items.${i}`));
+  const single = figureIndex('wa-by-race');
+  assert.deepEqual(figureIssuePaths(single, f => ({ ...f, style: 'dumbbell' })), [`figures.${single}.style`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, series: [{ key: 'y2020', label: '2020' }] })), [`figures.${index}.series`]);
+});
+
+test('a dumbbell\'s end labels may be bare YAML years, kept as text', () => {
+  const parsed = factFrontmatterSchema.parse(figureExamplesFrontmatter());
+  const dumbbell = parsed.figures?.find(f => f.kind === 'barChart' && f.id === 'pre-vra-registration');
+  assert.ok(dumbbell?.kind === 'barChart');
+  assert.deepEqual(dumbbell.items[0].labels, { earlier: '1958', latest: '1964' });
 });

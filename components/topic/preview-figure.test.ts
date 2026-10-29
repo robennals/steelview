@@ -70,6 +70,27 @@ test('a long qualified bar chart preview stays as rows, since a column cannot ca
   assert.match(html, /data-qualification="lower-bound"/);
 });
 
+test('a paired bar chart preview keeps its series key and every measure of every row, but no axis or qualification key', () => {
+  const html = preview('hours-to-count');
+  assertCompact(html, 'hours-to-count', 'Hours to count 95% of the presidential vote, four states, 2020 and 2024');
+  assert.equal(html.match(/class="sv-chart__key sv-bars__key"/g)?.length, 2);
+  assert.equal(html.match(/class="sv-bars__row"/g)?.length, 4);
+  assert.equal(html.match(/class="sv-bars__bar"/g)?.length, 8);
+  assert.match(html, /data-qualification="lower-bound"/);
+  assert.doesNotMatch(html, /sv-bars__axis|sv-bars__qualification-key/);
+});
+
+test('paired bars turn compact by how many bars they draw, not how many rows', () => {
+  assert.match(preview('hours-to-count'), /class="sv-bars" data-layout="grouped"[^>]*data-compact="true"/);
+});
+
+test('a dumbbell preview draws two dots a row and each end\'s own label', () => {
+  const html = preview('pre-vra-registration');
+  assert.match(html, /class="sv-bars" data-layout="dumbbell"/);
+  assert.equal(html.match(/class="sv-bars__row"/g)?.length, 3);
+  assert.match(html, /1958/);
+});
+
 test('a composition preview keeps its key and every part, but not the row sources', () => {
   const html = preview('deaths-by-counter');
   assertCompact(html, 'deaths-by-counter', 'Iranian deaths in the war, by counter and category, early April 2026');

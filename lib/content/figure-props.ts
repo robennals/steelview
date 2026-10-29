@@ -245,7 +245,27 @@ export function barChartProps(f: FigureOf<'barChart'>, c: FigureContext): R.BarC
     format: toValueFormat(f.format),
     sort: f.sort,
     domainMax: f.domainMax,
-    items: f.items.map(item => ({ label: item.label, value: item.value, highlight: item.highlight })),
+    items: f.items.map(item => {
+      // The schema refuses a row without `value` unless the chart has `series`; the check narrows the type.
+      if (item.value === undefined) throw new Error(`bar chart ${f.id} row "${item.label}" needs \`value\``);
+      return { label: item.label, value: item.value, highlight: item.highlight };
+    }),
+  };
+}
+
+/** A bar chart with `series`: a measure per series in each row, paired or as a dumbbell. */
+export function pairedBarChartProps(f: FigureOf<'barChart'>, c: FigureContext): R.PairedBarChartProps {
+  if (!f.series) throw new Error(`bar chart ${f.id} needs \`series\` to be paired`);
+  return {
+    ...frame(f, c),
+    series: f.series,
+    style: f.style,
+    valueLabel: f.valueLabel,
+    categoryLabel: f.categoryLabel,
+    format: toValueFormat(f.format),
+    sort: f.sort,
+    domainMax: f.domainMax,
+    items: f.items.map(item => ({ label: item.label, values: item.values ?? {}, labels: item.labels, highlight: item.highlight })),
   };
 }
 

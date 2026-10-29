@@ -10,6 +10,7 @@ import {
   EstimateRange,
   GeoMap,
   KeyFigures,
+  PairedBarChart,
   PeriodTimeline,
   PullQuote,
   QuoteBrowser,
@@ -32,6 +33,7 @@ import {
   figureDomId,
   geoMapProps,
   keyFiguresProps,
+  pairedBarChartProps,
   periodTimelineProps,
   pullQuoteProps,
   quoteBrowserProps,
@@ -241,7 +243,9 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
     case 'scatterPlot':
       return <ScatterPlot {...scatterPlotProps(figure, context)} footer={footer} />;
     case 'barChart':
-      return <BarChart {...barChartProps(figure, context)} footer={footer} />;
+      return figure.series
+        ? <PairedBarChart {...pairedBarChartProps(figure, context)} footer={footer} />
+        : <BarChart {...barChartProps(figure, context)} footer={footer} />;
     case 'compositionBar':
       return <CompositionBar {...compositionBarProps(figure, context)} footer={footer} />;
     case 'estimateRange':
@@ -283,7 +287,9 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
 export function PreviewFigure({ figure, context, preview }: { figure: ComponentFigure; context: FigureContext; preview: FigurePreview }) {
   switch (figure.kind) {
     case 'barChart':
-      return <BarChart {...barChartProps(figure, context)} preview={preview} />;
+      return figure.series
+        ? <PairedBarChart {...pairedBarChartProps(figure, context)} preview={preview} />
+        : <BarChart {...barChartProps(figure, context)} preview={preview} />;
     case 'compositionBar':
       return <CompositionBar {...compositionBarProps(figure, context)} preview={preview} />;
     case 'estimateRange':

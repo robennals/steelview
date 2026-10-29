@@ -15,6 +15,8 @@ declare module 'react' {
     '--sv-bars-label'?: string;
     '--sv-bars-value'?: string;
     '--sv-bars-count'?: number;
+    /** Bar rows: a bar's, dumbbell dot's or series mark's fill, by series. */
+    '--sv-bar-fill'?: string;
     /** Event strip (and a long timeline's preview lane): plot insets that line it up with the chart above, and marker stacking. */
     '--sv-strip-left'?: string;
     '--sv-strip-right'?: string;

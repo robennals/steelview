@@ -18,6 +18,7 @@ export { ChoiceGroup, FilterChips, type Choice } from './controls';
 // Data
 export * from './key-figures';
 export * from './bar-chart';
+export * from './paired-bar-chart';
 export * from './slice-explorer';
 export * from './composition-bar';
 export * from './small-multiples';

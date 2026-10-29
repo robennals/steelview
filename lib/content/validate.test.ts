@@ -831,6 +831,26 @@ test('quotes: a stance names one of the figure\'s categories, and every category
   assert.ok(hasError(topic, 'figure damage-claims: quote by "Pete Hegseth" has stance "court", but the figure has no `categories`'));
 });
 
+test('F10: a paired bar chart gives every series in every row, and only a dumbbell of two labels its ends', () => {
+  const { topic, fact } = figuresTopic();
+  const paired = figureOf(fact, 'barChart', 'hours-to-count');
+  paired.items[0].values = { y2020: 73 };
+  assert.ok(hasError(topic, 'figure hours-to-count: row "Arizona" has no value for "y2024" — give `null` where the source publishes none'));
+  paired.items[0].values = { y2020: null, y2024: null };
+  assert.ok(hasError(topic, 'row "Arizona" has no values'));
+  paired.items[1].values = { y2020: 159, y2024: 51, y2028: 1 };
+  assert.ok(hasError(topic, 'row "Nevada" has a value for "y2028", which is not a series'));
+  paired.items[2].labels = { y2020: '2020' };
+  assert.ok(hasError(topic, 'row "Pennsylvania" labels its ends, which only a dumbbell has'));
+  paired.domainMax = 100;
+  assert.ok(hasError(topic, 'figure hours-to-count: domainMax must be at least every value'));
+  const dumbbell = figureOf(fact, 'barChart', 'pre-vra-registration');
+  dumbbell.series?.push({ key: 'third', label: 'Third' });
+  assert.ok(hasError(topic, 'figure pre-vra-registration: a dumbbell joins two measures, but the chart has 3 series'));
+  dumbbell.items[0].labels = { earlier: '1958', nope: '1964' };
+  assert.ok(hasError(topic, 'row "Alabama" labels "nope", which is not a series'));
+});
+
 test('F6: a date column holds partial dates', () => {
   const { topic, fact } = figuresTopic();
   const table = figureOf(fact, 'dataTable');

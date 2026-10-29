@@ -195,6 +195,160 @@
     background: var(--ink);
   }
 
+  /* ------------------------------------- several series in one row */
+
+  /* Each series slot past the first lays a pattern of paper over its fill —
+     stripes, dots, lines — so paired bars, split bars and their swatches
+     still differ in greyscale. An overlay rather than a background, so it
+     sits over any qualification mark the bar also carries. */
+  .sv-bars__bar[data-slot]::before,
+  .sv-bars__swatch[data-slot]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .sv-bars__swatch[data-slot] {
+    position: relative;
+    display: inline-block;
+  }
+
+  .sv-bars__bar[data-slot="2"]::before,
+  .sv-bars__swatch[data-slot="2"]::before {
+    background: linear-gradient(135deg, var(--paper) 0 20%, transparent 20% 50%, var(--paper) 50% 70%, transparent 70%) 0 0 / 5px 5px;
+  }
+
+  .sv-bars__bar[data-slot="3"]::before,
+  .sv-bars__swatch[data-slot="3"]::before {
+    background: radial-gradient(circle, var(--paper) 0 1px, transparent 1.4px) 0 0 / 4px 4px;
+  }
+
+  .sv-bars__bar[data-slot="4"]::before,
+  .sv-bars__swatch[data-slot="4"]::before {
+    background: repeating-linear-gradient(0deg, transparent 0 2px, var(--paper) 2px 3px);
+  }
+
+  .sv-bars__bar[data-slot="5"]::before,
+  .sv-bars__swatch[data-slot="5"]::before {
+    background: repeating-linear-gradient(90deg, transparent 0 2px, var(--paper) 2px 3px);
+  }
+
+  /* A row's figures, one line per series, each the height of its bar in a
+     paired row so a figure sits beside its own bar. */
+  .sv-bars__value[data-stacked] {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* The marks line up in a column at the left of the value column, the
+     figures on their last digit at its right. */
+  .sv-bars__value-line {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    gap: 0.3rem;
+    line-height: 1.05rem;
+  }
+
+  .sv-bars__value-line > :first-child {
+    margin-right: auto;
+  }
+
+  .sv-bars__value-line .sv-bars__swatch {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  .sv-bars__value-label {
+    color: var(--ink-3);
+    font-weight: 400;
+  }
+
+  .sv-bars[data-layout="grouped"]:has(.sv-bars__value[data-stacked]) .sv-bars__track {
+    height: calc(1.05rem * var(--sv-bars-count, 2));
+  }
+
+  /* A dumbbell: no bar, a hairline to read across, and a dot per measure —
+     a ring for the first, a disc for the second — joined by a line. */
+  .sv-bars[data-layout="dumbbell"] .sv-bars__track {
+    height: 1.1rem;
+    background: linear-gradient(var(--rule), var(--rule)) center / 100% 1px no-repeat;
+  }
+
+  .sv-bars__link {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    background: var(--ink-3);
+    transform: translateY(-50%);
+  }
+
+  .sv-bars__dot {
+    --sv-bar-fill: var(--sv-series-1);
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    box-sizing: border-box;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid var(--sv-bar-fill);
+    border-radius: 0.4rem;
+    background: var(--sv-bar-fill);
+    transform: translate(-50%, -50%);
+  }
+
+  /* The ring sits over the disc, so two equal values still show both. */
+  .sv-bars__dot[data-slot="1"] {
+    z-index: 3;
+    background: transparent;
+  }
+
+  .sv-bars__dot-icon[data-slot="1"] {
+    background: var(--paper);
+  }
+
+  /* A range is a capsule from low to high, placed by its left edge. */
+  .sv-bars__dot[data-qualification="range"] {
+    min-width: 0.8rem;
+    transform: translateY(-50%);
+  }
+
+  .sv-bars__dot[data-qualification="approximate"] {
+    outline: 2px dotted var(--ink);
+    outline-offset: 1px;
+  }
+
+  .sv-bars__dot[data-qualification="lower-bound"]::after,
+  .sv-bars__dot[data-qualification="upper-bound"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 0.15rem);
+    width: 0.38rem;
+    height: 0.38rem;
+    border: solid var(--ink);
+    border-width: 2px 2px 0 0;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .sv-bars__dot[data-qualification="upper-bound"]::after {
+    left: auto;
+    right: calc(100% + 0.15rem);
+    transform: translateY(-50%) rotate(-135deg);
+  }
+
+  .sv-bars__dot-icon {
+    position: relative;
+    top: auto;
+    display: inline-block;
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    transform: none;
+  }
+
   .sv-bars__qualification-key {
     list-style: none;
     margin: 0.25rem 0 0.5rem;

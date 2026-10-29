@@ -65,7 +65,11 @@ export function figureProse(figure: Figure): string[] {
           ...figure.points.flatMap(p => [p.name, p.note]),
         ];
       case 'barChart':
-        return [...base(figure), ...figure.items.map(item => item.label)];
+        return [
+          ...base(figure),
+          ...(figure.series ?? []).map(s => s.label),
+          ...figure.items.flatMap(item => [item.label, ...Object.values(item.labels ?? {})]),
+        ];
       case 'compositionBar':
         return [...base(figure), ...figure.rows.map(row => row.label)];
       case 'estimateRange':
@@ -204,9 +208,12 @@ export function figureValues(figure: Figure): FigureValue[] {
         ),
       );
     case 'barChart':
-      return figure.items.flatMap(item =>
-        numberValues(`bar "${item.label}"`, item.value, { format: figure.format, citations: figure.sources, asPublished: item.asPublished, valuesFrom: figure.valuesFrom }),
-      );
+      return figure.items.flatMap(item => {
+        const rest = { format: figure.format, citations: figure.sources, valuesFrom: figure.valuesFrom };
+        if (item.value !== undefined) return numberValues(`bar "${item.label}"`, item.value, { ...rest, asPublished: item.asPublished });
+        // A paired row: one value per series, `null` where the source publishes none.
+        return Object.entries(item.values ?? {}).flatMap(([key, value]) => (value === null ? [] : numberValues(`bar "${item.label}" ${key}`, value, rest)));
+      });
     case 'compositionBar':
       return figure.rows.flatMap(row => {
         const rest = { format: figure.countFormat, citations: row.sources.length > 0 ? row.sources : figure.sources, valuesFrom: figure.valuesFrom };

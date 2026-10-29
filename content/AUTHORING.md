@@ -739,8 +739,8 @@ bears on several. The build checks the mechanical half of rule 2 — every
 viewpoint must cite, inline, the fact behind at least one preview chart — and
 leaves "strongest", magnitude and overview to you.
 
-**Figures in previews.** A slide can draw these figure kinds: `barChart`,
-`compositionBar`, `estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
+**Figures in previews.** A slide can draw these figure kinds: `barChart`
+(paired and dumbbell bars too, with their series key), `compositionBar`, `estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
 `timeline`, `periodTimeline` and `keyFigures`. Each is drawn by its own
 component in a compact form — the title, linked to the full figure, and the
 graph: every item, area, event and period, with the key where colours or
@@ -791,7 +791,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `periodTimeline` | spans per row, with point `events`; a period or event may cite its own `sources`. A period with no `to` runs to the axis end: the topic's `lastUpdated` unless the figure sets `to`. It reads "still in force" when the axis ends on `lastUpdated`, and "no end by <axis end>" when the data stops earlier (`to: '2017-06'`). A label goes inside its bar if it fits, else just right of it if that part of the row is free, else only in the legend, the hover-and-focus readout and the table — so keep labels short and name categories in `categories`. Spans under 18 months get month ticks |
 | `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
 | `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
-| `barChart` | ungrouped bars in any format, dollars included |
+| `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
@@ -973,6 +973,7 @@ Each kind draws the qualification, never only the number:
 | `dataTable` | the published wording; sorts by the number | same | same | "4–6", or the wording; sorts by the midpoint |
 | `keyFigures` | the word before the number | same | same | "4–6%" |
 | `barChart` | bar to the value, open arrowhead pointing right | arrowhead pointing left | dotted end | bar to `low`, whisker to `high` |
+| `barChart` dumbbell | the dot, an open arrowhead right of it | an arrowhead left of it | dotted ring round the dot | a capsule from `low` to `high` |
 | maps (numeric) | colour of the value, ▲ on the tile, stipple | ▼, stipple | stipple | colour of the midpoint, stipple |
 
 A legend line explains each mark that appears, and only those. The
@@ -982,6 +983,35 @@ table view — when the value is qualified; on an exact value it is only what
 `check:figures` looks for, so a fragment such as "(76%)" never replaces a
 number that says the same thing. Labels set as graphics (a bar's value, a
 key figure, a tile) use the short form, "at least 159".
+
+**Two measures per row are paired, never stacked.** A `barChart` with
+`series` gives each row `values` by series key — every key, `null` where the
+source publishes no figure (it prints "—" and draws nothing). Paired bars
+sit one under another, each from zero, the series told apart by fill
+pattern as well as colour; a `dumbbell` draws a ring for the first measure
+and a disc for the second, joined by a line, and suits a before-and-after.
+When the measures' dates differ by row, a dumbbell row labels its ends by
+series key (`labels: { earlier: 1958, latest: 1964 }`), shown before each
+figure and in the table. Each figure is printed on its own line after its
+series' mark; the table has one column per measure. Rows keep the order
+written unless `sort: value`, which ranks by the first series. Values may be
+qualified; a range in a dumbbell is a capsule from low to high.
+
+```yaml
+  - kind: barChart
+    id: hours-to-count
+    title: Hours to count 95% of the presidential vote, 2020 and 2024
+    description: Hours after polls closed until 95% of the vote had been reported.
+    valueLabel: Hours
+    categoryLabel: State
+    sources: [10]
+    series:
+      - { key: y2020, label: '2020' }
+      - { key: y2024, label: '2024' }
+    items:
+      - { label: Arizona, values: { y2020: 73, y2024: 147 } }
+      - { label: Nevada, values: { y2020: 159, y2024: 51 } }
+```
 
 **Old links survive a conversion.** When a figure replaces prose that had
 its own anchors — a bulleted list headed `### The laws {#<fact>--laws-list}`
@@ -1760,6 +1790,7 @@ them.
 | At most six key figures | `lib/content/validate.ts` (F8) |
 | Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
+| A bar chart's rows give `value`, or with `series` a `values` map naming every series (`null` for none) and at least one number; `style` only with `series`; a dumbbell has exactly two series and only it labels ends, by series key | `lib/content/schema.ts`, `lib/content/validate.ts` (F10, `pairedBarErrors`) |
 | A composition row sums to its `total`, or to 100 with `unit: percent`, within half a unit in each part's last published place | `lib/content/validate.ts` (F10, `compositionSumError`) |
 | Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
 | A `quotes` figure has two or more quotes; a `stance` names one of its `categories`, category ids are unique and each has a quote | `lib/content/schema.ts`, `lib/content/validate.ts` (`kindErrors`) |

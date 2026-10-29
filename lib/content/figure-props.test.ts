@@ -15,6 +15,7 @@ import {
   figureContext,
   geoMapProps,
   keyFiguresProps,
+  pairedBarChartProps,
   periodTimelineProps,
   pullQuoteProps,
   quoteBrowserProps,
@@ -226,4 +227,13 @@ test('a quote\'s stance becomes its position, by its category\'s label; language
   assert.match(props.quotes[0].translation ?? '', /^With postal voting/);
   assert.deepEqual(props.sources?.map(s => s.number), [32, 33, 34, 35]);
   assert.equal(quoteComparisonProps(figureOf('quotes', 'damage-claims'), context).quotes[0].position, undefined);
+});
+
+test('a bar chart with series becomes paired bars, its end labels and nulls kept', () => {
+  const props = pairedBarChartProps(figureOf('barChart', 'pre-vra-registration'), context);
+  assert.equal(props.style, 'dumbbell');
+  assert.deepEqual(props.series.map(s => s.key), ['earlier', 'latest']);
+  assert.deepEqual(props.items[0], { label: 'Alabama', values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: '1958', latest: '1964' }, highlight: undefined });
+  assert.equal(props.id, 'figure-examples--chart-pre-vra-registration');
+  assert.throws(() => pairedBarChartProps(figureOf('barChart', 'wa-by-race'), context));
 });

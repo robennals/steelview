@@ -52,6 +52,16 @@ test('a qualified bar chart thumbnail draws a published range as a bar and a whi
   assert.equal(html.match(/class="sv-thumb__whisker"/g)?.length, 1);
 });
 
+test('a paired bar chart thumbnail draws every measure of every row, and a dumbbell two dots joined', () => {
+  const paired = thumb('hours-to-count');
+  assertDecorative(paired);
+  assert.equal(paired.match(/<rect /g)?.length, 8);
+  const dumbbell = thumb('pre-vra-registration');
+  assertDecorative(dumbbell);
+  assert.equal(dumbbell.match(/class="sv-thumb__dot"/g)?.length, 6);
+  assert.equal(dumbbell.match(/class="sv-thumb__rule"/g)?.length, 3);
+});
+
 test('a composition thumbnail draws every part of every row', () => {
   const html = thumb('deaths-by-counter');
   assertDecorative(html);

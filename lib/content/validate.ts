@@ -635,8 +635,10 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       break;
     }
     case 'barChart': {
-      const { domainMax } = figure;
-      if (domainMax !== undefined && figure.items.some(item => extentValues(item.value).some(v => v > domainMax))) errors.push(`${where} domainMax must be at least every value, a range's high end included`);
+      const { domainMax, series } = figure;
+      const drawn = figure.items.flatMap(item => [item.value, ...Object.values(item.values ?? {})].filter((v): v is FigureNumber => v !== undefined && v !== null));
+      if (domainMax !== undefined && drawn.some(value => extentValues(value).some(v => v > domainMax))) errors.push(`${where} domainMax must be at least every value, a range's high end included`);
+      if (series) errors.push(...pairedBarErrors(figure, series, where));
       break;
     }
     case 'compositionBar': {
@@ -690,6 +692,30 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     }
     case 'caveatList':
       break;
+  }
+  return errors;
+}
+
+/**
+ * F10, for a bar chart with `series`: the series keys are distinct, every
+ * row gives every series (`null` where the source has no figure, so a gap
+ * is a decision, not an omission) and at least one value, a dumbbell has
+ * exactly two series, and only a dumbbell labels its ends, by series key.
+ */
+function pairedBarErrors(figure: FigureOf<'barChart'>, series: Array<{ key: string }>, where: string): string[] {
+  const errors: string[] = [];
+  const keys = series.map(s => s.key);
+  if (new Set(keys).size !== keys.length) errors.push(`${where} series keys must be unique`);
+  const dumbbell = figure.style === 'dumbbell';
+  if (dumbbell && keys.length !== 2) errors.push(`${where} a dumbbell joins two measures, but the chart has ${keys.length} series`);
+  for (const item of figure.items) {
+    const values = item.values ?? {};
+    for (const key of Object.keys(values)) if (!keys.includes(key)) errors.push(`${where} row "${item.label}" has a value for "${key}", which is not a series`);
+    const missing = keys.filter(key => !(key in values));
+    if (missing.length > 0) errors.push(`${where} row "${item.label}" has no value for ${missing.map(key => `"${key}"`).join(', ')} — give \`null\` where the source publishes none`);
+    if (keys.every(key => values[key] === null)) errors.push(`${where} row "${item.label}" has no values`);
+    if (item.labels && !dumbbell) errors.push(`${where} row "${item.label}" labels its ends, which only a dumbbell has`);
+    for (const key of Object.keys(item.labels ?? {})) if (!keys.includes(key)) errors.push(`${where} row "${item.label}" labels "${key}", which is not a series`);
   }
   return errors;
 }

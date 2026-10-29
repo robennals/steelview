@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { OPEN_TAIL, crossesNull, estimateScale, whiskerSpan } from './estimate-layout';
 import { BarChart } from './bar-chart';
 import { EstimateRange } from './estimate-range';
+import { PairedBarChart } from './paired-bar-chart';
 import { layoutPanels } from './small-multiples-layout';
 
 test('forest plot axis always includes the no-effect value', () => {
@@ -191,4 +192,58 @@ test('a central estimate beyond a fixed axis sits at the edge with an arrow', ()
   assert.match(html, /class="sv-estimates__dot" data-beyond="end" style="left:100%"/);
   assert.match(html, /class="sv-estimates__whisker" data-end="clipped"/);
   assert.match(html, /Arrow: continues beyond the axis/);
+});
+
+const hours = {
+  valueLabel: 'Hours',
+  series: [{ key: 'a', label: '2020' }, { key: 'b', label: '2024' }],
+  items: [
+    { label: 'Arizona', values: { a: 73, b: 147 } },
+    { label: 'Georgia', values: { a: { value: 18, qualifier: 'at least' as const }, b: null } },
+  ],
+};
+
+test('paired bars draw one bar per measure from zero, each marked by its series slot, never stacked', () => {
+  const html = renderToStaticMarkup(createElement(PairedBarChart, hours));
+  assert.match(html, /data-layout="grouped"/);
+  assert.equal(html.match(/class="sv-bars__bar"[^>]*data-slot="2"/g)?.length, 1, 'Georgia has no 2024 bar');
+  assert.match(html, /class="sv-bars__bar" data-qualification="lower-bound" data-slot="1" style="left:0%;width:/);
+  // Each figure on its own line, named for a screen reader; the missing one reads "—".
+  assert.match(html, /<span class="sv-visually-hidden">2020: <\/span>73<\/span>/);
+  assert.match(html, /<span class="sv-visually-hidden">2024: <\/span>—<\/span>/);
+  assert.match(html, /<span class="sv-visually-hidden">2020: <\/span>at least 18<\/span>/);
+});
+
+test('the paired table has one column per measure', () => {
+  const html = renderToStaticMarkup(createElement(PairedBarChart, hours));
+  assert.match(html, /<th scope="col" class="sv-data__th-text">Category<\/th><th scope="col">2020<\/th><th scope="col">2024<\/th>/);
+  assert.match(html, /<th scope="row">Georgia<\/th><td>at least 18<\/td><td>—<\/td>/);
+});
+
+test('a dumbbell joins two dots, labels each end, and keeps the order given unless asked to rank', () => {
+  const html = renderToStaticMarkup(createElement(PairedBarChart, {
+    ...hours,
+    style: 'dumbbell',
+    format: { unit: 'number', decimals: 1 },
+    items: [
+      { label: 'Mississippi', values: { a: 4.4, b: 6.4 }, labels: { a: '1954', b: '1964' } },
+      { label: 'Alabama', values: { a: 14.2, b: 19.4 }, labels: { a: '1958', b: '1964' } },
+    ],
+  }));
+  assert.equal(html.match(/class="sv-bars__link"/g)?.length, 2);
+  assert.equal(html.match(/class="sv-bars__dot" data-slot/g)?.length, 4);
+  assert.match(html, /<span class="sv-bars__value-label">1954 <\/span>4.4/);
+  assert.match(html, /<td>4.4 \(1954\)<\/td>/);
+  assert.ok(html.indexOf('Mississippi') < html.indexOf('Alabama'));
+});
+
+test('a range in a dumbbell is a capsule from low to high, not a dot at its midpoint', () => {
+  const html = renderToStaticMarkup(createElement(PairedBarChart, {
+    ...hours,
+    style: 'dumbbell',
+    domainMax: 100,
+    items: [{ label: 'X', values: { a: { low: 20, high: 40 }, b: 60 } }, { label: 'Y', values: { a: 10, b: 30 } }],
+  }));
+  assert.match(html, /class="sv-bars__dot" data-slot="1" data-qualification="range" style="left:20%;width:20%/);
+  assert.match(html, /class="sv-bars__link" style="left:20%;width:40%"/);
 });

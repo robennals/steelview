@@ -10,12 +10,13 @@ import {
   estimateRangeProps,
   figureContext,
   geoMapProps,
+  pairedBarChartProps,
   periodTimelineProps,
   scatterPlotProps,
   tileMapProps,
   timelineProps,
 } from '@/lib/content/figure-props';
-import type { BarChartProps, CompositionBarProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
+import type { BarChartProps, CompositionBarProps, PairedBarChartProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
 import { barScale, orderBars, qualifiedSpan } from '@/components/report/bar-layout';
 import { compose, compositionColor } from '@/components/report/composition';
 import { estimateScale, whiskerSpan } from '@/components/report/estimate-layout';
@@ -72,7 +73,7 @@ export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
   const context = figureContext(fact);
   switch (figure.kind) {
     case 'barChart':
-      return <BarsThumb {...barChartProps(figure, context)} />;
+      return figure.series ? <PairedBarsThumb {...pairedBarChartProps(figure, context)} /> : <BarsThumb {...barChartProps(figure, context)} />;
     case 'compositionBar':
       return <CompositionThumb {...compositionBarProps(figure, context)} />;
     case 'estimateRange':
@@ -155,6 +156,39 @@ function BarsThumb({ items, sort, domainMax }: BarChartProps) {
             {span.whisker && <line className="sv-thumb__whisker" x1={span.whisker.left} x2={span.whisker.left + span.whisker.width} y1={middle} y2={middle} vectorEffect="non-scaling-stroke" />}
           </g>
         );
+      })}
+    </Thumb>
+  );
+}
+
+/**
+ * Each row's measures on the chart's one zero-based scale, in its series
+ * colours and order: thin bars one under another, or for a dumbbell two dots
+ * joined by a line. A missing measure draws nothing.
+ */
+function PairedBarsThumb({ series, items, style = 'paired', domainMax }: PairedBarChartProps) {
+  const valuesOf = (item: PairedBarChartProps['items'][number]) => series.map(s => item.values[s.key] ?? null);
+  const scale = barScale(items.flatMap(item => valuesOf(item).flatMap(value => (value === null ? [] : extentValues(value)))), domainMax);
+  const row = 100 / Math.max(1, items.length);
+  return (
+    <Thumb>
+      {items.map((item, i) => {
+        const spans = valuesOf(item).map(value => (value === null ? null : qualifiedSpan(value, scale)));
+        if (style === 'dumbbell') {
+          const y = i * row + row / 2;
+          const ends = spans.flatMap((span, slot) => (span ? [{ x: span.negative ? span.left : span.left + span.width, slot: slot + 1 }] : []));
+          const xs = ends.map(end => end.x);
+          return (
+            <g key={i}>
+              {ends.length > 1 && <line className="sv-thumb__rule" x1={Math.min(...xs)} x2={Math.max(...xs)} y1={y} y2={y} vectorEffect="non-scaling-stroke" />}
+              {ends.map(end => <Dot key={end.slot} x={end.x} y={y} color={seriesColor(end.slot)} />)}
+            </g>
+          );
+        }
+        const bar = (row * 0.8) / series.length;
+        return spans.map((span, slot) => span && (
+          <rect key={`${i}-${slot}`} x={span.left} width={Math.max(0.5, span.width)} y={i * row + row * 0.1 + slot * bar} height={bar * 0.85} fill={seriesColor(slot + 1)} />
+        ));
       })}
     </Thumb>
   );

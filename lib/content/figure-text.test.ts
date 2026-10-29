@@ -225,3 +225,14 @@ test('a composition row\'s stated total is a value like its parts', () => {
   const composition = { ...figureOf('compositionBar'), rows: [{ label: 'r', values: { civilian: 2, military: 3 }, total: 5, sources: [12] }] };
   assert.deepEqual(figureValues(composition).map(v => v.where), ['composition row "r" civilian', 'composition row "r" military', 'composition row "r" total']);
 });
+
+test('a paired bar row is one value per measure, its qualified ones by their own wording', () => {
+  const paired = fact.figures?.find((f): f is FigureOf<'barChart'> => f.kind === 'barChart' && f.id === 'hours-to-count');
+  assert.ok(paired);
+  assert.deepEqual(figureValues(paired).slice(-3).map(v => [v.where, v.value, v.asPublished]), [
+    ['bar "Pennsylvania" y2024', 8, undefined],
+    ['bar "Georgia" y2020', 18, 'at least 18 hours'],
+    ['bar "Georgia" y2024', 5, 'about 5'],
+  ]);
+  assert.ok(figureProse(paired).includes('2024'));
+});
