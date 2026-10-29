@@ -660,10 +660,12 @@ has; the rest draw a component (see Storybook for each one's look):
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source`; `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` |
 | `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated` |
-| `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`) |
+| `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
+| `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
 | `barChart` | ungrouped bars in any format, dollars included |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most", `estimate` for range only; `nullValue: null` for costs |
+| `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
 | `quoteComparison` | two to four answers to one `question` |
 | `pullQuote` | one quote set apart |
 | `claimCheck` | a well-known claim, quoted, set against the evidence, with a link to the fact that sets it out |
@@ -729,9 +731,45 @@ shown in About this data.
 omission with "…"; each fragment between omissions is checked on its own,
 ignoring case, curly quotes and spacing.
 
-**A map with gaps says why.** A `tileMap` area with no datum reads "No data";
-unexplained, a gap looks like a selection, so a map that leaves out any area of
-its preset needs a `note` saying why.
+**A map shows a number or a category, never both.** A numeric map gives
+`data` (area id → number, or `{ value, asPublished }`) and `valueLabel`, with
+optional `format`, `scale`, `steps`, `domain` or `breaks`. A categorical map
+shows a rule or status per area — the ID rule each state enforces — without
+coding it as a number, which would imply a false order:
+
+```yaml
+  - kind: tileMap
+    id: voter-id-rules
+    title: ID asked of voters at the polls, by state, 2026
+    description: The rule each state enforces when a voter arrives at the polls.
+    map: us-states
+    areaLabel: State
+    categoryLabel: ID asked of voters at the polls
+    sources: [2]
+    categories:              # two to six, in legend order
+      - { id: strict-photo, label: Strict photo ID, mark: SP }   # mark: 1–3 characters printed on each tile
+      - { id: none, label: No document requested, mark: "—" }
+    areas:                   # area id → category, or { category, note }
+      AR: { category: strict-photo, note: A free voter ID card is issued on request }
+      GA: strict-photo
+      CA: none
+```
+
+Category ids and marks are unique, and every area names one of the
+`categories`. A `geoMap` takes the same two encodings; its area ids are the
+outlines' own (ISO two-letter country codes for `world` and `europe`, slugs
+such as `london` for `uk-itl1`).
+
+**A map with gaps says why.** A `tileMap` or `geoMap` area with no datum or
+category reads "No data"; unexplained, a gap looks like a selection, so a map
+that leaves out any area of its preset needs a `note` saying why. A world map
+of a dozen countries therefore always has a note.
+
+**A scatter plot's points are named and checked.** Each point has a unique
+slug `id`, a short `label` printed beside it, a `name` for the readout and
+table, `x` and `y`, and optionally a `group` (one of `groups`), a `note`, and
+`xAsPublished`/`yAsPublished` for `check:figures`. An axis `domain`, if given,
+must cover every point, and `highlight` names point ids.
 
 ---
 

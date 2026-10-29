@@ -331,13 +331,16 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 - an observation group not tied to a chart needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos;
-- there is no chart shape for a categorical table (a rule per country); use
-  a `dataTable` figure. Policy dates on a series go in its `events`;
+- a rule or status per area (a rule per state or country) is a categorical
+  `tileMap` or `geoMap` figure; a categorical table with more than one
+  column per area is a `dataTable` figure. Policy dates on a series go in
+  its `events`;
 - a fact file reaches the component library through `figures`
   ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
-  reading order. `QuoteBrowser`, `SliceExplorer`, `SmallMultiples` and
-  `GeoMap` are not figure kinds yet, so a report plan that needs one says so
-  at stage 4b;
+  reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
+  `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
+  `SmallMultiples` are not yet, so a report plan that needs one says so at
+  stage 4b;
 
 ## 6. Write the viewpoints
 
