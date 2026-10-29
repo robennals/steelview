@@ -292,6 +292,8 @@ figures:
       - { id: conviction, label: Conviction }
       - { id: charge, label: Charge only }
     events:
+      # A date the source gives only roughly is written as it gives it: a decade or "c. 1984".
+      - { date: 1980s, title: "Fixture: an event its source dates only to the decade", category: designation, source: 3 }
       - { date: '1984-01-19', title: Iran designated a state sponsor of terrorism, category: designation, source: 3 }
       - { date: '2021-02-04', title: Assadi convicted in Antwerp, category: conviction, significance: major, source: 6 }
       - { date: '2024-11', title: Shakeri charged in New York, category: charge, source: 8 }
@@ -585,6 +587,23 @@ figures:
       - { label: South, value: { value: 90, qualifier: about, asPublished: about 90 } }
       - { label: East, value: { low: 60, high: 80, asPublished: between 60 and 80 } }
       - { label: Capital, value: 120 }
+  # A date column (spec 1.3): "2026", "May 2026", "12 May 2026", sorted by date,
+  # a coarser date before the finer dates inside it. Its cells may be qualified.
+  - kind: dataTable
+    id: count-releases
+    title: The counter's releases by region, 2026
+    description: When the counter last published each region's figure, and the figure as it gave it.
+    caption: One row per region
+    sources: [31]
+    columns:
+      - { key: region, label: Region, rowHeader: true }
+      - { key: published, label: Last published, format: date }
+      - { key: deaths, label: Deaths, format: { unit: count } }
+    defaultSort: { key: published, direction: ascending }
+    rows:
+      - { region: North, published: '2026-05-12', deaths: { value: 159, qualifier: at least, asPublished: at least 159 } }
+      - { region: East, published: '2026-05', deaths: { low: 60, high: 80, asPublished: between 60 and 80 } }
+      - { region: Capital, published: '2026', deaths: 120 }
 ---
 
 This fixture exists so every figure kind can be seen, tested and validated in

@@ -1,7 +1,7 @@
 import { extentValues, pointValue } from '@/components/report/qualified';
 import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
-import { comparePeriods } from './period';
+import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
 import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
@@ -542,6 +542,9 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
           if (typeof column.format === 'object' && value !== undefined && value !== null && typeof value !== 'number') {
             errors.push(`${where} row ${r + 1} column "${column.key}" has a numeric format, so its cells must be numbers or null`);
           }
+          if (column.format === 'date' && value !== undefined && value !== null && !PARTIAL_DATE.test(String(value))) {
+            errors.push(`${where} row ${r + 1} column "${column.key}" is a date column, so "${String(value)}" must be YYYY, YYYY-MM or YYYY-MM-DD`);
+          }
         }
       });
       if (figure.defaultSort && !keys.includes(figure.defaultSort.key)) errors.push(`${where} defaultSort key "${figure.defaultSort.key}" is not a column`);
@@ -561,7 +564,7 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       if (new Set(ids).size !== ids.length) errors.push(`${where} category ids must be unique`);
       for (const event of figure.events) {
         if (!ids.includes(event.category)) errors.push(`${where} event "${event.title}" has unknown category "${event.category}"`);
-        if (event.endDate && comparePeriods(event.endDate, event.date) < 0) errors.push(`${where} event "${event.title}" ends before it starts`);
+        if (event.endDate && comparePeriods(event.endDate, datePlacement(event.date)) < 0) errors.push(`${where} event "${event.title}" ends before it starts`);
       }
       break;
     }

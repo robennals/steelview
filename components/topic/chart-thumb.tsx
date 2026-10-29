@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { previewTarget } from '@/lib/content/preview';
+import { datePlacement } from '@/lib/content/period';
 import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
 import { layoutScatter } from '@/lib/chart/scatter';
 import {
@@ -268,14 +269,15 @@ function GeoThumb(props: GeoMapProps) {
 
 /** Every event a tick on the timeline's span, in its category's colour; major events taller. */
 function EventsThumb({ events, categories }: TimelineProps) {
-  const span = spanOf(events.map(e => e.date));
+  // An approximate date ("1850s", "c. 1888") sits where the timeline places it.
+  const span = spanOf(events.map(e => datePlacement(e.date)));
   // The timeline's own slots: categories in order, else in order of first appearance.
   const order = categories?.map(c => c.id) ?? [...new Set(events.map(e => e.category))];
   return (
     <Thumb>
       <line className="sv-thumb__rule" x1={0} x2={100} y1={50} y2={50} vectorEffect="non-scaling-stroke" />
       {events.map((e, i) => {
-        const x = percentAlong(toYear(e.date), span);
+        const x = percentAlong(toYear(datePlacement(e.date)), span);
         const reach = e.significance === 'major' ? 34 : 20;
         return <line key={i} x1={x} x2={x} y1={50 - reach} y2={50 + reach} stroke={seriesColor(order.indexOf(e.category) + 1 || 1)} strokeWidth={2.5} vectorEffect="non-scaling-stroke" />;
       })}

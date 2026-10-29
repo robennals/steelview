@@ -135,3 +135,23 @@ test('a qualified cell reads in the source\'s words and sorts by its number, a r
   assert.match(html, />about 90</);
   assert.match(html, />120</);
 });
+
+test('a date column prints dates as words and sorts them by date, a coarser date first', () => {
+  const dated: DataTableRow[] = [
+    { law: 'C', passed: '2026-06-12' },
+    { law: 'A', passed: '2025' },
+    { law: 'D', passed: '2026-06' },
+    { law: 'B', passed: 2026 },
+    { law: 'E', passed: null },
+  ];
+  const html = renderToStaticMarkup(createElement(DataTable, {
+    caption: 'One row per law',
+    columns: [{ key: 'law', label: 'Law', rowHeader: true }, { key: 'passed', label: 'Passed', format: 'date' }],
+    rows: dated,
+    defaultSort: { key: 'passed', direction: 'ascending' },
+  }));
+  assert.deepEqual([...html.matchAll(/<th scope="row"[^>]*>([A-E])</g)].map(m => m[1]), ['A', 'B', 'D', 'C', 'E']);
+  assert.match(html, />12 Jun 2026</);
+  assert.match(html, />Jun 2026</);
+  assert.match(html, /<td data-align="left">2026<\/td>/);
+});

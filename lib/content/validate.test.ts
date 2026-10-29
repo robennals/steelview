@@ -726,7 +726,7 @@ test('F7: timeline categories exist and periods run forwards', () => {
   const { topic, fact } = figuresTopic();
   const timeline = figureOf(fact, 'timeline');
   timeline.events[0].category = 'nope';
-  timeline.events[1].endDate = '2020';
+  timeline.events[2].endDate = '2020';
   const periods = figureOf(fact, 'periodTimeline');
   periods.rows[0].periods[0].to = '2026-01';
   periods.rows[1].periods[0].category = 'nope';
@@ -798,6 +798,25 @@ test('F11: a quote citing several sources need only appear in one of them', () =
   assert.deepEqual(validateTopic(topic), []);
   pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
   assert.ok(hasError(topic, 'is not in the quote of any of sources 24, 21'));
+});
+
+test('F6: a date column holds partial dates', () => {
+  const { topic, fact } = figuresTopic();
+  const table = figureOf(fact, 'dataTable');
+  table.columns[0].format = 'date';
+  assert.deepEqual(validateTopic(topic), []);
+  table.rows[0].year = '2025-13';
+  assert.ok(hasError(topic, 'column "year" is a date column, so "2025-13" must be YYYY, YYYY-MM or YYYY-MM-DD'));
+});
+
+test('F7: an approximate timeline date is placed at its year for the end-before-start check', () => {
+  const { topic, fact } = figuresTopic();
+  const event = figureOf(fact, 'timeline').events[0];
+  event.date = 'c. 1984';
+  event.endDate = '1985';
+  assert.deepEqual(validateTopic(topic), []);
+  event.date = '1990s';
+  assert.ok(hasError(topic, 'ends before it starts'));
 });
 
 test('F8: a key figure qualifies its value in one place', () => {

@@ -5,7 +5,8 @@
  * top of a "largest first" table reads as the largest.
  */
 
-import { formatValue } from './format';
+import { compareCoarseFirst } from '@/lib/content/period';
+import { formatDate, formatValue } from './format';
 import { isRange, pointValue, qualificationOf, qualifiedText, type QualifiedValue } from './qualified';
 import type { SourceCredit, ValueFormat } from './types';
 
@@ -43,8 +44,8 @@ export function isEmptyCell(cell: TableCell): boolean {
   return value === null || value === undefined || value === '';
 }
 
-/** What a cell prints: as the source qualified it, formatted if it is a number, "—" if it is empty. */
-export function cellText(cited: TableCell, format?: ValueFormat | 'text'): string {
+/** What a cell prints: as the source qualified it, formatted if it is a number or date, "—" if it is empty. */
+export function cellText(cited: TableCell, format?: ValueFormat | 'text' | 'date'): string {
   if (isEmptyCell(cited)) return '—';
   // Fixed decimals by default: in a column, "16" beside "26.9" misaligns the digits a reader compares.
   const numberFormat = { fixed: true, ...(typeof format === 'object' ? format : { unit: 'number' as const }) };
@@ -52,6 +53,7 @@ export function cellText(cited: TableCell, format?: ValueFormat | 'text'): strin
   const qualified = qualifiedCell(cited);
   if (qualified && qualificationOf(qualified) !== 'exact') return qualifiedText(qualified, numberFormat);
   const cell = cellValue(cited);
+  if (format === 'date') return formatDate(String(cell));
   return typeof cell === 'number' && format !== 'text' ? formatValue(cell, numberFormat) : String(cell);
 }
 
@@ -62,7 +64,17 @@ export function compareCells(a: TableCell, b: TableCell): number {
   return collator.compare(String(x), String(y));
 }
 
-export function sortRows<T extends Record<string, TableCell>>(rows: T[], key: string, direction: SortDirection): T[] {
+/** Date cells ("2026", "2026-06", "2026-06-12") in date order, a coarser date before the finer dates inside it. */
+export function compareDateCells(a: TableCell, b: TableCell): number {
+  return compareCoarseFirst(String(cellValue(a)), String(cellValue(b)));
+}
+
+/** How a column's cells compare: a date column by date, any other by value. */
+export function comparisonFor(columns: { key: string; format?: ValueFormat | 'text' | 'date' }[], key: string): typeof compareCells {
+  return columns.find(c => c.key === key)?.format === 'date' ? compareDateCells : compareCells;
+}
+
+export function sortRows<T extends Record<string, TableCell>>(rows: T[], key: string, direction: SortDirection, compare = compareCells): T[] {
   const sign = direction === 'ascending' ? 1 : -1;
   return rows
     .map((row, index) => ({ row, index }))
@@ -70,7 +82,7 @@ export function sortRows<T extends Record<string, TableCell>>(rows: T[], key: st
       const a = x.row[key];
       const b = y.row[key];
       if (isEmptyCell(a) || isEmptyCell(b)) return isEmptyCell(a) === isEmptyCell(b) ? x.index - y.index : isEmptyCell(a) ? 1 : -1;
-      return compareCells(a, b) * sign || x.index - y.index;
+      return compare(a, b) * sign || x.index - y.index;
     })
     .map(({ row }) => row);
 }

@@ -107,6 +107,6 @@ test('a range with no wording of its own is untraced unless both ends are quoted
   const item = figureFixture();
   const bars = (item.data.figures as Array<{ id?: string; items?: Array<Record<string, unknown>> }>).find((f) => f.id === 'deaths-by-region')!;
   bars.items![3].value = { low: 60, high: 85 };
-  const verdicts = auditTopic([item]).values.filter((v) => v.where.includes('"East"')).map((v) => v.verdict);
+  const verdicts = auditTopic([item]).values.filter((v) => v.chart === 'figure deaths-by-region' && v.where.includes('"East"')).map((v) => v.verdict);
   assert.deepEqual(verdicts, ['quoted', 'untraced']);
 });

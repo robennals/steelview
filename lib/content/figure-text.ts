@@ -137,7 +137,8 @@ export function figureValues(figure: Figure): FigureValue[] {
       return figure.rows.flatMap((row, i) => {
         const headerCell = row[header];
         const rowName = String((headerCell !== null && typeof headerCell === 'object' ? headerCell.value : headerCell) ?? i + 1);
-        return figure.columns.flatMap(column => {
+        // A date column's years are dates, not figures.
+        return figure.columns.filter(column => column.format !== 'date').flatMap(column => {
           const cell = row[column.key];
           const cited = cell !== null && typeof cell === 'object' ? cell : undefined;
           const written: WrittenNumber | undefined = cited

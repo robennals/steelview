@@ -471,6 +471,14 @@ export const figureExamplesFact: Fact = {
       ],
       "events": [
         {
+          "date": "1980s",
+          "title": "Fixture: an event its source dates only to the decade",
+          "category": "designation",
+          "sources": [
+            3
+          ]
+        },
+        {
           "date": "1984-01-19",
           "title": "Iran designated a state sponsor of terrorism",
           "category": "designation",
@@ -1171,6 +1179,65 @@ export const figureExamplesFact: Fact = {
           "value": 120
         }
       ]
+    },
+    {
+      "kind": "dataTable",
+      "id": "count-releases",
+      "title": "The counter's releases by region, 2026",
+      "description": "When the counter last published each region's figure, and the figure as it gave it.",
+      "sources": [
+        31
+      ],
+      "caption": "One row per region",
+      "columns": [
+        {
+          "key": "region",
+          "label": "Region",
+          "rowHeader": true
+        },
+        {
+          "key": "published",
+          "label": "Last published",
+          "format": "date"
+        },
+        {
+          "key": "deaths",
+          "label": "Deaths",
+          "format": {
+            "unit": "count"
+          }
+        }
+      ],
+      "rows": [
+        {
+          "region": "North",
+          "published": "2026-05-12",
+          "deaths": {
+            "value": 159,
+            "qualifier": "at least",
+            "asPublished": "at least 159"
+          }
+        },
+        {
+          "region": "East",
+          "published": "2026-05",
+          "deaths": {
+            "low": 60,
+            "high": 80,
+            "asPublished": "between 60 and 80"
+          }
+        },
+        {
+          "region": "Capital",
+          "published": "2026",
+          "deaths": 120
+        }
+      ],
+      "highlight": [],
+      "defaultSort": {
+        "key": "published",
+        "direction": "ascending"
+      }
     }
   ],
   "id": "figure-examples",

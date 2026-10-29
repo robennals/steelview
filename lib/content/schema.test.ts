@@ -203,7 +203,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot', 'barChart',
+    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'dataTable',
   ]);
 });
 
@@ -378,12 +378,13 @@ test('a series line may carry its own source', () => {
 
 /* ------------------------------------------------------- qualified numbers */
 
-/** The fixture's last figure (the qualified bar chart) with its first item's value replaced, parsed. */
+/** The fixture's qualified bar chart with its first item's value replaced, parsed. */
 function barValue(value: unknown) {
   const data = figureExamplesFrontmatter();
   const figures = [...(data.figures as Record<string, unknown>[])];
-  const bars = figures.at(-1) as { items: Record<string, unknown>[] };
-  figures[figures.length - 1] = { ...bars, items: [{ ...bars.items[0], value }, ...bars.items.slice(1)] };
+  const index = figures.findIndex(f => f.id === 'deaths-by-region');
+  const bars = figures[index] as { items: Record<string, unknown>[] };
+  figures[index] = { ...bars, items: [{ ...bars.items[0], value }, ...bars.items.slice(1)] };
   return factFrontmatterSchema.safeParse({ ...data, figures });
 }
 
@@ -438,4 +439,25 @@ test('a map datum may be qualified or a range, keeping its label', () => {
   const map = figures[7] as { data: Record<string, unknown> };
   figures[7] = { ...map, data: { ...map.data, OK: { value: 4.3, qualifier: 'about', label: '~4' }, DE: { low: 5, high: 6 } } };
   assert.ok(factFrontmatterSchema.safeParse({ ...data, figures }).success);
+});
+
+/* ------------------------------------------------------------------- dates */
+
+test('a timeline event may be dated to a decade or a circa year, but not a span of decades', () => {
+  const dated = (date: string) => timelineEvent(e => ({ ...e, date })).success;
+  assert.ok(dated('1850s'));
+  assert.ok(dated('c. 1888'));
+  assert.equal(dated('1880s–1890s'), false);
+  assert.equal(dated('circa 1888'), false);
+});
+
+test('a table column may be a date column, and an unquoted YAML date in a cell stays a date', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'c', status: 'unknown',
+    figures: [{ kind: 'dataTable', id: 't', title: 't', description: 'd', sources: [1], caption: 'c', columns: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B', format: 'date' }], rows: [{ a: 'x', b: new Date('2024-06-12') }] }],
+  });
+  const table = parsed.figures?.[0];
+  assert.ok(table?.kind === 'dataTable');
+  assert.equal(table.columns[1].format, 'date');
+  assert.equal(table.rows[0].b, '2024-06-12');
 });

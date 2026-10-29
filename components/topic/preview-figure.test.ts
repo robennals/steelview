@@ -138,8 +138,10 @@ test('a geo map preview draws every region and its inset, with no focus stops', 
 test('a timeline preview lists every event on one line, and past twelve marks each on an axis', () => {
   const html = preview('court-record');
   assertCompact(html, 'court-record', 'Court findings, convictions and designations, 1984–2026');
-  assert.equal(html.match(/class="sv-timeline__line"/g)?.length, 4);
+  assert.equal(html.match(/class="sv-timeline__line"/g)?.length, 5);
   assert.match(html, /Iran designated a state sponsor of terrorism/);
+  // A decade is shown as written, not as a machine-readable date.
+  assert.match(html, /<span>1980s<\/span>/);
   assert.doesNotMatch(html, /sv-control__status|sv-timeline__controls/);
   const long = preview('court-record', variant('court-record', f => (f.kind === 'timeline'
     ? { ...f, events: Array.from({ length: 15 }, (_, i) => ({ date: `${2000 + i}-06`, title: `Event ${i}`, category: 'charge', sources: [8] })) }

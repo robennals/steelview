@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { glossary } from './glossary';
+import { APPROXIMATE_DATE, PARTIAL_DATE } from './period';
 
 export const FACT_STATUSES = [
   'well-supported',
@@ -27,7 +28,8 @@ const fromYamlScalar = (value: unknown): unknown => {
 
 // Bounded, not just positional: month must be 01-12 and day 01-31, so
 // `2024-13-45` fails instead of passing on shape alone. A wrong date on a
-// citation is exactly what this project is judged on.
+// citation is exactly what this project is judged on. Partial dates use
+// PARTIAL_DATE (lib/content/period.ts), which the validator shares.
 const MONTH = '(0[1-9]|1[0-2])';
 const DAY = '(0[1-9]|[12]\\d|3[01])';
 
@@ -35,8 +37,18 @@ const partialDate = z.preprocess(
   fromYamlScalar,
   z
     .string()
-    .regex(new RegExp(`^\\d{4}(-${MONTH}(-${DAY})?)?$`), 'must be YYYY, YYYY-MM or YYYY-MM-DD')
+    .regex(PARTIAL_DATE, 'must be YYYY, YYYY-MM or YYYY-MM-DD')
 );
+
+/**
+ * A timeline event's date: a partial date, or one the source gives only
+ * roughly — a decade ("1850s") or a circa year ("c. 1888"), shown as
+ * written and placed at the decade's start or the year.
+ */
+const eventDate = z.union([
+  partialDate,
+  z.string().regex(APPROXIMATE_DATE, 'must be YYYY, YYYY-MM, YYYY-MM-DD, a decade ("1850s") or a circa year ("c. 1888"); a span of decades is a period timeline'),
+]);
 
 export const sourceSchema = z.object({
   stance: z.enum(SOURCE_STANCES),
@@ -361,7 +373,11 @@ export const sectionRefSchema = z.object({ kind: z.literal('section'), id: slugI
 
 /* --- dataTable ------------------------------------------------------------ */
 
-const plainCell = z.union([z.string(), z.number().finite(), z.null()]);
+// An unquoted `2024-06-12` in YAML arrives as a Date; in a table it can only be a date, so it becomes one again.
+const plainCell = z.preprocess(
+  value => (value instanceof Date ? value.toISOString().slice(0, 10) : value),
+  z.union([z.string(), z.number().finite(), z.null()]),
+);
 /**
  * A cell object: a value with its own footnotes (`sources`, rendered as "[n]"
  * links after the text), a qualified number (`qualifier`), a published range
@@ -400,8 +416,12 @@ export const dataTableFigureSchema = z.object({
       z.object({
         key: slugId,
         label: z.string().min(1),
-        /** 'text' prints as written; use it for year columns, or 1965 prints as "1,965". */
-        format: z.union([z.literal('text'), valueFormatSchema]).optional(),
+        /**
+         * 'text' prints as written; use it for year columns, or 1965 prints as "1,965".
+         * 'date' holds YYYY, YYYY-MM or YYYY-MM-DD and prints "2026", "Jun 2026", "12 Jun 2026",
+         * sorting by date, a coarser date before the finer dates inside it.
+         */
+        format: z.union([z.literal('text'), z.literal('date'), valueFormatSchema]).optional(),
         align: z.enum(['left', 'right']).optional(),
         rowHeader: z.boolean().optional(),
         sortable: z.boolean().optional(),
@@ -459,7 +479,7 @@ export const timelineFigureSchema = z.object({
   events: z
     .array(
       z.object({
-        date: partialDate,
+        date: eventDate,
         endDate: partialDate.optional(),
         title: z.string().min(1),
         description: z.string().min(1).optional(),

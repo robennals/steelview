@@ -93,7 +93,7 @@ test('a geo map thumbnail draws every region of its outline set', () => {
 test('timeline thumbnails mark every event, and every period of every row', () => {
   const events = thumb('court-record');
   assertDecorative(events);
-  assert.equal(events.match(/<line x1=/g)?.length, 4);
+  assert.equal(events.match(/<line x1=/g)?.length, 5);
   const periods = thumb('war-periods');
   assertDecorative(periods);
   assert.equal(periods.match(/<rect /g)?.length, 5);

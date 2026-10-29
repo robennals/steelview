@@ -88,7 +88,7 @@ export function dataTableProps(f: FigureOf<'dataTable'>, c: FigureContext): R.Da
     columns: f.columns.map(column => ({
       key: column.key,
       label: column.label,
-      format: column.format === undefined || column.format === 'text' ? column.format : toValueFormat(column.format),
+      format: column.format === undefined || column.format === 'text' || column.format === 'date' ? column.format : toValueFormat(column.format),
       align: column.align,
       rowHeader: column.rowHeader,
       sortable: column.sortable,

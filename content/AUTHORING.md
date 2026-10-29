@@ -771,9 +771,9 @@ has; the rest draw a component (see Storybook for each one's look):
 | `comparison` | one `comparisons` entry, by `id` |
 | `featured` | the charts of one supporting fact named in `featuredCharts` (`fact: <id>`) |
 | `section` | the body section headed `## … {#<fact>--<id>}`, moved to this place |
-| `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it |
+| `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it; a column may be `format: date` |
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
-| `timeline` | dated events in `categories`, each with its own `source` (or `sources`) |
+| `timeline` | dated events in `categories`, each with its own `source` (or `sources`); a date may be a decade (`1850s`) or a circa year (`c. 1888`) |
 | `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated`; a period or event may cite its own `sources` |
 | `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
 | `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
@@ -907,6 +907,18 @@ observationMarks:
 
 Marks are checked against the chart: every line, period and row must be on it.
 Other kinds of figure cannot show marks yet.
+
+**Dates are as precise as the source.** A `dataTable` column with
+`format: date` holds `YYYY`, `YYYY-MM` or `YYYY-MM-DD` cells, prints them as
+"2026", "Jun 2026", "12 Jun 2026", and sorts by date, a coarser date before
+the finer dates inside it ("2026" heads the rows of 2026). An unquoted YAML
+date in a cell stays a date. A `timeline` event the source dates only
+roughly takes `date: 1850s` (a decade) or `date: c. 1888` (circa a year): it
+is shown as written under its own heading, placed at the decade's start or
+the year, before the exact dates it covers. A span of decades
+(`1880s–1890s`) is not accepted — that is a period, so use a
+`periodTimeline`.
+
 **A number keeps the source's qualification.** Wherever a figure takes a
 number — a table's numeric cell, a key figure, a bar, a composition part, a
 map datum, a scatter coordinate, a central estimate — it may instead take
@@ -1661,7 +1673,9 @@ them.
 | Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |
 | A `section` figure names an h2 in the body | `lib/content/validate.ts` (F4) |
 | Table columns, rows, sort and highlight agree; numeric columns hold numbers | `lib/content/validate.ts` (F6) |
-| Timeline categories exist and periods run forwards; period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
+| Timeline categories exist and periods run forwards (an approximate date counted at its placement); period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
+| A timeline date is a partial date, a decade or a circa year | `lib/content/schema.ts` |
+| A `format: date` column holds only YYYY, YYYY-MM or YYYY-MM-DD dates | `lib/content/validate.ts` (F6) |
 | At most six key figures | `lib/content/validate.ts` (F8) |
 | Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |

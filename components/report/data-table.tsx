@@ -2,14 +2,18 @@
 
 import { useState, type ReactNode } from 'react';
 import { ReportFigure } from './figure';
-import { cellText, cellValue, sortRows, type SortDirection, type TableCell } from './table-sort';
+import { cellText, cellValue, comparisonFor, sortRows, type SortDirection, type TableCell } from './table-sort';
 import type { SourceCredit, ValueFormat } from './types';
 
 export type DataTableColumn = {
   key: string;
   label: string;
-  /** A ValueFormat for numbers; 'text' (the default for string cells) prints the cell as given. */
-  format?: ValueFormat | 'text';
+  /**
+   * A ValueFormat for numbers; 'text' (the default for string cells) prints
+   * the cell as given; 'date' takes "2026", "2026-06" or "2026-06-12", prints
+   * "2026", "Jun 2026", "12 Jun 2026" and sorts by date.
+   */
+  format?: ValueFormat | 'text' | 'date';
   /** Defaults to right for numbers, left for text. */
   align?: 'left' | 'right';
   /** Mark the column that names each row (usually the first); its cells become row headers. */
@@ -69,17 +73,17 @@ export function DataTable({
   panel,
 }: DataTableProps) {
   const [sort, setSort] = useState(defaultSort);
-  const sorted = sort ? sortRows(rows, sort.key, sort.direction) : rows;
+  const sorted = sort ? sortRows(rows, sort.key, sort.direction, comparisonFor(columns, sort.key)) : rows;
   const headerKey = (columns.find(c => c.rowHeader) ?? columns[0]).key;
   const highlighted = new Set(highlight);
 
   const isNumeric = (column: DataTableColumn) =>
-    column.format !== 'text' && (column.format !== undefined || rows.some(row => typeof cellValue(row[column.key]) === 'number'));
+    column.format !== 'text' && column.format !== 'date' && (column.format !== undefined || rows.some(row => typeof cellValue(row[column.key]) === 'number'));
   const alignOf = (column: DataTableColumn) => column.align ?? (isNumeric(column) ? 'right' : 'left');
 
   const onSort = (column: DataTableColumn) => {
     // Numbers start largest-first, which is the question a reader sorting
-    // them usually has; text starts A–Z.
+    // them usually has; text starts A–Z and dates earliest first.
     const first: SortDirection = isNumeric(column) ? 'descending' : 'ascending';
     setSort(current =>
       current?.key === column.key ? { key: column.key, direction: current.direction === 'ascending' ? 'descending' : 'ascending' } : { key: column.key, direction: first },

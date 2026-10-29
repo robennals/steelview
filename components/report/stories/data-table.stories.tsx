@@ -102,3 +102,33 @@ export const QualifiedValues: Story = {
     note: undefined,
   },
 };
+
+/**
+ * A date column: cells hold "2026", "2026-06" or "2026-06-12" as the source
+ * dates them, print as "2026", "Jun 2026", "12 Jun 2026", and sort by date —
+ * a coarser date before the finer dates inside it.
+ */
+export const DateColumn: Story = {
+  args: {
+    title: 'When each state changed its mail-ballot deadline',
+    description: 'Illustrative data: dated to the precision each source gives. Sort the Changed column either way.',
+    caption: 'One row per state and change.',
+    columns: [
+      { key: 'state', label: 'State', rowHeader: true },
+      { key: 'changed', label: 'Changed', format: 'date' },
+      { key: 'change', label: 'What changed', format: 'text', sortable: false },
+    ],
+    rows: [
+      { state: 'Alpha', changed: '2024-06-12', change: 'Postmark deadline replaced by receipt deadline' },
+      { state: 'Beta', changed: '2023', change: 'Grace period of seven days added' },
+      { state: 'Gamma', changed: '2024', change: 'Drop boxes limited to one per county' },
+      { state: 'Delta', changed: '2024-03', change: 'Cure period extended' },
+      { state: 'Epsilon', changed: '2024-03-01', change: 'Signature match rules published' },
+      { state: 'Zeta', changed: null, change: 'Date not published' },
+    ],
+    highlight: [],
+    defaultSort: { key: 'changed', direction: 'ascending' },
+    sources: [{ label: 'Illustrative data' }],
+    note: undefined,
+  },
+};

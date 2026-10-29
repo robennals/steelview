@@ -1,7 +1,7 @@
 import { Footnotes, type DataTableColumn, type DataTableProps, type DataTableRow } from './data-table';
 import { ReportFigure } from './figure';
 import { isWholeQuote, splitQuoted } from './quoted-text';
-import { cellText, cellValue, sortRows } from './table-sort';
+import { cellText, cellValue, comparisonFor, sortRows } from './table-sort';
 
 export type DataCardsProps = Pick<
   DataTableProps,
@@ -42,7 +42,7 @@ export function DataCards({
   footer,
   panel,
 }: DataCardsProps) {
-  const ordered = defaultSort ? sortRows(rows, defaultSort.key, defaultSort.direction) : rows;
+  const ordered = defaultSort ? sortRows(rows, defaultSort.key, defaultSort.direction, comparisonFor(columns, defaultSort.key)) : rows;
   const header = columns.find(c => c.rowHeader) ?? columns[0];
   const date = columns.find(c => c.key === dateColumn);
   const lead = columns.find(c => c.key === leadColumn);

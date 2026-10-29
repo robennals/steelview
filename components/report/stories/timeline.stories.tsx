@@ -42,3 +42,28 @@ export const MajorOnly: Story = {
 export const EmptyResult: Story = {
   args: { initialCategories: ['eu'], initialMajorOnly: false, events: POLICY_MILESTONES.filter(e => e.category !== 'eu') },
 };
+
+/**
+ * Dates the source gives only roughly — a decade, "c." a year — are shown as
+ * written, under their own heading, placed at the decade's start or the
+ * year, and come before the exact dates they cover. A span of decades is a
+ * PeriodTimeline, not an approximate date.
+ */
+export const ApproximateDates: Story = {
+  args: {
+    title: 'Voting rules in one state, 1850s–1965',
+    description: 'Illustrative data: the earliest events are dated only as the source dates them.',
+    categories: [
+      { id: 'law', label: 'Law' },
+      { id: 'ruling', label: 'Court ruling' },
+    ],
+    events: [
+      { date: '1850s', title: 'Property qualification dropped', category: 'law', description: 'The source dates the change only to the decade.', sources: [{ label: 'Illustrative data' }] },
+      { date: 'c. 1888', title: 'Secret ballot adopted', category: 'law', sources: [{ label: 'Illustrative data' }] },
+      { date: '1890-03', title: 'Literacy test enacted', category: 'law', significance: 'major', sources: [{ label: 'Illustrative data' }] },
+      { date: '1915-06-21', title: 'Grandfather clause struck down', category: 'ruling', sources: [{ label: 'Illustrative data' }, { label: 'Second illustrative source' }] },
+      { date: '1965-08-06', title: 'Voting Rights Act signed', category: 'law', significance: 'major', sources: [{ label: 'Illustrative data' }] },
+    ],
+    sources: [{ label: 'Illustrative data' }],
+  },
+};

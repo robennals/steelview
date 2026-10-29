@@ -70,7 +70,7 @@ test('cited table cells keep their value and turn citations into credits', () =>
 test('item citations become item credits', () => {
   assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].sources?.map(s => s.number), [11]);
   assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].value, { value: 7200, qualifier: 'more than', asPublished: 'more than 7,200' });
-  assert.equal(timelineProps(figureOf('timeline'), context).events[1].sources?.[0].label, 'Court of First Instance, Antwerp');
+  assert.equal(timelineProps(figureOf('timeline'), context).events[2].sources?.[0].label, 'Court of First Instance, Antwerp');
   assert.deepEqual(compositionBarProps(figureOf('compositionBar'), context).rows[1].sources?.map(s => s.number), [13]);
   assert.deepEqual(estimateRangeProps(figureOf('estimateRange'), context).estimates[3].sources?.map(s => s.number), [17]);
   assert.deepEqual(caveatListProps(figureOf('caveatList'), context).items[2].sources?.map(s => s.number), [26]);

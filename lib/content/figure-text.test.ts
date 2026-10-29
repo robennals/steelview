@@ -209,3 +209,8 @@ test('a range table cell is two values, each citing the cell\'s sources', () => 
     ['table row "B" column share', 5, [1], 'about 5%'],
   ]);
 });
+
+test('a date column\'s years are not audited as figures', () => {
+  const table = { ...figureOf('dataTable'), columns: [{ key: 'year', label: 'Year', format: 'date' as const }, { key: 'count', label: 'Count', format: { unit: 'count' as const } }], rows: [{ year: 2025, count: 7 }] };
+  assert.deepEqual(figureValues(table).map(v => v.where), ['table row "2025" column count']);
+});

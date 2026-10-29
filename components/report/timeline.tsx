@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import { ChoiceGroup, FilterChips } from './controls';
 import { ReportFigure, SourceLine } from './figure';
+import { datePlacement, isApproximateDate } from '@/lib/content/period';
 import { compareDates, formatDate } from './format';
 import { MarkerIcon, shapeForSlot } from './marker-shape';
 import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
@@ -11,6 +12,11 @@ import { edgeOf, percentAlong, spanOf, stackLevels, toYear, yearTicks } from './
 import type { FigurePreview, PartialDate, SourceCredit } from './types';
 
 export type TimelineEvent = {
+  /**
+   * A partial date, or one the source gives only roughly: a decade ("1850s")
+   * or a circa year ("c. 1888"), shown as written and placed at the decade's
+   * start or the year.
+   */
   date: PartialDate;
   /** For something that lasted: a consultation, a scheme, a route that was open. */
   endDate?: PartialDate;
@@ -57,8 +63,25 @@ export type TimelineProps = {
   preview?: FigurePreview;
 };
 
-function yearOf(date: PartialDate) {
-  return date.slice(0, 4);
+/**
+ * The heading an event is listed under: its year, or an approximate date as
+ * written — a "c. 1888" event is not filed under a confident "1888".
+ */
+function headingOf(date: PartialDate) {
+  return isApproximateDate(date) ? date : date.slice(0, 4);
+}
+
+/**
+ * Date order, by where each date is placed; at the same place an
+ * approximate date comes first, so "1850s" heads the 1850s.
+ */
+function compareEventDates(a: PartialDate, b: PartialDate) {
+  return compareDates(datePlacement(a), datePlacement(b)) || Number(isApproximateDate(b)) - Number(isApproximateDate(a));
+}
+
+/** A date as written; only an exact one is a machine-readable `<time>`. */
+function EventDate({ date }: { date: PartialDate }) {
+  return isApproximateDate(date) ? <span>{date}</span> : <time dateTime={date}>{formatDate(date)}</time>;
 }
 
 /**
@@ -99,11 +122,11 @@ export function Timeline({
   const hasMinor = events.some(e => e.significance !== 'major');
   const showMajorToggle = majorToggle ?? (hasMajor && hasMinor);
 
-  const sorted = [...events].sort((a, b) => compareDates(a.date, b.date));
+  const sorted = [...events].sort((a, b) => compareEventDates(a.date, b.date));
   const visible = sorted.filter(
     e => (selected.size === 0 || selected.has(e.category)) && (!majorOnly || e.significance === 'major'),
   );
-  const years = [...new Set(visible.map(e => yearOf(e.date)))];
+  const years = [...new Set(visible.map(e => headingOf(e.date)))];
   const YearHeading = headingLevel === 2 ? 'h3' : 'h4';
 
   if (preview) {
@@ -128,7 +151,7 @@ export function Timeline({
                 return (
                   <li key={`${e.date}-${i}-${e.title}`} className="sv-timeline__line" style={{ '--sv-timeline-color': seriesColor(slot) }}>
                     <MarkerIcon shape={shapeForSlot(slot)} className="sv-timeline__line-icon" />
-                    <time dateTime={e.date}>{formatDate(e.date)}</time>
+                    <EventDate date={e.date} />
                     <span className="sv-timeline__line-title">{e.title}</span>
                     <span className="sv-visually-hidden"> · {labelOf.get(e.category) ?? e.category}</span>
                   </li>
@@ -193,7 +216,7 @@ export function Timeline({
             <section key={year} className="sv-timeline__year">
               <YearHeading className="sv-timeline__year-head">{year}</YearHeading>
               <ol className="sv-timeline__events">
-                {visible.filter(e => yearOf(e.date) === year).map((e, i) => {
+                {visible.filter(e => headingOf(e.date) === year).map((e, i) => {
                   const slot = slotOf.get(e.category) ?? 1;
                   const major = e.significance === 'major';
                   return (
@@ -205,7 +228,7 @@ export function Timeline({
                     >
                       <MarkerIcon shape={shapeForSlot(slot)} filled={major || !hasMajor} className="sv-timeline__marker" />
                       <p className="sv-timeline__date">
-                        <time dateTime={e.date}>{formatDate(e.date)}</time>
+                        <EventDate date={e.date} />
                         {e.endDate && (
                           <>
                             {' – '}
@@ -237,8 +260,9 @@ export function Timeline({
  * visually hidden text, in order.
  */
 function TimelineLane({ events, slotOf, labelOf }: { events: TimelineEvent[]; slotOf: Map<string, number>; labelOf: Map<string, string> }) {
-  const span = spanOf(events.map(e => e.date));
-  const positions = events.map(e => percentAlong(toYear(e.date), span));
+  // An approximate date ("1850s", "c. 1888") sits where the full timeline places it.
+  const span = spanOf(events.map(e => datePlacement(e.date)));
+  const positions = events.map(e => percentAlong(toYear(datePlacement(e.date)), span));
   // A marker is ~0.8rem; at a ~500px lane that is ~2.5% of the span.
   const levels = stackLevels(positions, 2.5, 4);
   return (
@@ -249,7 +273,7 @@ function TimelineLane({ events, slotOf, labelOf }: { events: TimelineEvent[]; sl
           return (
             <li key={`${e.date}-${i}`} className="sv-timeline__lane-mark" style={{ left: `${positions[i]}%`, '--sv-strip-level': levels[i], color: seriesColor(slot) }}>
               <MarkerIcon shape={shapeForSlot(slot)} className="sv-timeline__lane-icon" />
-              <span className="sv-visually-hidden">{formatDate(e.date)}: {e.title} ({labelOf.get(e.category) ?? e.category})</span>
+              <span className="sv-visually-hidden">{isApproximateDate(e.date) ? e.date : formatDate(e.date)}: {e.title} ({labelOf.get(e.category) ?? e.category})</span>
             </li>
           );
         })}
