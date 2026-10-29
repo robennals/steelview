@@ -742,9 +742,9 @@ leaves "strongest", magnitude and overview to you.
 **Figures in previews.** A slide can draw these figure kinds: `barChart`
 (paired and dumbbell bars too, with their series key), `compositionBar`,
 `estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
-`timeline`, `periodTimeline`, `keyFigures` and `sliceExplorer` — its
-opening cut, with the status line that says what is shown and what is added
-together, and no controls. Each is drawn by its own
+`timeline`, `periodTimeline`, `keyFigures`, `smallMultiples` (every panel)
+and `sliceExplorer` — its opening cut, with the status line that says what
+is shown and what is added together, and no controls. Each is drawn by its own
 component in a compact form — the title, linked to the full figure, and the
 graph: every item, area, event and period, with the key where colours or
 shapes need one, but no description, Graph/Table switch, filters, method
@@ -798,6 +798,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
 | `sliceExplorer` | tidy `rows` × `dimensions` × `measures` that a reader breaks down, filters and splits (votes by roll call × party × position); a dimension that must never be added together — separate votes or polls — is `combinable: false`. Every row is also listed under "All N rows of the data" |
+| `smallMultiples` | one small line per item (`panels`, each a `name` and `points`), on one shared scale unless `independentScales`; every panel runs across the figure's `coverage`, or its own; `highlight` marks the panel the text is about, and a panel may cite its own `source` |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
 | `quotes` | two or more quotes answering one `question`: up to four side by side in the order written, more as a list in date order a reader can filter by category and speaker (every quote listed with JavaScript off). A quote may name a `stance` from the figure's `categories` (with `categoryLabel` naming the filter), and a quote not in English gives its `lang` and a `translation`, shown beside it. `quoteComparison`, the kind's earlier name, still parses as `quotes` |
 | `pullQuote` | one quote set apart |
@@ -1049,6 +1050,32 @@ name nothing or draw no bars.
     rows:
       - { vote: 'House, 15 Sep 2026', party: Republican, position: 'Yes', members: 7 }
       - { vote: 'House, 15 Sep 2026', party: Republican, position: 'No', members: 203 }
+```
+
+**Small multiples are series.** A `smallMultiples` figure declares the
+`coverage` its source publishes, like a series, and every panel's points run
+forwards from its first period to its last — exactly across that range, so
+no panel is the stretch that suits the argument. A panel whose source
+publishes less gives its own `coverage` inside the figure's (and then the
+figure's is the union of the panels'); its `coverage.note` is shown in About
+this data beside its name. Panels share one y-scale: set
+`independentScales: true` only when the text is about shape, not size, and
+say so in `description`.
+
+```yaml
+  - kind: smallMultiples
+    id: chokepoint-traffic
+    title: Ships a day through each PortWatch chokepoint, 2025–2026
+    description: Monthly means of daily ship counts, all on one scale.
+    valueLabel: Ships a day, monthly average
+    periodLabel: Month
+    format: { unit: number, decimals: 0 }
+    sources: [25]
+    coverage: { from: '2025-01', to: '2026-09', note: Our monthly means of PortWatch's daily counts. }
+    panels:
+      - name: Strait of Hormuz
+        highlight: true
+        points: [{ period: '2025-01', value: 103 }, …, { period: '2026-09', value: 4 }]
 ```
 
 **Old links survive a conversion.** When a figure replaces prose that had
@@ -1830,6 +1857,7 @@ them.
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
 | A bar chart's rows give `value`, or with `series` a `values` map naming every series (`null` for none) and at least one number; `style` only with `series`; a dumbbell has exactly two series and only it labels ends, by series key | `lib/content/schema.ts`, `lib/content/validate.ts` (F10, `pairedBarErrors`) |
 | A slice explorer's rows name every dimension, no combination twice, values within a dimension's `values` (each used), numbers for measures; its defaults exist, never split by a `combinable: false` dimension or pick two of its values, and draw at least one bar | `lib/content/validate.ts` (`sliceErrors`) |
+| Small-multiple panels have unique names and points that run forwards across the figure's coverage, or their own inside it; the figure's coverage is the union of the panels' own | `lib/content/validate.ts` (`smallMultiplesErrors`) |
 | A composition row sums to its `total`, or to 100 with `unit: percent`, within half a unit in each part's last published place | `lib/content/validate.ts` (F10, `compositionSumError`) |
 | Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
 | A `quotes` figure has two or more quotes; a `stance` names one of its `categories`, category ids are unique and each has a quote | `lib/content/schema.ts`, `lib/content/validate.ts` (`kindErrors`) |

@@ -3169,8 +3169,9 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-report[data-panel-chart] :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-evenly; margin-block: 0; }
 .sv-report[data-panel-chart] :is(.sv-bars__row, .sv-estimates__row) { margin: 0; }
 .sv-report[data-panel-chart] .sv-composition__row + .sv-composition__row { margin-top: 0; }
-/* The right padding holds an open period's arrowhead inside the step. */
+/* The right padding holds an open period's arrowhead, and a small multiple's last dot, inside the step. */
 .sv-report[data-panel-chart] .sv-periods__line { padding-right: .45rem; }
+.sv-report[data-panel-chart] .sv-multiples__grid { padding-right: .3rem; }
 .sv-report[data-panel-chart] .sv-key-figures__frame { flex: 1 1 auto; display: flex; align-items: center; }
 .sv-report[data-panel-chart] .sv-key-figures__list { width: 100%; }
 .sv-report[data-panel-chart] .sv-scatter__x-label { text-align: center; }
@@ -3187,6 +3188,10 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-report[data-panel-chart] .sv-tile-map__scroll { flex: 1 1 0; min-height: 16rem; overflow: visible; container-type: size; }
   .sv-report[data-panel-chart] .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; }
   .sv-report[data-panel-chart] .sv-tile-map__grid[data-cols="dense"] { min-width: 0; margin: 0 auto; gap: 1px; }
+  /* Small multiples: every panel packed to fill the step, the line stretched to its cell. */
+  .sv-report[data-panel-chart] .sv-multiples__grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
+  .sv-report[data-panel-chart] .sv-multiples__panel { display: flex; flex-direction: column; min-height: 0; }
+  .sv-report[data-panel-chart] .sv-multiples__plot { flex: 1 1 auto; min-height: 4.75rem; height: auto; }
 }
 
 /* On a phone every shape's type would shrink too far, so the narrow plot,
@@ -3241,6 +3246,12 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview > .sv-map-legend,
 .sv-chart__preview > .sv-category-legend { margin: 0 0 .35rem; font-size: .7rem; }
 .sv-chart__preview .sv-chart__axis-label { margin: 0; font-size: .7rem; color: var(--ink-3); }
+/* Small multiples: every panel, packed to fill the slide; the line stretches to its cell. */
+.sv-multiples__grid[data-preview] { flex: 1; min-height: 0; margin: 0; grid-template-columns: repeat(auto-fill, minmax(min(100%, 7rem), 1fr)); grid-auto-rows: 1fr; gap: .4rem .8rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__panel { display: flex; flex-direction: column; min-height: 0; padding-top: .2rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .7rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__latest { margin: 0 0 .2rem; font-size: .65rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__plot { flex: 1; min-height: 1.2rem; height: auto; margin-left: 0; }
 /* A slice explorer's status line: what the opening cut shows and what it adds together. */
 .sv-chart__preview > .sv-control__status { margin: 0 0 .3rem; font-size: .7rem; color: var(--ink-3); }
 /* Rows that share the space evenly: bars, composition bars, estimates, periods, events. */
@@ -3353,6 +3364,15 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview .sv-key-figures__value { font-size: 2rem; }
 /* A phone's slide is two-thirds the height of a desktop's: everything that spends height on a row spends less. */
 @media (max-width: 47.5rem) {
+  .sv-chart__preview .sv-bars[data-layout="grouped"]:has(.sv-bars__value[data-stacked]) .sv-bars__track { height: calc(.6rem * var(--sv-bars-count, 2)); }
+  /* A lower bound's arrow runs past its bar's end, which may be the track's. */
+  :is(.sv-chart__preview, [data-panel-chart]) .sv-bars:has(.sv-bars__bar[data-qualification="lower-bound"]) .sv-bars__track { margin-right: .6rem; }
+  /* Two columns of panels whose names stay readable; a panel's latest figure sits beside its name, and the status line gives the date. */
+  .sv-multiples__grid[data-preview] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; gap: .15rem .8rem; padding: 0 .25rem .25rem 0; }
+  .sv-multiples__grid[data-preview] .sv-multiples__panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: .3rem; align-items: baseline; }
+  .sv-multiples__grid[data-preview] .sv-multiples__latest { margin: 0; }
+  .sv-multiples__grid[data-preview] .sv-multiples__latest-period { display: none; }
+  .sv-multiples__grid[data-preview] .sv-multiples__plot { grid-column: 1 / -1; min-height: 0; height: 1rem; }
   .sv-chart[data-preview] .sv-chart__preview > .sv-chart__legend { margin-bottom: .25rem; font-size: .66rem; gap: 0 .7rem; line-height: 1.25; }
   .sv-chart__preview .sv-composition__head { margin-bottom: .1rem; font-size: .75rem; }
   .sv-chart__preview .sv-composition__bar { height: 1.3rem; }

@@ -246,3 +246,12 @@ test('a slice explorer\'s numbers are its rows\' measures; its prose its labels 
   assert.equal(prose.filter(s => s === 'House, 15 Sep 2026').length, 1);
   assert.ok(prose.includes('Members voting') && prose.includes('roll calls'));
 });
+
+test('small-multiple points are values, a panel with its own source traced to it', () => {
+  const multiples = figureOf('smallMultiples');
+  const values = figureValues(multiples);
+  assert.equal(values.length, 19);
+  assert.deepEqual(values[0], { where: 'panel "Strait of Hormuz" 2026-06', value: 31, format: { unit: 'number', decimals: 0 }, citations: [39], asPublished: undefined, valuesFrom: undefined });
+  assert.deepEqual(values.at(-1)?.citations, [40]);
+  assert.ok(figureProse(multiples).includes('Kerch Strait') && figureProse(multiples).includes('The counter began in July 2026.'));
+});

@@ -361,11 +361,13 @@ now costs one file; found later it costs every viewpoint that cites it.
   its `events`;
 - a fact file reaches the component library through `figures`
   ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
-  reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
-  `scatterPlot`) are figure kinds, and `QuoteBrowser` is what a `quotes`
-  figure of more than four becomes; `SliceExplorer` is kind
-  `sliceExplorer`. `SmallMultiples` is not yet, so a report plan that needs
-  it says so at stage 4b;
+  reading order. A `quotes` figure of up to four quotes sets them side by
+  side and of more becomes a filterable list (`QuoteBrowser`); two measures
+  per row are a `barChart` with `series`, paired or a dumbbell, never
+  stacked; a tidy table a reader should be able to cut differently is a
+  `sliceExplorer` (mark separate votes or polls `combinable: false`); and
+  the same measure over time for many items is `smallMultiples`, every
+  panel on one scale and across the whole published range;
 - a number the source gives as a bound, an approximation or a range is a
   qualified value (`{ value, qualifier }` or `{ low, high }`, see
   [AUTHORING.md, Figures](AUTHORING.md#figures)) on tables, key figures,

@@ -645,6 +645,9 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     case 'sliceExplorer':
       errors.push(...sliceErrors(figure, where));
       break;
+    case 'smallMultiples':
+      errors.push(...smallMultiplesErrors(figure, where));
+      break;
     case 'compositionBar': {
       const keys = figure.categories.map(c => c.key);
       if (new Set(keys).size !== keys.length) errors.push(`${where} category keys must be unique`);
@@ -779,6 +782,43 @@ function sliceErrors(figure: FigureOf<'sliceExplorer'>, where: string): string[]
     const filters = appliedFilters(figure.rows, figure.dimensions, breakdown, figure.defaultFilters ?? {}, {});
     const shown = slice({ rows: figure.rows, breakdown, split, measure: measure.key, aggregation: measure.aggregation, filters });
     if (shown.groups.length === 0) errors.push(`${where} its default view draws no bars — change defaultFilters`);
+  }
+  return errors;
+}
+
+/**
+ * Small multiples are series: panel names are distinct; each panel's points
+ * run strictly forwards and from end to end of the published range — the
+ * figure's `coverage`, or the panel's own inside it — so no panel shows only
+ * the stretch that suits the text; and with per-panel coverage the figure's
+ * is their union, exactly.
+ */
+function smallMultiplesErrors(figure: FigureOf<'smallMultiples'>, where: string): string[] {
+  const errors: string[] = [];
+  const names = figure.panels.map(p => p.name);
+  if (new Set(names).size !== names.length) errors.push(`${where} panel names must be unique`);
+  const { coverage } = figure;
+  if (comparePeriods(coverage.to, coverage.from) < 0) errors.push(`${where} coverage ends before it starts`);
+  for (const panel of figure.panels) {
+    const at = `${where} panel "${panel.name}"`;
+    if (panel.points.some((point, i) => i > 0 && comparePeriods(point.period, panel.points[i - 1].period) <= 0)) errors.push(`${at}: points must run forwards in time, with no repeats`);
+    const span = panel.coverage ?? coverage;
+    const says = panel.coverage ? 'its own coverage runs' : 'the coverage runs';
+    const first = panel.points[0].period;
+    const last = panel.points[panel.points.length - 1].period;
+    if (comparePeriods(first, span.from) !== 0) errors.push(`${at}: starts at "${first}" but ${says} from "${span.from}" — show the whole published range`);
+    if (comparePeriods(last, span.to) !== 0) errors.push(`${at}: ends at "${last}" but ${says} to "${span.to}" — show the whole published range`);
+    if (panel.coverage && (comparePeriods(panel.coverage.from, coverage.from) < 0 || comparePeriods(panel.coverage.to, coverage.to) > 0)) {
+      errors.push(`${at}: its own coverage ${panel.coverage.from}–${panel.coverage.to} runs outside the figure's ${coverage.from}–${coverage.to}`);
+    }
+  }
+  if (figure.panels.some(p => p.coverage)) {
+    const spans = figure.panels.map(p => p.coverage ?? coverage);
+    const earliest = spans.map(s => s.from).sort(comparePeriods)[0];
+    const latest = spans.map(s => s.to).sort(comparePeriods).at(-1)!;
+    if (comparePeriods(coverage.from, earliest) !== 0 || comparePeriods(coverage.to, latest) !== 0) {
+      errors.push(`${where} coverage ${coverage.from}–${coverage.to} must be the union of its panels' ranges, ${earliest}–${latest}`);
+    }
   }
   return errors;
 }

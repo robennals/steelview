@@ -804,6 +804,24 @@
     stroke-linecap: round;
   }
 
+  /* The panel the text is about: a heavier rule (which survives greyscale)
+     and its line in the accent. */
+  .sv-multiples__panel[data-highlight] {
+    border-top: 3px solid var(--accent);
+  }
+
+  .sv-multiples__panel[data-highlight] .sv-multiples__line {
+    stroke: var(--accent);
+  }
+
+  .sv-multiples__panel[data-highlight] .sv-multiples__end {
+    background: var(--accent);
+  }
+
+  .sv-multiples__name .sv-item-credit {
+    font-weight: 400;
+  }
+
   .sv-multiples__end {
     position: absolute;
     width: 0.5rem;

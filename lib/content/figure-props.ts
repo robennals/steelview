@@ -283,6 +283,31 @@ export function sliceExplorerProps(f: FigureOf<'sliceExplorer'>, c: FigureContex
   };
 }
 
+/**
+ * A small-multiples figure. About this data adds the coverage note and each
+ * panel's own coverage note, named, to the figure's note, as a series does
+ * for its lines.
+ */
+export function smallMultiplesProps(f: FigureOf<'smallMultiples'>, c: FigureContext): R.SmallMultiplesProps {
+  const coverageNotes = [f.coverage.note, ...f.panels.flatMap(panel => (panel.coverage?.note ? [`${panel.name}: ${panel.coverage.note}`] : []))];
+  const note = [aboutThisDataNote(f), ...coverageNotes].filter(Boolean).join(' ');
+  return {
+    ...frame(f, c),
+    note: note || undefined,
+    valueLabel: f.valueLabel,
+    format: toValueFormat(f.format),
+    periodLabel: f.periodLabel,
+    independentScales: f.independentScales,
+    zeroBased: f.zeroBased,
+    panels: f.panels.map(panel => ({
+      name: panel.name,
+      highlight: panel.highlight,
+      points: panel.points,
+      sources: panel.sources.length > 0 ? panel.sources.map(c.credit) : undefined,
+    })),
+  };
+}
+
 export function compositionBarProps(f: FigureOf<'compositionBar'>, c: FigureContext): R.CompositionBarProps {
   return {
     ...frame(f, c),

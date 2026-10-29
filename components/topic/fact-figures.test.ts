@@ -48,3 +48,11 @@ test('a slice explorer shows one roll call at a time and lists every row of its 
   assert.match(splitGroup, />Position</);
   assert.doesNotMatch(splitGroup, />Roll call</);
 });
+
+test('small multiples draw a panel per item on one scale, the highlighted one marked, a panel\'s own source under its name', () => {
+  const html = render('chokepoint-traffic');
+  assert.equal(html.match(/class="sv-multiples__panel"/g)?.length, 5);
+  assert.match(html, /<li class="sv-multiples__panel" data-highlight="true"><h3 class="sv-multiples__name">Strait of Hormuz<\/h3>/);
+  assert.match(html, /Kerch Strait<span class="sv-item-credit"><span><a href="#source-figure-examples-40">Fixture Ship Tracker \[40\]<\/a>/);
+  assert.match(html, /all panels share one scale/);
+});

@@ -69,6 +69,13 @@ test('a slice explorer thumbnail draws its opening cut, every non-empty part of 
   assert.equal(html.match(/<rect /g)?.length, 3);
 });
 
+test('a small multiples thumbnail draws every panel\'s line, the highlighted one in the accent', () => {
+  const html = thumb('chokepoint-traffic');
+  assertDecorative(html);
+  assert.equal(html.match(/<path /g)?.length, 5);
+  assert.equal(html.match(/stroke="var\(--accent\)"/g)?.length, 1);
+});
+
 test('a composition thumbnail draws every part of every row', () => {
   const html = thumb('deaths-by-counter');
   assertDecorative(html);

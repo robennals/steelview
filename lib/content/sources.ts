@@ -84,6 +84,8 @@ export function figureCitations(figure: Figure): number[] {
       return figure.sources;
     case 'compositionBar':
       return [...figure.sources, ...figure.rows.flatMap(r => r.sources)];
+    case 'smallMultiples':
+      return [...figure.sources, ...figure.panels.flatMap(p => p.sources)];
     case 'estimateRange':
       return [...figure.sources, ...figure.estimates.flatMap(e => e.sources)];
     case 'quotes':

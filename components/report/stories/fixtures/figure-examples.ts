@@ -315,6 +315,22 @@ export const figureExamplesFact: Fact = {
       "url": "https://example.org/fixture/38",
       "publisher": "Office of the Clerk, US House of Representatives",
       "date": "2026-09"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: ships a day, June to September 2026 — Strait of Hormuz 31, 22, 9, 4; Bab el-Mandeb 30, 29, 28, 27; Suez Canal 40, 41, 43, 42; Malacca Strait 228, 231, 225, 230.",
+      "title": "Fixture: PortWatch daily chokepoint counts, monthly means",
+      "url": "https://example.org/fixture/39",
+      "publisher": "IMF PortWatch",
+      "date": "2026-10"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: the Kerch Strait counter began in July 2026: 12, 3 and 0 ships a day in July, August and September.",
+      "title": "Fixture: Kerch Strait counter",
+      "url": "https://example.org/fixture/40",
+      "publisher": "Fixture Ship Tracker",
+      "date": "2026-10"
     }
   ],
   "series": {
@@ -1544,6 +1560,142 @@ export const figureExamplesFact: Fact = {
       ],
       "defaultBreakdown": "party",
       "defaultSplit": "position"
+    },
+    {
+      "kind": "smallMultiples",
+      "id": "chokepoint-traffic",
+      "title": "Ships a day through five chokepoints, June–September 2026",
+      "description": "Monthly means of daily ship counts, all on one scale; Hormuz is highlighted.",
+      "sources": [
+        39
+      ],
+      "valueLabel": "Ships a day, monthly average",
+      "format": {
+        "unit": "number",
+        "decimals": 0
+      },
+      "periodLabel": "Month",
+      "coverage": {
+        "from": "2026-06",
+        "to": "2026-09",
+        "note": "Our monthly means of the daily counts."
+      },
+      "panels": [
+        {
+          "name": "Strait of Hormuz",
+          "highlight": true,
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 31
+            },
+            {
+              "period": "2026-07",
+              "value": 22
+            },
+            {
+              "period": "2026-08",
+              "value": 9
+            },
+            {
+              "period": "2026-09",
+              "value": 4
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Bab el-Mandeb",
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 30
+            },
+            {
+              "period": "2026-07",
+              "value": 29
+            },
+            {
+              "period": "2026-08",
+              "value": 28
+            },
+            {
+              "period": "2026-09",
+              "value": 27
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Suez Canal",
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 40
+            },
+            {
+              "period": "2026-07",
+              "value": 41
+            },
+            {
+              "period": "2026-08",
+              "value": 43
+            },
+            {
+              "period": "2026-09",
+              "value": 42
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Malacca Strait",
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 228
+            },
+            {
+              "period": "2026-07",
+              "value": 231
+            },
+            {
+              "period": "2026-08",
+              "value": 225
+            },
+            {
+              "period": "2026-09",
+              "value": 230
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Kerch Strait",
+          "coverage": {
+            "from": "2026-07",
+            "to": "2026-09",
+            "note": "The counter began in July 2026."
+          },
+          "points": [
+            {
+              "period": "2026-07",
+              "value": 12
+            },
+            {
+              "period": "2026-08",
+              "value": 3
+            },
+            {
+              "period": "2026-09",
+              "value": 0
+            }
+          ],
+          "sources": [
+            40
+          ]
+        }
+      ]
     },
     {
       "kind": "compositionBar",

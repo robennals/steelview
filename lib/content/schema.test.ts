@@ -203,7 +203,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quotes', 'quotes', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'sliceExplorer', 'compositionBar', 'dataTable', 'section',
+    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'sliceExplorer', 'smallMultiples', 'compositionBar', 'dataTable', 'section',
   ]);
 });
 
@@ -496,4 +496,14 @@ test('a slice explorer needs a dimension, a measure and a row; a row\'s cells ar
   const index = figureIndex('war-powers-votes');
   assert.deepEqual(figureIssuePaths(index, f => ({ ...f, measures: [] })), [`figures.${index}.measures`]);
   assert.deepEqual(figureIssuePaths(index, f => ({ ...f, rows: [{ vote: 'House', members: [1] }] })), [`figures.${index}.rows.0.members`]);
+});
+
+test('a small-multiples figure needs a coverage and two panels of two points each', () => {
+  const index = figureIndex('chokepoint-traffic');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, coverage: undefined })), [`figures.${index}.coverage`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, panels: (f.panels as unknown[]).slice(0, 1) })), [`figures.${index}.panels`]);
+  assert.deepEqual(
+    figureIssuePaths(index, f => ({ ...f, panels: (f.panels as Array<Record<string, unknown>>).map((p, i) => (i === 0 ? { ...p, points: [{ period: '2026-06', value: 1 }] } : p)) })),
+    [`figures.${index}.panels.0.points`],
+  );
 });

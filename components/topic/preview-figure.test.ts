@@ -100,6 +100,14 @@ test('a slice explorer preview draws its opening cut with the status line that s
   assert.doesNotMatch(html, /sv-slice__controls|sv-slice__all-rows|<select|<fieldset/);
 });
 
+test('a small multiples preview draws every panel with its name and latest value, its scale and range said once', () => {
+  const html = preview('chokepoint-traffic');
+  assertCompact(html, 'chokepoint-traffic', 'Ships a day through five chokepoints, June–September 2026');
+  assert.equal(html.match(/class="sv-multiples__panel"/g)?.length, 5);
+  assert.match(html, /all panels share one scale · Jun 2026–Sep 2026/);
+  assert.doesNotMatch(html, /sv-multiples__tick-label|sv-multiples__range|sv-item-credit/);
+});
+
 test('a composition preview keeps its key and every part, but not the row sources', () => {
   const html = preview('deaths-by-counter');
   assertCompact(html, 'deaths-by-counter', 'Iranian deaths in the war, by counter and category, early April 2026');

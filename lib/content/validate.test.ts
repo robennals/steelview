@@ -886,6 +886,29 @@ test('slice explorer: a dimension that may not be combined is never a split, and
   assert.ok(hasError(topic, 'dimension "party" lists "Green", which no row has'));
 });
 
+test('small multiples: every panel runs across the whole published range, its own if it has one', () => {
+  const { topic, fact } = figuresTopic();
+  const multiples = figureOf(fact, 'smallMultiples');
+  multiples.panels[1].points = multiples.panels[1].points.slice(1);
+  assert.ok(hasError(topic, 'figure chokepoint-traffic: panel "Bab el-Mandeb": starts at "2026-07" but the coverage runs from "2026-06" — show the whole published range'));
+  multiples.panels[4].points = multiples.panels[4].points.slice(0, 2);
+  assert.ok(hasError(topic, 'panel "Kerch Strait": ends at "2026-08" but its own coverage runs to "2026-09"'));
+  multiples.panels[2].points = [...multiples.panels[2].points].reverse();
+  assert.ok(hasError(topic, 'panel "Suez Canal": points must run forwards in time, with no repeats'));
+  multiples.panels[3].name = 'Suez Canal';
+  assert.ok(hasError(topic, 'panel names must be unique'));
+  multiples.panels[4].coverage = { from: '2026-05', to: '2026-09' };
+  assert.ok(hasError(topic, 'its own coverage 2026-05–2026-09 runs outside the figure\'s 2026-06–2026-09'));
+});
+
+test('small multiples: when every panel has its own coverage the figure\'s is their union', () => {
+  const { topic, fact } = figuresTopic();
+  const multiples = figureOf(fact, 'smallMultiples');
+  for (const panel of multiples.panels) panel.coverage ??= { from: '2026-06', to: '2026-09' };
+  multiples.coverage = { from: '2026-06', to: '2026-10' };
+  assert.ok(hasError(topic, 'coverage 2026-06–2026-10 must be the union of its panels\' ranges, 2026-06–2026-09'));
+});
+
 test('F6: a date column holds partial dates', () => {
   const { topic, fact } = figuresTopic();
   const table = figureOf(fact, 'dataTable');
@@ -1280,7 +1303,7 @@ function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
 }
 
 test('preview charts: a graph-like figure of every previewable kind may be previewed', () => {
-  const ids = ['wa-by-race', 'hours-to-count', 'war-powers-votes', 'deaths-by-counter', 'cost-estimates', 'count-speed', 'rejection-by-state', 'postal-voting', 'court-record', 'war-periods', 'audit-recheck'];
+  const ids = ['wa-by-race', 'hours-to-count', 'war-powers-votes', 'chokepoint-traffic', 'deaths-by-counter', 'cost-estimates', 'count-speed', 'rejection-by-state', 'postal-voting', 'court-record', 'war-periods', 'audit-recheck'];
   assert.deepEqual(validateTopic(previewedFigures(ids.map(chart => ({ fact: 'figure-examples', chart })))), []);
 });
 

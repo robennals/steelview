@@ -18,6 +18,7 @@ import {
   ReportFigure,
   ScatterPlot,
   SliceExplorer,
+  SmallMultiples,
   TileMap,
   Timeline,
 } from '@/components/report';
@@ -41,6 +42,7 @@ import {
   quoteComparisonProps,
   scatterPlotProps,
   sliceExplorerProps,
+  smallMultiplesProps,
   tileMapProps,
   timelineProps,
   SIDE_BY_SIDE_QUOTES,
@@ -250,6 +252,8 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
         : <BarChart {...barChartProps(figure, context)} footer={footer} />;
     case 'sliceExplorer':
       return <SliceExplorer {...sliceExplorerProps(figure, context)} footer={footer} />;
+    case 'smallMultiples':
+      return <SmallMultiples {...smallMultiplesProps(figure, context)} footer={footer} />;
     case 'compositionBar':
       return <CompositionBar {...compositionBarProps(figure, context)} footer={footer} />;
     case 'estimateRange':
@@ -312,6 +316,8 @@ export function PreviewFigure({ figure, context, preview }: { figure: ComponentF
       return <KeyFigures {...keyFiguresProps(figure, context)} preview={preview} />;
     case 'sliceExplorer':
       return <SliceExplorer {...sliceExplorerProps(figure, context)} preview={preview} />;
+    case 'smallMultiples':
+      return <SmallMultiples {...smallMultiplesProps(figure, context)} preview={preview} />;
     default:
       return <ReportFigure id={figureDomId(context.fact, figure.id)} title={'title' in figure ? figure.title : undefined} preview={preview} />;
   }

@@ -80,6 +80,8 @@ export function figureProse(figure: Figure): string[] {
           ...new Set(figure.rows.flatMap(row => Object.entries(row).flatMap(([key, cell]) => (dimensionKeys.has(key) && typeof cell === 'string' ? [cell] : [])))),
         ];
       }
+      case 'smallMultiples':
+        return [...base(figure), figure.valueLabel, figure.periodLabel, figure.coverage.note, ...figure.panels.flatMap(p => [p.name, p.coverage?.note])];
       case 'compositionBar':
         return [...base(figure), ...figure.rows.map(row => row.label)];
       case 'estimateRange':
@@ -150,7 +152,7 @@ function numberValues(where: string, n: WrittenNumber, rest: Omit<FigureValue, '
   return [{ ...rest, asPublished, where, value: n.value }];
 }
 
-/** Every number a figure draws: key figures, bars, map data, scatter coordinates, slice rows, composition parts, estimate bounds, numeric table cells — both ends of a range. */
+/** Every number a figure draws: key figures, bars, map data, scatter coordinates, slice rows, small-multiple points, composition parts, estimate bounds, numeric table cells — both ends of a range. */
 export function figureValues(figure: Figure): FigureValue[] {
   switch (figure.kind) {
     case 'series':
@@ -232,6 +234,16 @@ export function figureValues(figure: Figure): FigureValue[] {
           return typeof value === 'number' ? numberValues(`slice row "${name}" ${m.key}`, value, { format: m.format, citations: figure.sources, valuesFrom: figure.valuesFrom }) : [];
         });
       });
+    case 'smallMultiples':
+      return figure.panels.flatMap(panel =>
+        panel.points.flatMap(point =>
+          numberValues(`panel "${panel.name}" ${point.period}`, point.value, {
+            format: figure.format,
+            citations: panel.sources.length > 0 ? panel.sources : figure.sources,
+            valuesFrom: figure.valuesFrom,
+          }),
+        ),
+      );
     case 'compositionBar':
       return figure.rows.flatMap(row => {
         const rest = { format: figure.countFormat, citations: row.sources.length > 0 ? row.sources : figure.sources, valuesFrom: figure.valuesFrom };

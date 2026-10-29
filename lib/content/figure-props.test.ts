@@ -22,6 +22,7 @@ import {
   quoteComparisonProps,
   scatterPlotProps,
   sliceExplorerProps,
+  smallMultiplesProps,
   tileMapProps,
   timelineProps,
   toValueFormat,
@@ -246,4 +247,13 @@ test('a slice explorer passes its rows, dimensions and defaults through, and con
   assert.equal(props.dimensions[0].combinable, false);
   assert.deepEqual(props.measures, [{ key: 'members', label: 'Members voting', format: { unit: 'count' }, aggregation: undefined }]);
   assert.deepEqual([props.defaultBreakdown, props.defaultSplit], ['party', 'position']);
+});
+
+test('small multiples keep panel highlights and own sources, and name each panel\'s coverage note', () => {
+  const props = smallMultiplesProps(figureOf('smallMultiples'), context);
+  assert.equal(props.panels[0].highlight, true);
+  assert.equal(props.panels[0].sources, undefined);
+  assert.deepEqual(props.panels[4].sources, [{ label: 'Fixture Ship Tracker', href: '#source-figure-examples-40', number: 40 }]);
+  assert.equal(props.note, 'Our monthly means of the daily counts. Kerch Strait: The counter began in July 2026.');
+  assert.deepEqual(props.sources?.map(s => s.number), [39, 40]);
 });

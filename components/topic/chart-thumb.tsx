@@ -14,10 +14,11 @@ import {
   periodTimelineProps,
   scatterPlotProps,
   sliceExplorerProps,
+  smallMultiplesProps,
   tileMapProps,
   timelineProps,
 } from '@/lib/content/figure-props';
-import type { BarChartProps, CompositionBarProps, PairedBarChartProps, SliceExplorerProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
+import type { BarChartProps, CompositionBarProps, PairedBarChartProps, SliceExplorerProps, SmallMultiplesProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
 import { barScale, orderBars, qualifiedSpan } from '@/components/report/bar-layout';
 import { compose, compositionColor } from '@/components/report/composition';
 import { estimateScale, whiskerSpan } from '@/components/report/estimate-layout';
@@ -27,6 +28,7 @@ import { boundsOf, fitBounds, pathFor as geoPathFor } from '@/components/report/
 import { periodSpan } from '@/components/report/period-timeline';
 import { seriesColor } from '@/components/report/scale';
 import { defaultChoices, sliceView } from '@/components/report/slice-view';
+import { layoutPanels } from '@/components/report/small-multiples-layout';
 import { extentValues, pointValue } from '@/components/report/qualified';
 import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
 
@@ -92,6 +94,8 @@ export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
       return <PeriodsThumb {...periodTimelineProps(figure, context)} />;
     case 'sliceExplorer':
       return <SliceThumb {...sliceExplorerProps(figure, context)} />;
+    case 'smallMultiples':
+      return <PanelsThumb {...smallMultiplesProps(figure, context)} />;
     default:
       return <RowsThumb />;
   }
@@ -215,6 +219,28 @@ function SliceThumb(props: SliceExplorerProps) {
           <rect key={`${i}-${j}`} className={segment.color ? undefined : 'sv-thumb__column'} x={segment.left} width={segment.width} y={y} height={grouped ? height * 0.85 : height} fill={segment.color} />
         );
       }))}
+    </Thumb>
+  );
+}
+
+/**
+ * Every panel's line in a grid, wider than tall like the thumbnail, from the
+ * panels' own layout — so on their shared scale unless the figure gives each
+ * its own; the highlighted panel's line in the accent.
+ */
+function PanelsThumb({ panels, independentScales, zeroBased }: SmallMultiplesProps) {
+  const { panels: laid } = layoutPanels(panels, { independentScales, zeroBased });
+  const cols = Math.min(laid.length, Math.ceil(Math.sqrt(laid.length * 2)));
+  const rows = Math.ceil(laid.length / cols);
+  const width = 100 / cols;
+  const height = 100 / rows;
+  return (
+    <Thumb>
+      {laid.map((panel, i) => (
+        <svg key={panel.name} x={(i % cols) * width + width * 0.08} y={Math.floor(i / cols) * height + height * 0.15} width={width * 0.84} height={height * 0.7} viewBox="0 0 100 100" preserveAspectRatio="none" overflow="visible">
+          <path d={panel.path} fill="none" stroke={panels[i].highlight ? 'var(--accent)' : 'var(--sv-series-1)'} strokeWidth={1.5} vectorEffect="non-scaling-stroke" />
+        </svg>
+      ))}
     </Thumb>
   );
 }

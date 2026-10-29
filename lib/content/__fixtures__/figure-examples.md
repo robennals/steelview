@@ -237,6 +237,18 @@ sources:
     url: https://example.org/fixture/38
     publisher: Office of the Clerk, US House of Representatives
     date: 2026-09
+  - stance: supports
+    quote: "Fixture: ships a day, June to September 2026 — Strait of Hormuz 31, 22, 9, 4; Bab el-Mandeb 30, 29, 28, 27; Suez Canal 40, 41, 43, 42; Malacca Strait 228, 231, 225, 230."
+    title: "Fixture: PortWatch daily chokepoint counts, monthly means"
+    url: https://example.org/fixture/39
+    publisher: IMF PortWatch
+    date: 2026-10
+  - stance: supports
+    quote: "Fixture: the Kerch Strait counter began in July 2026: 12, 3 and 0 ships a day in July, August and September."
+    title: "Fixture: Kerch Strait counter"
+    url: https://example.org/fixture/40
+    publisher: Fixture Ship Tracker
+    date: 2026-10
 series:
   title: Mail ballots rejected nationally, 2016–2024
   description: Share of returned mail ballots rejected in each federal general election.
@@ -737,6 +749,32 @@ figures:
       - { vote: 'Senate, 24 Sep 2026', party: Democratic, position: 'No', members: 1 }
       - { vote: 'Senate, 24 Sep 2026', party: Independent, position: 'Yes', members: 2 }
       - { vote: 'Senate, 24 Sep 2026', party: Independent, position: 'No', members: 0 }
+  # Small multiples (spec 3): one small line per item on one shared scale,
+  # each running across the whole published range; a panel with a shorter
+  # range declares its own coverage and source.
+  - kind: smallMultiples
+    id: chokepoint-traffic
+    title: Ships a day through five chokepoints, June–September 2026
+    description: Monthly means of daily ship counts, all on one scale; Hormuz is highlighted.
+    valueLabel: Ships a day, monthly average
+    periodLabel: Month
+    format: { unit: number, decimals: 0 }
+    sources: [39]
+    coverage: { from: '2026-06', to: '2026-09', note: Our monthly means of the daily counts. }
+    panels:
+      - name: Strait of Hormuz
+        highlight: true
+        points: [{ period: '2026-06', value: 31 }, { period: '2026-07', value: 22 }, { period: '2026-08', value: 9 }, { period: '2026-09', value: 4 }]
+      - name: Bab el-Mandeb
+        points: [{ period: '2026-06', value: 30 }, { period: '2026-07', value: 29 }, { period: '2026-08', value: 28 }, { period: '2026-09', value: 27 }]
+      - name: Suez Canal
+        points: [{ period: '2026-06', value: 40 }, { period: '2026-07', value: 41 }, { period: '2026-08', value: 43 }, { period: '2026-09', value: 42 }]
+      - name: Malacca Strait
+        points: [{ period: '2026-06', value: 228 }, { period: '2026-07', value: 231 }, { period: '2026-08', value: 225 }, { period: '2026-09', value: 230 }]
+      - name: Kerch Strait
+        coverage: { from: '2026-07', to: '2026-09', note: The counter began in July 2026. }
+        source: 40
+        points: [{ period: '2026-07', value: 12 }, { period: '2026-08', value: 3 }, { period: '2026-09', value: 0 }]
   # Parts that must add up (spec 1.4): percentages sum to 100 within rounding
   # (here 99.9, inside three parts' ±0.15), and print as published.
   - kind: compositionBar

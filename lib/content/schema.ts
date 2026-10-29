@@ -830,6 +830,42 @@ export const sliceExplorerFigureSchema = z.object({
   splitLayout: z.enum(['stacked', 'grouped']).optional(),
 });
 
+/* --- smallMultiples ------------------------------------------------------ */
+
+export const smallMultiplesFigureSchema = z.object({
+  kind: z.literal('smallMultiples'),
+  ...figureBase,
+  /** What every panel's line measures: "Ships a day, monthly average". */
+  valueLabel: z.string().min(1),
+  format: valueFormatSchema.optional(),
+  /** Heads the period column of the table: "Month". */
+  periodLabel: z.string().min(1).optional(),
+  /**
+   * The full range the source publishes, as for a series: every panel runs
+   * end to end across it (or its own `coverage`), so no panel is the
+   * cherry-picked stretch. `note` is shown in About this data.
+   */
+  coverage: seriesCoverageSchema,
+  /** A y-scale per panel. Off by default: a shared scale is what makes panels comparable; say so in `description` when on. */
+  independentScales: z.boolean().optional(),
+  /** Start every y-axis at zero (default). */
+  zeroBased: z.boolean().optional(),
+  panels: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        /** Set in bold with its line in the accent: the panel the text is about. */
+        highlight: z.boolean().optional(),
+        /** This panel's source publishes a shorter range; its points run end to end across it. */
+        coverage: seriesCoverageSchema.optional(),
+        points: z.array(z.object({ period: partialDate, value: z.number().finite() })).min(2, 'a panel needs at least two points — one point is not a trend'),
+        // `source` / `sources`: a panel from a different publisher cites its own.
+        ...citationFields,
+      }).superRefine(citationRule({ required: false })).transform(toSources),
+    )
+    .min(2),
+});
+
 /* --- quotes --------------------------------------------------------------- */
 
 /** What every quote on the page gives: the words, who said them, when and where, and where to check. */
@@ -938,6 +974,7 @@ export const figureSchema = z.discriminatedUnion('kind', [
   estimateRangeFigureSchema,
   scatterPlotFigureSchema,
   sliceExplorerFigureSchema,
+  smallMultiplesFigureSchema,
   quotesFigureSchema,
   quoteComparisonFigureSchema,
   pullQuoteFigureSchema,
