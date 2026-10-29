@@ -789,7 +789,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
 | `barChart` | ungrouped bars in any format, dollars included |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
-| `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most", `estimate` for range only; `nullValue: null` for costs |
+| `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
 | `quoteComparison` | two to four answers to one `question` |
 | `pullQuote` | one quote set apart |

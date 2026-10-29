@@ -267,6 +267,7 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
   return {
     ...frame(f, c),
     valueLabel: f.valueLabel,
+    itemLabel: f.itemLabel,
     format: toValueFormat(f.format),
     intervalLabel: f.intervalLabel,
     nullValue: f.nullValue,

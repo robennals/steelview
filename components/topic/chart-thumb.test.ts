@@ -67,6 +67,12 @@ test('an estimate range thumbnail draws an interval or a dot for every estimate'
   assert.equal(html.match(/<line x1=/g)?.length, 2);
 });
 
+test('an estimate range thumbnail dashes a lone bound\'s open tail', () => {
+  const lone: Fact = { ...fact, figures: fact.figures!.map(f => (f.kind === 'estimateRange' && f.id === 'cost-estimates' ? { ...f, estimates: [{ label: 'Upper bound only', high: 20, sources: [14] }, { label: 'Both', low: 5, high: 15, sources: [15] }] } : f)) };
+  const html = thumb('cost-estimates', lone);
+  assert.equal(html.match(/stroke-dasharray="3 2"/g)?.length, 1);
+});
+
 test('a scatter thumbnail draws one dot per point', () => {
   const html = thumb('count-speed');
   assertDecorative(html);

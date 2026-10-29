@@ -684,6 +684,8 @@ export const estimateRangeFigureSchema = z.object({
   kind: z.literal('estimateRange'),
   ...figureBase,
   valueLabel: z.string().min(1),
+  /** What one row is, heading the table's first column: "Study", "Source". Defaults to "Estimate". */
+  itemLabel: z.string().min(1).optional(),
   format: valueFormatSchema.optional(),
   intervalLabel: z.string().min(1).optional(),
   /** The "no effect" value. `null` for estimates with no natural reference, such as costs. Defaults to 0. */
@@ -698,7 +700,7 @@ export const estimateRangeFigureSchema = z.object({
         year: z.union([z.string().min(1), z.number().int()]).optional(),
         /** A central estimate the source qualifies ("about 40") may say so; a range is `low` and `high`. */
         estimate: z.union([z.number().finite(), qualifiedPointSchema]).optional(),
-        /** Omit `high` for "at least …", `low` for "at most …". */
+        /** Omit `high` for "at least …", `low` for "at most …" or an upper confidence bound quoted alone. */
         low: z.number().finite().optional(),
         high: z.number().finite().optional(),
         group: z.string().min(1).optional(),

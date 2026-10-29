@@ -15,16 +15,18 @@ export type Estimate = {
   estimate?: number | QualifiedPoint;
   /**
    * Lower and upper bounds of the reported interval (state which interval in
-   * `intervalLabel`). Omit `high` for "at least …" and `low` for "at most …":
-   * the line then runs to that end of the axis with an arrowhead. At least one
-   * of `estimate`, `low` and `high` is required.
+   * `intervalLabel`). Omit `high` for "at least …" and `low` for "at most …"
+   * or an upper confidence bound quoted alone: the line is then a short
+   * dashed tail from the published bound, ending in an arrowhead, and the
+   * table does not say whether it includes no effect unless the bound settles
+   * it. At least one of `estimate`, `low` and `high` is required.
    */
   low?: number;
   high?: number;
   /** Rows sharing a group are set under one subheading, in first-appearance order. */
   group?: string;
   note?: string;
-  /** The estimate in the source's own words, shown in the table's Estimate column: "$25–35bn". */
+  /** The estimate in the source's own words, shown beside its row in the graph and in the table's Value column: "$25–35bn". */
   asPublished?: string;
   /** This estimate's own sources, printed after its label. */
   sources?: SourceCredit[];
@@ -35,6 +37,8 @@ export type EstimateRangeProps = {
   format?: ValueFormat;
   /** What each estimate measures: "Effect on wages of the lowest-paid, % per 1pp rise in migrant share". */
   valueLabel: string;
+  /** What one row is, heading the table's first column: "Study", "Source". Defaults to "Estimate". */
+  itemLabel?: string;
   /** Which interval the whiskers show: "95% confidence interval". Said on the figure, because 90% and 95% intervals are not interchangeable. */
   intervalLabel?: string;
   /**
@@ -44,7 +48,7 @@ export type EstimateRangeProps = {
    */
   nullValue?: number | null;
   nullLabel?: string;
-  /** Fix the axis, e.g. to keep two figures comparable. Values outside are clipped and marked. */
+  /** Fix the axis, e.g. to keep two figures comparable. Values outside are drawn at the edge with an arrowhead showing they continue. */
   domain?: [number, number];
   id?: string;
   title?: string;
@@ -74,6 +78,7 @@ export function EstimateRange({
   estimates,
   format = { unit: 'number', decimals: 2 },
   valueLabel,
+  itemLabel = 'Estimate',
   intervalLabel = 'Interval',
   nullValue = 0,
   nullLabel = 'No effect',
@@ -104,6 +109,10 @@ export function EstimateRange({
     return interval ? `${show(e.estimate)} (${interval})` : show(e.estimate);
   };
   const rangeOnly = estimates.some(e => e.estimate === undefined);
+  const spans = estimates.map(e => whiskerSpan(bounds(e), scale));
+  const openBound = spans.some(span => span?.start === 'open' || span?.end === 'open');
+  const beyondAxis = spans.some(span => span?.start === 'clipped' || span?.end === 'clipped')
+    || estimates.some(e => { const central = bounds(e).estimate; return central !== undefined && scale.beyond(central) !== undefined; });
   const nullText = nullLabel.toLowerCase();
 
   const graph = (
@@ -112,6 +121,8 @@ export function EstimateRange({
         <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" />Central estimate</span>
         <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>
         {rangeOnly && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />Range only: no dot where no central estimate was published</span>}
+        {openBound && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" data-open="" />Dashed: only this bound was published</span>}
+        {beyondAxis && <span className="sv-estimates__key-item"><i className="sv-estimates__key-arrow" />Arrow: continues beyond the axis</span>}
         {nullValue !== null && <span className="sv-estimates__key-item"><i className="sv-estimates__key-null" />{nullLabel}</span>}
       </p>}
       {groups.map(group => (
@@ -119,9 +130,9 @@ export function EstimateRange({
           {group && <h3 className="sv-estimates__group">{group}</h3>}
           <ol className="sv-estimates__rows">
             {estimates
-              .filter(e => (e.group ?? '') === group)
-              .map((e, i) => {
-                const whisker = whiskerSpan(bounds(e), scale.x);
+              .map((e, i) => ({ e, whisker: spans[i] }))
+              .filter(({ e }) => (e.group ?? '') === group)
+              .map(({ e, whisker }, i) => {
                 const crosses = crossesNull(bounds(e), nullValue);
                 const central = bounds(e).estimate;
                 return (
@@ -133,7 +144,7 @@ export function EstimateRange({
                         {e.sources && !preview && <SourceCredits sources={e.sources} />}
                       </span>
                       <span className="sv-estimates__value">
-                        {rangeText(e)}
+                        {e.asPublished ?? rangeText(e)}
                         {crosses !== undefined && (
                           <span className="sv-visually-hidden">
                             {crosses ? `; interval includes ${nullText}` : `; interval excludes ${nullText}`}
@@ -147,12 +158,12 @@ export function EstimateRange({
                       {whisker && (
                         <span
                           className="sv-estimates__whisker"
-                          data-clip-start={whisker.openStart || (domain && e.low !== undefined && e.low < domain[0]) ? '' : undefined}
-                          data-clip-end={whisker.openEnd || (domain && e.high !== undefined && e.high > domain[1]) ? '' : undefined}
+                          data-start={whisker.start}
+                          data-end={whisker.end}
                           style={{ left: `${whisker.left}%`, width: `${Math.max(0, whisker.right - whisker.left)}%` }}
                         />
                       )}
-                      {central !== undefined && <span className="sv-estimates__dot" style={{ left: `${scale.x(central)}%` }} />}
+                      {central !== undefined && <span className="sv-estimates__dot" data-beyond={scale.beyond(central)} style={{ left: `${scale.x(central)}%` }} />}
                     </span>
                   </li>
                 );
@@ -185,9 +196,9 @@ export function EstimateRange({
         <caption>{valueLabel}</caption>
         <thead>
           <tr>
-            <th scope="col" className="sv-data__th-text">Study</th>
+            <th scope="col" className="sv-data__th-text">{itemLabel}</th>
             <th scope="col">Year</th>
-            <th scope="col">Estimate</th>
+            <th scope="col">Value</th>
             <th scope="col">Low</th>
             <th scope="col">High</th>
             {nullValue !== null && <th scope="col" className="sv-data__th-text">Includes {nullText}?</th>}

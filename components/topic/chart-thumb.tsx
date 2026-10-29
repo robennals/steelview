@@ -176,7 +176,7 @@ function CompositionThumb({ categories, rows, otherThreshold, otherLabel }: Comp
   );
 }
 
-/** Each estimate's interval as a line and its central estimate as a dot, against the no-effect line. */
+/** Each estimate's interval as a line (a lone bound's open tail dashed) and its central estimate as a dot, against the no-effect line. */
 function EstimatesThumb({ estimates, nullValue = 0, domain }: EstimateRangeProps) {
   // As on the chart, layout reads the central estimate's number; its qualifier is for the text.
   const bounds = estimates.map(e => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) }));
@@ -187,10 +187,12 @@ function EstimatesThumb({ estimates, nullValue = 0, domain }: EstimateRangeProps
       {scale.zero !== undefined && <line className="sv-thumb__rule" x1={scale.zero} x2={scale.zero} y1={0} y2={100} vectorEffect="non-scaling-stroke" />}
       {bounds.map((e, i) => {
         const y = i * row + row / 2;
-        const whisker = whiskerSpan(e, scale.x);
+        const whisker = whiskerSpan(e, scale);
+        // A lone published bound is a short dashed tail, as on the chart: never a measured line.
+        const open = whisker && (whisker.start === 'open' || whisker.end === 'open');
         return (
           <g key={i}>
-            {whisker && <line x1={whisker.left} x2={whisker.right} y1={y} y2={y} stroke="var(--sv-series-1)" strokeWidth={1.5} vectorEffect="non-scaling-stroke" />}
+            {whisker && <line x1={whisker.left} x2={whisker.right} y1={y} y2={y} stroke="var(--sv-series-1)" strokeWidth={1.5} strokeDasharray={open ? '3 2' : undefined} vectorEffect="non-scaling-stroke" />}
             {e.estimate !== undefined && <Dot x={scale.x(e.estimate)} y={y} color="var(--sv-series-1)" />}
           </g>
         );

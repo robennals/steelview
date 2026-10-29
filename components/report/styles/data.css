@@ -707,6 +707,17 @@
     background: var(--sv-series-1);
   }
 
+  .sv-estimates__key-line[data-open] {
+    background: repeating-linear-gradient(to right, var(--sv-series-1) 0 4px, transparent 4px 7px);
+  }
+
+  .sv-estimates__key-arrow {
+    width: 0;
+    height: 0;
+    border-block: 0.3rem solid transparent;
+    border-left: 0.45rem solid var(--sv-series-1);
+  }
+
   .sv-estimates__key-null {
     width: 0;
     height: 0.8rem;
@@ -804,7 +815,9 @@
   }
 
   /* End caps; a clipped end gets an arrowhead instead, so an interval cut
-     off by a fixed axis never looks as if it ended there. */
+     off by a fixed axis never looks as if it ended there. An open end — no
+     bound published on that side — is a short dashed tail with an
+     arrowhead, so it never looks measured. */
   .sv-estimates__whisker::before,
   .sv-estimates__whisker::after {
     content: "";
@@ -823,8 +836,13 @@
     right: 0;
   }
 
-  .sv-estimates__whisker[data-clip-start]::before,
-  .sv-estimates__whisker[data-clip-end]::after {
+  .sv-estimates__whisker[data-start="open"],
+  .sv-estimates__whisker[data-end="open"] {
+    background: repeating-linear-gradient(to right, var(--sv-series-1) 0 4px, transparent 4px 7px);
+  }
+
+  .sv-estimates__whisker[data-start]::before,
+  .sv-estimates__whisker[data-end]::after {
     width: 0;
     height: 0;
     top: -0.3rem;
@@ -832,14 +850,24 @@
     border-block: calc(0.3rem + 1px) solid transparent;
   }
 
-  .sv-estimates__whisker[data-clip-start]::before {
+  .sv-estimates__whisker[data-start]::before {
     left: -0.4rem;
     border-right: 0.4rem solid var(--sv-series-1);
   }
 
-  .sv-estimates__whisker[data-clip-end]::after {
+  .sv-estimates__whisker[data-end]::after {
     right: -0.4rem;
     border-left: 0.4rem solid var(--sv-series-1);
+  }
+
+  /* An open tail's arrowhead sits inside the track: the tail may end at
+     the axis start, and the arrow must not fall outside the plot. */
+  .sv-estimates__whisker[data-start="open"]::before {
+    left: 0;
+  }
+
+  .sv-estimates__whisker[data-end="open"]::after {
+    right: 0;
   }
 
   .sv-estimates__dot {
@@ -851,6 +879,25 @@
     border-radius: 50%;
     background: var(--ink);
     box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  /* A central estimate past a fixed axis sits on the edge, pointing on. */
+  .sv-estimates__dot[data-beyond]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -0.3rem;
+    border-block: 0.3rem solid transparent;
+  }
+
+  .sv-estimates__dot[data-beyond="end"]::after {
+    left: calc(100% + 1px);
+    border-left: 0.4rem solid var(--ink);
+  }
+
+  .sv-estimates__dot[data-beyond="start"]::after {
+    right: calc(100% + 1px);
+    border-right: 0.4rem solid var(--ink);
   }
 
   .sv-estimates__axis {

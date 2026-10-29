@@ -100,6 +100,14 @@ test('an estimate range preview draws every estimate and the axis, but not the m
   assert.doesNotMatch(html, /sv-estimates__key|sv-item-credit/);
 });
 
+test('an estimate range preview draws a lone bound as an open tail, and a value past a fixed axis as clipped, as the full figure does', () => {
+  const html = preview('cost-estimates', variant('cost-estimates', f => (f.kind === 'estimateRange'
+    ? { ...f, domain: [0, 30] as [number, number], estimates: [{ label: 'Upper bound only', high: 20, sources: [14] }, { label: 'Past the axis', low: 25, high: 45, sources: [15] }] }
+    : f)));
+  assert.match(html, /class="sv-estimates__whisker" data-start="open"/);
+  assert.match(html, /class="sv-estimates__whisker"[^>]*data-end="clipped"/);
+});
+
 test('a scatter preview draws every point at its fit\'s shapes and the narrow plot, with both axis labels and no focus stops', () => {
   const html = preview('count-speed');
   assertCompact(html, 'count-speed', 'When mail processing may begin and how long the count took, 2024');

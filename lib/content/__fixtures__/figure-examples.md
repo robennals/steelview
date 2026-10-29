@@ -392,6 +392,7 @@ figures:
       Each published estimate of the cost so far, with its range where the
       estimator gave one. Later estimates cover a longer war.
     valueLabel: Estimated cost, US$ billion
+    itemLabel: Estimator
     format: { unit: number, decimals: 1 }
     intervalLabel: Range the estimator published
     nullValue: null

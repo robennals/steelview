@@ -203,6 +203,7 @@ test('formats convert to the library type, currency included', () => {
 test('estimates may omit any bound, and a null no-effect value passes through', () => {
   const props = estimateRangeProps(figureOf('estimateRange'), context);
   assert.equal(props.nullValue, null);
+  assert.equal(props.itemLabel, 'Estimator');
   assert.deepEqual(props.estimates.map(e => [e.estimate, e.low, e.high]), [[undefined, 25, 35], [40, 34, 42], [38, undefined, undefined], [43.6, undefined, undefined]]);
 });
 

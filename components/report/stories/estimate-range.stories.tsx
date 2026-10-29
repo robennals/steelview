@@ -36,7 +36,7 @@ export const Ungrouped: Story = {
   args: { estimates: illustrativeWageEstimates.filter(e => e.group === 'Lowest-paid workers').map(e => ({ ...e, group: undefined })) },
 };
 
-/** A fixed axis narrower than the data: clipped intervals end in arrowheads. */
+/** A fixed axis narrower than the data: clipped intervals and central estimates past the edge end in arrowheads. */
 export const FixedDomain: Story = {
   args: { domain: [-0.5, 0.5] },
 };
@@ -44,7 +44,8 @@ export const FixedDomain: Story = {
 /**
  * Estimates with no natural "no effect" value, such as costs: no reference
  * line and no signs. A range without a central estimate has no dot; a lone
- * lower or upper bound runs to the axis end with an arrowhead. Illustrative.
+ * lower or upper bound is a short dashed tail from the bound with an
+ * arrowhead, and the row reads in the source's own words. Illustrative.
  */
 export const OpenBoundsAndNoNull: Story = {
   args: {
@@ -53,6 +54,7 @@ export const OpenBoundsAndNoNull: Story = {
     valueLabel: 'Estimated cost, US$ billion',
     format: { unit: 'number', decimals: 1 },
     intervalLabel: 'Range the estimator published',
+    itemLabel: 'Estimator',
     nullValue: null,
     estimates: [
       { label: 'Estimator A', year: 'Apr 2026', low: 25, high: 35, sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }] },
