@@ -32,6 +32,7 @@ function series(): Series {
     periodLabel: 'Year',
     coverage: { from: '1990', to: '1993' },
     breaks: [{ period: '1992', label: 'method change', note: 'the source changed basis' }],
+    events: [],
     source,
     readings: [
       {

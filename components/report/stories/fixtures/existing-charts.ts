@@ -15,6 +15,7 @@ export const longRunMigrationSeries: Series = {
     "to": "2025",
     "note": "1964 is where the series starts because it is where the ONS method starts — before it there is no continuous annual series to show."
   },
+  "events": [],
   "breaks": [
     {
       "period": "1991",
@@ -1348,6 +1349,7 @@ export const foreignBornShareSeries: Series = {
     "note": "The ONS historical Census series is available at ten-year intervals. The 1951–2011 values use the original published Census tables; 2021 is the later Census release for the same England-and-Wales geography."
   },
   "breaks": [],
+  "events": [],
   "source": {
     "stance": "supports",
     "quote": "Figure 1 reports the non-UK-born share of England and Wales as 4.3% in 1951, 5.0% in 1961, 6.4% in 1971, 6.7% in 1981, 7.3% in 1991, 8.9% in 2001 and 13.4% in 2011.",
