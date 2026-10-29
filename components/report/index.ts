@@ -26,6 +26,7 @@ export * from './data-table';
 export * from './geo-map';
 export * from './tile-map';
 export type { GeoRegion, LonLat } from './geo/types';
+export type { MapCategory, CategoryAssignment, CategoryData, CategoryEncoding } from './geo/categorical';
 export type { Bounds, ProjectionKind } from './geo/project';
 export { partitionRegions } from './geo/regions';
 export { WORLD_COUNTRIES } from './geo/world-countries';

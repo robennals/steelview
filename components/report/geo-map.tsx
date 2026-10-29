@@ -1,10 +1,13 @@
-import { useId } from 'react';
+import { useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { ReportFigure } from './figure';
 import { formatValue, slugify } from './format';
 import { aspectOf, boundsOf, centroidOf, fitBounds, pathFor, type Bounds, type Projection, type ProjectionKind } from './geo/project';
 import type { GeoRegion } from './geo/types';
-import { mapScale, mapSummary, readoutText, datumText, type MapData, type MapScale, type MapScaleKind } from './geo/choropleth';
+import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, type MapEncoding } from './geo/categorical';
+import { CategoryLegend } from './geo/category-legend';
+import { CategoryTable } from './geo/category-table';
+import { mapScale, mapSummary, readoutText, datumText } from './geo/choropleth';
 import { MapLegend } from './geo/map-legend';
 import { MapReadout } from './geo/map-readout';
 import { MapTable } from './geo/map-table';
@@ -25,7 +28,7 @@ export type MapMarker = {
 /** Areas too small to read at full-map scale, redrawn enlarged beside it. */
 export type MapInset = { regionIds: string[]; label?: string };
 
-export type GeoMapProps = {
+type GeoMapCommon = {
   /**
    * The areas the figure covers, each shaded by its value. Any outline set
    * works — `WORLD_COUNTRIES`, `EUROPE_COUNTRIES`, `UK_ITL1_REGIONS`, or your
@@ -38,8 +41,6 @@ export type GeoMapProps = {
    * as "No data" — a country outside the dataset is not a missing value.
    */
   contextRegions?: GeoRegion[];
-  /** Figures keyed by region id. A region with no entry is drawn hatched as "No data". */
-  data: MapData;
   /**
    * The lon/lat box to show; anything outside is cropped. Defaults to the
    * bounds of `regions`. Useful when an area has far-flung territories.
@@ -47,14 +48,6 @@ export type GeoMapProps = {
   extent?: Bounds;
   /** Defaults to `auto`: a local projection for a country, Equal Earth for a continent or the world. */
   projection?: ProjectionKind | 'auto';
-  /** What the figure is, e.g. "Share of residents born abroad". */
-  valueLabel: string;
-  format?: ValueFormat;
-  scale?: MapScaleKind;
-  steps?: number;
-  domain?: [number, number];
-  /** Explicit, possibly uneven, bin boundaries for skewed data. Overrides `steps` and `domain`. */
-  breaks?: number[];
   markers?: MapMarker[];
   /** What a marker's size measures, e.g. "People detained". */
   markerValueLabel?: string;
@@ -71,8 +64,20 @@ export type GeoMapProps = {
   description?: string;
   sources?: SourceCredit[];
   note?: string;
+  /** Rendered after the source line: the figure's Observations. */
+  footer?: ReactNode;
   headingLevel?: 2 | 3;
 };
+
+/**
+ * Shaded either by a number (`data`, `valueLabel`, `format`, `scale`, …) or
+ * by a category (`categoryLabel`, `categories`, `categoryData`) — never both.
+ * Regions with no entry are hatched as "No data" either way.
+ */
+export type GeoMapProps = GeoMapCommon & MapEncoding;
+
+/** How one region is drawn and read, whichever way the map is shaded. */
+type RegionLook = { fill: string; readout: string; ariaLabel: string; missing: boolean; insetText: string };
 
 /** The drawing is sized to the geography: as wide as this, unless that would make it taller than MAP_MAX_HEIGHT. */
 const MAP_MAX_WIDTH = 560;
@@ -85,13 +90,38 @@ const INSET_LABEL_SPACE = 42;
 const MARKER_MAX_RADIUS = 12;
 const MARKER_DEFAULT_RADIUS = 4.5;
 
-function fillFor(region: GeoRegion, data: MapData, scale: MapScale, hatchId: string) {
-  const datum = data[region.id];
-  return datum ? scale.color(datum.value) : `url(#${hatchId})`;
-}
-
 function inBounds({ lon, lat }: MapMarker, b: Bounds) {
   return lon >= b.minLon && lon <= b.maxLon && lat >= b.minLat && lat <= b.maxLat;
+}
+
+/**
+ * One SVG pattern per category slot: the slot's 30% tint as ground, with the
+ * same overlay the tiles draw in CSS (maps.css) — none, dots, horizontal,
+ * vertical, grid, diagonal — in the slot's series colour. The tint and the
+ * colour come from the `--sv-cat-fill-N` and `--sv-series-N` tokens, so the
+ * map and its legend change theme together.
+ */
+function CategoryPatterns({ idPrefix, slots }: { idPrefix: string; slots: number[] }) {
+  return slots.map(slot => {
+    const size = slot === 2 ? 6 : 5;
+    return (
+      <pattern
+        key={slot}
+        id={`${idPrefix}-${slot}`}
+        className="sv-geo-map__cat-pattern"
+        patternUnits="userSpaceOnUse"
+        width={size}
+        height={size}
+        patternTransform={slot === 6 ? 'rotate(45)' : undefined}
+        style={{ color: `var(--sv-series-${slot})`, fill: `var(--sv-cat-fill-${slot})` }}
+      >
+        <rect width={size} height={size} />
+        {slot === 2 && <circle className="sv-geo-map__cat-dot" cx={3} cy={3} r={1} />}
+        {(slot === 3 || slot === 5) && <line className="sv-geo-map__cat-line" x1={0} y1={0.5} x2={size} y2={0.5} />}
+        {(slot === 4 || slot === 5 || slot === 6) && <line className="sv-geo-map__cat-line" x1={0.5} y1={0} x2={0.5} y2={size} />}
+      </pattern>
+    );
+  });
 }
 
 type InsetLayout = 'column' | 'row';
@@ -134,36 +164,32 @@ function placeInsets(insets: Array<MapInset & { regions: GeoRegion[] }>, project
  * is only "which areas are higher", prefer TileMap: on a true-shape map, a
  * large empty region outweighs a small crowded one.
  */
-export function GeoMap({
-  regions,
-  contextRegions = [],
-  data,
-  extent,
-  projection: projectionKind = 'auto',
-  valueLabel,
-  format,
-  scale: kind = 'sequential',
-  steps,
-  domain,
-  breaks,
-  markers = [],
-  markerValueLabel,
-  markerFormat,
-  insets,
-  areaLabel = 'Region',
-  id,
-  title,
-  description,
-  sources,
-  note,
-  headingLevel,
-}: GeoMapProps) {
+export function GeoMap(props: GeoMapProps) {
+  const {
+    regions,
+    contextRegions = [],
+    extent,
+    projection: projectionKind = 'auto',
+    markers = [],
+    markerValueLabel,
+    markerFormat,
+    insets,
+    areaLabel = 'Region',
+    id,
+    title,
+    description,
+    sources,
+    note,
+    footer,
+    headingLevel,
+  } = props;
+  const categorical = isCategorical(props);
+  const what = categorical ? props.categoryLabel : props.valueLabel;
   const reactId = useId();
-  const baseId = `sv-geo-map-${id ?? slugify(title ?? valueLabel)}-${reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const baseId = `sv-geo-map-${id ?? slugify(title ?? what)}-${reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
   const hatchId = `${baseId}-hatch`;
   const descriptionId = `${baseId}-desc`;
 
-  const scale = mapScale(data, { kind, steps, domain, breaks });
   const resolvedInsets = (insets ?? [])
     .map(inset => ({ ...inset, regions: regions.filter(r => inset.regionIds.includes(r.id)) }))
     .filter(inset => inset.regions.length > 0);
@@ -179,7 +205,6 @@ export function GeoMap({
   const clipId = `${baseId}-clip`;
 
   const projection = fitBounds(view, { width: mapWidth, height: mapHeight, padding: PADDING, kind: projectionKind });
-  const missing = regions.filter(region => !data[region.id]);
 
   const placedInsets = placeInsets(resolvedInsets, projection, insetLayout, mapWidth, mapHeight);
   // The drawing grows to hold the insets, wherever they were placed.
@@ -195,13 +220,45 @@ export function GeoMap({
   // Big symbols first, so a small one is never hidden underneath.
   const orderedMarkers = markers.map((marker, index) => ({ marker, index })).sort((a, b) => radiusFor(b.marker.value) - radiusFor(a.marker.value));
 
-  const summary = mapSummary(
-    `Map of ${regions.length} areas shaded by ${valueLabel.toLowerCase()}.`,
-    regions,
-    data,
-    format,
-    markers.length > 0 ? `${markers.length} marked locations.` : undefined,
-  );
+  const markerSentence = markers.length > 0 ? `${markers.length} marked locations.` : undefined;
+  const caption = `${title ?? what}, by ${areaLabel.toLowerCase()}`;
+
+  let lookFor: (region: GeoRegion) => RegionLook;
+  let legend: ReactNode;
+  let patterns: ReactNode = null;
+  let summary: string;
+  let areaTable: ReactNode;
+
+  if (isCategorical(props)) {
+    const slots = categorySlots(props.categories);
+    const counts = categoryCounts(props.categoryData, regions.map(region => region.id), props.categories);
+    lookFor = region => {
+      const category = categoryOf(region.id, props);
+      const slot = category && slots.get(category.id);
+      return {
+        fill: slot ? `url(#${baseId}-cat-${slot})` : `url(#${hatchId})`,
+        readout: categoryReadoutText(region.name, category, props.categoryData[region.id]?.note),
+        ariaLabel: categoryAriaText(region.name, category),
+        missing: !category,
+        insetText: category?.label ?? 'No data',
+      };
+    };
+    legend = <CategoryLegend categoryLabel={props.categoryLabel} categories={props.categories} slots={slots} counts={counts} />;
+    patterns = <CategoryPatterns idPrefix={`${baseId}-cat`} slots={[...slots.values()]} />;
+    summary = [categorySummary(regions, props), markerSentence, 'Use the Table switch to see every area.'].filter(Boolean).join(' ');
+    areaTable = <CategoryTable caption={caption} areaLabel={areaLabel} areas={regions} encoding={props} />;
+  } else {
+    const { data, valueLabel, format, scale: kind = 'sequential', steps, domain, breaks } = props;
+    const scale = mapScale(data, { kind, steps, domain, breaks });
+    lookFor = region => {
+      const datum = data[region.id];
+      const text = readoutText(region.name, datum, format);
+      return { fill: datum ? scale.color(datum.value) : `url(#${hatchId})`, readout: text, ariaLabel: text, missing: !datum, insetText: datumText(datum, format) };
+    };
+    legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={regions.some(region => !data[region.id])} />;
+    summary = mapSummary(`Map of ${regions.length} areas shaded by ${valueLabel.toLowerCase()}.`, regions, data, format, markerSentence);
+    areaTable = <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={regions} data={data} format={format} />;
+  }
 
   const markerGlyph = (marker: MapMarker, index: number, projectionToUse: Projection, interactive: boolean) => {
     const [cx, cy] = projectionToUse.project([marker.lon, marker.lat]);
@@ -221,26 +278,26 @@ export function GeoMap({
 
   const regionPaths = (projectionToUse: Projection, list: GeoRegion[], interactive: boolean) =>
     list.map(region => {
-      const text = readoutText(region.name, data[region.id], format);
+      const look = lookFor(region);
       return (
         <path
           key={region.id}
           className="sv-geo-map__region"
           d={pathFor(region.coordinates, projectionToUse)}
           fillRule="evenodd"
-          style={{ fill: fillFor(region, data, scale, hatchId) }}
+          style={{ fill: look.fill }}
           data-region={region.id}
-          data-readout={text}
-          data-missing={data[region.id] ? undefined : 'true'}
+          data-readout={look.readout}
+          data-missing={look.missing ? 'true' : undefined}
           vectorEffect="non-scaling-stroke"
-          {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': text } : { 'aria-hidden': true })}
+          {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true })}
         />
       );
     });
 
   const graph = (
     <>
-      <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={missing.length > 0} />
+      {legend}
       {kinds.length > 0 && (
         <ul className="sv-geo-map__marker-key">
           {kinds.map((name, i) => (
@@ -253,24 +310,27 @@ export function GeoMap({
         </ul>
       )}
       <p className="sv-visually-hidden" id={descriptionId}>{summary}</p>
-      <MapReadout hint="Hover over or tab to a region to read its value.">
+      <MapReadout hint={`Hover over or tab to a region to read its ${categorical ? 'category' : 'value'}.`}>
         <svg
           className="sv-geo-map__svg"
           viewBox={`0 0 ${width} ${height}`}
           preserveAspectRatio="xMinYMid meet"
           role="group"
-          aria-label={title ?? valueLabel}
+          aria-label={title ?? what}
           aria-describedby={descriptionId}
           data-insets={placedInsets.length > 0 ? 'true' : undefined}
         >
           <defs>
-            <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+            {/* Rotated so the lines run top-left to bottom-right, like the CSS
+                hatch on the legend swatch and on tiles. */}
+            <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
               <rect className="sv-geo-map__hatch-ground" width="5" height="5" />
               <line className="sv-geo-map__hatch-line" x1="0" y1="0" x2="0" y2="5" />
             </pattern>
             <clipPath id={clipId}>
               <rect x={frame.x - PADDING} y={frame.y - PADDING} width={frame.width + 2 * PADDING} height={frame.height + 2 * PADDING} />
             </clipPath>
+            {patterns}
           </defs>
           <g clipPath={`url(#${clipId})`}>
             {contextRegions.length > 0 && (
@@ -285,7 +345,7 @@ export function GeoMap({
 
           {placedInsets.map(inset => {
             const label = inset.label ?? inset.regions.map(r => r.name).join(', ');
-            const valueText = inset.regions.length === 1 ? datumText(data[inset.regions[0].id], format) : null;
+            const valueText = inset.regions.length === 1 ? lookFor(inset.regions[0]).insetText : null;
             const [ax, ay] = inset.anchor;
             return (
               <g key={inset.regionIds.join('-')} className="sv-geo-map__inset">
@@ -322,7 +382,7 @@ export function GeoMap({
 
   const table = (
     <>
-      <MapTable caption={`${title ?? valueLabel}, by ${areaLabel.toLowerCase()}`} areaLabel={areaLabel} valueLabel={valueLabel} areas={regions} data={data} format={format} />
+      {areaTable}
       {markers.length > 0 && (
         <div className="sv-chart__table-scroll sv-geo-map__marker-table">
           <table className="sv-chart__table">
@@ -350,8 +410,8 @@ export function GeoMap({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} headingLevel={headingLevel} className="sv-geo-map">
-      <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-geo-map">
+      <ChartViewToggle label={title ?? what} graph={graph} table={table} />
     </ReportFigure>
   );
 }
