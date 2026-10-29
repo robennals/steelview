@@ -1,5 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
 import { auditTopic, type AuditItem } from './check-figures';
 
 function fact(id: string, quote: string, body = ''): AuditItem {
@@ -57,4 +60,33 @@ test('a principle is still matched topic-wide', () => {
     { kind: 'principle', id: 'p', data: { name: 'P' }, body: 'Even $50 matters.' },
   ]);
   assert.deepEqual(unmatched, []);
+});
+
+/** The figure fixture's frontmatter, with its id, as a fact the audit reads. */
+function figureFixture(): AuditItem {
+  const { data } = matter(readFileSync(path.join(__dirname, '../lib/content/__fixtures__/figure-examples.md'), 'utf8'));
+  return { kind: 'fact', id: 'figure-examples', data, body: '' };
+}
+
+test('a figure-table cell with an unquoted figure is reported against its figure; a quoted one is not', () => {
+  const item = figureFixture();
+  const before = auditTopic([item]).unmatched.filter((f) => f.item.includes(' figure '));
+  const table = (item.data.figures as Array<{ id?: string; rows?: Array<Record<string, unknown>> }>).find((f) => f.id === 'federal-laws')!;
+  table.rows![0].status = 'Passed House with 87.5% of votes';
+  const after = auditTopic([item]).unmatched.filter((f) => f.item.includes(' figure '));
+  assert.deepEqual(
+    after.filter((f) => !before.some((b) => b.item === f.item && b.figure === f.figure)).map((f) => [f.item, f.figure]),
+    [['fact/figure-examples figure federal-laws', '87.5%']]
+  );
+
+  const quoted = figureFixture();
+  const quotedTable = (quoted.data.figures as Array<{ id?: string; rows?: Array<Record<string, unknown>> }>).find((f) => f.id === 'federal-laws')!;
+  (quoted.data.sources as Array<{ quote: string }>)[0].quote += ' It passed with 87.5% of votes.';
+  quotedTable.rows![0].status = 'Passed House with 87.5% of votes';
+  assert.ok(!auditTopic([quoted]).unmatched.some((f) => f.figure === '87.5%'));
+});
+
+test('figure values reach the chart-value audit', () => {
+  const values = auditTopic([figureFixture()]).values.filter((v) => v.chart === 'figure wa-by-race');
+  assert.equal(values.length, 5);
 });

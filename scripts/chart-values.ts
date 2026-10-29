@@ -17,6 +17,9 @@
  */
 import { formatTick } from '../lib/chart/series-chart';
 import type { Fact, Series, SeriesReading, Source } from '../lib/content/types';
+import { isComponentFigure } from '../lib/content/types';
+import { figureValues } from '../lib/content/figure-text';
+import { toValueFormat } from '../lib/content/figure-props';
 import { formatValue } from '../components/report/format';
 import type { ValueFormat } from '../components/report/types';
 import { canonical, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
@@ -39,11 +42,7 @@ export type ChartValue = {
 
 export type ValueVerdict = 'quoted' | 'derived' | 'table' | 'untraced';
 
-/**
- * One number as a figure reports it — the shape `figureValues(figure)` in
- * `lib/content/figure-text.ts` returns, declared here so the audit can take
- * figure values without depending on that module.
- */
+/** One number as a figure reports it, with its format in the report library's terms. */
 export type FigureValue = {
   where: string;
   value: number;
@@ -55,7 +54,7 @@ export type FigureValue = {
 };
 
 /** The parts of a fact that draw numbers. */
-export type ChartedFact = Pick<Fact, 'sources' | 'series' | 'additionalSeries' | 'comparisons'>;
+export type ChartedFact = Pick<Fact, 'sources' | 'series' | 'additionalSeries' | 'comparisons' | 'figures'>;
 
 /**
  * A quote token never carries a sign (`−£36,000` tokenises as `£36000`), so
@@ -108,11 +107,7 @@ function seriesValues(series: Series, chart: string, prefix: string): ChartValue
   );
 }
 
-/**
- * Every value a figure reports, as chart values. The hook for `figures`:
- * `chartValues` adds `fromFigureValues(figure.id, figureValues(figure), fact.sources)`
- * for each figure once that field exists.
- */
+/** Every value a figure reports, as chart values. */
 export function fromFigureValues(figureId: string, values: readonly FigureValue[], sources: readonly Source[]): ChartValue[] {
   return values.map((v) => ({
     chart: `figure ${figureId}`,
@@ -127,7 +122,7 @@ export function fromFigureValues(figureId: string, values: readonly FigureValue[
 /**
  * Every number the fact's charts draw: series and additional series points,
  * comparison bars, and — for a grouped comparison — each group's value as
- * well as the total.
+ * well as the total — then every number its `figures` draw.
  */
 export function chartValues(fact: ChartedFact): ChartValue[] {
   const values: ChartValue[] = [];
@@ -146,6 +141,11 @@ export function chartValues(fact: ChartedFact): ChartValue[] {
         values.push({ ...base, where: `${chart} ${item.label} ${group}`, renderings: comparisonRenderings(value, comparison.unit) });
       });
     }
+  }
+  for (const figure of fact.figures ?? []) {
+    if (!isComponentFigure(figure)) continue;
+    const reported = figureValues(figure).map((v) => ({ ...v, format: toValueFormat(v.format) }));
+    values.push(...fromFigureValues(figure.id, reported, fact.sources));
   }
   return values;
 }

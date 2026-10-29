@@ -55,6 +55,8 @@ import matter from 'gray-matter';
 import { loadPrinciples, ContentError } from '../lib/content/load';
 import { citedFactIds } from '../lib/content/markdown';
 import { factFrontmatterSchema, topicFrontmatterSchema } from '../lib/content/schema';
+import { figureProse } from '../lib/content/figure-text';
+import { isComponentFigure } from '../lib/content/types';
 import { auditValue, chartValues, isWeakMatch, type ValueVerdict } from './chart-values';
 import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
 
@@ -202,6 +204,21 @@ export function auditTopic(items: readonly AuditItem[]): {
       // the chart-value audit skips it rather than crashing.
       const parsed = factFrontmatterSchema.safeParse(item.data);
       if (parsed.success) {
+        // A figure's text is prose: moving a markdown table into `figures`
+        // must not take it out of this audit.
+        for (const figure of parsed.data.figures ?? []) {
+          if (!isComponentFigure(figure)) continue;
+          const text = figureProse(figure).join('\n');
+          const seenInFigure = new Set<string>();
+          for (const found of figuresIn(text)) {
+            if (seenInFigure.has(canonical(found))) continue;
+            seenInFigure.add(canonical(found));
+            if (!quotedSomewhere(found, corpus)) {
+              unmatched.push({ item: `${label} figure ${figure.id}`, figure: found, context: contextFor(text, found), corpus: missing });
+            }
+          }
+        }
+
         const derived = quoteCorpus(verifiedDerivedFigures(item.data));
         for (const v of chartValues(parsed.data)) {
           const verdict = auditValue(v, derived);
