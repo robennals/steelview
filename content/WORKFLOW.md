@@ -337,10 +337,7 @@ now costs one file; found later it costs every viewpoint that cites it.
   can be used from a fact file today. The rest of the component library
   (`components/report`, shown in Storybook) has to be wired into the fact
   schema before a report can use it, so a report plan that needs another
-  component says so at stage 4b;
-- `check:figures` matches a figure only in the same form the source prints
-  it ("1.4 percent" and "1.4%" differ), and accepts a figure quoted anywhere
-  on the topic, not only in the report's own sources.
+  component says so at stage 4b.
 
 ## 6. Write the viewpoints
 

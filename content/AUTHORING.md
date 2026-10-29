@@ -414,9 +414,15 @@ judged on, which is why the schema validates the date shape down to the month
 range rather than accepting any string.
 
 **Every prose figure must be sourced or reproducibly derived.**
-`pnpm check:figures` checks prose numbers against topic source quotes and
-validated `derivedFigures` calculations. A passing check does not establish
-that the citation supports the meaning, scope or causal interpretation.
+`pnpm check:figures` checks prose numbers against source quotes and
+validated `derivedFigures` calculations. A fact's figures must be in that
+fact's own sources; a viewpoint's, crux's or the topic intro's must be in the
+sources of the facts it cites (inline `#fact-` links); a shared principle's
+may be anywhere on the topic. Money in `£`, `$` or `€` and percentages written
+`%`, "percent" or "per cent" are all checked, and the forms match each other
+("1.4 percent" matches a quoted "1.4%", "1.0%" matches "1%"). A passing check
+does not establish that the citation supports the meaning, scope or causal
+interpretation.
 
 **Derived figures: quote the inputs and document the calculation.**
 `derivedFigures` supports `ratio-percent`, `complement-percent` and `series-mean`.
@@ -1028,7 +1034,7 @@ them.
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
-| Every prose figure is quoted or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
+| Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is
