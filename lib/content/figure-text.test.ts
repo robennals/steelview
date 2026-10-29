@@ -99,6 +99,26 @@ test('bars, composition parts and estimate bounds are each one value', () => {
   ]);
 });
 
+test('a percent composition bar is traced as the published percentages, whatever its countFormat', () => {
+  const bar: FigureOf<'compositionBar'> = {
+    kind: 'compositionBar',
+    id: 'gain',
+    title: 't',
+    description: 'd',
+    sources: [2],
+    rowLabel: 'Cohort',
+    unit: 'percent',
+    countFormat: { unit: 'count' },
+    categories: [{ key: 'top', label: 'Top' }, { key: 'rest', label: 'Rest' }],
+    rows: [{ label: 'All', values: { top: 72.25, rest: 27.75 }, sources: [] }],
+  };
+  assert.deepEqual(figureValues(bar).map(v => [v.where, v.value, v.format]), [
+    ['composition row "All" top', 72.25, { unit: 'percent', decimals: 4 }],
+    ['composition row "All" rest', 27.75, { unit: 'percent', decimals: 4 }],
+  ]);
+  assert.deepEqual(figureValues({ ...bar, unit: 'count' }).map(v => v.format), [{ unit: 'count' }, { unit: 'count' }]);
+});
+
 test('numeric table cells are values; a cited cell uses its own sources', () => {
   const table: FigureOf<'dataTable'> = {
     kind: 'dataTable',

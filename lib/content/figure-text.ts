@@ -241,14 +241,17 @@ export function figureValues(figure: Figure): FigureValue[] {
           }),
         ),
       );
-    case 'compositionBar':
+    case 'compositionBar': {
+      // `unit: percent` values are the source's percentages, printed as published (CompositionBar's own format); `countFormat` then goes unused.
+      const format: FigureValueFormat | undefined = figure.unit === 'percent' ? { unit: 'percent', decimals: 4 } : figure.countFormat;
       return figure.rows.flatMap(row => {
-        const rest = { format: figure.countFormat, citations: row.sources.length > 0 ? row.sources : figure.sources, valuesFrom: figure.valuesFrom };
+        const rest = { format, citations: row.sources.length > 0 ? row.sources : figure.sources, valuesFrom: figure.valuesFrom };
         return [
           ...Object.entries(row.values).flatMap(([key, value]) => numberValues(`composition row "${row.label}" ${key}`, value, rest)),
           ...(row.total === undefined ? [] : numberValues(`composition row "${row.label}" total`, row.total, rest)),
         ];
       });
+    }
     case 'estimateRange':
       return figure.estimates.flatMap(e =>
         (['estimate', 'low', 'high'] as const).flatMap(bound => {
