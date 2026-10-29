@@ -203,7 +203,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'compositionBar', 'dataTable',
+    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'compositionBar', 'dataTable', 'section',
   ]);
 });
 

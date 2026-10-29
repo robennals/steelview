@@ -774,7 +774,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `series` | the fact's `series`, or one `additionalSeries` by `id` |
 | `comparison` | one `comparisons` entry, by `id` |
 | `featured` | the charts of one supporting fact named in `featuredCharts` (`fact: <id>`) |
-| `section` | the body section headed `## … {#<fact>--<id>}`, moved to this place |
+| `section` | the body section headed `## … {#<fact>--<id>}` or `### … {#<fact>--<id>}`, moved to this place with everything up to the next heading of the same or a higher level |
 | `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it; a column may be `format: date` |
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` (or `sources`); a date may be a decade (`1850s`) or a circa year (`c. 1888`) |
@@ -852,7 +852,10 @@ in order, or given a `defaultSort`.
 `additionalSeries`, `comparisons` and `featuredCharts` entry must be
 referenced exactly once, so a chart can never silently drop to the end of a
 report. Body sections that no `section` entry names, and that are not a
-figure's Observations or Subtleties, render after the last figure.
+figure's Observations or Subtleties, render after the last figure. A `###`
+section can be placed on its own, leaving the rest of its `##` section
+behind; a `###` item under Observations or Subtleties cannot, because it is
+part of that disclosure.
 
 **A data panel draws every figure in full**, as it does a chart: its controls,
 the graph filling the space, the description and About this data folded into one
@@ -1685,7 +1688,7 @@ them.
 | Every figure citation — every number of every item's `sources` — is one of the fact's numbered sources, and every figure but a caveat list has one; an item gives `source` or `sources`, not both | `lib/content/validate.ts` (F2, F5), `lib/content/schema.ts` |
 | A series event's `sources` are the fact's numbered sources | `lib/content/validate.ts`, `seriesErrors` |
 | Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |
-| A `section` figure names an h2 in the body | `lib/content/validate.ts` (F4) |
+| A `section` figure names an h2 or h3 in the body, not an item under Observations or Subtleties | `lib/content/validate.ts` (F4) |
 | Table columns, rows, sort and highlight agree; numeric columns hold numbers | `lib/content/validate.ts` (F6) |
 | Timeline categories exist and periods run forwards (an approximate date counted at its placement); period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
 | A timeline date is a partial date, a decade or a circa year | `lib/content/schema.ts` |

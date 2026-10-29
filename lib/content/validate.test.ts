@@ -675,10 +675,14 @@ test('F3: once present, figures place every chart exactly once and nothing else'
   assert.ok(hasError(topic, 'references featured chart "mail-ballot-privacy", which this fact does not have in featuredCharts'));
 });
 
-test('F4: a section figure names an h2 in the body', () => {
+test('F4: a section figure names an h2 or h3 in the body, not an Observations or Subtleties item', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'section').id = 'no-such-section';
   assert.ok(hasError(topic, 'figure no-such-section: no body section headed'));
+  // The fixture places "### … {#figure-examples--audit-method}" as well as an h2.
+  assert.ok(fact.figures?.some(f => f.kind === 'section' && f.id === 'audit-method'));
+  figureOf(fact, 'section').id = 'older-law';
+  assert.ok(hasError(topic, 'figure older-law: "{#figure-examples--older-law}" heads an item under Observations or Subtleties'));
 });
 
 test('F5: every figure but a caveat list cites a source', () => {

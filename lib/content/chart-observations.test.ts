@@ -54,3 +54,21 @@ test('the lead is the body before its first heading, and a body with no lead kee
   assert.equal(leadProse(sectioned).lead, '<p>Lead.</p>');
   assert.equal(leadProse('<p>All lead.</p>').lead, '<p>All lead.</p>');
 });
+
+test('a section may be an h2 or an h3; an h3 takes its content up to the next h2 or h3', async () => {
+  const { bodySections } = await import('./chart-observations');
+  const html = await renderMarkdown([
+    '## Background {#example--background}', '', 'Why it matters.', '',
+    '### The older law {#example--older-law}', '', 'Detail.', '', '#### A footnote heading', '', 'Still the older law.', '',
+    '### The newer law {#example--newer-law}', '', 'Other detail.', '',
+    '## Later {#example--later}', '', 'After.',
+  ].join('\n'), 'topic');
+  const { sections, bodyHtml } = bodySections(html, 'example', ['older-law', 'later']);
+  assert.match(sections['older-law'], /^<section id="example--older-law" class="sv-evidence-section"><h3>The older law<\/h3>/);
+  assert.match(sections['older-law'], /Still the older law/);
+  assert.doesNotMatch(sections['older-law'], /newer law|Other detail/);
+  assert.match(sections.later, /^<h2 id="example--later">Later<\/h2>/);
+  // The h3's parent h2 stays, with its other content.
+  assert.match(bodyHtml, /Why it matters[\s\S]*The newer law/);
+  assert.doesNotMatch(bodyHtml, /older law|After\./);
+});

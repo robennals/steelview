@@ -505,8 +505,9 @@ export function figureErrors(f: Fact, topic: Topic): string[] {
     const where = at(figure, i);
 
     // F4
-    if (figure.kind === 'section' && !new RegExp(`^##\\s.*\\{#${escapeRegExp(f.id)}--${escapeRegExp(figure.id)}\\}\\s*$`, 'm').test(f.body)) {
-      errors.push(`${where} no body section headed "## … {#${f.id}--${figure.id}}"`);
+    if (figure.kind === 'section') {
+      const error = sectionHeadingError(f.body, `${f.id}--${figure.id}`);
+      if (error) errors.push(`${where} ${error}`);
     }
     if (!isComponentFigure(figure)) return;
 
@@ -742,6 +743,26 @@ function describeRef(key: string): string {
   if (kind === 'series') return id ? `additional series "${id}"` : 'the series';
   if (kind === 'comparison') return `comparison "${id}"`;
   return `featured chart "${id}"`;
+}
+
+/**
+ * Why a `section` figure cannot move the body heading `{#<anchor>}`, or
+ * undefined if it can: it must head a `##` or `###` section, and a `###`
+ * under Observations or Subtleties is a disclosure item, not a section
+ * (markdown.ts, rehypeEvidenceSections).
+ */
+function sectionHeadingError(body: string, anchor: string): string | undefined {
+  const lines = body.split('\n');
+  const at = lines.findIndex(line => new RegExp(`^#{2,3}\\s.*\\{#${escapeRegExp(anchor)}\\}\\s*$`).test(line));
+  if (at === -1) return `no body section headed "## … {#${anchor}}" or "### … {#${anchor}}"`;
+  if (lines[at].startsWith('## ')) return undefined;
+  const parent = lines.slice(0, at).findLast(line => line.startsWith('## '));
+  const parentId = parent?.match(/\{#([a-z0-9-]+)\}\s*$/)?.[1] ?? '';
+  const parentText = parent?.replace(/^##\s+/, '').replace(/\s*\{#[a-z0-9-]+\}\s*$/, '').trim().toLowerCase();
+  if (/--(observations|subtleties)$/.test(parentId) || parentText === 'observations' || parentText === 'subtleties') {
+    return `"{#${anchor}}" heads an item under Observations or Subtleties, which stays in its disclosure`;
+  }
+  return undefined;
 }
 
 function escapeRegExp(value: string): string {

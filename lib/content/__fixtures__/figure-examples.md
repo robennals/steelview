@@ -619,6 +619,8 @@ figures:
       - { region: North, published: '2026-05-12', deaths: { value: 159, qualifier: at least, asPublished: at least 159 } }
       - { region: East, published: '2026-05', deaths: { low: 60, high: 80, asPublished: between 60 and 80 } }
       - { region: Capital, published: '2026', deaths: 120 }
+  - kind: section
+    id: audit-method
 ---
 
 This fixture exists so every figure kind can be seen, tested and validated in
@@ -644,3 +646,8 @@ These rates are before any control for age or county.
 ## What the rest of the body says {#figure-examples--remainder}
 
 Body sections that no figure places render after the last figure, as before.
+
+### How the audit sample was drawn {#figure-examples--audit-method}
+
+This `###` section is placed by its own `section` entry, after the last
+figure; the `##` section it sits in stays where it was and follows it.

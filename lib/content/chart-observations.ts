@@ -34,14 +34,24 @@ export function leadProse(html: string): { lead: string; bodyHtml: string } {
 }
 
 /**
- * Pull the h2 sections whose id is `<fact>--<id>` out of the body, keyed by
- * id, so a `section` figure can place prose between two figures.
+ * Pull the h2 and h3 sections whose id is `<fact>--<id>` out of the body,
+ * keyed by id, so a `section` figure can place prose between two figures.
+ *
+ * An h3 with an id is already a `<section>` holding its content up to the
+ * next h1–h3 (rehypeEvidenceSections), so it moves whole. The h3s go first:
+ * one placed on its own leaves its h2, which may be placed too, behind.
  */
 export function bodySections(html: string, factId: string, ids: string[]): { sections: Record<string, string>; bodyHtml: string } {
   const sections: Record<string, string> = {};
-  const bodyHtml = html.replace(/<h2\b[^>]*>[\s\S]*?(?=<h2\b|$)/g, section => {
-    const id = section.match(/^<h2\b[^>]*\bid="([^"]+)"/)?.[1];
-    const key = ids.find(key => id === `${factId}--${key}`);
+  const keyOf = (id: string | undefined) => ids.find(key => id === `${factId}--${key}`);
+  const withoutH3s = html.replace(/<section\b[^>]*\bid="([^"]+)"[^>]*>[\s\S]*?<\/section>/g, (section, id: string) => {
+    const key = keyOf(id);
+    if (!key) return section;
+    sections[key] = section;
+    return '';
+  });
+  const bodyHtml = withoutH3s.replace(/<h2\b[^>]*>[\s\S]*?(?=<h2\b|$)/g, section => {
+    const key = keyOf(section.match(/^<h2\b[^>]*\bid="([^"]+)"/)?.[1]);
     if (!key) return section;
     sections[key] = section;
     return '';
