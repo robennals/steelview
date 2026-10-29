@@ -1045,6 +1045,36 @@
     fill: var(--paper-sunk);
   }
 
+  /* Focus window: the strip of the full range, the window outlined on it in
+     accent, and a line of text saying the same thing. */
+  .sv-chart__context {
+    margin-bottom: 0.15rem;
+  }
+
+  .sv-chart__context-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    stroke-linejoin: round;
+  }
+
+  .sv-chart__window {
+    fill: var(--accent-wash);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+  }
+
+  .sv-chart__focus-note {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-chart__focus > .sv-control {
+    margin-bottom: 0.5rem;
+  }
+
   .sv-chart__zone-label {
     fill: var(--ink-3);
     font-family: var(--font-sans);

@@ -4,6 +4,8 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTopic } from '@/lib/content/load';
 import type { Series } from '@/lib/content/types';
+import { validateTopic } from '@/lib/content/validate';
+import { BRENT_FOCUS_WINDOW } from '@/components/report/stories/fixtures/series-capabilities';
 import { SeriesChart } from './series-chart';
 
 // Depends on authored us-voter-id content: the fact
@@ -92,4 +94,24 @@ test('a "not measured since" band has a key line, a final table row and a descri
   assert.match(html, /<tr data-unmeasured=""><th scope="row">1990–29 Oct 1992<\/th><td colSpan="1">Not measured: Not verified since access ended<\/td><\/tr>/);
   assert.match(html, /No values after 1990: Not verified since access ended\./);
   assert.match(html, /fill="url\(#sv-chart-oil-price-desc-wide-hatch\)"/);
+});
+
+test('a focus window renders the strip, both plots with the full range hidden, and says so in words', () => {
+  const html = renderChart(BRENT_FOCUS_WINDOW);
+  assert.match(html, /<div class="sv-chart__context" aria-hidden="true">/);
+  assert.match(html, /Below: 27 Oct 2025–27 Oct 2026, of the full range May 1987–Oct 2026/);
+  assert.match(html, /<div data-focus-view="window">/);
+  assert.match(html, /<div data-focus-view="full" hidden="">/);
+  assert.equal((html.match(/class="sv-chart__svg" data-variant="wide" data-window=""/g) ?? []).length, 1);
+  assert.match(html, /The graph shows 27 Oct 2025–27 Oct 2026; a strip above it shows the full published range 20 May 1987–27 Oct 2026\./);
+  assert.match(html, /All 9,117 daily values, 20 May 1987–27 Oct 2026\. The graph shows 27 Oct 2025–27 Oct 2026/);
+  // Every value is in the table, undecimated: one row per trading day.
+  assert.equal((html.match(/<tr><th scope="row">/g) ?? []).length, 9117);
+});
+
+test('the Brent fixture passes the series rules', () => {
+  const fact = { id: 'brent', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: BRENT_FOCUS_WINDOW };
+  const viewpoint = (id: string) => ({ id, name: id, summary: 's', order: 1, body: 'b' });
+  const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], principles: [], cruxes: [] });
+  assert.deepEqual(errors, []);
 });

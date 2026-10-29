@@ -651,3 +651,18 @@ test('an event inside a "not measured since" band passes; its end defaults to la
   });
   assert.deepEqual(validateTopic(t), []);
 });
+
+/* ---------------------------------------------------- 4.3: focus window */
+
+test('a focus window inside the coverage passes; one reaching outside it fails', () => {
+  assert.deepEqual(validateTopic(topicWithSeries({ focus: { from: '1992', label: 'Last two years' } })), []);
+  const errors = validateTopic(topicWithSeries({ focus: { from: '1989', to: '1992', label: 'Window' } }));
+  assert.ok(errors.some(e => e.includes('focus 1989–1992 runs outside the declared coverage')), errors.join('\n'));
+});
+
+test('a focus window must run forwards and hold two points of some line', () => {
+  const backwards = validateTopic(topicWithSeries({ focus: { from: '1993', to: '1992', label: 'Window' } }));
+  assert.ok(backwards.some(e => e.includes('is not before its end')), backwards.join('\n'));
+  const empty = validateTopic(topicWithSeries({ focus: { from: '1992-03', to: '1992-09', label: 'Window' } }));
+  assert.ok(empty.some(e => e.includes('fewer than two points')), empty.join('\n'));
+});

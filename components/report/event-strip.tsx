@@ -2,7 +2,7 @@ import { useId, type CSSProperties } from 'react';
 import { CHART_GEOMETRY } from '@/lib/chart/series-chart';
 import { DetailsTarget } from './details-target';
 import { SourceLine } from './figure';
-import { formatDate } from './format';
+import { compareDates, formatDate } from './format';
 import { edgeOf, percentAlong, stackLevels, toYear, yearTicks, type TimeSpan } from './time-axis';
 import type { PartialDate, SourceCredit } from './types';
 
@@ -33,6 +33,12 @@ export type EventStripProps = {
   /** Visible heading for the numbered key. */
   keyTitle?: string;
   id?: string;
+  /**
+   * The period a focus-window chart shows. Only events inside it get a
+   * marker; the rest stay in the numbered key, marked as outside the period
+   * shown, so no event silently drops out of the chart.
+   */
+  window?: { from: PartialDate; to: PartialDate };
 };
 
 const pct = (n: number) => `${Math.round(n * 1000) / 1000}%`;
@@ -63,11 +69,14 @@ export function EventLane({
   events,
   keyId,
   showAxis,
+  numbers = events.map((_, i) => i + 1),
 }: {
   span: TimeSpan;
   events: StripEvent[];
   keyId: string;
   showAxis: boolean;
+  /** Each marker's number in the key, when the lane shows only some of the key's events. */
+  numbers?: number[];
 }) {
   const positions = events.map(e => percentAlong(toYear(e.date), span));
   // A numbered marker is ~1.4rem wide; at a 340px plot that is ~7% of the span.
@@ -86,11 +95,11 @@ export function EventLane({
           <a
             key={i}
             className="sv-event-strip__marker"
-            href={`#${keyId}-${i + 1}`}
+            href={`#${keyId}-${numbers[i]}`}
             style={{ left: pct(positions[i]), '--sv-strip-level': levels[i] }}
-            aria-label={`${i + 1}: ${formatDate(e.date)}, ${e.label}`}
+            aria-label={`${numbers[i]}: ${formatDate(e.date)}, ${e.label}`}
           >
-            <span aria-hidden="true">{i + 1}</span>
+            <span aria-hidden="true">{numbers[i]}</span>
           </a>
         ))}
       </div>
@@ -117,7 +126,13 @@ export function EventLane({
  * page's own script) opens it. `href` goes in the body, not the summary: a
  * link inside a `<summary>` is a second click target in one control.
  */
-export function EventKey({ events, keyId, title }: { events: StripEvent[]; keyId: string; title?: string }) {
+export function EventKey({ events, keyId, title, outside = [] }: {
+  events: StripEvent[];
+  keyId: string;
+  title?: string;
+  /** Events with no marker because they fall outside the period the chart shows; they keep their place in the key. */
+  outside?: boolean[];
+}) {
   return (
     <>
       {title && <p className="sv-event-strip__key-title">{title}</p>}
@@ -129,6 +144,7 @@ export function EventKey({ events, keyId, title }: { events: StripEvent[]; keyId
               <span className="sv-event-strip__number" aria-hidden="true">{i + 1}</span>
               <span className="sv-event-strip__item-head">
                 <time dateTime={e.date}>{formatDate(e.date)}</time>
+                {outside[i] && <span className="sv-event-strip__outside"> (outside the period shown)</span>}
                 {' '}
                 <span className="sv-event-strip__label">{e.label}</span>
               </span>
@@ -164,7 +180,7 @@ export function EventKey({ events, keyId, title }: { events: StripEvent[]; keyId
  * It marks when things happened and nothing more: a marker beside a turn in
  * the line is an invitation to look, not a claim that one caused the other.
  */
-export function EventStrip({ from, to, events, align = 'series-chart', showAxis = true, keyTitle = 'Events marked above', id }: EventStripProps) {
+export function EventStrip({ from, to, events, align = 'series-chart', showAxis = true, keyTitle = 'Events marked above', id, window: shown }: EventStripProps) {
   const reactId = useId();
   const keyId = `sv-event-strip-${id ?? reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
   const span = { from: toYear(from), to: toYear(to) };
@@ -172,10 +188,12 @@ export function EventStrip({ from, to, events, align = 'series-chart', showAxis 
   // The island scopes itself to the strip's root; with no id given, the key's
   // own prefix is unique and free.
   const rootId = id ?? keyId;
+  const outside = ordered.map(e => shown !== undefined && !(compareDates(e.date, shown.from) >= 0 && (compareDates(e.date, shown.to) <= 0 || e.date.startsWith(shown.to))));
+  const marked = ordered.flatMap((e, i) => (outside[i] ? [] : [{ event: e, number: i + 1 }]));
   return (
     <div className="sv-event-strip" id={rootId} data-align={typeof align === 'string' ? align : 'custom'} style={alignVars(align)}>
-      <EventLane span={span} events={ordered} keyId={keyId} showAxis={showAxis} />
-      <EventKey events={ordered} keyId={keyId} title={keyTitle} />
+      <EventLane span={span} events={marked.map(m => m.event)} numbers={marked.map(m => m.number)} keyId={keyId} showAxis={showAxis} />
+      <EventKey events={ordered} keyId={keyId} title={keyTitle} outside={outside} />
       <DetailsTarget rootId={rootId} />
     </div>
   );

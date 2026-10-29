@@ -297,6 +297,23 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
     }
   }
 
+  // A focus window magnifies part of the published range; it may not reach
+  // outside it, and it must hold enough data to draw a line.
+  if (series.focus) {
+    const from = series.focus.from;
+    const to = series.focus.to ?? series.coverage.to;
+    if (comparePeriods(from, series.coverage.from) < 0 || comparePeriods(to, series.coverage.to) > 0) {
+      errors.push(`${where} focus ${from}–${to} runs outside the declared coverage ${series.coverage.from}–${series.coverage.to}`);
+    }
+    if (comparePeriods(from, to) >= 0) {
+      errors.push(`${where} focus starts at "${from}", which is not before its end "${to}"`);
+    }
+    const inside = (period: string) => comparePeriods(period, from) >= 0 && (comparePeriods(period, to) <= 0 || period.startsWith(to));
+    if (!series.readings.some(reading => reading.lines.some(line => line.points.filter(point => inside(point.period)).length >= 2))) {
+      errors.push(`${where} focus ${from}–${to} holds fewer than two points of every line — there is nothing to draw at readable scale`);
+    }
+  }
+
   // Forecasts are the line's tail: a measured value after a forecast would
   // put history inside the shaded zone. Their vintage goes in coverage.note.
   let forecasts = false;

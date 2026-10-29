@@ -37,3 +37,12 @@ test('an href is a link in the body, never inside the summary', () => {
   assert.doesNotMatch(summary, /<a /);
   assert.match(html, /<div class="sv-event-strip__body">[\s\S]*<a href="#elsewhere">See the evidence<\/a>/);
 });
+
+test('with a window, events outside it get no marker but keep their numbered key item', () => {
+  const html = render({ from: '2012-06', to: '2016-12', window: { from: '2012-06', to: '2016-12' } });
+  const markers = [...html.matchAll(/class="sv-event-strip__marker" href="#([^"]+)"/g)].map(m => m[1]);
+  assert.deepEqual(markers, ['sv-event-strip-strip-2', 'sv-event-strip-strip-3']);
+  assert.match(html, /id="sv-event-strip-strip-1"/);
+  assert.match(html, /Jan 2011<\/time><span class="sv-event-strip__outside"> \(outside the period shown\)<\/span>/);
+  assert.equal((html.match(/outside the period shown/g) ?? []).length, 1);
+});

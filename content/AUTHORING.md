@@ -525,6 +525,18 @@ ranges, so the axis is never stretched past the data. The legend names the
 line's range ("Brent (from May 1987)"), and the table marks the years outside
 it "—". Do not split such measures into separate charts to avoid the rule.
 
+**A dense series can focus on a short period without dropping the rest.**
+Daily Brent has over 9,000 points across 39 years, so a six-month shock is a
+sliver of the plot. Add `focus` with a `from` date, an optional `to` (it
+defaults to `coverage.to`) and a `label` for the switch ("Last 12 months").
+The chart then draws a small strip of the full range with the window
+outlined, says in words which period the plot shows, and draws the window at
+readable scale; a switch shows the full range instead, and the table still
+holds every value. The window must lie inside the coverage and hold at least
+two points of some line. Events outside it stay in the numbered key, marked
+"(outside the period shown)". `focus` is for reading the recent past
+closely, never for hiding the rest: the coverage rule is unchanged.
+
 **A series carries its own quoted source**, in the same shape as a fact's
 sources, because a chart is a factual assertion like any other. A reading
 that rests on a different dataset — a derived denominator — carries a second
@@ -1055,6 +1067,7 @@ them.
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
 | Forecast points are each line's tail, and need a `coverage.note` | `lib/content/validate.ts`, `seriesErrors` |
+| A series `focus` lies inside the coverage, runs forwards and holds two points of some line | `lib/content/validate.ts`, `seriesErrors` |
 | A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
 | Every prose figure is quoted or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |

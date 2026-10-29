@@ -1,4 +1,4 @@
-import { comparePeriods, periodToYear, periodYear } from '@/lib/content/period';
+import { comparePeriods, normalizePeriod, periodToYear, periodYear } from '@/lib/content/period';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading } from '@/lib/content/types';
 
 /**
@@ -39,6 +39,8 @@ export type ChartGeometry = {
   valueLabelEvery: number;
   /** Time-axis ticks land on multiples of this many years. */
   yearTickStep: number;
+  /** In a focus window shorter than three years, a tick every this many months. */
+  monthTickStep: number;
 };
 
 export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
@@ -53,6 +55,7 @@ export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
     markerRadius: 4,
     valueLabelEvery: 2,
     yearTickStep: 20,
+    monthTickStep: 3,
   },
   wide: {
     width: 720,
@@ -65,7 +68,20 @@ export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
     markerRadius: 4.5,
     valueLabelEvery: 1,
     yearTickStep: 10,
+    monthTickStep: 1,
   },
+};
+
+/**
+ * The small strip of the full range drawn above a focus window. Same left
+ * inset and plot width as the main plot at each size, so a year on the strip
+ * sits over the same column as on the plot below it.
+ */
+export type ContextGeometry = Pick<ChartGeometry, 'width' | 'height' | 'left' | 'top' | 'plotWidth' | 'plotHeight' | 'fontSize'>;
+
+export const CONTEXT_GEOMETRY: Record<ChartVariant, ContextGeometry> = {
+  narrow: { width: 360, height: 56, left: 44, top: 6, plotWidth: 306, plotHeight: 32, fontSize: 10 },
+  wide: { width: 720, height: 64, left: 56, top: 6, plotWidth: 650, plotHeight: 38, fontSize: 11 },
 };
 
 /* -------------------------------------------------------------------- ticks */
@@ -336,15 +352,120 @@ export function unmeasuredSpan(series: Series): UnmeasuredSpan | undefined {
   return { from: series.coverage.to, until, label: band.label, note: band.note, source: band.source };
 }
 
+/* ------------------------------------------------------------ focus window */
+
+export type FocusWindow = { from: string; to: string };
+
+/** The period a series' `focus` draws at readable scale, or null when it has none. */
+export function focusWindow(series: Series): FocusWindow | null {
+  return series.focus ? { from: series.focus.from, to: series.focus.to ?? series.coverage.to } : null;
+}
+
+/** Whether `period` falls inside `[from, to]`, with a year- or month-precision end running to its own end. */
+export function periodWithin(period: string, { from, to }: FocusWindow): boolean {
+  return comparePeriods(period, from) >= 0 && (comparePeriods(period, to) <= 0 || period.startsWith(to));
+}
+
+/**
+ * The points of a line inside the window, plus the nearest point either
+ * side, so the line runs in from the plot's edges (clipped there) rather
+ * than starting at the first in-window value as if nothing came before.
+ */
+export function pointsAround(points: SeriesPoint[], window: FocusWindow): SeriesPoint[] {
+  const first = points.findIndex((p) => comparePeriods(p.period, window.from) >= 0);
+  if (first < 0) return points.slice(-1);
+  let last = first;
+  while (last + 1 < points.length && periodWithin(points[last + 1].period, window)) last += 1;
+  return points.slice(Math.max(0, first - 1), Math.min(points.length, last + 2));
+}
+
+/**
+ * Thin a dense line to what a plot `columns` pixels wide can show: the first
+ * and last points, and the lowest and highest point in each pixel column, in
+ * order. Keeping both extremes of every column is what lets a one-day spike
+ * survive; an average or every-nth sample would sand it off.
+ */
+export function decimate(points: SeriesPoint[], columns: number): SeriesPoint[] {
+  if (points.length <= 2 || columns < 1) return points;
+  const t0 = periodToYear(points[0].period);
+  const span = periodToYear(points[points.length - 1].period) - t0 || 1;
+  const keep = new Set<number>([0, points.length - 1]);
+  let column = -1;
+  let low = 0;
+  let high = 0;
+  points.forEach((point, index) => {
+    const c = Math.min(columns - 1, Math.floor(((periodToYear(point.period) - t0) / span) * columns));
+    if (c !== column) {
+      if (column >= 0) keep.add(low).add(high);
+      column = c;
+      low = index;
+      high = index;
+      return;
+    }
+    if (point.value < points[low].value) low = index;
+    if (point.value > points[high].value) high = index;
+  });
+  keep.add(low).add(high);
+  return [...keep].sort((a, b) => a - b).map((index) => points[index]);
+}
+
+/** Decimate only when a line has more than twice as many points as the plot is wide. */
+function thinned(points: SeriesPoint[], plotWidth: number): SeriesPoint[] {
+  return points.length > 2 * plotWidth ? decimate(points, Math.round(plotWidth)) : points;
+}
+
+const MONTH_ABBREVIATIONS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Time ticks for a focus window: whole years when it spans three years or
+ * more; otherwise the first of every `monthTickStep`th month (every month
+ * wide, Jan/Apr/Jul/Oct narrow), naming the year on the first tick and on
+ * every January.
+ */
+export function windowTicks(
+  window: FocusWindow,
+  geometry: ChartGeometry,
+  x: (period: string) => number
+): TimeTick[] {
+  const from = periodToYear(window.from);
+  const to = periodToYear(window.to);
+  if (to - from >= 3) {
+    return yearTicks(Math.ceil(from), Math.floor(to), geometry.yearTickStep).map((year) => ({ year, x: x(String(year)), label: String(year) }));
+  }
+  const ticks: TimeTick[] = [];
+  const [startYear, startMonth] = normalizePeriod(window.from).split('-').map(Number);
+  for (let index = startYear * 12 + startMonth - 1; ; index += 1) {
+    const year = Math.floor(index / 12);
+    const month = index % 12;
+    const period = `${year}-${String(month + 1).padStart(2, '0')}`;
+    if (periodToYear(period) < from) continue;
+    if (periodToYear(period) > to) break;
+    if (month % geometry.monthTickStep !== 0) continue;
+    const named = ticks.length === 0 || month === 0;
+    ticks.push({ year: periodToYear(period), x: x(period), label: named ? `${MONTH_ABBREVIATIONS[month]} ${year}` : MONTH_ABBREVIATIONS[month] });
+  }
+  return ticks;
+}
+
+/**
+ * Lay out one reading's plot. With a `window`, the x domain is the window and
+ * the y domain is fitted to the values inside it (plus the nearest point
+ * either side); the caller clips the lines at the plot edges. Without one,
+ * the domain is the full published range and a dense line is decimated.
+ */
 export function layoutReading(
   series: Series,
   reading: SeriesReading,
-  variant: ChartVariant
+  variant: ChartVariant,
+  window?: FocusWindow
 ): ReadingLayout {
   const geometry = CHART_GEOMETRY[variant];
   const slots = seriesSlots(series);
 
-  const values = reading.lines.flatMap((line: SeriesLine) => line.points.map((p) => p.value));
+  const shown = reading.lines.map((line: SeriesLine) =>
+    window ? pointsAround(line.points, window) : thinned(line.points, geometry.plotWidth)
+  );
+  const values = shown.flatMap((points) => points.map((p) => p.value));
   const ticks = niceTicks(Math.min(...values), Math.max(...values));
   const valueMin = ticks[0];
   const valueMax = ticks[ticks.length - 1];
@@ -353,8 +474,9 @@ export function layoutReading(
   // equal by rule 14, and saying so here means the axis is drawn from the
   // promise the series makes about its source. A "not measured since" band
   // extends it to the band's end, so the gap has room to be seen.
-  const end = axisEnd(series);
-  const fromYear = periodToYear(series.coverage.from);
+  const end = window ? window.to : axisEnd(series);
+  const start = window ? window.from : series.coverage.from;
+  const fromYear = periodToYear(start);
   const toYear = periodToYear(end);
 
   const x = (period: string) =>
@@ -366,10 +488,10 @@ export function layoutReading(
     ((value - valueMin) / (valueMax - valueMin || 1)) * geometry.plotHeight;
 
   const breakPeriods = series.breaks.map((b) => b.period);
-  const markPoints = reading.lines.reduce((n, line) => n + line.points.length, 0) <= HOLLOW_MARKER_LIMIT;
+  const markPoints = shown.reduce((n, points) => n + points.length, 0) <= HOLLOW_MARKER_LIMIT;
 
-  const lines: PlottedLine[] = reading.lines.map((line) => {
-    const plotted = line.points.map((point) => ({ x: x(point.period), y: y(point.value), point }));
+  const lines: PlottedLine[] = reading.lines.map((line, index) => {
+    const plotted = shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point }));
     const { runs, bridges } = splitRuns(plotted, breakPeriods);
     return {
       name: line.name,
@@ -402,15 +524,72 @@ export function layoutReading(
         index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
     })),
     timeTicks: dropCrowdedTicks(
-      yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
+      window
+        ? windowTicks(window, geometry, x)
+        : yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
+            (year) => ({ year, x: x(String(year)), label: String(year) })
+          ),
+      geometry.fontSize
+    ),
+    breaks: series.breaks
+      .filter((gap) => !window || periodWithin(gap.period, window))
+      .map((gap) => ({ ...gap, x: x(gap.period) })),
+    zeroY: valueMin <= 0 && valueMax >= 0 ? y(0) : null,
+    // A forecast that starts before the window starts at the window's edge.
+    forecastX: forecastXs.length > 0 ? Math.max(geometry.left, Math.min(...forecastXs)) : null,
+    // The window lies inside the coverage, so a band past it is only drawn on the full range.
+    unmeasured: window || end === series.coverage.to ? null : { x0: x(series.coverage.to), x1: x(end) },
+  };
+}
+
+export type ContextLayout = {
+  geometry: ContextGeometry;
+  lines: Array<{ name: string; slot: number; points: PlottedPoint[] }>;
+  timeTicks: TimeTick[];
+  /** Breaks, drawn as short ticks on the strip's baseline. */
+  breaks: number[];
+  /** The focus window, outlined on the strip. */
+  window: { x0: number; x1: number };
+};
+
+/**
+ * The context strip above a focus window: every line over the full range,
+ * decimated, with year ticks and the window marked. No value labels — the
+ * strip says where the window sits, the plot below says what it shows.
+ */
+export function layoutContext(
+  series: Series,
+  reading: SeriesReading,
+  variant: ChartVariant,
+  window: FocusWindow
+): ContextLayout {
+  const geometry = CONTEXT_GEOMETRY[variant];
+  const slots = seriesSlots(series);
+  const shown = reading.lines.map((line) => thinned(line.points, geometry.plotWidth));
+  const values = shown.flatMap((points) => points.map((p) => p.value));
+  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  const end = axisEnd(series);
+  const fromYear = periodToYear(series.coverage.from);
+  const toYear = periodToYear(end);
+  const x = (period: string) =>
+    geometry.left + ((periodToYear(period) - fromYear) / (toYear - fromYear || 1)) * geometry.plotWidth;
+  const y = (value: number) =>
+    geometry.top + geometry.plotHeight - ((value - ticks[0]) / (ticks[ticks.length - 1] - ticks[0] || 1)) * geometry.plotHeight;
+  return {
+    geometry,
+    lines: reading.lines.map((line, index) => ({
+      name: line.name,
+      slot: slots.get(line.name) ?? 1,
+      points: shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point })),
+    })),
+    timeTicks: dropCrowdedTicks(
+      yearTicks(periodYear(series.coverage.from), periodYear(end), CHART_GEOMETRY[variant].yearTickStep).map(
         (year) => ({ year, x: x(String(year)), label: String(year) })
       ),
       geometry.fontSize
     ),
-    breaks: series.breaks.map((gap) => ({ ...gap, x: x(gap.period) })),
-    zeroY: valueMin <= 0 && valueMax >= 0 ? y(0) : null,
-    forecastX: forecastXs.length > 0 ? Math.min(...forecastXs) : null,
-    unmeasured: end === series.coverage.to ? null : { x0: x(series.coverage.to), x1: x(end) },
+    breaks: series.breaks.map((gap) => x(gap.period)),
+    window: { x0: x(window.from), x1: x(window.to) },
   };
 }
 

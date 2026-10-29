@@ -556,6 +556,11 @@
     font-weight: 600;
   }
 
+  .sv-event-strip__outside {
+    margin-right: 0.3rem;
+    color: var(--ink-3);
+  }
+
   .sv-event-strip__desc {
     margin: 0.1rem 0 0;
     font-size: 0.8125rem;

@@ -1,14 +1,17 @@
 import type { ReactNode } from 'react';
 import { EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
+import { FocusSwitch } from './focus-switch';
 import { SeriesHighlight } from './series-highlight';
 import { comparePeriods } from '@/lib/content/period';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
   axisEnd,
+  focusWindow,
   formatValue,
   hasOwnSpans,
+  layoutContext,
   layoutReading,
   lineSpan,
   midSentence,
@@ -19,6 +22,7 @@ import {
   tickLabelWidth,
   unmeasuredSpan,
   type ChartVariant,
+  type FocusWindow,
 } from '@/lib/chart/series-chart';
 
 /**
@@ -50,21 +54,26 @@ function Plot({
   reading,
   variant,
   descriptionId,
+  window,
 }: {
   series: Series;
   reading: SeriesReading;
   variant: ChartVariant;
   descriptionId: string;
+  /** Draw only this period, at readable scale, with the lines clipped at the plot edges. */
+  window?: FocusWindow;
 }) {
-  const layout = layoutReading(series, reading, variant);
+  const layout = layoutReading(series, reading, variant, window);
   const g = CHART_GEOMETRY[variant];
   const hatchId = `${descriptionId}-${variant}-hatch`;
+  const clipId = `${descriptionId}-${variant}-clip`;
   const right = g.left + g.plotWidth;
   const bottom = g.top + g.plotHeight;
   return (
     <svg
       className="sv-chart__svg"
       data-variant={variant}
+      data-window={window ? '' : undefined}
       viewBox={`0 0 ${g.width} ${g.height}`}
       role="img"
       /*
@@ -150,8 +159,18 @@ function Plot({
         vectorEffect="non-scaling-stroke"
       />)}
 
+      {/* A window's lines run in from the nearest point outside it; clip them at the plot edges. */}
+      {window && (
+        <defs>
+          <clipPath id={clipId}>
+            {/* Room on the right for an end marker sitting on the edge. */}
+            <rect x={g.left} y={g.top - g.markerRadius} width={g.plotWidth + g.markerRadius} height={g.plotHeight + 2 * g.markerRadius} />
+          </clipPath>
+        </defs>
+      )}
+
       {layout.lines.map((line) => (
-        <g key={line.name} data-series={line.name} style={{ color: `var(--sv-series-${line.slot})` }}>
+        <g key={line.name} data-series={line.name} style={{ color: `var(--sv-series-${line.slot})` }} clipPath={window ? `url(#${clipId})` : undefined}>
           {/* A bridge is the step across a break: same colour, dashed and
               faded, so the eye reads "these two ends are not the same
               measurement" instead of one continuous trend. */}
@@ -268,14 +287,55 @@ const STATUS_ABBREVIATION: Record<NonNullable<SeriesPoint['status']>, string> = 
   forecast: 'forecast',
 };
 
+/** "May 1987 – Oct 2026": a range at month precision at most, for naming a long span in passing. */
+function monthSpanText(span: { from: string; to: string }): string {
+  return spanText({ from: span.from.slice(0, 7), to: span.to.slice(0, 7) });
+}
+
+const FREQUENCY: Record<number, string> = { 4: 'annual', 7: 'monthly', 10: 'daily' };
+
+/**
+ * The context strip above a focus window: the full range, small, with the
+ * window outlined. It is decoration for a sighted reader finding their place
+ * — the main plot and the table carry the data — so it is hidden from
+ * assistive technology, and the line under it says the same in words.
+ */
+function ContextStrip({ series, reading, window }: { series: Series; reading: SeriesReading; window: FocusWindow }) {
+  return (
+    <div className="sv-chart__context" aria-hidden="true">
+      {(['narrow', 'wide'] as const).map(variant => {
+        const layout = layoutContext(series, reading, variant, window);
+        const g = layout.geometry;
+        const bottom = g.top + g.plotHeight;
+        return (
+          <svg key={variant} className="sv-chart__svg sv-chart__context-svg" data-variant={variant} viewBox={`0 0 ${g.width} ${g.height}`} preserveAspectRatio="xMidYMid meet" focusable="false">
+            <rect className="sv-chart__window" x={layout.window.x0} y={g.top} width={layout.window.x1 - layout.window.x0} height={g.plotHeight} vectorEffect="non-scaling-stroke" />
+            <line className="sv-chart__axis" x1={g.left} x2={g.left + g.plotWidth} y1={bottom} y2={bottom} vectorEffect="non-scaling-stroke" />
+            {layout.breaks.map(x => <line key={`break-${x}`} className="sv-chart__break" x1={x} x2={x} y1={bottom - 6} y2={bottom} vectorEffect="non-scaling-stroke" />)}
+            {layout.lines.map(line => (
+              <path key={line.name} className="sv-chart__context-line" style={{ color: `var(--sv-series-${line.slot})` }} d={pathFor(line.points)} vectorEffect="non-scaling-stroke" />
+            ))}
+            {layout.timeTicks.map(tick => (
+              <text key={tick.year} className="sv-chart__tick" x={tick.x} y={bottom + g.fontSize + 4} fontSize={g.fontSize} textAnchor="middle">{tick.label}</text>
+            ))}
+          </svg>
+        );
+      })}
+    </div>
+  );
+}
+
 function ReadingTable({ series, reading }: { series: Series; reading: SeriesReading }) {
   const rows = readingRows(series, reading);
   const unmeasured = unmeasuredSpan(series);
+  const window = focusWindow(series);
+  const frequency = FREQUENCY[rows[0]?.period.length ?? 0] ?? '';
   return (
     <div className="sv-chart__table-scroll">
       <table className="sv-chart__table">
         <caption>
           {series.title} {NBSP_DASH} {reading.label}
+          {window && `. All ${rows.length.toLocaleString('en-GB')} ${frequency ? `${frequency} ` : ''}values, ${spanText(series.coverage)}. The graph shows ${spanText(window)}`}
           {hasOwnSpans(series) && '. — : outside this source’s published range'}
         </caption>
         <thead>
@@ -334,6 +394,7 @@ function Reading({
   const forecasts = points.filter(point => point.status === 'forecast');
   const firstForecast = forecasts.map(point => point.period).sort(comparePeriods)[0];
   const unmeasured = unmeasuredSpan(series);
+  const window = focusWindow(series);
   const statusSentence = [
     estimates > 0 ? `${estimates} value${estimates === 1 ? ' is an estimate or provisional' : 's are estimates or provisional'}` : null,
     forecasts.length > 0 ? `${forecasts.length} ${forecasts.length === 1 ? 'is a forecast' : 'are forecasts'} from ${formatDate(firstForecast)}` : null,
@@ -341,6 +402,9 @@ function Reading({
   const description = [
     series.description,
     `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
+    window
+      ? `The graph shows ${spanText(window)}; a strip above it shows the full published range ${spanText(series.coverage)}.`
+      : null,
     hasOwnSpans(series)
       ? `Each line runs its own source's published range: ${reading.lines.map(line => `${line.name}, ${spanText(lineSpan(series, line))}`).join('; ')}.`
       : null,
@@ -356,6 +420,13 @@ function Reading({
   ]
     .filter(Boolean)
     .join(' ');
+
+  const plots = (shown?: FocusWindow) => (
+    <div className="sv-chart__plot">
+      <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
+      <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
+    </div>
+  );
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
@@ -391,11 +462,32 @@ function Reading({
               </li>
             ))}
           </ul>
-          <div className="sv-chart__plot">
-            <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
-            <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
-          </div>
-          {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+          {window ? (
+            <>
+              <ContextStrip series={series} reading={reading} window={window} />
+              <p className="sv-chart__focus-note">
+                Below: {spanText(window)}, of the full range {monthSpanText(series.coverage)}
+              </p>
+              <FocusSwitch
+                label={`${reading.label} ${NBSP_DASH} period shown`}
+                windowLabel={series.focus?.label ?? 'Window'}
+                windowView={<>
+                  {plots(window)}
+                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={window.from} to={window.to} window={window} events={events} showAxis={false} />}
+                </>}
+                fullView={<>
+                  {plots()}
+                  {/* Its own ids: both views are in the markup, one of them hidden. */}
+                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events-full`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+                </>}
+              />
+            </>
+          ) : (
+            <>
+              {plots()}
+              {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+            </>
+          )}
         </>}
         table={<ReadingTable series={series} reading={reading} />}
       />

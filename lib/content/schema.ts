@@ -180,6 +180,18 @@ export const seriesSchema = z.object({
     /** The fact's numbered citation for the note. */
     source: z.number().int().positive(),
   }).optional(),
+  /**
+   * A period drawn at readable scale under a small strip of the full range.
+   * The full range is still drawn (the strip), still declared (`coverage`)
+   * and still tabulated; only the large plot is the window.
+   */
+  focus: z.object({
+    from: partialDate,
+    /** Defaults to coverage.to. */
+    to: partialDate.optional(),
+    /** Names the window in the switch: "Last 12 months". */
+    label: z.string().min(1),
+  }).optional(),
   breaks: z.array(seriesBreakSchema).default([]),
   events: z.array(seriesEventSchema).default([]),
   readings: z.array(seriesReadingSchema).min(1),

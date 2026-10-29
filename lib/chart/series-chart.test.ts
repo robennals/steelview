@@ -18,6 +18,8 @@ import {
   yearTicks,
   dropCrowdedTicks,
   tickLabelWidth,
+  decimate,
+  layoutContext,
 } from './series-chart';
 
 const source = {
@@ -366,4 +368,67 @@ test('a "not measured since" band runs from the last point to the plot’s right
   assert.equal(Number(layout.unmeasured.x1.toFixed(4)), g.left + g.plotWidth);
   assert.equal(layout.timeTicks.at(-1)?.label, '1995');
   assert.equal(layoutReading(series(), series().readings[0], 'wide').unmeasured, null);
+});
+
+/** Monthly, January 2020 to October 2026, rising by one a month, with a spike of 1,000 in June 2021. */
+function monthly(): Series {
+  const s = series();
+  const points: SeriesPoint[] = [];
+  for (let i = 0; i < 82; i += 1) {
+    const period = `${2020 + Math.floor(i / 12)}-${String((i % 12) + 1).padStart(2, '0')}`;
+    points.push({ period, value: period === '2021-06' ? 1000 : i });
+  }
+  return { ...s, breaks: [], coverage: { from: '2020-01', to: '2026-10' }, readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points }] }] };
+}
+
+const LAST_YEAR = { from: '2025-10', to: '2026-10' };
+
+test('a window layout puts the window ends at the plot edges and fits its y domain to the window', () => {
+  const s = monthly();
+  const g = CHART_GEOMETRY.wide;
+  const layout = layoutReading(s, s.readings[0], 'wide', LAST_YEAR);
+  const plotted = layout.lines[0].runs.flatMap((run) => run.points);
+  const at = (period: string) => plotted.find((p) => p.point.period === period)!.x;
+  assert.equal(Number(at('2025-10').toFixed(4)), g.left);
+  assert.equal(Number(at('2026-10').toFixed(4)), g.left + g.plotWidth);
+  // The nearest point outside the window is drawn too, off the plot's left edge, to be clipped.
+  assert.ok(at('2025-09') < g.left);
+  assert.ok(!plotted.some((p) => p.point.period === '2021-06'));
+  assert.ok(layout.valueTicks.at(-1)!.value < 1000);
+  assert.ok(layoutReading(s, s.readings[0], 'wide').valueTicks.at(-1)!.value >= 1000);
+});
+
+test('a one-year window has month ticks: every month wide, every third narrow, the year on the first and on January', () => {
+  const s = monthly();
+  const window = { from: '2025-10-20', to: '2026-10-20' };
+  assert.deepEqual(
+    layoutReading(s, s.readings[0], 'wide', window).timeTicks.map((t) => t.label),
+    ['Nov 2025', 'Dec', 'Jan 2026', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+  );
+  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow', window).timeTicks.map((t) => t.label), ['Jan 2026', 'Apr', 'Jul', 'Oct']);
+  assert.deepEqual(layoutReading(s, s.readings[0], 'wide', { from: '2020-01', to: '2026-10' }).timeTicks.map((t) => t.label).slice(0, 2), ['2020', '2021']);
+});
+
+test('decimate keeps both ends and the extremes of every column, so a spike survives', () => {
+  // A thousand consecutive days from 1 January 2000.
+  const points: SeriesPoint[] = Array.from({ length: 1000 }, (_, i) => ({
+    period: new Date(Date.UTC(2000, 0, 1 + i)).toISOString().slice(0, 10),
+    value: i === 500 ? 999 : i === 700 ? -999 : Math.sin(i),
+  }));
+  const thinned = decimate(points, 50);
+  assert.ok(thinned.length <= 2 * 50 + 2, `${thinned.length}`);
+  assert.equal(thinned[0], points[0]);
+  assert.equal(thinned.at(-1), points.at(-1));
+  assert.ok(thinned.some((p) => p.value === 999));
+  assert.ok(thinned.some((p) => p.value === -999));
+});
+
+test('the context strip spans the full range and outlines the window', () => {
+  const s = monthly();
+  const strip = layoutContext(s, s.readings[0], 'wide', LAST_YEAR);
+  assert.equal(strip.geometry.left, CHART_GEOMETRY.wide.left);
+  assert.equal(strip.geometry.plotWidth, CHART_GEOMETRY.wide.plotWidth);
+  assert.equal(Number(strip.lines[0].points[0].x.toFixed(4)), strip.geometry.left);
+  assert.equal(Number(strip.window.x1.toFixed(4)), strip.geometry.left + strip.geometry.plotWidth);
+  assert.ok(strip.window.x0 > strip.geometry.left);
 });
