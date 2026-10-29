@@ -10,6 +10,8 @@ import {
   BORN_ABROAD_BY_REGION_ILLUSTRATIVE,
   CHANGE_BY_REGION_ILLUSTRATIVE,
   DETENTION_MARKERS_ILLUSTRATIVE,
+  IDEA_POSTAL_SOURCES,
+  IDEA_POSTAL_VOTING_2025,
   ILLUSTRATIVE,
   WORLD_SHARE_ILLUSTRATIVE,
 } from './fixtures/maps';
@@ -69,7 +71,10 @@ export const World: Story = {
   },
 };
 
-const ukRegions: Partial<GeoMapProps> = {
+// `satisfies`, not a type annotation: GeoMapProps is a union of the numeric
+// and categorical encodings, and a spread typed as that union carries the
+// categorical branch, which forbids the numeric fields each story adds.
+const ukRegions = {
   regions: UK_ITL1_REGIONS,
   contextRegions: undefined,
   extent: undefined,
@@ -77,7 +82,7 @@ const ukRegions: Partial<GeoMapProps> = {
   breaks: undefined,
   insets: [{ regionIds: ['london'] }],
   sources: ILLUSTRATIVE,
-};
+} satisfies Partial<GeoMapProps>;
 
 /** One country's regions, with a capital enlarged and two regions the source does not cover. */
 export const CountryRegions: Story = {
@@ -118,5 +123,30 @@ export const WithMarkers: Story = {
     steps: 5,
     markers: DETENTION_MARKERS_ILLUSTRATIVE,
     markerValueLabel: 'People held',
+  },
+};
+
+/**
+ * Categorical mode on the world map: who may vote by post, by country. Each
+ * category is a tint with its own pattern, so it reads in greyscale; the
+ * legend counts each one. Only the thirteen countries the research draft
+ * confirms are assigned — the rest of IDEA's lists are still to be extracted
+ * from its tables, so every other country is hatched as "No data".
+ */
+export const CategoricalIdeaPostalVoting: Story = {
+  args: {
+    title: 'Who may vote by post in their own country',
+    description: 'Eleven countries open in-country postal voting to all voters and two to some, among those checked so far. Every other country is not yet extracted from IDEA\'s tables, so it shows as No data, not as "no postal voting". Liechtenstein (all voters) is too small to draw at this scale.',
+    regions: WORLD_COUNTRIES,
+    contextRegions: undefined,
+    extent: undefined,
+    ...IDEA_POSTAL_VOTING_2025,
+    data: undefined,
+    valueLabel: undefined,
+    format: undefined,
+    breaks: undefined,
+    insets: [{ regionIds: ['LU'] }],
+    areaLabel: 'Country',
+    sources: IDEA_POSTAL_SOURCES,
   },
 };

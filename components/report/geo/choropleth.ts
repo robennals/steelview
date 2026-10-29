@@ -17,6 +17,20 @@ export type MapData = Record<string, MapDatum>;
 
 export type MapScaleKind = 'sequential' | 'diverging';
 
+/** How GeoMap and TileMap shade areas by a number. The alternative is `CategoryEncoding` (categorical.ts). */
+export type MapValueEncoding = {
+  /** Figures keyed by area id. An area with no entry is hatched and reads "No data". */
+  data: MapData;
+  /** What the figure is, e.g. "Share of residents born abroad". */
+  valueLabel: string;
+  format?: ValueFormat;
+  scale?: MapScaleKind;
+  steps?: number;
+  domain?: [number, number];
+  /** Explicit, possibly uneven, bin boundaries for skewed data. Overrides `steps` and `domain`. */
+  breaks?: number[];
+};
+
 export type MapScaleOptions = {
   kind?: MapScaleKind;
   /** Number of colour steps. Defaults to 5 (sequential) or 6 (diverging, so zero is a boundary). */

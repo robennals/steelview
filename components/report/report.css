@@ -2,5 +2,6 @@
 @import "./styles/base.css";
 @import "./styles/data.css";
 @import "./styles/maps.css";
+@import "./styles/scatter.css";
 @import "./styles/timelines.css";
 @import "./styles/quotes.css";
