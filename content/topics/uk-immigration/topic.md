@@ -1,7 +1,7 @@
 ---
 title: UK immigration
-subtitle: What the British argument is actually about, and where it genuinely divides.
-lastUpdated: 2026-08-19
+subtitle: How many people should move to Britain to work, study and join family, by which routes, and what they must do to stay for good.
+lastUpdated: 2026-10-29
 dataOrder:
   - immigration-against-the-long-run
   - work-and-study-routes
@@ -10,23 +10,12 @@ dataOrder:
   - settlement-and-migrant-status
   - integration-outcomes
   - crime-terrorism-and-group-exploitation
-  - incoming-immigration-composition
-  - skilled-worker-fiscal-gain-concentrated
-  - how-people-actually-arrive
-  - health-and-care-relies-on-migrant-workers
-  - asylum-claims-in-historical-and-european-context
-  - wage-effects-small-and-uneven
-  - housing-cost-effect-positive-but-small
-  - immigration-is-salient-and-objection-varies-by-route
-  - share-of-the-population-born-abroad
-  - migration-is-the-only-source-of-population-growth
-  - asylum-accommodation-cost-overrun
-  - non-citizens-share-of-convictions-and-prisons
 principles:
-  - continuity-of-a-shared-way-of-life
   - democratic-consent-over-membership
-  - gains-from-open-exchange
-  - obligation-to-people-in-danger
-  - priority-to-the-worst-off
+  - first-duty-to-its-own-people
+  - continuity-of-a-shared-way-of-life
+  - contribution-earns-a-share
   - rules-must-mean-what-they-say
+  - gains-from-open-exchange
+  - priority-to-the-worst-off
 ---

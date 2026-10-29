@@ -2999,8 +2999,8 @@ comparisons:
     allGroupsLabel: All arrivals
     defaultGroup: 0
 relatedFacts:
-  - incoming-immigration-composition
-  - how-people-actually-arrive
+  - work-and-study-routes
+  - integration-outcomes
 dataStillNeeded:
   - measure: >-
       Net migration per head on a common definition for the UK and other

@@ -17,8 +17,8 @@ claim: >-
   2021/22 peak to 6.1%.
 status: well-supported
 relatedFacts:
-- what-happens-to-students-after-they-graduate
-- overseas-recruitment-and-domestic-training
+- immigration-economy-and-public-finances
+- settlement-and-migrant-status
 sources:
 - stance: supports
   quote: >-

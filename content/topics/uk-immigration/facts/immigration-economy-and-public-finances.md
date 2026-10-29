@@ -2036,10 +2036,8 @@ comparisons:
   - label: Students domiciled outside the UK
     value: 12396906000
 relatedFacts:
-- skilled-worker-fiscal-gain-concentrated
-- fiscal-break-even-salary
-- care-worker-route-fiscally-negative
-- wage-effects-small-and-uneven
+- work-and-study-routes
+- immigration-housing-and-public-services
 dataStillNeeded:
 - measure: "A lifetime fiscal estimate covering every post-Brexit route — students, Graduate route, family, refugees and humanitarian schemes — on one method"
   why: "The only route-level estimates cover Skilled Worker and Partner cohorts; a total for the post-2021 inflow, which the cost claims are about, does not exist."

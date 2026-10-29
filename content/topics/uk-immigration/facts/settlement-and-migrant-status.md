@@ -15,7 +15,7 @@ claim: >-
   at the end of 2024; no official count of holders exists
 status: well-supported
 relatedFacts:
-  - migrants-access-to-benefits
+  - immigration-economy-and-public-finances
 sources:
   - stance: supports
     quote: "In the YE June 2026, there were 199,628 settlement grants, up 24% from the 161,585 issued in the YE June 2025 and the highest annual total since the YE June 2011."
