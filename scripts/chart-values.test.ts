@@ -43,9 +43,9 @@ test('a series point quoted in its reading’s source is quoted', () => {
   assert.equal(auditValue(second, NO_DERIVED), 'untraced');
 });
 
-test('a reading’s own source takes the place of the series source', () => {
-  const s = series('nothing numeric', [3.4, 2.1]);
-  s.readings[0].source = source('3.4% and 2.1%');
+test('a reading’s own source adds to the series source rather than replacing it', () => {
+  const s = series('rejected 3.4 percent of ballots', [3.4, 2.1]);
+  s.readings[0].source = source('a population denominator of 2.1%');
   assert.deepEqual(chartValues(fact({ series: s })).map((v) => auditValue(v, NO_DERIVED)), ['quoted', 'quoted']);
 });
 
@@ -58,6 +58,26 @@ test('a line’s own source is traced for that line’s points, beside the readi
 test('a figure item citing several sources may be traced to any of them', () => {
   const values = fromFigureValues('f', [{ where: 'bar "A"', value: 7200, format: { unit: 'count' }, citations: [1, 2] }], [source('none here'), source('7,200 signatures')]);
   assert.equal(auditValue(values[0], NO_DERIVED), 'quoted');
+});
+
+test('a comparison or figure may cite a series source, as the validator allows', () => {
+  // Citation 2 is the series source: factSources lists fact sources, then series sources.
+  const values = chartValues(fact({
+    sources: [source('nothing numeric')],
+    series: series('fees of £50, and $50 in Texas', [3.4, 2.1]),
+    comparisons: [{
+      id: 'fees', title: 't', description: 'd', unit: 'pounds', valueLabel: '£', sources: [2],
+      items: [{ label: 'A', value: 50 }],
+    }],
+    figures: [{
+      kind: 'keyFigures', id: 'fee', title: 't', description: 'd', sources: [2],
+      figures: [{ value: 50, format: { unit: 'currency', currency: 'USD' }, label: 'Texas fee', period: '2026', sources: [2] }],
+    }],
+  }));
+  assert.deepEqual(
+    values.filter((v) => !v.where.startsWith('series')).map((v) => [v.where, auditValue(v, NO_DERIVED)]),
+    [['comparison fees A', 'quoted'], ['figure fee key figure "Texas fee"', 'quoted']]
+  );
 });
 
 test('the same value quoted only in another fact is untraced', () => {

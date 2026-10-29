@@ -110,3 +110,22 @@ test('a range with no wording of its own is untraced unless both ends are quoted
   const verdicts = auditTopic([item]).values.filter((v) => v.chart === 'figure deaths-by-region' && v.where.includes('"East"')).map((v) => v.verdict);
   assert.deepEqual(verdicts, ['quoted', 'untraced']);
 });
+
+test('a derived figure with an unquoted input is an unmatched finding, and the audit carries on', () => {
+  const { unmatched } = auditTopic([
+    {
+      kind: 'fact',
+      id: 'a',
+      data: { claim: 'A claim', sources: [{ quote: '46,497 arrivals' }], derivedFigures: [{ method: 'ratio-percent', figure: '5.7%', numerator: 46497, denominator: 813000, decimals: 1 }] },
+      body: 'That is 5.7% of all arrivals.',
+    },
+    fact('b', 'about 1.4% of ballots', 'Rejections ran at 1.4%.'),
+  ]);
+  assert.deepEqual(
+    unmatched.map((f) => [f.item, f.figure, f.corpus]),
+    [
+      ['fact/a derivedFigures', '5.7%', 'derived from 813000, which is not quoted in this item’s sources'],
+      ['fact/a', '5.7%', "not in this fact's sources"],
+    ]
+  );
+});

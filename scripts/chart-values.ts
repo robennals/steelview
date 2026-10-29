@@ -2,9 +2,10 @@
  * The chart-value audit: every number a chart draws must be traceable to
  * one of
  *
- * 1. **its own source's quote** — a series reading's `source` (else the
- *    series `source`) and its line's `source`, or the fact's numbered
- *    sources a comparison or figure cites;
+ * 1. **its own source's quote** — the series `source` and, where they have
+ *    one, the reading's own `source` and the line's own `source`; or the
+ *    numbered sources a comparison or figure cites (`factSources`, so a
+ *    series source counts);
  * 2. **a named table** — the reading, comparison or figure declares
  *    `valuesFrom` ("EAVS 2024 Overview Table 1"), shown to the reader; or
  * 3. **a verified derivation** — a `derivedFigures` entry on the same fact.
@@ -20,6 +21,7 @@ import type { Fact, Series, SeriesReading, Source } from '../lib/content/types';
 import { isComponentFigure } from '../lib/content/types';
 import { figureValues } from '../lib/content/figure-text';
 import { toValueFormat } from '../lib/content/figure-props';
+import { factSources } from '../lib/content/sources';
 import { formatValue } from '../components/report/format';
 import type { ValueFormat } from '../components/report/types';
 import { canonical, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
@@ -100,8 +102,8 @@ function seriesValues(series: Series, chart: string, prefix: string): ChartValue
         chart,
         where: `${prefix}reading ${reading.id} line ${line.name} ${point.period}`,
         renderings: seriesRenderings(point.value, reading.unit),
-        // A line with its own source may be traced to it as well as to the reading's.
-        allowedQuotes: [...(line.source ? [line.source.quote] : []), (reading.source ?? series.source).quote],
+        // A reading's own source — a denominator, say — and a line's own source are credited beside the series source, not instead of it.
+        allowedQuotes: [series.source.quote, ...(reading.source ? [reading.source.quote] : []), ...(line.source ? [line.source.quote] : [])],
         valuesFrom: reading.valuesFrom,
       }))
     )
@@ -127,13 +129,15 @@ export function fromFigureValues(figureId: string, values: readonly FigureValue[
  */
 export function chartValues(fact: ChartedFact): ChartValue[] {
   const values: ChartValue[] = [];
+  // Citation n means what it means everywhere else: factSources, the list the validator's F2 checks against.
+  const sources = factSources(fact);
   if (fact.series) values.push(...seriesValues(fact.series, 'series', 'series '));
   for (const series of fact.additionalSeries ?? []) {
     values.push(...seriesValues(series, `series ${series.id}`, `series ${series.id} `));
   }
   for (const comparison of fact.comparisons ?? []) {
     const chart = `comparison ${comparison.id}`;
-    const allowedQuotes = citedQuotes(fact.sources, comparison.sources);
+    const allowedQuotes = citedQuotes(sources, comparison.sources);
     for (const item of comparison.items) {
       const base = { chart, allowedQuotes, valuesFrom: comparison.valuesFrom };
       values.push({ ...base, where: `${chart} ${item.label}`, renderings: comparisonRenderings(item.value, comparison.unit) });
@@ -146,7 +150,7 @@ export function chartValues(fact: ChartedFact): ChartValue[] {
   for (const figure of fact.figures ?? []) {
     if (!isComponentFigure(figure)) continue;
     const reported = figureValues(figure).map((v) => ({ ...v, format: toValueFormat(v.format) }));
-    values.push(...fromFigureValues(figure.id, reported, fact.sources));
+    values.push(...fromFigureValues(figure.id, reported, sources));
   }
   return values;
 }

@@ -461,10 +461,12 @@ does not establish that the citation supports the meaning, scope or causal
 interpretation.
 
 **Every chart value must be traceable too.** `pnpm check:figures` also
-audits the numbers charts draw: each `series` point must be in its reading's
-`source` quote (else the series `source`), each `comparisons` value — and
-each group value of a grouped comparison — in the quotes of the sources the
-comparison cites, or be a verified `derivedFigures` entry on the same fact.
+audits the numbers charts draw: each `series` point must be in the series
+`source` quote or, for a reading with its own `source`, that reading's quote;
+each `comparisons` and component-figure value — and each group value of a
+grouped comparison — in the quotes of the sources it cites, by the same
+numbering the footnotes use (a series source counts); or be a verified
+`derivedFigures` entry on the same fact.
 Values read from a table no quote can hold go through `valuesFrom` on the
 reading or comparison, naming the table ("EAVS 2024 Overview Table 1"); the
 check then counts them as resting on that table. The chart-value audit is
@@ -473,7 +475,9 @@ advisory for now: it lists untraced values and exits 0, and
 
 **Derived figures: quote the inputs and document the calculation.**
 `derivedFigures` supports `ratio-percent`, `complement-percent` and `series-mean`.
-The audit checks the arithmetic and inputs. Readers should be able to reproduce
+The audit checks the arithmetic and inputs; a derivation whose input is not in
+the fact's quotes is reported as an unmatched figure (and the prose using it
+is unmatched too), while a wrong result fails outright. Readers should be able to reproduce
 it from the collapsed methodology explanation. For population-adjusted migration,
 source the population denominator and explain its vintages there. Absolute flows
 and population shares answer different questions; neither substitutes for the

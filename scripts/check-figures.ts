@@ -61,7 +61,7 @@ import { isComponentFigure } from '../lib/content/types';
 import { auditValue, chartValues, isWeakMatch, type ValueVerdict } from './chart-values';
 import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
 
-import { verifiedDerivedFigures } from './derived-figures';
+import { checkDerivedFigures, verifiedDerivedFigures } from './derived-figures';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
@@ -179,6 +179,14 @@ export function auditTopic(items: readonly AuditItem[]): {
   for (const item of items) {
     const label = `${item.kind}/${item.id}`;
     const { corpus, missing } = corpusFor(item, factQuotes, topicWide);
+    for (const { figure, inputs } of checkDerivedFigures(item.data).unquoted) {
+      unmatched.push({
+        item: `${label} derivedFigures`,
+        figure,
+        context: `derivedFigures entry for ${figure}`,
+        corpus: `derived from ${inputs.join(' and ')}, which ${inputs.length === 1 ? 'is' : 'are'} not quoted in this item’s sources`,
+      });
+    }
     const seen = new Set<string>();
     for (const figure of figuresIn(item.body)) {
       if (seen.has(canonical(figure))) continue;

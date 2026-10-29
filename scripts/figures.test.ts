@@ -224,3 +224,7 @@ test('a thousands group set with a non-breaking space is one number', () => {
 test('table columns separated by plain spaces stay separate numbers', () => {
   assert.equal(quotedSomewhere('1,000', quoteCorpus(['Region 1 000 total'])), false);
 });
+
+test('a thin space groups thousands as a non-breaking one does', () => {
+  assert.equal(quotedSomewhere('3,200,000', quoteCorpus(['Iran 3\u2009200\u2009000 displaced'])), true);
+});

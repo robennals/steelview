@@ -93,7 +93,7 @@ export function figuresIn(text: string): string[] {
  * space groups thousands (`1 000` in French): a plain one separates columns.
  */
 const QUOTE_NUMBER =
-  /[£$€]?\d(?:[\d,]*\d)?(?:[\u00a0\u202f]\d{3})*(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
+  /[£$€]?\d(?:[\d,]*\d)?(?:[\u00a0\u2009\u202f]\d{3})*(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
 
 const SPELLED_NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 
