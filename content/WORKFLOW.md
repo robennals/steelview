@@ -415,7 +415,11 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
 - **Chart values come from the source's data**, each confirmed at source;
   name the table in the chart's quote or note, and say how any derived value
   was calculated. A level the source does not publish is not read off its
-  chart image.
+  chart image — but check the page's chart data tables (often in the page
+  text below or beside the chart) before concluding it is unpublished.
+- **One quote, one page.** A chart's source quote comes from the page its
+  URL names. When a series joins two releases, quote one and name the other
+  in the chart note, with its own citation.
 - **Checks:** `heavy run -- pnpm check:figures` and `heavy run -- pnpm
   test:unit`, fixing only the agent's own file; other builders' files may be
   mid-edit.

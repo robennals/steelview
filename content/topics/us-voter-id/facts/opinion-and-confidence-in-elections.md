@@ -146,6 +146,9 @@ sources:
       be prevented from voting. ... the percentages of Democrats and
       independents calling this a major problem spiked in 2020, to 62% and
       47%, respectively.
+      ... Confidence in Accuracy of Each Presidential Election, by Party
+      Republicans Independents Democrats 2004 87 69 59 2008 57 63 57 2016 55
+      59 85 2020 44 57 76 2024 28 58 84
     title: 'Partisan Split on Election Integrity Gets Even Wider'
     url: https://news.gallup.com/poll/651185/partisan-split-election-integrity-gets-even-wider.aspx
     publisher: Gallup
@@ -307,6 +310,8 @@ sources:
       Donald Trump (averaging 35 points). After Joe Biden won the presidency
       in the 2020 election, the results of which Trump challenged, this
       confidence gap ballooned to 51 points.
+      ... Bush: 2006-2008 71% 37% Obama: 2009-2016 63% 31% Trump I: 2017-2020
+      64% 29% Biden: 2021-2024 81% 30% Trump II: 2025-2026 47% 49%
     title: 'U.S. Trust in Elections Diverges From Global Pattern'
     url: https://news.gallup.com/poll/715205/trust-elections-breaks-global-pattern.aspx
     publisher: Gallup
@@ -664,7 +669,10 @@ additionalSeries:
         Gallup's whole series. It was not asked in 2010, 2012 or 2014. Midterm
         years (2006, 2018, 2022) ask about "the votes" rather than "the votes
         for president". Where a year had two readings (2004, 2016) the value is
-        the one Gallup charts. Party groups exclude leaners.
+        the one Gallup charts. Party groups exclude leaners. Points to 2022
+        are from this article's two trend tables; the 2024 points are from
+        Gallup's 2024 release (source 8), whose table of each presidential
+        election repeats the earlier presidential-year values.
     events:
       - period: '2009'
         label: 'Obama takes office'
@@ -682,12 +690,13 @@ additionalSeries:
     source:
       stance: supports
       quote: >-
-        Americans' Confidence in the Accuracy of U.S. Elections, by
-        Party Republicans Independents Democrats ... Confidence in Accuracy of
-        Each Presidential Election, by Party Republicans Independents Democrats 
-        2004 87 69 59 2008 57 63 57 2016 55 59 85 2020 44 57 76 
-        2024 28 58 84 
-      title: 'Confidence in Election Integrity Hides Deep Partisan Divide (2004–2022 table); Partisan Split on Election Integrity Gets Even Wider (2024)'
+        Americans' Confidence in the Accuracy of U.S. Elections % Very/Somewhat
+        confident Jan-04 72 Jan-06 75 Jan-08 59 Jan-16 66 Jan-18 70 Jan-20 59
+        Jan-22 63 Americans' Confidence in the Accuracy of U.S. Elections, by
+        Party Republicans Independents Democrats Jan-04 87 69 59 Jan-06 92 70
+        66 Jan-08 57 63 57 Jan-16 55 59 85 Jan-18 77 64 69 Jan-20 44 57 76
+        Jan-22 40 67 85
+      title: 'Confidence in Election Integrity Hides Deep Partisan Divide'
       url: https://news.gallup.com/poll/404675/confidence-election-integrity-hides-deep-partisan-divide.aspx
       publisher: Gallup
       date: '2022-11-04'
@@ -967,29 +976,42 @@ comparisons:
       - label: 'All legally qualified voters can vote — Democratic supporters'
         value: 72
   - id: leadership-gap-by-administration
-    title: 'Gap in US confidence in election honesty between approvers and disapprovers of national leadership, by administration, 2006–2026'
-    description: 'Average confidence among Americans who approve of the country''s leadership minus average confidence among those who disapprove, in percentage points (Gallup World Poll). A negative gap means disapprovers were the more confident group.'
+    title: 'US confidence in the honesty of elections, by approval of national leadership, 2006–2026'
+    description: 'Average share confident in the honesty of elections among Americans who approve and who disapprove of the country''s leadership, by administration (Gallup World Poll).'
     unit: percent
-    valueLabel: 'Gap, percentage points (approvers minus disapprovers)'
+    valueLabel: '% confident'
+    domainMax: 100
     sources: [15]
     note: >-
-      Gallup publishes the gap for each administration and the levels only for
-      Biden's (81% of approvers, 30% of disapprovers) and the last two years
-      (46% and 48%); the earlier administrations' levels are not published, so
-      the chart shows the gap. Approval of national leadership is used rather
-      than party because the World Poll did not record US party
-      identification before 2024.
+      Values are from the data table of Gallup's chart "Confidence in Honesty
+      of Elections in U.S., by Approval of Country's Leadership". The article's
+      text rounds the same Trump II averages to 46% and 48%, and its
+      per-administration gaps (35, 30, 35 and 51 points) differ by a point
+      from the table's because each is calculated before rounding. Approval of
+      national leadership is used rather than party because the World Poll did
+      not record US party identification before 2024.
     items:
-      - label: 'Bush 2006–08'
-        value: 35
-      - label: 'Obama 2009–16'
+      - label: 'Bush 2006–08: approvers'
+        value: 71
+      - label: 'Bush 2006–08: disapprovers'
+        value: 37
+      - label: 'Obama 2009–16: approvers'
+        value: 63
+      - label: 'Obama 2009–16: disapprovers'
+        value: 31
+      - label: 'Trump I 2017–20: approvers'
+        value: 64
+      - label: 'Trump I 2017–20: disapprovers'
+        value: 29
+      - label: 'Biden 2021–24: approvers'
+        value: 81
+      - label: 'Biden 2021–24: disapprovers'
         value: 30
-      - label: 'Trump I 2017–20'
-        value: 35
-      - label: 'Biden 2021–24'
-        value: 51
-      - label: 'Trump II 2025–26'
-        value: -2
+      - label: 'Trump II 2025–26: approvers'
+        value: 47
+        highlight: true
+      - label: 'Trump II 2025–26: disapprovers'
+        value: 49
         highlight: true
   - id: winner-gap-worldwide
     title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
