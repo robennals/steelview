@@ -14,6 +14,8 @@ export type KeyFigureChange = {
 export type KeyFigure = {
   value: number;
   format?: ValueFormat;
+  /** Printed before the number, for a figure the source gives as a bound or approximation: "more than 7,200". */
+  qualifier?: 'about' | 'more than' | 'at least' | 'fewer than' | 'at most';
   /** What the number is, in plain words: "people awaiting an initial asylum decision". */
   label: string;
   /** The period or date the figure is for — always shown, because a headline number without a date is the commonest way to mislead with a true one. */
@@ -31,6 +33,8 @@ export type KeyFiguresProps = {
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 /**
@@ -40,15 +44,18 @@ export type KeyFiguresProps = {
  * bad news in this register, so direction is carried by the sign and the
  * words, never by green and red.
  */
-export function KeyFigures({ figures, id, title, description, sources, note }: KeyFiguresProps) {
+export function KeyFigures({ figures, id, title, description, sources, note, footer }: KeyFiguresProps) {
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} className="sv-key-figures">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-key-figures">
       <div className="sv-key-figures__frame">
         <dl className="sv-key-figures__list" data-count={figures.length}>
           {figures.map((figure, i) => (
             <div key={`${figure.label}-${i}`} className="sv-key-figures__item">
               <dt className="sv-key-figures__label">{figure.label}</dt>
-              <dd className="sv-key-figures__value">{formatValue(figure.value, figure.format)}</dd>
+              <dd className="sv-key-figures__value">
+                {figure.qualifier && <span className="sv-key-figures__qualifier">{figure.qualifier} </span>}
+                {formatValue(figure.value, figure.format)}
+              </dd>
               <dd className="sv-key-figures__meta">
                 <span className="sv-key-figures__period">{figure.periodLabel ?? formatDate(figure.period)}</span>
                 {figure.source && (

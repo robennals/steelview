@@ -10,6 +10,18 @@
     padding-block: 1.5rem 3rem;
   }
 
+  /* One item's own sources, set after it in the apparatus voice. */
+  .sv-item-credit {
+    margin-inline-start: 0.35em;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-item-credit a {
+    color: var(--accent);
+  }
+
   /* --------------------------------------------------------- controls */
 
   .sv-control {

@@ -40,3 +40,26 @@ export const Ungrouped: Story = {
 export const FixedDomain: Story = {
   args: { domain: [-0.5, 0.5] },
 };
+
+/**
+ * Estimates with no natural "no effect" value, such as costs: no reference
+ * line and no signs. A range without a central estimate has no dot; a lone
+ * lower or upper bound runs to the axis end with an arrowhead. Illustrative.
+ */
+export const OpenBoundsAndNoNull: Story = {
+  args: {
+    title: 'Estimated cost, by estimator',
+    description: 'Illustrative estimates of one cost, some given only as a range or a bound.',
+    valueLabel: 'Estimated cost, US$ billion',
+    format: { unit: 'number', decimals: 1 },
+    intervalLabel: 'Range the estimator published',
+    nullValue: null,
+    estimates: [
+      { label: 'Estimator A', year: 'Apr 2026', low: 25, high: 35, source: { label: 'Illustrative source', href: '#source-example-1', number: 1 } },
+      { label: 'Estimator B', year: 'Jun 2026', estimate: 40, low: 34, high: 42, source: { label: 'Illustrative source', href: '#source-example-2', number: 2 } },
+      { label: 'Estimator C', year: 'Jul 2026', low: 30, asPublished: 'at least $30 billion' },
+      { label: 'Estimator D', year: 'Aug 2026', high: 45, asPublished: 'no more than $45 billion' },
+      { label: 'Estimator E', year: 'Sep 2026', estimate: 43.6 },
+    ],
+  },
+};

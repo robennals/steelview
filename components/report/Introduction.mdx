@@ -33,22 +33,26 @@ Wrap the content in `ReportFigure`, which supplies the heading, a one-sentence d
 </ReportFigure>
 ```
 
-Most components already wrap themselves in `ReportFigure`: pass them `title`, `description`, `sources` and `note` directly.
+Most components already wrap themselves in `ReportFigure`: pass them `title`, `description`, `sources` and `note` directly, and a figure's Observations as `footer`, which sits after the source line and before "About this data".
+
+## From a fact file
+
+A fact report reaches these components through the `figures` list in its frontmatter: each entry names a figure kind and its data, cites the fact's own numbered sources, and renders in the order written. `lib/content/figure-props.ts` turns each kind into the component's props, and `FactFigures` renders the list; see "Figures" in `content/AUTHORING.md`, and **Existing/FactFigures** for every kind in reading order.
 
 ## The components
 
 {/* An HTML table: Storybook's MDX has no GitHub-flavoured Markdown tables without remark-gfm. */}
 <table>
   <thead>
-    <tr><th scope="col">Family</th><th scope="col">Components</th><th scope="col">Use when</th></tr>
+    <tr><th scope="col">Family</th><th scope="col">Components</th><th scope="col">Use when</th><th scope="col">Figure kinds</th></tr>
   </thead>
   <tbody>
-    <tr><th scope="row">Data</th><td>KeyFigures, BarChart, SliceExplorer, CompositionBar, SmallMultiples, EstimateRange, DataTable, ScatterPlot</td><td>You are showing numbers: headline figures, comparisons, shares of a whole, several small charts side by side, a range of estimates, the raw table, or two measures per area plotted against each other with every point labelled.</td></tr>
-    <tr><th scope="row">Maps</th><td>GeoMap, TileMap</td><td>The figure varies by place: countries, states or regions anywhere. Shade by a number, or by a category (a rule or status per area, each with its own tint, pattern and printed mark). Ships world, Europe and UK-region outlines, and tile grids for Europe, the US and UK regions; any GeoJSON-shaped outlines work.</td></tr>
-    <tr><th scope="row">Timelines</th><td>Timeline, PeriodTimeline, EventStrip</td><td>The order of events or policy periods matters, or events need placing against a chart.</td></tr>
-    <tr><th scope="row">Quotes</th><td>QuoteBrowser, PullQuote, QuoteComparison</td><td>You are presenting what people or institutions said: a searchable collection, one quote set apart, or several answers to one question side by side.</td></tr>
-    <tr><th scope="row">Claims</th><td>ClaimCheck, CaveatList</td><td>You are setting a claim against the data, or stating what the data does not show.</td></tr>
-    <tr><th scope="row">Foundations</th><td>ReportFigure, ChoiceGroup, FilterChips</td><td>You are building a new component: the frame every figure sits in, and the reader controls.</td></tr>
-    <tr><th scope="row">Existing</th><td>SeriesChart, ComparisonChart</td><td>You are drawing a time series or a snapshot comparison straight from a fact's frontmatter.</td></tr>
+    <tr><th scope="row">Data</th><td>KeyFigures, BarChart, SliceExplorer, CompositionBar, SmallMultiples, EstimateRange, DataTable, ScatterPlot</td><td>You are showing numbers: headline figures, comparisons, shares of a whole, several small charts side by side, a range of estimates, the raw table, or two measures per area plotted against each other with every point labelled.</td><td><code>keyFigures</code>, <code>barChart</code>, <code>compositionBar</code>, <code>estimateRange</code>, <code>dataTable</code></td></tr>
+    <tr><th scope="row">Maps</th><td>GeoMap, TileMap</td><td>The figure varies by place: countries, states or regions anywhere. Shade by a number, or by a category (a rule or status per area, each with its own tint, pattern and printed mark). Ships world, Europe and UK-region outlines, and tile grids for Europe, the US and UK regions; any GeoJSON-shaped outlines work.</td><td><code>tileMap</code></td></tr>
+    <tr><th scope="row">Timelines</th><td>Timeline, PeriodTimeline, EventStrip</td><td>The order of events or policy periods matters, or events need placing against a chart.</td><td><code>timeline</code>, <code>periodTimeline</code> (its events use EventStrip)</td></tr>
+    <tr><th scope="row">Quotes</th><td>QuoteBrowser, PullQuote, QuoteComparison</td><td>You are presenting what people or institutions said: a searchable collection, one quote set apart, or several answers to one question side by side.</td><td><code>pullQuote</code>, <code>quoteComparison</code></td></tr>
+    <tr><th scope="row">Claims</th><td>ClaimCheck, CaveatList</td><td>You are setting a claim against the data, or stating what the data does not show.</td><td><code>claimCheck</code>, <code>caveatList</code></td></tr>
+    <tr><th scope="row">Foundations</th><td>ReportFigure, ChoiceGroup, FilterChips</td><td>You are building a new component: the frame every figure sits in, and the reader controls.</td><td>—</td></tr>
+    <tr><th scope="row">Existing</th><td>SeriesChart, ComparisonChart, FactFigures</td><td>You are drawing a time series or a snapshot comparison straight from a fact's frontmatter, or a fact's whole <code>figures</code> list in reading order.</td><td><code>series</code>, <code>comparison</code>, <code>featured</code>, <code>section</code></td></tr>
   </tbody>
 </table>

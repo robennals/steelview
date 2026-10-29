@@ -63,3 +63,25 @@ export const GroupedSmallParts: Story = {
     note: 'White British, Other White, Asian and the White total are published. “White: Irish, Gypsy, Traveller, Roma” and “Black, Mixed and other” are derived as residuals from them.',
   },
 };
+
+/** Rows from different counters, each citing its own source after its label. Illustrative counts. */
+export const RowSources: Story = {
+  args: {
+    title: 'Deaths by counter and category',
+    description: 'Illustrative: two counters that publish different categories, each with its own source.',
+    categories: [
+      { key: 'civilian', label: 'Civilian' },
+      { key: 'military', label: 'Military' },
+      { key: 'unclassified', label: 'Not yet classified' },
+      { key: 'other', label: 'Other' },
+    ],
+    rows: [
+      { label: 'Counter A', values: { civilian: 1701, military: 1221, unclassified: 714 }, source: { label: 'Illustrative source', href: '#source-example-1', number: 1 } },
+      { label: 'Counter B', values: { civilian: 1030, other: 6620 }, source: { label: 'Second illustrative source', href: '#source-example-2', number: 2 } },
+    ],
+    showCounts: true,
+    rowLabel: 'Counter',
+    sources: undefined,
+    note: undefined,
+  },
+};

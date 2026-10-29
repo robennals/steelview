@@ -57,6 +57,28 @@ export function ReportFigure({
   );
 }
 
+/**
+ * An item's own sources, set inline after the item: "NCSL [2]; EAC [5]". Used
+ * where one row, estimate or caveat rests on a different source from the
+ * rest of its figure, so the reader can check that item without guessing.
+ */
+export function SourceCredits({ sources }: { sources: SourceCredit[] }) {
+  if (sources.length === 0) return null;
+  return (
+    <span className="sv-item-credit">
+      {sources.map((source, i) => {
+        const text = source.number ? `${source.label} [${source.number}]` : source.label;
+        return (
+          <span key={`${source.label}-${i}`}>
+            {i > 0 && '; '}
+            {source.href ? <a href={source.href}>{text}</a> : text}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
 /** "Source: ONS [3]; Home Office [4]" — each one a link to its quoted reference. */
 export function SourceLine({ sources, label = 'Source' }: { sources: SourceCredit[]; label?: string }) {
   return (

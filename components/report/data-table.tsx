@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import { ReportFigure } from './figure';
 import { formatValue } from './format';
-import { sortRows, type SortDirection, type TableCell } from './table-sort';
+import { cellValue, sortRows, type SortDirection, type TableCell } from './table-sort';
 import type { SourceCredit, ValueFormat } from './types';
 
 export type DataTableColumn = {
@@ -18,6 +18,8 @@ export type DataTableColumn = {
   /** Defaults to true. */
   sortable?: boolean;
 };
+
+export type { CitedCell, TableCell } from './table-sort';
 
 export type DataTableRow = Record<string, TableCell>;
 
@@ -36,6 +38,8 @@ export type DataTableProps = {
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 /**
@@ -60,6 +64,7 @@ export function DataTable({
   description,
   sources,
   note,
+  footer,
 }: DataTableProps) {
   const [sort, setSort] = useState(defaultSort);
   const sorted = sort ? sortRows(rows, sort.key, sort.direction) : rows;
@@ -67,9 +72,10 @@ export function DataTable({
   const highlighted = new Set(highlight);
 
   const isNumeric = (column: DataTableColumn) =>
-    column.format !== 'text' && (column.format !== undefined || rows.some(row => typeof row[column.key] === 'number'));
+    column.format !== 'text' && (column.format !== undefined || rows.some(row => typeof cellValue(row[column.key]) === 'number'));
   const alignOf = (column: DataTableColumn) => column.align ?? (isNumeric(column) ? 'right' : 'left');
-  const cellText = (column: DataTableColumn, cell: TableCell) => {
+  const cellText = (column: DataTableColumn, cited: TableCell) => {
+    const cell = cellValue(cited);
     if (cell === null || cell === undefined || cell === '') return '—';
     if (typeof cell === 'number' && column.format !== 'text') {
       // Fixed decimals by default: in a column, "16" beside "26.9" misaligns the digits a reader compares.
@@ -88,7 +94,7 @@ export function DataTable({
   };
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} className="sv-data">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-data">
       <div className="sv-data__scroll" style={{ maxHeight }} tabIndex={0} role="region" aria-label={caption}>
         <table className="sv-data__table">
           <caption className="sv-data__caption">{caption}</caption>
@@ -121,12 +127,14 @@ export function DataTable({
           </thead>
           <tbody>
             {sorted.map((row, i) => (
-              <tr key={`${String(row[headerKey])}-${i}`} data-highlight={highlighted.has(String(row[headerKey])) || undefined}>
+              <tr key={`${String(cellValue(row[headerKey]))}-${i}`} data-highlight={highlighted.has(String(cellValue(row[headerKey]))) || undefined}>
                 {columns.map(column => {
                   const Cell = column.key === headerKey ? 'th' : 'td';
+                  const cell = row[column.key];
                   return (
                     <Cell key={column.key} scope={Cell === 'th' ? 'row' : undefined} data-align={alignOf(column)}>
-                      {cellText(column, row[column.key])}
+                      {cellText(column, cell)}
+                      {cell !== null && typeof cell === 'object' && <Footnotes sources={cell.sources} />}
                     </Cell>
                   );
                 })}
@@ -138,4 +146,23 @@ export function DataTable({
       {rows.length === 0 && <p className="sv-report__empty">No rows to show.</p>}
     </ReportFigure>
   );
+}
+
+/** A cited cell's " [n]" links, one per source, each to its quoted reference. */
+function Footnotes({ sources }: { sources: SourceCredit[] }) {
+  return sources.map((source, i) => {
+    const text = source.number ? `[${source.number}]` : source.label;
+    return (
+      <span key={`${source.label}-${i}`}>
+        {' '}
+        {source.href ? (
+          <a className="sv-footnote" href={source.href} aria-label={`Source: ${source.label}${source.number ? ` [${source.number}]` : ''}`}>
+            {text}
+          </a>
+        ) : (
+          <span className="sv-footnote">{text}</span>
+        )}
+      </span>
+    );
+  });
 }

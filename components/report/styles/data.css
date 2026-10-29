@@ -359,6 +359,12 @@
     color: var(--ink-2);
   }
 
+  /* "more than" before a bound: part of the figure, but not as loud as the number. */
+  .sv-key-figures__qualifier {
+    font-size: 0.5em;
+    letter-spacing: 0;
+  }
+
   .sv-key-figures__source {
     color: var(--accent);
     text-decoration: none;

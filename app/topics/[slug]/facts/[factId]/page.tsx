@@ -69,6 +69,7 @@ export default async function FactPage({
         bodyHtml={bodyHtml}
         supporting={supporting}
         parent={parent}
+        topic={topic}
       />
     </main>
   );

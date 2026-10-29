@@ -329,18 +329,15 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
-- time series always render before snapshot comparisons, and body sections
-  that are not charts — such as markdown tables — render after every chart,
-  so a planned reading order can be kept only within those groups;
 - an observation group not tied to a chart needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos;
 - there is no chart shape for a categorical table (a rule per country); use
-  a markdown table. Policy dates on a series go in its `events`;
-- only `SeriesChart`, `ComparisonChart` and the `EventStrip` under a series
-  can be used from a fact file today. The rest of the component library
-  (`components/report`, shown in Storybook) has to be wired into the fact
-  schema before a report can use it, so a report plan that needs another
-  component says so at stage 4b.
+  a `dataTable` figure. Policy dates on a series go in its `events`;
+- a fact file reaches the component library through `figures`
+  ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
+  reading order. `QuoteBrowser`, `SliceExplorer`, `SmallMultiples` and
+  `GeoMap` are not figure kinds yet, so a report plan that needs one says so
+  at stage 4b;
 
 ## 6. Write the viewpoints
 
