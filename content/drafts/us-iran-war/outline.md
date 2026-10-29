@@ -1,6 +1,6 @@
 # US war with Iran — outline
 
-> **Status: agent draft 3, revised against the evidence**
+> **Status: agent draft 4, revised against figures verified at source (26 Oct 2026)**
 > ([stage 4a](../../WORKFLOW.md#4a-rewrite-each-viewpoints-case-against-the-evidence)),
 > for human review together with [candidate-data.md](candidate-data.md).
 > `C` numbers are candidates there. All figures must be quoted verbatim in
@@ -15,7 +15,7 @@
   do now. A ceasefire from 8 April and a memorandum in June both broke down;
   the US blockade of Iranian ports resumed on 14 July; since 8 October the US
   has paused strikes ahead of the midterms while tanker attacks and blockade
-  seizures continue. The live choices are to resume strikes, hold the
+  seizures continue (as of 26 Oct 2026). The live choices are to resume strikes, hold the
   blockade and negotiate, or wind the war down.
 - **Scope boundaries:** The American argument — US decisions, costs and
   interests, including the international-law case as American lawyers and
@@ -28,155 +28,198 @@
 ### `nuclear` — Iran could not be allowed a nuclear weapon, and its record showed what it would do under one
 
 - **Arguments**
-  - Iran was the only state without nuclear weapons enriching uranium to
-    60%, close to weapons grade (C47). Its stock of 440.9 kg was last
-    verified in June 2025, and inspectors have had no access since (C1–C3).
-    The IAEA found in 2011, 2015 and 2025 that Iran had run an undeclared,
-    structured weapons-relevant programme until the early 2000s and hidden
-    material at undeclared sites (C47). A state with that record does not get
-    the benefit of the doubt about where the uranium went.
-  - Iran's record abroad is not only nuclear. Argentine courts attributed the
-    1992 and 1994 Buenos Aires bombings to Iran and Hezbollah; US courts have
-    convicted agents in plots on US soil; the State Department has listed
-    Iran as a state sponsor of terrorism every year since 1984 (C40–C46). In
-    the Gaza war, Iran-aligned militias claimed more than 220 attacks on US
-    forces in Iraq and Syria in fourteen months (C8), and the Houthis attacked
-    shipping hundreds of times (C9). A bomb would put all of that beyond
-    retaliation.
-  - Sanctions had not stopped the programme: once a programme was under way,
-    sanctions succeeded in only three of 22 cases (C72), and Iraq's and
-    Syria's programmes ended only after strikes (C71).
-- **Empirical questions** Q1.1–Q1.4 in 3a, unchanged. Added: what other
-  non-weapon states enrich to (C47 gap).
-- **Concedes:** US intelligence did not assess that Iran had decided to build
-  a weapon (C4, C5); the IAEA found no credible indication of weapons work
-  after 2009 (C47); while the 2015 deal held, inspectors verified Iran's
-  compliance (C60); strikes usually delay programmes rather than end them
-  (C71); predicted nuclear cascades have mostly not happened (C76).
+  - Iran is the only state without nuclear weapons producing uranium
+    enriched to 60%, close to weapons grade (C47). The IAEA estimated its
+    stock at 440.9 kg in June 2025, and has had no access to any enrichment
+    site since; it cannot say where the uranium is (C1, C2).
+  - Before the strikes it was close: the Defense Intelligence Agency judged
+    in May 2025 that Iran needed "probably less than one week" to make
+    enough weapons-grade uranium for one bomb, and US intelligence said the
+    stock could fuel "more than a dozen" weapons if further enriched (C5).
+  - The IAEA found in 2011, 2015 and 2025 that Iran ran a weapons-relevant
+    programme until the early 2000s, used undeclared uranium, kept material
+    at an undeclared site until 2018 and "sanitised" locations (C47). A state
+    with that record does not get the benefit of the doubt.
+  - Iran's record abroad is not only nuclear. Argentina's highest criminal
+    court held that Iran sponsored the 1992 and 1994 Buenos Aires bombings;
+    US courts have sentenced men hired through the Revolutionary Guards to
+    kill a journalist on US soil; the State Department has listed Iran as a
+    state sponsor of terrorism since 1984 (C40, C43, C44). Iran-aligned
+    militias carried out 223 confirmed attacks on US forces in Iraq and Syria
+    from October 2023, most of them in the first four months (C8). A bomb
+    would put all of that beyond retaliation.
+  - Sanctions rarely reverse a programme once it has started (three of 22
+    cases in Miller's data, with his caveat that little can be inferred from
+    those cases alone) (C72). Iraq's weapons effort ended only after a war
+    and years of intrusive inspection (C71).
+- **Empirical questions** Q1.1–Q1.4 in 3a. Q1.2 narrowed: the 2026 threat
+  assessment does not address a weapons decision (C4, C5).
+- **Concedes:** in 2025 US intelligence assessed Iran "is not building a
+  nuclear weapon" (C4); the IAEA found no credible sign of weapons work after
+  2009 and no ongoing structured programme in May 2025 (C47); while the 2015
+  deal held, inspectors verified Iran's compliance (C60); strikes have
+  usually delayed programmes modestly rather than ended them (C28); predicted
+  nuclear cascades have mostly not happened (C76).
 - **Principles:** safety from catastrophic threats; rules must mean what they say.
 
 ### `regime-change` — A regime that massacres its own people should fall, and America should help Iranians finish it
 
 - **Arguments**
-  - In January 2026 the regime killed more than 7,000 protesters by HRANA's
-    count (C25, C53). It executed at least 975 people in 2024 and between
-    1,639 and 2,159 in 2025, depending on the counter (C49, C50) — among the
-    highest totals in the world (C49, C55).
-  - Every protest movement since 2009 has been crushed (C50–C53); there is
-    no peaceful route left for Iranians to change their government.
-  - In GAMAAN's online surveys, a small minority say they prefer the Islamic
-    Republic (C24). Turnout in the 2024 elections was the lowest on record
-    (C56): Iranians are withdrawing consent where they can.
+  - In the January 2026 crackdown the regime killed more than 7,000 people,
+    about 6,500 of them protesters, by HRANA's confirmed minimum, with
+    thousands more deaths under review; even the government admits 3,117
+    (C53, C52). HRANA counts 53,777 arrests (C53). The UN fact-finding
+    mission speaks of crimes against humanity (C52).
+  - It executed at least 975 people in 2024 and at least 1,639 in 2025 by
+    IHRNGO's count, the most since 1989; Amnesty counts 2,159 for 2025, most
+    of the 2,707 executions it recorded worldwide outside China (C49, C50).
+  - The 2019, 2022 and 2026 protest movements were each put down with
+    hundreds or thousands killed (C53).
+  - Iranians are withdrawing consent where they can: in GAMAAN's online
+    survey 13% say they prefer the Islamic Republic, down about 7 points in a
+    year (C24); turnout in the 2024 presidential election was the lowest on
+    record (C56).
   - The case is moral first. A regime that does this forfeits the claim to be
     left alone, and its people are owed help, whatever the odds.
-- **Empirical questions** Q2.1–Q2.4, unchanged.
+- **Empirical questions** Q2.1–Q2.4. Q2.1 narrowed to 2019, 2022 and 2026
+  (no verified 2009 count).
 - **Concedes:** foreign-imposed regime change more than doubles the risk of
   civil war, and multiplies it four and a half times for leadership change
-  (C64); democracy has followed only in rich, homogeneous states with
-  representative experience (C65); covert attempts failed more than 60% of
-  the time (C66); repression widened after the outside attacks rather than
-  collapsing (C50, C51, C54); the war has killed Iranian civilians (C15–C17).
+  (C64); democracy has followed only where development, homogeneity and
+  representative experience were favourable (C65); covert attempts failed
+  more than 60% of the time (C66); repression widened after the outside
+  attacks rather than collapsing — 20,000 arrests after June 2025 and a peak
+  in political executions in April–May 2026 (C54, C51); 42% in GAMAAN's
+  sample called the strikes aggression against Iran (C24); the war has killed
+  Iranian civilians (C15).
 - **Principles:** obligation to people in danger; democratic consent.
 
 ### `war-powers` — Congress never authorised this war, and that alone makes it unlawful
 
 - **Arguments**
   - The Constitution gives Congress the power to declare war; Congress has
-    declared war 11 times and authorised other wars, and has done neither
-    here (C13).
-  - The House has passed three war-powers resolutions and the Senate one
-    (C10, C11).
+    declared war 11 times, across five wars, and has neither declared nor
+    authorised this one (C13).
+  - The House passed war-powers resolutions three times, and both chambers
+    adopted one (H.Con.Res.86) in June (C10, C11).
   - The administration told Congress on 1 May that hostilities had
-    "terminated" while the blockade it imposed on 13 April was still running
-    (timeline; C12) — the War Powers clock defeated by relabelling.
-  - A war one person can start, one person can keep going. (A value. Its
-    empirical form — that unauthorised wars run longer — has no dataset, C74,
-    and is dropped.)
+    "terminated", while its blockade ran on — and then reported new military
+    action against Iran or its proxies at least five more times, from June
+    to September (C12). The War Powers clock was defeated by relabelling.
+  - Most voters wanted Congress asked first: 59% in March (C14).
+  - A war one person can start, one person can keep going. (A value; its
+    empirical form has no dataset, C74.)
 - **Empirical questions** Q3.1–Q3.3; Q3.4 kept only as a gap.
-- **Concedes:** presidents of both parties have used force without
-  authorisation hundreds of times (C13); Congress could cut off funding and
-  has not.
+- **Concedes:** presidents of both parties have used force abroad hundreds of
+  times without a declaration, and filed War Powers reports "consistent with"
+  the Act in the same form (C13, C12); every attempt since 2011 to end an
+  operation by binding law failed or was vetoed (C73); the resolutions
+  adopted in 2026 were concurrent resolutions.
 - **Principles:** democratic consent; rules must mean what they say.
 
 ### `america-first` — America First means staying out of another Middle East war
 
 - **Arguments**
-  - Iraq cost far more than promised (C21, C22). This war has already cost
-    $38–44 billion and 21 American lives by the Defense Department's count
-    (C18–C20), and run down interceptor stocks (C20).
-  - Petrol and inflation rose with the Hormuz closure (C29, C31, C32).
-    Americans are paying for a war the president's 2024 campaign said they
-    would not get (C79).
-  - Most Americans oppose the war: 33% approved in October, down from 37% in
-    March, and independents are opposed by about two to one (C14).
-- **Empirical questions** Q4.1–Q4.3, Q4.5. **New:** what Americans think of
-  the war, by party (C14). **Dropped:** Q4.4 on Israel's role (no candidates).
-- **Concedes:** US casualties are a small fraction of Iraq's (C21); most
-  Republicans still support the war (C14); Iran-aligned groups were
-  attacking US forces and shipping before it began (C8, C9).
+  - Wars cost more than promised: the White House put Iraq at $50–60 billion
+    in 2002; Congress appropriated $815 billion for it through 2014 (C22).
+    This war had cost $38–44 billion by September by CBO's and the Defense
+    Department's counts, and 21 American lives, 865 wounded (C18, C19); CSIS
+    estimates Patriot stocks are under 1,000 (C20).
+  - Americans are paying at the pump: regular petrol rose from $2.94 a gallon
+    before the war to $4.50 in May and was $4.28 in October; CBO attributes
+    half a point of extra inflation to the conflict (C19, C31, C32).
+  - The president's 2024 campaign said: "I'm not going to start a war"
+    (C79).
+  - Most Americans oppose the war: about a third approve of the president's
+    handling of it, and independents oppose it by two to one or more (C14).
+- **Empirical questions** Q4.1–Q4.3, Q4.5, and polling (C14). Q4.4 on
+  Israel's role still dropped.
+- **Concedes:** US deaths are about 0.5% of the Iraq war's, and 10 of the 21
+  were not from hostile action (C18, C21); most Republicans still support the
+  war (C14); Iran-aligned groups were attacking US forces before it began
+  (C8, C40).
 - **Principles:** a government's first duty is to its own people; war only
   as a last resort.
 
 ### `lost-path` — The war killed Iranians and cut off the slower path that was working
 
 - **Arguments**
-  - The war killed at least 1,700 Iranian civilians by 7 April alone
-    (C15–C17) and has displaced about 3.2 million people (C16).
+  - The war killed at least 1,701 Iranian civilians, 254 of them children,
+    by 7 April alone (C15), and WHO estimates 3.2 million people displaced
+    (C16).
   - Diplomacy had a record: while the 2015 deal held, the IAEA verified that
     Iran kept its limits; the 60% stockpile was built only after the US left
-    (C60, C1).
-  - Pressure short of a full war was already working: the June 2025 strikes
-    and Israel's war with Hezbollah had badly weakened Iran's proxies and air
-    defences (C6, C40). Iranians elected a reformist-backed president in 2024
-    (C56), and the government shelved a harsher hijab law that December
-    (C59).
-  - Strikes delay programmes without removing the motive (C71), and imposed
+    (C60, C1). Talks were still under way when the bombs fell — the IAEA's
+    chief attended indirect US–Iran talks in Geneva on 17 and 26 February
+    (C80).
+  - In June 2025 the IAEA had no information on a structured, systematic
+    weapons programme (C5, C47).
+  - There were openings: Iranians elected a reformist-backed president in
+    2024 (C56), and the government shelved a harsher hijab law that
+    December, with the Leader's assent (C59).
+  - Strikes delay programmes modestly without removing the motive, and the
+    conditions behind past successes are absent in Iran (C28); imposed
     regime change usually makes things worse (C64–C66).
-  - The attack breaks the UN Charter's ban on the use of force (C39).
-- **Empirical questions** Q5.1–Q5.5, unchanged.
-- **Concedes:** the regime's repression is extreme and rising (C49–C51);
-  turnout hit record lows and only about 1% of presidential registrants were
-  allowed to stand (C56–C58); earlier reformist openings were reversed (C63);
-  Iran was enriching to 60% and had cut off inspectors (C1, C47). The case is
-  not that Iran was becoming benign, but that containment was a better bet
-  than war.
+  - The attack was launched without UN authorisation (C39) — a legal
+    argument, still to be sourced to the Charter text.
+- **Empirical questions** Q5.1–Q5.5. Dropped: "pressure short of war was
+  already working" (no verified source).
+- **Concedes:** executions rose every year from 2021 to 2025 (C50); turnout
+  hit record lows, and in most elections since 2001 about 1% or fewer of
+  presidential registrants were allowed to stand (C56, C58); earlier
+  reformist openings were reversed (C63); Iran was enriching to 60% and had
+  cut inspectors off from its enrichment sites (C1, C47). The case is not
+  that Iran was becoming benign, but that containment was a better bet than
+  war.
 - **Principles:** war only as a last resort; priority to the worst off.
 
 ### `deal-now` — Take what the war has gained and make a deal now
 
 - **Arguments**
-  - The programme and the proxies are weaker than at any time in twenty years
-    (C5, C6, C40); that leverage decays.
-  - Only a verified deal can account for the missing 60% uranium; bombs
-    cannot find it (C1–C3). The 2015 deal showed inspection can work (C60).
+  - For the first time in twenty years Iran has no identifiable route to
+    weapons-grade uranium (C2); that leverage decays.
+  - Only a verified deal can account for the missing 60% uranium; the IAEA
+    cannot say where it is (C1). The 2015 deal showed inspection can work
+    (C60), and in June Iran signed that it "shall not procure or develop
+    nuclear weapons" (C5).
   - Threats combined with face-saving rewards are what has reversed
-    programmes before (C72); Libya and South Africa ended without war (C71).
-  - Each month of blockade costs Americans at the pump (C29–C32) and risks an
-    incident at sea (C33–C36).
-- **Empirical questions** Q6.1–Q6.2. **Dropped:** Q6.3 as a general claim
-  (no systematic evidence that bargains struck from strength hold); the
-  cases stay as context.
-- **Concedes:** Iran broke the June memorandum's terms on shipping (C37,
-  C38); Iran has cut off inspectors before (C1); sanctions alone rarely
-  reverse programmes (C72).
+    programmes before (C72); Libya gave up its programme and accepted
+    inspections without a war (C71).
+  - Each month of blockade costs Americans at the pump (C31, C32) and risks
+    an incident at sea: 23 attacks on vessels in the first two weeks of
+    October, and US forces have destroyed 10 tankers since July (C35,
+    timeline).
+- **Empirical questions** Q6.1–Q6.2. Q6.3 stays dropped as a general claim.
+- **Concedes:** the June memorandum broke down within three weeks, with
+  Iranian attacks on shipping and US strikes from 7 July (C12, C37); Iran
+  worked to reconstitute its missiles and drones throughout the ceasefire
+  (C37); sanctions alone rarely reverse programmes (C72).
 - **Principles:** war only as a last resort; a government's first duty is to
   its own people.
 
 ### `finish-job` — Having started, the US has to finish the job
 
 - **Arguments**
-  - Stopping now leaves a wounded regime with 440.9 kg of 60% uranium no one
-    has accounted for (C1–C3) and every reason to want a bomb.
-  - Iran rebuilt missile and drone production during the ceasefire (C6, C37).
-  - Programmes ended for good where force was used and kept up: Iraq after
-    1991, Syria after 2007 (C71).
+  - Stopping now leaves a wounded regime with an estimated 440.9 kg of 60%
+    uranium that no inspector can locate (C1) and every reason to want a
+    bomb.
+  - Iran used the ceasefire to reconstitute missile and drone programmes,
+    and its new defence minister plans to rebuild the industry "in
+    mountains" (C37).
+  - Iraq's programme ended for good only when force was followed through
+    with years of inspection (C71).
   - States that back down face more challenges later (Weisiger and
     Yarhi-Milo, C75).
-- **Empirical questions** Q7.1–Q7.3, unchanged.
+  - Iran is planning attacks on Americans now: the Director of National
+    Intelligence wrote on 23 October that plotting had reached "advanced
+    stages" (timeline; to confirm from the memo itself).
+- **Empirical questions** Q7.1–Q7.3.
 - **Concedes:** "finishing" has no agreed definition, and toppling the regime
-  carries the regime-change record (C64–C66); other research finds backing
-  down does not cost credibility (Press, C75); who broke the ceasefire is
-  disputed (C38); most Americans want the war to end (C14).
+  carries the regime-change record (C64–C66); strikes have usually delayed
+  programmes modestly, and the authors say past-success conditions are absent
+  in Iran (C28); other research finds backing down does not cost credibility
+  (Press, C75); both sides used force during the ceasefire (C38); most
+  Americans disapprove of the war (C14).
 - **Principles:** safety from catastrophic threats; loyalty to allies.
 
 ## Cross-cutting questions
@@ -188,16 +231,20 @@
 
 ## Crux candidates
 
-Kind first; then the viewpoint ids divided.
+Kind first; then the viewpoint ids divided. Each passes the stage-4a test:
+one answer would knock out an argument a viewpoint relies on.
 
-- **`assumption` — Would Iran have built a bomb without the war?** No
-  inspector has verified the uranium since June 2025, and US intelligence
-  did not assess a decision to build. `nuclear`, `lost-path`, `finish-job`.
+- **`assumption` — Would Iran have built a bomb without the war?** The IAEA
+  estimated 440.9 kg of 60% uranium and found no ongoing structured
+  programme; the 2025 threat assessment found no decision to build; the 2026
+  one is silent. `nuclear`, `lost-path`, `finish-job`.
 - **`assumption` — Was the regime moderating, or only waiting?** The
   evidence runs both ways (3d problem 3). `regime-change`, `lost-path`,
   `nuclear`.
 - **`prediction` — Does an outside attack weaken a repressive regime or
-  rally it?** No general study (C50, C51, C54). `regime-change`, `lost-path`.
+  rally it?** Total executions fell in the war's first months while
+  political executions peaked, and arrests rose (C51, C54). `regime-change`,
+  `lost-path`.
 - **`prediction` — What follows the regime if it falls?** The
   regime-change record (C64–C66) was not built on cases like Iran.
   `regime-change`, `lost-path`, `finish-job`.
@@ -207,11 +254,62 @@ Kind first; then the viewpoint ids divided.
   split (C75). `finish-job`, `deal-now`.
 - **`tradeoff` — How much American cost is worth how much reduction in a
   nuclear risk?** `nuclear`, `america-first`, `finish-job`.
-- **`priority` — Support for the strikes is not support for an open-ended
-  blockade.** Whether the original aim or the open-endedness decides
-  support. `nuclear`, `america-first`, `deal-now`, `finish-job` (C10, C14).
 
 ## Revision notes
+
+### Draft 4 (stage 4a, against figures verified at source, 26 Oct 2026)
+
+Every figure below was re-fetched and checked; quotes are in the four
+`verification-*.md` files and the grounding table is in
+[candidate-data.md](candidate-data.md#viewpoint-grounding).
+
+- **`nuclear`**: "last verified" stock corrected to the IAEA's *estimate*
+  (432.9 of 440.9 kg verified) with no access to enrichment sites since; the
+  DIA "less than one week" and "more than a dozen weapons" figures **added**
+  as its strongest support; militia attacks stated as 223 *confirmed*, mostly
+  in the first four months; Houthi shipping-attack count **dropped**
+  (unverifiable, ACLED login); "Iraq's and Syria's programmes ended only
+  after strikes" **narrowed** to Iraq after war plus inspections (Bleek still
+  codes Syria as exploring); Miller's 3 of 22 kept with its caveat; the
+  intelligence concession narrowed to the 2025 assessment (2026 is silent);
+  "strikes delay" re-attributed to Kreps & Fuhrmann (C28).
+- **`regime-change`**: "more than 7,000 protesters" **corrected** to more
+  than 7,000 people, about 6,500 of them protesters; executions labelled by
+  counter (IHRNGO 975 and 1,639; Amnesty 2,159); "every movement since 2009"
+  **narrowed** to 2019, 2022, 2026 (no verified 2009 count); arrests and the
+  UN mission's crimes-against-humanity finding **added**; the GAMAAN drop and
+  the 42% "aggression" concession added.
+- **`war-powers`**: declarations stated as 11 across five wars; the Senate's
+  adoption of H.Con.Res.86 made explicit; the relabelling argument
+  **strengthened** with five later War Powers letters; the 59% wanting
+  approval **added**; "Congress could cut off funding" concession **dropped**
+  (no verified source) and replaced with the CRS and 2011–2025 vote record.
+- **`america-first`**: Iraq figures **corrected** ($815 bn appropriated, not
+  $1.6 tn); "21 lives" kept with the non-hostile share conceded; polling
+  **corrected** (Pew measures approval of the president's handling;
+  independents from Quinnipiac and Gallup); CBO's inflation attribution
+  **added**, removing the causation gap.
+- **`lost-path`**: "pressure short of war was already working" **dropped**
+  (the cited candidates do not say it); the February 2026 Geneva talks and
+  Grossi's June 2025 statement **added**; vetting concession **corrected**
+  (about 1% or fewer to 2021; six of 80+ in 2024); the UN Charter argument
+  kept but flagged as legal, not yet sourced.
+- **`deal-now`**: "programme and proxies weakest in twenty years" **narrowed**
+  to the programme (ISIS); the MoU no-weapons clause **added**; "Libya and
+  South Africa ended without war" narrowed to Libya (South Africa built and
+  then dismantled weapons, a different case); concessions now cite the War
+  Powers letters for the MoU's collapse.
+- **`finish-job`**: "rebuilt" → "reconstitute" (ISW/CTP's word); Syria
+  **dropped** from the force-worked cases; the 23 October DNI memo **added**,
+  flagged until the memo itself is read. Balance: this viewpoint is now the
+  thinnest; it rests mainly on a prediction about the uranium and on one side
+  of a split literature.
+- **Cruxes**: "support for the strikes is not support for an open-ended
+  blockade" **dropped** — a polling observation for R7, whose answer would not
+  change which viewpoint has the better case. The others pass the test and
+  now name the verified evidence on each side.
+- **Timeline** in the topic statement checked: US strikes after the MoU began
+  7 July (War Powers letter), not 10 July; the MoU was signed 17 June.
 
 ### Draft 3 (stage 4a, against the evidence)
 
