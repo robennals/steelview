@@ -1,6 +1,9 @@
 import { citedFactTargets } from './markdown';
+import { mapTiles } from './map-presets';
 import { comparePeriods } from './period';
-import type { Fact, Series, Topic } from './types';
+import { factSources, figureCitations } from './sources';
+import { isComponentFigure } from './types';
+import type { ComponentFigure, Fact, Figure, Series, Topic } from './types';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -68,7 +71,7 @@ export function validateTopic(topic: Topic): string[] {
     for (const series of datasets) errors.push(...seriesErrors(f.id, series));
     const artifactIds = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...datasets.flatMap(s => s.readings.map(r => r.id)), ...(f.comparisons ?? []).map(c => c.id)];
     if (new Set(artifactIds).size !== artifactIds.length) errors.push(`fact ${f.id}: chart IDs must be unique`);
-    const sourceCount = f.sources.length + datasets.reduce((n, series) => n + 1 + series.readings.filter(r => r.source).length, 0);
+    const sourceCount = factSources(f).length;
     const chartIds = new Set<string>();
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
@@ -90,7 +93,7 @@ export function validateTopic(topic: Topic): string[] {
     }
     for (const id of f.featuredCharts ?? []) {
       const child = factById.get(id);
-      if (!child || child.supports !== f.id || (!child.series && !child.comparisons?.length)) {
+      if (!child || child.supports !== f.id || (!child.series && !child.comparisons?.length && !child.figures?.length)) {
         errors.push(`fact ${f.id}: featured chart ${id} must belong to a supporting fact with charts`);
       }
     }
@@ -102,6 +105,7 @@ export function validateTopic(topic: Topic): string[] {
     for (const match of f.body.matchAll(/\]\(#source-([a-z0-9-]+)-(\d+)\)/g)) {
       if (match[1] !== f.id || Number(match[2]) > sourceCount || Number(match[2]) < 1) errors.push(`fact ${f.id}: unknown source reference ${match[1]}-${match[2]}`);
     }
+    errors.push(...figureErrors(f, topic));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -258,6 +262,237 @@ function seriesErrors(factId: string, series: Series): string[] {
   return errors;
 }
 
+/** Whether `#fact-<id>/<section>` names something on the fact's page: its finding, a chart or figure, or a body anchor. */
+function knownSection(fact: Fact, section: string): boolean {
+  return section === 'finding' ||
+    (section === 'chart-series' && fact.series !== undefined) ||
+    fact.series?.readings.some(reading => section === `chart-${reading.id}`) === true ||
+    fact.additionalSeries?.some(s => section === `chart-${s.id}` || s.readings.some(r => section === `chart-${r.id}`)) === true ||
+    fact.comparisons?.some(chart => section === `chart-${chart.id}`) === true ||
+    fact.figures?.some(figure => isComponentFigure(figure) && section === `chart-${figure.id}`) === true ||
+    fact.body.includes(`{#${fact.id}--${section}}`);
+}
+
+/**
+ * A fact's `figures` (rules F1–F12 of the visualization spec). The schema
+ * has already checked each figure's shape; these are the rules that need the
+ * rest of the fact — its sources, charts and body — or the topic.
+ */
+export function figureErrors(f: Fact, topic: Topic): string[] {
+  const figures = f.figures;
+  if (!figures) return [];
+  const errors: string[] = [];
+  const sources = factSources(f);
+  const label = (figure: Figure, i: number) => ('id' in figure && figure.id) || (figure.kind === 'featured' ? figure.fact : String(i));
+  const at = (figure: Figure, i: number) => `fact ${f.id}: figure ${label(figure, i)}:`;
+
+  // F1 — a figure's id is its DOM id and its Observations' key, so it may
+  // not repeat, or collide with a series, reading or comparison.
+  const taken = new Set(['series', ...(f.additionalSeries ?? []).map(s => s.id), ...[...(f.series ? [f.series] : []), ...(f.additionalSeries ?? [])].flatMap(s => s.readings.map(r => r.id)), ...(f.comparisons ?? []).map(c => c.id)]);
+  figures.forEach((figure, i) => {
+    if (!isComponentFigure(figure) && figure.kind !== 'section') return;
+    if (taken.has(figure.id)) errors.push(`${at(figure, i)} id "${figure.id}" is already used by another chart, reading or figure`);
+    taken.add(figure.id);
+  });
+
+  // F3 — once present, `figures` is the whole reading order: every chart
+  // the fact has is placed exactly once, so none silently drops to the end.
+  const count = (key: string) => figures.filter(figure => refKey(figure) === key).length;
+  const expected = [
+    ...(f.series ? ['series:'] : []),
+    ...(f.additionalSeries ?? []).map(s => `series:${s.id}`),
+    ...(f.comparisons ?? []).map(c => `comparison:${c.id}`),
+    ...(f.featuredCharts ?? []).map(id => `featured:${id}`),
+  ];
+  for (const key of expected) {
+    const n = count(key);
+    if (n !== 1) errors.push(`fact ${f.id}: figures must place ${describeRef(key)} exactly once (found ${n})`);
+  }
+  figures.forEach((figure, i) => {
+    const key = refKey(figure);
+    if (key && !expected.includes(key)) errors.push(`${at(figure, i)} references ${describeRef(key)}, which this fact does not have${figure.kind === 'featured' ? ' in featuredCharts' : ''}`);
+  });
+
+  figures.forEach((figure, i) => {
+    const where = at(figure, i);
+
+    // F4
+    if (figure.kind === 'section' && !new RegExp(`^##\\s.*\\{#${escapeRegExp(f.id)}--${escapeRegExp(figure.id)}\\}\\s*$`, 'm').test(f.body)) {
+      errors.push(`${where} no body section headed "## … {#${f.id}--${figure.id}}"`);
+    }
+    if (!isComponentFigure(figure)) return;
+
+    // F2
+    for (const n of figureCitations(figure)) {
+      if (n < 1 || n > sources.length) errors.push(`${where} cites source ${n}, but the fact has ${sources.length}`);
+    }
+    // F5 — a caveat list is exempt: it records what is missing.
+    if (figure.kind !== 'caveatList' && figureCitations(figure).length === 0) {
+      errors.push(`${where} cites no source — give \`sources\` or a source on each item`);
+    }
+
+    errors.push(...kindErrors(figure, where, f, topic));
+  });
+
+  return errors;
+}
+
+/** F6–F12: the rules particular to one kind. */
+function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topic): string[] {
+  const errors: string[] = [];
+  switch (figure.kind) {
+    case 'dataTable': {
+      const keys = figure.columns.map(c => c.key);
+      if (new Set(keys).size !== keys.length) errors.push(`${where} column keys must be unique`);
+      if (figure.columns.filter(c => c.rowHeader).length > 1) errors.push(`${where} at most one column may be the row header`);
+      const header = (figure.columns.find(c => c.rowHeader) ?? figure.columns[0]).key;
+      figure.rows.forEach((row, r) => {
+        for (const key of Object.keys(row)) if (!keys.includes(key)) errors.push(`${where} row ${r + 1} has key "${key}", which is not a column`);
+        for (const column of figure.columns) {
+          const cell = row[column.key];
+          const value = cell !== null && typeof cell === 'object' ? cell.value : cell;
+          if (typeof column.format === 'object' && value !== undefined && value !== null && typeof value !== 'number') {
+            errors.push(`${where} row ${r + 1} column "${column.key}" has a numeric format, so its cells must be numbers or null`);
+          }
+        }
+      });
+      if (figure.defaultSort && !keys.includes(figure.defaultSort.key)) errors.push(`${where} defaultSort key "${figure.defaultSort.key}" is not a column`);
+      const headers = figure.rows.map(row => {
+        const cell = row[header];
+        return String(cell !== null && typeof cell === 'object' ? cell.value : cell);
+      });
+      for (const value of figure.highlight) if (!headers.includes(value)) errors.push(`${where} highlight "${value}" is not in the row-header column`);
+      break;
+    }
+    case 'timeline': {
+      const ids = figure.categories.map(c => c.id);
+      if (new Set(ids).size !== ids.length) errors.push(`${where} category ids must be unique`);
+      for (const event of figure.events) {
+        if (!ids.includes(event.category)) errors.push(`${where} event "${event.title}" has unknown category "${event.category}"`);
+        if (event.endDate && comparePeriods(event.endDate, event.date) < 0) errors.push(`${where} event "${event.title}" ends before it starts`);
+      }
+      break;
+    }
+    case 'periodTimeline': {
+      const ids = figure.categories.map(c => c.id);
+      for (const row of figure.rows) {
+        for (const period of row.periods) {
+          if (period.to && comparePeriods(period.to, period.from) < 0) errors.push(`${where} row "${row.label}" has a period that ends before it starts`);
+          if (period.category && !ids.includes(period.category)) errors.push(`${where} row "${row.label}" has unknown category "${period.category}"`);
+        }
+      }
+      for (const event of figure.events) {
+        // An axis end of "2026" runs to the end of 2026, as for series coverage.
+        if ((figure.from && comparePeriods(event.period, figure.from) < 0) || (figure.to && comparePeriods(event.period, figure.to) > 0 && !event.period.startsWith(figure.to))) {
+          errors.push(`${where} event "${event.label}" at "${event.period}" is outside the axis`);
+        }
+      }
+      break;
+    }
+    case 'keyFigures':
+      if (figure.figures.length > 6) errors.push(`${where} at most six key figures`);
+      for (const kf of figure.figures) if (kf.change && !Number.isFinite(kf.change.value)) errors.push(`${where} "${kf.label}" has a change that is not a finite number`);
+      break;
+    case 'tileMap': {
+      const tiles = mapTiles(figure.map).map(tile => tile.id);
+      for (const key of Object.keys(figure.data ?? {})) if (!tiles.includes(key)) errors.push(`${where} "${key}" is not an area of ${figure.map}`);
+      for (const id of figure.highlight) if (!tiles.includes(id)) errors.push(`${where} highlight "${id}" is not an area of ${figure.map}`);
+      const { breaks, domain } = figure;
+      if (breaks?.some((b, i) => i > 0 && b <= breaks[i - 1])) errors.push(`${where} breaks must be strictly ascending`);
+      if (domain && !(domain[0] < domain[1])) errors.push(`${where} domain must run from low to high`);
+      // A missing area reads "No data"; unexplained, a gap looks like a selection.
+      const missing = tiles.filter(id => !(id in (figure.data ?? {})));
+      if (missing.length > 0 && !figure.note) errors.push(`${where} has no data for ${missing.join(', ')} — say why in \`note\``);
+      break;
+    }
+    case 'barChart': {
+      const { domainMax } = figure;
+      if (domainMax !== undefined && figure.items.some(item => item.value > domainMax)) errors.push(`${where} domainMax must be at least every value`);
+      break;
+    }
+    case 'compositionBar': {
+      const keys = figure.categories.map(c => c.key);
+      if (new Set(keys).size !== keys.length) errors.push(`${where} category keys must be unique`);
+      for (const row of figure.rows) {
+        for (const key of Object.keys(row.values)) if (!keys.includes(key)) errors.push(`${where} row "${row.label}" has unknown category "${key}"`);
+        if (!(Object.values(row.values).reduce((a, b) => a + b, 0) > 0)) errors.push(`${where} row "${row.label}" totals zero`);
+      }
+      break;
+    }
+    case 'estimateRange': {
+      const { domain } = figure;
+      for (const e of figure.estimates) {
+        const present = [e.low, e.estimate, e.high].filter((v): v is number => v !== undefined);
+        if (present.length === 0) errors.push(`${where} "${e.label}" needs an estimate, a low or a high`);
+        if (present.some((v, i) => i > 0 && v < present[i - 1])) errors.push(`${where} "${e.label}" must have low ≤ estimate ≤ high`);
+        if (domain && present.some(v => v < domain[0] || v > domain[1])) errors.push(`${where} "${e.label}" falls outside the domain`);
+      }
+      break;
+    }
+    case 'quoteComparison':
+      for (const quote of figure.quotes) errors.push(...verbatimErrors(where, quote.text, quote.source, f));
+      break;
+    case 'pullQuote':
+      errors.push(...verbatimErrors(where, figure.quote.text, figure.quote.source, f));
+      break;
+    case 'claimCheck': {
+      errors.push(...verbatimErrors(where, figure.claim, figure.claimSource, f));
+      const { evidence } = figure;
+      if (evidence) {
+        const target = topic.facts.find(fact => fact.id === evidence.fact);
+        if (!target) errors.push(`${where} evidence names "${evidence.fact}", which is not a fact in this topic`);
+        else if (evidence.section && !knownSection(target, evidence.section)) errors.push(`${where} unknown section "${evidence.section}" in fact "${target.id}"`);
+      }
+      break;
+    }
+    case 'caveatList':
+      break;
+  }
+  return errors;
+}
+
+/** `series:` / `series:<id>` / `comparison:<id>` / `featured:<fact>` for a reference figure; undefined otherwise. */
+function refKey(figure: Figure): string | undefined {
+  switch (figure.kind) {
+    case 'series': return `series:${figure.id ?? ''}`;
+    case 'comparison': return `comparison:${figure.id}`;
+    case 'featured': return `featured:${figure.fact}`;
+    default: return undefined;
+  }
+}
+
+function describeRef(key: string): string {
+  const [kind, id] = key.split(':');
+  if (kind === 'series') return id ? `additional series "${id}"` : 'the series';
+  if (kind === 'comparison') return `comparison "${id}"`;
+  return `featured chart "${id}"`;
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** Unicode NFC, straight quotes, collapsed whitespace, lower case: what F11 compares. */
+export function normaliseQuote(text: string): string {
+  return text.normalize('NFC').replace(/[\u2018\u2019\u201A\u2032]/g, "'").replace(/[\u201C\u201D\u201E\u2033]/g, '"').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+/**
+ * F11 — a quote on the page is the source's words. Each fragment between
+ * omission marks ("…" or "...") must appear in the cited source's quote;
+ * fragments under four characters are too short to mean anything.
+ */
+function verbatimErrors(where: string, text: string, citation: number, f: Fact): string[] {
+  const quote = factSources(f)[citation - 1]?.quote;
+  if (quote === undefined) return []; // F2 reports the bad citation
+  const haystack = normaliseQuote(quote);
+  return text
+    .split(/…|\.\.\./)
+    .map(fragment => normaliseQuote(fragment))
+    .filter(fragment => fragment.length >= 4 && !haystack.includes(fragment))
+    .map(fragment => `${where} "${fragment}" is not in the quote of source ${citation} — quotes must be verbatim`);
+}
+
 /**
  * Inline data citations in prose.
  *
@@ -278,7 +513,7 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   const check = (what: string, body: string) => {
     for (const { id, section } of citedFactTargets(body)) {
       const fact = factById.get(id);
-      if (fact && section && section !== 'finding' && !(section === 'chart-series' && fact.series) && !fact.series?.readings.some(reading => section === `chart-${reading.id}`) && !fact.additionalSeries?.some(s => section === `chart-${s.id}` || s.readings.some(r => section === `chart-${r.id}`)) && !fact.comparisons?.some(chart => section === `chart-${chart.id}`) && !fact.body.includes(`{#${id}--${section}}`)) {
+      if (fact && section && !knownSection(fact, section)) {
         errors.push(`${what}: unknown section "${section}" in fact "${id}"`);
       }
       if (!factById.has(id)) {

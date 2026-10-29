@@ -93,6 +93,12 @@ export const seriesReadingSchema = z.object({
   /** Anything the reader must know to read this reading honestly, e.g. that it is derived. */
   note: z.string().optional(),
   source: sourceSchema.optional(),
+  /**
+   * The published table the values are read from, when no quote can hold
+   * them all: "EAVS 2024 Overview Table 1, column C4a". Lets `check:figures`
+   * accept values no quote states.
+   */
+  valuesFrom: z.string().min(1).optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 
@@ -177,6 +183,12 @@ export const comparisonChartSchema = z.object({
   domainMax: z.number().positive().optional(),
   sources: z.array(z.number().int().positive()).min(1),
   note: z.string().optional(),
+  /**
+   * The published table the values are read from, when no quote can hold
+   * them all: "EAVS 2024 Overview Table 1, column C4a". Lets `check:figures`
+   * accept values no quote states.
+   */
+  valuesFrom: z.string().min(1).optional(),
   /** Labels for an optional grouped comparison. Kept in content so the shared UI never assumes a subject such as nationality. */
   groupLabel: z.string().min(1).optional(),
   allGroupsLabel: z.string().min(1).optional(),
@@ -189,6 +201,363 @@ export const comparisonChartSchema = z.object({
     values: z.array(z.number().finite().nonnegative()).optional(),
   })).min(2),
 });
+
+/* ----------------------------------------------------------------- figures */
+
+/** A one-based index into the fact's numbered citations (see lib/content/sources.ts). */
+const citation = z.number().int().positive();
+const slugId = z.string().regex(/^[a-z0-9-]+$/, 'lower-case letters, digits and hyphens only');
+
+/** Mirrors `ValueFormat` in components/report/types.ts. */
+export const valueFormatSchema = z
+  .object({
+    unit: z.enum(['count', 'percent', 'currency', 'number']).default('count'),
+    /** ISO 4217, required with unit "currency": USD, GBP, EUR. */
+    currency: z.string().regex(/^[A-Z]{3}$/).optional(),
+    decimals: z.number().int().min(0).max(4).optional(),
+    fixed: z.boolean().optional(),
+    compact: z.boolean().optional(),
+    signed: z.boolean().optional(),
+  })
+  .refine((f) => (f.unit === 'currency') === (f.currency !== undefined), {
+    message: 'give `currency` with unit "currency", and only then',
+  });
+
+/**
+ * The figure in the source's own words — "more than 7,200", "probably less
+ * than one week". Optional. When given, `check:figures` looks for this text
+ * in the cited quote instead of the number, so a figure the source states in
+ * words or as a bound stays traceable after it is turned into a number.
+ */
+const asPublished = z.string().min(1).optional();
+
+/** Fields every component figure shares. */
+const figureBase = {
+  id: slugId,
+  title: z.string().min(1),
+  /** The visible one-sentence orientation, and the screen-reader description. */
+  description: z.string().min(1),
+  /** Citations the whole figure rests on. Kinds whose items each cite a source may leave this empty. */
+  sources: z.array(citation).default([]),
+  /** Collapsed under "About this data". */
+  note: z.string().optional(),
+  /**
+   * The published table the values are read from, when no quote can hold
+   * them all: "EAVS 2024 Overview Table 1, column C4a". Shown in About this
+   * data; lets `check:figures` accept unquoted values (Phase 2, 3.7).
+   */
+  valuesFrom: z.string().min(1).optional(),
+};
+
+/* --- references: place things the fact already has ----------------------- */
+
+export const seriesRefSchema = z.object({
+  kind: z.literal('series'),
+  /** Omit for the fact's `series`; otherwise an `additionalSeries` id. */
+  id: slugId.optional(),
+});
+export const comparisonRefSchema = z.object({ kind: z.literal('comparison'), id: slugId });
+export const featuredRefSchema = z.object({ kind: z.literal('featured'), fact: z.string().min(1) });
+/** Moves the body section headed `## … {#<fact>--<id>}` to this place. */
+export const sectionRefSchema = z.object({ kind: z.literal('section'), id: slugId });
+
+/* --- dataTable ------------------------------------------------------------ */
+
+const plainCell = z.union([z.string(), z.number().finite(), z.null()]);
+/** A cell with its own footnotes, rendered as "[n]" links after the text. */
+const citedCell = z.object({ value: plainCell, sources: z.array(citation).min(1), asPublished });
+export const tableCellSchema = z.union([plainCell, citedCell]);
+
+export const dataTableFigureSchema = z.object({
+  kind: z.literal('dataTable'),
+  ...figureBase,
+  /** What one row is, e.g. "One row per law, bill or ruling". Read first by a screen reader. */
+  caption: z.string().min(1),
+  columns: z
+    .array(
+      z.object({
+        key: slugId,
+        label: z.string().min(1),
+        /** 'text' prints as written; use it for year columns, or 1965 prints as "1,965". */
+        format: z.union([z.literal('text'), valueFormatSchema]).optional(),
+        align: z.enum(['left', 'right']).optional(),
+        rowHeader: z.boolean().optional(),
+        sortable: z.boolean().optional(),
+      })
+    )
+    .min(2),
+  /** Each row maps column keys to cells. A missing key renders "—". */
+  rows: z.array(z.record(z.string(), tableCellSchema)).min(1),
+  /** Row-header values to set in bold with an accent rule. */
+  highlight: z.array(z.string()).default([]),
+  defaultSort: z.object({ key: slugId, direction: z.enum(['ascending', 'descending']) }).optional(),
+});
+
+/* --- keyFigures ----------------------------------------------------------- */
+
+export const keyFiguresFigureSchema = z.object({
+  kind: z.literal('keyFigures'),
+  ...figureBase,
+  figures: z
+    .array(
+      z.object({
+        value: z.number().finite(),
+        format: valueFormatSchema.optional(),
+        /** Printed before the number: "more than 7,200". */
+        qualifier: z.enum(['about', 'more than', 'at least', 'fewer than', 'at most']).optional(),
+        label: z.string().min(1),
+        period: partialDate,
+        periodLabel: z.string().min(1).optional(),
+        asPublished,
+        change: z
+          .object({ value: z.number().finite(), format: valueFormatSchema.optional(), comparison: z.string().min(1) })
+          .optional(),
+        source: citation,
+      })
+    )
+    .min(1)
+    .max(6),
+});
+
+/* --- timeline ------------------------------------------------------------- */
+
+const categorySchema = z.object({ id: slugId, label: z.string().min(1) });
+
+export const timelineFigureSchema = z.object({
+  kind: z.literal('timeline'),
+  ...figureBase,
+  /** Order fixes each category's colour and shape. */
+  categories: z.array(categorySchema).min(1),
+  events: z
+    .array(
+      z.object({
+        date: partialDate,
+        endDate: partialDate.optional(),
+        title: z.string().min(1),
+        description: z.string().min(1).optional(),
+        category: slugId,
+        significance: z.enum(['major', 'minor']).optional(),
+        source: citation,
+      })
+    )
+    .min(2),
+});
+
+/* --- periodTimeline ------------------------------------------------------- */
+
+export const periodTimelineFigureSchema = z.object({
+  kind: z.literal('periodTimeline'),
+  ...figureBase,
+  /** Table heading for the rows: "Measure", "State". */
+  rowLabel: z.string().min(1),
+  from: partialDate.optional(),
+  /** Axis end. Defaults to the topic's `lastUpdated` when any period is open, else the component default. */
+  to: partialDate.optional(),
+  categories: z.array(categorySchema).default([]),
+  rows: z
+    .array(
+      z.object({
+        label: z.string().min(1),
+        periods: z
+          .array(
+            z.object({
+              from: partialDate,
+              /** Omit for something still in force on the topic's lastUpdated date. */
+              to: partialDate.optional(),
+              label: z.string().min(1).optional(),
+              category: slugId.optional(),
+            })
+          )
+          .min(1),
+      })
+    )
+    .min(1),
+  /** Point events: the same shape as series events. */
+  events: z.array(seriesEventSchema).default([]),
+});
+
+/* --- tileMap -------------------------------------------------------------- */
+
+export const MAP_TILE_PRESETS = ['us-states', 'europe-countries', 'uk-regions'] as const;
+
+const mapDatum = z.union([
+  z.number().finite(),
+  z.object({ value: z.number().finite(), label: z.string().min(1).optional(), asPublished }),
+]);
+
+export const tileMapFigureSchema = z
+  .object({
+    kind: z.literal('tileMap'),
+    ...figureBase,
+    map: z.enum(MAP_TILE_PRESETS),
+    /** Table heading for the areas: "State". */
+    areaLabel: z.string().min(1),
+    /** Outlined, never recoloured. */
+    highlight: z.array(z.string()).default([]),
+    // Numeric mode (Phase 1):
+    valueLabel: z.string().min(1).optional(),
+    format: valueFormatSchema.optional(),
+    scale: z.enum(['sequential', 'diverging']).optional(),
+    steps: z.number().int().min(2).max(9).optional(),
+    domain: z.tuple([z.number(), z.number()]).optional(),
+    breaks: z.array(z.number()).min(2).optional(),
+    data: z.record(z.string(), mapDatum).optional(),
+    // Categorical mode (Phase 3a) adds `categoryLabel`, `categories`, `areas` here.
+  })
+  .superRefine((f, ctx) => {
+    if (!f.data || !f.valueLabel) ctx.addIssue({ code: 'custom', message: 'a tile map needs `data` and `valueLabel`' });
+  });
+
+/* --- barChart ------------------------------------------------------------- */
+
+export const barChartFigureSchema = z.object({
+  kind: z.literal('barChart'),
+  ...figureBase,
+  valueLabel: z.string().min(1),
+  /** Table heading for the bar labels. */
+  categoryLabel: z.string().min(1).optional(),
+  format: valueFormatSchema.optional(),
+  /** 'none' keeps the given order, for ordered categories such as age bands. */
+  sort: z.enum(['value', 'none']).optional(),
+  domainMax: z.number().positive().optional(),
+  items: z
+    .array(z.object({ label: z.string().min(1), value: z.number().finite(), highlight: z.boolean().optional(), asPublished }))
+    .min(2),
+});
+
+/* --- compositionBar ------------------------------------------------------- */
+
+export const compositionBarFigureSchema = z.object({
+  kind: z.literal('compositionBar'),
+  ...figureBase,
+  categories: z.array(z.object({ key: slugId, label: z.string().min(1) })).min(2),
+  rows: z
+    .array(
+      z.object({
+        label: z.string().min(1),
+        values: z.record(z.string(), z.number().finite().nonnegative()),
+        /** A row from a different counter cites its own source. */
+        source: citation.optional(),
+      })
+    )
+    .min(1),
+  showCounts: z.boolean().optional(),
+  countFormat: valueFormatSchema.optional(),
+  rowLabel: z.string().min(1),
+  otherThreshold: z.number().positive().max(50).optional(),
+  otherLabel: z.string().min(1).optional(),
+});
+
+/* --- estimateRange -------------------------------------------------------- */
+
+export const estimateRangeFigureSchema = z.object({
+  kind: z.literal('estimateRange'),
+  ...figureBase,
+  valueLabel: z.string().min(1),
+  format: valueFormatSchema.optional(),
+  intervalLabel: z.string().min(1).optional(),
+  /** The "no effect" value. `null` for estimates with no natural reference, such as costs. Defaults to 0. */
+  nullValue: z.number().nullable().optional(),
+  nullLabel: z.string().min(1).optional(),
+  domain: z.tuple([z.number(), z.number()]).optional(),
+  estimates: z
+    .array(
+      z.object({
+        label: z.string().min(1),
+        /** Shown after the label: "May 2025". */
+        year: z.union([z.string().min(1), z.number().int()]).optional(),
+        estimate: z.number().finite().optional(),
+        /** Omit `high` for "at least …", `low` for "at most …". */
+        low: z.number().finite().optional(),
+        high: z.number().finite().optional(),
+        group: z.string().min(1).optional(),
+        note: z.string().min(1).optional(),
+        asPublished,
+        source: citation,
+      })
+    )
+    .min(2),
+});
+
+/* --- quotes --------------------------------------------------------------- */
+
+const figureQuoteSchema = z.object({
+  /** Verbatim. "…" marks an omission; each fragment must appear in the cited source's quote (rule F11). */
+  text: z.string().min(1),
+  speaker: z.string().min(1),
+  role: z.string().min(1).optional(),
+  position: z.string().min(1).optional(),
+  date: partialDate.optional(),
+  context: z.string().min(1).optional(),
+  source: citation,
+});
+
+export const quoteComparisonFigureSchema = z.object({
+  kind: z.literal('quoteComparison'),
+  id: slugId,
+  /** The question every quote answers; it is the figure's heading. */
+  question: z.string().min(1),
+  description: z.string().min(1).optional(),
+  note: z.string().optional(),
+  quotes: z.array(figureQuoteSchema).min(2).max(4),
+});
+
+export const pullQuoteFigureSchema = z.object({
+  kind: z.literal('pullQuote'),
+  id: slugId,
+  description: z.string().min(1).optional(),
+  note: z.string().optional(),
+  variant: z.enum(['pull', 'inline']).optional(),
+  quote: figureQuoteSchema,
+});
+
+/* --- claimCheck ----------------------------------------------------------- */
+
+export const claimCheckFigureSchema = z.object({
+  kind: z.literal('claimCheck'),
+  id: slugId,
+  /** Verbatim, checked against `claimSource`'s quote (rule F11). */
+  claim: z.string().min(1),
+  claimant: z.object({ name: z.string().min(1), role: z.string().min(1).optional() }).optional(),
+  date: partialDate.optional(),
+  claimSource: citation,
+  status: z.enum(FACT_STATUSES),
+  /** One or two plain sentences. */
+  finding: z.string().min(1),
+  sources: z.array(citation).min(1),
+  /** Another fact (or a section of one) that sets out the evidence. */
+  evidence: z.object({ fact: z.string().min(1), section: z.string().min(1).optional(), label: z.string().min(1).optional() }).optional(),
+});
+
+/* --- caveatList ----------------------------------------------------------- */
+
+export const caveatListFigureSchema = z.object({
+  kind: z.literal('caveatList'),
+  id: slugId,
+  heading: z.string().min(1).default('What this does not show'),
+  items: z
+    .array(z.object({ measure: z.string().min(1), why: z.string().min(1), sources: z.array(citation).default([]) }))
+    .min(1),
+});
+
+export const figureSchema = z.discriminatedUnion('kind', [
+  seriesRefSchema,
+  comparisonRefSchema,
+  featuredRefSchema,
+  sectionRefSchema,
+  dataTableFigureSchema,
+  keyFiguresFigureSchema,
+  timelineFigureSchema,
+  periodTimelineFigureSchema,
+  tileMapFigureSchema,
+  barChartFigureSchema,
+  compositionBarFigureSchema,
+  estimateRangeFigureSchema,
+  quoteComparisonFigureSchema,
+  pullQuoteFigureSchema,
+  claimCheckFigureSchema,
+  caveatListFigureSchema,
+]);
 
 export const factFrontmatterSchema = z.object({
   title: z.string().min(1).optional(),
@@ -235,6 +604,8 @@ export const factFrontmatterSchema = z.object({
     measure: z.string().min(1),
     why: z.string().min(1),
   })).optional(),
+  /** The reading order of the fact's charts and figures; see AUTHORING.md "Figures". */
+  figures: z.array(figureSchema).optional(),
 });
 
 export const viewpointFrontmatterSchema = z.object({

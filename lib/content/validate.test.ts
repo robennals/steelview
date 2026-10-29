@@ -1,7 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { validateTopic } from './validate';
-import type { Topic, Fact, Viewpoint, Principle, Crux, Series } from './types';
+import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
+import { figureExamplesTopic } from './__fixtures__/figure-examples';
 
 function fact(over: Partial<Fact> & { id: string }): Fact {
   return {
@@ -571,4 +572,167 @@ test('datasets cannot reuse reading IDs, which would make observation links ambi
   const topic = topicWithSeries();
   topic.facts[0].additionalSeries = [{ id: 'nationality', ...series() }];
   assert.ok(validateTopic(topic).some(error => error.includes('chart IDs must be unique')));
+});
+
+/* ----------------------------------------------------- figures (F1–F12) */
+
+/** The fixture fact's figure of `kind` (and `id`), to perturb in place. */
+function figureOf<K extends FigureKind>(fact: Fact, kind: K, id?: string): FigureOf<K> {
+  const found = fact.figures?.find((f): f is FigureOf<K> => f.kind === kind && (id === undefined || ('id' in f && f.id === id)));
+  if (!found) throw new Error(`no ${kind} figure ${id ?? ''}`);
+  return found;
+}
+
+/** A sound topic holding the figure fixture, and its fact to perturb. */
+function figuresTopic() {
+  const topic = figureExamplesTopic();
+  return { topic, fact: topic.facts[0] };
+}
+
+const hasError = (topic: Topic, text: string) => validateTopic(topic).some(e => e.includes(text));
+
+test('the figure fixture is sound', () => {
+  assert.deepEqual(validateTopic(figureExamplesTopic()), []);
+});
+
+test('F1: a figure id may not repeat another figure, chart or reading id', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'keyFigures').id = 'federal-laws';
+  assert.ok(hasError(topic, 'figure federal-laws: id "federal-laws" is already used'));
+  figureOf(fact, 'keyFigures').id = 'rejected-share';
+  assert.ok(hasError(topic, 'figure rejected-share: id "rejected-share" is already used'));
+});
+
+test('F2: every figure citation is one of the fact\'s numbered sources', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'timeline').events[0].source = 99;
+  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 27'));
+});
+
+test('F3: once present, figures place every chart exactly once and nothing else', () => {
+  const { topic, fact } = figuresTopic();
+  fact.figures = (fact.figures ?? []).filter(f => f.kind !== 'comparison');
+  assert.ok(hasError(topic, 'figures must place comparison "senate-votes" exactly once (found 0)'));
+  fact.figures.push({ kind: 'series' });
+  assert.ok(hasError(topic, 'figures must place the series exactly once (found 2)'));
+  fact.figures.push({ kind: 'comparison', id: 'nope' }, { kind: 'featured', fact: 'mail-ballot-privacy' });
+  assert.ok(hasError(topic, 'references comparison "nope", which this fact does not have'));
+  assert.ok(hasError(topic, 'references featured chart "mail-ballot-privacy", which this fact does not have in featuredCharts'));
+});
+
+test('F4: a section figure names an h2 in the body', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'section').id = 'no-such-section';
+  assert.ok(hasError(topic, 'figure no-such-section: no body section headed'));
+});
+
+test('F5: every figure but a caveat list cites a source', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'barChart').sources = [];
+  assert.ok(hasError(topic, 'figure wa-by-race: cites no source'));
+  for (const item of figureOf(fact, 'caveatList').items) item.sources = [];
+  assert.ok(!hasError(topic, 'figure detected-is-a-floor: cites no source'));
+});
+
+test('F6: a data table\'s columns, rows, sort and highlight agree', () => {
+  const { topic, fact } = figuresTopic();
+  const table = figureOf(fact, 'dataTable');
+  table.columns.push({ key: 'count', label: 'Count', format: { unit: 'count' } }, { key: 'year', label: 'Again' });
+  table.rows[0].count = 'many';
+  table.rows[1].stray = 'x';
+  table.defaultSort = { key: 'missing', direction: 'ascending' };
+  table.highlight = ['Not a row'];
+  assert.ok(hasError(topic, 'figure federal-laws: column keys must be unique'));
+  assert.ok(hasError(topic, 'row 1 column "count" has a numeric format'));
+  assert.ok(hasError(topic, 'row 2 has key "stray", which is not a column'));
+  assert.ok(hasError(topic, 'defaultSort key "missing" is not a column'));
+  assert.ok(hasError(topic, 'highlight "Not a row" is not in the row-header column'));
+  table.columns[0].rowHeader = true;
+  assert.ok(hasError(topic, 'at most one column may be the row header'));
+});
+
+test('F7: timeline categories exist and periods run forwards', () => {
+  const { topic, fact } = figuresTopic();
+  const timeline = figureOf(fact, 'timeline');
+  timeline.events[0].category = 'nope';
+  timeline.events[1].endDate = '2020';
+  const periods = figureOf(fact, 'periodTimeline');
+  periods.rows[0].periods[0].to = '2026-01';
+  periods.rows[1].periods[0].category = 'nope';
+  periods.events[0].period = '2025-12';
+  assert.ok(hasError(topic, 'has unknown category "nope"'));
+  assert.ok(hasError(topic, 'event "Assadi convicted in Antwerp" ends before it starts'));
+  assert.ok(hasError(topic, 'row "Ceasefire" has a period that ends before it starts'));
+  assert.ok(hasError(topic, 'row "US naval blockade" has unknown category "nope"'));
+  assert.ok(hasError(topic, 'is outside the axis'));
+});
+
+test('F8: at most six key figures, each change a finite number', () => {
+  const { topic, fact } = figuresTopic();
+  const keyFigures = figureOf(fact, 'keyFigures');
+  keyFigures.figures = Array.from({ length: 7 }, () => ({ ...keyFigures.figures[1], change: { value: Number.NaN, comparison: 'on 2016' } }));
+  assert.ok(hasError(topic, 'figure audit-recheck: at most six key figures'));
+  assert.ok(hasError(topic, 'has a change that is not a finite number'));
+});
+
+test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a gap', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'tileMap');
+  map.data = { ...map.data, XX: 1 };
+  map.highlight = ['YY'];
+  map.breaks = [0, 2, 1];
+  map.domain = [5, 1];
+  map.note = undefined;
+  assert.ok(hasError(topic, '"XX" is not an area of us-states'));
+  assert.ok(hasError(topic, 'highlight "YY" is not an area of us-states'));
+  assert.ok(hasError(topic, 'breaks must be strictly ascending'));
+  assert.ok(hasError(topic, 'domain must run from low to high'));
+  assert.ok(hasError(topic, 'say why in `note`'));
+});
+
+test('F10: bars fit their axis, compositions their categories, estimates their order', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'barChart').domainMax = 1;
+  const composition = figureOf(fact, 'compositionBar');
+  composition.rows[0].values = { civilian: 0, nope: 0 };
+  const estimates = figureOf(fact, 'estimateRange');
+  estimates.estimates[0] = { ...estimates.estimates[0], low: 40, high: 30 };
+  estimates.estimates[2] = { label: 'Empty', source: 16 };
+  estimates.domain = [30, 41];
+  assert.ok(hasError(topic, 'figure wa-by-race: domainMax must be at least every value'));
+  assert.ok(hasError(topic, 'row "HRANA, 7 Apr" has unknown category "nope"'));
+  assert.ok(hasError(topic, 'row "HRANA, 7 Apr" totals zero'));
+  assert.ok(hasError(topic, '"AEI" must have low ≤ estimate ≤ high'));
+  assert.ok(hasError(topic, '"Empty" needs an estimate, a low or a high'));
+  assert.ok(hasError(topic, '"Department of Defense" falls outside the domain'));
+});
+
+test('F11: quotes and claims are verbatim, allowing omissions, curly quotes and case', () => {
+  const { topic, fact } = figuresTopic();
+  const pull = figureOf(fact, 'pullQuote');
+  pull.quote.text = 'ABSENTEE ballots remain … source of potential voter fraud…';
+  const compared = figureOf(fact, 'quoteComparison');
+  compared.quotes[0].text = 'buried and we’re watching it';
+  assert.deepEqual(validateTopic(topic), []);
+  pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
+  assert.ok(hasError(topic, 'figure carter-baker: "absentee ballots are the largest source of voter fraud." is not in the quote of source 21'));
+  figureOf(fact, 'claimCheck').claim = 'Half of mail-in voters cheated';
+  assert.ok(hasError(topic, 'figure one-in-five: "half of mail-in voters cheated" is not in the quote of source 22'));
+});
+
+test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
+  const { topic, fact } = figuresTopic();
+  const check = figureOf(fact, 'claimCheck');
+  check.evidence = { fact: 'mail-ballot-privacy', section: 'nope' };
+  assert.ok(hasError(topic, 'unknown section "nope" in fact "mail-ballot-privacy"'));
+  check.evidence = { fact: 'nope' };
+  assert.ok(hasError(topic, 'evidence names "nope", which is not a fact in this topic'));
+});
+
+test('a viewpoint may cite a component figure by its chart id', () => {
+  const { topic } = figuresTopic();
+  topic.viewpoints[0].body = 'See [the rates](#fact-figure-examples/chart-wa-by-race).';
+  assert.deepEqual(validateTopic(topic), []);
+  topic.viewpoints[0].body = 'See [the rates](#fact-figure-examples/chart-nope).';
+  assert.ok(hasError(topic, 'unknown section "chart-nope"'));
 });

@@ -20,6 +20,22 @@ export function chartObservations(html: string, factId: string, chartIds: string
   return { observations, subtleties, bodyHtml };
 }
 
+/**
+ * Pull the h2 sections whose id is `<fact>--<id>` out of the body, keyed by
+ * id, so a `section` figure can place prose between two figures.
+ */
+export function bodySections(html: string, factId: string, ids: string[]): { sections: Record<string, string>; bodyHtml: string } {
+  const sections: Record<string, string> = {};
+  const bodyHtml = html.replace(/<h2\b[^>]*>[\s\S]*?(?=<h2\b|$)/g, section => {
+    const id = section.match(/^<h2\b[^>]*\bid="([^"]+)"/)?.[1];
+    const key = ids.find(key => id === `${factId}--${key}`);
+    if (!key) return section;
+    sections[key] = section;
+    return '';
+  });
+  return { sections, bodyHtml };
+}
+
 /** A separate disclosure for the methods used by each graph. */
 export function methodChanges(factId: string, readingId: string, breaks: { period: string; label: string; note: string }[], sourceNumber: number) {
   if (!breaks.length) return '';

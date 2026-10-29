@@ -7,6 +7,7 @@ import {
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
 } from './schema';
+import { figureExamplesFrontmatter } from './__fixtures__/figure-examples';
 
 const source = {
   stance: 'supports',
@@ -188,4 +189,57 @@ test('a topic requires an ISO lastUpdated date', () => {
   const base = { title: 'Immigration', subtitle: 'What is actually being argued about.' };
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: '2026-08-18' }).success, true);
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: 'August 2026' }).success, false);
+});
+
+/* ----------------------------------------------------------------- figures */
+
+test('every worked example of the visualization spec parses as a fact', () => {
+  const parsed = factFrontmatterSchema.parse(figureExamplesFrontmatter());
+  assert.deepEqual(parsed.figures?.map(f => f.kind), [
+    'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
+    'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
+  ]);
+});
+
+/** The fixture with figure `index` replaced, parsed; returns the paths of the issues. */
+function figureIssuePaths(index: number, change: (figure: Record<string, unknown>) => Record<string, unknown>) {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  figures[index] = change(figures[index]);
+  const result = factFrontmatterSchema.safeParse({ ...data, figures });
+  if (result.success) assert.fail('expected the figure to fail to parse');
+  return result.error.issues.map(issue => issue.path.join('.'));
+}
+
+test('a figure of unknown kind fails with a path naming the figure', () => {
+  assert.deepEqual(figureIssuePaths(4, f => ({ ...f, kind: 'pieChart' })), ['figures.4.kind']);
+});
+
+test('a figure id must be lower-case letters, digits and hyphens', () => {
+  assert.deepEqual(figureIssuePaths(4, f => ({ ...f, id: 'Audit Recheck' })), ['figures.4.id']);
+});
+
+test('a currency is given with unit "currency", and only then', () => {
+  assert.ok(figureIssuePaths(8, f => ({ ...f, format: { unit: 'percent', currency: 'USD' } })).every(p => p.startsWith('figures.8.format')));
+  assert.ok(figureIssuePaths(8, f => ({ ...f, format: { unit: 'currency' } })).every(p => p.startsWith('figures.8.format')));
+});
+
+test('a data table needs at least two columns', () => {
+  assert.deepEqual(figureIssuePaths(2, f => ({ ...f, columns: (f.columns as unknown[]).slice(0, 1) })), ['figures.2.columns']);
+});
+
+// zod 4 keeps a refined object usable as a discriminated-union option, so
+// the tile map's "data and valueLabel" rule lives in the schema.
+test('a tile map without data or a value label fails in the schema', () => {
+  assert.deepEqual(figureIssuePaths(7, f => ({ ...f, data: undefined })), ['figures.7']);
+  assert.deepEqual(figureIssuePaths(7, f => ({ ...f, valueLabel: undefined })), ['figures.7']);
+});
+
+test('readings and comparisons may name the table their values come from', () => {
+  const data = figureExamplesFrontmatter();
+  const parsed = factFrontmatterSchema.parse({
+    ...data,
+    comparisons: (data.comparisons as Record<string, unknown>[]).map(c => ({ ...c, valuesFrom: 'Senate roll call 4' })),
+  });
+  assert.equal(parsed.comparisons?.[0].valuesFrom, 'Senate roll call 4');
 });
