@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { citedFactIds, renderMarkdown } from './markdown';
+import { citedFactIds, neededClaims, renderMarkdown } from './markdown';
 
 // Citations render as links to the fact's page inside this topic, so every
 // call names the topic the body belongs to.
@@ -65,6 +65,11 @@ test('ordinary links and other in-page anchors are left alone', async () => {
 test('a #needed link renders as its plain text, with no link', async () => {
   const html = await renderMarkdown('Some say [integration succeeds at *different* rates](#needed).', SLUG);
   assert.equal(html, '<p>Some say integration succeeds at <em>different</em> rates.</p>');
+});
+
+test('neededClaims lists marked claims as plain text, in order', () => {
+  const md = 'First [a *bold* claim](#needed), then [a fact](#fact-alpha) and [another](#needed).';
+  assert.deepEqual(neededClaims(md), ['a bold claim', 'another']);
 });
 
 test('"#fact-" with no id is not a citation', async () => {

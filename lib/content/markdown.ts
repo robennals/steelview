@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import { SKIP, visit } from 'unist-util-visit';
-import type { Link, Root, Text } from 'mdast';
+import type { Link, Nodes, Root, Text } from 'mdast';
 import type { Root as HtmlRoot, Element } from 'hast';
 import type { Fact } from './types';
 import { anchorFor, factPath } from './types';
@@ -140,6 +140,28 @@ export function citedFactIds(md: string): string[] {
     if (factId) ids.push(factId);
   });
   return ids;
+}
+
+/** The text of a node, ignoring formatting: `*different* rates` → "different rates". */
+function plainText(node: Nodes): string {
+  if ('value' in node) return node.value;
+  if ('children' in node) return node.children.map(plainText).join('');
+  return '';
+}
+
+/**
+ * The claims a body marks `#needed`, as plain text, in order. Parsed by remark
+ * for the same reason as `citedFactIds`: the list validation checks is exactly
+ * the set of links the renderer unwraps.
+ */
+export function neededClaims(md: string): string[] {
+  if (!md.trim()) return [];
+  const tree: Root = unified().use(remarkParse).use(remarkGfm).parse(md);
+  const claims: string[] = [];
+  visit(tree, 'link', (node: Link) => {
+    if (node.url === NEEDED_HREF) claims.push(plainText(node));
+  });
+  return claims;
 }
 
 /** Explicit heading IDs survive editorial retitling; source links stay native anchors. */

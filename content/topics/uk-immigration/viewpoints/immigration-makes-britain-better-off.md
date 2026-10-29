@@ -2,6 +2,11 @@
 name: Immigration makes Britain better off, and we should welcome it
 summary: "Britain benefits when people come here to work and build a life. We should welcome that contribution and invest in the homes and services a growing population needs."
 order: 3
+researchNeeded:
+  - "drawn in people with the nerve to leave home and the ambition to make something new"
+  - "remained unusually open to experiment, enterprise and ideas from elsewhere"
+  - "They start companies, make discoveries, practise professions and pass ideas between Britain and the rest of the world"
+  - "A country that admits only people whose value can be predicted from a salary or a qualification will miss people whose enterprise and creativity become clear only after they have been given a chance"
 ---
 Britain has often been at its best when it has [drawn in people with the nerve to leave home and the ambition to make something new](#needed). Its strength is not that it has frozen an old way of life in place. It is that it has [remained unusually open to experiment, enterprise and ideas from elsewhere](#needed). The [freedom to cooperate and exchange](#principle-gains-from-open-exchange) is part of that inheritance.
 
