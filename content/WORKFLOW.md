@@ -360,9 +360,12 @@ holder of that view would find it better argued than their own version
   where the viewpoints actually ended up disagreeing. Principles were written
   in stage 2; adjust them here only if a viewpoint's final form rests on a
   different value.
-- **Order and lists last.** Set `order` to alternate sides, then order each
-  `citesFacts` by what the argument actually rests on, since that decides the
-  page's fact order.
+- **Order last.** Set each viewpoint's `order` so the sides alternate, and
+  list the headline reports in `topic.md`'s `dataOrder` in the order a reader
+  should meet them. Viewpoint frontmatter is only `name`, `summary` and
+  `order` ([Citations and data order](AUTHORING.md#citations-and-data-order)):
+  what a viewpoint builds on, concedes or sets aside shows in its inline
+  observation links.
 
 **Gate: the human is happy with every viewpoint**, read side by side.
 
