@@ -1032,6 +1032,34 @@
     stroke-width: 2;
   }
 
+  /* An estimate or provisional value is a hollow ring in the line's colour:
+     the shape, not the colour, says it was not measured. */
+  .sv-chart__hollow,
+  .sv-chart__end:is([data-status="estimate"], [data-status="provisional"]) {
+    fill: var(--paper);
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .sv-chart__forecast-zone {
+    fill: var(--paper-sunk);
+  }
+
+  .sv-chart__zone-label {
+    fill: var(--ink-3);
+    font-family: var(--font-sans);
+  }
+
+  /* "Not measured" hatching: the maps' "No data" mark, ink-4 hairlines on paper. */
+  .sv-chart__hatch-ground {
+    fill: var(--paper);
+  }
+
+  .sv-chart__hatch-line {
+    stroke: var(--ink-4);
+    stroke-width: 1;
+  }
+
   .sv-chart__tick {
     fill: var(--ink-3);
     font-family: var(--font-sans);

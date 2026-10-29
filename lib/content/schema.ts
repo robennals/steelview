@@ -60,6 +60,12 @@ export const sourceSchema = z.object({
 export const seriesPointSchema = z.object({
   period: partialDate,
   value: z.number(),
+  /**
+   * Absent means measured. A source that mixes history with estimates or
+   * forecasts is drawn to its end honestly — dotted, hollow-marked or shaded
+   * — instead of having those points dropped. Forecasts form the line's tail.
+   */
+  status: z.enum(['estimate', 'provisional', 'forecast']).optional(),
 });
 
 /**
@@ -159,6 +165,21 @@ export const seriesSchema = z.object({
    */
   periodLabel: z.string().min(1),
   coverage: seriesCoverageSchema,
+  /**
+   * The series stops because measurement stopped, not because the source
+   * ends — the gap is a finding. Drawn as a hatched band from the last point
+   * to `until`.
+   */
+  notMeasuredSince: z.object({
+    /** Short, shown in the band or beside it: "Not verified since IAEA access ended". */
+    label: z.string().min(1).max(48),
+    /** What stopped and why, in the source's terms. */
+    note: z.string().min(1),
+    /** Where the band ends. Defaults to the topic's lastUpdated (filled in by the loader). */
+    until: partialDate.optional(),
+    /** The fact's numbered citation for the note. */
+    source: z.number().int().positive(),
+  }).optional(),
   breaks: z.array(seriesBreakSchema).default([]),
   events: z.array(seriesEventSchema).default([]),
   readings: z.array(seriesReadingSchema).min(1),

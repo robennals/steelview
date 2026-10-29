@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { Prose } from '@/components/topic/prose';
 import { SeriesChart } from '@/components/topic/series-chart';
+import { unmeasuredSpan } from '@/lib/chart/series-chart';
+import { methodChanges } from '@/lib/content/chart-observations';
 import { foreignBornShareSeries, foreignBornShareSourceCount, longRunMigrationSeries, longRunMigrationSourceCount } from './fixtures/existing-charts';
-import { EXECUTIONS_PER_LINE_COVERAGE } from './fixtures/series-capabilities';
+import {
+  EXECUTIONS_PER_LINE_COVERAGE,
+  URANIUM_NOT_MEASURED_SINCE,
+  URANIUM_SOURCES,
+  WTI_MONTHLY_2026_ILLUSTRATIVE,
+} from './fixtures/series-capabilities';
 
 const meta = {
   title: 'Existing/SeriesChart',
@@ -45,4 +53,38 @@ export const SingleLine: Story = {
  */
 export const PerLineCoverageExecutions: Story = {
   args: { factId: 'story-executions', series: EXECUTIONS_PER_LINE_COVERAGE, sourceOffset: 0 },
+};
+
+/**
+ * Monthly WTI for 2026 running to its source's end: October is provisional
+ * (dotted, hollow marker, "(prov.)" in the table) and November–December are
+ * forecasts (dotted inside a shaded zone labelled Forecast). Values between
+ * the draft's February, May and September anchors are illustrative.
+ */
+export const ForecastTail: Story = {
+  args: { factId: 'story-wti', series: WTI_MONTHLY_2026_ILLUSTRATIVE, sourceOffset: 0 },
+};
+
+/**
+ * Iran's 60% enriched uranium to the IAEA's last verified figure (an
+ * estimate, so hollow), then a hatched band to 29 October 2026 because
+ * nothing has been verified since — the gap is the finding. The Method
+ * Changes entry the key line links to is rendered below, as a fact page
+ * does. An excerpt: the real series starts in 2021.
+ */
+export const NotMeasuredSinceUranium: Story = {
+  args: {
+    factId: 'story-uranium',
+    series: URANIUM_NOT_MEASURED_SINCE,
+    sourceOffset: URANIUM_SOURCES.length,
+    sources: [...URANIUM_SOURCES, URANIUM_NOT_MEASURED_SINCE.source],
+    observations: {
+      stock: (
+        <Prose
+          className="sv-graph-observations"
+          html={methodChanges('story-uranium', 'stock', [], URANIUM_SOURCES.length + 1, unmeasuredSpan(URANIUM_NOT_MEASURED_SINCE))}
+        />
+      ),
+    },
+  },
 };

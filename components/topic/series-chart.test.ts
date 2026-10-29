@@ -62,3 +62,34 @@ test('a line with its own range names it in the legend, the table and About this
   assert.match(html, /<th scope="row">1986<\/th><td>6<\/td><td data-outside="true">—<\/td>/);
   assert.match(html, /WTI, 1986–1990; Brent, 1987–1990/);
 });
+
+/** WTI alone, with an estimate in 1987 and forecasts for 1989–1990. */
+function statusSeries(): Series {
+  const s = oilSeries();
+  s.coverage = { ...s.coverage, note: 'STEO forecast of September 1989' };
+  s.readings[0].lines = [{
+    name: 'WTI',
+    points: yearly(1986, 1990).map(p => ({ ...p, status: p.period === '1987' ? 'estimate' as const : p.period >= '1989' ? 'forecast' as const : undefined })),
+  }];
+  return s;
+}
+
+test('estimates and forecasts are marked in the table and named in a key line', () => {
+  const html = renderChart(statusSeries());
+  assert.match(html, /<td>7 \(<abbr title="estimate">est\.<\/abbr>\)<\/td>/);
+  assert.match(html, /<td>9 \(<abbr title="forecast">forecast<\/abbr>\)<\/td>/);
+  assert.match(html, /Dotted: estimates or provisional values\. Shaded: forecasts \(STEO forecast of September 1989\)\./);
+  assert.match(html, />Forecast<\/text>/);
+  assert.match(html, /1 value is an estimate or provisional and 2 are forecasts from 1989\./);
+});
+
+test('a "not measured since" band has a key line, a final table row and a description sentence', () => {
+  const s = oilSeries();
+  s.readings[0].lines = [s.readings[0].lines[0]];
+  s.notMeasuredSince = { label: 'Not verified since access ended', note: 'Inspectors left.', until: '1992-10-29', source: 1 };
+  const html = renderChart(s);
+  assert.match(html, /Hatched: Not verified since access ended, 1990 – 29 Oct 1992\. <a data-evidence-link="true" href="#oil--price-not-measured">Why<\/a>/);
+  assert.match(html, /<tr data-unmeasured=""><th scope="row">1990–29 Oct 1992<\/th><td colSpan="1">Not measured: Not verified since access ended<\/td><\/tr>/);
+  assert.match(html, /No values after 1990: Not verified since access ended\./);
+  assert.match(html, /fill="url\(#sv-chart-oil-price-desc-wide-hatch\)"/);
+});

@@ -212,13 +212,23 @@ export function seriesStrokeDash(slot: number): string | undefined {
 
 export type PlottedPoint = { x: number; y: number; point: SeriesPoint };
 
+/**
+ * How a stretch of line is drawn. `estimate` covers estimates and
+ * provisional values alike — both are dotted; only the table tells them apart.
+ */
+export type RunKind = 'measured' | 'estimate' | 'forecast';
+
+export type PlottedRun = { kind: RunKind; points: PlottedPoint[] };
+
 export type PlottedLine = {
   name: string;
   slot: number;
-  /** Contiguous stretches of the line, one per stretch between breaks. */
-  runs: PlottedPoint[][];
+  /** Contiguous stretches of the line, split at breaks and wherever the drawing changes kind. */
+  runs: PlottedRun[];
   /** The segments that step across a break — drawn dashed, never as smooth line. */
   bridges: Array<[PlottedPoint, PlottedPoint]>;
+  /** Estimate and provisional points, drawn as hollow circles when the reading is sparse enough to mark points. */
+  hollow: PlottedPoint[];
   last: PlottedPoint;
 };
 
@@ -234,29 +244,51 @@ export type ReadingLayout = {
   breaks: BreakMark[];
   /** The y of value 0, when zero is inside the domain — the line a net series crosses. */
   zeroY: number | null;
+  /** Where the forecast zone starts: the first forecast period on any line. It runs to the plot's right edge. */
+  forecastX: number | null;
+  /** The "not measured since" band, from the last point to where the band ends. */
+  unmeasured: { x0: number; x1: number } | null;
 };
 
+/** Hollow markers are drawn only when a reading is sparse enough that points read as points. */
+export const HOLLOW_MARKER_LIMIT = 120;
+
+export function runKind(point: SeriesPoint): RunKind {
+  if (point.status === 'forecast') return 'forecast';
+  return point.status ? 'estimate' : 'measured';
+}
+
+const KIND_RANK: Record<RunKind, number> = { measured: 0, estimate: 1, forecast: 2 };
+
 /**
- * Cut a line where a break falls between two consecutive points. The two
- * points either side are still drawn, and still joined — but by a dashed
- * bridge rather than by the same solid stroke as the rest, so the reader can
- * see that the two ends of it were not measured the same way. Smoothing over
- * a definitional break is how a chart lies without any number being wrong.
+ * Cut a line into runs, at definitional breaks and wherever its drawing
+ * changes.
+ *
+ * At a break the two points either side are still drawn, and still joined —
+ * but by a dashed bridge rather than by the same solid stroke as the rest, so
+ * the reader can see that the two ends of it were not measured the same way.
+ * Smoothing over a definitional break is how a chart lies without any number
+ * being wrong.
+ *
+ * Within a stretch, a segment takes the weaker of its two ends' kinds — a
+ * segment touching an estimate is dotted, one touching a forecast is a
+ * forecast — so runs of different kinds share their joining point and the
+ * line stays unbroken.
  */
-export function splitAtBreaks(
+export function splitRuns(
   points: PlottedPoint[],
   breakPeriods: string[]
-): { runs: PlottedPoint[][]; bridges: Array<[PlottedPoint, PlottedPoint]> } {
-  const runs: PlottedPoint[][] = [];
+): { runs: PlottedRun[]; bridges: Array<[PlottedPoint, PlottedPoint]> } {
+  const runs: PlottedRun[] = [];
   const bridges: Array<[PlottedPoint, PlottedPoint]> = [];
-  let run: PlottedPoint[] = [];
+  let run: PlottedRun | null = null;
 
   for (const plotted of points) {
-    if (run.length === 0) {
-      run.push(plotted);
+    if (run === null) {
+      run = { kind: runKind(plotted.point), points: [plotted] };
       continue;
     }
-    const previous = run[run.length - 1];
+    const previous: PlottedPoint = run.points[run.points.length - 1];
     const crossed = breakPeriods.some(
       (period) =>
         comparePeriods(previous.point.period, period) < 0 &&
@@ -265,13 +297,43 @@ export function splitAtBreaks(
     if (crossed) {
       bridges.push([previous, plotted]);
       runs.push(run);
-      run = [plotted];
+      run = { kind: runKind(plotted.point), points: [plotted] };
+      continue;
+    }
+    const a = runKind(previous.point);
+    const b = runKind(plotted.point);
+    const kind = KIND_RANK[a] >= KIND_RANK[b] ? a : b;
+    // A run's first segment decides its kind.
+    if (run.points.length === 1) run.kind = kind;
+    if (run.kind === kind) {
+      run.points.push(plotted);
     } else {
-      run.push(plotted);
+      runs.push(run);
+      run = { kind, points: [previous, plotted] };
     }
   }
-  if (run.length > 0) runs.push(run);
+  if (run !== null) runs.push(run);
   return { runs, bridges };
+}
+
+/**
+ * Where the time axis ends: the series coverage, or the end of a "not
+ * measured since" band. The loader fills the band's `until` from the topic's
+ * `lastUpdated` when the author leaves it out.
+ */
+export function axisEnd(series: Series): string {
+  const until = series.notMeasuredSince?.until;
+  return until !== undefined && comparePeriods(until, series.coverage.to) > 0 ? until : series.coverage.to;
+}
+
+export type UnmeasuredSpan = { from: string; until: string; label: string; note: string; source: number };
+
+/** The "not measured since" band as dates, or undefined when the series has none (or it has no length). */
+export function unmeasuredSpan(series: Series): UnmeasuredSpan | undefined {
+  const band = series.notMeasuredSince;
+  const until = axisEnd(series);
+  if (!band || until === series.coverage.to) return undefined;
+  return { from: series.coverage.to, until, label: band.label, note: band.note, source: band.source };
 }
 
 export function layoutReading(
@@ -289,9 +351,11 @@ export function layoutReading(
 
   // The declared coverage, not the data, sets the time domain: the two are
   // equal by rule 14, and saying so here means the axis is drawn from the
-  // promise the series makes about its source.
+  // promise the series makes about its source. A "not measured since" band
+  // extends it to the band's end, so the gap has room to be seen.
+  const end = axisEnd(series);
   const fromYear = periodToYear(series.coverage.from);
-  const toYear = periodToYear(series.coverage.to);
+  const toYear = periodToYear(end);
 
   const x = (period: string) =>
     geometry.left +
@@ -302,17 +366,24 @@ export function layoutReading(
     ((value - valueMin) / (valueMax - valueMin || 1)) * geometry.plotHeight;
 
   const breakPeriods = series.breaks.map((b) => b.period);
+  const markPoints = reading.lines.reduce((n, line) => n + line.points.length, 0) <= HOLLOW_MARKER_LIMIT;
 
   const lines: PlottedLine[] = reading.lines.map((line) => {
     const plotted = line.points.map((point) => ({ x: x(point.period), y: y(point.value), point }));
-    const { runs, bridges } = splitAtBreaks(plotted, breakPeriods);
+    const { runs, bridges } = splitRuns(plotted, breakPeriods);
     return {
       name: line.name,
       slot: slots.get(line.name) ?? 1,
       runs,
       bridges,
+      hollow: markPoints ? plotted.filter((p) => runKind(p.point) === 'estimate') : [],
       last: plotted[plotted.length - 1],
     };
+  });
+
+  const forecastXs = lines.flatMap((line) => {
+    const first = line.runs.flatMap((run) => run.points).find((p) => p.point.status === 'forecast');
+    return first ? [first.x] : [];
   });
 
   const zeroIndex = ticks.indexOf(0);
@@ -331,13 +402,15 @@ export function layoutReading(
         index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
     })),
     timeTicks: dropCrowdedTicks(
-      yearTicks(periodYear(series.coverage.from), periodYear(series.coverage.to), geometry.yearTickStep).map(
+      yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
         (year) => ({ year, x: x(String(year)), label: String(year) })
       ),
       geometry.fontSize
     ),
     breaks: series.breaks.map((gap) => ({ ...gap, x: x(gap.period) })),
     zeroY: valueMin <= 0 && valueMax >= 0 ? y(0) : null,
+    forecastX: forecastXs.length > 0 ? Math.min(...forecastXs) : null,
+    unmeasured: end === series.coverage.to ? null : { x0: x(series.coverage.to), x1: x(end) },
   };
 }
 

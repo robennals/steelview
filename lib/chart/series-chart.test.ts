@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import type { Series } from '@/lib/content/types';
+import type { Series, SeriesPoint } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
   formatTick,
@@ -14,7 +14,7 @@ import {
   seriesSlots,
   seriesStrokeDash,
   seriesTable,
-  splitAtBreaks,
+  splitRuns,
   yearTicks,
   dropCrowdedTicks,
   tickLabelWidth,
@@ -160,15 +160,15 @@ test('later series slots add a distinct non-colour cue', () => {
   assert.equal(seriesStrokeDash(7), '2 3');
 });
 
-test('splitAtBreaks cuts the line at the break and bridges the gap', () => {
+test('splitRuns cuts the line at a break and bridges the gap', () => {
   const points = ['1990', '1991', '1992', '1993'].map((period, i) => ({
     x: i,
     y: 0,
     point: { period, value: i },
   }));
-  const { runs, bridges } = splitAtBreaks(points, ['1992']);
+  const { runs, bridges } = splitRuns(points, ['1992']);
   assert.deepEqual(
-    runs.map((run) => run.map((p) => p.point.period)),
+    runs.map((run) => run.points.map((p) => p.point.period)),
     [
       ['1990', '1991'],
       ['1992', '1993'],
@@ -183,7 +183,7 @@ test('splitAtBreaks cuts the line at the break and bridges the gap', () => {
 
 test('a series with no breaks is one unbroken run', () => {
   const points = ['1990', '1991'].map((period, i) => ({ x: i, y: 0, point: { period, value: i } }));
-  const { runs, bridges } = splitAtBreaks(points, []);
+  const { runs, bridges } = splitRuns(points, []);
   assert.equal(runs.length, 1);
   assert.equal(bridges.length, 0);
 });
@@ -193,7 +193,7 @@ test('layout puts the coverage ends at the plot edges and marks zero', () => {
   const g = CHART_GEOMETRY.wide;
   const layout = layoutReading(s, s.readings[0], 'wide');
 
-  const first = layout.lines[0].runs[0][0];
+  const first = layout.lines[0].runs[0].points[0];
   const last = layout.lines[0].last;
   assert.equal(Number(first.x.toFixed(4)), g.left);
   assert.equal(Number(last.x.toFixed(4)), g.left + g.plotWidth);
@@ -324,6 +324,46 @@ test('a line with its own range starts where its range does and ends on its own 
   const g = CHART_GEOMETRY.wide;
   const layout = layoutReading(s, s.readings[0], 'wide');
   const later = layout.lines[1];
-  assert.ok(later.runs[0][0].x > g.left);
+  assert.ok(later.runs[0].points[0].x > g.left);
   assert.equal(Number(later.last.x.toFixed(4)), g.left + g.plotWidth);
+});
+
+const plotted = (statuses: Array<SeriesPoint['status']>) =>
+  statuses.map((status, i) => ({ x: i, y: 0, point: { period: String(1990 + i), value: i, ...(status ? { status } : {}) } }));
+
+test('splitRuns splits at status changes, and a segment touching an estimate is an estimate', () => {
+  const { runs, bridges } = splitRuns(plotted([undefined, undefined, 'estimate', undefined, 'forecast', 'forecast']), []);
+  assert.deepEqual(
+    runs.map((run) => [run.kind, run.points.map((p) => p.point.period)]),
+    [
+      ['measured', ['1990', '1991']],
+      ['estimate', ['1991', '1992', '1993']],
+      ['forecast', ['1993', '1994', '1995']],
+    ]
+  );
+  assert.equal(bridges.length, 0);
+});
+
+test('the forecast zone starts at the first forecast and estimates get hollow markers', () => {
+  const s = series();
+  const line = s.readings[0].lines[0];
+  line.points = line.points.map((p, i) => ({ ...p, status: i === 1 ? 'estimate' : i >= 2 ? 'forecast' : undefined }));
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const forecast = layout.lines[0].runs.find((run) => run.kind === 'forecast');
+  assert.equal(layout.forecastX, layout.lines[0].runs.flatMap((run) => run.points).find((p) => p.point.period === '1992')!.x);
+  assert.ok(forecast);
+  assert.deepEqual(layout.lines[0].hollow.map((p) => p.point.period), ['1991']);
+  assert.equal(layoutReading(series(), series().readings[0], 'wide').forecastX, null);
+});
+
+test('a "not measured since" band runs from the last point to the plot’s right edge', () => {
+  const s = series();
+  s.notMeasuredSince = { label: 'Not measured', note: 'Stopped.', until: '1995', source: 1 };
+  const g = CHART_GEOMETRY.wide;
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  assert.ok(layout.unmeasured);
+  assert.equal(layout.unmeasured.x0, layout.lines[0].last.x);
+  assert.equal(Number(layout.unmeasured.x1.toFixed(4)), g.left + g.plotWidth);
+  assert.equal(layout.timeTicks.at(-1)?.label, '1995');
+  assert.equal(layoutReading(series(), series().readings[0], 'wide').unmeasured, null);
 });

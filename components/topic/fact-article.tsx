@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { chartObservations, methodChanges } from '@/lib/content/chart-observations';
+import { unmeasuredSpan } from '@/lib/chart/series-chart';
 import type { Fact } from '@/lib/content/types';
 import { factPath, topicPath } from '@/lib/content/types';
 import { Prose } from './prose';
@@ -56,10 +57,10 @@ function DataStillNeeded({ fact }: { fact: Fact }) {
 
 function FactCharts({ fact, observations = {}, subtleties = {}, afterSeries }: { fact: Fact; observations?: Record<string, string>; subtleties?: Record<string, string>; afterSeries?: ReactNode }) {
   return <>
-    {fact.series && <SeriesChart factId={fact.id} series={fact.series} sourceOffset={fact.sources.length} sources={allSources(fact)} observations={Object.fromEntries(fact.series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, fact.series!.breaks, fact.sources.length + 1)} className="sv-graph-observations" />]))} />}
+    {fact.series && <SeriesChart factId={fact.id} series={fact.series} sourceOffset={fact.sources.length} sources={allSources(fact)} observations={Object.fromEntries(fact.series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, fact.series!.breaks, fact.sources.length + 1, unmeasuredSpan(fact.series!))} className="sv-graph-observations" />]))} />}
     {fact.additionalSeries?.map((series, i) => {
       const sourceOffset = fact.sources.length + (fact.series ? 1 + fact.series.readings.filter(r => r.source).length : 0) + fact.additionalSeries!.slice(0, i).reduce((n, s) => n + 1 + s.readings.filter(r => r.source).length, 0);
-      return <SeriesChart key={series.id} chartId={series.id} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={allSources(fact)} observations={Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1)} className="sv-graph-observations" />]))} />;
+      return <SeriesChart key={series.id} chartId={series.id} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={allSources(fact)} observations={Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series))} className="sv-graph-observations" />]))} />;
     })}
     {afterSeries}
     {fact.comparisons?.map(chart => <ComparisonChart key={chart.id} fact={fact} chart={chart} sources={allSources(fact)} observations={(observations[chart.id] || subtleties[chart.id]) && <Prose html={(observations[chart.id] ?? "") + (subtleties[chart.id] ?? "")} className="sv-graph-observations" />} />)}

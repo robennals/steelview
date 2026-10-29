@@ -608,3 +608,46 @@ test('a line coverage outside the series coverage fails', () => {
   const errors = validateTopic(t);
   assert.ok(errors.some(e => e.includes('runs outside the series coverage')), errors.join('\n'));
 });
+
+/* ------------------------------------- 4.6: estimated and forecast points */
+
+test('a measured point after a forecast fails', () => {
+  const t = topicWithSeries({ coverage: { from: '1990', to: '1993', note: 'Forecast from the 2024 vintage.' } });
+  const points = t.facts[0].series!.readings[0].lines[0].points;
+  points[2].status = 'forecast';
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('point "1993" is not a forecast but follows one')), errors.join('\n'));
+  points[3].status = 'forecast';
+  points[1].status = 'estimate';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('a forecast without a coverage note naming its vintage fails', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines[0].points[3].status = 'forecast';
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('no coverage.note')), errors.join('\n'));
+});
+
+/* ------------------------------------------ 4.5: "not measured since" band */
+
+test('a "not measured since" band that ends before the last point fails', () => {
+  const t = topicWithSeries({ notMeasuredSince: { label: 'Not verified', note: 'Access ended.', until: '1992', source: 1 } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('not after the last point')), errors.join('\n'));
+});
+
+test('a "not measured since" band may not end after the topic was last updated, and cites a real source', () => {
+  const t = topicWithSeries({ notMeasuredSince: { label: 'Not verified', note: 'Access ended.', until: '2027', source: 9 } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('after the topic was last updated')), errors.join('\n'));
+  assert.ok(errors.some(e => e.includes('unknown source 9')), errors.join('\n'));
+});
+
+test('an event inside a "not measured since" band passes; its end defaults to lastUpdated', () => {
+  const t = topicWithSeries({
+    notMeasuredSince: { label: 'Not verified', note: 'Access ended.', source: 1 },
+    events: [{ period: '2001', label: 'verification stops' }],
+  });
+  assert.deepEqual(validateTopic(t), []);
+});

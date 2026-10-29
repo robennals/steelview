@@ -544,6 +544,24 @@ takes a period, a short label and a note in the source's own terms.
 1991, administrative data backdated to 2012, and the June 2021 method change.
 The line still runs through them; the reader is told what changed.
 
+**Estimates and forecasts are drawn, not dropped.** When a source mixes
+history with estimates, provisional values or forecasts, run the series to
+the source's end and give each such point a `status`: `estimate`,
+`provisional` or `forecast` (absent means measured). Estimates and provisional
+values are dotted with hollow markers; forecasts sit in a shaded zone labelled
+Forecast; the table adds "(est.)", "(prov.)" or "(forecast)". Forecasts must be
+a line's last points, and a series with any forecast needs a `coverage.note`
+naming the forecast's vintage ("EIA STEO, October 2026").
+
+**When measurement stops, say so on the chart.** If a series ends because
+nobody has measured since — not because the source ends — add
+`notMeasuredSince` with a short `label` (48 characters at most), a `note` in
+the source's terms, the numbered `source` that says so, and optionally `until`
+(it defaults to the topic's `lastUpdated`, and may not be later). The chart
+hatches the gap from the last point to `until`, writes a key line under the
+plot, and adds a Method Changes entry the key line links to. Events may fall
+inside the band.
+
 **Multiple readings, not a toggle you can ship the flattering half of.** A
 `series` carries one or more `readings` and the chart draws every one. The
 owner asked for migration both in absolute numbers and as a share of
@@ -1036,6 +1054,8 @@ them.
 | Series lines span the declared coverage (or the line's own `coverage`) exactly, end to end; the series coverage is the union of its lines' | `lib/content/validate.ts`, `seriesErrors` |
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
+| Forecast points are each line's tail, and need a `coverage.note` | `lib/content/validate.ts`, `seriesErrors` |
+| A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
 | Every prose figure is quoted or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 

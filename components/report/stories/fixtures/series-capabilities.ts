@@ -1,4 +1,4 @@
-import type { Series } from '@/lib/content/types';
+import type { Series, Source } from '@/lib/content/types';
 
 /**
  * Series fixtures for the SeriesChart capabilities the Iran reports need,
@@ -42,6 +42,104 @@ export const EXECUTIONS_PER_LINE_COVERAGE: Series = {
         { name: 'IHRNGO', points: [point('2020', 267), point('2021', 333), point('2022', 582), point('2023', 834), point('2024', 975), point('2025', 1639)] },
         { name: 'Amnesty International', coverage: { from: '2023', to: '2025' }, points: [point('2023', 853), point('2024', 972), point('2025', 2159)] },
       ],
+    },
+  ],
+};
+
+/** The citations the uranium story's events and band cite, numbered from 1 as a fact's would be. */
+export const URANIUM_SOURCES: Source[] = [
+  {
+    stance: 'supports',
+    quote: 'Story fixture: the IAEA "cannot provide any information on the current size, composition or whereabouts" of the stock, as quoted by ISIS from the June 2026 report.',
+    title: 'Analysis of IAEA Iran Verification and Monitoring and NPT Safeguards Reports, June 2026',
+    url: 'https://isis-online.org/isis-reports/analysis-of-iaea-iran-verification-and-monitoring-and-npt-safeguards-reports-june-2026',
+    publisher: 'Institute for Science and International Security',
+    date: '2026-06',
+  },
+];
+
+/**
+ * Iran's stock of uranium enriched to 60%, to the last figure the IAEA
+ * verified (13 June 2025, marked an estimate), then a hatched band to 29
+ * October 2026: the IAEA has verified nothing since. Values from the draft;
+ * the draft marks the three earlier points unverified.
+ */
+export const URANIUM_NOT_MEASURED_SINCE: Series = {
+  title: 'Iran’s stock of 60% enriched uranium, 2024–2025',
+  description: 'Kilograms of uranium enriched to 60%, as the IAEA reported it. The stock grew fast until June 2025; nothing has been verified since.',
+  periodLabel: 'IAEA report',
+  coverage: { from: '2024-08', to: '2025-06-13' },
+  notMeasuredSince: {
+    label: 'Not verified since IAEA access ended',
+    note: 'The IAEA has not verified the stock since 13 June 2025; its June 2026 report says it cannot provide any information on the stock’s current size, composition or whereabouts.',
+    until: '2026-10-29',
+    source: 1,
+  },
+  breaks: [],
+  events: [
+    { period: '2025-06-13', label: 'Strikes on Iran’s nuclear sites', source: 1 },
+    { period: '2026-02-28', label: 'Verification stops', source: 1 },
+  ],
+  source: {
+    stance: 'supports',
+    quote: 'Story fixture: values as recorded in the Iran candidate-data draft (C1), from ISIS’s analyses of the IAEA quarterly reports.',
+    title: 'Analysis of IAEA Iran Verification and Monitoring and NPT Safeguards Reports, June 2026',
+    url: 'https://isis-online.org/isis-reports/analysis-of-iaea-iran-verification-and-monitoring-and-npt-safeguards-reports-june-2026',
+    publisher: 'Institute for Science and International Security',
+    date: '2026-06',
+  },
+  readings: [
+    {
+      id: 'stock',
+      label: 'Stock of 60% enriched uranium',
+      unit: 'count',
+      valueLabel: 'Kilograms',
+      lines: [{
+        name: '60% enriched uranium',
+        points: [point('2024-08', 164.7), point('2025-02', 274.8), point('2025-05', 408.6), { period: '2025-06-13', value: 440.9, status: 'estimate' }],
+      }],
+    },
+  ],
+};
+
+/**
+ * ILLUSTRATIVE between its anchors. Monthly WTI spot, 2026, with the draft's
+ * real points — February $64.51, May $102.13, September $97.31 — and every
+ * other month invented to join them. October is provisional; November and
+ * December are forecasts.
+ */
+export const WTI_MONTHLY_2026_ILLUSTRATIVE: Series = {
+  title: 'WTI crude oil, monthly average, 2026',
+  description: 'The monthly average spot price of West Texas Intermediate crude. Values between the February, May and September anchors are illustrative.',
+  periodLabel: 'Month',
+  coverage: { from: '2026-01', to: '2026-12', note: 'November and December are illustrative stand-ins for an EIA STEO forecast' },
+  breaks: [],
+  events: [],
+  source: {
+    stance: 'supports',
+    quote: 'Story fixture: February, May and September as recorded in the Iran candidate-data draft (C77); other months illustrative.',
+    title: 'Cushing, OK WTI Spot Price FOB, monthly',
+    url: 'https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RWTC&f=M',
+    publisher: 'US Energy Information Administration',
+    date: '2026-10-21',
+  },
+  readings: [
+    {
+      id: 'price',
+      label: 'Dollars a barrel',
+      unit: 'count',
+      valueLabel: 'Dollars a barrel',
+      lines: [{
+        name: 'WTI',
+        points: [
+          point('2026-01', 62.1), point('2026-02', 64.51), point('2026-03', 78.4), point('2026-04', 96.8),
+          point('2026-05', 102.13), point('2026-06', 99.2), point('2026-07', 95.6), point('2026-08', 94.1),
+          point('2026-09', 97.31),
+          { period: '2026-10', value: 101.5, status: 'provisional' },
+          { period: '2026-11', value: 98, status: 'forecast' },
+          { period: '2026-12', value: 95, status: 'forecast' },
+        ],
+      }],
     },
   ],
 };

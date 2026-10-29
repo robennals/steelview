@@ -3,9 +3,10 @@ import { EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
 import { SeriesHighlight } from './series-highlight';
 import { comparePeriods } from '@/lib/content/period';
-import type { Series, SeriesLine, SeriesReading, Source } from '@/lib/content/types';
+import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
+  axisEnd,
   formatValue,
   hasOwnSpans,
   layoutReading,
@@ -15,6 +16,8 @@ import {
   readingRows,
   seriesSlots,
   seriesStrokeDash,
+  tickLabelWidth,
+  unmeasuredSpan,
   type ChartVariant,
 } from '@/lib/chart/series-chart';
 
@@ -55,6 +58,7 @@ function Plot({
 }) {
   const layout = layoutReading(series, reading, variant);
   const g = CHART_GEOMETRY[variant];
+  const hatchId = `${descriptionId}-${variant}-hatch`;
   const right = g.left + g.plotWidth;
   const bottom = g.top + g.plotHeight;
   return (
@@ -74,6 +78,35 @@ function Plot({
       aria-describedby={descriptionId}
       preserveAspectRatio="xMidYMid meet"
     >
+      {/* A forecast is a shaded zone to the right edge, named in text: the
+          dotted line alone would not say which values nobody has measured. */}
+      {layout.forecastX !== null && (
+        <g className="sv-chart__forecast">
+          <rect className="sv-chart__forecast-zone" x={layout.forecastX} y={g.top} width={right - layout.forecastX} height={g.plotHeight} />
+          <text className="sv-chart__zone-label" x={layout.forecastX + 4} y={g.top + g.fontSize} fontSize={g.fontSize}>Forecast</text>
+        </g>
+      )}
+
+      {/* Not measured since: the same ink-4 hatching the maps use for "No
+          data", so hatching means "not measured" everywhere on the site. */}
+      {layout.unmeasured !== null && series.notMeasuredSince && (
+        <g className="sv-chart__unmeasured">
+          <defs>
+            <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+              <rect className="sv-chart__hatch-ground" width="5" height="5" />
+              <line className="sv-chart__hatch-line" x1="0" y1="0" x2="0" y2="5" />
+            </pattern>
+          </defs>
+          <rect x={layout.unmeasured.x0} y={g.top} width={layout.unmeasured.x1 - layout.unmeasured.x0} height={g.plotHeight} fill={`url(#${hatchId})`} />
+          {/* Inside the band only when it fits; the key line under the plot always carries it. */}
+          {layout.unmeasured.x1 - layout.unmeasured.x0 >= tickLabelWidth(series.notMeasuredSince.label, g.fontSize) + 8 && (
+            <text className="sv-chart__zone-label" x={layout.unmeasured.x0 + 4} y={g.top + g.fontSize} fontSize={g.fontSize}>
+              {series.notMeasuredSince.label}
+            </text>
+          )}
+        </g>
+      )}
+
       {/* Gridlines first: recessive hairlines the data is drawn over. */}
       {layout.valueTicks.map((tick) => (
         <line
@@ -133,23 +166,38 @@ function Plot({
               vectorEffect="non-scaling-stroke"
             />
           ))}
+          {/* Estimates and forecasts are dotted. A line whose slot is already
+              dashed keeps its dash, faded, and its hollow markers carry the cue. */}
           {line.runs.map((run, i) => (
             <g key={`run-${i}`}>
               <path
                 className="sv-chart__line"
-                d={pathFor(run)}
-                strokeDasharray={seriesStrokeDash(line.slot) ?? undefined}
+                data-kind={run.kind === 'measured' ? undefined : run.kind}
+                d={pathFor(run.points)}
+                strokeDasharray={seriesStrokeDash(line.slot) ?? (run.kind === 'measured' ? undefined : '1 3')}
+                opacity={run.kind !== 'measured' && seriesStrokeDash(line.slot) ? 0.6 : undefined}
                 vectorEffect="non-scaling-stroke"
               />
               <path
                 className="sv-chart__line-hit"
-                d={pathFor(run)}
+                d={pathFor(run.points)}
                 vectorEffect="non-scaling-stroke"
               />
             </g>
           ))}
+          {line.hollow.filter(p => p !== line.last).map(p => (
+            <circle
+              key={`hollow-${p.point.period}`}
+              className="sv-chart__hollow"
+              cx={p.x}
+              cy={p.y}
+              r={g.markerRadius - 1}
+              vectorEffect="non-scaling-stroke"
+            />
+          ))}
           <circle
             className="sv-chart__end"
+            data-status={line.last.point.status}
             cx={line.last.x}
             cy={line.last.y}
             r={g.markerRadius}
@@ -214,8 +262,15 @@ function spanSuffix(series: Series, line: SeriesLine): string {
   return '';
 }
 
+const STATUS_ABBREVIATION: Record<NonNullable<SeriesPoint['status']>, string> = {
+  estimate: 'est.',
+  provisional: 'prov.',
+  forecast: 'forecast',
+};
+
 function ReadingTable({ series, reading }: { series: Series; reading: SeriesReading }) {
   const rows = readingRows(series, reading);
+  const unmeasured = unmeasuredSpan(series);
   return (
     <div className="sv-chart__table-scroll">
       <table className="sv-chart__table">
@@ -236,10 +291,19 @@ function ReadingTable({ series, reading }: { series: Series; reading: SeriesRead
               {cells.map((cell, index) => (
                 <td key={reading.lines[index].name} data-outside={cell === 'outside' || undefined}>
                   {cell === null || cell === 'outside' ? '—' : formatValue(cell.value, reading.unit)}
+                  {cell !== null && cell !== 'outside' && cell.status && (
+                    <> (<abbr title={cell.status}>{STATUS_ABBREVIATION[cell.status]}</abbr>)</>
+                  )}
                 </td>
               ))}
             </tr>
           ))}
+          {unmeasured && series.notMeasuredSince && (
+            <tr data-unmeasured="">
+              <th scope="row">{spanText({ from: unmeasured.from, to: unmeasured.until })}</th>
+              <td colSpan={reading.lines.length}>Not measured: {series.notMeasuredSince.label}</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
@@ -265,6 +329,15 @@ function Reading({
 }) {
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
+  const points = reading.lines.flatMap(line => line.points);
+  const estimates = points.filter(point => point.status === 'estimate' || point.status === 'provisional').length;
+  const forecasts = points.filter(point => point.status === 'forecast');
+  const firstForecast = forecasts.map(point => point.period).sort(comparePeriods)[0];
+  const unmeasured = unmeasuredSpan(series);
+  const statusSentence = [
+    estimates > 0 ? `${estimates} value${estimates === 1 ? ' is an estimate or provisional' : 's are estimates or provisional'}` : null,
+    forecasts.length > 0 ? `${forecasts.length} ${forecasts.length === 1 ? 'is a forecast' : 'are forecasts'} from ${formatDate(firstForecast)}` : null,
+  ].filter(Boolean).join(' and ');
   const description = [
     series.description,
     `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
@@ -277,6 +350,8 @@ function Reading({
     events.length > 0
       ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed below it.`
       : null,
+    statusSentence ? `${statusSentence.charAt(0).toUpperCase()}${statusSentence.slice(1)}.` : null,
+    unmeasured && series.notMeasuredSince ? `No values after ${formatDate(unmeasured.from)}: ${series.notMeasuredSince.label}.` : null,
     'Use the Table switch to see every value.',
   ]
     .filter(Boolean)
@@ -320,10 +395,23 @@ function Reading({
             <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
             <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} />
           </div>
-          {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={series.coverage.to} events={events} showAxis={false} />}
+          {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
         </>}
         table={<ReadingTable series={series} reading={reading} />}
       />
+
+      {(estimates > 0 || forecasts.length > 0) && (
+        <p className="sv-chart__annotation-key">
+          {estimates > 0 && 'Dotted: estimates or provisional values. '}
+          {forecasts.length > 0 && `Shaded: forecasts${series.coverage.note ? ` (${series.coverage.note})` : ''}.`}
+        </p>
+      )}
+      {unmeasured && series.notMeasuredSince && (
+        <p className="sv-chart__annotation-key">
+          Hatched: {series.notMeasuredSince.label}, {formatDate(unmeasured.from)} {NBSP_DASH} {formatDate(unmeasured.until)}.{' '}
+          <a data-evidence-link="true" href={`#${factId}--${reading.id}-not-measured`}>Why</a>
+        </p>
+      )}
 
       {series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={`#${factId}--${reading.id}-method-${series.breaks[0].period}`}>See method changes</a>.</p>}
       <p className="sv-chart__credit">Source: <a href={`#source-${factId}-${sourceNumber}`}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>
