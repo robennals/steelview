@@ -893,6 +893,15 @@ text figure's slide is its title and content. Either way its description, source
 line and About this data wait behind "Explore this data". Only graph-like
 figures can be home-page preview charts.
 
+**Series sources are numbered after the fact's.** A fact with N `sources`
+numbers its `series`' own `source` N+1, then that series' reading sources,
+then its line sources, then each `additionalSeries` the same way in turn. So
+`sources: [7]` on a figure, a `[7](#source-…-7)` link in the body, or a
+series event's `source: 7` can point at a series. Adding, removing or
+reordering a series, or a reading's or line's `source`, renumbers every
+citation after it: re-check them all (`pnpm check:integrity` catches a
+number past the end, not one that now names a different source).
+
 **An item may rest on several sources.** Wherever an item takes `source: 5`
 — a key figure, a timeline event, a period or point event, an estimate, a
 composition row, a quote, a series event — it may instead take
@@ -1893,6 +1902,7 @@ them.
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
 | Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
+| Series and comparison prose (advisory): a figure in a series' or comparison's title, description, notes or labels is quoted like a component figure's | `scripts/check-figures.ts`, `lib/content/figure-text.ts` (`chartProse`) |
 | Chart values (advisory): a qualified value by its `asPublished`, both ends of a range, against any of the item's sources | `scripts/check-figures.ts`, `lib/content/figure-text.ts` |
 
 **Everything else in this document is editorial judgement with no safety net.**

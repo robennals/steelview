@@ -86,6 +86,19 @@ test('a figure-table cell with an unquoted figure is reported against its figure
   assert.ok(!auditTopic([quoted]).unmatched.some((f) => f.figure === '87.5%'));
 });
 
+test('a comparison or series note with an unquoted figure is an advisory, not a failure', () => {
+  const item = figureFixture();
+  const comparison = (item.data.comparisons as Array<{ id: string; note?: string }>).find((c) => c.id === 'senate-votes')!;
+  comparison.note = 'Shares do not sum to 100%. One vote in 2019 drew 61.3% support.';
+  (item.data.series as { coverage: { note?: string } }).coverage.note = 'Rounded to the nearest 12,345.';
+  const { unmatched, chartNotes } = auditTopic([item]);
+  assert.deepEqual(
+    chartNotes.map((f) => [f.item, f.figure]),
+    [['fact/figure-examples series', '12,345'], ['fact/figure-examples comparison senate-votes', '61.3%']]
+  );
+  assert.ok(!unmatched.some((f) => f.figure === '61.3%' || f.figure === '12,345'));
+});
+
 test('figure values reach the chart-value audit', () => {
   const values = auditTopic([figureFixture()]).values.filter((v) => v.chart === 'figure wa-by-race');
   assert.equal(values.length, 5);

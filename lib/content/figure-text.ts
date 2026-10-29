@@ -1,4 +1,4 @@
-import type { Figure, FigureOf, FigureValueFormat } from './types';
+import type { Fact, Figure, FigureOf, FigureValueFormat, Series } from './types';
 
 /**
  * What `check:figures` audits in a fact's `figures`, so that moving a
@@ -102,6 +102,40 @@ export function figureProse(figure: Figure): string[] {
     }
   })();
   return strings.filter((s): s is string => typeof s === 'string' && s.length > 0);
+}
+
+/**
+ * Every reader-facing string of a fact's series, additional series and
+ * comparisons, one entry per chart, audited like a component figure's prose:
+ * a number in a comparison's note is as much an assertion as one in a bar
+ * chart's. Their own `figures` entries are bare references, so this reads the
+ * charts themselves, whether or not the fact has `figures`.
+ */
+export function chartProse(fact: Pick<Fact, 'series' | 'additionalSeries' | 'comparisons'>): Array<{ chart: string; prose: string[] }> {
+  const charts = [
+    ...(fact.series ? [{ chart: 'series', prose: seriesProse(fact.series) }] : []),
+    ...(fact.additionalSeries ?? []).map(s => ({ chart: `series ${s.id}`, prose: seriesProse(s) })),
+    ...(fact.comparisons ?? []).map(c => ({
+      chart: `comparison ${c.id}`,
+      prose: [...base(c), c.groupLabel, c.itemLabel, c.allGroupsLabel, ...(c.groups ?? []), ...c.items.map(item => item.label)],
+    })),
+  ];
+  return charts.map(({ chart, prose }) => ({ chart, prose: prose.filter((s): s is string => typeof s === 'string' && s.length > 0) }));
+}
+
+/** A series' title, description and notes, and each reading's, break's, event's and line's words. Sources are quotes, not prose. */
+function seriesProse(series: Series): Array<string | undefined> {
+  return [
+    ...base(series),
+    series.periodLabel,
+    series.coverage.note,
+    series.notMeasuredSince?.label,
+    series.notMeasuredSince?.note,
+    series.focus?.label,
+    ...series.breaks.flatMap(b => [b.label, b.note]),
+    ...series.events.flatMap(e => [e.label, e.note]),
+    ...series.readings.flatMap(r => [r.label, r.valueLabel, r.note, ...r.lines.flatMap(line => [line.name, line.coverage?.note])]),
+  ];
 }
 
 function base(figure: { title: string; description: string; note?: string }) {
