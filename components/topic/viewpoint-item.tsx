@@ -11,22 +11,15 @@ import { Prose } from './prose';
 export function ViewpointItem({
   viewpoint,
   bodyHtml,
-  summaryHtml,
 }: {
   viewpoint: Viewpoint;
   bodyHtml: string;
-  summaryHtml?: string;
 }) {
   return (
     <Disclosure
       anchor={anchorFor('viewpoint', viewpoint.id)}
       className="sv-viewpoint"
-      summary={
-        <>
-          <span className="sv-item__claim">{viewpoint.name}</span>{' '}
-          <span className="sv-item__note">{summaryHtml ? <span className="prose-body" dangerouslySetInnerHTML={{ __html: summaryHtml.replace(/^<p>|<\/p>$/g, '') }} /> : viewpoint.summary}</span>
-        </>
-      }
+      summary={<span className="sv-item__claim">{viewpoint.name}</span>}
     >
       <Prose html={bodyHtml} />
     </Disclosure>

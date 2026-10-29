@@ -61,7 +61,7 @@ type BodiedItem = { id: string; body: string };
 export async function buildBodies(
   topic: {
     facts?: Topic['facts'];
-    viewpoints: (BodiedItem & { summary?: string })[];
+    viewpoints: BodiedItem[];
     principles: BodiedItem[];
     cruxes: BodiedItem[];
   },
@@ -76,7 +76,6 @@ export async function buildBodies(
   for (const [kind, items] of kinds) {
     for (const item of items) {
       bodies.set(bodyKey(kind, item.id), await renderMarkdown(item.body, slug, topic.facts));
-      if ('summary' in item && typeof item.summary === 'string') bodies.set(`summary:${item.id}`, await renderMarkdown(item.summary, slug, topic.facts));
     }
   }
   return bodies;
@@ -135,6 +134,21 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
         name: principle.name,
         bodyHtml: bodies.get(bodyKey('principle', principle.id)) ?? '',
       }))} />
+      {topic.viewpoints.length > 0 && (
+        <section className="sv-section">
+          <div className="sv-section__head">
+            <h2 className="sv-section__title">Viewpoints</h2>
+          </div>
+          {topic.viewpoints.map((viewpoint) => (
+            <ViewpointItem
+              key={viewpoint.id}
+              viewpoint={viewpoint}
+              bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
+            />
+          ))}
+        </section>
+      )}
+
       {headline.length > 0 && (
         <section className="sv-section">
           <div className="sv-section__head">
@@ -163,22 +177,6 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
               </div>
             </details>
           )}
-        </section>
-      )}
-
-      {topic.viewpoints.length > 0 && (
-        <section className="sv-section">
-          <div className="sv-section__head">
-            <h2 className="sv-section__title">Viewpoints</h2>
-          </div>
-          {topic.viewpoints.map((viewpoint) => (
-            <ViewpointItem
-              key={viewpoint.id}
-              viewpoint={viewpoint}
-              bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
-              summaryHtml={bodies.get(`summary:${viewpoint.id}`)}
-            />
-          ))}
         </section>
       )}
 

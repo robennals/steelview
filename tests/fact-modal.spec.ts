@@ -42,6 +42,8 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
 test('the whole fact row is clickable, not just the claim text', async ({ page }) => {
   await page.goto(TOPIC);
   const link = page.locator(row(HEADLINE));
+  // Viewpoints come first, so the row may start below the fold.
+  await link.scrollIntoViewIfNeeded();
   const box = await link.boundingBox();
   if (!box) throw new Error('fact row has no layout box');
 
@@ -220,7 +222,9 @@ test.describe('with JavaScript disabled', () => {
 });
 
 // Next.js prefetches a fact as its link scrolls into view — not every fact
-// the page links to, most of which sit in collapsed sections.
+// the page links to, most of which sit in collapsed sections. "In view" for
+// next/link includes a 200px margin around the viewport (its
+// IntersectionObserver rootMargin), so links just below the fold count.
 const factData = (request: Request) =>
   request.headers()['rsc'] === '1' && new URL(request.url()).pathname.includes('/facts/');
 
@@ -233,7 +237,7 @@ test('the topic page prefetches only the fact links on screen', async ({ page })
   const onScreen = await page.locator('a[href*="/facts/"]').evaluateAll((links) =>
     links.filter((link) => {
       const box = link.getBoundingClientRect();
-      return box.width > 0 && box.bottom > 0 && box.top < innerHeight;
+      return box.width > 0 && box.bottom > -200 && box.top < innerHeight + 200;
     }).map((link) => new URL((link as HTMLAnchorElement).href).pathname));
   expect(requested.size).toBeGreaterThan(0);
   expect([...requested].filter((path) => !onScreen.includes(path))).toEqual([]);
