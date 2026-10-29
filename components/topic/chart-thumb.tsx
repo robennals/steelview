@@ -320,15 +320,15 @@ function areaFill(encoding: MapEncoding): (id: string) => string | undefined {
   return id => (encoding.data[id] ? scale.color(pointValue(encoding.data[id])) : undefined);
 }
 
-/** Every tile in its grid place, shaded as on the map. */
+/** Every tile in its grid place, spanning its cells, shaded as on the map. */
 function TilesThumb(props: TileMapProps) {
   const fill = areaFill(props);
-  const rows = Math.max(...props.tiles.map(tile => tile.row)) + 1;
-  const cols = Math.max(...props.tiles.map(tile => tile.col)) + 1;
+  const rows = Math.max(...props.tiles.map(tile => tile.row + (tile.h ?? 1)));
+  const cols = Math.max(...props.tiles.map(tile => tile.col + (tile.w ?? 1)));
   return (
     <Thumb viewBox={`0 0 ${cols} ${rows}`} keepShape>
       {props.tiles.map(tile => (
-        <rect key={tile.id} className="sv-thumb__area" data-missing={fill(tile.id) ? undefined : true} x={tile.col + 0.06} y={tile.row + 0.06} width={0.88} height={0.88} fill={fill(tile.id)} />
+        <rect key={tile.id} className="sv-thumb__area" data-missing={fill(tile.id) ? undefined : true} x={tile.col + 0.06} y={tile.row + 0.06} width={(tile.w ?? 1) - 0.12} height={(tile.h ?? 1) - 0.12} fill={fill(tile.id)} />
       ))}
     </Thumb>
   );

@@ -474,19 +474,24 @@
 
   /* ----------------------------------------------------------- TileMap */
 
+  /* The grid, not each tile, is square-celled: its aspect ratio is the
+     layout's columns over rows, and every row an equal share of it. So a
+     tile spanning cells fills them exactly, and an empty row (the gap above
+     the US territories) keeps its height. */
   .sv-tile-map__grid {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(var(--sv-tile-cols), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--sv-tile-rows), minmax(0, 1fr));
+    aspect-ratio: var(--sv-tile-cols) / var(--sv-tile-rows);
     gap: 3px;
     max-width: calc(var(--sv-tile-cols) * 4.75rem);
   }
 
   .sv-tile-map__tile {
     position: relative;
-    aspect-ratio: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

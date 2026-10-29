@@ -6,6 +6,9 @@
  *
  * Positions are a compromise between geography and a clean grid. Neighbours
  * stay neighbours where possible; exact adjacency cannot survive the grid.
+ * A tile may span a few cells where one cell would pull its neighbours too
+ * far from their places; spans stay small, so every area keeps roughly the
+ * same weight and the smallest stay as easy to see and to click.
  */
 
 export type MapTile = {
@@ -15,9 +18,12 @@ export type MapTile = {
   code: string;
   /** Full name, used in the readout and the table. */
   name: string;
-  /** Zero-based grid position. */
+  /** Zero-based grid position of the tile's top-left cell. */
   row: number;
   col: number;
+  /** Width and height in cells. Default 1. */
+  w?: number;
+  h?: number;
 };
 
 /** The UK's twelve ITL1 regions, ids matching `UK_ITL1_REGIONS`. */
@@ -84,10 +90,22 @@ export const EUROPE_COUNTRY_TILES: MapTile[] = [
 /**
  * The fifty US states plus the District of Columbia, keyed by USPS
  * two-letter code. The widely used NPR-style layout, with Alaska and Hawaii
- * in the left-hand corners.
+ * in the left-hand corners, and three states drawn larger where the extra
+ * cells were empty in that layout, so no neighbour moves:
+ *
+ * - Alaska, 2×2, in the top-left corner it already had to itself.
+ * - California, 1×2, running down the coast beside Utah and Arizona, so
+ *   it now borders Arizona as it does on the map.
+ * - Texas, 2×2, under New Mexico and beside Oklahoma — both real borders —
+ *   where the one-cell layout left it alone on the bottom row under
+ *   Oklahoma. (It now also sits under Arizona, which it does not touch.)
+ *
+ * Montana is left at one cell: widening it either pushes North Dakota off
+ * South Dakota or leaves a hole in the Rockies, a worse distortion than a
+ * small Montana.
  */
 export const US_STATE_TILES: MapTile[] = [
-  { id: 'AK', code: 'AK', name: 'Alaska', row: 0, col: 0 },
+  { id: 'AK', code: 'AK', name: 'Alaska', row: 0, col: 0, w: 2, h: 2 },
   { id: 'ME', code: 'ME', name: 'Maine', row: 0, col: 11 },
   { id: 'VT', code: 'VT', name: 'Vermont', row: 1, col: 10 },
   { id: 'NH', code: 'NH', name: 'New Hampshire', row: 1, col: 11 },
@@ -112,7 +130,7 @@ export const US_STATE_TILES: MapTile[] = [
   { id: 'PA', code: 'PA', name: 'Pennsylvania', row: 3, col: 8 },
   { id: 'NJ', code: 'NJ', name: 'New Jersey', row: 3, col: 9 },
   { id: 'CT', code: 'CT', name: 'Connecticut', row: 3, col: 10 },
-  { id: 'CA', code: 'CA', name: 'California', row: 4, col: 1 },
+  { id: 'CA', code: 'CA', name: 'California', row: 4, col: 1, h: 2 },
   { id: 'UT', code: 'UT', name: 'Utah', row: 4, col: 2 },
   { id: 'CO', code: 'CO', name: 'Colorado', row: 4, col: 3 },
   { id: 'NE', code: 'NE', name: 'Nebraska', row: 4, col: 4 },
@@ -136,7 +154,7 @@ export const US_STATE_TILES: MapTile[] = [
   { id: 'AL', code: 'AL', name: 'Alabama', row: 6, col: 7 },
   { id: 'GA', code: 'GA', name: 'Georgia', row: 6, col: 8 },
   { id: 'HI', code: 'HI', name: 'Hawaii', row: 7, col: 0 },
-  { id: 'TX', code: 'TX', name: 'Texas', row: 7, col: 4 },
+  { id: 'TX', code: 'TX', name: 'Texas', row: 6, col: 2, w: 2, h: 2 },
   { id: 'FL', code: 'FL', name: 'Florida', row: 7, col: 9 },
 ];
 

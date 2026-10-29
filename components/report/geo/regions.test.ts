@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { partitionRegions } from './regions';
 import { EUROPE_COUNTRIES } from './europe-countries';
-import { EUROPE_COUNTRY_TILES } from './tiles';
+import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TILES, type MapTile } from './tiles';
 import { WORLD_COUNTRIES } from './world-countries';
 
 test('partitionRegions splits covered areas from context, losing none', () => {
@@ -33,6 +33,24 @@ test('the Europe tiles cover the EU27, the four EFTA states and the UK', () => {
   const ids = EUROPE_COUNTRY_TILES.map(tile => tile.id);
   assert.equal(ids.length, 32);
   for (const id of ['IS', 'LI', 'NO', 'CH', 'GB']) assert.ok(ids.includes(id), id);
-  const cells = EUROPE_COUNTRY_TILES.map(tile => `${tile.row},${tile.col}`);
-  assert.equal(new Set(cells).size, cells.length, 'no two tiles share a cell');
+});
+
+/** Every grid cell a tile covers, spans included. */
+const cellsOf = (tile: MapTile) =>
+  Array.from({ length: (tile.w ?? 1) * (tile.h ?? 1) }, (_, i) => `${tile.row + Math.floor(i / (tile.w ?? 1))},${tile.col + (i % (tile.w ?? 1))}`);
+
+test('no two tiles of a layout cover the same cell, spans included', () => {
+  for (const layout of [EUROPE_COUNTRY_TILES, UK_REGION_TILES, [...US_STATE_TILES, ...US_TERRITORY_TILES]]) {
+    const cells = layout.flatMap(cellsOf);
+    assert.equal(new Set(cells).size, cells.length);
+  }
+});
+
+test('the US layout draws Alaska, California and Texas larger, and keeps spans modest', () => {
+  const size = (id: string) => {
+    const tile = US_STATE_TILES.find(t => t.id === id);
+    return `${tile?.w ?? 1}×${tile?.h ?? 1}`;
+  };
+  assert.deepEqual(['AK', 'CA', 'TX', 'RI', 'DC'].map(size), ['2×2', '1×2', '2×2', '1×1', '1×1']);
+  for (const tile of US_STATE_TILES) assert.ok((tile.w ?? 1) * (tile.h ?? 1) <= 4, `${tile.id} spans at most four cells`);
 });

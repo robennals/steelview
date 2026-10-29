@@ -79,8 +79,8 @@ export function TileMap(props: TileMapProps) {
   const what = categorical ? props.categoryLabel : props.valueLabel;
   const reactId = useId();
   const descriptionId = `sv-tile-map-${id ?? slugify(title ?? what)}-${reactId.replace(/[^a-zA-Z0-9]/g, '')}-desc`;
-  const rows = Math.max(...tiles.map(tile => tile.row)) + 1;
-  const cols = Math.max(...tiles.map(tile => tile.col)) + 1;
+  const rows = Math.max(...tiles.map(tile => tile.row + (tile.h ?? 1)));
+  const cols = Math.max(...tiles.map(tile => tile.col + (tile.w ?? 1)));
   const caption = `${title ?? what}, by ${areaLabel.toLowerCase()}`;
 
   let cellFor: (tile: MapTile) => TileCell;
@@ -148,7 +148,7 @@ export function TileMap(props: TileMapProps) {
           <li
             key={tile.id}
             className={cell.slot ? 'sv-tile-map__tile sv-cat-fill' : 'sv-tile-map__tile'}
-            style={{ gridRow: tile.row + 1, gridColumn: tile.col + 1, backgroundColor: cell.background }}
+            style={{ gridRow: `${tile.row + 1} / span ${tile.h ?? 1}`, gridColumn: `${tile.col + 1} / span ${tile.w ?? 1}`, backgroundColor: cell.background }}
             data-region={tile.id}
             data-readout={cell.readout}
             data-slot={cell.slot}

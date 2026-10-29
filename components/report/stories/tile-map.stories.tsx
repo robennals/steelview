@@ -21,7 +21,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A grid cartogram: every area one equal tile, placed roughly where it sits on the map, shaded on the same stepped scale as GeoMap and labelled with its code and value. Use it to compare areas of very different size fairly — European countries by asylum claims per head, states or regions by a rate — where a true-shape map would let the largest landmass dominate. Presets: `EUROPE_COUNTRY_TILES` (the EU27, the four EFTA states and the UK, ISO 2-letter ids), `US_STATE_TILES` (50 states plus DC, USPS codes; add `US_TERRITORY_TILES` for a row of the five territories) and `UK_REGION_TILES` (ids match `UK_ITL1_REGIONS`). Any `MapTile[]` grid works.',
+          'A grid cartogram: every area one equal tile, placed roughly where it sits on the map, shaded on the same stepped scale as GeoMap and labelled with its code and value. Use it to compare areas of very different size fairly — European countries by asylum claims per head, states or regions by a rate — where a true-shape map would let the largest landmass dominate. Presets: `EUROPE_COUNTRY_TILES` (the EU27, the four EFTA states and the UK, ISO 2-letter ids), `US_STATE_TILES` (50 states plus DC, USPS codes; add `US_TERRITORY_TILES` for a row of the five territories) and `UK_REGION_TILES` (ids match `UK_ITL1_REGIONS`). Any `MapTile[]` grid works; a tile may span cells (`w`, `h`), as Alaska, California and Texas do in the US layout.',
       },
     },
   },

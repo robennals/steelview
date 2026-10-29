@@ -140,3 +140,14 @@ test('an area too small for its outline is a focusable dot with a wider hit area
   assert.match(html, /<path class="sv-geo-map__region"[^>]*data-region="both"[^>]*aria-hidden="true"/);
   assert.match(html, /<g class="sv-geo-map__dot"[^>]*data-region="both"[^>]*tabindex="0"/);
 });
+
+test('a tile spanning cells is placed by its top-left cell and its span, and the grid counts the span', () => {
+  const html = renderToStaticMarkup(createElement(TileMap, {
+    tiles: [{ id: 'a', code: 'A', name: 'A', row: 0, col: 0, w: 2, h: 2 }, { id: 'b', code: 'B', name: 'B', row: 2, col: 2 }],
+    valueLabel: 'Share',
+    data: { a: { value: 1 }, b: { value: 2 } },
+  }));
+  assert.match(tileHtml(html, 'a'), /grid-row:1 \/ span 2;grid-column:1 \/ span 2/);
+  assert.match(tileHtml(html, 'b'), /grid-row:3 \/ span 1;grid-column:3 \/ span 1/);
+  assert.match(html, /--sv-tile-cols:3;--sv-tile-rows:3/);
+});
