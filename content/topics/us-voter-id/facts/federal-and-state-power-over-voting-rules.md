@@ -345,16 +345,15 @@ sources:
   # 27
   - stance: supports
     quote: >-
-      At 4:36 AM August 8th, before legislators were released for the summer
-      recess, the U.S. Senate voted on a subset of the SAVE America Act. This
-      version required narrow types of photo ID but no proof of citizenship. It
-      still failed. … It still failed to reach the 60-vote threshold, 52-46.
-    title: >-
-      The U.S. Senate Will Leave for Summer Recess Without Passing the SAVE
-      America Act, But the Restrictive Voting Bill Will Be Back in the Fall
-    url: https://www.americandemocracyminute.org/wethepeople/2026/08/10/the-u-s-senate-will-leave-for-summer-recess-without-passing-the-save-america-act-but-the-restrictive-voting-bill-will-be-back-in-the-fall/
-    publisher: American Democracy Minute
-    date: '2026-08-10'
+      Vote Number: 231 Vote Date: August 8, 2026, 04:36 AM Required For
+      Majority: 3/5 Vote Result: Cloture on the Motion to Proceed Rejected
+      Measure Number: S. 5271 Measure Title: A bill to amend the Help America
+      Vote Act of 2002 to require voters to provide photo identification. Vote
+      Counts: YEAs 52 NAYs 46 Not Voting 2
+    title: 'Roll Call Vote 119th Congress - 2nd Session, Vote Number 231'
+    url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00231.htm
+    publisher: United States Senate
+    date: '2026-08-08'
   # 28
   - stance: supports
     quote: >-
@@ -566,7 +565,7 @@ comparisons:
     items:
       - label: 'Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022'
         value: 49
-      - label: 'Narrower photo-ID-only bill (Republican), 8 Aug 2026'
+      - label: 'S. 5271, photo ID only (Republican), 8 Aug 2026'
         value: 52
       - label: Needed to end debate
         value: 60
@@ -587,12 +586,6 @@ relatedFacts:
   - voter-roll-maintenance
   - burdens-of-id-and-citizenship-rules
 dataStillNeeded:
-  - measure: 'The official Senate record of roll call 231 (8 Aug 2026)'
-    why: >-
-      The 52–46 cloture vote is cited from an advocacy outlet that calls the
-      bill a subset of the SAVE America Act. The Senate's own record would
-      confirm the bill number, the motion and the tally; senate.gov blocks
-      automated fetching, so it awaits a manual download.
   - measure: >-
       A comparison across states of measured outcomes (turnout, rejected
       ballots, detected fraud, voter confidence) before and after each state
@@ -617,7 +610,7 @@ This report is a dated legal record. It is as of 23 October 2026, ten days befor
 
 ### Both parties' recent national bills stalled at the Senate's 60-vote threshold {#federal-and-state-power-over-voting-rules--national-bills-stalled}
 
-Both bills in the chart failed to end debate: the Democrats' in January 2022 and a photo-ID-only version of the Republicans' SAVE America Act in August 2026. [23](#source-federal-and-state-power-over-voting-rules-23) [27](#source-federal-and-state-power-over-voting-rules-27) The Freedom to Vote Act had already failed cloture once, in October 2021. [22](#source-federal-and-state-power-over-voting-rules-22) Neither became law.
+Both bills in the chart failed to end debate: the Democrats' in January 2022 and S. 5271, a Republican photo-ID-only bill, in August 2026. [23](#source-federal-and-state-power-over-voting-rules-23) [27](#source-federal-and-state-power-over-voting-rules-27) The Freedom to Vote Act had already failed cloture once, in October 2021. [22](#source-federal-and-state-power-over-voting-rules-22) Neither became law.
 
 ### The House has passed the SAVE Act or SAVE America Act three times {#federal-and-state-power-over-voting-rules--house-passed-save-america-act}
 
@@ -644,7 +637,7 @@ The two parties' main bills of the past five years therefore both sought nationa
 | 2002 | Help America Vote Act (HAVA) | Statewide registration databases; a licence number or last four Social Security digits on registrations; photo ID or a utility bill, bank statement or similar document for first-time voters who registered by mail [18](#source-federal-and-state-power-over-voting-rules-18) [19](#source-federal-and-state-power-over-voting-rules-19) [20](#source-federal-and-state-power-over-voting-rules-20) | In force |
 | 2021–22 | Freedom to Vote Act (Democratic) | National early voting, same-day registration; ID states to accept alternatives [22](#source-federal-and-state-power-over-voting-rules-22) | Failed cloture, Oct 2021 and Jan 2022 (49–51) [22](#source-federal-and-state-power-over-voting-rules-22) [23](#source-federal-and-state-power-over-voting-rules-23) |
 | 2025 | SAVE Act (Republican) | Documentary proof of citizenship to register [24](#source-federal-and-state-power-over-voting-rules-24) | Passed House, 220–208, 10 Apr 2025 [24](#source-federal-and-state-power-over-voting-rules-24) |
-| 2026 | SAVE America Act (Republican) | Proof of citizenship to register and photo ID to vote [25](#source-federal-and-state-power-over-voting-rules-25) | Passed House 11 Feb and 22 Jul 2026; a narrower photo-ID-only bill failed cloture in the Senate, 52–46, 8 Aug 2026 [25](#source-federal-and-state-power-over-voting-rules-25) [26](#source-federal-and-state-power-over-voting-rules-26) [27](#source-federal-and-state-power-over-voting-rules-27) |
+| 2026 | SAVE America Act (Republican) | Proof of citizenship to register and photo ID to vote [25](#source-federal-and-state-power-over-voting-rules-25) | Passed House 11 Feb and 22 Jul 2026; a separate photo-ID-only bill (S. 5271) failed cloture in the Senate, 52–46, 8 Aug 2026 [25](#source-federal-and-state-power-over-voting-rules-25) [26](#source-federal-and-state-power-over-voting-rules-26) [27](#source-federal-and-state-power-over-voting-rules-27) |
 
 ## Observations {#federal-and-state-power-over-voting-rules--observations-federal-laws}
 

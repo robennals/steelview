@@ -360,9 +360,12 @@ holder of that view would find it better argued than their own version
   where the viewpoints actually ended up disagreeing. Principles were written
   in stage 2; adjust them here only if a viewpoint's final form rests on a
   different value.
-- **Order and lists last.** Set `order` to alternate sides, then order each
-  `citesFacts` by what the argument actually rests on, since that decides the
-  page's fact order.
+- **Order last.** Set each viewpoint's `order` so the sides alternate, and
+  list the headline reports in `topic.md`'s `dataOrder` in the order a reader
+  should meet them. Viewpoint frontmatter is only `name`, `summary` and
+  `order` ([Citations and data order](AUTHORING.md#citations-and-data-order)):
+  what a viewpoint builds on, concedes or sets aside shows in its inline
+  observation links.
 
 **Gate: the human is happy with every viewpoint**, read side by side.
 
@@ -412,7 +415,11 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
 - **Chart values come from the source's data**, each confirmed at source;
   name the table in the chart's quote or note, and say how any derived value
   was calculated. A level the source does not publish is not read off its
-  chart image.
+  chart image — but check the page's chart data tables (often in the page
+  text below or beside the chart) before concluding it is unpublished.
+- **One quote, one page.** A chart's source quote comes from the page its
+  URL names. When a series joins two releases, quote one and name the other
+  in the chart note, with its own citation.
 - **Checks:** `heavy run -- pnpm check:figures` and `heavy run -- pnpm
   test:unit`, fixing only the agent's own file; other builders' files may be
   mid-edit.
