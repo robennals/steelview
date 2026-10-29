@@ -572,3 +572,39 @@ test('datasets cannot reuse reading IDs, which would make observation links ambi
   topic.facts[0].additionalSeries = [{ id: 'nationality', ...series() }];
   assert.ok(validateTopic(topic).some(error => error.includes('chart IDs must be unique')));
 });
+
+/* ------------------------------------------------ 4.4: per-line coverage */
+
+/** A second line whose source starts later, covering 1992–1993 only. */
+function laterLine(points = [{ period: '1992', value: 1 }, { period: '1993', value: 2 }]) {
+  return { name: 'Later source', coverage: { from: '1992', to: '1993' }, points };
+}
+
+test('a line with its own coverage may start later than the series', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines.push(laterLine());
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('a line that stops short of its own coverage fails, naming that coverage', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines.push(laterLine([{ period: '1992', value: 1 }, { period: '1992-06', value: 2 }]));
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('line "Later source"') && e.includes('its source publishes to "1993"')), errors.join('\n'));
+});
+
+test('a series coverage wider than the union of its lines fails', () => {
+  const t = topicWithSeries({ coverage: { from: '1989', to: '1993' } });
+  const lines = t.facts[0].series!.readings[0].lines;
+  lines[0].coverage = { from: '1990', to: '1993' };
+  lines.push(laterLine());
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('must be the union') && e.includes('1990–1993')), errors.join('\n'));
+});
+
+test('a line coverage outside the series coverage fails', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines.push({ ...laterLine([{ period: '1992', value: 1 }, { period: '1995', value: 2 }]), coverage: { from: '1992', to: '1995' } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('runs outside the series coverage')), errors.join('\n'));
+});

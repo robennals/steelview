@@ -62,9 +62,28 @@ export const seriesPointSchema = z.object({
   value: z.number(),
 });
 
+/**
+ * The full range the *source* publishes — not the range the author chose to
+ * plot. Every line must run end to end across it (checked in validate.ts),
+ * which is what stops the chart from becoming the cherry-pick it exists to
+ * expose.
+ */
+export const seriesCoverageSchema = z.object({
+  from: partialDate,
+  to: partialDate,
+  /** Why the range stops where it does, and any vintage caveat on the numbers. */
+  note: z.string().optional(),
+});
+
 /** One line on the chart: immigration, emigration and net migration are three. */
 export const seriesLineSchema = z.object({
   name: z.string().min(1),
+  /**
+   * This line's source publishes a different range from the series — Brent
+   * from 1987 beside WTI from 1986. The line must run the whole of its own
+   * range, and the series coverage is the union of every line's.
+   */
+  coverage: seriesCoverageSchema.optional(),
   points: z
     .array(seriesPointSchema)
     .min(2, 'a series line needs at least two points — one point is not a trend'),
@@ -94,19 +113,6 @@ export const seriesReadingSchema = z.object({
   note: z.string().optional(),
   source: sourceSchema.optional(),
   lines: z.array(seriesLineSchema).min(1),
-});
-
-/**
- * The full range the *source* publishes — not the range the author chose to
- * plot. Every line must run end to end across it (checked in validate.ts),
- * which is what stops the chart from becoming the cherry-pick it exists to
- * expose.
- */
-export const seriesCoverageSchema = z.object({
-  from: partialDate,
-  to: partialDate,
-  /** Why the range stops where it does, and any vintage caveat on the numbers. */
-  note: z.string().optional(),
 });
 
 /**

@@ -5,10 +5,12 @@ import {
   CHART_GEOMETRY,
   formatTick,
   formatValue,
+  hasOwnSpans,
   layoutReading,
   midSentence,
   niceTicks,
   pathFor,
+  readingRows,
   seriesSlots,
   seriesStrokeDash,
   seriesTable,
@@ -290,4 +292,38 @@ test('midSentence lower-cases only a first letter that is not an acronym or a mo
   assert.equal(midSentence('November general election'), 'November general election');
   assert.equal(midSentence('EAVS cycle'), 'EAVS cycle');
   assert.equal(midSentence('Survey fieldwork month'), 'survey fieldwork month');
+});
+
+/** Two lines on one axis, the second from a source that starts in 1992. */
+function perLine(): Series {
+  const s = series();
+  s.readings = [{
+    ...s.readings[0],
+    lines: [
+      s.readings[0].lines[0],
+      { name: 'Later source', coverage: { from: '1992', to: '1993' }, points: [{ period: '1992', value: 5 }, { period: '1993', value: 6 }] },
+    ],
+  }];
+  return s;
+}
+
+test('a reading table has a row for every period of any line, and marks periods outside a line’s own range', () => {
+  const s = perLine();
+  // The later line first, so rows taken from the first line alone would drop 1990–1991.
+  s.readings[0].lines.reverse();
+  const rows = readingRows(s, s.readings[0]);
+  assert.deepEqual(rows.map(r => r.period), ['1990', '1991', '1992', '1993']);
+  assert.deepEqual(rows[0].cells, ['outside', { period: '1990', value: 100 }]);
+  assert.deepEqual(rows[3].cells.map(c => typeof c === 'object' && c !== null ? c.value : c), [6, 400]);
+  assert.equal(hasOwnSpans(s), true);
+  assert.equal(hasOwnSpans(series()), false);
+});
+
+test('a line with its own range starts where its range does and ends on its own last point', () => {
+  const s = perLine();
+  const g = CHART_GEOMETRY.wide;
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const later = layout.lines[1];
+  assert.ok(later.runs[0][0].x > g.left);
+  assert.equal(Number(later.last.x.toFixed(4)), g.left + g.plotWidth);
 });

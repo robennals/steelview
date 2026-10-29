@@ -516,6 +516,15 @@ also lying about what the source publishes, which is a lie a reader can check
 against the cited workbook. `immigration-against-the-long-run` runs 1964 to
 2025, all 62 points, because that is where the ONS method starts.
 
+**Comparable measures from sources with different ranges share one axis.**
+Give a line its own `coverage` when its source publishes a different range
+from the others — Brent daily from May 1987 beside WTI from 1986, or Amnesty's
+Iran count beside IHRNGO's from 2008. That line must then run the whole of its
+own range, and the series `coverage` must be exactly the union of the lines'
+ranges, so the axis is never stretched past the data. The legend names the
+line's range ("Brent (from May 1987)"), and the table marks the years outside
+it "—". Do not split such measures into separate charts to avoid the rule.
+
 **A series carries its own quoted source**, in the same shape as a fact's
 sources, because a chart is a factual assertion like any other. A reading
 that rests on a different dataset — a derived denominator — carries a second
@@ -1024,7 +1033,7 @@ them.
 | No orphan headline facts | `lib/content/validate.ts:193` |
 | Topic principles resolve to shared definitions; viewpoints use only their topic’s listed principles | `lib/content/load.ts`, `lib/content/validate.ts` |
 | Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
-| Series lines span the declared coverage exactly, end to end | `lib/content/validate.ts:279` |
+| Series lines span the declared coverage (or the line's own `coverage`) exactly, end to end; the series coverage is the union of its lines' | `lib/content/validate.ts`, `seriesErrors` |
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |

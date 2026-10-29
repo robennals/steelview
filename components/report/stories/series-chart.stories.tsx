@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { SeriesChart } from '@/components/topic/series-chart';
 import { foreignBornShareSeries, foreignBornShareSourceCount, longRunMigrationSeries, longRunMigrationSourceCount } from './fixtures/existing-charts';
+import { EXECUTIONS_PER_LINE_COVERAGE } from './fixtures/series-capabilities';
 
 const meta = {
   title: 'Existing/SeriesChart',
@@ -34,4 +35,14 @@ export const SingleLine: Story = {
     series: foreignBornShareSeries,
     sourceOffset: foreignBornShareSourceCount,
   },
+};
+
+/**
+ * Two counters on one axis, each running its own source's range: IHRNGO from
+ * 2020 and Amnesty's Iran figure from 2023. The legend, the table and About
+ * this data name each line's range. An excerpt: the real report runs IHRNGO
+ * from 2008 and Amnesty from its first report.
+ */
+export const PerLineCoverageExecutions: Story = {
+  args: { factId: 'story-executions', series: EXECUTIONS_PER_LINE_COVERAGE, sourceOffset: 0 },
 };

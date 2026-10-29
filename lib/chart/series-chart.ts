@@ -348,7 +348,44 @@ export function pathFor(run: PlottedPoint[]): string {
     .join(' ');
 }
 
+/* --------------------------------------------------------- per-line range */
+
+/** The range a line's source publishes: its own coverage, else the series'. */
+export function lineSpan(series: Series, line: SeriesLine): { from: string; to: string } {
+  return line.coverage ?? series.coverage;
+}
+
+/** Whether any line in the series declares a range of its own that differs from the series. */
+export function hasOwnSpans(series: Series): boolean {
+  return series.readings.some(reading => reading.lines.some(line => {
+    const span = lineSpan(series, line);
+    return comparePeriods(span.from, series.coverage.from) !== 0 || comparePeriods(span.to, series.coverage.to) !== 0;
+  }));
+}
+
 /* ------------------------------------------------------------------- table */
+
+/** A table cell: the point, a period outside the line's own range, or no value published. */
+export type ReadingCell = SeriesPoint | 'outside' | null;
+
+/**
+ * One reading's table: a row for every period any line has, in order. Lines
+ * that start or end at different dates would lose the earlier years if the
+ * rows came from one line only; outside a line's own range the cell says so,
+ * rather than looking like a value the source left out.
+ */
+export function readingRows(series: Series, reading: SeriesReading): Array<{ period: string; cells: ReadingCell[] }> {
+  const periods = [...new Set(reading.lines.flatMap(line => line.points.map(point => point.period)))].sort(comparePeriods);
+  const byLine = reading.lines.map(line => new Map(line.points.map(point => [point.period, point])));
+  return periods.map(period => ({
+    period,
+    cells: reading.lines.map((line, index) => {
+      const span = lineSpan(series, line);
+      if (comparePeriods(period, span.from) < 0 || comparePeriods(period, span.to) > 0) return 'outside';
+      return byLine[index].get(period) ?? null;
+    }),
+  }));
+}
 
 export type TableColumn = { readingId: string; readingLabel: string; name: string; unit: SeriesUnit };
 export type TableRow = { period: string; cells: Array<string | null> };

@@ -1,14 +1,18 @@
 import type { ReactNode } from 'react';
-import { EventStrip, type StripEvent } from '@/components/report';
+import { EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
 import { SeriesHighlight } from './series-highlight';
-import type { Series, SeriesReading, Source } from '@/lib/content/types';
+import { comparePeriods } from '@/lib/content/period';
+import type { Series, SeriesLine, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
   formatValue,
+  hasOwnSpans,
   layoutReading,
+  lineSpan,
   midSentence,
   pathFor,
+  readingRows,
   seriesSlots,
   seriesStrokeDash,
   type ChartVariant,
@@ -186,13 +190,39 @@ function Plot({
   );
 }
 
+function spanText(span: { from: string; to: string }): string {
+  return `${formatDate(span.from)}${NBSP_DASH}${formatDate(span.to)}`;
+}
+
+/** "WTI, 1986–2026" for every distinct line in the series, in first-appearance order. */
+function lineSpans(series: Series): string[] {
+  const seen = new Map<string, string>();
+  for (const line of series.readings.flatMap(reading => reading.lines)) {
+    if (!seen.has(line.name)) seen.set(line.name, `${line.name}, ${spanText(lineSpan(series, line))}`);
+  }
+  return [...seen.values()];
+}
+
+/** "(from 1986)" after a line whose source publishes a different range from the series; else nothing. */
+function spanSuffix(series: Series, line: SeriesLine): string {
+  const span = lineSpan(series, line);
+  const fromDiffers = comparePeriods(span.from, series.coverage.from) !== 0;
+  const toDiffers = comparePeriods(span.to, series.coverage.to) !== 0;
+  if (fromDiffers && toDiffers) return ` (${spanText(span)})`;
+  if (fromDiffers) return ` (from ${formatDate(span.from)})`;
+  if (toDiffers) return ` (to ${formatDate(span.to)})`;
+  return '';
+}
+
 function ReadingTable({ series, reading }: { series: Series; reading: SeriesReading }) {
-  const periods = reading.lines[0].points.map(point => point.period);
-  const values = reading.lines.map(line => new Map(line.points.map(point => [point.period, point.value])));
+  const rows = readingRows(series, reading);
   return (
     <div className="sv-chart__table-scroll">
       <table className="sv-chart__table">
-        <caption>{series.title} {NBSP_DASH} {reading.label}</caption>
+        <caption>
+          {series.title} {NBSP_DASH} {reading.label}
+          {hasOwnSpans(series) && '. — : outside this source’s published range'}
+        </caption>
         <thead>
           <tr>
             <th scope="col">{series.periodLabel}</th>
@@ -200,13 +230,14 @@ function ReadingTable({ series, reading }: { series: Series; reading: SeriesRead
           </tr>
         </thead>
         <tbody>
-          {periods.map(period => (
+          {rows.map(({ period, cells }) => (
             <tr key={period}>
               <th scope="row">{period}</th>
-              {values.map((line, index) => {
-                const value = line.get(period);
-                return <td key={reading.lines[index].name}>{value === undefined ? '—' : formatValue(value, reading.unit)}</td>;
-              })}
+              {cells.map((cell, index) => (
+                <td key={reading.lines[index].name} data-outside={cell === 'outside' || undefined}>
+                  {cell === null || cell === 'outside' ? '—' : formatValue(cell.value, reading.unit)}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
@@ -237,6 +268,9 @@ function Reading({
   const description = [
     series.description,
     `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
+    hasOwnSpans(series)
+      ? `Each line runs its own source's published range: ${reading.lines.map(line => `${line.name}, ${spanText(lineSpan(series, line))}`).join('; ')}.`
+      : null,
     series.breaks.length > 0
       ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
       : null,
@@ -278,7 +312,7 @@ function Reading({
                   <line x1="1" y1="4" x2="19" y2="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray={seriesStrokeDash(slots.get(line.name) ?? 1)} />
                   <circle cx="10" cy="4" r="3" fill="currentColor" />
                 </svg>
-                <span className="sv-chart__key-name">{line.name}</span>
+                <span className="sv-chart__key-name">{line.name}{spanSuffix(series, line)}</span>
               </li>
             ))}
           </ul>
@@ -329,7 +363,10 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         <p className="sv-chart__range">
           <strong>Full published range:</strong> {series.coverage.from}
           {NBSP_DASH}
-          {series.coverage.to}. Every plotted line runs the whole of it{' '}
+          {series.coverage.to}.{' '}
+          {hasOwnSpans(series)
+            ? `Each line runs the whole of its own source's range: ${lineSpans(series).join('; ')}`
+            : 'Every plotted line runs the whole of it'}{' '}
           {series.coverage.note ? `${NBSP_DASH} ${series.coverage.note}` : ''}
         </p>
         {series.readings.filter(reading => reading.note).map(reading => (

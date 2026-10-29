@@ -216,18 +216,40 @@ function seriesErrors(factId: string, series: Series): string[] {
       }
       if (!ordered) continue;
 
+      // A line whose source publishes a different range declares its own
+      // span; the full-range rule then holds against that span instead.
+      const span = line.coverage ?? series.coverage;
+      const says = line.coverage ? 'the line says its source publishes' : 'the series says the source publishes';
       const first = line.points[0].period;
       const last = line.points[line.points.length - 1].period;
-      if (comparePeriods(first, series.coverage.from) !== 0) {
+      if (comparePeriods(first, span.from) !== 0) {
         errors.push(
-          `${at}: starts at "${first}" but the series says the source publishes from "${series.coverage.from}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
+          `${at}: starts at "${first}" but ${says} from "${span.from}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
         );
       }
-      if (comparePeriods(last, series.coverage.to) !== 0) {
+      if (comparePeriods(last, span.to) !== 0) {
         errors.push(
-          `${at}: ends at "${last}" but the series says the source publishes to "${series.coverage.to}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
+          `${at}: ends at "${last}" but ${says} to "${span.to}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
         );
       }
+      if (line.coverage && (comparePeriods(span.from, series.coverage.from) < 0 || comparePeriods(span.to, series.coverage.to) > 0)) {
+        errors.push(
+          `${at}: its own coverage ${span.from}–${span.to} runs outside the series coverage ${series.coverage.from}–${series.coverage.to}`
+        );
+      }
+    }
+  }
+
+  // With per-line coverage the series declares the union of the lines'
+  // spans, exactly: wider would stretch the axis past every line's data.
+  const spans = series.readings.flatMap(reading => reading.lines.map(line => line.coverage ?? series.coverage));
+  if (series.readings.some(reading => reading.lines.some(line => line.coverage))) {
+    const earliest = spans.map(s => s.from).sort(comparePeriods)[0];
+    const latest = spans.map(s => s.to).sort(comparePeriods).at(-1)!;
+    if (comparePeriods(series.coverage.from, earliest) !== 0 || comparePeriods(series.coverage.to, latest) !== 0) {
+      errors.push(
+        `${where} coverage ${series.coverage.from}–${series.coverage.to} must be the union of its lines' ranges, ${earliest}–${latest}`
+      );
     }
   }
 
