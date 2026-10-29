@@ -12,6 +12,16 @@ import type { Figure, FigureOf, FigureValueFormat } from './types';
  * travels with its value instead.
  */
 
+/**
+ * The text of a chart's About this data: its note, then the named table its
+ * values are read from. One wording for component figures, series readings
+ * and comparisons alike.
+ */
+export function aboutThisDataNote(f: { note?: string; valuesFrom?: string }): string | undefined {
+  const parts = [f.note, f.valuesFrom && `Values from ${f.valuesFrom}.`].filter(Boolean);
+  return parts.length ? parts.join(' ') : undefined;
+}
+
 /** Every reader-facing string in a figure. References (`series`, `comparison`, `featured`, `section`) have none of their own. */
 export function figureProse(figure: Figure): string[] {
   const strings = ((): Array<string | undefined> => {

@@ -6,6 +6,7 @@ import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
 import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
+import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
 import { lineSourceNumbers } from '@/lib/content/sources';
@@ -294,6 +295,15 @@ function lineSpans(series: Series): string[] {
     if (!seen.has(line.name)) seen.set(line.name, `${line.name}, ${spanText(lineSpan(series, line))}`);
   }
   return [...seen.values()];
+}
+
+/** Each distinct line's own coverage note — why its source's range differs — in first-appearance order. */
+function lineCoverageNotes(series: Series): { name: string; note: string }[] {
+  const seen = new Map<string, string>();
+  for (const line of series.readings.flatMap(reading => reading.lines)) {
+    if (line.coverage?.note && !seen.has(line.name)) seen.set(line.name, line.coverage.note);
+  }
+  return [...seen].map(([name, note]) => ({ name, note }));
 }
 
 /** "(from 1986)" after a line whose source publishes a different range from the series; else nothing. */
@@ -628,10 +638,13 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         : 'Every plotted line runs the whole of it'}{' '}
       {series.coverage.note ? `${NBSP_DASH} ${series.coverage.note}` : ''}
     </p>
-    {readings.filter(reading => reading.note).map(reading => (
+    {lineCoverageNotes(series).map(({ name, note }) => (
+      <p key={name} className="sv-chart__note"><strong>{name}:</strong> {note}</p>
+    ))}
+    {readings.filter(reading => aboutThisDataNote(reading)).map(reading => (
       <section key={reading.id} className="sv-chart__method-note">
         <h3 className="sv-chart__reading-head">{reading.label}</h3>
-        <p className="sv-chart__note">{reading.note}</p>
+        <p className="sv-chart__note">{aboutThisDataNote(reading)}</p>
       </section>
     ))}
     {notes}

@@ -91,3 +91,9 @@ test('a dense preview with several highlighted items, or negative values, falls 
     assert.doesNotMatch(html, / of 14/);
   }
 });
+
+test('About this data names the table the values come from, with or without a note', () => {
+  const about = (c: Comparison) => render(c).match(/<details class="sv-chart__methodology">[\s\S]*?<\/details>/)?.[0] ?? '';
+  assert.match(about({ ...chart, valuesFrom: 'FBI table 4' }), /<p>Values from FBI table 4\.<\/p>/);
+  assert.match(about({ ...chart, note: 'Counts to 2024.', valuesFrom: 'FBI table 4' }), /<p>Counts to 2024\. Values from FBI table 4\.<\/p>/);
+});

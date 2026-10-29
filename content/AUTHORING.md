@@ -1001,7 +1001,8 @@ text in the quote instead of the number. A range without its own wording
 must have both ends quoted. `valuesFrom` on a figure — and on a
 series reading or a comparison — names the published table its values are read
 from when no quote can hold them all ("EAVS 2024 Overview Table 1"); it is
-shown in About this data.
+shown in About this data, for series and comparisons as for component figures.
+A series line's own `coverage.note` is shown there too, beside the line's name.
 
 **Quotes are verbatim.** A `quoteComparison` or `pullQuote` text, or a
 `claimCheck` claim, must appear in a cited source's `quote`. Mark an

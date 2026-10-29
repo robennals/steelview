@@ -1,5 +1,6 @@
 'use client';
 import { useState, type ReactNode } from 'react';
+import { aboutThisDataNote } from '@/lib/content/figure-text';
 import type { Fact, Source } from '@/lib/content/types';
 import { ChartAbout } from '@/components/report/chart-about';
 import { ObservationBar } from './observation-bar';
@@ -40,6 +41,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   const range = max - min || 1;
   const zero = -min / range * 100;
   const format = (value: number) => value > 0 && value < .01 ? `<0.01${chart.unit === 'percent' ? '%' : ''}` : `${value < 0 ? '−' : ''}${chart.unit === 'pounds' ? '£' : ''}${Math.abs(value).toLocaleString('en-GB', { maximumFractionDigits: 2 })}${chart.unit === 'percent' ? '%' : ''}`;
+  const aboutText = aboutThisDataNote(chart);
   const formatShare = (value: number) => chart.shareTotal ? `${(value / chart.shareTotal * 100).toLocaleString('en-GB', { maximumFractionDigits: 1 })}%` : null;
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
   const Heading = preview ? 'h3' : 'h2';
@@ -50,7 +52,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
     <figcaption className="sv-chart__caption">
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
       {!preview && (panel
-        ? <ChartAbout description={chart.description}>{chart.note && <p>{chart.note}</p>}</ChartAbout>
+        ? <ChartAbout description={chart.description}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
         : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
     {panel && <ObservationBar />}
@@ -73,6 +75,6 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
     {!preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={panel ? sources[n - 1].url : at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher}{panel ? '' : ` [${n}]`}</a></span>)}</p>}
     {observations}
-    {chart.note && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{chart.note}</p></details>}
+    {aboutText && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{aboutText}</p></details>}
   </figure>;
 }

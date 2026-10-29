@@ -1,5 +1,6 @@
 import type * as R from '@/components/report';
 import { stripEvents } from '@/components/topic/series-chart';
+import { aboutThisDataNote } from './figure-text';
 import { geoRegions, mapTiles } from './map-presets';
 import { factSources, figureCitations } from './sources';
 import { factPath } from './types';
@@ -63,12 +64,6 @@ export function toValueFormat(format: FigureValueFormat | undefined): R.ValueFor
   return { ...rest, unit, currency };
 }
 
-/** The note, with the named table the values come from, for "About this data". */
-function figureNote(f: { note?: string; valuesFrom?: string }): string | undefined {
-  const parts = [f.note, f.valuesFrom && `Values from ${f.valuesFrom}.`].filter(Boolean);
-  return parts.length ? parts.join(' ') : undefined;
-}
-
 /** The fields every ReportFigure-framed component takes. */
 function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
   return {
@@ -76,7 +71,7 @@ function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
     title: f.title,
     description: f.description,
     sources: figureCredits(f, c),
-    note: figureNote(f),
+    note: aboutThisDataNote(f),
     panel: c.panel,
   };
 }

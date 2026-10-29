@@ -150,3 +150,12 @@ test('a preview with nowhere to link draws its title as plain text', () => {
   const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series: oilSeries(), preview: {} }));
   assert.match(html, /<h3 class="sv-graph-heading">[^<]+<\/h3>/);
 });
+
+test('About this data names a reading’s table and a line’s own coverage note', () => {
+  const s = oilSeries();
+  s.readings[0].valuesFrom = 'EIA spot price table, column B';
+  s.readings[0].lines[1].coverage = { from: '1987', to: '1990', note: 'ICE Brent from its first published day.' };
+  const about = renderChart(s).match(/<details class="sv-chart__methodology"[\s\S]*?<\/details>/)?.[0] ?? '';
+  assert.match(about, /<h3 class="sv-chart__reading-head">In dollars<\/h3><p class="sv-chart__note">Values from EIA spot price table, column B\.<\/p>/);
+  assert.match(about, /<strong>Brent:<\/strong> ICE Brent from its first published day\./);
+});
