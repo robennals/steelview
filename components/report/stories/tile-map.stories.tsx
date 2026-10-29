@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { TileMap } from '../tile-map';
 import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TILES } from '../geo/tiles';
+import { WORLD_COUNTRY_TILES } from '../geo/world-tiles';
 import {
   ASYLUM_EUROPE_SOURCES,
   US_STATES_ILLUSTRATIVE,
@@ -8,9 +9,12 @@ import {
   ASYLUM_PER_10K_2024,
   BORN_ABROAD_BY_REGION_ILLUSTRATIVE,
   CHANGE_BY_REGION_ILLUSTRATIVE,
+  IDEA_POSTAL_SOURCES,
+  IDEA_POSTAL_VOTING_2025,
   ILLUSTRATIVE,
   NCSL_VOTER_ID_SOURCES,
   US_VOTER_ID_RULES_2026,
+  WORLD_SHARE_ILLUSTRATIVE,
 } from './fixtures/maps';
 
 const meta = {
@@ -21,7 +25,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A grid cartogram: every area one equal tile, placed roughly where it sits on the map, shaded on the same stepped scale as GeoMap and labelled with its code and value. Use it to compare areas of very different size fairly — European countries by asylum claims per head, states or regions by a rate — where a true-shape map would let the largest landmass dominate. Presets: `EUROPE_COUNTRY_TILES` (the EU27, the four EFTA states and the UK, ISO 2-letter ids), `US_STATE_TILES` (50 states plus DC, USPS codes; add `US_TERRITORY_TILES` for a row of the five territories) and `UK_REGION_TILES` (ids match `UK_ITL1_REGIONS`). Any `MapTile[]` grid works; a tile may span cells (`w`, `h`), as Alaska, California and Texas do in the US layout.',
+          'A grid cartogram: every area one equal tile, placed roughly where it sits on the map, shaded on the same stepped scale as GeoMap and labelled with its code and value. Use it to compare areas of very different size fairly — European countries by asylum claims per head, states or regions by a rate — where a true-shape map would let the largest landmass dominate. Presets: `EUROPE_COUNTRY_TILES` (the EU27, the four EFTA states and the UK, ISO 2-letter ids), `US_STATE_TILES` (50 states plus DC, USPS codes; add `US_TERRITORY_TILES` for a row of the five territories) and `UK_REGION_TILES` (ids match `UK_ITL1_REGIONS`) and `WORLD_COUNTRY_TILES` (one tile per sovereign state, ids matching `WORLD_COUNTRIES`; too dense to print values, so its tiles carry codes and marks and the grid scrolls sideways on a phone). Any `MapTile[]` grid works; a tile may span cells (`w`, `h`), as Alaska, California and Texas do in the US layout.',
       },
     },
   },
@@ -170,5 +174,44 @@ export const QualifiedValues: Story = {
     areaLabel: 'State',
     sources: ILLUSTRATIVE,
     note: 'Illustrative: only eight states are given.',
+  },
+};
+
+/**
+ * The world as one tile per sovereign state: Liechtenstein, Tuvalu and
+ * Palau are as easy to see and point at as their neighbours. The grid is
+ * too dense to print a category's name, so each tile carries its mark.
+ */
+export const WorldCategorical: Story = {
+  args: {
+    title: 'Who may vote by post in their own country',
+    description: 'Eleven countries open in-country postal voting to all voters and two to some, among those checked so far; every other country is not yet extracted from IDEA\'s tables. Liechtenstein is outlined.',
+    tiles: WORLD_COUNTRY_TILES,
+    ...IDEA_POSTAL_VOTING_2025,
+    data: undefined,
+    valueLabel: undefined,
+    format: undefined,
+    breaks: undefined,
+    highlight: ['LI'],
+    areaLabel: 'Country',
+    sources: IDEA_POSTAL_SOURCES,
+    note: 'Countries not yet extracted from IDEA\'s tables read No data.',
+  },
+};
+
+/** A numeric world grid: values are read in the readout and the table, not printed on the tiles. */
+export const WorldNumeric: Story = {
+  args: {
+    title: 'Share of residents born abroad, selected countries',
+    description: 'Illustrative data: round numbers chosen to demonstrate the component, not checked against UN estimates.',
+    tiles: WORLD_COUNTRY_TILES,
+    data: WORLD_SHARE_ILLUSTRATIVE,
+    valueLabel: 'Share of residents born abroad',
+    format: { unit: 'percent', decimals: 0 },
+    highlight: [],
+    breaks: [0, 1, 5, 10, 20, 100],
+    areaLabel: 'Country',
+    sources: ILLUSTRATIVE,
+    note: 'Illustrative: thirty countries are given; the rest read No data.',
   },
 };

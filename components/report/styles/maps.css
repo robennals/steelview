@@ -552,6 +552,55 @@
     z-index: 1;
   }
 
+  /* A grid too wide for its column — the world's 28 — scrolls sideways
+     rather than shrinking its tiles past use. Tiles keep at least 1.25rem
+     (1.75rem on a phone, where a finger does the pointing), and print only
+     their code and a category's mark or a bound's ▲/▼; the readout and the
+     table carry the number. */
+  .sv-tile-map__scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] {
+    --sv-tile-min: 1.25rem;
+    gap: 2px;
+    max-width: none;
+    min-width: calc(var(--sv-tile-cols) * var(--sv-tile-min) + (var(--sv-tile-cols) - 1) * 2px);
+    /* Room for a focus outline on the edge tiles inside the scroller. */
+    margin: 3px;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__tile {
+    padding: 0.1rem 0.15rem;
+    justify-content: flex-start;
+    gap: 0.05rem;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__code {
+    font-size: 0.5625rem;
+    letter-spacing: 0;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__value {
+    font-size: 0.5625rem;
+  }
+
+  /* At this size the "No data" hatch runs through the letters; the code sits
+     on a patch of paper, as a category's mark sits on its plain tint. */
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__tile[data-missing="true"] > .sv-tile-map__code {
+    align-self: flex-start;
+    background: var(--paper);
+    padding: 0 0.1rem;
+    margin: 0 -0.1rem;
+  }
+
+  @media (max-width: 33.99rem) {
+    .sv-tile-map__grid[data-cols="dense"] {
+      --sv-tile-min: 1.75rem;
+    }
+  }
+
   /* Wide grids (Europe has nine columns) get small type on a phone: the
      value stays, shortened, and the code shrinks first. */
   @media (max-width: 33.99rem) {

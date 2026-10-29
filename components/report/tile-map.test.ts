@@ -7,6 +7,7 @@ import type { CategoryEncoding } from './geo/categorical';
 import { US_STATE_TILES } from './geo/tiles';
 import { UK_ITL1_REGIONS } from './geo/uk-itl1';
 import { TileMap } from './tile-map';
+import { WORLD_COUNTRY_TILES } from './geo/world-tiles';
 
 const rules: CategoryEncoding = {
   categoryLabel: 'ID rule at the polls',
@@ -150,4 +151,18 @@ test('a tile spanning cells is placed by its top-left cell and its span, and the
   assert.match(tileHtml(html, 'a'), /grid-row:1 \/ span 2;grid-column:1 \/ span 2/);
   assert.match(tileHtml(html, 'b'), /grid-row:3 \/ span 1;grid-column:3 \/ span 1/);
   assert.match(html, /--sv-tile-cols:3;--sv-tile-rows:3/);
+});
+
+test('the world grid is too dense to print values: a tile keeps its code and only a bound\'s glyph', () => {
+  const html = renderToStaticMarkup(createElement(TileMap, {
+    tiles: WORLD_COUNTRY_TILES,
+    valueLabel: 'Share',
+    format: { unit: 'percent' },
+    data: { FR: { value: 13 }, TV: { value: 2, qualifier: 'at least' } },
+  }));
+  assert.match(html, /data-cols="dense"/);
+  assert.match(tileHtml(html, 'FR'), /<span class="sv-tile-map__value" aria-hidden="true"><\/span>/);
+  assert.match(tileHtml(html, 'FR'), /aria-label="France: 13%"/);
+  assert.match(tileHtml(html, 'TV'), />▲<\/span>/);
+  assert.match(html, /too small to print values/);
 });

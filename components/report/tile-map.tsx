@@ -10,11 +10,19 @@ import { MapLegend } from './geo/map-legend';
 import { MapReadout } from './geo/map-readout';
 import { MapTable } from './geo/map-table';
 import type { MapTile } from './geo/tiles';
-import { isRange, pointValue, qualificationsIn } from './qualified';
+import { boundGlyph, isRange, pointValue, qualificationsIn } from './qualified';
 import type { FigurePreview, SourceCredit } from './types';
 
+/**
+ * Past this many columns (the world grid has 28) a tile is too small to
+ * print a number: it shows its code and, on a numeric map, only a bound's
+ * ▲ or ▼, and the grid keeps a minimum tile size, scrolling sideways on a
+ * phone rather than shrinking every tile below a fingertip.
+ */
+const DENSE_COLUMNS = 16;
+
 type TileMapCommon = {
-  /** Grid layout: a preset (`EUROPE_COUNTRY_TILES`, `US_STATE_TILES`, `UK_REGION_TILES`) or your own. */
+  /** Grid layout: a preset (`EUROPE_COUNTRY_TILES`, `US_STATE_TILES`, `UK_REGION_TILES`, `WORLD_COUNTRY_TILES`) or your own. */
   tiles: MapTile[];
   /** Tiles to outline, e.g. the country a report is about. Never changes the colour. */
   highlight?: string[];
@@ -82,6 +90,7 @@ export function TileMap(props: TileMapProps) {
   const rows = Math.max(...tiles.map(tile => tile.row + (tile.h ?? 1)));
   const cols = Math.max(...tiles.map(tile => tile.col + (tile.w ?? 1)));
   const caption = `${title ?? what}, by ${areaLabel.toLowerCase()}`;
+  const dense = cols > DENSE_COLUMNS;
 
   let cellFor: (tile: MapTile) => TileCell;
   let legend: ReactNode;
@@ -119,7 +128,7 @@ export function TileMap(props: TileMapProps) {
       return {
         readout: text,
         ariaLabel: text,
-        text: tileText(datum, { ...format, compact: format?.compact ?? true }),
+        text: dense ? (datum ? boundGlyph(datum) ?? '' : '') : tileText(datum, { ...format, compact: format?.compact ?? true }),
         background: color,
         missing: !datum,
         stippled: isStippled(datum),
@@ -131,6 +140,7 @@ export function TileMap(props: TileMapProps) {
     const qualifications = preview ? [] : qualificationsIn(tiles.flatMap(tile => (data[tile.id] ? [data[tile.id]] : [])));
     legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={tiles.some(tile => !data[tile.id])} qualifications={qualifications} />;
     summary = mapSummary(`${tiles.length} areas, each drawn as an equal tile and shaded by ${valueLabel.toLowerCase()}.`, tiles, data, format, undefined, preview ? PREVIEW_CLOSING : undefined);
+    if (dense && !preview) summary += ' The tiles are too small to print values; tab to a tile or use the Table switch to read one.';
     table = <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={tiles} data={data} format={format} />;
   }
 
@@ -139,7 +149,7 @@ export function TileMap(props: TileMapProps) {
       className="sv-tile-map__grid"
       aria-label={title ?? what}
       aria-describedby={descriptionId}
-      data-cols={cols > 6 ? 'many' : undefined}
+      data-cols={dense ? 'dense' : cols > 6 ? 'many' : undefined}
       style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}
     >
       {tiles.map(tile => {
@@ -176,7 +186,9 @@ export function TileMap(props: TileMapProps) {
         // Sized by its container, so the whole grid fits the slide's height as well as its width.
         <div className="sv-tile-map__fit" style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}>{grid}</div>
       ) : (
-        <MapReadout hint={`Hover over or tab to a tile to read its full name and ${categorical ? 'category' : 'value'}.`}>{grid}</MapReadout>
+        <MapReadout hint={`Hover over or tab to a tile to read its full name and ${categorical ? 'category' : 'value'}.`}>
+          <div className="sv-tile-map__scroll">{grid}</div>
+        </MapReadout>
       )}
     </>
   );

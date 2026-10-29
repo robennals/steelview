@@ -38,6 +38,7 @@ export { WORLD_COUNTRIES } from './geo/world-countries';
 export { EUROPE_COUNTRIES, EUROPE_EXTENT } from './geo/europe-countries';
 export { UK_ITL1_REGIONS } from './geo/uk-itl1';
 export { EUROPE_COUNTRY_TILES, US_STATE_TILES, US_TERRITORY_TILES, UK_REGION_TILES, type MapTile } from './geo/tiles';
+export { WORLD_COUNTRY_TILES } from './geo/world-tiles';
 
 // Timelines
 export * from './timeline';
