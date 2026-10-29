@@ -289,7 +289,8 @@
     }
   }
 
-  .sv-geo-map__region[data-missing="true"] {
+  /* A highlighted region keeps its ink outline even with no data. */
+  .sv-geo-map__region[data-missing="true"]:not([data-highlight="true"]) {
     stroke: var(--rule-strong);
   }
 
