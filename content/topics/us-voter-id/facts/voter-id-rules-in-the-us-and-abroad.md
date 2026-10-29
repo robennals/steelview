@@ -446,28 +446,54 @@ sources:
   # 29
   - stance: supports
     quote: >-
-      0.08% of people in Great Britain who tried to vote at a polling station
-      were unable to do so because they did not present an accepted form of
-      ID. The data, collected by polling station staff, suggests that around
-      16,000 people were unable to vote in July due to the requirement,
-      equating to about one in every 1,200 in-person voters. This represents
-      an improvement since voter ID was introduced at the May 2023 local
-      elections, when the percentage of voters who tried but were unable to
-      vote was 0.25%. … However, public opinion research carried out for the
-      Commission found that around 4% of people who did not vote at the general
-      election said their decision was related to the voter ID requirement …
-      87% of people were aware of the voter ID policy, though awareness was
-      lower amongst young people (71%), and people from ethnic minority
-      communities (76%). … Awareness was even higher in Scotland (90%), where
-      the requirement was in place for the first time, and Wales (89%), both
-      comparable with awareness in Northern Ireland (89%) where the requirement
-      has been in place since 2003. … People from lower social grades who did
-      not vote were more likely to say it was because they did not have any
-      accepted ID than those in a higher social grade.
-    title: Electoral Commission calls for improvements to voter ID accessibility (press release, reprinted)
-    url: https://wired-gov.net/wg/news.nsf/articles/Electoral+Commission+calls+for+improvements+to+voter+ID+accessibility+10092024161000
+      This means that one in 1,200 voters who tried to vote at a polling
+      station were not given a ballot paper at the UK general election due to
+      the ID requirement. … Our research carried out immediately following the general election
+      found that 87% of people were aware of the need to bring ID when voting
+      in person. … Awareness levels were slightly higher in Scotland and Wales
+      (90% and 89%) compared to England (87%). These are in line with the
+      awareness levels in Northern Ireland (89%), where the requirement to
+      show photo ID has been in place since 2003. However, as we have
+      previously found, awareness levels varied across the population and
+      were lower for: 18 to 24-year-olds (71%) compared to older age groups
+      (at least 91% for those aged 45 and over) people from ethnic minority
+      communities (76%) compared to white people (90%) people in social
+      grades C2DE (86%) compared to ABC1 (88%). … By the close of poll, 0.08%
+      of people who tried to vote in person were not issued with a ballot
+      paper due to the ID requirement. This means around 16,000 people who
+      tried to vote at a polling station were not issued with a ballot paper
+      because they could not show an accepted form of ID. …
+      Table 1: Polling station voters who were initially turned away and
+      percentage of those who did not return May 2023 (England) May 2024*
+      (England and Wales) July 2024 (Great Britain) Initially turned away 0.7%
+      (37,000) 0.6% 0.25% (50,000) Turned away and did not return 0.25%
+      (14,000) 0.2% 0.08% (16,000) * May 2024 figures are based on data from
+      the 278 English and Welsh local authorities that submitted figures
+      before the UK general election. Due to the timing of the UK general
+      election, only limited data quality checks were possible on the May
+      2024 data – data which could not be checked was removed. Absolute
+      numbers are not available for the May 2024 elections … greeters were used in
+      some polling stations to welcome voters, remind them about the need to
+      show photographic ID, and help speed up the voting process (they did not
+      have the power to turn people away from polling stations). Voters may
+      therefore have been made aware of the requirement by greeters before
+      they got to the ballot issuing desk where they would have been recorded
+      as unable to vote. … missing returns from polling stations, for example
+      where some stations in a local authority did not submit a data return …
+      It is not possible to quantify the level of inaccuracy in the data but,
+      overall, these types of errors would result in an underestimate of the
+      impact of the ID requirement. … We found that 4% of the people who said
+      they did not vote gave an unprompted reason that was related to the ID
+      rules. … However, we cannot use these figures to accurately quantify the
+      impact of voter ID on turnout. … The clearest evidence relates to the
+      lower, C2DE social grade. When prompted, 10% of people who did not vote
+      said that the ID requirement was the reason, with 6% saying that this
+      was because they did not have the required ID. This was higher for C2DE
+      non-voters compared to ABC1 non-voters (8% compared to 3%).
+    title: Voter ID at the 2024 UK general election (page last updated 19 August 2025)
+    url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/voter-id-2024-uk-general-election
     publisher: Electoral Commission
-    date: '2024-09-10'
+    date: '2024-07-29'
   # 30
   - stance: complicates
     quote: >-
@@ -644,6 +670,30 @@ sources:
     url: https://laws.e-gov.go.jp/law/325AC1000000100
     publisher: e-Gov Laws and Regulations, Digital Agency of Japan
     date: '1950'
+  # 43
+  - stance: complicates
+    quote: >-
+      These generally positive perceptions of the poll are reflected in views
+      on electoral fraud – 87% of people said that they thought voting in
+      general was safe from fraud and abuse (England 86%, Scotland 90%, Wales
+      88%, and Northern Ireland 88%). This is a positive change from the 2019
+      general election when 72% said that they thought voting was safe from
+      fraud and abuse.
+    title: Report on the 2024 UK Parliamentary general election and the May 2024 elections
+    url: https://www.electoralcommission.org.uk/sites/default/files/2024-11/Report%20on%20the%202024%20UK%20Parliamentary%20general%20election.pdf
+    publisher: Electoral Commission
+    date: '2024-11'
+  # 44
+  - stance: supports
+    quote: >-
+      at least 0.25% of people who tried to vote at a polling station in May 2023
+      were not able to because of the voter ID requirement – this was
+      equivalent to approximately 14,000 people who were not issued with a
+      ballot paper
+    title: Report on the May 2023 local elections in England (page last updated 13 September 2023)
+    url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/report-may-2023-local-elections-england
+    publisher: Electoral Commission
+    date: '2023-07-13'
 series:
   title: 'US states requesting or requiring ID at the polls, 1950–2026'
   description: >-
@@ -902,54 +952,67 @@ additionalSeries:
     description: >-
       Share of people who tried to vote in person who were first turned away
       for lack of accepted ID, and share who did not come back and vote. May
-      2023 is English local elections; July 2024 is the UK general election in
-      Great Britain.
+      2023 is English local elections; May 2024 is English and Welsh local
+      elections; July 2024 is the UK general election in Great Britain.
     periodLabel: 'Election'
     coverage:
       from: '2023-05'
       to: '2024-07'
       note: >-
-        These are the two elections with published national totals. The
-        Commons Library says the share turned away also fell at the May 2024
-        local elections, but no figure for them was found. Both figures are
-        minimums: people turned back by "greeters" outside polling stations
-        were not counted.
+        These are the three elections in the Electoral Commission's table. The
+        May 2024 figures come from the 278 authorities that reported before
+        the general election, with only limited checks and no absolute
+        numbers. All are minimums: people reminded by greeters before reaching
+        the ballot desk were not recorded, and some returns were missing or
+        wrong.
     breaks:
+      - period: '2024-05'
+        label: 'England and Wales; partial data'
+        note: >-
+          May 2024 covers English and Welsh local authorities, and only the 278
+          that reported before the general election.
       - period: '2024-07'
         label: 'Local elections to a general election'
         note: >-
-          The May 2023 figure covers English local elections; the July 2024
-          figure covers the UK Parliament election across Great Britain, the
-          first at which Scottish and Welsh voters needed ID. Turnout and the
-          voters taking part differ between the two kinds of election.
+          The July 2024 figure covers the UK Parliament election across Great
+          Britain, including Scotland. Turnout and
+          the voters taking part differ between the two kinds of election.
     source:
       stance: supports
       quote: >-
-        Both the Electoral Commission and the government commissioned research
-        note that the proportion of voters turned away has declined with each
-        of the three elections so far, but both noted the data needed to be
-        treated with some caution.
-      title: 'Voter ID (Research Briefing CBP 9187): Voters turned away'
-      url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
-      publisher: House of Commons Library
-      date: '2025-08-06'
+        Table 1: Polling station voters who were initially turned away and
+        percentage of those who did not return May 2023 (England) May 2024*
+        (England and Wales) July 2024 (Great Britain) Initially turned away 0.7%
+        (37,000) 0.6% 0.25% (50,000) Turned away and did not return 0.25%
+        (14,000) 0.2% 0.08% (16,000) * May 2024 figures are based on data from
+        the 278 English and Welsh local authorities that submitted figures
+        before the UK general election. Due to the timing of the UK general
+        election, only limited data quality checks were possible on the May
+        2024 data – data which could not be checked was removed. Absolute
+        numbers are not available for the May 2024 elections
+      title: Voter ID at the 2024 UK general election (page last updated 19 August 2025)
+      url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/voter-id-2024-uk-general-election
+      publisher: Electoral Commission
+      date: '2024-07-29'
     readings:
       - id: gb-turnaway-share
         label: 'Share of people trying to vote in person'
         unit: percent
         valueLabel: '% of in-person voters'
         note: >-
-          In people: around 14,000 did not get a ballot in May 2023. In July
-          2024 around 50,000 were first turned away and 16,000 did not return
-          and vote.
+          In people: in May 2023 about 37,000 were first turned away and
+          14,000 did not return and vote; in July 2024, 50,000 and 16,000. The
+          Commission published no absolute numbers for May 2024.
         lines:
           - name: Initially turned away
             points:
               - {period: '2023-05', value: 0.7}
+              - {period: '2024-05', value: 0.6}
               - {period: '2024-07', value: 0.25}
           - name: Did not return and vote
             points:
               - {period: '2023-05', value: 0.25}
+              - {period: '2024-05', value: 0.2}
               - {period: '2024-07', value: 0.08}
   - id: canada-nonvoters
     title: 'Canadian non-voters citing electoral-process reasons, 2015–2021'
@@ -1066,7 +1129,8 @@ comparisons:
     title: 'Awareness of the photo-ID rule, July 2024 UK general election'
     description: >-
       Share of people aware they needed photo ID to vote at a polling station,
-      by group and nation (YouGov survey for the Electoral Commission).
+      by nation and group (public opinion survey for the Electoral
+      Commission, carried out immediately after the election).
     unit: percent
     valueLabel: '% aware of the requirement'
     domainMax: 100
@@ -1074,21 +1138,29 @@ comparisons:
     items:
       - label: Scotland
         value: 90
+      - label: White people
+        value: 90
       - label: Wales
         value: 89
       - label: Northern Ireland
         value: 89
+      - label: ABC1 social grades
+        value: 88
       - label: All Great Britain
         value: 87
         highlight: true
+      - label: England
+        value: 87
+      - label: C2DE social grades
+        value: 86
       - label: Ethnic minority communities
         value: 76
-      - label: Young people
+      - label: Aged 18 to 24
         value: 71
     note: >-
-      The Electoral Commission reports these six figures; it did not publish
-      other groups in the press release, and it did not define the age range
-      of "young people" there. Survey of 5,863 adults, 4–26 July 2024.
+      The Electoral Commission reports these figures. It gives older groups
+      only as "at least 91%" for people aged 45 and over, so they are not
+      plotted.
   - id: ni-register-2002
     title: "Northern Ireland's electoral register before and after the 2002 Act"
     description: >-
@@ -1135,12 +1207,12 @@ dataStillNeeded:
       every state.
   - measure: >-
       Personation allegations and convictions in Great Britain before and
-      after 2023 on one consistent annual basis, and the May 2024 and May 2025
-      turnaway figures
+      after 2023 on one consistent annual basis, and the May 2025 turnaway
+      figures
     why: >-
-      The Commons Library summarises them in passing, but the Electoral
-      Commission's own data pages could not be fetched, so the before-and-after
-      series in Britain is incomplete.
+      The Commons Library summarises the allegations in passing, and the
+      Electoral Commission's voter-ID report stops at July 2024, so the
+      before-and-after series in Britain is incomplete.
   - measure: >-
       The share of Canadian non-voters who could not prove identity or address,
       separated from other electoral-process reasons
@@ -1323,17 +1395,19 @@ Canada's 2007 law followed a Commons committee that was "struck by the absence o
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-gb-turnaway-share}
 
-### Britain's turnaways were small, and fell between the first two elections {#voter-id-rules-in-the-us-and-abroad--britain-turnaways-small-and-falling}
+### Britain's turnaways were small, and fell at each election {#voter-id-rules-in-the-us-and-abroad--britain-turnaways-small-and-falling}
 
-Both lines fell by about two-thirds from the 2023 local elections to the 2024 general election. [26](#source-voter-id-rules-in-the-us-and-abroad-26) [29](#source-voter-id-rules-in-the-us-and-abroad-29) At the general election, about 16,000 people, one in every 1,200 in-person voters, did not return and vote. [26](#source-voter-id-rules-in-the-us-and-abroad-26) [29](#source-voter-id-rules-in-the-us-and-abroad-29)
+Both lines fell at each round, and by about two-thirds from the 2023 local elections to the 2024 general election. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [44](#source-voter-id-rules-in-the-us-and-abroad-44) At the general election, about 16,000 people, one in every 1,200 in-person voters, did not return and vote. [29](#source-voter-id-rules-in-the-us-and-abroad-29)
 
 ### The turnaway figures undercount, and some people stayed home because of the rule {#voter-id-rules-in-the-us-and-abroad--britain-turnaways-undercount}
 
-People turned back by "greeters" outside polling stations were not counted, and 20 constituencies sent no data in 2024. [26](#source-voter-id-rules-in-the-us-and-abroad-26) About 4% of non-voters in 2024 said their decision was related to the ID rule, and lower-social-grade non-voters were more likely to say they had no accepted ID. [29](#source-voter-id-rules-in-the-us-and-abroad-29) The Commons Library says turnout changes "cannot be attributed to one change". [28](#source-voter-id-rules-in-the-us-and-abroad-28)
+People reminded of the rule by greeters before reaching the ballot desk were not recorded, and some polling stations sent no return; the Commons Library adds that 20 constituencies sent no data in 2024. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [26](#source-voter-id-rules-in-the-us-and-abroad-26)
+
+About 4% of non-voters in 2024 gave an unprompted reason related to the ID rules, and non-voters in lower social grades were more likely to say they lacked the required ID. [29](#source-voter-id-rules-in-the-us-and-abroad-29) The Commission says it "cannot use these figures to accurately quantify the impact of voter ID on turnout". [29](#source-voter-id-rules-in-the-us-and-abroad-29)
 
 ### Confidence in Britain's elections rose, but the effect on personation is unknown {#voter-id-rules-in-the-us-and-abroad--britain-confidence-and-personation}
 
-The share of people who thought voting was safe from fraud rose from 72% in 2019 to 87% in 2024. [28](#source-voter-id-rules-in-the-us-and-abroad-28)
+The share of people who thought voting was safe from fraud rose from 72% at the 2019 general election to 87% in 2024. [43](#source-voter-id-rules-in-the-us-and-abroad-43)
 
 The government's evaluation said it "cannot be determined" whether the checks made personation easier to detect. [28](#source-voter-id-rules-in-the-us-and-abroad-28) Seven polling-station personation allegations in 2024 led to no prosecution. [24](#source-voter-id-rules-in-the-us-and-abroad-24)
 
@@ -1341,7 +1415,7 @@ The government's evaluation said it "cannot be determined" whether the checks ma
 
 ### Awareness of Britain's rule was lower among young and ethnic-minority voters {#voter-id-rules-in-the-us-and-abroad--britain-awareness-gaps}
 
-Young people and ethnic-minority communities sit well below the Great Britain average. [29](#source-voter-id-rules-in-the-us-and-abroad-29) Northern Ireland, where ID has been required for decades, was about level with Scotland and Wales at their first ID election. [29](#source-voter-id-rules-in-the-us-and-abroad-29)
+18-to-24-year-olds and ethnic-minority communities sit well below the Great Britain average; social grades differ little. [29](#source-voter-id-rules-in-the-us-and-abroad-29) Northern Ireland, where ID has been required for decades, was about level with Scotland and Wales at their first ID election. [29](#source-voter-id-rules-in-the-us-and-abroad-29)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-ni-register-2002}
 
@@ -1380,7 +1454,7 @@ Most G7 members ask voters for ID, but of the three recent adopters only Norther
 
 ### Britain's small turnaway rate does not by itself show the rule stopped fraud {#voter-id-rules-in-the-us-and-abroad--turnaways-are-not-fraud-stopped}
 
-The people turned away were people without accepted ID, not detected impostors; the government's evaluation found no way to know whether any personation went undetected. [26](#source-voter-id-rules-in-the-us-and-abroad-26) [28](#source-voter-id-rules-in-the-us-and-abroad-28) The rate measures the rule's cost at the polling station, not its benefit.
+The people turned away were people without accepted ID, not detected impostors; the government's evaluation found no way to know whether any personation went undetected. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [28](#source-voter-id-rules-in-the-us-and-abroad-28) The rate measures the rule's cost at the polling station, not its benefit.
 
 ## About this data {#voter-id-rules-in-the-us-and-abroad--about}
 
@@ -1396,4 +1470,4 @@ Each count is the figure NCSL stated at the time, not a reconstruction. Points a
 
 Northern Ireland, Britain and Canada are given adoption histories because they are the cases most often cited in US debate.
 
-**Britain.** Turnaway figures are from polling-station records reported to the Electoral Commission; the awareness figures are from a YouGov survey for the Commission. The Commission's own website refused automated downloads, so its figures are quoted from the House of Commons Library briefing and from the Commission's press release as reprinted by Wired-Gov.
+**Britain.** Turnaway figures are from polling-station records reported to the Electoral Commission; the awareness figures are from a public opinion survey carried out for the Commission immediately after the election. Both are quoted from the Commission's own reports; the Commons Library briefing is used for personation, adoption history and the government's evaluation.

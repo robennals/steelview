@@ -566,7 +566,7 @@ comparisons:
     items:
       - label: 'Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022'
         value: 49
-      - label: 'SAVE America Act photo-ID subset (Republican), 8 Aug 2026'
+      - label: 'Narrower photo-ID-only bill (Republican), 8 Aug 2026'
         value: 52
       - label: Needed to end debate
         value: 60
@@ -587,6 +587,12 @@ relatedFacts:
   - voter-roll-maintenance
   - burdens-of-id-and-citizenship-rules
 dataStillNeeded:
+  - measure: 'The official Senate record of roll call 231 (8 Aug 2026)'
+    why: >-
+      The 52–46 cloture vote is cited from an advocacy outlet that calls the
+      bill a subset of the SAVE America Act. The Senate's own record would
+      confirm the bill number, the motion and the tally; senate.gov blocks
+      automated fetching, so it awaits a manual download.
   - measure: >-
       A comparison across states of measured outcomes (turnout, rejected
       ballots, detected fraud, voter confidence) before and after each state
@@ -638,7 +644,7 @@ The two parties' main bills of the past five years therefore both sought nationa
 | 2002 | Help America Vote Act (HAVA) | Statewide registration databases; a licence number or last four Social Security digits on registrations; photo ID or a utility bill, bank statement or similar document for first-time voters who registered by mail [18](#source-federal-and-state-power-over-voting-rules-18) [19](#source-federal-and-state-power-over-voting-rules-19) [20](#source-federal-and-state-power-over-voting-rules-20) | In force |
 | 2021–22 | Freedom to Vote Act (Democratic) | National early voting, same-day registration; ID states to accept alternatives [22](#source-federal-and-state-power-over-voting-rules-22) | Failed cloture, Oct 2021 and Jan 2022 (49–51) [22](#source-federal-and-state-power-over-voting-rules-22) [23](#source-federal-and-state-power-over-voting-rules-23) |
 | 2025 | SAVE Act (Republican) | Documentary proof of citizenship to register [24](#source-federal-and-state-power-over-voting-rules-24) | Passed House, 220–208, 10 Apr 2025 [24](#source-federal-and-state-power-over-voting-rules-24) |
-| 2026 | SAVE America Act (Republican) | Proof of citizenship to register and photo ID to vote [25](#source-federal-and-state-power-over-voting-rules-25) | Passed House 11 Feb and 22 Jul 2026; photo-ID subset failed in Senate, 52–46, 8 Aug 2026 [25](#source-federal-and-state-power-over-voting-rules-25) [26](#source-federal-and-state-power-over-voting-rules-26) [27](#source-federal-and-state-power-over-voting-rules-27) |
+| 2026 | SAVE America Act (Republican) | Proof of citizenship to register and photo ID to vote [25](#source-federal-and-state-power-over-voting-rules-25) | Passed House 11 Feb and 22 Jul 2026; a narrower photo-ID-only bill failed cloture in the Senate, 52–46, 8 Aug 2026 [25](#source-federal-and-state-power-over-voting-rules-25) [26](#source-federal-and-state-power-over-voting-rules-26) [27](#source-federal-and-state-power-over-voting-rules-27) |
 
 ## Observations {#federal-and-state-power-over-voting-rules--observations-federal-laws}
 

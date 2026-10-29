@@ -398,6 +398,11 @@ sources:
   # 21
   - stance: complicates
     quote: >-
+      Prior research demonstrates voters’ confidence in elections depends on
+      whether their preferred candidate wins, but does agreement with the
+      electoral rules being used also matter? Leveraging growing procedural
+      polarization in election laws, public opinion data from 2008 to 2024,
+      and a large-scale survey experiment conducted before the 2024 election,
       I show that agreement with election procedures matters for voter
       confidence beyond well-established effects related to partisan control
       and electoral outcomes. Observational and experimental analyses
@@ -405,10 +410,10 @@ sources:
       election results conducted using procedures they oppose. The effects are
       particularly large for voter identification laws and among Republicans
       and independents.
-    title: 'Procedural Polarization: How Election Rules Shape Voters’ Confidence (Joshua Clinton, American Political Science Review, forthcoming; abstract)'
-    url: https://nationalaffairs.com/blog/detail/findings-a-daily-roundup/voting-signals
-    publisher: National Affairs (Findings roundup, reproducing the abstract)
-    date: '2026-06-26'
+    title: '“Procedural Polarization: How Election Rules Shape Voters’ Confidence” (Joshua Clinton, American Political Science Review; abstract)'
+    url: https://electionlawblog.org/?p=156060
+    publisher: Election Law Blog (Rick Hasen, reproducing the APSR abstract)
+    date: '2026-05-11'
   # 22
   - stance: supports
     quote: >-
@@ -1237,7 +1242,7 @@ Four studies address whether ID rules themselves move confidence, rather than wh
 | Stewart, Ansolabehere and Persily (2016) | National surveys; residents of ID and non-ID states compared | Confidence in elections; perceived impersonation | No greater confidence in ID states [19](#source-opinion-and-confidence-in-elections-19) |
 | Cantoni and Pons (2019; *QJE* 2021) | 1.6 billion voter-file observations, 2008–2018; difference-in-differences | Perceived fraud | "no effect on fraud – actual or perceived" [20](#source-opinion-and-confidence-in-elections-20) |
 | Milyo (2025, working paper) | Cooperative Election Study module, 2008–2022; within-state change in strict ID law, with party controls | Confidence in the honesty and integrity of state elections | High confidence up 14 percentage points [18](#source-opinion-and-confidence-in-elections-18) |
-| Clinton (*APSR*, forthcoming) | Opinion data 2008–2024 and a 2024 survey experiment | Confidence in results | Voters trust results less under procedures they oppose; effects largest for voter ID [21](#source-opinion-and-confidence-in-elections-21) |
+| Clinton (*APSR*) | Opinion data 2008–2024 and a 2024 survey experiment | Confidence in results | Voters trust results less under procedures they oppose; effects largest for voter ID [21](#source-opinion-and-confidence-in-elections-21) |
 
 ### One study finds strict ID raises confidence {#opinion-and-confidence-in-elections--milyo-finds-effect}
 

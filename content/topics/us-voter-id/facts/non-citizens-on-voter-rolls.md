@@ -1,6 +1,11 @@
 ---
 derivedFigures:
   - method: ratio-percent
+    figure: 0.002%
+    numerator: 39
+    denominator: 1762330
+    decimals: 3
+  - method: ratio-percent
     figure: 21.2%
     numerator: 578
     denominator: 2724
@@ -341,21 +346,24 @@ sources:
     date: '2017-05-05'
   - stance: supports
     quote: >-
-      That “amount[ed] to 31,089 total applicants who were denied registration
-      for failure to provide DPOC.” … The district court found that, “at most,
-      67 noncitizens registered or attempted to register in Kansas over the
-      last 19 years.” Id. at 11519. Of these, “there [were] only 39 confirmed
-      noncitizens who successfully registered to vote between 1999 and 2013
-      when the DPOC law became effective.” Id. at 11508. Those 39 individuals
-      represented 0.002% of all registered voters in Kansas as of January 1,
-      2013—the date the DPOC requirement went into effect. … Instead, it found
-      that the “evidence of a small number of noncitizen registrations in
-      Kansas . . . is largely explained by administrative error, confusion,
-      [and] mistake.”
-    title: Fish v. Schwab, No. 18-3133, 957 F.3d 1105
-    url: https://storage.courtlistener.com/pdf/2020/04/29/fish_v._schwab.pdf
-    publisher: United States Court of Appeals for the Tenth Circuit
-    date: '2020-04-29'
+      These figures amount to 31,089 total applicants who were denied
+      registration for failure to provide DPOC, 16,802 of whom applied through
+      the DOV. … the evidence shows that 67 noncitizen individuals registered
+      to vote under the attestation regime, or attempted to register after the
+      DPOC law was passed. Of these, 39 successfully registered to vote
+      despite the attestation requirement, and 28 noncitizens attempted to
+      register to vote after the DPOC law was passed but were thwarted by
+      operation of that law. … there are only 39 confirmed noncitizens who
+      successfully registered to vote between 1999 and 2013 when the DPOC law
+      became effective. This is but .002% of all registered voters in Kansas
+      as of January 1, 2013 (1,762,330). … these numbers support the opinions
+      of Drs. Minnite, McDonald, and Hersh that while there is evidence of a
+      small number of noncitizen registrations in Kansas, it is largely
+      explained by administrative error, confusion, or mistake.
+    title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
+    url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
+    publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
+    date: '2018-06-18'
   - stance: complicates
     quote: >-
       The Secretary of State’s Office issued a revised estimate that said more
@@ -414,6 +422,26 @@ sources:
     url: https://littlevillagemag.com/rep-mariannette-miller-meeks-wins-reelection-after-recount-ap-projects/
     publisher: Iowa Capital Dispatch (via Little Village)
     date: '2024-12-02'
+  - stance: complicates
+    quote: >-
+      The review found that 1,634 people who had attempted to register to vote
+      were not able to be verified by U.S. Citizenship and Immigration
+      Services’ (USCIS) Systematic Alien Verification for Entitlements (SAVE)
+      program. Due to Georgia’s existing citizenship check procedures, the
+      noncitizens identified in the citizenship check were placed into
+      “pending citizenship” status and were not able to vote. … The search
+      found 1,634 individuals who had attempted to register to vote in Georgia
+      despite not being citizens. In total, 2,258 voter registration
+      applications are currently in “pending citizenship” status. The
+      difference between the two numbers is because there were 624 records
+      where the Secretary of State’s office was not able to obtain the
+      required information to utilize the SAVE verification tool. … All 2,258
+      individuals were placed in pending status and not added to the voter
+      rolls. None of these individuals have cast ballots in Georgia elections.
+    title: Citizenship Audit Finds 1,634 Noncitizens Attempted to Register to Vote
+    url: https://sos.ga.gov/news/citizenship-audit-finds-1634-noncitizens-attempted-register-vote
+    publisher: Georgia Secretary of State
+    date: '2022-03-28'
 comparisons:
   - id: registrants-found
     title: Non-citizen registrants found per million registrants, by state review
@@ -427,8 +455,8 @@ comparisons:
     note: >-
       Derived, not published: each state's count divided by its registrant
       count, times one million, rounded to one decimal place. Kansas: 39
-      confirmed registrants, 1999–2013, which the court put at 0.002% of
-      registrants (20 per million). Georgia 2024: 20 confirmed of 8.2
+      confirmed registrants, 1999–2013, over the 1,762,330 registered on 1
+      January 2013, 22.1 (the court rounded the share to 0.002%). Georgia 2024: 20 confirmed of 8.2
       million, 2.4. Ohio 2024: 597 apparent non-citizens referred for
       prosecution (not convicted), over the 8,159,946 registered in
       November 2024, 73.2. Iowa 2024: 277 identified of nearly 2.3 million,
@@ -443,7 +471,7 @@ comparisons:
       - label: Georgia, 2024 audit (confirmed)
         value: 2.4
       - label: Kansas, 1999–2013 (court finding)
-        value: 20
+        value: 22.1
       - label: Ohio, 2024 referrals (apparent)
         value: 73.2
       - label: Iowa, 2024 review (identified)
@@ -640,9 +668,19 @@ Before SAVE was opened to bulk checks in 2025, states such as Georgia and North 
 
 ### Kansas: dozens of non-citizens over 19 years, against 31,089 applicants blocked {#non-citizens-on-voter-rolls--kansas-court-findings}
 
-The longest record comes from the Kansas litigation. The district court found that at most 67 non-citizens registered or tried to register, and 39 got onto the rolls, largely through "administrative error, confusion, [and] mistake". [22](#source-non-citizens-on-voter-rolls-22)
+The longest record comes from the Kansas litigation. The district court found that at most 67 non-citizens registered or tried to register, and 39 got onto the rolls; it found the cases "largely explained by administrative error, confusion, or mistake". [22](#source-non-citizens-on-voter-rolls-22)
 
 Kansas's proof-of-citizenship law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
+
+### Georgia held 1,634 applicants SAVE could not verify before they reached the rolls {#non-citizens-on-voter-rolls--georgia-2022-held-at-registration}
+
+Georgia's first citizenship audit, announced in March 2022, counted applicants held at registration rather than people on the roll: [28](#source-non-citizens-on-voter-rolls-28)
+
+- **2,258** applications held in "pending citizenship" status; none was added to the rolls and none had voted.
+- **1,634** of them could not be verified by SAVE; the office called them non-citizens.
+- **624** could not be run through SAVE for lack of information, and were held because licence records listed them as non-citizens.
+
+Because none reached the rolls, they are not in the chart. "Not verified" by SAVE is not the same as confirmed: SAVE can miss citizens whose status is absent from federal records. [4](#source-non-citizens-on-voter-rolls-4)
 
 ## Observations {#non-citizens-on-voter-rolls--observations-votes-found}
 
