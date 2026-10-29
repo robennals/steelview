@@ -4,6 +4,12 @@ subtitle: What the British argument is actually about, and where it genuinely di
 lastUpdated: 2026-08-19
 dataOrder:
   - immigration-against-the-long-run
+  - work-and-study-routes
+  - immigration-economy-and-public-finances
+  - immigration-housing-and-public-services
+  - settlement-and-migrant-status
+  - integration-outcomes
+  - crime-terrorism-and-group-exploitation
   - incoming-immigration-composition
   - skilled-worker-fiscal-gain-concentrated
   - how-people-actually-arrive
