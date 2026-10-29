@@ -122,6 +122,22 @@ export const seriesBreakSchema = z.object({
   note: z.string().min(1),
 });
 
+/**
+ * A dated real-world event shown on a numbered strip under the chart — a law
+ * taking effect, a policy announced. Unlike a break, the measurement did not
+ * change; the strip marks when something happened so the reader can look
+ * for it in the line, without the chart claiming it caused anything.
+ */
+export const seriesEventSchema = z.object({
+  period: partialDate,
+  /** Short name shown in the numbered key, e.g. "SB 1 takes effect". */
+  label: z.string().min(1),
+  /** One or two sentences on what changed. */
+  note: z.string().min(1).optional(),
+  /** The fact's numbered citation that dates the event. */
+  source: z.number().int().positive().optional(),
+});
+
 export const seriesSchema = z.object({
   title: z.string().min(1),
   /**
@@ -138,6 +154,7 @@ export const seriesSchema = z.object({
   periodLabel: z.string().min(1),
   coverage: seriesCoverageSchema,
   breaks: z.array(seriesBreakSchema).default([]),
+  events: z.array(seriesEventSchema).default([]),
   readings: z.array(seriesReadingSchema).min(1),
   /**
    * A chart is a factual assertion, and nothing on this page is asserted
