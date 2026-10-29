@@ -31,7 +31,7 @@ export default async function FactModalPage({
   const { slug, factId } = await params;
   const data = await loadFactPage(slug, factId);
   if (!data) notFound();
-  const { fact, bodyHtml, supporting, parent } = data;
+  const { topic, fact, bodyHtml, supporting, parent } = data;
 
   return (
     <FactArticle
@@ -42,6 +42,7 @@ export default async function FactModalPage({
       bodyHtml={bodyHtml}
       supporting={supporting}
       parent={parent}
+      topic={topic}
     />
   );
 }
