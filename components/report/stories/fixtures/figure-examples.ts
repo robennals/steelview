@@ -254,7 +254,7 @@ export const figureExamplesFact: Fact = {
     },
     {
       "stance": "supports",
-      "quote": "Fixture: at least 159 deaths in the north, fewer than 40 in the west, about 90 in the south, between 60 and 80 in the east, and 120 in the capital.",
+      "quote": "Fixture: at least 159 deaths in the north, fewer than 40 in the west, about 90 in the south, between 60 and 80 in the east, and 120 in the capital. Of the dead, 62.5% were civilians, 30.1% combatants and 7.3% unidentified.",
       "title": "Fixture: deaths by region, as the counter qualifies them",
       "url": "https://example.org/fixture/31",
       "publisher": "Fixture Casualty Counter",
@@ -1179,6 +1179,42 @@ export const figureExamplesFact: Fact = {
           "value": 120
         }
       ]
+    },
+    {
+      "kind": "compositionBar",
+      "id": "deaths-split",
+      "title": "Deaths by status, as the counter splits them, May 2026",
+      "description": "The counter's own percentages, which it rounds to one decimal place.",
+      "sources": [
+        31
+      ],
+      "categories": [
+        {
+          "key": "civilian",
+          "label": "Civilian"
+        },
+        {
+          "key": "combatant",
+          "label": "Combatant"
+        },
+        {
+          "key": "unidentified",
+          "label": "Unidentified"
+        }
+      ],
+      "rows": [
+        {
+          "label": "Fixture Casualty Counter",
+          "values": {
+            "civilian": 62.5,
+            "combatant": 30.1,
+            "unidentified": 7.3
+          },
+          "sources": []
+        }
+      ],
+      "unit": "percent",
+      "rowLabel": "Counter"
     },
     {
       "kind": "dataTable",

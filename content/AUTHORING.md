@@ -778,7 +778,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category |
 | `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas |
 | `barChart` | ungrouped bars in any format, dollars included |
-| `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`) |
+| `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most", `estimate` for range only; `nullValue: null` for costs |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
 | `quoteComparison` | two to four answers to one `question` |
@@ -907,6 +907,16 @@ observationMarks:
 
 Marks are checked against the chart: every line, period and row must be on it.
 Other kinds of figure cannot show marks yet.
+
+**A composition adds up.** A `compositionBar` row's parts must sum to the
+row's stated `total` (optional) or, without one, to 100 when the figure has
+`unit: percent` — within what rounding explains: half a unit in each part's
+last published place (three parts at one decimal may miss by 0.15). Otherwise
+the build fails with the row, the sum and the expected total, because a bar
+always fills its width and would hide a missing or double-counted part. With
+`unit: percent` the labels and table print the source's percentages as
+published (33.3% stays 33.3%); widths stay proportional. Without a `unit`
+nothing is checked unless a row states a `total`.
 
 **Dates are as precise as the source.** A `dataTable` column with
 `format: date` holds `YYYY`, `YYYY-MM` or `YYYY-MM-DD` cells, prints them as
@@ -1679,6 +1689,7 @@ them.
 | At most six key figures | `lib/content/validate.ts` (F8) |
 | Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
+| A composition row sums to its `total`, or to 100 with `unit: percent`, within half a unit in each part's last published place | `lib/content/validate.ts` (F10, `compositionSumError`) |
 | Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |

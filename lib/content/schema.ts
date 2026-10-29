@@ -648,11 +648,19 @@ export const compositionBarFigureSchema = z.object({
         label: z.string().min(1),
         /** Part sizes by category key. A qualified part ("about 30") keeps its words in the labels and table. */
         values: z.record(z.string(), figureNumberSchema),
+        /** The total the source states for the row; the parts must add up to it, within rounding (rule F10). */
+        total: z.number().positive().optional(),
         // `source` / `sources`: a row from a different counter cites its own.
         ...citationFields,
       }).superRefine(citationRule({ required: false })).transform(toSources)
     )
     .min(1),
+  /**
+   * `percent`: the values are the source's percentages — labels print them as
+   * published, and a row without a `total` must add up to 100. `count`: they
+   * are counts, labelled by their computed share.
+   */
+  unit: z.enum(['percent', 'count']).optional(),
   showCounts: z.boolean().optional(),
   countFormat: valueFormatSchema.optional(),
   rowLabel: z.string().min(1),

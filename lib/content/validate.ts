@@ -1,4 +1,4 @@
-import { extentValues, pointValue } from '@/components/report/qualified';
+import { extentValues, pointValue, type FigureNumber } from '@/components/report/qualified';
 import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
@@ -633,6 +633,8 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
         const parts = Object.values(row.values);
         if (parts.some(part => extentValues(part).some(v => v < 0))) errors.push(`${where} row "${row.label}" has a negative part — a composition's parts are sizes`);
         if (!(parts.reduce<number>((sum, part) => sum + pointValue(part), 0) > 0)) errors.push(`${where} row "${row.label}" totals zero`);
+        const sumError = compositionSumError(parts, row.total ?? (figure.unit === 'percent' ? 100 : undefined));
+        if (sumError) errors.push(`${where} row "${row.label}" ${sumError}`);
       }
       break;
     }
@@ -666,6 +668,31 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       break;
   }
   return errors;
+}
+
+/**
+ * F10 — a composition's parts add up. Against the row's stated `total`, or
+ * 100 for percentages without one, the parts may miss by what rounding can
+ * explain: half a unit in each part's last published place (three parts
+ * published to one decimal may miss by 0.15). Anything more means a
+ * part is missing, double-counted or mistyped — and the bar, which always
+ * fills its width, would hide it. Undefined when the row adds up.
+ */
+export function compositionSumError(parts: FigureNumber[], expected: number | undefined): string | undefined {
+  if (expected === undefined) return undefined;
+  // Each part may be off by half a unit in its own last place; a range by its coarser end's.
+  const placesOf = (part: FigureNumber) => Math.min(...extentValues(part).map(decimalPlaces));
+  const tolerance = parts.reduce<number>((total, part) => total + 0.5 * 10 ** -placesOf(part), 0);
+  const sum = parts.reduce<number>((total, part) => total + pointValue(part), 0);
+  if (Math.abs(sum - expected) <= tolerance + 1e-9) return undefined;
+  const places = Math.max(0, ...parts.map(placesOf));
+  const shown = (n: number) => String(Number(n.toFixed(places + 2)));
+  return `sums to ${shown(sum)}, not ${shown(expected)} — more than rounding (±${shown(tolerance)}) can explain`;
+}
+
+/** Decimal places a number is written with: 2 for 33.25, 0 for 120. */
+function decimalPlaces(n: number): number {
+  return /\.(\d+)$/.exec(String(n))?.[1].length ?? 0;
 }
 
 /**

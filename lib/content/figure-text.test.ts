@@ -214,3 +214,8 @@ test('a date column\'s years are not audited as figures', () => {
   const table = { ...figureOf('dataTable'), columns: [{ key: 'year', label: 'Year', format: 'date' as const }, { key: 'count', label: 'Count', format: { unit: 'count' as const } }], rows: [{ year: 2025, count: 7 }] };
   assert.deepEqual(figureValues(table).map(v => v.where), ['table row "2025" column count']);
 });
+
+test('a composition row\'s stated total is a value like its parts', () => {
+  const composition = { ...figureOf('compositionBar'), rows: [{ label: 'r', values: { civilian: 2, military: 3 }, total: 5, sources: [12] }] };
+  assert.deepEqual(figureValues(composition).map(v => v.where), ['composition row "r" civilian', 'composition row "r" military', 'composition row "r" total']);
+});

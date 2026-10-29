@@ -190,15 +190,13 @@ export function figureValues(figure: Figure): FigureValue[] {
         numberValues(`bar "${item.label}"`, item.value, { format: figure.format, citations: figure.sources, asPublished: item.asPublished, valuesFrom: figure.valuesFrom }),
       );
     case 'compositionBar':
-      return figure.rows.flatMap(row =>
-        Object.entries(row.values).flatMap(([key, value]) =>
-          numberValues(`composition row "${row.label}" ${key}`, value, {
-            format: figure.countFormat,
-            citations: row.sources.length > 0 ? row.sources : figure.sources,
-            valuesFrom: figure.valuesFrom,
-          }),
-        ),
-      );
+      return figure.rows.flatMap(row => {
+        const rest = { format: figure.countFormat, citations: row.sources.length > 0 ? row.sources : figure.sources, valuesFrom: figure.valuesFrom };
+        return [
+          ...Object.entries(row.values).flatMap(([key, value]) => numberValues(`composition row "${row.label}" ${key}`, value, rest)),
+          ...(row.total === undefined ? [] : numberValues(`composition row "${row.label}" total`, row.total, rest)),
+        ];
+      });
     case 'estimateRange':
       return figure.estimates.flatMap(e =>
         (['estimate', 'low', 'high'] as const).flatMap(bound => {

@@ -35,3 +35,16 @@ test('two or more small categories fold into one Other part at the end', () => {
   assert.deepEqual(out.map(c => c.key), ['a', 'b', OTHER_KEY]);
   assert.deepEqual(rows[0].segments.at(-1), { key: OTHER_KEY, label: 'Rest', value: 8, share: 8 });
 });
+
+test('a stated total is the row total; shares stay of the parts, so the bar fills its width', () => {
+  const { rows } = compose(categories, [{ label: 'r', values: { a: 33.3, b: 33.3, c: 33.3 }, total: 100 }]);
+  assert.equal(rows[0].total, 100);
+  assert.ok(Math.abs(rows[0].segments.reduce((sum, s) => sum + s.share, 0) - 100) < 1e-9);
+  assert.deepEqual(rows[0].segments[0].published, 33.3);
+});
+
+test('a qualified part is sized by its number and keeps its qualification', () => {
+  const { rows } = compose(categories, [{ label: 'r', values: { a: { value: 30, qualifier: 'about' }, b: { low: 60, high: 80 } } }]);
+  assert.deepEqual(rows[0].segments.slice(0, 2).map(s => s.value), [30, 70]);
+  assert.deepEqual(rows[0].segments[0].published, { value: 30, qualifier: 'about' });
+});

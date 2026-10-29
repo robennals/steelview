@@ -28,3 +28,13 @@ test('a caveat\'s sources are printed after why', () => {
   }));
   assert.match(html, /Rarely reported\.<span class="sv-item-credit"><span><a href="#source-x-24">Brennan Center \[24\]<\/a><\/span><\/span>/);
 });
+
+test('percentages print as published, not as recomputed shares; counts print their shares', () => {
+  const parts = { categories: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }, { key: 'c', label: 'C' }] };
+  const percent = renderToStaticMarkup(createElement(CompositionBar, { ...parts, unit: 'percent', rows: [{ label: 'r', values: { a: 33.3, b: 33.3, c: { value: 33.3, qualifier: 'about' } } }] }));
+  assert.match(percent, /<span class="sv-composition__segment-share">33\.3%<\/span>/);
+  assert.match(percent, /<span class="sv-composition__segment-share">about 33\.3%<\/span>/);
+  assert.match(percent, /<td>33\.3%<\/td>/);
+  const counts = renderToStaticMarkup(createElement(CompositionBar, { ...parts, rows: [{ label: 'r', values: { a: 1, b: 1, c: 2 } }] }));
+  assert.match(counts, /<span class="sv-composition__segment-share">25%<\/span>/);
+});

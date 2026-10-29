@@ -353,6 +353,18 @@ now costs one file; found later it costs every viewpoint that cites it.
   `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
   `SmallMultiples` are not yet, so a report plan that needs one says so at
   stage 4b;
+- a number the source gives as a bound, an approximation or a range is a
+  qualified value (`{ value, qualifier }` or `{ low, high }`, see
+  [AUTHORING.md, Figures](AUTHORING.md#figures)) on tables, key figures,
+  bars, compositions and numeric maps. Fact-level `comparisons` and series
+  points still take bare numbers only, and a scatter point takes no range;
+  move a qualified comparison to a `barChart` figure;
+- an item resting on several sources takes `sources: [n, …]`; a line of a
+  series from a different publisher takes its own `source` object;
+- a timeline event may be dated to a decade or circa a year; a table column
+  of dates is `format: date`. A span of decades is a `periodTimeline`;
+- a `compositionBar` with `unit: percent` or a row `total` must add up
+  within rounding — the build reports the row, the sum and the total;
 
 ## 6. Write the viewpoints
 

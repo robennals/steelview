@@ -1,15 +1,21 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { compose, compositionColor, type CompositionCategory, type CompositionRowInput } from './composition';
+import { compose, compositionColor, type CompositionCategory, type CompositionRowInput, type CompositionSegment } from './composition';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
-import { qualifiedText } from './qualified';
+import { qualifiedLabel, qualifiedText } from './qualified';
 import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type { CompositionCategory, CompositionRowInput } from './composition';
 
 export type CompositionBarProps = {
+  /**
+   * `percent`: the values are the source's own percentages, and labels print
+   * them as published (33.3% stays 33.3%, not a recomputed 33.4%). Otherwise
+   * labels show each part's computed share of the row.
+   */
+  unit?: 'percent' | 'count';
   /** The parts, in the order they stack from the left. Order them the same way the text discusses them. */
   categories: CompositionCategory[];
   /** One bar per row — usually a date ("2011", "2021") or a population. */
@@ -40,7 +46,7 @@ export type CompositionBarProps = {
  * Small shares keep one decimal, always shown, so 1.7% and 1.5% do not both
  * print as "2%" and 9.0% sits beside 9.3% rather than reading as "9%".
  */
-function formatShare(share: number) {
+function formatShare(share: number): string {
   return share < 10 ? `${share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%` : formatValue(share, { unit: 'percent', decimals: 0 });
 }
 
@@ -54,6 +60,7 @@ function formatShare(share: number) {
 export function CompositionBar({
   categories,
   rows,
+  unit,
   showCounts = false,
   countFormat = { unit: 'count' },
   otherThreshold,
@@ -69,6 +76,14 @@ export function CompositionBar({
   preview,
 }: CompositionBarProps) {
   const composed = compose(categories, rows, { otherThreshold, otherLabel });
+  // Up to four places, so a published 12.25% is not rounded to 12.3%.
+  const published = { unit: 'percent', decimals: 4 } as const;
+  const shareLabel = (segment: CompositionSegment) =>
+    unit === 'percent' && segment.published !== undefined ? qualifiedLabel(segment.published, published) : formatShare(segment.share);
+  const shareText = (segment: CompositionSegment) =>
+    unit === 'percent' && segment.published !== undefined
+      ? qualifiedText(segment.published, published)
+      : `${segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
   const color = (key: string) => compositionColor(categories, key);
   const totalText = (total: number) => formatValue(total, countFormat);
 
@@ -99,7 +114,7 @@ export function CompositionBar({
             </p>
             {/* The text equivalent of the bar, in stacking order. */}
             <p className="sv-visually-hidden">
-              {row.segments.map(s => `${s.label} ${formatShare(s.share)}`).join(', ')}
+              {row.segments.map(s => `${s.label} ${shareLabel(s)}`).join(', ')}
             </p>
             <div className="sv-composition__bar" aria-hidden="true">
               {row.segments.map(segment =>
@@ -111,7 +126,7 @@ export function CompositionBar({
                     style={{ width: `${segment.share}%`, background: color(segment.key) }}
                   >
                     <span className="sv-composition__segment-name">{segment.label} </span>
-                    <span className="sv-composition__segment-share">{formatShare(segment.share)}</span>
+                    <span className="sv-composition__segment-share">{shareLabel(segment)}</span>
                   </span>
                 ) : null,
               )}
@@ -144,7 +159,7 @@ export function CompositionBar({
               </th>
               {row.segments.map(segment => (
                 <td key={segment.key}>
-                  {segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%
+                  {shareText(segment)}
                   {showCounts && <span className="sv-composition__count"> ({segment.published === undefined ? formatValue(segment.value, countFormat) : qualifiedText(segment.published, countFormat)})</span>}
                 </td>
               ))}

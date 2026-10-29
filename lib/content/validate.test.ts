@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateTopic } from './validate';
+import { compositionSumError, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesTopic } from './__fixtures__/figure-examples';
 
@@ -817,6 +817,29 @@ test('F7: an approximate timeline date is placed at its year for the end-before-
   assert.deepEqual(validateTopic(topic), []);
   event.date = '1990s';
   assert.ok(hasError(topic, 'ends before it starts'));
+});
+
+test('F10: a composition row adds up to its stated total, or to 100 for percentages, within rounding', () => {
+  const { topic, fact } = figuresTopic();
+  const composition = figureOf(fact, 'compositionBar');
+  composition.rows[0].total = 3636;
+  assert.deepEqual(validateTopic(topic), []);
+  composition.rows[0].total = 3640;
+  assert.ok(hasError(topic, 'row "HRANA, 7 Apr" sums to 3636, not 3640 — more than rounding (±1.5) can explain'));
+  composition.rows[0].total = undefined;
+  composition.unit = 'percent';
+  composition.rows = [{ label: 'Thirds', values: { civilian: 33.3, military: 33.3, unclassified: 33.3 }, sources: [12] }];
+  // 99.9 is within three parts' rounding at one decimal (±0.15).
+  assert.deepEqual(validateTopic(topic), []);
+  composition.rows[0].values.unclassified = 33.1;
+  assert.ok(hasError(topic, 'row "Thirds" sums to 99.7, not 100 — more than rounding (±0.15) can explain'));
+});
+
+test('the composition tolerance is half a unit in each part\'s own last place', () => {
+  assert.equal(compositionSumError([33, 33.5, 33.6], 100), undefined); // 100.1, within 0.5 + 0.05 + 0.05
+  assert.match(compositionSumError([50, 48], 100) ?? '', /sums to 98, not 100/); // 98, beyond 0.5 + 0.5
+  assert.equal(compositionSumError([1, 2], undefined), undefined);
+  assert.equal(compositionSumError([{ value: 40, qualifier: 'about' }, { low: 55, high: 65 }], 100), undefined);
 });
 
 test('F8: a key figure qualifies its value in one place', () => {

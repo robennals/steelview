@@ -15,6 +15,8 @@ export type CompositionRowInput = {
   values: Record<string, FigureNumber>;
   /** A row from a different counter or survey cites its own sources, shown after the row label. */
   sources?: SourceCredit[];
+  /** The total the source states, shown in place of the parts' sum (the validator checks they agree within rounding). */
+  total?: number;
 };
 
 export type CompositionSegment = {
@@ -27,6 +29,7 @@ export type CompositionSegment = {
   share: number;
 };
 
+/** `total` is the source's stated total when it gives one, else the parts' sum. Shares are always of the parts' sum, so a bar fills its width. */
 export type CompositionRow = { label: string; total: number; segments: CompositionSegment[]; sources?: SourceCredit[] };
 
 export const OTHER_KEY = '__other';
@@ -74,7 +77,7 @@ export function compose(
         const value = [...folded].reduce((sum, key) => sum + size(row, key), 0);
         segments.push({ key: OTHER_KEY, label: otherLabel, value, share: totals[i] > 0 ? (value / totals[i]) * 100 : 0 });
       }
-      return { label: row.label, total: totals[i], segments, ...(row.sources ? { sources: row.sources } : {}) };
+      return { label: row.label, total: row.total ?? totals[i], segments, ...(row.sources ? { sources: row.sources } : {}) };
     }),
   };
 }

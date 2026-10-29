@@ -85,3 +85,30 @@ export const RowSources: Story = {
     note: undefined,
   },
 };
+
+/**
+ * The source's own percentages (`unit: percent`): labels print them as
+ * published — 33.3% stays 33.3% — and the validator checks each row adds up
+ * to 100 within rounding (here 99.9, inside three parts' ±0.15). A part the
+ * source gives only approximately says so.
+ */
+export const PublishedPercentages: Story = {
+  args: {
+    title: 'How respondents answered, by survey wave',
+    description: 'Illustrative data: each wave’s percentages as published, rounded to one decimal place.',
+    unit: 'percent',
+    rowLabel: 'Wave',
+    categories: [
+      { key: 'yes', label: 'Yes' },
+      { key: 'no', label: 'No' },
+      { key: 'unsure', label: 'Unsure' },
+    ],
+    rows: [
+      { label: 'Wave 1', values: { yes: 33.3, no: 33.3, unsure: 33.3 } },
+      { label: 'Wave 2', values: { yes: { value: 41, qualifier: 'about' }, no: 47.5, unsure: 11.5 } },
+    ],
+    showCounts: false,
+    sources: [{ label: 'Illustrative data' }],
+    note: undefined,
+  },
+};

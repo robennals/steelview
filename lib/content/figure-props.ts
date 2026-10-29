@@ -256,7 +256,8 @@ export function compositionBarProps(f: FigureOf<'compositionBar'>, c: FigureCont
   return {
     ...frame(f, c),
     categories: f.categories,
-    rows: f.rows.map(row => ({ label: row.label, values: row.values, sources: row.sources.length > 0 ? row.sources.map(c.credit) : undefined })),
+    rows: f.rows.map(row => ({ label: row.label, values: row.values, total: row.total, sources: row.sources.length > 0 ? row.sources.map(c.credit) : undefined })),
+    unit: f.unit,
     showCounts: f.showCounts,
     countFormat: toValueFormat(f.countFormat),
     rowLabel: f.rowLabel,
