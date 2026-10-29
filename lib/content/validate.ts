@@ -159,7 +159,40 @@ export function validateTopic(topic: Topic): string[] {
 
   errors.push(...citationErrors(topic, factById));
   errors.push(...researchNeededErrors(topic));
+  errors.push(...previewChartErrors(topic, factById));
 
+  return errors;
+}
+
+/** The ids a fact's charts answer to: `series`, each `additionalSeries` id and each comparison id. */
+export function chartIdsOf(fact: Fact): string[] {
+  return [...(fact.series ? ['series'] : []), ...(fact.additionalSeries ?? []).map(s => s.id), ...(fact.comparisons ?? []).map(c => c.id)];
+}
+
+/**
+ * A topic's home-page preview charts resolve, appear once each, and between
+ * them represent every viewpoint: each viewpoint must cite, inline, the fact
+ * behind at least one of them. Whether that chart is among the viewpoint's
+ * *strongest* evidence stays an editorial judgement (AUTHORING.md).
+ */
+function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[] {
+  const previews = topic.previewCharts ?? [];
+  if (previews.length === 0) return [];
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  for (const { fact, chart } of previews) {
+    const key = `${fact}/${chart}`;
+    const target = factById.get(fact);
+    if (!target || !chartIdsOf(target).includes(chart)) errors.push(`topic: preview chart ${key} does not resolve to a chart`);
+    if (seen.has(key)) errors.push(`topic: preview chart ${key} is listed twice`);
+    seen.add(key);
+  }
+  const previewedFacts = new Set(previews.map(p => p.fact));
+  for (const v of topic.viewpoints) {
+    if (!citedFactTargets(v.body).some(({ id }) => previewedFacts.has(id))) {
+      errors.push(`topic: viewpoint ${v.id} cites none of the preview charts' facts — add a chart it relies on to previewCharts`);
+    }
+  }
   return errors;
 }
 

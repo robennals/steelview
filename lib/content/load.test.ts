@@ -101,7 +101,7 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   await mkdir(path.join(root, '..', 'principles'), { recursive: true });
   await writeFile(
     path.join(dir, 'topic.md'),
-    '---\ntitle: Bare\nprinciples: [p]\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
+    '---\ntitle: Bare\nprinciples: [p]\nsubtitle: s\nlastUpdated: 2026-08-18\ntags: [Example]\npreviewCharts: [{fact: a, chart: series}]\n---\nIntro.\n'
   );
   await writeFile(
     path.join(dir, 'facts', 'a.md'),
@@ -129,7 +129,7 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
   await mkdir(path.join(root, '..', 'principles'), { recursive: true });
   await writeFile(
     path.join(dir, 'topic.md'),
-    '---\ntitle: Dates\nprinciples: [p]\nsubtitle: s\nlastUpdated: 2026-08-18\n---\nIntro.\n'
+    '---\ntitle: Dates\nprinciples: [p]\nsubtitle: s\nlastUpdated: 2026-08-18\ntags: [Example]\npreviewCharts: [{fact: a, chart: series}]\n---\nIntro.\n'
   );
   // Both dates are unquoted: a full date (YAML timestamp -> Date) and a bare
   // year (YAML int -> number). Both must come back as strings.

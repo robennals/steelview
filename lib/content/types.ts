@@ -12,6 +12,7 @@ import {
   principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
+  previewChartSchema,
   figureSchema,
   valueFormatSchema,
   FACT_STATUSES,
@@ -50,9 +51,15 @@ export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
 export type Principle = Item<z.infer<typeof principleFrontmatterSchema>>;
 export type Crux = Item<z.infer<typeof cruxFrontmatterSchema>>;
 
-export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'principles' | 'dataOrder'> & {
+export type PreviewChart = z.infer<typeof previewChartSchema>;
+
+export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'principles' | 'dataOrder' | 'tags' | 'previewCharts'> & {
   /** Required in authored topic.md; optional here to ease in-memory test fixtures. */
   dataOrder?: string[];
+  /** Required in authored topic.md; optional here to ease in-memory test fixtures. */
+  tags?: string[];
+  /** Required in authored topic.md; optional here to ease in-memory test fixtures. */
+  previewCharts?: PreviewChart[];
   slug: string;
   /** The markdown body of topic.md — the page's introduction. */
   intro: string;

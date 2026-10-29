@@ -2,6 +2,18 @@
 title: UK immigration
 subtitle: What the British argument is actually about, and where it genuinely divides.
 lastUpdated: 2026-08-19
+tags: [UK, Immigration]
+# The first chart shows how big the issue is; together they represent every
+# viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
+previewCharts:
+  - fact: immigration-against-the-long-run
+    chart: series
+  - fact: how-people-actually-arrive
+    chart: arrival-reasons
+  - fact: skilled-worker-fiscal-gain-concentrated
+    chart: earnings-concentration
+  - fact: asylum-claims-in-historical-and-european-context
+    chart: asylum-per-person
 dataOrder:
   - immigration-against-the-long-run
   - incoming-immigration-composition

@@ -641,6 +641,42 @@ lags and incomplete effects when relevant. Do not manufacture a story for every
 small wiggle; if a major movement has no established explanation, say what is
 unknown. Explain measurement breaks in Method Changes so readers do not mistake them for events.
 
+### Home-page preview charts
+
+Each topic's row on the home page opens onto a carousel of a few of its
+charts, listed in `previewCharts` in `topic.md` as `fact` and `chart` pairs
+(`chart` is `series`, an `additionalSeries` id or a `comparisons` id). The
+carousel is the first evidence many readers see, so choosing it is choosing
+what the topic looks like — and a carousel that mostly backs one side has
+failed however good it looks. Choose by these rules:
+
+1. **The first chart shows the magnitude of the issue** — whether this is a
+   big or a small problem — before anything about its nature, whichever
+   viewpoint its data happens to help.
+2. **Every viewpoint is represented by at least one chart that is among its
+   strongest evidence.** One chart can represent several viewpoints; add no
+   extra chart when one already serves.
+3. **Prefer charts that also give a good overview of the topic**, even over a
+   slightly stronger but narrower chart.
+4. **Keep the set small** — about four.
+
+The carousel never labels a chart as evidence for a viewpoint: a chart usually
+bears on several. The build checks the mechanical half of rule 2 — every
+viewpoint must cite, inline, the fact behind at least one preview chart — and
+leaves "strongest", magnitude and overview to you.
+
+`uk-immigration` opens on `immigration-against-the-long-run`, whose two
+readings give arrivals in people and as a share of the population since 1964
+(magnitude); then why people come (`how-people-actually-arrive` /
+`arrival-reasons`, an overview); the Skilled Worker fiscal model
+(`skilled-worker-fiscal-gain-concentrated` / `earnings-concentration`); and
+asylum claims per person across Europe
+(`asylum-claims-in-historical-and-european-context` / `asylum-per-person`).
+Between them they cover all five viewpoints. Its known weakness: *Immigration
+makes Britain better off* rests mostly on evidence with no chart yet
+(health-and-care staffing, wage and housing effects), so the fiscal chart
+stands in for it imperfectly until one exists.
+
 ### Figures
 
 A fact can place any component from the report library — tables, key figures,
@@ -1365,6 +1401,8 @@ them.
 | Quotes and claim-check claims appear verbatim in their cited source's quote | `lib/content/validate.ts` (F11) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
+| A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
+| Preview charts resolve, appear once, and every viewpoint cites the fact behind one | `lib/content/validate.ts` (`previewChartErrors`) |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

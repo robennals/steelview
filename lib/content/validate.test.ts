@@ -981,3 +981,37 @@ test('a focus window must run forwards and hold two points of some line', () => 
   const empty = validateTopic(topicWithSeries({ focus: { from: '1992-03', to: '1992-09', label: 'Window' } }));
   assert.ok(empty.some(e => e.includes('fewer than two points')), empty.join('\n'));
 });
+
+function previewedTopic(): Topic {
+  const t = soundTopic();
+  t.facts[0].series = undefined;
+  t.facts[0].comparisons = [{ id: 'shares', title: 'Shares', description: 'd', unit: 'percent', valueLabel: 'v', sources: [1], items: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] }];
+  t.viewpoints[0].body = 'See [the shares](#fact-alpha).';
+  t.viewpoints[1].body = 'See [the shares](#fact-alpha).';
+  t.previewCharts = [{ fact: 'alpha', chart: 'shares' }];
+  return t;
+}
+
+test('preview charts: a sound selection produces no errors', () => {
+  assert.deepEqual(validateTopic(previewedTopic()), []);
+});
+
+test('preview charts: each must resolve to a chart on a fact in the topic', () => {
+  const t = previewedTopic();
+  t.previewCharts = [{ fact: 'alpha', chart: 'shares' }, { fact: 'alpha', chart: 'nope' }, { fact: 'missing', chart: 'series' }];
+  const errors = validateTopic(t);
+  assert.ok(errors.includes('topic: preview chart alpha/nope does not resolve to a chart'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart'), errors.join('\n'));
+});
+
+test('preview charts: the same chart may not be listed twice', () => {
+  const t = previewedTopic();
+  t.previewCharts = [{ fact: 'alpha', chart: 'shares' }, { fact: 'alpha', chart: 'shares' }];
+  assert.ok(validateTopic(t).includes('topic: preview chart alpha/shares is listed twice'));
+});
+
+test('preview charts: every viewpoint must cite the fact behind at least one of them', () => {
+  const t = previewedTopic();
+  t.viewpoints[1].body = 'No citations at all.';
+  assert.ok(validateTopic(t).includes('topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts'));
+});

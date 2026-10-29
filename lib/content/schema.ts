@@ -794,7 +794,28 @@ export const cruxFrontmatterSchema = z.object({
   positions: z.array(cruxPositionSchema).min(2),
 });
 
+/** One chart in a topic's home-page preview: a fact and the id of one of its charts. */
+export const previewChartSchema = z.object({
+  fact: z.string().min(1),
+  /** `series`, an `additionalSeries` id, or a `comparisons` id on that fact. */
+  chart: z.string().min(1),
+});
+
 export const topicFrontmatterSchema = z.object({
+  /**
+   * Categories such as "UK", "USA" or "Voting", shown on the topic's home-page
+   * row so readers can later drill down to other topics in the same category.
+   */
+  tags: z.array(z.string().min(1)).min(1, 'a topic needs at least one tag').refine(
+    (tags) => new Set(tags).size === tags.length,
+    'tags must be unique'
+  ),
+  /**
+   * The charts the home page previews, in order. The first shows how big the
+   * issue is; together they must represent every viewpoint with one of the
+   * strong charts it relies on (AUTHORING.md, "Home-page preview charts").
+   */
+  previewCharts: z.array(previewChartSchema).min(1, 'a topic needs at least one preview chart'),
   /** Explicit reader-facing order for headline Data collections. */
   dataOrder: z.array(z.string().min(1)).default([]).refine(
     (ids) => new Set(ids).size === ids.length,
