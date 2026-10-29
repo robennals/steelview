@@ -432,3 +432,15 @@ test('the context strip spans the full range and outlines the window', () => {
   assert.equal(Number(strip.window.x1.toFixed(4)), strip.geometry.left + strip.geometry.plotWidth);
   assert.ok(strip.window.x0 > strip.geometry.left);
 });
+
+test('a monthly series under three years long gets month ticks, not one year label', () => {
+  const s = series();
+  const months = ['2026-01', '2026-04', '2026-07', '2026-10', '2026-12'];
+  const monthly: Series = {
+    ...s,
+    coverage: { from: '2026-01', to: '2026-12' },
+    breaks: [],
+    readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points: months.map((period, i) => ({ period, value: i })) }] }],
+  };
+  assert.deepEqual(layoutReading(monthly, monthly.readings[0], 'narrow').timeTicks.map((t) => t.label), ['Jan 2026', 'Apr', 'Jul', 'Oct']);
+});

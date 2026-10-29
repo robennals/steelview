@@ -475,6 +475,9 @@ export function layoutReading(
   // promise the series makes about its source. A "not measured since" band
   // extends it to the band's end, so the gap has room to be seen.
   const end = window ? window.to : axisEnd(series);
+  // A monthly series under three years long gets month ticks too: year ticks
+  // would label a one-year series "2026" and nothing else.
+  const shortMonthly = !window && series.coverage.from.includes('-') && periodToYear(end) - periodToYear(series.coverage.from) < 3;
   const start = window ? window.from : series.coverage.from;
   const fromYear = periodToYear(start);
   const toYear = periodToYear(end);
@@ -524,8 +527,8 @@ export function layoutReading(
         index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
     })),
     timeTicks: dropCrowdedTicks(
-      window
-        ? windowTicks(window, geometry, x)
+      window || shortMonthly
+        ? windowTicks(window ?? { from: series.coverage.from, to: end }, geometry, x)
         : yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
             (year) => ({ year, x: x(String(year)), label: String(year) })
           ),
