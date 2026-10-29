@@ -103,6 +103,7 @@ export function dataTableProps(f: FigureOf<'dataTable'>, c: FigureContext): R.Da
     ),
     highlight: f.highlight,
     defaultSort: f.defaultSort,
+    width: f.width,
   };
 }
 

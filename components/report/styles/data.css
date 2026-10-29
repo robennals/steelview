@@ -1016,10 +1016,106 @@
 
   /* ------------------------------------------------------- data table */
 
-  .sv-data__scroll {
-    overflow: auto;
-    overscroll-behavior: contain;
+  /* The frame holds what does not scroll: the edge shadows and the fade. */
+  .sv-data__frame {
+    position: relative;
     border-top: 1px solid var(--rule-strong);
+  }
+
+  .sv-data__scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  /* A shadow on each side that has more columns off it, so a phone reader
+     knows the table goes on. Set by the component as the table scrolls. */
+  .sv-data__frame::before,
+  .sv-data__frame::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 1.25rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 120ms ease;
+  }
+
+  .sv-data__frame::before {
+    left: 0;
+    background: linear-gradient(to right, color-mix(in oklab, var(--ink) 18%, transparent), transparent);
+  }
+
+  .sv-data__frame::after {
+    right: 0;
+    background: linear-gradient(to left, color-mix(in oklab, var(--ink) 18%, transparent), transparent);
+  }
+
+  .sv-data__frame[data-overflow-start]::before,
+  .sv-data__frame[data-overflow-end]::after {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-data__frame::before,
+    .sv-data__frame::after {
+      transition: none;
+    }
+  }
+
+  /* A long table's preview: its first rows, fading out above the button.
+     Only with scripting on — with it off nothing can bring the rows back,
+     so the table is simply complete and the button is not shown. */
+  @media (scripting: enabled) {
+    .sv-data__frame[data-collapsed] tr[data-beyond-preview] {
+      display: none;
+    }
+
+    .sv-data__frame[data-collapsed] .sv-data__table {
+      mask-image: linear-gradient(to bottom, #000 calc(100% - 3.5rem), transparent);
+    }
+
+    /* Doubled class: this must beat the hidden default set further down. */
+    .sv-data .sv-data__more {
+      display: block;
+    }
+  }
+
+  /* Shown only where scripting is reported on: a browser that does not
+     report it (or has it off) shows every row, so offers nothing to show. */
+  @media not (scripting: enabled) {
+    .sv-data__shown {
+      display: none;
+    }
+  }
+
+  .sv-data__more {
+    display: none;
+    min-height: 2.75rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem 0;
+    border: 0;
+    background: none;
+    color: var(--accent);
+    font: 600 0.8125rem/1.3 var(--font-sans);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    cursor: pointer;
+  }
+
+  .sv-data__more:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* On a wide screen a table of many columns runs past the text column,
+     towards the page edge, rather than scrolling inside it. Its heading,
+     description and source line keep the reading measure. */
+  @media (min-width: 46rem) {
+    .sv-data--wide .sv-data__frame {
+      width: calc(100% + 4.5rem);
+    }
   }
 
   .sv-data__scroll:focus-visible {
@@ -1065,9 +1161,6 @@
   }
 
   .sv-data__table thead th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
     background: var(--paper);
     border-bottom: 1px solid var(--rule-strong);
     color: var(--ink-2);

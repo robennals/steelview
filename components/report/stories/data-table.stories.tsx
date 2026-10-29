@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Use when the table is the figure: many rows or columns a reader will look up rather than see as a shape. Headers sort (announced with aria-sort), numbers use the same formats as the charts, the header stays pinned while the body scrolls, and wide tables scroll sideways on a phone.',
+          'Use when the table is the figure: many rows or columns a reader will look up rather than see as a shape. Headers sort (announced with aria-sort) and numbers use the same formats as the charts. Up to fifteen rows show in full; a longer table shows its first ten, fading, above a "Show all N rows" button (with JavaScript off, every row). A table wider than its column scrolls sideways with a shadow on the side that has more, and one of more than three columns runs past the text column on a wide screen (`width: \'wide\'`, the default there).',
       },
     },
   },
@@ -34,8 +34,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Thirty-two rows, scrolling under a pinned header. */
+/** Thirty-two rows: the first ten, fading out, above "Show all 32 rows". Sorting re-picks the ten. */
 export const Sortable: Story = {};
+
+/** Fifteen rows, the most that render in full with no button. */
+export const FifteenRows: Story = {
+  args: { rows: asylumEurope.slice(0, 15), title: 'The fifteen countries with most claims' },
+};
 
 /** Sorted by rate instead of count. */
 export const SortedByRate: Story = {
@@ -131,4 +136,39 @@ export const DateColumn: Story = {
     sources: [{ label: 'Illustrative data' }],
     note: undefined,
   },
+};
+
+/**
+ * Six columns of long text, as a case table has. On a phone it scrolls
+ * sideways with a shadow on the side that has more; on a wide screen it
+ * runs past the text column (the default for more than three columns).
+ */
+export const Wide: Story = {
+  args: {
+    title: 'Documented cases, how each was done and what happened',
+    description: 'Illustrative data: a table whose cells are sentences, wider than any text column.',
+    caption: 'One row per case',
+    columns: [
+      { key: 'case', label: 'Case', rowHeader: true },
+      { key: 'year', label: 'Year', format: 'text' },
+      { key: 'method', label: 'Method' },
+      { key: 'how', label: 'How it was done', sortable: false },
+      { key: 'reaches', label: 'ID check reaches it?' },
+      { key: 'outcome', label: 'Outcome, as of', sortable: false },
+    ],
+    rows: [
+      { case: 'City A', year: '1878', method: 'Officials', how: 'Election judges added unvoted ballots to the box', reaches: 'No', outcome: 'Convicted; appeal heard 1879' },
+      { case: 'City B', year: '1890s', method: 'In person', how: 'Repeat voters used the names of the dead and departed', reaches: 'Yes', outcome: 'No charges recorded' },
+      { case: 'County C', year: '1948', method: 'Count', how: 'A late box was added after the count closed', reaches: 'No', outcome: 'Result stood' },
+      { case: 'County D', year: '2018', method: 'Absentee', how: 'A contractor collected and altered absentee ballots', reaches: 'No', outcome: 'New election ordered, 2019' },
+    ],
+    highlight: ['City B'],
+    defaultSort: undefined,
+    sources: [{ label: 'Illustrative data' }],
+  },
+};
+
+/** The same six columns kept to the text column with `width: 'text'`: it scrolls sideways at every width. */
+export const WideKeptToText: Story = {
+  args: { ...Wide.args, width: 'text' },
 };

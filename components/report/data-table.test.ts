@@ -155,3 +155,36 @@ test('a date column prints dates as words and sorts them by date, a coarser date
   assert.match(html, />Jun 2026</);
   assert.match(html, /<td data-align="left">2026<\/td>/);
 });
+
+const manyRows = (n: number): DataTableRow[] => Array.from({ length: n }, (_, i) => ({ name: `Row ${i + 1}`, value: i + 1 }));
+const render = (props: Partial<Parameters<typeof DataTable>[0]> & { rows: DataTableRow[] }) =>
+  renderToStaticMarkup(createElement(DataTable, { caption: 'One row per thing', columns: [{ key: 'name', label: 'Name', rowHeader: true }, { key: 'value', label: 'Value' }], ...props }));
+
+test('a table of up to fifteen rows renders in full, with no "Show all" button', () => {
+  const html = render({ rows: manyRows(15) });
+  assert.equal(html.match(/<tr/g)?.length, 16);
+  assert.doesNotMatch(html, /data-beyond-preview|data-collapsed|Show all/);
+});
+
+test('a longer table has every row in its markup, marks those past the tenth, and offers "Show all N rows"', () => {
+  const html = render({ rows: manyRows(20) });
+  // With JavaScript off every row is in the page; CSS hides the marked ones only when scripting is on.
+  assert.equal(html.match(/<tr/g)?.length, 21);
+  assert.equal(html.match(/data-beyond-preview/g)?.length, 10);
+  assert.match(html, /<tr data-row="Row 11" data-beyond-preview="true"><th scope="row" data-align="left">Row 11</);
+  assert.match(html, /data-collapsed="true"/);
+  const tbodyId = html.match(/<tbody id="([^"]+)"/)?.[1];
+  assert.ok(tbodyId);
+  assert.match(html, new RegExp(`<button type="button" class="sv-data__more" aria-expanded="false" aria-controls="${tbodyId}">Show all 20 rows</button>`));
+  // A screen reader hears that only part of the table is showing.
+  assert.match(html, /<caption class="sv-data__caption">One row per thing<span class="sv-data__shown sv-visually-hidden">, first 10 of 20 rows shown<\/span><\/caption>/);
+});
+
+test('a table with more than three columns is wide unless it says otherwise', () => {
+  const columns = ['a', 'b', 'c', 'd'].map(key => ({ key, label: key.toUpperCase() }));
+  const rows = [{ a: 'x', b: 1, c: 2, d: 3 }];
+  assert.match(render({ rows, columns }), /<figure class="sv-chart sv-report sv-data sv-data--wide"/);
+  assert.match(render({ rows, columns, width: 'text' }), /<figure class="sv-chart sv-report sv-data"/);
+  assert.match(render({ rows, columns: columns.slice(0, 3) }), /<figure class="sv-chart sv-report sv-data"/);
+  assert.match(render({ rows, columns: columns.slice(0, 3), width: 'wide' }), /sv-data--wide/);
+});

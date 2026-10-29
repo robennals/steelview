@@ -338,6 +338,12 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
+- a `dataTable` of more than 15 rows shows only its first 10, in its
+  `defaultSort` order, until the reader asks for the rest (every row is
+  there with JavaScript off). Sort it so the rows the report's argument
+  rests on come first; a highlighted row past the tenth is not lifted into
+  the preview. Markdown tables in the body scroll sideways but have no
+  edge shadow;
 - an observation group not tied to a visual needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos,
   and is missing from the topic page's walkthrough, so give it a

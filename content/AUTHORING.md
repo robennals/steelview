@@ -777,7 +777,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `comparison` | one `comparisons` entry, by `id` |
 | `featured` | the charts of one supporting fact named in `featuredCharts` (`fact: <id>`) |
 | `section` | the body section headed `## … {#<fact>--<id>}` or `### … {#<fact>--<id>}`, moved to this place with everything up to the next heading of the same or a higher level |
-| `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it; a column may be `format: date` |
+| `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it; a column may be `format: date`. Up to 15 rows show in full; a longer table shows its first 10 in its default order, then "Show all N rows". More than three columns run past the text column on a wide screen (`width: wide`, the default there; `width: text` keeps it in the column) |
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` (or `sources`); a date may be a decade (`1850s`) or a circa year (`c. 1888`) |
 | `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated`; a period or event may cite its own `sources` |

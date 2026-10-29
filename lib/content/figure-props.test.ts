@@ -67,6 +67,12 @@ test('cited table cells keep their value and turn citations into credits', () =>
   assert.equal(rows[0].year, '2025');
 });
 
+test('a table\'s width passes through, leaving the component to default it by column count', () => {
+  const table = figureOf('dataTable');
+  assert.equal(dataTableProps(table, context).width, undefined);
+  assert.equal(dataTableProps({ ...table, width: 'text' }, context).width, 'text');
+});
+
 test('item citations become item credits', () => {
   assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].sources?.map(s => s.number), [11]);
   assert.deepEqual(keyFiguresProps(figureOf('keyFigures'), context).figures[0].value, { value: 7200, qualifier: 'more than', asPublished: 'more than 7,200' });

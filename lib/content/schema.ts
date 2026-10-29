@@ -447,6 +447,8 @@ export const dataTableFigureSchema = z.object({
   leadColumn: slugId.optional(),
   /** With `layout`: the column printed above each card's title, usually when it happened. */
   dateColumn: slugId.optional(),
+  /** `wide` runs past the text column on a wide screen; the default for more than three columns. */
+  width: z.enum(['text', 'wide']).optional(),
 });
 
 /* --- keyFigures ----------------------------------------------------------- */
