@@ -645,7 +645,10 @@ unknown. Explain measurement breaks in Method Changes so readers do not mistake 
 
 Each topic's row on the home page opens onto a carousel of a few of its
 charts, listed in `previewCharts` in `topic.md` as `fact` and `chart` pairs
-(`chart` is `series`, an `additionalSeries` id or a `comparisons` id). The
+(`chart` is `series`, an `additionalSeries` id or a `comparisons` id). Each
+slide is one chart: for a series with several readings, add `reading` to name
+the one the slide draws (default: the first). The full chart, a click away,
+still draws every reading. The
 carousel is the first evidence many readers see, so choosing it is choosing
 what the topic looks like — and a carousel that mostly backs one side has
 failed however good it looks. Choose by these rules:
@@ -665,9 +668,9 @@ bears on several. The build checks the mechanical half of rule 2 — every
 viewpoint must cite, inline, the fact behind at least one preview chart — and
 leaves "strongest", magnitude and overview to you.
 
-`uk-immigration` opens on `immigration-against-the-long-run`, whose two
-readings give arrivals in people and as a share of the population since 1964
-(magnitude); then why people come (`how-people-actually-arrive` /
+`uk-immigration` opens on `immigration-against-the-long-run`, read as a
+share of the population since 1964 (`reading: share-of-population`), which is
+what makes the magnitude legible; then why people come (`how-people-actually-arrive` /
 `arrival-reasons`, an overview); the Skilled Worker fiscal model
 (`skilled-worker-fiscal-gain-concentrated` / `earnings-concentration`); and
 asylum claims per person across Europe
@@ -1402,7 +1405,7 @@ them.
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
-| Preview charts resolve, appear once, and every viewpoint cites the fact behind one | `lib/content/validate.ts` (`previewChartErrors`) |
+| Preview charts (and any named `reading`) resolve, appear once, and every viewpoint cites the fact behind one | `lib/content/validate.ts` (`previewChartErrors`) |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

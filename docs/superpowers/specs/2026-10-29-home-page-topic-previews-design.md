@@ -214,6 +214,21 @@ Four topics are published, so row switching is tested against real content.
   stays within a few pixels.
 - Visual: before/after screenshots of the home page for the PR.
 
+## Owner feedback on the first build (29 Oct 2026)
+
+- **One chart per slide.** A series with several readings previews one of
+  them, named by `reading` in `previewCharts` (UK: `share-of-population`); the
+  full chart still draws every reading.
+- **Simple, streamlined, readable.** A slide is the chart's title (a link to
+  the full chart), its value label, the plot or bars, and the credit — no
+  description, method keys, "About this data" or event strip; those stay on
+  the full chart.
+- **Every chart the same height,** with the carousel about as tall as the
+  viewpoint list and report button beside it. Series previews use a short,
+  wide `preview` geometry so their type stays readable.
+- **Clicking a row's head toggles it**, so a second click closes it and no row
+  need be open. Only the title and "Read the full report" open the report.
+
 ## Owner decisions (29 Oct 2026)
 
 1. **Fonts change site-wide** to the prototype's: Inter Tight (headings), Inter

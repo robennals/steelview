@@ -1015,3 +1015,12 @@ test('preview charts: every viewpoint must cite the fact behind at least one of 
   t.viewpoints[1].body = 'No citations at all.';
   assert.ok(validateTopic(t).includes('topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts'));
 });
+
+test('preview charts: a named reading must exist on that series, and only a series has readings', () => {
+  const t = previewedTopic();
+  t.facts[0].series = { title: 's', description: 'd', periodLabel: 'Year', coverage: { from: '2020', to: '2021' }, breaks: [], events: [], source: t.facts[0].sources[0], readings: [{ id: 'people', label: 'People', unit: 'count', valueLabel: 'v', lines: [{ name: 'a', points: [{ period: '2020', value: 1 }, { period: '2021', value: 2 }] }] }] } as unknown as Series;
+  t.previewCharts = [{ fact: 'alpha', chart: 'series', reading: 'share' }, { fact: 'alpha', chart: 'shares', reading: 'people' }];
+  const errors = validateTopic(t);
+  assert.ok(errors.includes('topic: preview chart alpha/series has no reading "share"'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart alpha/shares is not a series, so it cannot name a reading'), errors.join('\n'));
+});

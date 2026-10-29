@@ -799,6 +799,12 @@ export const previewChartSchema = z.object({
   fact: z.string().min(1),
   /** `series`, an `additionalSeries` id, or a `comparisons` id on that fact. */
   chart: z.string().min(1),
+  /**
+   * For a series, which one reading the slide shows (default: its first). A
+   * preview is one chart; the full chart, a click away, still draws every
+   * reading.
+   */
+  reading: z.string().min(1).optional(),
 });
 
 export const topicFrontmatterSchema = z.object({

@@ -180,10 +180,15 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
   if (previews.length === 0) return [];
   const errors: string[] = [];
   const seen = new Set<string>();
-  for (const { fact, chart } of previews) {
+  for (const { fact, chart, reading } of previews) {
     const key = `${fact}/${chart}`;
     const target = factById.get(fact);
     if (!target || !chartIdsOf(target).includes(chart)) errors.push(`topic: preview chart ${key} does not resolve to a chart`);
+    else if (reading !== undefined) {
+      const series = chart === 'series' ? target.series : target.additionalSeries?.find(s => s.id === chart);
+      if (!series) errors.push(`topic: preview chart ${key} is not a series, so it cannot name a reading`);
+      else if (!series.readings.some(r => r.id === reading)) errors.push(`topic: preview chart ${key} has no reading "${reading}"`);
+    }
     if (seen.has(key)) errors.push(`topic: preview chart ${key} is listed twice`);
     seen.add(key);
   }

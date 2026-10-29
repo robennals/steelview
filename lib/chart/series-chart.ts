@@ -25,6 +25,13 @@ import type { Series, SeriesLine, SeriesPoint, SeriesReading } from '@/lib/conte
  */
 export type ChartVariant = 'narrow' | 'wide';
 
+/**
+ * A series can also be drawn once, at `preview` size: a short, wide plot for
+ * the home page's chart carousel, sized so its type stays readable at the
+ * carousel's width rather than shrinking a full-size chart into the slide.
+ */
+export type SeriesVariant = ChartVariant | 'preview';
+
 export type ChartGeometry = {
   width: number;
   height: number;
@@ -43,7 +50,20 @@ export type ChartGeometry = {
   monthTickStep: number;
 };
 
-export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
+export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
+  preview: {
+    width: 600,
+    height: 190,
+    left: 48,
+    top: 10,
+    plotWidth: 600 - 48 - 12,
+    plotHeight: 190 - 10 - 26,
+    fontSize: 12,
+    markerRadius: 4,
+    valueLabelEvery: 1,
+    yearTickStep: 10,
+    monthTickStep: 2,
+  },
   narrow: {
     width: 360,
     height: 250,
@@ -456,7 +476,7 @@ export function windowTicks(
 export function layoutReading(
   series: Series,
   reading: SeriesReading,
-  variant: ChartVariant,
+  variant: SeriesVariant,
   window?: FocusWindow
 ): ReadingLayout {
   const geometry = CHART_GEOMETRY[variant];

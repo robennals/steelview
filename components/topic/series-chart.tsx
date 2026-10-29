@@ -22,7 +22,7 @@ import {
   seriesStrokeDash,
   tickLabelWidth,
   unmeasuredSpan,
-  type ChartVariant,
+  type SeriesVariant,
   type FocusWindow,
 } from '@/lib/chart/series-chart';
 
@@ -59,7 +59,7 @@ function Plot({
 }: {
   series: Series;
   reading: SeriesReading;
-  variant: ChartVariant;
+  variant: SeriesVariant;
   descriptionId: string;
   /** Draw only this period, at readable scale, with the lines clipped at the plot edges. */
   window?: FocusWindow;
@@ -429,18 +429,22 @@ function Reading({
 
   const plots = (shown?: FocusWindow) => (
     <div className="sv-chart__plot">
-      <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
-      <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
+      {preview ? <Plot series={series} reading={reading} variant="preview" descriptionId={descriptionId} /> : <>
+        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
+        <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
+      </>}
     </div>
   );
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
       <Heading className="sv-graph-heading">{reading.label}</Heading>
-      {intro && <p className="sv-chart__desc">{intro}</p>}
-      <p className="sv-chart__axis-label">
-        {reading.valueLabel}, by {midSentence(series.periodLabel)}
-      </p>
+      {intro && !preview && <p className="sv-chart__desc">{intro}</p>}
+      {!preview && (
+        <p className="sv-chart__axis-label">
+          {reading.valueLabel}, by {midSentence(series.periodLabel)}
+        </p>
+      )}
 
       <p className="sv-visually-hidden" id={descriptionId}>
         {description}
@@ -466,7 +470,8 @@ function Reading({
               </li>
             ))}
           </ul>
-          {window ? (
+          {/* A preview always draws the full published range, with no event strip. */}
+          {window && !preview ? (
             <>
               <ContextStrip series={series} reading={reading} window={window} />
               <p className="sv-chart__focus-note">
@@ -489,25 +494,25 @@ function Reading({
           ) : (
             <>
               {plots()}
-              {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+              {!preview && events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
             </>
           )}
         </>)}
 
-      {(estimates > 0 || forecasts.length > 0) && (
+      {!preview && (estimates > 0 || forecasts.length > 0) && (
         <p className="sv-chart__annotation-key">
           {estimates > 0 && 'Dotted: estimates or provisional values. '}
           {forecasts.length > 0 && `Shaded: forecasts${series.coverage.note ? ` (${series.coverage.note})` : ''}.`}
         </p>
       )}
-      {unmeasured && series.notMeasuredSince && (
+      {!preview && unmeasured && series.notMeasuredSince && (
         <p className="sv-chart__annotation-key">
           Hatched: {series.notMeasuredSince.label}, {formatDate(unmeasured.from)} {NBSP_DASH} {formatDate(unmeasured.until)}.{' '}
           <a data-evidence-link="true" href={at(`${factId}--${reading.id}-not-measured`)}>Why</a>
         </p>
       )}
 
-      {series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
+      {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
       <p className="sv-chart__credit">Source: <a href={at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>
 
       {observations}
@@ -533,16 +538,16 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined}>
       {preview
-        ? <figcaption><h3 className="sv-chart__title">{series.title}</h3></figcaption>
+        ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading"><a href={`${preview.href}#${factId}--chart-${chartId}`}>{series.title}</a></h3></figcaption>
         : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
 
       <SeriesHighlight>
-        {series.readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
+        {(preview ? [series.readings.find(r => r.id === preview.reading) ?? series.readings[0]] : series.readings).map((reading, i) => (
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 
-      <details className="sv-chart__methodology" id={`${factId}--chart-${chartId}-methodology`}>
+      {!preview && <details className="sv-chart__methodology" id={`${factId}--chart-${chartId}-methodology`}>
         <summary className="sv-chart__data-summary">About this data</summary>
         <p className="sv-chart__range">
           <strong>Full published range:</strong> {series.coverage.from}
@@ -559,7 +564,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
             <p className="sv-chart__note">{reading.note}</p>
           </section>
         ))}
-      </details>
+      </details>}
     </figure>
   );
 }

@@ -52,11 +52,11 @@ test('the breakdown table caption names the grouping', () => {
 const preview = { href: '/topics/example/facts/cases' };
 const renderPreview = (c: Comparison) => renderToStaticMarkup(createElement(ComparisonChart, { fact, chart: c, sources: [source], preview }));
 
-test('a preview drops the group controls and the breakdown table but keeps the note', () => {
+test('a preview drops the group controls, the breakdown table and the note, which stay on the full chart', () => {
   const html = renderPreview({ ...chart, note: 'Shares do not sum to 100%.' });
   assert.doesNotMatch(html, /sv-comparison-controls/);
   assert.doesNotMatch(html, /Show all breakdowns/);
-  assert.match(html, /Shares do not sum to 100%\./);
+  assert.doesNotMatch(html, /Shares do not sum/);
 });
 
 test('a preview links its source credit to the fact page', () => {

@@ -7,13 +7,13 @@ import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-cha
  * itself, with its years, readings and source, is one click away — so it is
  * hidden from assistive technology.
  *
- * A series is drawn from the same layout as `SeriesChart`'s narrow plot,
+ * A series reading is drawn from the same layout as `SeriesChart`'s narrow plot,
  * cropped to the plot area; a comparison as one column per item, every item.
  */
-export function ChartThumb({ fact, chart }: { fact: Fact; chart: string }) {
+export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string; reading?: string }) {
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
   if (series) {
-    const layout = layoutReading(series, series.readings[0], 'narrow');
+    const layout = layoutReading(series, series.readings.find(r => r.id === reading) ?? series.readings[0], 'narrow');
     const g = layout.geometry;
     return (
       <svg className="sv-thumb" viewBox={`${g.left} ${g.top} ${g.plotWidth} ${g.plotHeight}`} preserveAspectRatio="none" aria-hidden="true" focusable="false">

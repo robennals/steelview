@@ -8,6 +8,7 @@ tags: [UK, Immigration]
 previewCharts:
   - fact: immigration-against-the-long-run
     chart: series
+    reading: share-of-population
   - fact: how-people-actually-arrive
     chart: arrival-reasons
   - fact: skilled-worker-fiscal-gain-concentrated
