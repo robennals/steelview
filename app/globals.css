@@ -1825,30 +1825,36 @@
 
   /* An inline citation: prose saying, at the point of use, that this clause
      is standing on a fact the page will show you. The text keeps full ink
-     strength for readability and a thin accent rule under it carries the
-     signal, closed by the same filled disc the fact statuses use for "the
+     strength for readability and a quiet dotted accent rule under it
+     carries the signal, closed by the same filled disc the fact statuses use for "the
      evidence is solid". A principle citation gets the same rule in the
      principle hue, so the two kinds of support stay distinguishable. */
   .prose-body a.sv-cite,
   .prose-body a.sv-principle-cite {
     color: var(--ink);
     text-decoration-line: underline;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 1.5px;
+    text-decoration-style: dotted;
+    text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    text-decoration-thickness: 1px;
     text-decoration-skip-ink: none;
-    text-underline-offset: 0.2em;
-    transition: text-decoration-color 120ms ease, text-decoration-thickness 120ms ease;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color 120ms ease;
   }
 
   .prose-body a.sv-principle-cite {
-    text-decoration-color: var(--principle);
+    text-decoration-color: color-mix(in srgb, var(--principle) 40%, transparent);
   }
 
   .prose-body a.sv-cite:hover,
   .prose-body a.sv-cite:focus-visible,
   .prose-body a.sv-principle-cite:hover,
   .prose-body a.sv-principle-cite:focus-visible {
-    text-decoration-thickness: 2.5px;
+    text-decoration-color: var(--accent);
+  }
+
+  .prose-body a.sv-principle-cite:hover,
+  .prose-body a.sv-principle-cite:focus-visible {
+    text-decoration-color: var(--principle);
   }
 
   /* An unresolved premise should remain visible in the argument without
