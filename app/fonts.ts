@@ -1,22 +1,29 @@
-import { IBM_Plex_Sans, Newsreader } from 'next/font/google';
+import { Inter, Inter_Tight, Source_Serif_4 } from 'next/font/google';
 
-// Newsreader carries the reading: a screen-first text serif with enough
-// character to read as a publication rather than as a document viewer.
-const newsreader = Newsreader({
-  variable: '--font-newsreader',
+// Inter Tight carries headings: a modern grotesque set tight, so titles read
+// as a current publication rather than a period piece.
+const interTight = Inter_Tight({
+  variable: '--font-inter-tight',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['500', '600', '700'],
+});
+
+// Inter is the interface voice — labels, captions, controls, chart text.
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+// Source Serif 4 carries the reading: a screen-first text serif for the
+// arguments and findings themselves.
+const sourceSerif = Source_Serif_4({
+  variable: '--font-source-serif',
   subsets: ['latin'],
   display: 'swap',
   style: ['normal', 'italic'],
 });
 
-// Plex Sans is the apparatus voice — section labels, status labels, captions.
-// Kept small and letterspaced so it never competes with the argument.
-const plexSans = IBM_Plex_Sans({
-  variable: '--font-plex-sans',
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600'],
-});
-
-/** Class names that define the two font variables; shared by the site and Storybook. */
-export const fontVariables = `${newsreader.variable} ${plexSans.variable}`;
+/** Class names that define the font variables; shared by the site and Storybook. */
+export const fontVariables = `${interTight.variable} ${inter.variable} ${sourceSerif.variable}`;
