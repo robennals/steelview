@@ -1,6 +1,6 @@
 # US vote by mail — outline
 
-> **Status: agent draft 5, rebuilt on facts verified at source (2026-10-26)**
+> **Status: agent draft 6, revised against the built reports (2026-10-29); viewpoints and cruxes now written in `content/topics/us-vote-by-mail/`.** Draft 5 was rebuilt on facts verified at source (2026-10-26)
 > ([stage 4a](../../WORKFLOW.md#4a-rewrite-each-viewpoints-case-against-the-evidence)),
 > for human review with [candidate-data.md](candidate-data.md). `D` numbers
 > are candidates there. All figures must be quoted verbatim in stage 5.
@@ -15,8 +15,9 @@
   witnesses) and who may return them; whether ballots arriving after Election
   Day should count; and who decides. The March 2026 executive order's Postal
   Service rule is blocked for November; *Watson v. RNC* (June 2026) left
-  receipt deadlines to states and Congress; the SAVE America Act would, per
-  coverage, end universal mail voting.
+  receipt deadlines to states and Congress; the House-passed SAVE America Act may
+  limit mail voting, though whether it does is disputed (an advocacy outlet
+  says yes; CRS called the mail limit a proposed amendment).
 - **Scope boundaries:** Mail and absentee ballots from application to count.
   **Election subversion is in scope**: fraud by campaigns and aligned
   groups, and manipulation of which ballots count by officials, are the
@@ -198,6 +199,35 @@ Kind first; then the viewpoint ids divided.
   `election-day-receipt`, `mail-works`.
 
 ## Revision notes
+
+### Draft 6 (stage 4a again, against the built reports, 2026-10-29)
+
+What the reports changed, per viewpoint. Observation ids are in [stage5-results.md](stage5-results.md); decisions in [decisions.md](decisions.md).
+
+- **Topic statement:** the SAVE America Act's effect on mail voting is now stated as disputed, not as fact (R6 `save-america-mail-unclear`).
+- **`mail-exception`:**
+  - **Fraud record strengthened and quantified:** a hand count of Heritage's file finds 32 voided elections, about two-thirds involving absentee ballots, none in a long-standing all-mail state (R4).
+  - **The floor argument now cuts both ways in the report:** `detected-fraud-is-a-floor` sits beside `floor-not-evidence-of-common`. The viewpoint argues from the floor as a reason for caution and says plainly that no one knows the gap.
+  - **Rasmussen–Heartland** is mentioned only to say the case does not need it, with the qualifier in the pill, beside the Dowling et al. figure.
+  - **New concession used:** Britain kept postal voting on demand and added checks, rather than abolishing it.
+  - **Policy conclusion made concrete:** booth by default, weeks of early voting, absentee on request with a reason, no third-party collection (Carter–Baker's recommendation).
+- **`mail-works`:**
+  - **Cure figure:** "54% cured" becomes "more than half"; the EAC prints 54.3% and the totals give 54.2%.
+  - **"Paper trail" argument narrowed:** each scheme whose discovery is recorded was exposed by a contest, investigation or paper trail. A blanket "mail has checks in-person voting lacks" became "every returned envelope is checked", since in-person voting has its own checks.
+  - **Turnout and partisanship qualified:** the no-tilt studies predate the 2020 party split (R1 `studies-predate-split`), which the viewpoint now says.
+  - **New support used:** Carter–Baker's "little evidence of fraud in Oregon"; Britain 2024 "no widespread, systemic issues".
+- **`signature-discretion`:**
+  - **Racial gap qualified in the pill:** it counts unsigned ballots as well as mismatches; the age gap holds for mismatches alone.
+  - **Arizona 2022 dropped as an illustration of misuse:** Lake claimed signatures were *not* checked, and lost. The corruption argument rests on officials' past manipulation of absentee ballots (Lincoln County, Philadelphia) and is stated as a safeguard against a risk.
+  - **New:** Florida studies on young and inexperienced voters (abstracts only); Georgia's rejections fell after it replaced signature matching with an ID number while Texas's rose, so "objective checks" depend on design.
+- **`election-day-receipt`:**
+  - **New argument:** since 2024 the Postal Service postmarks at regional centres, which weakens postmark-based grace periods.
+  - **New concession:** Nevada's 2024 lead change came from ballots that arrived by Election Day, so speed depends on counting, not only on deadlines.
+  - **Trust argument** stays a value, pilled to the observation that count length has not been separated from who won.
+- **`states-decide`:**
+  - **Narrowed:** the March 2026 order itself stands, and no court above district level has ruled on the merits; the viewpoint now concedes both.
+  - **New:** a district court held EO 14248's receipt-deadline rules beyond presidential power; bills on both sides would push mail voting in opposite directions.
+- **Cruxes:** the four candidates were kept; a fifth, *should Congress set national mail rules?* (`priority`), was added so the federalism disagreement has a crux. Each is in `content/topics/us-vote-by-mail/cruxes/`.
 
 ### Draft 5 (deep research, every argument checked at source)
 

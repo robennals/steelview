@@ -1,0 +1,39 @@
+# US vote by mail — visualization upgrades
+
+Every place a report uses a stopgap today, and the component it should become once the `figures` list and new kinds in the visualization spec (PR #17, `docs/superpowers/specs/2026-10-29-fact-report-visualizations.md`) land. Ordered by how much the change would improve the report: the first items replace markdown tables that render after every chart and break the reading order, or charts that misrepresent the data's shape.
+
+| # | Report | Artifact (stopgap today) | Target kind | Data it needs |
+|---|---|---|---|---|
+| 1 | `secret-ballot-and-postal-voting-abroad` | "How private is a mail ballot?" survey table (markdown) | `dataTable` with a method column | Each survey: source, year, sample and method, exact question, figure, mail or in person — Dowling et al. 2010; Rasmussen–Heartland 2023 with its qualifiers in the same row; Rose 2000 pilot; Oregon 1996 (second-hand); Democracy Volunteers 2024 |
+| 2 | `absentee-fraud-and-manipulation-of-the-count` | Organised absentee cases, officials, in-person cases (three markdown tables) | `timeline` (whole record, by category) plus `dataTable` per category | Case, date, category, method, margin, ballots at issue, how detected, remedy, criminal outcome, outcome as-of date |
+| 3 | `confidence-and-disputed-results` | Six disputed results (markdown table) | `dataTable` | Election, what was challenged, mail central (yes/no), how it ended, as-of date, source |
+| 4 | `secret-ballot-and-postal-voting-abroad` | IDEA all / some / no voters (comparison chart) | categorical `geoMap` plus `keyFigures` | 204 country codes → category (all 11, some 21, none, derived 172); key figures 11, 21, 27% of OECD members |
+| 5 | `mail-ballot-rejection-and-signature-checks` | How states check and cure (markdown table) | categorical `tileMap`, with `dataTable` behind it | State → signature / envelope signed only / ID number / witness / notary; statewide cure yes/no (NCSL Tables 14, 15) |
+| 6 | `ballot-deadlines-and-counting-speed` | Processing start, hours to count, mail share (markdown table) | `scatterPlot` | Per state: days before Election Day processing may begin (NCSL Table 16), hours to count 95% (MIT), mail share 2024 (EAVS) |
+| 7 | `mail-ballot-rejection-and-signature-checks` | Rejection rate by state, 2024 (comparison chart) | `tileMap` | State → % of returned mail ballots not counted, EAVS 2024 Overview Table 1; all-mail flag |
+| 8 | `mail-voting-use-and-effects` | Mail share by state, 2024 (comparison chart) | `tileMap` | State → % of turnout by mail, EAVS 2024 Overview Table 1; mostly-mail flag |
+| 9 | `ballot-deadlines-and-counting-speed` | Days a postmarked ballot may arrive late (comparison chart) | `tileMap` | State → days after Election Day (NCSL Table 11; 0 for receipt by Election Day; Washington 20) |
+| 10 | `mail-voting-use-and-effects` | Effect estimates (comparison chart of point estimates) | `estimateRange` with a zero line | Turnout +2.1–2.2 (Thompson et al.); Democratic turnout share +0.1, upper ~0.3; Texas 65-year-olds +0.02, upper 0.26 |
+| 11 | `ballot-deadlines-and-counting-speed` | Late ballots against their denominators (markdown table) | `dataTable` | Nevada 2024 Clark and Washoe; WI, MI, WA 2026 primaries with their comparison elections; US 2024 late share of rejections |
+| 12 | `federal-and-state-power-over-mail-voting` | Federal laws, bills, orders (markdown table and series events) | `timeline` | UOCAVA 1986 … *USPS v. California* 14 Sep 2026, with category (law / bill / order / ruling) |
+| 13 | `federal-and-state-power-over-mail-voting` | "Who may set mail-voting rules?" (markdown table) | `quoteComparison` | Elections Clause; *ITCA*; *Moore*; *Watson*; *Trump v. California* (majority, Sotomayor); *USPS v. California* (Kavanaugh, Alito) |
+| 14 | `mail-ballot-rejection-and-signature-checks` | Court rulings on signature matching (markdown table) | `quoteComparison` | New Hampshire 2018; Fifth Circuit 2020 majority and Higginbotham; Pennsylvania 2020; Arizona 2023 (Lake) |
+| 15 | `secret-ballot-and-postal-voting-abroad` | "Does postal voting weaken the secret ballot?" (markdown table) | `quoteComparison` | BVerfG 2013; Mawrey 2005; Pickles 2016; Southwell; swissinfo 2026 |
+| 16 | `mail-voting-use-and-effects` and `federal-and-state-power-over-mail-voting` | State mail-rule counts (series in both reports) | one shared `compositionBar` | NCSL Evolution table, Nov 2016–Nov 2026: no-excuse or all-mail / excuse required / COVID excuse. A shared figure stops the two copies drifting |
+| 17 | `mail-voting-use-and-effects` | All-mail adoption dates (markdown table) | `periodTimeline` | NCSL Table 18a enacted and first-used years, OR 1998/2000 to DC 2022/2023; Utah opt-in from 2029 |
+| 18 | `secret-ballot-and-postal-voting-abroad` | British election-court cases and reforms (markdown table) | `dataTable` plus `keyFigures` | Birmingham 2005, Slough 2008, Woking 2013, Tower Hamlets 2015; 2006 and 2022 Acts; 1,462 allegations and 11 convictions (2019–23) |
+| 19 | `secret-ballot-and-postal-voting-abroad` | UK 2024 postal statistics (markdown table) | `keyFigures` | 2.2% rejected (~168,000); registration 18% → 20%; postal turnout; 89% satisfied |
+| 20 | `secret-ballot-and-postal-voting-abroad` | Secret-ballot adoption (markdown table) | `timeline` | Britain 1872; Louisville, Massachusetts, New York 1888; ~90% of states by 1896 (*Burson*); Chile 1958 |
+| 21 | `mail-ballot-rejection-and-signature-checks` | Washington race and age groups (comparison charts) | `barChart` | State Auditor Exhibits 5–7 |
+| 22 | `mail-ballot-rejection-and-signature-checks` | Washington counties (comparison chart) | `dataTable` | 39 county rates (Exhibit 3) plus controlled ratios (4–7× mismatch or unsigned; 18× mismatch alone) |
+| 23 | `mail-ballot-rejection-and-signature-checks` | Rejection reasons 2024 (comparison chart) | `barChart` (not `compositionBar`: shares use casewise deletion and do not sum to 100%) | EAVS 2024 Table 1, all reasons; signature share per cycle in the table view |
+| 24 | `mail-ballot-rejection-and-signature-checks` | Curing 2024 and Washington's re-check (comparison chart, table) | `keyFigures` | 585,457 set aside; 317,191 cured; 54.2% derived vs 54.3% printed; Texas 5.8% vs 1.5%; >7,200 re-checked, >98% agreement, 98.7% appropriate |
+| 25 | `ballot-deadlines-and-counting-speed` | Hours to count 95%, seven states, 2020 and 2024 (paired comparison) | grouped `barChart` | MIT Table 1 |
+| 26 | `ballot-deadlines-and-counting-speed` | 63% vs 78% at four hours (comparison) | `keyFigures` | Stewart 2024 |
+| 27 | `confidence-and-disputed-results` | 76% of mail voters vs 47% of in-person voters (comparison) | `keyFigures` | Pew Oct 2026 |
+| 28 | `absentee-fraud-and-manipulation-of-the-count` | Margin against invalid ballots (comparison of paired values) | paired `barChart` | Per case: margin, ballots at issue |
+| 29 | `absentee-fraud-and-manipulation-of-the-count` | 47,629,437 mail ballots counted, 2024 (chart note) | `keyFigures` | EAVS 2024 |
+| 30 | `absentee-fraud-and-manipulation-of-the-count` | "Detected fraud is a floor" (Subtleties list) | `caveatList` | Pickles para 192; Cobb spouse-signed envelope; Heritage "a sampling" |
+| 31 | `absentee-fraud-and-manipulation-of-the-count` | Rasmussen–Heartland (observation) | `claimCheck` | The claim "one in five mail voters admit they cheated", its method, its critiques, link to item 1 |
+| 32 | `mail-ballot-rejection-and-signature-checks`, `confidence-and-disputed-results` | Cobb caveats; no before-and-after survey; no restriction study (observations and `dataStillNeeded`) | `caveatList` | The gap statements |
+| 33 | `absentee-fraud-and-manipulation-of-the-count`, `ballot-deadlines-and-counting-speed`, `secret-ballot-and-postal-voting-abroad` | Carter–Baker; *Watson*; Chile (observation quotes) | `pullQuote` | The quoted sentences |
