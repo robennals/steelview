@@ -356,12 +356,18 @@ now costs one file; found later it costs every viewpoint that cites it.
   [figure](AUTHORING.md#figures) with the same id wherever one would honestly
   show it;
 - a rule or status per area (a rule per state or country) is a categorical
-  `tileMap` or `geoMap` figure; a categorical table with more than one
-  column per area is a `dataTable` figure. Policy dates on a series go in
-  its `events`;
+  `map` figure; a categorical table with more than one column per area is a
+  `dataTable` figure. Policy dates on a series go in its `events`;
+- a `map` draws only its preset's areas: US states and territories, the
+  EU27 with EFTA and the UK, UK ITL1 regions, or the world's sovereign
+  states. A map of other areas (US counties, Balkan states outside EFTA, a
+  territory such as Greenland) has no preset yet. On the world tiles and on
+  the real shapes, values are read from the readout and the table, not
+  printed; the dots for small states and US territories carry no label;
 - a fact file reaches the component library through `figures`
   ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
-  reading order. A `quotes` figure of up to four quotes sets them side by
+  reading order. Maps are kind `map` (`AreaMap`; `tileMap` and `geoMap`
+  are older spellings of it), real shapes and tiles from one dataset. A `quotes` figure of up to four quotes sets them side by
   side and of more becomes a filterable list (`QuoteBrowser`); two measures
   per row are a `barChart` with `series`, paired or a dumbbell, never
   stacked; a tidy table a reader should be able to cut differently is a

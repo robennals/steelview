@@ -44,7 +44,7 @@ test('prose covers each kind\'s reader-facing strings', () => {
   assert.ok(figureProse(figureOf('timeline')).includes('Assadi convicted in Antwerp'));
   const periods = figureProse(figureOf('periodTimeline'));
   assert.ok(periods.includes('US naval blockade') && periods.includes('First blockade') && periods.includes('Letter says hostilities "have terminated"'));
-  assert.ok(figureProse(figureOf('tileMap')).some(s => s.startsWith('Fixture: only six states')));
+  assert.ok(figureProse(figureById('map', 'rejection-by-state')).some(s => s.startsWith('Fixture: only six states')));
   assert.ok(figureProse(figureOf('compositionBar')).includes('HRANA, 7 Apr'));
   assert.ok(figureProse(figureOf('estimateRange')).includes('Department of Defense'));
   const secrecy = fact.figures?.find((f): f is FigureOf<'quotes'> => f.kind === 'quotes' && f.id === 'postal-secrecy');
@@ -69,7 +69,7 @@ test('key figure values carry their own citation and asPublished', () => {
 });
 
 test('map data falls back to the figure\'s sources and carries its valuesFrom', () => {
-  const values = figureValues(figureOf('tileMap'));
+  const values = figureValues(figureById('map', 'rejection-by-state'));
   assert.equal(values.length, 6);
   assert.deepEqual(values[0], {
     where: 'map area AR',
@@ -127,7 +127,7 @@ function figureById<K extends FigureKind>(kind: K, id: string): FigureOf<K> {
 }
 
 test('categorical map prose: category labels and area notes, but not bare slugs', () => {
-  const prose = figureProse(figureById('tileMap', 'voter-id-rules'));
+  const prose = figureProse(figureById('map', 'voter-id-rules'));
   assert.ok(prose.includes('ID asked of voters at the polls, by state, 2026'));
   assert.ok(prose.includes('Strict photo ID') && prose.includes('No document requested'));
   assert.ok(prose.includes('A free voter ID card is issued on request'));
@@ -135,8 +135,8 @@ test('categorical map prose: category labels and area notes, but not bare slugs'
   assert.ok(!prose.includes('strict-photo'));
 });
 
-test('geo map prose adds inset labels', () => {
-  const prose = figureProse(figureOf('geoMap'));
+test('map prose adds inset labels', () => {
+  const prose = figureProse(figureById('map', 'postal-voting'));
   assert.ok(prose.includes('Some voters'));
   assert.ok(prose.includes('Voters who cannot attend a polling place'));
   assert.ok(prose.includes('Luxembourg'));
@@ -151,18 +151,19 @@ test('scatter prose: point names and notes, and group labels', () => {
 });
 
 test('a categorical map draws no numbers', () => {
-  assert.deepEqual(figureValues(figureById('tileMap', 'voter-id-rules')), []);
-  assert.deepEqual(figureValues(figureOf('geoMap')), []);
+  assert.deepEqual(figureValues(figureById('map', 'voter-id-rules')), []);
+  assert.deepEqual(figureValues(figureById('map', 'postal-voting')), []);
 });
 
-test('a numeric geo map\'s data are values, like a tile map\'s', () => {
-  const map: FigureOf<'geoMap'> = {
-    kind: 'geoMap',
+test('a numeric map\'s data are values, whichever view it opens on', () => {
+  const map: FigureOf<'map'> = {
+    kind: 'map',
     id: 'share',
     title: 't',
     description: 'd',
     sources: [2],
-    regions: 'uk-itl1',
+    preset: 'uk-regions',
+    default: 'map',
     areaLabel: 'Region',
     highlight: [],
     valueLabel: 'Share',

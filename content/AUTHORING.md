@@ -741,10 +741,11 @@ leaves "strongest", magnitude and overview to you.
 
 **Figures in previews.** A slide can draw these figure kinds: `barChart`
 (paired and dumbbell bars too, with their series key), `compositionBar`,
-`estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
-`timeline`, `periodTimeline`, `keyFigures`, `smallMultiples` (every panel)
-and `sliceExplorer` — its opening cut, with the status line that says what
-is shown and what is added together, and no controls. Each is drawn by its own
+`estimateRange`, `scatterPlot`, `map` (and its older spellings `tileMap`
+and `geoMap`), `timeline`, `periodTimeline`, `keyFigures`, `smallMultiples`
+(every panel) and `sliceExplorer` — its opening cut, with the status line
+that says what is shown and what is added together, and no controls. A map
+is drawn in its `default` view, with no Map / Tiles switch. Each is drawn by its own
 component in a compact form — the title, linked to the full figure, and the
 graph: every item, area, event and period, with the key where colours or
 shapes need one, but no description, Graph/Table switch, filters, method
@@ -792,8 +793,8 @@ has; the rest draw a component (see Storybook for each one's look):
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` (or `sources`); a date may be a decade (`1850s`) or a circa year (`c. 1888`) |
 | `periodTimeline` | spans per row, with point `events`; a period or event may cite its own `sources`. A period with no `to` runs to the axis end: the topic's `lastUpdated` unless the figure sets `to`. It reads "still in force" when the axis ends on `lastUpdated`, and "no end by <axis end>" when the data stops earlier (`to: '2017-06'`). A label goes inside its bar if it fits, else just right of it if that part of the row is free, else only in the legend, the hover-and-focus readout and the table — so keep labels short and name categories in `categories`. Spans under 18 months get month ticks |
-| `tileMap` | US states, European countries or UK regions as equal tiles (`map: us-states`, `europe-countries`, `uk-regions`), shaded by a number or by a category. `us-states` adds a row for the five territories (`PR`, `VI`, `GU`, `AS`, `MP`) when the figure names one; `europe-countries` is the EU27, the four EFTA states and the UK |
-| `geoMap` | true-shape outlines (`regions: world`, `europe`, `uk-itl1`), shaded by a number or by a category, with optional enlarged `insets` for small areas. Every sovereign state is drawable: the 29 too small for the world outlines (Liechtenstein, Monaco, Tuvalu, …) are dots |
+| `map` | one dataset over a preset's areas, drawn both in real shapes and as equal tiles from one legend, with a Map / Tiles / Table switch; shaded by a number or by a category. `preset: us-states`, `europe`, `uk-regions` or `world`; `default: map` (the default) or `tiles` picks the view shown first, which is also what a reader without JavaScript sees beside the table. Optional enlarged `insets` for the real-shape view. See "A map draws every area twice" below |
+| `tileMap`, `geoMap` | older spellings of `map`, still accepted: `tileMap` with `map: us-states`, `europe-countries` or `uk-regions` is a `map` with `default: tiles`; `geoMap` with `regions: world`, `europe` or `uk-itl1` is a `map` with `default: map` (`uk-itl1` is `uk-regions`). New figures use `map` |
 | `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
@@ -1152,11 +1153,12 @@ shows a rule or status per area — the ID rule each state enforces — without
 coding it as a number, which would imply a false order:
 
 ```yaml
-  - kind: tileMap
+  - kind: map
     id: voter-id-rules
     title: ID asked of voters at the polls, by state, 2026
     description: The rule each state enforces when a voter arrives at the polls.
-    map: us-states
+    preset: us-states
+    default: tiles           # open on the tiles; `map` (the default) opens on real shapes
     areaLabel: State
     categoryLabel: ID asked of voters at the polls
     sources: [2]
@@ -1170,16 +1172,29 @@ coding it as a number, which would imply a false order:
 ```
 
 Category ids and marks are unique, and every area names one of the
-`categories`. A `geoMap` takes the same two encodings; its area ids are the
-outlines' own (ISO two-letter country codes for `world` and `europe`, slugs
-such as `london` for `uk-itl1`).
+`categories`.
 
-**A map with gaps says why.** A `tileMap` or `geoMap` area with no datum or
-category reads "No data"; unexplained, a gap looks like a selection, so a map
-that leaves out any area of its preset needs a `note` saying why. A world map
-of a dozen countries therefore always has a note. The US territories count
-only once the figure names one: a map of the 50 states and DC needs no note
-about Guam, but one that gives Puerto Rico must explain the other four.
+**A map draws every area twice.** Each preset is a set of areas with a tile
+and a shape apiece, and both views draw all of them, so a reader can always
+point at a small one:
+
+| `preset` | Areas (ids) | Real-shape view | Tile view |
+| --- | --- | --- | --- |
+| `us-states` | the 50 states and DC (USPS codes), plus `PR`, `VI`, `GU`, `AS`, `MP` once the figure names one | Alaska and Hawaii moved below the 48, as usual; DC and the territories are dots | Alaska, California and Texas span several cells; the territories are a row under the states |
+| `europe` | the EU27, the four EFTA states and the UK (ISO two-letter codes, `GB` for the UK, `GR` for Greece) | cropped to Europe, other countries drawn plainly as context; Liechtenstein and Malta also have dots | one tile each |
+| `uk-regions` | the twelve ITL1 regions (slugs such as `london`) | ONS outlines | one tile each |
+| `world` | the 197 sovereign states: UN members, Palestine, Vatican City, Kosovo, Taiwan (ISO two-letter codes) | Equal Earth; the 29 states too small for the outlines are dots; Greenland, Western Sahara and the other territories are drawn plainly as context, not as areas | one tile per state in a world-shaped grid, too dense for numbers: tiles print their code and a mark or ▲/▼, and the readout and table give the value |
+
+A number the source qualifies keeps its colour in both views, gains ▲ or ▼
+(on its tile, or at its centre on the shapes) and a stipple; the legend
+explains each mark that appears.
+
+**A map with gaps says why.** An area with no datum or category reads "No
+data"; unexplained, a gap looks like a selection, so a map that leaves out
+any area of its preset needs a `note` saying why. A world map of a dozen
+countries therefore always has a note. The US territories count only once
+the figure names one: a map of the 50 states and DC needs no note about
+Guam, but one that gives Puerto Rico must explain the other four.
 
 **A scatter plot's points are named and checked.** Each point has a unique
 slug `id`, a short `label` printed beside it, a `name` for the readout and
@@ -1842,7 +1857,7 @@ them.
 | A series `focus` lies inside the coverage, runs forwards and holds two points of some line | `lib/content/validate.ts`, `seriesErrors` |
 | A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
-| Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a tile map's `data` and `valueLabel` | `lib/content/schema.ts` (`figureSchema`) |
+| Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a map's `data` and `valueLabel` (or its categories), a known `preset` and `default` view; `tileMap` and `geoMap` read as `map` | `lib/content/schema.ts` (`figureSchema`) |
 | Qualified numbers: a known `qualifier`, ranges with `low` ≤ `high` and no `value`, no unknown keys, no range on a scatter point | `lib/content/schema.ts` (`figureNumberSchema`) |
 | A key figure gives its qualifier in its `value` or beside it, not both | `lib/content/validate.ts` (F8) |
 | Figure ids are unique and do not reuse a series, reading or comparison id; a `replaces` anchor is not still in the body, not a chart id, and replaced once | `lib/content/validate.ts` (`figureErrors`, F1) |
@@ -1855,7 +1870,7 @@ them.
 | A timeline date is a partial date, a decade or a circa year | `lib/content/schema.ts` |
 | A `format: date` column holds only YYYY, YYYY-MM or YYYY-MM-DD dates | `lib/content/validate.ts` (F6) |
 | At most six key figures | `lib/content/validate.ts` (F8) |
-| Map areas belong to the preset (the US territories and the world's small states included), breaks ascend, and a gap among the areas drawn is explained in `note` | `lib/content/validate.ts` (F9) |
+| Map areas belong to the preset (the US territories and the world's small states included), insets enlarge an area the map draws, breaks ascend, and a gap among the areas drawn is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
 | A bar chart's rows give `value`, or with `series` a `values` map naming every series (`null` for none) and at least one number; `style` only with `series`; a dumbbell has exactly two series and only it labels ends, by series key | `lib/content/schema.ts`, `lib/content/validate.ts` (F10, `pairedBarErrors`) |
 | A slice explorer's rows name every dimension, no combination twice, values within a dimension's `values` (each used), numbers for measures; its defaults exist, never split by a `combinable: false` dimension or pick two of its values, and draw at least one bar | `lib/content/validate.ts` (`sliceErrors`) |

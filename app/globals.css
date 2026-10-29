@@ -3352,6 +3352,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-tile-map__fit > .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; gap: 2px; }
 .sv-tile-map__fit .sv-tile-map__tile { padding: 0; align-items: center; justify-content: center; }
 .sv-tile-map__fit .sv-tile-map__code { font-size: .55rem; }
+/* The world grid fits the slide like any other: no minimum tile size, no sideways scroll. */
+.sv-tile-map__fit > .sv-tile-map__grid[data-cols="dense"] { min-width: 0; margin: 0 auto; gap: 1px; }
 /* A category legend's long labels would otherwise take the map's whole slide on a phone. */
 .sv-chart__preview .sv-map-legend__title { margin: 0 0 .1rem; font-size: .66rem; }
 .sv-chart__preview .sv-category-legend__list { gap: .1rem .7rem; font-size: .66rem; line-height: 1.2; }

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import {
   type FigurePreview,
+  AreaMap,
   BarChart,
   CaveatList,
   ClaimCheck,
@@ -8,7 +9,6 @@ import {
   DataCards,
   DataTable,
   EstimateRange,
-  GeoMap,
   KeyFigures,
   PairedBarChart,
   PeriodTimeline,
@@ -19,12 +19,12 @@ import {
   ScatterPlot,
   SliceExplorer,
   SmallMultiples,
-  TileMap,
   Timeline,
 } from '@/components/report';
 import { bodySections, chartObservations, methodChanges } from '@/lib/content/chart-observations';
 import { unmeasuredSpan } from '@/lib/chart/series-chart';
 import {
+  areaMapProps,
   barChartProps,
   caveatListProps,
   claimCheckProps,
@@ -33,7 +33,6 @@ import {
   estimateRangeProps,
   figureContext,
   figureDomId,
-  geoMapProps,
   keyFiguresProps,
   pairedBarChartProps,
   periodTimelineProps,
@@ -43,7 +42,6 @@ import {
   scatterPlotProps,
   sliceExplorerProps,
   smallMultiplesProps,
-  tileMapProps,
   timelineProps,
   SIDE_BY_SIDE_QUOTES,
   type FigureContext,
@@ -240,10 +238,8 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
       return <Timeline {...timelineProps(figure, context)} footer={footer} />;
     case 'periodTimeline':
       return <PeriodTimeline {...periodTimelineProps(figure, context)} footer={footer} />;
-    case 'tileMap':
-      return <TileMap {...tileMapProps(figure, context)} footer={footer} />;
-    case 'geoMap':
-      return <GeoMap {...geoMapProps(figure, context)} footer={footer} />;
+    case 'map':
+      return <AreaMap {...areaMapProps(figure, context)} footer={footer} />;
     case 'scatterPlot':
       return <ScatterPlot {...scatterPlotProps(figure, context)} footer={footer} />;
     case 'barChart':
@@ -304,10 +300,8 @@ export function PreviewFigure({ figure, context, preview }: { figure: ComponentF
       return <EstimateRange {...estimateRangeProps(figure, context)} preview={preview} />;
     case 'scatterPlot':
       return <ScatterPlot {...scatterPlotProps(figure, context)} preview={preview} />;
-    case 'tileMap':
-      return <TileMap {...tileMapProps(figure, context)} preview={preview} />;
-    case 'geoMap':
-      return <GeoMap {...geoMapProps(figure, context)} preview={preview} />;
+    case 'map':
+      return <AreaMap {...areaMapProps(figure, context)} preview={preview} />;
     case 'timeline':
       return <Timeline {...timelineProps(figure, context)} preview={preview} />;
     case 'periodTimeline':

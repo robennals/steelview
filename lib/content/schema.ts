@@ -536,10 +536,19 @@ export const periodTimelineFigureSchema = z.object({
   events: z.array(seriesEventSchema).default([]),
 });
 
-/* --- maps: tileMap and geoMap --------------------------------------------- */
+/* --- maps: map, and its older spellings tileMap and geoMap ---------------- */
 
-export const MAP_TILE_PRESETS = ['us-states', 'europe-countries', 'uk-regions'] as const;
-export const GEO_MAP_PRESETS = ['world', 'europe', 'uk-itl1'] as const;
+/** The area sets a `map` draws, each in real shapes and as tiles. */
+export const MAP_PRESETS = ['us-states', 'europe', 'uk-regions', 'world'] as const;
+/** A map's two drawings; the third view, the table, is never the default. */
+export const MAP_VIEWS = ['map', 'tiles'] as const;
+type MapPreset = (typeof MAP_PRESETS)[number];
+const TILE_MAP_PRESETS = ['us-states', 'europe-countries', 'uk-regions'] as const;
+const GEO_MAP_PRESETS = ['world', 'europe', 'uk-itl1'] as const;
+/** `tileMap`'s preset names, and the `map` preset each is. */
+const TILE_MAP_PRESET: Record<(typeof TILE_MAP_PRESETS)[number], MapPreset> = { 'us-states': 'us-states', 'europe-countries': 'europe', 'uk-regions': 'uk-regions' };
+/** `geoMap`'s preset names, and the `map` preset each is. */
+const GEO_MAP_PRESET: Record<(typeof GEO_MAP_PRESETS)[number], MapPreset> = { world: 'world', europe: 'europe', 'uk-itl1': 'uk-regions' };
 
 /** An area's number: bare, qualified or a range, with an optional `label` that replaces the formatted value ("<0.1"). */
 const mapDatum = z.union([
@@ -587,7 +596,7 @@ type MapEncodingInput = { [K in keyof typeof mapEncodingFields]?: unknown };
  * (`categoryLabel` + `categories` + `areas`). A numeric option such as
  * `scale` on a categorical map counts as mixing the two.
  */
-function mapEncodingRule(what: 'tile map' | 'geo map') {
+function mapEncodingRule(what: 'map' | 'tile map' | 'geo map') {
   const either = '`data` and `valueLabel`, or `categoryLabel`, `categories` and `areas`';
   return (f: MapEncodingInput, ctx: z.RefinementCtx) => {
     const numeric = NUMERIC_KEYS.some(key => f[key] !== undefined);
@@ -600,34 +609,51 @@ function mapEncodingRule(what: 'tile map' | 'geo map') {
   };
 }
 
+const mapFields = {
+  ...figureBase,
+  /** Table heading for the areas: "State". */
+  areaLabel: z.string().min(1),
+  /** Outlined, never recoloured. */
+  highlight: z.array(z.string()).default([]),
+  /** Areas too small to see at full scale, redrawn enlarged beside the real-shape view. */
+  insets: z.array(z.object({ regionIds: z.array(z.string().min(1)).min(1), label: z.string().min(1).optional() })).optional(),
+  ...mapEncodingFields,
+};
+
+/**
+ * One dataset over a preset's areas, drawn both in real shapes and as equal
+ * tiles from the same legend, with a Map / Tiles / Table switch. `default`
+ * picks the view shown first, which is also the one a reader without
+ * JavaScript sees beside the table.
+ */
+export const mapFigureSchema = z
+  .object({
+    kind: z.literal('map'),
+    preset: z.enum(MAP_PRESETS),
+    default: z.enum(MAP_VIEWS).default('map'),
+    ...mapFields,
+  })
+  .superRefine(mapEncodingRule('map'));
+
+/** The older spelling of a `map` that opens on its tiles: `map: europe-countries` is `preset: europe, default: tiles`. */
 export const tileMapFigureSchema = z
   .object({
     kind: z.literal('tileMap'),
-    ...figureBase,
-    map: z.enum(MAP_TILE_PRESETS),
-    /** Table heading for the areas: "State". */
-    areaLabel: z.string().min(1),
-    /** Outlined, never recoloured. */
-    highlight: z.array(z.string()).default([]),
-    ...mapEncodingFields,
+    map: z.enum(TILE_MAP_PRESETS),
+    ...mapFields,
   })
-  .superRefine(mapEncodingRule('tile map'));
+  .superRefine(mapEncodingRule('tile map'))
+  .transform(({ map, ...rest }) => ({ ...rest, kind: 'map' as const, preset: TILE_MAP_PRESET[map], default: 'tiles' as const }));
 
+/** The older spelling of a `map` that opens on its real shapes: `regions: uk-itl1` is `preset: uk-regions, default: map`. */
 export const geoMapFigureSchema = z
   .object({
     kind: z.literal('geoMap'),
-    ...figureBase,
-    /** The outline set: the world's countries, Europe and its neighbours, or the UK's twelve ITL1 regions. */
     regions: z.enum(GEO_MAP_PRESETS),
-    /** Table heading for the areas: "Country". */
-    areaLabel: z.string().min(1),
-    /** Outlined, never recoloured. */
-    highlight: z.array(z.string()).default([]),
-    /** Areas too small to see at full scale, redrawn enlarged beside the map. */
-    insets: z.array(z.object({ regionIds: z.array(z.string().min(1)).min(1), label: z.string().min(1).optional() })).optional(),
-    ...mapEncodingFields,
+    ...mapFields,
   })
-  .superRefine(mapEncodingRule('geo map'));
+  .superRefine(mapEncodingRule('geo map'))
+  .transform(({ regions, ...rest }) => ({ ...rest, kind: 'map' as const, preset: GEO_MAP_PRESET[regions], default: 'map' as const }));
 
 /* --- barChart ------------------------------------------------------------- */
 
@@ -967,6 +993,7 @@ export const figureSchema = z.discriminatedUnion('kind', [
   keyFiguresFigureSchema,
   timelineFigureSchema,
   periodTimelineFigureSchema,
+  mapFigureSchema,
   tileMapFigureSchema,
   geoMapFigureSchema,
   barChartFigureSchema,

@@ -201,10 +201,21 @@ test('a topic requires an ISO lastUpdated date', () => {
 test('every worked example of the visualization spec parses as a fact', () => {
   const parsed = factFrontmatterSchema.parse(figureExamplesFrontmatter());
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
-    'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
+    'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'map',
     'barChart', 'compositionBar', 'estimateRange', 'quotes', 'quotes', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'sliceExplorer', 'smallMultiples', 'compositionBar', 'dataTable', 'section',
+    'map', 'map', 'map', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'sliceExplorer', 'smallMultiples', 'compositionBar', 'dataTable', 'section',
   ]);
+});
+
+test('tileMap and geoMap parse as a map with the matching default view, their preset names kept', () => {
+  const figures = factFrontmatterSchema.parse(figureExamplesFrontmatter()).figures ?? [];
+  const views = figures.flatMap(f => (f.kind === 'map' ? [`${f.id}: ${f.preset}, ${f.default}`] : []));
+  assert.deepEqual(views, ['rejection-by-state: us-states, tiles', 'voter-id-rules: us-states, tiles', 'postal-voting: world, map', 'asylum-per-head: europe, tiles']);
+  const parse = (figure: Record<string, unknown>) => factFrontmatterSchema.parse({ ...figureExamplesFrontmatter(), figures: [figure] }).figures?.[0];
+  const base = { id: 'm', title: 't', description: 'd', sources: [1], areaLabel: 'Area', valueLabel: 'v', data: {} };
+  assert.deepEqual(parse({ ...base, kind: 'tileMap', map: 'europe-countries' }), { ...parse({ ...base, kind: 'map', preset: 'europe', default: 'tiles' }) });
+  assert.deepEqual(parse({ ...base, kind: 'geoMap', regions: 'uk-itl1' }), { ...parse({ ...base, kind: 'map', preset: 'uk-regions' }) });
+  assert.equal(factFrontmatterSchema.safeParse({ ...figureExamplesFrontmatter(), figures: [{ ...base, kind: 'map', preset: 'europe-countries' }] }).success, false, 'the old names are the aliases\' only');
 });
 
 /** The fixture with figure `index` replaced, parsed; returns the paths of the issues. */

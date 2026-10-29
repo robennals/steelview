@@ -1,7 +1,7 @@
 import { extentValues, pointValue, type FigureNumber } from '@/components/report/qualified';
 import { appliedFilters, slice } from '@/components/report/slice';
 import { citedFactTargets, neededClaims } from './markdown';
-import { geoRegions, mapTileIds, mapTiles } from './map-presets';
+import { mapAreaIds, mapAreas } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
 import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
 import { factSources, figureCitations } from './sources';
@@ -609,14 +609,11 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
         }
       }
       break;
-    case 'tileMap':
-      errors.push(...mapErrors(figure, mapTileIds(figure.map), mapTiles(figure).map(tile => tile.id), figure.map, where));
-      break;
-    case 'geoMap': {
-      const areas = geoRegions(figure.regions).regions.map(region => region.id);
-      errors.push(...mapErrors(figure, areas, areas, figure.regions, where));
+    case 'map': {
+      const shown = mapAreas(figure).tiles.map(tile => tile.id);
+      errors.push(...mapErrors(figure, mapAreaIds(figure.preset), shown, figure.preset, where));
       for (const inset of figure.insets ?? []) {
-        for (const id of inset.regionIds) if (!areas.includes(id)) errors.push(`${where} inset area "${id}" is not an area of ${figure.regions}`);
+        for (const id of inset.regionIds) if (!shown.includes(id)) errors.push(`${where} inset area "${id}" is not an area of ${figure.preset}`);
       }
       break;
     }
@@ -849,13 +846,13 @@ function decimalPlaces(n: number): number {
 }
 
 /**
- * F9, for tile maps and geo maps alike: every area id belongs to the preset,
+ * F9, for every map (and its older spellings, tile and geo maps): every area id belongs to the preset,
  * a numeric scale runs upwards, categories are distinct and every assignment
  * names one, and any area drawn without a value or category is explained.
  * `areas` is every id the preset knows; `shown` the ones this figure draws —
  * fewer when an optional row, such as the US territories, is left out.
  */
-function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>, areas: string[], shown: string[], preset: string, where: string): string[] {
+function mapErrors(figure: FigureOf<'map'>, areas: string[], shown: string[], preset: string, where: string): string[] {
   const errors: string[] = [];
   const keyed = figure.categories ? figure.areas ?? {} : figure.data ?? {};
   for (const key of Object.keys(keyed)) if (!areas.includes(key)) errors.push(`${where} "${key}" is not an area of ${preset}`);

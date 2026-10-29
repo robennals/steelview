@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { figureExamplesFact, figureExamplesTopic } from '@/lib/content/__fixtures__/figure-examples';
-import { figureDomId } from '@/lib/content/figure-props';
+import { areaMapProps, figureContext, figureDomId } from '@/lib/content/figure-props';
 import { loadTopic } from '@/lib/content/load';
 import { factSlides } from '@/lib/content/preview';
 import { isComponentFigure, type Fact } from '@/lib/content/types';
@@ -118,6 +118,18 @@ test('a geo map thumbnail draws every region of its outline set', () => {
   assert.ok((html.match(/class="sv-thumb__area"/g)?.length ?? 0) > 100);
   // Thinned to the thumbnail's scale, so it is small enough to sit in a collapsed row's markup.
   assert.ok(html.length < 40_000, `${html.length} characters`);
+});
+
+test('a map thumbnail draws its default view, and leaves out the areas the map draws as dots', () => {
+  const tiles = thumb('asylum-per-head');
+  assert.match(tiles, /<rect class="sv-thumb__area"/);
+  const world = fact.figures!.find(f => f.kind === 'map' && f.id === 'postal-voting');
+  assert.ok(world && world.kind === 'map');
+  const html = thumb('postal-voting');
+  const { regions } = areaMapProps(world, figureContext(fact));
+  const outlined = regions.filter(region => !region.point && region.coordinates.length > 0).length;
+  assert.ok((html.match(/class="sv-thumb__area"/g)?.length ?? 0) <= outlined);
+  assert.ok(regions.some(region => region.point), 'the world preset has dot areas');
 });
 
 test('timeline thumbnails mark every event, and every period of every row', () => {

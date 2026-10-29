@@ -54,9 +54,7 @@ export function figureProse(figure: Figure): string[] {
           ...figure.rows.flatMap(row => [row.label, ...row.periods.map(p => p.label)]),
           ...figure.events.flatMap(e => [e.label, e.note]),
         ];
-      case 'tileMap':
-        return mapProse(figure);
-      case 'geoMap':
+      case 'map':
         return [...mapProse(figure), ...(figure.insets ?? []).map(inset => inset.label)];
       case 'scatterPlot':
         return [
@@ -111,7 +109,7 @@ function base(figure: { title: string; description: string; note?: string }) {
 }
 
 /** A map's title, description and note, and in categorical mode each category's label and each area's note. */
-function mapProse(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>) {
+function mapProse(figure: FigureOf<'map'>) {
   return [
     ...base(figure),
     ...(figure.categories ?? []).map(c => c.label),
@@ -203,8 +201,7 @@ export function figureValues(figure: Figure): FigureValue[] {
           : []),
       ]);
     // A categorical map draws no numbers; its `data` is absent.
-    case 'tileMap':
-    case 'geoMap':
+    case 'map':
       return Object.entries(figure.data ?? {}).flatMap(([area, datum]) =>
         numberValues(`map area ${area}`, datum, { format: figure.format, citations: figure.sources, valuesFrom: figure.valuesFrom }),
       );

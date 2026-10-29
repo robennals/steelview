@@ -1,7 +1,7 @@
 import type * as R from '@/components/report';
 import { stripEvents } from '@/components/topic/series-chart';
 import { aboutThisDataNote } from './figure-text';
-import { geoRegions, mapTiles } from './map-presets';
+import { mapAreas } from './map-presets';
 import { factSources, figureCitations } from './sources';
 import { factPath } from './types';
 import type { Fact, Figure, FigureOf, FigureValueFormat, Source } from './types';
@@ -175,7 +175,7 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
  * A map figure's shading, numeric or categorical, as the components take it.
  * A bare category slug becomes `{ category }`; a bare number `{ value }`.
  */
-function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding {
+function mapEncoding(f: FigureOf<'map'>): R.MapEncoding {
   if (f.categories) {
     // The schema refuses a categorical map without all three; the check narrows the types.
     if (!f.categoryLabel || !f.areas) throw new Error(`map ${f.id} needs \`categoryLabel\`, \`categories\` and \`areas\``);
@@ -201,22 +201,12 @@ function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding
   };
 }
 
-export function tileMapProps(f: FigureOf<'tileMap'>, c: FigureContext): R.TileMapProps {
+/** A `map` figure (or its older spellings `tileMap` and `geoMap`) as an AreaMap: the preset's tiles and shapes, opening on its `default` view. */
+export function areaMapProps(f: FigureOf<'map'>, c: FigureContext): R.AreaMapProps {
   return {
     ...frame(f, c),
-    tiles: mapTiles(f),
-    areaLabel: f.areaLabel,
-    highlight: f.highlight,
-    ...mapEncoding(f),
-  };
-}
-
-export function geoMapProps(f: FigureOf<'geoMap'>, c: FigureContext): R.GeoMapProps {
-  const { regions, extent } = geoRegions(f.regions);
-  return {
-    ...frame(f, c),
-    regions,
-    extent,
+    ...mapAreas(f),
+    defaultView: f.default,
     areaLabel: f.areaLabel,
     highlight: f.highlight,
     insets: f.insets,

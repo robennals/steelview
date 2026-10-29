@@ -249,6 +249,12 @@ sources:
     url: https://example.org/fixture/40
     publisher: Fixture Ship Tracker
     date: 2026-10
+  - stance: supports
+    quote: "Fixture: asylum applicants per 10,000 residents in 2024 were 95.1 in Cyprus, 70.8 in Greece, 30.0 in Germany, about 21 in Liechtenstein, 16.0 in the United Kingdom and under 0.1 in Hungary."
+    title: "Fixture: asylum applicants per head across Europe, 2024"
+    url: https://example.org/fixture/41
+    publisher: Fixture Migration Observatory
+    date: 2025-03
 series:
   title: Mail ballots rejected nationally, 2016–2024
   description: Share of returned mail ballots rejected in each federal general election.
@@ -627,8 +633,8 @@ figures:
     sources: [28]
     note: >-
       Fixture: only the thirteen countries the source names are assigned, so
-      every other country reads "No data". Liechtenstein is too small to
-      appear in the world outlines.
+      every other country reads "No data". Liechtenstein, too small for the
+      world outlines, is drawn as a dot.
     categories:
       - { id: all, label: All voters, mark: A }
       - { id: some, label: Some voters, mark: S }
@@ -637,6 +643,7 @@ figures:
       DE: all
       IS: all
       KR: all
+      LI: all
       LU: all
       NZ: all
       PL: all
@@ -645,6 +652,34 @@ figures:
       US: all
       FR: some
       AU: { category: some, note: Voters who cannot attend a polling place }
+  # One dataset drawn two ways (spec 4): `map` draws its preset's real shapes
+  # and its tiles from one legend, with a Map / Tiles / Table switch;
+  # `default` picks the view shown first. `tileMap` and `geoMap` above are
+  # its older spellings, opening on tiles and on shapes.
+  - kind: map
+    id: asylum-per-head
+    title: Asylum applicants per 10,000 residents, 2024
+    description: >-
+      Six of the EU+ countries and the UK by asylum applicants per head. The
+      UK is outlined.
+    preset: europe
+    default: tiles
+    areaLabel: Country
+    valueLabel: Applicants per 10,000 residents
+    format: { unit: number, decimals: 1 }
+    breaks: [0, 5, 10, 20, 30, 50, 100]
+    highlight: [GB]
+    sources: [41]
+    note: >-
+      Fixture: only the six countries the source names are given, so every
+      other country reads "No data".
+    data:
+      CY: 95.1
+      GR: 70.8
+      DE: 30.0
+      LI: { value: 21, qualifier: about, asPublished: about 21 }
+      GB: 16.0
+      HU: { value: 0.1, qualifier: under, asPublished: under 0.1 }
   - kind: scatterPlot
     id: count-speed
     title: When mail processing may begin and how long the count took, 2024

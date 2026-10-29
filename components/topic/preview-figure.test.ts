@@ -173,12 +173,22 @@ test('a tile map preview draws every tile with its code, sized to fit, and no fo
   assert.match(html, /Every value is in the table on the full figure\./);
 });
 
-test('a geo map preview draws every region and its inset, with no focus stops', () => {
+test('a geo map preview draws every region but not its insets, with no focus stops', () => {
   const html = preview('postal-voting');
   assertCompact(html, 'postal-voting', 'Who may vote by post from inside the country, 2025');
-  assert.match(html, /sv-geo-map__inset/);
+  assert.doesNotMatch(html, /sv-geo-map__inset/);
   assert.match(html, /preserveAspectRatio="xMidYMid meet"/);
   assert.doesNotMatch(html, /tabindex/);
+});
+
+test('a map preview draws its default view alone, with its key and no Map / Tiles switch', () => {
+  const tiles = preview('asylum-per-head');
+  assert.match(tiles, /class="sv-tile-map__fit"/);
+  assert.match(tiles, /sv-map-legend/);
+  assert.doesNotMatch(tiles, /sv-geo-map__svg|sv-chart__view-controls|<button/);
+  const shapes = preview('postal-voting');
+  assert.match(shapes, /sv-geo-map__svg/);
+  assert.doesNotMatch(shapes, /sv-tile-map__grid|<button/);
 });
 
 test('a timeline preview lists every event on one line, and past twelve marks each on an axis', () => {

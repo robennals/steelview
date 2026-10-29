@@ -331,6 +331,14 @@ export const figureExamplesFact: Fact = {
       "url": "https://example.org/fixture/40",
       "publisher": "Fixture Ship Tracker",
       "date": "2026-10"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: asylum applicants per 10,000 residents in 2024 were 95.1 in Cyprus, 70.8 in Greece, 30.0 in Germany, about 21 in Liechtenstein, 16.0 in the United Kingdom and under 0.1 in Hungary.",
+      "title": "Fixture: asylum applicants per head across Europe, 2024",
+      "url": "https://example.org/fixture/41",
+      "publisher": "Fixture Migration Observatory",
+      "date": "2025-03"
     }
   ],
   "series": {
@@ -689,7 +697,7 @@ export const figureExamplesFact: Fact = {
       ]
     },
     {
-      "kind": "tileMap",
+      "kind": "map",
       "id": "rejection-by-state",
       "title": "Mail ballots rejected, by state, 2024",
       "description": "Share of returned mail ballots each state rejected in the November 2024 general election. The eight mostly-mail states and D.C. are outlined.",
@@ -698,7 +706,6 @@ export const figureExamplesFact: Fact = {
       ],
       "note": "Fixture: only six states are given, so every other state reads \"No data\". A real report gives all 51 areas from the EAVS table.",
       "valuesFrom": "EAVS 2024 Overview Table 1",
-      "map": "us-states",
       "areaLabel": "State",
       "highlight": [
         "CA",
@@ -734,7 +741,9 @@ export const figureExamplesFact: Fact = {
         "VT": 0.2,
         "ME": 0.2,
         "IN": 0.2
-      }
+      },
+      "preset": "us-states",
+      "default": "tiles"
     },
     {
       "kind": "barChart",
@@ -1045,14 +1054,13 @@ export const figureExamplesFact: Fact = {
       ]
     },
     {
-      "kind": "tileMap",
+      "kind": "map",
       "id": "voter-id-rules",
       "title": "ID asked of voters at the polls, by state, 2026",
       "description": "The rule each state enforces when a voter arrives at the polls, from the strictest to none.",
       "sources": [
         27
       ],
-      "map": "us-states",
       "areaLabel": "State",
       "highlight": [],
       "categoryLabel": "ID asked of voters at the polls",
@@ -1141,18 +1149,19 @@ export const figureExamplesFact: Fact = {
           "note": "First-time voters show ID"
         },
         "VT": "none"
-      }
+      },
+      "preset": "us-states",
+      "default": "tiles"
     },
     {
-      "kind": "geoMap",
+      "kind": "map",
       "id": "postal-voting",
       "title": "Who may vote by post from inside the country, 2025",
       "description": "Countries where in-country postal voting is open to all voters or to some. The United States is outlined.",
       "sources": [
         28
       ],
-      "note": "Fixture: only the thirteen countries the source names are assigned, so every other country reads \"No data\". Liechtenstein is too small to appear in the world outlines.",
-      "regions": "world",
+      "note": "Fixture: only the thirteen countries the source names are assigned, so every other country reads \"No data\". Liechtenstein, too small for the world outlines, is drawn as a dot.",
       "areaLabel": "Country",
       "highlight": [
         "US"
@@ -1183,6 +1192,7 @@ export const figureExamplesFact: Fact = {
         "DE": "all",
         "IS": "all",
         "KR": "all",
+        "LI": "all",
         "LU": "all",
         "NZ": "all",
         "PL": "all",
@@ -1193,6 +1203,54 @@ export const figureExamplesFact: Fact = {
         "AU": {
           "category": "some",
           "note": "Voters who cannot attend a polling place"
+        }
+      },
+      "preset": "world",
+      "default": "map"
+    },
+    {
+      "kind": "map",
+      "preset": "europe",
+      "default": "tiles",
+      "id": "asylum-per-head",
+      "title": "Asylum applicants per 10,000 residents, 2024",
+      "description": "Six of the EU+ countries and the UK by asylum applicants per head. The UK is outlined.",
+      "sources": [
+        41
+      ],
+      "note": "Fixture: only the six countries the source names are given, so every other country reads \"No data\".",
+      "areaLabel": "Country",
+      "highlight": [
+        "GB"
+      ],
+      "valueLabel": "Applicants per 10,000 residents",
+      "format": {
+        "unit": "number",
+        "decimals": 1
+      },
+      "breaks": [
+        0,
+        5,
+        10,
+        20,
+        30,
+        50,
+        100
+      ],
+      "data": {
+        "CY": 95.1,
+        "GR": 70.8,
+        "DE": 30,
+        "LI": {
+          "value": 21,
+          "qualifier": "about",
+          "asPublished": "about 21"
+        },
+        "GB": 16,
+        "HU": {
+          "value": 0.1,
+          "qualifier": "under",
+          "asPublished": "under 0.1"
         }
       }
     },

@@ -760,7 +760,7 @@ test('F8: at most six key figures, each change a finite number', () => {
 
 test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a gap', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap');
+  const map = figureOf(fact, 'map', 'rejection-by-state');
   map.data = { ...map.data, XX: 1 };
   map.highlight = ['YY'];
   map.breaks = [0, 2, 1];
@@ -775,13 +775,22 @@ test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a 
 
 test('F9: the US territories are areas of us-states, and count as gaps only once a figure names one', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap');
+  const map = figureOf(fact, 'map', 'rejection-by-state');
   map.note = undefined;
   map.data = Object.fromEntries(US_STATE_TILES.map(tile => [tile.id, 1]));
   assert.ok(!hasError(topic, `figure ${map.id}: has no data`), 'all 50 states and DC leave no gap');
   map.data = { ...map.data, PR: 1.4 };
   assert.ok(!hasError(topic, '"PR" is not an area'));
   assert.ok(hasError(topic, `figure ${map.id}: has no data for GU, MP, AS, VI — say why in \`note\``));
+});
+
+test('F9, map: an inset must enlarge an area the map draws', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'map', 'rejection-by-state');
+  map.insets = [{ regionIds: ['DC'] }];
+  assert.ok(!hasError(topic, 'inset area'));
+  map.insets = [{ regionIds: ['GU'] }];
+  assert.ok(hasError(topic, 'figure rejection-by-state: inset area "GU" is not an area of us-states'), 'a territory the figure does not name is not drawn');
 });
 
 test('F10: bars fit their axis, compositions their categories, estimates their order', () => {
@@ -999,8 +1008,8 @@ test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
 
 test('F1, F2, F5: the categorical tile map, geo map and scatter plot are held to the shared rules', () => {
   const { topic, fact } = figuresTopic();
-  figureOf(fact, 'tileMap', 'voter-id-rules').id = 'federal-laws';
-  figureOf(fact, 'geoMap').sources = [99];
+  figureOf(fact, 'map', 'voter-id-rules').id = 'federal-laws';
+  figureOf(fact, 'map', 'postal-voting').sources = [99];
   figureOf(fact, 'scatterPlot').sources = [];
   assert.ok(hasError(topic, 'figure federal-laws: id "federal-laws" is already used'));
   assert.ok(hasError(topic, 'figure postal-voting: cites source 99'));
@@ -1009,21 +1018,21 @@ test('F1, F2, F5: the categorical tile map, geo map and scatter plot are held to
 
 test('F9, categorical: category ids are unique', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.categories![1] = { ...map.categories![1], id: 'strict-photo' };
   assert.ok(hasError(topic, 'figure voter-id-rules: category ids must be unique'));
 });
 
 test('F9, categorical: category marks are unique', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.categories![1] = { ...map.categories![1], mark: 'SP' };
   assert.ok(hasError(topic, 'figure voter-id-rules: category marks must be unique'));
 });
 
 test('F9, categorical: every assignment names a category, bare or with a note', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.areas = { ...map.areas, GA: 'nope', AR: { category: 'also-nope', note: 'n' } };
   assert.ok(hasError(topic, '"GA" has unknown category "nope"'));
   assert.ok(hasError(topic, '"AR" has unknown category "also-nope"'));
@@ -1031,14 +1040,14 @@ test('F9, categorical: every assignment names a category, bare or with a note', 
 
 test('F9, categorical: area ids belong to the preset', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.areas = { ...map.areas, XX: 'none' };
   assert.ok(hasError(topic, 'figure voter-id-rules: "XX" is not an area of us-states'));
 });
 
 test('F9, categorical: an area with no category needs a note saying why', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   delete map.areas!.VT;
   assert.ok(hasError(topic, 'figure voter-id-rules: has no data for VT — say why in `note`'));
   map.note = 'Vermont is not yet coded.';
@@ -1047,7 +1056,7 @@ test('F9, categorical: an area with no category needs a note saying why', () => 
 
 test('F9, geo map: area, highlight and inset ids belong to the preset', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'geoMap');
+  const map = figureOf(fact, 'map', 'postal-voting');
   map.areas = { ...map.areas, ZZ: 'all' };
   map.highlight = ['XX'];
   map.insets = [{ regionIds: ['YY'] }];
@@ -1058,17 +1067,17 @@ test('F9, geo map: area, highlight and inset ids belong to the preset', () => {
 
 test('F9, geo map: a gap needs a note, and a long list of gaps is shortened', () => {
   const { topic, fact } = figuresTopic();
-  figureOf(fact, 'geoMap').note = undefined;
+  figureOf(fact, 'map', 'postal-voting').note = undefined;
   const error = validateTopic(topic).find(e => e.includes('figure postal-voting: has no data'));
   assert.ok(error, 'expected a missing-note error');
   assert.match(error, /and \d+ more — say why in `note`/);
 });
 
-test('F9, numeric geo map: the tile map\'s numeric rules apply', () => {
+test('F9, numeric map on real shapes: the tile map\'s numeric rules apply', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'geoMap');
+  const map = figureOf(fact, 'map', 'postal-voting');
   Object.assign(map, {
-    regions: 'uk-itl1',
+    preset: 'uk-regions',
     categoryLabel: undefined,
     categories: undefined,
     areas: undefined,
@@ -1079,7 +1088,7 @@ test('F9, numeric geo map: the tile map\'s numeric rules apply', () => {
     breaks: [0, 2, 1],
     domain: [5, 1],
   });
-  assert.ok(hasError(topic, 'figure postal-voting: "not-a-region" is not an area of uk-itl1'));
+  assert.ok(hasError(topic, 'figure postal-voting: "not-a-region" is not an area of uk-regions'));
   assert.ok(hasError(topic, 'figure postal-voting: breaks must be strictly ascending'));
   assert.ok(hasError(topic, 'figure postal-voting: domain must run from low to high'));
 });

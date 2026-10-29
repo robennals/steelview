@@ -132,6 +132,20 @@
     pointer-events: none;
   }
 
+  /* A bound's ▲ or ▼ on the real-shape view, in ink with a paper halo so it
+     reads on any step of the ramp. */
+  .sv-geo-map__glyph {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: var(--ink);
+    stroke: var(--paper);
+    stroke-width: 2.5px;
+    paint-order: stroke;
+    pointer-events: none;
+  }
+
   .sv-geo-map__stipple-dot {
     fill: var(--ink);
     fill-opacity: 0.45;
@@ -553,7 +567,7 @@
   }
 
   /* A grid too wide for its column — the world's 28 — scrolls sideways
-     rather than shrinking its tiles past use. Tiles keep at least 1.25rem
+     rather than shrinking its tiles past use. Tiles keep at least 1.1875rem
      (1.75rem on a phone, where a finger does the pointing), and print only
      their code and a category's mark or a bound's ▲/▼; the readout and the
      table carry the number. */
@@ -563,7 +577,7 @@
   }
 
   .sv-tile-map__grid[data-cols="dense"] {
-    --sv-tile-min: 1.25rem;
+    --sv-tile-min: 1.1875rem;
     gap: 2px;
     max-width: none;
     min-width: calc(var(--sv-tile-cols) * var(--sv-tile-min) + (var(--sv-tile-cols) - 1) * 2px);
@@ -598,6 +612,14 @@
   @media (max-width: 33.99rem) {
     .sv-tile-map__grid[data-cols="dense"] {
       --sv-tile-min: 1.75rem;
+    }
+  }
+
+  /* On a wide screen the world grid runs past the text column towards the
+     page edge, as a wide table does, so it fits without scrolling. */
+  @media (min-width: 46rem) {
+    .sv-tile-map__scroll:has(> .sv-tile-map__grid[data-cols="dense"]) {
+      width: calc(100% + 4.5rem);
     }
   }
 

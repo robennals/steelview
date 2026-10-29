@@ -5,26 +5,25 @@ import { datePlacement } from '@/lib/content/period';
 import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
 import { layoutScatter } from '@/lib/chart/scatter';
 import {
+  areaMapProps,
   barChartProps,
   compositionBarProps,
   estimateRangeProps,
   figureContext,
-  geoMapProps,
   pairedBarChartProps,
   periodTimelineProps,
   scatterPlotProps,
   sliceExplorerProps,
   smallMultiplesProps,
-  tileMapProps,
   timelineProps,
 } from '@/lib/content/figure-props';
-import type { BarChartProps, CompositionBarProps, PairedBarChartProps, SliceExplorerProps, SmallMultiplesProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
+import type { AreaMapProps, BarChartProps, CompositionBarProps, EstimateRangeProps, MapEncoding, PairedBarChartProps, PeriodTimelineProps, ScatterPlotProps, SliceExplorerProps, SmallMultiplesProps, TimelineProps } from '@/components/report';
 import { barScale, orderBars, qualifiedSpan } from '@/components/report/bar-layout';
 import { compose, compositionColor } from '@/components/report/composition';
 import { estimateScale, whiskerSpan } from '@/components/report/estimate-layout';
 import { categoryOf, categorySlots, isCategorical } from '@/components/report/geo/categorical';
 import { mapScale } from '@/components/report/geo/choropleth';
-import { boundsOf, fitBounds, pathFor as geoPathFor } from '@/components/report/geo/project';
+import { boundsOf, clipToBounds, fitBounds, pathFor as geoPathFor } from '@/components/report/geo/project';
 import { periodSpan } from '@/components/report/period-timeline';
 import { seriesColor } from '@/components/report/scale';
 import { defaultChoices, sliceView } from '@/components/report/slice-view';
@@ -84,10 +83,8 @@ export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
       return <EstimatesThumb {...estimateRangeProps(figure, context)} />;
     case 'scatterPlot':
       return <ScatterThumb {...scatterPlotProps(figure, context)} />;
-    case 'tileMap':
-      return <TilesThumb {...tileMapProps(figure, context)} />;
-    case 'geoMap':
-      return <GeoThumb {...geoMapProps(figure, context)} />;
+    case 'map':
+      return <MapThumb {...areaMapProps(figure, context)} />;
     case 'timeline':
       return <EventsThumb {...timelineProps(figure, context)} />;
     case 'periodTimeline':
@@ -320,8 +317,13 @@ function areaFill(encoding: MapEncoding): (id: string) => string | undefined {
   return id => (encoding.data[id] ? scale.color(pointValue(encoding.data[id])) : undefined);
 }
 
+/** A map's silhouette in the view its preview opens on: its tiles, or its real shapes. */
+function MapThumb(props: AreaMapProps) {
+  return props.defaultView === 'tiles' ? <TilesThumb {...props} /> : <GeoThumb {...props} />;
+}
+
 /** Every tile in its grid place, spanning its cells, shaded as on the map. */
-function TilesThumb(props: TileMapProps) {
+function TilesThumb(props: AreaMapProps) {
   const fill = areaFill(props);
   const rows = Math.max(...props.tiles.map(tile => tile.row + (tile.h ?? 1)));
   const cols = Math.max(...props.tiles.map(tile => tile.col + (tile.w ?? 1)));
@@ -340,14 +342,20 @@ function TilesThumb(props: TileMapProps) {
  */
 const GEO_THUMB = { width: 120, height: 66, tolerance: 1 };
 
-/** Every region's outline, projected as the map projects it and shaded as on the map. */
-function GeoThumb(props: GeoMapProps) {
+/**
+ * Every area's outline, projected as the map projects it, cropped to its
+ * extent and shaded as on the map. An area the map draws as a dot (a
+ * microstate, a territory) is left out: at this size it would be a speck,
+ * and the outlines alone give the map's shape. Context outlines are left out too.
+ */
+function GeoThumb(props: AreaMapProps) {
+  const { regions, extent } = props;
   const fill = areaFill(props);
-  const projection = fitBounds(props.extent ?? boundsOf(props.regions), { width: GEO_THUMB.width, height: GEO_THUMB.height, kind: props.projection ?? 'auto' });
+  const projection = fitBounds(extent ?? boundsOf(regions), { width: GEO_THUMB.width, height: GEO_THUMB.height, kind: 'auto' });
   return (
     <Thumb viewBox={`0 0 ${GEO_THUMB.width} ${GEO_THUMB.height}`} keepShape>
-      {props.regions.map(region => {
-        const d = geoPathFor(region.coordinates, projection, GEO_THUMB.tolerance);
+      {regions.filter(region => !region.point).map(region => {
+        const d = geoPathFor(extent ? clipToBounds(region.coordinates, extent) : region.coordinates, projection, GEO_THUMB.tolerance);
         return d && <path key={region.id} className="sv-thumb__area" data-missing={fill(region.id) ? undefined : true} d={d} fillRule="evenodd" fill={fill(region.id)} />;
       })}
     </Thumb>

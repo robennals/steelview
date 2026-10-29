@@ -1,11 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { EUROPE_COUNTRIES, EUROPE_EXTENT } from '@/components/report/geo/europe-countries';
-import { US_STATE_TILES } from '@/components/report/geo/tiles';
+import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TILES } from '@/components/report/geo/tiles';
 import { UK_ITL1_REGIONS } from '@/components/report/geo/uk-itl1';
+import { US_STATES } from '@/components/report/geo/us-states';
 import { WORLD_COUNTRIES } from '@/components/report/geo/world-countries';
+import { WORLD_COUNTRY_TILES } from '@/components/report/geo/world-tiles';
 import { figureExamplesFact } from './__fixtures__/figure-examples';
 import {
+  areaMapProps,
   barChartProps,
   caveatListProps,
   claimCheckProps,
@@ -13,7 +16,6 @@ import {
   dataTableProps,
   estimateRangeProps,
   figureContext,
-  geoMapProps,
   keyFiguresProps,
   pairedBarChartProps,
   periodTimelineProps,
@@ -23,7 +25,6 @@ import {
   scatterPlotProps,
   sliceExplorerProps,
   smallMultiplesProps,
-  tileMapProps,
   timelineProps,
   toValueFormat,
 } from './figure-props';
@@ -137,20 +138,31 @@ test('a key figure\'s sibling qualifier folds into its value', () => {
   assert.deepEqual(keyFiguresProps(ranged, context).figures[0].value, { low: 98, high: 99 });
 });
 
-test('map presets resolve to their tiles and bare numbers become data', () => {
-  const props = tileMapProps(figureOf('tileMap'), context);
-  assert.equal(props.tiles, US_STATE_TILES);
-  assert.ok(props.data, 'a numeric tile map keeps its data');
+test('a tileMap is a map that opens on its tiles, its preset resolved to tiles and shapes, bare numbers to data', () => {
+  const map = figureOf('map', 'rejection-by-state');
+  assert.equal(map.default, 'tiles');
+  assert.equal(map.preset, 'us-states');
+  const props = areaMapProps(map, context);
+  assert.equal(props.defaultView, 'tiles');
+  assert.deepEqual(props.tiles, US_STATE_TILES);
+  assert.deepEqual(props.regions.map(r => r.id), US_STATE_TILES.map(t => t.id), 'one shape per tile, in tile order');
+  assert.deepEqual(props.contextRegions, []);
+  assert.ok(props.data, 'a numeric map keeps its data');
   assert.deepEqual(props.data.DE, { value: 5.1 });
   assert.deepEqual(props.data.AR, { value: 8.8, asPublished: '8.8%' });
   assert.equal(props.note?.endsWith('Values from EAVS 2024 Overview Table 1.'), true);
 });
 
-test('a categorical tile map turns bare slugs into assignments and keeps notes', () => {
-  const map = fact.figures?.find((f): f is FigureOf<'tileMap'> => f.kind === 'tileMap' && f.id === 'voter-id-rules');
-  assert.ok(map);
-  const props = tileMapProps(map, context);
-  assert.ok(props.categoryData, 'a categorical tile map has category data');
+test('the US territories join both views only when the figure names one', () => {
+  const map = figureOf('map', 'rejection-by-state');
+  const props = areaMapProps({ ...map, data: { ...map.data, PR: 1 } }, context);
+  assert.deepEqual(props.tiles, [...US_STATE_TILES, ...US_TERRITORY_TILES]);
+  assert.deepEqual(props.regions.slice(-5).map(r => [r.id, r.point !== undefined]), ['GU', 'MP', 'AS', 'PR', 'VI'].map(id => [id, true]));
+});
+
+test('a categorical map turns bare slugs into assignments and keeps notes', () => {
+  const props = areaMapProps(figureOf('map', 'voter-id-rules'), context);
+  assert.ok(props.categoryData, 'a categorical map has category data');
   assert.equal(props.data, undefined);
   assert.equal(props.categoryLabel, 'ID asked of voters at the polls');
   assert.deepEqual(props.categoryData.GA, { category: 'strict-photo' });
@@ -159,24 +171,41 @@ test('a categorical tile map turns bare slugs into assignments and keeps notes',
   assert.deepEqual(props.categories.map(c => c.mark), ['SP', 'SN', 'P', 'N', '—']);
 });
 
-test('geo map presets resolve to their outlines, Europe with its crop', () => {
-  const map = figureOf('geoMap');
-  const props = geoMapProps(map, context);
+test('a geoMap is a map that opens on its shapes; every preset pairs tiles with shapes, the rest as context', () => {
+  const map = figureOf('map', 'postal-voting');
+  assert.equal(map.default, 'map');
+  const props = areaMapProps(map, context);
   assert.equal(props.id, 'figure-examples--chart-postal-voting');
-  assert.equal(props.regions, WORLD_COUNTRIES);
+  assert.equal(props.defaultView, 'map');
+  assert.deepEqual(props.tiles, WORLD_COUNTRY_TILES);
+  assert.equal(props.regions.length, 197);
+  assert.deepEqual((props.contextRegions ?? []).map(r => r.id).sort(), ['AQ', 'CYN', 'EH', 'FK', 'GL', 'NC', 'PR', 'SOL', 'TF']);
   assert.equal(props.extent, undefined);
   assert.deepEqual(props.highlight, ['US']);
   assert.deepEqual(props.insets, [{ regionIds: ['LU'], label: 'Luxembourg' }]);
   assert.deepEqual(props.categoryData?.AU, { category: 'some', note: 'Voters who cannot attend a polling place' });
-  const europe = geoMapProps({ ...map, regions: 'europe' }, context);
-  assert.equal(europe.regions, EUROPE_COUNTRIES);
+  const europe = areaMapProps({ ...map, preset: 'europe' }, context);
+  assert.deepEqual(europe.tiles, EUROPE_COUNTRY_TILES);
+  assert.equal(europe.regions.length + (europe.contextRegions ?? []).length, EUROPE_COUNTRIES.length);
   assert.equal(europe.extent, EUROPE_EXTENT);
-  assert.equal(geoMapProps({ ...map, regions: 'uk-itl1' }, context).regions, UK_ITL1_REGIONS);
+  const uk = areaMapProps({ ...map, preset: 'uk-regions' }, context);
+  assert.deepEqual(uk.tiles, UK_REGION_TILES);
+  assert.deepEqual(new Set(uk.regions), new Set(UK_ITL1_REGIONS));
+  assert.equal(WORLD_COUNTRIES.length, props.regions.length + (props.contextRegions ?? []).length);
+  assert.equal(US_STATES.length, 51);
 });
 
-test('a numeric geo map keeps its scale options', () => {
-  const props = geoMapProps({
-    ...figureOf('geoMap'),
+test('every preset names an area the same way in both views', () => {
+  const map = figureOf('map', 'postal-voting');
+  for (const preset of ['us-states', 'europe', 'uk-regions', 'world'] as const) {
+    const { tiles, regions } = areaMapProps({ ...map, preset }, context);
+    assert.deepEqual(regions.map(r => r.name), tiles.map(t => t.name), preset);
+  }
+});
+
+test('a numeric map keeps its scale options', () => {
+  const props = areaMapProps({
+    ...figureOf('map', 'postal-voting'),
     categoryLabel: undefined,
     categories: undefined,
     areas: undefined,

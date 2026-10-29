@@ -76,8 +76,7 @@ export function figureCitations(figure: Figure): number[] {
       return [...figure.sources, ...figure.events.flatMap(e => e.sources)];
     case 'periodTimeline':
       return [...figure.sources, ...figure.rows.flatMap(row => row.periods.flatMap(p => p.sources)), ...figure.events.flatMap(e => e.sources)];
-    case 'tileMap':
-    case 'geoMap':
+    case 'map':
     case 'barChart':
     case 'scatterPlot':
     case 'sliceExplorer':
