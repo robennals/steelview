@@ -41,3 +41,16 @@ test('a "not measured since" band gets its own Method Changes entry, citing its 
   assert.match(result, /<details class="sv-observation sv-method-observation" id="uranium--stock-not-measured"><summary>2025-06-13–2026-10-29: Not verified since IAEA access ended<\/summary>/);
   assert.match(result, /Inspectors have had no access\. <a href="#source-uranium-4">\[4\]<\/a>/);
 });
+
+test('the lead is the body before its first heading, and a body with no lead keeps everything', async () => {
+  const { leadProse } = await import('./chart-observations');
+  const html = await renderMarkdown('An opening paragraph.\n\nA second.\n\n## Observations {#example--observations-people}\n\n### A spike {#example--spike}\n\nWhy.', 'topic');
+  const split = leadProse(html);
+  assert.equal(split.lead, '<p>An opening paragraph.</p>\n<p>A second.</p>');
+  assert.match(split.bodyHtml, /^<h2 id="example--observations-people">/);
+  assert.deepEqual(leadProse('<h2>Only a heading</h2>'), { lead: '', bodyHtml: '<h2>Only a heading</h2>' });
+  // An h3 with an id is wrapped in a <section> before the split sees it.
+  const sectioned = await renderMarkdown('Lead.\n\n### A finding {#example--finding}\n\nDetail.', 'topic');
+  assert.equal(leadProse(sectioned).lead, '<p>Lead.</p>');
+  assert.equal(leadProse('<p>All lead.</p>').lead, '<p>All lead.</p>');
+});

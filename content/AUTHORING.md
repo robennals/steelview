@@ -274,7 +274,10 @@ It has to be easy to take in at a glance.
 
 Every fact requires a body. Put the most useful evidence first:
 
-1. **A brief overview** (the `claim`), with linked citations.
+1. **A brief overview** (the `claim`), with linked citations. Body text
+   before the first heading is the report's lead: it renders straight after
+   the claim and before the first graph, so use it to say what the report
+   covers and as of when, and keep it short.
 2. **A sequence of graphs, artifacts or data**, using different slices to supply
    time, place and group context. Each artifact is a main heading; omit umbrella
    headings that merely repeat its contents. Put its Observations and, when
@@ -760,7 +763,8 @@ listing it in `figures`. The list is also the fact's **reading order**: its
 entries render in the order written, interleaved with the fact's series and
 comparisons and with sections of its body. A fact without `figures` renders
 as before: series, additional series, featured charts, comparisons, then the
-body.
+body. Either way the lead — body text before the first heading — comes
+first, between the claim and the first figure.
 
 **Kinds.** Each entry has a `kind`. Four kinds place things the fact already
 has; the rest draw a component (see Storybook for each one's look):

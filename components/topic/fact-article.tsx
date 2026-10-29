@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { factSources } from '@/lib/content/sources';
 import type { Fact, Topic } from '@/lib/content/types';
 import { factPath, topicPath } from '@/lib/content/types';
+import { leadProse } from '@/lib/content/chart-observations';
 import { Prose } from './prose';
 import { FactCharts, FactFigures, FeaturedCharts, chartGroups, figureGroups, type BodiedFact, type FigurePage } from './fact-figures';
 import { EvidenceNavigation } from './evidence-navigation';
@@ -56,20 +57,25 @@ function Finding({ fact }: { fact: Fact }) {
 }
 
 function FactBody({ fact, bodyHtml, featured = [], hideCharts = false, page }: BodiedFact & { featured?: BodiedFact[]; hideCharts?: boolean; page: FigurePage }) {
+  // The body before its first heading introduces the evidence, so it reads
+  // straight after the claim, before any figure.
+  const { lead, bodyHtml: rest } = leadProse(bodyHtml);
   // A fact with `figures` sets its own reading order; even with its charts
   // shown elsewhere (featured in its parent) the groups and sections those
   // charts carry are lifted out of its body, as they are without `figures`.
   if (fact.figures) {
-    const groups = figureGroups(fact, bodyHtml);
+    const groups = figureGroups(fact, rest);
     return <>
       <Finding fact={fact} />
+      <Prose html={lead} />
       {!hideCharts && <FactFigures fact={fact} observations={groups.observations} subtleties={groups.subtleties} sections={groups.sections} featured={featured} page={page} />}
       <Prose html={groups.bodyHtml} />
     </>;
   }
-  const grouped = chartGroups(fact, bodyHtml);
+  const grouped = chartGroups(fact, rest);
   return <>
     <Finding fact={fact} />
+    <Prose html={lead} />
     {!hideCharts && <FactCharts fact={fact} observations={grouped.observations} subtleties={grouped.subtleties} afterSeries={featured.map(child => <FeaturedCharts key={child.fact.id} child={child} page={page} />)} />}
     <Prose html={grouped.bodyHtml} />
   </>;

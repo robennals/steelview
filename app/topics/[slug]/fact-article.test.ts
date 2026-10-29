@@ -118,6 +118,15 @@ test('without figures, a fact keeps the old order: series, comparisons, then the
   assert.ok(html.indexOf('id="figure-examples--observations-federal-laws"') > section);
 });
 
+test('the body before its first heading reads after the claim and before the first figure, with or without figures', async () => {
+  for (const html of [await renderFixture(), await renderFixture(f => ({ ...f, figures: undefined }))]) {
+    const lead = html.indexOf('This fixture exists so every figure kind');
+    assert.ok(html.indexOf('id="figure-examples--finding"') < lead);
+    assert.ok(lead < html.indexOf('id="figure-examples--chart-series"'));
+    assert.equal(html.match(/This fixture exists so every figure kind/g)?.length, 1);
+  }
+});
+
 test('with JavaScript off, a figure table is in default order and a map\'s areas are in its noscript table', async () => {
   const html = await renderFixture();
   const table = figureMarkup(html, 'figure-examples--chart-federal-laws');
