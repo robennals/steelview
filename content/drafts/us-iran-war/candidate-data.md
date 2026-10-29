@@ -1487,3 +1487,52 @@ existing ComparisonChart.
   ceasefire incidents) cannot have a full series; AUTHORING's "numeric fact
   carries a series or says why" should be flagged at stage 3 so reports are
   planned as tables from the start.
+
+---
+
+## Coverage check (stage 5, 29 Oct 2026)
+
+Every question in the 3a index, mapped to the observation(s) that answer it
+(`report/observation`) or to the `dataStillNeeded` entry that records what is
+missing. Report ids: NP `iran-nuclear-programme`, AA `iran-actions-abroad`,
+GP `iran-government-and-its-people`, OA `outside-attempts-to-change-hostile-regimes`,
+HC `human-and-financial-costs-of-the-war`, OS `oil-shipping-and-prices`,
+DL `decisions-law-and-diplomacy`.
+
+| # | Answered by | Still missing (dataStillNeeded) |
+| --- | --- | --- |
+| Q1.1 | NP deal-era-compliance, breaches-after-us-exit, sixty-percent-growth, stock-unaccounted-for, only-non-weapon-state-at-60, sixty-is-not-ninety | NP: stock size and location since June 2025 |
+| Q1.2 | NP past-weapons-work, no-ongoing-programme-2025, grossi-june-2025, ata-2025-not-building, ata-2026-silent, close-to-weapons-grade-before-strikes, estimates-differ-by-measure, damage-claims-conflict | NP: any 2026 weapons-decision judgment; the 2007 NIE not used |
+| Q1.3 | AA argentine-court-buenos-aires-bombings, us-convictions-iran-directed-plots, state-sponsor-since-1984, leading-state-sponsor, attacks-on-us-forces-before-the-war, houthi-materiel-similar-to-iranian, mi5-uk-plots-and-arrests, plot-counts-one-author | AA: foiled vs carried-out plots; Houthi shipping attacks (ACLED); attacks before Oct 2023 counted the same way; MI5 case lists |
+| Q1.4 | OA saudi-2018-pledge, predicted-cascades-did-not-happen, acquisition-base-rate | — |
+| Q2.1 | GP january-2026-crackdown-toll, crackdowns-2019-2022-2026, executions-most-since-1989, iran-top-recorded-executioner, counters-differ, no-verified-2009-count | GP: 2009 death count; deaths per protest elsewhere |
+| Q2.2 | GP few-prefer-islamic-republic, satisfaction-at-weakening, strikes-seen-as-aggression, turnout-record-lows | GP: every GAMAAN wave and an offline survey |
+| Q2.3 | GP arrests-after-june-2025, arrests-january-2026, political-executions-peaked-april-may, executions-fell-in-first-war-months, war-cuts-both-ways | GP: defections and splits since Feb 2026 (crux: outside attack weaken or rally) |
+| Q2.4 | OA imposed-regime-change-and-civil-war, restoration-does-best, democracy-only-in-favourable-conditions, covert-attempts-failed, regime-change-and-relations | — (crux: what follows the regime) |
+| Q3.1 | DL house-passed-three-resolutions, senate-adopted-one-resolution, republican-defections-small-but-growing, senate-defections, procedural-votes | DL: Senate roll call 207 member record; votes after the recess |
+| Q3.2 | DL terminated-letter-then-new-strikes, separate-actions, only-one-report-started-the-clock | DL: the 1 May letter's text |
+| Q3.3 | DL declarations-and-instances, binding-attempts-failed | DL: uses of force coded by authorisation, duration and scale |
+| Q3.4 | DL congress-as-constraint (qualitative) | DL: same dataset as Q3.3 — given up as a quantitative claim; war-powers argues it as a value |
+| Q4.1 | HC iraq-overran-estimates, cost-small-against-iraq | HC: Gulf War and Kosovo estimates not sought (given up: not needed by any argument) |
+| Q4.2 | HC cost-38-to-47-billion, monthly-cost-going-forward, half-of-deaths-non-hostile, wounded-track-fighting, interceptor-stocks, us-deaths-small-share-of-iraq | HC: DoD estimate after 3 Sep with method; cost as share of the defence budget; first eight months of Iraq; DoD interceptor data |
+| Q4.3 | OS brent-nearly-doubled, below-2008-nominal, below-earlier-real-peaks, pump-prices-up-by-half, gasoline-cpi-up-a-third, cbo-inflation-attribution | OS: estimates beside CBO's |
+| Q4.4 | — | Given up: no candidate on who planned the strikes or Israel's role; the human is told (see 3d problem 8) |
+| Q4.5 | DL campaign-said-stop-wars, campaign-called-iran-very-close | — |
+| Q5.1 | HC civilian-minimum-by-april, most-deaths-military-by-hengaw, counters-disagree, displaced-millions, no-count-after-april, airwars-uses-hrana | HC: independent count after 8 Apr; civilian share in comparable campaigns |
+| Q5.2 | GP reformist-backed-president-2024, hijab-law-shelved, vetting-approves-few, executions-rose-under-pezeshkian, earlier-openings-reversed, hereditary-succession, moderation-and-repression-together, growth-in-deal-years | GP: street enforcement of hijab rules (crux: was the regime moderating) |
+| Q5.3 | NP deal-era-compliance, breaches-after-us-exit, access-narrowed-in-steps | — |
+| Q5.4 | OA strikes-delay-modestly, past-success-conditions-absent-for-iran, osirak-coding-dispute, iraq-ended-after-war-and-inspection, syria-returned-to-exploring, libya-2003-with-inspections, iran-coding | OA: Kazakhstan and Ukraine not sourced (given up: inherited weapons, not a test of strikes) |
+| Q5.5 | DL no-un-authorisation-per-oman, key-allies-did-not-join | DL: UNSCR 2817 text and vote |
+| Q6.1 | NP mou-no-weapons-clause, geneva-talks-feb-2026; DL mou-no-weapons-pledge, talks-under-way-when-strikes-came, talks-continue-in-october, mou-broke-down | DL: the MoU's full text |
+| Q6.2 | OS hormuz-traffic-near-zero, june-reopening-brief, hormuz-flows-collapsed, hormuz-alone-collapsed, iranian-exports-collapsed, tracking-versus-other-reports, tanker-war-disrupted-little, shipping-attacks-october, blockade-enforced, us-also-destroying-vessels | OS: non-proprietary export series; transponder-independent transit counts; an independent attack count |
+| Q6.3 | OA threats-plus-rewards, strong-ceasefire-agreements-hold, sanctions-success-depends-on-definition, sanctions-weak-against-adversaries | Given up as a general claim (Korean armistice, Dayton not fetched); deal-now argues from Libya and the JCPOA record |
+| Q7.1 | DL both-sides-fired, iran-reconstituting-missiles, mou-broke-down | DL: Iranian or independent incident record |
+| Q7.2 | OA credibility-split | — (crux: does backing down cost credibility) |
+| Q7.3 | DL key-allies-did-not-join | DL: UNSCR 2817; full allied statements |
+| X1 | OA (all), incl. no-study-of-containment, fit-to-iran | OA: a containment study; nuclear-armed targets |
+| Crux (dropped) | DL republicans-support-but-falling, majority-disapproves, party-split | — |
+
+**Given up, for the human:** Q4.4 (Israel's role in planning) has no source;
+Q3.4 survives only as Kriner's qualitative finding; Q6.3 is not claimed in
+general; the Gulf War/Kosovo and Kazakhstan/Ukraine context items were not
+needed by any argument.

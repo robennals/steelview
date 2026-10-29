@@ -200,3 +200,55 @@ latest events.
   station instead).
 - https://understandingwar.org/research/middle-east/iran-update-october-24-2026/
   — HTTP 403 (security service); the criticalthreats.org mirror works.
+
+---
+
+## Timeline's latest events — rechecked 29 Oct 2026
+
+Fetched with curl by the R7 builder; quotes verbatim.
+
+- **No new US strikes since early September; allies told to prepare for
+  post-midterm action.** AP via WCAX, "US warns allies to prepare for possible
+  Iran strikes, retaliation after elections, AP sources say", 29 Oct 2026,
+  https://www.wcax.com/2026/10/29/us-warns-allies-prepare-possible-iran-strikes-retaliation-after-elections-ap-sources-say/ :
+  "U.S. officials have told several Middle East countries and regional allies
+  to be prepared for potential renewed military action against Iran after
+  next week's midterm elections in the United States — as well as the
+  possibility that Iran will attempt to retaliate against them, according to
+  two diplomats briefed on the matter." "President Donald Trump has not made a
+  final decision on whether to carry out new strikes against Iran, the
+  diplomats stressed." "While the U.S. has not carried out a strike against
+  Iran since early September, the situation in the Middle East has become
+  more complicated." "The cost of fighting the Iran war to American taxpayers
+  has grown to $47.1 billion, according to the latest estimate the Pentagon
+  has provided to Congress." Araghchi: Tehran "continues to give diplomacy a
+  chance to succeed".
+- **Mecca Pact officials in Tehran; Qatari five-day plan.** ISW/CTP, 26 Oct
+  2026, https://www.criticalthreats.org/analysis/iran-update-october-26-2026 :
+  "Senior officials from the Mecca Pact's three signatories met with senior
+  Iranian officials in Tehran on October 26 to discuss a new US-Iran
+  ceasefire amid reported US and Israeli preparations for another round of
+  strikes in Iran." "Qatari mediators are trying to secure an agreement in
+  which the United States and Iran would make "a series of concessions over a
+  five-day period."" "The United States and Iran reportedly continue to
+  disagree on the sequencing of the agreement."
+- **No progress; drones over the US embassy; DNI memo.** ISW/CTP, 27 Oct
+  2026, https://www.criticalthreats.org/analysis/iran-update-october-27-2026-6ae139a34d6dc :
+  "Regional sources said that the summit made no progress on any issue."
+  "Iranian-backed Iraqi militias almost certainly used two drones to surveil
+  the US Embassy in Baghdad on October 27". "Director of National
+  Intelligence Jay Clayton warned in a memo on October 23 that Iran has
+  "substantially increased" its efforts to target US personnel."
+- **Russia supplying the Houthis imagery.** ISW/CTP, 28 Oct 2026,
+  https://www.criticalthreats.org/analysis/iran-update-october-28-2026 :
+  "Russia is actively supporting Houthi operations to disrupt global energy
+  markets by providing the Houthis with satellite imagery of Saudi oil and
+  military infrastructure." "The Houthis struck Aden International Airport on
+  October 28".
+- **29 Oct ISW/CTP update:** not yet published (404).
+- **Congress:** no House roll call since roll 314 (16 Sept; rolls 315–325
+  return "Error sanitizing file"), checked 29 Oct; no Senate war-powers vote
+  after 24 Sept (GovTrack; see verification-us.md addendum).
+- **Still blocked:** the DNI memo itself
+  (https://www.documentcloud.org/documents/28831452-dni-memo/, Cloudflare
+  challenge) — known only as reported by ISW/CTP.

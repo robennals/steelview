@@ -727,3 +727,34 @@ redirects to …/g2603372.pdf, the official UN document. OHCHR 403.
 - https://www.ecoi.net/en/file/local/2139753/a-hrc-61crp-2.pdf — worked, but
   redirects to …/g2603372.pdf (the official A/HRC/61/60 document). OHCHR not
   tried (403 per candidate).
+
+---
+
+## Addendum, 29 Oct 2026 — MI5 threat updates (human-downloaded PDF)
+
+Source: "Speeches and statements | MI5 - The Security Service", saved as PDF by
+the human from https://www.mi5.gov.uk/news-categories/speeches-and-statements
+and extracted with `pdftotext -layout`. Not copied into the repo.
+
+- **13 Oct 2026 annual threat update (Sir Ken McCallum), "Published date: 13
+  Oct 2026".** "The other state keen on subcontracting its UK violence is
+  Iran. I’ve been calling this out since 2022. Today, we continue to see
+  familiar Iranian intent – using criminal proxies to try to intimidate
+  oppositionists, Iranian media organisations, and Israeli sites. But 2026 has
+  also seen the Iranians, like the Russians, attempting to expand their hybrid
+  campaign. Over the last twelve months, our Iran-linked operations have led
+  to more than fifty arrests in the UK."
+  - "The spring saw a wave of arson and sabotage incidents targeting Jewish
+    communities in the UK and other European nations. … claimed by a group
+    calling itself the Islamic Movement of the Companions of the Right. Behind
+    this front sat members of the IRGC."
+  - "The other major shift this year has been Iranian ambitions to come at
+    harder targets, like military sites."
+- **16 Oct 2025 threat update, "Published date: 16 Oct 2025".** "MI5 has
+  tracked more than twenty potentially lethal Iran-backed plots in just the
+  one year since I last stood at this podium." Also: "fourteen nations,
+  including the UK, together condemned Iran’s efforts to kill, kidnap and
+  harass in Europe and North America."
+- **Caveat:** MI5's own totals, unaudited and without a case list; "arrests"
+  and "plots" are different measures and the periods differ (year to Oct 2025
+  vs twelve months to Oct 2026). Settles 3d problem 16's mi5.gov.uk item.

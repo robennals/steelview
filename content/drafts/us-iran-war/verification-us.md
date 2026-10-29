@@ -288,3 +288,56 @@ Source: IMF PortWatch ArcGIS API, `.../Daily_Chokepoints_Data/FeatureServer/0/qu
 - **https://dcas.dmdc.osd.mil/dcas/app/conflictCasualties**: returns a JavaScript shell with no data. Worked around through the app's own JSON API at `/dcas/api/report/...`.
 - **https://clerk.house.gov/evs/2026/index.asp**: HTTP 404. Rolls were enumerated directly instead.
 - **The primary 1 May 2026 War Powers letter**: not found on govinfo (House Docs 119-120 to 119-215 scanned). Known only from quotations by Lawfare and Goldsmith.
+
+---
+
+## Addendum, 29 Oct 2026 — GovTrack Senate votes and CENTCOM releases (human-downloaded)
+
+**GovTrack.** "Congressional Votes Database - GovTrack.us", saved as PDF by the
+human from https://www.govtrack.us/congress/votes (page header shows an
+"Oct. 26, 2026" commentary item, so captured 26–29 Oct). Senate list, latest
+first. The most recent Senate vote listed is "#256 Sept. 30, 2026" (a
+nomination). The only Iran item is: "H.Con.Res. 89: Directing the President,
+pursuant to section 5(c) of the War Powers Resolution, to remove United
+States Armed Forces from hostilities with Iran. Senate Vote #244 Sept. 24,
+2026 … Concurrent Resolution Rejected 49/50". **So no Senate war-powers vote
+took place after 24 Sept, and none after 10 Oct, as of the capture** —
+closing the gap left by the archive's 10 Oct cut-off.
+
+**CENTCOM** (saved in a normal browser by the human; `og:url` gives each URL):
+
+- 5 Oct 2026, https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4619553/centcom-maintains-strict-enforcement-of-us-blockade-against-iran/ :
+  "On Oct. 5, U.S. Central Command (CENTCOM) forces redirected the 130th
+  commercial vessel in the Middle East during strict enforcement of the
+  ongoing U.S. naval blockade against Iran. CENTCOM forces resumed the
+  blockade against ships attempting to enter or depart Iranian ports July 14
+  at the Commander in Chief's direction. In addition to redirecting 130
+  vessels, American forces have disabled three ships that refused to comply.
+  Over the past 12 weeks, CENTCOM has destroyed 13 commercial vessels that
+  were violating the blockade or part of the Islamic Revolutionary Guard
+  Corps' multibillion-dollar shadow network."
+- 10 Oct 2026, https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4623817/us-forces-disable-cargo-vessel-attempting-to-violate-blockade/ :
+  "CENTCOM forces resumed America’s blockade against all ships entering or
+  departing Iranian ports on July 14. Four commercial vessels have been
+  disabled and 135 ships have been turned around during three months of
+  strict enforcement. Additionally, U.S. forces have destroyed 10 tankers
+  linked to the Islamic Revolutionary Guard Corps' multibillion-dollar shadow
+  network over the same period." (Confirms the Khaleej Times relay, C35, at
+  source. The 5 Oct "13 commercial vessels" and the 10 Oct "10 tankers" are
+  differently worded categories; report both as worded.)
+- 25 Oct 2026, https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4633061/centcom-commander-visits-strait-of-hormuz-during-milestone-week/ :
+  "The commander of U.S. Central Command (CENTCOM) visited the Strait of
+  Hormuz, Oct. 25, as U.S. forces reach the milestone of assisting Gulf
+  partners in exporting more than 1.5 billion barrels of crude oil since
+  summer." "More than 3,000 commercial vessels have successfully transited
+  the Strait of Hormuz with support from CENTCOM forces over the last six
+  months." "In recent months, over 95% of ships navigating the Strait of
+  Hormuz have sailed through safely despite the IRGC's unwarranted
+  aggression".
+- Media gallery (saved page of CENTCOM releases and captions), 20 May 2026
+  caption: "U.S. forces continue to fully enforce the blockade and have now
+  redirected 91 commercial ships to ensure compliance." 19 Apr caption: M/V
+  Touska boarded and seized "after guided-missile destroyer USS Spruance (DDG
+  111) disabled Touska’s propulsion".
+- **Still unverified:** CENTCOM's 16 Oct "$25 billion" claim (no release in
+  the saved pages). Drop it.
