@@ -218,7 +218,13 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
 - **Add** the strongest arguments the data makes available that the outline
   missed — for every viewpoint, including the ones the data mostly hurts.
 - **Update the concessions** to the well-supported findings that cut against
-  each viewpoint, now that they are known.
+  each viewpoint, now that they are known. For each, note why it does not
+  stop the argument, and the evidence for that reason; stage 6 turns the pair
+  into a "While …" sentence
+  ([Concessions](AUTHORING.md#concessions-and-an-independent-voice)).
+- **Re-check that the arguments still add up.** Each argument's one-line claim
+  becomes a section heading in stage 6, so read the claims alone: if they no
+  longer establish the title, fix the argument now, or the title.
 - **Re-check the balance.** If one viewpoint has lost most of its empirical
   support, say so plainly; it may rest on values the data cannot touch, which
   is a legitimate position, but its outline should then argue from those
@@ -378,7 +384,10 @@ holder of that view would find it better argued than their own version
   what a viewpoint builds on, concedes or sets aside shows in its inline
   observation links.
 
-**Gate: the human is happy with every viewpoint**, read side by side.
+**Gate: the human is happy with every viewpoint**, read side by side —
+first its headings alone, then the text. Check readability as for reports:
+look at each viewpoint rendered, and read it aloud for sentences that need a
+second reading.
 
 ## 7. Publish
 

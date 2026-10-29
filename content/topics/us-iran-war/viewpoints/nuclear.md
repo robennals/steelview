@@ -2,6 +2,9 @@
 name: Iran must never get a nuclear weapon, and its past shows why
 summary: "Iran was close to having enough material for a bomb, and [no inspector has seen its most enriched uranium since June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for). [Iran has backed deadly attacks abroad](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). Stopping it from getting a bomb was worth a war."
 order: 1
+researchNeeded:
+  - "The hardest step in building a nuclear bomb is enriching uranium, which means making it purer"
+  - "Nuclear power plants need uranium enriched to only a few percent"
 ---
 An Iran with nuclear weapons would be far more dangerous than Iran today. Stopping it was worth a war, because [keeping people safe from the worst dangers](#principle-safety-from-catastrophic-threats) comes first.
 

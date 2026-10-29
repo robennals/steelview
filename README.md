@@ -102,14 +102,14 @@ source on the same topic. It runs in CI.
 
 ## Adding a topic
 
-**Follow [`content/WORKFLOW.md`](content/WORKFLOW.md)** — the six stages a
+**Follow [`content/WORKFLOW.md`](content/WORKFLOW.md)** — the seven stages a
 human editor and an agent go through to produce a topic, from choosing it to
 publishing, with the review points between them.
 
 **Read [`content/AUTHORING.md`](content/AUTHORING.md) first.** It is the
 authoring guide: the fact-status rubric, how to phrase a claim and its body,
-the sourcing and time-series rules, what makes a viewpoint a steelman, the
-prose patterns to avoid, which rules the build enforces and which are
+the sourcing and time-series rules, what makes a viewpoint a steelman and
+how it is laid out and worded, the prose patterns to avoid, which rules the build enforces and which are
 editorial judgement, and a checklist to run before opening a PR.
 
 Then add a new directory under `content/topics/`, following the structure
@@ -122,6 +122,17 @@ Code is MIT — see [`LICENSE`](LICENSE). Editorial content under `content/`
 is CC BY 4.0 — see [`content/LICENSE`](content/LICENSE), which also states
 the boundary: the quoted source material inside each fact is not Steelview's
 to license and carries its own terms.
+
+### Viewpoint format
+
+A viewpoint is a short lead, then four to six `###` sections. Each heading is
+one claim, and read alone the headings make the whole case for the title; the
+short prose under each gives the evidence. It is written for a middle-school
+reader: short sentences, everyday words, citation text that states the point
+and leaves figures and sources to the report it opens, and concessions that
+open with "While" and say why they do not change the conclusion.
+[`content/AUTHORING.md`](content/AUTHORING.md#write-an-argument-someone-can-follow)
+is the full specification; `us-iran-war` is the model.
 
 ### Evidence in viewpoints and facts
 

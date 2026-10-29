@@ -1,22 +1,30 @@
 ---
-name: Mail-voting rules belong to the states, and presidents have no say in them
-summary: "The Constitution gives election rules to state legislatures, with Congress able to alter them, and gives the President no part. States have tried different mail systems and changed course when their voters wanted; one national rule would fit none of them."
+name: The states make mail-voting rules, and presidents have no say in them
+summary: "The Constitution gives election rules to state lawmakers, and lets Congress change them. It gives the President no part. States have tried different mail systems and changed course when their voters wanted. One national rule would fit none of them."
 order: 5
 ---
-The Constitution gives the rules of elections to state legislatures, lets Congress alter them, and gives the President no part beyond signing or vetoing bills.
+The Constitution lets each state's lawmakers set the rules for elections, and lets Congress change them. It gives the President no part beyond signing or vetoing bills. The states should keep making these choices, and presidents should stay out.
 
-Mail voting shows why that design works. States have tried very different systems, changed course when their voters wanted, and answer to the people who watch them work. Washington should leave them to it, and presidents should stay out.
+### The Constitution gives the President no role
 
-The text is plain: [the Elections Clause names state legislatures and Congress, not the President](#fact-federal-and-state-power-over-mail-voting/elections-clause-text). The courts have held that line so far. [The Postal Service rule ordered by the President is blocked for November 2026](#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked), and [a district court held the 2025 order's receipt-deadline rules beyond presidential power](#fact-federal-and-state-power-over-mail-voting/eo-14248-deadlines-enjoined).
+[The Constitution's Elections Clause names state legislatures and Congress, not the President](#fact-federal-and-state-power-over-mail-voting/elections-clause-text). So far the courts have held that line. [A court has blocked the Postal Service rule the President ordered, for the November 2026 election](#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked). [Another court ruled that the 2025 order's ballot deadline rules went beyond the President's power](#fact-federal-and-state-power-over-mail-voting/eo-14248-deadlines-enjoined).
 
-The fight is not over. [The Supreme Court let the March 2026 order itself proceed](#fact-federal-and-state-power-over-mail-voting/eo-14399-stands), and [no court above the district level has ruled on the merits](#fact-federal-and-state-power-over-mail-voting/no-merits-ruling). That is a reason to state the principle clearly now.
+While [the Supreme Court let the President's March 2026 order go ahead](#fact-federal-and-state-power-over-mail-voting/eo-14399-stands), it did not decide that the order was lawful. [No court above the lowest level has yet ruled on that](#fact-federal-and-state-power-over-mail-voting/no-merits-ruling). So the principle should be stated clearly now.
 
-The states have used their power well. [Oregon's all-mail system came from its own voters, by initiative](#fact-mail-voting-use-and-effects/oregon-by-initiative). [Utah, after years of mailing every voter a ballot, is moving to mail on request](#fact-mail-voting-use-and-effects/utah-all-mail-and-opt-in). [States have moved mail-voting rules in both directions](#fact-federal-and-state-power-over-mail-voting/state-rules-move-both-ways), and [three ended their grace periods for late ballots in 2025](#fact-federal-and-state-power-over-mail-voting/receipt-deadlines-swung-back).
+### States have used this power well
 
-The country is not one place. [Mail voting is mainly a Western practice](#fact-mail-voting-use-and-effects/west-votes-by-mail), while [in much of the South it is a small share of the vote](#fact-mail-voting-use-and-effects/low-mail-states). [Decisions made closest to the people](#principle-decisions-made-closest-to-the-people) can fit each place. A single national rule would force one state's habits on another.
+[Oregon's all-mail system came from its own voters, who voted for it directly](#fact-mail-voting-use-and-effects/oregon-by-initiative). [Utah, after years of mailing every voter a ballot, is moving to mail ballots only on request](#fact-mail-voting-use-and-effects/utah-all-mail-and-opt-in). [States have changed their mail-voting rules in both directions](#fact-federal-and-state-power-over-mail-voting/state-rules-move-both-ways), and [three ended their extra days for late ballots in 2025](#fact-federal-and-state-power-over-mail-voting/receipt-deadlines-swung-back). Each state can change course when its voters want.
 
-Congress does have real power. [Its authority over the manner of congressional elections is "paramount"](#fact-federal-and-state-power-over-mail-voting/congress-power-paramount), [the Court said it could set a national receipt deadline](#fact-federal-and-state-power-over-mail-voting/watson-leaves-it-to-legislatures), and [it already sets mail-ballot rules for military and overseas voters](#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules). That last rule serves voters no single state can reach. It is a floor, not a takeover.
+### Different states need different rules
 
-Beyond that, Congress should hold back. [National bills from both parties have stalled in the Senate](#fact-federal-and-state-power-over-mail-voting/national-bills-stalled), and [bills now pending would push mail voting in opposite directions](#fact-federal-and-state-power-over-mail-voting/bills-on-both-sides). A national rule would swing with whichever party holds Washington.
+[Mail voting is mainly a Western practice](#fact-mail-voting-use-and-effects/west-votes-by-mail). [In much of the South, mail ballots are a small share of the vote](#fact-mail-voting-use-and-effects/low-mail-states). [Decisions made closest to the people](#principle-decisions-made-closest-to-the-people) can fit each place. One national rule would force one state's habits on another.
 
-[Democratic consent](#principle-democratic-consent-over-membership) is better served by fifty electorates, each able to change its own rules. The Supreme Court said policy arguments about deadlines [belong to legislatures, not courts](#fact-federal-and-state-power-over-mail-voting/watson-leaves-it-to-legislatures). They belong to state legislatures, not to the White House.
+### Congress has a role, but should use it sparingly
+
+[Congress has strong power over how federal elections are run](#fact-federal-and-state-power-over-mail-voting/congress-power-paramount). [The Supreme Court said Congress could set a national deadline for ballots](#fact-federal-and-state-power-over-mail-voting/watson-leaves-it-to-legislatures). [Congress already sets mail-ballot rules for military and overseas voters](#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules). That rule serves voters no single state can reach. It sets a minimum, and does not take over.
+
+While Congress has this power, it should hold back. [National bills from both parties have stalled in the Senate](#fact-federal-and-state-power-over-mail-voting/national-bills-stalled), and [bills now pending would push mail voting in opposite directions](#fact-federal-and-state-power-over-mail-voting/bills-on-both-sides). A national rule would swing back and forth with whichever party controls Washington.
+
+### Each state's voters should decide their own rules
+
+[People should have a say in the rules that govern them](#principle-democratic-consent-over-membership). Fifty states, each able to change its own rules, give voters more say than one national rule. The Supreme Court said arguments over deadlines [belong to lawmakers, not courts](#fact-federal-and-state-power-over-mail-voting/watson-leaves-it-to-legislatures). They belong to state lawmakers, not to the White House.
