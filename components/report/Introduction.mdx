@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Fact-report components
+
+This library is the set of building blocks for a Steelview fact report: charts, maps, timelines, quotes and claim checks that all look and behave the same way. Use them to put a new report together quickly, and to make sure every figure in it can be checked by the reader.
+
+Each component takes plain data (numbers, labels, dates, sources), not the site's content types, so the same component works with frontmatter, a calculation or a story fixture.
+
+## Principles every component follows
+
+- **Show the full range, not a chosen slice.** A chart covers everything the source publishes, so the reader sees the long run and not just the years that make a point.
+- **Every figure has a source.** Each component ends with a source line that links to the quoted reference it rests on.
+- **Every number can be checked.** Charts offer a Graph/Table switch, so the exact values sit one click away.
+- **Never colour alone.** Series, statuses and categories are also told apart by labels, shapes or line styles, so they survive colour blindness and a black-and-white printout.
+- **Neutral ordering.** Items appear in data order, date order or alphabetical order, never in an order that puts one side first. No position is styled as more important than another.
+- **Works without JavaScript.** Components render their full default view on the server. Filters and toggles add to the page; they are never needed to read it.
+- **Design tokens, not colours.** Styles use the site's ink, paper, rule and series tokens, so dark mode works with no extra effort.
+
+## Putting a figure in a report
+
+Wrap the content in `ReportFigure`, which supplies the heading, a one-sentence description, the source line and an optional "About this data" note. On a fact page, point each source at the numbered reference on that page, whose id is `#source-<fact>-<n>`:
+
+```tsx
+<ReportFigure
+  title="Net migration, year ending June"
+  description="Net migration rose from 2021 and has fallen since its 2023 peak."
+  sources={[{ label: 'ONS', href: '#source-net-migration-2024-1', number: 1 }]}
+  note="Estimates before June 2021 use a different method."
+>
+  {/* the chart, table or list */}
+</ReportFigure>
+```
+
+Most components already wrap themselves in `ReportFigure`: pass them `title`, `description`, `sources` and `note` directly, and a figure's Observations as `footer`, which sits after the source line and before "About this data".
+
+## From a fact file
+
+A fact report reaches these components through the `figures` list in its frontmatter: each entry names a figure kind and its data, cites the fact's own numbered sources, and renders in the order written. `lib/content/figure-props.ts` turns each kind into the component's props, and `FactFigures` renders the list; see "Figures" in `content/AUTHORING.md`, and **Existing/FactFigures** for every kind in reading order.
+
+## The components
+
+{/* An HTML table: Storybook's MDX has no GitHub-flavoured Markdown tables without remark-gfm. */}
+<table>
+  <thead>
+    <tr><th scope="col">Family</th><th scope="col">Components</th><th scope="col">Use when</th><th scope="col">Figure kinds</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">Data</th><td>KeyFigures, BarChart, SliceExplorer, CompositionBar, SmallMultiples, EstimateRange, DataTable, ScatterPlot</td><td>You are showing numbers: headline figures, comparisons, shares of a whole, several small charts side by side, a range of estimates, the raw table, or two measures per area plotted against each other with every point labelled.</td><td><code>keyFigures</code>, <code>barChart</code>, <code>compositionBar</code>, <code>estimateRange</code>, <code>dataTable</code>, <code>scatterPlot</code></td></tr>
+    <tr><th scope="row">Maps</th><td>GeoMap, TileMap</td><td>The figure varies by place: countries, states or regions anywhere. Shade by a number, or by a category (a rule or status per area, each with its own tint, pattern and printed mark). Ships world, Europe and UK-region outlines, and tile grids for Europe, the US and UK regions; any GeoJSON-shaped outlines work.</td><td><code>tileMap</code>, <code>geoMap</code></td></tr>
+    <tr><th scope="row">Timelines</th><td>Timeline, PeriodTimeline, EventStrip</td><td>The order of events or policy periods matters, or events need placing against a chart.</td><td><code>timeline</code>, <code>periodTimeline</code> (its events use EventStrip)</td></tr>
+    <tr><th scope="row">Quotes</th><td>QuoteBrowser, PullQuote, QuoteComparison</td><td>You are presenting what people or institutions said: a searchable collection, one quote set apart, or several answers to one question side by side.</td><td><code>pullQuote</code>, <code>quoteComparison</code></td></tr>
+    <tr><th scope="row">Claims</th><td>ClaimCheck, CaveatList</td><td>You are setting a claim against the data, or stating what the data does not show.</td><td><code>claimCheck</code>, <code>caveatList</code></td></tr>
+    <tr><th scope="row">Foundations</th><td>ReportFigure, ChoiceGroup, FilterChips</td><td>You are building a new component: the frame every figure sits in, and the reader controls.</td><td>—</td></tr>
+    <tr><th scope="row">Existing</th><td>SeriesChart, ComparisonChart, FactFigures</td><td>You are drawing a time series or a snapshot comparison straight from a fact's frontmatter, or a fact's whole <code>figures</code> list in reading order. A series can give a line its own published range, mark estimates and forecasts, hatch a period nobody measured, and focus on a short window under a strip of the full range.</td><td><code>series</code>, <code>comparison</code>, <code>featured</code>, <code>section</code></td></tr>
+  </tbody>
+</table>

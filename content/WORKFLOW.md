@@ -283,6 +283,25 @@ topics it serves before the report plans are redone.
 quoted sources, full-range series, the source's comparator set, observations
 beneath each chart, method changes, sources at the end.
 
+**Every chart value is audited against its source** before the gate.
+`pnpm check:figures` lists every `series` point and `comparisons` value
+that is not in a quote the chart cites, not a verified derivation, and not
+on a table the reading or comparison names in `valuesFrom`; the list is
+advisory until `--strict-values` becomes the default, and a named table is
+only as good as someone having read it. An agent that did not build the
+report re-fetches each chart's source data and confirms every value, or the
+inputs and arithmetic of a derived one, and makes sure the chart's quote or
+note names the table the values come from. In the first trial topic this
+caught a published figure entered wrongly and a chart built from levels the
+source never published.
+
+**Readability is checked before the gate**, against
+[Readability](AUTHORING.md#readability): a brief overview at the top, no
+paragraph longer than four lines, statistics shown in the charts rather than
+recited in prose, and dated events as numbered markers on the timeline. Look
+at each report rendered, on a narrow screen as well as a wide one; a wall of
+text is easy to miss in the markdown and obvious on the page.
+
 Reports are independent, so **one agent per report can build them in
 parallel** from a shared brief (see [Brief for a report
 builder](#brief-for-a-report-builder)). Each returns its observation ids
@@ -310,17 +329,18 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
-- time series always render before snapshot comparisons, and body sections
-  that are not charts — such as markdown tables — render after every chart,
-  so a planned reading order can be kept only within those groups;
 - an observation group not tied to a chart needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos;
-- there is no chart shape for a categorical table (a rule per country) or a
-  policy date on a series; use a markdown table, and name the policy in the
-  chart description;
-- `check:figures` matches a figure only in the same form the source prints
-  it ("1.4 percent" and "1.4%" differ), and accepts a figure quoted anywhere
-  on the topic, not only in the report's own sources.
+- a rule or status per area (a rule per state or country) is a categorical
+  `tileMap` or `geoMap` figure; a categorical table with more than one
+  column per area is a `dataTable` figure. Policy dates on a series go in
+  its `events`;
+- a fact file reaches the component library through `figures`
+  ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
+  reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
+  `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
+  `SmallMultiples` are not yet, so a report plan that needs one says so at
+  stage 4b;
 
 ## 6. Write the viewpoints
 
@@ -340,9 +360,12 @@ holder of that view would find it better argued than their own version
   where the viewpoints actually ended up disagreeing. Principles were written
   in stage 2; adjust them here only if a viewpoint's final form rests on a
   different value.
-- **Order and lists last.** Set `order` to alternate sides, then order each
-  `citesFacts` by what the argument actually rests on, since that decides the
-  page's fact order.
+- **Order last.** Set each viewpoint's `order` so the sides alternate, and
+  list the headline reports in `topic.md`'s `dataOrder` in the order a reader
+  should meet them. Viewpoint frontmatter is only `name`, `summary` and
+  `order` ([Citations and data order](AUTHORING.md#citations-and-data-order)):
+  what a viewpoint builds on, concedes or sets aside shows in its inline
+  observation links.
 
 **Gate: the human is happy with every viewpoint**, read side by side.
 
@@ -382,10 +405,21 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   that cannot be confirmed at source is dropped or stated as unconfirmed.
 - **One observation per planned finding**, for every viewpoint the plan
   lists, including the findings against each, worded neutrally.
+- **Readable at a glance:** a two- or three-sentence overview; paragraphs of
+  four lines at most; numbers in charts, not recited in prose; laws and
+  policy changes as `events` on the series they bear on.
 - **Context and gaps:** the longer run, comparators, denominators, the rest
   of the record and the mechanism, as the plan asks; material gaps go in
   `dataStillNeeded`, and only gaps that would change which viewpoint has the
   better case are reported as crux candidates.
+- **Chart values come from the source's data**, each confirmed at source;
+  name the table in the chart's quote or note, and say how any derived value
+  was calculated. A level the source does not publish is not read off its
+  chart image — but check the page's chart data tables (often in the page
+  text below or beside the chart) before concluding it is unpublished.
+- **One quote, one page.** A chart's source quote comes from the page its
+  URL names. When a series joins two releases, quote one and name the other
+  in the chart note, with its own citation.
 - **Checks:** `heavy run -- pnpm check:figures` and `heavy run -- pnpm
   test:unit`, fixing only the agent's own file; other builders' files may be
   mid-edit.

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../components/report/report.css";
 
 /* ==========================================================================
    Steelview — a reading surface, not an app surface.
@@ -1031,6 +1032,64 @@
     stroke-width: 2;
   }
 
+  /* An estimate or provisional value is a hollow ring in the line's colour:
+     the shape, not the colour, says it was not measured. */
+  .sv-chart__hollow,
+  .sv-chart__end:is([data-status="estimate"], [data-status="provisional"]) {
+    fill: var(--paper);
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .sv-chart__forecast-zone {
+    fill: var(--paper-sunk);
+  }
+
+  /* Focus window: the strip of the full range, the window outlined on it in
+     accent, and a line of text saying the same thing. */
+  .sv-chart__context {
+    margin-bottom: 0.15rem;
+  }
+
+  .sv-chart__context-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    stroke-linejoin: round;
+  }
+
+  .sv-chart__window {
+    fill: var(--accent-wash);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+  }
+
+  .sv-chart__focus-note {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-chart__focus > .sv-control {
+    margin-bottom: 0.5rem;
+  }
+
+  .sv-chart__zone-label {
+    fill: var(--ink-3);
+    font-family: var(--font-sans);
+  }
+
+  /* "Not measured" hatching: the maps' "No data" mark, ink-4 hairlines on paper. */
+  .sv-chart__hatch-ground {
+    fill: var(--paper);
+  }
+
+  .sv-chart__hatch-line {
+    stroke: var(--ink-4);
+    stroke-width: 1;
+  }
+
   .sv-chart__tick {
     fill: var(--ink-3);
     font-family: var(--font-sans);
@@ -1647,6 +1706,47 @@
     padding-left: 1rem;
     border-left: 1px solid var(--rule-strong);
     font-style: italic;
+  }
+
+  /* A body table scrolls inside its own box (see rehypeScrollableTables),
+     never the page. */
+  .prose-body .sv-prose-table {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    margin-block: 1rem 1.25rem;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .prose-body .sv-prose-table:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .prose-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  .prose-body th,
+  .prose-body td {
+    padding: 0.45rem 0.75rem 0.45rem 0;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    min-width: 6.5rem;
+    max-width: 22rem;
+  }
+
+  .prose-body :is(th, td):last-child {
+    padding-right: 0;
+  }
+
+  .prose-body thead th {
+    color: var(--ink-2);
+    font-weight: 600;
   }
 
   .prose-body code {
@@ -2310,3 +2410,4 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-breakdown-table table { width: 100%; font: 12px/1.5 var(--font-sans); border-collapse: collapse; }
 .sv-breakdown-table th, .sv-breakdown-table td { padding: 6px; border-bottom: 1px solid #ddd; text-align: right; }
 .sv-breakdown-table th:first-child { text-align: left; }
+.sv-breakdown-table caption { caption-side: top; text-align: left; padding: 6px 0; color: var(--ink-3); }

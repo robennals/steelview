@@ -1,0 +1,486 @@
+/* Fact-report library — maps components. */
+
+@layer components {
+  /* ------------------------------------------------------------ legend */
+
+  /* The key reads like the chart legends: small sans type above a row of
+     swatches, boundary values under the joins rather than under the middles,
+     because a boundary is the number a reader actually needs. */
+  .sv-map-legend {
+    margin: 0.85rem 0 0.75rem;
+    font-family: var(--font-sans);
+  }
+
+  .sv-map-legend__title {
+    margin: 0 0 0.35rem;
+    font-size: 0.8125rem;
+    color: var(--ink-2);
+  }
+
+  .sv-map-legend__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.5rem 1.25rem;
+  }
+
+  .sv-map-legend__scale {
+    width: min(100%, 19rem);
+  }
+
+  .sv-map-legend__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--sv-steps), 1fr);
+    height: 0.75rem;
+    gap: 1px;
+  }
+
+  .sv-map-legend__ticks {
+    position: relative;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+  }
+
+  .sv-map-legend__tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+
+  .sv-map-legend__tick[data-edge="start"] {
+    transform: none;
+  }
+
+  .sv-map-legend__tick[data-edge="end"] {
+    transform: translateX(-100%);
+  }
+
+  .sv-map-legend__tick[data-zero="true"] {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .sv-map-legend__nodata {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  /* No data is hatched, not tinted: a pale fill would read as "low". The same
+     ink-4 hairlines on paper as the SVG pattern, so the key matches the map. */
+  .sv-map-legend__hatch,
+  .sv-tile-map__tile[data-missing="true"] {
+    background:
+      repeating-linear-gradient(45deg, var(--ink-4) 0 1px, transparent 1px 4px),
+      var(--paper);
+  }
+
+  .sv-map-legend__hatch {
+    width: 1.4rem;
+    height: 0.75rem;
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+  }
+
+  /* -------------------------------------------------- categorical maps */
+
+  /* One look per category slot, shared by tiles, legend swatches (CSS
+     backgrounds) and GeoMap's SVG <pattern>s, which read the same
+     --sv-cat-fill-N tint. Each slot is a 30% tint of its series colour on
+     paper — light enough for ink text in both themes (a unit test checks
+     4.5:1 from the tokens in app/globals.css) — plus a 1px overlay in the
+     full series colour, so the categories still differ in greyscale:
+       1 none · 2 dots on a 6px grid · 3 horizontal lines · 4 vertical lines
+       5 grid · 6 diagonal (perpendicular to the "No data" hatch).
+     The palette is categorical even for ordered categories: an ordered ramp
+     would read as a measured quantity. */
+  .sv-report {
+    --sv-cat-fill-1: color-mix(in srgb, var(--sv-series-1) 30%, var(--paper));
+    --sv-cat-fill-2: color-mix(in srgb, var(--sv-series-2) 30%, var(--paper));
+    --sv-cat-fill-3: color-mix(in srgb, var(--sv-series-3) 30%, var(--paper));
+    --sv-cat-fill-4: color-mix(in srgb, var(--sv-series-4) 30%, var(--paper));
+    --sv-cat-fill-5: color-mix(in srgb, var(--sv-series-5) 30%, var(--paper));
+    --sv-cat-fill-6: color-mix(in srgb, var(--sv-series-6) 30%, var(--paper));
+
+    --sv-cat-bg-1: var(--sv-cat-fill-1);
+    --sv-cat-bg-2:
+      radial-gradient(circle at 3px 3px, var(--sv-series-2) 0 1px, transparent 1.25px) 0 0 / 6px 6px,
+      var(--sv-cat-fill-2);
+    --sv-cat-bg-3:
+      repeating-linear-gradient(0deg, var(--sv-series-3) 0 1px, transparent 1px 5px),
+      var(--sv-cat-fill-3);
+    --sv-cat-bg-4:
+      repeating-linear-gradient(90deg, var(--sv-series-4) 0 1px, transparent 1px 5px),
+      var(--sv-cat-fill-4);
+    --sv-cat-bg-5:
+      repeating-linear-gradient(0deg, var(--sv-series-5) 0 1px, transparent 1px 5px),
+      repeating-linear-gradient(90deg, var(--sv-series-5) 0 1px, transparent 1px 5px),
+      var(--sv-cat-fill-5);
+    --sv-cat-bg-6:
+      repeating-linear-gradient(135deg, var(--sv-series-6) 0 1px, transparent 1px 5px),
+      var(--sv-cat-fill-6);
+  }
+
+  .sv-cat-fill[data-slot="1"] { --sv-cat-tint: var(--sv-cat-fill-1); background: var(--sv-cat-bg-1); }
+  .sv-cat-fill[data-slot="2"] { --sv-cat-tint: var(--sv-cat-fill-2); background: var(--sv-cat-bg-2); }
+  .sv-cat-fill[data-slot="3"] { --sv-cat-tint: var(--sv-cat-fill-3); background: var(--sv-cat-bg-3); }
+  .sv-cat-fill[data-slot="4"] { --sv-cat-tint: var(--sv-cat-fill-4); background: var(--sv-cat-bg-4); }
+  .sv-cat-fill[data-slot="5"] { --sv-cat-tint: var(--sv-cat-fill-5); background: var(--sv-cat-bg-5); }
+  .sv-cat-fill[data-slot="6"] { --sv-cat-tint: var(--sv-cat-fill-6); background: var(--sv-cat-bg-6); }
+
+  /* Text sits on a patch of the plain tint, so a pattern line never runs
+     through a letter and the measured contrast is the contrast read. */
+  .sv-cat-fill > span {
+    align-self: flex-start;
+    background: var(--sv-cat-tint);
+    padding: 0.05rem 0.15rem;
+    margin: -0.05rem -0.15rem;
+    color: var(--ink);
+  }
+
+  .sv-geo-map__cat-dot {
+    fill: currentColor;
+  }
+
+  .sv-geo-map__cat-line {
+    stroke: currentColor;
+    stroke-width: 1;
+  }
+
+  .sv-category-legend__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  .sv-category-legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sv-category-legend__swatch {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 0.9rem;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+  }
+
+  .sv-category-legend__swatch > span {
+    align-self: center;
+  }
+
+  .sv-category-legend__count {
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sv-category-table th[scope="rowgroup"] {
+    text-align: left;
+    padding-top: 0.85rem;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .sv-category-table tbody[data-missing="true"] th {
+    color: var(--ink-3);
+  }
+
+  .sv-category-table__note {
+    white-space: normal;
+    color: var(--ink-2);
+  }
+
+  /* ----------------------------------------------------------- readout */
+
+  .sv-map__readout {
+    min-height: 1.5rem;
+    margin: 0.5rem 0 0;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+
+  .sv-map__readout[data-idle="true"] {
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: var(--ink-3);
+  }
+
+  /* ------------------------------------------------------------ GeoMap */
+
+  /* The drawing's own proportions come from the geography (a tall country,
+     a wide world). Capped in height so a tall country still fits in view on
+     a laptop; it then narrows and sits at the left, aligned with the text. */
+  .sv-geo-map__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(36rem, 80vh);
+    overflow: visible;
+  }
+
+  /* Under a wide map an inset has no leader; a ring marks where it is. */
+  .sv-geo-map__anchor-ring {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.25;
+  }
+
+  /* Neighbours drawn for orientation: a quiet ground, no hover, no value. */
+  .sv-geo-map__context path {
+    fill: var(--paper-sunk);
+    stroke: var(--paper);
+    stroke-width: 0.75;
+    stroke-linejoin: round;
+  }
+
+  .sv-geo-map__region {
+    stroke: var(--paper);
+    stroke-width: 0.75;
+    stroke-linejoin: round;
+    cursor: pointer;
+    transition: stroke 120ms ease;
+  }
+
+  /* An outlined region is a reader's anchor, drawn in ink like a highlighted
+     tile so it never reads as a different value. Before the hover rule, so
+     pointing at it still draws the full-weight outline. */
+  .sv-geo-map__region[data-highlight="true"] {
+    stroke: var(--ink);
+    stroke-width: 1.5;
+  }
+
+  /* Hover and focus draw the outline in ink, never a colour change: the fill
+     is the data and must stay readable while it is being pointed at. */
+  .sv-geo-map__region[data-active="true"],
+  .sv-geo-map__region:focus-visible {
+    stroke: var(--ink);
+    stroke-width: 2;
+    outline: none;
+  }
+
+  /* On dark paper the palest steps sit close to the page colour; a visible
+     hairline keeps every region's outline readable. */
+  @media (prefers-color-scheme: dark) {
+    .sv-geo-map__region {
+      stroke: var(--rule-strong);
+    }
+  }
+
+  /* A highlighted region keeps its ink outline even with no data. */
+  .sv-geo-map__region[data-missing="true"]:not([data-highlight="true"]) {
+    stroke: var(--rule-strong);
+  }
+
+  .sv-geo-map__hatch-ground {
+    fill: var(--paper);
+  }
+
+  .sv-geo-map__hatch-line {
+    stroke: var(--ink-4);
+    stroke-width: 1;
+  }
+
+  .sv-geo-map__inset-frame {
+    fill: none;
+    stroke: var(--rule-strong);
+    stroke-width: 1;
+  }
+
+  .sv-geo-map__leader {
+    stroke: var(--ink-3);
+    stroke-width: 1;
+  }
+
+  .sv-geo-map__anchor {
+    fill: var(--ink);
+    stroke: var(--paper);
+    stroke-width: 1;
+  }
+
+  .sv-geo-map__inset-label,
+  .sv-geo-map__inset-value {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    fill: var(--ink-2);
+  }
+
+  .sv-geo-map__inset-value {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    fill: var(--ink);
+  }
+
+  /* Markers are ink, not a series hue, so they never compete with the
+     shading's ramp; kinds are told apart by shape. */
+  .sv-geo-map__marker {
+    cursor: pointer;
+  }
+
+  .sv-geo-map__marker > * {
+    fill: color-mix(in oklab, var(--ink) 78%, transparent);
+    stroke: var(--paper);
+    stroke-width: 1.25;
+  }
+
+  .sv-geo-map__marker[data-active="true"] > *,
+  .sv-geo-map__marker:focus-visible > * {
+    fill: var(--accent);
+  }
+
+  .sv-geo-map__marker:focus-visible {
+    outline: none;
+  }
+
+  .sv-geo-map__marker-key {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  .sv-geo-map__marker-key li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sv-geo-map__marker-icon {
+    fill: color-mix(in oklab, var(--ink) 78%, transparent);
+  }
+
+  .sv-geo-map__marker-size {
+    color: var(--ink-3);
+  }
+
+  .sv-geo-map__marker-table {
+    margin-top: 1rem;
+  }
+
+  .sv-chart__table td[data-missing="true"] {
+    color: var(--ink-3);
+    font-style: italic;
+  }
+
+  /* ----------------------------------------------------------- TileMap */
+
+  .sv-tile-map__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(var(--sv-tile-cols), minmax(0, 1fr));
+    gap: 3px;
+    max-width: calc(var(--sv-tile-cols) * 4.75rem);
+  }
+
+  .sv-tile-map__tile {
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.3rem 0.35rem;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    cursor: pointer;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .sv-tile-map__tile[data-tone="dark"] {
+    color: var(--paper);
+  }
+
+  /* On dark paper the ramp runs from near-black to a mid blue, so the light
+     ink reads on every step. */
+  @media (prefers-color-scheme: dark) {
+    .sv-tile-map__tile[data-tone="dark"] {
+      color: var(--ink);
+    }
+  }
+
+  .sv-tile-map__tile[data-missing="true"] {
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+    color: var(--ink-3);
+  }
+
+  .sv-tile-map__code {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .sv-tile-map__value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .sv-tile-map__tile[data-missing="true"] .sv-tile-map__value {
+    font-weight: 400;
+  }
+
+  /* An outlined tile is a reader's anchor ("where is the country this report is about?"), drawn as a
+     ring in ink so it never reads as a different value. */
+  .sv-tile-map__tile[data-highlight="true"] {
+    box-shadow: inset 0 0 0 2px var(--ink), inset 0 0 0 3px var(--paper);
+  }
+
+  .sv-tile-map__tile[data-active="true"],
+  .sv-tile-map__tile:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    z-index: 1;
+  }
+
+  /* Wide grids (Europe has nine columns) get small type on a phone: the
+     value stays, shortened, and the code shrinks first. */
+  @media (max-width: 33.99rem) {
+    .sv-tile-map__grid[data-cols="many"] {
+      gap: 2px;
+    }
+
+    .sv-tile-map__grid[data-cols="many"] .sv-tile-map__tile {
+      padding: 0.15rem 0.2rem;
+    }
+
+    .sv-tile-map__grid[data-cols="many"] .sv-tile-map__code {
+      font-size: 0.5625rem;
+    }
+
+    .sv-tile-map__grid[data-cols="many"] .sv-tile-map__value {
+      font-size: 0.6875rem;
+    }
+  }
+}

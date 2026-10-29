@@ -129,3 +129,50 @@ test('a unit-word figure matches a quote that restates it the same way', () => {
   const corpus = quoteCorpus(['average lifetime contribution of £2.2 million. This accounts for 39% of the total.']);
   assert.equal(quotedSomewhere('£2.2 million', corpus), true);
 });
+
+// Percent words, dollars and trailing zeros (spec 3.6).
+
+test('"1.4 percent" in prose matches a quote that writes "1.4%", and the reverse', () => {
+  assert.equal(quotedSomewhere('1.4 percent', quoteCorpus(['the rate was 1.4% that year'])), true);
+  assert.equal(quotedSomewhere('1.4%', quoteCorpus(['the rate was 1.4 percent that year'])), true);
+  assert.equal(quotedSomewhere('1.4 per cent', quoteCorpus(['the rate was 1.4 percent that year'])), true);
+});
+
+test('"6.7 percent" is extracted as a figure', () => {
+  assert.deepEqual(figuresIn('a claim of 6.7 percent of ballots'), ['6.7 percent']);
+  assert.deepEqual(figuresIn('a claim of 6.7 per cent of ballots'), ['6.7 per cent']);
+});
+
+test('"percentage points" is not read as a percentage', () => {
+  // "3 percentage points" is a difference, not a share; and a bare 3 is never a needle.
+  assert.deepEqual(figuresIn('a gap of 3 percentage points'), []);
+});
+
+test('"$50" is extracted and matches "$50" but not "£50"', () => {
+  assert.deepEqual(figuresIn('fees run from $50 to $125.'), ['$50', '$125']);
+  assert.equal(quotedSomewhere('$50', quoteCorpus(['costs of $50 or more'])), true);
+  assert.equal(quotedSomewhere('$50', quoteCorpus(['costs of £50 or more'])), false);
+  assert.equal(quotedSomewhere('€50', quoteCorpus(['costs of $50 or more'])), false);
+});
+
+test('a dollar figure with a scale word matches its abbreviation', () => {
+  assert.equal(quotedSomewhere('$4.5 million', quoteCorpus(['a budget of $4.5m in total'])), true);
+});
+
+test('"1.0%" matches "1%" and "2.50" matches "2.5"', () => {
+  assert.equal(quotedSomewhere('1.0%', quoteCorpus(['about 1% of voters'])), true);
+  assert.equal(quotedSomewhere('1%', quoteCorpus(['about 1.0% of voters'])), true);
+  assert.equal(quotedSomewhere('$2.50', quoteCorpus(['a fee of $2.5 per card'])), true);
+  // Only trailing zeros go: 1.05% is not 1.5%.
+  assert.equal(quotedSomewhere('1.5%', quoteCorpus(['about 1.05% of voters'])), false);
+});
+
+test('canonical folds percent words and trailing zeros, and keeps currency symbols', () => {
+  assert.equal(canonical('1.4 percent'), '1.4%');
+  assert.equal(canonical('1.4 per cent'), '1.4%');
+  assert.equal(canonical('1.4 pct'), '1.4%');
+  assert.equal(canonical('1.0%'), '1%');
+  assert.equal(canonical('2.50'), '2.5');
+  assert.equal(canonical('$5'), '$5');
+  assert.equal(canonical('£5'), '£5');
+});

@@ -1,4 +1,4 @@
-import { comparePeriods, periodToYear, periodYear } from '@/lib/content/period';
+import { comparePeriods, normalizePeriod, periodToYear, periodYear } from '@/lib/content/period';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading } from '@/lib/content/types';
 
 /**
@@ -39,6 +39,8 @@ export type ChartGeometry = {
   valueLabelEvery: number;
   /** Time-axis ticks land on multiples of this many years. */
   yearTickStep: number;
+  /** In a focus window shorter than three years, a tick every this many months. */
+  monthTickStep: number;
 };
 
 export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
@@ -53,6 +55,7 @@ export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
     markerRadius: 4,
     valueLabelEvery: 2,
     yearTickStep: 20,
+    monthTickStep: 3,
   },
   wide: {
     width: 720,
@@ -65,7 +68,20 @@ export const CHART_GEOMETRY: Record<ChartVariant, ChartGeometry> = {
     markerRadius: 4.5,
     valueLabelEvery: 1,
     yearTickStep: 10,
+    monthTickStep: 1,
   },
+};
+
+/**
+ * The small strip of the full range drawn above a focus window. Same left
+ * inset and plot width as the main plot at each size, so a year on the strip
+ * sits over the same column as on the plot below it.
+ */
+export type ContextGeometry = Pick<ChartGeometry, 'width' | 'height' | 'left' | 'top' | 'plotWidth' | 'plotHeight' | 'fontSize'>;
+
+export const CONTEXT_GEOMETRY: Record<ChartVariant, ContextGeometry> = {
+  narrow: { width: 360, height: 56, left: 44, top: 6, plotWidth: 306, plotHeight: 32, fontSize: 10 },
+  wide: { width: 720, height: 64, left: 56, top: 6, plotWidth: 650, plotHeight: 38, fontSize: 11 },
 };
 
 /* -------------------------------------------------------------------- ticks */
@@ -119,6 +135,42 @@ export function yearTicks(fromYear: number, toYear: number, step: number): numbe
 }
 
 /* ------------------------------------------------------------- formatting */
+
+/** About 0.6em per digit in the sans tick face, plus a gap. */
+export function tickLabelWidth(label: string, fontSize: number): number {
+  return label.length * fontSize * 0.6 + 6;
+}
+
+/**
+ * Drop interior ticks too close to either end tick to fit their labels. The
+ * ends are always kept: they name the published range. A 1950–2026 axis at
+ * 390px otherwise prints "2020" over "2026".
+ */
+export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: T[], fontSize: number): T[] {
+  if (ticks.length <= 2) return ticks;
+  const first = ticks[0];
+  const last = ticks[ticks.length - 1];
+  const fits = (a: T, b: T) =>
+    Math.abs(a.x - b.x) >= (tickLabelWidth(a.label, fontSize) + tickLabelWidth(b.label, fontSize)) / 2;
+  return ticks.filter((tick, index) => index === 0 || index === ticks.length - 1 || (fits(tick, first) && fits(tick, last)));
+}
+
+const MONTH_NAMES = new Set([
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+]);
+
+/**
+ * Lower-case only the first letter, so a label can follow "by" mid-sentence:
+ * "Year of NCSL count" → "year of NCSL count". Leaves the label as written
+ * when its first word is an acronym (two or more capitals: "EAVS cycle") or
+ * a month ("November general election").
+ */
+export function midSentence(label: string): string {
+  const firstWord = label.split(/\s/, 1)[0];
+  if ((firstWord.match(/[A-Z]/g) ?? []).length >= 2 || MONTH_NAMES.has(firstWord)) return label;
+  return label.charAt(0).toLowerCase() + label.slice(1);
+}
 
 export type SeriesUnit = SeriesReading['unit'];
 
@@ -176,13 +228,23 @@ export function seriesStrokeDash(slot: number): string | undefined {
 
 export type PlottedPoint = { x: number; y: number; point: SeriesPoint };
 
+/**
+ * How a stretch of line is drawn. `estimate` covers estimates and
+ * provisional values alike — both are dotted; only the table tells them apart.
+ */
+export type RunKind = 'measured' | 'estimate' | 'forecast';
+
+export type PlottedRun = { kind: RunKind; points: PlottedPoint[] };
+
 export type PlottedLine = {
   name: string;
   slot: number;
-  /** Contiguous stretches of the line, one per stretch between breaks. */
-  runs: PlottedPoint[][];
+  /** Contiguous stretches of the line, split at breaks and wherever the drawing changes kind. */
+  runs: PlottedRun[];
   /** The segments that step across a break — drawn dashed, never as smooth line. */
   bridges: Array<[PlottedPoint, PlottedPoint]>;
+  /** Estimate and provisional points, drawn as hollow circles when the reading is sparse enough to mark points. */
+  hollow: PlottedPoint[];
   last: PlottedPoint;
 };
 
@@ -198,29 +260,51 @@ export type ReadingLayout = {
   breaks: BreakMark[];
   /** The y of value 0, when zero is inside the domain — the line a net series crosses. */
   zeroY: number | null;
+  /** Where the forecast zone starts: the first forecast period on any line. It runs to the plot's right edge. */
+  forecastX: number | null;
+  /** The "not measured since" band, from the last point to where the band ends. */
+  unmeasured: { x0: number; x1: number } | null;
 };
 
+/** Hollow markers are drawn only when a reading is sparse enough that points read as points. */
+export const HOLLOW_MARKER_LIMIT = 120;
+
+export function runKind(point: SeriesPoint): RunKind {
+  if (point.status === 'forecast') return 'forecast';
+  return point.status ? 'estimate' : 'measured';
+}
+
+const KIND_RANK: Record<RunKind, number> = { measured: 0, estimate: 1, forecast: 2 };
+
 /**
- * Cut a line where a break falls between two consecutive points. The two
- * points either side are still drawn, and still joined — but by a dashed
- * bridge rather than by the same solid stroke as the rest, so the reader can
- * see that the two ends of it were not measured the same way. Smoothing over
- * a definitional break is how a chart lies without any number being wrong.
+ * Cut a line into runs, at definitional breaks and wherever its drawing
+ * changes.
+ *
+ * At a break the two points either side are still drawn, and still joined —
+ * but by a dashed bridge rather than by the same solid stroke as the rest, so
+ * the reader can see that the two ends of it were not measured the same way.
+ * Smoothing over a definitional break is how a chart lies without any number
+ * being wrong.
+ *
+ * Within a stretch, a segment takes the weaker of its two ends' kinds — a
+ * segment touching an estimate is dotted, one touching a forecast is a
+ * forecast — so runs of different kinds share their joining point and the
+ * line stays unbroken.
  */
-export function splitAtBreaks(
+export function splitRuns(
   points: PlottedPoint[],
   breakPeriods: string[]
-): { runs: PlottedPoint[][]; bridges: Array<[PlottedPoint, PlottedPoint]> } {
-  const runs: PlottedPoint[][] = [];
+): { runs: PlottedRun[]; bridges: Array<[PlottedPoint, PlottedPoint]> } {
+  const runs: PlottedRun[] = [];
   const bridges: Array<[PlottedPoint, PlottedPoint]> = [];
-  let run: PlottedPoint[] = [];
+  let run: PlottedRun | null = null;
 
   for (const plotted of points) {
-    if (run.length === 0) {
-      run.push(plotted);
+    if (run === null) {
+      run = { kind: runKind(plotted.point), points: [plotted] };
       continue;
     }
-    const previous = run[run.length - 1];
+    const previous: PlottedPoint = run.points[run.points.length - 1];
     const crossed = breakPeriods.some(
       (period) =>
         comparePeriods(previous.point.period, period) < 0 &&
@@ -229,33 +313,174 @@ export function splitAtBreaks(
     if (crossed) {
       bridges.push([previous, plotted]);
       runs.push(run);
-      run = [plotted];
+      run = { kind: runKind(plotted.point), points: [plotted] };
+      continue;
+    }
+    const a = runKind(previous.point);
+    const b = runKind(plotted.point);
+    const kind = KIND_RANK[a] >= KIND_RANK[b] ? a : b;
+    // A run's first segment decides its kind.
+    if (run.points.length === 1) run.kind = kind;
+    if (run.kind === kind) {
+      run.points.push(plotted);
     } else {
-      run.push(plotted);
+      runs.push(run);
+      run = { kind, points: [previous, plotted] };
     }
   }
-  if (run.length > 0) runs.push(run);
+  if (run !== null) runs.push(run);
   return { runs, bridges };
 }
 
+/**
+ * Where the time axis ends: the series coverage, or the end of a "not
+ * measured since" band. The loader fills the band's `until` from the topic's
+ * `lastUpdated` when the author leaves it out.
+ */
+export function axisEnd(series: Series): string {
+  const until = series.notMeasuredSince?.until;
+  return until !== undefined && comparePeriods(until, series.coverage.to) > 0 ? until : series.coverage.to;
+}
+
+export type UnmeasuredSpan = { from: string; until: string; label: string; note: string; source: number };
+
+/** The "not measured since" band as dates, or undefined when the series has none (or it has no length). */
+export function unmeasuredSpan(series: Series): UnmeasuredSpan | undefined {
+  const band = series.notMeasuredSince;
+  const until = axisEnd(series);
+  if (!band || until === series.coverage.to) return undefined;
+  return { from: series.coverage.to, until, label: band.label, note: band.note, source: band.source };
+}
+
+/* ------------------------------------------------------------ focus window */
+
+export type FocusWindow = { from: string; to: string };
+
+/** The period a series' `focus` draws at readable scale, or null when it has none. */
+export function focusWindow(series: Series): FocusWindow | null {
+  return series.focus ? { from: series.focus.from, to: series.focus.to ?? series.coverage.to } : null;
+}
+
+/** Whether `period` falls inside `[from, to]`, with a year- or month-precision end running to its own end. */
+export function periodWithin(period: string, { from, to }: FocusWindow): boolean {
+  return comparePeriods(period, from) >= 0 && (comparePeriods(period, to) <= 0 || period.startsWith(to));
+}
+
+/**
+ * The points of a line inside the window, plus the nearest point either
+ * side, so the line runs in from the plot's edges (clipped there) rather
+ * than starting at the first in-window value as if nothing came before.
+ */
+export function pointsAround(points: SeriesPoint[], window: FocusWindow): SeriesPoint[] {
+  const first = points.findIndex((p) => comparePeriods(p.period, window.from) >= 0);
+  if (first < 0) return points.slice(-1);
+  let last = first;
+  while (last + 1 < points.length && periodWithin(points[last + 1].period, window)) last += 1;
+  return points.slice(Math.max(0, first - 1), Math.min(points.length, last + 2));
+}
+
+/**
+ * Thin a dense line to what a plot `columns` pixels wide can show: the first
+ * and last points, and the lowest and highest point in each pixel column, in
+ * order. Keeping both extremes of every column is what lets a one-day spike
+ * survive; an average or every-nth sample would sand it off.
+ */
+export function decimate(points: SeriesPoint[], columns: number): SeriesPoint[] {
+  if (points.length <= 2 || columns < 1) return points;
+  const t0 = periodToYear(points[0].period);
+  const span = periodToYear(points[points.length - 1].period) - t0 || 1;
+  const keep = new Set<number>([0, points.length - 1]);
+  let column = -1;
+  let low = 0;
+  let high = 0;
+  points.forEach((point, index) => {
+    const c = Math.min(columns - 1, Math.floor(((periodToYear(point.period) - t0) / span) * columns));
+    if (c !== column) {
+      if (column >= 0) keep.add(low).add(high);
+      column = c;
+      low = index;
+      high = index;
+      return;
+    }
+    if (point.value < points[low].value) low = index;
+    if (point.value > points[high].value) high = index;
+  });
+  keep.add(low).add(high);
+  return [...keep].sort((a, b) => a - b).map((index) => points[index]);
+}
+
+/** Decimate only when a line has more than twice as many points as the plot is wide. */
+function thinned(points: SeriesPoint[], plotWidth: number): SeriesPoint[] {
+  return points.length > 2 * plotWidth ? decimate(points, Math.round(plotWidth)) : points;
+}
+
+const MONTH_ABBREVIATIONS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Time ticks for a focus window: whole years when it spans three years or
+ * more; otherwise the first of every `monthTickStep`th month (every month
+ * wide, Jan/Apr/Jul/Oct narrow), naming the year on the first tick and on
+ * every January.
+ */
+export function windowTicks(
+  window: FocusWindow,
+  geometry: ChartGeometry,
+  x: (period: string) => number
+): TimeTick[] {
+  const from = periodToYear(window.from);
+  const to = periodToYear(window.to);
+  if (to - from >= 3) {
+    return yearTicks(Math.ceil(from), Math.floor(to), geometry.yearTickStep).map((year) => ({ year, x: x(String(year)), label: String(year) }));
+  }
+  const ticks: TimeTick[] = [];
+  const [startYear, startMonth] = normalizePeriod(window.from).split('-').map(Number);
+  for (let index = startYear * 12 + startMonth - 1; ; index += 1) {
+    const year = Math.floor(index / 12);
+    const month = index % 12;
+    const period = `${year}-${String(month + 1).padStart(2, '0')}`;
+    if (periodToYear(period) < from) continue;
+    if (periodToYear(period) > to) break;
+    if (month % geometry.monthTickStep !== 0) continue;
+    const named = ticks.length === 0 || month === 0;
+    ticks.push({ year: periodToYear(period), x: x(period), label: named ? `${MONTH_ABBREVIATIONS[month]} ${year}` : MONTH_ABBREVIATIONS[month] });
+  }
+  return ticks;
+}
+
+/**
+ * Lay out one reading's plot. With a `window`, the x domain is the window and
+ * the y domain is fitted to the values inside it (plus the nearest point
+ * either side); the caller clips the lines at the plot edges. Without one,
+ * the domain is the full published range and a dense line is decimated.
+ */
 export function layoutReading(
   series: Series,
   reading: SeriesReading,
-  variant: ChartVariant
+  variant: ChartVariant,
+  window?: FocusWindow
 ): ReadingLayout {
   const geometry = CHART_GEOMETRY[variant];
   const slots = seriesSlots(series);
 
-  const values = reading.lines.flatMap((line: SeriesLine) => line.points.map((p) => p.value));
+  const shown = reading.lines.map((line: SeriesLine) =>
+    window ? pointsAround(line.points, window) : thinned(line.points, geometry.plotWidth)
+  );
+  const values = shown.flatMap((points) => points.map((p) => p.value));
   const ticks = niceTicks(Math.min(...values), Math.max(...values));
   const valueMin = ticks[0];
   const valueMax = ticks[ticks.length - 1];
 
   // The declared coverage, not the data, sets the time domain: the two are
   // equal by rule 14, and saying so here means the axis is drawn from the
-  // promise the series makes about its source.
-  const fromYear = periodToYear(series.coverage.from);
-  const toYear = periodToYear(series.coverage.to);
+  // promise the series makes about its source. A "not measured since" band
+  // extends it to the band's end, so the gap has room to be seen.
+  const end = window ? window.to : axisEnd(series);
+  // A monthly series under three years long gets month ticks too: year ticks
+  // would label a one-year series "2026" and nothing else.
+  const shortMonthly = !window && series.coverage.from.includes('-') && periodToYear(end) - periodToYear(series.coverage.from) < 3;
+  const start = window ? window.from : series.coverage.from;
+  const fromYear = periodToYear(start);
+  const toYear = periodToYear(end);
 
   const x = (period: string) =>
     geometry.left +
@@ -266,17 +491,24 @@ export function layoutReading(
     ((value - valueMin) / (valueMax - valueMin || 1)) * geometry.plotHeight;
 
   const breakPeriods = series.breaks.map((b) => b.period);
+  const markPoints = shown.reduce((n, points) => n + points.length, 0) <= HOLLOW_MARKER_LIMIT;
 
-  const lines: PlottedLine[] = reading.lines.map((line) => {
-    const plotted = line.points.map((point) => ({ x: x(point.period), y: y(point.value), point }));
-    const { runs, bridges } = splitAtBreaks(plotted, breakPeriods);
+  const lines: PlottedLine[] = reading.lines.map((line, index) => {
+    const plotted = shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point }));
+    const { runs, bridges } = splitRuns(plotted, breakPeriods);
     return {
       name: line.name,
       slot: slots.get(line.name) ?? 1,
       runs,
       bridges,
+      hollow: markPoints ? plotted.filter((p) => runKind(p.point) === 'estimate') : [],
       last: plotted[plotted.length - 1],
     };
+  });
+
+  const forecastXs = lines.flatMap((line) => {
+    const first = line.runs.flatMap((run) => run.points).find((p) => p.point.status === 'forecast');
+    return first ? [first.x] : [];
   });
 
   const zeroIndex = ticks.indexOf(0);
@@ -294,11 +526,73 @@ export function layoutReading(
       label:
         index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
     })),
-    timeTicks: yearTicks(periodYear(series.coverage.from), periodYear(series.coverage.to), geometry.yearTickStep).map(
-      (year) => ({ year, x: x(String(year)), label: String(year) })
+    timeTicks: dropCrowdedTicks(
+      window || shortMonthly
+        ? windowTicks(window ?? { from: series.coverage.from, to: end }, geometry, x)
+        : yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
+            (year) => ({ year, x: x(String(year)), label: String(year) })
+          ),
+      geometry.fontSize
     ),
-    breaks: series.breaks.map((gap) => ({ ...gap, x: x(gap.period) })),
+    breaks: series.breaks
+      .filter((gap) => !window || periodWithin(gap.period, window))
+      .map((gap) => ({ ...gap, x: x(gap.period) })),
     zeroY: valueMin <= 0 && valueMax >= 0 ? y(0) : null,
+    // A forecast that starts before the window starts at the window's edge.
+    forecastX: forecastXs.length > 0 ? Math.max(geometry.left, Math.min(...forecastXs)) : null,
+    // The window lies inside the coverage, so a band past it is only drawn on the full range.
+    unmeasured: window || end === series.coverage.to ? null : { x0: x(series.coverage.to), x1: x(end) },
+  };
+}
+
+export type ContextLayout = {
+  geometry: ContextGeometry;
+  lines: Array<{ name: string; slot: number; points: PlottedPoint[] }>;
+  timeTicks: TimeTick[];
+  /** Breaks, drawn as short ticks on the strip's baseline. */
+  breaks: number[];
+  /** The focus window, outlined on the strip. */
+  window: { x0: number; x1: number };
+};
+
+/**
+ * The context strip above a focus window: every line over the full range,
+ * decimated, with year ticks and the window marked. No value labels — the
+ * strip says where the window sits, the plot below says what it shows.
+ */
+export function layoutContext(
+  series: Series,
+  reading: SeriesReading,
+  variant: ChartVariant,
+  window: FocusWindow
+): ContextLayout {
+  const geometry = CONTEXT_GEOMETRY[variant];
+  const slots = seriesSlots(series);
+  const shown = reading.lines.map((line) => thinned(line.points, geometry.plotWidth));
+  const values = shown.flatMap((points) => points.map((p) => p.value));
+  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  const end = axisEnd(series);
+  const fromYear = periodToYear(series.coverage.from);
+  const toYear = periodToYear(end);
+  const x = (period: string) =>
+    geometry.left + ((periodToYear(period) - fromYear) / (toYear - fromYear || 1)) * geometry.plotWidth;
+  const y = (value: number) =>
+    geometry.top + geometry.plotHeight - ((value - ticks[0]) / (ticks[ticks.length - 1] - ticks[0] || 1)) * geometry.plotHeight;
+  return {
+    geometry,
+    lines: reading.lines.map((line, index) => ({
+      name: line.name,
+      slot: slots.get(line.name) ?? 1,
+      points: shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point })),
+    })),
+    timeTicks: dropCrowdedTicks(
+      yearTicks(periodYear(series.coverage.from), periodYear(end), CHART_GEOMETRY[variant].yearTickStep).map(
+        (year) => ({ year, x: x(String(year)), label: String(year) })
+      ),
+      geometry.fontSize
+    ),
+    breaks: series.breaks.map((gap) => x(gap.period)),
+    window: { x0: x(window.from), x1: x(window.to) },
   };
 }
 
@@ -309,7 +603,44 @@ export function pathFor(run: PlottedPoint[]): string {
     .join(' ');
 }
 
+/* --------------------------------------------------------- per-line range */
+
+/** The range a line's source publishes: its own coverage, else the series'. */
+export function lineSpan(series: Series, line: SeriesLine): { from: string; to: string } {
+  return line.coverage ?? series.coverage;
+}
+
+/** Whether any line in the series declares a range of its own that differs from the series. */
+export function hasOwnSpans(series: Series): boolean {
+  return series.readings.some(reading => reading.lines.some(line => {
+    const span = lineSpan(series, line);
+    return comparePeriods(span.from, series.coverage.from) !== 0 || comparePeriods(span.to, series.coverage.to) !== 0;
+  }));
+}
+
 /* ------------------------------------------------------------------- table */
+
+/** A table cell: the point, a period outside the line's own range, or no value published. */
+export type ReadingCell = SeriesPoint | 'outside' | null;
+
+/**
+ * One reading's table: a row for every period any line has, in order. Lines
+ * that start or end at different dates would lose the earlier years if the
+ * rows came from one line only; outside a line's own range the cell says so,
+ * rather than looking like a value the source left out.
+ */
+export function readingRows(series: Series, reading: SeriesReading): Array<{ period: string; cells: ReadingCell[] }> {
+  const periods = [...new Set(reading.lines.flatMap(line => line.points.map(point => point.period)))].sort(comparePeriods);
+  const byLine = reading.lines.map(line => new Map(line.points.map(point => [point.period, point])));
+  return periods.map(period => ({
+    period,
+    cells: reading.lines.map((line, index) => {
+      const span = lineSpan(series, line);
+      if (comparePeriods(period, span.from) < 0 || comparePeriods(period, span.to) > 0) return 'outside';
+      return byLine[index].get(period) ?? null;
+    }),
+  }));
+}
 
 export type TableColumn = { readingId: string; readingLabel: string; name: string; unit: SeriesUnit };
 export type TableRow = { period: string; cells: Array<string | null> };

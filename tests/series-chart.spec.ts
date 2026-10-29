@@ -37,7 +37,9 @@ test.describe('with JavaScript disabled', () => {
     const descId = await plot.getAttribute('aria-describedby');
     await expect(fact.locator(`#${descId}`)).toHaveText(/definitional breaks/);
 
-    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`);
+    // The Graph/Table switch needs script, so each reading's table sits in a
+    // collapsed disclosure instead.
+    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`).first();
     await table.locator('> summary').click();
     // Every published year, not a sample: 1964–2025 inclusive.
     await expect(table.locator('tbody tr')).toHaveCount(62);
@@ -76,37 +78,23 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
 // The bug this replaced: a supporting fact arriving above the fold with the
 // claim it is evidence for scrolled off the top. The fix is structural now —
 // the claim it supports is stated *above* it, before any of the detail — so
-// the assertion is that it is on screen without any scrolling at all.
+// the assertion is that it is on screen without any scrolling at all. A
+// citation of a supporting fact opens its parent at that section, so a reader
+// reaches the supporting fact on its own only by its address.
 test('a supporting fact opens with the claim it supports already in view', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(TOPIC);
-  // The supporting fact is not a row in the Facts list; it is reached the way
-  // a reader actually reaches it, via the "Builds on" citation chip in the
-  // viewpoint that cites it.
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.locator('.sv-evidence-index > summary').click();
-  await viewpoint
-    .getByRole('link', {
-      name: 'Fiscal Contributions of Care Workers', exact: true,
-    })
-    .click();
+  await page.goto(factUrl('care-worker-route-fiscally-negative'));
 
-  const parent = page.locator(`${dialog} .sv-parentnote`);
-  const claim = page.locator(`${dialog} #sv-modal-title`);
-  const scroller = page.locator(`${dialog} .sv-modal__scroll`);
-
+  const parent = page.locator('.sv-parentnote');
+  const claim = page.locator('h1.sv-factpage__claim');
+  await expect(parent).toBeInViewport();
+  await expect(claim).toBeInViewport();
   const parentBox = await parent.boundingBox();
   const claimBox = await claim.boundingBox();
-  const scrollBox = await scroller.boundingBox();
-  if (!parentBox || !claimBox || !scrollBox) throw new Error('expected all three to be laid out');
-
-  // Both the claim asked for and the claim it is evidence for are inside the
-  // panel's viewport, in that order, with nothing scrolled.
-  expect(parentBox.y).toBeGreaterThanOrEqual(scrollBox.y - 1);
-  expect(parentBox.y + parentBox.height).toBeLessThan(claimBox.y + claimBox.height);
-  expect(claimBox.y + claimBox.height).toBeLessThanOrEqual(scrollBox.y + scrollBox.height);
-  expect(await scroller.evaluate((el) => el.scrollTop)).toBe(0);
+  if (!parentBox || !claimBox) throw new Error('expected both to be laid out');
+  expect(parentBox.y + parentBox.height).toBeLessThanOrEqual(claimBox.y);
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  await expect(parent).toContainText('Immigration and Public Finances');
 });
 
 test('closing the panel takes the chart off the page with it', async ({ page }) => {
@@ -116,4 +104,25 @@ test('closing the panel takes the chart off the page with it', async ({ page }) 
   await page.keyboard.press('Escape');
   await expect(page.locator('.sv-chart')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
+});
+
+// Depends on authored us-voter-id content: the fact
+// `voter-id-rules-in-the-us-and-abroad` carries the NCSL 1950–2026 series
+// (reading `states-with-id`) with five dated events, each with a note.
+const VOTER_ID_FACT = '/topics/us-voter-id/facts/voter-id-rules-in-the-us-and-abroad';
+const ID_LAW_KEY = 'sv-event-strip-voter-id-rules-in-the-us-and-abroad--states-with-id-events';
+
+test('an event marker opens its own key item and leaves the others closed', async ({ page }) => {
+  await page.goto(VOTER_ID_FACT);
+  const strip = page.locator(`#voter-id-rules-in-the-us-and-abroad--states-with-id-events`);
+  for (const n of [1, 2, 3, 4, 5]) await expect(page.locator(`#${ID_LAW_KEY}-${n}`)).not.toHaveAttribute('open');
+
+  await strip.locator(`a.sv-event-strip__marker[href="#${ID_LAW_KEY}-3"]`).click();
+  await expect(page.locator(`#${ID_LAW_KEY}-3`)).toHaveAttribute('open', '');
+  for (const n of [1, 2, 4, 5]) await expect(page.locator(`#${ID_LAW_KEY}-${n}`)).not.toHaveAttribute('open');
+});
+
+test('loading the page at an event item opens it', async ({ page }) => {
+  await page.goto(`${VOTER_ID_FACT}#${ID_LAW_KEY}-3`);
+  await expect(page.locator(`#${ID_LAW_KEY}-3`)).toHaveAttribute('open', '');
 });

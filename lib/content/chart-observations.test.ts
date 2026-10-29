@@ -33,3 +33,11 @@ test('artifact subtleties stay separate from numbered observations', async () =>
   assert.equal(result.observations.people, undefined);
   assert.equal(result.bodyHtml, '');
 });
+
+test('a "not measured since" band gets its own Method Changes entry, citing its own source', async () => {
+  const { methodChanges } = await import('./chart-observations');
+  const result = methodChanges('uranium', 'stock', [], 2, { from: '2025-06-13', until: '2026-10-29', label: 'Not verified since IAEA access ended', note: 'Inspectors have had no access.', source: 4 });
+  assert.match(result, /<summary>Method Changes<\/summary>/);
+  assert.match(result, /<details class="sv-observation sv-method-observation" id="uranium--stock-not-measured"><summary>2025-06-13–2026-10-29: Not verified since IAEA access ended<\/summary>/);
+  assert.match(result, /Inspectors have had no access\. <a href="#source-uranium-4">\[4\]<\/a>/);
+});

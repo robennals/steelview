@@ -5,6 +5,13 @@ Stage 3 of the [workflow](../../WORKFLOW.md#3-find-candidate-data), researched
 draft 1 (C1–C39), then updated the same day for draft 2 (3a rebuilt, C40–C80
 added, 3c and 3d replaced).
 
+**Stage 4 (26 Oct 2026):** every candidate an argument relies on has been
+re-checked at source — see [Verification at source](#verification-at-source-2026-10-26),
+[Viewpoint grounding](#viewpoint-grounding), [Visualization plan](#visualization-plan)
+and [Visualizations needed](#visualizations-needed) near the end. The 3b
+entries below are the stage-3 record and are not rewritten; where they
+conflict with the verification files, the verification files win.
+
 **How figures are marked.**
 
 - **read** — the figure was read on the fetched page named next to it. It is
@@ -16,23 +23,40 @@ added, 3c and 3d replaced).
   ukmto.org, iranhr.net, en-hrana.org (except one report), DCAS. Stage 5 will
   need a browser or a human for these.
 
-## Corrected timeline (from sources read)
+## Corrected timeline (rechecked at source 26 Oct 2026)
 
-| Date | Event | Source |
+Rechecked in the stage-4 verification pass. "Primary" means the dated
+document itself; "lead" means a dated secondary record (ISW/CTP daily
+updates are AEI-affiliated). Quotes are in [Verification at source](#verification-at-source-2026-10-26)
+and the three verification files.
+
+| Date | Event | Source and check |
 | --- | --- | --- |
-| 28 Feb 2026 | US ("Epic Fury") and Israel strike Iran; Khamenei killed | ODNI ATA 2026 (read); Wikipedia "2026 Iran war" |
-| 1–4 Mar | Hormuz transits fall from 57/day to 0 | IMF PortWatch (read) |
-| 2 Mar | War Powers 48-hour report to Congress | [Just Security PDF](https://www.justsecurity.org/wp-content/uploads/2026/03/wpr-report-operation-epic-fury-march-2-2025.pdf) (read) |
-| 7–8 Apr | Two-week ceasefire, mediated by Pakistan (Sharif, Munir) | Wikipedia (read) |
-| 12–13 Apr | Islamabad talks fail; US blockade of Iranian ports from 13 Apr | Wikipedia; Reuters via Baird Maritime (read) |
-| 1 May | Administration letter: hostilities "have terminated" | [Lawfare](https://www.lawfaremedia.org/article/law-and-the-iran-war--after-the-first-60-days) (read, quoting) |
-| late May, 22–28 Jun | Exchanges of strikes during ceasefire | NPR, Iranian Health Ministry (*unverified*); House Doc 119-167 (read) |
-| 17 or 18 Jun | Islamabad memorandum; blockade lifted | Wikipedia says 17th; EIA press release and Critical Threats say 18th (read) |
-| 8–10 Jul | Ceasefire collapses after Iranian attacks on shipping; US strikes 10 Jul | Wikipedia; Critical Threats (read) |
-| 14 Jul | Blockade resumed | Critical Threats (read); CENTCOM (*unverified*, 403) |
-| Aug | Lull after the memorandum's 60-day window expires | Wikipedia (read) |
-| Sep–Oct | Renewed exchanges; Houthi attacks on Saudi Arabia; tanker attacks | Wikipedia (read); UKMTO via Seatrade (*unverified*) |
-| 8 Oct | Trump: no US strikes before the 3 Nov midterms | Wikipedia (read) |
+| 17 and 26 Feb 2026 | Indirect US–Iran talks in Geneva, attended by the IAEA Director General | IAEA GOV/2026/50 para 12 (primary, verified) |
+| 27 Feb | State Dept designates Iran a "state sponsor of wrongful detention" | Iran International (secondary, verified) |
+| 28 Feb | US ("Epic Fury") and Israel strike Iran; Khamenei killed; IAEA stops verification in Iran | GOV/2026/50 para 13 (primary, verified); Khamenei's death from ODNI ATA 2026 (stage 3, read) |
+| 28 Feb – 4 Mar | Hormuz transits fall from 57 (28 Feb) to 0 (4 Mar) | IMF PortWatch API (primary, verified) |
+| 2 Mar | 48-hour War Powers report, Article II, "consistent with" the WPR | Just Security PDF of the letter (primary, verified) |
+| 8 Mar | Assembly of Experts names Mojtaba Khamenei leader | Iran International; IFES ElectionGuide (verified) |
+| 7–8 Apr | Ceasefire; "38 days of major combat operation" (Hegseth, 8 Apr) | Rev transcript of DoD briefing (secondary, verified); Pakistan's mediation from Wikipedia only |
+| 11–13 Apr | Islamabad talks fail; US blockade of Iranian ports from 13 Apr | Wikipedia; Reuters via Baird Maritime (stage 3); CENTCOM release blocked |
+| 1 May | Administration letter: hostilities "have terminated" | Lawfare and Goldsmith quoting it (primary letter not found on govinfo) |
+| 8–9 Jun | Israeli strikes on Iran (8 Jun); Iran downs a US Apache, US strikes from 9 Jun | War Powers letter HD 119-162 (primary, verified) |
+| 14–17 Jun | MoU agreed; signed 17 Jun; blockade lifted 18 Jun | HD 119-167 says signed "June 17, 2026" (primary, verified) — settles 17 vs 18; WHO sitrep 10 also says 17 Jun |
+| 26 and 28 Jun | US strikes on Iran | HD 119-167 (primary, verified) |
+| 7–8 Jul | MoU collapses; US "military action commenced on July 7" | HD 119-169 (primary, verified). **Corrects "US strikes 10 Jul"**: 10 Jul is the letter's date |
+| 14 Jul | Blockade resumed "beginning on July 14 at 4:00 PM ET" | ISW/CTP special report, 13 Jul (lead, verified); CENTCOM tally quoted by Khaleej Times (verified) |
+| 27 Jul | US strikes in Iraq after IRGC-directed militia attacks | HD 119-183 (primary, verified) |
+| Aug | Lull after the MoU's 60-day window | Wikipedia only |
+| 1 Sep | US strikes on Iran, including NIOC tankers | HD 119-193 (primary, verified) |
+| 26 Sep | Trump rejects Iran's proposal to reopen Hormuz within seven days | AP, 8 Oct ("late last month") (verified) |
+| 28 Sep – 5 Oct; 1–14 Oct | At least 12 IRGC attacks on tankers in one week; 23 recorded attacks in the first two weeks of October | Reuters via Wikipedia (unverified); Bloomberg via ISW/CTP 21 Oct (lead) |
+| 8 Oct | Trump: the US "will not be attacking Iran at any time prior to the Midterm Elections" | AP, 8 Oct 2026 (verified) |
+| 16 Oct | CENTCOM: blockade has kept $25 bn of Iranian oil off the market | Wikipedia citing The Hill (unverified; CENTCOM blocked) |
+| 21 Oct | NYT: US and Israel planning "a short and intensive operation" after 3 Nov | ISW/CTP 22 Oct quoting NYT (lead) |
+| 23 Oct | DNI memo: Iran in "advanced stages" of planning attacks on US targets | ISW/CTP 24 Oct quoting the memo (lead); Axios not fetched |
+| 24–25 Oct | Houthis fire at least 12 missiles and two drones at Saudi Arabia | ISW/CTP 25 Oct (lead) |
+
 
 ---
 
@@ -901,6 +925,516 @@ ever") and 10 (no regime-change viewpoint) are fixed by draft 2 and dropped.
     Downes & O'Rourke 2016, Pape 1997, O'Rourke 2018, Horowitz & Reiter 2001,
     *Catastrophic Success*, Mehta 2020, Miller 2014. iaea.org, iranhr.net and
     en-hrana.org now work via curl or archived copies (WebFetch alone fails).
+17. **Still blocked after the stage-4 pass (26 Oct 2026), for a human to
+    fetch:** the primary 1 May 2026 War Powers letter (not on govinfo);
+    UNSCR 2817 (press.un.org client challenge, docs.un.org viewer); CENTCOM
+    releases (403; needed for the 13 Apr and 14 Jul blockade orders and the
+    16 Oct "$25 billion" claim); state.gov's current State Sponsors list
+    (403; is Syria still on it?); senate.gov votes after 10 Oct (archive
+    stops there); WHO EMRO sitreps and Bernama (TLS certificate error);
+    ACLED's Red Sea counts (login); IAEA GOV/2025/38 and the Aug 2024 Iran
+    report (404/405); the 23 Oct DNI memo (DocumentCloud) and the 21 Oct NYT
+    report; Reuters (4 May breakout leak), Foreign Policy (Gabbard), the
+    2023 Fox/MBS interview; GAMAAN's full report PDF (not yet read); CSIS's
+    prewar Patriot chart. Worked only through archive copies: senate.gov,
+    cbo.gov, csis.org, bls.gov, amnesty.org, justice.gov, dni.gov, fdd.org,
+    rudaw.net, and the iranhr.net and en-hrana.org article pages.
+
+---
+
+## Verification at source (2026-10-26)
+
+Every candidate a viewpoint argument or a planned observation relies on was
+re-fetched with `curl` (PDFs to text; archive copies where the live site
+refused) and its figures checked against the raw text. The verbatim quotes,
+with URL, publisher, date and an "as of" date per figure, are in four files:
+
+- [verification-nuclear.md](verification-nuclear.md): C1–C6, C27, C28, C47, C60, C64–C66, C71, C72, C75, C76, C80
+- [verification-iran.md](verification-iran.md): C8, C9, C24, C25, C40, C43, C44, C49–C59, C62, C63
+- [verification-us.md](verification-us.md): C10–C14, C18–C22, C29–C36, C73, C79
+- [verification-war.md](verification-war.md): C15–C17, C37–C39 and the timeline's latest events
+
+**Counts (80 candidates):** 48 verified, 15 corrected, 1 unverifiable, 3
+dropped; 13 not checked because no argument relies on them (stage 5 must
+still verify them if their reports use them).
+
+| Status | Candidates |
+| --- | --- |
+| **Verified** | C3, C4, C10, C12, C13, C15, C16, C17, C18, C19, C20, C21, C24, C25, C27, C28, C29, C30, C31, C32, C33, C34, C35, C36, C38, C39, C40, C43, C44, C47, C49, C50, C52, C54, C55, C56, C57, C59, C60, C62, C63, C64, C66, C72, C73, C76, C79, C80 |
+| **Corrected** | C1, C2, C5, C6, C8, C11, C14, C22, C37, C51, C53, C58, C65, C71, C75 |
+| **Unverifiable** | C9 (ACLED counts behind a login; method verified) |
+| **Dropped** | C7 (superseded by C8 and CRT 2023's official "more than 100 times" by end-2023), C26 (superseded by C50 and C51), C48 (no figures without registration) |
+| **Not checked** | C23, C41, C42, C45, C46, C61, C67, C68, C69, C70, C74, C77, C78 |
+
+Several verified candidates still contain sub-claims that could not be
+confirmed (flagged in the files): C1's Aug 2024 point, C3's "first since
+2005", C16's 3,519, C20's prewar 2,330 Patriots, C25's 25,000–30,000
+hospital estimate, C40's Syria removal, C53's 2009 figures, C66's 39%/66%,
+C76's 2023 quote, C80's Fortna N.
+
+### Corrections that change what the viewpoints can say
+
+1. **The 440.9 kg of 60% uranium is the IAEA's estimate as of 13 June 2025,
+   of which it verified 432.9 kg** (GOV/2026/50 fn 17). The Agency stopped
+   verification in Iran on 28 Feb 2026 and "cannot provide any information
+   on the current size, composition or whereabouts" of the stockpile (para
+   28, as of 1 Sep 2026) (C1).
+2. **"More than 7,000 protesters" is wrong.** HRANA's 7,007 is all deaths in
+   the 50 days from 28 Dec 2025: 6,488 protesters, 236 children, 76 other
+   civilians, 207 security forces; 11,744 more cases under review (as of
+   23 Feb 2026). The government counted 3,117 (C53, C52).
+3. **The 2026 threat assessment is silent on a weapons decision.** "Not
+   building a nuclear weapon" is the 2025 ATA; CRS says the 2026 ATA "does
+   not address Iran's nuclear weapons activities" (C4, C5).
+4. **Syria's programme did not "end for good" in Bleek's coding** (pursuit
+   2002–07, then "returned to exploring"); Iraq's ended after the Gulf War
+   *and* "an intensive verification regime". "Strikes delay rather than end"
+   is Kreps & Fuhrmann (C28), not Bleek, and they add that past-success
+   conditions "are not present in the contemporary Iran case" (C71, C28).
+5. **Pew's 33% (Oct) and 37% (Mar) measure approval of Trump's handling**;
+   its "right decision" measure is 34%, down from 38%. Pew gives no figure
+   for independents; "two to one" comes from Quinnipiac, Mar (60–31) and
+   Gallup, Jun (68–26) (C14).
+6. **10 of the 21 US deaths were non-hostile** (DCAS API, data as of 23 Oct
+   2026; 865 wounded) (C18).
+7. **About 1% of presidential registrants approved holds for 2001–2021, not
+   2024** (6 of "more than 80", about 7%) (C58).
+8. **WINEP's 223 are confirmed attacks**, about 85% of them between Oct 2023
+   and Jan 2024, followed by a six-month pause (C8).
+9. **The Senate voted 14 times; two votes succeeded**: a discharge motion on
+   19 May (50–47) and H.Con.Res.86 on 23 Jun (50–48). H.Con.Res.86 passed
+   both chambers (C11).
+10. **After the 1 May "terminated" letter, the administration filed at least
+    five more War Powers letters reporting new military action** (9 Jun,
+    26/28 Jun, 7 Jul, 27 Jul in Iraq, 1 Sep) (C12). US strikes after the MoU
+    began on 7 Jul, not 10 Jul.
+11. **The Iraq war's appropriations were $815 bn (FY2001–14, OIF/OND)**, not
+    $1.6 tn (all post-9/11 wars); Brookings' $150–300 bn was made after the
+    invasion (C22).
+12. **Brent rose 94% to its April peak**, not ~60%; it is up 62% at the
+    latest value ($115.22, 20 Oct) (C29).
+13. **ISW/CTP says Iran tried to "reconstitute" its missile and drone
+    programmes since 8 April**; the "no evidence of enrichment" line is not on
+    the recovered page (C37).
+14. **Miller's "three of 22" comes with Fuhrmann's caveat** that little can be
+    inferred from those episodes alone; Miller's main finding is that the
+    threat of sanctions deterred programmes from starting (C72).
+15. **The DoD briefing said "nearly 80% of Iran's nuclear industrial base was
+    hit"**, not destroyed (C6).
+
+---
+
+## Viewpoint grounding
+
+For each viewpoint, each argument from outline draft 3 with the verified
+facts it rests on (candidate, confirmed figure, as-of date), then its
+strongest well-supported concession. **Unsupported** marks an argument with
+no verified fact behind it; draft 4 of the outline drops or narrows each one.
+
+### `nuclear`
+
+| Argument (draft 3) | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| Only non-weapon state enriching to 60% | C47: "the only non-nuclear-weapon State in the world that is producing and accumulating uranium enriched to 60%" (GOV/2025/25 para 80, May 2025; restated Jun 2026) | Supported |
+| 440.9 kg last verified June 2025; no access since | C1: 440.9 kg *estimated*, 432.9 kg verified, as of 13 Jun 2025; verification stopped 28 Feb 2026; whereabouts unknown (1 Sep 2026). C2: before the war, inspections at 7 of 13 unaffected facilities, none of the 8 affected (Feb 2026) | Supported, **narrowed** to "estimated; no access to any enrichment site since the June 2025 strikes" |
+| IAEA found an undeclared structured programme (2011, 2015, 2025) and hidden material | C47: 2011 "structured programme" before end-2003; 2015 "coordinated effort"; 2025 "undeclared structured nuclear programme … until the early 2000s", ~10 kg undeclared uranium metal, Turquzabad 2009–18, "sanitised locations" | Supported (2015 wording differs) |
+| Bomb-capable fast before the war | C5: DIA, May 2025, "probably less than one week" to enough HEU for one weapon; ODNI, Nov 2024, enough for "more than a dozen" weapons if further enriched. C2: before the strikes, a non-missile weapon "within months" (ISIS) | **Added** (strongest new support) |
+| Record abroad: Argentine courts, US convictions, SST since 1984 | C44: Cassation Court, 11 Apr 2024, Hezbollah "sponsored by the government of Iran", crimes against humanity; C43: 25-year sentences (Oct 2025) and 15 years (Jan 2026) for IRGC-directed plots; C40: designated 19 Jan 1984 | Supported |
+| 220+ militia attacks in fourteen months | C8: 223 confirmed attacks, 18 Oct 2023 – 3 Dec 2024, ~85% by Jan 2024; C40: "more than 100 times" by end-2023 (State Dept) | Supported, **narrowed** (timing stated) |
+| Houthis attacked shipping hundreds of times | C9: counts behind a login | **Unsupported** — dropped |
+| Sanctions failed once programmes started (3 of 22) | C72: "only three of 22 cases", with the reviewer's caveat | Supported, **narrowed** with the caveat |
+| Iraq's and Syria's programmes ended only after strikes | C71: Iraq after the Gulf War plus inspections; Syria's pursuit ended 2007 but still coded as exploring | **Unsupported as worded** — narrowed |
+
+**Strongest concession:** the IAEA found "no credible indications of an
+ongoing, undeclared structured nuclear programme" (May 2025), Grossi said it
+had no information on a "structured systematic" weapons programme in June
+2025, and the 2025 ATA assessed Iran "is not building a nuclear weapon"
+(C47, C5, C4). **Grounding: well grounded.**
+
+### `regime-change`
+
+| Argument | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| January 2026: more than 7,000 protesters killed | C53: 7,007 deaths incl. 6,488 protesters (HRANA, 23 Feb 2026); C52: UN mission cites "over 7,000 people, including up to 6,500 protesters"; government 3,117 | **Corrected** to "more than 7,000 people, about 6,500 of them protesters" |
+| Executions: 975 (2024), 1,639–2,159 (2025) | C50: IHRNGO 975 (2024), 1,639 (2025), most since 1989; C49: Amnesty 972 (2024), 2,159 (2025), of 2,707 recorded worldwide outside China | Supported, labelled by counter |
+| Every protest movement since 2009 crushed | C53: Amnesty 304 killed (Nov 2019); UN FFM ≥551 (2022–23); 2026 above. 2009 not verified | Supported, **narrowed** to 2019, 2022 and 2026 |
+| Few Iranians prefer the Islamic Republic | C24: 13% (GAMAAN online sample, Jun 2026), down ~7 points; ~60% "felt satisfaction at the weakening of the Islamic Republic during the war" | Supported in GAMAAN's sample |
+| Turnout lowest on record | C56: 2024 first round ~40%, 2021 48.8%; C57: Majlis 2024 41% | Supported |
+| Moral claim | value | Value |
+| Added: arrests on a mass scale | C53: 53,777 arrests (HRANA, Feb 2026); C52: UN mission language of crimes against humanity | **Added** |
+
+**Strongest concession:** imposed regime change "more than doubles" the
+chance of civil war in the following decade, and four and a half times for
+leadership change (C64); and repression widened after the outside attacks:
+20,000+ arrests after June 2025 (C54), political executions peaking in
+April–May 2026 (C51). Also in GAMAAN's sample 42% called the strikes
+"military aggression against Iran" (C24). **Grounding: well grounded on the
+regime's record; the case for outside help rests mainly on values.**
+
+### `war-powers`
+
+| Argument | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| Congress declared war 11 times; not here | C13: "Eleven times … five separate wars" | Supported |
+| House passed three resolutions, Senate one | C10: passed 3 Jun (215–208), 23 Jul (214–208), 15 Sep (220–204); C11: H.Con.Res.86 adopted 23 Jun (50–48), discharge 19 May (50–47); 14 Senate votes | Supported |
+| "Terminated" while the blockade ran | C12: 1 May letter via Lawfare/Goldsmith; five later letters reporting new military action | Supported and **strengthened**; primary 1 May letter not found |
+| Added: most voters wanted Congress asked | C14: Quinnipiac, Mar, 59% "should have" sought approval | **Added** |
+| A war one person can start… | value | Value |
+
+**Strongest concession:** CRS counts "hundreds of instances" of force
+abroad; of 168 War Powers reports in 1975–2017 only one cited the section
+that starts the 60-day clock; every binding attempt to end an operation since
+2011 failed or was vetoed (C13, C73). "Congress could cut off funding" has no
+verified source and is dropped. **Grounding: well grounded on the record; the
+conclusion is legal and constitutional.**
+
+### `america-first`
+
+| Argument | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| Iraq cost far more than promised | C22: Daniels $50–60 bn (2002) vs $815 bn appropriated for OIF/OND, FY2001–14 | Supported (corrected figures) |
+| $38–44 bn and 21 lives | C19: CBO ~$38 bn to 1 Aug; DoD $43.6 bn to 3 Sep; C18: 21 deaths (10 non-hostile), 865 wounded, as of 23 Oct | Supported, **narrowed** |
+| Interceptor stocks run down | C20: CSIS estimates Patriot "under 1,000", THAAD ~250 (27 Jul) | Supported as CSIS estimates |
+| Petrol and inflation rose | C31: $2.937 (23 Feb) → $4.500 (11 May) → $4.284 (19 Oct); C32: gasoline CPI +34.2% y/y (Sep); C19: CBO attributes +0.5 pt PCE inflation to the conflict | Supported, and causation now sourced |
+| Campaign promised no new wars | C79: "I'm not going to start a war. I'm going to stop wars." (6 Nov 2024) | Supported |
+| 33% approve, down from 37%; independents 2:1 against | C14: Pew measures approval of Trump's handling; right-decision 34% (from 38%); independents 60–31 (Quinnipiac, Mar), 68–26 (Gallup, Jun) | **Corrected** |
+
+**Strongest concession:** US deaths are 0.5% of the Iraq war's 4,418
+(OIF) and CBO notes "relatively few U.S. forces" are involved (C21, C19);
+most Republicans still back it (Pew 63% approve of the handling, Gallup 79%
+approve) (C14). **Grounding: well grounded.**
+
+### `lost-path`
+
+| Argument | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| At least 1,700 civilians killed by 7 Apr; 3.2 m displaced | C15: 1,701 civilians (254+ children), HRANA minimum; C16: WHO, 3.2 m displaced (estimate, as of 21 Jul), 3.5% of the population | Supported |
+| JCPOA compliance; 60% built only after US exit | C60: compliance 2016–19; US exit 8 May 2018; caps breached Jul 2019; 60% from Apr 2021 | Supported |
+| Pressure short of war was already working (June 2025 strikes, Hezbollah war weakened proxies and air defences) | C6, C40 do not say this | **Unsupported** — dropped |
+| Added: talks were under way when the strikes came | C80: indirect talks in Geneva on 17 and 26 Feb 2026 (IAEA GOV/2026/50) | **Added** |
+| Reformist-backed president 2024; hijab law shelved | C56: Pezeshkian won the runoff (49.8% turnout); C59: the SNSC shelved the law, with decisions needing the Leader's signature | Supported (narrow) |
+| Strikes delay without removing motive; imposed regime change makes things worse | C28: peacetime strikes delayed "rather modest[ly]"; past-success conditions absent for Iran; C64–C66 | Supported (attribution corrected to C28) |
+| UN Charter | C39: Oman FM, war "launched without United Nations authorisation"; no Charter or legal text fetched | **Unsupported as a fact** — kept as a legal argument, flagged |
+
+**Strongest concession:** executions rose every year from 2021 to 2025
+(IHRNGO 333 → 1,639), turnout hit record lows, in most elections since 2001
+about 1% or fewer of presidential registrants were approved, and earlier
+openings were reversed (C50, C56, C58, C63). **Grounding: thin on
+moderation; well grounded on war costs and the JCPOA record.**
+
+### `deal-now`
+
+| Argument | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| Programme and proxies weakest in twenty years | C2: "for the first time in 20 years, Iran has no identifiable route to produce weapon-grade uranium" (ISIS, 9 Jun 2026). Proxies: no verified source | Supported for the programme; **proxies unsupported** — narrowed |
+| Only a verified deal can account for the uranium | C1: IAEA cannot say where it is; C60: JCPOA verification worked. Against: Hegseth, "buried and we're watching it" (C6) | Supported |
+| Threats plus face-saving rewards; Libya and South Africa | C72: Mehta (qualitative); C71: Libya abandoned in 2003 "allowing international inspections". South Africa built weapons and then dismantled them (1979–91), a different case | Supported (qualitative), **narrowed** to Libya |
+| Blockade costs at the pump and risks at sea | C31, C32; C35: 135 ships turned around, 4 disabled, 10 tankers destroyed (CENTCOM via Khaleej Times, 11 Oct); 23 attacks on vessels in early October (Bloomberg via ISW/CTP) | Supported |
+| Added: Iran signed a no-weapons pledge in June | C5: MoU, "Iran reaffirms that it shall not procure or develop nuclear weapons" | **Added** |
+
+**Strongest concession:** the MoU broke down within three weeks, with
+Iranian attacks on shipping and US strikes from 7 Jul, and ISW/CTP reports
+Iran sought to "reconstitute" missile and drone programmes throughout the
+ceasefire (C12, C37). **Grounding: well grounded but qualitative on what makes
+deals hold.**
+
+### `finish-job`
+
+| Argument | Verified fact(s) | Verdict |
+| --- | --- | --- |
+| 440.9 kg of 60% uranium unaccounted for | C1 (as above) | Supported, narrowed to "estimated" |
+| Iran rebuilt missiles and drones during the ceasefire | C37: "reconstitute" (ISW/CTP, 13 Jul); new defence minister to rebuild "in mountains" (19 Oct) | Supported as ISW/CTP's assessment |
+| Programmes ended where force was used: Iraq 1991, Syria 2007 | C71: Iraq after war plus inspections; Syria still exploring | **Narrowed** to Iraq (with inspections); Syria's *pursuit* ended |
+| Backing down invites challenges | C75: Weisiger & Yarhi-Milo, "past action is closely connected to subsequent dispute initiation" | Supported (one side of a split literature) |
+| Added: Iran is planning attacks on US targets now | 23 Oct DNI memo, "advanced stages" (ISW/CTP quoting it — lead) | **Added, flagged** pending the memo itself |
+
+**Strongest concession:** Kreps & Fuhrmann find strikes delay programmes
+modestly and say past-success conditions are absent for Iran (C28); imposed
+leadership change raises civil-war risk four and a half times (C64); Press
+finds backing down did not cost credibility (C75). **Grounding: thin —
+rests mainly on a prediction about the uranium and on one side of a split
+literature.**
+
+### Cruxes after the strict test
+
+An open question stays a crux only if one answer would leave a viewpoint
+standing and the other knock out an argument it relies on.
+
+- **Kept:** Would Iran have built a bomb without the war (`nuclear`,
+  `lost-path`, `finish-job`); was the regime moderating (`lost-path`,
+  `regime-change`); does an outside attack weaken or rally a repressive
+  regime (`regime-change`, `lost-path`) — the execution and arrest data cut
+  both ways (C51, C54); what follows the regime if it falls; can force or
+  only a deal account for the uranium (`deal-now`, `finish-job`); does
+  backing down cost credibility (`finish-job`, `deal-now`); how much
+  American cost a reduction in nuclear risk is worth (`tradeoff`).
+- **Dropped:** "support for the strikes is not support for an open-ended
+  blockade". It is a polling observation for R7: neither answer changes which
+  viewpoint has the better case.
+
+---
+
+## Visualization plan
+
+Reading order within each report. Each report opens with two or three short
+sentences; statistics sit in visualizations, not prose; dated events go on
+an EventStrip (frontmatter `events`) under the relevant chart. "Wiring"
+means the component cannot yet be used from fact frontmatter (see
+[Visualizations needed](#visualizations-needed)).
+
+### R1. Iran's Nuclear Programme: Stockpile, Inspections and Assessments, 2003–2026
+
+1. **Enriched-uranium stock by level, Feb 2016 – 13 Jun 2025** — SeriesChart,
+   two readings: total enriched stock (kg U) against the 202.8 kg JCPOA cap,
+   and 60% stock from May 2021. Data: IAEA GOV/ quarterly reports
+   (GOV/2016/8 … GOV/2025/24) plus GOV/2026/50's 13 Jun 2025 estimate; full
+   published range Feb 2016 – Jun 2025. Breaks: "estimate, partly verified"
+   (2025). EventStrip: Implementation Day (16 Jan 2016), US exit (8 May
+   2018), cap breached (1 Jul 2019), 60% begins (13 Apr 2021), June 2025
+   strikes, verification stops (28 Feb 2026). *Why:* the deal-era plateau and
+   post-exit climb are one line, read by `nuclear`, `lost-path` and
+   `deal-now` alike.
+2. **What inspectors could see, report by report, 2025–2026** — DataTable
+   (wiring): facilities inspected vs affected, from GOV/2026/50 and the
+   Feb/Jun 2026 reports. *Why:* access is categorical, not a trend.
+3. **What the IAEA and US intelligence said about weapons work** —
+   QuoteComparison (wiring), up to four quotes: IAEA 2025 para 77 and para
+   79, ODNI 2025 "not building", ODNI 2026 (silent; CRS says so). Full set of
+   IAEA 2011/2015/2025 and ATA 2019–2026 wording in a QuoteBrowser (wiring)
+   below. *Why:* the dispute is about wording, so the reader needs the words.
+4. **Time to weapons-grade uranium or a weapon, by source and date** —
+   EstimateRange (wiring), grouped by measure (to HEU vs to a weapon): DIA
+   May 2025 (<1 week), pre-war "3–6 months" (reported), Pentagon Jul 2025
+   (~2 years), Reuters May 2026 (9–12 months), FDD (≥2.5 years), ISIS (>1
+   year). *Why:* estimates with ranges and dates; grouping stops HEU and
+   weapon timelines being read as one scale.
+5. **Board of Governors resolutions and votes, 2025–2026** — ComparisonChart
+   (existing) of yes/no/abstain per resolution, or DataTable. Data: GOV/2026/40
+   (21–3–10), GOV/2026/61 (23–3–8), GOV/2025/38, GOV/2025/71.
+6. **Damage claims side by side** — QuoteComparison (wiring): Caine "nearly
+   80% … hit", Hegseth "buried and we're watching it", ISIS "no identifiable
+   route", IAEA "cannot provide any information".
+7. **What this does not show** — CaveatList (via `dataStillNeeded`): stock and
+   location since June 2025; any 2026 weapons-decision assessment.
+
+### R2. Iran's Actions Abroad: Proxies, Plots, Hostage-Taking and Attacks, 1979–2026
+
+1. **Court findings, convictions and designations, 1984–2026** — Timeline
+   (wiring), categories: designation, court finding, conviction, charge only.
+   Data: SST list (19 Jan 1984), 1992/1994 bombings (court, 11 Apr 2024),
+   Arbabsiar charge (2011), Assadi (4 Feb 2021), Alinejad convictions (Oct
+   2025, Jan 2026), Shakeri charge (Nov 2024), wrongful-detention designation
+   (27 Feb 2026), Rafecas indictments (21 Sep 2026). *Why:* a dated record
+   with outcomes; charge-only cases must look different from convictions.
+2. **Confirmed militia attacks on US forces in Iraq and Syria, by month, Oct
+   2023 – Dec 2024** — SeriesChart, monthly counts from WINEP serials (full
+   range of the tracker; recover all 223). EventStrip: 18 Oct 2023 restart
+   after "an 18-month general pause" (CRT 2023), Feb 2024 cessation, Aug 2024
+   resumption. *Why:* the burst-then-pause shape is the finding.
+3. **State sponsors of terrorism and designation dates** — DataTable
+   (wiring). Syria's removal needs a human fetch of state.gov.
+4. **Weapons inspected by the UN Yemen panel, by matched origin** —
+   ComparisonChart (existing): Iran 53, Iraq 20, Lebanon 11 (S/2024/731, to
+   verify in stage 5).
+5. **Plots attributed to Iran** — CaveatList: counts from one author, no
+   foiled/carried-out split; quote, do not chart.
+
+### R3. Iran's Government and Its People: Elections, Opinion, Repression and Policy Change, 1997–2026
+
+(Title's start year should become 1980 to match the turnout series.)
+
+1. **Presidential turnout, 1980–2024** — SeriesChart; break at 2017 where
+   the source changes from the Iran Data Portal to news reports of Interior
+   Ministry figures. Additional series: Majlis turnout (needs IPU Parline for
+   a full series; until then three points, 2016–2024). EventStrip: Khatami
+   (1997), Majlis purge (Jan 2004), disputed 2009 election, Nov 2019
+   crackdown, Pezeshkian (Jul 2024).
+2. **Presidential candidates registered and approved, 1980–2024** —
+   SeriesChart, two readings: counts (registered, approved) and share
+   approved. Data: Iran Data Portal infographic (1980–2017), Al Jazeera
+   (2021), Iran International (2024, "more than 80").
+3. **Openings and reversals, 1997–2026** — Timeline (wiring): press
+   closures (Apr 2000), 2004 purge, 2009, Nov 2019, 2022, hijab law shelved
+   (Dec 2024), January 2026 crackdown, Mojtaba Khamenei's succession (8 Mar
+   2026).
+4. **Executions per year, 2008–2025, by counter** — SeriesChart, separate
+   lines never merged: IHRNGO 2008–2025 (C50, 18 points) and Amnesty's Iran
+   figure (C49; full annual range to be read from Amnesty's reports).
+   Additional series: HRANA's ten October years, 2016–17 to 2025–26 (C51).
+   EventStrip: June 2025 war, 28 Feb 2026 war.
+5. **Executions by month since October 2025, total and political** —
+   SeriesChart, two readings (all executions; political and security), HRANA
+   monthly Oct 2025 – Oct 2026. EventStrip: January protests, 28 Feb, 8 Apr
+   ceasefire, 17 Jun MoU, 14 Jul blockade. *Why:* the total fell while
+   political executions peaked; one reading alone misleads.
+6. **Recorded executions by country, 2025** — ComparisonChart (existing),
+   all 17 countries Amnesty lists, Iran highlighted, China noted as excluded.
+   Beside it, Freedom House scores for the full country set with Iran and
+   Saudi Arabia highlighted (Table view holds all).
+7. **Deaths in four crackdowns, by counter and method** — DataTable
+   (wiring): year, counter, count, method (named list / confirmed minimum /
+   estimate), under review. Data: Amnesty 2019 (304), UN FFM 2022–23 (≥551),
+   HRANA 2026 (4,519 → 6,126 → 7,007), government 2026 (3,117), named lists
+   (4,555 vs 3,038). *Why:* the method gap is the finding; a bar chart would
+   imply the numbers are comparable.
+8. **Arrests after outside attacks and crackdowns** — DataTable (wiring):
+   20,000+ (Jun–Sep 2025), 53,777 (Dec 2025 – Feb 2026), 50,000+ (UN mission).
+9. **What Iranians tell GAMAAN** — CompositionBar (wiring) for preferred
+   system (needs the full distribution from the report PDF), and a
+   ComparisonChart for views of the war (42% aggression, 40% humanitarian
+   intervention, 59% opposed a bomb, 68% the agreement did not serve
+   Iranians). CaveatList on the online VPN sample.
+
+### R4. Outside Attempts to Topple, Coerce or Disarm Hostile Regimes: The Systematic Record
+
+1. **The studies, with their definitions** — DataTable (wiring): study, N,
+   years, definition of success, headline finding (C28, C64–C72, C75). *Why:*
+   no figure may appear without its definition.
+2. **Nuclear programmes, 1939–2017** — PeriodTimeline (wiring): one row per
+   state in Bleek's Table 1 (31), periods for explore / pursue / acquire;
+   point events for Osirak (1981), Al-Kibar (2007), Libya's renunciation
+   (2003), JCPOA (2015). *Why:* the only way to show 31 histories and their
+   endings at once.
+3. **After imposed regime change** — ComparisonChart (existing): share of
+   installed leaders forcibly removed (all FIRCs 47%, leadership FIRCs about
+   two-thirds); civil war within ten years (one-third). Data: Downes via
+   H-Diplo (book pages to cite).
+4. **Sanctions success by definition** — ComparisonChart: HSEO "about
+   one-third", TIES strict/relaxed/coder (27.2–56%), GSDB "30 to 50 percent",
+   Miller's 3 of 22 once programmes started (C67–C69 to verify in stage 5).
+5. **Does backing down cost credibility?** — QuoteComparison (wiring): Press
+   vs Weisiger & Yarhi-Milo. **Would an Iranian bomb set off a cascade?** —
+   QuoteComparison: MBS 2018 vs Potter & Mukhatzhanova.
+
+### R5. The War's Human and Financial Costs, with Earlier Wars for Scale
+
+1. **Iranian deaths by counter, early April 2026** — CompositionBar (wiring),
+   one row per counter: HRANA (7 Apr: civilian 1,701, military 1,221,
+   unclassified 714), Hengaw (8 Apr: civilian 1,030, other 6,620), government
+   (3,375 to 21 Jul, no split). *Why:* shows totals and splits together, so
+   neither the total nor the civilian share is read alone.
+2. **Displaced** — KeyFigures (wiring): 3.2 m (WHO, as of 21 Jul) with 3.5%
+   of population (World Bank 2025). Airwars incident counts (267; 34 since
+   June) as a second figure.
+3. **US killed and wounded by month, Feb – Oct 2026** — SeriesChart, two
+   readings (wounded; deaths, hostile and non-hostile lines), from the DCAS
+   API. Break: July 2026 split into "Overseas Operations". EventStrip: 8 Apr
+   ceasefire, 7 Jul strikes resume, 8 Oct pause.
+4. **Cost estimates by estimator and date** — EstimateRange (wiring): AEI
+   $25–35 bn (8 Apr), CSIS $34–42 bn (Jun), CBO $38 bn (1 Aug), DoD $43.6 bn
+   (3 Sep). Then a DataTable of CSIS interceptor estimates.
+5. **Earlier wars for scale** — ComparisonChart (existing), two charts: US
+   deaths (Iran 2026 21; OIF 4,418; OEF 2,349) and cost (Iran 2026 $43.6 bn;
+   Iraq $815 bn appropriated). EstimateRange for Iraq prewar estimates (Daniels
+   $50–60 bn, Lindsey $100–200 bn) against the outcome.
+
+### R6. Oil, Shipping and Prices
+
+1. **Brent and WTI, daily, full range** — SeriesChart (Brent, 20 May 1987 –
+   20 Oct 2026) and a separate series for WTI (2 Jan 1986 – 20 Oct 2026),
+   because one series' lines must share coverage. EventStrip: 28 Feb, 8 Apr,
+   13 Apr, 17 Jun, 14 Jul, 1 Sep, 8 Oct. Needs a focus view of 2026 (new).
+2. **Real crude price, monthly, Jan 1974 – Aug 2026** — SeriesChart (EIA real
+   prices, Oct 2026 $); EventStrip: 1979, 1990, 2008, 2022, 2026 shocks.
+   Forecast months after Aug 2026 excluded or marked (new).
+3. **US regular petrol, weekly, Aug 1990 – Oct 2026; CPI gasoline and
+   energy, y/y** — SeriesChart, two series. KeyFigures (wiring) for CBO's
+   attribution: +0.5 pt PCE, +0.3 pt core by 1Q27.
+4. **Hormuz transits, daily, Jan 2019 – Oct 2026, beside every chokepoint**
+   — SmallMultiples (wiring), all PortWatch chokepoints on a shared index
+   (transits ÷ 2019–2025 mean). *Why:* the source's own comparator set.
+5. **Hormuz oil and LNG flows, quarterly** — SeriesChart (EIA, 1Q25 – 2Q26;
+   check whether earlier quarters are published).
+6. **Blockade tallies and Iranian exports** — DataTable (wiring) for CENTCOM's
+   claims (single-party); SeriesChart for Iranian exports once a non-
+   proprietary monthly series is found (EIA STEO table).
+
+### R7. Decisions, Law and Diplomacy: Congress, the President, Ceasefires and Negotiations, 2024–2026
+
+1. **What the president said** — QuoteBrowser (wiring): 2024 campaign
+   lines, the 2 Mar report, the 8 Oct pledge.
+2. **Every war-powers vote, by party** — SliceExplorer (wiring): rows = vote ×
+   party × position for 6 House and 14 Senate votes; breakdown by vote date,
+   split by party. *Why:* shows the near-even House and the small, rising
+   Republican defections (2 → 7) in one view.
+3. **Blockade, ceasefire and strike periods, with the War Powers letters** —
+   PeriodTimeline (wiring): rows for ceasefire (8 Apr – 7 Jul), blockade (13
+   Apr – 18 Jun; 14 Jul – open), MoU (17 Jun – 8 Jul), strike pause (8 Oct –);
+   point events for the 1 May "terminated" letter and the five later letters.
+   *Why:* puts the "terminated" letter against the running blockade.
+4. **Earlier unauthorised operations and votes, 2011–2025** — DataTable
+   (wiring) (C73), with KeyFigures for the CRS base rates (11 declarations /
+   5 wars; 168 reports / 1 citing §4(a)(1)).
+5. **Polls on the war, by party, each pollster separately** — SliceExplorer
+   (wiring): pollster × date × measure × party (Pew Mar/Oct, Gallup Jun,
+   Quinnipiac Mar).
+6. **Ceasefire incidents** — Timeline (wiring), category = actor, each item
+   sourced to a War Powers letter or WHO.
+7. **Allied and UN positions** — QuoteBrowser (wiring): E3 (28 Feb), Oman FM
+   (14 Jul), UNSCR 2817 (once fetched). MoU vs JCPOA terms as a DataTable
+   once the MoU text is available (only one clause is quoted, in CRS).
+
+### Other facts (optional)
+
+- 23 Oct DNI memo and the reported post-midterm strike plans — Timeline
+  entries in R7 once the memo or NYT report is fetched.
+- Israel's role in planning (Q4.4) — still no candidate.
+
+---
+
+## Visualizations needed
+
+### (a) Library components the plan uses that are not wired into fact frontmatter
+
+Only SeriesChart (`series`, `additionalSeries`), ComparisonChart
+(`comparisons`) and EventStrip (series `events`, now in the schema) can be
+used today. The plan also needs:
+
+| Component | Reports | Use |
+| --- | --- | --- |
+| DataTable | R1, R2, R3, R4, R5, R6, R7 | Method-labelled tables (crackdown counts, studies, votes before 2026, inspections). Markdown tables are the fallback but render after every chart |
+| QuoteComparison | R1, R4 | Two to four answers to one question |
+| QuoteBrowser | R1, R7 | Full statement records |
+| Timeline | R2, R3, R7 | Dated records with categories |
+| PeriodTimeline | R4, R7 | Bleek's programme phases; blockade and ceasefire periods |
+| EstimateRange | R1, R5 | Breakout timelines; cost estimates; Iraq prewar estimates |
+| CompositionBar | R3, R5 | Deaths by category per counter; GAMAAN preferences |
+| SliceExplorer | R7 | Votes and polls by party |
+| SmallMultiples | R6 | All chokepoints |
+| KeyFigures | R5, R6, R7 | Displacement, CBO attribution, CRS base rates |
+| CaveatList | all | Probably renders already from `dataStillNeeded`; confirm |
+
+ClaimCheck, GeoMap and TileMap are not needed. BarChart is covered by the
+existing ComparisonChart.
+
+### (b) Needs no component meets
+
+1. **Focus view on a full-range series.** The daily Brent series has 9,112
+   points over 39 years; the 2026 shock is under 3% of the width. A
+   SeriesChart option that draws the full declared range as a small
+   context strip and a readable focus window (default: the last 12 months),
+   with both in the Table view, keeps the full-range rule while letting the
+   reader see the event. Inputs: the series, a default focus window, and
+   events. Existing components either show the whole range (unreadable at
+   this density) or would need a trimmed second series, which the coverage
+   rule forbids.
+2. **Per-line coverage within one series.** `validate.ts` requires every
+   line to start and end at `coverage`, but Brent (from 1987) and WTI (from
+   1986), and IHRNGO (2008–) and Amnesty (1981–) annual execution counts,
+   publish different ranges. Allowing each line its own declared coverage
+   (each still the source's full range) would let comparable measures share
+   one axis instead of being split into separate charts.
+3. **"No longer measured" segment.** The IAEA's stockpile series stops at
+   13 Jun 2025 because verification stopped, not because the source ends.
+   A series option to draw a hatched "not verified since" band from the last
+   point to today, with a short reason, would show the gap as a finding.
+   A `break` marks a method change mid-series and cannot extend past the
+   data; an EventStrip marks a date but not a span.
+4. **Forecast or provisional points.** EIA's real-price file and STEO mix
+   history with estimates and forecasts (from Sep 2026). A per-point
+   `status: estimate | forecast` drawn as a dashed tail and labelled in the
+   Table view would let the series run to the source's end honestly; today
+   the only option is to drop those points.
 
 ---
 
@@ -953,3 +1487,52 @@ ever") and 10 (no regime-change viewpoint) are fixed by draft 2 and dropped.
   ceasefire incidents) cannot have a full series; AUTHORING's "numeric fact
   carries a series or says why" should be flagged at stage 3 so reports are
   planned as tables from the start.
+
+---
+
+## Coverage check (stage 5, 29 Oct 2026)
+
+Every question in the 3a index, mapped to the observation(s) that answer it
+(`report/observation`) or to the `dataStillNeeded` entry that records what is
+missing. Report ids: NP `iran-nuclear-programme`, AA `iran-actions-abroad`,
+GP `iran-government-and-its-people`, OA `outside-attempts-to-change-hostile-regimes`,
+HC `human-and-financial-costs-of-the-war`, OS `oil-shipping-and-prices`,
+DL `decisions-law-and-diplomacy`.
+
+| # | Answered by | Still missing (dataStillNeeded) |
+| --- | --- | --- |
+| Q1.1 | NP deal-era-compliance, breaches-after-us-exit, sixty-percent-growth, stock-unaccounted-for, only-non-weapon-state-at-60, sixty-is-not-ninety | NP: stock size and location since June 2025 |
+| Q1.2 | NP past-weapons-work, no-ongoing-programme-2025, grossi-june-2025, ata-2025-not-building, ata-2026-silent, close-to-weapons-grade-before-strikes, estimates-differ-by-measure, damage-claims-conflict | NP: any 2026 weapons-decision judgment; the 2007 NIE not used |
+| Q1.3 | AA argentine-court-buenos-aires-bombings, us-convictions-iran-directed-plots, state-sponsor-since-1984, leading-state-sponsor, attacks-on-us-forces-before-the-war, houthi-materiel-similar-to-iranian, mi5-uk-plots-and-arrests, plot-counts-one-author | AA: foiled vs carried-out plots; Houthi shipping attacks (ACLED); attacks before Oct 2023 counted the same way; MI5 case lists |
+| Q1.4 | OA saudi-2018-pledge, predicted-cascades-did-not-happen, acquisition-base-rate | — |
+| Q2.1 | GP january-2026-crackdown-toll, crackdowns-2019-2022-2026, executions-most-since-1989, iran-top-recorded-executioner, counters-differ, no-verified-2009-count | GP: 2009 death count; deaths per protest elsewhere |
+| Q2.2 | GP few-prefer-islamic-republic, satisfaction-at-weakening, strikes-seen-as-aggression, turnout-record-lows | GP: every GAMAAN wave and an offline survey |
+| Q2.3 | GP arrests-after-june-2025, arrests-january-2026, political-executions-peaked-april-may, executions-fell-in-first-war-months, war-cuts-both-ways | GP: defections and splits since Feb 2026 (crux: outside attack weaken or rally) |
+| Q2.4 | OA imposed-regime-change-and-civil-war, restoration-does-best, democracy-only-in-favourable-conditions, covert-attempts-failed, regime-change-and-relations | — (crux: what follows the regime) |
+| Q3.1 | DL house-passed-three-resolutions, senate-adopted-one-resolution, republican-defections-small-but-growing, senate-defections, procedural-votes | DL: Senate roll call 207 member record; votes after the recess |
+| Q3.2 | DL terminated-letter-then-new-strikes, separate-actions, only-one-report-started-the-clock | DL: the 1 May letter's text |
+| Q3.3 | DL declarations-and-instances, binding-attempts-failed | DL: uses of force coded by authorisation, duration and scale |
+| Q3.4 | DL congress-as-constraint (qualitative) | DL: same dataset as Q3.3 — given up as a quantitative claim; war-powers argues it as a value |
+| Q4.1 | HC iraq-overran-estimates, cost-small-against-iraq | HC: Gulf War and Kosovo estimates not sought (given up: not needed by any argument) |
+| Q4.2 | HC cost-38-to-47-billion, monthly-cost-going-forward, half-of-deaths-non-hostile, wounded-track-fighting, interceptor-stocks, us-deaths-small-share-of-iraq | HC: DoD estimate after 3 Sep with method; cost as share of the defence budget; first eight months of Iraq; DoD interceptor data |
+| Q4.3 | OS brent-nearly-doubled, below-2008-nominal, below-earlier-real-peaks, pump-prices-up-by-half, gasoline-cpi-up-a-third, cbo-inflation-attribution | OS: estimates beside CBO's |
+| Q4.4 | — | Given up: no candidate on who planned the strikes or Israel's role; the human is told (see 3d problem 8) |
+| Q4.5 | DL campaign-said-stop-wars, campaign-called-iran-very-close | — |
+| Q5.1 | HC civilian-minimum-by-april, most-deaths-military-by-hengaw, counters-disagree, displaced-millions, no-count-after-april, airwars-uses-hrana | HC: independent count after 8 Apr; civilian share in comparable campaigns |
+| Q5.2 | GP reformist-backed-president-2024, hijab-law-shelved, vetting-approves-few, executions-rose-under-pezeshkian, earlier-openings-reversed, hereditary-succession, moderation-and-repression-together, growth-in-deal-years | GP: street enforcement of hijab rules (crux: was the regime moderating) |
+| Q5.3 | NP deal-era-compliance, breaches-after-us-exit, access-narrowed-in-steps | — |
+| Q5.4 | OA strikes-delay-modestly, past-success-conditions-absent-for-iran, osirak-coding-dispute, iraq-ended-after-war-and-inspection, syria-returned-to-exploring, libya-2003-with-inspections, iran-coding | OA: Kazakhstan and Ukraine not sourced (given up: inherited weapons, not a test of strikes) |
+| Q5.5 | DL no-un-authorisation-per-oman, key-allies-did-not-join | DL: UNSCR 2817 text and vote |
+| Q6.1 | NP mou-no-weapons-clause, geneva-talks-feb-2026; DL mou-no-weapons-pledge, talks-under-way-when-strikes-came, talks-continue-in-october, mou-broke-down | DL: the MoU's full text |
+| Q6.2 | OS hormuz-traffic-near-zero, june-reopening-brief, hormuz-flows-collapsed, hormuz-alone-collapsed, iranian-exports-collapsed, tracking-versus-other-reports, tanker-war-disrupted-little, shipping-attacks-october, blockade-enforced, us-also-destroying-vessels | OS: non-proprietary export series; transponder-independent transit counts; an independent attack count |
+| Q6.3 | OA threats-plus-rewards, strong-ceasefire-agreements-hold, sanctions-success-depends-on-definition, sanctions-weak-against-adversaries | Given up as a general claim (Korean armistice, Dayton not fetched); deal-now argues from Libya and the JCPOA record |
+| Q7.1 | DL both-sides-fired, iran-reconstituting-missiles, mou-broke-down | DL: Iranian or independent incident record |
+| Q7.2 | OA credibility-split | — (crux: does backing down cost credibility) |
+| Q7.3 | DL key-allies-did-not-join | DL: UNSCR 2817; full allied statements |
+| X1 | OA (all), incl. no-study-of-containment, fit-to-iran | OA: a containment study; nuclear-armed targets |
+| Crux (dropped) | DL republicans-support-but-falling, majority-disapproves, party-split | — |
+
+**Given up, for the human:** Q4.4 (Israel's role in planning) has no source;
+Q3.4 survives only as Kriner's qualitative finding; Q6.3 is not claimed in
+general; the Gulf War/Kosovo and Kazakhstan/Ukraine context items were not
+needed by any argument.

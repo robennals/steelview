@@ -1,0 +1,93 @@
+/* Fact-report library — the labelled scatter plot. The two size variants
+   switch with the series charts' .sv-chart__svg[data-variant] rules. */
+
+@layer components {
+  .sv-scatter__x-label {
+    margin: 0.35rem 0 0;
+    text-align: right;
+  }
+
+  .sv-scatter__point {
+    cursor: pointer;
+  }
+
+  .sv-scatter__point:focus-visible {
+    outline: none;
+  }
+
+  /* The paper edge keeps a point legible where two overlap. */
+  .sv-scatter__mark {
+    fill: currentColor;
+    stroke: var(--paper);
+    stroke-width: 1.25;
+  }
+
+  /* Hover and focus draw the mark's edge in ink, never a colour change:
+     the colour is the group and must stay readable while pointed at. */
+  .sv-scatter__point[data-active="true"] .sv-scatter__mark,
+  .sv-scatter__point:focus-visible .sv-scatter__mark {
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  /* A highlighted point is outlined, not recoloured. */
+  .sv-scatter__ring {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .sv-scatter__label {
+    fill: var(--ink-2);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  .sv-scatter__label[data-highlight="true"],
+  .sv-scatter__label[data-active="true"] {
+    fill: var(--ink);
+    font-weight: 700;
+  }
+
+  /* A label with no free place sits over something; a paper halo keeps it
+     readable there. */
+  .sv-scatter__label[data-crowded="true"] {
+    paint-order: stroke;
+    stroke: var(--paper);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  .sv-scatter__key {
+    list-style: none;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 1.15rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .sv-scatter__key li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sv-scatter__key-icon {
+    fill: currentColor;
+  }
+
+  /* Text wears text tokens; the icon beside it carries the group colour. */
+  .sv-scatter__key-name {
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+
+  .sv-scatter__note {
+    white-space: normal;
+  }
+}

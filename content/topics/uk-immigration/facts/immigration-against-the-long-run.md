@@ -2995,6 +2995,7 @@ comparisons:
       - Own-country nationals
       - Other / rounding
     groupLabel: nationality
+    itemLabel: Country
     allGroupsLabel: All arrivals
     defaultGroup: 0
 relatedFacts:

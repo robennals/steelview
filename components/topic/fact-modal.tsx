@@ -156,9 +156,13 @@ export function FactModal({ labelledBy, children, href, loading = false, onClose
       dialog.removeEventListener('click', onClick);
       dialog.removeEventListener('keydown', onKeyDown);
       root.classList.remove('sv-modal-open');
+      // Without a trigger, prefer the fact's own row: the first link to it on
+      // the page may be a citation inside a collapsed viewpoint, which cannot
+      // take focus.
+      const linksToFact = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href]'))
+        .filter((link) => link.pathname === openedAt && !link.closest('dialog'));
       const returnTo = trigger?.isConnected ? trigger
-        : Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href]'))
-          .find((link) => link.pathname === openedAt && !link.closest('dialog'));
+        : linksToFact.find((link) => link.classList.contains('sv-factrow')) ?? linksToFact[0];
       returnTo?.focus();
     };
   }, [leave, router, trigger, openedAt]);

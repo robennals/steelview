@@ -150,6 +150,23 @@ test('a section with items renders its heading', () => {
   assert.match(html, /Cruxes/);
 });
 
+test('viewpoints come before the data, and their header is the name alone', () => {
+  const viewpoint = {
+    id: 'one', name: 'One', summary: 'A one-line summary.', order: 1,
+    citesFacts: [], acknowledges: ['a'], setsAside: [], principles: [], body: '',
+  };
+  const topic: Topic = {
+    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', intro: '',
+    facts: [{ id: 'a', claim: 'A', status: 'well-supported', sources: [], body: '' }],
+    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two', order: 2 }],
+    principles: [],
+    cruxes: [],
+  };
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
+  assert.ok(html.indexOf('>Viewpoints</h2>') < html.indexOf('>Data</h2>'), html);
+  assert.doesNotMatch(html, /A one-line summary/);
+});
+
 test('topic dataOrder places an explicitly commissioned collection before the derived tail', () => {
   const facts = [
     { id: 'first', claim: 'First', status: 'well-supported' as const, sources: [], body: '' },

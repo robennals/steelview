@@ -136,6 +136,16 @@ export async function loadTopic(
     cruxes: await readItems(path.join(dir, 'cruxes'), cruxFrontmatterSchema),
   };
 
+  // A "not measured since" band ends, unless the author says otherwise, on
+  // the date the report was last checked — it claims no more than that.
+  for (const fact of topic.facts) {
+    for (const series of [fact.series, ...(fact.additionalSeries ?? [])]) {
+      if (series?.notMeasuredSince && series.notMeasuredSince.until === undefined) {
+        series.notMeasuredSince.until = topic.lastUpdated;
+      }
+    }
+  }
+
   if (options.validateIntegrity) {
     const errors = validateTopic(topic);
     if (errors.length > 0) {
