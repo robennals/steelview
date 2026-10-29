@@ -1,4 +1,5 @@
 import { extentValues, pointValue, type FigureNumber } from '@/components/report/qualified';
+import { appliedFilters, slice } from '@/components/report/slice';
 import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
@@ -641,6 +642,9 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       if (series) errors.push(...pairedBarErrors(figure, series, where));
       break;
     }
+    case 'sliceExplorer':
+      errors.push(...sliceErrors(figure, where));
+      break;
     case 'compositionBar': {
       const keys = figure.categories.map(c => c.key);
       if (new Set(keys).size !== keys.length) errors.push(`${where} category keys must be unique`);
@@ -716,6 +720,65 @@ function pairedBarErrors(figure: FigureOf<'barChart'>, series: Array<{ key: stri
     if (keys.every(key => values[key] === null)) errors.push(`${where} row "${item.label}" has no values`);
     if (item.labels && !dumbbell) errors.push(`${where} row "${item.label}" labels its ends, which only a dumbbell has`);
     for (const key of Object.keys(item.labels ?? {})) if (!keys.includes(key)) errors.push(`${where} row "${item.label}" labels "${key}", which is not a series`);
+  }
+  return errors;
+}
+
+/**
+ * A slice explorer's dimensions, measures, rows and defaults agree. Every
+ * row names a value of every dimension (one of its `values` when they are
+ * listed) and no combination twice — a repeated row would be added in
+ * twice — and measures hold numbers. The defaults name what exists, never
+ * split by a dimension that may not be combined, and draw at least one bar,
+ * so the server-rendered chart is never empty.
+ */
+function sliceErrors(figure: FigureOf<'sliceExplorer'>, where: string): string[] {
+  const errors: string[] = [];
+  const dimensionKeys = figure.dimensions.map(d => d.key);
+  const measureKeys = figure.measures.map(m => m.key);
+  const keys = [...dimensionKeys, ...measureKeys];
+  if (new Set(keys).size !== keys.length) errors.push(`${where} dimension and measure keys must all be distinct`);
+  const seen = new Set<string>();
+  figure.rows.forEach((row, r) => {
+    for (const key of Object.keys(row)) if (!keys.includes(key)) errors.push(`${where} row ${r + 1} has key "${key}", which is not a dimension or measure`);
+    for (const d of figure.dimensions) {
+      const cell = row[d.key];
+      if (cell === undefined) errors.push(`${where} row ${r + 1} has no "${d.key}"`);
+      else if (d.values && !d.values.includes(String(cell))) errors.push(`${where} row ${r + 1} has ${d.key} "${cell}", which is not one of its values`);
+    }
+    for (const m of measureKeys) if (row[m] !== undefined && typeof row[m] !== 'number') errors.push(`${where} row ${r + 1} measure "${m}" must be a number`);
+    const combination = JSON.stringify(dimensionKeys.map(key => String(row[key])));
+    if (seen.has(combination)) errors.push(`${where} row ${r + 1} repeats the combination ${dimensionKeys.map(key => `${key} "${row[key]}"`).join(', ')}, so it would be counted twice`);
+    seen.add(combination);
+  });
+  for (const d of figure.dimensions) {
+    const used = new Set(figure.rows.map(row => String(row[d.key])));
+    for (const value of d.values ?? []) if (!used.has(value)) errors.push(`${where} dimension "${d.key}" lists "${value}", which no row has`);
+    for (const value of d.last ?? []) if (!used.has(value)) errors.push(`${where} dimension "${d.key}" keeps "${value}" last, but no row has it`);
+  }
+  const dimension = (key: string | undefined, what: string) => {
+    if (key === undefined) return undefined;
+    const found = figure.dimensions.find(d => d.key === key);
+    if (!found) errors.push(`${where} ${what} "${key}" is not a dimension`);
+    return found;
+  };
+  const breakdown = dimension(figure.defaultBreakdown, 'defaultBreakdown') ?? figure.dimensions[0];
+  const split = dimension(figure.defaultSplit, 'defaultSplit');
+  if (split && split.key === breakdown.key) errors.push(`${where} defaultSplit "${split.key}" is also the breakdown`);
+  if (split?.combinable === false) errors.push(`${where} defaultSplit "${split.key}" may not be combined, so it cannot split a bar`);
+  if (figure.defaultMeasure !== undefined && !measureKeys.includes(figure.defaultMeasure)) errors.push(`${where} defaultMeasure "${figure.defaultMeasure}" is not a measure`);
+  for (const [key, values] of Object.entries(figure.defaultFilters ?? {})) {
+    const d = dimension(key, 'defaultFilters key');
+    if (!d) continue;
+    const used = new Set(figure.rows.map(row => String(row[key])));
+    for (const value of values) if (!used.has(value)) errors.push(`${where} defaultFilters ${key} "${value}" is not a value any row has`);
+    if (d.combinable === false && values.length > 1) errors.push(`${where} defaultFilters ${key} picks ${values.length} values of a dimension that may not be combined — pick one`);
+  }
+  if (errors.length === 0) {
+    const measure = figure.measures.find(m => m.key === figure.defaultMeasure) ?? figure.measures[0];
+    const filters = appliedFilters(figure.rows, figure.dimensions, breakdown, figure.defaultFilters ?? {}, {});
+    const shown = slice({ rows: figure.rows, breakdown, split, measure: measure.key, aggregation: measure.aggregation, filters });
+    if (shown.groups.length === 0) errors.push(`${where} its default view draws no bars — change defaultFilters`);
   }
   return errors;
 }

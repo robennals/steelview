@@ -3241,6 +3241,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview > .sv-map-legend,
 .sv-chart__preview > .sv-category-legend { margin: 0 0 .35rem; font-size: .7rem; }
 .sv-chart__preview .sv-chart__axis-label { margin: 0; font-size: .7rem; color: var(--ink-3); }
+/* A slice explorer's status line: what the opening cut shows and what it adds together. */
+.sv-chart__preview > .sv-control__status { margin: 0 0 .3rem; font-size: .7rem; color: var(--ink-3); }
 /* Rows that share the space evenly: bars, composition bars, estimates, periods, events. */
 .sv-chart__preview .sv-bars,
 .sv-chart__preview .sv-estimates,

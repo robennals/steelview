@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aggregate, filterRows, slice, statusLine, type SliceDimension } from './slice';
+import { aggregate, appliedFilters, filterRows, slice, statusLine, type SliceDimension } from './slice';
 
 const rows = [
   { reason: 'Study', year: '2024', people: 274 },
@@ -61,4 +61,20 @@ test('status line says what is shown and what was added together', () => {
 test('pinned residuals stay last however the bars are ranked', () => {
   const result = slice({ rows, breakdown: { ...reason, last: ['Study'] }, measure: 'people' });
   assert.deepEqual(result.groups.map(g => g.key), ['Work', 'Asylum', 'Study']);
+});
+
+test('a dimension that may not be combined is held to one value unless it is what the bars are', () => {
+  const votes = [
+    { vote: 'House', party: 'R', yes: 7 },
+    { vote: 'House', party: 'D', yes: 213 },
+    { vote: 'Senate', party: 'R', yes: 4 },
+  ];
+  const dimensions = [{ key: 'vote', label: 'Roll call', combinable: false }, { key: 'party', label: 'Party' }];
+  const byParty = appliedFilters(votes, dimensions, dimensions[1], {}, {});
+  assert.deepEqual(byParty, { vote: ['House'] });
+  assert.deepEqual(slice({ rows: votes, breakdown: dimensions[1], measure: 'yes', filters: byParty }).groups.map(g => [g.key, g.total]), [['D', 213], ['R', 7]]);
+  assert.deepEqual(appliedFilters(votes, dimensions, dimensions[1], {}, { vote: 'Senate' }), { vote: ['Senate'] });
+  // As the breakdown, each roll call is its own bar, so nothing is combined.
+  assert.deepEqual(appliedFilters(votes, dimensions, dimensions[0], {}, {}), {});
+  assert.match(statusLine({ rows: votes, dimensions, breakdown: dimensions[1], filters: byParty, shown: 2, aggregation: 'sum' }), /Roll call: House/);
 });

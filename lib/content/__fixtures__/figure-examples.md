@@ -231,6 +231,12 @@ sources:
     url: https://example.org/fixture/37
     publisher: US Department of Justice
     date: 1965-03
+  - stance: supports
+    quote: "Fixture: on 15 September 2026 the House passed H.Con.Res. 93, 220 to 204: Republicans 7 yes and 203 no, Democrats 213 yes and 0 no. On 24 September the Senate rejected H.Con.Res. 89, 49 to 50: Republicans 4 yes and 49 no, Democrats 43 yes and 1 no, independents 2 yes and 0 no."
+    title: "Fixture: war-powers roll calls by party"
+    url: https://example.org/fixture/38
+    publisher: Office of the Clerk, US House of Representatives
+    date: 2026-09
 series:
   title: Mail ballots rejected nationally, 2016–2024
   description: Share of returned mail ballots rejected in each federal general election.
@@ -704,6 +710,33 @@ figures:
       - { label: Alabama, values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: 1958, latest: 1964 } }
       - { label: Louisiana, values: { earlier: 31.7, latest: 31.8 }, labels: { earlier: 1956, latest: 1965 } }
       - { label: Mississippi, values: { earlier: 4.4, latest: 6.4 }, labels: { earlier: 1954, latest: 1964 } }
+  # A slice explorer (spec 3): tidy rows the reader can break down, split
+  # and filter. Separate roll calls are never added together
+  # (`combinable: false`): the reader sees one vote at a time.
+  - kind: sliceExplorer
+    id: war-powers-votes
+    title: Votes on resolutions to end the Iran war, by party, September 2026
+    description: How each party voted on the last House and Senate war-powers resolutions.
+    sources: [38]
+    dimensions:
+      - { key: vote, label: Roll call, plural: roll calls, combinable: false }
+      - { key: party, label: Party, plural: parties, values: [Democratic, Independent, Republican] }
+      - { key: position, label: Position, plural: positions, values: ['Yes', 'No'] }
+    measures:
+      - { key: members, label: Members voting, format: { unit: count } }
+    defaultBreakdown: party
+    defaultSplit: position
+    rows:
+      - { vote: 'House, 15 Sep 2026', party: Republican, position: 'Yes', members: 7 }
+      - { vote: 'House, 15 Sep 2026', party: Republican, position: 'No', members: 203 }
+      - { vote: 'House, 15 Sep 2026', party: Democratic, position: 'Yes', members: 213 }
+      - { vote: 'House, 15 Sep 2026', party: Democratic, position: 'No', members: 0 }
+      - { vote: 'Senate, 24 Sep 2026', party: Republican, position: 'Yes', members: 4 }
+      - { vote: 'Senate, 24 Sep 2026', party: Republican, position: 'No', members: 49 }
+      - { vote: 'Senate, 24 Sep 2026', party: Democratic, position: 'Yes', members: 43 }
+      - { vote: 'Senate, 24 Sep 2026', party: Democratic, position: 'No', members: 1 }
+      - { vote: 'Senate, 24 Sep 2026', party: Independent, position: 'Yes', members: 2 }
+      - { vote: 'Senate, 24 Sep 2026', party: Independent, position: 'No', members: 0 }
   # Parts that must add up (spec 1.4): percentages sum to 100 within rounding
   # (here 99.9, inside three parts' ±0.15), and print as published.
   - kind: compositionBar

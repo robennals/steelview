@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { SliceExplorer } from '../slice-explorer';
 import { homeOfficeOccSource, industryRows, onsLtimSource, reasonRows } from './fixtures/data';
+import { figureExamplesFact } from './fixtures/figure-examples';
+import { figureContext, sliceExplorerProps } from '@/lib/content/figure-props';
+import type { FigureOf } from '@/lib/content/types';
 
 const reasonDimensions = [
   { key: 'reason', label: 'Reason', plural: 'reasons' },
@@ -66,3 +69,15 @@ export const ManyValues: Story = {
     note: 'Health and social work includes healthcare and social-care employers; it is not a count of care occupations alone.',
   },
 };
+
+const warPowersVotes = figureExamplesFact.figures?.find((f): f is FigureOf<'sliceExplorer'> => f.kind === 'sliceExplorer');
+if (!warPowersVotes) throw new Error('the figure fixture has no sliceExplorer');
+
+/**
+ * A `sliceExplorer` figure as content renders it: votes by roll call ×
+ * party × position. Roll calls are `combinable: false` — adding the House
+ * and Senate votes together would be a true number that counts nothing — so
+ * the reader picks one, and it is never offered to split by. Every row is
+ * listed under "All 10 rows of the data". Fixture source.
+ */
+export const RollCallsNeverAdded: Story = { args: sliceExplorerProps(warPowersVotes, figureContext(figureExamplesFact)) };

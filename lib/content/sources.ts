@@ -80,6 +80,7 @@ export function figureCitations(figure: Figure): number[] {
     case 'geoMap':
     case 'barChart':
     case 'scatterPlot':
+    case 'sliceExplorer':
       return figure.sources;
     case 'compositionBar':
       return [...figure.sources, ...figure.rows.flatMap(r => r.sources)];

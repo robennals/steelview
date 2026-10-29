@@ -70,6 +70,16 @@ export function figureProse(figure: Figure): string[] {
           ...(figure.series ?? []).map(s => s.label),
           ...figure.items.flatMap(item => [item.label, ...Object.values(item.labels ?? {})]),
         ];
+      case 'sliceExplorer': {
+        const dimensionKeys = new Set(figure.dimensions.map(d => d.key));
+        return [
+          ...base(figure),
+          ...figure.dimensions.flatMap(d => [d.label, d.plural]),
+          ...figure.measures.map(m => m.label),
+          // Each distinct value of a dimension is a label the reader sees, once however many rows carry it.
+          ...new Set(figure.rows.flatMap(row => Object.entries(row).flatMap(([key, cell]) => (dimensionKeys.has(key) && typeof cell === 'string' ? [cell] : [])))),
+        ];
+      }
       case 'compositionBar':
         return [...base(figure), ...figure.rows.map(row => row.label)];
       case 'estimateRange':
@@ -140,7 +150,7 @@ function numberValues(where: string, n: WrittenNumber, rest: Omit<FigureValue, '
   return [{ ...rest, asPublished, where, value: n.value }];
 }
 
-/** Every number a figure draws: key figures, bars, map data, scatter coordinates, composition parts, estimate bounds, numeric table cells — both ends of a range. */
+/** Every number a figure draws: key figures, bars, map data, scatter coordinates, slice rows, composition parts, estimate bounds, numeric table cells — both ends of a range. */
 export function figureValues(figure: Figure): FigureValue[] {
   switch (figure.kind) {
     case 'series':
@@ -213,6 +223,14 @@ export function figureValues(figure: Figure): FigureValue[] {
         if (item.value !== undefined) return numberValues(`bar "${item.label}"`, item.value, { ...rest, asPublished: item.asPublished });
         // A paired row: one value per series, `null` where the source publishes none.
         return Object.entries(item.values ?? {}).flatMap(([key, value]) => (value === null ? [] : numberValues(`bar "${item.label}" ${key}`, value, rest)));
+      });
+    case 'sliceExplorer':
+      return figure.rows.flatMap(row => {
+        const name = figure.dimensions.map(d => row[d.key]).join(', ');
+        return figure.measures.flatMap(m => {
+          const value = row[m.key];
+          return typeof value === 'number' ? numberValues(`slice row "${name}" ${m.key}`, value, { format: m.format, citations: figure.sources, valuesFrom: figure.valuesFrom }) : [];
+        });
       });
     case 'compositionBar':
       return figure.rows.flatMap(row => {

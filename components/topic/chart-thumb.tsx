@@ -13,10 +13,11 @@ import {
   pairedBarChartProps,
   periodTimelineProps,
   scatterPlotProps,
+  sliceExplorerProps,
   tileMapProps,
   timelineProps,
 } from '@/lib/content/figure-props';
-import type { BarChartProps, CompositionBarProps, PairedBarChartProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
+import type { BarChartProps, CompositionBarProps, PairedBarChartProps, SliceExplorerProps, EstimateRangeProps, GeoMapProps, MapEncoding, PeriodTimelineProps, ScatterPlotProps, TileMapProps, TimelineProps } from '@/components/report';
 import { barScale, orderBars, qualifiedSpan } from '@/components/report/bar-layout';
 import { compose, compositionColor } from '@/components/report/composition';
 import { estimateScale, whiskerSpan } from '@/components/report/estimate-layout';
@@ -25,6 +26,7 @@ import { mapScale } from '@/components/report/geo/choropleth';
 import { boundsOf, fitBounds, pathFor as geoPathFor } from '@/components/report/geo/project';
 import { periodSpan } from '@/components/report/period-timeline';
 import { seriesColor } from '@/components/report/scale';
+import { defaultChoices, sliceView } from '@/components/report/slice-view';
 import { extentValues, pointValue } from '@/components/report/qualified';
 import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
 
@@ -88,6 +90,8 @@ export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
       return <EventsThumb {...timelineProps(figure, context)} />;
     case 'periodTimeline':
       return <PeriodsThumb {...periodTimelineProps(figure, context)} />;
+    case 'sliceExplorer':
+      return <SliceThumb {...sliceExplorerProps(figure, context)} />;
     default:
       return <RowsThumb />;
   }
@@ -190,6 +194,27 @@ function PairedBarsThumb({ series, items, style = 'paired', domainMax }: PairedB
           <rect key={`${i}-${slot}`} x={span.left} width={Math.max(0.5, span.width)} y={i * row + row * 0.1 + slot * bar} height={bar * 0.85} fill={seriesColor(slot + 1)} />
         ));
       })}
+    </Thumb>
+  );
+}
+
+/**
+ * The explorer's opening cut, as its preview draws it: one bar per group,
+ * split into stacked parts or thin side-by-side bars in the split's colours.
+ */
+function SliceThumb(props: SliceExplorerProps) {
+  const { barRows, layout } = sliceView(props, defaultChoices(props));
+  const row = 100 / Math.max(1, barRows.length);
+  return (
+    <Thumb>
+      {barRows.flatMap((r, i) => r.segments.map((segment, j) => {
+        const grouped = layout === 'grouped';
+        const height = grouped ? (row * 0.8) / r.segments.length : row * 0.7;
+        const y = i * row + (grouped ? row * 0.1 + j * height : row * 0.15);
+        return segment.width > 0 && (
+          <rect key={`${i}-${j}`} className={segment.color ? undefined : 'sv-thumb__column'} x={segment.left} width={segment.width} y={y} height={grouped ? height * 0.85 : height} fill={segment.color} />
+        );
+      }))}
     </Thumb>
   );
 }

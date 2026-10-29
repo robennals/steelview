@@ -62,6 +62,13 @@ test('a paired bar chart thumbnail draws every measure of every row, and a dumbb
   assert.equal(dumbbell.match(/class="sv-thumb__rule"/g)?.length, 3);
 });
 
+test('a slice explorer thumbnail draws its opening cut, every non-empty part of every bar', () => {
+  const html = thumb('war-powers-votes');
+  assertDecorative(html);
+  // The House vote, by party and split by position: Democrats 213 yes, Republicans 7 yes and 203 no.
+  assert.equal(html.match(/<rect /g)?.length, 3);
+});
+
 test('a composition thumbnail draws every part of every row', () => {
   const html = thumb('deaths-by-counter');
   assertDecorative(html);

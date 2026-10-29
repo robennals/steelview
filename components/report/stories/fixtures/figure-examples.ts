@@ -307,6 +307,14 @@ export const figureExamplesFact: Fact = {
       "url": "https://example.org/fixture/37",
       "publisher": "US Department of Justice",
       "date": "1965-03"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: on 15 September 2026 the House passed H.Con.Res. 93, 220 to 204: Republicans 7 yes and 203 no, Democrats 213 yes and 0 no. On 24 September the Senate rejected H.Con.Res. 89, 49 to 50: Republicans 4 yes and 49 no, Democrats 43 yes and 1 no, independents 2 yes and 0 no.",
+      "title": "Fixture: war-powers roll calls by party",
+      "url": "https://example.org/fixture/38",
+      "publisher": "Office of the Clerk, US House of Representatives",
+      "date": "2026-09"
     }
   ],
   "series": {
@@ -1427,6 +1435,115 @@ export const figureExamplesFact: Fact = {
           }
         }
       ]
+    },
+    {
+      "kind": "sliceExplorer",
+      "id": "war-powers-votes",
+      "title": "Votes on resolutions to end the Iran war, by party, September 2026",
+      "description": "How each party voted on the last House and Senate war-powers resolutions.",
+      "sources": [
+        38
+      ],
+      "dimensions": [
+        {
+          "key": "vote",
+          "label": "Roll call",
+          "plural": "roll calls",
+          "combinable": false
+        },
+        {
+          "key": "party",
+          "label": "Party",
+          "values": [
+            "Democratic",
+            "Independent",
+            "Republican"
+          ],
+          "plural": "parties"
+        },
+        {
+          "key": "position",
+          "label": "Position",
+          "values": [
+            "Yes",
+            "No"
+          ],
+          "plural": "positions"
+        }
+      ],
+      "measures": [
+        {
+          "key": "members",
+          "label": "Members voting",
+          "format": {
+            "unit": "count"
+          }
+        }
+      ],
+      "rows": [
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Republican",
+          "position": "Yes",
+          "members": 7
+        },
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Republican",
+          "position": "No",
+          "members": 203
+        },
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Democratic",
+          "position": "Yes",
+          "members": 213
+        },
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Democratic",
+          "position": "No",
+          "members": 0
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Republican",
+          "position": "Yes",
+          "members": 4
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Republican",
+          "position": "No",
+          "members": 49
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Democratic",
+          "position": "Yes",
+          "members": 43
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Democratic",
+          "position": "No",
+          "members": 1
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Independent",
+          "position": "Yes",
+          "members": 2
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Independent",
+          "position": "No",
+          "members": 0
+        }
+      ],
+      "defaultBreakdown": "party",
+      "defaultSplit": "position"
     },
     {
       "kind": "compositionBar",

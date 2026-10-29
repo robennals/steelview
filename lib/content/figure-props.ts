@@ -269,6 +269,20 @@ export function pairedBarChartProps(f: FigureOf<'barChart'>, c: FigureContext): 
   };
 }
 
+export function sliceExplorerProps(f: FigureOf<'sliceExplorer'>, c: FigureContext): R.SliceExplorerProps {
+  return {
+    ...frame(f, c),
+    rows: f.rows,
+    dimensions: f.dimensions,
+    measures: f.measures.map(m => ({ key: m.key, label: m.label, format: toValueFormat(m.format), aggregation: m.aggregation })),
+    defaultBreakdown: f.defaultBreakdown,
+    defaultSplit: f.defaultSplit,
+    defaultMeasure: f.defaultMeasure,
+    defaultFilters: f.defaultFilters,
+    splitLayout: f.splitLayout,
+  };
+}
+
 export function compositionBarProps(f: FigureOf<'compositionBar'>, c: FigureContext): R.CompositionBarProps {
   return {
     ...frame(f, c),

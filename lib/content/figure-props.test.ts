@@ -21,6 +21,7 @@ import {
   quoteBrowserProps,
   quoteComparisonProps,
   scatterPlotProps,
+  sliceExplorerProps,
   tileMapProps,
   timelineProps,
   toValueFormat,
@@ -236,4 +237,13 @@ test('a bar chart with series becomes paired bars, its end labels and nulls kept
   assert.deepEqual(props.items[0], { label: 'Alabama', values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: '1958', latest: '1964' }, highlight: undefined });
   assert.equal(props.id, 'figure-examples--chart-pre-vra-registration');
   assert.throws(() => pairedBarChartProps(figureOf('barChart', 'wa-by-race'), context));
+});
+
+test('a slice explorer passes its rows, dimensions and defaults through, and converts measure formats', () => {
+  const props = sliceExplorerProps(figureOf('sliceExplorer'), context);
+  assert.equal(props.id, 'figure-examples--chart-war-powers-votes');
+  assert.equal(props.rows.length, 10);
+  assert.equal(props.dimensions[0].combinable, false);
+  assert.deepEqual(props.measures, [{ key: 'members', label: 'Members voting', format: { unit: 'count' }, aggregation: undefined }]);
+  assert.deepEqual([props.defaultBreakdown, props.defaultSplit], ['party', 'position']);
 });

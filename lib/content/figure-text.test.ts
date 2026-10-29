@@ -236,3 +236,13 @@ test('a paired bar row is one value per measure, its qualified ones by their own
   ]);
   assert.ok(figureProse(paired).includes('2024'));
 });
+
+test('a slice explorer\'s numbers are its rows\' measures; its prose its labels and each dimension value once', () => {
+  const slices = figureOf('sliceExplorer');
+  const values = figureValues(slices);
+  assert.equal(values.length, 10);
+  assert.deepEqual(values[0], { where: 'slice row "House, 15 Sep 2026, Republican, Yes" members', value: 7, format: { unit: 'count' }, citations: [38], asPublished: undefined, valuesFrom: undefined });
+  const prose = figureProse(slices);
+  assert.equal(prose.filter(s => s === 'House, 15 Sep 2026').length, 1);
+  assert.ok(prose.includes('Members voting') && prose.includes('roll calls'));
+});

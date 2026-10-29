@@ -790,6 +790,46 @@ export const scatterPlotFigureSchema = z.object({
     .min(3),
 });
 
+/* --- sliceExplorer ------------------------------------------------------- */
+
+export const sliceExplorerFigureSchema = z.object({
+  kind: z.literal('sliceExplorer'),
+  ...figureBase,
+  /**
+   * What each row is classified by, singular and sentence case: party,
+   * position, roll call. Mirrors `SliceDimension` in components/report/slice.ts.
+   */
+  dimensions: z
+    .array(
+      z.object({
+        key: slugId,
+        label: z.string().min(1),
+        /** The values in their natural order (dates, bands); when given, every row's value must be one of them. */
+        values: z.array(z.string().min(1)).min(1).optional(),
+        sort: z.enum(['value', 'none']).optional(),
+        /** Residual values kept last however the bars rank: "Other". */
+        last: z.array(z.string().min(1)).optional(),
+        /** Lower-case plural for the status line: "roll calls". */
+        plural: z.string().min(1).optional(),
+        /** `false`: never add its values together or average them — separate votes or polls. The reader sees one at a time. */
+        combinable: z.boolean().optional(),
+      }),
+    )
+    .min(1),
+  /** The numbers each row carries. `aggregation: mean` for rates, which do not add up. */
+  measures: z
+    .array(z.object({ key: slugId, label: z.string().min(1), format: valueFormatSchema.optional(), aggregation: z.enum(['sum', 'mean']).optional() }))
+    .min(1),
+  /** Tidy data: one row per combination of dimension values, a string for each dimension and a number for each measure. */
+  rows: z.array(z.record(z.string(), z.union([z.string(), z.number().finite()]))).min(1),
+  defaultBreakdown: slugId.optional(),
+  defaultSplit: slugId.optional(),
+  defaultMeasure: slugId.optional(),
+  /** Dimension key → the values selected at first; for a dimension that may not be combined, the one shown first. */
+  defaultFilters: z.record(z.string(), z.array(z.string().min(1)).min(1)).optional(),
+  splitLayout: z.enum(['stacked', 'grouped']).optional(),
+});
+
 /* --- quotes --------------------------------------------------------------- */
 
 /** What every quote on the page gives: the words, who said them, when and where, and where to check. */
@@ -897,6 +937,7 @@ export const figureSchema = z.discriminatedUnion('kind', [
   compositionBarFigureSchema,
   estimateRangeFigureSchema,
   scatterPlotFigureSchema,
+  sliceExplorerFigureSchema,
   quotesFigureSchema,
   quoteComparisonFigureSchema,
   pullQuoteFigureSchema,

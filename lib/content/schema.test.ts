@@ -203,7 +203,7 @@ test('every worked example of the visualization spec parses as a fact', () => {
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
     'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
     'barChart', 'compositionBar', 'estimateRange', 'quotes', 'quotes', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'compositionBar', 'dataTable', 'section',
+    'tileMap', 'geoMap', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'sliceExplorer', 'compositionBar', 'dataTable', 'section',
   ]);
 });
 
@@ -490,4 +490,10 @@ test('a dumbbell\'s end labels may be bare YAML years, kept as text', () => {
   const dumbbell = parsed.figures?.find(f => f.kind === 'barChart' && f.id === 'pre-vra-registration');
   assert.ok(dumbbell?.kind === 'barChart');
   assert.deepEqual(dumbbell.items[0].labels, { earlier: '1958', latest: '1964' });
+});
+
+test('a slice explorer needs a dimension, a measure and a row; a row\'s cells are strings or numbers', () => {
+  const index = figureIndex('war-powers-votes');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, measures: [] })), [`figures.${index}.measures`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, rows: [{ vote: 'House', members: [1] }] })), [`figures.${index}.rows.0.members`]);
 });

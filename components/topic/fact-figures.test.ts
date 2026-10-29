@@ -37,3 +37,14 @@ test('a quote not in English is marked with its language and has its translation
   assert.match(list, /<blockquote class="sv-quote__text"[^>]* lang="de"/);
   assert.match(list, /<\/blockquote><p class="sv-quote__translation"><span class="sv-quote__translation-label">Translation:<\/span> With postal voting/);
 });
+
+test('a slice explorer shows one roll call at a time and lists every row of its data for a reader without JavaScript', () => {
+  const html = render('war-powers-votes');
+  assert.match(html, /Roll call: House, 15 Sep 2026/);
+  assert.doesNotMatch(html, /Roll call: all/);
+  assert.match(html, /<summary class="sv-chart__data-summary">All 10 rows of the data<\/summary>/);
+  // The roll call is a single choice, never offered as a split.
+  const splitGroup = /aria-label="Split by">.*?<\/div><\/div>/.exec(html)?.[0] ?? '';
+  assert.match(splitGroup, />Position</);
+  assert.doesNotMatch(splitGroup, />Roll call</);
+});

@@ -740,8 +740,11 @@ viewpoint must cite, inline, the fact behind at least one preview chart — and
 leaves "strongest", magnitude and overview to you.
 
 **Figures in previews.** A slide can draw these figure kinds: `barChart`
-(paired and dumbbell bars too, with their series key), `compositionBar`, `estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
-`timeline`, `periodTimeline` and `keyFigures`. Each is drawn by its own
+(paired and dumbbell bars too, with their series key), `compositionBar`,
+`estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
+`timeline`, `periodTimeline`, `keyFigures` and `sliceExplorer` — its
+opening cut, with the status line that says what is shown and what is added
+together, and no controls. Each is drawn by its own
 component in a compact form — the title, linked to the full figure, and the
 graph: every item, area, event and period, with the key where colours or
 shapes need one, but no description, Graph/Table switch, filters, method
@@ -794,6 +797,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
 | `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
+| `sliceExplorer` | tidy `rows` × `dimensions` × `measures` that a reader breaks down, filters and splits (votes by roll call × party × position); a dimension that must never be added together — separate votes or polls — is `combinable: false`. Every row is also listed under "All N rows of the data" |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
 | `quotes` | two or more quotes answering one `question`: up to four side by side in the order written, more as a list in date order a reader can filter by category and speaker (every quote listed with JavaScript off). A quote may name a `stance` from the figure's `categories` (with `categoryLabel` naming the filter), and a quote not in English gives its `lang` and a `translation`, shown beside it. `quoteComparison`, the kind's earlier name, still parses as `quotes` |
 | `pullQuote` | one quote set apart |
@@ -1011,6 +1015,40 @@ qualified; a range in a dumbbell is a capsule from low to high.
     items:
       - { label: Arizona, values: { y2020: 73, y2024: 147 } }
       - { label: Nevada, values: { y2020: 159, y2024: 51 } }
+```
+
+**A slice explorer never adds what does not add up.** `rows` are tidy: one
+per combination of dimension values, a string (or number) for every
+dimension and a number for each measure. The reader picks what the bars are
+(`defaultBreakdown`), may split each bar by a second dimension
+(`defaultSplit`, stacked or `splitLayout: grouped`) and filters the rest;
+the status line says what has been added together or averaged
+(`aggregation: mean` for rates). Mark a dimension `combinable: false` when
+the sum across its values is a true number that measures nothing — the yes
+votes of six roll calls, the approval shares of two polls: unless the bars
+are its values, the reader sees one of them at a time (`defaultFilters`
+picks which, else the first), and it is never offered as a split. The
+build fails on a repeated combination (it would be counted twice), a value
+outside a dimension's `values`, a listed value no row has, and defaults that
+name nothing or draw no bars.
+
+```yaml
+  - kind: sliceExplorer
+    id: war-powers-votes
+    title: Votes on resolutions to end the Iran war, by party, 2026
+    description: How each party voted on each House and Senate war-powers resolution.
+    sources: [6]
+    dimensions:
+      - { key: vote, label: Roll call, plural: roll calls, combinable: false }
+      - { key: party, label: Party, plural: parties }
+      - { key: position, label: Position, plural: positions, values: ['Yes', 'No'] }
+    measures:
+      - { key: members, label: Members voting, format: { unit: count } }
+    defaultBreakdown: party
+    defaultSplit: position
+    rows:
+      - { vote: 'House, 15 Sep 2026', party: Republican, position: 'Yes', members: 7 }
+      - { vote: 'House, 15 Sep 2026', party: Republican, position: 'No', members: 203 }
 ```
 
 **Old links survive a conversion.** When a figure replaces prose that had
@@ -1791,6 +1829,7 @@ them.
 | Tile-map areas belong to the preset, breaks ascend, and a gap is explained in `note` | `lib/content/validate.ts` (F9) |
 | Bars (a range's high end included) fit `domainMax`; composition rows use known categories, have no negative part and total more than zero; estimates run low ≤ estimate ≤ high inside `domain` | `lib/content/validate.ts` (F10) |
 | A bar chart's rows give `value`, or with `series` a `values` map naming every series (`null` for none) and at least one number; `style` only with `series`; a dumbbell has exactly two series and only it labels ends, by series key | `lib/content/schema.ts`, `lib/content/validate.ts` (F10, `pairedBarErrors`) |
+| A slice explorer's rows name every dimension, no combination twice, values within a dimension's `values` (each used), numbers for measures; its defaults exist, never split by a `combinable: false` dimension or pick two of its values, and draw at least one bar | `lib/content/validate.ts` (`sliceErrors`) |
 | A composition row sums to its `total`, or to 100 with `unit: percent`, within half a unit in each part's last published place | `lib/content/validate.ts` (F10, `compositionSumError`) |
 | Quotes and claim-check claims appear verbatim in the quote of one of their cited sources | `lib/content/validate.ts` (F11) |
 | A `quotes` figure has two or more quotes; a `stance` names one of its `categories`, category ids are unique and each has a quote | `lib/content/schema.ts`, `lib/content/validate.ts` (`kindErrors`) |

@@ -91,6 +91,15 @@ test('a dumbbell preview draws two dots a row and each end\'s own label', () => 
   assert.match(html, /1958/);
 });
 
+test('a slice explorer preview draws its opening cut with the status line that says what it is, and no controls', () => {
+  const html = preview('war-powers-votes');
+  assertCompact(html, 'war-powers-votes', 'Votes on resolutions to end the Iran war, by party, September 2026');
+  assert.match(html, /class="sv-control__status">Showing 2 of 3 parties[^<]*Roll call: House, 15 Sep 2026/);
+  assert.equal(html.match(/class="sv-chart__key sv-bars__key"/g)?.length, 2);
+  assert.equal(html.match(/class="sv-bars__row"/g)?.length, 2);
+  assert.doesNotMatch(html, /sv-slice__controls|sv-slice__all-rows|<select|<fieldset/);
+});
+
 test('a composition preview keeps its key and every part, but not the row sources', () => {
   const html = preview('deaths-by-counter');
   assertCompact(html, 'deaths-by-counter', 'Iranian deaths in the war, by counter and category, early April 2026');

@@ -23,6 +23,7 @@ export const PREVIEW_FIGURE_KINDS: readonly ComponentFigure['kind'][] = [
   'timeline',
   'periodTimeline',
   'keyFigures',
+  'sliceExplorer',
 ];
 
 /** What a `previewCharts` entry's `chart` names on its fact. */

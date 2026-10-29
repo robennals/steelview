@@ -851,6 +851,41 @@ test('F10: a paired bar chart gives every series in every row, and only a dumbbe
   assert.ok(hasError(topic, 'row "Alabama" labels "nope", which is not a series'));
 });
 
+test('slice explorer: rows name every dimension\'s value once, measures are numbers, and the defaults exist', () => {
+  const { topic, fact } = figuresTopic();
+  const slices = figureOf(fact, 'sliceExplorer');
+  slices.rows.push({ vote: 'House, 15 Sep 2026', party: 'Republican', position: 'Yes', members: 7 });
+  slices.rows.push({ vote: 'House, 15 Sep 2026', party: 'Green', position: 'Yes', members: 'many', extra: 1 });
+  slices.rows.push({ party: 'Republican', position: 'No', members: 1 });
+  const errors = validateTopic(topic);
+  const has = (text: string) => assert.ok(errors.some(e => e.includes(text)), text);
+  has('figure war-powers-votes: row 11 repeats the combination vote "House, 15 Sep 2026", party "Republican", position "Yes", so it would be counted twice');
+  has('row 12 has party "Green", which is not one of its values');
+  has('row 12 measure "members" must be a number');
+  has('row 12 has key "extra", which is not a dimension or measure');
+  has('row 13 has no "vote"');
+});
+
+test('slice explorer: a dimension that may not be combined is never a split, and its default is one value', () => {
+  const { topic, fact } = figuresTopic();
+  const slices = figureOf(fact, 'sliceExplorer');
+  slices.defaultSplit = 'vote';
+  assert.ok(hasError(topic, 'figure war-powers-votes: defaultSplit "vote" may not be combined, so it cannot split a bar'));
+  slices.defaultSplit = 'party';
+  assert.ok(hasError(topic, 'defaultSplit "party" is also the breakdown'));
+  slices.defaultSplit = 'position';
+  slices.defaultFilters = { vote: ['House, 15 Sep 2026', 'Senate, 24 Sep 2026'] };
+  assert.ok(hasError(topic, 'defaultFilters vote picks 2 values of a dimension that may not be combined — pick one'));
+  slices.defaultFilters = { party: ['Independent'] };
+  assert.ok(hasError(topic, 'its default view draws no bars'), 'independents have no House row, and House is the first roll call');
+  slices.defaultFilters = { party: ['Independent'], vote: ['Senate, 24 Sep 2026'] };
+  slices.defaultMeasure = 'senators';
+  assert.ok(hasError(topic, 'defaultMeasure "senators" is not a measure'));
+  slices.defaultMeasure = undefined;
+  slices.dimensions[1].values?.push('Green');
+  assert.ok(hasError(topic, 'dimension "party" lists "Green", which no row has'));
+});
+
 test('F6: a date column holds partial dates', () => {
   const { topic, fact } = figuresTopic();
   const table = figureOf(fact, 'dataTable');
@@ -1245,7 +1280,7 @@ function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
 }
 
 test('preview charts: a graph-like figure of every previewable kind may be previewed', () => {
-  const ids = ['wa-by-race', 'deaths-by-counter', 'cost-estimates', 'count-speed', 'rejection-by-state', 'postal-voting', 'court-record', 'war-periods', 'audit-recheck'];
+  const ids = ['wa-by-race', 'hours-to-count', 'war-powers-votes', 'deaths-by-counter', 'cost-estimates', 'count-speed', 'rejection-by-state', 'postal-voting', 'court-record', 'war-periods', 'audit-recheck'];
   assert.deepEqual(validateTopic(previewedFigures(ids.map(chart => ({ fact: 'figure-examples', chart })))), []);
 });
 
