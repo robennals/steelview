@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import type { Fact } from '@/lib/content/types';
 import { factPath } from '@/lib/content/types';
-import { StatusBadge } from './status-badge';
 
 /**
  * The Facts list: headline claims and nothing else.
  *
- * A row is the claim and its status — full stop. Supporting facts, bodies,
+ * A row is the claim — full stop. Supporting facts, bodies,
  * charts and sources all belong to the fact's own reading, which is the
  * modal or the standalone page, not this list. Naming a supporting fact's
  * claim here used to seem like a shortcut for the reader, but it put
@@ -24,9 +23,9 @@ export function FactList({ slug, facts }: { slug: string; facts: Fact[] }) {
   return (
     <ol className="sv-factlist">
       {facts.map((fact) => (
-        <li key={fact.id} className="sv-item sv-fact" data-status={fact.status}>
+        <li key={fact.id} className="sv-item sv-fact">
           <Link className="sv-item__summary sv-factrow" href={factPath(slug, fact.id)} scroll={false}>
-            <span className="sv-item__claim">{fact.title ?? fact.claim}</span> <StatusBadge status={fact.status} />
+            <span className="sv-item__claim">{fact.title ?? fact.claim}</span>
           </Link>
         </li>
       ))}

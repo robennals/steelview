@@ -29,8 +29,8 @@ export type ClaimCheckProps = {
  * A claim, as stated, set against what the data shows.
  *
  * The claim is quoted rather than paraphrased so the assessment is of what
- * was actually said; the status uses the site's one status alphabet (label,
- * glyph, weight and left rule — never colour alone); and the finding is in
+ * was actually said; the status is shown by label, glyph, weight and left rule
+ * — never colour alone; and the finding is in
  * plain sentences with its sources, so the verdict can be checked rather than
  * taken on trust.
  */

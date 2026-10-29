@@ -174,4 +174,9 @@ test('a featured supporting fact\'s charts render where its figure entry is, onc
   for (const id of ['figured-child--chart-figured-child-bars', 'plain-child--chart-plain-child-bars', 'plain-child--observations-plain-child-bars', 'figured-child--observations-figured-child-bars']) {
     assert.equal(html.split(`id="${id}"`).length - 1, 1, id);
   }
+  // Neither the fact's header nor its supporting-fact rows carry a status
+  // label (a claimCheck figure in the body still shows its own verdict).
+  assert.doesNotMatch(html, /<header class="sv-factpage__head">(?:(?!<\/header>).)*sv-status/);
+  assert.equal(html.match(/<summary class="sv-item__summary">(?:(?!<\/summary>).)*<\/summary>/g)?.length, 2);
+  assert.doesNotMatch(html, /<summary class="sv-item__summary">(?:(?!<\/summary>).)*sv-status/);
 });

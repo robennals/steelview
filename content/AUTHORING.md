@@ -142,6 +142,10 @@ report alone does not establish that its coverage is complete.
 The existing status assesses the collection’s lead finding or explicitly
 assessed claim. It is not a blanket truth rating for every dataset or observation.
 
+Readers do not see it on a fact: the fact list and fact page show the claim
+and the data, not a status label. It still decides the order of facts nobody
+has ranked, and a `claimCheck` figure still shows its own verdict.
+
 Five statuses: `well-supported`, `contested`, `not-supported`,
 `complicated`, `unknown`.
 
