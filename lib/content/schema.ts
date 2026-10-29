@@ -768,6 +768,13 @@ export const viewpointFrontmatterSchema = z.object({
   acknowledges: z.array(z.string()).optional(),
   setsAside: z.array(z.string()).optional(),
   principles: z.array(z.string()).optional(),
+  /**
+   * Every claim this viewpoint marks `[claim](#needed)`, quoted exactly as
+   * the link text reads. Readers see those claims as plain prose, so this is
+   * where the research queue is read from; `pnpm check:integrity` keeps it
+   * and the marks in the body in step.
+   */
+  researchNeeded: z.array(z.string().min(1)).optional(),
 });
 
 // Shared definitions must not carry topic-specific viewpoint relationships.

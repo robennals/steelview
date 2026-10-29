@@ -1,4 +1,4 @@
-import { citedFactTargets } from './markdown';
+import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
 import { comparePeriods } from './period';
 import { factSources, figureCitations } from './sources';
@@ -158,6 +158,7 @@ export function validateTopic(topic: Topic): string[] {
   }
 
   errors.push(...citationErrors(topic, factById));
+  errors.push(...researchNeededErrors(topic));
 
   return errors;
 }
@@ -652,5 +653,27 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
 
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
+  return errors;
+}
+
+/**
+ * A viewpoint's `researchNeeded` list and the `#needed` marks in its prose
+ * must name the same claims. The marks are invisible to readers, so a mark
+ * missing from the list would drop out of the research queue unseen, and a
+ * listed claim with no mark would be queued against text that no longer
+ * exists.
+ */
+function researchNeededErrors(topic: Topic): string[] {
+  const errors: string[] = [];
+  for (const v of topic.viewpoints) {
+    const marked = new Set(neededClaims(v.body + '\n' + v.summary));
+    const listed = new Set(v.researchNeeded ?? []);
+    for (const claim of marked) {
+      if (!listed.has(claim)) errors.push(`viewpoint ${v.id}: "${claim}" is marked #needed but missing from researchNeeded`);
+    }
+    for (const claim of listed) {
+      if (!marked.has(claim)) errors.push(`viewpoint ${v.id}: researchNeeded lists "${claim}", which no #needed link in the body marks`);
+    }
+  }
   return errors;
 }

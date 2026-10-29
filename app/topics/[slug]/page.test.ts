@@ -234,7 +234,8 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
   assert.doesNotMatch(html, /href="\/topics\/nested\/facts\/child"/);
   assert.doesNotMatch(html, /Claim child/);
   assert.doesNotMatch(html, /Supporting fact/);
-  // The headline row itself still reads: claim and status, nothing else.
+  // The headline row itself still reads: its claim, nothing else — no
+  // status label.
   assert.match(html, /Claim parent/);
-  assert.equal(html.match(/Well supported/g)?.length, 1);
+  assert.doesNotMatch(html, /Well supported/);
 });

@@ -26,22 +26,6 @@ test('a fact page renders at phone width without horizontal overflow', async ({ 
   expect(overflows).toBe(false);
 });
 
-// Status is announced in text wherever a fact appears: on a headline row in
-// the list, and on a supporting fact's own page — the list itself carries
-// only headline claims now, so a supporting fact's status is checked where
-// it actually renders.
-test('every fact status is announced in text, not colour alone', async ({ page }) => {
-  await page.goto(factUrl('immigration-shifted-from-eu-to-non-eu'));
-  await expect(
-    page.locator('.sv-factpage__head').getByText('Well supported', { exact: true })
-  ).toBeVisible();
-
-  await page.goto(factUrl('public-opinion-on-immigration'));
-  await expect(
-    page.locator('.sv-factpage__head').getByText('Complicated', { exact: true })
-  ).toBeVisible();
-});
-
 // Depends on authored us-voter-id content: the fact
 // `federal-and-state-power-over-voting-rules` has a four-column markdown
 // table of federal laws under its "Federal voting laws and bills" heading.

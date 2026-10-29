@@ -53,8 +53,10 @@ For each viewpoint, the outline gives:
   redrafting. It normally becomes the viewpoint's filename in stage 6.
 - **Title**: a proposition someone would say aloud
   ([Titles](AUTHORING.md#titles)).
-- **Its arguments**, three to six, each as its holder would make it, in a
-  sentence or two.
+- **Its arguments**, four to six, each as its holder would make it, in a
+  sentence or two. Each opens with a one-line claim that becomes a section
+  heading in stage 6, so the claims read alone should add up to the title
+  ([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).
 - **The empirical claims under each argument**: what would have to be true
   about the world for the argument to work. These become the questions the
   data must answer. Write them as questions with a measure in them — "Has
@@ -216,7 +218,13 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
 - **Add** the strongest arguments the data makes available that the outline
   missed — for every viewpoint, including the ones the data mostly hurts.
 - **Update the concessions** to the well-supported findings that cut against
-  each viewpoint, now that they are known.
+  each viewpoint, now that they are known. For each, note why it does not
+  stop the argument, and the evidence for that reason; stage 6 turns the pair
+  into a "While …" sentence
+  ([Concessions](AUTHORING.md#concessions-and-an-independent-voice)).
+- **Re-check that the arguments still add up.** Each argument's one-line claim
+  becomes a section heading in stage 6, so read the claims alone: if they no
+  longer establish the title, fix the argument now, or the title.
 - **Re-check the balance.** If one viewpoint has lost most of its empirical
   support, say so plainly; it may rest on values the data cannot touch, which
   is a legitimate position, but its outline should then argue from those
@@ -345,11 +353,20 @@ now costs one file; found later it costs every viewpoint that cites it.
 ## 6. Write the viewpoints
 
 **The agent drafts each viewpoint** from its outline and the observations
-that now exist, with every empirical assertion a pill to an observation. The
+that now exist, with every empirical assertion a pill to an observation. Each
+viewpoint is a short lead, then one `###` section per outline argument: the
+heading is the argument's one-line claim, and beneath it a short prose
+paragraph or two gives the evidence, with no bullet lists. Write in short,
+plain sentences a middle-school reader can follow. Pill text states
+the point the argument needs and leaves exact figures, dates and sources to
+the report it opens. The
 human and agent then edit together, one viewpoint at a time, until the
 holder of that view would find it better argued than their own version
 ([The bar](AUTHORING.md#the-bar)).
 
+- **Review the headings first.** Read each viewpoint's headings alone before
+  its text: if they do not add up to the title, fix the argument before the
+  prose.
 - **The agent proposes; the human decides** on every change of argument.
   Pure wording fixes against the [prose style](AUTHORING.md#prose-style)
   rules the agent can just make.
@@ -367,7 +384,10 @@ holder of that view would find it better argued than their own version
   what a viewpoint builds on, concedes or sets aside shows in its inline
   observation links.
 
-**Gate: the human is happy with every viewpoint**, read side by side.
+**Gate: the human is happy with every viewpoint**, read side by side —
+first its headings alone, then the text. Check readability as for reports:
+look at each viewpoint rendered, and read it aloud for sentences that need a
+second reading.
 
 ## 7. Publish
 

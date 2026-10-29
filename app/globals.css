@@ -43,6 +43,11 @@
   --accent: #b3350a;
   --accent-wash: #fdf2ec;
 
+  /* Principle citations are underlined in a second hue so a reader can tell,
+     at the point of use, a value the argument rests on from a fact it cites.
+     6.8:1 on paper, 5.3:1 on the dark paper. */
+  --principle: #1f5c9e;
+
   /* Chart series, in fixed slot order. Charts can carry several meaningful
      groups, so the shared palette provides eight durable hues rather than
      silently falling back to the page ink after the third line. */
@@ -80,6 +85,8 @@
 
     --accent: #ff8a4c;
     --accent-wash: #241812;
+
+    --principle: #3987e5;
 
     /* The shared series palette, re-stepped for the dark paper. */
     --sv-series-1: #3987e5;
@@ -450,46 +457,20 @@
     text-wrap: pretty;
   }
 
-  /* ------------------------------------------------------------- statuses */
-
-  /* Status is carried by three channels at once: the text label, a geometric
-     glyph, and the rule down the left edge of the row. Colour is the fourth
-     and least of them — a single hue at varying strength, never red/green,
-     so "not supported" reads as unsupported rather than as condemned. */
-
-  /* Supporting facts carry the same status alphabet as headline facts: the
-     reader learns one set of edges, wherever a fact appears. */
+  /* Headline facts, supporting facts and a fact's own page share one left
+     rule, so a reader learns one edge wherever a fact appears. */
   :is(.sv-fact, .sv-subfact, .sv-factpage) {
     padding-left: 0.9rem;
-    border-left: 3px solid transparent;
+    border-left: 3px solid var(--ink);
   }
 
-  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="well-supported"] {
-    border-left-color: var(--ink);
-  }
+  /* ------------------------------------------------------------- statuses */
 
-  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="contested"] {
-    border-left-style: double;
-    border-left-color: var(--ink-2);
-  }
-
-  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="complicated"] {
-    border-left-style: dashed;
-    border-left-color: var(--ink-3);
-  }
-
-  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="not-supported"] {
-    border-left-width: 2px;
-    border-left-style: dotted;
-    border-left-color: var(--ink-3);
-    padding-left: 0.965rem;
-  }
-
-  :is(.sv-fact, .sv-subfact, .sv-factpage)[data-status="unknown"] {
-    border-left-width: 1px;
-    border-left-color: var(--rule-strong);
-    padding-left: 1.025rem;
-  }
+  /* A claim check's verdict is carried by three channels at once: the text
+     label, a geometric glyph, and the rule down its left edge. Colour is the
+     fourth and least of them — a single hue at varying strength, never
+     red/green, so "not supported" reads as unsupported rather than as
+     condemned. */
 
   .sv-status {
     display: inline-flex;
@@ -1456,6 +1437,11 @@
     }
   }
 
+  /* Space between the filled title row and the argument's opening lead. */
+  .sv-viewpoint > .sv-item__body {
+    padding-top: 1.5rem;
+  }
+
   /* A viewpoint body is the argument itself, so it reads at full ink. */
   .sv-viewpoint > .sv-item__body > .prose-body {
     color: var(--ink);
@@ -1843,88 +1829,49 @@
   /* ------------------------------------------------------ fact citations */
 
   /* An inline citation: prose saying, at the point of use, that this clause
-     is standing on a fact the page will show you. It is the page's main
-     honesty signal, so it is deliberately louder than a footnote — the text
-     keeps full ink strength for readability and the accent rule under it
-     carries the signal, closed by the same filled disc the fact statuses use
-     for "the evidence is solid". */
+     is standing on a fact the page will show you. The text keeps full ink
+     strength for readability and a quiet dotted accent rule under it
+     carries the signal. A principle citation gets the same rule in the
+     principle hue, so the two kinds of support stay distinguishable.
+
+     The dots are a repeating background rather than a dotted
+     text-decoration, because browsers pack decoration dots so tightly they
+     read as a smudged solid line, and give no control over the spacing. */
+  .prose-body a.sv-cite,
   .prose-body a.sv-principle-cite {
+    --sv-cite-hue: var(--accent);
+    --sv-cite-strength: 65%;
     color: var(--ink);
     text-decoration: none;
-    background: var(--accent-wash);
-    border: 1px solid var(--accent);
-    border-radius: 0.55em;
-    padding: 0.08em 0.3em;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+    background-image: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--sv-cite-hue) var(--sv-cite-strength), transparent) 0.8px,
+      transparent 1.2px
+    );
+    background-size: 5px 2.4px;
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    padding-bottom: 0.12em;
   }
 
-  .prose-body a.sv-principle-cite:hover,
-  .prose-body a.sv-principle-cite:focus-visible {
-    box-shadow: 0 0 0 0.18em var(--accent-wash);
+  .prose-body a.sv-principle-cite {
+    --sv-cite-hue: var(--principle);
   }
 
-  /* An unresolved premise should remain visible in the argument without
-     borrowing the solid citation treatment reserved for evidence we have. */
-  .prose-body a.sv-needed-cite {
-    color: var(--ink-2);
-    text-decoration-line: underline;
-    text-decoration-style: dashed;
-    text-decoration-color: var(--rule-strong);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-    border-radius: 0.3em;
-    padding: 0.08em 0.2em;
-  }
-
-  .prose-body a.sv-needed-cite::after {
-    content: " research needed";
-    display: inline-block;
-    margin-left: 0.28em;
-    color: var(--ink-3);
-    font-family: var(--font-sans);
-    font-size: 0.68em;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .prose-body a.sv-needed-cite:hover,
-  .prose-body a.sv-needed-cite:focus-visible {
-    background: var(--paper-sunk);
-    box-shadow: 0 0 0 0.18em var(--paper-sunk);
-  }
-
-  .prose-body a.sv-cite {
-    color: var(--ink);
-    text-decoration: none;
-    background: var(--accent-wash);
-    padding: 0.08em 0.3em;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-    text-decoration-skip-ink: none;
-    text-underline-offset: 0.18em;
-    border-radius: 0.55em;
-    transition: background-color 120ms ease, box-shadow 120ms ease;
-  }
-
-  .prose-body a.sv-cite::after {
-    content: "";
-    display: inline-block;
-    width: 0.34em;
-    height: 0.34em;
-    margin-left: 0.18em;
-    border-radius: 999px;
-    background: var(--accent);
-    vertical-align: 0.42em;
+  /* On dark paper a part-transparent dot all but disappears. */
+  @media (prefers-color-scheme: dark) {
+    .prose-body a.sv-cite,
+    .prose-body a.sv-principle-cite {
+      --sv-cite-strength: 100%;
+    }
   }
 
   .prose-body a.sv-cite:hover,
-  .prose-body a.sv-cite:focus-visible {
-    background-color: var(--accent-wash);
-    box-shadow: 0 0 0 0.18em var(--accent-wash);
+  .prose-body a.sv-cite:focus-visible,
+  .prose-body a.sv-principle-cite:hover,
+  .prose-body a.sv-principle-cite:focus-visible {
+    --sv-cite-strength: 100%;
+    background-size: 4px 2.4px;
   }
 
   /* --------------------------------------------------- a fact's own page */
@@ -2006,10 +1953,6 @@
     letter-spacing: -0.02em;
     text-wrap: balance;
     margin: 0;
-  }
-
-  .sv-factpage__head .sv-status {
-    margin-top: 0.75rem;
   }
 
   .sv-factpage__body {

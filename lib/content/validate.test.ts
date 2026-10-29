@@ -284,6 +284,29 @@ test('rule 12: a citation of a real fact is accepted', () => {
   assert.deepEqual(validateTopic(t), []);
 });
 
+test('a viewpoint lists every claim it marks #needed', () => {
+  const t = soundTopic();
+  t.viewpoints[0].body = 'It holds that [trust takes time](#needed).';
+  t.viewpoints[0].researchNeeded = ['trust takes time'];
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('a #needed mark missing from researchNeeded is reported', () => {
+  const t = soundTopic();
+  t.viewpoints[0].body = 'It holds that [trust takes time](#needed).';
+  assert.deepEqual(validateTopic(t), [
+    `viewpoint ${t.viewpoints[0].id}: "trust takes time" is marked #needed but missing from researchNeeded`,
+  ]);
+});
+
+test('a researchNeeded claim with no #needed mark is reported', () => {
+  const t = soundTopic();
+  t.viewpoints[0].researchNeeded = ['trust takes time'];
+  assert.deepEqual(validateTopic(t), [
+    `viewpoint ${t.viewpoints[0].id}: researchNeeded lists "trust takes time", which no #needed link in the body marks`,
+  ]);
+});
+
 test('rule 13: a viewpoint may cite a fact it lists', () => {
   const t = soundTopic();
   t.viewpoints[0].body = 'It rests on [alpha](#fact-alpha) and concedes [gamma](#fact-gamma).';
