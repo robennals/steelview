@@ -56,7 +56,10 @@ type FormatOptions = {
   decimals?: number;
   /** Always show exactly `decimals` places, so a table column lines up ("16.0" beside "26.9"). */
   fixed?: boolean;
-  /** Write large values as 1.4m / 820k / £2.3bn. */
+  /**
+   * Write large values as 1.4m / 820k / £2.3bn. `decimals`, when given, is
+   * kept at any magnitude ($43.6bn); otherwise one place under ten, none above.
+   */
   compact?: boolean;
   /** Prefix positive values with "+" — for changes, never for levels. */
   signed?: boolean;

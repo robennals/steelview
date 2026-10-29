@@ -29,7 +29,10 @@ export function formatValue(value: number, format: ValueFormat = {}): string {
   let body: string;
   const step = format.compact ? COMPACT_STEPS.find(s => magnitude >= s.at) : undefined;
   if (step) {
-    body = `${(magnitude / step.at).toLocaleString('en-GB', { maximumFractionDigits: magnitude / step.at < 10 ? 1 : 0 })}${step.suffix}`;
+    const scaled = magnitude / step.at;
+    // Given decimals hold at any magnitude ($43.6bn); otherwise prose's habit: 1.4m but 820k.
+    const places = format.decimals ?? (scaled < 10 ? 1 : 0);
+    body = `${scaled.toLocaleString('en-GB', { maximumFractionDigits: places, minimumFractionDigits: format.fixed ? places : 0 })}${step.suffix}`;
   } else {
     body = magnitude.toLocaleString('en-GB', { maximumFractionDigits: decimals, minimumFractionDigits: format.fixed ? decimals : 0 });
   }
