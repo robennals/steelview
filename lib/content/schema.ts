@@ -93,6 +93,8 @@ export const seriesReadingSchema = z.object({
   /** Anything the reader must know to read this reading honestly, e.g. that it is derived. */
   note: z.string().optional(),
   source: sourceSchema.optional(),
+  /** The named source table the values are read from, e.g. "EAVS 2024 Overview Table 1". */
+  valuesFrom: z.string().min(1).optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 
@@ -176,6 +178,8 @@ export const comparisonChartSchema = z.object({
   /** A fixed upper bound prevents a percentage comparison from visually filling its scale at (say) 22%. */
   domainMax: z.number().positive().optional(),
   sources: z.array(z.number().int().positive()).min(1),
+  /** The named source table the values are read from, e.g. "EAVS 2024 Overview Table 1". */
+  valuesFrom: z.string().min(1).optional(),
   note: z.string().optional(),
   /** Labels for an optional grouped comparison. Kept in content so the shared UI never assumes a subject such as nationality. */
   groupLabel: z.string().min(1).optional(),

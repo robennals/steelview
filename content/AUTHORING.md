@@ -424,6 +424,17 @@ may be anywhere on the topic. Money in `£`, `$` or `€` and percentages writte
 does not establish that the citation supports the meaning, scope or causal
 interpretation.
 
+**Every chart value must be traceable too.** `pnpm check:figures` also
+audits the numbers charts draw: each `series` point must be in its reading's
+`source` quote (else the series `source`), each `comparisons` value — and
+each group value of a grouped comparison — in the quotes of the sources the
+comparison cites, or be a verified `derivedFigures` entry on the same fact.
+Values read from a table no quote can hold go through `valuesFrom` on the
+reading or comparison, naming the table ("EAVS 2024 Overview Table 1"); the
+check then counts them as resting on that table. The chart-value audit is
+advisory for now: it lists untraced values and exits 0, and
+`pnpm check:figures --strict-values` fails on them.
+
 **Derived figures: quote the inputs and document the calculation.**
 `derivedFigures` supports `ratio-percent`, `complement-percent` and `series-mean`.
 The audit checks the arithmetic and inputs. Readers should be able to reproduce
@@ -1059,6 +1070,8 @@ check behind them today — do not rely on the build to catch either:
   nothing else will surface it. Planned; not shipped.
 - **A numeric fact without a series is an advisory, not an error.**
   `check:figures` reports it and exits 0.
+- **An untraced chart value is an advisory, not an error, unless
+  `--strict-values` is given.** `check:figures` lists it and exits 0.
 
 ---
 

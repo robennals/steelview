@@ -284,8 +284,11 @@ quoted sources, full-range series, the source's comparator set, observations
 beneath each chart, method changes, sources at the end.
 
 **Every chart value is audited against its source** before the gate.
-`pnpm check:figures` checks numbers in prose only; it does not look at
-`series` points or `comparisons` items. An agent that did not build the
+`pnpm check:figures` lists every `series` point and `comparisons` value
+that is not in a quote the chart cites, not a verified derivation, and not
+on a table the reading or comparison names in `valuesFrom`; the list is
+advisory until `--strict-values` becomes the default, and a named table is
+only as good as someone having read it. An agent that did not build the
 report re-fetches each chart's source data and confirms every value, or the
 inputs and arithmetic of a derived one, and makes sure the chart's quote or
 note names the table the values come from. In the first trial topic this
