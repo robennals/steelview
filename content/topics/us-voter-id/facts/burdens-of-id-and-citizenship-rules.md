@@ -10,6 +10,11 @@ claim: >-
 claimSources: [1, 2, 14, 16, 20, 24, 27, 28]
 status: well-supported
 derivedFigures:
+  - method: ratio-percent
+    figure: 0.002%
+    numerator: 39
+    denominator: 1762330
+    decimals: 3
   - method: complement-percent
     figure: 3.5%
     percent: 96.5
@@ -239,21 +244,14 @@ sources:
   # 13
   - stance: complicates
     quote: >-
-      However, while there was significant evidence that would-be voters had
-      their applications suspended and canceled by the DPOC requirement, the
-      court acknowledged that “[t]here was little admissible evidence presented
-      at trial about the rate of DPOC possession by suspended and canceled
-      applicants.” … Moreover, even those few instances of noncitizens
-      attempting to register to vote may be explained by “administrative
-      anomalies.” … The Secretary also identified an incident, summarized in a
-      letter in the record, where employees of a hog farm “were transported to
-      [a county] office by their employer to register to vote” even though a
-      county clerk stated that “some of these employees felt they were
-      pressured to register even though they may not be legal.” … In its
-      preliminary injunction analysis, the district court had concluded that
-      the evidence submitted about this incident was “insufficient to show that
-      noncitizens actually voted.” Id., Vol. 4, at 867 (Mem. & Order, filed May
-      17, 2016).
+      The Secretary also identified an incident, summarized in a letter in the
+      record, where employees of a hog farm “were transported to [a county]
+      office by their employer to register to vote” even though a county clerk
+      stated that “some of these employees felt they were pressured to
+      register even though they may not be legal.” … In its preliminary
+      injunction analysis, the district court had concluded that the evidence
+      submitted about this incident was “insufficient to show that noncitizens
+      actually voted.” Id., Vol. 4, at 867 (Mem. & Order, filed May 17, 2016).
     title: Fish v. Schwab, No. 18-3133 (opinion)
     url: https://web.archive.org/web/2020/https://www.ca10.uscourts.gov/opinions/18/18-3133.pdf
     publisher: United States Court of Appeals for the Tenth Circuit
@@ -261,44 +259,47 @@ sources:
   # 14
   - stance: supports
     quote: >-
-      The district court found that, before the preliminary injunction in Fish
-      was issued, there were 14,770 individuals who had applied to vote but
-      whose applications were suspended for failure to provide DPOC. Of these,
-      5,655 were motor-voter applicants. Another 16,319 individuals had their
-      applications canceled for failure to provide DPOC. Of these, 11,147 were
-      motor-voter applicants. That “amount[ed] to 31,089 total applicants who
-      were denied registration for failure to provide DPOC.” … Other numbers
-      and expert testimony demonstrated that “[c]anceled or suspended
-      applicants represented 12.4% of new voter registrations between January
-      1, 2013[,] and December 11, 2015.”
-    title: Fish v. Schwab, No. 18-3133 (opinion)
-    url: https://web.archive.org/web/2020/https://www.ca10.uscourts.gov/opinions/18/18-3133.pdf
-    publisher: United States Court of Appeals for the Tenth Circuit
-    date: '2020-04-29'
+      As of March 28, 2016, before the preliminary injunction was issued
+      requiring Defendant to register to vote applicants suspended or canceled
+      for failure to provide DPOC, there were 14,770 applicants on the suspense
+      list. Of these, 5,655 were motor voter applicants. As of March 28, 2016,
+      16,319 individuals had their applications canceled under K.A.R. §
+      7-23-15 due to lack of DPOC. Of these, 11,147 were motor voter
+      applicants. These figures amount to 31,089 total applicants who were
+      denied registration for failure to provide DPOC, 16,802 of whom applied
+      through the DOV. … Canceled or suspended applicants represented 12.4% of
+      new voter registrations between January 1, 2013 and December 11, 2015.
+    title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
+    url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
+    publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
+    date: '2018-06-18'
   # 15
   - stance: supports
     quote: >-
-      The district court found that, “at most, 67 noncitizens registered or
-      attempted to register in Kansas over the last 19 years.” Id. at 11519. Of
-      these, “there [were] only 39 confirmed noncitizens who successfully
-      registered to vote between 1999 and 2013 when the DPOC law became
-      effective.” Id. at 11508. Those 39 individuals represented 0.002% of all
-      registered voters in Kansas as of January 1, 2013—the date the DPOC
-      requirement went into effect. Id. And specifically as to those
-      applications that were suspended, the court found that the estimated
-      number of suspended applications that belonged to noncitizens was
-      “statistically indistinguishable from zero,” while “more than 99% of the
-      individuals” whose voter-registration applications were suspended were
-      citizens who would have been able to vote but for the DPOC requirement.
-      … In Bednasek, No. 18-3134, we conclude the DPOC requirement
-      unconstitutionally burdens the right to vote and thus AFFIRM the
-      district court’s … injunction. Likewise, in Fish, No. 18-3133, we AFFIRM
-      the district court’s injunction because section 5 of the NVRA preempts
-      the DPOC requirement.
-    title: Fish v. Schwab, No. 18-3133 (opinion)
-    url: https://web.archive.org/web/2020/https://www.ca10.uscourts.gov/opinions/18/18-3133.pdf
-    publisher: United States Court of Appeals for the Tenth Circuit
-    date: '2020-04-29'
+      the evidence shows that 67 noncitizen individuals registered to vote
+      under the attestation regime, or attempted to register after the DPOC
+      law was passed. Of these, 39 successfully registered to vote despite the
+      attestation requirement, and 28 noncitizens attempted to register to
+      vote after the DPOC law was passed but were thwarted by operation of
+      that law. … although Dr. Richman did not provide a margin of error, Dr.
+      Ansolabehere did, and determined that Dr. Richman’s estimate that 0.7% of the people on the
+      suspense list are noncitizens is statistically indistinguishable from
+      zero. … Moreover, taken at face value, the corollary to Dr. Richman’s
+      estimate that 0.7% of people on the Suspense List are noncitizens, is
+      that more than 99% of the individuals on the suspense list are United
+      States citizens. … there are only 39 confirmed noncitizens who
+      successfully registered to vote between 1999 and 2013 when the DPOC law
+      became effective. This is but .002% of all registered voters in Kansas
+      as of January 1, 2013 (1,762,330). … these numbers support the opinions
+      of Drs. Minnite, McDonald, and Hersh that while there is evidence of a
+      small number of noncitizen registrations in Kansas, it is largely
+      explained by administrative error, confusion, or mistake. … The Court
+      has already determined that at most, 67 noncitizens registered or
+      attempted to register in Kansas over the last 19 years.
+    title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
+    url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
+    publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
+    date: '2018-06-18'
   # 16
   - stance: supports
     quote: >-
@@ -604,29 +605,76 @@ sources:
   # 36
   - stance: complicates
     quote: >-
-      0.08% of people in Great Britain who tried to vote at a polling station
-      were unable to do so because they did not present an accepted form of
-      ID. The data, collected by polling station staff, suggests that around
-      16,000 people were unable to vote in July due to the requirement,
-      equating to about one in every 1,200 in-person voters. This represents
-      an improvement since voter ID was introduced at the May 2023 local
-      elections, when the percentage of voters who tried but were unable to
-      vote was 0.25%. … However, public opinion research carried out for the
-      Commission found that around 4% of people who did not vote at the
-      general election said their decision was related to the voter ID
-      requirement, suggesting that the requirement is deterring some people
-      from voting. … 0.25% of people who went to vote at a polling station
-      were initially turned away, but two thirds of these people returned
-      later in the day and were able to vote. The remaining 0.08% did not
-      return and did not vote. … People from lower social grades who did not
-      vote were more likely to say it was because they did not have any
-      accepted ID than those in a higher social grade. … 58% of people said
-      they were aware they could apply for a Voter Authority Certificate if
-      they did not have an accepted form of ID.
-    title: Electoral Commission calls for improvements to voter ID accessibility
-    url: https://www.wired-gov.net/wg/news.nsf/articles/Electoral+Commission+calls+for+improvements+to+voter+ID+accessibility+10092024161000
-    publisher: Electoral Commission (reprinted by WiredGov)
-    date: '2024-09-10'
+      Only 58% of people were aware of the Voter Authority Certificate and
+      this was similar across England, Scotland, and Wales. … 0.08% of people
+      who tried to vote at a polling station in July 2024 were not able to
+      because of the ID requirement … At least 0.25% of people who tried to
+      vote at a polling station were initially not issued with a ballot paper
+      because they did not have an accepted form of ID. Around two-thirds of
+      these people returned later in the day with an accepted form of ID and
+      were able to vote. By the close of poll, 0.08% of people who tried to
+      vote in person were not issued with a ballot paper due to the ID
+      requirement. This means around 16,000 people who tried to vote at a
+      polling station were not issued with a ballot paper because they could
+      not show an accepted form of ID. … Table 1: Polling station voters who
+      were initially turned away and percentage of those who did not return
+      May 2023 (England) May 2024* (England and Wales) July 2024 (Great
+      Britain) Initially turned away 0.7% (37,000) 0.6% 0.25% (50,000) Turned
+      away and did not return 0.25% (14,000) 0.2% 0.08% (16,000) … We found
+      that 4% of the people who said they did not vote gave an unprompted
+      reason that was related to the ID rules. … The clearest evidence relates
+      to the lower, C2DE social grade. When prompted, 10% of people who did
+      not vote said that the ID requirement was the reason, with 6% saying
+      that this was because they did not have the required ID. This was
+      higher for C2DE non-voters compared to ABC1 non-voters (8% compared to
+      3%).
+    title: Voter ID at the 2024 UK general election (page last updated 19 August 2025)
+    url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/voter-id-2024-uk-general-election
+    publisher: Electoral Commission
+    date: '2024-07-29'
+  # 37
+  - stance: complicates
+    quote: >-
+      There was little admissible evidence presented at trial about the rate
+      of DPOC possession by suspended and canceled applicants. … There is no
+      evidence about how many canceled and suspended applicants in fact lack
+      DPOC, although the Court can reasonably infer from the suspense and
+      cancelation numbers that either (1) these applicants lack immediate
+      access to such documents because they were repeatedly notified of the
+      need to produce DPOC in order to register, yet they did not complete the
+      registration process; or (2) these applicants were not well enough
+      informed about the DPOC requirement to locate their DPOC and provide it
+      to the county election office in order to become registered; or (3)
+      these applicants were otherwise unable or unwilling to go through the
+      steps to produce DPOC. Dr. Jesse Richman estimates that only 2.2% of the
+      applicants on the suspense list lack access to DPOC, based on a survey
+      he conducted of individuals on the suspense list. Yet Dr. Richman’s
+      results are not statistically distinguishable from zero, as the margin
+      of error is 2.7%. Furthermore, Dr. Richman concludes that 97.8% of
+      citizens on the suspense list have what he describes as “immediate
+      access” to DPOC, but his estimate includes individuals who do not
+      personally possess DPOC, but have someone who “keeps” such a document
+      for them. Obtaining a document from another person constitutes an
+      additional step in the voter registration process, which increases the
+      costs of voting. … The remaining category of evidence offered by
+      Defendant to demonstrate the degree of noncitizen registration in Kansas
+      is statistical estimates generated by his expert, Dr. Jesse Richman.
+    title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
+    url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
+    publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
+    date: '2018-06-18'
+  # 38
+  - stance: supports
+    quote: >-
+      In Bednasek, No. 18-3134, we conclude the DPOC requirement
+      unconstitutionally burdens the right to vote and thus AFFIRM the
+      district court’s … injunction. Likewise, in Fish, No. 18-3133, we AFFIRM
+      the district court’s injunction because section 5 of the NVRA preempts
+      the DPOC requirement.
+    title: Fish v. Schwab, No. 18-3133 (opinion)
+    url: https://web.archive.org/web/2020/https://www.ca10.uscourts.gov/opinions/18/18-3133.pdf
+    publisher: United States Court of Appeals for the Tenth Circuit
+    date: '2020-04-29'
 series:
   title: 'Mail ballots rejected, Texas and Georgia against the US, general elections 2016–2024'
   description: >-
@@ -971,10 +1019,11 @@ comparisons:
     valueLabel: People
     sources: [14, 15]
     note: >-
-      Figures are the federal district court's findings after a 2018 trial, as
-      recited by the Tenth Circuit in 2020. "Blocked" is applicants suspended
-      or cancelled, not citizens shown to be unable to obtain documents; the
-      court had little evidence on how many held them. The non-citizen counts
+      Figures are the federal district court's findings after a 2018 trial.
+      "Blocked" is applicants suspended or cancelled, not citizens shown to be
+      unable to obtain documents; the court found no evidence on how many
+      lacked them. The 67 are the 39 who registered before the law and 28
+      stopped by it. The non-citizen counts
       cover registrations from 1999; the blocked count covers about three
       years.
     items:
@@ -1111,26 +1160,36 @@ comparisons:
       - label: 'GAO Tennessee: newly registered vs 20+ years'
         value: -4.6
   - id: great-britain
-    title: 'Great Britain: people unable to vote at a polling station for lack of accepted ID'
+    title: 'Great Britain: people turned away at a polling station for lack of accepted ID'
     description: >-
       Share of people who tried to vote in person, from polling-station staff
-      records, in the first two rounds of elections with the requirement.
+      records, in the first three rounds of elections with the requirement:
+      those first turned away, and those who did not come back and vote.
     unit: percent
     valueLabel: Share of people attempting to vote in person (%)
     domainMax: 1
     sources: [36]
     note: >-
-      A free Voter Authority Certificate is available to people without
-      accepted ID; 58% knew of it in 2024. A separate YouGov survey for the Electoral
-      Commission found about 4% of people who did not vote in July 2024 said
-      the ID requirement was part of the reason; that is a share of non-voters,
-      a different denominator, and is not plotted.
+      From the Electoral Commission's Table 1. May 2023 covers English local
+      elections, May 2024 English and Welsh local elections (data from 278
+      authorities, with no absolute numbers), and July 2024 the general
+      election across Great Britain. The Commission says the records
+      undercount. A free Voter Authority Certificate is available to people
+      without accepted ID; 58% knew of it in 2024. About 4% of non-voters in
+      July 2024 gave an unprompted reason related to ID; that is a share of
+      non-voters, a different denominator, and is not plotted.
     items:
-      - label: May 2023 local elections, unable to vote
+      - label: May 2023 local, first turned away
+        value: 0.7
+      - label: May 2023 local, did not return and vote
         value: 0.25
-      - label: July 2024 general election, initially turned away
+      - label: May 2024 local, first turned away
+        value: 0.6
+      - label: May 2024 local, did not return and vote
+        value: 0.2
+      - label: July 2024 general, first turned away
         value: 0.25
-      - label: July 2024 general election, did not return and vote
+      - label: July 2024 general, did not return and vote
         value: 0.08
         highlight: true
 relatedFacts:
@@ -1141,8 +1200,8 @@ relatedFacts:
 dataStillNeeded:
   - measure: How many of Kansas's 31,089 suspended or cancelled applicants were citizens who could not obtain proof of citizenship, as against those who never followed up
     why: >-
-      The court found more than 99% of suspended applicants were citizens but
-      had "little admissible evidence" on whether they held documents. That
+      The court found "no evidence about how many" lacked documents, and the
+      state's survey estimate of 2.2% was not distinguishable from zero. That
       split decides whether the law mainly excluded people who could not
       comply or people who did not finish a step they could have completed.
   - measure: A national estimate of how proof-of-citizenship requirements at registration change registration and turnout, by group
@@ -1185,7 +1244,7 @@ The March 2022 primary's spike (chart below) was not repeated in November. [16](
 
 ### Georgia's rate fell after SB 202 and has sat near the national rate {#burdens-of-id-and-citizenship-rules--georgia-rejections-near-national}
 
-Georgia's line, high under signature matching in 2016 and 2018, has sat close to the national line since SB 202 replaced signatures with an ID number. [21](#source-burdens-of-id-and-citizenship-rules-21) [22](#source-burdens-of-id-and-citizenship-rules-22) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [37](#source-burdens-of-id-and-citizenship-rules-37) [26](#source-burdens-of-id-and-citizenship-rules-26) Its 2020 point is a floor, because the state's count missed some county rejections. [25](#source-burdens-of-id-and-citizenship-rules-25)
+Georgia's line, high under signature matching in 2016 and 2018, has sat close to the national line since SB 202 replaced signatures with an ID number. [21](#source-burdens-of-id-and-citizenship-rules-21) [22](#source-burdens-of-id-and-citizenship-rules-22) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [39](#source-burdens-of-id-and-citizenship-rules-39) [26](#source-burdens-of-id-and-citizenship-rules-26) Its 2020 point is a floor, because the state's count missed some county rejections. [25](#source-burdens-of-id-and-citizenship-rules-25)
 
 In a survey of county election offices, 32% said fewer mail ballots were rejected in 2022, though a plurality said the new verification had not reduced rejections. [33](#source-burdens-of-id-and-citizenship-rules-33)
 
@@ -1207,7 +1266,7 @@ In November 2022 the gap between white and nonwhite turnout was the widest since
 
 ### The gap was already moving before SB 202, and its authors do not attribute it to the law {#burdens-of-id-and-citizenship-rules--georgia-gap-predates-sb202}
 
-The white–Black gap also rose in 2016 and 2020 before the law and fell in the 2018 midterm. [38](#source-burdens-of-id-and-citizenship-rules-38) The Brennan Center, which wrote that SB 202 "erected multiple barriers to voting", says "we cannot say whether the passage of S.B. 202 is the cause" of the 2022 widening. [34](#source-burdens-of-id-and-citizenship-rules-34) Its 2024 analysis is in the next chart. [35](#source-burdens-of-id-and-citizenship-rules-35)
+The white–Black gap also rose in 2016 and 2020 before the law and fell in the 2018 midterm. [40](#source-burdens-of-id-and-citizenship-rules-40) The Brennan Center, which wrote that SB 202 "erected multiple barriers to voting", says "we cannot say whether the passage of S.B. 202 is the cause" of the 2022 widening. [34](#source-burdens-of-id-and-citizenship-rules-34) Its 2024 analysis is in the next chart. [35](#source-burdens-of-id-and-citizenship-rules-35)
 
 ### Georgia voters reported few problems in 2022 {#burdens-of-id-and-citizenship-rules--georgia-few-problems-2022}
 
@@ -1223,7 +1282,7 @@ The survey reached only people who voted, so it cannot show how many were deterr
 
 ### Black turnout in Georgia dipped in 2024 while white turnout rose {#burdens-of-id-and-citizenship-rules--georgia-2024-turnout}
 
-The white–Black gap grew about as much from 2020 to 2024 as from 2016 to 2020, but for a different reason: this time Black turnout fell slightly, where before both groups rose. [35](#source-burdens-of-id-and-citizenship-rules-35) [39](#source-burdens-of-id-and-citizenship-rules-39) This analysis uses a different turnout estimate from the 2014–2022 chart, so the two sets of gaps are not comparable.
+The white–Black gap grew about as much from 2020 to 2024 as from 2016 to 2020, but for a different reason: this time Black turnout fell slightly, where before both groups rose. [35](#source-burdens-of-id-and-citizenship-rules-35) [41](#source-burdens-of-id-and-citizenship-rules-41) This analysis uses a different turnout estimate from the 2014–2022 chart, so the two sets of gaps are not comparable.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-documents-held}
 
@@ -1275,19 +1334,28 @@ Every group has a gap, Republicans included; independents and people of color ha
 
 The blocked applications were 12.4% of new registrations from 2013 to 2015; the confirmed non-citizens on the rolls were 0.002% of registered voters. [14](#source-burdens-of-id-and-citizenship-rules-14) [15](#source-burdens-of-id-and-citizenship-rules-15)
 
-The trial court found more than 99% of suspended applicants were citizens who could otherwise have voted. [15](#source-burdens-of-id-and-citizenship-rules-15) In 2020 the Tenth Circuit upheld its injunction, holding that the requirement unconstitutionally burdened the right to vote and was preempted by federal registration law. [15](#source-burdens-of-id-and-citizenship-rules-15)
+The trial court noted that even the state's expert's estimate implied more than 99% of applicants held in suspense were citizens. [15](#source-burdens-of-id-and-citizenship-rules-15) In 2020 the Tenth Circuit upheld its injunction, holding that the requirement unconstitutionally burdened the right to vote and was preempted by federal registration law. [38](#source-burdens-of-id-and-citizenship-rules-38)
 
 ### Non-citizen registrations in Kansas were real but few {#burdens-of-id-and-citizenship-rules--kansas-noncitizens-not-zero}
 
 The court did find confirmed non-citizen registrations. [15](#source-burdens-of-id-and-citizenship-rules-15) Kansas also offered anecdotes, including a clerk's letter about hog-farm employees taken by their employer to register who felt pressured "even though they may not be legal". [13](#source-burdens-of-id-and-citizenship-rules-13)
 
-The court found that evidence "insufficient to show that noncitizens actually voted", and said "administrative anomalies" might explain even the few cases it did find. [13](#source-burdens-of-id-and-citizenship-rules-13)
+In 2016 the court found that evidence "insufficient to show that noncitizens actually voted". [13](#source-burdens-of-id-and-citizenship-rules-13) After trial it found the confirmed cases "largely explained by administrative error, confusion, or mistake". [15](#source-burdens-of-id-and-citizenship-rules-15)
 
 ## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-kansas-dpoc}
 
 ### "Blocked" is not the same as "unable to prove citizenship" {#burdens-of-id-and-citizenship-rules--kansas-dpoc-possession-unknown}
 
-The 31,089 are applicants who did not supply a document in time. The court said there was "little admissible evidence" on how many of them actually held one. [13](#source-burdens-of-id-and-citizenship-rules-13) Some could have complied with more effort; others may have had no document. The record does not say how they divide.
+The 31,089 are applicants who did not supply a document in time. The court found "no evidence about how many" of them lacked one. [37](#source-burdens-of-id-and-citizenship-rules-37) It inferred they lacked ready access, did not know enough about the rule, or were unable or unwilling to take the steps. [37](#source-burdens-of-id-and-citizenship-rules-37)
+
+The only estimate came from the state's expert, Jesse Richman, in a survey of the suspense list: [37](#source-burdens-of-id-and-citizenship-rules-37)
+
+| Richman's estimate | Figure | The court's view |
+| --- | --- | --- |
+| Applicants lacking access to proof of citizenship | 2.2% | Not distinguishable from zero (margin of error 2.7%) |
+| Citizens with "immediate access" | 97.8% | Includes people whose document someone else "keeps", itself an extra step |
+
+The record does not say how many could have complied with more effort and how many had no document.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-arizona-maricopa}
 
@@ -1349,18 +1417,18 @@ The national study's estimate for non-white relative to white turnout is slightl
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-great-britain}
 
-### Great Britain's turnaways were small and fell in the second year {#burdens-of-id-and-citizenship-rules--gb-turnaways-small}
+### Great Britain's turnaways were small and fell at each election {#burdens-of-id-and-citizenship-rules--gb-turnaways-small}
 
-The share unable to vote fell between the first two rounds; at the July 2024 general election it came to about 16,000 people. [36](#source-burdens-of-id-and-citizenship-rules-36) Most of those first turned away in 2024 came back with ID and voted. [36](#source-burdens-of-id-and-citizenship-rules-36)
+Both shares fell at each round; at the July 2024 general election those who did not return came to about 16,000 people. [36](#source-burdens-of-id-and-citizenship-rules-36) About two-thirds of those first turned away in 2024 came back with ID and voted. [36](#source-burdens-of-id-and-citizenship-rules-36)
 
 ### Some British non-voters say the ID rule kept them away {#burdens-of-id-and-citizenship-rules--gb-non-voters-cite-id}
 
-Around 4% of people who did not vote in 2024 said their decision was related to the ID requirement, and non-voters from lower social grades were more likely to say they had no accepted ID. [36](#source-burdens-of-id-and-citizenship-rules-36) This is the closest published measure of deterrence beyond those turned away at the door; no US equivalent was found.
+Around 4% of people who did not vote in 2024 gave an unprompted reason related to the ID rules, and non-voters in lower social grades were more likely to say they lacked the required ID. [36](#source-burdens-of-id-and-citizenship-rules-36) This is the closest published measure of deterrence beyond those turned away at the door; no US equivalent was found.
 
 ## What this does and does not measure {#burdens-of-id-and-citizenship-rules--scope}
 
 This report counts people who met an obstacle — no document, a blocked application, a rejected ballot — and estimates whether total turnout changed.
 
-It does not establish that everyone affected was eligible: Kansas's court found more than 99% of suspended applicants were citizens; elsewhere it is unknown. [15](#source-burdens-of-id-and-citizenship-rules-15) Nor does it measure fraud prevented. The national panel finds no effect on fraud, and non-citizen registration is covered in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls). [27](#source-burdens-of-id-and-citizenship-rules-27)
+It does not establish that everyone affected was eligible: in Kansas even the state's expert implied more than 99% of suspended applicants were citizens; elsewhere it is unknown. [15](#source-burdens-of-id-and-citizenship-rules-15) Nor does it measure fraud prevented. The national panel finds no effect on fraud, and non-citizen registration is covered in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls). [27](#source-burdens-of-id-and-citizenship-rules-27)
 
 State comparisons use the federal survey's definitions. Great Britain is the only other country shown, because its Electoral Commission publishes counts of people turned away for lack of ID; other democracies' rules are in [Voter ID Rules in the US and Other Democracies](#fact-voter-id-rules-in-the-us-and-abroad).
