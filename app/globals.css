@@ -1869,37 +1869,6 @@
     background-size: 4px 2.4px;
   }
 
-  /* An unresolved premise should remain visible in the argument without
-     borrowing the solid citation treatment reserved for evidence we have. */
-  .prose-body a.sv-needed-cite {
-    color: var(--ink-2);
-    text-decoration-line: underline;
-    text-decoration-style: dashed;
-    text-decoration-color: var(--rule-strong);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
-    border-radius: 0.3em;
-    padding: 0.08em 0.2em;
-  }
-
-  .prose-body a.sv-needed-cite::after {
-    content: " research needed";
-    display: inline-block;
-    margin-left: 0.28em;
-    color: var(--ink-3);
-    font-family: var(--font-sans);
-    font-size: 0.68em;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .prose-body a.sv-needed-cite:hover,
-  .prose-body a.sv-needed-cite:focus-visible {
-    background: var(--paper-sunk);
-    box-shadow: 0 0 0 0.18em var(--paper-sunk);
-  }
-
   /* --------------------------------------------------- a fact's own page */
 
   .sv-factmain {

@@ -18,7 +18,7 @@ const FOCUSABLE = [
 
 /**
  * The sheet a fact is read in when the reader is already on its topic page,
- * also used for a principle or a research-needed note opened from it.
+ * also used for a principle opened from it.
  *
  * For a fact, `FactSheet` renders it — from the click, while the fact loads,
  * and then for as long as the intercepting route `@modal/(.)facts` matches —
@@ -39,7 +39,7 @@ export function FactModal({ labelledBy, children, href, loading = false, onClose
   /** The article has not arrived yet; the sheet is showing a placeholder. */
   loading?: boolean;
   onClose?: () => void;
-  kind?: 'Data' | 'Principle' | 'Research needed';
+  kind?: 'Data' | 'Principle';
 }) {
   const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);

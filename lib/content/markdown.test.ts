@@ -62,11 +62,9 @@ test('ordinary links and other in-page anchors are left alone', async () => {
   assert.doesNotMatch(html, /data-fact-id/);
 });
 
-test('a #needed link renders as an unresolved research citation', async () => {
-  const html = await renderMarkdown('[integration succeeds at different rates](#needed)', SLUG);
-  assert.match(html, /href="#needed"/);
-  assert.match(html, /class="sv-needed-cite"/);
-  assert.doesNotMatch(html, /data-fact-id/);
+test('a #needed link renders as its plain text, with no link', async () => {
+  const html = await renderMarkdown('Some say [integration succeeds at *different* rates](#needed).', SLUG);
+  assert.equal(html, '<p>Some say integration succeeds at <em>different</em> rates.</p>');
 });
 
 test('"#fact-" with no id is not a citation', async () => {

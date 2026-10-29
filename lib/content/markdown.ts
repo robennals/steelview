@@ -50,6 +50,8 @@ function citedFactId(href: string): string | undefined {
 
 /**
  * Rewrite fact citations to the cited fact's own URL, and mark them.
+ * A `#needed` link is unwrapped to its text: it records, in the source, a
+ * premise queued for research, and readers see the claim as plain prose.
  *
  * The *authoring* syntax is unchanged and deliberately so: an author writes
  * `[reached 944,000](#fact-net-migration-2024)`, exactly as before, and
@@ -62,10 +64,10 @@ function citedFactId(href: string): string | undefined {
  */
 function remarkMarkFactCitations({ slug, facts }: { slug: string; facts: Fact[] }) {
   return (tree: Root) => {
-    visit(tree, 'link', (node: Link) => {
+    visit(tree, 'link', (node: Link, index, parent) => {
       if (node.url === NEEDED_HREF) {
-        node.data = { ...node.data, hProperties: { className: ['sv-needed-cite'] } };
-        return;
+        if (parent && index !== undefined) parent.children.splice(index, 1, ...node.children);
+        return index;
       }
       if (node.url.startsWith('#principle-')) {
         node.data = { ...node.data, hProperties: { className: ['sv-principle-cite'] } };

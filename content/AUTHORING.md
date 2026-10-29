@@ -956,11 +956,11 @@ but does not yet have a report. Mark the exact claim with a `#needed` link:
 [integration succeeds at different rates](#needed)
 ```
 
-This renders as a muted, dashed **Research needed** pill. Clicking it opens a
-simple popup: “Research needed to see if this is true.” It is visibly
-different from a data citation, so an unverified premise cannot be mistaken for
-evidence. `#needed` has no frontmatter entry and is not counted as a fact
-citation or a viewpoint relationship.
+The mark is for the research queue, not for readers: the page renders the
+claim as plain prose, with no link, pill or popup. It is never styled as a data
+citation, so an unverified premise cannot be mistaken for evidence. `#needed`
+has no frontmatter entry and is not counted as a fact citation or a viewpoint
+relationship.
 
 Use it for a concrete empirical claim that a future data report could confirm,
 qualify or disprove. Link the claim itself, not a vague sentence such as “more
@@ -1346,7 +1346,7 @@ Run this before opening a pull request.
       argument actually rests on.
 - [ ] Every fact it leans on is in one of its three lists.
 - [ ] Every empirical assertion in prose and summaries is a pill targeting the
-      relevant finding, or a visibly distinct `#needed` research pill until the
+      relevant finding, or is marked `#needed` (shown as plain prose) until the
       evidence audit is complete.
 
 **Every principle**
