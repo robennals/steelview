@@ -43,7 +43,7 @@ export type KeyFiguresProps = {
 };
 
 /**
- * Two to four headline numbers set as type: a large serif figure, what it
+ * One to six headline numbers set as type: a large serif figure, what it
  * counts, when, and — if given — the change against a named comparison.
  * No boxes and no up/down colours: a fall in asylum grants is not good or
  * bad news in this register, so direction is carried by the sign and the

@@ -18,15 +18,6 @@ export function figureExamplesFact(): Fact {
   return { ...factFrontmatterSchema.parse(data), id: 'figure-examples', body: content.trim() };
 }
 
-/** The fact its claim check's evidence link names, with the section it names. */
-export const mailBallotPrivacyFact: Fact = {
-  id: 'mail-ballot-privacy',
-  claim: 'Surveys of mail-ballot privacy measure reported pressure, not fraud.',
-  status: 'complicated',
-  sources: [{ stance: 'supports', quote: 'q', title: 't', url: 'https://example.org/privacy', publisher: 'p', date: '2024' }],
-  body: '## Privacy surveys {#mail-ballot-privacy--privacy-surveys}\n\nWhat the surveys asked.',
-};
-
 /** A topic holding the fixture, sound under validateTopic, for perturbing one rule at a time. */
 export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
   return {
@@ -36,7 +27,7 @@ export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
     lastUpdated: '2026-10-29',
     firstPublished: '2026-08-18',
     intro: '',
-    facts: [fact, mailBallotPrivacyFact],
+    facts: [fact],
     viewpoints: [
       { id: 'one', name: 'One', shortName: 'One', summary: 'One.', order: 1, body: 'One.' },
       { id: 'two', name: 'Two', shortName: 'Two', summary: 'Two.', order: 2, body: 'Two.' },
@@ -48,5 +39,5 @@ export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
 
 /** The fixture fact with its body rendered, as a fact page receives it. */
 export async function figureExamplesPage(fact: Fact = figureExamplesFact()): Promise<{ fact: Fact; bodyHtml: string }> {
-  return { fact, bodyHtml: await renderMarkdown(fact.body, 'figure-examples', [fact, mailBallotPrivacyFact]) };
+  return { fact, bodyHtml: await renderMarkdown(fact.body, 'figure-examples', [fact]) };
 }

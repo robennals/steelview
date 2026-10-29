@@ -1008,6 +1008,16 @@ from when no quote can hold them all ("EAVS 2024 Overview Table 1"); it is
 shown in About this data, for series and comparisons as for component figures.
 A series line's own `coverage.note` is shown there too, beside the line's name.
 
+**A claim check links to the evidence.** `evidence: { fact, section, label }`
+names a fact in the topic and, optionally, where on it to land. `section` may
+name what an inline `#fact-<fact>/<section>` citation may: `finding` (the
+opening finding), `chart-series`, `chart-<id>` for one of the fact's series
+readings, additional series, comparisons or component figures, or the id of
+any body heading written `{#<fact>--<id>}` (`### Why arrivals fell
+{#example--why-arrivals-fell}` is `section: why-arrivals-fell`). The fixture's
+`one-in-five` check names `chart-detected-is-a-floor`, a caveat list on the
+same fact.
+
 **Quotes are verbatim.** A `quoteComparison` or `pullQuote` text, or a
 `claimCheck` claim, must appear in a cited source's `quote`. Mark an
 omission with "…"; each fragment between omissions is checked on its own,

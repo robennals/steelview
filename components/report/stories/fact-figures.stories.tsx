@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { FactArticle } from '@/components/topic/fact-article';
-import { figureExamplesBodyHtml, figureExamplesFact, mailBallotPrivacyFact } from './fixtures/figure-examples';
+import { figureExamplesBodyHtml, figureExamplesFact } from './fixtures/figure-examples';
 
 const meta = {
   title: 'Existing/FactFigures',
@@ -19,7 +19,7 @@ const meta = {
     variant: 'page',
     fact: figureExamplesFact,
     bodyHtml: figureExamplesBodyHtml,
-    topic: { lastUpdated: '2026-10-29', facts: [figureExamplesFact, mailBallotPrivacyFact] },
+    topic: { lastUpdated: '2026-10-29', facts: [figureExamplesFact] },
   },
 } satisfies Meta<typeof FactArticle>;
 

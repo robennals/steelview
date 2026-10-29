@@ -209,8 +209,8 @@ test('estimates may omit any bound, and a null no-effect value passes through', 
 
 test('claim evidence links like an inline citation: to the parent page when the fact supports another', () => {
   const check = figureOf('claimCheck');
-  const facts: Pick<Fact, 'id' | 'supports'>[] = [{ id: 'mail-ballot-privacy' }];
-  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).evidence?.href, '/topics/vbm/facts/mail-ballot-privacy#mail-ballot-privacy--privacy-surveys');
+  const facts: Pick<Fact, 'id' | 'supports'>[] = [{ id: 'figure-examples' }, { id: 'mail-ballot-privacy' }];
+  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).evidence?.href, '/topics/vbm/facts/figure-examples#figure-examples--chart-detected-is-a-floor');
   const supporting = [{ id: 'mail-ballot-privacy', supports: 'mail-voting' }];
   assert.equal(claimCheckProps({ ...check, evidence: { fact: 'mail-ballot-privacy' } }, { ...context, slug: 'vbm', facts: supporting }).evidence?.href, '/topics/vbm/facts/mail-voting#evidence-mail-ballot-privacy');
   assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).claimSource?.number, 22);

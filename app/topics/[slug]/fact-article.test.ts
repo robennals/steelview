@@ -4,7 +4,7 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { FactArticle } from '@/components/topic/fact-article';
 import * as storyFixture from '@/components/report/stories/fixtures/figure-examples';
-import { figureExamplesFact, figureExamplesPage, mailBallotPrivacyFact } from '@/lib/content/__fixtures__/figure-examples';
+import { figureExamplesFact, figureExamplesPage } from '@/lib/content/__fixtures__/figure-examples';
 import type { Fact } from '@/lib/content/types';
 import { renderMarkdown } from '@/lib/content/markdown';
 
@@ -49,7 +49,7 @@ async function renderFixture(change: (f: Fact) => Fact = f => f) {
     fact: parsed,
     bodyHtml,
     variant: 'page',
-    topic: { lastUpdated: '2026-10-29', facts: [parsed, mailBallotPrivacyFact] },
+    topic: { lastUpdated: '2026-10-29', facts: [parsed] },
   }));
 }
 
@@ -160,7 +160,6 @@ test('the Storybook copy of the figure fixture matches the fixture file', async 
   const plain = (value: unknown) => JSON.parse(JSON.stringify(value));
   assert.deepEqual(plain(storyFixture.figureExamplesFact), plain(parsed), 'regenerate components/report/stories/fixtures/figure-examples.ts');
   assert.equal(storyFixture.figureExamplesBodyHtml, bodyHtml);
-  assert.deepEqual(plain(storyFixture.mailBallotPrivacyFact), plain(mailBallotPrivacyFact));
 });
 
 test('a featured supporting fact\'s charts render where its figure entry is, once, whether or not it has figures', async () => {

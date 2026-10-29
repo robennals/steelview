@@ -867,8 +867,8 @@ export const figureExamplesFact: Fact = {
         23
       ],
       "evidence": {
-        "fact": "mail-ballot-privacy",
-        "section": "privacy-surveys"
+        "fact": "figure-examples",
+        "section": "chart-detected-is-a-floor"
       }
     },
     {
@@ -1289,21 +1289,3 @@ export const figureExamplesFact: Fact = {
 };
 
 export const figureExamplesBodyHtml: string = "<p>This fixture exists so every figure kind can be seen, tested and validated in\nthe order an author writes it.</p>\n<h2 id=\"figure-examples--freedom-to-vote-act-provisions\">Provisions of the Freedom to Vote Act</h2>\n<p>This section is placed between the federal-laws table and the key figures by a\n<code>section</code> entry, not left at the end of the body.</p>\n<h2 id=\"figure-examples--observations-federal-laws\">Observations</h2>\n<details id=\"figure-examples--older-law\" class=\"sv-observation\"><summary>The record is mostly older law</summary><div class=\"sv-observation__body\">\n<p>Of the rows shown, the only one in force is the 1965 Act.</p>\n</div></details><h2 id=\"figure-examples--subtleties-wa-by-race\">Subtleties</h2>\n<details id=\"figure-examples--before-controls\" class=\"sv-observation\"><summary>Rates before controls</summary><div class=\"sv-observation__body\">\n<p>These rates are before any control for age or county.</p>\n</div></details><h2 id=\"figure-examples--remainder\">What the rest of the body says</h2>\n<p>Body sections that no figure places render after the last figure, as before.</p>\n<section id=\"figure-examples--audit-method\" class=\"sv-evidence-section\"><h3>How the audit sample was drawn</h3>\n<p>This <code>###</code> section is placed by its own <code>section</code> entry, after the last\nfigure; the <code>##</code> section it sits in stays where it was and follows it.</p></section>";
-
-/** The fact the claim check's evidence link names. */
-export const mailBallotPrivacyFact: Fact = {
-  "id": "mail-ballot-privacy",
-  "claim": "Surveys of mail-ballot privacy measure reported pressure, not fraud.",
-  "status": "complicated",
-  "sources": [
-    {
-      "stance": "supports",
-      "quote": "q",
-      "title": "t",
-      "url": "https://example.org/privacy",
-      "publisher": "p",
-      "date": "2024"
-    }
-  ],
-  "body": "## Privacy surveys {#mail-ballot-privacy--privacy-surveys}\n\nWhat the surveys asked."
-};

@@ -433,7 +433,7 @@ figures:
       The survey asked an opt-in online panel about behaviour that is not
       always illegal, and measured no fraudulent ballots.
     sources: [22, 23]
-    evidence: { fact: mail-ballot-privacy, section: privacy-surveys }
+    evidence: { fact: figure-examples, section: chart-detected-is-a-floor }
   - kind: caveatList
     id: detected-is-a-floor
     heading: Detected fraud is a floor, not a measure

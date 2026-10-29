@@ -631,6 +631,12 @@ function figuresTopic() {
 
 const hasError = (topic: Topic, text: string) => validateTopic(topic).some(e => e.includes(text));
 
+test('the fixture claim check points at evidence the fixture itself holds, with no stub fact beside it', () => {
+  const topic = figureExamplesTopic();
+  assert.deepEqual(topic.facts.map(f => f.id), ['figure-examples']);
+  assert.equal(figureOf(topic.facts[0], 'claimCheck').evidence?.fact, 'figure-examples');
+});
+
 test('the figure fixture is sound', () => {
   assert.deepEqual(validateTopic(figureExamplesTopic()), []);
 });
@@ -872,8 +878,8 @@ test('F10: a range\'s high end counts for domainMax, and a composition part may 
 test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
   const { topic, fact } = figuresTopic();
   const check = figureOf(fact, 'claimCheck');
-  check.evidence = { fact: 'mail-ballot-privacy', section: 'nope' };
-  assert.ok(hasError(topic, 'unknown section "nope" in fact "mail-ballot-privacy"'));
+  check.evidence = { fact: 'figure-examples', section: 'nope' };
+  assert.ok(hasError(topic, 'unknown section "nope" in fact "figure-examples"'));
   check.evidence = { fact: 'nope' };
   assert.ok(hasError(topic, 'evidence names "nope", which is not a fact in this topic'));
 });
@@ -1222,6 +1228,6 @@ test('preview charts: a figure has no readings to name', () => {
 
 test('preview charts: a previewed figure counts its fact towards every viewpoint citing it', () => {
   const t = previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race' }]);
-  t.viewpoints[1].body = 'Cites [the other fact](#fact-mail-ballot-privacy) only.';
+  t.viewpoints[1].body = 'Cites no fact.';
   assert.deepEqual(validateTopic(t), ['topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts']);
 });
