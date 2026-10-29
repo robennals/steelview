@@ -2,6 +2,13 @@
 name: Too much immigration too fast damages the fabric of our society
 summary: "A shared way of life deserves care. Immigration should move at a pace that gives people time to build a common life and a meaningful say over how their communities change."
 order: 2
+researchNeeded:
+  - "habits that took generations to build: trust that strangers will follow the rules, a willingness to improve institutions through experiment, tolerance of eccentricity and new ideas, and enough fellow feeling to accept obligations to people we do not know"
+  - "Britain has absorbed newcomers for centuries, and many have enriched it"
+  - "English, the rule of law, equal citizenship and loyalty to shared institutions are conditions of successful integration"
+  - "a rapid rate of arrivals or greater cultural distance makes integration harder"
+  - "groups increasingly see one another as competitors for scarce housing, services and political power, rather than as citizens with a shared future"
+  - "A slower pace gives communities time to form the relationships on which trust depends"
 ---
 Britain’s prosperity rests on more than its geography. It rests on [habits that took generations to build: trust that strangers will follow the rules, a willingness to improve institutions through experiment, tolerance of eccentricity and new ideas, and enough fellow feeling to accept obligations to people we do not know](#needed). Those habits are precious. [Continuity of a shared way of life](#principle-continuity-of-a-shared-way-of-life) means taking care of the culture that sustains them.
 

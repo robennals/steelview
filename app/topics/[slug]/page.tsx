@@ -9,7 +9,6 @@ import { FactList } from '@/components/topic/fact-list';
 import { ViewpointItem } from '@/components/topic/viewpoint-item';
 import { PrincipleItem } from '@/components/topic/principle-item';
 import { PrincipleModals } from '@/components/topic/principle-modals';
-import { ResearchNeededModal } from '@/components/topic/research-needed-modal';
 import { CruxItem } from '@/components/topic/crux-item';
 import type { ItemKind, Topic } from '@/lib/content/types';
 
@@ -128,7 +127,6 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
 
   return (
     <div className="sv-sections">
-      <ResearchNeededModal />
       <PrincipleModals principles={topic.principles.map((principle) => ({
         id: principle.id,
         name: principle.name,

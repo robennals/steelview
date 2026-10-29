@@ -2,6 +2,12 @@
 name: We need the right kind of immigration, not simply less of it
 summary: "Choose immigration for what it contributes. Welcome skills and useful work, honour the purpose of each route, and judge success by more than the number of arrivals."
 order: 1
+researchNeeded:
+  - "bring skills Britain needs, create high-value work and strengthen its ability to compete"
+  - "English, an expectation of obeying the law, and a serious commitment to living here as fellow citizens all matter for integration"
+  - "a route serves domestic demand for low-paid labour and leaves costs for public services and local communities"
+  - "dependence on large-scale overseas recruitment can substitute for retaining British staff, improving management and pay, and using technology"
+  - "its scope and practical consequences have changed with newer interpretations of asylum"
 ---
 Britain should judge immigration by what it contributes, not by whether the headline number rises or falls. [People arrive for study, work and protection](#fact-how-people-actually-arrive/study-is-the-largest-single-reason-anyone-moves-to-britain), and those routes ask different things of the country. A system that treats a scientist building a new industry, a student, a care worker and a person seeking safety as interchangeable cannot make sensible choices about any of them.
 
