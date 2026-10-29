@@ -914,7 +914,14 @@ its quote as well as the reading's.
 `## Observations {#<fact>--observations-<id>}` and
 `## Subtleties {#<fact>--subtleties-<id>}` render inside the figure's frame,
 after its source line and before About this data, as they do for a
-comparison. A `section` entry's id takes Observations the same way.
+comparison. A `section` entry's id takes Observations the same way. The id
+must be a reading's (not its series'), a comparison's, a figure's or a
+`section` entry's; a group a `section` entry names whole
+(`id: observations-regime-change`) is placed there instead. Any other group
+stays in the body after the last figure, which suits a group about no one
+chart (`{#<fact>--observations-latest}`) — but one whose id looks like a slip
+for a chart's (a series id, a hyphenated part added or dropped, a letter or
+two off) fails validation.
 
 **Marks.** `observationMarks` in a fact's frontmatter says what each
 observation is about, by observation id. It is picked out on the chart when a
@@ -1868,6 +1875,7 @@ them.
 | A series event's `sources` are the fact's numbered sources | `lib/content/validate.ts`, `seriesErrors` |
 | Once present, `figures` places every series, comparison and featured chart exactly once, and names nothing that does not exist | `lib/content/validate.ts` (F3) |
 | A `section` figure names an h2 or h3 in the body, not an item under Observations or Subtleties | `lib/content/validate.ts` (F4) |
+| An Observations or Subtleties group addressed to an id names a reading, comparison, figure or `section` entry, unless its id is plainly not meant for one | `lib/content/validate.ts` (`observationGroupErrors`) |
 | Table columns, rows, sort and highlight agree; numeric columns hold numbers | `lib/content/validate.ts` (F6) |
 | Timeline categories exist and periods run forwards (an approximate date counted at its placement); period-timeline events fall on its axis | `lib/content/validate.ts` (F7) |
 | A timeline date is a partial date, a decade or a circa year | `lib/content/schema.ts` |

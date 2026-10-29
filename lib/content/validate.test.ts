@@ -693,6 +693,30 @@ test('F4: a section figure names an h2 or h3 in the body, not an Observations or
   assert.ok(hasError(topic, 'figure older-law: "{#figure-examples--older-law}" heads an item under Observations or Subtleties'));
 });
 
+test('an Observations or Subtleties group addressed by id must name something it attaches to, unless it is plainly free-standing', () => {
+  const { topic, fact } = figuresTopic();
+  const group = (kind: string, id: string) => `\n\n## ${kind === 'subtleties' ? 'Subtleties' : 'Observations'} {#figure-examples--${kind}-${id}}\n\n### An item {#figure-examples--item-${kind}-${id}}\n\nText.`;
+  fact.figures?.push({ kind: 'section', id: 'observations-placed' });
+  fact.body += [
+    // Attached: a reading, a comparison, a figure, a section entry, and a group a section entry places whole.
+    group('observations', 'rejected-share'),
+    group('observations', 'senate-votes'),
+    group('subtleties', 'court-record'),
+    group('observations', 'audit-method'),
+    group('observations', 'placed'),
+    // Free-standing on purpose: rendered after the last figure.
+    group('observations', 'latest'),
+  ].join('');
+  assert.deepEqual(validateTopic(topic), []);
+
+  fact.body += [group('observations', 'federal-law'), group('subtleties', 'series'), group('observations', 'rejected-share-total')].join('');
+  const errors = validateTopic(topic);
+  assert.equal(errors.length, 3, errors.join('\n'));
+  assert.ok(hasError(topic, '"## Observations" is addressed to "federal-law", which is not a series reading, comparison, figure or placed section of this fact — did you mean "federal-laws"?'));
+  assert.ok(hasError(topic, '"## Subtleties" is addressed to "series"'));
+  assert.ok(hasError(topic, 'addressed to "rejected-share-total", which is not a series reading, comparison, figure or placed section of this fact — did you mean "rejected-share"?'));
+});
+
 test('F5: every figure but a caveat list cites a source', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'barChart').sources = [];

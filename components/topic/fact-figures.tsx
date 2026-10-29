@@ -21,7 +21,7 @@ import {
   SmallMultiples,
   Timeline,
 } from '@/components/report';
-import { bodySections, chartObservations, methodChanges } from '@/lib/content/chart-observations';
+import { bodySections, chartObservations, methodChanges, observationTargets } from '@/lib/content/chart-observations';
 import { unmeasuredSpan } from '@/lib/chart/series-chart';
 import {
   areaMapProps,
@@ -49,7 +49,7 @@ import {
 import type { PreviewSlide } from '@/lib/content/preview';
 import { markedObservations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
-import { componentFigure, figureLabel, isComponentFigure } from '@/lib/content/types';
+import { componentFigure, figureLabel } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { Prose } from './prose';
@@ -140,9 +140,9 @@ export function FactCharts({ fact, observations = {}, subtleties = {}, afterSeri
   </>;
 }
 
-/** A fact's observation groups, keyed by reading and comparison id, plus any `extraIds` (figure and section ids). */
-export function chartGroups(fact: Fact, bodyHtml: string, extraIds: string[] = []) {
-  return chartObservations(bodyHtml, fact.id, [...(fact.series?.readings.map(r => r.id) ?? []), ...(fact.additionalSeries?.flatMap(s => s.readings.map(r => r.id)) ?? []), ...(fact.comparisons?.map(c => c.id) ?? []), ...extraIds]);
+/** A fact's observation groups, keyed by reading, comparison, figure and section id (`observationTargets`). */
+export function chartGroups(fact: Fact, bodyHtml: string) {
+  return chartObservations(bodyHtml, fact.id, observationTargets(fact));
 }
 
 /**
@@ -154,8 +154,7 @@ export function chartGroups(fact: Fact, bodyHtml: string, extraIds: string[] = [
 export function figureGroups(fact: Fact, bodyHtml: string) {
   const figures = fact.figures ?? [];
   const sectionIds = figures.flatMap(f => (f.kind === 'section' ? [f.id] : []));
-  const figureIds = figures.flatMap(f => (isComponentFigure(f) ? [f.id] : []));
-  const grouped = chartGroups(fact, bodyHtml, [...figureIds, ...sectionIds]);
+  const grouped = chartGroups(fact, bodyHtml);
   const { sections, bodyHtml: rest } = bodySections(grouped.bodyHtml, fact.id, sectionIds);
   return { observations: grouped.observations, subtleties: grouped.subtleties, sections, bodyHtml: rest };
 }
@@ -166,7 +165,7 @@ export function FeaturedCharts({ child, page }: { child: BodiedFact; page: Figur
     const groups = figureGroups(child.fact, child.bodyHtml);
     return <FactFigures fact={child.fact} observations={groups.observations} subtleties={groups.subtleties} sections={groups.sections} featured={[]} page={page} />;
   }
-  const childGroups = chartObservations(child.bodyHtml, child.fact.id, [...(child.fact.series?.readings.map(r => r.id) ?? []), ...(child.fact.comparisons?.map(c => c.id) ?? [])]);
+  const childGroups = chartGroups(child.fact, child.bodyHtml);
   return <FactCharts fact={child.fact} observations={childGroups.observations} subtleties={childGroups.subtleties} />;
 }
 

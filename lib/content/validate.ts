@@ -1,5 +1,6 @@
 import { extentValues, pointValue, type FigureNumber } from '@/components/report/qualified';
 import { appliedFilters, slice } from '@/components/report/slice';
+import { observationTargets } from './chart-observations';
 import { citedFactTargets, neededClaims } from './markdown';
 import { mapAreaIds, mapAreas } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
@@ -129,6 +130,7 @@ export function validateTopic(topic: Topic): string[] {
     }
     errors.push(...figureErrors(f, topic));
     errors.push(...observationMarkErrors(f));
+    errors.push(...observationGroupErrors(f));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -400,6 +402,54 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
   }
 
   return errors;
+}
+
+/**
+ * An Observations or Subtleties group addressed to a chart
+ * (`## Observations {#<fact>--observations-<id>}`) attaches to the series
+ * reading, comparison, figure or placed section with that id
+ * (`observationTargets`), or is itself placed by a `section` entry naming its
+ * whole anchor (`observations-<id>`). Any other group stays where it is
+ * written, after the last figure — which content uses on purpose for a group
+ * about no one chart ("observations-latest"). So an unattached group is an
+ * error only when its id looks like a slip for one that would attach: it names
+ * a series or featured fact rather than a reading, or is a target with a
+ * hyphenated part added or dropped, or within two letters of one. A group with
+ * no `-<id>` suffix (`{#<fact>--observations}`) is the body's own.
+ */
+function observationGroupErrors(f: Fact): string[] {
+  const targets = observationTargets(f);
+  const sections = new Set((f.figures ?? []).flatMap(figure => (figure.kind === 'section' ? [figure.id] : [])));
+  const notTargets = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...(f.featuredCharts ?? [])];
+  const errors: string[] = [];
+  for (const [, heading, kind, id] of f.body.matchAll(new RegExp(`^## (.*?)\\s*\\{#${f.id}--(observations|subtleties)-([a-z0-9-]+)\\}\\s*$`, 'gm'))) {
+    if (targets.includes(id) || sections.has(`${kind}-${id}`)) continue;
+    const meant = notTargets.includes(id) ? undefined : targets.find(target => looksLikeSlipFor(id, target));
+    if (notTargets.includes(id) || meant) {
+      errors.push(`fact ${f.id}: "## ${heading}" is addressed to "${id}", which is not a series reading, comparison, figure or placed section of this fact${meant ? ` — did you mean "${meant}"?` : ''} — the group would sit at the end of the body`);
+    }
+  }
+  return errors;
+}
+
+/** `id` is `target` with a hyphenated part added or dropped at either end, or within two single-letter edits of it. */
+function looksLikeSlipFor(id: string, target: string): boolean {
+  const [shorter, longer] = id.length < target.length ? [id, target] : [target, id];
+  if (longer.startsWith(`${shorter}-`) || longer.endsWith(`-${shorter}`)) return true;
+  return editDistance(id, target) <= 2;
+}
+
+/** The Levenshtein distance between two short strings. */
+function editDistance(a: string, b: string): number {
+  let previous = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const current = [i];
+    for (let j = 1; j <= b.length; j++) {
+      current[j] = Math.min(previous[j] + 1, current[j - 1] + 1, previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    previous = current;
+  }
+  return previous[b.length];
 }
 
 /** Whether `#fact-<id>/<section>` names something on the fact's page: its finding, a chart or figure, or a body anchor. */

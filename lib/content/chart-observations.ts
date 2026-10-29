@@ -1,3 +1,22 @@
+import { isComponentFigure } from './types';
+import type { Fact } from './types';
+
+/**
+ * The ids an `## Observations {#<fact>--observations-<id>}` or
+ * `## Subtleties {#<fact>--subtleties-<id>}` group may name: every series
+ * reading (the main series' and each additional series'), every comparison,
+ * and — once the fact has `figures` — every component figure and placed
+ * `section`. A group naming anything else is left where it is in the body.
+ */
+export function observationTargets(fact: Pick<Fact, 'series' | 'additionalSeries' | 'comparisons' | 'figures'>): string[] {
+  return [
+    ...(fact.series?.readings.map(r => r.id) ?? []),
+    ...(fact.additionalSeries?.flatMap(s => s.readings.map(r => r.id)) ?? []),
+    ...(fact.comparisons?.map(c => c.id) ?? []),
+    ...(fact.figures ?? []).flatMap(f => (isComponentFigure(f) || f.kind === 'section' ? [f.id] : [])),
+  ];
+}
+
 /** Move explicitly addressed observation groups beside their graphs. */
 export function chartObservations(html: string, factId: string, chartIds: string[]) {
   const observations: Record<string, string> = {};
