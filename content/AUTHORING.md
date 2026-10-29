@@ -824,11 +824,82 @@ A viewpoint is a short persuasive essay in plain English. Its job is to make
 the opening proposition compelling. The data report holds the detailed evidence;
 the viewpoint explains why that evidence gives someone a reason to act.
 
-Start with the belief or choice being defended. Build two or three connected
-reasons for it, deal with the strongest relevant difficulty where it arises,
-and finish with the policy or judgment those reasons support. Each paragraph
-should move the argument forward. A sequence of unrelated true statements is
-not an argument, however good its citations.
+**A viewpoint is a tree: a lead, then a sequence of headed sections whose
+headings add up to the title.** Open with one or two sentences stating the
+belief or choice being defended, and the principle behind it where one does the
+work. Then give four to six sections, each headed with an `###` heading. Each
+heading is one claim in the argument, stated as a sentence the holder would say
+— "Iran had brought itself within reach of a bomb", not "The nuclear
+programme". Read in order without the text beneath them, the headings should
+make the whole case: someone who accepted every heading should accept the
+title. A reader skimming the headings gets the argument; a reader who doubts
+one reads the section beneath it.
+
+```markdown
+A regime with Iran's record could not be allowed the one weapon that would put
+it beyond punishment. …
+
+### Iran had brought itself within reach of a bomb
+
+Iran is [the only state without nuclear weapons enriching uranium to 60%](#fact-…), …
+
+### Iran had not earned the benefit of the doubt
+…
+```
+
+Under each heading, write one or two short paragraphs of ordinary prose — no
+bullet lists. The paragraphs give the evidence for that heading's claim and
+explain why it supports it. Deal with the strongest relevant difficulty in the
+section it bears on, rather than collecting objections at the end. The last
+section states the policy or judgment the earlier sections support, and its
+heading says what that is. A sequence of unrelated true headings is not an
+argument, however good its citations. `us-iran-war` is the model.
+
+**Write so a middle-school reader can follow every sentence.** Many readers
+find long or complicated sentences hard, and a viewpoint that loses them has
+failed however good its argument. In practice:
+
+- **One idea per sentence.** Aim for about 10–15 words, and split anything
+  over about 20. Prefer two sentences to one joined by "and", "which" or a dash.
+- **Say who did what.** "Iran has attacked its enemies for decades", not "a
+  regime with Iran's record". Avoid nouns standing in for actions or
+  histories ("its record", "the capability", "leverage").
+- **Everyday words.** "Overthrow", not "imposed regime change"; "rebuild",
+  not "reconstitute"; "cleaned up", not "sanitised". Explain a term the
+  argument needs the first time it appears: "Sanctions are limits on a
+  country's trade and money."
+- **Name sources plainly.** A reader may not know an acronym, and some
+  mislead ("ISIS" here is a nuclear-research institute). Write "a leading
+  group of nuclear experts" or "experts at two US research groups" in the
+  viewpoint; the report names them in full.
+- **Read it aloud.** If a sentence needs a second reading, rewrite it.
+
+**Every sentence must earn its place in the argument.** Short is not enough;
+each sentence should carry something the argument needs, and say it in as few
+words as possible.
+
+- **Claim first, then why.** Open a section with the sentence that makes its
+  point, then give the facts that support it. "US intelligence judged Iran
+  was probably less than a week from enough uranium for a bomb. That is
+  because Iran had already done most of the hard work" — then the evidence.
+- **Say why a fact matters.** A figure means nothing until the reader knows
+  what it is measured against. Before "Iran enriches uranium to 60%", say
+  what enrichment is, that it is the hardest step towards a bomb, and what
+  power plants and bombs need. A stock "more than doubled" needs its period
+  inside the pill: "in the seven months before the strikes".
+- **Name what matters, not a stand-in for it.** "Hid the evidence", not
+  "cleaned up the sites"; "worked best long before a country was close to a
+  bomb", not "the things that made past strikes work". If a phrase makes the
+  reader ask "meaning what?", replace it with the answer from the report.
+- **State the real stake.** Name the consequence the holder actually fears.
+  The danger of an Iranian bomb is not that "no one could punish it"; it is
+  that other countries would fear striking back, so Iran could attack more
+  freely, and that it might one day use the bomb.
+- **Answer the reader's obvious question.** If a reader would ask "is there an
+  innocent reason for this?", the section should answer it, with evidence.
+- **Connect each sentence to the one before.** Within a paragraph, each
+  sentence should follow from the last. Split two unrelated facts into two
+  sentences rather than joining them with "and".
 
 Use familiar words and concrete consequences. Prefer “contributes more in taxes
 than it receives in public spending” to “fiscally positive”. Explain the step
@@ -850,11 +921,13 @@ into a certainty, a correlation into a cause, or one subgroup into everyone.
 For legal claims, distinguish an obligation to hear a claim from an obligation
 to grant protection; everyday wording must preserve the actual scope of the law.
 
-Aim initially for about 300–450 words in four to six connected paragraphs.
-These are editing defaults, not quotas. Use fewer words when they suffice.
-Avoid bold mini-headings that turn the essay into a checklist of issues. The
-summary should give the central reason and direction in one or two natural
-sentences, rather than compressing the evidence inventory.
+Aim initially for about 300–450 words across four to six sections. These are
+editing defaults, not quotas. Use fewer words when they suffice. Six sections
+is a ceiling: past it, the headings read as a list of points rather than an
+argument, so merge the claims that make the same step. Use `###` headings only,
+never bold mini-headings or nested levels. The summary should give the central
+reason and direction in one or two natural sentences, rather than compressing
+the evidence inventory.
 
 ### Concessions and an independent voice
 
@@ -863,6 +936,25 @@ other viewpoints, the site, the data presentation or the act of steelmanning.
 Delete phrases such as “this argument must concede”, “the evidence should be
 stated honestly”, “neither side should claim” and “the moral case should be
 stated openly”. Make the case itself.
+
+**Mark a concession as a concession, and say why it does not stop the
+argument.** A fact that cuts against the viewpoint must never read as though
+it supports it. Open the sentence with "While", state the fact (with its year
+when the date matters), then give the reason it does not change the
+conclusion — ideally backed by evidence:
+
+> While [US intelligence judged in 2025 that Iran was not building a
+> bomb](#fact-…), [it warned that pressure to build one was probably
+> growing](#fact-…).
+
+rather than
+
+> US intelligence also judged that Iran was not building a bomb. But that
+> only described what Iran intended at the time.
+
+The second leaves the reader unsure which side the fact is on and answers it
+with assertion, not evidence. Keep the rebuttal in the same sentence or the
+one straight after, so the concession is never left standing alone.
 
 Integrate a real concession where it affects the proposed choice. Explain how
 the policy responds, or why the benefit is still worth the cost. For example:
@@ -875,7 +967,7 @@ Link the factual premise to its observation in the finished version. Do not
 append a catalogue of every possible objection. Frontmatter is an evidence
 index; its existence does not require every listed item to become a paragraph.
 A concession should sharpen the decision, not dissolve the viewpoint into a
-neutral report. The final paragraph should follow from the reasons given.
+neutral report. The final section should follow from the reasons given.
 
 ### A repeatable writing workflow
 
@@ -885,16 +977,19 @@ Use this sequence when asked to create or improve viewpoints on any topic:
    defend. Give each a distinct central reason, not merely different adjectives
    for the same conclusion. Check that titles do not promise an unsupported
    historical or causal claim.
-2. **Sketch the argument.** For each proposition, write a private outline:
-   central value → factual premises → why those premises matter → strongest
-   relevant cost or objection → response → conclusion. Pick the existing shared
+2. **Sketch the argument as headings.** For each proposition, write the four
+   to six claims that together establish it: central value → factual premises
+   → why those premises matter → strongest relevant cost or objection →
+   response → conclusion. Each claim becomes a section heading. Read the
+   headings alone: do they add up to the title? Pick the existing shared
    principles that actually do work. Do not force every principle into every essay.
-3. **Draft for reading.** Write continuous prose using the best available
-   evidence, with qualitative factual phrases where exact numbers add little.
-   Read it without the links: does it still make a coherent, persuasive case?
-   Remove any paragraph whose deletion makes no difference to the conclusion.
-4. **Revise for force and honesty.** Check that each paragraph supports the
-   title, transitions explain the reasoning, and concessions lead somewhere.
+3. **Draft for reading.** Under each heading, write a short prose paragraph or
+   two using the best available evidence, with qualitative factual phrases
+   where exact numbers add little. Read it without the links: does it still
+   make a coherent, persuasive case? Remove any section whose deletion makes no
+   difference to the conclusion.
+4. **Revise for force and honesty.** Check that each section supports its
+   heading, each heading supports the title, and concessions lead somewhere.
    Read aloud for jargon, cumbersome sentences, repeated caveats and statistics
    that interrupt the thought. Revise the summary after the body.
 5. **Audit the evidence.** Inventory every empirical premise, including those
@@ -942,6 +1037,23 @@ linked observation pill, including non-numeric statements and key premises that 
 obviously true. Link the relevant phrase each time it appears; a list at the
 bottom is not a substitute. Include essential qualifications inside the pill.
 Values, preferences and purely logical reasoning remain ordinary prose.
+
+**Keep pill text to the point the argument needs.** The pill opens the report,
+which holds the exact figures, dates, sources and method, so the pill does not
+need to restate them. Write the claim as the argument uses it:
+
+> [Official estimates of the war's cost have nearly doubled](#fact-…)
+
+rather than
+
+> [Official estimates of the war's cost have risen from about \$25 billion to \$47.1 billion](#fact-…)
+
+Keep a qualification inside the pill when dropping it would change what the
+claim says: whose assessment it is ("in ISW/CTP's assessment"), how firm it is
+("reportedly", "by one minimum count"), or which sample it describes ("in
+GAMAAN's online survey"). Check every paraphrase against the observation it
+links to: "nearly doubled" must be true of the report's figures, and a
+paraphrase must not shift a date, scope or comparison.
 
 ### Research-needed citations
 
@@ -1323,8 +1435,15 @@ Run this before opening a pull request.
 - [ ] A partisan would find it better argued than their own version, and
       would recognise themselves in it.
 - [ ] It has real argumentative force. It is not merely inoffensive.
-- [ ] Every paragraph advances a connected argument for the opening proposition.
-- [ ] Plain English, readable aloud; no statistics inventory or methodological detours.
+- [ ] A one- or two-sentence lead, then four to six `###` sections; the
+      headings alone add up to the title, and the last states the conclusion.
+- [ ] Sections are short prose paragraphs, not bullet lists, and each
+      advances the argument for its heading.
+- [ ] Pill text states the point the argument needs; exact figures, dates and
+      sources stay in the report unless the reasoning depends on them.
+- [ ] Plain English a middle-school reader can follow: short sentences, one
+      idea each, everyday words, sources named plainly; no statistics
+      inventory or methodological detours.
 - [ ] Exact numbers appear only where necessary to understand the reasoning.
 - [ ] The conclusion follows from the reasons, with a concrete choice or judgment.
 - [ ] Applied principles are inline pills, listed in frontmatter, opening the right modal.
@@ -1335,7 +1454,8 @@ Run this before opening a pull request.
 - [ ] Could be published standalone elsewhere, unchanged. No sentence refers
       to this page, to other viewpoints, or to what people commonly get
       wrong.
-- [ ] Concessions land in the flow of the argument, and cite the
+- [ ] Concessions land in the flow of the argument, open with "While", and
+      say straight away why they do not change the conclusion. They cite the
       counter-point that contextualises them. No "what this view concedes"
       section.
 - [ ] `citesFacts` is ordered deliberately — first entry is the fact the
