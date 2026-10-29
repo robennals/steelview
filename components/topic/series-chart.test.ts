@@ -115,3 +115,14 @@ test('the Brent fixture passes the series rules', () => {
   const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], principles: [], cruxes: [] });
   assert.deepEqual(errors, []);
 });
+
+test('a preview draws every reading, without the Graph/Table switch, and links out to the fact page', async () => {
+  const topic = await loadTopic('uk-immigration');
+  const fact = topic.facts.find(f => f.id === 'immigration-against-the-long-run')!;
+  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: fact.id, series: fact.series!, preview: { href: '/topics/uk-immigration/facts/immigration-against-the-long-run' } }));
+  for (const reading of fact.series!.readings) assert.match(html, new RegExp(`<h3 class="sv-graph-heading">${reading.label}</h3>`));
+  assert.match(html, new RegExp(`<h3 class="sv-chart__title">${fact.series!.title}</h3>`));
+  assert.doesNotMatch(html, /aria-pressed/);
+  assert.match(html, /href="\/topics\/uk-immigration\/facts\/immigration-against-the-long-run#source-immigration-against-the-long-run-\d+"/);
+  assert.doesNotMatch(html, /href="#/);
+});

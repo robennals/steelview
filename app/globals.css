@@ -2354,3 +2354,23 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-breakdown-table th, .sv-breakdown-table td { padding: 6px; border-bottom: 1px solid #ddd; text-align: right; }
 .sv-breakdown-table th:first-child { text-align: left; }
 .sv-breakdown-table caption { caption-side: top; text-align: left; padding: 6px 0; color: var(--ink-3); }
+
+/* Compact chart previews (home page). Same data and rules as the full charts:
+   every reading, every item, the credit — only the chrome is lighter. */
+.sv-chart__title { font: 600 1.1rem/1.25 var(--font-sans); letter-spacing: -0.015em; margin: 0 0 .6rem; }
+.sv-chart[data-preview] .sv-chart__highlight { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0 1.5rem; }
+.sv-chart[data-preview] .sv-chart__svg[data-variant="wide"] { display: none; }
+.sv-chart[data-preview] .sv-chart__svg[data-variant="narrow"] { display: block; }
+.sv-chart[data-preview] .sv-graph-heading { font-size: 1rem; }
+.sv-comparison__columns { list-style: none; margin: 1rem 0 .35rem; padding: 0; display: flex; align-items: flex-end; gap: 2px; height: 9rem; }
+.sv-comparison__column { flex: 1; height: 100%; display: flex; align-items: flex-end; }
+.sv-comparison__column-bar { display: block; width: 100%; background: var(--sv-series-1); opacity: .45; border-radius: 2px 2px 0 0; }
+.sv-comparison__column[data-highlight] .sv-comparison__column-bar { background: var(--accent); opacity: 1; }
+.sv-comparison__ends { display: flex; justify-content: space-between; gap: 1rem; margin: 0; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
+.sv-comparison__rank { margin: .5rem 0 0; font: 600 .85rem/1.4 var(--font-sans); color: var(--accent); }
+
+/* A chart's silhouette on a collapsed home-page row: decoration only. */
+.sv-thumb { display: block; width: 100%; height: 100%; }
+.sv-thumb--columns { display: flex; align-items: flex-end; gap: 1px; }
+.sv-thumb__column { flex: 1; min-height: 1px; background: var(--sv-series-1); opacity: .35; border-radius: 1px 1px 0 0; }
+.sv-thumb__column[data-highlight] { background: var(--accent); opacity: 1; }

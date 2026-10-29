@@ -48,3 +48,24 @@ test('without itemLabel the item column reads "Category"', () => {
 test('the breakdown table caption names the grouping', () => {
   assert.match(render(chart), /<caption>Cases by method, by whether an ID check would reach it<\/caption>/);
 });
+
+const preview = { href: '/topics/example/facts/cases' };
+const renderPreview = (c: Comparison) => renderToStaticMarkup(createElement(ComparisonChart, { fact, chart: c, sources: [source], preview }));
+
+test('a preview drops the group controls and the breakdown table but keeps the note', () => {
+  const html = renderPreview({ ...chart, note: 'Shares do not sum to 100%.' });
+  assert.doesNotMatch(html, /sv-comparison-controls/);
+  assert.doesNotMatch(html, /Show all breakdowns/);
+  assert.match(html, /Shares do not sum to 100%\./);
+});
+
+test('a preview links its source credit to the fact page', () => {
+  assert.match(renderPreview(chart), /href="\/topics\/example\/facts\/cases#source-cases-1"/);
+});
+
+test('a dense preview keeps every item and states the highlighted one\'s rank', () => {
+  const items = Array.from({ length: 32 }, (_, i) => ({ label: i === 16 ? 'United Kingdom' : `Country ${i}`, value: 40 - i, highlight: i === 16 || undefined }));
+  const html = renderPreview({ id: 'per-person', title: 'Per person', description: 'd', unit: 'count', valueLabel: 'Per 10,000', sources: [1], items });
+  assert.equal(html.match(/class="sv-comparison__column"/g)?.length, 32);
+  assert.match(html, /United Kingdom: 24 — 17th of 32/);
+});
