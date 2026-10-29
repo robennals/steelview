@@ -68,10 +68,10 @@ export function validateTopic(topic: Topic): string[] {
     }
     // rule 14
     const datasets = [...(f.series ? [f.series] : []), ...(f.additionalSeries ?? [])];
-    for (const series of datasets) errors.push(...seriesErrors(f.id, series));
+    const sourceCount = factSources(f).length;
+    for (const series of datasets) errors.push(...seriesErrors(f.id, series, topic.lastUpdated, sourceCount));
     const artifactIds = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...datasets.flatMap(s => s.readings.map(r => r.id)), ...(f.comparisons ?? []).map(c => c.id)];
     if (new Set(artifactIds).size !== artifactIds.length) errors.push(`fact ${f.id}: chart IDs must be unique`);
-    const sourceCount = factSources(f).length;
     const chartIds = new Set<string>();
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
@@ -186,7 +186,7 @@ export function validateTopic(topic: Topic): string[] {
  * unordered or duplicated period draws a line that doubles back on itself),
  * and every annotated break inside the range it is annotating.
  */
-function seriesErrors(factId: string, series: Series): string[] {
+function seriesErrors(factId: string, series: Series, lastUpdated: string, sourceCount: number): string[] {
   const errors: string[] = [];
   const where = `fact ${factId}: series`;
 
@@ -220,18 +220,40 @@ function seriesErrors(factId: string, series: Series): string[] {
       }
       if (!ordered) continue;
 
+      // A line whose source publishes a different range declares its own
+      // span; the full-range rule then holds against that span instead.
+      const span = line.coverage ?? series.coverage;
+      const says = line.coverage ? 'the line says its source publishes' : 'the series says the source publishes';
       const first = line.points[0].period;
       const last = line.points[line.points.length - 1].period;
-      if (comparePeriods(first, series.coverage.from) !== 0) {
+      if (comparePeriods(first, span.from) !== 0) {
         errors.push(
-          `${at}: starts at "${first}" but the series says the source publishes from "${series.coverage.from}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
+          `${at}: starts at "${first}" but ${says} from "${span.from}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
         );
       }
-      if (comparePeriods(last, series.coverage.to) !== 0) {
+      if (comparePeriods(last, span.to) !== 0) {
         errors.push(
-          `${at}: ends at "${last}" but the series says the source publishes to "${series.coverage.to}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
+          `${at}: ends at "${last}" but ${says} to "${span.to}" — show the whole published range, or the chart is the cherry-pick it is meant to prevent`
         );
       }
+      if (line.coverage && (comparePeriods(span.from, series.coverage.from) < 0 || comparePeriods(span.to, series.coverage.to) > 0)) {
+        errors.push(
+          `${at}: its own coverage ${span.from}–${span.to} runs outside the series coverage ${series.coverage.from}–${series.coverage.to}`
+        );
+      }
+    }
+  }
+
+  // With per-line coverage the series declares the union of the lines'
+  // spans, exactly: wider would stretch the axis past every line's data.
+  const spans = series.readings.flatMap(reading => reading.lines.map(line => line.coverage ?? series.coverage));
+  if (series.readings.some(reading => reading.lines.some(line => line.coverage))) {
+    const earliest = spans.map(s => s.from).sort(comparePeriods)[0];
+    const latest = spans.map(s => s.to).sort(comparePeriods).at(-1)!;
+    if (comparePeriods(series.coverage.from, earliest) !== 0 || comparePeriods(series.coverage.to, latest) !== 0) {
+      errors.push(
+        `${where} coverage ${series.coverage.from}–${series.coverage.to} must be the union of its lines' ranges, ${earliest}–${latest}`
+      );
     }
   }
 
@@ -246,17 +268,72 @@ function seriesErrors(factId: string, series: Series): string[] {
     }
   }
 
+  // A "not measured since" band runs from the last point (coverage.to, by
+  // the rule above) to `until`, which defaults to the date the report was
+  // last checked and may not claim past it.
+  const band = series.notMeasuredSince;
+  const until = band ? band.until ?? lastUpdated : undefined;
+  if (band && until !== undefined) {
+    if (comparePeriods(until, series.coverage.to) <= 0) {
+      errors.push(`${where} is "not measured since" ${series.coverage.to} until "${until}", which is not after the last point`);
+    }
+    if (comparePeriods(until, lastUpdated) > 0) {
+      errors.push(`${where} is "not measured since" until "${until}", after the topic was last updated (${lastUpdated})`);
+    }
+    if (band.source > sourceCount) {
+      errors.push(`${where} cites unknown source ${band.source} for its "not measured since" note`);
+    }
+  }
+
   // A coverage end of "2026" runs to the end of 2026, so an event dated
-  // "2026-03" is inside it; compare against the end's own precision.
+  // "2026-03" is inside it; compare against the end's own precision. Events
+  // may fall inside a "not measured since" band — what stopped the
+  // measurement is often one of them.
+  const eventsEnd = until !== undefined && comparePeriods(until, series.coverage.to) > 0 ? until : series.coverage.to;
   for (const event of series.events) {
     if (
       comparePeriods(event.period, series.coverage.from) < 0 ||
-      (comparePeriods(event.period, series.coverage.to) > 0 && !event.period.startsWith(series.coverage.to))
+      (comparePeriods(event.period, eventsEnd) > 0 && !event.period.startsWith(eventsEnd))
     ) {
       errors.push(
-        `${where} marks an event at "${event.period}", which is outside the declared coverage ${series.coverage.from}–${series.coverage.to} — it would sit off the end of the chart`
+        `${where} marks an event at "${event.period}", which is outside the declared coverage ${series.coverage.from}–${eventsEnd} — it would sit off the end of the chart`
       );
     }
+  }
+
+  // A focus window magnifies part of the published range; it may not reach
+  // outside it, and it must hold enough data to draw a line.
+  if (series.focus) {
+    const from = series.focus.from;
+    const to = series.focus.to ?? series.coverage.to;
+    if (comparePeriods(from, series.coverage.from) < 0 || comparePeriods(to, series.coverage.to) > 0) {
+      errors.push(`${where} focus ${from}–${to} runs outside the declared coverage ${series.coverage.from}–${series.coverage.to}`);
+    }
+    if (comparePeriods(from, to) >= 0) {
+      errors.push(`${where} focus starts at "${from}", which is not before its end "${to}"`);
+    }
+    const inside = (period: string) => comparePeriods(period, from) >= 0 && (comparePeriods(period, to) <= 0 || period.startsWith(to));
+    if (!series.readings.some(reading => reading.lines.some(line => line.points.filter(point => inside(point.period)).length >= 2))) {
+      errors.push(`${where} focus ${from}–${to} holds fewer than two points of every line — there is nothing to draw at readable scale`);
+    }
+  }
+
+  // Forecasts are the line's tail: a measured value after a forecast would
+  // put history inside the shaded zone. Their vintage goes in coverage.note.
+  let forecasts = false;
+  for (const reading of series.readings) {
+    for (const line of reading.lines) {
+      const first = line.points.findIndex(point => point.status === 'forecast');
+      if (first < 0) continue;
+      forecasts = true;
+      const after = line.points.slice(first).find(point => point.status !== 'forecast');
+      if (after) {
+        errors.push(`${where} reading "${reading.id}" line "${line.name}": point "${after.period}" is not a forecast but follows one — forecasts must be the line's last points`);
+      }
+    }
+  }
+  if (forecasts && !series.coverage.note) {
+    errors.push(`${where} has forecast points but no coverage.note — name the forecast's vintage there`);
   }
 
   return errors;

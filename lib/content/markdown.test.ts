@@ -114,3 +114,19 @@ test('glossary terms render native popovers with distinct targets', async () => 
   assert.match(html, /before subtracting anyone leaving/);
   await assert.rejects(renderMarkdown('[oops](#glossary-missing)', SLUG), /Unknown glossary term/);
 });
+
+test('a table scrolls inside a focusable region named after the heading before it', async () => {
+  const html = await renderMarkdown('## Federal laws\n\nIntro.\n\n| a | b |\n| - | - |\n| 1 | 2 |', SLUG);
+  assert.match(html, /<div class="sv-prose-table" role="region" tabindex="0" aria-label="Federal laws"><table>/);
+});
+
+test('a table with no heading before it is labelled "Table"', async () => {
+  const html = await renderMarkdown('| a | b |\n| - | - |\n| 1 | 2 |', SLUG);
+  assert.match(html, /<div class="sv-prose-table" role="region" tabindex="0" aria-label="Table"><table>/);
+});
+
+test('a table inside an Observations expando is wrapped and named after its summary', async () => {
+  const html = await renderMarkdown('## Observations {#alpha--observations}\n\n### The case table {#alpha--cases}\n\n| a | b |\n| - | - |\n| 1 | 2 |', SLUG);
+  assert.match(html, /<details id="alpha--cases" class="sv-observation"><summary>The case table<\/summary><div class="sv-observation__body">\s*<div class="sv-prose-table" role="region" tabindex="0" aria-label="The case table"><table>/);
+  assert.equal((html.match(/sv-prose-table/g) ?? []).length, 1);
+});

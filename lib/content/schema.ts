@@ -60,11 +60,36 @@ export const sourceSchema = z.object({
 export const seriesPointSchema = z.object({
   period: partialDate,
   value: z.number(),
+  /**
+   * Absent means measured. A source that mixes history with estimates or
+   * forecasts is drawn to its end honestly — dotted, hollow-marked or shaded
+   * — instead of having those points dropped. Forecasts form the line's tail.
+   */
+  status: z.enum(['estimate', 'provisional', 'forecast']).optional(),
+});
+
+/**
+ * The full range the *source* publishes — not the range the author chose to
+ * plot. Every line must run end to end across it (checked in validate.ts),
+ * which is what stops the chart from becoming the cherry-pick it exists to
+ * expose.
+ */
+export const seriesCoverageSchema = z.object({
+  from: partialDate,
+  to: partialDate,
+  /** Why the range stops where it does, and any vintage caveat on the numbers. */
+  note: z.string().optional(),
 });
 
 /** One line on the chart: immigration, emigration and net migration are three. */
 export const seriesLineSchema = z.object({
   name: z.string().min(1),
+  /**
+   * This line's source publishes a different range from the series — Brent
+   * from 1987 beside WTI from 1986. The line must run the whole of its own
+   * range, and the series coverage is the union of every line's.
+   */
+  coverage: seriesCoverageSchema.optional(),
   points: z
     .array(seriesPointSchema)
     .min(2, 'a series line needs at least two points — one point is not a trend'),
@@ -100,19 +125,6 @@ export const seriesReadingSchema = z.object({
    */
   valuesFrom: z.string().min(1).optional(),
   lines: z.array(seriesLineSchema).min(1),
-});
-
-/**
- * The full range the *source* publishes — not the range the author chose to
- * plot. Every line must run end to end across it (checked in validate.ts),
- * which is what stops the chart from becoming the cherry-pick it exists to
- * expose.
- */
-export const seriesCoverageSchema = z.object({
-  from: partialDate,
-  to: partialDate,
-  /** Why the range stops where it does, and any vintage caveat on the numbers. */
-  note: z.string().optional(),
 });
 
 /**
@@ -159,6 +171,33 @@ export const seriesSchema = z.object({
    */
   periodLabel: z.string().min(1),
   coverage: seriesCoverageSchema,
+  /**
+   * The series stops because measurement stopped, not because the source
+   * ends — the gap is a finding. Drawn as a hatched band from the last point
+   * to `until`.
+   */
+  notMeasuredSince: z.object({
+    /** Short, shown in the band or beside it: "Not verified since IAEA access ended". */
+    label: z.string().min(1).max(48),
+    /** What stopped and why, in the source's terms. */
+    note: z.string().min(1),
+    /** Where the band ends. Defaults to the topic's lastUpdated (filled in by the loader). */
+    until: partialDate.optional(),
+    /** The fact's numbered citation for the note. */
+    source: z.number().int().positive(),
+  }).optional(),
+  /**
+   * A period drawn at readable scale under a small strip of the full range.
+   * The full range is still drawn (the strip), still declared (`coverage`)
+   * and still tabulated; only the large plot is the window.
+   */
+  focus: z.object({
+    from: partialDate,
+    /** Defaults to coverage.to. */
+    to: partialDate.optional(),
+    /** Names the window in the switch: "Last 12 months". */
+    label: z.string().min(1),
+  }).optional(),
   breaks: z.array(seriesBreakSchema).default([]),
   events: z.array(seriesEventSchema).default([]),
   readings: z.array(seriesReadingSchema).min(1),
@@ -191,6 +230,8 @@ export const comparisonChartSchema = z.object({
   valuesFrom: z.string().min(1).optional(),
   /** Labels for an optional grouped comparison. Kept in content so the shared UI never assumes a subject such as nationality. */
   groupLabel: z.string().min(1).optional(),
+  /** What each bar is, e.g. "Method": heads the item column of the breakdown table. `groupLabel` names the columns. */
+  itemLabel: z.string().min(1).optional(),
   allGroupsLabel: z.string().min(1).optional(),
   groups: z.array(z.string().min(1)).min(2).optional(),
   defaultGroup: z.number().int().nonnegative().optional(),

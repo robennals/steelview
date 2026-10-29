@@ -15,6 +15,7 @@ import {
   Timeline,
 } from '@/components/report';
 import { bodySections, chartObservations, methodChanges } from '@/lib/content/chart-observations';
+import { unmeasuredSpan } from '@/lib/chart/series-chart';
 import {
   barChartProps,
   caveatListProps,
@@ -64,7 +65,7 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
   const series = seriesId === undefined ? fact.series : fact.additionalSeries?.[index];
   if (!series) return null;
   const sourceOffset = seriesSourceOffset(fact, index);
-  const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1)} className="sv-graph-observations" />]));
+  const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series))} className="sv-graph-observations" />]));
   return <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />;
 }
 

@@ -534,6 +534,27 @@ also lying about what the source publishes, which is a lie a reader can check
 against the cited workbook. `immigration-against-the-long-run` runs 1964 to
 2025, all 62 points, because that is where the ONS method starts.
 
+**Comparable measures from sources with different ranges share one axis.**
+Give a line its own `coverage` when its source publishes a different range
+from the others — Brent daily from May 1987 beside WTI from 1986, or Amnesty's
+Iran count beside IHRNGO's from 2008. That line must then run the whole of its
+own range, and the series `coverage` must be exactly the union of the lines'
+ranges, so the axis is never stretched past the data. The legend names the
+line's range ("Brent (from May 1987)"), and the table marks the years outside
+it "—". Do not split such measures into separate charts to avoid the rule.
+
+**A dense series can focus on a short period without dropping the rest.**
+Daily Brent has over 9,000 points across 39 years, so a six-month shock is a
+sliver of the plot. Add `focus` with a `from` date, an optional `to` (it
+defaults to `coverage.to`) and a `label` for the switch ("Last 12 months").
+The chart then draws a small strip of the full range with the window
+outlined, says in words which period the plot shows, and draws the window at
+readable scale; a switch shows the full range instead, and the table still
+holds every value. The window must lie inside the coverage and hold at least
+two points of some line. Events outside it stay in the numbered key, marked
+"(outside the period shown)". `focus` is for reading the recent past
+closely, never for hiding the rest: the coverage rule is unchanged.
+
 **A series carries its own quoted source**, in the same shape as a fact's
 sources, because a chart is a factual assertion like any other. A reading
 that rests on a different dataset — a derived denominator — carries a second
@@ -552,6 +573,24 @@ takes a period, a short label and a note in the source's own terms.
 `immigration-against-the-long-run` marks three: LTIM replacing IPS-alone in
 1991, administrative data backdated to 2012, and the June 2021 method change.
 The line still runs through them; the reader is told what changed.
+
+**Estimates and forecasts are drawn, not dropped.** When a source mixes
+history with estimates, provisional values or forecasts, run the series to
+the source's end and give each such point a `status`: `estimate`,
+`provisional` or `forecast` (absent means measured). Estimates and provisional
+values are dotted with hollow markers; forecasts sit in a shaded zone labelled
+Forecast; the table adds "(est.)", "(prov.)" or "(forecast)". Forecasts must be
+a line's last points, and a series with any forecast needs a `coverage.note`
+naming the forecast's vintage ("EIA STEO, October 2026").
+
+**When measurement stops, say so on the chart.** If a series ends because
+nobody has measured since — not because the source ends — add
+`notMeasuredSince` with a short `label` (48 characters at most), a `note` in
+the source's terms, the numbered `source` that says so, and optionally `until`
+(it defaults to the topic's `lastUpdated`, and may not be later). The chart
+hatches the gap from the last point to `until`, writes a key line under the
+plot, and adds a Method Changes entry the key line links to. Events may fall
+inside the band.
 
 **Multiple readings, not a toggle you can ship the flattering half of.** A
 `series` carries one or more `readings` and the chart draws every one. The
@@ -1138,9 +1177,12 @@ them.
 | No orphan headline facts | `lib/content/validate.ts:193` |
 | Topic principles resolve to shared definitions; viewpoints use only their topic’s listed principles | `lib/content/load.ts`, `lib/content/validate.ts` |
 | Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
-| Series lines span the declared coverage exactly, end to end | `lib/content/validate.ts:279` |
+| Series lines span the declared coverage (or the line's own `coverage`) exactly, end to end; the series coverage is the union of its lines' | `lib/content/validate.ts`, `seriesErrors` |
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
 | Series breaks fall inside the declared coverage | `lib/content/validate.ts:296` |
+| Forecast points are each line's tail, and need a `coverage.note` | `lib/content/validate.ts`, `seriesErrors` |
+| A series `focus` lies inside the coverage, runs forwards and holds two points of some line | `lib/content/validate.ts`, `seriesErrors` |
+| A `notMeasuredSince` band ends after the last point and not after `lastUpdated`, and cites a real source | `lib/content/validate.ts`, `seriesErrors` |
 | Inline `#fact-` citations resolve, and a viewpoint only cites facts it lists | `lib/content/validate.ts:325` |
 | Figure shapes: known `kind`, slug ids, `currency` only with unit `currency`, ≥2 table columns, a tile map's `data` and `valueLabel` | `lib/content/schema.ts` (`figureSchema`) |
 | Figure ids are unique and do not reuse a series, reading or comparison id | `lib/content/validate.ts` (`figureErrors`, F1) |
@@ -1394,6 +1436,12 @@ the full table remains available without JavaScript. Components must sum to the
 total. Keep unknown citizenship and statelessness identifiable. If published
 rounded components do not add to the rounded total, label the adjustment and
 explain it—do not quietly count it as a measured group of migrants.
+
+Name both dimensions of the breakdown table. `itemLabel` says what each bar is
+("Country", "Method") and heads the table's first column; without it the column
+reads "Category". `groupLabel` says what the groups are ("nationality", "whether
+an ID check would reach it") and goes in the table's caption, "{title}, by
+{groupLabel}".
 
 Use `featuredCharts` to bring an existing supporting fact's breakdown into the
 main graph sequence, including its observation groups and measurement-change explanations. Keep

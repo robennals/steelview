@@ -2464,6 +2464,7 @@ export const internationalImmigrationFact: Fact = {
         "Other / rounding"
       ],
       "groupLabel": "nationality",
+      "itemLabel": "Country",
       "allGroupsLabel": "All arrivals",
       "defaultGroup": 0
     }

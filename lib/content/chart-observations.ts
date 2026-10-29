@@ -36,10 +36,23 @@ export function bodySections(html: string, factId: string, ids: string[]): { sec
   return { sections, bodyHtml };
 }
 
-/** A separate disclosure for the methods used by each graph. */
-export function methodChanges(factId: string, readingId: string, breaks: { period: string; label: string; note: string }[], sourceNumber: number) {
-  if (!breaks.length) return '';
+/**
+ * A separate disclosure for the methods used by each graph. A "not measured
+ * since" band is a change in measurement too — it stopped — so it gets an
+ * entry here, which the key line under the plot links to, citing its own
+ * source rather than the series'.
+ */
+export function methodChanges(
+  factId: string,
+  readingId: string,
+  breaks: { period: string; label: string; note: string }[],
+  sourceNumber: number,
+  unmeasured?: { from: string; until: string; label: string; note: string; source: number }
+) {
+  if (!breaks.length && !unmeasured) return '';
   const escape = (value: string) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
-  const entries = breaks.map((gap) => `<details class="sv-observation sv-method-observation" id="${escape(factId)}--${escape(readingId)}-method-${escape(gap.period)}"><summary>${escape(gap.period)}: ${escape(gap.label)}</summary><div class="sv-observation__body"><p>${escape(gap.note)} <a href="#source-${escape(factId)}-${sourceNumber}">[${sourceNumber}]</a></p></div></details>`).join('');
+  const entry = (id: string, summary: string, note: string, source: number) => `<details class="sv-observation sv-method-observation" id="${escape(id)}"><summary>${escape(summary)}</summary><div class="sv-observation__body"><p>${escape(note)} <a href="#source-${escape(factId)}-${source}">[${source}]</a></p></div></details>`;
+  const entries = breaks.map((gap) => entry(`${factId}--${readingId}-method-${gap.period}`, `${gap.period}: ${gap.label}`, gap.note, sourceNumber)).join('')
+    + (unmeasured ? entry(`${factId}--${readingId}-not-measured`, `${unmeasured.from}–${unmeasured.until}: ${unmeasured.label}`, unmeasured.note, unmeasured.source) : '');
   return `<details class="sv-method-changes-group" id="${escape(factId)}--method-changes-${escape(readingId)}"><summary>Method Changes</summary>${entries}</details>`;
 }

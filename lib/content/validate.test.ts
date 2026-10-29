@@ -736,3 +736,97 @@ test('a viewpoint may cite a component figure by its chart id', () => {
   topic.viewpoints[0].body = 'See [the rates](#fact-figure-examples/chart-nope).';
   assert.ok(hasError(topic, 'unknown section "chart-nope"'));
 });
+
+/* ------------------------------------------------ 4.4: per-line coverage */
+
+/** A second line whose source starts later, covering 1992–1993 only. */
+function laterLine(points = [{ period: '1992', value: 1 }, { period: '1993', value: 2 }]) {
+  return { name: 'Later source', coverage: { from: '1992', to: '1993' }, points };
+}
+
+test('a line with its own coverage may start later than the series', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines.push(laterLine());
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('a line that stops short of its own coverage fails, naming that coverage', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines.push(laterLine([{ period: '1992', value: 1 }, { period: '1992-06', value: 2 }]));
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('line "Later source"') && e.includes('its source publishes to "1993"')), errors.join('\n'));
+});
+
+test('a series coverage wider than the union of its lines fails', () => {
+  const t = topicWithSeries({ coverage: { from: '1989', to: '1993' } });
+  const lines = t.facts[0].series!.readings[0].lines;
+  lines[0].coverage = { from: '1990', to: '1993' };
+  lines.push(laterLine());
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('must be the union') && e.includes('1990–1993')), errors.join('\n'));
+});
+
+test('a line coverage outside the series coverage fails', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines.push({ ...laterLine([{ period: '1992', value: 1 }, { period: '1995', value: 2 }]), coverage: { from: '1992', to: '1995' } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('runs outside the series coverage')), errors.join('\n'));
+});
+
+/* ------------------------------------- 4.6: estimated and forecast points */
+
+test('a measured point after a forecast fails', () => {
+  const t = topicWithSeries({ coverage: { from: '1990', to: '1993', note: 'Forecast from the 2024 vintage.' } });
+  const points = t.facts[0].series!.readings[0].lines[0].points;
+  points[2].status = 'forecast';
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('point "1993" is not a forecast but follows one')), errors.join('\n'));
+  points[3].status = 'forecast';
+  points[1].status = 'estimate';
+  assert.deepEqual(validateTopic(t), []);
+});
+
+test('a forecast without a coverage note naming its vintage fails', () => {
+  const t = topicWithSeries();
+  t.facts[0].series!.readings[0].lines[0].points[3].status = 'forecast';
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('no coverage.note')), errors.join('\n'));
+});
+
+/* ------------------------------------------ 4.5: "not measured since" band */
+
+test('a "not measured since" band that ends before the last point fails', () => {
+  const t = topicWithSeries({ notMeasuredSince: { label: 'Not verified', note: 'Access ended.', until: '1992', source: 1 } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('not after the last point')), errors.join('\n'));
+});
+
+test('a "not measured since" band may not end after the topic was last updated, and cites a real source', () => {
+  const t = topicWithSeries({ notMeasuredSince: { label: 'Not verified', note: 'Access ended.', until: '2027', source: 9 } });
+  const errors = validateTopic(t);
+  assert.ok(errors.some(e => e.includes('after the topic was last updated')), errors.join('\n'));
+  assert.ok(errors.some(e => e.includes('unknown source 9')), errors.join('\n'));
+});
+
+test('an event inside a "not measured since" band passes; its end defaults to lastUpdated', () => {
+  const t = topicWithSeries({
+    notMeasuredSince: { label: 'Not verified', note: 'Access ended.', source: 1 },
+    events: [{ period: '2001', label: 'verification stops' }],
+  });
+  assert.deepEqual(validateTopic(t), []);
+});
+
+/* ---------------------------------------------------- 4.3: focus window */
+
+test('a focus window inside the coverage passes; one reaching outside it fails', () => {
+  assert.deepEqual(validateTopic(topicWithSeries({ focus: { from: '1992', label: 'Last two years' } })), []);
+  const errors = validateTopic(topicWithSeries({ focus: { from: '1989', to: '1992', label: 'Window' } }));
+  assert.ok(errors.some(e => e.includes('focus 1989–1992 runs outside the declared coverage')), errors.join('\n'));
+});
+
+test('a focus window must run forwards and hold two points of some line', () => {
+  const backwards = validateTopic(topicWithSeries({ focus: { from: '1993', to: '1992', label: 'Window' } }));
+  assert.ok(backwards.some(e => e.includes('is not before its end')), backwards.join('\n'));
+  const empty = validateTopic(topicWithSeries({ focus: { from: '1992-03', to: '1992-09', label: 'Window' } }));
+  assert.ok(empty.some(e => e.includes('fewer than two points')), empty.join('\n'));
+});

@@ -105,3 +105,24 @@ test('closing the panel takes the chart off the page with it', async ({ page }) 
   await expect(page.locator('.sv-chart')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
 });
+
+// Depends on authored us-voter-id content: the fact
+// `voter-id-rules-in-the-us-and-abroad` carries the NCSL 1950–2026 series
+// (reading `states-with-id`) with five dated events, each with a note.
+const VOTER_ID_FACT = '/topics/us-voter-id/facts/voter-id-rules-in-the-us-and-abroad';
+const ID_LAW_KEY = 'sv-event-strip-voter-id-rules-in-the-us-and-abroad--states-with-id-events';
+
+test('an event marker opens its own key item and leaves the others closed', async ({ page }) => {
+  await page.goto(VOTER_ID_FACT);
+  const strip = page.locator(`#voter-id-rules-in-the-us-and-abroad--states-with-id-events`);
+  for (const n of [1, 2, 3, 4, 5]) await expect(page.locator(`#${ID_LAW_KEY}-${n}`)).not.toHaveAttribute('open');
+
+  await strip.locator(`a.sv-event-strip__marker[href="#${ID_LAW_KEY}-3"]`).click();
+  await expect(page.locator(`#${ID_LAW_KEY}-3`)).toHaveAttribute('open', '');
+  for (const n of [1, 2, 4, 5]) await expect(page.locator(`#${ID_LAW_KEY}-${n}`)).not.toHaveAttribute('open');
+});
+
+test('loading the page at an event item opens it', async ({ page }) => {
+  await page.goto(`${VOTER_ID_FACT}#${ID_LAW_KEY}-3`);
+  await expect(page.locator(`#${ID_LAW_KEY}-3`)).toHaveAttribute('open', '');
+});
