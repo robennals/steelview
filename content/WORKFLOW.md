@@ -53,8 +53,10 @@ For each viewpoint, the outline gives:
   redrafting. It normally becomes the viewpoint's filename in stage 6.
 - **Title**: a proposition someone would say aloud
   ([Titles](AUTHORING.md#titles)).
-- **Its arguments**, three to six, each as its holder would make it, in a
-  sentence or two.
+- **Its arguments**, four to six, each as its holder would make it, in a
+  sentence or two. Each opens with a one-line claim that becomes a section
+  heading in stage 6, so the claims read alone should add up to the title
+  ([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).
 - **The empirical claims under each argument**: what would have to be true
   about the world for the argument to work. These become the questions the
   data must answer. Write them as questions with a measure in them — "Has
@@ -345,11 +347,20 @@ now costs one file; found later it costs every viewpoint that cites it.
 ## 6. Write the viewpoints
 
 **The agent drafts each viewpoint** from its outline and the observations
-that now exist, with every empirical assertion a pill to an observation. The
+that now exist, with every empirical assertion a pill to an observation. Each
+viewpoint is a short lead, then one `###` section per outline argument: the
+heading is the argument's one-line claim, and beneath it a short prose
+paragraph or two gives the evidence, with no bullet lists. Write in short,
+plain sentences a middle-school reader can follow. Pill text states
+the point the argument needs and leaves exact figures, dates and sources to
+the report it opens. The
 human and agent then edit together, one viewpoint at a time, until the
 holder of that view would find it better argued than their own version
 ([The bar](AUTHORING.md#the-bar)).
 
+- **Review the headings first.** Read each viewpoint's headings alone before
+  its text: if they do not add up to the title, fix the argument before the
+  prose.
 - **The agent proposes; the human decides** on every change of argument.
   Pure wording fixes against the [prose style](AUTHORING.md#prose-style)
   rules the agent can just make.

@@ -1430,6 +1430,11 @@
     }
   }
 
+  /* Space between the filled title row and the argument's opening lead. */
+  .sv-viewpoint > .sv-item__body {
+    padding-top: 1.5rem;
+  }
+
   /* A viewpoint body is the argument itself, so it reads at full ink. */
   .sv-viewpoint > .sv-item__body > .prose-body {
     color: var(--ink);
