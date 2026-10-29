@@ -299,7 +299,7 @@ function Reading({
 }
 
 /** A series' events as strip markers, each crediting the fact citation that dates it. */
-function stripEvents(series: Series, factId: string, sources: Source[]): StripEvent[] {
+export function stripEvents(series: Pick<Series, 'events'>, factId: string, sources: Source[]): StripEvent[] {
   return series.events.map(event => {
     const cited = event.source === undefined ? undefined : sources[event.source - 1];
     return {

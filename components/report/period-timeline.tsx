@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { EventKey, EventLane, type StripEvent } from './event-strip';
 import { ReportFigure } from './figure';
@@ -37,6 +37,8 @@ export type PeriodTimelineProps = {
   sources?: SourceCredit[];
   note?: string;
   headingLevel?: 2 | 3;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 /**
@@ -74,6 +76,7 @@ export function PeriodTimeline({
   description,
   sources,
   note,
+  footer,
   headingLevel,
 }: PeriodTimelineProps) {
   const reactId = useId();
@@ -214,7 +217,7 @@ export function PeriodTimeline({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} headingLevel={headingLevel} className="sv-period-timeline">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-period-timeline">
       <ChartViewToggle label={title ?? 'Periods'} graph={graph} table={table} />
     </ReportFigure>
   );

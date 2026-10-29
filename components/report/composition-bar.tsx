@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { OTHER_KEY, compose, type CompositionCategory, type CompositionRowInput } from './composition';
-import { ReportFigure } from './figure';
+import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
 import { seriesColor } from './scale';
 import type { SourceCredit, ValueFormat } from './types';
@@ -27,6 +27,8 @@ export type CompositionBarProps = {
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 /**
@@ -57,6 +59,7 @@ export function CompositionBar({
   description,
   sources,
   note,
+  footer,
 }: CompositionBarProps) {
   const composed = compose(categories, rows, { otherThreshold, otherLabel });
   const color = (key: string) => (key === OTHER_KEY ? 'var(--ink-4)' : seriesColor(categories.findIndex(c => c.key === key) + 1));
@@ -75,7 +78,10 @@ export function CompositionBar({
         {composed.rows.map(row => (
           <li key={row.label} className="sv-composition__row">
             <p className="sv-composition__head">
-              <span className="sv-composition__label">{row.label}</span>
+              <span className="sv-composition__label">
+                {row.label}
+                {row.source && <SourceCredits sources={[row.source]} />}
+              </span>
               {showCounts && <span className="sv-composition__total">{formatValue(row.total, countFormat)} total</span>}
             </p>
             {/* The text equivalent of the bar, in stacking order. */}
@@ -117,7 +123,10 @@ export function CompositionBar({
         <tbody>
           {composed.rows.map(row => (
             <tr key={row.label}>
-              <th scope="row">{row.label}</th>
+              <th scope="row">
+                {row.label}
+                {row.source && <SourceCredits sources={[row.source]} />}
+              </th>
               {row.segments.map(segment => (
                 <td key={segment.key}>
                   {segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%
@@ -133,7 +142,7 @@ export function CompositionBar({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} className="sv-composition">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-composition">
       <ChartViewToggle label={title ?? 'Composition'} graph={graph} table={table} />
     </ReportFigure>
   );

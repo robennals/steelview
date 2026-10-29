@@ -29,6 +29,8 @@ export type BarChartProps = {
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
 };
 
 /**
@@ -50,6 +52,7 @@ export function BarChart({
   description,
   sources,
   note,
+  footer,
 }: BarChartProps) {
   const ordered = sort === 'value' ? [...items].sort((a, b) => b.value - a.value) : items;
   const scale = barScale(ordered.map(item => item.value), domainMax);
@@ -62,7 +65,7 @@ export function BarChart({
   }));
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} className="sv-bar-chart">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-bar-chart">
       <p className="sv-chart__axis-label">{valueLabel}</p>
       {items.length === 0 ? (
         <p className="sv-report__empty">No values to show.</p>

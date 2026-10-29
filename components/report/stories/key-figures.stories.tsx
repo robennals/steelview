@@ -41,3 +41,16 @@ export const ThreeFigures: Story = {
 export const Pair: Story = {
   args: { title: undefined, figures: asylumKeyFigures.figures.slice(0, 2) },
 };
+
+/** A figure the source gives as a bound: the qualifier is printed before the number. */
+export const Qualified: Story = {
+  args: {
+    title: 'How the auditor re-checked signature decisions',
+    description: 'Illustrative: a source that says "more than 7,200" is shown as it says it, not as an exact count.',
+    figures: [
+      { value: 7200, qualifier: 'more than', format: { unit: 'count' }, label: 'signatures re-examined', period: '2020', periodLabel: 'November 2020 general election' },
+      { value: 98.7, format: { unit: 'percent', decimals: 1 }, label: 'of county decisions judged appropriate', period: '2020' },
+    ],
+    sources: [{ label: 'Illustrative source' }],
+  },
+};
