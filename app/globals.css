@@ -43,6 +43,11 @@
   --accent: #b3350a;
   --accent-wash: #fdf2ec;
 
+  /* Principle citations are underlined in a second hue so a reader can tell,
+     at the point of use, a value the argument rests on from a fact it cites.
+     6.8:1 on paper, 5.3:1 on the dark paper. */
+  --principle: #1f5c9e;
+
   /* Chart series, in fixed slot order. Charts can carry several meaningful
      groups, so the shared palette provides eight durable hues rather than
      silently falling back to the page ink after the third line. */
@@ -80,6 +85,8 @@
 
     --accent: #ff8a4c;
     --accent-wash: #241812;
+
+    --principle: #3987e5;
 
     /* The shared series palette, re-stepped for the dark paper. */
     --sv-series-1: #3987e5;
@@ -1817,25 +1824,31 @@
   /* ------------------------------------------------------ fact citations */
 
   /* An inline citation: prose saying, at the point of use, that this clause
-     is standing on a fact the page will show you. It is the page's main
-     honesty signal, so it is deliberately louder than a footnote — the text
-     keeps full ink strength for readability and the accent rule under it
-     carries the signal, closed by the same filled disc the fact statuses use
-     for "the evidence is solid". */
+     is standing on a fact the page will show you. The text keeps full ink
+     strength for readability and a thin accent rule under it carries the
+     signal, closed by the same filled disc the fact statuses use for "the
+     evidence is solid". A principle citation gets the same rule in the
+     principle hue, so the two kinds of support stay distinguishable. */
+  .prose-body a.sv-cite,
   .prose-body a.sv-principle-cite {
     color: var(--ink);
-    text-decoration: none;
-    background: var(--accent-wash);
-    border: 1px solid var(--accent);
-    border-radius: 0.55em;
-    padding: 0.08em 0.3em;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
+    text-decoration-line: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1.5px;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 120ms ease, text-decoration-thickness 120ms ease;
   }
 
+  .prose-body a.sv-principle-cite {
+    text-decoration-color: var(--principle);
+  }
+
+  .prose-body a.sv-cite:hover,
+  .prose-body a.sv-cite:focus-visible,
   .prose-body a.sv-principle-cite:hover,
   .prose-body a.sv-principle-cite:focus-visible {
-    box-shadow: 0 0 0 0.18em var(--accent-wash);
+    text-decoration-thickness: 2.5px;
   }
 
   /* An unresolved premise should remain visible in the argument without
@@ -1869,21 +1882,6 @@
     box-shadow: 0 0 0 0.18em var(--paper-sunk);
   }
 
-  .prose-body a.sv-cite {
-    color: var(--ink);
-    text-decoration: none;
-    background: var(--accent-wash);
-    padding: 0.08em 0.3em;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-    text-decoration-skip-ink: none;
-    text-underline-offset: 0.18em;
-    border-radius: 0.55em;
-    transition: background-color 120ms ease, box-shadow 120ms ease;
-  }
-
   .prose-body a.sv-cite::after {
     content: "";
     display: inline-block;
@@ -1893,12 +1891,6 @@
     border-radius: 999px;
     background: var(--accent);
     vertical-align: 0.42em;
-  }
-
-  .prose-body a.sv-cite:hover,
-  .prose-body a.sv-cite:focus-visible {
-    background-color: var(--accent-wash);
-    box-shadow: 0 0 0 0.18em var(--accent-wash);
   }
 
   /* --------------------------------------------------- a fact's own page */
