@@ -261,9 +261,8 @@
 
   /* -------------------------------------------------------- claim check */
 
-  /* Same status alphabet as a fact row: the left rule's style changes with
-     the status (solid, double, dashed, dotted, hairline), mirroring the
-     .sv-fact rules in globals.css. */
+  /* The verdict's left rule: its style changes with the status (solid,
+     double, dashed, dotted, hairline), alongside the label and glyph. */
   .sv-claim {
     margin-block: 1.75rem;
     padding-left: 0.9rem;

@@ -4,7 +4,6 @@ import type { Fact, Topic } from '@/lib/content/types';
 import { factPath, topicPath } from '@/lib/content/types';
 import { Prose } from './prose';
 import { FactCharts, FactFigures, FeaturedCharts, chartGroups, figureGroups, type BodiedFact, type FigurePage } from './fact-figures';
-import { StatusBadge } from './status-badge';
 import { EvidenceNavigation } from './evidence-navigation';
 
 export type { BodiedFact } from './fact-figures';
@@ -85,9 +84,9 @@ function FactBody({ fact, bodyHtml, featured = [], hideCharts = false, page }: B
  */
 function SupportingFact({ slug, fact, bodyHtml, hideCharts, page }: BodiedFact & { slug: string; hideCharts?: boolean; page: FigurePage }) {
   return (
-    <details id={`evidence-${fact.id}`} className="sv-item sv-subfact" data-status={fact.status}>
+    <details id={`evidence-${fact.id}`} className="sv-item sv-subfact">
       <summary className="sv-item__summary">
-        <span className="sv-item__claim">{fact.title ?? fact.claim}</span> <StatusBadge status={fact.status} />
+        <span className="sv-item__claim">{fact.title ?? fact.claim}</span>
       </summary>
       <div className="sv-item__body">
         <FactBody fact={fact} bodyHtml={bodyHtml} hideCharts={hideCharts} page={page} />
@@ -157,7 +156,7 @@ export function FactArticle({
     facts: topic?.facts ?? [fact, ...supporting.map(({ fact: child }) => child), ...(parent ? [parent] : [])],
   };
   return (
-    <article className="sv-factpage" data-status={fact.status} data-variant={variant}>
+    <article className="sv-factpage" data-variant={variant}>
       <EvidenceNavigation />
       {/*
        * A supporting fact is evidence for a larger claim and says little
@@ -183,7 +182,7 @@ export function FactArticle({
         <Claim className="sv-factpage__claim" id={headingId}>
           {fact.title ?? fact.claim}
         </Claim>
-        {fact.assessedClaim ? <p className="sv-assessed">Claim assessed: “{fact.assessedClaim}” <StatusBadge status={fact.status} /></p> : <StatusBadge status={fact.status} />}
+        {fact.assessedClaim && <p className="sv-assessed">Claim assessed: “{fact.assessedClaim}”</p>}
       </header>
 
       <div className="sv-factpage__body">

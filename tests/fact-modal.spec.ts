@@ -195,9 +195,8 @@ test.describe('with JavaScript disabled', () => {
     await link.click();
     await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
     await expect(page.locator(dialog)).toHaveCount(0);
-    // The whole fact is there: claim, status, context, chart, sources.
+    // The whole fact is there: claim, context, chart, sources.
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
-    await expect(page.locator('.sv-factpage .sv-status').first()).toBeVisible();
     await expect(page.locator('.sv-chart').first()).toBeVisible();
     await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
     await page.locator('.sv-references > summary').click();

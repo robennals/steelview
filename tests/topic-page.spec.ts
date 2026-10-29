@@ -23,13 +23,11 @@ test('the topic page shows all four sections', async ({ page }) => {
 });
 
 // The list is a set of claims a reader can skim: every row states its claim
-// and its status with nothing opened, and no JavaScript involved in either.
-test('the Facts list states every claim and status without opening anything', async ({ page }) => {
+// with nothing opened and no JavaScript involved.
+test('the Facts list states every claim without opening anything', async ({ page }) => {
   await page.goto(TOPIC);
   const first = page.locator('.sv-fact').first();
   await expect(first.locator('.sv-item__claim').first()).toBeVisible();
-  await expect(first.locator('.sv-status').first()).toBeVisible();
-  await expect(first.locator('.sv-status').first()).toHaveText('Well supported');
   // The context behind a claim is not in the list — it is at the fact's URL.
   await expect(page.getByText('It is not a measurement of offending', { exact: false })).toHaveCount(
     0
