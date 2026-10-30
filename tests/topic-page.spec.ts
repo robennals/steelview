@@ -37,7 +37,7 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   await explore.click();
 
   const sheet = page.locator('dialog[open]');
-  await expect(sheet.getByRole('heading', { level: 2 })).toContainText('Work and Study Visas and the Care Workforce');
+  await expect(sheet.locator('.sv-modal__title')).toContainText('Work and Study Visas and the Care Workforce');
   await expect(sheet.locator('.sv-walk__tab[aria-current]')).toBeVisible();
   await expect(page).toHaveURL(new RegExp(`${TOPIC}#work-and-study-routes--`));
 
