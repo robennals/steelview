@@ -805,10 +805,9 @@
      SVG generated on the server — it themes with the page's own tokens via
      currentColor, prints, and is there with JavaScript off. */
 
+  /* No rule above a chart: its title starts it. */
   .sv-chart {
     margin: 1.9rem 0 0;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--rule);
   }
 
   .sv-chart__caption {
@@ -2667,7 +2666,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* A preview fills whatever height its container gives it, so every slide in a
    carousel draws its chart at the same size: the figure is a column whose plot
    (or bar list) takes the space left under the caption. */
-.sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; padding-top: 0; border-top: 0; }
+.sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; }
 .sv-chart[data-preview] .sv-chart__highlight,
 .sv-chart[data-preview] .sv-chart__reading { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; }
