@@ -1,28 +1,18 @@
 import Link from 'next/link';
 import { listTopicSlugs, loadTopic } from '@/lib/content/load';
+import { TopicRows } from '@/components/home/topic-rows';
 
 export default async function HomePage() {
   const slugs = await listTopicSlugs();
   const topics = await Promise.all(slugs.map((slug) => loadTopic(slug)));
 
   return (
-    <main className="sv-wrap">
-      <header className="sv-pagehead">
-        <h1 className="sv-title">Steelview</h1>
-        <p className="sv-index__lede">
-          The strongest version of every side of an argument, and the data underneath it.
-        </p>
+    <main className="sv-home">
+      <header className="sv-home__hero">
+        <h1 className="sv-home__tagline">Every side of the argument, at its strongest.</h1>
+        <Link className="sv-home__about" href="/about">What is Steelview? <span aria-hidden="true">→</span></Link>
       </header>
-      <ul className="sv-topics">
-        {topics.map((topic) => (
-          <li key={topic.slug}>
-            <Link href={`/topics/${topic.slug}`}>
-              <span className="sv-topics__title">{topic.title}</span>
-              <span className="sv-topics__blurb">{topic.subtitle}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <TopicRows topics={topics} />
     </main>
   );
 }

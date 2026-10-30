@@ -2,6 +2,19 @@
 title: Asylum and Channel crossings in the UK
 subtitle: How Britain should treat people who claim asylum, stop small-boat crossings and remove people with no right to stay.
 lastUpdated: 2026-10-29
+tags: [UK, Asylum]
+# The first chart shows how big the issue is; together they represent every
+# viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
+previewCharts:
+  - fact: asylum-claims-and-decisions
+    chart: series
+  - fact: channel-crossings-and-irregular-arrivals
+    chart: series
+    reading: arrivals
+  - fact: removals-and-what-stops-them
+    chart: series
+  - fact: asylum-claims-and-decisions
+    chart: grant-rate-series
 dataOrder:
   - channel-crossings-and-irregular-arrivals
   - asylum-claims-and-decisions

@@ -641,6 +641,45 @@ lags and incomplete effects when relevant. Do not manufacture a story for every
 small wiggle; if a major movement has no established explanation, say what is
 unknown. Explain measurement breaks in Method Changes so readers do not mistake them for events.
 
+### Home-page preview charts
+
+Each topic's row on the home page opens onto a carousel of a few of its
+charts, listed in `previewCharts` in `topic.md` as `fact` and `chart` pairs
+(`chart` is `series`, an `additionalSeries` id or a `comparisons` id). Each
+slide is one chart: for a series with several readings, add `reading` to name
+the one the slide draws (default: the first). The full chart, a click away,
+still draws every reading, and holds everything a slide leaves out — a slide
+is only the chart's title and the graph. The
+carousel is the first evidence many readers see, so choosing it is choosing
+what the topic looks like — and a carousel that mostly backs one side has
+failed however good it looks. Choose by these rules:
+
+1. **The first chart shows the magnitude of the issue** — whether this is a
+   big or a small problem — before anything about its nature, whichever
+   viewpoint its data happens to help.
+2. **Every viewpoint is represented by at least one chart that is among its
+   strongest evidence.** One chart can represent several viewpoints; add no
+   extra chart when one already serves.
+3. **Prefer charts that also give a good overview of the topic**, even over a
+   slightly stronger but narrower chart.
+4. **Keep the set small** — about four.
+
+The carousel never labels a chart as evidence for a viewpoint: a chart usually
+bears on several. The build checks the mechanical half of rule 2 — every
+viewpoint must cite, inline, the fact behind at least one preview chart — and
+leaves "strongest", magnitude and overview to you.
+
+`uk-immigration` opens on `immigration-against-the-long-run`, read as a
+share of the population since 1964 (`reading: share-of-population`), which is
+what makes the magnitude legible. Then the modelled lifetime fiscal
+contribution by visa route (`immigration-economy-and-public-finances` /
+`lifetime-by-route`), government investment against the OECD
+(`immigration-housing-and-public-services` / `investment`), grants of
+settlement (`settlement-and-migrant-status` / `series`) and the foreign-born
+share since 1951 (`integration-outcomes` / `series`). Five charts, because
+seven viewpoints lean on five distinct bodies of evidence; between them they
+cover all seven.
+
 ### Figures
 
 A fact can place any component from the report library — tables, key figures,
@@ -1365,6 +1404,8 @@ them.
 | Quotes and claim-check claims appear verbatim in their cited source's quote | `lib/content/validate.ts` (F11) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
+| A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
+| Preview charts (and any named `reading`) resolve, appear once, and every viewpoint cites the fact behind one | `lib/content/validate.ts` (`previewChartErrors`) |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

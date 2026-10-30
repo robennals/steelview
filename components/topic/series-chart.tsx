@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
+import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
 import { SeriesHighlight } from './series-highlight';
 import { comparePeriods } from '@/lib/content/period';
@@ -21,7 +22,7 @@ import {
   seriesStrokeDash,
   tickLabelWidth,
   unmeasuredSpan,
-  type ChartVariant,
+  type SeriesVariant,
   type FocusWindow,
 } from '@/lib/chart/series-chart';
 
@@ -58,7 +59,7 @@ function Plot({
 }: {
   series: Series;
   reading: SeriesReading;
-  variant: ChartVariant;
+  variant: SeriesVariant;
   descriptionId: string;
   /** Draw only this period, at readable scale, with the lines clipped at the plot edges. */
   window?: FocusWindow;
@@ -378,6 +379,7 @@ function Reading({
   observations,
   intro,
   events,
+  preview,
 }: {
   series: Series;
   reading: SeriesReading;
@@ -386,7 +388,11 @@ function Reading({
   observations?: ReactNode;
   intro?: string;
   events: StripEvent[];
+  /** Compact form for the home page: graph only, links pointing at the fact page. */
+  preview?: ChartPreview;
 }) {
+  const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
+  const Heading = preview ? 'h3' : 'h2';
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
   const points = reading.lines.flatMap(line => line.points);
@@ -402,47 +408,53 @@ function Reading({
   const description = [
     series.description,
     `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
-    window
+    window && !preview
       ? `The graph shows ${spanText(window)}; a strip above it shows the full published range ${spanText(series.coverage)}.`
       : null,
     hasOwnSpans(series)
       ? `Each line runs its own source's published range: ${reading.lines.map(line => `${line.name}, ${spanText(lineSpan(series, line))}`).join('; ')}.`
       : null,
     series.breaks.length > 0
-      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
+      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source${preview ? '' : ', explained in Method Changes below this graph'}.`
       : null,
-    events.length > 0
+    events.length > 0 && !preview
       ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed below it.`
       : null,
     statusSentence ? `${statusSentence.charAt(0).toUpperCase()}${statusSentence.slice(1)}.` : null,
     unmeasured && series.notMeasuredSince ? `No values after ${formatDate(unmeasured.from)}: ${series.notMeasuredSince.label}.` : null,
-    'Use the Table switch to see every value.',
+    preview ? 'Every value is in the table on the full chart.' : 'Use the Table switch to see every value.',
   ]
     .filter(Boolean)
     .join(' ');
 
   const plots = (shown?: FocusWindow) => (
     <div className="sv-chart__plot">
-      <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
-      <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
+      {/* A preview is short and wide on a desktop slide, and drawn at the narrow size on a phone. */}
+      {preview ? <>
+        <Plot series={series} reading={reading} variant="preview" descriptionId={descriptionId} />
+        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
+      </> : <>
+        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
+        <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
+      </>}
     </div>
   );
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
-      <h2 className="sv-graph-heading">{reading.label}</h2>
-      {intro && <p className="sv-chart__desc">{intro}</p>}
-      <p className="sv-chart__axis-label">
-        {reading.valueLabel}, by {midSentence(series.periodLabel)}
-      </p>
+      {!preview && <Heading className="sv-graph-heading">{reading.label}</Heading>}
+      {intro && !preview && <p className="sv-chart__desc">{intro}</p>}
+      {!preview && (
+        <p className="sv-chart__axis-label">
+          {reading.valueLabel}, by {midSentence(series.periodLabel)}
+        </p>
+      )}
 
       <p className="sv-visually-hidden" id={descriptionId}>
         {description}
       </p>
 
-      <ChartViewToggle
-        label={reading.label}
-        graph={<>
+      {(graph => preview ? graph : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} />)(<>
           {/* The legend is part of the graph, not its data table: it identifies
               the rendered lines without repeating a dated value beside each name. */}
           <ul className="sv-chart__legend">
@@ -462,7 +474,8 @@ function Reading({
               </li>
             ))}
           </ul>
-          {window ? (
+          {/* A preview always draws the full published range, with no event strip. */}
+          {window && !preview ? (
             <>
               <ContextStrip series={series} reading={reading} window={window} />
               <p className="sv-chart__focus-note">
@@ -485,28 +498,26 @@ function Reading({
           ) : (
             <>
               {plots()}
-              {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+              {!preview && events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
             </>
           )}
-        </>}
-        table={<ReadingTable series={series} reading={reading} />}
-      />
+        </>)}
 
-      {(estimates > 0 || forecasts.length > 0) && (
+      {!preview && (estimates > 0 || forecasts.length > 0) && (
         <p className="sv-chart__annotation-key">
           {estimates > 0 && 'Dotted: estimates or provisional values. '}
           {forecasts.length > 0 && `Shaded: forecasts${series.coverage.note ? ` (${series.coverage.note})` : ''}.`}
         </p>
       )}
-      {unmeasured && series.notMeasuredSince && (
+      {!preview && unmeasured && series.notMeasuredSince && (
         <p className="sv-chart__annotation-key">
           Hatched: {series.notMeasuredSince.label}, {formatDate(unmeasured.from)} {NBSP_DASH} {formatDate(unmeasured.until)}.{' '}
-          <a data-evidence-link="true" href={`#${factId}--${reading.id}-not-measured`}>Why</a>
+          <a data-evidence-link="true" href={at(`${factId}--${reading.id}-not-measured`)}>Why</a>
         </p>
       )}
 
-      {series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={`#${factId}--${reading.id}-method-${series.breaks[0].period}`}>See method changes</a>.</p>}
-      <p className="sv-chart__credit">Source: <a href={`#source-${factId}-${sourceNumber}`}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>
+      {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
+      {!preview && <p className="sv-chart__credit">Source: <a href={at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>}
 
       {observations}
     </section>
@@ -526,19 +537,21 @@ export function stripEvents(series: Pick<Series, 'events'>, factId: string, sour
   });
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [] }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode>; sources?: Source[] }) {
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode>; sources?: Source[]; preview?: ChartPreview }) {
   const events = stripEvents(series, factId, sources);
   return (
-    <figure className="sv-chart" id={`${factId}--chart-${chartId}`}>
-      <figcaption className="sv-visually-hidden">{series.title}</figcaption>
+    <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined}>
+      {preview
+        ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading"><a href={`${preview.href}#${factId}--chart-${chartId}`}>{series.title}</a></h3></figcaption>
+        : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
 
       <SeriesHighlight>
-        {series.readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={observations[reading.id]} events={events} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, i + 1).filter(r => r.source).length : 0)} />
+        {(preview ? [series.readings.find(r => r.id === preview.reading) ?? series.readings[0]] : series.readings).map((reading, i) => (
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 
-      <details className="sv-chart__methodology" id={`${factId}--chart-${chartId}-methodology`}>
+      {!preview && <details className="sv-chart__methodology" id={`${factId}--chart-${chartId}-methodology`}>
         <summary className="sv-chart__data-summary">About this data</summary>
         <p className="sv-chart__range">
           <strong>Full published range:</strong> {series.coverage.from}
@@ -555,7 +568,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
             <p className="sv-chart__note">{reading.note}</p>
           </section>
         ))}
-      </details>
+      </details>}
     </figure>
   );
 }

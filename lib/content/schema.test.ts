@@ -105,6 +105,8 @@ test('lastUpdated given as a JS Date (YAML-coerced) normalizes to YYYY-MM-DD', (
     title: 'Immigration',
     subtitle: 'What is actually being argued about.',
     lastUpdated: new Date('2026-08-18T00:00:00.000Z'),
+    tags: ['UK'],
+    previewCharts: [{ fact: 'a', chart: 'series' }],
   });
   assert.equal(parsed.lastUpdated, '2026-08-18');
 });
@@ -164,7 +166,7 @@ test('a shared principle has no topic-specific holders', () => {
 });
 
 test('topic principle references default to empty and reject duplicates or empty IDs', () => {
-  const topic = { title: 'Example', subtitle: 's', lastUpdated: '2026-08-18' };
+  const topic = { title: 'Example', subtitle: 's', lastUpdated: '2026-08-18', tags: ['UK'], previewCharts: [{ fact: 'a', chart: 'series' }] };
   assert.deepEqual(topicFrontmatterSchema.parse(topic).principles, []);
   assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: ['p', 'p'] }).success, false);
   assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: [''] }).success, false);
@@ -186,7 +188,7 @@ test('a crux requires a known kind, two viewpoints and two positions', () => {
 });
 
 test('a topic requires an ISO lastUpdated date', () => {
-  const base = { title: 'Immigration', subtitle: 'What is actually being argued about.' };
+  const base = { title: 'Immigration', subtitle: 'What is actually being argued about.', tags: ['UK'], previewCharts: [{ fact: 'a', chart: 'series' }] };
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: '2026-08-18' }).success, true);
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, lastUpdated: 'August 2026' }).success, false);
 });
@@ -287,4 +289,14 @@ test('readings and comparisons may name the table their values come from', () =>
     comparisons: (data.comparisons as Record<string, unknown>[]).map(c => ({ ...c, valuesFrom: 'Senate roll call 4' })),
   });
   assert.equal(parsed.comparisons?.[0].valuesFrom, 'Senate roll call 4');
+});
+
+test('a topic needs at least one tag, with no repeats, and at least one preview chart', () => {
+  const base = { title: 'T', subtitle: 'S', lastUpdated: '2026-08-18' };
+  const preview = [{ fact: 'alpha', chart: 'series' }];
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK'], previewCharts: preview }).success, true);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: [], previewCharts: preview }).success, false);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK', 'UK'], previewCharts: preview }).success, false);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK'], previewCharts: [] }).success, false);
+  assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK'], previewCharts: [{ fact: 'alpha', chart: '' }] }).success, false);
 });

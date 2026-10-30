@@ -8,8 +8,10 @@
    ========================================================================== */
 
 @theme inline {
-  --font-serif: var(--font-newsreader), Iowan Old Style, Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), Iowan Old Style, Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Headings: titles, section and finding heads, chart titles, the wordmark. */
+  --font-display: var(--font-inter-tight), var(--font-sans);
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-rule: var(--rule);
@@ -107,6 +109,12 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Headings default to the display face; components may still set their own. */
+  :is(h1, h2, h3, h4) {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
   body {
     background: var(--paper);
     color: var(--ink);
@@ -185,6 +193,14 @@
     border-bottom: 1px solid var(--rule);
   }
 
+  /* The masthead and footer span the home page's width, so the wordmark sits
+     over the topic rows' left edge; reading pages centre their narrower
+     column beneath it. */
+  .sv-masthead__inner,
+  .sv-footer__inner {
+    max-width: 76rem;
+  }
+
   .sv-masthead__inner {
     display: flex;
     align-items: center;
@@ -192,13 +208,12 @@
   }
 
   .sv-wordmark {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
     text-decoration: none;
-    color: var(--ink-2);
+    color: var(--ink);
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -237,11 +252,11 @@
   }
 
   .sv-title {
-    font-family: var(--font-serif);
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-weight: 600;
     font-size: clamp(2.25rem, 1.4rem + 4.2vw, 3.75rem);
-    line-height: 1.06;
-    letter-spacing: -0.02em;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
     text-wrap: balance;
     margin: 0;
   }
@@ -434,9 +449,11 @@
 
   .sv-item__claim {
     display: block;
+    font-family: var(--font-display);
+    font-weight: 500;
     font-size: 1.0625rem;
-    line-height: 1.4;
-    letter-spacing: -0.005em;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
     text-wrap: pretty;
     color: var(--ink);
   }
@@ -788,10 +805,9 @@
      SVG generated on the server — it themes with the page's own tokens via
      currentColor, prints, and is there with JavaScript off. */
 
+  /* No rule above a chart: its title starts it. */
   .sv-chart {
     margin: 1.9rem 0 0;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--rule);
   }
 
   .sv-chart__caption {
@@ -1428,7 +1444,8 @@
 
   .sv-viewpoint .sv-item__claim {
     font-size: 1.1875rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   @media (min-width: 40rem) {
@@ -1648,11 +1665,11 @@
   }
 
   .prose-body h3 {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: 1.375rem;
     font-weight: 600;
     line-height: 1.3;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     text-transform: none;
     margin-block: 2rem 0.65rem;
   }
@@ -1755,75 +1772,360 @@
 
   /* ------------------------------------------------------------ home page */
 
-  .sv-index__lede {
-    font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
-    line-height: 1.4;
-    font-style: italic;
-    color: var(--ink-2);
-    max-width: 30rem;
-    text-wrap: pretty;
-    margin: 1.25rem 0 0;
+  /* A tagline, then one full-width row per topic. The first row starts open
+     on a carousel of the topic's preview charts; opening another closes it in
+     the same transition. Layout from the approved prototype
+     (docs/superpowers/specs/2026-10-29-home-page-topic-previews-design.md). */
+
+  .sv-home {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding: 0 1.25rem 4rem;
   }
 
-  .sv-topics {
-    list-style: none;
+  @media (min-width: 40rem) {
+    .sv-home { padding-inline: 2rem; }
+  }
+
+  .sv-home__hero { padding: 2.5rem 0 1.75rem; }
+
+  @media (min-width: 40rem) {
+    .sv-home__hero { padding: 3.5rem 0 2.25rem; }
+  }
+
+  .sv-home__tagline {
     margin: 0;
-    padding: 0;
-    border-top: 1px solid var(--ink);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.4rem);
+    line-height: 1.03;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
   }
 
-  .sv-topics > li {
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .sv-topics a {
-    display: block;
-    padding: 1.4rem 2rem 1.5rem 0;
+  .sv-home__about {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
     text-decoration: none;
+  }
+
+  .sv-home__about:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+
+  /* Opening a row holds the clicked head still by scrolling in step with the
+     row above closing (topic-accordion.tsx); the browser's own scroll
+     anchoring would correct a second time, so it is off for the rows. */
+  .sv-rows { display: flex; flex-direction: column; gap: 0.75rem; overflow-anchor: none; }
+
+  .sv-row {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    transition: box-shadow 0.4s, border-color 0.3s;
+  }
+
+  .sv-row:not([data-open]):hover {
+    border-color: var(--rule-strong);
+    box-shadow: 0 10px 28px -16px rgb(20 25 40 / 0.25);
+  }
+
+  .sv-row[data-open] { box-shadow: 0 22px 50px -30px rgb(20 25 40 / 0.35); }
+
+  .sv-row__head {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 1.25rem 1.5rem;
   }
 
-  .sv-topics a::after {
-    content: "";
-    position: absolute;
-    right: 0.2rem;
-    top: 2.15rem;
-    width: 0.9rem;
-    height: 1px;
-    background: var(--ink-3);
-    transition: width 160ms ease, background-color 160ms ease;
+  .sv-row[data-open] .sv-row__head { padding-bottom: 0.25rem; }
+
+  .sv-row__heading { flex: 1; min-width: 0; }
+
+  .sv-row__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.6rem;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-4);
   }
 
-  .sv-topics a:hover::after {
-    width: 1.4rem;
-    background: var(--accent);
-  }
-
-  .sv-topics__title {
-    display: block;
-    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
+  .sv-tag {
+    padding: 0.1rem 0.5rem;
+    border-radius: 99px;
+    background: var(--paper-sunk);
+    color: var(--ink-3);
     font-weight: 500;
   }
 
-  .sv-topics a:hover .sv-topics__title {
-    text-decoration: none;
-    background: var(--accent-wash);
-    padding: 0.08em 0.3em;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    text-decoration-color: var(--accent);
-    text-underline-offset: 0.14em;
+  .sv-row__title {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    transition: font-size 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  .sv-topics__blurb {
+  .sv-row[data-open] .sv-row__title { font-size: clamp(1.5rem, 1.2rem + 1vw, 1.9rem); }
+
+  /* The toggle covers the whole head; the title link and thumbnails sit above it. */
+  .sv-row__toggle {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 16px;
+    background: none;
+    cursor: pointer;
+  }
+
+  .sv-row__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  .sv-row__heading, .sv-row__thumbs, .sv-row__chevron { pointer-events: none; }
+  .sv-row__link { position: relative; color: inherit; text-decoration: none; pointer-events: auto; transition: color 0.2s; }
+  .sv-row__link:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+
+  .sv-row__subtitle {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--ink-3);
+    max-width: 42rem;
+  }
+
+  .sv-row__thumbs {
+    display: flex;
+    gap: 0.6rem;
+    flex: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: opacity 0.3s;
+  }
+
+  .sv-row__thumbs li { width: 7.5rem; }
+
+  .sv-row__thumb {
+    height: 3.9rem;
+    padding: 0.5rem 0.5rem 0.25rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper-raised);
+  }
+
+  .sv-row__thumbs span {
     display: block;
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
+    overflow: hidden;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--ink-4);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .sv-row[data-open] .sv-row__thumbs { display: none; }
+
+  .sv-row__chevron {
+    position: relative;
+    flex: none;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: var(--paper-sunk);
+  }
+
+  .sv-row__chevron::after {
+    content: "";
+    position: absolute;
+    left: 0.65rem;
+    top: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  .sv-row__head:hover .sv-row__chevron { background: var(--ink); }
+  .sv-row__head:hover .sv-row__chevron::after { border-color: var(--paper); }
+  .sv-row[data-open] .sv-row__chevron { transform: rotate(180deg); }
+  .sv-row__chevron { transition: background-color 0.2s, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+  .sv-row__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .sv-row[data-open] .sv-row__body { grid-template-rows: 1fr; }
+
+  .sv-row__inner { min-height: 0; overflow: hidden; }
+
+  .sv-row__columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 2.25rem;
+    align-items: start;
+    padding: 1rem 1.5rem 1.6rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s, transform 0.45s;
+  }
+
+  .sv-row[data-open] .sv-row__columns { opacity: 1; transform: none; transition-delay: 0.12s; }
+
+  .sv-row__side { display: flex; flex-direction: column; min-width: 0; }
+
+  .sv-row__side-head {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .sv-row__viewpoints { margin: 0.75rem 0 0; padding: 0; list-style: none; }
+
+  .sv-row__viewpoints li {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
     color: var(--ink-2);
-    font-style: italic;
-    max-width: var(--measure);
-    text-wrap: pretty;
+  }
+
+  .sv-row__viewpoints li:last-child { border-bottom: 1px solid var(--rule); }
+
+  .sv-row__viewpoints span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+  .sv-row__marker { flex: none; width: 0.55rem; height: 0.55rem; border-radius: 3px; }
+
+  .sv-row__cta {
+    align-self: flex-start;
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .sv-row__cta:hover { background: var(--accent); }
+  .sv-row__cta span { transition: transform 0.2s; }
+  .sv-row__cta:hover span { transform: translateX(3px); }
+
+  .sv-row__counts { margin: 0.65rem 0 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); }
+
+  /* ----------------------------------------------------- preview carousel */
+
+  .sv-carousel {
+    min-width: 0;
+    padding: 1.25rem 1.25rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: var(--paper-raised);
+  }
+
+  .sv-carousel__strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    outline: none;
+  }
+
+  .sv-carousel__strip::-webkit-scrollbar { display: none; }
+  .sv-carousel__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  /* Every slide is one fixed height, about that of the viewpoints and report
+     button beside the carousel, so every chart is the same size. A chart with
+     too much to fit is drawn in a clamped form instead (see the preview rules
+     after the chart styles). */
+  .sv-carousel__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; height: 18rem; scroll-snap-align: start; }
+
+  .sv-slide { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+
+  /* On a phone titles and legends wrap onto more lines, so slides are taller. */
+  @media (max-width: 40rem) {
+    .sv-carousel__slide { height: 25rem; }
+  }
+  .sv-slide .sv-chart { flex: 1; }
+
+  .sv-slide .sv-chart { margin: 0; }
+  .sv-slide .sv-chart__caption .sv-graph-heading { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+
+  .sv-carousel__controls { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.75rem; }
+
+  .sv-carousel__step {
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    padding: 0 0 2px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .sv-carousel__step:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .sv-carousel__dots { display: flex; gap: 0.35rem; }
+
+  .sv-carousel__dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    padding: 0;
+    border: 0;
+    border-radius: 99px;
+    background: var(--rule-strong);
+    cursor: pointer;
+    transition: width 0.25s, background-color 0.25s;
+  }
+
+  .sv-carousel__dot[aria-current] { width: 1.4rem; background: var(--accent); }
+
+  .sv-carousel__count { flex: 1; margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); }
+
+  /* Below 64rem the carousel takes the row's full width, so its charts keep a
+     readable size; the thumbnails go on phones. */
+  @media (max-width: 64rem) {
+    .sv-row__columns { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  }
+
+  @media (max-width: 47.5rem) {
+    .sv-row__thumbs { display: none; }
+    .sv-row__columns { padding-inline: 1rem; }
+    .sv-row__head { padding-inline: 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot { transition: none; }
   }
 
   /* ------------------------------------------------------ fact citations */
@@ -2311,7 +2613,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 
 .sv-chart .sv-graph-heading {
   margin: 32px 0 12px;
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: 26px;
   font-weight: 600;
   line-height: 1.2;
@@ -2354,3 +2656,51 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-breakdown-table th, .sv-breakdown-table td { padding: 6px; border-bottom: 1px solid #ddd; text-align: right; }
 .sv-breakdown-table th:first-child { text-align: left; }
 .sv-breakdown-table caption { caption-side: top; text-align: left; padding: 6px 0; color: var(--ink-3); }
+
+/* Compact chart previews (home page): one reading of a series, every item of a
+   comparison, and the credit. The full chart, one click away, has the rest. */
+/* A preview fills whatever height its container gives it, so every slide in a
+   carousel draws its chart at the same size: the figure is a column whose plot
+   (or bar list) takes the space left under the caption. */
+.sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; }
+.sv-chart[data-preview] .sv-chart__highlight,
+.sv-chart[data-preview] .sv-chart__reading { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; }
+.sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; width: 100%; height: 100%; }
+.sv-chart[data-preview] .sv-chart__svg[data-variant="narrow"] { display: none; }
+@media (max-width: 40rem) {
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="narrow"] { display: block; width: 100%; height: 100%; }
+}
+.sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
+.sv-chart[data-preview] .sv-comparison__rows,
+.sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
+.sv-chart[data-preview] .sv-comparison__rows { display: flex; flex-direction: column; justify-content: space-evenly; margin: .4rem 0; }
+.sv-chart[data-preview] .sv-comparison__rows > li { margin: 0; }
+.sv-chart[data-preview] .sv-graph-heading { margin: .25rem 0 0; font: 500 .8rem/1.3 var(--font-sans); color: var(--ink-3); }
+.sv-chart[data-preview] .sv-chart__desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; font-size: .85rem; line-height: 1.45; color: var(--ink-3); }
+.sv-chart[data-preview] .sv-chart__caption { margin-bottom: .5rem; }
+.sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); min-height: 2.5em; }
+.sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-decoration: none; }
+.sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
+.sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
+.sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
+.sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
+/* Clamped rows: a long comparison squeezed into the fixed slide height. */
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .35rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :last-child { white-space: nowrap; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .64rem; line-height: 1.1; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :first-child { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__track { height: .4rem; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] { justify-content: space-between; }
+.sv-chart[data-preview] .sv-chart__credit { margin-top: .25rem; font-size: .7rem; }
+.sv-comparison__columns { list-style: none; margin: 1rem 0 .35rem; padding: 0; display: flex; align-items: flex-end; gap: 2px; height: 9rem; }
+.sv-comparison__column { flex: 1; height: 100%; display: flex; align-items: flex-end; }
+.sv-comparison__column-bar { display: block; width: 100%; background: var(--sv-series-1); opacity: .45; border-radius: 2px 2px 0 0; }
+.sv-comparison__column[data-highlight] .sv-comparison__column-bar { background: var(--accent); opacity: 1; }
+.sv-comparison__rank { margin: .5rem 0 0; font: 600 .85rem/1.4 var(--font-sans); color: var(--accent); }
+
+/* A chart's silhouette on a collapsed home-page row: decoration only. */
+.sv-thumb { display: block; width: 100%; height: 100%; }
+.sv-thumb__column { fill: var(--sv-series-1); opacity: .35; }
+.sv-thumb__column[data-highlight] { fill: var(--accent); opacity: 1; }
