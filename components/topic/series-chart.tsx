@@ -401,7 +401,6 @@ function Reading({
   about?: ReactNode;
 }) {
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
-  const Heading = preview ? 'h3' : 'h2';
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
   const points = reading.lines.flatMap(line => line.points);
@@ -455,8 +454,9 @@ function Reading({
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
-      {!preview && <Heading className="sv-graph-heading">{reading.label}</Heading>}
       {intro && !preview && (panel ? <ChartAbout description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
+      {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
+      {!preview && series.readings.length > 1 && <h3 className="sv-chart__reading-head">{reading.label}</h3>}
       {!preview && (
         <p className="sv-chart__axis-label">
           {reading.valueLabel}, by {midSentence(series.periodLabel)}
@@ -591,7 +591,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
       {preview
         ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3></figcaption>
-        : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
+        : <figcaption className="sv-chart__caption"><h2 className="sv-graph-heading">{series.title}</h2></figcaption>}
 
       <SeriesHighlight>
         {readings.map((reading, i) => (

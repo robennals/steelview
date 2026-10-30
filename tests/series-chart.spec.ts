@@ -58,6 +58,7 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
     chart.getByRole('heading', { name: 'As a Share of the UK Population' })
   ).toBeVisible();
   await expect(chart.getByRole('heading', { name: 'UK Migration Over Time' })).toBeVisible();
+  await expect(chart.getByRole('heading', { name: 'UK immigration, emigration and net migration, 1964–2025' })).toBeVisible();
   await expect(chart.locator('.sv-chart__range')).toContainText('Full published range: 1964–2025');
 
   // Three definitional breaks, each drawn in the plot and explained below it.

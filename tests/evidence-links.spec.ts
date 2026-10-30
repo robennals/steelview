@@ -53,7 +53,7 @@ test('charts have their own observations, with references last', async ({ page }
   await expect(page.getByRole('heading', { name: 'Subtleties', exact: true })).toHaveCount(0);
   for (const id of ['people', 'share-of-population', 'international-immigration']) {
     const graph = page.locator(`#immigration-against-the-long-run--chart-${id}`);
-    await expect(graph.locator('h2')).toHaveCount(1);
+    await expect(graph.locator('.sv-graph-heading, .sv-chart__reading-head')).toHaveCount(1);
     await expect(graph.locator('.sv-observations-group')).not.toHaveAttribute('open', '');
     await expect(graph.locator('.sv-observation').first()).not.toHaveAttribute('open', '');
   }
