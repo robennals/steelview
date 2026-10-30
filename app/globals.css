@@ -2257,15 +2257,24 @@
   .sv-walk[data-layout="strip"] { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
   .sv-walk[data-layout="strip"] .sv-walk__controls { display: none; }
 
+  /* The arrows sit level with the miniatures, above their labels. */
+  .sv-walk__tabbar { display: flex; align-items: flex-start; gap: 0.6rem; min-width: 0; }
+  .sv-walk__tab-arrow { flex: none; margin-top: 0.9rem; }
+  .sv-walk__tab-arrow:disabled { opacity: 0.35; cursor: default; }
+
   .sv-walk__tabs {
     display: flex;
+    flex: 1;
     gap: 0.6rem;
+    min-width: 0;
     margin: 0;
-    padding: 0 0 0.35rem;
+    padding: 0;
     overflow-x: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     list-style: none;
   }
+
+  .sv-walk__tabs::-webkit-scrollbar { display: none; }
 
   .sv-walk__tabs li { flex: 0 0 8.5rem; min-width: 0; }
 
