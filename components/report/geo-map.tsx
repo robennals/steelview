@@ -68,6 +68,8 @@ type GeoMapCommon = {
   note?: string;
   /** Rendered after the source line: the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   headingLevel?: 2 | 3;
   /**
    * Draw the compact preview: the linked title, the keys and the whole map,
@@ -190,6 +192,7 @@ export function GeoMap(props: GeoMapProps) {
     sources,
     note,
     footer,
+    panel,
     headingLevel,
     preview,
   } = props;
@@ -425,7 +428,7 @@ export function GeoMap(props: GeoMapProps) {
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-geo-map">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-geo-map">
       <ChartViewToggle label={title ?? what} graph={graph} table={table} />
     </ReportFigure>
   );

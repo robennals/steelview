@@ -45,6 +45,8 @@ export type TimelineProps = {
   headingLevel?: 2 | 3;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   /**
    * Draw the compact preview: the linked title, a key when there are several
    * categories, and every event — one line each (date and title), or past
@@ -81,6 +83,7 @@ export function Timeline({
   sources,
   note,
   footer,
+  panel,
   headingLevel = 2,
   preview,
 }: TimelineProps) {
@@ -140,7 +143,7 @@ export function Timeline({
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-timeline">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
       {(showChips || showMajorToggle) && (
         <div className="sv-timeline__controls">
           {showChips && (

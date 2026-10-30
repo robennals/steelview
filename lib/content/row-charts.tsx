@@ -3,7 +3,6 @@
 import type { ReactNode } from 'react';
 import { listTopicSlugs, loadTopic } from './load';
 import { factSlides } from './preview';
-import { componentFigure } from './types';
 import { viewpointWalkthrough } from './walkthrough';
 import { PanelChart } from '@/components/topic/fact-figures';
 import { SlideChart } from '@/components/topic/slide-chart';
@@ -28,10 +27,8 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
   if (kind === 'data') {
     const fact = topic.facts.find(f => f.id === id);
     if (!fact) return [];
-    // Charts are drawn in full, with their controls; a table or timeline as a slide.
-    return factSlides(slug, fact).map((slide, i) => componentFigure(fact, slide.chart)
-      ? <SlideChart key={i} slide={slide} fit="tall" page={page} />
-      : <PanelChart key={i} slide={slide} />);
+    // Every chart and figure is drawn in full, with its controls.
+    return factSlides(slug, fact).map((slide, i) => <PanelChart key={i} slide={slide} page={page} />);
   }
   return [];
 }

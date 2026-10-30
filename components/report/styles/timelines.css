@@ -388,7 +388,7 @@
 
   .sv-event-strip__track {
     position: relative;
-    height: calc(var(--sv-strip-levels) * 1.55rem + 0.4rem);
+    height: calc(var(--sv-strip-levels) * var(--sv-strip-step, 1.55rem) + 0.4rem);
   }
 
   .sv-event-strip__rule {
@@ -402,7 +402,7 @@
   /* A numbered disc on a stem down to the rule; the stem's foot is the date. */
   .sv-event-strip__marker {
     position: absolute;
-    bottom: calc(var(--sv-strip-level) * 1.55rem + 0.4rem);
+    bottom: calc(var(--sv-strip-level) * var(--sv-strip-step, 1.55rem) + 0.4rem);
     transform: translateX(-50%);
     display: grid;
     place-items: center;
@@ -421,7 +421,7 @@
   .sv-event-strip__stem {
     position: absolute;
     bottom: 0;
-    height: calc(var(--sv-strip-level) * 1.55rem + 0.4rem);
+    height: calc(var(--sv-strip-level) * var(--sv-strip-step, 1.55rem) + 0.4rem);
     border-left: 1px solid var(--ink-3);
   }
 

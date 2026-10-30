@@ -1033,8 +1033,8 @@ test('preview charts: each must resolve to a chart on a fact in the topic', () =
   const t = previewedTopic();
   t.previewCharts = [{ fact: 'alpha', chart: 'shares' }, { fact: 'alpha', chart: 'nope' }, { fact: 'missing', chart: 'series' }];
   const errors = validateTopic(t);
-  assert.ok(errors.includes('topic: preview chart alpha/nope does not resolve to a chart'), errors.join('\n'));
-  assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart alpha/nope does not resolve to a chart or figure'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart or figure'), errors.join('\n'));
 });
 
 test('preview charts: the same chart may not be listed twice', () => {
@@ -1084,4 +1084,41 @@ test('a mark must name what is on its chart', () => {
   assert.match(markErrors({ up: { rows: ['UK'] } })[0], /is a line chart/);
   assert.match(markErrors({ low: { rows: ['France'] } })[0], /names "France", which is not a row of c/);
   assert.match(markErrors({ low: { lines: ['Immigration'] } })[0], /its chart has rows/);
+});
+
+/** The figure fixture with every viewpoint citing its fact, so a preview of any of its figures covers them all. */
+function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
+  const t = figureExamplesTopic();
+  for (const v of t.viewpoints) v.body = 'See [the figures](#fact-figure-examples).';
+  t.previewCharts = previewCharts;
+  return t;
+}
+
+test('preview charts: a graph-like figure of every previewable kind may be previewed', () => {
+  const ids = ['wa-by-race', 'deaths-by-counter', 'cost-estimates', 'count-speed', 'rejection-by-state', 'postal-voting', 'court-record', 'war-periods', 'audit-recheck'];
+  assert.deepEqual(validateTopic(previewedFigures(ids.map(chart => ({ fact: 'figure-examples', chart })))), []);
+});
+
+test('preview charts: a text figure is rejected, naming its kind', () => {
+  const t = previewedFigures(['federal-laws', 'damage-claims', 'carter-baker', 'one-in-five', 'detected-is-a-floor'].map(chart => ({ fact: 'figure-examples', chart })));
+  const errors = validateTopic(t);
+  for (const [id, kind] of [['federal-laws', 'dataTable'], ['damage-claims', 'quoteComparison'], ['carter-baker', 'pullQuote'], ['one-in-five', 'claimCheck'], ['detected-is-a-floor', 'caveatList']]) {
+    assert.ok(errors.some(e => e.startsWith(`topic: preview chart figure-examples/${id} is a ${kind} figure, which has no graph to preview`)), errors.join('\n'));
+  }
+});
+
+test('preview charts: a body section placed by figures is not a figure a slide can draw', () => {
+  const errors = validateTopic(previewedFigures([{ fact: 'figure-examples', chart: 'freedom-to-vote-act-provisions' }]));
+  assert.ok(errors.includes('topic: preview chart figure-examples/freedom-to-vote-act-provisions does not resolve to a chart or figure'), errors.join('\n'));
+});
+
+test('preview charts: a figure has no readings to name', () => {
+  const errors = validateTopic(previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race', reading: 'people' }]));
+  assert.ok(errors.includes('topic: preview chart figure-examples/wa-by-race is not a series, so it cannot name a reading'), errors.join('\n'));
+});
+
+test('preview charts: a previewed figure counts its fact towards every viewpoint citing it', () => {
+  const t = previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race' }]);
+  t.viewpoints[1].body = 'Cites [the other fact](#fact-mail-ballot-privacy) only.';
+  assert.deepEqual(validateTopic(t), ['topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts']);
 });

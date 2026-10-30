@@ -1,7 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { layoutScatter, type ScatterLayout } from '@/lib/chart/scatter';
-import type { SeriesVariant } from '@/lib/chart/series-chart';
+import { PREVIEW_VARIANTS, type SeriesVariant } from '@/lib/chart/series-chart';
 import { ReportFigure } from './figure';
 import { countOf, formatValue, slugify } from './format';
 import { MapReadout } from './geo/map-readout';
@@ -49,11 +49,13 @@ export type ScatterPlotProps = {
   note?: ReactNode;
   /** Rendered after the source line: the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   headingLevel?: 2 | 3;
   /**
    * Draw the compact preview: the linked title, the group key, both axis
-   * labels — a scatter cannot be read without them — and every point, on a
-   * short, wide plot (the narrow one on a phone). No readout or Table view.
+   * labels — a scatter cannot be read without them — and every point, at the
+   * shapes of its `fit` (the narrow one on a phone). No readout or Table view.
    */
   preview?: FigurePreview;
 };
@@ -197,6 +199,7 @@ export function ScatterPlot({
   sources,
   note,
   footer,
+  panel,
   headingLevel,
   preview,
 }: ScatterPlotProps) {
@@ -227,7 +230,7 @@ export function ScatterPlot({
 
   const axes = { x: { ...x, format: fx }, y: { ...y, format: fy } };
   const input = points.map(point => ({ id: point.id, label: point.label, x: point.x, y: point.y, highlight: highlighted.has(point.id) }));
-  const variants = preview ? (['preview', 'narrow'] as const) : (['narrow', 'wide'] as const);
+  const variants: SeriesVariant[] = preview ? [...PREVIEW_VARIANTS[preview.fit ?? 'wide'], 'narrow'] : panel ? [...PREVIEW_VARIANTS.panel, 'narrow'] : ['narrow', 'wide'];
 
   const summary = [
     points.length > 0
@@ -321,7 +324,7 @@ export function ScatterPlot({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-scatter">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-scatter">
       {points.length === 0 ? <p className="sv-report__empty">No values to show.</p> : <ChartViewToggle label={label} graph={graph} table={table} />}
     </ReportFigure>
   );

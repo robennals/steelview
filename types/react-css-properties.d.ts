@@ -28,6 +28,8 @@ declare module 'react' {
     '--sv-period-color'?: string;
     /** Timeline: the category colour of an event marker. */
     '--sv-timeline-color'?: string;
+    /** Composition bars: the column a compact row's total sits in. */
+    '--sv-composition-total'?: string;
     /** Tile map: grid dimensions. */
     '--sv-tile-cols'?: number;
     '--sv-tile-rows'?: number;

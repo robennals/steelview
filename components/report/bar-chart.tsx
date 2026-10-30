@@ -32,6 +32,8 @@ export type BarChartProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   /**
    * Draw the compact preview: the linked title and the bars, every item. Over
    * six items the rows are clamped thin; over twelve, with no negatives and
@@ -60,6 +62,7 @@ export function BarChart({
   sources,
   note,
   footer,
+  panel,
   preview,
 }: BarChartProps) {
   const ordered = orderBars(items, sort);
@@ -80,7 +83,7 @@ export function BarChart({
   }
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-bar-chart">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
       <p className="sv-chart__axis-label">{valueLabel}</p>
       {items.length === 0 ? (
         <p className="sv-report__empty">No values to show.</p>

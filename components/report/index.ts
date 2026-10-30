@@ -10,6 +10,7 @@
 // Foundations
 export * from './types';
 export { formatValue, formatDate, dateToYear, compareDates } from './format';
+export { ChartAbout } from './chart-about';
 export { ReportFigure, SourceCredits, SourceLine } from './figure';
 export { ChoiceGroup, FilterChips, type Choice } from './controls';
 

@@ -52,6 +52,8 @@ export type EstimateRangeProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   /**
    * Draw the compact preview: the linked title, every estimate and the axis.
    * The key, value label, per-row notes and sources stay on the full figure.
@@ -81,6 +83,7 @@ export function EstimateRange({
   sources,
   note,
   footer,
+  panel,
   preview,
 }: EstimateRangeProps) {
   const scale = estimateScale(estimates, nullValue, domain);
@@ -207,7 +210,7 @@ export function EstimateRange({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-estimate-range">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-estimate-range">
       <p className="sv-chart__axis-label">{valueLabel}</p>
       <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
     </ReportFigure>

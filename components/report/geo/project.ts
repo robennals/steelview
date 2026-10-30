@@ -145,18 +145,36 @@ const round = (n: number) => Math.round(n * 10) / 10;
 
 /**
  * A MultiPolygon as one SVG path. Holes are drawn as further subpaths and cut
- * out by `fill-rule: evenodd`, set on the path by the caller.
+ * out by `fill-rule: evenodd`, set on the path by the caller. A `tolerance`
+ * thins each ring for a small drawing (see `thin`); rings that thin to
+ * nothing are left out.
  */
-export function pathFor(coordinates: LonLat[][][], projection: Projection): string {
+export function pathFor(coordinates: LonLat[][][], projection: Projection, tolerance = 0): string {
   const parts: string[] = [];
   for (const polygon of coordinates) {
     for (const ring of polygon) {
       if (ring.length < 3) continue;
-      const points = ring.map(point => projection.project(point)).map(([px, py]) => `${round(px)},${round(py)}`);
-      parts.push(`M${points.join('L')}Z`);
+      const projected = ring.map(point => projection.project(point));
+      const kept = tolerance > 0 ? thin(projected, tolerance) : projected;
+      if (kept.length < 3) continue;
+      parts.push(`M${kept.map(([px, py]) => `${round(px)},${round(py)}`).join('L')}Z`);
     }
   }
   return parts.join('');
+}
+
+/**
+ * Drops each point closer than `tolerance` (in drawing units) to the last
+ * point kept: at thumbnail size a coastline's thousand points collapse onto
+ * a few dozen pixels, and drawing them all only bloats the markup.
+ */
+function thin(points: Array<[number, number]>, tolerance: number): Array<[number, number]> {
+  const kept: Array<[number, number]> = [];
+  for (const point of points) {
+    const last = kept[kept.length - 1];
+    if (!last || Math.hypot(point[0] - last[0], point[1] - last[1]) >= tolerance) kept.push(point);
+  }
+  return kept;
 }
 
 /**

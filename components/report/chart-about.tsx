@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-type ChartAboutProps = { description: string; children?: ReactNode };
+type ChartAboutProps = { description?: ReactNode; children?: ReactNode };
 
 /**
  * A data panel chart's description, cut to one line so it leaves the graph its
@@ -11,7 +11,7 @@ export function ChartAbout({ description, children }: ChartAboutProps) {
   return (
     <details className="sv-chart__about">
       <summary>
-        <span className="sv-chart__about-text">{description}</span>
+        <span className="sv-chart__about-text">{description ?? 'About this data'}</span>
         <span className="sv-chart__about-toggle" aria-hidden="true" />
       </summary>
       {children}

@@ -6,6 +6,8 @@
  * story fixture. The adapter from content to props lives with the page.
  */
 
+import type { PreviewFit } from '@/lib/chart/series-chart';
+
 /**
  * A date as precise as the source is: "2024", "2024-11" or "2024-11-28".
  * Same convention as the content schema, so a period copied out of a source
@@ -34,7 +36,12 @@ export type SourceCredit = {
  * figure, a click away. Never a subset of the data: every item, area, event
  * and the full range are still drawn, clamped to fit when there are many.
  */
-export type FigurePreview = { href: string };
+export type FigurePreview = {
+  /** Where the title leads, if anywhere. */
+  href?: string;
+  /** The shape of the space it sits in, for a figure drawn at set shapes (default: wide, as a carousel slide is). */
+  fit?: PreviewFit;
+};
 
 /**
  * How a number is written. `count` is people or things (1,441,000),

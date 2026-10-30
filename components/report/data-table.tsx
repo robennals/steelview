@@ -39,6 +39,8 @@ export type DataTableProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
 };
 
 /**
@@ -64,6 +66,7 @@ export function DataTable({
   sources,
   note,
   footer,
+  panel,
 }: DataTableProps) {
   const [sort, setSort] = useState(defaultSort);
   const sorted = sort ? sortRows(rows, sort.key, sort.direction) : rows;
@@ -84,7 +87,7 @@ export function DataTable({
   };
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-data">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-data">
       <div className="sv-data__scroll" style={{ maxHeight }} tabIndex={0} role="region" aria-label={caption}>
         <table className="sv-data__table">
           <caption className="sv-data__caption">{caption}</caption>

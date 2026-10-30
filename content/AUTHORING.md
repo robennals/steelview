@@ -701,7 +701,8 @@ when the topic first goes up, and leave it alone afterwards: unlike
 
 Each topic's row on the home page opens onto a carousel of a few of its
 charts, listed in `previewCharts` in `topic.md` as `fact` and `chart` pairs
-(`chart` is `series`, an `additionalSeries` id or a `comparisons` id). Each
+(`chart` is `series`, an `additionalSeries` id, a `comparisons` id, or the id
+of a graph-like figure in the fact's `figures` — see below). Each
 slide is one chart: for a series with several readings, add `reading` to name
 the one the slide draws (default: the first). The full chart, a click away,
 still draws every reading, and holds everything a slide leaves out — a slide
@@ -724,6 +725,21 @@ The carousel never labels a chart as evidence for a viewpoint: a chart usually
 bears on several. The build checks the mechanical half of rule 2 — every
 viewpoint must cite, inline, the fact behind at least one preview chart — and
 leaves "strongest", magnitude and overview to you.
+
+**Figures in previews.** A slide can draw these figure kinds: `barChart`,
+`compositionBar`, `estimateRange`, `scatterPlot`, `tileMap`, `geoMap`,
+`timeline`, `periodTimeline` and `keyFigures`. Each is drawn by its own
+component in a compact form — the title, linked to the full figure, and the
+graph: every item, area, event and period, with the key where colours or
+shapes need one, but no description, Graph/Table switch, filters, method
+key, notes or sources. Long figures are clamped to the slide's fixed height,
+never cut: over six rows become thin one-line rows, a bar chart of more than
+twelve items becomes ranked columns (as a long comparison does), and a
+timeline of more than twelve events becomes one marker per event on a time
+axis. Text figures — `dataTable`, `quoteComparison`, `pullQuote`,
+`claimCheck`, `caveatList` — and placed `section`s have no graph, and the
+build rejects them. Each kind's thumbnail on a closed row is drawn from the
+same layout; kinds set as type, such as `keyFigures`, thumbnail as plain rows.
 
 `uk-immigration` opens on `immigration-against-the-long-run`, read as a
 share of the population since 1964 (`reading: share-of-population`), which is
@@ -834,6 +850,12 @@ referenced exactly once, so a chart can never silently drop to the end of a
 report. Body sections that no `section` entry names, and that are not a
 figure's Observations or Subtleties, render after the last figure.
 
+**A data panel draws every figure in full**, as it does a chart: its controls,
+the graph filling the space, the description and About this data folded into one
+line, its source line linking to the sources themselves, and its Observations
+along the bottom. So a figure's `description` opens with the same free-standing
+first sentence as a chart's.
+
 **Sources are the fact's own numbered citations**, exactly as for
 `comparisons`: `sources: [5]` is the fact's fifth citation. A figure's
 source line lists its `sources` and every item-level citation (a key
@@ -842,10 +864,11 @@ quote's), deduplicated, in ascending order, each a link to the quoted
 reference. Every figure but a `caveatList` needs at least one citation.
 
 **Figures are walkthrough steps.** A collection's row steps through its visuals
-in `figures` order, series and comparisons and library figures alike. A slide
-shows a figure's title and content; its description, source line and About this
-data wait behind "Explore this data". A library figure cannot be a home-page
-preview chart.
+in `figures` order, series and comparisons and library figures alike. A
+graph-like figure's slide is its compact [preview](#home-page-preview-charts); a
+text figure's slide is its title and content. Either way its description, source
+line and About this data wait behind "Explore this data". Only graph-like
+figures can be home-page preview charts.
 
 **Observations attach by id.** A component figure's DOM id is
 `<fact>--chart-<id>`, so viewpoints cite it as `#fact-<fact>/chart-<id>`.
@@ -1590,7 +1613,7 @@ them.
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
-| Preview charts (and any named `reading`) resolve, appear once, and every viewpoint cites the fact behind one | `lib/content/validate.ts` (`previewChartErrors`) |
+| Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

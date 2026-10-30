@@ -35,6 +35,8 @@ export type KeyFiguresProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   /** Draw the compact preview: the linked title and every figure with its label, period and change; sources stay on the full figure. */
   preview?: FigurePreview;
 };
@@ -46,9 +48,9 @@ export type KeyFiguresProps = {
  * bad news in this register, so direction is carried by the sign and the
  * words, never by green and red.
  */
-export function KeyFigures({ figures, id, title, description, sources, note, footer, preview }: KeyFiguresProps) {
+export function KeyFigures({ figures, id, title, description, sources, note, footer, panel, preview }: KeyFiguresProps) {
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} preview={preview} className="sv-key-figures">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} preview={preview} className="sv-key-figures">
       <div className="sv-key-figures__frame">
         <dl className="sv-key-figures__list" data-count={figures.length}>
           {figures.map((figure, i) => (

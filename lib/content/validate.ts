@@ -1,6 +1,7 @@
 import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
 import { comparePeriods } from './period';
+import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
@@ -185,11 +186,6 @@ export function validateTopic(topic: Topic): string[] {
   return errors;
 }
 
-/** The ids a fact's charts answer to: `series`, each `additionalSeries` id and each comparison id. */
-export function chartIdsOf(fact: Fact): string[] {
-  return [...(fact.series ? ['series'] : []), ...(fact.additionalSeries ?? []).map(s => s.id), ...(fact.comparisons ?? []).map(c => c.id)];
-}
-
 /**
  * A topic's home-page preview charts resolve, appear once each, and between
  * them represent every viewpoint: each viewpoint must cite, inline, the fact
@@ -203,12 +199,14 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
   const seen = new Set<string>();
   for (const { fact, chart, reading } of previews) {
     const key = `${fact}/${chart}`;
-    const target = factById.get(fact);
-    if (!target || !chartIdsOf(target).includes(chart)) errors.push(`topic: preview chart ${key} does not resolve to a chart`);
-    else if (reading !== undefined) {
-      const series = chart === 'series' ? target.series : target.additionalSeries?.find(s => s.id === chart);
-      if (!series) errors.push(`topic: preview chart ${key} is not a series, so it cannot name a reading`);
-      else if (!series.readings.some(r => r.id === reading)) errors.push(`topic: preview chart ${key} has no reading "${reading}"`);
+    const owner = factById.get(fact);
+    const target = owner && previewTarget(owner, chart);
+    if (!target) errors.push(`topic: preview chart ${key} does not resolve to a chart or figure`);
+    else if (target.kind === 'figure' && !isPreviewable(target)) {
+      errors.push(`topic: preview chart ${key} is a ${target.figure.kind} figure, which has no graph to preview — choose a series, a comparison or a figure of kind ${PREVIEW_FIGURE_KINDS.join(', ')}`);
+    } else if (reading !== undefined) {
+      if (target.kind !== 'series') errors.push(`topic: preview chart ${key} is not a series, so it cannot name a reading`);
+      else if (!target.series.readings.some(r => r.id === reading)) errors.push(`topic: preview chart ${key} has no reading "${reading}"`);
     }
     if (seen.has(key)) errors.push(`topic: preview chart ${key} is listed twice`);
     seen.add(key);

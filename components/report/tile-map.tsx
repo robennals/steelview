@@ -26,6 +26,8 @@ type TileMapCommon = {
   note?: string;
   /** Rendered after the source line: the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   headingLevel?: 2 | 3;
   /**
    * Draw the compact preview: the linked title, the key and every tile, the
@@ -68,7 +70,7 @@ type TileCell = {
  * so no category rests on colour alone and none implies an order.
  */
 export function TileMap(props: TileMapProps) {
-  const { tiles, highlight = [], areaLabel = 'Area', id, title, description, sources, note, footer, headingLevel, preview } = props;
+  const { tiles, highlight = [], areaLabel = 'Area', id, title, description, sources, note, footer, panel, headingLevel, preview } = props;
   const categorical = isCategorical(props);
   const what = categorical ? props.categoryLabel : props.valueLabel;
   const reactId = useId();
@@ -172,7 +174,7 @@ export function TileMap(props: TileMapProps) {
   if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-tile-map">{graph}</ReportFigure>;
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-tile-map">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-tile-map">
       <ChartViewToggle label={title ?? what} graph={graph} table={table} />
     </ReportFigure>
   );

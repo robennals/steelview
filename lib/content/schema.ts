@@ -829,7 +829,10 @@ export const cruxFrontmatterSchema = z.object({
 /** One chart in a topic's home-page preview: a fact and the id of one of its charts. */
 export const previewChartSchema = z.object({
   fact: z.string().min(1),
-  /** `series`, an `additionalSeries` id, or a `comparisons` id on that fact. */
+  /**
+   * `series`, an `additionalSeries` id, a `comparisons` id, or the id of a
+   * graph-like figure (`PREVIEW_FIGURE_KINDS`, lib/content/preview.ts) on that fact.
+   */
   chart: z.string().min(1),
   /**
    * For a series, which one reading the slide shows (default: its first). A

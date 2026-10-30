@@ -3,7 +3,7 @@ import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { compose, compositionColor, type CompositionCategory, type CompositionRowInput } from './composition';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
-import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
+import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type { CompositionCategory, CompositionRowInput } from './composition';
@@ -29,6 +29,8 @@ export type CompositionBarProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   /** Draw the compact preview: the linked title, the key and every bar; row sources stay on the full figure. */
   preview?: FigurePreview;
 };
@@ -62,10 +64,12 @@ export function CompositionBar({
   sources,
   note,
   footer,
+  panel,
   preview,
 }: CompositionBarProps) {
   const composed = compose(categories, rows, { otherThreshold, otherLabel });
   const color = (key: string) => compositionColor(categories, key);
+  const totalText = (total: number) => formatValue(total, countFormat);
 
   const graph = (
     <>
@@ -77,7 +81,12 @@ export function CompositionBar({
           </li>
         ))}
       </ul>
-      <ol className="sv-composition__rows" data-compact={(preview && composed.rows.length > COMPACT_PREVIEW_ITEMS) || undefined}>
+      <ol
+        className="sv-composition__rows"
+        data-compact={(preview && composed.rows.length > COMPACT_PREVIEW_ITEMS) || undefined}
+        data-dense={(preview && composed.rows.length > DENSE_PREVIEW_ITEMS) || undefined}
+        style={showCounts ? { '--sv-composition-total': `${Math.max(...composed.rows.map(row => totalText(row.total).length)) + 1}ch` } : undefined}
+      >
         {composed.rows.map(row => (
           <li key={row.label} className="sv-composition__row">
             <p className="sv-composition__head">
@@ -85,7 +94,7 @@ export function CompositionBar({
                 {row.label}
                 {row.source && !preview && <SourceCredits sources={[row.source]} />}
               </span>
-              {showCounts && <span className="sv-composition__total">{formatValue(row.total, countFormat)} total</span>}
+              {showCounts && <span className="sv-composition__total">{totalText(row.total)}<span className="sv-composition__total-word"> total</span></span>}
             </p>
             {/* The text equivalent of the bar, in stacking order. */}
             <p className="sv-visually-hidden">
@@ -147,7 +156,7 @@ export function CompositionBar({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-composition">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-composition">
       <ChartViewToggle label={title ?? 'Composition'} graph={graph} table={table} />
     </ReportFigure>
   );

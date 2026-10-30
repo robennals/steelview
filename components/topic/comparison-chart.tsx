@@ -1,7 +1,7 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import type { Fact, Source } from '@/lib/content/types';
-import { ChartAbout } from './chart-about';
+import { ChartAbout } from '@/components/report/chart-about';
 import { ObservationBar } from './observation-bar';
 import { COMPACT_PREVIEW_ITEMS, RankedColumns, fitsRankedColumns } from '@/components/report/ranked-columns';
 import type { PreviewFit } from '@/lib/chart/series-chart';

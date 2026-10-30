@@ -5,7 +5,7 @@ import { cellText, cellValue, sortRows } from './table-sort';
 
 export type DataCardsProps = Pick<
   DataTableProps,
-  'columns' | 'rows' | 'caption' | 'highlight' | 'defaultSort' | 'id' | 'title' | 'description' | 'sources' | 'note' | 'footer'
+  'columns' | 'rows' | 'caption' | 'highlight' | 'defaultSort' | 'id' | 'title' | 'description' | 'sources' | 'note' | 'footer' | 'panel'
 > & {
   /** 'timeline' strings the cards along a rule, for rows that run in order of time. */
   layout: 'cards' | 'timeline';
@@ -40,6 +40,7 @@ export function DataCards({
   sources,
   note,
   footer,
+  panel,
 }: DataCardsProps) {
   const ordered = defaultSort ? sortRows(rows, defaultSort.key, defaultSort.direction) : rows;
   const header = columns.find(c => c.rowHeader) ?? columns[0];
@@ -52,7 +53,7 @@ export function DataCards({
   const filled = (row: DataTableRow, column: DataTableColumn | undefined): column is DataTableColumn => column !== undefined && cellText(row[column.key], column.format) !== '—';
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-cards">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-cards">
       <List className="sv-cards__list" data-layout={layout} aria-label={caption}>
         {ordered.map((row, i) => {
           const name = String(cellValue(row[header.key]));

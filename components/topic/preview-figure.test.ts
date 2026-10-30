@@ -32,7 +32,7 @@ function variant(id: string, change: (f: ComponentFigure) => ComponentFigure): F
  */
 function assertCompact(html: string, id: string, title: string) {
   assert.match(html, new RegExp(`^<figure class="sv-chart sv-report[^"]*" id="figure-examples--chart-${id}" data-preview="true">`));
-  assert.ok(html.includes(`<h3 class="sv-graph-heading"><a href="${href}#figure-examples--chart-${id}">${title}</a></h3>`), html.slice(0, 400));
+  assert.ok(html.includes(`<h3 class="sv-graph-heading"><a href="${href}">${title}</a></h3>`), html.slice(0, 400));
   assert.doesNotMatch(html, /sv-chart__desc|sv-chart__view-controls|sv-chart__credit|sv-chart__methodology|About this data|<noscript/);
 }
 
@@ -62,6 +62,20 @@ test('a composition preview keeps its key and every part, but not the row source
   assert.doesNotMatch(html, /sv-item-credit/);
 });
 
+test('a long composition preview puts each row on one line, and past twelve drops the shares a thin bar cannot hold', () => {
+  const long = (length: number) => preview('deaths-by-counter', variant('deaths-by-counter', f => (f.kind === 'compositionBar' ? { ...f, rows: Array.from({ length }, (_, i) => ({ ...f.rows[0], label: `Group ${i}` })) } : f)));
+  assert.doesNotMatch(preview('deaths-by-counter'), /sv-composition__rows"[^>]*data-compact/);
+  const eight = long(8);
+  assert.match(eight, /class="sv-composition__rows" data-compact="true" style="--sv-composition-total:6ch"/);
+  assert.doesNotMatch(eight, /sv-composition__rows"[^>]*data-dense/);
+  assert.equal(eight.match(/class="sv-composition__row"/g)?.length, 8);
+  // The word stays in the markup, for the full figure and for a reader of the row's text.
+  assert.match(eight, /class="sv-composition__total">3,636<span class="sv-composition__total-word"> total<\/span>/);
+  const sixteen = long(16);
+  assert.match(sixteen, /class="sv-composition__rows" data-compact="true" data-dense="true"/);
+  assert.equal(sixteen.match(/class="sv-composition__row"/g)?.length, 16);
+});
+
 test('an estimate range preview draws every estimate and the axis, but not the method key or sources', () => {
   const html = preview('cost-estimates');
   assertCompact(html, 'cost-estimates', 'Estimated cost of the war to the US, by estimator, 2026');
@@ -70,17 +84,21 @@ test('an estimate range preview draws every estimate and the axis, but not the m
   assert.doesNotMatch(html, /sv-estimates__key|sv-item-credit/);
 });
 
-test('a scatter preview draws every point on the preview and narrow plots, with both axis labels and no focus stops', () => {
+test('a scatter preview draws every point at its fit\'s shapes and the narrow plot, with both axis labels and no focus stops', () => {
   const html = preview('count-speed');
   assertCompact(html, 'count-speed', 'When mail processing may begin and how long the count took, 2024');
   assert.match(html, /data-variant="preview"/);
   assert.match(html, /data-variant="narrow"/);
   assert.doesNotMatch(html, /data-variant="wide"/);
-  // Five points, drawn once in each of the two plots.
-  assert.equal(html.match(/class="sv-scatter__point"/g)?.length, 10);
+  // Five points, drawn once in each of the three plots.
+  assert.equal(html.match(/class="sv-scatter__point"/g)?.length, 15);
   assert.doesNotMatch(html, /tabindex/);
   assert.match(html, /Days before Election Day processing may begin/);
   assert.match(html, /Hours to count 95% of the vote/);
+  const tall = renderToStaticMarkup(createElement(PreviewFigure, { figure: figure('count-speed'), context: figureContext(base), preview: { href: '/x', fit: 'tall' } }));
+  assert.match(tall, /data-variant="preview-medium"/);
+  assert.match(tall, /data-variant="preview-tall"/);
+  assert.doesNotMatch(tall, /data-variant="preview"/);
 });
 
 test('a tile map preview draws every tile with its code, sized to fit, and no focus stops', () => {

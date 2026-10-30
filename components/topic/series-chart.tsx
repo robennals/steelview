@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
-import { EventStrip, formatDate, type StripEvent } from '@/components/report';
-import { ChartAbout } from './chart-about';
+import { ChartAbout, EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';

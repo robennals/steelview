@@ -20,17 +20,23 @@ export type FigureContext = {
   /** The topic's `lastUpdated`: where a period still in force stops. Absent, the component's own default applies. */
   asOf?: string;
   credit: (n: number) => R.SourceCredit;
+  /** Drawn in a data panel, where the fact's source list is not on the page: every credit links to the source itself. */
+  panel?: boolean;
 };
 
-export function figureContext(fact: Fact, asOf?: string): FigureContext {
+export function figureContext(fact: Fact, asOf?: string, { panel = false } = {}): FigureContext {
   const sources = factSources(fact);
   return {
     fact,
     sources,
     asOf,
+    panel,
     // validate.ts rejects a citation past the end of the list (rule F2); the
     // fallback only keeps an unvalidated draft rendering in the dev server.
-    credit: n => ({ label: sources[n - 1]?.publisher ?? `Source ${n}`, href: `#source-${fact.id}-${n}`, number: n }),
+    credit: n => {
+      const source = sources[n - 1];
+      return { label: source?.publisher ?? `Source ${n}`, href: panel && source ? source.url : `#source-${fact.id}-${n}`, number: n };
+    },
   };
 }
 
@@ -41,7 +47,9 @@ export function figureDomId(fact: Pick<Fact, 'id'>, figureId: string): string {
 
 /** The figure's source line: its `sources` and every item-level citation, deduplicated, in ascending order. */
 export function figureCredits(figure: Figure, c: FigureContext): R.SourceCredit[] {
-  return [...new Set(figureCitations(figure))].sort((a, b) => a - b).map(c.credit);
+  const credits = [...new Set(figureCitations(figure))].sort((a, b) => a - b).map(c.credit);
+  // A panel's source line names its sources; there is no numbered list to point into.
+  return c.panel ? credits.map(({ label, href }) => ({ label, href })) : credits;
 }
 
 /** The content format (unit always present, currency checked by the schema) as the library's `ValueFormat`. */
@@ -69,6 +77,7 @@ function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
     description: f.description,
     sources: figureCredits(f, c),
     note: figureNote(f),
+    panel: c.panel,
   };
 }
 
@@ -138,7 +147,7 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
     to: f.to ?? (open ? c.asOf : undefined),
     categories: f.categories,
     rows: f.rows,
-    events: stripEvents(f, c.fact.id, c.sources),
+    events: stripEvents(f, c.fact.id, c.sources, c.panel),
   };
 }
 
@@ -279,6 +288,7 @@ export function quoteComparisonProps(f: FigureOf<'quoteComparison'>, c: FigureCo
     description: f.description,
     note: f.note,
     sources: figureCredits(f, c),
+    panel: c.panel,
     quotes: f.quotes.map((q, i) => quote(q, i + 1, f, c)),
   };
 }

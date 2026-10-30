@@ -42,7 +42,7 @@ import {
 import type { PreviewSlide } from '@/lib/content/preview';
 import { markedObservations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
-import { figureLabel, isComponentFigure } from '@/lib/content/types';
+import { componentFigure, figureLabel, isComponentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { Prose } from './prose';
@@ -101,7 +101,7 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
  * for one reading of a series. Its observations come from the step it sits in,
  * and its source links lead to the sources themselves, whose list is not on the page.
  */
-export function PanelChart({ slide }: { slide: PreviewSlide }) {
+export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigurePage }) {
   const { fact, chart, reading: only } = slide;
   const sources = factSources(fact);
   const index = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
@@ -113,7 +113,9 @@ export function PanelChart({ slide }: { slide: PreviewSlide }) {
     return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={markedObservations(fact, reading.id)} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
-  return comparison ? <ComparisonChart fact={fact} chart={comparison} sources={sources} panel /> : null;
+  if (comparison) return <ComparisonChart fact={fact} chart={comparison} sources={sources} panel />;
+  const figure = componentFigure(fact, chart);
+  return figure ? <FactFigure figure={figure} context={figureContext(fact, page.asOf, { panel: true })} page={page} /> : null;
 }
 
 /** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */
@@ -228,19 +230,19 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
     // the figure's id, description, Observations and note like every other.
     case 'pullQuote':
       return (
-        <ReportFigure id={figureDomId(context.fact, figure.id)} description={figure.description} note={figure.note} footer={footer}>
+        <ReportFigure id={figureDomId(context.fact, figure.id)} description={figure.description} note={figure.note} footer={footer} panel={context.panel}>
           <PullQuote {...pullQuoteProps(figure, context)} />
         </ReportFigure>
       );
     case 'claimCheck':
       return (
-        <ReportFigure id={figureDomId(context.fact, figure.id)} footer={footer}>
+        <ReportFigure id={figureDomId(context.fact, figure.id)} footer={footer} panel={context.panel}>
           <ClaimCheck {...claimCheckProps(figure, { ...context, slug: page.slug, facts: page.facts })} />
         </ReportFigure>
       );
     case 'caveatList':
       return (
-        <ReportFigure id={figureDomId(context.fact, figure.id)} footer={footer}>
+        <ReportFigure id={figureDomId(context.fact, figure.id)} footer={footer} panel={context.panel}>
           <CaveatList {...caveatListProps(figure, context)} />
         </ReportFigure>
       );
@@ -248,8 +250,8 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
 }
 
 /**
- * A library figure's compact preview, for a home-page slide: the same adapter
- * and component as `FactFigure`, with the component's `preview` presentation.
+ * A library figure's compact preview, for a slide: the same adapter and
+ * component as `FactFigure`, with the component's `preview` presentation.
  * One case per kind in `PREVIEW_FIGURE_KINDS` (lib/content/preview.ts). A kind
  * without a case here draws its linked title alone, so a kind added to that
  * list before its presentation exists degrades to a label, not a crash.

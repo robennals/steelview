@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { ObservationBar } from '@/components/topic/observation-bar';
+import { ChartAbout } from './chart-about';
 import type { FigurePreview, SourceCredit } from './types';
 
 /**
@@ -24,6 +25,7 @@ export function ReportFigure({
   headingLevel = 2,
   className,
   preview,
+  panel,
   children,
 }: {
   id?: string;
@@ -38,6 +40,8 @@ export function ReportFigure({
   className?: string;
   /** Draw only the linked title and the graph (see `FigurePreview`). */
   preview?: FigurePreview;
+  /** Drawn in a data panel: filling it, with its description and note folded into one line. */
+  panel?: boolean;
   children?: ReactNode;
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
@@ -48,10 +52,25 @@ export function ReportFigure({
       <figure className={classes} id={id} data-preview>
         {title && (
           <figcaption className="sv-chart__caption">
-            <h3 className="sv-graph-heading"><a href={`${preview.href}#${id ?? ''}`}>{title}</a></h3>
+            <h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{title}</a> : title}</h3>
           </figcaption>
         )}
         {children && <div className="sv-chart__preview">{children}</div>}
+      </figure>
+    );
+  }
+  const noteBody = typeof note === 'string' ? <p>{note}</p> : note;
+  if (panel) {
+    // The step around it carries the Observations, which the bar shows one at a time.
+    return (
+      <figure className={classes} id={id} data-panel-chart>
+        <figcaption className="sv-chart__caption">
+          {title && <Heading className="sv-graph-heading">{title}</Heading>}
+          {(description || note) && <ChartAbout description={description}>{noteBody}</ChartAbout>}
+        </figcaption>
+        <ObservationBar />
+        {children}
+        {sources && sources.length > 0 && <SourceLine sources={sources} />}
       </figure>
     );
   }
@@ -70,7 +89,7 @@ export function ReportFigure({
       {note && (
         <details className="sv-chart__methodology">
           <summary>About this data</summary>
-          {typeof note === 'string' ? <p>{note}</p> : note}
+          {noteBody}
         </details>
       )}
     </figure>

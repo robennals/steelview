@@ -40,6 +40,8 @@ export type PeriodTimelineProps = {
   headingLevel?: 2 | 3;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
   /**
    * Draw the compact preview: the linked title, the category key, every row
    * and period, the event markers and one axis. The event list, the open-end
@@ -89,6 +91,7 @@ export function PeriodTimeline({
   sources,
   note,
   footer,
+  panel,
   headingLevel,
   preview,
 }: PeriodTimelineProps) {
@@ -227,7 +230,7 @@ export function PeriodTimeline({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-period-timeline">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-period-timeline">
       <ChartViewToggle label={title ?? 'Periods'} graph={graph} table={table} />
     </ReportFigure>
   );
