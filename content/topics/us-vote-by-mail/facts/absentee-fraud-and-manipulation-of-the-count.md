@@ -1,13 +1,8 @@
 ---
 title: Absentee and Mail Ballot Fraud and Manipulation of the Count in the US, 1936–2026
 claim: >-
-  Organised absentee-ballot schemes have voided US elections, from East
-  Chicago in 2003 to Bridgeport in 2023, and most elections voided for fraud
-  in Heritage's own case list involved absentee ballots. Each known case was
-  local, caught and rerun. Detected cases are few against the mail ballots
-  cast, but detection is a floor, so the record shows neither how common nor
-  how rare such fraud is.
-claimSources: [1, 3, 9, 10, 11, 14, 16]
+  Organised absentee-ballot schemes have voided US elections; each known case was local, caught and rerun, but only detected fraud can be counted, so the record shows neither how common nor how rare it is.
+claimSources: [1, 3, 9, 11]
 status: well-supported
 sources:
   # 1
@@ -696,6 +691,244 @@ dataStillNeeded:
     why: >-
       None was found, but the search was not complete; a case would bear on
       whether discretion over which ballots count has been abused.
+figures:
+  - kind: comparison
+    id: voided-elections
+  - kind: comparison
+    id: margin-and-invalid-ballots
+  - kind: comparison
+    id: absentee-and-impersonation-cases
+  - kind: dataTable
+    id: absentee-cases
+    title: 'Organised absentee and mail-ballot cases, 1980–2026'
+    description: 'How each scheme worked, how it came to light and how it ended. A dash means the source read does not say.'
+    caption: One row per case
+    columns:
+      - key: case
+        label: Case
+        rowHeader: true
+      - key: how
+        label: How it was done
+        sortable: false
+      - key: margin
+        label: Margin
+        format: text
+        sortable: false
+      - key: light
+        label: How it came to light
+        sortable: false
+      - key: remedy
+        label: Remedy
+        sortable: false
+      - key: criminal
+        label: 'Criminal outcome, as of'
+        sortable: false
+    rows:
+      - case: 'St. Louis, 1980'
+        how:
+          value: Ward organisation opened absentee ballots and punched holes in them
+          sources:
+            - 30
+        margin: Not given
+        light:
+          value: Informant
+          sources:
+            - 30
+        criminal: 'Convictions affirmed in part, 1988'
+      - case: 'Alexander County, N.C., 1982'
+        how:
+          value: A deputy sheriff and deputy court clerk voted nursing-home residents' absentee ballots
+          sources:
+            - 29
+        margin: Not given
+        light: Federal prosecution
+        criminal: Five convicted (by April 1984)
+      - case: 'Philadelphia, 1993 state senate special'
+        how:
+          value: Campaign workers' absentee scheme; two city commissioners and an elections supervisor complicit
+          sources:
+            - 10
+        margin: Not given
+        light: Surge in absentee ballots
+        remedy: Overturned by a federal judge
+        criminal: 'Two campaign workers convicted of misdemeanours; candidate not convicted (Heritage, as of 2026)'
+      - case: Miami mayoral election (dated 1998 by Carter–Baker)
+        how:
+          value: Absentee ballot fraud
+          sources:
+            - 13
+        margin: Not given
+        remedy: A judge "called for a new election"
+        criminal: Not covered by the source read
+      - case: 'East Chicago, Ind., 2003 primary'
+        how:
+          value: 'Cash incentives to vote absentee, among acts that "perverted the absentee voting process"'
+          sources:
+            - 3
+        margin: '278'
+        light: Losing candidate's election contest
+        remedy: 'Special election ordered, 2004'
+        criminal:
+          value: 47 convicted or pleaded guilty (by October 2008)
+          sources:
+            - 4
+      - case: 'North Carolina 9th District, 2018'
+        how:
+          value: 'Paid workers collected request forms and ballots, faked witness signatures, filled out ballots'
+          sources:
+            - 1
+        margin: '905'
+        light:
+          value: Lopsided mail vote
+          sources:
+            - 10
+        remedy: 'New election ordered, 2019'
+        criminal:
+          value: All workers but Dowless pleaded guilty; Dowless died before trial (as of March 2025)
+          sources:
+            - 2
+      - case: 'Paterson, N.J., 2020'
+        how:
+          value: Hundreds of mail ballots found bundled in mailboxes; the winner charged with mail-ballot fraud
+          sources:
+            - 6
+            - 7
+        margin: Not given
+        light:
+          value: Postal Inspection Service
+          sources:
+            - 7
+        remedy: 'New election ordered, August 2020'
+        criminal:
+          value: 'No convictions. Mendez indictment dismissed April 2026, state appealing; Jackson''s charges being dropped (as of May 2026)'
+          sources:
+            - 8
+      - case: 'Aberdeen, Miss., 2020 primary'
+        how:
+          value: 66 of 84 absentee ballots invalid; a notary charged
+          sources:
+            - 10
+        margin: '37'
+        light: Losing candidate's lawsuit
+        remedy: New election ordered
+        criminal: Notary arrested; no outcome in the source
+      - case: 'Bridgeport, Conn., 2023 primary'
+        how:
+          value: Absentee ballots stuffed into drop boxes by party workers
+          sources:
+            - 9
+        margin: '251'
+        light:
+          value: Drop-box surveillance video
+          sources:
+            - 9
+        remedy: 'New primary ordered, November 2023'
+        criminal: Not covered by the sources read
+  - kind: dataTable
+    id: officials
+    title: Officials and the count
+    description: 'Cases where officials tampered with a count, or refused or challenged a result.'
+    caption: One row per case
+    columns:
+      - key: case
+        label: Case
+        rowHeader: true
+      - key: did
+        label: What officials did
+        sortable: false
+      - key: outcome
+        label: 'Outcome, as of'
+        sortable: false
+    rows:
+      - case: 'Texas Senate primary, 1948 (Box 13)'
+        did:
+          value: 'Not confirmed: Stevenson alleged votes "fraudulently counted for Johnson"; no primary source read describes the method'
+          sources:
+            - 23
+        outcome: Johnson's win stood
+      - case: 'Chicago, 1982'
+        did:
+          value: Election judges cast ballots in the names of voters who had moved or died
+          sources:
+            - 20
+        outcome: See the in-person fraud table
+      - case: 'Philadelphia, 1993'
+        did:
+          value: Two city commissioners and an elections supervisor complicit in an absentee scheme
+          sources:
+            - 10
+        outcome: Election overturned
+      - case: 'Lincoln County, W.Va., 2010 primary'
+        did:
+          value: The county clerk stuffed boxes and falsified absentee ballots; the sheriff pleaded guilty too
+          sources:
+            - 10
+        outcome: 'Election overturned; clerk sentenced to 18 months (Heritage, as of 2026)'
+      - case: 'Otero County, N.M., 2022 primary'
+        did:
+          value: County commissioners refused to certify
+          sources:
+            - 24
+        outcome: 'Certified after a state supreme court order, June 2022'
+      - case: 'Cochise County, Ariz., 2022 general'
+        did:
+          value: Two supervisors voted to delay certification past the deadline
+          sources:
+            - 25
+        outcome: 'Certified on a judge''s order; Judd pleaded guilty to a misdemeanour, Crosby awaiting trial (as of September 2025)'
+      - case: 'Arizona governor, 2022'
+        did:
+          value: 'The losing candidate sued, claiming Maricopa County did not verify mail-ballot signatures'
+          sources:
+            - 26
+        outcome: 'Claim rejected, May 2023'
+  - kind: dataTable
+    id: in-person
+    title: In-person and machine fraud over the same era
+    description: 'Large polling-place cases from the same record, for comparison with the absentee cases.'
+    caption: One row per case
+    columns:
+      - key: case
+        label: Case
+        rowHeader: true
+      - key: how
+        label: How it was done
+        sortable: false
+      - key: outcome
+        label: 'Outcome, as of'
+        sortable: false
+    rows:
+      - case: 'Kansas City, 1936'
+        how:
+          value: Officials wrote in ballots for padded "ghosts and sleepers" and stuffed boxes
+          sources:
+            - 22
+        outcome:
+          value: 259 convictions
+          sources:
+            - 21
+      - case: 'Chicago, 1982'
+        how:
+          value: Election judges cast ballots for "phantom voters"; voters paid $2.00 a vote
+          sources:
+            - 20
+        outcome:
+          value: 58 convicted by April 1985; 63 of 65 prosecuted
+          sources:
+            - 18
+            - 19
+      - case: 'Duval County, Tex., 1982 primary'
+        how:
+          value: Votes bought with food stamps and welfare benefits
+          sources:
+            - 18
+        outcome: 21 of 29 indicted convicted (by April 1985)
+      - case: 'Clay County, N.C., 1982'
+        how:
+          value: Votes bought for $50 to $125
+          sources:
+            - 29
+        outcome: Eight convicted (by April 1984)
 ---
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-elections}
 
@@ -751,22 +984,6 @@ Three things keep fraud out of the counts:
 
 That counts are a floor does not show the true rate is high. No source measures the undetected share. Large schemes did leave traces: North Carolina's was flagged by its lopsided mail vote, and Bridgeport's by drop-box video. [10](#source-absentee-fraud-and-manipulation-of-the-count-10) [9](#source-absentee-fraud-and-manipulation-of-the-count-9)
 
-## Organised absentee and mail-ballot cases, 1980–2026
-
-| Case | How it was done | Margin | How it came to light | Remedy | Criminal outcome, as of |
-| --- | --- | --- | --- | --- | --- |
-| St. Louis, 1980 | Ward organisation opened absentee ballots and punched holes in them [30](#source-absentee-fraud-and-manipulation-of-the-count-30) | Not given | Informant [30](#source-absentee-fraud-and-manipulation-of-the-count-30) | — | Convictions affirmed in part, 1988 |
-| Alexander County, N.C., 1982 | A deputy sheriff and deputy court clerk voted nursing-home residents' absentee ballots [29](#source-absentee-fraud-and-manipulation-of-the-count-29) | Not given | Federal prosecution | — | Five convicted (by April 1984) |
-| Philadelphia, 1993 state senate special | Campaign workers' absentee scheme; two city commissioners and an elections supervisor complicit [10](#source-absentee-fraud-and-manipulation-of-the-count-10) | Not given | Surge in absentee ballots | Overturned by a federal judge | Two campaign workers convicted of misdemeanours; candidate not convicted (Heritage, as of 2026) |
-| Miami mayoral election (dated 1998 by Carter–Baker) | Absentee ballot fraud [13](#source-absentee-fraud-and-manipulation-of-the-count-13) | Not given | — | A judge "called for a new election" | Not covered by the source read |
-| East Chicago, Ind., 2003 primary | Cash incentives to vote absentee, among acts that "perverted the absentee voting process" [3](#source-absentee-fraud-and-manipulation-of-the-count-3) | 278 | Losing candidate's election contest | Special election ordered, 2004 | 47 convicted or pleaded guilty (by October 2008) [4](#source-absentee-fraud-and-manipulation-of-the-count-4) |
-| North Carolina 9th District, 2018 | Paid workers collected request forms and ballots, faked witness signatures, filled out ballots [1](#source-absentee-fraud-and-manipulation-of-the-count-1) | 905 | Lopsided mail vote [10](#source-absentee-fraud-and-manipulation-of-the-count-10) | New election ordered, 2019 | All workers but Dowless pleaded guilty; Dowless died before trial (as of March 2025) [2](#source-absentee-fraud-and-manipulation-of-the-count-2) |
-| Paterson, N.J., 2020 | Hundreds of mail ballots found bundled in mailboxes; the winner charged with mail-ballot fraud [6](#source-absentee-fraud-and-manipulation-of-the-count-6) [7](#source-absentee-fraud-and-manipulation-of-the-count-7) | Not given | Postal Inspection Service [7](#source-absentee-fraud-and-manipulation-of-the-count-7) | New election ordered, August 2020 | No convictions. Mendez indictment dismissed April 2026, state appealing; Jackson's charges being dropped (as of May 2026) [8](#source-absentee-fraud-and-manipulation-of-the-count-8) |
-| Aberdeen, Miss., 2020 primary | 66 of 84 absentee ballots invalid; a notary charged [10](#source-absentee-fraud-and-manipulation-of-the-count-10) | 37 | Losing candidate's lawsuit | New election ordered | Notary arrested; no outcome in the source |
-| Bridgeport, Conn., 2023 primary | Absentee ballots stuffed into drop boxes by party workers [9](#source-absentee-fraud-and-manipulation-of-the-count-9) | 251 | Drop-box surveillance video [9](#source-absentee-fraud-and-manipulation-of-the-count-9) | New primary ordered, November 2023 | Not covered by the sources read |
-
-"—" means the source read does not say.
-
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-absentee-cases}
 
 ### Organised absentee schemes have voided elections {#absentee-fraud-and-manipulation-of-the-count--absentee-schemes-voided-elections}
@@ -789,18 +1006,6 @@ The 2005 bipartisan commission wrote that "absentee ballots remain the largest s
 
 It found "little evidence of fraud in Oregon, where the entire state votes by mail", and "no evidence of extensive fraud in U.S. elections". It still asked Oregon for better precautions against intercepted ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
 
-## Officials and the count
-
-| Case | What officials did | Outcome, as of |
-| --- | --- | --- |
-| Texas Senate primary, 1948 (Box 13) | Not confirmed: Stevenson alleged votes "fraudulently counted for Johnson"; no primary source read describes the method [23](#source-absentee-fraud-and-manipulation-of-the-count-23) | Johnson's win stood |
-| Chicago, 1982 | Election judges cast ballots in the names of voters who had moved or died [20](#source-absentee-fraud-and-manipulation-of-the-count-20) | See the next table |
-| Philadelphia, 1993 | Two city commissioners and an elections supervisor complicit in an absentee scheme [10](#source-absentee-fraud-and-manipulation-of-the-count-10) | Election overturned |
-| Lincoln County, W.Va., 2010 primary | The county clerk stuffed boxes and falsified absentee ballots; the sheriff pleaded guilty too [10](#source-absentee-fraud-and-manipulation-of-the-count-10) | Election overturned; clerk sentenced to 18 months (Heritage, as of 2026) |
-| Otero County, N.M., 2022 primary | County commissioners refused to certify [24](#source-absentee-fraud-and-manipulation-of-the-count-24) | Certified after a state supreme court order, June 2022 |
-| Cochise County, Ariz., 2022 general | Two supervisors voted to delay certification past the deadline [25](#source-absentee-fraud-and-manipulation-of-the-count-25) | Certified on a judge's order; Judd pleaded guilty to a misdemeanour, Crosby awaiting trial (as of September 2025) |
-| Arizona governor, 2022 | The losing candidate sued, claiming Maricopa County did not verify mail-ballot signatures [26](#source-absentee-fraud-and-manipulation-of-the-count-26) | Claim rejected, May 2023 |
-
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-officials}
 
 ### Officials have manipulated the count, including through absentee ballots {#absentee-fraud-and-manipulation-of-the-count--officials-manipulated-count}
@@ -814,15 +1019,6 @@ In Otero and Cochise counties in 2022, officials who refused or delayed certific
 ### No case was found of signature review used to change a result {#absentee-fraud-and-manipulation-of-the-count--no-signature-review-case-found}
 
 The record read contains no case of officials rejecting ballots on signatures to change a winner. The closest is the reverse: Arizona's losing candidate for governor claimed in 2022 that signatures were not checked, and the court found she had not proved it. [26](#source-absentee-fraud-and-manipulation-of-the-count-26) The search was incomplete (see Data still needed).
-
-## In-person and machine fraud over the same era
-
-| Case | How it was done | Outcome, as of |
-| --- | --- | --- |
-| Kansas City, 1936 | Officials wrote in ballots for padded "ghosts and sleepers" and stuffed boxes [22](#source-absentee-fraud-and-manipulation-of-the-count-22) | 259 convictions [21](#source-absentee-fraud-and-manipulation-of-the-count-21) |
-| Chicago, 1982 | Election judges cast ballots for "phantom voters"; voters paid $2.00 a vote [20](#source-absentee-fraud-and-manipulation-of-the-count-20) | 58 convicted by April 1985 [18](#source-absentee-fraud-and-manipulation-of-the-count-18); 63 of 65 prosecuted [19](#source-absentee-fraud-and-manipulation-of-the-count-19) |
-| Duval County, Tex., 1982 primary | Votes bought with food stamps and welfare benefits [18](#source-absentee-fraud-and-manipulation-of-the-count-18) | 21 of 29 indicted convicted (by April 1985) |
-| Clay County, N.C., 1982 | Votes bought for $50 to $125 [29](#source-absentee-fraud-and-manipulation-of-the-count-29) | Eight convicted (by April 1984) |
 
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-in-person}
 

@@ -41,16 +41,10 @@ claimSources:
   - 2
   - 24
   - 25
-  - 19
   - 36
   - 38
 claim: >-
-  Australia's boat arrivals fell from 20,587 people in 2013 to 160 in 2014
-  after it began turning boats back at sea in December 2013, while staying in
-  the Refugee Convention; the UK spent £715 million on the Rwanda partnership
-  and related Illegal Migration Act work and sent four volunteers, and no
-  asylum seekers, to Rwanda; and studies of Danish and German reforms that
-  made permanent residence harder to get found no gain in refugees' employment
+  Australia's boat arrivals fell to almost none after it began turning boats back, the UK's costly Rwanda scheme sent no asylum seekers, and Danish and German studies found harder settlement brought no employment gain.
 status: well-supported
 sources:
   - stance: supports
@@ -1543,6 +1537,99 @@ dataStillNeeded:
     why: >-
       The government stopped publishing a regular series; later figures come
       from Senate Estimates answers compiled by advocacy groups.
+figures:
+  - kind: series
+  - kind: series
+    id: australia-interceptions
+  - kind: series
+    id: australia-offshore-cost
+  - kind: comparison
+    id: australia-outcomes
+  - kind: comparison
+    id: rwanda-spend
+  - kind: series
+    id: denmark-comparators
+  - kind: series
+    id: grant-rates
+  - kind: comparison
+    id: eu-per-head-2025
+  - kind: dataTable
+    id: residence-status
+    title: Temporary versus permanent status and refugees' employment
+    description: European reforms that made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes.
+    caption: One row per reform or study
+    sources: [55]
+    columns:
+      - { key: reform, label: Reform, rowHeader: true }
+      - { key: changed, label: What changed, sortable: false }
+      - { key: finding, label: Finding, sortable: false }
+    rows:
+      - reform: Denmark, 2002
+        changed: 'Wait for permanent residence raised from 3 to 7 years, plus a basic language test'
+        finding: { value: No significant effect on ever being employed or on earnings seven years on, sources: [36, 39] }
+      - reform: Denmark, 2007
+        changed: Permanent residence also required 2.5 years' full-time work and a higher language test
+        finding: { value: 'Work hours fell by 30% in full-time equivalents; no effect on passing the language test', sources: [40] }
+      - reform: Germany, 2016
+        changed: 'Wait for permanent residence raised from 3 to 5 years, with language and income conditions'
+        finding: { value: No faster take-up of employment; fewer people gained permanent residence, sources: [38] }
+      - reform: Sweden (natural experiment, published 2020)
+        changed: Some refugees stayed on temporary permits while others gained permanent residence
+        finding: { value: 'Temporary residents had higher incomes and less unemployment in the short term, but spent less time in education', sources: [37] }
+      - reform: Sweden, 2016
+        changed: Temporary rather than permanent residence
+        finding: { value: 'Less take-up of Swedish language courses; no effect on employment, education or welfare receipt in the first year', sources: [41] }
+  - kind: dataTable
+    id: work-rights
+    title: Work rights for people waiting on a claim
+    description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
+    caption: One row per study
+    sources: [48]
+    columns:
+      - { key: study, label: Study, rowHeader: true }
+      - { key: data, label: Data, sortable: false }
+      - { key: finding, label: Finding, sortable: false }
+    rows:
+      - study: Di Iasio and Wahba (working paper, 2023)
+        data: First-time asylum applicants to EU countries, 2008 to 2020
+        finding: { value: 'Networks are the strongest pull; a work ban one per cent shorter is associated with 0.18% more first-time applications', sources: [42, 43] }
+      - study: Fasani, Frattini and Minale (2021)
+        data: Refugees arriving in European countries, 1985 to 2012
+        finding: { value: 'A work ban at arrival cut later employment probability by 15%, with effects lasting up to 10 years', sources: [44] }
+      - study: Marbach, Hainmueller and Hangartner (2018)
+        data: Refugees in Germany
+        finding: { value: Temporary work bans had lasting negative effects on economic integration, sources: [45] }
+      - study: Hainmueller, Hangartner and Lawrence (2016)
+        data: Refugees in Switzerland
+        finding: { value: An extra year waiting for a decision meant a 20% lower employment rate later, sources: [46] }
+  - kind: dataTable
+    id: uk-2026
+    title: The UK's 2026 changes
+    description: The measures in the UK's new approach to refugee protection, who each applies to and how far each has gone.
+    caption: One row per measure
+    columns:
+      - { key: measure, label: Measure, rowHeader: true }
+      - { key: applies-to, label: Who it applies to, sortable: false }
+      - { key: status, label: Status, sortable: false }
+    rows:
+      - measure: '30-month protection, renewed at review only if return is still unsafe'
+        applies-to: Adults and accompanied children claiming from 2 March 2026
+        status: { value: In force through the Immigration Rules, sources: [51] }
+      - measure: '20-year wait for settlement on "core protection", unless the refugee switches to a work or study route'
+        applies-to: Refugees under the new model
+        status: { value: Announced; route details to follow, sources: [52] }
+      - measure: Refugee family reunion
+        applies-to: All refugees
+        status: { value: Paused while new rules are designed, sources: [53] }
+      - measure: 5 years' leave kept
+        applies-to: Unaccompanied children
+        status: { value: Policy under review, sources: [54] }
+      - measure: One "protection status" replaces refugee status and humanitarian protection
+        applies-to: New grants
+        status: { value: In the Immigration and Asylum Bill, sources: [56] }
+      - measure: 'Repayment of asylum support by refugees who can afford it, suggested at around £10,000'
+        applies-to: Adults who received support
+        status: { value: In the Bill; amount set by regulations, sources: [57, 59] }
 ---
 ## Observations {#deterrence-and-protection-policies--observations-arrivals}
 
@@ -1650,18 +1737,6 @@ In 2025, 36% of Denmark's first-instance decisions were positive, against 39% ac
 
 On first-time applicants per 10,000 residents in 2025, Denmark sits in the bottom third of the 31 EU and EFTA countries, below Sweden and well below Germany, which is close to the EU27 average. [63](#source-deterrence-and-protection-policies-63) [64](#source-deterrence-and-protection-policies-64)
 
-## Temporary versus permanent status and refugees' employment {#deterrence-and-protection-policies--residence-status}
-
-Several European reforms made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes. [55](#source-deterrence-and-protection-policies-55)
-
-| Reform | What changed | Finding | Source |
-| --- | --- | --- | --- |
-| Denmark, 2002 | Wait for permanent residence raised from 3 to 7 years, plus a basic language test | No significant effect on ever being employed or on earnings seven years on | [36](#source-deterrence-and-protection-policies-36) [39](#source-deterrence-and-protection-policies-39) |
-| Denmark, 2007 | Permanent residence also required 2.5 years' full-time work and a higher language test | Work hours fell by 30% in full-time equivalents; no effect on passing the language test | [40](#source-deterrence-and-protection-policies-40) |
-| Germany, 2016 | Wait for permanent residence raised from 3 to 5 years, with language and income conditions | No faster take-up of employment; fewer people gained permanent residence | [38](#source-deterrence-and-protection-policies-38) |
-| Sweden (natural experiment, published 2020) | Some refugees stayed on temporary permits while others gained permanent residence | Temporary residents had higher incomes and less unemployment in the short term, but spent less time in education | [37](#source-deterrence-and-protection-policies-37) |
-| Sweden, 2016 | Temporary rather than permanent residence | Less take-up of Swedish language courses; no effect on employment, education or welfare receipt in the first year | [41](#source-deterrence-and-protection-policies-41) |
-
 ## Observations {#deterrence-and-protection-policies--observations-residence-status}
 
 ### Less-secure status has not been found to raise employment {#deterrence-and-protection-policies--less-secure-status-no-employment-gain}
@@ -1676,17 +1751,6 @@ Jutvik and Robinson found that refugees on temporary permits had higher incomes 
 
 All five findings come from Denmark, Germany and Sweden, and they measure employment rather than the number of people who claim asylum. No evaluation of the UK's 30-month protection, which began on 2 March 2026, was found. [51](#source-deterrence-and-protection-policies-51)
 
-## Work rights for people waiting on a claim {#deterrence-and-protection-policies--work-rights}
-
-In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List. [48](#source-deterrence-and-protection-policies-48)
-
-| Study | Data | Finding | Source |
-| --- | --- | --- | --- |
-| Di Iasio and Wahba (working paper, 2023) | First-time asylum applicants to EU countries, 2008 to 2020 | Networks are the strongest pull; a work ban one per cent shorter is associated with 0.18% more first-time applications | [42](#source-deterrence-and-protection-policies-42) [43](#source-deterrence-and-protection-policies-43) |
-| Fasani, Frattini and Minale (2021) | Refugees arriving in European countries, 1985 to 2012 | A work ban at arrival cut later employment probability by 15%, with effects lasting up to 10 years | [44](#source-deterrence-and-protection-policies-44) |
-| Marbach, Hainmueller and Hangartner (2018) | Refugees in Germany | Temporary work bans had lasting negative effects on economic integration | [45](#source-deterrence-and-protection-policies-45) |
-| Hainmueller, Hangartner and Lawrence (2016) | Refugees in Switzerland | An extra year waiting for a decision meant a 20% lower employment rate later | [46](#source-deterrence-and-protection-policies-46) |
-
 ## Observations {#deterrence-and-protection-policies--observations-work-rights}
 
 ### Work rights show a modest association with where people claim {#deterrence-and-protection-policies--work-rights-modest-association}
@@ -1700,17 +1764,6 @@ Studies across Europe, Germany and Switzerland find that delaying work or decisi
 ### Ministers argue earlier work rights would draw more crossings {#deterrence-and-protection-policies--uk-work-rule}
 
 In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see Data still needed). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
-
-## The UK's 2026 changes {#deterrence-and-protection-policies--uk-2026-changes}
-
-| Measure | Who it applies to | Status | Source |
-| --- | --- | --- | --- |
-| 30-month protection, renewed at review only if return is still unsafe | Adults and accompanied children claiming from 2 March 2026 | In force through the Immigration Rules | [51](#source-deterrence-and-protection-policies-51) |
-| 20-year wait for settlement on "core protection", unless the refugee switches to a work or study route | Refugees under the new model | Announced; route details to follow | [52](#source-deterrence-and-protection-policies-52) |
-| Refugee family reunion | All refugees | Paused while new rules are designed | [53](#source-deterrence-and-protection-policies-53) |
-| 5 years' leave kept | Unaccompanied children | Policy under review | [54](#source-deterrence-and-protection-policies-54) |
-| One "protection status" replaces refugee status and humanitarian protection | New grants | In the Immigration and Asylum Bill | [56](#source-deterrence-and-protection-policies-56) |
-| Repayment of asylum support by refugees who can afford it, suggested at around £10,000 | Adults who received support | In the Bill; amount set by regulations | [57](#source-deterrence-and-protection-policies-57) [59](#source-deterrence-and-protection-policies-59) |
 
 ## Observations {#deterrence-and-protection-policies--observations-uk-2026}
 

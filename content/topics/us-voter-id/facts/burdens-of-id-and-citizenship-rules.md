@@ -1,13 +1,14 @@
 ---
 title: 'Burdens of ID and Citizenship-Proof Rules: Missing Documents, Rejections and Turnout'
 claim: >-
-  This report counts the US citizens who lack the documents that ID and
-  proof-of-citizenship rules ask for, and the applications and mail ballots
-  those rules have blocked. Few citizens have no photo ID at all, but millions
-  hold an outdated licence or cannot readily reach proof of citizenship, and
-  rules in Kansas and Texas blocked tens of thousands. Effects on overall
-  turnout are small and disputed.
-claimSources: [1, 2, 14, 16, 20, 24, 27, 28]
+  Few citizens have no photo ID, but millions hold outdated licences or cannot readily reach proof of citizenship; Kansas and Texas rules blocked tens of thousands; effects on overall turnout are small and disputed.
+claimSources:
+  - 1
+  - 2
+  - 14
+  - 16
+  - 27
+  - 28
 status: well-supported
 derivedFigures:
   - method: ratio-percent
@@ -545,8 +546,10 @@ sources:
   # 32
   - stance: complicates
     quote: >-
-      Overall, only 1.1% of survey respondents reported they encountered an
-      issue while casting their ballot. Of those who voted in-person (Election
+      Our post-election telephone survey of Georgia voters included more than
+      1,200 Georgians who participated in the 2022 midterm election. … Overall,
+      only 1.1% of survey respondents reported they encountered an issue while
+      casting their ballot. Of those who voted in-person (Election
       Day or Early In-Person), 75% reported wait times of ten minutes or less.
       In terms of overall voting experience, 72% rated their experience as
       excellent, up from 55% of voters following the 2020 presidential

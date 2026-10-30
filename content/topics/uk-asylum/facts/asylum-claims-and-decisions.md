@@ -11,16 +11,9 @@ claimSources:
   - 10
   - 7
   - 16
-  - 26
   - 22
 claim: >-
-  About 101,000 people claimed asylum in the UK in 2025, close to the 2024
-  record and far above the 22,000–46,000 a year of 2004–2020, but per head of
-  population that was about 15 claims per 10,000 residents, level with the EU
-  average and mid-table in the EU+. At first instance 42% of main applicants'
-  claims were granted in 2025, down from 76% in 2022; 39% of asylum appeals
-  heard in April–June 2026 were allowed, and for claims made in 2007–2022 the
-  final grant rate ran on average 20 percentage points above the initial one.
+  UK asylum claims in 2025 were close to the record but level with the EU average per head, while initial grant rates have fallen steeply since 2022 and appeals raise the final rate.
 status: well-supported
 sources:
   - stance: supports

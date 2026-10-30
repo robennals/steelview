@@ -1880,6 +1880,12 @@
 
   .sv-row[data-open] .sv-row__body { grid-template-rows: 1fr; }
 
+  /* Nothing can open a walkthrough row without script, and its charts load on opening. */
+  @media (scripting: none) {
+    .sv-row--walk .sv-row__body { grid-template-rows: 1fr; }
+    .sv-row--walk .sv-row__toggle, .sv-row--walk .sv-row__chevron, .sv-walk__chart-loading { display: none; }
+  }
+
   .sv-row__inner { min-height: 0; overflow: hidden; }
 
   .sv-row__columns {
@@ -2195,7 +2201,7 @@
     gap: 1.75rem;
     flex: 1;
     min-width: 0;
-    height: 22rem;
+    height: 30rem;
   }
 
   .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
@@ -2227,6 +2233,17 @@
   .sv-walk__chart { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
   .sv-walk__chart .sv-slide { flex: 1; min-height: 0; }
   .sv-slide--explorable { cursor: pointer; }
+  /* A slide is only a figure's title and its content, as for a chart: the rest is a click away. */
+  .sv-slide__figure { flex: 1; min-height: 0; overflow-y: auto; }
+  .sv-slide__figure figure { margin: 0; }
+  .sv-slide__figure .sv-chart__desc,
+  .sv-slide__figure .sv-chart__credit,
+  .sv-slide__figure .sv-chart__methodology,
+  .sv-slide__figure .sv-item-credit,
+  .sv-slide__figure .sv-footnote,
+  .sv-slide__figure .sv-timeline__controls,
+  .sv-slide__figure .sv-timeline__key,
+  .sv-slide__figure .sv-control__status { display: none; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
 
@@ -2363,6 +2380,8 @@
     .sv-walk { padding-inline: 1rem; }
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
+    /* A table reads down the page, so it takes the height it needs. */
+    .sv-walk__step:has(.sv-slide__figure) { grid-template-rows: auto auto; }
     /* The chart leads on a phone, so a step always opens on its evidence. */
     .sv-walk__chart { order: -1; }
     .sv-walk__text { overflow: visible; }
@@ -3069,6 +3088,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; font-size: .85rem; line-height: 1.45; color: var(--ink-3); }
 .sv-chart[data-preview] .sv-chart__caption { margin-bottom: .5rem; }
 .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); min-height: 2.5em; }
+.sv-slide__figure .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); }
 .sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-decoration: none; }
 .sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }

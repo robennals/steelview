@@ -1,12 +1,8 @@
 ---
 title: Federal and State Power Over Mail Voting Rules, 1986–2026
 claim: >-
-  This report covers who sets US mail-voting rules. States set most of them
-  and have changed them in both directions; Congress has set national rules
-  only for military and overseas voters, and national bills from both parties
-  have stalled. The Postal Service rule ordered by the President is blocked
-  for November 2026, but the order itself may proceed.
-claimSources: [1, 6, 10, 14, 18, 21, 24, 33]
+  States set most mail-voting rules and have moved them both ways; Congress has set national rules only for military and overseas voters, and the Postal Service rule the President ordered is blocked for November 2026.
+claimSources: [1, 6, 21, 33]
 status: well-supported
 sources:
   # 1
@@ -622,6 +618,223 @@ dataStillNeeded:
       no source read links a state's choice to its results, so the claim that
       state choice shows which rules work rests on the value of local choice
       rather than on evidence.
+figures:
+  - kind: series
+  - kind: comparison
+    id: senate-votes
+  - kind: dataTable
+    id: federal-laws
+    title: 'Federal laws, bills and orders on mail voting, 1986–2026'
+    description: 'What each federal law, bill or order does on mail voting, and where it stood on 29 October 2026.'
+    caption: 'One row per law, bill or order'
+    columns:
+      - key: year
+        label: Year
+        format: text
+      - key: measure
+        label: 'Law, bill or order'
+        rowHeader: true
+      - key: does
+        label: What it does on mail voting
+        sortable: false
+      - key: status
+        label: Status on 29 Oct 2026
+        sortable: false
+    rows:
+      - year: '1986'
+        measure: Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA)
+        does:
+          value: States must let military and overseas voters register and vote absentee in federal elections
+          sources:
+            - 6
+        status: In force
+      - year: '1993'
+        measure: National Voter Registration Act
+        does:
+          value: Registration by mail; a federal mail registration form
+          sources:
+            - 8
+        status: In force
+      - year: '2002'
+        measure: Help America Vote Act
+        does:
+          value: Rules for first-time voters who registered by mail
+          sources:
+            - 9
+        status: In force
+      - year: '2009'
+        measure: MOVE Act (amending UOCAVA)
+        does:
+          value: 'Ballots to military and overseas voters at least 45 days before a federal election, on request'
+          sources:
+            - 6
+            - 7
+        status: In force
+      - year: 2021–22
+        measure: Freedom to Vote Act (Democratic)
+        does:
+          value: No-excuse absentee voting in every state
+          sources:
+            - 10
+        status:
+          value: 'Failed cloture, Oct 2021 and Jan 2022'
+          sources:
+            - 10
+            - 11
+      - year: '2025'
+        measure: Executive Order 14248
+        does:
+          value: 'Among other things, addresses deadlines for returning mail ballots'
+          sources:
+            - 16
+        status:
+          value: Receipt-deadline part permanently enjoined in Massachusetts; on appeal
+          sources:
+            - 29
+      - year: '2026'
+        measure: SAVE America Act (Republican)
+        does:
+          value: Proof of citizenship and photo ID; whether it limits mail voting is disputed
+          sources:
+            - 12
+            - 13
+            - 16
+        status:
+          value: 'Passed House, Feb and Jul 2026; no Senate vote'
+          sources:
+            - 12
+            - 13
+      - year: '2026'
+        measure: 'Executive Order 14399, Section 3'
+        does:
+          value: 'Orders a Postal Service rule on ballot envelopes, barcodes and a list of enrolled mail voters'
+          sources:
+            - 17
+        status:
+          value: Order in effect; the Postal Service's final rule is blocked for November 2026
+          sources:
+            - 18
+            - 23
+  - kind: dataTable
+    id: holdings
+    title: 'Who may set mail-voting rules: what the Constitution and courts say'
+    description: 'The constitutional text and the main court rulings on who sets election rules, oldest first.'
+    caption: One row per text or ruling
+    columns:
+      - key: text
+        label: Source
+        rowHeader: true
+      - key: date
+        label: Date
+        format: text
+        sortable: false
+      - key: says
+        label: What it says
+        sortable: false
+    rows:
+      - text: Elections Clause
+        date: '1788'
+        says:
+          value: 'Times, places and manner "shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations"'
+          sources:
+            - 1
+      - text: Arizona v. Inter Tribal Council
+        date: 17 Jun 2013
+        says:
+          value: 'Congress''s power is "paramount"; the clause covers "how federal elections are held, but not who may vote in them"'
+          sources:
+            - 3
+            - 4
+      - text: Moore v. Harper
+        date: 27 Jun 2023
+        says:
+          value: State courts may review state legislatures' election rules
+          sources:
+            - 5
+      - text: Watson v. RNC (5–4)
+        date: 29 Jun 2026
+        says:
+          value: Federal law does not require ballots to arrive by Election Day; a national deadline is for "the American people ... through their elected representatives"
+          sources:
+            - 24
+            - 25
+      - text: California v. Trump (D. Mass.)
+        date: Jun–Jul 2026
+        says:
+          value: 'The challenged parts of EO 14248, including its ballot-receipt deadlines, exceed the President''s authority; under appeal'
+          sources:
+            - 28
+            - 29
+      - text: Trump v. California (stay)
+        date: 24 Aug 2026
+        says:
+          value: EO 14399 is "an internal directive"; the states' challenge was premature; no ruling on lawfulness
+          sources:
+            - 18
+            - 19
+      - text: USPS v. California (stay denied)
+        date: 14 Sep 2026
+        says:
+          value: The Postal Service rule stays blocked for 2026; two dissenters say "Congress may create such rules" and may authorise the Postal Service to
+          sources:
+            - 21
+            - 22
+  - kind: dataTable
+    id: live-measures
+    title: 'Live federal measures on mail voting, 29 October 2026'
+    description: The federal actions still in play the week before the November midterms.
+    caption: One row per measure
+    columns:
+      - key: measure
+        label: Measure
+        rowHeader: true
+      - key: does
+        label: What it does
+        sortable: false
+      - key: status
+        label: Status
+        sortable: false
+    rows:
+      - measure: 'EO 14399, Section 3 (31 Mar 2026)'
+        does:
+          value: 'Postal Service to require marked, barcoded ballot envelopes and to carry ballots only for voters enrolled on a state list'
+          sources:
+            - 17
+        status:
+          value: Order not enjoined
+          sources:
+            - 18
+      - measure: Postal Service final rule (published 26 Aug 2026)
+        does:
+          value: 'Ballot mail must carry an election-mail logo, be machine-readable and carry a barcode unique to each voter; states upload voter information'
+          sources:
+            - 22
+        status:
+          value: Preliminary injunction of 4 Sep 2026; stay denied 14 Sep; will not apply in November 2026
+          sources:
+            - 21
+            - 23
+      - measure: EO 14248 ballot-receipt provisions (25 Mar 2025)
+        does:
+          value: Addresses deadlines for returning mail ballots
+          sources:
+            - 16
+        status:
+          value: Permanently enjoined 13 Jul 2026; appealed 9 Sep 2026
+          sources:
+            - 29
+      - measure: SAVE America Act
+        does:
+          value: Proof of citizenship and photo ID; whether it limits mail voting is disputed
+          sources:
+            - 12
+            - 13
+            - 16
+        status:
+          value: Passed House; no Senate vote
+          sources:
+            - 12
+            - 14
 ---
 This report is a dated legal record, as of 29 October 2026, the week before the November midterms. Several items will change after that election: the SAVE America Act in a lame-duck session, the First Circuit appeals over both executive orders, and the Postal Service rule for later elections.
 
@@ -649,19 +862,6 @@ The Democrats' Freedom to Vote Act, which would have required every state to off
 
 In August 2026 a Republican photo-ID bill, S. 5271, also failed to reach 60 votes (chart). [14](#source-federal-and-state-power-over-mail-voting-14) Bills that would require or restrict mail voting nationally have been introduced on both sides in the current Congress. [16](#source-federal-and-state-power-over-mail-voting-16)
 
-## Federal laws, bills and orders on mail voting, 1986–2026
-
-| Year | Law, bill or order | What it does on mail voting | Status on 29 Oct 2026 |
-|---|---|---|---|
-| 1986 | Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA) | States must let military and overseas voters register and vote absentee in federal elections [6](#source-federal-and-state-power-over-mail-voting-6) | In force |
-| 1993 | National Voter Registration Act | Registration by mail; a federal mail registration form [8](#source-federal-and-state-power-over-mail-voting-8) | In force |
-| 2002 | Help America Vote Act | Rules for first-time voters who registered by mail [9](#source-federal-and-state-power-over-mail-voting-9) | In force |
-| 2009 | MOVE Act (amending UOCAVA) | Ballots to military and overseas voters at least 45 days before a federal election, on request [6](#source-federal-and-state-power-over-mail-voting-6) [7](#source-federal-and-state-power-over-mail-voting-7) | In force |
-| 2021–22 | Freedom to Vote Act (Democratic) | No-excuse absentee voting in every state [10](#source-federal-and-state-power-over-mail-voting-10) | Failed cloture, Oct 2021 and Jan 2022 [10](#source-federal-and-state-power-over-mail-voting-10) [11](#source-federal-and-state-power-over-mail-voting-11) |
-| 2025 | Executive Order 14248 | Among other things, addresses deadlines for returning mail ballots [16](#source-federal-and-state-power-over-mail-voting-16) | Receipt-deadline part permanently enjoined in Massachusetts; on appeal [29](#source-federal-and-state-power-over-mail-voting-29) |
-| 2026 | SAVE America Act (Republican) | Proof of citizenship and photo ID; whether it limits mail voting is disputed (see below) [12](#source-federal-and-state-power-over-mail-voting-12) [13](#source-federal-and-state-power-over-mail-voting-13) [16](#source-federal-and-state-power-over-mail-voting-16) | Passed House, Feb and Jul 2026; no Senate vote [12](#source-federal-and-state-power-over-mail-voting-12) [13](#source-federal-and-state-power-over-mail-voting-13) |
-| 2026 | Executive Order 14399, Section 3 | Orders a Postal Service rule on ballot envelopes, barcodes and a list of enrolled mail voters [17](#source-federal-and-state-power-over-mail-voting-17) | Order in effect; the Postal Service's final rule is blocked for November 2026 [18](#source-federal-and-state-power-over-mail-voting-18) [23](#source-federal-and-state-power-over-mail-voting-23) |
-
 ## Observations {#federal-and-state-power-over-mail-voting--observations-federal-laws}
 
 ### Congress has already set national mail-ballot rules for military and overseas voters {#federal-and-state-power-over-mail-voting--congress-set-uocava-rules}
@@ -683,18 +883,6 @@ The Universal Right to Vote by Mail Act and the Vote at Home Act would require n
 ### No Senate vote on the SAVE America Act had been held by the time of the sources read {#federal-and-state-power-over-mail-voting--save-america-status}
 
 Republicans looked to budget reconciliation, which cannot be filibustered, as a route for the bill; a budget plan was paused in August when President Trump intervened. [15](#source-federal-and-state-power-over-mail-voting-15) The photo-ID bill rejected on 8 August was a separate measure, S. 5271. [14](#source-federal-and-state-power-over-mail-voting-14)
-
-## Who may set mail-voting rules: what the Constitution and courts say
-
-| Source | Date | What it says |
-|---|---|---|
-| Elections Clause | 1788 | Times, places and manner "shall be prescribed in each state by the legislature thereof; but the Congress may at any time by law make or alter such regulations" [1](#source-federal-and-state-power-over-mail-voting-1) |
-| *Arizona v. Inter Tribal Council* | 17 Jun 2013 | Congress's power is "paramount"; the clause covers "how federal elections are held, but not who may vote in them" [3](#source-federal-and-state-power-over-mail-voting-3) [4](#source-federal-and-state-power-over-mail-voting-4) |
-| *Moore v. Harper* | 27 Jun 2023 | State courts may review state legislatures' election rules [5](#source-federal-and-state-power-over-mail-voting-5) |
-| *Watson v. RNC* (5–4) | 29 Jun 2026 | Federal law does not require ballots to arrive by Election Day; a national deadline is for "the American people ... through their elected representatives" [24](#source-federal-and-state-power-over-mail-voting-24) [25](#source-federal-and-state-power-over-mail-voting-25) |
-| *California v. Trump* (D. Mass.) | Jun–Jul 2026 | The challenged parts of EO 14248, including its ballot-receipt deadlines, exceed the President's authority; under appeal [28](#source-federal-and-state-power-over-mail-voting-28) [29](#source-federal-and-state-power-over-mail-voting-29) |
-| *Trump v. California* (stay) | 24 Aug 2026 | EO 14399 is "an internal directive"; the states' challenge was premature; no ruling on lawfulness [18](#source-federal-and-state-power-over-mail-voting-18) [19](#source-federal-and-state-power-over-mail-voting-19) |
-| *USPS v. California* (stay denied) | 14 Sep 2026 | The Postal Service rule stays blocked for 2026; two dissenters say "Congress may create such rules" and may authorise the Postal Service to [21](#source-federal-and-state-power-over-mail-voting-21) [22](#source-federal-and-state-power-over-mail-voting-22) |
 
 ## Observations {#federal-and-state-power-over-mail-voting--observations-holdings}
 
@@ -719,15 +907,6 @@ It pointed to Congress: "If varied deadlines for ballot receipt similarly call f
 ### *Watson* recognised a reason states give for Election Day deadlines {#federal-and-state-power-over-mail-voting--watson-appearance-of-fraud}
 
 The Court noted that legislatures "may have shared plaintiffs' view that an election-day deadline avoids the appearance of fraud from late-arriving ballots". [27](#source-federal-and-state-power-over-mail-voting-27) It also read UOCAVA as confirming that "States have the power to set the date by which they must be received". [26](#source-federal-and-state-power-over-mail-voting-26)
-
-## Live federal measures on mail voting, 29 October 2026
-
-| Measure | What it does | Status |
-|---|---|---|
-| EO 14399, Section 3 (31 Mar 2026) | Postal Service to require marked, barcoded ballot envelopes and to carry ballots only for voters enrolled on a state list [17](#source-federal-and-state-power-over-mail-voting-17) | Order not enjoined [18](#source-federal-and-state-power-over-mail-voting-18) |
-| Postal Service final rule (published 26 Aug 2026) | Ballot mail must carry an election-mail logo, be machine-readable and carry a barcode unique to each voter; states upload voter information [22](#source-federal-and-state-power-over-mail-voting-22) | Preliminary injunction of 4 Sep 2026; stay denied 14 Sep; will not apply in November 2026 [21](#source-federal-and-state-power-over-mail-voting-21) [23](#source-federal-and-state-power-over-mail-voting-23) |
-| EO 14248 ballot-receipt provisions (25 Mar 2025) | Addresses deadlines for returning mail ballots [16](#source-federal-and-state-power-over-mail-voting-16) | Permanently enjoined 13 Jul 2026; appealed 9 Sep 2026 [29](#source-federal-and-state-power-over-mail-voting-29) |
-| SAVE America Act | See above [13](#source-federal-and-state-power-over-mail-voting-13) | Passed House; no Senate vote [12](#source-federal-and-state-power-over-mail-voting-12) [14](#source-federal-and-state-power-over-mail-voting-14) |
 
 ## Observations {#federal-and-state-power-over-mail-voting--observations-live-measures}
 

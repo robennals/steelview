@@ -1,12 +1,15 @@
 ---
 title: Public Opinion on Voting Rules and Confidence in US Elections
-claimSources: [1, 5, 8, 15, 18, 19, 20]
+claimSources:
+  - 1
+  - 5
+  - 8
+  - 15
+  - 18
+  - 19
+  - 20
 claim: >-
-  This report covers what Americans think of voting rules and how confident
-  they are that votes are counted. Photo ID and early voting have had majority
-  support in both parties in every Pew and Gallup reading since 2016.
-  Confidence has mostly followed which party holds or wins power, not the
-  rules; studies disagree on whether strict ID laws themselves raise it.
+  Photo ID and early voting have majority support in both parties in Pew and Gallup polls, confidence mostly follows who holds or wins power, and studies disagree on whether strict ID laws raise it.
 status: well-supported
 sources:
   # 1
@@ -1087,6 +1090,63 @@ dataStillNeeded:
     why: 'Without the full distribution, the US position relative to comparable democracies (rather than to the median of more than 100 countries of every political system) cannot be shown.'
   - measure: 'Confidence by party after the 3 November 2026 midterm'
     why: 'Every series here is pre-election for 2026. A post-election reading would show whether the 2025–26 break from the winner–loser pattern survives a result.'
+figures:
+  - kind: series
+  - kind: series
+    id: pew-early-voting-series
+  - kind: series
+    id: gallup-policy
+  - kind: comparison
+    id: proof-of-citizenship-by-group
+  - kind: series
+    id: gallup-concerns
+  - kind: comparison
+    id: pew-2026-eligibility-confidence
+  - kind: series
+    id: gallup-accuracy
+  - kind: series
+    id: spae-nationwide
+  - kind: series
+    id: pew-fair-accurate
+  - kind: series
+    id: pew-count-by-mode
+  - kind: series
+    id: gallup-honesty
+  - kind: comparison
+    id: leadership-gap-by-administration
+  - kind: comparison
+    id: winner-gap-worldwide
+  - kind: series
+    id: georgia-confidence
+  - kind: comparison
+    id: sb202-effect-on-confidence
+  - kind: dataTable
+    id: id-and-confidence-studies
+    title: 'Studies of whether ID rules change confidence'
+    description: 'Four studies of whether ID rules themselves move confidence, rather than who wins. They use different measures and periods, and their results differ.'
+    caption: 'One row per study'
+    columns:
+      - { key: study, label: 'Study', rowHeader: true }
+      - { key: design, label: 'Data and design', sortable: false }
+      - { key: measure, label: 'Confidence measure', sortable: false }
+      - { key: finding, label: 'Finding', sortable: false }
+    rows:
+      - study: 'Stewart, Ansolabehere and Persily (2016)'
+        design: 'National surveys; residents of ID and non-ID states compared'
+        measure: 'Confidence in elections; perceived impersonation'
+        finding: { value: 'No greater confidence in ID states', sources: [19] }
+      - study: 'Cantoni and Pons (2019; QJE 2021)'
+        design: '1.6 billion voter-file observations, 2008–2018; difference-in-differences'
+        measure: 'Perceived fraud'
+        finding: { value: '"no effect on fraud – actual or perceived"', sources: [20] }
+      - study: 'Milyo (2025, working paper)'
+        design: 'Cooperative Election Study module, 2008–2022; within-state change in strict ID law, with party controls'
+        measure: 'Confidence in the honesty and integrity of state elections'
+        finding: { value: 'High confidence up 14 percentage points', sources: [18] }
+      - study: 'Clinton (APSR)'
+        design: 'Opinion data 2008–2024 and a 2024 survey experiment'
+        measure: 'Confidence in results'
+        finding: { value: 'Voters trust results less under procedures they oppose; effects largest for voter ID', sources: [21] }
 ---
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-photo-id}
 
@@ -1255,16 +1315,7 @@ The authors caution that the rebound may reflect "the noted winner's effect", si
 
 Most Republicans said SB 202 had increased their confidence; a plurality of Democrats said it had decreased theirs (chart). [17](#source-opinion-and-confidence-in-elections-17) A rule passed by one party raised confidence on that party's side and lowered it on the other.
 
-## Studies of whether ID rules change confidence {#opinion-and-confidence-in-elections--id-and-confidence-studies}
-
-Four studies address whether ID rules themselves move confidence, rather than who wins. They use different measures and periods, and their results differ.
-
-| Study | Data and design | Confidence measure | Finding |
-| --- | --- | --- | --- |
-| Stewart, Ansolabehere and Persily (2016) | National surveys; residents of ID and non-ID states compared | Confidence in elections; perceived impersonation | No greater confidence in ID states [19](#source-opinion-and-confidence-in-elections-19) |
-| Cantoni and Pons (2019; *QJE* 2021) | 1.6 billion voter-file observations, 2008–2018; difference-in-differences | Perceived fraud | "no effect on fraud – actual or perceived" [20](#source-opinion-and-confidence-in-elections-20) |
-| Milyo (2025, working paper) | Cooperative Election Study module, 2008–2022; within-state change in strict ID law, with party controls | Confidence in the honesty and integrity of state elections | High confidence up 14 percentage points [18](#source-opinion-and-confidence-in-elections-18) |
-| Clinton (*APSR*) | Opinion data 2008–2024 and a 2024 survey experiment | Confidence in results | Voters trust results less under procedures they oppose; effects largest for voter ID [21](#source-opinion-and-confidence-in-elections-21) |
+## Observations {#opinion-and-confidence-in-elections--observations-id-and-confidence-studies}
 
 ### One study finds strict ID raises confidence {#opinion-and-confidence-in-elections--milyo-finds-effect}
 

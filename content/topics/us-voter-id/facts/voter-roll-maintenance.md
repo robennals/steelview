@@ -6,15 +6,13 @@ derivedFigures:
     denominator: 2724
     decimals: 1
 title: Voter Roll Maintenance in the US
-claimSources: [1, 2, 16, 27, 21]
+claimSources:
+  - 1
+  - 2
+  - 27
+  - 29
 claim: >-
-  States removed about 21 million registration records in the two years
-  to 2024, a slightly larger share of registrants than two decades earlier;
-  most were unanswered confirmation notices, moves and deaths. The only direct
-  national estimate of inaccurate registrations, Pew's from 2011 data, found
-  about one in eight. Bulk matching programs have repeatedly flagged eligible
-  citizens, and federal law bars systematic removals in the 90 days before a
-  federal election.
+  States remove millions of registration records each cycle, mostly after unanswered notices, moves and deaths; lists still carry inaccurate records, and bulk matching programs have repeatedly flagged eligible citizens.
 status: well-supported
 sources:
   - stance: supports
@@ -1280,6 +1278,129 @@ dataStillNeeded:
       Whether states lost cross-state mover and death matches when they left,
       or replaced them, is unmeasured; ERIC's own counts fall with membership
       and cannot separate the two.
+figures:
+  - kind: series
+  - kind: series
+    id: removal-reasons
+  - kind: comparison
+    id: state-removal-rates
+  - kind: comparison
+    id: notice-outcomes
+  - kind: comparison
+    id: ohio-2012-notices
+  - kind: series
+    id: eric-reports
+  - kind: comparison
+    id: pew-2011-baseline
+  - kind: dataTable
+    id: nvra-rules
+    title: 'The federal rules for removing voters'
+    description: 'The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections.'
+    caption: 'One row per rule for states'
+    columns:
+      - { key: rule, label: 'What states', rowHeader: true }
+      - { key: detail, label: 'What the law says', sortable: false }
+    rows:
+      - rule: 'Must run'
+        detail: { value: '"a general program that makes a reasonable effort" to remove registrants who have died or moved', sources: [21] }
+      - rule: 'Must finish'
+        detail: { value: 'Any program "to systematically remove the names of ineligible voters" no later than 90 days before a federal primary or general election', sources: [21] }
+      - rule: 'May remove someone for a move'
+        detail: { value: 'Only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections', sources: [21] }
+  - kind: dataTable
+    id: bulk-errors
+    title: 'Bulk removals that reached eligible voters, 2000–2026'
+    description: 'Programs that matched whole voter lists against another database, with what was flagged, what was later shown, and how each ended. Figures come from courts, officials, journalists and advocacy groups, as marked in the sources.'
+    caption: 'One row per program'
+    columns:
+      - { key: program, label: 'Program', rowHeader: true }
+      - { key: method, label: 'Matching method', sortable: false }
+      - { key: flagged, label: 'Flagged', sortable: false }
+      - { key: shown, label: 'Later shown eligible, or not confirmed', sortable: false }
+      - { key: outcome, label: 'Outcome (as of)', sortable: false }
+    rows:
+      - program: 'Florida felon list, 2000'
+        method: 'Contractor database match'
+        flagged: '181,157 names, about 65,776 of them felons'
+        shown: { value: 'About 8,000 wrongly included; Leon County confirmed 34 of nearly 700', sources: [31] }
+        outcome: 'US Commission on Civil Rights report (2001)'
+      - program: 'Florida non-citizens, 2012'
+        method: 'Licence records, then SAVE'
+        flagged: 'Not stated in the opinion'
+        shown: { value: 'Named plaintiffs were citizens', sources: [22] }
+        outcome: 'Held unlawful under the 90-day limit (2014)'
+      - program: 'Texas deceased, 2012'
+        method: 'Social Security death file, "weak" matches'
+        flagged: 'About 80,000'
+        shown: { value: 'More than 68,000 were weak matches', sources: [29] }
+        outcome: 'Practice changed in a settlement (reported 2018)'
+      - program: 'Virginia movers, 2013'
+        method: 'Crosscheck (name and birth date)'
+        flagged: 'Nearly 39,000 removed'
+        shown: { value: 'Error rates up to 17 percent in some counties', sources: [29] }
+        outcome: 'New state guidance after removals'
+      - program: 'New York City, 2014–16'
+        method: 'Non-voting, without the two-election wait'
+        flagged: 'More than 200,000 deleted'
+        shown: { value: 'Found improper by the state attorney general', sources: [29] }
+        outcome: { value: 'Federal settlement, October 2017', sources: [30] }
+      - program: 'Arkansas felony list, 2016'
+        method: 'State crime-information records'
+        flagged: 'More than 7,700'
+        shown: { value: 'Fewer than 5,000 corrected by September 2016', sources: [29] }
+        outcome: '—'
+      - program: 'Georgia "exact match", 2018'
+        method: 'Licence and Social Security records'
+        flagged: 'More than 53,000 applications on hold'
+        shown: { value: 'Could vote by showing photo ID', sources: [34] }
+        outcome: '—'
+      - program: 'Ohio inactive list, 2019'
+        method: 'Non-response route'
+        flagged: 'More than 235,000'
+        shown: { value: 'Activists said 4,000 wrongly listed; 14,000 became active', sources: [35, 36] }
+        outcome: 'Removals went ahead, September 2019'
+      - program: 'Alabama non-citizens, 2024'
+        method: 'Alien registration numbers in state agency data'
+        flagged: '3,251'
+        shown: { value: 'About 2,000 citizens', sources: [37] }
+        outcome: 'Blocked under the 90-day limit (October 2024)'
+      - program: 'Virginia non-citizens, 2024'
+        method: 'Licence-agency citizenship checkbox'
+        flagged: '1,610 removed'
+        shown: { value: 'State showed none were non-citizens (district court)', sources: [39] }
+        outcome: { value: 'Removals allowed by Supreme Court stay', sources: [38] }
+      - program: 'Texas SAVE check, 2025–26'
+        method: 'SAVE against the whole roll'
+        flagged: '2,724 of more than 18 million'
+        shown: { value: '578 shown to be citizens, 506 of them because passport data reached SAVE after the first run', sources: [48] }
+        outcome: 'Counties told to reinstate them (September 2026)'
+  - kind: dataTable
+    id: bloated-roll-claims
+    title: 'Claims of bloated rolls, and what they counted'
+    description: 'Four claims about ineligible names on voter lists, with what each compared.'
+    caption: 'One row per claim'
+    columns:
+      - { key: claim, label: 'Claim', rowHeader: true }
+      - { key: compared, label: 'What was compared', sortable: false }
+      - { key: counts, label: 'What the comparison counts', sortable: false }
+      - { key: outcome, label: 'Outcome (as of)', sortable: false }
+    rows:
+      - claim: 'Judicial Watch, 2019: 378 counties above 100% registration'
+        compared: 'EAC registration data against Census survey estimates for 2013–17'
+        counts: { value: 'Registrations, including inactive ones, against a sample estimate of eligible citizens', sources: [40] }
+        outcome: '—'
+      - claim: 'Judicial Watch, October 2020: 353 counties with 1.8 million more registrants than eligible citizens'
+        compared: 'State-posted registration against Census survey estimates for 2014–18'
+        counts: { value: 'The same; a statistician called including inactive voters "misleading"', sources: [40, 41] }
+        outcome: '—'
+      - claim: 'Public Interest Legal Foundation, October 2020: more than 21,000 dead Pennsylvania registrants'
+        compared: 'Group''s own death matching'
+        counts: { value: 'More than half of its earlier 9,300 names were missing from the later list', sources: [42] }
+        outcome: { value: 'Removal order refused; settled April 2021 with an agreement to use ERIC death data', sources: [42] }
+      - claim: 'Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017'
+        compared: 'Removals states made under settlements'
+        counts: { value: 'Registrations removed through the NVRA process: 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky', sources: [43] }
+        outcome: 'Reported April 2025'
 ---
 ## Observations {#voter-roll-maintenance--observations-removals-count}
 
@@ -1384,14 +1505,6 @@ The figure predates ERIC, which began in 2012, and the growth in removals shown 
 
 Pew counted as "inaccurate" an eligible voter whose file has wrong details, such as an old address, alongside "no longer valid" records of people who moved or died. [27](#source-voter-roll-maintenance-27) NPR's report on the study said "There's little evidence that this has led to widespread voter fraud". [28](#source-voter-roll-maintenance-28) The study measured records, not ballots cast in those names.
 
-## The federal rules for removing voters {#voter-roll-maintenance--nvra-rules}
-
-The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections. States:
-
-- **must run** "a general program that makes a reasonable effort" to remove registrants who have died or moved;
-- **must finish** any program "to systematically remove the names of ineligible voters" no later than 90 days before a federal primary or general election;
-- **may remove someone for a move** only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections. [21](#source-voter-roll-maintenance-21)
-
 ## Observations {#voter-roll-maintenance--observations-nvra-rules}
 
 ### The 90-day limit has stopped late programs {#voter-roll-maintenance--nvra-90-day-rule}
@@ -1411,24 +1524,6 @@ In *Husted v. A. Philip Randolph Institute* (2018), the Court ruled 5–4 that O
 On 30 October 2024 the Supreme Court stayed a district-court order that had required Virginia to restore registrants removed under its non-citizen program; three justices would have denied the stay. [38](#source-voter-roll-maintenance-38)
 
 The district court had found, according to the challengers' filing, that the state "failed to show that any of the 1,610 people removed" were non-citizens. No count of citizens among them has been published. [39](#source-voter-roll-maintenance-39)
-
-## Bulk removals that reached eligible voters {#voter-roll-maintenance--bulk-errors}
-
-Programs that match whole voter lists against another database, rather than acting on one record at a time, with what was flagged, what was later shown, and how each ended. Figures come from courts, officials, journalists and advocacy groups, as marked in the sources.
-
-| Programme | Matching method | Flagged | Later shown eligible, or not confirmed | Outcome (as of) |
-| --- | --- | --- | --- | --- |
-| Florida felon list, 2000 | Contractor database match | 181,157 names, about 65,776 of them felons | About 8,000 wrongly included; Leon County confirmed 34 of nearly 700 [31](#source-voter-roll-maintenance-31) | US Commission on Civil Rights report (2001) |
-| Florida non-citizens, 2012 | Licence records, then SAVE | Not stated in the opinion | Named plaintiffs were citizens [22](#source-voter-roll-maintenance-22) | Held unlawful under the 90-day limit (2014) |
-| Texas deceased, 2012 | Social Security death file, "weak" matches | About 80,000 | More than 68,000 were weak matches [29](#source-voter-roll-maintenance-29) | Practice changed in a settlement (reported 2018) |
-| Virginia movers, 2013 | Crosscheck (name and birth date) | Nearly 39,000 removed | Error rates up to 17 percent in some counties [29](#source-voter-roll-maintenance-29) | New state guidance after removals |
-| New York City, 2014–16 | Non-voting, without the two-election wait | More than 200,000 deleted | Found improper by the state attorney general [29](#source-voter-roll-maintenance-29) | Federal settlement, October 2017 [30](#source-voter-roll-maintenance-30) |
-| Arkansas felony list, 2016 | State crime-information records | More than 7,700 | Fewer than 5,000 corrected by September 2016 [29](#source-voter-roll-maintenance-29) | — |
-| Georgia "exact match", 2018 | Licence and Social Security records | More than 53,000 applications on hold | Could vote by showing photo ID [34](#source-voter-roll-maintenance-34) | — |
-| Ohio inactive list, 2019 | Non-response route | More than 235,000 | Activists said 4,000 wrongly listed; 14,000 became active [35](#source-voter-roll-maintenance-35) [36](#source-voter-roll-maintenance-36) | Removals went ahead, September 2019 |
-| Alabama non-citizens, 2024 | Alien registration numbers in state agency data | 3,251 | About 2,000 citizens [37](#source-voter-roll-maintenance-37) | Blocked under the 90-day limit (October 2024) |
-| Virginia non-citizens, 2024 | Licence-agency citizenship checkbox | 1,610 removed | State showed none were non-citizens (district court) [39](#source-voter-roll-maintenance-39) | Removals allowed by Supreme Court stay [38](#source-voter-roll-maintenance-38) |
-| Texas SAVE check, 2025–26 | SAVE against the whole roll | 2,724 of more than 18 million | 578 shown to be citizens, 506 of them because passport data reached SAVE after the first run [48](#source-voter-roll-maintenance-48) | Counties told to reinstate them (September 2026) |
 
 ## Observations {#voter-roll-maintenance--observations-bulk-errors}
 
@@ -1464,15 +1559,6 @@ Flagged Texans who do not reply within 30 days are cancelled but can be reinstat
 The Brennan Center's "almost 16 million voters" purged between 2014 and 2016 is the EAC's total of removals for every reason, more than half of them moves and deaths (see the first two charts). [29](#source-voter-roll-maintenance-29) [9](#source-voter-roll-maintenance-9)
 
 The Brennan Center itself says that "When done correctly, purges ensure the voter rolls are accurate and up-to-date." [29](#source-voter-roll-maintenance-29) The errors in the table are real but are thousands to hundreds of thousands of records against removals in the tens of millions; no national count of wrongful removals exists.
-
-## Claims of bloated rolls, and what they counted {#voter-roll-maintenance--bloated-roll-claims}
-
-| Claim | What was compared | What the comparison counts | Outcome (as of) |
-| --- | --- | --- | --- |
-| Judicial Watch, 2019: 378 counties above 100% registration | EAC registration data against Census survey estimates for 2013–17 | Registrations, including inactive ones, against a sample estimate of eligible citizens [40](#source-voter-roll-maintenance-40) | — |
-| Judicial Watch, October 2020: 353 counties with 1.8 million more registrants than eligible citizens | State-posted registration against Census survey estimates for 2014–18 | The same; a statistician called including inactive voters "misleading" [40](#source-voter-roll-maintenance-40) [41](#source-voter-roll-maintenance-41) | — |
-| Public Interest Legal Foundation, October 2020: more than 21,000 dead Pennsylvania registrants | Group's own death matching | More than half of its earlier 9,300 names were missing from the later list [42](#source-voter-roll-maintenance-42) | Removal order refused; settled April 2021 with an agreement to use ERIC death data [42](#source-voter-roll-maintenance-42) |
-| Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017 | Removals states made under settlements | Registrations removed through the NVRA process: 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky [43](#source-voter-roll-maintenance-43) | Reported April 2025 |
 
 ## Observations {#voter-roll-maintenance--observations-bloated-roll-claims}
 

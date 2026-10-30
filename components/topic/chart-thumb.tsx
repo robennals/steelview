@@ -1,5 +1,15 @@
 import type { Fact } from '@/lib/content/types';
+import { componentFigure } from '@/lib/content/types';
 import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
+
+/** A library figure in miniature: rows of a table or timeline, which is what nearly all of them are. */
+function FigureThumb() {
+  return (
+    <svg className="sv-thumb" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      {[14, 38, 62, 86].map(y => <rect key={y} className="sv-thumb__column" x="8" width="84" y={y - 6} height="12" />)}
+    </svg>
+  );
+}
 
 /**
  * A chart's silhouette, for a collapsed home-page row: the shape of the data
@@ -8,7 +18,8 @@ import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-cha
  * hidden from assistive technology.
  *
  * A series reading is drawn from the same layout as `SeriesChart`'s narrow plot,
- * cropped to the plot area; a comparison as one column per item, every item.
+ * cropped to the plot area; a comparison as one column per item, every item;
+ * a library figure as plain rows.
  */
 export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string; reading?: string }) {
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
@@ -24,7 +35,7 @@ export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string
     );
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
-  if (!comparison) return null;
+  if (!comparison) return componentFigure(fact, chart) ? <FigureThumb /> : null;
   // Columns stand on a zero line, so negative values hang below it.
   const values = comparison.items.map(item => item.value);
   const top = Math.max(0, ...values);

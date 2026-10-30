@@ -1,13 +1,8 @@
 ---
 title: The Secret Ballot and Postal Voting in Other Democracies, 1872–2026
 claim: >-
-  Few countries let every voter vote by post at home, but those that do
-  include the US, Britain, Germany, Switzerland and Canada, where postal
-  voting has grown. The secret ballot was adopted to stop vote buyers watching
-  votes; mail ballots are often filled in with others present, though few
-  voters report pressure. Britain's courts found large postal frauds, and it
-  tightened its rules but kept postal voting on demand.
-claimSources: [1, 3, 4, 9, 15, 21, 28]
+  Few countries let every voter vote by post at home, but several large democracies do; mail voters often have others present yet rarely report pressure, and Britain tightened its rules after large frauds.
+claimSources: [3, 9, 14, 21, 28]
 status: well-supported
 sources:
   # 1
@@ -787,6 +782,283 @@ dataStillNeeded:
     why: >-
       Their figures are known only second-hand, and the cited survey covered
       a 1996 special election, not universal mail voting after 1998.
+figures:
+  - kind: series
+  - kind: series
+    id: uk-postal-votes
+  - kind: comparison
+    id: idea-postal-voting
+  - kind: comparison
+    id: france-abstention
+  - kind: dataTable
+    id: secret-ballot
+    title: 'The secret ballot: when and why it was adopted'
+    description: 'Where the secret ballot came in, and what it was for.'
+    caption: One row per adoption
+    columns:
+      - key: where
+        label: Where
+        rowHeader: true
+      - key: when
+        label: When
+        format: text
+        sortable: false
+      - key: says
+        label: What the sources say
+        sortable: false
+    rows:
+      - where: Australian colonies
+        when: 1850s (dates not confirmed in a primary source read)
+        says:
+          value: '"Some Australian provinces adopted a series of reforms intended to secure the secrecy of an elector’s vote"'
+          sources:
+            - 1
+      - where: England
+        when: '1872'
+        says:
+          value: The Australian system was enacted after a committee found it "the best possible remedy"
+          sources:
+            - 1
+      - where: 'Louisville, Massachusetts, New York'
+        when: '1888'
+        says:
+          value: First US adoptions
+          sources:
+            - 1
+      - where: US states
+        when: By 1896
+        says:
+          value: '"Almost 90 percent of the States"'
+          sources:
+            - 1
+      - where: Chile
+        when: '1958'
+        says:
+          value: The right's stronger vote in landlord-patronage areas "completely disappeared"
+          sources:
+            - 2
+  - kind: dataTable
+    id: privacy-surveys
+    title: 'How private is a mail ballot? Surveys, ranked by method'
+    description: 'Strongest method first. The questions differ, so the figures cannot share one chart.'
+    caption: One row per survey
+    columns:
+      - key: survey
+        label: Survey
+        rowHeader: true
+      - key: method
+        label: Sample and method
+        sortable: false
+      - key: asked
+        label: What was asked
+        sortable: false
+      - key: finding
+        label: Finding
+        sortable: false
+      - key: mode
+        label: Mode
+        format: text
+        sortable: false
+    rows:
+      - survey: 'Dowling et al., December 2010 (published 2019)'
+        method: YouGov matched sample approximating a random sample; mail voters were a few hundred respondents
+        asked: 'Was anyone else in the room; did you discuss, ask advice, show your ballot'
+        finding:
+          value: '"Over 23 percent" had someone in the room; 17.8 percent discussed their vote; "more than six percent" showed their ballot; mail voters "almost 10 percentage points" likelier to say their choices were not kept secret'
+          sources:
+            - 21
+        mode: Mail
+      - survey: 'Same survey, in-person comparison'
+        method: As above
+        asked: Privacy at the polling place
+        finding:
+          value: '"22 percent said there was no curtain or privacy screen"; "over 20 percent" said someone walking by could see'
+          sources:
+            - 21
+        mode: In person
+      - survey: 'Rasmussen–Heartland, December 2023'
+        method: 'Opt-in, mostly online panel, which critics say "cannot have a margin of error"; about 325 mail voters; asked three years after 2020'
+        asked: 'Did someone fill out your ballot, or did you fill out another''s, "in part or in full" (lawful help included)'
+        finding:
+          value: '19% said someone filled out theirs; 21% filled out another''s. Only 30% said they voted by mail, against "about 43%" in official data; Levitt calls the results "wildly out of line" with signature-flag rates'
+          sources:
+            - 24
+            - 25
+            - 26
+        mode: Mail
+      - survey: 'Rose pilot, Washington County, Oregon, 2000'
+        method: 'Unpublished pilot of 818 respondents, reported in a newspaper'
+        asked: Not published
+        finding:
+          value: '"About 5%" said others marked their ballots; 2.4% said others signed their envelopes'
+          sources:
+            - 27
+        mode: Mail
+      - survey: 'Oregon, 1990s, reported second-hand'
+        method: Two surveys as described by Orr and Johnson; the cited one covered a 1996 special election
+        asked: Not available
+        finding:
+          value: '"As many as a third" completed ballots with others present; "1%, or fewer" felt pressured'
+          sources:
+            - 28
+        mode: Mail
+      - survey: 'Democracy Volunteers, UK, July 2024'
+        method: Observers at polling stations
+        asked: Observed family voting
+        finding:
+          value: 'Seen at 21% of stations, affecting 3.5% of voters observed; they cannot measure it for postal votes'
+          sources:
+            - 30
+            - 31
+        mode: In person
+  - kind: timeline
+    id: uk-election-courts
+    title: 'Britain: election-court cases and the reforms that followed'
+    description: 'Postal voting on demand, the frauds found in court, and the rule changes that came after.'
+    sources:
+      - 9
+    categories:
+      - id: rule
+        label: Rule change
+      - id: court
+        label: Election court
+      - id: review
+        label: Review or data
+    events:
+      - date: '2001'
+        title: Postal voting on demand
+        description: No reason needed.
+        category: rule
+        significance: major
+        source: 35
+      - date: '2005'
+        title: Birmingham (Bordesley Green and Aston)
+        description: Thousands of postal votes falsified; fraud "that would disgrace a banana republic".
+        category: court
+        significance: major
+        source: 10
+      - date: '2006'
+        title: Electoral Administration Act
+        description: Postal-vote applications must carry "signature and date of birth".
+        category: rule
+        source: 12
+      - date: '2008'
+        title: Slough
+        description: 'Register fraud: "several hundred" non-resident or invented voters; new election ordered.'
+        category: court
+        source: 10
+      - date: '2013'
+        title: Woking
+        description: Election "avoided by such corrupt or illegal practices"; 64 suspect postal votes.
+        category: court
+        source: 10
+      - date: '2015'
+        title: Tower Hamlets
+        description: Mayor's 2014 election "void".
+        category: court
+        source: 11
+      - date: '2016'
+        title: Pickles review
+        description: Recommended extending ballot-secrecy offences to postal ballots.
+        category: review
+        source: 32
+      - date: '2019'
+        endDate: '2023'
+        title: Electoral Commission fraud data
+        description: '1,462 alleged cases of all kinds, 11 convictions; "no evidence of large-scale electoral fraud".'
+        category: review
+        source: 15
+      - date: '2022'
+        title: 'Elections Act: postal votes lapse'
+        description: Postal votes lapse after about three years.
+        category: rule
+        source: 13
+      - date: '2022'
+        title: 'Elections Act: campaigners barred'
+        description: Campaigners may not handle others' postal votes.
+        category: rule
+        source: 14
+  - kind: dataTable
+    id: uk-2024
+    title: 'Britain''s 2024 general election: postal voting'
+    description: 'How postal voting went in 2024, with 2019 where the report gives it.'
+    sources:
+      - 16
+    caption: One row per measure
+    columns:
+      - key: measure
+        label: Measure
+        rowHeader: true
+      - key: y2024
+        label: '2024'
+        format: text
+        sortable: false
+      - key: y2019
+        label: '2019'
+        format: text
+        sortable: false
+    rows:
+      - measure: Share of people registered for a postal vote
+        y2024: 20%
+        y2019: 18%
+      - measure: Postal votes returned
+        y2024: 80.7%
+        y2019: 83.9%
+      - measure: Returned postal votes rejected because signature or date of birth could not be verified
+        y2024: '2.2% (approximately 168,000)'
+        y2019: '"Broadly similar"'
+      - measure: Postal voters satisfied with voting
+        y2024: 89%
+      - measure: Postal voters who had help filling in their ballot
+        y2024: 3%
+      - measure: 'Of those, main reason "another adult insisted on helping me choose who to vote for"'
+        y2024: 9%
+      - measure: People who thought voting was safe from fraud and abuse
+        y2024: 87%
+        y2019: 72%
+  - kind: dataTable
+    id: secrecy-views
+    title: Does postal voting weaken the secret ballot? What courts and reviews said
+    description: 'What courts, reviews and researchers have said, for and against.'
+    caption: 'One row per court, review or writer'
+    columns:
+      - key: who
+        label: Who
+        rowHeader: true
+      - key: said
+        label: Said
+        sortable: false
+    rows:
+      - who: 'Germany''s Constitutional Court, 2013'
+        said:
+          value: 'Public control of how the vote is cast is reduced, but postal voting serves the widest participation; election principles being hollowed out is "plainly not the case at present" (translated)'
+          sources:
+            - 17
+      - who: 'Birmingham election court, 2005'
+        said:
+          value: '"All political parties welcomed and supported postal voting on demand. Until very recently, none has treated electoral fraud as representing a problem."'
+          sources:
+            - 9
+      - who: 'Pickles review, 2016 (reporting submissions)'
+        said:
+          value: '"Unrestricted postal voting undermines the fundamental secrecy of the ballot"'
+          sources:
+            - 32
+      - who: 'Birch and Watt, 2004 (as summarised by Essex)'
+        said:
+          value: Remote voting risks "the loss of ballot secrecy and the possibility of undue influence"
+          sources:
+            - 33
+      - who: 'Southwell (Oregon), 2020'
+        said:
+          value: '"No evidence that undue influence on voters – like bribes or threats – has been a problem"'
+          sources:
+            - 29
+      - who: 'swissinfo, 2026'
+        said:
+          value: Switzerland's postal voting "hasn’t led to major political debates about security or fraud"
+          sources:
+            - 18
 ---
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-germany-postal-share}
 
@@ -854,16 +1126,6 @@ Abstention fell at presidential, municipal and cantonal elections and rose at le
 
 The National Assembly rejected a bill to restore postal voting on 3 February 2022. [6](#source-secret-ballot-and-postal-voting-abroad-6) A 2023 Senate bill to allow it for presidential elections has lapsed. [7](#source-secret-ballot-and-postal-voting-abroad-7)
 
-## The secret ballot: when and why it was adopted
-
-| Where | When | What the sources say |
-| --- | --- | --- |
-| Australian colonies | 1850s (dates not confirmed in a primary source read) | "Some Australian provinces adopted a series of reforms intended to secure the secrecy of an elector’s vote" [1](#source-secret-ballot-and-postal-voting-abroad-1) |
-| England | 1872 | The Australian system was enacted after a committee found it "the best possible remedy" [1](#source-secret-ballot-and-postal-voting-abroad-1) |
-| Louisville, Massachusetts, New York | 1888 | First US adoptions [1](#source-secret-ballot-and-postal-voting-abroad-1) |
-| US states | By 1896 | "Almost 90 percent of the States" [1](#source-secret-ballot-and-postal-voting-abroad-1) |
-| Chile | 1958 | The right's stronger vote in landlord-patronage areas "completely disappeared" [2](#source-secret-ballot-and-postal-voting-abroad-2) |
-
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-secret-ballot}
 
 ### The secret ballot was adopted so no one could watch a vote {#secret-ballot-and-postal-voting-abroad--secret-ballot-against-watching}
@@ -877,19 +1139,6 @@ Before Chile's 1958 reform, places with more patron-client ties voted more stron
 ### The secrecy record is about polling places, not mail {#secret-ballot-and-postal-voting-abroad--secrecy-evidence-is-polling-place}
 
 These reforms secured secrecy inside a polling booth. No study read here measures vote buying or coercion among mail voters, so whether mail voting revives them is not shown either way. [1](#source-secret-ballot-and-postal-voting-abroad-1) [2](#source-secret-ballot-and-postal-voting-abroad-2)
-
-## How private is a mail ballot? Surveys, ranked by method
-
-Strongest method first. The questions differ, so the figures cannot share one chart.
-
-| Survey | Sample and method | What was asked | Finding | Mode |
-| --- | --- | --- | --- | --- |
-| Dowling et al., December 2010 (published 2019) | YouGov matched sample approximating a random sample; mail voters were a few hundred respondents | Was anyone else in the room; did you discuss, ask advice, show your ballot | "Over 23 percent" had someone in the room; 17.8 percent discussed their vote; "more than six percent" showed their ballot; mail voters "almost 10 percentage points" likelier to say their choices were not kept secret [21](#source-secret-ballot-and-postal-voting-abroad-21) | Mail |
-| Same survey, in-person comparison | As above | Privacy at the polling place | "22 percent said there was no curtain or privacy screen"; "over 20 percent" said someone walking by could see [21](#source-secret-ballot-and-postal-voting-abroad-21) | In person |
-| Rasmussen–Heartland, December 2023 | Opt-in, mostly online panel, which critics say "cannot have a margin of error"; about 325 mail voters; asked three years after 2020 | Did someone fill out your ballot, or did you fill out another's, "in part or in full" (lawful help included) | 19% said someone filled out theirs; 21% filled out another's. Only 30% said they voted by mail, against "about 43%" in official data; Levitt calls the results "wildly out of line" with signature-flag rates [24](#source-secret-ballot-and-postal-voting-abroad-24) [25](#source-secret-ballot-and-postal-voting-abroad-25) [26](#source-secret-ballot-and-postal-voting-abroad-26) | Mail |
-| Rose pilot, Washington County, Oregon, 2000 | Unpublished pilot of 818 respondents, reported in a newspaper | Not published | "About 5%" said others marked their ballots; 2.4% said others signed their envelopes [27](#source-secret-ballot-and-postal-voting-abroad-27) | Mail |
-| Oregon, 1990s, reported second-hand | Two surveys as described by Orr and Johnson; the cited one covered a 1996 special election | Not available | "As many as a third" completed ballots with others present; "1%, or fewer" felt pressured [28](#source-secret-ballot-and-postal-voting-abroad-28) | Mail |
-| Democracy Volunteers, UK, July 2024 | Observers at polling stations | Observed family voting | Seen at 21% of stations, affecting 3.5% of voters observed; they cannot measure it for postal votes [30](#source-secret-ballot-and-postal-voting-abroad-30) [31](#source-secret-ballot-and-postal-voting-abroad-31) | In person |
 
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-privacy-surveys}
 
@@ -917,20 +1166,6 @@ Britain's 2016 fraud review heard that household undue influence goes unreported
 
 In the same 2010 survey, 22 percent of in-person voters had no privacy screen. [21](#source-secret-ballot-and-postal-voting-abroad-21) UK observers saw family voting at 21% of polling stations in 2024. [30](#source-secret-ballot-and-postal-voting-abroad-30)
 
-## Britain: election-court cases and the reforms that followed
-
-| Year | Case or reform | What it found or did |
-| --- | --- | --- |
-| 2001 | Postal voting on demand | No reason needed [35](#source-secret-ballot-and-postal-voting-abroad-35) |
-| 2005 | Birmingham (Bordesley Green and Aston) | Thousands of postal votes falsified; fraud "that would disgrace a banana republic" [9](#source-secret-ballot-and-postal-voting-abroad-9) [10](#source-secret-ballot-and-postal-voting-abroad-10) |
-| 2006 | Electoral Administration Act | Postal-vote applications must carry "signature and date of birth" [12](#source-secret-ballot-and-postal-voting-abroad-12) |
-| 2008 | Slough | Register fraud: "several hundred" non-resident or invented voters; new election ordered [10](#source-secret-ballot-and-postal-voting-abroad-10) |
-| 2013 | Woking | Election "avoided by such corrupt or illegal practices"; 64 suspect postal votes [10](#source-secret-ballot-and-postal-voting-abroad-10) |
-| 2015 | Tower Hamlets | Mayor's 2014 election "void" [11](#source-secret-ballot-and-postal-voting-abroad-11) |
-| 2016 | Pickles review | Recommended extending ballot-secrecy offences to postal ballots [32](#source-secret-ballot-and-postal-voting-abroad-32) |
-| 2022 | Elections Act | Postal votes lapse after about three years; campaigners may not handle others' postal votes [13](#source-secret-ballot-and-postal-voting-abroad-13) [14](#source-secret-ballot-and-postal-voting-abroad-14) |
-| 2019–2023 | Electoral Commission fraud data | 1,462 alleged cases of all kinds, 11 convictions; "no evidence of large-scale electoral fraud" [15](#source-secret-ballot-and-postal-voting-abroad-15) |
-
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-uk-election-courts}
 
 ### British election courts found organised postal fraud and voided elections {#secret-ballot-and-postal-voting-abroad--uk-election-courts}
@@ -945,20 +1180,6 @@ It responded by requiring a signature and date of birth (2006), banning campaign
 
 The Electoral Commission found "no evidence of large-scale electoral fraud" in 2019–2023: 11 convictions from 1,462 allegations of every kind. [15](#source-secret-ballot-and-postal-voting-abroad-15) Like all detected counts, these are a floor (see [the US fraud report](#fact-absentee-fraud-and-manipulation-of-the-count/detected-fraud-is-a-floor)).
 
-## Britain's 2024 general election: postal voting
-
-| Measure | 2024 | 2019 |
-| --- | --- | --- |
-| Share of people registered for a postal vote | 20% | 18% |
-| Postal votes returned | 80.7% | 83.9% |
-| Returned postal votes rejected because signature or date of birth could not be verified | 2.2% (approximately 168,000) | "Broadly similar" |
-| Postal voters satisfied with voting | 89% | — |
-| Postal voters who had help filling in their ballot | 3% | — |
-| Of those, main reason "another adult insisted on helping me choose who to vote for" | 9% | — |
-| People who thought voting was safe from fraud and abuse | 87% | 72% |
-
-All from the Electoral Commission's report. [16](#source-secret-ballot-and-postal-voting-abroad-16) "—" means the report gives no 2019 figure.
-
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-uk-2024}
 
 ### Britain's identifier check rejected 2.2% of returned postal votes {#secret-ballot-and-postal-voting-abroad--uk-checks-identifiers}
@@ -972,17 +1193,6 @@ Of the 3% of postal voters who had help, 9% gave that reason. The Commission sai
 ### The Commission found no systemic postal-voting problems in 2024 {#secret-ballot-and-postal-voting-abroad--uk-2024-no-systemic-problems}
 
 Some ballots arrived late, but it found "no widespread, systemic issues with postal voting", and 89% of postal voters were satisfied. [16](#source-secret-ballot-and-postal-voting-abroad-16)
-
-## Does postal voting weaken the secret ballot? What courts and reviews said
-
-| Who | Said |
-| --- | --- |
-| Germany's Constitutional Court, 2013 | Public control of how the vote is cast is reduced, but postal voting serves the widest participation; election principles being hollowed out is "plainly not the case at present" (translated) [17](#source-secret-ballot-and-postal-voting-abroad-17) |
-| Birmingham election court, 2005 | "All political parties welcomed and supported postal voting on demand. Until very recently, none has treated electoral fraud as representing a problem." [9](#source-secret-ballot-and-postal-voting-abroad-9) |
-| Pickles review, 2016 (reporting submissions) | "Unrestricted postal voting undermines the fundamental secrecy of the ballot" [32](#source-secret-ballot-and-postal-voting-abroad-32) |
-| Birch and Watt, 2004 (as summarised by Essex) | Remote voting risks "the loss of ballot secrecy and the possibility of undue influence" [33](#source-secret-ballot-and-postal-voting-abroad-33) |
-| Southwell (Oregon), 2020 | "No evidence that undue influence on voters – like bribes or threats – has been a problem" [29](#source-secret-ballot-and-postal-voting-abroad-29) |
-| swissinfo, 2026 | Switzerland's postal voting "hasn’t led to major political debates about security or fraud" [18](#source-secret-ballot-and-postal-voting-abroad-18) |
 
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-secrecy-views}
 

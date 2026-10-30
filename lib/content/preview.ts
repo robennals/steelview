@@ -1,10 +1,10 @@
-import { factPath } from './types';
+import { factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, Topic } from './types';
 
 /** One chart in a topic's home-page carousel. */
 export type PreviewSlide = {
   fact: Fact;
-  /** `series`, an `additionalSeries` id or a `comparisons` id on `fact`. */
+  /** `series`, an `additionalSeries` id, a `comparisons` id or a library figure's id on `fact`. */
   chart: string;
   /** For a series, the one reading the slide draws. */
   reading?: string;
@@ -35,9 +35,11 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
 
 /**
  * Every chart a data collection draws, in the order its page shows them: the
- * main series, any further series, then its comparisons. A series with several
- * readings is a slide per reading, since each reading has observations of its
- * own and a slide draws only one.
+ * order of its `figures` if it has them, or else the main series, any further
+ * series, then its comparisons. A series with several readings is a slide per
+ * reading, since each reading has observations of its own and a slide draws
+ * only one. Library figures (a table of rulings, a timeline) are slides too, so
+ * a collection of laws and statements can be walked through like one of numbers.
  */
 export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
   const slide = (chart: string, label: string, reading?: string): PreviewSlide =>
@@ -45,9 +47,23 @@ export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
   const seriesSlides = (chart: string, series: NonNullable<Fact['series']>) => series.readings.length === 1
     ? [slide(chart, series.title)]
     : series.readings.map(reading => slide(chart, `${series.title}: ${reading.label}`, reading.id));
+  const comparisonSlide = (id: string) => {
+    const comparison = fact.comparisons?.find(c => c.id === id);
+    return comparison ? [slide(comparison.id, comparison.title)] : [];
+  };
+  if (fact.figures) {
+    return fact.figures.flatMap(figure => {
+      if (figure.kind === 'series') {
+        const series = figure.id ? fact.additionalSeries?.find(s => s.id === figure.id) : fact.series;
+        return series ? seriesSlides(figure.id ?? 'series', series) : [];
+      }
+      if (figure.kind === 'comparison') return comparisonSlide(figure.id);
+      return isComponentFigure(figure) ? [slide(figure.id, figureLabel(figure))] : [];
+    });
+  }
   return [
     ...(fact.series ? seriesSlides('series', fact.series) : []),
     ...(fact.additionalSeries ?? []).flatMap(s => seriesSlides(s.id, s)),
-    ...(fact.comparisons ?? []).map(c => slide(c.id, c.title)),
+    ...(fact.comparisons ?? []).flatMap(c => comparisonSlide(c.id)),
   ];
 }

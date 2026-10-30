@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import { decodeHash } from '@/components/topic/open-details';
 
 /** How long a row takes to open; matches `.sv-row__body` in globals.css. */
@@ -18,6 +18,8 @@ const OpenRow = createContext<Accordion>({ open: '', setOpen: () => {}, hold: ()
 
 /** Whether the row a component sits in is open, so a row's body can load what it shows only once it is. */
 const RowIsOpen = createContext(false);
+
+const noSubscription = () => () => {};
 
 export function useRowIsOpen(): boolean {
   return useContext(RowIsOpen);
@@ -92,6 +94,8 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
   const { open, setOpen, hold } = useContext(OpenRow);
   const row = useRef<HTMLElement>(null);
   const isOpen = open === slug;
+  // Without JavaScript a walkthrough row cannot open, so its body stays reachable (globals.css).
+  const hydrated = useSyncExternalStore(noSubscription, () => true, () => false);
   const bodyId = `topic-${slug}-preview`;
 
   useEffect(() => {
@@ -143,7 +147,7 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
         {thumbs}
         <span className="sv-row__chevron" aria-hidden="true" />
       </div>
-      <div className="sv-row__body" id={bodyId} inert={!isOpen}>
+      <div className="sv-row__body" id={bodyId} inert={hydrated && !isOpen}>
         <div className="sv-row__inner"><RowIsOpen.Provider value={isOpen}>{children}</RowIsOpen.Provider></div>
       </div>
     </article>

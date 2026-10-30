@@ -1,12 +1,8 @@
 ---
 title: Ballot Receipt Deadlines, Late Ballots and Counting Speed
-claimSources: [1, 3, 8, 10, 12, 14]
+claimSources: [5, 7, 10, 15, 16]
 claim: >-
-  This report covers when mail ballots must arrive, how many arrive late, and
-  how long states take to count. Fifteen states plus DC count ballots
-  postmarked by Election Day that arrive later, down from 21 in 2020. Late
-  arrival causes a steady share of rejections, rising in 2026 primaries, and
-  the slowest counts are mostly in heavy-mail western states.
+  Fewer states now count ballots that arrive after Election Day than in 2020, late arrival causes a steady share of rejections, and the slowest counts are mostly in heavy-mail western states.
 status: well-supported
 sources:
   # 1
@@ -280,6 +276,15 @@ sources:
     url: https://ueaeprints.uea.ac.uk/id/eprint/99835/1/Year_in_Elections_PEI_11_Report_FINAL.pdf
     publisher: Electoral Integrity Project
     date: '2025-07'
+  # 14
+  - stance: supports
+    quote: >-
+      Ballots received by Clark and Washoe counties after that day represented
+      about 2 percent of the overall mail ballots processed.
+    title: Nevada prepares for Supreme Court ruling on mail ballots
+    url: https://pvtimes.com/news/nevada-braces-for-supreme-court-ruling-on-mail-ballots-184962/
+    publisher: Pahrump Valley Times
+    date: '2026-04-22'
 series:
   title: 'States counting mail ballots that arrive after Election Day, 2016–2026'
   description: >-
@@ -301,7 +306,7 @@ series:
     - period: '2020-03'
       label: 'Pandemic rule changes'
       note: 'NCSL: "Many states enacted policies allowing ballots to be received after Election Day during the pandemic".'
-      source: 14
+      source: 15
     - period: '2025'
       label: 'North Dakota, Ohio and Utah require receipt by Election Day'
       note: 'Ohio keeps a four-day window for military and overseas ballots.'
@@ -512,12 +517,168 @@ dataStillNeeded:
     why: 'The argument that slow counts breed suspicion is untested by any source found here; a measured link, or its absence, would decide whether counting speed is a trust question or only a convenience.'
   - measure: 'Late arrival''s share of rejections in EAVS 2004–2014'
     why: 'The chart starts in 2016. The longer run would show whether 2020''s low share was unusual or part of a trend.'
+figures:
+  - kind: series
+  - kind: series
+    id: late-share-series
+  - kind: comparison
+    id: grace-windows
+  - kind: comparison
+    id: hours-to-count
+  - kind: comparison
+    id: preprocessing-four-hours
+  - kind: dataTable
+    id: late-ballots
+    title: 'Late ballots, and what they are measured against'
+    description: 'Each row uses a different election and denominator, so the figures are not comparable with one another.'
+    caption: One row per election
+    columns:
+      - key: election
+        label: Election
+        rowHeader: true
+      - key: late
+        label: Late ballots
+        sortable: false
+      - key: against
+        label: Measured against
+        sortable: false
+    rows:
+      - election: 'Nevada general, 2024: Clark and Washoe counties'
+        late:
+          value: 'About 9,500 + 2,400 received after Election Day, inside the four-day window'
+          sources:
+            - 9
+        against:
+          value: 'Nearly 1.3 million ballots cast in the two counties; 669,445 mail ballots returned statewide'
+          sources:
+            - 9
+            - 3
+      - election: 'Wisconsin spring primary, 2026'
+        late:
+          value: 'About 5,000 rejected as late: 78% of rejected ballots'
+          sources:
+            - 8
+        against:
+          value: 'Spring 2023: roughly 2,300, or 47%'
+          sources:
+            - 8
+      - election: 'Michigan August primary, 2026'
+        late:
+          value: 'More than 10,000 rejected as late'
+          sources:
+            - 8
+        against:
+          value: Nearly double the 2024 primary
+          sources:
+            - 8
+      - election: 'Washington primary, 2026'
+        late:
+          value: 'More than 20,000 late-arriving ballots; 75% of rejected ballots were late'
+          sources:
+            - 8
+        against:
+          value: 'About 16,000 in the 2024 primary'
+          sources:
+            - 8
+      - election: 'United States general, 2024'
+        late:
+          value: 17.8% of rejected mail ballots
+          sources:
+            - 16
+        against:
+          value: '584,463 rejected, 1.2% of returned mail ballots'
+          sources:
+            - 3
+  - kind: dataTable
+    id: processing-rules
+    title: 'When processing may begin, beside count speed and mail share'
+    description: Seven battleground states. Processing rules are as of September 2026 and may differ from those in force in 2020.
+    sources:
+      - 1
+      - 3
+      - 10
+      - 11
+    caption: One row per state
+    columns:
+      - key: state
+        label: State
+        rowHeader: true
+      - key: begin
+        label: Processing may begin
+        sortable: false
+      - key: hours
+        label: 'Hours to count 95%, 2020 → 2024'
+        format: text
+        sortable: false
+      - key: mail
+        label: 'Turnout by mail, 2024'
+        format: text
+        sortable: false
+      - key: late
+        label: Counts ballots arriving late?
+        sortable: false
+    rows:
+      - state: Arizona
+        begin: On receipt
+        hours: 73 → 147
+        mail: 74.7%
+        late: 'No'
+      - state: Nevada
+        begin: Signature check on receipt
+        hours: 159 → 51
+        mail: 44.1%
+        late: 'Yes, four days'
+      - state: Michigan
+        begin: 'Signature check on receipt; further processing eight days before in places of 5,000 or more'
+        hours: 17 → 9
+        mail: 35.4%
+        late: 'No'
+      - state: Pennsylvania
+        begin: 7 a.m. on Election Day
+        hours: 49 → 8
+        mail: 27.3%
+        late: 'No'
+      - state: Wisconsin
+        begin: After polls open on Election Day
+        hours: 8 → 9
+        mail: 16.6%
+        late: 'No'
+      - state: North Carolina
+        begin: Fifth Tuesday before Election Day
+        hours: 3 → 6
+        mail: 5.2%
+        late: 'No'
+      - state: Georgia
+        begin: ID check on receipt; further processing from the third Monday before
+        hours: 18 → 5
+        mail: 5.1%
+        late: 'No'
+  - kind: quoteComparison
+    id: watson
+    question: What did the Supreme Court say about ballot deadlines in Watson v. RNC?
+    description: 'Three passages from the majority opinion, which held that federal law does not stop states counting ballots that arrive after Election Day.'
+    quotes:
+      - text: 'policy arguments are properly directed to legislatures, not courts'
+        speaker: US Supreme Court
+        context: On the claim that Election Day receipt protects integrity and confidence
+        date: 2026-06
+        source: 2
+      - text: an election-day deadline avoids the appearance of fraud from late-arriving ballots
+        speaker: US Supreme Court
+        context: A view it said legislatures may have shared
+        date: 2026-06
+        source: 2
+      - text: The question today is not whether requiring ballots to be received by election day is a good or bad idea
+        speaker: US Supreme Court
+        context: On what the case decided
+        date: 2026-06
+        source: 2
 ---
 ## Observations {#ballot-deadlines-and-counting-speed--observations-receipt-deadline-states}
 
 ### Grace periods rose in 2020 and are back to their 2016 level {#ballot-deadlines-and-counting-speed--back-to-2016-level}
 
-The number of states counting late-arriving ballots peaked in November 2020 and has fallen since (chart). [14](#source-ballot-deadlines-and-counting-speed-14) NCSL expects the count of states requiring Election Day receipt in 2026 to be "roughly the same as it was in November 2016". [14](#source-ballot-deadlines-and-counting-speed-14)
+The number of states counting late-arriving ballots peaked in November 2020 and has fallen since (chart). [15](#source-ballot-deadlines-and-counting-speed-15) NCSL expects the count of states requiring Election Day receipt in 2026 to be "roughly the same as it was in November 2016". [15](#source-ballot-deadlines-and-counting-speed-15)
 
 North Dakota, Ohio and Utah moved to Election Day receipt in 2025. Kansas legislated the same change, but a court has blocked it for now (both marked under the chart). [1](#source-ballot-deadlines-and-counting-speed-1)
 
@@ -529,13 +690,13 @@ The states still counting postmarked ballots that arrive late include Texas, Ala
 
 ### Late arrival is a steady share of rejections {#ballot-deadlines-and-counting-speed--late-share-of-rejections}
 
-In every federal general election since 2016, between about one in eight and more than one in four rejected mail ballots was rejected for arriving too late (chart). [7](#source-ballot-deadlines-and-counting-speed-7) [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15)
+In every federal general election since 2016, between about one in eight and more than one in four rejected mail ballots was rejected for arriving too late (chart). [7](#source-ballot-deadlines-and-counting-speed-7) [5](#source-ballot-deadlines-and-counting-speed-5) [16](#source-ballot-deadlines-and-counting-speed-16)
 
-In 2024 that was 17.8% of rejections, the third-largest reason after signature problems and "other". [15](#source-ballot-deadlines-and-counting-speed-15) Rejections themselves were 1.2% of returned mail ballots. [3](#source-ballot-deadlines-and-counting-speed-3)
+In 2024 that was 17.8% of rejections, the third-largest reason after signature problems and "other". [16](#source-ballot-deadlines-and-counting-speed-16) Rejections themselves were 1.2% of returned mail ballots. [3](#source-ballot-deadlines-and-counting-speed-3)
 
 ### The low point came when the most states had grace periods {#ballot-deadlines-and-counting-speed--2020-low}
 
-Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [14](#source-ballot-deadlines-and-counting-speed-14) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that grace periods caused the drop.
+Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that grace periods caused the drop.
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-grace-windows}
 
@@ -563,6 +724,10 @@ Mississippi, Maine, Maryland, Massachusetts and Michigan were also slow to repor
 
 MIT's 2020 study found counts slower where states had "large volumes of mail ballots, prohibited preprocessing mail ballots, and allowed mail ballots to arrive after Election Day". [10](#source-ballot-deadlines-and-counting-speed-10)
 
+### Experts rate the US count well {#ballot-deadlines-and-counting-speed--experts-rate-count-strong}
+
+The Electoral Integrity Project's expert survey of the 2024 election rated "the counting, results and procedural aspects" strong, while overall US scores fell. [13](#source-ballot-deadlines-and-counting-speed-13) It measures experts' judgement of the process, not public confidence (see [confidence and disputed results](#fact-confidence-and-disputed-results)).
+
 ## Observations {#ballot-deadlines-and-counting-speed--observations-preprocessing-four-hours}
 
 ### Early processing speeds the first hours of the count {#ballot-deadlines-and-counting-speed--preprocessing-speeds-first-hours}
@@ -578,14 +743,6 @@ By 24 hours after polls closed, "the gap between states had essentially disappea
 ### Late ballots against what they are measured against {#ballot-deadlines-and-counting-speed--late-ballots-table}
 
 Each row uses a different election and denominator, so the figures are not comparable with one another.
-
-| Election | Late ballots | Measured against | Source |
-| --- | --- | --- | --- |
-| Nevada general, 2024: Clark and Washoe counties | About 9,500 + 2,400 received after Election Day, inside the four-day window | Nearly 1.3 million ballots cast in the two counties; 669,445 mail ballots returned statewide | [9](#source-ballot-deadlines-and-counting-speed-9) [3](#source-ballot-deadlines-and-counting-speed-3) |
-| Wisconsin spring primary, 2026 | About 5,000 rejected as late: 78% of rejected ballots | Spring 2023: roughly 2,300, or 47% | [8](#source-ballot-deadlines-and-counting-speed-8) |
-| Michigan August primary, 2026 | More than 10,000 rejected as late | Nearly double the 2024 primary | [8](#source-ballot-deadlines-and-counting-speed-8) |
-| Washington primary, 2026 | More than 20,000 late-arriving ballots; 75% of rejected ballots were late | About 16,000 in the 2024 primary | [8](#source-ballot-deadlines-and-counting-speed-8) |
-| United States general, 2024 | 17.8% of rejected mail ballots | 584,463 rejected, 1.2% of returned mail ballots | [15](#source-ballot-deadlines-and-counting-speed-15) [3](#source-ballot-deadlines-and-counting-speed-3) |
 
 ### Nevada's late ballots were few against the votes cast and the margins {#ballot-deadlines-and-counting-speed--late-ballots-small-in-nevada}
 
@@ -613,16 +770,6 @@ Senator Rosen trailed on election night in 2024 and took the lead the next night
 
 Processing rules are NCSL's as of September 2026 and may differ from those in force in 2020; mail share is from EAVS 2024.
 
-| State | Processing may begin [11](#source-ballot-deadlines-and-counting-speed-11) | Hours to count 95%, 2020 → 2024 [10](#source-ballot-deadlines-and-counting-speed-10) | Turnout by mail, 2024 [3](#source-ballot-deadlines-and-counting-speed-3) | Counts ballots arriving late? [1](#source-ballot-deadlines-and-counting-speed-1) |
-| --- | --- | --- | --- | --- |
-| Arizona | On receipt | 73 → 147 | 74.7% | No |
-| Nevada | Signature check on receipt | 159 → 51 | 44.1% | Yes, four days |
-| Michigan | Signature check on receipt; further processing eight days before in places of 5,000 or more | 17 → 9 | 35.4% | No |
-| Pennsylvania | 7 a.m. on Election Day | 49 → 8 | 27.3% | No |
-| Wisconsin | After polls open on Election Day | 8 → 9 | 16.6% | No |
-| North Carolina | Fifth Tuesday before Election Day | 3 → 6 | 5.2% | No |
-| Georgia | ID check on receipt; further processing from the third Monday before | 18 → 5 | 5.1% | No |
-
 ### Processing rules differ widely between states {#ballot-deadlines-and-counting-speed--processing-rules-vary}
 
 Most states let officials begin processing mail ballots before Election Day; six, including Pennsylvania and Wisconsin, allow it only on Election Day. [11](#source-ballot-deadlines-and-counting-speed-11) No state allows results to be released before polls close. [11](#source-ballot-deadlines-and-counting-speed-11)
@@ -639,10 +786,6 @@ On the arguments that Election Day receipt protects integrity and confidence, it
 
 The opinion said legislatures may have set Election Day deadlines because "an election-day deadline avoids the appearance of fraud from late-arriving ballots". [2](#source-ballot-deadlines-and-counting-speed-2) It did not decide whether that view is right: "The question today is not whether requiring ballots to be received by election day is a good or bad idea". [2](#source-ballot-deadlines-and-counting-speed-2)
 
-### Experts rate the US count well {#ballot-deadlines-and-counting-speed--experts-rate-count-strong}
-
-The Electoral Integrity Project's expert survey of the 2024 election rated "the counting, results and procedural aspects" strong, while overall US scores fell. [13](#source-ballot-deadlines-and-counting-speed-13) It measures experts' judgement of the process, not public confidence (see [confidence and disputed results](#fact-confidence-and-disputed-results)).
-
 ## About this data {#ballot-deadlines-and-counting-speed--about}
 
 **What this measures.** State law on when a mail ballot must arrive (NCSL), why returned mail ballots were rejected (EAVS), and how fast votes were reported (MIT, from Edison Research data used by news media).
@@ -651,6 +794,6 @@ The Electoral Integrity Project's expert survey of the 2024 election rated "the 
 
 **How it compares.** Deadlines and processing rules are shown for every state NCSL lists. Count speed by hour is published only for seven battleground states; MIT describes the rest in words.
 
-**The Nevada share.** "Nearly one in fifty" divides the two counties' late ballots (about 9,500 + 2,400) by all 669,445 mail ballots returned in Nevada in 2024. Because other counties' late ballots are left out, the true statewide share is at least this large. An unconfirmed figure of about 2% is not used.
+**The Nevada share.** "Nearly one in fifty" divides the two counties' late ballots (about 9,500 + 2,400) by all 669,445 mail ballots returned in Nevada in 2024. Because other counties' late ballots are left out, the true statewide share is at least this large. The Pahrump Valley Times reports that ballots received by the two counties after Election Day were about 2% of the overall mail ballots processed. [14](#source-ballot-deadlines-and-counting-speed-14)
 
 **Common mistakes.** NCSL's 15 states and *Watson*'s "roughly 30" are often treated as conflicting; they count different ballots. Late-rejection shares are shares of rejected ballots, not of all ballots.

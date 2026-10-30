@@ -1,6 +1,6 @@
 import { citedFactTargets, renderMarkdown } from './markdown';
 import { headlineFacts } from './rank-facts';
-import { factPath } from './types';
+import { componentFigure, factPath, figureLabel } from './types';
 import type { Fact, Topic, Viewpoint } from './types';
 import { factSlides, type PreviewSlide } from './preview';
 
@@ -68,8 +68,8 @@ function observationGroups(fact: Fact): Map<string, string> {
 }
 
 /**
- * The preview chart an observation group is drawn beside, when it is a series
- * reading or a comparison: the two kinds a carousel slide can draw.
+ * The chart an observation group is drawn beside: a series reading, a
+ * comparison or a library figure.
  */
 function chartFor(slug: string, fact: Fact, key: string, observation: string): PreviewSlide | undefined {
   const href = `${factPath(slug, fact.id)}#${fact.id}--${observation}`;
@@ -81,14 +81,15 @@ function chartFor(slug: string, fact: Fact, key: string, observation: string): P
   if (additional) return { fact, chart: additional.id, reading: key, label: additional.title, href };
   const comparison = fact.comparisons?.find(c => c.id === key);
   if (comparison) return { fact, chart: comparison.id, label: comparison.title, href };
-  return undefined;
+  const figure = componentFigure(fact, key);
+  return figure && { fact, chart: figure.id, label: figureLabel(figure), href };
 }
 
 /**
  * A viewpoint as a sequence of steps, one per `###` section, each paired with
  * a chart. The chart is derived, not authored: it is the one beside the first
- * observation the section cites that has a chart, so a section reads beside
- * the evidence its own argument leads with.
+ * observation the section cites that has a chart, or the first chart it cites
+ * by name, so a section reads beside the evidence its own argument leads with.
  */
 export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkthrough {
   const [lead, ...sections] = viewpoint.body.split(/^### /m);
@@ -98,7 +99,8 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
     const markdown = rest.join('\n').trim();
     for (const { id, section: observation } of citedFactTargets(markdown)) {
       const fact = topic.facts.find(f => f.id === id);
-      const key = observation && groups.get(id)?.get(observation);
+      // A citation can also name a chart outright: `#fact-<fact>/chart-<id>`.
+      const key = observation && (groups.get(id)?.get(observation) ?? observation.match(/^chart-(.+)$/)?.[1]);
       const chart = fact && key && chartFor(topic.slug, fact, key, observation);
       if (chart) return { heading: heading.trim(), markdown, chart, citation: `#fact-${id}/${observation}`, observation: `${id}--${observation}` };
     }
@@ -167,7 +169,8 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
     rendered.set(fact.id, await Promise.all(factSlides(topic.slug, fact).map(async chart => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
       const key = chart.reading ?? series?.readings[0].id ?? chart.chart;
-      const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? '';
+      const figure = componentFigure(fact, chart.chart);
+      const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
       return {
         chart,
         description,

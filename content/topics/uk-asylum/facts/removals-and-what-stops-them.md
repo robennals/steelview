@@ -1,16 +1,12 @@
 ---
 title: Removals and Returns from the UK
-claimSources: [1, 2, 21, 45, 17]
+claimSources:
+  - 2
+  - 21
+  - 45
+  - 17
 claim: >-
-  40,605 people were returned from the UK in the year to June 2026, 9,669 of
-  them by enforced removal — up each year since 2021, but enforced returns are
-  less than half their 2004 level. No source measures what share of failed
-  removals the European Convention on Human Rights (ECHR) blocks. The nearest
-  proxies point the same way: people facing removal from detention raise
-  asylum claims, judicial reviews and modern-slavery referrals far more often
-  than human-rights applications, and foreign offenders who won deportation
-  appeals on human-rights grounds alone equalled about 3% of foreign offenders
-  removed in 2015/16–2020/21.
+  Enforced returns have risen since 2021 but remain under half their 2004 level, and no source measures how many removals the ECHR blocks, though the nearest proxies, which may understate it, show a small share.
 status: well-supported
 sources:
   - stance: supports
@@ -1504,6 +1500,7 @@ additionalSeries:
               - period: '2020'
                 value: 126
           - name: Allowed on human-rights grounds only
+            glossary: human-rights-grounds
             points:
               - period: '2008'
                 value: 35
@@ -1958,6 +1955,59 @@ dataStillNeeded:
     why: >-
       Would show how much of the gap between refusals and returns is about
       origin countries rather than UK law.
+figures:
+  - kind: series
+  - kind: series
+    id: fno-asylum-dataset
+  - kind: series
+    id: refused-cohorts
+  - kind: series
+    id: detention-leavers-dataset
+  - kind: comparison
+    id: detention-issues
+  - kind: comparison
+    id: detention-issues-return
+  - kind: comparison
+    id: charter-failures
+  - kind: series
+    id: fno-appeals-dataset
+  - kind: series
+    id: fnos-community-dataset
+  - kind: comparison
+    id: removal-scale
+  - kind: series
+    id: france-pilot-dataset
+  - kind: estimateRange
+    id: unlawful-population
+    title: Estimates of the population without lawful status, 2017
+    description: The two latest estimates, both for 2017 and both made by the residual method. The Home Office makes no official estimate.
+    valueLabel: People without lawful status
+    nullValue: null
+    estimates:
+      - { label: 'Greater London Authority, central estimate', estimate: 674000, source: 69 }
+      - { label: 'Greater London Authority, with UK-born children', estimate: 809000, source: 69 }
+      - { label: 'Pew, as first published', low: 800000, high: 1200000, asPublished: '800,000 to 1.2 million', source: 69 }
+      - { label: 'Pew, revised March 2025', low: 700000, high: 900000, source: 69 }
+  - kind: dataTable
+    id: echr-share
+    title: What the nearest measures of the ECHR's weight show, and leave out
+    description: No published source counts removals stopped by the ECHR. These are the nearest measures, each of which answers a narrower question.
+    caption: One row per measure
+    columns:
+      - { key: measure, label: Measure, rowHeader: true }
+      - { key: shows, label: What it shows, sortable: false }
+      - { key: leaves-out, label: What it leaves out, sortable: false }
+    rows:
+      - measure: Human-rights applications raised in detention, 2019
+        shows: { value: '5% of detentions, against 47% for asylum claims', sources: [21, 22] }
+        leaves-out: Article 3 risk on return is argued inside asylum claims, and people never put forward for removal because removal is not possible do not appear
+      - measure: Foreign offenders' appeals won on human-rights grounds alone
+        shows: { value: 'About 3% of those removed', sources: [45] }
+        leaves-out: Article 3 risk on return is argued inside asylum claims, and people never put forward for removal because removal is not possible do not appear
+      - measure: People granted status after being told they were liable to removal
+        shows: { value: The Home Office does not hold this data, sources: [17] }
+      - measure: The government's position
+        shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
 ---
 Removals from the UK fell through the 2010s, collapsed during the pandemic and have risen each year since 2021, but enforced returns in the year to June 2026 (9,669) were less than half their 2004 level. [2](#source-removals-and-what-stops-them-2) [1](#source-removals-and-what-stops-them-1) Of the 40,605 returns that year, 76% were voluntary. Asylum-related returns reached 12,568, the highest in a series starting in 2010. [5](#source-removals-and-what-stops-them-5)
 
@@ -2107,13 +2157,13 @@ By 30 June 2026, 1,087 people had been returned to France and 1,117 brought to t
 
 ### Hundreds of thousands, on estimates now nine years old {#removals-and-what-stops-them--unlawful-population-estimates}
 
-The Home Office makes no official estimate of the population without lawful status. [70](#source-removals-and-what-stops-them-70) The two latest estimates are for 2017: the Greater London Authority's central 674,000 (809,000 with UK-born children), and Pew's range, first published as 800,000 to 1.2 million and revised in March 2025 to between 700,000 and 900,000. [69](#source-removals-and-what-stops-them-69) Both use the residual method: the foreign-born population minus an estimate of those here lawfully.
+The Home Office makes no official estimate of the population without lawful status. [70](#source-removals-and-what-stops-them-70) The two latest estimates are for 2017, and Pew revised its range down in March 2025. [69](#source-removals-and-what-stops-them-69) Both use the residual method: the foreign-born population minus an estimate of those here lawfully.
 
 ## Observations {#removals-and-what-stops-them--observations-echr-share}
 
 ### What share of failed removals the ECHR blocks is not measured {#removals-and-what-stops-them--echr-share-not-measured}
 
-No published source counts removals stopped by the ECHR. The Home Office does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) The proxies above each answer a narrower question. Among issues raised in detention, human-rights applications were 5% of detentions in 2019 and asylum claims 47%. [21](#source-removals-and-what-stops-them-21) [22](#source-removals-and-what-stops-them-22) Among foreign offenders, appeals won on human-rights grounds alone equal about 3% of those removed. [45](#source-removals-and-what-stops-them-45) Both may understate the ECHR's weight: Article 3 risk on return is argued inside asylum claims, and people never put forward for removal because removal is not possible do not appear in either count. The government says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals. [30](#source-removals-and-what-stops-them-30) [59](#source-removals-and-what-stops-them-59)
+No published source counts removals stopped by the ECHR. The Home Office does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) The proxies above each answer a narrower question, and both may understate the ECHR's weight. [21](#source-removals-and-what-stops-them-21) [45](#source-removals-and-what-stops-them-45)
 
 ### Other obstacles are documented alongside the legal ones {#removals-and-what-stops-them--other-obstacles}
 

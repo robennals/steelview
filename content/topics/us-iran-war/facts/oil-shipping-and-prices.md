@@ -1,17 +1,15 @@
 ---
 title: Oil, Shipping and Prices, 1974–2026
-claimSources: [1, 4, 5, 23, 25]
+claimSources: [1, 3, 10, 13, 23, 25]
 claim: >-
-  This report covers crude oil and US petrol prices, inflation and shipping
-  through the Strait of Hormuz, as of late October 2026. Brent crude nearly
-  doubled by its April peak and US petrol rose by about half, though real
-  crude prices stayed below the 1981, 2008 and 2022 peaks. Tracked Hormuz
-  traffic has stayed far below normal since March, amid attacks on
-  shipping and a US blockade of Iran's ports.
+  Oil and US petrol prices jumped after the war began, though real crude
+  stayed below earlier peaks, and tracked traffic through Hormuz has stayed
+  far below normal amid attacks on shipping and a US blockade.
 status: well-supported
 sources:
   # 1
   - stance: supports
+    quoteUnit: $
     quote: >-
       Europe Brent Spot Price FOB (Dollars per Barrel) … 2026 Feb-23 to Feb-27
       71.90 71.21 70.69 71.66 71.32 … 2026 Apr- 6 to Apr-10 138.21 122.11
@@ -25,6 +23,7 @@ sources:
     date: '2026-10-28'
   # 2
   - stance: supports
+    quoteUnit: $
     quote: >-
       Cushing, OK WTI Spot Price FOB (Dollars per Barrel) … 2026 Feb-23 to
       Feb-27 66.36 65.62 65.30 65.10 66.96 … 2026 Apr- 6 to Apr-10 114.01
@@ -36,6 +35,7 @@ sources:
     date: '2026-10-28'
   # 3
   - stance: supports
+    quoteUnit: $
     quote: >-
       Weekly U.S. Regular All Formulations Retail Gasoline Prices (Dollars per
       Gallon) … 2026-Feb 02/02 2.867 02/09 2.902 02/16 2.924 02/23 2.937 …
@@ -396,10 +396,12 @@ additionalSeries:
         source: 16
     source:
       stance: supports
+      quoteUnit: $
       quote: >-
         EIA Short-Term Energy Outlook, … Monthly Average Imported Crude Oil
         Price … Consumer Price Index (1982-84=1) … Imported Crude Oil Price
-        ($/barrel) … Nominal … Real … Forecast Values … Base CPI (10/2026) …
+        ($/barrel) … Nominal … Real … Forecast Values … May 2026 3.340
+        99.01 98.85 0 … Base CPI (10/2026) …
         Data Source: EIA Short-Term Energy Outlook, October 2026 … Forecast /
         estimated values shown in blue … real price (Oct 2026 $)
       title: 'Real Prices Viewer: Monthly Average Imported Crude Oil Price (real_prices.xlsx, sheet "Crude Oil-M")'
@@ -548,6 +550,7 @@ additionalSeries:
         note: 'Our monthly means of PortWatch daily counts (all days of each month that PortWatch publishes).'
         lines:
           - name: All ships
+            glossary: strait-of-hormuz
             points: [{period: '2019-01', value: 55.6}, {period: '2019-02', value: 59.3}, {period: '2019-03', value: 61.7}, {period: '2019-04', value: 68.5}, {period: '2019-05', value: 75.5}, {period: '2019-06', value: 81.4}, {period: '2019-07', value: 82.2}, {period: '2019-08', value: 79.1}, {period: '2019-09', value: 78.1}, {period: '2019-10', value: 73.5}, {period: '2019-11', value: 56.4}, {period: '2019-12', value: 57.1}, {period: '2020-01', value: 60.4}, {period: '2020-02', value: 61.0}, {period: '2020-03', value: 57.6}, {period: '2020-04', value: 70.3}, {period: '2020-05', value: 80.2}, {period: '2020-06', value: 85.7}, {period: '2020-07', value: 83.5}, {period: '2020-08', value: 83.8}, {period: '2020-09', value: 89.0}, {period: '2020-10', value: 86.3}, {period: '2020-11', value: 64.9}, {period: '2020-12', value: 60.1}, {period: '2021-01', value: 66.3}, {period: '2021-02', value: 68.4}, {period: '2021-03', value: 72.4}, {period: '2021-04', value: 86.2}, {period: '2021-05', value: 84.9}, {period: '2021-06', value: 91.4}, {period: '2021-07', value: 85.9}, {period: '2021-08', value: 84.1}, {period: '2021-09', value: 86.6}, {period: '2021-10', value: 80.8}, {period: '2021-11', value: 83.9}, {period: '2021-12', value: 78.5}, {period: '2022-01', value: 80.0}, {period: '2022-02', value: 94.1}, {period: '2022-03', value: 93.4}, {period: '2022-04', value: 100.5}, {period: '2022-05', value: 95.7}, {period: '2022-06', value: 98.9}, {period: '2022-07', value: 93.2}, {period: '2022-08', value: 103.3}, {period: '2022-09', value: 98.6}, {period: '2022-10', value: 101.1}, {period: '2022-11', value: 84.8}, {period: '2022-12', value: 79.1}, {period: '2023-01', value: 76.0}, {period: '2023-02', value: 87.8}, {period: '2023-03', value: 86.7}, {period: '2023-04', value: 97.2}, {period: '2023-05', value: 103.5}, {period: '2023-06', value: 102.0}, {period: '2023-07', value: 100.7}, {period: '2023-08', value: 104.4}, {period: '2023-09', value: 102.4}, {period: '2023-10', value: 95.2}, {period: '2023-11', value: 76.9}, {period: '2023-12', value: 74.9}, {period: '2024-01', value: 72.8}, {period: '2024-02', value: 72.0}, {period: '2024-03', value: 94.3}, {period: '2024-04', value: 100.4}, {period: '2024-05', value: 105.1}, {period: '2024-06', value: 104.9}, {period: '2024-07', value: 103.1}, {period: '2024-08', value: 92.6}, {period: '2024-09', value: 104.0}, {period: '2024-10', value: 90.0}, {period: '2024-11', value: 83.2}, {period: '2024-12', value: 70.6}, {period: '2025-01', value: 70.5}, {period: '2025-02', value: 73.9}, {period: '2025-03', value: 83.8}, {period: '2025-04', value: 102.4}, {period: '2025-05', value: 103.0}, {period: '2025-06', value: 102.2}, {period: '2025-07', value: 95.2}, {period: '2025-08', value: 94.5}, {period: '2025-09', value: 87.9}, {period: '2025-10', value: 89.4}, {period: '2025-11', value: 67.4}, {period: '2025-12', value: 55.5}, {period: '2026-01', value: 58.5}, {period: '2026-02', value: 78.3}, {period: '2026-03', value: 3.2}, {period: '2026-04', value: 7.1}, {period: '2026-05', value: 3.9}, {period: '2026-06', value: 12.9}, {period: '2026-07', value: 10.2}, {period: '2026-08', value: 4.7}, {period: '2026-09', value: 3.6}, {period: '2026-10', value: 3.5}]
           - name: Tankers
             points: [{period: '2019-01', value: 34.8}, {period: '2019-02', value: 35.8}, {period: '2019-03', value: 38.3}, {period: '2019-04', value: 41.0}, {period: '2019-05', value: 45.9}, {period: '2019-06', value: 49.7}, {period: '2019-07', value: 48.0}, {period: '2019-08', value: 48.1}, {period: '2019-09', value: 46.2}, {period: '2019-10', value: 45.0}, {period: '2019-11', value: 35.1}, {period: '2019-12', value: 35.5}, {period: '2020-01', value: 35.9}, {period: '2020-02', value: 36.6}, {period: '2020-03', value: 36.2}, {period: '2020-04', value: 44.1}, {period: '2020-05', value: 48.7}, {period: '2020-06', value: 52.4}, {period: '2020-07', value: 52.0}, {period: '2020-08', value: 51.7}, {period: '2020-09', value: 51.1}, {period: '2020-10', value: 52.1}, {period: '2020-11', value: 40.3}, {period: '2020-12', value: 38.3}, {period: '2021-01', value: 41.4}, {period: '2021-02', value: 42.8}, {period: '2021-03', value: 44.4}, {period: '2021-04', value: 52.1}, {period: '2021-05', value: 52.5}, {period: '2021-06', value: 55.9}, {period: '2021-07', value: 54.6}, {period: '2021-08', value: 51.1}, {period: '2021-09', value: 53.0}, {period: '2021-10', value: 50.2}, {period: '2021-11', value: 51.0}, {period: '2021-12', value: 50.1}, {period: '2022-01', value: 51.2}, {period: '2022-02', value: 58.1}, {period: '2022-03', value: 57.6}, {period: '2022-04', value: 62.8}, {period: '2022-05', value: 59.5}, {period: '2022-06', value: 61.0}, {period: '2022-07', value: 59.2}, {period: '2022-08', value: 61.9}, {period: '2022-09', value: 60.3}, {period: '2022-10', value: 61.7}, {period: '2022-11', value: 51.4}, {period: '2022-12', value: 48.1}, {period: '2023-01', value: 45.9}, {period: '2023-02', value: 52.6}, {period: '2023-03', value: 51.8}, {period: '2023-04', value: 58.3}, {period: '2023-05', value: 62.2}, {period: '2023-06', value: 60.4}, {period: '2023-07', value: 61.9}, {period: '2023-08', value: 62.4}, {period: '2023-09', value: 61.0}, {period: '2023-10', value: 57.1}, {period: '2023-11', value: 47.1}, {period: '2023-12', value: 44.9}, {period: '2024-01', value: 44.1}, {period: '2024-02', value: 42.1}, {period: '2024-03', value: 55.8}, {period: '2024-04', value: 60.0}, {period: '2024-05', value: 61.9}, {period: '2024-06', value: 61.7}, {period: '2024-07', value: 61.6}, {period: '2024-08', value: 54.6}, {period: '2024-09', value: 59.7}, {period: '2024-10', value: 50.4}, {period: '2024-11', value: 46.8}, {period: '2024-12', value: 39.7}, {period: '2025-01', value: 39.8}, {period: '2025-02', value: 41.2}, {period: '2025-03', value: 48.1}, {period: '2025-04', value: 57.6}, {period: '2025-05', value: 58.0}, {period: '2025-06', value: 57.5}, {period: '2025-07', value: 54.2}, {period: '2025-08', value: 53.1}, {period: '2025-09', value: 49.8}, {period: '2025-10', value: 49.5}, {period: '2025-11', value: 38.4}, {period: '2025-12', value: 30.4}, {period: '2026-01', value: 31.1}, {period: '2026-02', value: 43.5}, {period: '2026-03', value: 0.9}, {period: '2026-04', value: 3.2}, {period: '2026-05', value: 1.3}, {period: '2026-06', value: 5.4}, {period: '2026-07', value: 4.8}, {period: '2026-08', value: 1.9}, {period: '2026-09', value: 1.1}, {period: '2026-10', value: 0.6}]
@@ -729,6 +732,41 @@ dataStillNeeded:
     why: 'The only figures are CENTCOM''s own tallies and a single Bloomberg count reported by ISW/CTP, so neither side''s share of attacks on shipping can be checked.'
   - measure: 'Estimates beside CBO''s of the war''s contribution to US inflation'
     why: 'CBO''s attribution is the only one found; BLS and the Federal Reserve do not attribute the rise in prices to the war.'
+figures:
+  - kind: "series"
+  - kind: "series"
+    id: "wti-monthly-series"
+  - kind: "series"
+    id: "real-crude-price-series"
+  - kind: "series"
+    id: "gasoline-monthly-series"
+  - kind: "comparison"
+    id: "cpi-september-2026"
+  - kind: "series"
+    id: "hormuz-transits-series"
+  - kind: "series"
+    id: "hormuz-flows-series"
+  - kind: "comparison"
+    id: "chokepoints-september-2026"
+  - kind: "comparison"
+    id: "iran-oil-exports-2026"
+  - kind: "dataTable"
+    id: "blockade-tallies"
+    title: "The US blockade in CENTCOM's own figures"
+    description: "Single-party claims from US Central Command, as worded in each release."
+    caption: "One row per release"
+    note: "A release of 25 October 2026 adds that more than 3,000 vessels transited with US support over the \"last six months\", and that \"over 95%\" of ships passed safely."
+    sources: [12]
+    columns:
+      - { key: "release", label: "Release", rowHeader: true, sortable: false }
+      - { key: "period", label: "Period", sortable: false }
+      - { key: "redirected", label: "Redirected or turned around", sortable: false }
+      - { key: "disabled", label: "Disabled", sortable: false }
+      - { key: "destroyed", label: "Destroyed", sortable: false }
+    rows:
+      - { release: { value: "20 May 2026 (caption)", sources: [9] }, period: "First blockade, from 13 April", redirected: "91 ships" }
+      - { release: { value: "5 Oct 2026", sources: [10] }, period: "Since 14 July", redirected: "130 vessels", disabled: "3 ships", destroyed: "13 commercial vessels, \"over the past 12 weeks\"" }
+      - { release: { value: "10 Oct 2026", sources: [11] }, period: "Since 14 July", redirected: "135 ships", disabled: "4 vessels", destroyed: "10 tankers linked to the IRGC" }
 ---
 ## Observations {#oil-shipping-and-prices--observations-brent-monthly}
 
@@ -822,16 +860,7 @@ Vortexa data put Iran's exports in May at about 209,000 barrels a day, the lowes
 
 ISW/CTP judges the spring blockade had "a limited but notable effect" on Iran's willingness to keep fighting. [17](#source-oil-shipping-and-prices-17)
 
-## The US blockade in CENTCOM's own figures {#oil-shipping-and-prices--blockade-tallies}
-
-These are single-party claims from US Central Command, as worded in each release. [9](#source-oil-shipping-and-prices-9) [10](#source-oil-shipping-and-prices-10) [11](#source-oil-shipping-and-prices-11) [12](#source-oil-shipping-and-prices-12)
-
-| Release | Period | Redirected or turned around | Disabled | Destroyed |
-| --- | --- | --- | --- | --- |
-| 20 May 2026 (caption) | First blockade, from 13 April | 91 ships | — | — |
-| 5 Oct 2026 | Since 14 July | 130 vessels | 3 ships | 13 commercial vessels, "over the past 12 weeks" |
-| 10 Oct 2026 | Since 14 July | 135 ships | 4 vessels | 10 tankers linked to the IRGC |
-| 25 Oct 2026 | "Last six months" | — | — | More than 3,000 transits with US support; "over 95%" of ships passed safely |
+## Observations {#oil-shipping-and-prices--observations-blockade-tallies}
 
 ### CENTCOM reports enforcing the blockade by force {#oil-shipping-and-prices--blockade-enforced}
 

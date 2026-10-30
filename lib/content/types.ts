@@ -43,6 +43,26 @@ export type ComponentFigure = Exclude<Figure, { kind: 'series' | 'comparison' | 
 export function isComponentFigure(figure: Figure): figure is ComponentFigure {
   return figure.kind !== 'series' && figure.kind !== 'comparison' && figure.kind !== 'featured' && figure.kind !== 'section';
 }
+/** The library figure with this id on a fact, if it has one. */
+export function componentFigure(fact: Pick<Fact, 'figures'>, id: string): ComponentFigure | undefined {
+  return fact.figures?.filter(isComponentFigure).find(figure => figure.id === id);
+}
+
+/** A library figure's name on its tab: its title, or the heading the kinds without one are drawn under. */
+export function figureLabel(figure: ComponentFigure): string {
+  switch (figure.kind) {
+    case 'quoteComparison':
+      return figure.question;
+    case 'pullQuote':
+      return `Quote: ${figure.quote.speaker}`;
+    case 'claimCheck':
+      return `Claim: ${figure.claim}`;
+    case 'caveatList':
+      return figure.heading;
+    default:
+      return figure.title;
+  }
+}
 /** How a figure value is written; mirrors `ValueFormat` in components/report/types.ts. */
 export type FigureValueFormat = z.infer<typeof valueFormatSchema>;
 

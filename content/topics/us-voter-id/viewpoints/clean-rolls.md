@@ -7,9 +7,9 @@ The weak point in American elections is the voter list, not the line at the poll
 
 ### Voter lists always contain people who should not be on them
 
-[Lists always include some people who are no longer eligible, because removing them can take up to two federal election cycles](#fact-voter-roll-maintenance/lists-contain-ineligible). [The only national measure, from 2011 data, found about one record in eight wrong or out of date](#fact-voter-roll-maintenance/pew-only-direct-measure).
+[The only national measure, from 2011 data, found about one record in eight wrong or out of date](#fact-voter-roll-maintenance/pew-only-direct-measure). [Lists always include some people no longer eligible, because removal can take up to two federal election cycles](#fact-voter-roll-maintenance/lists-contain-ineligible).
 
-While [many are eligible voters with an old address, and stale records are not votes](#fact-voter-roll-maintenance/pew-not-fraud), old names are what fraud has used. [Chicago's 1982 fraud cast ballots in the names of people who had died or moved but were still on the list](#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud).
+While [many are eligible voters with an old address, and stale records are not votes](#fact-voter-roll-maintenance/pew-not-fraud), old names are what fraud has used. [Chicago's 1982 fraud cast ballots in the names of people who had died or moved](#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud).
 
 ### An ID check would not have stopped that fraud
 
@@ -19,13 +19,13 @@ In Chicago, [election judges took part in the fraud, and they are the people who
 
 [Non-citizens get onto the lists mostly through clerks' errors, wrong licence records and confusion about the rules](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls). The records that reveal them are government files, such as [a licence issued to a green-card holder](#fact-non-citizens-on-voter-rolls/detected-is-a-floor). A poll worker never sees these.
 
-These records can now be checked on a large scale. [Checking a whole state's voter list against federal records is now routine](#fact-non-citizens-on-voter-rolls/full-roll-check-feasible). [Georgia held back applicants it could not verify before they were added](#fact-non-citizens-on-voter-rolls/georgia-2022-held-at-registration). And [ERIC, a data-sharing group of states, has sent its members millions of leads on voters who moved away](#fact-voter-roll-maintenance/eric-cross-state-movers).
+[Checking a whole state's voter list against federal records is now routine](#fact-non-citizens-on-voter-rolls/full-roll-check-feasible). [Georgia held back applicants it could not verify](#fact-non-citizens-on-voter-rolls/georgia-2022-held-at-registration). [ERIC, a data-sharing group of states, has sent members millions of leads on voters who moved away](#fact-voter-roll-maintenance/eric-cross-state-movers).
 
 ### Matching must be careful, because it also flags eligible voters
 
-Record checks make mistakes too. [Every large matching program on record has flagged eligible voters](#fact-voter-roll-maintenance/bulk-matching-errs). [The new federal citizenship database, SAVE, has no published error rate](#fact-non-citizens-on-voter-rolls/save-national-unaudited). And Texas sent counties its SAVE list [without first checking its own licence records, which would have cleared some citizens](#fact-non-citizens-on-voter-rolls/state-records-would-have-cleared).
+[Every large matching program has flagged eligible voters](#fact-voter-roll-maintenance/bulk-matching-errs). [The new federal citizenship database, SAVE, has no published error rate](#fact-non-citizens-on-voter-rolls/save-national-unaudited). Texas sent out its SAVE list [without checking its own licence records, which would have cleared some citizens](#fact-non-citizens-on-voter-rolls/state-records-would-have-cleared).
 
-The biggest way people are removed is also the least certain. [People are removed after not answering a notice and missing two federal elections, which shows silence, not a move](#fact-voter-roll-maintenance/nonresponse-largest). [In Ohio, more of the people who replied to such a notice said they had not moved than said they had](#fact-voter-roll-maintenance/ohio-notice-replies).
+The biggest way people are removed is also the least certain. [Removal after an unanswered notice and two missed federal elections shows silence, not a move](#fact-voter-roll-maintenance/nonresponse-largest). [In Ohio, more of those who replied said they had not moved than said they had](#fact-voter-roll-maintenance/ohio-notice-replies).
 
 ### States should clean their lists early, openly, and with time to answer
 
@@ -33,6 +33,6 @@ States should check their own records before writing to anyone. They should fini
 
 ### More states should share data, so matches can be found
 
-[Nine Republican-led states left ERIC in 2022 and 2023](#fact-voter-roll-maintenance/eric-departures), and [its reports of voters who moved between states fell as members left](#fact-voter-roll-maintenance/eric-reports-fell). A match needs both states to be members. A state that wants clean lists should rejoin ERIC, or build something that matches just as widely.
+[Nine Republican-led states left ERIC in 2022 and 2023](#fact-voter-roll-maintenance/eric-departures), and [its reports of voters moving between states fell as members left](#fact-voter-roll-maintenance/eric-reports-fell). A match needs both states as members. A state that wants clean lists should rejoin ERIC, or build an equally wide match.
 
-[Honest elections that can be checked](#principle-verifiably-honest-elections) depend on knowing who is on the list. [Rules should mean what they say](#principle-rules-must-mean-what-they-say) for the officials who keep it. Effort should go into removing people who died or moved, based on evidence and in the open. It should not make eligible citizens prove again what the state already knows.
+[Honest elections that can be checked](#principle-verifiably-honest-elections) depend on knowing who is on the list, and [rules should mean what they say](#principle-rules-must-mean-what-they-say) for those who keep it. Eligible citizens should not have to re-prove what the state already knows.

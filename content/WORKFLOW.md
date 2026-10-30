@@ -337,8 +337,11 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
-- an observation group not tied to a chart needs the literal heading
-  `## Observations {#<fact-id>--observations-<slug>}` to render as expandos;
+- an observation group not tied to a visual needs the literal heading
+  `## Observations {#<fact-id>--observations-<slug>}` to render as expandos,
+  and is missing from the topic page's walkthrough, so give it a
+  [figure](AUTHORING.md#figures) with the same id wherever one would honestly
+  show it;
 - a rule or status per area (a rule per state or country) is a categorical
   `tileMap` or `geoMap` figure; a categorical table with more than one
   column per area is a `dataTable` figure. Policy dates on a series go in

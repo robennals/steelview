@@ -1,11 +1,17 @@
 import type { PreviewFit } from '@/lib/chart/series-chart';
 import type { PreviewSlide } from '@/lib/content/preview';
+import { figureContext } from '@/lib/content/figure-props';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
+import { componentFigure } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
+import { FactFigure, type FigurePage } from './fact-figures';
 import { SeriesChart } from './series-chart';
 
-/** A preview slide's chart, through the same shared component the topic page uses. */
-export function SlideChart({ slide, fit, titleHref }: { slide: PreviewSlide; fit?: PreviewFit; titleHref?: string }) {
+/**
+ * A preview slide's chart, through the same shared component the topic page
+ * uses. A library figure needs `page`, which only a walkthrough's slides do.
+ */
+export function SlideChart({ slide, fit, titleHref, page }: { slide: PreviewSlide; fit?: PreviewFit; titleHref?: string; page?: FigurePage }) {
   const { fact, chart } = slide;
   const preview = { href: titleHref, reading: slide.reading, fit };
   const seriesIndex = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
@@ -16,5 +22,9 @@ export function SlideChart({ slide, fit, titleHref }: { slide: PreviewSlide; fit
   const comparison = fact.comparisons?.find(c => c.id === chart);
   // A preview draws no source line, and a comparison is a client component, so
   // the fact's sources (each with its quote) would only weigh down the page.
-  return comparison ? <ComparisonChart fact={{ id: fact.id }} chart={comparison} sources={[]} preview={preview} /> : null;
+  if (comparison) return <ComparisonChart fact={{ id: fact.id }} chart={comparison} sources={[]} preview={preview} />;
+  const figure = componentFigure(fact, chart);
+  return figure && page
+    ? <div className="sv-slide__figure"><FactFigure figure={figure} context={figureContext(fact, page.asOf)} page={page} /></div>
+    : null;
 }

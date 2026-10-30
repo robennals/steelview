@@ -8,7 +8,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 26
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
@@ -21,7 +21,6 @@ jobs:
       - run: pnpm test:e2e
       # The figures audit: a money/percentage/thousands figure asserted in a
       # markdown body must appear in a quoted source on the same topic. Runs
-      # last: it currently has known (genuine, content-round) findings, and
-      # while its count is non-zero it must not stand ahead of lint, the
-      # unit tests, the build, or e2e and hide a failure in any of them.
+      # last so that a content finding cannot hide a failure in lint, the
+      # unit tests, the build, or e2e.
       - run: pnpm check:figures
