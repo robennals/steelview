@@ -1,5 +1,5 @@
 import { Fragment, type ReactNode } from 'react';
-import { tickLabels, type BarScale, type Span } from './bar-layout';
+import { axisTickLabels, type BarScale, type Span } from './bar-layout';
 import { QUALIFICATION_KEY, type Qualification } from './qualified';
 import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
 import type { ValueFormat } from './types';
@@ -74,9 +74,10 @@ export function BarRows({
   // at 30% for long ones, which wrap rather than squeeze the bars.
   const labelWidth = Math.max(4, ...rows.map(row => String(row.label).length)) + 1;
   const style = { '--sv-bars-value': `${valueWidth}ch`, '--sv-bars-label': `minmax(0, min(30%, ${labelWidth}ch))` };
+  const dense = rows.length > 12;
 
   return (
-    <div className="sv-bars" data-layout={layout} data-dense={rows.length > 12 || undefined} data-preview={preview || undefined} data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined} style={style}>
+    <div className="sv-bars" data-layout={layout} data-dense={dense || undefined} data-preview={preview || undefined} data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined} style={style}>
       <ol className="sv-bars__rows" aria-label={label}>
         {rows.map(row => (
           <li key={row.key} className="sv-bars__row" data-highlight={row.highlight || undefined}>
@@ -113,7 +114,7 @@ export function BarRows({
       </ol>
       {!preview && <div className="sv-bars__axis" aria-hidden="true">
         <span className="sv-bars__ticks">
-          {tickLabels(scale.ticks, format).map((tick, i, all) =>
+          {axisTickLabels(scale.ticks, format, { dense }).map((tick, i, all) =>
             tick.label === null ? null : (
               <span
                 key={tick.value}

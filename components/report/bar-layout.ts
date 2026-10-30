@@ -105,6 +105,23 @@ export function tickLabels(ticks: number[], format: ValueFormat = {}): Array<{ v
   }));
 }
 
+/** The narrowest a bar track gets, in tick-label characters: beside its label and value in a dense chart on a phone, or in a chart of a few rows. */
+const NARROWEST_TRACK_CH = { dense: 24, roomy: 46 };
+
+/**
+ * `tickLabels` thinned to what the track can hold: a label every second or
+ * third tick when all of them, each with a gap, would be wider than the track.
+ * Positions are percentages and the track's width is only known in the browser,
+ * so this allows for the narrowest the track gets. Zero stays labelled.
+ */
+export function axisTickLabels(ticks: number[], format: ValueFormat = {}, { dense = false } = {}): Array<{ value: number; label: string | null }> {
+  const labels = tickLabels(ticks, format);
+  const longest = Math.max(...labels.map(tick => tick.label?.length ?? 0));
+  const every = Math.ceil((labels.length * (longest + 2)) / NARROWEST_TRACK_CH[dense ? 'dense' : 'roomy']);
+  const zero = Math.max(0, ticks.indexOf(0));
+  return labels.map((tick, i) => (Math.abs(i - zero) % every === 0 ? tick : { ...tick, label: null }));
+}
+
 function compactsExactly(value: number): boolean {
   const magnitude = Math.abs(value);
   const step = [1e9, 1e6, 1e3].find(s => magnitude >= s);

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { barScale, barSpan, qualifiedSpan, stackExtent, stackSpans, tickLabels } from './bar-layout';
+import { axisTickLabels, barScale, barSpan, qualifiedSpan, stackExtent, stackSpans, tickLabels } from './bar-layout';
 
 test('bar scale always includes zero', () => {
   const scale = barScale([40, 42]);
@@ -36,6 +36,19 @@ test('large ticks are compacted, and ticks compaction would round go unlabelled'
   assert.deepEqual(tickLabels([0, 1_000_000, 1_250_000]).map(t => t.label), ['0', '1m', null]);
   assert.deepEqual(tickLabels([0, 20, 40], { unit: 'percent' }).map(t => t.label), ['0%', '20%', '40%']);
   assert.deepEqual(tickLabels([1_250_000], { compact: false }).map(t => t.label), ['1,250,000']);
+});
+
+test('a dense chart labels only the axis ticks its narrow track can hold', () => {
+  const ticks = [0, 500, 1000, 1500, 2000, 2500];
+  // Amnesty's executions by country: thirteen rows, a track under 100px on a phone.
+  assert.deepEqual(axisTickLabels(ticks, {}, { dense: true }).map(t => t.label), ['0', null, '1,000', null, '2,000', null]);
+  // A chart of a few rows has the width for all six.
+  assert.deepEqual(axisTickLabels(ticks).map(t => t.label), ['0', '500', '1,000', '1,500', '2,000', '2,500']);
+});
+
+test('thinning an axis keeps zero labelled, wherever it falls', () => {
+  const ticks = [-1000, -500, 0, 500, 1000, 1500];
+  assert.deepEqual(axisTickLabels(ticks, {}, { dense: true }).map(t => t.label !== null), [true, false, true, false, true, false]);
 });
 
 test('a bound or an approximation is drawn to its value and keeps its qualification', () => {
