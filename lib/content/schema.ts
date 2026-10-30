@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { glossary } from './glossary';
 
 export const FACT_STATUSES = [
   'well-supported',
@@ -90,6 +91,8 @@ export const seriesLineSchema = z.object({
    * range, and the series coverage is the union of every line's.
    */
   coverage: seriesCoverageSchema.optional(),
+  /** A glossary entry defining what this line measures, opened from its legend key. */
+  glossary: z.string().refine(key => key in glossary, { error: issue => `unknown glossary term "${String(issue.input)}"` }).optional(),
   points: z
     .array(seriesPointSchema)
     .min(2, 'a series line needs at least two points — one point is not a trend'),

@@ -579,6 +579,7 @@ series:
       valueLabel: People moving to or from the UK for a year or more
       lines:
         - name: Immigration
+          glossary: gross-arrivals
           points:
             - {period: '1964', value: 211000}
             - {period: '1965', value: 206000}
@@ -707,6 +708,7 @@ series:
             - {period: '2024', value: 680000}
             - {period: '2025', value: 642000}
         - name: Net migration
+          glossary: net-migration
           points:
             - {period: '1964', value: -60000}
             - {period: '1965', value: -78000}
@@ -802,6 +804,7 @@ series:
         date: '2026-10-01'
       lines:
         - name: Immigration
+          glossary: gross-arrivals
           points:
             - {period: '1964', value: 0.39}
             - {period: '1965', value: 0.38}
@@ -866,6 +869,7 @@ series:
             - {period: '2024', value: 1.46}
             - {period: '2025', value: 1.17}
         - name: Net migration
+          glossary: net-migration
           points:
             - {period: '1964', value: -0.11}
             - {period: '1965', value: -0.14}

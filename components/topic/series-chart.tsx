@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
+import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
 import { SeriesHighlight } from './series-highlight';
@@ -472,7 +473,7 @@ function Reading({
                   <line x1="1" y1="4" x2="19" y2="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray={seriesStrokeDash(slots.get(line.name) ?? 1)} />
                   <circle cx="10" cy="4" r="3" fill="currentColor" />
                 </svg>
-                <span className="sv-chart__key-name">{line.name}{spanSuffix(series, line)}</span>
+                <span className="sv-chart__key-name">{line.glossary ? <GlossaryTerm term={line.glossary}>{line.name}</GlossaryTerm> : line.name}{spanSuffix(series, line)}</span>
               </li>
             ))}
           </ul>

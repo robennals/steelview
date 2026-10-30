@@ -2698,6 +2698,16 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   border-bottom: 1px dotted currentColor;
   cursor: help;
 }
+/* A legend key with a definition: the line's name opens it. */
+.sv-chart__key .sv-glossary__term {
+  font: inherit;
+  color: var(--ink-2);
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
 .sv-glossary__popup {
   position: fixed;
   inset: 0;
