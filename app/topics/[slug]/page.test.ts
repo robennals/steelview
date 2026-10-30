@@ -89,7 +89,7 @@ test('a section with no items renders no heading for that section', () => {
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
   assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.doesNotMatch(html, /Principles/);
@@ -143,7 +143,7 @@ test('a section with items renders its heading', () => {
       },
     ],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
   assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.match(html, /Principles/);
@@ -162,7 +162,7 @@ test('viewpoints come before the data, and their header is the name alone', () =
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
   assert.ok(html.indexOf('>Viewpoints</h2>') < html.indexOf('>Data</h2>'), html);
   assert.doesNotMatch(html, /A one-line summary/);
 });
@@ -218,16 +218,16 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
 
   // Only the headline fact is a row in the list — a fact that supports
   // another is not, whatever the reader has or hasn't clicked yet.
-  assert.equal(html.match(/class="sv-row sv-row--data"/g)?.length, 1);
+  assert.equal(html.match(/class="sv-row sv-row--walk sv-row--data"/g)?.length, 1);
   assert.equal(html.match(/class="sv-item sv-subfact"/g), null);
   // Every fact is addressed by its own URL. The in-page `#fact-<id>` anchors
-  // are gone: one thing, one address.
+  // are gone: one thing, one address. (A row reaches its collection through
+  // each chart's "Explore this data", which this chartless fixture has none of.)
   assert.doesNotMatch(html, /id="fact-/);
-  assert.match(html, /href="\/topics\/nested\/facts\/parent"/);
   // The child's claim, its status and the fact that it supports something are
   // all reading a reader would only get by opening the parent fact — none of
   // it belongs in the list itself, so none of it is here.

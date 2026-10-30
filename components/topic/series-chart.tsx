@@ -431,10 +431,10 @@ function Reading({
 
   const plots = (shown?: FocusWindow) => (
     <div className="sv-chart__plot">
-      {/* A preview is drawn at every preview shape, of which the page shows the
-          one that best fills the space, and at the narrow size for a phone. */}
+      {/* A preview is drawn at each shape its place can use, of which the page
+          shows the one that best fills the space, and at the narrow size for a phone. */}
       {preview ? <>
-        {PREVIEW_VARIANTS.map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} />)}
+        {PREVIEW_VARIANTS[preview.fit ?? 'wide'].map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} />)}
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
       </> : <>
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />

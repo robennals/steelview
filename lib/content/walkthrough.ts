@@ -1,7 +1,7 @@
 import { citedFactTargets, renderMarkdown } from './markdown';
 import { factPath } from './types';
 import type { Fact, Topic, Viewpoint } from './types';
-import type { PreviewSlide } from './preview';
+import { factSlides, type PreviewSlide } from './preview';
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
@@ -21,23 +21,47 @@ export type Walkthrough = {
   steps: WalkthroughStep[];
 };
 
+/** One observation in a data collection: an addressable finding about the chart it sits beside. */
+export type Observation = {
+  /** Its id within the fact: the `<id>` of `#<fact>--<id>`. */
+  id: string;
+  heading: string;
+  /** Its explanation, without the heading. */
+  markdown: string;
+};
+
 /**
- * Each observation's group key in a fact's body. Observations sit under an
- * `## Observations {#<fact>--observations-<key>}` heading, where the key is the
- * id of the reading, comparison or figure they are drawn beside.
+ * A fact's observations, grouped by the chart they are drawn beside, in
+ * order. Observations sit under an `## Observations {#<fact>--observations-<key>}`
+ * heading, where the key is the id of the reading, comparison or figure they
+ * belong to, each headed `### <heading> {#<fact>--<id>}`.
  */
-function observationGroups(fact: Fact): Map<string, string> {
-  const groups = new Map<string, string>();
-  let key: string | undefined;
+export function observationsByChart(fact: Fact): Map<string, Observation[]> {
+  const groups = new Map<string, Observation[]>();
+  let group: Observation[] | undefined;
+  let current: Observation | undefined;
   for (const line of fact.body.split('\n')) {
     if (line.startsWith('## ')) {
-      key = line.match(/\{#[a-z0-9-]+--observations-([a-z0-9-]+)\}$/)?.[1];
+      const key = line.match(/\{#[a-z0-9-]+--observations-([a-z0-9-]+)\}$/)?.[1];
+      group = key ? (groups.get(key) ?? groups.set(key, []).get(key)) : undefined;
+      current = undefined;
       continue;
     }
-    const observation = line.match(/^### .*\{#[a-z0-9-]+?--([a-z0-9-]+)\}$/)?.[1];
-    if (observation && key) groups.set(observation, key);
+    const heading = line.match(/^### (.*) \{#[a-z0-9-]+?--([a-z0-9-]+)\}$/);
+    if (heading && group) {
+      current = { id: heading[2], heading: heading[1], markdown: '' };
+      group.push(current);
+    } else if (current) {
+      current.markdown += `${line}\n`;
+    }
   }
+  for (const observations of groups.values()) for (const o of observations) o.markdown = o.markdown.trim();
   return groups;
+}
+
+/** Each observation's group key in a fact's body: the chart it is drawn beside. */
+function observationGroups(fact: Fact): Map<string, string> {
+  return new Map([...observationsByChart(fact)].flatMap(([key, observations]) => observations.map(o => [o.id, key] as const)));
 }
 
 /**
@@ -108,6 +132,46 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
         exploreHtml: citation && await renderMarkdown(`[Explore this data](${citation})`, topic.slug, topic.facts),
       }))),
     });
+  }
+  return rendered;
+}
+
+/** One chart of a data collection, with its observations rendered, ready to step through. */
+export type DataStep = {
+  chart: PreviewSlide;
+  /** The observations drawn beside this chart, in order: what to notice in it. */
+  observations: { heading: string; html: string }[];
+  /** What the chart shows, for a chart with no observations of its own. */
+  description: string;
+  /** "Explore this data", opening the collection at this chart alone. */
+  exploreHtml: string;
+};
+
+/**
+ * Each data collection as a walkthrough of its charts, keyed by fact id: every
+ * chart in turn, beside the observations made about it. Observations are shown
+ * away from their collection here, so they leave out source footnotes and fact
+ * links, which the collection itself carries.
+ */
+export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promise<Map<string, DataStep[]>> {
+  const rendered = new Map<string, DataStep[]>();
+  const options = { citationsAsText: true, footnotes: false };
+  for (const fact of facts) {
+    const groups = observationsByChart(fact);
+    rendered.set(fact.id, await Promise.all(factSlides(topic.slug, fact).map(async chart => {
+      const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
+      const key = chart.reading ?? series?.readings[0].id ?? chart.chart;
+      const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? '';
+      return {
+        chart,
+        description,
+        observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
+          heading: o.heading,
+          html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
+        }))),
+        exploreHtml: await renderMarkdown(`[Explore this data](#fact-${fact.id}/viz-${chart.chart})`, topic.slug, topic.facts),
+      };
+    })));
   }
   return rendered;
 }

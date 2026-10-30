@@ -3,7 +3,7 @@ import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
-import { renderWalkthroughs, type RenderedWalkthrough } from '@/lib/content/walkthrough';
+import { renderDataWalkthroughs, renderWalkthroughs, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
 import { HashSync } from '@/components/topic/hash-sync';
 import { DataRows } from '@/components/topic/data-rows';
@@ -102,7 +102,13 @@ export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
  * is non-empty. Exported and kept free of `loadTopic` so it is unit-testable
  * without a real content directory.
  */
-export function TopicSections({ topic, bodies, walkthroughs }: { topic: Topic; bodies: Map<string, string>; walkthroughs: Map<string, RenderedWalkthrough> }) {
+export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }: {
+  topic: Topic;
+  bodies: Map<string, string>;
+  walkthroughs: Map<string, RenderedWalkthrough>;
+  /** Each headline data collection's charts and observations, keyed by fact id. */
+  dataWalkthroughs: Map<string, DataStep[]>;
+}) {
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   /*
@@ -126,7 +132,7 @@ export function TopicSections({ topic, bodies, walkthroughs }: { topic: Topic; b
           <div className="sv-section__head">
             <h2 className="sv-section__title">Viewpoints</h2>
           </div>
-          <ViewpointRows viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />
+          <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />
         </section>
       )}
 
@@ -135,7 +141,7 @@ export function TopicSections({ topic, bodies, walkthroughs }: { topic: Topic; b
           <div className="sv-section__head">
             <h2 className="sv-section__title">Data</h2>
           </div>
-          <DataRows slug={topic.slug} facts={headline} />
+          <DataRows slug={topic.slug} facts={headline} walkthroughs={dataWalkthroughs} />
         </section>
       )}
 
@@ -180,6 +186,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
 
   const bodies = await buildBodies(topic, slug);
   const walkthroughs = await renderWalkthroughs(topic);
+  const dataWalkthroughs = await renderDataWalkthroughs(topic, orderHeadlineFacts(topic));
 
   /*
    * The page head is the title and nothing else: readers came for the facts,
@@ -196,7 +203,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
       </header>
 
-      <TopicSections topic={topic} bodies={bodies} walkthroughs={walkthroughs} />
+      <TopicSections topic={topic} bodies={bodies} walkthroughs={walkthroughs} dataWalkthroughs={dataWalkthroughs} />
     </main>
   );
 }

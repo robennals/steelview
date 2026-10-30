@@ -2040,11 +2040,11 @@
 
   /* ------------------------------------------------ viewpoint walkthroughs */
 
-  /* A viewpoint row's closed state is its argument as a sequence of charts:
-     one thumbnail per step, on a line of their own under the heading. */
-  .sv-row--viewpoint .sv-row__head { flex-wrap: wrap; row-gap: 1rem; }
-  .sv-row--viewpoint .sv-row__heading { flex-basis: calc(100% - 4rem); }
-  .sv-row--viewpoint .sv-row__subtitle { max-width: 48rem; }
+  /* A viewpoint or data row's closed state is its sequence of charts: one
+     thumbnail per step, on a line of their own under the heading. */
+  .sv-row--walk .sv-row__head { flex-wrap: wrap; row-gap: 1rem; }
+  .sv-row--walk .sv-row__heading { flex-basis: calc(100% - 4rem); }
+  .sv-row--walk .sv-row__subtitle { max-width: 48rem; }
 
   .sv-walk__thumbs {
     order: 3;
@@ -2064,6 +2064,49 @@
     font-size: 0.7rem;
     color: var(--ink-4);
   }
+
+  .sv-walk__more {
+    display: grid;
+    place-items: center;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink-3);
+  }
+
+  /* The observations about one chart, one at a time (observation-cycler.tsx). */
+  .sv-observe__controls { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0 0.2rem; }
+  .sv-observe__count { margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); }
+
+  .sv-observe__step {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0 0 2px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .sv-observe__step:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .sv-observe__heading {
+    margin: 0.35rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  /* Without JavaScript every observation shows, one after another. */
+  .sv-observe__item:not([hidden]) ~ .sv-observe__item:not([hidden]) { margin-top: 1.25rem; }
 
   /* Open, the outline of the argument sits beside the step on screen. */
   .sv-walk {
@@ -2177,6 +2220,8 @@
 
   .sv-walk__chart { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
   .sv-walk__chart .sv-slide { flex: 1; min-height: 0; }
+  /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
+  .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
 
   .sv-walk__explore { margin-top: 0.5rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; }
   .sv-walk__explore p { margin: 0; }
@@ -2219,7 +2264,7 @@
   }
 
   @media (max-width: 47.5rem) {
-    .sv-row--viewpoint .sv-walk__thumbs { display: grid; grid-auto-flow: column; grid-auto-columns: 8rem; overflow-x: auto; }
+    .sv-row--walk .sv-walk__thumbs { display: grid; grid-auto-flow: column; grid-auto-columns: 8rem; overflow-x: auto; }
     .sv-walk { padding-inline: 1rem; }
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
@@ -2835,20 +2880,17 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; }
 .sv-chart[data-preview] .sv-chart__highlight,
 .sv-chart[data-preview] .sv-chart__reading { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-/* The plot is drawn at several shapes (lib/chart/series-chart.ts), and shows
-   the one nearest the shape of the space it has, so it fills the height as
-   well as the width. Each breakpoint sits between two neighbouring shapes'
-   width-to-height ratios: 4.0, 3.16, 2.0 and 1.33. */
+/* The plot is drawn at the shapes its place can use (lib/chart/series-chart.ts):
+   very wide and standard on a carousel slide, medium and tall beside a
+   walkthrough's prose. It shows the one nearer the shape of the space it has,
+   so it fills the height as well as the width. Each breakpoint sits between
+   the two shapes' width-to-height ratios: 4.0 and 3.16, then 2.0 and 1.33. */
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
 .sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
-.sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+.sv-chart[data-preview] .sv-chart__svg:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
-}
-@container (aspect-ratio < 2.51) {
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: none; }
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: block; }
 }
 @container (aspect-ratio < 1.63) {
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }

@@ -35,8 +35,16 @@ export type ChartVariant = 'narrow' | 'wide';
 export type PreviewVariant = 'preview-wide' | 'preview' | 'preview-medium' | 'preview-tall';
 export type SeriesVariant = ChartVariant | PreviewVariant;
 
-/** Every preview shape, widest first. */
-export const PREVIEW_VARIANTS: PreviewVariant[] = ['preview-wide', 'preview', 'preview-medium', 'preview-tall'];
+/**
+ * Where a preview sits decides the shapes it is drawn at, widest first: a
+ * carousel slide is wide, a walkthrough step beside its prose is tall. Drawing
+ * only the shapes a place can use keeps a page of previews light.
+ */
+export type PreviewFit = 'wide' | 'tall';
+export const PREVIEW_VARIANTS: Record<PreviewFit, PreviewVariant[]> = {
+  wide: ['preview-wide', 'preview'],
+  tall: ['preview-medium', 'preview-tall'],
+};
 
 export type ChartGeometry = {
   width: number;

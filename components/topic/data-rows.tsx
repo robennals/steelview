@@ -1,61 +1,83 @@
-import Link from 'next/link';
-import { factSlides } from '@/lib/content/preview';
-import { factPath, type Fact } from '@/lib/content/types';
-import { PreviewCarousel } from '@/components/home/preview-carousel';
+import type { Fact } from '@/lib/content/types';
+import type { DataStep } from '@/lib/content/walkthrough';
 import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
-import { SlideChart } from './slide-chart';
+import { ObservationCycler } from './observation-cycler';
+import { Prose } from './prose';
+import { rowCharts } from '@/lib/content/row-charts';
+import { LazyChart, LazyCharts } from './lazy-charts';
+import { Walkthrough } from './walkthrough';
 
-/** How many chart silhouettes a closed row shows. */
-const THUMBS = 4;
+/** How many chart silhouettes a closed row shows before it counts the rest. */
+const THUMBS = 6;
 
-const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+type ChartStepProps = { step: DataStep; number: number };
 
-type DataRowsProps = { slug: string; facts: Fact[] };
+/** One chart: what to notice in it, stepped through observation by observation, beside it. */
+function ChartStep({ step, number }: ChartStepProps) {
+  return (
+    <div className="sv-walk__step" data-chart>
+      <div className="sv-walk__text">
+        <p className="sv-walk__kicker">Chart {number}</p>
+        {step.observations.length > 0
+          ? <ObservationCycler observations={step.observations} />
+          : <p className="sv-walk__prose prose-body">{step.description}</p>}
+      </div>
+      <div className="sv-walk__chart">
+        <div className="sv-slide"><LazyChart index={number - 1} /></div>
+        <Prose html={step.exploreHtml} className="sv-walk__explore" />
+      </div>
+    </div>
+  );
+}
+
+type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, DataStep[]> };
 
 /**
  * The Data section: one row per headline data collection, laid out like the
- * home page's topics. Closed, a row shows its title, its opening finding and
- * silhouettes of its first few charts; open, a carousel of every chart it
- * draws, beside a link to the whole collection. That link opens the collection
- * over this page, where its observations, method and sources are. Supporting
- * collections are read inside their parent, so they have no row of their own.
+ * viewpoints. Closed, a row is its title, a one-line overview and its charts in
+ * miniature; open, it steps through those charts one at a time, each beside
+ * the observations made about it. "Explore this data" opens the collection at
+ * that chart, with its controls and the rest of the collection a tab away.
+ * Supporting collections are read inside their parent, so have no row.
  */
-export function DataRows({ slug, facts }: DataRowsProps) {
+export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
   return (
     <TopicAccordion initial="">
       {facts.map(fact => {
-        const slides = factSlides(slug, fact);
-        const href = factPath(slug, fact.id);
+        const steps = walkthroughs.get(fact.id) ?? [];
+        const title = fact.title ?? fact.claim;
         return (
           <TopicRow
             key={fact.id}
             slug={fact.id}
-            className="sv-row--data"
-            title={fact.title ?? fact.claim}
+            className="sv-row--walk sv-row--data"
+            title={title}
             subtitle={fact.title ? fact.claim : ''}
-            meta={<p className="sv-row__meta"><span>{plural(slides.length, 'chart')}</span></p>}
+            meta={null}
             thumbs={
-              <ul className="sv-row__thumbs" aria-hidden="true">
-                {slides.slice(0, THUMBS).map(slide => (
-                  <li key={slide.href}>
-                    <div className="sv-row__thumb"><ChartThumb fact={fact} chart={slide.chart} /></div>
-                    <span>{slide.label}</span>
+              <ol className="sv-row__thumbs sv-walk__thumbs" aria-hidden="true">
+                {steps.slice(0, THUMBS).map((step, i) => (
+                  <li key={i}>
+                    <div className="sv-row__thumb"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></div>
+                    <span>{i + 1}. {step.chart.label}</span>
                   </li>
                 ))}
-              </ul>
+                {steps.length > THUMBS && (
+                  <li>
+                    <div className="sv-row__thumb sv-walk__more">+{steps.length - THUMBS} more</div>
+                  </li>
+                )}
+              </ol>
             }
           >
-            <div className="sv-row__columns">
-              {slides.length > 0 && (
-                <PreviewCarousel name={fact.title ?? fact.claim} labels={slides.map(s => s.label)}>
-                  {slides.map(slide => <div className="sv-slide" key={slide.href}><SlideChart slide={slide} /></div>)}
-                </PreviewCarousel>
-              )}
-              <div className="sv-row__side">
-                <Link className="sv-row__cta" href={href} scroll={false}>Explore the data <span aria-hidden="true">→</span></Link>
-              </div>
-            </div>
+            {steps.length > 0 && (
+              <LazyCharts load={rowCharts.bind(null, slug, 'data', fact.id)}>
+                <Walkthrough name={title} headings={steps.map(s => s.chart.label)} noun="Chart" endLabel="Last chart">
+                  {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
+                </Walkthrough>
+              </LazyCharts>
+            )}
           </TopicRow>
         );
       })}

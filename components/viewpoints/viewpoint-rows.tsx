@@ -3,9 +3,10 @@ import { anchorFor } from '@/lib/content/types';
 import type { RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { Prose } from '@/components/topic/prose';
-import { SlideChart } from '@/components/topic/slide-chart';
+import { rowCharts } from '@/lib/content/row-charts';
+import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
 import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
-import { Walkthrough } from './walkthrough';
+import { Walkthrough } from '@/components/topic/walkthrough';
 
 /** Markdown links reduced to their text, for a lead shown as a plain subtitle. */
 const plain = (md: string) => md.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
@@ -23,7 +24,7 @@ function Step({ step, number }: StepProps) {
       </div>
       {step.chart && (
         <div className="sv-walk__chart">
-          <div className="sv-slide"><SlideChart slide={step.chart} /></div>
+          <div className="sv-slide"><LazyChart index={number - 1} /></div>
           {step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
         </div>
       )}
@@ -31,7 +32,7 @@ function Step({ step, number }: StepProps) {
   );
 }
 
-type ViewpointRowsProps = { viewpoints: Viewpoint[]; walkthroughs: Map<string, RenderedWalkthrough> };
+type ViewpointRowsProps = { slug: string; viewpoints: Viewpoint[]; walkthroughs: Map<string, RenderedWalkthrough> };
 
 /**
  * The viewpoints as rows, none open at first. Closed, a row shows the sequence
@@ -39,7 +40,7 @@ type ViewpointRowsProps = { viewpoints: Viewpoint[]; walkthroughs: Map<string, R
  * one at a time beside their charts. Every viewpoint is drawn identically, so
  * none looks more important than another.
  */
-export function ViewpointRows({ viewpoints, walkthroughs }: ViewpointRowsProps) {
+export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsProps) {
   return (
     <TopicAccordion initial="">
       {viewpoints.map(viewpoint => {
@@ -49,7 +50,7 @@ export function ViewpointRows({ viewpoints, walkthroughs }: ViewpointRowsProps) 
             key={viewpoint.id}
             slug={viewpoint.id}
             anchor={anchorFor('viewpoint', viewpoint.id)}
-            className="sv-row--viewpoint"
+            className="sv-row--walk sv-row--viewpoint"
             title={viewpoint.name}
             subtitle={plain(lead)}
             meta={null}
@@ -66,9 +67,11 @@ export function ViewpointRows({ viewpoints, walkthroughs }: ViewpointRowsProps) 
               </ol>
             }
           >
-            <Walkthrough name={viewpoint.name} headings={steps.map(s => s.heading)}>
-              {steps.map((step, i) => <Step key={i} step={step} number={i + 1} />)}
-            </Walkthrough>
+            <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
+              <Walkthrough name={viewpoint.name} headings={steps.map(s => s.heading)} noun="Step" endLabel="End of the argument">
+                {steps.map((step, i) => <Step key={i} step={step} number={i + 1} />)}
+              </Walkthrough>
+            </LazyCharts>
           </TopicRow>
         );
       })}

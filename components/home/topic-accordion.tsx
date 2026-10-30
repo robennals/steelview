@@ -16,6 +16,13 @@ type Accordion = {
 
 const OpenRow = createContext<Accordion>({ open: '', setOpen: () => {}, hold: () => {} });
 
+/** Whether the row a component sits in is open, so a row's body can load what it shows only once it is. */
+const RowIsOpen = createContext(false);
+
+export function useRowIsOpen(): boolean {
+  return useContext(RowIsOpen);
+}
+
 /** The home page's topic rows, exactly one of them open. Starts with `initial` open. */
 export function TopicAccordion({ initial, children }: { initial: string; children: ReactNode }) {
   const [open, setOpen] = useState(initial);
@@ -137,7 +144,7 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
         <span className="sv-row__chevron" aria-hidden="true" />
       </div>
       <div className="sv-row__body" id={bodyId} inert={!isOpen}>
-        <div className="sv-row__inner">{children}</div>
+        <div className="sv-row__inner"><RowIsOpen.Provider value={isOpen}>{children}</RowIsOpen.Provider></div>
       </div>
     </article>
   );

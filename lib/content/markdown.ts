@@ -62,11 +62,21 @@ function citedFactId(href: string): string | undefined {
  * treatment; `data-fact-id` names the fact so the client router can turn the
  * click into a modal without re-parsing the href.
  */
-function remarkMarkFactCitations({ slug, facts, citationsAsText }: { slug: string; facts: Fact[]; citationsAsText: boolean }) {
+function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes }: { slug: string; facts: Fact[]; citationsAsText: boolean; footnotes: boolean }) {
   return (tree: Root) => {
     visit(tree, 'link', (node: Link, index, parent) => {
       if (node.url === NEEDED_HREF || (citationsAsText && citedFactId(node.url))) {
         if (parent && index !== undefined) parent.children.splice(index, 1, ...node.children);
+        return index;
+      }
+      if (!footnotes && node.url.startsWith('#source-')) {
+        if (!parent || index === undefined) return;
+        // The space before a footnote goes with it, unless nothing else
+        // would separate the words either side.
+        const before = parent.children[index - 1];
+        const after = parent.children[index + 1];
+        if (before?.type === 'text' && (!after || (after.type === 'text' && /^\s/.test(after.value)))) before.value = before.value.trimEnd();
+        parent.children.splice(index, 1);
         return index;
       }
       if (node.url.startsWith('#principle-')) {
@@ -96,12 +106,12 @@ function remarkMarkFactCitations({ slug, facts, citationsAsText }: { slug: strin
 /** One processor per topic — the only thing that varies between them is the slug. */
 const processors = new Map<string, ReturnType<typeof buildProcessor>>();
 
-function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, citationsAsText = false) {
+function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, citationsAsText = false, footnotes = true) {
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkEscapeHtml)
-    .use(remarkMarkFactCitations, { slug, facts, citationsAsText })
+    .use(remarkMarkFactCitations, { slug, facts, citationsAsText, footnotes })
     .use(remarkEvidenceAnchors)
     .use(remarkRehype)
     .use(rehypeGlossary, { namespace })
@@ -114,11 +124,14 @@ function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, cita
 /**
  * With `citationsAsText`, a fact citation renders as its plain text, with no
  * link: for prose drawn beside the evidence it cites, where the chart is
- * already on screen and a link to it would only repeat it.
+ * already on screen and a link to it would only repeat it. With `footnotes`
+ * false, `[n](#source-…)` footnotes are left out: for a fact's prose shown
+ * away from the fact, where the sources they point to are not on the page.
  */
-export async function renderMarkdown(md: string, slug: string, facts: Fact[] = [], { citationsAsText = false } = {}): Promise<string> {
+export async function renderMarkdown(md: string, slug: string, facts: Fact[] = [], { citationsAsText = false, footnotes = true } = {}): Promise<string> {
   if (!md.trim()) return '';
-  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16), citationsAsText) : facts.length || citationsAsText ? buildProcessor(slug, facts, slug, citationsAsText) : processors.get(slug);
+  const plain = citationsAsText || !footnotes;
+  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16), citationsAsText, footnotes) : facts.length || plain ? buildProcessor(slug, facts, slug, citationsAsText, footnotes) : processors.get(slug);
   if (!processor) {
     processor = buildProcessor(slug);
     processors.set(slug, processor);
