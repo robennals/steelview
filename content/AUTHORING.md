@@ -428,7 +428,11 @@ may be anywhere on the topic. Money in `£`, `$` or `€` and percentages writte
 word applies to both ends ("$2–3 billion" matches a quoted "$2 billion" and
 "$3 billion"). When a quote is a table of bare numbers whose unit the source
 gives in a heading, set `quoteUnit: $` or `quoteUnit: '%'` on that source; the
-check then reads those numbers in that unit. A passing check
+check then reads those numbers in that unit. A quote's spelled-out small
+percentage ("one percent") matches its digits, and a thousands group set with
+a non-breaking space ("1 000") is one number, so keep that space when quoting.
+Never spell out a figure in prose to get past the check: source it, or leave
+it out. A passing check
 does not establish that the citation supports the meaning, scope or causal
 interpretation.
 

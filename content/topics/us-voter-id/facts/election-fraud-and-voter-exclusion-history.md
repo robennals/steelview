@@ -665,6 +665,16 @@ sources:
     url: https://cain.ulster.ac.uk/hmso/cameron2.htm
     publisher: HMSO (via CAIN, Ulster University)
     date: '1969-09'
+  # 50
+  - stance: complicates
+    quote: >-
+      the U.S. Attorney in Chicago at the time, Daniel Webb, estimated that at
+      least 100,000 fraudulent votes (10 percent of all votes in the city) had
+      been cast.
+    title: "Where There's Smoke, There's Fire: 100,000 Stolen Votes in Chicago"
+    url: https://policyarchive.org/download/13530
+    publisher: The Heritage Foundation
+    date: '2008-04-16'
 comparisons:
   - id: case-methods
     title: The twenty cases, by method and whether a polling-place ID check would reach them
@@ -980,7 +990,7 @@ On his reading, Adamowski would have won and Nixon would still have lost. How th
 
 ### Chicago 1982's fraud favoured the candidate who lost the governor's race {#election-fraud-and-voter-exclusion-history--chicago-1982-margin}
 
-The 1982 governor's race was decided by 5,074 votes statewide. [6](#source-election-fraud-and-voter-exclusion-history-6) The two Chicago schemes described on appeal cast straight Democratic tickets, the party of the losing candidate, Adlai Stevenson. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) No source read gives a citywide count of fraudulent votes; the figure of a hundred thousand often quoted was not found in a primary source.
+The 1982 governor's race was decided by 5,074 votes statewide. [6](#source-election-fraud-and-voter-exclusion-history-6) The two Chicago schemes described on appeal cast straight Democratic tickets, the party of the losing candidate, Adlai Stevenson. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) The Heritage Foundation attributes an estimate of at least 100,000 fraudulent votes citywide to US Attorney Dan Webb, citing press reports from 1983. [50](#source-election-fraud-and-voter-exclusion-history-50) No primary source read gives a citywide count.
 
 ### The modern cases that changed results were absentee {#election-fraud-and-voter-exclusion-history--modern-result-changing-cases-absentee}
 
@@ -1044,7 +1054,7 @@ Justin Levitt, counting every specific, credible allegation from 2000 to 2014 ra
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
 
-### Louisiana: from 44% of registrants to under one percent {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
+### Louisiana: from 44% of registrants to under 1% {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
 
 As the Supreme Court recounted in Louisiana v. United States (1965) [36](#source-election-fraud-and-voter-exclusion-history-36):
 

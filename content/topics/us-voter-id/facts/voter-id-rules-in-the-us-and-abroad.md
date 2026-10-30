@@ -605,7 +605,7 @@ sources:
     quote: >-
       Pour voter, vous devez prouver votre identité. … Carte nationale
       d'identité (valide ou périmée depuis moins de 5 ans) … Dans une commune
-      de moins de 1 000 habitants, la pièce d’identité n'est pas obligatoire.
+      de moins de 1 000 habitants, la pièce d’identité n'est pas obligatoire.
       Mais en cas de doute, le président du bureau de vote peut vous demander
       de prouver votre identité par tout moyen.
     title: "Élections : papiers d'identité à présenter pour voter"
@@ -1332,7 +1332,7 @@ A wider group such as the OECD's 38 members would be better, but no neutral, fet
 | United States | Depends on the state: 36 states ask, 14 and D.C. do not [1](#source-voter-id-rules-in-the-us-and-abroad-1) | Photo in 24 states [1](#source-voter-id-rules-in-the-us-and-abroad-1) | Provisional ballot, affidavit or other check, by state [2](#source-voter-id-rules-in-the-us-and-abroad-2) | South Carolina 1950 [5](#source-voter-id-rules-in-the-us-and-abroad-5) |
 | United Kingdom | Yes, for UK Parliament elections and English local elections; not for Scottish or Welsh devolved and council elections [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Yes [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Cannot vote in person; a free Voter Authority Certificate can be applied for in advance [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Northern Ireland 1985 (photo 2003); Great Britain 2023 [23](#source-voter-id-rules-in-the-us-and-abroad-23) |
 | Canada | Yes [33](#source-voter-id-rules-in-the-us-and-abroad-33) | One government photo ID with address, or two authorised IDs [33](#source-voter-id-rules-in-the-us-and-abroad-33) | Written declaration, vouched for by another elector at the same polling station [33](#source-voter-id-rules-in-the-us-and-abroad-33) | 2007 [32](#source-voter-id-rules-in-the-us-and-abroad-32) |
-| France | Yes in communes of a thousand or more people; not in smaller communes [37](#source-voter-id-rules-in-the-us-and-abroad-37) | Yes; a national ID card or passport expired by under five years is accepted [37](#source-voter-id-rules-in-the-us-and-abroad-37) | In small communes, the polling-station president may ask for proof "by any means" [37](#source-voter-id-rules-in-the-us-and-abroad-37) | — |
+| France | Yes in communes of 1,000 or more people; not in smaller communes [37](#source-voter-id-rules-in-the-us-and-abroad-37) | Yes; a national ID card or passport expired by under five years is accepted [37](#source-voter-id-rules-in-the-us-and-abroad-37) | In small communes, the polling-station president may ask for proof "by any means" [37](#source-voter-id-rules-in-the-us-and-abroad-37) | — |
 | Germany | Only on request, especially if the voter has no polling card [38](#source-voter-id-rules-in-the-us-and-abroad-38) | Not specified | A voter who cannot identify themselves on request is turned away [38](#source-voter-id-rules-in-the-us-and-abroad-38) | — |
 | Italy | Yes [41](#source-voter-id-rules-in-the-us-and-abroad-41) | Yes, a public-administration document with photo [41](#source-voter-id-rules-in-the-us-and-abroad-41) | A poll official who knows the voter, or another known local voter, attests to identity [41](#source-voter-id-rules-in-the-us-and-abroad-41) | 1957 law [41](#source-voter-id-rules-in-the-us-and-abroad-41) |
 | Japan | No; voters are checked against the register [42](#source-voter-id-rules-in-the-us-and-abroad-42) | No | If identity cannot be confirmed, the voter must declare who they are, or cannot vote [42](#source-voter-id-rules-in-the-us-and-abroad-42) | — |
@@ -1343,7 +1343,7 @@ A wider group such as the OECD's 38 members would be better, but no neutral, fet
 
 ### Photo ID at the polls is required nationally in Italy, Britain and Canada, and in most of France {#voter-id-rules-in-the-us-and-abroad--photo-id-common-in-g7}
 
-Italy's law requires an ID document "purché munito di fotografia" (provided it has a photograph). [41](#source-voter-id-rules-in-the-us-and-abroad-41) Britain requires photo ID for UK Parliament elections, Canada requires government photo ID with an address or two other authorised IDs, and France requires ID in communes of a thousand or more people. [23](#source-voter-id-rules-in-the-us-and-abroad-23) [33](#source-voter-id-rules-in-the-us-and-abroad-33) [37](#source-voter-id-rules-in-the-us-and-abroad-37)
+Italy's law requires an ID document "purché munito di fotografia" (provided it has a photograph). [41](#source-voter-id-rules-in-the-us-and-abroad-41) Britain requires photo ID for UK Parliament elections, Canada requires government photo ID with an address or two other authorised IDs, and France requires ID in communes of 1,000 or more people. [23](#source-voter-id-rules-in-the-us-and-abroad-23) [33](#source-voter-id-rules-in-the-us-and-abroad-33) [37](#source-voter-id-rules-in-the-us-and-abroad-37)
 
 ### Germany asks only on request, and Japan does not ask {#voter-id-rules-in-the-us-and-abroad--germany-japan-no-routine-check}
 

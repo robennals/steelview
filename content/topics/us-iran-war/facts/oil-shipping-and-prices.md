@@ -403,8 +403,8 @@ additionalSeries:
       quote: >-
         EIA Short-Term Energy Outlook, … Monthly Average Imported Crude Oil
         Price … Consumer Price Index (1982-84=1) … Imported Crude Oil Price
-        ($/barrel) … Nominal … Real … Forecast Values … 2026-05 3.34 99.01
-        98.85 0 … Base CPI (10/2026) …
+        ($/barrel) … Nominal … Real … Forecast Values … May 2026 3.340
+        99.01 98.85 0 … Base CPI (10/2026) …
         Data Source: EIA Short-Term Energy Outlook, October 2026 … Forecast /
         estimated values shown in blue … real price (Oct 2026 $)
       title: 'Real Prices Viewer: Monthly Average Imported Crude Oil Price (real_prices.xlsx, sheet "Crude Oil-M")'

@@ -89,10 +89,24 @@ export function figuresIn(text: string): string[] {
  * whitespace first and substring-searching — is what keeps number
  * boundaries intact: in a quote like `£22,300 30-39 £28,000`, the space
  * before `30-39` stops the match, so `£22,300` is never fused with the
- * digits that happen to sit next to it in running prose.
+ * digits that happen to sit next to it in running prose. Only a non-breaking
+ * space groups thousands (`1 000` in French): a plain one separates columns.
  */
 const QUOTE_NUMBER =
-  /[£$€]?\d(?:[\d,]*\d)?(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
+  /[£$€]?\d(?:[\d,]*\d)?(?:[\u00a0\u202f]\d{3})*(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
+
+const SPELLED_NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+/**
+ * A small percentage in words, `one percent`, written as digits. The lookbehind
+ * leaves `two-tenths of one percent` and `twenty-five percent` alone: neither
+ * states the small number it ends in.
+ */
+const SPELLED_PERCENT = new RegExp(`(?<!-|\\bof\\s)\\b(${SPELLED_NUMBERS.join('|')})\\s+(?=percent\\b|per\\s?cent\\b)`, 'gi');
+
+function percentDigits(text: string): string {
+  return text.replace(SPELLED_PERCENT, (_, word: string) => `${SPELLED_NUMBERS.indexOf(word.toLowerCase()) + 1} `);
+}
 
 /**
  * The set of figures — each in `canonical` form — found in a topic's quotes.
@@ -152,7 +166,7 @@ export function collectQuotes(node: unknown, into: string[] = []): string[] {
 export function quoteCorpus(quotes: readonly string[]): QuoteCorpus {
   const tokens = new Set<string>();
   for (const quote of quotes) {
-    for (const match of spreadScale(quote).match(QUOTE_NUMBER) ?? []) {
+    for (const match of percentDigits(spreadScale(quote)).match(QUOTE_NUMBER) ?? []) {
       const token = canonical(match);
       if (token.length > 0) tokens.add(token);
     }
