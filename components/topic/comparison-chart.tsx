@@ -36,7 +36,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   sources: Source[];
   observations?: ReactNode;
   preview?: ChartPreview;
-  /** Drawn in a data panel: filling its height, with its source credit linking to the source itself. */
+  /** Drawn in a data panel, with its source credit linking to the source itself. */
   panel?: boolean;
 }) {
   const [selected, setSelected] = useState(chart.defaultGroup ?? -1);
