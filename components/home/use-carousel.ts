@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useSyncExternalStore, type KeyboardEvent, type UIEvent } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent, type UIEvent } from 'react';
 
 const noSubscription = () => () => {};
 
@@ -16,11 +16,22 @@ export function useCarousel(count: number) {
   // Announced only where a move ends, not for every slide a smooth scroll passes.
   const [announced, setAnnounced] = useState(0);
   const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
+  // Where a move is headed. Until it lands, the slides it passes are not the
+  // current one, so a second click steps on from the destination.
+  const destination = useRef<number | null>(null);
+
+  useEffect(() => {
+    const el = strip.current;
+    const landed = () => { destination.current = null; };
+    el?.addEventListener('scrollend', landed);
+    return () => el?.removeEventListener('scrollend', landed);
+  }, []);
 
   const go = (to: number) => {
     const el = strip.current;
     if (!el) return;
     const next = (to + count) % count;
+    destination.current = next;
     el.scrollTo({ left: next * el.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     setIndex(next);
     setAnnounced(next);
@@ -33,7 +44,9 @@ export function useCarousel(count: number) {
 
   const onScroll = (event: UIEvent<HTMLDivElement>) => {
     const el = event.currentTarget;
-    setIndex(Math.round(el.scrollLeft / el.clientWidth));
+    const position = Math.round(el.scrollLeft / el.clientWidth);
+    if (destination.current === position) destination.current = null;
+    if (destination.current === null) setIndex(position);
   };
 
   return { strip, index, announced, enhanced, go, onKeyDown, onScroll };
