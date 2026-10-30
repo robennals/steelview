@@ -55,14 +55,16 @@ test('rapid clicks on two rows leave only the last one open', async ({ page }) =
 test('the clicked row stays where it was while the row above it closes', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/');
-  // Put the second row's head 120px down the screen, with the open first row
-  // above it, so the click needs no scrolling of its own.
+  // Put the second row's head about 120px down the screen, with the open first
+  // row above it.
   await page.evaluate(() => {
     const row = document.querySelectorAll('.sv-row')[1];
     window.scrollTo(0, row.getBoundingClientRect().top + window.scrollY - 120);
   });
   const before = (await rows(page).nth(1).boundingBox())!.y;
-  expect(before).toBeCloseTo(120, 0);
+  // On screen, below the top, so the click itself scrolls nothing.
+  expect(before).toBeGreaterThan(20);
+  expect(before).toBeLessThan(600);
   await toggle(page, 1).click({ position: { x: 400, y: 12 } });
   await page.waitForTimeout(900);
   const after = (await rows(page).nth(1).boundingBox())!.y;
