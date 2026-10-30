@@ -1,5 +1,5 @@
 import { test, expect, type Page, type Request } from '@playwright/test';
-import { citationTo, cruxCitation, openCollection, openViewpoint } from './topic-rows';
+import { citationTo, cruxCitation, openCollection } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the report
 // `immigration-against-the-long-run`, the related reports it holds, and the

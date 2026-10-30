@@ -8,7 +8,6 @@ import { openViewpoint } from './topic-rows';
 // cross-references will turn this suite red.
 
 const TOPIC = '/topics/uk-immigration';
-const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 
 test('the topic page shows all four sections', async ({ page }) => {
   await page.goto(TOPIC);

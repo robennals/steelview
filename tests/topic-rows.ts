@@ -25,7 +25,7 @@ export async function cruxCitation(page: Page, factId: string): Promise<Locator>
  * so it exercises what a reader's click does.
  */
 export async function citationTo(page: Page, factId: string, chart = 'series'): Promise<Locator> {
-  await page.evaluate(([id, viz, href]) => {
+  await page.evaluate(([id, href]) => {
     if (document.getElementById(`citation-${id}`)) return;
     const link = document.createElement('a');
     link.id = `citation-${id}`;
@@ -34,7 +34,7 @@ export async function citationTo(page: Page, factId: string, chart = 'series'): 
     link.href = href;
     link.textContent = id;
     document.querySelector('main')?.prepend(link);
-  }, [factId, chart, `${TOPIC}/facts/${factId}#${factId}--viz-${chart}`]);
+  }, [factId, `${TOPIC}/facts/${factId}#${factId}--viz-${chart}`]);
   return page.locator(`#citation-${factId}`);
 }
 
