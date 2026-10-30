@@ -151,8 +151,6 @@ export type DataStep = {
   observations: { id: string; heading: string; html: string }[];
   /** What the chart shows, for a chart with no observations of its own. */
   description: string;
-  /** "Explore this data", opening the collection at this chart alone. */
-  exploreHtml: string;
 };
 
 /**
@@ -178,7 +176,6 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
           heading: o.heading,
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
         }))),
-        exploreHtml: await renderMarkdown(`[Explore this data](#fact-${fact.id}/viz-${chart.chart})`, topic.slug, topic.facts),
       };
     })));
   }
