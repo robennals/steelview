@@ -38,8 +38,14 @@ export function LazyCharts({ fact = '', load, children }: LazyChartsProps) {
   return <Charts.Provider value={charts}>{children}</Charts.Provider>;
 }
 
-/** One step's chart, or until its row's charts arrive a space of the same size. */
-export function LazyChart({ index }: { index: number }) {
+type LazyChartProps = {
+  index: number;
+  /** The step's text, kept in the page while the chart that will carry it waits. */
+  children?: ReactNode;
+};
+
+/** One step's chart, or until its row's charts arrive its text over a space of the same size. */
+export function LazyChart({ index, children }: LazyChartProps) {
   const charts = useContext(Charts);
-  return charts?.[index] ?? <div className="sv-walk__chart-loading" aria-hidden="true" />;
+  return charts?.[index] ?? <>{children}<div className="sv-walk__chart-loading" aria-hidden="true" /></>;
 }

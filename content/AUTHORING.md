@@ -250,14 +250,25 @@ It has to be easy to take in at a glance.
   movement in a series, add it to the series' `events`: it appears as a
   numbered marker under the chart, with its details one click away. Do not
   narrate the sequence of changes in a block of text.
-- **Observations are short.** A summary heading, then one to three short
-  sentences and their footnotes, at most about 350 characters so they fit three
-  lines under a chart. Longer qualifications go in Subtleties or About this
-  data, both collapsed. Keep whatever a reader needs to weigh the finding in the
-  observation itself, on every side of it. On the topic page, a collection's row steps
-  through its charts, each beside its own observations, one at a time and
+- **Observations are short, and can be seen on the chart.** A summary heading
+  that states the claim in one line, then one to three short sentences and their
+  footnotes, at most about 350 characters. Longer qualifications go in Subtleties
+  or About this data, both collapsed. Keep whatever a reader needs to weigh the
+  finding in the observation itself, on every side of it. On the topic page, a
+  collection's row steps through its charts; each shows its observations one at a
+  time between its title and its graph, as the heading alone until opened and
   without their footnotes. So each observation must make sense on its own
   beside its chart, and a chart should carry a few observations, not a dozen.
+  An observation says what a reader can see in the plotted data of its own chart,
+  and nothing else: its heading and every number in it can be checked by looking.
+  A rolling-year figure does not go on a calendar-year chart, and arrivals do not
+  go on a chart of net migration. A claim that belongs to another chart goes on that
+  chart; if no chart shows it, it needs a dataset of its own, and is a Subtlety until
+  it has one. A cause is not visible in data: a dated one is an entry in the
+  series' `events`, and the rest is a Subtlety, as is background on what is measured.
+  A plotted value with no quote stays out of the prose, as every figure must; a mark
+  with `at` shows it on the chart instead.
+  Each observation names what it is about in `observationMarks`; see "Marks".
 
 ### The body and reading order
 
@@ -829,6 +840,21 @@ preview chart.
 `## Subtleties {#<fact>--subtleties-<id>}` render inside the figure's frame,
 after its source line and before About this data, as they do for a
 comparison. A `section` entry's id takes Observations the same way.
+
+**Marks.** `observationMarks` in a fact's frontmatter says what each
+observation is about, by observation id. It is picked out on the chart when a
+reader reaches the observation in a data panel, and everything else recedes:
+
+```yaml
+observationMarks:
+  latest-fall: {lines: [Immigration], from: '2024', to: '2025'} # a region of some lines
+  pandemic-dip: {lines: [Net migration], at: '2020'}            # a point, labelled with its value
+  asylum-net-steady: {lines: [Asylum]}                          # some lines
+  uk-mid-table-per-head: {rows: [United Kingdom]}               # rows of a comparison or data table
+```
+
+Marks are checked against the chart: every line, period and row must be on it.
+Other kinds of figure cannot show marks yet.
 
 **Numbers stay traceable.** `asPublished` on a value gives the figure in the
 source's own words ("more than 7,200", "8.8%"); `check:figures` looks for that
