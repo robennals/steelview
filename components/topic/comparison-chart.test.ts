@@ -59,8 +59,11 @@ test('a preview drops the group controls, the breakdown table and the note, whic
   assert.doesNotMatch(html, /Shares do not sum/);
 });
 
-test('a preview links its source credit to the fact page', () => {
-  assert.match(renderPreview(chart), /href="\/topics\/example\/facts\/cases#source-cases-1"/);
+test('a preview is its title and bars: the value label and credit stay on the full chart', () => {
+  const html = renderPreview(chart);
+  assert.match(html, /href="\/topics\/example\/facts\/cases#cases--chart-methods">Cases by method</);
+  assert.doesNotMatch(html, /sv-chart__axis-label/);
+  assert.doesNotMatch(html, /sv-chart__credit/);
 });
 
 test('a dense preview keeps every item and states the highlighted one\'s rank', () => {
@@ -73,8 +76,9 @@ test('a dense preview keeps every item and states the highlighted one\'s rank', 
 test('a dense preview names its true highest and lowest items, whatever the authored order', () => {
   const items = Array.from({ length: 14 }, (_, i) => ({ label: `Item ${i}`, value: [73, 147, 20, 159, 3, 6, 50, 40, 30, 25, 60, 70, 80, 90][i] }));
   const html = renderPreview({ id: 'unsorted', title: 'Unsorted', description: 'd', unit: 'count', valueLabel: 'Hours', sources: [1], items });
-  assert.match(html, /Highest: Item 3, 159/);
-  assert.match(html, /Lowest: Item 4, 3/);
+  // Sorted from highest, so the first column is the largest value.
+  assert.match(html, /<li class="sv-comparison__column"><span class="sv-visually-hidden">Item 3: 159<\/span>/);
+  assert.doesNotMatch(html, /Highest:/);
 });
 
 test('a dense preview with several highlighted items, or negative values, falls back to clamped rows', () => {

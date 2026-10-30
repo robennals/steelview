@@ -442,7 +442,7 @@ function Reading({
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
-      <Heading className="sv-graph-heading">{reading.label}</Heading>
+      {!preview && <Heading className="sv-graph-heading">{reading.label}</Heading>}
       {intro && !preview && <p className="sv-chart__desc">{intro}</p>}
       {!preview && (
         <p className="sv-chart__axis-label">
@@ -517,7 +517,7 @@ function Reading({
       )}
 
       {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
-      <p className="sv-chart__credit">Source: <a href={at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>
+      {!preview && <p className="sv-chart__credit">Source: <a href={at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>}
 
       {observations}
     </section>

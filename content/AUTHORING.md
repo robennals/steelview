@@ -648,7 +648,8 @@ charts, listed in `previewCharts` in `topic.md` as `fact` and `chart` pairs
 (`chart` is `series`, an `additionalSeries` id or a `comparisons` id). Each
 slide is one chart: for a series with several readings, add `reading` to name
 the one the slide draws (default: the first). The full chart, a click away,
-still draws every reading. The
+still draws every reading, and holds everything a slide leaves out — a slide
+is only the chart's title and the graph. The
 carousel is the first evidence many readers see, so choosing it is choosing
 what the topic looks like — and a carousel that mostly backs one side has
 failed however good it looks. Choose by these rules:

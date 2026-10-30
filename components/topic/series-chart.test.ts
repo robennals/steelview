@@ -121,11 +121,13 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   const fact = topic.facts.find(f => f.id === 'immigration-against-the-long-run')!;
   const [people, share] = fact.series!.readings;
   const html = renderToStaticMarkup(createElement(SeriesChart, { factId: fact.id, series: fact.series!, preview: { href: '/topics/uk-immigration/facts/immigration-against-the-long-run', reading: share.id } }));
-  assert.match(html, new RegExp(`<h3 class="sv-graph-heading">${share.label}</h3>`));
+  // Title and graph only: the reading's own label and the credit stay on the full chart.
+  assert.doesNotMatch(html, new RegExp(`>${share.label}<`));
   assert.doesNotMatch(html, new RegExp(`>${people.label}<`));
+  assert.doesNotMatch(html, /sv-chart__credit/);
+  assert.match(html, /data-variant="preview"/);
   assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run#immigration-against-the-long-run--chart-series">${fact.series!.title}</a></h3>`));
   assert.doesNotMatch(html, /aria-pressed/);
-  assert.match(html, /href="\/topics\/uk-immigration\/facts\/immigration-against-the-long-run#source-immigration-against-the-long-run-\d+"/);
   assert.doesNotMatch(html, /href="#/);
 });
 

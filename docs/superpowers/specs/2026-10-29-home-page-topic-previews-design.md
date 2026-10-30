@@ -213,10 +213,14 @@ Four topics are published, so row switching is tested against real content.
 - **One chart per slide.** A series with several readings previews one of
   them, named by `reading` in `previewCharts` (UK: `share-of-population`); the
   full chart still draws every reading.
-- **Simple, streamlined, readable.** A slide is the chart's title (a link to
-  the full chart), its value label, the plot or bars, and the credit — no
-  description, method keys, "About this data" or event strip; those stay on
-  the full chart.
+- **The graph takes most of the slide, with just a title at the top.** A
+  slide is the chart's title (a link to the full chart) and the plot or bars;
+  a line key only where there are several lines, and a single subject's rank
+  on a long column strip. Units, the reading's name, the source, descriptions,
+  method keys and notes all stay on the full chart.
+- **Long charts are clamped to the fixed height**, not given a taller slide:
+  over six bars become thin one-line rows; over twelve, with one or no
+  highlighted item and no negatives, a sorted column strip.
 - **Every chart the same height,** with the carousel about as tall as the
   viewpoint list and report button beside it. Series previews use a short,
   wide `preview` geometry so their type stays readable.

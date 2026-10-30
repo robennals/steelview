@@ -2677,7 +2677,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="narrow"] { display: block; width: 100%; height: 100%; }
 }
-.sv-chart[data-preview] .sv-chart__legend { margin-bottom: .3rem; font-size: .75rem; }
+.sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__rows,
 .sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
 .sv-chart[data-preview] .sv-comparison__rows { display: flex; flex-direction: column; justify-content: space-evenly; margin: .4rem 0; }
@@ -2703,7 +2703,6 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-comparison__column { flex: 1; height: 100%; display: flex; align-items: flex-end; }
 .sv-comparison__column-bar { display: block; width: 100%; background: var(--sv-series-1); opacity: .45; border-radius: 2px 2px 0 0; }
 .sv-comparison__column[data-highlight] .sv-comparison__column-bar { background: var(--accent); opacity: 1; }
-.sv-comparison__ends { display: flex; justify-content: space-between; gap: 1rem; margin: 0; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
 .sv-comparison__rank { margin: .5rem 0 0; font: 600 .85rem/1.4 var(--font-sans); color: var(--accent); }
 
 /* A chart's silhouette on a collapsed home-page row: decoration only. */
