@@ -70,9 +70,9 @@ export type ChartGeometry = {
 const previewGeometry = (width: number, height: number): ChartGeometry => ({
   width,
   height,
-  left: 48,
+  left: 60,
   top: 10,
-  plotWidth: width - 48 - 24,
+  plotWidth: width - 60 - 24,
   plotHeight: height - 10 - 26,
   fontSize: 12,
   markerRadius: 4,
