@@ -29,7 +29,15 @@ const COMPACT_PREVIEW_ITEMS = 6;
  * Only the fact's id is used. Passing just that keeps a fact's body and other
  * charts out of the payload sent to the browser for this client component.
  */
-export function ComparisonChart({ fact, chart, sources, observations, preview }: { fact: Pick<Fact, 'id'>; chart: Comparison; sources: Source[]; observations?: ReactNode; preview?: ChartPreview }) {
+export function ComparisonChart({ fact, chart, sources, observations, preview, directSources }: {
+  fact: Pick<Fact, 'id'>;
+  chart: Comparison;
+  sources: Source[];
+  observations?: ReactNode;
+  preview?: ChartPreview;
+  /** Link the source credit to the source itself, where the fact's source list is not on the page. */
+  directSources?: boolean;
+}) {
   const [selected, setSelected] = useState(chart.defaultGroup ?? -1);
   const groupLabel = chart.groupLabel ?? 'group';
   const allGroupsLabel = chart.allGroupsLabel ?? 'All groups';
@@ -79,7 +87,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview }:
     {chart.groups && selected < 0 && <div className="sv-comparison-legend">{chart.groups.map((label, i) => <span key={label}><i style={{ background: `var(--sv-group-${i})` }} />{label}</span>)}</div>}
     {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th></tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{format(value)}</td>)}<td>{format(item.value)}</td></tr>)}</tbody></table></div></details>}
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
-    {!preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
+    {!preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={directSources ? sources[n - 1].url : at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher}{directSources ? '' : ` [${n}]`}</a></span>)}</p>}
     {observations}
     {chart.note && !preview && <details className="sv-chart__methodology"><summary>About this data</summary><p>{chart.note}</p></details>}
   </figure>;

@@ -382,6 +382,7 @@ function Reading({
   intro,
   events,
   preview,
+  directSources,
 }: {
   series: Series;
   reading: SeriesReading;
@@ -392,6 +393,8 @@ function Reading({
   events: StripEvent[];
   /** Compact form for the home page: graph only, links pointing at the fact page. */
   preview?: ChartPreview;
+  /** Link the source credit to the source itself, where the fact's source list is not on the page. */
+  directSources?: boolean;
 }) {
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
   const Heading = preview ? 'h3' : 'h2';
@@ -520,7 +523,7 @@ function Reading({
       )}
 
       {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
-      {!preview && <p className="sv-chart__credit">Source: <a href={at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher} [{sourceNumber}]</a></p>}
+      {!preview && <p className="sv-chart__credit">Source: <a href={directSources ? (reading.source ?? series.source).url : at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher}{directSources ? '' : ` [${sourceNumber}]`}</a></p>}
 
       {observations}
     </section>
@@ -528,20 +531,34 @@ function Reading({
 }
 
 /** A series' events as strip markers, each crediting the fact citation that dates it. */
-export function stripEvents(series: Pick<Series, 'events'>, factId: string, sources: Source[]): StripEvent[] {
+export function stripEvents(series: Pick<Series, 'events'>, factId: string, sources: Source[], directSources = false): StripEvent[] {
   return series.events.map(event => {
     const cited = event.source === undefined ? undefined : sources[event.source - 1];
     return {
       date: event.period,
       label: event.label,
       description: event.note,
-      source: cited && { label: cited.publisher, href: `#source-${factId}-${event.source}`, number: event.source },
+      source: cited && { label: cited.publisher, href: directSources ? cited.url : `#source-${factId}-${event.source}`, number: event.source },
     };
   });
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview }: { factId: string; chartId?: string; series: Series; sourceOffset?: number; observations?: Record<string, ReactNode>; sources?: Source[]; preview?: ChartPreview }) {
-  const events = stripEvents(series, factId, sources);
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, directSources }: {
+  factId: string;
+  chartId?: string;
+  series: Series;
+  sourceOffset?: number;
+  observations?: Record<string, ReactNode>;
+  sources?: Source[];
+  preview?: ChartPreview;
+  /** Draw this reading in full, and not the others. */
+  onlyReading?: string;
+  directSources?: boolean;
+}) {
+  const events = stripEvents(series, factId, sources, directSources);
+  const readings = preview
+    ? [series.readings.find(r => r.id === preview.reading) ?? series.readings[0]]
+    : series.readings.filter(r => !onlyReading || r.id === onlyReading);
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined}>
       {preview
@@ -549,8 +566,8 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
 
       <SeriesHighlight>
-        {(preview ? [series.readings.find(r => r.id === preview.reading) ?? series.readings[0]] : series.readings).map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
+        {readings.map((reading, i) => (
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} directSources={directSources} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 

@@ -37,6 +37,7 @@ import {
   timelineProps,
   type FigureContext,
 } from '@/lib/content/figure-props';
+import type { PreviewSlide } from '@/lib/content/preview';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { isComponentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
@@ -90,6 +91,26 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
   return <Viz fact={fact} chart={seriesId ?? 'series'} label={series.title}>
     <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />
   </Viz>;
+}
+
+/**
+ * One chart of a data panel in full: its controls, method changes and source,
+ * for one reading of a series. Its observations are in the panel beside it, and
+ * its source links lead to the sources themselves, whose list is not on the page.
+ */
+export function PanelChart({ slide }: { slide: PreviewSlide }) {
+  const { fact, chart, reading: only } = slide;
+  const sources = factSources(fact);
+  const index = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
+  const series = chart === 'series' ? fact.series : fact.additionalSeries?.[index];
+  if (series) {
+    const sourceOffset = seriesSourceOffset(fact, index);
+    const reading = series.readings.find(r => r.id === only) ?? series.readings[0];
+    const method = methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series), n => sources[n - 1].url);
+    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} directSources observations={{ [reading.id]: <Prose html={method} className="sv-graph-observations" /> }} />;
+  }
+  const comparison = fact.comparisons?.find(c => c.id === chart);
+  return comparison ? <ComparisonChart fact={fact} chart={comparison} sources={sources} directSources /> : null;
 }
 
 /** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */

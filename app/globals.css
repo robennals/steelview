@@ -2318,8 +2318,12 @@
     .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] {
       grid-template-columns: minmax(15rem, 1fr) minmax(0, 2.4fr);
       gap: 2.25rem;
-      height: 30rem;
+      height: 38rem;
     }
+
+    /* A full chart can run longer than the step, with its table or notes open. */
+    .sv-walk[data-layout="strip"] .sv-walk__chart .sv-slide { display: block; overflow-y: auto; padding-right: 0.25rem; }
+    .sv-walk[data-layout="strip"] .sv-walk__chart-loading { height: 100%; }
   }
 
   /* Beside the outline, previous/next buttons and a step count would only

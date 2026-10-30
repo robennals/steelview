@@ -133,8 +133,24 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
     };
   }, [leave, observation]);
 
+  const onClick = (event: MouseEvent<HTMLDialogElement>) => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (event.target === dialog) leave();
+    // A method note is an in-sheet jump. Followed natively it would change the
+    // address, and the sheet closes when the address stops being its own.
+    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href^="#"]') : null;
+    const target = link && dialog.querySelector(`#${CSS.escape(link.hash.slice(1))}`);
+    if (!link || !target) return;
+    event.preventDefault();
+    for (let el: Element | null = target; el && el !== dialog; el = el.parentElement) {
+      if (el instanceof HTMLDetailsElement) el.open = true;
+    }
+    target.scrollIntoView({ block: 'nearest' });
+  };
+
   return (
-    <dialog ref={dialogRef} className="sv-modal" aria-labelledby={titleId} onClick={event => { if (event.target === dialogRef.current) leave(); }}>
+    <dialog ref={dialogRef} className="sv-modal" aria-labelledby={titleId} onClick={onClick}>
       <div className="sv-modal__panel" data-wide>
         <div className="sv-modal__bar">
           <h2 className="sv-modal__title" id={titleId}>{title}</h2>
