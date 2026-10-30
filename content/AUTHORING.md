@@ -1172,7 +1172,10 @@ coding it as a number, which would imply a false order:
 ```
 
 Category ids and marks are unique, and every area names one of the
-`categories`.
+`categories`. Fills and patterns follow the list order, so put the category the
+figure is about first. A large remainder that is not the point of the figure
+("Not on the list", 38 states) takes `quiet: true`: a plain neutral fill, so it
+recedes instead of taking the loudest pattern. A map has at most one.
 
 **A map draws every area twice.** Each preset is a set of areas with a tile
 and a shape apiece, and both views draw all of them, so a reader can always

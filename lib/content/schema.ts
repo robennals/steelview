@@ -577,9 +577,9 @@ const mapEncodingFields = {
   // Categorical:
   /** What the categories are: "ID rule at the polls". Legend and table heading. */
   categoryLabel: z.string().min(1).optional(),
-  /** In legend order; the order fixes each category's fill and pattern. `mark` is printed on every tile in the category: "SP". */
+  /** In legend order; the order fixes each category's fill and pattern. `mark` is printed on every tile in the category: "SP". `quiet` draws one category as neutral background. */
   categories: z
-    .array(z.object({ id: slugId, label: z.string().min(1), mark: z.string().min(1).max(3) }))
+    .array(z.object({ id: slugId, label: z.string().min(1), mark: z.string().min(1).max(3), quiet: z.boolean().optional() }))
     .min(2)
     .max(6)
     .optional(),

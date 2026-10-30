@@ -10,6 +10,7 @@ import {
   categorySummary,
   isCategorical,
   MAX_CATEGORIES,
+  QUIET_SLOT,
   NO_DATA,
   type CategoryEncoding,
 } from './categorical';
@@ -37,6 +38,20 @@ const areas = [
 
 test('slots run 1 to n in list order', () => {
   assert.deepEqual([...categorySlots(encoding.categories)], [['strict-photo', 1], ['non-strict', 2], ['none', 3]]);
+});
+
+test('a quiet category takes the neutral slot and the others keep their order', () => {
+  const categories = [
+    { id: 'law', label: 'Law', mark: 'L' },
+    { id: 'none', label: 'Not listed', mark: '—', quiet: true },
+    { id: 'blocked', label: 'Blocked', mark: 'X' },
+  ];
+  assert.deepEqual([...categorySlots(categories)], [['law', 1], ['blocked', 2], ['none', QUIET_SLOT]]);
+});
+
+test('two quiet categories are refused: they would look the same', () => {
+  const quiet = [{ id: 'a', label: 'A', mark: 'A', quiet: true }, { id: 'b', label: 'B', mark: 'B', quiet: true }];
+  assert.throws(() => categorySlots(quiet), /at most one quiet/);
 });
 
 test('more than six categories is refused: there are only six distinct looks', () => {
@@ -130,5 +145,7 @@ for (const theme of ['light', 'dark'] as const) {
       const ratio = contrast(ink, mix(hex(series), paper, 0.3));
       assert.ok(ratio >= 4.5, `slot ${slot}: ink on the 30% tint of ${series} is ${ratio.toFixed(2)}:1`);
     }
+    const quiet = contrast(ink, hex(tokens['--paper-sunk']));
+    assert.ok(quiet >= 4.5, `quiet slot: ink on --paper-sunk is ${quiet.toFixed(2)}:1`);
   });
 }

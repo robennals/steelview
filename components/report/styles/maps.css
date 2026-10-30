@@ -166,6 +166,7 @@
      full series colour, so the categories still differ in greyscale:
        1 none · 2 dots on a 6px grid · 3 horizontal lines · 4 vertical lines
        5 grid · 6 diagonal (perpendicular to the "No data" hatch).
+     Slot 7 is the neutral ground of a `quiet` category: no tint, no overlay.
      The palette is categorical even for ordered categories: an ordered ramp
      would read as a measured quantity. */
   .sv-report {
@@ -175,6 +176,7 @@
     --sv-cat-fill-4: color-mix(in srgb, var(--sv-series-4) 30%, var(--paper));
     --sv-cat-fill-5: color-mix(in srgb, var(--sv-series-5) 30%, var(--paper));
     --sv-cat-fill-6: color-mix(in srgb, var(--sv-series-6) 30%, var(--paper));
+    --sv-cat-fill-7: var(--paper-sunk);
 
     --sv-cat-bg-1: var(--sv-cat-fill-1);
     --sv-cat-bg-2:
@@ -193,6 +195,7 @@
     --sv-cat-bg-6:
       repeating-linear-gradient(135deg, var(--sv-series-6) 0 1px, transparent 1px 5px),
       var(--sv-cat-fill-6);
+    --sv-cat-bg-7: var(--sv-cat-fill-7);
   }
 
   .sv-cat-fill[data-slot="1"] { --sv-cat-tint: var(--sv-cat-fill-1); background: var(--sv-cat-bg-1); }
@@ -201,6 +204,7 @@
   .sv-cat-fill[data-slot="4"] { --sv-cat-tint: var(--sv-cat-fill-4); background: var(--sv-cat-bg-4); }
   .sv-cat-fill[data-slot="5"] { --sv-cat-tint: var(--sv-cat-fill-5); background: var(--sv-cat-bg-5); }
   .sv-cat-fill[data-slot="6"] { --sv-cat-tint: var(--sv-cat-fill-6); background: var(--sv-cat-bg-6); }
+  .sv-cat-fill[data-slot="7"] { --sv-cat-tint: var(--sv-cat-fill-7); background: var(--sv-cat-bg-7); }
 
   /* Text sits on a patch of the plain tint, so a pattern line never runs
      through a letter and the measured contrast is the contrast read. */

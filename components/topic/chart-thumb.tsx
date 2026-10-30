@@ -310,7 +310,8 @@ function areaFill(encoding: MapEncoding): (id: string) => string | undefined {
     const slots = categorySlots(encoding.categories);
     return id => {
       const category = categoryOf(id, encoding);
-      return category && seriesColor(slots.get(category.id) ?? 1);
+      if (!category) return undefined;
+      return category.quiet ? 'var(--paper-sunk)' : seriesColor(slots.get(category.id) ?? 1);
     };
   }
   const scale = mapScale(encoding.data, { kind: encoding.scale, steps: encoding.steps, domain: encoding.domain, breaks: encoding.breaks });
