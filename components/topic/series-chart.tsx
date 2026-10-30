@@ -545,7 +545,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined}>
       {preview
-        ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading"><a href={`${preview.href}#${factId}--chart-${chartId}`}>{series.title}</a></h3></figcaption>
+        ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3></figcaption>
         : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
 
       <SeriesHighlight>

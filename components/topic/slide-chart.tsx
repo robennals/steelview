@@ -5,9 +5,9 @@ import { ComparisonChart } from './comparison-chart';
 import { SeriesChart } from './series-chart';
 
 /** A preview slide's chart, through the same shared component the topic page uses. */
-export function SlideChart({ slide, fit }: { slide: PreviewSlide; fit?: PreviewFit }) {
+export function SlideChart({ slide, fit, titleHref }: { slide: PreviewSlide; fit?: PreviewFit; titleHref?: string }) {
   const { fact, chart } = slide;
-  const preview = { href: slide.href.split('#')[0], reading: slide.reading, fit };
+  const preview = { href: titleHref, reading: slide.reading, fit };
   const seriesIndex = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.[seriesIndex];
   if (series) {

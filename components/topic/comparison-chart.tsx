@@ -6,9 +6,10 @@ import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
 
-/** Where a compact preview's links point: the fact's own page, which holds the sources and the full chart. */
+/** How a compact preview is drawn, and where its title leads. */
 export type ChartPreview = {
-  href: string;
+  /** Where the title links. Without one the title is plain text, as in a step whose whole chart is clickable. */
+  href?: string;
   /** For a series, the one reading to draw (default: the first). */
   reading?: string;
   /** For a series, the shape of the space it sits in (default: wide, as a carousel slide is). */
@@ -51,7 +52,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview }:
   const rank = columns ? rankOf(items) : null;
   return <figure className="sv-chart sv-comparison" id={`${fact.id}--chart-${chart.id}`} data-preview={preview ? true : undefined}>
     <figcaption className="sv-chart__caption">
-      <Heading className="sv-graph-heading">{preview ? <a href={at(`${fact.id}--chart-${chart.id}`)}>{chart.title}</a> : chart.title}</Heading>
+      <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
       {!preview && <p className="sv-chart__desc">{chart.description}</p>}
     </figcaption>
     {chart.groups && !preview && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
