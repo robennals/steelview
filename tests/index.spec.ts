@@ -11,6 +11,18 @@ test('the home page links to each topic', async ({ page }) => {
   await expect(page).toHaveURL(/\/topics\/uk-immigration$/);
 });
 
+test('the masthead shows the full stop but names the site without it', async ({ page }) => {
+  await page.goto('/');
+  const wordmark = page.getByRole('link', { name: 'Steelview', exact: true });
+  await expect(wordmark).toHaveText('Steelview.');
+});
+
+test('the page declares a favicon that can be fetched', async ({ page, request }) => {
+  await page.goto('/');
+  const href = await page.locator('link[rel="icon"][type="image/svg+xml"]').getAttribute('href');
+  expect((await request.get(href ?? '')).status()).toBe(200);
+});
+
 test('the tagline links to the About page', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Every side of the argument, at its strongest.');

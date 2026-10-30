@@ -32,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="sv-masthead">
           <div className="sv-wrap sv-masthead__inner">
             <Link href="/" className="sv-wordmark">
-              Steelview
+              Steelview<span className="sv-wordmark__stop" aria-hidden="true">.</span>
             </Link>
           </div>
         </div>
