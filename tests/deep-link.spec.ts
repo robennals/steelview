@@ -84,5 +84,5 @@ test.describe('with JavaScript disabled', () => {
 test('a malformed hash does not break the page', async ({ page }) => {
   await page.goto(`${TOPIC}#%zz`);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  await expect(page.locator('.sv-row--data').first()).toBeVisible();
+  await expect(page.locator('.sv-row--viewpoint').first()).toBeVisible();
 });

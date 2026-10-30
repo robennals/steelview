@@ -302,18 +302,9 @@
   .sv-section--reading { max-width: var(--wrap); }
   .sv-section__head + .sv-rows { margin-top: 1.25rem; }
 
-  .sv-sections {
-    counter-reset: sv-section;
-  }
-
   .sv-section {
-    counter-increment: sv-section;
     position: relative;
     padding-top: 2.75rem;
-  }
-
-  .sv-section + .sv-section {
-    padding-top: 3.5rem;
   }
 
   .sv-section__head {
@@ -325,17 +316,6 @@
     margin-bottom: 0.25rem;
   }
 
-  /* Decorative numeral. Lives on the head wrapper, never inside the heading,
-     so it stays out of the heading's accessible name. */
-  .sv-section__head::before {
-    content: counter(sv-section, decimal-leading-zero);
-    font-family: var(--font-serif);
-    font-size: 0.8125rem;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.06em;
-    color: var(--ink-4);
-  }
-
   .sv-section__title {
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -344,6 +324,88 @@
     text-transform: uppercase;
     margin: 0;
     color: var(--ink);
+  }
+
+  /* ----------------------------------------------------------- topic tabs */
+
+  /* Stays on screen, so the other tabs are one click away from anywhere in a
+     long viewpoint. A panel's link targets stop clear of it. */
+  .sv-topic-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    margin-top: 1.5rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .sv-topic-panel [id] { scroll-margin-top: 4rem; }
+
+  .sv-topic-tabs ul {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sv-topic-tabs a {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    /* Sits on the bar's rule, so the chosen tab reads as joined to its panel. */
+    margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .sv-topic-tabs a:hover { color: var(--ink); border-bottom-color: var(--rule-strong); }
+  .sv-topic-tabs a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .sv-topic-panel > .sv-section:first-child { padding-top: 1.25rem; }
+
+  @media (scripting: enabled) {
+    .sv-topic-panel:not([data-active]) { display: none; }
+
+    /* The tab says what a panel is, so its heading is left for screen readers. */
+    .sv-section__head--tab {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  /* Without JavaScript the panels follow each other, with their own headings. */
+  @media (scripting: none) {
+    .sv-topic-tabs { display: none; }
+  }
+
+  /* Always on the page, under the tabs, and it has to look like it matters. */
+  .sv-section--cruxes { padding-top: 4rem; }
+  .sv-section--cruxes .sv-section__head { flex-wrap: wrap; }
+
+  .sv-section--cruxes .sv-section__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+
+  /* Says what the section is, so it must not read as one of its items. */
+  .sv-section__blurb {
+    margin: 0;
+    color: var(--ink-3);
+    font-family: var(--font-serif);
+    font-size: 0.8125rem;
+    font-style: italic;
   }
 
   /* ----------------------------------------------------------- disclosure */
