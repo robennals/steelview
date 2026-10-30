@@ -811,68 +811,6 @@ comparisons:
       not break it down. These are allegations: of those whose resolution
       could be determined, News21 found 46 percent ended in acquittals, dropped
       charges or no charges.
-  - id: black-registration-1965
-    title: >-
-      Black voter registration in 1965, the six US states the Voting Rights Act
-      originally covered
-    description: >-
-      Percentage of voting-age Black residents registered to vote in 1965, as
-      tabulated for Congress and reproduced by the Supreme Court.
-    unit: percent
-    valueLabel: Black registration rate, 1965 (%)
-    domainMax: 100
-    sources: [38]
-    items:
-      - label: Virginia
-        value: 38.3
-      - label: South Carolina
-        value: 37.3
-      - label: Louisiana
-        value: 31.6
-      - label: Georgia
-        value: 27.4
-      - label: Alabama
-        value: 19.3
-      - label: Mississippi
-        value: 6.7
-        highlight: true
-    note: >-
-      White registration in the same table: Alabama 69.2, Georgia 62.6,
-      Louisiana 80.5, Mississippi 69.9, South Carolina 75.7, Virginia 61.1. The
-      six are the states covered by section 5 of the Voting Rights Act in 1965,
-      the set the source tabulates. The 1965 figures predate or coincide with
-      the Act; the Georgia white figure is printed "62.[6]" in the source text.
-  - id: black-registration-2004
-    title: >-
-      Black voter registration in 2004, the six US states the Voting Rights Act
-      originally covered
-    description: >-
-      Percentage of voting-age Black residents registered to vote in 2004,
-      Census Bureau figures in the same table.
-    unit: percent
-    valueLabel: Black registration rate, 2004 (%)
-    domainMax: 100
-    sources: [38]
-    items:
-      - label: Mississippi
-        value: 76.1
-        highlight: true
-      - label: Alabama
-        value: 72.9
-      - label: Louisiana
-        value: 71.1
-      - label: South Carolina
-        value: 71.1
-      - label: Georgia
-        value: 64.2
-      - label: Virginia
-        value: 57.4
-    note: >-
-      White registration in 2004: Alabama 73.8, Georgia 63.5, Louisiana 75.1,
-      Mississippi 72.3, South Carolina 74.4, Virginia 68.2. 1965 and 2004 come
-      from different collections (Congress's 1965 estimates; Census Bureau
-      surveys in 2004), so the change mixes a real rise with a change of
-      source.
 relatedFacts:
   - voter-roll-maintenance
   - non-citizens-on-voter-rolls
@@ -1046,10 +984,103 @@ figures:
     id: heritage-methods
   - kind: comparison
     id: news21-methods
-  - kind: comparison
+  - kind: barChart
+    id: louisiana-black-registrants
+    title: Black share of Louisiana's registered voters, 1898–1956
+    description: >-
+      Black voters as a share of everyone registered in Louisiana, at each
+      point the Supreme Court gave in Louisiana v. United States (1965).
+    valueLabel: Black share of registered voters (%)
+    categoryLabel: When
+    format: { unit: percent }
+    sort: none
+    sources: [36]
+    note: >-
+      The court gives these points, not a yearly count, so they are bars rather
+      than a line. The 1921–1944 bar is a ceiling: the share "never exceeded
+      one percent" in those years. The 1944 figure is where the court's "next
+      dozen years" to March 1956 began. These are shares of registered voters,
+      not registration rates like those in the charts that follow.
+    items:
+      - { label: '1898, new constitution adopted', value: { value: 44, qualifier: about, asPublished: approximately 44% } }
+      - { label: '1921–1944, under the interpretation test', value: { value: 1, qualifier: at most, asPublished: never exceeded one percent } }
+      - { label: '1944', value: { value: 0.2, asPublished: two-tenths of one percent } }
+      - { label: 'March 1956', value: { value: 15, qualifier: about, asPublished: approximately 15% } }
+  - kind: barChart
+    id: pre-vra-registration
+    title: Black voter registration before the Voting Rights Act, three states, 1954–1965
+    description: >-
+      The Attorney General's estimates at the earliest and latest year he gave
+      for each state, as the Supreme Court reported them. The years differ by
+      state.
+    valueLabel: Voting-age Black residents registered (%)
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    domainMax: 100
+    sources: [37]
+    style: dumbbell
+    series:
+      - { key: earlier, label: Earliest estimate }
+      - { key: latest, label: Latest estimate }
+    items:
+      - { label: Alabama, values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: 1958, latest: 1964 } }
+      - { label: Louisiana, values: { earlier: 31.7, latest: 31.8 }, labels: { earlier: 1956, latest: 1965 } }
+      - { label: Mississippi, values: { earlier: 4.4, latest: 6.4 }, labels: { earlier: 1954, latest: 1964 } }
+  - kind: barChart
     id: black-registration-1965
-  - kind: comparison
+    title: >-
+      Black voter registration in 1965, the six US states the Voting Rights Act
+      originally covered
+    description: >-
+      Percentage of voting-age Black and white residents registered to vote in
+      1965, as tabulated for Congress and reproduced by the Supreme Court.
+    valueLabel: Registration rate, 1965 (%)
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    domainMax: 100
+    sources: [38]
+    series:
+      - { key: black, label: Black }
+      - { key: white, label: White }
+    note: >-
+      The six are the states covered by section 5 of the Voting Rights Act in
+      1965, the set the source tabulates. The 1965 figures predate or coincide
+      with the Act; the Georgia white figure is printed "62.[6]" in the source
+      text.
+    items:
+      - { label: Virginia, values: { black: 38.3, white: 61.1 } }
+      - { label: South Carolina, values: { black: 37.3, white: 75.7 } }
+      - { label: Louisiana, values: { black: 31.6, white: 80.5 } }
+      - { label: Georgia, values: { black: 27.4, white: { value: 62.6, asPublished: '62.[6]' } } }
+      - { label: Alabama, values: { black: 19.3, white: 69.2 } }
+      - { label: Mississippi, values: { black: 6.7, white: 69.9 }, highlight: true }
+  - kind: barChart
     id: black-registration-2004
+    title: >-
+      Black voter registration in 2004, the six US states the Voting Rights Act
+      originally covered
+    description: >-
+      Percentage of voting-age Black and white residents registered to vote in
+      2004, Census Bureau figures in the same table.
+    valueLabel: Registration rate, 2004 (%)
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    domainMax: 100
+    sources: [38]
+    series:
+      - { key: black, label: Black }
+      - { key: white, label: White }
+    note: >-
+      1965 and 2004 come from different collections (Congress's 1965 estimates;
+      Census Bureau surveys in 2004), so the change mixes a real rise with a
+      change of source.
+    items:
+      - { label: Mississippi, values: { black: 76.1, white: 72.3 }, highlight: true }
+      - { label: Alabama, values: { black: 72.9, white: 73.8 } }
+      - { label: Louisiana, values: { black: 71.1, white: 75.1 } }
+      - { label: South Carolina, values: { black: 71.1, white: 74.4 } }
+      - { label: Georgia, values: { black: 64.2, white: 63.5 } }
+      - { label: Virginia, values: { black: 57.4, white: 68.2 } }
   - kind: timeline
     id: remedies
     title: US remedies for election fraud and exclusion, 1888–2002
@@ -1194,31 +1225,23 @@ In News21's database of alleged cases since 2000, in-person impersonation is by 
 
 Justin Levitt, counting every specific, credible allegation from 2000 to 2014 rather than prosecutions, found about 31 incidents among more than 1 billion ballots cast in general and primary elections. [32](#source-election-fraud-and-voter-exclusion-history-32) Both counts share the detection limit above.
 
-## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
+## Observations {#election-fraud-and-voter-exclusion-history--observations-louisiana-black-registrants}
 
 ### Louisiana: from 44% of registrants to under 1% {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
 
-As the Supreme Court recounted in Louisiana v. United States (1965) [36](#source-election-fraud-and-voter-exclusion-history-36):
-
-| Year | Black share of Louisiana's registered voters |
-| --- | --- |
-| 1898, new constitution adopted | about 44% |
-| Under a "grandfather clause" and, from 1921, an "interpretation test", until 1944 | "never exceeded one percent" |
-| 1956 | about 15% |
+As the Supreme Court recounted in Louisiana v. United States (1965), Black voters were about 44% of Louisiana's registered voters when the state adopted its 1898 constitution. Under a "grandfather clause" and, from 1921, an "interpretation test", their share "never exceeded one percent" until 1944. By 1956 it was about 15%. [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 After 1956 a legislative committee and the Citizens Councils challenged Black voters on the rolls, and "thousands of Negroes, but virtually no whites, were purged". [36](#source-election-fraud-and-voter-exclusion-history-36)
+
+## Observations {#election-fraud-and-voter-exclusion-history--observations-pre-vra-registration}
 
 ### Before the Voting Rights Act, registration barely moved {#election-fraud-and-voter-exclusion-history--pre-vra-stagnation}
 
 By the Attorney General's estimates to Congress in 1965, Black registration barely moved in the decade before the Act, with white registration "roughly 50 percentage points or more ahead". [37](#source-election-fraud-and-voter-exclusion-history-37)
 
-| State | Black registration, earlier | Black registration, latest |
-| --- | --- | --- |
-| Alabama | 14.2% (1958) | 19.4% (1964) |
-| Louisiana | 31.7% (1956) | 31.8% (1965) |
-| Mississippi | 4.4% (1954) | 6.4% (1964) |
+The table Congress used in 2006, in the next chart, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
 
-The table Congress used in 2006, charted above, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
+## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
 
 ### The tools turned on officials' discretion {#election-fraud-and-voter-exclusion-history--jim-crow-tools-discretionary}
 

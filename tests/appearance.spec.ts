@@ -18,6 +18,25 @@ test('the topic page renders at phone width without horizontal overflow', async 
   expect(overflows).toBe(false);
 });
 
+// Depends on authored us-voter-id content: the proof-of-citizenship map, whose
+// long category key does not fit a phone slide's 18rem with a readable map.
+test('at phone width a figure too long for its slide grows, and draws its map', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/topics/us-voter-id');
+  await openTab(page, 'Data');
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  await row.locator('.sv-walk__tab', { hasText: 'proof-of-citizenship' }).click();
+  const slide = row.locator('.sv-walk__slide[aria-label*="proof-of-citizenship"]');
+  const chart = slide.locator('.sv-slide');
+  await expect(slide.locator('.sv-tile-map__grid')).toBeVisible();
+  const { overflow, height } = await chart.evaluate(el => ({ overflow: el.scrollHeight - el.clientHeight, height: el.clientHeight }));
+  expect(overflow).toBeLessThanOrEqual(8);
+  expect(height).toBeGreaterThan(288);
+  const grid = await slide.locator('.sv-tile-map__grid').boundingBox();
+  expect(grid!.width).toBeGreaterThan(200);
+});
+
 test('a fact page renders at phone width without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(factUrl('immigration-against-the-long-run'));

@@ -1204,26 +1204,6 @@ comparisons:
         value: 3.0
       - label: Returned by voter, confirming registration with no change
         value: 3.0
-  - id: ohio-2012-notices
-    title: 'Ohio: replies to 2012 voter-roll confirmation notices'
-    description: >-
-      Replies to the roughly 1.5 million confirmation notices Ohio sent in 2012,
-      mostly to registrants identified by not voting, as described in the
-      Husted dissent. Approximate counts.
-    unit: count
-    valueLabel: Notices (approximate)
-    sources: [19]
-    note: >-
-      Figures are the approximations in Justice Breyer's dissent, citing the
-      trial record. The three categories do not add to 1.5 million; the
-      remainder, about 0.2 million, is not described there.
-    items:
-      - label: No return card at all ("more than 1,000,000")
-        value: 1000000
-      - label: Replied "I have not moved"
-        value: 235000
-      - label: Replied "I have moved"
-        value: 60000
   - id: pew-2011-baseline
     title: >-
       Pew's estimate of inaccurate US voter registrations, data to March 2011
@@ -1287,8 +1267,26 @@ figures:
     id: state-removal-rates
   - kind: comparison
     id: notice-outcomes
-  - kind: comparison
+  - kind: barChart
     id: ohio-2012-notices
+    title: 'Ohio: replies to 2012 voter-roll confirmation notices'
+    description: >-
+      Replies to the roughly 1.5 million confirmation notices Ohio sent in 2012,
+      mostly to registrants identified by not voting, as described in the
+      Husted dissent. Approximate counts.
+    valueLabel: Notices (approximate)
+    categoryLabel: Reply
+    format: { unit: count }
+    sort: none
+    sources: [19]
+    note: >-
+      Figures are the approximations in Justice Breyer's dissent, citing the
+      trial record. The three categories do not add to 1.5 million; the
+      remainder, about 0.2 million, is not described there.
+    items:
+      - { label: No return card at all, value: { value: 1000000, qualifier: more than, asPublished: 'more than 1,000,000' } }
+      - { label: Replied "I have not moved", value: { value: 235000, qualifier: about, asPublished: 'about 235,000' } }
+      - { label: Replied "I have moved", value: { value: 60000, qualifier: about, asPublished: 'about 60,000' } }
   - kind: series
     id: eric-reports
   - kind: comparison
@@ -1548,10 +1546,7 @@ Abigail Thernstrom, a dissenting member of the US Commission on Civil Rights, te
 
 ### SAVE flags include citizens, at an unknown rate {#voter-roll-maintenance--save-flags-citizens}
 
-The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's figures, which are not audited: [46](#source-voter-roll-maintenance-46)
-
-- **Checked:** more than 65 million registrants in 26 states.
-- **Flagged as potential non-citizens:** 28,635.
+The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's national counts of voters checked and flagged, which are not audited, are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). [46](#source-voter-roll-maintenance-46)
 
 In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-maintenance-45) [48](#source-voter-roll-maintenance-48)
 

@@ -641,6 +641,44 @@ figures:
     id: registrants-found
   - kind: comparison
     id: votes-found
+  - kind: dataTable
+    id: multi-election-counts
+    title: Non-citizen voters found or referred across several elections
+    description: >-
+      Counts that span more than one election, or that are referrals rather
+      than findings, so they have no single-election rate.
+    caption: One row per review or referral
+    columns:
+      - { key: review, label: Review, rowHeader: true }
+      - { key: kind, label: Kind of count }
+      - { key: count, label: People, format: { unit: count } }
+      - { key: detail, label: What was counted, sortable: false }
+    defaultSort: { key: count, direction: descending }
+    rows:
+      - review: Louisiana, records back to the 1980s
+        kind: Found by the state
+        count: { value: 79, sources: [4] }
+        detail: Voted at least once
+      - review: Ohio, 2024 referral batch
+        kind: Referred
+        count: { value: 138, sources: [10] }
+        detail: Had cast ballots
+      - review: Tennessee
+        kind: Referred
+        count: { value: 42, sources: [4] }
+        detail: Referred to the FBI
+      - review: Indiana
+        kind: Found by the state
+        count: { value: 21, qualifier: at least, asPublished: at least 21, sources: [4] }
+        detail: Voted
+      - review: Texas, first SAVE referrals (June 2025)
+        kind: Referred
+        count: { value: 33, sources: [2] }
+        detail: Voters
+      - review: Texas, September 2026
+        kind: Referred
+        count: { value: 117, sources: [1] }
+        detail: Cases referred for investigation
   - kind: comparison
     id: flags-reversed
   - kind: dataTable
@@ -726,16 +764,7 @@ Georgia found its 20 because they had sworn they were not citizens to get out of
 
 ### Some non-citizens vote, and every review finds a few {#non-citizens-on-voter-rolls--some-noncitizens-vote}
 
-Every review that checked ballots found a few non-citizen voters; the chart shows the rate for each single election. [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20) [11](#source-non-citizens-on-voter-rolls-11) Iowa also found five whose ballots were rejected. [8](#source-non-citizens-on-voter-rolls-8) Counts that span several elections, or that are referrals rather than findings, are below.
-
-| Review | Non-citizen voters found or referred |
-| --- | --- |
-| Louisiana, records back to the 1980s | 79 who voted at least once [4](#source-non-citizens-on-voter-rolls-4) |
-| Ohio, 2024 referral batch | 138 who had cast ballots [10](#source-non-citizens-on-voter-rolls-10) |
-| Tennessee | 42 referred to the FBI [4](#source-non-citizens-on-voter-rolls-4) |
-| Indiana | "at least 21" [4](#source-non-citizens-on-voter-rolls-4) |
-| Texas, first SAVE referrals (June 2025) | 33 voters [2](#source-non-citizens-on-voter-rolls-2) |
-| Texas, September 2026 | 117 cases referred for investigation [1](#source-non-citizens-on-voter-rolls-1) |
+Every review that checked ballots found a few non-citizen voters; the chart shows the rate for each single election. [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20) [11](#source-non-citizens-on-voter-rolls-11) Iowa also found five whose ballots were rejected. [8](#source-non-citizens-on-voter-rolls-8) Counts that span several elections, or that are referrals rather than findings, are in the table after this chart.
 
 ### Votes found are between about 1 and 22 per million ballots {#non-citizens-on-voter-rolls--votes-per-ballots}
 

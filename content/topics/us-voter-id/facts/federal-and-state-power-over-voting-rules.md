@@ -829,7 +829,7 @@ The only merits rulings on presidential power so far are the two district-court 
 
 A district judge blocked the revamped SAVE system in June 2026 under the Social Security Act, the Privacy Act and the Administrative Procedure Act. [39](#source-federal-and-state-power-over-voting-rules-39) In September the Supreme Court stayed that order, saying it stopped "individualized inquiries, which are permitted under federal law" during the 90 days before an election. [37](#source-federal-and-state-power-over-voting-rules-37)
 
-The checks and flags in the table are the government's own figures, and its opponents said no error rate had been released. [38](#source-federal-and-state-power-over-voting-rules-38) What those flags turned out to be is in [the report on non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls).
+The government's own counts of voters checked and flagged, and what those flags turned out to be, are in [the report on non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). Its opponents said no error rate had been released. [38](#source-federal-and-state-power-over-voting-rules-38)
 
 ### States still set most ID rules, and those rules keep changing {#federal-and-state-power-over-voting-rules--state-rules-vary}
 
