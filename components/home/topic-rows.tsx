@@ -29,6 +29,36 @@ function SlideChart({ slide }: { slide: PreviewSlide }) {
   return comparison ? <ComparisonChart fact={{ id: fact.id }} chart={comparison} sources={factSources(fact)} preview={preview} /> : null;
 }
 
+/** An open row's body: the topic's chart carousel beside its viewpoints and the report link. */
+function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] }) {
+  return (
+    <div className="sv-row__columns">
+      <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
+        {slides.map(slide => (
+          <div className="sv-slide" key={slide.href}>
+            <SlideChart slide={slide} />
+          </div>
+        ))}
+      </PreviewCarousel>
+      <div className="sv-row__side">
+        <h3 className="sv-row__side-head">{plural(topic.viewpoints.length, 'viewpoint')}</h3>
+        <ul className="sv-row__viewpoints">
+          {topic.viewpoints.map((v, i) => (
+            <li key={v.id}>
+              <i className="sv-row__marker" style={{ background: `var(--sv-series-${(i % 8) + 1})` }} />
+              <span>{v.name}</span>
+            </li>
+          ))}
+        </ul>
+        <Link className="sv-row__cta" href={topicPath(topic.slug)}>Read the full report <span aria-hidden="true">→</span></Link>
+        <p className="sv-row__counts">
+          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'disagreement')} · {plural(topic.facts.length, 'fact')}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 /** The home page's topics, each a row; the first starts open. */
 export function TopicRows({ topics }: { topics: Topic[] }) {
   if (topics.length === 0) return null;
@@ -60,30 +90,7 @@ export function TopicRows({ topics }: { topics: Topic[] }) {
               </ul>
             }
           >
-            <div className="sv-row__columns">
-              <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
-                {slides.map(slide => (
-                  <div className="sv-slide" key={slide.href}>
-                    <SlideChart slide={slide} />
-                  </div>
-                ))}
-              </PreviewCarousel>
-              <div className="sv-row__side">
-                <h3 className="sv-row__side-head">{plural(topic.viewpoints.length, 'viewpoint')}</h3>
-                <ul className="sv-row__viewpoints">
-                  {topic.viewpoints.map((v, i) => (
-                    <li key={v.id}>
-                      <i className="sv-row__marker" style={{ background: `var(--sv-series-${(i % 8) + 1})` }} />
-                      <span>{v.name}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link className="sv-row__cta" href={topicPath(topic.slug)}>Read the full report <span aria-hidden="true">→</span></Link>
-                <p className="sv-row__counts">
-                  {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'disagreement')} · {plural(topic.facts.length, 'fact')}
-                </p>
-              </div>
-            </div>
+            <RowPreview topic={topic} slides={slides} />
           </TopicRow>
         );
       })}

@@ -10,7 +10,7 @@ const noSubscription = () => () => {};
  * Every slide is server-rendered into a horizontally scroll-snapped strip, so
  * without JavaScript each chart is still reachable by scrolling. Script adds
  * the previous/next buttons, one dot per chart, a "2 / 4 · label" count and
- * arrow keys. Every slide has the same fixed height (globals.css), so the
+ * arrow keys. Every slide stretches to the tallest one (globals.css), so the
  * charts are all one size and nothing moves when the chart changes.
  */
 export function PreviewCarousel({ name, labels, children }: { name: string; labels: string[]; children: ReactNode }) {
@@ -46,7 +46,7 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
         }}
       >
         {slides.map((slide, i) => (
-          <div className="sv-carousel__slide" key={labels[i]} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}: ${labels[i]}`}>
+          <div className="sv-carousel__slide" key={i} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}: ${labels[i]}`}>
             {slide}
           </div>
         ))}
@@ -56,7 +56,7 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
           <button type="button" className="sv-carousel__step" aria-label="Previous chart" onClick={() => go(index - 1)}>‹</button>
           <div className="sv-carousel__dots">
             {labels.map((label, i) => (
-              <button type="button" key={label} className="sv-carousel__dot" aria-label={`Chart ${i + 1}: ${label}`} aria-current={i === index || undefined} onClick={() => go(i)} />
+              <button type="button" key={i} className="sv-carousel__dot" aria-label={`Chart ${i + 1}: ${label}`} aria-current={i === index || undefined} onClick={() => go(i)} />
             ))}
           </div>
           <p className="sv-carousel__count" aria-live="polite">{index + 1} / {slides.length} · {labels[index]}</p>

@@ -8,7 +8,7 @@ export type PreviewSlide = {
   chart: string;
   /** For a series, the one reading the slide draws. */
   reading?: string;
-  /** The short name shown on the slide and under its thumbnail: the fact's title, else the chart's. */
+  /** The chart's own title: names the slide in the carousel count and under its thumbnail. */
   label: string;
   /** The chart in full, on its fact's page, where its table and methodology live. */
   href: string;
@@ -29,6 +29,6 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
     const fact = topic.facts.find(f => f.id === factId);
     const title = fact && chartTitle(fact, chart);
     if (!fact || !title) return [];
-    return [{ fact, chart, reading, label: fact.title ?? title, href: `${factPath(topic.slug, fact.id)}#${fact.id}--chart-${chart}` }];
+    return [{ fact, chart, reading, label: title, href: `${factPath(topic.slug, fact.id)}#${fact.id}--chart-${chart}` }];
   });
 }

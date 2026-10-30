@@ -12,15 +12,12 @@ test('resolvePreviews returns the UK slides in authored order, each linked to it
     'settlement-and-migrant-status/series',
     'integration-outcomes/series',
   ]);
-  assert.equal(slides[0].label, 'UK Migration and Population Over the Long Run');
+  assert.equal(slides[0].label, slides[0].fact.series!.title);
   assert.equal(slides[0].reading, 'share-of-population');
   assert.equal(slides[0].href, '/topics/uk-immigration/facts/immigration-against-the-long-run#immigration-against-the-long-run--chart-series');
 });
 
-test('a fact without a title is labelled by its chart', async () => {
-  const topic = await loadTopic('uk-immigration');
-  const fact = topic.facts.find(f => f.id === 'immigration-economy-and-public-finances')!;
-  const untitled = { ...topic, facts: topic.facts.map(f => (f === fact ? { ...f, title: undefined } : f)) };
-  const slide = resolvePreviews(untitled)[1];
-  assert.equal(slide.label, fact.comparisons!.find(c => c.id === 'lifetime-by-route')!.title);
+test('two charts from one fact get distinct labels', async () => {
+  const slides = resolvePreviews(await loadTopic('uk-asylum'));
+  assert.equal(new Set(slides.map(s => s.label)).size, slides.length);
 });

@@ -56,7 +56,7 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
     height: 190,
     left: 48,
     top: 10,
-    plotWidth: 600 - 48 - 12,
+    plotWidth: 600 - 48 - 24,
     plotHeight: 190 - 10 - 26,
     fontSize: 12,
     markerRadius: 4,
