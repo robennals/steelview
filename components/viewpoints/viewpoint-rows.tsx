@@ -3,6 +3,7 @@ import { anchorFor } from '@/lib/content/types';
 import type { RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { Prose } from '@/components/topic/prose';
+import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
 import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
@@ -55,8 +56,9 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
             subtitle={plain(lead)}
             meta={null}
             thumbs={
-              <ol className="sv-row__thumbs sv-walk__thumbs" aria-hidden="true">
-                {steps.map((step, i) => (
+              <ThumbStrip
+                total={steps.length}
+                thumbs={steps.map((step, i) => (
                   <li key={i}>
                     <div className="sv-row__thumb">
                       {step.chart ? <ChartThumb fact={step.chart.fact} chart={step.chart.chart} reading={step.chart.reading} /> : <span className="sv-walk__no-chart">No chart</span>}
@@ -64,7 +66,7 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
                     <span>{i + 1}. {step.heading}</span>
                   </li>
                 ))}
-              </ol>
+              />
             }
           >
             <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>

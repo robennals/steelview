@@ -4,12 +4,13 @@ import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
 import { ObservationCycler } from './observation-cycler';
 import { Prose } from './prose';
+import { ThumbStrip } from './thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from './lazy-charts';
 import { Walkthrough } from './walkthrough';
 
-/** How many chart silhouettes a closed row shows before it counts the rest. */
-const THUMBS = 6;
+/** The most chart silhouettes that fit on a closed row's line at the page's full width. */
+const THUMBS = 7;
 
 type ChartStepProps = { step: DataStep; number: number };
 
@@ -57,19 +58,15 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
             subtitle={fact.title ? fact.claim : ''}
             meta={null}
             thumbs={
-              <ol className="sv-row__thumbs sv-walk__thumbs" aria-hidden="true">
-                {steps.slice(0, THUMBS).map((step, i) => (
+              <ThumbStrip
+                total={steps.length}
+                thumbs={steps.slice(0, THUMBS).map((step, i) => (
                   <li key={i}>
                     <div className="sv-row__thumb"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></div>
                     <span>{i + 1}. {step.chart.label}</span>
                   </li>
                 ))}
-                {steps.length > THUMBS && (
-                  <li>
-                    <div className="sv-row__thumb sv-walk__more">+{steps.length - THUMBS} more</div>
-                  </li>
-                )}
-              </ol>
+              />
             }
           >
             {steps.length > 0 && (

@@ -2051,6 +2051,12 @@
     flex: 1 1 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+    /* One line at any width: ThumbStrip shows what fits, and the rest is cut off
+       until it has, or with no script at all. */
+    grid-template-rows: auto;
+    grid-auto-rows: 0;
+    row-gap: 0;
+    overflow: hidden;
   }
 
   .sv-walk__thumbs li { width: auto; min-width: 0; }
@@ -2329,7 +2335,7 @@
   }
 
   @media (max-width: 47.5rem) {
-    .sv-row--walk .sv-walk__thumbs { display: grid; grid-auto-flow: column; grid-auto-columns: 8rem; overflow-x: auto; }
+    .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
