@@ -2085,19 +2085,33 @@ The World Bank series uses market exchange rates, so the gaps between countries'
 
 ### The UK was fifth of the seven G7 countries for growth in GDP per head after 2019 {#immigration-economy-and-public-finances--g7-stalled-alike}
 
-On the World Bank series, GDP per head rose more between 2019 and 2025 in the United States, Italy, Japan and France than in the UK; Canada grew less and Germany shrank slightly. The UK's stall was shared by other large economies, so on its own it is not evidence about migration. Net migration per head for these countries over the same years is not shown here (see Data still needed). [81](#source-immigration-economy-and-public-finances-81)
+On the World Bank series, GDP per head rose more between 2019 and 2025 in the United States, Italy, Japan and France than in the UK; Canada grew less and Germany shrank slightly. The UK's stall was shared by other large economies, so on its own it is not evidence about migration. [81](#source-immigration-economy-and-public-finances-81)
+
+## Subtleties {#immigration-economy-and-public-finances--subtleties-g7-growth}
+
+### Net migration is not shown here {#immigration-economy-and-public-finances--g7-net-migration-not-shown}
+
+Net migration per head for these countries over the same years is not shown here (see Data still needed). [81](#source-immigration-economy-and-public-finances-81)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp-per-person}
 
 ### The OBR finds the per-head effect small and of uncertain sign {#immigration-economy-and-public-finances--obr-per-head-effect-small}
 
-In the OBR's March 2024 scenarios, 200,000 more net migrants a year leave GDP per person "largely unchanged" if they are as productive as residents, 0.4 per cent lower if the capital stock does not adjust, and 0.8 per cent higher if nearly all adults arrive on work visas. The lower-migration scenario is the mirror image. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
-
-In March 2026 the OBR summarised the literature: the effects on real GDP per person "are relatively small in either a positive or negative direction". It adds that migration is likely to raise participation, because migrants are younger, but that the effect on productivity "is much more uncertain". [8](#source-immigration-economy-and-public-finances-8) [11](#source-immigration-economy-and-public-finances-11)
+In March 2026 the OBR said effects on real GDP per person "are relatively small in either a positive or negative direction". [8](#source-immigration-economy-and-public-finances-8) [11](#source-immigration-economy-and-public-finances-11) In March 2024 scenarios, 200,000 more net migrants a year leave it "largely unchanged" if as productive as residents, 0.4% lower if the capital stock does not adjust, and 0.8% higher if nearly all adults arrive on work visas. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
 
 ### March 2026: a lower migration forecast left output per person unchanged {#immigration-economy-and-public-finances--march-2026-revision}
 
 After the ONS revised up emigration by British nationals, the OBR cut its net migration forecast by around 60,000 people a year, lowering the adult population in 2030 by around 200,000. Because the extra emigrants were assumed to be younger and lower-paid, the change left potential output per person "broadly unchanged". [9](#source-immigration-economy-and-public-finances-9) [10](#source-immigration-economy-and-public-finances-10)
+
+## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-gdp-per-person}
+
+### The lower-migration scenario {#immigration-economy-and-public-finances--obr-mirror-image}
+
+In the OBR's March 2024 scenarios, the lower-migration scenario is the mirror image. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
+
+### Participation and productivity {#immigration-economy-and-public-finances--obr-participation-and-productivity}
+
+In March 2026 the OBR summarised the literature. It adds that migration is likely to raise participation, because migrants are younger, but that the effect on productivity "is much more uncertain". [8](#source-immigration-economy-and-public-finances-8) [11](#source-immigration-economy-and-public-finances-11)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp}
 
@@ -2113,27 +2127,31 @@ With departmental spending left as planned, 200,000 more net migrants a year cut
 
 ### The five-year window leaves out later costs {#immigration-economy-and-public-finances--five-year-window}
 
-The Migration Observatory notes that short-term forecasts "are particularly likely to find a positive impact from migration, because they do not account for the costs that come later as migrants age". Over fifty years the OBR's 2023 projection had higher net migration lowering the primary deficit by 1.1% of GDP by 2072/73, without stopping debt rising towards 300 percent of GDP. In 2013 the OBR described higher migration as "delaying some of the fiscal challenges of an ageing population rather than a way of resolving them permanently". [12](#source-immigration-economy-and-public-finances-12) [13](#source-immigration-economy-and-public-finances-13) [14](#source-immigration-economy-and-public-finances-14)
-
-In its 2024 long-run scenarios, a shorter average stay lowered debt by about 23 per cent of GDP by 2073-74 and higher migrant earnings by about 40 per cent of GDP; in neither case did debt stop rising. Migrants earning half the average instead raised debt to 351 per cent of GDP, 76 per cent of GDP above the baseline. [35](#source-immigration-economy-and-public-finances-35) [36](#source-immigration-economy-and-public-finances-36)
+The Migration Observatory notes short-term forecasts "are particularly likely to find a positive impact from migration, because they do not account for the costs that come later as migrants age". The OBR's 2023 projection had higher net migration cut the primary deficit by 1.1% of GDP by 2072/73, without stopping debt rising towards 300% of GDP. [12](#source-immigration-economy-and-public-finances-12) [13](#source-immigration-economy-and-public-finances-13) [14](#source-immigration-economy-and-public-finances-14)
 
 ### An independent forecaster puts a similar figure on lower migration {#immigration-economy-and-public-finances--independent-forecasts}
 
 Oxford Economics, expecting net migration to stay low, estimated in February 2026 that if the OBR followed its forecast, borrowing would be £19bn (0.5% of GDP) higher. That is a private forecast, not an OBR figure. [15](#source-immigration-economy-and-public-finances-15)
 
+## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-borrowing}
+
+### Delaying the ageing challenge, not resolving it {#immigration-economy-and-public-finances--obr-delaying-not-resolving}
+
+The OBR's 2023 projection ran over fifty years. In 2013 the OBR described higher migration as "delaying some of the fiscal challenges of an ageing population rather than a way of resolving them permanently". [12](#source-immigration-economy-and-public-finances-12) [13](#source-immigration-economy-and-public-finances-13) [14](#source-immigration-economy-and-public-finances-14)
+
+### The 2024 long-run scenarios {#immigration-economy-and-public-finances--obr-2024-long-run-scenarios}
+
+In its 2024 long-run scenarios, a shorter average stay lowered debt by about 23 per cent of GDP by 2073-74 and higher migrant earnings by about 40 per cent of GDP; in neither case did debt stop rising. Migrants earning half the average instead raised debt to 351 per cent of GDP, 76 per cent of GDP above the baseline. [35](#source-immigration-economy-and-public-finances-35) [36](#source-immigration-economy-and-public-finances-36)
+
 ## Observations {#immigration-economy-and-public-finances--observations-lifetime-by-route}
 
 ### Skilled Workers are a large net gain; care workers and Health and Care dependants are net costs {#immigration-economy-and-public-finances--skilled-workers-gain-care-workers-cost}
 
-The Migration Advisory Committee models the 329,200 people who arrived on the Skilled Worker route in 2022/23, including Health and Care visas and dependants, at a net £47.1bn over their lifetimes, or +£143,000 each. Main applicants outside health and care average +£689,000; Health and Care main applicants +£54,000, split between care workers at −£36,000 and other health and care occupations at +£166,000. Adult dependants average +£3,000 on the Skilled Worker route and −£67,000 on the Health and Care route. [17](#source-immigration-economy-and-public-finances-17) [18](#source-immigration-economy-and-public-finances-18) [20](#source-immigration-economy-and-public-finances-20) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
-
-The MAC calls the route "clearly fiscally positive", which it says is "almost inevitable" given the salary thresholds. [16](#source-immigration-economy-and-public-finances-16)
+The Migration Advisory Committee models the 329,200 people who arrived on the Skilled Worker route in 2022/23, including Health and Care visas and dependants, at a net £47.1bn over their lifetimes, or +£143,000 each. Main applicants outside health and care average +£689,000, care workers −£36,000 and Health and Care adult dependants −£67,000. [17](#source-immigration-economy-and-public-finances-17) [18](#source-immigration-economy-and-public-finances-18) [20](#source-immigration-economy-and-public-finances-20) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
 
 ### The average UK resident is a lifetime net cost too {#immigration-economy-and-public-finances--average-resident-is-a-lifetime-net-cost}
 
-On the same method the whole UK resident population has a mean lifetime contribution of −£39,000 and a median of −£145,000. Residents with the same starting ages as Skilled Worker main applicants average +£117,000 (median −£47,000). Care workers are "broadly similar to the UK median for the age group". Health and Care dependants fall short of their own age-matched comparator of +£84,000. [23](#source-immigration-economy-and-public-finances-23) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
-
-Partners of British citizens and settled residents arriving on the Partner route in 2022/23 are modelled at −£109,000 each. [28](#source-immigration-economy-and-public-finances-28)
+On the Migration Advisory Committee's method the whole UK resident population has a mean lifetime contribution of −£39,000 and a median of −£145,000. [23](#source-immigration-economy-and-public-finances-23) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22) Partners of British citizens and settled residents arriving on the Partner route in 2022/23 are modelled at −£109,000 each. [28](#source-immigration-economy-and-public-finances-28)
 
 ### Most of the gain comes from top earners and from those who stay {#immigration-economy-and-public-finances--gain-from-top-earners-and-stayers}
 
@@ -2147,11 +2165,31 @@ The MAC uses a 3.0% real discount rate, "broadly in line with HMT Green Book". W
 
 The MAC has not estimated lifetime effects for refugees, students or other routes; the Migration Observatory expects refugees to be more negative because of lower employment and greater need for support. [29](#source-immigration-economy-and-public-finances-29)
 
+## Subtleties {#immigration-economy-and-public-finances--subtleties-lifetime-by-route}
+
+### The other groups on the route {#immigration-economy-and-public-finances--lifetime-route-detail}
+
+Health and Care main applicants average +£54,000, split between care workers at −£36,000 and other health and care occupations at +£166,000. Adult dependants average +£3,000 on the Skilled Worker route and −£67,000 on the Health and Care route. [17](#source-immigration-economy-and-public-finances-17) [18](#source-immigration-economy-and-public-finances-18) [20](#source-immigration-economy-and-public-finances-20) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
+
+### Why the route was bound to come out positive {#immigration-economy-and-public-finances--mac-clearly-fiscally-positive}
+
+The MAC calls the route "clearly fiscally positive", which it says is "almost inevitable" given the salary thresholds. [16](#source-immigration-economy-and-public-finances-16)
+
+### Comparing like with like on age {#immigration-economy-and-public-finances--age-matched-comparators}
+
+Residents with the same starting ages as Skilled Worker main applicants average +£117,000 (median −£47,000). Care workers are "broadly similar to the UK median for the age group". Health and Care dependants fall short of their own age-matched comparator of +£84,000. [23](#source-immigration-economy-and-public-finances-23) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
+
 ## Observations {#immigration-economy-and-public-finances--observations-obr-cumulative-age-66}
 
 ### Earnings and age at arrival decide the result {#immigration-economy-and-public-finances--earnings-and-age-decide}
 
-In the OBR's stylised profiles, a migrant arriving at 25 on average pay is a net contributor "by their second year", while a resident of the same age becomes one only in their 40s, because the migrant's childhood education and health were paid for elsewhere. A migrant earning 30 per cent above average stays a net benefit even living to 100; one on half the average falls behind the average resident in their early 40s. [30](#source-immigration-economy-and-public-finances-30) [31](#source-immigration-economy-and-public-finances-31) [32](#source-immigration-economy-and-public-finances-32)
+In the OBR's stylised profiles, a migrant arriving at 25 on average pay is a net contributor "by their second year", while a resident of the same age becomes one only in their 40s. A migrant earning 30 per cent above average stays a net benefit even living to 100; one on half the average falls behind the average resident in their early 40s. [30](#source-immigration-economy-and-public-finances-30) [31](#source-immigration-economy-and-public-finances-31) [32](#source-immigration-economy-and-public-finances-32)
+
+## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-cumulative-age-66}
+
+### Why the migrant is ahead at first {#immigration-economy-and-public-finances--childhood-paid-for-elsewhere}
+
+The migrant arriving at 25 becomes a net contributor before a resident of the same age because the migrant's childhood education and health were paid for elsewhere. [30](#source-immigration-economy-and-public-finances-30) [31](#source-immigration-economy-and-public-finances-31) [32](#source-immigration-economy-and-public-finances-32)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-cumulative-age-82}
 
@@ -2169,13 +2207,27 @@ Every line falls after state pension age as health, care and pension costs mount
 
 ### Earnings differ widely by route {#immigration-economy-and-public-finances--earnings-by-route}
 
-In 2023/24 median annual earnings were £56,600 for Skilled Worker main applicants, £47,900 for Senior or Specialist Workers and £30,900 for Health and Care main applicants; care workers and home carers earned £23,100. Dependants earned £30,200 (Skilled Worker) and £22,100 (Health and Care); family-route visa holders £20,200. The ONS median for full-time employees was £37,430 in April 2024, a different measure shown only for reference. [38](#source-immigration-economy-and-public-finances-38) [39](#source-immigration-economy-and-public-finances-39) [40](#source-immigration-economy-and-public-finances-40) [43](#source-immigration-economy-and-public-finances-43)
-
-At least 75% of Skilled Worker main applicants and at least 45% of their dependants had PAYE earnings; the Home Office counts these as minimums because self-employment is not included. It also advises caution in comparing routes, because work eligibility differs. [41](#source-immigration-economy-and-public-finances-41) [42](#source-immigration-economy-and-public-finances-42)
+In 2023/24 median annual earnings were £56,600 for Skilled Worker main applicants, £47,900 for Senior or Specialist Workers and £30,900 for Health and Care main applicants; care workers and home carers earned £23,100. [38](#source-immigration-economy-and-public-finances-38) [39](#source-immigration-economy-and-public-finances-39) [40](#source-immigration-economy-and-public-finances-40) [43](#source-immigration-economy-and-public-finances-43) The Home Office advises caution in comparing routes, because work eligibility differs. [41](#source-immigration-economy-and-public-finances-41) [42](#source-immigration-economy-and-public-finances-42)
 
 ### Recent non-EU cohorts caught up quickly; the 2024 and 2025 cohorts started lower {#immigration-economy-and-public-finances--earnings-catch-up}
 
-HMRC payroll data show each non-EU cohort from 2021 to 2023 earning around 95% of the UK median after one full year, falling to 90% for the 2024 cohort. The 2021 and 2023 entrants passed the overall median within two years; 2015 entrants took about six. Entry-year pay fell sharply in 2025. The Migration Observatory says faster catch-up may reflect lower earners leaving the payroll, and the data mix full-time and part-time work. [44](#source-immigration-economy-and-public-finances-44) [45](#source-immigration-economy-and-public-finances-45) [46](#source-immigration-economy-and-public-finances-46) [47](#source-immigration-economy-and-public-finances-47)
+HMRC payroll data show each non-EU cohort from 2021 to 2023 earning around 95% of the UK median after one full year, falling to 90% for the 2024 cohort. The 2021 and 2023 entrants passed the overall median within two years; 2015 entrants took about six. The Migration Observatory says faster catch-up may reflect lower earners leaving the payroll. [44](#source-immigration-economy-and-public-finances-44) [45](#source-immigration-economy-and-public-finances-45) [46](#source-immigration-economy-and-public-finances-46) [47](#source-immigration-economy-and-public-finances-47)
+
+## Subtleties {#immigration-economy-and-public-finances--subtleties-earnings-by-route}
+
+### Dependants, family visas and the ONS median {#immigration-economy-and-public-finances--earnings-dependants-family-and-ons}
+
+Dependants earned £30,200 (Skilled Worker) and £22,100 (Health and Care); family-route visa holders £20,200. The ONS median for full-time employees was £37,430 in April 2024, a different measure shown only for reference. [38](#source-immigration-economy-and-public-finances-38) [39](#source-immigration-economy-and-public-finances-39) [40](#source-immigration-economy-and-public-finances-40) [43](#source-immigration-economy-and-public-finances-43)
+
+### How many had PAYE earnings {#immigration-economy-and-public-finances--earnings-share-with-paye}
+
+At least 75% of Skilled Worker main applicants and at least 45% of their dependants had PAYE earnings; the Home Office counts these as minimums because self-employment is not included. [41](#source-immigration-economy-and-public-finances-41) [42](#source-immigration-economy-and-public-finances-42)
+
+### The 2025 fall, and part-time work {#immigration-economy-and-public-finances--catch-up-data-limits}
+
+Entry-year pay fell sharply in 2025. The data mix full-time and part-time work. [44](#source-immigration-economy-and-public-finances-44) [45](#source-immigration-economy-and-public-finances-45) [46](#source-immigration-economy-and-public-finances-46) [47](#source-immigration-economy-and-public-finances-47)
+
+### Who stayed on the payroll {#immigration-economy-and-public-finances--catch-up-who-stayed}
 
 Of non-EU migrants first on payroll in 2015, 60% were still there in 2025; of EU migrants, 45%. These data are by nationality, not by visa route. [48](#source-immigration-economy-and-public-finances-48)
 
@@ -2217,13 +2269,21 @@ Static estimates count one period's taxes and spending; lifetime estimates proje
 
 ### Average wage effects are small; slightly negative at the bottom, positive further up {#immigration-economy-and-public-finances--small-wage-effects}
 
-The MAC found migration "is not a major determinate of the wages of UK-born workers", with some evidence of a negative effect on lower-skilled and a positive one on higher-skilled workers. Its update implies EU immigration over 1993–2017 lowered UK-born wages by 5.2 per cent at the 5th percentile and raised them by 1.6 per cent at the median and by 4.4 and 3.1 per cent at the 90th and 95th percentiles, as short-run estimates. [65](#source-immigration-economy-and-public-finances-65) [66](#source-immigration-economy-and-public-finances-66)
-
-Expressed per year, a 2022 study found immigration over 1994–2016 cut the hourly wage at the 5th percentile by about half a penny a year and raised it by 1.7p a year at the 90th. In low-wage service jobs, a one-point rise in the migrant share lowered average occupational wages by about 0.2%. An earlier estimate for semi- and unskilled services, a 1.9 per cent fall per 10-point rise, revised down an even earlier 5.2 per cent. [68](#source-immigration-economy-and-public-finances-68) [69](#source-immigration-economy-and-public-finances-69) [67](#source-immigration-economy-and-public-finances-67)
+The Migration Advisory Committee found migration "is not a major determinate of the wages of UK-born workers". Its update implies EU immigration over 1993–2017 lowered UK-born wages by 5.2% at the 5th percentile and raised them by 1.6% at the median and by 4.4 and 3.1 per cent at the 90th and 95th percentiles, as short-run estimates. [65](#source-immigration-economy-and-public-finances-65) [66](#source-immigration-economy-and-public-finances-66)
 
 ### Earlier migrants bear much of the effect, and there are no post-Brexit studies {#immigration-economy-and-public-finances--no-post-brexit-wage-studies}
 
 One study found the main impact of immigration from 1975 to 2005 fell on migrants already in the UK. The Migration Observatory knows of no study of wage effects under the post-Brexit system. [71](#source-immigration-economy-and-public-finances-71) [70](#source-immigration-economy-and-public-finances-70)
+
+## Subtleties {#immigration-economy-and-public-finances--subtleties-wage-effects-by-percentile}
+
+### Lower-skilled and higher-skilled workers {#immigration-economy-and-public-finances--wage-effects-by-skill}
+
+The MAC found some evidence of a negative effect on lower-skilled and a positive one on higher-skilled workers. [65](#source-immigration-economy-and-public-finances-65) [66](#source-immigration-economy-and-public-finances-66)
+
+### Other estimates {#immigration-economy-and-public-finances--wage-effects-other-studies}
+
+Expressed per year, a 2022 study found immigration over 1994–2016 cut the hourly wage at the 5th percentile by about half a penny a year and raised it by 1.7p a year at the 90th. In low-wage service jobs, a one-point rise in the migrant share lowered average occupational wages by about 0.2%. An earlier estimate for semi- and unskilled services, a 1.9 per cent fall per 10-point rise, revised down an even earlier 5.2 per cent. [68](#source-immigration-economy-and-public-finances-68) [69](#source-immigration-economy-and-public-finances-69) [67](#source-immigration-economy-and-public-finances-67)
 
 ## Observations {#immigration-economy-and-public-finances--observations-tuition-fees-by-domicile}
 

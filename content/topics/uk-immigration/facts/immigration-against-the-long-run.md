@@ -3046,15 +3046,15 @@ Net migration fell from its peak of 944,000 in the year to March 2023 to 171,000
 
 ### Over four years, about 4.8 million arrived and net migration was about 2.5 million {#immigration-against-the-long-run--four-years-gross-and-net}
 
-Adding the chart's calendar-year values for 2021 to 2024 gives about 4.8 million long-term arrivals and about 2.5 million net migration; for 2022 to 2025 the totals are about 4.7 million and 2.2 million. The two measures answer different questions. Gross arrivals count every person who came, including British nationals returning and students who later left. Net migration counts what was added to the population once departures are subtracted. [46](#source-immigration-against-the-long-run-46) [22](#source-immigration-against-the-long-run-22)
+Adding the chart's calendar-year values for 2021 to 2024 gives about 4.8 million long-term arrivals and about 2.5 million net migration. Gross arrivals count every person who came, including British nationals returning and students who later left. Net migration counts what was added to the population once departures are subtracted. [46](#source-immigration-against-the-long-run-46) [22](#source-immigration-against-the-long-run-22)
 
 ### The years of negative net migration came from emigration, at much lower levels of arrivals {#immigration-against-the-long-run--negative-years-came-from-emigration}
 
-Net migration was negative in every year from 1964 to 1978, in 1980 to 1982, and in 1988, 1992 and 1993. In each of those years immigration was below a third of its 2025 level, and more people left than arrived. British nationals have had negative net migration in every year since 1964 except 1985, so those years mainly reflect British emigration outweighing a smaller inflow. [3](#source-immigration-against-the-long-run-3) [27](#source-immigration-against-the-long-run-27) [46](#source-immigration-against-the-long-run-46)
+Net migration was negative in every year from 1964 to 1978, and in several years after. In each of those years immigration was below a third of its 2025 level. British nationals have had negative net migration in every year since 1964 except 1985, so those years mainly reflect British emigration outweighing a smaller inflow. [3](#source-immigration-against-the-long-run-3) [27](#source-immigration-against-the-long-run-27) [46](#source-immigration-against-the-long-run-46)
 
 ### Late 1990s: non-EU migration rose as labour demand strengthened {#immigration-against-the-long-run--late-1990s-rise}
 
-The sustained rise is clearer after 1997 than at 1990. ONS identifies an increase in non-EU net migration after 1997. The Migration Observatory links the wider rise to a growing economy and low unemployment from the late 1990s, followed by a more open non-EU work-permit system and efforts to attract international students in the early 2000s. These changes developed over several years; the graph cannot attribute the turn to a single election or policy. The dashed line near 1991 instead marks a measurement change. [9](#source-immigration-against-the-long-run-9) [10](#source-immigration-against-the-long-run-10)
+The sustained rise is clearer after 1997 than at 1990. The Migration Observatory links the wider rise to a growing economy and low unemployment from the late 1990s, followed by a more open non-EU work-permit system and efforts to attract international students in the early 2000s. The graph cannot attribute the turn to a single election or policy. [9](#source-immigration-against-the-long-run-9) [10](#source-immigration-against-the-long-run-10)
 
 ### 2004: EU enlargement added a further increase {#immigration-against-the-long-run--eu-enlargement}
 
@@ -3066,13 +3066,11 @@ The dip in net migration in 2020 reflects the disruption caused by COVID-19. It 
 
 ### 2021–2023: more students, care workers and humanitarian arrivals {#immigration-against-the-long-run--why-immigration-spiked}
 
-The surge was driven by non-EU arrivals. The government restored a post-study work route, opened routes for people from Ukraine and Hong Kong, and made care workers eligible for work visas. Universities recruited overseas as their finances deteriorated, while care employers recruited to fill vacancies. The route chart below shows how much each contributed. [6](#source-immigration-against-the-long-run-6)
+The surge was driven by non-EU arrivals. The government restored a post-study work route, opened routes for people from Ukraine and Hong Kong, and made care workers eligible for work visas. Universities recruited overseas as their finances deteriorated, and care employers to fill vacancies. The route chart shows how much each contributed. [6](#source-immigration-against-the-long-run-6)
 
 ### Late 2023–2024: recruitment slowed and visa rules tightened {#immigration-against-the-long-run--why-immigration-fell}
 
-Work visas began falling in late 2023, especially in care. The Home Office says closer scrutiny of sponsoring employers and enforcement against non-compliance likely contributed to the initial decline. The decline began before the 2024 rule changes, so those changes cannot explain its start. [7](#source-immigration-against-the-long-run-7)
-
-Restrictions on bringing family members for care workers and most international students then helped reduce arrivals. Further restrictions introduced in the second half of 2025 are not yet fully reflected in this chart. [6](#source-immigration-against-the-long-run-6)
+Work visas began falling in late 2023, especially in care. The Home Office says closer scrutiny of employers and enforcement against non-compliance likely contributed to the initial decline, which began before the 2024 rule changes. [7](#source-immigration-against-the-long-run-7) Restrictions on bringing family members for care workers and most international students then helped reduce arrivals. [6](#source-immigration-against-the-long-run-6)
 
 ### 2025: fewer work arrivals drove the latest fall {#immigration-against-the-long-run--latest-fall}
 
@@ -3084,6 +3082,26 @@ Non-EU+ work-related arrivals fell by 47% in 2025, the main reason net migration
 
 ONS changed how it estimates EU and British migration in 2025 and 2026. The May 2026 release cut net migration for 2024 by 100,000 (23%) compared with the first estimate a year earlier, and the 2024 figure now stands at 331,000. The last four rolling years in the chart are provisional and will be revised again. [28](#source-immigration-against-the-long-run-28) [21](#source-immigration-against-the-long-run-21)
 
+### The same totals for 2022 to 2025 {#immigration-against-the-long-run--four-years-2022-to-2025}
+
+Adding the chart's calendar-year values for 2022 to 2025 gives totals of about 4.7 million long-term arrivals and 2.2 million net migration. The two measures answer different questions. [46](#source-immigration-against-the-long-run-46) [22](#source-immigration-against-the-long-run-22)
+
+### Which years were negative {#immigration-against-the-long-run--negative-years-list}
+
+Net migration was negative in every year from 1964 to 1978, in 1980 to 1982, and in 1988, 1992 and 1993. In each of those years more people left than arrived. [3](#source-immigration-against-the-long-run-3) [27](#source-immigration-against-the-long-run-27) [46](#source-immigration-against-the-long-run-46)
+
+### The turn developed over several years {#immigration-against-the-long-run--late-1990s-timing}
+
+ONS identifies an increase in non-EU net migration after 1997. The changes behind the wider rise developed over several years. The dashed line near 1991 marks a measurement change. [9](#source-immigration-against-the-long-run-9) [10](#source-immigration-against-the-long-run-10)
+
+### The fall began before the 2024 rule changes {#immigration-against-the-long-run--fall-before-2024-rules}
+
+The decline in work visas began before the 2024 rule changes, so those changes cannot explain its start. [7](#source-immigration-against-the-long-run-7)
+
+### The latest restrictions are not yet fully shown {#immigration-against-the-long-run--late-2025-restrictions-not-yet-shown}
+
+Further restrictions introduced in the second half of 2025 are not yet fully reflected in this chart. [6](#source-immigration-against-the-long-run-6)
+
 ## Observations {#immigration-against-the-long-run--observations-share-of-population}
 
 ### Population growth does not explain away the rise {#immigration-against-the-long-run--population-adjusted-rise}
@@ -3094,7 +3112,7 @@ The immigration line remains well above its earlier levels after dividing by the
 
 ### The 2022–2023 peak combined work, study and two humanitarian routes {#immigration-against-the-long-run--peak-by-route}
 
-At the peak, work, study, the Ukraine scheme and the BN(O) route for Hong Kongers all added large numbers at once, while EU+ net migration had already turned negative. The Ukraine scheme line jumps in 2022 and has fallen back to around zero since; the BN(O) line is smaller and steadier. A policy aimed only at work or study would not have touched the two humanitarian routes. [48](#source-immigration-against-the-long-run-48) [6](#source-immigration-against-the-long-run-6)
+At the peak, work, study, the Ukraine scheme and the BN(O) route for Hong Kongers all added large numbers at once, while EU+ net migration had already turned negative. The Ukraine scheme line jumps in 2022 and has fallen back to around zero since. A policy aimed only at work or study would not have touched the two humanitarian routes. [48](#source-immigration-against-the-long-run-48) [6](#source-immigration-against-the-long-run-6)
 
 ### Ukraine contributed a sharp spike in 2022, but not the whole surge {#immigration-against-the-long-run--ukraine-spike}
 
@@ -3112,21 +3130,35 @@ Asylum-related immigration was broadly stable at 88,000 in 2025, and few people 
 
 In 2025 net migration was 350,000 for non-EU+ nationals, negative 136,000 for British nationals and negative 42,000 for EU+ nationals. The British figure grew after 2022 mainly because fewer Britons returned; ONS says British emigration itself has been stable, and the British estimates are particularly uncertain. [22](#source-immigration-against-the-long-run-22) [12](#source-immigration-against-the-long-run-12) [27](#source-immigration-against-the-long-run-27)
 
+## Subtleties {#immigration-against-the-long-run--subtleties-net-by-route}
+
+### The BN(O) line {#immigration-against-the-long-run--bno-line-steadier}
+
+Compared with the Ukraine scheme line, the BN(O) line is smaller and steadier. [48](#source-immigration-against-the-long-run-48) [6](#source-immigration-against-the-long-run-6)
+
 ## Observations {#immigration-against-the-long-run--observations-nationality-arrivals}
 
 ### 2021–2023: Visa Changes, Recruitment and Humanitarian Routes Drove the Surge {#immigration-against-the-long-run--non-eu-arrivals-surge}
 
-Several changes increased non-EU arrivals together: the government restored a post-study work route, care workers became eligible for work visas in early 2022, and new routes admitted people from Hong Kong and Ukraine. Demand reinforced those policy changes: universities recruited more overseas students as their finances deteriorated, while social care employers recruited abroad to fill vacancies linked to low pay and poor working conditions. [6](#source-immigration-against-the-long-run-6)
+Several changes increased non-EU arrivals together: a restored post-study work route, work-visa eligibility for care workers in early 2022, and new routes for people from Hong Kong and Ukraine. Demand reinforced those changes: universities recruited more overseas students as their finances deteriorated, and care employers recruited abroad. [6](#source-immigration-against-the-long-run-6)
 
 ### Immigration Has Shifted from EU to Non-EU Nationals {#immigration-against-the-long-run--nationality-shift}
 
-627,000 of the 813,000 people who moved to the UK long-term in 2025 were non-EU+ nationals, down from 780,000 the year before but still the great majority. [13](#source-immigration-against-the-long-run-13)
-
-EU+ arrivals remain positive, but more EU+ nationals are leaving than arriving: net migration was -42,000 in 2025 and has been negative in every rolling-year estimate since June 2022. Arrivals and net migration measure different things. [12](#source-immigration-against-the-long-run-12)
+627,000 of the 813,000 people who moved to the UK long-term in 2025 were non-EU+ nationals, down from 780,000 the year before but still the great majority. [13](#source-immigration-against-the-long-run-13) EU+ arrivals remain positive, but more EU+ nationals are leaving than arriving: net migration was -42,000 in 2025. [12](#source-immigration-against-the-long-run-12)
 
 ### The EU Turn Began Before Free Movement Ended {#immigration-against-the-long-run--eu-turn}
 
 EU net migration began falling after the 2016 referendum, before free movement ended in January 2021. Recent departures include people who arrived during the earlier period of higher EU immigration. [17](#source-immigration-against-the-long-run-17) [14](#source-immigration-against-the-long-run-14) [18](#source-immigration-against-the-long-run-18)
+
+## Subtleties {#immigration-against-the-long-run--subtleties-nationality-arrivals}
+
+### Why care employers recruited abroad {#immigration-against-the-long-run--care-vacancies-behind-recruitment}
+
+Social care employers recruited abroad to fill vacancies linked to low pay and poor working conditions. [6](#source-immigration-against-the-long-run-6)
+
+### EU+ net migration has been negative since 2022 {#immigration-against-the-long-run--eu-net-negative-since-2022}
+
+EU+ net migration has been negative in every rolling-year estimate since June 2022. Arrivals and net migration measure different things. [12](#source-immigration-against-the-long-run-12)
 
 ## Observations {#immigration-against-the-long-run--observations-population-change}
 
@@ -3158,17 +3190,23 @@ By mid-2049, the population would be about 72.4 million on the principal assumpt
 
 ### Every assumption ages the population; migration changes how fast {#immigration-against-the-long-run--migration-slows-ageing-but-does-not-stop-it}
 
-On this chart's fixed-age measure there were about 302 people aged 65 and over per 1,000 aged 16 to 64 in 2024. By 2074 the ratio reaches about 457 with high migration, 525 on the principal assumption, 580 with low migration and 641 with zero net migration. Higher migration slows the rise but does not stop it, and it does so by making the population larger. On ONS's own pension-age measure, the principal projection goes from 280 in mid-2024 to 329 by mid-2049. [52](#source-immigration-against-the-long-run-52) [35](#source-immigration-against-the-long-run-35)
+On this chart's fixed-age measure there were about 302 people aged 65 and over per 1,000 aged 16 to 64 in 2024. By 2074 the projected ratio reaches about 457 with high migration, 525 on the principal assumption and 641 with zero net migration. Higher migration slows the rise, by making the population larger, but does not stop it. [52](#source-immigration-against-the-long-run-52) [35](#source-immigration-against-the-long-run-35)
 
 ### Projections are scenarios, not forecasts {#immigration-against-the-long-run--projections-are-scenarios}
 
 ONS says its long-term migration assumption "should not be viewed as a forecast". Each line shows what a migration level implies if it is sustained, not how likely it is. [36](#source-immigration-against-the-long-run-36)
 
+## Subtleties {#immigration-against-the-long-run--subtleties-old-age-ratio}
+
+### The low-migration line and the pension-age measure {#immigration-against-the-long-run--old-age-low-migration-and-pension-age}
+
+By 2074 the ratio reaches 580 with low migration. On ONS's own pension-age measure, the principal projection goes from 280 in mid-2024 to 329 by mid-2049. [52](#source-immigration-against-the-long-run-52) [35](#source-immigration-against-the-long-run-35)
+
 ## Observations {#immigration-against-the-long-run--observations-oecd-permanent-per-head}
 
 ### Per head, the UK sits in the middle of the OECD {#immigration-against-the-long-run--uk-mid-table-per-head}
 
-In 2024 the UK received the fourth-largest number of new permanent-type migrants in the OECD, but per head of population it ranked 21st of the 37 countries shown, next to Norway, Greece and Finland. Luxembourg, Iceland, Switzerland and Ireland took the most relative to their size; Japan and Mexico the least. The OECD notes that UK inflows per head "remain modest despite the recent increase in inflows in absolute terms". [45](#source-immigration-against-the-long-run-45) [44](#source-immigration-against-the-long-run-44)
+In 2024 the UK received the fourth-largest number of new permanent-type migrants in the OECD, but per head of population it ranked 21st of the 37 countries shown. The OECD notes that UK inflows per head "remain modest despite the recent increase in inflows in absolute terms". [45](#source-immigration-against-the-long-run-45) [44](#source-immigration-against-the-long-run-44)
 
 ### The UK's 2024 fall was one of the sharpest {#immigration-against-the-long-run--uk-fall-2024}
 
@@ -3176,7 +3214,17 @@ UK permanent-type migration fell by 41% between 2023 and 2024, the second-sharpe
 
 ### This is an inflow measure, not net migration {#immigration-against-the-long-run--permanent-is-not-net}
 
-The OECD counts foreign nationals granted permanent-type status and does not subtract anyone leaving, so a country with heavy emigration can rank high here and low on net migration. No comparable cross-country net migration series was found: the UN and World Bank figures disagree with ONS by about half for the UK. Temporary migrants such as students are excluded. [45](#source-immigration-against-the-long-run-45)
+The OECD counts foreign nationals granted permanent-type status and does not subtract anyone leaving, so a country with heavy emigration can rank high here and low on net migration. Temporary migrants such as students are excluded. [45](#source-immigration-against-the-long-run-45)
+
+## Subtleties {#immigration-against-the-long-run--subtleties-oecd-permanent-per-head}
+
+### Which countries sit where {#immigration-against-the-long-run--oecd-neighbours-and-extremes}
+
+Per head of population the UK ranked next to Norway, Greece and Finland. Luxembourg, Iceland, Switzerland and Ireland took the most relative to their size; Japan and Mexico the least. [45](#source-immigration-against-the-long-run-45) [44](#source-immigration-against-the-long-run-44)
+
+### No comparable net migration series {#immigration-against-the-long-run--no-comparable-net-series}
+
+No comparable cross-country net migration series was found: the UN and World Bank figures disagree with ONS by about half for the UK. [45](#source-immigration-against-the-long-run-45)
 
 ## Observations {#immigration-against-the-long-run--observations-international-immigration}
 

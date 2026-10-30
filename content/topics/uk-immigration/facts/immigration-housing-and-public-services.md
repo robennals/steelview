@@ -1725,11 +1725,17 @@ On public services, the national figures cut against a simple population-pressur
 
 ### Building has run below projected household growth {#immigration-housing-and-public-services--building-below-household-growth}
 
-England added 208,600 net dwellings in 2024-25. The ONS projects an average of 242,000 additional households a year over 2022–2032, up from 158,000 a year in its 2018-based projections for the same period. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2) A household is not a dwelling — some homes stand empty or are second homes — so the two numbers are not an exact measure of shortfall, and the ONS says its projections are not a forecast of how many homes should be built. [5](#source-immigration-housing-and-public-services-5)
+England added 208,600 net dwellings in 2024-25. The ONS projects an average of 242,000 additional households a year over 2022–2032. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2) A household is not a dwelling, as some homes stand empty or are second homes, so the two numbers are not an exact measure of shortfall. The ONS says its projections are not a forecast of how many homes should be built. [5](#source-immigration-housing-and-public-services-5)
 
 ### Building peaked before migration did {#immigration-housing-and-public-services--building-peaked-before-migration}
 
 Net additions fell to 130,610 in 2012-13 after the financial crisis, rose to 248,590 in 2019-20, and have fallen in each year since 2021-22. [7](#source-immigration-housing-and-public-services-7) [6](#source-immigration-housing-and-public-services-6) Net migration peaked at 944,000 in the year to March 2023, so the latest fall in building came while net migration was at or near its peak. [28](#source-immigration-housing-and-public-services-28)
+
+## Subtleties {#immigration-housing-and-public-services--subtleties-dwellings}
+
+### The earlier projection {#immigration-housing-and-public-services--household-projection-revision}
+
+The ONS projection of 242,000 additional households a year over 2022–2032 is up from 158,000 a year in its 2018-based projections for the same period. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2)
 
 ## Observations {#immigration-housing-and-public-services--observations-rent-growth}
 
@@ -1761,7 +1767,7 @@ These are projections of past demographic trends, not forecasts of need, and the
 
 ### Immigration explains about 4–6% of the real house-price rise {#immigration-housing-and-public-services--immigration-explains-4-6-percent-of-house-price-rise}
 
-In housing markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. Applied to the UK's foreign-born share, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
+In markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. For the UK, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
 
 ### Rent effects per person are at least as large as price effects {#immigration-housing-and-public-services--rent-effects}
 
@@ -1769,7 +1775,7 @@ Across all studies the median rent effect is 0.64%, against 0.36% for house pric
 
 ### Effects are larger where building is constrained, and UK local studies find falls {#immigration-housing-and-public-services--local-versus-regional-effects}
 
-Prices respond more where planning limits construction. Studies of small areas find weaker or negative effects because existing residents move away; in the UK, Sá (2015) finds a 1.7% fall in local house prices per point of immigrant share. [10](#source-immigration-housing-and-public-services-10) [14](#source-immigration-housing-and-public-services-14) Migration also supplies the building workforce in London, where migrants are around 46% of construction employment. [15](#source-immigration-housing-and-public-services-15)
+Prices respond more where planning limits construction. Small-area studies find weaker or negative effects as existing residents move away; in the UK, Sá (2015) finds a 1.7% fall in local house prices per point of immigrant share. [10](#source-immigration-housing-and-public-services-10) [14](#source-immigration-housing-and-public-services-14) Migration also supplies the building workforce in London, where migrants are around 46% of construction employment. [15](#source-immigration-housing-and-public-services-15)
 
 ### Recent migrants rent privately; settled migrants own homes at UK-born rates {#immigration-housing-and-public-services--migrants-concentrated-in-private-renting}
 
@@ -1777,7 +1783,13 @@ Around a third of people in privately rented homes in England and Wales were bor
 
 ### Non-UK nationals are a rising minority of new social tenants {#immigration-housing-and-public-services--social-lettings}
 
-Lead tenants with a non-UK nationality took 6% of new social lettings in England in 2007/08 and 10% in 2022/23. [18](#source-immigration-housing-and-public-services-18) People on work, study and family visas are not eligible, because of the no recourse to public funds condition, and at the 2021 Census non-UK passport holders were slightly under-represented in social housing. [19](#source-immigration-housing-and-public-services-19) [20](#source-immigration-housing-and-public-services-20) The MAC's 2018 review judged that, with little social housing being built, new lettings to migrants are "inevitably at the expense of other potential tenants". [23](#source-immigration-housing-and-public-services-23)
+Non-UK lead tenants took 6% of new social lettings in England in 2007/08 and 10% in 2022/23. [18](#source-immigration-housing-and-public-services-18) Work, study and family visa holders are not eligible, and non-UK passport holders were slightly under-represented at the 2021 Census. [19](#source-immigration-housing-and-public-services-19) [20](#source-immigration-housing-and-public-services-20) In 2018 the MAC judged that, with little building, these lettings come "inevitably at the expense of other potential tenants". [23](#source-immigration-housing-and-public-services-23)
+
+## Subtleties {#immigration-housing-and-public-services--subtleties-house-price-and-rent-effects}
+
+### How the 4–6% is reached {#immigration-housing-and-public-services--how-the-4-6-percent-is-reached}
+
+The review reaches its figure by applying the effect to the UK's foreign-born share. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
 
 ## Observations {#immigration-housing-and-public-services--observations-pupils}
 

@@ -1291,43 +1291,75 @@ family routes after the change typically took longer to settle. [52](#source-set
 ### 2017–2026: rising again, now led by work and Hong Kong BN(O) {#settlement-and-migrant-status--rise-since-2017}
 
 Grants have risen since 2017, mostly to people whose last leave was on a work route:
-80,409 in the year to June 2026, up 36%. [7](#source-settlement-and-migrant-status-7) Grants to Hong Kong BN(O) visa
-holders, whose route opened in January 2021, rose to 38,373 as the first cohorts completed
-five years. [8](#source-settlement-and-migrant-status-8) Grants to refugees fell 40% to 22,799, reflecting fewer protection
-decisions during the pandemic in 2020. [9](#source-settlement-and-migrant-status-9)
+80,409 in the year to June 2026, up 36%. [7](#source-settlement-and-migrant-status-7)
+Grants to Hong Kong BN(O) visa holders rose to 38,373 as the first cohorts completed five
+years. [8](#source-settlement-and-migrant-status-8) Grants to refugees fell 40% to 22,799,
+reflecting fewer protection decisions during the pandemic in 2020.
+[9](#source-settlement-and-migrant-status-9)
 
 ### About 1.6 million are expected to qualify in 2026–30 {#settlement-and-migrant-status--forecast-1-6-million}
 
-The Home Office forecasts that between 1.3 million and 2.2 million people will settle in
-2026–2030 (central estimate 1.6m), peaking at 359,000 to 620,000 in 2028 (central estimate
-450,000). [3](#source-settlement-and-migrant-status-3) It assumes people settle at historical rates; the range reflects
-uncertainty about that. [14](#source-settlement-and-migrant-status-14) It names three drivers: 154,000 visas granted
-to Hong Kong BN(O) holders in 2021–22 (an extra 92,000 applications in 2026 and 54,000 in 2027); 616,000
-Health and Care entry visas in 2022–24 (384,000 extra applications in 2027–29, peaking at
-210,000 in 2028); and 344,000 Skilled Worker entry visas in 2022–24 (around 222,000
-applications). [12](#source-settlement-and-migrant-status-12) [13](#source-settlement-and-migrant-status-13) The forecast is under current rules, before any
-of the proposed changes, and excludes the EU Settlement Scheme.
+The Home Office forecasts 1.3 million to 2.2 million people settling in 2026–2030 (central
+estimate 1.6m). [3](#source-settlement-and-migrant-status-3) It names three drivers: Hong
+Kong BN(O) visas granted in 2021–22, and Health and Care and Skilled Worker entry visas in
+2022–24. [12](#source-settlement-and-migrant-status-12)
+[13](#source-settlement-and-migrant-status-13) The forecast is under current rules, before
+any of the proposed changes, and excludes the EU Settlement Scheme.
 
 ### The Centre for Policy Studies' 801,000 and £234 billion {#settlement-and-migrant-status--cps-projection}
 
-A Centre for Policy Studies projection covering visas issued from January 2021 to June 2024
-found more than 801,000 recent migrants would receive indefinite leave in its base case,
-and as many as 1.24 million in an alternative. [15](#source-settlement-and-migrant-status-15) It put the lifetime net fiscal
-cost at £234 billion. [16](#source-settlement-and-migrant-status-16) After the Office for Budget Responsibility revised the
-data it used, the CPS said the cost estimates "should no longer be used"; it stands by the
-visa analysis and the numbers projected to settle. [17](#source-settlement-and-migrant-status-17) The £234 billion was
-a lifetime net cost of people settling, not a benefits bill or a saving from removing
-existing settlement.
+A Centre for Policy Studies projection covering visas from January 2021 to June 2024 found
+more than 801,000 recent migrants would get indefinite leave in its base case.
+[15](#source-settlement-and-migrant-status-15) It put the lifetime net fiscal cost at £234
+billion. [16](#source-settlement-and-migrant-status-16) After the Office for Budget
+Responsibility revised the data used, the CPS said the cost estimates "should no longer be
+used". [17](#source-settlement-and-migrant-status-17)
+
+## Subtleties {#settlement-and-migrant-status--subtleties-grants}
+
+### When the BN(O) route opened {#settlement-and-migrant-status--bno-route-opened}
+
+The Hong Kong BN(O) route opened in January 2021.
+[8](#source-settlement-and-migrant-status-8)
+
+### The forecast peak and its assumption {#settlement-and-migrant-status--forecast-peak-and-assumption}
+
+The forecast peaks at 359,000 to 620,000 in 2028 (central estimate 450,000).
+[3](#source-settlement-and-migrant-status-3) It assumes people settle at historical rates;
+the range reflects uncertainty about that. [14](#source-settlement-and-migrant-status-14)
+
+### The three drivers in detail {#settlement-and-migrant-status--forecast-drivers-in-detail}
+
+The Home Office names three drivers: 154,000 visas granted to Hong Kong BN(O) holders in
+2021–22 (an extra 92,000 applications in 2026 and 54,000 in 2027); 616,000 Health and Care
+entry visas in 2022–24 (384,000 extra applications in 2027–29, peaking at 210,000 in
+2028); and 344,000 Skilled Worker entry visas in 2022–24 (around 222,000 applications).
+[12](#source-settlement-and-migrant-status-12)
+[13](#source-settlement-and-migrant-status-13)
+
+### The alternative case, and what the CPS stands by {#settlement-and-migrant-status--cps-alternative-and-what-it-stands-by}
+
+The Centre for Policy Studies projection found as many as 1.24 million recent migrants
+would receive indefinite leave in an alternative to its base case.
+[15](#source-settlement-and-migrant-status-15) The CPS stands by the visa analysis and the
+numbers projected to settle. [17](#source-settlement-and-migrant-status-17)
+
+### What the £234 billion was {#settlement-and-migrant-status--what-the-234-billion-was}
+
+The £234 billion was a lifetime net cost of people settling, not a benefits bill or a
+saving from removing existing settlement.
 
 ## Observations {#settlement-and-migrant-status--observations-settled-and-on-a-path}
 
 ### EU Settlement Scheme holders far outnumber non-EU holders of indefinite leave {#settlement-and-migrant-status--euss-outnumber-non-eu-ilr}
 
 Just under 4.6 million settled-status grants have been made under the EU Settlement Scheme
-since 2018. [2](#source-settlement-and-migrant-status-2) The Migration Observatory estimates that 621,000 to 820,000
-non-EU citizens held indefinite leave at the end of 2024 (the summary of the same piece
-gives the lower figure as 622,000). [4](#source-settlement-and-migrant-status-4) [5](#source-settlement-and-migrant-status-5) EU scheme status is
-outside the government's proposed reforms, under the Withdrawal Agreement. [55](#source-settlement-and-migrant-status-55)
+since 2018. [2](#source-settlement-and-migrant-status-2) The Migration Observatory
+estimates that 621,000 to 820,000 non-EU citizens held indefinite leave at the end of
+2024. [4](#source-settlement-and-migrant-status-4)
+[5](#source-settlement-and-migrant-status-5) EU scheme status is outside the government's
+proposed reforms, under the Withdrawal Agreement.
+[55](#source-settlement-and-migrant-status-55)
 
 ### No official count of holders exists {#settlement-and-migrant-status--no-official-count-of-holders}
 
@@ -1338,31 +1370,53 @@ become British citizens since. [18](#source-settlement-and-migrant-status-18)
 ### About 2.2 million are on a five-year path {#settlement-and-migrant-status--path-2-2-million}
 
 Around 2.2 million people — 53% of everyone on a temporary visa at the end of 2024 — held
-visas with a five-year path to settlement. [6](#source-settlement-and-migrant-status-6) About 4.2 million held a temporary
-visa in all, around 3.6 million of whom had arrived since 2021. [21](#source-settlement-and-migrant-status-21) Not all
-will apply: some will leave first. The Migration Observatory puts the number of children on
-a path at 430,000 to 520,000. [22](#source-settlement-and-migrant-status-22)
+visas with a five-year path to settlement. [6](#source-settlement-and-migrant-status-6)
+About 4.2 million held a temporary visa in all, around 3.6 million of whom had arrived
+since 2021. [21](#source-settlement-and-migrant-status-21) Not all will apply: some will
+leave first.
+
+## Subtleties {#settlement-and-migrant-status--subtleties-settled-and-on-a-path}
+
+### Two versions of the lower estimate {#settlement-and-migrant-status--non-eu-ilr-lower-figure}
+
+The summary of the same Migration Observatory piece gives the lower figure for non-EU
+holders of indefinite leave as 622,000, not 621,000.
+[4](#source-settlement-and-migrant-status-4) [5](#source-settlement-and-migrant-status-5)
+
+### Children on a path {#settlement-and-migrant-status--children-on-a-path}
+
+The Migration Observatory puts the number of children on a path at 430,000 to 520,000.
+[22](#source-settlement-and-migrant-status-22)
 
 ## Observations {#settlement-and-migrant-status--observations-path-by-group}
 
 ### Dependants and family visa holders are the groups least often in work {#settlement-and-migrant-status--non-working-groups}
 
-HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not working,
-and a third of Health and Care dependants. About a third of adults on family visas were not
-working by their fifth year, around 45% of refugees, and 30% of adult BN(O) visa holders.
-On current circumstances, hundreds of thousands would fail the proposed employment
-requirement. [19](#source-settlement-and-migrant-status-19)
+HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not
+working, and a third of Health and Care dependants. About a third of adults on family
+visas were not working by their fifth year, and around 45% of refugees. On current
+circumstances, hundreds of thousands would fail the proposed employment requirement.
+[19](#source-settlement-and-migrant-status-19)
+
+## Subtleties {#settlement-and-migrant-status--subtleties-path-by-group}
+
+### Adult BN(O) visa holders {#settlement-and-migrant-status--bno-adults-not-working}
+
+About a third of adults on family visas were not working by their fifth year, around 45%
+of refugees, and 30% of adult BN(O) visa holders.
+[19](#source-settlement-and-migrant-status-19)
 
 ## Observations {#settlement-and-migrant-status--observations-cohort-2020}
 
 ### Settling is common on family routes and rare from study {#settlement-and-migrant-status--settlement-varies-by-route}
 
 Of the 344,058 people who began a migrant journey in 2020, 55% still held leave five years
-later. [23](#source-settlement-and-migrant-status-23) Of those who came on a work route, 30% had indefinite leave and 28% were
-still on temporary leave. [24](#source-settlement-and-migrant-status-24) On family routes, 86% still held leave and 46% had
-indefinite leave. [25](#source-settlement-and-migrant-status-25) Less than 1% of those who came to study had settled within
-five years. [26](#source-settlement-and-migrant-status-26) Most people granted protection go on to settle: 89% of those who
-claimed asylum in 2015 had indefinite leave within ten years. [28](#source-settlement-and-migrant-status-28)
+later. [23](#source-settlement-and-migrant-status-23) On work routes, 30% had indefinite
+leave and 28% were still on temporary leave.
+[24](#source-settlement-and-migrant-status-24) On family routes, 86% still held leave and
+46% had indefinite leave. [25](#source-settlement-and-migrant-status-25) Less than 1% of
+those who came to study had settled within five years.
+[26](#source-settlement-and-migrant-status-26)
 
 ### More recent work arrivals are settling faster {#settlement-and-migrant-status--work-cohorts-settle-more}
 
@@ -1371,26 +1425,30 @@ than the 30% of the 2020 work cohort who had settled after five. [27](#source-se
 Settlement grants recorded in the migrant-journey data fell 9% to 153,204 in 2025, which the
 Home Office attributes to fewer arrivals in 2020. [29](#source-settlement-and-migrant-status-29)
 
+## Subtleties {#settlement-and-migrant-status--subtleties-cohort-2020}
+
+### People granted protection {#settlement-and-migrant-status--protection-cohort-settles}
+
+Most people granted protection go on to settle: 89% of those who claimed asylum in 2015
+had indefinite leave within ten years. [28](#source-settlement-and-migrant-status-28)
+
 ## Observations {#settlement-and-migrant-status--observations-universal-credit-by-status}
 
 ### No official data on what indefinite-leave holders earn or claim {#settlement-and-migrant-status--no-official-data-on-ilr-holders-work-or-benefits}
 
 No published series reports the employment, earnings or benefit receipt of people with
-indefinite leave by route. The closest measure is Universal Credit by recorded status: 2.7%
-of people on Universal Credit in July 2025 were in the indefinite-leave group (not the EU
-scheme), against 9.6% in the EU Settlement Scheme group. [31](#source-settlement-and-migrant-status-31) The command paper
-cites the Department for Work and Pensions as reporting 213,000 migrants with settlement
-claiming Universal Credit in June 2025. [37](#source-settlement-and-migrant-status-37) The department's employment rate for
-the indefinite-leave group on Universal Credit was 33%, the same as for British claimants.
-[34](#source-settlement-and-migrant-status-34)
+indefinite leave by route. The closest measure is Universal Credit by recorded status:
+2.7% of people on Universal Credit in July 2025 were in the indefinite-leave group (not
+the EU scheme), against 9.6% in the EU Settlement Scheme group.
+[31](#source-settlement-and-migrant-status-31)
 
 ### The Universal Credit count overstates indefinite-leave holders {#settlement-and-migrant-status--uc-overstates-ilr}
 
-Status is recorded at the claim and the department is not usually told when someone becomes
-a citizen, so the indefinite-leave group includes some British citizens; the Migration
-Observatory says its estimates of holders cannot be compared with it. [36](#source-settlement-and-migrant-status-36) These are
-"statistics in development". [35](#source-settlement-and-migrant-status-35) Dividing the 213,000 claimants by the 621,000 to
-820,000 estimated holders gives no reliable claim rate, for the same reason.
+Status is recorded at the claim and the Department for Work and Pensions is not usually
+told when someone becomes a citizen, so the indefinite-leave group includes some British
+citizens; the Migration Observatory says its estimates of holders cannot be compared with
+it. [36](#source-settlement-and-migrant-status-36) These are "statistics in development".
+[35](#source-settlement-and-migrant-status-35)
 
 ### New social lettings record nationality, not immigration status {#settlement-and-migrant-status--social-lettings-nationality}
 
@@ -1399,6 +1457,22 @@ were from the European Economic Area and 8% from outside it. [38](#source-settle
 share was around 3–4% from 2008/09 to 2020/21, rose to 9% in 2023/24, then fell to 8%.
 [39](#source-settlement-and-migrant-status-39) Whether a tenant holds indefinite leave is not collected for new lets.
 [40](#source-settlement-and-migrant-status-40)
+
+## Subtleties {#settlement-and-migrant-status--subtleties-universal-credit-by-status}
+
+### The command paper's count, and employment on Universal Credit {#settlement-and-migrant-status--command-paper-213000}
+
+The command paper cites the Department for Work and Pensions as reporting 213,000 migrants
+with settlement claiming Universal Credit in June 2025.
+[37](#source-settlement-and-migrant-status-37) The department's employment rate for the
+indefinite-leave group on Universal Credit was 33%, the same as for British claimants.
+[34](#source-settlement-and-migrant-status-34)
+
+### No reliable claim rate {#settlement-and-migrant-status--no-reliable-claim-rate}
+
+Dividing the 213,000 claimants by the 621,000 to 820,000 estimated holders gives no
+reliable claim rate, because the Universal Credit group includes some British citizens and
+cannot be compared with those estimates.
 
 ## The rules on settlement: a record {#settlement-and-migrant-status--rules}
 
@@ -1511,28 +1585,54 @@ found stricter employment and language conditions reduced employment. [72](#sour
 ### Indefinite leave costs ten times its processing cost {#settlement-and-migrant-status--ilr-fee-ten-times-cost}
 
 The fee for indefinite leave is £3,226 against a Home Office estimated unit cost of £310.
-[74](#source-settlement-and-migrant-status-74) A Skilled Worker visa of over three years from overseas is £1,618 against
-£153. [75](#source-settlement-and-migrant-status-75) Across UK Visas and Immigration, fees recovered 256% of cost in 2024/25.
-[83](#source-settlement-and-migrant-status-83) Not every fee is above cost: a short visit visa is £135 against £159, and
-Global Talent with an approval letter £205 against £488. [80](#source-settlement-and-migrant-status-80) [81](#source-settlement-and-migrant-status-81)
+[74](#source-settlement-and-migrant-status-74) A Skilled Worker visa of over three years
+from overseas is £1,618 against £153. [75](#source-settlement-and-migrant-status-75)
+Across UK Visas and Immigration, fees recovered 256% of cost in 2024/25.
+[83](#source-settlement-and-migrant-status-83) Not every fee is above cost: a short visit
+visa is £135 against £159. [80](#source-settlement-and-migrant-status-80)
+[81](#source-settlement-and-migrant-status-81)
 
 ### The health surcharge is set at expected average use {#settlement-and-migrant-status--surcharge-matches-average-use}
 
-Most adults pay a surcharge of £1,035 per year of their visa. [84](#source-settlement-and-migrant-status-84) The Home
-Office sets it on "how much healthcare an 'average' Health Charge payer is expected to use",
-not on each person's use. [85](#source-settlement-and-migrant-status-85) A Lords committee found the calculation
-"unconvincing" and slightly high: £1,036 per person where it should have been £1,013.
-[86](#source-settlement-and-migrant-status-86) The surcharge is paid on top of tax and national insurance. For a single
-Skilled Worker, fees before settlement come to around £9,900 over five years and would be
-£16,900 over ten, mostly because the surcharge is paid every year. [87](#source-settlement-and-migrant-status-87)
+Most adults pay a £1,035 surcharge per year of their visa.
+[84](#source-settlement-and-migrant-status-84) The Home Office sets it on "how much
+healthcare an 'average' Health Charge payer is expected to use", not each person's use.
+[85](#source-settlement-and-migrant-status-85) It comes on top of tax and national
+insurance. A single Skilled Worker's fees before settlement come to around £9,900 over
+five years and would be £16,900 over ten. [87](#source-settlement-and-migrant-status-87)
 
 ### No recourse to public funds: council costs are measured, numbers are not {#settlement-and-migrant-status--nrpf-costs}
 
 People on temporary visas are usually barred from most benefits until they settle.
-[41](#source-settlement-and-migrant-status-41) The 91 councils that reported to the NRPF Network spent £94 million
-supporting households with no recourse in 2024/25. [91](#source-settlement-and-migrant-status-91) No official count exists of
-how many people, or how many children, are subject to the condition; the Home Affairs
-Committee expects longer routes to increase child poverty. [92](#source-settlement-and-migrant-status-92)
+[41](#source-settlement-and-migrant-status-41) The 91 councils that reported to the NRPF
+Network spent £94 million supporting households with no recourse in 2024/25.
+[91](#source-settlement-and-migrant-status-91) No official count exists of how many
+people, or how many children, are subject to the condition.
+[92](#source-settlement-and-migrant-status-92)
+
+## Subtleties {#settlement-and-migrant-status--subtleties-fees-and-costs}
+
+### Another fee below cost {#settlement-and-migrant-status--global-talent-fee-below-cost}
+
+Global Talent with an approval letter is £205 against a cost of £488.
+[80](#source-settlement-and-migrant-status-80)
+[81](#source-settlement-and-migrant-status-81)
+
+### The Lords committee's view {#settlement-and-migrant-status--lords-on-the-surcharge}
+
+A Lords committee found the calculation "unconvincing" and slightly high: £1,036 per
+person where it should have been £1,013. [86](#source-settlement-and-migrant-status-86)
+
+### Why ten years costs more {#settlement-and-migrant-status--why-fees-grow-over-ten-years}
+
+For a single Skilled Worker, the rise in fees before settlement from around £9,900 over
+five years to £16,900 over ten is mostly because the surcharge is paid every year.
+[87](#source-settlement-and-migrant-status-87)
+
+### Longer routes and child poverty {#settlement-and-migrant-status--longer-routes-and-child-poverty}
+
+The Home Affairs Committee expects longer routes to increase child poverty.
+[92](#source-settlement-and-migrant-status-92)
 
 ## Observations {#settlement-and-migrant-status--observations-settlement-fees-europe}
 
@@ -1549,22 +1649,41 @@ settlement costs were 336% higher than the average of the other European countri
 
 The Windrush Lessons Learned Review found the scandal "foreseeable and avoidable": the
 government removed and detained people, and denied others work, housing and services, even
-though they were lawfully entitled to them. [93](#source-settlement-and-migrant-status-93) [94](#source-settlement-and-migrant-status-94) The Home Office
-identified 164 people in the UK before 1973 who had been detained or removed since 2002.
-[95](#source-settlement-and-migrant-status-95) By August 2026 the compensation scheme had paid £133,475,539.07 on 4,221
-claims; of 11,690 final decisions, 4,009 were value offers and 6,741 found zero entitlement.
-[97](#source-settlement-and-migrant-status-97) [96](#source-settlement-and-migrant-status-96) The Windrush victims were entitled to stay under the law as it
-stood; the current proposal leaves Windrush grants out of scope. [55](#source-settlement-and-migrant-status-55)
+though they were lawfully entitled to them. [93](#source-settlement-and-migrant-status-93)
+[94](#source-settlement-and-migrant-status-94) By August 2026 the compensation scheme had
+paid £133,475,539.07 on 4,221 claims. [97](#source-settlement-and-migrant-status-97)
+[96](#source-settlement-and-migrant-status-96)
+
+## Subtleties {#settlement-and-migrant-status--subtleties-windrush-paid}
+
+### People detained or removed {#settlement-and-migrant-status--windrush-detained-or-removed}
+
+The Home Office identified 164 people in the UK before 1973 who had been detained or
+removed since 2002. [95](#source-settlement-and-migrant-status-95)
+
+### Compensation decisions {#settlement-and-migrant-status--windrush-compensation-decisions}
+
+Of 11,690 final compensation decisions, 4,009 were value offers and 6,741 found zero
+entitlement. [97](#source-settlement-and-migrant-status-97)
+[96](#source-settlement-and-migrant-status-96)
+
+### Windrush and the current proposal {#settlement-and-migrant-status--windrush-and-the-current-proposal}
+
+The Windrush victims were entitled to stay under the law as it stood; the current proposal
+leaves Windrush grants out of scope. [55](#source-settlement-and-migrant-status-55)
 
 ## Observations {#settlement-and-migrant-status--observations-ilr-polling}
 
 ### Removing existing indefinite leave is opposed 58–29 {#settlement-and-migrant-status--revoking-opposed-58-29}
 
-In September 2025, 58% opposed removing indefinite leave from people who already hold it and
-29% supported it. [100](#source-settlement-and-migrant-status-100) [99](#source-settlement-and-migrant-status-99) Even among those who supported ending new grants,
-only 41% backed removing it from current holders. [99](#source-settlement-and-migrant-status-99) Reform UK voters supported
-removal by 54%; Conservative voters split 44% to 42%; Labour, Liberal Democrat and Green
-voters opposed it by 71-80%. [101](#source-settlement-and-migrant-status-101) [102](#source-settlement-and-migrant-status-102)
+In September 2025, 58% opposed removing indefinite leave from those who hold it and 29%
+supported it. [100](#source-settlement-and-migrant-status-100)
+[99](#source-settlement-and-migrant-status-99) Even among those who supported ending new
+grants, only 41% backed removing it from current holders.
+[99](#source-settlement-and-migrant-status-99) Reform UK voters supported removal by 54%;
+Conservative voters split 44% to 42%; Labour, Liberal Democrat and Green voters opposed it
+by 71-80%. [101](#source-settlement-and-migrant-status-101)
+[102](#source-settlement-and-migrant-status-102)
 
 ### Ending it for new arrivals splits evenly {#settlement-and-migrant-status--ending-for-new-arrivals-splits}
 

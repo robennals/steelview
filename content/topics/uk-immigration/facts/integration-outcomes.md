@@ -1729,11 +1729,21 @@ Between 2011 and 2021 the foreign-born share rose by about 10 percentage points 
 
 ### EU-born residents drove the change in some towns, not in most {#integration-outcomes--eu-share-of-the-change}
 
-EU-born residents accounted for more than half of the rise in 6 of the 20 places: Boston, where they were almost all of it, Peterborough, Thurrock, Luton, Barking and Dagenham, and Watford. In the other 14, including Hillingdon, Dartford, Swindon, Sandwell and Sutton, people born outside the EU accounted for half or more. Across England and Wales the two contributed about equally. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+EU-born residents accounted for more than half of the rise in 6 of the 20 places: Boston, where they were almost all of it, Peterborough, Thurrock, Luton, Barking and Dagenham, and Watford. In the other 14, people born outside the EU accounted for half or more. Across England and Wales the two contributed about equally. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
 
 ### The detailed origins of the non-EU rise vary by place {#integration-outcomes--non-eu-origins-vary}
 
-The same Census tables split the non-EU-born by continent. In Hillingdon, Swindon, Sandwell and Leicester most of the non-EU rise was in people born in the Middle East and Asia; in Dartford and Salford a large part was in people born in Africa. The Census groups do not separate Muslim-majority countries, so these figures cannot say how much of the change was from any particular culture or religion. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+In Hillingdon, Swindon, Sandwell and Leicester most of the non-EU rise was in people born in the Middle East and Asia; in Dartford and Salford a large part was in people born in Africa. The Census groups do not separate Muslim-majority countries, so these figures cannot say how much of the change was from any particular culture or religion. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+
+## Subtleties {#integration-outcomes--subtleties-fastest-changing-areas}
+
+### Places where the non-EU-born led {#integration-outcomes--non-eu-led-places}
+
+The 14 places where people born outside the EU accounted for half or more of the rise include Hillingdon, Dartford, Swindon, Sandwell and Sutton. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+
+### Origins are by continent {#integration-outcomes--census-origins-by-continent}
+
+The same Census tables split the non-EU-born by continent. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
 
 ## Observations {#integration-outcomes--observations-english-proficiency}
 
@@ -1791,15 +1801,15 @@ The ONS figures are not age-standardised, and the Muslim group is the youngest i
 
 ### Denmark: immigrants from MENAPT countries are net costs; Western immigrants are net contributors {#integration-outcomes--denmark-menapt-vs-western}
 
-In 2019, immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey (the ministry's "MENAPT" group) cost Danish public finances DKK 79 thousand each on average, while immigrants from Western countries contributed DKK 52 thousand each, and people of Danish origin DKK 22 thousand. Immigrants and descendants together cost DKK 16 billion, about DKK 21 thousand per person. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
+In 2019, immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey (the Danish finance ministry's "MENAPT" group) cost Danish public finances DKK 79 thousand each on average, while immigrants from Western countries contributed DKK 52 thousand each, and people of Danish origin DKK 22 thousand. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
 
 ### The cost fell sharply as employment rose {#integration-outcomes--denmark-cost-fell-with-employment}
 
-The average net cost of MENAPT immigrants fell by about DKK 37 thousand a person between 2014 and 2019. The ministry attributes about half the fall for non-Western immigrants to stronger attachment to the labour market, during years when employment was rising for everyone. Had MENAPT immigrants aged 25 to 64 worked at the Danish-origin rate, their 2019 contribution would have been about DKK 12 billion higher. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
+The average net cost of MENAPT immigrants fell by about DKK 37 thousand a person between 2014 and 2019. The Danish finance ministry attributes about half the fall for non-Western immigrants to stronger attachment to the labour market, during years when employment was rising for everyone. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
 
 ### Reason for migrating explains part of the gap, not all of it {#integration-outcomes--denmark-route-matters}
 
-Immigrants who came as refugees cost about DKK 95 thousand each in 2019, while those who came to work contributed about DKK 120 thousand. MENAPT immigrants came mainly as refugees or family members, Western immigrants mainly to work or study. With the Western mix of reasons for migrating, MENAPT immigrants' average would have been about DKK 55 thousand higher, still negative. [21](#source-integration-outcomes-21) [22](#source-integration-outcomes-22)
+Immigrants who came as refugees cost about DKK 95 thousand each in 2019, while those who came to work contributed about DKK 120 thousand. MENAPT immigrants came mainly as refugees or family members, Western ones mainly to work or study. With the Western mix of reasons, the MENAPT average would have been about DKK 55 thousand higher, still negative. [21](#source-integration-outcomes-21) [22](#source-integration-outcomes-22)
 
 ### Descendants' figures mostly reflect their age {#integration-outcomes--denmark-descendants-are-children}
 
@@ -1811,6 +1821,14 @@ Descendants of every origin, including Western, show net costs because most are 
 
 These are annual accounts for each year, not lifetime ones, and are not adjusted for the business cycle, which is why the Danish-origin line swings from year to year. They allocate shared spending such as defence across everyone. Denmark's MENAPT intake was mainly refugees and their families, so the figures say more about humanitarian routes than about work routes such as the UK's. [25](#source-integration-outcomes-25) [21](#source-integration-outcomes-21)
 
+### All immigrants and descendants together {#integration-outcomes--denmark-all-immigrants-and-descendants}
+
+In 2019 immigrants and descendants together cost Danish public finances DKK 16 billion, about DKK 21 thousand per person. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
+
+### What matching Danish employment would add {#integration-outcomes--denmark-employment-gap-value}
+
+Had MENAPT immigrants aged 25 to 64 worked at the Danish-origin rate, their 2019 contribution would have been about DKK 12 billion higher. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
+
 ## Observations {#integration-outcomes--observations-netherlands-by-motive}
 
 ### Netherlands: labour migrants are lifetime net contributors; asylum and family migrants are large net costs {#integration-outcomes--netherlands-by-motive}
@@ -1821,7 +1839,7 @@ An independent study estimates that, over a lifetime and including the second ge
 
 ### Region of origin produces gaps as large as reason for migrating {#integration-outcomes--netherlands-by-region}
 
-Western immigrants contribute €25,000 on average and non-Western immigrants cost nearly €275,000; Morocco, the Horn of Africa and Sudan sit at a net cost of "€550,000 to €600.000" per immigrant, in the study's own words. The authors find that where the first generation is a large net cost, the second generation is usually also negative or at best budget-neutral. [28](#source-integration-outcomes-28) [29](#source-integration-outcomes-29)
+Western immigrants contribute €25,000 on average and non-Western immigrants cost nearly €275,000; Morocco, the Horn of Africa and Sudan sit at a net cost of "€550,000 to €600.000" per immigrant. The authors find that where the first generation is a large net cost, the second generation is usually also negative or at best budget-neutral. [28](#source-integration-outcomes-28) [29](#source-integration-outcomes-29)
 
 ## Subtleties {#integration-outcomes--subtleties-netherlands-by-region}
 
@@ -1845,7 +1863,7 @@ R3 is everything outside Western Europe, North America, Oceania and the Eastern 
 
 ### Most minority groups outscore White British pupils at GCSE {#integration-outcomes--minority-pupils-outperform}
 
-In 2022/23 Chinese (65.5) and Indian (59.4) pupils had the highest average Attainment 8 scores, and Bangladeshi, Black African and Pakistani pupils also scored above White British pupils (44.9). Gypsy and Roma pupils (20.3), Irish traveller pupils (26.8) and Mixed White and Black Caribbean pupils (39.1) had the lowest, with Black Caribbean pupils also below White British. The Education Policy Institute found most ethnic groups achieved higher GCSE grades than White British pupils in 2023. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
+In 2022/23 Chinese (65.5) and Indian (59.4) pupils had the highest average Attainment 8 scores, and Bangladeshi, Black African and Pakistani pupils also scored above White British pupils (44.9). Gypsy and Roma, Irish traveller and Mixed White and Black Caribbean pupils had the lowest, with Black Caribbean pupils also below White British. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
 
 ## Observations {#integration-outcomes--observations-gcse-fsm}
 
@@ -1857,13 +1875,23 @@ Among pupils eligible for free school meals, White British pupils scored lower t
 
 ### Minority pupils enter university at higher rates, and White pupils at the lowest {#integration-outcomes--university-entry}
 
-In 2024, 66.1% of Chinese state-school pupils went to university at 18, and 29.8% of White pupils, the lowest rate. Every group's entry rate rose between 2006 and 2024. Research cited by the publisher finds almost all minority groups more likely to go to university by 19 than White British pupils, even after allowing for prior attainment and family background. [38](#source-integration-outcomes-38) [39](#source-integration-outcomes-39)
+In 2024, 66.1% of Chinese state-school pupils went to university at 18, and 29.8% of White pupils, the lowest rate. Research cited by the publisher finds almost all minority groups more likely to go to university by 19 than White British pupils, even after allowing for prior attainment and family background. [38](#source-integration-outcomes-38) [39](#source-integration-outcomes-39)
+
+## Subtleties {#integration-outcomes--subtleties-higher-education-entry}
+
+### Every group rose {#integration-outcomes--every-group-entry-rate-rose}
+
+Every group's entry rate rose between 2006 and 2024. [38](#source-integration-outcomes-38) [39](#source-integration-outcomes-39)
 
 ## Subtleties {#integration-outcomes--subtleties-gcse-by-ethnicity}
 
 ### Ethnicity is not generation {#integration-outcomes--ethnicity-is-not-generation}
 
 These are ethnic groups, most of whose pupils were born in the UK. The school figures show how the children and grandchildren of earlier migrants are doing, not how recent arrivals or the children of recent arrivals are doing, and they cover state-school pupils in England only. [38](#source-integration-outcomes-38) [40](#source-integration-outcomes-40)
+
+### The lowest scores, and a second source {#integration-outcomes--lowest-attainment-scores}
+
+Average Attainment 8 scores in 2022/23 were 20.3 for Gypsy and Roma pupils, 26.8 for Irish traveller pupils and 39.1 for Mixed White and Black Caribbean pupils. The Education Policy Institute found most ethnic groups achieved higher GCSE grades than White British pupils in 2023. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
 
 ## Observations {#integration-outcomes--observations-segregation}
 
@@ -1895,13 +1923,17 @@ A 2017 analysis of 2011–16 school census data counted a school as segregated w
 
 ### Research finds a small negative association between diversity and trust, weaker or absent once deprivation is allowed for {#integration-outcomes--diversity-and-trust-research}
 
-Most studies find more diverse communities report less trust, and a 2005 British survey linked rising diversity to lower neighbourhood trust. Other British studies find no strong erosion once deprivation is taken into account, and a London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
+Most studies find more diverse communities report less trust, and a 2005 British survey linked rising diversity to lower neighbourhood trust. Other British studies find no strong erosion once deprivation is taken into account, and a London study found diversity linked to higher perceived cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
 ## Subtleties {#integration-outcomes--subtleties-cohesion-and-trust}
 
 ### The research measures diversity, not immigration or its pace {#integration-outcomes--diversity-not-immigration}
 
 Almost all of the trust research relates trust to an area's ethnic mix, not to immigration or to how fast an area changed, and the national survey does not link trust to local migration. A national trend cannot show whether places that changed fastest lost the most trust. [53](#source-integration-outcomes-53)
+
+### Segregation within neighbourhoods {#integration-outcomes--london-segregation-and-cohesion}
+
+The London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
 ## Observations {#integration-outcomes--observations-attitudes-homosexuality}
 
