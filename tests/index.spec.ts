@@ -55,9 +55,14 @@ test('rapid clicks on two rows leave only the last one open', async ({ page }) =
 test('the clicked row stays where it was while the row above it closes', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/');
-  await rows(page).nth(2).scrollIntoViewIfNeeded();
-  await page.evaluate(() => window.scrollBy(0, 200));
+  // Put the second row's head 120px down the screen, with the open first row
+  // above it, so the click needs no scrolling of its own.
+  await page.evaluate(() => {
+    const row = document.querySelectorAll('.sv-row')[1];
+    window.scrollTo(0, row.getBoundingClientRect().top + window.scrollY - 120);
+  });
   const before = (await rows(page).nth(1).boundingBox())!.y;
+  expect(before).toBeCloseTo(120, 0);
   await toggle(page, 1).click({ position: { x: 400, y: 12 } });
   await page.waitForTimeout(900);
   const after = (await rows(page).nth(1).boundingBox())!.y;
@@ -77,7 +82,7 @@ test.describe('without JavaScript', () => {
 
   test('a topic title still leads to its report', async ({ page }) => {
     await page.goto('/');
-    await rows(page).nth(1).getByRole('link', { name: 'The US war with Iran', exact: true }).click();
+    await page.getByRole('link', { name: 'The US war with Iran', exact: true }).click();
     await expect(page).toHaveURL(/\/topics\/us-iran-war$/);
   });
 });

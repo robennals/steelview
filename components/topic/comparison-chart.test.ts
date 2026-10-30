@@ -69,3 +69,21 @@ test('a dense preview keeps every item and states the highlighted one\'s rank', 
   assert.equal(html.match(/class="sv-comparison__column"/g)?.length, 32);
   assert.match(html, /United Kingdom: 24 — 17th of 32/);
 });
+
+test('a dense preview names its true highest and lowest items, whatever the authored order', () => {
+  const items = Array.from({ length: 14 }, (_, i) => ({ label: `Item ${i}`, value: [73, 147, 20, 159, 3, 6, 50, 40, 30, 25, 60, 70, 80, 90][i] }));
+  const html = renderPreview({ id: 'unsorted', title: 'Unsorted', description: 'd', unit: 'count', valueLabel: 'Hours', sources: [1], items });
+  assert.match(html, /Highest: Item 3, 159/);
+  assert.match(html, /Lowest: Item 4, 3/);
+});
+
+test('a dense preview with several highlighted items, or negative values, falls back to clamped rows', () => {
+  const several = Array.from({ length: 14 }, (_, i) => ({ label: `Item ${i}`, value: i + 1, highlight: i % 2 === 0 || undefined }));
+  const negative = Array.from({ length: 14 }, (_, i) => ({ label: `Item ${i}`, value: i - 5 }));
+  for (const list of [several, negative]) {
+    const html = renderPreview({ id: 'x', title: 'X', description: 'd', unit: 'count', valueLabel: 'v', sources: [1], items: list });
+    assert.doesNotMatch(html, /sv-comparison__columns/);
+    assert.match(html, /data-compact="true"/);
+    assert.doesNotMatch(html, / of 14/);
+  }
+});

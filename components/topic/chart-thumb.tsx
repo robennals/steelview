@@ -25,12 +25,18 @@ export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
   if (!comparison) return null;
-  const max = Math.max(...comparison.items.map(item => Math.abs(item.value))) || 1;
+  // Columns stand on a zero line, so negative values hang below it.
+  const values = comparison.items.map(item => item.value);
+  const top = Math.max(0, ...values);
+  const range = top - Math.min(0, ...values) || 1;
+  const width = 100 / comparison.items.length;
   return (
-    <div className="sv-thumb sv-thumb--columns" aria-hidden="true">
+    <svg className="sv-thumb" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
       {comparison.items.map((item, i) => (
-        <span key={i} className="sv-thumb__column" data-highlight={item.highlight || undefined} style={{ height: `${Math.abs(item.value) / max * 100}%` }} />
+        <rect key={i} className="sv-thumb__column" data-highlight={item.highlight || undefined}
+          x={i * width + width * 0.08} width={width * 0.84}
+          y={(top - Math.max(0, item.value)) / range * 100} height={Math.max(0.5, Math.abs(item.value) / range * 100)} />
       ))}
-    </div>
+    </svg>
   );
 }

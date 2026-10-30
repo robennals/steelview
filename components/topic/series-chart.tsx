@@ -408,16 +408,16 @@ function Reading({
   const description = [
     series.description,
     `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
-    window
+    window && !preview
       ? `The graph shows ${spanText(window)}; a strip above it shows the full published range ${spanText(series.coverage)}.`
       : null,
     hasOwnSpans(series)
       ? `Each line runs its own source's published range: ${reading.lines.map(line => `${line.name}, ${spanText(lineSpan(series, line))}`).join('; ')}.`
       : null,
     series.breaks.length > 0
-      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source, explained in Method Changes below this graph.`
+      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source${preview ? '' : ', explained in Method Changes below this graph'}.`
       : null,
-    events.length > 0
+    events.length > 0 && !preview
       ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed below it.`
       : null,
     statusSentence ? `${statusSentence.charAt(0).toUpperCase()}${statusSentence.slice(1)}.` : null,

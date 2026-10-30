@@ -128,3 +128,11 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   assert.match(html, /href="\/topics\/uk-immigration\/facts\/immigration-against-the-long-run#source-immigration-against-the-long-run-\d+"/);
   assert.doesNotMatch(html, /href="#/);
 });
+
+test('a preview\'s screen-reader description mentions no event strip or method-change section it does not draw', async () => {
+  const topic = await loadTopic('us-iran-war');
+  const fact = topic.facts.find(f => f.series?.events.length)!;
+  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: fact.id, series: fact.series!, preview: { href: '/x' } }));
+  assert.doesNotMatch(html, /numbered on a strip/);
+  assert.doesNotMatch(html, /Method Changes below/);
+});

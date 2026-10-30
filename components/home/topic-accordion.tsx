@@ -6,13 +6,46 @@ import { createContext, useContext, useRef, useState, type ReactNode } from 'rea
 /** How long a row takes to open; matches `.sv-row__body` in globals.css. */
 const OPEN_MS = 550;
 
-const OpenRow = createContext<{ open: string; setOpen: (slug: string) => void }>({ open: '', setOpen: () => {} });
+type Accordion = {
+  open: string;
+  setOpen: (slug: string) => void;
+  /** Starts holding one row's head still, cancelling any hold already running. */
+  hold: (row: HTMLElement) => void;
+};
+
+const OpenRow = createContext<Accordion>({ open: '', setOpen: () => {}, hold: () => {} });
 
 /** The home page's topic rows, exactly one of them open. Starts with `initial` open. */
 export function TopicAccordion({ initial, children }: { initial: string; children: ReactNode }) {
   const [open, setOpen] = useState(initial);
+  const stopHolding = useRef<() => void>(() => {});
+
+  // Scroll in step with the transition so the clicked head stays where it was
+  // clicked. A second click, or the reader scrolling, ends the hold.
+  const hold = (row: HTMLElement) => {
+    stopHolding.current();
+    const before = row.getBoundingClientRect().top;
+    const start = performance.now();
+    let frame = 0;
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('wheel', stop);
+      window.removeEventListener('touchstart', stop);
+    };
+    const step = (now: number) => {
+      const drift = row.getBoundingClientRect().top - before;
+      if (Math.abs(drift) > 0.5) window.scrollBy(0, drift);
+      if (now - start < OPEN_MS + 100) frame = requestAnimationFrame(step);
+      else stop();
+    };
+    window.addEventListener('wheel', stop, { passive: true });
+    window.addEventListener('touchstart', stop, { passive: true });
+    stopHolding.current = stop;
+    frame = requestAnimationFrame(step);
+  };
+
   return (
-    <OpenRow.Provider value={{ open, setOpen }}>
+    <OpenRow.Provider value={{ open, setOpen, hold }}>
       <div className="sv-rows">{children}</div>
     </OpenRow.Provider>
   );
@@ -39,7 +72,7 @@ export function TopicRow({ slug, title, href, meta, subtitle, thumbs, children }
   thumbs: ReactNode;
   children: ReactNode;
 }) {
-  const { open, setOpen } = useContext(OpenRow);
+  const { open, setOpen, hold } = useContext(OpenRow);
   const row = useRef<HTMLElement>(null);
   const isOpen = open === slug;
   const bodyId = `topic-${slug}-preview`;
@@ -49,17 +82,8 @@ export function TopicRow({ slug, title, href, meta, subtitle, thumbs, children }
       setOpen('');
       return;
     }
-    const el = row.current;
-    const before = el?.getBoundingClientRect().top ?? 0;
+    if (row.current) hold(row.current);
     setOpen(slug);
-    const start = performance.now();
-    const hold = (now: number) => {
-      if (!el) return;
-      const drift = el.getBoundingClientRect().top - before;
-      if (Math.abs(drift) > 0.5) window.scrollBy(0, drift);
-      if (now - start < OPEN_MS + 100) requestAnimationFrame(hold);
-    };
-    requestAnimationFrame(hold);
   };
 
   return (

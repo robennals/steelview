@@ -17,3 +17,7 @@ test('rankOf gives tied items the better rank, whatever the input order', () => 
   const items = [{ label: 'b', value: 5 }, { label: 'a', value: 9 }, { label: 'UK', value: 5, highlight: true }];
   assert.deepEqual(rankOf(items), { label: 'UK', rank: 2, of: 3 });
 });
+
+test('rankOf names no rank when several items are highlighted', () => {
+  assert.equal(rankOf([{ label: 'a', value: 3, highlight: true }, { label: 'b', value: 2, highlight: true }, { label: 'c', value: 1 }]), null);
+});

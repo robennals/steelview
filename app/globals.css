@@ -1817,7 +1817,10 @@
 
   .sv-home__about:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 
-  .sv-rows { display: flex; flex-direction: column; gap: 0.75rem; }
+  /* Opening a row holds the clicked head still by scrolling in step with the
+     row above closing (topic-accordion.tsx); the browser's own scroll
+     anchoring would correct a second time, so it is off for the rows. */
+  .sv-rows { display: flex; flex-direction: column; gap: 0.75rem; overflow-anchor: none; }
 
   .sv-row {
     background: var(--paper);
@@ -2055,24 +2058,19 @@
   .sv-carousel__strip::-webkit-scrollbar { display: none; }
   .sv-carousel__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
-  /* The strip is as tall as its tallest slide (at least about the height of
-     the viewpoints and report button beside it), and every slide stretches to
-     it, so all the charts in one carousel are the same size and none is cut
-     off. */
-  .sv-carousel__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; min-height: 17rem; scroll-snap-align: start; }
+  /* Every slide is one fixed height, about that of the viewpoints and report
+     button beside the carousel, so every chart is the same size. A chart with
+     too much to fit is drawn in a clamped form instead (see the preview rules
+     after the chart styles). */
+  .sv-carousel__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; height: 18rem; scroll-snap-align: start; }
 
   .sv-slide { display: flex; flex: 1; flex-direction: column; min-width: 0; }
-  .sv-slide .sv-chart { flex: 1; }
 
-  .sv-slide__label {
-    margin: 0 0 0.35rem;
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
+  /* On a phone titles and legends wrap onto more lines, so slides are taller. */
+  @media (max-width: 40rem) {
+    .sv-carousel__slide { height: 25rem; }
   }
+  .sv-slide .sv-chart { flex: 1; }
 
   .sv-slide .sv-chart { margin: 0; }
   .sv-slide .sv-chart__caption .sv-graph-heading { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -2119,9 +2117,15 @@
     .sv-carousel__count-label { display: none; }
   }
 
+  /* Below 64rem the carousel takes the row's full width, so its charts keep a
+     readable size; the thumbnails go on phones. */
+  @media (max-width: 64rem) {
+    .sv-row__columns { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  }
+
   @media (max-width: 47.5rem) {
     .sv-row__thumbs { display: none; }
-    .sv-row__columns { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-inline: 1rem; }
+    .sv-row__columns { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
   }
 
@@ -2658,8 +2662,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-breakdown-table th:first-child { text-align: left; }
 .sv-breakdown-table caption { caption-side: top; text-align: left; padding: 6px 0; color: var(--ink-3); }
 
-/* Compact chart previews (home page). Same data and rules as the full charts:
-   every reading, every item, the credit — only the chrome is lighter. */
+/* Compact chart previews (home page): one reading of a series, every item of a
+   comparison, and the credit. The full chart, one click away, has the rest. */
 /* A preview fills whatever height its container gives it, so every slide in a
    carousel draws its chart at the same size: the figure is a column whose plot
    (or bar list) takes the space left under the caption. */
@@ -2687,6 +2691,13 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
+/* Clamped rows: a long comparison squeezed into the fixed slide height. */
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .35rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :last-child { white-space: nowrap; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .64rem; line-height: 1.1; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :first-child { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__track { height: .4rem; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] { justify-content: space-between; }
 .sv-chart[data-preview] .sv-chart__credit { margin-top: .25rem; font-size: .7rem; }
 .sv-comparison__columns { list-style: none; margin: 1rem 0 .35rem; padding: 0; display: flex; align-items: flex-end; gap: 2px; height: 9rem; }
 .sv-comparison__column { flex: 1; height: 100%; display: flex; align-items: flex-end; }
@@ -2697,6 +2708,5 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 
 /* A chart's silhouette on a collapsed home-page row: decoration only. */
 .sv-thumb { display: block; width: 100%; height: 100%; }
-.sv-thumb--columns { display: flex; align-items: flex-end; gap: 1px; }
-.sv-thumb__column { flex: 1; min-height: 1px; background: var(--sv-series-1); opacity: .35; border-radius: 1px 1px 0 0; }
-.sv-thumb__column[data-highlight] { background: var(--accent); opacity: 1; }
+.sv-thumb__column { fill: var(--sv-series-1); opacity: .35; }
+.sv-thumb__column[data-highlight] { fill: var(--accent); opacity: 1; }

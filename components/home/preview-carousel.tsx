@@ -10,12 +10,14 @@ const noSubscription = () => () => {};
  * Every slide is server-rendered into a horizontally scroll-snapped strip, so
  * without JavaScript each chart is still reachable by scrolling. Script adds
  * the previous/next buttons, one dot per chart, a "2 / 4 · label" count and
- * arrow keys. Every slide stretches to the tallest one (globals.css), so the
- * charts are all one size and nothing moves when the chart changes.
+ * arrow keys. Every slide has one fixed height (globals.css), so the charts
+ * are all one size and nothing moves when the chart changes.
  */
 export function PreviewCarousel({ name, labels, children }: { name: string; labels: string[]; children: ReactNode }) {
   const strip = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
+  // Announced only where a move ends, not for every slide a smooth scroll passes.
+  const [announced, setAnnounced] = useState(0);
   // False in the server render and true once hydrated: the controls need script.
   const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
   const slides = Children.toArray(children);
@@ -26,6 +28,7 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
     const next = (to + slides.length) % slides.length;
     el.scrollTo({ left: next * el.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     setIndex(next);
+    setAnnounced(next);
   };
 
   const onKeyDown = (event: KeyboardEvent) => {
@@ -39,6 +42,8 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
         className="sv-carousel__strip"
         ref={strip}
         tabIndex={0}
+        role="group"
+        aria-label={`${name} charts. Use the left and right arrow keys to move between them.`}
         onKeyDown={onKeyDown}
         onScroll={event => {
           const el = event.currentTarget;
@@ -59,7 +64,8 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
               <button type="button" key={i} className="sv-carousel__dot" aria-label={`Chart ${i + 1}: ${label}`} aria-current={i === index || undefined} onClick={() => go(i)} />
             ))}
           </div>
-          <p className="sv-carousel__count" aria-live="polite">{index + 1} / {slides.length}<span className="sv-carousel__count-label"> · {labels[index]}</span></p>
+          <p className="sv-carousel__count" aria-hidden="true">{index + 1} / {slides.length}<span className="sv-carousel__count-label"> · {labels[index]}</span></p>
+          <p className="sv-visually-hidden" aria-live="polite">Chart {announced + 1} of {slides.length}: {labels[announced]}</p>
           <button type="button" className="sv-carousel__step" aria-label="Next chart" onClick={() => go(index + 1)}>›</button>
         </div>
       )}
