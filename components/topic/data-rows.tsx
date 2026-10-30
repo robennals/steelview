@@ -13,7 +13,7 @@ const THUMBS = 6;
 
 type ChartStepProps = { step: DataStep; number: number };
 
-/** One chart: what to notice in it, stepped through observation by observation, beside it. */
+/** One chart: what to notice in it, stepped through observation by observation, on the left of it. */
 function ChartStep({ step, number }: ChartStepProps) {
   return (
     <div className="sv-walk__step" data-chart>
@@ -34,11 +34,12 @@ function ChartStep({ step, number }: ChartStepProps) {
 type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, DataStep[]> };
 
 /**
- * The Data section: one row per headline data collection, laid out like the
- * viewpoints. Closed, a row is its title, a one-line overview and its charts in
- * miniature; open, it steps through those charts one at a time, each beside
- * the observations made about it. "Explore this data" opens the collection at
- * that chart, with its controls and the rest of the collection a tab away.
+ * The Data section: one row per headline data collection. Closed, a row is
+ * its title, a one-line overview and its first charts in miniature; open, every
+ * chart runs across the top as a miniature, and the chosen one sits large under
+ * them, with the observations made about it on its left. "Explore this data"
+ * opens the collection at that chart, with its controls and the rest of the
+ * collection a tab away.
  * Supporting collections are read inside their parent, so have no row.
  */
 export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
@@ -73,7 +74,13 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
           >
             {steps.length > 0 && (
               <LazyCharts load={rowCharts.bind(null, slug, 'data', fact.id)}>
-                <Walkthrough name={title} headings={steps.map(s => s.chart.label)} noun="Chart" endLabel="Last chart">
+                <Walkthrough
+                  name={title}
+                  headings={steps.map(s => s.chart.label)}
+                  noun="Chart"
+                  endLabel="Last chart"
+                  thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
+                >
                   {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
                 </Walkthrough>
               </LazyCharts>

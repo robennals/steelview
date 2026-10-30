@@ -2179,7 +2179,8 @@
   .sv-walk__strip::-webkit-scrollbar { display: none; }
   .sv-walk__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
-  .sv-walk__slide { display: flex; flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
+  /* Clipped so that nothing wide in one step can show over the next. */
+  .sv-walk__slide { display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
 
   /* The claim and its reasoning, then the chart it leans on. Every step is one
      height, so nothing moves between steps; long prose scrolls. */
@@ -2250,6 +2251,61 @@
 
   .sv-walk__next:hover:not(:disabled) { background: var(--accent); }
   .sv-walk__next:disabled { background: var(--paper-sunk); color: var(--ink-4); cursor: default; }
+
+  /* A data row: its charts in miniature across the top, then the chosen one
+     large, with room to breathe and its observations on its left. */
+  .sv-walk[data-layout="strip"] { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+  .sv-walk[data-layout="strip"] .sv-walk__controls { display: none; }
+
+  .sv-walk__tabs {
+    display: flex;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0 0 0.35rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    list-style: none;
+  }
+
+  .sv-walk__tabs li { flex: 0 0 8.5rem; min-width: 0; }
+
+  .sv-walk__tab {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink-4);
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .sv-walk__tab .sv-row__thumb { display: block; transition: border-color 0.2s; }
+  .sv-walk__tab:hover { color: var(--ink); }
+  .sv-walk__tab:hover .sv-row__thumb { border-color: var(--rule-strong); }
+  .sv-walk__tab:disabled { cursor: default; }
+  .sv-walk__tab[aria-current] { color: var(--ink); }
+  .sv-walk__tab[aria-current] .sv-row__thumb { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--paper); }
+
+  .sv-walk__tab-label {
+    display: -webkit-box;
+    margin-top: 0.3rem;
+    overflow: hidden;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  @media (width > 47.5rem) {
+    .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] {
+      grid-template-columns: minmax(15rem, 1fr) minmax(0, 2.4fr);
+      gap: 2.25rem;
+      height: 30rem;
+    }
+  }
 
   /* Beside the outline, previous/next buttons and a step count would only
      repeat it, so they appear only where it is hidden. */
@@ -2884,7 +2940,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    very wide and standard on a carousel slide, medium and tall beside a
    walkthrough's prose. It shows the one nearer the shape of the space it has,
    so it fills the height as well as the width. Each breakpoint sits between
-   the two shapes' width-to-height ratios: 4.0 and 3.16, then 2.0 and 1.33. */
+   the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.92 and 1.33. */
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
 .sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
 .sv-chart[data-preview] .sv-chart__svg:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
@@ -2892,7 +2948,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
 }
-@container (aspect-ratio < 1.63) {
+@container (aspect-ratio < 1.6) {
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-tall"] { display: block; }
 }
@@ -2916,6 +2972,10 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
+/* A walkthrough step has the width for a long value, such as £19,900,000,000. */
+@media (width > 47.5rem) {
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 6.5rem; }
+}
 /* Clamped rows: a long comparison squeezed into the fixed slide height. */
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .35rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :last-child { white-space: nowrap; }
