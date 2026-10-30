@@ -2532,6 +2532,60 @@
     color: var(--accent);
   }
 
+  /* ------------------------------------------- one visualization at a time */
+
+  /* A data collection opened at one of its visualizations shows that one
+     alone, at full size with its own controls, under tabs for the rest
+     (viz-tabs.tsx). Everything else in the report waits behind "Whole
+     report", except its sources, which the visualization's footnotes link to. */
+  .sv-factpage[data-focus] .sv-factpage__body > :not(.sv-viz, .sv-references) { display: none; }
+  .sv-factpage[data-focus] .sv-viz:not([data-viz-active]) { display: none; }
+  /* The visualization takes the sheet's full width; its prose keeps a reading width. */
+  .sv-factpage[data-focus] .sv-factpage__body { max-width: none; }
+
+  /* In the sheet, a single visualization gets nearly the whole screen. */
+  @media (min-width: 40rem) {
+    .sv-modal__panel:has(.sv-factpage[data-focus]) {
+      width: min(76rem, 100%);
+      height: min(92dvh, 64rem);
+    }
+  }
+
+  /* One row that scrolls sideways, however many visualizations there are. */
+  .sv-viz-tabs ul {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0.75rem 0 1.25rem;
+    padding: 0 0 0.9rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    border-bottom: 1px solid var(--rule);
+    list-style: none;
+  }
+
+  .sv-viz-tabs li { flex: none; }
+
+  .sv-viz-tabs button {
+    max-width: 22rem;
+    padding: 0.4rem 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 99px;
+    background: var(--paper);
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .sv-viz-tabs button:hover { color: var(--ink); border-color: var(--rule-strong); }
+  .sv-viz-tabs button[aria-current] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .sv-viz-tabs .sv-viz-tabs__all { color: var(--accent); border-style: dashed; }
+
   .sv-modal__scroll {
     flex: 1 1 auto;
     /* Without this a flex child refuses to shrink below its content and the
