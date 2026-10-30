@@ -73,6 +73,24 @@ export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
   );
 }
 
+/**
+ * A step's chart, where any click follows the step's explore link, the chart's
+ * title included. That link is "Explore this data" on a viewpoint, and unseen
+ * in a data panel. A legend's definition still opens, and a modified click on
+ * the title is left to the browser.
+ */
+export function ExplorableChart({ children }: { children: ReactNode }) {
+  const onClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (event.target instanceof Element && event.target.closest('.sv-glossary')) return;
+    const explore = event.currentTarget.closest('.sv-walk__chart')?.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
+    if (!explore) return;
+    event.preventDefault();
+    explore.click();
+  };
+  return <div className="sv-slide sv-slide--explorable" onClick={onClick}>{children}</div>;
+}
+
 type PanelHostProps = { fact: string; title: string; overview: string; children: ReactNode };
 
 /**
@@ -122,7 +140,7 @@ function PanelSheet({ title, overview, observation, leave, children }: PanelShee
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={titleId} onClick={event => { if (event.target === dialogRef.current) leave(); }}>
       <div className="sv-modal__panel" data-wide>
         <div className="sv-modal__bar">
-          <p className="sv-modal__eyebrow">Data</p>
+          <h2 className="sv-modal__title" id={titleId}>{title}</h2>
           <button type="button" className="sv-modal__close" onClick={leave}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
@@ -132,7 +150,6 @@ function PanelSheet({ title, overview, observation, leave, children }: PanelShee
         </div>
         <div className="sv-modal__scroll">
           <article className="sv-factpage sv-factpanel" data-variant="modal">
-            <h2 className="sv-factpage__claim" id={titleId}>{title}</h2>
             {overview && <p className="sv-factpanel__overview">{overview}</p>}
             <ShownObservation.Provider value={observation}>{children}</ShownObservation.Provider>
           </article>

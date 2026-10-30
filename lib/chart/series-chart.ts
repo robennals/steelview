@@ -82,7 +82,7 @@ const previewGeometry = (width: number, height: number): ChartGeometry => ({
 export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
   'preview-wide': previewGeometry(760, 190),
   preview: previewGeometry(600, 190),
-  'preview-medium': previewGeometry(600, 312),
+  'preview-medium': previewGeometry(600, 338),
   'preview-tall': previewGeometry(520, 390),
   narrow: {
     width: 360,

@@ -5,6 +5,7 @@ import { useParams, usePathname, useRouter, useSelectedLayoutSegment } from 'nex
 import { topicPath } from '@/lib/content/types';
 import { SHEET_TITLE_ID } from '@/lib/modal/sheet-title';
 import { FactModal } from './fact-modal';
+import { SheetTitle } from './sheet-title';
 
 type Pending = { href: string; title: string | null; wide: boolean };
 
@@ -13,6 +14,8 @@ function pendingFor(event: MouseEvent, factsPrefix: string): Pending | null {
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return null;
   const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
   if (!(link instanceof HTMLAnchorElement) || link.hasAttribute('data-fact-expand') || link.hasAttribute('data-panel-link')) return null;
+  // A chart in a step opens through its "Explore this data", not its own title link.
+  if (link.closest('.sv-slide--explorable')) return null;
   if ((link.target && link.target !== '_self') || link.origin !== location.origin) return null;
   if (!link.pathname.startsWith(factsPrefix) || link.pathname === location.pathname) return null;
   // A row or chip names its fact; a citation's text is a phrase from the prose.
@@ -37,7 +40,7 @@ function PendingArticle({ title }: { title: string | null }) {
   return (
     <article className="sv-factpage" data-variant="modal" aria-busy="true">
       {/* The dialog is labelled by this heading, so it needs a name even blank. */}
-      <h2 className="sv-factpage__claim" id={SHEET_TITLE_ID} aria-label={title ? undefined : 'Loading data'}>{title}</h2>
+      <SheetTitle id={SHEET_TITLE_ID} label={title ? undefined : 'Loading data'}>{title}</SheetTitle>
       {slow && <p role="status">Loading data…</p>}
     </article>
   );

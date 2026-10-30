@@ -2,7 +2,7 @@ import type { Fact } from '@/lib/content/types';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
-import { PanelHost } from './explore-panels';
+import { ExplorableChart, PanelHost } from './explore-panels';
 import { ObservationCycler } from './observation-cycler';
 import { Prose } from './prose';
 import { ThumbStrip } from './thumb-strip';
@@ -26,8 +26,9 @@ function ChartStep({ step, number }: ChartStepProps) {
           : <p className="sv-walk__prose prose-body">{step.description}</p>}
       </div>
       <div className="sv-walk__chart">
-        <div className="sv-slide"><LazyChart index={number - 1} /></div>
-        <Prose html={step.exploreHtml} className="sv-walk__explore" />
+        <ExplorableChart><LazyChart index={number - 1} /></ExplorableChart>
+        {/* Not shown: this panel is the data. It is what a click on the chart follows. */}
+        <Prose html={step.exploreHtml} className="sv-walk__explore sv-walk__explore--unseen" />
       </div>
     </div>
   );
@@ -64,9 +65,8 @@ type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, Da
  * The Data section: one row per headline data collection. Closed, a row is
  * its title, a one-line overview and its first charts in miniature; open, every
  * chart runs across the top as a miniature, and the chosen one sits large under
- * them, with the observations made about it on its left. "Explore this data"
- * opens the collection at that chart, with its controls and the rest of the
- * collection a tab away.
+ * them, with the observations made about it on its left. Clicking the chart
+ * opens it in full, with its controls and the rest of the collection a tab away.
  * Supporting collections are read inside their parent, so have no row.
  */
 export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {

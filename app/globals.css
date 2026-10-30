@@ -480,9 +480,8 @@
     text-wrap: pretty;
   }
 
-  /* Headline facts, supporting facts and a fact's own page share one left
-     rule, so a reader learns one edge wherever a fact appears. */
-  :is(.sv-fact, .sv-subfact, .sv-factpage) {
+  /* A collection nested in a report keeps a left rule, marking what is nested. */
+  :is(.sv-fact, .sv-subfact) {
     padding-left: 0.9rem;
     border-left: 3px solid var(--ink);
   }
@@ -2227,11 +2226,13 @@
 
   .sv-walk__chart { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
   .sv-walk__chart .sv-slide { flex: 1; min-height: 0; }
+  .sv-slide--explorable { cursor: pointer; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
 
   .sv-walk__explore { margin-top: 0.5rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; }
   .sv-walk__explore p { margin: 0; }
+  .sv-walk__explore--unseen { display: none; }
   .sv-walk__explore p::after { content: " →"; color: var(--accent); }
 
   .sv-walk__controls { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.9rem; }
@@ -2460,7 +2461,6 @@
   }
 
   .sv-factpage {
-    /* The status rule runs the height of the fact, as it does on every row. */
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
   }
@@ -2592,6 +2592,25 @@
     padding-top: max(0.35rem, env(safe-area-inset-top));
     border-bottom: 1px solid var(--rule);
     background: var(--paper-raised);
+  }
+
+  .sv-modal__title-slot { flex: 1; min-width: 0; }
+
+  /* The report's title, here rather than over the data. */
+  .sv-modal__title {
+    flex: 1;
+    display: -webkit-box;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .sv-modal__eyebrow {
@@ -2960,7 +2979,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    very wide and standard on a carousel slide, medium and tall beside a
    walkthrough's prose. It shows the one nearer the shape of the space it has,
    so it fills the height as well as the width. Each breakpoint sits between
-   the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.92 and 1.33. */
+   the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.78 and 1.33. */
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
 .sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
 .sv-chart[data-preview] .sv-chart__svg:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
@@ -2968,7 +2987,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
 }
-@container (aspect-ratio < 1.6) {
+@container (aspect-ratio < 1.54) {
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-tall"] { display: block; }
 }
