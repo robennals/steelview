@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { RowThumb } from '@/components/home/topic-accordion';
 
 type ThumbStripProps = {
   /** Thumbnails, as `<li>`s, enough to fill the widest line. */
@@ -33,11 +34,13 @@ export function ThumbStrip({ thumbs, total }: ThumbStripProps) {
 
   const shown = Math.min(thumbs.length, total <= columns ? total : columns - 1);
   return (
-    <ol className="sv-row__thumbs sv-walk__thumbs" ref={list} aria-hidden="true">
+    <ol className="sv-row__thumbs sv-walk__thumbs" ref={list}>
       {thumbs.slice(0, shown)}
       {shown < total && (
         <li>
-          <div className="sv-row__thumb sv-walk__more">+{total - shown} more</div>
+          <RowThumb step={shown}>
+            <span className="sv-row__thumb sv-walk__more">+{total - shown} more</span>
+          </RowThumb>
         </li>
       )}
     </ol>

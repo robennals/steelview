@@ -4,10 +4,20 @@ import type { Locator, Page } from '@playwright/test';
 // viewpoint step's "Explore this data" opens that collection's own panel in a
 // pop-up; a citation elsewhere, as in a crux, opens its report over the page.
 
+/** Where to click a row's toggle: its corner, as the centre of a walkthrough row's head is a thumbnail. */
+export const headCorner = { position: { x: 8, y: 8 } };
+
 /** The row of the viewpoint `id`, opened. */
 export async function openViewpoint(page: Page, id: string): Promise<Locator> {
   const row = page.locator(`#viewpoint-${id}`);
-  await row.locator('.sv-row__toggle').click();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  return row;
+}
+
+/** The row of the data collection titled `title`, opened. */
+export async function openDataRow(page: Page, title: string): Promise<Locator> {
+  const row = page.locator('.sv-row--data').filter({ hasText: title });
+  await row.locator('.sv-row__toggle').click(headCorner);
   return row;
 }
 

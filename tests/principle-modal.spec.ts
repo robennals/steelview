@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { headCorner } from './topic-rows';
 
 const topic = '/topics/uk-immigration';
 const viewpoint = '#viewpoint-open-and-build';
@@ -8,7 +9,7 @@ const PRINCIPLE_TEXT = 'People should be free to trade, share knowledge';
 
 test('an inline principle pill opens its shared text and restores focus on close', async ({ page }) => {
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click();
+  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
   await page.locator(`${viewpoint} ${finalStep}`).click();
   const pill = page.locator(`${viewpoint} .prose-body a[href="${principle}"]`);
   await expect(pill).toHaveClass('sv-principle-cite');

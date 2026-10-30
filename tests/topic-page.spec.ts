@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openViewpoint } from './topic-rows';
+import { headCorner, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -24,7 +24,7 @@ test('a data collection loads its charts only when its row opens', async ({ page
   await expect(row.locator('.sv-row__title')).toBeVisible();
   await expect(row.locator('.sv-row__body')).toHaveAttribute('inert', '');
   await expect(row.locator('.sv-slide .sv-chart')).toHaveCount(0);
-  await row.locator('.sv-row__toggle').click();
+  await row.locator('.sv-row__toggle').click(headCorner);
   await expect(row.locator('.sv-row__body')).not.toHaveAttribute('inert', '');
   await expect(row.locator('.sv-slide .sv-chart').first()).toBeAttached();
 });
@@ -60,7 +60,7 @@ test('clicking a viewpoint step\'s chart opens the panel too, title included', a
 test('a data panel is the data: its charts open nothing, and have their controls', async ({ page }) => {
   await page.goto(TOPIC);
   const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click();
+  await row.locator('.sv-row__toggle').click(headCorner);
   const step = row.locator('.sv-walk__slide').first();
   await expect(step.locator('.sv-chart').first()).toBeVisible();
   await expect(row.locator('.sv-walk__explore')).toHaveCount(0);
@@ -75,7 +75,7 @@ test('a data panel is the data: its charts open nothing, and have their controls
 test('a chart\'s description is one line until opened, and method notes are inside it', async ({ page }) => {
   await page.goto(TOPIC);
   const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click();
+  await row.locator('.sv-row__toggle').click(headCorner);
   const step = row.locator('.sv-walk__slide').first();
   const about = step.locator('.sv-chart__about').first();
   await expect(about).toBeVisible();
@@ -87,10 +87,55 @@ test('a chart\'s description is one line until opened, and method notes are insi
 test('the arrows move the chart strip and leave the selected chart alone', async ({ page }) => {
   await page.goto(TOPIC);
   const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click();
+  await row.locator('.sv-row__toggle').click(headCorner);
   const selected = row.locator('.sv-walk__tab[aria-current]');
   const before = await selected.innerText();
   await row.getByRole('button', { name: 'Show later charts' }).click();
   await expect.poll(() => row.locator('.sv-walk__tabs').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
   await expect(selected).toHaveText(before);
+});
+
+// A closed row's thumbnails are a way in: each opens the row at its own step.
+test('a thumbnail opens a data row at that chart', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-walk__thumb').nth(2).click();
+  await expect(row).toHaveAttribute('data-open', 'true');
+  await expect(row.locator('.sv-walk__tab').nth(2)).toHaveAttribute('aria-current', 'step');
+  await expect(row.locator('.sv-walk__slide').nth(2)).toBeInViewport({ ratio: 0.5 });
+});
+
+test('the "more" tile opens a data row at the first chart it stands for', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-walk__thumb', { hasText: 'more' }).click();
+  await expect(row.locator('.sv-walk__tab').nth(6)).toHaveAttribute('aria-current', 'step');
+});
+
+test('a thumbnail opens a viewpoint at that step', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('#viewpoint-open-and-build');
+  await row.locator('.sv-walk__thumb').nth(3).click();
+  await expect(row.locator('.sv-walk__outline-step').nth(3)).toHaveAttribute('aria-current', 'step');
+  await expect(row.locator('.sv-walk__slide').nth(3)).toBeInViewport({ ratio: 0.5 });
+});
+
+test('a thumbnail still moves the row after it was closed on another step', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('#viewpoint-open-and-build');
+  const thumb = row.locator('.sv-walk__thumb').nth(3);
+  await thumb.click();
+  await row.locator('.sv-walk__outline-step').first().click();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  await thumb.click();
+  await expect(row.locator('.sv-walk__outline-step').nth(3)).toHaveAttribute('aria-current', 'step');
+});
+
+test('a keyboard reader keeps their place when a thumbnail opens the row', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('#viewpoint-open-and-build');
+  const thumb = row.locator('.sv-walk__thumb').nth(1);
+  await thumb.focus();
+  await page.keyboard.press('Enter');
+  await expect(row.locator('.sv-row__toggle')).toBeFocused();
 });

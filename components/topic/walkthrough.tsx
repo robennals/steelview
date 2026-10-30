@@ -1,6 +1,7 @@
 'use client';
 
 import { Children, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useStepRequest } from '@/components/home/topic-accordion';
 import { useCarousel } from '@/components/home/use-carousel';
 
 type WalkthroughProps = {
@@ -43,6 +44,12 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
     const after = row.scrollLeft + row.clientWidth < row.scrollWidth - 1;
     setTabsRoom(room => (room.before === before && room.after === after ? room : { before, after }));
   }, []);
+
+  // Opened from a thumbnail on the closed row: start on that step.
+  const request = useStepRequest();
+  useEffect(() => {
+    if (request) go(request.step, true);
+  }, [request, go]);
 
   useEffect(() => {
     const row = tabs.current;

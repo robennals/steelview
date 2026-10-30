@@ -1,6 +1,6 @@
 import type { Fact } from '@/lib/content/types';
 import type { DataStep } from '@/lib/content/walkthrough';
-import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
 import { PanelHost } from './explore-panels';
 import { ObservationCycler } from './observation-cycler';
@@ -83,8 +83,10 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
                 total={steps.length}
                 thumbs={steps.slice(0, THUMBS).map((step, i) => (
                   <li key={i}>
-                    <div className="sv-row__thumb"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></div>
-                    <span>{i + 1}. {step.chart.label}</span>
+                    <RowThumb step={i}>
+                      <span className="sv-row__thumb" aria-hidden="true"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></span>
+                      <span className="sv-walk__thumb-label">{i + 1}. {step.chart.label}</span>
+                    </RowThumb>
                   </li>
                 ))}
               />
