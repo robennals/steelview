@@ -56,7 +56,7 @@ collection:
 | --- | --- |
 | **Data** | A collection of datasets and artifacts exploring one aspect of the topic, with observations, context, methods and sources. |
 | **Observation** | An addressable finding about a graph or dataset, explaining what to notice and why. Usually the target of a viewpoint’s factual citation. |
-| **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then headed sections whose claims add up to its title, in plain language, citing inline the observations it rests on and concedes. |
+| **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then a walkthrough of headed steps, each one claim shown by one chart, whose claims add up to its title, in plain language, citing inline the observations it rests on and concedes. |
 | **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A specific question whose resolution would move someone. |
 
@@ -89,8 +89,10 @@ they explain. Keep methods, useful subtleties and sources in their own expandos.
 Several observations can support different viewpoints while sharing one collection.
 
 **Cite observations by default.** When a viewpoint makes a factual assertion,
-link its pill to the specific observation that supports or qualifies it. That
-opens the collection, expands the observation and scrolls it into view. Link to
+link its pill to the specific observation that supports or qualifies it. A link
+into a chart or observation opens the collection on that one visualization,
+at full size with its own controls, with tabs for the others and for the whole
+report, and expands the observation. Link to
 a graph or the collection’s lead finding when that is the actual evidence;
 use a whole-collection link for a broad reference or an evidence index. Do not
 create a separate collection just to make a finding clickable.
@@ -221,9 +223,10 @@ Specific factual conclusions belong in the cited opening finding and in
 addressable observations beneath the relevant artifacts. A neutral title does
 not require vague observations or withholding conclusions supported by data.
 
-`claim` leads the popup with a **brief overview**: two or three short
-sentences saying what the report covers and what it mainly finds, specific
-enough to be checkable but without a list of figures. The figures appear in
+`claim` opens the collection's row on the topic page and leads its popup, so
+it is a **one-sentence overview** saying what the report mainly finds,
+specific enough to be checkable but without a list of figures. The reader's
+attention belongs on the charts. The figures appear in
 the charts directly below it. Do not remove qualifications needed to make the
 overview true, or strengthen it to serve a viewpoint. `claimSources` lists the
 one-based sources supporting the lead.
@@ -249,7 +252,10 @@ It has to be easy to take in at a glance.
   narrate the sequence of changes in a block of text.
 - **Observations are short.** A summary heading, then one to three short
   sentences and their footnotes. Longer qualifications go in Subtleties or
-  About this data, both collapsed.
+  About this data, both collapsed. On the topic page, a collection's row steps
+  through its charts, each beside its own observations, one at a time and
+  without their footnotes. So each observation must make sense on its own
+  beside its chart, and a chart should carry a few observations, not a dozen.
 
 ### The body and reading order
 
@@ -869,9 +875,49 @@ The build enforces that `acknowledges` is non-empty, with the message "a
 viewpoint that concedes nothing is advocacy, not a steelman". That is the
 floor, not the target.
 
+### Lead with the data
+
+A viewpoint is read as a walkthrough of data, not as an essay with links. On
+the topic page its row shows one chart per section. Opened, it steps through
+the sections one at a time, each section's claim and text beside its chart.
+The chart is the evidence; the text says what to notice in it and why that
+matters to the argument.
+
+**Choose the chart first.** For each step, pick the visualization that shows
+the step's claim on its face, then write the text around it. If no chart in the
+reports shows the claim, that is a gap to raise at stage 5, or a sign the step
+is not a data claim.
+
+**Cite the chart's observation first.** A step's chart is not named anywhere:
+it is the chart beside the first observation the section cites that sits beside
+a series or comparison chart. So the section's first such citation decides what
+the reader sees. "The economy grew, but people did not get richer" must cite
+the GDP-per-head observation before the total-GDP one, or the reader sees total
+GDP rising beside a claim about people's incomes. Read each step on the page to
+confirm its chart shows its claim. A section with no such citation shows text
+alone, which should be rare.
+
+**Facts in a step are plain text.** The evidence is beside the prose, so the
+citations in a step render with no link or underline. They are still required:
+they pick the chart, and they are the audit trail from claim to observation.
+The way into the data is "Explore this data" under the chart. Principle
+citations stay links.
+
+**Leave definitions to the chart.** Do not stop the argument to define a term
+the chart draws. Give the chart's line a `glossary` entry instead, and its
+legend opens the definition:
+
+```yaml
+lines:
+  - name: Net migration
+    glossary: net-migration
+```
+
+The entry must exist in `lib/content/glossary.ts`, or the build fails.
+
 ### Write an argument someone can follow
 
-A viewpoint is a short persuasive essay in plain English. Its job is to make
+A viewpoint is a short persuasive argument in plain English. Its job is to make
 the opening proposition compelling. The data report holds the detailed evidence;
 the viewpoint explains why that evidence gives someone a reason to act.
 
@@ -898,13 +944,14 @@ Iran is [the only state without nuclear weapons enriching uranium to 60%](#fact-
 …
 ```
 
-Under each heading, write one or two short paragraphs of ordinary prose — no
-bullet lists. The paragraphs give the evidence for that heading's claim and
+Under each heading, write two or three short sentences of ordinary prose — no
+bullet lists — that fit beside a chart without scrolling. The paragraphs give the evidence for that heading's claim and
 explain why it supports it. Deal with the strongest relevant difficulty in the
 section it bears on, rather than collecting objections at the end. The last
 section states the policy or judgment the earlier sections support, and its
 heading says what that is. A sequence of unrelated true headings is not an
-argument, however good its citations. `us-iran-war` is the model.
+argument, however good its citations. `us-iran-war` is the model for how
+headings build an argument, though its sections are longer than this guide now asks.
 
 **Write so a middle-school reader can follow every sentence.** Many readers
 find long or complicated sentences hard, and a viewpoint that loses them has
@@ -917,8 +964,9 @@ failed however good its argument. In practice:
   histories ("its record", "the capability", "leverage").
 - **Everyday words.** "Overthrow", not "imposed regime change"; "rebuild",
   not "reconstitute"; "cleaned up", not "sanitised". Explain a term the
-  argument needs the first time it appears: "Sanctions are limits on a
-  country's trade and money."
+  argument needs where no chart can: "Sanctions are limits on a country's
+  trade and money." A term a chart draws is defined from its legend
+  ([Lead with the data](#lead-with-the-data)).
 - **Name sources plainly.** A reader may not know an acronym, and some
   mislead ("ISIS" here is a nuclear-research institute). Write "a leading
   group of nuclear experts" or "experts at two US research groups" in the
@@ -972,8 +1020,8 @@ into a certainty, a correlation into a cause, or one subgroup into everyone.
 For legal claims, distinguish an obligation to hear a claim from an obligation
 to grant protection; everyday wording must preserve the actual scope of the law.
 
-Aim initially for about 300–450 words across four to six sections. These are
-editing defaults, not quotas. Use fewer words when they suffice. Six sections
+Aim for about 150–250 words across four to six sections. These are editing
+defaults, not quotas. Use fewer words when they suffice. Six sections
 is a ceiling: past it, the headings read as a list of points rather than an
 argument, so merge the claims that make the same step. Use `###` headings only,
 never bold mini-headings or nested levels. The summary should give the central
@@ -1089,9 +1137,9 @@ obviously true. Link the relevant phrase each time it appears; a list at the
 bottom is not a substitute. Include essential qualifications inside the pill.
 Values, preferences and purely logical reasoning remain ordinary prose.
 
-**Keep pill text to the point the argument needs.** The pill opens the report,
-which holds the exact figures, dates, sources and method, so the pill does not
-need to restate them. Write the claim as the argument uses it:
+**Keep pill text to the point the argument needs.** The chart and the report
+hold the exact figures, dates, sources and method, so the pill does not need to
+restate them. Write the claim as the argument uses it:
 
 > [Official estimates of the war's cost have nearly doubled](#fact-…)
 
@@ -1456,8 +1504,8 @@ Run this before opening a pull request.
 - [ ] If `not-supported`: is there a positive restatement that would displace
       it? If yes, write that fact instead.
 - [ ] Short plain title names the point and comparison without excess numbers.
-- [ ] Opening is a brief overview of two or three short sentences, with
-      `claimSources`; its figures are in the charts below it.
+- [ ] Opening is a one-sentence overview, with `claimSources`; its figures are
+      in the charts below it.
 - [ ] No paragraph longer than four lines. Numbers sit in charts, tables or
       key figures, not recited in prose; dated events are `events` on the
       series, not narrated.
@@ -1504,8 +1552,12 @@ Run this before opening a pull request.
 - [ ] It has real argumentative force. It is not merely inoffensive.
 - [ ] A one- or two-sentence lead, then four to six `###` sections; the
       headings alone add up to the title, and the last states the conclusion.
-- [ ] Sections are short prose paragraphs, not bullet lists, and each
+- [ ] Each section is two or three short sentences, not a bullet list, and
       advances the argument for its heading.
+- [ ] Read on the topic page, every step's chart shows that step's claim, and
+      its first chart-backed citation is the one that picks it.
+- [ ] No definition of a term the step's chart draws: its legend has a
+      `glossary` entry instead.
 - [ ] Pill text states the point the argument needs; exact figures, dates and
       sources stay in the report unless the reasoning depends on them.
 - [ ] Plain English a middle-school reader can follow: short sentences, one
@@ -1597,7 +1649,8 @@ root covers the code separately (MIT).
 
 Use `[gross arrivals](#glossary-gross-arrivals)` or
 `[net migration](#glossary-net-migration)` for terminology that could interrupt a
-reader. Definitions live in `lib/content/glossary.ts`; reuse the same definition
+reader, or a line's `glossary` field to open the definition from a chart's
+legend. Definitions live in `lib/content/glossary.ts`; reuse the same definition
 across facts. Unknown glossary IDs fail rendering. Keep each definition short,
 plain and specific about the measurement; factual claims needing evidence belong
 in a linked fact rather than a glossary. Explain the term without opening another
