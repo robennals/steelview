@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { exploreLink, headCorner, openViewpoint } from './topic-rows';
+import { headCorner, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -8,7 +8,6 @@ import { exploreLink, headCorner, openViewpoint } from './topic-rows';
 // cross-references will turn this suite red.
 
 const TOPIC = '/topics/uk-immigration';
-const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 
 test('the topic page shows all four sections', async ({ page }) => {
   await page.goto(TOPIC);
@@ -30,16 +29,70 @@ test('a data collection loads its charts only when its row opens', async ({ page
   await expect(row.locator('.sv-slide .sv-chart').first()).toBeAttached();
 });
 
-test('a viewpoint makes its supporting data available inline', async ({ page }) => {
+test('a viewpoint opens the data panel, not a report, at the step it cites', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = await openViewpoint(page, 'open-and-build');
   await viewpoint.locator('.sv-walk__outline-step').nth(1).click();
-  const dataLink = viewpoint.locator('.sv-walk__explore a[data-fact-id="work-and-study-routes"]').first();
-  await expect(dataLink).toBeVisible();
-  await dataLink.click();
-  await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText('Work and Study Visas and the Care Workforce');
+  const explore = viewpoint.locator('.sv-walk__slide').nth(1).getByRole('link', { name: 'Explore this data' });
+  await explore.click();
+
+  const sheet = page.locator('dialog[open]');
+  await expect(sheet.getByRole('heading', { level: 2 })).toContainText('Work and Study Visas and the Care Workforce');
+  await expect(sheet.locator('.sv-walk__tab[aria-current]')).toBeVisible();
+  await expect(page).toHaveURL(new RegExp(`${TOPIC}#work-and-study-routes--`));
+
   await page.keyboard.press('Escape');
-  await expect(exploreLink(viewpoint).locator('xpath=ancestor::article')).toHaveAttribute('data-open', 'true');
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
+  await expect(viewpoint).toHaveAttribute('data-open', 'true');
+  await expect(explore).toBeFocused();
+});
+
+test('clicking a viewpoint step\'s chart opens the panel too, title included', async ({ page }) => {
+  await page.goto(TOPIC);
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  const heading = viewpoint.locator('.sv-walk__slide').first().locator('.sv-graph-heading');
+  await expect(heading.locator('a')).toHaveCount(0);
+  await heading.click();
+  await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
+});
+
+test('a data panel is the data: its charts open nothing, and have their controls', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const step = row.locator('.sv-walk__slide').first();
+  await expect(step.locator('.sv-chart').first()).toBeVisible();
+  await expect(row.locator('.sv-walk__explore')).toHaveCount(0);
+
+  await step.locator('.sv-graph-heading').click();
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+
+  await step.getByRole('button', { name: 'Table' }).click();
+  await expect(step.locator('table').first()).toBeVisible();
+});
+
+test('a chart\'s description is one line until opened, and method notes are inside it', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const step = row.locator('.sv-walk__slide').first();
+  const about = step.locator('.sv-chart__about').first();
+  await expect(about).toBeVisible();
+  await expect(step.locator('.sv-method-changes-group').first()).toBeHidden();
+  await step.getByRole('link', { name: 'See method changes' }).click();
+  await expect(step.locator('.sv-method-changes-group').first()).toBeVisible();
+});
+
+test('the arrows move the chart strip and leave the selected chart alone', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const selected = row.locator('.sv-walk__tab[aria-current]');
+  const before = await selected.innerText();
+  await row.getByRole('button', { name: 'Show later charts' }).click();
+  await expect.poll(() => row.locator('.sv-walk__tabs').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
+  await expect(selected).toHaveText(before);
 });
 
 // A closed row's thumbnails are a way in: each opens the row at its own step.

@@ -61,7 +61,7 @@ test('a preview drops the group controls, the breakdown table and the note, whic
 
 test('a preview is its title and bars: the value label and credit stay on the full chart', () => {
   const html = renderPreview(chart);
-  assert.match(html, /href="\/topics\/example\/facts\/cases#cases--chart-methods">Cases by method</);
+  assert.match(html, /href="\/topics\/example\/facts\/cases">Cases by method</);
   assert.doesNotMatch(html, /sv-chart__axis-label/);
   assert.doesNotMatch(html, /sv-chart__credit/);
 });

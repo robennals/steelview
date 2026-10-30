@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { headCorner, openCollection } from './topic-rows';
+import { cruxCitation, openCollection } from './topic-rows';
 const topic = '/topics/uk-immigration';
-const viewpoint = '#viewpoint-open-and-build';
 const fact = 'immigration-economy-and-public-finances';
-const pill = `${viewpoint} .sv-walk__explore a[data-fact-id="${fact}"]`;
-const longRun = 'UK Migration and Population Over the Long Run';
+const longRun = 'immigration-against-the-long-run';
 
 test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
   await page.route(url => url.pathname.includes('/facts/'), async route => {
@@ -12,8 +10,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
     await route.continue();
   });
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
-  const link = page.locator(pill).first();
+  const link = await cruxCitation(page, fact);
   const href = (await link.getAttribute('href'))!;
   await link.click();
   await expect(page).toHaveURL(new RegExp(`${href}$`));
@@ -29,8 +26,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
 
 test('the same sheet can target another section and expand at that position', async ({ page }) => {
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
-  await page.locator(pill).first().click();
+  await (await cruxCitation(page, fact)).click();
   const expand = page.locator('.sv-modal__expand');
   // The sheet points Expand at the cited section once it has revealed it.
   await expect(expand).toHaveAttribute('href', /#/);
@@ -68,9 +64,8 @@ test('charts have their own observations, with references last', async ({ page }
 test('mobile pills wrap without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator(pill).first().click();
+  await (await cruxCitation(page, fact)).click();
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
   expect(await page.locator('.sv-modal__scroll').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
 });
@@ -79,7 +74,7 @@ test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('a pill remains an ordinary link to its evidence section', async ({ page }) => {
     await page.goto(topic);
-    const link = page.locator(pill).first();
+    const link = await cruxCitation(page, fact);
     const href = await link.getAttribute('href');
     await link.click();
     await expect(page).toHaveURL(href!);
@@ -210,7 +205,7 @@ test('nationality comparisons change the country bars and show all components', 
   await series.locator('.sv-observations-group > summary').click();
   const surge = series.locator('#immigration-against-the-long-run--non-eu-arrivals-surge');
   await surge.locator(':scope > summary').click();
-  await expect(surge.locator('.sv-observation__body')).toContainText('care workers became eligible');
+  await expect(surge.locator('.sv-observation__body')).toContainText('work-visa eligibility for care workers');
   await expect(surge.locator('a').first()).toHaveAttribute('href', '#source-immigration-against-the-long-run-6');
   const observation = series.locator('#immigration-against-the-long-run--nationality-shift');
   await observation.locator(':scope > summary').click();

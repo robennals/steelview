@@ -8,7 +8,6 @@ import { openCollection } from './topic-rows';
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 const HEADLINE = 'immigration-against-the-long-run';
-const HEADLINE_TITLE = 'UK Migration and Population Over the Long Run';
 const dialog = 'dialog.sv-modal';
 
 test.describe('with JavaScript disabled', () => {
@@ -51,7 +50,7 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   page,
 }) => {
   await page.goto(TOPIC);
-  await openCollection(page, HEADLINE_TITLE);
+  await openCollection(page, HEADLINE);
   const chart = page.locator(`${dialog} .sv-chart`).first();
 
   await expect(chart.locator('.sv-chart__reading')).toHaveCount(2);
@@ -76,7 +75,7 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
 
 test('closing the panel takes the chart off the page with it', async ({ page }) => {
   await page.goto(TOPIC);
-  await openCollection(page, HEADLINE_TITLE);
+  await openCollection(page, HEADLINE);
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator(`${dialog} .sv-chart`)).toHaveCount(0);

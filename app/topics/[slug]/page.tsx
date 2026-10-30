@@ -7,6 +7,7 @@ import { renderDataWalkthroughs, renderWalkthroughs, type DataStep, type Rendere
 import { absoluteUrl } from '@/lib/site';
 import { HashSync } from '@/components/topic/hash-sync';
 import { DataRows } from '@/components/topic/data-rows';
+import { ExplorePanels } from '@/components/topic/explore-panels';
 import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
 import { PrincipleItem } from '@/components/topic/principle-item';
 import { PrincipleModals } from '@/components/topic/principle-modals';
@@ -121,7 +122,7 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
   const headline = orderHeadlineFacts(topic);
 
   return (
-    <div className="sv-sections">
+    <ExplorePanels><div className="sv-sections">
       <PrincipleModals principles={topic.principles.map((principle) => ({
         id: principle.id,
         name: principle.name,
@@ -175,7 +176,7 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
           ))}
         </section>
       )}
-    </div>
+    </div></ExplorePanels>
   );
 }
 

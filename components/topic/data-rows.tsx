@@ -2,32 +2,56 @@ import type { Fact } from '@/lib/content/types';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
+import { PanelHost } from './explore-panels';
 import { ObservationCycler } from './observation-cycler';
-import { Prose } from './prose';
+import { ThumbStrip } from './thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from './lazy-charts';
 import { Walkthrough } from './walkthrough';
 
-/** How many chart silhouettes a closed row shows before it counts the rest. */
-const THUMBS = 6;
+/** The most chart silhouettes that fit on a closed row's line at the page's full width. */
+const THUMBS = 7;
 
 type ChartStepProps = { step: DataStep; number: number };
 
-/** One chart: what to notice in it, stepped through observation by observation, on the left of it. */
+/** One chart, with what to notice in it under it, stepped through observation by observation. */
 function ChartStep({ step, number }: ChartStepProps) {
   return (
     <div className="sv-walk__step" data-chart>
+      <div className="sv-walk__chart">
+        <div className="sv-slide"><LazyChart index={number - 1} /></div>
+      </div>
       <div className="sv-walk__text">
-        <p className="sv-walk__kicker">Chart {number}</p>
         {step.observations.length > 0
           ? <ObservationCycler observations={step.observations} />
           : <p className="sv-walk__prose prose-body">{step.description}</p>}
       </div>
-      <div className="sv-walk__chart">
-        <div className="sv-slide"><LazyChart index={number - 1} /></div>
-        <Prose html={step.exploreHtml} className="sv-walk__explore" />
-      </div>
     </div>
+  );
+}
+
+type DataPanelProps = { slug: string; fact: Fact; steps: DataStep[] };
+
+/**
+ * A data collection's charts and observations: the body of its row on the
+ * topic page, which a viewpoint's "Explore this data" lifts into a sheet.
+ */
+function DataPanel({ slug, fact, steps }: DataPanelProps) {
+  const title = fact.title ?? fact.claim;
+  return (
+    <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)}>
+      <PanelHost fact={fact.id} title={title}>
+        <Walkthrough
+          name={title}
+          headings={steps.map(s => s.chart.label)}
+          noun="Chart"
+          endLabel="Last chart"
+          thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
+        >
+          {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
+        </Walkthrough>
+      </PanelHost>
+    </LazyCharts>
   );
 }
 
@@ -37,9 +61,7 @@ type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, Da
  * The Data section: one row per headline data collection. Closed, a row is
  * its title, a one-line overview and its first charts in miniature; open, every
  * chart runs across the top as a miniature, and the chosen one sits large under
- * them, with the observations made about it on its left. "Explore this data"
- * opens the collection at that chart, with its controls and the rest of the
- * collection a tab away.
+ * them, with the observations made about it along the bottom.
  * Supporting collections are read inside their parent, so have no row.
  */
 export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
@@ -57,8 +79,9 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
             subtitle={fact.title ? fact.claim : ''}
             meta={null}
             thumbs={
-              <ol className="sv-row__thumbs sv-walk__thumbs">
-                {steps.slice(0, THUMBS).map((step, i) => (
+              <ThumbStrip
+                total={steps.length}
+                thumbs={steps.slice(0, THUMBS).map((step, i) => (
                   <li key={i}>
                     <RowThumb step={i}>
                       <span className="sv-row__thumb" aria-hidden="true"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></span>
@@ -66,29 +89,10 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
                     </RowThumb>
                   </li>
                 ))}
-                {steps.length > THUMBS && (
-                  <li>
-                    <RowThumb step={THUMBS}>
-                      <span className="sv-row__thumb sv-walk__more">+{steps.length - THUMBS} more</span>
-                    </RowThumb>
-                  </li>
-                )}
-              </ol>
+              />
             }
           >
-            {steps.length > 0 && (
-              <LazyCharts load={rowCharts.bind(null, slug, 'data', fact.id)}>
-                <Walkthrough
-                  name={title}
-                  headings={steps.map(s => s.chart.label)}
-                  noun="Chart"
-                  endLabel="Last chart"
-                  thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
-                >
-                  {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
-                </Walkthrough>
-              </LazyCharts>
-            )}
+            {steps.length > 0 && <DataPanel slug={slug} fact={fact} steps={steps} />}
           </TopicRow>
         );
       })}

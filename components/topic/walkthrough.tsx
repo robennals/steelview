@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Children, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useStepRequest } from '@/components/home/topic-accordion';
 import { useCarousel } from '@/components/home/use-carousel';
 
@@ -34,7 +34,16 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
   const last = index === steps.length - 1;
   const tabs = useRef<HTMLOListElement>(null);
 
-  const [tabsOverflow, setTabsOverflow] = useState(false);
+  // How far the miniatures can still scroll each way. Arrows appear only when
+  // they do not all fit, and stop at the ends.
+  const [tabsRoom, setTabsRoom] = useState({ before: false, after: false });
+  const measureTabs = useCallback(() => {
+    const row = tabs.current;
+    if (!row) return;
+    const before = row.scrollLeft > 1;
+    const after = row.scrollLeft + row.clientWidth < row.scrollWidth - 1;
+    setTabsRoom(room => (room.before === before && room.after === after ? room : { before, after }));
+  }, []);
 
   // Opened from a thumbnail on the closed row: start on that step.
   const request = useStepRequest();
@@ -42,15 +51,25 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
     if (request) go(request.step, true);
   }, [request, go]);
 
-  // Arrows appear only when the miniatures do not all fit.
   useEffect(() => {
     const row = tabs.current;
     if (!row) return;
-    const measure = () => setTabsOverflow(row.scrollWidth > row.clientWidth);
-    const observer = new ResizeObserver(measure);
+    const observer = new ResizeObserver(measureTabs);
     observer.observe(row);
     return () => observer.disconnect();
-  }, []);
+  }, [measureTabs]);
+
+  /** Bring the next miniatures into view, a whole line of them at a time. The selection stays. */
+  const pageTabs = (direction: 1 | -1) => {
+    const row = tabs.current;
+    if (!row) return;
+    const [first, second] = row.children;
+    const stride = second instanceof HTMLElement && first instanceof HTMLElement ? second.offsetLeft - first.offsetLeft : row.clientWidth;
+    row.scrollBy({
+      left: direction * Math.max(1, Math.floor(row.clientWidth / stride)) * stride,
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    });
+  };
 
   // Centre the current miniature. Scrolled by hand because scrollIntoView
   // would also move the page.
@@ -69,8 +88,8 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
     <div className="sv-walk" data-layout={thumbs ? 'strip' : undefined} role="region" aria-roledescription="carousel" aria-label={`${name}, one ${noun.toLowerCase()} at a time`}>
       {thumbs ? (
         <div className="sv-walk__tabbar">
-          {enhanced && tabsOverflow && <button type="button" className="sv-carousel__step sv-walk__tab-arrow" aria-label={`Previous ${noun.toLowerCase()}`} disabled={index === 0} onClick={() => go(index - 1)}>‹</button>}
-          <ol className="sv-walk__tabs" ref={tabs}>
+          {enhanced && (tabsRoom.before || tabsRoom.after) && <button type="button" className="sv-carousel__step sv-walk__tab-arrow" aria-label={`Show earlier ${noun.toLowerCase()}s`} disabled={!tabsRoom.before} onClick={() => pageTabs(-1)}>‹</button>}
+          <ol className="sv-walk__tabs" ref={tabs} onScroll={measureTabs}>
             {headings.map((heading, i) => (
               <li key={i}>
                 <button type="button" className="sv-walk__tab" aria-current={i === index ? 'step' : undefined} disabled={!enhanced} onClick={() => go(i)}>
@@ -80,7 +99,7 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
               </li>
             ))}
           </ol>
-          {enhanced && tabsOverflow && <button type="button" className="sv-carousel__step sv-walk__tab-arrow" aria-label={`Next ${noun.toLowerCase()}`} disabled={last} onClick={() => go(index + 1)}>›</button>}
+          {enhanced && (tabsRoom.before || tabsRoom.after) && <button type="button" className="sv-carousel__step sv-walk__tab-arrow" aria-label={`Show later ${noun.toLowerCase()}s`} disabled={!tabsRoom.after} onClick={() => pageTabs(1)}>›</button>}
         </div>
       ) : (
         <ol className="sv-walk__outline">

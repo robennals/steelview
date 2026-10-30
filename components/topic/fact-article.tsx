@@ -5,6 +5,7 @@ import { factPath, topicPath } from '@/lib/content/types';
 import { Prose } from './prose';
 import { FactCharts, FactFigures, FeaturedCharts, chartGroups, figureGroups, type BodiedFact, type FigurePage } from './fact-figures';
 import { EvidenceNavigation } from './evidence-navigation';
+import { SheetTitle } from './sheet-title';
 import { VizTabs } from './viz-tabs';
 
 export type { BodiedFact } from './fact-figures';
@@ -102,8 +103,7 @@ function SupportingFact({ slug, fact, bodyHtml, hideCharts, page }: BodiedFact &
 }
 
 /**
- * Where the reader is: the topic, then this fact. Sits outside the article so
- * the status rule down the fact's left edge starts at the fact, not above it.
+ * Where the reader is: the topic, then this fact.
  */
 export function FactCrumbs({ slug, topicTitle }: { slug: string; topicTitle: string }) {
   return (
@@ -150,7 +150,6 @@ export function FactArticle({
    */
   topic?: Pick<Topic, 'lastUpdated' | 'facts'>;
 }) {
-  const Claim = variant === 'page' ? 'h1' : 'h2';
   const page: FigurePage = {
     slug,
     asOf: topic?.lastUpdated,
@@ -179,12 +178,14 @@ export function FactArticle({
         </div>
       )}
 
-      <header className="sv-factpage__head">
-        <Claim className="sv-factpage__claim" id={headingId}>
-          {fact.title ?? fact.claim}
-        </Claim>
-        {fact.assessedClaim && <p className="sv-assessed">Claim assessed: “{fact.assessedClaim}”</p>}
-      </header>
+      {/* In a sheet the title sits in the sheet's bar, saving the room for the data. */}
+      {variant === 'modal' && headingId && <SheetTitle id={headingId}>{fact.title ?? fact.claim}</SheetTitle>}
+      {(variant === 'page' || fact.assessedClaim) && (
+        <header className="sv-factpage__head">
+          {variant === 'page' && <h1 className="sv-factpage__claim">{fact.title ?? fact.claim}</h1>}
+          {fact.assessedClaim && <p className="sv-assessed">Claim assessed: “{fact.assessedClaim}”</p>}
+        </header>
+      )}
 
       <VizTabs />
 

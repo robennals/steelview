@@ -2,10 +2,13 @@
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRowIsOpen } from '@/components/home/topic-accordion';
+import { useChartsWanted } from './explore-panels';
 
 const Charts = createContext<ReactNode[] | null>(null);
 
 type LazyChartsProps = {
+  /** The collection these charts belong to, which a viewpoint can open without its row. */
+  fact?: string;
   /** Fetches the row's charts, in step order, drawn on the server. */
   load: () => Promise<ReactNode[]>;
   children: ReactNode;
@@ -18,8 +21,10 @@ type LazyChartsProps = {
  * page many megabytes. The steps' text is still in the page, for readers and
  * crawlers alike: only the charts wait. Once fetched, a row keeps them.
  */
-export function LazyCharts({ load, children }: LazyChartsProps) {
-  const open = useRowIsOpen();
+export function LazyCharts({ fact = '', load, children }: LazyChartsProps) {
+  const wanted = useChartsWanted(fact);
+  const rowOpen = useRowIsOpen();
+  const open = rowOpen || wanted;
   const [charts, setCharts] = useState<ReactNode[] | null>(null);
   const requested = useRef(false);
 

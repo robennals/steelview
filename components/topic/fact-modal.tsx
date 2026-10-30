@@ -31,13 +31,15 @@ const FOCUSABLE = [
  * returns. A sheet that is not a route, or a fact not yet loaded, has no entry
  * to go back from, and `onClose` says what closing means instead.
  */
-export function FactModal({ labelledBy, children, href, loading = false, onClose, kind = 'Data' }: {
+export function FactModal({ labelledBy, children, href, loading = false, wide = false, onClose, kind = 'Data' }: {
   labelledBy: string;
   children: ReactNode;
   /** Where Expand leads — the fact's own page. Only a Data sheet shows it. */
   href: string;
   /** The article has not arrived yet; the sheet is showing a placeholder. */
   loading?: boolean;
+  /** Start at the wide size, for a link that opens one chart or observation. */
+  wide?: boolean;
   onClose?: () => void;
   kind?: 'Data' | 'Principle';
 }) {
@@ -180,9 +182,9 @@ export function FactModal({ labelledBy, children, href, loading = false, onClose
 
   return (
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
-      <div className="sv-modal__panel">
+      <div className="sv-modal__panel" data-wide={wide || undefined}>
         <div className="sv-modal__bar">
-          <p className="sv-modal__eyebrow">{kind}</p>
+          {kind === 'Data' ? <div className="sv-modal__title-slot" /> : <p className="sv-modal__eyebrow">{kind}</p>}
           {kind === 'Data' && <a className="sv-modal__expand" href={href} data-fact-expand>
             Expand <span aria-hidden="true">↗</span>
           </a>}

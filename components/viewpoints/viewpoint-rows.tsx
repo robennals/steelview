@@ -2,7 +2,9 @@ import type { Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
 import type { RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from '@/components/topic/chart-thumb';
+import { ExplorableChart, ExploreLink } from '@/components/topic/explore-panels';
 import { Prose } from '@/components/topic/prose';
+import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
@@ -24,8 +26,10 @@ function Step({ step, number }: StepProps) {
       </div>
       {step.chart && (
         <div className="sv-walk__chart">
-          <div className="sv-slide"><LazyChart index={number - 1} /></div>
-          {step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
+          <ExplorableChart><LazyChart index={number - 1} /></ExplorableChart>
+          {step.hasPanel && step.observation
+            ? <ExploreLink fact={step.chart.fact.id} observation={step.observation} href={step.chart.href} />
+            : step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
         </div>
       )}
     </div>
@@ -55,8 +59,9 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
             subtitle={plain(lead)}
             meta={null}
             thumbs={
-              <ol className="sv-row__thumbs sv-walk__thumbs">
-                {steps.map((step, i) => (
+              <ThumbStrip
+                total={steps.length}
+                thumbs={steps.map((step, i) => (
                   <li key={i}>
                     <RowThumb step={i}>
                       <span className="sv-row__thumb" aria-hidden="true">
@@ -66,7 +71,7 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
                     </RowThumb>
                   </li>
                 ))}
-              </ol>
+              />
             }
           >
             <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>

@@ -11,9 +11,9 @@ import { SeriesChart } from './series-chart';
  * A preview slide's chart, through the same shared component the topic page
  * uses. A library figure needs `page`, which only a walkthrough's slides do.
  */
-export function SlideChart({ slide, fit, page }: { slide: PreviewSlide; fit?: PreviewFit; page?: FigurePage }) {
+export function SlideChart({ slide, fit, titleHref, page }: { slide: PreviewSlide; fit?: PreviewFit; titleHref?: string; page?: FigurePage }) {
   const { fact, chart } = slide;
-  const preview = { href: slide.href.split('#')[0], reading: slide.reading, fit };
+  const preview = { href: titleHref, reading: slide.reading, fit };
   const seriesIndex = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.[seriesIndex];
   if (series) {

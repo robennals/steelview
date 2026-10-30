@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openViewpoint } from './topic-rows';
+import { cruxCitation } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the reports
 // `crime-terrorism-and-group-exploitation`, `immigration-economy-and-public-finances`
@@ -35,29 +35,23 @@ test('the address of a merged fact redirects to its report', async ({ page }) =>
   await expect(page.locator('h1.sv-factpage__claim')).toContainText('Immigration, the Economy and the Public Finances');
 });
 
-test('clicking a cross-reference chip opens the fact it points at', async ({ page }) => {
+test('clicking a citation in a crux opens the fact it points at', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  await viewpoint.locator('.sv-walk__outline-step').nth(1).click();
-  await viewpoint.locator('.sv-walk__explore a[data-fact-id="work-and-study-routes"]').first().click();
+  await (await cruxCitation(page, 'work-and-study-routes')).click();
   await expect(page).toHaveURL(new RegExp(`${factUrl('work-and-study-routes')}#`));
   await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
     'Work and Study Visas and the Care Workforce'
   );
 });
 
-// Every data collection on the topic page links to its own page.
-test('every data collection links to its own page', async ({ page }) => {
+// A viewpoint's "Explore this data" is a real link, for a new tab or a crawler.
+test('a viewpoint step links to the collection it cites', async ({ page }) => {
   await page.goto(TOPIC);
-  const rows = page.locator('.sv-row--data');
-  await expect(rows).toHaveCount(7);
-  const hrefs = await rows.evaluateAll((all) =>
-    all.map((row) => row.querySelector('.sv-walk__explore a')?.getAttribute('href') ?? '')
+  const hrefs = await page.locator('.sv-row--viewpoint .sv-walk__explore a').evaluateAll(
+    links => links.map(link => link.getAttribute('href') ?? '')
   );
-  for (const href of hrefs) {
-    expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
-  }
-  expect(new Set(hrefs.map((href) => href.split('#')[0])).size).toBe(7);
+  expect(hrefs.length).toBeGreaterThan(0);
+  for (const href of hrefs) expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
 });
 
 // Addresses are permanent and must keep working with no JavaScript to

@@ -126,7 +126,7 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   assert.doesNotMatch(html, new RegExp(`>${people.label}<`));
   assert.doesNotMatch(html, /sv-chart__credit/);
   assert.match(html, /data-variant="preview"/);
-  assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run#immigration-against-the-long-run--chart-series">${fact.series!.title}</a></h3>`));
+  assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run">${fact.series!.title}</a></h3>`));
   assert.doesNotMatch(html, /aria-pressed/);
   assert.doesNotMatch(html, /href="#/);
 });
@@ -137,4 +137,9 @@ test('a preview\'s screen-reader description mentions no event strip or method-c
   const html = renderToStaticMarkup(createElement(SeriesChart, { factId: fact.id, series: fact.series!, preview: { href: '/x' } }));
   assert.doesNotMatch(html, /numbered on a strip/);
   assert.doesNotMatch(html, /Method Changes below/);
+});
+
+test('a preview with nowhere to link draws its title as plain text', () => {
+  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series: oilSeries(), preview: {} }));
+  assert.match(html, /<h3 class="sv-graph-heading">[^<]+<\/h3>/);
 });

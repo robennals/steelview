@@ -15,6 +15,11 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
   // A target inside one visualization shows that visualization on its own;
   // anything else but a source, which every view keeps, shows the whole report.
   if (article && !target.closest('.sv-references')) focusViz(article, ownViz(target));
+  // A whole visualization is not a finding to pick out: start at its tabs.
+  if (target.hasAttribute('data-viz')) {
+    root.querySelector('.sv-modal__scroll')?.scrollTo(0, 0);
+    return true;
+  }
   for (let el: HTMLElement | null = target; el && el !== root; el = el.parentElement) {
     if (el instanceof HTMLDetailsElement) el.open = true;
   }
@@ -67,6 +72,7 @@ function ownViz(el: HTMLElement): HTMLElement | null {
  */
 export function focusViz(article: HTMLElement, viz: HTMLElement | null) {
   article.querySelectorAll('[data-viz-active]').forEach(el => el.removeAttribute('data-viz-active'));
+  article.toggleAttribute('data-whole', !viz);
   if (!viz) {
     article.removeAttribute('data-focus');
     return;

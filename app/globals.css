@@ -480,9 +480,8 @@
     text-wrap: pretty;
   }
 
-  /* Headline facts, supporting facts and a fact's own page share one left
-     rule, so a reader learns one edge wherever a fact appears. */
-  :is(.sv-fact, .sv-subfact, .sv-factpage) {
+  /* A collection nested in a report keeps a left rule, marking what is nested. */
+  :is(.sv-fact, .sv-subfact) {
     padding-left: 0.9rem;
     border-left: 3px solid var(--ink);
   }
@@ -2057,6 +2056,12 @@
     flex: 1 1 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+    /* One line at any width: ThumbStrip shows what fits, and the rest is cut off
+       until it has, or with no script at all. */
+    grid-template-rows: auto;
+    grid-auto-rows: 0;
+    row-gap: 0;
+    overflow: hidden;
   }
 
   .sv-walk__thumbs li { width: auto; min-width: 0; }
@@ -2248,6 +2253,7 @@
 
   .sv-walk__chart { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
   .sv-walk__chart .sv-slide { flex: 1; min-height: 0; }
+  .sv-slide--explorable { cursor: pointer; }
   /* A slide is only a figure's title and its content, as for a chart: the rest is a click away. */
   .sv-slide__figure { flex: 1; min-height: 0; overflow-y: auto; }
   .sv-slide__figure figure { margin: 0; }
@@ -2346,11 +2352,36 @@
     -webkit-box-orient: vertical;
   }
 
+  /* The chart fills what its fixed-height observations bar leaves, so cycling
+     through observations never moves it. */
   @media (width > 47.5rem) {
     .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] {
-      grid-template-columns: minmax(15rem, 1fr) minmax(0, 2.4fr);
-      gap: 2.25rem;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) 6.5rem;
+      gap: 0.85rem;
+      height: 46rem;
     }
+
+    /* A full chart can run longer than the space, with its table or notes open. */
+    .sv-walk[data-layout="strip"] .sv-walk__chart .sv-slide { overflow-y: auto; }
+  }
+
+  .sv-walk[data-layout="strip"] .sv-walk__text { padding-top: 0.75rem; border-top: 1px solid var(--rule); }
+  .sv-observe__head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.2rem; }
+  .sv-observe__head .sv-observe__controls { flex: none; margin: 0; }
+  .sv-observe__head .sv-observe__heading { margin: 0; font-size: 1.05rem; }
+  .sv-walk[data-layout="strip"] .sv-walk__prose { max-width: none; font-size: 0.92rem; line-height: 1.5; }
+  .sv-walk[data-layout="strip"] .sv-walk__prose p:last-child { margin-bottom: 0; }
+
+  /* In a pop-up the panel takes the sheet's height, for the graph. */
+  .sv-modal__scroll:has(> .sv-factpanel) { display: flex; flex-direction: column; padding-block: 0.75rem; }
+  .sv-factpanel { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+  .sv-factpanel .sv-walk { flex: 1; grid-template-rows: auto minmax(0, 1fr); align-items: stretch; min-height: 0; }
+  .sv-factpanel .sv-walk__stage { display: flex; flex-direction: column; min-height: 0; padding-block: 0.75rem; }
+  .sv-factpanel .sv-walk__strip { flex: 1; min-height: 0; }
+
+  @media (width > 47.5rem) {
+    .sv-factpanel .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] { height: auto; }
   }
 
   /* Beside the outline, previous/next buttons and a step count would only
@@ -2366,7 +2397,7 @@
   }
 
   @media (max-width: 47.5rem) {
-    .sv-row--walk .sv-walk__thumbs { display: grid; grid-auto-flow: column; grid-auto-columns: 8rem; overflow-x: auto; }
+    .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
@@ -2493,7 +2524,6 @@
   }
 
   .sv-factpage {
-    /* The status rule runs the height of the fact, as it does on every row. */
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
   }
@@ -2627,6 +2657,25 @@
     background: var(--paper-raised);
   }
 
+  .sv-modal__title-slot { flex: 1; min-width: 0; }
+
+  /* The report's title, here rather than over the data. */
+  .sv-modal__title {
+    flex: 1;
+    display: -webkit-box;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
   .sv-modal__eyebrow {
     font-family: var(--font-sans);
     font-size: 0.6875rem;
@@ -2689,12 +2738,16 @@
      report", except its sources, which the visualization's footnotes link to. */
   .sv-factpage[data-focus] .sv-factpage__body > :not(.sv-viz, .sv-references) { display: none; }
   .sv-factpage[data-focus] .sv-viz:not([data-viz-active]) { display: none; }
+
+  /* A data panel lifted into a sheet by a viewpoint's "Explore this data". */
+  .sv-factpanel .sv-walk { padding: 0; opacity: 1; transform: none; }
   /* The visualization takes the sheet's full width; its prose keeps a reading width. */
   .sv-factpage[data-focus] .sv-factpage__body { max-width: none; }
 
   /* In the sheet, a single visualization gets nearly the whole screen. */
   @media (min-width: 40rem) {
-    .sv-modal__panel:has(.sv-factpage[data-focus]) {
+    .sv-modal__panel:has(.sv-factpage[data-focus]),
+    .sv-modal__panel[data-wide]:not(:has(.sv-factpage[data-whole])) {
       width: min(76rem, 100%);
       height: min(92dvh, 64rem);
     }
@@ -2988,7 +3041,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    very wide and standard on a carousel slide, medium and tall beside a
    walkthrough's prose. It shows the one nearer the shape of the space it has,
    so it fills the height as well as the width. Each breakpoint sits between
-   the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.92 and 1.33. */
+   the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.78 and 1.33. */
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
 .sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
 .sv-chart[data-preview] .sv-chart__svg:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
@@ -2996,10 +3049,51 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
 }
-@container (aspect-ratio < 1.6) {
+@container (aspect-ratio < 1.54) {
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-tall"] { display: block; }
 }
+/* A data panel's full chart: the graph takes whatever its controls and notes
+   leave, at the nearest shape, as a preview does. Its ratios are 4.0, 3.16 and 2.5. */
+.sv-chart[data-panel-chart] { display: flex; flex: 1 1 auto; flex-direction: column; margin: 0; }
+.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { display: flex; flex: 1 1 auto; flex-direction: column; }
+.sv-chart[data-panel-chart] .sv-graph-heading { margin: 0 0 0.2rem; font-size: 1.1rem; }
+.sv-chart[data-panel-chart] .sv-chart__view-controls { align-self: flex-start; }
+/* The notes under the graph stay small, so the graph has the room. */
+.sv-chart[data-panel-chart] :is(.sv-chart__axis-label, .sv-chart__annotation-key, .sv-chart__credit) { margin-block: 0 0.3rem; }
+/* The description on one line, opening to the rest (chart-about.tsx). */
+.sv-chart__about { margin: 0 0 0.3rem; font: .875rem/1.5 var(--font-sans); color: var(--ink-3); }
+.sv-chart__about > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
+.sv-chart__about > summary::-webkit-details-marker { display: none; }
+.sv-chart__about-text { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); }
+.sv-chart__about-toggle::after { content: "More ▾"; }
+.sv-chart__about > summary:hover .sv-chart__about-toggle { text-decoration: underline; text-underline-offset: 0.2em; }
+.sv-chart__about[open] > summary { margin-bottom: 0.4rem; }
+.sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
+.sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
+.sv-chart__about p { margin: 0 0 0.4rem; }
+.sv-chart[data-panel-chart] .sv-graph-observations { max-width: none; margin: 0; }
+.sv-chart[data-panel-chart] .sv-method-changes-group { margin: 0.2rem 0 0; padding: 0; }
+.sv-chart[data-panel-chart] .sv-method-changes-group > summary { font-size: 0.85rem; }
+.sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 0; min-height: 12rem; container-type: size; }
+.sv-chart[data-panel-chart] .sv-chart__svg { display: none; width: 100%; height: 100%; }
+.sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+.sv-chart[data-panel-chart] .sv-comparison__rows { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; }
+@container (aspect-ratio < 3.55) {
+  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: block; }
+}
+@container (aspect-ratio < 2.8) {
+  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-broad"] { display: block; }
+}
+@media (max-width: 40rem) {
+  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__plot { flex: none; height: 16rem; }
+}
+
 /* On a phone every shape's type would shrink too far, so the narrow plot,
    drawn for that width, is used whatever the space. */
 @media (max-width: 40rem) {

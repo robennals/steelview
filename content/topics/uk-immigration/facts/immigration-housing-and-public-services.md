@@ -576,9 +576,9 @@ sources:
 series:
   title: 'Net additional dwellings in England, 1991-92 to 2024-25'
   description: >-
-    The net change in England's housing stock each financial year (April to
-    March): new homes, conversions and changes of use, minus demolitions. Each
-    point is labelled by the year in which the financial year ends.
+    The net change in England's number of homes each financial year: new homes,
+    conversions and changes of use, minus demolitions. Financial years run from April to
+    March. Each point is labelled by the year in which the financial year ends.
   periodLabel: Financial year ending March
   coverage:
     from: '1992'
@@ -987,8 +987,9 @@ additionalSeries:
   - id: pupil-numbers
     title: 'Pupils in state-funded schools in England, 2016 to 2026'
     description: >-
-      Headcount of pupils at each January school census, by phase. Independent
-      schools are not included.
+      The number of pupils in England's state-funded schools at each January school
+      census, by primary, secondary and other schools. Independent schools are not
+      included.
     periodLabel: January school census
     coverage:
       from: '2016'
@@ -1117,10 +1118,10 @@ additionalSeries:
   - id: affordable-homes
     title: 'Affordable and social rent homes completed in England, 1991-92 to 2024-25'
     description: >-
-      Gross new affordable homes (new build and acquisitions) each financial
-      year, and the social rent homes among them. Losses through Right to Buy
-      and demolition are not subtracted. Labelled by the year in which the
-      financial year ends.
+      New affordable homes completed in England each financial year, and the social rent
+      homes, let at lower rents, among them. This is a gross count of new build and
+      acquisitions. Losses through Right to Buy and demolition are not subtracted.
+      Labelled by the year in which the financial year ends.
     periodLabel: Financial year ending March
     coverage:
       from: '1992'
@@ -1301,9 +1302,10 @@ additionalSeries:
   - id: school-funding
     title: 'School funding per pupil in England, real terms, 2010-11 to 2026-27'
     description: >-
-      Revenue funding for 5–16 year olds in state-funded schools per pupil,
-      after inflation (GDP deflator, 2025-26 prices), shown as the change since
-      2010-11. Labelled by the year in which the financial year ends.
+      Funding per pupil for 5–16 year olds in England's state-funded schools, after
+      inflation, shown as the change since 2010-11. This is revenue funding, adjusted
+      using the GDP deflator at 2025-26 prices. Labelled by the year in which the
+      financial year ends.
     periodLabel: Financial year ending March
     coverage:
       from: '2011'
@@ -1368,8 +1370,9 @@ additionalSeries:
   - id: investment
     title: 'Government investment as a share of GDP: UK and OECD median, 1995–2024'
     description: >-
-      General government gross fixed capital formation as a percentage of GDP,
-      for the UK and for the median OECD member with data that year.
+      Government investment as a share of GDP, for the UK and for the median country in
+      the OECD, a group of rich countries. Investment here is general government gross
+      fixed capital formation. The OECD figure is the median member with data that year.
     periodLabel: Year
     coverage:
       from: '1995'
@@ -1528,9 +1531,10 @@ comparisons:
   - id: household-growth-by-variant
     title: Projected household growth in England by migration assumption
     description: >-
-      Projected increase in households in England between mid-2022 and
-      mid-2032 under each of the ONS's 2022-based variant projections, ranked.
-      The ONS recommends the migration category variant as its main projection.
+      How many more households England is projected to have in mid-2032 than in mid-2022,
+      under different assumptions, ranked. These are the Office for National Statistics'
+      2022-based variant projections. It recommends the migration category variant as its
+      main projection.
     unit: count
     valueLabel: Additional households, 2022 to 2032
     sources:
@@ -1564,9 +1568,10 @@ comparisons:
   - id: house-price-and-rent-effects
     title: How much house prices and rents rise per point of immigrant share
     description: >-
-      Median estimated percentage rise in house prices or rents for a
-      one-percentage-point rise in the immigrant share of the population, from
-      the MAC-commissioned review of international studies, by study group.
+      Estimated rise in house prices or rents when the immigrant share of the population
+      rises by one percentage point, by study group. Figures are median estimated
+      percentage rises, from a review of international studies commissioned by the
+      Migration Advisory Committee.
     unit: percent
     valueLabel: Median effect of a 1-point rise in immigrant share
     sources:
@@ -1598,8 +1603,9 @@ comparisons:
   - id: government-investment-oecd-2024
     title: Government investment across the OECD in 2024
     description: >-
-      General government gross fixed capital formation as a percentage of GDP,
-      2024, for every OECD member with data. The UK is highlighted.
+      Government investment as a share of GDP in 2024, for every member of the OECD, a
+      group of rich countries, with data. Investment here is general government gross
+      fixed capital formation. The UK is highlighted.
     unit: percent
     valueLabel: Government investment as a share of GDP
     sources:
@@ -1725,11 +1731,17 @@ On public services, the national figures cut against a simple population-pressur
 
 ### Building has run below projected household growth {#immigration-housing-and-public-services--building-below-household-growth}
 
-England added 208,600 net dwellings in 2024-25. The ONS projects an average of 242,000 additional households a year over 2022–2032, up from 158,000 a year in its 2018-based projections for the same period. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2) A household is not a dwelling — some homes stand empty or are second homes — so the two numbers are not an exact measure of shortfall, and the ONS says its projections are not a forecast of how many homes should be built. [5](#source-immigration-housing-and-public-services-5)
+England added 208,600 net dwellings in 2024-25. The ONS projects an average of 242,000 additional households a year over 2022–2032. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2) A household is not a dwelling, as some homes stand empty or are second homes, so the two numbers are not an exact measure of shortfall. The ONS says its projections are not a forecast of how many homes should be built. [5](#source-immigration-housing-and-public-services-5)
 
 ### Building peaked before migration did {#immigration-housing-and-public-services--building-peaked-before-migration}
 
 Net additions fell to 130,610 in 2012-13 after the financial crisis, rose to 248,590 in 2019-20, and have fallen in each year since 2021-22. [7](#source-immigration-housing-and-public-services-7) [6](#source-immigration-housing-and-public-services-6) Net migration peaked at 944,000 in the year to March 2023, so the latest fall in building came while net migration was at or near its peak. [28](#source-immigration-housing-and-public-services-28)
+
+## Subtleties {#immigration-housing-and-public-services--subtleties-dwellings}
+
+### The earlier projection {#immigration-housing-and-public-services--household-projection-revision}
+
+The ONS projection of 242,000 additional households a year over 2022–2032 is up from 158,000 a year in its 2018-based projections for the same period. [6](#source-immigration-housing-and-public-services-6) [2](#source-immigration-housing-and-public-services-2)
 
 ## Observations {#immigration-housing-and-public-services--observations-rent-growth}
 
@@ -1761,7 +1773,7 @@ These are projections of past demographic trends, not forecasts of need, and the
 
 ### Immigration explains about 4–6% of the real house-price rise {#immigration-housing-and-public-services--immigration-explains-4-6-percent-of-house-price-rise}
 
-In housing markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. Applied to the UK's foreign-born share, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
+In markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. For the UK, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
 
 ### Rent effects per person are at least as large as price effects {#immigration-housing-and-public-services--rent-effects}
 
@@ -1769,7 +1781,7 @@ Across all studies the median rent effect is 0.64%, against 0.36% for house pric
 
 ### Effects are larger where building is constrained, and UK local studies find falls {#immigration-housing-and-public-services--local-versus-regional-effects}
 
-Prices respond more where planning limits construction. Studies of small areas find weaker or negative effects because existing residents move away; in the UK, Sá (2015) finds a 1.7% fall in local house prices per point of immigrant share. [10](#source-immigration-housing-and-public-services-10) [14](#source-immigration-housing-and-public-services-14) Migration also supplies the building workforce in London, where migrants are around 46% of construction employment. [15](#source-immigration-housing-and-public-services-15)
+Prices respond more where planning limits construction. Small-area studies find weaker or negative effects as existing residents move away; in the UK, Sá (2015) finds a 1.7% fall in local house prices per point of immigrant share. [10](#source-immigration-housing-and-public-services-10) [14](#source-immigration-housing-and-public-services-14) Migration also supplies the building workforce in London, where migrants are around 46% of construction employment. [15](#source-immigration-housing-and-public-services-15)
 
 ### Recent migrants rent privately; settled migrants own homes at UK-born rates {#immigration-housing-and-public-services--migrants-concentrated-in-private-renting}
 
@@ -1777,7 +1789,13 @@ Around a third of people in privately rented homes in England and Wales were bor
 
 ### Non-UK nationals are a rising minority of new social tenants {#immigration-housing-and-public-services--social-lettings}
 
-Lead tenants with a non-UK nationality took 6% of new social lettings in England in 2007/08 and 10% in 2022/23. [18](#source-immigration-housing-and-public-services-18) People on work, study and family visas are not eligible, because of the no recourse to public funds condition, and at the 2021 Census non-UK passport holders were slightly under-represented in social housing. [19](#source-immigration-housing-and-public-services-19) [20](#source-immigration-housing-and-public-services-20) The MAC's 2018 review judged that, with little social housing being built, new lettings to migrants are "inevitably at the expense of other potential tenants". [23](#source-immigration-housing-and-public-services-23)
+Non-UK lead tenants took 6% of new social lettings in England in 2007/08 and 10% in 2022/23. [18](#source-immigration-housing-and-public-services-18) Work, study and family visa holders are ineligible, and non-UK passport holders were slightly under-represented at the 2021 Census. [19](#source-immigration-housing-and-public-services-19) [20](#source-immigration-housing-and-public-services-20) In 2018 the MAC judged that, with little building, lettings come "inevitably at the expense of other potential tenants". [23](#source-immigration-housing-and-public-services-23)
+
+## Subtleties {#immigration-housing-and-public-services--subtleties-house-price-and-rent-effects}
+
+### How the 4–6% is reached {#immigration-housing-and-public-services--how-the-4-6-percent-is-reached}
+
+The review reaches its figure by applying the effect to the UK's foreign-born share. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
 
 ## Observations {#immigration-housing-and-public-services--observations-pupils}
 

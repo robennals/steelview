@@ -718,8 +718,9 @@ sources:
 series:
   title: 'Foreign-born share of the resident population, England and Wales, Census 1951–2021'
   description: >-
-    The share of usual residents born outside the UK at each Census for which
-    the ONS states the figure in text. This is a resident stock, not a count of
+    The share of people usually living in England and Wales who were born outside the UK,
+    at selected Censuses. Shown for each Census for which the Office for National
+    Statistics states the figure in text. This is a resident stock, not a count of
     arrivals in the year shown.
   periodLabel: Census year
   coverage:
@@ -771,9 +772,9 @@ additionalSeries:
   - id: employment
     title: 'Employment rate by ethnic group, ages 16 to 64, Great Britain, 2004–2022'
     description: >-
-      The share of 16- to 64-year-olds in work in each year, for every ethnic
-      group the Annual Population Survey series publishes, with the overall
-      rate for comparison. Ethnicity is not migrant status: most people in
+      The share of 16- to 64-year-olds in work each year in Great Britain, by ethnic
+      group, with the overall rate for comparison. It covers every ethnic group the Annual
+      Population Survey series publishes. Ethnicity is not migrant status: most people in
       several of these groups were born in the UK.
     periodLabel: Year
     coverage:
@@ -990,10 +991,10 @@ additionalSeries:
   - id: denmark
     title: 'Average annual net contribution to public finances by origin, Denmark, 2014–2019'
     description: >-
-      Taxes paid minus transfers and public services used, per person per year,
-      for people of Danish origin and for immigrants and their Danish-born
-      descendants by region of origin. Below zero is a net cost. These are
-      single-year accounts, not lifetime ones.
+      Average yearly taxes paid per person in Denmark minus transfers and public services
+      used, for people of different origins. The groups are people of Danish origin, and
+      immigrants and their Danish-born descendants by region of origin. Below zero is a
+      net cost. These are single-year accounts, not lifetime ones.
     periodLabel: Year
     coverage:
       from: '2014'
@@ -1085,9 +1086,10 @@ additionalSeries:
   - id: higher-education
     title: 'Entry rate into higher education at 18 by ethnic group, England, 2006–2024'
     description: >-
-      The share of 18-year-olds from English state schools accepted onto a
-      full-time undergraduate course through UCAS, for each ethnic group the
-      series publishes.
+      The share of 18-year-olds from English state schools accepted onto a full-time
+      undergraduate course, by ethnic group. It counts acceptances through UCAS, the
+      Universities and Colleges Admissions Service, for each ethnic group the series
+      publishes.
     periodLabel: Year
     coverage:
       from: '2006'
@@ -1242,10 +1244,12 @@ additionalSeries:
   - id: cohesion
     title: 'Neighbourhood trust and cohesion, England, 2018/19–2024/25'
     description: >-
-      The share of adults who say many people in their neighbourhood can be
-      trusted, and the share who agree their local area is a place where
-      people from different backgrounds get on well together. Each point is a
-      survey year from October to March, plotted at the year it starts.
+      How many adults in England trust people in their neighbourhood, and how many say
+      people from different backgrounds get on there. One line is the share of adults who
+      say many people in their neighbourhood can be trusted; the other is the share who
+      agree their local area is a place where people from different backgrounds get on
+      well together. Each point is a survey year from October to March, plotted at the
+      year it starts.
     periodLabel: Survey year (plotted at its starting year)
     coverage:
       from: '2018'
@@ -1293,10 +1297,11 @@ comparisons:
   - id: fastest-changing-areas
     title: Where the foreign-born share rose most, 2011 to 2021
     description: >-
-      The 20 local authorities in England and Wales with the largest rise in
-      the share of residents born outside the UK between the 2011 and 2021
-      Censuses, with England and Wales as a whole, split into residents born
-      in the EU and those born elsewhere outside the UK.
+      The 20 local areas in England and Wales where the share of residents born outside
+      the UK rose most between 2011 and 2021. These are local authorities, compared
+      between the 2011 and 2021 Censuses, with England and Wales as a whole alongside.
+      Each rise is split into residents born in the EU and those born elsewhere outside
+      the UK.
     unit: count
     valueLabel: Rise in the foreign-born share, percentage points
     groupLabel: country of birth
@@ -1387,9 +1392,10 @@ comparisons:
   - id: english-proficiency
     title: English proficiency of residents born abroad, by when they arrived
     description: >-
-      Census 2021, England and Wales, everyone born outside the UK aged 3 and
-      over, by period of arrival. One Census, so this compares people who
-      arrived at different times, not the same people over time.
+      How well people born outside the UK and living in England and Wales say they speak
+      English, by when they arrived, Census 2021. It covers everyone born outside the UK
+      aged 3 and over. One Census, so this compares people who arrived at different times,
+      not the same people over time.
     unit: percent
     valueLabel: Share of residents born abroad who arrived in the period
     groupLabel: English proficiency
@@ -1429,8 +1435,8 @@ comparisons:
   - id: women-employment
     title: Employment rate of women by ethnic group, 2022
     description: >-
-      Women aged 16 to 64 in work, Great Britain, 2022, every ethnic group in
-      the published breakdown.
+      The share of women aged 16 to 64 in work in Great Britain in 2022, for every ethnic
+      group in the published breakdown.
     unit: percent
     valueLabel: Share of women aged 16 to 64 in work
     domainMax: 100
@@ -1462,8 +1468,9 @@ comparisons:
   - id: employment-by-religion
     title: Employment rate by religion, Census 2021
     description: >-
-      People aged 16 to 64 in work (employees and self-employed), England and
-      Wales, March 2021, for every religion the Census tick-box lists.
+      The share of people aged 16 to 64 in work (employees and self-employed) in England
+      and Wales in March 2021, by religion. Every religion the Census tick-box lists is
+      shown.
     unit: percent
     valueLabel: Share of 16- to 64-year-olds in work
     domainMax: 100
@@ -1498,9 +1505,10 @@ comparisons:
   - id: netherlands-by-motive
     title: Lifetime net fiscal contribution by reason for migrating, Netherlands
     description: >-
-      Average net contribution per immigrant over the rest of their life,
-      including the cost of the second generation, by the reason recorded on
-      arrival. Independent study, not a government estimate.
+      The estimated average lifetime gain or cost to Dutch public finances per immigrant
+      to the Netherlands, by reason for migrating. The figure is the net contribution over
+      the rest of each person's life, including the cost of the second generation, by the
+      reason recorded on arrival. Independent study, not a government estimate.
     unit: count
     valueLabel: 'Euro thousands per immigrant (below zero is a net cost)'
     sources: [27]
@@ -1521,9 +1529,10 @@ comparisons:
   - id: netherlands-by-region
     title: Lifetime net fiscal contribution by region of origin, Netherlands
     description: >-
-      Average net contribution per immigrant over the rest of their life,
-      including the cost of the second generation, for the regions in the
-      study's English summary table. Independent study, not a government
+      The estimated average lifetime gain or cost to Dutch public finances per immigrant
+      to the Netherlands, by region of origin. The figure is the net contribution over the
+      rest of each person's life, including the cost of the second generation, for the
+      regions in the study's English summary table. Independent study, not a government
       estimate.
     unit: count
     valueLabel: 'Euro thousands per immigrant (below zero is a net cost)'
@@ -1555,9 +1564,9 @@ comparisons:
   - id: norway-by-region
     title: Modelled net fiscal effect of extra immigrants, Norway
     description: >-
-      Statistics Norway model: present value, 2015 to 2100, of the change in
-      net public finances per additional immigrant arriving in 2015, including
-      their descendants, by country group. Above zero is a net gain.
+      Modelled gain or cost to Norway's public finances per extra immigrant arriving in
+      2015, including descendants, by country group. From a Statistics Norway model, the
+      figure is a present value covering 2015 to 2100. Above zero is a net gain.
     unit: count
     valueLabel: 'NOK million per additional immigrant, 2012 values'
     sources: [32]
@@ -1579,9 +1588,10 @@ comparisons:
   - id: gcse-by-ethnicity
     title: GCSE results by ethnic group, England, 2022/23
     description: >-
-      Average Attainment 8 score (out of 90) for pupils at the end of Key
-      Stage 4 in state-funded schools, every detailed ethnic group. White
-      British pupils are highlighted as the reference group.
+      Average GCSE results at the end of secondary school in England, as an Attainment 8
+      score out of 90, by detailed ethnic group. It covers pupils at the end of Key Stage
+      4 in state-funded schools, for every detailed ethnic group. White British pupils are
+      highlighted as the reference group.
     unit: count
     valueLabel: Average Attainment 8 score (out of 90)
     sources: [35]
@@ -1635,9 +1645,9 @@ comparisons:
   - id: gcse-fsm
     title: GCSE results of pupils eligible for free school meals, by ethnic group, England, 2022/23
     description: >-
-      Average Attainment 8 score (out of 90) for pupils eligible for free
-      school meals, a measure of low family income, every detailed ethnic
-      group. White British pupils are highlighted.
+      Average GCSE score (Attainment 8, out of 90) in England for pupils eligible for free
+      school meals, a measure of low family income. Every detailed ethnic group is shown.
+      White British pupils are highlighted.
     unit: count
     valueLabel: Average Attainment 8 score (out of 90), free-school-meal pupils
     sources: [37]
@@ -1688,8 +1698,9 @@ comparisons:
   - id: attitudes-homosexuality
     title: Saying it would be undesirable to outlaw homosexuality, 2024
     description: >-
-      British Muslims and the general public, one 2024 online poll by J.L.
-      Partners commissioned by the Henry Jackson Society.
+      The share of British Muslims and of the general public who said it would be
+      undesirable to outlaw homosexuality in the UK. From one 2024 online poll by J.L.
+      Partners, commissioned by the Henry Jackson Society, a think tank.
     unit: percent
     valueLabel: Share saying outlawing homosexuality would be undesirable
     domainMax: 100
@@ -1729,11 +1740,21 @@ Between 2011 and 2021 the foreign-born share rose by about 10 percentage points 
 
 ### EU-born residents drove the change in some towns, not in most {#integration-outcomes--eu-share-of-the-change}
 
-EU-born residents accounted for more than half of the rise in 6 of the 20 places: Boston, where they were almost all of it, Peterborough, Thurrock, Luton, Barking and Dagenham, and Watford. In the other 14, including Hillingdon, Dartford, Swindon, Sandwell and Sutton, people born outside the EU accounted for half or more. Across England and Wales the two contributed about equally. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+EU-born residents accounted for more than half of the rise in 6 of the 20 places: Boston, where they were almost all of it, Peterborough, Thurrock, Luton, Barking and Dagenham, and Watford. In the other 14, people born outside the EU accounted for half or more. Across England and Wales the two contributed about equally. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
 
 ### The detailed origins of the non-EU rise vary by place {#integration-outcomes--non-eu-origins-vary}
 
-The same Census tables split the non-EU-born by continent. In Hillingdon, Swindon, Sandwell and Leicester most of the non-EU rise was in people born in the Middle East and Asia; in Dartford and Salford a large part was in people born in Africa. The Census groups do not separate Muslim-majority countries, so these figures cannot say how much of the change was from any particular culture or religion. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+In Hillingdon, Swindon, Sandwell and Leicester most of the non-EU rise was in people born in the Middle East and Asia; in Dartford and Salford a large part was in people born in Africa. The Census groups do not separate Muslim-majority countries, so these figures cannot say how much of the change was from any particular culture or religion. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+
+## Subtleties {#integration-outcomes--subtleties-fastest-changing-areas}
+
+### Places where the non-EU-born led {#integration-outcomes--non-eu-led-places}
+
+The 14 places where people born outside the EU accounted for half or more of the rise include Hillingdon, Dartford, Swindon, Sandwell and Sutton. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
+
+### Origins are by continent {#integration-outcomes--census-origins-by-continent}
+
+The same Census tables split the non-EU-born by continent. [4](#source-integration-outcomes-4) [5](#source-integration-outcomes-5)
 
 ## Observations {#integration-outcomes--observations-english-proficiency}
 
@@ -1791,15 +1812,15 @@ The ONS figures are not age-standardised, and the Muslim group is the youngest i
 
 ### Denmark: immigrants from MENAPT countries are net costs; Western immigrants are net contributors {#integration-outcomes--denmark-menapt-vs-western}
 
-In 2019, immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey (the ministry's "MENAPT" group) cost Danish public finances DKK 79 thousand each on average, while immigrants from Western countries contributed DKK 52 thousand each, and people of Danish origin DKK 22 thousand. Immigrants and descendants together cost DKK 16 billion, about DKK 21 thousand per person. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
+In 2019, immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey (the Danish finance ministry's "MENAPT" group) cost Danish public finances DKK 79 thousand each on average, while immigrants from Western countries contributed DKK 52 thousand each, and people of Danish origin DKK 22 thousand. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
 
 ### The cost fell sharply as employment rose {#integration-outcomes--denmark-cost-fell-with-employment}
 
-The average net cost of MENAPT immigrants fell by about DKK 37 thousand a person between 2014 and 2019. The ministry attributes about half the fall for non-Western immigrants to stronger attachment to the labour market, during years when employment was rising for everyone. Had MENAPT immigrants aged 25 to 64 worked at the Danish-origin rate, their 2019 contribution would have been about DKK 12 billion higher. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
+The average net cost of MENAPT immigrants fell by about DKK 37 thousand a person between 2014 and 2019. The Danish finance ministry attributes about half the fall for non-Western immigrants to stronger attachment to the labour market, during years when employment was rising for everyone. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
 
 ### Reason for migrating explains part of the gap, not all of it {#integration-outcomes--denmark-route-matters}
 
-Immigrants who came as refugees cost about DKK 95 thousand each in 2019, while those who came to work contributed about DKK 120 thousand. MENAPT immigrants came mainly as refugees or family members, Western immigrants mainly to work or study. With the Western mix of reasons for migrating, MENAPT immigrants' average would have been about DKK 55 thousand higher, still negative. [21](#source-integration-outcomes-21) [22](#source-integration-outcomes-22)
+Refugees cost about DKK 95 thousand each in 2019, while those who came to work contributed about DKK 120 thousand. MENAPT immigrants came mainly as refugees or family members, Western ones mainly to work or study. With the Western mix of reasons, the MENAPT average would have been about DKK 55 thousand higher, still negative. [21](#source-integration-outcomes-21) [22](#source-integration-outcomes-22)
 
 ### Descendants' figures mostly reflect their age {#integration-outcomes--denmark-descendants-are-children}
 
@@ -1811,6 +1832,14 @@ Descendants of every origin, including Western, show net costs because most are 
 
 These are annual accounts for each year, not lifetime ones, and are not adjusted for the business cycle, which is why the Danish-origin line swings from year to year. They allocate shared spending such as defence across everyone. Denmark's MENAPT intake was mainly refugees and their families, so the figures say more about humanitarian routes than about work routes such as the UK's. [25](#source-integration-outcomes-25) [21](#source-integration-outcomes-21)
 
+### All immigrants and descendants together {#integration-outcomes--denmark-all-immigrants-and-descendants}
+
+In 2019 immigrants and descendants together cost Danish public finances DKK 16 billion, about DKK 21 thousand per person. [19](#source-integration-outcomes-19) [20](#source-integration-outcomes-20) [25](#source-integration-outcomes-25)
+
+### What matching Danish employment would add {#integration-outcomes--denmark-employment-gap-value}
+
+Had MENAPT immigrants aged 25 to 64 worked at the Danish-origin rate, their 2019 contribution would have been about DKK 12 billion higher. [24](#source-integration-outcomes-24) [26](#source-integration-outcomes-26)
+
 ## Observations {#integration-outcomes--observations-netherlands-by-motive}
 
 ### Netherlands: labour migrants are lifetime net contributors; asylum and family migrants are large net costs {#integration-outcomes--netherlands-by-motive}
@@ -1821,7 +1850,7 @@ An independent study estimates that, over a lifetime and including the second ge
 
 ### Region of origin produces gaps as large as reason for migrating {#integration-outcomes--netherlands-by-region}
 
-Western immigrants contribute €25,000 on average and non-Western immigrants cost nearly €275,000; Morocco, the Horn of Africa and Sudan sit at a net cost of "€550,000 to €600.000" per immigrant, in the study's own words. The authors find that where the first generation is a large net cost, the second generation is usually also negative or at best budget-neutral. [28](#source-integration-outcomes-28) [29](#source-integration-outcomes-29)
+Western immigrants contribute €25,000 on average and non-Western immigrants cost nearly €275,000; Morocco, the Horn of Africa and Sudan sit at a net cost of "€550,000 to €600.000" per immigrant. The authors find that where the first generation is a large net cost, the second generation is usually also negative or at best budget-neutral. [28](#source-integration-outcomes-28) [29](#source-integration-outcomes-29)
 
 ## Subtleties {#integration-outcomes--subtleties-netherlands-by-region}
 
@@ -1845,7 +1874,7 @@ R3 is everything outside Western Europe, North America, Oceania and the Eastern 
 
 ### Most minority groups outscore White British pupils at GCSE {#integration-outcomes--minority-pupils-outperform}
 
-In 2022/23 Chinese (65.5) and Indian (59.4) pupils had the highest average Attainment 8 scores, and Bangladeshi, Black African and Pakistani pupils also scored above White British pupils (44.9). Gypsy and Roma pupils (20.3), Irish traveller pupils (26.8) and Mixed White and Black Caribbean pupils (39.1) had the lowest, with Black Caribbean pupils also below White British. The Education Policy Institute found most ethnic groups achieved higher GCSE grades than White British pupils in 2023. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
+In 2022/23 Chinese (65.5) and Indian (59.4) pupils had the highest average Attainment 8 scores, and Bangladeshi, Black African and Pakistani pupils also scored above White British pupils (44.9). Gypsy and Roma, Irish traveller and Mixed White and Black Caribbean pupils had the lowest, with Black Caribbean pupils also below White British. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
 
 ## Observations {#integration-outcomes--observations-gcse-fsm}
 
@@ -1857,13 +1886,23 @@ Among pupils eligible for free school meals, White British pupils scored lower t
 
 ### Minority pupils enter university at higher rates, and White pupils at the lowest {#integration-outcomes--university-entry}
 
-In 2024, 66.1% of Chinese state-school pupils went to university at 18, and 29.8% of White pupils, the lowest rate. Every group's entry rate rose between 2006 and 2024. Research cited by the publisher finds almost all minority groups more likely to go to university by 19 than White British pupils, even after allowing for prior attainment and family background. [38](#source-integration-outcomes-38) [39](#source-integration-outcomes-39)
+In 2024, 66.1% of Chinese state-school pupils went to university at 18, and 29.8% of White pupils, the lowest rate. Research cited by the publisher finds almost all minority groups more likely to go to university by 19 than White British pupils, even after allowing for prior attainment and family background. [38](#source-integration-outcomes-38) [39](#source-integration-outcomes-39)
+
+## Subtleties {#integration-outcomes--subtleties-higher-education-entry}
+
+### Every group rose {#integration-outcomes--every-group-entry-rate-rose}
+
+Every group's entry rate rose between 2006 and 2024. [38](#source-integration-outcomes-38) [39](#source-integration-outcomes-39)
 
 ## Subtleties {#integration-outcomes--subtleties-gcse-by-ethnicity}
 
 ### Ethnicity is not generation {#integration-outcomes--ethnicity-is-not-generation}
 
 These are ethnic groups, most of whose pupils were born in the UK. The school figures show how the children and grandchildren of earlier migrants are doing, not how recent arrivals or the children of recent arrivals are doing, and they cover state-school pupils in England only. [38](#source-integration-outcomes-38) [40](#source-integration-outcomes-40)
+
+### The lowest scores, and a second source {#integration-outcomes--lowest-attainment-scores}
+
+Average Attainment 8 scores in 2022/23 were 20.3 for Gypsy and Roma pupils, 26.8 for Irish traveller pupils and 39.1 for Mixed White and Black Caribbean pupils. The Education Policy Institute found most ethnic groups achieved higher GCSE grades than White British pupils in 2023. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
 
 ## Observations {#integration-outcomes--observations-segregation}
 
@@ -1895,13 +1934,17 @@ A 2017 analysis of 2011–16 school census data counted a school as segregated w
 
 ### Research finds a small negative association between diversity and trust, weaker or absent once deprivation is allowed for {#integration-outcomes--diversity-and-trust-research}
 
-Most studies find more diverse communities report less trust, and a 2005 British survey linked rising diversity to lower neighbourhood trust. Other British studies find no strong erosion once deprivation is taken into account, and a London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
+Most studies find more diverse communities report less trust, and a 2005 British survey linked rising diversity to lower neighbourhood trust. Other British studies find no strong erosion once deprivation is taken into account, and a London study found diversity linked to higher perceived cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
 ## Subtleties {#integration-outcomes--subtleties-cohesion-and-trust}
 
 ### The research measures diversity, not immigration or its pace {#integration-outcomes--diversity-not-immigration}
 
 Almost all of the trust research relates trust to an area's ethnic mix, not to immigration or to how fast an area changed, and the national survey does not link trust to local migration. A national trend cannot show whether places that changed fastest lost the most trust. [53](#source-integration-outcomes-53)
+
+### Segregation within neighbourhoods {#integration-outcomes--london-segregation-and-cohesion}
+
+The London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
 ## Observations {#integration-outcomes--observations-attitudes-homosexuality}
 
