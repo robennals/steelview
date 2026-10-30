@@ -4,6 +4,7 @@ import {
   CaveatList,
   ClaimCheck,
   CompositionBar,
+  DataCards,
   DataTable,
   EstimateRange,
   GeoMap,
@@ -198,7 +199,9 @@ export function FactFigures({ fact, observations, subtleties, sections, featured
 export function FactFigure({ figure, context, page, footer }: { figure: ComponentFigure; context: FigureContext; page: FigurePage; footer?: ReactNode }) {
   switch (figure.kind) {
     case 'dataTable':
-      return <DataTable {...dataTableProps(figure, context)} footer={footer} />;
+      return figure.layout
+        ? <DataCards {...dataTableProps(figure, context)} layout={figure.layout} leadColumn={figure.leadColumn} dateColumn={figure.dateColumn} footer={footer} />
+        : <DataTable {...dataTableProps(figure, context)} footer={footer} />;
     case 'keyFigures':
       return <KeyFigures {...keyFiguresProps(figure, context)} footer={footer} />;
     case 'timeline':
