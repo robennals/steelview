@@ -1,4 +1,5 @@
 import { comparePeriods, normalizePeriod, periodToYear, periodYear } from '@/lib/content/period';
+import type { ObservationMark } from '@/lib/content/types';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading } from '@/lib/content/types';
 
 /**
@@ -307,6 +308,10 @@ export type ReadingLayout = {
   forecastX: number | null;
   /** The "not measured since" band, from the last point to where the band ends. */
   unmeasured: { x0: number; x1: number } | null;
+  /** Where a period falls on the plot, for drawing over it. */
+  x: (period: string) => number;
+  /** Where a value falls on the plot, for drawing over it. */
+  y: (value: number) => number;
 };
 
 /** Hollow markers are drawn only when a reading is sparse enough that points read as points. */
@@ -585,7 +590,35 @@ export function layoutReading(
     forecastX: forecastXs.length > 0 ? Math.max(geometry.left, Math.min(...forecastXs)) : null,
     // The window lies inside the coverage, so a band past it is only drawn on the full range.
     unmeasured: window || end === series.coverage.to ? null : { x0: x(series.coverage.to), x1: x(end) },
+    x,
+    y,
   };
+}
+
+/** An observation's mark as drawn on a plot: veils over what it is not about, and dots on what it is. */
+export type PlottedMark = {
+  veils: Array<{ x0: number; x1: number }>;
+  points: Array<{ x: number; y: number; slot: number; label: string }>;
+};
+
+/**
+ * Where an observation's mark falls on a reading's plot. A region veils the
+ * plot either side of it rather than tinting it, so the lines inside keep their
+ * colours; a point is a dot carrying its value, on each line the mark names.
+ */
+export function plotMark(layout: ReadingLayout, reading: SeriesReading, mark: ObservationMark): PlottedMark {
+  const { left, plotWidth } = layout.geometry;
+  const right = left + plotWidth;
+  const clamp = (x: number) => Math.min(right, Math.max(left, x));
+  const x0 = mark.from ? clamp(layout.x(mark.from)) : left;
+  const x1 = mark.to ? clamp(layout.x(mark.to)) : right;
+  const veils = (mark.from || mark.to ? [{ x0: left, x1: x0 }, { x0: x1, x1: right }] : []).filter(veil => veil.x1 > veil.x0);
+  const plotted = mark.at === undefined ? [] : layout.lines.filter(line => !mark.lines || mark.lines.includes(line.name));
+  const points = plotted.flatMap(line => {
+    const point = reading.lines.find(l => l.name === line.name)?.points.find(p => p.period === mark.at);
+    return point ? [{ x: layout.x(point.period), y: layout.y(point.value), slot: line.slot, label: formatValue(point.value, reading.unit) }] : [];
+  });
+  return { veils, points };
 }
 
 export type ContextLayout = {
