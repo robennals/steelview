@@ -1,12 +1,8 @@
 ---
 title: 'Mail Voting in the US: Who Uses It and Its Effects, 2016–2026'
 claim: >-
-  This report covers how many Americans vote by mail, who they are, where it
-  is offered and what it does to turnout and party. Mail voting peaked in the
-  2020 pandemic election and has since settled near three in ten voters, above
-  its earlier level, with older voters, Western states and Democrats using it
-  most. Studies find it raises turnout slightly and favours neither party.
-claimSources: [1, 2, 13, 15, 16, 18, 23, 25]
+  Mail voting peaked in the 2020 pandemic election and has settled near three in ten voters, with older, Western and Democratic voters using it most; studies find small turnout gains and no party advantage.
+claimSources: [1, 13, 15, 16, 23]
 status: well-supported
 sources:
   # 1
@@ -812,6 +808,86 @@ dataStillNeeded:
       Census's method table gives age, race, education and region but not
       metropolitan status, so the claim that rural voters rely on mail cannot be
       checked from it.
+figures:
+  - kind: series
+  - kind: series
+    id: eavs-mode
+  - kind: series
+    id: state-rules
+  - kind: series
+    id: pew-mail-support
+  - kind: dataTable
+    id: adoption
+    title: 'Mail voting by state, and when the mostly-mail states adopted it'
+    description: 'The eight states and DC that mail every voter a ballot, in the order they adopted it.'
+    sources:
+      - 11
+    caption: One row per state
+    columns:
+      - key: state
+        label: State
+        rowHeader: true
+      - key: enacted
+        label: Law enacted
+        format: text
+        sortable: false
+      - key: first
+        label: First used statewide
+        format: text
+        sortable: false
+      - key: how
+        label: How adopted
+        sortable: false
+    rows:
+      - state: Oregon
+        enacted: '1998'
+        first: '2000'
+        how: Citizen initiative
+      - state: Washington
+        enacted: '2011'
+        first: '2012'
+        how: HB 5124
+      - state: Colorado
+        enacted: '2013'
+        first: '2014'
+        how: HB 1303
+      - state: Utah
+        enacted: 2012 (counties may choose)
+        first: 2019 (all counties)
+        how:
+          value: HB 172; HB 300 makes mail opt-in from 2029
+          sources:
+            - 11
+            - 12
+      - state: Hawaii
+        enacted: '2019'
+        first: '2020'
+        how: HB 1248
+      - state: California
+        enacted: '2021'
+        first: '2022'
+        how: AB 37
+      - state: Nevada
+        enacted: '2021'
+        first: '2022'
+        how: AB 321
+      - state: Vermont (general elections only)
+        enacted: '2021'
+        first: '2022'
+        how: SB 15
+      - state: District of Columbia
+        enacted: '2022'
+        first: '2023'
+  - kind: comparison
+    id: state-mail-share
+  - kind: comparison
+    id: mail-use-by-party
+  - kind: comparison
+    id: mail-use-by-disability
+  - kind: comparison
+    id: effect-estimates
+  - kind: comparison
+    id: support-by-state-rule
 ---
 This report covers who votes by mail and what mail voting changes. How mail ballots are rejected, how fast they are counted, and how often they have been abused are in separate reports.
 
@@ -868,20 +944,6 @@ A 2025 law changes that: from 2029 "a voter will not receive a ballot by mail un
 Republican support for letting any voter vote by mail fell from about half in April 2020 to under a third in 2024 and 2025. [20](#source-mail-voting-use-and-effects-20) [21](#source-mail-voting-use-and-effects-21) Democratic support stayed above eight in ten (chart). [20](#source-mail-voting-use-and-effects-20)
 
 The first reading came early in the pandemic. Gallup links that year's fall in Republican confidence in elections to President Trump's "public questioning of the validity of mail voting". [22](#source-mail-voting-use-and-effects-22) Neither survey tests whether his statements moved support for mail voting.
-
-## Mail voting by state, and when the mostly-mail states adopted it
-
-| State | Law enacted | First used statewide | How adopted |
-|---|---|---|---|
-| Oregon | 1998 | 2000 | Citizen initiative [11](#source-mail-voting-use-and-effects-11) |
-| Washington | 2011 | 2012 | HB 5124 [11](#source-mail-voting-use-and-effects-11) |
-| Colorado | 2013 | 2014 | HB 1303 [11](#source-mail-voting-use-and-effects-11) |
-| Utah | 2012 (counties may choose) | 2019 (all counties) | HB 172; HB 300 makes mail opt-in from 2029 [11](#source-mail-voting-use-and-effects-11) [12](#source-mail-voting-use-and-effects-12) |
-| Hawaii | 2019 | 2020 | HB 1248 [11](#source-mail-voting-use-and-effects-11) |
-| California | 2021 | 2022 | AB 37 [11](#source-mail-voting-use-and-effects-11) |
-| Nevada | 2021 | 2022 | AB 321 [11](#source-mail-voting-use-and-effects-11) |
-| Vermont (general elections only) | 2021 | 2022 | SB 15 [11](#source-mail-voting-use-and-effects-11) |
-| District of Columbia | 2022 | 2023 | [11](#source-mail-voting-use-and-effects-11) |
 
 ## Observations {#mail-voting-use-and-effects--observations-adoption}
 

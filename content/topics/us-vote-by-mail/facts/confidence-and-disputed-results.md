@@ -1,13 +1,8 @@
 ---
 title: Confidence in Mail Voting and Disputed Election Results
-claimSources: [1, 2, 3, 5, 6]
+claimSources: [1, 6, 11, 12, 13, 14, 18, 20]
 claim: >-
-  This report covers how confident Americans are that votes, and mail votes
-  in particular, are counted as intended, and how recent disputed results
-  ended. Confidence in the mail count is lower than in the in-person count,
-  splits by party and moves with who wins. Each of six recent disputes ended
-  with the original winner in office; no survey measured confidence just
-  before and after each.
+  Confidence in the mail count is lower than in the in-person count, splits by party and moves with who wins; each of six recent disputes ended with the original winner in office.
 status: well-supported
 sources:
   # 1
@@ -623,6 +618,100 @@ dataStillNeeded:
     why: 'Every 2026 reading here is pre-election. A post-election reading would show whether the 2026 pattern, with Democrats less confident in mail counting, survives the result.'
   - measure: 'Any study linking the length of a count, or a lead changing during it, to confidence in the result'
     why: 'Counting speed is argued to drive suspicion; none of the series here separates counting time from who won.'
+figures:
+  - kind: series
+  - kind: series
+    id: pew-count-by-mode
+  - kind: comparison
+    id: mail-count-by-voting-method
+  - kind: series
+    id: spae-nationwide
+  - kind: series
+    id: gallup-honesty
+  - kind: comparison
+    id: winner-gap-worldwide
+  - kind: dataTable
+    id: disputes
+    title: 'Six disputed results, and how each ended'
+    description: 'What was challenged in each dispute, whether mail ballots were central, and how it ended.'
+    caption: One row per dispute
+    columns:
+      - key: election
+        label: Election
+        rowHeader: true
+      - key: challenged
+        label: What was challenged
+        sortable: false
+      - key: mail
+        label: Mail ballots central?
+        format: text
+        sortable: false
+      - key: ended
+        label: 'How it ended, as of'
+        sortable: false
+    rows:
+      - election: 'Florida, presidential, 2000'
+        challenged: Machine-uncounted punch-card ballots ("undervotes") and the hand recount
+        mail: 'No'
+        ended:
+          value: 'Supreme Court stopped the recount, Dec 2000'
+          sources:
+            - 11
+      - election: 'Ohio, presidential electoral votes, 2004'
+        challenged: '"reported voting irregularities in Ohio"'
+        mail: 'No'
+        ended:
+          value: 'House and Senate each rejected the objection, Jan 2005'
+          sources:
+            - 12
+      - election: 'Georgia, governor, 2018'
+        challenged: 'Long lines, provisional ballots and voters removed from the rolls'
+        mail: 'No'
+        ended:
+          value: 'Abrams said there was "no further viable remedy" and ended her campaign without conceding, Nov 2018'
+          sources:
+            - 13
+      - election: 'United States, presidential, 2020'
+        challenged: 'The validity of mail voting, and other states'' conduct of their elections'
+        mail: 'Yes'
+        ended:
+          value: 'Supreme Court refused Texas''s suit, Dec 2020; House rejected objections by 121–303 and 138–282, Jan 2021'
+          sources:
+            - 3
+            - 14
+            - 15
+            - 16
+      - election: 'Arizona, governor, 2022'
+        challenged: Maricopa County's signature verification of mail ballots
+        mail: 'Yes'
+        ended:
+          value: 'Trial court found the claim unproven, May 2023 (later appeals not checked here)'
+          sources:
+            - 17
+            - 18
+      - election: 'Bridgeport, Connecticut, mayoral primary, 2023'
+        challenged: Absentee ballots mishandled and stuffed into drop boxes
+        mail: 'Yes'
+        ended:
+          value: 'Court voided the primary; the same candidate won the rerun primary and the do-over general election, Feb 2024'
+          sources:
+            - 19
+            - 20
+  - kind: quoteComparison
+    id: rule-changes
+    question: Do election rules change how much voters trust results?
+    description: Two pieces of the nearest evidence. No study found tests whether tighter mail rules raise the losing side's confidence.
+    quotes:
+      - text: voters are less likely to express confidence in election results conducted using procedures they oppose
+        speaker: Joshua Clinton
+        role: American Political Science Review
+        source: 9
+      - text: it is possible that Republican confidence rebounded in 2022 because of the noted winner’s effect
+        speaker: M.V. Hood III and Seth C. McKee
+        role: MIT Election Data and Science Lab
+        context: 'On Georgia''s 2021 election law, SB 202'
+        date: 2024-05
+        source: 10
 ---
 ## Observations {#confidence-and-disputed-results--observations-gallup-accuracy-party}
 
@@ -698,14 +787,7 @@ In 2026 American disapprovers were the more confident group, which Gallup says n
 
 ### Six disputed results, and how each ended {#confidence-and-disputed-results--disputes-table}
 
-| Election | What was challenged | Mail ballots central? | How it ended, as of | Source |
-| --- | --- | --- | --- | --- |
-| Florida, presidential, 2000 | Machine-uncounted punch-card ballots ("undervotes") and the hand recount | No | Supreme Court stopped the recount, Dec 2000 | [11](#source-confidence-and-disputed-results-11) |
-| Ohio, presidential electoral votes, 2004 | "reported voting irregularities in Ohio" | No | House and Senate each rejected the objection, Jan 2005 | [12](#source-confidence-and-disputed-results-12) |
-| Georgia, governor, 2018 | Long lines, provisional ballots and voters removed from the rolls | No | Abrams said there was "no further viable remedy" and ended her campaign without conceding, Nov 2018 | [13](#source-confidence-and-disputed-results-13) |
-| United States, presidential, 2020 | The validity of mail voting, and other states' conduct of their elections | Yes | Supreme Court refused Texas's suit, Dec 2020; House rejected objections by 121–303 and 138–282, Jan 2021 | [3](#source-confidence-and-disputed-results-3) [14](#source-confidence-and-disputed-results-14) [15](#source-confidence-and-disputed-results-15) [16](#source-confidence-and-disputed-results-16) |
-| Arizona, governor, 2022 | Maricopa County's signature verification of mail ballots | Yes | Trial court found the claim unproven, May 2023 (later appeals not checked here) | [17](#source-confidence-and-disputed-results-17) [18](#source-confidence-and-disputed-results-18) |
-| Bridgeport, Connecticut, mayoral primary, 2023 | Absentee ballots mishandled and stuffed into drop boxes | Yes | Court voided the primary; the same candidate won the rerun primary and the do-over general election, Feb 2024 | [19](#source-confidence-and-disputed-results-19) [20](#source-confidence-and-disputed-results-20) |
+These are prominent recent cases in which a losing side challenged a result, not a complete list.
 
 ### Mail ballots were central in the three most recent disputes {#confidence-and-disputed-results--mail-central-in-recent-disputes}
 
