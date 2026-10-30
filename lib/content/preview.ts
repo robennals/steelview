@@ -32,3 +32,22 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
     return [{ fact, chart, reading, label: title, href: `${factPath(topic.slug, fact.id)}#${fact.id}--chart-${chart}` }];
   });
 }
+
+/**
+ * Every chart a data collection draws, in the order its page shows them: the
+ * main series, any further series, then its comparisons. A series with several
+ * readings is a slide per reading, since each reading has observations of its
+ * own and a slide draws only one.
+ */
+export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
+  const slide = (chart: string, label: string, reading?: string): PreviewSlide =>
+    ({ fact, chart, reading, label, href: `${factPath(slug, fact.id)}#${fact.id}--chart-${reading ?? chart}` });
+  const seriesSlides = (chart: string, series: NonNullable<Fact['series']>) => series.readings.length === 1
+    ? [slide(chart, series.title)]
+    : series.readings.map(reading => slide(chart, `${series.title}: ${reading.label}`, reading.id));
+  return [
+    ...(fact.series ? seriesSlides('series', fact.series) : []),
+    ...(fact.additionalSeries ?? []).flatMap(s => seriesSlides(s.id, s)),
+    ...(fact.comparisons ?? []).map(c => slide(c.id, c.title)),
+  ];
+}

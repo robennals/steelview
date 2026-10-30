@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { EventStrip, formatDate, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
+import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
 import { SeriesHighlight } from './series-highlight';
@@ -22,6 +23,7 @@ import {
   seriesStrokeDash,
   tickLabelWidth,
   unmeasuredSpan,
+  PREVIEW_VARIANTS,
   type SeriesVariant,
   type FocusWindow,
 } from '@/lib/chart/series-chart';
@@ -429,9 +431,10 @@ function Reading({
 
   const plots = (shown?: FocusWindow) => (
     <div className="sv-chart__plot">
-      {/* A preview is short and wide on a desktop slide, and drawn at the narrow size on a phone. */}
+      {/* A preview is drawn at each shape its place can use, of which the page
+          shows the one that best fills the space, and at the narrow size for a phone. */}
       {preview ? <>
-        <Plot series={series} reading={reading} variant="preview" descriptionId={descriptionId} />
+        {PREVIEW_VARIANTS[preview.fit ?? 'wide'].map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} />)}
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
       </> : <>
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
@@ -470,7 +473,7 @@ function Reading({
                   <line x1="1" y1="4" x2="19" y2="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray={seriesStrokeDash(slots.get(line.name) ?? 1)} />
                   <circle cx="10" cy="4" r="3" fill="currentColor" />
                 </svg>
-                <span className="sv-chart__key-name">{line.name}{spanSuffix(series, line)}</span>
+                <span className="sv-chart__key-name">{line.glossary ? <GlossaryTerm term={line.glossary}>{line.name}</GlossaryTerm> : line.name}{spanSuffix(series, line)}</span>
               </li>
             ))}
           </ul>

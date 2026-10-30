@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
-import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
-import { ComparisonChart } from '@/components/topic/comparison-chart';
-import { SeriesChart } from '@/components/topic/series-chart';
+import { SlideChart } from '@/components/topic/slide-chart';
 import { PreviewCarousel } from './preview-carousel';
 import { TopicAccordion, TopicRow } from './topic-accordion';
 
@@ -15,19 +13,6 @@ const updated = (date: string) =>
   new Date(`${date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
-
-/** A preview slide's chart, through the same shared component the topic page uses. */
-function SlideChart({ slide }: { slide: PreviewSlide }) {
-  const { fact, chart } = slide;
-  const preview = { href: slide.href.split('#')[0], reading: slide.reading };
-  const seriesIndex = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
-  const series = chart === 'series' ? fact.series : fact.additionalSeries?.[seriesIndex];
-  if (series) {
-    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={seriesSourceOffset(fact, seriesIndex)} sources={factSources(fact)} preview={preview} />;
-  }
-  const comparison = fact.comparisons?.find(c => c.id === chart);
-  return comparison ? <ComparisonChart fact={{ id: fact.id }} chart={comparison} sources={factSources(fact)} preview={preview} /> : null;
-}
 
 /** An open row's body: the topic's chart carousel beside its viewpoints and the report link. */
 function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] }) {

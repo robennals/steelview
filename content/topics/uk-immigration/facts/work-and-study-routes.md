@@ -8,13 +8,7 @@ claimSources:
 - 14
 - 21
 claim: >-
-  Work visas issued to people coming from abroad rose from under 200,000 a year before
-  2021 to 613,627 in 2023, then fell to 234,841 in the year to June 2026. Most of
-  the swing was care workers: their visas fell from 107,772 in 2023 to 344, a collapse
-  that began in late 2023, well before the route closed to new overseas recruits in
-  July 2025. In England’s adult social care, the British-held share of posts fell
-  from 85% to 67% between 2020/21 and 2025/26, while the vacancy rate fell from its
-  2021/22 peak to 6.1%.
+  Work visas more than tripled to a 2023 peak and have since fallen most of the way back, driven above all by care workers.
 status: well-supported
 relatedFacts:
 - immigration-economy-and-public-finances
