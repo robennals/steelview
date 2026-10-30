@@ -779,6 +779,134 @@
     }
   }
 
+  /* ------------------------------------------------------- data cards */
+
+  .sv-cards__list {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .sv-cards__list[data-layout="cards"] {
+    grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr));
+  }
+
+  /* The same spine as Timeline: the rule runs down the list and each card
+     hangs off it. */
+  .sv-cards__list[data-layout="timeline"] {
+    margin-left: 0.45rem;
+    padding-left: 1.4rem;
+    border-left: 1px solid var(--rule-strong);
+  }
+
+  .sv-cards__item {
+    position: relative;
+    min-width: 0;
+    container-type: inline-size;
+    padding: 0.7rem 0.9rem 0.8rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper-raised);
+  }
+
+  .sv-cards__item[data-highlight] {
+    border-color: var(--accent);
+    background: var(--accent-wash);
+  }
+
+  .sv-cards__list[data-layout="timeline"] > .sv-cards__item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.4rem - 6px - 1px);
+    top: 0.85rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  .sv-cards__date {
+    margin: 0 0 0.1rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3);
+  }
+
+  .sv-cards__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  /* The summary is apparatus, in the sans; the source's own words are reading
+     text, in the serif — the contrast every quote in the library uses. */
+  .sv-cards__lead,
+  .sv-cards__fields dd {
+    font-family: var(--font-sans);
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .sv-cards__lead {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  .sv-cards__lead[data-quote] {
+    padding-left: 0.65rem;
+    border-left: 2px solid var(--accent);
+  }
+
+  .sv-cards__item q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    font-family: var(--font-serif);
+    font-size: 1.05em;
+    color: var(--ink);
+  }
+
+  .sv-cards__fields {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0.55rem 0 0;
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sv-cards__fields dt {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ink-3);
+  }
+
+  .sv-cards__fields dd {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  /* Label beside value where a card has the width, so several short lines
+     stay short. */
+  @container (min-width: 28rem) {
+    .sv-cards__fields > div {
+      display: grid;
+      grid-template-columns: 9.5rem minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+  }
+
   /* ------------------------------------------------------- data table */
 
   .sv-data__scroll {

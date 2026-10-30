@@ -634,7 +634,9 @@ figures:
     id: disputes
     title: 'Six disputed results, and how each ended'
     description: 'What was challenged in each dispute, whether mail ballots were central, and how it ended.'
-    caption: One row per dispute
+    caption: One card per dispute
+    layout: timeline
+    leadColumn: challenged
     columns:
       - key: election
         label: Election
@@ -791,7 +793,7 @@ These are prominent recent cases in which a losing side challenged a result, not
 
 ### Mail ballots were central in the three most recent disputes {#confidence-and-disputed-results--mail-central-in-recent-disputes}
 
-The 2020 dispute followed months of questioning mail voting, Arizona's centred on signature checks of mail ballots, and Bridgeport's on absentee ballots in drop boxes (table). [3](#source-confidence-and-disputed-results-3) [18](#source-confidence-and-disputed-results-18) [19](#source-confidence-and-disputed-results-19) The three earlier disputes were about a recount, irregularities at the polls and the voter rolls.
+The 2020 dispute followed months of questioning mail voting, Arizona's centred on signature checks of mail ballots, and Bridgeport's on absentee ballots in drop boxes (see the timeline). [3](#source-confidence-and-disputed-results-3) [18](#source-confidence-and-disputed-results-18) [19](#source-confidence-and-disputed-results-19) The three earlier disputes were about a recount, irregularities at the polls and the voter rolls.
 
 ### Every dispute ended with the original winner in office {#confidence-and-disputed-results--every-dispute-resolved}
 

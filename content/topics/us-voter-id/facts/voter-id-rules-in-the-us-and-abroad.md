@@ -1238,7 +1238,9 @@ figures:
     id: carter-baker
     title: 'The Carter–Baker Commission''s ID bargain, 2005'
     description: 'The ID proposals of the bipartisan Commission on Federal Election Reform, chaired by Jimmy Carter and James Baker, which reported in September 2005.'
-    caption: 'One row per proposal, finding or dissent'
+    caption: 'One card per proposal, finding or dissent'
+    layout: cards
+    leadColumn: said
     columns:
       - { key: recommendation, label: 'Recommendation', rowHeader: true }
       - { key: said, label: 'What it said', sortable: false }
@@ -1305,7 +1307,9 @@ figures:
     id: adoption-reasons
     title: 'Northern Ireland, Britain and Canada: why they adopted ID'
     description: 'When each place adopted voter ID, the reason it gave, and the fraud on record beforehand.'
-    caption: 'One row per place'
+    caption: 'One card per place'
+    layout: cards
+    leadColumn: reason
     columns:
       - { key: place, label: 'Place', rowHeader: true }
       - { key: adopted, label: 'Adopted', sortable: false }

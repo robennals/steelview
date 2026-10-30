@@ -618,7 +618,10 @@ figures:
     title: 'Key holdings on who sets the rules and what they may require, 2008–2026'
     description: 'The main court rulings on who sets voter ID and registration rules.'
     note: 'The ITCA vote of 7–2 is from the opinion''s own line-up: Justice Scalia wrote for six justices, Justice Kennedy joined in part, and Justices Thomas and Alito dissented.'
-    caption: 'One row per ruling'
+    caption: 'One card per ruling'
+    layout: timeline
+    leadColumn: holding
+    dateColumn: date
     columns:
       - { key: case, label: 'Case', rowHeader: true }
       - { key: date, label: 'Date and vote', format: text, sortable: false }
@@ -652,7 +655,10 @@ figures:
     id: federal-laws
     title: 'Federal voting laws and bills on registration and ID, 1965–2026'
     description: 'The federal laws in force on registration and ID, and the main bills since 2021.'
-    caption: 'One row per law or bill'
+    caption: 'One card per law or bill'
+    layout: timeline
+    leadColumn: does
+    dateColumn: year
     columns:
       - { key: year, label: 'Year', format: text }
       - { key: measure, label: 'Law or bill', rowHeader: true }
@@ -690,7 +696,9 @@ figures:
     id: live-measures
     title: 'Live federal measures on 23 October 2026'
     description: 'Where each federal measure on proof of citizenship and ID stood ten days before the midterms.'
-    caption: 'One row per measure'
+    caption: 'One card per measure'
+    layout: cards
+    leadColumn: does
     columns:
       - { key: measure, label: 'Measure', rowHeader: true }
       - { key: does, label: 'What it does', sortable: false }
