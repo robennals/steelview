@@ -26,7 +26,7 @@ deploys to production. `www.steelview.org` redirects permanently to
 ```bash
 pnpm dev        # dev server at localhost:3000
 pnpm test:unit  # node:test via tsx — content validation and pure logic
-pnpm test:e2e   # Playwright — builds the app, then drives it in a browser
+pnpm test:e2e   # Playwright — builds the app, serves it on a free port, then drives it in a browser
 pnpm lint       # eslint
 pnpm check:integrity # publication-time cross-item and editorial integrity checks
 pnpm check:figures  # audits figures asserted in prose against the quoted sources
