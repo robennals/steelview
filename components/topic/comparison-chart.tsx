@@ -2,6 +2,7 @@
 import { useState, type ReactNode } from 'react';
 import type { Fact, Source } from '@/lib/content/types';
 import { rankOf } from '@/lib/chart/comparison-preview';
+import { ChartAbout } from './chart-about';
 import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -61,7 +62,9 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   return <figure className="sv-chart sv-comparison" id={`${fact.id}--chart-${chart.id}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
     <figcaption className="sv-chart__caption">
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
-      {!preview && <p className="sv-chart__desc">{chart.description}</p>}
+      {!preview && (panel
+        ? <ChartAbout description={chart.description}>{chart.note && <p>{chart.note}</p>}</ChartAbout>
+        : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
     {chart.groups && !preview && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
       {[...chart.groups, allGroupsLabel].map((label, index) => { const value = index === chart.groups!.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
@@ -89,7 +92,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
     {!preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={panel ? sources[n - 1].url : at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher}{panel ? '' : ` [${n}]`}</a></span>)}</p>}
     {observations}
-    {chart.note && !preview && <details className="sv-chart__methodology"><summary>About this data</summary><p>{chart.note}</p></details>}
+    {chart.note && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{chart.note}</p></details>}
   </figure>;
 }
 
