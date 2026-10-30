@@ -29,8 +29,13 @@ export function VizTabs() {
     const sync = () => {
       const id = article.getAttribute('data-focus');
       setFocus(id);
-      // Keep the current tab in view in the row, which scrolls sideways.
-      if (id) requestAnimationFrame(() => ref.current?.querySelector('[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' }));
+      // Keep the current tab in view in the row, which scrolls sideways. The
+      // page must stay put: it has already scrolled to the linked section.
+      if (id) requestAnimationFrame(() => {
+        const tab = ref.current?.querySelector('[aria-current]');
+        const row = tab?.closest('ul');
+        if (tab && row) row.scrollBy({ left: tab.getBoundingClientRect().left - row.getBoundingClientRect().left });
+      });
     };
     sync();
     const observer = new MutationObserver(sync);
