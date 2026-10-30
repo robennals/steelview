@@ -503,7 +503,9 @@ figures:
     id: "regime-change"
     title: "Studies of outside attempts to change governments, with how each defines success"
     description: "Three studies of regime change imposed from outside, openly or covertly."
-    caption: "One row per study"
+    caption: "One card per study"
+    layout: cards
+    leadColumn: finding
     columns:
       - { key: "study", label: "Study", rowHeader: true, sortable: false }
       - { key: "cases", label: "Cases and years", sortable: false }
@@ -521,7 +523,9 @@ figures:
     id: "nonproliferation-pressure"
     title: "Studies of pressure on nuclear programmes and of ceasefires"
     description: "What sanctions, rewards and ceasefire terms have achieved, with how each study defines success."
-    caption: "One row per study"
+    caption: "One card per study"
+    layout: cards
+    leadColumn: finding
     columns:
       - { key: "study", label: "Study", rowHeader: true, sortable: false }
       - { key: "cases", label: "Cases and years", sortable: false }
@@ -550,7 +554,9 @@ figures:
     id: "studies"
     title: "The other studies, with how each defines success"
     description: "A success rate under one definition is not comparable with another."
-    caption: "One row per study"
+    caption: "One card per study"
+    layout: cards
+    leadColumn: finding
     columns:
       - { key: "study", label: "Study", rowHeader: true, sortable: false }
       - { key: "cases", label: "Cases and years", sortable: false }
@@ -695,7 +701,7 @@ Downes and Monten expect most regime-change targets to be "poor, diverse countri
 
 ## About this data {#outside-attempts-to-change-hostile-regimes--about}
 
-**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The tables above keep each figure next to its definition.
+**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The cards above keep each figure next to its definition.
 
 **Why there is no time series.** The studies publish pooled results over long periods, not rates by year.
 

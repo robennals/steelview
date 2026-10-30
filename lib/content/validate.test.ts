@@ -675,6 +675,22 @@ test('F6: a data table\'s columns, rows, sort and highlight agree', () => {
   assert.ok(hasError(topic, 'at most one column may be the row header'));
 });
 
+test('F6: a card layout names real columns, apart from the title', () => {
+  const { topic, fact } = figuresTopic();
+  const table = figureOf(fact, 'dataTable');
+  table.leadColumn = 'effect';
+  assert.ok(hasError(topic, 'figure federal-laws: leadColumn needs a layout'));
+  table.layout = 'timeline';
+  assert.ok(!hasError(topic, 'figure federal-laws: leadColumn'));
+  table.leadColumn = 'missing';
+  table.dateColumn = 'measure';
+  assert.ok(hasError(topic, 'leadColumn "missing" is not a column'));
+  assert.ok(hasError(topic, 'dateColumn "measure" is the row header'));
+  table.leadColumn = 'year';
+  table.dateColumn = 'year';
+  assert.ok(hasError(topic, 'leadColumn and dateColumn must differ'));
+});
+
 test('F7: timeline categories exist and periods run forwards', () => {
   const { topic, fact } = figuresTopic();
   const timeline = figureOf(fact, 'timeline');

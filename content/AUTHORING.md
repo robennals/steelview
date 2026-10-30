@@ -731,7 +731,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `comparison` | one `comparisons` entry, by `id` |
 | `featured` | the charts of one supporting fact named in `featuredCharts` (`fact: <id>`) |
 | `section` | the body section headed `## … {#<fact>--<id>}`, moved to this place |
-| `dataTable` | a sortable table; a cell may be `{ value, sources }` to footnote it |
+| `dataTable` | a sortable table, or its rows as cards with `layout`; a cell may be `{ value, sources }` to footnote it |
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source`; `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` |
 | `periodTimeline` | spans per row, with point `events`; a period with no `to` is still in force and runs to the topic's `lastUpdated` |
@@ -772,6 +772,36 @@ figures:
         status: { value: 'Passed House, 220–208, 10 Apr 2025', sources: [24] }
   - kind: section
     id: freedom-to-vote-act-provisions
+```
+
+**A `dataTable` a reader reads rather than compares is set as cards.** When a
+row's cells run to sentences or quote a source (rulings, laws, studies), add
+`layout: cards`, or `layout: timeline` if the rows run in order of time. Keep a
+table when the reader compares a column: numbers, or short values side by side.
+The row header is the card's title; `leadColumn` is its main text; `dateColumn`,
+if the title does not already carry the date, is printed above the title; every
+other column is a labelled line, omitted where the cell is empty. Words in
+quotation marks are set apart from the summary around them, so keep a source's
+words in quotation marks. Cards do not sort: a timeline's rows must be written
+in order, or given a `defaultSort`.
+
+```yaml
+  - kind: dataTable
+    id: holdings
+    title: 'Who may set the rules: what the courts say'
+    description: The main rulings, oldest first.
+    caption: One card per ruling
+    layout: timeline
+    leadColumn: says
+    dateColumn: date
+    columns:
+      - { key: case, label: Case, rowHeader: true }
+      - { key: date, label: Date, format: text }
+      - { key: says, label: What it says, sortable: false }
+    rows:
+      - case: Arizona v. Inter Tribal Council
+        date: 17 Jun 2013
+        says: { value: 'Congress''s power is "paramount"', sources: [3] }
 ```
 
 **Once present, `figures` places every chart.** Each `series`,

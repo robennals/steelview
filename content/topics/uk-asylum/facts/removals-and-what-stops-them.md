@@ -1992,7 +1992,9 @@ figures:
     id: echr-share
     title: What the nearest measures of the ECHR's weight show, and leave out
     description: No published source counts removals stopped by the ECHR. These are the nearest measures, each of which answers a narrower question.
-    caption: One row per measure
+    caption: One card per measure
+    layout: cards
+    leadColumn: shows
     columns:
       - { key: measure, label: Measure, rowHeader: true }
       - { key: shows, label: What it shows, sortable: false }

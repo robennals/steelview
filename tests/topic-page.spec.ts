@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { headCorner, openViewpoint } from './topic-rows';
+import { headCorner, openDataRow, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -37,7 +37,7 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   await explore.click();
 
   const sheet = page.locator('dialog[open]');
-  await expect(sheet.getByRole('heading', { level: 2 })).toContainText('Work and Study Visas and the Care Workforce');
+  await expect(sheet.locator('.sv-modal__title')).toContainText('Work and Study Visas and the Care Workforce');
   await expect(sheet.locator('.sv-walk__tab[aria-current]')).toBeVisible();
   await expect(page).toHaveURL(new RegExp(`${TOPIC}#work-and-study-routes--`));
 
@@ -70,6 +70,20 @@ test('a data panel is the data: its charts open nothing, and have their controls
 
   await step.getByRole('button', { name: 'Table' }).click();
   await expect(step.locator('table').first()).toBeVisible();
+});
+
+test('a short bar chart keeps its bars together, with its scale under them, in a tall panel', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = await openDataRow(page, 'Immigration, the Economy and the Public Finances');
+  await row.locator('.sv-walk__tab', { hasText: 'Who pays UK universities' }).click();
+  const chart = row.locator('.sv-comparison').filter({ hasText: 'Who pays UK universities' });
+  const bars = chart.locator('.sv-comparison__rows > li');
+  await expect(bars).toHaveCount(2);
+  const first = await bars.first().boundingBox();
+  const second = await bars.last().boundingBox();
+  const scale = await chart.locator('.sv-comparison__scale').boundingBox();
+  expect(second!.y - first!.y).toBeLessThan(60);
+  expect(scale!.y - (second!.y + second!.height)).toBeLessThan(40);
 });
 
 test('a chart\'s description is one line until opened, and method notes are inside it', async ({ page }) => {
@@ -135,6 +149,9 @@ test('a keyboard reader keeps their place when a thumbnail opens the row', async
   await page.goto(TOPIC);
   const row = page.locator('#viewpoint-open-and-build');
   const thumb = row.locator('.sv-walk__thumb').nth(1);
+  // Thumbnails stay disabled until hydration, and unlike click(), focus() does
+  // not wait for that: focusing a disabled button leaves Enter with no target.
+  await expect(thumb).toBeEnabled();
   await thumb.focus();
   await page.keyboard.press('Enter');
   await expect(row.locator('.sv-row__toggle')).toBeFocused();

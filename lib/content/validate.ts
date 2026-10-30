@@ -473,6 +473,13 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
         }
       });
       if (figure.defaultSort && !keys.includes(figure.defaultSort.key)) errors.push(`${where} defaultSort key "${figure.defaultSort.key}" is not a column`);
+      for (const [name, key] of [['leadColumn', figure.leadColumn], ['dateColumn', figure.dateColumn]]) {
+        if (key === undefined) continue;
+        if (!figure.layout) errors.push(`${where} ${name} needs a layout`);
+        if (!keys.includes(key)) errors.push(`${where} ${name} "${key}" is not a column`);
+        if (key === header) errors.push(`${where} ${name} "${key}" is the row header, which is already the card's title`);
+      }
+      if (figure.leadColumn && figure.leadColumn === figure.dateColumn) errors.push(`${where} leadColumn and dateColumn must differ`);
       const headers = figure.rows.map(row => {
         const cell = row[header];
         return String(cell !== null && typeof cell === 'object' ? cell.value : cell);

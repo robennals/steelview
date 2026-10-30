@@ -794,7 +794,10 @@ figures:
     id: secret-ballot
     title: 'The secret ballot: when and why it was adopted'
     description: 'Where the secret ballot came in, and what it was for.'
-    caption: One row per adoption
+    caption: One card per adoption
+    layout: timeline
+    leadColumn: says
+    dateColumn: when
     columns:
       - key: where
         label: Where
@@ -841,7 +844,9 @@ figures:
     id: privacy-surveys
     title: 'How private is a mail ballot? Surveys, ranked by method'
     description: 'Strongest method first. The questions differ, so the figures cannot share one chart.'
-    caption: One row per survey
+    caption: One card per survey
+    layout: cards
+    leadColumn: finding
     columns:
       - key: survey
         label: Survey
@@ -1020,7 +1025,9 @@ figures:
     id: secrecy-views
     title: Does postal voting weaken the secret ballot? What courts and reviews said
     description: 'What courts, reviews and researchers have said, for and against.'
-    caption: 'One row per court, review or writer'
+    caption: 'One card per court, review or writer'
+    layout: cards
+    leadColumn: said
     columns:
       - key: who
         label: Who

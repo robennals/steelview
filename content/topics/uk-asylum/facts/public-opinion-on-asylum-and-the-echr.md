@@ -246,7 +246,9 @@ figures:
     id: removals
     title: How the question changes the answer, 2023–2025
     description: Polls on the ECHR and on removals, each result shown with the question asked.
-    caption: One row per poll
+    caption: One card per poll
+    layout: cards
+    leadColumn: question
     columns:
       - { key: poll, label: Poll, rowHeader: true }
       - { key: question, label: Question or options, sortable: false }

@@ -1296,7 +1296,9 @@ figures:
     id: nvra-rules
     title: 'The federal rules for removing voters'
     description: 'The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections.'
-    caption: 'One row per rule for states'
+    caption: 'One card per rule for states'
+    layout: cards
+    leadColumn: detail
     columns:
       - { key: rule, label: 'What states', rowHeader: true }
       - { key: detail, label: 'What the law says', sortable: false }
@@ -1311,7 +1313,9 @@ figures:
     id: bulk-errors
     title: 'Bulk removals that reached eligible voters, 2000–2026'
     description: 'Programs that matched whole voter lists against another database, with what was flagged, what was later shown, and how each ended. Figures come from courts, officials, journalists and advocacy groups, as marked in the sources.'
-    caption: 'One row per program'
+    caption: 'One card per program'
+    layout: timeline
+    leadColumn: shown
     columns:
       - { key: program, label: 'Program', rowHeader: true }
       - { key: method, label: 'Matching method', sortable: false }
@@ -1378,7 +1382,9 @@ figures:
     id: bloated-roll-claims
     title: 'Claims of bloated rolls, and what they counted'
     description: 'Four claims about ineligible names on voter lists, with what each compared.'
-    caption: 'One row per claim'
+    caption: 'One card per claim'
+    layout: timeline
+    leadColumn: counts
     columns:
       - { key: claim, label: 'Claim', rowHeader: true }
       - { key: compared, label: 'What was compared', sortable: false }
@@ -1529,7 +1535,7 @@ The district court had found, according to the challengers' filing, that the sta
 
 ### Bulk matches have repeatedly flagged eligible voters {#voter-roll-maintenance--bulk-matching-errs}
 
-Every programme in the table flagged people who were eligible. The Brennan Center describes the two usual causes as bad source data (Arkansas's felony list) and loose matching rules (Texas's "weak" death matches, Crosscheck's name-and-birth-date match). [29](#source-voter-roll-maintenance-29)
+Every programme in the timeline flagged people who were eligible. The Brennan Center describes the two usual causes as bad source data (Arkansas's felony list) and loose matching rules (Texas's "weak" death matches, Crosscheck's name-and-birth-date match). [29](#source-voter-roll-maintenance-29)
 
 A 2017 Stanford-led study estimated that Crosscheck applied nationally would "impede 300 legal votes for every double vote prevented." [30](#source-voter-roll-maintenance-30) In North Carolina, the challengers' brief quotes the Fourth Circuit as finding "97.6% of persons identified by the DMV as noncitizens, in fact were citizens". [39](#source-voter-roll-maintenance-39)
 
@@ -1558,13 +1564,13 @@ Flagged Texans who do not reply within 30 days are cancelled but can be reinstat
 
 The Brennan Center's "almost 16 million voters" purged between 2014 and 2016 is the EAC's total of removals for every reason, more than half of them moves and deaths (see the first two charts). [29](#source-voter-roll-maintenance-29) [9](#source-voter-roll-maintenance-9)
 
-The Brennan Center itself says that "When done correctly, purges ensure the voter rolls are accurate and up-to-date." [29](#source-voter-roll-maintenance-29) The errors in the table are real but are thousands to hundreds of thousands of records against removals in the tens of millions; no national count of wrongful removals exists.
+The Brennan Center itself says that "When done correctly, purges ensure the voter rolls are accurate and up-to-date." [29](#source-voter-roll-maintenance-29) The errors in the timeline are real but are thousands to hundreds of thousands of records against removals in the tens of millions; no national count of wrongful removals exists.
 
 ## Observations {#voter-roll-maintenance--observations-bloated-roll-claims}
 
 ### Lawsuits have pushed states to remove millions of stale registrations {#voter-roll-maintenance--litigation-driven-removals}
 
-Judicial Watch counts more than five million names removed since 2017 after its NVRA suits, the largest in Los Angeles County, New York City and Kentucky (see the table). [43](#source-voter-roll-maintenance-43) These were registrations removed through the notice-and-wait process; the group describes them as ineligible, and they are part of the national totals in the first chart.
+Judicial Watch counts more than five million names removed since 2017 after its NVRA suits, the largest in Los Angeles County, New York City and Kentucky (see the timeline). [43](#source-voter-roll-maintenance-43) These were registrations removed through the notice-and-wait process; the group describes them as ineligible, and they are part of the national totals in the first chart.
 
 ### Over-100% claims count inactive records against survey estimates {#voter-roll-maintenance--bloated-claims-count-inactive}
 
