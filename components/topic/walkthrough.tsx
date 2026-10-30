@@ -1,6 +1,7 @@
 'use client';
 
 import { Children, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useStepRequest } from '@/components/home/topic-accordion';
 import { useCarousel } from '@/components/home/use-carousel';
 
 type WalkthroughProps = {
@@ -34,6 +35,12 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
   const tabs = useRef<HTMLOListElement>(null);
 
   const [tabsOverflow, setTabsOverflow] = useState(false);
+
+  // Opened from a thumbnail on the closed row: start on that step.
+  const request = useStepRequest();
+  useEffect(() => {
+    if (request) go(request.step, true);
+  }, [request, go]);
 
   // Arrows appear only when the miniatures do not all fit.
   useEffect(() => {

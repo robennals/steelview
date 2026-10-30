@@ -5,7 +5,7 @@ import { ChartThumb } from '@/components/topic/chart-thumb';
 import { Prose } from '@/components/topic/prose';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
-import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { Walkthrough } from '@/components/topic/walkthrough';
 
 /** Markdown links reduced to their text, for a lead shown as a plain subtitle. */
@@ -55,13 +55,15 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
             subtitle={plain(lead)}
             meta={null}
             thumbs={
-              <ol className="sv-row__thumbs sv-walk__thumbs" aria-hidden="true">
+              <ol className="sv-row__thumbs sv-walk__thumbs">
                 {steps.map((step, i) => (
                   <li key={i}>
-                    <div className="sv-row__thumb">
-                      {step.chart ? <ChartThumb fact={step.chart.fact} chart={step.chart.chart} reading={step.chart.reading} /> : <span className="sv-walk__no-chart">No chart</span>}
-                    </div>
-                    <span>{i + 1}. {step.heading}</span>
+                    <RowThumb step={i}>
+                      <span className="sv-row__thumb" aria-hidden="true">
+                        {step.chart ? <ChartThumb fact={step.chart.fact} chart={step.chart.chart} reading={step.chart.reading} /> : <span className="sv-walk__no-chart">No chart</span>}
+                      </span>
+                      <span className="sv-walk__thumb-label">{i + 1}. {step.heading}</span>
+                    </RowThumb>
                   </li>
                 ))}
               </ol>

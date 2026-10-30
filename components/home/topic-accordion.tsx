@@ -10,8 +10,8 @@ const OPEN_MS = 550;
 type Accordion = {
   open: string;
   setOpen: (slug: string) => void;
-  /** Starts holding one row's head still, cancelling any hold already running. */
-  hold: (row: HTMLElement) => void;
+  /** Starts holding one row's head still, cancelling any hold already running. `settled` runs if the hold reaches its end. */
+  hold: (row: HTMLElement, settled?: () => void) => void;
 };
 
 const OpenRow = createContext<Accordion>({ open: '', setOpen: () => {}, hold: () => {} });
@@ -19,10 +19,29 @@ const OpenRow = createContext<Accordion>({ open: '', setOpen: () => {}, hold: ()
 /** Whether the row a component sits in is open, so a row's body can load what it shows only once it is. */
 const RowIsOpen = createContext(false);
 
+/** A step a row's thumbnail asked for. A new object each time, so asking for the same step twice still moves there. */
+type StepRequest = { step: number };
+
+type StepControl = { request: StepRequest | null; openAt: (step: number) => void };
+
+const RowStep = createContext<StepControl>({ request: null, openAt: () => {} });
+
 const noSubscription = () => () => {};
 
 export function useRowIsOpen(): boolean {
   return useContext(RowIsOpen);
+}
+
+/** The step the row's walkthrough was last asked to show, if any. */
+export function useStepRequest(): StepRequest | null {
+  return useContext(RowStep).request;
+}
+
+/** One thumbnail of a closed walkthrough row: a button opening the row at that step, not at its first. */
+export function RowThumb({ step, children }: { step: number; children: ReactNode }) {
+  const { openAt } = useContext(RowStep);
+  const hydrated = useSyncExternalStore(noSubscription, () => true, () => false);
+  return <button type="button" className="sv-walk__thumb" disabled={!hydrated} onClick={() => openAt(step)}>{children}</button>;
 }
 
 /** The home page's topic rows, exactly one of them open. Starts with `initial` open. */
@@ -32,7 +51,7 @@ export function TopicAccordion({ initial, children }: { initial: string; childre
 
   // Scroll in step with the transition so the clicked head stays where it was
   // clicked. A second click, or the reader scrolling, ends the hold.
-  const hold = (row: HTMLElement) => {
+  const hold = (row: HTMLElement, settled?: () => void) => {
     stopHolding.current();
     const before = row.getBoundingClientRect().top;
     const start = performance.now();
@@ -46,7 +65,10 @@ export function TopicAccordion({ initial, children }: { initial: string; childre
       const drift = row.getBoundingClientRect().top - before;
       if (Math.abs(drift) > 0.5) window.scrollBy(0, drift);
       if (now - start < OPEN_MS + 100) frame = requestAnimationFrame(step);
-      else stop();
+      else {
+        stop();
+        settled?.();
+      }
     };
     window.addEventListener('wheel', stop, { passive: true });
     window.addEventListener('touchstart', stop, { passive: true });
@@ -93,6 +115,8 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
 }) {
   const { open, setOpen, hold } = useContext(OpenRow);
   const row = useRef<HTMLElement>(null);
+  const toggleButton = useRef<HTMLButtonElement>(null);
+  const [request, setRequest] = useState<StepRequest | null>(null);
   const isOpen = open === slug;
   // Without JavaScript a walkthrough row cannot open, so its body stays reachable (globals.css).
   const hydrated = useSyncExternalStore(noSubscription, () => true, () => false);
@@ -130,26 +154,41 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
     setOpen(slug);
   };
 
+  const openAt = (step: number) => {
+    // The thumbnails vanish as the row opens, and the keyboard focus must not go with them.
+    toggleButton.current?.focus({ preventScroll: true });
+    // Once open, bring the chart on screen: the thumbnail may have been near the bottom of it.
+    const reveal = () => {
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      row.current?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest' });
+    };
+    if (row.current) hold(row.current, reveal);
+    setOpen(slug);
+    setRequest({ step });
+  };
+
   return (
     <article id={anchor} className={className ? `sv-row ${className}` : 'sv-row'} ref={row} data-open={isOpen || undefined}>
-      <div className="sv-row__head">
-        {/* Stretched over the whole head by CSS, under the title link. */}
-        <button type="button" className="sv-row__toggle" onClick={toggle} aria-expanded={isOpen} aria-controls={bodyId}>
-          <span className="sv-visually-hidden">{isOpen ? 'Hide' : 'Show'} the {title} preview</span>
-        </button>
-        <div className="sv-row__heading">
-          {meta}
-          <h2 className="sv-row__title">
-            {href ? <Link href={href} className="sv-row__link">{title}</Link> : title}
-          </h2>
-          <p className="sv-row__subtitle">{subtitle}</p>
+      <RowStep.Provider value={{ request, openAt }}>
+        <div className="sv-row__head">
+          {/* Stretched over the whole head by CSS, under the title link. */}
+          <button type="button" className="sv-row__toggle" ref={toggleButton} onClick={toggle} aria-expanded={isOpen} aria-controls={bodyId}>
+            <span className="sv-visually-hidden">{isOpen ? 'Hide' : 'Show'} the {title} preview</span>
+          </button>
+          <div className="sv-row__heading">
+            {meta}
+            <h2 className="sv-row__title">
+              {href ? <Link href={href} className="sv-row__link">{title}</Link> : title}
+            </h2>
+            <p className="sv-row__subtitle">{subtitle}</p>
+          </div>
+          {thumbs}
+          <span className="sv-row__chevron" aria-hidden="true" />
         </div>
-        {thumbs}
-        <span className="sv-row__chevron" aria-hidden="true" />
-      </div>
-      <div className="sv-row__body" id={bodyId} inert={hydrated && !isOpen}>
-        <div className="sv-row__inner"><RowIsOpen.Provider value={isOpen}>{children}</RowIsOpen.Provider></div>
-      </div>
+        <div className="sv-row__body" id={bodyId} inert={hydrated && !isOpen}>
+          <div className="sv-row__inner"><RowIsOpen.Provider value={isOpen}>{children}</RowIsOpen.Provider></div>
+        </div>
+      </RowStep.Provider>
     </article>
   );
 }

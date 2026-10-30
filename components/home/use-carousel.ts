@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent, type UIEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent, type UIEvent } from 'react';
 
 const noSubscription = () => () => {};
 
@@ -27,15 +27,16 @@ export function useCarousel(count: number) {
     return () => el?.removeEventListener('scrollend', landed);
   }, []);
 
-  const go = (to: number) => {
+  // `jump` lands straight on the slide, without sliding past the ones between.
+  const go = useCallback((to: number, jump = false) => {
     const el = strip.current;
     if (!el) return;
     const next = (to + count) % count;
     destination.current = next;
-    el.scrollTo({ left: next * el.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    el.scrollTo({ left: next * el.clientWidth, behavior: jump || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     setIndex(next);
     setAnnounced(next);
-  };
+  }, [count]);
 
   const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'ArrowRight') { event.preventDefault(); go(index + 1); }

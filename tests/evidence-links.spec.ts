@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { openCollection } from './topic-rows';
+import { headCorner, openCollection } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const viewpoint = '#viewpoint-open-and-build';
 const fact = 'immigration-economy-and-public-finances';
@@ -12,7 +12,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
     await route.continue();
   });
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click();
+  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
   const link = page.locator(pill).first();
   const href = (await link.getAttribute('href'))!;
   await link.click();
@@ -29,7 +29,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
 
 test('the same sheet can target another section and expand at that position', async ({ page }) => {
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click();
+  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
   await page.locator(pill).first().click();
   const expand = page.locator('.sv-modal__expand');
   // The sheet points Expand at the cited section once it has revealed it.
@@ -68,7 +68,7 @@ test('charts have their own observations, with references last', async ({ page }
 test('mobile pills wrap without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(topic);
-  await page.locator(`${viewpoint} .sv-row__toggle`).click();
+  await page.locator(`${viewpoint} .sv-row__toggle`).click(headCorner);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator(pill).first().click();
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
