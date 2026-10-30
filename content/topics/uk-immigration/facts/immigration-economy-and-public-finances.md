@@ -16,7 +16,8 @@ claimSources:
 - 62
 - 55
 - 57
-claim: "UK GDP per head was barely higher in 2025 than in 2019 (£40,546 against £40,125 at 2023 prices), and the OBR judges migration's effect on output per person small and of uncertain sign, while total GDP and five-year borrowing move with migration. Migrants' fiscal effect depends on earnings and age at arrival: the Migration Advisory Committee models the 2022/23 Skilled Worker cohort at a lifetime net gain of £47.1bn, but care workers at −£36,000 each and Health and Care dependants at −£67,000 each. No high-quality estimate covers the whole post-Brexit system, and the £234bn cost figure Reform UK cited has been withdrawn by its author."
+claim: >-
+  GDP per head has barely grown since 2019, and migration's effect on the public finances depends on who comes: skilled workers are a large gain, care workers a cost.
 status: well-supported
 sources:
 - stance: supports

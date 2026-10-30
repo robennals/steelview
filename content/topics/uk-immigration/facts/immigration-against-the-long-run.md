@@ -23,11 +23,7 @@ claimSources:
   - 46
   - 29
 claim: >-
-  Long-term immigration to the UK was 813,000 in 2025 and net migration 171,000.
-  Net migration is 18.1% of its 944,000 peak in the year to March 2023, while
-  immigration is still about two and a half times the 1990s average of about
-  325,000 a year. Net migration supplied 98% of UK population growth in the year
-  to mid-2025, when births exceeded deaths by only 4,900.
+  Immigration is still far above its historical level after falling since 2023, and migration now supplies almost all UK population growth.
 status: well-supported
 sources:
   - stance: supports

@@ -2,18 +2,7 @@
 title: Integration Outcomes in the UK
 claimSources: [2, 1, 6, 11, 13, 36, 41, 20]
 claim: >-
-  In England and Wales the share of residents born abroad rose from 4.3% in
-  1951 to 16.8% in 2021. Outcomes vary widely by group and mostly improve with
-  time in the UK and across generations: 11% of people who arrived in 2011–21
-  could not speak English well, against 4% of those who arrived before 1971;
-  the Pakistani and Bangladeshi employment rate rose from 44% to 61% between
-  2004 and 2022 but stayed the lowest of any group, with women at 46%; most
-  minority groups outscore White British pupils at GCSE; and residential
-  segregation fell for every ethnic group between 1991 and 2021. No UK
-  fiscal figures by origin were found. Denmark's, for the single year 2019,
-  put immigrants from the Middle East, North Africa, Pakistan and Turkey at an
-  average net cost of DKK 79 thousand each, and Western immigrants at a net
-  contribution of DKK 52 thousand.
+  The share of residents born abroad has roughly quadrupled since 1951, and outcomes vary widely by group, mostly improving with time and across generations.
 status: well-supported
 dataStillNeeded:
   - measure: 'Net fiscal contribution by country of birth and by generation, UK'
