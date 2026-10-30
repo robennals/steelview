@@ -626,7 +626,10 @@ figures:
     id: federal-laws
     title: 'Federal laws, bills and orders on mail voting, 1986–2026'
     description: 'What each federal law, bill or order does on mail voting, and where it stood on 29 October 2026.'
-    caption: 'One row per law, bill or order'
+    caption: 'One card per law, bill or order'
+    layout: timeline
+    leadColumn: does
+    dateColumn: year
     columns:
       - key: year
         label: Year
@@ -719,7 +722,10 @@ figures:
     id: holdings
     title: 'Who may set mail-voting rules: what the Constitution and courts say'
     description: 'The constitutional text and the main court rulings on who sets election rules, oldest first.'
-    caption: One row per text or ruling
+    caption: One card per text or ruling
+    layout: timeline
+    leadColumn: says
+    dateColumn: date
     columns:
       - key: text
         label: Source
@@ -783,7 +789,9 @@ figures:
     id: live-measures
     title: 'Live federal measures on mail voting, 29 October 2026'
     description: The federal actions still in play the week before the November midterms.
-    caption: One row per measure
+    caption: One card per measure
+    layout: cards
+    leadColumn: does
     columns:
       - key: measure
         label: Measure

@@ -530,8 +530,10 @@ figures:
   - kind: dataTable
     id: late-ballots
     title: 'Late ballots, and what they are measured against'
-    description: 'Each row uses a different election and denominator, so the figures are not comparable with one another.'
-    caption: One row per election
+    description: 'Each card uses a different election and denominator, so the figures are not comparable with one another.'
+    caption: One card per election
+    layout: cards
+    leadColumn: late
     columns:
       - key: election
         label: Election
@@ -742,7 +744,7 @@ By 24 hours after polls closed, "the gap between states had essentially disappea
 
 ### Late ballots against what they are measured against {#ballot-deadlines-and-counting-speed--late-ballots-table}
 
-Each row uses a different election and denominator, so the figures are not comparable with one another.
+Each card uses a different election and denominator, so the figures are not comparable with one another.
 
 ### Nevada's late ballots were few against the votes cast and the margins {#ballot-deadlines-and-counting-speed--late-ballots-small-in-nevada}
 
@@ -752,7 +754,7 @@ Against mail ballots rather than all ballots the share is larger: the two counti
 
 ### Late rejections rose in the 2026 primaries {#ballot-deadlines-and-counting-speed--late-rejections-rising-2026}
 
-In Wisconsin, Michigan and Washington, more mail ballots arrived too late in 2026 primaries than in the previous comparable election (table). [8](#source-ballot-deadlines-and-counting-speed-8) None of these ballots was counted.
+In Wisconsin, Michigan and Washington, more mail ballots arrived too late in 2026 primaries than in the previous comparable election (see the cards). [8](#source-ballot-deadlines-and-counting-speed-8) None of these ballots was counted.
 
 Washington, an all-mail state with a grace period, shows that late rejections happen under postmark rules as well as under Election Day deadlines. [8](#source-ballot-deadlines-and-counting-speed-8) [1](#source-ballot-deadlines-and-counting-speed-1)
 

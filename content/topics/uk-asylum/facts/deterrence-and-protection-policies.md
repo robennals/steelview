@@ -1557,7 +1557,9 @@ figures:
     id: residence-status
     title: Temporary versus permanent status and refugees' employment
     description: European reforms that made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes.
-    caption: One row per reform or study
+    caption: One card per reform or study
+    layout: timeline
+    leadColumn: finding
     sources: [55]
     columns:
       - { key: reform, label: Reform, rowHeader: true }
@@ -1583,7 +1585,9 @@ figures:
     id: work-rights
     title: Work rights for people waiting on a claim
     description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
-    caption: One row per study
+    caption: One card per study
+    layout: cards
+    leadColumn: finding
     sources: [48]
     columns:
       - { key: study, label: Study, rowHeader: true }
@@ -1606,7 +1610,8 @@ figures:
     id: uk-2026
     title: The UK's 2026 changes
     description: The measures in the UK's new approach to refugee protection, who each applies to and how far each has gone.
-    caption: One row per measure
+    caption: One card per measure
+    layout: cards
     columns:
       - { key: measure, label: Measure, rowHeader: true }
       - { key: applies-to, label: Who it applies to, sortable: false }

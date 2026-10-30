@@ -337,6 +337,12 @@ export const dataTableFigureSchema = z.object({
   /** Row-header values to set in bold with an accent rule. */
   highlight: z.array(z.string()).default([]),
   defaultSort: z.object({ key: slugId, direction: z.enum(['ascending', 'descending']) }).optional(),
+  /** Omit for a table. 'cards' sets each row as a card; 'timeline' strings the cards along a rule, for rows in order of time. */
+  layout: z.enum(['cards', 'timeline']).optional(),
+  /** With `layout`: the column set as each card's main text. */
+  leadColumn: slugId.optional(),
+  /** With `layout`: the column printed above each card's title, usually when it happened. */
+  dateColumn: slugId.optional(),
 });
 
 /* --- keyFigures ----------------------------------------------------------- */
