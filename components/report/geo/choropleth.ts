@@ -119,6 +119,9 @@ export function readoutText(name: string, datum: MapDatum | undefined, format: V
   return `${name}: ${datumText(datum, format)}`;
 }
 
+/** How a preview's description ends: it has no Table view of its own. */
+export const PREVIEW_CLOSING = 'Every value is in the table on the full figure.';
+
 /**
  * The screen-reader description both maps point at: what is shaded, the
  * extremes, and which areas the source does not cover.
@@ -129,6 +132,8 @@ export function mapSummary(
   data: MapData,
   format: ValueFormat = {},
   extra?: string,
+  /** Where the reader finds every value: a preview has no Table switch. */
+  closing = 'Use the Table switch to see every value.',
 ): string {
   const ranked = areas.filter(area => data[area.id]).sort((a, b) => data[b.id].value - data[a.id].value);
   const missing = areas.filter(area => !data[area.id]);
@@ -139,6 +144,6 @@ export function mapSummary(
     highest ? `Highest: ${readoutText(highest.name, data[highest.id], format)}. Lowest: ${readoutText(lowest.name, data[lowest.id], format)}.` : null,
     missing.length > 0 ? `No data for ${missing.map(area => area.name).join(', ')}.` : null,
     extra,
-    'Use the Table switch to see every value.',
+    closing,
   ].filter(Boolean).join(' ');
 }

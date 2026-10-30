@@ -1,12 +1,12 @@
 import { useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { layoutScatter, type ScatterLayout } from '@/lib/chart/scatter';
-import type { ChartVariant } from '@/lib/chart/series-chart';
+import type { SeriesVariant } from '@/lib/chart/series-chart';
 import { ReportFigure } from './figure';
 import { countOf, formatValue, slugify } from './format';
 import { MapReadout } from './geo/map-readout';
 import { MarkerIcon, MarkerShape, shapeForSlot } from './marker-shape';
-import type { SourceCredit, ValueFormat } from './types';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type ScatterPoint = {
   id: string;
@@ -50,6 +50,12 @@ export type ScatterPlotProps = {
   /** Rendered after the source line: the figure's Observations. */
   footer?: ReactNode;
   headingLevel?: 2 | 3;
+  /**
+   * Draw the compact preview: the linked title, the group key, both axis
+   * labels — a scatter cannot be read without them — and every point, on a
+   * short, wide plot (the narrow one on a phone). No readout or Table view.
+   */
+  preview?: FigurePreview;
 };
 
 /** Points whose group is missing or unknown, when the plot has groups. */
@@ -68,15 +74,18 @@ function Plot({
   readouts,
   label,
   descriptionId,
+  interactive,
 }: {
   layout: ScatterLayout;
-  variant: ChartVariant;
+  variant: SeriesVariant;
   points: ScatterPoint[];
   slotOf: (point: ScatterPoint) => number;
   highlight: Set<string>;
   readouts: Map<string, string>;
   label: string;
   descriptionId: string;
+  /** Points take focus and name themselves; off in a preview, whose full figure is a click away. */
+  interactive: boolean;
 }) {
   const g = layout.geometry;
   const right = g.left + g.plotWidth;
@@ -132,9 +141,7 @@ function Plot({
               data-region={point.id}
               data-readout={text}
               data-highlight={highlight.has(point.id) ? 'true' : undefined}
-              tabIndex={0}
-              role="img"
-              aria-label={text}
+              {...(interactive ? { tabIndex: 0, role: 'img', 'aria-label': text } : null)}
             >
               {highlight.has(point.id) && <circle className="sv-scatter__ring" cx={placed.cx} cy={placed.cy} r={g.pointRadius + 3} />}
               <MarkerShape className="sv-scatter__mark" shape={shapeForSlot(slot)} cx={placed.cx} cy={placed.cy} r={g.pointRadius} />
@@ -191,6 +198,7 @@ export function ScatterPlot({
   note,
   footer,
   headingLevel,
+  preview,
 }: ScatterPlotProps) {
   const reactId = useId();
   const label = title ?? `${y.label} against ${x.label}`;
@@ -219,7 +227,7 @@ export function ScatterPlot({
 
   const axes = { x: { ...x, format: fx }, y: { ...y, format: fy } };
   const input = points.map(point => ({ id: point.id, label: point.label, x: point.x, y: point.y, highlight: highlighted.has(point.id) }));
-  const layouts = { narrow: layoutScatter(input, axes, 'narrow'), wide: layoutScatter(input, axes, 'wide') };
+  const variants = preview ? (['preview', 'narrow'] as const) : (['narrow', 'wide'] as const);
 
   const summary = [
     points.length > 0
@@ -227,11 +235,30 @@ export function ScatterPlot({
       : null,
     legendGroups.length > 0 ? `Grouped as ${legendGroups.map(group => group.label).join(', ')}, told apart by marker shape.` : null,
     typeof description === 'string' ? description : null,
-    'Use the Table switch to see every value.',
+    preview ? 'Every value is in the table on the full figure.' : 'Use the Table switch to see every value.',
   ].filter(Boolean).join(' ');
 
   const rows = [...points].sort((a, b) => a.name.localeCompare(b.name));
   const hasNotes = points.some(point => point.note);
+
+  const plots = (
+    <div className="sv-chart__plot">
+      {variants.map(variant => (
+        <Plot
+          key={variant}
+          layout={layoutScatter(input, axes, variant)}
+          variant={variant}
+          points={points}
+          slotOf={slotOf}
+          highlight={highlighted}
+          readouts={readouts}
+          label={label}
+          descriptionId={descriptionId}
+          interactive={!preview}
+        />
+      ))}
+    </div>
+  );
 
   const graph = (
     <>
@@ -247,26 +274,23 @@ export function ScatterPlot({
       )}
       <p className="sv-chart__axis-label">{y.label}</p>
       <p className="sv-visually-hidden" id={descriptionId}>{summary}</p>
-      <MapReadout hint="Hover over or tab to a point to read its values.">
-        <div className="sv-chart__plot">
-          {(['narrow', 'wide'] as const).map(variant => (
-            <Plot
-              key={variant}
-              layout={layouts[variant]}
-              variant={variant}
-              points={points}
-              slotOf={slotOf}
-              highlight={highlighted}
-              readouts={readouts}
-              label={label}
-              descriptionId={descriptionId}
-            />
-          ))}
-        </div>
-        <p className="sv-chart__axis-label sv-scatter__x-label">{x.label}</p>
-      </MapReadout>
+      {preview ? (
+        <>
+          {plots}
+          <p className="sv-chart__axis-label sv-scatter__x-label">{x.label}</p>
+        </>
+      ) : (
+        <MapReadout hint="Hover over or tab to a point to read its values.">
+          {plots}
+          <p className="sv-chart__axis-label sv-scatter__x-label">{x.label}</p>
+        </MapReadout>
+      )}
     </>
   );
+
+  if (preview) {
+    return <ReportFigure id={id} title={title} preview={preview} className="sv-scatter">{points.length > 0 && graph}</ReportFigure>;
+  }
 
   const table = (
     <div className="sv-chart__table-scroll">

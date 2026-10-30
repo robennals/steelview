@@ -24,6 +24,11 @@ export function barScale(values: number[], domainMax?: number): BarScale {
   return { domain, ticks, x, zero: x(0) };
 }
 
+/** The order bars are drawn in: largest first for `value` (the default), as given for `none`. */
+export function orderBars<T extends { value: number }>(items: T[], sort: 'value' | 'none' = 'value'): T[] {
+  return sort === 'value' ? [...items].sort((a, b) => b.value - a.value) : items;
+}
+
 export type Span = { left: number; width: number };
 
 /** One bar from zero to `value`; negative values extend left of zero. */

@@ -5,8 +5,10 @@ import { ChoiceGroup, FilterChips } from './controls';
 import { ReportFigure, SourceLine } from './figure';
 import { compareDates, formatDate } from './format';
 import { MarkerIcon, shapeForSlot } from './marker-shape';
+import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
 import { seriesColor } from './scale';
-import type { PartialDate, SourceCredit } from './types';
+import { edgeOf, percentAlong, spanOf, stackLevels, toYear, yearTicks } from './time-axis';
+import type { FigurePreview, PartialDate, SourceCredit } from './types';
 
 export type TimelineEvent = {
   date: PartialDate;
@@ -43,6 +45,13 @@ export type TimelineProps = {
   headingLevel?: 2 | 3;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /**
+   * Draw the compact preview: the linked title, a key when there are several
+   * categories, and every event — one line each (date and title), or past
+   * twelve events one marker each on a time axis. Filters, descriptions and
+   * sources stay on the full figure.
+   */
+  preview?: FigurePreview;
 };
 
 function yearOf(date: PartialDate) {
@@ -73,6 +82,7 @@ export function Timeline({
   note,
   footer,
   headingLevel = 2,
+  preview,
 }: TimelineProps) {
   const [selected, setSelected] = useState<Set<string>>(() => new Set(initialCategories));
   const [majorOnly, setMajorOnly] = useState(initialMajorOnly);
@@ -91,6 +101,40 @@ export function Timeline({
   );
   const years = [...new Set(visible.map(e => yearOf(e.date)))];
   const YearHeading = headingLevel === 2 ? 'h3' : 'h4';
+
+  if (preview) {
+    return (
+      <ReportFigure id={id} title={title} preview={preview} className="sv-timeline">
+        {resolvedCategories.length > 1 && (
+          <ul className="sv-chart__legend sv-timeline__legend">
+            {resolvedCategories.map(c => (
+              <li key={c.id} className="sv-chart__key" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
+                <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__legend-icon" />
+                <span className="sv-chart__key-name">{c.label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {sorted.length > DENSE_PREVIEW_ITEMS
+          ? <TimelineLane events={sorted} slotOf={slotOf} labelOf={labelOf} />
+          : (
+            <ol className="sv-timeline__lines" data-compact={sorted.length > COMPACT_PREVIEW_ITEMS || undefined}>
+              {sorted.map((e, i) => {
+                const slot = slotOf.get(e.category) ?? 1;
+                return (
+                  <li key={`${e.date}-${i}-${e.title}`} className="sv-timeline__line" style={{ '--sv-timeline-color': seriesColor(slot) }}>
+                    <MarkerIcon shape={shapeForSlot(slot)} className="sv-timeline__line-icon" />
+                    <time dateTime={e.date}>{formatDate(e.date)}</time>
+                    <span className="sv-timeline__line-title">{e.title}</span>
+                    <span className="sv-visually-hidden"> · {labelOf.get(e.category) ?? e.category}</span>
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+      </ReportFigure>
+    );
+  }
 
   const counts = new Map<string, number>();
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
@@ -179,5 +223,40 @@ export function Timeline({
         </div>
       )}
     </ReportFigure>
+  );
+}
+
+/**
+ * A long timeline in a compact preview: every event a category marker on one
+ * time axis, from the first event's year to the year after the last, stacked
+ * where markers would overlap. Each marker's date, title and category are in
+ * visually hidden text, in order.
+ */
+function TimelineLane({ events, slotOf, labelOf }: { events: TimelineEvent[]; slotOf: Map<string, number>; labelOf: Map<string, string> }) {
+  const span = spanOf(events.map(e => e.date));
+  const positions = events.map(e => percentAlong(toYear(e.date), span));
+  // A marker is ~0.8rem; at a ~500px lane that is ~2.5% of the span.
+  const levels = stackLevels(positions, 2.5, 4);
+  return (
+    <div className="sv-timeline__lane" style={{ '--sv-strip-levels': Math.max(0, ...levels) + 1 }}>
+      <ol className="sv-timeline__lane-track">
+        {events.map((e, i) => {
+          const slot = slotOf.get(e.category) ?? 1;
+          return (
+            <li key={`${e.date}-${i}`} className="sv-timeline__lane-mark" style={{ left: `${positions[i]}%`, '--sv-strip-level': levels[i], color: seriesColor(slot) }}>
+              <MarkerIcon shape={shapeForSlot(slot)} className="sv-timeline__lane-icon" />
+              <span className="sv-visually-hidden">{formatDate(e.date)}: {e.title} ({labelOf.get(e.category) ?? e.category})</span>
+            </li>
+          );
+        })}
+      </ol>
+      <div className="sv-timeline__lane-axis" aria-hidden="true">
+        {yearTicks(span).map(tick => (
+          <span key={tick.year} className="sv-periods__tick" data-edge={edgeOf(percentAlong(tick.year, span))} style={{ left: `${percentAlong(tick.year, span)}%` }}>
+            {tick.year}
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }

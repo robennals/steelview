@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import {
+  type FigurePreview,
   BarChart,
   CaveatList,
   ClaimCheck,
@@ -243,5 +244,37 @@ export function FactFigure({ figure, context, page, footer }: { figure: Componen
           <CaveatList {...caveatListProps(figure, context)} />
         </ReportFigure>
       );
+  }
+}
+
+/**
+ * A library figure's compact preview, for a home-page slide: the same adapter
+ * and component as `FactFigure`, with the component's `preview` presentation.
+ * One case per kind in `PREVIEW_FIGURE_KINDS` (lib/content/preview.ts). A kind
+ * without a case here draws its linked title alone, so a kind added to that
+ * list before its presentation exists degrades to a label, not a crash.
+ */
+export function PreviewFigure({ figure, context, preview }: { figure: ComponentFigure; context: FigureContext; preview: FigurePreview }) {
+  switch (figure.kind) {
+    case 'barChart':
+      return <BarChart {...barChartProps(figure, context)} preview={preview} />;
+    case 'compositionBar':
+      return <CompositionBar {...compositionBarProps(figure, context)} preview={preview} />;
+    case 'estimateRange':
+      return <EstimateRange {...estimateRangeProps(figure, context)} preview={preview} />;
+    case 'scatterPlot':
+      return <ScatterPlot {...scatterPlotProps(figure, context)} preview={preview} />;
+    case 'tileMap':
+      return <TileMap {...tileMapProps(figure, context)} preview={preview} />;
+    case 'geoMap':
+      return <GeoMap {...geoMapProps(figure, context)} preview={preview} />;
+    case 'timeline':
+      return <Timeline {...timelineProps(figure, context)} preview={preview} />;
+    case 'periodTimeline':
+      return <PeriodTimeline {...periodTimelineProps(figure, context)} preview={preview} />;
+    case 'keyFigures':
+      return <KeyFigures {...keyFiguresProps(figure, context)} preview={preview} />;
+    default:
+      return <ReportFigure id={figureDomId(context.fact, figure.id)} title={'title' in figure ? figure.title : undefined} preview={preview} />;
   }
 }

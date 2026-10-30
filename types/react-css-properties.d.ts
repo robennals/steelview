@@ -15,7 +15,7 @@ declare module 'react' {
     '--sv-bars-label'?: string;
     '--sv-bars-value'?: string;
     '--sv-bars-count'?: number;
-    /** Event strip: plot insets that line it up with the chart above, and marker stacking. */
+    /** Event strip (and a long timeline's preview lane): plot insets that line it up with the chart above, and marker stacking. */
     '--sv-strip-left'?: string;
     '--sv-strip-right'?: string;
     '--sv-strip-left-narrow'?: string;

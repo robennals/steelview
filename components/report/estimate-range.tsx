@@ -3,7 +3,8 @@ import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { crossesNull, estimateScale, whiskerSpan } from './estimate-layout';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
-import type { SourceCredit, ValueFormat } from './types';
+import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type Estimate = {
   /** The study or model: "Dustmann, Frattini & Preston". */
@@ -51,6 +52,11 @@ export type EstimateRangeProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /**
+   * Draw the compact preview: the linked title, every estimate and the axis.
+   * The key, value label, per-row notes and sources stay on the full figure.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -75,6 +81,7 @@ export function EstimateRange({
   sources,
   note,
   footer,
+  preview,
 }: EstimateRangeProps) {
   const scale = estimateScale(estimates, nullValue, domain);
   // Signs say which side of "no effect" a value is on; with no such value they say nothing.
@@ -94,13 +101,13 @@ export function EstimateRange({
   const nullText = nullLabel.toLowerCase();
 
   const graph = (
-    <div className="sv-estimates">
-      <p className="sv-estimates__key" aria-hidden="true">
+    <div className="sv-estimates" data-compact={(preview && estimates.length > COMPACT_PREVIEW_ITEMS) || undefined}>
+      {!preview && <p className="sv-estimates__key" aria-hidden="true">
         <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" />Central estimate</span>
         <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>
         {rangeOnly && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />Range only: no dot where no central estimate was published</span>}
         {nullValue !== null && <span className="sv-estimates__key-item"><i className="sv-estimates__key-null" />{nullLabel}</span>}
-      </p>
+      </p>}
       {groups.map(group => (
         <Fragment key={group || 'all'}>
           {group && <h3 className="sv-estimates__group">{group}</h3>}
@@ -116,7 +123,7 @@ export function EstimateRange({
                       <span className="sv-estimates__name">
                         {e.label}
                         {e.year !== undefined && <span className="sv-estimates__year"> {e.year}</span>}
-                        {e.source && <SourceCredits sources={[e.source]} />}
+                        {e.source && !preview && <SourceCredits sources={[e.source]} />}
                       </span>
                       <span className="sv-estimates__value">
                         {rangeText(e)}
@@ -126,7 +133,7 @@ export function EstimateRange({
                           </span>
                         )}
                       </span>
-                      {e.note && <span className="sv-estimates__note">{e.note}</span>}
+                      {e.note && !preview && <span className="sv-estimates__note">{e.note}</span>}
                     </span>
                     <span className="sv-estimates__track" aria-hidden="true">
                       {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
@@ -162,6 +169,8 @@ export function EstimateRange({
       </div>
     </div>
   );
+
+  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-estimate-range">{graph}</ReportFigure>;
 
   const table = (
     <div className="sv-chart__table-scroll">

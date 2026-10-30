@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { barScale, barSpan } from './bar-layout';
+import { barScale, barSpan, orderBars } from './bar-layout';
 import { BarRows } from './bar-rows';
 import { ReportFigure } from './figure';
 import { formatValue } from './format';
-import type { SourceCredit, ValueFormat } from './types';
+import { RankedColumns, fitsRankedColumns } from './ranked-columns';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type BarChartItem = {
   label: string;
@@ -31,6 +32,12 @@ export type BarChartProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /**
+   * Draw the compact preview: the linked title and the bars, every item. Over
+   * six items the rows are clamped thin; over twelve, with no negatives and
+   * at most one highlight, one ranked column per item.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -53,8 +60,9 @@ export function BarChart({
   sources,
   note,
   footer,
+  preview,
 }: BarChartProps) {
-  const ordered = sort === 'value' ? [...items].sort((a, b) => b.value - a.value) : items;
+  const ordered = orderBars(items, sort);
   const scale = barScale(ordered.map(item => item.value), domainMax);
   const rows = ordered.map((item, i) => ({
     key: `${item.label}-${i}`,
@@ -63,6 +71,13 @@ export function BarChart({
     highlight: item.highlight,
     segments: [barSpan(item.value, scale)],
   }));
+
+  if (preview) {
+    const graph = fitsRankedColumns(items)
+      ? <RankedColumns items={items} max={scale.domain[1]} format={value => formatValue(value, format)} />
+      : <BarRows rows={rows} scale={scale} format={format} label={valueLabel} preview />;
+    return <ReportFigure id={id} title={title} preview={preview} className="sv-bar-chart">{items.length > 0 && graph}</ReportFigure>;
+  }
 
   return (
     <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-bar-chart">

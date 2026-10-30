@@ -3,6 +3,7 @@
  * of that row's total, and optionally fold small parts into "Other".
  */
 
+import { seriesColor } from './scale';
 import type { SourceCredit } from './types';
 
 export type CompositionCategory = { key: string; label: string };
@@ -69,4 +70,9 @@ export function compose(
       return { label: row.label, total: totals[i], segments, ...(row.source ? { source: row.source } : {}) };
     }),
   };
+}
+
+/** A part's colour: the next series hue in category order, and a neutral grey for "Other". */
+export function compositionColor(categories: CompositionCategory[], key: string): string {
+  return key === OTHER_KEY ? 'var(--ink-4)' : seriesColor(categories.findIndex(c => c.key === key) + 1);
 }

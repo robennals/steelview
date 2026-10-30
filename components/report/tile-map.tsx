@@ -5,12 +5,12 @@ import { slugify } from './format';
 import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, type MapEncoding } from './geo/categorical';
 import { CategoryLegend } from './geo/category-legend';
 import { CategoryTable } from './geo/category-table';
-import { datumText, mapScale, mapSummary, readoutText } from './geo/choropleth';
+import { PREVIEW_CLOSING, datumText, mapScale, mapSummary, readoutText } from './geo/choropleth';
 import { MapLegend } from './geo/map-legend';
 import { MapReadout } from './geo/map-readout';
 import { MapTable } from './geo/map-table';
 import type { MapTile } from './geo/tiles';
-import type { SourceCredit } from './types';
+import type { FigurePreview, SourceCredit } from './types';
 
 type TileMapCommon = {
   /** Grid layout: a preset (`EUROPE_COUNTRY_TILES`, `US_STATE_TILES`, `UK_REGION_TILES`) or your own. */
@@ -27,6 +27,12 @@ type TileMapCommon = {
   /** Rendered after the source line: the figure's Observations. */
   footer?: ReactNode;
   headingLevel?: 2 | 3;
+  /**
+   * Draw the compact preview: the linked title, the key and every tile, the
+   * grid sized to the space it is given. Tiles carry their code only — the
+   * shading and key carry the value — and take no focus.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -62,7 +68,7 @@ type TileCell = {
  * so no category rests on colour alone and none implies an order.
  */
 export function TileMap(props: TileMapProps) {
-  const { tiles, highlight = [], areaLabel = 'Area', id, title, description, sources, note, footer, headingLevel } = props;
+  const { tiles, highlight = [], areaLabel = 'Area', id, title, description, sources, note, footer, headingLevel, preview } = props;
   const categorical = isCategorical(props);
   const what = categorical ? props.categoryLabel : props.valueLabel;
   const reactId = useId();
@@ -91,7 +97,7 @@ export function TileMap(props: TileMapProps) {
       };
     };
     legend = <CategoryLegend categoryLabel={props.categoryLabel} categories={props.categories} slots={slots} counts={counts} />;
-    summary = `${categorySummary(tiles, props)} Each area is an equal tile marked with its category's code. Use the Table switch to see every area.`;
+    summary = `${categorySummary(tiles, props)} Each area is an equal tile marked with its category's code. ${preview ? PREVIEW_CLOSING : 'Use the Table switch to see every area.'}`;
     table = <CategoryTable caption={caption} areaLabel={areaLabel} areas={tiles} encoding={props} />;
   } else {
     const { data, valueLabel, format, scale: kind = 'sequential', steps, domain, breaks } = props;
@@ -114,47 +120,56 @@ export function TileMap(props: TileMapProps) {
       };
     };
     legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={tiles.some(tile => !data[tile.id])} />;
-    summary = mapSummary(`${tiles.length} areas, each drawn as an equal tile and shaded by ${valueLabel.toLowerCase()}.`, tiles, data, format);
+    summary = mapSummary(`${tiles.length} areas, each drawn as an equal tile and shaded by ${valueLabel.toLowerCase()}.`, tiles, data, format, undefined, preview ? PREVIEW_CLOSING : undefined);
     table = <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={tiles} data={data} format={format} />;
   }
+
+  const grid = (
+    <ul
+      className="sv-tile-map__grid"
+      aria-label={title ?? what}
+      aria-describedby={descriptionId}
+      data-cols={cols > 6 ? 'many' : undefined}
+      style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}
+    >
+      {tiles.map(tile => {
+        const cell = cellFor(tile);
+        return (
+          <li
+            key={tile.id}
+            className={cell.slot ? 'sv-tile-map__tile sv-cat-fill' : 'sv-tile-map__tile'}
+            style={{ gridRow: tile.row + 1, gridColumn: tile.col + 1, background: cell.background }}
+            data-region={tile.id}
+            data-readout={cell.readout}
+            data-slot={cell.slot}
+            data-missing={cell.missing ? 'true' : undefined}
+            data-tone={cell.dark ? 'dark' : undefined}
+            data-highlight={highlight.includes(tile.id) ? 'true' : undefined}
+            tabIndex={preview ? undefined : 0}
+            aria-label={cell.ariaLabel}
+          >
+            <span className="sv-tile-map__code" aria-hidden="true">{tile.code}</span>
+            {!preview && <span className="sv-tile-map__value" aria-hidden="true">{cell.text}</span>}
+          </li>
+        );
+      })}
+    </ul>
+  );
 
   const graph = (
     <>
       {legend}
       <p className="sv-visually-hidden" id={descriptionId}>{summary}</p>
-      <MapReadout hint={`Hover over or tab to a tile to read its full name and ${categorical ? 'category' : 'value'}.`}>
-        <ul
-          className="sv-tile-map__grid"
-          aria-label={title ?? what}
-          aria-describedby={descriptionId}
-          data-cols={cols > 6 ? 'many' : undefined}
-          style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}
-        >
-          {tiles.map(tile => {
-            const cell = cellFor(tile);
-            return (
-              <li
-                key={tile.id}
-                className={cell.slot ? 'sv-tile-map__tile sv-cat-fill' : 'sv-tile-map__tile'}
-                style={{ gridRow: tile.row + 1, gridColumn: tile.col + 1, background: cell.background }}
-                data-region={tile.id}
-                data-readout={cell.readout}
-                data-slot={cell.slot}
-                data-missing={cell.missing ? 'true' : undefined}
-                data-tone={cell.dark ? 'dark' : undefined}
-                data-highlight={highlight.includes(tile.id) ? 'true' : undefined}
-                tabIndex={0}
-                aria-label={cell.ariaLabel}
-              >
-                <span className="sv-tile-map__code" aria-hidden="true">{tile.code}</span>
-                <span className="sv-tile-map__value" aria-hidden="true">{cell.text}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </MapReadout>
+      {preview ? (
+        // Sized by its container, so the whole grid fits the slide's height as well as its width.
+        <div className="sv-tile-map__fit" style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}>{grid}</div>
+      ) : (
+        <MapReadout hint={`Hover over or tab to a tile to read its full name and ${categorical ? 'category' : 'value'}.`}>{grid}</MapReadout>
+      )}
     </>
   );
+
+  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-tile-map">{graph}</ReportFigure>;
 
   return (
     <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-tile-map">

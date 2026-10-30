@@ -4,8 +4,9 @@ import { EventKey, EventLane, type StripEvent } from './event-strip';
 import { ReportFigure } from './figure';
 import { formatDate, slugify } from './format';
 import { seriesColor } from './scale';
-import { edgeOf, percentAlong, toYear, yearTicks, type TimeSpan } from './time-axis';
-import type { PartialDate, SourceCredit } from './types';
+import { edgeOf, percentAlong, spanOf, toYear, yearTicks, type TimeSpan } from './time-axis';
+import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
+import type { FigurePreview, PartialDate, SourceCredit } from './types';
 
 export type Period = {
   from: PartialDate;
@@ -39,6 +40,12 @@ export type PeriodTimelineProps = {
   headingLevel?: 2 | 3;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /**
+   * Draw the compact preview: the linked title, the category key, every row
+   * and period, the event markers and one axis. The event list, the open-end
+   * key and the Table view stay on the full figure.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -48,6 +55,11 @@ export type PeriodTimelineProps = {
  */
 function fitsInside(label: string, widthPercent: number) {
   return (widthPercent / 100) * 300 >= label.length * 6.2 + 12;
+}
+
+/** The axis a period timeline draws: every period and event, unless `from` or `to` fix an end. */
+export function periodSpan({ rows, events = [], from, to }: Pick<PeriodTimelineProps, 'rows' | 'events' | 'from' | 'to'>): TimeSpan {
+  return spanOf([...rows.flatMap(r => r.periods.flatMap(p => [p.from, ...(p.to ? [p.to] : [])])), ...events.map(e => e.date)], { from, to });
 }
 
 function periodText(period: Period) {
@@ -78,15 +90,11 @@ export function PeriodTimeline({
   note,
   footer,
   headingLevel,
+  preview,
 }: PeriodTimelineProps) {
   const reactId = useId();
   const baseId = `sv-periods-${id ?? slugify(title ?? 'periods')}-${reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
-  const allDates = [...rows.flatMap(r => r.periods.flatMap(p => [p.from, ...(p.to ? [p.to] : [])])), ...events.map(e => e.date)];
-  const years = allDates.map(toYear);
-  const span: TimeSpan = {
-    from: from !== undefined ? toYear(from) : Math.floor(Math.min(...years)),
-    to: to !== undefined ? toYear(to) : Math.floor(Math.max(...years)) + 1,
-  };
+  const span = periodSpan({ rows, events, from, to });
   const slotOf = new Map(categories.map((c, i) => [c.id, i + 1]));
   const ticks = yearTicks(span);
   const orderedEvents = [...events].sort((a, b) => toYear(a.date) - toYear(b.date));
@@ -110,7 +118,7 @@ export function PeriodTimeline({
   ));
 
   const graph = (
-    <div className="sv-periods">
+    <div className="sv-periods" data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined}>
       {categories.length > 0 && (
         <ul className="sv-chart__legend sv-periods__legend">
           {categories.map(c => (
@@ -121,7 +129,7 @@ export function PeriodTimeline({
           ))}
         </ul>
       )}
-      {axis}
+      {!preview && axis}
       <ol className="sv-periods__rows" aria-label={title ?? 'Periods'}>
         {rows.map((row, r) => {
           const placed = row.periods.map(period => {
@@ -171,14 +179,16 @@ export function PeriodTimeline({
       {orderedEvents.length > 0 && (
         <div className="sv-periods__line sv-periods__line--events">
           <p className="sv-periods__label-cell sv-periods__row-label">Events</p>
-          <EventLane span={span} events={orderedEvents} keyId={`${baseId}-event`} showAxis={false} />
+          <EventLane span={span} events={orderedEvents} keyId={`${baseId}-event`} showAxis={false} linked={!preview} />
         </div>
       )}
       {axis}
-      {hasOpen && <p className="sv-periods__open-key"><span className="sv-periods__open-icon" aria-hidden="true" /> Arrowhead: no end date — still in force</p>}
-      {orderedEvents.length > 0 && <EventKey events={orderedEvents} keyId={`${baseId}-event`} />}
+      {hasOpen && !preview && <p className="sv-periods__open-key"><span className="sv-periods__open-icon" aria-hidden="true" /> Arrowhead: no end date — still in force</p>}
+      {orderedEvents.length > 0 && !preview && <EventKey events={orderedEvents} keyId={`${baseId}-event`} />}
     </div>
   );
+
+  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-period-timeline">{graph}</ReportFigure>;
 
   const table = (
     <div className="sv-chart__table-scroll">

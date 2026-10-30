@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { tickLabels, type BarScale, type Span } from './bar-layout';
+import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
 import type { ValueFormat } from './types';
 
 /**
@@ -36,6 +37,7 @@ export function BarRows({
   format,
   layout = 'single',
   label,
+  preview = false,
 }: {
   rows: BarRowData[];
   scale: BarScale;
@@ -45,6 +47,12 @@ export function BarRows({
   layout?: 'single' | 'stacked' | 'grouped';
   /** Accessible name of the list, e.g. the measure. */
   label: string;
+  /**
+   * A compact preview: rows spread to fill the slide, clamped to one-line
+   * labels and thin bars when there are many, and no axis — every value is
+   * printed on its row.
+   */
+  preview?: boolean;
 }) {
   // The value column is sized to the longest figure in characters, so values
   // line up on their last digit without reserving room for numbers that
@@ -56,7 +64,7 @@ export function BarRows({
   const style = { '--sv-bars-value': `${valueWidth}ch`, '--sv-bars-label': `minmax(0, min(30%, ${labelWidth}ch))` };
 
   return (
-    <div className="sv-bars" data-layout={layout} data-dense={rows.length > 12 || undefined} style={style}>
+    <div className="sv-bars" data-layout={layout} data-dense={rows.length > 12 || undefined} data-preview={preview || undefined} data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined} style={style}>
       <ol className="sv-bars__rows" aria-label={label}>
         {rows.map(row => (
           <li key={row.key} className="sv-bars__row" data-highlight={row.highlight || undefined}>
@@ -86,7 +94,7 @@ export function BarRows({
           </li>
         ))}
       </ol>
-      <div className="sv-bars__axis" aria-hidden="true">
+      {!preview && <div className="sv-bars__axis" aria-hidden="true">
         <span className="sv-bars__ticks">
           {tickLabels(scale.ticks, format).map((tick, i, all) =>
             tick.label === null ? null : (
@@ -101,7 +109,7 @@ export function BarRows({
             ),
           )}
         </span>
-      </div>
+      </div>}
     </div>
   );
 }

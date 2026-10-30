@@ -3197,6 +3197,91 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-comparison__column[data-highlight] .sv-comparison__column-bar { background: var(--accent); opacity: 1; }
 .sv-comparison__rank { margin: .5rem 0 0; font: 600 .85rem/1.4 var(--font-sans); color: var(--accent); }
 
+/* Figure previews (home page): the report library's components in their
+   `preview` presentation (FigurePreview in components/report/types.ts). As
+   for the charts above, the graph takes the space under the title, and a
+   long one is clamped to fit — thin one-line rows, smaller type — never cut. */
+.sv-chart[data-preview] .sv-chart__preview { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.sv-chart__preview > .sv-chart__legend,
+.sv-chart__preview > .sv-scatter__key,
+.sv-chart__preview > .sv-map-legend,
+.sv-chart__preview > .sv-category-legend { margin: 0 0 .35rem; font-size: .7rem; }
+.sv-chart__preview .sv-chart__axis-label { margin: 0; font-size: .7rem; color: var(--ink-3); }
+/* Rows that share the space evenly: bars, composition bars, estimates, periods, events. */
+.sv-chart__preview .sv-bars,
+.sv-chart__preview .sv-estimates,
+.sv-chart__preview .sv-periods { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 0; }
+.sv-chart__preview .sv-bars__rows,
+.sv-chart__preview .sv-composition__rows,
+.sv-chart__preview .sv-estimates__rows,
+.sv-chart__preview .sv-periods__rows,
+.sv-chart__preview .sv-timeline__lines { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
+.sv-chart__preview .sv-bars__row,
+.sv-chart__preview .sv-estimates__row { margin: 0; }
+.sv-chart__preview .sv-composition__row + .sv-composition__row { margin-top: 0; }
+.sv-chart__preview .sv-bars__row { font-size: .8rem; }
+.sv-bars[data-compact] .sv-bars__row { grid-template-columns: minmax(6rem, 34%) minmax(0, 1fr) var(--sv-bars-value, 6ch); grid-template-areas: "label track value"; align-items: center; column-gap: .4rem; font-size: .66rem; line-height: 1.15; }
+.sv-bars[data-compact] .sv-bars__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; }
+.sv-bars[data-compact] .sv-bars__track { height: .45rem; }
+.sv-composition__rows[data-compact] .sv-composition__head { margin: 0 0 .1rem; font-size: .66rem; }
+.sv-composition__rows[data-compact] .sv-composition__bar { height: .7rem; }
+.sv-chart__preview .sv-estimates__group { margin: .3rem 0 .1rem; padding: 0; border: 0; font-size: .6rem; }
+.sv-chart__preview .sv-estimates__row { row-gap: .1rem; font-size: .75rem; }
+.sv-estimates[data-compact] .sv-estimates__row { grid-template-columns: minmax(6rem, 40%) minmax(0, 1fr); grid-template-areas: "label track"; font-size: .64rem; line-height: 1.15; }
+.sv-estimates[data-compact] .sv-estimates__label { flex-wrap: nowrap; overflow: hidden; }
+.sv-estimates[data-compact] .sv-estimates__name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-estimates[data-compact] .sv-estimates__value { display: none; }
+.sv-chart__preview .sv-estimates__axis,
+.sv-chart__preview .sv-periods__axis { font-size: .7rem; }
+/* Period timelines: thin rows, one axis under them. */
+.sv-chart__preview .sv-periods__legend { margin-bottom: .3rem; }
+/* Label beside track at every width: stacked, a phone slide holds two rows. */
+.sv-chart__preview .sv-periods { --sv-periods-label: 7rem; }
+.sv-chart__preview .sv-periods__line { grid-template-columns: var(--sv-periods-label) minmax(0, 1fr); column-gap: .5rem; align-items: start; }
+.sv-chart__preview .sv-periods__line--axis .sv-periods__label-cell { display: block; }
+.sv-chart__preview .sv-periods__row-label { margin: 0; padding-top: .1rem; }
+.sv-chart__preview .sv-periods__row { padding: .12rem 0; }
+.sv-chart__preview .sv-periods__row-label { font-size: .7rem; }
+.sv-chart__preview .sv-periods__track { height: .95rem; }
+/* A period's own label shows only where it fits inside its bar; one that
+   would drop beneath it would double the row's height. The row and the
+   category key still name every bar. */
+.sv-chart__preview .sv-periods__bar-label { font-size: .62rem; }
+.sv-chart__preview .sv-periods__outside-label { display: none; }
+.sv-chart__preview .sv-periods__row-label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart__preview .sv-periods__line--events { padding-top: .2rem; }
+.sv-chart__preview .sv-periods__line--events .sv-event-strip__lane { padding-bottom: .1rem; }
+.sv-periods[data-compact] .sv-periods__row { padding: 0; }
+.sv-periods[data-compact] .sv-periods__track { height: .5rem; }
+.sv-periods[data-compact] .sv-periods__row-label { font-size: .62rem; line-height: 1.1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-periods[data-compact] .sv-periods__bar-label,
+.sv-periods[data-compact] .sv-periods__outside-label { display: none; }
+/* Timelines: one line per event, or past twelve one marker each on an axis. */
+.sv-timeline__lines { list-style: none; padding: 0; font: .78rem/1.3 var(--font-sans); }
+.sv-timeline__line { display: flex; align-items: baseline; gap: .45rem; min-width: 0; color: var(--sv-timeline-color); }
+.sv-timeline__line-icon { flex: none; align-self: center; }
+.sv-timeline__line time { flex: none; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.sv-timeline__line-title { overflow: hidden; color: var(--ink); white-space: nowrap; text-overflow: ellipsis; }
+.sv-timeline__lines[data-compact] { font-size: .66rem; line-height: 1.15; }
+.sv-timeline__lane { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-inline: .45rem; font-family: var(--font-sans); }
+.sv-timeline__lane-track { position: relative; list-style: none; margin: 0; padding: 0; height: calc(var(--sv-strip-levels, 1) * .9rem + .6rem); border-bottom: 1px solid var(--rule-strong); }
+.sv-timeline__lane-mark { position: absolute; bottom: calc(var(--sv-strip-level, 0) * .9rem + .2rem); transform: translateX(-50%); line-height: 0; }
+.sv-timeline__lane-icon { width: .7rem; height: .7rem; fill: currentColor; }
+.sv-timeline__lane-axis { position: relative; height: 1.3rem; }
+/* Maps: the whole map scaled to the space left. A tile grid is sized by its
+   container's height as well as its width, so every tile fits. */
+.sv-chart__preview .sv-geo-map__svg { flex: 1 1 0; min-height: 0; width: 100%; height: 100%; max-height: none; }
+.sv-tile-map__fit { flex: 1; min-height: 0; container-type: size; }
+.sv-tile-map__fit > .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; gap: 2px; }
+.sv-tile-map__fit .sv-tile-map__tile { padding: 0; align-items: center; justify-content: center; }
+.sv-tile-map__fit .sv-tile-map__code { font-size: .55rem; }
+/* Scatter plots: the short, wide plot, as for a series. */
+.sv-chart__preview .sv-scatter__x-label { margin: 0; text-align: center; }
+/* Key figures: the numbers a little smaller, so two to four fit one slide. */
+.sv-chart__preview .sv-key-figures__frame { flex: 1; display: flex; align-items: center; }
+.sv-chart__preview .sv-key-figures__list { width: 100%; }
+.sv-chart__preview .sv-key-figures__value { font-size: 2rem; }
+
 /* A chart's silhouette on a collapsed home-page row: decoration only. */
 .sv-thumb { display: block; width: 100%; height: 100%; }
 .sv-thumb__column { fill: var(--sv-series-1); opacity: .35; }

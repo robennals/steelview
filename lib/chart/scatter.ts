@@ -1,4 +1,4 @@
-import { CHART_GEOMETRY, dropCrowdedTicks, niceTicks, type ChartGeometry, type ChartVariant } from './series-chart';
+import { CHART_GEOMETRY, dropCrowdedTicks, niceTicks, type ChartGeometry, type SeriesVariant } from './series-chart';
 
 /**
  * Everything about a labelled scatter plot that is arithmetic rather than
@@ -17,7 +17,12 @@ export type ScatterGeometry = ChartGeometry & {
   labelSize: number;
 };
 
-export const SCATTER_GEOMETRY: Record<ChartVariant, ScatterGeometry> = {
+/**
+ * `preview` is the home-page slide's short, wide plot, as for a series: a
+ * little taller than the series preview, because both axes carry data.
+ */
+export const SCATTER_GEOMETRY: Record<SeriesVariant, ScatterGeometry> = {
+  preview: { ...CHART_GEOMETRY.preview, height: 230, plotHeight: 230 - 10 - 26, pointRadius: 4, labelSize: 11 },
   narrow: { ...CHART_GEOMETRY.narrow, height: 300, plotHeight: 300 - 12 - 30, pointRadius: 4, labelSize: 10 },
   wide: { ...CHART_GEOMETRY.wide, height: 420, plotHeight: 420 - 14 - 34, pointRadius: 5, labelSize: 12 },
 };
@@ -208,7 +213,7 @@ export type ScatterLayoutAxis = ScatterScaleOptions & { format: (value: number) 
 export function layoutScatter(
   points: Array<{ id: string; label: string; x: number; y: number; highlight?: boolean }>,
   axes: { x: ScatterLayoutAxis; y: ScatterLayoutAxis },
-  variant: ChartVariant,
+  variant: SeriesVariant,
 ): ScatterLayout {
   const geometry = SCATTER_GEOMETRY[variant];
   const xScale = scatterScale(points.map(point => point.x), axes.x);

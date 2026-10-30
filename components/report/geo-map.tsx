@@ -7,12 +7,12 @@ import type { GeoRegion } from './geo/types';
 import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, type MapEncoding } from './geo/categorical';
 import { CategoryLegend } from './geo/category-legend';
 import { CategoryTable } from './geo/category-table';
-import { mapScale, mapSummary, readoutText, datumText } from './geo/choropleth';
+import { PREVIEW_CLOSING, mapScale, mapSummary, readoutText, datumText } from './geo/choropleth';
 import { MapLegend } from './geo/map-legend';
 import { MapReadout } from './geo/map-readout';
 import { MapTable } from './geo/map-table';
 import { MarkerIcon, MarkerShape, shapeForSlot } from './marker-shape';
-import type { SourceCredit, ValueFormat } from './types';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 /** A point of interest drawn over the shading: a port, a centre, a site. */
 export type MapMarker = {
@@ -69,6 +69,12 @@ type GeoMapCommon = {
   /** Rendered after the source line: the figure's Observations. */
   footer?: ReactNode;
   headingLevel?: 2 | 3;
+  /**
+   * Draw the compact preview: the linked title, the keys and the whole map,
+   * insets included, scaled to the space it is given. Areas and markers take
+   * no focus; there is no readout or Table view.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -185,6 +191,7 @@ export function GeoMap(props: GeoMapProps) {
     note,
     footer,
     headingLevel,
+    preview,
   } = props;
   const categorical = isCategorical(props);
   const what = categorical ? props.categoryLabel : props.valueLabel;
@@ -248,7 +255,7 @@ export function GeoMap(props: GeoMapProps) {
     };
     legend = <CategoryLegend categoryLabel={props.categoryLabel} categories={props.categories} slots={slots} counts={counts} />;
     patterns = <CategoryPatterns idPrefix={`${baseId}-cat`} slots={[...slots.values()]} />;
-    summary = [categorySummary(regions, props), markerSentence, 'Use the Table switch to see every area.'].filter(Boolean).join(' ');
+    summary = [categorySummary(regions, props), markerSentence, preview ? PREVIEW_CLOSING : 'Use the Table switch to see every area.'].filter(Boolean).join(' ');
     areaTable = <CategoryTable caption={caption} areaLabel={areaLabel} areas={regions} encoding={props} />;
   } else {
     const { data, valueLabel, format, scale: kind = 'sequential', steps, domain, breaks } = props;
@@ -259,7 +266,7 @@ export function GeoMap(props: GeoMapProps) {
       return { fill: datum ? scale.color(datum.value) : `url(#${hatchId})`, readout: text, ariaLabel: text, missing: !datum, insetText: datumText(datum, format) };
     };
     legend = <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={regions.some(region => !data[region.id])} />;
-    summary = mapSummary(`Map of ${regions.length} areas shaded by ${valueLabel.toLowerCase()}.`, regions, data, format, markerSentence);
+    summary = mapSummary(`Map of ${regions.length} areas shaded by ${valueLabel.toLowerCase()}.`, regions, data, format, markerSentence, preview ? PREVIEW_CLOSING : undefined);
     areaTable = <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={regions} data={data} format={format} />;
   }
 
@@ -299,6 +306,74 @@ export function GeoMap(props: GeoMapProps) {
       );
     });
 
+  const drawing = (
+    <svg
+      className="sv-geo-map__svg"
+      viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio={preview ? 'xMidYMid meet' : 'xMinYMid meet'}
+      role="group"
+      aria-label={title ?? what}
+      aria-describedby={descriptionId}
+      data-insets={placedInsets.length > 0 ? 'true' : undefined}
+    >
+      <defs>
+        {/* Rotated so the lines run top-left to bottom-right, like the CSS
+            hatch on the legend swatch and on tiles. */}
+        <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
+          <rect className="sv-geo-map__hatch-ground" width="5" height="5" />
+          <line className="sv-geo-map__hatch-line" x1="0" y1="0" x2="0" y2="5" />
+        </pattern>
+        <clipPath id={clipId}>
+          <rect x={frame.x - PADDING} y={frame.y - PADDING} width={frame.width + 2 * PADDING} height={frame.height + 2 * PADDING} />
+        </clipPath>
+        {patterns}
+      </defs>
+      <g clipPath={`url(#${clipId})`}>
+        {contextRegions.length > 0 && (
+          <g className="sv-geo-map__context" aria-hidden="true">
+            {contextRegions.map(region => (
+              <path key={region.id} d={pathFor(region.coordinates, projection)} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
+            ))}
+          </g>
+        )}
+        <g className="sv-geo-map__regions">{regionPaths(projection, regions, !preview)}</g>
+      </g>
+
+      {placedInsets.map(inset => {
+        const label = inset.label ?? inset.regions.map(r => r.name).join(', ');
+        const valueText = inset.regions.length === 1 ? lookFor(inset.regions[0]).insetText : null;
+        const [ax, ay] = inset.anchor;
+        return (
+          <g key={inset.regionIds.join('-')} className="sv-geo-map__inset">
+            {insetLayout === 'column' ? (
+              <>
+                <line className="sv-geo-map__leader" x1={ax} y1={ay} x2={inset.x} y2={inset.y + INSET_BOX.height / 2} vectorEffect="non-scaling-stroke" />
+                <circle className="sv-geo-map__anchor" cx={ax} cy={ay} r={2} />
+              </>
+            ) : (
+              <circle className="sv-geo-map__anchor-ring" cx={ax} cy={ay} r={5} vectorEffect="non-scaling-stroke" />
+            )}
+            <rect className="sv-geo-map__inset-frame" x={inset.x} y={inset.y} width={INSET_BOX.width} height={INSET_BOX.height} vectorEffect="non-scaling-stroke" />
+            {regionPaths(inset.projection, inset.regions, false)}
+            {/* Markers inside the inset's area are redrawn there too, so the
+                enlargement does not hide what the main map crowds together. */}
+            {orderedMarkers
+              .filter(({ marker }) => inBounds(marker, inset.bounds))
+              .map(({ marker, index }) => markerGlyph(marker, index, inset.projection, false))}
+            <text className="sv-geo-map__inset-label" x={inset.x} y={inset.y + INSET_BOX.height + 18} aria-hidden="true">{label}</text>
+            {valueText && <text className="sv-geo-map__inset-value" x={inset.x} y={inset.y + INSET_BOX.height + 37} aria-hidden="true">{valueText}</text>}
+          </g>
+        );
+      })}
+
+      {orderedMarkers.length > 0 && (
+        <g className="sv-geo-map__markers">
+          {orderedMarkers.map(({ marker, index }) => markerGlyph(marker, index, projection, !preview))}
+        </g>
+      )}
+    </svg>
+  );
+
   const graph = (
     <>
       {legend}
@@ -314,75 +389,11 @@ export function GeoMap(props: GeoMapProps) {
         </ul>
       )}
       <p className="sv-visually-hidden" id={descriptionId}>{summary}</p>
-      <MapReadout hint={`Hover over or tab to a region to read its ${categorical ? 'category' : 'value'}.`}>
-        <svg
-          className="sv-geo-map__svg"
-          viewBox={`0 0 ${width} ${height}`}
-          preserveAspectRatio="xMinYMid meet"
-          role="group"
-          aria-label={title ?? what}
-          aria-describedby={descriptionId}
-          data-insets={placedInsets.length > 0 ? 'true' : undefined}
-        >
-          <defs>
-            {/* Rotated so the lines run top-left to bottom-right, like the CSS
-                hatch on the legend swatch and on tiles. */}
-            <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
-              <rect className="sv-geo-map__hatch-ground" width="5" height="5" />
-              <line className="sv-geo-map__hatch-line" x1="0" y1="0" x2="0" y2="5" />
-            </pattern>
-            <clipPath id={clipId}>
-              <rect x={frame.x - PADDING} y={frame.y - PADDING} width={frame.width + 2 * PADDING} height={frame.height + 2 * PADDING} />
-            </clipPath>
-            {patterns}
-          </defs>
-          <g clipPath={`url(#${clipId})`}>
-            {contextRegions.length > 0 && (
-              <g className="sv-geo-map__context" aria-hidden="true">
-                {contextRegions.map(region => (
-                  <path key={region.id} d={pathFor(region.coordinates, projection)} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
-                ))}
-              </g>
-            )}
-            <g className="sv-geo-map__regions">{regionPaths(projection, regions, true)}</g>
-          </g>
-
-          {placedInsets.map(inset => {
-            const label = inset.label ?? inset.regions.map(r => r.name).join(', ');
-            const valueText = inset.regions.length === 1 ? lookFor(inset.regions[0]).insetText : null;
-            const [ax, ay] = inset.anchor;
-            return (
-              <g key={inset.regionIds.join('-')} className="sv-geo-map__inset">
-                {insetLayout === 'column' ? (
-                  <>
-                    <line className="sv-geo-map__leader" x1={ax} y1={ay} x2={inset.x} y2={inset.y + INSET_BOX.height / 2} vectorEffect="non-scaling-stroke" />
-                    <circle className="sv-geo-map__anchor" cx={ax} cy={ay} r={2} />
-                  </>
-                ) : (
-                  <circle className="sv-geo-map__anchor-ring" cx={ax} cy={ay} r={5} vectorEffect="non-scaling-stroke" />
-                )}
-                <rect className="sv-geo-map__inset-frame" x={inset.x} y={inset.y} width={INSET_BOX.width} height={INSET_BOX.height} vectorEffect="non-scaling-stroke" />
-                {regionPaths(inset.projection, inset.regions, false)}
-                {/* Markers inside the inset's area are redrawn there too, so the
-                    enlargement does not hide what the main map crowds together. */}
-                {orderedMarkers
-                  .filter(({ marker }) => inBounds(marker, inset.bounds))
-                  .map(({ marker, index }) => markerGlyph(marker, index, inset.projection, false))}
-                <text className="sv-geo-map__inset-label" x={inset.x} y={inset.y + INSET_BOX.height + 18} aria-hidden="true">{label}</text>
-                {valueText && <text className="sv-geo-map__inset-value" x={inset.x} y={inset.y + INSET_BOX.height + 37} aria-hidden="true">{valueText}</text>}
-              </g>
-            );
-          })}
-
-          {orderedMarkers.length > 0 && (
-            <g className="sv-geo-map__markers">
-              {orderedMarkers.map(({ marker, index }) => markerGlyph(marker, index, projection, true))}
-            </g>
-          )}
-        </svg>
-      </MapReadout>
+      {preview ? drawing : <MapReadout hint={`Hover over or tab to a region to read its ${categorical ? 'category' : 'value'}.`}>{drawing}</MapReadout>}
     </>
   );
+
+  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-geo-map">{graph}</ReportFigure>;
 
   const table = (
     <>

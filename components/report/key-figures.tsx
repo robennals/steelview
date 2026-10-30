@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ReportFigure } from './figure';
 import { formatDate, formatValue } from './format';
-import type { PartialDate, SourceCredit, ValueFormat } from './types';
+import type { FigurePreview, PartialDate, SourceCredit, ValueFormat } from './types';
 
 export type KeyFigureChange = {
   value: number;
@@ -35,6 +35,8 @@ export type KeyFiguresProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Draw the compact preview: the linked title and every figure with its label, period and change; sources stay on the full figure. */
+  preview?: FigurePreview;
 };
 
 /**
@@ -44,9 +46,9 @@ export type KeyFiguresProps = {
  * bad news in this register, so direction is carried by the sign and the
  * words, never by green and red.
  */
-export function KeyFigures({ figures, id, title, description, sources, note, footer }: KeyFiguresProps) {
+export function KeyFigures({ figures, id, title, description, sources, note, footer, preview }: KeyFiguresProps) {
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-key-figures">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} preview={preview} className="sv-key-figures">
       <div className="sv-key-figures__frame">
         <dl className="sv-key-figures__list" data-count={figures.length}>
           {figures.map((figure, i) => (
@@ -58,7 +60,7 @@ export function KeyFigures({ figures, id, title, description, sources, note, foo
               </dd>
               <dd className="sv-key-figures__meta">
                 <span className="sv-key-figures__period">{figure.periodLabel ?? formatDate(figure.period)}</span>
-                {figure.source && (
+                {figure.source && !preview && (
                   <>
                     {' '}
                     <SourceMark source={figure.source} />

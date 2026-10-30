@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { ObservationBar } from '@/components/topic/observation-bar';
-import type { SourceCredit } from './types';
+import type { FigurePreview, SourceCredit } from './types';
 
 /**
  * The frame every report component sits in: a heading that says what the
@@ -23,6 +23,7 @@ export function ReportFigure({
   footer,
   headingLevel = 2,
   className,
+  preview,
   children,
 }: {
   id?: string;
@@ -35,11 +36,27 @@ export function ReportFigure({
   footer?: ReactNode;
   headingLevel?: 2 | 3;
   className?: string;
-  children: ReactNode;
+  /** Draw only the linked title and the graph (see `FigurePreview`). */
+  preview?: FigurePreview;
+  children?: ReactNode;
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
+  const classes = ['sv-chart', 'sv-report', className].filter(Boolean).join(' ');
+  if (preview) {
+    // A slide sits under its topic's heading, so its title is one level down.
+    return (
+      <figure className={classes} id={id} data-preview>
+        {title && (
+          <figcaption className="sv-chart__caption">
+            <h3 className="sv-graph-heading"><a href={`${preview.href}#${id ?? ''}`}>{title}</a></h3>
+          </figcaption>
+        )}
+        {children && <div className="sv-chart__preview">{children}</div>}
+      </figure>
+    );
+  }
   return (
-    <figure className={['sv-chart', 'sv-report', className].filter(Boolean).join(' ')} id={id}>
+    <figure className={classes} id={id}>
       {(title || description) && (
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}

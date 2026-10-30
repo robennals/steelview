@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { OTHER_KEY, compose, type CompositionCategory, type CompositionRowInput } from './composition';
+import { compose, compositionColor, type CompositionCategory, type CompositionRowInput } from './composition';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
-import { seriesColor } from './scale';
-import type { SourceCredit, ValueFormat } from './types';
+import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type { CompositionCategory, CompositionRowInput } from './composition';
 
@@ -29,6 +29,8 @@ export type CompositionBarProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Draw the compact preview: the linked title, the key and every bar; row sources stay on the full figure. */
+  preview?: FigurePreview;
 };
 
 /**
@@ -60,9 +62,10 @@ export function CompositionBar({
   sources,
   note,
   footer,
+  preview,
 }: CompositionBarProps) {
   const composed = compose(categories, rows, { otherThreshold, otherLabel });
-  const color = (key: string) => (key === OTHER_KEY ? 'var(--ink-4)' : seriesColor(categories.findIndex(c => c.key === key) + 1));
+  const color = (key: string) => compositionColor(categories, key);
 
   const graph = (
     <>
@@ -74,13 +77,13 @@ export function CompositionBar({
           </li>
         ))}
       </ul>
-      <ol className="sv-composition__rows">
+      <ol className="sv-composition__rows" data-compact={(preview && composed.rows.length > COMPACT_PREVIEW_ITEMS) || undefined}>
         {composed.rows.map(row => (
           <li key={row.label} className="sv-composition__row">
             <p className="sv-composition__head">
               <span className="sv-composition__label">
                 {row.label}
-                {row.source && <SourceCredits sources={[row.source]} />}
+                {row.source && !preview && <SourceCredits sources={[row.source]} />}
               </span>
               {showCounts && <span className="sv-composition__total">{formatValue(row.total, countFormat)} total</span>}
             </p>
@@ -108,6 +111,8 @@ export function CompositionBar({
       </ol>
     </>
   );
+
+  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-composition">{graph}</ReportFigure>;
 
   const table = (
     <div className="sv-chart__table-scroll">

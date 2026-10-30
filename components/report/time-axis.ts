@@ -14,6 +14,19 @@ export function toYear(value: number | PartialDate): number {
   return typeof value === 'number' ? value : dateToYear(value);
 }
 
+/**
+ * The whole years that hold every date: from the start of the earliest
+ * date's year to the start of the year after the latest. `from` and `to`
+ * override either end.
+ */
+export function spanOf(dates: Array<number | PartialDate>, { from, to }: { from?: number | PartialDate; to?: number | PartialDate } = {}): TimeSpan {
+  const years = dates.map(toYear);
+  return {
+    from: from !== undefined ? toYear(from) : Math.floor(Math.min(...years)),
+    to: to !== undefined ? toYear(to) : Math.floor(Math.max(...years)) + 1,
+  };
+}
+
 /** Where a moment sits along the span, 0–100, clamped to the ends. */
 export function percentAlong(year: number, { from, to }: TimeSpan): number {
   const t = ((year - from) / (to - from || 1)) * 100;

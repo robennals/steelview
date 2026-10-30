@@ -70,6 +70,7 @@ export function EventLane({
   keyId,
   showAxis,
   numbers = events.map((_, i) => i + 1),
+  linked = true,
 }: {
   span: TimeSpan;
   events: StripEvent[];
@@ -77,6 +78,8 @@ export function EventLane({
   showAxis: boolean;
   /** Each marker's number in the key, when the lane shows only some of the key's events. */
   numbers?: number[];
+  /** Markers link to their key items. Off in a preview, which draws no key: each marker then names its event itself. */
+  linked?: boolean;
 }) {
   const positions = events.map(e => percentAlong(toYear(e.date), span));
   // A numbered marker is ~1.4rem wide; at a 340px plot that is ~7% of the span.
@@ -91,17 +94,15 @@ export function EventLane({
         {events.map((e, i) => (
           <span key={`stem-${i}`} className="sv-event-strip__stem" aria-hidden="true" style={{ left: pct(positions[i]), '--sv-strip-level': levels[i] }} />
         ))}
-        {events.map((e, i) => (
-          <a
-            key={i}
-            className="sv-event-strip__marker"
-            href={`#${keyId}-${numbers[i]}`}
-            style={{ left: pct(positions[i]), '--sv-strip-level': levels[i] }}
-            aria-label={`${numbers[i]}: ${formatDate(e.date)}, ${e.label}`}
-          >
-            <span aria-hidden="true">{numbers[i]}</span>
-          </a>
-        ))}
+        {events.map((e, i) => {
+          const style = { left: pct(positions[i]), '--sv-strip-level': levels[i] };
+          const number = <span aria-hidden="true">{numbers[i]}</span>;
+          return linked ? (
+            <a key={i} className="sv-event-strip__marker" href={`#${keyId}-${numbers[i]}`} style={style} aria-label={`${numbers[i]}: ${formatDate(e.date)}, ${e.label}`}>{number}</a>
+          ) : (
+            <span key={i} className="sv-event-strip__marker" style={style} role="img" aria-label={`${formatDate(e.date)}: ${e.label}`}>{number}</span>
+          );
+        })}
       </div>
       {showAxis && (
         <div className="sv-event-strip__axis" aria-hidden="true">

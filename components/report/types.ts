@@ -27,6 +27,16 @@ export type SourceCredit = {
 };
 
 /**
+ * A figure drawn as a compact preview, as on a home-page carousel slide: its
+ * title, linked to the full figure on `href` (the fact's page), and the graph
+ * alone. The description, controls, Table view, keys that explain method,
+ * source line, Observations and "About this data" all stay on the full
+ * figure, a click away. Never a subset of the data: every item, area, event
+ * and the full range are still drawn, clamped to fit when there are many.
+ */
+export type FigurePreview = { href: string };
+
+/**
  * How a number is written. `count` is people or things (1,441,000),
  * `percent` takes values in percentage points (2.1 means 2.1%), `currency`
  * prefixes the symbol of the given ISO 4217 code (£, $, €), and `number` is a

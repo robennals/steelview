@@ -1,9 +1,9 @@
 'use client';
 import { useState, type ReactNode } from 'react';
 import type { Fact, Source } from '@/lib/content/types';
-import { rankOf } from '@/lib/chart/comparison-preview';
 import { ChartAbout } from './chart-about';
 import { ObservationBar } from './observation-bar';
+import { COMPACT_PREVIEW_ITEMS, RankedColumns, fitsRankedColumns } from '@/components/report/ranked-columns';
 import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -17,15 +17,6 @@ export type ChartPreview = {
   /** For a series, the shape of the space it sits in (default: wide, as a carousel slide is). */
   fit?: PreviewFit;
 };
-
-/** Above this many items a preview draws one thin column per item instead of a labelled row. */
-const DENSE_PREVIEW_ITEMS = 12;
-
-/**
- * Above this many items a preview clamps its rows — one-line labels, smaller
- * type, thinner bars — so the chart fits the carousel's fixed height.
- */
-const COMPACT_PREVIEW_ITEMS = 6;
 
 /**
  * Only the fact's id is used. Passing just that keeps a fact's body and other
@@ -52,14 +43,9 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   const formatShare = (value: number) => chart.shareTotal ? `${(value / chart.shareTotal * 100).toLocaleString('en-GB', { maximumFractionDigits: 1 })}%` : null;
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
   const Heading = preview ? 'h3' : 'h2';
-  // A long preview becomes one thin column per item, ranked from highest, but
-  // only when that reads honestly: no negative values to draw below zero, no
-  // group breakdown, and at most one highlighted subject whose rank it states.
-  // Anything else stays as rows, clamped to fit.
-  const columns = Boolean(preview) && !chart.groups && items.length > DENSE_PREVIEW_ITEMS
-    && items.every(item => item.value >= 0) && items.filter(item => item.highlight).length <= 1;
-  const ranked = columns ? [...items].sort((a, b) => b.value - a.value) : items;
-  const rank = columns ? rankOf(items) : null;
+  // A long preview becomes one thin column per item, ranked from highest,
+  // unless it has a group breakdown to show (see fitsRankedColumns).
+  const columns = Boolean(preview) && !chart.groups && fitsRankedColumns(items);
   return <figure className="sv-chart sv-comparison" id={`${fact.id}--chart-${chart.id}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
     <figcaption className="sv-chart__caption">
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
@@ -72,15 +58,8 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
       {[...chart.groups, allGroupsLabel].map((label, index) => { const value = index === chart.groups!.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
     </fieldset>}
     {!preview && <p className="sv-chart__axis-label" aria-live="polite">{chart.groups ? `${selected < 0 ? allGroupsLabel : chart.groups[selected]} · ` : ''}{chart.valueLabel}</p>}
-    {columns ? <>
-      <ol className="sv-comparison__columns">
-        {ranked.map((item, index) => <li key={`${chart.id}-${index}`} className="sv-comparison__column" data-highlight={item.highlight || undefined}>
-          <span className="sv-visually-hidden">{item.label}: {format(item.value)}</span>
-          <span className="sv-comparison__column-bar" aria-hidden="true" style={{ height: `${Math.max(0, item.value) / (max || 1) * 100}%` }} />
-        </li>)}
-      </ol>
-      {rank && <p className="sv-comparison__rank">{rank.label}: {format(items.find(item => item.highlight)!.value)} — {ordinal(rank.rank)} of {rank.of}</p>}
-    </> : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined} style={{ '--sv-row-count': items.length }}>
+    {columns ? <RankedColumns items={items} max={max} format={format} />
+     : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined} style={{ '--sv-row-count': items.length }}>
       {items.map((item, index) => <li key={`${chart.id}-${index}`} data-row={item.label}>
         <div className="sv-comparison__label"><span title={preview ? item.label : undefined}>{item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></div>
         <div className="sv-comparison__track" aria-hidden="true">
@@ -96,10 +75,4 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
     {observations}
     {chart.note && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{chart.note}</p></details>}
   </figure>;
-}
-
-function ordinal(n: number): string {
-  const tens = n % 100;
-  const suffix = tens >= 11 && tens <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[n % 10] ?? 'th';
-  return `${n}${suffix}`;
 }
