@@ -37,6 +37,6 @@ test('a walkthrough slide draws a library figure only when given its page', asyn
   const fact = topic.facts.find(f => f.id === 'asylum-law-and-the-echr')!;
   const slide = { fact, chart: 'article-31', label: 'Article 31', href: '/x' };
   const page = { slug: 'uk-asylum', asOf: topic.lastUpdated, facts: topic.facts };
-  assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, page })), /sv-slide__figure[\s\S]*<table/);
+  assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, page })), /sv-slide__figure[\s\S]*sv-cards__list/);
   assert.equal(renderToStaticMarkup(createElement(SlideChart, { slide })), '');
 });

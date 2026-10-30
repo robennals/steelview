@@ -1,4 +1,4 @@
-import type { Locator, Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 
 // A topic page's viewpoints and data collections are accordion rows. A
 // viewpoint step's "Explore this data" opens that collection's own panel in a
@@ -35,6 +35,9 @@ export async function cruxCitation(page: Page, factId: string): Promise<Locator>
  * so it exercises what a reader's click does.
  */
 export async function citationTo(page: Page, factId: string, chart = 'series'): Promise<Locator> {
+  // Hydration replaces what it finds in <main>, so a link added before it is
+  // removed again. Thumbnails stay disabled until then.
+  await expect(page.locator('.sv-walk__thumb').first()).toBeEnabled();
   await page.evaluate(([id, href]) => {
     if (document.getElementById(`citation-${id}`)) return;
     const link = document.createElement('a');

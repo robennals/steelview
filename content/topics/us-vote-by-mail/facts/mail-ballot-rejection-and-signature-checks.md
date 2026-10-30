@@ -1182,7 +1182,9 @@ figures:
     id: washington-recheck
     title: 'Washington''s re-check of its counties'' signature decisions, 2020'
     description: What the state auditor's review found when it repeated the counties' work.
-    caption: One row per measure
+    caption: One card per measure
+    layout: cards
+    leadColumn: finding
     columns:
       - key: measure
         label: Measure
@@ -1225,13 +1227,16 @@ figures:
     id: courts
     title: Court rulings on rejecting ballots for a signature mismatch
     description: 'What courts have held about signature rejections, notice and the chance to fix a ballot.'
-    caption: One row per ruling or opinion
+    caption: One card per ruling or opinion
+    layout: timeline
+    leadColumn: held
+    dateColumn: court
     columns:
       - key: court
         label: Court and date
-        rowHeader: true
       - key: case
         label: Case
+        rowHeader: true
         sortable: false
       - key: held
         label: What the court held or said

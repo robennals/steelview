@@ -21,6 +21,7 @@ export * from './composition-bar';
 export * from './small-multiples';
 export * from './estimate-range';
 export * from './data-table';
+export * from './data-cards';
 export * from './scatter-plot';
 
 // Maps

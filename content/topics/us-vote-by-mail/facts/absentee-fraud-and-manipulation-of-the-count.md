@@ -702,7 +702,9 @@ figures:
     id: absentee-cases
     title: 'Organised absentee and mail-ballot cases, 1980–2026'
     description: 'How each scheme worked, how it came to light and how it ended. A dash means the source read does not say.'
-    caption: One row per case
+    caption: One card per case
+    layout: timeline
+    leadColumn: how
     columns:
       - key: case
         label: Case
@@ -828,7 +830,9 @@ figures:
     id: officials
     title: Officials and the count
     description: 'Cases where officials tampered with a count, or refused or challenged a result.'
-    caption: One row per case
+    caption: One card per case
+    layout: timeline
+    leadColumn: did
     columns:
       - key: case
         label: Case
@@ -851,7 +855,7 @@ figures:
           value: Election judges cast ballots in the names of voters who had moved or died
           sources:
             - 20
-        outcome: See the in-person fraud table
+        outcome: See the in-person fraud cases
       - case: 'Philadelphia, 1993'
         did:
           value: Two city commissioners and an elections supervisor complicit in an absentee scheme
@@ -886,7 +890,9 @@ figures:
     id: in-person
     title: In-person and machine fraud over the same era
     description: 'Large polling-place cases from the same record, for comparison with the absentee cases.'
-    caption: One row per case
+    caption: One card per case
+    layout: timeline
+    leadColumn: how
     columns:
       - key: case
         label: Case
@@ -988,11 +994,11 @@ That counts are a floor does not show the true rate is high. No source measures 
 
 ### Organised absentee schemes have voided elections {#absentee-fraud-and-manipulation-of-the-count--absentee-schemes-voided-elections}
 
-North Carolina's elections board found its 2018 congressional race "corrupted by fraud, improprieties, and irregularities so pervasive" that it ordered a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) Courts did the same in East Chicago, Bridgeport and elsewhere (see the table). [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9)
+North Carolina's elections board found its 2018 congressional race "corrupted by fraud, improprieties, and irregularities so pervasive" that it ordered a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) Courts did the same in East Chicago, Bridgeport and elsewhere (see the timeline). [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9)
 
 ### Each case was local, caught and rerun {#absentee-fraud-and-manipulation-of-the-count--each-case-caught-and-rerun}
 
-Every scheme in the table whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
+Every scheme in the timeline whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
 
 ### Paterson: a court voided the election, but no one has been convicted {#absentee-fraud-and-manipulation-of-the-count--paterson-voided-no-convictions}
 
@@ -1044,4 +1050,4 @@ A 2023 Rasmussen–Heartland poll reported that about one in five 2020 mail vote
 
 **Commonly mistaken for.** A count of detected cases is not a count of fraud, in either direction. A low count does not show fraud is rare, and a voided election does not show fraud is common: the voided cases are local races caught by existing checks.
 
-**Left out.** Wayne County, Michigan (2020) and Georgia's State Election Board (2024) are often cited as officials contesting certification, but only secondary accounts were reached, so they are not in the table (see Data still needed). Britain's postal-fraud court cases are in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/uk-election-courts).
+**Left out.** Wayne County, Michigan (2020) and Georgia's State Election Board (2024) are often cited as officials contesting certification, but only secondary accounts were reached, so they are not in the timeline (see Data still needed). Britain's postal-fraud court cases are in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/uk-election-courts).
