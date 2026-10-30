@@ -1783,7 +1783,7 @@ Around a third of people in privately rented homes in England and Wales were bor
 
 ### Non-UK nationals are a rising minority of new social tenants {#immigration-housing-and-public-services--social-lettings}
 
-Non-UK lead tenants took 6% of new social lettings in England in 2007/08 and 10% in 2022/23. [18](#source-immigration-housing-and-public-services-18) Work, study and family visa holders are not eligible, and non-UK passport holders were slightly under-represented at the 2021 Census. [19](#source-immigration-housing-and-public-services-19) [20](#source-immigration-housing-and-public-services-20) In 2018 the MAC judged that, with little building, these lettings come "inevitably at the expense of other potential tenants". [23](#source-immigration-housing-and-public-services-23)
+Non-UK lead tenants took 6% of new social lettings in England in 2007/08 and 10% in 2022/23. [18](#source-immigration-housing-and-public-services-18) Work, study and family visa holders are ineligible, and non-UK passport holders were slightly under-represented at the 2021 Census. [19](#source-immigration-housing-and-public-services-19) [20](#source-immigration-housing-and-public-services-20) In 2018 the MAC judged that, with little building, lettings come "inevitably at the expense of other potential tenants". [23](#source-immigration-housing-and-public-services-23)
 
 ## Subtleties {#immigration-housing-and-public-services--subtleties-house-price-and-rent-effects}
 

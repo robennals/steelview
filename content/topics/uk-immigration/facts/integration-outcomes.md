@@ -1809,7 +1809,7 @@ The average net cost of MENAPT immigrants fell by about DKK 37 thousand a person
 
 ### Reason for migrating explains part of the gap, not all of it {#integration-outcomes--denmark-route-matters}
 
-Immigrants who came as refugees cost about DKK 95 thousand each in 2019, while those who came to work contributed about DKK 120 thousand. MENAPT immigrants came mainly as refugees or family members, Western ones mainly to work or study. With the Western mix of reasons, the MENAPT average would have been about DKK 55 thousand higher, still negative. [21](#source-integration-outcomes-21) [22](#source-integration-outcomes-22)
+Refugees cost about DKK 95 thousand each in 2019, while those who came to work contributed about DKK 120 thousand. MENAPT immigrants came mainly as refugees or family members, Western ones mainly to work or study. With the Western mix of reasons, the MENAPT average would have been about DKK 55 thousand higher, still negative. [21](#source-integration-outcomes-21) [22](#source-integration-outcomes-22)
 
 ### Descendants' figures mostly reflect their age {#integration-outcomes--denmark-descendants-are-children}
 
