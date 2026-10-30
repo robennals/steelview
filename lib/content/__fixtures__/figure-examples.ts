@@ -34,6 +34,7 @@ export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
     title: 'Figure examples',
     subtitle: 'Every figure kind',
     lastUpdated: '2026-10-29',
+    firstPublished: '2026-08-18',
     intro: '',
     facts: [fact, mailBallotPrivacyFact],
     viewpoints: [

@@ -1223,13 +1223,37 @@ additionalSeries:
               - period: '2025'
                 value: 3317
       - id: cohort-share
-        label: Returns as a share of refused and withdrawn claims
+        label: Returns as a share of refused claims
         unit: percent
-        valueLabel: Percent of refused plus withdrawn claims
+        valueLabel: Returns as a percent of each year's claims
         note: >-
           Derived: enforced plus voluntary returns from each year's claims,
-          divided by that year's refusals plus withdrawals at latest outcome.
+          divided by that year's refusals, and by its refusals plus withdrawals,
+          at latest outcome. Returns are counted for the whole year's claims, so
+          neither is a matched rate: the share of refused can count someone who
+          withdrew.
         lines:
+          - name: Returns as a share of refused
+            points:
+              - {period: '2007', value: 67.9}
+              - {period: '2008', value: 73.5}
+              - {period: '2009', value: 70.6}
+              - {period: '2010', value: 72.2}
+              - {period: '2011', value: 69.2}
+              - {period: '2012', value: 69.8}
+              - {period: '2013', value: 68.4}
+              - {period: '2014', value: 60.0}
+              - {period: '2015', value: 39.8}
+              - {period: '2016', value: 36.8}
+              - {period: '2017', value: 34.3}
+              - {period: '2018', value: 34.2}
+              - {period: '2019', value: 42.3}
+              - {period: '2020', value: 45.5}
+              - {period: '2021', value: 45.4}
+              - {period: '2022', value: 55.1}
+              - {period: '2023', value: 21.9}
+              - {period: '2024', value: 13.5}
+              - {period: '2025', value: 9.7}
           - name: Returns as a share of refused and withdrawn
             points:
               - period: '2007'
@@ -2019,6 +2043,8 @@ figures:
         shows: { value: The Home Office does not hold this data, sources: [17] }
       - measure: The government's position
         shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
+observationMarks:
+  about-half-of-refused-claimants-recorded-leaving: {lines: [Returns as a share of refused], from: '2010', to: '2022'}
 ---
 Removals from the UK fell through the 2010s, collapsed during the pandemic and have risen each year since 2021, but enforced returns in the year to June 2026 (9,669) were less than half their 2004 level. [2](#source-removals-and-what-stops-them-2) [1](#source-removals-and-what-stops-them-1) Of the 40,605 returns that year, 76% were voluntary. Asylum-related returns reached 12,568, the highest in a series starting in 2010. [5](#source-removals-and-what-stops-them-5)
 
@@ -2054,10 +2080,6 @@ Foreign offender returns averaged around 5,500 a year in 2010–2019, peaked at 
 
 ## Observations {#removals-and-what-stops-them--observations-cohort-counts}
 
-### About half of refused claimants are recorded as leaving {#removals-and-what-stops-them--about-half-of-refused-claimants-recorded-leaving}
-
-Of asylum claims made in 2010–2022 and refused by the end of 2025, around half had led to a recorded return. The share was around 72% for 2010 claims, 33% for 2018 claims and 48% for 2022 claims. [15](#source-removals-and-what-stops-them-15) [16](#source-removals-and-what-stops-them-16) The chart's own measure, which also counts withdrawn claims, shows the same shape: above half for claims made before 2014, around a fifth to a quarter for 2016–2021.
-
 ### Refusals now far outrun returns in any single year {#removals-and-what-stops-them--refusals-outrun-returns}
 
 The government said 58,000 people had their asylum claim refused between June 2024 and June 2025, while fewer than 11,000 people were removed; the two counts are different groups of people, not a removal rate. [18](#source-removals-and-what-stops-them-18) The Bill's impact assessment sets 446,000 claims in 2021–2025 against 33,000 asylum-related returns. [19](#source-removals-and-what-stops-them-19)
@@ -2065,6 +2087,18 @@ The government said 58,000 people had their asylum claim refused between June 20
 ### Not recorded leaving is not the same as still here {#removals-and-what-stops-them--not-recorded-leaving}
 
 193,000 people who claimed asylum in 2010–2024 and were refused or withdrew had not been recorded leaving by January 2026. The Migration Observatory treats this as an upper bound, because some were later granted status or left unrecorded, including via Ireland. [71](#source-removals-and-what-stops-them-71) [72](#source-removals-and-what-stops-them-72)
+
+## Observations {#removals-and-what-stops-them--observations-cohort-share}
+
+### About half of refused claimants are recorded as leaving {#removals-and-what-stops-them--about-half-of-refused-claimants-recorded-leaving}
+
+Across claims made in 2010–2022, returns come to around half of refusals. [15](#source-removals-and-what-stops-them-15) The line starts near three-quarters, drops to about a third for 2017 and 2018, and recovers to a little over half by 2022. Later years are still working through decisions and appeals.
+
+## Subtleties {#removals-and-what-stops-them--subtleties-cohort-share}
+
+### The Migration Observatory's figures differ slightly {#removals-and-what-stops-them--observatory-cohort-figures}
+
+The Migration Observatory gives around 72% for 2010 claims, 33% for 2018 claims and 48% for 2022 claims, followed to the end of 2025. [15](#source-removals-and-what-stops-them-15) [16](#source-removals-and-what-stops-them-16) This chart follows claims for longer, to July 2026, and its share is not a matched rate: returns cover all of a year's claims, including people who withdrew. Set against refused and withdrawn claims together, the same returns are a much smaller share.
 
 ## Observations {#removals-and-what-stops-them--observations-detention-leavers}
 

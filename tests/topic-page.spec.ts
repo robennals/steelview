@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { headCorner, openDataRow, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
@@ -8,6 +8,7 @@ import { headCorner, openDataRow, openViewpoint } from './topic-rows';
 // cross-references will turn this suite red.
 
 const TOPIC = '/topics/uk-immigration';
+const longRun = 'UK Migration and Population Over the Long Run';
 
 test('the topic page shows all four sections', async ({ page }) => {
   await page.goto(TOPIC);
@@ -86,6 +87,112 @@ test('a short bar chart keeps its bars together, with its scale under them, in a
   expect(scale!.y - (second!.y + second!.height)).toBeLessThan(40);
 });
 
+for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
+  test(`a data panel's observation sits between its title and its graph at ${viewport.width}px wide`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    await page.goto(TOPIC);
+    const row = await openDataRow(page, longRun);
+    const step = row.locator('.sv-walk__slide').first();
+    const title = await step.locator('.sv-graph-heading').first().boundingBox();
+    const observation = await step.locator('.sv-observe').boundingBox();
+    const graph = await step.locator('.sv-chart__svg:visible').first().boundingBox();
+    expect(title!.y + title!.height).toBeLessThanOrEqual(observation!.y);
+    expect(observation!.y + observation!.height).toBeLessThanOrEqual(graph!.y);
+    const slide = step.locator('.sv-slide');
+    await expect.poll(() => slide.evaluate(el => el.scrollHeight - el.clientHeight)).toBeLessThanOrEqual(0);
+  });
+}
+
+test('clicking an observation\'s text opens its reasoning', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = await openDataRow(page, longRun);
+  const step = row.locator('.sv-walk__slide').first();
+  await expect(step.locator('.sv-chart').first()).toBeVisible();
+  const observation = step.locator('.sv-observe__item:visible');
+  await expect(observation.locator('.sv-walk__prose')).toBeHidden();
+  const line = await observation.boundingBox();
+  expect(line!.height).toBeLessThan(40);
+  const claim = observation.locator('.sv-observe__claim');
+  await claim.click();
+  await expect(observation.locator('.sv-walk__prose')).toContainText('813,000 people moved to the UK');
+  await expect(observation.getByRole('button', { name: 'Gross immigration' })).toHaveAttribute('aria-expanded', 'true');
+  await claim.click();
+  await expect(observation.locator('.sv-walk__prose')).toBeHidden();
+});
+
+test('the whole observation bubble opens and closes, shows it can, and leaves its arrows alone', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = await openDataRow(page, longRun);
+  const step = row.locator('.sv-walk__slide').first();
+  await expect(step.locator('.sv-chart').first()).toBeVisible();
+  const bubble = step.locator('.sv-observe');
+  const prose = step.locator('.sv-observe__item:visible .sv-walk__prose');
+  const claim = step.locator('.sv-observe__item:visible .sv-observe__claim');
+
+  await expect(bubble).toHaveCSS('cursor', 'pointer');
+  await expect(claim).toHaveCSS('cursor', 'pointer');
+  const look = () => bubble.evaluate(el => {
+    const { backgroundColor, boxShadow } = getComputedStyle(el);
+    return { backgroundColor, boxShadow };
+  });
+  const resting = await look();
+  await bubble.hover();
+  await expect.poll(async () => (await look()).boxShadow).not.toBe(resting.boxShadow);
+  expect((await look()).backgroundColor).toBe(resting.backgroundColor);
+
+  // The chart's scrolling clips at the slide's edges, which must leave the shadow room.
+  const clip = await step.locator('.sv-slide').boundingBox();
+  const edge = await bubble.boundingBox();
+  expect(edge!.x - clip!.x).toBeGreaterThanOrEqual(12);
+  expect(clip!.x + clip!.width - (edge!.x + edge!.width)).toBeGreaterThanOrEqual(12);
+
+  // The empty space at the end of the line opens it, and the text it opened closes it.
+  const box = await bubble.boundingBox();
+  await page.mouse.click(box!.x + box!.width - 4, box!.y + 4);
+  await expect(prose).toBeVisible();
+  await prose.click();
+  await expect(prose).toBeHidden();
+
+  await step.getByRole('button', { name: 'Next observation' }).click();
+  await expect(step.locator('.sv-observe__count')).toHaveText(/^2 of/);
+  await expect(prose).toBeHidden();
+});
+
+test('choosing an observation picks out its part of the graph', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = await openDataRow(page, longRun);
+  const step = row.locator('.sv-walk__slide').first();
+  const lines = step.locator('svg:visible [data-series]');
+  const shownMark = step.locator('.sv-chart__svg:visible [data-mark-shown]');
+  const dimmed = (name: string) => step.locator(`svg:visible [data-series="${name}"][data-mark-dimmed]`);
+
+  // A point: the 2025 value on the immigration line, with the other lines receding.
+  await expect(lines.first()).toBeVisible();
+  await expect(shownMark.locator('.sv-chart__mark-label')).toHaveText('813,000');
+  await expect(dimmed('Net migration')).toHaveCount(1);
+  await expect(dimmed('Immigration')).toHaveCount(0);
+
+  // A region: the four years from 2021, with the plot either side of them veiled.
+  await step.getByRole('button', { name: 'Next observation' }).click();
+  await expect(shownMark.locator('.sv-chart__mark-veil')).toHaveCount(2);
+  await expect(dimmed('Emigration')).toHaveCount(1);
+  await expect(dimmed('Net migration')).toHaveCount(0);
+});
+
+test('an observation on a comparison picks out its rows, and keeps them when the rows change', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = await openDataRow(page, longRun);
+  const tab = row.locator('.sv-walk__tab').filter({ hasText: 'International Comparison' }).first();
+  await tab.click();
+  const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls)').first();
+  await expect(step.locator('.sv-comparison__rows')).toBeVisible();
+  await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
+  await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
+  await step.locator('.sv-comparison-controls button').first().click();
+  await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
+  await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
+});
+
 test('a chart\'s description is one line until opened, and method notes are inside it', async ({ page }) => {
   await page.goto(TOPIC);
   const row = page.locator('.sv-row--data').first();
@@ -149,9 +256,6 @@ test('a keyboard reader keeps their place when a thumbnail opens the row', async
   await page.goto(TOPIC);
   const row = page.locator('#viewpoint-open-and-build');
   const thumb = row.locator('.sv-walk__thumb').nth(1);
-  // Thumbnails stay disabled until hydration, and unlike click(), focus() does
-  // not wait for that: focusing a disabled button leaves Enter with no target.
-  await expect(thumb).toBeEnabled();
   await thumb.focus();
   await page.keyboard.press('Enter');
   await expect(row.locator('.sv-row__toggle')).toBeFocused();

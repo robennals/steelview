@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { openCollection } from './topic-rows';
 
 // Depends on authored uk-immigration content: the headline fact

@@ -5,8 +5,10 @@ import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
+import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
 import { comparePeriods } from '@/lib/content/period';
+import type { MarkedObservation } from '@/lib/content/walkthrough';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
@@ -19,6 +21,7 @@ import {
   lineSpan,
   midSentence,
   pathFor,
+  plotMark,
   readingRows,
   seriesSlots,
   seriesStrokeDash,
@@ -59,6 +62,7 @@ function Plot({
   variant,
   descriptionId,
   window,
+  marks = [],
 }: {
   series: Series;
   reading: SeriesReading;
@@ -66,6 +70,8 @@ function Plot({
   descriptionId: string;
   /** Draw only this period, at readable scale, with the lines clipped at the plot edges. */
   window?: FocusWindow;
+  /** The observations on this reading, each of which picks out its part of the plot when shown. */
+  marks?: MarkedObservation[];
 }) {
   const layout = layoutReading(series, reading, variant, window);
   const g = CHART_GEOMETRY[variant];
@@ -229,6 +235,22 @@ function Plot({
         </g>
       ))}
 
+      {/* Each observation's part of the plot, of which only the shown one is drawn. */}
+      {marks.map(({ id, mark }) => {
+        const { veils, points } = plotMark(layout, reading, mark);
+        return (
+          <g key={id} className="sv-chart__mark" data-mark={id}>
+            {veils.map(veil => <rect key={veil.x0} className="sv-chart__mark-veil" x={veil.x0} y={g.top} width={veil.x1 - veil.x0} height={g.plotHeight} />)}
+            {points.map(point => (
+              <g key={point.slot} style={{ color: `var(--sv-series-${point.slot})` }}>
+                <circle className="sv-chart__mark-point" cx={point.x} cy={point.y} r={g.markerRadius + 2} vectorEffect="non-scaling-stroke" />
+                <text className="sv-chart__mark-label" x={point.x + (point.x > g.left + g.plotWidth / 2 ? -10 : 10)} y={point.y - 10} fontSize={g.fontSize} textAnchor={point.x > g.left + g.plotWidth / 2 ? 'end' : 'start'}>{point.label}</text>
+              </g>
+            ))}
+          </g>
+        );
+      })}
+
       {layout.valueTicks.map((tick) =>
         tick.label === null ? null : (
           <text
@@ -385,6 +407,7 @@ function Reading({
   preview,
   panel,
   about,
+  marks,
 }: {
   series: Series;
   reading: SeriesReading;
@@ -399,6 +422,7 @@ function Reading({
   panel?: boolean;
   /** What "About this data" says, which a data panel keeps with the description. */
   about?: ReactNode;
+  marks?: MarkedObservation[];
 }) {
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
   const slots = seriesSlots(series);
@@ -443,8 +467,8 @@ function Reading({
         {PREVIEW_VARIANTS[preview.fit ?? 'wide'].map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} />)}
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
       </> : panel ? <>
-        {PREVIEW_VARIANTS.panel.map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} window={shown} />)}
-        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
+        {PREVIEW_VARIANTS.panel.map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} window={shown} marks={marks} />)}
+        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} marks={marks} />
       </> : <>
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
         <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
@@ -457,6 +481,7 @@ function Reading({
       {intro && !preview && (panel ? <ChartAbout description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
       {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
       {!preview && series.readings.length > 1 && <h3 className="sv-chart__reading-head">{reading.label}</h3>}
+      {panel && <ObservationBar />}
       {!preview && (
         <p className="sv-chart__axis-label">
           {reading.valueLabel}, by {midSentence(series.periodLabel)}
@@ -550,7 +575,7 @@ export function stripEvents(series: Pick<Series, 'events'>, factId: string, sour
   });
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, panel, notes }: {
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, panel, notes, marks }: {
   factId: string;
   chartId?: string;
   series: Series;
@@ -564,6 +589,8 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   panel?: boolean;
   /** Further notes for a data panel to keep with its description. */
   notes?: ReactNode;
+  /** The observations a data panel shows on this chart, with the part of it each picks out. */
+  marks?: MarkedObservation[];
 }) {
   const events = stripEvents(series, factId, sources, panel);
   const readings = preview
@@ -595,7 +622,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
 
       <SeriesHighlight>
         {readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 

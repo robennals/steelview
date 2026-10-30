@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { cruxCitation, openCollection } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const fact = 'immigration-economy-and-public-finances';
@@ -40,7 +40,7 @@ test('the same sheet can target another section and expand at that position', as
 
 test('charts have their own observations, with references last', async ({ page }) => {
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
-  const credits = page.locator('#immigration-against-the-long-run--chart-series .sv-chart__credit a');
+  const credits = page.locator('#immigration-against-the-long-run--chart-series .sv-chart__reading > .sv-chart__credit a');
   await expect(credits).toHaveCount(2);
   await expect(credits.first()).toContainText('Office for National Statistics');
   const order = await page.locator('article').evaluate(article => {
@@ -117,7 +117,7 @@ test('glossary popup closes before its containing fact and restores keyboard foc
   await openCollection(page, longRun);
   await page.getByRole('button', { name: 'Whole report', exact: true }).click();
   const dialog = page.locator('dialog.sv-modal');
-  await dialog.locator('#immigration-against-the-long-run--observations-international-immigration > summary').click();
+  await dialog.locator('#immigration-against-the-long-run--subtleties-international-immigration > summary').click();
   await dialog.locator('#immigration-against-the-long-run--international-differences > summary').click();
   const term = dialog.getByRole('button', { name: 'gross arrivals', exact: true }).first();
   await term.focus();
@@ -152,7 +152,7 @@ test('glossary works without JavaScript on narrow screens and dismisses outside'
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
-  await page.locator('#immigration-against-the-long-run--observations-international-immigration > summary').click();
+  await page.locator('#immigration-against-the-long-run--subtleties-international-immigration > summary').click();
   await page.locator('#immigration-against-the-long-run--international-differences > summary').click();
   await page.getByRole('button', { name: 'gross arrivals', exact: true }).first().click();
   const popup = page.getByRole('dialog', { name: 'Gross Arrivals' });
@@ -205,7 +205,7 @@ test('nationality comparisons change the country bars and show all components', 
   await series.locator('.sv-observations-group > summary').click();
   const surge = series.locator('#immigration-against-the-long-run--non-eu-arrivals-surge');
   await surge.locator(':scope > summary').click();
-  await expect(surge.locator('.sv-observation__body')).toContainText('work-visa eligibility for care workers');
+  await expect(surge.locator('.sv-observation__body')).toContainText('peaked in the year to September 2023');
   await expect(surge.locator('a').first()).toHaveAttribute('href', '#source-immigration-against-the-long-run-6');
   const observation = series.locator('#immigration-against-the-long-run--nationality-shift');
   await observation.locator(':scope > summary').click();
@@ -260,7 +260,7 @@ test('Ukraine is a separate line in net migration by route, with its own observa
   await graph.locator('.sv-observations-group > summary').click();
   const observation = graph.locator('#immigration-against-the-long-run--ukraine-spike');
   await observation.locator(':scope > summary').click();
-  await expect(observation.locator('.sv-observation__body')).toContainText('peaked in 2022');
+  await expect(observation.locator('.sv-observation__body')).toContainText('peaked in the year to March 2023');
   await observation.locator('.sv-observation__body a').first().click();
   await expect(page.locator('#source-immigration-against-the-long-run-48')).toHaveClass(/sv-target/);
 });

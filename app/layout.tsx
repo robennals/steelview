@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { fontVariables } from "./fonts";
+import { HydrationMarker } from "@/components/hydration-marker";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="sv-masthead">
           <div className="sv-wrap sv-masthead__inner">
             <Link href="/" className="sv-wordmark">
-              Steelview
+              Steelview<span className="sv-wordmark__stop" aria-hidden="true">.</span>
             </Link>
           </div>
         </div>
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <span className="sv-meta">Steelview</span>
           </div>
         </div>
+        <HydrationMarker />
       </body>
     </html>
   );

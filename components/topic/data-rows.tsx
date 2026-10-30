@@ -3,7 +3,7 @@ import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
 import { PanelHost } from './explore-panels';
-import { ObservationCycler } from './observation-cycler';
+import { ObservationBar, ObservationStep } from './observation-bar';
 import { ThumbStrip } from './thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from './lazy-charts';
@@ -14,17 +14,20 @@ const THUMBS = 7;
 
 type ChartStepProps = { step: DataStep; number: number };
 
-/** One chart, with what to notice in it under it, stepped through observation by observation. */
+/** One chart, stepped through observation by observation, each picking out its part of the chart. */
 function ChartStep({ step, number }: ChartStepProps) {
   return (
     <div className="sv-walk__step" data-chart>
       <div className="sv-walk__chart">
-        <div className="sv-slide"><LazyChart index={number - 1} /></div>
-      </div>
-      <div className="sv-walk__text">
-        {step.observations.length > 0
-          ? <ObservationCycler observations={step.observations} />
-          : <p className="sv-walk__prose prose-body">{step.description}</p>}
+        <ObservationStep observations={step.observations}>
+          <div className="sv-slide">
+            <LazyChart index={number - 1}>
+              {step.observations.length > 0
+                ? <ObservationBar />
+                : <p className="sv-walk__prose prose-body">{step.description}</p>}
+            </LazyChart>
+          </div>
+        </ObservationStep>
       </div>
     </div>
   );
@@ -61,7 +64,7 @@ type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, Da
  * The Data section: one row per headline data collection. Closed, a row is
  * its title, a one-line overview and its first charts in miniature; open, every
  * chart runs across the top as a miniature, and the chosen one sits large under
- * them, with the observations made about it along the bottom.
+ * them, with the observations made about it between its title and its graph.
  * Supporting collections are read inside their parent, so have no row.
  */
 export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
