@@ -296,6 +296,12 @@
 
   /* -------------------------------------------------------------- section */
 
+  /* The topic page is as wide as the home page, so its viewpoint and data
+     rows have room for their charts; prose sections keep a reading width. */
+  .sv-wrap--wide { max-width: 76rem; }
+  .sv-section--reading { max-width: var(--wrap); }
+  .sv-section__head + .sv-rows { margin-top: 1.25rem; }
+
   .sv-sections {
     counter-reset: sv-section;
   }
@@ -533,72 +539,6 @@
     overflow: visible;
   }
 
-  /* ------------------------------------------------ the rest of the facts */
-
-  /* The Facts section shows its most important few and puts the rest behind
-     this control. It is a native <details> like everything else on the page,
-     so it opens with JavaScript off, prints open, and is reachable by
-     keyboard and screen reader without any of that being re-implemented.
-     The count is in the label: "Show more" alone hides how much is behind
-     it, and here that is most of the evidence on the page. */
-
-  .sv-more__summary {
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    min-height: 44px;
-    padding: 0.9rem 0;
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .sv-more__summary::-webkit-details-marker {
-    display: none;
-  }
-
-  /* A chevron, pointing the way the control moves the page. */
-  .sv-more__summary::after {
-    content: "";
-    flex: none;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: translateY(-0.15em) rotate(45deg);
-    transition: transform 140ms ease;
-  }
-
-  .sv-more[open] > .sv-more__summary::after {
-    transform: translateY(0.1em) rotate(225deg);
-  }
-
-  .sv-more__summary:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.25em;
-  }
-
-  /* Only one of the two labels is ever shown, so the control names both what
-     it will do and how much it is hiding. */
-  .sv-more__label[data-when="open"],
-  .sv-more[open] > .sv-more__summary > .sv-more__label[data-when="closed"] {
-    display: none;
-  }
-
-  .sv-more[open] > .sv-more__summary > .sv-more__label[data-when="open"] {
-    display: inline;
-  }
-
-  /* The revealed facts are the same rows as the ones above the control and
-     carry no frame of their own, so the section reads as one list with the
-     control sitting inside it. */
-
   /* -------------------------------------------------- supporting facts */
 
   /* A headline fact is a claim the argument is about; the facts under it are
@@ -691,12 +631,6 @@
      but either way it is a reference, so the marker is an arrow rather than
      the plus a disclosure uses. Two different behaviours must not wear the
      same affordance. */
-
-  .sv-factlist {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
 
   .sv-factrow {
     display: block;
@@ -1440,30 +1374,6 @@
     color: var(--accent);
   }
 
-  /* ------------------------------------------------------------ viewpoint */
-
-  .sv-viewpoint .sv-item__claim {
-    font-size: 1.1875rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-
-  @media (min-width: 40rem) {
-    .sv-viewpoint .sv-item__claim {
-      font-size: 1.375rem;
-    }
-  }
-
-  /* Space between the filled title row and the argument's opening lead. */
-  .sv-viewpoint > .sv-item__body {
-    padding-top: 1.5rem;
-  }
-
-  /* A viewpoint body is the argument itself, so it reads at full ink. */
-  .sv-viewpoint > .sv-item__body > .prose-body {
-    color: var(--ink);
-  }
-
   /* --------------------------------------------------------------- cruxes */
 
   .sv-crux__kind {
@@ -2126,6 +2036,194 @@
 
   @media (prefers-reduced-motion: reduce) {
     .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot { transition: none; }
+  }
+
+  /* ------------------------------------------------ viewpoint walkthroughs */
+
+  /* A viewpoint row's closed state is its argument as a sequence of charts:
+     one thumbnail per step, on a line of their own under the heading. */
+  .sv-row--viewpoint .sv-row__head { flex-wrap: wrap; row-gap: 1rem; }
+  .sv-row--viewpoint .sv-row__heading { flex-basis: calc(100% - 4rem); }
+  .sv-row--viewpoint .sv-row__subtitle { max-width: 48rem; }
+
+  .sv-walk__thumbs {
+    order: 3;
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  }
+
+  .sv-walk__thumbs li { width: auto; min-width: 0; }
+  .sv-walk__thumbs span { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+  .sv-walk__no-chart {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--ink-4);
+  }
+
+  /* Open, the outline of the argument sits beside the step on screen. */
+  .sv-walk {
+    display: grid;
+    grid-template-columns: minmax(13rem, 1fr) minmax(0, 3.2fr);
+    gap: 1.75rem;
+    align-items: start;
+    padding: 1rem 1.5rem 1.6rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s, transform 0.45s;
+  }
+
+  .sv-row[data-open] .sv-walk { opacity: 1; transform: none; transition-delay: 0.12s; }
+
+  .sv-walk__outline { margin: 0; padding: 0; list-style: none; }
+
+  .sv-walk__outline-step {
+    display: flex;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.55rem 0.4rem;
+    border: 0;
+    border-top: 1px solid var(--rule);
+    background: none;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  .sv-walk__outline li:last-child .sv-walk__outline-step { border-bottom: 1px solid var(--rule); }
+  .sv-walk__outline-step:hover { color: var(--ink); }
+  .sv-walk__outline-step:disabled { cursor: default; }
+  .sv-walk__outline-step[aria-current] { color: var(--ink); background: var(--accent-wash); }
+
+  .sv-walk__number {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .sv-walk__outline-step[aria-current] .sv-walk__number { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+
+  .sv-walk__stage {
+    min-width: 0;
+    padding: 1.25rem 1.25rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: var(--paper-raised);
+  }
+
+  .sv-walk__strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    outline: none;
+  }
+
+  .sv-walk__strip::-webkit-scrollbar { display: none; }
+  .sv-walk__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .sv-walk__slide { display: flex; flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
+
+  /* The claim and its reasoning, then the chart it leans on. Every step is one
+     height, so nothing moves between steps; long prose scrolls. */
+  .sv-walk__step {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    flex: 1;
+    min-width: 0;
+    height: 22rem;
+  }
+
+  .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+
+  .sv-walk__text { min-height: 0; overflow-y: auto; padding-right: 0.25rem; }
+
+  .sv-walk__kicker {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .sv-walk__heading {
+    margin: 0.35rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .sv-walk__prose { font-size: 0.95rem; }
+  .sv-walk__prose p { margin: 0 0 0.6rem; }
+
+  .sv-walk__chart { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+  .sv-walk__chart .sv-slide { flex: 1; min-height: 0; }
+
+  .sv-walk__explore { margin-top: 0.5rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; }
+  .sv-walk__explore p { margin: 0; }
+  .sv-walk__explore p::after { content: " →"; color: var(--accent); }
+
+  .sv-walk__controls { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.9rem; }
+  .sv-walk__controls .sv-carousel__step:disabled { opacity: 0.35; cursor: default; }
+
+  .sv-walk__next {
+    min-width: 0;
+    max-width: 60%;
+    padding: 0.55rem 0.9rem;
+    overflow: hidden;
+    border: 0;
+    border-radius: 10px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .sv-walk__next:hover:not(:disabled) { background: var(--accent); }
+  .sv-walk__next:disabled { background: var(--paper-sunk); color: var(--ink-4); cursor: default; }
+
+  /* Narrower, the outline gives way to the step, and the chart goes under its prose. */
+  @media (max-width: 64rem) {
+    .sv-walk { grid-template-columns: minmax(0, 1fr); }
+    .sv-walk__outline { display: none; }
+  }
+
+  @media (max-width: 47.5rem) {
+    .sv-row--viewpoint .sv-walk__thumbs { display: grid; grid-auto-flow: column; grid-auto-columns: 8rem; overflow-x: auto; }
+    .sv-walk { padding-inline: 1rem; }
+    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
+    .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
+    /* The chart leads on a phone, so a step always opens on its evidence. */
+    .sv-walk__chart { order: -1; }
+    .sv-walk__text { overflow: visible; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-walk, .sv-walk__outline-step { transition: none; }
   }
 
   /* ------------------------------------------------------ fact citations */

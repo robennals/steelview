@@ -1,8 +1,7 @@
 'use client';
 
-import { Children, useRef, useState, useSyncExternalStore, type KeyboardEvent, type ReactNode } from 'react';
-
-const noSubscription = () => () => {};
+import { Children, type ReactNode } from 'react';
+import { useCarousel } from './use-carousel';
 
 /**
  * A topic's preview charts, one at a time.
@@ -14,27 +13,8 @@ const noSubscription = () => () => {};
  * are all one size and nothing moves when the chart changes.
  */
 export function PreviewCarousel({ name, labels, children }: { name: string; labels: string[]; children: ReactNode }) {
-  const strip = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState(0);
-  // Announced only where a move ends, not for every slide a smooth scroll passes.
-  const [announced, setAnnounced] = useState(0);
-  // False in the server render and true once hydrated: the controls need script.
-  const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
   const slides = Children.toArray(children);
-
-  const go = (to: number) => {
-    const el = strip.current;
-    if (!el) return;
-    const next = (to + slides.length) % slides.length;
-    el.scrollTo({ left: next * el.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-    setIndex(next);
-    setAnnounced(next);
-  };
-
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'ArrowRight') { event.preventDefault(); go(index + 1); }
-    if (event.key === 'ArrowLeft') { event.preventDefault(); go(index - 1); }
-  };
+  const { strip, index, announced, enhanced, go, onKeyDown, onScroll } = useCarousel(slides.length);
 
   return (
     <div className="sv-carousel" role="region" aria-roledescription="carousel" aria-label={`${name}: key charts`}>
@@ -45,10 +25,7 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
         role="group"
         aria-label={`${name} charts. Use the left and right arrow keys to move between them.`}
         onKeyDown={onKeyDown}
-        onScroll={event => {
-          const el = event.currentTarget;
-          setIndex(Math.round(el.scrollLeft / el.clientWidth));
-        }}
+        onScroll={onScroll}
       >
         {slides.map((slide, i) => (
           <div className="sv-carousel__slide" key={i} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}: ${labels[i]}`}>

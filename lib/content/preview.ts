@@ -32,3 +32,18 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
     return [{ fact, chart, reading, label: title, href: `${factPath(topic.slug, fact.id)}#${fact.id}--chart-${chart}` }];
   });
 }
+
+/**
+ * Every chart a data collection draws, in the order its page shows them: the
+ * main series, any further series, then its comparisons. A series is one
+ * slide, drawn at its first reading.
+ */
+export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
+  const slide = (chart: string, label: string): PreviewSlide =>
+    ({ fact, chart, label, href: `${factPath(slug, fact.id)}#${fact.id}--chart-${chart}` });
+  return [
+    ...(fact.series ? [slide('series', fact.series.title)] : []),
+    ...(fact.additionalSeries ?? []).map(s => slide(s.id, s.title)),
+    ...(fact.comparisons ?? []).map(c => slide(c.id, c.title)),
+  ];
+}

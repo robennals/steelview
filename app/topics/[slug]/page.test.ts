@@ -89,7 +89,7 @@ test('a section with no items renders no heading for that section', () => {
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
   assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.doesNotMatch(html, /Principles/);
@@ -143,7 +143,7 @@ test('a section with items renders its heading', () => {
       },
     ],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
   assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.match(html, /Principles/);
@@ -162,7 +162,7 @@ test('viewpoints come before the data, and their header is the name alone', () =
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
   assert.ok(html.indexOf('>Viewpoints</h2>') < html.indexOf('>Data</h2>'), html);
   assert.doesNotMatch(html, /A one-line summary/);
 });
@@ -218,11 +218,11 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map() }));
 
   // Only the headline fact is a row in the list — a fact that supports
   // another is not, whatever the reader has or hasn't clicked yet.
-  assert.equal(html.match(/class="sv-item sv-fact"/g)?.length, 1);
+  assert.equal(html.match(/class="sv-row sv-row--data"/g)?.length, 1);
   assert.equal(html.match(/class="sv-item sv-subfact"/g), null);
   // Every fact is addressed by its own URL. The in-page `#fact-<id>` anchors
   // are gone: one thing, one address.
