@@ -38,7 +38,7 @@ import {
   type FigureContext,
 } from '@/lib/content/figure-props';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
-import { isComponentFigure } from '@/lib/content/types';
+import { figureLabel, isComponentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { Prose } from './prose';
@@ -171,22 +171,6 @@ export function FactFigures({ fact, observations, subtleties, sections, featured
         </Viz>;
     }
   });
-}
-
-/** A library figure's name on its tab: its title, or the heading the kinds without one are drawn under. */
-function figureLabel(figure: ComponentFigure): string {
-  switch (figure.kind) {
-    case 'quoteComparison':
-      return figure.question;
-    case 'pullQuote':
-      return `Quote: ${figure.quote.speaker}`;
-    case 'claimCheck':
-      return `Claim: ${figure.claim}`;
-    case 'caveatList':
-      return figure.heading;
-    default:
-      return figure.title;
-  }
 }
 
 /** One library figure: the adapter's props into its component, with Observations as the frame's footer. */

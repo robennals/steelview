@@ -11,11 +11,9 @@ On election night in 2024, [the President said, "I'm not going to start a war. I
 
 ### The war costs far more than Americans were told
 
-[Official estimates of the war's cost have nearly doubled](#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion). [Each extra month adds billions more](#fact-human-and-financial-costs-of-the-war/monthly-cost-going-forward). Wars usually go over budget: [the Iraq war cost many times the White House's first estimate](#fact-human-and-financial-costs-of-the-war/iraq-overran-estimates). There is no reason to trust this war's estimates more.
+[Official estimates of the war's cost have nearly doubled](#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion), and [each extra month adds billions more](#fact-human-and-financial-costs-of-the-war/monthly-cost-going-forward). [The Iraq war cost many times the White House's first estimate](#fact-human-and-financial-costs-of-the-war/iraq-overran-estimates), so this war's estimates deserve no more trust.
 
-Families pay at home as well. [Prices at the pump went up by about half](#fact-oil-shipping-and-prices/pump-prices-up-by-half). [Government experts expect the war to push up other prices too](#fact-oil-shipping-and-prices/cbo-inflation-attribution).
-
-The war also weakens America's defences. [Experts say it has used up many of the missiles that shoot down attacks on US troops and allies](#fact-human-and-financial-costs-of-the-war/interceptor-stocks). Those missiles could be needed in a war that matters more.
+Families pay too: [pump prices went up by about half](#fact-oil-shipping-and-prices/pump-prices-up-by-half), and [government experts expect the war to push up other prices](#fact-oil-shipping-and-prices/cbo-inflation-attribution). [Experts say it has used up many missiles that protect US troops and allies](#fact-human-and-financial-costs-of-the-war/interceptor-stocks), which a war that matters more could need.
 
 ### Americans have not agreed to this war
 

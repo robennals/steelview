@@ -1,13 +1,18 @@
 ---
 title: Voter ID and Citizenship-Proof Rules in the US and Other Democracies
 claim: >-
-  This report compares the ID that US states ask of voters, at the polls and
-  at registration, with the rules in the other G7 democracies. Most US states
-  now ask for ID, increasingly photo ID, and laws requiring proof of
-  citizenship to register are spreading. Most G7 democracies also check ID at
-  the polls, but of the places that adopted it recently, only Northern Ireland
-  acted after documented fraud.
-claimSources: [1, 6, 7, 17, 18, 23, 25, 27, 32, 33, 37, 38, 41, 42]
+  Most US states now ask voters for ID, increasingly photo ID, and proof-of-citizenship laws are spreading; most G7 democracies also check ID, though of recent adopters only Northern Ireland acted after documented fraud.
+claimSources:
+  - 1
+  - 6
+  - 18
+  - 23
+  - 25
+  - 27
+  - 32
+  - 33
+  - 37
+  - 41
 status: well-supported
 sources:
   # 1
@@ -1219,6 +1224,114 @@ dataStillNeeded:
     why: >-
       Statistics Canada publishes only the combined category, so the burden of
       Canada's ID rule cannot be read off the series directly.
+figures:
+  - kind: series
+  - kind: series
+    id: photo-and-strict
+  - kind: comparison
+    id: us-rules-2026
+  - kind: series
+    id: dpoc-laws
+  - kind: comparison
+    id: early-voting-strict-states
+  - kind: dataTable
+    id: carter-baker
+    title: 'The Carter–Baker Commission''s ID bargain, 2005'
+    description: 'The ID proposals of the bipartisan Commission on Federal Election Reform, chaired by Jimmy Carter and James Baker, which reported in September 2005.'
+    caption: 'One row per proposal, finding or dissent'
+    columns:
+      - { key: recommendation, label: 'Recommendation', rowHeader: true }
+      - { key: said, label: 'What it said', sortable: false }
+    rows:
+      - recommendation: 'Photo ID at the polls (2.5.1)'
+        said: { value: 'States should require the REAL ID card, adapted to show citizenship, and "provide an EAC-template ID with a photo to non-drivers free of charge"', sources: [20] }
+      - recommendation: 'Proof of citizenship (2.5.2)'
+        said: { value: '"All states should use their best efforts to obtain proof of citizenship before registering voters"', sources: [20] }
+      - recommendation: 'Access'
+        said: { value: 'States should reach out "by providing more offices, including mobile ones, to register voters and provide photo IDs free of charge"', sources: [20] }
+      - recommendation: 'Its view of fraud'
+        said: { value: '"No evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election"', sources: [20] }
+      - recommendation: 'Dissent (Daschle, Overton, Yzaguirre)'
+        said: { value: 'The ID proposal was "the most troublesome recommendation", and "for some … nothing short of a modern day poll tax"', sources: [21] }
+  - kind: dataTable
+    id: g7
+    title: 'Polling-place ID in the G7 democracies'
+    description: 'What each G7 member asks of in-person voters. The table shows every member, not a chosen subset.'
+    note: 'Why this set: the G7 is the complete group of large, high-income democracies most often compared with the US, and each member''s rule can be checked against its own election law. A wider group such as the OECD''s 38 members would be better, but no neutral, fetchable source classifies all of them (see Data still needed). A dash in the Since column means the start date was not established from the sources read.'
+    caption: 'One row per country'
+    columns:
+      - { key: country, label: 'Country', rowHeader: true }
+      - { key: required, label: 'Must in-person voters show ID?', sortable: false }
+      - { key: photo, label: 'Photo?', sortable: false }
+      - { key: fallback, label: 'If a voter has no ID', sortable: false }
+      - { key: since, label: 'Since', format: text, sortable: false }
+    rows:
+      - country: 'United States'
+        required: { value: 'Depends on the state: 36 states ask, 14 and D.C. do not', sources: [1] }
+        photo: { value: 'Photo in 24 states', sources: [1] }
+        fallback: { value: 'Provisional ballot, affidavit or other check, by state', sources: [2] }
+        since: { value: 'South Carolina 1950', sources: [5] }
+      - country: 'United Kingdom'
+        required: { value: 'Yes, for UK Parliament elections and English local elections; not for Scottish or Welsh devolved and council elections', sources: [23] }
+        photo: { value: 'Yes', sources: [23] }
+        fallback: { value: 'Cannot vote in person; a free Voter Authority Certificate can be applied for in advance', sources: [23] }
+        since: { value: 'Northern Ireland 1985 (photo 2003); Great Britain 2023', sources: [23] }
+      - country: 'Canada'
+        required: { value: 'Yes', sources: [33] }
+        photo: { value: 'One government photo ID with address, or two authorised IDs', sources: [33] }
+        fallback: { value: 'Written declaration, vouched for by another elector at the same polling station', sources: [33] }
+        since: { value: '2007', sources: [32] }
+      - country: 'France'
+        required: { value: 'Yes in communes of 1,000 or more people; not in smaller communes', sources: [37] }
+        photo: { value: 'Yes; a national ID card or passport expired by under five years is accepted', sources: [37] }
+        fallback: { value: 'In small communes, the polling-station president may ask for proof "by any means"', sources: [37] }
+        since: '—'
+      - country: 'Germany'
+        required: { value: 'Only on request, especially if the voter has no polling card', sources: [38] }
+        photo: 'Not specified'
+        fallback: { value: 'A voter who cannot identify themselves on request is turned away', sources: [38] }
+        since: '—'
+      - country: 'Italy'
+        required: { value: 'Yes', sources: [41] }
+        photo: { value: 'Yes, a public-administration document with photo', sources: [41] }
+        fallback: { value: 'A poll official who knows the voter, or another known local voter, attests to identity', sources: [41] }
+        since: { value: '1957 law', sources: [41] }
+      - country: 'Japan'
+        required: { value: 'No; voters are checked against the register', sources: [42] }
+        photo: 'No'
+        fallback: { value: 'If identity cannot be confirmed, the voter must declare who they are, or cannot vote', sources: [42] }
+        since: '—'
+  - kind: dataTable
+    id: adoption-reasons
+    title: 'Northern Ireland, Britain and Canada: why they adopted ID'
+    description: 'When each place adopted voter ID, the reason it gave, and the fraud on record beforehand.'
+    caption: 'One row per place'
+    columns:
+      - { key: place, label: 'Place', rowHeader: true }
+      - { key: adopted, label: 'Adopted', sortable: false }
+      - { key: reason, label: 'Stated reason', sortable: false }
+      - { key: record, label: 'Fraud record before', sortable: false }
+    rows:
+      - place: 'Northern Ireland'
+        adopted: { value: 'ID 1985; photo 2003', sources: [23] }
+        reason: { value: 'Personation "on a planned and well organised basis" in the early 1980s', sources: [27] }
+        record: { value: '149 arrests for personation at the June 1983 general election', sources: [27] }
+      - place: 'Great Britain'
+        adopted: { value: 'Elections Act 2022; first used May 2023', sources: [23] }
+        reason: { value: 'Polling stations "had few checks in place to detect fraud" as other routes were secured; a "precautionary principle"', sources: [25] }
+        record: { value: 'Five convictions and six cautions for polling-station personation since 2016', sources: [24] }
+      - place: 'Canada'
+        adopted: { value: 'Bill C-31, Royal Assent 22 June 2007', sources: [32] }
+        reason: { value: 'No identity check at all was "a significant deficiency … that could encourage fraudulent voting practices"', sources: [32] }
+        record: { value: 'None cited in the legislative summary', sources: [32] }
+  - kind: series
+    id: gb-turnaways
+  - kind: comparison
+    id: gb-awareness
+  - kind: comparison
+    id: ni-register-2002
+  - kind: series
+    id: canada-nonvoters
 ---
 This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
 
@@ -1299,18 +1412,6 @@ Ohio and Indiana open earliest, about four weeks before Election Day, and Wiscon
 
 Mississippi and New Hampshire are strict-photo states and, with Alabama, the only three states without early in-person voting for all voters. [2](#source-voter-id-rules-in-the-us-and-abroad-2) [19](#source-voter-id-rules-in-the-us-and-abroad-19) Even where early voting exists, most strict states start later than the 27-day average across early-voting states. [19](#source-voter-id-rules-in-the-us-and-abroad-19)
 
-## The Carter–Baker Commission's ID bargain, 2005
-
-The bipartisan Commission on Federal Election Reform, chaired by Jimmy Carter and James Baker, reported in September 2005. Its ID proposals:
-
-| Recommendation | What it said |
-|---|---|
-| Photo ID at the polls (2.5.1) | States should require the REAL ID card, adapted to show citizenship, and "provide an EAC-template ID with a photo to non-drivers free of charge" [20](#source-voter-id-rules-in-the-us-and-abroad-20) |
-| Proof of citizenship (2.5.2) | "All states should use their best efforts to obtain proof of citizenship before registering voters" [20](#source-voter-id-rules-in-the-us-and-abroad-20) |
-| Access | States should reach out "by providing more offices, including mobile ones, to register voters and provide photo IDs free of charge" [20](#source-voter-id-rules-in-the-us-and-abroad-20) |
-| Its view of fraud | "No evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election" [20](#source-voter-id-rules-in-the-us-and-abroad-20) |
-| Dissent (Daschle, Overton, Yzaguirre) | The ID proposal was "the most troublesome recommendation", and "for some … nothing short of a modern day poll tax" [21](#source-voter-id-rules-in-the-us-and-abroad-21) |
-
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-carter-baker}
 
 ### The commission paired photo ID with free cards and state outreach {#voter-id-rules-in-the-us-and-abroad--carter-baker-bargain}
@@ -1320,24 +1421,6 @@ The report asked states both to require photo ID and to supply it free, with mob
 ### The commission split, and its co-chair called Georgia's 2005 law a poll tax {#voter-id-rules-in-the-us-and-abroad--carter-baker-split}
 
 Three commissioners dissented from the ID recommendation. [21](#source-voter-id-rules-in-the-us-and-abroad-21) In a September 2005 interview, Carter said Georgia's new law, which charged about $20 for a five-year card or $35 for ten years, "is a poll tax", because the commission's plan required "that the voter ID card be free of charge". [22](#source-voter-id-rules-in-the-us-and-abroad-22) Georgia now offers a free card. [3](#source-voter-id-rules-in-the-us-and-abroad-3)
-
-## Polling-place ID in the G7 democracies
-
-**Why this set.** The G7 is the complete group of large, high-income democracies most often compared with the US, and each member's rule can be checked against its own election law. The table shows every member, not a chosen subset.
-
-A wider group such as the OECD's 38 members would be better, but no neutral, fetchable source classifies all of them (see Data still needed).
-
-| Country | Must in-person voters show ID? | Photo? | If a voter has no ID | Since |
-|---|---|---|---|---|
-| United States | Depends on the state: 36 states ask, 14 and D.C. do not [1](#source-voter-id-rules-in-the-us-and-abroad-1) | Photo in 24 states [1](#source-voter-id-rules-in-the-us-and-abroad-1) | Provisional ballot, affidavit or other check, by state [2](#source-voter-id-rules-in-the-us-and-abroad-2) | South Carolina 1950 [5](#source-voter-id-rules-in-the-us-and-abroad-5) |
-| United Kingdom | Yes, for UK Parliament elections and English local elections; not for Scottish or Welsh devolved and council elections [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Yes [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Cannot vote in person; a free Voter Authority Certificate can be applied for in advance [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Northern Ireland 1985 (photo 2003); Great Britain 2023 [23](#source-voter-id-rules-in-the-us-and-abroad-23) |
-| Canada | Yes [33](#source-voter-id-rules-in-the-us-and-abroad-33) | One government photo ID with address, or two authorised IDs [33](#source-voter-id-rules-in-the-us-and-abroad-33) | Written declaration, vouched for by another elector at the same polling station [33](#source-voter-id-rules-in-the-us-and-abroad-33) | 2007 [32](#source-voter-id-rules-in-the-us-and-abroad-32) |
-| France | Yes in communes of 1,000 or more people; not in smaller communes [37](#source-voter-id-rules-in-the-us-and-abroad-37) | Yes; a national ID card or passport expired by under five years is accepted [37](#source-voter-id-rules-in-the-us-and-abroad-37) | In small communes, the polling-station president may ask for proof "by any means" [37](#source-voter-id-rules-in-the-us-and-abroad-37) | — |
-| Germany | Only on request, especially if the voter has no polling card [38](#source-voter-id-rules-in-the-us-and-abroad-38) | Not specified | A voter who cannot identify themselves on request is turned away [38](#source-voter-id-rules-in-the-us-and-abroad-38) | — |
-| Italy | Yes [41](#source-voter-id-rules-in-the-us-and-abroad-41) | Yes, a public-administration document with photo [41](#source-voter-id-rules-in-the-us-and-abroad-41) | A poll official who knows the voter, or another known local voter, attests to identity [41](#source-voter-id-rules-in-the-us-and-abroad-41) | 1957 law [41](#source-voter-id-rules-in-the-us-and-abroad-41) |
-| Japan | No; voters are checked against the register [42](#source-voter-id-rules-in-the-us-and-abroad-42) | No | If identity cannot be confirmed, the voter must declare who they are, or cannot vote [42](#source-voter-id-rules-in-the-us-and-abroad-42) | — |
-
-"—" means the start date was not established from the sources read.
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-g7}
 
@@ -1364,14 +1447,6 @@ Canada lets a voter without ID make a written declaration if another elector at 
 ### Counts of "countries requiring voter ID" depend on what counts as ID {#voter-id-rules-in-the-us-and-abroad--country-counts-depend-on-definition}
 
 A country that checks a polling card, accepts any document, asks only on request or allows vouching can be counted either way. France's rule does not apply in its smallest communes, and Germany's applies only on request. [37](#source-voter-id-rules-in-the-us-and-abroad-37) [38](#source-voter-id-rules-in-the-us-and-abroad-38) Global tallies circulating in the US debate were not traced to a source that publishes its country-by-country coding, so none is used here.
-
-## Northern Ireland, Britain and Canada: why they adopted ID
-
-| Place | Adopted | Stated reason | Fraud record before |
-|---|---|---|---|
-| Northern Ireland | ID 1985; photo 2003 [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Personation "on a planned and well organised basis" in the early 1980s [27](#source-voter-id-rules-in-the-us-and-abroad-27) | 149 arrests for personation at the June 1983 general election [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
-| Great Britain | Elections Act 2022; first used May 2023 [23](#source-voter-id-rules-in-the-us-and-abroad-23) | Polling stations "had few checks in place to detect fraud" as other routes were secured; a "precautionary principle" [25](#source-voter-id-rules-in-the-us-and-abroad-25) | Five convictions and six cautions for polling-station personation since 2016 [24](#source-voter-id-rules-in-the-us-and-abroad-24) |
-| Canada | Bill C-31, Royal Assent 22 June 2007 [32](#source-voter-id-rules-in-the-us-and-abroad-32) | No identity check at all was "a significant deficiency … that could encourage fraudulent voting practices" [32](#source-voter-id-rules-in-the-us-and-abroad-32) | None cited in the legislative summary [32](#source-voter-id-rules-in-the-us-and-abroad-32) |
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-adoption-reasons}
 

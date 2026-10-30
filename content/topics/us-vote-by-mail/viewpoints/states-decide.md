@@ -7,9 +7,9 @@ The Constitution lets each state's lawmakers set the rules for elections, and le
 
 ### The Constitution gives the President no role
 
-[The Constitution's Elections Clause names state legislatures and Congress, not the President](#fact-federal-and-state-power-over-mail-voting/elections-clause-text). So far the courts have held that line. [A court has blocked the Postal Service rule the President ordered, for the November 2026 election](#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked). [Another court ruled that the 2025 order's ballot deadline rules went beyond the President's power](#fact-federal-and-state-power-over-mail-voting/eo-14248-deadlines-enjoined).
+[The Constitution's Elections Clause names state legislatures and Congress, not the President](#fact-federal-and-state-power-over-mail-voting/elections-clause-text). So far courts have held that line. [A court has blocked the Postal Service rule he ordered, for November 2026](#fact-federal-and-state-power-over-mail-voting/usps-rule-blocked). [Another ruled that the 2025 order's deadline rules went beyond his power](#fact-federal-and-state-power-over-mail-voting/eo-14248-deadlines-enjoined).
 
-While [the Supreme Court let the President's March 2026 order go ahead](#fact-federal-and-state-power-over-mail-voting/eo-14399-stands), it did not decide that the order was lawful. [No court above the lowest level has yet ruled on that](#fact-federal-and-state-power-over-mail-voting/no-merits-ruling). So the principle should be stated clearly now.
+While [the Supreme Court let the March 2026 order go ahead](#fact-federal-and-state-power-over-mail-voting/eo-14399-stands), it did not decide the order was lawful. [No higher court has ruled on that](#fact-federal-and-state-power-over-mail-voting/no-merits-ruling). So the principle should be stated clearly now.
 
 ### States have used this power well
 
@@ -21,9 +21,9 @@ While [the Supreme Court let the President's March 2026 order go ahead](#fact-fe
 
 ### Congress has a role, but should use it sparingly
 
-[Congress has strong power over how federal elections are run](#fact-federal-and-state-power-over-mail-voting/congress-power-paramount). [The Supreme Court said Congress could set a national deadline for ballots](#fact-federal-and-state-power-over-mail-voting/watson-leaves-it-to-legislatures). [Congress already sets mail-ballot rules for military and overseas voters](#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules). That rule serves voters no single state can reach. It sets a minimum, and does not take over.
+[Congress already sets mail-ballot rules for military and overseas voters](#fact-federal-and-state-power-over-mail-voting/congress-set-uocava-rules). That rule serves voters no single state can reach. It sets a minimum, and does not take over. [Congress has strong power over federal elections](#fact-federal-and-state-power-over-mail-voting/congress-power-paramount), and [the Supreme Court said it could set a national ballot deadline](#fact-federal-and-state-power-over-mail-voting/watson-leaves-it-to-legislatures).
 
-While Congress has this power, it should hold back. [National bills from both parties have stalled in the Senate](#fact-federal-and-state-power-over-mail-voting/national-bills-stalled), and [bills now pending would push mail voting in opposite directions](#fact-federal-and-state-power-over-mail-voting/bills-on-both-sides). A national rule would swing back and forth with whichever party controls Washington.
+While Congress has this power, it should hold back. [Bills now pending would push mail voting in opposite directions](#fact-federal-and-state-power-over-mail-voting/bills-on-both-sides), so a national rule would swing back and forth with whichever party controls Washington.
 
 ### Each state's voters should decide their own rules
 

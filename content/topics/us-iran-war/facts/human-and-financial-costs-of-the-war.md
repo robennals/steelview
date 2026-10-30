@@ -2,12 +2,9 @@
 title: The War's Human and Financial Costs, with Earlier Wars for Scale, 2026
 claimSources: [1, 2, 3, 9, 11, 16, 23]
 claim: >-
-  This report sets out what the war has cost Iranians and Americans, as of
-  late October 2026. Every count puts Iranian deaths in the thousands by
-  early April, but the counters disagree sharply on how many were civilians,
-  and no independent count covers the fighting since. US deaths are a small
-  fraction of the Iraq war's; official cost estimates run to tens of billions
-  of dollars.
+  Every count puts Iranian deaths in the thousands by early April, though
+  counters disagree on how many were civilians, while US deaths are far below
+  Iraq's and official costs reach tens of billions.
 status: well-supported
 sources:
   # 1
@@ -566,6 +563,44 @@ dataStillNeeded:
     why: 'CSIS figures are estimates from budget documents; the Pentagon does not publish stocks, so how far depletion limits further fighting cannot be checked.'
   - measure: 'The war cost as a share of the defence budget'
     why: 'A cost in billions means little without the budget it comes out of; no source found states it.'
+figures:
+  - kind: "series"
+  - kind: "comparison"
+    id: "iranian-deaths-by-counter"
+  - kind: "dataTable"
+    id: "counter-methods"
+    title: "How each count of Iranian deaths works"
+    description: "What each counter covers and how it counts. Only the first two separate civilians, and their counts stop at the April ceasefire."
+    caption: "One row per counter"
+    columns:
+      - { key: "counter", label: "Counter", rowHeader: true, sortable: false }
+      - { key: "covers", label: "Covers", sortable: false }
+      - { key: "deaths", label: "Deaths", sortable: false }
+      - { key: "civilians", label: "Civilians", sortable: false }
+      - { key: "method", label: "Method", sortable: false }
+    rows:
+      - { counter: "HRANA", covers: "28 Feb – 7 Apr", deaths: "civilian, military and unclassified listed separately", civilians: { value: "1,701", sources: [1] }, method: "Incident by incident, minimum values; excludes state-media totals" }
+      - { counter: "Hengaw", covers: "28 Feb – 8 Apr", deaths: { value: "7,650", sources: [2] }, civilians: { value: "1,030", sources: [2] }, method: "Not published" }
+      - { counter: "Iranian authorities (via WHO)", covers: "28 Feb – 21 Jul", deaths: { value: "3,375", sources: [3] }, civilians: "Not split", method: "Reported by national authorities; WHO does not count" }
+      - { counter: "Iranian Red Crescent (via UN mission)", covers: "28 Feb – 3 Mar", deaths: { value: "787", sources: [7] }, civilians: "Not split", method: "Single statement" }
+      - { counter: "Airwars", covers: "40-day war; June onward", deaths: { value: "Incidents, not deaths", sources: [5] }, method: "Tracks and publishes civilian-harm incidents" }
+  - kind: "comparison"
+    id: "displacement-and-population"
+  - kind: "comparison"
+    id: "cost-estimates"
+  - kind: "comparison"
+    id: "us-deaths-earlier-wars"
+  - kind: "comparison"
+    id: "war-costs-for-scale"
+  - kind: "comparison"
+    id: "iraq-estimates-vs-appropriations"
+  - kind: "keyFigures"
+    id: "interceptors"
+    title: "US interceptor stocks, CSIS estimates"
+    description: "CSIS's estimates of US inventories on 27 July 2026, built from budget documents, not Pentagon figures."
+    figures:
+      - { value: 1000, qualifier: "fewer than", asPublished: "under 1,000", format: { unit: "count" }, label: "Patriot interceptors", period: "2026-07-27", source: 14 }
+      - { value: 250, qualifier: "about", asPublished: "about 250", format: { unit: "count" }, label: "THAAD interceptors", period: "2026-07-27", source: 14 }
 ---
 ## Observations {#human-and-financial-costs-of-the-war--observations-us-wounded}
 
@@ -645,15 +680,7 @@ Congress appropriated $815 billion for Iraq through FY2014, more than thirteen t
 
 Even the high estimate the budget director called "very, very high" was a quarter of the outcome (chart). [18](#source-human-and-financial-costs-of-the-war-18)
 
-## How each count of Iranian deaths works {#human-and-financial-costs-of-the-war--counter-methods}
-
-| Counter | Covers | Deaths | Civilians | Method |
-| --- | --- | --- | --- | --- |
-| HRANA | 28 Feb – 7 Apr | civilian, military and unclassified listed separately | 1,701 [1](#source-human-and-financial-costs-of-the-war-1) | Incident by incident, minimum values; excludes state-media totals |
-| Hengaw | 28 Feb – 8 Apr | 7,650 [2](#source-human-and-financial-costs-of-the-war-2) | 1,030 [2](#source-human-and-financial-costs-of-the-war-2) | Not published |
-| Iranian authorities (via WHO) | 28 Feb – 21 Jul | 3,375 [3](#source-human-and-financial-costs-of-the-war-3) | Not split | Reported by national authorities; WHO does not count |
-| Iranian Red Crescent (via UN mission) | 28 Feb – 3 Mar | 787 [7](#source-human-and-financial-costs-of-the-war-7) | Not split | Single statement |
-| Airwars | 40-day war; June onward | Incidents, not deaths [5](#source-human-and-financial-costs-of-the-war-5) | — | Tracks and publishes civilian-harm incidents |
+## Observations {#human-and-financial-costs-of-the-war--observations-counter-methods}
 
 ### No count covers the fighting after April except the government's {#human-and-financial-costs-of-the-war--no-count-after-april}
 
@@ -665,12 +692,7 @@ Airwars tracked 267 civilian-harm incidents before the ceasefire and 34 more aft
 
 Airwars' one-month report of at least 1,443 civilians killed is HRANA's count, not a separate one. [6](#source-human-and-financial-costs-of-the-war-6)
 
-## US interceptor stocks, CSIS estimates {#human-and-financial-costs-of-the-war--interceptors}
-
-| Interceptor | CSIS estimate of inventory, 27 July 2026 |
-| --- | --- |
-| Patriot | "under 1,000" [14](#source-human-and-financial-costs-of-the-war-14) |
-| THAAD | "about 250" [14](#source-human-and-financial-costs-of-the-war-14) |
+## Observations {#human-and-financial-costs-of-the-war--observations-interceptors}
 
 ### CSIS estimates interceptor stocks have been drawn down {#human-and-financial-costs-of-the-war--interceptor-stocks}
 

@@ -17,15 +17,16 @@ import { SlideChart } from '@/components/topic/slide-chart';
 export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: string): Promise<ReactNode[]> {
   if (!(await listTopicSlugs()).includes(slug)) return [];
   const topic = await loadTopic(slug);
+  const page = { slug, asOf: topic.lastUpdated, facts: topic.facts };
   if (kind === 'viewpoint') {
     const viewpoint = topic.viewpoints.find(v => v.id === id);
     if (!viewpoint) return [];
-    return viewpointWalkthrough(topic, viewpoint).steps.map((step, i) => step.chart ? <SlideChart key={i} slide={step.chart} fit="tall" /> : null);
+    return viewpointWalkthrough(topic, viewpoint).steps.map((step, i) => step.chart ? <SlideChart key={i} slide={step.chart} fit="tall" page={page} /> : null);
   }
   if (kind === 'data') {
     const fact = topic.facts.find(f => f.id === id);
     if (!fact) return [];
-    return factSlides(slug, fact).map((slide, i) => <SlideChart key={i} slide={slide} fit="tall" />);
+    return factSlides(slug, fact).map((slide, i) => <SlideChart key={i} slide={slide} fit="tall" page={page} />);
   }
   return [];
 }

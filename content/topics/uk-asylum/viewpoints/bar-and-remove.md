@@ -7,7 +7,7 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 ### People who cross the Channel have already passed through other countries
 
-[More than two hundred thousand people have crossed the Channel in small boats since 2018](#fact-channel-crossings-and-irregular-arrivals/crossings-since-2018). [Almost none could reach Britain without passing through another country first](#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country). [Since 2022, British law has expected refugees to seek safety in the first safe country they reach](#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country). The Refugee Convention, the United Nations treaty on refugees, [forbids sending a refugee back to danger, but does not by itself require Britain to decide every claim](#fact-asylum-law-and-the-echr/article-31-is-about-penalties).
+[Almost none who cross could reach Britain without passing through another country first](#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country). [Since 2022, British law has expected refugees to seek safety in the first safe country](#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country). [More than two hundred thousand have crossed in small boats since 2018](#fact-channel-crossings-and-irregular-arrivals/crossings-since-2018). The Refugee Convention, the United Nations treaty on refugees, [forbids sending a refugee back to danger, but does not by itself require Britain to decide every claim](#fact-asylum-law-and-the-echr/article-31-is-about-penalties).
 
 ### A refusal today rarely ends with the person leaving
 
@@ -15,17 +15,17 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 ### Britain should protect refugees it chooses, not whoever reaches a beach
 
-While [most small-boat arrivals who got a decision were granted](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), Britain can protect refugees through routes it controls. A rule that rewards crossing keeps the boats coming. [Australia's boat arrivals fell to almost none after it began turning boats back and barring boat arrivals from ever settling](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks).
+A rule that rewards crossing keeps the boats coming. [Australia's boat arrivals fell to almost none after it began turning boats back and barring boat arrivals from ever settling](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks). While [most small-boat arrivals who got a decision were granted](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), Britain can protect refugees through routes it controls.
 
 ### Changing the law inside the ECHR has been tried, and it did not last
 
-The European Convention on Human Rights (ECHR) is a treaty enforced by a European court. [After a 2014 law, foreign offenders' human-rights appeal wins fell by three-quarters, then climbed back within three years](#fact-removals-and-what-stops-them/article-8-reforms-cut-then-faded). Lord Wolfson, advising the Conservative leader, [judged that new limits inside the ECHR would probably fail in court, and that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary).
+[After a 2014 law, foreign offenders' human-rights appeal wins fell by three-quarters, then climbed back within three years](#fact-removals-and-what-stops-them/article-8-reforms-cut-then-faded). Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court, and that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary).
 
 While [no one has counted how many removals the ECHR blocks](#fact-removals-and-what-stops-them/echr-share-not-measured), [the counts that exist miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/echr-hidden-in-other-rows). So they understate it.
 
 ### Voters, not foreign judges, should decide who is removed
 
-Under [democratic consent](#principle-democratic-consent-over-membership), removal rules belong to a Parliament that voters can sack. While [more people have backed staying in the ECHR than leaving since 2016](#fact-public-opinion-on-asylum-and-the-echr/remain-has-led-since-2016), [a majority in one poll backed promptly deporting illegal migrants](#fact-public-opinion-on-asylum-and-the-echr/wording-moves-the-answer). [The EU could end police cooperation if Britain left, but that would be its own choice](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation), and could be negotiated.
+Under [democratic consent](#principle-democratic-consent-over-membership), removal rules belong to a Parliament that voters can sack. While [more people have backed staying in the ECHR than leaving](#fact-public-opinion-on-asylum-and-the-echr/chart-removals) [since 2016](#fact-public-opinion-on-asylum-and-the-echr/remain-has-led-since-2016), [a majority in one poll backed promptly deporting illegal migrants](#fact-public-opinion-on-asylum-and-the-echr/wording-moves-the-answer). [The EU could end police cooperation if Britain left, but that would be its own choice](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation), and could be negotiated.
 
 ### Britain should bar the claims, remove those who come, and leave the ECHR
 

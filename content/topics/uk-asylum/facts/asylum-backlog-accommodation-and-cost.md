@@ -12,20 +12,12 @@ derivedFigures:
     denominator: 17919340
     decimals: 0
 claimSources:
-  - 1
   - 2
   - 3
-  - 4
   - 17
   - 22
 claim: >-
-  At the end of June 2026, 40,168 people were waiting for an initial decision
-  on an asylum claim, 77% below the June 2023 peak of 175,457, and 16,021 asylum
-  seekers were in hotels, 71% below the September 2023 peak. Over the same
-  years the queue moved to the appeals stage: asylum and protection appeals
-  open at the First-tier Tribunal rose from 6,319 in June 2022 to 90,341 in
-  June 2026. Home Office spending on asylum support was about £4.0 billion in
-  2024-25, down from £4.7 billion in 2023-24.
+  The queue for first asylum decisions and hotel use have fallen far below their 2023 peaks, but the queue has moved to appeals, and asylum support, down from its peak, still costs billions a year.
 status: well-supported
 sources:
   - stance: supports
@@ -1558,6 +1550,48 @@ dataStillNeeded:
     why: >-
       Without it there is no way to tell whether UK asylum support is
       expensive per person or only large in total.
+figures:
+  - kind: series
+  - kind: series
+    id: support-by-accommodation
+  - kind: series
+    id: hotel-breakdown
+  - kind: comparison
+    id: support-spending
+  - kind: comparison
+    id: asylum-budget-line
+  - kind: comparison
+    id: system-costs-2024-25
+  - kind: comparison
+    id: hotels-share-of-people-and-cost
+  - kind: dataTable
+    id: large-sites
+    title: Large sites used or proposed for asylum accommodation, 2026
+    description: Former military and other large sites used, or proposed, for asylum accommodation, as described in the sources cited.
+    caption: One row per site
+    columns:
+      - { key: site, label: Site, rowHeader: true }
+      - { key: status, label: Status in the sources, sortable: false }
+      - { key: people, label: People or capacity, sortable: false }
+    rows:
+      - site: Wethersfield, Essex (former RAF base)
+        status: { value: In use; government seeking to extend beyond 2027, sources: [21, 40] }
+        people: { value: '744 people, June 2026', sources: [21] }
+      - site: Crowborough Training Camp, East Sussex
+        status: { value: First arrivals January 2026; extension sought until 2030, sources: [44, 40] }
+        people: { value: '418 people, June 2026; full capacity 540', sources: [21, 44] }
+      - site: Napier Barracks, Kent
+        status: { value: In use as of March 2025 (later status not checked), sources: [38] }
+        people: Not given
+      - site: 'MOD Bicester (Site A), between Piddington and Upper Arncott, Oxfordshire'
+        status: { value: 'Planning permission sought; would be used for at least 10 years', sources: [39, 45] }
+        people: { value: 'Average of 1,200 per new site, by the council''s account', sources: [43] }
+      - site: MOD Barnham, Suffolk
+        status: { value: Planning permission sought, sources: [39] }
+        people: Not given per site
+      - site: MOD Linton-on-Ouse, North Yorkshire
+        status: { value: Discussions under way, sources: [39] }
+        people: Not given per site
 ---
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-queue}
 
@@ -1652,19 +1686,6 @@ The Home Office estimated the accommodation contracts at £4.5 billion over ten 
 ### The shares date from 2024 {#asylum-backlog-accommodation-and-cost--hotel-shares-date-from-2024}
 
 The 35% and 76% describe late 2024, when far more people were in hotels than in June 2026. The NAO has not published an updated split, and no source here gives a current cost per night for hotels against dispersal housing or large sites. [33](#source-asylum-backlog-accommodation-and-cost-33)
-
-## Large sites {#asylum-backlog-accommodation-and-cost--large-sites}
-
-Former military and other large sites used, or proposed, for asylum accommodation, as described in the sources cited.
-
-| Site | Status in the sources | People or capacity | Sources |
-| --- | --- | --- | --- |
-| Wethersfield, Essex (former RAF base) | In use; government seeking to extend beyond 2027 | 744 people, June 2026 | [21](#source-asylum-backlog-accommodation-and-cost-21) [40](#source-asylum-backlog-accommodation-and-cost-40) |
-| Crowborough Training Camp, East Sussex | First arrivals January 2026; extension sought until 2030 | 418 people, June 2026; full capacity 540 | [21](#source-asylum-backlog-accommodation-and-cost-21) [44](#source-asylum-backlog-accommodation-and-cost-44) [40](#source-asylum-backlog-accommodation-and-cost-40) |
-| Napier Barracks, Kent | In use as of March 2025 (later status not checked) | Not given | [38](#source-asylum-backlog-accommodation-and-cost-38) |
-| MOD Bicester (Site A), between Piddington and Upper Arncott, Oxfordshire | Planning permission sought; would be used for at least 10 years | Average of 1,200 per new site, by the council's account | [39](#source-asylum-backlog-accommodation-and-cost-39) [43](#source-asylum-backlog-accommodation-and-cost-43) [45](#source-asylum-backlog-accommodation-and-cost-45) |
-| MOD Barnham, Suffolk | Planning permission sought | Not given per site | [39](#source-asylum-backlog-accommodation-and-cost-39) |
-| MOD Linton-on-Ouse, North Yorkshire | Discussions under way | Not given per site | [39](#source-asylum-backlog-accommodation-and-cost-39) |
 
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-large-sites}
 

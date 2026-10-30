@@ -11,15 +11,15 @@ The secret ballot was brought in to stop vote buying. Before it, [a vote buyer c
 
 ### A ballot filled in at home is not secret in the same way
 
-A kitchen table has no booth. [In the best national survey, nearly a quarter of mail voters had someone else in the room](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone). [Mail voters were also more likely to doubt that their vote was secret](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone). Another poll gives higher figures, but [it is a weak measure, because it counts lawful help from family as filling in someone's ballot](#fact-secret-ballot-and-postal-voting-abroad/rasmussen-heartland-weak-measure).
+A kitchen table has no booth. [In the best national survey, nearly a quarter of mail voters had someone else in the room](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone). [Mail voters were also more likely to doubt that their vote was secret](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone).
 
 While Germany's top court upheld postal voting, [it said postal voting makes it harder to check that votes are cast freely](#fact-secret-ballot-and-postal-voting-abroad/german-court-reduced-control). [Honest elections must also be seen to be honest](#principle-verifiably-honest-elections). That needs a vote that is both free and seen to be free.
 
 ### Most elections overturned for fraud involved mail ballots
 
-[Most elections thrown out for fraud in the Heritage Foundation's list involved absentee ballots](#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee). [They include a 2018 race for Congress in North Carolina, and races in East Chicago and Bridgeport](#fact-absentee-fraud-and-manipulation-of-the-count/absentee-schemes-voided-elections). A bipartisan commission led by Jimmy Carter and James Baker called absentee ballots ["the largest source of potential voter fraud"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source).
+[Most elections thrown out for fraud in the Heritage Foundation's list involved absentee ballots](#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee). A bipartisan commission called them ["the largest source of potential voter fraud"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source).
 
-[Each of these cases was local, caught and rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun), and [they are few next to the tens of millions of mail ballots cast](#fact-absentee-fraud-and-manipulation-of-the-count/few-cases-against-ballots-cast). While that is true, [the fraud that gets caught is only the part we can see](#fact-absentee-fraud-and-manipulation-of-the-count/detected-fraud-is-a-floor). Pressure at home goes unreported. Checks can also miss a signature that is not the voter's. [In Cobb County, Georgia, an envelope signed by the voter's spouse passed the signature check](#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed). No one knows how much gets through, which is a reason for caution, not comfort.
+[These cases were local, caught and rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun), and [few against tens of millions of mail ballots](#fact-absentee-fraud-and-manipulation-of-the-count/few-cases-against-ballots-cast). While that is true, [caught fraud is only the part we can see](#fact-absentee-fraud-and-manipulation-of-the-count/detected-fraud-is-a-floor). [In Cobb County, Georgia, an envelope signed by a spouse passed](#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed). No one knows how much gets through, which calls for caution, not comfort.
 
 ### Most democracies do not mail ballots to everyone
 
@@ -27,8 +27,8 @@ While Germany's top court upheld postal voting, [it said postal voting makes it 
 
 ### Mailing everyone a ballot adds little, and costs trust
 
-[Sending every voter a ballot raised turnout by only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly). [Letting anyone vote by mail mostly changed how people voted, not whether they voted](#fact-mail-voting-use-and-effects/eligibility-shifted-method). Meanwhile, [voters trust the mail count less than the in-person count](#fact-confidence-and-disputed-results/mail-below-in-person), and [Republicans' trust in it has stayed low](#fact-confidence-and-disputed-results/mail-confidence-by-party).
+[Sending every voter a ballot raised turnout only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly). [Voters trust the mail count less than the in-person count](#fact-confidence-and-disputed-results/mail-below-in-person).
 
-[Trust in the count mostly depends on which side wins](#fact-confidence-and-disputed-results/confidence-follows-power). While no rule can fix that alone, [results the losers can accept](#principle-results-the-losers-can-accept) are easier to build on a way of voting both sides trust.
+[Trust mostly depends on which side wins](#fact-confidence-and-disputed-results/confidence-follows-power). While no rule can fix that alone, [results the losers can accept](#principle-results-the-losers-can-accept) are easier to build on voting both sides trust.
 
-People who need a mail ballot should get one easily. [Voters with disabilities rely on mail more](#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more), so the rules for who qualifies must be generous. The right system is a polling booth by default, with weeks of early voting. Mail ballots should go to anyone with a reason, and no one else should be allowed to collect them.
+Polling booths should be the default, with weeks of early voting. [Voters with disabilities rely on mail ballots more](#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more), so anyone with a reason should get one, and no one else.

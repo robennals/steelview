@@ -1,13 +1,8 @@
 ---
 title: 'Mail Ballot Rejection, Signature Checks and Curing, 2012–2026'
 claim: >-
-  This report covers how many returned mail ballots are rejected, why, and
-  how states check signatures and let voters fix problems.
-  About one returned ballot in a hundred is rejected in a general election,
-  and signature problems are now the largest listed reason. Rates differ
-  widely by state, county and voter group; Washington's auditor found no
-  evidence of bias in individual decisions but could not explain the gaps.
-claimSources: [1, 2, 4, 19, 21, 24]
+  About one returned mail ballot in a hundred is rejected in a general election, with signature problems now the largest listed reason, and rates differ widely by state, county and voter group.
+claimSources: [1, 2, 4, 19, 21]
 status: well-supported
 derivedFigures:
   - method: ratio-percent
@@ -1124,6 +1119,177 @@ dataStillNeeded:
       Those reports could not be retrieved, so the chart starts in 2012 and
       cannot show whether rejection rates were higher or lower before mail
       voting grew.
+figures:
+  - kind: series
+  - kind: series
+    id: texas-georgia
+  - kind: comparison
+    id: reasons-2024
+  - kind: comparison
+    id: states-2024
+  - kind: comparison
+    id: washington-race
+  - kind: comparison
+    id: washington-age
+  - kind: comparison
+    id: washington-counties
+  - kind: comparison
+    id: cure-2024
+  - kind: dataTable
+    id: state-rules
+    title: 'How states check and cure mail ballots, October 2026'
+    description: 'The checks a returned ballot can face, and where each applies. Some states use more than one.'
+    caption: One row per check
+    columns:
+      - key: check
+        label: Check on a returned ballot
+        rowHeader: true
+      - key: where
+        label: Where it applies
+        sortable: false
+    rows:
+      - check: Signature compared with the one on file
+        where:
+          value: 32 states and Puerto Rico
+          sources:
+            - 28
+      - check: 'Envelope must be signed, but the signature is not compared'
+        where:
+          value: 'Connecticut, Delaware, Georgia, Maryland, New Mexico, Pennsylvania, Vermont, Virginia, Wyoming, DC and the US Virgin Islands'
+          sources:
+            - 28
+      - check: ID or Social Security number on the envelope
+        where:
+          value: 'Georgia, Minnesota, New Mexico, Ohio, Texas, Virginia; Utah from 2029'
+          sources:
+            - 28
+      - check: Witness signature
+        where:
+          value: 'Alabama, Alaska, Arkansas, Louisiana, Minnesota, North Carolina, South Carolina, Wisconsin'
+          sources:
+            - 28
+      - check: Notarised envelope
+        where:
+          value: 'Mississippi, Missouri, Oklahoma'
+          sources:
+            - 28
+      - check: Statewide duty to tell voters of a missing or mismatched signature and let them fix it
+        where:
+          value: 35 states and DC
+          sources:
+            - 30
+  - kind: dataTable
+    id: washington-recheck
+    title: 'Washington''s re-check of its counties'' signature decisions, 2020'
+    description: What the state auditor's review found when it repeated the counties' work.
+    caption: One row per measure
+    columns:
+      - key: measure
+        label: Measure
+        rowHeader: true
+      - key: finding
+        label: Finding
+        sortable: false
+    rows:
+      - measure: How the audit describes matching
+        finding:
+          value: '"inherently subjective"; "even experienced reviewers can come to different conclusions"'
+          sources:
+            - 23
+      - measure: Ballots re-checked
+        finding:
+          value: 'A random sample of more than 7,200'
+          sources:
+            - 22
+      - measure: Method
+        finding:
+          value: 'Software screening, then auditors trained by the State Patrol, then two state reviewers'
+          sources:
+            - 22
+      - measure: Agreement with counties
+        finding:
+          value: More than 98 percent of signatures reviewed
+          sources:
+            - 22
+      - measure: Decisions estimated to be appropriate
+        finding:
+          value: '98.7 percent, projected to all ballots'
+          sources:
+            - 22
+      - measure: Evidence of bias in decisions
+        finding:
+          value: None found
+          sources:
+            - 24
+  - kind: dataTable
+    id: courts
+    title: Court rulings on rejecting ballots for a signature mismatch
+    description: 'What courts have held about signature rejections, notice and the chance to fix a ballot.'
+    caption: One row per ruling or opinion
+    columns:
+      - key: court
+        label: Court and date
+        rowHeader: true
+      - key: case
+        label: Case
+        sortable: false
+      - key: held
+        label: What the court held or said
+        sortable: false
+    rows:
+      - court: 'US District Court, New Hampshire, 14 Aug 2018'
+        case: Saucedo v. Gardner
+        held:
+          value: 'The process was "fundamentally flawed": no notice, no handwriting training, no standards, no appeal. Rejecting without notice violated due process.'
+          sources:
+            - 32
+      - court: 'Fifth Circuit, 19 Oct 2020'
+        case: Richardson v. Texas Secretary of State
+        held:
+          value: 'Stayed an order requiring notice and a chance to cure, quoting "the potential and reality of fraud is much greater in the mail-in ballot context"; a stay ruling, not a final one.'
+          sources:
+            - 33
+      - court: 'Fifth Circuit, same day (concurring)'
+        case: 'Richardson, Higginbotham, J.'
+        held:
+          value: 'About 5,000 Texas ballots were rejected for "perceived signature mismatches" in 2016 and 2018.'
+          sources:
+            - 34
+      - court: 'Pennsylvania Supreme Court, 23 Oct 2020'
+        case: 'In re November 3, 2020 General Election'
+        held:
+          value: The Election Code "does not authorize or require" county boards to reject ballots on a signature comparison.
+          sources:
+            - 35
+      - court: 'Arizona trial court, May 2023'
+        case: Lake v. Hobbs
+        held:
+          value: The losing candidate for governor failed to prove that Maricopa County had not verified signatures.
+          sources:
+            - 36
+  - kind: dataTable
+    id: cobb-audit
+    title: 'Cobb County, Georgia: the state''s 2020 signature audit'
+    description: What state investigators found when they re-examined a sample of the county's accepted absentee envelopes.
+    sources:
+      - 37
+    caption: One row per finding
+    columns:
+      - key: measure
+        label: Measure
+        rowHeader: true
+      - key: finding
+        label: Finding
+        sortable: false
+    rows:
+      - measure: Envelopes re-examined
+        finding: '15,118, about a tenth of the county''s absentee ballots'
+      - measure: Which envelopes
+        finding: Only ballots already accepted
+      - measure: Fraudulent ballots found
+        finding: '"no fraudulent absentee ballots"'
+      - measure: Envelopes that should have been flagged
+        finding: 'Two, one "mistakenly signed by the elector''s spouse"; in both cases the voter had filled in the ballot'
 ---
 Figures are for November general elections, from the federal Election Administration and Voting Survey (EAVS) unless stated. A rejected ballot is a returned ballot that was not counted because it failed a check: it arrived late, was unsigned, its signature did not match, or similar.
 
@@ -1261,17 +1427,6 @@ The EAC counted 43 states that let voters cure in 2024, but twelve of them could
 
 In 2024 Texas sent 5.8% of its mail ballots into curing, against 1.5% nationally. [14](#source-mail-ballot-rejection-and-signature-checks-14) [3](#source-mail-ballot-rejection-and-signature-checks-3)
 
-## How states check and cure mail ballots, October 2026
-
-| Check on a returned ballot | Where it applies |
-| --- | --- |
-| Signature compared with the one on file | 32 states and Puerto Rico [28](#source-mail-ballot-rejection-and-signature-checks-28) |
-| Envelope must be signed, but the signature is not compared | Connecticut, Delaware, Georgia, Maryland, New Mexico, Pennsylvania, Vermont, Virginia, Wyoming, DC and the US Virgin Islands [28](#source-mail-ballot-rejection-and-signature-checks-28) |
-| ID or Social Security number on the envelope | Georgia, Minnesota, New Mexico, Ohio, Texas, Virginia; Utah from 2029 [28](#source-mail-ballot-rejection-and-signature-checks-28) |
-| Witness signature | Alabama, Alaska, Arkansas, Louisiana, Minnesota, North Carolina, South Carolina, Wisconsin [28](#source-mail-ballot-rejection-and-signature-checks-28) |
-| Notarised envelope | Mississippi, Missouri, Oklahoma [28](#source-mail-ballot-rejection-and-signature-checks-28) |
-| Statewide duty to tell voters of a missing or mismatched signature and let them fix it | 35 states and DC [30](#source-mail-ballot-rejection-and-signature-checks-30) |
-
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-state-rules}
 
 ### States check mail ballots in very different ways {#mail-ballot-rejection-and-signature-checks--checks-differ-by-state}
@@ -1286,16 +1441,6 @@ Washington requires everyone who checks signatures to be trained on statewide st
 
 Thirty-five states and DC require officials to tell voters of a missing signature or a discrepancy and give them a chance to correct it. [30](#source-mail-ballot-rejection-and-signature-checks-30) The count includes states that do not compare signatures, which can only be curing missing ones.
 
-## Washington's re-check of its counties' signature decisions, 2020
-
-| Measure | Finding |
-| --- | --- |
-| Ballots re-checked | A random sample of more than 7,200 [22](#source-mail-ballot-rejection-and-signature-checks-22) |
-| Method | Software screening, then auditors trained by the State Patrol, then two state reviewers [22](#source-mail-ballot-rejection-and-signature-checks-22) |
-| Agreement with counties | More than 98 percent of signatures reviewed [22](#source-mail-ballot-rejection-and-signature-checks-22) |
-| Decisions estimated to be appropriate | 98.7 percent, projected to all ballots [22](#source-mail-ballot-rejection-and-signature-checks-22) |
-| Evidence of bias in decisions | None found [24](#source-mail-ballot-rejection-and-signature-checks-24) |
-
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-washington-recheck}
 
 ### The auditor agreed with almost all county decisions {#mail-ballot-rejection-and-signature-checks--auditor-agreed-with-counties}
@@ -1309,16 +1454,6 @@ In the auditor's words: "We found no evidence of bias in those decisions. While 
 ### Trained reviewers, the auditors included, disagreed about matches {#mail-ballot-rejection-and-signature-checks--reviewers-disagree}
 
 The audit calls matching "inherently subjective". It found that "even experienced reviewers can come to different conclusions", that its own team disagreed on many signatures, and that counties read the state's criteria differently. [23](#source-mail-ballot-rejection-and-signature-checks-23)
-
-## Court rulings on rejecting ballots for a signature mismatch
-
-| Court and date | Case | What the court held or said |
-| --- | --- | --- |
-| US District Court, New Hampshire, 14 Aug 2018 | *Saucedo v. Gardner* | The process was "fundamentally flawed": no notice, no handwriting training, no standards, no appeal. Rejecting without notice violated due process. [32](#source-mail-ballot-rejection-and-signature-checks-32) |
-| Fifth Circuit, 19 Oct 2020 | *Richardson v. Texas Secretary of State* | Stayed an order requiring notice and a chance to cure, quoting "the potential and reality of fraud is much greater in the mail-in ballot context"; a stay ruling, not a final one. [33](#source-mail-ballot-rejection-and-signature-checks-33) |
-| Fifth Circuit, same day (concurring) | *Richardson*, Higginbotham, J. | About 5,000 Texas ballots were rejected for "perceived signature mismatches" in 2016 and 2018. [34](#source-mail-ballot-rejection-and-signature-checks-34) |
-| Pennsylvania Supreme Court, 23 Oct 2020 | *In re November 3, 2020 General Election* | The Election Code "does not authorize or require" county boards to reject ballots on a signature comparison. [35](#source-mail-ballot-rejection-and-signature-checks-35) |
-| Arizona trial court, May 2023 | *Lake v. Hobbs* | The losing candidate for governor failed to prove that Maricopa County had not verified signatures. [36](#source-mail-ballot-rejection-and-signature-checks-36) |
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-courts}
 

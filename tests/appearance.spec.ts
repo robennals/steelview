@@ -26,12 +26,11 @@ test('a fact page renders at phone width without horizontal overflow', async ({ 
   expect(overflows).toBe(false);
 });
 
-// Depends on authored us-voter-id content: the fact
-// `federal-and-state-power-over-voting-rules` has a four-column markdown
-// table of federal laws under its "Federal voting laws and bills" heading.
+// Depends on authored uk-immigration content: the fact
+// `crime-terrorism-and-group-exploitation` has a seven-column markdown table.
 test('a wide prose table scrolls in its own box, not the page, and its headers do not run together', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/topics/us-voter-id/facts/federal-and-state-power-over-voting-rules');
+  await page.goto('/topics/uk-immigration/facts/crime-terrorism-and-group-exploitation');
   const overflows = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   );

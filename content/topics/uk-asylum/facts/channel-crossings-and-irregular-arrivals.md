@@ -1,20 +1,12 @@
 ---
 title: Channel Crossings and Irregular Arrivals
 claim: >-
-  About 193,000 people were detected crossing the Channel to the UK in small boats
-  from 2018 to 2025, peaking at 45,774 in 2022, and small boats have been the main
-  detected illegal route since 2020. Crossings fell sharply in 2026 — 47% below the
-  same point of 2025 by 9 September — while irregular crossings into the EU fell by
-  almost a third; days with good crossing weather did not fall in step, and no published
-  source separates the effect of UK and French policy from the wider European fall.
+  Small boats have been the main detected illegal route since 2020, and crossings fell sharply in 2026 during a wider European fall, with no source separating the effect of UK and French policy.
 claimSources:
-- 1
-- 2
-- 6
-- 3
-- 19
-- 24
-- 5
+  - 6
+  - 3
+  - 19
+  - 5
 status: well-supported
 sources:
 - stance: supports

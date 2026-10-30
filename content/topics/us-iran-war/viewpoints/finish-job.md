@@ -27,6 +27,6 @@ While [research is split on whether backing down makes enemies bolder](#fact-out
 
 ### The war's costs are a reason to set an end point, not to quit early
 
-While [researchers said strikes are less likely to work on Iran than in past cases](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran), that calls for limited goals, not for quitting. And while [most Americans disapprove of the war](#fact-decisions-law-and-diplomacy/majority-disapproves), clear goals would show them when it will end. [Both sides kept firing during the ceasefire](#fact-decisions-law-and-diplomacy/both-sides-fired), which shows that a pause is not the same as an end.
+[Both sides fired during the ceasefire](#fact-decisions-law-and-diplomacy/both-sides-fired), so a pause is not an end. While [researchers said strikes are less likely to work on Iran than before](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran), that calls for limited goals, not quitting. While [most Americans disapprove](#fact-decisions-law-and-diplomacy/majority-disapproves), clear goals would show them when it will end.
 
-The war should end with inspectors on the ground and nothing left to find. That could come by force, or by a deal Iran accepts under pressure. Stopping short leaves the hardest part for the next president.
+The war should end with inspectors in place and nothing left to find, by force or a deal Iran accepts under pressure. Stopping short leaves the hardest part for the next president.

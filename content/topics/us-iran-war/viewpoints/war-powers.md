@@ -7,7 +7,7 @@ Under the Constitution, a President cannot take the country to war alone. Congre
 
 ### Only Congress can declare war, and it never did
 
-[The Constitution gives Congress, not the President, the power to declare war, and Congress has not approved this one](#fact-decisions-law-and-diplomacy/declarations-and-instances). The rule exists so that [the people, through their representatives, decide](#principle-democratic-consent-over-membership) whether Americans are sent to kill and die.
+[The Constitution gives Congress, not the President, the power to declare war](#fact-decisions-law-and-diplomacy/chart-constitution), [and Congress has not approved this one](#fact-decisions-law-and-diplomacy/declarations-and-instances). The rule exists so that [the people, through their representatives, decide](#principle-democratic-consent-over-membership) whether Americans are sent to kill and die.
 
 ### Congress has voted to end the war
 
@@ -15,11 +15,11 @@ Under the Constitution, a President cannot take the country to war alone. Congre
 
 ### The President kept the war going by changing what he called it
 
-[The law says a President must stop fighting a war that Congress has not approved within 60 days](#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock). The White House got around this. [It told Congress the fighting had ended, while the blockade went on and new strikes followed](#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes). [It then called each new strike a separate action](#fact-decisions-law-and-diplomacy/separate-actions), which restarts the 60-day clock every time.
+[The White House told Congress the fighting had ended, while the blockade went on and new strikes followed](#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes). That got around [the law, which says a President must stop fighting a war that Congress has not approved within 60 days](#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock). [It then called each new strike a separate action](#fact-decisions-law-and-diplomacy/separate-actions), which restarts the 60-day clock every time.
 
 ### Presidents have often ignored this rule, so it must be enforced now
 
-While [presidents have used force abroad hundreds of times without a declaration of war](#fact-decisions-law-and-diplomacy/declarations-and-instances), that does not make it lawful. [Presidents have almost always avoided formally starting the 60-day clock](#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock). [Every attempt since 2011 to force an end to a military action has failed](#fact-decisions-law-and-diplomacy/binding-attempts-failed).
+[Presidents have almost always avoided formally starting the 60-day clock](#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock). While [they have used force abroad hundreds of times without a declaration of war](#fact-decisions-law-and-diplomacy/declarations-and-instances), that does not make it lawful. [Every attempt since 2011 to force an end to a military action has failed](#fact-decisions-law-and-diplomacy/binding-attempts-failed).
 
 A rule still counts when it is often broken. [Rules should mean what they say](#principle-rules-must-mean-what-they-say), and years of ignoring this one are a reason to enforce it now.
 

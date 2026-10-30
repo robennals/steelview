@@ -4,22 +4,10 @@ claimSources:
   - 3
   - 5
   - 14
-  - 22
-  - 24
-  - 26
   - 30
   - 37
 claim: >-
-  Since 2021 most people offered a UK safe and legal (humanitarian) route have
-  come through two country-specific schemes: Ukraine (290,044 out-of-country
-  visas since March 2022) and Hong Kong BN(O) (187,552 since January 2021).
-  Almost no Ukrainians or Hong Kongers have crossed the Channel by small boat.
-  For the main small-boat nationalities in the year to June 2026 (Eritreans,
-  Sudanese, Somalis and Iranians), the largest route open to them was refugee
-  family reunion, which peaked at 19,258 grants in 2024 and was paused on 4
-  September 2025. The UK Resettlement Scheme had no quota for new referrals in
-  2025/26 and reopened on 28 September 2026, with arrivals expected "in the
-  hundreds at first".
+  Most people offered a UK safe route since 2021 came from Ukraine and Hong Kong, whose people almost never cross by boat, while family reunion, the largest route for most main boat nationalities, is paused.
 status: well-supported
 sources:
   - stance: supports
@@ -1089,6 +1077,33 @@ dataStillNeeded:
       Grants show who was let in, not how many people of each nationality
       wanted a route and had none. Without demand, the chart cannot separate
       "had no route" from "did not need one".
+figures:
+  - kind: series
+  - kind: series
+    id: boats-and-routes
+  - kind: comparison
+    id: routes-by-nationality
+  - kind: comparison
+    id: routes-by-nationality-latest
+  - kind: timeline
+    id: reopening
+    title: Route openings, closures and pauses, 2021–2027
+    description: When each safe and legal route opened, closed or was paused, and what is planned next.
+    sources: [6, 21, 26]
+    categories:
+      - { id: opened, label: Opened or reopened }
+      - { id: closed, label: Closed or paused }
+      - { id: planned, label: Planned }
+    events:
+      - { date: '2021-01-31', title: BN(O) route opens for Hong Kong BN(O) passport holders, category: opened, source: 8 }
+      - { date: '2021-02', title: UK Resettlement Scheme starts, category: opened, source: 45 }
+      - { date: '2022-03', title: Ukraine Family and Sponsorship Schemes open, category: opened, source: 3 }
+      - { date: '2024-02-19', title: Ukraine Family Scheme closes to new applications, category: closed, source: 7 }
+      - { date: '2025-07', title: Afghan schemes close to new applicants and referrals, category: closed, source: 12 }
+      - { date: '2025-09-04', title: Refugee family reunion paused, category: closed, significance: major, source: 14 }
+      - { date: '2025-09', title: No 2025/26 quota for new UK Resettlement Scheme referrals, category: closed, source: 22 }
+      - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
+      - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
 ---
 Safe and legal routes are the ways a person can be given permission to come
 to the UK for protection before travelling, instead of claiming asylum after
@@ -1286,20 +1301,6 @@ more safe-route grants than they had boat arrivals, through resettlement
 (Afghans) and family reunion. Afghanistan, Yemen, Sudan, Iran and Syria were
 the top family reunion nationalities, at 17%, 13%, 11%, 11% and 9% of grants
 [17](#source-safe-and-legal-routes-17).
-
-## Route openings, closures and pauses, 2021-2026 {#safe-and-legal-routes--route-timeline}
-
-| Date | Change | Source |
-|---|---|---|
-| 31 January 2021 | BN(O) route opens for Hong Kong BN(O) passport holders | [8](#source-safe-and-legal-routes-8) |
-| February 2021 | UK Resettlement Scheme starts | [45](#source-safe-and-legal-routes-45) |
-| March 2022 | Ukraine Family and Sponsorship Schemes open | [3](#source-safe-and-legal-routes-3) [6](#source-safe-and-legal-routes-6) |
-| 19 February 2024 | Ukraine Family Scheme closes to new applications | [7](#source-safe-and-legal-routes-7) |
-| July 2025 | Afghan schemes close to new applicants and referrals | [12](#source-safe-and-legal-routes-12) |
-| 4 September 2025 | Refugee family reunion paused | [14](#source-safe-and-legal-routes-14) [21](#source-safe-and-legal-routes-21) |
-| 2025/26 | No quota for new UK Resettlement Scheme referrals | [22](#source-safe-and-legal-routes-22) |
-| 28 September 2026 | UK Resettlement Scheme reopens for new referrals, with a yearly cap | [24](#source-safe-and-legal-routes-24) [26](#source-safe-and-legal-routes-26) |
-| Autumn 2027 | First arrivals expected on new community and student sponsorship routes | [28](#source-safe-and-legal-routes-28) |
 
 ## Observations {#safe-and-legal-routes--observations-reopening}
 

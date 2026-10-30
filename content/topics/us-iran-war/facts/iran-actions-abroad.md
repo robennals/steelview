@@ -1,13 +1,10 @@
 ---
 title: "Iran's Actions Abroad: Proxies, Plots, Hostage-Taking and Attacks, 1979–2026"
-claimSources: [1, 3, 4, 8, 9, 17]
+claimSources: [1, 3, 4, 11, 13, 17]
 claim: >-
-  This report covers what Iran's government has done abroad beyond its nuclear
-  programme, as of late October 2026. Courts in Argentina, Belgium and the US
-  have tied Iranian officials to bombings and murder plots, and Iran-aligned
-  militias attacked US forces more than 200 times in 2023–24, most of them in
-  four months. Counts of plots rest on one author's dataset and on MI5's
-  unaudited totals.
+  Courts in Argentina, Belgium and the US have tied Iranian officials to
+  bombings and murder plots, and Iran-aligned militias attacked US forces in a
+  burst in 2023–24, while counts of plots rest on limited sources.
 status: well-supported
 sources:
   # 1
@@ -344,6 +341,70 @@ dataStillNeeded:
     why: 'MI5 publishes totals without cases or definitions, so its figures cannot be checked or compared with other countries'' counts.'
   - measure: 'Iran''s funding of Hezbollah and other groups in dollars per year, from an audited or official estimate'
     why: 'The State Department says only "hundreds of millions of dollars", which cannot show whether support grew or shrank.'
+figures:
+  - kind: "series"
+  - kind: "comparison"
+    id: "yemen-panel-matched-materiel"
+  - kind: "timeline"
+    id: "court-record"
+    title: "Court findings, convictions and charges, 2011–2026"
+    description: "Court rulings and convictions are shown separately from charges, which are allegations that have not been tested in court."
+    note: "Each entry is as of the date shown, except the first Alinejad case, whose status is as of 30 October 2025."
+    categories:
+      - { id: "court-finding", label: "Court finding" }
+      - { id: "conviction", label: "Conviction" }
+      - { id: "charge", label: "Charge only" }
+    events:
+      - { date: "2011-10-11", title: "Alleged plot to kill the Saudi ambassador in Washington", description: "US criminal complaint: two men charged; the outcome was not checked for this report.", category: "charge", source: 7 }
+      - { date: "2021-02-04", title: "2018 plot to bomb an Iranian opposition rally near Paris", description: "Belgian court, Antwerp: Iranian diplomat Assadollah Assadi convicted, 20 years.", category: "conviction", source: 3 }
+      - { date: "2024-04-11", title: "1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires", description: "Argentina, Federal Criminal Cassation Court: attacks were by Hezbollah, \"sponsored by the government of Iran\"; crimes against humanity.", category: "court-finding", significance: "major", source: 1 }
+      - { date: "2024-11-08", title: "Alleged tasking of Farhad Shakeri to surveil and plot against President-elect Trump", description: "US criminal complaint: Shakeri charged; \"remains at large and is believed to reside in Iran\".", category: "charge", source: 6 }
+      - { date: "2025-10-29", title: "Plot to kill journalist Masih Alinejad in New York", description: "US federal court: Rafat Amirov and Polad Omarov sentenced to 25 years each; DOJ says the IRGC offered $500,000.", category: "conviction", significance: "major", source: 4 }
+      - { date: "2026-01-28", title: "Second plot against Alinejad, organised by Farhad Shakeri", description: "US federal court: Carlisle Rivera sentenced to 15 years.", category: "conviction", source: 5 }
+      - { date: "2026-09-21", title: "AMIA bombing: seven Iranians and a Lebanese charged, including four former officials", description: "Argentine federal judge (Rafecas): charged as indirect perpetrators; trial in absentia under constitutional challenge.", category: "charge", source: 2 }
+  - kind: "timeline"
+    id: "state-sponsors"
+    title: "US state sponsors of terrorism, by date designated"
+    description: "The US list as last readable on state.gov, a copy captured on 31 December 2025."
+    categories:
+      - { id: "designated", label: "Designated" }
+    events:
+      - { date: "1979-12-29", title: "Syria", description: "Still listed in the 31 Dec 2025 copy; later status unverified.", category: "designated", source: 8 }
+      - { date: "1984-01-19", title: "Iran", category: "designated", significance: "major", source: 8 }
+      - { date: "2017-11-20", title: "North Korea", category: "designated", source: 8 }
+      - { date: "2021-01-12", title: "Cuba", category: "designated", source: 8 }
+  - kind: "dataTable"
+    id: "plot-counts"
+    title: "Plots abroad attributed to Iran, in one author's dataset"
+    description: "Counts by Matthew Levitt of the Washington Institute, from open sources. He calls the dataset \"in no way a comprehensive listing\", and target categories overlap, so they do not add to the total."
+    caption: "One row per count"
+    columns:
+      - { key: "measure", label: "Measure", rowHeader: true, sortable: false }
+      - { key: "count", label: "Count", format: { unit: "count" }, align: "right", sortable: false }
+      - { key: "period", label: "Period", sortable: false }
+    rows:
+      - { measure: "Plots in the dataset", count: { value: 98, sources: [11] }, period: "Dec 1979 – Dec 2021" }
+      - { measure: "Of which targeted dissidents", count: { value: 42, sources: [11] }, period: "Dec 1979 – Dec 2021" }
+      - { measure: "Of which targeted Jews or Israelis", count: { value: 31, sources: [11] }, period: "Dec 1979 – Dec 2021" }
+      - { measure: "Plots in the decade 2011–2021", count: { value: 55, sources: [11] }, period: "2011–2021" }
+      - { measure: "Plots in Europe in the decade after 9/11", count: { value: 2, sources: [11], asPublished: "only two plots" }, period: "2001–2011" }
+      - { measure: "Plots in Europe since 2011", count: { value: 17, sources: [11] }, period: "2011–2021" }
+      - { measure: "Plots in the expanded dataset", count: { value: 218, sources: [12] }, period: "1979 – Oct 2024" }
+      - { measure: "Of which in Europe", count: { value: 102, sources: [12] }, period: "1979 – Oct 2024" }
+      - { measure: "Plots in Europe, 2021–2024", count: { value: 54, sources: [12] }, period: "2021–2024" }
+      - { measure: "Of which targeted Iranian dissidents", count: { value: 34, sources: [12] }, period: "2021–2024" }
+      - { measure: "Of which used criminal perpetrators", count: { value: 16, sources: [12], asPublished: "sixteen" }, period: "2021–2024" }
+  - kind: "keyFigures"
+    id: "mi5"
+    title: "MI5's statements on Iran-backed plots in the UK"
+    description: "MI5's own totals, published without a case list or definitions, measuring different things over different years."
+    figures:
+      - { value: 20, qualifier: "more than", asPublished: "more than twenty", format: { unit: "count" }, label: "potentially lethal Iran-backed plots tracked", period: "2025-10-16", periodLabel: "The year to Oct 2025", source: 14 }
+      - { value: 50, qualifier: "more than", asPublished: "more than fifty", format: { unit: "count" }, label: "arrests in the UK from Iran-linked operations", period: "2026-10-13", periodLabel: "The twelve months to Oct 2026", source: 13 }
+  - kind: "pullQuote"
+    id: "hostage-taking"
+    description: "The US Secretary of State designated Iran \"a state sponsor of wrongful detention\" on 27 February 2026, the day before the war."
+    quote: { text: "The Iranian regime must stop taking hostages and release all Americans unjustly detained in Iran, steps that could end this designation and associated actions", speaker: "Marco Rubio", role: "US Secretary of State", date: "2026-02-27", source: 15 }
 ---
 ## Observations {#iran-actions-abroad--observations-confirmed-attacks}
 
@@ -377,20 +438,6 @@ The UN Panel found strong similarities to Iranian materiel in more inspected ite
 
 The finding is that items are "similar" to those Iran develops or operates, not that each was shipped from Iran. [10](#source-iran-actions-abroad-10) Similar items are also operated by armed groups in Iraq and Lebanon.
 
-## Court findings, convictions and charges {#iran-actions-abroad--court-record}
-
-Court rulings and convictions are listed separately from charges, which are allegations that have not been tested in court.
-
-| Date of outcome | Case | Court or body | Outcome | Kind | Status as of |
-| --- | --- | --- | --- | --- | --- |
-| 11 Apr 2024 | 1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires | Argentina, Federal Criminal Cassation Court | Attacks were by Hezbollah, "sponsored by the government of Iran"; crimes against humanity [1](#source-iran-actions-abroad-1) | **Court finding** | 11 Apr 2024 |
-| 4 Feb 2021 | 2018 plot to bomb an Iranian opposition rally near Paris | Belgian court, Antwerp | Iranian diplomat Assadollah Assadi convicted, 20 years [3](#source-iran-actions-abroad-3) | **Conviction** | 4 Feb 2021 |
-| 29 Oct 2025 | Plot to kill journalist Masih Alinejad in New York | US federal court | Rafat Amirov and Polad Omarov sentenced to 25 years each; DOJ says the IRGC offered $500,000 [4](#source-iran-actions-abroad-4) | **Conviction** | 30 Oct 2025 |
-| 28 Jan 2026 | Second plot against Alinejad, organised by Farhad Shakeri | US federal court | Carlisle Rivera sentenced to 15 years [5](#source-iran-actions-abroad-5) | **Conviction** | 28 Jan 2026 |
-| 21 Sep 2026 | AMIA bombing: seven Iranians and a Lebanese charged, including four former officials | Argentine federal judge (Rafecas) | Charged as indirect perpetrators; trial in absentia under constitutional challenge [2](#source-iran-actions-abroad-2) | Charge only | 21 Sep 2026 |
-| 8 Nov 2024 | Alleged tasking of Farhad Shakeri to surveil and plot against President-elect Trump | US criminal complaint | Shakeri charged; "remains at large and is believed to reside in Iran" [6](#source-iran-actions-abroad-6) | Charge only | 8 Nov 2024 |
-| 11 Oct 2011 | Alleged plot to kill the Saudi ambassador in Washington | US criminal complaint | Two men charged; the outcome was not checked for this report [7](#source-iran-actions-abroad-7) | Charge only | 11 Oct 2011 |
-
 ## Observations {#iran-actions-abroad--observations-court-record}
 
 ### Argentina's highest criminal court held Iran-backed Hezbollah responsible for two bombings {#iran-actions-abroad--argentine-court-buenos-aires-bombings}
@@ -399,11 +446,11 @@ In April 2024 the Cassation Court ruled that both Buenos Aires bombings were car
 
 ### US courts have sentenced men hired to kill a critic of the regime on US soil {#iran-actions-abroad--us-convictions-iran-directed-plots}
 
-Three men have been sentenced for plots against Masih Alinejad that DOJ says were directed by the Iranian government and the IRGC (table). [4](#source-iran-actions-abroad-4) [5](#source-iran-actions-abroad-5) In Belgium an Iranian diplomat was convicted of plotting to bomb an opposition rally. [3](#source-iran-actions-abroad-3)
+Three men have been sentenced for plots against Masih Alinejad that DOJ says were directed by the Iranian government and the IRGC (timeline). [4](#source-iran-actions-abroad-4) [5](#source-iran-actions-abroad-5) In Belgium an Iranian diplomat was convicted of plotting to bomb an opposition rally. [3](#source-iran-actions-abroad-3)
 
 ### The US cases here are plots, and the Trump case is only a charge {#iran-actions-abroad--us-plots-were-foiled}
 
-Every US case in the table is a plot or conspiracy; none records a completed killing. [4](#source-iran-actions-abroad-4) [5](#source-iran-actions-abroad-5) [6](#source-iran-actions-abroad-6) [7](#source-iran-actions-abroad-7)
+Every US case on the timeline is a plot or conspiracy; none records a completed killing. [4](#source-iran-actions-abroad-4) [5](#source-iran-actions-abroad-5) [6](#source-iran-actions-abroad-6) [7](#source-iran-actions-abroad-7)
 
 The alleged tasking against Donald Trump appears only in a 2024 criminal complaint against a man who remains in Iran. [6](#source-iran-actions-abroad-6)
 
@@ -411,44 +458,15 @@ The alleged tasking against Donald Trump appears only in a 2024 criminal complai
 
 Ahmad Vahidi, former Quds Force chief, is among the officials an Argentine judge charged in September 2026. [2](#source-iran-actions-abroad-2) He was serving as interior minister in March 2024, when he announced that year's election turnout. [16](#source-iran-actions-abroad-16)
 
-## State sponsors of terrorism {#iran-actions-abroad--state-sponsors}
-
-The US list as last readable on state.gov, a copy captured on 31 December 2025.
-
-| Country | Designated |
-| --- | --- |
-| Syria | 29 Dec 1979 (still listed in the 31 Dec 2025 copy; later status unverified) [8](#source-iran-actions-abroad-8) |
-| Iran | 19 Jan 1984 [8](#source-iran-actions-abroad-8) |
-| North Korea | 20 Nov 2017 [8](#source-iran-actions-abroad-8) |
-| Cuba | 12 Jan 2021 [8](#source-iran-actions-abroad-8) |
-
 ## Observations {#iran-actions-abroad--observations-state-sponsors}
 
 ### Iran has been on the US terrorism-sponsor list since 1984 {#iran-actions-abroad--state-sponsor-since-1984}
 
-Iran is the longest-listed state on the list after Syria (table). [8](#source-iran-actions-abroad-8) Whether Syria has since been removed could not be checked, because state.gov refused automated requests.
+Iran is the longest-listed state on the list after Syria (timeline). [8](#source-iran-actions-abroad-8) Whether Syria has since been removed could not be checked, because state.gov refused automated requests.
 
 ### The State Department calls Iran the leading state sponsor {#iran-actions-abroad--leading-state-sponsor}
 
 Its 2023 report calls Iran "the leading state sponsor of terrorism". It says Iran gave Hezbollah "hundreds of millions of dollars" and "thousands of rockets, missiles, and small arms" since 2006. [9](#source-iran-actions-abroad-9) This is the US government's own assessment, with no published accounting behind the dollar figure.
-
-## Plots abroad attributed to Iran, in one author's dataset {#iran-actions-abroad--plot-counts}
-
-Counts by Matthew Levitt of the Washington Institute, from open sources. He calls the dataset "in no way a comprehensive listing". Target categories overlap, so they do not add to the total.
-
-| Measure | Count | Period | Source |
-| --- | --- | --- | --- |
-| Plots in the dataset | 98 | Dec 1979 – Dec 2021 | [11](#source-iran-actions-abroad-11) |
-| Of which targeted dissidents | 42 | Dec 1979 – Dec 2021 | [11](#source-iran-actions-abroad-11) |
-| Of which targeted Jews or Israelis | 31 | Dec 1979 – Dec 2021 | [11](#source-iran-actions-abroad-11) |
-| Plots in the decade 2011–2021 | 55 | 2011–2021 | [11](#source-iran-actions-abroad-11) |
-| Plots in Europe in the decade after 9/11 | 2 | 2001–2011 | [11](#source-iran-actions-abroad-11) |
-| Plots in Europe since 2011 | 17 | 2011–2021 | [11](#source-iran-actions-abroad-11) |
-| Plots in the expanded dataset | 218 | 1979 – Oct 2024 | [12](#source-iran-actions-abroad-12) |
-| Of which in Europe | 102 | 1979 – Oct 2024 | [12](#source-iran-actions-abroad-12) |
-| Plots in Europe, 2021–2024 | 54 | 2021–2024 | [12](#source-iran-actions-abroad-12) |
-| Of which targeted Iranian dissidents | 34 | 2021–2024 | [12](#source-iran-actions-abroad-12) |
-| Of which used criminal perpetrators | 16 | 2021–2024 | [12](#source-iran-actions-abroad-12) |
 
 ## Observations {#iran-actions-abroad--observations-plot-counts}
 
@@ -468,20 +486,11 @@ The dataset more than doubled between the 2022 and 2024 publications (table). Th
 
 Levitt works at a think tank whose analysts generally favour a hard line on Iran. Neither publication says how many plots were foiled and how many carried out.
 
-## MI5's statements on Iran-backed plots in the UK {#iran-actions-abroad--mi5}
-
-These are MI5's own totals, published without a case list or definitions, and they measure different things over different years.
-
-| Statement | MI5's figure | Period |
-| --- | --- | --- |
-| 16 Oct 2025 | "More than twenty potentially lethal Iran-backed plots" tracked | The year to Oct 2025 [14](#source-iran-actions-abroad-14) |
-| 13 Oct 2026 | "More than fifty arrests in the UK" from Iran-linked operations | The twelve months to Oct 2026 [13](#source-iran-actions-abroad-13) |
-
 ## Observations {#iran-actions-abroad--observations-mi5}
 
 ### MI5 reports a rising Iranian threat in the UK, by its own unaudited count {#iran-actions-abroad--mi5-uk-plots-and-arrests}
 
-MI5 says it tracked more than twenty potentially lethal Iran-backed plots in the year to October 2025, and that Iran-linked operations led to more than fifty UK arrests in the following twelve months (table). [14](#source-iran-actions-abroad-14) [13](#source-iran-actions-abroad-13) Neither figure comes with cases that can be checked.
+MI5 says it tracked more than twenty potentially lethal Iran-backed plots in the year to October 2025, and that Iran-linked operations led to more than fifty UK arrests in the following twelve months. [14](#source-iran-actions-abroad-14) [13](#source-iran-actions-abroad-13) Neither figure comes with cases that can be checked.
 
 ### MI5 says the IRGC was behind the spring 2026 arson attacks {#iran-actions-abroad--irgc-behind-arson-front}
 
@@ -509,4 +518,4 @@ He said releasing detained Americans were "steps that could end this designation
 
 **Commonly mistaken for.** The militia attacks are often cited as one continuous campaign; the chart shows a four-month burst and a long lull. A charge such as the Shakeri complaint is often reported as if proven.
 
-**Dates.** As of late October 2026. The attack tracker stops on 3 December 2024; Levitt's counts run to October 2024; MI5's latest statement is 13 October 2026; court outcomes are dated in the table.
+**Dates.** As of late October 2026. The attack tracker stops on 3 December 2024; Levitt's counts run to October 2024; MI5's latest statement is 13 October 2026; court outcomes are dated on the timeline.

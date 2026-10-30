@@ -4,6 +4,7 @@ import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTopic } from '@/lib/content/load';
 import { ChartThumb } from './chart-thumb';
+import { SlideChart } from './slide-chart';
 
 test('a series thumbnail draws its first reading as decorative lines, with no text', async () => {
   const topic = await loadTopic('uk-immigration');
@@ -22,4 +23,20 @@ test('a comparison thumbnail draws one column per item, marking the highlighted 
   assert.match(html, /aria-hidden="true"/);
   assert.equal(html.match(/class="sv-thumb__column"/g)?.length, chart.items.length);
   assert.equal(html.match(/data-highlight="true"/g)?.length, 1);
+});
+
+test('a library figure thumbnail draws plain rows, and an unknown chart draws nothing', async () => {
+  const topic = await loadTopic('uk-asylum');
+  const fact = topic.facts.find(f => f.id === 'asylum-law-and-the-echr')!;
+  assert.equal(renderToStaticMarkup(createElement(ChartThumb, { fact, chart: 'article-31' })).match(/class="sv-thumb__column"/g)?.length, 4);
+  assert.equal(renderToStaticMarkup(createElement(ChartThumb, { fact, chart: 'no-such-chart' })), '');
+});
+
+test('a walkthrough slide draws a library figure only when given its page', async () => {
+  const topic = await loadTopic('uk-asylum');
+  const fact = topic.facts.find(f => f.id === 'asylum-law-and-the-echr')!;
+  const slide = { fact, chart: 'article-31', label: 'Article 31', href: '/x' };
+  const page = { slug: 'uk-asylum', asOf: topic.lastUpdated, facts: topic.facts };
+  assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, page })), /sv-slide__figure[\s\S]*<table/);
+  assert.equal(renderToStaticMarkup(createElement(SlideChart, { slide })), '');
 });
