@@ -937,7 +937,8 @@ additionalSeries:
         Observations rather than drawn as a line (14.9 per 10,000 in 2025, 27.5
         in 2015). The UK left Eurostat's series after 2019. Sweden and Germany
         are shown as neighbours with complete data for the whole period;
-        every EU+ country is in the 2025 comparison below.
+        every EU+ country is ranked per head for 2025 in the report on asylum
+        claims and decisions.
     source:
       stance: complicates
       quote: >-
@@ -1432,88 +1433,6 @@ comparisons:
       They cover both the Rwanda partnership and the Illegal Migration Act,
       which the Home Office reports together; detention capacity and staff may
       have had other uses.
-  - id: eu-per-head-2025
-    title: First-time asylum applicants per head across the EU+, 2025
-    description: >-
-      Non-EU first-time asylum applicants per 10,000 residents in 2025, every EU
-      and EFTA country Eurostat reports. Denmark is highlighted; the EU27 figure
-      is 14.9.
-    unit: count
-    valueLabel: 'First-time applicants per 10,000 residents'
-    sources:
-      - 63
-      - 64
-    items:
-      - label: 'Greece'
-        value: 53.39
-      - label: 'Iceland'
-        value: 42.62
-      - label: 'Cyprus'
-        value: 28.84
-      - label: 'Spain'
-        value: 28.71
-      - label: 'Luxembourg'
-        value: 25.95
-      - label: 'Switzerland'
-        value: 25.73
-      - label: 'Ireland'
-        value: 23.85
-      - label: 'Belgium'
-        value: 23.14
-      - label: 'Italy'
-        value: 21.83
-      - label: 'Liechtenstein'
-        value: 19.57
-      - label: 'Slovenia'
-        value: 18.61
-      - label: 'France'
-        value: 16.89
-      - label: 'Austria'
-        value: 13.55
-      - label: 'Germany'
-        value: 13.54
-      - label: 'Netherlands'
-        value: 13.31
-      - label: 'Estonia'
-        value: 7.34
-      - label: 'Malta'
-        value: 7.05
-      - label: 'Latvia'
-        value: 6.93
-      - label: 'Norway'
-        value: 5.93
-      - label: 'Bulgaria'
-        value: 5.9
-      - label: 'Sweden'
-        value: 4.8
-      - label: 'Finland'
-        value: 3.47
-      - label: 'Denmark'
-        value: 3.06
-        highlight: true
-      - label: 'Poland'
-        value: 3.06
-      - label: 'Croatia'
-        value: 2.18
-      - label: 'Portugal'
-        value: 1.54
-      - label: 'Lithuania'
-        value: 1.14
-      - label: 'Czechia'
-        value: 0.85
-      - label: 'Romania'
-        value: 0.6
-      - label: 'Slovakia'
-        value: 0.24
-      - label: 'Hungary'
-        value: 0.11
-    note: >-
-      Eurostat migr_asyappctza (first-time applicants, non-EU citizens) divided
-      by Eurostat population on 1 January 2025 (demo_gind); the division is this
-      report's own, to two decimal places. Denmark (3.06) and Poland (3.06)
-      differ only in the third decimal place. The UK is not in Eurostat's data
-      after 2019; the Migration Observatory puts it at 15 per 10,000 in 2025,
-      counting all applicants rather than first-time ones.
 dataStillNeeded:
   - measure: 'Monthly Australian boat arrivals, July 2012 to December 2014'
     why: >-
@@ -1555,8 +1474,6 @@ figures:
     id: denmark-comparators
   - kind: series
     id: grant-rates
-  - kind: comparison
-    id: eu-per-head-2025
   - kind: dataTable
     id: residence-status
     title: >-
@@ -1724,6 +1641,10 @@ The National Audit Office did not judge value for money, because that rests on w
 
 Denmark had 1,835 first-time asylum applicants in 2025, 3.1 per 10,000 residents, against 14.9 across the EU27. The UK received 15 per 10,000 in 2025 on the Migration Observatory's count of all applicants. [33](#source-deterrence-and-protection-policies-33) [64](#source-deterrence-and-protection-policies-64) [35](#source-deterrence-and-protection-policies-35)
 
+### Denmark ranks 23rd of 31 EU+ countries per head {#deterrence-and-protection-policies--denmark-rank-2025}
+
+On first-time applicants per 10,000 residents in 2025, Denmark sits in the [bottom third of the 31 EU and EFTA countries](#fact-asylum-claims-and-decisions/chart-per-head-2025), below Sweden and well below Germany, which is close to the EU27 average. [63](#source-deterrence-and-protection-policies-63) [64](#source-deterrence-and-protection-policies-64)
+
 ### Denmark's 2016 fall was shared with Sweden, which also tightened {#deterrence-and-protection-policies--denmark-2016-fall-matched-sweden}
 
 Denmark's first-time applicants fell from 20,825 in 2015 to 6,055 in 2016, 29% of the year before. Sweden's fell further, from 156,115 to 22,335, 14% of the year before. Sweden also moved from permanent to temporary residence permits in 2016. The EU27 total in 2016 was still 96% of 2015 and fell sharply only in 2017, so the Danish and Swedish falls came about a year ahead of the wider European one. [33](#source-deterrence-and-protection-policies-33) [41](#source-deterrence-and-protection-policies-41)
@@ -1741,12 +1662,6 @@ The Home Secretary's March 2026 statement said Denmark had cut claims to a 40-ye
 ### Denmark grants protection at about the EU rate {#deterrence-and-protection-policies--denmark-grant-rate}
 
 In 2025, 36% of Denmark's first-instance decisions were positive, against 39% across the EU27. In 2016 the figures were 68% and 62%. Denmark's low intake is not explained by a lower share of positive decisions at first instance. [34](#source-deterrence-and-protection-policies-34)
-
-## Observations {#deterrence-and-protection-policies--observations-eu-per-head-2025}
-
-### Denmark ranks 23rd of 31 EU+ countries per head {#deterrence-and-protection-policies--denmark-rank-2025}
-
-On first-time applicants per 10,000 residents in 2025, Denmark sits in the bottom third of the 31 EU and EFTA countries, below Sweden and well below Germany, which is close to the EU27 average. [63](#source-deterrence-and-protection-policies-63) [64](#source-deterrence-and-protection-policies-64)
 
 ## Observations {#deterrence-and-protection-policies--observations-residence-status}
 
