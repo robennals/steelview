@@ -821,6 +821,14 @@
     text-align: right;
   }
 
+  /* A cell of words wraps, or a table of rulings runs off the side of its frame. */
+  .sv-data__table tbody th:not([data-align="right"]),
+  .sv-data__table tbody td:not([data-align="right"]) {
+    min-width: 7rem;
+    white-space: normal;
+    vertical-align: top;
+  }
+
   .sv-data__table thead th {
     position: sticky;
     top: 0;

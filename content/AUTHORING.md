@@ -769,6 +769,12 @@ figure's, an event's, a table cell's, an estimate's, a composition row's, a
 quote's), deduplicated, in ascending order, each a link to the quoted
 reference. Every figure but a `caveatList` needs at least one citation.
 
+**Figures are walkthrough steps.** A collection's row steps through its visuals
+in `figures` order, series and comparisons and library figures alike. A slide
+shows a figure's title and content; its description, source line and About this
+data wait behind "Explore this data". A library figure cannot be a home-page
+preview chart.
+
 **Observations attach by id.** A component figure's DOM id is
 `<fact>--chart-<id>`, so viewpoints cite it as `#fact-<fact>/chart-<id>`.
 `## Observations {#<fact>--observations-<id>}` and
@@ -889,13 +895,21 @@ reports shows the claim, that is a gap to raise at stage 5, or a sign the step
 is not a data claim.
 
 **Cite the chart's observation first.** A step's chart is not named anywhere:
-it is the chart beside the first observation the section cites that sits beside
-a series or comparison chart. So the section's first such citation decides what
-the reader sees. "The economy grew, but people did not get richer" must cite
-the GDP-per-head observation before the total-GDP one, or the reader sees total
-GDP rising beside a claim about people's incomes. Read each step on the page to
-confirm its chart shows its claim. A section with no such citation shows text
-alone, which should be rare.
+it is the visual beside the first observation the section cites that sits beside
+one, whether a series, a comparison or a [figure](#figures). So the section's
+first such citation decides what the reader sees. "The economy grew, but people
+did not get richer" must cite the GDP-per-head observation before the total-GDP
+one, or the reader sees total GDP rising beside a claim about people's incomes.
+A citation can also name a visual outright, as `#fact-<fact>/chart-<id>`. Read
+each step on the page to confirm its chart shows its claim. A section with no
+such citation shows text alone, which should be rare.
+
+**Evidence that is not a number still gets a visual.** A court ruling, a law or
+a statement is shown as a `dataTable`, `timeline`, `periodTimeline` or
+`quoteComparison` figure, with its observations attached by id. It then steps
+through like a chart. Do not leave such a record as a table in the body: there
+it has no place in the walkthrough, and a report made only of body tables opens
+onto nothing on the topic page.
 
 **Facts in a step are plain text.** The evidence is beside the prose, so the
 citations in a step render with no link or underline. They are still required:
