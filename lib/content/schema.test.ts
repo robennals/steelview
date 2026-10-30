@@ -6,6 +6,7 @@ import {
   principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
+  seriesLineSchema,
 } from './schema';
 import { figureExamplesFrontmatter } from './__fixtures__/figure-examples';
 
@@ -299,4 +300,12 @@ test('a topic needs at least one tag, with no repeats, and at least one preview 
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK', 'UK'], previewCharts: preview }).success, false);
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK'], previewCharts: [] }).success, false);
   assert.equal(topicFrontmatterSchema.safeParse({ ...base, tags: ['UK'], previewCharts: [{ fact: 'alpha', chart: '' }] }).success, false);
+});
+
+test('a series line may name a glossary entry, which must exist', () => {
+  const points = [{ period: '2020', value: 1 }, { period: '2021', value: 2 }];
+  assert.equal(seriesLineSchema.parse({ name: 'Net migration', glossary: 'net-migration', points }).glossary, 'net-migration');
+  const unknown = seriesLineSchema.safeParse({ name: 'Net migration', glossary: 'no-such-term', points });
+  assert.equal(unknown.success, false);
+  assert.equal(unknown.error?.issues[0].message, 'unknown glossary term "no-such-term"');
 });

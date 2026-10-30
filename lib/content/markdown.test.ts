@@ -67,6 +67,19 @@ test('a #needed link renders as its plain text, with no link', async () => {
   assert.equal(html, '<p>Some say integration succeeds at <em>different</em> rates.</p>');
 });
 
+test('with citationsAsText, a fact citation renders as its plain text and other links stay', async () => {
+  const html = await renderMarkdown(
+    'Arrivals [rose *sharply*](#fact-alpha/peak), as [one](#principle-p) and [two](https://example.com) say.',
+    SLUG, [], { citationsAsText: true },
+  );
+  assert.equal(html, '<p>Arrivals rose <em>sharply</em>, as <a href="#principle-p" class="sv-principle-cite">one</a> and <a href="https://example.com">two</a> say.</p>');
+});
+
+test('without footnotes, source footnotes are left out and the prose kept', async () => {
+  const html = await renderMarkdown('Arrivals rose. [2](#source-alpha-2) [1](#source-alpha-1)', SLUG, [], { footnotes: false });
+  assert.equal(html, '<p>Arrivals rose.</p>');
+});
+
 test('neededClaims lists marked claims as plain text, in order', () => {
   const md = 'First [a *bold* claim](#needed), then [a fact](#fact-alpha) and [another](#needed).';
   assert.deepEqual(neededClaims(md), ['a bold claim', 'another']);

@@ -3,10 +3,11 @@ import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
+import { renderDataWalkthroughs, renderWalkthroughs, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
 import { HashSync } from '@/components/topic/hash-sync';
-import { FactList } from '@/components/topic/fact-list';
-import { ViewpointItem } from '@/components/topic/viewpoint-item';
+import { DataRows } from '@/components/topic/data-rows';
+import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
 import { PrincipleItem } from '@/components/topic/principle-item';
 import { PrincipleModals } from '@/components/topic/principle-modals';
 import { CruxItem } from '@/components/topic/crux-item';
@@ -80,14 +81,6 @@ export async function buildBodies(
   return bodies;
 }
 
-/**
- * How many headline facts the Facts section shows before it collapses the rest.
- * Facts arrive in diversity-ranked order (see lib/content/rank-facts.ts), so
- * for most readers these three *are* the page — which is why that ranking is
- * derived from what every viewpoint ranks first, rather than authored.
- */
-export const FACTS_SHOWN = 3;
-
 /** Apply a rare, topic-level editorial placement before the derived tail. */
 export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
   const headline = headlineFacts(topic.facts);
@@ -109,21 +102,23 @@ export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
  * is non-empty. Exported and kept free of `loadTopic` so it is unit-testable
  * without a real content directory.
  */
-export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<string, string> }) {
+export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }: {
+  topic: Topic;
+  bodies: Map<string, string>;
+  walkthroughs: Map<string, RenderedWalkthrough>;
+  /** Each headline data collection's charts and observations, keyed by fact id. */
+  dataWalkthroughs: Map<string, DataStep[]>;
+}) {
   const viewpointsById = new Map(topic.viewpoints.map((v) => [v.id, v]));
 
   /*
-   * Only headline facts are listed, and a row is only its claim and status.
-   * A fact with `supports` is evidence for a larger claim and reads inside
-   * that claim, so the list is the set of things the argument is actually
-   * about rather than every checkable item on the page — which is what made
-   * it unreadably long. The supporting facts, and the shape of the argument
-   * they carry, live on the parent fact's own reading (its modal or page),
-   * not in this list — see `FactList` for why.
+   * Only headline facts get a row. A fact with `supports` is evidence for a
+   * larger claim and reads inside that claim, so the rows are the things the
+   * argument is actually about rather than every checkable item on the page.
+   * The supporting facts, and the shape of the argument they carry, live on
+   * the parent fact's own reading (its modal or page).
    */
   const headline = orderHeadlineFacts(topic);
-  const shownFacts = headline.slice(0, FACTS_SHOWN);
-  const restFacts = headline.slice(FACTS_SHOWN);
 
   return (
     <div className="sv-sections">
@@ -137,13 +132,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           <div className="sv-section__head">
             <h2 className="sv-section__title">Viewpoints</h2>
           </div>
-          {topic.viewpoints.map((viewpoint) => (
-            <ViewpointItem
-              key={viewpoint.id}
-              viewpoint={viewpoint}
-              bodyHtml={bodies.get(bodyKey('viewpoint', viewpoint.id)) ?? ''}
-            />
-          ))}
+          <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />
         </section>
       )}
 
@@ -152,34 +141,12 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
           <div className="sv-section__head">
             <h2 className="sv-section__title">Data</h2>
           </div>
-          <FactList slug={topic.slug} facts={shownFacts} />
-          {restFacts.length > 0 && (
-            /*
-             * A native <details> again, for the same reason every collapse on
-             * this page is one: it has to work with JavaScript off, and
-             * find-in-page, printing and screen readers all understand it.
-             * The count is in the label because a bare "Show more" hides how
-             * much is behind it — on this page that is most of the evidence.
-             */
-            <details className="sv-more">
-              <summary className="sv-more__summary">
-                <span className="sv-more__label" data-when="closed">
-                  Show {restFacts.length} more data {restFacts.length === 1 ? 'collection' : 'collections'}
-                </span>
-                <span className="sv-more__label" data-when="open">
-                  Show fewer
-                </span>
-              </summary>
-              <div className="sv-more__body">
-                <FactList slug={topic.slug} facts={restFacts} />
-              </div>
-            </details>
-          )}
+          <DataRows slug={topic.slug} facts={headline} walkthroughs={dataWalkthroughs} />
         </section>
       )}
 
       {topic.principles.length > 0 && (
-        <section className="sv-section">
+        <section className="sv-section sv-section--reading">
           <div className="sv-section__head">
             <h2 className="sv-section__title">Principles</h2>
           </div>
@@ -194,7 +161,7 @@ export function TopicSections({ topic, bodies }: { topic: Topic; bodies: Map<str
       )}
 
       {topic.cruxes.length > 0 && (
-        <section className="sv-section">
+        <section className="sv-section sv-section--reading">
           <div className="sv-section__head">
             <h2 className="sv-section__title">Cruxes</h2>
           </div>
@@ -218,6 +185,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const topic = await loadTopic(slug);
 
   const bodies = await buildBodies(topic, slug);
+  const walkthroughs = await renderWalkthroughs(topic);
+  const dataWalkthroughs = await renderDataWalkthroughs(topic, orderHeadlineFacts(topic));
 
   /*
    * The page head is the title and nothing else: readers came for the facts,
@@ -227,14 +196,14 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
    * model — neither is rendered here.
    */
   return (
-    <main className="sv-wrap">
+    <main className="sv-wrap sv-wrap--wide">
       <HashSync />
       <header className="sv-pagehead">
         <h1 className="sv-title">{topic.title}</h1>
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
       </header>
 
-      <TopicSections topic={topic} bodies={bodies} />
+      <TopicSections topic={topic} bodies={bodies} walkthroughs={walkthroughs} dataWalkthroughs={dataWalkthroughs} />
     </main>
   );
 }

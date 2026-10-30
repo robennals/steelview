@@ -2,6 +2,7 @@
 import { useState, type ReactNode } from 'react';
 import type { Fact, Source } from '@/lib/content/types';
 import { rankOf } from '@/lib/chart/comparison-preview';
+import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
 
@@ -10,6 +11,8 @@ export type ChartPreview = {
   href: string;
   /** For a series, the one reading to draw (default: the first). */
   reading?: string;
+  /** For a series, the shape of the space it sits in (default: wide, as a carousel slide is). */
+  fit?: PreviewFit;
 };
 
 /** Above this many items a preview draws one thin column per item instead of a labelled row. */

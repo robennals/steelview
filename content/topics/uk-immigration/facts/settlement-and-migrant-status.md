@@ -7,12 +7,7 @@ claimSources:
   - 4
   - 5
 claim: >-
-  Settlement grants outside the EU Settlement Scheme reached 199,628 in the year to
-  June 2026, the most since 2011, and the Home Office forecasts about 1.6 million
-  more people settling in 2026–2030 (range 1.3 to 2.2 million). The EU Settlement
-  Scheme is far larger: just under 4.6 million settled-status grants since 2018,
-  against an estimated 621,000 to 820,000 non-EU citizens holding indefinite leave
-  at the end of 2024; no official count of holders exists
+  Grants of settlement are at their highest since 2011, with about 1.6 million more expected by 2030, and EU settled status covers far more people still.
 status: well-supported
 relatedFacts:
   - immigration-economy-and-public-finances

@@ -7,7 +7,7 @@ Britain has taken in more people than it can house, and its people are no richer
 
 ### Britain has just had more immigration than ever before
 
-[More people moved to Britain in recent years than at any time on record](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling). Net migration is the number who arrive minus the number who leave. [In just four years, it added about 2.5 million people](#fact-immigration-against-the-long-run/four-years-gross-and-net). [It now makes up almost all of the country's population growth](#fact-immigration-against-the-long-run/migration-is-almost-all-population-growth).
+[More people moved to Britain in recent years than at any time on record](#fact-immigration-against-the-long-run/gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling). [In just four years, net migration added about 2.5 million people](#fact-immigration-against-the-long-run/four-years-gross-and-net). [It now makes up almost all of the country's population growth](#fact-immigration-against-the-long-run/migration-is-almost-all-population-growth).
 
 ### The economy grew, but people did not get richer
 

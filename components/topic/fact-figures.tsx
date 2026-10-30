@@ -58,6 +58,23 @@ export type FigurePage = {
 
 type Groups = { observations?: Record<string, string>; subtleties?: Record<string, string> };
 
+type VizProps = { fact: Pick<Fact, 'id'>; chart: string; label: string; children: ReactNode };
+
+/**
+ * One visualization in a data collection, marked so the collection can be
+ * read one visualization at a time: `VizTabs` lists every one as a tab, and a
+ * link into it (an observation, say) shows it on its own. The id is the
+ * address of that view.
+ */
+function Viz({ fact, chart, label, children }: VizProps) {
+  return <div className="sv-viz" id={vizDomId(fact, chart)} data-viz={label}>{children}</div>;
+}
+
+/** The address of one visualization's view: `#<fact>--viz-<chart>`. */
+export function vizDomId(fact: Pick<Fact, 'id'>, chart: string): string {
+  return `${fact.id}--viz-${chart}`;
+}
+
 /** The Observations and Subtleties under one chart or figure, or nothing. */
 function groupProse(id: string, { observations = {}, subtleties = {} }: Groups) {
   return (observations[id] || subtleties[id]) && <Prose html={(observations[id] ?? '') + (subtleties[id] ?? '')} className="sv-graph-observations" />;
@@ -70,7 +87,9 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
   if (!series) return null;
   const sourceOffset = seriesSourceOffset(fact, index);
   const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series))} className="sv-graph-observations" />]));
-  return <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />;
+  return <Viz fact={fact} chart={seriesId ?? 'series'} label={series.title}>
+    <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />
+  </Viz>;
 }
 
 /** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */
@@ -79,7 +98,9 @@ export function FactCharts({ fact, observations = {}, subtleties = {}, afterSeri
     {fact.series && <FactSeries fact={fact} observations={observations} subtleties={subtleties} />}
     {fact.additionalSeries?.map(series => <FactSeries key={series.id} fact={fact} seriesId={series.id} observations={observations} subtleties={subtleties} />)}
     {afterSeries}
-    {fact.comparisons?.map(chart => <ComparisonChart key={chart.id} fact={fact} chart={chart} sources={factSources(fact)} observations={groupProse(chart.id, { observations, subtleties })} />)}
+    {fact.comparisons?.map(chart => <Viz key={chart.id} fact={fact} chart={chart.id} label={chart.title}>
+      <ComparisonChart fact={fact} chart={chart} sources={factSources(fact)} observations={groupProse(chart.id, { observations, subtleties })} />
+    </Viz>)}
   </>;
 }
 
@@ -134,7 +155,9 @@ export function FactFigures({ fact, observations, subtleties, sections, featured
         return <FactSeries key={`series-${figure.id ?? ''}`} fact={fact} seriesId={figure.id} observations={observations} subtleties={subtleties} />;
       case 'comparison': {
         const chart = fact.comparisons?.find(c => c.id === figure.id);
-        return chart && <ComparisonChart key={`comparison-${chart.id}`} fact={fact} chart={chart} sources={context.sources} observations={groupProse(chart.id, { observations, subtleties })} />;
+        return chart && <Viz key={`comparison-${chart.id}`} fact={fact} chart={chart.id} label={chart.title}>
+          <ComparisonChart fact={fact} chart={chart} sources={context.sources} observations={groupProse(chart.id, { observations, subtleties })} />
+        </Viz>;
       }
       case 'featured': {
         const child = featured.find(({ fact: f }) => f.id === figure.fact);
@@ -143,9 +166,27 @@ export function FactFigures({ fact, observations, subtleties, sections, featured
       case 'section':
         return <Prose key={`section-${figure.id}`} html={(sections[figure.id] ?? '') + (observations[figure.id] ?? '') + (subtleties[figure.id] ?? '')} />;
       default:
-        return <FactFigure key={`${figure.kind}-${figure.id}-${i}`} figure={figure} context={context} page={page} footer={groupProse(figure.id, { observations, subtleties })} />;
+        return <Viz key={`${figure.kind}-${figure.id}-${i}`} fact={fact} chart={figure.id} label={figureLabel(figure)}>
+          <FactFigure figure={figure} context={context} page={page} footer={groupProse(figure.id, { observations, subtleties })} />
+        </Viz>;
     }
   });
+}
+
+/** A library figure's name on its tab: its title, or the heading the kinds without one are drawn under. */
+function figureLabel(figure: ComponentFigure): string {
+  switch (figure.kind) {
+    case 'quoteComparison':
+      return figure.question;
+    case 'pullQuote':
+      return `Quote: ${figure.quote.speaker}`;
+    case 'claimCheck':
+      return `Claim: ${figure.claim}`;
+    case 'caveatList':
+      return figure.heading;
+    default:
+      return figure.title;
+  }
 }
 
 /** One library figure: the adapter's props into its component, with Observations as the frame's footer. */

@@ -5,6 +5,7 @@ import { factPath, topicPath } from '@/lib/content/types';
 import { Prose } from './prose';
 import { FactCharts, FactFigures, FeaturedCharts, chartGroups, figureGroups, type BodiedFact, type FigurePage } from './fact-figures';
 import { EvidenceNavigation } from './evidence-navigation';
+import { VizTabs } from './viz-tabs';
 
 export type { BodiedFact } from './fact-figures';
 
@@ -184,6 +185,8 @@ export function FactArticle({
         </Claim>
         {fact.assessedClaim && <p className="sv-assessed">Claim assessed: “{fact.assessedClaim}”</p>}
       </header>
+
+      <VizTabs />
 
       <div className="sv-factpage__body">
         <FactBody fact={fact} bodyHtml={bodyHtml} featured={supporting.filter(({ fact: child }) => fact.featuredCharts?.includes(child.id)) } page={page} />

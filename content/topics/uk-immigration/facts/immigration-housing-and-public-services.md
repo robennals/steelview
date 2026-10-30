@@ -20,15 +20,7 @@ claimSources:
   - 40
   - 41
 claim: >-
-  With zero net migration, the ONS projects 1,287,752 fewer households in
-  England in 2032 — just over half of the 2.4 million rise it projects — while
-  a MAC-commissioned review puts immigration at roughly 4–6% of the rise in real
-  UK house prices over three decades. Private rent growth has more than halved
-  since 2024 as migration fell, but rents are still rising. Nationally, pupil
-  numbers in England are falling and GP numbers rising; real school funding per
-  pupil is above its 2010-11 level and real health spending per person roughly
-  doubled between 2000 and 2022; UK government investment has been below the
-  OECD median in every year since 1995.
+  Migration drives about half of projected household growth but only a small part of rising house prices, and UK public investment has long lagged other rich countries.
 status: well-supported
 sources:
   - stance: supports
