@@ -60,6 +60,7 @@ test('a section with no items renders no heading for that section', () => {
     title: 'Bare',
     subtitle: 'Sub',
     lastUpdated: '2026-08-18',
+    firstPublished: '2026-08-18',
     intro: 'Intro.',
     facts: [{ id: 'a', claim: 'A', status: 'well-supported', sources: [], body: '' }],
     viewpoints: [
@@ -102,6 +103,7 @@ test('a section with items renders its heading', () => {
     title: 'Full',
     subtitle: 'Sub',
     lastUpdated: '2026-08-18',
+    firstPublished: '2026-08-18',
     intro: 'Intro.',
     facts: [{ id: 'a', claim: 'A', status: 'well-supported', sources: [], body: '' }],
     viewpoints: [
@@ -156,7 +158,7 @@ test('viewpoints come before the data, and their header is the name alone', () =
     citesFacts: [], acknowledges: ['a'], setsAside: [], principles: [], body: '',
   };
   const topic: Topic = {
-    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', intro: '',
+    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
     facts: [{ id: 'a', claim: 'A', status: 'well-supported', sources: [], body: '' }],
     viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two', order: 2 }],
     principles: [],
@@ -174,7 +176,7 @@ test('topic dataOrder places an explicitly commissioned collection before the de
     { id: 'third', claim: 'Third', status: 'well-supported' as const, sources: [], body: '' },
   ];
   const topic = {
-    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', intro: '',
+    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
     dataOrder: ['first', 'third'], facts,
     viewpoints: [], principles: [], cruxes: [],
   } as Topic;
@@ -212,6 +214,7 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
     title: 'Nested',
     subtitle: 'Sub',
     lastUpdated: '2026-08-18',
+    firstPublished: '2026-08-18',
     intro: '',
     facts: [factOf('parent'), factOf('child', 'parent')],
     viewpoints: [viewpointOf('one', 1), viewpointOf('two', 2)],

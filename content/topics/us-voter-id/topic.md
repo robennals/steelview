@@ -1,6 +1,7 @@
 ---
 title: Voter ID and citizenship checks in the US
 subtitle: Whether Americans should have to prove who they are and that they are citizens to vote, how voter rolls should be checked, and who sets the rules.
+firstPublished: 2026-10-23
 lastUpdated: 2026-10-29
 tags: [USA, Voting]
 # The first chart shows how big the issue is; together they represent every

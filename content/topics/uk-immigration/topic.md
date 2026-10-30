@@ -1,6 +1,7 @@
 ---
 title: UK immigration
 subtitle: How many people should move to Britain to work, study and join family, by which routes, and what they must do to stay for good.
+firstPublished: 2026-08-18
 lastUpdated: 2026-10-29
 tags: [UK, Immigration]
 # The first chart shows how big the issue is; together they represent every

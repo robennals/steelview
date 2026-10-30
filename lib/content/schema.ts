@@ -812,6 +812,11 @@ export const previewChartSchema = z.object({
   reading: z.string().min(1).optional(),
 });
 
+const fullDate = z.preprocess(
+  fromYamlScalar,
+  z.string().regex(new RegExp(`^\\d{4}-${MONTH}-${DAY}$`), 'must be YYYY-MM-DD')
+);
+
 export const topicFrontmatterSchema = z.object({
   /**
    * Categories such as "UK", "USA" or "Voting", shown on the topic's home-page
@@ -838,8 +843,7 @@ export const topicFrontmatterSchema = z.object({
   ),
   title: z.string().min(1),
   subtitle: z.string().min(1),
-  lastUpdated: z.preprocess(
-    fromYamlScalar,
-    z.string().regex(new RegExp(`^\\d{4}-${MONTH}-${DAY}$`), 'must be YYYY-MM-DD')
-  ),
+  /** When the topic first went up. The home page lists the newest first. */
+  firstPublished: fullDate,
+  lastUpdated: fullDate,
 });

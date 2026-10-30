@@ -55,6 +55,7 @@ function soundTopic(): Topic {
     title: 'Example',
     subtitle: 'Sub',
     lastUpdated: '2026-08-18',
+    firstPublished: '2026-08-18',
     intro: 'Intro.',
     facts: [fact({ id: 'alpha' }), fact({ id: 'gamma' })],
     viewpoints: [

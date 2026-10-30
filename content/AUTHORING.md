@@ -665,6 +665,14 @@ lags and incomplete effects when relevant. Do not manufacture a story for every
 small wiggle; if a major movement has no established explanation, say what is
 unknown. Explain measurement breaks in Method Changes so readers do not mistake them for events.
 
+### Home-page order
+
+The home page lists topics newest first, by `firstPublished` in `topic.md`
+(`YYYY-MM-DD`), and the first row starts open. Topics published on the same day
+fall back to alphabetical order of their folder names. Set `firstPublished` once,
+when the topic first goes up, and leave it alone afterwards: unlike
+`lastUpdated`, it does not move when the topic is revised.
+
 ### Home-page preview charts
 
 Each topic's row on the home page opens onto a carousel of a few of its
