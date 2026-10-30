@@ -528,8 +528,9 @@ sources:
 series:
   title: UK immigration, emigration and net migration, 1964–2025
   description: >-
-    Annual long-term arrivals, departures and their difference, from 1964 to
-    2025. A long-term move means a stay of at least a year.
+    How many people moved to the UK long term each year, how many left, and the difference
+    between the two, called net migration. The figures run from 1964 to 2025. A long-term
+    move means a stay of at least a year.
   periodLabel: Year
   coverage:
     from: '1964'
@@ -933,9 +934,10 @@ additionalSeries:
   - id: routes
     title: Net migration by route, reason and nationality, 2019–2025
     description: >-
-      Net long-term migration in each rolling year, split into non-EU+ nationals
-      by their original reason for coming, EU+ nationals and British nationals.
-      The parts add to the total, apart from rounding.
+      Net migration is long-term arrivals minus departures; this chart splits it by
+      nationality and by people's reason for first coming. Each rolling year is divided
+      into non-EU+ nationals by their original reason for coming, EU+ nationals and
+      British nationals. The parts add to the total, apart from rounding.
     periodLabel: Year ending
     coverage:
       from: 2019-06
@@ -1279,9 +1281,9 @@ additionalSeries:
   - id: nationality
     title: UK Migration by Nationality
     description: >-
-      EU+, non-EU+ and British nationals, shown separately. EU+ includes the EU
-      and EFTA from mid-2021; the earlier definition covers the EU only.
-      Nationality is not ethnicity or the country someone last lived in.
+      People moving to the UK long term, shown separately for EU+, non-EU+ and British
+      nationals. EU+ includes the EU and EFTA from mid-2021; the earlier definition covers
+      the EU only. Nationality is not ethnicity or the country someone last lived in.
     periodLabel: Year ending
     coverage:
       from: 2012-06
@@ -1495,8 +1497,8 @@ additionalSeries:
   - id: components
     title: What drives UK population change, mid-1982 to mid-2025
     description: >-
-      Each year's change in the UK population, split into natural change (births
-      minus deaths) and net migration. Years run to the end of June.
+      Yearly change in UK population, split into births minus deaths (natural change) and
+      arrivals minus departures (net migration). Years run to the end of June.
     periodLabel: Year to mid-year
     coverage:
       from: '1982'
@@ -1679,9 +1681,11 @@ additionalSeries:
       Projected UK population and old-age ratio under four migration
       assumptions, 2024–2124
     description: >-
-      ONS 2024-based national population projections. Each line holds fertility
-      and mortality at the principal assumptions and varies only long-term net
-      migration. Projections are scenarios, not forecasts.
+      Official projections of UK population, and of older people relative to working-age
+      people, under four levels of net migration. They are the Office for National
+      Statistics' 2024-based national population projections. Each line holds fertility
+      and mortality at the principal assumptions and varies only long-term net migration.
+      Projections are scenarios, not forecasts.
     periodLabel: Mid-year
     coverage:
       from: '2024'
@@ -2553,9 +2557,10 @@ comparisons:
   - id: oecd-permanent-per-head
     title: Permanent-type migration per head, OECD countries, 2024
     description: >-
-      New permanent-type migrants of foreign nationality in 2024 as a share of
-      each country's population. All 37 countries in the OECD's chart; Türkiye
-      is not included. The UK is 21st of 37.
+      Foreign nationals newly given a status that can lead to long-term residence in 2024,
+      as a share of each OECD country's population. The OECD calls these permanent-type
+      migrants. All 37 countries in the OECD's chart are shown; Türkiye is not included.
+      The UK is 21st of 37.
     unit: percent
     valueLabel: New permanent-type migrants as % of population, 2024
     sources:
@@ -2651,9 +2656,10 @@ comparisons:
   - id: oecd-permanent-count
     title: Permanent-type migration in people, OECD countries, 2024
     description: >-
-      The same 2024 inflows as the chart above, in people rather than per head.
-      The UK had the fourth-largest number, after the United States, Germany and
-      Canada.
+      Foreign nationals newly given a status that can lead to long-term residence in 2024,
+      in each OECD country, counted in people. These are the same inflows as the per-head
+      chart, which the OECD calls permanent-type migration. The UK had the fourth-largest
+      number, after the United States, Germany and Canada.
     unit: count
     valueLabel: New permanent-type migrants, 2024
     sources:
@@ -2741,9 +2747,10 @@ comparisons:
   - id: international-immigration
     title: International Comparison by Nationality, 2024
     description: >-
-      EU+ and non-EU+ bars count foreign nationals; each country’s own nationals
-      are separate. EU+ means EU and EFTA; other foreign nationals are non-EU+.
-      Poland and Slovakia exclude Ukrainians under temporary protection.
+      Arrivals in the UK and in EU and EFTA countries in 2024 as a share of each country's
+      population, split by nationality. EU+ and non-EU+ bars count foreign nationals; each
+      country’s own nationals are separate. EU+ means EU and EFTA; other foreign nationals
+      are non-EU+. Poland and Slovakia exclude Ukrainians under temporary protection.
     unit: percent
     valueLabel: Annual arrivals as % of resident population
     sources:

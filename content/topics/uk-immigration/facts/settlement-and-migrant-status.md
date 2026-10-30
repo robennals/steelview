@@ -633,9 +633,10 @@ sources:
 series:
   title: 'Grants of settlement in the UK, 2010–2025'
   description: >-
-    Every grant of indefinite leave to remain outside the EU Settlement Scheme in each
-    calendar year, split by the kind of leave the person held immediately before settling.
-    The parts add up to the total in every year. The 2012 policy change named in the
+    Settlement, or indefinite leave to remain, lets a person live in the UK permanently;
+    this counts grants made each calendar year. It leaves out the EU Settlement Scheme and
+    splits grants by the kind of leave the person held immediately before settling. The
+    parts add up to the total in every year. The 2012 policy change named in the
     observations lengthened the family route from two years to five.
   periodLabel: Year
   coverage:
@@ -853,8 +854,10 @@ additionalSeries:
   - id: windrush-compensation
     title: 'Windrush Compensation Scheme: cumulative amount paid, 2019–2026'
     description: >-
-      Total paid out by the Windrush Compensation Scheme since it opened on 3 April 2019,
-      in pounds, at the end of each quarter to June 2020 and each month after that.
+      The Windrush Compensation Scheme pays out for people with a lawful right to stay in
+      the UK who were treated as if they had none. This is the total it has paid out since
+      it opened on 3 April 2019, in pounds, at the end of each quarter to June 2020 and
+      each month after that.
     periodLabel: End of quarter or month
     coverage:
       from: '2019-06'
@@ -1039,7 +1042,7 @@ additionalSeries:
 comparisons:
   - id: settled-and-on-a-path
     title: "Who holds settlement, and who is on a path to it"
-    description: "Three different measures, each the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
+    description: "Three separate measures of people with, or on a route to, settlement, which is the right to live in the UK permanently. Each is the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
     unit: count
     valueLabel: "People"
     sources:
@@ -1059,7 +1062,7 @@ comparisons:
     note: "No official count of people holding indefinite leave exists: the Home Office publishes grants, not holders. The EU figure is grants, so it counts people who have since left or naturalised; it is the 4,476,552 applications concluded as settled in table EUSS_QTR plus 115,770 automated grants, which the Home Office describes as \"just under 4.6 million\". The non-EU range is the Migration Observatory's estimate from the 2021 Census (England and Wales only) and visa data. The path-to-settlement figure is the Migration Observatory's rounded \"around 2.2 million\". The bars measure different things and should not be added together."
   - id: path-by-group
     title: "People on a five-year path to settlement, by visa group, end of 2024"
-    description: "The Migration Observatory's breakdown of the roughly 2.2 million temporary-visa holders on a five-year path, by the visa they held at the end of 2024."
+    description: "People on temporary visas that can lead to settlement, the right to live in the UK permanently, after five years, by type of visa. This is the breakdown by the Migration Observatory at the University of Oxford of the roughly 2.2 million holders of those visas, by the visa they held at the end of 2024."
     unit: count
     valueLabel: "People holding the visa"
     sources:
@@ -1079,7 +1082,7 @@ comparisons:
     note: "These five groups are the ones the Migration Observatory names; together they come to 2,172,000 against its rounded total of \"around 2.2 million\". The worker figure includes some people on visas that do not lead to settlement, such as intra-company transfers."
   - id: cohort-2020
     title: "Where the 2020 arrivals were five years on, by route of entry"
-    description: "Everyone who began a \"migrant journey\" in 2020, by the route they entered on, and their status at the end of 2025: indefinite leave, still on temporary leave, or leave expired (expected to have left). Ranked by size of route."
+    description: "People who began what the Home Office calls a \"migrant journey\" in 2020, by route of entry and by their status at the end of 2025. Status means indefinite leave (the right to stay permanently), still on temporary leave, or leave expired (expected to have left). Ranked by size of route."
     unit: count
     valueLabel: "People"
     sources:
@@ -1131,7 +1134,7 @@ comparisons:
     note: "From Home Office table MJ_03. The six routes are the table's complete set and add up to its total of 344,058. Asylum covers claims made in 2020 that ended in a grant of protection or other leave; refused claims are not in the data. Visitors are excluded."
   - id: universal-credit-by-status
     title: "People on Universal Credit by immigration status, July 2025"
-    description: "Great Britain, July 2025: the share of the 8.0 million people on Universal Credit in each immigration status group the Department for Work and Pensions records."
+    description: "Universal Credit is a benefit; this splits the people receiving it in Great Britain by their recorded immigration status. The figures are for July 2025 and show the share of the 8.0 million people on Universal Credit in each status group the Department for Work and Pensions records."
     unit: percent
     valueLabel: "Share of people on Universal Credit"
     domainMax: 100
@@ -1160,7 +1163,7 @@ comparisons:
     note: "Every group the Department for Work and Pensions publishes; they sum to 100.0%. These are \"statistics in development\". Status is recorded when someone claims or their circumstances change, and the department is not usually told when someone with indefinite leave becomes a British citizen, so the indefinite-leave group includes some citizens."
   - id: fees-and-costs
     title: "Home Office fees for main applications, against its own estimated unit cost"
-    description: "The fee from 8 October 2026 for the main application on each major route, with the Home Office's estimated cost of processing it in the label. Two fees are below their unit cost."
+    description: "What the Home Office charges for the main application on each major route, with its estimated processing cost in the label. Fees are those from 8 October 2026. Two fees are below their unit cost."
     unit: pounds
     valueLabel: "Fee per applicant (£)"
     sources:
@@ -1197,7 +1200,7 @@ comparisons:
     note: "The table lists more than 150 fees. Shown here is the standard main-applicant fee for settlement, citizenship, and each main work, study, family and visit route, including the two below cost; extensions, priority services and sponsor fees are left out. The naturalisation unit cost of £1.23 is as printed and is almost certainly an error in the table. The Immigration Health Surcharge is paid on top of most temporary visas and is not included."
   - id: settlement-fees-europe
     title: "Cost of applying for permanent residence, UK and European science nations, 2025"
-    description: "The applicant fee for permanent residence (or the nearest equivalent for researchers) in every European country in the Royal Society's comparison, 2025, in pounds at nominal exchange rates."
+    description: "What an applicant pays for the right to stay permanently in the UK and other European countries in a Royal Society comparison. Each bar is the applicant fee for permanent residence (or the nearest equivalent for researchers) in every European country in the comparison, 2025, in pounds at nominal exchange rates."
     unit: pounds
     valueLabel: "Applicant cost (£)"
     sources:
@@ -1226,7 +1229,7 @@ comparisons:
     note: "All nine countries in the Royal Society's Table 12, which compares European countries with dedicated researcher or skilled-worker settlement routes; non-European countries in the study are not in this table. The UK figure is the 2025 fee; the Home Office fee table from 8 October 2026 puts it at £3,226. Adjusted for purchasing power the UK ranks first."
   - id: ilr-polling
     title: "Support for ending and for removing indefinite leave, September 2025"
-    description: "YouGov, Great Britain adults, September 2025: support and opposition for ending new grants of indefinite leave, and for removing it from people who already hold it."
+    description: "A poll on ending new grants of indefinite leave, the right to live in the UK permanently, and removing it from those who hold it. YouGov asked adults in Great Britain in September 2025, and the bars show support and opposition on each question."
     unit: percent
     valueLabel: "Share of respondents"
     domainMax: 100

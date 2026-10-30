@@ -490,7 +490,7 @@ sources:
   date: "2025"
 series:
   title: GDP per head in the UK, 1955–2025
-  description: "Real gross domestic product divided by the UK population, at 2023 prices, for every year the ONS series publishes. It is output per person, not income per person or how that output is shared."
+  description: "Gross domestic product (GDP), the UK's total economic output, divided by its population and measured at 2023 prices. This is real GDP for every year the Office for National Statistics series publishes. It is output per person, not income per person or how that output is shared."
   periodLabel: Year
   coverage:
     from: "1955"
@@ -657,7 +657,7 @@ series:
 additionalSeries:
 - id: gdp-total-series
   title: Total UK GDP, 1948–2025
-  description: "Real gross domestic product for the whole economy at 2023 prices, in £ billion. Shown beside GDP per head because a larger population raises total output even when output per person does not change."
+  description: "Gross domestic product (GDP), the total output of the whole UK economy, at 2023 prices, in £ billion. This is real GDP, shown beside GDP per head because a larger population raises total output even when output per person does not change."
   periodLabel: Year
   coverage:
     from: "1948"
@@ -837,7 +837,7 @@ additionalSeries:
         value: 2817.4
 - id: g7-series
   title: GDP per head across the G7, 1960–2025
-  description: "Real GDP per person in each G7 country, in US dollars at 2015 prices and market exchange rates, from the World Bank. All seven G7 members are shown; the UK is the subject."
+  description: "Economic output per person in the seven large economies of the G7, in US dollars at 2015 prices and market exchange rates. This is real GDP per person, from the World Bank. All seven G7 members are shown; the UK is the subject."
   periodLabel: Year
   coverage:
     from: "1960"
@@ -1798,7 +1798,7 @@ additionalSeries:
 comparisons:
 - id: g7-growth
   title: Change in GDP per head, 2019 to 2025, G7
-  description: "Cumulative change in real GDP per person between 2019 and 2025, all seven G7 countries, ranked. The UK is highlighted."
+  description: "How much output per person changed between 2019 and 2025 in each of the seven large economies of the G7, ranked. This is the cumulative change in real GDP per person. The UK is highlighted."
   unit: percent
   valueLabel: '% change in GDP per head, 2019–2025'
   sources:
@@ -1822,7 +1822,7 @@ comparisons:
     value: -0.2
 - id: obr-gdp-per-person
   title: "OBR: GDP per person if net migration were 200,000 a year higher"
-  description: "Difference from the OBR central forecast in 2028-29, March 2024 scenarios. The lower-migration scenario is the mirror image."
+  description: "Scenario estimates of output per person in 2028-29 if net migration (arrivals minus departures) ran above the official forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, in its March 2024 scenarios. The lower-migration scenario is the mirror image."
   unit: percent
   valueLabel: GDP per person, % difference from central forecast
   sources:
@@ -1839,7 +1839,7 @@ comparisons:
     value: -0.4
 - id: obr-gdp
   title: "OBR: total GDP if net migration were 200,000 a year higher"
-  description: "Difference from the OBR central forecast in 2028-29, same three cases, March 2024."
+  description: "Scenario estimates of total output (GDP) in 2028-29 if net migration (arrivals minus departures) ran above the official forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, in the same three cases as the GDP-per-person chart, from March 2024."
   unit: percent
   valueLabel: Total GDP, % difference from central forecast
   sources:
@@ -1855,7 +1855,7 @@ comparisons:
     value: 1
 - id: obr-borrowing
   title: "OBR: borrowing in 2028-29 under higher or lower net migration"
-  description: "Change in public sector net borrowing against the central forecast, March 2024 scenarios with net migration 200,000 a year higher or lower. Negative means less borrowing."
+  description: "Estimated change in government borrowing in 2028-29 if net migration (arrivals minus departures) ran above or below forecast. This is the change in public sector net borrowing against the Office for Budget Responsibility's central forecast, in its March 2024 scenarios with net migration 200,000 a year higher or lower. Negative means less borrowing."
   unit: pounds
   valueLabel: Change in borrowing in 2028-29
   sources:
@@ -1873,7 +1873,7 @@ comparisons:
     value: -19900000000.0
 - id: lifetime-by-route
   title: "Modelled lifetime net fiscal contribution, by visa route and against UK residents"
-  description: "Present value of taxes paid minus public spending received over the rest of each person's life, from 2022/23. Migrant groups are the 2022/23 Skilled Worker and Partner-route cohorts; UK resident rows are the MAC's comparators."
+  description: "Modelled taxes paid minus public spending received over the rest of a person's life, by visa route and for UK residents. Figures are present values from 2022/23. Migrant groups are the 2022/23 Skilled Worker and Partner-route cohorts; UK resident rows are the comparators used by the Migration Advisory Committee."
   unit: pounds
   valueLabel: Mean lifetime net contribution per person (present value)
   sources:
@@ -1910,7 +1910,7 @@ comparisons:
     highlight: true
 - id: obr-cumulative-age-66
   title: "OBR: cumulative fiscal impact by age 66"
-  description: "Stylised OBR profiles: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth, cumulative to age 66. Not discounted."
+  description: "Illustrative running totals of tax paid minus public spending received to age 66, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   unit: pounds
   valueLabel: Cumulative taxes minus spending to age 66
   sources:
@@ -1930,7 +1930,7 @@ comparisons:
     value: -198000
 - id: obr-cumulative-age-82
   title: "OBR: cumulative fiscal impact by age 82"
-  description: "Stylised OBR profiles: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth, cumulative to age 82. Not discounted."
+  description: "Illustrative running totals of tax paid minus public spending received to age 82, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   unit: pounds
   valueLabel: Cumulative taxes minus spending to age 82
   sources:
@@ -1950,7 +1950,7 @@ comparisons:
     value: -653000
 - id: obr-cumulative-age-100
   title: "OBR: cumulative fiscal impact by age 100"
-  description: "Stylised OBR profiles: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth, cumulative to age 100. Not discounted."
+  description: "Illustrative running totals of tax paid minus public spending received to age 100, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   unit: pounds
   valueLabel: Cumulative taxes minus spending to age 100
   sources:
@@ -1970,7 +1970,7 @@ comparisons:
     value: -1555000
 - id: earnings-by-route
   title: Median earnings by visa route, 2023/24
-  description: "Median annual adjusted PAYE earnings in financial year 2023/24 of people granted entry clearance visas from April 2019 to March 2023, aged 18–65, with the UK full-time median beside them for reference."
+  description: "Median (middle) yearly earnings in 2023/24 of people granted UK entry visas, by visa route, beside the UK full-time median. These are median annual adjusted PAYE earnings in financial year 2023/24 of people aged 18–65 granted entry clearance visas from April 2019 to March 2023. The UK full-time median is there for reference."
   unit: pounds
   valueLabel: Median annual earnings
   sources:
@@ -2001,7 +2001,7 @@ comparisons:
     value: 20200
 - id: wage-effects-by-percentile
   title: "Implied effect of EU immigration on UK-born wages, 1993–2017, by wage level"
-  description: "MAC update of Dustmann, Frattini and Preston: the total effect implied by the 6.7-point rise in the EU-born share of the working-age population, at each point of the UK-born wage distribution. Ordered from lowest to highest paid."
+  description: "Implied effect on UK-born workers' wages, at each pay level, of the rise in the EU-born share of the working-age population. This is the Migration Advisory Committee's update of work by Dustmann, Frattini and Preston, giving the total effect implied by the 6.7-point rise in that share at each point of the UK-born wage distribution. Ordered from lowest to highest paid."
   unit: percent
   valueLabel: '% change in UK-born nominal wages'
   sources:
@@ -2024,7 +2024,7 @@ comparisons:
     value: 3.1
 - id: tuition-fees-by-domicile
   title: Who pays UK universities' course fees, 2024/25
-  description: "Higher-education course fees received by UK providers in 2024/25, by where the student is domiciled."
+  description: "Course fees received by UK higher-education providers in 2024/25, split between students from the UK and those from elsewhere. Students are grouped by where they are domiciled."
   unit: pounds
   valueLabel: Course fee income, 2024/25
   shareTotal: 26761366000

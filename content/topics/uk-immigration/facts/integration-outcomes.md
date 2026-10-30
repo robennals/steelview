@@ -718,8 +718,9 @@ sources:
 series:
   title: 'Foreign-born share of the resident population, England and Wales, Census 1951–2021'
   description: >-
-    The share of usual residents born outside the UK at each Census for which
-    the ONS states the figure in text. This is a resident stock, not a count of
+    The share of people usually living in England and Wales who were born outside the UK,
+    at selected Censuses. Shown for each Census for which the Office for National
+    Statistics states the figure in text. This is a resident stock, not a count of
     arrivals in the year shown.
   periodLabel: Census year
   coverage:
@@ -771,9 +772,9 @@ additionalSeries:
   - id: employment
     title: 'Employment rate by ethnic group, ages 16 to 64, Great Britain, 2004–2022'
     description: >-
-      The share of 16- to 64-year-olds in work in each year, for every ethnic
-      group the Annual Population Survey series publishes, with the overall
-      rate for comparison. Ethnicity is not migrant status: most people in
+      The share of 16- to 64-year-olds in work each year in Great Britain, by ethnic
+      group, with the overall rate for comparison. It covers every ethnic group the Annual
+      Population Survey series publishes. Ethnicity is not migrant status: most people in
       several of these groups were born in the UK.
     periodLabel: Year
     coverage:
@@ -990,10 +991,10 @@ additionalSeries:
   - id: denmark
     title: 'Average annual net contribution to public finances by origin, Denmark, 2014–2019'
     description: >-
-      Taxes paid minus transfers and public services used, per person per year,
-      for people of Danish origin and for immigrants and their Danish-born
-      descendants by region of origin. Below zero is a net cost. These are
-      single-year accounts, not lifetime ones.
+      Average yearly taxes paid per person in Denmark minus transfers and public services
+      used, for people of different origins. The groups are people of Danish origin, and
+      immigrants and their Danish-born descendants by region of origin. Below zero is a
+      net cost. These are single-year accounts, not lifetime ones.
     periodLabel: Year
     coverage:
       from: '2014'
@@ -1085,9 +1086,10 @@ additionalSeries:
   - id: higher-education
     title: 'Entry rate into higher education at 18 by ethnic group, England, 2006–2024'
     description: >-
-      The share of 18-year-olds from English state schools accepted onto a
-      full-time undergraduate course through UCAS, for each ethnic group the
-      series publishes.
+      The share of 18-year-olds from English state schools accepted onto a full-time
+      undergraduate course, by ethnic group. It counts acceptances through UCAS, the
+      Universities and Colleges Admissions Service, for each ethnic group the series
+      publishes.
     periodLabel: Year
     coverage:
       from: '2006'
@@ -1242,10 +1244,12 @@ additionalSeries:
   - id: cohesion
     title: 'Neighbourhood trust and cohesion, England, 2018/19–2024/25'
     description: >-
-      The share of adults who say many people in their neighbourhood can be
-      trusted, and the share who agree their local area is a place where
-      people from different backgrounds get on well together. Each point is a
-      survey year from October to March, plotted at the year it starts.
+      How many adults in England trust people in their neighbourhood, and how many say
+      people from different backgrounds get on there. One line is the share of adults who
+      say many people in their neighbourhood can be trusted; the other is the share who
+      agree their local area is a place where people from different backgrounds get on
+      well together. Each point is a survey year from October to March, plotted at the
+      year it starts.
     periodLabel: Survey year (plotted at its starting year)
     coverage:
       from: '2018'
@@ -1293,10 +1297,11 @@ comparisons:
   - id: fastest-changing-areas
     title: Where the foreign-born share rose most, 2011 to 2021
     description: >-
-      The 20 local authorities in England and Wales with the largest rise in
-      the share of residents born outside the UK between the 2011 and 2021
-      Censuses, with England and Wales as a whole, split into residents born
-      in the EU and those born elsewhere outside the UK.
+      The 20 local areas in England and Wales where the share of residents born outside
+      the UK rose most between 2011 and 2021. These are local authorities, compared
+      between the 2011 and 2021 Censuses, with England and Wales as a whole alongside.
+      Each rise is split into residents born in the EU and those born elsewhere outside
+      the UK.
     unit: count
     valueLabel: Rise in the foreign-born share, percentage points
     groupLabel: country of birth
@@ -1387,9 +1392,10 @@ comparisons:
   - id: english-proficiency
     title: English proficiency of residents born abroad, by when they arrived
     description: >-
-      Census 2021, England and Wales, everyone born outside the UK aged 3 and
-      over, by period of arrival. One Census, so this compares people who
-      arrived at different times, not the same people over time.
+      How well people born outside the UK and living in England and Wales say they speak
+      English, by when they arrived, Census 2021. It covers everyone born outside the UK
+      aged 3 and over. One Census, so this compares people who arrived at different times,
+      not the same people over time.
     unit: percent
     valueLabel: Share of residents born abroad who arrived in the period
     groupLabel: English proficiency
@@ -1429,8 +1435,8 @@ comparisons:
   - id: women-employment
     title: Employment rate of women by ethnic group, 2022
     description: >-
-      Women aged 16 to 64 in work, Great Britain, 2022, every ethnic group in
-      the published breakdown.
+      The share of women aged 16 to 64 in work in Great Britain in 2022, for every ethnic
+      group in the published breakdown.
     unit: percent
     valueLabel: Share of women aged 16 to 64 in work
     domainMax: 100
@@ -1462,8 +1468,9 @@ comparisons:
   - id: employment-by-religion
     title: Employment rate by religion, Census 2021
     description: >-
-      People aged 16 to 64 in work (employees and self-employed), England and
-      Wales, March 2021, for every religion the Census tick-box lists.
+      The share of people aged 16 to 64 in work (employees and self-employed) in England
+      and Wales in March 2021, by religion. Every religion the Census tick-box lists is
+      shown.
     unit: percent
     valueLabel: Share of 16- to 64-year-olds in work
     domainMax: 100
@@ -1498,9 +1505,10 @@ comparisons:
   - id: netherlands-by-motive
     title: Lifetime net fiscal contribution by reason for migrating, Netherlands
     description: >-
-      Average net contribution per immigrant over the rest of their life,
-      including the cost of the second generation, by the reason recorded on
-      arrival. Independent study, not a government estimate.
+      The estimated average lifetime gain or cost to Dutch public finances per immigrant
+      to the Netherlands, by reason for migrating. The figure is the net contribution over
+      the rest of each person's life, including the cost of the second generation, by the
+      reason recorded on arrival. Independent study, not a government estimate.
     unit: count
     valueLabel: 'Euro thousands per immigrant (below zero is a net cost)'
     sources: [27]
@@ -1521,9 +1529,10 @@ comparisons:
   - id: netherlands-by-region
     title: Lifetime net fiscal contribution by region of origin, Netherlands
     description: >-
-      Average net contribution per immigrant over the rest of their life,
-      including the cost of the second generation, for the regions in the
-      study's English summary table. Independent study, not a government
+      The estimated average lifetime gain or cost to Dutch public finances per immigrant
+      to the Netherlands, by region of origin. The figure is the net contribution over the
+      rest of each person's life, including the cost of the second generation, for the
+      regions in the study's English summary table. Independent study, not a government
       estimate.
     unit: count
     valueLabel: 'Euro thousands per immigrant (below zero is a net cost)'
@@ -1555,9 +1564,9 @@ comparisons:
   - id: norway-by-region
     title: Modelled net fiscal effect of extra immigrants, Norway
     description: >-
-      Statistics Norway model: present value, 2015 to 2100, of the change in
-      net public finances per additional immigrant arriving in 2015, including
-      their descendants, by country group. Above zero is a net gain.
+      Modelled gain or cost to Norway's public finances per extra immigrant arriving in
+      2015, including descendants, by country group. From a Statistics Norway model, the
+      figure is a present value covering 2015 to 2100. Above zero is a net gain.
     unit: count
     valueLabel: 'NOK million per additional immigrant, 2012 values'
     sources: [32]
@@ -1579,9 +1588,10 @@ comparisons:
   - id: gcse-by-ethnicity
     title: GCSE results by ethnic group, England, 2022/23
     description: >-
-      Average Attainment 8 score (out of 90) for pupils at the end of Key
-      Stage 4 in state-funded schools, every detailed ethnic group. White
-      British pupils are highlighted as the reference group.
+      Average GCSE results at the end of secondary school in England, as an Attainment 8
+      score out of 90, by detailed ethnic group. It covers pupils at the end of Key Stage
+      4 in state-funded schools, for every detailed ethnic group. White British pupils are
+      highlighted as the reference group.
     unit: count
     valueLabel: Average Attainment 8 score (out of 90)
     sources: [35]
@@ -1635,9 +1645,9 @@ comparisons:
   - id: gcse-fsm
     title: GCSE results of pupils eligible for free school meals, by ethnic group, England, 2022/23
     description: >-
-      Average Attainment 8 score (out of 90) for pupils eligible for free
-      school meals, a measure of low family income, every detailed ethnic
-      group. White British pupils are highlighted.
+      Average GCSE score (Attainment 8, out of 90) in England for pupils eligible for free
+      school meals, a measure of low family income. Every detailed ethnic group is shown.
+      White British pupils are highlighted.
     unit: count
     valueLabel: Average Attainment 8 score (out of 90), free-school-meal pupils
     sources: [37]
@@ -1688,8 +1698,9 @@ comparisons:
   - id: attitudes-homosexuality
     title: Saying it would be undesirable to outlaw homosexuality, 2024
     description: >-
-      British Muslims and the general public, one 2024 online poll by J.L.
-      Partners commissioned by the Henry Jackson Society.
+      The share of British Muslims and of the general public who said it would be
+      undesirable to outlaw homosexuality in the UK. From one 2024 online poll by J.L.
+      Partners, commissioned by the Henry Jackson Society, a think tank.
     unit: percent
     valueLabel: Share saying outlawing homosexuality would be undesirable
     domainMax: 100

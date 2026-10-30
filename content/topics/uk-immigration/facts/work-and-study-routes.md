@@ -650,10 +650,11 @@ sources:
 series:
   title: Work visas issued to people coming from abroad, 2005–2025
   description: >-
-    Entry clearance visas issued for work, each calendar year, main applicants and
-    dependants together, split into route families that add up to the total. Health
-    and Care Worker is the route that took care workers from February 2022 until it
-    closed to new overseas recruits in July 2025.
+    Work visas issued each year to people applying from abroad, counting both the workers
+    and the family members who came with them. These are entry clearance visas by calendar
+    year, main applicants and dependants together, split into route families that add up
+    to the total. Health and Care Worker is the route that took care workers from February
+    2022 until it closed to new overseas recruits in July 2025.
   periodLabel: Year
   coverage:
     from: '2005'
@@ -1074,11 +1075,12 @@ additionalSeries:
 - id: health-care-route
   title: Health and Care Worker visas by quarter, 2020–2026
   description: >-
-    Health and Care Worker visas issued to people applying from abroad each quarter,
-    main applicants and the dependants who came with or joined them. Care workers
-    became eligible in February 2022; restrictions announced in December 2023, including
-    a bar on care workers bringing dependants, took effect in spring 2024; the route
-    closed to new overseas care recruits in July 2025.
+    The Health and Care Worker route lets people from abroad work in UK health and care;
+    this counts its visas issued each quarter. The visas are those issued to people
+    applying from abroad, main applicants and the dependants who came with or joined them.
+    Care workers became eligible in February 2022; restrictions announced in December
+    2023, including a bar on care workers bringing dependants, took effect in spring 2024;
+    the route closed to new overseas care recruits in July 2025.
   periodLabel: Quarter ending
   coverage:
     from: 2020-12
@@ -1203,10 +1205,10 @@ additionalSeries:
 - id: care-occupations
   title: Sponsored work visas for care workers, nurses and doctors by quarter, 2021–2026
   description: >-
-    Entry clearance grants to sponsored work main applicants each quarter, for the
-    three health and care occupation groups, with every sponsored occupation shown
-    for scale. Dependants are not included, because the dataset records occupation
-    only for the person sponsored.
+    Work visas each quarter for care workers, nurses and doctors sponsored by an employer,
+    with all sponsored jobs shown for scale. These are entry clearance grants to sponsored
+    work main applicants. Dependants are not included, because the dataset records
+    occupation only for the person sponsored.
   periodLabel: Quarter ending
   coverage:
     from: 2021-03
@@ -1430,9 +1432,10 @@ additionalSeries:
 - id: social-care-workforce
   title: Adult social care workforce in England, 2016/17–2025/26
   description: >-
-    Three views of the adult social care workforce in England, each financial year:
-    the vacancy rate, the nationality of the people filling posts, and how far care
-    workers’ average pay sits above the legal minimum wage.
+    Three views of people working in adult social care in England: unfilled posts, the
+    nationality of staff, and care workers’ pay. Each financial year shows the vacancy
+    rate, the nationality of the people filling posts, and how far care workers’ average
+    pay sits above the legal minimum wage.
   periodLabel: Financial year ending March
   coverage:
     from: '2017'
@@ -1632,9 +1635,10 @@ additionalSeries:
 - id: sponsor-revocations
   title: Sponsor licences revoked, 2012–2025
   description: >-
-    Licences to sponsor overseas workers or students that the Home Office revoked
-    each calendar year, by route. A revoked sponsor can no longer employ or recruit
-    people on that route.
+    A sponsor licence lets an organisation bring in overseas workers or students; this
+    counts those the Home Office revoked each year. Revocations are counted by calendar
+    year and by route. A revoked sponsor can no longer employ or recruit people on that
+    route.
   periodLabel: Year
   coverage:
     from: '2012'
@@ -1760,9 +1764,10 @@ additionalSeries:
 - id: registered-sponsors
   title: Registered sponsors and the revocation rate, 2014–2025
   description: >-
-    Organisations licensed to sponsor overseas workers or students at the end of each
-    year, and Skilled Worker revocations in the year as a share of Skilled Worker
-    sponsors.
+    How many organisations were licensed to bring in overseas workers or students, and how
+    often Skilled Worker licences were revoked. Sponsor counts are at the end of each
+    year. The revocation rate is Skilled Worker revocations in the year as a share of
+    Skilled Worker sponsors.
   periodLabel: Year
   coverage:
     from: '2014'
@@ -1908,8 +1913,10 @@ additionalSeries:
 - id: nurse-joiners
   title: Nurses, midwives and nursing associates joining the UK register, 2020/21–2025/26
   description: >-
-    People joining the Nursing and Midwifery Council register for the first time each
-    year to March, by whether they were educated in the UK or abroad.
+    People joining the UK's register of nurses, midwives and nursing associates for the
+    first time, by where they were educated. The register is the Nursing and Midwifery
+    Council's. Each year runs to March, and joiners are split by whether they were
+    educated in the UK or abroad.
   periodLabel: Year ending March
   coverage:
     from: '2021'
@@ -1977,9 +1984,9 @@ additionalSeries:
 - id: nhs-nationality
   title: NHS staff in England without British nationality, 2010–2025
   description: >-
-    The share of hospital and community health service staff in England who report
-    a nationality other than British, among staff whose nationality is recorded, for
-    all staff, doctors, and nurses and health visitors.
+    The share of NHS hospital and community health service staff in England who report a
+    nationality other than British. It is worked out among staff whose nationality is
+    recorded, for all staff, doctors, and nurses and health visitors.
   periodLabel: Month
   coverage:
     from: 2010-09
@@ -2064,9 +2071,9 @@ additionalSeries:
 - id: asylum-prior-route
   title: People claiming asylum by the route they held before claiming, 2018–2025
   description: >-
-    Everyone who claimed asylum each year, split by how they last came to be in the
-    UK: an illegal entry route, a visa or other leave, or neither; and, for visa holders,
-    which visa.
+    Everyone who claimed asylum each year, split by how they last came to be in the UK
+    and, for visa holders, by which visa. The groups are an illegal entry route, a visa or
+    other leave, or neither.
   periodLabel: Year
   coverage:
     from: '2018'
@@ -2278,8 +2285,9 @@ comparisons:
 - id: foreign-trained-doctors
   title: Foreign-trained doctors across the OECD
   description: >-
-    Share of doctors who obtained their first medical degree abroad, 2023 or the latest
-    year shown in brackets, every country the OECD reports. The UK is highlighted.
+    The share of doctors in each OECD country who got their first medical degree abroad,
+    in 2023 or the latest year shown in brackets. Every country the OECD reports is shown,
+    and the UK is highlighted.
   unit: percent
   valueLabel: '% of doctors trained abroad'
   domainMax: 100
@@ -2354,8 +2362,9 @@ comparisons:
 - id: foreign-trained-nurses
   title: Foreign-trained nurses across the OECD
   description: >-
-    Share of nurses who obtained their first nursing degree abroad, 2023 or the latest
-    year shown in brackets, every country the OECD reports. The UK is highlighted.
+    The share of nurses in each OECD country who got their first nursing degree abroad, in
+    2023 or the latest year shown in brackets. Every country the OECD reports is shown,
+    and the UK is highlighted.
   unit: percent
   valueLabel: '% of nurses trained abroad'
   domainMax: 100
@@ -2428,9 +2437,11 @@ comparisons:
 - id: graduate-earnings
   title: First-year earnings of Graduate route visa holders and UK graduates
   description: >-
-    Median annual earnings of people in work: Graduate route holders over their first
-    year on the visa and in its last three months, against UK-domiciled first-degree
-    graduates about 15 months after graduating.
+    The Graduate route is a work visa held by international graduates; this compares their
+    early earnings with those of UK graduates. It shows median annual earnings of people
+    in work: Graduate route holders over their first year on the visa and in its last
+    three months, against UK-domiciled first-degree graduates about 15 months after
+    graduating.
   unit: pounds
   valueLabel: Median annual earnings
   sources:
@@ -2452,7 +2463,9 @@ comparisons:
 - id: graduate-switcher-jobs
   title: Jobs taken by people switching into sponsored work
   description: >-
-    Share in managerial, professional or associate professional and technical occupations:
+    Share of people moving onto an employer-sponsored work visa who took graduate-level
+    jobs, by earlier visa, beside UK graduates. Graduate-level jobs here are managerial,
+    professional or associate professional and technical occupations. The groups are
     people switching to a sponsored work visa from the Graduate route, people switching
     straight from a student visa, and UK graduates.
   unit: percent

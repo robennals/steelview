@@ -576,9 +576,9 @@ sources:
 series:
   title: 'Net additional dwellings in England, 1991-92 to 2024-25'
   description: >-
-    The net change in England's housing stock each financial year (April to
-    March): new homes, conversions and changes of use, minus demolitions. Each
-    point is labelled by the year in which the financial year ends.
+    The net change in England's number of homes each financial year: new homes,
+    conversions and changes of use, minus demolitions. Financial years run from April to
+    March. Each point is labelled by the year in which the financial year ends.
   periodLabel: Financial year ending March
   coverage:
     from: '1992'
@@ -987,8 +987,9 @@ additionalSeries:
   - id: pupil-numbers
     title: 'Pupils in state-funded schools in England, 2016 to 2026'
     description: >-
-      Headcount of pupils at each January school census, by phase. Independent
-      schools are not included.
+      The number of pupils in England's state-funded schools at each January school
+      census, by primary, secondary and other schools. Independent schools are not
+      included.
     periodLabel: January school census
     coverage:
       from: '2016'
@@ -1117,10 +1118,10 @@ additionalSeries:
   - id: affordable-homes
     title: 'Affordable and social rent homes completed in England, 1991-92 to 2024-25'
     description: >-
-      Gross new affordable homes (new build and acquisitions) each financial
-      year, and the social rent homes among them. Losses through Right to Buy
-      and demolition are not subtracted. Labelled by the year in which the
-      financial year ends.
+      New affordable homes completed in England each financial year, and the social rent
+      homes, let at lower rents, among them. This is a gross count of new build and
+      acquisitions. Losses through Right to Buy and demolition are not subtracted.
+      Labelled by the year in which the financial year ends.
     periodLabel: Financial year ending March
     coverage:
       from: '1992'
@@ -1301,9 +1302,10 @@ additionalSeries:
   - id: school-funding
     title: 'School funding per pupil in England, real terms, 2010-11 to 2026-27'
     description: >-
-      Revenue funding for 5–16 year olds in state-funded schools per pupil,
-      after inflation (GDP deflator, 2025-26 prices), shown as the change since
-      2010-11. Labelled by the year in which the financial year ends.
+      Funding per pupil for 5–16 year olds in England's state-funded schools, after
+      inflation, shown as the change since 2010-11. This is revenue funding, adjusted
+      using the GDP deflator at 2025-26 prices. Labelled by the year in which the
+      financial year ends.
     periodLabel: Financial year ending March
     coverage:
       from: '2011'
@@ -1368,8 +1370,9 @@ additionalSeries:
   - id: investment
     title: 'Government investment as a share of GDP: UK and OECD median, 1995–2024'
     description: >-
-      General government gross fixed capital formation as a percentage of GDP,
-      for the UK and for the median OECD member with data that year.
+      Government investment as a share of GDP, for the UK and for the median country in
+      the OECD, a group of rich countries. Investment here is general government gross
+      fixed capital formation. The OECD figure is the median member with data that year.
     periodLabel: Year
     coverage:
       from: '1995'
@@ -1528,9 +1531,10 @@ comparisons:
   - id: household-growth-by-variant
     title: Projected household growth in England by migration assumption
     description: >-
-      Projected increase in households in England between mid-2022 and
-      mid-2032 under each of the ONS's 2022-based variant projections, ranked.
-      The ONS recommends the migration category variant as its main projection.
+      How many more households England is projected to have in mid-2032 than in mid-2022,
+      under different assumptions, ranked. These are the Office for National Statistics'
+      2022-based variant projections. It recommends the migration category variant as its
+      main projection.
     unit: count
     valueLabel: Additional households, 2022 to 2032
     sources:
@@ -1564,9 +1568,10 @@ comparisons:
   - id: house-price-and-rent-effects
     title: How much house prices and rents rise per point of immigrant share
     description: >-
-      Median estimated percentage rise in house prices or rents for a
-      one-percentage-point rise in the immigrant share of the population, from
-      the MAC-commissioned review of international studies, by study group.
+      Estimated rise in house prices or rents when the immigrant share of the population
+      rises by one percentage point, by study group. Figures are median estimated
+      percentage rises, from a review of international studies commissioned by the
+      Migration Advisory Committee.
     unit: percent
     valueLabel: Median effect of a 1-point rise in immigrant share
     sources:
@@ -1598,8 +1603,9 @@ comparisons:
   - id: government-investment-oecd-2024
     title: Government investment across the OECD in 2024
     description: >-
-      General government gross fixed capital formation as a percentage of GDP,
-      2024, for every OECD member with data. The UK is highlighted.
+      Government investment as a share of GDP in 2024, for every member of the OECD, a
+      group of rich countries, with data. Investment here is general government gross
+      fixed capital formation. The UK is highlighted.
     unit: percent
     valueLabel: Government investment as a share of GDP
     sources:
