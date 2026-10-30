@@ -114,18 +114,12 @@ AUTHORING.md §What the build enforces):
 Write the rule into `content/AUTHORING.md` as a new subsection under §Charts,
 "Home-page preview charts", with the UK selection below as the worked example.
 
-### The UK immigration selection
+### The UK selections
 
-| # | Chart | Why it is here | Viewpoints whose inline citations it satisfies |
-|---|---|---|---|
-| 1 | `immigration-against-the-long-run` / `series` | Magnitude: arrivals, departures and net migration since 1964, in people and as a share of the population | Too much, too fast; A country should decide; Better off |
-| 2 | `how-people-actually-arrive` / study-and-work comparison | Overview of why people come | The right kind; A country should decide; Moral duty |
-| 3 | `skilled-worker-fiscal-gain-concentrated` / `earnings-concentration` | Strongest charted economic evidence | Better off; The right kind; Too much, too fast |
-| 4 | `asylum-claims-in-historical-and-european-context` / `asylum-per-person` | Strongest charted evidence for the asylum case, full EU+ distribution | Moral duty |
-
-Known weakness, to record as follow-up content work, not to fix here: *Better
-off*'s strongest evidence (health-and-care staffing, wage and housing effects)
-has no chart data, so chart 3 stands in for it imperfectly.
+Main rebuilt UK immigration (and added UK asylum) during this work, so the
+selections were redone against the new reports; the current lists, with the
+reasoning, are in `content/topics/uk-immigration/topic.md`,
+`content/topics/uk-asylum/topic.md` and AUTHORING.md's worked example.
 
 ## Charts
 
@@ -266,7 +260,7 @@ Main now publishes three more topics. Builder's editorial picks under the rule
 3. `opinion-and-confidence-in-elections` / `series` — support for photo ID by party
 4. `voter-id-rules-in-the-us-and-abroad` / `series` — states asking for ID, 1950–2026
 
-**UK immigration** — tags `UK`, `Immigration`; selection as above.
+**UK immigration** — tags `UK`, `Immigration`; **UK asylum** — tags `UK`, `Asylum`; see above.
 
 ## Left to the builder
 

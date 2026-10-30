@@ -15,10 +15,10 @@ test('a series thumbnail draws its first reading as decorative lines, with no te
 });
 
 test('a comparison thumbnail draws one column per item, marking the highlighted one', async () => {
-  const topic = await loadTopic('uk-immigration');
-  const fact = topic.facts.find(f => f.id === 'asylum-claims-in-historical-and-european-context')!;
-  const chart = fact.comparisons!.find(c => c.id === 'asylum-per-person')!;
-  const html = renderToStaticMarkup(createElement(ChartThumb, { fact, chart: 'asylum-per-person' }));
+  const topic = await loadTopic('uk-asylum');
+  const fact = topic.facts.find(f => f.id === 'asylum-claims-and-decisions')!;
+  const chart = fact.comparisons!.find(c => c.id === 'per-head-2025')!;
+  const html = renderToStaticMarkup(createElement(ChartThumb, { fact, chart: 'per-head-2025' }));
   assert.match(html, /aria-hidden="true"/);
   assert.equal(html.match(/class="sv-thumb__column"/g)?.length, chart.items.length);
   assert.equal(html.match(/data-highlight="true"/g)?.length, 1);

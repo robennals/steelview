@@ -670,15 +670,14 @@ leaves "strongest", magnitude and overview to you.
 
 `uk-immigration` opens on `immigration-against-the-long-run`, read as a
 share of the population since 1964 (`reading: share-of-population`), which is
-what makes the magnitude legible; then why people come (`how-people-actually-arrive` /
-`arrival-reasons`, an overview); the Skilled Worker fiscal model
-(`skilled-worker-fiscal-gain-concentrated` / `earnings-concentration`); and
-asylum claims per person across Europe
-(`asylum-claims-in-historical-and-european-context` / `asylum-per-person`).
-Between them they cover all five viewpoints. Its known weakness: *Immigration
-makes Britain better off* rests mostly on evidence with no chart yet
-(health-and-care staffing, wage and housing effects), so the fiscal chart
-stands in for it imperfectly until one exists.
+what makes the magnitude legible. Then the modelled lifetime fiscal
+contribution by visa route (`immigration-economy-and-public-finances` /
+`lifetime-by-route`), government investment against the OECD
+(`immigration-housing-and-public-services` / `investment`), grants of
+settlement (`settlement-and-migrant-status` / `series`) and the foreign-born
+share since 1951 (`integration-outcomes` / `series`). Five charts, because
+seven viewpoints lean on five distinct bodies of evidence; between them they
+cover all seven.
 
 ### Figures
 

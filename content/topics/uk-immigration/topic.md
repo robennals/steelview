@@ -1,7 +1,7 @@
 ---
 title: UK immigration
-subtitle: What the British argument is actually about, and where it genuinely divides.
-lastUpdated: 2026-08-19
+subtitle: How many people should move to Britain to work, study and join family, by which routes, and what they must do to stay for good.
+lastUpdated: 2026-10-29
 tags: [UK, Immigration]
 # The first chart shows how big the issue is; together they represent every
 # viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
@@ -9,31 +9,28 @@ previewCharts:
   - fact: immigration-against-the-long-run
     chart: series
     reading: share-of-population
-  - fact: how-people-actually-arrive
-    chart: arrival-reasons
-  - fact: skilled-worker-fiscal-gain-concentrated
-    chart: earnings-concentration
-  - fact: asylum-claims-in-historical-and-european-context
-    chart: asylum-per-person
+  - fact: immigration-economy-and-public-finances
+    chart: lifetime-by-route
+  - fact: immigration-housing-and-public-services
+    chart: investment
+  - fact: settlement-and-migrant-status
+    chart: series
+  - fact: integration-outcomes
+    chart: series
 dataOrder:
   - immigration-against-the-long-run
-  - incoming-immigration-composition
-  - skilled-worker-fiscal-gain-concentrated
-  - how-people-actually-arrive
-  - health-and-care-relies-on-migrant-workers
-  - asylum-claims-in-historical-and-european-context
-  - wage-effects-small-and-uneven
-  - housing-cost-effect-positive-but-small
-  - immigration-is-salient-and-objection-varies-by-route
-  - share-of-the-population-born-abroad
-  - migration-is-the-only-source-of-population-growth
-  - asylum-accommodation-cost-overrun
-  - non-citizens-share-of-convictions-and-prisons
+  - work-and-study-routes
+  - immigration-economy-and-public-finances
+  - immigration-housing-and-public-services
+  - settlement-and-migrant-status
+  - integration-outcomes
+  - crime-terrorism-and-group-exploitation
 principles:
-  - continuity-of-a-shared-way-of-life
   - democratic-consent-over-membership
-  - gains-from-open-exchange
-  - obligation-to-people-in-danger
-  - priority-to-the-worst-off
+  - first-duty-to-its-own-people
+  - continuity-of-a-shared-way-of-life
+  - contribution-earns-a-share
   - rules-must-mean-what-they-say
+  - gains-from-open-exchange
+  - priority-to-the-worst-off
 ---
