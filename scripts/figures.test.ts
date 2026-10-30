@@ -176,3 +176,30 @@ test('canonical folds percent words and trailing zeros, and keeps currency symbo
   assert.equal(canonical('$5'), '$5');
   assert.equal(canonical('£5'), '£5');
 });
+
+test('a scale word at the end of a range applies to both ends', () => {
+  assert.deepEqual(figuresIn('$2–3 billion a month'), ['$2 billion', '$3 billion']);
+  assert.deepEqual(figuresIn('between £50 and £60 million'), ['£50 million', '£60 million']);
+  const corpus = quoteCorpus(['an incremental cost of between $25 and $35 billion']);
+  assert.equal(quotedSomewhere('$25 billion', corpus), true);
+  assert.equal(quotedSomewhere('$35 billion', corpus), true);
+});
+
+test('a scale word stays on its own figure when no range joins them', () => {
+  assert.deepEqual(figuresIn('$2 in 2024 and 3 billion people'), ['$2']);
+});
+
+test('a quote of bare table numbers counts in the unit its source declares', () => {
+  const quotes = collectQuotes({
+    sources: [
+      { quote: 'Brent Spot Price (Dollars per Barrel) 71.32 138.21', quoteUnit: '$' },
+      { quote: 'Registration: Mississippi 69.9 Virginia 57.4', quoteUnit: '%' },
+      { quote: 'Exports 12.5' },
+    ],
+  });
+  const corpus = quoteCorpus(quotes);
+  assert.equal(quotedSomewhere('$71.32', corpus), true);
+  assert.equal(quotedSomewhere('69.9 percent', corpus), true);
+  assert.equal(quotedSomewhere('$12.5', corpus), false);
+  assert.equal(quotedSomewhere('£71.32', corpus), false);
+});

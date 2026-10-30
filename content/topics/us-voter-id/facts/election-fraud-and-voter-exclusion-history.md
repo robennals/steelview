@@ -514,6 +514,7 @@ sources:
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '1966-03-07'
   - stance: supports
+    quoteUnit: '%'
     quote: >-
       The following chart, compiled from the Senate and House Reports, compares
       voter registration numbers from 1965 to those from 2004 in the six
@@ -979,7 +980,7 @@ On his reading, Adamowski would have won and Nixon would still have lost. How th
 
 ### Chicago 1982's fraud favoured the candidate who lost the governor's race {#election-fraud-and-voter-exclusion-history--chicago-1982-margin}
 
-The 1982 governor's race was decided by 5,074 votes statewide. [6](#source-election-fraud-and-voter-exclusion-history-6) The two Chicago schemes described on appeal cast straight Democratic tickets, the party of the losing candidate, Adlai Stevenson. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) No source read gives a citywide count of fraudulent votes; the figure of 100,000 often quoted was not found in a primary source.
+The 1982 governor's race was decided by 5,074 votes statewide. [6](#source-election-fraud-and-voter-exclusion-history-6) The two Chicago schemes described on appeal cast straight Democratic tickets, the party of the losing candidate, Adlai Stevenson. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) No source read gives a citywide count of fraudulent votes; the figure of a hundred thousand often quoted was not found in a primary source.
 
 ### The modern cases that changed results were absentee {#election-fraud-and-voter-exclusion-history--modern-result-changing-cases-absentee}
 
@@ -1043,7 +1044,7 @@ Justin Levitt, counting every specific, credible allegation from 2000 to 2014 ra
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
 
-### Louisiana: from 44% of registrants to under 1% {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
+### Louisiana: from 44% of registrants to under one percent {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
 
 As the Supreme Court recounted in Louisiana v. United States (1965) [36](#source-election-fraud-and-voter-exclusion-history-36):
 

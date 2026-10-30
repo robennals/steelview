@@ -651,6 +651,6 @@ The Electoral Integrity Project's expert survey of the 2024 election rated "the 
 
 **How it compares.** Deadlines and processing rules are shown for every state NCSL lists. Count speed by hour is published only for seven battleground states; MIT describes the rest in words.
 
-**The Nevada share.** "Nearly one in fifty" divides the two counties' late ballots (about 9,500 + 2,400) by all 669,445 mail ballots returned in Nevada in 2024. Because other counties' late ballots are left out, the true statewide share is at least this large. An unconfirmed figure of about 2% is not used.
+**The Nevada share.** "Nearly one in fifty" divides the two counties' late ballots (about 9,500 + 2,400) by all 669,445 mail ballots returned in Nevada in 2024. Because other counties' late ballots are left out, the true statewide share is at least this large. An unconfirmed figure of about two percent is not used.
 
 **Common mistakes.** NCSL's 15 states and *Watson*'s "roughly 30" are often treated as conflicting; they count different ballots. Late-rejection shares are shares of rejected ballots, not of all ballots.
