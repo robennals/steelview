@@ -605,7 +605,7 @@ sources:
     quote: >-
       Pour voter, vous devez prouver votre identité. … Carte nationale
       d'identité (valide ou périmée depuis moins de 5 ans) … Dans une commune
-      de moins de 1 000 habitants, la pièce d’identité n'est pas obligatoire.
+      de moins de 1 000 habitants, la pièce d’identité n'est pas obligatoire.
       Mais en cas de doute, le président du bureau de vote peut vous demander
       de prouver votre identité par tout moyen.
     title: "Élections : papiers d'identité à présenter pour voter"

@@ -17,9 +17,7 @@ test('the sitemap lists the home page, every topic and every fact', async ({ req
   const factPaths = locs
     .map((l) => new URL(l).pathname)
     .filter((p) => p.startsWith(`${TOPIC}/facts/`));
-  // 12 headline facts and 20 supporting ones — both kinds are cited, so both
-  // are listed.
-  expect(factPaths.length).toBeGreaterThanOrEqual(30);
+  expect(factPaths.length).toBeGreaterThanOrEqual(7);
   expect(factPaths).toContain(FACT);
   expect(new Set(locs).size).toBe(locs.length);
 });

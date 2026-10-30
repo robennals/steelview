@@ -57,9 +57,21 @@ export function canonical(text: string): string {
     .replace(/(\d)m(?!n)/g, '$1mn');
 }
 
-/** Every money / percentage / thousands figure in `text`, as written. */
+/**
+ * A money range with one scale word, `$2–3 billion` or `$25 and $35 billion`,
+ * means that scale at both ends. Writing it out on each number lets both forms
+ * match a source that states the ends separately.
+ */
+const SCALED_RANGE =
+  /([£$€])(\d(?:[\d,]*\d)?(?:\.\d+)?)(\s*(?:–|—|-|to|and)\s*)[£$€]?(\d(?:[\d,]*\d)?(?:\.\d+)?)\s*(billion|bn|million|mn|trillion|tn|thousand|m|k)\b/gi;
+
+function spreadScale(text: string): string {
+  return text.replace(SCALED_RANGE, '$1$2 $5$3$1$4 $5');
+}
+
+/** Every money / percentage / thousands figure in `text`, with a range's scale on both ends. */
 export function figuresIn(text: string): string[] {
-  return (text.match(FIGURE) ?? []).map((f) => f.trim());
+  return (spreadScale(text).match(FIGURE) ?? []).map((f) => f.trim());
 }
 
 /**
@@ -77,10 +89,24 @@ export function figuresIn(text: string): string[] {
  * whitespace first and substring-searching — is what keeps number
  * boundaries intact: in a quote like `£22,300 30-39 £28,000`, the space
  * before `30-39` stops the match, so `£22,300` is never fused with the
- * digits that happen to sit next to it in running prose.
+ * digits that happen to sit next to it in running prose. Only a non-breaking
+ * space groups thousands (`1 000` in French): a plain one separates columns.
  */
 const QUOTE_NUMBER =
-  /[£$€]?\d(?:[\d,]*\d)?(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
+  /[£$€]?\d(?:[\d,]*\d)?(?:[\u00a0\u202f]\d{3})*(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
+
+const SPELLED_NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+/**
+ * A small percentage in words, `one percent`, written as digits. The lookbehind
+ * leaves `two-tenths of one percent` and `twenty-five percent` alone: neither
+ * states the small number it ends in.
+ */
+const SPELLED_PERCENT = new RegExp(`(?<!-|\\bof\\s)\\b(${SPELLED_NUMBERS.join('|')})\\s+(?=percent\\b|per\\s?cent\\b)`, 'gi');
+
+function percentDigits(text: string): string {
+  return text.replace(SPELLED_PERCENT, (_, word: string) => `${SPELLED_NUMBERS.indexOf(word.toLowerCase()) + 1} `);
+}
 
 /**
  * The set of figures — each in `canonical` form — found in a topic's quotes.
@@ -110,7 +136,17 @@ export function quotedSomewhere(figure: string, corpus: QuoteCorpus): boolean {
   return corpus.has(needle);
 }
 
-/** Every string under a `quote` key, anywhere in a frontmatter tree. */
+/** A table quote's bare numbers, restated in the unit its source declares. */
+function withUnit(quote: string, unit: unknown): string[] {
+  if (unit !== '$' && unit !== '%') return [];
+  const numbers = quote.match(/\d(?:[\d,]*\d)?(?:\.\d+)?/g) ?? [];
+  return [numbers.map((n) => (unit === '$' ? `$${n}` : `${n}%`)).join(' ')];
+}
+
+/**
+ * Every string under a `quote` key, anywhere in a frontmatter tree, plus the
+ * unit-bearing restatement of any quote whose source sets `quoteUnit`.
+ */
 export function collectQuotes(node: unknown, into: string[] = []): string[] {
   if (Array.isArray(node)) {
     for (const item of node) collectQuotes(item, into);
@@ -118,8 +154,9 @@ export function collectQuotes(node: unknown, into: string[] = []): string[] {
   }
   if (node && typeof node === 'object') {
     for (const [key, value] of Object.entries(node)) {
-      if (key === 'quote' && typeof value === 'string') into.push(value);
-      else collectQuotes(value, into);
+      if (key === 'quote' && typeof value === 'string') {
+        into.push(value, ...withUnit(value, 'quoteUnit' in node ? node.quoteUnit : undefined));
+      } else collectQuotes(value, into);
     }
   }
   return into;
@@ -129,7 +166,7 @@ export function collectQuotes(node: unknown, into: string[] = []): string[] {
 export function quoteCorpus(quotes: readonly string[]): QuoteCorpus {
   const tokens = new Set<string>();
   for (const quote of quotes) {
-    for (const match of quote.match(QUOTE_NUMBER) ?? []) {
+    for (const match of percentDigits(spreadScale(quote)).match(QUOTE_NUMBER) ?? []) {
       const token = canonical(match);
       if (token.length > 0) tokens.add(token);
     }

@@ -12,6 +12,7 @@ status: well-supported
 sources:
   # 1
   - stance: supports
+    quoteUnit: $
     quote: >-
       Europe Brent Spot Price FOB (Dollars per Barrel) … 2026 Feb-23 to Feb-27
       71.90 71.21 70.69 71.66 71.32 … 2026 Apr- 6 to Apr-10 138.21 122.11
@@ -25,6 +26,7 @@ sources:
     date: '2026-10-28'
   # 2
   - stance: supports
+    quoteUnit: $
     quote: >-
       Cushing, OK WTI Spot Price FOB (Dollars per Barrel) … 2026 Feb-23 to
       Feb-27 66.36 65.62 65.30 65.10 66.96 … 2026 Apr- 6 to Apr-10 114.01
@@ -36,6 +38,7 @@ sources:
     date: '2026-10-28'
   # 3
   - stance: supports
+    quoteUnit: $
     quote: >-
       Weekly U.S. Regular All Formulations Retail Gasoline Prices (Dollars per
       Gallon) … 2026-Feb 02/02 2.867 02/09 2.902 02/16 2.924 02/23 2.937 …
@@ -396,10 +399,12 @@ additionalSeries:
         source: 16
     source:
       stance: supports
+      quoteUnit: $
       quote: >-
         EIA Short-Term Energy Outlook, … Monthly Average Imported Crude Oil
         Price … Consumer Price Index (1982-84=1) … Imported Crude Oil Price
-        ($/barrel) … Nominal … Real … Forecast Values … Base CPI (10/2026) …
+        ($/barrel) … Nominal … Real … Forecast Values … May 2026 3.340
+        99.01 98.85 0 … Base CPI (10/2026) …
         Data Source: EIA Short-Term Energy Outlook, October 2026 … Forecast /
         estimated values shown in blue … real price (Oct 2026 $)
       title: 'Real Prices Viewer: Monthly Average Imported Crude Oil Price (real_prices.xlsx, sheet "Crude Oil-M")'

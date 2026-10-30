@@ -41,6 +41,8 @@ const partialDate = z.preprocess(
 export const sourceSchema = z.object({
   stance: z.enum(SOURCE_STANCES),
   quote: z.string().min(1),
+  /** The unit of a quoted table's bare numbers, which `check:figures` reads them in. */
+  quoteUnit: z.enum(['$', '%']).optional(),
   title: z.string().min(1),
   url: z.string().regex(/^https?:\/\/\S+$/, 'must be an http(s) URL'),
   publisher: z.string().min(1),

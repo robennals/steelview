@@ -176,3 +176,51 @@ test('canonical folds percent words and trailing zeros, and keeps currency symbo
   assert.equal(canonical('$5'), '$5');
   assert.equal(canonical('£5'), '£5');
 });
+
+test('a scale word at the end of a range applies to both ends', () => {
+  assert.deepEqual(figuresIn('$2–3 billion a month'), ['$2 billion', '$3 billion']);
+  assert.deepEqual(figuresIn('between £50 and £60 million'), ['£50 million', '£60 million']);
+  const corpus = quoteCorpus(['an incremental cost of between $25 and $35 billion']);
+  assert.equal(quotedSomewhere('$25 billion', corpus), true);
+  assert.equal(quotedSomewhere('$35 billion', corpus), true);
+});
+
+test('a scale word stays on its own figure when no range joins them', () => {
+  assert.deepEqual(figuresIn('$2 in 2024 and 3 billion people'), ['$2']);
+});
+
+test('a quote of bare table numbers counts in the unit its source declares', () => {
+  const quotes = collectQuotes({
+    sources: [
+      { quote: 'Brent Spot Price (Dollars per Barrel) 71.32 138.21', quoteUnit: '$' },
+      { quote: 'Registration: Mississippi 69.9 Virginia 57.4', quoteUnit: '%' },
+      { quote: 'Exports 12.5' },
+    ],
+  });
+  const corpus = quoteCorpus(quotes);
+  assert.equal(quotedSomewhere('$71.32', corpus), true);
+  assert.equal(quotedSomewhere('69.9 percent', corpus), true);
+  assert.equal(quotedSomewhere('$12.5', corpus), false);
+  assert.equal(quotedSomewhere('£71.32', corpus), false);
+});
+
+test('a percentage spelled out in a quote matches its digits', () => {
+  const corpus = quoteCorpus(['the share never exceeded one percent', 'up nearly Two per cent']);
+  assert.equal(quotedSomewhere('1%', corpus), true);
+  assert.equal(quotedSomewhere('2%', corpus), true);
+});
+
+test('a spelled-out fraction or compound of a percent is not that percentage', () => {
+  const corpus = quoteCorpus(['rose from two-tenths of one percent', 'and twenty-five percent']);
+  assert.equal(quotedSomewhere('1%', corpus), false);
+  assert.equal(quotedSomewhere('5%', corpus), false);
+});
+
+test('a thousands group set with a non-breaking space is one number', () => {
+  assert.equal(quotedSomewhere('1,000', quoteCorpus(['de moins de 1 000 habitants'])), true);
+  assert.equal(quotedSomewhere('12,500', quoteCorpus(['environ 12 500 habitants'])), true);
+});
+
+test('table columns separated by plain spaces stay separate numbers', () => {
+  assert.equal(quotedSomewhere('1,000', quoteCorpus(['Region 1 000 total'])), false);
+});

@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { openCollection } from './topic-rows';
 
 // Depends on authored uk-immigration content: the headline fact
 // `immigration-against-the-long-run` carries the ONS 1964–2025 series, with
-// two readings (people, share of population) and three annotated breaks, and
-// holds the supporting fact `immigration-shifted-from-eu-to-non-eu`.
+// two readings (people, share of population) and three annotated breaks.
 
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
-const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
 const HEADLINE = 'immigration-against-the-long-run';
+const HEADLINE_TITLE = 'UK Migration and Population Over the Long Run';
 const dialog = 'dialog.sv-modal';
 
 test.describe('with JavaScript disabled', () => {
@@ -17,10 +17,9 @@ test.describe('with JavaScript disabled', () => {
   // The whole point of server-rendered SVG: the chart is markup, so it is
   // there for a reader with no JavaScript, and so is every number behind it.
   // The fact's own page is exactly where such a reader arrives, having
-  // followed an ordinary link from the list.
+  // followed an ordinary link from the topic page.
   test('the chart and its numbers are in the page without any script', async ({ page }) => {
-    await page.goto(TOPIC);
-    await page.locator(row(HEADLINE)).click();
+    await page.goto(factUrl(HEADLINE));
     const fact = page.locator('article.sv-factpage');
 
     const charts = fact.locator(`#${HEADLINE}--chart-series .sv-chart__svg[data-variant="wide"]`);
@@ -52,7 +51,7 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   page,
 }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   const chart = page.locator(`${dialog} .sv-chart`).first();
 
   await expect(chart.locator('.sv-chart__reading')).toHaveCount(2);
@@ -70,39 +69,17 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   await expect(visiblePlot.locator('.sv-chart__bridge').first()).toBeAttached();
 
   // A chart is a factual claim, so it carries its own quoted source.
-  await expect(page.locator(`${dialog} #source-${HEADLINE}-22 blockquote`)).toContainText(
+  await expect(page.locator(`${dialog} #source-${HEADLINE}-5 blockquote`)).toContainText(
     'comparisons between pre-June 2021 and post-June 2021 estimates should be treated with caution'
   );
 });
 
-// The bug this replaced: a supporting fact arriving above the fold with the
-// claim it is evidence for scrolled off the top. The fix is structural now —
-// the claim it supports is stated *above* it, before any of the detail — so
-// the assertion is that it is on screen without any scrolling at all. A
-// citation of a supporting fact opens its parent at that section, so a reader
-// reaches the supporting fact on its own only by its address.
-test('a supporting fact opens with the claim it supports already in view', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(factUrl('care-worker-route-fiscally-negative'));
-
-  const parent = page.locator('.sv-parentnote');
-  const claim = page.locator('h1.sv-factpage__claim');
-  await expect(parent).toBeInViewport();
-  await expect(claim).toBeInViewport();
-  const parentBox = await parent.boundingBox();
-  const claimBox = await claim.boundingBox();
-  if (!parentBox || !claimBox) throw new Error('expected both to be laid out');
-  expect(parentBox.y + parentBox.height).toBeLessThanOrEqual(claimBox.y);
-  expect(await page.evaluate(() => scrollY)).toBe(0);
-  await expect(parent).toContainText('Immigration and Public Finances');
-});
-
 test('closing the panel takes the chart off the page with it', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(page.locator('.sv-chart')).toHaveCount(0);
+  await expect(page.locator(`${dialog} .sv-chart`)).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
 });
 

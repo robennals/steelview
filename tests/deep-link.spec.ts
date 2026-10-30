@@ -1,14 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { openViewpoint } from './topic-rows';
 
-// These assertions depend on authored uk-immigration content: the headline
-// fact `non-citizens-share-of-convictions-and-prisons`, the supporting fact
-// `immigration-shifted-from-eu-to-non-eu` (body text "Net migration in YE December
-// 2025 was 171,000.") and the headline fact `immigration-against-the-long-run`
-// it supports, the viewpoint `a-country-should-decide-who-joins-it`, and the
-// fact `health-and-care-relies-on-migrant-workers` (claim "Health and care is
-// the sector most dependent on migrant labour") that that viewpoint lists.
-// Editing any of that content's wording, ids, or cross-references will turn
-// this suite red.
+// These assertions depend on authored uk-immigration content: the reports
+// `crime-terrorism-and-group-exploitation`, `immigration-economy-and-public-finances`
+// and `work-and-study-routes`, the viewpoint `open-and-build`, and the link
+// text it uses for `work-and-study-routes`. Editing any of that content's
+// wording, ids, or cross-references will turn this suite red.
 
 // A fact is addressed by its own URL now, not by an anchor on the topic page:
 // a cold load of that URL is the fact's standalone page, and a click from
@@ -18,12 +15,11 @@ const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 
 test('a fact URL loaded cold renders the standalone page', async ({ page }) => {
-  await page.goto(factUrl('non-citizens-share-of-convictions-and-prisons'));
+  await page.goto(factUrl('crime-terrorism-and-group-exploitation'));
   await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
-  await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
-  await expect(
-    page.getByText('It is not a measurement of offending', { exact: false })
-  ).toBeVisible();
+  await expect(page.locator('h1.sv-factpage__claim')).toContainText(
+    'Crime, Terrorism and Group-Based Child Sexual Exploitation'
+  );
   // The page says which topic it belongs to and links back to it.
   await expect(page.locator('.sv-crumbs').getByRole('link', { name: 'UK immigration' })).toHaveAttribute(
     'href',
@@ -31,60 +27,37 @@ test('a fact URL loaded cold renders the standalone page', async ({ page }) => {
   );
 });
 
-// A supporting fact is evidence for a headline claim and says little standing
-// alone, so its page states that claim before any of the detail and links to it.
-test('a supporting fact page makes its parent obvious and links to it', async ({ page }) => {
+// Addresses are permanent: a fact merged into a report keeps working, and
+// lands on the report that now holds it.
+test('the address of a merged fact redirects to its report', async ({ page }) => {
   await page.goto(factUrl('care-worker-route-fiscally-negative'));
-  const parent = page.locator('.sv-parentnote__claim');
-  await expect(parent).toBeVisible();
-  await expect(parent).toHaveAttribute('href', factUrl('skilled-worker-fiscal-gain-concentrated'));
-  await expect(page.locator('.sv-parentnote__label')).toHaveText('Related to');
-  await expect(
-    page.locator('.sv-finding').filter({ hasText: '36,000' })
-  ).toBeVisible();
-
-  // Following it goes to the parent's address. Within a topic a fact always
-  // opens over whatever the reader was reading, so from here that is the
-  // panel — one Back from the fact they came from, and the URL is the
-  // parent's either way.
-  await parent.click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl('skilled-worker-fiscal-gain-concentrated')}$`));
-  await expect(page.locator('#sv-modal-title')).toContainText('Immigration and Public Finances');
+  await expect(page).toHaveURL(new RegExp(`${factUrl('immigration-economy-and-public-finances')}$`));
+  await expect(page.locator('h1.sv-factpage__claim')).toContainText('Immigration, the Economy and the Public Finances');
 });
 
 test('clicking a cross-reference chip opens the fact it points at', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = page.locator('#viewpoint-immigration-makes-britain-better-off');
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint
-    .getByRole('link', {
-      name: 'Health and care rely heavily on workers born outside Europe', exact: true,
-    })
-    .click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl('health-and-care-relies-on-migrant-workers')}#`));
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  await viewpoint.locator('.sv-walk__outline-step').nth(1).click();
+  await viewpoint.locator('.sv-walk__explore a[data-fact-id="work-and-study-routes"]').first().click();
+  await expect(page).toHaveURL(new RegExp(`${factUrl('work-and-study-routes')}#`));
   await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
-    'Immigration and the Health and Care Workforce'
+    'Work and Study Visas and the Care Workforce'
   );
 });
 
-// Every headline fact in the list links to its own page. A supporting fact is
-// addressable too — it is cited just as readily — but it is not a row in this
-// list; it is reachable from the headline fact it supports, or directly by
-// its own URL (see crawlability.spec.ts for both being in the sitemap).
-test('every headline fact in the list links to its own page', async ({ page }) => {
+// Every data collection on the topic page links to its own page.
+test('every data collection links to its own page', async ({ page }) => {
   await page.goto(TOPIC);
-  // The rest of the headline facts sit behind the Facts collapse.
-  await page.locator('details.sv-more > summary').click();
-  const rows = page.locator('a.sv-factrow');
-  const total = await rows.count();
-  expect(total).toBe(13);
-  const hrefs = await rows.evaluateAll((links) =>
-    links.map((l) => l.getAttribute('href') ?? '')
+  const rows = page.locator('.sv-row--data');
+  await expect(rows).toHaveCount(7);
+  const hrefs = await rows.evaluateAll((all) =>
+    all.map((row) => row.querySelector('.sv-walk__explore a')?.getAttribute('href') ?? '')
   );
   for (const href of hrefs) {
-    expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+$/);
+    expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
   }
-  expect(new Set(hrefs).size).toBe(total);
+  expect(new Set(hrefs.map((href) => href.split('#')[0])).size).toBe(7);
 });
 
 // Addresses are permanent and must keep working with no JavaScript to
@@ -117,5 +90,5 @@ test.describe('with JavaScript disabled', () => {
 test('a malformed hash does not break the page', async ({ page }) => {
   await page.goto(`${TOPIC}#%zz`);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  await expect(page.locator('a.sv-factrow').first()).toBeVisible();
+  await expect(page.locator('.sv-row--data').first()).toBeVisible();
 });

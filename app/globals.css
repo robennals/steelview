@@ -1881,6 +1881,12 @@
 
   .sv-row[data-open] .sv-row__body { grid-template-rows: 1fr; }
 
+  /* Nothing can open a walkthrough row without script, and its charts load on opening. */
+  @media (scripting: none) {
+    .sv-row--walk .sv-row__body { grid-template-rows: 1fr; }
+    .sv-row--walk .sv-row__toggle, .sv-row--walk .sv-row__chevron, .sv-walk__chart-loading { display: none; }
+  }
+
   .sv-row__inner { min-height: 0; overflow: hidden; }
 
   .sv-row__columns {
