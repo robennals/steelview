@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { headCorner, openViewpoint } from './topic-rows';
+import { headCorner, openDataRow, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -70,6 +70,20 @@ test('a data panel is the data: its charts open nothing, and have their controls
 
   await step.getByRole('button', { name: 'Table' }).click();
   await expect(step.locator('table').first()).toBeVisible();
+});
+
+test('a short bar chart keeps its bars together, with its scale under them, in a tall panel', async ({ page }) => {
+  await page.goto(TOPIC);
+  const row = await openDataRow(page, 'Immigration, the Economy and the Public Finances');
+  await row.locator('.sv-walk__tab', { hasText: 'Who pays UK universities' }).click();
+  const chart = row.locator('.sv-comparison').filter({ hasText: 'Who pays UK universities' });
+  const bars = chart.locator('.sv-comparison__rows > li');
+  await expect(bars).toHaveCount(2);
+  const first = await bars.first().boundingBox();
+  const second = await bars.last().boundingBox();
+  const scale = await chart.locator('.sv-comparison__scale').boundingBox();
+  expect(second!.y - first!.y).toBeLessThan(60);
+  expect(scale!.y - (second!.y + second!.height)).toBeLessThan(40);
 });
 
 test('a chart\'s description is one line until opened, and method notes are inside it', async ({ page }) => {
