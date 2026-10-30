@@ -26,11 +26,17 @@ import type { Series, SeriesLine, SeriesPoint, SeriesReading } from '@/lib/conte
 export type ChartVariant = 'narrow' | 'wide';
 
 /**
- * A series can also be drawn once, at `preview` size: a short, wide plot for
- * the home page's chart carousel, sized so its type stays readable at the
- * carousel's width rather than shrinking a full-size chart into the slide.
+ * A series can also be drawn at preview size, for a carousel slide or a
+ * walkthrough step, sized so its type stays readable there rather than
+ * shrinking a full-size chart into the space. A preview is drawn at several
+ * shapes, from very wide to nearly square, and the page shows whichever best
+ * fills the space it has, so the chart is never squeezed into a band.
  */
-export type SeriesVariant = ChartVariant | 'preview';
+export type PreviewVariant = 'preview-wide' | 'preview' | 'preview-medium' | 'preview-tall';
+export type SeriesVariant = ChartVariant | PreviewVariant;
+
+/** Every preview shape, widest first. */
+export const PREVIEW_VARIANTS: PreviewVariant[] = ['preview-wide', 'preview', 'preview-medium', 'preview-tall'];
 
 export type ChartGeometry = {
   width: number;
@@ -50,20 +56,26 @@ export type ChartGeometry = {
   monthTickStep: number;
 };
 
+/** A preview's geometry at a given size, with the same insets and type size at every shape. */
+const previewGeometry = (width: number, height: number): ChartGeometry => ({
+  width,
+  height,
+  left: 48,
+  top: 10,
+  plotWidth: width - 48 - 24,
+  plotHeight: height - 10 - 26,
+  fontSize: 12,
+  markerRadius: 4,
+  valueLabelEvery: 1,
+  yearTickStep: 10,
+  monthTickStep: 2,
+});
+
 export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
-  preview: {
-    width: 600,
-    height: 190,
-    left: 48,
-    top: 10,
-    plotWidth: 600 - 48 - 24,
-    plotHeight: 190 - 10 - 26,
-    fontSize: 12,
-    markerRadius: 4,
-    valueLabelEvery: 1,
-    yearTickStep: 10,
-    monthTickStep: 2,
-  },
+  'preview-wide': previewGeometry(760, 190),
+  preview: previewGeometry(600, 190),
+  'preview-medium': previewGeometry(600, 300),
+  'preview-tall': previewGeometry(520, 390),
   narrow: {
     width: 360,
     height: 250,

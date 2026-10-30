@@ -2765,12 +2765,30 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; }
 .sv-chart[data-preview] .sv-chart__highlight,
 .sv-chart[data-preview] .sv-chart__reading { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; }
-.sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; width: 100%; height: 100%; }
-.sv-chart[data-preview] .sv-chart__svg[data-variant="narrow"] { display: none; }
-@media (max-width: 40rem) {
+/* The plot is drawn at several shapes (lib/chart/series-chart.ts), and shows
+   the one nearest the shape of the space it has, so it fills the height as
+   well as the width. Each breakpoint sits between two neighbouring shapes'
+   width-to-height ratios: 4.0, 3.16, 2.0 and 1.33. */
+.sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
+.sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
+.sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+@container (aspect-ratio < 3.55) {
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
+}
+@container (aspect-ratio < 2.51) {
   .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: none; }
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="narrow"] { display: block; width: 100%; height: 100%; }
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: block; }
+}
+@container (aspect-ratio < 1.63) {
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-tall"] { display: block; }
+}
+/* On a phone every shape's type would shrink too far, so the narrow plot,
+   drawn for that width, is used whatever the space. */
+@media (max-width: 40rem) {
+  .sv-chart[data-preview] .sv-chart__plot .sv-chart__svg { display: none; }
+  .sv-chart[data-preview] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
 }
 .sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__rows,

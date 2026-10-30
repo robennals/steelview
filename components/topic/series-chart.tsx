@@ -22,6 +22,7 @@ import {
   seriesStrokeDash,
   tickLabelWidth,
   unmeasuredSpan,
+  PREVIEW_VARIANTS,
   type SeriesVariant,
   type FocusWindow,
 } from '@/lib/chart/series-chart';
@@ -429,9 +430,10 @@ function Reading({
 
   const plots = (shown?: FocusWindow) => (
     <div className="sv-chart__plot">
-      {/* A preview is short and wide on a desktop slide, and drawn at the narrow size on a phone. */}
+      {/* A preview is drawn at every preview shape, of which the page shows the
+          one that best fills the space, and at the narrow size for a phone. */}
       {preview ? <>
-        <Plot series={series} reading={reading} variant="preview" descriptionId={descriptionId} />
+        {PREVIEW_VARIANTS.map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} />)}
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
       </> : <>
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
