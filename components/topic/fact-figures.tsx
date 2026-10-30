@@ -107,10 +107,10 @@ export function PanelChart({ slide }: { slide: PreviewSlide }) {
     const sourceOffset = seriesSourceOffset(fact, index);
     const reading = series.readings.find(r => r.id === only) ?? series.readings[0];
     const method = methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series), n => sources[n - 1].url);
-    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} directSources observations={{ [reading.id]: <Prose html={method} className="sv-graph-observations" /> }} />;
+    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel observations={{ [reading.id]: <Prose html={method} className="sv-graph-observations" /> }} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
-  return comparison ? <ComparisonChart fact={fact} chart={comparison} sources={sources} directSources /> : null;
+  return comparison ? <ComparisonChart fact={fact} chart={comparison} sources={sources} panel /> : null;
 }
 
 /** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */

@@ -14,18 +14,17 @@ const THUMBS = 7;
 
 type ChartStepProps = { step: DataStep; number: number };
 
-/** One chart: what to notice in it, stepped through observation by observation, on the left of it. */
+/** One chart, with what to notice in it under it, stepped through observation by observation. */
 function ChartStep({ step, number }: ChartStepProps) {
   return (
     <div className="sv-walk__step" data-chart>
+      <div className="sv-walk__chart">
+        <div className="sv-slide"><LazyChart index={number - 1} /></div>
+      </div>
       <div className="sv-walk__text">
-        <p className="sv-walk__kicker">Chart {number}</p>
         {step.observations.length > 0
           ? <ObservationCycler observations={step.observations} />
           : <p className="sv-walk__prose prose-body">{step.description}</p>}
-      </div>
-      <div className="sv-walk__chart">
-        <div className="sv-slide"><LazyChart index={number - 1} /></div>
       </div>
     </div>
   );
@@ -62,7 +61,7 @@ type DataRowsProps = { slug: string; facts: Fact[]; walkthroughs: Map<string, Da
  * The Data section: one row per headline data collection. Closed, a row is
  * its title, a one-line overview and its first charts in miniature; open, every
  * chart runs across the top as a miniature, and the chosen one sits large under
- * them, with the observations made about it on its left.
+ * them, with the observations made about it along the bottom.
  * Supporting collections are read inside their parent, so have no row.
  */
 export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {

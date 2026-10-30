@@ -382,7 +382,7 @@ function Reading({
   intro,
   events,
   preview,
-  directSources,
+  panel,
 }: {
   series: Series;
   reading: SeriesReading;
@@ -394,7 +394,7 @@ function Reading({
   /** Compact form for the home page: graph only, links pointing at the fact page. */
   preview?: ChartPreview;
   /** Link the source credit to the source itself, where the fact's source list is not on the page. */
-  directSources?: boolean;
+  panel?: boolean;
 }) {
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
   const Heading = preview ? 'h3' : 'h2';
@@ -439,6 +439,9 @@ function Reading({
       {preview ? <>
         {PREVIEW_VARIANTS[preview.fit ?? 'wide'].map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} />)}
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
+      </> : panel ? <>
+        {PREVIEW_VARIANTS.panel.map(variant => <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} window={shown} />)}
+        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
       </> : <>
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
         <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
@@ -523,7 +526,7 @@ function Reading({
       )}
 
       {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
-      {!preview && <p className="sv-chart__credit">Source: <a href={directSources ? (reading.source ?? series.source).url : at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher}{directSources ? '' : ` [${sourceNumber}]`}</a></p>}
+      {!preview && <p className="sv-chart__credit">Source: <a href={panel ? (reading.source ?? series.source).url : at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher}{panel ? '' : ` [${sourceNumber}]`}</a></p>}
 
       {observations}
     </section>
@@ -543,7 +546,7 @@ export function stripEvents(series: Pick<Series, 'events'>, factId: string, sour
   });
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, directSources }: {
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, panel }: {
   factId: string;
   chartId?: string;
   series: Series;
@@ -553,21 +556,22 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   preview?: ChartPreview;
   /** Draw this reading in full, and not the others. */
   onlyReading?: string;
-  directSources?: boolean;
+  /** Drawn in a data panel: filling its height, with its source credit linking to the source itself. */
+  panel?: boolean;
 }) {
-  const events = stripEvents(series, factId, sources, directSources);
+  const events = stripEvents(series, factId, sources, panel);
   const readings = preview
     ? [series.readings.find(r => r.id === preview.reading) ?? series.readings[0]]
     : series.readings.filter(r => !onlyReading || r.id === onlyReading);
   return (
-    <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined}>
+    <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
       {preview
         ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3></figcaption>
         : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
 
       <SeriesHighlight>
         {readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} directSources={directSources} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
         ))}
       </SeriesHighlight>
 
