@@ -10,8 +10,16 @@ caricatured. A reader who arrives holding one view should leave able to state
 the other views in a form their holders would endorse.
 
 This milestone ships one topic, UK immigration, as a statically rendered
-page. There is no auth, no comments, and nothing deployed yet — those are
-future milestones (see the design spec below).
+page. There is no auth and no comments yet — those are future milestones
+(see the design spec below).
+
+## Deployment
+
+The site is served from [steelview.org](https://steelview.org) by the
+`steelview` Vercel project, which builds on Node 26. Every push to `main`
+deploys to production. `www.steelview.org` redirects permanently to
+`steelview.org`, the one address canonical URLs and the sitemap use (see
+`lib/site.ts`).
 
 ## Commands
 

@@ -5,7 +5,7 @@
  * needs absolute URLs. The value is overridable so a preview deployment does
  * not advertise production URLs, and vice versa.
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://steelview.vercel.app').replace(
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://steelview.org').replace(
   /\/$/,
   ''
 );
