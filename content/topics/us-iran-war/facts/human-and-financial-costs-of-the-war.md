@@ -363,39 +363,6 @@ series:
         - name: Non-hostile deaths
           points: [{period: '2026-02', value: 0}, {period: '2026-03', value: 7}, {period: '2026-04', value: 0}, {period: '2026-05', value: 0}, {period: '2026-06', value: 0}, {period: '2026-07', value: 1}, {period: '2026-08', value: 0}, {period: '2026-09', value: 2}, {period: '2026-10', value: 1}]
 comparisons:
-  - id: iranian-deaths-by-counter
-    title: 'Deaths in Iran from the war, by counter, early April 2026 (and the government count to 21 July)'
-    description: >-
-      Deaths each counter reports, split into civilians, military, and deaths
-      it does not classify. HRANA to 7 April and Hengaw to 8 April cover the
-      40 days to the ceasefire; the Iranian authorities' count, relayed by
-      WHO, runs to 21 July and is not split.
-    unit: count
-    valueLabel: 'People killed'
-    sources: [1, 2, 3]
-    groupLabel: category
-    allGroupsLabel: All deaths
-    groups: [Civilian, Military, Not classified by the counter]
-    defaultGroup: 0
-    note: >-
-      HRANA publishes the three parts (1,701 civilians, 1,221 military, 714
-      unclassified) but no total; the 3,636 total and the 46.8% civilian share
-      (1,701 ÷ 3,636) are our arithmetic. Hengaw publishes 7,650 killed, 1,030
-      civilians (13.5%) and 6,620 military, which add up. The authorities'
-      3,375 deaths have no civilian–military split, so all of it is shown as
-      not classified. Each counter is a separate bar; none is merged with
-      another. All are minimums or reported counts, not estimates of the
-      true total.
-    items:
-      - label: 'HRANA, to 7 April'
-        value: 3636
-        values: [1701, 1221, 714]
-      - label: 'Hengaw, to 8 April'
-        value: 7650
-        values: [1030, 6620, 0]
-      - label: 'Iranian authorities via WHO, to 21 July'
-        value: 3375
-        values: [0, 0, 3375]
   - id: displacement-and-population
     title: 'People displaced inside Iran, against its population, as of 21 July 2026'
     description: >-
@@ -419,48 +386,6 @@ comparisons:
         value: 3375
       - label: 'Population of Iran, 2025'
         value: 92417681
-  - id: cost-estimates
-    title: >-
-      Estimates of what the Iran war has cost the US military, by estimator and
-      date, April–October 2026
-    description: >-
-      Each published estimate of the war's cost to the Defense Department, in
-      the order of the date it runs to. Values are in billions of US dollars,
-      not adjusted for inflation.
-    unit: count
-    valueLabel: 'US$ billions'
-    sources: [9, 10, 11, 12, 13, 22]
-    note: >-
-      Values are US$ billions (the chart's "count" unit is used because the
-      chart has no dollar unit). AEI published a range ($25–35 bn), shown as
-      its two ends; CSIS's central estimate is shown, with its $34–42 bn range
-      in the label. Roll Call reports CBO's figure as $38.1 bn "through July";
-      CBO's letter says "approximately $38 billion" as of 1 August. Hegseth's
-      $37.5 bn was a projection to the end of September made in July. AP's
-      $47.1 bn is "the latest estimate the Pentagon has provided to
-      Congress", reported 29 October; AP does not give the date it runs to.
-      Estimators count different things (CBO and DoD include replacing
-      munitions and equipment), so the bars are not one series.
-    items:
-      - label: 'AEI, to 8 Apr (low end)'
-        value: 25
-      - label: 'AEI, to 8 Apr (high end)'
-        value: 35
-      - label: 'Pentagon, testimony 29 Apr'
-        value: 25
-      - label: 'CSIS, 23 Jun (range 34–42)'
-        value: 40
-      - label: 'DoD Inspector General, through June'
-        value: 33.4
-      - label: 'CBO, to 1 Aug'
-        value: 38
-      - label: 'Pentagon to Congress, to 3 Sep'
-        value: 43.6
-      - label: 'Hegseth, July projection to end of Sep'
-        value: 37.5
-      - label: 'Pentagon to Congress, reported by AP 29 Oct'
-        value: 47.1
-        highlight: true
   - id: us-deaths-earlier-wars
     title: 'US military deaths: the Iran war (to 28 October 2026) and the Iraq and Afghanistan operations'
     description: >-
@@ -567,8 +492,34 @@ dataStillNeeded:
     why: 'A cost in billions means little without the budget it comes out of; no source found states it.'
 figures:
   - kind: "series"
-  - kind: "comparison"
-    id: "iranian-deaths-by-counter"
+  - kind: compositionBar
+    id: iranian-deaths-by-counter
+    title: Deaths in Iran from the war, by counter, early April 2026 (and the government count to 21 July)
+    description: Each counter's deaths split into civilians, military, and deaths it does not classify.
+      HRANA to 7 April and Hengaw to 8 April cover the 40 days to the ceasefire; the Iranian authorities'
+      count, relayed by WHO, runs to 21 July and is not split.
+    rowLabel: Counter
+    showCounts: true
+    categories:
+    - {key: civilian, label: Civilian}
+    - {key: military, label: Military}
+    - {key: unclassified, label: 'Not classified, or not split, by the counter'}
+    rows:
+    - label: HRANA, to 7 April
+      values: {civilian: 1701, military: 1221, unclassified: 714}
+      source: 1
+    - label: Hengaw, to 8 April
+      values: {civilian: 1030, military: 6620}
+      total: 7650
+      source: 2
+    - label: Iranian authorities via WHO, to 21 July
+      values: {unclassified: 3375}
+      total: 3375
+      source: 3
+    note: HRANA publishes the three parts but no total; the total and shares shown for HRANA are our arithmetic.
+      Hengaw publishes its total, its civilians and its military, which add up. The authorities' deaths
+      have no civilian–military split, so all of them are shown as not split. Each counter is a separate
+      bar; none is merged with another. All are minimums or reported counts, not estimates of the true total.
   - kind: "dataTable"
     id: "counter-methods"
     title: "How each count of Iranian deaths works"
@@ -588,8 +539,40 @@ figures:
       - { counter: "Airwars", covers: "40-day war; June onward", deaths: { value: "Incidents, not deaths", sources: [5] }, method: "Tracks and publishes civilian-harm incidents" }
   - kind: "comparison"
     id: "displacement-and-population"
-  - kind: "comparison"
-    id: "cost-estimates"
+  - kind: estimateRange
+    id: cost-estimates
+    title: >-
+      Estimates of what the Iran war has cost the US military, by estimator and
+      date, April–October 2026
+    description: Each published estimate of the war's cost to the Defense Department, in the order of the
+      date it runs to, with its range where the estimator gave one. Not adjusted for inflation.
+    valueLabel: Estimated cost, US$ billion
+    format: {unit: number, decimals: 1}
+    intervalLabel: Range the estimator published
+    nullValue: null
+    note: Roll Call reports CBO's figure as $38.1 billion "through July"; CBO's letter says "approximately
+      $38 billion" as of 1 August. Hegseth's figure was a projection to the end of September made in July.
+      AP's figure is "the latest estimate the Pentagon has provided to Congress", reported 29 October; AP
+      does not give the date it runs to. Estimators count different things (CBO and DoD include replacing
+      munitions and equipment), so the estimates are not one series.
+    estimates:
+    - {label: AEI, year: to 8 Apr 2026, low: 25, high: 35, asPublished: $25 and $35 billion, source: 13}
+    - {label: 'Pentagon, testimony', year: 29 Apr 2026, estimate: 25, asPublished: Twenty-five billion dollars,
+      source: 10}
+    - {label: CSIS, year: 23 Jun 2026, estimate: 40, low: 34, high: 42, asPublished: $40 billion ($34 billion
+        to $42 billion), source: 12}
+    - {label: DoD Inspector General, year: through June 2026, estimate: 33.4, asPublished: $33.4 billion,
+      source: 9}
+    - label: CBO
+      year: to 1 Aug 2026
+      estimate: {value: 38, qualifier: about}
+      asPublished: approximately $38 billion
+      source: 11
+    - {label: Pentagon to Congress, year: to 3 Sep 2026, estimate: 43.6, asPublished: $43.6 billion, source: 9}
+    - {label: 'Hegseth, July projection', year: to end of Sep 2026, estimate: 37.5, asPublished: $37.5 billion,
+      source: 9}
+    - {label: 'Pentagon to Congress, reported by AP', year: 29 Oct 2026, estimate: 47.1, asPublished: $47.1
+        billion, source: 22}
   - kind: "comparison"
     id: "us-deaths-earlier-wars"
   - kind: "comparison"
