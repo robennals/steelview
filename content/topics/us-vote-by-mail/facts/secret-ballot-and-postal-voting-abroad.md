@@ -685,73 +685,6 @@ additionalSeries:
               - {period: '2015', value: 20.5}
               - {period: '2017', value: 21.7}
               - {period: '2019', value: 21.0}
-comparisons:
-  - id: idea-postal-voting
-    title: Countries allowing in-country postal voting, 2025
-    description: >-
-      Of the 204 countries International IDEA codes, how many let every voter
-      vote by post inside the country, how many let some voters, and how many
-      offer no in-country postal vote. Data as of 20 August 2025.
-    unit: count
-    valueLabel: Countries
-    shareTotal: 204
-    sources: [3, 4]
-    items:
-      - label: All voters may vote by post
-        value: 11
-        highlight: true
-      - label: Some voters, by country-specific criteria
-        value: 21
-      - label: No in-country postal voting (derived)
-        value: 172
-    note: >-
-      All voters (11): Canada, Germany, Iceland, South Korea, Liechtenstein,
-      Luxembourg, New Zealand, Poland, Switzerland, United Kingdom, United
-      States. Some voters (21): Australia, Austria, Bangladesh, Bhutan, Fiji,
-      France, Greece, India, Ireland, Japan, Lithuania, Malaysia, Marshall
-      Islands, Micronesia, Netherlands, Pakistan, Palau, Papua New Guinea,
-      Slovenia, Spain, Zimbabwe. The counts are from IDEA's printed lists; a
-      pie chart in the same fact sheet shows a different split (37.5% and
-      62.5%), which does not match its own lists. "None" is derived: 204
-      countries coded, minus the 32 listed; IDEA prints no list of them. The
-      denominator, 204, is from IDEA's overview page, whose data date from
-      2021 to 2023, so the two dates differ. Postal voting from abroad is a
-      separate dataset and is not counted here.
-  - id: france-abstention
-    title: >-
-      France: average abstention before and after postal voting was abolished in
-      1975
-    description: >-
-      Average abstention at each type of French election before the law of
-      31 December 1975 and from then to 1988, as the Interior Ministry gave it
-      when it refused to restore postal voting.
-    unit: percent
-    valueLabel: Average abstention (%)
-    domainMax: 50
-    sources: [5]
-    items:
-      - label: Presidential, before 1975
-        value: 18.4
-      - label: Presidential, after
-        value: 16.6
-      - label: Legislative, before 1975
-        value: 21.5
-      - label: Legislative, after
-        value: 25.7
-      - label: Municipal, before 1975
-        value: 23.1
-      - label: Municipal, after
-        value: 21.4
-      - label: Cantonal, before 1975
-        value: 39
-      - label: Cantonal, after
-        value: 33.6
-    note: >-
-      The ministry's own averages, printed in French form ("18,4 p 100").
-      They are period averages chosen by a government defending abolition,
-      not a controlled comparison; the ministry attributed the legislative
-      rise to low turnout in June 1988. The source does not say which
-      elections each average covers.
 relatedFacts:
   - absentee-fraud-and-manipulation-of-the-count
   - mail-voting-use-and-effects
@@ -790,10 +723,270 @@ figures:
   - kind: series
   - kind: series
     id: uk-postal-votes
-  - kind: comparison
+  - kind: map
     id: idea-postal-voting
-  - kind: comparison
+    title: Who may vote by post from inside the country, 2025
+    description: >-
+      Each country by whether International IDEA lists it as allowing
+      in-country postal voting for all voters, for some, or neither. IDEA
+      codes 204 countries. The United States is outlined. Data as of 20 August
+      2025.
+    preset: world
+    default: map
+    areaLabel: Country
+    categoryLabel: Who may vote by post in-country
+    highlight: [US]
+    insets:
+      - { regionIds: [LU], label: Luxembourg }
+    sources: [3, 4]
+    note: >-
+      All voters (11): Canada, Germany, Iceland, South Korea, Liechtenstein,
+      Luxembourg, New Zealand, Poland, Switzerland, United Kingdom, United
+      States. Some voters (21): Australia, Austria, Bangladesh, Bhutan, Fiji,
+      France, Greece, India, Ireland, Japan, Lithuania, Malaysia, Marshall
+      Islands, Micronesia, Netherlands, Pakistan, Palau, Papua New Guinea,
+      Slovenia, Spain, Zimbabwe. The counts are from IDEA's printed lists; a
+      pie chart in the same fact sheet shows a different split, which does
+      not match its own lists. "No in-country postal
+      voting" is derived, not published: IDEA prints no list of countries
+      without it, so every other sovereign state on the map, the small ones
+      drawn as dots included, is given that category. IDEA's own total of 204,
+      minus the 32 listed, leaves 172; the map's count differs because it
+      covers only sovereign states, and IDEA does not say which 204 it codes.
+      Taiwan, Kosovo, Palestine and Vatican
+      City read "No data", because it is not known whether IDEA codes them.
+      Territories such as Greenland, Western Sahara and Puerto Rico are drawn
+      plainly, as background, not as countries. The denominator, 204, is from
+      IDEA's overview page, whose data date from 2021 to 2023, so the two
+      dates differ. Postal voting from abroad is a separate dataset and is not
+      shown here.
+    categories:
+      - { id: all, label: All voters may vote by post, mark: A }
+      - { id: some, label: 'Some voters, by country-specific criteria', mark: S }
+      - { id: none, label: No in-country postal voting (derived), mark: "—" }
+    areas:
+      CA: all
+      DE: all
+      IS: all
+      KR: all
+      LI: all
+      LU: all
+      NZ: all
+      PL: all
+      CH: all
+      GB: all
+      US: all
+      AU: some
+      AT: some
+      BD: some
+      BT: some
+      FJ: some
+      FR: some
+      GR: some
+      IN: some
+      IE: some
+      JP: some
+      LT: some
+      MY: some
+      MH: some
+      FM: some
+      NL: some
+      PK: some
+      PW: some
+      PG: some
+      SI: some
+      ES: some
+      ZW: some
+      AD: none
+      AE: none
+      AF: none
+      AG: none
+      AL: none
+      AM: none
+      AO: none
+      AR: none
+      AZ: none
+      BA: none
+      BB: none
+      BE: none
+      BF: none
+      BG: none
+      BH: none
+      BI: none
+      BJ: none
+      BN: none
+      BO: none
+      BR: none
+      BS: none
+      BW: none
+      BY: none
+      BZ: none
+      CD: none
+      CF: none
+      CG: none
+      CI: none
+      CL: none
+      CM: none
+      CN: none
+      CO: none
+      CR: none
+      CU: none
+      CV: none
+      CY: none
+      CZ: none
+      DJ: none
+      DK: none
+      DM: none
+      DO: none
+      DZ: none
+      EC: none
+      EE: none
+      EG: none
+      ER: none
+      ET: none
+      FI: none
+      GA: none
+      GD: none
+      GE: none
+      GH: none
+      GM: none
+      GN: none
+      GQ: none
+      GT: none
+      GW: none
+      GY: none
+      HN: none
+      HR: none
+      HT: none
+      HU: none
+      ID: none
+      IL: none
+      IQ: none
+      IR: none
+      IT: none
+      JM: none
+      JO: none
+      KE: none
+      KG: none
+      KH: none
+      KI: none
+      KM: none
+      KN: none
+      KP: none
+      KW: none
+      KZ: none
+      LA: none
+      LB: none
+      LC: none
+      LK: none
+      LR: none
+      LS: none
+      LV: none
+      LY: none
+      MA: none
+      MC: none
+      MD: none
+      ME: none
+      MG: none
+      MK: none
+      ML: none
+      MM: none
+      MN: none
+      MR: none
+      MT: none
+      MU: none
+      MV: none
+      MW: none
+      MX: none
+      MZ: none
+      NA: none
+      NE: none
+      NG: none
+      NI: none
+      NO: none
+      NP: none
+      NR: none
+      OM: none
+      PA: none
+      PE: none
+      PH: none
+      PT: none
+      PY: none
+      QA: none
+      RO: none
+      RS: none
+      RU: none
+      RW: none
+      SA: none
+      SB: none
+      SC: none
+      SD: none
+      SE: none
+      SG: none
+      SK: none
+      SL: none
+      SM: none
+      SN: none
+      SO: none
+      SR: none
+      SS: none
+      ST: none
+      SV: none
+      SY: none
+      SZ: none
+      TD: none
+      TG: none
+      TH: none
+      TJ: none
+      TL: none
+      TM: none
+      TN: none
+      TO: none
+      TR: none
+      TT: none
+      TV: none
+      TZ: none
+      UA: none
+      UG: none
+      UY: none
+      UZ: none
+      VC: none
+      VE: none
+      VN: none
+      VU: none
+      WS: none
+      YE: none
+      ZA: none
+      ZM: none
+  - kind: barChart
     id: france-abstention
+    title: >-
+      France: average abstention before and after postal voting was abolished in
+      1975
+    description: >-
+      Average abstention at each type of French election before the law of
+      31 December 1975 and from then to 1988, as the Interior Ministry gave it
+      when it refused to restore postal voting.
+    valueLabel: Average abstention (%)
+    categoryLabel: Type of election
+    format: { unit: percent, decimals: 1 }
+    domainMax: 50
+    sources: [5]
+    note: >-
+      The ministry's own averages, printed in French form ("18,4 p 100").
+      They are period averages chosen by a government defending abolition,
+      not a controlled comparison; the ministry attributed the legislative
+      rise to low turnout in June 1988. The source does not say which
+      elections each average covers.
+    style: dumbbell
+    series:
+      - { key: before, label: Before the 1975 law }
+      - { key: after, label: 'After it, to 1988' }
+    items:
+      - { label: Presidential, values: { before: { value: 18.4, asPublished: '18,4 p 100' }, after: { value: 16.6, asPublished: '16,6 p 100' } } }
+      - { label: Legislative, values: { before: { value: 21.5, asPublished: '21,5 p 100' }, after: { value: 25.7, asPublished: '25,7 p 100' } } }
+      - { label: Municipal, values: { before: { value: 23.1, asPublished: '23,1 p 100' }, after: { value: 21.4, asPublished: '21,4 p 100' } } }
+      - { label: Cantonal, values: { before: { value: 39, asPublished: '39 p 100' }, after: { value: 33.6, asPublished: '33,6 p 100' } } }
   - kind: dataTable
     id: secret-ballot
     title: 'The secret ballot around the world: when and why it was adopted'

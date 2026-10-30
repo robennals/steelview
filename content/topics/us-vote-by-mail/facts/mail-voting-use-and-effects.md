@@ -482,7 +482,8 @@ additionalSeries:
         NCSL's table covers November 2016 to November 2026; the 2026 row is
         NCSL's expected count. The three lines add to 50 at every date. NCSL
         leaves the COVID-19 column blank outside November 2020; it is shown
-        here as zero.
+        here as zero. The report on federal and state power sets federal bills,
+        orders and rulings out on a timeline.
     events:
       - period: '2019'
         label: 'Utah: all counties vote by mail'
@@ -723,70 +724,6 @@ comparisons:
         value: 37
       - label: Republicans
         value: 24
-  - id: mail-use-by-disability
-    title: US voters who voted by mail, with and without a disability, 2020
-    description: >-
-      Share of voters with and without a disability who voted by mail in
-      November 2020, from the Rutgers University survey released by the
-      Election Assistance Commission.
-    unit: percent
-    valueLabel: '% who voted by mail'
-    domainMax: 100
-    sources: [14]
-    note: >-
-      The EAC gives the disability figure as "more than 53%". No comparable
-      figure for 2022 or 2024 was found in the EAC's text.
-    items:
-      - label: Voters with a disability
-        value: 53
-      - label: Voters without a disability
-        value: 42
-  - id: effect-estimates
-    title: 'Estimated effects of mail-voting rules on turnout and party share'
-    description: >-
-      Point estimates from two studies, in percentage points: universal mail
-      ballots in California, Utah and Washington counties, 1996–2018, and
-      no-excuse eligibility at age 65 in Texas in 2020.
-    unit: percent
-    valueLabel: 'Estimated effect, percentage points'
-    domainMax: 3
-    sources: [15, 16, 18]
-    note: >-
-      Universal mail on turnout: 2.1 to 2.2 points of the citizen voting-age
-      population (2.1 shown). Universal mail on the Democratic share of
-      turnout: 0.1 points in the specifications with trends, with an upper 95%
-      confidence bound of about 0.3 (0.7 in the simplest model; California and
-      Utah only). No-excuse eligibility at 65 in Texas: 0.02 points, upper 95%
-      bound 0.26. Confidence ranges for the turnout estimate are in the paper.
-    items:
-      - label: 'Universal mail ballots: turnout'
-        value: 2.1
-      - label: 'Universal mail ballots: Democratic share of turnout'
-        value: 0.1
-      - label: 'No-excuse eligibility at 65 (Texas 2020): turnout'
-        value: 0.02
-  - id: support-by-state-rule
-    title: 'Support for letting any voter vote by mail, by the rule in the respondent''s state, 2025'
-    description: >-
-      Share of US adults who favour allowing any voter to vote by mail, grouped
-      by whether their state mails every voter a ballot, lets any voter ask
-      for one, or requires an excuse. August 2025.
-    unit: percent
-    valueLabel: '% who favour'
-    domainMax: 100
-    sources: [20]
-    note: >-
-      Pew groups states by NCSL's classification. Pew publishes party figures
-      for the universal-mail states (Democrats 91%, Republicans 46%) and the
-      excuse states (Democrats 71%, Republicans 22%) but not for the no-excuse
-      group, so only all adults are shown.
-    items:
-      - label: 'States that mail every voter a ballot'
-        value: 73
-      - label: 'States where any voter may ask for one'
-        value: 58
-      - label: 'States that require an excuse'
-        value: 45
 relatedFacts:
   - mail-ballot-rejection-and-signature-checks
   - ballot-deadlines-and-counting-speed
@@ -883,12 +820,75 @@ figures:
     id: state-mail-share
   - kind: comparison
     id: mail-use-by-party
-  - kind: comparison
+  - kind: barChart
     id: mail-use-by-disability
-  - kind: comparison
+    title: US voters who voted by mail, with and without a disability, 2020
+    description: >-
+      Share of voters with and without a disability who voted by mail in
+      November 2020, from the Rutgers University survey released by the
+      Election Assistance Commission.
+    valueLabel: '% who voted by mail'
+    categoryLabel: Voters
+    format: { unit: percent, decimals: 0 }
+    sort: none
+    domainMax: 100
+    sources: [14]
+    note: >-
+      The EAC gives the disability figure only as a lower bound. No comparable
+      figure for 2022 or 2024 was found in the EAC's text.
+    items:
+      - { label: Voters with a disability, value: { value: 53, qualifier: more than, asPublished: More than 53% } }
+      - { label: Voters without a disability, value: 42 }
+  - kind: estimateRange
     id: effect-estimates
-  - kind: comparison
+    title: 'Estimated effects of mail-voting rules on turnout and party share'
+    description: >-
+      Estimates from two studies, in percentage points, against no effect:
+      universal mail ballots in California, Utah and Washington counties,
+      1996–2018, and no-excuse eligibility at age 65 in Texas in 2020.
+    valueLabel: 'Estimated effect, percentage points'
+    format: { unit: number, decimals: 2 }
+    intervalLabel: Range across the study's models, or upper 95% confidence bound
+    nullValue: 0
+    nullLabel: No effect
+    note: >-
+      Universal mail on turnout is a share of the citizen voting-age
+      population; the paper gives confidence ranges for it, which are not
+      quoted here. Universal mail on the Democratic share of turnout is 0.1
+      points in the specifications with trends (0.7 in the simplest model;
+      California and Utah only). For the last two estimates only the upper
+      95% bound is quoted, so each is drawn as its central estimate with a
+      short dashed tail up to that bound, and the table's Includes column
+      reads "—": without a lower bound, the figures cannot say whether the
+      interval includes no effect.
+    estimates:
+      - { label: 'Universal mail ballots: turnout', year: '1996–2018', low: 2.1, high: 2.2, asPublished: 2.1 to 2.2%, note: "Range across the study's specifications, not a confidence interval.", source: 15 }
+      - { label: 'Universal mail ballots: Democratic share of turnout', year: '1996–2018', estimate: 0.1, high: 0.3, asPublished: only 0.1%, note: 'Upper bound of the 95% confidence interval, "only about 0.3%".', source: 16 }
+      - { label: 'No-excuse eligibility at 65: turnout', year: 'Texas 2020', estimate: 0.02, high: 0.26, note: Upper bound of the 95% confidence interval., source: 18 }
+  - kind: barChart
     id: support-by-state-rule
+    title: 'Support for letting any voter vote by mail, by the rule in the respondent''s state, 2025'
+    description: >-
+      Share of US adults, and of each party, who favour allowing any voter to
+      vote by mail, grouped by whether their state mails every voter a
+      ballot, lets any voter ask for one, or requires an excuse. August 2025.
+    valueLabel: '% who favour'
+    categoryLabel: Rule in the respondent's state
+    format: { unit: percent, decimals: 0 }
+    domainMax: 100
+    sources: [20]
+    note: >-
+      Pew groups states by NCSL's classification. Pew publishes party figures
+      for the states that mail every voter a ballot and for the excuse states
+      but not for the no-excuse group, so that row has all adults only.
+    series:
+      - { key: all, label: All adults }
+      - { key: dem, label: Democrats }
+      - { key: rep, label: Republicans }
+    items:
+      - { label: 'States that mail every voter a ballot', values: { all: 73, dem: 91, rep: 46 } }
+      - { label: 'States where any voter may ask for one', values: { all: 58, dem: null, rep: null } }
+      - { label: 'States that require an excuse', values: { all: 45, dem: 71, rep: 22 } }
 ---
 This report covers who votes by mail and what mail voting changes. How mail ballots are rejected, how fast they are counted, and how often they have been abused are in separate reports.
 

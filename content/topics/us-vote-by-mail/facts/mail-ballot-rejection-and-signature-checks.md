@@ -1135,49 +1135,89 @@ figures:
     id: washington-counties
   - kind: comparison
     id: cure-2024
-  - kind: dataTable
+  - kind: map
     id: state-rules
-    title: How US states check and cure mail ballots, October 2026
-    description: 'The checks a returned ballot can face, and where each applies. Some states use more than one.'
-    caption: One row per check
-    columns:
-      - key: check
-        label: Check on a returned ballot
-        rowHeader: true
-      - key: where
-        label: Where it applies
-        sortable: false
-    rows:
-      - check: Signature compared with the one on file
-        where:
-          value: 32 states and Puerto Rico
-          sources:
-            - 28
-      - check: 'Envelope must be signed, but the signature is not compared'
-        where:
-          value: 'Connecticut, Delaware, Georgia, Maryland, New Mexico, Pennsylvania, Vermont, Virginia, Wyoming, DC and the US Virgin Islands'
-          sources:
-            - 28
-      - check: ID or Social Security number on the envelope
-        where:
-          value: 'Georgia, Minnesota, New Mexico, Ohio, Texas, Virginia; Utah from 2029'
-          sources:
-            - 28
-      - check: Witness signature
-        where:
-          value: 'Alabama, Alaska, Arkansas, Louisiana, Minnesota, North Carolina, South Carolina, Wisconsin'
-          sources:
-            - 28
-      - check: Notarised envelope
-        where:
-          value: 'Mississippi, Missouri, Oklahoma'
-          sources:
-            - 28
-      - check: Statewide duty to tell voters of a missing or mismatched signature and let them fix it
-        where:
-          value: 35 states and DC
-          sources:
-            - 30
+    title: How US states check a returned mail ballot, with ID-number states outlined, October 2026
+    description: >-
+      The main check each state makes on a returned mail ballot envelope.
+      States that also require an ID or Social Security number on the
+      envelope are outlined; other overlaps are noted on each state.
+    preset: us-states
+    default: tiles
+    areaLabel: State or territory
+    categoryLabel: Main check on a returned mail ballot
+    highlight: [GA, MN, NM, OH, TX, VA]
+    sources: [28, 30]
+    note: >-
+      NCSL Table 14, updated 26 October 2026. NCSL's lists overlap: a state in
+      its signature-comparison list is shown as comparing signatures, with any
+      further requirement in its note, so Arkansas counts here as comparing
+      signatures though it is one of NCSL's eight witness states, and
+      Mississippi though it is one of NCSL's three notary states. NCSL's lists
+      name Puerto Rico and the US Virgin Islands but not American Samoa, Guam
+      or the Northern Mariana Islands, which read "No data". Whether a state
+      must let voters fix a missing or mismatched signature (35 states and DC,
+      NCSL Table 15) is not mapped, because NCSL's list of those states is
+      not quoted here.
+    categories:
+      - { id: signature, label: Signature compared with the one on file, mark: S }
+      - { id: signed-only, label: 'Envelope must be signed, but the signature is not compared', mark: E }
+      - { id: witness, label: Witness (or notary) signature, mark: W }
+      - { id: notary, label: Notarised envelope, mark: N }
+    areas:
+      AZ: signature
+      AR: { category: signature, note: A witness signature is also required }
+      CA: signature
+      CO: signature
+      FL: signature
+      HI: signature
+      ID: signature
+      IL: signature
+      IN: signature
+      IA: signature
+      KS: signature
+      KY: signature
+      ME: signature
+      MA: signature
+      MI: signature
+      MS: { category: signature, note: The envelope must also be notarised }
+      MT: signature
+      NE: signature
+      NV: signature
+      NH: signature
+      NJ: signature
+      NY: signature
+      ND: signature
+      OH: { category: signature, note: "Also a state ID or driver's licence number or the last four digits of the Social Security number" }
+      OR: signature
+      RI: signature
+      SD: signature
+      TN: signature
+      TX: { category: signature, note: "Also a state ID or driver's licence number or the last four digits of the Social Security number" }
+      UT: { category: signature, note: From 2029 the last four digits of an ID or Social Security number replace signature comparison }
+      WA: signature
+      WV: signature
+      PR: signature
+      CT: signed-only
+      DE: signed-only
+      GA: { category: signed-only, note: "Also a state ID or driver's licence number" }
+      MD: signed-only
+      NM: { category: signed-only, note: Also the last four digits of the Social Security number }
+      PA: signed-only
+      VT: signed-only
+      VA: { category: signed-only, note: Also the last four digits of the Social Security number }
+      WY: signed-only
+      DC: signed-only
+      VI: signed-only
+      AL: { category: witness, note: Two witnesses or a notary }
+      AK: { category: witness, note: A witness or a notary }
+      LA: witness
+      MN: { category: witness, note: "A witness or a notary, and an ID or driver's licence number or the last four digits of the Social Security number" }
+      NC: { category: witness, note: Two witnesses or a notary }
+      SC: witness
+      WI: witness
+      MO: notary
+      OK: notary
   - kind: dataTable
     id: washington-recheck
     title: 'Washington''s re-check of its counties'' signature decisions, 2020'

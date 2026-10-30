@@ -574,31 +574,6 @@ comparisons:
         value: 76
       - label: 'In-person voters'
         value: 47
-  - id: winner-gap-worldwide
-    title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
-    description: 'Share confident in the honesty of elections among those who approve and disapprove of their national leadership (Gallup World Poll). The world figure is the 2025 median across more than 100 countries.'
-    unit: percent
-    valueLabel: '% confident'
-    domainMax: 100
-    sources: [4]
-    note: >-
-      Gallup publishes only the global median, not each country's figures, so
-      the full distribution cannot be shown here. The world median is for 2025
-      because Gallup's 2026 global collection was incomplete at publication.
-      The US 2025 values are not published separately; Gallup gives the
-      two-year average (46% of approvers, 48% of disapprovers) and the 2026
-      values, so the US bars show 2026 only.
-    items:
-      - label: 'World median 2025: approvers'
-        value: 70
-      - label: 'World median 2025: disapprovers'
-        value: 30
-      - label: 'US 2026: approvers'
-        value: 41
-        highlight: true
-      - label: 'US 2026: disapprovers'
-        value: 52
-        highlight: true
 relatedFacts:
   - ballot-deadlines-and-counting-speed
 dataStillNeeded:
@@ -628,8 +603,28 @@ figures:
     id: spae-nationwide
   - kind: series
     id: gallup-honesty
-  - kind: comparison
+  - kind: barChart
     id: winner-gap-worldwide
+    title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
+    description: 'Share confident in the honesty of elections among those who approve and disapprove of their national leadership (Gallup World Poll). The world figure is the 2025 median across more than 100 countries.'
+    valueLabel: '% confident'
+    categoryLabel: Where and when
+    format: { unit: percent, decimals: 0 }
+    domainMax: 100
+    sources: [4]
+    note: >-
+      Gallup publishes only the global median, not each country's figures, so
+      the full distribution cannot be shown here. The world median is for 2025
+      because Gallup's 2026 global collection was incomplete at publication.
+      The US 2025 values are not published separately; Gallup gives the
+      two-year average (46% of approvers, 48% of disapprovers) and the 2026
+      values, so the US bars show 2026 only.
+    series:
+      - { key: approve, label: Approve of national leadership }
+      - { key: disapprove, label: Disapprove }
+    items:
+      - { label: 'World median, 2025', values: { approve: 70, disapprove: 30 } }
+      - { label: 'United States, 2026', values: { approve: 41, disapprove: 52 }, highlight: true }
   - kind: dataTable
     id: disputes
     title: Six disputed US election results, and how each ended

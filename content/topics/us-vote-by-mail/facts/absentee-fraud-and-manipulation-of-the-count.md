@@ -560,71 +560,6 @@ comparisons:
       buying (1): Turkey Creek, La., 2014. An "entry" year is the year
       Heritage gives the record, used where the text does not date the
       election. Heritage's list is a sample, not a complete record.
-  - id: margin-and-invalid-ballots
-    title: Winning margin against ballots ruled invalid, voided elections involving absentee ballots
-    description: >-
-      For each voided election involving absentee or mail ballots whose record
-      gives both numbers: the winning margin as first counted, and the number
-      of ballots a court ruled invalid or illegal.
-    unit: count
-    valueLabel: Votes or ballots
-    sources: [3, 10]
-    items:
-      - label: 'East Chicago, Ind., 2003 primary: winning margin'
-        value: 278
-      - label: 'East Chicago: absentee votes ruled invalid'
-        value: 155
-        highlight: true
-      - label: 'Vernon, Calif. (entry 2012): winning margin'
-        value: 4
-      - label: 'Vernon: ballots ruled invalid'
-        value: 7
-        highlight: true
-      - label: 'Weslaco, Tex., 2013: winning margin'
-        value: 16
-      - label: 'Weslaco: ballots illegally cast'
-        value: 30
-        highlight: true
-      - label: 'Perth Amboy, N.J. (entry 2015): winning margin'
-        value: 10
-      - label: 'Perth Amboy: illegal absentee ballots (at least)'
-        value: 13
-        highlight: true
-      - label: 'Wetumpka, Ala. (entry 2017): winning margin'
-        value: 3
-      - label: 'Wetumpka: absentee ballots thrown out'
-        value: 8
-        highlight: true
-      - label: 'Aberdeen, Miss., 2020 primary: winning margin'
-        value: 37
-      - label: 'Aberdeen: absentee ballots not valid'
-        value: 66
-        highlight: true
-      - label: 'Caddo Parish, La., 2023 runoff: winning margin'
-        value: 1
-      - label: 'Caddo Parish: illegal votes (at least)'
-        value: 11
-        highlight: true
-      - label: 'Harris County, Tex., judicial race (entry 2024): winning margin'
-        value: 449
-      - label: 'Harris County: illegal votes'
-        value: 1482
-        highlight: true
-    note: >-
-      Selection: every election in the voided-elections chart that involved
-      absentee or mail ballots and whose source gives both a margin and a
-      count of invalid ballots. East Chicago is from the Indiana Supreme
-      Court; the rest are from Heritage's entries. Wetumpka's "three" and
-      "eight" are written as words in the source. Vernon's 7 is derived: five
-      non-resident voters plus two ballots not properly mailed. Caddo's 11
-      include 7 involving mail ballots (2 double votes by mail and in person,
-      5 defective absentee ballots); Harris County's 1,482 are mostly
-      residency problems (983 votes), with 48 absentee ballots. Other voided
-      elections give a margin but no count of invalid ballots: North
-      Carolina's 9th District (905; the board found the number of affected
-      ballots could not be determined) and Bridgeport (251). Four
-      non-absentee voidings give both numbers and show similar small margins
-      (Eatonville 1, Kleberg County 6, Turkey Creek 4, Compton 2021 1).
   - id: absentee-and-impersonation-cases
     title: Absentee fraud and in-person impersonation in two case compilations
     description: >-
@@ -694,8 +629,46 @@ dataStillNeeded:
 figures:
   - kind: comparison
     id: voided-elections
-  - kind: comparison
+  - kind: barChart
     id: margin-and-invalid-ballots
+    title: Winning margin against ballots ruled invalid, voided elections involving absentee ballots
+    description: >-
+      For each voided election involving absentee or mail ballots whose record
+      gives a winning margin: the margin as first counted, and the number of
+      ballots a court ruled invalid or illegal, where the record gives one.
+    valueLabel: Votes or ballots
+    categoryLabel: Election
+    format: { unit: count }
+    sources: [1, 3, 9, 10]
+    note: >-
+      Selection: every election in the voided-elections chart that involved
+      absentee or mail ballots and whose source gives a margin. East Chicago
+      is from the Indiana Supreme Court, North Carolina's 9th District from
+      the state board's order and Bridgeport from CT Mirror; the rest are from
+      Heritage's entries. Vernon's 7 is derived: five non-resident voters plus
+      two ballots not properly mailed. Caddo's 11 include 7 involving mail
+      ballots (2 double votes by mail and in person, 5 defective absentee
+      ballots); Harris County's 1,482 are mostly residency problems (983
+      votes), with 48 absentee ballots. North Carolina's board found the
+      number of affected ballots could not be determined, and Bridgeport's
+      ruling gives no count of invalid ballots, so those rows show the margin
+      only. Four non-absentee voidings give both numbers and show similar
+      small margins (Eatonville 1, Kleberg County 6, Turkey Creek 4, Compton
+      2021 1).
+    series:
+      - { key: margin, label: Winning margin as first counted }
+      - { key: invalid, label: Ballots ruled invalid or illegal }
+    items:
+      - { label: 'East Chicago, Ind., 2003 primary', values: { margin: 278, invalid: 155 } }
+      - { label: 'Vernon, Calif. (entry 2012)', values: { margin: { value: 4, asPublished: four votes }, invalid: 7 } }
+      - { label: 'Weslaco, Tex., 2013', values: { margin: 16, invalid: 30 } }
+      - { label: 'Perth Amboy, N.J. (entry 2015)', values: { margin: 10, invalid: { value: 13, qualifier: at least, asPublished: at least 13 illegal absentee ballots } } }
+      - { label: 'Wetumpka, Ala. (entry 2017)', values: { margin: { value: 3, asPublished: three votes }, invalid: { value: 8, asPublished: eight absentee ballots } } }
+      - { label: 'North Carolina 9th District, 2018', values: { margin: 905, invalid: null } }
+      - { label: 'Aberdeen, Miss., 2020 primary', values: { margin: 37, invalid: 66 } }
+      - { label: 'Bridgeport, Conn., 2023 primary', values: { margin: 251, invalid: null } }
+      - { label: 'Caddo Parish, La., 2023 runoff', values: { margin: { value: 1, asPublished: decided by one vote }, invalid: { value: 11, qualifier: at least, asPublished: at least 11 illegal votes } } }
+      - { label: 'Harris County, Tex., judicial race (entry 2024)', values: { margin: 449, invalid: 1482 } }
   - kind: comparison
     id: absentee-and-impersonation-cases
   - kind: dataTable
@@ -965,7 +938,7 @@ Most were city, county or primary races decided by a few dozen votes or fewer; C
 
 ### Courts voided results when tainted ballots could have changed the winner {#absentee-fraud-and-manipulation-of-the-count--invalid-could-change-winner}
 
-In each charted case the invalid ballots outnumbered the margin, except East Chicago. There the Indiana Supreme Court ordered a new election anyway, holding that the scheme "perverted the absentee voting process", whether 155 or 100 ballots were invalid. [3](#source-absentee-fraud-and-manipulation-of-the-count-3)
+In each charted case that gives a count of invalid ballots, they outnumbered the margin, except East Chicago. There the Indiana Supreme Court ordered a new election anyway, holding that the scheme "perverted the absentee voting process", whether 155 or 100 ballots were invalid. [3](#source-absentee-fraud-and-manipulation-of-the-count-3)
 
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-absentee-and-impersonation-cases}
 

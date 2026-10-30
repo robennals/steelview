@@ -469,87 +469,8 @@ sources:
     url: https://le.utah.gov/Session/2025/bills/enrolled/HB0300.pdf
     publisher: 'Utah State Legislature'
     date: '2025'
-series:
-  title: 'State mail-voting rules, with federal actions marked, 2016–2026'
-  description: >-
-    Number of states (excluding DC) that offer mail voting to every voter or
-    require an excuse, and that count mailed ballots arriving after Election
-    Day or require them by Election Day, at each November election and January
-    2020. Federal bills, orders and rulings are marked under the chart.
-  periodLabel: 'Election month'
-  coverage:
-    from: '2016-11'
-    to: '2026-11'
-    note: >-
-      NCSL's tables cover November 2016 to November 2026; the 2026 row is
-      NCSL's expected count. Each reading's lines add to 50 states. The
-      receipt counts exclude special deadlines for military and overseas
-      ballots. NCSL leaves the COVID-19 column blank outside November 2020; it
-      is shown as zero. The same counts are analysed in the reports on mail
-      voting use and on ballot deadlines.
-  events:
-    - period: '2021-10'
-      label: 'Freedom to Vote Act fails cloture'
-      note: 'It would have required every state to offer no-excuse absentee voting.'
-      source: 10
-    - period: '2022-01'
-      label: 'Freedom to Vote: John R. Lewis Act fails cloture, 49–51'
-      source: 11
-    - period: '2025-03'
-      label: 'Executive Order 14248'
-      note: 'Among other things it addresses deadlines for returning mail ballots; a federal court in Massachusetts permanently enjoined that part in July 2026.'
-      source: 29
-    - period: '2025'
-      label: 'North Dakota, Ohio and Utah end grace periods'
-      source: 30
-    - period: '2026-02'
-      label: 'House passes SAVE America Act, 218–213'
-      source: 12
-    - period: '2026-03'
-      label: 'Executive Order 14399 orders a Postal Service ballot rule'
-      source: 17
-    - period: '2026-06'
-      label: 'Watson v. RNC: federal law allows late-arriving ballots'
-      source: 24
-    - period: '2026-07'
-      label: 'House passes SAVE America Act again, with the defence bill'
-      source: 13
-    - period: '2026-07'
-      label: 'Kansas court blocks end of grace period'
-      source: 30
-    - period: '2026-08'
-      label: 'Trump v. California lets EO 14399 proceed'
-      source: 18
-    - period: '2026-08'
-      label: 'Senate rejects photo-ID bill S. 5271, 52–46'
-      source: 14
-    - period: '2026-09'
-      label: 'USPS v. California keeps the ballot rule blocked'
-      source: 21
-  readings:
-    - id: no-excuse-counts
-      label: 'Who may vote by mail'
-      unit: count
-      valueLabel: 'States'
-      lines:
-        - name: No-excuse or all-mail
-          points: [{period: '2016-11', value: 30}, {period: '2020-01', value: 32}, {period: '2020-11', value: 38}, {period: '2022-11', value: 35}, {period: '2024-11', value: 36}, {period: '2026-11', value: 37}]
-        - name: Excuse required
-          points: [{period: '2016-11', value: 20}, {period: '2020-01', value: 18}, {period: '2020-11', value: 2}, {period: '2022-11', value: 15}, {period: '2024-11', value: 14}, {period: '2026-11', value: 13}]
-        - name: COVID-19 excuse added for 2020 only
-          points: [{period: '2016-11', value: 0}, {period: '2020-01', value: 0}, {period: '2020-11', value: 10}, {period: '2022-11', value: 0}, {period: '2024-11', value: 0}, {period: '2026-11', value: 0}]
-    - id: receipt-counts
-      label: 'When a mailed ballot must arrive'
-      unit: count
-      valueLabel: 'States'
-      note: 'DC is excluded; NCSL counts it with the Election Day states in 2016 and with the later-arrival states from January 2020.'
-      lines:
-        - name: Must arrive by Election Day
-          points: [{period: '2016-11', value: 37}, {period: '2020-01', value: 35}, {period: '2020-11', value: 29}, {period: '2022-11', value: 31}, {period: '2024-11', value: 32}, {period: '2026-11', value: 35}]
-        - name: Counted if postmarked by Election Day and arriving later
-          points: [{period: '2016-11', value: 13}, {period: '2020-01', value: 15}, {period: '2020-11', value: 21}, {period: '2022-11', value: 19}, {period: '2024-11', value: 18}, {period: '2026-11', value: 15}]
-  source:
-    stance: supports
+  # 33
+  - stance: supports
     quote: >-
       November 2016 30 states and D.C. 20 states ... January 2020 32 states and
       D.C. 18 states ... November 2020 38 states and D.C. 2 states 10 states
@@ -619,7 +540,30 @@ dataStillNeeded:
       state choice shows which rules work rests on the value of local choice
       rather than on evidence.
 figures:
-  - kind: series
+  - kind: timeline
+    id: federal-actions
+    title: 'Federal bills, orders and rulings on mail voting, and state deadline changes, 2021–2026'
+    description: >-
+      Each dated move in Congress, by the President and in the courts, with
+      the changes to state receipt deadlines that fell among them.
+    categories:
+      - { id: congress, label: Congress }
+      - { id: president, label: President }
+      - { id: court, label: Courts }
+      - { id: state, label: States }
+    events:
+      - { date: '2021-10', title: Freedom to Vote Act fails cloture, description: It would have required every state to offer no-excuse absentee voting., category: congress, source: 10 }
+      - { date: '2022-01', title: 'Freedom to Vote: John R. Lewis Act fails cloture, 49–51', category: congress, source: 11 }
+      - { date: '2025', title: 'North Dakota, Ohio and Utah end grace periods', category: state, source: 30 }
+      - { date: '2025-03', title: Executive Order 14248, description: 'Among other things it addresses deadlines for returning mail ballots; a federal court in Massachusetts permanently enjoined that part in July 2026.', category: president, source: 29 }
+      - { date: '2026-02', title: 'House passes SAVE America Act, 218–213', category: congress, source: 12 }
+      - { date: '2026-03', title: Executive Order 14399 orders a Postal Service ballot rule, category: president, source: 17 }
+      - { date: '2026-06', title: 'Watson v. RNC: federal law allows late-arriving ballots', category: court, source: 24 }
+      - { date: '2026-07', title: 'House passes SAVE America Act again, with the defence bill', category: congress, source: 13 }
+      - { date: '2026-07', title: Kansas court blocks end of grace period, category: state, source: 30 }
+      - { date: '2026-08', title: Trump v. California lets EO 14399 proceed, category: court, source: 18 }
+      - { date: '2026-08', title: 'Senate rejects photo-ID bill S. 5271, 52–46', category: congress, source: 14 }
+      - { date: '2026-09', title: USPS v. California keeps the ballot rule blocked, category: court, source: 21 }
   - kind: comparison
     id: senate-votes
   - kind: dataTable
@@ -847,19 +791,17 @@ figures:
 ---
 This report is a dated legal record, as of 29 October 2026, the week before the November midterms. Several items will change after that election: the SAVE America Act in a lame-duck session, the First Circuit appeals over both executive orders, and the Postal Service rule for later elections.
 
-## Observations {#federal-and-state-power-over-mail-voting--observations-no-excuse-counts}
+## Observations {#federal-and-state-power-over-mail-voting--observations-federal-actions}
 
 ### States have moved mail-voting rules in both directions {#federal-and-state-power-over-mail-voting--state-rules-move-both-ways}
 
-The number of states offering mail voting to every voter rose sharply for 2020, fell back as temporary rules ended, and is expected to be seven above its 2016 level in November 2026 (chart). [33](#source-federal-and-state-power-over-mail-voting-33)
+The number of states offering mail voting to every voter rose sharply for 2020, fell back as temporary rules ended, and is expected to be seven above its 2016 level in November 2026 ([chart in the report on mail voting use](#fact-mail-voting-use-and-effects/chart-state-rule-counts)). [33](#source-federal-and-state-power-over-mail-voting-33)
 
 Within that rise, states pulled the other way too. Utah, which mails every voter a ballot, will send ballots only on request from 2029. [32](#source-federal-and-state-power-over-mail-voting-32) Oregon's all-mail system was adopted by its own voters, by citizen initiative in 1998. [31](#source-federal-and-state-power-over-mail-voting-31)
 
-## Observations {#federal-and-state-power-over-mail-voting--observations-receipt-counts}
-
 ### Receipt deadlines have swung back to their 2016 pattern {#federal-and-state-power-over-mail-voting--receipt-deadlines-swung-back}
 
-More states counted late-arriving mailed ballots in 2020; by November 2026 NCSL expects the count of states requiring Election Day receipt to be "roughly the same as it was in November 2016" (chart). [33](#source-federal-and-state-power-over-mail-voting-33)
+More states counted late-arriving mailed ballots in 2020; by November 2026 NCSL expects the count of states requiring Election Day receipt to be "roughly the same as it was in November 2016" ([chart in the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states)). [33](#source-federal-and-state-power-over-mail-voting-33)
 
 North Dakota, Ohio and Utah ended their grace periods in 2025. Kansas legislated an end too, but a district court in Kansas blocked it in July 2026, so Kansas still counts ballots arriving within three days. [30](#source-federal-and-state-power-over-mail-voting-30) Detail by state is in [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed).
 
@@ -949,9 +891,9 @@ The March 2026 order itself is not blocked; the Supreme Court let it proceed. [1
 
 The Supreme Court's 2026 rulings were on standing, timing and stays. [19](#source-federal-and-state-power-over-mail-voting-19) [21](#source-federal-and-state-power-over-mail-voting-21) The only merits rulings on the President's election orders are from district courts, and they are under appeal. [28](#source-federal-and-state-power-over-mail-voting-28) [29](#source-federal-and-state-power-over-mail-voting-29)
 
-### This is a legal record, so its one chart counts state rules {#federal-and-state-power-over-mail-voting--why-this-chart}
+### This is a legal record, so the counts of state rules are charted elsewhere {#federal-and-state-power-over-mail-voting--why-this-chart}
 
-Laws, orders and rulings are dated events, not yearly quantities, so they are marked under the chart of state rules rather than plotted. The chart shows what states did while the federal actions happened; it does not show that any federal action caused a state change.
+Laws, orders and rulings are dated events, not yearly quantities, so they are set out on the timeline rather than plotted. NCSL's counts of state rules are charted once each, in [the report on mail voting use](#fact-mail-voting-use-and-effects/chart-state-rule-counts) and [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states). The timeline shows what happened when; it does not show that any federal action caused a state change.
 
 ## About this data {#federal-and-state-power-over-mail-voting--about}
 
