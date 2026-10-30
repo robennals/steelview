@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-const topic = '/topics/uk-immigration';
-const viewpoint = '#viewpoint-moral-duty-to-help-people-fleeing-danger';
+const topic = '/topics/uk-asylum';
+const viewpoint = '#viewpoint-refuge';
 const principle = '#principle-obligation-to-people-in-danger';
 
 test('an inline principle pill opens its shared text and restores focus on close', async ({ page }) => {

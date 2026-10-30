@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 const topic = '/topics/uk-immigration';
-const viewpoint = '#viewpoint-the-right-kind-of-immigration-not-less-of-it';
+const viewpoint = '#viewpoint-open-and-build';
+const fact = 'immigration-economy-and-public-finances';
+const finding = `${fact}--skilled-workers-gain-care-workers-cost`;
 
 test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
   await page.route(url => url.pathname.includes('/facts/'), async route => {
@@ -9,10 +11,10 @@ test('a supporting finding opens inside its parent, including an uncached articl
   });
   await page.goto(topic);
   await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-  const pill = page.locator(`${viewpoint} .prose-body a[data-fact-id="care-worker-route-fiscally-negative"]`).first();
+  const pill = page.locator(`${viewpoint} .prose-body a[data-fact-id="${fact}"]`).first();
   await pill.click();
-  await expect(page).toHaveURL(/facts\/skilled-worker-fiscal-gain-concentrated#care-worker-route-fiscally-negative--finding$/);
-  await expect(page.locator('dialog .sv-target')).toContainText('36,000');
+  await expect(page).toHaveURL(new RegExp(`facts/${fact}#${finding}$`));
+  await expect(page.locator('dialog .sv-target')).toContainText('143,000');
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
   const source = page.locator('dialog .sv-target .sv-footnote').first();
   await source.click();
@@ -26,7 +28,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
 test('the same sheet can target another section and expand at that position', async ({ page }) => {
   await page.goto(topic);
   await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-  await page.locator(`${viewpoint} a[data-fact-id="care-worker-route-fiscally-negative"]`).first().click();
+  await page.locator(`${viewpoint} a[data-fact-id="${fact}"]`).first().click();
   const expand = page.locator('.sv-modal__expand');
   // The sheet points Expand at the cited section once it has revealed it.
   await expect(expand).toHaveAttribute('href', /#/);
@@ -34,7 +36,7 @@ test('the same sheet can target another section and expand at that position', as
   await expand.click();
   await expect(page.locator('dialog')).toHaveCount(0);
   await expect(page).toHaveURL(href!);
-  await expect(page.locator('.sv-target')).toContainText('£36,000');
+  await expect(page.locator('.sv-target')).toContainText('£143,000');
   await expect(page.locator('.sv-target')).toBeInViewport();
 });
 
@@ -66,7 +68,7 @@ test('mobile pills wrap without horizontal overflow', async ({ page }) => {
   await page.goto(topic);
   await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator(`${viewpoint} a[data-fact-id="care-worker-route-fiscally-negative"]`).first().click();
+  await page.locator(`${viewpoint} a[data-fact-id="${fact}"]`).first().click();
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
   expect(await page.locator('.sv-modal__scroll').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
 });
@@ -76,12 +78,12 @@ test.describe('without JavaScript', () => {
   test('a pill remains an ordinary link to its evidence section', async ({ page }) => {
     await page.goto(topic);
     await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-    const pill = page.locator(`${viewpoint} a[data-fact-id="care-worker-route-fiscally-negative"]`).first();
+    const pill = page.locator(`${viewpoint} a[data-fact-id="${fact}"]`).first();
     const href = await pill.getAttribute('href');
     await pill.click();
     await expect(page).toHaveURL(href!);
     await expect(page.locator('dialog')).toHaveCount(0);
-    await expect(page.locator('#care-worker-route-fiscally-negative--finding')).toBeVisible();
+    await expect(page.locator(`#${finding}`)).toBeVisible();
   });
 });
 
@@ -105,19 +107,12 @@ test('one collapsed Sources disclosure includes parent and supporting citations'
 });
 
 test('opening graphs include all asylum comparators and details remain collapsed', async ({ page }) => {
-  await page.goto(`${topic}/facts/asylum-claims-in-historical-and-european-context`);
-  const charts = page.locator('.sv-factpage__body > .sv-comparison');
-  await expect(charts).toHaveCount(2);
-  await expect(charts.first().locator('li')).toHaveCount(32);
-  await expect(charts.last().locator('li')).toHaveCount(32);
-  await expect(charts.first().locator('li').nth(16)).toContainText('United Kingdom');
-  await expect(charts.last().locator('li').nth(4)).toContainText('United Kingdom');
+  await page.goto('/topics/uk-asylum/facts/asylum-claims-and-decisions');
+  const chart = page.locator('#asylum-claims-and-decisions--chart-per-head-2025');
+  await expect(chart.locator('.sv-comparison__rows > li')).toHaveCount(32);
+  await expect(chart).toContainText('United Kingdom');
   await expect(page.getByRole('heading', { name: 'Context', exact: true })).toHaveCount(0);
   await expect(page.locator('.sv-observation[open]')).toHaveCount(0);
-  const subtlety = page.locator('#asylum-claims-in-historical-and-european-context--applications-and-people-are-different-counts');
-  await expect(subtlety).toHaveJSProperty('tagName', 'DETAILS');
-  await subtlety.locator('summary').click();
-  await expect(subtlety).toHaveAttribute('open', '');
 });
 
 test('glossary popup closes before its containing fact and restores keyboard focus', async ({ page }) => {
@@ -234,7 +229,7 @@ test('measurement lines retain linked explanations without observation circles',
     await expect(method.locator('.sv-observation-number')).toHaveCount(0);
     await method.locator(':scope > summary').click();
     await expect(method.locator('.sv-observation__body')).toBeVisible();
-    await expect(method.locator('a')).toHaveAttribute('href', '#source-immigration-against-the-long-run-22');
+    await expect(method.locator('a')).toHaveAttribute('href', '#source-immigration-against-the-long-run-46');
   }
   await page.goto(`${topic}/facts/immigration-against-the-long-run#immigration-against-the-long-run--people-method-1991`);
   await expect(page.locator('.sv-method-changes-group[open]')).toHaveCount(1);
@@ -249,8 +244,6 @@ test('net-migration peak is a graph observation, with its old URL redirected', a
   await expect(page.locator('.sv-target')).toContainText('944,000');
   await expect(page.locator('.sv-target')).toHaveAttribute('open', '');
   await expect(page.locator('.sv-chart__title')).toHaveCount(0);
-  await expect(page.locator('.sv-supporting')).toHaveCount(0);
-  await expect(page.locator('.sv-subfact')).toHaveCount(0);
 });
 
 
@@ -260,37 +253,16 @@ test('nationality findings are linked observations, including the old fact URL',
   await expect(page.locator('.sv-target')).toHaveAttribute('open', '');
   await expect(page.locator('.sv-target')).toContainText('627,000');
   await expect(page.locator('.sv-target')).toBeInViewport();
-  await expect(page.locator('.sv-subfact')).toHaveCount(0);
-  await page.goto(topic);
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.getByRole('link', { name: 'Changes to visa routes helped drive the sharp rise in immigration and its later fall', exact: true }).click();
-  await expect(page.locator('dialog .sv-target')).toHaveAttribute('id', 'immigration-against-the-long-run--why-immigration-spiked');
-  await expect(page.locator('dialog .sv-target')).toHaveAttribute('open', '');
-  await expect(page.locator('dialog .sv-target')).toBeInViewport();
 });
 
-test('Ukraine is separated from remaining non-EU arrivals without double counting', async ({ page }) => {
+test('Ukraine is a separate line in net migration by route, with its own observation', async ({ page }) => {
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
-  const graph = page.locator('#immigration-against-the-long-run--chart-ukraine');
-  await expect(graph.getByRole('heading', { name: 'Non-EU Arrivals: Ukraine and the Rest', exact: true })).toBeVisible();
-  await expect(graph.locator('.sv-chart__legend')).toContainText('Ukrainian nationals');
-  await expect(graph.locator('.sv-chart__legend')).toContainText('Remaining non-EU+ arrivals');
-  await graph.getByRole('button', { name: 'Table', exact: true }).click();
-  const rows = graph.locator('tbody tr');
-  await expect(rows).toHaveCount(5);
-  const row = rows.filter({ hasText: '2022' });
-  await expect(row).toContainText('1,091,000');
-  await expect(row).toContainText('956,000');
-  await expect(row).toContainText('135,000');
-  for (const row of await rows.all()) {
-    const cells = await row.locator('td').allTextContents();
-    const values = cells.map(v => Number(v.replaceAll(',', '')));
-    expect(values[1] + values[2]).toBe(values[0]);
-  }
+  const graph = page.locator('#immigration-against-the-long-run--chart-net-by-route');
+  await expect(graph.locator('.sv-chart__legend')).toContainText('Ukraine scheme');
   await graph.locator('.sv-observations-group > summary').click();
-  await graph.locator('.sv-observation > summary').click();
-  await expect(graph.locator('.sv-observation__body')).toContainText('continued rising in 2023');
-  await graph.locator('.sv-observation__body a').first().click();
-  await expect(page.locator('#source-immigration-against-the-long-run-25')).toHaveClass(/sv-target/);
+  const observation = graph.locator('#immigration-against-the-long-run--ukraine-spike');
+  await observation.locator(':scope > summary').click();
+  await expect(observation.locator('.sv-observation__body')).toContainText('peaked in 2022');
+  await observation.locator('.sv-observation__body a').first().click();
+  await expect(page.locator('#source-immigration-against-the-long-run-48')).toHaveClass(/sv-target/);
 });

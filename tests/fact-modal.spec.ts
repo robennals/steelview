@@ -1,19 +1,16 @@
 import { test, expect, type Page, type Request } from '@playwright/test';
 
-// These assertions depend on authored uk-immigration content: the headline
-// fact `immigration-against-the-long-run` (first in the derived ranking, so it
-// renders outside the Facts collapse), the supporting fact
-// `immigration-shifted-from-eu-to-non-eu` it holds, and the viewpoint
-// `immigration-makes-britain-better-off`, whose prose cites a section of the
-// fact `health-and-care-relies-on-migrant-workers`.
+// These assertions depend on authored uk-immigration content: the report
+// `immigration-against-the-long-run` (first in the derived ranking, so it
+// renders outside the Facts collapse), the related reports it holds, and the
+// viewpoint `open-and-build`, whose prose cites a section of the report
+// `work-and-study-routes`.
 
 const TOPIC = '/topics/uk-immigration';
 const HEADLINE = 'immigration-against-the-long-run';
-const SUPPORTING = 'care-worker-route-fiscally-negative';
-const FISCAL = 'skilled-worker-fiscal-gain-concentrated';
-const CARE = 'health-and-care-relies-on-migrant-workers';
-const VIEWPOINT = '#viewpoint-immigration-makes-britain-better-off';
-const CARE_LINK = 'Health and care rely heavily on workers born outside Europe';
+const CARE = 'work-and-study-routes';
+const VIEWPOINT = '#viewpoint-open-and-build';
+const CARE_LINK = 'About a fifth of NHS staff in England are not British, and over a third of doctors';
 
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
@@ -31,7 +28,6 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
   // The article includes its chart and evidence.
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
-  await expect(page.locator(`${dialog} .sv-supporting details.sv-subfact`)).toHaveCount(0);
 });
 
 // Regression pin: the row's link used to end where the claim text did, so
@@ -64,7 +60,7 @@ test('a fact chip in a viewpoint opens the same panel', async ({ page }) => {
   await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} ${title}`)).toContainText(
-    'Immigration and the Health and Care Workforce'
+    'Work and Study Visas and the Care Workforce'
   );
 });
 
@@ -131,23 +127,9 @@ test('closing the panel takes the fact off the URL', async ({ page }) => {
   await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
 });
 
-// A supporting fact has an address of its own, and its page opens by naming
-// the headline claim it is evidence for — a supporting fact read without that
-// claim is the out-of-context number this page exists to prevent. It is not a
-// row in the Facts list (see topic-page.spec.ts), and a citation of it opens
-// its parent at that section, so it is reached here by its address.
-test('a supporting fact has its own page, which names the claim it supports', async ({
-  page,
-}) => {
-  await page.goto(factUrl(SUPPORTING));
-
-  await expect(page.locator('.sv-parentnote__claim')).toHaveAttribute('href', factUrl(FISCAL));
-  await expect(page.locator('.sv-finding').filter({ hasText: '36,000' }).first()).toBeVisible();
-});
-
-test('a supporting fact inside the panel still expands and collapses', async ({ page }) => {
+test('a related fact inside the panel still expands and collapses', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(FISCAL)).click();
+  await page.locator(row(HEADLINE)).click();
   const child = page.locator(`${dialog} details.sv-subfact`).first();
   const quote = child.locator('.sv-finding');
   await expect(quote).toBeHidden();
@@ -215,7 +197,7 @@ test.describe('with JavaScript disabled', () => {
     await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
     await expect(page.locator(dialog)).toHaveCount(0);
     await expect(page.locator('h1.sv-factpage__claim')).toContainText(
-      'Immigration and the Health and Care Workforce'
+      'Work and Study Visas and the Care Workforce'
     );
   });
 });
@@ -232,7 +214,9 @@ test('the topic page prefetches only the fact links on screen', async ({ page })
   page.on('request', (request) => {
     if (factData(request)) requested.add(new URL(request.url()).pathname);
   });
-  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  await page.goto(TOPIC);
+  await page.locator(row(HEADLINE)).scrollIntoViewIfNeeded();
+  await page.waitForLoadState('networkidle');
   const onScreen = await page.locator('a[href*="/facts/"]').evaluateAll((links) =>
     links.filter((link) => {
       const box = link.getBoundingClientRect();
@@ -244,7 +228,10 @@ test('the topic page prefetches only the fact links on screen', async ({ page })
 
 // Once prefetched, opening and reopening a fact needs no network response.
 test('facts open with the network offline and Forward restores the modal', async ({ page, context }) => {
-  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  await page.goto(TOPIC);
+  // A fact is prefetched once its link is on screen.
+  await page.locator(row(HEADLINE)).scrollIntoViewIfNeeded();
+  await page.waitForLoadState('networkidle');
   await context.setOffline(true);
   await page.locator(row(HEADLINE)).click();
   await expect(page.locator(`${dialog} ${title}`)).toBeVisible();

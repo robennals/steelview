@@ -1,15 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 // These assertions depend on authored uk-immigration content: the topic
-// title "UK immigration", the headline fact
-// `non-citizens-share-of-convictions-and-prisons`, the supporting fact
-// `immigration-shifted-from-eu-to-non-eu` and the headline fact
-// `immigration-against-the-long-run` it supports, the viewpoint
-// `a-country-should-decide-who-joins-it`, and the facts it
-// cites/acknowledges — claims "Net migration to the UK peaked at 944,000 in
-// the year to March 2023" and "Health and care is the sector most dependent on
-// migrant labour". Editing any of that content's wording or cross-references
-// will turn this suite red.
+// title "UK immigration", the report `immigration-against-the-long-run`, and
+// the viewpoint `open-and-build` with the link text it uses for
+// `work-and-study-routes`. Editing any of that content's wording or
+// cross-references will turn this suite red.
 
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
@@ -63,13 +58,13 @@ test('the Facts list shows no supporting fact before anything is opened', async 
 
 test('a viewpoint makes its supporting data available inline', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = page.locator('#viewpoint-a-country-should-decide-who-joins-it');
+  const viewpoint = page.locator('#viewpoint-open-and-build');
   await viewpoint.locator('summary .sv-item__claim').first().click();
   const dataLink = viewpoint.getByRole('link', {
-    name: 'Changes to visa routes helped drive the sharp rise in immigration and its later fall',
+    name: 'About a fifth of NHS staff in England are not British, and over a third of doctors',
     exact: true,
   });
   await expect(dataLink).toBeVisible();
   await dataLink.click();
-  await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText('UK Immigration Trends');
+  await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText('Work and Study Visas and the Care Workforce');
 });
