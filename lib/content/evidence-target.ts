@@ -67,6 +67,7 @@ function ownViz(el: HTMLElement): HTMLElement | null {
  */
 export function focusViz(article: HTMLElement, viz: HTMLElement | null) {
   article.querySelectorAll('[data-viz-active]').forEach(el => el.removeAttribute('data-viz-active'));
+  article.toggleAttribute('data-whole', !viz);
   if (!viz) {
     article.removeAttribute('data-focus');
     return;

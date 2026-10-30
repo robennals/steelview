@@ -63,7 +63,8 @@ export function CiteNav() {
       if (!url) return;
 
       event.preventDefault();
-      const sheet = link.closest('dialog');
+      // A fact's sheet, not a data panel's, which a fact opens on top of.
+      const sheet = link.closest<HTMLElement>('dialog:has(.sv-modal__expand)');
       if (sheet && url.pathname === location.pathname) moveSheetToEvidence(sheet, url.hash, router);
       else if (sheet) router.replace(`${url.pathname}${url.search}${url.hash}`, { scroll: false });
       else router.push(`${url.pathname}${url.search}${url.hash}`, { scroll: false });

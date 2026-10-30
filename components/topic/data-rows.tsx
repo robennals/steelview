@@ -2,6 +2,7 @@ import type { Fact } from '@/lib/content/types';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
+import { PanelHost } from './explore-panels';
 import { ObservationCycler } from './observation-cycler';
 import { Prose } from './prose';
 import { ThumbStrip } from './thumb-strip';
@@ -29,6 +30,31 @@ function ChartStep({ step, number }: ChartStepProps) {
         <Prose html={step.exploreHtml} className="sv-walk__explore" />
       </div>
     </div>
+  );
+}
+
+type DataPanelProps = { slug: string; fact: Fact; steps: DataStep[] };
+
+/**
+ * A data collection's charts and observations: the body of its row on the
+ * topic page, which a viewpoint's "Explore this data" lifts into a sheet.
+ */
+function DataPanel({ slug, fact, steps }: DataPanelProps) {
+  const title = fact.title ?? fact.claim;
+  return (
+    <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)}>
+      <PanelHost fact={fact.id} title={title} overview={fact.title ? fact.claim : ''}>
+        <Walkthrough
+          name={title}
+          headings={steps.map(s => s.chart.label)}
+          noun="Chart"
+          endLabel="Last chart"
+          thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
+        >
+          {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
+        </Walkthrough>
+      </PanelHost>
+    </LazyCharts>
   );
 }
 
@@ -69,19 +95,7 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
               />
             }
           >
-            {steps.length > 0 && (
-              <LazyCharts load={rowCharts.bind(null, slug, 'data', fact.id)}>
-                <Walkthrough
-                  name={title}
-                  headings={steps.map(s => s.chart.label)}
-                  noun="Chart"
-                  endLabel="Last chart"
-                  thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
-                >
-                  {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
-                </Walkthrough>
-              </LazyCharts>
-            )}
+            {steps.length > 0 && <DataPanel slug={slug} fact={fact} steps={steps} />}
           </TopicRow>
         );
       })}

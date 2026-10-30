@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useSyncExternalStore } from 'react';
+import { useContext, useState, useSyncExternalStore } from 'react';
+import { ShownObservation } from './explore-panels';
 import { Prose } from './prose';
 
 const noSubscription = () => () => {};
 
-type ObservationCyclerProps = { observations: { heading: string; html: string }[] };
+type ObservationCyclerProps = { observations: { id: string; heading: string; html: string }[] };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -13,7 +14,9 @@ type ObservationCyclerProps = { observations: { heading: string; html: string }[
  * Without JavaScript every observation is shown, one after another.
  */
 export function ObservationCycler({ observations }: ObservationCyclerProps) {
-  const [index, setIndex] = useState(0);
+  // Opened in a sheet at one of these observations, start there.
+  const shown = useContext(ShownObservation);
+  const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
   const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
   const many = observations.length > 1;
   const go = (to: number) => setIndex((to + observations.length) % observations.length);
@@ -29,7 +32,7 @@ export function ObservationCycler({ observations }: ObservationCyclerProps) {
       )}
       <div aria-live={many && enhanced ? 'polite' : undefined}>
         {observations.map((observation, i) => (
-          <div key={i} className="sv-observe__item" hidden={enhanced && i !== index}>
+          <div key={i} className="sv-observe__item" data-observation={observation.id} hidden={enhanced && i !== index}>
             <h4 className="sv-observe__heading">{observation.heading}</h4>
             <Prose html={observation.html} className="sv-walk__prose" />
           </div>

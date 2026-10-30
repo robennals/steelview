@@ -2,6 +2,7 @@ import type { Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
 import type { RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from '@/components/topic/chart-thumb';
+import { ExploreLink } from '@/components/topic/explore-panels';
 import { Prose } from '@/components/topic/prose';
 import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
@@ -26,7 +27,9 @@ function Step({ step, number }: StepProps) {
       {step.chart && (
         <div className="sv-walk__chart">
           <div className="sv-slide"><LazyChart index={number - 1} /></div>
-          {step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
+          {step.hasPanel && step.observation
+            ? <ExploreLink fact={step.chart.fact.id} observation={step.observation} href={step.chart.href} />
+            : step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
         </div>
       )}
     </div>

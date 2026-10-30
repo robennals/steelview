@@ -6,19 +6,22 @@ import { topicPath } from '@/lib/content/types';
 import { SHEET_TITLE_ID } from '@/lib/modal/sheet-title';
 import { FactModal } from './fact-modal';
 
-type Pending = { href: string; title: string | null };
+type Pending = { href: string; title: string | null; wide: boolean };
 
 /** The fact a plain click on `link` will open in the sheet, or null. */
 function pendingFor(event: MouseEvent, factsPrefix: string): Pending | null {
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return null;
   const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
-  if (!(link instanceof HTMLAnchorElement) || link.hasAttribute('data-fact-expand')) return null;
+  if (!(link instanceof HTMLAnchorElement) || link.hasAttribute('data-fact-expand') || link.hasAttribute('data-panel-link')) return null;
   if ((link.target && link.target !== '_self') || link.origin !== location.origin) return null;
   if (!link.pathname.startsWith(factsPrefix) || link.pathname === location.pathname) return null;
   // A row or chip names its fact; a citation's text is a phrase from the prose.
   const title = link.dataset.factId ? null
     : (link.querySelector('.sv-item__claim') ?? link).textContent;
-  return { href: link.pathname, title };
+  // A link into one chart or observation opens the wide sheet that shows it, so
+  // the sheet starts at that size rather than growing when the fact arrives.
+  const wide = link.hash.includes('--') && !link.hash.startsWith('#evidence-');
+  return { href: link.pathname, title, wide };
 }
 
 /** Most facts arrive within a moment; only a slow one earns a loading message. */
@@ -60,6 +63,8 @@ export function FactSheet({ modal }: { modal: ReactNode }) {
   // The active fact's id while `@modal/(.)facts/[factId]` matches, else null.
   const routed = useSelectedLayoutSegment('modal') !== null;
   const [pending, setPending] = useState<Pending | null>(null);
+  // Outlives `pending`: the sheet keeps its size when the fact replaces the placeholder.
+  const [wide, setWide] = useState(false);
   // A fact closed before it arrived. Its navigation cannot be called off, so
   // when it lands the sheet stays hidden and history steps back over it.
   const [abandoned, setAbandoned] = useState<string | null>(null);
@@ -90,6 +95,7 @@ export function FactSheet({ modal }: { modal: ReactNode }) {
       if (!next) return;
       setAbandoned(null);
       setPending(next);
+      setWide(next.wide);
     };
     // Capture phase, before `next/link` and CiteNav start the navigation.
     document.addEventListener('click', onClick, true);
@@ -100,11 +106,11 @@ export function FactSheet({ modal }: { modal: ReactNode }) {
   // pending fact is the one its article arrives in.
   if (routed && abandoned === pathname) return null;
   if (routed) {
-    return <FactModal labelledBy={SHEET_TITLE_ID} href={pathname}>{modal}</FactModal>;
+    return <FactModal labelledBy={SHEET_TITLE_ID} href={pathname} wide={wide}>{modal}</FactModal>;
   }
   if (!pending) return null;
   return (
-    <FactModal labelledBy={SHEET_TITLE_ID} href={pending.href} loading
+    <FactModal labelledBy={SHEET_TITLE_ID} href={pending.href} loading wide={wide}
       onClose={() => {
         setPending(null);
         setAbandoned(pending.href);

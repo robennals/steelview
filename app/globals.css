@@ -2656,12 +2656,17 @@
      report", except its sources, which the visualization's footnotes link to. */
   .sv-factpage[data-focus] .sv-factpage__body > :not(.sv-viz, .sv-references) { display: none; }
   .sv-factpage[data-focus] .sv-viz:not([data-viz-active]) { display: none; }
+
+  /* A data panel lifted into a sheet by a viewpoint's "Explore this data". */
+  .sv-factpanel__overview { margin: 0.4rem 0 1rem; max-width: 48rem; color: var(--ink-3); }
+  .sv-factpanel .sv-walk { padding: 0; opacity: 1; transform: none; }
   /* The visualization takes the sheet's full width; its prose keeps a reading width. */
   .sv-factpage[data-focus] .sv-factpage__body { max-width: none; }
 
   /* In the sheet, a single visualization gets nearly the whole screen. */
   @media (min-width: 40rem) {
-    .sv-modal__panel:has(.sv-factpage[data-focus]) {
+    .sv-modal__panel:has(.sv-factpage[data-focus]),
+    .sv-modal__panel[data-wide]:not(:has(.sv-factpage[data-whole])) {
       width: min(76rem, 100%);
       height: min(92dvh, 64rem);
     }

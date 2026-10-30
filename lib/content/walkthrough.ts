@@ -1,4 +1,5 @@
 import { citedFactTargets, renderMarkdown } from './markdown';
+import { headlineFacts } from './rank-facts';
 import { factPath } from './types';
 import type { Fact, Topic, Viewpoint } from './types';
 import { factSlides, type PreviewSlide } from './preview';
@@ -13,6 +14,8 @@ export type WalkthroughStep = {
   chart?: PreviewSlide;
   /** The citation that chart was chosen for, in authoring syntax: `#fact-<fact>/<observation>`. */
   citation?: string;
+  /** That citation's observation, as an element id: `<fact>--<observation>`. */
+  observation?: string;
 };
 
 export type Walkthrough = {
@@ -97,7 +100,7 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
       const fact = topic.facts.find(f => f.id === id);
       const key = observation && groups.get(id)?.get(observation);
       const chart = fact && key && chartFor(topic.slug, fact, key, observation);
-      if (chart) return { heading: heading.trim(), markdown, chart, citation: `#fact-${id}/${observation}` };
+      if (chart) return { heading: heading.trim(), markdown, chart, citation: `#fact-${id}/${observation}`, observation: `${id}--${observation}` };
     }
     return { heading: heading.trim(), markdown };
   });
@@ -109,6 +112,8 @@ export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'citation'> & {
   html: string;
   /** "Explore this data", rendered as a citation so it opens the data collection over the page. */
   exploreHtml?: string;
+  /** Whether the chart's collection has a data panel on the page for "Explore this data" to open. */
+  hasPanel: boolean;
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -120,13 +125,16 @@ export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
  */
 export async function renderWalkthroughs(topic: Topic): Promise<Map<string, RenderedWalkthrough>> {
   const rendered = new Map<string, RenderedWalkthrough>();
+  const panels = new Set(headlineFacts(topic.facts).map(fact => fact.id));
   for (const viewpoint of topic.viewpoints) {
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, citation }) => ({
+      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, citation, observation }) => ({
         heading,
         chart,
+        observation,
+        hasPanel: chart !== undefined && panels.has(chart.fact.id),
         // The step's chart is beside its prose, so the facts it cites are plain text.
         html: await renderMarkdown(markdown, topic.slug, topic.facts, { citationsAsText: true }),
         exploreHtml: citation && await renderMarkdown(`[Explore this data](${citation})`, topic.slug, topic.facts),
@@ -140,7 +148,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
 export type DataStep = {
   chart: PreviewSlide;
   /** The observations drawn beside this chart, in order: what to notice in it. */
-  observations: { heading: string; html: string }[];
+  observations: { id: string; heading: string; html: string }[];
   /** What the chart shows, for a chart with no observations of its own. */
   description: string;
   /** "Explore this data", opening the collection at this chart alone. */
@@ -166,6 +174,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
         chart,
         description,
         observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
+          id: `${fact.id}--${o.id}`,
           heading: o.heading,
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
         }))),
