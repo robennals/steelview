@@ -832,7 +832,7 @@ series:
               value: 6
 additionalSeries:
   - id: boats-and-routes
-    title: 'Small-boat arrivals and safe-route grants, 2018-2025'
+    title: UK small-boat arrivals and safe-route grants, 2018-2025
     description: >-
       People detected arriving by small boat each calendar year, against
       people offered a safe and legal route from outside the UK in the same
@@ -903,7 +903,7 @@ additionalSeries:
                 value: 48814
 comparisons:
   - id: routes-by-nationality
-    title: How each nationality came, January 2018 to June 2026
+    title: How each nationality came to the UK, January 2018 to June 2026
     description: >-
       People of each nationality who arrived by small boat or were offered a
       safe and legal route from outside the UK, 2018 Q1 to 2026 Q2, the whole
@@ -985,7 +985,7 @@ comparisons:
       figures: 290,044 Ukraine visas and 187,552 visas on the BN(O) route
       since each scheme opened.
   - id: routes-by-nationality-latest
-    title: How each nationality came, year to June 2026
+    title: How each nationality came to the UK, year to June 2026
     description: >-
       The same nationalities and routes for the year ending June 2026, the
       first full year after family reunion was paused on 4 September 2025.
@@ -1087,7 +1087,7 @@ figures:
     id: routes-by-nationality-latest
   - kind: timeline
     id: reopening
-    title: Route openings, closures and pauses, 2021–2027
+    title: UK safe and legal route openings, closures and pauses, 2021–2027
     description: When each safe and legal route opened, closed or was paused, and what is planned next.
     sources: [6, 21, 26]
     categories:

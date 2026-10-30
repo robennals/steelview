@@ -848,7 +848,7 @@ additionalSeries:
             points: [{period: '2016', value: 53.9}, {period: '2020', value: 59.9}, {period: '2024', value: 59.3}]
 comparisons:
   - id: documents-held
-    title: Adult citizens without each kind of document, 2023
+    title: US adult citizens without each kind of document, 2023
     description: >-
       Estimated US citizens aged 18 or over, national survey fielded
       September–October 2023. "No photo ID of any kind" and "outdated licence"
@@ -880,7 +880,7 @@ comparisons:
       - label: Cannot readily reach proof of citizenship (includes none)
         value: 21300000
   - id: why-no-licence
-    title: Reasons given for having no driver's licence, 2023
+    title: Reasons US adult citizens give for having no driver's licence, 2023
     description: >-
       Share of adult citizens without a driver's licence giving each reason.
       The four bureaucratic or economic reasons (cost, fines, time and
@@ -913,7 +913,9 @@ comparisons:
         value: 3
         highlight: true
   - id: licence-by-group
-    title: No licence, or a licence without current name or address, by race and party, 2023
+    title: >-
+      No licence, or a licence without current name or address, by race and
+      party, US, 2023
     description: >-
       Share of adult citizens in each group. The first part of each bar is no
       driver's licence at all; the second is a licence that does not show the
@@ -954,7 +956,7 @@ comparisons:
         value: 31
         values: [18, 13]
   - id: licence-by-age-income
-    title: No licence with current name and address, by age and income, 2023
+    title: No licence with current name and address, by age and income, US, 2023
     description: Share of adult citizens in each group without a driver's licence showing their current name and address (includes those with no licence).
     unit: percent
     valueLabel: Share of adult citizens in group (%)
@@ -981,7 +983,8 @@ comparisons:
       - label: Income over $100,000
         value: 9
   - id: dpoc-by-group
-    title: Proof of citizenship not readily available, by race and party, 2023
+    title: >-
+      Proof of citizenship not readily available, by race and party, US, 2023
     description: >-
       Share of adult citizens in each group. The first part of each bar has no
       birth certificate, passport, naturalization or citizenship certificate;
@@ -1106,7 +1109,7 @@ comparisons:
         value: 344
         highlight: true
   - id: turnout-overall
-    title: Estimated effect of strict voter ID laws on turnout
+    title: Estimated effect of strict US voter ID laws on turnout
     description: >-
       Point estimates in percentage points: the national voter-file panel
       (all states with strict ID laws, 2008–2018) and GAO's two-state study
@@ -1132,7 +1135,9 @@ comparisons:
       - label: 'GAO: Tennessee turnout'
         value: -2.2
   - id: turnout-by-group
-    title: Estimated extra turnout effect on particular groups
+    title: >-
+      Estimated extra effect of strict US voter ID laws on particular groups'
+      turnout
     description: >-
       How much more (negative) or less (positive) a group's turnout changed
       than a comparison group's, in percentage points.

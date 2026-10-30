@@ -507,7 +507,7 @@ sources:
     publisher: University of Essex (REF 2014)
     date: '2014'
 series:
-  title: Germany, share of Bundestag voters who voted by post, 1957–2025
+  title: 'Germany: share of Bundestag voters who voted by post, 1957–2025'
   description: >-
     Voters who cast their vote with a postal-ballot certificate, as a share of
     all voters, at every federal (Bundestag) election since 1957.
@@ -587,7 +587,9 @@ series:
     date: '2025'
 additionalSeries:
   - id: uk-postal-votes
-    title: United Kingdom, postal votes as a share of valid votes at general elections, 1945–2019
+    title: >-
+      United Kingdom: postal votes as a share of valid votes at general
+      elections, 1945–2019
     description: >-
       Postal votes included in the count as a percentage of all valid votes,
       at every UK general election from 1945 to 2019.
@@ -716,7 +718,9 @@ comparisons:
       2021 to 2023, so the two dates differ. Postal voting from abroad is a
       separate dataset and is not counted here.
   - id: france-abstention
-    title: France, average abstention before and after postal voting was abolished in 1975
+    title: >-
+      France: average abstention before and after postal voting was abolished in
+      1975
     description: >-
       Average abstention at each type of French election before the law of
       31 December 1975 and from then to 1988, as the Interior Ministry gave it
@@ -792,7 +796,7 @@ figures:
     id: france-abstention
   - kind: dataTable
     id: secret-ballot
-    title: 'The secret ballot: when and why it was adopted'
+    title: 'The secret ballot around the world: when and why it was adopted'
     description: 'Where the secret ballot came in, and what it was for.'
     caption: One card per adoption
     layout: timeline
@@ -842,7 +846,7 @@ figures:
             - 2
   - kind: dataTable
     id: privacy-surveys
-    title: 'How private is a mail ballot? Surveys, ranked by method'
+    title: How private is a mail ballot? US and UK surveys, ranked by method
     description: 'Strongest method first. The questions differ, so the figures cannot share one chart.'
     caption: One card per survey
     layout: cards
@@ -1023,7 +1027,9 @@ figures:
         y2019: 72%
   - kind: dataTable
     id: secrecy-views
-    title: Does postal voting weaken the secret ballot? What courts and reviews said
+    title: >-
+      Does postal voting weaken the secret ballot? What courts and reviews said
+      in Europe and the US
     description: 'What courts, reviews and researchers have said, for and against.'
     caption: 'One card per court, review or writer'
     layout: cards

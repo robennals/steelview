@@ -490,6 +490,15 @@ of art, what that thing is. It says what is shown, not what it finds; findings
 belong in observations. Everything else follows in later sentences, one click
 away. Support the introduction from the collection's own sources.
 
+**A chart's title says what it covers, and where.** Readers assume a chart in a
+UK report is about the UK, so one about anywhere else opens with the place:
+“Australia: asylum-seeker boat arrivals, 1976-2016”. A chart narrower than the
+report's country names its area (“England and Wales”, “Great Britain”). The
+report's own country may stay unnamed only where nothing else could be meant;
+in a collection that mixes countries, name it. Tables and timelines follow the
+same rule. A title must also make sense without its neighbours, so no “the
+other studies” or “the same era”, and name the subject, not the finding.
+
 **Charts are shared product primitives, not report-specific artwork.** Use the
 existing `SeriesChart` and `ComparisonChart` data shapes, and the [`figures`](#figures)
 kinds, for every report. If a

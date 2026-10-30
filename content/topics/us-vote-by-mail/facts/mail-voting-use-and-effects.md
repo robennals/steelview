@@ -705,7 +705,7 @@ comparisons:
       - label: 'Guam'
         value: 0.3
   - id: mail-use-by-party
-    title: 'Voted by mail, by party, 2024'
+    title: US voters who voted by mail, by party, 2024
     description: >-
       Share of each party's voters who said they voted by mail in the November
       2024 election, from MIT's Survey of the Performance of American
@@ -724,7 +724,7 @@ comparisons:
       - label: Republicans
         value: 24
   - id: mail-use-by-disability
-    title: 'Voted by mail, with and without a disability, 2020'
+    title: US voters who voted by mail, with and without a disability, 2020
     description: >-
       Share of voters with and without a disability who voted by mail in
       November 2020, from the Rutgers University survey released by the
@@ -818,7 +818,8 @@ figures:
     id: pew-mail-support
   - kind: dataTable
     id: adoption
-    title: 'Mail voting by state, and when the mostly-mail states adopted it'
+    title: >-
+      When the eight states and DC that mail every voter a ballot adopted it
     description: 'The eight states and DC that mail every voter a ballot, in the order they adopted it.'
     sources:
       - 11

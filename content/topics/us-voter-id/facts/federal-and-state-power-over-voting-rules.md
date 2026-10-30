@@ -555,7 +555,7 @@ sources:
     date: '2026-10-23'
 comparisons:
   - id: senate-votes
-    title: Recent national voting-rules bills fell short of 60 Senate votes
+    title: US Senate votes on national voting-rules bills, against the 60 needed
     description: >-
       Senators voting yes on the two recorded cloture-type votes on national
       voting-rules bills, 2022 and 2026, against the 60 needed to end debate.
@@ -615,7 +615,9 @@ figures:
       source: 1
   - kind: dataTable
     id: holdings
-    title: 'Key holdings on who sets the rules and what they may require, 2008–2026'
+    title: >-
+      Key US court holdings on who sets voting rules and what they may require,
+      2008–2026
     description: 'The main court rulings on who sets voter ID and registration rules.'
     note: 'The ITCA vote of 7–2 is from the opinion''s own line-up: Justice Scalia wrote for six justices, Justice Kennedy joined in part, and Justices Thomas and Alito dissented.'
     caption: 'One card per ruling'
@@ -694,7 +696,8 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: live-measures
-    title: 'Live federal measures on 23 October 2026'
+    title: >-
+      Live US federal measures on proof of citizenship and ID, 23 October 2026
     description: 'Where each federal measure on proof of citizenship and ID stood ten days before the midterms.'
     caption: 'One card per measure'
     layout: cards

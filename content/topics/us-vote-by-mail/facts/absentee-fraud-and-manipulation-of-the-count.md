@@ -700,7 +700,7 @@ figures:
     id: absentee-and-impersonation-cases
   - kind: dataTable
     id: absentee-cases
-    title: 'Organised absentee and mail-ballot cases, 1980–2026'
+    title: Organised US absentee and mail-ballot cases, 1980–2026
     description: 'How each scheme worked, how it came to light and how it ended. A dash means the source read does not say.'
     caption: One card per case
     layout: timeline
@@ -828,7 +828,8 @@ figures:
         criminal: Not covered by the sources read
   - kind: dataTable
     id: officials
-    title: Officials and the count
+    title: >-
+      US officials and the count: tampering, and refused or challenged results
     description: 'Cases where officials tampered with a count, or refused or challenged a result.'
     caption: One card per case
     layout: timeline
@@ -888,7 +889,7 @@ figures:
         outcome: 'Claim rejected, May 2023'
   - kind: dataTable
     id: in-person
-    title: In-person and machine fraud over the same era
+    title: US in-person and machine fraud cases, 1936–1982
     description: 'Large polling-place cases from the same record, for comparison with the absentee cases.'
     caption: One card per case
     layout: timeline

@@ -579,7 +579,7 @@ dataStillNeeded:
 figures:
   - kind: dataTable
     id: article-31
-    title: 'Article 31 and "coming directly", 1999–2024'
+    title: Article 31 of the Refugee Convention and "coming directly", 1999–2024
     description: How UK courts, Parliament and UNHCR have read the Refugee Convention's defence for refugees who stopped on the way.
     caption: One card per ruling, law or guideline
     layout: timeline
@@ -608,7 +608,7 @@ figures:
         says: { value: 'Include the Adimi definitions of "coming directly", "presenting without delay" and "showing good cause". UNHCR called the UK''s 2022 approach a "fundamental misapplication of Article 31(1)".', sources: [4, 6] }
   - kind: dataTable
     id: wolfson-review
-    title: What the Wolfson review advised, 2025
+    title: What the Wolfson review advised on the ECHR, 2025
     description: Legal advice to the Leader of the Opposition from Lord Wolfson of Tredegar KC, dated 2 October 2025. It contains no count of removals blocked by the ECHR.
     caption: One card per question the review answers
     layout: cards
@@ -668,7 +668,7 @@ figures:
         caj: { value: 'The Irish government "has categorically rejected the idea of ECHR withdrawal as being compliant with the B/GFA".', sources: [19] }
   - kind: dataTable
     id: chisinau-declaration
-    title: What the Chişinău Declaration says, May 2026
+    title: What the Chişinău Declaration on the ECHR says, May 2026
     description: Adopted by all 46 Council of Europe states, including the UK, on 15 May 2026, a year after a letter led by Italy and Denmark that the UK did not sign.
     caption: One card per topic
     layout: cards
@@ -691,7 +691,7 @@ figures:
         says: { value: 'Listed as approaches "envisaged by several member States", provided states "continue to fulfil their Convention obligations".', sources: [26] }
   - kind: dataTable
     id: immigration-and-asylum-bill
-    title: What the Immigration and Asylum Bill would change, 2026
+    title: What the UK's Immigration and Asylum Bill would change, 2026
     description: The Bill was introduced in the Commons on 30 June 2026.
     caption: One card per part of the Bill
     layout: cards

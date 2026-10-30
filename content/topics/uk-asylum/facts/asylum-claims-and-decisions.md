@@ -1239,7 +1239,7 @@ additionalSeries:
               - period: '2025'
                 value: 9009
   - id: appeals-series
-    title: 'Asylum appeals at the First-tier Tribunal, 2007/08–2025/26'
+    title: UK asylum appeals at the First-tier Tribunal, 2007/08–2025/26
     description: >-
       Asylum, protection and revocation-of-protection appeals determined at a
       hearing or on the papers each financial year, and the share allowed.
@@ -1605,7 +1605,9 @@ comparisons:
       Some 2022 bases are small: Bangladesh 297, Somalia 273 and India 228
       decisions.
   - id: grant-rate-decomposition
-    title: How much of the 2022–2025 fall is a change of nationality mix?
+    title: >-
+      How much of the 2022–2025 fall in the UK grant rate is a change of
+      nationality mix?
     description: >-
       UK initial grant rate, main applicants: the actual 2022 and 2025 rates,
       and two counterfactuals that hold either the nationality mix or each
@@ -1634,7 +1636,9 @@ comparisons:
       The answer depends on treating each nationality as one group; changes
       in who claims within a nationality show up as within-nationality change.
   - id: small-boat-outcomes
-    title: Initial outcomes of small-boat arrivals' asylum claims, by year of arrival
+    title: >-
+      Initial outcomes of UK small-boat arrivals' asylum claims, by year of
+      arrival
     description: >-
       People (main applicants and dependants) who arrived by small boat in
       each year and claimed asylum, by initial outcome as recorded in mid-2026.
@@ -1685,7 +1689,9 @@ comparisons:
       here may since have been overturned. "Granted" includes refugee status,
       humanitarian protection and other leave.
   - id: recognition-2025
-    title: Share of first-instance asylum decisions that were positive, 2025
+    title: >-
+      Share of first-instance asylum decisions that were positive across Europe,
+      2025
     description: >-
       All EU+ countries, the EU27 as a whole and the UK, ranked from highest
       to lowest. People, including dependants.
