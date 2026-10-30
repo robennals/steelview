@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { openCollection } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const viewpoint = '#viewpoint-open-and-build';
 const fact = 'immigration-economy-and-public-finances';
-const finding = `${fact}--skilled-workers-gain-care-workers-cost`;
+const pill = `${viewpoint} .sv-walk__explore a[data-fact-id="${fact}"]`;
+const longRun = 'UK Migration and Population Over the Long Run';
 
 test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
   await page.route(url => url.pathname.includes('/facts/'), async route => {
@@ -10,33 +12,33 @@ test('a supporting finding opens inside its parent, including an uncached articl
     await route.continue();
   });
   await page.goto(topic);
-  await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-  const pill = page.locator(`${viewpoint} .prose-body a[data-fact-id="${fact}"]`).first();
-  await pill.click();
-  await expect(page).toHaveURL(new RegExp(`facts/${fact}#${finding}$`));
-  await expect(page.locator('dialog .sv-target')).toContainText('143,000');
+  await page.locator(`${viewpoint} .sv-row__toggle`).click();
+  const link = page.locator(pill).first();
+  const href = (await link.getAttribute('href'))!;
+  await link.click();
+  await expect(page).toHaveURL(new RegExp(`${href}$`));
+  await expect(page.locator('dialog .sv-target')).toHaveAttribute('id', href.split('#')[1]);
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
-  const source = page.locator('dialog .sv-target .sv-footnote').first();
-  await source.click();
+  await page.locator('dialog [data-viz-active] .sv-chart__credit a').first().click();
   await expect(page.locator('dialog .sv-target')).toHaveClass(/sv-source/);
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
   await page.keyboard.press('Escape');
   await expect(page).toHaveURL(topic);
-  await expect(pill).toBeFocused();
+  await expect(link).toBeFocused();
 });
 
 test('the same sheet can target another section and expand at that position', async ({ page }) => {
   await page.goto(topic);
-  await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-  await page.locator(`${viewpoint} a[data-fact-id="${fact}"]`).first().click();
+  await page.locator(`${viewpoint} .sv-row__toggle`).click();
+  await page.locator(pill).first().click();
   const expand = page.locator('.sv-modal__expand');
   // The sheet points Expand at the cited section once it has revealed it.
   await expect(expand).toHaveAttribute('href', /#/);
-  const href = await expand.getAttribute('href');
+  const href = (await expand.getAttribute('href'))!;
   await expand.click();
   await expect(page.locator('dialog')).toHaveCount(0);
-  await expect(page).toHaveURL(href!);
-  await expect(page.locator('.sv-target')).toContainText('£143,000');
+  await expect(page).toHaveURL(href);
+  await expect(page.locator('.sv-target')).toHaveAttribute('id', href.split('#')[1]);
   await expect(page.locator('.sv-target')).toBeInViewport();
 });
 
@@ -66,9 +68,9 @@ test('charts have their own observations, with references last', async ({ page }
 test('mobile pills wrap without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(topic);
-  await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
+  await page.locator(`${viewpoint} .sv-row__toggle`).click();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator(`${viewpoint} a[data-fact-id="${fact}"]`).first().click();
+  await page.locator(pill).first().click();
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
   expect(await page.locator('.sv-modal__scroll').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
 });
@@ -77,20 +79,20 @@ test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('a pill remains an ordinary link to its evidence section', async ({ page }) => {
     await page.goto(topic);
-    await page.locator(`${viewpoint} > summary .sv-item__claim`).click();
-    const pill = page.locator(`${viewpoint} a[data-fact-id="${fact}"]`).first();
-    const href = await pill.getAttribute('href');
-    await pill.click();
+    const link = page.locator(pill).first();
+    const href = await link.getAttribute('href');
+    await link.click();
     await expect(page).toHaveURL(href!);
     await expect(page.locator('dialog')).toHaveCount(0);
-    await expect(page.locator(`#${finding}`)).toBeVisible();
+    await expect(page.locator(`#${href!.split('#')[1]}`)).toBeVisible();
   });
 });
 
 
 test('one collapsed Sources disclosure includes parent and supporting citations', async ({ page }) => {
   await page.goto(topic);
-  await page.locator('a.sv-factrow[href$="/immigration-against-the-long-run"]').click();
+  await openCollection(page, longRun);
+  await page.getByRole('button', { name: 'Whole report', exact: true }).click();
   const sources = page.locator('dialog .sv-references');
   await expect(sources).toHaveCount(1);
   await expect(sources).not.toHaveAttribute('open', '');
@@ -117,26 +119,27 @@ test('opening graphs include all asylum comparators and details remain collapsed
 
 test('glossary popup closes before its containing fact and restores keyboard focus', async ({ page }) => {
   await page.goto(topic);
-  await page.locator('a.sv-factrow[href$="/immigration-against-the-long-run"]').click();
-  const fact = page.locator('dialog.sv-modal');
-  await fact.locator('#immigration-against-the-long-run--observations-international-immigration > summary').click();
-  await fact.locator('#immigration-against-the-long-run--international-differences > summary').click();
-  const term = fact.getByRole('button', { name: 'gross arrivals', exact: true }).first();
+  await openCollection(page, longRun);
+  await page.getByRole('button', { name: 'Whole report', exact: true }).click();
+  const dialog = page.locator('dialog.sv-modal');
+  await dialog.locator('#immigration-against-the-long-run--observations-international-immigration > summary').click();
+  await dialog.locator('#immigration-against-the-long-run--international-differences > summary').click();
+  const term = dialog.getByRole('button', { name: 'gross arrivals', exact: true }).first();
   await term.focus();
   await page.keyboard.press('Enter');
-  const popup = fact.getByRole('dialog', { name: 'Gross Arrivals', exact: true });
+  const popup = dialog.getByRole('dialog', { name: 'Gross Arrivals', exact: true });
   await expect(popup).toBeVisible();
   await expect(popup.getByRole('button', { name: 'Close definition' })).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(popup).not.toBeVisible();
-  await expect(fact).toBeVisible();
+  await expect(dialog).toBeVisible();
   await expect(term).toBeFocused();
   await term.click();
   await popup.getByRole('button', { name: 'Close definition' }).click();
   await expect(popup).not.toBeVisible();
-  await expect(fact).toBeVisible();
+  await expect(dialog).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(fact).toHaveCount(0);
+  await expect(dialog).toHaveCount(0);
 });
 
 test('international migration comparison follows population share and includes all available EU/EFTA countries', async ({ page }) => {
@@ -147,7 +150,7 @@ test('international migration comparison follows population share and includes a
   await expect(chart.locator('.sv-comparison__rows')).toContainText('1.13%');
   await chart.getByRole('button', { name: 'All arrivals', exact: true }).click();
   await expect(chart.locator('.sv-comparison__rows')).toContainText('1.46%');
-  expect(await chart.evaluate(el => Boolean(el.previousElementSibling?.classList.contains('sv-chart')))).toBe(true);
+  expect(await chart.evaluate(el => Boolean(el.closest('.sv-viz')?.previousElementSibling?.querySelector('.sv-chart')))).toBe(true);
 });
 
 test('glossary works without JavaScript on narrow screens and dismisses outside', async ({ browser }) => {
@@ -170,7 +173,7 @@ test('glossary works without JavaScript on narrow screens and dismisses outside'
 
 test('graphs have no observation markers and observations remain expandable', async ({ page }) => {
   await page.goto(topic);
-  await page.locator('a.sv-factrow[href$="/immigration-against-the-long-run"]').click();
+  await openCollection(page, longRun);
   const dialog = page.locator('dialog.sv-modal');
   await expect(dialog.locator('.sv-chart-marker, .sv-bar-marker, .sv-method-marker')).toHaveCount(0);
   await dialog.locator('#immigration-against-the-long-run--observations-people > summary').click();

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the reports
 // `crime-terrorism-and-group-exploitation`, `immigration-economy-and-public-finances`
@@ -36,35 +37,27 @@ test('the address of a merged fact redirects to its report', async ({ page }) =>
 
 test('clicking a cross-reference chip opens the fact it points at', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = page.locator('#viewpoint-open-and-build');
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint
-    .getByRole('link', {
-      name: 'About a fifth of NHS staff in England are not British, and over a third of doctors',
-      exact: true,
-    })
-    .click();
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  await viewpoint.locator('.sv-walk__outline-step').nth(1).click();
+  await viewpoint.locator('.sv-walk__explore a[data-fact-id="work-and-study-routes"]').first().click();
   await expect(page).toHaveURL(new RegExp(`${factUrl('work-and-study-routes')}#`));
   await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
     'Work and Study Visas and the Care Workforce'
   );
 });
 
-// Every headline fact in the list links to its own page.
-test('every headline fact in the list links to its own page', async ({ page }) => {
+// Every data collection on the topic page links to its own page.
+test('every data collection links to its own page', async ({ page }) => {
   await page.goto(TOPIC);
-  // The rest of the headline facts sit behind the Facts collapse.
-  await page.locator('details.sv-more > summary').click();
-  const rows = page.locator('a.sv-factrow');
-  const total = await rows.count();
-  expect(total).toBe(7);
-  const hrefs = await rows.evaluateAll((links) =>
-    links.map((l) => l.getAttribute('href') ?? '')
+  const rows = page.locator('.sv-row--data');
+  await expect(rows).toHaveCount(7);
+  const hrefs = await rows.evaluateAll((all) =>
+    all.map((row) => row.querySelector('.sv-walk__explore a')?.getAttribute('href') ?? '')
   );
   for (const href of hrefs) {
-    expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+$/);
+    expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
   }
-  expect(new Set(hrefs).size).toBe(total);
+  expect(new Set(hrefs.map((href) => href.split('#')[0])).size).toBe(7);
 });
 
 // Addresses are permanent and must keep working with no JavaScript to
@@ -97,5 +90,5 @@ test.describe('with JavaScript disabled', () => {
 test('a malformed hash does not break the page', async ({ page }) => {
   await page.goto(`${TOPIC}#%zz`);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  await expect(page.locator('a.sv-factrow').first()).toBeVisible();
+  await expect(page.locator('.sv-row--data').first()).toBeVisible();
 });

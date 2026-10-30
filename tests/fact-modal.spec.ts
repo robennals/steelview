@@ -1,27 +1,26 @@
 import { test, expect, type Page, type Request } from '@playwright/test';
+import { exploreLink, openCollection, openDataRow, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the report
-// `immigration-against-the-long-run` (first in the derived ranking, so it
-// renders outside the Facts collapse), the related reports it holds, and the
-// viewpoint `open-and-build`, whose prose cites a section of the report
-// `work-and-study-routes`.
+// `immigration-against-the-long-run`, the related reports it holds, and the
+// viewpoint `open-and-build`, whose second step cites `work-and-study-routes`.
 
 const TOPIC = '/topics/uk-immigration';
 const HEADLINE = 'immigration-against-the-long-run';
+const HEADLINE_TITLE = 'UK Migration and Population Over the Long Run';
+const SECOND_TITLE = 'Work and Study Visas and the Care Workforce';
 const CARE = 'work-and-study-routes';
-const VIEWPOINT = '#viewpoint-open-and-build';
-const CARE_LINK = 'About a fifth of NHS staff in England are not British, and over a third of doctors';
 
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
-const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
+const firstChart = `${HEADLINE}--viz-series`;
 const dialog = 'dialog.sv-modal';
 const title = '#sv-modal-title';
 
-test('clicking a fact in the list opens it in the panel', async ({ page }) => {
+test('Explore this data opens the collection in the panel', async ({ page }) => {
   await page.goto(TOPIC);
   await expect(page.locator(dialog)).toHaveCount(0);
 
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
 
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-modal__eyebrow`)).toHaveText('Data');
@@ -30,32 +29,25 @@ test('clicking a fact in the list opens it in the panel', async ({ page }) => {
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
 });
 
-// Regression pin: the row's link used to end where the claim text did, so
-// only the top slice of the row actually opened anything — the rest looked
-// like part of a clickable row but silently did nothing. The whole row is
-// now the link, so a click anywhere in it, including its bottom edge where
-// no text sits, must open the fact.
-test('the whole fact row is clickable, not just the claim text', async ({ page }) => {
+// The whole head of a row toggles it, not just its title: a click at the
+// bottom edge, away from any text, must open it.
+test('the whole row head opens the row, not just the title', async ({ page }) => {
   await page.goto(TOPIC);
-  const link = page.locator(row(HEADLINE));
-  // Viewpoints come first, so the row may start below the fold.
-  await link.scrollIntoViewIfNeeded();
-  const box = await link.boundingBox();
-  if (!box) throw new Error('fact row has no layout box');
+  const row = page.locator('.sv-row--data').first();
+  await row.scrollIntoViewIfNeeded();
+  const box = await row.locator('.sv-row__head').boundingBox();
+  if (!box) throw new Error('row head has no layout box');
 
-  // A point just inside the row's bottom edge, away from the claim text and
-  // the status badge, which both sit nearer the top.
   await page.mouse.click(box.x + box.width / 2, box.y + box.height - 2);
 
-  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
-  await expect(page.locator(dialog)).toBeVisible();
+  await expect(row.locator('.sv-row__toggle')).toHaveAttribute('aria-expanded', 'true');
 });
 
 test('a fact chip in a viewpoint opens the same panel', async ({ page }) => {
   await page.goto(TOPIC);
-  const viewpoint = page.locator(VIEWPOINT);
-  await viewpoint.locator('summary .sv-item__claim').first().click();
-  await viewpoint.getByRole('link', { name: CARE_LINK, exact: true }).click();
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  await viewpoint.locator('.sv-walk__outline-step').nth(1).click();
+  await viewpoint.locator(`.sv-walk__explore a[data-fact-id="${CARE}"]`).first().click();
 
   await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
   await expect(page.locator(dialog)).toBeVisible();
@@ -66,26 +58,26 @@ test('a fact chip in a viewpoint opens the same panel', async ({ page }) => {
 
 test('the panel is labelled by the fact it is showing', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   const claim = await page.locator(`${dialog} ${title}`).textContent();
   await expect(page.getByRole('dialog', { name: claim ?? '' })).toBeVisible();
 });
 
 test('Escape closes the panel and returns to the topic', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  const explore = await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator(dialog)).toBeVisible();
 
   await page.keyboard.press('Escape');
   await expect(page.locator(dialog)).toHaveCount(0);
   await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
-  // Focus returns to the row that opened it.
-  await expect(page.locator(row(HEADLINE))).toBeFocused();
+  // Focus returns to the link that opened it.
+  await expect(explore).toBeFocused();
 });
 
 test('clicking the backdrop closes the panel', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator(dialog)).toBeVisible();
 
   // The panel does not fill the dialog at desktop width; the corner is backdrop.
@@ -97,7 +89,7 @@ test('clicking the backdrop closes the panel', async ({ page }) => {
 
 test('the close button closes the panel', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await page.locator('.sv-modal__close').click();
   await expect(page.locator(dialog)).toHaveCount(0);
   await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
@@ -109,8 +101,8 @@ test('opening the panel puts the fact URL in the address bar, and Back closes it
   page,
 }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
+  await openCollection(page, HEADLINE_TITLE);
+  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}#${firstChart}$`));
 
   await page.goBack();
   await expect(page.locator(dialog)).toHaveCount(0);
@@ -122,14 +114,15 @@ test('opening the panel puts the fact URL in the address bar, and Back closes it
 // who closes the panel and reloads does not get it opened again.
 test('closing the panel takes the fact off the URL', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await page.keyboard.press('Escape');
   await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
 });
 
 test('a related fact inside the panel still expands and collapses', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
+  await page.getByRole('button', { name: 'Whole report', exact: true }).click();
   const child = page.locator(`${dialog} details.sv-subfact`).first();
   const quote = child.locator('.sv-finding');
   await expect(quote).toBeHidden();
@@ -139,7 +132,7 @@ test('a related fact inside the panel still expands and collapses', async ({ pag
 
 test('focus moves into the panel and Tab stays inside it', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator('.sv-modal__close')).toBeFocused();
 
   // Tab around the whole panel and check focus never lands outside it.
@@ -156,7 +149,7 @@ test('focus moves into the panel and Tab stays inside it', async ({ page }) => {
 // means the panel and the page moving at once.
 test('the page behind the panel is scroll-locked', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator('html')).toHaveClass(/sv-modal-open/);
   await page.keyboard.press('Escape');
   await expect(page.locator('html')).not.toHaveClass(/sv-modal-open/);
@@ -171,11 +164,11 @@ test.describe('with JavaScript disabled', () => {
 
   test('a fact row is an ordinary link to the fact page', async ({ page }) => {
     await page.goto(TOPIC);
-    const link = page.locator(row(HEADLINE));
-    await expect(link).toHaveAttribute('href', factUrl(HEADLINE));
+    const link = exploreLink(page.locator('.sv-row--data').first());
+    await expect(link).toHaveAttribute('href', `${factUrl(HEADLINE)}#${firstChart}`);
 
     await link.click();
-    await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
+    await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}#${firstChart}$`));
     await expect(page.locator(dialog)).toHaveCount(0);
     // The whole fact is there: claim, context, chart, sources.
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
@@ -188,9 +181,7 @@ test.describe('with JavaScript disabled', () => {
 
   test('a fact chip in a viewpoint is an ordinary link to the fact page', async ({ page }) => {
     await page.goto(TOPIC);
-    const viewpoint = page.locator(VIEWPOINT);
-    await viewpoint.locator('summary .sv-item__claim').first().click();
-    const link = viewpoint.getByRole('link', { name: CARE_LINK, exact: true });
+    const link = page.locator(`#viewpoint-open-and-build .sv-walk__explore a[data-fact-id="${CARE}"]`).first();
     await expect(link).toHaveAttribute('href', new RegExp(`^${factUrl(CARE)}#${CARE}--`));
 
     await link.click();
@@ -202,54 +193,56 @@ test.describe('with JavaScript disabled', () => {
   });
 });
 
-// Next.js prefetches a fact as its link scrolls into view — not every fact
-// the page links to, most of which sit in collapsed sections. "In view" for
-// next/link includes a 200px margin around the viewport (its
-// IntersectionObserver rootMargin), so links just below the fold count.
+// A citation is prefetched when the reader points at it, not when it comes
+// into view: a topic page cites hundreds of sections of a few collections.
 const factData = (request: Request) =>
   request.headers()['rsc'] === '1' && new URL(request.url()).pathname.includes('/facts/');
 
-test('the topic page prefetches only the fact links on screen', async ({ page }) => {
+test('a fact is prefetched only once the reader points at its link', async ({ page }) => {
   const requested = new Set<string>();
   page.on('request', (request) => {
     if (factData(request)) requested.add(new URL(request.url()).pathname);
   });
-  await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).scrollIntoViewIfNeeded();
+  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  const row = await openDataRow(page, HEADLINE_TITLE);
   await page.waitForLoadState('networkidle');
-  const onScreen = await page.locator('a[href*="/facts/"]').evaluateAll((links) =>
-    links.filter((link) => {
-      const box = link.getBoundingClientRect();
-      return box.width > 0 && box.bottom > -200 && box.top < innerHeight + 200;
-    }).map((link) => new URL((link as HTMLAnchorElement).href).pathname));
-  expect(requested.size).toBeGreaterThan(0);
-  expect([...requested].filter((path) => !onScreen.includes(path))).toEqual([]);
+  expect([...requested]).toEqual([]);
+
+  await exploreLink(row).hover();
+  await expect.poll(() => [...requested]).toEqual([factUrl(HEADLINE)]);
 });
 
 // Once prefetched, opening and reopening a fact needs no network response.
 test('facts open with the network offline and Forward restores the modal', async ({ page, context }) => {
-  await page.goto(TOPIC);
-  // A fact is prefetched once its link is on screen.
-  await page.locator(row(HEADLINE)).scrollIntoViewIfNeeded();
-  await page.waitForLoadState('networkidle');
+  await page.goto(TOPIC, { waitUntil: 'networkidle' });
+  const row = await openDataRow(page, HEADLINE_TITLE);
+  const explore = exploreLink(row);
+  const prefetched = page.waitForResponse((response) =>
+    response.request().headers()['next-router-segment-prefetch']?.endsWith('__PAGE__') ?? false);
+  await explore.hover();
+  await (await prefetched).finished();
   await context.setOffline(true);
-  await page.locator(row(HEADLINE)).click();
-  await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
+  await explore.click();
+  await expect(page.locator(`${dialog} ${title}`)).toHaveText(HEADLINE_TITLE);
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await page.goBack();
   await expect(page.locator(dialog)).toHaveCount(0);
   await page.goForward();
-  await expect(page.locator(`${dialog} ${title}`)).toBeVisible();
+  await expect(page.locator(`${dialog} ${title}`)).toHaveText(HEADLINE_TITLE);
   await page.locator('.sv-modal__close').click();
   await expect(page.locator(dialog)).toHaveCount(0);
-  await expect(page.locator(row(HEADLINE))).toBeFocused();
+  // Forward reopened the sheet with no link clicked, so focus returns to the
+  // first link to the fact that can take it.
+  await expect(page.locator(`a[href^="${factUrl(HEADLINE)}"]:focus`)).toHaveCount(1);
 });
 
 test('Expand loads the standalone fact page', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
-  await page.getByRole('link', { name: 'Expand', exact: true }).click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}$`));
+  await openCollection(page, HEADLINE_TITLE);
+  const expand = page.getByRole('link', { name: 'Expand', exact: true });
+  await expect(expand).toHaveAttribute('href', /#/);
+  await expand.click();
+  await expect(page).toHaveURL(new RegExp(`${factUrl(HEADLINE)}#${firstChart}$`));
   await expect(page.locator(dialog)).toHaveCount(0);
   await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
 });
@@ -271,21 +264,20 @@ test('a slow fact response never delays opening the sheet', async ({ page }) => 
   const release = await holdFactData(page);
   try {
     await page.goto(TOPIC);
-    const first = page.locator('a.sv-factrow:visible').nth(0);
-    const second = page.locator('a.sv-factrow:visible').nth(1);
-    const claim = await second.locator('.sv-item__claim').textContent();
-    await first.click();
-    await expect(page.locator(`${dialog} ${title}`)).toHaveText((await first.locator('.sv-item__claim').textContent())!);
+    await openCollection(page, HEADLINE_TITLE);
+    // A citation names no fact, so the sheet opens untitled until the fact arrives.
+    await expect(page.getByRole('dialog', { name: 'Loading data' })).toBeVisible();
     // A loading message only once the wait is noticeable, never as a flash.
     await expect(page.getByRole('status')).toHaveCount(0);
     await expect(page.getByRole('status')).toHaveText('Loading data…', { timeout: 4000 });
     // Closing while it loads, then choosing another fact, gets the other fact.
     await page.locator('.sv-modal__close').click();
+    const second = exploreLink(await openDataRow(page, SECOND_TITLE));
     await second.click();
-    await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
+    await expect(page.getByRole('dialog', { name: 'Loading data' })).toBeVisible();
     release();
     await expect(page.locator(`${dialog} .sv-factpage__body`)).toBeVisible();
-    await expect(page.locator(`${dialog} ${title}`)).toHaveText(claim!);
+    await expect(page.locator(`${dialog} ${title}`)).toHaveText(SECOND_TITLE);
     await expect(page).toHaveURL(new RegExp(`${await second.getAttribute('href')}$`));
   } finally {
     release();
@@ -296,11 +288,11 @@ test('closing a sheet before its fact arrives keeps it closed', async ({ page })
   const release = await holdFactData(page);
   try {
     await page.goto(TOPIC);
-    await page.locator(row(HEADLINE)).click();
+    const explore = await openCollection(page, HEADLINE_TITLE);
     await expect(page.locator(`${dialog} [aria-busy="true"]`)).toBeVisible();
     await page.locator('.sv-modal__close').click();
     await expect(page.locator(dialog)).toHaveCount(0);
-    await expect(page.locator(row(HEADLINE))).toBeFocused();
+    await expect(explore).toBeFocused();
     release();
     await page.waitForLoadState('networkidle');
     await expect(page.locator(dialog)).toHaveCount(0);
@@ -315,7 +307,7 @@ test('modified fact clicks are left to the browser', async ({ page }) => {
   // Observe the event after application handlers, then suppress the browser's
   // platform-specific new-tab/context-menu default inside this test only.
   for (const modifier of ['ctrlKey', 'metaKey'] as const) {
-    const prevented = await page.locator(row(HEADLINE)).evaluate((link, key) => {
+    const prevented = await exploreLink(page.locator('.sv-row--data').first()).evaluate((link, key) => {
       let intercepted = false;
       document.addEventListener('click', (event) => {
         intercepted = event.defaultPrevented;
@@ -342,7 +334,7 @@ test('a preview using the loopback IP loads its JavaScript and opens facts in pl
     }
   });
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator(dialog)).toBeVisible();
   await expect(page.locator(`${dialog} .sv-factpage__body`)).toBeVisible();
   expect(blockedScripts).toEqual([]);

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { openCollection } from './topic-rows';
 
 // Depends on authored uk-immigration content: the headline fact
 // `immigration-against-the-long-run` carries the ONS 1964–2025 series, with
@@ -6,8 +7,8 @@ import { test, expect } from '@playwright/test';
 
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
-const row = (id: string) => `a.sv-factrow[href="${factUrl(id)}"]`;
 const HEADLINE = 'immigration-against-the-long-run';
+const HEADLINE_TITLE = 'UK Migration and Population Over the Long Run';
 const dialog = 'dialog.sv-modal';
 
 test.describe('with JavaScript disabled', () => {
@@ -16,10 +17,9 @@ test.describe('with JavaScript disabled', () => {
   // The whole point of server-rendered SVG: the chart is markup, so it is
   // there for a reader with no JavaScript, and so is every number behind it.
   // The fact's own page is exactly where such a reader arrives, having
-  // followed an ordinary link from the list.
+  // followed an ordinary link from the topic page.
   test('the chart and its numbers are in the page without any script', async ({ page }) => {
-    await page.goto(TOPIC);
-    await page.locator(row(HEADLINE)).click();
+    await page.goto(factUrl(HEADLINE));
     const fact = page.locator('article.sv-factpage');
 
     const charts = fact.locator(`#${HEADLINE}--chart-series .sv-chart__svg[data-variant="wide"]`);
@@ -51,7 +51,7 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   page,
 }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   const chart = page.locator(`${dialog} .sv-chart`).first();
 
   await expect(chart.locator('.sv-chart__reading')).toHaveCount(2);
@@ -76,10 +76,10 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
 
 test('closing the panel takes the chart off the page with it', async ({ page }) => {
   await page.goto(TOPIC);
-  await page.locator(row(HEADLINE)).click();
+  await openCollection(page, HEADLINE_TITLE);
   await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(page.locator('.sv-chart')).toHaveCount(0);
+  await expect(page.locator(`${dialog} .sv-chart`)).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
 });
 
