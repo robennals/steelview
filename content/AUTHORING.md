@@ -251,8 +251,10 @@ It has to be easy to take in at a glance.
   numbered marker under the chart, with its details one click away. Do not
   narrate the sequence of changes in a block of text.
 - **Observations are short.** A summary heading, then one to three short
-  sentences and their footnotes. Longer qualifications go in Subtleties or
-  About this data, both collapsed. On the topic page, a collection's row steps
+  sentences and their footnotes, at most about 350 characters so they fit three
+  lines under a chart. Longer qualifications go in Subtleties or About this
+  data, both collapsed. Keep whatever a reader needs to weigh the finding in the
+  observation itself, on every side of it. On the topic page, a collection's row steps
   through its charts, each beside its own observations, one at a time and
   without their footnotes. So each observation must make sense on its own
   beside its chart, and a chart should carry a few observations, not a dozen.
@@ -471,6 +473,14 @@ numbered `sources`, and `items` containing `label` and `value`. Optional `highli
 marks the subject country; `note` contains collapsed methodology. Values share a
 zero baseline and signed values extend on the correct side of it. Label scope and
 period in the visible description. Source indexes reuse the fact's citation list.
+
+**Every chart stands alone.** A reader can land on any chart with no context,
+seeing only its title and the first line of its `description`. So the first
+sentence is a free-standing introduction of at most 130 characters: what is
+measured and, where the title names a programme, law, visa route, body or term
+of art, what that thing is. It says what is shown, not what it finds; findings
+belong in observations. Everything else follows in later sentences, one click
+away. Support the introduction from the collection's own sources.
 
 **Charts are shared product primitives, not report-specific artwork.** Use the
 existing `SeriesChart` and `ComparisonChart` data shapes, and the [`figures`](#figures)
@@ -1498,6 +1508,9 @@ Run this before opening a pull request.
 - [ ] Short plain title names the point and comparison without excess numbers.
 - [ ] Opening is a one-sentence overview, with `claimSources`; its figures are
       in the charts below it.
+- [ ] Every chart's description opens with a free-standing sentence of at most
+      130 characters saying what is shown, explaining anything its title names.
+- [ ] Every observation fits about three lines (350 characters).
 - [ ] No paragraph longer than four lines. Numbers sit in charts, tables or
       key figures, not recited in prose; dated events are `events` on the
       series, not narrated.
