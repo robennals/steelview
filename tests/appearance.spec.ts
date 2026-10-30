@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 
 // These assertions depend on authored uk-immigration content: the supporting
 // facts `immigration-shifted-from-eu-to-non-eu` (status well-supported) and
