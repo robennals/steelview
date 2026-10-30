@@ -304,8 +304,8 @@ caught a published figure entered wrongly and a chart built from levels the
 source never published.
 
 **Readability is checked before the gate**, against
-[Readability](AUTHORING.md#readability): a brief overview at the top, no
-paragraph longer than four lines, statistics shown in the charts rather than
+[Readability](AUTHORING.md#readability): a one-sentence overview at the top,
+no paragraph longer than four lines, statistics shown in the charts rather than
 recited in prose, and dated events as numbered markers on the timeline. Look
 at each report rendered, on a narrow screen as well as a wide one; a wall of
 text is easy to miss in the markdown and obvious on the page.
@@ -353,13 +353,17 @@ now costs one file; found later it costs every viewpoint that cites it.
 ## 6. Write the viewpoints
 
 **The agent drafts each viewpoint** from its outline and the observations
-that now exist, with every empirical assertion a pill to an observation. Each
-viewpoint is a short lead, then one `###` section per outline argument: the
-heading is the argument's one-line claim, and beneath it a short prose
-paragraph or two gives the evidence, with no bullet lists. Write in short,
-plain sentences a middle-school reader can follow. Pill text states
-the point the argument needs and leaves exact figures, dates and sources to
-the report it opens. The
+that now exist, with every empirical assertion a pill to an observation. A
+viewpoint is read as a walkthrough of charts
+([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each step's
+chart before writing its text. Each viewpoint is a short lead, then one `###`
+section per outline argument: the heading is the argument's one-line claim, and
+beneath it two or three short sentences say what to notice in the chart and why
+it matters, with no bullet lists. The section's first chart-backed citation
+picks the chart, so cite the observation that shows the claim first. Write in
+short, plain sentences a middle-school reader can follow. Pill text states the
+point the argument needs and leaves exact figures, dates and sources to the
+chart and the report. The
 human and agent then edit together, one viewpoint at a time, until the
 holder of that view would find it better argued than their own version
 ([The bar](AUTHORING.md#the-bar)).
@@ -367,6 +371,11 @@ holder of that view would find it better argued than their own version
 - **Review the headings first.** Read each viewpoint's headings alone before
   its text: if they do not add up to the title, fix the argument before the
   prose.
+- **Review each step's chart.** Step through each viewpoint on the topic page.
+  A chart that does not show its step's claim means reordering the citations,
+  choosing another observation, or going back to stage 5 for the chart it needs.
+- **Leave definitions to the legend.** Where a step would define a term its
+  chart draws, give the chart's line a `glossary` entry instead.
 - **The agent proposes; the human decides** on every change of argument.
   Pure wording fixes against the [prose style](AUTHORING.md#prose-style)
   rules the agent can just make.
@@ -385,9 +394,9 @@ holder of that view would find it better argued than their own version
   observation links.
 
 **Gate: the human is happy with every viewpoint**, read side by side —
-first its headings alone, then the text. Check readability as for reports:
-look at each viewpoint rendered, and read it aloud for sentences that need a
-second reading.
+first its headings alone, then stepped through on the page with each chart.
+Check readability as for reports: look at each viewpoint rendered, and read it
+aloud for sentences that need a second reading.
 
 ## 7. Publish
 
