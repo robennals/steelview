@@ -3023,19 +3023,16 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-panel-chart] :is(.sv-chart__axis-label, .sv-chart__annotation-key, .sv-chart__credit) { margin-block: 0 0.3rem; }
 /* The description on one line, opening to the rest (chart-about.tsx). */
 .sv-chart__about { margin: 0 0 0.3rem; font: .875rem/1.5 var(--font-sans); color: var(--ink-3); }
-.sv-chart__about > summary { overflow: hidden; list-style: none; white-space: nowrap; text-overflow: ellipsis; cursor: pointer; }
+.sv-chart__about > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
 .sv-chart__about > summary::-webkit-details-marker { display: none; }
-.sv-chart__about > summary::before { content: "▸ "; color: var(--ink-4); }
-.sv-chart__about[open] > summary { margin-bottom: 0.4rem; white-space: normal; }
-.sv-chart__about[open] > summary::before { content: "▾ "; }
+.sv-chart__about-text { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); }
+.sv-chart__about-toggle::after { content: "More ▾"; }
+.sv-chart__about > summary:hover .sv-chart__about-toggle { text-decoration: underline; text-underline-offset: 0.2em; }
+.sv-chart__about[open] > summary { margin-bottom: 0.4rem; }
+.sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
+.sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
 .sv-chart__about p { margin: 0 0 0.4rem; }
-/* Narrower, the introduction wraps rather than being cut off. */
-@media (max-width: 75rem) {
-  .sv-chart__about:not([open]) > summary { display: -webkit-box; white-space: normal; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-}
-@media (max-width: 47.5rem) {
-  .sv-chart__about:not([open]) > summary { -webkit-line-clamp: 4; }
-}
 .sv-chart[data-panel-chart] .sv-graph-observations { max-width: none; margin: 0; }
 .sv-chart[data-panel-chart] .sv-method-changes-group { margin: 0.2rem 0 0; padding: 0; }
 .sv-chart[data-panel-chart] .sv-method-changes-group > summary { font-size: 0.85rem; }

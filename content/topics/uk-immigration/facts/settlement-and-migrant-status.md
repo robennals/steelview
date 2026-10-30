@@ -630,6 +630,24 @@ sources:
     url: "https://yougov.com/en-gb/articles/53070-what-do-britons-really-think-about-scrapping-indefinite-leave-to-remain"
     publisher: "YouGov"
     date: '2025-09-27'
+  - stance: supports
+    quote: "the context of black people’s experience in the UK since the HMT Windrush brought the first post-war migrants from the Caribbean in 1948"
+    title: "Windrush Lessons Learned Review (HC 93)"
+    url: "https://assets.publishing.service.gov.uk/media/5e74984fd3bf7f4684279faa/6.5577_HO_Windrush_Lessons_Learned_Review_WEB_v2.pdf"
+    publisher: "Home Office (independent review by Wendy Williams)"
+    date: '2020-03-19'
+  - stance: supports
+    quote: "The 1971 Immigration Act entitled people who had arrived from Commonwealth countries before January 1973 to the “right of abode” or “deemed leave” to remain in the UK. But the government gave them no documents to demonstrate this status."
+    title: "Windrush Lessons Learned Review (HC 93)"
+    url: "https://assets.publishing.service.gov.uk/media/5e74984fd3bf7f4684279faa/6.5577_HO_Windrush_Lessons_Learned_Review_WEB_v2.pdf"
+    publisher: "Home Office (independent review by Wendy Williams)"
+    date: '2020-03-19'
+  - stance: supports
+    quote: "You can apply if: you came to the UK from a Commonwealth country before 1973; your parents or grandparents came to the UK from a Commonwealth country before 1973; you came to the UK from any country before 31 December 1988 and are now settled here"
+    title: "Apply to the Windrush Compensation Scheme"
+    url: "https://www.gov.uk/guidance/windrush-compensation-scheme"
+    publisher: "GOV.UK"
+    date: '2026'
 series:
   title: 'Grants of settlement in the UK, 2010–2025'
   description: >-
@@ -854,10 +872,15 @@ additionalSeries:
   - id: windrush-compensation
     title: 'Windrush Compensation Scheme: cumulative amount paid, 2019–2026'
     description: >-
-      The Windrush Compensation Scheme pays out for people with a lawful right to stay in
-      the UK who were treated as if they had none. This is the total it has paid out since
-      it opened on 3 April 2019, in pounds, at the end of each quarter to June 2020 and
-      each month after that.
+      Compensation for the Windrush generation: Commonwealth migrants up to 1973 with a
+      right to stay but no papers to prove it. They are named after HMT Windrush,
+      which brought the first post-war migrants from the Caribbean in 1948. The 1971
+      Immigration Act gave those who had arrived from Commonwealth countries before January
+      1973 the right to stay, but the government gave them no documents, and some were
+      later treated as if they had no such right. Their children and grandchildren, close
+      family and some later arrivals can also claim. This is the total the scheme has paid
+      out since it opened on 3 April 2019, in pounds, at the end of each quarter to June
+      2020 and each month after that.
     periodLabel: End of quarter or month
     coverage:
       from: '2019-06'
@@ -1658,6 +1681,16 @@ paid £133,475,539.07 on 4,221 claims. [97](#source-settlement-and-migrant-statu
 [96](#source-settlement-and-migrant-status-96)
 
 ## Subtleties {#settlement-and-migrant-status--subtleties-windrush-paid}
+
+### Who the Windrush generation were {#settlement-and-migrant-status--windrush-generation}
+
+The generation is named after HMT Windrush, which "brought the first post-war migrants
+from the Caribbean in 1948". [104](#source-settlement-and-migrant-status-104) The 1971
+Immigration Act let people who had arrived from Commonwealth countries before January 1973
+remain, "but the government gave them no documents to demonstrate this status".
+[105](#source-settlement-and-migrant-status-105) The compensation scheme also covers their
+children and grandchildren, close family, and people from any country who arrived before
+31 December 1988 and are now settled. [106](#source-settlement-and-migrant-status-106)
 
 ### People detained or removed {#settlement-and-migrant-status--windrush-detained-or-removed}
 
