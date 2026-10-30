@@ -2112,10 +2112,6 @@
 
   .sv-carousel__count { flex: 1; margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); }
 
-  @media (max-width: 40rem) {
-    .sv-carousel__count-label { display: none; }
-  }
-
   /* Below 64rem the carousel takes the row's full width, so its charts keep a
      readable size; the thumbnails go on phones. */
   @media (max-width: 64rem) {

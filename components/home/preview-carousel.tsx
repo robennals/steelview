@@ -9,7 +9,7 @@ const noSubscription = () => () => {};
  *
  * Every slide is server-rendered into a horizontally scroll-snapped strip, so
  * without JavaScript each chart is still reachable by scrolling. Script adds
- * the previous/next buttons, one dot per chart, a "2 / 4 · label" count and
+ * the previous/next buttons, one dot per chart, a "2 / 4" count and
  * arrow keys. Every slide has one fixed height (globals.css), so the charts
  * are all one size and nothing moves when the chart changes.
  */
@@ -64,7 +64,7 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
               <button type="button" key={i} className="sv-carousel__dot" aria-label={`Chart ${i + 1}: ${label}`} aria-current={i === index || undefined} onClick={() => go(i)} />
             ))}
           </div>
-          <p className="sv-carousel__count" aria-hidden="true">{index + 1} / {slides.length}<span className="sv-carousel__count-label"> · {labels[index]}</span></p>
+          <p className="sv-carousel__count" aria-hidden="true">{index + 1} / {slides.length}</p>
           <p className="sv-visually-hidden" aria-live="polite">Chart {announced + 1} of {slides.length}: {labels[announced]}</p>
           <button type="button" className="sv-carousel__step" aria-label="Next chart" onClick={() => go(index + 1)}>›</button>
         </div>
