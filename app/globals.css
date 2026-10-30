@@ -2677,7 +2677,6 @@
   .sv-factpage[data-focus] .sv-viz:not([data-viz-active]) { display: none; }
 
   /* A data panel lifted into a sheet by a viewpoint's "Explore this data". */
-  .sv-factpanel__overview { margin: 0.4rem 0 1rem; max-width: 48rem; color: var(--ink-3); }
   .sv-factpanel .sv-walk { padding: 0; opacity: 1; transform: none; }
   /* The visualization takes the sheet's full width; its prose keeps a reading width. */
   .sv-factpage[data-focus] .sv-factpage__body { max-width: none; }

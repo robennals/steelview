@@ -91,26 +91,26 @@ export function ExplorableChart({ children }: { children: ReactNode }) {
   return <div className="sv-slide sv-slide--explorable" onClick={onClick}>{children}</div>;
 }
 
-type PanelHostProps = { fact: string; title: string; overview: string; children: ReactNode };
+type PanelHostProps = { fact: string; title: string; children: ReactNode };
 
 /**
  * Where a collection's data panel sits: in its row, or while a viewpoint has it
  * open, in a sheet. It is the one panel either way, moved rather than copied.
  */
-export function PanelHost({ fact, title, overview, children }: PanelHostProps) {
+export function PanelHost({ fact, title, children }: PanelHostProps) {
   const explore = useContext(ExploreContext);
   const shown = explore?.shown?.fact === fact ? explore.shown : null;
   if (!shown || !explore) return children;
   return createPortal(
-    <PanelSheet title={title} overview={overview} observation={shown.observation} leave={explore.leave}>{children}</PanelSheet>,
+    <PanelSheet title={title} observation={shown.observation} leave={explore.leave}>{children}</PanelSheet>,
     document.body,
   );
 }
 
-type PanelSheetProps = { title: string; overview: string; observation: string; leave: () => void; children: ReactNode };
+type PanelSheetProps = { title: string; observation: string; leave: () => void; children: ReactNode };
 
 /** The sheet around a data panel, open at one observation from its first frame. */
-function PanelSheet({ title, overview, observation, leave, children }: PanelSheetProps) {
+function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -150,7 +150,6 @@ function PanelSheet({ title, overview, observation, leave, children }: PanelShee
         </div>
         <div className="sv-modal__scroll">
           <article className="sv-factpage sv-factpanel" data-variant="modal">
-            {overview && <p className="sv-factpanel__overview">{overview}</p>}
             <ShownObservation.Provider value={observation}>{children}</ShownObservation.Provider>
           </article>
         </div>

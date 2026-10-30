@@ -44,7 +44,7 @@ function DataPanel({ slug, fact, steps }: DataPanelProps) {
   const title = fact.title ?? fact.claim;
   return (
     <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)}>
-      <PanelHost fact={fact.id} title={title} overview={fact.title ? fact.claim : ''}>
+      <PanelHost fact={fact.id} title={title}>
         <Walkthrough
           name={title}
           headings={steps.map(s => s.chart.label)}
