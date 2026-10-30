@@ -62,10 +62,10 @@ function citedFactId(href: string): string | undefined {
  * treatment; `data-fact-id` names the fact so the client router can turn the
  * click into a modal without re-parsing the href.
  */
-function remarkMarkFactCitations({ slug, facts }: { slug: string; facts: Fact[] }) {
+function remarkMarkFactCitations({ slug, facts, citationsAsText }: { slug: string; facts: Fact[]; citationsAsText: boolean }) {
   return (tree: Root) => {
     visit(tree, 'link', (node: Link, index, parent) => {
-      if (node.url === NEEDED_HREF) {
+      if (node.url === NEEDED_HREF || (citationsAsText && citedFactId(node.url))) {
         if (parent && index !== undefined) parent.children.splice(index, 1, ...node.children);
         return index;
       }
@@ -96,12 +96,12 @@ function remarkMarkFactCitations({ slug, facts }: { slug: string; facts: Fact[] 
 /** One processor per topic — the only thing that varies between them is the slug. */
 const processors = new Map<string, ReturnType<typeof buildProcessor>>();
 
-function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug) {
+function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, citationsAsText = false) {
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkEscapeHtml)
-    .use(remarkMarkFactCitations, { slug, facts })
+    .use(remarkMarkFactCitations, { slug, facts, citationsAsText })
     .use(remarkEvidenceAnchors)
     .use(remarkRehype)
     .use(rehypeGlossary, { namespace })
@@ -111,9 +111,14 @@ function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug) {
     .freeze();
 }
 
-export async function renderMarkdown(md: string, slug: string, facts: Fact[] = []): Promise<string> {
+/**
+ * With `citationsAsText`, a fact citation renders as its plain text, with no
+ * link: for prose drawn beside the evidence it cites, where the chart is
+ * already on screen and a link to it would only repeat it.
+ */
+export async function renderMarkdown(md: string, slug: string, facts: Fact[] = [], { citationsAsText = false } = {}): Promise<string> {
   if (!md.trim()) return '';
-  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16)) : facts.length ? buildProcessor(slug, facts) : processors.get(slug);
+  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16), citationsAsText) : facts.length || citationsAsText ? buildProcessor(slug, facts, slug, citationsAsText) : processors.get(slug);
   if (!processor) {
     processor = buildProcessor(slug);
     processors.set(slug, processor);

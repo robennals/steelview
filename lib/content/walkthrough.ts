@@ -103,7 +103,8 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
       steps: await Promise.all(steps.map(async ({ heading, markdown, chart, citation }) => ({
         heading,
         chart,
-        html: await renderMarkdown(markdown, topic.slug, topic.facts),
+        // The step's chart is beside its prose, so the facts it cites are plain text.
+        html: await renderMarkdown(markdown, topic.slug, topic.facts, { citationsAsText: true }),
         exploreHtml: citation && await renderMarkdown(`[Explore this data](${citation})`, topic.slug, topic.facts),
       }))),
     });
