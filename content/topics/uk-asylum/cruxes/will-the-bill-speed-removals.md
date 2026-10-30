@@ -10,7 +10,7 @@ positions:
   - viewpoint: refuge
     holds: Faster, perhaps, but at the cost of fair hearings. Two in five appeals succeed today, and adjudicators who need not be lawyers will get more of them wrong.
 ---
-The Bill would [replace the tribunal with a new appeals authority and rewrite how judges weigh Article 8](#fact-asylum-law-and-the-echr/immigration-and-asylum-bill). [Its impact assessment models about 11,700 more Article 8 refusals a year but calls that "not a target or forecast", and expects 55% of those refused may not leave](#fact-asylum-law-and-the-echr/the-bill-sets-no-target). [Critics see no evidence that it will meet its objectives](#fact-asylum-law-and-the-echr/critics-doubt-the-iiaa).
+The Bill would [replace the tribunal with a new appeals authority and rewrite how judges weigh Article 8](#fact-asylum-law-and-the-echr/chart-immigration-and-asylum-bill). [Its impact assessment models about 11,700 more Article 8 refusals a year but calls that "not a target or forecast", and expects 55% of those refused may not leave](#fact-asylum-law-and-the-echr/the-bill-sets-no-target). [Critics see no evidence that it will meet its objectives](#fact-asylum-law-and-the-echr/critics-doubt-the-iiaa).
 
 The record cuts both ways. [After the 2014 Act, offenders' human-rights wins fell by three-quarters, then climbed back alongside a 2017 Supreme Court judgment](#fact-removals-and-what-stops-them/article-8-reforms-cut-then-faded). Meanwhile [the appeals queue has grown more than fourteen-fold since 2022](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals), and [two in five asylum appeals are allowed](#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed).
 
