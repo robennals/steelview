@@ -181,6 +181,16 @@ export function yearTicks(fromYear: number, toYear: number, step: number): numbe
 /* ------------------------------------------------------------- formatting */
 
 /** About 0.6em per digit in the sans tick face, plus a gap. */
+/**
+ * Where a label sits at the top of a zone running to the plot's right edge: at
+ * the zone's start, or, in a zone too narrow to hold it, ending at the right
+ * edge and reaching back over the plot, so the edge of the chart never cuts it.
+ */
+export function zoneLabelPlacement(zoneStart: number, right: number, label: string, fontSize: number): { x: number; anchor: 'start' | 'end' } {
+  const fits = right - zoneStart >= tickLabelWidth(label, fontSize) + 8;
+  return fits ? { x: zoneStart + 4, anchor: 'start' } : { x: right - 4, anchor: 'end' };
+}
+
 export function tickLabelWidth(label: string, fontSize: number): number {
   return label.length * fontSize * 0.6 + 6;
 }

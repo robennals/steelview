@@ -31,6 +31,7 @@ import {
   PREVIEW_VARIANTS,
   type SeriesVariant,
   type FocusWindow,
+  zoneLabelPlacement,
 } from '@/lib/chart/series-chart';
 
 /**
@@ -56,6 +57,7 @@ import {
  */
 
 const NBSP_DASH = '–';
+const FORECAST_LABEL = 'Forecast';
 
 function Plot({
   series,
@@ -79,6 +81,7 @@ function Plot({
   const hatchId = `${descriptionId}-${variant}-hatch`;
   const clipId = `${descriptionId}-${variant}-clip`;
   const right = g.left + g.plotWidth;
+  const forecastLabel = layout.forecastX !== null ? zoneLabelPlacement(layout.forecastX, right, FORECAST_LABEL, g.fontSize) : null;
   const bottom = g.top + g.plotHeight;
   return (
     <svg
@@ -103,7 +106,7 @@ function Plot({
       {layout.forecastX !== null && (
         <g className="sv-chart__forecast">
           <rect className="sv-chart__forecast-zone" x={layout.forecastX} y={g.top} width={right - layout.forecastX} height={g.plotHeight} />
-          <text className="sv-chart__zone-label" x={layout.forecastX + 4} y={g.top + g.fontSize} fontSize={g.fontSize}>Forecast</text>
+          <text className="sv-chart__zone-label" x={forecastLabel?.x} y={g.top + g.fontSize} fontSize={g.fontSize} textAnchor={forecastLabel?.anchor}>{FORECAST_LABEL}</text>
         </g>
       )}
 
