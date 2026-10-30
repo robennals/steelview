@@ -15,9 +15,9 @@ Whatever you think of the war, it has given the US the upper hand over Iran. The
 
 ### Deals with Iran have worked before, and one is possible now
 
-[While the 2015 nuclear deal lasted, Iran kept to its limits](#fact-iran-nuclear-programme/deal-era-compliance). [In June 2026 it signed a promise not to make nuclear weapons](#fact-iran-nuclear-programme/mou-no-weapons-clause). Other countries have made deals like this too. [Libya gave up its nuclear programme and let inspectors in](#fact-outside-attempts-to-change-hostile-regimes/libya-2003-with-inspections). [Countries are most likely to give up a nuclear programme when sanctions come with rewards that let them back down without looking weak](#fact-outside-attempts-to-change-hostile-regimes/threats-plus-rewards).
+[While the 2015 nuclear deal lasted, Iran kept to its limits](#fact-iran-nuclear-programme/deal-era-compliance). [In June 2026 it signed a promise not to make nuclear weapons](#fact-iran-nuclear-programme/mou-no-weapons-clause). [Libya gave up its nuclear programme and let inspectors in](#fact-outside-attempts-to-change-hostile-regimes/libya-2003-with-inspections). [Countries are most likely to give up a programme when sanctions come with face-saving rewards](#fact-outside-attempts-to-change-hostile-regimes/threats-plus-rewards).
 
-A deal is on the table now. [Qatar and other countries are pushing a plan](#fact-decisions-law-and-diplomacy/talks-continue-in-october). Iran would reopen the Strait of Hormuz, a key shipping route, and the US would end its blockade. With nuclear limits and inspections added, that would be a good deal.
+[Qatar and others are pushing a plan](#fact-decisions-law-and-diplomacy/talks-continue-in-october): Iran reopens the Strait of Hormuz and the US ends its blockade. With nuclear limits and inspections added, that would be a good deal.
 
 ### Waiting costs more and could lead to a bigger war
 
@@ -25,6 +25,6 @@ A deal is on the table now. [Qatar and other countries are pushing a plan](#fact
 
 ### The deal must be checked, not trusted
 
-While [the last deal fell apart within weeks](#fact-decisions-law-and-diplomacy/mou-broke-down), that calls for checking the next one, not giving up on deals. [Experts at two US research groups say Iran used the ceasefire to rebuild its missiles and drones](#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles). So a new deal cannot rest on trust. The US should lift the blockade step by step, as inspectors confirm that Iran is keeping each promise.
+While [the last deal fell apart within weeks](#fact-decisions-law-and-diplomacy/mou-broke-down), that calls for checks, not giving up. [Experts say Iran used the ceasefire to rebuild its missiles and drones](#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles), so trust is not enough.
 
-The US should offer to end the blockade and stop its strikes. In return, Iran must let inspectors into every site, show where its uranium is, and stop enriching while inspectors check. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people). A deal that can be checked serves Americans better than a war with no end.
+The US should stop its strikes and lift the blockade step by step, as inspectors confirm Iran has opened every site, shown where its uranium is and stopped enriching. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people). A checkable deal serves Americans better than endless war.

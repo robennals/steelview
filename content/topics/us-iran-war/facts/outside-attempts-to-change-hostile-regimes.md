@@ -2,12 +2,9 @@
 title: Outside Attempts to Topple, Coerce or Disarm Hostile Regimes, 1816–2023
 claimSources: [1, 3, 8, 11, 13, 16]
 claim: >-
-  Studies of outside attempts to topple, coerce or disarm hostile governments
-  find that results depend on how success is defined. Imposed regime change has
-  more often been followed by civil war than by democracy, strikes on nuclear
-  sites have usually delayed programmes modestly, and sanctions or bombing
-  succeed in roughly a third of cases on the commonest definitions (studies
-  published 1998–2025, read October 2026).
+  Results depend on how success is defined, but imposed regime change was more
+  often followed by civil war than democracy, strikes modestly delayed nuclear
+  programmes, and sanctions or bombing succeeded about a third of the time.
 status: well-supported
 sources:
   # 1
@@ -495,6 +492,76 @@ dataStillNeeded:
       Horowitz and Reiter find civilian vulnerability does not affect
       coercion success, the nearest systematic evidence found. No study of
       rally effects after air attacks was found.
+figures:
+  - kind: "comparison"
+    id: "nuclear-programmes"
+  - kind: "comparison"
+    id: "sanctions-ties"
+  - kind: "comparison"
+    id: "air-power"
+  - kind: "dataTable"
+    id: "regime-change"
+    title: "Studies of outside attempts to change governments, with how each defines success"
+    description: "Three studies of regime change imposed from outside, openly or covertly."
+    caption: "One row per study"
+    columns:
+      - { key: "study", label: "Study", rowHeader: true, sortable: false }
+      - { key: "cases", label: "Cases and years", sortable: false }
+      - { key: "success", label: "What counts as success, or the outcome measured", sortable: false }
+      - { key: "finding", label: "Main finding", sortable: false }
+    rows:
+      - { study: "Downes, Catastrophic Success (2021)", cases: "120 imposed regime changes, 1816–2008", success: "No success score; outcomes are civil war within ten years, violent removal of the installed leader, later disputes, UN voting", finding: { value: "Civil war risk \"more than doubles\"; four and a half times for leadership change", sources: [1] } }
+      - { study: "Downes & Monten (2013)", cases: "70 twentieth-century cases (107 in the dataset, 1816–2003)", success: "The target becomes a democracy", finding: { value: "Only where development, homogeneity and representative experience were favourable", sources: [3, 4] } }
+      - { study: "O'Rourke, Covert Regime Change", cases: "64 covert US attempts, 1947–89", success: "The US-backed side takes power", finding: { value: "\"Unsuccessful more than 60 percent of the time\"", sources: [5, 6] } }
+  - kind: "pullQuote"
+    id: "strikes"
+    description: "Kreps and Fuhrmann studied 16 attacks on nuclear facilities, 1942–2007, measuring delay to the target's programme."
+    quote: { text: "There is evidence that the peacetime attacks delayed the target's nuclear program, although the size of this effect is rather modest.", speaker: "Kreps and Fuhrmann", context: "Attacking the Atom", date: "2011", source: 8 }
+  - kind: "dataTable"
+    id: "nonproliferation-pressure"
+    title: "Studies of pressure on nuclear programmes and of ceasefires"
+    description: "What sanctions, rewards and ceasefire terms have achieved, with how each study defines success."
+    caption: "One row per study"
+    columns:
+      - { key: "study", label: "Study", rowHeader: true, sortable: false }
+      - { key: "cases", label: "Cases and years", sortable: false }
+      - { key: "success", label: "What counts as success, or the outcome measured", sortable: false }
+      - { key: "finding", label: "Main finding", sortable: false }
+    rows:
+      - { study: "Miller, Stopping the Bomb (2018)", cases: "22 US sanctions episodes after a programme had started", success: "The programme stopped", finding: { value: "Three of 22; the threat of sanctions deterred others from starting", sources: [18] } }
+      - { study: "Mehta, Delaying Doomsday", cases: "All proliferators, plus case studies of India, Iran and North Korea", success: "Nuclear reversal", finding: { value: "Threats plus face-saving rewards, with force \"on the table\"", sources: [19] } }
+      - { study: "Fortna, Peace Time (2004)", cases: "Ceasefires between states (number not on the page read)", success: "Peace lasts", finding: { value: "\"Strong agreements markedly lessen the risk of further war\"", sources: [24] } }
+  - kind: "quoteComparison"
+    id: "credibility"
+    question: "Does backing down cost credibility?"
+    description: "Two answers from the research, reached by different methods."
+    quotes:
+      - { text: "were still taken seriously in the future", speaker: "Press", context: "Calculating Credibility (2006 per Dartmouth), three 20th-century cases, on leaders who backed down", date: "2006", source: 20 }
+      - { text: "past action is closely connected to subsequent dispute initiation", speaker: "Weisiger & Yarhi-Milo", context: "Revisiting Reputation, dispute data", date: "2015", source: 21 }
+  - kind: "quoteComparison"
+    id: "cascades"
+    question: "Would an Iranian bomb set off others?"
+    description: "A leader's pledge beside what researchers found about past fears."
+    quotes:
+      - { text: "if Iran developed a nuclear bomb, we will follow suit as soon as possible", speaker: "Mohammed bin Salman", role: "Saudi Crown Prince", context: "CBS, via Al Jazeera", date: "2018-03", source: 22 }
+      - { text: "past predictions of rapid proliferation failed to materialize", speaker: "Potter & Mukhatzhanova", context: "Reviewing two books", date: "2008", source: 23 }
+      - { text: "Thirty-one countries at least opened the door to potential nuclear weapons programs, seventeen of those launched weapons programs, and ten acquired deliverable nuclear weapons.", speaker: "Bleek", date: "2017", source: 10 }
+  - kind: "dataTable"
+    id: "studies"
+    title: "The other studies, with how each defines success"
+    description: "A success rate under one definition is not comparable with another."
+    caption: "One row per study"
+    columns:
+      - { key: "study", label: "Study", rowHeader: true, sortable: false }
+      - { key: "cases", label: "Cases and years", sortable: false }
+      - { key: "success", label: "What counts as success, or the outcome measured", sortable: false }
+      - { key: "finding", label: "Main finding", sortable: false }
+    rows:
+      - { study: "Bleek (2017)", cases: "31 states, 1939–2017", success: "Stage reached: explore, pursue, acquire", finding: { value: "Ten acquired; reversals are dated but their causes are not coded", sources: [10] } }
+      - { study: "Hufbauer, Schott, Elliott & Oegg, Economic Sanctions Reconsidered, 3rd edition", cases: "204 sanctions episodes, WWI–2000", success: "Sanctions \"contributed significantly\" to partial or full success", finding: { value: "\"About one-third\"", sources: [11] } }
+      - { study: "TIES (Morgan, Bapat & Kobayashi, 2014)", cases: "1,412 threatened or imposed sanctions, 1945–2005", success: "Three definitions (see chart)", finding: { value: "27.2% to 56%", sources: [13] } }
+      - { study: "Global Sanctions Data Base (2024)", cases: "1,547 imposed sanctions, 1950–2023", success: "Per objective: total, partial, negotiated, failure, ongoing", finding: { value: "\"30 to 50 percent\" (2021 announcement, definition not stated)", sources: [14, 15] } }
+      - { study: "Horowitz & Reiter (2001)", cases: "53 air-power coercion attempts, 1917–1999", success: "Target complies as demanded", finding: { value: "19 of 53", sources: [16, 17] } }
 ---
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-nuclear-programmes}
 
@@ -550,23 +617,6 @@ Horowitz and Reiter count 19 successes in 53 attempts from 1917 to 1999. [17](#s
 
 "Success is less likely when the attacker demands the target change its leadership." The target's regime type made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
 
-## The studies, with how each defines success {#outside-attempts-to-change-hostile-regimes--studies}
-
-| Study | Cases and years | What counts as success, or the outcome measured | Main finding |
-| --- | --- | --- | --- |
-| Downes, *Catastrophic Success* (2021) | 120 imposed regime changes, 1816–2008 | No success score; outcomes are civil war within ten years, violent removal of the installed leader, later disputes, UN voting | Civil war risk "more than doubles"; four and a half times for leadership change [1](#source-outside-attempts-to-change-hostile-regimes-1) |
-| Downes & Monten (2013) | 70 twentieth-century cases (107 in the dataset, 1816–2003) | The target becomes a democracy | Only where development, homogeneity and representative experience were favourable [3](#source-outside-attempts-to-change-hostile-regimes-3) [4](#source-outside-attempts-to-change-hostile-regimes-4) |
-| O'Rourke, *Covert Regime Change* | 64 covert US attempts, 1947–89 | The US-backed side takes power | "Unsuccessful more than 60 percent of the time" [5](#source-outside-attempts-to-change-hostile-regimes-5) [6](#source-outside-attempts-to-change-hostile-regimes-6) |
-| Kreps & Fuhrmann (2011) | 16 attacks on nuclear facilities, 1942–2007 | Delay to the target's programme | Peacetime strikes delayed programmes, "rather modest" in size [8](#source-outside-attempts-to-change-hostile-regimes-8) |
-| Bleek (2017) | 31 states, 1939–2017 | Stage reached: explore, pursue, acquire | Ten acquired; reversals are dated but their causes are not coded [10](#source-outside-attempts-to-change-hostile-regimes-10) |
-| Hufbauer, Schott, Elliott & Oegg, *Economic Sanctions Reconsidered*, 3rd edition | 204 sanctions episodes, WWI–2000 | Sanctions "contributed significantly" to partial or full success | "About one-third" [11](#source-outside-attempts-to-change-hostile-regimes-11) |
-| TIES (Morgan, Bapat & Kobayashi, 2014) | 1,412 threatened or imposed sanctions, 1945–2005 | Three definitions (see chart) | 27.2% to 56% [13](#source-outside-attempts-to-change-hostile-regimes-13) |
-| Global Sanctions Data Base (2024) | 1,547 imposed sanctions, 1950–2023 | Per objective: total, partial, negotiated, failure, ongoing | "30 to 50 percent" (2021 announcement, definition not stated) [14](#source-outside-attempts-to-change-hostile-regimes-14) [15](#source-outside-attempts-to-change-hostile-regimes-15) |
-| Miller, *Stopping the Bomb* (2018) | 22 US sanctions episodes after a programme had started | The programme stopped | Three of 22; the threat of sanctions deterred others from starting [18](#source-outside-attempts-to-change-hostile-regimes-18) |
-| Mehta, *Delaying Doomsday* | All proliferators, plus case studies of India, Iran and North Korea | Nuclear reversal | Threats plus face-saving rewards, with force "on the table" [19](#source-outside-attempts-to-change-hostile-regimes-19) |
-| Horowitz & Reiter (2001) | 53 air-power coercion attempts, 1917–1999 | Target complies as demanded | 19 of 53 [16](#source-outside-attempts-to-change-hostile-regimes-16) [17](#source-outside-attempts-to-change-hostile-regimes-17) |
-| Fortna, *Peace Time* (2004) | Ceasefires between states (number not on the page read) | Peace lasts | "Strong agreements markedly lessen the risk of further war" [24](#source-outside-attempts-to-change-hostile-regimes-24) |
-
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-regime-change}
 
 ### Imposed regime change more than doubles the risk of civil war {#outside-attempts-to-change-hostile-regimes--imposed-regime-change-and-civil-war}
@@ -617,26 +667,11 @@ Mehta finds reversal "most likely" when states face sanctions and are offered "f
 
 Fortna finds that "strong agreements markedly lessen the risk of further war", naming demilitarised zones, dispute commissions, peacekeeping and outside guarantees. [24](#source-outside-attempts-to-change-hostile-regimes-24)
 
-## Does backing down cost credibility? Two answers {#outside-attempts-to-change-hostile-regimes--credibility}
-
-| Study | Method | Finding |
-| --- | --- | --- |
-| Press, *Calculating Credibility* (2006 per Dartmouth) | Three 20th-century cases | Leaders who backed down "were still taken seriously in the future" [20](#source-outside-attempts-to-change-hostile-regimes-20) |
-| Weisiger & Yarhi-Milo (2015) | Dispute data | "past action is closely connected to subsequent dispute initiation" [21](#source-outside-attempts-to-change-hostile-regimes-21) |
-
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-credibility}
 
 ### The research on credibility is split {#outside-attempts-to-change-hostile-regimes--credibility-split}
 
 Press expected backing down to hurt credibility and found that leaders who did were "still taken seriously in the future". [20](#source-outside-attempts-to-change-hostile-regimes-20) Weisiger and Yarhi-Milo find that past action is "closely connected" to later challenges, and that judging credibility by current power and interests alone "is misleading". [21](#source-outside-attempts-to-change-hostile-regimes-21)
-
-## Would an Iranian bomb set off others? {#outside-attempts-to-change-hostile-regimes--cascades}
-
-| Date | Source | Statement or finding |
-| --- | --- | --- |
-| Mar 2018 | Saudi Crown Prince Mohammed bin Salman (CBS, via Al Jazeera) | "if Iran developed a nuclear bomb, we will follow suit as soon as possible" [22](#source-outside-attempts-to-change-hostile-regimes-22) |
-| 2008 | Potter & Mukhatzhanova, reviewing two books | "past predictions of rapid proliferation failed to materialize" [23](#source-outside-attempts-to-change-hostile-regimes-23) |
-| 2017 | Bleek | Ten states acquired weapons in about 70 years (chart above) [10](#source-outside-attempts-to-change-hostile-regimes-10) |
 
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-cascades}
 
@@ -660,7 +695,7 @@ Downes and Monten expect most regime-change targets to be "poor, diverse countri
 
 ## About this data {#outside-attempts-to-change-hostile-regimes--about}
 
-**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The table above keeps each figure next to its definition.
+**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The tables above keep each figure next to its definition.
 
 **Why there is no time series.** The studies publish pooled results over long periods, not rates by year.
 

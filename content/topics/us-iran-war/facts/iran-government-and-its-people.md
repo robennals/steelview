@@ -1,13 +1,10 @@
 ---
 title: "Iran's Government and Its People: Elections, Opinion and Repression, 1980–2026"
-claimSources: [1, 7, 13, 21, 35, 37]
+claimSources: [1, 13, 20, 21, 35]
 claim: >-
-  This report covers how Iran's government treats its people, as of late
-  October 2026. Turnout has fallen to record lows, few would-be candidates are
-  allowed to stand, and executions and protest killings have reached levels
-  not recorded in decades. Signs of moderation, such as the 2024 election and
-  the shelved hijab law, are real but narrow, and repression widened after the
-  outside attacks of 2025 and 2026.
+  Turnout has fallen to record lows, few candidates are allowed to stand, and
+  executions and protest killings have reached levels not recorded in decades,
+  with real but narrow signs of moderation.
 status: well-supported
 derivedFigures:
   - {method: ratio-percent, figure: '7.5%', numerator: 6, denominator: 80, decimals: 1}
@@ -1229,6 +1226,93 @@ dataStillNeeded:
     why: 'Only 2023–2025 were read, so Amnesty''s long-run Iran series cannot be set beside IHRNGO''s 2008–2025 series.'
   - measure: 'Deaths per protest in comparable crackdowns in other countries, by the same counting method'
     why: 'Without a comparator, the scale of the January 2026 toll can be judged only against Iran''s own earlier crackdowns.'
+figures:
+  - kind: "series"
+  - kind: "series"
+    id: "candidate-vetting"
+  - kind: "series"
+    id: "ihrngo-executions-series"
+  - kind: "series"
+    id: "hrana-annual-series"
+  - kind: "series"
+    id: "hrana-monthly-series"
+  - kind: "series"
+    id: "gdp-growth-series"
+  - kind: "series"
+    id: "inflation-series"
+  - kind: "comparison"
+    id: "majlis-turnout"
+  - kind: "comparison"
+    id: "january-2026-deaths"
+  - kind: "dataTable"
+    id: "crackdown-deaths"
+    title: "Crackdown deaths, by counter and method"
+    description: "Each count comes from a different counter using a different method, so they cannot be read as one series."
+    caption: "One row per count"
+    columns:
+      - { key: "crackdown", label: "Crackdown", rowHeader: true, sortable: false }
+      - { key: "counter", label: "Counter", sortable: false }
+      - { key: "count", label: "Count", sortable: false }
+      - { key: "method", label: "Method", sortable: false }
+      - { key: "asof", label: "As of", sortable: false }
+    rows:
+      - { crackdown: "June 2009", counter: "No primary count found" }
+      - { crackdown: "November 2019", counter: "Amnesty International", count: "304 deaths", method: "Named cases, \"details released\"", asof: { value: "20 May 2020", sources: [6] } }
+      - { crackdown: "2022–23 (Woman, Life, Freedom)", counter: "UN fact-finding mission", count: "At least 551 protesters", method: "Confirmed minimum", asof: { value: "Early 2024", sources: [7] } }
+      - { crackdown: "Dec 2025 – Feb 2026", counter: "Government (Martyrs Foundation)", count: "3,117", method: "Official total", asof: { value: "21 Jan 2026", sources: [2] } }
+      - { crackdown: "Dec 2025 – Feb 2026", counter: "HRANA", count: "4,519 (9,049 under review)", method: "Confirmed minimum", asof: { value: "21 Jan 2026", sources: [2] } }
+      - { crackdown: "Dec 2025 – Feb 2026", counter: "HRANA", count: "6,126 (17,091 under review)", method: "Confirmed minimum", asof: { value: "27 Jan 2026", sources: [3] } }
+      - { crackdown: "Dec 2025 – Feb 2026", counter: "HRANA", count: "7,007 (11,744 under review)", method: "Confirmed minimum", asof: { value: "23 Feb 2026", sources: [1] } }
+      - { crackdown: "Dec 2025 – Feb 2026", counter: "Published names", count: "HRANA 4,555; government 3,038", method: "Named individuals", asof: { value: "26 Feb 2026", sources: [5] } }
+  - kind: "dataTable"
+    id: "arrests"
+    title: "Arrests after crackdowns and outside attacks"
+    description: "Arrests counted after the June 2025 war and during the January 2026 crackdown, by counter."
+    caption: "One row per count"
+    columns:
+      - { key: "period", label: "Period", rowHeader: true, sortable: false }
+      - { key: "counter", label: "Counter", sortable: false }
+      - { key: "arrests", label: "Arrests", sortable: false }
+      - { key: "asof", label: "As of", sortable: false }
+    rows:
+      - { period: "13 June – early Sept 2025, after the twelve-day war", counter: "Amnesty and Human Rights Watch", arrests: "Over 20,000", asof: { value: "3 Sep 2025", sources: [10] } }
+      - { period: "Same period", counter: "Iranian police (spokesperson)", arrests: "About 21,000", asof: { value: "12 Aug 2025", sources: [10] } }
+      - { period: "January 2026 protests", counter: "HRANA", arrests: "At least 41,880", asof: { value: "27 Jan 2026", sources: [3] } }
+      - { period: "January 2026 protests", counter: "Unnamed NGO, cited by the UN mission", arrests: "Over 50,000", asof: { value: "Mid-Feb 2026", sources: [4] } }
+      - { period: "28 Dec 2025 – 15 Feb 2026", counter: "HRANA", arrests: "53,777", asof: { value: "23 Feb 2026", sources: [1] } }
+  - kind: "comparison"
+    id: "amnesty-executions-2025"
+  - kind: "comparison"
+    id: "amnesty-executions-per-million-2025"
+  - kind: "comparison"
+    id: "iran-execution-counters"
+  - kind: "comparison"
+    id: "executions-per-president"
+  - kind: "comparison"
+    id: "freedom-house-2026"
+  - kind: "comparison"
+    id: "gamaan-preferred-system"
+  - kind: "comparison"
+    id: "gamaan-war-views"
+  - kind: "timeline"
+    id: "openings-and-reversals"
+    title: "Openings and reversals, 2000–2026"
+    description: "Dated moves toward and away from openness in Iran, as the sources report them."
+    categories:
+      - { id: "opening", label: "Opening" }
+      - { id: "reversal", label: "Reversal" }
+      - { id: "succession", label: "Succession" }
+    sources: [16]
+    events:
+      - { date: "2000-04", title: "Sixteen reformist publications closed in one week under President Khatami", category: "reversal", source: 17 }
+      - { date: "2004-01", title: "3,600 parliamentary candidates rejected, including 83 sitting members; about a thousand reinstated", category: "reversal", source: 18 }
+      - { date: "2019-11", title: "304 protesters killed under President Rouhani", category: "reversal", source: 6 }
+      - { date: "2024-07", title: "Pezeshkian, the field's one moderate, elected", category: "opening", source: 22 }
+      - { date: "2024-12", title: "Harsher hijab law shelved by the Supreme National Security Council", category: "opening", source: 13 }
+      - { date: "2025-05", title: "Speaker told in writing the hijab law \"should not be enacted for the time being\"", category: "opening", source: 14 }
+      - { date: "2025-12", title: "Organisers of a marathon where women ran unveiled arrested", category: "reversal", source: 7 }
+      - { date: "2025-12", endDate: "2026-02", title: "Protest crackdown: 7,007 deaths by HRANA's count", category: "reversal", significance: "major", source: 1 }
+      - { date: "2026-03-08", title: "Mojtaba Khamenei, the late Leader's son, named Leader", category: "succession", source: 15 }
 ---
 ## Observations {#iran-government-and-its-people--observations-presidential-turnout}
 
@@ -1254,7 +1338,7 @@ In 2024 the share was higher, six of "more than 80", but well-known figures such
 
 ### Parliament is vetted too, and a reformist parliament was purged in 2004 {#iran-government-and-its-people--majlis-vetting}
 
-In January 2004 the Guardian Council rejected 3,600 parliamentary candidates, including dozens of sitting members (table below). About a thousand were reinstated after a third of the Majlis resigned. [18](#source-iran-government-and-its-people-18)
+In January 2004 the Guardian Council rejected 3,600 parliamentary candidates, including dozens of sitting members (timeline below). About a thousand were reinstated after a third of the Majlis resigned. [18](#source-iran-government-and-its-people-18)
 
 In 2024 it barred a smaller share of sitting members who sought re-election. [19](#source-iran-government-and-its-people-19)
 
@@ -1384,21 +1468,6 @@ In GAMAAN's June 2026 online sample, about 13% chose the Islamic Republic, down 
 
 About 60% "felt satisfaction at the weakening of the Islamic Republic during the war", and only about 14% approved of its response to the January protests. [11](#source-iran-government-and-its-people-11)
 
-## Crackdown deaths, by counter and method {#iran-government-and-its-people--crackdown-deaths}
-
-Each count below comes from a different counter using a different method, so they cannot be read as one series.
-
-| Crackdown | Counter | Count | Method | As of |
-| --- | --- | --- | --- | --- |
-| June 2009 | No primary count found | — | — | — |
-| November 2019 | Amnesty International | 304 deaths | Named cases, "details released" | 20 May 2020 [6](#source-iran-government-and-its-people-6) |
-| 2022–23 (Woman, Life, Freedom) | UN fact-finding mission | At least 551 protesters | Confirmed minimum | Early 2024 [7](#source-iran-government-and-its-people-7) |
-| Dec 2025 – Feb 2026 | Government (Martyrs Foundation) | 3,117 | Official total | 21 Jan 2026 [2](#source-iran-government-and-its-people-2) |
-| Dec 2025 – Feb 2026 | HRANA | 4,519 (9,049 under review) | Confirmed minimum | 21 Jan 2026 [2](#source-iran-government-and-its-people-2) |
-| Dec 2025 – Feb 2026 | HRANA | 6,126 (17,091 under review) | Confirmed minimum | 27 Jan 2026 [3](#source-iran-government-and-its-people-3) |
-| Dec 2025 – Feb 2026 | HRANA | 7,007 (11,744 under review) | Confirmed minimum | 23 Feb 2026 [1](#source-iran-government-and-its-people-1) |
-| Dec 2025 – Feb 2026 | Published names | HRANA 4,555; government 3,038 | Named individuals | 26 Feb 2026 [5](#source-iran-government-and-its-people-5) |
-
 ## Observations {#iran-government-and-its-people--observations-crackdown-deaths}
 
 ### Each of the last three protest waves was put down with lethal force {#iran-government-and-its-people--crackdowns-2019-2022-2026}
@@ -1417,16 +1486,6 @@ HRANA's confirmed total rose by more than half in a month while thousands of cas
 
 Its published list names 4,555 people, against 3,038 on the government's list. [5](#source-iran-government-and-its-people-5)
 
-## Arrests after crackdowns and outside attacks {#iran-government-and-its-people--arrests}
-
-| Period | Counter | Arrests | As of |
-| --- | --- | --- | --- |
-| 13 June – early Sept 2025, after the twelve-day war | Amnesty and Human Rights Watch | Over 20,000 | 3 Sep 2025 [10](#source-iran-government-and-its-people-10) |
-| Same period | Iranian police (spokesperson) | About 21,000 | 12 Aug 2025 [10](#source-iran-government-and-its-people-10) |
-| January 2026 protests | HRANA | At least 41,880 | 27 Jan 2026 [3](#source-iran-government-and-its-people-3) |
-| January 2026 protests | Unnamed NGO, cited by the UN mission | Over 50,000 | Mid-Feb 2026 [4](#source-iran-government-and-its-people-4) |
-| 28 Dec 2025 – 15 Feb 2026 | HRANA | 53,777 | 23 Feb 2026 [1](#source-iran-government-and-its-people-1) |
-
 ## Observations {#iran-government-and-its-people--observations-arrests}
 
 ### Repression widened after the June 2025 war {#iran-government-and-its-people--arrests-after-june-2025}
@@ -1436,20 +1495,6 @@ In the three months after the June 2025 war, Amnesty and Human Rights Watch coun
 ### The January 2026 crackdown brought more than 50,000 arrests {#iran-government-and-its-people--arrests-january-2026}
 
 HRANA counted 53,777 arrests during the crackdown, including hundreds of children and school students. [1](#source-iran-government-and-its-people-1)
-
-## Openings and reversals, 2000–2026 {#iran-government-and-its-people--openings-and-reversals}
-
-| Date | Event | Direction | Source |
-| --- | --- | --- | --- |
-| Apr 2000 | Sixteen reformist publications closed in one week under President Khatami | Reversal | [17](#source-iran-government-and-its-people-17) |
-| Jan 2004 | 3,600 parliamentary candidates rejected, including 83 sitting members; about a thousand reinstated | Reversal | [18](#source-iran-government-and-its-people-18) |
-| Nov 2019 | 304 protesters killed under President Rouhani | Reversal | [6](#source-iran-government-and-its-people-6) |
-| Jul 2024 | Pezeshkian, the field's one moderate, elected | Opening | [22](#source-iran-government-and-its-people-22) |
-| Dec 2024 | Harsher hijab law shelved by the Supreme National Security Council | Opening | [13](#source-iran-government-and-its-people-13) |
-| May 2025 | Speaker told in writing the hijab law "should not be enacted for the time being" | Opening | [14](#source-iran-government-and-its-people-14) |
-| Dec 2025 | Organisers of a marathon where women ran unveiled arrested | Reversal | [7](#source-iran-government-and-its-people-7) |
-| Dec 2025 – Feb 2026 | Protest crackdown: 7,007 deaths by HRANA's count | Reversal | [1](#source-iran-government-and-its-people-1) |
-| 8 Mar 2026 | Mojtaba Khamenei, the late Leader's son, named Leader | Succession | [15](#source-iran-government-and-its-people-15) [16](#source-iran-government-and-its-people-16) |
 
 ## Observations {#iran-government-and-its-people--observations-openings-and-reversals}
 
@@ -1461,7 +1506,7 @@ What was halted is the new law's enactment. The existing hijab rules stayed, and
 
 ### Earlier openings were reversed while reformists held the presidency {#iran-government-and-its-people--earlier-openings-reversed}
 
-Under Khatami, hardliners closed sixteen reformist publications in a week in 2000, and in 2004 the Guardian Council purged reformist candidates for parliament (table). [17](#source-iran-government-and-its-people-17) [18](#source-iran-government-and-its-people-18) The November 2019 killings came under Rouhani. [6](#source-iran-government-and-its-people-6)
+Under Khatami, hardliners closed sixteen reformist publications in a week in 2000, and in 2004 the Guardian Council purged reformist candidates for parliament (timeline). [17](#source-iran-government-and-its-people-17) [18](#source-iran-government-and-its-people-18) The November 2019 killings came under Rouhani. [6](#source-iran-government-and-its-people-6)
 
 ### The new Leader is the old Leader's son {#iran-government-and-its-people--hereditary-succession}
 

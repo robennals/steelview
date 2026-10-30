@@ -1,13 +1,10 @@
 ---
 title: 'Decisions, Law and Diplomacy: Congress, the President, Ceasefires and Negotiations, 2024–2026'
-claimSources: [6, 7, 10, 18, 28, 30]
+claimSources: [4, 7, 10, 18, 28]
 claim: >-
-  This report covers how the US war with Iran was decided and contested, as of
-  29 October 2026: Congress's votes, the President's War Powers letters, polls,
-  the ceasefire and talks. Both chambers adopted one resolution to end the war,
-  of doubtful legal force; the administration declared hostilities over, then
-  reported new strikes. Most Americans disapprove, while most Republicans
-  approve in falling numbers.
+  Both chambers of Congress adopted a resolution to end the war, of doubtful
+  legal force, while the administration declared hostilities over and then
+  reported new strikes, and most Americans disapprove.
 status: well-supported
 sources:
   # 1
@@ -1041,6 +1038,130 @@ dataStillNeeded:
     why: 'Pew reports no independents; Gallup and Quinnipiac each asked once. A repeated question would show whether opposition among independents and Republican support have moved since June.'
   - measure: 'Senate roll call 207 (23 July 2026) member record, and any votes after Congress returns from the midterm recess'
     why: 'Vote 207 has no archived member file, so its party split is missing; the vote series stops at 24 September.'
+figures:
+  - kind: "series"
+  - kind: "series"
+    id: "senate-votes-series"
+  - kind: "series"
+    id: "pew-approval-series"
+  - kind: "comparison"
+    id: "gallup-june-by-party"
+  - kind: "comparison"
+    id: "quinnipiac-march-by-party"
+  - kind: "comparison"
+    id: "quinnipiac-congress-approval"
+  - kind: "comparison"
+    id: "war-powers-reports-1975-2017"
+  - kind: "quoteComparison"
+    id: "statements"
+    question: "What has the President said about war and about Iran?"
+    description: "Four statements, from the 2024 campaign to October 2026."
+    quotes:
+      - { text: "I was the first president in modern times to start no new wars. … Iran is very close to having a nuclear weapon, which would have never happened.", speaker: "Donald Trump", role: "Candidate", context: "Convention acceptance speech", date: "2024-07-18", source: 32 }
+      - { text: "They said: 'He will start a war.' I'm not going to start a war. I'm going to stop wars.", speaker: "Donald Trump", role: "President-elect", context: "Election-night remarks", date: "2024-11-06", source: 33 }
+      - { text: "I acted pursuant to my constitutional authority as Commander in Chief … in collective self-defense of our regional allies, including Israel.", speaker: "Donald Trump", role: "President", context: "48-hour War Powers report", date: "2026-03-02", source: 12 }
+      - { text: "will not be attacking Iran at any time prior to the Midterm Elections … having productive discussions with the Islamic Republic of Iran", speaker: "Donald Trump", role: "President", context: "Social media post", date: "2026-10-08", source: 42 }
+  - kind: "timeline"
+    id: "war-powers-letters"
+    title: "War Powers letters, 2026"
+    description: "Each letter the President sent Congress under the War Powers Resolution in 2026, by date. Letters from June on report new military action."
+    categories:
+      - { id: "action", label: "Reports military action" }
+      - { id: "ended", label: "Says hostilities have ended" }
+    sources: [13]
+    events:
+      - { date: "2026-03-02", title: "Strikes on Iran from 28 Feb", description: "Article II; \"consistent with\" the Act.", category: "action", source: 12 }
+      - { date: "2026-05-01", title: "Hostilities that began 28 Feb \"have terminated\"", description: "No exchange of fire since 7 Apr. Quoted by Lawfare and Goldsmith; letter not found.", category: "ended", significance: "major", source: 10 }
+      - { date: "2026-06-12", title: "Iran downed a US Apache (8 Jun); US strikes from 9 Jun", description: "House Doc 119-162", category: "action", source: 14 }
+      - { date: "2026-06-29", title: "US strikes on 26 and 28 Jun; MoU signed 17 Jun", description: "House Doc 119-167", category: "action", source: 15 }
+      - { date: "2026-07-10", title: "US strikes from 7 Jul", description: "House Doc 119-169", category: "action", source: 16 }
+      - { date: "2026-08-03", title: "US strikes in Iraq from 27 Jul on Iran-directed militias", description: "House Doc 119-183", category: "action", source: 17 }
+      - { date: "2026-09-03", title: "US strikes on Iran from 1 Sep, including state oil tankers", description: "House Doc 119-193", category: "action", source: 18 }
+  - kind: "pullQuote"
+    id: "constitution"
+    description: "The same text makes the President \"Commander in Chief\"."
+    quote: { text: "The Congress shall have Power … To declare War", speaker: "The Constitution of the United States", context: "Article I, Section 8", source: 51 }
+  - kind: "dataTable"
+    id: "earlier-votes"
+    title: "Earlier uses of force without authorisation, and Congress's votes, 2011–2025"
+    description: "The main roll calls found on earlier operations, and the count of all uses of force since 1798."
+    caption: "One row per vote or count"
+    columns:
+      - { key: "operation", label: "Operation", rowHeader: true, sortable: false }
+      - { key: "vote", label: "Vote", sortable: false }
+      - { key: "result", label: "Result", sortable: false }
+    rows:
+      - { operation: "Libya, 2011", vote: "House: authorise the operation (24 Jun 2011)", result: { value: "Failed, 123–295", sources: [20] } }
+      - { operation: "Libya, 2011", vote: "House: limit funding (24 Jun 2011)", result: { value: "Failed, 180–238", sources: [21] } }
+      - { operation: "Yemen (Saudi-led war), 2019", vote: "S.J.Res.7: Senate 54–46, House 247–175", result: { value: "Vetoed; override failed 53–45 (2 May 2019)", sources: [22, 23] } }
+      - { operation: "Iran, 2020", vote: "S.J.Res.68: Senate 55–45, House 227–186", result: { value: "Vetoed; override failed 49–44 (7 May 2020)", sources: [24, 25] } }
+      - { operation: "Iran, 2025", vote: "S.J.Res.59: Senate (27 Jun 2025)", result: { value: "Failed, 47–53", sources: [26] } }
+      - { operation: "All uses of force, 1798–2023", result: { value: "\"Hundreds of instances\"; 11 declarations of war covering five wars", sources: [19] } }
+  - kind: "timeline"
+    id: "ceasefire-incidents"
+    title: "The ceasefire record, April–July 2026"
+    description: "Attacks, strikes and agreements during the ceasefire, from the President's letters and ISW/CTP. No Iranian or neutral record was found."
+    categories:
+      - { id: "iran", label: "Iran acted" }
+      - { id: "us", label: "US acted" }
+      - { id: "both", label: "Both" }
+    sources: [50]
+    events:
+      - { date: "2026-04-07", endDate: "2026-04-08", title: "Two-week ceasefire ordered, then extended", category: "both", significance: "major", source: 14 }
+      - { date: "2026-06-08", title: "Engaged a US Army Apache, \"forcing its crash landing\"", category: "iran", source: 14 }
+      - { date: "2026-06-09", title: "Strikes on missile sites, mining, air defences, command", category: "us", source: 14 }
+      - { date: "2026-06-17", title: "Memorandum of understanding signed", category: "both", significance: "major", source: 15 }
+      - { date: "2026-06-25", endDate: "2026-06-27", title: "Attacks on neutral-flagged vessels in Hormuz, on 25 and 27 Jun", category: "iran", source: 15 }
+      - { date: "2026-06-26", endDate: "2026-06-28", title: "Strikes on drone, missile and command sites, on 26 and 28 Jun", category: "us", source: 15 }
+      - { date: "2026-07-06", endDate: "2026-07-07", title: "Attacks on several neutral-flagged vessels", category: "iran", source: 16 }
+      - { date: "2026-07-07", title: "Strikes resume", category: "us", source: 16 }
+      - { date: "2026-07-11", endDate: "2026-07-12", title: "IRGC Navy announced the strait closed and struck two vessels", category: "iran", source: 34 }
+      - { date: "2026-07-12", title: "Struck \"dozens of Iranian military targets\"", category: "us", source: 34 }
+      - { date: "2026-07-14", title: "Blockade reimposed", category: "us", source: 34 }
+  - kind: "timeline"
+    id: "negotiations"
+    title: "Negotiations and agreements, 2016–2026"
+    description: "The talks and agreements between the US and Iran, from the 2015 deal to the latest proposals."
+    categories:
+      - { id: "talks", label: "Talks and proposals" }
+      - { id: "agreement", label: "Agreement" }
+      - { id: "strikes", label: "Strikes" }
+    sources: [15]
+    events:
+      - { date: "2016-01-16", title: "Implementation Day of the 2015 nuclear deal (JCPOA)", description: "Enrichment capped at 3.67 percent for 15 years, stockpile under 300 kg.", category: "agreement", source: 40 }
+      - { date: "2025-04", endDate: "2025-05", title: "Five rounds of US–Iran talks", description: "The sixth (15 Jun) suspended after Israel's attack. Wikipedia (tertiary).", category: "talks", source: 41 }
+      - { date: "2026-02-17", title: "Indirect US–Iran talks in Geneva on 17 and 26 Feb", description: "Attended by the IAEA Director General.", category: "talks", source: 38 }
+      - { date: "2026-02-28", title: "US and Israeli strikes; IAEA stops verification in Iran", category: "strikes", significance: "major", source: 38 }
+      - { date: "2026-06-17", title: "Memorandum: \"Iran reaffirms that it shall not procure or develop nuclear weapons\"", description: "Also safe passage for shipping.", category: "agreement", significance: "major", source: 39 }
+      - { date: "2026-09", title: "President rejects Iran's proposal to reopen Hormuz within seven days on conditions", category: "talks", source: 42 }
+      - { date: "2026-10-26", title: "Qatari plan reported: Hormuz reopened for blockade lifted, over five days", description: "Dispute over sequencing. ISW/CTP citing the NYT.", category: "talks", source: 47 }
+      - { date: "2026-10-28", title: "Iran's foreign minister: Tehran \"continues to give diplomacy a chance to succeed\"", category: "talks", source: 49 }
+  - kind: "quoteComparison"
+    id: "allies"
+    question: "Where have allies and regional governments stood on the war?"
+    description: "The statements found, not a complete record of allied positions."
+    note: "UN Security Council resolution 2817 (11 March 2026) could not be checked at source, because UN sites refused the fetch. On 26 October 2026 Oman's foreign minister also called for a Gulf non-aggression pact with Iran (ISW/CTP)."
+    quotes:
+      - { text: "We did not participate in these strikes … We condemn Iranian attacks on countries in the region", speaker: "UK, France and Germany", context: "Joint statement by the E3 leaders", date: "2026-02-28", source: 36 }
+      - { text: "launched without United Nations authorisation", speaker: "Badr al Busaidi", role: "Oman's foreign minister", date: "2026-07-14", source: 37 }
+      - { text: "exercise wisdom and pursue political solutions", speaker: "UAE foreign ministry", date: "2026-10-28", source: 49 }
+  - kind: "timeline"
+    id: "latest"
+    title: "The latest events, July–October 2026"
+    description: "Assessments and reports since the ceasefire ended. Most come from one source, named on each entry, and are not official findings."
+    categories:
+      - { id: "rearming", label: "Iran's forces, as assessed" }
+      - { id: "attacks", label: "Attacks" }
+      - { id: "us", label: "US plans and pledges" }
+    events:
+      - { date: "2026-07-13", title: "ISW/CTP: Iran \"continuously made efforts to reconstitute its ballistic missile and drone programs\"", description: "From the April ceasefire on.", category: "rearming", source: 34 }
+      - { date: "2026-10-01", endDate: "2026-10-14", title: "23 attacks on vessels near Hormuz", description: "Officials told Bloomberg, via ISW/CTP.", category: "attacks", source: 43 }
+      - { date: "2026-10-08", title: "The President pledges no attack on Iran before the midterms", category: "us", source: 42 }
+      - { date: "2026-10-19", title: "New defence minister plans to rebuild \"in mountains and security structures\"", description: "ISW/CTP reads his appointment as prioritising missiles.", category: "rearming", source: 35 }
+      - { date: "2026-10-21", title: "NYT reports plans for \"a short and intensive operation\" after 3 November", category: "us", source: 44 }
+      - { date: "2026-10-23", title: "Intelligence chief warns of Iran's \"advanced stages\" of planning attacks on US targets", description: "As reported by ISW/CTP; the memo itself could not be fetched.", category: "rearming", source: 45 }
+      - { date: "2026-10-24", title: "Houthis fire missiles and drones at Saudi Arabia", description: "ISW/CTP.", category: "attacks", source: 46 }
+      - { date: "2026-10-28", title: "AP: allies told to prepare for renewed action and Iranian retaliation", description: "AP's diplomats say the President has made no final decision.", category: "us", source: 49 }
 ---
 ## Observations {#decisions-law-and-diplomacy--observations-house-votes}
 
@@ -1118,15 +1239,6 @@ Of the War Powers reports filed from 1975 to March 2017, CRS finds only one cite
 
 Each 2026 letter that could be read cites the President's Article II authority and is filed "consistent with" the Act. [12](#source-decisions-law-and-diplomacy-12) [18](#source-decisions-law-and-diplomacy-18)
 
-## What the president said {#decisions-law-and-diplomacy--statements}
-
-| Date | Occasion | Words |
-| --- | --- | --- |
-| 18 Jul 2024 | Convention acceptance speech | "I was the first president in modern times to start no new wars." "Iran is very close to having a nuclear weapon, which would have never happened." [32](#source-decisions-law-and-diplomacy-32) |
-| 6 Nov 2024 | Election-night remarks | "They said: 'He will start a war.' I'm not going to start a war. I'm going to stop wars." [33](#source-decisions-law-and-diplomacy-33) |
-| 2 Mar 2026 | 48-hour War Powers report | "I acted pursuant to my constitutional authority as Commander in Chief"; "in collective self-defense of our regional allies, including Israel." [12](#source-decisions-law-and-diplomacy-12) |
-| 8 Oct 2026 | Social media post | The US "will not be attacking Iran at any time prior to the Midterm Elections"; his team is "having productive discussions with the Islamic Republic of Iran." [42](#source-decisions-law-and-diplomacy-42) |
-
 ## Observations {#decisions-law-and-diplomacy--observations-statements}
 
 ### The 2024 campaign promised to stop wars {#decisions-law-and-diplomacy--campaign-said-stop-wars}
@@ -1137,40 +1249,17 @@ On election night 2024 the President said "I'm not going to start a war. I'm goi
 
 In his 2024 convention speech he said Iran was "very close to having a nuclear weapon" and blamed his predecessor. [32](#source-decisions-law-and-diplomacy-32) Both lines were said by the same candidate in the same year.
 
-## War Powers letters, 2026 {#decisions-law-and-diplomacy--war-powers-letters}
-
-| Letter dated | What it reports | Source |
-| --- | --- | --- |
-| 2 Mar | Strikes on Iran from 28 Feb; Article II; "consistent with" the Act | White House letter [12](#source-decisions-law-and-diplomacy-12) |
-| 1 May | Hostilities that began 28 Feb "have terminated"; no exchange of fire since 7 Apr | Quoted by Lawfare and Goldsmith; letter not found [10](#source-decisions-law-and-diplomacy-10) [13](#source-decisions-law-and-diplomacy-13) |
-| 12 Jun | Iran downed a US Apache (8 Jun); US strikes from 9 Jun | House Doc 119-162 [14](#source-decisions-law-and-diplomacy-14) |
-| 29 Jun | US strikes on 26 and 28 Jun; MoU signed 17 Jun | House Doc 119-167 [15](#source-decisions-law-and-diplomacy-15) |
-| 10 Jul | US strikes from 7 Jul | House Doc 119-169 [16](#source-decisions-law-and-diplomacy-16) |
-| 3 Aug | US strikes in Iraq from 27 Jul on Iran-directed militias | House Doc 119-183 [17](#source-decisions-law-and-diplomacy-17) |
-| 3 Sep | US strikes on Iran from 1 Sep, including state oil tankers | House Doc 119-193 [18](#source-decisions-law-and-diplomacy-18) |
-
 ## Observations {#decisions-law-and-diplomacy--observations-war-powers-letters}
 
 ### Hostilities were declared over, then new strikes were reported {#decisions-law-and-diplomacy--terminated-letter-then-new-strikes}
 
-The 1 May letter said hostilities "have terminated" because there had been no exchange of fire since the ceasefire. [10](#source-decisions-law-and-diplomacy-10) The blockade that began in April was still running, and from June the administration filed at least five letters reporting new military action (table). [14](#source-decisions-law-and-diplomacy-14) [18](#source-decisions-law-and-diplomacy-18)
+The 1 May letter said hostilities "have terminated" because there had been no exchange of fire since the ceasefire. [10](#source-decisions-law-and-diplomacy-10) The blockade that began in April was still running, and from June the administration filed at least five letters reporting new military action (timeline). [14](#source-decisions-law-and-diplomacy-14) [18](#source-decisions-law-and-diplomacy-18)
 
 Goldsmith calls the "no exchange of fire" claim "highly misleading". [13](#source-decisions-law-and-diplomacy-13) The 1 May letter is known only through these quotations.
 
 ### Each new letter treats the strikes as a separate action {#decisions-law-and-diplomacy--separate-actions}
 
 Each later letter reports military action "commenced" on a new date, in response to a named Iranian or militia attack. [14](#source-decisions-law-and-diplomacy-14) [16](#source-decisions-law-and-diplomacy-16) Lawfare notes the tension between this and treating the blockade as anything but a continuation of the March operation. [10](#source-decisions-law-and-diplomacy-10)
-
-## Earlier uses of force without authorisation, and Congress's votes, 2011–2025 {#decisions-law-and-diplomacy--earlier-votes}
-
-| Operation | Vote | Result | Source |
-| --- | --- | --- | --- |
-| Libya, 2011 | House: authorise the operation (24 Jun 2011) | Failed, 123–295 | [20](#source-decisions-law-and-diplomacy-20) |
-| Libya, 2011 | House: limit funding (24 Jun 2011) | Failed, 180–238 | [21](#source-decisions-law-and-diplomacy-21) |
-| Yemen (Saudi-led war), 2019 | S.J.Res.7: Senate 54–46, House 247–175 | Vetoed; override failed 53–45 (2 May 2019) | [23](#source-decisions-law-and-diplomacy-23) [22](#source-decisions-law-and-diplomacy-22) |
-| Iran, 2020 | S.J.Res.68: Senate 55–45, House 227–186 | Vetoed; override failed 49–44 (7 May 2020) | [25](#source-decisions-law-and-diplomacy-25) [24](#source-decisions-law-and-diplomacy-24) |
-| Iran, 2025 | S.J.Res.59: Senate (27 Jun 2025) | Failed, 47–53 | [26](#source-decisions-law-and-diplomacy-26) |
-| All uses of force, 1798–2023 | — | "Hundreds of instances"; 11 declarations of war covering five wars | [19](#source-decisions-law-and-diplomacy-19) |
 
 ## Observations {#decisions-law-and-diplomacy--observations-earlier-votes}
 
@@ -1190,52 +1279,17 @@ Joint resolutions on Yemen in 2019 and Iran in 2020 passed both chambers and wer
 
 Kriner's study, as described on its publisher's page, finds that Congress "materially shapes the initiation, scope, and duration of major military actions", and that the party balance in Congress helps explain how long conflicts last. [27](#source-decisions-law-and-diplomacy-27) The publisher's page gives no effect sizes.
 
-## The ceasefire record, April–July 2026 {#decisions-law-and-diplomacy--ceasefire-incidents}
-
-| Date | Who acted | What happened | Source |
-| --- | --- | --- | --- |
-| 7–8 Apr | Both | Two-week ceasefire ordered, then extended | US letter [14](#source-decisions-law-and-diplomacy-14) |
-| 8 Jun | Iran | Engaged a US Army Apache, "forcing its crash landing" | US letter [14](#source-decisions-law-and-diplomacy-14) |
-| 9 Jun | US | Strikes on missile sites, mining, air defences, command | US letter [14](#source-decisions-law-and-diplomacy-14) |
-| 17 Jun | Both | Memorandum of understanding signed | US letter [15](#source-decisions-law-and-diplomacy-15) |
-| 25 and 27 Jun | Iran | Attacks on neutral-flagged vessels in Hormuz | US letter [15](#source-decisions-law-and-diplomacy-15) |
-| 26 and 28 Jun | US | Strikes on drone, missile and command sites | US letter [15](#source-decisions-law-and-diplomacy-15) |
-| 6–7 Jul | Iran | Attacks on several neutral-flagged vessels | US letter [16](#source-decisions-law-and-diplomacy-16) |
-| 7 Jul | US | Strikes resume | US letter [16](#source-decisions-law-and-diplomacy-16) |
-| 11–12 Jul | Iran | IRGC Navy announced the strait closed and struck two vessels | ISW/CTP [34](#source-decisions-law-and-diplomacy-34) |
-| 12 Jul | US | Struck "dozens of Iranian military targets" | ISW/CTP [34](#source-decisions-law-and-diplomacy-34) |
-| 14 Jul | US | Blockade reimposed | ISW/CTP; CENTCOM [34](#source-decisions-law-and-diplomacy-34) [50](#source-decisions-law-and-diplomacy-50) |
-
 ## Observations {#decisions-law-and-diplomacy--observations-ceasefire-incidents}
 
 ### Both sides used force during the ceasefire {#decisions-law-and-diplomacy--both-sides-fired}
 
-The President's own letters record Iranian attacks and US strikes during the ceasefire, before and after the memorandum (table). [14](#source-decisions-law-and-diplomacy-14) [15](#source-decisions-law-and-diplomacy-15) In each letter the US strikes answer a named Iranian attack.
+The President's own letters record Iranian attacks and US strikes during the ceasefire, before and after the memorandum (timeline). [14](#source-decisions-law-and-diplomacy-14) [15](#source-decisions-law-and-diplomacy-15) In each letter the US strikes answer a named Iranian attack.
 
 Every entry comes from the US government or ISW/CTP. No Iranian or neutral record was found to check the sequence.
 
 ### The memorandum broke down within three weeks {#decisions-law-and-diplomacy--mou-broke-down}
 
 Within nine days of the signing, the President reported Iranian attacks on shipping and US strikes in reply. [15](#source-decisions-law-and-diplomacy-15) Strikes resumed from early July, and ISW/CTP judged that they and the renewed blockade "mark the end of the ceasefire". [16](#source-decisions-law-and-diplomacy-16) [34](#source-decisions-law-and-diplomacy-34)
-
-### Iran worked to rebuild missiles and drones, in ISW/CTP's assessment {#decisions-law-and-diplomacy--iran-reconstituting-missiles}
-
-ISW/CTP assesses that Iran "continuously made efforts to reconstitute its ballistic missile and drone programs" from the April ceasefire. [34](#source-decisions-law-and-diplomacy-34) In October it read the new defence minister's appointment, and his plan to rebuild "in mountains and security structures", as prioritising missiles. [35](#source-decisions-law-and-diplomacy-35)
-
-These are assessments by ISW and AEI's Critical Threats Project, not imagery or official findings.
-
-## Negotiations and agreements {#decisions-law-and-diplomacy--negotiations}
-
-| Date | Event | Source |
-| --- | --- | --- |
-| 16 Jan 2016 | Implementation Day of the 2015 nuclear deal (JCPOA): enrichment capped at 3.67 percent for 15 years, stockpile under 300 kg | Arms Control Association [40](#source-decisions-law-and-diplomacy-40) |
-| Apr–May 2025 | Five rounds of US–Iran talks; the sixth (15 Jun) suspended after Israel's attack | Wikipedia (tertiary) [41](#source-decisions-law-and-diplomacy-41) |
-| 17 and 26 Feb 2026 | Indirect US–Iran talks in Geneva, attended by the IAEA Director General | IAEA [38](#source-decisions-law-and-diplomacy-38) |
-| 28 Feb 2026 | US and Israeli strikes; IAEA stops verification in Iran | IAEA [38](#source-decisions-law-and-diplomacy-38) |
-| 17 Jun 2026 | Memorandum: "Iran reaffirms that it shall not procure or develop nuclear weapons"; safe passage for shipping | CRS; US letter [39](#source-decisions-law-and-diplomacy-39) [15](#source-decisions-law-and-diplomacy-15) |
-| Late Sep 2026 | President rejects Iran's proposal to reopen Hormuz within seven days on conditions | AP [42](#source-decisions-law-and-diplomacy-42) |
-| 26 Oct 2026 | Qatari plan reported: Hormuz reopened for blockade lifted, over five days; dispute over sequencing | ISW/CTP citing the NYT [47](#source-decisions-law-and-diplomacy-47) |
-| 28 Oct 2026 | Iran's foreign minister: Tehran "continues to give diplomacy a chance to succeed" | AP [49](#source-decisions-law-and-diplomacy-49) |
 
 ## Observations {#decisions-law-and-diplomacy--observations-negotiations}
 
@@ -1251,16 +1305,6 @@ The June memorandum states that "Iran reaffirms that it shall not procure or dev
 
 The President's pledge spoke of "productive discussions", and in late October Qatar, Pakistan, Saudi Arabia and Turkey were pressing a deal. [42](#source-decisions-law-and-diplomacy-42) [47](#source-decisions-law-and-diplomacy-47) Regional sources told ISW/CTP the Tehran meeting "made no progress on any issue". [48](#source-decisions-law-and-diplomacy-48)
 
-## Allies and the UN {#decisions-law-and-diplomacy--allies}
-
-| Date | Who | Position | Source |
-| --- | --- | --- | --- |
-| 28 Feb 2026 | UK, France and Germany (E3 leaders) | "We did not participate in these strikes"; "We condemn Iranian attacks on countries in the region" | UK Government [36](#source-decisions-law-and-diplomacy-36) |
-| 11 Mar 2026 | UN Security Council, resolution 2817 | Not checked at source (UN sites refused the fetch) | — |
-| 14 Jul 2026 | Oman's foreign minister | The war was "launched without United Nations authorisation" | Oman foreign ministry [37](#source-decisions-law-and-diplomacy-37) |
-| 26 Oct 2026 | Oman's foreign minister | Called for a Gulf non-aggression pact with Iran | ISW/CTP [48](#source-decisions-law-and-diplomacy-48) |
-| 28 Oct 2026 | UAE foreign ministry | Urged the sides to "exercise wisdom and pursue political solutions" | AP [49](#source-decisions-law-and-diplomacy-49) |
-
 ## Observations {#decisions-law-and-diplomacy--observations-allies}
 
 ### Key European allies did not join the strikes {#decisions-law-and-diplomacy--key-allies-did-not-join}
@@ -1272,6 +1316,12 @@ The British, French and German leaders said they "did not participate", while co
 Oman's foreign minister describes the war as "a catastrophe" launched "without United Nations authorisation". [37](#source-decisions-law-and-diplomacy-37) This is his statement; no UN legal text was checked, and resolution 2817 could not be fetched.
 
 ## Observations {#decisions-law-and-diplomacy--observations-latest}
+
+### Iran worked to rebuild missiles and drones, in ISW/CTP's assessment {#decisions-law-and-diplomacy--iran-reconstituting-missiles}
+
+ISW/CTP assesses that Iran "continuously made efforts to reconstitute its ballistic missile and drone programs" from the April ceasefire. [34](#source-decisions-law-and-diplomacy-34) In October it read the new defence minister's appointment, and his plan to rebuild "in mountains and security structures", as prioritising missiles. [35](#source-decisions-law-and-diplomacy-35)
+
+These are assessments by ISW and AEI's Critical Threats Project, not imagery or official findings.
 
 ### A new round of strikes is reported to be planned after the midterms {#decisions-law-and-diplomacy--strikes-planned-after-midterms}
 
