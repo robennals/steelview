@@ -59,7 +59,7 @@ export function PreviewCarousel({ name, labels, children }: { name: string; labe
               <button type="button" key={i} className="sv-carousel__dot" aria-label={`Chart ${i + 1}: ${label}`} aria-current={i === index || undefined} onClick={() => go(i)} />
             ))}
           </div>
-          <p className="sv-carousel__count" aria-live="polite">{index + 1} / {slides.length} · {labels[index]}</p>
+          <p className="sv-carousel__count" aria-live="polite">{index + 1} / {slides.length}<span className="sv-carousel__count-label"> · {labels[index]}</span></p>
           <button type="button" className="sv-carousel__step" aria-label="Next chart" onClick={() => go(index + 1)}>›</button>
         </div>
       )}

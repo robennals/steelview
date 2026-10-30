@@ -429,7 +429,11 @@ function Reading({
 
   const plots = (shown?: FocusWindow) => (
     <div className="sv-chart__plot">
-      {preview ? <Plot series={series} reading={reading} variant="preview" descriptionId={descriptionId} /> : <>
+      {/* A preview is short and wide on a desktop slide, and drawn at the narrow size on a phone. */}
+      {preview ? <>
+        <Plot series={series} reading={reading} variant="preview" descriptionId={descriptionId} />
+        <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} />
+      </> : <>
         <Plot series={series} reading={reading} variant="narrow" descriptionId={descriptionId} window={shown} />
         <Plot series={series} reading={reading} variant="wide" descriptionId={descriptionId} window={shown} />
       </>}
