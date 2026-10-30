@@ -550,7 +550,7 @@ export function stripEvents(series: Pick<Series, 'events'>, factId: string, sour
   });
 }
 
-export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, panel }: {
+export function SeriesChart({ factId, chartId = 'series', series, sourceOffset = 0, observations = {}, sources = [], preview, onlyReading, panel, notes }: {
   factId: string;
   chartId?: string;
   series: Series;
@@ -562,6 +562,8 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   onlyReading?: string;
   /** Drawn in a data panel: filling its height, with its source credit linking to the source itself. */
   panel?: boolean;
+  /** Further notes for a data panel to keep with its description. */
+  notes?: ReactNode;
 }) {
   const events = stripEvents(series, factId, sources, panel);
   const readings = preview
@@ -583,6 +585,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         <p className="sv-chart__note">{reading.note}</p>
       </section>
     ))}
+    {notes}
   </>;
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>

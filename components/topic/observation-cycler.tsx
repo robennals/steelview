@@ -21,23 +21,25 @@ export function ObservationCycler({ observations }: ObservationCyclerProps) {
   const many = observations.length > 1;
   const go = (to: number) => setIndex((to + observations.length) % observations.length);
 
+  const controls = many && enhanced && (
+    <div className="sv-observe__controls">
+      <button type="button" className="sv-observe__step" aria-label="Previous observation" onClick={() => go(index - 1)}>‹</button>
+      <p className="sv-observe__count">{index + 1} of {observations.length}</p>
+      <button type="button" className="sv-observe__step" aria-label="Next observation" onClick={() => go(index + 1)}>›</button>
+    </div>
+  );
+
   return (
-    <div className="sv-observe">
-      {many && enhanced && (
-        <div className="sv-observe__controls">
-          <button type="button" className="sv-observe__step" aria-label="Previous observation" onClick={() => go(index - 1)}>‹</button>
-          <p className="sv-observe__count">Observation {index + 1} of {observations.length}</p>
-          <button type="button" className="sv-observe__step" aria-label="Next observation" onClick={() => go(index + 1)}>›</button>
-        </div>
-      )}
-      <div aria-live={many && enhanced ? 'polite' : undefined}>
-        {observations.map((observation, i) => (
-          <div key={i} className="sv-observe__item" data-observation={observation.id} hidden={enhanced && i !== index}>
+    <div className="sv-observe" aria-live={many && enhanced ? 'polite' : undefined}>
+      {observations.map((observation, i) => (
+        <div key={i} className="sv-observe__item" data-observation={observation.id} hidden={enhanced && i !== index}>
+          <div className="sv-observe__head">
+            {i === index && controls}
             <h4 className="sv-observe__heading">{observation.heading}</h4>
-            <Prose html={observation.html} className="sv-walk__prose" />
           </div>
-        ))}
-      </div>
+          <Prose html={observation.html} className="sv-walk__prose" />
+        </div>
+      ))}
     </div>
   );
 }
