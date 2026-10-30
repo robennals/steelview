@@ -2206,6 +2206,12 @@
   .sv-walk__next:hover:not(:disabled) { background: var(--accent); }
   .sv-walk__next:disabled { background: var(--paper-sunk); color: var(--ink-4); cursor: default; }
 
+  /* Beside the outline, previous/next buttons and a step count would only
+     repeat it, so they appear only where it is hidden. */
+  @media (width > 64rem) {
+    .sv-walk__controls { display: none; }
+  }
+
   /* Narrower, the outline gives way to the step, and the chart goes under its prose. */
   @media (max-width: 64rem) {
     .sv-walk { grid-template-columns: minmax(0, 1fr); }

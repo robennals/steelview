@@ -9,9 +9,10 @@ import { useCarousel } from '@/components/home/use-carousel';
  *
  * Like the home page carousel, every step is server-rendered into a
  * scroll-snapped strip, so without JavaScript each is still reachable by
- * scrolling. Script adds the clickable outline, previous/next buttons and
- * arrow keys. The outline is the argument in brief: read down it, the headings
- * add up to the viewpoint's title.
+ * scrolling. Script adds the clickable outline and arrow keys, and, where
+ * the outline is hidden on a narrow screen, previous/next buttons. The
+ * outline is the argument in brief: read down it, the headings add up to the
+ * viewpoint's title.
  */
 export function Walkthrough({ name, headings, children }: { name: string; headings: string[]; children: ReactNode }) {
   const steps = Children.toArray(children);
@@ -46,11 +47,12 @@ export function Walkthrough({ name, headings, children }: { name: string; headin
             </div>
           ))}
         </div>
+        {enhanced && steps.length > 1 && <p className="sv-visually-hidden" aria-live="polite">Step {announced + 1} of {steps.length}: {headings[announced]}</p>}
+        {/* Only where the outline is hidden (globals.css): beside it they would repeat it. */}
         {enhanced && steps.length > 1 && (
           <div className="sv-walk__controls">
             <button type="button" className="sv-carousel__step" aria-label="Previous step" disabled={index === 0} onClick={() => go(index - 1)}>‹</button>
             <p className="sv-carousel__count" aria-hidden="true">Step {index + 1} of {steps.length}</p>
-            <p className="sv-visually-hidden" aria-live="polite">Step {announced + 1} of {steps.length}: {headings[announced]}</p>
             <button type="button" className="sv-walk__next" disabled={last} onClick={() => go(index + 1)}>
               {last ? 'End of the argument' : <>Next: {headings[index + 1]} <span aria-hidden="true">›</span></>}
             </button>
