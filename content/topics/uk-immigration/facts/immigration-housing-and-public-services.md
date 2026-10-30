@@ -1565,43 +1565,6 @@ comparisons:
       the main projection's 2,417,584 rise it is 53%, calculated here. The
       household formation rates variant changes how many households a given
       population forms, not migration.
-  - id: house-price-and-rent-effects
-    title: >-
-      International studies: how much house prices and rents rise per point of
-      immigrant share
-    description: >-
-      Estimated rise in house prices or rents when the immigrant share of the population
-      rises by one percentage point, by study group. Figures are median estimated
-      percentage rises, from a review of international studies commissioned by the
-      Migration Advisory Committee.
-    unit: percent
-    valueLabel: Median effect of a 1-point rise in immigrant share
-    sources:
-      - 11
-      - 12
-      - 13
-    items:
-      - label: 'House prices: less comparable countries'
-        value: 1.42
-      - label: 'Rents: UK-like countries'
-        value: 0.81
-      - label: 'House prices: UK-like countries'
-        value: 0.65
-        highlight: true
-      - label: 'Rents: all studies'
-        value: 0.64
-      - label: 'Rents: less comparable countries'
-        value: 0.42
-      - label: 'House prices: all causal studies'
-        value: 0.36
-    note: >-
-      Every median the review reports. "All causal studies" for house prices
-      is 45 estimates from 22 studies using modern causal methods; "all
-      studies" for rents is 33 estimates from 17 studies. The UK-like and less
-      comparable groups regroup estimates across methods by how similar each
-      country's housing market is to the UK's. UK studies alone are not shown
-      because the review gives no median for them; it says they "tend to be
-      negative" at local level.
   - id: government-investment-oecd-2024
     title: Government investment across the OECD in 2024
     description: >-
@@ -1693,6 +1656,46 @@ comparisons:
       at current prices in national currency). 36 of the 38 OECD members have
       2024 data; Chile and Türkiye do not. The UK ranks 27th. Ireland's GDP is
       inflated by multinational accounting, which lowers its ratio.
+figures:
+- kind: series
+- kind: series
+  id: rents
+- kind: series
+  id: pupil-numbers
+- kind: series
+  id: affordable-homes
+- kind: series
+  id: school-funding
+- kind: series
+  id: investment
+- kind: comparison
+  id: household-growth-by-variant
+- kind: barChart
+  id: house-price-and-rent-effects
+  title: >-
+    International studies: how much house prices and rents rise per point of
+    immigrant share
+  description: "Estimated rise in house prices or rents when the immigrant share of the population rises by one percentage point, by study group. Figures are median estimated percentage rises, from a review of international studies commissioned by the Migration Advisory Committee. A dash means the review gives no median for that group."
+  valueLabel: "Median effect of a 1-point rise in immigrant share"
+  categoryLabel: "Study group"
+  format: { unit: percent, decimals: 2 }
+  sources: [11, 12, 13]
+  note: "Every median the review reports. \"All causal studies\" for house prices is 45 estimates from 22 studies using modern causal methods; \"all studies\" for rents is 33 estimates from 17 studies. The UK-like and less comparable groups regroup estimates across methods by how similar each country's housing market is to the UK's. UK studies alone are not shown because the review gives no median for them; it says they \"tend to be negative\" at local level."
+  series:
+  - { key: prices, label: "House prices" }
+  - { key: rents, label: "Rents" }
+  items:
+  - label: "UK-like countries"
+    values: { prices: 0.65, rents: 0.81 }
+    highlight: true
+  - label: "Less comparable countries"
+    values: { prices: 1.42, rents: 0.42 }
+  - label: "All causal studies"
+    values: { prices: 0.36, rents: null }
+  - label: "All studies"
+    values: { prices: null, rents: 0.64 }
+- kind: comparison
+  id: government-investment-oecd-2024
 relatedFacts:
   - immigration-against-the-long-run
 dataStillNeeded:

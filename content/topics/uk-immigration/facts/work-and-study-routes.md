@@ -1081,6 +1081,18 @@ additionalSeries:
     Care workers became eligible in February 2022; restrictions announced in December
     2023, including a bar on care workers bringing dependants, took effect in spring 2024;
     the route closed to new overseas care recruits in July 2025.
+  events:
+  - period: '2022-02'
+    label: Care workers become eligible
+    note: The Health and Care Worker route is expanded to take care workers.
+    source: 2
+  - period: '2024-03'
+    label: Care workers can no longer bring dependants
+    note: Dated March/April 2024 in the source, with a higher salary threshold and sponsorship limited to employers regulated by the Care Quality Commission.
+    source: 13
+  - period: '2025-07'
+    label: Route closes to new overseas care workers
+    sources: [5, 19]
   periodLabel: Quarter ending
   coverage:
     from: 2020-12
@@ -1211,6 +1223,18 @@ additionalSeries:
     with all sponsored jobs shown for scale. These are entry clearance grants to sponsored
     work main applicants. Dependants are not included, because the dataset records
     occupation only for the person sponsored.
+  events:
+  - period: '2022-02'
+    label: Care workers become eligible
+    note: The Health and Care Worker route is expanded to take care workers.
+    source: 2
+  - period: '2024-03'
+    label: Care workers can no longer bring dependants
+    note: Dated March/April 2024 in the source, with a higher salary threshold and sponsorship limited to employers regulated by the Care Quality Commission.
+    source: 13
+  - period: '2025-07'
+    label: Route closes to new overseas care workers
+    sources: [5, 19]
   periodLabel: Quarter ending
   coverage:
     from: 2021-03

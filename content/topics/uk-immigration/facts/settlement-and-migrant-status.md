@@ -19,7 +19,7 @@ sources:
     publisher: "Home Office"
     date: '2026-08-27'
   - stance: supports
-    quote: "Since the scheme was launched in 2018, just under 4.6 million settled status grants have been issued."
+    quote: "Since the scheme was launched in 2018, just under 4.6 million settled status grants have been issued. … The total for grants of settled status includes 115,770 automated EUSS settled status grants"
     title: "How many Indefinite Leave (Settlement and EUSS settled status) grants have been issued in the UK?"
     url: "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-june-2026/how-many-indefinite-leave-settlement-and-euss-settled-status-grants-have-been-issued-in-the-uk"
     publisher: "Home Office"
@@ -648,6 +648,12 @@ sources:
     url: "https://www.gov.uk/guidance/windrush-compensation-scheme"
     publisher: "GOV.UK"
     date: '2026'
+  - stance: supports
+    quote: "EUSS_QTR: Quarterly applications received and concluded to the EU settlement scheme, by outcome and nationality, 28 August 2018 to 30 June 2026 … Table 2 EUSS_QTR: Quarterly applications concluded … Settled 4,476,552"
+    title: "EU Settlement Scheme quarterly statistics, June 2026: table EUSS_QTR"
+    url: "https://assets.publishing.service.gov.uk/media/6a8c11b7042872d923842818/eu-settlement-scheme-quarterly-statistics-tables-jun-2026.ods"
+    publisher: "Home Office"
+    date: '2026-08-27'
 series:
   title: 'Grants of settlement in the UK, 2010–2025'
   description: >-
@@ -1063,26 +1069,6 @@ additionalSeries:
                 - period: '2026-08'
                   value: 133475539
 comparisons:
-  - id: settled-and-on-a-path
-    title: Who holds UK settlement, and who is on a path to it
-    description: "Three separate measures of people with, or on a route to, settlement, which is the right to live in the UK permanently. Each is the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
-    unit: count
-    valueLabel: "People"
-    sources:
-      - 2
-      - 4
-      - 5
-      - 6
-    items:
-      - label: "EU Settlement Scheme: settled-status grants since 2018"
-        value: 4592322
-      - label: "On a temporary visa with a five-year path to settlement (end of 2024)"
-        value: 2200000
-      - label: "Non-EU citizens holding indefinite leave, upper estimate (end of 2024)"
-        value: 820000
-      - label: "Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"
-        value: 621000
-    note: "No official count of people holding indefinite leave exists: the Home Office publishes grants, not holders. The EU figure is grants, so it counts people who have since left or naturalised; it is the 4,476,552 applications concluded as settled in table EUSS_QTR plus 115,770 automated grants, which the Home Office describes as \"just under 4.6 million\". The non-EU range is the Migration Observatory's estimate from the 2021 Census (England and Wales only) and visa data. The path-to-settlement figure is the Migration Observatory's rounded \"around 2.2 million\". The bars measure different things and should not be added together."
   - id: path-by-group
     title: >-
       People on a five-year path to UK settlement, by visa group, end of 2024
@@ -1188,43 +1174,6 @@ comparisons:
       - label: "No immigration status recorded"
         value: 0.4
     note: "Every group the Department for Work and Pensions publishes; they sum to 100.0%. These are \"statistics in development\". Status is recorded when someone claims or their circumstances change, and the department is not usually told when someone with indefinite leave becomes a British citizen, so the indefinite-leave group includes some citizens."
-  - id: fees-and-costs
-    title: "Home Office fees for main applications, against its own estimated unit cost"
-    description: "What the Home Office charges for the main application on each major route, with its estimated processing cost in the label. Fees are those from 8 October 2026. Two fees are below their unit cost."
-    unit: pounds
-    valueLabel: "Fee per applicant (£)"
-    sources:
-      - 73
-      - 74
-      - 79
-      - 82
-      - 75
-      - 78
-      - 77
-      - 76
-      - 81
-      - 80
-    items:
-      - label: "Indefinite leave to remain (unit cost £310)"
-        value: 3226
-        highlight: true
-      - label: "Family or other route to settlement, from overseas (unit cost £639)"
-        value: 2064
-      - label: "Naturalisation as a British citizen (table shows a unit cost of £1.23)"
-        value: 1709
-      - label: "Skilled Worker, over three years, from overseas (unit cost £153)"
-        value: 1618
-      - label: "Graduate route (unit cost £110)"
-        value: 937
-      - label: "Student, from overseas (unit cost £176)"
-        value: 558
-      - label: "Health and Care Worker, up to three years, from overseas (unit cost £153)"
-        value: 324
-      - label: "Global Talent with an approval letter, from overseas (unit cost £488)"
-        value: 205
-      - label: "Visit visa, up to six months (unit cost £159)"
-        value: 135
-    note: "The table lists more than 150 fees. Shown here is the standard main-applicant fee for settlement, citizenship, and each main work, study, family and visit route, including the two below cost; extensions, priority services and sponsor fees are left out. The naturalisation unit cost of £1.23 is as printed and is almost certainly an error in the table. The Immigration Health Surcharge is paid on top of most temporary visas and is not included."
   - id: settlement-fees-europe
     title: "Cost of applying for permanent residence, UK and European science nations, 2025"
     description: "What an applicant pays for the right to stay permanently in the UK and other European countries in a Royal Society comparison. Each bar is the applicant fee for permanent residence (or the nearest equivalent for researchers) in every European country in the comparison, 2025, in pounds at nominal exchange rates."
@@ -1276,6 +1225,84 @@ comparisons:
       - label: "Remove it from current holders: oppose"
         value: 58
     note: "One poll by one pollster. The article does not give fieldwork dates, sample size or the \"don't know\" shares, so the bars for each question do not add up to 100. No second pollster asking both questions was found."
+figures:
+- kind: series
+- kind: estimateRange
+  id: settlement-forecast
+  title: "People the Home Office expects to settle, 2026–2030 and in the peak year"
+  description: "People the Home Office expects to gain settlement, the right to live in the UK permanently, in 2026–2030 and in the peak year. The forecast is under current rules, shown as a central estimate with a range."
+  valueLabel: People settling
+  itemLabel: Forecast
+  intervalLabel: Range the Home Office published
+  nullValue: null
+  format: { unit: count, compact: true }
+  sources: [3, 14]
+  note: "The central scenario assumes people settle at historical rates; the range reflects uncertainty about that. The forecast is under current rules, before any of the proposed changes, and excludes the EU Settlement Scheme. The year-by-year and route-by-route forecast is published only as a chart image, so only these totals can be drawn."
+  estimates:
+  - { label: "All five years", year: 2026–2030, estimate: 1600000, low: 1300000, high: 2200000, source: 3 }
+  - { label: "Peak year", year: 2028, estimate: 450000, low: 359000, high: 620000, source: 3 }
+- kind: series
+  id: windrush-compensation
+- kind: barChart
+  id: settled-and-on-a-path
+  title: Who holds UK settlement, and who is on a path to it
+  description: "Three separate measures of people with, or on a route to, settlement, which is the right to live in the UK permanently. Each is the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
+  valueLabel: "People"
+  categoryLabel: "Measure"
+  format: { unit: count }
+  sort: none
+  sources: [2, 4, 5, 6, 107]
+  note: "No official count of people holding indefinite leave exists: the Home Office publishes grants, not holders. The EU figure is grants, so it counts people who have since left or naturalised; it is the 4,476,552 applications concluded as settled in table EUSS_QTR plus 115,770 automated grants, which the Home Office describes as \"just under 4.6 million\". The non-EU range is the Migration Observatory's estimate from the 2021 Census (England and Wales only) and visa data; its lower end is 621,000 in the body of the piece and 622,000 in its summary. The path-to-settlement figure is the Migration Observatory's rounded \"around 2.2 million\". The bars measure different things and should not be added together."
+  items:
+  - label: "EU Settlement Scheme: settled-status grants since 2018"
+    value: 4592322
+    asPublished: "just under 4.6 million"
+  - label: "On a temporary visa with a five-year path to settlement (end of 2024)"
+    value: { value: 2200000, qualifier: "about", asPublished: "Around 2.2 million" }
+  - label: "Non-EU citizens holding indefinite leave (end of 2024)"
+    value: { low: 621000, high: 820000 }
+- kind: comparison
+  id: path-by-group
+- kind: comparison
+  id: cohort-2020
+- kind: comparison
+  id: universal-credit-by-status
+- kind: barChart
+  id: fees-and-costs
+  title: "Home Office fees for main applications, against its own estimated unit cost"
+  description: "What the Home Office charges for the main application on each major route, beside its estimated processing cost. Fees are those from 8 October 2026. Two fees are below their unit cost."
+  valueLabel: "Per applicant (£)"
+  categoryLabel: "Application"
+  format: { unit: currency, currency: GBP, decimals: 2 }
+  sources: [73, 74, 79, 82, 75, 78, 77, 76, 81, 80]
+  note: "The table lists more than 150 fees. Shown here is the standard main-applicant fee for settlement, citizenship, and each main work, study, family and visit route, including the two below cost; extensions, priority services and sponsor fees are left out. The naturalisation unit cost of £1.23 is as printed and is almost certainly an error in the table. The Immigration Health Surcharge is paid on top of most temporary visas and is not included."
+  series:
+  - { key: fee, label: "Fee" }
+  - { key: cost, label: "Estimated unit cost" }
+  items:
+  - label: "Indefinite leave to remain"
+    values: { fee: 3226, cost: 310 }
+    highlight: true
+  - label: "Family or other route to settlement, from overseas"
+    values: { fee: 2064, cost: 639 }
+  - label: "Naturalisation as a British citizen (unit cost as the table prints it)"
+    values: { fee: 1709, cost: 1.23 }
+  - label: "Skilled Worker, over three years, from overseas"
+    values: { fee: 1618, cost: 153 }
+  - label: "Graduate route"
+    values: { fee: 937, cost: 110 }
+  - label: "Student, from overseas"
+    values: { fee: 558, cost: 176 }
+  - label: "Health and Care Worker, up to three years, from overseas"
+    values: { fee: 324, cost: 153 }
+  - label: "Global Talent with an approval letter, from overseas"
+    values: { fee: 205, cost: 488 }
+  - label: "Visit visa, up to six months"
+    values: { fee: 135, cost: 159 }
+- kind: comparison
+  id: settlement-fees-europe
+- kind: comparison
+  id: ilr-polling
 dataStillNeeded:
   - measure: "An official count of people holding indefinite leave to remain, by route, nationality and year granted"
     why: "The Home Office and ONS publish grants, not holders, so every statement about how many people a change to existing indefinite leave would reach rests on one research estimate with a range of 621,000 to 820,000."
@@ -1329,6 +1356,15 @@ years. [8](#source-settlement-and-migrant-status-8) Grants to refugees fell 40% 
 reflecting fewer protection decisions during the pandemic in 2020.
 [9](#source-settlement-and-migrant-status-9)
 
+## Subtleties {#settlement-and-migrant-status--subtleties-grants}
+
+### When the BN(O) route opened {#settlement-and-migrant-status--bno-route-opened}
+
+The Hong Kong BN(O) route opened in January 2021.
+[8](#source-settlement-and-migrant-status-8)
+
+## Observations {#settlement-and-migrant-status--observations-settlement-forecast}
+
 ### About 1.6 million are expected to qualify in 2026–30 {#settlement-and-migrant-status--forecast-1-6-million}
 
 The Home Office forecasts 1.3 million to 2.2 million people settling in 2026–2030 (central
@@ -1347,12 +1383,7 @@ billion. [16](#source-settlement-and-migrant-status-16) After the Office for Bud
 Responsibility revised the data used, the CPS said the cost estimates "should no longer be
 used". [17](#source-settlement-and-migrant-status-17)
 
-## Subtleties {#settlement-and-migrant-status--subtleties-grants}
-
-### When the BN(O) route opened {#settlement-and-migrant-status--bno-route-opened}
-
-The Hong Kong BN(O) route opened in January 2021.
-[8](#source-settlement-and-migrant-status-8)
+## Subtleties {#settlement-and-migrant-status--subtleties-settlement-forecast}
 
 ### The forecast peak and its assumption {#settlement-and-migrant-status--forecast-peak-and-assumption}
 

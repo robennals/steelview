@@ -1437,39 +1437,6 @@ comparisons:
       - label: Arrived 2011 to 2021
         value: 99.9
         values: [37.4, 49.7, 10.8, 2.0]
-  - id: women-employment
-    title: Employment rate of women by ethnic group, Great Britain, 2022
-    description: >-
-      The share of women aged 16 to 64 in work in Great Britain in 2022, for every ethnic
-      group in the published breakdown.
-    unit: percent
-    valueLabel: Share of women aged 16 to 64 in work
-    domainMax: 100
-    sources: [18]
-    note: >-
-      Annual Population Survey, 2022. Men's rates in the same table: All 79,
-      White British 79, White other 86, Indian 84, Pakistani and Bangladeshi
-      75, Asian other 75, Black 74, Mixed 67, Other 75.
-    items:
-      - label: White other
-        value: 79
-      - label: White British
-        value: 74
-      - label: All women
-        value: 72
-        highlight: true
-      - label: Mixed
-        value: 71
-      - label: Indian
-        value: 70
-      - label: Asian other
-        value: 68
-      - label: Black
-        value: 66
-      - label: Other
-        value: 60
-      - label: Pakistani and Bangladeshi
-        value: 46
   - id: employment-by-religion
     title: Employment rate by religion, England and Wales, Census 2021
     description: >-
@@ -1727,6 +1694,67 @@ comparisons:
       - label: British Muslims
         value: 28
         highlight: true
+figures:
+- kind: series
+- kind: series
+  id: employment
+- kind: series
+  id: denmark
+- kind: series
+  id: higher-education
+- kind: series
+  id: cohesion
+- kind: comparison
+  id: fastest-changing-areas
+- kind: comparison
+  id: english-proficiency
+- kind: barChart
+  id: women-employment
+  title: Employment rate of women by ethnic group, Great Britain, 2022
+  description: "The share of women and men aged 16 to 64 in work in Great Britain in 2022, by ethnic group. Every group in the published breakdown is shown, ranked by the rate for women."
+  valueLabel: "Share aged 16 to 64 in work"
+  categoryLabel: "Ethnic group"
+  format: { unit: percent }
+  domainMax: 100
+  sources: [18]
+  note: "Annual Population Survey, 2022."
+  series:
+  - { key: women, label: "Women" }
+  - { key: men, label: "Men" }
+  items:
+  - label: "White other"
+    values: { women: 79, men: 86 }
+  - label: "White British"
+    values: { women: 74, men: 79 }
+  - label: "All"
+    values: { women: 72, men: 79 }
+    highlight: true
+  - label: "Mixed"
+    values: { women: 71, men: 67 }
+  - label: "Indian"
+    values: { women: 70, men: 84 }
+  - label: "Asian other"
+    values: { women: 68, men: 75 }
+  - label: "Black"
+    values: { women: 66, men: 74 }
+  - label: "Other"
+    values: { women: 60, men: 75 }
+  - label: "Pakistani and Bangladeshi"
+    values: { women: 46, men: 75 }
+- kind: comparison
+  id: employment-by-religion
+- kind: comparison
+  id: netherlands-by-motive
+- kind: comparison
+  id: netherlands-by-region
+- kind: comparison
+  id: norway-by-region
+- kind: comparison
+  id: gcse-by-ethnicity
+- kind: comparison
+  id: gcse-fsm
+- kind: comparison
+  id: attitudes-homosexuality
 ---
 Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
 
