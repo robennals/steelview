@@ -1,4 +1,5 @@
-import { test, expect, type Page, type Request } from '@playwright/test';
+import type { Page, Request } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { citationTo, cruxCitation, openCollection } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the report

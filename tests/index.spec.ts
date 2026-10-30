@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 
 const rows = (page: import('@playwright/test').Page) => page.locator('.sv-row');
 const toggle = (page: import('@playwright/test').Page, n: number) => rows(page).nth(n).locator('.sv-row__toggle');

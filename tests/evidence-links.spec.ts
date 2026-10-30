@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { cruxCitation, openCollection } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const fact = 'immigration-economy-and-public-finances';

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { cruxCitation } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the reports

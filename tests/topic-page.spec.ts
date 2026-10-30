@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 import { headCorner, openDataRow, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
@@ -149,9 +149,6 @@ test('a keyboard reader keeps their place when a thumbnail opens the row', async
   await page.goto(TOPIC);
   const row = page.locator('#viewpoint-open-and-build');
   const thumb = row.locator('.sv-walk__thumb').nth(1);
-  // Thumbnails stay disabled until hydration, and unlike click(), focus() does
-  // not wait for that: focusing a disabled button leaves Enter with no target.
-  await expect(thumb).toBeEnabled();
   await thumb.focus();
   await page.keyboard.press('Enter');
   await expect(row.locator('.sv-row__toggle')).toBeFocused();
