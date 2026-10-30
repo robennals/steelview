@@ -26,14 +26,13 @@ derivedFigures:
     denominator: 3251
     decimals: 1
 title: Non-Citizens on US Voter Rolls
-claimSources: [8, 20, 26, 16, 1]
+claimSources:
+  - 8
+  - 20
+  - 16
+  - 1
 claim: >-
-  Whole-roll state reviews from 2016 to 2026 found non-citizens at hundredths
-  of a percent of registrants or fewer, and non-citizen votes in the single or
-  double digits per state per election, far below recent close margins. The
-  database flags they start from include many citizens: most of Alabama's 2024
-  flags, and about a fifth of Texas's so far. Detected cases are a floor; how
-  many go undetected is unmeasured.
+  State reviews find non-citizens at hundredths of a percent of registrants or fewer, and the database flags they start from include many citizens; how many go undetected is unmeasured.
 status: well-supported
 sources:
   - stance: supports
@@ -637,6 +636,36 @@ dataStillNeeded:
       Ohio's referral batches are the only repeated series, and they cover
       different elections and methods; no state shows whether the rate is
       rising or falling.
+figures:
+  - kind: comparison
+    id: registrants-found
+  - kind: comparison
+    id: votes-found
+  - kind: comparison
+    id: flags-reversed
+  - kind: dataTable
+    id: both-errors
+    title: 'Non-citizens found against citizens wrongly flagged, by review'
+    description: 'The two counts each review with a published follow-up produces.'
+    caption: 'One row per review'
+    columns:
+      - { key: review, label: 'Review', rowHeader: true }
+      - { key: found, label: 'Ineligible registrants found, referred or removed', sortable: false }
+      - { key: flagged, label: 'Citizens wrongly flagged', sortable: false }
+    rows:
+      - review: 'Texas, statewide SAVE check'
+        found: { value: '117 cases referred', sources: [1] }
+        flagged: { value: '578', sources: [1] }
+      - review: 'Denton County, Texas'
+        found: { value: '14 non-citizens', sources: [3] }
+        flagged: { value: '14, plus 56 cancelled for not replying, status unknown', sources: [3] }
+      - review: 'Alabama, 2024'
+        found: { value: 'At least 159 removed', sources: [16] }
+        flagged: { value: 'About 2,000', sources: [16] }
+  - kind: comparison
+    id: against-margins
+  - kind: comparison
+    id: ohio-referrals
 ---
 These reviews compare a state's voter list against records that say someone is not a citizen: driver's licence files, jury-duty excusals, immigration records and, since 2025, the federal SAVE database.
 
@@ -681,6 +710,17 @@ Georgia's first citizenship audit, announced in March 2022, counted applicants h
 - **624** could not be run through SAVE for lack of information, and were held because licence records listed them as non-citizens.
 
 Because none reached the rolls, they are not in the chart. "Not verified" by SAVE is not the same as confirmed: SAVE can miss citizens whose status is absent from federal records. [4](#source-non-citizens-on-voter-rolls-4)
+
+### Most non-citizens reach the rolls through paperwork errors {#non-citizens-on-voter-rolls--how-noncitizens-reach-rolls}
+
+The reviews describe the same few routes:
+
+- **Clerical error:** Texas found people registered by county staff even though they had marked themselves non-citizens on the application. [7](#source-non-citizens-on-voter-rolls-7) [3](#source-non-citizens-on-voter-rolls-3)
+- **Licence-record coding:** Arizona's motor vehicle agency coded everyone licensed before 1996 as a citizen, so 218,000 registrants had no proof of citizenship on file. All had sworn they were citizens, and by October 2024 two had been identified as non-citizens. [23](#source-non-citizens-on-voter-rolls-23)
+- **Misunderstanding:** some North Carolina voters said they did not know they could not vote. [20](#source-non-citizens-on-voter-rolls-20)
+- **Administrative anomalies:** the Kansas court attributed most of its 39 cases to error and confusion. [22](#source-non-citizens-on-voter-rolls-22)
+
+Georgia found its 20 because they had sworn they were not citizens to get out of jury duty. [14](#source-non-citizens-on-voter-rolls-14) Each route runs through a check at the point of registration, which is where a records check or a documentary-proof rule would apply.
 
 ## Observations {#non-citizens-on-voter-rolls--observations-votes-found}
 
@@ -777,30 +817,15 @@ Texas did not check its SAVE list against its own licence records before sending
 
 Across the counties that answered Votebeat, at least 33 citizens had been identified by December 2025. [5](#source-non-citizens-on-voter-rolls-5) The Texas Secretary of State wrote to USCIS that state licence records sometimes "inaccurately reflect a person's current citizenship status". [7](#source-non-citizens-on-voter-rolls-7)
 
-### Most non-citizens reach the rolls through paperwork errors {#non-citizens-on-voter-rolls--how-noncitizens-reach-rolls}
-
-The reviews describe the same few routes:
-
-- **Clerical error:** Texas found people registered by county staff even though they had marked themselves non-citizens on the application. [7](#source-non-citizens-on-voter-rolls-7) [3](#source-non-citizens-on-voter-rolls-3)
-- **Licence-record coding:** Arizona's motor vehicle agency coded everyone licensed before 1996 as a citizen, so 218,000 registrants had no proof of citizenship on file. All had sworn they were citizens, and by October 2024 two had been identified as non-citizens. [23](#source-non-citizens-on-voter-rolls-23)
-- **Misunderstanding:** some North Carolina voters said they did not know they could not vote. [20](#source-non-citizens-on-voter-rolls-20)
-- **Administrative anomalies:** the Kansas court attributed most of its 39 cases to error and confusion. [22](#source-non-citizens-on-voter-rolls-22)
-
-Georgia found its 20 because they had sworn they were not citizens to get out of jury duty. [14](#source-non-citizens-on-voter-rolls-14) Each route runs through a check at the point of registration, which is where a records check or a documentary-proof rule would apply.
-
 ### Texas's 2019 review flagged almost 100,000, including about 25,000 listed in error {#non-citizens-on-voter-rolls--texas-2019}
 
 In 2019 Texas questioned the citizenship of almost 100,000 registrants, using licence records from people who had once said they were not citizens. The state later said it had overstated the list by about 25,000 names, counties found hundreds of naturalised citizens on it, and the state agreed in a settlement to scrap it. [25](#source-non-citizens-on-voter-rolls-25)
 
+## Observations {#non-citizens-on-voter-rolls--observations-both-errors}
+
 ### Both kinds of error appear in the same reviews {#non-citizens-on-voter-rolls--both-errors-side-by-side}
 
 Each review produces two counts: ineligible registrants found, and eligible citizens wrongly flagged.
-
-| Review | Ineligible registrants found, referred or removed | Citizens wrongly flagged |
-| --- | --- | --- |
-| Texas, statewide SAVE check | 117 cases referred [1](#source-non-citizens-on-voter-rolls-1) | 578 [1](#source-non-citizens-on-voter-rolls-1) |
-| Denton County, Texas | 14 non-citizens [3](#source-non-citizens-on-voter-rolls-3) | 14, plus 56 cancelled for not replying, status unknown [3](#source-non-citizens-on-voter-rolls-3) |
-| Alabama, 2024 | At least 159 removed [16](#source-non-citizens-on-voter-rolls-16) | About 2,000 [16](#source-non-citizens-on-voter-rolls-16) |
 
 In the reviews with published follow-ups, citizens wrongly flagged outnumber the non-citizens confirmed.
 

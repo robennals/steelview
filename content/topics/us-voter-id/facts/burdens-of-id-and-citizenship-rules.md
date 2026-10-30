@@ -1,13 +1,14 @@
 ---
 title: 'Burdens of ID and Citizenship-Proof Rules: Missing Documents, Rejections and Turnout'
 claim: >-
-  This report counts the US citizens who lack the documents that ID and
-  proof-of-citizenship rules ask for, and the applications and mail ballots
-  those rules have blocked. Few citizens have no photo ID at all, but millions
-  hold an outdated licence or cannot readily reach proof of citizenship, and
-  rules in Kansas and Texas blocked tens of thousands. Effects on overall
-  turnout are small and disputed.
-claimSources: [1, 2, 14, 16, 20, 24, 27, 28]
+  Few citizens have no photo ID, but millions hold outdated licences or cannot readily reach proof of citizenship; Kansas and Texas rules blocked tens of thousands; effects on overall turnout are small and disputed.
+claimSources:
+  - 1
+  - 2
+  - 14
+  - 16
+  - 27
+  - 28
 status: well-supported
 derivedFigures:
   - method: ratio-percent
