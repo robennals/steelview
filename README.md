@@ -125,14 +125,17 @@ to license and carries its own terms.
 
 ### Viewpoint format
 
-A viewpoint is a short lead, then four to six `###` sections. Each heading is
-one claim, and read alone the headings make the whole case for the title; the
-short prose under each gives the evidence. It is written for a middle-school
+A viewpoint is a short lead, then four to six `###` sections, read on the topic
+page as a walkthrough with one chart per section. Each heading is one claim, and
+read alone the headings make the whole case for the title; two or three short
+sentences under each say what to notice in the chart, whose choice follows from
+the section's first citation. It is written for a middle-school
 reader: short sentences, everyday words, citation text that states the point
 and leaves figures and sources to the report it opens, and concessions that
 open with "While" and say why they do not change the conclusion.
 [`content/AUTHORING.md`](content/AUTHORING.md#write-an-argument-someone-can-follow)
-is the full specification; `us-iran-war` is the model.
+is the full specification; `us-iran-war` is the model for how headings build an
+argument.
 
 ### Evidence in viewpoints and facts
 
