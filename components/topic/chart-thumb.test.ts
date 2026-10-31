@@ -9,7 +9,8 @@ import { factSlides } from '@/lib/content/preview';
 import { isComponentFigure, type Fact } from '@/lib/content/types';
 import { renderDataWalkthroughs, viewpointWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from './chart-thumb';
-import { FactFigures, vizDomId } from './fact-figures';
+import { FactFigures, PanelChart, vizDomId } from './fact-figures';
+import { ObservationStep } from './observation-bar';
 import { SlideChart } from './slide-chart';
 
 const fact = figureExamplesFact();
@@ -203,6 +204,19 @@ for (const figure of libraryFigures) {
     assert.equal(html.split(`id="${figureDomId(observed, id)}"`).length, 2, 'its chart id appears once');
   });
 }
+
+/** The kinds an observation can pick rows out of, each of which must draw them. */
+const ROW_KINDS = new Set(['barChart', 'compositionBar', 'estimateRange', 'smallMultiples', 'timeline', 'periodTimeline', 'quotes', 'map', 'dataTable']);
+
+test('every figure in a data panel shows the observation being stepped through', () => {
+  const observations = [{ id: 'seen', heading: 'Seen here', html: '<p>Why.</p>' }];
+  for (const slide of factSlides(observedTopic.slug, observed).filter(s => libraryFigures.some(f => f.id === s.chart))) {
+    const html = renderToStaticMarkup(createElement(ObservationStep, { observations }, createElement(PanelChart, { slide, page: observedPage })));
+    assert.match(html, /sv-observe__claim[^>]*>Seen here/, slide.chart);
+    const figure = libraryFigures.find(f => f.id === slide.chart)!;
+    if (ROW_KINDS.has(figure.kind)) assert.match(html, /data-row="/, slide.chart);
+  }
+});
 
 test('a data row shows each figure beside its own observations', async () => {
   const steps = (await renderDataWalkthroughs(observedTopic, [observed])).get(observed.id)!;

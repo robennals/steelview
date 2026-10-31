@@ -206,6 +206,7 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
       const dot = region.point && projectionToUse.project(region.point);
       const areaAttributes = {
         'data-region': region.id,
+        'data-row': region.id,
         'data-readout': look.readout,
         'data-missing': look.missing ? 'true' : undefined,
         'data-highlight': highlight.includes(region.id) ? 'true' : undefined,

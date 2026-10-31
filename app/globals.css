@@ -2188,6 +2188,8 @@
   .sv-chart__mark-point { fill: var(--paper); stroke: currentColor; stroke-width: 2.5; }
   .sv-chart__mark-label { fill: currentColor; font-family: var(--font-sans); font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
   [data-series][data-mark-dimmed], [data-row][data-mark-dimmed] { opacity: 0.25; transition: opacity 0.2s; }
+  /* A row a reader has opened stays readable, whatever the observation is about. */
+  [data-row][data-mark-dimmed]:has(details[open]) { opacity: 1; }
   [data-row][data-mark-picked] { font-weight: 600; }
 
   /* Without JavaScript every observation shows, one after another. */

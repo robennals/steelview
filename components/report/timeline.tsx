@@ -223,6 +223,7 @@ export function Timeline({
                     <li
                       key={`${e.date}-${i}-${e.title}`}
                       className="sv-timeline__event"
+                      data-row={e.title}
                       data-significance={major ? 'major' : 'minor'}
                       style={{ '--sv-timeline-color': seriesColor(slot) }}
                     >

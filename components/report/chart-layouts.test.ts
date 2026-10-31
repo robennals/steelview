@@ -202,7 +202,7 @@ test('an estimate row prints one name and one figure; everything else opens unde
   assert.match(html, /<span class="sv-estimates__value">−2\.2 to −1\.9<span/);
   assert.equal(html.match(/<dt>Interval<\/dt>/g)?.length, 1);
   // A row with nothing to open stays a plain row, and the hint is said once.
-  assert.match(html, /<li class="sv-estimates__row"><span class="sv-estimates__label">Bare/);
+  assert.match(html, /<li class="sv-estimates__row" data-row="Bare"><span class="sv-estimates__label">Bare/);
   assert.equal(html.match(/sv-row-detail__hint/g)?.length, 1);
   // The table keeps the note, so nothing is only behind a disclosure.
   assert.match(html, /<th scope="col" class="sv-data__th-text">Note<\/th>/);
@@ -237,9 +237,9 @@ const hours = {
 test('a bar row with detail opens under itself, and its neighbours stay plain rows', () => {
   const props = { valueLabel: 'Share', items: [{ label: 'Greater Manchester', value: 54, highlight: true, detail: '243 suspects; none unrecorded' }, { label: 'West Yorkshire', value: 35 }] };
   const html = renderToStaticMarkup(createElement(BarChart, props));
-  assert.match(html, /<li><details class="sv-row-detail"><summary class="sv-bars__row" data-highlight="true"><span class="sv-bars__label">Greater Manchester<\/span>/);
+  assert.match(html, /<li data-row="Greater Manchester"><details class="sv-row-detail"><summary class="sv-bars__row" data-highlight="true"><span class="sv-bars__label">Greater Manchester<\/span>/);
   assert.match(html, /<div class="sv-row-detail__body">243 suspects; none unrecorded<\/div>/);
-  assert.match(html, /<li class="sv-bars__row"><span class="sv-bars__label">West Yorkshire/);
+  assert.match(html, /<li class="sv-bars__row" data-row="West Yorkshire"><span class="sv-bars__label">West Yorkshire/);
   assert.equal(html.match(/Select a row for its details/g)?.length, 1);
 });
 
@@ -255,7 +255,7 @@ test('the table prints every row\'s detail, and a chart with none has no Detail 
 
 test('a bar preview shows only the title of a row with detail', () => {
   const html = renderToStaticMarkup(createElement(BarChart, { valueLabel: 'Share', preview: { href: '#x' }, items: [{ label: 'A', value: 1, detail: 'A words' }, { label: 'B', value: 2 }] }));
-  assert.match(html, /<li class="sv-bars__row"><span class="sv-bars__label">A<\/span>/);
+  assert.match(html, /<li class="sv-bars__row" data-row="A"><span class="sv-bars__label">A<\/span>/);
   assert.doesNotMatch(html, /<details|sv-row-detail|A words/);
 });
 

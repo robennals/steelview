@@ -114,8 +114,8 @@ export function BarRows({
         {rows.map(row => {
           const cells = <BarRowCells row={row} scale={scale} layout={layout} />;
           return row.detail && !preview
-            ? <li key={row.key}><DetailRow rowClass="sv-bars__row" highlight={row.highlight} summary={cells}>{row.detail}</DetailRow></li>
-            : <li key={row.key} className="sv-bars__row" data-highlight={row.highlight || undefined}>{cells}</li>;
+            ? <li key={row.key} data-row={String(row.label)}><DetailRow rowClass="sv-bars__row" highlight={row.highlight} summary={cells}>{row.detail}</DetailRow></li>
+            : <li key={row.key} className="sv-bars__row" data-row={String(row.label)} data-highlight={row.highlight || undefined}>{cells}</li>;
         })}
       </ol>
       {!preview && <div className="sv-bars__axis" aria-hidden="true">

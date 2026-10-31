@@ -75,7 +75,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
         </>;
         return item.detail && !preview
           ? <li key={`${chart.id}-${index}`} data-row={item.label}><DetailRow rowClass="sv-comparison__row" summary={cells}>{item.detail}</DetailRow></li>
-          : <li key={`${chart.id}-${index}`} data-row={item.label} className="sv-comparison__row">{cells}</li>;
+          : <li key={`${chart.id}-${index}`} className="sv-comparison__row" data-row={item.label}>{cells}</li>;
       })}
     </ol>}
     {chart.groups && selected < 0 && <div className="sv-comparison-legend">{chart.groups.map((label, i) => <span key={label}><i style={{ background: `var(--sv-group-${i})` }} />{label}</span>)}</div>}

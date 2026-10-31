@@ -80,7 +80,7 @@ export function SmallMultiples({
         const source = panels[index];
         const latest = panel.last?.point;
         return (
-          <li key={panel.name} className="sv-multiples__panel" data-highlight={source.highlight || undefined}>
+          <li key={panel.name} className="sv-multiples__panel" data-row={panel.name} data-highlight={source.highlight || undefined}>
             <h3 className="sv-multiples__name">
               {panel.name}
               {source.sources && !preview && <SourceCredits sources={source.sources} />}

@@ -956,11 +956,25 @@ observationMarks:
   latest-fall: {lines: [Immigration], from: '2024', to: '2025'} # a region of some lines
   pandemic-dip: {lines: [Net migration], at: '2020'}            # a point, labelled with its value
   asylum-net-steady: {lines: [Asylum]}                          # some lines
-  uk-mid-table-per-head: {rows: [United Kingdom]}               # rows of a comparison or data table
+  uk-mid-table-per-head: {rows: [United Kingdom]}               # rows of any chart below
 ```
 
 Marks are checked against the chart: every line, period and row must be on it.
-Other kinds of figure cannot show marks yet.
+A `rows` entry names, exactly as written in the figure:
+
+| Figure | A row is |
+| --- | --- |
+| `comparison`, `barChart` (paired and dumbbell too) | an item's `label` |
+| `dataTable`, with or without `layout` | its row header |
+| `compositionBar`, `periodTimeline` | a row's `label` |
+| `estimateRange` | an estimate's `label` |
+| `smallMultiples` | a panel's `name` |
+| `timeline` | an event's `title` |
+| `quotes` | a quote's `speaker`, which picks out all of that speaker's quotes |
+| `map` | an area id, picked out in both the shapes and the tiles |
+
+Other kinds of figure cannot show marks yet, so an observation on one has no
+`observationMarks` entry and only its bar shows.
 
 **A composition adds up.** A `compositionBar` row's parts must sum to the
 row's stated `total` (optional) or, without one, to 100 when the figure has

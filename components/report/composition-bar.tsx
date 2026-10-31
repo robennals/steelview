@@ -104,7 +104,7 @@ export function CompositionBar({
         style={showCounts ? { '--sv-composition-total': `${Math.max(...composed.rows.map(row => totalText(row.total).length)) + 1}ch` } : undefined}
       >
         {composed.rows.map(row => (
-          <li key={row.label} className="sv-composition__row">
+          <li key={row.label} className="sv-composition__row" data-row={row.label}>
             <p className="sv-composition__head">
               <span className="sv-composition__label">
                 {row.label}

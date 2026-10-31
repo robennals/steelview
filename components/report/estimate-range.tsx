@@ -183,8 +183,8 @@ export function EstimateRange({
                 );
                 const detail = preview ? undefined : detailFor(e);
                 return detail
-                  ? <li key={`${e.label}-${i}`}><DetailRow rowClass="sv-estimates__row" summary={cells}>{detail}</DetailRow></li>
-                  : <li key={`${e.label}-${i}`} className="sv-estimates__row">{cells}</li>;
+                  ? <li key={`${e.label}-${i}`} data-row={e.label}><DetailRow rowClass="sv-estimates__row" summary={cells}>{detail}</DetailRow></li>
+                  : <li key={`${e.label}-${i}`} className="sv-estimates__row" data-row={e.label}>{cells}</li>;
               })}
           </ol>
         </Fragment>

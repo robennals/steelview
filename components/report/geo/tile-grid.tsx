@@ -57,6 +57,7 @@ export function TileGrid({ tiles, lookFor, highlight, label, descriptionId, cate
             className={look.slot ? 'sv-tile-map__tile sv-cat-fill' : 'sv-tile-map__tile'}
             style={{ gridRow: `${tile.row + 1} / span ${tile.h ?? 1}`, gridColumn: `${tile.col + 1} / span ${tile.w ?? 1}`, backgroundColor: look.color }}
             data-region={tile.id}
+            data-row={tile.id}
             data-readout={look.readout}
             data-slot={look.slot}
             data-missing={look.missing ? 'true' : undefined}

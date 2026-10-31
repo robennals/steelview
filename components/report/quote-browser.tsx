@@ -134,7 +134,7 @@ export function QuoteBrowser({
       ) : (
         <ol className="sv-quote-browser__list">
           {shown.map(quote => (
-            <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-browser__item">
+            <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-browser__item" data-row={quote.speaker}>
               <figure className="sv-quote" data-variant="listed">
                 {(quote.position || (quote.tags && quote.tags.length > 0)) && (
                   <p className="sv-quote__meta">

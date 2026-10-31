@@ -140,7 +140,7 @@ export function PeriodTimeline({
           });
           const placements = placePeriodLabels(bars.map(bar => ({ left: bar.left, right: bar.left + bar.width, label: bar.label })));
           return (
-            <li key={`${row.label}-${r}`} className="sv-periods__line sv-periods__row">
+            <li key={`${row.label}-${r}`} className="sv-periods__line sv-periods__row" data-row={row.label}>
               <p className="sv-periods__label-cell sv-periods__row-label">{row.label}</p>
               <div className="sv-periods__track">
                 {gridlines}

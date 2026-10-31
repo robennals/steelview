@@ -1407,7 +1407,7 @@
      Only with scripting on — with it off nothing can bring the rows back,
      so the table is simply complete and the button is not shown. */
   @media (scripting: enabled) {
-    .sv-data__frame[data-collapsed] tr[data-beyond-preview] {
+    .sv-data__frame[data-collapsed] tr[data-beyond-preview]:not([data-mark-picked]) {
       display: none;
     }
 

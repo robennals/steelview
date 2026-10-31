@@ -18,7 +18,7 @@ const Step = createContext<{
   toggle: () => void;
 } | null>(null);
 
-type ObservationStepProps = { observations: Observation[]; children: ReactNode };
+type ObservationStepProps = { observations: Observation[]; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can

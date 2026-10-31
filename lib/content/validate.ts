@@ -472,7 +472,7 @@ function knownSection(fact: Fact, section: string): boolean {
 /**
  * M1 — a mark must land on its observation's chart, since a reader takes what
  * it picks out as what the observation is about. Line charts take a region, a
- * point and lines, and comparisons and data tables take rows.
+ * point and lines; most other charts take rows (see `figureRows`).
  */
 function observationMarkErrors(f: Fact): string[] {
   const groups = observationGroups(f);
@@ -500,13 +500,28 @@ function markErrors(f: Fact, key: string, mark: ObservationMark): string[] {
     ];
   }
   const figure = componentFigure(f, key);
-  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label)
-    ?? (figure?.kind === 'dataTable' ? tableRowHeaders(figure) : undefined);
+  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label) ?? (figure && figureRows(figure));
   if (!rows) return ['is on a chart that cannot show marks yet'];
   return [
     ...(mark.from || mark.to || mark.at || mark.lines ? ['names periods or lines, but its chart has rows'] : []),
     ...(mark.rows ?? []).filter(row => !rows.includes(row)).map(row => `names "${row}", which is not a row of ${key}`),
   ];
+}
+
+/** What a mark can name on a figure, or undefined for a kind that cannot show marks yet. */
+function figureRows(figure: ComponentFigure): string[] | undefined {
+  switch (figure.kind) {
+    case 'dataTable': return tableRowHeaders(figure);
+    case 'barChart': return figure.items.map(item => item.label);
+    case 'compositionBar': return figure.rows.map(row => row.label);
+    case 'estimateRange': return figure.estimates.map(estimate => estimate.label);
+    case 'smallMultiples': return figure.panels.map(panel => panel.name);
+    case 'timeline': return figure.events.map(event => event.title);
+    case 'periodTimeline': return figure.rows.map(row => row.label);
+    case 'quotes': return figure.quotes.map(quote => quote.speaker);
+    case 'map': return Object.keys(figure.areas ?? figure.data ?? {});
+    default: return undefined;
+  }
 }
 
 /** Each row's label in a data table: what its `highlight` and marks name it by. */

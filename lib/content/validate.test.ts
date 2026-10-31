@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { compositionSumError, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
-import { figureExamplesTopic } from './__fixtures__/figure-examples';
+import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { factSources } from './sources';
 import { US_STATE_TILES } from '../../components/report/geo/tiles';
 
@@ -1335,6 +1335,31 @@ const markErrors = (observationMarks: Fact['observationMarks']) =>
 test('a mark that lands on its chart passes', () => {
   assert.deepEqual(markErrors({ up: { lines: ['Immigration'], from: '1990', to: '1992' }, low: { rows: ['UK'] } }), []);
   assert.deepEqual(markErrors({ up: { at: '1992' } }), []);
+});
+
+/** A row each kind that takes marks would name, from the figure fixture's example of it. */
+function firstRow(figure: ReturnType<typeof figureExamplesFact>['figures'] extends (infer F)[] | undefined ? F : never): string | undefined {
+  switch (figure.kind) {
+    case 'barChart': return figure.items[0].label;
+    case 'compositionBar': return figure.rows[0].label;
+    case 'estimateRange': return figure.estimates[0].label;
+    case 'smallMultiples': return figure.panels[0].name;
+    case 'timeline': return figure.events[0].title;
+    case 'periodTimeline': return figure.rows[0].label;
+    case 'quotes': return figure.quotes[0].speaker;
+    case 'map': return Object.keys(figure.areas ?? figure.data ?? {})[0];
+    default: return undefined;
+  }
+}
+
+test('a mark can name a row of every kind of figure that takes them, and only a real one', () => {
+  const example = figureExamplesFact();
+  const figures = example.figures!.flatMap(figure => { const row = firstRow(figure); return row && 'id' in figure && figure.id ? [{ id: figure.id, kind: figure.kind, row }] : []; });
+  assert.deepEqual([...new Set(figures.map(f => f.kind))].sort(), ['barChart', 'compositionBar', 'estimateRange', 'map', 'periodTimeline', 'quotes', 'smallMultiples', 'timeline']);
+  const body = figures.map(({ id }) => `## Observations {#${example.id}--observations-${id}}\n\n### Seen {#${example.id}--seen-${id}}\n\nText.`).join('\n\n');
+  const errors = (marks: Fact['observationMarks']) => validateTopic(figureExamplesTopic({ ...example, body: `${example.body}\n\n${body}`, observationMarks: marks })).filter(error => error.includes('observation mark'));
+  assert.deepEqual(errors(Object.fromEntries(figures.map(f => [`seen-${f.id}`, { rows: [f.row] }]))), []);
+  for (const f of figures) assert.match(errors({ [`seen-${f.id}`]: { rows: ['No such row'] } })[0], /names "No such row", which is not a row/, f.kind);
 });
 
 test('a mark must name what is on its chart', () => {
