@@ -1,8 +1,9 @@
 'use server';
 
-import type { ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { listTopicSlugs, loadTopic } from './load';
-import { viewpointWalkthrough } from './walkthrough';
+import { slideCitations, viewpointWalkthrough } from './walkthrough';
+import { ChartSources } from '@/components/topic/chart-sources';
 import { panelCharts } from '@/components/topic/fact-figures';
 import { SlideChart } from '@/components/topic/slide-chart';
 
@@ -21,7 +22,10 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
   if (kind === 'viewpoint') {
     const viewpoint = topic.viewpoints.find(v => v.id === id);
     if (!viewpoint) return [];
-    return viewpointWalkthrough(topic, viewpoint).steps.map((step, i) => step.chart ? <SlideChart key={i} slide={step.chart} fit="tall" page={page} /> : null);
+    return viewpointWalkthrough(topic, viewpoint).steps.map(({ chart }, i) => chart ? <Fragment key={i}>
+      <SlideChart slide={chart} fit="tall" page={page} />
+      <ChartSources fact={chart.fact} numbers={slideCitations(chart.fact, chart)} />
+    </Fragment> : null);
   }
   if (kind === 'data') {
     const fact = topic.facts.find(f => f.id === id);

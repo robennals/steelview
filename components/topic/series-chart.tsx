@@ -10,6 +10,7 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
 import { lineSourceNumbers } from '@/lib/content/sources';
+import { PanelSources } from './sources-slot';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
@@ -451,7 +452,7 @@ function Reading({
   events: StripEvent[];
   /** Compact form for the home page: graph only, links pointing at the fact page. */
   preview?: ChartPreview;
-  /** Link the source credit to the source itself, where the fact's source list is not on the page. */
+  /** Drawn in a data panel, with its sources row in place of the source credit. */
   panel?: boolean;
   /** What "About this data" says, which a data panel keeps with the description. */
   about?: ReactNode;
@@ -592,7 +593,7 @@ function Reading({
       )}
 
       {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${methodsHost}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
-      {!preview && <SourceLine sources={credits} />}
+      {panel ? <PanelSources /> : !preview && <SourceLine sources={credits} />}
 
       {observations}
     </section>
@@ -602,14 +603,13 @@ function Reading({
 /**
  * The source line under one reading: the reading's own source (else the
  * series'), then each line's own source, each linked to its numbered
- * reference, or straight to the source where the fact's list is not on the page.
- * Numbers follow `factSources`.
+ * reference. Numbers follow `factSources`.
  */
-export function readingCredits(series: Series, readingIndex: number, sourceOffset: number, factId: string, directSources = false): SourceCredit[] {
+export function readingCredits(series: Series, readingIndex: number, sourceOffset: number, factId: string): SourceCredit[] {
   const reading = series.readings[readingIndex];
   const own = reading.source ? series.readings.slice(0, readingIndex + 1).filter(r => r.source).length : 0;
   const credit = (source: Source, number: number): SourceCredit =>
-    directSources ? { label: source.publisher, href: source.url } : { label: source.publisher, href: `#source-${factId}-${number}`, number };
+    ({ label: source.publisher, href: `#source-${factId}-${number}`, number });
   const lineNumbers = lineSourceNumbers(series, sourceOffset, readingIndex);
   const lines = reading.lines.flatMap((line, i) => {
     const number = lineNumbers[i];
@@ -643,7 +643,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   preview?: ChartPreview;
   /** Draw this reading in full, and not the others. */
   onlyReading?: string;
-  /** Drawn in a data panel: filling its height, with its source credit linking to the source itself. */
+  /** Drawn in a data panel: filling its height, with its sources row. */
   panel?: boolean;
   /** Further notes for a data panel to keep with its description. */
   notes?: ReactNode;
@@ -684,7 +684,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
 
       <SeriesHighlight>
         {readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} credits={readingCredits(series, series.readings.indexOf(reading), sourceOffset, factId, panel)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} credits={readingCredits(series, series.readings.indexOf(reading), sourceOffset, factId)} />
         ))}
       </SeriesHighlight>
 

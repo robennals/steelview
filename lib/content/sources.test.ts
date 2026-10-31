@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { factSources, figureCitations, lineSourceNumbers, seriesSourceNumber, seriesSourceOffset } from './sources';
+import { factSources, figureCitations, lineSourceNumbers, seriesSourceNumber, seriesSourceOffset, footnotesIn, sourcesSummary } from './sources';
 import type { Fact, Series, Source } from './types';
 
 const source = (name: string): Source => ({ stance: 'supports', quote: name, title: name, url: `https://example.org/${name}`, publisher: name, date: '2024' });
@@ -87,4 +87,16 @@ test('every citation an item makes is a figure citation, in the order written', 
     events: [{ date: '2020', title: 'a', category: 'c', sources: [3, 2] }, { date: '2021', title: 'b', category: 'c', sources: [2] }],
   };
   assert.deepEqual(figureCitations(figure), [1, 3, 2, 2]);
+});
+
+test('a sources row names two publishers at most, each once, and counts the rest', () => {
+  const of = (...publishers: string[]) => sourcesSummary(publishers.map(publisher => ({ publisher })));
+  assert.deepEqual(of('ONS'), { label: 'Source', names: 'ONS', more: 0 });
+  assert.deepEqual(of('ONS', 'ONS'), { label: 'Sources', names: 'ONS', more: 0 });
+  assert.deepEqual(of('Home Office', 'ONS'), { label: 'Sources', names: 'Home Office and ONS', more: 0 });
+  assert.deepEqual(of('Home Office', 'ONS', 'ONS', 'OECD', 'Eurostat'), { label: 'Sources', names: 'Home Office, ONS', more: 2 });
+});
+
+test('the footnotes in some text are the ones to its own fact', () => {
+  assert.deepEqual(footnotesIn('A [3](#source-a-3), B [12](#source-a-12) and C [1](#source-ab-1).', 'a'), [3, 12]);
 });

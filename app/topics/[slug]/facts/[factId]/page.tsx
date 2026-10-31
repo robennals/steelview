@@ -66,7 +66,7 @@ export default async function FactPage({
   const { topic, fact, bodyHtml, supporting, parent } = data;
   const walkthroughs = await renderDataWalkthroughs(topic, [fact], { citationsAsText: false, footnotes: true });
   const steps = walkthroughs.get(fact.id) ?? [];
-  const charts = panelCharts(fact, { slug, asOf: topic.lastUpdated, facts: topic.facts });
+  const charts = panelCharts(fact, { slug, asOf: topic.lastUpdated, facts: topic.facts }, { addressed: true });
 
   return (
     <main className="sv-wrap sv-wrap--wide sv-factmain">

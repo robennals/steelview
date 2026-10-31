@@ -4,6 +4,7 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import type { Fact, Source } from '@/lib/content/types';
 import { ChartAbout } from '@/components/report/chart-about';
 import { ObservationBar } from './observation-bar';
+import { PanelSources } from './sources-slot';
 import { COMPACT_PREVIEW_ITEMS, RankedColumns, fitsRankedColumns } from '@/components/report/ranked-columns';
 import { DetailRow, RowDetailHint } from '@/components/report/row-detail';
 import type { PreviewFit } from '@/lib/chart/series-chart';
@@ -30,7 +31,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   sources: Source[];
   observations?: ReactNode;
   preview?: ChartPreview;
-  /** Drawn in a data panel, with its source credit linking to the source itself. */
+  /** Drawn in a data panel, with its sources row in place of the source credit. */
   panel?: boolean;
 }) {
   const [selected, setSelected] = useState(chart.defaultGroup ?? -1);
@@ -81,7 +82,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
     {chart.groups && selected < 0 && <div className="sv-comparison-legend">{chart.groups.map((label, i) => <span key={label}><i style={{ background: `var(--sv-group-${i})` }} />{label}</span>)}</div>}
     {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th>{hasDetail && <th>Detail</th>}</tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{format(value)}</td>)}<td>{format(item.value)}</td>{hasDetail && <td>{item.detail ?? '—'}</td>}</tr>)}</tbody></table></div></details>}
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
-    {!preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={panel ? sources[n - 1].url : at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher}{panel ? '' : ` [${n}]`}</a></span>)}</p>}
+    {panel ? <PanelSources /> : !preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
     {observations}
     {aboutText && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{aboutText}</p></details>}
   </figure>;

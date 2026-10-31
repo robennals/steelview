@@ -76,11 +76,12 @@ export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
 
 /**
  * A viewpoint step's chart, where any click follows the step's "Explore this
- * data", the chart's title included. A legend's definition still opens.
+ * data", the chart's title included. A legend's definition and the sources row
+ * still open.
  */
 export function ExplorableChart({ children }: { children: ReactNode }) {
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.target instanceof Element && event.target.closest('.sv-glossary')) return;
+    if (event.target instanceof Element && event.target.closest('.sv-glossary, .sv-chart__sources')) return;
     const explore = event.currentTarget.closest('.sv-walk__chart')?.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
     if (!explore) return;
     event.preventDefault();

@@ -2,10 +2,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { listTopicSlugs, loadTopic } from './load';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
-import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews, slideGroup } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure, type Fact } from './types';
-import { chartMore, observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
+import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -106,6 +106,19 @@ test('a chart\'s More text is filed under its chart, and an anchor moved to a ch
   assert.match(step.more, /What is counted\./);
   assert.ok(step.anchors.includes(`${fact.id}--old-section`));
   assert.equal(chartMore({ body }).size, 1);
+});
+
+test('a chart\'s sources are what it draws and what its text cites, and the first chart takes the claim\'s', () => {
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  const slides = factSlides(topic.slug, fact);
+  const last = slides.at(-1)!;
+  const key = slideGroup(fact, last);
+  const body = `## Subtleties {#${fact.id}--subtleties-${key}}\n\n### A catch {#${fact.id}--catch}\n\nWhy. [1](#source-${fact.id}-1)\n\n## More {#${fact.id}--more-${key}}\n\nMore. [2](#source-${fact.id}-2)`;
+  const cited = factCitations({ ...fact, body, claimSources: [2] }, slides);
+  assert.ok(cited.at(-1)!.includes(1) && cited.at(-1)!.includes(2));
+  assert.ok(cited[0].includes(2));
+  assert.equal(new Set(cited.at(-1)).size, cited.at(-1)!.length);
 });
 
 test('an observation\'s heading is rendered, not shown as markdown', async () => {

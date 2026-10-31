@@ -37,7 +37,7 @@ test('artifact subtleties stay separate from numbered observations', async () =>
 test('a chart\'s More text sits with its Subtleties in a sheet', async () => {
   const html = await renderMarkdown('## More {#example--more-people}\n\nWhat is counted.\n\n### About {#example--about}\n\nMethod.\n\n## Subtleties {#example--subtleties-people}\n\n### A catch {#example--catch}\n\nWhy.', 'topic');
   const { subtleties, bodyHtml } = chartObservations(html, 'example', ['people']);
-  assert.match(subtleties.people, /id="example--more-people"><summary>More<\/summary><p>What is counted/);
+  assert.match(subtleties.people, /id="example--more-people"><summary>More<\/summary>\s*<p>What is counted/);
   assert.match(subtleties.people, /<section id="example--about"/);
   assert.match(subtleties.people, /id="example--catch"/);
   assert.equal(bodyHtml, '');

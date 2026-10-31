@@ -48,9 +48,7 @@ export function figureDomId(fact: Pick<Fact, 'id'>, figureId: string): string {
 
 /** The figure's source line: its `sources` and every item-level citation, deduplicated, in ascending order. */
 export function figureCredits(figure: Figure, c: FigureContext): R.SourceCredit[] {
-  const credits = [...new Set(figureCitations(figure))].sort((a, b) => a - b).map(c.credit);
-  // A panel's source line names its sources; there is no numbered list to point into.
-  return c.panel ? credits.map(({ label, href }) => ({ label, href })) : credits;
+  return [...new Set(figureCitations(figure))].sort((a, b) => a - b).map(c.credit);
 }
 
 /** The content format (unit always present, currency checked by the schema) as the library's `ValueFormat`. */

@@ -1,5 +1,6 @@
 import { citedFactTargets, renderMarkdown } from './markdown';
 import { headlineFacts } from './rank-facts';
+import { chartCitations, footnotesIn } from './sources';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
 import { factSlides, slideGroup, type PreviewSlide } from './preview';
@@ -84,6 +85,25 @@ export function chartMore(fact: Pick<Fact, 'body'>): Map<string, string> {
     if (key) more.set(key, rest.join('\n').trim());
   }
   return more;
+}
+
+/**
+ * The numbered sources a chart's row lists: what the chart draws, then what its
+ * observations, Subtleties and More text cite, in that order and each once.
+ * What is cited sits on a chart, so this is what makes a source shown at all.
+ */
+export function slideCitations(fact: Fact, slide: Pick<PreviewSlide, 'chart' | 'reading'>): number[] {
+  const key = slideGroup(fact, slide);
+  const prose = [...(observationsByChart(fact).get(key) ?? []).map(o => `${o.heading}\n${o.markdown}`), chartMore(fact).get(key) ?? ''];
+  return [...new Set([...chartCitations(fact, slide.chart, slide.reading), ...prose.flatMap(text => footnotesIn(text, fact.id))])];
+}
+
+/**
+ * Each chart's sources (`slideCitations`), in step order. The claim sits above
+ * every chart, so the first chart's row also lists what the claim cites.
+ */
+export function factCitations(fact: Fact, slides: PreviewSlide[]): number[][] {
+  return slides.map((slide, i) => [...new Set([...slideCitations(fact, slide), ...(i === 0 ? fact.claimSources ?? [1] : [])])]);
 }
 
 /** An observation, as an element id, with the part of its chart it picks out. */

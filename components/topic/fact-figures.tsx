@@ -47,13 +47,15 @@ import {
   type FigureContext,
 } from '@/lib/content/figure-props';
 import { factSlides, type PreviewSlide } from '@/lib/content/preview';
-import { markedObservations } from '@/lib/content/walkthrough';
+import { factCitations, markedObservations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { componentFigure, figureLabel } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
+import { ChartSources } from './chart-sources';
 import { Prose } from './prose';
 import { SeriesChart, methodChangesReadingId } from './series-chart';
+import { SourcesSlot } from './sources-slot';
 
 /** A fact and its rendered body, shared by full pages and previews. */
 export type BodiedFact = { fact: Fact; bodyHtml: string };
@@ -107,10 +109,10 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
 }
 
 /**
- * One chart of a data panel in full: its controls, method changes and source,
- * for one reading of a series. Its observations come from the step it sits in,
- * and its source links lead to the sources themselves, since a panel on a topic
- * page has no source list to link to.
+ * One chart of a data panel in full: its controls and method changes, for one
+ * reading of a series. Its observations come from the step it sits in, and its
+ * sources row from the `SourcesSlot` around it. Its other source links lead to
+ * the sources themselves, since a panel on a topic page has no list to link to.
  */
 export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigurePage }) {
   const { fact, chart, reading: only } = slide;
@@ -124,14 +126,25 @@ export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigureP
     return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={markedObservations(fact, reading.id)} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
-  if (comparison) return <ComparisonChart fact={fact} chart={comparison} sources={sources} panel />;
+  if (comparison) return <ComparisonChart fact={fact} chart={comparison} sources={[]} panel />;
   const figure = componentFigure(fact, chart);
   return figure ? <FactFigure figure={figure} context={figureContext(fact, page.asOf, { panel: true })} page={page} /> : null;
 }
 
-/** Every chart of a data panel in full, in step order. */
-export function panelCharts(fact: Fact, page: FigurePage): ReactNode[] {
-  return factSlides(page.slug, fact).map((slide, i) => <PanelChart key={i} slide={slide} page={page} />);
+/**
+ * Every chart of a data panel in full, in step order, each with its sources
+ * row. `addressed`, on a report's own page, gives each source its address, on
+ * the first chart to cite it, so a link to it lands without script.
+ */
+export function panelCharts(fact: Fact, page: FigurePage, { addressed = false } = {}): ReactNode[] {
+  const slides = factSlides(page.slug, fact);
+  const citations = factCitations(fact, slides);
+  const placed = new Set<number>();
+  return slides.map((slide, i) => {
+    const anchored = addressed ? citations[i].filter(number => !placed.has(number)) : [];
+    anchored.forEach(number => placed.add(number));
+    return <SourcesSlot key={i} row={<ChartSources fact={fact} numbers={citations[i]} anchored={anchored} />}><PanelChart slide={slide} page={page} /></SourcesSlot>;
+  });
 }
 
 /** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */

@@ -1,3 +1,4 @@
+import { componentFigure } from './types';
 import type { Fact, Figure, Series, Source } from './types';
 
 /**
@@ -96,4 +97,41 @@ export function figureCitations(figure: Figure): number[] {
     case 'caveatList':
       return figure.items.flatMap(item => item.sources);
   }
+}
+
+/** Every citation a series makes on one reading's chart: its source and lines', its events' and any stop in measurement's. */
+function readingCitations(fact: SourcedFact, seriesIndex: number, readingIndex: number): number[] {
+  const series = seriesIndex < 0 ? fact.series : fact.additionalSeries?.[seriesIndex];
+  if (!series) return [];
+  const offset = seriesSourceOffset(fact, seriesIndex);
+  return [
+    seriesSourceNumber(fact, seriesIndex, readingIndex),
+    ...lineSourceNumbers(series, offset, readingIndex).flatMap(n => (n === undefined ? [] : [n])),
+    ...(series.breaks.length > 0 ? [offset + 1] : []),
+    ...series.events.flatMap(event => event.sources),
+    ...(series.notMeasuredSince ? [series.notMeasuredSince.source] : []),
+  ];
+}
+
+/** Every citation one chart draws, whichever kind it is: `chart` and `reading` as on a slide. */
+export function chartCitations(fact: SourcedFact & Pick<Fact, 'comparisons' | 'figures'>, chart: string, reading?: string): number[] {
+  const index = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
+  const series = chart === 'series' ? fact.series : fact.additionalSeries?.[index];
+  if (series) return readingCitations(fact, index, Math.max(0, series.readings.findIndex(r => r.id === reading)));
+  const figure = componentFigure(fact, chart);
+  return fact.comparisons?.find(c => c.id === chart)?.sources ?? (figure ? figureCitations(figure) : []);
+}
+
+/** The `[n](#source-<fact>-n)` footnotes in some markdown, in order. */
+export function footnotesIn(markdown: string, factId: string): number[] {
+  return [...markdown.matchAll(new RegExp(`\\(#source-${factId}-(\\d+)\\)`, 'g'))].map(match => Number(match[1]));
+}
+
+/** A chart's sources row in brief: at most two publishers, and how many more there are. */
+export function sourcesSummary(sources: Pick<Source, 'publisher'>[]): { label: string; names: string; more: number } {
+  const publishers = [...new Set(sources.map(source => source.publisher))];
+  const [first, second, ...rest] = publishers;
+  const label = sources.length === 1 ? 'Source' : 'Sources';
+  if (rest.length > 0) return { label, names: `${first}, ${second}`, more: rest.length };
+  return { label, names: second ? `${first} and ${second}` : first, more: 0 };
 }

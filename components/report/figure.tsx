@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { ObservationBar } from '@/components/topic/observation-bar';
+import { PanelSources } from '@/components/topic/sources-slot';
 import { ChartAbout } from './chart-about';
 import type { FigurePreview, SourceCredit } from './types';
 
@@ -70,7 +71,7 @@ export function ReportFigure({
         </figcaption>
         <ObservationBar />
         {children}
-        {sources && sources.length > 0 && <SourceLine sources={sources} />}
+        <PanelSources />
       </figure>
     );
   }

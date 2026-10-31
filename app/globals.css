@@ -3166,6 +3166,21 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
 .sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
 .sv-chart__about p { margin: 0 0 0.4rem; }
+/* One line closed, whatever the width: the names give way before the count. */
+.sv-chart__sources { flex: none; margin: 0.3rem 0 0; font: .8rem/1.5 var(--font-sans); color: var(--ink-3); }
+.sv-chart__sources > summary { display: flex; align-items: baseline; gap: 0.3em; list-style: none; cursor: pointer; }
+.sv-chart__sources > summary::-webkit-details-marker { display: none; }
+.sv-chart__sources-label, .sv-chart__sources-more { flex: none; }
+.sv-chart__sources-names { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart__sources-toggle { flex: none; margin-left: auto; padding-left: 0.75rem; font-weight: 600; color: var(--accent); }
+.sv-chart__sources-toggle::after { content: "Details ▾"; }
+.sv-chart__sources > summary:hover .sv-chart__sources-toggle { text-decoration: underline; text-underline-offset: 0.2em; }
+.sv-chart__sources[open] .sv-chart__sources-toggle::after { content: "Less ▴"; }
+.sv-chart__sources ol { margin: 0.5rem 0 0; padding-left: 1.6rem; }
+.sv-chart__sources .sv-source { margin-bottom: 0.6rem; }
+.sv-chart__sources .sv-source p { margin: 0; }
+.sv-chart__sources blockquote { margin: 0.2rem 0 0; padding-left: 0.6rem; border-left: 2px solid var(--rule); color: var(--ink-2); }
+.sv-walk .sv-chart__sources .sv-target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 .sv-chart__about-label { margin: 0.6rem 0 0.2rem; font-weight: 600; color: var(--ink-2); }
 .sv-chart__about-list { margin: 0 0 0.6rem; padding-left: 1.4rem; }
 .sv-chart__about-list li { margin-block: 0.15rem; }
