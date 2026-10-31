@@ -1,4 +1,5 @@
 import { test, expect } from './hydrated-test';
+import { headCorner } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the supporting
 // facts `immigration-shifted-from-eu-to-non-eu` (status well-supported) and
@@ -24,6 +25,24 @@ test('a fact page renders at phone width without horizontal overflow', async ({ 
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   );
   expect(overflows).toBe(false);
+});
+
+// A row's charts load when it opens, so a load of the page alone never sees them.
+// us-voter-id is the widest case: a row of many charts, each with a text description.
+test('opening every row of a topic at phone width does not widen the page', async ({ page }) => {
+  test.slow();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/topics/us-voter-id');
+  for (const row of await page.locator('.sv-row').all()) {
+    await row.locator('.sv-row__toggle').click(headCorner);
+    await expect(row.locator('.sv-walk__chart-loading')).toHaveCount(0);
+    // While a row's walkthrough slides in, its transform holds everything inside it.
+    await row.evaluate(el => Promise.allSettled(el.getAnimations({ subtree: true }).map(a => a.finished)));
+    const overflows = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+    );
+    expect(overflows).toBe(false);
+  }
 });
 
 // Depends on authored uk-immigration content: the fact
