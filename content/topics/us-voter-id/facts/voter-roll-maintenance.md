@@ -1450,7 +1450,7 @@ The shares are from the EAC's corrected 2024 figures. [2](#source-voter-roll-mai
 
 Non-response has been the single largest reason in most cycles, at between about a third and two-fifths of removals. [13](#source-voter-roll-maintenance-13) [8](#source-voter-roll-maintenance-8) [7](#source-voter-roll-maintenance-7) [2](#source-voter-roll-maintenance-2)
 
-It rests on silence rather than on a record that the voter moved: the registrant did not return a card and did not vote for about four years. How many of these people were still living at their address is not measured nationally (see the Ohio chart below and Data still needed).
+It rests on silence rather than on a record that the voter moved: the registrant did not return a card and did not vote for about four years. How many of these people were still living at their address is not measured nationally (see the Ohio chart below and What we don't know yet).
 
 ## Observations {#voter-roll-maintenance--observations-state-removal-rates}
 

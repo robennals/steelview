@@ -1351,7 +1351,7 @@ figures:
     id: g7
     title: 'Polling-place ID in the G7 democracies'
     description: 'What each G7 member asks of in-person voters. The table shows every member, not a chosen subset.'
-    note: 'Why this set: the G7 is the complete group of large, high-income democracies most often compared with the US, and each member''s rule can be checked against its own election law. A wider group such as the OECD''s 38 members would be better, but no neutral, fetchable source classifies all of them (see Data still needed). A dash in the Since column means the start date was not established from the sources read.'
+    note: 'Why this set: the G7 is the complete group of large, high-income democracies most often compared with the US, and each member''s rule can be checked against its own election law. A wider group such as the OECD''s 38 members would be better, but no neutral, fetchable source classifies all of them (see What we don''t know yet). A dash in the Since column means the start date was not established from the sources read.'
     caption: 'One row per country'
     columns:
       - { key: country, label: 'Country', rowHeader: true }
@@ -1456,8 +1456,6 @@ figures:
   - kind: series
     id: canada-nonvoters
 ---
-This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
-
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-states-with-id}
 
 ### Thirty-six states now ask for ID, up from 13 in 2000 {#voter-id-rules-in-the-us-and-abroad--us-36-states-up-from-13}
@@ -1571,6 +1569,10 @@ Canada lets a voter without ID make a written declaration if another elector at 
 
 A country that checks a polling card, accepts any document, asks only on request or allows vouching can be counted either way. France's rule does not apply in its smallest communes, and Germany's applies only on request. [37](#source-voter-id-rules-in-the-us-and-abroad-37) [38](#source-voter-id-rules-in-the-us-and-abroad-38) Global tallies circulating in the US debate were not traced to a source that publishes its country-by-country coding, so none is used here.
 
+### "Other democracies require ID" and "other democracies adopted ID because of fraud" are different claims {#voter-id-rules-in-the-us-and-abroad--require-versus-adopted-after-fraud}
+
+Most G7 members ask voters for ID, but of the three recent adopters only Northern Ireland acted after recorded personation; Britain and Canada acted on a perceived gap. [27](#source-voter-id-rules-in-the-us-and-abroad-27) [25](#source-voter-id-rules-in-the-us-and-abroad-25) [32](#source-voter-id-rules-in-the-us-and-abroad-32) Countries such as Italy have required ID for decades, so their rule says nothing about whether fraud prompted it. [41](#source-voter-id-rules-in-the-us-and-abroad-41)
+
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-adoption-reasons}
 
 ### Northern Ireland adopted ID after organised personation {#voter-id-rules-in-the-us-and-abroad--northern-ireland-after-personation}
@@ -1644,17 +1646,11 @@ Electoral-process reasons, which include being unable to prove identity or addre
 
 A Canadian voter with no ID may vote after a written declaration, if an elector listed at the same polling station shows ID and vouches for them. [33](#source-voter-id-rules-in-the-us-and-abroad-33) Canada's rule also accepts two non-photo IDs instead of one photo ID. [33](#source-voter-id-rules-in-the-us-and-abroad-33)
 
-## Subtleties {#voter-id-rules-in-the-us-and-abroad--subtleties}
+## More {#voter-id-rules-in-the-us-and-abroad--more-states-with-id}
 
-### "Other democracies require ID" and "other democracies adopted ID because of fraud" are different claims {#voter-id-rules-in-the-us-and-abroad--require-versus-adopted-after-fraud}
+This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
 
-Most G7 members ask voters for ID, but of the three recent adopters only Northern Ireland acted after recorded personation; Britain and Canada acted on a perceived gap. [27](#source-voter-id-rules-in-the-us-and-abroad-27) [25](#source-voter-id-rules-in-the-us-and-abroad-25) [32](#source-voter-id-rules-in-the-us-and-abroad-32) Countries such as Italy have required ID for decades, so their rule says nothing about whether fraud prompted it. [41](#source-voter-id-rules-in-the-us-and-abroad-41)
-
-### Britain's small turnaway rate does not by itself show the rule stopped fraud {#voter-id-rules-in-the-us-and-abroad--turnaways-are-not-fraud-stopped}
-
-The people turned away were people without accepted ID, not detected impostors; the government's evaluation found no way to know whether any personation went undetected. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [28](#source-voter-id-rules-in-the-us-and-abroad-28) The rate measures the rule's cost at the polling station, not its benefit.
-
-## About this data {#voter-id-rules-in-the-us-and-abroad--about}
+### About this report's data {#voter-id-rules-in-the-us-and-abroad--about}
 
 **US series.** NCSL has published no single historical table, so the 1950–2026 line combines NCSL's two retrospective accounts with its voter-ID page as archived by the Internet Archive in the autumn of each federal election year from 2010 (September 2009 for the first point).
 
@@ -1669,3 +1665,9 @@ Each count is the figure NCSL stated at the time, not a reconstruction. Points a
 Northern Ireland, Britain and Canada are given adoption histories because they are the cases most often cited in US debate.
 
 **Britain.** Turnaway figures are from polling-station records reported to the Electoral Commission; the awareness figures are from a public opinion survey carried out for the Commission immediately after the election. Both are quoted from the Commission's own reports; the Commons Library briefing is used for personation, adoption history and the government's evaluation.
+
+## Subtleties {#voter-id-rules-in-the-us-and-abroad--subtleties-gb-turnaway-share}
+
+### Britain's small turnaway rate does not by itself show the rule stopped fraud {#voter-id-rules-in-the-us-and-abroad--turnaways-are-not-fraud-stopped}
+
+The people turned away were people without accepted ID, not detected impostors; the government's evaluation found no way to know whether any personation went undetected. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [28](#source-voter-id-rules-in-the-us-and-abroad-28) The rate measures the rule's cost at the polling station, not its benefit.

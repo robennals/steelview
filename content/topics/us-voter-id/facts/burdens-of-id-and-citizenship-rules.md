@@ -1206,6 +1206,8 @@ figures:
       - { label: 'GAO Tennessee: aged 18 vs 44–53', year: 2012, estimate: -1.3, source: 29 }
       - { label: 'GAO Kansas: newly registered vs 20+ years', year: 2012, estimate: -5.2, source: 29 }
       - { label: 'GAO Tennessee: newly registered vs 20+ years', year: 2012, estimate: -4.6, source: 29 }
+movedAnchors:
+  observations-great-britain: turnout-overall
 ---
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-rejection-rate}
 
@@ -1390,7 +1392,7 @@ In Kansas the extra drop was largest for 18-year-olds, then for the newly regist
 
 The national study's estimate for non-white relative to white turnout is slightly positive and not significantly different from zero. Campaigns became 4.7 points more likely to contact non-white voters, which "might have offset modest effects" of the laws. [27](#source-burdens-of-id-and-citizenship-rules-27) If so, the lack of a turnout effect partly reflects effort spent overcoming the rule, not a rule with no cost.
 
-## Observations {#burdens-of-id-and-citizenship-rules--observations-great-britain}
+## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-turnout-overall}
 
 ### Great Britain's turnaways were small and fell at each election {#burdens-of-id-and-citizenship-rules--gb-turnaways-small}
 
@@ -1400,7 +1402,9 @@ The chart is in [the report on ID rules](#fact-voter-id-rules-in-the-us-and-abro
 
 Around 4% of people who did not vote in 2024 gave an unprompted reason related to the ID rules, and non-voters in lower social grades were more likely to say they lacked the required ID. [36](#source-burdens-of-id-and-citizenship-rules-36) This is the closest published measure of deterrence beyond those turned away at the door; no US equivalent was found.
 
-## What this does and does not measure {#burdens-of-id-and-citizenship-rules--scope}
+## More {#burdens-of-id-and-citizenship-rules--more-rejection-rate}
+
+### What this does and does not measure {#burdens-of-id-and-citizenship-rules--scope}
 
 This report counts people who met an obstacle — no document, a blocked application, a rejected ballot — and estimates whether total turnout changed.
 

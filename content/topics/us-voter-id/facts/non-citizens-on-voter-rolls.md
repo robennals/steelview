@@ -709,16 +709,6 @@ figures:
   - kind: comparison
     id: ohio-referrals
 ---
-These reviews compare a state's voter list against records that say someone is not a citizen: driver's licence files, jury-duty excusals, immigration records and, since 2025, the federal SAVE database.
-
-They count three different things that are often run together, each much smaller than the one before:
-
-- people **flagged** by a database match;
-- people **confirmed** as non-citizens on the rolls;
-- confirmed non-citizens who **voted**.
-
-No review counts people whose non-citizen status appears in no record, so every figure here is a floor rather than an estimate of the total.
-
 ## Observations {#non-citizens-on-voter-rolls--observations-registrants-found}
 
 ### Every state that looked found some non-citizens on its rolls {#non-citizens-on-voter-rolls--found-on-rolls}
@@ -886,7 +876,19 @@ Every batch in the chart contains non-citizen registrants, at sizes that vary wi
 
 Ohio had 8,159,946 registered voters and 5,851,387 ballots cast in November 2024. [12](#source-non-citizens-on-voter-rolls-12) The alleged voters in the 2025 referral span every federal election from 2018 to 2024; dividing them by one election's ballots would overstate the rate. [9](#source-non-citizens-on-voter-rolls-9) The Secretary of State, a Republican, called non-citizen registration "exceedingly rare". [9](#source-non-citizens-on-voter-rolls-9)
 
-## About this data {#non-citizens-on-voter-rolls--about}
+## More {#non-citizens-on-voter-rolls--more-registrants-found}
+
+These reviews compare a state's voter list against records that say someone is not a citizen: driver's licence files, jury-duty excusals, immigration records and, since 2025, the federal SAVE database.
+
+They count three different things that are often run together, each much smaller than the one before:
+
+- people **flagged** by a database match;
+- people **confirmed** as non-citizens on the rolls;
+- confirmed non-citizens who **voted**.
+
+No review counts people whose non-citizen status appears in no record, so every figure here is a floor rather than an estimate of the total.
+
+### About this report's data {#non-citizens-on-voter-rolls--about}
 
 **Why there is no time series.** Each state review is a one-off, using its own databases, period and definition of a case, so the reviews cannot be joined into a national series. Ohio's referral batches are the only repeated count, and they are shown as a comparison by year of announcement because each batch covers different elections and AP's comparison omits 2020 and 2023.
 

@@ -1280,7 +1280,7 @@ Stuart's analysis put errors at "probably more than 25%" of the list, with Black
 
 Abigail Thernstrom testified to the Senate in 2001 that the Commission's own data showed whites "erroneously placed on the purge list at almost twice the rate of blacks". [45](#source-election-fraud-and-voter-exclusion-history-45) The sources agree the list was badly inaccurate; they disagree on whether its errors fell harder on Black voters.
 
-## Observations {#election-fraud-and-voter-exclusion-history--observations}
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-black-registration-2004}
 
 ### Georgia 2018: registrations on hold, with photo ID as the fallback {#election-fraud-and-voter-exclusion-history--georgia-exact-match}
 
@@ -1288,21 +1288,29 @@ In October 2018 more than 53,000 registrations were on hold under Georgia's "exa
 
 Those voters could still vote by showing a driver's licence or state photo ID at the polls. [46](#source-election-fraud-and-voter-exclusion-history-46)
 
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-modern-results}
+
 ### Officials who refused to certify were made to certify {#election-fraud-and-voter-exclusion-history--certification-refusals}
 
 In June 2022, Otero County, New Mexico, certified its primary only after the state supreme court ordered it to. [47](#source-election-fraud-and-voter-exclusion-history-47)
 
 In November 2022, two Cochise County, Arizona, supervisors voted to delay certification past the legal deadline. A judge ordered certification and both were indicted: Peggy Judd pleaded guilty to a misdemeanour, and Tom Crosby was awaiting trial as of September 2025 (no later outcome found). [48](#source-election-fraud-and-voter-exclusion-history-48) Refusals in 2025–26 were not searched.
 
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-pre-vra-registration}
+
 ### Northern Ireland: exclusion through the franchise and ward lines {#election-fraud-and-voter-exclusion-history--northern-ireland-comparator}
 
 The UK's Cameron Commission found in 1969 that in Londonderry about three in five adults were Catholic while Unionists held three in five council seats, and that the property-based local franchise excluded about a quarter of those who could vote in Stormont elections. [49](#source-election-fraud-and-voter-exclusion-history-49) Northern Ireland's later voter-ID laws are covered in [the report on ID rules](#fact-voter-id-rules-in-the-us-and-abroad).
+
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-case-methods}
 
 ### The fraud record and the exclusion record have no common measure {#election-fraud-and-voter-exclusion-history--no-common-measure}
 
 The fraud cases are counted in convictions and altered ballots per precinct; the exclusion record is counted in registration rates across whole states. No source converts both into votes lost or gained, so which danger has been larger cannot be read from these data.
 
-## About this data {#election-fraud-and-voter-exclusion-history--about}
+## More {#election-fraud-and-voter-exclusion-history--more-case-methods}
+
+### About this report's data {#election-fraud-and-voter-exclusion-history--about}
 
 **What is measured.** Named cases where a court opinion, a Justice Department report or a state election board describes how fraud or exclusion was done. Added to these are three compilations of detected modern fraud (Heritage, News21, Levitt) and the registration tables the Supreme Court reproduced.
 
@@ -1310,6 +1318,6 @@ The fraud cases are counted in convictions and altered ballots per precinct; the
 
 **Scanning errors.** Court opinions are read in the Caselaw Access Project's text, which contains some scanning errors (for example "62.[6]"). Quotes keep those errors rather than correcting them.
 
-**Why there is no time series.** No source publishes a consistent count of election-crime prosecutions by year or method: the Justice Department's annual reports list examples, not totals, and the compilations differ in method and coverage. The registration figures are published for 1965 and 2004 in one table; the annual state tables that would make a series were not reached (see Data still needed).
+**Why there is no time series.** No source publishes a consistent count of election-crime prosecutions by year or method: the Justice Department's annual reports list examples, not totals, and the compilations differ in method and coverage. The registration figures are published for 1965 and 2004 in one table; the annual state tables that would make a series were not reached (see What we don't know yet).
 
 **What this is commonly mistaken for.** A count of detected cases is not a count of fraud. A case where fraud was proven is not proof that the outcome changed: of the cases here, East Chicago, North Carolina's 9th District and Paterson were voided or rerun, while Illinois 1960 and Chicago 1982 did not change the top race.
