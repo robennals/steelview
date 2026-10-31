@@ -1032,29 +1032,6 @@ figures:
       - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
       - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
 ---
-Safe and legal routes are the ways a person can be given permission to come
-to the UK for protection before travelling, instead of claiming asylum after
-arriving. Since 2021 most such permissions have gone through two schemes for
-specific countries. The UK has granted 290,044 Ukraine visas since March 2022
-and 187,552 visas on the BN(O) route to people from Hong Kong since January 2021
-[3](#source-safe-and-legal-routes-3)
-[5](#source-safe-and-legal-routes-5). Almost no Ukrainians or Hong Kongers
-crossed the Channel by small boat in the same years
-[40](#source-safe-and-legal-routes-40). The main small-boat nationalities had
-far smaller routes. For Eritreans, Sudanese, Somalis and Iranians the largest
-was refugee family reunion, which let a refugee's partner and children join
-them. It was paused on 4 September 2025
-[14](#source-safe-and-legal-routes-14)
-[18](#source-safe-and-legal-routes-18). The UK Resettlement Scheme, which
-had no quota for new referrals in 2025/26, reopened on 28 September 2026 with
-a yearly cap [22](#source-safe-and-legal-routes-22)
-[24](#source-safe-and-legal-routes-24)
-[26](#source-safe-and-legal-routes-26).
-
-These are counts side by side. They show which nationalities had a route.
-They do not show what a route causes, or how many people wanted one and had
-none (see Data still needed).
-
 ## Observations {#safe-and-legal-routes--observations-all-routes}
 
 ### Two schemes for specific countries account for most grants since 2021 {#safe-and-legal-routes--two-country-schemes-dominate}
@@ -1254,3 +1231,13 @@ small-boat arrivals and 12,888 family reunion grants in the year to June 2026
 [29](#source-safe-and-legal-routes-29)
 [16](#source-safe-and-legal-routes-16). Family reunion remains closed
 [20](#source-safe-and-legal-routes-20).
+
+## More {#safe-and-legal-routes--more-all-routes}
+
+Safe and legal routes are the ways a person can be given permission to come to the UK for protection before travelling, instead of claiming asylum after arriving.
+
+These are counts side by side. They show which nationalities had a route. They do not show what a route causes, or how many people wanted one and had none (see What we don't know yet).
+
+## More {#safe-and-legal-routes--more-reopening}
+
+The UK Resettlement Scheme, which had no quota for new referrals in 2025/26, reopened on 28 September 2026 with a yearly cap [22](#source-safe-and-legal-routes-22) [24](#source-safe-and-legal-routes-24) [26](#source-safe-and-legal-routes-26).

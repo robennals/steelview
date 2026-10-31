@@ -2051,10 +2051,6 @@ figures:
 observationMarks:
   about-half-of-refused-claimants-recorded-leaving: {lines: [Returns as a share of refused], from: '2010', to: '2022'}
 ---
-Removals from the UK fell through the 2010s, collapsed during the pandemic and have risen each year since 2021, but enforced returns in the year to June 2026 (9,669) were less than half their 2004 level. [2](#source-removals-and-what-stops-them-2) [1](#source-removals-and-what-stops-them-1) Of the 40,605 returns that year, 76% were voluntary. Asylum-related returns reached 12,568, the highest in a series starting in 2010. [5](#source-removals-and-what-stops-them-5)
-
-No source measures how many failed removals the ECHR blocks. The Home Office says it does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) What exists are proxies: issues raised in detention, cancelled removal directions, failed charter-flight seats, and foreign offenders' appeals won on human-rights grounds. Each is shown below with its limits.
-
 ## Observations {#removals-and-what-stops-them--observations-returns}
 
 ### Returns fell for a decade, then recovered after 2021 {#removals-and-what-stops-them--returns-fell-then-recovered}
@@ -2218,3 +2214,11 @@ No published source counts removals stopped by the ECHR. The Home Office does no
 ### Other obstacles are documented alongside the legal ones {#removals-and-what-stops-them--other-obstacles}
 
 The National Audit Office named conflict at home, missing identity documents and countries without return agreements alongside human-rights grounds. [35](#source-removals-and-what-stops-them-35) A fifth of failures on the Jamaica charters were people the Home Office did not find or did not visit. [39](#source-removals-and-what-stops-them-39)
+
+## More {#removals-and-what-stops-them--more-returns}
+
+Of the 40,605 returns in the year to June 2026, 76% were voluntary. [5](#source-removals-and-what-stops-them-5)
+
+## More {#removals-and-what-stops-them--more-echr-share}
+
+No source measures how many failed removals the ECHR blocks. The Home Office says it does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) What exists are proxies: issues raised in detention, cancelled removal directions, failed charter-flight seats, and foreign offenders' appeals won on human-rights grounds. Each is shown in this report with its limits.

@@ -1575,7 +1575,7 @@ During the first phase of offshore processing, which still allowed eventual sett
 
 Operation Sovereign Borders began in September 2013, and the first recorded turnback was on 19 December 2013. Arrivals fell to 160 people in 2014 and none in 2015 or 2016. By October 2016, 740 people on 29 vessels had been returned to their country of departure since December 2013. [1](#source-deterrence-and-protection-policies-1) [2](#source-deterrence-and-protection-policies-2)
 
-The no-settlement rule (July 2013), the start of Operation Sovereign Borders (September 2013) and the first turnback (December 2013) all came in the same year, so annual figures alone cannot separate them. Monthly figures were not found (see Data still needed).
+The no-settlement rule (July 2013), the start of Operation Sovereign Borders (September 2013) and the first turnback (December 2013) all came in the same year, so annual figures alone cannot separate them. Monthly figures were not found (see What we don't know yet).
 
 ### Which measure caused the fall is disputed {#deterrence-and-protection-policies--australia-cause}
 
@@ -1691,7 +1691,7 @@ Studies across Europe, Germany and Switzerland find that delaying work or decisi
 
 ### Ministers argue earlier work rights would draw more crossings {#deterrence-and-protection-policies--uk-work-rule}
 
-In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see Data still needed). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
+In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see What we don't know yet). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
 
 ## Observations {#deterrence-and-protection-policies--observations-uk-2026}
 

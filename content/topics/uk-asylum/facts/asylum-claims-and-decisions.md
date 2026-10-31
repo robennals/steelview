@@ -1789,10 +1789,6 @@ figures:
       dependants) for the UK. Both count positive first-instance decisions
       over all first-instance decisions, excluding withdrawals.
 ---
-Asylum claims in the UK reached about 105,000 people in 2024, the highest since records began in 1979, and about 101,000 in 2025. [3](#source-asylum-claims-and-decisions-3) Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the EU+ and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7) The share of claims granted at initial decision fell from a record 76% in 2022 to 42% in 2025, [15](#source-asylum-claims-and-decisions-15) [16](#source-asylum-claims-and-decisions-16) and an appeal is allowed in about two in five cases heard. [26](#source-asylum-claims-and-decisions-26)
-
-These figures count people who claim asylum inside the UK. They do not count resettled refugees, people on humanitarian visa routes such as those for Ukrainians, or people who enter illegally and never claim. Grant rates exclude withdrawn claims, so they describe decided claims, not all claims.
-
 ## Observations {#asylum-claims-and-decisions--observations-people}
 
 ### 2002 peak, then a long low, then a rise from 2021 {#asylum-claims-and-decisions--claims-over-time}
@@ -1898,3 +1894,17 @@ The UK has granted higher rates than the EU for most of its main nationalities s
 ### The UK's European rank depends on what is counted {#asylum-claims-and-decisions--rank-depends-on-measure}
 
 The UK ranks thirteenth of 32 on first-time applicants per head in 2025 in the chart above. The Migration Observatory puts it twelfth for 2025; [10](#source-asylum-claims-and-decisions-10) the Home Office puts it sixteenth for the year to March 2026, counting all applicants in other countries, including repeat applications. [9](#source-asylum-claims-and-decisions-9) By total number the UK is fifth on every measure. [9](#source-asylum-claims-and-decisions-9) [10](#source-asylum-claims-and-decisions-10)
+
+## More {#asylum-claims-and-decisions--more-people}
+
+Asylum claims in the UK reached about 105,000 people in 2024, the highest since records began in 1979, and about 101,000 in 2025. [3](#source-asylum-claims-and-decisions-3)
+
+These figures count people who claim asylum inside the UK. They do not count resettled refugees, people on humanitarian visa routes such as those for Ukrainians, or people who enter illegally and never claim.
+
+## More {#asylum-claims-and-decisions--more-per-head-2025}
+
+Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the EU+ and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7)
+
+## More {#asylum-claims-and-decisions--more-grant-rate}
+
+Grant rates exclude withdrawn claims, so they describe decided claims, not all claims.
