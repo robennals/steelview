@@ -3060,7 +3060,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-source-quote > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .sv-references .sv-source-quote blockquote { margin-top: .65rem; border: 0; padding: 0; }
 
-.sv-comparison__rows { list-style: none; padding: 0; margin: 1rem 0 .4rem; }
+.sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
 .sv-comparison__rows > li { margin-bottom: .75rem; }
 .sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
 .sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
@@ -3069,6 +3069,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }
 .sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
 .sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
+.sv-comparison__rows[data-dense] { --sv-row-room: 2.5rem; }
 .sv-comparison__rows[data-dense] > li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
 .sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
 .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
@@ -3167,8 +3168,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    comparison, and the credit. The full chart, one click away, has the rest. */
 /* A preview's plot fills whatever height its container gives it, so every slide
    in a carousel draws its chart at the same size: the figure is a column whose
-   plot takes the space left under the caption. Height only helps a chart that
-   reads off it, so rows of bars keep their own spacing and sit at the top. */
+   plot takes the space left under the caption. Rows of bars read off their
+   width, so they take only a little of it: see the rule for them below. */
 .sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; }
 .sv-chart[data-preview] .sv-chart__highlight,
 .sv-chart[data-preview] .sv-chart__reading { flex: 1; min-height: 0; display: flex; flex-direction: column; }
@@ -3214,6 +3215,11 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 0; min-height: 12rem; container-type: size; }
 .sv-chart[data-panel-chart] .sv-chart__svg { display: none; width: 100%; height: 100%; }
 .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+/* Rows of bars spread into spare height, each up to --sv-row-room from the next,
+   and any height beyond that stays under the chart. A row whose label wraps
+   can need more than that, so the rows are never held under their own height. */
+.sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
+.sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: block; }
@@ -3251,11 +3257,13 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 @media (width > 47.5rem) {
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 6.5rem; }
   /* It has the height too, so a long comparison needs no clamping there. */
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] { --sv-row-room: 2.5rem; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .5rem; margin-bottom: .45rem; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__track { height: .9rem; }
 }
 /* Clamped rows: a long comparison squeezed into the fixed slide height. */
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] { --sv-row-room: 1.35rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .35rem; margin-bottom: .3rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :last-child { white-space: nowrap; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .64rem; line-height: 1.1; }
