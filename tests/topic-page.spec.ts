@@ -72,7 +72,7 @@ test('a data panel is the data: its charts open nothing, and have their controls
   await expect(step.locator('table').first()).toBeVisible();
 });
 
-test('a short bar chart keeps its bars together, with its scale under them, in a tall panel', async ({ page }) => {
+test('a short bar chart spreads its bars a little, with its scale under them, in a tall panel', async ({ page }) => {
   await page.goto(TOPIC);
   const row = await openDataRow(page, 'Immigration, the Economy and the Public Finances');
   await row.locator('.sv-walk__tab', { hasText: 'Who pays UK universities' }).click();
@@ -82,7 +82,8 @@ test('a short bar chart keeps its bars together, with its scale under them, in a
   const first = await bars.first().boundingBox();
   const second = await bars.last().boundingBox();
   const scale = await chart.locator('.sv-comparison__scale').boundingBox();
-  expect(second!.y - first!.y).toBeLessThan(60);
+  expect(second!.y - first!.y).toBeGreaterThan(55);
+  expect(second!.y - first!.y).toBeLessThan(65);
   expect(scale!.y - (second!.y + second!.height)).toBeLessThan(40);
 });
 

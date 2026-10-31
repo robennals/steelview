@@ -78,7 +78,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
         </li>)}
       </ol>
       {rank && <p className="sv-comparison__rank">{rank.label}: {format(items.find(item => item.highlight)!.value)} — {ordinal(rank.rank)} of {rank.of}</p>}
-    </> : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined}>
+    </> : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined} style={{ '--sv-row-count': items.length }}>
       {items.map((item, index) => <li key={`${chart.id}-${index}`}>
         <div className="sv-comparison__label"><span title={preview ? item.label : undefined}>{item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></div>
         <div className="sv-comparison__track" aria-hidden="true">

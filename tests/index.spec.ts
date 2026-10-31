@@ -30,6 +30,22 @@ test('the tagline links to the About page', async ({ page }) => {
   await expect(page).toHaveURL(/\/about$/);
 });
 
+test('a short bar chart preview spreads its rows a little, and a wrapped label keeps its height', async ({ page }) => {
+  await page.goto('/');
+  const row = rows(page).filter({ hasText: 'Voter ID and citizenship checks' });
+  await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
+  // Five rows at 2.5rem each, against 108px at their own spacing.
+  const short = row.locator('.sv-comparison').filter({ hasText: 'Non-citizen registrants found' }).locator('.sv-comparison__rows');
+  await expect(short.locator('> li')).toHaveCount(5);
+  await expect.poll(() => short.evaluate(list => list.clientHeight)).toBe(200);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const wrapped = row.locator('.sv-comparison').filter({ hasText: 'Adult citizens without each kind' }).locator('.sv-comparison__rows');
+  const { height, content } = await wrapped.evaluate(list => ({ height: list.clientHeight, content: list.scrollHeight }));
+  expect(content).toBeLessThanOrEqual(height);
+  expect(height).toBeGreaterThan(200);
+});
+
 test('the first topic starts open and its carousel steps through the charts', async ({ page }) => {
   await page.goto('/');
   await expect(rows(page).first()).toHaveAttribute('data-open', 'true');
