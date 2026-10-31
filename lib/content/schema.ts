@@ -713,6 +713,20 @@ export const figureSchema = z.discriminatedUnion('kind', [
   caveatListFigureSchema,
 ]);
 
+/**
+ * The part of its chart an observation is about, picked out when a reader
+ * reaches it, so every observation can be checked by eye against the data.
+ * Together these say a region (`from`, `to`), a point (`at`), a subset of
+ * lines (`lines`) or a subset of rows (`rows`); a line chart can combine them.
+ */
+export const observationMarkSchema = z.strictObject({
+  from: partialDate.optional(),
+  to: partialDate.optional(),
+  at: partialDate.optional(),
+  lines: z.array(z.string().min(1)).min(1).optional(),
+  rows: z.array(z.string().min(1)).min(1).optional(),
+}).refine(mark => Object.keys(mark).length > 0, 'must pick out part of the chart');
+
 export const factFrontmatterSchema = z.object({
   title: z.string().min(1).optional(),
   claim: z.string().min(1),
@@ -758,6 +772,8 @@ export const factFrontmatterSchema = z.object({
     measure: z.string().min(1),
     why: z.string().min(1),
   })).optional(),
+  /** What each observation picks out on its chart, by observation id; see AUTHORING.md "Marks". */
+  observationMarks: z.record(z.string(), observationMarkSchema).optional(),
   /** The reading order of the fact's charts and figures; see AUTHORING.md "Figures". */
   figures: z.array(figureSchema).optional(),
 });

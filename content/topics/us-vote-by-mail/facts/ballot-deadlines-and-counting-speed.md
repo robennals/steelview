@@ -529,7 +529,7 @@ figures:
     id: preprocessing-four-hours
   - kind: dataTable
     id: late-ballots
-    title: 'Late ballots, and what they are measured against'
+    title: US late mail ballots, and what they are measured against
     description: 'Each card uses a different election and denominator, so the figures are not comparable with one another.'
     caption: One card per election
     layout: cards
@@ -593,7 +593,9 @@ figures:
             - 3
   - kind: dataTable
     id: processing-rules
-    title: 'When processing may begin, beside count speed and mail share'
+    title: >-
+      When states may begin processing mail ballots, beside count speed and mail
+      share
     description: Seven battleground states. Processing rules are as of September 2026 and may differ from those in force in 2020.
     sources:
       - 1
@@ -742,7 +744,7 @@ By 24 hours after polls closed, "the gap between states had essentially disappea
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-late-ballots}
 
-### Late ballots against what they are measured against {#ballot-deadlines-and-counting-speed--late-ballots-table}
+### US late mail ballots, and what they are measured against {#ballot-deadlines-and-counting-speed--late-ballots-table}
 
 Each card uses a different election and denominator, so the figures are not comparable with one another.
 
@@ -768,7 +770,7 @@ Senator Rosen trailed on election night in 2024 and took the lead the next night
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-processing-rules}
 
-### When processing may begin, beside count speed and mail share {#ballot-deadlines-and-counting-speed--processing-table}
+### When states may begin processing mail ballots, beside count speed and mail share {#ballot-deadlines-and-counting-speed--processing-table}
 
 Processing rules are NCSL's as of September 2026 and may differ from those in force in 2020; mail share is from EAVS 2024.
 

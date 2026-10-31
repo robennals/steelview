@@ -2,8 +2,9 @@ import { citedFactTargets, neededClaims } from './markdown';
 import { geoRegions, mapTiles } from './map-presets';
 import { comparePeriods } from './period';
 import { factSources, figureCitations } from './sources';
-import { isComponentFigure } from './types';
-import type { ComponentFigure, Crux, Fact, Figure, FigureOf, Series, Topic } from './types';
+import { componentFigure, isComponentFigure } from './types';
+import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
+import { observationGroups } from './walkthrough';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -124,6 +125,7 @@ export function validateTopic(topic: Topic): string[] {
       if (match[1] !== f.id || Number(match[2]) > sourceCount || Number(match[2]) < 1) errors.push(`fact ${f.id}: unknown source reference ${match[1]}-${match[2]}`);
     }
     errors.push(...figureErrors(f, topic));
+    errors.push(...observationMarkErrors(f));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -413,6 +415,55 @@ function knownSection(fact: Fact, section: string): boolean {
  * has already checked each figure's shape; these are the rules that need the
  * rest of the fact — its sources, charts and body — or the topic.
  */
+/**
+ * M1 — a mark must land on its observation's chart, since a reader takes what
+ * it picks out as what the observation is about. Line charts take a region, a
+ * point and lines, and comparisons and data tables take rows.
+ */
+function observationMarkErrors(f: Fact): string[] {
+  const groups = observationGroups(f);
+  return Object.entries(f.observationMarks ?? {}).flatMap(([id, mark]) => {
+    const where = `fact ${f.id}: observation mark "${id}"`;
+    const key = groups.get(id);
+    if (key === undefined) return [`${where} is not an observation of a chart`];
+    return markErrors(f, key, mark).map(error => `${where} ${error}`);
+  });
+}
+
+function markErrors(f: Fact, key: string, mark: ObservationMark): string[] {
+  const series = [f.series, ...(f.additionalSeries ?? [])].find(s => s?.readings.some(r => r.id === key));
+  const reading = series?.readings.find(r => r.id === key);
+  if (series && reading) {
+    const names = reading.lines.map(line => line.name);
+    const picked = reading.lines.filter(line => !mark.lines || mark.lines.includes(line.name));
+    const outside = (period: string) => comparePeriods(period, series.coverage.from) < 0 || comparePeriods(period, series.coverage.to) > 0;
+    return [
+      ...(mark.rows ? ['names rows, but its chart is a line chart'] : []),
+      ...(mark.lines ?? []).filter(name => !names.includes(name)).map(name => `names "${name}", which is not a line of ${key}`),
+      ...[mark.from, mark.to].flatMap(period => (period && outside(period) ? [`period ${period} is outside the series`] : [])),
+      ...(mark.from && mark.to && comparePeriods(mark.from, mark.to) >= 0 ? ['must have from before to'] : []),
+      ...(mark.at && !picked.some(line => line.points.some(p => p.period === mark.at)) ? [`at ${mark.at} is not a point on the lines it picks out`] : []),
+    ];
+  }
+  const figure = componentFigure(f, key);
+  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label)
+    ?? (figure?.kind === 'dataTable' ? tableRowHeaders(figure) : undefined);
+  if (!rows) return ['is on a chart that cannot show marks yet'];
+  return [
+    ...(mark.from || mark.to || mark.at || mark.lines ? ['names periods or lines, but its chart has rows'] : []),
+    ...(mark.rows ?? []).filter(row => !rows.includes(row)).map(row => `names "${row}", which is not a row of ${key}`),
+  ];
+}
+
+/** Each row's label in a data table: what its `highlight` and marks name it by. */
+function tableRowHeaders(figure: FigureOf<'dataTable'>): string[] {
+  const header = figure.columns.find(column => column.rowHeader)?.key ?? figure.columns[0].key;
+  return figure.rows.map(row => {
+    const cell = row[header];
+    return String(cell !== null && typeof cell === 'object' ? cell.value : cell);
+  });
+}
+
 export function figureErrors(f: Fact, topic: Topic): string[] {
   const figures = f.figures;
   if (!figures) return [];
@@ -499,10 +550,7 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
         if (key === header) errors.push(`${where} ${name} "${key}" is the row header, which is already the card's title`);
       }
       if (figure.leadColumn && figure.leadColumn === figure.dateColumn) errors.push(`${where} leadColumn and dateColumn must differ`);
-      const headers = figure.rows.map(row => {
-        const cell = row[header];
-        return String(cell !== null && typeof cell === 'object' ? cell.value : cell);
-      });
+      const headers = tableRowHeaders(figure);
       for (const value of figure.highlight) if (!headers.includes(value)) errors.push(`${where} highlight "${value}" is not in the row-header column`);
       break;
     }

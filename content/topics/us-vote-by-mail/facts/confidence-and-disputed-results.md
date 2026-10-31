@@ -632,7 +632,7 @@ figures:
     id: winner-gap-worldwide
   - kind: dataTable
     id: disputes
-    title: 'Six disputed results, and how each ended'
+    title: Six disputed US election results, and how each ended
     description: 'What was challenged in each dispute, whether mail ballots were central, and how it ended.'
     caption: One card per dispute
     layout: timeline
@@ -787,7 +787,7 @@ In 2026 American disapprovers were the more confident group, which Gallup says n
 
 ## Observations {#confidence-and-disputed-results--observations-disputes}
 
-### Six disputed results, and how each ended {#confidence-and-disputed-results--disputes-table}
+### Six disputed US election results, and how each ended {#confidence-and-disputed-results--disputes-table}
 
 These are prominent recent cases in which a losing side challenged a result, not a complete list.
 

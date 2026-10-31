@@ -51,7 +51,7 @@ test('the body map holds no fact bodies', async () => {
 /**
  * Regression test for shipping an empty heading: a topic with no cruxes (a
  * legal shape — `cruxes/` need not exist) must not render a "Cruxes" heading
- * with nothing under it, and likewise for principles.
+ * with nothing under it.
  */
 test('a section with no items renders no heading for that section', () => {
   const topic: Topic = {
@@ -152,8 +152,28 @@ test('a section with items renders its heading', () => {
   const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
   assert.match(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
-  assert.match(html, /Principles/);
   assert.match(html, /Cruxes/);
+  // Principles are read through a viewpoint's mention of them, not a section.
+  assert.doesNotMatch(html, />Principles<\/h2>/);
+  assert.doesNotMatch(html, /id="principle-/);
+});
+
+test('the cruxes are not a tab: they follow the panels, always on the page', () => {
+  const viewpoint = {
+    id: 'one', name: 'One view', shortName: 'One', summary: 's', order: 1,
+    citesFacts: [], acknowledges: ['a'], setsAside: [], principles: [], body: '',
+  };
+  const topic: Topic = {
+    slug: 'crux', title: 'Crux', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
+    facts: [{ id: 'a', claim: 'A claim', status: 'well-supported', sources: [], body: '' }],
+    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two view', order: 2 }],
+    principles: [],
+    cruxes: [{ id: 'timing', title: 'When?', tension: 'Soon or late.', kind: 'prediction', divides: ['one', 'two'], positions: [{ viewpoint: 'one', holds: 'Soon.' }, { viewpoint: 'two', holds: 'Later.' }], body: '' }],
+  };
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
+  assert.equal(html.match(/data-tab="/g)?.length, 2);
+  assert.doesNotMatch(html, /href="#cruxes"/);
+  assert.ok(html.lastIndexOf('data-tab="') < html.indexOf('>Cruxes</h2>'), html);
 });
 
 test('a crux is a row: its tension closed, and what each side holds under its short name', () => {

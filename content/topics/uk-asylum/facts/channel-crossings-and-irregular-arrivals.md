@@ -592,7 +592,7 @@ series:
         value: 68.6
 additionalSeries:
 - id: nationality
-  title: Small-boat arrivals by nationality, 2018–2025
+  title: UK small-boat arrivals by nationality, 2018–2025
   description: >-
     People detected arriving by small boat each year, by recorded nationality. The
     ten nationalities with the most arrivals over 2018–2025 are shown by name, in
@@ -860,7 +860,7 @@ additionalSeries:
       - period: '2025'
         value: 9354
 - id: routes
-  title: Detected illegal arrivals by method, 2018–2025
+  title: Detected illegal arrivals in the UK by method, 2018–2025
   description: >-
     People detected arriving in the UK by an illegal route, by method of entry, each
     year. Detection rates differ by method, so the lines show what was detected, not
@@ -978,7 +978,7 @@ additionalSeries:
       - period: '2025'
         value: 204
 - id: monthly
-  title: Small-boat arrivals by month, January 2018 to October 2026
+  title: UK small-boat arrivals by month, January 2018 to October 2026
   description: >-
     People detected arriving by small boat each month, from the Home Office's daily
     operational count. Crossings are seasonal, so a month is best compared with the
@@ -1339,7 +1339,9 @@ additionalSeries:
       - period: '2026'
         value: 76778
 - id: weather
-  title: Good crossing weather and arrivals per good day, January–August 2020–2026
+  title: >-
+    Good Channel-crossing weather and arrivals per good day, January–August
+    2020–2026
   description: >-
     Red days are days the Met Office judged at least one crossing attempt likely.
     The first reading counts red days from January to August each year; the second
@@ -1413,7 +1415,9 @@ additionalSeries:
       - period: '2026'
         value: 144
 - id: preventions
-  title: Crossings stopped by the French authorities, May 2024 to October 2026
+  title: >-
+    Channel crossings stopped by the French authorities, May 2024 to October
+    2026
   description: >-
     People who reached the UK by small boat, and people the French authorities report
     stopping from leaving France, by the month in which each reporting week ends.
@@ -1708,7 +1712,7 @@ additionalSeries:
       - period: 2026-10
         value: 57.9
 - id: albania
-  title: Albanian and other small-boat arrivals by quarter, 2018–2026
+  title: Albanian and other small-boat arrivals in the UK by quarter, 2018–2026
   description: >-
     People detected arriving by small boat each quarter: Albanian nationals, and everyone
     else. The UK–Albania returns agreement was announced on 13 December 2022, in the
@@ -1895,8 +1899,9 @@ additionalSeries:
         value: 7413
 comparisons:
 - id: europe-change
-  title: Change in irregular crossings, January–August 2026 against January–August
-    2025
+  title: >-
+    Change in irregular crossings into the EU and the UK, January–August 2026
+    against January–August 2025
   description: >-
     Percentage change in detected irregular crossings on each Frontex route into the
     EU, the EU total, and small-boat arrivals in the UK, over the same eight months.

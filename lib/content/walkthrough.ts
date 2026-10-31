@@ -1,7 +1,7 @@
 import { citedFactTargets, renderMarkdown } from './markdown';
 import { headlineFacts } from './rank-facts';
 import { componentFigure, factPath, figureLabel } from './types';
-import type { Fact, Topic, Viewpoint } from './types';
+import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
 import { factSlides, type PreviewSlide } from './preview';
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
@@ -62,8 +62,19 @@ export function observationsByChart(fact: Fact): Map<string, Observation[]> {
   return groups;
 }
 
+/** An observation, as an element id, with the part of its chart it picks out. */
+export type MarkedObservation = { id: string; mark: ObservationMark };
+
+/** The observations on one chart that pick out a part of it. */
+export function markedObservations(fact: Fact, key: string): MarkedObservation[] {
+  return (observationsByChart(fact).get(key) ?? []).flatMap(({ id }) => {
+    const mark = fact.observationMarks?.[id];
+    return mark ? [{ id: `${fact.id}--${id}`, mark }] : [];
+  });
+}
+
 /** Each observation's group key in a fact's body: the chart it is drawn beside. */
-function observationGroups(fact: Fact): Map<string, string> {
+export function observationGroups(fact: Fact): Map<string, string> {
   return new Map([...observationsByChart(fact)].flatMap(([key, observations]) => observations.map(o => [o.id, key] as const)));
 }
 
@@ -149,8 +160,8 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
 /** One chart of a data collection, with its observations rendered, ready to step through. */
 export type DataStep = {
   chart: PreviewSlide;
-  /** The observations drawn beside this chart, in order: what to notice in it. */
-  observations: { id: string; heading: string; html: string }[];
+  /** The observations made about this chart, in order: what to notice in it. */
+  observations: { id: string; heading: string; html: string; mark?: ObservationMark }[];
   /** What the chart shows, for a chart with no observations of its own. */
   description: string;
 };
@@ -178,6 +189,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
           id: `${fact.id}--${o.id}`,
           heading: o.heading,
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
+          mark: fact.observationMarks?.[o.id],
         }))),
       };
     })));

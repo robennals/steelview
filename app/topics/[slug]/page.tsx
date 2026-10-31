@@ -5,11 +5,10 @@ import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
 import { renderDataWalkthroughs, renderWalkthroughs, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
-import { HashSync } from '@/components/topic/hash-sync';
 import { DataRows } from '@/components/topic/data-rows';
 import { ExplorePanels } from '@/components/topic/explore-panels';
+import { TopicPanel, TopicTabs } from '@/components/topic/topic-tabs';
 import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
-import { PrincipleItem } from '@/components/topic/principle-item';
 import { PrincipleModals } from '@/components/topic/principle-modals';
 import { CruxRows } from '@/components/topic/crux-rows';
 import type { ItemKind, Topic } from '@/lib/content/types';
@@ -95,11 +94,14 @@ export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
 }
 
 /**
- * The four item sections. A topic that is only `topic.md` — or whose
- * `cruxes/` directory is simply absent, which is legal — must not ship a
- * heading with nothing under it, so each section renders only when its list
- * is non-empty. Exported and kept free of `loadTopic` so it is unit-testable
- * without a real content directory.
+ * Viewpoints and data, a tab each, with the cruxes always showing below them:
+ * they are what the viewpoints turn on, and no reader should have to find them.
+ * A topic that is only `topic.md` — or whose `cruxes/` directory is simply
+ * absent, which is legal — must not ship a tab or a heading with nothing under
+ * it, so each renders only when its list is non-empty. Principles have no
+ * section: a viewpoint's mention of one opens its text in a pop-up. Exported and
+ * kept free of `loadTopic` so it is unit-testable without a real content
+ * directory.
  */
 export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }: {
   topic: Topic;
@@ -119,55 +121,53 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
    */
   const headline = orderHeadlineFacts(topic);
 
+  const tabs = [
+    ...(topic.viewpoints.length > 0 ? [{ id: 'viewpoints', label: 'Viewpoints' }] : []),
+    ...(headline.length > 0 ? [{ id: 'data', label: 'Data' }] : []),
+  ];
+
   return (
-    <ExplorePanels><div className="sv-sections">
+    <ExplorePanels>
       <PrincipleModals principles={topic.principles.map((principle) => ({
         id: principle.id,
         name: principle.name,
         bodyHtml: bodies.get(bodyKey('principle', principle.id)) ?? '',
       }))} />
+      <TopicTabs path={topicPath(topic.slug)} tabs={tabs}>
       {topic.viewpoints.length > 0 && (
-        <section className="sv-section">
-          <div className="sv-section__head">
-            <h2 className="sv-section__title">Viewpoints</h2>
-          </div>
-          <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />
-        </section>
+        <TopicPanel id="viewpoints">
+          <section className="sv-section">
+            <div className="sv-section__head sv-section__head--tab">
+              <h2 className="sv-section__title">Viewpoints</h2>
+            </div>
+            <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />
+          </section>
+        </TopicPanel>
       )}
 
       {headline.length > 0 && (
-        <section className="sv-section">
-          <div className="sv-section__head">
-            <h2 className="sv-section__title">Data</h2>
-          </div>
-          <DataRows slug={topic.slug} facts={headline} walkthroughs={dataWalkthroughs} />
-        </section>
+        <TopicPanel id="data">
+          <section className="sv-section">
+            <div className="sv-section__head sv-section__head--tab">
+              <h2 className="sv-section__title">Data</h2>
+            </div>
+            <DataRows slug={topic.slug} facts={headline} walkthroughs={dataWalkthroughs} />
+          </section>
+        </TopicPanel>
       )}
 
-      {topic.principles.length > 0 && (
-        <section className="sv-section sv-section--reading">
-          <div className="sv-section__head">
-            <h2 className="sv-section__title">Principles</h2>
-          </div>
-          {topic.principles.map((principle) => (
-            <PrincipleItem
-              key={principle.id}
-              principle={principle}
-              bodyHtml={bodies.get(bodyKey('principle', principle.id)) ?? ''}
-            />
-          ))}
-        </section>
-      )}
+      </TopicTabs>
 
       {topic.cruxes.length > 0 && (
-        <section className="sv-section">
+        <section className="sv-section sv-section--cruxes">
           <div className="sv-section__head">
             <h2 className="sv-section__title">Cruxes</h2>
+            <p className="sv-section__blurb">What the viewpoints divide on.</p>
           </div>
           <CruxRows cruxes={topic.cruxes} viewpointsById={viewpointsById} />
         </section>
       )}
-    </div></ExplorePanels>
+    </ExplorePanels>
   );
 }
 
@@ -189,7 +189,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
    */
   return (
     <main className="sv-wrap sv-wrap--wide">
-      <HashSync />
       <header className="sv-pagehead">
         <h1 className="sv-title">{topic.title}</h1>
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>

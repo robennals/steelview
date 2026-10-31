@@ -8,6 +8,7 @@ import {
   seriesBreakSchema,
   seriesEventSchema,
   factFrontmatterSchema,
+  observationMarkSchema,
   viewpointFrontmatterSchema,
   principleFrontmatterSchema,
   cruxFrontmatterSchema,
@@ -67,6 +68,7 @@ export function figureLabel(figure: ComponentFigure): string {
 export type FigureValueFormat = z.infer<typeof valueFormatSchema>;
 
 export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
+export type ObservationMark = z.infer<typeof observationMarkSchema>;
 export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
 export type Principle = Item<z.infer<typeof principleFrontmatterSchema>>;
 export type Crux = Item<z.infer<typeof cruxFrontmatterSchema>>;

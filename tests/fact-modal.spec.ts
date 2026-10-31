@@ -30,7 +30,7 @@ test('a citation opens the report in the panel', async ({ page }) => {
 // The whole head of a row toggles it, not just its title: a click at the
 // bottom edge, away from any text, must open it.
 test('the whole row head opens the row, not just the title', async ({ page }) => {
-  await page.goto(TOPIC);
+  await page.goto(`${TOPIC}#data`);
   const row = page.locator('.sv-row--data').first();
   await row.scrollIntoViewIfNeeded();
   const box = await row.locator('.sv-row__head').boundingBox();

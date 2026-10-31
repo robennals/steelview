@@ -1,6 +1,6 @@
 /**
- * Shared by every script that opens a disclosure because a link named it:
- * HashSync on topic pages, and DetailsTarget inside an event strip.
+ * Shared by every script that reads a link's hash: rows and tabs on topic
+ * pages, and DetailsTarget, which opens the disclosure a link names.
  */
 
 // `decodeURIComponent` throws `URIError` on a malformed escape (e.g. a hash

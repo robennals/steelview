@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
+import { ObservationBar } from '@/components/topic/observation-bar';
 import type { SourceCredit } from './types';
 
 /**
  * The frame every report component sits in: a heading that says what the
- * reader is looking at, a sentence on what it shows, the component itself,
- * the source it rests on, and an optional "About this data" note.
+ * reader is looking at, a sentence on what it shows, in a data panel the
+ * observation being shown, the component itself, the source it rests on, and
+ * an optional "About this data" note.
  *
  * Same markup and classes as the topic charts (`sv-chart`), so a new
  * component placed between two existing charts is indistinguishable from
@@ -44,6 +46,7 @@ export function ReportFigure({
           {description && <p className="sv-chart__desc">{description}</p>}
         </figcaption>
       )}
+      <ObservationBar />
       {children}
       {sources && sources.length > 0 && <SourceLine sources={sources} />}
       {footer}

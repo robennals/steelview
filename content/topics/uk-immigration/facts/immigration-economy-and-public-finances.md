@@ -1821,7 +1821,7 @@ comparisons:
   - label: Germany
     value: -0.2
 - id: obr-gdp-per-person
-  title: "OBR: GDP per person if net migration were 200,000 a year higher"
+  title: 'OBR: UK GDP per person if net migration were 200,000 a year higher'
   description: "Scenario estimates of output per person in 2028-29 if net migration (arrivals minus departures) ran above the official forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, in its March 2024 scenarios. The lower-migration scenario is the mirror image."
   unit: percent
   valueLabel: GDP per person, % difference from central forecast
@@ -1838,7 +1838,7 @@ comparisons:
   - label: Capital stock does not adjust
     value: -0.4
 - id: obr-gdp
-  title: "OBR: total GDP if net migration were 200,000 a year higher"
+  title: 'OBR: total UK GDP if net migration were 200,000 a year higher'
   description: "Scenario estimates of total output (GDP) in 2028-29 if net migration (arrivals minus departures) ran above the official forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, in the same three cases as the GDP-per-person chart, from March 2024."
   unit: percent
   valueLabel: Total GDP, % difference from central forecast
@@ -1854,7 +1854,7 @@ comparisons:
   - label: Capital stock does not adjust
     value: 1
 - id: obr-borrowing
-  title: "OBR: borrowing in 2028-29 under higher or lower net migration"
+  title: 'OBR: UK borrowing in 2028-29 under higher or lower net migration'
   description: "Estimated change in government borrowing in 2028-29 if net migration (arrivals minus departures) ran above or below forecast. This is the change in public sector net borrowing against the Office for Budget Responsibility's central forecast, in its March 2024 scenarios with net migration 200,000 a year higher or lower. Negative means less borrowing."
   unit: pounds
   valueLabel: Change in borrowing in 2028-29
@@ -1909,7 +1909,7 @@ comparisons:
     value: -145000
     highlight: true
 - id: obr-cumulative-age-66
-  title: "OBR: cumulative fiscal impact by age 66"
+  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 66'
   description: "Illustrative running totals of tax paid minus public spending received to age 66, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   unit: pounds
   valueLabel: Cumulative taxes minus spending to age 66
@@ -1929,7 +1929,7 @@ comparisons:
   - label: Low-wage migrant (half of average pay)
     value: -198000
 - id: obr-cumulative-age-82
-  title: "OBR: cumulative fiscal impact by age 82"
+  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 82'
   description: "Illustrative running totals of tax paid minus public spending received to age 82, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   unit: pounds
   valueLabel: Cumulative taxes minus spending to age 82
@@ -1949,7 +1949,7 @@ comparisons:
   - label: Low-wage migrant (half of average pay)
     value: -653000
 - id: obr-cumulative-age-100
-  title: "OBR: cumulative fiscal impact by age 100"
+  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 100'
   description: "Illustrative running totals of tax paid minus public spending received to age 100, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   unit: pounds
   valueLabel: Cumulative taxes minus spending to age 100
@@ -1969,7 +1969,7 @@ comparisons:
   - label: Low-wage migrant (half of average pay)
     value: -1555000
 - id: earnings-by-route
-  title: Median earnings by visa route, 2023/24
+  title: Median earnings by UK visa route, 2023/24
   description: "Median (middle) yearly earnings in 2023/24 of people granted UK entry visas, by visa route, beside the UK full-time median. These are median annual adjusted PAYE earnings in financial year 2023/24 of people aged 18–65 granted entry clearance visas from April 2019 to March 2023. The UK full-time median is there for reference."
   unit: pounds
   valueLabel: Median annual earnings
@@ -2251,7 +2251,7 @@ Reform argues that discounting understates long-run costs. Madeleine Sumption (M
 
 Every pre-Brexit study the Migration Observatory reviewed put the fiscal effect at less than +1% or -1% of GDP, with recent migrants more positive than longer-settled ones; "there are no fiscal analyses covering the entire post-Brexit immigration system". [50](#source-immigration-economy-and-public-finances-50) [49](#source-immigration-economy-and-public-finances-49) [62](#source-immigration-economy-and-public-finances-62)
 
-### The record of estimates, side by side {#immigration-economy-and-public-finances--estimates-table}
+### Estimates of immigration's effect on UK public finances, side by side {#immigration-economy-and-public-finances--estimates-table}
 
 | Estimate | Covers | Figure | Status |
 | --- | --- | --- | --- |

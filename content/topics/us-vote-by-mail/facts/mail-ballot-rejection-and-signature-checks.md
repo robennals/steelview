@@ -1137,7 +1137,7 @@ figures:
     id: cure-2024
   - kind: dataTable
     id: state-rules
-    title: 'How states check and cure mail ballots, October 2026'
+    title: How US states check and cure mail ballots, October 2026
     description: 'The checks a returned ballot can face, and where each applies. Some states use more than one.'
     caption: One row per check
     columns:
@@ -1225,7 +1225,7 @@ figures:
             - 24
   - kind: dataTable
     id: courts
-    title: Court rulings on rejecting ballots for a signature mismatch
+    title: US court rulings on rejecting ballots for a signature mismatch
     description: 'What courts have held about signature rejections, notice and the chance to fix a ballot.'
     caption: One card per ruling or opinion
     layout: timeline

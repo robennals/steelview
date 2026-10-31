@@ -989,7 +989,9 @@ additionalSeries:
               - { period: '2021', value: 67 }
               - { period: '2022', value: 68 }
   - id: denmark
-    title: 'Average annual net contribution to public finances by origin, Denmark, 2014–2019'
+    title: >-
+      Denmark: average annual net contribution to public finances by origin,
+      2014–2019
     description: >-
       Average yearly taxes paid per person in Denmark minus transfers and public services
       used, for people of different origins. The groups are people of Danish origin, and
@@ -1295,7 +1297,8 @@ additionalSeries:
               - { period: '2024', value: 40.28 }
 comparisons:
   - id: fastest-changing-areas
-    title: Where the foreign-born share rose most, 2011 to 2021
+    title: >-
+      Where the foreign-born share rose most, England and Wales, 2011 to 2021
     description: >-
       The 20 local areas in England and Wales where the share of residents born outside
       the UK rose most between 2011 and 2021. These are local authorities, compared
@@ -1390,7 +1393,9 @@ comparisons:
         values: [1.76, 1.67]
         highlight: true
   - id: english-proficiency
-    title: English proficiency of residents born abroad, by when they arrived
+    title: >-
+      English proficiency of residents born abroad, by when they arrived,
+      England and Wales, 2021
     description: >-
       How well people born outside the UK and living in England and Wales say they speak
       English, by when they arrived, Census 2021. It covers everyone born outside the UK
@@ -1433,7 +1438,7 @@ comparisons:
         value: 99.9
         values: [37.4, 49.7, 10.8, 2.0]
   - id: women-employment
-    title: Employment rate of women by ethnic group, 2022
+    title: Employment rate of women by ethnic group, Great Britain, 2022
     description: >-
       The share of women aged 16 to 64 in work in Great Britain in 2022, for every ethnic
       group in the published breakdown.
@@ -1466,7 +1471,7 @@ comparisons:
       - label: Pakistani and Bangladeshi
         value: 46
   - id: employment-by-religion
-    title: Employment rate by religion, Census 2021
+    title: Employment rate by religion, England and Wales, Census 2021
     description: >-
       The share of people aged 16 to 64 in work (employees and self-employed) in England
       and Wales in March 2021, by religion. Every religion the Census tick-box lists is
@@ -1503,7 +1508,8 @@ comparisons:
       - label: Muslim
         value: 51.4
   - id: netherlands-by-motive
-    title: Lifetime net fiscal contribution by reason for migrating, Netherlands
+    title: >-
+      Netherlands: lifetime net fiscal contribution by reason for migrating
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by reason for migrating. The figure is the net contribution over
@@ -1527,7 +1533,7 @@ comparisons:
       - label: Asylum migration
         value: -475
   - id: netherlands-by-region
-    title: Lifetime net fiscal contribution by region of origin, Netherlands
+    title: 'Netherlands: lifetime net fiscal contribution by region of origin'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by region of origin. The figure is the net contribution over the
@@ -1562,7 +1568,7 @@ comparisons:
       - label: Horn of Africa and Sudan
         value: -600
   - id: norway-by-region
-    title: Modelled net fiscal effect of extra immigrants, Norway
+    title: 'Norway: modelled net fiscal effect of extra immigrants'
     description: >-
       Modelled gain or cost to Norway's public finances per extra immigrant arriving in
       2015, including descendants, by country group. From a Statistics Norway model, the
@@ -1696,7 +1702,9 @@ comparisons:
       - label: Gypsy, Roma
         value: 16.1
   - id: attitudes-homosexuality
-    title: Saying it would be undesirable to outlaw homosexuality, 2024
+    title: >-
+      British Muslims and the general public saying it would be undesirable to
+      outlaw homosexuality, 2024
     description: >-
       The share of British Muslims and of the general public who said it would be
       undesirable to outlaw homosexuality in the UK. From one 2024 online poll by J.L.

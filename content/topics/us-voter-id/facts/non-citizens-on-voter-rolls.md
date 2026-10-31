@@ -506,7 +506,7 @@ comparisons:
       - label: Iowa, 2024 general
         value: 21.9
   - id: flags-reversed
-    title: Share of flagged registrants later shown to be citizens
+    title: Share of flagged US voter registrants later shown to be citizens
     description: >-
       Of the people a database match flagged as possible non-citizens, the
       share later shown to be citizens, by program. Each figure is as of the
@@ -536,7 +536,7 @@ comparisons:
       - label: North Carolina (DMV records, 2016)
         value: 97.6
   - id: against-margins
-    title: Non-citizen voters found, against two recent close margins
+    title: Non-citizen voters found, against two recent close US margins
     description: >-
       Votes separating the candidates in two close races, beside the
       non-citizen voters that the same states' reviews found. Counts, not
