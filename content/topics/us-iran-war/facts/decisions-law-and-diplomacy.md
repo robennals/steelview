@@ -1315,7 +1315,7 @@ The Constitution gives Congress the power "To declare War" and makes the Preside
 
 CRS counts eleven declarations of war covering five wars, and "hundreds of instances" of US forces used abroad in conflict or potential conflict. [19](#source-decisions-law-and-diplomacy-19) The administration did not seek authorisation for this war before the 60-day mark. [10](#source-decisions-law-and-diplomacy-10)
 
-CRS does not code the instances by authorisation, length or scale (see Data still needed).
+CRS does not code the instances by authorisation, length or scale (see What we don't know yet).
 
 ### Every binding attempt since 2011 to end an operation failed {#decisions-law-and-diplomacy--binding-attempts-failed}
 
@@ -1383,21 +1383,27 @@ ISW/CTP reports that the Director of National Intelligence warned on 23 October 
 
 Officials told Bloomberg of 23 attacks on vessels near Hormuz in the first two weeks of October, and the Houthis fired missiles and drones at Saudi Arabia from 24 October (ISW/CTP). [43](#source-decisions-law-and-diplomacy-43) [46](#source-decisions-law-and-diplomacy-46) The US blockade of Iranian ports was still in force in late October. [50](#source-decisions-law-and-diplomacy-50) [47](#source-decisions-law-and-diplomacy-47)
 
-## Subtleties {#decisions-law-and-diplomacy--subtleties}
+## Subtleties {#decisions-law-and-diplomacy--subtleties-senate-votes}
 
 ### Several Senate votes were on procedure, not the resolution {#decisions-law-and-diplomacy--procedural-votes}
 
 Eleven of the 14 Senate votes were motions to discharge a committee, and one was a motion to proceed. A yes vote on each favoured ending the war, but only the two votes on House resolutions were votes on a resolution itself. [7](#source-decisions-law-and-diplomacy-7)
 
+## Subtleties {#decisions-law-and-diplomacy--subtleties-pew-handling}
+
 ### Polls asked different questions {#decisions-law-and-diplomacy--poll-wording}
 
 Pew asks about the President's handling and about whether force was the right decision; Gallup asks about approval of "this U.S. military action"; Quinnipiac about support for it. Gallup and Quinnipiac exclude leaners from their party groups; Pew includes them. The pollsters are shown separately for this reason. [28](#source-decisions-law-and-diplomacy-28) [30](#source-decisions-law-and-diplomacy-30) [31](#source-decisions-law-and-diplomacy-31)
 
+## Subtleties {#decisions-law-and-diplomacy--subtleties-latest}
+
 ### Most claims about the latest events come from one side {#decisions-law-and-diplomacy--single-party-claims}
 
-The incident record comes from the President's letters; the reconstitution and October assessments from ISW/CTP, which is affiliated with the American Enterprise Institute; blockade figures from US Central Command. Each is labelled as such above.
+The incident record comes from the President's letters; the reconstitution and October assessments from ISW/CTP, which is affiliated with the American Enterprise Institute; blockade figures from US Central Command. Each is labelled as such on its chart.
 
-## About this data {#decisions-law-and-diplomacy--about}
+## More {#decisions-law-and-diplomacy--more-house-votes}
+
+### About this report's data {#decisions-law-and-diplomacy--about}
 
 **What this measures.** Recorded votes in Congress, the President's War Powers letters, public statements, three pollsters' surveys, and the dated record of the ceasefire and talks. It does not measure whether the war is lawful; that is a legal and constitutional question the records inform but do not settle.
 

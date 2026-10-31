@@ -816,19 +816,23 @@ In 2018 Mohammed bin Salman said Saudi Arabia did not want a bomb, "but without 
 
 Potter and Mukhatzhanova, reviewing the research, describe "past predictions of rapid proliferation" that "failed to materialize". [23](#source-outside-attempts-to-change-hostile-regimes-23) Bleek's record shows ten states with weapons after some 70 years of exploration by 31. [10](#source-outside-attempts-to-change-hostile-regimes-10)
 
-## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties}
+## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties-studies}
 
 ### None of these studies measures containment {#outside-attempts-to-change-hostile-regimes--no-study-of-containment}
 
-Every study here measures an attempt to topple, coerce or disarm. No systematic study of holding a hostile state in check over years, with a success rate of its own, was found (see Data still needed).
+Every study here measures an attempt to topple, coerce or disarm. No systematic study of holding a hostile state in check over years, with a success rate of its own, was found (see What we don't know yet).
+
+## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties-regime-change}
 
 ### The datasets were not built on a case like Iran {#outside-attempts-to-change-hostile-regimes--fit-to-iran}
 
 Downes and Monten expect most regime-change targets to be "poor, diverse countries". [3](#source-outside-attempts-to-change-hostile-regimes-3) Miller's threats worked against states "highly dependent on the United States", which Iran is not. [18](#source-outside-attempts-to-change-hostile-regimes-18) How far the general rates carry over to Iran is a judgement, not something these data settle.
 
-## About this data {#outside-attempts-to-change-hostile-regimes--about}
+## More {#outside-attempts-to-change-hostile-regimes--more-nuclear-programmes}
 
-**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The cards above keep each figure next to its definition.
+### About this report's data {#outside-attempts-to-change-hostile-regimes--about}
+
+**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The cards keep each figure next to its definition.
 
 **Why there is no time series.** The studies publish pooled results over long periods, not rates by year.
 

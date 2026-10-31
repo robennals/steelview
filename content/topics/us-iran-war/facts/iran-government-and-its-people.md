@@ -1188,7 +1188,7 @@ figures:
     domainMax: 100
     sources: [24]
     note: Only three elections are shown because the full parliamentary series (IPU Parline) could not be
-      fetched; see Data still needed. The 2016 figure is "about 62 percent".
+      fetched; see What we don't know yet. The 2016 figure is "about 62 percent".
     items:
     - label: '2016'
       value: {value: 62, qualifier: about, asPublished: About 62 percent}
@@ -1482,7 +1482,7 @@ The UN mission counted at least 551 protesters killed in 2022–23. [7](#source-
 
 ### There is no verified count for 2009 {#iran-government-and-its-people--no-verified-2009-count}
 
-No primary source for deaths in the 2009 post-election crackdown was found, so it is left blank rather than filled from secondary reports. See Data still needed.
+No primary source for deaths in the 2009 post-election crackdown was found, so it is left blank rather than filled from secondary reports. See What we don't know yet.
 
 ### Counts grew as cases were confirmed {#iran-government-and-its-people--counts-are-floors}
 
@@ -1516,17 +1516,21 @@ Under Khatami, hardliners closed sixteen reformist publications in a week in 200
 
 On 8 March 2026 the Assembly of Experts named Mojtaba Khamenei "the third leader", by "the decisive vote of its members", with no tally published. [15](#source-iran-government-and-its-people-15) [16](#source-iran-government-and-its-people-16) Iran International reports he was chosen "under pressure from the Revolutionary Guards"; that is a single outlet's claim. [15](#source-iran-government-and-its-people-15)
 
-## Subtleties {#iran-government-and-its-people--subtleties}
+## Subtleties {#iran-government-and-its-people--subtleties-openings-and-reversals}
 
 ### Moderation and repression ran side by side {#iran-government-and-its-people--moderation-and-repression-together}
 
 The 2024 election and the shelved hijab law are the clearest signs of moderation in these sources. In the same period executions rose fastest and the January 2026 crackdown was the deadliest here. A reader who takes only one set of facts gets a one-sided picture.
 
+## Subtleties {#iran-government-and-its-people--subtleties-hrana-monthly-total}
+
 ### The war's first months cut both ways {#iran-government-and-its-people--war-cuts-both-ways}
 
 Total executions dropped when the bombing began, while political executions and arrests rose. "The war weakened repression" and "the war hardened it" each use one half of the same HRANA data.
 
-## About this data {#iran-government-and-its-people--about}
+## More {#iran-government-and-its-people--more-presidential-turnout}
+
+### About this report's data {#iran-government-and-its-people--about}
 
 **What this measures.** Turnout, candidate vetting, executions, protest deaths, arrests, expert freedom scores and one online survey. Every count of killing or execution is a confirmed minimum by a named counter: IHRNGO, HRANA and Amnesty each use their own method and period, so each has its own chart.
 

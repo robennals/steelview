@@ -689,7 +689,9 @@ CSIS says the war "required extensive use of interceptors", and that lower stock
 
 These are CSIS estimates built from budget documents, with deductions for testing and training, not Pentagon figures. [15](#source-human-and-financial-costs-of-the-war-15)
 
-## About this data {#human-and-financial-costs-of-the-war--about}
+## More {#human-and-financial-costs-of-the-war--more-us-wounded}
+
+### About this report's data {#human-and-financial-costs-of-the-war--about}
 
 **What this measures.** Deaths, injuries and displacement in Iran, US military casualties, and estimates of the war's cost to the Defense Department, as of late October 2026. Each figure carries the date it runs to: Iranian independent counts stop in April, costs run to September or later, US casualties to 28 October.
 

@@ -1093,7 +1093,9 @@ Time to weapons-grade uranium, time to a working weapon and the size of the stoc
 
 The Pentagon said "nearly 80%" of Iran's nuclear industrial base was "hit", not destroyed. [11](#source-iran-nuclear-programme-11) US and Iranian officials say enrichment has not resumed, but the IAEA cannot verify whether it has. [3](#source-iran-nuclear-programme-3) [1](#source-iran-nuclear-programme-1) No source read here publishes evidence that settles which claim is right; CRS notes that neither the US government nor the IAEA has described evidence of covert production. [3](#source-iran-nuclear-programme-3)
 
-## About this data {#iran-nuclear-programme--about}
+## More {#iran-nuclear-programme--more-total-stock}
+
+### About this report's data {#iran-nuclear-programme--about}
 
 **What is measured.** The two charts are the IAEA's own quarterly figures for Iran's enriched uranium, in kilograms of uranium. Each point names its report in the Sources. The timelines, table and quotes collect dated statements; they are records of what was said, not measurements.
 

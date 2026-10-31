@@ -826,6 +826,8 @@ figures:
       - { release: { value: "20 May 2026 (caption)", sources: [9] }, period: "First blockade, from 13 April", redirected: "91 ships" }
       - { release: { value: "5 Oct 2026", sources: [10] }, period: "Since 14 July", redirected: "130 vessels", disabled: "3 ships", destroyed: "13 commercial vessels, \"over the past 12 weeks\"" }
       - { release: { value: "10 Oct 2026", sources: [11] }, period: "Since 14 July", redirected: "135 ships", disabled: "4 vessels", destroyed: "10 tankers linked to the IRGC" }
+movedAnchors:
+  tanker-war: hormuz-transits
 ---
 ## Observations {#oil-shipping-and-prices--observations-brent-monthly}
 
@@ -941,15 +943,17 @@ The two releases use different categories, and CENTCOM does not explain the diff
 
 Officials told Bloomberg of 23 recorded attacks on vessels in or near Hormuz in the first two weeks of October, at least five hitting engine rooms. [13](#source-oil-shipping-and-prices-13) The report, relayed by ISW/CTP, does not say who carried out each attack.
 
-## The 1980s Tanker War {#oil-shipping-and-prices--tanker-war}
+## Subtleties {#oil-shipping-and-prices--subtleties-hormuz-transits}
 
 ### The last Gulf shipping war disrupted far less traffic {#oil-shipping-and-prices--tanker-war-disrupted-little}
 
 The Strauss Center says the 1980s Tanker War "failed to disrupt more than two percent of ships" in the Gulf even at its height, and real oil prices fell through the decade. [15](#source-oil-shipping-and-prices-15)
 
-Tracked Hormuz traffic in 2026 has fallen much further than that (Hormuz chart). [25](#source-oil-shipping-and-prices-25)
+Tracked Hormuz traffic in 2026 has fallen much further than that. [25](#source-oil-shipping-and-prices-25)
 
-## About this data {#oil-shipping-and-prices--about}
+## More {#oil-shipping-and-prices--more-brent-monthly}
+
+### About this report's data {#oil-shipping-and-prices--about}
 
 **What this measures.** Crude oil spot prices (Brent, the world benchmark, and WTI, the US one), the real price US refiners paid for imported crude, US retail petrol, consumer prices, and ships and oil passing through the Strait of Hormuz, as of late October 2026.
 
