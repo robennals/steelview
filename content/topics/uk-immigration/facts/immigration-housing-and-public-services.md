@@ -1728,11 +1728,9 @@ dataStillNeeded:
     why: >-
       National pupil numbers are falling, but pressure from migration can be
       local; no local-authority capacity data were gathered.
+movedAnchors:
+  observations-use-of-services: government-investment
 ---
-Building in England has run below the number of new households the ONS projects. With zero net migration, the ONS projects 1,287,752 fewer households in England by 2032 than in its main projection — 5.0% of the projected total, and just over half of the 2.4 million projected increase. [1](#source-immigration-housing-and-public-services-1) [3](#source-immigration-housing-and-public-services-3) Prices, however, have risen far more than migration explains: a review commissioned by the Migration Advisory Committee puts immigration at roughly 4–6% of the rise in real UK house prices over three decades. [8](#source-immigration-housing-and-public-services-8)
-
-On public services, the national figures cut against a simple population-pressure story. Pupil numbers in England are falling, GP numbers are rising, real school funding per pupil is above its 2010-11 level and real health spending per person roughly doubled between 2000 and 2022. [29](#source-immigration-housing-and-public-services-29) [32](#source-immigration-housing-and-public-services-32) [46](#source-immigration-housing-and-public-services-46) [43](#source-immigration-housing-and-public-services-43) Investment tells a different story: social rent building collapsed after 2010-11 and UK government investment has been below the OECD median in every year since 1995. [36](#source-immigration-housing-and-public-services-36) [39](#source-immigration-housing-and-public-services-39)
-
 ## Observations {#immigration-housing-and-public-services--observations-dwellings}
 
 ### Building has run below projected household growth {#immigration-housing-and-public-services--building-below-household-growth}
@@ -1867,11 +1865,25 @@ The OBR notes that much public investment is fixed in cash terms for each Spendi
 
 On the OECD's own national accounts, the UK ranked 27th of the 36 members with 2024 data, close to Germany and Denmark and above Spain, Portugal and Ireland. [40](#source-immigration-housing-and-public-services-40) [41](#source-immigration-housing-and-public-services-41)
 
-## Observations {#immigration-housing-and-public-services--observations-use-of-services}
+## More {#immigration-housing-and-public-services--more-dwellings}
+
+Building in England has run below the number of new households the ONS projects.
+
+## More {#immigration-housing-and-public-services--more-household-growth-by-variant}
+
+With zero net migration, the ONS projects 1,287,752 fewer households in England by 2032 than in its main projection — 5.0% of the projected total, and just over half of the 2.4 million projected increase. [1](#source-immigration-housing-and-public-services-1) [3](#source-immigration-housing-and-public-services-3)
+
+## More {#immigration-housing-and-public-services--more-pupils}
+
+On public services, the national figures cut against a simple population-pressure story. Pupil numbers in England are falling, GP numbers are rising, real school funding per pupil is above its 2010-11 level and real health spending per person roughly doubled between 2000 and 2022. [29](#source-immigration-housing-and-public-services-29) [32](#source-immigration-housing-and-public-services-32) [46](#source-immigration-housing-and-public-services-46) [43](#source-immigration-housing-and-public-services-43)
+
+## Subtleties {#immigration-housing-and-public-services--subtleties-government-investment}
 
 ### Migrants staff health services as well as use them {#immigration-housing-and-public-services--migrants-staff-services}
 
 The MAC's 2018 review of EEA migration found that EEA migrants contributed more to the health service and social care, in money and work, than they used, and found no evidence that migration had reduced the quality of healthcare. It covered EEA migration before 2018, not the post-2021 arrivals. [24](#source-immigration-housing-and-public-services-24)
+
+## Subtleties {#immigration-housing-and-public-services--subtleties-affordable-completions}
 
 ### Non-UK citizens head about a fifth of homeless households {#immigration-housing-and-public-services--homelessness}
 

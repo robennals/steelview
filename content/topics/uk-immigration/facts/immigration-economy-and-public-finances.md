@@ -1979,6 +1979,25 @@ figures:
   id: obr-borrowing
 - kind: comparison
   id: lifetime-by-route
+- kind: dataTable
+  id: headline-estimates
+  title: "Estimates of immigration's effect on UK public finances, side by side"
+  description: "The headline estimates of what immigration costs or adds, with what each covers and where it stands now."
+  caption: "One row per estimate"
+  sources: [53, 58, 17, 28, 51, 52]
+  columns:
+    - { key: estimate, label: "Estimate", rowHeader: true }
+    - { key: covers, label: "Covers" }
+    - { key: figure, label: "Figure" }
+    - { key: status, label: "Status" }
+  rows:
+    - { estimate: "Centre for Policy Studies (2025)", covers: "Lifetime cost of settling recent migrants, from OBR profiles", figure: "£234 billion cost (£8,200 per household)", status: "Withdrawn by the CPS" }
+    - { estimate: "Reform UK (2026)", covers: "2021–2025 arrivals settling in 2026–2030, to old age", figure: "£622.5 bn undiscounted; £154 bn discounted", status: "Reform's own figures; method disputed" }
+    - { estimate: "MAC (2025)", covers: "2022/23 Skilled Worker cohort, lifetime, discounted", figure: "+£47.1bn", status: "Current" }
+    - { estimate: "MAC (2025)", covers: "2022/23 Partner-route cohort, lifetime, discounted", figure: "−£109,000 per applicant", status: "Current" }
+    - { estimate: "Oxford Economics (2018)", covers: "One year, 2016/17: EEA, non-EEA, UK-born", figure: "+£4.7b, −£9.0b, −£41.4b", status: "Static, pre-Brexit" }
+    - { estimate: "Dustmann and Frattini (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "+£4.4b, −£118b, −£591b", status: "Static, pre-Brexit" }
+    - { estimate: "Migration Watch (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "−£13.6b, −£134.9b, −£565b", status: "Static, pre-Brexit" }
 - kind: barChart
   id: obr-cumulative-by-age
   replaces: ["chart-obr-cumulative-age-66", "chart-obr-cumulative-age-82", "chart-obr-cumulative-age-100"]
@@ -2031,9 +2050,9 @@ dataStillNeeded:
   why: The HESA table used here covers fee income only.
 - measure: The share of UK patents or inventors who were born abroad
   why: "No UK birthplace-based measure was found; the founders figure covers only the 100 fastest-growing companies."
+movedAnchors:
+  observations-founders: earnings-by-route
 ---
-This collection covers what is measured about immigration's effect on output, on the public finances and on wages: GDP and GDP per head over time and across the G7, the OBR's migration scenarios, modelled lifetime fiscal contributions by visa route, earnings by route, the record of headline cost estimates, wage effects by pay level, universities' reliance on international fees, and founders of fast-growing firms. Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.
-
 ## Observations {#immigration-economy-and-public-finances--observations-gdp-per-head}
 
 ### GDP per head has barely grown since 2019 {#immigration-economy-and-public-finances--gdp-per-head-barely-grew}
@@ -2066,7 +2085,7 @@ On the World Bank series, GDP per head rose more between 2019 and 2025 in the Un
 
 ### Net migration is not shown here {#immigration-economy-and-public-finances--g7-net-migration-not-shown}
 
-Net migration per head for these countries over the same years is not shown here (see Data still needed). [81](#source-immigration-economy-and-public-finances-81)
+Net migration per head for these countries over the same years is not shown here (see What we don't know yet). [81](#source-immigration-economy-and-public-finances-81)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp-per-person}
 
@@ -2200,6 +2219,10 @@ Entry-year pay fell sharply in 2025. The data mix full-time and part-time work. 
 
 Of non-EU migrants first on payroll in 2015, 60% were still there in 2025; of EU migrants, 45%. These data are by nationality, not by visa route. [48](#source-immigration-economy-and-public-finances-48)
 
+### Foreign-born founders are over-represented among the fastest-growing firms {#immigration-economy-and-public-finances--foreign-born-founders}
+
+The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
+
 ## Observations {#immigration-economy-and-public-finances--observations-headline-estimates}
 
 ### The £234bn was withdrawn by its author {#immigration-economy-and-public-finances--234bn-withdrawn}
@@ -2220,17 +2243,7 @@ Reform argues that discounting understates long-run costs. Madeleine Sumption (M
 
 Every pre-Brexit study the Migration Observatory reviewed put the fiscal effect at less than +1% or -1% of GDP, with recent migrants more positive than longer-settled ones; "there are no fiscal analyses covering the entire post-Brexit immigration system". [50](#source-immigration-economy-and-public-finances-50) [49](#source-immigration-economy-and-public-finances-49) [62](#source-immigration-economy-and-public-finances-62)
 
-### Estimates of immigration's effect on UK public finances, side by side {#immigration-economy-and-public-finances--estimates-table}
-
-| Estimate | Covers | Figure | Status |
-| --- | --- | --- | --- |
-| Centre for Policy Studies (2025) | Lifetime cost of settling recent migrants, from OBR profiles | £234 billion cost (£8,200 per household) | Withdrawn by the CPS |
-| Reform UK (2026) | 2021–2025 arrivals settling in 2026–2030, to old age | £622.5 bn undiscounted; £154 bn discounted | Reform's own figures; method disputed |
-| MAC (2025) | 2022/23 Skilled Worker cohort, lifetime, discounted | +£47.1bn | Current |
-| MAC (2025) | 2022/23 Partner-route cohort, lifetime, discounted | −£109,000 per applicant | Current |
-| Oxford Economics (2018) | One year, 2016/17: EEA, non-EEA, UK-born | +£4.7b, −£9.0b, −£41.4b | Static, pre-Brexit |
-| Dustmann and Frattini (2014) | 1995–2011: EEA, non-EEA, UK-born | +£4.4b, −£118b, −£591b | Static, pre-Brexit |
-| Migration Watch (2014) | 1995–2011: EEA, non-EEA, UK-born | −£13.6b, −£134.9b, −£565b | Static, pre-Brexit |
+### Static and lifetime estimates are not comparable {#immigration-economy-and-public-finances--estimates-table}
 
 Static estimates count one period's taxes and spending; lifetime estimates project and discount. The two kinds are not comparable. [53](#source-immigration-economy-and-public-finances-53) [58](#source-immigration-economy-and-public-finances-58) [17](#source-immigration-economy-and-public-finances-17) [28](#source-immigration-economy-and-public-finances-28) [51](#source-immigration-economy-and-public-finances-51) [52](#source-immigration-economy-and-public-finances-52)
 
@@ -2264,8 +2277,6 @@ The Office for Students found 35.8 per cent of institutions in deficit in 2024-2
 
 In 2024/25 UK-domiciled students paid 53.7% of higher-education course fees at UK providers; the rest came from students domiciled elsewhere. Fees are only part of university income, so this is not a share of income. [74](#source-immigration-economy-and-public-finances-74)
 
-## Observations {#immigration-economy-and-public-finances--observations-founders}
+## More {#immigration-economy-and-public-finances--more-lifetime-by-route}
 
-### Foreign-born founders are over-represented among the fastest-growing firms {#immigration-economy-and-public-finances--foreign-born-founders}
-
-The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
+Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.

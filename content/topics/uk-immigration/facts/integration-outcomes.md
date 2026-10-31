@@ -1757,9 +1757,9 @@ figures:
   id: gcse-fsm
 - kind: comparison
   id: attitudes-homosexuality
+movedAnchors:
+  observations-segregation: cohesion-and-trust
 ---
-Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
-
 ## Observations {#integration-outcomes--observations-foreign-born-share}
 
 ### The foreign-born share has roughly quadrupled since 1951 {#integration-outcomes--foreign-born-share-quadrupled}
@@ -1942,20 +1942,6 @@ These are ethnic groups, most of whose pupils were born in the UK. The school fi
 
 Average Attainment 8 scores in 2022/23 were 20.3 for Gypsy and Roma pupils, 26.8 for Irish traveller pupils and 39.1 for Mixed White and Black Caribbean pupils. The Education Policy Institute found most ethnic groups achieved higher GCSE grades than White British pupils in 2023. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
 
-## Observations {#integration-outcomes--observations-segregation}
-
-### Residential segregation fell for every ethnic group, 1991–2021 {#integration-outcomes--segregation-fell}
-
-On the standard measure, the index of dissimilarity across neighbourhoods, segregation declined steadily for every ethnic group, White and minority, across the four censuses from 1991 to 2021. The largest fall was for the Black African group; Bangladeshi, Black Caribbean and Indian segregation also fell sharply. White British segregation was 0.55 in 2001 and 2011 and 0.53 in 2021. [41](#source-integration-outcomes-41) [43](#source-integration-outcomes-43)
-
-### The standard measure is of evenness, not of who lives next to whom {#integration-outcomes--evenness-not-exposure}
-
-The index compares how evenly each group is spread across neighbourhoods relative to everyone else. A growing group can become more evenly spread while more of its members' neighbours belong to the same group; the study does not report that second measure, called isolation or exposure, and none was found for 2021. [42](#source-integration-outcomes-42)
-
-### Between schools, segregation was highest in non-Christian faith schools {#integration-outcomes--school-segregation}
-
-A 2017 analysis of 2011–16 school census data counted a school as segregated when its share of White British pupils differed from its ten nearest schools' by more than 15 percentage points. By that test 84% of primary and 93% of secondary non-Christian faith schools were segregated. No later measure was found. [44](#source-integration-outcomes-44) [45](#source-integration-outcomes-45)
-
 ## Observations {#integration-outcomes--observations-cohesion-and-trust}
 
 ### Cohesion has stayed high {#integration-outcomes--cohesion-stable}
@@ -1984,6 +1970,18 @@ Almost all of the trust research relates trust to an area's ethnic mix, not to i
 
 The London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
+### Residential segregation fell for every ethnic group, 1991–2021 {#integration-outcomes--segregation-fell}
+
+On the standard measure, the index of dissimilarity across neighbourhoods, segregation declined steadily for every ethnic group, White and minority, across the four censuses from 1991 to 2021. The largest fall was for the Black African group; Bangladeshi, Black Caribbean and Indian segregation also fell sharply. White British segregation was 0.55 in 2001 and 2011 and 0.53 in 2021. [41](#source-integration-outcomes-41) [43](#source-integration-outcomes-43)
+
+### The standard measure is of evenness, not of who lives next to whom {#integration-outcomes--evenness-not-exposure}
+
+The index compares how evenly each group is spread across neighbourhoods relative to everyone else. A growing group can become more evenly spread while more of its members' neighbours belong to the same group; the study does not report that second measure, called isolation or exposure, and none was found for 2021. [42](#source-integration-outcomes-42)
+
+### Between schools, segregation was highest in non-Christian faith schools {#integration-outcomes--school-segregation}
+
+A 2017 analysis of 2011–16 school census data counted a school as segregated when its share of White British pupils differed from its ten nearest schools' by more than 15 percentage points. By that test 84% of primary and 93% of secondary non-Christian faith schools were segregated. No later measure was found. [44](#source-integration-outcomes-44) [45](#source-integration-outcomes-45)
+
 ## Observations {#integration-outcomes--observations-attitudes-homosexuality}
 
 ### British Muslims are markedly more conservative than the public on homosexuality {#integration-outcomes--muslim-attitudes-homosexuality}
@@ -2008,7 +2006,11 @@ The one academic study comparing generations, from 2009, found young Muslims mor
 
 No British Social Attitudes or European Social Survey series of these attitudes by religion and generation was found.
 
-## Subtleties {#integration-outcomes--subtleties}
+## More {#integration-outcomes--more-foreign-born-share}
+
+Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
+
+## Subtleties {#integration-outcomes--subtleties-foreign-born-share}
 
 ### What this report does not measure {#integration-outcomes--what-is-not-measured}
 

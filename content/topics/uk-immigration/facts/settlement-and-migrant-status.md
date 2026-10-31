@@ -1321,6 +1321,61 @@ figures:
   id: settlement-fees-europe
 - kind: comparison
   id: ilr-polling
+- kind: dataTable
+  id: rules
+  replaces: ["rules"]
+  title: "The rules on settlement: a record"
+  description: "A record of texts and rulings, not a measurement, so it has no chart."
+  caption: "One row per text or ruling, in date order"
+  layout: timeline
+  leadColumn: says
+  dateColumn: date
+  columns:
+    - { key: date, label: "Date" }
+    - { key: text, label: "Text or ruling", rowHeader: true }
+    - { key: says, label: "What it says" }
+  rows:
+    - { date: "2002", text: "Nationality, Immigration and Asylum Act 2002, s.76", says: { value: "Indefinite leave may be revoked where the person is liable to deportation but cannot be deported for legal reasons, where it was obtained by deception, or where a refugee ceases to be one through their own acts.", sources: [45, 46] } }
+    - { date: "2008", text: "R (HSMP Forum Ltd) v Secretary of State (High Court)", says: { value: "Applying tougher 2006 extension rules to migrants already on the Highly Skilled Migrant Programme was \"conspicuous unfairness and an abuse of power\", because the scheme promised the terms \"prevailing at the date he joined\".", sources: [47, 48] } }
+    - { date: "2012", text: "Family route change", says: { value: "The qualifying period for family settlement rose from two to five years.", sources: [11, 52] } }
+    - { date: "2020", text: "Hong Kong BN(O) policy statement", says: { value: "After five years, holders who have \"stayed free of criminality\" and \"supported themselves financially\" can apply for settled status; the route reflects \"the UK's historic and moral commitment to BN(O) citizens\".", sources: [43, 44] } }
+    - { date: "current", text: "Skilled Worker visa guidance", says: { value: "\"After 5 years, you may be able to apply to settle permanently in the UK\".", sources: [42] } }
+    - { date: "Nov 2025", text: "A Fairer Pathway to Settlement (CP 1448)", says: { value: "Proposes applying the changes \"to everyone in the country today who has not already received indefinite leave to remain\", and says the government \"would never\" take away settled status already granted.", sources: [53, 54] } }
+    - { date: "Mar 2026", text: "Home Affairs Committee report", says: { value: "Calls applying the changes to people already here \"not unprecedented\", but sees no justification for applying them to pre-2021 arrivals.", sources: [51, 61] } }
+    - { date: "Sep 2026", text: "Home Secretary to the Home Affairs Committee", says: { value: "The new policy, including any transitional arrangements, will be set out \"later this year\"; a large group who arrived in 2022 would otherwise qualify in February 2027.", sources: [64] } }
+- kind: dataTable
+  id: proposal
+  replaces: ["proposal"]
+  title: "The earned-settlement proposal and its status"
+  description: "What the government proposed in November 2025 (CP 1448), element by element."
+  caption: "One row per element of the proposal"
+  layout: cards
+  leadColumn: proposal
+  columns:
+    - { key: element, label: "Element", rowHeader: true }
+    - { key: proposal, label: "Proposal (CP 1448, November 2025)" }
+  rows:
+    - { element: "Standard wait", proposal: { value: "Ten years instead of five; five for family members of British citizens and BN(O) holders; three for Innovator Founder and Global Talent.", sources: [57] } }
+    - { element: "Longer baselines", proposal: { value: "Fifteen years for Skilled Workers in jobs below degree level, including care; twenty for refugees.", sources: [57] } }
+    - { element: "Reductions and additions", proposal: { value: "Five years off for taxable income of at least £50,270 and seven off for £125,140; five or ten years added for receiving public funds; up to 20 added for illegal entry, to a maximum of 30 years.", sources: [58] } }
+    - { element: "New minimum conditions", proposal: { value: "B2 English, and national insurance contributions for at least three years, in effect earnings of at least £12,570 a year.", sources: [59] } }
+    - { element: "Benefits after settlement", proposal: { value: "Asks whether benefits should be reserved for British citizens.", sources: [56] } }
+    - { element: "Who is out of scope", proposal: { value: "EU Settlement Scheme status, Windrush Scheme grants, and anyone already settled.", sources: [55] } }
+- kind: dataTable
+  id: comparators
+  replaces: ["comparators"]
+  title: "Waits for permanent residence elsewhere"
+  description: "No source found sets out standard waits for every high-income country from official rules, so there is no chart. This is what the sources say."
+  caption: "One row per country or group"
+  columns:
+    - { key: place, label: "Country or group", rowHeader: true }
+    - { key: rule, label: "Rule" }
+    - { key: source, label: "Source" }
+  rows:
+    - { place: "Most high-income countries", rule: "Standard settlement period \"usually five years\"", source: { value: "Home Affairs Committee", sources: [68] } }
+    - { place: "Switzerland and Japan", rule: "Ten-year routes to settlement", source: { value: "Home Affairs Committee; Migration Observatory", sources: [68, 69] } }
+    - { place: "Denmark, Sweden, Italy", rule: "Minimum employment requirements for permanent residence", source: { value: "Migration Observatory", sources: [69] } }
+    - { place: "Singapore (Work Permit holders)", rule: "No route described here; holders may not marry a citizen or permanent resident without approval, or give birth in Singapore", source: { value: "Ministry of Manpower", sources: [70] } }
 dataStillNeeded:
   - measure: "An official count of people holding indefinite leave to remain, by route, nationality and year granted"
     why: "The Home Office and ONS publish grants, not holders, so every statement about how many people a change to existing indefinite leave would reach rests on one research estimate with a range of 621,000 to 820,000."
@@ -1335,21 +1390,6 @@ dataStillNeeded:
   - measure: "Evidence on whether longer waits for settlement change where skilled workers choose to go, or prompt people already in the UK to leave"
     why: "The available studies are of refugees and family migrants once in a country; the Migration Observatory says the effect on migration decisions is \"impossible to predict\"."
 ---
-Indefinite leave to remain, also called settlement, lets a person live in the UK
-permanently, claim benefits on the same terms as British citizens, and later apply
-for citizenship. [41](#source-settlement-and-migrant-status-41) This report covers how many people are granted it, how
-many hold it, how many are on a path to it, what the rules have said and may say, what
-it costs, and what the public thinks about ending or removing it. Several of these are
-records rather than numbers that change year to year — the law on revocation, what
-route guidance promised, the status of the government's proposal — and are set out as
-tables rather than charts.
-
-Two things are often run together. Grants are a flow: 199,628 people were granted
-settlement in the year to June 2026, the most since 2011. [1](#source-settlement-and-migrant-status-1) Holders are
-a stock, and no official count of them exists; the best estimate for non-EU citizens is
-621,000 to 820,000 at the end of 2024, against just under 4.6 million settled-status grants
-under the separate EU Settlement Scheme. [4](#source-settlement-and-migrant-status-4) [5](#source-settlement-and-migrant-status-5) [2](#source-settlement-and-migrant-status-2)
-
 ## Observations {#settlement-and-migrant-status--observations-grants}
 
 ### 2010: a one-off peak from clearing a backlog {#settlement-and-migrant-status--2010-peak}
@@ -1555,21 +1595,6 @@ Dividing the 213,000 claimants by the 621,000 to 820,000 estimated holders gives
 reliable claim rate, because the Universal Credit group includes some British citizens and
 cannot be compared with those estimates.
 
-## The rules on settlement: a record {#settlement-and-migrant-status--rules}
-
-This is a record of texts and rulings, not a measurement, so it has no chart.
-
-| Date | Text or ruling | What it says |
-|---|---|---|
-| 2002 | Nationality, Immigration and Asylum Act 2002, s.76 | Indefinite leave may be revoked where the person is liable to deportation but cannot be deported for legal reasons, where it was obtained by deception, or where a refugee ceases to be one through their own acts. [45](#source-settlement-and-migrant-status-45) [46](#source-settlement-and-migrant-status-46) |
-| 2008 | *R (HSMP Forum Ltd) v Secretary of State* (High Court) | Applying tougher 2006 extension rules to migrants already on the Highly Skilled Migrant Programme was "conspicuous unfairness and an abuse of power", because the scheme promised the terms "prevailing at the date he joined". [47](#source-settlement-and-migrant-status-47) [48](#source-settlement-and-migrant-status-48) |
-| 2012 | Family route change | The qualifying period for family settlement rose from two to five years. [11](#source-settlement-and-migrant-status-11) [52](#source-settlement-and-migrant-status-52) |
-| 2020 | Hong Kong BN(O) policy statement | After five years, holders who have "stayed free of criminality" and "supported themselves financially" can apply for settled status; the route reflects "the UK's historic and moral commitment to BN(O) citizens". [43](#source-settlement-and-migrant-status-43) [44](#source-settlement-and-migrant-status-44) |
-| current | Skilled Worker visa guidance | "After 5 years, you may be able to apply to settle permanently in the UK". [42](#source-settlement-and-migrant-status-42) |
-| Nov 2025 | *A Fairer Pathway to Settlement* (CP 1448) | Proposes applying the changes "to everyone in the country today who has not already received indefinite leave to remain", and says the government "would never" take away settled status already granted. [53](#source-settlement-and-migrant-status-53) [54](#source-settlement-and-migrant-status-54) |
-| Mar 2026 | Home Affairs Committee report | Calls applying the changes to people already here "not unprecedented", but sees no justification for applying them to pre-2021 arrivals. [51](#source-settlement-and-migrant-status-51) [61](#source-settlement-and-migrant-status-61) |
-| Sep 2026 | Home Secretary to the Home Affairs Committee | The new policy, including any transitional arrangements, will be set out "later this year"; a large group who arrived in 2022 would otherwise qualify in February 2027. [64](#source-settlement-and-migrant-status-64) |
-
 ## Observations {#settlement-and-migrant-status--observations-rules}
 
 ### Guidance said "may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
@@ -1597,21 +1622,10 @@ already here is "essential" to the government's aim. [62](#source-settlement-and
 
 ### Removing settlement already granted would need new law {#settlement-and-migrant-status--revocation-needs-new-law}
 
-Section 76 allows revocation only on the individual grounds listed above.
+Section 76 allows revocation only on the individual grounds in the record of rules.
 [45](#source-settlement-and-migrant-status-45) [46](#source-settlement-and-migrant-status-46) No court has ruled on a general removal of settled status, because
 none has been attempted; how courts would treat a new Act, including claims to private and
 family life, is a prediction.
-
-## The earned-settlement proposal and its status {#settlement-and-migrant-status--proposal}
-
-| Element | Proposal (CP 1448, November 2025) |
-|---|---|
-| Standard wait | Ten years instead of five; five for family members of British citizens and BN(O) holders; three for Innovator Founder and Global Talent. [57](#source-settlement-and-migrant-status-57) |
-| Longer baselines | Fifteen years for Skilled Workers in jobs below degree level, including care; twenty for refugees. [57](#source-settlement-and-migrant-status-57) |
-| Reductions and additions | Five years off for taxable income of at least £50,270 and seven off for £125,140; five or ten years added for receiving public funds; up to 20 added for illegal entry, to a maximum of 30 years. [58](#source-settlement-and-migrant-status-58) |
-| New minimum conditions | B2 English, and national insurance contributions for at least three years, in effect earnings of at least £12,570 a year. [59](#source-settlement-and-migrant-status-59) |
-| Benefits after settlement | Asks whether benefits should be reserved for British citizens. [56](#source-settlement-and-migrant-status-56) |
-| Who is out of scope | EU Settlement Scheme status, Windrush Scheme grants, and anyone already settled. [55](#source-settlement-and-migrant-status-55) |
 
 ## Observations {#settlement-and-migrant-status--observations-proposal}
 
@@ -1630,18 +1644,6 @@ September 2026, before those remarks. [66](#source-settlement-and-migrant-status
 Employed Skilled Worker dependants had median earnings of £30,200 in 2023/24 and Health and
 Care dependants £22,100, well below the £50,270 needed for a five-year route, so most would
 face ten years. [67](#source-settlement-and-migrant-status-67)
-
-## Waits for permanent residence elsewhere {#settlement-and-migrant-status--comparators}
-
-No source found sets out standard waits for every high-income country from official rules,
-so there is no chart. What the sources say:
-
-| Country or group | Rule | Source |
-|---|---|---|
-| Most high-income countries | Standard settlement period "usually five years" | Home Affairs Committee [68](#source-settlement-and-migrant-status-68) |
-| Switzerland and Japan | Ten-year routes to settlement | Home Affairs Committee; Migration Observatory [68](#source-settlement-and-migrant-status-68) [69](#source-settlement-and-migrant-status-69) |
-| Denmark, Sweden, Italy | Minimum employment requirements for permanent residence | Migration Observatory [69](#source-settlement-and-migrant-status-69) |
-| Singapore (Work Permit holders) | No route described here; holders may not marry a citizen or permanent resident without approval, or give birth in Singapore | Ministry of Manpower [70](#source-settlement-and-migrant-status-70) |
 
 ## Observations {#settlement-and-migrant-status--observations-comparators}
 
@@ -1782,3 +1784,11 @@ Ending new grants of indefinite leave was supported by 44% and opposed by 43%. [
 Majorities wanted to keep permanent residence for people in the UK over ten years, those in
 full-time work, NHS workers, spouses of British citizens and business founders. [103](#source-settlement-and-migrant-status-103)
 This is one poll from one pollster.
+
+## More {#settlement-and-migrant-status--more-grants}
+
+Indefinite leave to remain, also called settlement, lets a person live in the UK permanently, claim benefits on the same terms as British citizens, and later apply for citizenship. [41](#source-settlement-and-migrant-status-41)
+
+## More {#settlement-and-migrant-status--more-settled-and-on-a-path}
+
+Two things are often run together. Grants are a flow: 199,628 people were granted settlement in the year to June 2026, the most since 2011. [1](#source-settlement-and-migrant-status-1) Holders are a stock, and no official count of them exists; the best estimate for non-EU citizens is 621,000 to 820,000 at the end of 2024, against just under 4.6 million settled-status grants under the separate EU Settlement Scheme. [4](#source-settlement-and-migrant-status-4) [5](#source-settlement-and-migrant-status-5) [2](#source-settlement-and-migrant-status-2)
