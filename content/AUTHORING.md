@@ -437,18 +437,9 @@ listed, and name the table or sheet in the `title`. A PDF is fine, because it
 opens in the browser. The build rejects a `url` that is a data file.
 
 Record the data file itself in two optional fields that readers never see:
-`fileUrl` is the exact file or query you read, and `localFile` is where our
-copy sits inside the main checkout's `datasets/` folder. To check a figure or
-quote, read that copy first.
-
-**Never commit a data file.** We don't hold the rights to many of them and this
-repo is public, so `datasets/` is git-ignored and exists only on Rob's machine.
-It sits in the main checkout, not in worktrees, and a worktree can find it with
-`"$(git rev-parse --git-common-dir)/../datasets"`. Save each new file in a folder
-named after its host, without `www.`, and fall back to `fileUrl` if a copy is
-missing. Most copies were downloaded on 30 October 2026, so one can be newer
-than its quote; the small boats time series, for example, is the 30 October
-edition saved from the 23 October address.
+`fileUrl` is the exact file or query you read, and `localFile` is our copy.
+**Never commit a data file.** [`SOURCE-FILES.md`](SOURCE-FILES.md) says where the
+copies are, why they aren't in this repo, and how to add one.
 
 **Never write a quote from memory.** Fetch the page and copy verbatim,
 including the publisher's own wording and punctuation. Get the publisher and
