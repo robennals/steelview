@@ -817,6 +817,15 @@ test('F9, map: an inset must enlarge an area the map draws', () => {
   assert.ok(hasError(topic, 'figure rejection-by-state: inset area "GU" is not an area of us-states'), 'a territory the figure does not name is not drawn');
 });
 
+test('F10: a row label stays one short title, in a bar chart, a comparison and an estimate range', () => {
+  const { topic, fact } = figuresTopic();
+  const long = 'A label that has grown a period, a sample size and a coverage note far past a title';
+  figureOf(fact, 'barChart').items[0].label = long;
+  figureOf(fact, 'estimateRange').estimates[0].label = long;
+  fact.comparisons![0].items[0].label = long;
+  assert.equal(validateTopic(topic).filter(error => error.includes('is over 60 characters')).length, 3);
+});
+
 test('F10: bars fit their axis, compositions their categories, estimates their order', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'barChart').domainMax = 1;

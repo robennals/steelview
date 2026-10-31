@@ -400,7 +400,8 @@ export const figureExamplesFact: Fact = {
       "items": [
         {
           "label": "For the bill",
-          "value": 50
+          "value": 50,
+          "detail": "As the roll call records it"
         },
         {
           "label": "Against the bill",
@@ -766,7 +767,8 @@ export const figureExamplesFact: Fact = {
         },
         {
           "label": "Native American",
-          "value": 1.59
+          "value": 1.59,
+          "detail": "The State Auditor's name for the group"
         },
         {
           "label": "Hispanic",
@@ -1416,7 +1418,8 @@ export const figureExamplesFact: Fact = {
           "values": {
             "y2020": 73,
             "y2024": 147
-          }
+          },
+          "detail": "Two presidential elections"
         },
         {
           "label": "Nevada",

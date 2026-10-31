@@ -498,7 +498,8 @@ it does not exist and say what gets substituted for it.
 Time series use `series`. Snapshot bars use `comparisons`, each with a stable
 `id`, `title`, `description`, `unit` (`count`, `percent`, `pounds`), `valueLabel`,
 numbered `sources`, and `items` containing `label` and `value`. Optional `highlight`
-marks the subject country; `note` contains collapsed methodology. Values share a
+marks the subject country; `detail` holds what a short label leaves out (see
+[row labels](#row-labels)); `note` contains collapsed methodology. Values share a
 zero baseline and signed values extend on the correct side of it. Label scope and
 period in the visible description. Source indexes reuse the fact's citation list.
 
@@ -518,6 +519,20 @@ report's own country may stay unnamed only where nothing else could be meant;
 in a collection that mixes countries, name it. Tables and timelines follow the
 same rule. A title must also make sense without its neighbours, so no “the
 other studies” or “the same era”, and name the subject, not the finding.
+
+<a id="row-labels"></a>
+**A row label is one short title.** On a `barChart`, a `comparisons` chart or an
+`estimateRange`, keep each row's `label` to about 40 characters: the plain name
+of the row and nothing else (validation refuses more than 60). Period, sample
+size, coverage, sub-categories and full wording go in the row's `detail` (on an
+estimate, in `note`). The row then opens to show them, under the row at full
+width, and the table prints them in a Detail column; previews show only the title.
+Titles must stay unambiguous within their chart, in plain English, with no
+unexplained abbreviations. A caveat a reader needs to read the row correctly
+stays in the title ("recorded only", "statewide"), and one that matters across
+the chart also goes in the `description`, since a reader may never open a row.
+If a description used to say something is "in each label", make it say the row
+opens to show it.
 
 **Charts are shared product primitives, not report-specific artwork.** Use the
 existing `SeriesChart` and `ComparisonChart` data shapes, and the [`figures`](#figures)
@@ -795,9 +810,9 @@ has; the rest draw a component (see Storybook for each one's look):
 | `periodTimeline` | spans per row, with point `events`; a period or event may cite its own `sources`. A period with no `to` runs to the axis end: the topic's `lastUpdated` unless the figure sets `to`. It reads "still in force" when the axis ends on `lastUpdated`, and "no end by <axis end>" when the data stops earlier (`to: '2017-06'`). A label goes inside its bar if it fits, else just right of it if that part of the row is free, else only in the legend, the hover-and-focus readout and the table — so keep labels short and name categories in `categories`. Spans under 18 months get month ticks |
 | `map` | one dataset over a preset's areas, drawn both in real shapes and as equal tiles from one legend, with a Map / Tiles / Table switch; shaded by a number or by a category. `preset: us-states`, `europe`, `uk-regions` or `world`; `default: map` (the default) or `tiles` picks the view shown first, which is also what a reader without JavaScript sees beside the table. Optional enlarged `insets` for the real-shape view. See "A map draws every area twice" below |
 | `tileMap`, `geoMap` | older spellings of `map`, still accepted: `tileMap` with `map: us-states`, `europe-countries` or `uk-regions` is a `map` with `default: tiles`; `geoMap` with `regions: world`, `europe` or `uk-itl1` is a `map` with `default: map` (`uk-itl1` is `uk-regions`). New figures use `map` |
-| `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked |
+| `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked; a row may carry a `detail` |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
-| `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); `asPublished` is shown beside the row; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
+| `estimateRange` | estimates with ranges; omit `high` for "at least", `low` for "at most" or an upper confidence bound quoted alone (drawn as a short dashed tail, and not called "includes no effect" unless the bound settles it), `estimate` for range only; `nullValue: null` for costs; `itemLabel` heads the row column (default "Estimate"); a row prints its name, the plot and its central estimate (or its range, if that is all there is), and opens to show the `year`, full interval, `asPublished`, `note` and sources; with a fixed `domain`, marks past it sit at the edge with an arrowhead |
 | `sliceExplorer` | tidy `rows` × `dimensions` × `measures` that a reader breaks down, filters and splits (votes by roll call × party × position); a dimension that must never be added together — separate votes or polls — is `combinable: false`. Every row is also listed under "All N rows of the data" |
 | `smallMultiples` | one small line per item (`panels`, each a `name` and `points`), on one shared scale unless `independentScales`; every panel runs across the figure's `coverage`, or its own; `highlight` marks the panel the text is about, and a panel may cite its own `source` |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |

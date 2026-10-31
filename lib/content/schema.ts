@@ -290,6 +290,8 @@ export const comparisonChartSchema = z.object({
     value: z.number().finite(),
     highlight: z.boolean().optional(),
     values: z.array(z.number().finite().nonnegative()).optional(),
+    /** What the one-line `label` leaves out: period, sample size, coverage. Opens under the row. */
+    detail: z.string().min(1).optional(),
   })).min(2),
 });
 
@@ -689,6 +691,8 @@ export const barChartFigureSchema = z
           /** A dumbbell's end labels by series key, when the measures' dates differ by row: `{ earlier: 1958, latest: 1964 }`. */
           labels: z.record(z.string(), endLabel).optional(),
           highlight: z.boolean().optional(),
+          /** What the one-line `label` leaves out: period, sample size, coverage. Opens under the row and fills the table's Detail column. */
+          detail: z.string().min(1).optional(),
           asPublished,
         }),
       )
@@ -758,7 +762,7 @@ export const estimateRangeFigureSchema = z.object({
     .array(
       z.object({
         label: z.string().min(1),
-        /** Shown after the label: "May 2025". */
+        /** Shown when the row is opened, and in the table: "May 2025". */
         year: z.union([z.string().min(1), z.number().int()]).optional(),
         /** A central estimate the source qualifies ("about 40") may say so; a range is `low` and `high`. */
         estimate: z.union([z.number().finite(), qualifiedPointSchema]).optional(),

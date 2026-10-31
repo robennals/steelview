@@ -286,7 +286,7 @@ comparisons:
     valueLabel: Senators
     sources: [10]
     items:
-      - { label: For the bill, value: 50 }
+      - { label: For the bill, value: 50, detail: As the roll call records it }
       - { label: Against the bill, value: 50 }
 figures:
   - kind: series
@@ -421,7 +421,7 @@ figures:
     sources: [11]
     items:
       - { label: Black, value: 2.49 }
-      - { label: Native American, value: 1.59 }
+      - { label: Native American, value: 1.59, detail: The State Auditor's name for the group }
       - { label: Hispanic, value: 1.57 }
       - { label: Asian or Pacific Islander, value: 1.24 }
       - { label: White, value: 0.63 }
@@ -735,7 +735,7 @@ figures:
       - { key: y2020, label: '2020' }
       - { key: y2024, label: '2024' }
     items:
-      - { label: Arizona, values: { y2020: 73, y2024: 147 } }
+      - { label: Arizona, values: { y2020: 73, y2024: 147 }, detail: Two presidential elections }
       - { label: Nevada, values: { y2020: 159, y2024: 51 } }
       - { label: Pennsylvania, values: { y2020: 49, y2024: 8 } }
       - { label: Georgia, values: { y2020: { value: 18, qualifier: at least, asPublished: at least 18 hours }, y2024: { value: 5, qualifier: about, asPublished: about 5 } } }

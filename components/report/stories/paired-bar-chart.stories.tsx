@@ -76,6 +76,30 @@ export const MarginAndInvalid: Story = {
 };
 
 /**
+ * Rows with one short title, each opening to the words that would otherwise
+ * crowd it: select a row. The row with no `detail` stays a plain row, aligned
+ * with the rest. The table prints every detail in full.
+ */
+export const RowDetails: Story = {
+  args: {
+    title: 'Asian share of suspects against Asian share of residents',
+    description: 'Each row opens to show its suspect count and the share not recorded.',
+    valueLabel: 'Share of suspects, or of residents, who are Asian (%)',
+    categoryLabel: 'Dataset',
+    format: { unit: 'percent', decimals: 1 },
+    domainMax: 100,
+    series: [{ key: 'suspects', label: 'Suspects' }, { key: 'residents', label: 'Residents of the area, Census 2021' }],
+    items: [
+      { label: 'Greater Manchester: group-based exploitation', values: { suspects: 54, residents: 20.9 }, highlight: true, detail: 'Group-based child sexual exploitation investigations, 2022–25 (243 suspects; none unrecorded)' },
+      { label: 'Greater Manchester: all child sexual abuse', values: { suspects: 16, residents: 20.9 }, detail: 'All open child sexual abuse cases, 2022–25 (908 suspects; 32% unrecorded)' },
+      { label: 'A row with nothing more to say', values: { suspects: 35, residents: 16 } },
+    ],
+    sources: [{ label: 'Home Office (Baroness Louise Casey)' }],
+    note: undefined,
+  },
+};
+
+/**
  * A dumbbell whose ends are dated differently in each row: the Attorney
  * General's earliest and latest estimate for each state.
  */

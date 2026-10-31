@@ -32,6 +32,8 @@ declare module 'react' {
     '--sv-timeline-color'?: string;
     /** Composition bars: the column a compact row's total sits in. */
     '--sv-composition-total'?: string;
+    /** Estimate rows: the column their figures sit in. */
+    '--sv-estimates-value'?: string;
     /** Tile map: grid dimensions. */
     '--sv-tile-cols'?: number;
     '--sv-tile-rows'?: number;

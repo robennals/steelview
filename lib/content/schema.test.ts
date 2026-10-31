@@ -399,6 +399,17 @@ function barValue(value: unknown) {
   return factFrontmatterSchema.safeParse({ ...data, figures });
 }
 
+test('a bar row or comparison row may carry a detail, but not an empty one', () => {
+  const data = figureExamplesFrontmatter();
+  const parsed = factFrontmatterSchema.parse(data);
+  const bars = parsed.figures?.find(f => f.kind === 'barChart' && f.id === 'wa-by-race');
+  assert.ok(bars?.kind === 'barChart');
+  assert.equal(bars.items[1].detail, "The State Auditor's name for the group");
+  assert.equal(parsed.comparisons?.[0].items[0].detail, 'As the roll call records it');
+  const figures = (data.figures as Record<string, unknown>[]).map(f => (f.id === 'wa-by-race' ? { ...f, items: (f.items as object[]).map(item => ({ ...item, detail: '' })) } : f));
+  assert.equal(factFrontmatterSchema.safeParse({ ...data, figures }).success, false);
+});
+
 test('a figure number is bare, qualified with a known word, or a range running upwards', () => {
   assert.ok(barValue(159).success);
   assert.ok(barValue({ value: 159, qualifier: 'nearly', asPublished: 'nearly 160' }).success);

@@ -264,9 +264,11 @@ test('a bar chart with series becomes paired bars, its end labels and nulls kept
   const props = pairedBarChartProps(figureOf('barChart', 'pre-vra-registration'), context);
   assert.equal(props.style, 'dumbbell');
   assert.deepEqual(props.series.map(s => s.key), ['earlier', 'latest']);
-  assert.deepEqual(props.items[0], { label: 'Alabama', values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: '1958', latest: '1964' }, highlight: undefined });
+  assert.deepEqual(props.items[0], { label: 'Alabama', values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: '1958', latest: '1964' }, highlight: undefined, detail: undefined });
   assert.equal(props.id, 'figure-examples--chart-pre-vra-registration');
   assert.throws(() => pairedBarChartProps(figureOf('barChart', 'wa-by-race'), context));
+  assert.equal(pairedBarChartProps(figureOf('barChart', 'hours-to-count'), context).items[0].detail, 'Two presidential elections');
+  assert.equal(barChartProps(figureOf('barChart', 'wa-by-race'), context).items[1].detail, "The State Auditor's name for the group");
 });
 
 test('a slice explorer passes its rows, dimensions and defaults through, and converts measure formats', () => {

@@ -66,7 +66,7 @@ export function figureProse(figure: Figure): string[] {
         return [
           ...base(figure),
           ...(figure.series ?? []).map(s => s.label),
-          ...figure.items.flatMap(item => [item.label, ...Object.values(item.labels ?? {})]),
+          ...figure.items.flatMap(item => [item.label, item.detail, ...Object.values(item.labels ?? {})]),
         ];
       case 'sliceExplorer': {
         const dimensionKeys = new Set(figure.dimensions.map(d => d.key));
@@ -117,7 +117,7 @@ export function chartProse(fact: Pick<Fact, 'series' | 'additionalSeries' | 'com
     ...(fact.additionalSeries ?? []).map(s => ({ chart: `series ${s.id}`, prose: seriesProse(s) })),
     ...(fact.comparisons ?? []).map(c => ({
       chart: `comparison ${c.id}`,
-      prose: [...base(c), c.groupLabel, c.itemLabel, c.allGroupsLabel, ...(c.groups ?? []), ...c.items.map(item => item.label)],
+      prose: [...base(c), c.groupLabel, c.itemLabel, c.allGroupsLabel, ...(c.groups ?? []), ...c.items.flatMap(item => [item.label, item.detail])],
     })),
   ];
   return charts.map(({ chart, prose }) => ({ chart, prose: prose.filter((s): s is string => typeof s === 'string' && s.length > 0) }));

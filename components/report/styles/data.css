@@ -9,6 +9,12 @@
     text-align: left;
   }
 
+  /* Prose in a table: wraps instead of widening every row. */
+  .sv-chart__table .sv-data__td-long {
+    min-width: 16rem;
+    white-space: normal;
+  }
+
   .sv-chart__table tbody tr[data-highlight] th,
   .sv-chart__table tbody tr[data-highlight] td {
     font-weight: 600;
@@ -28,6 +34,102 @@
     width: 0.75rem;
     height: 0.75rem;
     flex: none;
+  }
+
+  /* ------------------------------------------------------- row details */
+
+  /* A row that opens. Its summary carries the row's own layout class, so it
+     lines up with the rows beside it; these rules add only the opening. */
+  .sv-row-detail > summary {
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .sv-row-detail > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* The tap target reaches into the gaps between rows, so a thin row is
+     easy to hit on a phone without spreading the chart out. */
+  .sv-row-detail > summary::after {
+    content: "";
+    position: absolute;
+    inset: -0.3rem 0;
+  }
+
+  .sv-row-detail > summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* The marker follows the label, joined to its last word by a no-break
+     space so it never wraps onto a line of its own. */
+  .sv-row-detail > summary :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child)::after {
+    content: "\00a0\25B8";
+    color: var(--ink-3);
+    font-size: 1.4em;
+    font-weight: 400;
+    line-height: 0;
+  }
+
+  .sv-row-detail[open] > summary :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child)::after {
+    content: "\00a0\25BE";
+  }
+
+  .sv-row-detail > summary:hover :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child) {
+    color: var(--ink);
+  }
+
+  .sv-row-detail > summary:hover :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child)::after {
+    color: var(--accent);
+  }
+
+  .sv-row-detail__hint {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    color: var(--ink-3);
+  }
+
+  .sv-row-detail__hint::before {
+    content: "\25B8\00a0";
+    font-size: 1.4em;
+    line-height: 0;
+  }
+
+  .sv-row-detail__body {
+    margin: 0 0 0.7rem;
+    padding: 0.4rem 0.6rem;
+    border-left: 2px solid var(--rule-strong);
+    background: var(--paper-sunk);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  .sv-row-detail__facts {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.1rem 0.75rem;
+    margin: 0;
+  }
+
+  .sv-row-detail__facts dt {
+    color: var(--ink-3);
+  }
+
+  .sv-row-detail__facts dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* On paper nothing can be opened, so every row prints open. */
+  @media print {
+    .sv-row-detail::details-content {
+      content-visibility: visible;
+    }
   }
 
   /* -------------------------------------------------------- bar rows */
@@ -63,6 +165,7 @@
   }
 
   .sv-bars__label {
+    position: relative;
     grid-area: label;
     color: var(--ink-2);
     min-width: 0;
@@ -444,6 +547,20 @@
     text-align: right;
   }
 
+  /* A right-aligned label keeps its edge in line with its neighbours': the
+     whole chart leaves a slot at the end of the label column, and the marker
+     sits in it, centred on the row however many lines the label takes. */
+  .sv-bars[data-dense]:has(.sv-row-detail) .sv-bars__label {
+    padding-right: 0.7rem;
+  }
+
+  .sv-bars[data-dense] .sv-row-detail > summary .sv-bars__label::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    translate: 0 -50%;
+  }
+
   .sv-bars[data-dense] .sv-bars__axis {
     grid-template-areas: ". track .";
     margin-top: 0.15rem;
@@ -473,6 +590,17 @@
 
     .sv-bars__label {
       text-align: right;
+    }
+
+    .sv-bars:has(.sv-row-detail) .sv-bars__label {
+      padding-right: 0.7rem;
+    }
+
+    .sv-row-detail > summary .sv-bars__label::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      translate: 0 -50%;
     }
 
     .sv-bars__axis {
@@ -914,16 +1042,15 @@
     padding: 0;
   }
 
-  /* The printed estimate sits under the study name rather than in a third
-     column: a column wide enough for "+0.2% (−0.05% to +0.45%)" would
-     leave the plot too narrow to read. */
+  /* Name and figure above the plot on a phone; name | plot | figure on a
+     wider column, the figure's column sized to the longest (`--sv-estimates-value`). */
   .sv-estimates__row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      "label"
-      "track";
-    align-items: center;
+      "label value"
+      "track track";
+    align-items: baseline;
     column-gap: 0.85rem;
     row-gap: 0.25rem;
     margin-bottom: 0.75rem;
@@ -933,34 +1060,17 @@
   }
 
   .sv-estimates__label {
+    position: relative;
     grid-area: label;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0 0.75rem;
     min-width: 0;
-  }
-
-  .sv-estimates__name {
     color: var(--ink-2);
   }
 
-  .sv-estimates__year {
-    color: var(--ink-3);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .sv-estimates__note {
-    flex-basis: 100%;
-    font-size: 0.6875rem;
-    color: var(--ink-3);
-  }
-
   .sv-estimates__value {
+    grid-area: value;
     color: var(--ink);
-    font-size: 0.75rem;
     font-variant-numeric: tabular-nums;
+    text-align: right;
     white-space: nowrap;
   }
 
@@ -1086,8 +1196,13 @@
   @container (min-width: 32rem) {
     .sv-estimates__row,
     .sv-estimates__axis {
-      grid-template-columns: var(--sv-estimates-label) minmax(0, 1fr);
-      grid-template-areas: "label track";
+      grid-template-columns: var(--sv-estimates-label) minmax(0, 1fr) var(--sv-estimates-value, 6ch);
+      grid-template-areas: "label track value";
+      align-items: center;
+    }
+
+    .sv-estimates__axis {
+      grid-template-areas: ". track .";
     }
 
     .sv-estimates__row {
@@ -1095,13 +1210,18 @@
     }
 
     .sv-estimates__label {
-      flex-direction: column;
-      align-items: flex-end;
       text-align: right;
     }
 
-    .sv-estimates__note {
-      flex-basis: auto;
+    .sv-estimates:has(.sv-row-detail) .sv-estimates__label {
+      padding-right: 0.7rem;
+    }
+
+    .sv-row-detail > summary .sv-estimates__label::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      translate: 0 -50%;
     }
   }
 

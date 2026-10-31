@@ -18,6 +18,8 @@ export type PairedBarItem = {
   labels?: Record<string, string>;
   /** Set in bold: the row the text is about. Its bars keep their series colours, which carry the key. */
   highlight?: boolean;
+  /** What the one-line label leaves out: shown when the row is opened, and in the table. */
+  detail?: string;
 };
 
 export type PairedBarChartProps = {
@@ -96,6 +98,7 @@ export function PairedBarChart({
   }));
   const scale = barScale(allValues.flatMap(extentValues), domainMax);
   const layout = style === 'dumbbell' ? 'dumbbell' : 'grouped';
+  const hasDetail = items.some(item => item.detail);
 
   const rows: BarRowData[] = ordered.map((item, i) => {
     const segments = series.flatMap((s, slot): BarSegment[] => {
@@ -115,6 +118,7 @@ export function PairedBarChart({
       }),
       highlight: item.highlight,
       segments,
+      detail: item.detail,
     };
   });
 
@@ -156,6 +160,7 @@ export function PairedBarChart({
                 <tr>
                   <th scope="col" className="sv-data__th-text">{categoryLabel}</th>
                   {series.map(s => <th key={s.key} scope="col">{s.label}</th>)}
+                  {hasDetail && <th scope="col" className="sv-data__th-text">Detail</th>}
                 </tr>
               </thead>
               <tbody>
@@ -163,6 +168,7 @@ export function PairedBarChart({
                   <tr key={`${item.label}-${i}`} data-highlight={item.highlight || undefined}>
                     <th scope="row">{item.label}</th>
                     {series.map(s => <td key={s.key}>{cell(item, s.key)}</td>)}
+                    {hasDetail && <td className="sv-data__td-text sv-data__td-long">{item.detail ?? '—'}</td>}
                   </tr>
                 ))}
               </tbody>

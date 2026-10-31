@@ -177,10 +177,41 @@ test('the graph reads in the source’s own words where given, and the item colu
     estimates: [{ label: 'DIA', high: 0.25, asPublished: 'probably less than one week' }, { label: 'Pentagon', estimate: 24 }],
   };
   const html = renderToStaticMarkup(createElement(EstimateRange, props));
-  assert.match(html, /<span class="sv-estimates__value">probably less than one week<\/span>/);
+  assert.match(html, /<span class="sv-estimates__value">at most 0\.25<\/span>/);
+  assert.match(html, /<dt>As published<\/dt><dd>probably less than one week<\/dd>/);
   assert.match(html, /<th scope="col" class="sv-data__th-text">Estimate<\/th>/);
   assert.doesNotMatch(html, />Study</);
   assert.match(renderToStaticMarkup(createElement(EstimateRange, { ...props, itemLabel: 'Study' })), /<th scope="col" class="sv-data__th-text">Study<\/th>/);
+});
+
+test('an estimate row prints one name and one figure; everything else opens under it', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, {
+    valueLabel: 'Effect',
+    format: { unit: 'number', decimals: 1, fixed: true },
+    estimates: [
+      { label: 'Panel', year: '2008–2018', estimate: -0.1, low: -2.3, high: 2.1, note: 'All states.', asPublished: 'about zero', sources: [{ label: 'NBER', href: '#source-x-27', number: 27 }] },
+      { label: 'GAO', low: -2.2, high: -1.9, sources: [{ label: 'GAO', href: '#source-x-28', number: 28 }] },
+      { label: 'Bare', estimate: 1 },
+    ],
+  }));
+  const [, summary] = html.match(/<summary[^>]*>(.*?)<\/summary>/) ?? [];
+  assert.match(summary, /<span class="sv-estimates__label">Panel<\/span><span class="sv-estimates__value">−0\.1<span/);
+  assert.doesNotMatch(summary, /<a |2008|All states|about zero/);
+  assert.match(html, /<dt>Year<\/dt><dd>2008–2018<\/dd><dt>Interval<\/dt><dd>−2\.3 to \+2\.1<\/dd><dt>As published<\/dt><dd>about zero<\/dd><dt>Note<\/dt><dd>All states\.<\/dd><dt>Source<\/dt><dd>.*?NBER \[27\]/);
+  // Range only: the range is the row's figure, so the disclosure does not repeat it.
+  assert.match(html, /<span class="sv-estimates__value">−2\.2 to −1\.9<span/);
+  assert.equal(html.match(/<dt>Interval<\/dt>/g)?.length, 1);
+  // A row with nothing to open stays a plain row, and the hint is said once.
+  assert.match(html, /<li class="sv-estimates__row"><span class="sv-estimates__label">Bare/);
+  assert.equal(html.match(/sv-row-detail__hint/g)?.length, 1);
+  // The table keeps the note, so nothing is only behind a disclosure.
+  assert.match(html, /<th scope="col" class="sv-data__th-text">Note<\/th>/);
+  assert.match(html, /<td class="sv-data__td-text sv-data__td-long">All states\.<\/td>/);
+});
+
+test('no estimate shows a disclosure or a hint in a preview', () => {
+  const html = renderToStaticMarkup(createElement(EstimateRange, { valueLabel: 'Effect', preview: { href: '#x' }, estimates: [{ label: 'A', estimate: 1, note: 'Note words', year: 2020 }, { label: 'B', estimate: 2 }] }));
+  assert.doesNotMatch(html, /<details|sv-row-detail|Note words|2020/);
 });
 
 test('a central estimate beyond a fixed axis sits at the edge with an arrow', () => {
@@ -202,6 +233,41 @@ const hours = {
     { label: 'Georgia', values: { a: { value: 18, qualifier: 'at least' as const }, b: null } },
   ],
 };
+
+test('a bar row with detail opens under itself, and its neighbours stay plain rows', () => {
+  const props = { valueLabel: 'Share', items: [{ label: 'Greater Manchester', value: 54, highlight: true, detail: '243 suspects; none unrecorded' }, { label: 'West Yorkshire', value: 35 }] };
+  const html = renderToStaticMarkup(createElement(BarChart, props));
+  assert.match(html, /<li><details class="sv-row-detail"><summary class="sv-bars__row" data-highlight="true"><span class="sv-bars__label">Greater Manchester<\/span>/);
+  assert.match(html, /<div class="sv-row-detail__body">243 suspects; none unrecorded<\/div>/);
+  assert.match(html, /<li class="sv-bars__row"><span class="sv-bars__label">West Yorkshire/);
+  assert.equal(html.match(/Select a row for its details/g)?.length, 1);
+});
+
+test('the table prints every row\'s detail, and a chart with none has no Detail column or hint', () => {
+  const items = [{ label: 'A', value: 1, detail: 'A words' }, { label: 'B', value: 2 }];
+  const table = renderToStaticMarkup(createElement(BarChart, { valueLabel: 'Share', items })).split('<noscript>')[1];
+  assert.match(table, /<th scope="col" class="sv-data__th-text">Detail<\/th>/);
+  assert.match(table, /<td class="sv-data__td-text sv-data__td-long">A words<\/td>/);
+  assert.match(table, /<td class="sv-data__td-text sv-data__td-long">—<\/td>/);
+  const bare = renderToStaticMarkup(createElement(BarChart, { valueLabel: 'Share', items: [{ label: 'A', value: 1 }] }));
+  assert.doesNotMatch(bare, /Detail|<details class="sv-row-detail|sv-row-detail__hint/);
+});
+
+test('a bar preview shows only the title of a row with detail', () => {
+  const html = renderToStaticMarkup(createElement(BarChart, { valueLabel: 'Share', preview: { href: '#x' }, items: [{ label: 'A', value: 1, detail: 'A words' }, { label: 'B', value: 2 }] }));
+  assert.match(html, /<li class="sv-bars__row"><span class="sv-bars__label">A<\/span>/);
+  assert.doesNotMatch(html, /<details|sv-row-detail|A words/);
+});
+
+test('a paired row carries its detail to the row and the table', () => {
+  const html = renderToStaticMarkup(createElement(PairedBarChart, {
+    valueLabel: 'Share',
+    series: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }],
+    items: [{ label: 'Row', values: { a: 1, b: 2 }, detail: 'Row words' }, { label: 'Other', values: { a: 3, b: 4 } }],
+  }));
+  assert.match(html, /<summary class="sv-bars__row"><span class="sv-bars__label">Row<\/span>/);
+  assert.match(html.split('<noscript>')[1], /<td class="sv-data__td-text sv-data__td-long">Row words<\/td>/);
+});
 
 test('paired bars draw one bar per measure from zero, each marked by its series slot, never stacked', () => {
   const html = renderToStaticMarkup(createElement(PairedBarChart, hours));

@@ -2,6 +2,7 @@ import { Fragment, type ReactNode } from 'react';
 import { axisTickLabels, type BarScale, type Span } from './bar-layout';
 import { QUALIFICATION_KEY, type Qualification } from './qualified';
 import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
+import { DetailRow, RowDetailHint } from './row-detail';
 import type { ValueFormat } from './types';
 
 /**
@@ -60,6 +61,8 @@ export type BarRowData = {
   values?: BarRowValue[];
   highlight?: boolean;
   segments: BarSegment[];
+  /** What the row's one-line label leaves out, behind the row's disclosure. Never drawn in a preview. */
+  detail?: string;
 };
 
 export type BarLayout = 'single' | 'stacked' | 'grouped' | 'dumbbell';
@@ -106,40 +109,14 @@ export function BarRows({
 
   return (
     <div className="sv-bars" data-layout={layout} data-dense={dense || undefined} data-preview={preview || undefined} data-compact={(preview && bars > COMPACT_PREVIEW_ITEMS) || undefined} style={style}>
+      {!preview && rows.some(row => row.detail) && <RowDetailHint />}
       <ol className="sv-bars__rows" aria-label={label}>
-        {rows.map(row => (
-          <li key={row.key} className="sv-bars__row" data-highlight={row.highlight || undefined}>
-            <span className="sv-bars__label">{row.label}</span>
-            {row.values ? <StackedValues values={row.values} layout={layout} /> : <span className="sv-bars__value">{row.valueText}</span>}
-            <span
-              className="sv-bars__track"
-              aria-hidden="true"
-              style={layout === 'grouped' ? { '--sv-bars-count': row.segments.length } : undefined}
-            >
-              {layout === 'dumbbell' ? <Dumbbell segments={row.segments} /> : row.segments.map((segment, i) => (
-                <Fragment key={i}>
-                  {/* A zero-width bar still carries its end mark: "fewer than 1" must not vanish. */}
-                  {(segment.width > 0 || (segment.qualification && segment.qualification !== 'exact')) && (
-                    <span
-                      className="sv-bars__bar"
-                      data-qualification={segment.qualification === 'exact' ? undefined : segment.qualification}
-                      data-negative={segment.negative || undefined}
-                      data-slot={segment.slot}
-                      style={{
-                        left: `${segment.left}%`,
-                        width: `${segment.width}%`,
-                        ...(segment.color ? { '--sv-bar-fill': segment.color } : null),
-                        ...(layout === 'grouped' ? { top: `${(i / row.segments.length) * 100}%`, height: `${100 / row.segments.length}%` } : null),
-                      }}
-                    />
-                  )}
-                  {segment.whisker && <span className="sv-bars__whisker" style={{ left: `${segment.whisker.left}%`, width: `${segment.whisker.width}%` }} />}
-                </Fragment>
-              ))}
-              <span className="sv-bars__zero" style={{ left: `${scale.zero}%` }} />
-            </span>
-          </li>
-        ))}
+        {rows.map(row => {
+          const cells = <BarRowCells row={row} scale={scale} layout={layout} />;
+          return row.detail && !preview
+            ? <li key={row.key}><DetailRow rowClass="sv-bars__row" highlight={row.highlight} summary={cells}>{row.detail}</DetailRow></li>
+            : <li key={row.key} className="sv-bars__row" data-highlight={row.highlight || undefined}>{cells}</li>;
+        })}
       </ol>
       {!preview && <div className="sv-bars__axis" aria-hidden="true">
         <span className="sv-bars__ticks">
@@ -158,6 +135,43 @@ export function BarRows({
         </span>
       </div>}
     </div>
+  );
+}
+
+/** A row's label, value and track, in a list item or a disclosure's summary alike. */
+function BarRowCells({ row, scale, layout }: { row: BarRowData; scale: BarScale; layout: BarLayout }) {
+  return (
+    <>
+      <span className="sv-bars__label">{row.label}</span>
+      {row.values ? <StackedValues values={row.values} layout={layout} /> : <span className="sv-bars__value">{row.valueText}</span>}
+      <span
+        className="sv-bars__track"
+        aria-hidden="true"
+        style={layout === 'grouped' ? { '--sv-bars-count': row.segments.length } : undefined}
+      >
+        {layout === 'dumbbell' ? <Dumbbell segments={row.segments} /> : row.segments.map((segment, i) => (
+          <Fragment key={i}>
+            {/* A zero-width bar still carries its end mark: "fewer than 1" must not vanish. */}
+            {(segment.width > 0 || (segment.qualification && segment.qualification !== 'exact')) && (
+              <span
+                className="sv-bars__bar"
+                data-qualification={segment.qualification === 'exact' ? undefined : segment.qualification}
+                data-negative={segment.negative || undefined}
+                data-slot={segment.slot}
+                style={{
+                  left: `${segment.left}%`,
+                  width: `${segment.width}%`,
+                  ...(segment.color ? { '--sv-bar-fill': segment.color } : null),
+                  ...(layout === 'grouped' ? { top: `${(i / row.segments.length) * 100}%`, height: `${100 / row.segments.length}%` } : null),
+                }}
+              />
+            )}
+            {segment.whisker && <span className="sv-bars__whisker" style={{ left: `${segment.whisker.left}%`, width: `${segment.whisker.width}%` }} />}
+          </Fragment>
+        ))}
+        <span className="sv-bars__zero" style={{ left: `${scale.zero}%` }} />
+      </span>
+    </>
   );
 }
 

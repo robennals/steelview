@@ -185,6 +185,22 @@ test('graphs have no observation markers and observations remain expandable', as
   await expect(page).toHaveURL(topic);
 });
 
+test('a chart row opens to its detail by keyboard, and its source links work from there', async ({ page }) => {
+  await page.goto('/topics/us-voter-id/facts/burdens-of-id-and-citizenship-rules');
+  const chart = page.locator('[id="burdens-of-id-and-citizenship-rules--chart-turnout-overall"]');
+  await expect(chart.getByText('Select a row for its details')).toHaveCount(1);
+  const row = chart.locator('.sv-row-detail').first();
+  const source = row.getByRole('link', { name: /National Bureau of Economic Research/ });
+  await expect(source).toBeHidden();
+  await row.locator('summary').focus();
+  await page.keyboard.press('Enter');
+  await expect(row).toHaveAttribute('open', '');
+  await expect(source).toBeVisible();
+  await expect(row).toContainText('2008–2018');
+  await page.keyboard.press('Enter');
+  await expect(source).toBeHidden();
+});
+
 test('nationality comparisons change the country bars and show all components', async ({ page }) => {
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
   const chart = page.locator('#immigration-against-the-long-run--chart-international-immigration');

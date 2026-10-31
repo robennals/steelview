@@ -2987,22 +2987,23 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-references .sv-source-quote blockquote { margin-top: .65rem; border: 0; padding: 0; }
 
 .sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
-.sv-comparison__rows > li { margin-bottom: .75rem; }
+.sv-row-detail__hint + .sv-comparison__rows { margin-top: 0; }
+.sv-comparison__row { display: block; margin-bottom: .75rem; }
 .sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
 .sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
-.sv-comparison__track { position: relative; height: .9rem; background: var(--paper-sunk); }
+.sv-comparison__track { position: relative; display: block; height: .9rem; background: var(--paper-sunk); }
 .sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }
 .sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
 .sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
 .sv-comparison__rows[data-dense] { --sv-row-room: 2.5rem; }
-.sv-comparison__rows[data-dense] > li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
 .sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
 .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
 .sv-comparison__rows[data-dense] .sv-comparison__label > :last-child { grid-column: 3; text-align: right; }
 .sv-comparison__rows[data-dense] .sv-comparison__track { grid-column: 2; grid-row: 1; }
 @media (max-width: 40rem) {
-  .sv-comparison__rows[data-dense] > li { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
+  .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
 }
 
 /* Definitions are a small second layer above the fact sheet. */
@@ -3212,19 +3213,19 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
-.sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
+.sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
 /* A walkthrough step has the width for a long value, such as £19,900,000,000. */
 @media (width > 47.5rem) {
-  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 6.5rem; }
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 6.5rem; }
   /* It has the height too, so a long comparison needs no clamping there. */
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] { --sv-row-room: 2.5rem; }
-  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .5rem; margin-bottom: .45rem; }
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__row { gap: .5rem; margin-bottom: .45rem; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__track { height: .9rem; }
 }
 /* Clamped rows: a long comparison squeezed into the fixed slide height. */
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] { --sv-row-room: 1.35rem; }
-.sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .35rem; margin-bottom: .3rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__row { gap: .35rem; margin-bottom: .3rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :last-child { white-space: nowrap; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .64rem; line-height: 1.1; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :first-child { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -3290,10 +3291,11 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-composition__rows[data-dense] .sv-composition__segment[data-fit] .sv-composition__segment-share { display: none; }
 .sv-chart__preview .sv-estimates__group { margin: .3rem 0 .1rem; padding: 0; border: 0; font-size: .6rem; }
 .sv-chart__preview .sv-estimates__row { row-gap: .1rem; font-size: .75rem; }
-.sv-estimates[data-compact] .sv-estimates__row { grid-template-columns: minmax(6rem, 40%) minmax(0, 1fr); grid-template-areas: "label track"; font-size: .64rem; line-height: 1.15; }
-.sv-estimates[data-compact] .sv-estimates__label { flex-wrap: nowrap; overflow: hidden; }
-.sv-estimates[data-compact] .sv-estimates__name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.sv-estimates[data-compact] :is(.sv-estimates__value, .sv-estimates__year) { display: none; }
+.sv-estimates[data-compact] :is(.sv-estimates__row, .sv-estimates__axis) { grid-template-columns: minmax(6rem, 40%) minmax(0, 1fr); align-items: center; }
+.sv-estimates[data-compact] .sv-estimates__row { grid-template-areas: "label track"; font-size: .64rem; line-height: 1.15; }
+.sv-estimates[data-compact] .sv-estimates__axis { grid-template-areas: ". track"; }
+.sv-estimates[data-compact] .sv-estimates__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-estimates[data-compact] .sv-estimates__value { display: none; }
 .sv-chart__preview .sv-estimates__axis,
 .sv-chart__preview .sv-periods__axis { font-size: .7rem; }
 /* Period timelines: thin rows, one axis under them. */

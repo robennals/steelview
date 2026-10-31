@@ -14,6 +14,8 @@ export type BarChartItem = {
   value: FigureNumber;
   /** Drawn in the accent and set in bold — for the one row the text is about (usually the UK). */
   highlight?: boolean;
+  /** What the one-line label leaves out: shown when the row is opened, and in the table. */
+  detail?: string;
 };
 
 export type BarChartProps = {
@@ -70,12 +72,14 @@ export function BarChart({
 }: BarChartProps) {
   const ordered = orderBars(items, sort);
   const scale = barScale(ordered.flatMap(item => extentValues(item.value)), domainMax);
+  const hasDetail = items.some(item => item.detail);
   const rows = ordered.map((item, i) => ({
     key: `${item.label}-${i}`,
     label: item.label,
     valueText: qualifiedLabel(item.value, format),
     highlight: item.highlight,
     segments: [qualifiedSpan(item.value, scale)],
+    detail: item.detail,
   }));
 
   if (preview) {
@@ -109,6 +113,7 @@ export function BarChart({
                   <tr>
                     <th scope="col" className="sv-data__th-text">{categoryLabel}</th>
                     <th scope="col">{valueLabel}</th>
+                    {hasDetail && <th scope="col" className="sv-data__th-text">Detail</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -116,6 +121,7 @@ export function BarChart({
                     <tr key={`${item.label}-${i}`} data-highlight={item.highlight || undefined}>
                       <th scope="row">{item.label}</th>
                       <td>{qualifiedText(item.value, format)}</td>
+                      {hasDetail && <td className="sv-data__td-text sv-data__td-long">{item.detail ?? '—'}</td>}
                     </tr>
                   ))}
                 </tbody>

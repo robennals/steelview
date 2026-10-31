@@ -99,6 +99,7 @@ export function validateTopic(topic: Topic): string[] {
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
       chartIds.add(chart.id);
+      errors.push(...rowLabelErrors(chart.items, `fact ${f.id}: comparison ${chart.id}`));
       if (chart.domainMax !== undefined && chart.items.some(item => item.value > chart.domainMax!)) {
         errors.push(`fact ${f.id}: comparison domainMax must be at least every item value`);
       }
@@ -684,6 +685,7 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     }
     case 'barChart': {
       const { domainMax, series } = figure;
+      errors.push(...rowLabelErrors(figure.items, where));
       const drawn = figure.items.flatMap(item => [item.value, ...Object.values(item.values ?? {})].filter((v): v is FigureNumber => v !== undefined && v !== null));
       if (domainMax !== undefined && drawn.some(value => extentValues(value).some(v => v > domainMax))) errors.push(`${where} domainMax must be at least every value, a range's high end included`);
       if (series) errors.push(...pairedBarErrors(figure, series, where));
@@ -710,6 +712,7 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     }
     case 'estimateRange': {
       const { domain } = figure;
+      errors.push(...rowLabelErrors(figure.estimates, where));
       for (const e of figure.estimates) {
         const present = [e.low, e.estimate === undefined ? undefined : pointValue(e.estimate), e.high].filter((v): v is number => v !== undefined);
         if (present.length === 0) errors.push(`${where} "${e.label}" needs an estimate, a low or a high`);
@@ -756,6 +759,14 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
  * is a decision, not an omission) and at least one value, a dumbbell has
  * exactly two series, and only a dumbbell labels its ends, by series key.
  */
+/** Past this a row label wraps into a block beside its bar; AUTHORING asks for about 40. */
+const MAX_ROW_LABEL = 60;
+
+/** A chart row is one short title; what else it has to say goes behind the row (`detail`, or an estimate's `note`). */
+function rowLabelErrors(rows: Array<{ label: string }>, where: string): string[] {
+  return rows.filter(row => row.label.length > MAX_ROW_LABEL).map(row => `${where} row label "${row.label}" is over ${MAX_ROW_LABEL} characters: give the row a short title and put the rest in \`detail\` (\`note\` on an estimate)`);
+}
+
 function pairedBarErrors(figure: FigureOf<'barChart'>, series: Array<{ key: string }>, where: string): string[] {
   const errors: string[] = [];
   const keys = series.map(s => s.key);

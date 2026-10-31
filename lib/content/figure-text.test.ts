@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { figureExamplesFact } from './__fixtures__/figure-examples';
-import { figureProse, figureValues } from './figure-text';
+import { chartProse, figureProse, figureValues } from './figure-text';
 import type { Figure, FigureKind, FigureOf } from './types';
 
 const fact = figureExamplesFact();
@@ -26,6 +26,13 @@ test('table prose: title, description, caption, column labels and every string c
   assert.ok(prose.includes('Law, bill or ruling'));
   assert.ok(prose.includes('1965'));
   assert.ok(prose.includes('Passed House, 220–208, 10 Apr 2025'));
+});
+
+test('a row\'s detail is prose, in a figure and, for the advisory, in a comparison', () => {
+  const bars = fact.figures?.find((f): f is FigureOf<'barChart'> => f.kind === 'barChart' && f.id === 'wa-by-race');
+  assert.ok(bars && figureProse(bars).includes("The State Auditor's name for the group"));
+  const comparison = chartProse(fact).find(c => c.chart === 'comparison senate-votes');
+  assert.ok(comparison?.prose.includes('As the roll call records it'));
 });
 
 test('prose leaves out verbatim quotes and claims, and asPublished', () => {

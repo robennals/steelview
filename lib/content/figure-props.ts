@@ -238,7 +238,7 @@ export function barChartProps(f: FigureOf<'barChart'>, c: FigureContext): R.BarC
     items: f.items.map(item => {
       // The schema refuses a row without `value` unless the chart has `series`; the check narrows the type.
       if (item.value === undefined) throw new Error(`bar chart ${f.id} row "${item.label}" needs \`value\``);
-      return { label: item.label, value: item.value, highlight: item.highlight };
+      return { label: item.label, value: item.value, highlight: item.highlight, detail: item.detail };
     }),
   };
 }
@@ -255,7 +255,7 @@ export function pairedBarChartProps(f: FigureOf<'barChart'>, c: FigureContext): 
     format: toValueFormat(f.format),
     sort: f.sort,
     domainMax: f.domainMax,
-    items: f.items.map(item => ({ label: item.label, values: item.values ?? {}, labels: item.labels, highlight: item.highlight })),
+    items: f.items.map(item => ({ label: item.label, values: item.values ?? {}, labels: item.labels, highlight: item.highlight, detail: item.detail })),
   };
 }
 

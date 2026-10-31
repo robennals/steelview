@@ -5,11 +5,13 @@ import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
 import { pointValue, qualifiedLabel, qualifiedText, type QualifiedPoint } from './qualified';
 import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
+import { DetailRow, RowDetailHint } from './row-detail';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type Estimate = {
   /** The study or model: "Dustmann, Frattini & Preston". */
   label: string;
+  /** Shown when the row is opened, and in the table. */
   year?: number | string;
   /** The central estimate, qualified if the source says "about". Omit for a source that publishes only a range: no dot is drawn. */
   estimate?: number | QualifiedPoint;
@@ -25,10 +27,11 @@ export type Estimate = {
   high?: number;
   /** Rows sharing a group are set under one subheading, in first-appearance order. */
   group?: string;
+  /** Shown when the row is opened, and in the table. */
   note?: string;
-  /** The estimate in the source's own words, shown beside its row in the graph and in the table's Value column: "$25–35bn". */
+  /** The estimate in the source's own words, shown when the row is opened and in the table's Value column: "$25–35bn". */
   asPublished?: string;
-  /** This estimate's own sources, printed after its label. */
+  /** This estimate's own sources, shown when the row is opened and in the table. */
   sources?: SourceCredit[];
 };
 
@@ -61,7 +64,7 @@ export type EstimateRangeProps = {
   panel?: boolean;
   /**
    * Draw the compact preview: the linked title, every estimate and the axis.
-   * The key, value label, per-row notes and sources stay on the full figure.
+   * The key, value label and each row's disclosure stay on the full figure.
    */
   preview?: FigurePreview;
 };
@@ -73,6 +76,10 @@ export type EstimateRangeProps = {
  * direction, how far their intervals overlap, and how many cross zero —
  * which a single quoted estimate cannot. Whether each interval includes no
  * effect is also written in words in the table, never left to position alone.
+ *
+ * A row is one name, the plot and one short figure, so the plot stays
+ * readable however much a study has to say: the year, the full interval, the
+ * source's wording, the note and the sources open under the row.
  */
 export function EstimateRange({
   estimates,
@@ -99,15 +106,28 @@ export function EstimateRange({
   const signed: ValueFormat = nullValue === null ? format : { ...format, signed: true };
   const groups = [...new Set(estimates.map(e => e.group ?? ''))];
   const show = (value: number | QualifiedPoint | undefined) => (value === undefined ? '—' : qualifiedLabel(value, signed));
-  const rangeText = (e: Estimate) => {
-    const interval =
-      e.low !== undefined && e.high !== undefined ? `${show(e.low)} to ${show(e.high)}`
-        : e.low !== undefined ? `at least ${show(e.low)}`
-          : e.high !== undefined ? `at most ${show(e.high)}`
-            : undefined;
-    if (e.estimate === undefined) return interval ?? '';
-    return interval ? `${show(e.estimate)} (${interval})` : show(e.estimate);
+  const intervalText = (e: Estimate) =>
+    e.low !== undefined && e.high !== undefined ? `${show(e.low)} to ${show(e.high)}`
+      : e.low !== undefined ? `at least ${show(e.low)}`
+        : e.high !== undefined ? `at most ${show(e.high)}`
+          : undefined;
+  // The figure printed on the row: the central estimate, or the range where the source gives only that.
+  const rowValue = (e: Estimate) => (e.estimate === undefined ? intervalText(e) ?? '' : show(e.estimate));
+  const detailFor = (e: Estimate) => {
+    const lines: Array<[string, ReactNode]> = [
+      ['Year', e.year],
+      ['Interval', e.estimate === undefined ? undefined : intervalText(e)],
+      ['As published', e.asPublished],
+      ['Note', e.note],
+      ['Source', e.sources?.length ? <SourceCredits sources={e.sources} /> : undefined],
+    ];
+    const present = lines.filter(([, text]) => text !== undefined);
+    if (present.length === 0) return undefined;
+    return <dl className="sv-row-detail__facts">{present.map(([term, text]) => <Fragment key={term}><dt>{term}</dt><dd>{text}</dd></Fragment>)}</dl>;
   };
+  const hasDetail = !preview && estimates.some(detailFor);
+  // In rem, not ch: the preview sets its rows and its axis in different sizes, and the two must share this column.
+  const widths = { '--sv-estimates-value': `${(Math.max(3, ...estimates.map(e => rowValue(e).length)) + 1) * 0.5}rem` };
   const rangeOnly = estimates.some(e => e.estimate === undefined);
   const spans = estimates.map(e => whiskerSpan(bounds(e), scale));
   const openBound = spans.some(span => span?.start === 'open' || span?.end === 'open');
@@ -116,7 +136,7 @@ export function EstimateRange({
   const nullText = nullLabel.toLowerCase();
 
   const graph = (
-    <div className="sv-estimates" data-compact={(preview && estimates.length > COMPACT_PREVIEW_ITEMS) || undefined}>
+    <div className="sv-estimates" data-compact={(preview && estimates.length > COMPACT_PREVIEW_ITEMS) || undefined} style={widths}>
       {!preview && <p className="sv-estimates__key" aria-hidden="true">
         <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" />Central estimate</span>
         <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>
@@ -125,6 +145,7 @@ export function EstimateRange({
         {beyondAxis && <span className="sv-estimates__key-item"><i className="sv-estimates__key-arrow" />Arrow: continues beyond the axis</span>}
         {nullValue !== null && <span className="sv-estimates__key-item"><i className="sv-estimates__key-null" />{nullLabel}</span>}
       </p>}
+      {hasDetail && <RowDetailHint />}
       {groups.map(group => (
         <Fragment key={group || 'all'}>
           {group && <h3 className="sv-estimates__group">{group}</h3>}
@@ -135,23 +156,16 @@ export function EstimateRange({
               .map(({ e, whisker }, i) => {
                 const crosses = crossesNull(bounds(e), nullValue);
                 const central = bounds(e).estimate;
-                return (
-                  <li key={`${e.label}-${i}`} className="sv-estimates__row">
-                    <span className="sv-estimates__label">
-                      <span className="sv-estimates__name">
-                        {e.label}
-                        {e.year !== undefined && <span className="sv-estimates__year"> {e.year}</span>}
-                        {e.sources && !preview && <SourceCredits sources={e.sources} />}
-                      </span>
-                      <span className="sv-estimates__value">
-                        {e.asPublished ?? rangeText(e)}
-                        {crosses !== undefined && (
-                          <span className="sv-visually-hidden">
-                            {crosses ? `; interval includes ${nullText}` : `; interval excludes ${nullText}`}
-                          </span>
-                        )}
-                      </span>
-                      {e.note && !preview && <span className="sv-estimates__note">{e.note}</span>}
+                const cells = (
+                  <>
+                    <span className="sv-estimates__label">{e.label}</span>
+                    <span className="sv-estimates__value">
+                      {rowValue(e)}
+                      {crosses !== undefined && (
+                        <span className="sv-visually-hidden">
+                          {crosses ? `; interval includes ${nullText}` : `; interval excludes ${nullText}`}
+                        </span>
+                      )}
                     </span>
                     <span className="sv-estimates__track" aria-hidden="true">
                       {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
@@ -165,8 +179,12 @@ export function EstimateRange({
                       )}
                       {central !== undefined && <span className="sv-estimates__dot" data-beyond={scale.beyond(central)} style={{ left: `${scale.x(central)}%` }} />}
                     </span>
-                  </li>
+                  </>
                 );
+                const detail = preview ? undefined : detailFor(e);
+                return detail
+                  ? <li key={`${e.label}-${i}`}><DetailRow rowClass="sv-estimates__row" summary={cells}>{detail}</DetailRow></li>
+                  : <li key={`${e.label}-${i}`} className="sv-estimates__row">{cells}</li>;
               })}
           </ol>
         </Fragment>
@@ -190,6 +208,7 @@ export function EstimateRange({
 
   if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-estimate-range">{graph}</ReportFigure>;
 
+  const hasNote = estimates.some(e => e.note);
   const table = (
     <div className="sv-chart__table-scroll">
       <table className="sv-chart__table">
@@ -202,6 +221,7 @@ export function EstimateRange({
             <th scope="col">Low</th>
             <th scope="col">High</th>
             {nullValue !== null && <th scope="col" className="sv-data__th-text">Includes {nullText}?</th>}
+            {hasNote && <th scope="col" className="sv-data__th-text">Note</th>}
           </tr>
         </thead>
         <tbody>
@@ -217,6 +237,7 @@ export function EstimateRange({
               <td>{show(e.low)}</td>
               <td>{show(e.high)}</td>
               {nullValue !== null && <td className="sv-data__td-text">{yesNo(crossesNull(bounds(e), nullValue))}</td>}
+              {hasNote && <td className="sv-data__td-text sv-data__td-long">{e.note ?? '—'}</td>}
             </tr>
           ))}
         </tbody>
