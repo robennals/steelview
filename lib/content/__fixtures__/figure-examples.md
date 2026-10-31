@@ -844,10 +844,9 @@ figures:
       - { region: Capital, published: '2026', deaths: 120 }
   - kind: section
     id: audit-method
+  - kind: section
+    id: remainder
 ---
-
-This fixture exists so every figure kind can be seen, tested and validated in
-the order an author writes it.
 
 ## Provisions of the Freedom to Vote Act {#figure-examples--freedom-to-vote-act-provisions}
 
@@ -868,9 +867,9 @@ These rates are before any control for age or county.
 
 ## What the rest of the body says {#figure-examples--remainder}
 
-Body sections that no figure places render after the last figure, as before.
+A body section sits where its `section` entry places it.
 
 ### How the audit sample was drawn {#figure-examples--audit-method}
 
 This `###` section is placed by its own `section` entry, after the last
-figure; the `##` section it sits in stays where it was and follows it.
+figure; the `##` section it sits in has an entry of its own and follows it.

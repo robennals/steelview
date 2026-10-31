@@ -221,6 +221,6 @@ test('every figure in a data panel shows the observation being stepped through',
 test('a data row shows each figure beside its own observations', async () => {
   const steps = (await renderDataWalkthroughs(observedTopic, [observed])).get(observed.id)!;
   for (const { id } of libraryFigures) {
-    assert.ok(steps.find(s => s.chart.chart === id)?.observations.some(o => o.heading === `Seen in ${id}`), id);
+    assert.ok(steps.find(s => s.chart?.chart === id)?.observations.some(o => o.heading === `Seen in ${id}`), id);
   }
 });

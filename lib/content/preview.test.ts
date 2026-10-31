@@ -56,7 +56,7 @@ test('a citation of a chart a figure replaced picks that figure, not the chart i
 test('a data step answers to its chart\'s address and to each anchor its figure replaced, so a viewpoint opens on it', async () => {
   const topic = figureExamplesTopic();
   const steps = (await renderDataWalkthroughs(topic, topic.facts)).get(topic.facts[0].id)!;
-  const step = steps.find(s => s.chart.chart === 'federal-laws')!;
+  const step = steps.find(s => s.chart?.chart === 'federal-laws')!;
   assert.deepEqual(step.anchors, [
     'figure-examples--chart-federal-laws',
     'figure-examples--chart-federal-laws-methodology',
@@ -72,7 +72,7 @@ test('the readings of one series leave a shared address to the first of them', a
   const fact = topic.facts[0];
   const reading = (label: string, id: string) => ({ ...fact.series!.readings[0], id, label });
   const two = { ...fact, series: { ...fact.series!, readings: [reading('One', 'one'), reading('Two', 'two')] } };
-  const [first, second] = (await renderDataWalkthroughs(topic, [two])).get(fact.id)!.filter(s => s.chart.chart === 'series');
+  const [first, second] = (await renderDataWalkthroughs(topic, [two])).get(fact.id)!.filter(s => s.chart?.chart === 'series');
   assert.ok(first.anchors.includes(`${fact.id}--chart-series`));
   assert.ok(first.anchors.includes(`${fact.id}--viz-series`));
   assert.deepEqual(second.anchors, [`${fact.id}--chart-two`, `${fact.id}--observations-two`, `${fact.id}--subtleties-two`]);
@@ -102,7 +102,7 @@ test('a chart\'s More text is filed under its chart, and an anchor moved to a ch
   const fact = topic.facts[0];
   const body = `${fact.body}\n\n## More {#${fact.id}--more-federal-laws}\n\nWhat is counted. [1](#source-${fact.id}-1)`;
   const steps = (await renderDataWalkthroughs(topic, [{ ...fact, body, movedAnchors: { 'old-section': 'federal-laws' } }], { citationsAsText: false, footnotes: true })).get(fact.id)!;
-  const step = steps.find(s => s.chart.chart === 'federal-laws')!;
+  const step = steps.find(s => s.chart?.chart === 'federal-laws')!;
   assert.match(step.more, /What is counted\./);
   assert.ok(step.anchors.includes(`${fact.id}--old-section`));
   assert.equal(chartMore({ body }).size, 1);

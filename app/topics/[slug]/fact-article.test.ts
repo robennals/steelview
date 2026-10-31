@@ -23,45 +23,39 @@ const fact = {
   body: 'Context.',
 };
 
-test('data still needed is omitted unless a collection names a material gap', () => {
-  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'topic', fact, bodyHtml: '<p>Context.</p>', variant: 'page' }));
-  assert.doesNotMatch(html, /Data still needed/);
+test('a sheet leaves out what is still unknown unless a collection names a material gap', () => {
+  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'topic', fact, bodyHtml: '<p>Context.</p>', variant: 'modal' }));
+  assert.doesNotMatch(html, /What we don.*t know yet/);
 });
 
-test('data still needed appears at the end of a collection before sources', () => {
+test('a sheet says what is still unknown at the end of a collection, before its sources', () => {
   const html = renderToStaticMarkup(createElement(FactArticle, {
     slug: 'topic',
     fact: { ...fact, dataStillNeeded: [{ measure: 'Route history', why: 'The stock cannot be linked to its original route.' }] },
     bodyHtml: '<p>Context.</p>',
-    variant: 'page',
+    variant: 'modal',
   }));
-  assert.match(html, /Data still needed/);
+  assert.match(html, /id="example--data-still-needed">What we don.*t know yet/);
   assert.match(html, /Route history/);
-  assert.ok(html.indexOf('Data still needed') < html.indexOf('Sources'));
+  assert.ok(html.indexOf('Route history') < html.indexOf('class="sv-references"'));
 });
 
-test('on its own page a report leaves its charts to the panel and keeps everything else', async () => {
+test('on its own page a report is its title, its claim, its panel and links to related reports', async () => {
   const { fact: parsed, bodyHtml } = await figureExamplesPage(figureExamplesFact());
+  const related = { ...parsed, id: 'related-report', title: 'A related report' };
   const html = renderToStaticMarkup(createElement(FactArticle, {
     slug: 'figure-examples',
-    fact: { ...parsed, dataStillNeeded: [{ measure: 'Route history', why: 'Not linked.' }] },
+    fact: parsed,
     bodyHtml,
+    supporting: [{ fact: related, bodyHtml: '<p>Its whole text.</p>' }],
     variant: 'page',
     panel: createElement('div', { id: 'the-panel' }),
     topic: { lastUpdated: '2026-10-29', facts: [parsed] },
   }));
-  assert.match(html, /<h1 class="sv-factpage__claim">/);
-  assert.ok(html.indexOf('id="the-panel"') < html.indexOf('Whole report'));
-  assert.doesNotMatch(html, /<figure|data-viz=/);
-  assert.match(html, /id="figure-examples--finding"/);
-  assert.match(html, /Data still needed/);
-  assert.match(html, /class="sv-references"/);
-});
-
-test('a report with no charts has its report alone, under no heading of its own', () => {
-  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'topic', fact, bodyHtml: '<p>Context.</p>', variant: 'page' }));
-  assert.doesNotMatch(html, /Whole report/);
-  assert.match(html, /Context\./);
+  assert.ok(html.indexOf('<h1 class="sv-factpage__claim">') < html.indexOf('id="figure-examples--finding"'));
+  assert.ok(html.indexOf('id="figure-examples--finding"') < html.indexOf('id="the-panel"'));
+  assert.match(html, /id="evidence-related-report"><a href="\/topics\/figure-examples\/facts\/related-report">A related report/);
+  assert.doesNotMatch(html, /<figure|data-viz=|class="sv-references"|Whole report|Its whole text/);
 });
 
 test('the way back from a report reaches its row, and from a supporting report its parent\'s', () => {
@@ -159,15 +153,6 @@ test('without figures, a fact keeps the old order: series, comparisons, then the
   assert.doesNotMatch(html, /figure-examples--chart-federal-laws/);
   // No figure claims the federal-laws Observations, so they stay in the body.
   assert.ok(html.indexOf('id="figure-examples--observations-federal-laws"') > section);
-});
-
-test('the body before its first heading reads after the claim and before the first figure, with or without figures', async () => {
-  for (const html of [await renderFixture(), await renderFixture(f => ({ ...f, figures: undefined }))]) {
-    const lead = html.indexOf('This fixture exists so every figure kind');
-    assert.ok(html.indexOf('id="figure-examples--finding"') < lead);
-    assert.ok(lead < html.indexOf('id="figure-examples--chart-series"'));
-    assert.equal(html.match(/This fixture exists so every figure kind/g)?.length, 1);
-  }
 });
 
 test('a replaced anchor is an alias just before its figure, so an old link lands on the figure', async () => {

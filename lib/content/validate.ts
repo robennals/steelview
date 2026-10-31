@@ -131,7 +131,7 @@ export function validateTopic(topic: Topic): string[] {
     }
     errors.push(...figureErrors(f, topic));
     errors.push(...observationMarkErrors(f));
-    errors.push(...observationGroupErrors(f));
+    errors.push(...bodyPlacementErrors(f));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -406,29 +406,28 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
 }
 
 /**
- * An Observations or Subtleties group addressed to a chart
- * (`## Observations {#<fact>--observations-<id>}`) attaches to the series
- * reading, comparison, figure or placed section with that id
- * (`observationTargets`), or is itself placed by a `section` entry naming its
- * whole anchor (`observations-<id>`). Any other group stays where it is
- * written, after the last figure — which content uses on purpose for a group
- * about no one chart ("observations-latest"). So an unattached group is an
- * error only when its id looks like a slip for one that would attach: it names
- * a series or featured fact rather than a reading, or is a target with a
- * hyphenated part added or dropped, or within two letters of one. A group with
- * no `-<id>` suffix (`{#<fact>--observations}`) is the body's own.
+ * Everything in a body sits on a chart, as the slides are how a report is read:
+ * an `## Observations`, `## Subtleties` or `## More` group addressed
+ * `{#<fact>--<kind>-<id>}` to a series reading, comparison, figure or placed
+ * section (`observationTargets`), or a body section placed by a `section`
+ * entry. Text before the first group, or a group that attaches to nothing, is
+ * shown on no slide, and one whose id looks like a slip says what it meant.
  */
-function observationGroupErrors(f: Fact): string[] {
+function bodyPlacementErrors(f: Fact): string[] {
   const targets = observationTargets(f);
-  const sections = new Set((f.figures ?? []).flatMap(figure => (figure.kind === 'section' ? [figure.id] : [])));
+  const placed = new Set((f.figures ?? []).flatMap(figure => (figure.kind === 'section' ? [`${f.id}--${figure.id}`] : [])));
   const notTargets = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...(f.featuredCharts ?? [])];
   const errors: string[] = [];
-  for (const [, heading, kind, id] of f.body.matchAll(new RegExp(`^## (.*?)\\s*\\{#${f.id}--(observations|subtleties)-([a-z0-9-]+)\\}\\s*$`, 'gm'))) {
-    if (targets.includes(id) || sections.has(`${kind}-${id}`)) continue;
-    const meant = notTargets.includes(id) ? undefined : targets.find(target => looksLikeSlipFor(id, target));
-    if (notTargets.includes(id) || meant) {
-      errors.push(`fact ${f.id}: "## ${heading}" is addressed to "${id}", which is not a series reading, comparison, figure or placed section of this fact${meant ? ` — did you mean "${meant}"?` : ''} — the group would sit at the end of the body`);
-    }
+  if (/^## /m.test(f.body) && f.body.split(/^## /m)[0].trim()) errors.push(`fact ${f.id}: the body has text before its first "##" group, which no slide shows — put it in a chart's "## More {#${f.id}--more-<id>}"`);
+  for (const [, heading] of f.body.matchAll(/^## (.*)$/gm)) {
+    const anchor = heading.match(/\{#([a-z0-9-]+)\}\s*$/)?.[1] ?? '';
+    const id = anchor.match(new RegExp(`^${f.id}--(?:observations|subtleties|more)-([a-z0-9-]+)$`))?.[1];
+    if ((id && targets.includes(id)) || placed.has(anchor)) continue;
+    const meant = id && !notTargets.includes(id) ? targets.find(target => looksLikeSlipFor(id, target)) : undefined;
+    errors.push(`fact ${f.id}: "## ${heading}" sits on no chart, so no slide shows it — address it to a series reading, comparison, figure or placed section of this fact${meant ? `; did you mean "${meant}"?` : ''}`);
+  }
+  for (const [anchor, chart] of Object.entries(f.movedAnchors ?? {})) {
+    if (!targets.includes(chart)) errors.push(`fact ${f.id}: moved anchor "${anchor}" names "${chart}", which is not a series reading, comparison or figure of this fact`);
   }
   return errors;
 }
@@ -461,6 +460,7 @@ function knownSection(fact: Fact, section: string): boolean {
     fact.additionalSeries?.some(s => section === `chart-${s.id}` || s.readings.some(r => section === `chart-${r.id}`)) === true ||
     fact.comparisons?.some(chart => section === `chart-${chart.id}`) === true ||
     fact.figures?.some(figure => isComponentFigure(figure) && (section === `chart-${figure.id}` || figure.replaces?.includes(section) === true)) === true ||
+    fact.movedAnchors?.[section] !== undefined ||
     fact.body.includes(`{#${fact.id}--${section}}`);
 }
 

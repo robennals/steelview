@@ -202,9 +202,17 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
   return rendered;
 }
 
-/** One chart of a data collection, with its observations rendered, ready to step through. */
+/** The title of a report's last slide, and of the same list in a sheet. */
+export const UNKNOWNS_LABEL = "What we don't know yet";
+
+/** One step of a data collection: a chart with its observations rendered, ready to step through, or its last step, what the report cannot yet say. */
 export type DataStep = {
-  chart: PreviewSlide;
+  /** The step's name, under its thumbnail and in its count. */
+  label: string;
+  /** The chart. Only the last step has none. */
+  chart?: PreviewSlide;
+  /** On the last step, the measurements that would change the report. */
+  unknowns?: NonNullable<Fact['dataStillNeeded']>;
   /** The observations and Subtleties of this chart, in order: what to notice in it. `heading` is rendered, without a paragraph. */
   observations: { id: string; heading: string; html: string; mark?: ObservationMark; subtlety: boolean; href: string; label: string }[];
   /** What the chart shows. */
@@ -250,12 +258,13 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
     const more = chartMore(fact);
     const slides = factSlides(topic.slug, fact);
     const anchors = chartAnchors(fact, slides);
-    rendered.set(fact.id, await Promise.all(slides.map(async (chart, i) => {
+    const charts = await Promise.all(slides.map(async (chart, i) => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
       const key = slideGroup(fact, chart);
       const figure = componentFigure(fact, chart.chart);
       const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
       return {
+        label: chart.label,
         chart,
         description,
         more: await renderMarkdown(more.get(key) ?? '', topic.slug, topic.facts, options),
@@ -273,7 +282,11 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
           });
         })),
       };
-    })));
+    }));
+    const unknowns: DataStep[] = fact.dataStillNeeded?.length
+      ? [{ label: UNKNOWNS_LABEL, unknowns: fact.dataStillNeeded, observations: [], description: '', more: '', anchors: [`${fact.id}--data-still-needed`] }]
+      : [];
+    rendered.set(fact.id, [...charts, ...unknowns]);
   }
   return rendered;
 }

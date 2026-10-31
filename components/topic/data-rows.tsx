@@ -6,6 +6,7 @@ import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartAbout } from '@/components/report/chart-about';
 import { ChartThumb } from './chart-thumb';
+import { DataStillNeededList } from './data-still-needed';
 import { PanelHost } from './explore-panels';
 import { ObservationBar, ObservationStep } from './observation-bar';
 import { ThumbStrip } from './thumb-strip';
@@ -16,6 +17,30 @@ import { Walkthrough } from './walkthrough';
 /** The most chart silhouettes that fit on a closed row's line at the page's full width. */
 const THUMBS = 7;
 
+/** A step's miniature: its chart, or for the step without one a question mark. */
+function StepThumb({ fact, step }: { fact: Fact; step: DataStep }) {
+  return step.chart
+    ? <ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} />
+    : <span className="sv-walk__no-chart" aria-hidden="true">?</span>;
+}
+
+type UnknownsStepProps = { fact: Fact; step: DataStep; addressed: boolean };
+
+/** A report's last slide: what it cannot yet say, and why that matters. */
+function UnknownsStep({ fact, step, addressed }: UnknownsStepProps) {
+  return (
+    <div className="sv-walk__step" data-chart>
+      {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed ? anchor : undefined} data-chart-anchor={anchor} />)}
+      <div className="sv-walk__chart">
+        <div className="sv-slide">
+          <h3 className="sv-graph-heading">{step.label}</h3>
+          <DataStillNeededList fact={fact} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 type ChartStepProps = { step: DataStep; number: number; addressed: boolean };
 
 /**
@@ -25,8 +50,10 @@ type ChartStepProps = { step: DataStep; number: number; addressed: boolean };
  * it, except those the chart itself carries.
  */
 function ChartStep({ step, number, addressed }: ChartStepProps) {
-  const { fact, chart } = step.chart;
-  const drawn = [`${fact.id}--chart-${chart}`, `${fact.id}--chart-${slideGroup(fact, step.chart)}`];
+  const slide = step.chart;
+  if (!slide) return null;
+  const { fact, chart } = slide;
+  const drawn = [`${fact.id}--chart-${chart}`, `${fact.id}--chart-${slideGroup(fact, slide)}`];
   return (
     <div className="sv-walk__step" data-chart>
       {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed && !drawn.includes(anchor) ? anchor : undefined} data-chart-anchor={anchor} />)}
@@ -64,12 +91,14 @@ export function DataPanel({ slug, fact, steps, charts }: DataPanelProps) {
       <PanelHost fact={fact.id} title={title}>
         <Walkthrough
           name={title}
-          headings={steps.map(s => s.chart.label)}
+          headings={steps.map(s => s.label)}
           noun="Chart"
           endLabel="Last chart"
-          thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
+          thumbs={steps.map(s => <StepThumb key={s.label} fact={fact} step={s} />)}
         >
-          {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} addressed={charts !== undefined} />)}
+          {steps.map((step, i) => step.unknowns
+            ? <UnknownsStep key={i} fact={fact} step={step} addressed={charts !== undefined} />
+            : <ChartStep key={i} step={step} number={i + 1} addressed={charts !== undefined} />)}
         </Walkthrough>
       </PanelHost>
     </LazyCharts>
@@ -106,8 +135,8 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
                 thumbs={steps.slice(0, THUMBS).map((step, i) => (
                   <li key={i}>
                     <RowThumb step={i}>
-                      <span className="sv-row__thumb" aria-hidden="true"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></span>
-                      <span className="sv-walk__thumb-label">{i + 1}. {step.chart.label}</span>
+                      <span className="sv-row__thumb" aria-hidden="true"><StepThumb fact={fact} step={step} /></span>
+                      <span className="sv-walk__thumb-label">{i + 1}. {step.label}</span>
                     </RowThumb>
                   </li>
                 ))}

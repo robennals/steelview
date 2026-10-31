@@ -44,19 +44,6 @@ export function chartObservations(html: string, factId: string, chartIds: string
 }
 
 /**
- * Split off the body's lead: everything before its first heading. The lead
- * introduces the evidence, so the article reads it after the claim and
- * before the first figure; the rest keeps its place after the figures. An h3
- * with an id has already become a `<section>` (rehypeEvidenceSections), so
- * that counts as a heading too.
- */
-export function leadProse(html: string): { lead: string; bodyHtml: string } {
-  const start = html.search(/<(h[1-6]|section)\b/);
-  if (start === -1) return { lead: html, bodyHtml: '' };
-  return { lead: html.slice(0, start).trim(), bodyHtml: html.slice(start) };
-}
-
-/**
  * Pull the h2 and h3 sections whose id is `<fact>--<id>` out of the body,
  * keyed by id, so a `section` figure can place prose between two figures.
  *
