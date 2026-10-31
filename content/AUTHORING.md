@@ -501,6 +501,15 @@ of art, what that thing is. It says what is shown, not what it finds; findings
 belong in observations. Everything else follows in later sentences, one click
 away. Support the introduction from the collection's own sources.
 
+**A chart's title says what it covers, and where.** Readers assume a chart in a
+UK report is about the UK, so one about anywhere else opens with the place:
+“Australia: asylum-seeker boat arrivals, 1976-2016”. A chart narrower than the
+report's country names its area (“England and Wales”, “Great Britain”). The
+report's own country may stay unnamed only where nothing else could be meant;
+in a collection that mixes countries, name it. Tables and timelines follow the
+same rule. A title must also make sense without its neighbours, so no “the
+other studies” or “the same era”, and name the subject, not the finding.
+
 **Charts are shared product primitives, not report-specific artwork.** Use the
 existing `SeriesChart` and `ComparisonChart` data shapes, and the [`figures`](#figures)
 kinds, for every report. If a
@@ -639,6 +648,10 @@ own misleading framing, and a share alone hides that the growth is mostly in
 the numerator. `religion-of-arrivals-is-not-recorded` does the same with
 share and volume, and its body says why — "Share down, volume up; the chart
 carries both readings, and either one quoted alone gives the wrong picture."
+
+A reading's `label` is a subheading, drawn only when a series has more than
+one reading, so it never stands in for the title: the series `title` is what
+says what the chart covers and where.
 
 **Comparing across space.** Where a stat is per-country, compare to
 comparable countries. Comparator choice is the cross-sectional form of date
@@ -1596,6 +1609,9 @@ Run this before opening a pull request.
       in the charts below it.
 - [ ] Every chart's description opens with a free-standing sentence of at most
       130 characters saying what is shown, explaining anything its title names.
+- [ ] Read alone, every chart, table and timeline title says what it covers
+      and where: another country leads the title, an area narrower than the
+      report's country is named, and it needs no neighbouring chart to make sense.
 - [ ] Every observation fits about three lines (350 characters).
 - [ ] No paragraph longer than four lines. Numbers sit in charts, tables or
       key figures, not recited in prose; dated events are `events` on the

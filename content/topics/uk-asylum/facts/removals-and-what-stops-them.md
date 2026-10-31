@@ -953,7 +953,7 @@ series:
               value: 18354
 additionalSeries:
   - id: fno-asylum-dataset
-    title: 'Returns of foreign offenders and asylum-related returns, 2010–2025'
+    title: UK returns of foreign offenders and asylum-related returns, 2010–2025
     description: >-
       Returns of foreign national offenders (enforced, voluntary and port), and
       enforced plus voluntary returns of people who had claimed asylum at some
@@ -1068,7 +1068,9 @@ additionalSeries:
               - period: '2025'
                 value: 12396
   - id: refused-cohorts
-    title: 'Refused and withdrawn asylum claims, and returns recorded, by year of claim, 2007–2025'
+    title: >-
+      Refused and withdrawn UK asylum claims, and returns recorded, by year of
+      claim, 2007–2025
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
       2026: how many were refused or withdrew at their latest outcome, and how
@@ -1293,7 +1295,7 @@ additionalSeries:
               - period: '2025'
                 value: 7.8
   - id: detention-leavers-dataset
-    title: 'People leaving immigration detention, by outcome, 2010–2025'
+    title: People leaving UK immigration detention, by outcome, 2010–2025
     description: >-
       Every exit from immigration detention each year, by what happened next:
       returned from the UK, bailed (by the Home Secretary or an immigration
@@ -1431,7 +1433,7 @@ additionalSeries:
               - period: '2025'
                 value: 759
   - id: fno-appeals-dataset
-    title: 'Foreign offenders’ appeals against deportation, 2008/09–2020/21'
+    title: Foreign offenders’ appeals against UK deportation, 2008/09–2020/21
     description: >-
       Appeals against deportation lodged by foreign national offenders in each
       financial year (labelled by the year it starts), how many were allowed at
@@ -1553,7 +1555,9 @@ additionalSeries:
               - period: '2020'
                 value: 44
   - id: fnos-community-dataset
-    title: 'Foreign offenders liable to deportation living in the community, 2012–2026'
+    title: >-
+      Foreign offenders liable to UK deportation living in the community,
+      2012–2026
     description: >-
       Foreign national offenders subject to deportation action who have
       finished their sentence and are living in the community rather than in
@@ -1794,7 +1798,7 @@ additionalSeries:
                 value: 314
 comparisons:
   - id: detention-issues
-    title: Issues raised during detention before removal, 2019
+    title: Issues raised during UK immigration detention before removal, 2019
     description: >-
       Share of detentions in 2019 in which each issue was raised, for people
       detained in the UK after immigration offences (not foreign offenders, not
@@ -1837,7 +1841,8 @@ comparisons:
       - label: Appeal
         value: 3
   - id: detention-issues-return
-    title: Share of detentions ending in return, by issue raised, 2019
+    title: >-
+      Share of UK immigration detentions ending in return, by issue raised, 2019
     description: >-
       For the same 2019 detentions, the share that ended with the person
       returned from the UK, by issue raised, against detentions in which none
@@ -1873,7 +1878,9 @@ comparisons:
       - label: Modern slavery referral
         value: 1
   - id: charter-failures
-    title: Why foreign offenders were not removed on two Jamaica charter flights, 2016–2017
+    title: >-
+      Why foreign offenders were not removed from the UK on two Jamaica charter
+      flights, 2016–2017
     description: >-
       The most common reasons removals failed on the September 2016 and March
       2017 charter flights to Jamaica, which planned 307 removals between them
@@ -2003,7 +2010,7 @@ figures:
     id: france-pilot-dataset
   - kind: estimateRange
     id: unlawful-population
-    title: Estimates of the population without lawful status, 2017
+    title: Estimates of the UK population without lawful status, 2017
     description: The two latest estimates, both for 2017 and both made by the residual method. The Home Office makes no official estimate.
     valueLabel: People without lawful status
     nullValue: null
@@ -2014,7 +2021,9 @@ figures:
       - { label: 'Pew, revised March 2025', low: 700000, high: 900000, source: 69 }
   - kind: dataTable
     id: echr-share
-    title: What the nearest measures of the ECHR's weight show, and leave out
+    title: >-
+      What the nearest measures of the ECHR's weight in UK removals show, and
+      leave out
     description: No published source counts removals stopped by the ECHR. These are the nearest measures, each of which answers a narrower question.
     caption: One card per measure
     layout: cards

@@ -570,7 +570,7 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: 'Waiting for a first decision, and waiting for an appeal, 2015-2026'
+  title: People waiting for a UK asylum decision or appeal, 2015-2026
   description: >-
     Quarter-end counts of people waiting for an initial Home Office decision on
     an asylum claim, and of asylum and protection appeals open at the
@@ -1199,7 +1199,7 @@ additionalSeries:
               - period: '2026-06'
                 value: 4204
   - id: hotel-breakdown
-    title: 'Where supported asylum seekers live, including hotels, 2022-2026'
+    title: Where people on UK asylum support live, including hotels, 2022-2026
     description: >-
       Quarter-end counts of people on Home Office asylum support by
       accommodation type, December 2022 (when hotels were first counted
@@ -1493,7 +1493,8 @@ comparisons:
       outside the figure. "Detention and removals" covers detention beds used
       for asylum and assisted voluntary returns only.
   - id: hotels-share-of-people-and-cost
-    title: Hotels' share of people and of cost in asylum accommodation
+    title: >-
+      Hotels' share of people and of cost in UK asylum accommodation, 2024-25
     description: >-
       People in hotels as a share of everyone in Home Office asylum
       accommodation, against hotels' share of the accommodation contracts'
@@ -1566,7 +1567,7 @@ figures:
     id: hotels-share-of-people-and-cost
   - kind: dataTable
     id: large-sites
-    title: Large sites used or proposed for asylum accommodation, 2026
+    title: Large sites used or proposed for UK asylum accommodation, 2026
     description: Former military and other large sites used, or proposed, for asylum accommodation, as described in the sources cited.
     caption: One row per site
     columns:

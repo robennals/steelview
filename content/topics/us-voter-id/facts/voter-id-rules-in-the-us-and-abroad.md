@@ -790,7 +790,7 @@ series:
             - {period: '2026', value: 36}
 additionalSeries:
   - id: photo-and-strict
-    title: 'Photo, non-photo and strict-photo ID states, 2009–2026'
+    title: US states with photo, non-photo and strict-photo ID rules, 2009–2026
     description: >-
       States with an ID requirement in force, split by whether a photo is
       required, with NCSL's "strict photo" states (no counted ballot without
@@ -884,7 +884,9 @@ additionalSeries:
               - {period: '2024', value: 9}
               - {period: '2026', value: 10}
   - id: dpoc-laws
-    title: 'States with laws requiring documentary proof of citizenship to register, 2004–2026'
+    title: >-
+      US states with laws requiring documentary proof of citizenship to
+      register, 2004–2026
     description: >-
       Cumulative number of states whose current documentary-proof-of-citizenship
       law had been enacted by each year, by NCSL's enactment dates. Not all are
@@ -1091,7 +1093,7 @@ comparisons:
       categories. These are in-person rules only; mail-ballot ID rules are
       not covered.
   - id: early-voting-strict-states
-    title: 'How early in-person voting can start in the strict-photo-ID states'
+    title: How early in-person voting can start in the US strict-photo-ID states
     description: >-
       Days before Election Day that early in-person voting can begin in each
       of the 10 strict-photo-ID states, 2026 general-election rules. Zero means

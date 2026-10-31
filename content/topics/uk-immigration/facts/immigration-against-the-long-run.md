@@ -943,7 +943,7 @@ series:
             - {period: '2025', value: 0.25}
 additionalSeries:
   - id: routes
-    title: Net migration by route, reason and nationality, 2019–2025
+    title: UK net migration by route, reason and nationality, 2019–2025
     description: >-
       Net migration is long-term arrivals minus departures; this chart splits it by
       nationality and by people's reason for first coming. Each rolling year is divided
@@ -1301,7 +1301,7 @@ additionalSeries:
               - {period: 2025-09, value: 202000}
               - {period: 2025-12, value: 171000}
   - id: nationality
-    title: UK Migration by Nationality
+    title: UK migration by nationality, 2012–2025
     description: >-
       People moving to the UK long term, shown separately for EU+, non-EU+ and British
       nationals. EU+ includes the EU and EFTA from mid-2021; the earlier definition covers
@@ -2783,7 +2783,7 @@ comparisons:
       - label: Latvia
         value: 2661
   - id: international-immigration
-    title: International Comparison by Nationality, 2024
+    title: Arrivals per head by nationality, UK and EU and EFTA countries, 2024
     description: >-
       Arrivals in the UK and in EU and EFTA countries in 2024 as a share of each country's
       population, split by nationality. EU+ and non-EU+ bars count foreign nationals; each

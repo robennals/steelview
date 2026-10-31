@@ -3231,7 +3231,9 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 @media (max-width: 40rem) {
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
-  .sv-chart[data-panel-chart] .sv-chart__plot { flex: none; height: 16rem; }
+  /* A long title takes its height from the graph, not from the panel's edge. */
+  .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
+  .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 16rem; min-height: 12rem; }
 }
 
 /* On a phone every shape's type would shrink too far, so the narrow plot,

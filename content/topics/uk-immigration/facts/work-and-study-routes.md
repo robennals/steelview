@@ -648,7 +648,7 @@ sources:
   publisher: Home Office
   date: '2026-08-27'
 series:
-  title: Work visas issued to people coming from abroad, 2005–2025
+  title: UK work visas issued to people coming from abroad, 2005–2025
   description: >-
     Work visas issued each year to people applying from abroad, counting both the workers
     and the family members who came with them. These are entry clearance visas by calendar
@@ -1073,7 +1073,7 @@ series:
         value: 92412
 additionalSeries:
 - id: health-care-route
-  title: Health and Care Worker visas by quarter, 2020–2026
+  title: UK Health and Care Worker visas by quarter, 2020–2026
   description: >-
     The Health and Care Worker route lets people from abroad work in UK health and care;
     this counts its visas issued each quarter. The visas are those issued to people
@@ -1203,7 +1203,9 @@ additionalSeries:
       - period: 2026-06
         value: 5149
 - id: care-occupations
-  title: Sponsored work visas for care workers, nurses and doctors by quarter, 2021–2026
+  title: >-
+    UK sponsored work visas for care workers, nurses and doctors by quarter,
+    2021–2026
   description: >-
     Work visas each quarter for care workers, nurses and doctors sponsored by an employer,
     with all sponsored jobs shown for scale. These are entry clearance grants to sponsored
@@ -1633,7 +1635,7 @@ additionalSeries:
       publisher: Skills for Care
       date: '2026-10-14'
 - id: sponsor-revocations
-  title: Sponsor licences revoked, 2012–2025
+  title: UK sponsor licences revoked, 2012–2025
   description: >-
     A sponsor licence lets an organisation bring in overseas workers or students; this
     counts those the Home Office revoked each year. Revocations are counted by calendar
@@ -1762,7 +1764,7 @@ additionalSeries:
       - period: '2025'
         value: 24
 - id: registered-sponsors
-  title: Registered sponsors and the revocation rate, 2014–2025
+  title: UK registered sponsors and the revocation rate, 2014–2025
   description: >-
     How many organisations were licensed to bring in overseas workers or students, and how
     often Skilled Worker licences were revoked. Sponsor counts are at the end of each
@@ -2069,7 +2071,9 @@ additionalSeries:
       - period: 2025-06
         value: 30.0
 - id: asylum-prior-route
-  title: People claiming asylum by the route they held before claiming, 2018–2025
+  title: >-
+    People claiming asylum in the UK by the route they held before claiming,
+    2018–2025
   description: >-
     Everyone who claimed asylum each year, split by how they last came to be in the UK
     and, for visa holders, by which visa. The groups are an illegal entry route, a visa or
@@ -2461,7 +2465,7 @@ comparisons:
     of 2020/21. Annual figures are the MAC’s conversions of monthly medians. No later
     year has been published.
 - id: graduate-switcher-jobs
-  title: Jobs taken by people switching into sponsored work
+  title: Jobs taken by people switching into UK sponsored work
   description: >-
     Share of people moving onto an employer-sponsored work visa who took graduate-level
     jobs, by earlier visa, beside UK graduates. Graduate-level jobs here are managerial,

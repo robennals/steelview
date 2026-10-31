@@ -820,7 +820,9 @@ additionalSeries:
           - name: Democrats voting no
             points: [{period: '2026-03-04', value: 1}, {period: '2026-03-18', value: 1}, {period: '2026-03-24', value: 1}, {period: '2026-04-15', value: 1}, {period: '2026-04-22', value: 1}, {period: '2026-04-30', value: 1}, {period: '2026-05-13', value: 1}, {period: '2026-05-19', value: 1}, {period: '2026-06-16', value: 1}, {period: '2026-06-23', value: 1}, {period: '2026-06-24', value: 1}, {period: '2026-07-30', value: 1}, {period: '2026-09-24', value: 1}]
   - id: pew-approval-series
-    title: 'Approval of the war in Pew''s surveys, with the war''s main events, March–October 2026'
+    title: >-
+      US approval of the Iran war in Pew's surveys, with the war's main events,
+      March–October 2026
     description: >-
       Share of US adults who approve of President Trump's handling of the
       military action against Iran, and who say using force was the right
@@ -980,7 +982,9 @@ comparisons:
         value: 100
         values: [7, 89, 4]
   - id: quinnipiac-congress-approval
-    title: 'Should the President have received Congress''s approval before acting? By party (Quinnipiac), March 2026'
+    title: >-
+      Should the President have received Congress's approval before acting
+      against Iran? By party (Quinnipiac), March 2026
     description: 'Answers of registered voters to "Do you think President Trump should have received approval from Congress before taking military action against Iran, or not?" (Quinnipiac, 6–8 March 2026).'
     unit: percent
     valueLabel: '% of registered voters'
@@ -1063,7 +1067,7 @@ figures:
       - { text: "will not be attacking Iran at any time prior to the Midterm Elections … having productive discussions with the Islamic Republic of Iran", speaker: "Donald Trump", role: "President", context: "Social media post", date: "2026-10-08", source: 42 }
   - kind: "timeline"
     id: "war-powers-letters"
-    title: "War Powers letters, 2026"
+    title: The President's War Powers letters on the Iran war, 2026
     description: "Each letter the President sent Congress under the War Powers Resolution in 2026, by date. Letters from June on report new military action."
     categories:
       - { id: "action", label: "Reports military action" }
@@ -1083,7 +1087,9 @@ figures:
     quote: { text: "The Congress shall have Power … To declare War", speaker: "The Constitution of the United States", context: "Article I, Section 8", source: 51 }
   - kind: "dataTable"
     id: "earlier-votes"
-    title: "Earlier uses of force without authorisation, and Congress's votes, 2011–2025"
+    title: >-
+      Earlier US uses of force without authorisation, and Congress's votes,
+      2011–2025
     description: "The main roll calls found on earlier operations, and the count of all uses of force since 1798."
     caption: "One row per vote or count"
     columns:
@@ -1099,7 +1105,7 @@ figures:
       - { operation: "All uses of force, 1798–2023", result: { value: "\"Hundreds of instances\"; 11 declarations of war covering five wars", sources: [19] } }
   - kind: "timeline"
     id: "ceasefire-incidents"
-    title: "The ceasefire record, April–July 2026"
+    title: The US–Iran ceasefire record, April–July 2026
     description: "Attacks, strikes and agreements during the ceasefire, from the President's letters and ISW/CTP. No Iranian or neutral record was found."
     categories:
       - { id: "iran", label: "Iran acted" }
@@ -1120,7 +1126,7 @@ figures:
       - { date: "2026-07-14", title: "Blockade reimposed", category: "us", source: 34 }
   - kind: "timeline"
     id: "negotiations"
-    title: "Negotiations and agreements, 2016–2026"
+    title: US–Iran negotiations and agreements, 2016–2026
     description: "The talks and agreements between the US and Iran, from the 2015 deal to the latest proposals."
     categories:
       - { id: "talks", label: "Talks and proposals" }
@@ -1147,7 +1153,7 @@ figures:
       - { text: "exercise wisdom and pursue political solutions", speaker: "UAE foreign ministry", date: "2026-10-28", source: 49 }
   - kind: "timeline"
     id: "latest"
-    title: "The latest events, July–October 2026"
+    title: The latest events in the Iran war, July–October 2026
     description: "Assessments and reports since the ceasefire ended. Most come from one source, named on each entry, and are not official findings."
     categories:
       - { id: "rearming", label: "Iran's forces, as assessed" }

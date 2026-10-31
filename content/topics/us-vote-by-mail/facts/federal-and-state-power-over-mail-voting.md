@@ -569,7 +569,7 @@ series:
     date: '2026-08-26'
 comparisons:
   - id: senate-votes
-    title: 'National voting-rules bills fell short of 60 Senate votes'
+    title: US Senate votes on national voting-rules bills, against the 60 needed
     description: >-
       Senators voting yes on two cloture votes on national voting-rules bills,
       2022 and 2026, against the 60 needed to end debate. Only the 2022 bill
@@ -720,7 +720,8 @@ figures:
             - 23
   - kind: dataTable
     id: holdings
-    title: 'Who may set mail-voting rules: what the Constitution and courts say'
+    title: >-
+      Who may set US mail-voting rules: what the Constitution and courts say
     description: 'The constitutional text and the main court rulings on who sets election rules, oldest first.'
     caption: One card per text or ruling
     layout: timeline

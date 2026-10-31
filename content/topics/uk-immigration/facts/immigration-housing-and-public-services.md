@@ -1566,7 +1566,9 @@ comparisons:
       household formation rates variant changes how many households a given
       population forms, not migration.
   - id: house-price-and-rent-effects
-    title: How much house prices and rents rise per point of immigrant share
+    title: >-
+      International studies: how much house prices and rents rise per point of
+      immigrant share
     description: >-
       Estimated rise in house prices or rents when the immigrant share of the population
       rises by one percentage point, by study group. Figures are median estimated

@@ -812,7 +812,9 @@ comparisons:
         value: 41
         highlight: true
   - id: january-2026-deaths
-    title: 'Deaths in the protests of 28 December 2025 – 15 February 2026, by HRANA''s category, as of 23 February 2026'
+    title: >-
+      Deaths in Iran's protests of 28 December 2025 – 15 February 2026, by
+      HRANA's category, as of 23 February 2026
     description: 'All deaths HRANA had confirmed in the 50-day record, split into its categories. A further 11,744 cases were under review and are not included.'
     unit: count
     valueLabel: 'Deaths confirmed by HRANA'
@@ -873,7 +875,7 @@ comparisons:
       - label: Taiwan
         value: 1
   - id: amnesty-executions-per-million-2025
-    title: 'Recorded executions per million residents, 2025'
+    title: Recorded executions per million residents by country, 2025
     description: 'Amnesty''s recorded executions in 2025 divided by each country''s 2025 population (World Bank).'
     unit: count
     valueLabel: 'Executions per million residents'
@@ -933,7 +935,9 @@ comparisons:
         value: 2159
         highlight: true
   - id: executions-per-president
-    title: 'Average executions per month under each president, 2005–2025 (IHRNGO)'
+    title: >-
+      Average executions per month in Iran under each president, 2005–2025
+      (IHRNGO)
     description: 'IHRNGO''s average monthly executions for each presidency, from Ahmadinejad (2005–2013) to Pezeshkian''s first 17 months (July 2024 – December 2025).'
     unit: count
     valueLabel: 'Executions per month'
@@ -1158,7 +1162,9 @@ comparisons:
       - {label: "Sweden", value: 99}
       - {label: "Finland", value: 100}
   - id: gamaan-preferred-system
-    title: 'Preferred form of political system, GAMAAN online survey, June 2026'
+    title: >-
+      Preferred form of political system in Iran, GAMAAN online survey, June
+      2026
     description: 'Answers to "Which form of political system do you prefer?" among respondents inside Iran, weighted to literate residents aged 15 and over (fieldwork 20–27 June 2026).'
     unit: percent
     valueLabel: '% of respondents'
@@ -1183,7 +1189,9 @@ comparisons:
       - label: 'Lack the knowledge to choose'
         value: 19.1
   - id: gamaan-war-views
-    title: 'Views of the war and the regime, GAMAAN online survey, June 2026'
+    title: >-
+      Views inside Iran of the war and the regime, GAMAAN online survey, June
+      2026
     description: 'Share of respondents inside Iran agreeing with each statement (fieldwork 20–27 June 2026). Each bar is a separate question.'
     unit: percent
     valueLabel: '% of respondents'
@@ -1246,7 +1254,7 @@ figures:
     id: "january-2026-deaths"
   - kind: "dataTable"
     id: "crackdown-deaths"
-    title: "Crackdown deaths, by counter and method"
+    title: Deaths in Iran's crackdowns, by counter and method
     description: "Each count comes from a different counter using a different method, so they cannot be read as one series."
     caption: "One row per count"
     columns:
@@ -1266,7 +1274,7 @@ figures:
       - { crackdown: "Dec 2025 – Feb 2026", counter: "Published names", count: "HRANA 4,555; government 3,038", method: "Named individuals", asof: { value: "26 Feb 2026", sources: [5] } }
   - kind: "dataTable"
     id: "arrests"
-    title: "Arrests after crackdowns and outside attacks"
+    title: Arrests in Iran after crackdowns and outside attacks
     description: "Arrests counted after the June 2025 war and during the January 2026 crackdown, by counter."
     caption: "One row per count"
     columns:
@@ -1296,7 +1304,7 @@ figures:
     id: "gamaan-war-views"
   - kind: "timeline"
     id: "openings-and-reversals"
-    title: "Openings and reversals, 2000–2026"
+    title: Openings and reversals in Iran, 2000–2026
     description: "Dated moves toward and away from openness in Iran, as the sources report them."
     categories:
       - { id: "opening", label: "Opening" }
