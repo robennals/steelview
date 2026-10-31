@@ -66,7 +66,7 @@ export function ReportFigure({
       <figure className={classes} id={id} data-panel-chart>
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}
-          {(description || note) && <ChartAbout description={description}>{noteBody}</ChartAbout>}
+          <ChartAbout description={description}>{noteBody}</ChartAbout>
         </figcaption>
         <ObservationBar />
         {children}

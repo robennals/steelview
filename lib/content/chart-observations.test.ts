@@ -34,6 +34,15 @@ test('artifact subtleties stay separate from numbered observations', async () =>
   assert.equal(result.bodyHtml, '');
 });
 
+test('a chart\'s More text sits with its Subtleties in a sheet', async () => {
+  const html = await renderMarkdown('## More {#example--more-people}\n\nWhat is counted.\n\n### About {#example--about}\n\nMethod.\n\n## Subtleties {#example--subtleties-people}\n\n### A catch {#example--catch}\n\nWhy.', 'topic');
+  const { subtleties, bodyHtml } = chartObservations(html, 'example', ['people']);
+  assert.match(subtleties.people, /id="example--more-people"><summary>More<\/summary><p>What is counted/);
+  assert.match(subtleties.people, /<section id="example--about"/);
+  assert.match(subtleties.people, /id="example--catch"/);
+  assert.equal(bodyHtml, '');
+});
+
 test('a "not measured since" band gets its own Method Changes entry, citing its own source', async () => {
   const { methodChanges } = await import('./chart-observations');
   const result = methodChanges('uranium', 'stock', [], 2, { from: '2025-06-13', until: '2026-10-29', label: 'Not verified since IAEA access ended', note: 'Inspectors have had no access.', source: 4 });

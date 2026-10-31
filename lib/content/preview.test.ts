@@ -5,7 +5,7 @@ import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-e
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure, type Fact } from './types';
-import { observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
+import { chartMore, observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -95,6 +95,17 @@ test('a chart\'s Subtleties step after its observations, whichever the body list
   const fact = { id: 'report', body } as Fact;
   assert.deepEqual(observationsByChart(fact).get('people')?.map(o => [o.id, o.subtlety]), [['finding-one', false], ['qualification', true]]);
   assert.equal(observationGroups(fact).get('qualification'), 'people');
+});
+
+test('a chart\'s More text is filed under its chart, and an anchor moved to a chart opens it', async () => {
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  const body = `${fact.body}\n\n## More {#${fact.id}--more-federal-laws}\n\nWhat is counted. [1](#source-${fact.id}-1)`;
+  const steps = (await renderDataWalkthroughs(topic, [{ ...fact, body, movedAnchors: { 'old-section': 'federal-laws' } }], { citationsAsText: false, footnotes: true })).get(fact.id)!;
+  const step = steps.find(s => s.chart.chart === 'federal-laws')!;
+  assert.match(step.more, /What is counted\./);
+  assert.ok(step.anchors.includes(`${fact.id}--old-section`));
+  assert.equal(chartMore({ body }).size, 1);
 });
 
 test('an observation\'s heading is rendered, not shown as markdown', async () => {

@@ -4,6 +4,7 @@ import { anchorFor } from '@/lib/content/types';
 import { slideGroup } from '@/lib/content/preview';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { ChartAbout } from '@/components/report/chart-about';
 import { ChartThumb } from './chart-thumb';
 import { PanelHost } from './explore-panels';
 import { ObservationBar, ObservationStep } from './observation-bar';
@@ -30,12 +31,11 @@ function ChartStep({ step, number, addressed }: ChartStepProps) {
     <div className="sv-walk__step" data-chart>
       {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed && !drawn.includes(anchor) ? anchor : undefined} data-chart-anchor={anchor} />)}
       <div className="sv-walk__chart">
-        <ObservationStep observations={step.observations} addressed={addressed}>
+        <ObservationStep observations={step.observations} more={step.more} addressed={addressed}>
           <div className="sv-slide">
             <LazyChart index={number - 1}>
-              {step.observations.length > 0
-                ? <ObservationBar />
-                : <p className="sv-walk__prose prose-body">{step.description}</p>}
+              <ChartAbout description={step.description} />
+              <ObservationBar />
             </LazyChart>
           </div>
         </ObservationStep>

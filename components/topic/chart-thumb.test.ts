@@ -209,7 +209,7 @@ for (const figure of libraryFigures) {
 const ROW_KINDS = new Set(['barChart', 'compositionBar', 'estimateRange', 'smallMultiples', 'timeline', 'periodTimeline', 'quotes', 'map', 'dataTable']);
 
 test('every figure in a data panel shows the observation being stepped through', () => {
-  const observations = [{ id: 'seen', heading: 'Seen here', html: '<p>Why.</p>' }];
+  const observations = [{ id: 'seen', heading: 'Seen here', html: '<p>Why.</p>', subtlety: false, href: '#seen', label: 'Seen here' }];
   for (const slide of factSlides(observedTopic.slug, observed).filter(s => libraryFigures.some(f => f.id === s.chart))) {
     const html = renderToStaticMarkup(createElement(ObservationStep, { observations }, createElement(PanelChart, { slide, page: observedPage })));
     assert.match(html, /sv-observe__claim[^>]*>Seen here/, slide.chart);

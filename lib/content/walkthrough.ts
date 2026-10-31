@@ -71,6 +71,21 @@ export function observationsByChart(fact: Fact): Map<string, Observation[]> {
   return groups;
 }
 
+/**
+ * A fact's further text on each chart, read in the chart's More: what a chart
+ * needs saying that is not a finding, under `## More {#<fact>--more-<key>}`.
+ * An `###` heading in it takes an id as anywhere else in the body.
+ */
+export function chartMore(fact: Pick<Fact, 'body'>): Map<string, string> {
+  const more = new Map<string, string>();
+  for (const section of fact.body.split(/^(?=## )/m)) {
+    const [heading, ...rest] = section.split('\n');
+    const key = heading.match(/^## .*\{#[a-z0-9-]+--more-([a-z0-9-]+)\}$/)?.[1];
+    if (key) more.set(key, rest.join('\n').trim());
+  }
+  return more;
+}
+
 /** An observation, as an element id, with the part of its chart it picks out. */
 export type MarkedObservation = { id: string; mark: ObservationMark };
 
@@ -171,9 +186,11 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
 export type DataStep = {
   chart: PreviewSlide;
   /** The observations and Subtleties of this chart, in order: what to notice in it. `heading` is rendered, without a paragraph. */
-  observations: { id: string; heading: string; html: string; mark?: ObservationMark; subtlety: boolean }[];
-  /** What the chart shows, for a chart with no observations of its own. */
+  observations: { id: string; heading: string; html: string; mark?: ObservationMark; subtlety: boolean; href: string; label: string }[];
+  /** What the chart shows. */
   description: string;
+  /** The chart's further text (`chartMore`), rendered, for its More. */
+  more: string;
   /** The element ids a citation can name this chart by, so a viewpoint's step opens on it. */
   anchors: string[];
 };
@@ -210,6 +227,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
   const rendered = new Map<string, DataStep[]>();
   for (const fact of facts) {
     const groups = observationsByChart(fact);
+    const more = chartMore(fact);
     const slides = factSlides(topic.slug, fact);
     const anchors = chartAnchors(fact, slides);
     rendered.set(fact.id, await Promise.all(slides.map(async (chart, i) => {
@@ -220,14 +238,20 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
       return {
         chart,
         description,
+        more: await renderMarkdown(more.get(key) ?? '', topic.slug, topic.facts, options),
         anchors: anchors[i],
-        observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
+        observations: await Promise.all((groups.get(key) ?? []).map(async o => {
+          const heading = (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, '');
+          return ({
           id: `${fact.id}--${o.id}`,
-          heading: (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),
+          heading,
+          label: heading.replace(/<[^>]+>/g, ''),
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
           mark: fact.observationMarks?.[o.id],
           subtlety: o.subtlety,
-        }))),
+          href: `${factPath(topic.slug, fact.id)}#${fact.id}--${o.id}`,
+          });
+        })),
       };
     })));
   }

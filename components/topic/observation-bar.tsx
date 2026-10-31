@@ -14,13 +14,24 @@ const Step = createContext<{
   observations: Observation[];
   /** Give each observation its id, for a page where a link to one works without script. */
   addressed: boolean;
+  /** The chart's further text for its More, rendered. */
+  more: string;
   index: number;
   open: boolean;
+  /** Counts the reader's jumps from More, each of which moves focus to the bar. */
+  jumps: number;
   go: (to: number) => void;
+  /** Go straight to one observation, open, with focus on it. */
+  show: (to: number) => void;
   toggle: () => void;
 } | null>(null);
 
-type ObservationStepProps = { observations: Observation[]; addressed?: boolean; children?: ReactNode };
+/** The step a chart is drawn in, if any. */
+export function useChartStep() {
+  return useContext(Step);
+}
+
+type ObservationStepProps = { observations: Observation[]; more?: string; addressed?: boolean; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -28,12 +39,13 @@ type ObservationStepProps = { observations: Observation[]; addressed?: boolean; 
  * arrives after its step, so this holds the reader's place while `ObservationBar`
  * is drawn first in the step and then inside the chart.
  */
-export function ObservationStep({ observations, addressed = false, children }: ObservationStepProps) {
+export function ObservationStep({ observations, more = '', addressed = false, children }: ObservationStepProps) {
   // Opened at one of these observations, start there. A report's own page can
   // be sent to one by a link, which is asking to read it, so it opens too.
   const shown = useContext(ShownObservation);
   const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
   const [open, setOpen] = useState(false);
+  const [jumps, setJumps] = useState(0);
   const [followed, setFollowed] = useState(shown);
   if (followed !== shown) {
     setFollowed(shown);
@@ -46,14 +58,21 @@ export function ObservationStep({ observations, addressed = false, children }: O
   const step = useMemo(() => ({
     observations,
     addressed,
+    more,
     index,
     open,
+    jumps,
     go: (to: number) => {
       setIndex((to + observations.length) % observations.length);
       setOpen(false);
     },
+    show: (to: number) => {
+      setIndex(to);
+      setOpen(true);
+      setJumps(count => count + 1);
+    },
     toggle: () => setOpen(was => !was),
-  }), [observations, addressed, index, open]);
+  }), [observations, addressed, more, index, open, jumps]);
   return <Step.Provider value={step}>{children}</Step.Provider>;
 }
 
@@ -95,6 +114,11 @@ export function ObservationBar() {
     redraws.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-row'] });
     return () => redraws.disconnect();
   }, [shown]);
+
+  const jumps = step?.jumps ?? 0;
+  useEffect(() => {
+    if (jumps > 0) ref.current?.querySelector<HTMLElement>('.sv-observe__toggle')?.focus();
+  }, [jumps]);
 
   if (!step || step.observations.length === 0) return null;
   const { observations, addressed, index, open, go, toggle } = step;
