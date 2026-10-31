@@ -5,7 +5,7 @@ import { decodeHash, openDetails } from './open-details';
 
 /**
  * Opens the disclosure named by the URL hash, and every disclosure containing
- * it. Viewpoints, principles and cruxes only — a fact is addressed by its own
+ * it. Cruxes only — a viewpoint's row opens itself, and a fact is addressed by its own
  * URL now, not by an anchor on this page. Two triggers are needed:
  * `hashchange` covers back/forward navigation and pasted links, but does not
  * fire when a link points at the hash the page is already on — so in-page

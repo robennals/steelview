@@ -7,6 +7,12 @@ import type { Locator, Page } from '@playwright/test';
 /** Where to click a row's toggle: its corner, as the centre of a walkthrough row's head is a thumbnail. */
 export const headCorner = { position: { x: 8, y: 8 } };
 
+/** Bring up one of a topic page's tabs. Without JavaScript there are none: every panel is already showing. */
+export async function openTab(page: Page, name: 'Viewpoints' | 'Data'): Promise<void> {
+  const tab = page.locator('.sv-topic-tabs').getByRole('link', { name });
+  if (await tab.isVisible()) await tab.click();
+}
+
 /** The row of the viewpoint `id`, opened. */
 export async function openViewpoint(page: Page, id: string): Promise<Locator> {
   const row = page.locator(`#viewpoint-${id}`);
@@ -16,6 +22,7 @@ export async function openViewpoint(page: Page, id: string): Promise<Locator> {
 
 /** The row of the data collection titled `title`, opened. */
 export async function openDataRow(page: Page, title: string): Promise<Locator> {
+  await openTab(page, 'Data');
   const row = page.locator('.sv-row--data').filter({ hasText: title });
   await row.locator('.sv-row__toggle').click(headCorner);
   return row;
