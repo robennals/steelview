@@ -90,6 +90,15 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
 }
 
 /**
+ * The id a chart's Observations and Subtleties are filed under: the reading it
+ * draws, the only reading of a one-reading series, or the chart itself.
+ */
+export function slideGroup(fact: Fact, { chart, reading }: Pick<PreviewSlide, 'chart' | 'reading'>): string {
+  const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
+  return reading ?? series?.readings[0].id ?? chart;
+}
+
+/**
  * Every chart a data collection draws, in the order its page shows them: the
  * order of its `figures` if it has them, or else the main series, any further
  * series, then its comparisons. A series with several readings is a slide per

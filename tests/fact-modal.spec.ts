@@ -154,7 +154,7 @@ test('the page behind the panel is scroll-locked', async ({ page }) => {
 // Everything above is presentation layered on markup that works on its own.
 // With JavaScript off there is no panel and nothing is intercepted: a fact row
 // and a viewpoint's fact chip are ordinary links, and following either one
-// loads that fact's page — the whole fact, at its own address.
+// loads that report's own page — the whole report, at its own address.
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
@@ -221,7 +221,7 @@ test('facts open with the network offline and Forward restores the modal', async
   await expect(page.locator(`a[href^="${factUrl(HEADLINE)}"]:focus`)).toHaveCount(1);
 });
 
-test('Expand loads the standalone fact page', async ({ page }) => {
+test('Expand loads the report\'s own page', async ({ page }) => {
   await page.goto(TOPIC);
   await openCollection(page, HEADLINE);
   const expand = page.getByRole('link', { name: 'Expand', exact: true });

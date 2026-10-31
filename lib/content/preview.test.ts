@@ -57,7 +57,33 @@ test('a data step answers to its chart\'s address and to each anchor its figure 
   const topic = figureExamplesTopic();
   const steps = (await renderDataWalkthroughs(topic, topic.facts)).get(topic.facts[0].id)!;
   const step = steps.find(s => s.chart.chart === 'federal-laws')!;
-  assert.deepEqual(step.anchors, ['figure-examples--chart-federal-laws', 'figure-examples--federal-laws-list']);
+  assert.deepEqual(step.anchors, [
+    'figure-examples--chart-federal-laws',
+    'figure-examples--chart-federal-laws-methodology',
+    'figure-examples--viz-federal-laws',
+    'figure-examples--observations-federal-laws',
+    'figure-examples--federal-laws-list',
+  ]);
+});
+
+test('the readings of one series leave a shared address to the first of them', async () => {
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  const reading = (label: string, id: string) => ({ ...fact.series!.readings[0], id, label });
+  const two = { ...fact, series: { ...fact.series!, readings: [reading('One', 'one'), reading('Two', 'two')] } };
+  const [first, second] = (await renderDataWalkthroughs(topic, [two])).get(fact.id)!.filter(s => s.chart.chart === 'series');
+  assert.ok(first.anchors.includes(`${fact.id}--chart-series`));
+  assert.ok(first.anchors.includes(`${fact.id}--viz-series`));
+  assert.deepEqual(second.anchors, [`${fact.id}--chart-two`, `${fact.id}--observations-two`]);
+});
+
+test('an observation keeps its footnotes on the report\'s own page, and only there', async () => {
+  const topic = await loadTopic('uk-immigration');
+  const fact = topic.facts.filter(f => f.id === 'immigration-against-the-long-run');
+  const render = async (options?: { citationsAsText: boolean; footnotes: boolean }) =>
+    (await renderDataWalkthroughs(topic, fact, options)).get(fact[0].id)!.flatMap(s => s.observations).map(o => o.html).join('');
+  assert.doesNotMatch(await render(), /#source-/);
+  assert.match(await render({ citationsAsText: false, footnotes: true }), /#source-/);
 });
 
 test('an observation\'s heading is rendered, not shown as markdown', async () => {

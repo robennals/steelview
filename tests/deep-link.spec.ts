@@ -8,23 +8,79 @@ import { viewpointCitation } from './topic-rows';
 // wording, ids, or cross-references will turn this suite red.
 
 // A fact is addressed by its own URL now, not by an anchor on the topic page:
-// a cold load of that URL is the fact's standalone page, and a click from
-// within the topic is the same route intercepted into a panel over it.
+// a cold load of that URL is the report's own page, showing the data panel a
+// topic page opens in a row, and a click from within the topic is the same
+// route intercepted into a sheet over it.
 
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 
-test('a fact URL loaded cold renders the standalone page', async ({ page }) => {
+const LONG_RUN = 'immigration-against-the-long-run';
+
+test('a fact URL loaded cold shows the data panel, with a way back to the topic', async ({ page }) => {
   await page.goto(factUrl('crime-terrorism-and-group-exploitation'));
   await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
   await expect(page.locator('h1.sv-factpage__claim')).toContainText(
     'Crime, Terrorism and Group-Based Child Sexual Exploitation'
   );
-  // The page says which topic it belongs to and links back to it.
-  await expect(page.locator('.sv-crumbs').getByRole('link', { name: 'UK immigration' })).toHaveAttribute(
-    'href',
-    TOPIC
-  );
+  await expect(page.locator('.sv-walk__tab').first()).toHaveAttribute('aria-current', 'step');
+  await expect(page.locator('.sv-walk__slide .sv-chart').first()).toBeVisible();
+  await page.locator('.sv-walk__tab').nth(1).click();
+  await expect(page.locator('.sv-walk__tab').nth(1)).toHaveAttribute('aria-current', 'step');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('the way back lands on the report\'s row, open', async ({ page }) => {
+  await page.goto(factUrl(LONG_RUN));
+  await page.getByRole('link', { name: 'UK immigration' }).click();
+  await expect(page).toHaveURL(new RegExp(`${TOPIC}#fact-${LONG_RUN}$`));
+  await expect(page.locator('.sv-topic-tabs a[aria-current]')).toHaveText('Data');
+  await expect(page.locator(`#fact-${LONG_RUN}`)).toHaveAttribute('data-open', 'true');
+  await expect(page.locator(`#fact-${LONG_RUN} .sv-slide .sv-chart`).first()).toBeVisible();
+});
+
+test('a report\'s own page shows an observation in its chart, picking out what it says', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--uk-mid-table-per-head`);
+  const item = page.locator(`[data-observation="${LONG_RUN}--uk-mid-table-per-head"]`);
+  await expect(item).toBeVisible();
+  const chart = page.locator('.sv-walk__step').filter({ has: item });
+  await expect(chart.locator('[data-row="United Kingdom"]')).toHaveAttribute('data-mark-picked', '');
+  await expect(chart.locator('[data-row][data-mark-dimmed]').first()).toBeAttached();
+});
+
+test('a chart\'s address opens the data panel at that chart', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--chart-nationality`);
+  const tab = page.locator('.sv-walk__tab[aria-current]');
+  await expect(tab).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk')).toBeInViewport();
+});
+
+test('an observation\'s address opens that chart at that observation', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--nationality-shift`);
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  const observation = page.locator(`[data-observation="${LONG_RUN}--nationality-shift"]`);
+  await expect(observation).toBeVisible();
+  await expect(observation).toHaveClass(/sv-target/);
+  await expect(observation).toBeInViewport();
+  // Its footnote leads to the sources, on this page.
+  await observation.locator('a[href^="#source-"]').first().click();
+  await expect(page.locator('.sv-references')).toHaveAttribute('open', '');
+  await expect(page.locator('.sv-target')).toHaveClass(/sv-source/);
+});
+
+test('the address a sheet expands to opens the same chart', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--viz-nationality`);
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+});
+
+test('a section of the report opens where it is, under the panel', async ({ page }) => {
+  await page.goto('/topics/uk-asylum/facts/asylum-claims-and-decisions');
+  const subtleties = page.locator('.sv-chart-notes .sv-subtleties-group').first();
+  const id = await subtleties.getAttribute('id');
+  await expect(subtleties).not.toHaveAttribute('open', '');
+  await page.evaluate(hash => { location.hash = hash; }, id ?? '');
+  await expect(subtleties).toHaveAttribute('open', '');
+  await expect(page.locator('.sv-target')).toBeInViewport();
 });
 
 // Addresses are permanent: a fact merged into a report keeps working, and
@@ -60,20 +116,26 @@ test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
   test('a fact URL still delivers the whole fact', async ({ page }) => {
-    await page.goto(factUrl('immigration-against-the-long-run'));
+    await page.goto(factUrl(LONG_RUN));
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
     await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
     await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
     await page.locator('.sv-references > summary').click();
     await page.locator('.sv-source-quote > summary').first().click();
     await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
-    // The merged observation and its graph work without JavaScript too.
-    await page.locator('#immigration-against-the-long-run--observations-nationality-arrivals > summary').click();
-    const child = page.locator('#immigration-against-the-long-run--nationality-shift');
-    const quote = child.locator('.sv-observation__body');
-    await expect(quote).toBeHidden();
-    await child.locator(':scope > summary').click();
-    await expect(quote).toBeVisible();
+    // Nothing steps through the charts, so they run down the page, and every
+    // observation shows. Each has its own address.
+    await expect(page.locator('.sv-walk__tabbar')).toBeHidden();
+    const steps = await page.locator('.sv-walk__slide').all();
+    expect(steps.length).toBeGreaterThan(5);
+    for (const step of steps) await expect(step.locator('.sv-chart, .sv-report').first()).toBeVisible();
+    await expect(page.locator(`#${LONG_RUN}--nationality-shift`)).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  });
+
+  test('a chart\'s address lands on that chart', async ({ page }) => {
+    await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--viz-nationality`);
+    await expect(page.locator(`#${LONG_RUN}--viz-nationality`).locator('..').locator('.sv-chart').first()).toBeInViewport();
   });
 });
 

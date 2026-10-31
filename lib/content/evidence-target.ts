@@ -1,5 +1,18 @@
 import type { useRouter } from 'next/navigation';
 
+/**
+ * Turn a data panel to the step `id` names or holds, at once, and return that
+ * step. The panel's scroll position is what says which step is showing.
+ */
+export function showPanelStep(root: Element, id: string): HTMLElement | null {
+  const target = CSS.escape(id);
+  const slide = root.querySelector(`[data-observation="${target}"], [data-chart-anchor="${target}"], [id="${target}"]`)?.closest<HTMLElement>('.sv-walk__slide');
+  const strip = slide?.parentElement;
+  if (!slide || !strip) return null;
+  strip.scrollLeft = Array.from(strip.children).indexOf(slide) * strip.clientWidth;
+  return slide;
+}
+
 /** Reveal a linked section without scrolling the topic behind an open dialog. */
 export function revealEvidence(root: HTMLElement, hash: string): boolean {
   let id: string;
@@ -10,6 +23,11 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
     if (article) focusViz(article, null);
     return true;
   }
+  // On a report's own page: the data panel's step, and the panel brought into
+  // view whole, since a chart and its observations are read together.
+  const panel = showPanelStep(root, id)?.closest('.sv-walk');
+  panel?.scrollIntoView({ block: 'start' });
+  if (panel && root.querySelector(`[data-chart-anchor="${CSS.escape(id)}"]`)) return true;
   const found = Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === id);
   if (!found) return false;
   // An old anchor of prose a figure replaced stands in for that figure.
@@ -31,7 +49,7 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
   target.focus({ preventScroll: true });
   const scroll = root.querySelector<HTMLElement>('.sv-modal__scroll');
   if (scroll) scroll.scrollTop += target.getBoundingClientRect().top - scroll.getBoundingClientRect().top - 24;
-  else target.scrollIntoView({ block: 'start' });
+  else target.scrollIntoView({ block: panel ? 'nearest' : 'start' });
   return true;
 }
 

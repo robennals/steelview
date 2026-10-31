@@ -21,8 +21,9 @@ test.describe('with JavaScript disabled', () => {
     await page.goto(factUrl(HEADLINE));
     const fact = page.locator('article.sv-factpage');
 
-    const charts = fact.locator(`#${HEADLINE}--chart-series .sv-chart__svg[data-variant="wide"]`);
-    await expect(charts).toHaveCount(2); // one per reading
+    // One step of the data panel per reading, each drawn in place.
+    const charts = fact.locator('.sv-walk__slide .sv-chart__reading .sv-chart__svg[data-variant="narrow"]');
+    expect(await charts.count()).toBeGreaterThan(2);
 
     // Each plot is an image with a name and a description, both real elements
     // the SVG points at rather than an attribute a sighted reader cannot check.
@@ -37,7 +38,7 @@ test.describe('with JavaScript disabled', () => {
 
     // The Graph/Table switch needs script, so each reading's table sits in a
     // collapsed disclosure instead.
-    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`).first();
+    const table = fact.locator(`#${HEADLINE}--chart-people .sv-chart__data`).first();
     await table.locator('> summary').click();
     // Every published year, not a sample: 1964–2025 inclusive.
     await expect(table.locator('tbody tr')).toHaveCount(62);

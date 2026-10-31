@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FactArticle } from '@/components/topic/fact-article';
+import { BackToTopic, FactArticle } from '@/components/topic/fact-article';
 import * as storyFixture from '@/components/report/stories/fixtures/figure-examples';
 import { figureExamplesFact, figureExamplesPage } from '@/lib/content/__fixtures__/figure-examples';
 import type { Fact } from '@/lib/content/types';
@@ -40,6 +40,48 @@ test('data still needed appears at the end of a collection before sources', () =
   assert.ok(html.indexOf('Data still needed') < html.indexOf('Sources'));
 });
 
+test('on its own page a report leaves its charts to the panel and keeps everything else', async () => {
+  const { fact: parsed, bodyHtml } = await figureExamplesPage(figureExamplesFact());
+  const html = renderToStaticMarkup(createElement(FactArticle, {
+    slug: 'figure-examples',
+    fact: { ...parsed, dataStillNeeded: [{ measure: 'Route history', why: 'Not linked.' }] },
+    bodyHtml,
+    variant: 'page',
+    panel: createElement('div', { id: 'the-panel' }),
+    topic: { lastUpdated: '2026-10-29', facts: [parsed] },
+  }));
+  assert.match(html, /<h1 class="sv-factpage__claim">/);
+  assert.ok(html.indexOf('id="the-panel"') < html.indexOf('Whole report'));
+  assert.doesNotMatch(html, /<figure|data-viz=/);
+  assert.match(html, /id="figure-examples--finding"/);
+  assert.match(html, /Data still needed/);
+  assert.match(html, /class="sv-references"/);
+});
+
+test('a report with no charts has its report alone, under no heading of its own', () => {
+  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'topic', fact, bodyHtml: '<p>Context.</p>', variant: 'page' }));
+  assert.doesNotMatch(html, /Whole report/);
+  assert.match(html, /Context\./);
+});
+
+test('the way back from a report reaches its row, and from a supporting report its parent\'s', () => {
+  const back = (f: Fact) => renderToStaticMarkup(createElement(BackToTopic, { slug: 'topic', topicTitle: 'A topic', fact: f }));
+  assert.match(back(fact), /href="\/topics\/topic#fact-example"/);
+  assert.match(back({ ...fact, id: 'detail', supports: 'example' }), /href="\/topics\/topic#fact-example"/);
+  assert.match(back(fact), /A topic/);
+});
+
+test('a supporting report names the report it belongs to and links to it', () => {
+  const html = renderToStaticMarkup(createElement(FactArticle, {
+    slug: 'topic',
+    fact: { ...fact, id: 'detail', supports: 'example' },
+    parent: { ...fact, title: 'The parent report' },
+    bodyHtml: '<p>Context.</p>',
+    variant: 'page',
+  }));
+  assert.match(html, /href="\/topics\/topic\/facts\/example"[^>]*>The parent report/);
+});
+
 /* ---------------------------------------------------------------- figures */
 
 async function renderFixture(change: (f: Fact) => Fact = f => f) {
@@ -48,7 +90,7 @@ async function renderFixture(change: (f: Fact) => Fact = f => f) {
     slug: 'figure-examples',
     fact: parsed,
     bodyHtml,
-    variant: 'page',
+    variant: 'modal',
     topic: { lastUpdated: '2026-10-29', facts: [parsed] },
   }));
 }
@@ -183,7 +225,7 @@ test('a featured supporting fact\'s charts render where its figure entry is, onc
   };
   const supporting = await Promise.all([plainChild, figuredChild].map(async c => ({ fact: c, bodyHtml: await renderMarkdown(c.body, 'figure-examples') })));
   const { bodyHtml } = await figureExamplesPage(fact);
-  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'figure-examples', fact, bodyHtml, supporting, variant: 'page' }));
+  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'figure-examples', fact, bodyHtml, supporting, variant: 'modal' }));
   const at = (id: string) => html.indexOf(`id="${id}"`);
   assert.ok(at('figure-examples--chart-senate-votes') < at('figured-child--chart-figured-child-bars'));
   assert.ok(at('figured-child--chart-figured-child-bars') < at('plain-child--chart-plain-child-bars'));

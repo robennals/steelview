@@ -676,7 +676,8 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
     {notes}
   </>;
   return (
-    <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
+    // A panel draws a series once per reading, and the first takes its address.
+    <figure className="sv-chart" id={onlyReading && onlyReading !== series.readings[0].id ? undefined : `${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
       {preview
         ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3></figcaption>
         : <figcaption className="sv-chart__caption"><h2 className="sv-graph-heading">{series.title}</h2></figcaption>}

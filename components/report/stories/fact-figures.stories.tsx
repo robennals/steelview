@@ -16,7 +16,7 @@ const meta = {
   },
   args: {
     slug: 'figure-examples',
-    variant: 'page',
+    variant: 'modal',
     fact: figureExamplesFact,
     bodyHtml: figureExamplesBodyHtml,
     topic: { lastUpdated: '2026-10-29', facts: [figureExamplesFact] },
@@ -26,8 +26,5 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Every kind, in reading order, as a fact's own page. */
+/** Every kind, in reading order, as the sheet over a topic draws them. */
 export const EveryKind: Story = {};
-
-/** The same fact inside the sheet over its topic. */
-export const InModal: Story = { args: { variant: 'modal' } };

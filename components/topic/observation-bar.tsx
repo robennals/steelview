@@ -12,13 +12,15 @@ type Observation = DataStep['observations'][number];
 /** Which of a step's observations is shown, shared with the bar inside its chart. */
 const Step = createContext<{
   observations: Observation[];
+  /** Give each observation its id, for a page where a link to one works without script. */
+  addressed: boolean;
   index: number;
   open: boolean;
   go: (to: number) => void;
   toggle: () => void;
 } | null>(null);
 
-type ObservationStepProps = { observations: Observation[]; children?: ReactNode };
+type ObservationStepProps = { observations: Observation[]; addressed?: boolean; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -26,13 +28,24 @@ type ObservationStepProps = { observations: Observation[]; children?: ReactNode 
  * arrives after its step, so this holds the reader's place while `ObservationBar`
  * is drawn first in the step and then inside the chart.
  */
-export function ObservationStep({ observations, children }: ObservationStepProps) {
-  // Opened in a sheet at one of these observations, start there.
+export function ObservationStep({ observations, addressed = false, children }: ObservationStepProps) {
+  // Opened at one of these observations, start there. A report's own page can
+  // be sent to one by a link, which is asking to read it, so it opens too.
   const shown = useContext(ShownObservation);
   const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
   const [open, setOpen] = useState(false);
+  const [followed, setFollowed] = useState(shown);
+  if (followed !== shown) {
+    setFollowed(shown);
+    const at = observations.findIndex(o => o.id === shown);
+    if (at >= 0) {
+      setIndex(at);
+      setOpen(true);
+    }
+  }
   const step = useMemo(() => ({
     observations,
+    addressed,
     index,
     open,
     go: (to: number) => {
@@ -40,7 +53,7 @@ export function ObservationStep({ observations, children }: ObservationStepProps
       setOpen(false);
     },
     toggle: () => setOpen(was => !was),
-  }), [observations, index, open]);
+  }), [observations, addressed, index, open]);
   return <Step.Provider value={step}>{children}</Step.Provider>;
 }
 
@@ -83,7 +96,7 @@ export function ObservationBar() {
   }, [shown]);
 
   if (!step || step.observations.length === 0) return null;
-  const { observations, index, open, go, toggle } = step;
+  const { observations, addressed, index, open, go, toggle } = step;
   const many = observations.length > 1;
 
   // Anywhere in the bubble toggles it, apart from its own controls and links, or
@@ -107,7 +120,7 @@ export function ObservationBar() {
       {observations.map((observation, i) => {
         const current = i === index;
         return (
-          <div key={observation.id} className="sv-observe__item" data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
+          <div key={observation.id} className="sv-observe__item" id={addressed ? observation.id : undefined} data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
             <div className="sv-observe__head">
               {current && controls}
               <h4 className="sv-observe__heading">

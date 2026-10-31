@@ -20,6 +20,16 @@ export function useCarousel(count: number) {
   // current one, so a second click steps on from the destination.
   const destination = useRef<number | null>(null);
 
+  // A link into a slide can scroll the strip before this script has loaded, and
+  // nothing then reports it: start from wherever the strip already is.
+  useEffect(() => {
+    const el = strip.current;
+    if (!el?.scrollLeft) return;
+    const position = Math.round(el.scrollLeft / el.clientWidth);
+    setIndex(position);
+    setAnnounced(position);
+  }, []);
+
   useEffect(() => {
     const el = strip.current;
     const landed = () => { destination.current = null; };

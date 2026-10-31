@@ -2,7 +2,7 @@ import { citedFactTargets, renderMarkdown } from './markdown';
 import { headlineFacts } from './rank-facts';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
-import { factSlides, type PreviewSlide } from './preview';
+import { factSlides, slideGroup, type PreviewSlide } from './preview';
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
@@ -169,32 +169,46 @@ export type DataStep = {
   anchors: string[];
 };
 
-/** A chart's own address, and each old anchor it stands in for (`replaces`). */
-function chartAnchors(fact: Fact, { chart, reading }: PreviewSlide): string[] {
-  const replaced = componentFigure(fact, chart)?.replaces ?? [];
-  return [`chart-${chart}`, ...(reading ? [`chart-${reading}`] : []), ...replaced].map(anchor => `${fact.id}--${anchor}`);
+/**
+ * Each chart's addresses: its own, the view a fact sheet shows it in, its
+ * Observations group and each old anchor it stands in for (`replaces`). An
+ * address the readings of one series share belongs to the first of them.
+ */
+function chartAnchors(fact: Fact, slides: PreviewSlide[]): string[][] {
+  const taken = new Set<string>();
+  return slides.map(slide => {
+    const key = slideGroup(fact, slide);
+    const replaced = componentFigure(fact, slide.chart)?.replaces ?? [];
+    const anchors = [`chart-${slide.chart}`, `chart-${key}`, `chart-${slide.chart}-methodology`, `viz-${slide.chart}`, `observations-${key}`, ...replaced]
+      .map(anchor => `${fact.id}--${anchor}`)
+      .filter(anchor => !taken.has(anchor));
+    anchors.forEach(anchor => taken.add(anchor));
+    return [...new Set(anchors)];
+  });
 }
 
 /**
  * Each data collection as a walkthrough of its charts, keyed by fact id: every
- * chart in turn, beside the observations made about it. Observations are shown
- * away from their collection here, so they leave out source footnotes and fact
- * links, which the collection itself carries.
+ * chart in turn, beside the observations made about it. On a topic page
+ * observations are shown away from their collection, so they leave out source
+ * footnotes and fact links, which the collection itself carries; a report's own
+ * page, where the sources are, keeps them with `options`.
  */
-export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promise<Map<string, DataStep[]>> {
+export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], options = { citationsAsText: true, footnotes: false }): Promise<Map<string, DataStep[]>> {
   const rendered = new Map<string, DataStep[]>();
-  const options = { citationsAsText: true, footnotes: false };
   for (const fact of facts) {
     const groups = observationsByChart(fact);
-    rendered.set(fact.id, await Promise.all(factSlides(topic.slug, fact).map(async chart => {
+    const slides = factSlides(topic.slug, fact);
+    const anchors = chartAnchors(fact, slides);
+    rendered.set(fact.id, await Promise.all(slides.map(async (chart, i) => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
-      const key = chart.reading ?? series?.readings[0].id ?? chart.chart;
+      const key = slideGroup(fact, chart);
       const figure = componentFigure(fact, chart.chart);
       const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
       return {
         chart,
         description,
-        anchors: chartAnchors(fact, chart),
+        anchors: anchors[i],
         observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
           id: `${fact.id}--${o.id}`,
           heading: (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),

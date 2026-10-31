@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
+import { factSlides, slideGroup } from '@/lib/content/preview';
 import { factSources } from '@/lib/content/sources';
 import type { Fact, Topic } from '@/lib/content/types';
-import { factPath, topicPath } from '@/lib/content/types';
+import { anchorFor, factPath, topicPath } from '@/lib/content/types';
 import { leadProse } from '@/lib/content/chart-observations';
 import { Prose } from './prose';
 import { FactCharts, FactFigures, FeaturedCharts, chartGroups, figureGroups, type BodiedFact, type FigurePage } from './fact-figures';
@@ -82,6 +84,33 @@ function FactBody({ fact, bodyHtml, featured = [], hideCharts = false, page }: B
 }
 
 /**
+ * A fact's body under its data panel: the claim, the prose and the Subtleties,
+ * each kept with the chart it is about by naming it. The charts and their
+ * observations are the panel's.
+ */
+function FactProse({ slug, fact, bodyHtml }: BodiedFact & { slug: string }) {
+  const { lead, bodyHtml: rest } = leadProse(bodyHtml);
+  const { observations, subtleties, sections, bodyHtml: remainder } = figureGroups(fact, rest);
+  const placed = (fact.figures ?? []).flatMap(figure => (figure.kind === 'section' ? [figure.id] : []));
+  const notes = factSlides(slug, fact).flatMap(slide => {
+    const html = subtleties[slideGroup(fact, slide)];
+    return html ? [{ label: slide.label, html }] : [];
+  });
+  return <>
+    <Finding fact={fact} />
+    <Prose html={lead} />
+    {placed.map(id => <Prose key={id} html={(sections[id] ?? '') + (observations[id] ?? '') + (subtleties[id] ?? '')} />)}
+    <Prose html={remainder} />
+    {notes.map(({ label, html }) => (
+      <section key={label} className="sv-chart-notes">
+        <h3 className="sv-chart-notes__chart">{label}</h3>
+        <Prose html={html} />
+      </section>
+    ))}
+  </>;
+}
+
+/**
  * A supporting fact shown inside the headline claim it is evidence for.
  *
  * Collapsed by default and a native `<details>`, for the same reason every
@@ -109,25 +138,27 @@ function SupportingFact({ slug, fact, bodyHtml, hideCharts, page }: BodiedFact &
 }
 
 /**
- * Where the reader is: the topic, then this fact.
+ * The way back from a report's own page: to its topic, with the row it is read
+ * in open. A supporting report has no row and is read inside its parent's.
  */
-export function FactCrumbs({ slug, topicTitle }: { slug: string; topicTitle: string }) {
+export function BackToTopic({ slug, topicTitle, fact }: { slug: string; topicTitle: string; fact: Fact }) {
   return (
-    <nav className="sv-crumbs" aria-label="Breadcrumb">
-      <Link href={topicPath(slug)}>{topicTitle}</Link>
-      <span aria-hidden="true">/</span>
-      <span>Data</span>
+    <nav className="sv-backlink" aria-label="Back to the topic">
+      <Link href={`${topicPath(slug)}#${anchorFor('fact', fact.supports ?? fact.id)}`}>
+        <span aria-hidden="true">←</span> {topicTitle}
+      </Link>
     </nav>
   );
 }
 
 /**
- * One fact, whole: the same article on its own page and inside the modal over
- * its topic.
+ * One fact, whole: as its own page, and inside the sheet over its topic.
  *
- * The two variants differ only in what the claim is — the page's `<h1>`, or
- * the modal's labelled heading. Everything under it is byte-identical, so a
- * fact read in the modal and a fact read at its URL cannot drift apart.
+ * In the sheet the article draws its charts, which `VizTabs` steps through. On
+ * its own page `panel` draws them, the same data panel a topic page has, and
+ * the article is what surrounds that panel: the claim's `<h1>` above it, and
+ * the rest of the report below. The prose, related data and sources are the same
+ * markup either way, so a fact cannot read differently in the two.
  */
 export function FactArticle({
   slug,
@@ -136,6 +167,7 @@ export function FactArticle({
   supporting = [],
   parent,
   variant,
+  panel,
   headingId,
   topic,
 }: {
@@ -147,6 +179,8 @@ export function FactArticle({
   /** The headline claim this fact is evidence for, when it is a supporting fact. */
   parent?: Fact;
   variant: 'page' | 'modal';
+  /** The fact's data panel on its own page. A fact with no charts has none. */
+  panel?: ReactNode;
   /** Id put on the claim so a dialog can be `aria-labelledby` it. */
   headingId?: string;
   /**
@@ -161,9 +195,8 @@ export function FactArticle({
     asOf: topic?.lastUpdated,
     facts: topic?.facts ?? [fact, ...supporting.map(({ fact: child }) => child), ...(parent ? [parent] : [])],
   };
-  return (
-    <article className="sv-factpage" data-variant={variant}>
-      <EvidenceNavigation />
+  const report = (
+    <>
       {/*
        * A supporting fact is evidence for a larger claim and says little
        * standing alone — the out-of-context number this whole site exists to
@@ -193,10 +226,14 @@ export function FactArticle({
         </header>
       )}
 
-      <VizTabs />
+      {variant === 'modal' && <VizTabs />}
+      {panel}
 
       <div className="sv-factpage__body">
-        <FactBody fact={fact} bodyHtml={bodyHtml} featured={supporting.filter(({ fact: child }) => fact.featuredCharts?.includes(child.id)) } page={page} />
+        {variant === 'page' && panel && <h2 className="sv-factpage__whole">Whole report</h2>}
+        {variant === 'page'
+          ? <FactProse slug={slug} fact={fact} bodyHtml={bodyHtml} />
+          : <FactBody fact={fact} bodyHtml={bodyHtml} featured={supporting.filter(({ fact: child }) => fact.featuredCharts?.includes(child.id)) } page={page} />}
 
         {supporting.length > 0 && (
           /*
@@ -209,7 +246,7 @@ export function FactArticle({
               Related Data
             </h3>
             {supporting.map(({ fact: child, bodyHtml: childBody }) => (
-              <SupportingFact key={child.id} slug={slug} fact={child} bodyHtml={childBody} hideCharts={fact.featuredCharts?.includes(child.id)} page={page} />
+              <SupportingFact key={child.id} slug={slug} fact={child} bodyHtml={childBody} hideCharts={variant === 'modal' && fact.featuredCharts?.includes(child.id)} page={page} />
             ))}
           </section>
         )}
@@ -223,6 +260,11 @@ export function FactArticle({
           </p>
         )}
       </div>
+    </>
+  );
+  return (
+    <article className="sv-factpage" data-variant={variant}>
+      {variant === 'page' ? <EvidenceNavigation>{report}</EvidenceNavigation> : report}
     </article>
   );
 }

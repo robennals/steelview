@@ -60,6 +60,14 @@ export async function viewpointCitation(page: Page, factId: string): Promise<Loc
   return placeCitation(page, factId, href!);
 }
 
+/** Open a collection's whole report in the sheet over the page, and return the sheet. */
+export async function openWholeReport(page: Page, factId: string): Promise<Locator> {
+  await page.goto(TOPIC);
+  await openCollection(page, factId);
+  await page.getByRole('button', { name: 'Whole report', exact: true }).click();
+  return page.locator('dialog.sv-modal');
+}
+
 /** Open a collection's report over the page, at its first chart, through a citation of it. */
 export async function openCollection(page: Page, factId: string): Promise<Locator> {
   const citation = await citationTo(page, factId);

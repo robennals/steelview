@@ -44,6 +44,20 @@ test('a fact page carries its own title, description, canonical and card', async
   expect((description ?? '').length).toBeGreaterThan(20);
 });
 
+test('a fact page\'s HTML holds all its charts and sources, before any script runs', async ({ request }) => {
+  const html = await (await request.get(FACT)).text();
+  const id = 'immigration-against-the-long-run';
+  const steps = html.match(/class="sv-walk__slide"/g) ?? [];
+  expect(steps.length).toBeGreaterThan(5);
+  expect(html.match(/<figure class="sv-chart/g)?.length).toBeGreaterThanOrEqual(steps.length);
+  for (const anchor of [`${id}--chart-people`, `${id}--chart-share-of-population`, `source-${id}-1`, `source-${id}-13`, `${id}--finding`, `${id}--nationality-shift`]) {
+    expect(html).toContain(`id="${anchor}"`);
+  }
+  // One thing, one address, however many steps a series is drawn across.
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
+  expect(ids.filter((value, i) => ids.indexOf(value) !== i)).toEqual([]);
+});
+
 test('the topic page carries a canonical and Open Graph metadata', async ({ page }) => {
   await page.goto(TOPIC);
   const canonical = await page.locator('link[rel=canonical]').getAttribute('href');

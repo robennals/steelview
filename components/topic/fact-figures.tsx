@@ -46,7 +46,7 @@ import {
   SIDE_BY_SIDE_QUOTES,
   type FigureContext,
 } from '@/lib/content/figure-props';
-import type { PreviewSlide } from '@/lib/content/preview';
+import { factSlides, type PreviewSlide } from '@/lib/content/preview';
 import { markedObservations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { componentFigure, figureLabel } from '@/lib/content/types';
@@ -109,7 +109,8 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
 /**
  * One chart of a data panel in full: its controls, method changes and source,
  * for one reading of a series. Its observations come from the step it sits in,
- * and its source links lead to the sources themselves, whose list is not on the page.
+ * and its source links lead to the sources themselves, since a panel on a topic
+ * page has no source list to link to.
  */
 export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigurePage }) {
   const { fact, chart, reading: only } = slide;
@@ -126,6 +127,11 @@ export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigureP
   if (comparison) return <ComparisonChart fact={fact} chart={comparison} sources={sources} panel />;
   const figure = componentFigure(fact, chart);
   return figure ? <FactFigure figure={figure} context={figureContext(fact, page.asOf, { panel: true })} page={page} /> : null;
+}
+
+/** Every chart of a data panel in full, in step order. */
+export function panelCharts(fact: Fact, page: FigurePage): ReactNode[] {
+  return factSlides(page.slug, fact).map((slide, i) => <PanelChart key={i} slide={slide} page={page} />);
 }
 
 /** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */

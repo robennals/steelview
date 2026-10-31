@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 
 type Shown = { fact: string; observation: string };
@@ -120,10 +121,7 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
     dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
 
     // Straight to the chart holding the observation, with nothing to scroll past.
-    const target = CSS.escape(observation);
-    const slide = dialog.querySelector(`[data-observation="${target}"], [data-chart-anchor="${target}"]`)?.closest('.sv-walk__slide');
-    const strip = slide?.parentElement;
-    if (slide && strip) strip.scrollLeft = Array.from(strip.children).indexOf(slide) * strip.clientWidth;
+    showPanelStep(dialog, observation);
 
     return () => {
       unwireExit();
