@@ -1,4 +1,4 @@
-import type { Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import { test, expect } from './hydrated-test';
 import { headCorner, openDataRow, openTab, openViewpoint, viewpointCitation } from './topic-rows';
 
@@ -11,6 +11,31 @@ import { headCorner, openDataRow, openTab, openViewpoint, viewpointCitation } fr
 const TOPIC = '/topics/uk-immigration';
 const DATA = `${TOPIC}#data`;
 const longRun = 'UK Migration and Population Over the Long Run';
+
+/** Put a scrolling box, at its own top, at the top of the screen, and the mouse over it. */
+async function hoverAtTop(page: Page, box: Locator) {
+  await expect(box).toBeVisible();
+  // Repeated until it holds, as a row opening keeps the page in place until it has opened.
+  await expect(async () => {
+    await box.evaluate(el => {
+      el.scrollTop = 0;
+      window.scrollTo({ top: scrollY + el.getBoundingClientRect().top - 10, behavior: 'instant' });
+    });
+    await page.waitForTimeout(200);
+    expect(Math.round((await box.boundingBox())!.y)).toBe(10);
+  }).toPass();
+  const { x, y, width } = (await box.boundingBox())!;
+  await page.mouse.move(x + width / 2, y + 40);
+}
+
+/** Wheel up over `table`, already at its top: the page should move instead. */
+async function expectWheelMovesPage(page: Page, table: Locator) {
+  await hoverAtTop(page, table);
+  const before = await page.evaluate(() => scrollY);
+  expect(before).toBeGreaterThan(0);
+  await page.mouse.wheel(0, -100);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(before);
+}
 
 test('the topic page opens on its viewpoints, and the two tabs show one panel at a time', async ({ page }) => {
   await page.goto(TOPIC);
@@ -213,6 +238,22 @@ test('clicking a viewpoint step\'s chart opens the panel too, title included', a
   await expect(heading.locator('a')).toHaveCount(0);
   await heading.click();
   await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
+});
+
+test('scrolling up over a table at its top moves the page', async ({ page }) => {
+  await page.setViewportSize({ width: 601, height: 800 });
+
+  await page.goto('/topics/us-iran-war');
+  const viewpoint = page.locator('.sv-row--viewpoint').first();
+  await viewpoint.locator('.sv-row__toggle').click(headCorner);
+  await expectWheelMovesPage(page, viewpoint.locator('.sv-walk__slide').first().locator('.sv-data__scroll, .sv-chart__table-scroll').first());
+
+  await page.goto(DATA);
+  const row = page.locator('.sv-row--data').first();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const step = row.locator('.sv-walk__slide').first();
+  await step.getByRole('button', { name: 'Table' }).dispatchEvent('click');
+  await expectWheelMovesPage(page, step.locator('.sv-chart__table-scroll').first());
 });
 
 test('a data panel is the data: its charts open nothing, and have their controls', async ({ page }) => {
