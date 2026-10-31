@@ -810,7 +810,7 @@ series:
             - {period: '2024', value: 9.1}
 additionalSeries:
   - id: removal-reasons
-    title: 'Why records were removed, US, 2006–2024'
+    title: Why voter records were removed, US, 2006–2024
     description: >-
       Removals in each two-year cycle by the three largest reasons states
       reported, with every other reason and the uncategorised balance combined,
@@ -906,7 +906,7 @@ additionalSeries:
               - {period: '2022', value: 4470244}
               - {period: '2024', value: 3524443}
   - id: eric-reports
-    title: 'Out-of-date records flagged by ERIC, by report type, 2013–2026'
+    title: Out-of-date voter records flagged by ERIC, by report type, 2013–2026
     description: >-
       Records ERIC's cross-state matching flagged to its member states each
       year, by report type, and how many members it covered. These are leads
@@ -1045,7 +1045,7 @@ additionalSeries:
               - {period: '2026', value: 23}
 comparisons:
   - id: state-removal-rates
-    title: Removal rates varied from under 1% to over 20% of registrants
+    title: Voter-roll removal rates by US state and territory, 2022–24
     description: >-
       Records removed as a share of registered voters, by state and territory,
       2022–24. All jurisdictions reporting a total are shown.
@@ -1173,7 +1173,7 @@ comparisons:
       - label: Utah
         value: 0.8
   - id: notice-outcomes
-    title: Most confirmation notices sent in 2022–24 were never returned
+    title: What happened to US voter-roll confirmation notices, 2022–24
     description: >-
       What happened to the 38.8 million confirmation notices states sent
       between the 2022 and 2024 general elections, as a share of notices sent.
@@ -1205,7 +1205,7 @@ comparisons:
       - label: Returned by voter, confirming registration with no change
         value: 3.0
   - id: ohio-2012-notices
-    title: Few Ohio notice recipients said they had moved
+    title: 'Ohio: replies to 2012 voter-roll confirmation notices'
     description: >-
       Replies to the roughly 1.5 million confirmation notices Ohio sent in 2012,
       mostly to registrants identified by not voting, as described in the
@@ -1225,7 +1225,8 @@ comparisons:
       - label: Replied "I have moved"
         value: 60000
   - id: pew-2011-baseline
-    title: Pew's estimate of inaccurate registrations, data to March 2011
+    title: >-
+      Pew's estimate of inaccurate US voter registrations, data to March 2011
     description: >-
       The only direct national estimate of inaccurate or no-longer-valid voter
       registrations, by type. Categories overlap; the first bar is the
@@ -1294,7 +1295,7 @@ figures:
     id: pew-2011-baseline
   - kind: dataTable
     id: nvra-rules
-    title: 'The federal rules for removing voters'
+    title: US federal rules for removing voters from the rolls
     description: 'The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections.'
     caption: 'One card per rule for states'
     layout: cards
@@ -1311,7 +1312,7 @@ figures:
         detail: { value: 'Only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections', sources: [21] }
   - kind: dataTable
     id: bulk-errors
-    title: 'Bulk removals that reached eligible voters, 2000–2026'
+    title: Bulk voter-roll removals that reached eligible voters, US, 2000–2026
     description: 'Programs that matched whole voter lists against another database, with what was flagged, what was later shown, and how each ended. Figures come from courts, officials, journalists and advocacy groups, as marked in the sources.'
     caption: 'One card per program'
     layout: timeline
@@ -1380,7 +1381,7 @@ figures:
         outcome: 'Counties told to reinstate them (September 2026)'
   - kind: dataTable
     id: bloated-roll-claims
-    title: 'Claims of bloated rolls, and what they counted'
+    title: Claims of bloated US voter rolls, and what they counted
     description: 'Four claims about ineligible names on voter lists, with what each compared.'
     caption: 'One card per claim'
     layout: timeline

@@ -552,7 +552,9 @@ figures:
       - { text: "Thirty-one countries at least opened the door to potential nuclear weapons programs, seventeen of those launched weapons programs, and ten acquired deliverable nuclear weapons.", speaker: "Bleek", date: "2017", source: 10 }
   - kind: "dataTable"
     id: "studies"
-    title: "The other studies, with how each defines success"
+    title: >-
+      Studies of nuclear programmes, sanctions and air power, with how each
+      defines success
     description: "A success rate under one definition is not comparable with another."
     caption: "One card per study"
     layout: cards

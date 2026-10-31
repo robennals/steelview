@@ -678,7 +678,9 @@ sources:
     date: '2008-04-16'
 comparisons:
   - id: case-methods
-    title: The twenty cases, by method and whether a polling-place ID check would reach them
+    title: >-
+      Twenty US election-fraud cases, by method and whether a polling-place ID
+      check would reach them
     description: >-
       Each documented case from 1878 to 2020, counted once under the method its
       court or prosecution record puts at the centre. Colours show whether
@@ -782,7 +784,7 @@ comparisons:
       and 2 more describe mail ballots in their text, so at most 18 describe
       only in-person impersonation. All Heritage categories are shown.
   - id: news21-methods
-    title: News21's alleged fraud cases, 2000–2012, by type
+    title: News21's alleged US fraud cases, 2000–2012, by type
     description: >-
       Alleged election-fraud cases News21 collected from public records
       requests to all 50 states, by the categories it published.
@@ -810,7 +812,9 @@ comparisons:
       could be determined, News21 found 46 percent ended in acquittals, dropped
       charges or no charges.
   - id: black-registration-1965
-    title: Black voter registration in 1965, six originally covered states
+    title: >-
+      Black voter registration in 1965, the six US states the Voting Rights Act
+      originally covered
     description: >-
       Percentage of voting-age Black residents registered to vote in 1965, as
       tabulated for Congress and reproduced by the Supreme Court.
@@ -839,7 +843,9 @@ comparisons:
       the set the source tabulates. The 1965 figures predate or coincide with
       the Act; the Georgia white figure is printed "62.[6]" in the source text.
   - id: black-registration-2004
-    title: Black voter registration in 2004, the same six states
+    title: >-
+      Black voter registration in 2004, the six US states the Voting Rights Act
+      originally covered
     description: >-
       Percentage of voting-age Black residents registered to vote in 2004,
       Census Bureau figures in the same table.
@@ -924,7 +930,7 @@ figures:
     id: case-methods
   - kind: dataTable
     id: cases
-    title: 'Twenty documented cases of election fraud, 1878–2020'
+    title: Twenty documented cases of US election fraud, 1878–2020
     description: 'How each fraud was done, whether a polling-place ID check would reach it, and what happened.'
     caption: 'One card per case'
     layout: timeline
@@ -1017,7 +1023,7 @@ figures:
         outcome: { value: 'New election ordered, August 2020; Mendez indictment dismissed April 2026, state appealing; Jackson''s charges being dropped (as of May 2026)', sources: [30] }
   - kind: dataTable
     id: modern-results
-    title: 'The three modern results voided or rerun, 2003–2020'
+    title: Three modern US election results voided or rerun, 2003–2020
     description: 'The margin in each modern election that was voided or rerun, and what the record found.'
     caption: 'One card per election'
     layout: timeline
@@ -1046,7 +1052,7 @@ figures:
     id: black-registration-2004
   - kind: timeline
     id: remedies
-    title: Remedies for fraud and exclusion, 1888–2002
+    title: US remedies for election fraud and exclusion, 1888–2002
     description: The main national reforms, in order.
     categories:
       - { id: ballot, label: Ballot reform }
@@ -1062,7 +1068,7 @@ figures:
       - { date: '2002', title: Help America Vote Act, description: Set an ID rule for some first-time voters who registered by mail., category: rolls, source: 41 }
   - kind: dataTable
     id: florida-2000
-    title: 'Florida''s first removal list, 2000'
+    title: Florida's first voter-removal list, 2000
     description: 'By the Civil Rights Commission''s account.'
     caption: 'One row per count'
     columns:

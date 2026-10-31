@@ -7,6 +7,8 @@ declare module 'react' {
   interface CSSProperties {
     /** Number of positions in a crux; `.sv-positions` sizes its grid from it. */
     '--sv-position-count'?: number;
+    /** Number of rows in a comparison chart; `.sv-comparison__rows` caps its height from it. */
+    '--sv-row-count'?: number;
 
     // Fact-report library (components/report).
     /** Bar rows: label and value column widths, and the number of bars in a grouped row. */

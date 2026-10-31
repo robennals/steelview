@@ -58,7 +58,7 @@ export function DataCards({
           const name = String(cellValue(row[header.key]));
           const present = fields.filter(column => filled(row, column));
           return (
-            <li key={`${name}-${i}`} className="sv-cards__item" data-highlight={highlighted.has(name) || undefined}>
+            <li key={`${name}-${i}`} className="sv-cards__item" data-row={name} data-highlight={highlighted.has(name) || undefined}>
               {filled(row, date) && <p className="sv-cards__date"><CellContent row={row} column={date} /></p>}
               <p className="sv-cards__title"><CellContent row={row} column={header} /></p>
               {filled(row, lead) && (

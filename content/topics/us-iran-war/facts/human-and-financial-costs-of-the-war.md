@@ -420,7 +420,9 @@ comparisons:
       - label: 'Population of Iran, 2025'
         value: 92417681
   - id: cost-estimates
-    title: 'Estimates of what the war has cost the US military, by estimator and date, April–October 2026'
+    title: >-
+      Estimates of what the Iran war has cost the US military, by estimator and
+      date, April–October 2026
     description: >-
       Each published estimate of the war's cost to the Defense Department, in
       the order of the date it runs to. Values are in billions of US dollars,

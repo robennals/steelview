@@ -1064,7 +1064,7 @@ additionalSeries:
                   value: 133475539
 comparisons:
   - id: settled-and-on-a-path
-    title: "Who holds settlement, and who is on a path to it"
+    title: Who holds UK settlement, and who is on a path to it
     description: "Three separate measures of people with, or on a route to, settlement, which is the right to live in the UK permanently. Each is the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
     unit: count
     valueLabel: "People"
@@ -1084,7 +1084,8 @@ comparisons:
         value: 621000
     note: "No official count of people holding indefinite leave exists: the Home Office publishes grants, not holders. The EU figure is grants, so it counts people who have since left or naturalised; it is the 4,476,552 applications concluded as settled in table EUSS_QTR plus 115,770 automated grants, which the Home Office describes as \"just under 4.6 million\". The non-EU range is the Migration Observatory's estimate from the 2021 Census (England and Wales only) and visa data. The path-to-settlement figure is the Migration Observatory's rounded \"around 2.2 million\". The bars measure different things and should not be added together."
   - id: path-by-group
-    title: "People on a five-year path to settlement, by visa group, end of 2024"
+    title: >-
+      People on a five-year path to UK settlement, by visa group, end of 2024
     description: "People on temporary visas that can lead to settlement, the right to live in the UK permanently, after five years, by type of visa. This is the breakdown by the Migration Observatory at the University of Oxford of the roughly 2.2 million holders of those visas, by the visa they held at the end of 2024."
     unit: count
     valueLabel: "People holding the visa"
@@ -1104,7 +1105,9 @@ comparisons:
         value: 189000
     note: "These five groups are the ones the Migration Observatory names; together they come to 2,172,000 against its rounded total of \"around 2.2 million\". The worker figure includes some people on visas that do not lead to settlement, such as intra-company transfers."
   - id: cohort-2020
-    title: "Where the 2020 arrivals were five years on, by route of entry"
+    title: >-
+      Where people who arrived in the UK in 2020 were five years on, by route of
+      entry
     description: "People who began what the Home Office calls a \"migrant journey\" in 2020, by route of entry and by their status at the end of 2025. Status means indefinite leave (the right to stay permanently), still on temporary leave, or leave expired (expected to have left). Ranked by size of route."
     unit: count
     valueLabel: "People"
@@ -1156,7 +1159,8 @@ comparisons:
           - 237
     note: "From Home Office table MJ_03. The six routes are the table's complete set and add up to its total of 344,058. Asylum covers claims made in 2020 that ended in a grant of protection or other leave; refused claims are not in the data. Visitors are excluded."
   - id: universal-credit-by-status
-    title: "People on Universal Credit by immigration status, July 2025"
+    title: >-
+      People on Universal Credit by immigration status, Great Britain, July 2025
     description: "Universal Credit is a benefit; this splits the people receiving it in Great Britain by their recorded immigration status. The figures are for July 2025 and show the share of the 8.0 million people on Universal Credit in each status group the Department for Work and Pensions records."
     unit: percent
     valueLabel: "Share of people on Universal Credit"
@@ -1251,7 +1255,9 @@ comparisons:
         value: 37
     note: "All nine countries in the Royal Society's Table 12, which compares European countries with dedicated researcher or skilled-worker settlement routes; non-European countries in the study are not in this table. The UK figure is the 2025 fee; the Home Office fee table from 8 October 2026 puts it at £3,226. Adjusted for purchasing power the UK ranks first."
   - id: ilr-polling
-    title: "Support for ending and for removing indefinite leave, September 2025"
+    title: >-
+      Support in Great Britain for ending and for removing indefinite leave,
+      September 2025
     description: "A poll on ending new grants of indefinite leave, the right to live in the UK permanently, and removing it from those who hold it. YouGov asked adults in Great Britain in September 2025, and the bars show support and opposition on each question."
     unit: percent
     valueLabel: "Share of respondents"

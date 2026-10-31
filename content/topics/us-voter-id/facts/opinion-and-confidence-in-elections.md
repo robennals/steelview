@@ -1122,7 +1122,7 @@ figures:
     id: sb202-effect-on-confidence
   - kind: dataTable
     id: id-and-confidence-studies
-    title: 'Studies of whether ID rules change confidence'
+    title: Studies of whether US ID rules change confidence
     description: 'Four studies of whether ID rules themselves move confidence, rather than who wins. They use different measures and periods, and their results differ.'
     caption: 'One card per study'
     layout: cards

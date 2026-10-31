@@ -117,7 +117,7 @@ export function DataTable({
           </thead>
           <tbody>
             {sorted.map((row, i) => (
-              <tr key={`${String(cellValue(row[headerKey]))}-${i}`} data-highlight={highlighted.has(String(cellValue(row[headerKey]))) || undefined}>
+              <tr key={`${String(cellValue(row[headerKey]))}-${i}`} data-row={String(cellValue(row[headerKey]))} data-highlight={highlighted.has(String(cellValue(row[headerKey]))) || undefined}>
                 {columns.map(column => {
                   const Cell = column.key === headerKey ? 'th' : 'td';
                   const cell = row[column.key];

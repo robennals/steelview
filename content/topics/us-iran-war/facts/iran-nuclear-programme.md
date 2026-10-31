@@ -887,7 +887,7 @@ figures:
     id: "board-votes"
   - kind: "timeline"
     id: "inspections"
-    title: "What inspectors could see, 2016–2026"
+    title: What IAEA inspectors could see in Iran, 2016–2026
     description: "What the IAEA could verify in Iran at each step, from the 2015 deal taking effect to its latest report."
     categories:
       - { id: "access", label: "Inspections or agreed access" }

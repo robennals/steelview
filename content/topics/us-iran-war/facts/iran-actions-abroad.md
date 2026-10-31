@@ -347,7 +347,8 @@ figures:
     id: "yemen-panel-matched-materiel"
   - kind: "timeline"
     id: "court-record"
-    title: "Court findings, convictions and charges, 2011–2026"
+    title: >-
+      Court findings, convictions and charges over Iran-linked plots, 2011–2026
     description: "Court rulings and convictions are shown separately from charges, which are allegations that have not been tested in court."
     note: "Each entry is as of the date shown, except the first Alinejad case, whose status is as of 30 October 2025."
     categories:
@@ -364,7 +365,7 @@ figures:
       - { date: "2026-09-21", title: "AMIA bombing: seven Iranians and a Lebanese charged, including four former officials", description: "Argentine federal judge (Rafecas): charged as indirect perpetrators; trial in absentia under constitutional challenge.", category: "charge", source: 2 }
   - kind: "timeline"
     id: "state-sponsors"
-    title: "US state sponsors of terrorism, by date designated"
+    title: US list of state sponsors of terrorism, by date designated
     description: "The US list as last readable on state.gov, a copy captured on 31 December 2025."
     categories:
       - { id: "designated", label: "Designated" }

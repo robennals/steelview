@@ -648,7 +648,7 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-14'
 series:
-  title: 'Asylum-seeker boat arrivals in Australia, 1976-2016'
+  title: 'Australia: asylum-seeker boat arrivals, 1976-2016'
   description: >-
     People arriving in Australia by boat in each calendar year, as compiled by
     the Australian Parliamentary Library. Offshore processing restarted in
@@ -784,7 +784,8 @@ series:
               value: 0
 additionalSeries:
   - id: australia-interceptions
-    title: 'People on boats intercepted after September 2013, by outcome'
+    title: >-
+      Australia: people on boats intercepted after September 2013, by outcome
     description: >-
       People (excluding crew) on boats that tried to reach Australia after
       Operation Sovereign Borders began, split into those brought to Australia
@@ -849,7 +850,7 @@ additionalSeries:
               - period: '2019'
                 value: 33
   - id: australia-offshore-cost
-    title: 'Cost of offshore processing, Australia, 2012-13 to 2024-25'
+    title: 'Australia: cost of offshore processing, 2012-13 to 2024-25'
     description: >-
       Estimated actual annual cost of offshore management (Nauru and Papua New
       Guinea), in millions of Australian dollars, by financial year ending June.
@@ -916,7 +917,8 @@ additionalSeries:
               - period: '2025'
                 value: 575.2
   - id: denmark-comparators
-    title: 'First-time asylum applicants in Denmark, Sweden and Germany, 2008-2025'
+    title: >-
+      Denmark, Sweden and Germany: first-time asylum applicants, 2008-2025
     description: >-
       Non-EU first-time asylum applicants per 10,000 residents, and in people,
       for Denmark and the two neighbours it is most often compared with. Denmark
@@ -1215,7 +1217,9 @@ additionalSeries:
               - period: '2025'
                 value: 113170
   - id: grant-rates
-    title: 'Share of first-instance asylum decisions that were positive, 2008-2025'
+    title: >-
+      Denmark, Sweden and Germany: share of first-instance asylum decisions that
+      were positive, 2008-2025
     description: >-
       Positive first-instance decisions (refugee status, subsidiary protection
       or humanitarian status) as a share of all first-instance decisions, for
@@ -1373,7 +1377,7 @@ additionalSeries:
                 value: 32
 comparisons:
   - id: australia-outcomes
-    title: What happened to the people Australia sent offshore
+    title: 'Australia: what happened to the people it sent offshore'
     description: >-
       The 4,180 people transferred to Nauru or Papua New Guinea from August 2012
       to 2014, by where they were on 31 January 2021.
@@ -1555,7 +1559,9 @@ figures:
     id: eu-per-head-2025
   - kind: dataTable
     id: residence-status
-    title: Temporary versus permanent status and refugees' employment
+    title: >-
+      Denmark, Germany and Sweden: temporary versus permanent status and
+      refugees' employment
     description: European reforms that made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes.
     caption: One card per reform or study
     layout: timeline
@@ -1583,7 +1589,7 @@ figures:
         finding: { value: 'Less take-up of Swedish language courses; no effect on employment, education or welfare receipt in the first year', sources: [41] }
   - kind: dataTable
     id: work-rights
-    title: Work rights for people waiting on a claim
+    title: European studies of work rights for people waiting on an asylum claim
     description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
     caption: One card per study
     layout: cards
@@ -1608,7 +1614,7 @@ figures:
         finding: { value: An extra year waiting for a decision meant a 20% lower employment rate later, sources: [46] }
   - kind: dataTable
     id: uk-2026
-    title: The UK's 2026 changes
+    title: The UK's 2026 changes to refugee protection
     description: The measures in the UK's new approach to refugee protection, who each applies to and how far each has gone.
     caption: One card per measure
     layout: cards
