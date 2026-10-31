@@ -2347,8 +2347,10 @@
   .sv-walk__strip::-webkit-scrollbar { display: none; }
   .sv-walk__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
-  /* Clipped so that nothing wide in one step can show over the next. */
-  .sv-walk__slide { display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
+  /* Clipped so that nothing wide in one step can show over the next. Positioned
+     so that clipping reaches absolute content too: a chart's visually hidden
+     text sits as far along as its slide, and would otherwise widen the page. */
+  .sv-walk__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
 
   /* The claim and its reasoning, then the chart it leans on. Every step is one
      height, so nothing moves between steps; long prose scrolls. */
