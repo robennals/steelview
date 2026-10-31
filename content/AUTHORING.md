@@ -328,7 +328,7 @@ The design references are [LessWrong](https://www.lesswrong.com/),
 [Substack](https://substack.com/) and
 [Our World in Data](https://ourworldindata.org/population-growth): borrow their
 attention to reading measure, whitespace and distinct editorial/chart typography.
-Check long and short facts in both the popup and standalone page, on desktop and
+Check long and short facts in both the popup and their own page, on desktop and
 mobile. Hierarchy must survive without relying on bold everywhere.
 
 Long explanations of sourcing, collation, derivation and methodology belong in
@@ -359,8 +359,16 @@ Link a pill to `#fact-example/why-arrivals-fell`; it opens the fact, scrolls the
 section into view and highlights it. Keep IDs when rewriting headings, and
 when prose becomes a figure, list its old IDs in the figure's `replaces` (see
 [Figures](#figures)) so existing links still land. A link to
-a supporting fact opens its parent article at that finding; standalone URLs
-remain usable. `/finding` targets the opening finding.
+a supporting fact opens its parent article at that finding; every fact's own
+URL remains usable. `/finding` targets the opening finding.
+
+A fact's own URL, `/topics/<topic>/facts/<fact>`, shows its data panel, the one
+its row opens on the topic page, with a link back to the topic and the rest of
+the report under the panel. Add `#<fact>--chart-<id>` to open it at a chart
+(`<id>` is a series reading, comparison or figure), or `#<fact>--<observation>`
+to open that observation's chart at that observation. `#source-<fact>-<n>` and
+old anchors listed in `replaces` also work, and without JavaScript the charts
+run down the page, so every address still lands.
 
 Footnote-link each sourced statement or number where it appears, rather than
 leaving readers to infer which reference supports it. A chart must also show a
