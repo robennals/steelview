@@ -64,8 +64,9 @@ sources:
       Tribunals Statistics Quarterly, April to June 2026, main tables: Table
       FIA_4, First-tier Tribunal (Immigration and Asylum Chamber) total open
       caseload by case type (column headings and the Q1 2026/27 row)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
     publisher: Ministry of Justice
     date: '2026-09-10'
   - stance: complicates
@@ -543,8 +544,9 @@ sources:
       from 2015/16 due to a change in reporting system.
     title: >-
       Tribunals Statistics Quarterly, April to June 2026, main tables: Notes
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
     publisher: Ministry of Justice
     date: '2026-09-10'
   - stance: complicates
@@ -615,8 +617,9 @@ series:
     title: >-
       Asylum claims awaiting a decision detailed datasets, year ending June
       2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2bcb0504df9f2c897ff/asylum-claims-awaiting-decision-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2bcb0504df9f2c897ff/asylum-claims-awaiting-decision-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-awaiting-decision-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -637,8 +640,9 @@ series:
         title: >-
           Tribunals Statistics Quarterly, April to June 2026, main tables:
           Table FIA_4
-        url: >-
-          https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+        url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+        fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+        localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
         publisher: Ministry of Justice
         date: '2026-09-10'
       lines:
@@ -882,8 +886,9 @@ additionalSeries:
       title: >-
         Asylum seekers in receipt of support detailed datasets, year ending
         June 2026
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1225,8 +1230,9 @@ additionalSeries:
       title: >-
         Asylum seekers in receipt of support detailed datasets, year ending
         June 2026
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:

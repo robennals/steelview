@@ -47,3 +47,6 @@ next-env.d.ts
 .superpowers/
 storybook-static/
 *storybook.log
+
+# third-party source files, which we may not redistribute: see content/AUTHORING.md
+/datasets/

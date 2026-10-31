@@ -582,7 +582,9 @@ series:
       ;2025;60.510.631 ;40.946.464 ;19.564.167 ;32,3;49.928.653 ;31.263.732
       ;62,6;167.125 ;18.497.796 ;37,0;82,5;76,4;95,4;
     title: Wahlberechtigte mit Wahlschein, Wählende mit einfachem und Briefwahlschein seit 1957 (btw_ab57_wahlschein.csv)
-    url: https://bundeswahlleiterin.de/dam/jcr/21e4d643-194f-4317-b31e-70846d095ec0/btw_ab57_wahlschein.csv
+    url: https://www.bundeswahlleiterin.de/bundestagswahlen/2025/ergebnisse/weitere-ergebnisse.html
+    fileUrl: https://bundeswahlleiterin.de/dam/jcr/21e4d643-194f-4317-b31e-70846d095ec0/btw_ab57_wahlschein.csv
+    localFile: datasets/bundeswahlleiterin.de/btw_ab57_wahlschein.csv
     publisher: Die Bundeswahlleiterin (Federal Returning Officer)
     date: '2025'
 additionalSeries:
