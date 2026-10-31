@@ -306,7 +306,8 @@ source never published.
 **Readability is checked before the gate**, against
 [Readability](AUTHORING.md#readability): a one-sentence overview at the top,
 no paragraph longer than four lines, statistics shown in the charts rather than
-recited in prose, and dated events as numbered markers on the timeline. Look
+recited in prose, dated events as numbered markers on the timeline, and a title
+on every chart that [says what it covers and where](AUTHORING.md#charts). Look
 at each report rendered, on a narrow screen as well as a wide one; a wall of
 text is easy to miss in the markdown and obvious on the page.
 
