@@ -253,11 +253,12 @@ It has to be easy to take in at a glance.
 - **Observations are short, and can be seen on the chart.** A summary heading
   that states the claim in one line, then one to three short sentences and their
   footnotes, at most about 350 characters. Longer qualifications go in Subtleties
-  or About this data, both collapsed. Keep whatever a reader needs to weigh the
+  or a chart's More, both folded away. Keep whatever a reader needs to weigh the
   finding in the observation itself, on every side of it. On the topic page, a
   collection's row steps through its charts; each shows its observations one at a
   time between its title and its graph, as the heading alone until opened and
-  without their footnotes. So each observation must make sense on its own
+  without their footnotes, followed by that chart's Subtleties, marked as such.
+  So each observation must make sense on its own
   beside its chart, and a chart should carry a few observations, not a dozen.
   An observation says what a reader can see in the plotted data of its own chart,
   and nothing else: its heading and every number in it can be checked by looking.
@@ -274,23 +275,37 @@ It has to be easy to take in at a glance.
 
 Every fact requires a body. Put the most useful evidence first:
 
-1. **A brief overview** (the `claim`), with linked citations. Body text
-   before the first heading is the report's lead: it renders straight after
-   the claim and before the first graph, so use it to say what the report
-   covers and as of when, and keep it short.
+1. **A brief overview** (the `claim`), with linked citations. There is no
+   opening text: readers mostly use the slides, so **everything in a body sits
+   on a chart**, and text before the first group fails validation. What a report
+   covers and as of when goes in its first chart's More.
 2. **A sequence of graphs, artifacts or data**, using different slices to supply
-   time, place and group context. Each artifact is a main heading; omit umbrella
-   headings that merely repeat its contents. Put its Observations and, when
-   genuinely interesting, Subtleties directly beneath it in collapsed expandos.
-   Keep essential qualifications visible beside the data.
+   time, place and group context. Each artifact is a slide. Attach its
+   Observations and, when genuinely interesting, Subtleties and More text by id
+   (see "Observations attach by id"). A table of texts or rulings is a `dataTable`
+   slide, or a `timeline` for dated events, not a markdown table in the body.
 3. **Related Data**, only for distinct questions that deserve their own
    evidence and treatment. Findings about the displayed data belong in that
    graph’s Observations, with viewpoint pills linking directly to the observation.
-4. **Data still needed**, when a missing measurement would materially improve
-   the report. Use `dataStillNeeded` in frontmatter, with a specific `measure`
-   and a short explanation of why it matters. This is an explicit statement of
-   what the report cannot establish, not a place for generic research wishes.
-5. **One Sources expando at the end**, with footnotes opening the relevant citation.
+4. **What we don't know yet**, when a missing measurement would materially
+   improve the report. Use `dataStillNeeded` in frontmatter, with a specific
+   `measure` and a short explanation of why it matters; it is the report's last
+   slide. This is an explicit statement of what the report cannot establish, not
+   a place for generic research wishes.
+
+**Every chart ends in a sources row.** One line, "Sources: Home Office, ONS and 2
+more", that opens to each source's title, publisher, date, link and quote. It
+lists what the chart draws and every source its observations, Subtleties and More
+text cite, and the first chart's also lists what the claim cites. There is no
+page-level list, so a source that nothing cites is shown nowhere: cite it on the
+text that rests on it. `#source-<fact>-<n>` opens the row on the chart that cites
+it.
+
+**Each chart has one More**, one line until opened: the description in full, a
+list of the chart's observations and Subtleties that goes straight to any of
+them, its More text, and About this data. A report's own About section is a
+`### About this report's data {#<fact>--about}` in its first chart's More, or the
+More of the chart it is about.
 
 
 **Graphs provide the context.** Show change over time and comparisons between
@@ -307,6 +322,12 @@ good or bad. Never substitute asylum claims for illegal entries or stocks for fl
 the argument—especially if a viewpoint cites it—show it there rather than hiding
 it inside a Subtlety. Link the viewpoint pill directly to its chart. A secondary
 slice may stay in Subtleties until its importance warrants promotion.
+
+**Subtleties are observations of their chart.** They stay under `## Subtleties`,
+so they can be split out later, but a reader steps through them in the observation
+bar after the chart's Observations, links open them, and a viewpoint step citing
+one shows its chart. So every Subtlety is attached to a chart: one about the whole
+report goes on its first or most relevant chart, and it must read properly there.
 
 **Observations and Subtleties are scannable disclosures.** Write a short `###`
 summary under `## Observations` or `## Subtleties`, followed by the detail and
@@ -334,7 +355,7 @@ mobile. Hierarchy must survive without relying on bold everywhere.
 Long explanations of sourcing, collation, derivation and methodology belong in
 an expando, normally the chart's **About this data**. This includes “derived,
 not published”, denominator provenance, coverage details and calculation steps.
-Keep publisher names visible below plots, and keep material interpretive caveats
+Keep material interpretive caveats
 visible beside affected claims. The explanation of why a curve rose or fell is
 reader-facing Observations, not methodology to hide.
 
@@ -362,17 +383,16 @@ when prose becomes a figure, list its old IDs in the figure's `replaces` (see
 a supporting fact opens its parent article at that finding; every fact's own
 URL remains usable. `/finding` targets the opening finding.
 
-A fact's own URL, `/topics/<topic>/facts/<fact>`, shows its data panel, the one
-its row opens on the topic page, with a link back to the topic and the rest of
-the report under the panel. Add `#<fact>--chart-<id>` to open it at a chart
+A fact's own URL, `/topics/<topic>/facts/<fact>`, shows its title, its claim and
+its data panel, the one its row opens on the topic page, with a link back to the
+topic and links to related reports under the panel. Add `#<fact>--chart-<id>` to open it at a chart
 (`<id>` is a series reading, comparison or figure), or `#<fact>--<observation>`
 to open that observation's chart at that observation. `#source-<fact>-<n>` and
 old anchors listed in `replaces` also work, and without JavaScript the charts
 run down the page, so every address still lands.
 
 Footnote-link each sourced statement or number where it appears, rather than
-leaving readers to infer which reference supports it. A chart must also show a
-subtle publisher name immediately below each plot, linked to its full citation.
+leaving readers to infer which reference supports it.
 Source numbers follow fact frontmatter order, then the series source, then each
 reading's additional source. Update footnotes and `claimSources` if that order
 changes. Full references, including quoted evidence, belong at the article end.
@@ -708,7 +728,7 @@ position in the distribution given as a rank rather than as two flattering
 neighbours.
 
 **Charts follow the concrete opening finding**, ahead of the detailed context
-and Subtleties. Keep the graph's publisher credit visible below the plot.
+and Subtleties.
 
 **Narrate the major movements.** When a graph has an obvious spike, drop,
 reversal, plateau or change of pace, explain what happened at each important
@@ -891,15 +911,14 @@ in order, or given a `defaultSort`.
 `additionalSeries`, `comparisons` and `featuredCharts` entry must be
 referenced exactly once, so a chart can never silently drop to the end of a
 report. Body sections that no `section` entry names, and that are not a
-figure's Observations or Subtleties, render after the last figure. A `###`
+figure's Observations, Subtleties or More, fail validation. A `###`
 section can be placed on its own, leaving the rest of its `##` section
 behind; a `###` item under Observations or Subtleties cannot, because it is
 part of that disclosure.
 
 **A data panel draws every figure in full**, as it does a chart: its controls,
 the graph filling the space, the description and About this data folded into one
-line, its source line linking to the sources themselves, and its Observations
-along the bottom. So a figure's `description` opens with the same free-standing
+line, its Observations above the graph and its sources row at the foot. So a figure's `description` opens with the same free-standing
 first sentence as a chart's.
 
 **Sources are the fact's own numbered citations**, exactly as for
@@ -912,9 +931,9 @@ reference. Every figure but a `caveatList` needs at least one citation.
 **Figures are walkthrough steps.** A collection's row steps through its visuals
 in `figures` order, series and comparisons and library figures alike. A
 graph-like figure's slide is its compact [preview](#home-page-preview-charts); a
-text figure's slide is its title and content. Either way its description, source
-line and About this data wait behind "Explore this data". Only graph-like
-figures can be home-page preview charts.
+text figure's slide is its title and content. Either way its description and
+About this data wait behind "Explore this data", and its sources row sits under
+it. Only graph-like figures can be home-page preview charts.
 
 **Series sources are numbered after the fact's.** A fact with N `sources`
 numbers its `series`' own `source` N+1, then that series' reading sources,
@@ -944,16 +963,21 @@ its quote as well as the reading's.
 **Observations attach by id.** A component figure's DOM id is
 `<fact>--chart-<id>`, so viewpoints cite it as `#fact-<fact>/chart-<id>`.
 `## Observations {#<fact>--observations-<id>}` and
-`## Subtleties {#<fact>--subtleties-<id>}` render inside the figure's frame,
-after its source line and before About this data, as they do for a
-comparison. A `section` entry's id takes Observations the same way. The id
-must be a reading's (not its series'), a comparison's, a figure's or a
-`section` entry's; a group a `section` entry names whole
-(`id: observations-regime-change`) is placed there instead. Any other group
-stays in the body after the last figure, which suits a group about no one
-chart (`{#<fact>--observations-latest}`) — but one whose id looks like a slip
-for a chart's (a series id, a hyphenated part added or dropped, a letter or
-two off) fails validation.
+`## Subtleties {#<fact>--subtleties-<id>}` are stepped through in the chart's
+observation bar, and `## More {#<fact>--more-<id>}` is read in its More. A
+`section` entry's id takes Observations the same way. The id must be a reading's
+(not its series'), a comparison's, a figure's or a `section` entry's; a group a
+`section` entry names whole (`id: observations-regime-change`) is placed there
+instead. Any other group would be shown on no slide, so it fails validation.
+
+**Moved sections keep their anchors.** A `###` keeps its id wherever it goes. An
+`##` anchor that no longer exists goes in the fact's `movedAnchors`, old anchor to
+chart, or in a figure's `replaces` if it became that figure:
+
+```yaml
+movedAnchors:
+  tanker-war: hormuz-transits
+```
 
 **Marks.** `observationMarks` in a fact's frontmatter says what each
 observation is about, by observation id. It is picked out on the chart when a
@@ -2011,7 +2035,7 @@ Run this before opening a pull request.
       distinct roles. Body and chart descriptions use regular weight; spacing
       separates sections and bold is selective.
 - [ ] Long sourcing, derivation and collation explanations are collapsed.
-- [ ] Footnotes sit beside each assertion; publisher credits sit below graphs;
+- [ ] Footnotes sit beside each assertion; every chart has its sources row;
       full references are at the end and every link reaches the right source.
 - [ ] Multiple findings have stable targets that pills scroll to and highlight.
 - [ ] Body covers all four obligations — what it measures and does not; how

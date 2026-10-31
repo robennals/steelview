@@ -71,13 +71,13 @@ test('opening every row of a topic at phone width does not widen the page', asyn
 // `crime-terrorism-and-group-exploitation` has a seven-column markdown table.
 test('a wide prose table scrolls in its own box, not the page, and its headers do not run together', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/topics/uk-immigration/facts/crime-terrorism-and-group-exploitation');
+  await page.goto('/topics/us-voter-id/facts/opinion-and-confidence-in-elections#opinion-and-confidence-in-elections--photo-id-across-races');
   const overflows = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   );
   expect(overflows).toBe(false);
 
-  const wrapper = page.locator('.prose-body .sv-prose-table').first();
+  const wrapper = page.locator('.sv-observe__item:not([hidden]) .prose-body .sv-prose-table').first();
   await expect(wrapper).toHaveAttribute('role', 'region');
   await expect(wrapper).toHaveAttribute('tabindex', '0');
   expect(await wrapper.evaluate(el => el.scrollWidth > el.clientWidth)).toBe(true);

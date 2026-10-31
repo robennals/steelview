@@ -171,10 +171,9 @@ test.describe('with JavaScript disabled', () => {
       'Work and Study Visas and the Care Workforce'
     );
     await expect(page.locator('.sv-chart').first()).toBeVisible();
-    await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
-    await page.locator('.sv-references > summary').click();
-    await page.locator('.sv-source-quote > summary').first().click();
-    await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeHidden();
+    await page.locator('.sv-chart__sources > summary').first().click();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeVisible();
   });
 });
 

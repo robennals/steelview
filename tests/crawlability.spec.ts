@@ -49,7 +49,8 @@ test('a fact page\'s HTML holds all its charts and sources, before any script ru
   const id = 'immigration-against-the-long-run';
   const steps = html.match(/class="sv-walk__slide"/g) ?? [];
   expect(steps.length).toBeGreaterThan(5);
-  expect(html.match(/<figure class="sv-chart/g)?.length).toBeGreaterThanOrEqual(steps.length);
+  // Every step is a chart but the last, what is not known yet.
+  expect(html.match(/<figure class="sv-chart/g)?.length).toBeGreaterThanOrEqual(steps.length - 1);
   for (const anchor of [`${id}--chart-people`, `${id}--chart-share-of-population`, `source-${id}-1`, `source-${id}-13`, `${id}--finding`, `${id}--nationality-shift`]) {
     expect(html).toContain(`id="${anchor}"`);
   }

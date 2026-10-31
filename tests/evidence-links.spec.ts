@@ -97,15 +97,17 @@ test('one collapsed Sources disclosure includes parent and supporting citations'
   await expect(sources.locator('.sv-target')).toBeInViewport();
   await sources.locator(':scope > summary').click();
   await expect(sources).not.toHaveAttribute('open', '');
+  await page.goto('about:blank');
   await page.goto(`${topic}/facts/immigration-against-the-long-run#source-immigration-against-the-long-run-13`);
-  await expect(page.locator('.sv-references')).toHaveAttribute('open', '');
-  await expect(page.locator('#source-immigration-against-the-long-run-13')).toHaveClass(/sv-target/);
-  await expect(page.locator('#source-immigration-against-the-long-run-13')).toBeInViewport();
+  const source = page.locator('[data-source-id="source-immigration-against-the-long-run-13"].sv-target');
+  await expect(source).toBeVisible();
+  await expect(source).toBeInViewport();
 });
 
-test('a chart\'s source line links to the source itself on the report\'s own page, as in its row', async ({ page }) => {
+test('a chart\'s sources row links to the source itself on the report\'s own page, as in its row', async ({ page }) => {
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
-  await expect(page.locator('#immigration-against-the-long-run--chart-people .sv-chart__credit a').first()).toHaveAttribute('href', /^https?:/);
+  await page.locator('.sv-chart__sources > summary').first().click();
+  await expect(page.locator('.sv-chart__sources a').first()).toHaveAttribute('href', /^https?:/);
 });
 
 test('opening graphs include all asylum comparators and details remain collapsed', async ({ page }) => {
@@ -157,8 +159,6 @@ test('glossary works without JavaScript on narrow screens and dismisses outside'
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
-  await page.locator('#immigration-against-the-long-run--subtleties-international-immigration > summary').click();
-  await page.locator('#immigration-against-the-long-run--international-differences > summary').click();
   await page.getByRole('button', { name: 'gross arrivals', exact: true }).first().click();
   const popup = page.getByRole('dialog', { name: 'Gross Arrivals' });
   await expect(popup).toBeVisible();

@@ -548,7 +548,7 @@ test('rule 14: mixed period granularity orders the way a reader would order it',
 
 test('evidence targets and source footnotes must resolve, including summaries', () => {
   const topic = soundTopic();
-  topic.facts[0].body = '## Context {#alpha--context}\n\nMeasured. [1](#source-alpha-1)';
+  topic.facts[0].body = '### Context {#alpha--context}\n\nMeasured. [1](#source-alpha-1)';
   topic.viewpoints[0].summary = '[finding](#fact-alpha/context)';
   assert.deepEqual(validateTopic(topic), []);
   topic.viewpoints[0].summary = '[finding](#fact-alpha/missing)';

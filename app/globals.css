@@ -627,6 +627,9 @@
     border-bottom: 1px solid var(--rule);
   }
 
+  .sv-related { margin: 0; padding-left: 1.2rem; font-family: var(--font-sans); }
+  .sv-related li { margin-block: 0.25rem; }
+
   /* --------------------------------------------- data still needed */
 
   .sv-data-needed {
@@ -645,13 +648,13 @@
     margin: 0 0 0.75rem;
   }
 
-  .sv-data-needed ul {
+  .sv-data-needed__list {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .sv-data-needed li {
+  .sv-data-needed__list li {
     display: grid;
     gap: 0.2rem;
     padding: 0.7rem 0;
@@ -660,15 +663,15 @@
     line-height: 1.55;
   }
 
-  .sv-data-needed li:last-child {
+  .sv-data-needed__list li:last-child {
     border-bottom: 1px solid var(--rule-light);
   }
 
-  .sv-data-needed strong {
+  .sv-data-needed__list strong {
     color: var(--ink-1);
   }
 
-  .sv-data-needed span {
+  .sv-data-needed__list span {
     color: var(--ink-2);
   }
 

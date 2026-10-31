@@ -65,25 +65,70 @@ test('an observation\'s address opens that chart at that observation', async ({ 
   await expect(observation).toBeVisible();
   await expect(observation).toHaveClass(/sv-target/);
   await expect(observation).toBeInViewport();
-  // Its footnote leads to the sources, on this page.
+  // Its footnote opens the sources row of the chart it is on, at that source.
   await observation.locator('a[href^="#source-"]').first().click();
-  await expect(page.locator('.sv-references')).toHaveAttribute('open', '');
-  await expect(page.locator('.sv-target')).toHaveClass(/sv-source/);
+  const source = page.locator('.sv-walk__slide:has(.sv-walk__tab) .sv-target, .sv-chart__sources .sv-target');
+  await expect(source).toBeVisible();
+  await expect(source).toHaveClass(/sv-source/);
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+});
+
+test('a Subtlety\'s address opens its chart at that Subtlety, marked as one', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--international-differences`);
+  const observation = page.locator(`[data-observation="${LONG_RUN}--international-differences"]`);
+  await expect(observation).toBeVisible();
+  await expect(observation.locator('.sv-observe__count')).toContainText('Subtlety');
+  await expect(observation.locator('.sv-observe__body')).toBeVisible();
+});
+
+test('More lists a chart\'s observations and Subtleties, and one goes straight to it, with focus', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--chart-nationality-arrivals`);
+  const slide = page.locator('.sv-walk__slide:has(.sv-walk__tab), .sv-walk__slide').filter({ has: page.locator(`[data-chart-anchor="${LONG_RUN}--chart-nationality-arrivals"]`) });
+  const about = slide.locator('.sv-chart__about').first();
+  await about.locator('> summary').click();
+  const links = about.locator('.sv-chart__about-list a');
+  const last = links.last();
+  const name = await last.innerText();
+  await last.click();
+  await expect(about).not.toHaveAttribute('open', '');
+  const toggle = slide.locator('.sv-observe__item:not([hidden]) .sv-observe__toggle');
+  await expect(toggle).toContainText(name);
+  await expect(toggle).toBeFocused();
+  await expect(slide.locator('.sv-observe__item:not([hidden]) .sv-observe__body')).toBeVisible();
+});
+
+test('a sources row is one line, and opens to each source in full', async ({ page }) => {
+  await page.goto(factUrl(LONG_RUN));
+  const row = page.locator('.sv-walk__slide').first().locator('.sv-chart__sources');
+  await expect(row.locator('> summary')).toContainText(/^Sources?:/);
+  expect((await row.locator('> summary').boundingBox())!.height).toBeLessThan(28);
+  await row.locator('> summary').click();
+  const source = row.locator('.sv-source').first();
+  await expect(source.locator('a')).toHaveAttribute('href', /^https?:/);
+  await expect(source.locator('blockquote')).toBeVisible();
+});
+
+test('a report\'s last slide says what is not known yet, and has its old address', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--data-still-needed`);
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText("What we don't know yet");
+  await expect(page.locator('.sv-walk__tabs li').last().locator('.sv-walk__tab')).toHaveAttribute('aria-current', 'step');
+});
+
+test('a section that moved to a chart keeps its address', async ({ page }) => {
+  await page.goto(`/topics/us-iran-war/facts/oil-shipping-and-prices#oil-shipping-and-prices--tanker-war`);
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Ships passing through the Strait of Hormuz');
+  await page.goto(`/topics/us-iran-war/facts/oil-shipping-and-prices#oil-shipping-and-prices--about`);
+  await expect(page.locator('[id="oil-shipping-and-prices--about"]')).toBeVisible();
+});
+
+test('a table that became a slide keeps its address', async ({ page }) => {
+  await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--pledges`);
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Pledges on net migration');
 });
 
 test('the address a sheet expands to opens the same chart', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--viz-nationality`);
   await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
-});
-
-test('a section of the report opens where it is, under the panel', async ({ page }) => {
-  await page.goto('/topics/uk-asylum/facts/asylum-claims-and-decisions');
-  const subtleties = page.locator('.sv-chart-notes .sv-subtleties-group').first();
-  const id = await subtleties.getAttribute('id');
-  await expect(subtleties).not.toHaveAttribute('open', '');
-  await page.evaluate(hash => { location.hash = hash; }, id ?? '');
-  await expect(subtleties).toHaveAttribute('open', '');
-  await expect(page.locator('.sv-target')).toBeInViewport();
 });
 
 // Addresses are permanent: a fact merged into a report keeps working, and
@@ -122,14 +167,14 @@ test.describe('with JavaScript disabled', () => {
     await page.goto(factUrl(LONG_RUN));
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
     await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
-    await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
-    await page.locator('.sv-references > summary').click();
-    await page.locator('.sv-source-quote > summary').first().click();
-    await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeHidden();
+    await page.locator('.sv-chart__sources > summary').first().click();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeVisible();
     // Nothing steps through the charts, so they run down the page, and every
     // observation shows. Each has its own address.
     await expect(page.locator('.sv-walk__tabbar')).toBeHidden();
-    const steps = await page.locator('.sv-walk__slide').all();
+    await expect(page.locator('.sv-walk__slide').last().locator('.sv-data-needed__list li').first()).toBeVisible();
+    const steps = await page.locator('.sv-walk__slide:not(:has(.sv-data-needed__list))').all();
     expect(steps.length).toBeGreaterThan(5);
     for (const step of steps) await expect(step.locator('.sv-chart, .sv-report').first()).toBeVisible();
     await expect(page.locator(`#${LONG_RUN}--nationality-shift`)).toBeVisible();

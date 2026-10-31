@@ -70,7 +70,7 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   await expect(visiblePlot.locator('.sv-chart__bridge').first()).toBeAttached();
 
   // A chart is a factual claim, so it carries its own quoted source.
-  await expect(page.locator(`${dialog} #source-${HEADLINE}-5 blockquote`)).toContainText(
+  await expect(page.locator(`${dialog} #source-${HEADLINE}-46 blockquote`)).toContainText(
     'comparisons between pre-June 2021 and post-June 2021 estimates should be treated with caution'
   );
 });
