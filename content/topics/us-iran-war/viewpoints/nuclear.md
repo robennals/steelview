@@ -1,5 +1,6 @@
 ---
 name: Iran must never get a nuclear weapon, and its past shows why
+shortName: "No Iranian bomb"
 summary: "Iran was close to having enough material for a bomb, and [no inspector has seen its most enriched uranium since June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for). [Iran has backed deadly attacks abroad](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). Stopping it from getting a bomb was worth a war."
 order: 1
 researchNeeded:

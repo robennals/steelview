@@ -1,5 +1,6 @@
 ---
 name: "Mass immigration has left Britain poorer per head and short of homes: cut it hard and keep it down"
+shortName: "Cut the numbers"
 summary: "Recent immigration [made the economy bigger without making its people richer](#fact-immigration-economy-and-public-finances/total-gdp-grew), and [added households faster than homes were built](#fact-immigration-housing-and-public-services/building-below-household-growth). The fall in numbers rests on rules a future government could undo, so Parliament should set a binding cap and lengthen the wait to settle."
 order: 1
 ---

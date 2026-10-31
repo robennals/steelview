@@ -1379,124 +1379,42 @@
 
   /* --------------------------------------------------------------- cruxes */
 
-  .sv-crux__kind {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 0.45rem;
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
-
-  .sv-crux__kind::before {
-    content: "";
-    width: 0.85rem;
-    height: 1px;
-    background: var(--ink-4);
-  }
-
+  /* Columns of equal width, as many as fit: every side in one line on a wide
+     screen, stacked on a narrow one. */
   .sv-positions {
     display: grid;
-    gap: 0;
-    margin: 1.5rem 0 0;
-    border-top: 1px solid var(--ink);
+    grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+    gap: 1.25rem 2rem;
+    margin: 0;
+    padding: 0.75rem 1.5rem 1.5rem;
   }
 
   .sv-position {
-    padding: 1rem 0 1.15rem;
-    border-bottom: 1px solid var(--rule);
+    padding-top: 0.6rem;
+    border-top: 2px solid var(--ink);
   }
 
   .sv-position dt {
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 0.15rem;
+    color: var(--ink);
   }
 
   .sv-position dt a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    text-decoration-color: var(--rule);
+    text-decoration-color: var(--rule-strong);
   }
 
   .sv-position dd {
     margin: 0;
-    color: var(--ink);
-    line-height: 1.5;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    line-height: 1.45;
     text-wrap: pretty;
-  }
-
-  /* The positions grid is the one thing on the page allowed past the reading
-     measure — it is a comparison, not a paragraph. The prose above it keeps
-     its own max-width. */
-  .sv-crux > .sv-item__body {
-    max-width: none;
-  }
-
-  /* Column count follows the number of positions (`--sv-position-count`, set
-     inline per crux) rather than a fixed 2, so a divider sits between every
-     pair of adjacent columns for two, three, or more positions — not just an
-     even count. The first column needs no left divider or left padding, and
-     the last needs no right padding since there is no column after it. */
-  @media (min-width: 46rem) {
-    .sv-positions {
-      grid-template-columns: repeat(var(--sv-position-count, 1), minmax(0, 1fr));
-    }
-
-    .sv-position {
-      padding-right: 2rem;
-    }
-
-    .sv-position:not(:first-child) {
-      border-left: 1px solid var(--rule);
-      padding-left: 2rem;
-    }
-
-    .sv-position:last-child {
-      padding-right: 0;
-    }
-
-    /* At four or more positions, one row no longer leaves each column
-       comfortably readable, so the grid wraps to two columns instead —
-       holding column width roughly constant (the same width the
-       two-position case already renders at) no matter how many positions a
-       crux has. Divider placement switches from first/last-child to
-       odd/even, which is the correct "start/end of row" test for a *fixed*
-       two-column track (unlike the single-row case above, where the column
-       count varies, so first/last-child was the only count-agnostic test).
-       A trailing odd item (an odd total, e.g. five positions) spans both
-       columns so it doesn't dangle half-width under an empty cell. */
-    .sv-positions--wrap {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .sv-positions--wrap .sv-position {
-      border-left: none;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    .sv-positions--wrap .sv-position:nth-child(odd) {
-      padding-right: 2rem;
-    }
-
-    .sv-positions--wrap .sv-position:nth-child(even) {
-      border-left: 1px solid var(--rule);
-      padding-left: 2rem;
-    }
-
-    .sv-positions--wrap .sv-position:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-    }
   }
 
   /* ---------------------------------------------------------------- prose */
@@ -1884,10 +1802,10 @@
 
   .sv-row[data-open] .sv-row__body { grid-template-rows: 1fr; }
 
-  /* Nothing can open a walkthrough row without script, and its charts load on opening. */
+  /* Nothing can open a walkthrough or crux row without script, and a walkthrough's charts load on opening. */
   @media (scripting: none) {
-    .sv-row--walk .sv-row__body { grid-template-rows: 1fr; }
-    .sv-row--walk .sv-row__toggle, .sv-row--walk .sv-row__chevron, .sv-walk__chart-loading { display: none; }
+    .sv-row--walk .sv-row__body, .sv-row--crux .sv-row__body { grid-template-rows: 1fr; }
+    .sv-row--walk .sv-row__toggle, .sv-row--walk .sv-row__chevron, .sv-row--crux .sv-row__toggle, .sv-row--crux .sv-row__chevron, .sv-walk__chart-loading { display: none; }
   }
 
   .sv-row__inner { min-height: 0; overflow: hidden; }
@@ -2039,7 +1957,7 @@
 
   @media (max-width: 47.5rem) {
     .sv-row__thumbs { display: none; }
-    .sv-row__columns { padding-inline: 1rem; }
+    .sv-row__columns, .sv-positions { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
   }
 

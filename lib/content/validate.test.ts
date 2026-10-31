@@ -26,6 +26,7 @@ function fact(over: Partial<Fact> & { id: string }): Fact {
 function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
   return {
     name: 'A viewpoint',
+    shortName: 'A view',
     summary: 'One line.',
     order: 1,
     body: 'The argument.',
@@ -39,7 +40,8 @@ function principle(over: Partial<Principle> & { id: string }): Principle {
 
 function crux(over: Partial<Crux> & { id: string }): Crux {
   return {
-    question: 'A question?',
+    title: 'A question?',
+    tension: 'Two good things pull apart.',
     kind: 'prediction',
     divides: [],
     positions: [],
@@ -132,6 +134,28 @@ test('rule 7: a crux must give a position for every viewpoint it divides', () =>
   assert.ok(validateTopic(t).some((e) => e.includes('timing') && e.includes('two')));
 });
 
+test('a crux may not have a body', () => {
+  const t = soundTopic();
+  t.cruxes[0].body = 'A long argument about which should win.';
+  assert.ok(validateTopic(t).some((e) => e.includes('a crux has no body')));
+});
+
+test('a tension stays short and carries no figures or links', () => {
+  const t = soundTopic();
+  t.cruxes[0].tension = 'word '.repeat(46);
+  assert.ok(validateTopic(t).some((e) => e.includes('tension is over 45 words')));
+  t.cruxes[0].tension = 'Nearly 60% agree.';
+  assert.ok(validateTopic(t).some((e) => e.includes('figures or links')));
+  t.cruxes[0].tension = 'As [shown](#fact-alpha).';
+  assert.ok(validateTopic(t).some((e) => e.includes('figures or links')));
+});
+
+test('a position in a crux stays short', () => {
+  const t = soundTopic();
+  t.cruxes[0].positions[0].holds = 'word '.repeat(26);
+  assert.ok(validateTopic(t).some((e) => e.includes('is over 25 words')));
+});
+
 test('rule 7: a crux may not divide an unknown viewpoint', () => {
   const t = soundTopic();
   t.cruxes[0].divides = ['one', 'nope'];
@@ -216,13 +240,6 @@ test('rule 11: a two-fact cycle is rejected from both ends', () => {
   assert.ok(errors.some((e) => e.startsWith('fact gamma:')), errors.join('\n'));
 });
 
-test('a topic may employ a shared principle in a crux without a viewpoint claiming it', () => {
-  const t = soundTopic();
-  t.principles.push(principle({ id: 'care' }));
-  t.cruxes[0].body = 'How does [care](#principle-care) apply?';
-  assert.deepEqual(validateTopic(t), []);
-});
-
 test('rule 9: a topic needs at least 1 fact', () => {
   const t = soundTopic();
   t.facts = [];
@@ -265,10 +282,10 @@ test('every error message names the offending item', () => {
 
 test('rule 12: a body linking to a fact that does not exist is reported', () => {
   const t = soundTopic();
-  t.cruxes[0].body = 'As [shown here](#fact-nope), the sides differ.';
+  t.viewpoints[0].body = 'As [shown here](#fact-nope), the sides differ.';
   const errors = validateTopic(t);
   assert.ok(
-    errors.some((e) => e.includes('crux timing') && e.includes('#fact-nope')),
+    errors.some((e) => e.includes('viewpoint one') && e.includes('#fact-nope')),
     errors.join('\n')
   );
 });
@@ -354,10 +371,9 @@ test.skip('rule 13: citing a supporting fact whose parent is unlisted is reporte
   );
 });
 
-test('rule 13 does not apply to fact, principle or crux bodies', () => {
+test('rule 13 does not apply to fact or principle bodies', () => {
   const t = soundTopic();
   t.facts[0].body = 'Compare [gamma](#fact-gamma).';
-  t.cruxes[0].body = 'Compare [alpha](#fact-alpha).';
   assert.deepEqual(validateTopic(t), []);
 });
 

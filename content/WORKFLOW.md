@@ -208,13 +208,14 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
 - **Drop or narrow** arguments the evidence does not support, rather than
   keeping them in weakened form.
 - **Turn decisive open questions into cruxes.** A gap in 3d becomes a crux
-  candidate only if its answer would change which viewpoint has the better
-  case — if one answer would leave a viewpoint standing and the other would
-  knock out an argument it relies on. Many gaps do not pass that test: the
-  missing data would be nice to have but would not swing the balance, and
-  those stay in 3d or in the report's `dataStillNeeded`. A question that more
-  research could answer is a research task, not a crux. A viewpoint may still
-  argue from its assumption on a crux, but says it is one.
+  candidate only if it sits on a real tension between viewpoints — if one
+  answer would leave a viewpoint standing and the other would knock out an
+  argument it relies on. Many gaps do not pass that test: the missing data
+  would be nice to have but would not swing the balance, and those stay in 3d
+  or in the report's `dataStillNeeded`. A question that more research could
+  answer is a research task; the crux is what each side is trying to protect
+  while the answer is unknown. A viewpoint may still argue from its assumption
+  on a crux, but says it is one.
 - **Add** the strongest arguments the data makes available that the outline
   missed — for every viewpoint, including the ones the data mostly hurts.
 - **Update the concessions** to the well-supported findings that cut against
@@ -233,17 +234,16 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
 Record what changed, per viewpoint, in the outline's Revision notes.
 
 **Crux candidates are listed in the outline from stage 2 on**, each labelled
-with its kind and the viewpoint ids it divides. Most cruxes are one of
-three kinds ([Cruxes](AUTHORING.md#cruxes)):
+with its kind and the viewpoint ids it divides. Cruxes come in three kinds
+([Cruxes](AUTHORING.md#cruxes)), and a topic will usually have all three:
 
-- **a trade-off between values** — the viewpoints weigh the same goods
+- **a tension between principles** — the viewpoints weigh the same goods
   differently (`tradeoff`, or `priority` when one principle simply comes
   first);
-- **a different prediction** about what a policy or event will cause
+- **different predictions** about what a policy or event will cause
   (`prediction`);
-- **a different assumption** about a question the data cannot yet answer
-  (`assumption`) — those open questions from 3d whose answer would decide
-  between viewpoints.
+- **missing data** — a question the data cannot yet answer (`assumption`),
+  from the open questions in 3d whose answer would decide between viewpoints.
 
 ### 4b. Plan the combined reports
 
@@ -386,7 +386,9 @@ holder of that view would find it better argued than their own version
   fact that no report has, add the slice to the broadest report that covers
   its subject rather than creating a report for that viewpoint.
 - **Cruxes are drafted after the viewpoints settle**, because they depend on
-  where the viewpoints actually ended up disagreeing. Principles were written
+  where the viewpoints actually ended up disagreeing. Each names a tension and
+  stops, without arguing the evidence or resolving it
+  ([Cruxes](AUTHORING.md#cruxes)). Principles were written
   in stage 2; adjust them here only if a viewpoint's final form rests on a
   different value.
 - **Order last.** Set each viewpoint's `order` so the sides alternate, and

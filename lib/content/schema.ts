@@ -764,6 +764,8 @@ export const factFrontmatterSchema = z.object({
 
 export const viewpointFrontmatterSchema = z.object({
   name: z.string().min(1),
+  /** A few words naming the viewpoint where its full `name` will not fit, as above a crux column. */
+  shortName: z.string().min(1),
   summary: z.string().min(1),
   /**
    * Where this viewpoint sits in the Viewpoints section. Required and
@@ -799,7 +801,10 @@ export const cruxPositionSchema = z.object({
 });
 
 export const cruxFrontmatterSchema = z.object({
-  question: z.string().min(1),
+  /** What is at issue: the things being weighed, or what is in doubt. */
+  title: z.string().min(1),
+  /** In a sentence or two, why it divides people. A crux has no body. */
+  tension: z.string().min(1),
   kind: z.enum(CRUX_KINDS),
   divides: z.array(z.string()).min(2, 'a crux divides at least two viewpoints'),
   positions: z.array(cruxPositionSchema).min(2),

@@ -15,14 +15,11 @@ export function Disclosure({
   anchor,
   summary,
   children,
-  className,
   status,
 }: {
   anchor: string;
   summary: ReactNode;
   children: ReactNode;
-  /** Extra class on the <details>, for per-kind row treatment. */
-  className?: string;
   /** Fact status, which drives the left-edge rule style. */
   status?: FactStatus;
 }) {
@@ -30,7 +27,7 @@ export function Disclosure({
     <details
       id={anchor}
       data-status={status}
-      className={className ? `sv-item ${className}` : 'sv-item'}
+      className="sv-item"
     >
       <summary className="sv-item__summary">{summary}</summary>
       <div className="sv-item__body">{children}</div>

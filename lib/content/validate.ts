@@ -3,7 +3,7 @@ import { geoRegions, mapTiles } from './map-presets';
 import { comparePeriods } from './period';
 import { factSources, figureCitations } from './sources';
 import { isComponentFigure } from './types';
-import type { ComponentFigure, Fact, Figure, FigureOf, Series, Topic } from './types';
+import type { ComponentFigure, Crux, Fact, Figure, FigureOf, Series, Topic } from './types';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -13,6 +13,24 @@ import type { ComponentFigure, Fact, Figure, FigureOf, Series, Topic } from './t
  *
  * Rules are numbered to match the "Validation" section of the design spec.
  */
+/** A crux states a tension and stops: these keep it to that. */
+const MAX_TENSION_WORDS = 45;
+const MAX_HOLDS_WORDS = 25;
+
+const wordCount = (text: string) => text.trim().split(/\s+/).length;
+
+/** A crux names the conflict and leaves it open: short, with no evidence argued. */
+function tensionErrors(crux: Crux): string[] {
+  const errors: string[] = [];
+  if (crux.body) errors.push(`crux ${crux.id}: a crux has no body`);
+  if (wordCount(crux.tension) > MAX_TENSION_WORDS) errors.push(`crux ${crux.id}: tension is over ${MAX_TENSION_WORDS} words`);
+  if (/\d|\]\(/.test(crux.tension)) errors.push(`crux ${crux.id}: tension may not contain figures or links`);
+  for (const p of crux.positions) {
+    if (wordCount(p.holds) > MAX_HOLDS_WORDS) errors.push(`crux ${crux.id}: position for "${p.viewpoint}" is over ${MAX_HOLDS_WORDS} words`);
+  }
+  return errors;
+}
+
 export function validateTopic(topic: Topic): string[] {
   const errors: string[] = [];
   const factById = new Map(topic.facts.map((f) => [f.id, f]));
@@ -118,6 +136,7 @@ export function validateTopic(topic: Topic): string[] {
   }
 
   for (const c of topic.cruxes) {
+    errors.push(...tensionErrors(c));
     const positioned = new Set(c.positions.map((p) => p.viewpoint));
     for (const id of c.divides) {
       // rule 1
@@ -694,7 +713,6 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   check('topic intro', topic.intro);
   for (const f of topic.facts) check(`fact ${f.id}`, f.body);
   for (const p of topic.principles) check(`principle ${p.id}`, p.body);
-  for (const c of topic.cruxes) check(`crux ${c.id}`, c.body);
 
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 

@@ -111,7 +111,7 @@ test('a focus window renders the strip, both plots with the full range hidden, a
 
 test('the Brent fixture passes the series rules', () => {
   const fact = { id: 'brent', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: BRENT_FOCUS_WINDOW };
-  const viewpoint = (id: string) => ({ id, name: id, summary: 's', order: 1, body: 'b' });
+  const viewpoint = (id: string) => ({ id, name: id, shortName: id, summary: 's', order: 1, body: 'b' });
   const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', firstPublished: '2026-08-18', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], principles: [], cruxes: [] });
   assert.deepEqual(errors, []);
 });

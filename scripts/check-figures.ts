@@ -18,7 +18,7 @@
  *
  * - a **fact** is matched against its own frontmatter only — its sources,
  *   series sources and verified derived figures;
- * - a **viewpoint, crux or the topic intro** is matched against the union of
+ * - a **viewpoint or the topic intro** is matched against the union of
  *   the corpora of the facts it cites (inline `#fact-…` links, plus the legacy
  *   `citesFacts` list), so it cannot state a figure no cited fact supports;
  * - a **principle** is matched topic-wide: principles are shared across
@@ -26,8 +26,9 @@
  *
  * It deliberately does *not* look at frontmatter. `claim` and `holds` are
  * already covered: a fact's claim is backed by that fact's own sources (rule
- * 3), and a crux position is a statement of what a viewpoint believes rather
- * than an assertion of fact. Bodies are the gap.
+ * 3), and a crux has no body: its positions state what a viewpoint believes
+ * rather than assert facts, and its tension may not carry figures. Bodies are
+ * the gap.
  *
  * It also deliberately does not extract years, ordinals, or bare small
  * integers. "in 2024", "the third route", "two of the five" are not figures
@@ -67,12 +68,11 @@ const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 const KINDS = [
   { dir: 'facts', kind: 'fact' },
   { dir: 'viewpoints', kind: 'viewpoint' },
-  { dir: 'cruxes', kind: 'crux' },
 ] as const;
 
 /** One content item as the audit sees it: raw frontmatter plus markdown body. */
 export type AuditItem = {
-  kind: 'topic' | 'fact' | 'viewpoint' | 'crux' | 'principle';
+  kind: 'topic' | 'fact' | 'viewpoint' | 'principle';
   id: string;
   data: Record<string, unknown>;
   body: string;
@@ -157,8 +157,8 @@ function corpusFor(
 /**
  * The prose audit for one topic, pure so it can be tested: every figure in
  * every body must appear in the corpus that item is entitled to (see the file
- * comment). `items` is the topic intro, its facts, viewpoints and cruxes, and
- * the shared principles it references.
+ * comment). `items` is the topic intro, its facts and viewpoints, and the
+ * shared principles it references.
  */
 export function auditTopic(items: readonly AuditItem[]): {
   unmatched: Finding[];
@@ -286,7 +286,7 @@ function printValues(values: readonly AuditedValue[], strict: boolean): number {
   return untraced.length;
 }
 
-/** A topic's intro, facts, viewpoints, cruxes and referenced principles, read from disk. */
+/** A topic's intro, facts, viewpoints and referenced principles, read from disk. */
 async function readTopic(slug: string): Promise<AuditItem[]> {
   const dir = path.join(CONTENT_ROOT, slug);
   const topicFile = matter(await readFile(path.join(dir, 'topic.md'), 'utf8'));
@@ -317,7 +317,7 @@ async function main(): Promise<void> {
 
   console.log('Figures audit — every money, percentage or thousands figure in a');
   console.log("markdown body must appear in a quoted source it may lean on: a fact's");
-  console.log('own sources, or the sources of the facts a viewpoint, crux or intro cites.\n');
+  console.log('own sources, or the sources of the facts a viewpoint or intro cites.\n');
 
   for (const slug of slugs) {
     const { unmatched, advisories, values } = auditTopic(await readTopic(slug));

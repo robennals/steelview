@@ -11,7 +11,7 @@ import { ExplorePanels } from '@/components/topic/explore-panels';
 import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
 import { PrincipleItem } from '@/components/topic/principle-item';
 import { PrincipleModals } from '@/components/topic/principle-modals';
-import { CruxItem } from '@/components/topic/crux-item';
+import { CruxRows } from '@/components/topic/crux-rows';
 import type { ItemKind, Topic } from '@/lib/content/types';
 
 export async function generateStaticParams() {
@@ -64,7 +64,6 @@ export async function buildBodies(
     facts?: Topic['facts'];
     viewpoints: BodiedItem[];
     principles: BodiedItem[];
-    cruxes: BodiedItem[];
   },
   slug: string
 ): Promise<Map<string, string>> {
@@ -72,7 +71,6 @@ export async function buildBodies(
   const kinds: Array<[ItemKind, BodiedItem[]]> = [
     ['viewpoint', topic.viewpoints],
     ['principle', topic.principles],
-    ['crux', topic.cruxes],
   ];
   for (const [kind, items] of kinds) {
     for (const item of items) {
@@ -162,18 +160,11 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
       )}
 
       {topic.cruxes.length > 0 && (
-        <section className="sv-section sv-section--reading">
+        <section className="sv-section">
           <div className="sv-section__head">
             <h2 className="sv-section__title">Cruxes</h2>
           </div>
-          {topic.cruxes.map((crux) => (
-            <CruxItem
-              key={crux.id}
-              crux={crux}
-              bodyHtml={bodies.get(bodyKey('crux', crux.id)) ?? ''}
-              viewpointsById={viewpointsById}
-            />
-          ))}
+          <CruxRows cruxes={topic.cruxes} viewpointsById={viewpointsById} />
         </section>
       )}
     </div></ExplorePanels>
