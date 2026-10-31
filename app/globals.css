@@ -2162,7 +2162,6 @@
   }
 
   .sv-observe__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .sv-observe[data-toggles]:hover .sv-observe__more { text-decoration: underline; text-underline-offset: 0.2em; }
 
   .sv-observe__claim {
     display: block;
@@ -2176,12 +2175,6 @@
   /* Opened, the whole claim shows. */
   .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; }
 
-  .sv-observe__more {
-    flex: none;
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
 
   /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
