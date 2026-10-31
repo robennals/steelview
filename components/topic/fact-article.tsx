@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { factSlides, slideGroup } from '@/lib/content/preview';
 import { factSources } from '@/lib/content/sources';
 import type { Fact, Topic } from '@/lib/content/types';
 import { anchorFor, factPath, topicPath } from '@/lib/content/types';
@@ -84,29 +83,18 @@ function FactBody({ fact, bodyHtml, featured = [], hideCharts = false, page }: B
 }
 
 /**
- * A fact's body under its data panel: the claim, the prose and the Subtleties,
- * each kept with the chart it is about by naming it. The charts and their
- * observations are the panel's.
+ * A fact's body under its data panel: the claim and the prose. The charts and
+ * their observations and Subtleties are the panel's.
  */
-function FactProse({ slug, fact, bodyHtml }: BodiedFact & { slug: string }) {
+function FactProse({ fact, bodyHtml }: BodiedFact) {
   const { lead, bodyHtml: rest } = leadProse(bodyHtml);
   const { observations, subtleties, sections, bodyHtml: remainder } = figureGroups(fact, rest);
   const placed = (fact.figures ?? []).flatMap(figure => (figure.kind === 'section' ? [figure.id] : []));
-  const notes = factSlides(slug, fact).flatMap(slide => {
-    const html = subtleties[slideGroup(fact, slide)];
-    return html ? [{ label: slide.label, html }] : [];
-  });
   return <>
     <Finding fact={fact} />
     <Prose html={lead} />
     {placed.map(id => <Prose key={id} html={(sections[id] ?? '') + (observations[id] ?? '') + (subtleties[id] ?? '')} />)}
     <Prose html={remainder} />
-    {notes.map(({ label, html }) => (
-      <section key={label} className="sv-chart-notes">
-        <h3 className="sv-chart-notes__chart">{label}</h3>
-        <Prose html={html} />
-      </section>
-    ))}
   </>;
 }
 
@@ -232,7 +220,7 @@ export function FactArticle({
       <div className="sv-factpage__body">
         {variant === 'page' && panel && <h2 className="sv-factpage__whole">Whole report</h2>}
         {variant === 'page'
-          ? <FactProse slug={slug} fact={fact} bodyHtml={bodyHtml} />
+          ? <FactProse fact={fact} bodyHtml={bodyHtml} />
           : <FactBody fact={fact} bodyHtml={bodyHtml} featured={supporting.filter(({ fact: child }) => fact.featuredCharts?.includes(child.id)) } page={page} />}
 
         {supporting.length > 0 && (

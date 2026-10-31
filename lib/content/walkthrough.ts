@@ -31,34 +31,43 @@ export type Observation = {
   heading: string;
   /** Its explanation, without the heading. */
   markdown: string;
+  /** A Subtlety: stepped through like an observation, after them, but it qualifies the chart rather than reading it. */
+  subtlety: boolean;
 };
 
 /**
- * A fact's observations, grouped by the chart they are drawn beside, in
- * order. Observations sit under an `## Observations {#<fact>--observations-<key>}`
- * heading, where the key is the id of the reading, comparison or figure they
- * belong to, each headed `### <heading> {#<fact>--<id>}`.
+ * A fact's observations, grouped by the chart they are drawn beside, in order,
+ * with the chart's Subtleties after them. They sit under an
+ * `## Observations {#<fact>--observations-<key>}` or
+ * `## Subtleties {#<fact>--subtleties-<key>}` heading, where the key is the id
+ * of the reading, comparison or figure they belong to, each headed
+ * `### <heading> {#<fact>--<id>}`.
  */
 export function observationsByChart(fact: Fact): Map<string, Observation[]> {
   const groups = new Map<string, Observation[]>();
   let group: Observation[] | undefined;
+  let subtlety = false;
   let current: Observation | undefined;
   for (const line of fact.body.split('\n')) {
     if (line.startsWith('## ')) {
-      const key = line.match(/\{#[a-z0-9-]+--observations-([a-z0-9-]+)\}$/)?.[1];
+      const [, kind, key] = line.match(/\{#[a-z0-9-]+--(observations|subtleties)-([a-z0-9-]+)\}$/) ?? [];
       group = key ? (groups.get(key) ?? groups.set(key, []).get(key)) : undefined;
+      subtlety = kind === 'subtleties';
       current = undefined;
       continue;
     }
     const heading = line.match(/^### (.*) \{#[a-z0-9-]+?--([a-z0-9-]+)\}$/);
     if (heading && group) {
-      current = { id: heading[2], heading: heading[1], markdown: '' };
+      current = { id: heading[2], heading: heading[1], markdown: '', subtlety };
       group.push(current);
     } else if (current) {
       current.markdown += `${line}\n`;
     }
   }
-  for (const observations of groups.values()) for (const o of observations) o.markdown = o.markdown.trim();
+  for (const [key, observations] of groups) {
+    for (const o of observations) o.markdown = o.markdown.trim();
+    groups.set(key, [...observations.filter(o => !o.subtlety), ...observations.filter(o => o.subtlety)]);
+  }
   return groups;
 }
 
@@ -161,8 +170,8 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
 /** One chart of a data collection, with its observations rendered, ready to step through. */
 export type DataStep = {
   chart: PreviewSlide;
-  /** The observations made about this chart, in order: what to notice in it. `heading` is rendered, without a paragraph. */
-  observations: { id: string; heading: string; html: string; mark?: ObservationMark }[];
+  /** The observations and Subtleties of this chart, in order: what to notice in it. `heading` is rendered, without a paragraph. */
+  observations: { id: string; heading: string; html: string; mark?: ObservationMark; subtlety: boolean }[];
   /** What the chart shows, for a chart with no observations of its own. */
   description: string;
   /** The element ids a citation can name this chart by, so a viewpoint's step opens on it. */
@@ -171,15 +180,18 @@ export type DataStep = {
 
 /**
  * Each chart's addresses: its own, the view a fact sheet shows it in, its
- * Observations group and each old anchor it stands in for (`replaces`). An
- * address the readings of one series share belongs to the first of them.
+ * Observations and Subtleties groups and each old anchor it stands in for
+ * (`replaces`, `movedAnchors`). An address the readings of one series share
+ * belongs to the first of them, as `--observations` and `--subtleties`, a group
+ * about no one chart, belong to the first chart.
  */
 function chartAnchors(fact: Fact, slides: PreviewSlide[]): string[][] {
   const taken = new Set<string>();
   return slides.map(slide => {
     const key = slideGroup(fact, slide);
     const replaced = componentFigure(fact, slide.chart)?.replaces ?? [];
-    const anchors = [`chart-${slide.chart}`, `chart-${key}`, `chart-${slide.chart}-methodology`, `viz-${slide.chart}`, `observations-${key}`, ...replaced]
+    const moved = Object.entries(fact.movedAnchors ?? {}).flatMap(([anchor, chart]) => (chart === key ? [anchor] : []));
+    const anchors = [`chart-${slide.chart}`, `chart-${key}`, `chart-${slide.chart}-methodology`, `viz-${slide.chart}`, `observations-${key}`, `subtleties-${key}`, ...replaced, ...moved, 'observations', 'subtleties']
       .map(anchor => `${fact.id}--${anchor}`)
       .filter(anchor => !taken.has(anchor));
     anchors.forEach(anchor => taken.add(anchor));
@@ -214,6 +226,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
           heading: (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
           mark: fact.observationMarks?.[o.id],
+          subtlety: o.subtlety,
         }))),
       };
     })));

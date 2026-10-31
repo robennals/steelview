@@ -2111,7 +2111,7 @@
   }
   .sv-observe__head { display: flex; align-items: center; gap: 0.6rem; min-width: 0; }
   .sv-observe__controls { display: flex; flex: none; align-items: center; gap: 0.35rem; }
-  .sv-observe__count { margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); }
+  .sv-observe__count { margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); white-space: nowrap; }
 
   .sv-observe__step {
     display: grid;
@@ -2178,7 +2178,10 @@
     font-weight: 600;
   }
 
+  /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
+  .sv-observe[data-toggles] .sv-observe__body { max-height: min(16rem, 35vh); overflow-y: auto; }
+  .sv-observe__body:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .sv-observe .sv-walk__prose { max-width: none; font-size: 0.92rem; line-height: 1.5; }
   .sv-observe .sv-walk__prose p:last-child { margin-bottom: 0; }
 
@@ -2608,15 +2611,6 @@
     font-family: var(--font-serif);
     font-size: 1.5rem;
     font-weight: 500;
-  }
-
-  .sv-chart-notes { margin-top: 1.5rem; }
-
-  .sv-chart-notes__chart {
-    margin: 0 0 0.25rem;
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 600;
   }
 
   .sv-factpage__claim {

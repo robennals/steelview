@@ -4,8 +4,8 @@ import { listTopicSlugs, loadTopic } from './load';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews } from './preview';
 import { headlineFacts } from './rank-facts';
-import { isComponentFigure } from './types';
-import { renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
+import { isComponentFigure, type Fact } from './types';
+import { observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -62,6 +62,7 @@ test('a data step answers to its chart\'s address and to each anchor its figure 
     'figure-examples--chart-federal-laws-methodology',
     'figure-examples--viz-federal-laws',
     'figure-examples--observations-federal-laws',
+    'figure-examples--subtleties-federal-laws',
     'figure-examples--federal-laws-list',
   ]);
 });
@@ -74,7 +75,7 @@ test('the readings of one series leave a shared address to the first of them', a
   const [first, second] = (await renderDataWalkthroughs(topic, [two])).get(fact.id)!.filter(s => s.chart.chart === 'series');
   assert.ok(first.anchors.includes(`${fact.id}--chart-series`));
   assert.ok(first.anchors.includes(`${fact.id}--viz-series`));
-  assert.deepEqual(second.anchors, [`${fact.id}--chart-two`, `${fact.id}--observations-two`]);
+  assert.deepEqual(second.anchors, [`${fact.id}--chart-two`, `${fact.id}--observations-two`, `${fact.id}--subtleties-two`]);
 });
 
 test('an observation keeps its footnotes on the report\'s own page, and only there', async () => {
@@ -84,6 +85,16 @@ test('an observation keeps its footnotes on the report\'s own page, and only the
     (await renderDataWalkthroughs(topic, fact, options)).get(fact[0].id)!.flatMap(s => s.observations).map(o => o.html).join('');
   assert.doesNotMatch(await render(), /#source-/);
   assert.match(await render({ citationsAsText: false, footnotes: true }), /#source-/);
+});
+
+test('a chart\'s Subtleties step after its observations, whichever the body lists first', async () => {
+  const body = [
+    '## Subtleties {#report--subtleties-people}', '', '### A qualification {#report--qualification}', '', 'Why.', '',
+    '## Observations {#report--observations-people}', '', '### A finding {#report--finding-one}', '', 'What.',
+  ].join('\n');
+  const fact = { id: 'report', body } as Fact;
+  assert.deepEqual(observationsByChart(fact).get('people')?.map(o => [o.id, o.subtlety]), [['finding-one', false], ['qualification', true]]);
+  assert.equal(observationGroups(fact).get('qualification'), 'people');
 });
 
 test('an observation\'s heading is rendered, not shown as markdown', async () => {

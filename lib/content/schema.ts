@@ -1064,6 +1064,12 @@ export const factFrontmatterSchema = z.object({
   /** Contextual connections, including qualifications and contrasting evidence. */
   relatedFacts: z.array(z.string()).optional(),
   /**
+   * Old body anchors whose section now lives on a chart: anchor (without the
+   * `<fact>--`) to the chart it moved to, by the id its Observations are filed
+   * under. A link to the anchor opens that chart.
+   */
+  movedAnchors: z.record(slugId, slugId).optional(),
+  /**
    * Specific measurements that would materially improve this report but are
    * not currently published in a compatible form. Kept separate from the
    * findings so an absence of data is never presented as a finding.

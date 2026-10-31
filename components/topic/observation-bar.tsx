@@ -75,7 +75,8 @@ function markChart(root: Element, observation?: Observation) {
 
 /**
  * The shown observation as one line, between a chart's title and its graph:
- * its claim, which opens to its reasoning when clicked. Without JavaScript every
+ * its claim, which opens to its reasoning when clicked. A chart's Subtleties come
+ * after its observations and say so in the count. Without JavaScript every
  * observation is shown in full, one after another. Outside a step, nothing.
  */
 export function ObservationBar() {
@@ -110,7 +111,7 @@ export function ObservationBar() {
   const controls = many && enhanced && (
     <div className="sv-observe__controls">
       <button type="button" className="sv-observe__step" aria-label="Previous observation" onClick={() => go(index - 1)}>‹</button>
-      <p className="sv-observe__count">{index + 1} of {observations.length}</p>
+      <p className="sv-observe__count">{index + 1} of {observations.length}{observations[index].subtlety && ' · Subtlety'}</p>
       <button type="button" className="sv-observe__step" aria-label="Next observation" onClick={() => go(index + 1)}>›</button>
     </div>
   );
@@ -134,7 +135,7 @@ export function ObservationBar() {
                   : <span className="sv-observe__claim" dangerouslySetInnerHTML={{ __html: observation.heading }} />}
               </h4>
             </div>
-            <div className="sv-observe__body" hidden={enhanced && !(current && open)}>
+            <div className="sv-observe__body" hidden={enhanced && !(current && open)} tabIndex={enhanced ? 0 : undefined}>
               <Prose html={observation.html} className="sv-walk__prose" />
             </div>
           </div>
