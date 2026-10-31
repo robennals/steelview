@@ -762,7 +762,7 @@ A study of 2016 finds the winner effect outweighed pre-election "rigged" messagi
 
 ### The series cannot separate counting time from who won {#confidence-and-disputed-results--count-length-not-separated}
 
-Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Because the same voters also lost, these series cannot show whether a long count or a changing lead lowers confidence on its own; see Data still needed.
+Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Because the same voters also lost, these series cannot show whether a long count or a changing lead lowers confidence on its own; see What we don't know yet.
 
 ## Observations {#confidence-and-disputed-results--observations-gallup-honesty-total}
 
@@ -814,7 +814,9 @@ Clinton finds voters "less likely to express confidence in election results cond
 
 Georgia Republicans' confidence in the statewide count rebounded in 2022, the first general election under that law (SB 202). The authors caution this may be "the noted winner's effect", since the party won almost every statewide office that year. [10](#source-confidence-and-disputed-results-10)
 
-## About this data {#confidence-and-disputed-results--about}
+## More {#confidence-and-disputed-results--more-gallup-accuracy-party}
+
+### About this report's data {#confidence-and-disputed-results--about}
 
 **What this measures.** Opinion surveys of adults (Gallup) or registered voters (Pew, MIT), and the court and congressional record of six disputed results. Pew counts independents who lean to a party with that party; Gallup does not, so each pollster's series is shown separately.
 

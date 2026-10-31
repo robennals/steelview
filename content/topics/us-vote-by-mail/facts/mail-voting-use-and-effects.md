@@ -890,8 +890,6 @@ figures:
       - { label: 'States where any voter may ask for one', values: { all: 58, dem: null, rep: null } }
       - { label: 'States that require an excuse', values: { all: 45, dem: 71, rep: 22 } }
 ---
-This report covers who votes by mail and what mail voting changes. How mail ballots are rejected, how fast they are counted, and how often they have been abused are in separate reports.
-
 ## Observations {#mail-voting-use-and-effects--observations-cps-method}
 
 ### Mail voting peaked in 2020 and fell back {#mail-voting-use-and-effects--mail-share-fell-after-2020}
@@ -1002,7 +1000,7 @@ Texans who had just become old enough to vote by mail without an excuse turned o
 
 In 2025, support for letting any voter vote by mail was highest in states that mail every voter a ballot and lowest in states that require an excuse (chart). [20](#source-mail-voting-use-and-effects-20) The pattern holds within each party. [20](#source-mail-voting-use-and-effects-20) The survey cannot say whether using mail voting builds support or supportive states adopt it.
 
-## Subtleties {#mail-voting-use-and-effects--subtleties}
+## Subtleties {#mail-voting-use-and-effects--subtleties-cps-method}
 
 ### Three measures give slightly different 2024 mail shares {#mail-voting-use-and-effects--three-measures}
 
@@ -1014,11 +1012,15 @@ The 2024 mail share comes out a little differently depending on who is counted:
 
 The Census notes that some people who returned a mail ballot in person may have said they voted in person. [10](#source-mail-voting-use-and-effects-10)
 
+## Subtleties {#mail-voting-use-and-effects--subtleties-effect-estimates}
+
 ### The effect studies predate the party split in mail voting {#mail-voting-use-and-effects--studies-predate-split}
 
 The universal-mail study ends in 2018, and the no-excuse study covers one election. [15](#source-mail-voting-use-and-effects-15) [18](#source-mail-voting-use-and-effects-18) Since 2020, Democrats have used mail far more than Republicans. [13](#source-mail-voting-use-and-effects-13) Whether a rule change now would shift party shares is not measured by either study.
 
-## About this data {#mail-voting-use-and-effects--about}
+## More {#mail-voting-use-and-effects--more-cps-method}
+
+### About this report's data {#mail-voting-use-and-effects--about}
 
 **What is measured.** Three kinds of data: how people voted (the Census Current Population Survey, a household survey, and the EAC's Election Administration and Voting Survey, which collects counts from election offices); which states offer mail voting (NCSL); and what mail rules do and what people think of them (two studies, MIT and Pew surveys).
 

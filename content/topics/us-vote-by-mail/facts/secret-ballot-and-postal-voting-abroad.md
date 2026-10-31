@@ -1408,9 +1408,11 @@ Germany's court upheld postal voting while conceding reduced control and integri
 
 ### No study here measures coercion of mail voters {#secret-ballot-and-postal-voting-abroad--no-study-of-mail-coercion}
 
-Observers who count family voting at polling stations say they "are unable to collect data" on it for postal votes. [31](#source-secret-ballot-and-postal-voting-abroad-31) The surveys above measure presence and help, not pressure (see Data still needed).
+Observers who count family voting at polling stations say they "are unable to collect data" on it for postal votes. [31](#source-secret-ballot-and-postal-voting-abroad-31) The surveys above measure presence and help, not pressure (see What we don't know yet).
 
-## About this data {#secret-ballot-and-postal-voting-abroad--about}
+## More {#secret-ballot-and-postal-voting-abroad--more-germany-postal-share}
+
+### About this report's data {#secret-ballot-and-postal-voting-abroad--about}
 
 **What is measured.** How many countries allow postal voting (IDEA), how much of the vote is cast by post in Germany and the UK (official series), what Britain's and France's governments and courts found, and survey measures of who is present when a mail ballot is filled in.
 

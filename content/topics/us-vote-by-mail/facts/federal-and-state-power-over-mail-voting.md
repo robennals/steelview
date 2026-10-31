@@ -791,8 +791,6 @@ figures:
             - 12
             - 14
 ---
-This report is a dated legal record, as of 29 October 2026, the week before the November midterms. Several items will change after that election: the SAVE America Act in a lame-duck session, the First Circuit appeals over both executive orders, and the Postal Service rule for later elections.
-
 ## Observations {#federal-and-state-power-over-mail-voting--observations-federal-actions}
 
 ### States have moved mail-voting rules in both directions {#federal-and-state-power-over-mail-voting--state-rules-move-both-ways}
@@ -883,24 +881,32 @@ The dissent said the ruling "merely postpones adjudication" of whether the Presi
 
 The federal court in Massachusetts held that the challenged sections of Executive Order 14248 "exceeded the President's constitutional authority" and conflicted with federal statutes. [28](#source-federal-and-state-power-over-mail-voting-28) Its July 2026 injunction covers the order's "Election Day ballot receipt deadlines"; the government has appealed. [29](#source-federal-and-state-power-over-mail-voting-29)
 
-## Subtleties {#federal-and-state-power-over-mail-voting--subtleties}
+## More {#federal-and-state-power-over-mail-voting--more-federal-actions}
 
-### "The courts blocked the mail-voting order" mixes up the order and the rule {#federal-and-state-power-over-mail-voting--order-versus-rule}
+This report is a dated legal record, as of 29 October 2026, the week before the November midterms. Several items will change after that election: the SAVE America Act in a lame-duck session, the First Circuit appeals over both executive orders, and the Postal Service rule for later elections.
 
-The March 2026 order itself is not blocked; the Supreme Court let it proceed. [18](#source-federal-and-state-power-over-mail-voting-18) What is blocked, for November 2026, is the Postal Service rule written to carry it out. [21](#source-federal-and-state-power-over-mail-voting-21) [23](#source-federal-and-state-power-over-mail-voting-23) Neither ruling decided whether a President may direct such a rule.
-
-### No court has ruled on the merits of presidential power over mail rules above the district level {#federal-and-state-power-over-mail-voting--no-merits-ruling}
-
-The Supreme Court's 2026 rulings were on standing, timing and stays. [19](#source-federal-and-state-power-over-mail-voting-19) [21](#source-federal-and-state-power-over-mail-voting-21) The only merits rulings on the President's election orders are from district courts, and they are under appeal. [28](#source-federal-and-state-power-over-mail-voting-28) [29](#source-federal-and-state-power-over-mail-voting-29)
-
-### This is a legal record, so the counts of state rules are charted elsewhere {#federal-and-state-power-over-mail-voting--why-this-chart}
-
-Laws, orders and rulings are dated events, not yearly quantities, so they are set out on the timeline rather than plotted. NCSL's counts of state rules are charted once each, in [the report on mail voting use](#fact-mail-voting-use-and-effects/chart-state-rule-counts) and [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states). The timeline shows what happened when; it does not show that any federal action caused a state change.
-
-## About this data {#federal-and-state-power-over-mail-voting--about}
+### About this report's data {#federal-and-state-power-over-mail-voting--about}
 
 **What is measured.** The text of the Constitution, federal statutes, executive orders and court rulings, and NCSL's counts of state mail-voting rules. Case histories for the 2026 litigation come from court opinions, the Civil Rights Litigation Clearinghouse and the Brennan Center, which is co-counsel for plaintiffs; its dates match the Supreme Court's orders. [23](#source-federal-and-state-power-over-mail-voting-23)
 
 **As of.** Sources were read up to 29 October 2026. Reporting on the SAVE America Act was last checked for the voter-ID topic on 23 October 2026. That topic covers the registration and ID side of the same federal fights: proof of citizenship, the federal registration form and the SAVE database.
 
 **What it is commonly mistaken for.** "States decide" is not the same as "legislatures decide": state courts and, in Oregon's case, citizen initiatives also set rules. [5](#source-federal-and-state-power-over-mail-voting-5) [31](#source-federal-and-state-power-over-mail-voting-31) Nor does *Watson* say states must accept late ballots; it says federal law lets them choose. [24](#source-federal-and-state-power-over-mail-voting-24)
+
+## Subtleties {#federal-and-state-power-over-mail-voting--subtleties-live-measures}
+
+### "The courts blocked the mail-voting order" mixes up the order and the rule {#federal-and-state-power-over-mail-voting--order-versus-rule}
+
+The March 2026 order itself is not blocked; the Supreme Court let it proceed. [18](#source-federal-and-state-power-over-mail-voting-18) What is blocked, for November 2026, is the Postal Service rule written to carry it out. [21](#source-federal-and-state-power-over-mail-voting-21) [23](#source-federal-and-state-power-over-mail-voting-23) Neither ruling decided whether a President may direct such a rule.
+
+## Subtleties {#federal-and-state-power-over-mail-voting--subtleties-holdings}
+
+### No court has ruled on the merits of presidential power over mail rules above the district level {#federal-and-state-power-over-mail-voting--no-merits-ruling}
+
+The Supreme Court's 2026 rulings were on standing, timing and stays. [19](#source-federal-and-state-power-over-mail-voting-19) [21](#source-federal-and-state-power-over-mail-voting-21) The only merits rulings on the President's election orders are from district courts, and they are under appeal. [28](#source-federal-and-state-power-over-mail-voting-28) [29](#source-federal-and-state-power-over-mail-voting-29)
+
+## Subtleties {#federal-and-state-power-over-mail-voting--subtleties-federal-actions}
+
+### This is a legal record, so the counts of state rules are charted elsewhere {#federal-and-state-power-over-mail-voting--why-this-chart}
+
+Laws, orders and rulings are dated events, not yearly quantities, so they are set out on the timeline rather than plotted. NCSL's counts of state rules are charted once each, in [the report on mail voting use](#fact-mail-voting-use-and-effects/chart-state-rule-counts) and [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states). The timeline shows what happened when; it does not show that any federal action caused a state change.

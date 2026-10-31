@@ -766,7 +766,9 @@ On the arguments that Election Day receipt protects integrity and confidence, it
 
 The opinion said legislatures may have set Election Day deadlines because "an election-day deadline avoids the appearance of fraud from late-arriving ballots". [2](#source-ballot-deadlines-and-counting-speed-2) It did not decide whether that view is right: "The question today is not whether requiring ballots to be received by election day is a good or bad idea". [2](#source-ballot-deadlines-and-counting-speed-2)
 
-## About this data {#ballot-deadlines-and-counting-speed--about}
+## More {#ballot-deadlines-and-counting-speed--more-receipt-deadline-states}
+
+### About this report's data {#ballot-deadlines-and-counting-speed--about}
 
 **What this measures.** State law on when a mail ballot must arrive (NCSL), why returned mail ballots were rejected (EAVS), and how fast votes were reported (MIT, from Edison Research data used by news media).
 

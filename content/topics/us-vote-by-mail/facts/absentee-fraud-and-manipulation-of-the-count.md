@@ -912,6 +912,8 @@ figures:
           sources:
             - 29
         outcome: Eight convicted (by April 1984)
+movedAnchors:
+  observations-survey: absentee-cases
 ---
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-elections}
 
@@ -1001,7 +1003,7 @@ In Otero and Cochise counties in 2022, officials who refused or delayed certific
 
 ### No case was found of signature review used to change a result {#absentee-fraud-and-manipulation-of-the-count--no-signature-review-case-found}
 
-The record read contains no case of officials rejecting ballots on signatures to change a winner. The closest is the reverse: Arizona's losing candidate for governor claimed in 2022 that signatures were not checked, and the court found she had not proved it. [26](#source-absentee-fraud-and-manipulation-of-the-count-26) The search was incomplete (see Data still needed).
+The record read contains no case of officials rejecting ballots on signatures to change a winner. The closest is the reverse: Arizona's losing candidate for governor claimed in 2022 that signatures were not checked, and the court found she had not proved it. [26](#source-absentee-fraud-and-manipulation-of-the-count-26) The search was incomplete (see What we don't know yet).
 
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-in-person}
 
@@ -1009,13 +1011,15 @@ The record read contains no case of officials rejecting ballots on signatures to
 
 Kansas City's 1936 fraud and Chicago's 1982 fraud, both run by officials at the polls, each produced more convictions than any absentee case in this report. [21](#source-absentee-fraud-and-manipulation-of-the-count-21) [18](#source-absentee-fraud-and-manipulation-of-the-count-18) [4](#source-absentee-fraud-and-manipulation-of-the-count-4) Absentee fraud is the larger category in modern compilations, but not the only large-scale kind on record.
 
-## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-survey}
+## Subtleties {#absentee-fraud-and-manipulation-of-the-count--subtleties-absentee-cases}
 
 ### A widely cited survey of mail voters is not a fraud estimate {#absentee-fraud-and-manipulation-of-the-count--rasmussen-pointer}
 
 A 2023 Rasmussen–Heartland poll reported that about one in five 2020 mail voters filled out a ballot "in part or in full" for a friend or relative. [27](#source-absentee-fraud-and-manipulation-of-the-count-27) Its questions include lawful help, and critics note an opt-in panel and results "wildly out of line" with signature-flag rates. [28](#source-absentee-fraud-and-manipulation-of-the-count-28) It is weighed beside stronger surveys in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/rasmussen-heartland-weak-measure).
 
-## About this data {#absentee-fraud-and-manipulation-of-the-count--about}
+## More {#absentee-fraud-and-manipulation-of-the-count--more-voided-elections}
+
+### About this report's data {#absentee-fraud-and-manipulation-of-the-count--about}
 
 **What is measured.** Named cases where a court, an election board or a federal prosecutor described absentee or mail-ballot fraud, or officials' handling of the count. Added to these are two compilations of detected cases (Heritage, News21) and the 2024 EAVS count of mail ballots.
 
@@ -1027,4 +1031,4 @@ A 2023 Rasmussen–Heartland poll reported that about one in five 2020 mail vote
 
 **Commonly mistaken for.** A count of detected cases is not a count of fraud, in either direction. A low count does not show fraud is rare, and a voided election does not show fraud is common: the voided cases are local races caught by existing checks.
 
-**Left out.** Wayne County, Michigan (2020) and Georgia's State Election Board (2024) are often cited as officials contesting certification, but only secondary accounts were reached, so they are not in the timeline (see Data still needed). Britain's postal-fraud court cases are in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/uk-election-courts).
+**Left out.** Wayne County, Michigan (2020) and Georgia's State Election Board (2024) are often cited as officials contesting certification, but only secondary accounts were reached, so they are not in the timeline (see What we don't know yet). Britain's postal-fraud court cases are in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/uk-election-courts).

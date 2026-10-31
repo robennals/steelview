@@ -1338,8 +1338,6 @@ figures:
       - measure: Envelopes that should have been flagged
         finding: 'Two, one "mistakenly signed by the elector''s spouse"; in both cases the voter had filled in the ballot'
 ---
-Figures are for November general elections, from the federal Election Administration and Voting Survey (EAVS) unless stated. A rejected ballot is a returned ballot that was not counted because it failed a check: it arrived late, was unsigned, its signature did not match, or similar.
-
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-rejection-rate}
 
 ### About one returned mail ballot in a hundred is rejected {#mail-ballot-rejection-and-signature-checks--rejection-about-one-percent}
@@ -1355,6 +1353,10 @@ The same rejections look large as a count and small against all votes cast, sinc
 ### In-person votes have no matching rejection rate {#mail-ballot-rejection-and-signature-checks--no-in-person-equivalent}
 
 A ballot cast at a polling place is checked before the voter votes, not afterwards, so the survey has no in-person rate to set beside these. Its nearest counterpart, provisional ballots, is cast only when a voter's registration or eligibility is already in doubt, so it is a different group. [1](#source-mail-ballot-rejection-and-signature-checks-1)
+
+### A rejected ballot is not a fraudulent ballot, and a counted one is not proven genuine {#mail-ballot-rejection-and-signature-checks--rejected-is-not-fraud}
+
+Rejection records a failed procedural check, such as lateness or a signature that does not match, not a finding about who filled in the ballot. [2](#source-mail-ballot-rejection-and-signature-checks-2) Detected problems are also a floor: Cobb's spouse-signed envelope shows that checks miss some. [37](#source-mail-ballot-rejection-and-signature-checks-37)
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-rejection-reasons}
 
@@ -1540,19 +1542,13 @@ The envelopes came from boxes of "accepted" ballots. [37](#source-mail-ballot-re
 
 ### No case was found of signature review being used to change a result {#mail-ballot-rejection-and-signature-checks--no-case-signature-review-changed-result}
 
-The sources gathered for this report contain no case of officials using signature review to change an election result. The one attempt found to overturn a result over signature checks, Arizona's 2022 governor's race, failed in court. [36](#source-mail-ballot-rejection-and-signature-checks-36) The search was not exhaustive; see Data still needed.
+The sources gathered for this report contain no case of officials using signature review to change an election result. The one attempt found to overturn a result over signature checks, Arizona's 2022 governor's race, failed in court. [36](#source-mail-ballot-rejection-and-signature-checks-36) The search was not exhaustive; see What we don't know yet.
 
-## Subtleties {#mail-ballot-rejection-and-signature-checks--subtleties}
+## More {#mail-ballot-rejection-and-signature-checks--more-rejection-rate}
 
-### A rejected ballot is not a fraudulent ballot, and a counted one is not proven genuine {#mail-ballot-rejection-and-signature-checks--rejected-is-not-fraud}
+Figures are for November general elections, from the federal Election Administration and Voting Survey (EAVS) unless stated. A rejected ballot is a returned ballot that was not counted because it failed a check: it arrived late, was unsigned, its signature did not match, or similar.
 
-Rejection records a failed procedural check, such as lateness or a signature that does not match, not a finding about who filled in the ballot. [2](#source-mail-ballot-rejection-and-signature-checks-2) Detected problems are also a floor: Cobb's spouse-signed envelope shows that checks miss some. [37](#source-mail-ballot-rejection-and-signature-checks-37)
-
-### Washington's rates are not comparable with the national ones {#mail-ballot-rejection-and-signature-checks--washington-excludes-late}
-
-Washington's 0.72 percent excludes late ballots; the EAVS rates include them. [18](#source-mail-ballot-rejection-and-signature-checks-18) Washington is also one state in one year, the only state with a published audit of this kind found for this report.
-
-## About this data {#mail-ballot-rejection-and-signature-checks--about}
+### About this report's data {#mail-ballot-rejection-and-signature-checks--about}
 
 **National series.** Each point is the rate the EAC printed in that cycle's report, as a share of ballots returned (for 2012 and 2014, "submitted for counting"). The EAC calculates national rates only over states that reported both numbers, so the rates are not simply the national totals divided.
 
@@ -1567,3 +1563,9 @@ Washington's 0.72 percent excludes late ballots; the EAVS rates include them. [1
 **Florida.** Baringer, Herron and Smith's full paper could not be fetched (the journal blocks automated access and the draft link is dead), so only its abstract is used.
 
 **State rules.** The verification and cure lists are NCSL's tables as updated on 26 October and 31 August 2026. They change often, and the 3 November 2026 election may be run under rules that differ in detail.
+
+## Subtleties {#mail-ballot-rejection-and-signature-checks--subtleties-washington-race}
+
+### Washington's rates are not comparable with the national ones {#mail-ballot-rejection-and-signature-checks--washington-excludes-late}
+
+Washington's 0.72 percent excludes late ballots; the EAVS rates include them. [18](#source-mail-ballot-rejection-and-signature-checks-18) Washington is also one state in one year, the only state with a published audit of this kind found for this report.
