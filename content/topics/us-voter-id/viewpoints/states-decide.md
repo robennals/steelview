@@ -1,5 +1,6 @@
 ---
 name: Election rules belong to the states, and presidents have no say in them
+shortName: "States decide"
 summary: "[The Constitution lets each state's legislature set election rules, lets Congress change them, and gives the President no such power](#fact-federal-and-state-power-over-voting-rules/elections-clause-text). Each state's voters should choose their own ID and registration rules, and presidential orders that try to set them should fail."
 order: 5
 ---

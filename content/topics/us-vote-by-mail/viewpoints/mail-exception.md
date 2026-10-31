@@ -1,5 +1,6 @@
 ---
 name: Most people should vote in person, with mail ballots kept for those who need them
+shortName: "Mail as the exception"
 summary: "Voting should normally happen in a booth where no one can watch. Mail ballots should stay open to people who cannot get there. But mailing a ballot to everyone gives up the secret ballot and risks fraud that is hard to spot, for little gain in turnout."
 order: 1
 ---

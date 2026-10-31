@@ -1,10 +1,10 @@
 import type { Page, Request } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { citationTo, cruxCitation, openCollection } from './topic-rows';
+import { citationTo, viewpointCitation, openCollection } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the report
 // `immigration-against-the-long-run`, the related reports it holds, and the
-// crux citing `work-and-study-routes`.
+// viewpoint citing `work-and-study-routes`.
 
 const TOPIC = '/topics/uk-immigration';
 const HEADLINE = 'immigration-against-the-long-run';
@@ -41,9 +41,9 @@ test('the whole row head opens the row, not just the title', async ({ page }) =>
   await expect(row.locator('.sv-row__toggle')).toHaveAttribute('aria-expanded', 'true');
 });
 
-test('a citation in a crux opens the same panel', async ({ page }) => {
+test('a citation in a viewpoint opens the same panel', async ({ page }) => {
   await page.goto(TOPIC);
-  await (await cruxCitation(page, CARE)).click();
+  await (await viewpointCitation(page, CARE)).click();
 
   await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
   await expect(page.locator(dialog)).toBeVisible();
@@ -160,7 +160,7 @@ test.describe('with JavaScript disabled', () => {
 
   test('a citation is an ordinary link to the fact page', async ({ page }) => {
     await page.goto(TOPIC);
-    const link = await cruxCitation(page, CARE);
+    const link = await viewpointCitation(page, CARE);
     await expect(link).toHaveAttribute('href', new RegExp(`^${factUrl(CARE)}#${CARE}--`));
 
     await link.click();

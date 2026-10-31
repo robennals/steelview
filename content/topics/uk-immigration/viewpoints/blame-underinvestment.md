@@ -1,5 +1,6 @@
 ---
 name: Migrants are blamed for what underinvestment broke; end the hostile environment
+shortName: "Invest, don't blame"
 summary: "Britain [invested less than most rich countries for decades](#fact-immigration-housing-and-public-services/public-investment-low) and [stopped building social homes](#fact-immigration-housing-and-public-services/social-rent-building-fell-after-2010), then blamed the migrants who staff its hospitals and care homes. Invest in homes and services, and stop making migrants' lives deliberately hard."
 order: 6
 ---

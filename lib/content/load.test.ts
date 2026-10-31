@@ -83,7 +83,7 @@ test('cross-reference integrity is deferred until the publication check', async 
   const root = await fixtureCopy();
   await writeFile(
     path.join(root, 'example', 'viewpoints', 'one.md'),
-    '---\nname: One\nsummary: s\norder: 1\n---\n[Claim](#fact-ghost).\n'
+    '---\nname: One\nshortName: s\nsummary: s\norder: 1\n---\n[Claim](#fact-ghost).\n'
   );
   await assert.doesNotReject(() => loadTopic('example', root));
   await assert.rejects(() => loadTopic('example', root, { validateIntegrity: true }), (e: Error) => {
@@ -109,12 +109,12 @@ test('a topic with no cruxes directory loads with an empty cruxes array', async 
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
+    '---\nname: V\nshortName: s\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
   // Rule 9 needs at least two viewpoints; this one uses no principles.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\nshortName: s\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
   );
   await writeFile(path.join(root, '..', 'principles', 'p.md'), '---\nname: P\n---\n');
   const topic = await loadTopic('bare', root);
@@ -159,12 +159,12 @@ test('unquoted YAML dates in source frontmatter normalize to strings, not Date o
   );
   await writeFile(
     path.join(dir, 'viewpoints', 'v.md'),
-    '---\nname: V\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
+    '---\nname: V\nshortName: s\nsummary: s\norder: 1\nacknowledges: [a]\nprinciples: [p]\n---\nBody.\n'
   );
   // Rule 9 needs at least two viewpoints.
   await writeFile(
     path.join(dir, 'viewpoints', 'v2.md'),
-    '---\nname: V2\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
+    '---\nname: V2\nshortName: s\nsummary: s\norder: 2\nacknowledges: [a]\n---\nBody.\n'
   );
   await writeFile(path.join(root, '..', 'principles', 'p.md'), '---\nname: P\n---\n');
   const topic = await loadTopic('dates', root);
@@ -214,7 +214,7 @@ async function loadOrdered(
     Object.entries(viewpoints).map(([id, spec], i) =>
       writeFile(
         path.join(dir, 'viewpoints', `${id}.md`),
-        `---\nname: ${id}\nsummary: s\norder: ${i + 1}\ncitesFacts: [${spec.cites ?? []}]\nacknowledges: [${spec.acknowledges ?? []}]\nsetsAside: [${spec.setsAside ?? []}]\n---\nBody.\n`
+        `---\nname: ${id}\nshortName: s\nsummary: s\norder: ${i + 1}\ncitesFacts: [${spec.cites ?? []}]\nacknowledges: [${spec.acknowledges ?? []}]\nsetsAside: [${spec.setsAside ?? []}]\n---\nBody.\n`
       )
     )
   );

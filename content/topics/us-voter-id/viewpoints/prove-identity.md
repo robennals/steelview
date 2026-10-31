@@ -1,5 +1,6 @@
 ---
 name: Voters should prove who they are, and that they are citizens
+shortName: "Prove identity"
 summary: "An election is only honest if only eligible people vote. [Non-citizens get onto voter lists through mistakes at registration](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls), and [very few citizens have no photo ID at all](#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id). So states should ask for photo ID at the polls, give it free, and check citizenship before anyone is added to the list."
 order: 1
 ---

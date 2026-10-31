@@ -5,13 +5,12 @@ import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
 import { renderDataWalkthroughs, renderWalkthroughs, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
-import { HashSync } from '@/components/topic/hash-sync';
 import { DataRows } from '@/components/topic/data-rows';
 import { ExplorePanels } from '@/components/topic/explore-panels';
 import { TopicPanel, TopicTabs } from '@/components/topic/topic-tabs';
 import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
 import { PrincipleModals } from '@/components/topic/principle-modals';
-import { CruxItem } from '@/components/topic/crux-item';
+import { CruxRows } from '@/components/topic/crux-rows';
 import type { ItemKind, Topic } from '@/lib/content/types';
 
 export async function generateStaticParams() {
@@ -64,7 +63,6 @@ export async function buildBodies(
     facts?: Topic['facts'];
     viewpoints: BodiedItem[];
     principles: BodiedItem[];
-    cruxes: BodiedItem[];
   },
   slug: string
 ): Promise<Map<string, string>> {
@@ -72,7 +70,6 @@ export async function buildBodies(
   const kinds: Array<[ItemKind, BodiedItem[]]> = [
     ['viewpoint', topic.viewpoints],
     ['principle', topic.principles],
-    ['crux', topic.cruxes],
   ];
   for (const [kind, items] of kinds) {
     for (const item of items) {
@@ -162,19 +159,12 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
       </TopicTabs>
 
       {topic.cruxes.length > 0 && (
-        <section className="sv-section sv-section--reading sv-section--cruxes">
+        <section className="sv-section sv-section--cruxes">
           <div className="sv-section__head">
             <h2 className="sv-section__title">Cruxes</h2>
-            <p className="sv-section__blurb">The questions the viewpoints divide on.</p>
+            <p className="sv-section__blurb">What the viewpoints divide on.</p>
           </div>
-          {topic.cruxes.map((crux) => (
-            <CruxItem
-              key={crux.id}
-              crux={crux}
-              bodyHtml={bodies.get(bodyKey('crux', crux.id)) ?? ''}
-              viewpointsById={viewpointsById}
-            />
-          ))}
+          <CruxRows cruxes={topic.cruxes} viewpointsById={viewpointsById} />
         </section>
       )}
     </ExplorePanels>
@@ -199,7 +189,6 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
    */
   return (
     <main className="sv-wrap sv-wrap--wide">
-      <HashSync />
       <header className="sv-pagehead">
         <h1 className="sv-title">{topic.title}</h1>
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>

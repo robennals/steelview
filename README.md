@@ -96,7 +96,8 @@ the zod schema shape, it enforces and unit-tests these rules:
    `contests` source.
 6. Every viewpoint's `acknowledges` list is non-empty.
 7. Every crux `divides` at least two viewpoints and gives a position for
-   each one.
+   each one. A crux has a tension and no body, and stays within the limits in
+   `content/AUTHORING.md`.
 8. No orphan headline facts — each must appear in some viewpoint's
    `citesFacts`, `acknowledges`, or `setsAside`.
 9. A topic needs at least 1 fact and at least 2 viewpoints.

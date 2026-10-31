@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { cruxCitation, headCorner, openDataRow, openTab, openViewpoint } from './topic-rows';
+import { headCorner, openDataRow, openTab, openViewpoint, viewpointCitation } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -35,10 +35,10 @@ test('the cruxes show below either tab', async ({ page }) => {
   await page.goto(TOPIC);
   const heading = page.getByRole('heading', { name: 'Cruxes', level: 2 });
   await expect(heading).toBeVisible();
-  await expect(page.locator('.sv-crux').first()).toBeVisible();
+  await expect(page.locator('.sv-row--crux').first()).toBeVisible();
   await openTab(page, 'Data');
   await expect(heading).toBeVisible();
-  await expect(page.locator('.sv-crux').first()).toBeVisible();
+  await expect(page.locator('.sv-row--crux').first()).toBeVisible();
 });
 
 // The tabs do not reach the cruxes, so their bar must not follow a reader there.
@@ -73,8 +73,8 @@ test('a tab keeps its open rows while another is showing', async ({ page }) => {
 
 test('a link to a viewpoint from a crux brings up the viewpoint', async ({ page }) => {
   await page.goto(DATA);
-  const crux = page.locator('.sv-crux').first();
-  await crux.locator('> summary').click();
+  const crux = page.locator('.sv-row--crux').first();
+  await crux.locator('.sv-row__toggle').click(headCorner);
   await crux.locator('.sv-position a').first().click();
   await expect(page.locator('.sv-row--viewpoint[data-open]')).toBeInViewport();
 });
@@ -84,8 +84,8 @@ test('a crux\'s viewpoint stays in view as the open row above it closes', async 
   await page.goto(TOPIC);
   await page.locator('.sv-row--viewpoint').first().locator('.sv-row__toggle').click(headCorner);
   await openTab(page, 'Data');
-  const crux = page.locator('.sv-crux').first();
-  await crux.locator('> summary').click();
+  const crux = page.locator('.sv-row--crux').first();
+  await crux.locator('.sv-row__toggle').click(headCorner);
   const first = await page.locator('.sv-row--viewpoint').first().getAttribute('id');
   const link = crux.locator(`.sv-position a:not([href="#${first}"])`).first();
   const row = page.locator((await link.getAttribute('href')) ?? '');
@@ -98,10 +98,10 @@ test('a crux\'s viewpoint stays in view as the open row above it closes', async 
 
 test('a link to a crux loaded cold brings up the crux, opened', async ({ page }) => {
   await page.goto(TOPIC);
-  const id = await page.locator('.sv-crux').first().getAttribute('id');
+  const id = await page.locator('.sv-row--crux').first().getAttribute('id');
   await page.goto(`${TOPIC}#${id}`);
   const crux = page.locator(`[id="${id}"]`);
-  await expect(crux).toHaveAttribute('open', '');
+  await expect(crux).toHaveAttribute('data-open', 'true');
   await expect(crux).toBeInViewport();
 });
 
@@ -116,9 +116,9 @@ test('a viewpoint opens a data panel without leaving its tab', async ({ page }) 
   await expect(viewpoint).toBeVisible();
 });
 
-test('closing a fact opened from a crux keeps the tab that was showing', async ({ page }) => {
+test('closing a fact keeps the tab that was showing', async ({ page }) => {
   await page.goto(DATA);
-  const citation = await cruxCitation(page, 'work-and-study-routes');
+  const citation = await viewpointCitation(page, 'work-and-study-routes');
   await citation.click();
   await expect(page.locator('dialog.sv-modal')).toBeVisible();
   await page.keyboard.press('Escape');
@@ -171,7 +171,7 @@ test.describe('with JavaScript disabled', () => {
       await expect(page.getByRole('heading', { name: section, level: 2 })).toBeVisible();
     }
     await expect(page.locator('.sv-row--data').first()).toBeVisible();
-    await expect(page.locator('.sv-crux').first()).toBeVisible();
+    await expect(page.locator('.sv-row--crux').first()).toBeVisible();
   });
 });
 

@@ -38,8 +38,8 @@ export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
     intro: '',
     facts: [fact, mailBallotPrivacyFact],
     viewpoints: [
-      { id: 'one', name: 'One', summary: 'One.', order: 1, body: 'One.' },
-      { id: 'two', name: 'Two', summary: 'Two.', order: 2, body: 'Two.' },
+      { id: 'one', name: 'One', shortName: 'One', summary: 'One.', order: 1, body: 'One.' },
+      { id: 'two', name: 'Two', shortName: 'Two', summary: 'Two.', order: 2, body: 'Two.' },
     ],
     principles: [],
     cruxes: [],

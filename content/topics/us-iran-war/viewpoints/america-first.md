@@ -1,5 +1,6 @@
 ---
 name: America First means staying out of another war in the Middle East
+shortName: "America First"
 summary: "Americans were [promised no new wars](#fact-decisions-law-and-diplomacy/campaign-said-stop-wars) and got one. It is [costing tens of billions of dollars](#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion) and [pushing up prices at the pump](#fact-oil-shipping-and-prices/pump-prices-up-by-half), and [most Americans oppose it](#fact-decisions-law-and-diplomacy/majority-disapproves). The US should bring it to an end."
 order: 6
 ---

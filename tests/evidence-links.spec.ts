@@ -1,5 +1,5 @@
 import { test, expect } from './hydrated-test';
-import { cruxCitation, openCollection } from './topic-rows';
+import { viewpointCitation, openCollection } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const fact = 'immigration-economy-and-public-finances';
 const longRun = 'immigration-against-the-long-run';
@@ -10,7 +10,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
     await route.continue();
   });
   await page.goto(topic);
-  const link = await cruxCitation(page, fact);
+  const link = await viewpointCitation(page, fact);
   const href = (await link.getAttribute('href'))!;
   await link.click();
   await expect(page).toHaveURL(new RegExp(`${href}$`));
@@ -26,7 +26,7 @@ test('a supporting finding opens inside its parent, including an uncached articl
 
 test('the same sheet can target another section and expand at that position', async ({ page }) => {
   await page.goto(topic);
-  await (await cruxCitation(page, fact)).click();
+  await (await viewpointCitation(page, fact)).click();
   const expand = page.locator('.sv-modal__expand');
   // The sheet points Expand at the cited section once it has revealed it.
   await expect(expand).toHaveAttribute('href', /#/);
@@ -65,7 +65,7 @@ test('mobile pills wrap without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(topic);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await (await cruxCitation(page, fact)).click();
+  await (await viewpointCitation(page, fact)).click();
   await expect(page.locator('dialog .sv-target')).toBeInViewport();
   expect(await page.locator('.sv-modal__scroll').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
 });
@@ -74,7 +74,7 @@ test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('a pill remains an ordinary link to its evidence section', async ({ page }) => {
     await page.goto(topic);
-    const link = await cruxCitation(page, fact);
+    const link = await viewpointCitation(page, fact);
     const href = await link.getAttribute('href');
     await link.click();
     await expect(page).toHaveURL(href!);

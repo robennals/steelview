@@ -1,5 +1,6 @@
 ---
 name: One
+shortName: One
 summary: The first viewpoint, in a line.
 order: 1
 ---

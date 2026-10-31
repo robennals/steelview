@@ -173,9 +173,10 @@ test('topic principle references default to empty and reject duplicates or empty
   assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: [''] }).success, false);
 });
 
-test('a crux requires a known kind, two viewpoints and two positions', () => {
+test('a crux requires a tension, a known kind, two viewpoints and two positions', () => {
   const valid = {
-    question: 'Will integration keep pace?',
+    title: 'Will integration keep pace?',
+    tension: 'Everyone wants newcomers to settle in well.',
     kind: 'prediction',
     divides: ['one', 'two'],
     positions: [
@@ -185,6 +186,7 @@ test('a crux requires a known kind, two viewpoints and two positions', () => {
   };
   assert.equal(cruxFrontmatterSchema.safeParse(valid).success, true);
   assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, kind: 'vibes' }).success, false);
+  assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, tension: undefined }).success, false);
   assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, divides: ['one'] }).success, false);
 });
 

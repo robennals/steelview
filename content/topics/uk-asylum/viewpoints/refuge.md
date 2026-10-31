@@ -1,5 +1,6 @@
 ---
 name: "Britain owes refuge to people fleeing persecution: safe routes, fair hearings and the right to work"
+shortName: "Offer refuge"
 summary: "[Most people who cross the Channel and receive a decision are granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). Britain should give refugees safe ways to come, decide their claims fairly and let them work while they wait, instead of paying for deterrence schemes like Rwanda, which [sent no asylum seekers at all](#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations)."
 order: 2
 ---

@@ -1,5 +1,6 @@
 ---
 name: Choose migrants for what they contribute, and make settlement something they earn
+shortName: "Contribute and earn"
 summary: "The gain from immigration [comes from well-paid workers who stay; the low-paid care route and its dependants cost the public finances](#fact-immigration-economy-and-public-finances/skilled-workers-gain-care-workers-cost). Select for contribution, police each route for its purpose, and make permanent settlement something people earn by working and paying in."
 order: 7
 ---

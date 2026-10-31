@@ -58,7 +58,7 @@ collection:
 | **Observation** | An addressable finding about a graph or dataset, explaining what to notice and why. Usually the target of a viewpoint’s factual citation. |
 | **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then a walkthrough of headed steps, each one claim shown by one chart, whose claims add up to its title, in plain language, citing inline the observations it rests on and concedes. |
 | **Principle** | A shared perennial value that topics reference by ID. |
-| **Crux** | A specific question whose resolution would move someone. |
+| **Crux** | A tension at the heart of a disagreement between viewpoints: principles in conflict, different predictions, or missing data. |
 
 The filename is the id. **Ids are permanent.** An id is the anchor a citation
 points at (`#fact-immigration-against-the-long-run/nationality-shift`) and the URL of the fact's own
@@ -165,8 +165,8 @@ of UK-born workers' wages, though the effect is mildly negative for
 lower-paid workers and mildly positive for higher-paid ones" — well-supported,
 and more useful to both sides than the contested version. A `contested` fact
 that could have been split into a well-supported core plus a genuinely open
-remainder is an authoring failure. The open remainder usually belongs in a
-crux, where a live disagreement is what the section is for.
+remainder is an authoring failure. Where the open remainder is what the sides
+are divided over, name that tension in a crux.
 
 **`contested` is reserved and expensive.** Use it only where the
 disagreement is central to what the sides are arguing about and a reader
@@ -439,7 +439,7 @@ range rather than accepting any string.
 **Every prose figure must be sourced or reproducibly derived.**
 `pnpm check:figures` checks prose numbers against source quotes and
 validated `derivedFigures` calculations. A fact's figures must be in that
-fact's own sources; a viewpoint's, crux's or the topic intro's must be in the
+fact's own sources; a viewpoint's or the topic intro's must be in the
 sources of the facts it cites (inline `#fact-` links); a shared principle's
 may be anywhere on the topic. Money in `£`, `$` or `€` and percentages written
 `%`, "percent" or "per cent" are all checked, and the forms match each other
@@ -925,6 +925,12 @@ must cover every point, and `highlight` names point ids.
 
 ## Viewpoints
 
+### Short names
+
+Every viewpoint has a `shortName`: a few words its holders would
+accept, used where the full title will not fit, such as above a crux column.
+Keep it in the viewpoint's own spirit: "Keep our word", not "Pro-migrant".
+
 ### Titles
 
 A viewpoint title is a one-line proposition someone would actually say, not a
@@ -1343,7 +1349,7 @@ current debate or that everyone must accept the principle.
 
 Keep the principle focused on its positive case. Do not discuss this topic's
 policies, which viewpoints hold it, exceptions, limits, or competing values in its
-body. Put the difficult applications and collisions in **Cruxes**. A principle
+body. Name the collisions that divide viewpoints in **Cruxes**. A principle
 should express a value, not disguise a disputed prediction as a moral ideal:
 "Freedom to cooperate and exchange" expresses a value; "Open exchange always
 makes everyone richer" asserts a consequence that belongs among empirical claims.
@@ -1366,7 +1372,7 @@ principles: [democratic-consent-over-membership, obligation-to-people-in-danger]
 This list determines which principles appear on the topic page, in that order.
 It defaults to empty and must contain unique IDs from the shared collection.
 Each viewpoint's `principles` list must be a subset of its topic's list. A topic
-may also employ a principle in a crux without a viewpoint claiming it. A shared
+may also list a principle no viewpoint claims. A shared
 principle can exist before any topic uses it.
 
 Do not create a topic-local `principles/` directory or add `heldBy` to a shared
@@ -1388,52 +1394,73 @@ because those IDs are permanent links.
 
 ## Cruxes
 
-A crux names something that, **if resolved, would move someone**. This is where
-the topic's difficult cases belong: principles collide, predictions of
-consequences differ, or people hold competing hypotheses about something unknown.
-Four kinds:
+A crux names **a tension at the heart of the disagreement between viewpoints**,
+and says why it divides them. It is short, even-handed and sympathetic to
+everyone involved. **It does not try to resolve the tension.** Evidence belongs
+in the data and argument belongs in the viewpoints; a crux tells the reader
+where the sides pull apart and leaves it there.
 
-- `prediction`: different expectations about what a policy will cause.
-- `assumption`: different hypotheses about how the world works or what is unknown.
-- `tradeoff`: different judgments about how much of one good to sacrifice for another.
-- `priority`: different judgments about which principle or obligation comes first.
+Every crux is one of three kinds, labelled on its card. A topic will usually
+have all three, so if one is missing, look for it:
 
-Most cruxes are a trade-off between values, a different prediction, or a
-different assumption about something the data cannot answer. The last kind
-comes straight out of the evidence work: when a report has to say "no good
-data exists" on a question the viewpoints answer differently, and the answer
-would change which of them has the better case, that gap is a crux. Naming it
-tells the reader exactly what evidence would settle part of the argument. A
-gap whose answer would not swing the balance is not a crux; record it as
+| Label | `kind` | The sides differ over |
+| --- | --- | --- |
+| Tension between principles | `tradeoff`, `priority` | Which of two goods to give up, or which comes first. |
+| Different predictions | `prediction` | What will happen in the future. |
+| Missing data | `assumption` | Something true now that nobody has the data to establish. |
+
+Use `tradeoff` when the question is how much of one good to give up for another,
+and `priority` when one principle or obligation simply comes first. The split
+between `prediction` and `assumption` is whether time would tell: a prediction
+waits on events, while missing data waits on someone measuring what is already
+there.
+
+A crux has a title, a tension and one short position per viewpoint:
+
+```yaml
+title: "Prosperity and a shared way of life"
+tension: "Most people want a country that is both thriving and recognisably itself. More immigration can add to the first while changing the second faster."
+kind: tradeoff
+divides: [cultural-cost, open-and-build]
+positions:
+  - viewpoint: cultural-cost
+    holds: "A shared way of life is slow to build and cannot be bought back once lost."
+  - viewpoint: open-and-build
+    holds: "People free to work together leave everyone better off, and cultures have always changed."
+```
+
+A crux has no body. The build rejects one, so the frontmatter is the whole crux.
+
+**The title says what is at issue, not a position on it.** For a tension between
+principles, name goods both sides would recognise as good: "Voters' say and
+promises kept", not "Can Parliament break its word?" It is usually two things
+joined by "and". Three is fine when three are really in play: "Membership,
+contribution and need". For a prediction or missing data, say what is in doubt,
+without a question mark: "Whether people arriving now will integrate".
+
+**The tension is one or two sentences, 45 words at most.** Say what people want
+and why they cannot fully have all of it. Open with what is shared where you
+can: "Everyone wants older and disabled people looked after, and care work that
+pays enough to attract people here." Do not say which side has the better case,
+which way the evidence leans, or what would settle it. The build rejects figures
+and links in a tension, so evidence cannot creep in.
+
+**Each position is one sentence of 25 words at most, saying what that viewpoint
+is protecting or expects.** Write it as that viewpoint would state it, so that
+its holders would nod rather than wince. `divides` lists at least two viewpoints
+and every one of them needs a `position`; the build enforces both, and that no
+position is given for a viewpoint not in `divides`. A viewpoint may reject the
+framing, and its position says so: "Income per head turns on who comes, so the
+number alone decides little." Each position is headed by its viewpoint's
+`shortName`.
+
+**A prediction or missing-data crux still does not argue the facts.** Say why the
+doubt matters to people, and name what is unknown without weighing the evidence.
+A gap in the data on which nothing depends is not a crux; record it as
 `dataStillNeeded` instead.
 
-For a collision of principles, name and link the relevant principles, give a
-concrete situation in which they pull in different directions, and show how each
-viewpoint resolves it. For an empirical disagreement, describe the evidence that
-would distinguish the predictions or hypotheses. Be clear when evidence can
-inform the stakes but cannot settle a choice between values.
-
-A crux restating a viewpoint's conclusion is not a crux. "Is immigration good
-for Britain?" is the argument, not a crux of it. "Is it the total number that
-matters, or who is admitted?" is a crux, because the answer changes which
-policy each side should want.
-
-`divides` lists at least two viewpoints and every one of them needs a
-`position` giving what it `holds` — the build enforces both, and enforces
-that no position is given for a viewpoint not in `divides`. Write each
-`holds` as that viewpoint would state it, in one or two sentences. Two of
-them may reject the question's framing; say so in their position rather than
-forcing them onto an axis they do not use. In
-`is-it-the-number-or-the-composition`, two of the four positions open with
-"Neither" and then say what they think the real variable is.
-
-The body says why resolving it would move people, and in which direction for
-whom. From that crux:
-
-> If the fiscal and labour-market results really are driven by earnings
-> rather than headcount, a numerical cap is a blunt instrument that binds
-> hardest on the arrivals with the best case — and the restrictionist should
-> want a threshold instead.
+**A crux restating a viewpoint's conclusion is not a crux.** "Is immigration good
+for Britain?" is the argument, not a crux of it.
 
 ---
 
@@ -1538,6 +1565,7 @@ them.
 | Fact hierarchy is exactly one level deep; no self-support | `lib/content/validate.ts:97` |
 | Every viewpoint's `acknowledges` is non-empty | `lib/content/validate.ts:71` |
 | Every crux divides ≥2 viewpoints and positions each one | `lib/content/validate.ts:169` |
+| A crux has a tension and no body; its tension is ≤45 words with no figures or links; each position is ≤25 words | `lib/content/validate.ts`, `tensionErrors` |
 | No orphan headline facts | `lib/content/validate.ts:193` |
 | Topic principles resolve to shared definitions; viewpoints use only their topic’s listed principles | `lib/content/load.ts`, `lib/content/validate.ts` |
 | Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
@@ -1702,12 +1730,14 @@ Run this before opening a pull request.
 
 **Every crux**
 
-- [ ] Names something that would move someone, not a restatement of a
-      conclusion.
+- [ ] Title says what is at issue without taking a side: goods both sides would
+      recognise, or what is in doubt. It is not a restatement of a conclusion.
+- [ ] Tension says why it divides people, in 45 words or fewer, and resolves
+      nothing: no verdict, no evidence, no account of what would settle it.
 - [ ] `kind` is right: prediction, assumption, tradeoff or priority.
-- [ ] Each position is written as that viewpoint would state it, including
-      rejecting the framing where that is the honest answer.
-- [ ] Body says who would move, and which way.
+- [ ] Each position is written as that viewpoint would state it, in 25 words
+      or fewer, including rejecting the framing where that is the honest answer.
+- [ ] The topic has cruxes of all three kinds, or a reason it does not.
 
 **Whole topic**
 

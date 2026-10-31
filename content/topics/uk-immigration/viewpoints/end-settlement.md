@@ -1,5 +1,6 @@
 ---
 name: Abolish permanent settlement, even for people who already have it, and aim for more people leaving than arriving
+shortName: "End settlement"
 summary: "Britain is about to grant permanence to [about 1.6 million people in five years](#fact-settlement-and-migrant-status/forecast-1-6-million), many of them on routes that cost the public money over a lifetime. Replace settlement with renewable visas, keep benefits for citizens, and for a time let more people leave than arrive."
 order: 3
 ---
