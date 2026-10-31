@@ -189,7 +189,9 @@ sources:
   - stance: supports
     quote: "Initial leave type | Expired | Indefinite leave to remain | Valid leave to remain | Total || All leave types | 156084 | 49100 | 138874 | 344058"
     title: "Migrant journey: 2025 report, summary tables (MJ_03)"
-    url: "https://assets.publishing.service.gov.uk/media/6a0b04a9f7c2e79c33db90e1/migrant-journey-summary-tables-2025.ods"
+    url: https://www.gov.uk/government/statistics/migrant-journey-2025-report
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a0b04a9f7c2e79c33db90e1/migrant-journey-summary-tables-2025.ods
+    localFile: datasets/assets.publishing.service.gov.uk/migrant-journey-summary-tables-2025.ods
     publisher: "Home Office"
     date: '2026-05-21'
   - stance: supports
@@ -447,61 +449,81 @@ sources:
   - stance: supports
     quote: "Enabling Provision (Fees Order) | Method of Calculation | In-Country/Overseas | Fee Category | Current Fee | Fee from 08 October 2026 | % Change | Estimated Unit Cost | Maxima"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "In-Country | Indefinite leave to remain - main applicant and dependants | £3,226 | £3,226 | 0% | £310 | £3,635"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "Overseas | Skilled Worker, where a certificate of sponsorship has been issued or approval to sponsor under Sponsor a Worker has been given for over three years [Footnote 2] - main applicant and dependants | £1,618 | £1,618 | 0% | £153 | £2,000"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "Overseas | Skilled Worker - Health and Care Visa - where a certificate of sponsorship has been issued or approval to sponsor under Sponor a Worker has been given for three years or less  [Footnotes 2 and 3] - main applicant and dependants | £324 | £324 | 0% | £153 | £2,000"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "Overseas | Student - main applicant and dependants | £558 | £558 | 0% | £176 | £600"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "In-Country | Graduate Route – main applicant and dependants | £937 | £937 | 0% | £110 | £2,000"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "Entry clearance or limited leave to remain for any purpose (excluding visits) not referred to in the preceding provisions of this table | Fixed Amount | Overseas | Route to Settlement | £2,064 | £2,064 | 0% | £639 | £3,600"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "Entry clearance as a Visitor for a period of six months or less. | Fixed Amount | Overseas | Visit visa – short up to 6 months | £135 | £135 | 0% | £159 | £140"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
     quote: "Overseas | Global Talent - main applicant - where Approval Letter is required | £205 | £205 | 0% | £488 | £2,000"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: complicates
     quote: "Naturalisation as a British citizen or a British overseas territories citizen. | Fixed Amount | In-Country | Naturalisation (British citizenship) [Footnote 5] | £1,709 | £1,709 | 0% | £1.23 | £1,709"
     title: "Fees and Unit Cost Table 08 October 2026 (visa fees transparency data)"
-    url: "https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods"
+    url: https://www.gov.uk/government/publications/visa-fees-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7266be5db84746b479894/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Copy_of_Fees__Unit_cost_table_08_October_2026_-_KM.ods
     publisher: "Home Office"
     date: '2026-10-20'
   - stance: supports
@@ -585,13 +607,17 @@ sources:
   - stance: supports
     quote: "Quarter/Month | Total intake | Total WIP | Total Final Decisions* | Of which | Value offers | No. of zero entitlement claims | Eligibility refused / withdrawn | Suspended | Total Cases Fully Closed** | Of which | Value offers (includes zero entitlement claims that have had a payment on review) | No. of zero entitlement claims | Eligibility refused / withdrawn || Total | 12,414 | 591 | 11,690 | 4,009 | 6,741 | 940 | 133 | 10,068 | 3,438 | 5,690 | 940"
     title: "Windrush Compensation Scheme data: August 2026 (data tables)"
-    url: "https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods"
+    url: https://www.gov.uk/government/statistics/windrush-compensation-scheme-data-august-2026
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/windrush-compensation-scheme-data-tables-aug-2026.ods
     publisher: "Home Office"
     date: '2026-10-29'
   - stance: supports
     quote: "Quarter/Month | Cumulative amount paid | Cumulative Number of Preliminary claims paid8 | Cumulative number of claims receiving payment* | Cumulative Number of Primary claims receiving payment | Cumulative Number of Estate claims receiving payment | Cumulative Number of Close Family claims receiving payment | Cumulative amount Offered | Cumulative Number of Preliminary offers made | Cumulative number claims receiving value offer | Cumulative No. of Primary claims receiving value offer | Cumulative No. of Estate claims receiving value offer | Cumulative No. of Close Family claims receiving value offer | Cumulative number claims receiving value offer or a zero entitlement | Cumulative No. of Primary claims receiving value offer or a zero entitlement | Cumulative No. of Estate claims receiving value offer or a zero entitlement | Cumulative No. of Close Family claims receiving value offer or a zero entitlement || Aug-2026 | £133,475,539.07 | 2,048 | 4,221 | 2,289 | 238 | 1,694 | £138,849,799.48 | 1,947 | 4,294 | 2,316 | 246 | 1,732 | 10,756 | 6,044 | 1,145 | 3,567"
     title: "Windrush Compensation Scheme data: August 2026 (data tables)"
-    url: "https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods"
+    url: https://www.gov.uk/government/statistics/windrush-compensation-scheme-data-august-2026
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/windrush-compensation-scheme-data-tables-aug-2026.ods
     publisher: "Home Office"
     date: '2026-10-29'
   - stance: supports
@@ -689,7 +715,9 @@ series:
     stance: supports
     quote: "Se_02: Grants of settlement by category of grant, type of applicant and refusals, 2010 to the year ending June 2026 [Notes 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 15, 16, 17]"
     title: "Immigration system statistics, year ending June 2026: settlement summary tables (Se_02)"
-    url: "https://assets.publishing.service.gov.uk/media/6a85c5beb0504df9f2c89808/settlement-summary-jun-2026-tables.ods"
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c5beb0504df9f2c89808/settlement-summary-jun-2026-tables.ods
+    localFile: datasets/assets.publishing.service.gov.uk/settlement-summary-jun-2026-tables.ods
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -893,7 +921,9 @@ additionalSeries:
       stance: supports
       quote: "WCS_03: Value of Windrush Compensation Scheme payments made7-11"
       title: "Windrush Compensation Scheme data: August 2026 (data tables)"
-      url: "https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods"
+      url: https://www.gov.uk/government/statistics/windrush-compensation-scheme-data-august-2026
+      fileUrl: https://assets.publishing.service.gov.uk/media/6ae1e5317fe45a08a4036e7b/windrush-compensation-scheme-data-tables-aug-2026.ods
+      localFile: datasets/assets.publishing.service.gov.uk/windrush-compensation-scheme-data-tables-aug-2026.ods
       publisher: Home Office
       date: '2026-10-29'
     readings:

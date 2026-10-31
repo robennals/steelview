@@ -374,8 +374,10 @@ sources:
       2025 11513149 ... Egypt, Arab Rep. 2025 118365995 ... United States 2025
       341784857 ... Afghanistan 2025 43844111 ... South Sudan 2025 12188788 ...
       Japan 2025 123366734
-    title: 'World Development Indicators: Population, total (SP.POP.TOTL), API'
-    url: https://api.worldbank.org/v2/country/AFG;EGY;IRN;JPN;KWT;SAU;SGP;SOM;SSD;ARE;USA;YEM;IRQ/indicator/SP.POP.TOTL?date=2024:2025&format=json&per_page=100
+    title: 'World Development Indicators: Population, total (SP.POP.TOTL)'
+    url: https://data.worldbank.org/indicator/SP.POP.TOTL?locations=AF-EG-IR-JP-KW-SA-SG-SO-SS-AE-US-YE-IQ
+    fileUrl: https://api.worldbank.org/v2/country/AFG;EGY;IRN;JPN;KWT;SAU;SGP;SOM;SSD;ARE;USA;YEM;IRQ/indicator/SP.POP.TOTL?date=2024:2025&format=json&per_page=100
+    localFile: datasets/api.worldbank.org/sp-pop-totl-selected-countries.json
     publisher: World Bank
     date: '2026-10-08'
   # 28
@@ -477,7 +479,9 @@ series:
       (2005) 62.84; 9th, second round (2005) 59.76; 10th (2009) 85.22; 11th
       (2013) 76.25
     title: 'Iran Presidential Elections, All Provinces (workbook)'
-    url: https://irandataportal.syr.edu/wp-content/uploads/Iran-Presidential-Elections-All-Provinces-1.xlsx
+    url: https://irandataportal.syr.edu/presidential-elections
+    fileUrl: https://irandataportal.syr.edu/wp-content/uploads/Iran-Presidential-Elections-All-Provinces-1.xlsx
+    localFile: datasets/irandataportal.syr.edu/Iran-Presidential-Elections-All-Provinces-1.xlsx
     publisher: Iran Data Portal, Syracuse University
     date: '2017-05'
   readings:
@@ -747,8 +751,10 @@ additionalSeries:
         "indicator":{"id":"NY.GDP.MKTP.KD.ZG","value":"GDP growth (annual %)"},
         "country":{"id":"IR","value":"Iran, Islamic Rep."} ... "lastupdated":"2026-10-08"
         ... "date":"2025","value":-2.82597163290347 ... "date":"2016","value":8.8150866425182
-      title: 'World Development Indicators: GDP growth (annual %), Iran (API)'
-      url: https://api.worldbank.org/v2/country/IRN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100
+      title: 'World Development Indicators: GDP growth (annual %), Iran'
+      url: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=IR
+      fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100
+      localFile: datasets/api.worldbank.org/ny-gdp-mktp-kd-zg-iran.json
       publisher: World Bank
       date: '2026-10-08'
     readings:
@@ -782,8 +788,10 @@ additionalSeries:
         "indicator":{"id":"FP.CPI.TOTL.ZG","value":"Inflation, consumer prices
         (annual %)"},"country":{"id":"IR","value":"Iran, Islamic Rep."} ...
         "lastupdated":"2026-10-08" ... "date":"2025","value":42.1712244965444
-      title: 'World Development Indicators: Inflation, consumer prices (annual %), Iran (API)'
-      url: https://api.worldbank.org/v2/country/IRN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100
+      title: 'World Development Indicators: Inflation, consumer prices (annual %), Iran'
+      url: https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=IR
+      fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100
+      localFile: datasets/api.worldbank.org/fp-cpi-totl-zg-iran.json
       publisher: World Bank
       date: '2026-10-08'
     readings:

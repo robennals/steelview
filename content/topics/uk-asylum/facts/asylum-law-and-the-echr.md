@@ -31,8 +31,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: supports
@@ -45,8 +46,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: supports
@@ -65,8 +67,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -78,8 +81,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -93,8 +97,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: supports
@@ -506,8 +511,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -520,8 +526,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -555,8 +562,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
 dataStillNeeded:

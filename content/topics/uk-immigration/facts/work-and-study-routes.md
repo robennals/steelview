@@ -699,8 +699,9 @@ series:
     title: >-
       Entry clearance visa applications and outcomes detailed datasets, year ending
       June 2026 (Data_Vis_D02)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1096,8 +1097,9 @@ additionalSeries:
     title: >-
       Entry clearance visa applications and outcomes detailed datasets, year ending
       June 2026 (Data_Vis_D02)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1237,8 +1239,9 @@ additionalSeries:
     title: >-
       Sponsored work visas by occupation and industry (SOC 2020) detailed datasets,
       year ending June 2026 (Data_Occ_D02)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c4761b45e4e555421edd/occupation-soc2020-visas-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c4761b45e4e555421edd/occupation-soc2020-visas-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/occupation-soc2020-visas-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1452,8 +1455,9 @@ additionalSeries:
     stance: supports
     quote: Table 3.12.2. Vacancy rate trend by job role
     title: Adult social care workforce statistical appendix 2026
-    url: >-
-      https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+    url: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/Reports-and-visualisations/National-information/The-State-of-report.aspx
+    fileUrl: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+    localFile: datasets/skillsforcare.org.uk/ASC-Workforce-Statistical-Appendix-2026.xlsx
     publisher: Skills for Care
     date: '2026-10-14'
   readings:
@@ -1589,8 +1593,9 @@ additionalSeries:
       stance: supports
       quote: Table 4.8.1. Nationality trends by sector
       title: Adult social care workforce statistical appendix 2026
-      url: >-
-        https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      url: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/Reports-and-visualisations/National-information/The-State-of-report.aspx
+      fileUrl: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      localFile: datasets/skillsforcare.org.uk/ASC-Workforce-Statistical-Appendix-2026.xlsx
       publisher: Skills for Care
       date: '2026-10-14'
   - id: pay-premium
@@ -1630,8 +1635,9 @@ additionalSeries:
       stance: supports
       quote: Table 5.4.1. Mean hourly pay trends by sector and job role
       title: Adult social care workforce statistical appendix 2026
-      url: >-
-        https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      url: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/Reports-and-visualisations/National-information/The-State-of-report.aspx
+      fileUrl: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      localFile: datasets/skillsforcare.org.uk/ASC-Workforce-Statistical-Appendix-2026.xlsx
       publisher: Skills for Care
       date: '2026-10-14'
 - id: sponsor-revocations
@@ -1663,8 +1669,9 @@ additionalSeries:
     stance: supports
     quote: 'SC_01: Action taken against Sponsors'
     title: Sponsorship transparency data, April to June 2026 (SC_01)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/sponsorship-transparency-data-apr-to-jun-2026.ods
     publisher: UK Visas and Immigration
     date: '2026-08-27'
   readings:
@@ -1793,8 +1800,9 @@ additionalSeries:
       SP_01: Number of sponsoring organisations registered to sponsor an overseas
       national in Skilled Worker, Temporary Worker and Student routes
     title: Sponsorship transparency data, April to June 2026 (SP_01)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/sponsorship-transparency-data-apr-to-jun-2026.ods
     publisher: UK Visas and Immigration
     date: '2026-08-27'
   readings:
@@ -1935,8 +1943,9 @@ additionalSeries:
       Total number of people trained in the UK joining the register for the first
       time by declared ethnicity
     title: 'The NMC register: March 2026 UK data tables'
-    url: >-
-      https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+    url: https://www.nmc.org.uk/about-us/reports-and-accounts/registration-statistics/
+    fileUrl: https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+    localFile: datasets/nmc.org.uk/nmc-register-march-2026-uk-data-tables.xlsx
     publisher: Nursing and Midwifery Council
     date: 2026-07
   readings:
@@ -1979,8 +1988,9 @@ additionalSeries:
         Total number of people trained internationally joining the register for the
         first time by declared ethnicity
       title: 'The NMC register: March 2026 UK data tables'
-      url: >-
-        https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+      url: https://www.nmc.org.uk/about-us/reports-and-accounts/registration-statistics/
+      fileUrl: https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+      localFile: datasets/nmc.org.uk/nmc-register-march-2026-uk-data-tables.xlsx
       publisher: Nursing and Midwifery Council
       date: 2026-07
 - id: nhs-nationality
@@ -2108,8 +2118,9 @@ additionalSeries:
     title: >-
       Asylum claims and initial decisions detailed datasets, year ending June 2026
       (Data_Asy_D01a)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:

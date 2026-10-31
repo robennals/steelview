@@ -383,8 +383,9 @@ sources:
       grants, BN(O) Route visa grants, Refugee Family Reunion visa grants and
       the resettlement and relocation schemes.
     title: 'Safe and legal (humanitarian) routes summary tables, year ending June 2026: Notes'
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   - stance: complicates
@@ -396,8 +397,9 @@ sources:
       Leave Outside the Rules and therefore not included in the data published
       here.
     title: 'Safe and legal (humanitarian) routes summary tables, year ending June 2026: Notes'
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   - stance: complicates
@@ -406,8 +408,9 @@ sources:
       2020 due to the impact of the coronavirus pandemic. Resettlement
       recommenced in December 2020.
     title: 'Safe and legal (humanitarian) routes summary tables, year ending June 2026: Notes'
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
@@ -417,8 +420,9 @@ sources:
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Hum_01 (row cells, 2010 to year ending June 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
@@ -428,8 +432,9 @@ sources:
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Hum_01 (row cells, 2010 to year ending June 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
@@ -439,8 +444,9 @@ sources:
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Res_01 (row cells, 2010 to year ending June 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
@@ -448,8 +454,9 @@ sources:
       IER_D01: Number of detected arrivals via illegal routes to the UK, 2018 Q1
       to 2026 Q2 - dataset
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
@@ -459,23 +466,26 @@ sources:
     title: >-
       Entry clearance visa applications and outcomes detailed datasets, year
       ending June 2026: Vis_D02
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
     quote: 'Res_D02: Resettlement, 2010 Q1 to 2026 Q2 - dataset'
     title: Resettlement detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c4ddc9205b515d421eef/resettlement-scheme-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c4ddc9205b515d421eef/resettlement-scheme-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/resettlement-scheme-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
     quote: >-
       Fam_D01: Refugee Family Reunion visa grants, 2010 Q1 to 2026 Q2 - dataset
     title: Refugee Family Reunion visa grants detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c40bc9205b515d421eed/family-reunion-visa-grants-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c40bc9205b515d421eed/family-reunion-visa-grants-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/family-reunion-visa-grants-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
 series:
@@ -517,8 +527,9 @@ series:
       2010 to the year ending June 2026
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -538,8 +549,9 @@ series:
           years compared. Yearly totals may also not relate to a full 12 month
           period if a scheme opened or closed during that year.
         title: 'Safe and legal (humanitarian) routes summary tables, year ending June 2026: Notes'
-        url: >-
-          https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+        url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+        fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+        localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
         publisher: Home Office
         date: '2026-08-27'
       lines:
@@ -723,8 +735,9 @@ series:
         title: >-
           Safe and legal (humanitarian) routes summary tables, year ending June
           2026
-        url: >-
-          https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+        url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+        fileUrl: https://assets.publishing.service.gov.uk/media/6a85c59054bcee010d514573/safe-legal-routes-summary-tables-jun-2026.ods
+        localFile: datasets/assets.publishing.service.gov.uk/safe-legal-routes-summary-tables-jun-2026.ods
         publisher: Home Office
         date: '2026-08-27'
       lines:

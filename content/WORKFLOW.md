@@ -435,7 +435,9 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   in the reply.
 - **Verbatim or not at all.** Fetch every quote with `curl`; extract PDFs to
   text; never take a figure from memory or from the candidate file. A figure
-  that cannot be confirmed at source is dropped or stated as unconfirmed.
+  that cannot be confirmed at source is dropped or stated as unconfirmed. For a
+  data file, start from our copy and save any new one:
+  [`SOURCE-FILES.md`](SOURCE-FILES.md).
 - **One observation per planned finding**, for every viewpoint the plan
   lists, including the findings against each, worded neutrally.
 - **Readable at a glance:** a two- or three-sentence overview; paragraphs of

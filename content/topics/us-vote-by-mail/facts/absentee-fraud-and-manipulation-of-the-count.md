@@ -194,8 +194,10 @@ sources:
       and signed his deceased wife's mail-in ballot for the 2016 general
       election. Election officials detected the forgery because the signature
       did not match the signature for her that was on file
-    title: Election Fraud Map data file (vfdb.csv), archived 27 July 2026
-    url: https://web.archive.org/web/20260727163153/https://electionfraud.heritage.org/static/data/vfdb.csv
+    title: Election Fraud Map cases (data file vfdb.csv, archived 27 July 2026)
+    url: https://electionfraud.heritage.org/
+    fileUrl: https://web.archive.org/web/20260727163153/https://electionfraud.heritage.org/static/data/vfdb.csv
+    localFile: datasets/electionfraud.heritage.org/vfdb.csv
     publisher: The Heritage Foundation
     date: '2026-07-27'
   # 11

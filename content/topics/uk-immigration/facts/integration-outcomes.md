@@ -158,7 +158,9 @@ sources:
       English proficiency of non-UK-born residents by year of arrival, usual
       residents, 2021, England and Wales
     title: 'Figure 9 data: English proficiency of non-UK-born residents by year of arrival'
-    url: https://www.ons.gov.uk/visualisations/dvc2266/Fig9/datadownload.xlsx
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/articles/analysisofsocialcharacteristicsofinternationalmigrantslivinginenglandandwales/census2021
+    fileUrl: https://www.ons.gov.uk/visualisations/dvc2266/Fig9/datadownload.xlsx
+    localFile: datasets/ons.gov.uk/dvc2266-fig9-datadownload.xlsx
     publisher: Office for National Statistics
     date: '2023-09-18'
   - stance: supports
@@ -230,7 +232,9 @@ sources:
       group for those aged 16 to 64 years using rounded data, as such totals
       may not add to 100%.
     title: 'Figure 8 data: Religion by economic activity, England and Wales, 2021'
-    url: https://www.ons.gov.uk/visualisations/dvc2238/fig8/datadownload.xlsx
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/religion/articles/religionbyhousinghealthemploymentandeducationenglandandwales/census2021
+    fileUrl: https://www.ons.gov.uk/visualisations/dvc2238/fig8/datadownload.xlsx
+    localFile: datasets/ons.gov.uk/dvc2238-fig8-datadownload.xlsx
     publisher: Office for National Statistics
     date: '2023-03-24'
   - stance: supports
@@ -238,7 +242,9 @@ sources:
       Percentages are worked out using the total working age population
       (people aged 16 to 64 years).
     title: 'Employment (Ethnicity facts and figures): by ethnicity and gender'
-    url: https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/employment/employment/latest/downloads/by-ethnicity-and-gender-table.csv
+    url: https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/employment/employment/latest
+    fileUrl: https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/employment/employment/latest/downloads/by-ethnicity-and-gender-table.csv
+    localFile: datasets/ethnicity-facts-figures.service.gov.uk/employment-by-ethnicity-and-gender-table.csv
     publisher: Department for Work and Pensions (Ethnicity facts and figures)
     date: '2023-11-28'
   - stance: supports
@@ -798,7 +804,9 @@ additionalSeries:
         Percentage of 16 to 64 year olds who were employed, by ethnicity over
         time
       title: 'Employment (Ethnicity facts and figures): by ethnicity over time'
-      url: https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/employment/employment/latest/downloads/by-ethnicity-over-time-table.csv
+      url: https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/employment/employment/latest
+      fileUrl: https://www.ethnicity-facts-figures.service.gov.uk/work-pay-and-benefits/employment/employment/latest/downloads/by-ethnicity-over-time-table.csv
+      localFile: datasets/ethnicity-facts-figures.service.gov.uk/employment-by-ethnicity-over-time-table.csv
       publisher: Department for Work and Pensions (Ethnicity facts and figures)
       date: '2023-11-28'
     readings:
@@ -1108,7 +1116,9 @@ additionalSeries:
         Percentages and number of state school pupils aged 18 years who were
         accepted to higher education in the UK, by ethnicity over time
       title: 'Entry rates into higher education (Ethnicity facts and figures): by ethnicity over time'
-      url: https://www.ethnicity-facts-figures.service.gov.uk/education-skills-and-training/higher-education/entry-rates-into-higher-education/latest/downloads/by-ethnicity-over-time-table.csv
+      url: https://www.ethnicity-facts-figures.service.gov.uk/education-skills-and-training/higher-education/entry-rates-into-higher-education/latest
+      fileUrl: https://www.ethnicity-facts-figures.service.gov.uk/education-skills-and-training/higher-education/entry-rates-into-higher-education/latest/downloads/by-ethnicity-over-time-table.csv
+      localFile: datasets/ethnicity-facts-figures.service.gov.uk/higher-education-by-ethnicity-over-time-table.csv
       publisher: Department for Education (Ethnicity facts and figures)
       date: '2025-07-09'
     readings:
@@ -1270,7 +1280,9 @@ additionalSeries:
         Time series for headline indicators, people aged 16 and over, England,
         October 2018 to March 2025
       title: 'Community Life Survey 2024/25: annual data tables (Timeseries sheet)'
-      url: https://assets.publishing.service.gov.uk/media/6a6b26e30c36759b5ccaa210/Community_Life_Survey_2024_25_Annual_data_tables.FINAL.ods
+      url: https://www.gov.uk/government/statistics/community-life-survey-202425-annual-publication
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a6b26e30c36759b5ccaa210/Community_Life_Survey_2024_25_Annual_data_tables.FINAL.ods
+      localFile: datasets/assets.publishing.service.gov.uk/Community_Life_Survey_2024_25_Annual_data_tables.FINAL.ods
       publisher: Department for Culture, Media and Sport
       date: '2026-07-31'
     readings:

@@ -72,7 +72,9 @@ sources:
     title: >-
       Immigration, emigration and net migration into the UK, 1964 - 2025 (data
       download)
-    url: https://www.ons.gov.uk/visualisations/dvc3417/line-chart/datadownload.xlsx
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/articles/whatisinternationalmigrationandhowdoweestimateit/2025-11-18
+    fileUrl: https://www.ons.gov.uk/visualisations/dvc3417/line-chart/datadownload.xlsx
+    localFile: datasets/ons.gov.uk/dvc3417-line-chart-datadownload.xlsx
     publisher: Office for National Statistics
     date: '2026-05-21'
   - stance: complicates
@@ -206,8 +208,9 @@ sources:
     title: >-
       Long-term international migration, provisional: year ending December 2025
       (Table 1 data download)
-    url: >-
-      https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional
+    fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+    localFile: datasets/ons.gov.uk/may2026publicationspreadsheet.xlsx
     publisher: Office for National Statistics
     date: '2026-05-21'
   - stance: complicates
@@ -521,8 +524,10 @@ sources:
     quote: >-
       Figure 1.2. Permanent migration to OECD countries relative to total
       population, 2024 … Note: Light blue columns are unstandardised data.
-    title: 'International Migration Outlook 2025: Figure 1.2 data (StatLink)'
-    url: https://stat.link/f9aut5
+    title: 'International Migration Outlook 2025: Figure 1.2 data'
+    url: https://doi.org/10.1787/ae26c893-en
+    fileUrl: https://stat.link/f9aut5
+    localFile: datasets/stat.link/f9aut5.xlsx
     publisher: OECD
     date: '2025-11-03'
 series:
@@ -566,7 +571,9 @@ series:
     title: >-
       Immigration, emigration and net migration into the UK, 1964 - 2025 (data
       download)
-    url: https://www.ons.gov.uk/visualisations/dvc3417/line-chart/datadownload.xlsx
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/articles/whatisinternationalmigrationandhowdoweestimateit/2025-11-18
+    fileUrl: https://www.ons.gov.uk/visualisations/dvc3417/line-chart/datadownload.xlsx
+    localFile: datasets/ons.gov.uk/dvc3417-line-chart-datadownload.xlsx
     publisher: Office for National Statistics
     date: '2026-05-21'
   events:
@@ -971,8 +978,9 @@ additionalSeries:
         Table 4b: Long-term international immigration, emigration and net
         migration of non-EU+ nationals by reason,
       title: 'Long-term international migration, December 2025: Table 4b'
-      url: >-
-        https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+      url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional
+      fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+      localFile: datasets/ons.gov.uk/may2026publicationspreadsheet.xlsx
       publisher: Office for National Statistics
       date: '2026-05-21'
     events:
@@ -1005,8 +1013,9 @@ additionalSeries:
             Table 1: Long-term international migration into and out of the
             United Kingdom by nationality,
           title: 'Long-term international migration, December 2025: Table 1'
-          url: >-
-            https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+          url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional
+          fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+          localFile: datasets/ons.gov.uk/may2026publicationspreadsheet.xlsx
           publisher: Office for National Statistics
           date: '2026-05-21'
         lines:
@@ -1335,8 +1344,9 @@ additionalSeries:
       title: >-
         Long-term international migration, provisional: year ending December
         2025 (Table 1 data download)
-      url: >-
-        https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+      url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional
+      fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
+      localFile: datasets/ons.gov.uk/may2026publicationspreadsheet.xlsx
       publisher: Office for National Statistics
       date: '2026-05-21'
     events:
@@ -1560,7 +1570,9 @@ additionalSeries:
         armed forces personnel and dependants, and unattributable population
         change.
       title: 'Population estimates, mid-2025: Figure 3 data'
-      url: https://www.ons.gov.uk/visualisations/dvc3645/fig03/datadownload.xlsx
+      url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/bulletins/annualmidyearpopulationestimates/mid2025
+      fileUrl: https://www.ons.gov.uk/visualisations/dvc3645/fig03/datadownload.xlsx
+      localFile: datasets/ons.gov.uk/dvc3645-fig03-datadownload.xlsx
       publisher: Office for National Statistics
       date: '2026-10-01'
     readings:
@@ -1741,8 +1753,9 @@ additionalSeries:
       title: >-
         National population projections, 2024-based: Z1 machine-readable files
         (uk_ppp, uk_pph, uk_ppl, uk_ppz)
-      url: >-
-        https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/z1zippedpopulationprojectionsdatafilesuk/2024based/uk1.zip
+      url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/z1zippedpopulationprojectionsdatafilesuk
+      fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/z1zippedpopulationprojectionsdatafilesuk/2024based/uk1.zip
+      localFile: datasets/ons.gov.uk/uk1.zip
       publisher: Office for National Statistics
       date: '2026-04-28'
     readings:
@@ -2813,7 +2826,7 @@ comparisons:
       citizens are own-country nationals in the UK and non-EU+ foreigners in
       EU/EFTA countries. Refugee coverage and registration methods vary.
       Downloaded 11 September 2026:
-      https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/migr_imm1ctz?time=2024&age=TOTAL&sex=T&unit=NR
+      https://ec.europa.eu/eurostat/databrowser/view/migr_imm1ctz/default/table?lang=en
       .
     items:
       - label: Malta

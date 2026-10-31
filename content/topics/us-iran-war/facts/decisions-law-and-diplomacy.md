@@ -21,8 +21,10 @@ sources:
       <party>Democratic</party><yea-total>210</yea-total><nay-total>4</nay-total><present-total>0</present-total><not-voting-total>0</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>212</yea-total><nay-total>219</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
-    title: 'Roll Call 85, H.Con.Res.38, 5 March 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll085.xml
+    title: 'Roll Call 85, H.Con.Res.38, 5 March 2026'
+    url: https://clerk.house.gov/Votes/202685
+    fileUrl: https://clerk.house.gov/evs/2026/roll085.xml
+    localFile: datasets/clerk.house.gov/2026-roll085.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-03-05'
   # 2
@@ -37,8 +39,10 @@ sources:
       <party>Independent</party><yea-total>0</yea-total><nay-total>1</nay-total>
       ...
       <total-stub>Totals</total-stub><yea-total>213</yea-total><nay-total>214</nay-total><present-total>1</present-total><not-voting-total>3</not-voting-total>
-    title: 'Roll Call 114, H.Con.Res.40, 16 April 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll114.xml
+    title: 'Roll Call 114, H.Con.Res.40, 16 April 2026'
+    url: https://clerk.house.gov/Votes/2026114
+    fileUrl: https://clerk.house.gov/evs/2026/roll114.xml
+    localFile: datasets/clerk.house.gov/2026-roll114.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-04-16'
   # 3
@@ -51,8 +55,10 @@ sources:
       <party>Democratic</party><yea-total>209</yea-total><nay-total>1</nay-total><present-total>0</present-total><not-voting-total>2</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>212</yea-total><nay-total>212</nay-total><present-total>0</present-total><not-voting-total>6</not-voting-total>
-    title: 'Roll Call 170, H.Con.Res.75, 14 May 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll170.xml
+    title: 'Roll Call 170, H.Con.Res.75, 14 May 2026'
+    url: https://clerk.house.gov/Votes/2026170
+    fileUrl: https://clerk.house.gov/evs/2026/roll170.xml
+    localFile: datasets/clerk.house.gov/2026-roll170.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-05-14'
   # 4
@@ -68,8 +74,10 @@ sources:
       <party>Democratic</party><yea-total>211</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>215</yea-total><nay-total>208</nay-total><present-total>0</present-total><not-voting-total>7</not-voting-total>
-    title: 'Roll Call 199, H.Con.Res.86, 3 June 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll199.xml
+    title: 'Roll Call 199, H.Con.Res.86, 3 June 2026'
+    url: https://clerk.house.gov/Votes/2026199
+    fileUrl: https://clerk.house.gov/evs/2026/roll199.xml
+    localFile: datasets/clerk.house.gov/2026-roll199.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-06-03'
   # 5
@@ -82,8 +90,10 @@ sources:
       <party>Democratic</party><yea-total>210</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>2</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>214</yea-total><nay-total>208</nay-total><present-total>0</present-total><not-voting-total>9</not-voting-total>
-    title: 'Roll Call 282, H.Con.Res.89, 23 July 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll282.xml
+    title: 'Roll Call 282, H.Con.Res.89, 23 July 2026'
+    url: https://clerk.house.gov/Votes/2026282
+    fileUrl: https://clerk.house.gov/evs/2026/roll282.xml
+    localFile: datasets/clerk.house.gov/2026-roll282.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-07-23'
   # 6
@@ -96,8 +106,10 @@ sources:
       <party>Democratic</party><yea-total>213</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>220</yea-total><nay-total>204</nay-total><present-total>0</present-total><not-voting-total>9</not-voting-total>
-    title: 'Roll Call 307, H.Con.Res.93, 15 September 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll307.xml
+    title: 'Roll Call 307, H.Con.Res.93, 15 September 2026'
+    url: https://clerk.house.gov/Votes/2026307
+    fileUrl: https://clerk.house.gov/evs/2026/roll307.xml
+    localFile: datasets/clerk.house.gov/2026-roll307.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-09-15'
   # 7
@@ -123,8 +135,10 @@ sources:
       joint resolution to direct the removal of United States Armed Forces from
       hostilities within or against the Islamic Republic of Iran that have not
       been authorized by Congress.
-    title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu XML; Internet Archive copy of 10 October 2026)'
-    url: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+    title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu, as of 10 October 2026)'
+    url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm
+    fileUrl: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+    localFile: datasets/senate.gov/vote_menu_119_2.xml
     publisher: United States Senate
     date: '2026-10-10'
   # 8
@@ -132,8 +146,10 @@ sources:
     quote: >-
       Concurrent Resolution Agreed to (50-48) ... Collins (R-ME) Collins Susan R
       ME Yea
-    title: 'Roll Call Vote 184, 119th Congress, 2nd Session: H.Con.Res.86 (XML; Internet Archive copy)'
-    url: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml
+    title: 'Roll Call Vote 184, 119th Congress, 2nd Session: H.Con.Res.86'
+    url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.htm
+    fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml
+    localFile: datasets/senate.gov/vote_119_2_00184.xml
     publisher: United States Senate
     date: '2026-06-23'
   # 9
@@ -311,8 +327,10 @@ sources:
       <vote-desc>Authorizing the limited use of the United States Armed Forces
       in support of the NATO mission in Libya</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>123</yea-total><nay-total>295</nay-total>
-    title: 'Roll Call 493, H.J.Res.68, 24 June 2011 (XML)'
-    url: https://clerk.house.gov/evs/2011/roll493.xml
+    title: 'Roll Call 493, H.J.Res.68, 24 June 2011'
+    url: https://clerk.house.gov/Votes/2011493
+    fileUrl: https://clerk.house.gov/evs/2011/roll493.xml
+    localFile: datasets/clerk.house.gov/2011-roll493.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2011-06-24'
   # 21
@@ -325,8 +343,10 @@ sources:
       Organization Operation Unified Protector with respect to Libya, unless
       otherwise specifically authorized by law</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>180</yea-total><nay-total>238</nay-total>
-    title: 'Roll Call 494, H.R.2278, 24 June 2011 (XML)'
-    url: https://clerk.house.gov/evs/2011/roll494.xml
+    title: 'Roll Call 494, H.R.2278, 24 June 2011'
+    url: https://clerk.house.gov/Votes/2011494
+    fileUrl: https://clerk.house.gov/evs/2011/roll494.xml
+    localFile: datasets/clerk.house.gov/2011-roll494.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2011-06-24'
   # 22
@@ -338,8 +358,10 @@ sources:
       hostilities in the Republic of Yemen that have not been authorized by
       Congress</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>247</yea-total><nay-total>175</nay-total><present-total>1</present-total>
-    title: 'Roll Call 153, S.J.Res.7, 4 April 2019 (XML)'
-    url: https://clerk.house.gov/evs/2019/roll153.xml
+    title: 'Roll Call 153, S.J.Res.7, 4 April 2019'
+    url: https://clerk.house.gov/Votes/2019153
+    fileUrl: https://clerk.house.gov/evs/2019/roll153.xml
+    localFile: datasets/clerk.house.gov/2019-roll153.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2019-04-04'
   # 23
@@ -351,8 +373,10 @@ sources:
       removal of United States Armed Forces from hostilities in the Republic of
       Yemen that have not been authorized by Congress. ... 00048 13-Mar S.J.Res.
       7 On the Joint Resolution Passed 54 46
-    title: 'Senate Roll Call Votes, 116th Congress, 1st Session (vote menu XML; Internet Archive copy)'
-    url: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.xml
+    title: 'Senate Roll Call Votes, 116th Congress, 1st Session (vote menu)'
+    url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.htm
+    fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.xml
+    localFile: datasets/senate.gov/vote_menu_116_1.xml
     publisher: United States Senate
     date: '2019'
   # 24
@@ -364,8 +388,10 @@ sources:
       hostilities against the Islamic Republic of Iran that have not been
       authorized by Congress</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>227</yea-total><nay-total>186</nay-total>
-    title: 'Roll Call 101, S.J.Res.68, 11 March 2020 (XML)'
-    url: https://clerk.house.gov/evs/2020/roll101.xml
+    title: 'Roll Call 101, S.J.Res.68, 11 March 2020'
+    url: https://clerk.house.gov/Votes/2020101
+    fileUrl: https://clerk.house.gov/evs/2020/roll101.xml
+    localFile: datasets/clerk.house.gov/2020-roll101.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2020-03-11'
   # 25
@@ -377,8 +403,10 @@ sources:
       direct the removal of United States Armed Forces from hostilities against
       the Islamic Republic of Iran that have not been authorized by Congress.
       ... 00052 13-Feb S.J.Res. 68 On the Joint Resolution Passed 55 45
-    title: 'Senate Roll Call Votes, 116th Congress, 2nd Session (vote menu XML; Internet Archive copy)'
-    url: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.xml
+    title: 'Senate Roll Call Votes, 116th Congress, 2nd Session (vote menu)'
+    url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.htm
+    fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.xml
+    localFile: datasets/senate.gov/vote_menu_116_2.xml
     publisher: United States Senate
     date: '2020'
   # 26
@@ -738,8 +766,10 @@ series:
       <party>Democratic</party><yea-total>213</yea-total><nay-total>0</nay-total>
       ...
       <total-stub>Totals</total-stub><yea-total>220</yea-total><nay-total>204</nay-total>
-    title: 'House roll-call XML files 85, 114, 170, 199, 282 and 307 (2026); latest shown'
-    url: https://clerk.house.gov/evs/2026/roll307.xml
+    title: 'House roll calls 85, 114, 170, 199, 282 and 307 (2026); latest shown'
+    url: https://clerk.house.gov/Votes/2026307
+    fileUrl: https://clerk.house.gov/evs/2026/roll307.xml
+    localFile: datasets/clerk.house.gov/2026-roll307.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-09-15'
   readings:
@@ -789,8 +819,10 @@ additionalSeries:
         48 ... 00129 19-May S.J.Res. 185 On the Motion to Discharge Agreed to 50
         47 ... 00046 04-Mar S.J.Res. 104 On the Motion to Discharge Rejected 47
         53
-      title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu XML; Internet Archive copy of 10 October 2026)'
-      url: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+      title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu, as of 10 October 2026)'
+      url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm
+      fileUrl: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+      localFile: datasets/senate.gov/vote_menu_119_2.xml
       publisher: United States Senate
       date: '2026-10-10'
     readings:

@@ -291,7 +291,9 @@ sources:
       117 1st U.S. House of Representatives 10 MOTION On Agreeing to the
       Objection YEA-AND-NAY Failed 6-Jan-2021 ... Totals 121 303 0 7
     title: 'Roll Call 10, 117th Congress, 1st Session (vote record; fields are congress, session, chamber, roll call number, question, vote type, result, date, and totals of yeas, nays, present and not voting)'
-    url: https://clerk.house.gov/evs/2021/roll010.xml
+    url: https://clerk.house.gov/Votes/202110
+    fileUrl: https://clerk.house.gov/evs/2021/roll010.xml
+    localFile: datasets/clerk.house.gov/2021-roll010.xml
     publisher: Office of the Clerk, U.S. House of Representatives
     date: '2021-01-06'
   # 16
@@ -300,7 +302,9 @@ sources:
       117 1st U.S. House of Representatives 11 MOTION On Agreeing to the
       Objection YEA-AND-NAY Failed 7-Jan-2021 ... Totals 138 282 0 11
     title: 'Roll Call 11, 117th Congress, 1st Session (vote record, same fields)'
-    url: https://clerk.house.gov/evs/2021/roll011.xml
+    url: https://clerk.house.gov/Votes/202111
+    fileUrl: https://clerk.house.gov/evs/2021/roll011.xml
+    localFile: datasets/clerk.house.gov/2021-roll011.xml
     publisher: Office of the Clerk, U.S. House of Representatives
     date: '2021-01-07'
   # 17

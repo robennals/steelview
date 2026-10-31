@@ -407,7 +407,9 @@ additionalSeries:
         Data Source: EIA Short-Term Energy Outlook, October 2026 … Forecast /
         estimated values shown in blue … real price (Oct 2026 $)
       title: 'Real Prices Viewer: Monthly Average Imported Crude Oil Price (real_prices.xlsx, sheet "Crude Oil-M")'
-      url: https://www.eia.gov/outlooks/steo/realprices/real_prices.xlsx
+      url: https://www.eia.gov/outlooks/steo/realprices/
+      fileUrl: https://www.eia.gov/outlooks/steo/realprices/real_prices.xlsx
+      localFile: datasets/eia.gov/real_prices.xlsx
       publisher: US Energy Information Administration
       date: '2026-10-06'
     readings:

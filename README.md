@@ -120,6 +120,10 @@ the sourcing and time-series rules, what makes a viewpoint a steelman and
 how it is laid out and worded, the prose patterns to avoid, which rules the build enforces and which are
 editorial judgement, and a checklist to run before opening a PR.
 
+Data files behind our sources are kept outside this repo, because we don't hold
+the rights to many of them. [`content/SOURCE-FILES.md`](content/SOURCE-FILES.md)
+says where they are.
+
 Then add a new directory under `content/topics/`, following the structure
 above, and run `pnpm check:integrity` and `pnpm check:figures` before
 publishing to check the new content validates.

@@ -61,7 +61,9 @@ sources:
       "indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"IR","value":"Iran,
       Islamic Rep."},"countryiso3code":"IRN","date":"2025","value":92417681
     title: 'World Development Indicators: Population, total (SP.POP.TOTL), Iran'
-    url: https://api.worldbank.org/v2/country/IRN/indicator/SP.POP.TOTL?format=json
+    url: https://data.worldbank.org/indicator/SP.POP.TOTL?locations=IR
+    fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/SP.POP.TOTL?format=json
+    localFile: datasets/api.worldbank.org/sp-pop-totl-iran.json
     publisher: World Bank
     date: '2026-10-08'
   # 5
@@ -335,7 +337,9 @@ series:
       "casualty_CATEGORIES":"WOUNDED IN ACTION (WIA)" …
       "extractionDate":"October 28, 2026"
     title: 'Defense Casualty Analysis System: conflict casualty summaries, Operation Epic Fury and Overseas Operations (monthly and by category)'
-    url: https://dcas.dmdc.osd.mil/dcas/api/report/casualtySummary/monthly/oo
+    url: https://dcas.dmdc.osd.mil/dcas/app/conflictCasualties/oo
+    fileUrl: https://dcas.dmdc.osd.mil/dcas/api/report/casualtySummary/monthly/oo
+    localFile: datasets/dcas.dmdc.osd.mil/casualty-summary-monthly-oo.json
     publisher: US Department of Defense, Defense Casualty Analysis System
     date: '2026-10-28'
   readings:
