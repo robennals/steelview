@@ -53,6 +53,9 @@ test('a chart\'s address opens the data panel at that chart', async ({ page }) =
   const tab = page.locator('.sv-walk__tab[aria-current]');
   await expect(tab).toContainText('UK migration by nationality');
   await expect(page.locator('.sv-walk')).toBeInViewport();
+  // The selected tab says where the link landed, so the chart itself is not tinted.
+  await expect(page.locator(`[id="${LONG_RUN}--chart-nationality"]`)).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  await expect(page.locator(`[id="${LONG_RUN}--chart-nationality"]`)).toHaveCSS('outline-style', 'none');
 });
 
 test('an observation\'s address opens that chart at that observation', async ({ page }) => {

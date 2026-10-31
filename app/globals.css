@@ -2912,6 +2912,10 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-anchor-aliases > span { display: block; }
 .sv-factpage .sv-anchor-aliases > :target { background: none; outline: none; }
 .sv-factpage .sv-anchor-aliases:has(:target) + * { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+/* In a data panel the selected thumbnail and the open observation already say
+   where a link landed; the wash is for finding a line in a long list. */
+.sv-factpage .sv-walk .sv-target, .sv-factpage .sv-walk :target, .sv-walk .sv-target, .sv-walk h3.sv-target + p, .sv-walk h3:target + p,
+.sv-factpage .sv-walk .sv-anchor-aliases:has(:target) + * { background: none; outline: none; }
 .sv-evidence-index { margin-top: 1.5rem; }
 .sv-evidence-index > summary { cursor: pointer; font-size: .85rem; }
 
