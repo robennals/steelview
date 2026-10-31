@@ -7,8 +7,9 @@ import type { FigurePreview, SourceCredit } from './types';
 /**
  * The frame every report component sits in: a heading that says what the
  * reader is looking at, a sentence on what it shows, in a data panel the
- * observation being shown, the component itself, the source it rests on, and
- * an optional "About this data" note.
+ * observation being shown, the component itself, the sources it rests on, and
+ * an optional "About this data" note. In a data panel the description, note and
+ * list of observations fold into `ChartAbout`, and the sources into one row.
  *
  * Same markup and classes as the topic charts (`sv-chart`), so a new
  * component placed between two existing charts is indistinguishable from

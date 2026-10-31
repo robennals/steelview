@@ -4,7 +4,7 @@ import { listTopicSlugs, loadTopic } from './load';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews, slideGroup } from './preview';
 import { headlineFacts } from './rank-facts';
-import { isComponentFigure, type Fact } from './types';
+import { isComponentFigure } from './types';
 import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
@@ -92,7 +92,7 @@ test('a chart\'s Subtleties step after its observations, whichever the body list
     '## Subtleties {#report--subtleties-people}', '', '### A qualification {#report--qualification}', '', 'Why.', '',
     '## Observations {#report--observations-people}', '', '### A finding {#report--finding-one}', '', 'What.',
   ].join('\n');
-  const fact = { id: 'report', body } as Fact;
+  const fact = { ...figureExamplesFact(), id: 'report', body };
   assert.deepEqual(observationsByChart(fact).get('people')?.map(o => [o.id, o.subtlety]), [['finding-one', false], ['qualification', true]]);
   assert.equal(observationGroups(fact).get('qualification'), 'people');
 });

@@ -97,7 +97,7 @@ test('one collapsed Sources disclosure includes parent and supporting citations'
   await expect(sources.locator('.sv-target')).toBeInViewport();
   await sources.locator(':scope > summary').click();
   await expect(sources).not.toHaveAttribute('open', '');
-  await page.goto('about:blank');
+  await page.goto(topic);
   await page.goto(`${topic}/facts/immigration-against-the-long-run#source-immigration-against-the-long-run-13`);
   const source = page.locator('[data-source-id="source-immigration-against-the-long-run-13"].sv-target');
   await expect(source).toBeVisible();
