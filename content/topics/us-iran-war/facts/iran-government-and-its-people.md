@@ -1121,21 +1121,27 @@ comparisons:
     sources: [11]
     note: 'GAMAAN reports most of these as "about" a percentage. The sample was reached online through circumvention tools; see About this data.'
     items:
-      - label: 'Called the US–Israeli action "military aggression against Iran"'
+      - label: "Called it \"military aggression\""
+        detail: "Called the US–Israeli action \"military aggression against Iran\""
         value: 42
       - label: 'Called it "humanitarian intervention"'
         value: 40
-      - label: 'Supported foreign military intervention before and after the war'
+      - label: "Supported foreign military intervention"
+        detail: "Before and after the war"
         value: 38
-      - label: 'Opposed foreign military intervention before and after the war'
+      - label: "Opposed foreign military intervention"
+        detail: "Before and after the war"
         value: 27
-      - label: 'Felt satisfaction at the weakening of the Islamic Republic during the war'
+      - label: "Satisfied the Islamic Republic weakened"
+        detail: "Felt satisfaction at the weakening of the Islamic Republic during the war"
         value: 60
       - label: 'Opposed Iran building nuclear weapons'
         value: 59
-      - label: 'Said the US–Iran agreement did not serve Iranians'
+      - label: "Said the agreement did not serve Iranians"
+        detail: "Said the US–Iran agreement did not serve Iranians"
         value: 68
-      - label: 'Rated the regime''s response to the January protests positively'
+      - label: "Rated the protest response positively"
+        detail: "Rated the regime's response to the January protests positively"
         value: 14
 relatedFacts:
   - iran-actions-abroad

@@ -863,7 +863,7 @@ figures:
       interval includes no effect.
     estimates:
       - { label: 'Universal mail ballots: turnout', year: '1996–2018', low: 2.1, high: 2.2, asPublished: 2.1 to 2.2%, note: "Range across the study's specifications, not a confidence interval.", source: 15 }
-      - { label: 'Universal mail ballots: Democratic share of turnout', year: '1996–2018', estimate: 0.1, high: 0.3, asPublished: only 0.1%, note: 'Upper bound of the 95% confidence interval, "only about 0.3%".', source: 16 }
+      - { label: 'Universal mail ballots: Democratic share', year: '1996–2018', estimate: 0.1, high: 0.3, asPublished: only 0.1%, note: 'Democratic share of turnout. Upper bound of the 95% confidence interval, "only about 0.3%".', source: 16 }
       - { label: 'No-excuse eligibility at 65: turnout', year: 'Texas 2020', estimate: 0.02, high: 0.26, note: Upper bound of the 95% confidence interval., source: 18 }
   - kind: barChart
     id: support-by-state-rule

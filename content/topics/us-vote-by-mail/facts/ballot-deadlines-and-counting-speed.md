@@ -439,7 +439,8 @@ comparisons:
         value: 3
       - label: Texas
         value: 1
-      - label: 'The other 35 states (receipt by Election Day)'
+      - label: "The other 35 states"
+        detail: "Receipt by Election Day"
         value: 0
         highlight: true
   - id: preprocessing-four-hours

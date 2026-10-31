@@ -1894,15 +1894,19 @@ comparisons:
       derived. Some people from the first flight were planned again for the
       second and may be counted twice.
     items:
-      - label: Fresh asylum claim after removal directions set
+      - label: "Fresh asylum claim"
+        detail: "After removal directions set"
         value: 55
-      - label: Judicial review lodged after removal directions set
+      - label: "Judicial review lodged"
+        detail: "After removal directions set"
         value: 35
-      - label: Further representations; removal deferred
+      - label: "Further representations"
+        detail: "Removal deferred"
         value: 26
       - label: Not found at enforcement visit
         value: 20
-      - label: No enforcement visit, for lack of resources
+      - label: "No enforcement visit"
+        detail: "For lack of resources"
         value: 13
   - id: removal-scale
     title: Removals a year — the UK record, a proposed target, and the EU and US
@@ -1926,7 +1930,8 @@ comparisons:
       different legal categories in different populations: the chart shows
       the operational scale each system handles, not a rate per resident.
     items:
-      - label: US deportations after interior arrest (yearly rate)
+      - label: "US deportations after interior arrest"
+        detail: "Yearly rate"
         value: 200000
       - label: Proposed UK target ("Removals Force")
         value: 150000

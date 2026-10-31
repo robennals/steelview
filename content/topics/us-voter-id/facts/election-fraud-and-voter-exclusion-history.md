@@ -696,7 +696,8 @@ comparisons:
       - 'Yes: in-person impersonation'
       - Method not confirmed
     items:
-      - label: Officials stuffing, forging or miscounting ballots
+      - label: "Officials stuffing or miscounting ballots"
+        detail: "Officials stuffing, forging or miscounting ballots"
         value: 8
         values: [6, 2, 0, 0]
       - label: Absentee or mail ballot fraud
@@ -705,11 +706,13 @@ comparisons:
       - label: Vote buying
         value: 2
         values: [2, 0, 0, 0]
-      - label: Voting in person in another's name, or repeatedly
+      - label: "In-person impersonation or repeat voting"
+        detail: "Voting in person in another's name, or repeatedly"
         value: 2
         highlight: true
         values: [0, 0, 2, 0]
-      - label: Method not confirmed from a primary or court source
+      - label: "Method not confirmed"
+        detail: "From a primary or court source"
         value: 2
         values: [0, 0, 0, 2]
     note: >-

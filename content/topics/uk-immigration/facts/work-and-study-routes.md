@@ -2479,7 +2479,8 @@ comparisons:
   - label: Graduate route, first year
     value: 21000
     highlight: true
-  - label: Graduate route, last three months of first year
+  - label: "Graduate route, end of first year"
+    detail: "Last three months of first year"
     value: 24240
   - label: UK graduates, 15 months after graduating
     value: 26000

@@ -1190,7 +1190,8 @@ comparisons:
       unreturned notice starts the NVRA's two-federal-election clock; it is
       not itself a removal.
     items:
-      - label: Unreturned (no reply and not returned undeliverable)
+      - label: "Unreturned"
+        detail: "No reply and not returned undeliverable"
         value: 68.9
       - label: Not categorised by the state
         value: 11.3
@@ -1198,11 +1199,14 @@ comparisons:
         value: 10.6
       - label: Returned undeliverable
         value: 8.5
-      - label: Returned by voter, confirming registration with new address
+      - label: "Returned by voter: new address"
+        detail: "Returned by voter, confirming registration with new address"
         value: 4.6
-      - label: Returned by voter, confirming registration is invalid
+      - label: "Returned by voter: registration invalid"
+        detail: "Returned by voter, confirming registration is invalid"
         value: 3.0
-      - label: Returned by voter, confirming registration with no change
+      - label: "Returned by voter: no change"
+        detail: "Returned by voter, confirming registration with no change"
         value: 3.0
   - id: pew-2011-baseline
     title: >-
@@ -1221,7 +1225,8 @@ comparisons:
       voters whose records have wrong details, so this is not a count of
       ineligible people. The categories overlap and must not be added.
     items:
-      - label: Inaccurate or no longer valid, de-duplicated total
+      - label: "Inaccurate or no longer valid"
+        detail: "De-duplicated total"
         value: 24000000
       - label: Out of date
         value: 12700000

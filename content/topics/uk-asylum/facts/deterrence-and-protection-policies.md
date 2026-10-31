@@ -1394,7 +1394,8 @@ comparisons:
         value: 935
       - label: Resettled in a third country
         value: 921
-      - label: Still offshore (Nauru and Papua New Guinea)
+      - label: "Still offshore"
+        detail: "Nauru and Papua New Guinea"
         value: 263
       - label: Died
         value: 18
@@ -1420,7 +1421,8 @@ comparisons:
     items:
       - label: Payments to Rwanda
         value: 290000000
-      - label: 'Other fixed costs (IT, data systems, legal, staff)'
+      - label: "Other fixed costs"
+        detail: "IT, data systems, legal, staff"
         value: 280000000
       - label: Detention and reception centre investment
         value: 95000000

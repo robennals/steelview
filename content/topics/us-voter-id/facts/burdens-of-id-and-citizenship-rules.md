@@ -872,12 +872,14 @@ comparisons:
         highlight: true
       - label: No non-expired driver's licence
         value: 20760000
-      - label: Unexpired licence lacking current name or address
+      - label: "Licence lacks current name or address"
+        detail: "Unexpired licence lacking current name or address"
         value: 28600000
       - label: No proof-of-citizenship document at all
         value: 3800000
         highlight: true
-      - label: Cannot readily reach proof of citizenship (includes none)
+      - label: "Cannot readily reach proof of citizenship"
+        detail: "Includes none"
         value: 21300000
   - id: why-no-licence
     title: Reasons US adult citizens give for having no driver's licence, 2023
@@ -903,7 +905,8 @@ comparisons:
       - label: Cost of a licence
         value: 8
         highlight: true
-      - label: Unpaid fines or other financial or legal difficulties
+      - label: "Financial or legal difficulties"
+        detail: "Unpaid fines or other financial or legal difficulties"
         value: 4
         highlight: true
       - label: Lack of time
@@ -1112,9 +1115,9 @@ figures:
       cover registrations from 1999; the blocked count covers about three
       years.
     items:
-      - { label: Applications suspended or cancelled (2013–2016), value: 31089, highlight: true }
-      - { label: Non-citizens who registered or tried to (about 19 years), value: { value: 67, qualifier: at most, asPublished: 'at most, 67 noncitizens' } }
-      - { label: Non-citizens confirmed on the rolls (1999–2013), value: 39 }
+      - { label: "Suspended or cancelled (2013–2016)", detail: "Applications suspended or cancelled", value: 31089, highlight: true }
+      - { label: "Non-citizen registrants (about 19 years)", detail: "Non-citizens who registered or tried to", value: { value: 67, qualifier: at most, asPublished: 'at most, 67 noncitizens' } }
+      - { label: "Non-citizens on the rolls (1999–2013)", detail: "Non-citizens confirmed on the rolls", value: 39 }
   - kind: comparison
     id: arizona-maricopa
   - kind: barChart

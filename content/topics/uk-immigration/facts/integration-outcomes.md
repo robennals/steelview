@@ -1518,7 +1518,8 @@ comparisons:
       plotted; the full regional breakdown is in the Dutch chapters and is not
       reproduced here.
     items:
-      - label: Japan, North America, Oceania, British Isles, Scandinavia, Switzerland
+      - label: "Japan, North America, Oceania and others"
+        detail: "Japan, North America, Oceania, British Isles, Scandinavia, Switzerland"
         value: 200
       - label: Southern Africa
         value: 150
@@ -1552,7 +1553,8 @@ comparisons:
       including most refugees. Children are assumed to behave like
       non-immigrants. Built on 2006 behaviour; published in Norwegian in 2013.
     items:
-      - label: R1 (Western Europe, North America, Australia, New Zealand)
+      - label: "R1 (Western Europe, North America, others)"
+        detail: "Western Europe, North America, Australia, New Zealand"
         value: 0.8
       - label: R2 (Eastern European EU countries)
         value: -0.8

@@ -1125,7 +1125,8 @@ comparisons:
           - 15566
           - 13306
           - 4631
-      - label: "Asylum (granted protection or other leave)"
+      - label: "Asylum"
+        detail: "Granted protection or other leave"
         value: 23485
         values:
           - 652
@@ -1160,12 +1161,14 @@ comparisons:
         value: 83.8
       - label: "EU Settlement Scheme"
         value: 9.6
-      - label: "Indefinite leave to remain (not EU scheme)"
+      - label: "Indefinite leave to remain"
+        detail: "Not EU scheme"
         value: 2.7
         highlight: true
       - label: "Refugee"
         value: 1.5
-      - label: "Limited leave to remain, including family reunion"
+      - label: "Limited leave to remain"
+        detail: "Including family reunion"
         value: 0.9
       - label: "Humanitarian"
         value: 0.7
@@ -1183,24 +1186,31 @@ comparisons:
       - 90
       - 88
     items:
-      - label: "Switzerland – settlement for skilled workers"
+      - label: "Switzerland – skilled workers"
+        detail: "Settlement for skilled workers"
         value: 3871
       - label: "UK – Global Talent visa settlement"
         value: 3029
         highlight: true
-      - label: "Denmark – residence permit for researchers"
+      - label: "Denmark – researchers"
+        detail: "Residence permit for researchers"
         value: 812
-      - label: "Netherlands – settlement for dedicated researchers"
+      - label: "Netherlands – researchers"
+        detail: "Settlement for dedicated researchers"
         value: 207
-      - label: "France – settlement for dedicated researchers"
+      - label: "France – researchers"
+        detail: "Settlement for dedicated researchers"
         value: 192
-      - label: "Germany – settlement for dedicated researchers"
+      - label: "Germany – researchers"
+        detail: "Settlement for dedicated researchers"
         value: 170
       - label: "Italy – EU Blue Card"
         value: 152
-      - label: "Sweden – settlement for dedicated researchers"
+      - label: "Sweden – researchers"
+        detail: "Settlement for dedicated researchers"
         value: 117
-      - label: "Spain – settlement for dedicated researchers"
+      - label: "Spain – researchers"
+        detail: "Settlement for dedicated researchers"
         value: 37
     note: "All nine countries in the Royal Society's Table 12, which compares European countries with dedicated researcher or skilled-worker settlement routes; non-European countries in the study are not in this table. The UK figure is the 2025 fee; the Home Office fee table from 8 October 2026 puts it at £3,226. Adjusted for purchasing power the UK ranks first."
   - id: ilr-polling
@@ -1254,12 +1264,15 @@ figures:
   sources: [2, 4, 5, 6, 107]
   note: "No official count of people holding indefinite leave exists: the Home Office publishes grants, not holders. The EU figure is grants, so it counts people who have since left or naturalised; it is the 4,476,552 applications concluded as settled in table EUSS_QTR plus 115,770 automated grants, which the Home Office describes as \"just under 4.6 million\". The non-EU range is the Migration Observatory's estimate from the 2021 Census (England and Wales only) and visa data; its lower end is 621,000 in the body of the piece and 622,000 in its summary. The path-to-settlement figure is the Migration Observatory's rounded \"around 2.2 million\". The bars measure different things and should not be added together."
   items:
-  - label: "EU Settlement Scheme: settled-status grants since 2018"
+  - label: "EU Settlement Scheme grants"
+    detail: "Settled-status grants since 2018"
     value: 4592322
     asPublished: "just under 4.6 million"
-  - label: "On a temporary visa with a five-year path to settlement (end of 2024)"
+  - label: "On a five-year path to settlement"
+    detail: "On a temporary visa with a five-year path to settlement (end of 2024)"
     value: { value: 2200000, qualifier: "about", asPublished: "Around 2.2 million" }
-  - label: "Non-EU citizens holding indefinite leave (end of 2024)"
+  - label: "Non-EU citizens holding indefinite leave"
+    detail: "End of 2024"
     value: { low: 621000, high: 820000 }
 - kind: comparison
   id: path-by-group
@@ -1283,19 +1296,24 @@ figures:
   - label: "Indefinite leave to remain"
     values: { fee: 3226, cost: 310 }
     highlight: true
-  - label: "Family or other route to settlement, from overseas"
+  - label: "Family or other route to settlement"
+    detail: "From overseas"
     values: { fee: 2064, cost: 639 }
-  - label: "Naturalisation as a British citizen (unit cost as the table prints it)"
+  - label: "Naturalisation as a British citizen"
+    detail: "Unit cost as the table prints it"
     values: { fee: 1709, cost: 1.23 }
-  - label: "Skilled Worker, over three years, from overseas"
+  - label: "Skilled Worker, over three years"
+    detail: "From overseas"
     values: { fee: 1618, cost: 153 }
   - label: "Graduate route"
     values: { fee: 937, cost: 110 }
   - label: "Student, from overseas"
     values: { fee: 558, cost: 176 }
-  - label: "Health and Care Worker, up to three years, from overseas"
+  - label: "Health and Care Worker, up to three years"
+    detail: "From overseas"
     values: { fee: 324, cost: 153 }
-  - label: "Global Talent with an approval letter, from overseas"
+  - label: "Global Talent with an approval letter"
+    detail: "From overseas"
     values: { fee: 205, cost: 488 }
   - label: "Visit visa, up to six months"
     values: { fee: 135, cost: 159 }

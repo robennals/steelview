@@ -433,9 +433,11 @@ comparisons:
       - label: 'Iran war, Pentagon as reported 29 Oct 2026'
         value: 47.1
         highlight: true
-      - label: 'Afghanistan and other counterterror (OEF), FY2001–14'
+      - label: "Afghanistan and other counterterror"
+        detail: "OEF, FY2001–14"
         value: 686
-      - label: 'Iraq (OIF and New Dawn), FY2001–14'
+      - label: "Iraq"
+        detail: "OIF and New Dawn, FY2001–14"
         value: 815
   - id: iraq-estimates-vs-appropriations
     title: 'The Iraq war: early cost estimates against what Congress appropriated'
@@ -455,9 +457,11 @@ comparisons:
       "for several years") is a yearly rate, not a total, so it is not
       charted.
     items:
-      - label: 'Daniels (White House budget office), 2002'
+      - label: "Daniels, 2002"
+        detail: "White House budget office"
         value: 60
-      - label: 'Lindsey (White House economic adviser), Sep 2002'
+      - label: "Lindsey, Sep 2002"
+        detail: "White House economic adviser"
         value: 200
       - label: 'Brookings, Aug 2003 (after the invasion)'
         value: 300

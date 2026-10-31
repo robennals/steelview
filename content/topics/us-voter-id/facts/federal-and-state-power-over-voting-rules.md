@@ -564,9 +564,11 @@ comparisons:
     domainMax: 100
     sources: [23, 27]
     items:
-      - label: 'Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022'
+      - label: "Freedom to Vote: John R. Lewis Act"
+        detail: "Democratic, 19 Jan 2022"
         value: 49
-      - label: 'S. 5271, photo ID only (Republican), 8 Aug 2026'
+      - label: "S. 5271, photo ID only"
+        detail: "Republican, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
         value: 60

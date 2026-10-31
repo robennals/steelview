@@ -966,17 +966,23 @@ comparisons:
     sources: [14]
     note: 'Values are the NET (very plus somewhat confident) column of the data table for Pew''s chart "Democratic supporters are more confident than GOP backers that noncitizens are not able to vote". Groups are supporters of each party''s House candidates. "All voters" (Pew''s "All RVs") includes those backing neither.'
     items:
-      - label: 'Noncitizens who try to vote will be stopped — all voters'
+      - label: "Noncitizens stopped — all voters"
+        detail: "Noncitizens who try to vote will be stopped"
         value: 68
-      - label: 'Noncitizens who try to vote will be stopped — Republican supporters'
+      - label: "Noncitizens stopped — Republican supporters"
+        detail: "Noncitizens who try to vote will be stopped"
         value: 45
-      - label: 'Noncitizens who try to vote will be stopped — Democratic supporters'
+      - label: "Noncitizens stopped — Democratic supporters"
+        detail: "Noncitizens who try to vote will be stopped"
         value: 90
-      - label: 'All legally qualified voters can vote — all voters'
+      - label: "Qualified voters can vote — all voters"
+        detail: "All legally qualified voters can vote"
         value: 80
-      - label: 'All legally qualified voters can vote — Republican supporters'
+      - label: "Qualified voters can vote — Republican supporters"
+        detail: "All legally qualified voters can vote"
         value: 90
-      - label: 'All legally qualified voters can vote — Democratic supporters'
+      - label: "Qualified voters can vote — Democratic supporters"
+        detail: "All legally qualified voters can vote"
         value: 72
   - id: leadership-gap-by-administration
     title: 'US confidence in the honesty of elections, by approval of national leadership, 2006–2026'

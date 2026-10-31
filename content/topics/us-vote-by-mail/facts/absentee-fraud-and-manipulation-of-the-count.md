@@ -525,11 +525,14 @@ comparisons:
       - label: Mainly absentee or mail ballots
         value: 16
         highlight: true
-      - label: Absentee or mail ballots, plus other illegal votes
+      - label: "Absentee or mail, plus other illegal votes"
+        detail: "Absentee or mail ballots, plus other illegal votes"
         value: 5
-      - label: Ineligible or out-of-district voters, or ballot order
+      - label: "Ineligible voters or ballot order"
+        detail: "Ineligible or out-of-district voters, or ballot order"
         value: 8
-      - label: Votes ruled invalid, voting method not stated
+      - label: "Votes ruled invalid"
+        detail: "Voting method not stated"
         value: 2
       - label: Vote buying
         value: 1
@@ -668,7 +671,7 @@ figures:
       - { label: 'Aberdeen, Miss., 2020 primary', values: { margin: 37, invalid: 66 } }
       - { label: 'Bridgeport, Conn., 2023 primary', values: { margin: 251, invalid: null } }
       - { label: 'Caddo Parish, La., 2023 runoff', values: { margin: { value: 1, asPublished: decided by one vote }, invalid: { value: 11, qualifier: at least, asPublished: at least 11 illegal votes } } }
-      - { label: 'Harris County, Tex., judicial race (entry 2024)', values: { margin: 449, invalid: 1482 } }
+      - { label: "Harris County, Tex. (entry 2024)", detail: "Judicial race", values: { margin: 449, invalid: 1482 } }
   - kind: comparison
     id: absentee-and-impersonation-cases
   - kind: dataTable

@@ -1852,9 +1852,11 @@ comparisons:
   - 28
   note: "MAC baseline: 3.0% real discount rate and 1.8% real growth in taxes and spending. \"Age-matched UK resident\" has the same starting-age mix as Skilled Worker main applicants outside health and care. The Partner route (partners of British citizens and settled residents) comes from the MAC annual report. Students, Graduate route, refugees and other family routes have not been modelled. All values are means except the UK resident median, shown because most residents are below the mean."
   items:
-  - label: Skilled Worker main applicants (outside health and care)
+  - label: "Skilled Worker main applicants"
+    detail: "Outside health and care"
     value: 689000
-  - label: "Other health and care occupations (mainly nurses and doctors)"
+  - label: "Other health and care occupations"
+    detail: "Mainly nurses and doctors"
     value: 166000
   - label: Age-matched UK resident (comparator, mean)
     value: 117000
@@ -1965,9 +1967,11 @@ figures:
   - { key: per-person, label: "GDP per person" }
   - { key: total, label: "Total GDP" }
   items:
-  - label: "Nearly all adults on work visas (about 90% participation)"
+  - label: "Nearly all adults on work visas"
+    detail: "About 90% participation"
     values: { per-person: 0.8, total: 2.2 }
-  - label: "Migrants as productive as residents; capital keeps pace"
+  - label: "Migrants as productive as residents"
+    detail: "Capital keeps pace"
     values: { per-person: { value: 0, qualifier: "about", asPublished: "largely unchanged" }, total: 1.5 }
   - label: "Capital stock does not adjust"
     values: { per-person: -0.4, total: 1 }
@@ -1990,14 +1994,16 @@ figures:
   - { key: age-82, label: "To age 82" }
   - { key: age-100, label: "To age 100" }
   items:
-  - label: "High-wage migrant (30% above average pay)"
+  - label: "High-wage migrant"
+    detail: "30% above average pay"
     values: { age-66: 1247000, age-82: 1010000, age-100: 252000 }
   - label: "Average-wage migrant"
     values: { age-66: 722000, age-82: 405000, age-100: -405000 }
   - label: "Representative UK resident"
     values: { age-66: 309000, age-82: -7000, age-100: -818000 }
     highlight: true
-  - label: "Low-wage migrant (half of average pay)"
+  - label: "Low-wage migrant"
+    detail: "Half of average pay"
     values: { age-66: -198000, age-82: -653000, age-100: -1555000 }
 - kind: comparison
   id: earnings-by-route

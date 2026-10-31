@@ -1547,7 +1547,8 @@ comparisons:
         value: 2692232
       - label: Ten-year migration
         value: 2692232
-      - label: Migration category variant (ONS main projection)
+      - label: "Migration category variant"
+        detail: "ONS main projection"
         value: 2417584
         highlight: true
       - label: Low international migration

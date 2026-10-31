@@ -497,7 +497,8 @@ comparisons:
       than"), so it is approximate. Ohio's later figure of 167 voters spans federal elections from
       2018, so it has no single-election denominator and is not shown here.
     items:
-      - label: Brennan Center survey, 2016 (42 jurisdictions)
+      - label: "Brennan Center survey, 2016"
+        detail: "42 jurisdictions"
         value: 1.3
       - label: Ohio, 2020 general
         value: 2.2
@@ -559,11 +560,14 @@ comparisons:
       - label: Iowa 1st District, 2024 margin
         value: 798
         highlight: true
-      - label: Georgia, DHS-flagged registrants who had ever voted (2026)
+      - label: "Georgia, DHS-flagged, ever voted"
+        detail: "Georgia, DHS-flagged registrants who had ever voted (2026)"
         value: 150
-      - label: Iowa, non-citizens who voted in 2024 (statewide)
+      - label: "Iowa non-citizen voters, 2024 (statewide)"
+        detail: "Iowa, non-citizens who voted in 2024 (statewide)"
         value: 35
-      - label: Georgia, confirmed non-citizens who had ever voted (2024 audit)
+      - label: "Georgia, confirmed non-citizens, ever voted"
+        detail: "Georgia, confirmed non-citizens who had ever voted (2024 audit)"
         value: 9
   - id: ohio-referrals
     title: Ohio's non-citizen referrals, by year announced

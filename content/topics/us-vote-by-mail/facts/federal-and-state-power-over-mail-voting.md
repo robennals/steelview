@@ -506,9 +506,11 @@ comparisons:
       5271, a separate Republican photo-ID bill. The SAVE America Act itself
       has had no Senate vote in the sources read.
     items:
-      - label: 'Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022'
+      - label: "Freedom to Vote: John R. Lewis Act"
+        detail: "Democratic, 19 Jan 2022"
         value: 49
-      - label: 'S. 5271, photo ID only (Republican), 8 Aug 2026'
+      - label: "S. 5271, photo ID only"
+        detail: "Republican, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
         value: 60

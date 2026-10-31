@@ -872,14 +872,16 @@ comparisons:
         value: 18.1
       - label: Arrived after the deadline
         value: 17.8
-      - label: Voter already cast another ballot that was accepted
+      - label: "Voter already cast an accepted ballot"
+        detail: "Voter already cast another ballot that was accepted"
         value: 11.1
       - label: No voter signature
         value: 10
         highlight: true
       - label: No witness signature
         value: 5.6
-      - label: Required ID or other document missing or incomplete
+      - label: "Required ID or document missing"
+        detail: "Required ID or other document missing or incomplete"
         value: 4.4
       - label: Not in required secrecy envelope
         value: 3.7
