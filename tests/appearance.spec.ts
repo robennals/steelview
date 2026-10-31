@@ -39,7 +39,8 @@ test('opening every row of a topic at phone width does not widen the page', asyn
       await row.locator('.sv-row__toggle').click(headCorner);
       await expect(row.locator('.sv-walk__chart-loading')).toHaveCount(0);
       // While a row's walkthrough slides in, its transform holds everything inside it.
-      await row.evaluate(el => Promise.allSettled(el.getAnimations({ subtree: true }).map(a => a.finished)));
+      // Transitions only: a scrolling box's fade follows its scrolling, so never finishes.
+      await row.evaluate(el => Promise.allSettled(el.getAnimations({ subtree: true }).filter(a => a instanceof CSSTransition).map(a => a.finished)));
       const overflows = await page.evaluate(
         () => document.documentElement.scrollWidth > document.documentElement.clientWidth
       );

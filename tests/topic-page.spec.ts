@@ -304,6 +304,24 @@ test('on a phone, a long chart scrolls in its own box, then hands on to the page
   await expectWheelMovesPage(page, figure);
 });
 
+test('a long chart fades out at its bottom edge until there is no more to see, and a short one never does', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const { figures } = await openFigures(page);
+  const fades = await figures.evaluateAll(els => els.map(el => ({
+    overflows: el.scrollHeight > el.clientHeight + 1,
+    fade: parseFloat(getComputedStyle(el).getPropertyValue('--sv-fade-bottom')),
+  })));
+  expect(fades.some(figure => figure.overflows)).toBe(true);
+  for (const { overflows, fade } of fades) {
+    if (overflows) expect(fade).toBeGreaterThan(0);
+    else expect(fade).toBe(0);
+  }
+
+  const long = figures.nth(fades.findIndex(figure => figure.overflows));
+  await long.evaluate(el => { el.scrollTop = el.scrollHeight; });
+  await expect.poll(() => long.evaluate(el => parseFloat(getComputedStyle(el).getPropertyValue('--sv-fade-bottom')))).toBe(0);
+});
+
 test('on a phone, a short bar chart takes the height it needs, neither clipped nor padded', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(TOPIC);

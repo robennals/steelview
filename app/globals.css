@@ -2325,6 +2325,26 @@
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
 
+  /* A chart or table cut off by its box fades out at the edge with more beyond
+     it, as most scrollbars stay hidden until used. Each fade follows how far the
+     box has scrolled, so it goes at the end, and a box that fits never has one. */
+  @property --sv-fade-bottom { syntax: "<length>"; inherits: false; initial-value: 0px; }
+  @property --sv-fade-right { syntax: "<length>"; inherits: false; initial-value: 0px; }
+  @keyframes sv-fade-bottom { from { --sv-fade-bottom: 3rem; } to { --sv-fade-bottom: 0px; } }
+  @keyframes sv-fade-right { from { --sv-fade-right: 3rem; } to { --sv-fade-right: 0px; } }
+
+  .sv-walk__chart .sv-slide, .sv-slide__figure, .sv-data__scroll, .sv-chart__table-scroll {
+    mask-image:
+      linear-gradient(to bottom, #000 calc(100% - var(--sv-fade-bottom)), transparent),
+      linear-gradient(to right, #000 calc(100% - var(--sv-fade-right)), transparent);
+    mask-composite: intersect;
+    animation: sv-fade-bottom linear both, sv-fade-right linear both;
+    animation-timeline: scroll(self block), scroll(self inline);
+  }
+
+  /* A mask would cut off the box's focus outline. */
+  .sv-data__scroll:focus-visible, .sv-chart__table-scroll:focus-visible { mask-image: none; }
+
   .sv-walk__explore { margin-top: 0.5rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; }
   .sv-walk__explore p { margin: 0; }
   .sv-walk__explore p::after { content: " →"; color: var(--accent); }
