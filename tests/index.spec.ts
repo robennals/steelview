@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 
 const rows = (page: import('@playwright/test').Page) => page.locator('.sv-row');
 const toggle = (page: import('@playwright/test').Page, n: number) => rows(page).nth(n).locator('.sv-row__toggle');
@@ -11,11 +11,31 @@ test('the home page links to each topic', async ({ page }) => {
   await expect(page).toHaveURL(/\/topics\/uk-immigration$/);
 });
 
+test('the masthead shows the full stop but names the site without it', async ({ page }) => {
+  await page.goto('/');
+  const wordmark = page.getByRole('link', { name: 'Steelview', exact: true });
+  await expect(wordmark).toHaveText('Steelview.');
+});
+
+test('the page declares a favicon that can be fetched', async ({ page, request }) => {
+  await page.goto('/');
+  const href = await page.locator('link[rel="icon"][type="image/svg+xml"]').getAttribute('href');
+  expect((await request.get(href ?? '')).status()).toBe(200);
+});
+
 test('the tagline links to the About page', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Every side of the argument, at its strongest.');
   await page.getByRole('link', { name: /What is Steelview\?/ }).click();
   await expect(page).toHaveURL(/\/about$/);
+});
+
+test('the UK topics come after every other topic', async ({ page }) => {
+  await page.goto('/');
+  const firstTags = await rows(page).locator('.sv-tag:first-child').allTextContents();
+  const firstUk = firstTags.indexOf('UK');
+  expect(firstUk).toBeGreaterThan(0);
+  expect(firstTags.slice(firstUk).every(tag => tag === 'UK')).toBe(true);
 });
 
 test('the first topic starts open and its carousel steps through the charts', async ({ page }) => {

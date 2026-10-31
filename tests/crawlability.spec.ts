@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './hydrated-test';
 
 // Addressing each fact individually is only worth anything if a machine can
 // find and use them, so the sitemap, the canonicals and the structured data

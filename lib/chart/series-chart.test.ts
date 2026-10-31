@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Series, SeriesPoint } from '@/lib/content/types';
 import {
+  plotMark,
   CHART_GEOMETRY,
   formatTick,
   formatValue,
@@ -443,4 +444,20 @@ test('a monthly series under three years long gets month ticks, not one year lab
     readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points: months.map((period, i) => ({ period, value: i })) }] }],
   };
   assert.deepEqual(layoutReading(monthly, monthly.readings[0], 'narrow').timeTicks.map((t) => t.label), ['Jan 2026', 'Apr', 'Jul', 'Oct']);
+});
+
+test('a region veils the plot either side of it, and a point carries its value', () => {
+  const data = series();
+  const reading = data.readings[0];
+  const layout = layoutReading(data, reading, 'wide');
+  const { left, plotWidth } = layout.geometry;
+  const region = plotMark(layout, reading, { from: '1991', to: '1992' });
+  assert.deepEqual(region.veils, [{ x0: left, x1: layout.x('1991') }, { x0: layout.x('1992'), x1: left + plotWidth }]);
+  assert.deepEqual(region.points, []);
+  assert.deepEqual(plotMark(layout, reading, { from: '1991' }).veils, [{ x0: left, x1: layout.x('1991') }]);
+  const point = plotMark(layout, reading, { lines: ['Net migration'], at: '1992' });
+  assert.deepEqual(point.veils, []);
+  assert.deepEqual(point.points.map(p => p.label), ['50']);
+  assert.deepEqual(plotMark(layout, reading, { at: '1992' }).points.map(p => p.label), ['300', '50']);
+  assert.deepEqual(plotMark(layout, reading, { lines: ['Immigration'] }), { veils: [], points: [] });
 });

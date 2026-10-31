@@ -3,6 +3,7 @@ import { useState, type ReactNode } from 'react';
 import type { Fact, Source } from '@/lib/content/types';
 import { rankOf } from '@/lib/chart/comparison-preview';
 import { ChartAbout } from './chart-about';
+import { ObservationBar } from './observation-bar';
 import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -36,7 +37,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   sources: Source[];
   observations?: ReactNode;
   preview?: ChartPreview;
-  /** Drawn in a data panel: filling its height, with its source credit linking to the source itself. */
+  /** Drawn in a data panel, with its source credit linking to the source itself. */
   panel?: boolean;
 }) {
   const [selected, setSelected] = useState(chart.defaultGroup ?? -1);
@@ -66,6 +67,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
         ? <ChartAbout description={chart.description}>{chart.note && <p>{chart.note}</p>}</ChartAbout>
         : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
+    {panel && <ObservationBar />}
     {chart.groups && !preview && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
       {[...chart.groups, allGroupsLabel].map((label, index) => { const value = index === chart.groups!.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
     </fieldset>}
@@ -79,7 +81,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
       </ol>
       {rank && <p className="sv-comparison__rank">{rank.label}: {format(items.find(item => item.highlight)!.value)} — {ordinal(rank.rank)} of {rank.of}</p>}
     </> : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined}>
-      {items.map((item, index) => <li key={`${chart.id}-${index}`}>
+      {items.map((item, index) => <li key={`${chart.id}-${index}`} data-row={item.label}>
         <div className="sv-comparison__label"><span title={preview ? item.label : undefined}>{item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></div>
         <div className="sv-comparison__track" aria-hidden="true">
           <span className="sv-comparison__zero" style={{ left: `${zero}%` }} />

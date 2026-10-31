@@ -4,6 +4,7 @@ import {
   CaveatList,
   ClaimCheck,
   CompositionBar,
+  DataCards,
   DataTable,
   EstimateRange,
   GeoMap,
@@ -38,6 +39,7 @@ import {
   type FigureContext,
 } from '@/lib/content/figure-props';
 import type { PreviewSlide } from '@/lib/content/preview';
+import { markedObservations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { figureLabel, isComponentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
@@ -95,8 +97,8 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
 
 /**
  * One chart of a data panel in full: its controls, method changes and source,
- * for one reading of a series. Its observations are in the panel beside it, and
- * its source links lead to the sources themselves, whose list is not on the page.
+ * for one reading of a series. Its observations come from the step it sits in,
+ * and its source links lead to the sources themselves, whose list is not on the page.
  */
 export function PanelChart({ slide }: { slide: PreviewSlide }) {
   const { fact, chart, reading: only } = slide;
@@ -107,7 +109,7 @@ export function PanelChart({ slide }: { slide: PreviewSlide }) {
     const sourceOffset = seriesSourceOffset(fact, index);
     const reading = series.readings.find(r => r.id === only) ?? series.readings[0];
     const method = methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series), n => sources[n - 1].url);
-    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} />;
+    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={markedObservations(fact, reading.id)} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
   return comparison ? <ComparisonChart fact={fact} chart={comparison} sources={sources} panel /> : null;
@@ -198,7 +200,9 @@ export function FactFigures({ fact, observations, subtleties, sections, featured
 export function FactFigure({ figure, context, page, footer }: { figure: ComponentFigure; context: FigureContext; page: FigurePage; footer?: ReactNode }) {
   switch (figure.kind) {
     case 'dataTable':
-      return <DataTable {...dataTableProps(figure, context)} footer={footer} />;
+      return figure.layout
+        ? <DataCards {...dataTableProps(figure, context)} layout={figure.layout} leadColumn={figure.leadColumn} dateColumn={figure.dateColumn} footer={footer} />
+        : <DataTable {...dataTableProps(figure, context)} footer={footer} />;
     case 'keyFigures':
       return <KeyFigures {...keyFiguresProps(figure, context)} footer={footer} />;
     case 'timeline':

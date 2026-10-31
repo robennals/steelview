@@ -712,7 +712,7 @@ comparisons:
         values: [0, 0, 0, 2]
     note: >-
       This is the report's own classification of the cases it lists, not a
-      sample of all US fraud; the table under Observations gives each case's
+      sample of all US fraud; the timeline under Observations gives each case's
       source. Officials: Baltimore 1878, Blaine County OK (indictment upheld
       1915), Kansas City 1936, New Orleans 1940, Harlan County KY 1942, Logan
       County WV 1970, Darlington County SC 1982, Chicago 1982. Absentee or mail:
@@ -926,7 +926,9 @@ figures:
     id: cases
     title: 'Twenty documented cases of election fraud, 1878–2020'
     description: 'How each fraud was done, whether a polling-place ID check would reach it, and what happened.'
-    caption: 'One row per case'
+    caption: 'One card per case'
+    layout: timeline
+    leadColumn: how
     columns:
       - { key: case, label: 'Case', rowHeader: true }
       - { key: how, label: 'How it was done', sortable: false }
@@ -1017,7 +1019,9 @@ figures:
     id: modern-results
     title: 'The three modern results voided or rerun, 2003–2020'
     description: 'The margin in each modern election that was voided or rerun, and what the record found.'
-    caption: 'One row per election'
+    caption: 'One card per election'
+    layout: timeline
+    leadColumn: found
     columns:
       - { key: election, label: 'Election', rowHeader: true }
       - { key: margin, label: 'The margin', sortable: false }
@@ -1112,11 +1116,11 @@ It judged that a good ID system "could deter, detect, or eliminate" multiple vot
 
 ### Case by case: how each fraud was done, and what happened {#election-fraud-and-voter-exclusion-history--case-table}
 
-Each row of the table gives how the fraud was done, whether a polling-place ID check would reach it, and what happened, as of the date shown.
+Each card gives how the fraud was done, whether a polling-place ID check would reach it, and what happened, as of the date shown.
 
 ### Machine fraud was large, and was prosecuted {#election-fraud-and-voter-exclusion-history--machine-fraud-real-and-prosecuted}
 
-Kansas City's 1936 fraud led to hundreds of convictions and Chicago's 1982 fraud to dozens (see the table). [7](#source-election-fraud-and-voter-exclusion-history-7) [1](#source-election-fraud-and-voter-exclusion-history-1) [2](#source-election-fraud-and-voter-exclusion-history-2) In Kansas City's ninth trial, the judge noted no jury had yet acquitted a defendant. [11](#source-election-fraud-and-voter-exclusion-history-11)
+Kansas City's 1936 fraud led to hundreds of convictions and Chicago's 1982 fraud to dozens (see the timeline). [7](#source-election-fraud-and-voter-exclusion-history-7) [1](#source-election-fraud-and-voter-exclusion-history-1) [2](#source-election-fraud-and-voter-exclusion-history-2) In Kansas City's ninth trial, the judge noted no jury had yet acquitted a defendant. [11](#source-election-fraud-and-voter-exclusion-history-11)
 
 In one Kansas City precinct, the Republican congressional candidate received 120 votes and was credited with 46. [8](#source-election-fraud-and-voter-exclusion-history-8)
 
@@ -1270,7 +1274,7 @@ The fraud cases are counted in convictions and altered ballots per precinct; the
 
 **What is measured.** Named cases where a court opinion, a Justice Department report or a state election board describes how fraud or exclusion was done. Added to these are three compilations of detected modern fraud (Heritage, News21, Levitt) and the registration tables the Supreme Court reproduced.
 
-**How the cases are classified.** The case chart is this report's own classification of the cases listed; each case's row in the table gives the source for its method.
+**How the cases are classified.** The case chart is this report's own classification of the cases listed; each case's card in the timeline gives the source for its method.
 
 **Scanning errors.** Court opinions are read in the Caselaw Access Project's text, which contains some scanning errors (for example "62.[6]"). Quotes keep those errors rather than correcting them.
 

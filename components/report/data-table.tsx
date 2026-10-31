@@ -2,8 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { ReportFigure } from './figure';
-import { formatValue } from './format';
-import { cellValue, sortRows, type SortDirection, type TableCell } from './table-sort';
+import { cellText, cellValue, sortRows, type SortDirection, type TableCell } from './table-sort';
 import type { SourceCredit, ValueFormat } from './types';
 
 export type DataTableColumn = {
@@ -74,15 +73,6 @@ export function DataTable({
   const isNumeric = (column: DataTableColumn) =>
     column.format !== 'text' && (column.format !== undefined || rows.some(row => typeof cellValue(row[column.key]) === 'number'));
   const alignOf = (column: DataTableColumn) => column.align ?? (isNumeric(column) ? 'right' : 'left');
-  const cellText = (column: DataTableColumn, cited: TableCell) => {
-    const cell = cellValue(cited);
-    if (cell === null || cell === undefined || cell === '') return '—';
-    if (typeof cell === 'number' && column.format !== 'text') {
-      // Fixed decimals by default: in a column, "16" beside "26.9" misaligns the digits a reader compares.
-      return formatValue(cell, { fixed: true, ...(column.format ?? { unit: 'number' }) });
-    }
-    return String(cell);
-  };
 
   const onSort = (column: DataTableColumn) => {
     // Numbers start largest-first, which is the question a reader sorting
@@ -127,13 +117,13 @@ export function DataTable({
           </thead>
           <tbody>
             {sorted.map((row, i) => (
-              <tr key={`${String(cellValue(row[headerKey]))}-${i}`} data-highlight={highlighted.has(String(cellValue(row[headerKey]))) || undefined}>
+              <tr key={`${String(cellValue(row[headerKey]))}-${i}`} data-row={String(cellValue(row[headerKey]))} data-highlight={highlighted.has(String(cellValue(row[headerKey]))) || undefined}>
                 {columns.map(column => {
                   const Cell = column.key === headerKey ? 'th' : 'td';
                   const cell = row[column.key];
                   return (
                     <Cell key={column.key} scope={Cell === 'th' ? 'row' : undefined} data-align={alignOf(column)}>
-                      {cellText(column, cell)}
+                      {cellText(cell, column.format)}
                       {cell !== null && typeof cell === 'object' && <Footnotes sources={cell.sources} />}
                     </Cell>
                   );
@@ -149,7 +139,7 @@ export function DataTable({
 }
 
 /** A cited cell's " [n]" links, one per source, each to its quoted reference. */
-function Footnotes({ sources }: { sources: SourceCredit[] }) {
+export function Footnotes({ sources }: { sources: SourceCredit[] }) {
   return sources.map((source, i) => {
     const text = source.number ? `[${source.number}]` : source.label;
     return (

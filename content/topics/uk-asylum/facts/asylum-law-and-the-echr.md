@@ -581,7 +581,10 @@ figures:
     id: article-31
     title: 'Article 31 and "coming directly", 1999–2024'
     description: How UK courts, Parliament and UNHCR have read the Refugee Convention's defence for refugees who stopped on the way.
-    caption: One row per ruling, law or guideline
+    caption: One card per ruling, law or guideline
+    layout: timeline
+    leadColumn: says
+    dateColumn: year
     columns:
       - { key: year, label: Year, format: text }
       - { key: text, label: Text or ruling, rowHeader: true }
@@ -607,7 +610,9 @@ figures:
     id: wolfson-review
     title: What the Wolfson review advised, 2025
     description: Legal advice to the Leader of the Opposition from Lord Wolfson of Tredegar KC, dated 2 October 2025. It contains no count of removals blocked by the ECHR.
-    caption: One row per question the review answers
+    caption: One card per question the review answers
+    layout: cards
+    leadColumn: advice
     columns:
       - { key: question, label: Question, rowHeader: true }
       - { key: advice, label: "Wolfson's advice", sortable: false }
@@ -626,7 +631,9 @@ figures:
     id: tca-part-three
     title: What leaving the ECHR would do to UK–EU policing cooperation
     description: The settled text of Part Three of the UK–EU Trade and Cooperation Agreement (TCA).
-    caption: One row per provision
+    caption: One card per provision
+    layout: cards
+    leadColumn: says
     columns:
       - { key: provision, label: Provision, rowHeader: true }
       - { key: says, label: What it says, sortable: false }
@@ -643,7 +650,8 @@ figures:
     id: leaving-the-echr
     title: Would leaving the ECHR breach the Good Friday Agreement?
     description: Contested law. The two readings of the same commitment, side by side.
-    caption: One row per point of dispute
+    caption: One card per point of dispute
+    layout: cards
     columns:
       - { key: point, label: Point, rowHeader: true }
       - { key: exchange, label: Policy Exchange and Wolfson, sortable: false }
@@ -662,7 +670,9 @@ figures:
     id: chisinau-declaration
     title: What the Chişinău Declaration says, May 2026
     description: Adopted by all 46 Council of Europe states, including the UK, on 15 May 2026, a year after a letter led by Italy and Denmark that the UK did not sign.
-    caption: One row per topic
+    caption: One card per topic
+    layout: cards
+    leadColumn: says
     columns:
       - { key: topic, label: Topic, rowHeader: true }
       - { key: says, label: What the declaration says, sortable: false }
@@ -683,7 +693,9 @@ figures:
     id: immigration-and-asylum-bill
     title: What the Immigration and Asylum Bill would change, 2026
     description: The Bill was introduced in the Commons on 30 June 2026.
-    caption: One row per part of the Bill
+    caption: One card per part of the Bill
+    layout: cards
+    leadColumn: does
     columns:
       - { key: part, label: Part, rowHeader: true }
       - { key: does, label: What it would do, sortable: false }
