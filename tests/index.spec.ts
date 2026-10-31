@@ -46,6 +46,14 @@ test('a short bar chart preview spreads its rows a little, and a wrapped label k
   expect(height).toBeGreaterThan(200);
 });
 
+test('the UK topics come after every other topic', async ({ page }) => {
+  await page.goto('/');
+  const firstTags = await rows(page).locator('.sv-tag:first-child').allTextContents();
+  const firstUk = firstTags.indexOf('UK');
+  expect(firstUk).toBeGreaterThan(0);
+  expect(firstTags.slice(firstUk).every(tag => tag === 'UK')).toBe(true);
+});
+
 test('the first topic starts open and its carousel steps through the charts', async ({ page }) => {
   await page.goto('/');
   await expect(rows(page).first()).toHaveAttribute('data-open', 'true');

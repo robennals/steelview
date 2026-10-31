@@ -55,6 +55,7 @@ function soundTopic(): Topic {
     title: 'Example',
     subtitle: 'Sub',
     lastUpdated: '2026-08-18',
+    firstPublished: '2026-08-18',
     intro: 'Intro.',
     facts: [fact({ id: 'alpha' }), fact({ id: 'gamma' })],
     viewpoints: [
@@ -1040,4 +1041,31 @@ test('preview charts: a named reading must exist on that series, and only a seri
   const errors = validateTopic(t);
   assert.ok(errors.includes('topic: preview chart alpha/series has no reading "share"'), errors.join('\n'));
   assert.ok(errors.includes('topic: preview chart alpha/shares is not a series, so it cannot name a reading'), errors.join('\n'));
+});
+
+const markedFact = (observationMarks: Fact['observationMarks']) => fact({
+  id: 'f',
+  observationMarks,
+  series: series(),
+  comparisons: [{ id: 'c', title: 'C', description: 'd', valueLabel: 'v', unit: 'count', sources: [1], items: [{ label: 'UK', value: 1 }] }],
+  body: '## Observations {#f--observations-people}\n\n### Up {#f--up}\n\nText.\n\n## Observations {#f--observations-c}\n\n### Low {#f--low}\n\nText.\n',
+});
+
+const markErrors = (observationMarks: Fact['observationMarks']) =>
+  validateTopic({ ...soundTopic(), facts: [markedFact(observationMarks)] }).filter(error => error.includes('observation mark'));
+
+test('a mark that lands on its chart passes', () => {
+  assert.deepEqual(markErrors({ up: { lines: ['Immigration'], from: '1990', to: '1992' }, low: { rows: ['UK'] } }), []);
+  assert.deepEqual(markErrors({ up: { at: '1992' } }), []);
+});
+
+test('a mark must name what is on its chart', () => {
+  assert.match(markErrors({ gone: { lines: ['Immigration'] } })[0], /"gone" is not an observation of a chart/);
+  assert.match(markErrors({ up: { lines: ['B'] } })[0], /names "B", which is not a line of people/);
+  assert.match(markErrors({ up: { from: '1989' } })[0], /period 1989 is outside the series/);
+  assert.match(markErrors({ up: { from: '1992', to: '1990' } })[0], /from before to/);
+  assert.match(markErrors({ up: { at: '1980' } })[0], /at 1980 is not a point/);
+  assert.match(markErrors({ up: { rows: ['UK'] } })[0], /is a line chart/);
+  assert.match(markErrors({ low: { rows: ['France'] } })[0], /names "France", which is not a row of c/);
+  assert.match(markErrors({ low: { lines: ['Immigration'] } })[0], /its chart has rows/);
 });
