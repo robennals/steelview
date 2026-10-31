@@ -289,10 +289,9 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
   // another is not, whatever the reader has or hasn't clicked yet.
   assert.equal(html.match(/class="sv-row sv-row--walk sv-row--data"/g)?.length, 1);
   assert.equal(html.match(/class="sv-item sv-subfact"/g), null);
-  // Every fact is addressed by its own URL. The in-page `#fact-<id>` anchors
-  // are gone: one thing, one address. (A row reaches its collection through
-  // each chart's "Explore this data", which this chartless fixture has none of.)
-  assert.doesNotMatch(html, /id="fact-/);
+  // Only a row can be opened by the way back from a report's own page, so the
+  // headline fact alone is a `#fact-<id>` anchor here.
+  assert.equal(html.match(/id="fact-/g)?.length, 1);
   // The child's claim, its status and the fact that it supports something are
   // all reading a reader would only get by opening the parent fact — none of
   // it belongs in the list itself, so none of it is here.

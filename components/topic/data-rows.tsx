@@ -1,4 +1,5 @@
 import type { Fact } from '@/lib/content/types';
+import { anchorFor } from '@/lib/content/types';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from './chart-thumb';
@@ -78,6 +79,7 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
           <TopicRow
             key={fact.id}
             slug={fact.id}
+            anchor={anchorFor('fact', fact.id)}
             className="sv-row--walk sv-row--data"
             title={title}
             subtitle={fact.title ? fact.claim : ''}
