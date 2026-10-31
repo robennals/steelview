@@ -308,8 +308,9 @@ sources:
     title: >-
       Outcome analysis of asylum claims detailed datasets, year ending June
       2026 (Asy_D04 notes)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
@@ -436,8 +437,9 @@ sources:
       arrival date, 2018 Q1 to 2025 Q4 - dataset
     title: >-
       Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   - stance: complicates
@@ -447,8 +449,9 @@ sources:
     title: >-
       Asylum claims and initial decisions detailed datasets, year ending June
       2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   - stance: complicates
@@ -459,8 +462,9 @@ sources:
     title: >-
       Asylum claims and initial decisions detailed datasets, year ending June
       2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
 series:
@@ -499,8 +503,9 @@ series:
     title: >-
       Asylum claims and initial decisions detailed datasets, year ending June
       2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -856,8 +861,9 @@ additionalSeries:
       title: >-
         Asylum claims and initial decisions detailed datasets, year ending June
         2026
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -941,8 +947,9 @@ additionalSeries:
       title: >-
         Outcome analysis of asylum claims detailed datasets, year ending June
         2026
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1276,8 +1283,9 @@ additionalSeries:
         category and case type, 2007/08 to Q1 2026/27
       title: >-
         Tribunal Statistics Quarterly: April to June 2026, main tables
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+      url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+      fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+      localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
       publisher: Ministry of Justice
       date: '2026-09-10'
     readings:

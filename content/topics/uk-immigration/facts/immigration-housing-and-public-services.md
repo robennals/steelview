@@ -51,8 +51,9 @@ sources:
       areas, mid-2032 ... E92000001 ENGLAND 25958408 26233056 26233056 26645597
       25744716 25559547 24670656 274648 274648 687189 -213691 -398861 -1287752
     title: '2022-based household projections: variant comparison'
-    url: >-
-      https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland/2022basedvariantcomparison/2022basedhhpsvariantcomparison.xlsx
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland
+    fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland/2022basedvariantcomparison/2022basedhhpsvariantcomparison.xlsx
+    localFile: datasets/ons.gov.uk/2022basedhhpsvariantcomparison.xlsx
     publisher: Office for National Statistics
     date: '2025-10-28'
   - stance: supports
@@ -61,8 +62,9 @@ sources:
     title: >-
       2022-based household projections (migration category variant) - detailed
       data: Stage 1 projected households
-    url: >-
-      https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforenglanddetaileddataformodellingandanalysis/2022basedmigrationcategoryvariantprojection/2022hhpsmigrationcategoryvariant.zip
+    url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforenglanddetaileddataformodellingandanalysis
+    fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforenglanddetaileddataformodellingandanalysis/2022basedmigrationcategoryvariantprojection/2022hhpsmigrationcategoryvariant.zip
+    localFile: datasets/ons.gov.uk/2022hhpsmigrationcategoryvariant.zip
     publisher: Office for National Statistics
     date: '2025-10-28'
   - stance: complicates
@@ -446,8 +448,9 @@ sources:
     title: >-
       Live Table 1000: Additional affordable homes provided by tenure and
       provider, England, Completions
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a3927d8c6e94f095f3efbce/Live_Table_1000.ods
+    url: https://www.gov.uk/government/statistical-data-sets/live-tables-on-affordable-housing-supply
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a3927d8c6e94f095f3efbce/Live_Table_1000.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Live_Table_1000.ods
     publisher: 'Ministry of Housing, Communities and Local Government'
     date: '2026-06-25'
   - stance: complicates
@@ -491,8 +494,9 @@ sources:
       'Developer API') ... S13 General government ... P51G Gross fixed capital
       formation ... XDC National currency ... V Current prices
     title: 'OECD Data Explorer: Annual government non-financial accounts and key indicators (Table 0200)'
-    url: >-
-      https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NASEC10@DF_TABLE12,/A..S13...P51G.......?startPeriod=1995&format=csvfilewithlabels
+    url: https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_NASEC10%40DF_TABLE12&df[ag]=OECD.SDD.NAD
+    fileUrl: https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NASEC10@DF_TABLE12,/A..S13...P51G.......?startPeriod=1995&format=csvfilewithlabels
+    localFile: datasets/sdmx.oecd.org/government-accounts-table12.csv
     publisher: OECD
     date: '2026'
   - stance: supports
@@ -500,8 +504,9 @@ sources:
       Annual GDP and components - expenditure approach ... B1GQ ... XDC ... V
       ... T0102
     title: 'OECD Data Explorer: Annual GDP and components - expenditure approach (Table 0102)'
-    url: >-
-      https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE1_EXPENDITURE,/A..S1..B1GQ....XDC.V..?startPeriod=1995&format=csvfilewithlabels
+    url: https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_NAMAIN10%40DF_TABLE1_EXPENDITURE&df[ag]=OECD.SDD.NAD
+    fileUrl: https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE1_EXPENDITURE,/A..S1..B1GQ....XDC.V..?startPeriod=1995&format=csvfilewithlabels
+    localFile: datasets/sdmx.oecd.org/gdp-expenditure-table1.csv
     publisher: OECD
     date: '2026'
   - stance: supports
@@ -714,8 +719,9 @@ additionalSeries:
         This spreadsheet includes Price Index of Private Rents (PIPR) data from
         January 2015 to present.
       title: 'Price Index of Private Rents, UK: monthly price statistics'
-      url: >-
-        https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/21october2026/priceindexofprivaterentsukmonthlypricestatistics.xlsx
+      url: https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics
+      fileUrl: https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/21october2026/priceindexofprivaterentsukmonthlypricestatistics.xlsx
+      localFile: datasets/ons.gov.uk/priceindexofprivaterentsukmonthlypricestatistics.xlsx
       publisher: Office for National Statistics
       date: '2026-10-21'
     readings:
@@ -1009,8 +1015,9 @@ additionalSeries:
         non-maintained special schools, pupil referral units and independent
         schools.
       title: 'Schools, pupils and their characteristics: academic year 2025/26 (data set)'
-      url: >-
-        https://api.education.gov.uk/statistics/v1/data-sets/019e7404-df19-71ce-90a8-f2e3db7dd7fa/csv
+      url: https://explore-education-statistics.service.gov.uk/find-statistics/school-pupils-and-their-characteristics/2025-26
+      fileUrl: https://api.education.gov.uk/statistics/v1/data-sets/019e7404-df19-71ce-90a8-f2e3db7dd7fa/csv
+      localFile: datasets/api.education.gov.uk/pupil-characteristics-fsm-eligibility.csv
       publisher: Department for Education
       date: '2026-06-04'
     readings:
@@ -1149,8 +1156,9 @@ additionalSeries:
       title: >-
         Live Table 1000: Additional affordable homes provided by tenure and
         provider, England
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a3927d8c6e94f095f3efbce/Live_Table_1000.ods
+      url: https://www.gov.uk/government/statistical-data-sets/live-tables-on-affordable-housing-supply
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a3927d8c6e94f095f3efbce/Live_Table_1000.ods
+      localFile: datasets/assets.publishing.service.gov.uk/Live_Table_1000.ods
       publisher: 'Ministry of Housing, Communities and Local Government'
       date: '2026-06-25'
     readings:
@@ -1321,8 +1329,9 @@ additionalSeries:
       quote: >-
         School revenue funding for 5-16 year olds for 2010-11 to 2026-27
       title: 'School funding statistics: financial year 2025-26 (Tab1 data file)'
-      url: >-
-        https://content.explore-education-statistics.service.gov.uk/api/releases/411975aa-f198-46f7-a860-e9e896a4b710/files?fromPage=ReleaseDownloads
+      url: https://explore-education-statistics.service.gov.uk/find-statistics/school-funding-statistics/2025-26
+      fileUrl: https://content.explore-education-statistics.service.gov.uk/api/releases/411975aa-f198-46f7-a860-e9e896a4b710/files?fromPage=ReleaseDownloads
+      localFile: datasets/content.explore-education-statistics.service.gov.uk/school-funding-statistics-2025-26.zip
       publisher: Department for Education
       date: '2026-01-29'
     readings:
@@ -1393,8 +1402,9 @@ additionalSeries:
         Annual government non-financial accounts and key indicators (for
         'Developer API') ... P51G Gross fixed capital formation
       title: 'OECD Data Explorer: general government gross fixed capital formation and GDP'
-      url: >-
-        https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NASEC10@DF_TABLE12,/A..S13...P51G.......?startPeriod=1995&format=csvfilewithlabels
+      url: https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_NASEC10%40DF_TABLE12&df[ag]=OECD.SDD.NAD
+      fileUrl: https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NASEC10@DF_TABLE12,/A..S13...P51G.......?startPeriod=1995&format=csvfilewithlabels
+      localFile: datasets/sdmx.oecd.org/government-accounts-table12.csv
       publisher: OECD
       date: '2026'
     readings:

@@ -111,7 +111,9 @@ sources:
       21812 72.1 7.2 20 0.7 ... Midwest 27183 66.1 12.9 20.6 0.4 ... South
       43538 50.7 34.9 13.5 0.9 ... West 29383 15.7 5.8 77.9 0.7
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2022 (CPS Voting and Registration Supplement)'
-    url: https://www2.census.gov/programs-surveys/cps/tables/p20/586/vote14_2022.xlsx
+    url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-586.html
+    fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/586/vote14_2022.xlsx
+    localFile: datasets/www2.census.gov/p20-586-vote14_2022.xlsx
     publisher: U.S. Census Bureau
     date: '2023-04'
   # 8
@@ -126,7 +128,9 @@ sources:
       42.6 0.5 ... Midwest 34210 42 19.9 37.6 0.6 ... South 57064 29.2 46.4
       23.6 0.8 ... West 36001 10.1 10.2 79.1 0.7
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2020 (CPS Voting and Registration Supplement)'
-    url: https://www2.census.gov/programs-surveys/cps/tables/p20/585/table14.xlsx
+    url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-585.html
+    fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/585/table14.xlsx
+    localFile: datasets/www2.census.gov/p20-585-table14.xlsx
     publisher: U.S. Census Bureau
     date: '2021-04'
   # 9
@@ -141,7 +145,9 @@ sources:
       6.2 0.4 ... Midwest 27696 73.5 11.4 14.6 0.4 ... South 44723 56 33.3 9.7
       0.9 ... West 28483 28.5 5.6 65.2 0.7
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2018 (CPS Voting and Registration Supplement)'
-    url: https://www2.census.gov/programs-surveys/cps/tables/p20/583/table14.xlsx
+    url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-583.html
+    fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/583/table14.xlsx
+    localFile: datasets/www2.census.gov/p20-583-table14.xlsx
     publisher: U.S. Census Bureau
     date: '2019-04'
   # 10
@@ -420,7 +426,9 @@ series:
       18 0.7 ... South 57059 37.3 50.5 11.4 0.8 ... West 35575 16.1 9.6 73.5
       0.8
     title: 'Table 14. Method of Voting, By Selected Characteristics: November 2024 (CPS Voting and Registration Supplement)'
-    url: https://www2.census.gov/programs-surveys/cps/tables/p20/587/vote14_2024.xlsx
+    url: https://www.census.gov/data/tables/time-series/demo/voting-and-registration/p20-590.html
+    fileUrl: https://www2.census.gov/programs-surveys/cps/tables/p20/587/vote14_2024.xlsx
+    localFile: datasets/www2.census.gov/p20-587-vote14_2024.xlsx
     publisher: U.S. Census Bureau
     date: '2025-04-30'
 additionalSeries:

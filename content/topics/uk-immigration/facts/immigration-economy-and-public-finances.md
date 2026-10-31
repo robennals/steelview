@@ -23,13 +23,17 @@ sources:
 - stance: supports
   quote: "\"2007\",\"37625\" \"2008\",\"37300\" \"2009\",\"35339\" \"2010\",\"35850\" \"2011\",\"35856\" \"2012\",\"36160\" \"2013\",\"36537\" \"2014\",\"37411\" \"2015\",\"37937\" \"2016\",\"38467\" \"2017\",\"39415\" \"2018\",\"39831\" \"2019\",\"40125\" \"2020\",\"36033\" \"2021\",\"38972\" \"2022\",\"40554\" \"2023\",\"40126\" \"2024\",\"40153\" \"2025\",\"40546\""
   title: "Gross domestic product (Average) per head, CVM market prices (reference year = 2023), series IHXW, dataset PN2 (rows 2007–2025)"
-  url: "https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2"
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
+  fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
+  localFile: datasets/ons.gov.uk/timeseries-ihxw-pn2.csv
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
   quote: "\"2019\",\"2673465\" \"2020\",\"2404838\" \"2021\",\"2610286\" \"2022\",\"2744708\" \"2023\",\"2752164\" \"2024\",\"2780853\" \"2025\",\"2817414\""
   title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2 (rows 2019–2025)"
-  url: "https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2"
+  url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+  fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+  localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
@@ -239,7 +243,9 @@ sources:
 - stance: supports
   quote: "Chart 4.13: Cumulative fiscal impact of representative migrants"
   title: "Fiscal risks and sustainability – September 2024: chapter 4 charts and tables, sheet C4.13"
-  url: "https://obr.uk/docs/dlm_uploads/Chapter-4-charts-and-tables-FRS-September-2024-1.xlsx"
+  url: https://obr.uk/frs/fiscal-risks-and-sustainability-september-2024/
+  fileUrl: https://obr.uk/docs/dlm_uploads/Chapter-4-charts-and-tables-FRS-September-2024-1.xlsx
+  localFile: datasets/obr.uk/Chapter-4-charts-and-tables-FRS-September-2024-1.xlsx
   publisher: Office for Budget Responsibility
   date: "2024-11-14"
 - stance: supports
@@ -501,7 +507,9 @@ series:
     stance: supports
     quote: "\"Title\",\"Gross domestic product (Average) per head, CVM market prices (reference year = 2023) £: SA\""
     title: "Gross domestic product (Average) per head, CVM market prices (reference year = 2023), series IHXW, dataset PN2"
-    url: "https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2"
+    url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
+    fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
+    localFile: datasets/ons.gov.uk/timeseries-ihxw-pn2.csv
     publisher: Office for National Statistics
     date: "2026-08-13"
   readings:
@@ -668,7 +676,9 @@ additionalSeries:
     stance: supports
     quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
     title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
-    url: "https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2"
+    url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+    fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+    localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
     publisher: Office for National Statistics
     date: "2026-08-13"
   readings:
@@ -848,7 +858,9 @@ additionalSeries:
     stance: supports
     quote: GDP per capita (constant 2015 US$)
     title: "World Development Indicators: GDP per capita (constant 2015 US$), NY.GDP.PCAP.KD, G7 countries"
-    url: "https://api.worldbank.org/v2/country/GBR;USA;DEU;FRA;ITA;JPN;CAN/indicator/NY.GDP.PCAP.KD?format=json&per_page=1000"
+    url: https://data.worldbank.org/indicator/NY.GDP.PCAP.KD?locations=GB-US-DE-FR-IT-JP-CA
+    fileUrl: https://api.worldbank.org/v2/country/GBR;USA;DEU;FRA;ITA;JPN;CAN/indicator/NY.GDP.PCAP.KD?format=json&per_page=1000
+    localFile: datasets/api.worldbank.org/ny-gdp-pcap-kd-g7.json
     publisher: World Bank
     date: "2026-10-08"
   readings:

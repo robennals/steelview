@@ -38,13 +38,30 @@ const partialDate = z.preprocess(
     .regex(new RegExp(`^\\d{4}(-${MONTH}(-${DAY})?)?$`), 'must be YYYY, YYYY-MM or YYYY-MM-DD')
 );
 
+const httpUrl = z.string().regex(/^https?:\/\/\S+$/, 'must be an http(s) URL');
+
+/**
+ * Files a browser downloads or shows as raw text, and machine endpoints that
+ * serve them. A reader following a source must land on something they can
+ * read, so these belong in `fileUrl`, with `url` on the publisher's own page.
+ * PDFs are fine: they open in the browser.
+ */
+const RAW_FILE_URL =
+  /\.(xlsx?|ods|csv|tsv|zip|docx?|xml|json)([?#]|$)|\/api\/|\/\/api\.|^https?:\/\/(sdmx\.oecd\.org|stat\.link)\/|\/generator\?|\/file\?uri=/i;
+
 export const sourceSchema = z.object({
   stance: z.enum(SOURCE_STANCES),
   quote: z.string().min(1),
   /** The unit of a quoted table's bare numbers, which `check:figures` reads them in. */
   quoteUnit: z.enum(['$', '%']).optional(),
   title: z.string().min(1),
-  url: z.string().regex(/^https?:\/\/\S+$/, 'must be an http(s) URL'),
+  url: httpUrl.refine(url => !RAW_FILE_URL.test(url), {
+    error: 'must be a page a reader can open, not a data file: link the page that publishes it and put the file in fileUrl',
+  }),
+  /** The exact file or query the content was read from. Never shown: it is how a maintainer re-checks the source. */
+  fileUrl: httpUrl.optional(),
+  /** Our copy of `fileUrl`, relative to the main checkout. Git-ignored: we may not redistribute these files. */
+  localFile: z.string().regex(/^datasets\/\S+$/, 'must be a path under datasets/').optional(),
   publisher: z.string().min(1),
   date: partialDate,
 });

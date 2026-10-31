@@ -804,7 +804,9 @@ series:
       Ret_01: Returns from the UK, by type of return, year ending December 2004
       to year ending June 2026
     title: 'Returns summary tables, year ending June 2026 (Ret_01)'
-    url: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+    localFile: datasets/assets.publishing.service.gov.uk/returns-summary-jun-2026-tables.ods
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -981,7 +983,9 @@ additionalSeries:
         Ret_02a: Returns of foreign national offenders from the UK, year ending
         December 2010 to year ending June 2026
       title: 'Returns summary tables, year ending June 2026 (Ret_02a and Ret_05)'
-      url: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+      localFile: datasets/assets.publishing.service.gov.uk/returns-summary-jun-2026-tables.ods
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -995,7 +999,9 @@ additionalSeries:
             Ret_05: Returns from the UK, by type of return, and asylum and
             non-asylum, year ending December 2010 to year ending June 2026
           title: 'Returns summary tables, year ending June 2026 (Ret_05)'
-          url: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+          url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+          fileUrl: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+          localFile: datasets/assets.publishing.service.gov.uk/returns-summary-jun-2026-tables.ods
           publisher: Home Office
           date: '2026-08-27'
         lines:
@@ -1093,7 +1099,9 @@ additionalSeries:
       stance: supports
       quote: 'Asy_D04: Outcome analysis of asylum claims, 2007-2025 - dataset'
       title: 'Outcome analysis of asylum claims detailed dataset, year ending June 2026 (Asy_D04)'
-      url: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1321,7 +1329,9 @@ additionalSeries:
         by reason for leaving, year ending December 2010 to year ending June
         2026
       title: 'Immigration detention summary tables, year ending June 2026 (Det_04a)'
-      url: https://assets.publishing.service.gov.uk/media/6a85c45cb0504df9f2c89804/immigration-detention-summary-jun-2026-tables.ods
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c45cb0504df9f2c89804/immigration-detention-summary-jun-2026-tables.ods
+      localFile: datasets/assets.publishing.service.gov.uk/immigration-detention-summary-jun-2026-tables.ods
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1587,7 +1597,9 @@ additionalSeries:
         FNO_08: FNOs subject to deportation action living in the community and
         the length of time since the end of their custodial sentence
       title: 'Immigration Enforcement transparency data, Q2 2026 (FNO_08 and FNO_08a)'
-      url: https://assets.publishing.service.gov.uk/media/6a900e74df4246cf45e465cd/immigration-enforcement-data-apr-to-jun-2026.ods
+      url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a900e74df4246cf45e465cd/immigration-enforcement-data-apr-to-jun-2026.ods
+      localFile: datasets/assets.publishing.service.gov.uk/immigration-enforcement-data-apr-to-jun-2026.ods
       publisher: Home Office
       date: '2026-08-27'
     readings:

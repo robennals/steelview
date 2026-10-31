@@ -452,8 +452,10 @@ sources:
       mail-in ballot offense after submitting a completed absentee ballot on
       behalf of his missing wife during the 2020 general election in Chaffee
       County.
-    title: Election Fraud Map data file (vfdb.csv), archived 27 July 2026
-    url: https://web.archive.org/web/20260727163153/https://electionfraud.heritage.org/static/data/vfdb.csv
+    title: Election Fraud Map cases (data file vfdb.csv, archived 27 July 2026)
+    url: https://electionfraud.heritage.org/
+    fileUrl: https://web.archive.org/web/20260727163153/https://electionfraud.heritage.org/static/data/vfdb.csv
+    localFile: datasets/electionfraud.heritage.org/vfdb.csv
     publisher: The Heritage Foundation
     date: '2026-07-27'
   - stance: complicates
@@ -673,7 +675,9 @@ sources:
       least 100,000 fraudulent votes (10 percent of all votes in the city) had
       been cast.
     title: "Where There's Smoke, There's Fire: 100,000 Stolen Votes in Chicago"
-    url: https://policyarchive.org/download/13530
+    url: https://policyarchive.org/handle/10207/13530
+    fileUrl: https://policyarchive.org/download/13530
+    localFile: datasets/policyarchive.org/13530.pdf
     publisher: The Heritage Foundation
     date: '2008-04-16'
 comparisons:
