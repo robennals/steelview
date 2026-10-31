@@ -28,6 +28,16 @@ async function hoverAtTop(page: Page, box: Locator) {
   await page.mouse.move(x + width / 2, y + 40);
 }
 
+/** A viewpoint opened with its figures loaded. These depend on us-iran-war's first viewpoint having long tables. */
+async function openFigures(page: Page) {
+  await page.goto('/topics/us-iran-war');
+  const viewpoint = page.locator('.sv-row--viewpoint').first();
+  await viewpoint.locator('.sv-row__toggle').click(headCorner);
+  const figures = viewpoint.locator('.sv-walk__chart .sv-slide__figure');
+  await expect(figures.first()).toBeAttached();
+  return { viewpoint, figures };
+}
+
 /** Wheel up over `table`, already at its top: the page should move instead. */
 async function expectWheelMovesPage(page: Page, table: Locator) {
   await hoverAtTop(page, table);
@@ -254,6 +264,75 @@ test('scrolling up over a table at its top moves the page', async ({ page }) => 
   const step = row.locator('.sv-walk__slide').first();
   await step.getByRole('button', { name: 'Table' }).dispatchEvent('click');
   await expectWheelMovesPage(page, step.locator('.sv-chart__table-scroll').first());
+});
+
+test('on a phone, the step card fits the step showing, with no empty space', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(TOPIC);
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  await expect(viewpoint.locator('.sv-chart').first()).toBeAttached();
+  const strip = viewpoint.locator('.sv-walk__strip');
+  const steps = viewpoint.locator('.sv-walk__step');
+  const heights = new Set<number>();
+  for (let i = 0; i < await steps.count(); i++) {
+    if (i > 0) await viewpoint.locator('.sv-walk__next').click();
+    const step = steps.nth(i);
+    const stepHeight = await step.evaluate(el => Math.round(el.getBoundingClientRect().height));
+    heights.add(stepHeight);
+    await expect.poll(() => strip.evaluate(el => Math.round(el.getBoundingClientRect().height))).toBe(stepHeight);
+  }
+  expect(heights.size).toBeGreaterThan(1);
+});
+
+test('on a phone, a long chart scrolls in its own box, then hands on to the page', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const { viewpoint, figures } = await openFigures(page);
+  const longest = await figures.evaluateAll(els => {
+    const heights = els.map(el => el.scrollHeight);
+    return heights.indexOf(Math.max(...heights));
+  });
+  for (let i = 0; i < longest; i++) await viewpoint.locator('.sv-walk__next').click();
+  const figure = figures.nth(longest);
+  await expect.poll(async () => (await figure.boundingBox())!.x).toBeLessThan(390);
+  await expect.poll(async () => (await figure.boundingBox())!.x).toBeGreaterThanOrEqual(0);
+  expect(await figure.evaluate(el => el.scrollHeight > el.clientHeight)).toBe(true);
+  expect((await figure.boundingBox())!.height).toBeLessThanOrEqual(844 * 0.8);
+
+  await hoverAtTop(page, figure);
+  await page.mouse.wheel(0, 100);
+  await expect.poll(() => figure.evaluate(el => el.scrollTop)).toBeGreaterThan(0);
+  await expectWheelMovesPage(page, figure);
+});
+
+test('on a phone, a short bar chart takes the height it needs, neither clipped nor padded', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(TOPIC);
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  await expect(viewpoint.locator('.sv-comparison__rows').first()).toBeAttached();
+  const slides = viewpoint.locator('.sv-walk__chart:has(.sv-comparison__rows)');
+  expect(await slides.count()).toBeGreaterThan(0);
+  for (const slide of await slides.all()) {
+    const clipped = await slide.locator('.sv-slide').evaluate(el => el.scrollHeight > el.clientHeight);
+    expect(clipped).toBe(false);
+    const bars = await slide.locator('.sv-comparison__rows').boundingBox();
+    const explore = await slide.locator('.sv-walk__explore').boundingBox();
+    expect(explore!.y - (bars!.y + bars!.height)).toBeLessThan(60);
+  }
+});
+
+test('on a phone, each viewpoint step explains itself directly above its chart', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(TOPIC);
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  const steps = viewpoint.locator('.sv-walk__step[data-chart]');
+  await expect(steps.first().locator('.sv-chart').first()).toBeAttached();
+  for (const step of await steps.all()) {
+    const text = await step.locator('.sv-walk__text').boundingBox();
+    const chart = await step.locator('.sv-walk__chart').boundingBox();
+    const gap = chart!.y - (text!.y + text!.height);
+    expect(gap).toBeGreaterThanOrEqual(0);
+    expect(gap).toBeLessThan(24);
+  }
 });
 
 test('a data panel is the data: its charts open nothing, and have their controls', async ({ page }) => {

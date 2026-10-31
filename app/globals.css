@@ -2447,12 +2447,16 @@
   @media (max-width: 47.5rem) {
     .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
-    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
+    /* In a row the strip fits the step showing (walkthrough.tsx), not the longest
+       step. In a sheet it keeps its height, and scrolls what does not fit. */
+    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-walk-step-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    /* A step's explanation comes first, as the chart means little without it. */
+    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 18rem; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
-    /* A table reads down the page, so it takes the height it needs. */
-    .sv-walk__step:has(.sv-slide__figure) { grid-template-rows: auto auto; }
-    /* The chart leads on a phone, so a step always opens on its evidence. */
-    .sv-walk__chart { order: -1; }
+    /* A table or a list of bars takes the height it needs, so a short one leaves
+       no gap, and a long one scrolls in a box smaller than the screen. */
+    .sv-walk__step:has(.sv-slide__figure, .sv-comparison__rows) { grid-template-rows: auto auto; }
+    .sv-walk:not([data-layout="strip"]) .sv-walk__chart .sv-slide { max-height: min(32rem, 80vh); }
     .sv-walk__text { overflow: visible; }
     .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] { height: 50rem; }
     /* A whole claim will not fit beside the controls, so it gets the width under them. */
@@ -2462,7 +2466,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-walk, .sv-walk__outline-step { transition: none; }
+    .sv-walk, .sv-walk__outline-step, .sv-row .sv-walk__strip { transition: none; }
   }
 
   /* ------------------------------------------------------ fact citations */
