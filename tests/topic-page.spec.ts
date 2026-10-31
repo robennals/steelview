@@ -182,7 +182,7 @@ test('choosing an observation picks out its part of the graph', async ({ page })
 test('an observation on a comparison picks out its rows, and keeps them when the rows change', async ({ page }) => {
   await page.goto(TOPIC);
   const row = await openDataRow(page, longRun);
-  const tab = row.locator('.sv-walk__tab').filter({ hasText: 'International Comparison' }).first();
+  const tab = row.locator('.sv-walk__tab').filter({ hasText: 'Arrivals per head by nationality' }).first();
   await tab.click();
   const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls)').first();
   await expect(step.locator('.sv-comparison__rows')).toBeVisible();
