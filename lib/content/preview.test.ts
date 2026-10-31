@@ -60,6 +60,13 @@ test('a data step answers to its chart\'s address and to each anchor its figure 
   assert.deepEqual(step.anchors, ['figure-examples--chart-federal-laws', 'figure-examples--federal-laws-list']);
 });
 
+test('an observation\'s heading is rendered, not shown as markdown', async () => {
+  const topic = await loadTopic('uk-asylum');
+  const fact = topic.facts.filter(f => f.id === 'asylum-law-and-the-echr');
+  const headings = (await renderDataWalkthroughs(topic, fact)).get(fact[0].id)!.flatMap(s => s.observations).map(o => o.heading);
+  assert.ok(headings.includes('The international reading is still <em>Adimi</em>\'s'), headings.join('\n'));
+});
+
 test('every headline data collection has something to walk through', async () => {
   for (const slug of await listTopicSlugs()) {
     const topic = await loadTopic(slug);

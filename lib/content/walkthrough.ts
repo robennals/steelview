@@ -161,7 +161,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
 /** One chart of a data collection, with its observations rendered, ready to step through. */
 export type DataStep = {
   chart: PreviewSlide;
-  /** The observations made about this chart, in order: what to notice in it. */
+  /** The observations made about this chart, in order: what to notice in it. `heading` is rendered, without a paragraph. */
   observations: { id: string; heading: string; html: string; mark?: ObservationMark }[];
   /** What the chart shows, for a chart with no observations of its own. */
   description: string;
@@ -197,7 +197,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
         anchors: chartAnchors(fact, chart),
         observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
           id: `${fact.id}--${o.id}`,
-          heading: o.heading,
+          heading: (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
           mark: fact.observationMarks?.[o.id],
         }))),

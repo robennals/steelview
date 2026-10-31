@@ -114,11 +114,11 @@ export function ObservationBar() {
                 {enhanced && current
                   ? (
                     <button type="button" className="sv-observe__toggle" aria-expanded={open} onClick={toggle}>
-                      <span className="sv-observe__claim">{observation.heading}</span>
+                      <span className="sv-observe__claim" dangerouslySetInnerHTML={{ __html: observation.heading }} />
                       <span className="sv-observe__more" aria-hidden="true">{open ? 'Less ▴' : 'More ▾'}</span>
                     </button>
                   )
-                  : <span className="sv-observe__claim">{observation.heading}</span>}
+                  : <span className="sv-observe__claim" dangerouslySetInnerHTML={{ __html: observation.heading }} />}
               </h4>
             </div>
             <div className="sv-observe__body" hidden={enhanced && !(current && open)}>
