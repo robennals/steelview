@@ -9,6 +9,12 @@ test('extracts money, percentages and comma-grouped thousands', () => {
   );
 });
 
+test('skips 100% only where it is the whole shares are measured against', () => {
+  assert.deepEqual(figuresIn('Shares do not sum to 100%; others add up to 100 percent.'), []);
+  assert.deepEqual(figuresIn('No 100%-minus calculation is justified. 100% means traffic as usual.'), []);
+  assert.deepEqual(figuresIn('Turnout was 100% in one ward, and they sum to 100.5%.'), ['100%', '100.5%']);
+});
+
 test('does not extract years, ordinals or bare small integers', () => {
   // These are the patterns the audit deliberately ignores: matching them
   // would bury the real findings under noise nobody can cherry-pick with.
@@ -223,4 +229,8 @@ test('a thousands group set with a non-breaking space is one number', () => {
 
 test('table columns separated by plain spaces stay separate numbers', () => {
   assert.equal(quotedSomewhere('1,000', quoteCorpus(['Region 1 000 total'])), false);
+});
+
+test('a thin space groups thousands as a non-breaking one does', () => {
+  assert.equal(quotedSomewhere('3,200,000', quoteCorpus(['Iran 3\u2009200\u2009000 displaced'])), true);
 });

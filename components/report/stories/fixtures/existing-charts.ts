@@ -2134,7 +2134,7 @@ export const internationalImmigrationFact: Fact = {
   "comparisons": [
     {
       "id": "international-immigration",
-      "title": "International Comparison by Nationality, 2024",
+      "title": "Arrivals per head by nationality, UK and EU and EFTA countries, 2024",
       "description": "EU+ and non-EU+ bars count foreign nationals; each country’s own nationals are separate. EU+ means EU and EFTA; other foreign nationals are non-EU+. Poland and Slovakia exclude Ukrainians under temporary protection.",
       "unit": "percent",
       "valueLabel": "Annual arrivals as % of resident population",

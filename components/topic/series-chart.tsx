@@ -1,14 +1,16 @@
 import type { ReactNode } from 'react';
-import { EventStrip, formatDate, type StripEvent } from '@/components/report';
-import { ChartAbout } from './chart-about';
+import { ChartAbout, EventStrip, SourceLine, formatDate, type SourceCredit, type StripEvent } from '@/components/report';
 import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
 import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
+import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
+import { lineSourceNumbers } from '@/lib/content/sources';
+import { PanelSources } from './sources-slot';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   CHART_GEOMETRY,
@@ -30,6 +32,7 @@ import {
   PREVIEW_VARIANTS,
   type SeriesVariant,
   type FocusWindow,
+  zoneLabelPlacement,
 } from '@/lib/chart/series-chart';
 
 /**
@@ -55,6 +58,7 @@ import {
  */
 
 const NBSP_DASH = '–';
+const FORECAST_LABEL = 'Forecast';
 
 function Plot({
   series,
@@ -78,6 +82,7 @@ function Plot({
   const hatchId = `${descriptionId}-${variant}-hatch`;
   const clipId = `${descriptionId}-${variant}-clip`;
   const right = g.left + g.plotWidth;
+  const forecastLabel = layout.forecastX !== null ? zoneLabelPlacement(layout.forecastX, right, FORECAST_LABEL, g.fontSize) : null;
   const bottom = g.top + g.plotHeight;
   return (
     <svg
@@ -102,7 +107,7 @@ function Plot({
       {layout.forecastX !== null && (
         <g className="sv-chart__forecast">
           <rect className="sv-chart__forecast-zone" x={layout.forecastX} y={g.top} width={right - layout.forecastX} height={g.plotHeight} />
-          <text className="sv-chart__zone-label" x={layout.forecastX + 4} y={g.top + g.fontSize} fontSize={g.fontSize}>Forecast</text>
+          <text className="sv-chart__zone-label" x={forecastLabel?.x} y={g.top + g.fontSize} fontSize={g.fontSize} textAnchor={forecastLabel?.anchor}>{FORECAST_LABEL}</text>
         </g>
       )}
 
@@ -296,6 +301,15 @@ function lineSpans(series: Series): string[] {
   return [...seen.values()];
 }
 
+/** Each distinct line's own coverage note — why its source's range differs — in first-appearance order. */
+function lineCoverageNotes(series: Series): { name: string; note: string }[] {
+  const seen = new Map<string, string>();
+  for (const line of series.readings.flatMap(reading => reading.lines)) {
+    if (line.coverage?.note && !seen.has(line.name)) seen.set(line.name, line.coverage.note);
+  }
+  return [...seen].map(([name, note]) => ({ name, note }));
+}
+
 /** "(from 1986)" after a line whose source publishes a different range from the series; else nothing. */
 function spanSuffix(series: Series, line: SeriesLine): string {
   const span = lineSpan(series, line);
@@ -396,11 +410,30 @@ function ReadingTable({ series, reading }: { series: Series; reading: SeriesRead
   );
 }
 
+/**
+ * The reading whose panel carries the series' numbered event key: the last,
+ * so the key sits once after every panel instead of repeating under each.
+ */
+function eventKeyReadingId(series: Pick<Series, 'readings'>): string {
+  return series.readings[series.readings.length - 1].id;
+}
+
+/**
+ * The reading whose panel carries the series' Method Changes — its breaks
+ * and not-measured band, which belong to the series, not to one reading —
+ * so each is listed once. The first: right after the first panel to draw
+ * them, and its `<fact>--<reading>-method-<period>` anchors are the ones
+ * links have always used.
+ */
+export function methodChangesReadingId(series: Pick<Series, 'readings'>): string {
+  return series.readings[0].id;
+}
+
 function Reading({
   series,
   reading,
   factId,
-  sourceNumber,
+  credits,
   observations,
   intro,
   events,
@@ -412,20 +445,24 @@ function Reading({
   series: Series;
   reading: SeriesReading;
   factId: string;
-  sourceNumber: number;
+  /** The reading's source, then the sources of any of its lines that have their own. */
+  credits: SourceCredit[];
   observations?: ReactNode;
   intro?: string;
   events: StripEvent[];
   /** Compact form for the home page: graph only, links pointing at the fact page. */
   preview?: ChartPreview;
-  /** Link the source credit to the source itself, where the fact's source list is not on the page. */
+  /** Drawn in a data panel, with its sources row in place of the source credit. */
   panel?: boolean;
   /** What "About this data" says, which a data panel keeps with the description. */
   about?: ReactNode;
   marks?: MarkedObservation[];
 }) {
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
-  const Heading = preview ? 'h3' : 'h2';
+  const keyHost = eventKeyReadingId(series);
+  const methodsHost = methodChangesReadingId(series);
+  // Other panels' markers point at the one key, after the last panel.
+  const keyIn = (suffix: string) => (reading.id === keyHost ? undefined : `${factId}--${keyHost}-events${suffix}`);
   const slots = seriesSlots(series);
   const descriptionId = `sv-chart-${factId}-${reading.id}-desc`;
   const points = reading.lines.flatMap(line => line.points);
@@ -448,10 +485,10 @@ function Reading({
       ? `Each line runs its own source's published range: ${reading.lines.map(line => `${line.name}, ${spanText(lineSpan(series, line))}`).join('; ')}.`
       : null,
     series.breaks.length > 0
-      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source${preview ? '' : ', explained in Method Changes below this graph'}.`
+      ? `Dashed segments cross ${series.breaks.length} definitional break${series.breaks.length === 1 ? '' : 's'} in the source${preview ? '' : `, explained in Method Changes below ${reading.id === methodsHost ? 'this' : 'the first'} graph`}.`
       : null,
     events.length > 0 && !preview
-      ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed below it.`
+      ? `${events.length} dated event${events.length === 1 ? ' is' : 's are'} numbered on a strip under the graph and listed ${reading.id === keyHost ? 'below it' : 'after the last graph'}.`
       : null,
     statusSentence ? `${statusSentence.charAt(0).toUpperCase()}${statusSentence.slice(1)}.` : null,
     unmeasured && series.notMeasuredSince ? `No values after ${formatDate(unmeasured.from)}: ${series.notMeasuredSince.label}.` : null,
@@ -479,8 +516,9 @@ function Reading({
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`}>
-      {!preview && <Heading className="sv-graph-heading">{reading.label}</Heading>}
       {intro && !preview && (panel ? <ChartAbout description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
+      {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
+      {!preview && series.readings.length > 1 && <h3 className="sv-chart__reading-head">{reading.label}</h3>}
       {panel && <ObservationBar />}
       {!preview && (
         <p className="sv-chart__axis-label">
@@ -524,19 +562,19 @@ function Reading({
                 windowLabel={series.focus?.label ?? 'Window'}
                 windowView={<>
                   {plots(window)}
-                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={window.from} to={window.to} window={window} events={events} showAxis={false} />}
+                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} keyIn={keyIn('')} from={window.from} to={window.to} window={window} events={events} showAxis={false} />}
                 </>}
                 fullView={<>
                   {plots()}
                   {/* Its own ids: both views are in the markup, one of them hidden. */}
-                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events-full`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+                  {events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events-full`} keyIn={keyIn('-full')} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
                 </>}
               />
             </>
           ) : (
             <>
               {plots()}
-              {!preview && events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
+              {!preview && events.length > 0 && <EventStrip id={`${factId}--${reading.id}-events`} keyIn={keyIn('')} from={series.coverage.from} to={axisEnd(series)} events={events} showAxis={false} />}
             </>
           )}
         </>)}
@@ -550,27 +588,47 @@ function Reading({
       {!preview && unmeasured && series.notMeasuredSince && (
         <p className="sv-chart__annotation-key">
           Hatched: {series.notMeasuredSince.label}, {formatDate(unmeasured.from)} {NBSP_DASH} {formatDate(unmeasured.until)}.{' '}
-          <a data-evidence-link="true" href={at(`${factId}--${reading.id}-not-measured`)}>Why</a>
+          <a data-evidence-link="true" href={at(`${factId}--${methodsHost}-not-measured`)}>Why</a>
         </p>
       )}
 
-      {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${reading.id}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
-      {!preview && <p className="sv-chart__credit">Source: <a href={panel ? (reading.source ?? series.source).url : at(`source-${factId}-${sourceNumber}`)}>{(reading.source ?? series.source).publisher}{panel ? '' : ` [${sourceNumber}]`}</a></p>}
+      {!preview && series.breaks.length > 0 && <p className="sv-chart__annotation-key">Vertical dashed lines mark measurement changes. <a data-evidence-link="true" href={at(`${factId}--${methodsHost}-method-${series.breaks[0].period}`)}>See method changes</a>.</p>}
+      {panel ? <PanelSources /> : !preview && <SourceLine sources={credits} />}
 
       {observations}
     </section>
   );
 }
 
+/**
+ * The source line under one reading: the reading's own source (else the
+ * series'), then each line's own source, each linked to its numbered
+ * reference. Numbers follow `factSources`.
+ */
+export function readingCredits(series: Series, readingIndex: number, sourceOffset: number, factId: string): SourceCredit[] {
+  const reading = series.readings[readingIndex];
+  const own = reading.source ? series.readings.slice(0, readingIndex + 1).filter(r => r.source).length : 0;
+  const credit = (source: Source, number: number): SourceCredit =>
+    ({ label: source.publisher, href: `#source-${factId}-${number}`, number });
+  const lineNumbers = lineSourceNumbers(series, sourceOffset, readingIndex);
+  const lines = reading.lines.flatMap((line, i) => {
+    const number = lineNumbers[i];
+    return line.source && number !== undefined ? [credit(line.source, number)] : [];
+  });
+  return [credit(reading.source ?? series.source, sourceOffset + 1 + own), ...lines];
+}
+
 /** A series' events as strip markers, each crediting the fact citation that dates it. */
 export function stripEvents(series: Pick<Series, 'events'>, factId: string, sources: Source[], directSources = false): StripEvent[] {
   return series.events.map(event => {
-    const cited = event.source === undefined ? undefined : sources[event.source - 1];
     return {
       date: event.period,
       label: event.label,
       description: event.note,
-      source: cited && { label: cited.publisher, href: directSources ? cited.url : `#source-${factId}-${event.source}`, number: event.source },
+      sources: event.sources.map(n => {
+        const cited = sources[n - 1];
+        return { label: cited?.publisher ?? `Source ${n}`, href: directSources && cited ? cited.url : `#source-${factId}-${n}`, number: n };
+      }),
     };
   });
 }
@@ -585,7 +643,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   preview?: ChartPreview;
   /** Draw this reading in full, and not the others. */
   onlyReading?: string;
-  /** Drawn in a data panel: filling its height, with its source credit linking to the source itself. */
+  /** Drawn in a data panel: filling its height, with its sources row. */
   panel?: boolean;
   /** Further notes for a data panel to keep with its description. */
   notes?: ReactNode;
@@ -606,23 +664,27 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         : 'Every plotted line runs the whole of it'}{' '}
       {series.coverage.note ? `${NBSP_DASH} ${series.coverage.note}` : ''}
     </p>
-    {readings.filter(reading => reading.note).map(reading => (
+    {lineCoverageNotes(series).map(({ name, note }) => (
+      <p key={name} className="sv-chart__note"><strong>{name}:</strong> {note}</p>
+    ))}
+    {readings.filter(reading => aboutThisDataNote(reading)).map(reading => (
       <section key={reading.id} className="sv-chart__method-note">
         <h3 className="sv-chart__reading-head">{reading.label}</h3>
-        <p className="sv-chart__note">{reading.note}</p>
+        <p className="sv-chart__note">{aboutThisDataNote(reading)}</p>
       </section>
     ))}
     {notes}
   </>;
   return (
-    <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
+    // A panel draws a series once per reading, and the first takes its address.
+    <figure className="sv-chart" id={onlyReading && onlyReading !== series.readings[0].id ? undefined : `${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
       {preview
         ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3></figcaption>
-        : <figcaption className="sv-visually-hidden">{series.title}</figcaption>}
+        : <figcaption className="sv-chart__caption"><h2 className="sv-graph-heading">{series.title}</h2></figcaption>}
 
       <SeriesHighlight>
         {readings.map((reading, i) => (
-          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} sourceNumber={sourceOffset + 1 + (reading.source ? series.readings.slice(0, series.readings.indexOf(reading) + 1).filter(r => r.source).length : 0)} />
+          <Reading intro={i === 0 ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} events={events} preview={preview} panel={panel} about={about} marks={marks} key={reading.id} series={series} reading={reading} factId={factId} credits={readingCredits(series, series.readings.indexOf(reading), sourceOffset, factId)} />
         ))}
       </SeriesHighlight>
 

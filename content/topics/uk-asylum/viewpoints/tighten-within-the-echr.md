@@ -1,5 +1,6 @@
 ---
 name: "Stop the crossings and speed up removals by changing British law, without leaving the ECHR"
+shortName: "Tighten within the ECHR"
 summary: "What stops removals is mostly [late claims and legal challenges, not human-rights claims](#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims), and British law can fix those. Britain should clear its queues, narrow family-life claims by statute and tie protection to continuing danger, while keeping the Convention and [the European cooperation that depends on it](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation)."
 order: 3
 ---

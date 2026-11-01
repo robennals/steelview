@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { createContext, useContext, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import { decodeHash } from '@/components/topic/open-details';
 
 /** How long a row takes to open; matches `.sv-row__body` in globals.css. */
@@ -10,8 +10,8 @@ const OPEN_MS = 550;
 type Accordion = {
   open: string;
   setOpen: (slug: string) => void;
-  /** Starts holding one row's head still, cancelling any hold already running. `settled` runs if the hold reaches its end. */
-  hold: (row: HTMLElement, settled?: () => void) => void;
+  /** Starts holding one row's head still, or gliding it to `to` pixels below the window's top, cancelling any hold already running. `settled` runs if the hold reaches its end. */
+  hold: (row: HTMLElement, settled?: () => void, to?: number) => void;
 };
 
 const OpenRow = createContext<Accordion>({ open: '', setOpen: () => {}, hold: () => {} });
@@ -51,9 +51,11 @@ export function TopicAccordion({ initial, children }: { initial: string; childre
 
   // Scroll in step with the transition so the clicked head stays where it was
   // clicked. A second click, or the reader scrolling, ends the hold.
-  const hold = (row: HTMLElement, settled?: () => void) => {
+  const hold = useCallback((row: HTMLElement, settled?: () => void, to?: number) => {
     stopHolding.current();
     const before = row.getBoundingClientRect().top;
+    const end = to ?? before;
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const start = performance.now();
     let frame = 0;
     const stop = () => {
@@ -62,7 +64,9 @@ export function TopicAccordion({ initial, children }: { initial: string; childre
       window.removeEventListener('touchstart', stop);
     };
     const step = (now: number) => {
-      const drift = row.getBoundingClientRect().top - before;
+      // Eases out, and steers by where the row is now: a row closing above it moves it mid-glide.
+      const left = reducedMotion ? 0 : (1 - Math.min(1, (now - start) / (OPEN_MS + 100))) ** 3;
+      const drift = row.getBoundingClientRect().top - (end + (before - end) * left);
       if (Math.abs(drift) > 0.5) window.scrollBy(0, drift);
       if (now - start < OPEN_MS + 100) frame = requestAnimationFrame(step);
       else {
@@ -74,7 +78,7 @@ export function TopicAccordion({ initial, children }: { initial: string; childre
     window.addEventListener('touchstart', stop, { passive: true });
     stopHolding.current = stop;
     frame = requestAnimationFrame(step);
-  };
+  }, []);
 
   return (
     <OpenRow.Provider value={{ open, setOpen, hold }}>
@@ -127,8 +131,7 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
     const reveal = (hash: string) => {
       if (decodeHash(hash) !== anchor) return;
       setOpen(slug);
-      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      row.current?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      if (row.current) hold(row.current, undefined, parseFloat(getComputedStyle(row.current).scrollMarginTop) || 0);
     };
     const onHashChange = () => reveal(location.hash.slice(1));
     // `hashchange` does not fire for a link to the hash the page is already on.
@@ -143,7 +146,7 @@ export function TopicRow({ slug, anchor, title, href, meta, subtitle, thumbs, cl
       window.removeEventListener('hashchange', onHashChange);
       document.removeEventListener('click', onClick);
     };
-  }, [anchor, slug, setOpen]);
+  }, [anchor, slug, setOpen, hold]);
 
   const toggle = () => {
     if (isOpen) {

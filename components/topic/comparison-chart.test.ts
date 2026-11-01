@@ -41,6 +41,24 @@ test('the breakdown table heads its item column with itemLabel, never "Country"'
   assert.doesNotMatch(html, /Country/);
 });
 
+test('a row with detail opens under itself; its neighbours, and every preview, stay plain', () => {
+  const withDetail: Comparison = { ...chart, items: [{ ...chart.items[0], detail: 'Counted by court record' }, chart.items[1]] };
+  const html = render({ ...withDetail, groups: undefined, groupLabel: undefined, items: withDetail.items.map(item => ({ ...item, values: undefined })) });
+  assert.match(html, /<li data-row="Impersonation"><details class="sv-row-detail"><summary class="sv-comparison__row"><span class="sv-comparison__label"><span>Impersonation<\/span>/);
+  assert.match(html, /<div class="sv-row-detail__body">Counted by court record<\/div>/);
+  assert.match(html, /<li class="sv-comparison__row" data-row="[^"]+">/);
+  assert.equal(html.match(/Select a row for its details/g)?.length, 1);
+  const preview = renderToStaticMarkup(createElement(ComparisonChart, { fact, chart: withDetail, sources: [source], preview: { href: '#x' } }));
+  assert.doesNotMatch(preview, /<details class="sv-row-detail|sv-row-detail|Counted by court record/);
+});
+
+test('the breakdown table prints every detail, and only if a row has one', () => {
+  const html = render({ ...chart, items: [{ ...chart.items[0], detail: 'Counted by court record' }, chart.items[1]] });
+  assert.match(html, /<th>Detail<\/th>/);
+  assert.match(html, /<td>Counted by court record<\/td>/);
+  assert.doesNotMatch(render(chart), /<th>Detail<\/th>/);
+});
+
 test('without itemLabel the item column reads "Category"', () => {
   assert.match(render(chart), /<th scope="col">Category<\/th>/);
 });
@@ -90,4 +108,10 @@ test('a dense preview with several highlighted items, or negative values, falls 
     assert.match(html, /data-compact="true"/);
     assert.doesNotMatch(html, / of 14/);
   }
+});
+
+test('About this data names the table the values come from, with or without a note', () => {
+  const about = (c: Comparison) => render(c).match(/<details class="sv-chart__methodology">[\s\S]*?<\/details>/)?.[0] ?? '';
+  assert.match(about({ ...chart, valuesFrom: 'FBI table 4' }), /<p>Values from FBI table 4\.<\/p>/);
+  assert.match(about({ ...chart, note: 'Counts to 2024.', valuesFrom: 'FBI table 4' }), /<p>Counts to 2024\. Values from FBI table 4\.<\/p>/);
 });

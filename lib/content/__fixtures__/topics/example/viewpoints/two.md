@@ -1,5 +1,6 @@
 ---
 name: Two
+shortName: Two
 summary: The second viewpoint, in a line.
 order: 2
 ---

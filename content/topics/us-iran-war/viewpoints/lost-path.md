@@ -1,5 +1,6 @@
 ---
 name: The war killed Iranians and threw away a slower plan that was working
+shortName: "The slower path"
 summary: "Iran was dangerous, but [while the 2015 deal lasted, it kept to its limits](#fact-iran-nuclear-programme/deal-era-compliance). The war has [killed thousands of Iranians](#fact-human-and-financial-costs-of-the-war/counters-disagree), [sent inspectors home](#fact-iran-nuclear-programme/verification-stopped) and thrown away the plan that was keeping Iran in check."
 order: 2
 ---

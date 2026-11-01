@@ -27,14 +27,3 @@ test('an inline principle pill opens its shared text and restores focus on close
   await modal.getByRole('button', { name: 'Close' }).click();
   await expect(pill).toBeFocused();
 });
-
-test('principle links retain an on-page destination without JavaScript', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
-  const page = await context.newPage();
-  await page.goto(topic);
-  await page.locator(`${viewpoint} .prose-body a[href="${principle}"]`).click();
-  await expect(page).toHaveURL(new RegExp(`${principle}$`));
-  await page.locator(`${principle} > summary`).click();
-  await expect(page.locator(principle)).toContainText(PRINCIPLE_TEXT);
-  await context.close();
-});

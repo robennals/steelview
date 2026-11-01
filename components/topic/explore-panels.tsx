@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 import type { PanelTarget } from '@/lib/content/markdown';
+import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 import { Prose } from './prose';
 
@@ -61,12 +62,12 @@ type ExploreLinkProps = PanelTarget & { href: string };
  * start loading as the reader reaches for the link. It is still a link to the
  * observation, for a new tab or with no script.
  */
-export function ExploreLink({ fact, observation, slide, href }: ExploreLinkProps) {
+export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
   const explore = useContext(ExploreContext);
   const onClick = (event: MouseEvent) => {
     if (!explore || !isPlainClick(event)) return;
     event.preventDefault();
-    explore.open({ fact, observation, slide });
+    explore.open({ fact, observation });
   };
   return (
     <div className="prose-body sv-walk__explore">
@@ -78,8 +79,8 @@ export function ExploreLink({ fact, observation, slide, href }: ExploreLinkProps
 /** The panel a rendered citation opens, from the data `renderMarkdown` gave it. */
 function citedPanel(target: EventTarget): PanelTarget | null {
   const link = target instanceof Element ? target.closest<HTMLAnchorElement>('a[data-panel-fact]') : null;
-  const { panelFact: fact, panelObservation: observation, panelSlide: slide } = link?.dataset ?? {};
-  return fact && observation && slide ? { fact, observation, slide: Number(slide) } : null;
+  const { panelFact: fact, panelObservation: observation } = link?.dataset ?? {};
+  return fact && observation ? { fact, observation } : null;
 }
 
 type ExploreProseProps = { html: string; className: string };
@@ -107,11 +108,12 @@ export function ExploreProse({ html, className }: ExploreProseProps) {
 
 /**
  * A viewpoint step's chart, where any click follows the step's "Explore this
- * data", the chart's title included. A legend's definition still opens.
+ * data", the chart's title included. A legend's definition and the sources row
+ * still open.
  */
 export function ExplorableChart({ children }: { children: ReactNode }) {
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.target instanceof Element && event.target.closest('.sv-glossary')) return;
+    if (event.target instanceof Element && event.target.closest('.sv-glossary, .sv-chart__sources')) return;
     const explore = event.currentTarget.closest('.sv-walk__chart')?.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
     if (!explore) return;
     event.preventDefault();
@@ -131,15 +133,15 @@ export function PanelHost({ fact, title, children }: PanelHostProps) {
   const shown = explore?.shown?.fact === fact ? explore.shown : null;
   if (!shown || !explore) return children;
   return createPortal(
-    <PanelSheet title={title} observation={shown.observation} slide={shown.slide} leave={explore.leave}>{children}</PanelSheet>,
+    <PanelSheet title={title} observation={shown.observation} leave={explore.leave}>{children}</PanelSheet>,
     document.body,
   );
 }
 
-type PanelSheetProps = { title: string; observation: string; slide: number; leave: () => void; children: ReactNode };
+type PanelSheetProps = { title: string; observation: string; leave: () => void; children: ReactNode };
 
 /** The sheet around a data panel, open at one chart and observation from its first frame. */
-function PanelSheet({ title, observation, slide, leave, children }: PanelSheetProps) {
+function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -152,8 +154,7 @@ function PanelSheet({ title, observation, slide, leave, children }: PanelSheetPr
     dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
 
     // Straight to the chart holding the observation, with nothing to scroll past.
-    const strip = dialog.querySelector('.sv-walk__strip');
-    if (strip) strip.scrollLeft = slide * strip.clientWidth;
+    showPanelStep(dialog, observation);
 
     return () => {
       unwireExit();
@@ -162,7 +163,7 @@ function PanelSheet({ title, observation, slide, leave, children }: PanelSheetPr
       dialog.close();
       if (trigger instanceof HTMLElement) trigger.focus();
     };
-  }, [leave, slide]);
+  }, [leave, observation]);
 
   const onClick = (event: MouseEvent<HTMLDialogElement>) => {
     const dialog = dialogRef.current;

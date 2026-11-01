@@ -11,6 +11,8 @@ type LazyChartsProps = {
   fact?: string;
   /** Fetches the row's charts, in step order, drawn on the server. */
   load: () => Promise<ReactNode[]>;
+  /** The charts already drawn, for a report's own page, which fetches nothing. */
+  drawn?: ReactNode[];
   children: ReactNode;
 };
 
@@ -21,10 +23,10 @@ type LazyChartsProps = {
  * page many megabytes. The steps' text is still in the page, for readers and
  * crawlers alike: only the charts wait. Once fetched, a row keeps them.
  */
-export function LazyCharts({ fact = '', load, children }: LazyChartsProps) {
+export function LazyCharts({ fact = '', load, drawn, children }: LazyChartsProps) {
   const wanted = useChartsWanted(fact);
   const rowOpen = useRowIsOpen();
-  const open = rowOpen || wanted;
+  const open = !drawn && (rowOpen || wanted);
   const [charts, setCharts] = useState<ReactNode[] | null>(null);
   const requested = useRef(false);
 
@@ -35,7 +37,7 @@ export function LazyCharts({ fact = '', load, children }: LazyChartsProps) {
     load().then(setCharts, () => { requested.current = false; });
   }, [open, load]);
 
-  return <Charts.Provider value={charts}>{children}</Charts.Provider>;
+  return <Charts.Provider value={drawn ?? charts}>{children}</Charts.Provider>;
 }
 
 type LazyChartProps = {

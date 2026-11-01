@@ -29,7 +29,7 @@ export const asylumKeyFigures = {
       period: '2026-03',
       periodLabel: 'Year ending March 2026',
       change: { value: -10, format: { unit: 'number' as const, decimals: 0, signed: true }, comparison: 'percentage points on the previous year (49%)' },
-      source: { ...HOME_OFFICE_SUMMARY_2026, number: 1 },
+      sources: [{ ...HOME_OFFICE_SUMMARY_2026, number: 1 }],
     },
     {
       value: 49000,
@@ -37,7 +37,7 @@ export const asylumKeyFigures = {
       period: '2026-03',
       periodLabel: 'End of March 2026',
       change: { value: -55, comparison: 'on end of March 2025' },
-      source: { ...HOME_OFFICE_SUMMARY_2026, number: 1 },
+      sources: [{ ...HOME_OFFICE_SUMMARY_2026, number: 1 }],
     },
     {
       value: 21000,
@@ -45,7 +45,7 @@ export const asylumKeyFigures = {
       period: '2026-03',
       periodLabel: 'End of March 2026',
       change: { value: -35, comparison: 'on a year earlier' },
-      source: { ...HOME_OFFICE_SUMMARY_2026, number: 1 },
+      sources: [{ ...HOME_OFFICE_SUMMARY_2026, number: 1 }],
     },
     {
       value: 41472,
@@ -53,7 +53,7 @@ export const asylumKeyFigures = {
       period: '2025',
       periodLabel: 'Year ending December 2025',
       change: { value: 13, comparison: 'on year ending December 2024' },
-      source: { ...HOME_OFFICE_ILLEGAL_ENTRY_2025, number: 2 },
+      sources: [{ ...HOME_OFFICE_ILLEGAL_ENTRY_2025, number: 2 }],
     },
   ],
 };
@@ -72,21 +72,21 @@ export const workVisaKeyFigures = {
       period: '2026-03',
       periodLabel: 'Year ending March 2026',
       change: { value: -17, comparison: 'on year ending March 2025' },
-      source: { label: 'Home Office', number: 1 },
+      sources: [{ label: 'Home Office', number: 1 }],
     },
     {
       value: 613627,
       label: 'work visas at the peak, including dependants',
       period: '2023',
       periodLabel: 'Year ending December 2023',
-      source: { label: 'Home Office', number: 1 },
+      sources: [{ label: 'Home Office', number: 1 }],
     },
     {
       value: 74000,
       label: 'visas a year for graduate-level (RQF 6+) jobs, roughly flat',
       period: '2023',
       periodLabel: 'Yearly average, 2021–2023',
-      source: { label: 'Migration Advisory Committee', number: 2 },
+      sources: [{ label: 'Migration Advisory Committee', number: 2 }],
     },
   ],
 };

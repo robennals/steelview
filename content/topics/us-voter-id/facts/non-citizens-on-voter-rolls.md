@@ -497,7 +497,8 @@ comparisons:
       than"), so it is approximate. Ohio's later figure of 167 voters spans federal elections from
       2018, so it has no single-election denominator and is not shown here.
     items:
-      - label: Brennan Center survey, 2016 (42 jurisdictions)
+      - label: "Brennan Center survey, 2016"
+        detail: "42 jurisdictions"
         value: 1.3
       - label: Ohio, 2020 general
         value: 2.2
@@ -506,7 +507,7 @@ comparisons:
       - label: Iowa, 2024 general
         value: 21.9
   - id: flags-reversed
-    title: Share of flagged registrants later shown to be citizens
+    title: Share of flagged US voter registrants later shown to be citizens
     description: >-
       Of the people a database match flagged as possible non-citizens, the
       share later shown to be citizens, by program. Each figure is as of the
@@ -536,7 +537,7 @@ comparisons:
       - label: North Carolina (DMV records, 2016)
         value: 97.6
   - id: against-margins
-    title: Non-citizen voters found, against two recent close margins
+    title: Non-citizen voters found, against two recent close US margins
     description: >-
       Votes separating the candidates in two close races, beside the
       non-citizen voters that the same states' reviews found. Counts, not
@@ -559,11 +560,14 @@ comparisons:
       - label: Iowa 1st District, 2024 margin
         value: 798
         highlight: true
-      - label: Georgia, DHS-flagged registrants who had ever voted (2026)
+      - label: "Georgia, DHS-flagged, ever voted"
+        detail: "Georgia, DHS-flagged registrants who had ever voted (2026)"
         value: 150
-      - label: Iowa, non-citizens who voted in 2024 (statewide)
+      - label: "Iowa non-citizen voters, 2024 (statewide)"
+        detail: "Iowa, non-citizens who voted in 2024 (statewide)"
         value: 35
-      - label: Georgia, confirmed non-citizens who had ever voted (2024 audit)
+      - label: "Georgia, confirmed non-citizens, ever voted"
+        detail: "Georgia, confirmed non-citizens who had ever voted (2024 audit)"
         value: 9
   - id: ohio-referrals
     title: Ohio's non-citizen referrals, by year announced
@@ -641,6 +645,44 @@ figures:
     id: registrants-found
   - kind: comparison
     id: votes-found
+  - kind: dataTable
+    id: multi-election-counts
+    title: Non-citizen voters found or referred across several elections
+    description: >-
+      Counts that span more than one election, or that are referrals rather
+      than findings, so they have no single-election rate.
+    caption: One row per review or referral
+    columns:
+      - { key: review, label: Review, rowHeader: true }
+      - { key: kind, label: Kind of count }
+      - { key: count, label: People, format: { unit: count } }
+      - { key: detail, label: What was counted, sortable: false }
+    defaultSort: { key: count, direction: descending }
+    rows:
+      - review: Louisiana, records back to the 1980s
+        kind: Found by the state
+        count: { value: 79, sources: [4] }
+        detail: Voted at least once
+      - review: Ohio, 2024 referral batch
+        kind: Referred
+        count: { value: 138, sources: [10] }
+        detail: Had cast ballots
+      - review: Tennessee
+        kind: Referred
+        count: { value: 42, sources: [4] }
+        detail: Referred to the FBI
+      - review: Indiana
+        kind: Found by the state
+        count: { value: 21, qualifier: at least, asPublished: at least 21, sources: [4] }
+        detail: Voted
+      - review: Texas, first SAVE referrals (June 2025)
+        kind: Referred
+        count: { value: 33, sources: [2] }
+        detail: Voters
+      - review: Texas, September 2026
+        kind: Referred
+        count: { value: 117, sources: [1] }
+        detail: Cases referred for investigation
   - kind: comparison
     id: flags-reversed
   - kind: dataTable
@@ -691,16 +733,6 @@ observationMarks:
   kansas-court-findings: {rows: ["Kansas, 1999–2013 (court finding)"]}
   referrals-not-convictions: {rows: ["Ohio, 2020 general"]}
 ---
-These reviews compare a state's voter list against records that say someone is not a citizen: driver's licence files, jury-duty excusals, immigration records and, since 2025, the federal SAVE database.
-
-They count three different things that are often run together, each much smaller than the one before:
-
-- people **flagged** by a database match;
-- people **confirmed** as non-citizens on the rolls;
-- confirmed non-citizens who **voted**.
-
-No review counts people whose non-citizen status appears in no record, so every figure here is a floor rather than an estimate of the total.
-
 ## Observations {#non-citizens-on-voter-rolls--observations-registrants-found}
 
 ### Every state that looked found some non-citizens on its rolls {#non-citizens-on-voter-rolls--found-on-rolls}
@@ -750,16 +782,7 @@ Georgia found its 20 because they had sworn they were not citizens to get out of
 
 ### Some non-citizens vote, and every review finds a few {#non-citizens-on-voter-rolls--some-noncitizens-vote}
 
-Every review that checked ballots found a few non-citizen voters; the chart shows the rate for each single election. [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20) [11](#source-non-citizens-on-voter-rolls-11) Iowa also found five whose ballots were rejected. [8](#source-non-citizens-on-voter-rolls-8) Counts that span several elections, or that are referrals rather than findings, are below.
-
-| Review | Non-citizen voters found or referred |
-| --- | --- |
-| Louisiana, records back to the 1980s | 79 who voted at least once [4](#source-non-citizens-on-voter-rolls-4) |
-| Ohio, 2024 referral batch | 138 who had cast ballots [10](#source-non-citizens-on-voter-rolls-10) |
-| Tennessee | 42 referred to the FBI [4](#source-non-citizens-on-voter-rolls-4) |
-| Indiana | "at least 21" [4](#source-non-citizens-on-voter-rolls-4) |
-| Texas, first SAVE referrals (June 2025) | 33 voters [2](#source-non-citizens-on-voter-rolls-2) |
-| Texas, September 2026 | 117 cases referred for investigation [1](#source-non-citizens-on-voter-rolls-1) |
+Every review that checked ballots found a few non-citizen voters; the chart shows the rate for each single election. [8](#source-non-citizens-on-voter-rolls-8) [20](#source-non-citizens-on-voter-rolls-20) [11](#source-non-citizens-on-voter-rolls-11) Iowa also found five whose ballots were rejected. [8](#source-non-citizens-on-voter-rolls-8) Counts that span several elections, or that are referrals rather than findings, are in the table after this chart.
 
 ### Votes found are between about 1 and 22 per million ballots {#non-citizens-on-voter-rolls--votes-per-ballots}
 
@@ -877,7 +900,19 @@ Every batch in the chart contains non-citizen registrants, at sizes that vary wi
 
 Ohio had 8,159,946 registered voters and 5,851,387 ballots cast in November 2024. [12](#source-non-citizens-on-voter-rolls-12) The alleged voters in the 2025 referral span every federal election from 2018 to 2024; dividing them by one election's ballots would overstate the rate. [9](#source-non-citizens-on-voter-rolls-9) The Secretary of State, a Republican, called non-citizen registration "exceedingly rare". [9](#source-non-citizens-on-voter-rolls-9)
 
-## About this data {#non-citizens-on-voter-rolls--about}
+## More {#non-citizens-on-voter-rolls--more-registrants-found}
+
+These reviews compare a state's voter list against records that say someone is not a citizen: driver's licence files, jury-duty excusals, immigration records and, since 2025, the federal SAVE database.
+
+They count three different things that are often run together, each much smaller than the one before:
+
+- people **flagged** by a database match;
+- people **confirmed** as non-citizens on the rolls;
+- confirmed non-citizens who **voted**.
+
+No review counts people whose non-citizen status appears in no record, so every figure here is a floor rather than an estimate of the total.
+
+### About this report's data {#non-citizens-on-voter-rolls--about}
 
 **Why there is no time series.** Each state review is a one-off, using its own databases, period and definition of a case, so the reviews cannot be joined into a national series. Ohio's referral batches are the only repeated count, and they are shown as a comparison by year of announcement because each batch covers different elections and AP's comparison omits 2020 and 2023.
 

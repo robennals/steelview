@@ -448,8 +448,9 @@ series:
     title: >-
       Migrants detected crossing the English Channel in small boats: time series (23
       October 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    url: https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    localFile: datasets/assets.publishing.service.gov.uk/23_October_2026_Small_boats_-_time_series.ods
     publisher: Home Office
     date: '2026-10-23'
   readings:
@@ -592,7 +593,7 @@ series:
         value: 68.6
 additionalSeries:
 - id: nationality
-  title: Small-boat arrivals by nationality, 2018–2025
+  title: UK small-boat arrivals by nationality, 2018–2025
   description: >-
     People detected arriving by small boat each year, by recorded nationality. The
     ten nationalities with the most arrivals over 2018–2025 are shown by name, in
@@ -633,8 +634,9 @@ additionalSeries:
       in the UK and recorded detections at UK ports. This may differ from the information
       given when the detection was initially recorded.
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -860,7 +862,7 @@ additionalSeries:
       - period: '2025'
         value: 9354
 - id: routes
-  title: Detected illegal arrivals by method, 2018–2025
+  title: Detected illegal arrivals in the UK by method, 2018–2025
   description: >-
     People detected arriving in the UK by an illegal route, by method of entry, each
     year. Detection rates differ by method, so the lines show what was detected, not
@@ -895,8 +897,9 @@ additionalSeries:
       on different methods of entry as different datasets have different levels of
       coverage.
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -978,7 +981,7 @@ additionalSeries:
       - period: '2025'
         value: 204
 - id: monthly
-  title: Small-boat arrivals by month, January 2018 to October 2026
+  title: UK small-boat arrivals by month, January 2018 to October 2026
   description: >-
     People detected arriving by small boat each month, from the Home Office's daily
     operational count. Crossings are seasonal, so a month is best compared with the
@@ -999,8 +1002,9 @@ additionalSeries:
     title: >-
       Migrants detected crossing the English Channel in small boats: time series (23
       October 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    url: https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    localFile: datasets/assets.publishing.service.gov.uk/23_October_2026_Small_boats_-_time_series.ods
     publisher: Home Office
     date: '2026-10-23'
   readings:
@@ -1252,8 +1256,9 @@ additionalSeries:
     title: >-
       Monthly detections of illegal border-crossings (IBC), January 2009 to August
       2026
-    url: >-
-      https://www.frontex.europa.eu/assets/Migratory_routes/2026/Monthly_detections_of_IBC_2026_10_05.xlsx
+    url: https://www.frontex.europa.eu/what-we-do/monitoring-and-risk-analysis/migratory-map/
+    fileUrl: https://www.frontex.europa.eu/assets/Migratory_routes/2026/Monthly_detections_of_IBC_2026_10_05.xlsx
+    localFile: datasets/frontex.europa.eu/Monthly_detections_of_IBC_2026_10_05.xlsx
     publisher: Frontex
     date: '2026-10-05'
   readings:
@@ -1339,7 +1344,9 @@ additionalSeries:
       - period: '2026'
         value: 76778
 - id: weather
-  title: Good crossing weather and arrivals per good day, January–August 2020–2026
+  title: >-
+    Good Channel-crossing weather and arrivals per good day, January–August
+    2020–2026
   description: >-
     Red days are days the Met Office judged at least one crossing attempt likely.
     The first reading counts red days from January to August each year; the second
@@ -1413,7 +1420,9 @@ additionalSeries:
       - period: '2026'
         value: 144
 - id: preventions
-  title: Crossings stopped by the French authorities, May 2024 to October 2026
+  title: >-
+    Channel crossings stopped by the French authorities, May 2024 to October
+    2026
   description: >-
     People who reached the UK by small boat, and people the French authorities report
     stopping from leaving France, by the month in which each reporting week ends.
@@ -1443,8 +1452,9 @@ additionalSeries:
     title: >-
       Migrants detected crossing the English Channel in small boats: time series (23
       October 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    url: https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    localFile: datasets/assets.publishing.service.gov.uk/23_October_2026_Small_boats_-_time_series.ods
     publisher: Home Office
     date: '2026-10-23'
   readings:
@@ -1708,7 +1718,7 @@ additionalSeries:
       - period: 2026-10
         value: 57.9
 - id: albania
-  title: Albanian and other small-boat arrivals by quarter, 2018–2026
+  title: Albanian and other small-boat arrivals in the UK by quarter, 2018–2026
   description: >-
     People detected arriving by small boat each quarter: Albanian nationals, and everyone
     else. The UK–Albania returns agreement was announced on 13 December 2022, in the
@@ -1743,8 +1753,9 @@ additionalSeries:
       IER_D01: Number of detected arrivals via illegal routes to the UK, 2018 Q1 to
       2026 Q2 - dataset
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1895,8 +1906,9 @@ additionalSeries:
         value: 7413
 comparisons:
 - id: europe-change
-  title: Change in irregular crossings, January–August 2026 against January–August
-    2025
+  title: >-
+    Change in irregular crossings into the EU and the UK, January–August 2026
+    against January–August 2025
   description: >-
     Percentage change in detected irregular crossings on each Frontex route into the
     EU, the EU total, and small-boat arrivals in the UK, over the same eight months.
@@ -1930,7 +1942,8 @@ comparisons:
     value: -33.0
   - label: Western Balkans
     value: -30.2
-  - label: Eastern Mediterranean (Greece, Cyprus, Bulgaria)
+  - label: "Eastern Mediterranean"
+    detail: "Greece, Cyprus, Bulgaria"
     value: -16.0
   - label: Western Mediterranean (Spain)
     value: 27.9

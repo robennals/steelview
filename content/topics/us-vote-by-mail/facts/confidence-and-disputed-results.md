@@ -291,7 +291,9 @@ sources:
       117 1st U.S. House of Representatives 10 MOTION On Agreeing to the
       Objection YEA-AND-NAY Failed 6-Jan-2021 ... Totals 121 303 0 7
     title: 'Roll Call 10, 117th Congress, 1st Session (vote record; fields are congress, session, chamber, roll call number, question, vote type, result, date, and totals of yeas, nays, present and not voting)'
-    url: https://clerk.house.gov/evs/2021/roll010.xml
+    url: https://clerk.house.gov/Votes/202110
+    fileUrl: https://clerk.house.gov/evs/2021/roll010.xml
+    localFile: datasets/clerk.house.gov/2021-roll010.xml
     publisher: Office of the Clerk, U.S. House of Representatives
     date: '2021-01-06'
   # 16
@@ -300,7 +302,9 @@ sources:
       117 1st U.S. House of Representatives 11 MOTION On Agreeing to the
       Objection YEA-AND-NAY Failed 7-Jan-2021 ... Totals 138 282 0 11
     title: 'Roll Call 11, 117th Congress, 1st Session (vote record, same fields)'
-    url: https://clerk.house.gov/evs/2021/roll011.xml
+    url: https://clerk.house.gov/Votes/202111
+    fileUrl: https://clerk.house.gov/evs/2021/roll011.xml
+    localFile: datasets/clerk.house.gov/2021-roll011.xml
     publisher: Office of the Clerk, U.S. House of Representatives
     date: '2021-01-07'
   # 17
@@ -574,31 +578,6 @@ comparisons:
         value: 76
       - label: 'In-person voters'
         value: 47
-  - id: winner-gap-worldwide
-    title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
-    description: 'Share confident in the honesty of elections among those who approve and disapprove of their national leadership (Gallup World Poll). The world figure is the 2025 median across more than 100 countries.'
-    unit: percent
-    valueLabel: '% confident'
-    domainMax: 100
-    sources: [4]
-    note: >-
-      Gallup publishes only the global median, not each country's figures, so
-      the full distribution cannot be shown here. The world median is for 2025
-      because Gallup's 2026 global collection was incomplete at publication.
-      The US 2025 values are not published separately; Gallup gives the
-      two-year average (46% of approvers, 48% of disapprovers) and the 2026
-      values, so the US bars show 2026 only.
-    items:
-      - label: 'World median 2025: approvers'
-        value: 70
-      - label: 'World median 2025: disapprovers'
-        value: 30
-      - label: 'US 2026: approvers'
-        value: 41
-        highlight: true
-      - label: 'US 2026: disapprovers'
-        value: 52
-        highlight: true
 relatedFacts:
   - ballot-deadlines-and-counting-speed
 dataStillNeeded:
@@ -628,11 +607,31 @@ figures:
     id: spae-nationwide
   - kind: series
     id: gallup-honesty
-  - kind: comparison
+  - kind: barChart
     id: winner-gap-worldwide
+    title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
+    description: 'Share confident in the honesty of elections among those who approve and disapprove of their national leadership (Gallup World Poll). The world figure is the 2025 median across more than 100 countries.'
+    valueLabel: '% confident'
+    categoryLabel: Where and when
+    format: { unit: percent, decimals: 0 }
+    domainMax: 100
+    sources: [4]
+    note: >-
+      Gallup publishes only the global median, not each country's figures, so
+      the full distribution cannot be shown here. The world median is for 2025
+      because Gallup's 2026 global collection was incomplete at publication.
+      The US 2025 values are not published separately; Gallup gives the
+      two-year average (46% of approvers, 48% of disapprovers) and the 2026
+      values, so the US bars show 2026 only.
+    series:
+      - { key: approve, label: Approve of national leadership }
+      - { key: disapprove, label: Disapprove }
+    items:
+      - { label: 'World median, 2025', values: { approve: 70, disapprove: 30 } }
+      - { label: 'United States, 2026', values: { approve: 41, disapprove: 52 }, highlight: true }
   - kind: dataTable
     id: disputes
-    title: 'Six disputed results, and how each ended'
+    title: Six disputed US election results, and how each ended
     description: 'What was challenged in each dispute, whether mail ballots were central, and how it ended.'
     caption: One card per dispute
     layout: timeline
@@ -786,7 +785,7 @@ A study of 2016 finds the winner effect outweighed pre-election "rigged" messagi
 
 ### The series cannot separate counting time from who won {#confidence-and-disputed-results--count-length-not-separated}
 
-Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Because the same voters also lost, these series cannot show whether a long count or a changing lead lowers confidence on its own; see Data still needed.
+Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Because the same voters also lost, these series cannot show whether a long count or a changing lead lowers confidence on its own; see What we don't know yet.
 
 ## Observations {#confidence-and-disputed-results--observations-gallup-honesty-total}
 
@@ -806,7 +805,7 @@ In 2026 American disapprovers were the more confident group, which Gallup says n
 
 ## Observations {#confidence-and-disputed-results--observations-disputes}
 
-### Six disputed results, and how each ended {#confidence-and-disputed-results--disputes-table}
+### Six disputed US election results, and how each ended {#confidence-and-disputed-results--disputes-table}
 
 These are prominent recent cases in which a losing side challenged a result, not a complete list.
 
@@ -838,7 +837,9 @@ Clinton finds voters "less likely to express confidence in election results cond
 
 Georgia Republicans' confidence in the statewide count rebounded in 2022, the first general election under that law (SB 202). The authors caution this may be "the noted winner's effect", since the party won almost every statewide office that year. [10](#source-confidence-and-disputed-results-10)
 
-## About this data {#confidence-and-disputed-results--about}
+## More {#confidence-and-disputed-results--more-gallup-accuracy-party}
+
+### About this report's data {#confidence-and-disputed-results--about}
 
 **What this measures.** Opinion surveys of adults (Gallup) or registered voters (Pew, MIT), and the court and congressional record of six disputed results. Pew counts independents who lean to a party with that party; Gallup does not, so each pollster's series is shown separately.
 

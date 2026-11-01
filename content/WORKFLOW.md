@@ -208,13 +208,14 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
 - **Drop or narrow** arguments the evidence does not support, rather than
   keeping them in weakened form.
 - **Turn decisive open questions into cruxes.** A gap in 3d becomes a crux
-  candidate only if its answer would change which viewpoint has the better
-  case — if one answer would leave a viewpoint standing and the other would
-  knock out an argument it relies on. Many gaps do not pass that test: the
-  missing data would be nice to have but would not swing the balance, and
-  those stay in 3d or in the report's `dataStillNeeded`. A question that more
-  research could answer is a research task, not a crux. A viewpoint may still
-  argue from its assumption on a crux, but says it is one.
+  candidate only if it sits on a real tension between viewpoints — if one
+  answer would leave a viewpoint standing and the other would knock out an
+  argument it relies on. Many gaps do not pass that test: the missing data
+  would be nice to have but would not swing the balance, and those stay in 3d
+  or in the report's `dataStillNeeded`. A question that more research could
+  answer is a research task; the crux is what each side is trying to protect
+  while the answer is unknown. A viewpoint may still argue from its assumption
+  on a crux, but says it is one.
 - **Add** the strongest arguments the data makes available that the outline
   missed — for every viewpoint, including the ones the data mostly hurts.
 - **Update the concessions** to the well-supported findings that cut against
@@ -233,17 +234,16 @@ evidence than the outline asked for. Because every viewpoint is a steelman,
 Record what changed, per viewpoint, in the outline's Revision notes.
 
 **Crux candidates are listed in the outline from stage 2 on**, each labelled
-with its kind and the viewpoint ids it divides. Most cruxes are one of
-three kinds ([Cruxes](AUTHORING.md#cruxes)):
+with its kind and the viewpoint ids it divides. Cruxes come in three kinds
+([Cruxes](AUTHORING.md#cruxes)), and a topic will usually have all three:
 
-- **a trade-off between values** — the viewpoints weigh the same goods
+- **a tension between principles** — the viewpoints weigh the same goods
   differently (`tradeoff`, or `priority` when one principle simply comes
   first);
-- **a different prediction** about what a policy or event will cause
+- **different predictions** about what a policy or event will cause
   (`prediction`);
-- **a different assumption** about a question the data cannot yet answer
-  (`assumption`) — those open questions from 3d whose answer would decide
-  between viewpoints.
+- **missing data** — a question the data cannot yet answer (`assumption`),
+  from the open questions in 3d whose answer would decide between viewpoints.
 
 ### 4b. Plan the combined reports
 
@@ -306,7 +306,8 @@ source never published.
 **Readability is checked before the gate**, against
 [Readability](AUTHORING.md#readability): a one-sentence overview at the top,
 no paragraph longer than four lines, statistics shown in the charts rather than
-recited in prose, and dated events as numbered markers on the timeline. Look
+recited in prose, dated events as numbered markers on the timeline, and a title
+on every chart that [says what it covers and where](AUTHORING.md#charts). Look
 at each report rendered, on a narrow screen as well as a wide one; a wall of
 text is easy to miss in the markdown and obvious on the page.
 
@@ -337,21 +338,54 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
+- a `dataTable` of more than 15 rows shows only its first 10, in its
+  `defaultSort` order, until the reader asks for the rest (every row is
+  there with JavaScript off). Sort it so the rows the report's argument
+  rests on come first; a highlighted row past the tenth is not lifted into
+  the preview. Markdown tables in the body scroll sideways but have no
+  edge shadow;
+- a `periodTimeline` label that fits neither inside its bar nor in free
+  space just right of it is not drawn (the legend, readout and table name
+  it), and the fit is judged for a phone-width track, so a label may be
+  left off on a desktop that had room. Stages drawn over one another
+  (explore, pursue, acquire) only show a label on a stage long enough to
+  hold it;
 - an observation group not tied to a visual needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos,
   and is missing from the topic page's walkthrough, so give it a
   [figure](AUTHORING.md#figures) with the same id wherever one would honestly
   show it;
 - a rule or status per area (a rule per state or country) is a categorical
-  `tileMap` or `geoMap` figure; a categorical table with more than one
-  column per area is a `dataTable` figure. Policy dates on a series go in
-  its `events`;
+  `map` figure; a categorical table with more than one column per area is a
+  `dataTable` figure. Policy dates on a series go in its `events`;
+- a `map` draws only its preset's areas: US states and territories, the
+  EU27 with EFTA and the UK, UK ITL1 regions, or the world's sovereign
+  states. A map of other areas (US counties, Balkan states outside EFTA, a
+  territory such as Greenland) has no preset yet. On the world tiles and on
+  the real shapes, values are read from the readout and the table, not
+  printed; the dots for small states and US territories carry no label;
 - a fact file reaches the component library through `figures`
   ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
-  reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
-  `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
-  `SmallMultiples` are not yet, so a report plan that needs one says so at
-  stage 4b;
+  reading order. Maps are kind `map` (`AreaMap`; `tileMap` and `geoMap`
+  are older spellings of it), real shapes and tiles from one dataset. A `quotes` figure of up to four quotes sets them side by
+  side and of more becomes a filterable list (`QuoteBrowser`); two measures
+  per row are a `barChart` with `series`, paired or a dumbbell, never
+  stacked; a tidy table a reader should be able to cut differently is a
+  `sliceExplorer` (mark separate votes or polls `combinable: false`); and
+  the same measure over time for many items is `smallMultiples`, every
+  panel on one scale and across the whole published range;
+- a number the source gives as a bound, an approximation or a range is a
+  qualified value (`{ value, qualifier }` or `{ low, high }`, see
+  [AUTHORING.md, Figures](AUTHORING.md#figures)) on tables, key figures,
+  bars, compositions and numeric maps. Fact-level `comparisons` and series
+  points still take bare numbers only, and a scatter point takes no range;
+  move a qualified comparison to a `barChart` figure;
+- an item resting on several sources takes `sources: [n, …]`; a line of a
+  series from a different publisher takes its own `source` object;
+- a timeline event may be dated to a decade or circa a year; a table column
+  of dates is `format: date`. A span of decades is a `periodTimeline`;
+- a `compositionBar` with `unit: percent` or a row `total` must add up
+  within rounding — the build reports the row, the sum and the total;
 
 ## 6. Write the viewpoints
 
@@ -386,7 +420,9 @@ holder of that view would find it better argued than their own version
   fact that no report has, add the slice to the broadest report that covers
   its subject rather than creating a report for that viewpoint.
 - **Cruxes are drafted after the viewpoints settle**, because they depend on
-  where the viewpoints actually ended up disagreeing. Principles were written
+  where the viewpoints actually ended up disagreeing. Each names a tension and
+  stops, without arguing the evidence or resolving it
+  ([Cruxes](AUTHORING.md#cruxes)). Principles were written
   in stage 2; adjust them here only if a viewpoint's final form rests on a
   different value.
 - **Order last.** Set each viewpoint's `order` so the sides alternate, and
@@ -434,7 +470,9 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   in the reply.
 - **Verbatim or not at all.** Fetch every quote with `curl`; extract PDFs to
   text; never take a figure from memory or from the candidate file. A figure
-  that cannot be confirmed at source is dropped or stated as unconfirmed.
+  that cannot be confirmed at source is dropped or stated as unconfirmed. For a
+  data file, start from our copy and save any new one:
+  [`SOURCE-FILES.md`](SOURCE-FILES.md).
 - **One observation per planned finding**, for every viewpoint the plan
   lists, including the findings against each, worded neutrally.
 - **Readable at a glance:** a two- or three-sentence overview; paragraphs of

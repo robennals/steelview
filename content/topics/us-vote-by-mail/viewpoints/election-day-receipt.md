@@ -1,5 +1,6 @@
 ---
 name: Ballots should arrive by Election Day, and be counted fast
+shortName: "Ballots in by Election Day"
 summary: "An election should have an end. Ballots should reach officials by the time polls close on Election Day, and states should count fast enough that the result is known within a day or so. States that do both show it can be done."
 order: 3
 ---

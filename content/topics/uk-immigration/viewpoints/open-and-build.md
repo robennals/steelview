@@ -1,5 +1,6 @@
 ---
 name: Immigration makes Britain richer; build the homes and services, rather than shut the door
+shortName: "Open and build"
 summary: "Skilled workers [pay far more into the public finances than they take out](#fact-immigration-economy-and-public-finances/skilled-workers-gain-care-workers-cost), and Britain needs more of them, not fewer. [Immigration is a small part of why homes cost so much](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise); the answer to the pressure that remains is to build."
 order: 2
 ---

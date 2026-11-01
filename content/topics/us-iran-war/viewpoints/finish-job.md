@@ -1,5 +1,6 @@
 ---
 name: The US started this war, and now it has to finish the job
+shortName: "Finish the job"
 summary: "If the US stops now, it leaves an angry, weakened Iran with [uranium no one can find](#fact-iran-nuclear-programme/stock-unaccounted-for) and [missiles that experts say it is rebuilding](#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles). The US should finish the job with clear, limited goals, and then keep inspectors in place."
 order: 3
 ---

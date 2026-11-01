@@ -21,7 +21,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
           <div className="sv-slide" key={slide.href}>
-            <SlideChart slide={slide} titleHref={topicPath(topic.slug)} />
+            <SlideChart slide={slide} titleHref={topicPath(topic.slug)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
           </div>
         ))}
       </PreviewCarousel>

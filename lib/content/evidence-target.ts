@@ -1,5 +1,24 @@
 import type { useRouter } from 'next/navigation';
 
+/**
+ * Turn a data panel to the step `id` names or holds, at once, and return that
+ * step. The panel's scroll position is what says which step is showing. A
+ * source sits on every chart that cites it, so one the reader's chart cites
+ * stays on that chart.
+ */
+export function showPanelStep(root: Element, id: string): HTMLElement | null {
+  const target = CSS.escape(id);
+  const slides = Array.from(root.querySelectorAll(`[data-observation="${target}"], [data-chart-anchor="${target}"], [data-source-id="${target}"], [id="${target}"]`))
+    .flatMap(found => found.closest<HTMLElement>('.sv-walk__slide') ?? []);
+  const strip = slides[0]?.parentElement;
+  if (!strip) return null;
+  const index = (slide: HTMLElement) => Array.from(strip.children).indexOf(slide);
+  const showing = Math.round(strip.scrollLeft / strip.clientWidth);
+  const slide = slides.find(candidate => index(candidate) === showing) ?? slides[0];
+  strip.scrollLeft = index(slide) * strip.clientWidth;
+  return slide;
+}
+
 /** Reveal a linked section without scrolling the topic behind an open dialog. */
 export function revealEvidence(root: HTMLElement, hash: string): boolean {
   let id: string;
@@ -10,11 +29,20 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
     if (article) focusViz(article, null);
     return true;
   }
-  const target = Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === id);
-  if (!target) return false;
+  // On a report's own page: the data panel's step, and the panel brought into
+  // view whole, since a chart and its observations are read together.
+  const step = showPanelStep(root, id);
+  const panel = step?.closest('.sv-walk');
+  panel?.scrollIntoView({ block: 'start' });
+  if (panel && root.querySelector(`[data-chart-anchor="${CSS.escape(id)}"]`)) return true;
+  const found = step?.querySelector<HTMLElement>(`[data-source-id="${CSS.escape(id)}"]`) ?? Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === id);
+  if (!found) return false;
+  // An old anchor of prose a figure replaced stands in for that figure.
+  const aliasFor = found.dataset.aliasFor;
+  const target = (aliasFor && Array.from(root.querySelectorAll<HTMLElement>('[id]')).find(el => el.id === aliasFor)) || found;
   // A target inside one visualization shows that visualization on its own;
   // anything else but a source, which every view keeps, shows the whole report.
-  if (article && !target.closest('.sv-references')) focusViz(article, ownViz(target));
+  if (article && !target.closest('.sv-references, .sv-chart__sources')) focusViz(article, ownViz(target));
   // A whole visualization is not a finding to pick out: start at its tabs.
   if (target.hasAttribute('data-viz')) {
     root.querySelector('.sv-modal__scroll')?.scrollTo(0, 0);
@@ -28,7 +56,7 @@ export function revealEvidence(root: HTMLElement, hash: string): boolean {
   target.focus({ preventScroll: true });
   const scroll = root.querySelector<HTMLElement>('.sv-modal__scroll');
   if (scroll) scroll.scrollTop += target.getBoundingClientRect().top - scroll.getBoundingClientRect().top - 24;
-  else target.scrollIntoView({ block: 'start' });
+  else target.scrollIntoView({ block: panel ? 'nearest' : 'start' });
   return true;
 }
 

@@ -12,13 +12,26 @@ type Observation = DataStep['observations'][number];
 /** Which of a step's observations is shown, shared with the bar inside its chart. */
 const Step = createContext<{
   observations: Observation[];
+  /** Give each observation its id, for a page where a link to one works without script. */
+  addressed: boolean;
+  /** The chart's further text for its More, rendered. */
+  more: string;
   index: number;
   open: boolean;
+  /** Counts the reader's jumps from More, each of which moves focus to the bar. */
+  jumps: number;
   go: (to: number) => void;
+  /** Go straight to one observation, open, with focus on it. */
+  show: (to: number) => void;
   toggle: () => void;
 } | null>(null);
 
-type ObservationStepProps = { observations: Observation[]; children: ReactNode };
+/** The step a chart is drawn in, if any. */
+export function useChartStep() {
+  return useContext(Step);
+}
+
+type ObservationStepProps = { observations: Observation[]; more?: string; addressed?: boolean; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -26,21 +39,40 @@ type ObservationStepProps = { observations: Observation[]; children: ReactNode }
  * arrives after its step, so this holds the reader's place while `ObservationBar`
  * is drawn first in the step and then inside the chart.
  */
-export function ObservationStep({ observations, children }: ObservationStepProps) {
-  // Opened in a sheet at one of these observations, start there.
+export function ObservationStep({ observations, more = '', addressed = false, children }: ObservationStepProps) {
+  // Opened at one of these observations, start there. A report's own page can
+  // be sent to one by a link, which is asking to read it, so it opens too.
   const shown = useContext(ShownObservation);
   const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
   const [open, setOpen] = useState(false);
+  const [jumps, setJumps] = useState(0);
+  const [followed, setFollowed] = useState(shown);
+  if (followed !== shown) {
+    setFollowed(shown);
+    const at = observations.findIndex(o => o.id === shown);
+    if (at >= 0) {
+      setIndex(at);
+      setOpen(true);
+    }
+  }
   const step = useMemo(() => ({
     observations,
+    addressed,
+    more,
     index,
     open,
+    jumps,
     go: (to: number) => {
       setIndex((to + observations.length) % observations.length);
       setOpen(false);
     },
+    show: (to: number) => {
+      setIndex(to);
+      setOpen(true);
+      setJumps(count => count + 1);
+    },
     toggle: () => setOpen(was => !was),
-  }), [observations, index, open]);
+  }), [observations, addressed, more, index, open, jumps]);
   return <Step.Provider value={step}>{children}</Step.Provider>;
 }
 
@@ -74,7 +106,8 @@ function revealPicked(root: Element) {
 
 /**
  * The shown observation as one line, between a chart's title and its graph:
- * its claim, which opens to its reasoning when clicked. Without JavaScript every
+ * its claim, which opens to its reasoning when clicked. A chart's Subtleties come
+ * after its observations and say so in the count. Without JavaScript every
  * observation is shown in full, one after another. Outside a step, nothing.
  */
 export function ObservationBar() {
@@ -95,8 +128,13 @@ export function ObservationBar() {
     return () => redraws.disconnect();
   }, [shown]);
 
+  const jumps = step?.jumps ?? 0;
+  useEffect(() => {
+    if (jumps > 0) ref.current?.querySelector<HTMLElement>('.sv-observe__toggle')?.focus();
+  }, [jumps]);
+
   if (!step || step.observations.length === 0) return null;
-  const { observations, index, open, go, toggle } = step;
+  const { observations, addressed, index, open, go, toggle } = step;
   const many = observations.length > 1;
 
   // Anywhere in the bubble toggles it, apart from its own controls and links, or
@@ -110,7 +148,7 @@ export function ObservationBar() {
   const controls = many && enhanced && (
     <div className="sv-observe__controls">
       <button type="button" className="sv-observe__step" aria-label="Previous observation" onClick={() => go(index - 1)}>‹</button>
-      <p className="sv-observe__count">{index + 1} of {observations.length}</p>
+      <p className="sv-observe__count">{index + 1} of {observations.length}{observations[index].subtlety && ' · Subtlety'}</p>
       <button type="button" className="sv-observe__step" aria-label="Next observation" onClick={() => go(index + 1)}>›</button>
     </div>
   );
@@ -120,21 +158,20 @@ export function ObservationBar() {
       {observations.map((observation, i) => {
         const current = i === index;
         return (
-          <div key={observation.id} className="sv-observe__item" data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
+          <div key={observation.id} className="sv-observe__item" id={addressed ? observation.id : undefined} data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
             <div className="sv-observe__head">
               {current && controls}
               <h4 className="sv-observe__heading">
                 {enhanced && current
                   ? (
                     <button type="button" className="sv-observe__toggle" aria-expanded={open} onClick={toggle}>
-                      <span className="sv-observe__claim">{observation.heading}</span>
-                      <span className="sv-observe__more" aria-hidden="true">{open ? 'Less ▴' : 'More ▾'}</span>
+                      <span className="sv-observe__claim" dangerouslySetInnerHTML={{ __html: observation.heading }} />
                     </button>
                   )
-                  : <span className="sv-observe__claim">{observation.heading}</span>}
+                  : <span className="sv-observe__claim" dangerouslySetInnerHTML={{ __html: observation.heading }} />}
               </h4>
             </div>
-            <div className="sv-observe__body" hidden={enhanced && !(current && open)}>
+            <div className="sv-observe__body" hidden={enhanced && !(current && open)} tabIndex={enhanced ? 0 : undefined}>
               <Prose html={observation.html} className="sv-walk__prose" />
             </div>
           </div>

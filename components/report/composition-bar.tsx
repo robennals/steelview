@@ -1,14 +1,21 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { OTHER_KEY, compose, type CompositionCategory, type CompositionRowInput } from './composition';
+import { compose, compositionColor, type CompositionCategory, type CompositionRowInput, type CompositionSegment } from './composition';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
-import { seriesColor } from './scale';
-import type { SourceCredit, ValueFormat } from './types';
+import { qualifiedLabel, qualifiedText } from './qualified';
+import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type { CompositionCategory, CompositionRowInput } from './composition';
 
 export type CompositionBarProps = {
+  /**
+   * `percent`: the values are the source's own percentages, and labels print
+   * them as published (33.3% stays 33.3%, not a recomputed 33.4%). Otherwise
+   * labels show each part's computed share of the row.
+   */
+  unit?: 'percent' | 'count';
   /** The parts, in the order they stack from the left. Order them the same way the text discusses them. */
   categories: CompositionCategory[];
   /** One bar per row — usually a date ("2011", "2021") or a population. */
@@ -29,13 +36,17 @@ export type CompositionBarProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
+  /** Draw the compact preview: the linked title, the key and every bar; row sources stay on the full figure. */
+  preview?: FigurePreview;
 };
 
 /**
  * Small shares keep one decimal, always shown, so 1.7% and 1.5% do not both
  * print as "2%" and 9.0% sits beside 9.3% rather than reading as "9%".
  */
-function formatShare(share: number) {
+function formatShare(share: number): string {
   return share < 10 ? `${share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%` : formatValue(share, { unit: 'percent', decimals: 0 });
 }
 
@@ -49,6 +60,7 @@ function formatShare(share: number) {
 export function CompositionBar({
   categories,
   rows,
+  unit,
   showCounts = false,
   countFormat = { unit: 'count' },
   otherThreshold,
@@ -60,9 +72,20 @@ export function CompositionBar({
   sources,
   note,
   footer,
+  panel,
+  preview,
 }: CompositionBarProps) {
   const composed = compose(categories, rows, { otherThreshold, otherLabel });
-  const color = (key: string) => (key === OTHER_KEY ? 'var(--ink-4)' : seriesColor(categories.findIndex(c => c.key === key) + 1));
+  // Up to four places, so a published 12.25% is not rounded to 12.3%.
+  const published = { unit: 'percent', decimals: 4 } as const;
+  const shareLabel = (segment: CompositionSegment) =>
+    unit === 'percent' && segment.published !== undefined ? qualifiedLabel(segment.published, published) : formatShare(segment.share);
+  const shareText = (segment: CompositionSegment) =>
+    unit === 'percent' && segment.published !== undefined
+      ? qualifiedText(segment.published, published)
+      : `${segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
+  const color = (key: string) => compositionColor(categories, key);
+  const totalText = (total: number) => formatValue(total, countFormat);
 
   const graph = (
     <>
@@ -74,19 +97,24 @@ export function CompositionBar({
           </li>
         ))}
       </ul>
-      <ol className="sv-composition__rows">
+      <ol
+        className="sv-composition__rows"
+        data-compact={(preview && composed.rows.length > COMPACT_PREVIEW_ITEMS) || undefined}
+        data-dense={(preview && composed.rows.length > DENSE_PREVIEW_ITEMS) || undefined}
+        style={showCounts ? { '--sv-composition-total': `${Math.max(...composed.rows.map(row => totalText(row.total).length)) + 1}ch` } : undefined}
+      >
         {composed.rows.map(row => (
-          <li key={row.label} className="sv-composition__row">
+          <li key={row.label} className="sv-composition__row" data-row={row.label}>
             <p className="sv-composition__head">
               <span className="sv-composition__label">
                 {row.label}
-                {row.source && <SourceCredits sources={[row.source]} />}
+                {row.sources && !preview && <SourceCredits sources={row.sources} />}
               </span>
-              {showCounts && <span className="sv-composition__total">{formatValue(row.total, countFormat)} total</span>}
+              {showCounts && <span className="sv-composition__total">{totalText(row.total)}<span className="sv-composition__total-word"> total</span></span>}
             </p>
             {/* The text equivalent of the bar, in stacking order. */}
             <p className="sv-visually-hidden">
-              {row.segments.map(s => `${s.label} ${formatShare(s.share)}`).join(', ')}
+              {row.segments.map(s => `${s.label} ${shareLabel(s)}`).join(', ')}
             </p>
             <div className="sv-composition__bar" aria-hidden="true">
               {row.segments.map(segment =>
@@ -98,7 +126,7 @@ export function CompositionBar({
                     style={{ width: `${segment.share}%`, background: color(segment.key) }}
                   >
                     <span className="sv-composition__segment-name">{segment.label} </span>
-                    <span className="sv-composition__segment-share">{formatShare(segment.share)}</span>
+                    <span className="sv-composition__segment-share">{shareLabel(segment)}</span>
                   </span>
                 ) : null,
               )}
@@ -108,6 +136,8 @@ export function CompositionBar({
       </ol>
     </>
   );
+
+  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-composition">{graph}</ReportFigure>;
 
   const table = (
     <div className="sv-chart__table-scroll">
@@ -125,12 +155,12 @@ export function CompositionBar({
             <tr key={row.label}>
               <th scope="row">
                 {row.label}
-                {row.source && <SourceCredits sources={[row.source]} />}
+                {row.sources && <SourceCredits sources={row.sources} />}
               </th>
               {row.segments.map(segment => (
                 <td key={segment.key}>
-                  {segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%
-                  {showCounts && <span className="sv-composition__count"> ({formatValue(segment.value, countFormat)})</span>}
+                  {shareText(segment)}
+                  {showCounts && <span className="sv-composition__count"> ({segment.published === undefined ? formatValue(segment.value, countFormat) : qualifiedText(segment.published, countFormat)})</span>}
                 </td>
               ))}
               {showCounts && <td>{formatValue(row.total, countFormat)}</td>}
@@ -142,7 +172,7 @@ export function CompositionBar({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-composition">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-composition">
       <ChartViewToggle label={title ?? 'Composition'} graph={graph} table={table} />
     </ReportFigure>
   );

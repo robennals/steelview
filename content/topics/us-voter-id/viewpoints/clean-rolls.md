@@ -1,5 +1,6 @@
 ---
 name: Clean up the voter lists, instead of making voters prove themselves at the polls
+shortName: "Clean the rolls"
 summary: "[Most people taken off voter lists had moved, died, or not answered a notice](#fact-voter-roll-maintenance/mostly-moves-deaths-nonresponse), and [non-citizens mostly get on through mistakes at registration](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls). A photo-ID check at the polls catches none of these. States should find them in their records before Election Day, using careful, checked matching and giving voters time to answer."
 order: 3
 ---

@@ -1,5 +1,6 @@
 ---
 name: Iran's government kills its own people, and America should help Iranians bring it down
+shortName: "Help Iranians bring it down"
 summary: "Iran's government [killed thousands of protesters in January](#fact-iran-government-and-its-people/january-2026-crackdown-toll) and [put more people to death in 2025 than in any year since 1989](#fact-iran-government-and-its-people/executions-most-since-1989). [Few Iranians in one online survey want it](#fact-iran-government-and-its-people/few-prefer-islamic-republic). The US should help them end it."
 order: 5
 ---

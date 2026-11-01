@@ -1,5 +1,6 @@
 ---
 name: Require ID and guarantee easy voting, so both sides trust the result
+shortName: "ID plus access"
 summary: "[Trust in the vote count now depends on which party is in power](#fact-opinion-and-confidence-in-elections/confidence-follows-power), and [voters trust results less under rules they oppose](#fact-opinion-and-confidence-in-elections/procedures-they-oppose). Free photo ID plus guaranteed early voting, passed by both parties, would give each side the protection it fears losing."
 order: 4
 ---

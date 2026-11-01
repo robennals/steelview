@@ -21,8 +21,10 @@ sources:
       <party>Democratic</party><yea-total>210</yea-total><nay-total>4</nay-total><present-total>0</present-total><not-voting-total>0</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>212</yea-total><nay-total>219</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
-    title: 'Roll Call 85, H.Con.Res.38, 5 March 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll085.xml
+    title: 'Roll Call 85, H.Con.Res.38, 5 March 2026'
+    url: https://clerk.house.gov/Votes/202685
+    fileUrl: https://clerk.house.gov/evs/2026/roll085.xml
+    localFile: datasets/clerk.house.gov/2026-roll085.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-03-05'
   # 2
@@ -37,8 +39,10 @@ sources:
       <party>Independent</party><yea-total>0</yea-total><nay-total>1</nay-total>
       ...
       <total-stub>Totals</total-stub><yea-total>213</yea-total><nay-total>214</nay-total><present-total>1</present-total><not-voting-total>3</not-voting-total>
-    title: 'Roll Call 114, H.Con.Res.40, 16 April 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll114.xml
+    title: 'Roll Call 114, H.Con.Res.40, 16 April 2026'
+    url: https://clerk.house.gov/Votes/2026114
+    fileUrl: https://clerk.house.gov/evs/2026/roll114.xml
+    localFile: datasets/clerk.house.gov/2026-roll114.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-04-16'
   # 3
@@ -51,8 +55,10 @@ sources:
       <party>Democratic</party><yea-total>209</yea-total><nay-total>1</nay-total><present-total>0</present-total><not-voting-total>2</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>212</yea-total><nay-total>212</nay-total><present-total>0</present-total><not-voting-total>6</not-voting-total>
-    title: 'Roll Call 170, H.Con.Res.75, 14 May 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll170.xml
+    title: 'Roll Call 170, H.Con.Res.75, 14 May 2026'
+    url: https://clerk.house.gov/Votes/2026170
+    fileUrl: https://clerk.house.gov/evs/2026/roll170.xml
+    localFile: datasets/clerk.house.gov/2026-roll170.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-05-14'
   # 4
@@ -68,8 +74,10 @@ sources:
       <party>Democratic</party><yea-total>211</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>215</yea-total><nay-total>208</nay-total><present-total>0</present-total><not-voting-total>7</not-voting-total>
-    title: 'Roll Call 199, H.Con.Res.86, 3 June 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll199.xml
+    title: 'Roll Call 199, H.Con.Res.86, 3 June 2026'
+    url: https://clerk.house.gov/Votes/2026199
+    fileUrl: https://clerk.house.gov/evs/2026/roll199.xml
+    localFile: datasets/clerk.house.gov/2026-roll199.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-06-03'
   # 5
@@ -82,8 +90,10 @@ sources:
       <party>Democratic</party><yea-total>210</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>2</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>214</yea-total><nay-total>208</nay-total><present-total>0</present-total><not-voting-total>9</not-voting-total>
-    title: 'Roll Call 282, H.Con.Res.89, 23 July 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll282.xml
+    title: 'Roll Call 282, H.Con.Res.89, 23 July 2026'
+    url: https://clerk.house.gov/Votes/2026282
+    fileUrl: https://clerk.house.gov/evs/2026/roll282.xml
+    localFile: datasets/clerk.house.gov/2026-roll282.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-07-23'
   # 6
@@ -96,8 +106,10 @@ sources:
       <party>Democratic</party><yea-total>213</yea-total><nay-total>0</nay-total><present-total>0</present-total><not-voting-total>1</not-voting-total>
       ...
       <total-stub>Totals</total-stub><yea-total>220</yea-total><nay-total>204</nay-total><present-total>0</present-total><not-voting-total>9</not-voting-total>
-    title: 'Roll Call 307, H.Con.Res.93, 15 September 2026 (XML)'
-    url: https://clerk.house.gov/evs/2026/roll307.xml
+    title: 'Roll Call 307, H.Con.Res.93, 15 September 2026'
+    url: https://clerk.house.gov/Votes/2026307
+    fileUrl: https://clerk.house.gov/evs/2026/roll307.xml
+    localFile: datasets/clerk.house.gov/2026-roll307.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-09-15'
   # 7
@@ -123,8 +135,10 @@ sources:
       joint resolution to direct the removal of United States Armed Forces from
       hostilities within or against the Islamic Republic of Iran that have not
       been authorized by Congress.
-    title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu XML; Internet Archive copy of 10 October 2026)'
-    url: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+    title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu, as of 10 October 2026)'
+    url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm
+    fileUrl: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+    localFile: datasets/senate.gov/vote_menu_119_2.xml
     publisher: United States Senate
     date: '2026-10-10'
   # 8
@@ -132,8 +146,10 @@ sources:
     quote: >-
       Concurrent Resolution Agreed to (50-48) ... Collins (R-ME) Collins Susan R
       ME Yea
-    title: 'Roll Call Vote 184, 119th Congress, 2nd Session: H.Con.Res.86 (XML; Internet Archive copy)'
-    url: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml
+    title: 'Roll Call Vote 184, 119th Congress, 2nd Session: H.Con.Res.86'
+    url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.htm
+    fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00184.xml
+    localFile: datasets/senate.gov/vote_119_2_00184.xml
     publisher: United States Senate
     date: '2026-06-23'
   # 9
@@ -311,8 +327,10 @@ sources:
       <vote-desc>Authorizing the limited use of the United States Armed Forces
       in support of the NATO mission in Libya</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>123</yea-total><nay-total>295</nay-total>
-    title: 'Roll Call 493, H.J.Res.68, 24 June 2011 (XML)'
-    url: https://clerk.house.gov/evs/2011/roll493.xml
+    title: 'Roll Call 493, H.J.Res.68, 24 June 2011'
+    url: https://clerk.house.gov/Votes/2011493
+    fileUrl: https://clerk.house.gov/evs/2011/roll493.xml
+    localFile: datasets/clerk.house.gov/2011-roll493.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2011-06-24'
   # 21
@@ -325,8 +343,10 @@ sources:
       Organization Operation Unified Protector with respect to Libya, unless
       otherwise specifically authorized by law</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>180</yea-total><nay-total>238</nay-total>
-    title: 'Roll Call 494, H.R.2278, 24 June 2011 (XML)'
-    url: https://clerk.house.gov/evs/2011/roll494.xml
+    title: 'Roll Call 494, H.R.2278, 24 June 2011'
+    url: https://clerk.house.gov/Votes/2011494
+    fileUrl: https://clerk.house.gov/evs/2011/roll494.xml
+    localFile: datasets/clerk.house.gov/2011-roll494.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2011-06-24'
   # 22
@@ -338,8 +358,10 @@ sources:
       hostilities in the Republic of Yemen that have not been authorized by
       Congress</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>247</yea-total><nay-total>175</nay-total><present-total>1</present-total>
-    title: 'Roll Call 153, S.J.Res.7, 4 April 2019 (XML)'
-    url: https://clerk.house.gov/evs/2019/roll153.xml
+    title: 'Roll Call 153, S.J.Res.7, 4 April 2019'
+    url: https://clerk.house.gov/Votes/2019153
+    fileUrl: https://clerk.house.gov/evs/2019/roll153.xml
+    localFile: datasets/clerk.house.gov/2019-roll153.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2019-04-04'
   # 23
@@ -351,8 +373,10 @@ sources:
       removal of United States Armed Forces from hostilities in the Republic of
       Yemen that have not been authorized by Congress. ... 00048 13-Mar S.J.Res.
       7 On the Joint Resolution Passed 54 46
-    title: 'Senate Roll Call Votes, 116th Congress, 1st Session (vote menu XML; Internet Archive copy)'
-    url: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.xml
+    title: 'Senate Roll Call Votes, 116th Congress, 1st Session (vote menu)'
+    url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.htm
+    fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_1.xml
+    localFile: datasets/senate.gov/vote_menu_116_1.xml
     publisher: United States Senate
     date: '2019'
   # 24
@@ -364,8 +388,10 @@ sources:
       hostilities against the Islamic Republic of Iran that have not been
       authorized by Congress</vote-desc> ...
       <total-stub>Totals</total-stub><yea-total>227</yea-total><nay-total>186</nay-total>
-    title: 'Roll Call 101, S.J.Res.68, 11 March 2020 (XML)'
-    url: https://clerk.house.gov/evs/2020/roll101.xml
+    title: 'Roll Call 101, S.J.Res.68, 11 March 2020'
+    url: https://clerk.house.gov/Votes/2020101
+    fileUrl: https://clerk.house.gov/evs/2020/roll101.xml
+    localFile: datasets/clerk.house.gov/2020-roll101.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2020-03-11'
   # 25
@@ -377,8 +403,10 @@ sources:
       direct the removal of United States Armed Forces from hostilities against
       the Islamic Republic of Iran that have not been authorized by Congress.
       ... 00052 13-Feb S.J.Res. 68 On the Joint Resolution Passed 55 45
-    title: 'Senate Roll Call Votes, 116th Congress, 2nd Session (vote menu XML; Internet Archive copy)'
-    url: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.xml
+    title: 'Senate Roll Call Votes, 116th Congress, 2nd Session (vote menu)'
+    url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.htm
+    fileUrl: https://web.archive.org/web/2026id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_116_2.xml
+    localFile: datasets/senate.gov/vote_menu_116_2.xml
     publisher: United States Senate
     date: '2020'
   # 26
@@ -738,8 +766,10 @@ series:
       <party>Democratic</party><yea-total>213</yea-total><nay-total>0</nay-total>
       ...
       <total-stub>Totals</total-stub><yea-total>220</yea-total><nay-total>204</nay-total>
-    title: 'House roll-call XML files 85, 114, 170, 199, 282 and 307 (2026); latest shown'
-    url: https://clerk.house.gov/evs/2026/roll307.xml
+    title: 'House roll calls 85, 114, 170, 199, 282 and 307 (2026); latest shown'
+    url: https://clerk.house.gov/Votes/2026307
+    fileUrl: https://clerk.house.gov/evs/2026/roll307.xml
+    localFile: datasets/clerk.house.gov/2026-roll307.xml
     publisher: Office of the Clerk, US House of Representatives
     date: '2026-09-15'
   readings:
@@ -789,8 +819,10 @@ additionalSeries:
         48 ... 00129 19-May S.J.Res. 185 On the Motion to Discharge Agreed to 50
         47 ... 00046 04-Mar S.J.Res. 104 On the Motion to Discharge Rejected 47
         53
-      title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu XML; Internet Archive copy of 10 October 2026)'
-      url: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+      title: 'Senate Roll Call Votes, 119th Congress, 2nd Session (vote menu, as of 10 October 2026)'
+      url: https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.htm
+      fileUrl: https://web.archive.org/web/20261010195728id_/https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml
+      localFile: datasets/senate.gov/vote_menu_119_2.xml
       publisher: United States Senate
       date: '2026-10-10'
     readings:
@@ -820,7 +852,9 @@ additionalSeries:
           - name: Democrats voting no
             points: [{period: '2026-03-04', value: 1}, {period: '2026-03-18', value: 1}, {period: '2026-03-24', value: 1}, {period: '2026-04-15', value: 1}, {period: '2026-04-22', value: 1}, {period: '2026-04-30', value: 1}, {period: '2026-05-13', value: 1}, {period: '2026-05-19', value: 1}, {period: '2026-06-16', value: 1}, {period: '2026-06-23', value: 1}, {period: '2026-06-24', value: 1}, {period: '2026-07-30', value: 1}, {period: '2026-09-24', value: 1}]
   - id: pew-approval-series
-    title: 'Approval of the war in Pew''s surveys, with the war''s main events, March–October 2026'
+    title: >-
+      US approval of the Iran war in Pew's surveys, with the war's main events,
+      March–October 2026
     description: >-
       Share of US adults who approve of President Trump's handling of the
       military action against Iran, and who say using force was the right
@@ -931,78 +965,6 @@ additionalSeries:
           - name: Rep/lean Rep
             points: [{period: '2026-03', value: 71}, {period: '2026-10', value: 65}]
 comparisons:
-  - id: gallup-june-by-party
-    title: 'Approval of the US military action against Iran, by party (Gallup), June 2026'
-    description: 'Share of US adults who approve or disapprove of "this U.S. military action against Iran" (Gallup, telephone, 1–15 June 2026, 1,001 adults).'
-    unit: percent
-    valueLabel: '% of adults'
-    sources: [30]
-    groupLabel: answer
-    allGroupsLabel: All answers
-    groups: [Approve, Disapprove, No opinion]
-    defaultGroup: 0
-    note: 'From the party table for question 24 of Gallup''s final topline. Gallup''s party groups exclude leaners. Each bar is the sum of the three published shares, which is 101 for all adults because of rounding. Gallup published this question once, so there is no Gallup trend.'
-    items:
-      - label: All adults
-        value: 101
-        values: [34, 63, 4]
-      - label: Republicans
-        value: 100
-        values: [79, 19, 2]
-      - label: Independents
-        value: 100
-        values: [26, 68, 6]
-      - label: Democrats
-        value: 100
-        values: [8, 90, 2]
-  - id: quinnipiac-march-by-party
-    title: 'Support for the US military action against Iran, by party (Quinnipiac), March 2026'
-    description: 'Share of registered voters who support or oppose "the U.S. military action against Iran" (Quinnipiac, 6–8 March 2026, 1,002 registered voters).'
-    unit: percent
-    valueLabel: '% of registered voters'
-    sources: [31]
-    groupLabel: answer
-    allGroupsLabel: All answers
-    groups: [Support, Oppose, Don't know]
-    defaultGroup: 0
-    note: 'From question 10 of the release. Party groups exclude leaners. Each bar is the sum of the three published shares (101 for Republicans, from rounding).'
-    items:
-      - label: All voters
-        value: 100
-        values: [40, 53, 7]
-      - label: Republicans
-        value: 101
-        values: [85, 11, 5]
-      - label: Independents
-        value: 100
-        values: [31, 60, 9]
-      - label: Democrats
-        value: 100
-        values: [7, 89, 4]
-  - id: quinnipiac-congress-approval
-    title: 'Should the President have received Congress''s approval before acting? By party (Quinnipiac), March 2026'
-    description: 'Answers of registered voters to "Do you think President Trump should have received approval from Congress before taking military action against Iran, or not?" (Quinnipiac, 6–8 March 2026).'
-    unit: percent
-    valueLabel: '% of registered voters'
-    sources: [31]
-    groupLabel: answer
-    allGroupsLabel: All answers
-    groups: [Should have, Should not have, Don't know]
-    defaultGroup: 0
-    note: 'From question 15 of the release. Each bar is the sum of the three published shares. No other pollster found asked this question, so there is no trend or comparison.'
-    items:
-      - label: All voters
-        value: 100
-        values: [59, 38, 3]
-      - label: Republicans
-        value: 100
-        values: [22, 76, 2]
-      - label: Independents
-        value: 100
-        values: [64, 33, 3]
-      - label: Democrats
-        value: 100
-        values: [92, 5, 3]
   - id: war-powers-reports-1975-2017
     title: 'War Powers reports by presidents, and those that started the 60-day clock, 1975–March 2017'
     description: 'Reports submitted to Congress under the War Powers Resolution from 1975 to March 2017, and the number that cited section 4(a)(1), which starts the 60-day withdrawal requirement (CRS).'
@@ -1044,12 +1006,81 @@ figures:
     id: "senate-votes-series"
   - kind: "series"
     id: "pew-approval-series"
-  - kind: "comparison"
-    id: "gallup-june-by-party"
-  - kind: "comparison"
-    id: "quinnipiac-march-by-party"
-  - kind: "comparison"
-    id: "quinnipiac-congress-approval"
+  - kind: compositionBar
+    id: gallup-june-by-party
+    valuesFrom: "Gallup's final topline, question 24, party table"
+    title: Approval of the US military action against Iran, by party (Gallup), June 2026
+    description: Share of US adults who approve or disapprove of "this U.S. military action against Iran"
+      (Gallup, telephone, 1–15 June 2026, 1,001 adults).
+    rowLabel: Group
+    unit: percent
+    categories:
+    - {key: approve, label: Approve}
+    - {key: disapprove, label: Disapprove}
+    - {key: no-opinion, label: No opinion}
+    rows:
+    - label: All adults
+      values: {approve: 34, disapprove: 63, no-opinion: 4}
+    - label: Republicans
+      values: {approve: 79, disapprove: 19, no-opinion: 2}
+    - label: Independents
+      values: {approve: 26, disapprove: 68, no-opinion: 6}
+    - label: Democrats
+      values: {approve: 8, disapprove: 90, no-opinion: 2}
+    sources: [30]
+    note: 'From the party table for question 24 of Gallup''s final topline. Gallup''s party groups exclude
+      leaners. Shares are as published: they add to 101 for all adults because of rounding. Gallup published
+      this question once, so there is no Gallup trend.'
+  - kind: compositionBar
+    id: quinnipiac-march-by-party
+    valuesFrom: "Quinnipiac's release of 9 March 2026, question 10"
+    title: Support for the US military action against Iran, by party (Quinnipiac), March 2026
+    description: Share of registered voters who support or oppose "the U.S. military action against Iran"
+      (Quinnipiac, 6–8 March 2026, 1,002 registered voters).
+    rowLabel: Group
+    unit: percent
+    categories:
+    - {key: support, label: Support}
+    - {key: oppose, label: Oppose}
+    - {key: dont-know, label: Don't know}
+    rows:
+    - label: All voters
+      values: {support: 40, oppose: 53, dont-know: 7}
+    - label: Republicans
+      values: {support: 85, oppose: 11, dont-know: 5}
+    - label: Independents
+      values: {support: 31, oppose: 60, dont-know: 9}
+    - label: Democrats
+      values: {support: 7, oppose: 89, dont-know: 4}
+    sources: [31]
+    note: 'From question 10 of the release. Party groups exclude leaners. Shares are as published: they
+      add to 101 for Republicans because of rounding.'
+  - kind: compositionBar
+    id: quinnipiac-congress-approval
+    valuesFrom: "Quinnipiac's release of 9 March 2026, question 15"
+    title: >-
+      Should the President have received Congress's approval before acting
+      against Iran? By party (Quinnipiac), March 2026
+    description: Answers of registered voters to "Do you think President Trump should have received approval
+      from Congress before taking military action against Iran, or not?" (Quinnipiac, 6–8 March 2026).
+    rowLabel: Group
+    unit: percent
+    categories:
+    - {key: should, label: Should have}
+    - {key: should-not, label: Should not have}
+    - {key: dont-know, label: Don't know}
+    rows:
+    - label: All voters
+      values: {should: 59, should-not: 38, dont-know: 3}
+    - label: Republicans
+      values: {should: 22, should-not: 76, dont-know: 2}
+    - label: Independents
+      values: {should: 64, should-not: 33, dont-know: 3}
+    - label: Democrats
+      values: {should: 92, should-not: 5, dont-know: 3}
+    sources: [31]
+    note: From question 15 of the release. Shares are as published. No other pollster found asked this question,
+      so there is no trend or comparison.
   - kind: "comparison"
     id: "war-powers-reports-1975-2017"
   - kind: "quoteComparison"
@@ -1061,29 +1092,76 @@ figures:
       - { text: "They said: 'He will start a war.' I'm not going to start a war. I'm going to stop wars.", speaker: "Donald Trump", role: "President-elect", context: "Election-night remarks", date: "2024-11-06", source: 33 }
       - { text: "I acted pursuant to my constitutional authority as Commander in Chief … in collective self-defense of our regional allies, including Israel.", speaker: "Donald Trump", role: "President", context: "48-hour War Powers report", date: "2026-03-02", source: 12 }
       - { text: "will not be attacking Iran at any time prior to the Midterm Elections … having productive discussions with the Islamic Republic of Iran", speaker: "Donald Trump", role: "President", context: "Social media post", date: "2026-10-08", source: 42 }
-  - kind: "timeline"
-    id: "war-powers-letters"
-    title: "War Powers letters, 2026"
-    description: "Each letter the President sent Congress under the War Powers Resolution in 2026, by date. Letters from June on report new military action."
+  - kind: periodTimeline
+    id: war-powers-letters
+    title: The President's War Powers letters on the Iran war, 2026
+    description: Each letter the President sent Congress under the War Powers Resolution in 2026, numbered
+      on the line under the bars, against when the ceasefire, the memorandum, the blockade and the pledge
+      not to strike were in force. Letters from June on report new military action. Bars without an end
+      were still in force on 29 October 2026.
+    rowLabel: Arrangement
+    from: '2026-02-28'
     categories:
-      - { id: "action", label: "Reports military action" }
-      - { id: "ended", label: "Says hostilities have ended" }
-    sources: [13]
+    - {id: ceasefire, label: Ceasefire}
+    - {id: agreement, label: Memorandum of understanding}
+    - {id: blockade, label: US blockade}
+    - {id: pause, label: Pledge not to strike}
+    rows:
+    - label: Ceasefire
+      periods:
+      - from: '2026-04-07'
+        to: '2026-07-07'
+        category: ceasefire
+        label: Ordered 7 April, then extended
+        sources: [14, 16, 34]
+    - label: Memorandum of understanding
+      periods:
+      - from: '2026-06-17'
+        to: '2026-07-07'
+        category: agreement
+        label: Signed 17 June
+        sources: [15, 16]
+    - label: US blockade of Iranian ports
+      periods:
+      - from: '2026-07-14'
+        category: blockade
+        label: Reimposed 14 July
+        sources: [34, 50]
+    - label: Pledge not to strike before the midterms
+      periods:
+      - {from: '2026-10-08', category: pause, label: No attack before 3 November, source: 42}
     events:
-      - { date: "2026-03-02", title: "Strikes on Iran from 28 Feb", description: "Article II; \"consistent with\" the Act.", category: "action", source: 12 }
-      - { date: "2026-05-01", title: "Hostilities that began 28 Feb \"have terminated\"", description: "No exchange of fire since 7 Apr. Quoted by Lawfare and Goldsmith; letter not found.", category: "ended", significance: "major", source: 10 }
-      - { date: "2026-06-12", title: "Iran downed a US Apache (8 Jun); US strikes from 9 Jun", description: "House Doc 119-162", category: "action", source: 14 }
-      - { date: "2026-06-29", title: "US strikes on 26 and 28 Jun; MoU signed 17 Jun", description: "House Doc 119-167", category: "action", source: 15 }
-      - { date: "2026-07-10", title: "US strikes from 7 Jul", description: "House Doc 119-169", category: "action", source: 16 }
-      - { date: "2026-08-03", title: "US strikes in Iraq from 27 Jul on Iran-directed militias", description: "House Doc 119-183", category: "action", source: 17 }
-      - { date: "2026-09-03", title: "US strikes on Iran from 1 Sep, including state oil tankers", description: "House Doc 119-193", category: "action", source: 18 }
+    - {period: '2026-03-02', label: 'Letter: strikes on Iran from 28 Feb', note: Article II; "consistent
+        with" the Act., source: 12}
+    - {period: '2026-04-13', label: US blockade of Iranian ports begins, note: 'No source found dates its
+        end before it was reimposed on 14 July, so it is marked here rather than drawn as a bar.', source: 10}
+    - period: '2026-05-01'
+      label: 'Letter: hostilities that began 28 Feb "have terminated"'
+      note: No exchange of fire since 7 Apr. Quoted by Lawfare and Goldsmith; letter not found.
+      sources: [10, 13]
+    - {period: '2026-06-12', label: 'Letter: Iran downed a US Apache (8 Jun); US strikes from 9 Jun', note: House
+        Doc 119-162, source: 14}
+    - {period: '2026-06-29', label: 'Letter: US strikes on 26 and 28 Jun; MoU signed 17 Jun', note: House
+        Doc 119-167, source: 15}
+    - {period: '2026-07-10', label: 'Letter: US strikes from 7 Jul', note: House Doc 119-169, source: 16}
+    - {period: '2026-08-03', label: 'Letter: US strikes in Iraq from 27 Jul on Iran-directed militias',
+      note: House Doc 119-183, source: 17}
+    - {period: '2026-09-03', label: 'Letter: US strikes on Iran from 1 Sep, including state oil tankers',
+      note: House Doc 119-193, source: 18}
+    sources: [13]
+    note: Neither the ceasefire nor the memorandum had an announced end. Both bars end on 7 July, when the
+      President reported US strikes "commenced" again after Iranian attacks on shipping; ISW/CTP wrote on
+      13 July that the ceasefire "has effectively ended". The President's letter dates the memorandum 17
+      June; ISW/CTP calls it "the June 18 MoU". The pledge bar starts with the President's post of 8 October.
   - kind: "pullQuote"
     id: "constitution"
     description: "The same text makes the President \"Commander in Chief\"."
     quote: { text: "The Congress shall have Power … To declare War", speaker: "The Constitution of the United States", context: "Article I, Section 8", source: 51 }
   - kind: "dataTable"
     id: "earlier-votes"
-    title: "Earlier uses of force without authorisation, and Congress's votes, 2011–2025"
+    title: >-
+      Earlier US uses of force without authorisation, and Congress's votes,
+      2011–2025
     description: "The main roll calls found on earlier operations, and the count of all uses of force since 1798."
     caption: "One row per vote or count"
     columns:
@@ -1099,7 +1177,7 @@ figures:
       - { operation: "All uses of force, 1798–2023", result: { value: "\"Hundreds of instances\"; 11 declarations of war covering five wars", sources: [19] } }
   - kind: "timeline"
     id: "ceasefire-incidents"
-    title: "The ceasefire record, April–July 2026"
+    title: The US–Iran ceasefire record, April–July 2026
     description: "Attacks, strikes and agreements during the ceasefire, from the President's letters and ISW/CTP. No Iranian or neutral record was found."
     categories:
       - { id: "iran", label: "Iran acted" }
@@ -1110,17 +1188,17 @@ figures:
       - { date: "2026-04-07", endDate: "2026-04-08", title: "Two-week ceasefire ordered, then extended", category: "both", significance: "major", source: 14 }
       - { date: "2026-06-08", title: "Engaged a US Army Apache, \"forcing its crash landing\"", category: "iran", source: 14 }
       - { date: "2026-06-09", title: "Strikes on missile sites, mining, air defences, command", category: "us", source: 14 }
-      - { date: "2026-06-17", title: "Memorandum of understanding signed", category: "both", significance: "major", source: 15 }
+      - { date: "2026-06-17", title: "Memorandum of understanding signed", category: "both", significance: "major", sources: [39, 15] }
       - { date: "2026-06-25", endDate: "2026-06-27", title: "Attacks on neutral-flagged vessels in Hormuz, on 25 and 27 Jun", category: "iran", source: 15 }
       - { date: "2026-06-26", endDate: "2026-06-28", title: "Strikes on drone, missile and command sites, on 26 and 28 Jun", category: "us", source: 15 }
       - { date: "2026-07-06", endDate: "2026-07-07", title: "Attacks on several neutral-flagged vessels", category: "iran", source: 16 }
       - { date: "2026-07-07", title: "Strikes resume", category: "us", source: 16 }
       - { date: "2026-07-11", endDate: "2026-07-12", title: "IRGC Navy announced the strait closed and struck two vessels", category: "iran", source: 34 }
       - { date: "2026-07-12", title: "Struck \"dozens of Iranian military targets\"", category: "us", source: 34 }
-      - { date: "2026-07-14", title: "Blockade reimposed", category: "us", source: 34 }
+      - { date: "2026-07-14", title: "Blockade reimposed", category: "us", sources: [34, 50] }
   - kind: "timeline"
     id: "negotiations"
-    title: "Negotiations and agreements, 2016–2026"
+    title: US–Iran negotiations and agreements, 2016–2026
     description: "The talks and agreements between the US and Iran, from the 2015 deal to the latest proposals."
     categories:
       - { id: "talks", label: "Talks and proposals" }
@@ -1147,7 +1225,7 @@ figures:
       - { text: "exercise wisdom and pursue political solutions", speaker: "UAE foreign ministry", date: "2026-10-28", source: 49 }
   - kind: "timeline"
     id: "latest"
-    title: "The latest events, July–October 2026"
+    title: The latest events in the Iran war, July–October 2026
     description: "Assessments and reports since the ceasefire ended. Most come from one source, named on each entry, and are not official findings."
     categories:
       - { id: "rearming", label: "Iran's forces, as assessed" }
@@ -1299,7 +1377,7 @@ The Constitution gives Congress the power "To declare War" and makes the Preside
 
 CRS counts eleven declarations of war covering five wars, and "hundreds of instances" of US forces used abroad in conflict or potential conflict. [19](#source-decisions-law-and-diplomacy-19) The administration did not seek authorisation for this war before the 60-day mark. [10](#source-decisions-law-and-diplomacy-10)
 
-CRS does not code the instances by authorisation, length or scale (see Data still needed).
+CRS does not code the instances by authorisation, length or scale (see What we don't know yet).
 
 ### Every binding attempt since 2011 to end an operation failed {#decisions-law-and-diplomacy--binding-attempts-failed}
 
@@ -1367,21 +1445,27 @@ ISW/CTP reports that the Director of National Intelligence warned on 23 October 
 
 Officials told Bloomberg of 23 attacks on vessels near Hormuz in the first two weeks of October, and the Houthis fired missiles and drones at Saudi Arabia from 24 October (ISW/CTP). [43](#source-decisions-law-and-diplomacy-43) [46](#source-decisions-law-and-diplomacy-46) The US blockade of Iranian ports was still in force in late October. [50](#source-decisions-law-and-diplomacy-50) [47](#source-decisions-law-and-diplomacy-47)
 
-## Subtleties {#decisions-law-and-diplomacy--subtleties}
+## Subtleties {#decisions-law-and-diplomacy--subtleties-senate-votes}
 
 ### Several Senate votes were on procedure, not the resolution {#decisions-law-and-diplomacy--procedural-votes}
 
 Eleven of the 14 Senate votes were motions to discharge a committee, and one was a motion to proceed. A yes vote on each favoured ending the war, but only the two votes on House resolutions were votes on a resolution itself. [7](#source-decisions-law-and-diplomacy-7)
 
+## Subtleties {#decisions-law-and-diplomacy--subtleties-pew-handling}
+
 ### Polls asked different questions {#decisions-law-and-diplomacy--poll-wording}
 
 Pew asks about the President's handling and about whether force was the right decision; Gallup asks about approval of "this U.S. military action"; Quinnipiac about support for it. Gallup and Quinnipiac exclude leaners from their party groups; Pew includes them. The pollsters are shown separately for this reason. [28](#source-decisions-law-and-diplomacy-28) [30](#source-decisions-law-and-diplomacy-30) [31](#source-decisions-law-and-diplomacy-31)
 
+## Subtleties {#decisions-law-and-diplomacy--subtleties-latest}
+
 ### Most claims about the latest events come from one side {#decisions-law-and-diplomacy--single-party-claims}
 
-The incident record comes from the President's letters; the reconstitution and October assessments from ISW/CTP, which is affiliated with the American Enterprise Institute; blockade figures from US Central Command. Each is labelled as such above.
+The incident record comes from the President's letters; the reconstitution and October assessments from ISW/CTP, which is affiliated with the American Enterprise Institute; blockade figures from US Central Command. Each is labelled as such on its chart.
 
-## About this data {#decisions-law-and-diplomacy--about}
+## More {#decisions-law-and-diplomacy--more-house-votes}
+
+### About this report's data {#decisions-law-and-diplomacy--about}
 
 **What this measures.** Recorded votes in Congress, the President's War Powers letters, public statements, three pollsters' surveys, and the dated record of the ceasefire and talks. It does not measure whether the war is lawful; that is a legal and constitutional question the records inform but do not settle.
 

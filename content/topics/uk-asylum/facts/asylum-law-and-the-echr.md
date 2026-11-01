@@ -31,8 +31,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: supports
@@ -45,8 +46,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: supports
@@ -65,8 +67,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -78,8 +81,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -93,8 +97,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: supports
@@ -506,8 +511,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -520,8 +526,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
   - stance: complicates
@@ -555,8 +562,9 @@ sources:
       R v Uxbridge Magistrates Court and another ex parte Adimi [1999]: "Article
       31 must henceforth be honoured." (Landmark Cases chapter, author's
       accepted manuscript)
-    url: >-
-      https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    url: https://ueaeprints.uea.ac.uk/id/eprint/101943/
+    fileUrl: https://ueaeprints.uea.ac.uk/101943/1/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
+    localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
 dataStillNeeded:
@@ -579,7 +587,7 @@ dataStillNeeded:
 figures:
   - kind: dataTable
     id: article-31
-    title: 'Article 31 and "coming directly", 1999–2024'
+    title: Article 31 of the Refugee Convention and "coming directly", 1999–2024
     description: How UK courts, Parliament and UNHCR have read the Refugee Convention's defence for refugees who stopped on the way.
     caption: One card per ruling, law or guideline
     layout: timeline
@@ -608,7 +616,7 @@ figures:
         says: { value: 'Include the Adimi definitions of "coming directly", "presenting without delay" and "showing good cause". UNHCR called the UK''s 2022 approach a "fundamental misapplication of Article 31(1)".', sources: [4, 6] }
   - kind: dataTable
     id: wolfson-review
-    title: What the Wolfson review advised, 2025
+    title: What the Wolfson review advised on the ECHR, 2025
     description: Legal advice to the Leader of the Opposition from Lord Wolfson of Tredegar KC, dated 2 October 2025. It contains no count of removals blocked by the ECHR.
     caption: One card per question the review answers
     layout: cards
@@ -668,7 +676,7 @@ figures:
         caj: { value: 'The Irish government "has categorically rejected the idea of ECHR withdrawal as being compliant with the B/GFA".', sources: [19] }
   - kind: dataTable
     id: chisinau-declaration
-    title: What the Chişinău Declaration says, May 2026
+    title: What the Chişinău Declaration on the ECHR says, May 2026
     description: Adopted by all 46 Council of Europe states, including the UK, on 15 May 2026, a year after a letter led by Italy and Denmark that the UK did not sign.
     caption: One card per topic
     layout: cards
@@ -691,7 +699,7 @@ figures:
         says: { value: 'Listed as approaches "envisaged by several member States", provided states "continue to fulfil their Convention obligations".', sources: [26] }
   - kind: dataTable
     id: immigration-and-asylum-bill
-    title: What the Immigration and Asylum Bill would change, 2026
+    title: What the UK's Immigration and Asylum Bill would change, 2026
     description: The Bill was introduced in the Commons on 30 June 2026.
     caption: One card per part of the Bill
     layout: cards
@@ -718,8 +726,6 @@ observationMarks:
   agreed-unanimously-with-dissent-recorded: {rows: ["Third-country processing and return hubs"]}
   critics-doubt-the-iiaa: {rows: ["Part 1", "Part 2 (clauses 17 to 20)"]}
 ---
-The texts and legal opinions behind five questions, in the order the argument runs. Where a text is settled, it is quoted as settled; where lawyers disagree, both readings are given. None of these sources counts how many removals the ECHR blocks.
-
 ## Observations {#asylum-law-and-the-echr--observations-article-31}
 
 ### UK law ties the Article 31 defence to the first safe country {#asylum-law-and-the-echr--uk-law-ties-article-31-to-the-first-safe-country}
@@ -822,3 +828,7 @@ The Public Law Project says there is "no evidence that the Bill will achieve
 its policy objectives". The Commons Library notes the tension between
 statutory rules on Article 8 and the fact that the Strasbourg Court decides
 what Article 8 means. [38](#source-asylum-law-and-the-echr-38) [39](#source-asylum-law-and-the-echr-39)
+
+## More {#asylum-law-and-the-echr--more-article-31}
+
+Where a text is settled, it is quoted as settled; where lawyers disagree, both readings are given. None of these sources counts how many removals the ECHR blocks.

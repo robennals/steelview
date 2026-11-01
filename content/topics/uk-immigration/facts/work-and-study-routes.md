@@ -648,7 +648,7 @@ sources:
   publisher: Home Office
   date: '2026-08-27'
 series:
-  title: Work visas issued to people coming from abroad, 2005–2025
+  title: UK work visas issued to people coming from abroad, 2005–2025
   description: >-
     Work visas issued each year to people applying from abroad, counting both the workers
     and the family members who came with them. These are entry clearance visas by calendar
@@ -699,8 +699,9 @@ series:
     title: >-
       Entry clearance visa applications and outcomes detailed datasets, year ending
       June 2026 (Data_Vis_D02)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1073,7 +1074,7 @@ series:
         value: 92412
 additionalSeries:
 - id: health-care-route
-  title: Health and Care Worker visas by quarter, 2020–2026
+  title: UK Health and Care Worker visas by quarter, 2020–2026
   description: >-
     The Health and Care Worker route lets people from abroad work in UK health and care;
     this counts its visas issued each quarter. The visas are those issued to people
@@ -1081,6 +1082,18 @@ additionalSeries:
     Care workers became eligible in February 2022; restrictions announced in December
     2023, including a bar on care workers bringing dependants, took effect in spring 2024;
     the route closed to new overseas care recruits in July 2025.
+  events:
+  - period: '2022-02'
+    label: Care workers become eligible
+    note: The Health and Care Worker route is expanded to take care workers.
+    source: 2
+  - period: '2024-03'
+    label: Care workers can no longer bring dependants
+    note: Dated March/April 2024 in the source, with a higher salary threshold and sponsorship limited to employers regulated by the Care Quality Commission.
+    source: 13
+  - period: '2025-07'
+    label: Route closes to new overseas care workers
+    sources: [5, 19]
   periodLabel: Quarter ending
   coverage:
     from: 2020-12
@@ -1096,8 +1109,9 @@ additionalSeries:
     title: >-
       Entry clearance visa applications and outcomes detailed datasets, year ending
       June 2026 (Data_Vis_D02)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c3741b45e4e555421eda/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/entry-clearance-visa-outcomes-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1203,12 +1217,26 @@ additionalSeries:
       - period: 2026-06
         value: 5149
 - id: care-occupations
-  title: Sponsored work visas for care workers, nurses and doctors by quarter, 2021–2026
+  title: >-
+    UK sponsored work visas for care workers, nurses and doctors by quarter,
+    2021–2026
   description: >-
     Work visas each quarter for care workers, nurses and doctors sponsored by an employer,
     with all sponsored jobs shown for scale. These are entry clearance grants to sponsored
     work main applicants. Dependants are not included, because the dataset records
     occupation only for the person sponsored.
+  events:
+  - period: '2022-02'
+    label: Care workers become eligible
+    note: The Health and Care Worker route is expanded to take care workers.
+    source: 2
+  - period: '2024-03'
+    label: Care workers can no longer bring dependants
+    note: Dated March/April 2024 in the source, with a higher salary threshold and sponsorship limited to employers regulated by the Care Quality Commission.
+    source: 13
+  - period: '2025-07'
+    label: Route closes to new overseas care workers
+    sources: [5, 19]
   periodLabel: Quarter ending
   coverage:
     from: 2021-03
@@ -1235,8 +1263,9 @@ additionalSeries:
     title: >-
       Sponsored work visas by occupation and industry (SOC 2020) detailed datasets,
       year ending June 2026 (Data_Occ_D02)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c4761b45e4e555421edd/occupation-soc2020-visas-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c4761b45e4e555421edd/occupation-soc2020-visas-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/occupation-soc2020-visas-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -1450,8 +1479,9 @@ additionalSeries:
     stance: supports
     quote: Table 3.12.2. Vacancy rate trend by job role
     title: Adult social care workforce statistical appendix 2026
-    url: >-
-      https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+    url: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/Reports-and-visualisations/National-information/The-State-of-report.aspx
+    fileUrl: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+    localFile: datasets/skillsforcare.org.uk/ASC-Workforce-Statistical-Appendix-2026.xlsx
     publisher: Skills for Care
     date: '2026-10-14'
   readings:
@@ -1587,8 +1617,9 @@ additionalSeries:
       stance: supports
       quote: Table 4.8.1. Nationality trends by sector
       title: Adult social care workforce statistical appendix 2026
-      url: >-
-        https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      url: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/Reports-and-visualisations/National-information/The-State-of-report.aspx
+      fileUrl: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      localFile: datasets/skillsforcare.org.uk/ASC-Workforce-Statistical-Appendix-2026.xlsx
       publisher: Skills for Care
       date: '2026-10-14'
   - id: pay-premium
@@ -1628,12 +1659,13 @@ additionalSeries:
       stance: supports
       quote: Table 5.4.1. Mean hourly pay trends by sector and job role
       title: Adult social care workforce statistical appendix 2026
-      url: >-
-        https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      url: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/Reports-and-visualisations/National-information/The-State-of-report.aspx
+      fileUrl: https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Our-data/ASC-Workforce-Statistical-Appendix-2026.xlsx
+      localFile: datasets/skillsforcare.org.uk/ASC-Workforce-Statistical-Appendix-2026.xlsx
       publisher: Skills for Care
       date: '2026-10-14'
 - id: sponsor-revocations
-  title: Sponsor licences revoked, 2012–2025
+  title: UK sponsor licences revoked, 2012–2025
   description: >-
     A sponsor licence lets an organisation bring in overseas workers or students; this
     counts those the Home Office revoked each year. Revocations are counted by calendar
@@ -1661,8 +1693,9 @@ additionalSeries:
     stance: supports
     quote: 'SC_01: Action taken against Sponsors'
     title: Sponsorship transparency data, April to June 2026 (SC_01)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/sponsorship-transparency-data-apr-to-jun-2026.ods
     publisher: UK Visas and Immigration
     date: '2026-08-27'
   readings:
@@ -1762,7 +1795,7 @@ additionalSeries:
       - period: '2025'
         value: 24
 - id: registered-sponsors
-  title: Registered sponsors and the revocation rate, 2014–2025
+  title: UK registered sponsors and the revocation rate, 2014–2025
   description: >-
     How many organisations were licensed to bring in overseas workers or students, and how
     often Skilled Worker licences were revoked. Sponsor counts are at the end of each
@@ -1791,8 +1824,9 @@ additionalSeries:
       SP_01: Number of sponsoring organisations registered to sponsor an overseas
       national in Skilled Worker, Temporary Worker and Student routes
     title: Sponsorship transparency data, April to June 2026 (SP_01)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/sponsorship-transparency-data-apr-to-jun-2026.ods
     publisher: UK Visas and Immigration
     date: '2026-08-27'
   readings:
@@ -1933,8 +1967,9 @@ additionalSeries:
       Total number of people trained in the UK joining the register for the first
       time by declared ethnicity
     title: 'The NMC register: March 2026 UK data tables'
-    url: >-
-      https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+    url: https://www.nmc.org.uk/about-us/reports-and-accounts/registration-statistics/
+    fileUrl: https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+    localFile: datasets/nmc.org.uk/nmc-register-march-2026-uk-data-tables.xlsx
     publisher: Nursing and Midwifery Council
     date: 2026-07
   readings:
@@ -1977,8 +2012,9 @@ additionalSeries:
         Total number of people trained internationally joining the register for the
         first time by declared ethnicity
       title: 'The NMC register: March 2026 UK data tables'
-      url: >-
-        https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+      url: https://www.nmc.org.uk/about-us/reports-and-accounts/registration-statistics/
+      fileUrl: https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/nmc-register-march-2026-uk-data-tables.xlsx
+      localFile: datasets/nmc.org.uk/nmc-register-march-2026-uk-data-tables.xlsx
       publisher: Nursing and Midwifery Council
       date: 2026-07
 - id: nhs-nationality
@@ -2069,7 +2105,9 @@ additionalSeries:
       - period: 2025-06
         value: 30.0
 - id: asylum-prior-route
-  title: People claiming asylum by the route they held before claiming, 2018–2025
+  title: >-
+    People claiming asylum in the UK by the route they held before claiming,
+    2018–2025
   description: >-
     Everyone who claimed asylum each year, split by how they last came to be in the UK
     and, for visa holders, by which visa. The groups are an illegal entry route, a visa or
@@ -2104,8 +2142,9 @@ additionalSeries:
     title: >-
       Asylum claims and initial decisions detailed datasets, year ending June 2026
       (Data_Asy_D01a)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -2451,7 +2490,8 @@ comparisons:
   - label: Graduate route, first year
     value: 21000
     highlight: true
-  - label: Graduate route, last three months of first year
+  - label: "Graduate route, end of first year"
+    detail: "Last three months of first year"
     value: 24240
   - label: UK graduates, 15 months after graduating
     value: 26000
@@ -2461,7 +2501,7 @@ comparisons:
     of 2020/21. Annual figures are the MAC’s conversions of monthly medians. No later
     year has been published.
 - id: graduate-switcher-jobs
-  title: Jobs taken by people switching into sponsored work
+  title: Jobs taken by people switching into UK sponsored work
   description: >-
     Share of people moving onto an employer-sponsored work visa who took graduate-level
     jobs, by earlier visa, beside UK graduates. Graduate-level jobs here are managerial,
@@ -2558,10 +2598,6 @@ observationMarks:
   switchers-in-caring-jobs: {rows: ["Switched straight from a student visa", "Switched from the Graduate route"]}
   students-staying-longer: {rows: ["Switched straight from a student visa"]}
 ---
-Work visas issued to people coming from abroad rose to 613,627 in 2023 and fell to 234,841 in the year to June 2026, 62% below the peak. [2](#source-work-and-study-routes-2) [1](#source-work-and-study-routes-1) Care workers account for most of both the rise and the fall: visas for caring occupations fell from 107,772 in 2023 to 344, and the fall began at the end of 2023, more than eighteen months before the route closed to new overseas recruits in July 2025. [5](#source-work-and-study-routes-5) [3](#source-work-and-study-routes-3) In England's adult social care, the share of posts held by British nationals fell from 85% to 67% between 2020/21 and 2025/26, and the vacancy rate came down from its 2021/22 peak to 6.1%. [21](#source-work-and-study-routes-21) [14](#source-work-and-study-routes-14)
-
-The report then follows the same workers into the NHS and nursing register, sets UK reliance on foreign-trained staff against every OECD country that reports it, and covers two questions about study and work routes: what Graduate route holders earn, and how many visa holders later claim asylum.
-
 ## Observations {#work-and-study-routes--observations-routes}
 
 ### Work visas more than doubled in two years and have fallen back most of the way {#work-and-study-routes--work-visas-rose-and-fell}
@@ -2609,6 +2645,10 @@ Main applicants on the route peaked in the third quarter of 2023 and dropped by 
 ### The government's account of the fall {#work-and-study-routes--technical-annex-fall}
 
 The government's technical annex puts the 2023-to-2024 fall in the whole route at 68%, to 110,800, and attributes it to Home Office scrutiny of employers, compliance action and the spring 2024 dependant rule. [11](#source-work-and-study-routes-11)
+
+### Fewer arrivals is not fewer visa holders {#work-and-study-routes--fewer-arrivals-not-fewer-holders}
+
+Every visa chart here counts people applying from abroad. Health and Care Worker extensions granted inside the UK rose 19% to 336,215 in the year to June 2026, as people who arrived in 2022 and 2023 renewed their leave. [7](#source-work-and-study-routes-7) The number of people holding these visas has therefore not fallen in step with new grants.
 
 ## Observations {#work-and-study-routes--observations-occupations}
 
@@ -2689,6 +2729,10 @@ The Home Office revoked 1,948 worker sponsor licences between July 2024 and June
 ### Earlier years, and what the series leaves out {#work-and-study-routes--revocations-earlier-years-and-breakdown}
 
 The 1,948 revocations between July 2024 and June 2025 compare with 937 the year before and 261 and 247 in the two years before that. [27](#source-work-and-study-routes-27) [28](#source-work-and-study-routes-28) The series has no sector or reason breakdown.
+
+### The care route's own data cannot measure exploitation {#work-and-study-routes--exploitation-not-measured}
+
+The Migration Advisory Committee reported exploitation on the route and tied it to low pay and visas linked to one employer, but this report found no official series that counts exploited workers by visa route, and licence revocations count employers rather than victims. [26](#source-work-and-study-routes-26) [27](#source-work-and-study-routes-27) See What we don't know yet.
 
 ## Observations {#work-and-study-routes--observations-revocation-rate}
 
@@ -2794,12 +2838,10 @@ Of Graduate visa holders, 19% earned at least £2,500 in their first full month,
 
 Students are also staying longer than they used to: 41% of the 2020 study cohort still held leave five years later, against 17% to 18% for the 2012 to 2016 cohorts; see *Student Migration and Subsequent Residence*. [49](#source-work-and-study-routes-49)
 
-## Subtleties {#work-and-study-routes--subtleties}
+## More {#work-and-study-routes--more-routes}
 
-### Fewer arrivals is not fewer visa holders {#work-and-study-routes--fewer-arrivals-not-fewer-holders}
+Work visas issued to people coming from abroad rose to 613,627 in 2023 and fell to 234,841 in the year to June 2026, 62% below the peak. [2](#source-work-and-study-routes-2) [1](#source-work-and-study-routes-1)
 
-Every visa chart here counts people applying from abroad. Health and Care Worker extensions granted inside the UK rose 19% to 336,215 in the year to June 2026, as people who arrived in 2022 and 2023 renewed their leave. [7](#source-work-and-study-routes-7) The number of people holding these visas has therefore not fallen in step with new grants.
+## More {#work-and-study-routes--more-occupations}
 
-### The care route's own data cannot measure exploitation {#work-and-study-routes--exploitation-not-measured}
-
-The Migration Advisory Committee reported exploitation on the route and tied it to low pay and visas linked to one employer, but this report found no official series that counts exploited workers by visa route, and licence revocations count employers rather than victims. [26](#source-work-and-study-routes-26) [27](#source-work-and-study-routes-27) See Data still needed.
+Care workers account for most of both the rise and the fall: visas for caring occupations fell from 107,772 in 2023 to 344, and the fall began at the end of 2023, more than eighteen months before the route closed to new overseas recruits in July 2025. [5](#source-work-and-study-routes-5) [3](#source-work-and-study-routes-3)

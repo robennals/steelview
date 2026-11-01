@@ -6,7 +6,7 @@ import { EventStrip, type StripEvent } from './event-strip';
 
 const events: StripEvent[] = [
   { date: '2011-01', label: 'Law passed', description: 'The legislature passed it.' },
-  { date: '2013-06', label: 'Court ruling', source: { label: 'Court', href: '#source-x-1', number: 1 } },
+  { date: '2013-06', label: 'Court ruling', sources: [{ label: 'Court', href: '#source-x-1', number: 1 }] },
   { date: '2016', label: 'Bare event' },
 ];
 
@@ -45,4 +45,11 @@ test('with a window, events outside it get no marker but keep their numbered key
   assert.match(html, /id="sv-event-strip-strip-1"/);
   assert.match(html, /Jan 2011<\/time><span class="sv-event-strip__outside"> \(outside the period shown\)<\/span>/);
   assert.equal((html.match(/outside the period shown/g) ?? []).length, 1);
+});
+
+test('a strip given keyIn links its markers to that strip’s key and shows none of its own', () => {
+  const html = render({ id: 'first', keyIn: 'last' });
+  const markers = [...html.matchAll(/class="sv-event-strip__marker" href="#([^"]+)"/g)].map(m => m[1]);
+  assert.deepEqual(markers, ['sv-event-strip-last-1', 'sv-event-strip-last-2', 'sv-event-strip-last-3']);
+  assert.doesNotMatch(html, /sv-event-strip__key/);
 });

@@ -189,6 +189,72 @@ sources:
     url: https://example.org/fixture/30
     publisher: National Conference of State Legislatures
     date: 2026
+  - stance: supports
+    quote: "Fixture: at least 159 deaths in the north, fewer than 40 in the west, about 90 in the south, between 60 and 80 in the east, and 120 in the capital. Of the dead, 62.5% were civilians, 30.1% combatants and 7.3% unidentified."
+    title: "Fixture: deaths by region, as the counter qualifies them"
+    url: https://example.org/fixture/31
+    publisher: Fixture Casualty Counter
+    date: 2026-05
+  - stance: complicates
+    quote: "Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen. Die Zulassung der Briefwahl dient aber dem Ziel, eine möglichst umfassende Wahlbeteiligung zu erreichen."
+    title: "Fixture: Federal Constitutional Court, 2 BvC 7/10"
+    url: https://example.org/fixture/32
+    publisher: Federal Constitutional Court of Germany
+    date: 2013-07-09
+  - stance: complicates
+    quote: "All political parties welcomed and supported postal voting on demand. Until very recently, none has treated electoral fraud as representing a problem."
+    title: "Fixture: Birmingham election court judgment"
+    url: https://example.org/fixture/33
+    publisher: Election Court
+    date: 2005-04-04
+  - stance: complicates
+    quote: "It was argued that unrestricted postal voting undermines the fundamental secrecy of the ballot."
+    title: "Fixture: Securing the ballot (Pickles review)"
+    url: https://example.org/fixture/34
+    publisher: UK Cabinet Office
+    date: 2016-08
+  - stance: supports
+    quote: "There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail. Oregon voters report high satisfaction with voting by mail."
+    title: "Fixture: Oregon's mail elections"
+    url: https://example.org/fixture/35
+    publisher: The Conversation
+    date: 2020-09-03
+  - stance: supports
+    quote: "Fixture: counting 95% of the vote took 73 hours in Arizona in 2020 and 147 in 2024; 159 hours in Nevada in 2020 and 51 in 2024; 49 hours in Pennsylvania in 2020 and 8 in 2024; and at least 18 hours in Georgia in 2020, about 5 in 2024."
+    title: "Fixture: hours to count, 2020 and 2024"
+    url: https://example.org/fixture/36
+    publisher: MIT Election Data and Science Lab
+    date: 2025-03
+  - stance: supports
+    quote: "Fixture: Black registration was 14.2% in Alabama in 1958 and 19.4% in 1964; 31.7% in Louisiana in 1956 and 31.8% in 1965; 4.4% in Mississippi in 1954 and 6.4% in 1964."
+    title: "Fixture: the Attorney General's registration estimates"
+    url: https://example.org/fixture/37
+    publisher: US Department of Justice
+    date: 1965-03
+  - stance: supports
+    quote: "Fixture: on 15 September 2026 the House passed H.Con.Res. 93, 220 to 204: Republicans 7 yes and 203 no, Democrats 213 yes and 0 no. On 24 September the Senate rejected H.Con.Res. 89, 49 to 50: Republicans 4 yes and 49 no, Democrats 43 yes and 1 no, independents 2 yes and 0 no."
+    title: "Fixture: war-powers roll calls by party"
+    url: https://example.org/fixture/38
+    publisher: Office of the Clerk, US House of Representatives
+    date: 2026-09
+  - stance: supports
+    quote: "Fixture: ships a day, June to September 2026 — Strait of Hormuz 31, 22, 9, 4; Bab el-Mandeb 30, 29, 28, 27; Suez Canal 40, 41, 43, 42; Malacca Strait 228, 231, 225, 230."
+    title: "Fixture: PortWatch daily chokepoint counts, monthly means"
+    url: https://example.org/fixture/39
+    publisher: IMF PortWatch
+    date: 2026-10
+  - stance: supports
+    quote: "Fixture: the Kerch Strait counter began in July 2026: 12, 3 and 0 ships a day in July, August and September."
+    title: "Fixture: Kerch Strait counter"
+    url: https://example.org/fixture/40
+    publisher: Fixture Ship Tracker
+    date: 2026-10
+  - stance: supports
+    quote: "Fixture: asylum applicants per 10,000 residents in 2024 were 95.1 in Cyprus, 70.8 in Greece, 30.0 in Germany, about 21 in Liechtenstein, 16.0 in the United Kingdom and under 0.1 in Hungary."
+    title: "Fixture: asylum applicants per head across Europe, 2024"
+    url: https://example.org/fixture/41
+    publisher: Fixture Migration Observatory
+    date: 2025-03
 series:
   title: Mail ballots rejected nationally, 2016–2024
   description: Share of returned mail ballots rejected in each federal general election.
@@ -220,7 +286,7 @@ comparisons:
     valueLabel: Senators
     sources: [10]
     items:
-      - { label: For the bill, value: 50 }
+      - { label: For the bill, value: 50, detail: As the roll call records it }
       - { label: Against the bill, value: 50 }
 observationMarks:
   older-law: {whole: true}
@@ -230,6 +296,7 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: federal-laws
+    replaces: [federal-laws-list]   # the bulleted list this table replaced; old links land here
     title: Federal voting laws and bills on registration and ID, 1965–2026
     description: >-
       The federal laws in force on registration and ID, and the two parties'
@@ -288,6 +355,8 @@ figures:
       - { id: conviction, label: Conviction }
       - { id: charge, label: Charge only }
     events:
+      # A date the source gives only roughly is written as it gives it: a decade or "c. 1984".
+      - { date: 1980s, title: "Fixture: an event its source dates only to the decade", category: designation, source: 3 }
       - { date: '1984-01-19', title: Iran designated a state sponsor of terrorism, category: designation, source: 3 }
       - { date: '2021-02-04', title: Assadi convicted in Antwerp, category: conviction, significance: major, source: 6 }
       - { date: '2024-11', title: Shakeri charged in New York, category: charge, source: 8 }
@@ -307,10 +376,11 @@ figures:
       - { id: pause, label: Strike pause }
     rows:
       - label: Ceasefire
-        periods: [{ from: '2026-04-08', to: '2026-07-07', category: ceasefire, label: Ceasefire }]
+        # A period may cite its own sources; several, like any item.
+        periods: [{ from: '2026-04-08', to: '2026-07-07', category: ceasefire, label: Ceasefire, sources: [2, 4] }]
       - label: US naval blockade
         periods:
-          - { from: '2026-04-13', to: '2026-06-18', category: blockade, label: First blockade }
+          - { from: '2026-04-13', to: '2026-06-18', category: blockade, label: First blockade, source: 3 }
           - { from: '2026-07-14', category: blockade, label: Second blockade }
       - label: Memorandum of understanding
         periods: [{ from: '2026-06-17', to: '2026-07-08', category: agreement, label: MoU }]
@@ -353,7 +423,7 @@ figures:
     sources: [11]
     items:
       - { label: Black, value: 2.49 }
-      - { label: Native American, value: 1.59 }
+      - { label: Native American, value: 1.59, detail: The State Auditor's name for the group }
       - { label: Hispanic, value: 1.57 }
       - { label: Asian or Pacific Islander, value: 1.24 }
       - { label: White, value: 0.63 }
@@ -384,6 +454,7 @@ figures:
       Each published estimate of the cost so far, with its range where the
       estimator gave one. Later estimates cover a longer war.
     valueLabel: Estimated cost, US$ billion
+    itemLabel: Estimator
     format: { unit: number, decimals: 1 }
     intervalLabel: Range the estimator published
     nullValue: null
@@ -392,7 +463,7 @@ figures:
       - { label: CSIS, year: Jun 2026, estimate: 40, low: 34, high: 42, source: 15 }
       - { label: CBO, year: 1 Aug 2026, estimate: 38, source: 16 }
       - { label: Department of Defense, year: 3 Sep 2026, estimate: 43.6, source: 17 }
-  - kind: quoteComparison
+  - kind: quotes
     id: damage-claims
     question: What did the strikes do to Iran's enriched uranium?
     description: Four answers from the US government, an independent institute and the IAEA.
@@ -404,6 +475,49 @@ figures:
         context: Report to the Board of Governors
         date: '2026-06'
         source: 1
+  # More than four quotes (spec 3): a list in date order, filtered by
+  # category and speaker. A quote not in English carries its language and a
+  # translation, shown beside it.
+  - kind: quotes
+    id: postal-secrecy
+    question: Does postal voting give up the secrecy of the ballot?
+    description: Two courts, a government review and a researcher, on what is lost when a ballot is filled in at home.
+    categoryLabel: Who is speaking
+    categories:
+      - { id: court, label: Courts }
+      - { id: review, label: Government reviews }
+      - { id: research, label: Researchers }
+    quotes:
+      - text: Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen … eine möglichst umfassende Wahlbeteiligung zu erreichen
+        lang: de
+        translation: With postal voting, public control of how the vote is cast is reduced … [it serves the aim of] the widest possible turnout. (This report's translation.)
+        speaker: Federal Constitutional Court of Germany
+        stance: court
+        date: '2013-07-09'
+        source: 32
+      - text: Until very recently, none has treated electoral fraud as representing a problem.
+        speaker: Richard Mawrey QC
+        role: Election commissioner
+        context: Birmingham election court judgment
+        stance: court
+        date: '2005-04-04'
+        source: 33
+      - text: unrestricted postal voting undermines the fundamental secrecy of the ballot
+        speaker: Sir Eric Pickles's review
+        context: Reporting submissions to the review
+        stance: review
+        date: '2016-08'
+        source: 34
+      - text: There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail.
+        speaker: Priscilla Southwell
+        stance: research
+        date: '2020-09-03'
+        source: 35
+      - text: Oregon voters report high satisfaction with voting by mail.
+        speaker: Priscilla Southwell
+        stance: research
+        date: '2020-09-03'
+        source: 35
   - kind: pullQuote
     id: carter-baker
     description: >-
@@ -424,7 +538,7 @@ figures:
       The survey asked an opt-in online panel about behaviour that is not
       always illegal, and measured no fraudulent ballots.
     sources: [22, 23]
-    evidence: { fact: mail-ballot-privacy, section: privacy-surveys }
+    evidence: { fact: figure-examples, section: chart-detected-is-a-floor }
   - kind: caveatList
     id: detected-is-a-floor
     heading: Detected fraud is a floor, not a measure
@@ -521,8 +635,8 @@ figures:
     sources: [28]
     note: >-
       Fixture: only the thirteen countries the source names are assigned, so
-      every other country reads "No data". Liechtenstein is too small to
-      appear in the world outlines.
+      every other country reads "No data". Liechtenstein, too small for the
+      world outlines, is drawn as a dot.
     categories:
       - { id: all, label: All voters, mark: A }
       - { id: some, label: Some voters, mark: S }
@@ -531,6 +645,7 @@ figures:
       DE: all
       IS: all
       KR: all
+      LI: all
       LU: all
       NZ: all
       PL: all
@@ -539,6 +654,34 @@ figures:
       US: all
       FR: some
       AU: { category: some, note: Voters who cannot attend a polling place }
+  # One dataset drawn two ways (spec 4): `map` draws its preset's real shapes
+  # and its tiles from one legend, with a Map / Tiles / Table switch;
+  # `default` picks the view shown first. `tileMap` and `geoMap` above are
+  # its older spellings, opening on tiles and on shapes.
+  - kind: map
+    id: asylum-per-head
+    title: Asylum applicants per 10,000 residents, 2024
+    description: >-
+      Six of the EU+ countries and the UK by asylum applicants per head. The
+      UK is outlined.
+    preset: europe
+    default: tiles
+    areaLabel: Country
+    valueLabel: Applicants per 10,000 residents
+    format: { unit: number, decimals: 1 }
+    breaks: [0, 5, 10, 20, 30, 50, 100]
+    highlight: [GB]
+    sources: [41]
+    note: >-
+      Fixture: only the six countries the source names are given, so every
+      other country reads "No data".
+    data:
+      CY: 95.1
+      GR: 70.8
+      DE: 30.0
+      LI: { value: 21, qualifier: about, asPublished: about 21 }
+      GB: 16.0
+      HU: { value: 0.1, qualifier: under, asPublished: under 0.1 }
   - kind: scatterPlot
     id: count-speed
     title: When mail processing may begin and how long the count took, 2024
@@ -562,10 +705,150 @@ figures:
       - { id: pa, label: PA, name: Pennsylvania, x: 0, y: 8, group: mostly-in-person }
       - { id: ga, label: GA, name: Georgia, x: 21, y: 5, group: mostly-in-person }
       - { id: nc, label: NC, name: North Carolina, x: 35, y: 6, group: mostly-in-person }
+  # Qualified numbers (spec 1.2): a bound, an approximation and a range, each
+  # drawn with its own mark and read in the source's words in the table.
+  - kind: barChart
+    id: deaths-by-region
+    title: Deaths by region, as the counter gives them, May 2026
+    description: >-
+      The counter gives some regions only as a bound, an approximation or a
+      range; each bar shows which.
+    valueLabel: Deaths
+    categoryLabel: Region
+    format: { unit: count }
+    sources: [31]
+    items:
+      - { label: North, value: { value: 159, qualifier: at least, asPublished: at least 159 } }
+      - { label: West, value: { value: 40, qualifier: fewer than, asPublished: fewer than 40 } }
+      - { label: South, value: { value: 90, qualifier: about, asPublished: about 90 } }
+      - { label: East, value: { low: 60, high: 80, asPublished: between 60 and 80 } }
+      - { label: Capital, value: 120 }
+  # Paired bars (spec 3): two measures per row, side by side and never
+  # stacked; a value may be qualified like any bar's.
+  - kind: barChart
+    id: hours-to-count
+    title: Hours to count 95% of the presidential vote, four states, 2020 and 2024
+    description: Hours after polls closed until 95% of the vote had been reported, in each election.
+    valueLabel: Hours
+    categoryLabel: State
+    format: { unit: count }
+    sources: [36]
+    series:
+      - { key: y2020, label: '2020' }
+      - { key: y2024, label: '2024' }
+    items:
+      - { label: Arizona, values: { y2020: 73, y2024: 147 }, detail: Two presidential elections }
+      - { label: Nevada, values: { y2020: 159, y2024: 51 } }
+      - { label: Pennsylvania, values: { y2020: 49, y2024: 8 } }
+      - { label: Georgia, values: { y2020: { value: 18, qualifier: at least, asPublished: at least 18 hours }, y2024: { value: 5, qualifier: about, asPublished: about 5 } } }
+  # A dumbbell (spec 3): two dots joined by a line, each end labelled with
+  # its own year because the years differ by row.
+  - kind: barChart
+    id: pre-vra-registration
+    title: Black voter registration before the Voting Rights Act, three states, 1954–1965
+    description: The Attorney General's estimates at the earliest and latest year he gave for each state.
+    valueLabel: Black voting-age residents registered, %
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    sources: [37]
+    style: dumbbell
+    series:
+      - { key: earlier, label: Earliest estimate }
+      - { key: latest, label: Latest estimate }
+    items:
+      - { label: Alabama, values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: 1958, latest: 1964 } }
+      - { label: Louisiana, values: { earlier: 31.7, latest: 31.8 }, labels: { earlier: 1956, latest: 1965 } }
+      - { label: Mississippi, values: { earlier: 4.4, latest: 6.4 }, labels: { earlier: 1954, latest: 1964 } }
+  # A slice explorer (spec 3): tidy rows the reader can break down, split
+  # and filter. Separate roll calls are never added together
+  # (`combinable: false`): the reader sees one vote at a time.
+  - kind: sliceExplorer
+    id: war-powers-votes
+    title: Votes on resolutions to end the Iran war, by party, September 2026
+    description: How each party voted on the last House and Senate war-powers resolutions.
+    sources: [38]
+    dimensions:
+      - { key: vote, label: Roll call, plural: roll calls, combinable: false }
+      - { key: party, label: Party, plural: parties, values: [Democratic, Independent, Republican] }
+      - { key: position, label: Position, plural: positions, values: ['Yes', 'No'] }
+    measures:
+      - { key: members, label: Members voting, format: { unit: count } }
+    defaultBreakdown: party
+    defaultSplit: position
+    rows:
+      - { vote: 'House, 15 Sep 2026', party: Republican, position: 'Yes', members: 7 }
+      - { vote: 'House, 15 Sep 2026', party: Republican, position: 'No', members: 203 }
+      - { vote: 'House, 15 Sep 2026', party: Democratic, position: 'Yes', members: 213 }
+      - { vote: 'House, 15 Sep 2026', party: Democratic, position: 'No', members: 0 }
+      - { vote: 'Senate, 24 Sep 2026', party: Republican, position: 'Yes', members: 4 }
+      - { vote: 'Senate, 24 Sep 2026', party: Republican, position: 'No', members: 49 }
+      - { vote: 'Senate, 24 Sep 2026', party: Democratic, position: 'Yes', members: 43 }
+      - { vote: 'Senate, 24 Sep 2026', party: Democratic, position: 'No', members: 1 }
+      - { vote: 'Senate, 24 Sep 2026', party: Independent, position: 'Yes', members: 2 }
+      - { vote: 'Senate, 24 Sep 2026', party: Independent, position: 'No', members: 0 }
+  # Small multiples (spec 3): one small line per item on one shared scale,
+  # each running across the whole published range; a panel with a shorter
+  # range declares its own coverage and source.
+  - kind: smallMultiples
+    id: chokepoint-traffic
+    title: Ships a day through five chokepoints, June–September 2026
+    description: Monthly means of daily ship counts, all on one scale; Hormuz is highlighted.
+    valueLabel: Ships a day, monthly average
+    periodLabel: Month
+    format: { unit: number, decimals: 0 }
+    sources: [39]
+    coverage: { from: '2026-06', to: '2026-09', note: Our monthly means of the daily counts. }
+    panels:
+      - name: Strait of Hormuz
+        highlight: true
+        points: [{ period: '2026-06', value: 31 }, { period: '2026-07', value: 22 }, { period: '2026-08', value: 9 }, { period: '2026-09', value: 4 }]
+      - name: Bab el-Mandeb
+        points: [{ period: '2026-06', value: 30 }, { period: '2026-07', value: 29 }, { period: '2026-08', value: 28 }, { period: '2026-09', value: 27 }]
+      - name: Suez Canal
+        points: [{ period: '2026-06', value: 40 }, { period: '2026-07', value: 41 }, { period: '2026-08', value: 43 }, { period: '2026-09', value: 42 }]
+      - name: Malacca Strait
+        points: [{ period: '2026-06', value: 228 }, { period: '2026-07', value: 231 }, { period: '2026-08', value: 225 }, { period: '2026-09', value: 230 }]
+      - name: Kerch Strait
+        coverage: { from: '2026-07', to: '2026-09', note: The counter began in July 2026. }
+        source: 40
+        points: [{ period: '2026-07', value: 12 }, { period: '2026-08', value: 3 }, { period: '2026-09', value: 0 }]
+  # Parts that must add up (spec 1.4): percentages sum to 100 within rounding
+  # (here 99.9, inside three parts' ±0.15), and print as published.
+  - kind: compositionBar
+    id: deaths-split
+    title: Deaths by status, as the counter splits them, May 2026
+    description: The counter's own percentages, which it rounds to one decimal place.
+    rowLabel: Counter
+    unit: percent
+    sources: [31]
+    categories:
+      - { key: civilian, label: Civilian }
+      - { key: combatant, label: Combatant }
+      - { key: unidentified, label: Unidentified }
+    rows:
+      - { label: Fixture Casualty Counter, values: { civilian: 62.5, combatant: 30.1, unidentified: 7.3 } }
+  # A date column (spec 1.3): "2026", "May 2026", "12 May 2026", sorted by date,
+  # a coarser date before the finer dates inside it. Its cells may be qualified.
+  - kind: dataTable
+    id: count-releases
+    title: The counter's releases by region, 2026
+    description: When the counter last published each region's figure, and the figure as it gave it.
+    caption: One row per region
+    sources: [31]
+    columns:
+      - { key: region, label: Region, rowHeader: true }
+      - { key: published, label: Last published, format: date }
+      - { key: deaths, label: Deaths, format: { unit: count } }
+    defaultSort: { key: published, direction: ascending }
+    rows:
+      - { region: North, published: '2026-05-12', deaths: { value: 159, qualifier: at least, asPublished: at least 159 } }
+      - { region: East, published: '2026-05', deaths: { low: 60, high: 80, asPublished: between 60 and 80 } }
+      - { region: Capital, published: '2026', deaths: 120 }
+  - kind: section
+    id: audit-method
+  - kind: section
+    id: remainder
 ---
-
-This fixture exists so every figure kind can be seen, tested and validated in
-the order an author writes it.
 
 ## Provisions of the Freedom to Vote Act {#figure-examples--freedom-to-vote-act-provisions}
 
@@ -586,4 +869,9 @@ These rates are before any control for age or county.
 
 ## What the rest of the body says {#figure-examples--remainder}
 
-Body sections that no figure places render after the last figure, as before.
+A body section sits where its `section` entry places it.
+
+### How the audit sample was drawn {#figure-examples--audit-method}
+
+This `###` section is placed by its own `section` entry, after the last
+figure; the `##` section it sits in has an entry of its own and follows it.

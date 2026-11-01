@@ -374,8 +374,10 @@ sources:
       2025 11513149 ... Egypt, Arab Rep. 2025 118365995 ... United States 2025
       341784857 ... Afghanistan 2025 43844111 ... South Sudan 2025 12188788 ...
       Japan 2025 123366734
-    title: 'World Development Indicators: Population, total (SP.POP.TOTL), API'
-    url: https://api.worldbank.org/v2/country/AFG;EGY;IRN;JPN;KWT;SAU;SGP;SOM;SSD;ARE;USA;YEM;IRQ/indicator/SP.POP.TOTL?date=2024:2025&format=json&per_page=100
+    title: 'World Development Indicators: Population, total (SP.POP.TOTL)'
+    url: https://data.worldbank.org/indicator/SP.POP.TOTL?locations=AF-EG-IR-JP-KW-SA-SG-SO-SS-AE-US-YE-IQ
+    fileUrl: https://api.worldbank.org/v2/country/AFG;EGY;IRN;JPN;KWT;SAU;SGP;SOM;SSD;ARE;USA;YEM;IRQ/indicator/SP.POP.TOTL?date=2024:2025&format=json&per_page=100
+    localFile: datasets/api.worldbank.org/sp-pop-totl-selected-countries.json
     publisher: World Bank
     date: '2026-10-08'
   # 28
@@ -477,7 +479,9 @@ series:
       (2005) 62.84; 9th, second round (2005) 59.76; 10th (2009) 85.22; 11th
       (2013) 76.25
     title: 'Iran Presidential Elections, All Provinces (workbook)'
-    url: https://irandataportal.syr.edu/wp-content/uploads/Iran-Presidential-Elections-All-Provinces-1.xlsx
+    url: https://irandataportal.syr.edu/presidential-elections
+    fileUrl: https://irandataportal.syr.edu/wp-content/uploads/Iran-Presidential-Elections-All-Provinces-1.xlsx
+    localFile: datasets/irandataportal.syr.edu/Iran-Presidential-Elections-All-Provinces-1.xlsx
     publisher: Iran Data Portal, Syracuse University
     date: '2017-05'
   readings:
@@ -747,8 +751,10 @@ additionalSeries:
         "indicator":{"id":"NY.GDP.MKTP.KD.ZG","value":"GDP growth (annual %)"},
         "country":{"id":"IR","value":"Iran, Islamic Rep."} ... "lastupdated":"2026-10-08"
         ... "date":"2025","value":-2.82597163290347 ... "date":"2016","value":8.8150866425182
-      title: 'World Development Indicators: GDP growth (annual %), Iran (API)'
-      url: https://api.worldbank.org/v2/country/IRN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100
+      title: 'World Development Indicators: GDP growth (annual %), Iran'
+      url: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=IR
+      fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100
+      localFile: datasets/api.worldbank.org/ny-gdp-mktp-kd-zg-iran.json
       publisher: World Bank
       date: '2026-10-08'
     readings:
@@ -782,8 +788,10 @@ additionalSeries:
         "indicator":{"id":"FP.CPI.TOTL.ZG","value":"Inflation, consumer prices
         (annual %)"},"country":{"id":"IR","value":"Iran, Islamic Rep."} ...
         "lastupdated":"2026-10-08" ... "date":"2025","value":42.1712244965444
-      title: 'World Development Indicators: Inflation, consumer prices (annual %), Iran (API)'
-      url: https://api.worldbank.org/v2/country/IRN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100
+      title: 'World Development Indicators: Inflation, consumer prices (annual %), Iran'
+      url: https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=IR
+      fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100
+      localFile: datasets/api.worldbank.org/fp-cpi-totl-zg-iran.json
       publisher: World Bank
       date: '2026-10-08'
     readings:
@@ -795,24 +803,10 @@ additionalSeries:
           - name: Inflation
             points: [{period: '1960', value: 9.8}, {period: '1961', value: 3.2}, {period: '1962', value: 0.7}, {period: '1963', value: 0.4}, {period: '1964', value: 3.8}, {period: '1965', value: 2.2}, {period: '1966', value: -0.4}, {period: '1967', value: 1.6}, {period: '1968', value: 0.7}, {period: '1969', value: 3.6}, {period: '1970', value: 1.7}, {period: '1971', value: 4.2}, {period: '1972', value: 6.4}, {period: '1973', value: 9.8}, {period: '1974', value: 14.2}, {period: '1975', value: 12.9}, {period: '1976', value: 11.3}, {period: '1977', value: 27.3}, {period: '1978', value: 11.7}, {period: '1979', value: 10.5}, {period: '1980', value: 20.6}, {period: '1981', value: 24.2}, {period: '1982', value: 18.7}, {period: '1983', value: 19.7}, {period: '1984', value: 12.5}, {period: '1985', value: 4.4}, {period: '1986', value: 18.4}, {period: '1987', value: 28.6}, {period: '1988', value: 28.7}, {period: '1989', value: 22.3}, {period: '1990', value: 7.6}, {period: '1991', value: 17.1}, {period: '1992', value: 25.8}, {period: '1993', value: 21.2}, {period: '1994', value: 31.4}, {period: '1995', value: 49.7}, {period: '1996', value: 28.9}, {period: '1997', value: 17.3}, {period: '1998', value: 17.9}, {period: '1999', value: 20.1}, {period: '2000', value: 14.5}, {period: '2001', value: 11.3}, {period: '2002', value: 14.3}, {period: '2003', value: 16.5}, {period: '2004', value: 14.8}, {period: '2005', value: 13.4}, {period: '2006', value: 10.0}, {period: '2007', value: 17.3}, {period: '2008', value: 25.4}, {period: '2009', value: 13.6}, {period: '2010', value: 10.1}, {period: '2011', value: 26.3}, {period: '2012', value: 27.3}, {period: '2013', value: 36.6}, {period: '2014', value: 16.6}, {period: '2015', value: 12.5}, {period: '2016', value: 7.2}, {period: '2017', value: 8.0}, {period: '2018', value: 18.0}, {period: '2019', value: 39.9}, {period: '2020', value: 30.6}, {period: '2021', value: 43.4}, {period: '2022', value: 43.5}, {period: '2023', value: 44.6}, {period: '2024', value: 32.5}, {period: '2025', value: 42.2}]
 comparisons:
-  - id: majlis-turnout
-    title: 'Turnout in parliamentary (Majlis) elections, Iran, 2016, 2020 and 2024'
-    description: 'Votes cast as a share of eligible voters, by the Interior Ministry''s figures as reported by Al Jazeera.'
-    unit: percent
-    valueLabel: '% of eligible voters'
-    domainMax: 100
-    sources: [24]
-    note: 'Only three elections are shown because the full parliamentary series (IPU Parline) could not be fetched; see Data still needed. The 2016 figure is "about 62 percent".'
-    items:
-      - label: '2016'
-        value: 62
-      - label: '2020'
-        value: 42
-      - label: '2024'
-        value: 41
-        highlight: true
   - id: january-2026-deaths
-    title: 'Deaths in the protests of 28 December 2025 – 15 February 2026, by HRANA''s category, as of 23 February 2026'
+    title: >-
+      Deaths in Iran's protests of 28 December 2025 – 15 February 2026, by
+      HRANA's category, as of 23 February 2026
     description: 'All deaths HRANA had confirmed in the 50-day record, split into its categories. A further 11,744 cases were under review and are not included.'
     unit: count
     valueLabel: 'Deaths confirmed by HRANA'
@@ -832,48 +826,8 @@ comparisons:
         value: 76
       - label: Military and government forces
         value: 207
-  - id: amnesty-executions-2025
-    title: 'Recorded executions by country, 2025 (Amnesty International)'
-    description: 'Executions Amnesty recorded in each of the 17 countries known to have executed people in 2025. These are minimums.'
-    unit: count
-    valueLabel: 'Executions recorded'
-    sources: [25]
-    note: >-
-      From the report's list "Executions recorded globally in 2025". Amnesty
-      gives no figure ("+") for China, Iraq, North Korea and Viet Nam, so they
-      are not charted. It believes China executed thousands. Iran, Saudi
-      Arabia, Somalia and Yemen are marked "+" after their figure, meaning at
-      least that many.
-    items:
-      - label: Iran
-        value: 2159
-        highlight: true
-      - label: Saudi Arabia
-        value: 356
-      - label: Yemen
-        value: 51
-      - label: USA
-        value: 47
-      - label: Egypt
-        value: 23
-      - label: Kuwait
-        value: 17
-      - label: Singapore
-        value: 17
-      - label: Somalia
-        value: 17
-      - label: Afghanistan
-        value: 6
-      - label: United Arab Emirates
-        value: 3
-      - label: Japan
-        value: 1
-      - label: South Sudan
-        value: 1
-      - label: Taiwan
-        value: 1
   - id: amnesty-executions-per-million-2025
-    title: 'Recorded executions per million residents, 2025'
+    title: Recorded executions per million residents by country, 2025
     description: 'Amnesty''s recorded executions in 2025 divided by each country''s 2025 population (World Bank).'
     unit: count
     valueLabel: 'Executions per million residents'
@@ -910,30 +864,10 @@ comparisons:
         value: 0.08
       - label: Japan
         value: 0.01
-  - id: iran-execution-counters
-    title: 'Executions in Iran by counter, 2023–2025'
-    description: 'IHRNGO and Amnesty International each publish a minimum count for Iran by calendar year. They are separate counts and differ, most of all for 2025.'
-    unit: count
-    valueLabel: 'Executions (minimum)'
-    sources: [35, 25, 26]
-    note: 'Only the years for which both counts were read are shown. Amnesty''s series runs from 1981 but its earlier Iran figures were not fetched for this report. HRANA''s count uses October years and is charted separately above.'
-    items:
-      - label: '2023 — IHRNGO'
-        value: 834
-      - label: '2023 — Amnesty'
-        value: 853
-      - label: '2024 — IHRNGO'
-        value: 975
-      - label: '2024 — Amnesty'
-        value: 972
-      - label: '2025 — IHRNGO'
-        value: 1639
-        highlight: true
-      - label: '2025 — Amnesty'
-        value: 2159
-        highlight: true
   - id: executions-per-president
-    title: 'Average executions per month under each president, 2005–2025 (IHRNGO)'
+    title: >-
+      Average executions per month in Iran under each president, 2005–2025
+      (IHRNGO)
     description: 'IHRNGO''s average monthly executions for each presidency, from Ahmadinejad (2005–2013) to Pezeshkian''s first 17 months (July 2024 – December 2025).'
     unit: count
     valueLabel: 'Executions per month'
@@ -1158,7 +1092,9 @@ comparisons:
       - {label: "Sweden", value: 99}
       - {label: "Finland", value: 100}
   - id: gamaan-preferred-system
-    title: 'Preferred form of political system, GAMAAN online survey, June 2026'
+    title: >-
+      Preferred form of political system in Iran, GAMAAN online survey, June
+      2026
     description: 'Answers to "Which form of political system do you prefer?" among respondents inside Iran, weighted to literate residents aged 15 and over (fieldwork 20–27 June 2026).'
     unit: percent
     valueLabel: '% of respondents'
@@ -1183,7 +1119,9 @@ comparisons:
       - label: 'Lack the knowledge to choose'
         value: 19.1
   - id: gamaan-war-views
-    title: 'Views of the war and the regime, GAMAAN online survey, June 2026'
+    title: >-
+      Views inside Iran of the war and the regime, GAMAAN online survey, June
+      2026
     description: 'Share of respondents inside Iran agreeing with each statement (fieldwork 20–27 June 2026). Each bar is a separate question.'
     unit: percent
     valueLabel: '% of respondents'
@@ -1191,21 +1129,27 @@ comparisons:
     sources: [11]
     note: 'GAMAAN reports most of these as "about" a percentage. The sample was reached online through circumvention tools; see About this data.'
     items:
-      - label: 'Called the US–Israeli action "military aggression against Iran"'
+      - label: "Called it \"military aggression\""
+        detail: "Called the US–Israeli action \"military aggression against Iran\""
         value: 42
       - label: 'Called it "humanitarian intervention"'
         value: 40
-      - label: 'Supported foreign military intervention before and after the war'
+      - label: "Supported foreign military intervention"
+        detail: "Before and after the war"
         value: 38
-      - label: 'Opposed foreign military intervention before and after the war'
+      - label: "Opposed foreign military intervention"
+        detail: "Before and after the war"
         value: 27
-      - label: 'Felt satisfaction at the weakening of the Islamic Republic during the war'
+      - label: "Satisfied the Islamic Republic weakened"
+        detail: "Felt satisfaction at the weakening of the Islamic Republic during the war"
         value: 60
       - label: 'Opposed Iran building nuclear weapons'
         value: 59
-      - label: 'Said the US–Iran agreement did not serve Iranians'
+      - label: "Said the agreement did not serve Iranians"
+        detail: "Said the US–Iran agreement did not serve Iranians"
         value: 68
-      - label: 'Rated the regime''s response to the January protests positively'
+      - label: "Rated the protest response positively"
+        detail: "Rated the regime's response to the January protests positively"
         value: 14
 relatedFacts:
   - iran-actions-abroad
@@ -1240,13 +1184,29 @@ figures:
     id: "gdp-growth-series"
   - kind: "series"
     id: "inflation-series"
-  - kind: "comparison"
-    id: "majlis-turnout"
+  - kind: barChart
+    id: majlis-turnout
+    title: Turnout in parliamentary (Majlis) elections, Iran, 2016, 2020 and 2024
+    description: Votes cast as a share of eligible voters, by the Interior Ministry's figures as reported
+      by Al Jazeera.
+    valueLabel: '% of eligible voters'
+    categoryLabel: Election
+    format: {unit: percent}
+    sort: none
+    domainMax: 100
+    sources: [24]
+    note: Only three elections are shown because the full parliamentary series (IPU Parline) could not be
+      fetched; see What we don't know yet. The 2016 figure is "about 62 percent".
+    items:
+    - label: '2016'
+      value: {value: 62, qualifier: about, asPublished: About 62 percent}
+    - {label: '2020', value: 42}
+    - {label: '2024', value: 41, highlight: true}
   - kind: "comparison"
     id: "january-2026-deaths"
   - kind: "dataTable"
     id: "crackdown-deaths"
-    title: "Crackdown deaths, by counter and method"
+    title: Deaths in Iran's crackdowns, by counter and method
     description: "Each count comes from a different counter using a different method, so they cannot be read as one series."
     caption: "One row per count"
     columns:
@@ -1266,7 +1226,7 @@ figures:
       - { crackdown: "Dec 2025 – Feb 2026", counter: "Published names", count: "HRANA 4,555; government 3,038", method: "Named individuals", asof: { value: "26 Feb 2026", sources: [5] } }
   - kind: "dataTable"
     id: "arrests"
-    title: "Arrests after crackdowns and outside attacks"
+    title: Arrests in Iran after crackdowns and outside attacks
     description: "Arrests counted after the June 2025 war and during the January 2026 crackdown, by counter."
     caption: "One row per count"
     columns:
@@ -1280,12 +1240,64 @@ figures:
       - { period: "January 2026 protests", counter: "HRANA", arrests: "At least 41,880", asof: { value: "27 Jan 2026", sources: [3] } }
       - { period: "January 2026 protests", counter: "Unnamed NGO, cited by the UN mission", arrests: "Over 50,000", asof: { value: "Mid-Feb 2026", sources: [4] } }
       - { period: "28 Dec 2025 – 15 Feb 2026", counter: "HRANA", arrests: "53,777", asof: { value: "23 Feb 2026", sources: [1] } }
-  - kind: "comparison"
-    id: "amnesty-executions-2025"
+  - kind: barChart
+    id: amnesty-executions-2025
+    title: Recorded executions by country, 2025 (Amnesty International)
+    description: Executions Amnesty recorded in each of the 17 countries known to have executed people in
+      2025. These are minimums.
+    valueLabel: Executions recorded
+    categoryLabel: Country
+    format: {unit: count}
+    sort: none
+    sources: [25]
+    note: From the report's list "Executions recorded globally in 2025". Amnesty gives no figure ("+") for
+      China, Iraq, North Korea and Viet Nam, so they are not charted. It believes China executed thousands.
+      Iran, Saudi Arabia, Somalia and Yemen are marked "+" after their figure, meaning at least that many.
+    items:
+    - label: Iran
+      value: {value: 2159, qualifier: at least, asPublished: '2,159+'}
+      highlight: true
+    - label: Saudi Arabia
+      value: {value: 356, qualifier: at least, asPublished: 356+}
+    - label: Yemen
+      value: {value: 51, qualifier: at least, asPublished: 51+}
+    - {label: USA, value: 47}
+    - {label: Egypt, value: 23}
+    - {label: Kuwait, value: 17}
+    - {label: Singapore, value: 17}
+    - label: Somalia
+      value: {value: 17, qualifier: at least, asPublished: 17+}
+    - {label: Afghanistan, value: 6}
+    - {label: United Arab Emirates, value: 3}
+    - {label: Japan, value: 1}
+    - {label: South Sudan, value: 1}
+    - {label: Taiwan, value: 1}
   - kind: "comparison"
     id: "amnesty-executions-per-million-2025"
-  - kind: "comparison"
-    id: "iran-execution-counters"
+  - kind: barChart
+    id: iran-execution-counters
+    title: Executions in Iran by counter, 2023–2025
+    description: IHRNGO and Amnesty International each publish a minimum count for Iran by calendar year.
+      They are separate counts and differ, most of all for 2025.
+    valueLabel: Executions (minimum)
+    categoryLabel: Year
+    format: {unit: count}
+    sort: none
+    sources: [35, 25, 26]
+    note: Only the years for which both counts were read are shown. Amnesty's series runs from 1981 but
+      its earlier Iran figures were not fetched for this report. HRANA's count uses October years and is
+      charted separately above.
+    series:
+    - {key: ihrngo, label: IHRNGO}
+    - {key: amnesty, label: Amnesty International}
+    items:
+    - label: '2023'
+      values: {ihrngo: 834, amnesty: 853}
+    - label: '2024'
+      values: {ihrngo: 975, amnesty: 972}
+    - label: '2025'
+      values: {ihrngo: 1639, amnesty: 2159}
+      highlight: true
   - kind: "comparison"
     id: "executions-per-president"
   - kind: "comparison"
@@ -1296,7 +1308,7 @@ figures:
     id: "gamaan-war-views"
   - kind: "timeline"
     id: "openings-and-reversals"
-    title: "Openings and reversals, 2000–2026"
+    title: Openings and reversals in Iran, 2000–2026
     description: "Dated moves toward and away from openness in Iran, as the sources report them."
     categories:
       - { id: "opening", label: "Opening" }
@@ -1510,7 +1522,7 @@ The UN mission counted at least 551 protesters killed in 2022–23. [7](#source-
 
 ### There is no verified count for 2009 {#iran-government-and-its-people--no-verified-2009-count}
 
-No primary source for deaths in the 2009 post-election crackdown was found, so it is left blank rather than filled from secondary reports. See Data still needed.
+No primary source for deaths in the 2009 post-election crackdown was found, so it is left blank rather than filled from secondary reports. See What we don't know yet.
 
 ### Counts grew as cases were confirmed {#iran-government-and-its-people--counts-are-floors}
 
@@ -1544,17 +1556,21 @@ Under Khatami, hardliners closed sixteen reformist publications in a week in 200
 
 On 8 March 2026 the Assembly of Experts named Mojtaba Khamenei "the third leader", by "the decisive vote of its members", with no tally published. [15](#source-iran-government-and-its-people-15) [16](#source-iran-government-and-its-people-16) Iran International reports he was chosen "under pressure from the Revolutionary Guards"; that is a single outlet's claim. [15](#source-iran-government-and-its-people-15)
 
-## Subtleties {#iran-government-and-its-people--subtleties}
+## Subtleties {#iran-government-and-its-people--subtleties-openings-and-reversals}
 
 ### Moderation and repression ran side by side {#iran-government-and-its-people--moderation-and-repression-together}
 
 The 2024 election and the shelved hijab law are the clearest signs of moderation in these sources. In the same period executions rose fastest and the January 2026 crackdown was the deadliest here. A reader who takes only one set of facts gets a one-sided picture.
 
+## Subtleties {#iran-government-and-its-people--subtleties-hrana-monthly-total}
+
 ### The war's first months cut both ways {#iran-government-and-its-people--war-cuts-both-ways}
 
 Total executions dropped when the bombing began, while political executions and arrests rose. "The war weakened repression" and "the war hardened it" each use one half of the same HRANA data.
 
-## About this data {#iran-government-and-its-people--about}
+## More {#iran-government-and-its-people--more-presidential-turnout}
+
+### About this report's data {#iran-government-and-its-people--about}
 
 **What this measures.** Turnout, candidate vetting, executions, protest deaths, arrests, expert freedom scores and one online survey. Every count of killing or execution is a confirmed minimum by a named counter: IHRNGO, HRANA and Amnesty each use their own method and period, so each has its own chart.
 

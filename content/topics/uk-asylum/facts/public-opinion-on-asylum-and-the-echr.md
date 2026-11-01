@@ -163,7 +163,7 @@ sources:
     publisher: The Conversation
     date: '2025-10-09'
 series:
-  title: 'Remain in or withdraw from the ECHR, 2013-2025'
+  title: British adults on remaining in or withdrawing from the ECHR, 2013-2025
   description: >-
     Share of British adults saying Britain should remain a member of the
     European Convention on Human Rights, and share saying it should withdraw,
@@ -244,7 +244,9 @@ figures:
   - kind: series
   - kind: dataTable
     id: removals
-    title: How the question changes the answer, 2023–2025
+    title: >-
+      Polls on the ECHR and removals from Britain: how the question changes the
+      answer, 2023–2025
     description: Polls on the ECHR and on removals, each result shown with the question asked.
     caption: One card per poll
     layout: cards
@@ -276,12 +278,6 @@ observationMarks:
   small-boat-removal-splits-the-public: {rows: ["YouGov, September 2023"]}
   removal-support-targets-small-boat-arrivals: {rows: ["YouGov, August 2025"]}
 ---
-Polling on the ECHR and on removals is unusually sensitive to wording. The
-same public that chooses "remain" over "withdraw" also backs replacing
-"the current European system of human rights laws" when the question offers
-faster deportation, so each result below is shown with the question asked.
-[1](#source-public-opinion-on-asylum-and-the-echr-1) [7](#source-public-opinion-on-asylum-and-the-echr-7)
-
 ## Observations {#public-opinion-on-asylum-and-the-echr--observations-echr-membership}
 
 ### Remain has led withdraw since 2016 {#public-opinion-on-asylum-and-the-echr--remain-has-led-since-2016}
@@ -324,3 +320,7 @@ leave. Counted across all adults, that came to 38% who included small-boat
 asylum seekers and 16% who included asylum seekers who came through the
 legal process. [11](#source-public-opinion-on-asylum-and-the-echr-11)
 [12](#source-public-opinion-on-asylum-and-the-echr-12)
+
+## More {#public-opinion-on-asylum-and-the-echr--more-echr-membership}
+
+Polling on the ECHR and on removals is unusually sensitive to wording. The same public that chooses "remain" over "withdraw" also backs replacing "the current European system of human rights laws" when the question offers faster deportation, so each result in this report is shown with the question asked. [1](#source-public-opinion-on-asylum-and-the-echr-1) [7](#source-public-opinion-on-asylum-and-the-echr-7)

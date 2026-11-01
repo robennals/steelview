@@ -1,5 +1,6 @@
 ---
 name: These rules keep eligible citizens from voting, to stop fraud that barely exists
+shortName: "Don't turn voters away"
 summary: "[Voting as someone else at the polls is the rarest kind of fraud on record](#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern), and [non-citizens' votes are found at a few per million ballots](#fact-non-citizens-on-voter-rolls/votes-per-ballots). But [Kansas's citizenship-document rule blocked tens of thousands of applicants](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens). A sworn promise of citizenship, backed by careful records checks, protects the voter list without shutting citizens out."
 order: 2
 ---

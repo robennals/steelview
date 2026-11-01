@@ -1,5 +1,6 @@
 ---
 name: Mail ballots should not be thrown out just because a signature looks wrong to an official
+shortName: "Fair signature checks"
 summary: "Matching signatures is a judgement call. It is applied unevenly from county to county, and it rejects young, first-time and minority voters most. Voters must be told about a problem and allowed to fix it."
 order: 4
 ---

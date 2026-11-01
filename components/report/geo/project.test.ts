@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import type { GeoRegion } from './types';
-import { aspectOf, boundsOf, centroidOf, chooseProjection, equalEarth, fitBounds, fitProjection, pathFor } from './project';
+import type { GeoRegion, LonLat } from './types';
+import { aspectOf, boundsOf, centroidOf, chooseProjection, clipToBounds, equalEarth, fitBounds, fitProjection, pathFor } from './project';
 import { UK_ITL1_REGIONS } from './uk-itl1';
 
 /** A 2°×1° box on the equator, where the cosine squeeze is within 0.004% of 1. */
@@ -115,4 +115,12 @@ test('a map is drawn in the proportions of its geography', () => {
 test('the fitted frame is the box the extent occupies, for clipping', () => {
   const { frame } = fitBounds({ minLon: 0, maxLon: 2, minLat: 0, maxLat: 1 }, { width: 100, height: 100, kind: 'local' });
   near([frame.x, frame.y, frame.width, frame.height], [0, 25, 100, 50]);
+});
+
+test('clipToBounds cuts a ring to the box and drops rings wholly outside', () => {
+  const square: LonLat[] = [[0, 0], [10, 0], [10, 10], [0, 10]];
+  const [[clipped]] = clipToBounds([[square]], { minLon: 5, maxLon: 20, minLat: -5, maxLat: 5 });
+  assert.deepEqual([...clipped].sort(), [[10, 0], [10, 5], [5, 5], [5, 0]].sort());
+  assert.deepEqual(clipToBounds([[square]], { minLon: 20, maxLon: 30, minLat: 20, maxLat: 30 }), []);
+  assert.deepEqual(clipToBounds([[square]], { minLon: -1, maxLon: 11, minLat: -1, maxLat: 11 }), [[square]]);
 });

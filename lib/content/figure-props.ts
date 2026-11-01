@@ -1,6 +1,7 @@
 import type * as R from '@/components/report';
 import { stripEvents } from '@/components/topic/series-chart';
-import { geoRegions, mapTiles } from './map-presets';
+import { aboutThisDataNote } from './figure-text';
+import { mapAreas } from './map-presets';
 import { factSources, figureCitations } from './sources';
 import { factPath } from './types';
 import type { Fact, Figure, FigureOf, FigureValueFormat, Source } from './types';
@@ -20,17 +21,23 @@ export type FigureContext = {
   /** The topic's `lastUpdated`: where a period still in force stops. Absent, the component's own default applies. */
   asOf?: string;
   credit: (n: number) => R.SourceCredit;
+  /** Drawn in a data panel, where the fact's source list is not on the page: every credit links to the source itself. */
+  panel?: boolean;
 };
 
-export function figureContext(fact: Fact, asOf?: string): FigureContext {
+export function figureContext(fact: Fact, asOf?: string, { panel = false } = {}): FigureContext {
   const sources = factSources(fact);
   return {
     fact,
     sources,
     asOf,
+    panel,
     // validate.ts rejects a citation past the end of the list (rule F2); the
     // fallback only keeps an unvalidated draft rendering in the dev server.
-    credit: n => ({ label: sources[n - 1]?.publisher ?? `Source ${n}`, href: `#source-${fact.id}-${n}`, number: n }),
+    credit: n => {
+      const source = sources[n - 1];
+      return { label: source?.publisher ?? `Source ${n}`, href: panel && source ? source.url : `#source-${fact.id}-${n}`, number: n };
+    },
   };
 }
 
@@ -55,12 +62,6 @@ export function toValueFormat(format: FigureValueFormat | undefined): R.ValueFor
   return { ...rest, unit, currency };
 }
 
-/** The note, with the named table the values come from, for "About this data". */
-function figureNote(f: { note?: string; valuesFrom?: string }): string | undefined {
-  const parts = [f.note, f.valuesFrom && `Values from ${f.valuesFrom}.`].filter(Boolean);
-  return parts.length ? parts.join(' ') : undefined;
-}
-
 /** The fields every ReportFigure-framed component takes. */
 function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
   return {
@@ -68,7 +69,8 @@ function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
     title: f.title,
     description: f.description,
     sources: figureCredits(f, c),
-    note: figureNote(f),
+    note: aboutThisDataNote(f),
+    panel: c.panel,
   };
 }
 
@@ -79,7 +81,7 @@ export function dataTableProps(f: FigureOf<'dataTable'>, c: FigureContext): R.Da
     columns: f.columns.map(column => ({
       key: column.key,
       label: column.label,
-      format: column.format === undefined || column.format === 'text' ? column.format : toValueFormat(column.format),
+      format: column.format === undefined || column.format === 'text' || column.format === 'date' ? column.format : toValueFormat(column.format),
       align: column.align,
       rowHeader: column.rowHeader,
       sortable: column.sortable,
@@ -88,27 +90,48 @@ export function dataTableProps(f: FigureOf<'dataTable'>, c: FigureContext): R.Da
       Object.fromEntries(
         Object.entries(row).map(([key, cell]) => [
           key,
-          cell !== null && typeof cell === 'object' ? { value: cell.value, sources: cell.sources.map(c.credit) } : cell,
+          cell !== null && typeof cell === 'object' ? tableCell(cell, c) : cell,
         ]),
       ),
     ),
     highlight: f.highlight,
     defaultSort: f.defaultSort,
+    width: f.width,
   };
+}
+
+type ContentCell = Exclude<FigureOf<'dataTable'>['rows'][number][string], string | number | null>;
+
+/** A content cell object as the table takes it: text, a qualified number or a range, with its footnotes as credits. */
+function tableCell(cell: ContentCell, c: FigureContext): R.CitedCell {
+  const sources = cell.sources?.map(c.credit);
+  if (cell.low !== undefined && cell.high !== undefined) return { low: cell.low, high: cell.high, asPublished: cell.asPublished, sources };
+  if (typeof cell.value === 'number') return { value: cell.value, qualifier: cell.qualifier, asPublished: cell.asPublished, sources };
+  return { value: cell.value ?? null, sources };
+}
+
+/**
+ * A key figure's number with its qualifier: the sibling `qualifier` and
+ * `asPublished` (the older shape) fold into the value, so the component
+ * sees one shape. The validator refuses a qualifier given in both places.
+ */
+function keyFigureValue(figure: FigureOf<'keyFigures'>['figures'][number]): R.FigureNumber {
+  const { value, qualifier, asPublished } = figure;
+  if (typeof value !== 'number') return value;
+  return qualifier ? { value, qualifier, asPublished } : value;
 }
 
 export function keyFiguresProps(f: FigureOf<'keyFigures'>, c: FigureContext): R.KeyFiguresProps {
   return {
     ...frame(f, c),
     figures: f.figures.map(figure => ({
-      value: figure.value,
+      value: keyFigureValue(figure),
       format: toValueFormat(figure.format),
-      qualifier: figure.qualifier,
       label: figure.label,
       period: figure.period,
       periodLabel: figure.periodLabel,
       change: figure.change && { value: figure.change.value, format: toValueFormat(figure.change.format), comparison: figure.change.comparison },
-      source: c.credit(figure.source),
+      sources: figure.sources.map(c.credit),
     })),
   };
 }
@@ -124,7 +147,7 @@ export function timelineProps(f: FigureOf<'timeline'>, c: FigureContext): R.Time
       description: event.description,
       category: event.category,
       significance: event.significance,
-      source: c.credit(event.source),
+      sources: event.sources.map(c.credit),
     })),
   };
 }
@@ -136,9 +159,13 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
     rowLabel: f.rowLabel,
     from: f.from,
     to: f.to ?? (open ? c.asOf : undefined),
+    asOf: c.asOf,
     categories: f.categories,
-    rows: f.rows,
-    events: stripEvents(f, c.fact.id, c.sources),
+    rows: f.rows.map(row => ({
+      label: row.label,
+      periods: row.periods.map(period => ({ from: period.from, to: period.to, label: period.label, category: period.category, sources: period.sources.map(c.credit) })),
+    })),
+    events: stripEvents(f, c.fact.id, c.sources, c.panel),
   };
 }
 
@@ -146,7 +173,7 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
  * A map figure's shading, numeric or categorical, as the components take it.
  * A bare category slug becomes `{ category }`; a bare number `{ value }`.
  */
-function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding {
+function mapEncoding(f: FigureOf<'map'>): R.MapEncoding {
   if (f.categories) {
     // The schema refuses a categorical map without all three; the check narrows the types.
     if (!f.categoryLabel || !f.areas) throw new Error(`map ${f.id} needs \`categoryLabel\`, \`categories\` and \`areas\``);
@@ -161,7 +188,7 @@ function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding
   if (!f.data || !f.valueLabel) throw new Error(`map ${f.id} needs \`data\` and \`valueLabel\``);
   return {
     data: Object.fromEntries(
-      Object.entries(f.data).map(([area, datum]) => [area, typeof datum === 'number' ? { value: datum } : { value: datum.value, label: datum.label }]),
+      Object.entries(f.data).map(([area, datum]) => [area, typeof datum === 'number' ? { value: datum } : datum]),
     ),
     valueLabel: f.valueLabel,
     format: toValueFormat(f.format),
@@ -172,22 +199,12 @@ function mapEncoding(f: FigureOf<'tileMap'> | FigureOf<'geoMap'>): R.MapEncoding
   };
 }
 
-export function tileMapProps(f: FigureOf<'tileMap'>, c: FigureContext): R.TileMapProps {
+/** A `map` figure (or its older spellings `tileMap` and `geoMap`) as an AreaMap: the preset's tiles and shapes, opening on its `default` view. */
+export function areaMapProps(f: FigureOf<'map'>, c: FigureContext): R.AreaMapProps {
   return {
     ...frame(f, c),
-    tiles: mapTiles(f.map),
-    areaLabel: f.areaLabel,
-    highlight: f.highlight,
-    ...mapEncoding(f),
-  };
-}
-
-export function geoMapProps(f: FigureOf<'geoMap'>, c: FigureContext): R.GeoMapProps {
-  const { regions, extent } = geoRegions(f.regions);
-  return {
-    ...frame(f, c),
-    regions,
-    extent,
+    ...mapAreas(f),
+    defaultView: f.default,
     areaLabel: f.areaLabel,
     highlight: f.highlight,
     insets: f.insets,
@@ -216,7 +233,66 @@ export function barChartProps(f: FigureOf<'barChart'>, c: FigureContext): R.BarC
     format: toValueFormat(f.format),
     sort: f.sort,
     domainMax: f.domainMax,
-    items: f.items.map(item => ({ label: item.label, value: item.value, highlight: item.highlight })),
+    items: f.items.map(item => {
+      // The schema refuses a row without `value` unless the chart has `series`; the check narrows the type.
+      if (item.value === undefined) throw new Error(`bar chart ${f.id} row "${item.label}" needs \`value\``);
+      return { label: item.label, value: item.value, highlight: item.highlight, detail: item.detail };
+    }),
+  };
+}
+
+/** A bar chart with `series`: a measure per series in each row, paired or as a dumbbell. */
+export function pairedBarChartProps(f: FigureOf<'barChart'>, c: FigureContext): R.PairedBarChartProps {
+  if (!f.series) throw new Error(`bar chart ${f.id} needs \`series\` to be paired`);
+  return {
+    ...frame(f, c),
+    series: f.series,
+    style: f.style,
+    valueLabel: f.valueLabel,
+    categoryLabel: f.categoryLabel,
+    format: toValueFormat(f.format),
+    sort: f.sort,
+    domainMax: f.domainMax,
+    items: f.items.map(item => ({ label: item.label, values: item.values ?? {}, labels: item.labels, highlight: item.highlight, detail: item.detail })),
+  };
+}
+
+export function sliceExplorerProps(f: FigureOf<'sliceExplorer'>, c: FigureContext): R.SliceExplorerProps {
+  return {
+    ...frame(f, c),
+    rows: f.rows,
+    dimensions: f.dimensions,
+    measures: f.measures.map(m => ({ key: m.key, label: m.label, format: toValueFormat(m.format), aggregation: m.aggregation })),
+    defaultBreakdown: f.defaultBreakdown,
+    defaultSplit: f.defaultSplit,
+    defaultMeasure: f.defaultMeasure,
+    defaultFilters: f.defaultFilters,
+    splitLayout: f.splitLayout,
+  };
+}
+
+/**
+ * A small-multiples figure. About this data adds the coverage note and each
+ * panel's own coverage note, named, to the figure's note, as a series does
+ * for its lines.
+ */
+export function smallMultiplesProps(f: FigureOf<'smallMultiples'>, c: FigureContext): R.SmallMultiplesProps {
+  const coverageNotes = [f.coverage.note, ...f.panels.flatMap(panel => (panel.coverage?.note ? [`${panel.name}: ${panel.coverage.note}`] : []))];
+  const note = [aboutThisDataNote(f), ...coverageNotes].filter(Boolean).join(' ');
+  return {
+    ...frame(f, c),
+    note: note || undefined,
+    valueLabel: f.valueLabel,
+    format: toValueFormat(f.format),
+    periodLabel: f.periodLabel,
+    independentScales: f.independentScales,
+    zeroBased: f.zeroBased,
+    panels: f.panels.map(panel => ({
+      name: panel.name,
+      highlight: panel.highlight,
+      points: panel.points,
+      sources: panel.sources.length > 0 ? panel.sources.map(c.credit) : undefined,
+    })),
   };
 }
 
@@ -224,7 +300,8 @@ export function compositionBarProps(f: FigureOf<'compositionBar'>, c: FigureCont
   return {
     ...frame(f, c),
     categories: f.categories,
-    rows: f.rows.map(row => ({ label: row.label, values: row.values, source: row.source === undefined ? undefined : c.credit(row.source) })),
+    rows: f.rows.map(row => ({ label: row.label, values: row.values, total: row.total, sources: row.sources.length > 0 ? row.sources.map(c.credit) : undefined })),
+    unit: f.unit,
     showCounts: f.showCounts,
     countFormat: toValueFormat(f.countFormat),
     rowLabel: f.rowLabel,
@@ -237,6 +314,7 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
   return {
     ...frame(f, c),
     valueLabel: f.valueLabel,
+    itemLabel: f.itemLabel,
     format: toValueFormat(f.format),
     intervalLabel: f.intervalLabel,
     nullValue: f.nullValue,
@@ -251,12 +329,12 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
       group: e.group,
       note: e.note,
       asPublished: e.asPublished,
-      source: c.credit(e.source),
+      sources: e.sources.map(c.credit),
     })),
   };
 }
 
-type FigureQuote = FigureOf<'pullQuote'>['quote'];
+type FigureQuote = FigureOf<'pullQuote'>['quote'] | FigureOf<'quotes'>['quotes'][number];
 
 /** Quote ids are `<fact>--<figure id>-<n>`, one-based, so `quoteAnchor` stays unique on the page. */
 function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): R.Quote {
@@ -265,27 +343,60 @@ function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): 
     text: q.text,
     speaker: q.speaker,
     role: q.role,
-    position: q.position,
     date: q.date,
     context: q.context,
-    source: c.credit(q.source),
+    sources: q.sources.map(c.credit),
   };
 }
 
-export function quoteComparisonProps(f: FigureOf<'quoteComparison'>, c: FigureContext): R.QuoteComparisonProps {
+/** Up to this many quotes are set side by side (QuoteComparison); more become a filterable list (QuoteBrowser). */
+export const SIDE_BY_SIDE_QUOTES = 4;
+
+/** A `quotes` figure's quotes, each with its stance's label as its position. */
+function quotesOf(f: FigureOf<'quotes'>, c: FigureContext): R.Quote[] {
+  const labelOf = new Map((f.categories ?? []).map(category => [category.id, category.label]));
+  return f.quotes.map((q, i) => ({
+    ...quote(q, i + 1, f, c),
+    position: q.stance && labelOf.get(q.stance),
+    lang: q.lang,
+    translation: q.translation,
+  }));
+}
+
+/** A `quotes` figure of up to four, side by side in the order written. */
+export function quoteComparisonProps(f: FigureOf<'quotes'>, c: FigureContext): R.QuoteComparisonProps {
   return {
     id: figureDomId(c.fact, f.id),
     question: f.question,
     description: f.description,
     note: f.note,
     sources: figureCredits(f, c),
-    quotes: f.quotes.map((q, i) => quote(q, i + 1, f, c)),
+    panel: c.panel,
+    quotes: quotesOf(f, c),
+  };
+}
+
+/**
+ * A `quotes` figure of more than four, as a list in date order with filters
+ * by category and speaker. Category chips stay alphabetical (QuoteBrowser's
+ * default), so no side is listed first by the author's ordering.
+ */
+export function quoteBrowserProps(f: FigureOf<'quotes'>, c: FigureContext): R.QuoteBrowserProps {
+  return {
+    id: figureDomId(c.fact, f.id),
+    title: f.question,
+    description: f.description,
+    note: f.note,
+    sources: figureCredits(f, c),
+    panel: c.panel,
+    positionLabel: f.categoryLabel ?? 'Category',
+    quotes: quotesOf(f, c),
   };
 }
 
 /** The quote alone; the renderer frames it (id, description, Observations, note) in a ReportFigure. */
 export function pullQuoteProps(f: FigureOf<'pullQuote'>, c: FigureContext): R.PullQuoteProps {
-  return { quote: quote(f.quote, 1, f, c), variant: f.variant };
+  return { quote: { ...quote(f.quote, 1, f, c), position: f.quote.position }, variant: f.variant };
 }
 
 /**

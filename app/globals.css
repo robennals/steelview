@@ -301,23 +301,13 @@
   /* -------------------------------------------------------------- section */
 
   /* The topic page is as wide as the home page, so its viewpoint and data
-     rows have room for their charts; prose sections keep a reading width. */
+     rows have room for their charts. */
   .sv-wrap--wide { max-width: 76rem; }
-  .sv-section--reading { max-width: var(--wrap); }
   .sv-section__head + .sv-rows { margin-top: 1.25rem; }
 
-  .sv-sections {
-    counter-reset: sv-section;
-  }
-
   .sv-section {
-    counter-increment: sv-section;
     position: relative;
     padding-top: 2.75rem;
-  }
-
-  .sv-section + .sv-section {
-    padding-top: 3.5rem;
   }
 
   .sv-section__head {
@@ -329,17 +319,6 @@
     margin-bottom: 0.25rem;
   }
 
-  /* Decorative numeral. Lives on the head wrapper, never inside the heading,
-     so it stays out of the heading's accessible name. */
-  .sv-section__head::before {
-    content: counter(sv-section, decimal-leading-zero);
-    font-family: var(--font-serif);
-    font-size: 0.8125rem;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.06em;
-    color: var(--ink-4);
-  }
-
   .sv-section__title {
     font-family: var(--font-sans);
     font-size: 0.75rem;
@@ -348,6 +327,88 @@
     text-transform: uppercase;
     margin: 0;
     color: var(--ink);
+  }
+
+  /* ----------------------------------------------------------- topic tabs */
+
+  /* Stays on screen, so the other tabs are one click away from anywhere in a
+     long viewpoint. A panel's link targets stop clear of it. */
+  .sv-topic-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    margin-top: 1.5rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .sv-topic-panel [id] { scroll-margin-top: 4rem; }
+
+  .sv-topic-tabs ul {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sv-topic-tabs a {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    /* Sits on the bar's rule, so the chosen tab reads as joined to its panel. */
+    margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .sv-topic-tabs a:hover { color: var(--ink); border-bottom-color: var(--rule-strong); }
+  .sv-topic-tabs a[aria-current] { color: var(--ink); border-bottom-color: var(--ink); }
+
+  .sv-topic-panel > .sv-section:first-child { padding-top: 1.25rem; }
+
+  @media (scripting: enabled) {
+    .sv-topic-panel:not([data-active]) { display: none; }
+
+    /* The tab says what a panel is, so its heading is left for screen readers. */
+    .sv-section__head--tab {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  /* Without JavaScript the panels follow each other, with their own headings. */
+  @media (scripting: none) {
+    .sv-topic-tabs { display: none; }
+  }
+
+  /* Always on the page, under the tabs, and it has to look like it matters. */
+  .sv-section--cruxes { padding-top: 4rem; }
+  .sv-section--cruxes .sv-section__head { flex-wrap: wrap; }
+
+  .sv-section--cruxes .sv-section__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+
+  /* Says what the section is, so it must not read as one of its items. */
+  .sv-section__blurb {
+    margin: 0;
+    color: var(--ink-3);
+    font-family: var(--font-serif);
+    font-size: 0.8125rem;
+    font-style: italic;
   }
 
   /* ----------------------------------------------------------- disclosure */
@@ -566,6 +627,9 @@
     border-bottom: 1px solid var(--rule);
   }
 
+  .sv-related { margin: 0; padding-left: 1.2rem; font-family: var(--font-sans); }
+  .sv-related li { margin-block: 0.25rem; }
+
   /* --------------------------------------------- data still needed */
 
   .sv-data-needed {
@@ -584,13 +648,13 @@
     margin: 0 0 0.75rem;
   }
 
-  .sv-data-needed ul {
+  .sv-data-needed__list {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .sv-data-needed li {
+  .sv-data-needed__list li {
     display: grid;
     gap: 0.2rem;
     padding: 0.7rem 0;
@@ -599,15 +663,15 @@
     line-height: 1.55;
   }
 
-  .sv-data-needed li:last-child {
+  .sv-data-needed__list li:last-child {
     border-bottom: 1px solid var(--rule-light);
   }
 
-  .sv-data-needed strong {
+  .sv-data-needed__list strong {
     color: var(--ink-1);
   }
 
-  .sv-data-needed span {
+  .sv-data-needed__list span {
     color: var(--ink-2);
   }
 
@@ -1378,124 +1442,42 @@
 
   /* --------------------------------------------------------------- cruxes */
 
-  .sv-crux__kind {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 0.45rem;
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
-
-  .sv-crux__kind::before {
-    content: "";
-    width: 0.85rem;
-    height: 1px;
-    background: var(--ink-4);
-  }
-
+  /* Columns of equal width, as many as fit: every side in one line on a wide
+     screen, stacked on a narrow one. */
   .sv-positions {
     display: grid;
-    gap: 0;
-    margin: 1.5rem 0 0;
-    border-top: 1px solid var(--ink);
+    grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+    gap: 1.25rem 2rem;
+    margin: 0;
+    padding: 0.75rem 1.5rem 1.5rem;
   }
 
   .sv-position {
-    padding: 1rem 0 1.15rem;
-    border-bottom: 1px solid var(--rule);
+    padding-top: 0.6rem;
+    border-top: 2px solid var(--ink);
   }
 
   .sv-position dt {
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin-bottom: 0.15rem;
+    color: var(--ink);
   }
 
   .sv-position dt a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    text-decoration-color: var(--rule);
+    text-decoration-color: var(--rule-strong);
   }
 
   .sv-position dd {
     margin: 0;
-    color: var(--ink);
-    line-height: 1.5;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    line-height: 1.45;
     text-wrap: pretty;
-  }
-
-  /* The positions grid is the one thing on the page allowed past the reading
-     measure — it is a comparison, not a paragraph. The prose above it keeps
-     its own max-width. */
-  .sv-crux > .sv-item__body {
-    max-width: none;
-  }
-
-  /* Column count follows the number of positions (`--sv-position-count`, set
-     inline per crux) rather than a fixed 2, so a divider sits between every
-     pair of adjacent columns for two, three, or more positions — not just an
-     even count. The first column needs no left divider or left padding, and
-     the last needs no right padding since there is no column after it. */
-  @media (min-width: 46rem) {
-    .sv-positions {
-      grid-template-columns: repeat(var(--sv-position-count, 1), minmax(0, 1fr));
-    }
-
-    .sv-position {
-      padding-right: 2rem;
-    }
-
-    .sv-position:not(:first-child) {
-      border-left: 1px solid var(--rule);
-      padding-left: 2rem;
-    }
-
-    .sv-position:last-child {
-      padding-right: 0;
-    }
-
-    /* At four or more positions, one row no longer leaves each column
-       comfortably readable, so the grid wraps to two columns instead —
-       holding column width roughly constant (the same width the
-       two-position case already renders at) no matter how many positions a
-       crux has. Divider placement switches from first/last-child to
-       odd/even, which is the correct "start/end of row" test for a *fixed*
-       two-column track (unlike the single-row case above, where the column
-       count varies, so first/last-child was the only count-agnostic test).
-       A trailing odd item (an odd total, e.g. five positions) spans both
-       columns so it doesn't dangle half-width under an empty cell. */
-    .sv-positions--wrap {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .sv-positions--wrap .sv-position {
-      border-left: none;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    .sv-positions--wrap .sv-position:nth-child(odd) {
-      padding-right: 2rem;
-    }
-
-    .sv-positions--wrap .sv-position:nth-child(even) {
-      border-left: 1px solid var(--rule);
-      padding-left: 2rem;
-    }
-
-    .sv-positions--wrap .sv-position:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-    }
   }
 
   /* ---------------------------------------------------------------- prose */
@@ -1882,10 +1864,10 @@
 
   .sv-row[data-open] .sv-row__body { grid-template-rows: 1fr; }
 
-  /* Nothing can open a walkthrough row without script, and its charts load on opening. */
+  /* Nothing can open a walkthrough or crux row without script, and a walkthrough's charts load on opening. */
   @media (scripting: none) {
-    .sv-row--walk .sv-row__body { grid-template-rows: 1fr; }
-    .sv-row--walk .sv-row__toggle, .sv-row--walk .sv-row__chevron, .sv-walk__chart-loading { display: none; }
+    .sv-row--walk .sv-row__body, .sv-row--crux .sv-row__body { grid-template-rows: 1fr; }
+    .sv-row--walk .sv-row__toggle, .sv-row--walk .sv-row__chevron, .sv-row--crux .sv-row__toggle, .sv-row--crux .sv-row__chevron, .sv-walk__chart-loading { display: none; }
   }
 
   .sv-row__inner { min-height: 0; overflow: hidden; }
@@ -2037,7 +2019,7 @@
 
   @media (max-width: 47.5rem) {
     .sv-row__thumbs { display: none; }
-    .sv-row__columns { padding-inline: 1rem; }
+    .sv-row__columns, .sv-positions { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
   }
 
@@ -2090,6 +2072,8 @@
 
   .sv-walk__thumbs .sv-walk__thumb-label { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
+  .sv-walk__tab .sv-walk__no-chart { display: grid; place-items: center; height: 100%; font-family: var(--font-sans); font-size: 1.4rem; color: var(--ink-3); }
+
   .sv-walk__thumbs .sv-walk__no-chart {
     display: grid;
     place-items: center;
@@ -2130,7 +2114,7 @@
   }
   .sv-observe__head { display: flex; align-items: center; gap: 0.6rem; min-width: 0; }
   .sv-observe__controls { display: flex; flex: none; align-items: center; gap: 0.35rem; }
-  .sv-observe__count { margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); }
+  .sv-observe__count { margin: 0; font-family: var(--font-sans); font-size: 0.75rem; color: var(--ink-4); white-space: nowrap; }
 
   .sv-observe__step {
     display: grid;
@@ -2176,7 +2160,6 @@
   }
 
   .sv-observe__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .sv-observe[data-toggles] .sv-observe__more { text-decoration: underline; text-underline-offset: 0.2em; }
 
   .sv-observe__claim {
     display: block;
@@ -2190,14 +2173,11 @@
   /* Opened, the whole claim shows. */
   .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; }
 
-  .sv-observe__more {
-    flex: none;
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
 
+  /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
+  .sv-observe[data-toggles] .sv-observe__body { max-height: min(16rem, 35vh); overflow-y: auto; }
+  .sv-observe__body:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .sv-observe .sv-walk__prose { max-width: none; font-size: 0.92rem; line-height: 1.5; }
   .sv-observe .sv-walk__prose p:last-child { margin-bottom: 0; }
 
@@ -2207,6 +2187,8 @@
   .sv-chart__mark-point { fill: var(--paper); stroke: currentColor; stroke-width: 2.5; }
   .sv-chart__mark-label { fill: currentColor; font-family: var(--font-sans); font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
   [data-series][data-mark-dimmed], [data-row][data-mark-dimmed] { opacity: 0.25; transition: opacity 0.2s; }
+  /* A row a reader has opened stays readable, whatever the observation is about. */
+  [data-row][data-mark-dimmed]:has(details[open]) { opacity: 1; }
   [data-row][data-mark-picked] { font-weight: 600; }
 
   /* Without JavaScript every observation shows, one after another. */
@@ -2273,6 +2255,7 @@
   }
 
   .sv-walk__strip {
+    position: relative; /* So what is placed absolutely in a chart scrolls and clips with it. */
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -2281,10 +2264,14 @@
   }
 
   .sv-walk__strip::-webkit-scrollbar { display: none; }
+  /* Out of the step's grid, but still somewhere for a link to land. */
+  .sv-walk__anchor { position: absolute; }
   .sv-walk__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
-  /* Clipped so that nothing wide in one step can show over the next. */
-  .sv-walk__slide { display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
+  /* Clipped so that nothing wide in one step can show over the next. Positioned
+     so that clipping reaches absolute content too: a chart's visually hidden
+     text sits as far along as its slide, and would otherwise widen the page. */
+  .sv-walk__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
 
   /* The claim and its reasoning, then the chart it leans on. Every step is one
      height, so nothing moves between steps; long prose scrolls. */
@@ -2338,6 +2325,7 @@
   .sv-slide__figure .sv-footnote,
   .sv-slide__figure .sv-timeline__controls,
   .sv-slide__figure .sv-timeline__key,
+  .sv-slide__figure .sv-quote-browser__controls,
   .sv-slide__figure .sv-control__status { display: none; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
@@ -2464,7 +2452,8 @@
   @media (max-width: 47.5rem) {
     .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
-    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: 18rem auto; height: auto; gap: 1rem; }
+    /* The chart's row grows past 18rem for a figure too long to fit, so it pushes the prose down rather than running over it. */
+    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(18rem, auto) auto; align-content: start; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
     /* A table reads down the page, so it takes the height it needs. */
     .sv-walk__step:has(.sv-slide__figure) { grid-template-rows: auto auto; }
@@ -2544,31 +2533,27 @@
     padding-bottom: 3rem;
   }
 
-  .sv-crumbs {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding-top: 2.5rem;
+  .sv-backlink {
+    padding-top: 1.5rem;
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-4);
   }
 
   @media (min-width: 40rem) {
-    .sv-crumbs {
-      padding-top: 3.5rem;
+    .sv-backlink {
+      padding-top: 2.25rem;
     }
   }
 
-  .sv-crumbs a {
+  .sv-backlink a {
     color: var(--ink-2);
+    text-decoration: none;
   }
 
-  .sv-crumbs a:hover {
+  .sv-backlink a:hover {
     color: var(--accent);
+    text-decoration: underline;
   }
 
   /* A supporting fact says little standing alone — a grant-rate movement or a
@@ -2605,7 +2590,20 @@
   }
 
   .sv-factpage[data-variant="page"] {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  /* The data panel, full-page: already open, on the page's own margins. */
+  .sv-factpage[data-variant="page"] .sv-walk { margin-top: 1.25rem; padding: 0; opacity: 1; transform: none; scroll-margin-top: 1rem; }
+
+  /* Without script nothing steps through the charts, and paper cannot:
+     they run down the page, each with all its observations. */
+  @media (scripting: none), print {
+    .sv-factpage[data-variant="page"] .sv-walk__tabbar { display: none; }
+    .sv-factpage[data-variant="page"] .sv-walk__strip { flex-direction: column; gap: 2.5rem; overflow: visible; }
+    .sv-factpage[data-variant="page"] .sv-walk__slide { flex: none; }
+    .sv-factpage[data-variant="page"] .sv-walk__step[data-chart] { height: auto; grid-template-rows: minmax(36rem, auto) auto; }
+    .sv-factpage[data-variant="page"] .sv-walk__text { overflow: visible; }
   }
 
   .sv-factpage__claim {
@@ -2876,7 +2874,7 @@
 }
 
 /* A reader who has asked the OS for less motion gets no animated transitions
-   anywhere on the page, and hash-sync.tsx checks the same preference before
+   anywhere on the page, and topic-accordion.tsx checks the same preference before
    choosing a scroll behaviour. */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -2895,6 +2893,15 @@
 .sv-target, .sv-factpage :target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
 .sv-factpage [id] { scroll-margin-top: 1.5rem; }
 h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
+/* A replaced anchor (`replaces`) is an empty mark before its figure: the
+   figure takes the highlight, without JavaScript too. */
+.sv-anchor-aliases > span { display: block; }
+.sv-factpage .sv-anchor-aliases > :target { background: none; outline: none; }
+.sv-factpage .sv-anchor-aliases:has(:target) + * { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+/* In a data panel the selected thumbnail and the open observation already say
+   where a link landed; the wash is for finding a line in a long list. */
+.sv-factpage .sv-walk .sv-target, .sv-factpage .sv-walk :target, .sv-walk .sv-target, .sv-walk h3.sv-target + p, .sv-walk h3:target + p,
+.sv-factpage .sv-walk .sv-anchor-aliases:has(:target) + * { background: none; outline: none; }
 .sv-evidence-index { margin-top: 1.5rem; }
 .sv-evidence-index > summary { cursor: pointer; font-size: .85rem; }
 
@@ -3001,22 +3008,24 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-source-quote > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .sv-references .sv-source-quote blockquote { margin-top: .65rem; border: 0; padding: 0; }
 
-.sv-comparison__rows { list-style: none; padding: 0; margin: 1rem 0 .4rem; }
-.sv-comparison__rows > li { margin-bottom: .75rem; }
+.sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
+.sv-row-detail__hint + .sv-comparison__rows { margin-top: 0; }
+.sv-comparison__row { display: block; margin-bottom: .75rem; }
 .sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
 .sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
-.sv-comparison__track { position: relative; height: .9rem; background: var(--paper-sunk); }
+.sv-comparison__track { position: relative; display: block; height: .9rem; background: var(--paper-sunk); }
 .sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }
 .sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
 .sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
-.sv-comparison__rows[data-dense] > li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
+.sv-comparison__rows[data-dense] { --sv-row-room: 2.5rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
 .sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
 .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
 .sv-comparison__rows[data-dense] .sv-comparison__label > :last-child { grid-column: 3; text-align: right; }
 .sv-comparison__rows[data-dense] .sv-comparison__track { grid-column: 2; grid-row: 1; }
 @media (max-width: 40rem) {
-  .sv-comparison__rows[data-dense] > li { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
+  .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
 }
 
 /* Definitions are a small second layer above the fact sheet. */
@@ -3108,8 +3117,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    comparison, and the credit. The full chart, one click away, has the rest. */
 /* A preview's plot fills whatever height its container gives it, so every slide
    in a carousel draws its chart at the same size: the figure is a column whose
-   plot takes the space left under the caption. Height only helps a chart that
-   reads off it, so rows of bars keep their own spacing and sit at the top. */
+   plot takes the space left under the caption. Rows of bars read off their
+   width, so they take only a little of it: see the rule for them below. */
 .sv-chart[data-preview] { display: flex; flex-direction: column; min-height: 0; }
 .sv-chart[data-preview] .sv-chart__highlight,
 .sv-chart[data-preview] .sv-chart__reading { flex: 1; min-height: 0; display: flex; flex-direction: column; }
@@ -3148,12 +3157,40 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
 .sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
 .sv-chart__about p { margin: 0 0 0.4rem; }
+/* One line closed, whatever the width: the names give way before the count. */
+.sv-chart__sources { flex: none; margin: 0; font: .8rem/1.5 var(--font-sans); color: var(--ink-3); }
+.sv-chart__sources > summary { display: flex; align-items: baseline; gap: 0.3em; list-style: none; cursor: pointer; }
+.sv-chart__sources > summary::-webkit-details-marker { display: none; }
+.sv-chart__sources-label, .sv-chart__sources-more { flex: none; }
+.sv-chart__sources-names { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart__sources-toggle { flex: none; margin-left: auto; padding-left: 0.75rem; font-weight: 600; color: var(--accent); }
+.sv-chart__sources-toggle::after { content: "Details ▾"; }
+.sv-chart__sources > summary:hover .sv-chart__sources-toggle { text-decoration: underline; text-underline-offset: 0.2em; }
+.sv-chart__sources[open] .sv-chart__sources-toggle::after { content: "Less ▴"; }
+.sv-chart__sources ol { margin: 0.5rem 0 0; padding-left: 1.6rem; list-style: decimal; }
+.sv-chart__sources .sv-source { margin-bottom: 0.6rem; padding: 0; border: 0; }
+.sv-chart__sources .sv-source p { margin: 0; }
+.sv-chart__sources blockquote { margin: 0.2rem 0 0; padding-left: 0.6rem; border-left: 2px solid var(--rule); color: var(--ink-2); font: inherit; }
+.sv-walk .sv-chart__sources .sv-target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.sv-chart__about-label { margin: 0.6rem 0 0.2rem; font-weight: 600; color: var(--ink-2); }
+.sv-chart__about-list { margin: 0 0 0.6rem; padding-left: 1.4rem; list-style: decimal; }
+.sv-chart__about-list li { margin-block: 0.15rem; }
+.sv-chart__about-list a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 0.15em; }
+.sv-chart__about-list a:hover { color: var(--accent); }
+.sv-chart__about-kind { color: var(--ink-4); font-size: 0.8em; }
+.sv-chart__more { max-width: none; font-size: inherit; }
+.sv-chart__more h3 { margin: 0.6rem 0 0.2rem; font: 600 1em/1.4 var(--font-sans); color: var(--ink-2); }
 .sv-chart[data-panel-chart] .sv-graph-observations { max-width: none; margin: 0; }
 .sv-chart[data-panel-chart] .sv-method-changes-group { margin: 0.2rem 0 0; padding: 0; }
 .sv-chart[data-panel-chart] .sv-method-changes-group > summary { font-size: 0.85rem; }
 .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 0; min-height: 12rem; container-type: size; }
 .sv-chart[data-panel-chart] .sv-chart__svg { display: none; width: 100%; height: 100%; }
 .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+/* Rows of bars spread into spare height, each up to --sv-row-room from the next,
+   and any height beyond that stays under the chart. A row whose label wraps
+   can need more than that, so the rows are never held under their own height. */
+.sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
+.sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: block; }
@@ -3165,7 +3202,41 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 @media (max-width: 40rem) {
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
-  .sv-chart[data-panel-chart] .sv-chart__plot { flex: none; height: 16rem; }
+  /* A long title takes its height from the graph, not from the panel's edge. */
+  .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
+  .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 16rem; min-height: 12rem; }
+}
+
+/* A report figure in a data panel: as for a chart, the graph takes whatever its
+   controls and notes leave, its rows sharing the space. One too long for the
+   space scrolls with the step. */
+.sv-report[data-panel-chart] :is(.sv-bars, .sv-estimates, .sv-periods, .sv-map__interactive) { flex: 1 1 auto; display: flex; flex-direction: column; margin-block: 0; }
+.sv-report[data-panel-chart] :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-evenly; margin-block: 0; }
+.sv-report[data-panel-chart] :is(.sv-bars__row, .sv-estimates__row) { margin: 0; }
+.sv-report[data-panel-chart] .sv-composition__row + .sv-composition__row { margin-top: 0; }
+/* The right padding holds an open period's arrowhead, and a small multiple's last dot, inside the step. */
+.sv-report[data-panel-chart] .sv-periods__line { padding-right: .45rem; }
+.sv-report[data-panel-chart] .sv-multiples__grid { padding-right: .3rem; }
+.sv-report[data-panel-chart] .sv-key-figures__frame { flex: 1 1 auto; display: flex; align-items: center; }
+.sv-report[data-panel-chart] .sv-key-figures__list { width: 100%; }
+.sv-report[data-panel-chart] .sv-scatter__x-label { text-align: center; }
+/* Nothing outside the step for a wide table to run into. */
+.sv-data--wide[data-panel-chart] .sv-data__frame,
+.sv-slide__figure .sv-data--wide .sv-data__frame { width: 100%; }
+/* On a phone the steps of a panel share one height, the tallest's, so a very long figure scrolls in place rather than leaving the rest empty. */
+@media (max-width: 47.5rem) {
+  .sv-walk[data-layout="strip"] .sv-walk__chart .sv-slide { max-height: 48rem; overflow-y: auto; }
+}
+@media (width > 47.5rem) {
+  /* The whole map scaled to the space left: a tile grid is sized by the height as well as the width. */
+  .sv-report[data-panel-chart] .sv-geo-map__svg { flex: 1 1 0; min-height: 16rem; width: 100%; height: 100%; max-height: none; }
+  .sv-report[data-panel-chart] .sv-tile-map__scroll { flex: 1 1 0; min-height: 16rem; overflow: visible; container-type: size; }
+  .sv-report[data-panel-chart] .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; }
+  .sv-report[data-panel-chart] .sv-tile-map__grid[data-cols="dense"] { min-width: 0; margin: 0 auto; gap: 1px; }
+  /* Small multiples: every panel packed to fill the step, the line stretched to its cell. */
+  .sv-report[data-panel-chart] .sv-multiples__grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
+  .sv-report[data-panel-chart] .sv-multiples__panel { display: flex; flex-direction: column; min-height: 0; }
+  .sv-report[data-panel-chart] .sv-multiples__plot { flex: 1 1 auto; min-height: 4.75rem; height: auto; }
 }
 
 /* On a phone every shape's type would shrink too far, so the narrow plot,
@@ -3186,17 +3257,19 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
-.sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
+.sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }
 /* A walkthrough step has the width for a long value, such as £19,900,000,000. */
 @media (width > 47.5rem) {
-  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-dense] > li { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 6.5rem; }
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 6.5rem; }
   /* It has the height too, so a long comparison needs no clamping there. */
-  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .5rem; margin-bottom: .45rem; }
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] { --sv-row-room: 2.5rem; }
+  .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__row { gap: .5rem; margin-bottom: .45rem; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
   .sv-walk .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__track { height: .9rem; }
 }
 /* Clamped rows: a long comparison squeezed into the fixed slide height. */
-.sv-chart[data-preview] .sv-comparison__rows[data-compact] > li { gap: .35rem; margin-bottom: .3rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] { --sv-row-room: 1.35rem; }
+.sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__row { gap: .35rem; margin-bottom: .3rem; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) auto; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :last-child { white-space: nowrap; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > span { font-size: .64rem; line-height: 1.1; }
 .sv-chart[data-preview] .sv-comparison__rows[data-compact] .sv-comparison__label > :first-child { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -3208,7 +3281,169 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-comparison__column[data-highlight] .sv-comparison__column-bar { background: var(--accent); opacity: 1; }
 .sv-comparison__rank { margin: .5rem 0 0; font: 600 .85rem/1.4 var(--font-sans); color: var(--accent); }
 
+/* Figure previews (home page): the report library's components in their
+   `preview` presentation (FigurePreview in components/report/types.ts). As
+   for the charts above, the graph takes the space under the title, and a
+   long one is clamped to fit — thin one-line rows, smaller type — never cut. */
+.sv-chart[data-preview] .sv-chart__preview { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.sv-chart__preview > .sv-chart__legend,
+.sv-chart__preview > .sv-scatter__key,
+.sv-chart__preview > .sv-map-legend,
+.sv-chart__preview > .sv-category-legend { margin: 0 0 .35rem; font-size: .7rem; }
+.sv-chart__preview .sv-chart__axis-label { margin: 0; font-size: .7rem; color: var(--ink-3); }
+/* Small multiples: every panel, packed to fill the slide; the line stretches to its cell. */
+.sv-multiples__grid[data-preview] { flex: 1; min-height: 0; margin: 0; grid-template-columns: repeat(auto-fill, minmax(min(100%, 7rem), 1fr)); grid-auto-rows: 1fr; gap: .4rem .8rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__panel { display: flex; flex-direction: column; min-height: 0; padding-top: .2rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .7rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__latest { margin: 0 0 .2rem; font-size: .65rem; }
+.sv-multiples__grid[data-preview] .sv-multiples__plot { flex: 1; min-height: 1.2rem; height: auto; margin-left: 0; }
+/* A slice explorer's status line: what the opening cut shows and what it adds together. */
+.sv-chart__preview > .sv-control__status { margin: 0 0 .3rem; font-size: .7rem; color: var(--ink-3); }
+/* Rows that share the space evenly: bars, composition bars, estimates, periods, events. */
+.sv-chart__preview .sv-bars,
+.sv-chart__preview .sv-estimates,
+.sv-chart__preview .sv-periods { flex: 1; min-height: 0; display: flex; flex-direction: column; margin: 0; }
+.sv-chart__preview .sv-bars__rows,
+.sv-chart__preview .sv-composition__rows,
+.sv-chart__preview .sv-estimates__rows,
+.sv-chart__preview .sv-periods__rows,
+.sv-chart__preview .sv-timeline__lines { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
+.sv-chart__preview .sv-bars__row,
+.sv-chart__preview .sv-estimates__row { margin: 0; }
+.sv-chart__preview .sv-composition__row + .sv-composition__row { margin-top: 0; }
+.sv-chart__preview .sv-bars__row { font-size: .8rem; }
+.sv-bars[data-compact] .sv-bars__row { grid-template-columns: minmax(6rem, 34%) minmax(0, 1fr) var(--sv-bars-value, 6ch); grid-template-areas: "label track value"; align-items: center; column-gap: .4rem; font-size: .66rem; line-height: 1.15; }
+.sv-bars[data-compact] .sv-bars__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; }
+.sv-bars[data-compact] .sv-bars__track { height: .45rem; }
+/* Compact paired or dumbbell rows: each measure's figure side by side on the row's one line, its bars thin. */
+.sv-bars[data-compact]:has(.sv-bars__value[data-stacked]) .sv-bars__row { grid-template-columns: minmax(5rem, 26%) minmax(0, 1fr) calc(var(--sv-bars-value, 6ch) * 2); }
+.sv-bars[data-compact] .sv-bars__value[data-stacked] { flex-direction: row; justify-content: flex-end; gap: .5rem; }
+.sv-bars[data-compact] .sv-bars__value[data-stacked] .sv-bars__value-line { align-self: auto; line-height: 1.15; }
+.sv-bars[data-compact][data-layout="grouped"] .sv-bars__track { height: .7rem; }
+.sv-bars[data-compact][data-layout="dumbbell"] .sv-bars__track { height: .7rem; }
+/* Compact composition rows: name, bar and total on one line, the total in a column of its own width. */
+.sv-composition__rows[data-compact] .sv-composition__row { display: grid; grid-template-columns: minmax(4.5rem, 30%) minmax(0, 1fr) var(--sv-composition-total, 0); column-gap: .4rem; align-items: center; font: .62rem/1.15 var(--font-sans); }
+.sv-composition__rows[data-compact] .sv-composition__head { display: contents; font: inherit; }
+.sv-composition__rows[data-compact] .sv-composition__label { grid-area: 1 / 1; overflow: hidden; font-size: .66rem; font-weight: 500; line-height: 1.15; white-space: nowrap; text-overflow: ellipsis; }
+.sv-composition__rows[data-compact] .sv-composition__total { grid-area: 1 / 3; text-align: right; }
+.sv-composition__rows[data-compact] .sv-composition__total-word { display: none; }
+.sv-composition__rows[data-compact] .sv-composition__bar { grid-area: 1 / 2; height: .85rem; }
+.sv-composition__rows[data-compact] .sv-composition__segment { font-size: .58rem; }
+.sv-composition__rows[data-compact] .sv-composition__segment[data-fit] .sv-composition__segment-name { display: none; }
+/* Past a dozen rows a bar is too thin to hold its shares: the Table view has them. */
+.sv-composition__rows[data-dense] .sv-composition__bar { height: .5rem; }
+.sv-composition__rows[data-dense] .sv-composition__segment[data-fit] .sv-composition__segment-share { display: none; }
+.sv-chart__preview .sv-estimates__group { margin: .3rem 0 .1rem; padding: 0; border: 0; font-size: .6rem; }
+.sv-chart__preview .sv-estimates__row { row-gap: .1rem; font-size: .75rem; }
+.sv-estimates[data-compact] :is(.sv-estimates__row, .sv-estimates__axis) { grid-template-columns: minmax(6rem, 40%) minmax(0, 1fr); align-items: center; }
+.sv-estimates[data-compact] .sv-estimates__row { grid-template-areas: "label track"; font-size: .64rem; line-height: 1.15; }
+.sv-estimates[data-compact] .sv-estimates__axis { grid-template-areas: ". track"; }
+.sv-estimates[data-compact] .sv-estimates__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-estimates[data-compact] .sv-estimates__value { display: none; }
+.sv-chart__preview .sv-estimates__axis,
+.sv-chart__preview .sv-periods__axis { font-size: .7rem; }
+/* Period timelines: thin rows, one axis under them. */
+.sv-chart__preview .sv-periods__legend { margin-bottom: .3rem; }
+/* Label beside track at every width: stacked, a phone slide holds two rows. */
+.sv-chart__preview .sv-periods { --sv-periods-label: 7rem; }
+@media (width > 47.5rem) {
+  .sv-chart__preview .sv-periods { --sv-periods-label: 11rem; }
+}
+/* The right padding holds an open period's arrowhead, on every line so they all share one track width. */
+.sv-chart__preview .sv-periods__line { grid-template-columns: var(--sv-periods-label) minmax(0, 1fr); column-gap: .5rem; align-items: start; padding-right: .45rem; }
+.sv-chart__preview .sv-periods__line--axis .sv-periods__label-cell { display: block; }
+.sv-chart__preview .sv-periods__row-label { margin: 0; padding-top: .1rem; }
+.sv-chart__preview .sv-periods__row { padding: .12rem 0; }
+.sv-chart__preview .sv-periods__row-label { font-size: .7rem; }
+.sv-chart__preview .sv-periods__track { height: .95rem; }
+/* A period's label stays on its row as on the full figure — inside its bar
+   or just right of it, else left off (placePeriodLabels) — a little smaller. */
+.sv-chart__preview .sv-periods__bar-label,
+.sv-chart__preview .sv-periods__side-label { font-size: .62rem; }
+/* placePeriodLabels judges a full-width track; on a phone's narrower one a long label ends in an ellipsis, not off the slide. */
+.sv-chart__preview .sv-periods__bar-label { overflow: hidden; text-overflow: ellipsis; }
+.sv-chart__preview .sv-periods__row-label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sv-chart__preview .sv-periods__line--events { padding-top: .2rem; }
+.sv-chart__preview .sv-periods__line--events .sv-event-strip__lane { --sv-strip-step: 1.05rem; padding-bottom: .1rem; }
+.sv-chart__preview .sv-event-strip__marker { width: 1rem; height: 1rem; font-size: .55rem; }
+.sv-periods[data-compact] .sv-periods__row,
+.sv-periods[data-compact] .sv-periods__row:first-child { padding: 0; border: 0; align-items: center; }
+.sv-periods[data-compact] .sv-periods__track { height: .5rem; }
+.sv-periods[data-compact] .sv-periods__legend { margin-bottom: .15rem; }
+.sv-periods[data-compact] .sv-periods__line--events { padding-top: 0; }
+.sv-periods[data-compact] .sv-event-strip__lane { --sv-strip-step: .85rem; }
+.sv-periods[data-compact] .sv-event-strip__marker { width: .85rem; height: .85rem; font-size: .5rem; }
+.sv-periods[data-compact] .sv-periods__axis { height: 1rem; }
+.sv-periods[data-compact] .sv-periods__tick { top: .05rem; }
+.sv-periods[data-compact] .sv-periods__row-label { padding-top: 0; font-size: .6rem; line-height: 1.1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+/* A compact track is too thin to hold a label; the row label and the key still name every bar. */
+.sv-periods[data-compact] .sv-periods__bar-label,
+.sv-periods[data-compact] .sv-periods__side-label { display: none; }
+/* Timelines: one line per event, or past twelve one marker each on an axis. */
+.sv-timeline__lines { list-style: none; padding: 0; font: .78rem/1.3 var(--font-sans); }
+.sv-timeline__line { display: flex; align-items: baseline; gap: .45rem; min-width: 0; color: var(--sv-timeline-color); }
+.sv-timeline__line-icon { flex: none; align-self: center; }
+.sv-timeline__line time { flex: none; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.sv-timeline__line-title { overflow: hidden; color: var(--ink); white-space: nowrap; text-overflow: ellipsis; }
+.sv-timeline__lines[data-compact] { font-size: .66rem; line-height: 1.15; }
+.sv-timeline__lane { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-inline: .45rem; font-family: var(--font-sans); }
+.sv-timeline__lane-track { position: relative; list-style: none; margin: 0; padding: 0; height: calc(var(--sv-strip-levels, 1) * .9rem + .6rem); border-bottom: 1px solid var(--rule-strong); }
+.sv-timeline__lane-mark { position: absolute; bottom: calc(var(--sv-strip-level, 0) * .9rem + .2rem); transform: translateX(-50%); line-height: 0; }
+.sv-timeline__lane-icon { width: .7rem; height: .7rem; fill: currentColor; }
+.sv-timeline__lane-axis { position: relative; height: 1.3rem; }
+/* Maps: the whole map scaled to the space left. A tile grid is sized by its
+   container's height as well as its width, so every tile fits. */
+.sv-chart__preview .sv-geo-map__svg { flex: 1 1 0; min-height: 0; width: 100%; height: 100%; max-height: none; }
+.sv-tile-map__fit { flex: 1; min-height: 0; container-type: size; }
+.sv-tile-map__fit > .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; gap: 2px; }
+.sv-tile-map__fit .sv-tile-map__tile { padding: 0; align-items: center; justify-content: center; }
+.sv-tile-map__fit .sv-tile-map__code { font-size: .55rem; }
+/* The world grid fits the slide like any other: no minimum tile size, no sideways scroll. */
+.sv-tile-map__fit > .sv-tile-map__grid[data-cols="dense"] { min-width: 0; margin: 0 auto; gap: 1px; }
+/* A category legend's long labels would otherwise take the map's whole slide on a phone. */
+.sv-chart__preview .sv-map-legend__title { margin: 0 0 .1rem; font-size: .66rem; }
+.sv-chart__preview .sv-category-legend__list { gap: .1rem .7rem; font-size: .66rem; line-height: 1.2; }
+.sv-chart__preview .sv-category-legend__swatch { width: 1.2rem; height: .8rem; }
+/* Scatter plots: the short, wide plot, as for a series. */
+.sv-chart__preview .sv-scatter__x-label { margin: 0; text-align: center; }
+/* Key figures: the numbers a little smaller, so two to four fit one slide. */
+.sv-chart__preview .sv-key-figures__frame { flex: 1; display: flex; align-items: center; }
+.sv-chart__preview .sv-key-figures__list { width: 100%; }
+.sv-chart__preview .sv-key-figures__value { font-size: 2rem; }
+/* A phone's slide is two-thirds the height of a desktop's: everything that spends height on a row spends less. */
+@media (max-width: 47.5rem) {
+  .sv-chart__preview .sv-bars[data-layout="grouped"]:has(.sv-bars__value[data-stacked]) .sv-bars__track { height: calc(.6rem * var(--sv-bars-count, 2)); }
+  /* A lower bound's arrow runs past its bar's end, which may be the track's. */
+  :is(.sv-chart__preview, [data-panel-chart]) .sv-bars:has(.sv-bars__bar[data-qualification="lower-bound"]) .sv-bars__track { margin-right: .6rem; }
+  /* Two columns of panels whose names stay readable; a panel's latest figure sits beside its name, and the status line gives the date. */
+  .sv-multiples__grid[data-preview] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto; gap: .15rem .8rem; padding: 0 .25rem .25rem 0; }
+  .sv-multiples__grid[data-preview] .sv-multiples__panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: .3rem; align-items: baseline; }
+  .sv-multiples__grid[data-preview] .sv-multiples__latest { margin: 0; }
+  .sv-multiples__grid[data-preview] .sv-multiples__latest-period { display: none; }
+  .sv-multiples__grid[data-preview] .sv-multiples__plot { grid-column: 1 / -1; min-height: 0; height: 1rem; }
+  .sv-chart[data-preview] .sv-chart__preview > .sv-chart__legend { margin-bottom: .25rem; font-size: .66rem; gap: 0 .7rem; line-height: 1.25; }
+  .sv-chart__preview .sv-composition__head { margin-bottom: .1rem; font-size: .75rem; }
+  .sv-chart__preview .sv-composition__bar { height: 1.3rem; }
+  .sv-chart__preview .sv-composition__rows[data-compact] .sv-composition__bar { height: .85rem; }
+  .sv-chart__preview .sv-composition__rows[data-dense] .sv-composition__bar { height: .5rem; }
+  .sv-chart__preview .sv-periods[data-compact] { --sv-periods-label: 5.5rem; }
+  .sv-chart__preview .sv-periods__track { height: .8rem; }
+  .sv-chart__preview .sv-periods[data-compact] .sv-periods__track { height: .5rem; }
+  .sv-chart__preview .sv-key-figures__list { gap: .6rem; margin: 0; }
+  .sv-chart__preview .sv-key-figures__item { padding-top: .4rem; }
+  .sv-chart__preview .sv-key-figures__value { margin-bottom: .15rem; font-size: 1.6rem; }
+  .sv-chart__preview .sv-key-figures__label { font-size: .85rem; line-height: 1.3; }
+  /* A map keeps a readable size however long its key: the step grows instead. */
+  .sv-tile-map__fit { flex: 1 0 11rem; }
+  .sv-chart__preview .sv-geo-map__svg { min-height: 11rem; }
+}
+
 /* A chart's silhouette on a collapsed home-page row: decoration only. */
 .sv-thumb { display: block; width: 100%; height: 100%; }
 .sv-thumb__column { fill: var(--sv-series-1); opacity: .35; }
 .sv-thumb__column[data-highlight] { fill: var(--accent); opacity: 1; }
+/* A published range runs on past its bar to the high end. */
+.sv-thumb__whisker { stroke: var(--ink-3); stroke-width: 1.5; }
+.sv-thumb__area { opacity: .8; }
+.sv-thumb__area[data-missing] { fill: var(--rule); }
+.sv-thumb__rule { stroke: var(--ink-4); stroke-width: 1; }

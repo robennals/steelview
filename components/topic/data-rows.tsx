@@ -1,7 +1,12 @@
+import type { ReactNode } from 'react';
 import type { Fact } from '@/lib/content/types';
+import { anchorFor } from '@/lib/content/types';
+import { slideGroup } from '@/lib/content/preview';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { ChartAbout } from '@/components/report/chart-about';
 import { ChartThumb } from './chart-thumb';
+import { DataStillNeededList } from './data-still-needed';
 import { PanelHost } from './explore-panels';
 import { ObservationBar, ObservationStep } from './observation-bar';
 import { ThumbStrip } from './thumb-strip';
@@ -12,19 +17,52 @@ import { Walkthrough } from './walkthrough';
 /** The most chart silhouettes that fit on a closed row's line at the page's full width. */
 const THUMBS = 7;
 
-type ChartStepProps = { step: DataStep; number: number };
+/** A step's miniature: its chart, or for the step without one a question mark. */
+function StepThumb({ fact, step }: { fact: Fact; step: DataStep }) {
+  return step.chart
+    ? <ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} />
+    : <span className="sv-walk__no-chart" aria-hidden="true">?</span>;
+}
 
-/** One chart, stepped through observation by observation, each picking out its part of the chart. */
-function ChartStep({ step, number }: ChartStepProps) {
+type UnknownsStepProps = { fact: Fact; step: DataStep; addressed: boolean };
+
+/** A report's last slide: what it cannot yet say, and why that matters. */
+function UnknownsStep({ fact, step, addressed }: UnknownsStepProps) {
   return (
     <div className="sv-walk__step" data-chart>
+      {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed ? anchor : undefined} data-chart-anchor={anchor} />)}
       <div className="sv-walk__chart">
-        <ObservationStep observations={step.observations}>
+        <div className="sv-slide">
+          <h3 className="sv-graph-heading">{step.label}</h3>
+          <DataStillNeededList fact={fact} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type ChartStepProps = { step: DataStep; number: number; addressed: boolean };
+
+/**
+ * One chart, stepped through observation by observation, each picking out its
+ * part of the chart. Script finds its addresses by `data-chart-anchor`;
+ * `addressed`, on a report's own page, makes them real ids so they work without
+ * it, except those the chart itself carries.
+ */
+function ChartStep({ step, number, addressed }: ChartStepProps) {
+  const slide = step.chart;
+  if (!slide) return null;
+  const { fact, chart } = slide;
+  const drawn = [`${fact.id}--chart-${chart}`, `${fact.id}--chart-${slideGroup(fact, slide)}`];
+  return (
+    <div className="sv-walk__step" data-chart>
+      {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed && !drawn.includes(anchor) ? anchor : undefined} data-chart-anchor={anchor} />)}
+      <div className="sv-walk__chart">
+        <ObservationStep observations={step.observations} more={step.more} addressed={addressed}>
           <div className="sv-slide">
             <LazyChart index={number - 1}>
-              {step.observations.length > 0
-                ? <ObservationBar />
-                : <p className="sv-walk__prose prose-body">{step.description}</p>}
+              <ChartAbout description={step.description} />
+              <ObservationBar />
             </LazyChart>
           </div>
         </ObservationStep>
@@ -33,25 +71,34 @@ function ChartStep({ step, number }: ChartStepProps) {
   );
 }
 
-type DataPanelProps = { slug: string; fact: Fact; steps: DataStep[] };
+type DataPanelProps = {
+  slug: string;
+  fact: Fact;
+  steps: DataStep[];
+  /** The charts, already drawn, on a report's own page. Otherwise they load as the row opens. */
+  charts?: ReactNode[];
+};
 
 /**
  * A data collection's charts and observations: the body of its row on the
- * topic page, which a viewpoint's "Explore this data" lifts into a sheet.
+ * topic page, which a viewpoint's "Explore this data" lifts into a sheet, and
+ * the top of its report's own page.
  */
-function DataPanel({ slug, fact, steps }: DataPanelProps) {
+export function DataPanel({ slug, fact, steps, charts }: DataPanelProps) {
   const title = fact.title ?? fact.claim;
   return (
-    <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)}>
+    <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)} drawn={charts}>
       <PanelHost fact={fact.id} title={title}>
         <Walkthrough
           name={title}
-          headings={steps.map(s => s.chart.label)}
+          headings={steps.map(s => s.label)}
           noun="Chart"
           endLabel="Last chart"
-          thumbs={steps.map(s => <ChartThumb key={s.chart.href} fact={fact} chart={s.chart.chart} reading={s.chart.reading} />)}
+          thumbs={steps.map(s => <StepThumb key={s.label} fact={fact} step={s} />)}
         >
-          {steps.map((step, i) => <ChartStep key={i} step={step} number={i + 1} />)}
+          {steps.map((step, i) => step.unknowns
+            ? <UnknownsStep key={i} fact={fact} step={step} addressed={charts !== undefined} />
+            : <ChartStep key={i} step={step} number={i + 1} addressed={charts !== undefined} />)}
         </Walkthrough>
       </PanelHost>
     </LazyCharts>
@@ -77,6 +124,7 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
           <TopicRow
             key={fact.id}
             slug={fact.id}
+            anchor={anchorFor('fact', fact.id)}
             className="sv-row--walk sv-row--data"
             title={title}
             subtitle={fact.title ? fact.claim : ''}
@@ -87,8 +135,8 @@ export function DataRows({ slug, facts, walkthroughs }: DataRowsProps) {
                 thumbs={steps.slice(0, THUMBS).map((step, i) => (
                   <li key={i}>
                     <RowThumb step={i}>
-                      <span className="sv-row__thumb" aria-hidden="true"><ChartThumb fact={fact} chart={step.chart.chart} reading={step.chart.reading} /></span>
-                      <span className="sv-walk__thumb-label">{i + 1}. {step.chart.label}</span>
+                      <span className="sv-row__thumb" aria-hidden="true"><StepThumb fact={fact} step={step} /></span>
+                      <span className="sv-walk__thumb-label">{i + 1}. {step.label}</span>
                     </RowThumb>
                   </li>
                 ))}

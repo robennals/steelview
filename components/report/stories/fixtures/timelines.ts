@@ -61,14 +61,14 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'Introduced with the post-Brexit system: the skills threshold fell from degree level (RQF 6) to A-level equivalent (RQF 3), until it was raised back on 22 July 2025.',
     category: 'work',
     significance: 'major',
-    source: HOME_OFFICE_WHITE_PAPER,
+    sources: [HOME_OFFICE_WHITE_PAPER],
   },
   {
     date: '2020-08',
     title: 'Health and Care Worker visa introduced',
     category: 'work',
     significance: 'minor',
-    source: HOME_OFFICE_WHITE_PAPER,
+    sources: [HOME_OFFICE_WHITE_PAPER],
   },
   {
     date: '2021-01',
@@ -76,7 +76,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'EU net migration had already begun to fall after the 2016 referendum.',
     category: 'eu',
     significance: 'major',
-    source: MIGRATION_OBSERVATORY_NET,
+    sources: [MIGRATION_OBSERVATORY_NET],
   },
   {
     date: '2021',
@@ -84,7 +84,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'Lets international graduates stay to work after their course.',
     category: 'study',
     significance: 'minor',
-    source: HOME_OFFICE_MIGRANT_JOURNEY,
+    sources: [HOME_OFFICE_MIGRANT_JOURNEY],
   },
   {
     date: '2022-02',
@@ -92,7 +92,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'The Health and Care Worker route was expanded to the social care workforce, most of whose roles are below degree level.',
     category: 'work',
     significance: 'major',
-    source: HOME_OFFICE_WHITE_PAPER,
+    sources: [HOME_OFFICE_WHITE_PAPER],
   },
   {
     date: '2022',
@@ -100,7 +100,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'After Russia’s full-scale invasion. ONS estimates 135,000 Ukrainian arrivals in 2022.',
     category: 'humanitarian',
     significance: 'major',
-    source: ONS_UKRAINE,
+    sources: [ONS_UKRAINE],
   },
   {
     date: '2022-04',
@@ -108,7 +108,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'Date not yet carried in Steelview’s content.',
     category: 'asylum',
     significance: 'major',
-    source: ILLUSTRATIVE,
+    sources: [ILLUSTRATIVE],
   },
   {
     date: '2023-06',
@@ -116,7 +116,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'People awaiting an initial decision; 49,000 by the end of March 2026.',
     category: 'asylum',
     significance: 'minor',
-    source: HOME_OFFICE_SUMMARY,
+    sources: [HOME_OFFICE_SUMMARY],
   },
   {
     date: '2023-07',
@@ -124,7 +124,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'Date not yet carried in Steelview’s content.',
     category: 'asylum',
     significance: 'major',
-    source: ILLUSTRATIVE,
+    sources: [ILLUSTRATIVE],
   },
   {
     date: '2024-01',
@@ -132,7 +132,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'For courses starting from January 2024. Dependants per student fell from 0.31 in 2023 to 0.05 in 2025.',
     category: 'study',
     significance: 'major',
-    source: HOME_OFFICE_STUDY,
+    sources: [HOME_OFFICE_STUDY],
   },
   {
     date: '2024',
@@ -140,7 +140,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'From May 2024 to January 2025, 48% of skilled-worker entry clearance visas were still for occupations below degree level.',
     category: 'work',
     significance: 'minor',
-    source: HOME_OFFICE_TECHNICAL_ANNEX,
+    sources: [HOME_OFFICE_TECHNICAL_ANNEX],
   },
   {
     date: '2024-07',
@@ -148,14 +148,14 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'Date not yet carried in Steelview’s content.',
     category: 'asylum',
     significance: 'major',
-    source: ILLUSTRATIVE,
+    sources: [ILLUSTRATIVE],
   },
   {
     date: '2025-05-12',
     title: 'Immigration white paper published',
     category: 'work',
     significance: 'minor',
-    source: HOME_OFFICE_WHITE_PAPER,
+    sources: [HOME_OFFICE_WHITE_PAPER],
   },
   {
     date: '2025-07-22',
@@ -163,7 +163,7 @@ export const POLICY_MILESTONES: TimelineEvent[] = [
     description: 'Ends the 2020 relaxation to RQF 3, citing visa growth and exploitation of overseas recruits.',
     category: 'work',
     significance: 'major',
-    source: MAC_SALARY_REVIEW,
+    sources: [MAC_SALARY_REVIEW],
   },
 ];
 
@@ -218,8 +218,8 @@ export const ROUTE_PERIODS: PeriodRow[] = [
 ];
 
 export const ROUTE_EVENTS: StripEvent[] = [
-  { date: '2022', label: 'Ukraine humanitarian routes open', source: ONS_UKRAINE },
-  { date: '2023-06', label: 'Asylum backlog peaks at 175,000 people', source: HOME_OFFICE_SUMMARY },
+  { date: '2022', label: 'Ukraine humanitarian routes open', sources: [ONS_UKRAINE] },
+  { date: '2023-06', label: 'Asylum backlog peaks at 175,000 people', sources: [HOME_OFFICE_SUMMARY] },
 ];
 
 /** ILLUSTRATIVE: dates the content does not yet carry, to show a sparse chart with short spans. */
@@ -237,11 +237,11 @@ export const GOVERNMENT_PERIODS_ILLUSTRATIVE: PeriodRow[] = [
 
 /** Asylum-policy events for the EventStrip demo; mixed sourced and illustrative, each one labelled. */
 export const ASYLUM_EVENTS: StripEvent[] = [
-  { date: '2002', label: 'Previous peak: 103,081 claims', source: { label: 'Home Office', href: 'https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-claim-asylum-in-the-uk' } },
-  { date: '2022-04', label: 'Rwanda asylum partnership announced', source: ILLUSTRATIVE },
-  { date: '2023-06', label: 'Asylum backlog peaks at 175,000 people', source: HOME_OFFICE_SUMMARY },
-  { date: '2023-07', label: 'Illegal Migration Act passed', source: ILLUSTRATIVE },
-  { date: '2024-07', label: 'Rwanda scheme abandoned', source: ILLUSTRATIVE },
+  { date: '2002', label: 'Previous peak: 103,081 claims', sources: [{ label: 'Home Office', href: 'https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-claim-asylum-in-the-uk' }] },
+  { date: '2022-04', label: 'Rwanda asylum partnership announced', sources: [ILLUSTRATIVE] },
+  { date: '2023-06', label: 'Asylum backlog peaks at 175,000 people', sources: [HOME_OFFICE_SUMMARY] },
+  { date: '2023-07', label: 'Illegal Migration Act passed', sources: [ILLUSTRATIVE] },
+  { date: '2024-07', label: 'Rwanda scheme abandoned', sources: [ILLUSTRATIVE] },
 ];
 
 const ASYLUM_CLAIMS: Array<[string, number]> = [

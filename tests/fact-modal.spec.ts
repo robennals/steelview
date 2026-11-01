@@ -1,10 +1,10 @@
 import type { Page, Request } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { citationTo, cruxCitation, openCollection } from './topic-rows';
+import { citationTo, viewpointCitation, openCollection } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the report
 // `immigration-against-the-long-run`, the related reports it holds, and the
-// crux citing `work-and-study-routes`.
+// viewpoint citing `work-and-study-routes`.
 
 const TOPIC = '/topics/uk-immigration';
 const HEADLINE = 'immigration-against-the-long-run';
@@ -30,7 +30,7 @@ test('a citation opens the report in the panel', async ({ page }) => {
 // The whole head of a row toggles it, not just its title: a click at the
 // bottom edge, away from any text, must open it.
 test('the whole row head opens the row, not just the title', async ({ page }) => {
-  await page.goto(TOPIC);
+  await page.goto(`${TOPIC}#data`);
   const row = page.locator('.sv-row--data').first();
   await row.scrollIntoViewIfNeeded();
   const box = await row.locator('.sv-row__head').boundingBox();
@@ -41,9 +41,9 @@ test('the whole row head opens the row, not just the title', async ({ page }) =>
   await expect(row.locator('.sv-row__toggle')).toHaveAttribute('aria-expanded', 'true');
 });
 
-test('a citation in a crux opens the same panel', async ({ page }) => {
+test('a citation in a viewpoint opens the same panel', async ({ page }) => {
   await page.goto(TOPIC);
-  await (await cruxCitation(page, CARE)).click();
+  await (await viewpointCitation(page, CARE)).click();
 
   await expect(page).toHaveURL(new RegExp(`${factUrl(CARE)}#${CARE}--`));
   await expect(page.locator(dialog)).toBeVisible();
@@ -154,13 +154,13 @@ test('the page behind the panel is scroll-locked', async ({ page }) => {
 // Everything above is presentation layered on markup that works on its own.
 // With JavaScript off there is no panel and nothing is intercepted: a fact row
 // and a viewpoint's fact chip are ordinary links, and following either one
-// loads that fact's page — the whole fact, at its own address.
+// loads that report's own page — the whole report, at its own address.
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
   test('a citation is an ordinary link to the fact page', async ({ page }) => {
     await page.goto(TOPIC);
-    const link = await cruxCitation(page, CARE);
+    const link = await viewpointCitation(page, CARE);
     await expect(link).toHaveAttribute('href', new RegExp(`^${factUrl(CARE)}#${CARE}--`));
 
     await link.click();
@@ -171,10 +171,9 @@ test.describe('with JavaScript disabled', () => {
       'Work and Study Visas and the Care Workforce'
     );
     await expect(page.locator('.sv-chart').first()).toBeVisible();
-    await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
-    await page.locator('.sv-references > summary').click();
-    await page.locator('.sv-source-quote > summary').first().click();
-    await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeHidden();
+    await page.locator('.sv-chart__sources > summary').first().click();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeVisible();
   });
 });
 
@@ -221,7 +220,7 @@ test('facts open with the network offline and Forward restores the modal', async
   await expect(page.locator(`a[href^="${factUrl(HEADLINE)}"]:focus`)).toHaveCount(1);
 });
 
-test('Expand loads the standalone fact page', async ({ page }) => {
+test('Expand loads the report\'s own page', async ({ page }) => {
   await page.goto(TOPIC);
   await openCollection(page, HEADLINE);
   const expand = page.getByRole('link', { name: 'Expand', exact: true });

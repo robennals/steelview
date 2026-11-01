@@ -804,7 +804,9 @@ series:
       Ret_01: Returns from the UK, by type of return, year ending December 2004
       to year ending June 2026
     title: 'Returns summary tables, year ending June 2026 (Ret_01)'
-    url: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+    localFile: datasets/assets.publishing.service.gov.uk/returns-summary-jun-2026-tables.ods
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -953,7 +955,7 @@ series:
               value: 18354
 additionalSeries:
   - id: fno-asylum-dataset
-    title: 'Returns of foreign offenders and asylum-related returns, 2010–2025'
+    title: UK returns of foreign offenders and asylum-related returns, 2010–2025
     description: >-
       Returns of foreign national offenders (enforced, voluntary and port), and
       enforced plus voluntary returns of people who had claimed asylum at some
@@ -981,7 +983,9 @@ additionalSeries:
         Ret_02a: Returns of foreign national offenders from the UK, year ending
         December 2010 to year ending June 2026
       title: 'Returns summary tables, year ending June 2026 (Ret_02a and Ret_05)'
-      url: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+      localFile: datasets/assets.publishing.service.gov.uk/returns-summary-jun-2026-tables.ods
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -995,7 +999,9 @@ additionalSeries:
             Ret_05: Returns from the UK, by type of return, and asylum and
             non-asylum, year ending December 2010 to year ending June 2026
           title: 'Returns summary tables, year ending June 2026 (Ret_05)'
-          url: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+          url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+          fileUrl: https://assets.publishing.service.gov.uk/media/6a85c576b0504df9f2c89805/returns-summary-jun-2026-tables.ods
+          localFile: datasets/assets.publishing.service.gov.uk/returns-summary-jun-2026-tables.ods
           publisher: Home Office
           date: '2026-08-27'
         lines:
@@ -1068,7 +1074,9 @@ additionalSeries:
               - period: '2025'
                 value: 12396
   - id: refused-cohorts
-    title: 'Refused and withdrawn asylum claims, and returns recorded, by year of claim, 2007–2025'
+    title: >-
+      Refused and withdrawn UK asylum claims, and returns recorded, by year of
+      claim, 2007–2025
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
       2026: how many were refused or withdrew at their latest outcome, and how
@@ -1091,7 +1099,9 @@ additionalSeries:
       stance: supports
       quote: 'Asy_D04: Outcome analysis of asylum claims, 2007-2025 - dataset'
       title: 'Outcome analysis of asylum claims detailed dataset, year ending June 2026 (Asy_D04)'
-      url: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1293,7 +1303,7 @@ additionalSeries:
               - period: '2025'
                 value: 7.8
   - id: detention-leavers-dataset
-    title: 'People leaving immigration detention, by outcome, 2010–2025'
+    title: People leaving UK immigration detention, by outcome, 2010–2025
     description: >-
       Every exit from immigration detention each year, by what happened next:
       returned from the UK, bailed (by the Home Secretary or an immigration
@@ -1319,7 +1329,9 @@ additionalSeries:
         by reason for leaving, year ending December 2010 to year ending June
         2026
       title: 'Immigration detention summary tables, year ending June 2026 (Det_04a)'
-      url: https://assets.publishing.service.gov.uk/media/6a85c45cb0504df9f2c89804/immigration-detention-summary-jun-2026-tables.ods
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c45cb0504df9f2c89804/immigration-detention-summary-jun-2026-tables.ods
+      localFile: datasets/assets.publishing.service.gov.uk/immigration-detention-summary-jun-2026-tables.ods
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1431,7 +1443,7 @@ additionalSeries:
               - period: '2025'
                 value: 759
   - id: fno-appeals-dataset
-    title: 'Foreign offenders’ appeals against deportation, 2008/09–2020/21'
+    title: Foreign offenders’ appeals against UK deportation, 2008/09–2020/21
     description: >-
       Appeals against deportation lodged by foreign national offenders in each
       financial year (labelled by the year it starts), how many were allowed at
@@ -1553,7 +1565,9 @@ additionalSeries:
               - period: '2020'
                 value: 44
   - id: fnos-community-dataset
-    title: 'Foreign offenders liable to deportation living in the community, 2012–2026'
+    title: >-
+      Foreign offenders liable to UK deportation living in the community,
+      2012–2026
     description: >-
       Foreign national offenders subject to deportation action who have
       finished their sentence and are living in the community rather than in
@@ -1583,7 +1597,9 @@ additionalSeries:
         FNO_08: FNOs subject to deportation action living in the community and
         the length of time since the end of their custodial sentence
       title: 'Immigration Enforcement transparency data, Q2 2026 (FNO_08 and FNO_08a)'
-      url: https://assets.publishing.service.gov.uk/media/6a900e74df4246cf45e465cd/immigration-enforcement-data-apr-to-jun-2026.ods
+      url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a900e74df4246cf45e465cd/immigration-enforcement-data-apr-to-jun-2026.ods
+      localFile: datasets/assets.publishing.service.gov.uk/immigration-enforcement-data-apr-to-jun-2026.ods
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1794,7 +1810,7 @@ additionalSeries:
                 value: 314
 comparisons:
   - id: detention-issues
-    title: Issues raised during detention before removal, 2019
+    title: Issues raised during UK immigration detention before removal, 2019
     description: >-
       Share of detentions in 2019 in which each issue was raised, for people
       detained in the UK after immigration offences (not foreign offenders, not
@@ -1837,7 +1853,8 @@ comparisons:
       - label: Appeal
         value: 3
   - id: detention-issues-return
-    title: Share of detentions ending in return, by issue raised, 2019
+    title: >-
+      Share of UK immigration detentions ending in return, by issue raised, 2019
     description: >-
       For the same 2019 detentions, the share that ended with the person
       returned from the UK, by issue raised, against detentions in which none
@@ -1873,7 +1890,9 @@ comparisons:
       - label: Modern slavery referral
         value: 1
   - id: charter-failures
-    title: Why foreign offenders were not removed on two Jamaica charter flights, 2016–2017
+    title: >-
+      Why foreign offenders were not removed from the UK on two Jamaica charter
+      flights, 2016–2017
     description: >-
       The most common reasons removals failed on the September 2016 and March
       2017 charter flights to Jamaica, which planned 307 removals between them
@@ -1887,15 +1906,19 @@ comparisons:
       derived. Some people from the first flight were planned again for the
       second and may be counted twice.
     items:
-      - label: Fresh asylum claim after removal directions set
+      - label: "Fresh asylum claim"
+        detail: "After removal directions set"
         value: 55
-      - label: Judicial review lodged after removal directions set
+      - label: "Judicial review lodged"
+        detail: "After removal directions set"
         value: 35
-      - label: Further representations; removal deferred
+      - label: "Further representations"
+        detail: "Removal deferred"
         value: 26
       - label: Not found at enforcement visit
         value: 20
-      - label: No enforcement visit, for lack of resources
+      - label: "No enforcement visit"
+        detail: "For lack of resources"
         value: 13
   - id: removal-scale
     title: Removals a year — the UK record, a proposed target, and the EU and US
@@ -1919,7 +1942,8 @@ comparisons:
       different legal categories in different populations: the chart shows
       the operational scale each system handles, not a rate per resident.
     items:
-      - label: US deportations after interior arrest (yearly rate)
+      - label: "US deportations after interior arrest"
+        detail: "Yearly rate"
         value: 200000
       - label: Proposed UK target ("Removals Force")
         value: 150000
@@ -2003,7 +2027,7 @@ figures:
     id: france-pilot-dataset
   - kind: estimateRange
     id: unlawful-population
-    title: Estimates of the population without lawful status, 2017
+    title: Estimates of the UK population without lawful status, 2017
     description: The two latest estimates, both for 2017 and both made by the residual method. The Home Office makes no official estimate.
     valueLabel: People without lawful status
     nullValue: null
@@ -2014,7 +2038,9 @@ figures:
       - { label: 'Pew, revised March 2025', low: 700000, high: 900000, source: 69 }
   - kind: dataTable
     id: echr-share
-    title: What the nearest measures of the ECHR's weight show, and leave out
+    title: >-
+      What the nearest measures of the ECHR's weight in UK removals show, and
+      leave out
     description: No published source counts removals stopped by the ECHR. These are the nearest measures, each of which answers a narrower question.
     caption: One card per measure
     layout: cards
@@ -2068,10 +2094,6 @@ observationMarks:
   other-obstacles: {rows: ["Human-rights applications raised in detention, 2019", "Foreign offenders' appeals won on human-rights grounds alone"]}
   observatory-cohort-figures: {lines: ["Returns as a share of refused", "Returns as a share of refused and withdrawn"], from: "2010", to: "2022"}
 ---
-Removals from the UK fell through the 2010s, collapsed during the pandemic and have risen each year since 2021, but enforced returns in the year to June 2026 (9,669) were less than half their 2004 level. [2](#source-removals-and-what-stops-them-2) [1](#source-removals-and-what-stops-them-1) Of the 40,605 returns that year, 76% were voluntary. Asylum-related returns reached 12,568, the highest in a series starting in 2010. [5](#source-removals-and-what-stops-them-5)
-
-No source measures how many failed removals the ECHR blocks. The Home Office says it does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) What exists are proxies: issues raised in detention, cancelled removal directions, failed charter-flight seats, and foreign offenders' appeals won on human-rights grounds. Each is shown below with its limits.
-
 ## Observations {#removals-and-what-stops-them--observations-returns}
 
 ### Returns fell for a decade, then recovered after 2021 {#removals-and-what-stops-them--returns-fell-then-recovered}
@@ -2235,3 +2257,11 @@ No published source counts removals stopped by the ECHR. The Home Office does no
 ### Other obstacles are documented alongside the legal ones {#removals-and-what-stops-them--other-obstacles}
 
 The National Audit Office named conflict at home, missing identity documents and countries without return agreements alongside human-rights grounds. [35](#source-removals-and-what-stops-them-35) A fifth of failures on the Jamaica charters were people the Home Office did not find or did not visit. [39](#source-removals-and-what-stops-them-39)
+
+## More {#removals-and-what-stops-them--more-returns}
+
+Of the 40,605 returns in the year to June 2026, 76% were voluntary. [5](#source-removals-and-what-stops-them-5)
+
+## More {#removals-and-what-stops-them--more-echr-share}
+
+No source measures how many failed removals the ECHR blocks. The Home Office says it does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) What exists are proxies: issues raised in detention, cancelled removal directions, failed charter-flight seats, and foreign offenders' appeals won on human-rights grounds. Each is shown in this report with its limits.

@@ -97,7 +97,6 @@ function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes, pane
         props['data-panel-link'] = '';
         props['data-panel-fact'] = panel.fact;
         props['data-panel-observation'] = panel.observation;
-        props['data-panel-slide'] = panel.slide;
       } else {
         props['data-fact-id'] = factId;
       }
@@ -134,8 +133,6 @@ export type PanelTarget = {
   fact: string;
   /** The cited section, as an element id: `<fact>--<section>`. It is the page's address while the panel is open. */
   observation: string;
-  /** The index in the panel of the chart the section belongs to. */
-  slide: number;
 };
 
 type RenderOptions = {

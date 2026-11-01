@@ -648,7 +648,7 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-14'
 series:
-  title: 'Asylum-seeker boat arrivals in Australia, 1976-2016'
+  title: 'Australia: asylum-seeker boat arrivals, 1976-2016'
   description: >-
     People arriving in Australia by boat in each calendar year, as compiled by
     the Australian Parliamentary Library. Offshore processing restarted in
@@ -784,7 +784,8 @@ series:
               value: 0
 additionalSeries:
   - id: australia-interceptions
-    title: 'People on boats intercepted after September 2013, by outcome'
+    title: >-
+      Australia: people on boats intercepted after September 2013, by outcome
     description: >-
       People (excluding crew) on boats that tried to reach Australia after
       Operation Sovereign Borders began, split into those brought to Australia
@@ -849,7 +850,7 @@ additionalSeries:
               - period: '2019'
                 value: 33
   - id: australia-offshore-cost
-    title: 'Cost of offshore processing, Australia, 2012-13 to 2024-25'
+    title: 'Australia: cost of offshore processing, 2012-13 to 2024-25'
     description: >-
       Estimated actual annual cost of offshore management (Nauru and Papua New
       Guinea), in millions of Australian dollars, by financial year ending June.
@@ -916,7 +917,8 @@ additionalSeries:
               - period: '2025'
                 value: 575.2
   - id: denmark-comparators
-    title: 'First-time asylum applicants in Denmark, Sweden and Germany, 2008-2025'
+    title: >-
+      Denmark, Sweden and Germany: first-time asylum applicants, 2008-2025
     description: >-
       Non-EU first-time asylum applicants per 10,000 residents, and in people,
       for Denmark and the two neighbours it is most often compared with. Denmark
@@ -935,7 +937,8 @@ additionalSeries:
         Observations rather than drawn as a line (14.9 per 10,000 in 2025, 27.5
         in 2015). The UK left Eurostat's series after 2019. Sweden and Germany
         are shown as neighbours with complete data for the whole period;
-        every EU+ country is in the 2025 comparison below.
+        every EU+ country is ranked per head for 2025 in the report on asylum
+        claims and decisions.
     source:
       stance: complicates
       quote: >-
@@ -1215,7 +1218,9 @@ additionalSeries:
               - period: '2025'
                 value: 113170
   - id: grant-rates
-    title: 'Share of first-instance asylum decisions that were positive, 2008-2025'
+    title: >-
+      Denmark, Sweden and Germany: share of first-instance asylum decisions that
+      were positive, 2008-2025
     description: >-
       Positive first-instance decisions (refugee status, subsidiary protection
       or humanitarian status) as a share of all first-instance decisions, for
@@ -1373,7 +1378,7 @@ additionalSeries:
                 value: 32
 comparisons:
   - id: australia-outcomes
-    title: What happened to the people Australia sent offshore
+    title: 'Australia: what happened to the people it sent offshore'
     description: >-
       The 4,180 people transferred to Nauru or Papua New Guinea from August 2012
       to 2014, by where they were on 31 January 2021.
@@ -1389,7 +1394,8 @@ comparisons:
         value: 935
       - label: Resettled in a third country
         value: 921
-      - label: Still offshore (Nauru and Papua New Guinea)
+      - label: "Still offshore"
+        detail: "Nauru and Papua New Guinea"
         value: 263
       - label: Died
         value: 18
@@ -1415,7 +1421,8 @@ comparisons:
     items:
       - label: Payments to Rwanda
         value: 290000000
-      - label: 'Other fixed costs (IT, data systems, legal, staff)'
+      - label: "Other fixed costs"
+        detail: "IT, data systems, legal, staff"
         value: 280000000
       - label: Detention and reception centre investment
         value: 95000000
@@ -1428,88 +1435,6 @@ comparisons:
       They cover both the Rwanda partnership and the Illegal Migration Act,
       which the Home Office reports together; detention capacity and staff may
       have had other uses.
-  - id: eu-per-head-2025
-    title: First-time asylum applicants per head across the EU+, 2025
-    description: >-
-      Non-EU first-time asylum applicants per 10,000 residents in 2025, every EU
-      and EFTA country Eurostat reports. Denmark is highlighted; the EU27 figure
-      is 14.9.
-    unit: count
-    valueLabel: 'First-time applicants per 10,000 residents'
-    sources:
-      - 63
-      - 64
-    items:
-      - label: 'Greece'
-        value: 53.39
-      - label: 'Iceland'
-        value: 42.62
-      - label: 'Cyprus'
-        value: 28.84
-      - label: 'Spain'
-        value: 28.71
-      - label: 'Luxembourg'
-        value: 25.95
-      - label: 'Switzerland'
-        value: 25.73
-      - label: 'Ireland'
-        value: 23.85
-      - label: 'Belgium'
-        value: 23.14
-      - label: 'Italy'
-        value: 21.83
-      - label: 'Liechtenstein'
-        value: 19.57
-      - label: 'Slovenia'
-        value: 18.61
-      - label: 'France'
-        value: 16.89
-      - label: 'Austria'
-        value: 13.55
-      - label: 'Germany'
-        value: 13.54
-      - label: 'Netherlands'
-        value: 13.31
-      - label: 'Estonia'
-        value: 7.34
-      - label: 'Malta'
-        value: 7.05
-      - label: 'Latvia'
-        value: 6.93
-      - label: 'Norway'
-        value: 5.93
-      - label: 'Bulgaria'
-        value: 5.9
-      - label: 'Sweden'
-        value: 4.8
-      - label: 'Finland'
-        value: 3.47
-      - label: 'Denmark'
-        value: 3.06
-        highlight: true
-      - label: 'Poland'
-        value: 3.06
-      - label: 'Croatia'
-        value: 2.18
-      - label: 'Portugal'
-        value: 1.54
-      - label: 'Lithuania'
-        value: 1.14
-      - label: 'Czechia'
-        value: 0.85
-      - label: 'Romania'
-        value: 0.6
-      - label: 'Slovakia'
-        value: 0.24
-      - label: 'Hungary'
-        value: 0.11
-    note: >-
-      Eurostat migr_asyappctza (first-time applicants, non-EU citizens) divided
-      by Eurostat population on 1 January 2025 (demo_gind); the division is this
-      report's own, to two decimal places. Denmark (3.06) and Poland (3.06)
-      differ only in the third decimal place. The UK is not in Eurostat's data
-      after 2019; the Migration Observatory puts it at 15 per 10,000 in 2025,
-      counting all applicants rather than first-time ones.
 dataStillNeeded:
   - measure: 'Monthly Australian boat arrivals, July 2012 to December 2014'
     why: >-
@@ -1551,11 +1476,11 @@ figures:
     id: denmark-comparators
   - kind: series
     id: grant-rates
-  - kind: comparison
-    id: eu-per-head-2025
   - kind: dataTable
     id: residence-status
-    title: Temporary versus permanent status and refugees' employment
+    title: >-
+      Denmark, Germany and Sweden: temporary versus permanent status and
+      refugees' employment
     description: European reforms that made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes.
     caption: One card per reform or study
     layout: timeline
@@ -1583,7 +1508,7 @@ figures:
         finding: { value: 'Less take-up of Swedish language courses; no effect on employment, education or welfare receipt in the first year', sources: [41] }
   - kind: dataTable
     id: work-rights
-    title: Work rights for people waiting on a claim
+    title: European studies of work rights for people waiting on an asylum claim
     description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
     caption: One card per study
     layout: cards
@@ -1608,7 +1533,7 @@ figures:
         finding: { value: An extra year waiting for a decision meant a 20% lower employment rate later, sources: [46] }
   - kind: dataTable
     id: uk-2026
-    title: The UK's 2026 changes
+    title: The UK's 2026 changes to refugee protection
     description: The measures in the UK's new approach to refugee protection, who each applies to and how far each has gone.
     caption: One card per measure
     layout: cards
@@ -1679,7 +1604,7 @@ During the first phase of offshore processing, which still allowed eventual sett
 
 Operation Sovereign Borders began in September 2013, and the first recorded turnback was on 19 December 2013. Arrivals fell to 160 people in 2014 and none in 2015 or 2016. By October 2016, 740 people on 29 vessels had been returned to their country of departure since December 2013. [1](#source-deterrence-and-protection-policies-1) [2](#source-deterrence-and-protection-policies-2)
 
-The no-settlement rule (July 2013), the start of Operation Sovereign Borders (September 2013) and the first turnback (December 2013) all came in the same year, so annual figures alone cannot separate them. Monthly figures were not found (see Data still needed).
+The no-settlement rule (July 2013), the start of Operation Sovereign Borders (September 2013) and the first turnback (December 2013) all came in the same year, so annual figures alone cannot separate them. Monthly figures were not found (see What we don't know yet).
 
 ### Which measure caused the fall is disputed {#deterrence-and-protection-policies--australia-cause}
 
@@ -1747,6 +1672,10 @@ The National Audit Office did not judge value for money, because that rests on w
 
 Denmark had 1,835 first-time asylum applicants in 2025, 3.1 per 10,000 residents, against 14.9 across the EU27. The UK received 15 per 10,000 in 2025 on the Migration Observatory's count of all applicants. [33](#source-deterrence-and-protection-policies-33) [64](#source-deterrence-and-protection-policies-64) [35](#source-deterrence-and-protection-policies-35)
 
+### Denmark ranks 23rd of 31 EU+ countries per head {#deterrence-and-protection-policies--denmark-rank-2025}
+
+On first-time applicants per 10,000 residents in 2025, Denmark sits in the [bottom third of the 31 EU and EFTA countries](#fact-asylum-claims-and-decisions/chart-per-head-2025), below Sweden and well below Germany, which is close to the EU27 average. [63](#source-deterrence-and-protection-policies-63) [64](#source-deterrence-and-protection-policies-64)
+
 ### Denmark's 2016 fall was shared with Sweden, which also tightened {#deterrence-and-protection-policies--denmark-2016-fall-matched-sweden}
 
 Denmark's first-time applicants fell from 20,825 in 2015 to 6,055 in 2016, 29% of the year before. Sweden's fell further, from 156,115 to 22,335, 14% of the year before. Sweden also moved from permanent to temporary residence permits in 2016. The EU27 total in 2016 was still 96% of 2015 and fell sharply only in 2017, so the Danish and Swedish falls came about a year ahead of the wider European one. [33](#source-deterrence-and-protection-policies-33) [41](#source-deterrence-and-protection-policies-41)
@@ -1764,12 +1693,6 @@ The Home Secretary's March 2026 statement said Denmark had cut claims to a 40-ye
 ### Denmark grants protection at about the EU rate {#deterrence-and-protection-policies--denmark-grant-rate}
 
 In 2025, 36% of Denmark's first-instance decisions were positive, against 39% across the EU27. In 2016 the figures were 68% and 62%. Denmark's low intake is not explained by a lower share of positive decisions at first instance. [34](#source-deterrence-and-protection-policies-34)
-
-## Observations {#deterrence-and-protection-policies--observations-eu-per-head-2025}
-
-### Denmark ranks 23rd of 31 EU+ countries per head {#deterrence-and-protection-policies--denmark-rank-2025}
-
-On first-time applicants per 10,000 residents in 2025, Denmark sits in the bottom third of the 31 EU and EFTA countries, below Sweden and well below Germany, which is close to the EU27 average. [63](#source-deterrence-and-protection-policies-63) [64](#source-deterrence-and-protection-policies-64)
 
 ## Observations {#deterrence-and-protection-policies--observations-residence-status}
 
@@ -1797,7 +1720,7 @@ Studies across Europe, Germany and Switzerland find that delaying work or decisi
 
 ### Ministers argue earlier work rights would draw more crossings {#deterrence-and-protection-policies--uk-work-rule}
 
-In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see Data still needed). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
+In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see What we don't know yet). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
 
 ## Observations {#deterrence-and-protection-policies--observations-uk-2026}
 

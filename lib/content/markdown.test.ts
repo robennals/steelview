@@ -79,11 +79,11 @@ test('a citation with a data panel opens the panel', async () => {
   const html = await renderMarkdown(
     '[Panel](#fact-alpha/peak) and [no panel](#fact-beta/rise).',
     SLUG, [], {
-      panelCitation: (id, section) => id === 'alpha' ? { fact: id, observation: `${id}--${section}`, slide: 2 } : undefined,
+      panelCitation: (id, section) => id === 'alpha' ? { fact: id, observation: `${id}--${section}` } : undefined,
     },
   );
   assert.equal(html, '<p>'
-    + '<a href="/topics/example/facts/alpha#alpha--peak" class="sv-cite" data-panel-link="" data-panel-fact="alpha" data-panel-observation="alpha--peak" data-panel-slide="2">Panel</a> and '
+    + '<a href="/topics/example/facts/alpha#alpha--peak" class="sv-cite" data-panel-link="" data-panel-fact="alpha" data-panel-observation="alpha--peak">Panel</a> and '
     + '<a href="/topics/example/facts/beta#beta--rise" class="sv-cite" data-fact-id="beta">no panel</a>.</p>');
 });
 

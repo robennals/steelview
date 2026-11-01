@@ -96,7 +96,8 @@ the zod schema shape, it enforces and unit-tests these rules:
    `contests` source.
 6. Every viewpoint's `acknowledges` list is non-empty.
 7. Every crux `divides` at least two viewpoints and gives a position for
-   each one.
+   each one. A crux has a tension and no body, and stays within the limits in
+   `content/AUTHORING.md`.
 8. No orphan headline facts — each must appear in some viewpoint's
    `citesFacts`, `acknowledges`, or `setsAside`.
 9. A topic needs at least 1 fact and at least 2 viewpoints.
@@ -119,6 +120,10 @@ authoring guide: the fact-status rubric, how to phrase a claim and its body,
 the sourcing and time-series rules, what makes a viewpoint a steelman and
 how it is laid out and worded, the prose patterns to avoid, which rules the build enforces and which are
 editorial judgement, and a checklist to run before opening a PR.
+
+Data files behind our sources are kept outside this repo, because we don't hold
+the rights to many of them. [`content/SOURCE-FILES.md`](content/SOURCE-FILES.md)
+says where they are.
 
 Then add a new directory under `content/topics/`, following the structure
 above, and run `pnpm check:integrity` and `pnpm check:figures` before

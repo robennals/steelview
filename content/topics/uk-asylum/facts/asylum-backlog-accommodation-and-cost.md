@@ -64,8 +64,9 @@ sources:
       Tribunals Statistics Quarterly, April to June 2026, main tables: Table
       FIA_4, First-tier Tribunal (Immigration and Asylum Chamber) total open
       caseload by case type (column headings and the Q1 2026/27 row)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
     publisher: Ministry of Justice
     date: '2026-09-10'
   - stance: complicates
@@ -543,8 +544,9 @@ sources:
       from 2015/16 due to a change in reporting system.
     title: >-
       Tribunals Statistics Quarterly, April to June 2026, main tables: Notes
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+    fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+    localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
     publisher: Ministry of Justice
     date: '2026-09-10'
   - stance: complicates
@@ -570,7 +572,7 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: 'Waiting for a first decision, and waiting for an appeal, 2015-2026'
+  title: People waiting for a UK asylum decision or appeal, 2015-2026
   description: >-
     Quarter-end counts of people waiting for an initial Home Office decision on
     an asylum claim, and of asylum and protection appeals open at the
@@ -615,8 +617,9 @@ series:
     title: >-
       Asylum claims awaiting a decision detailed datasets, year ending June
       2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c2bcb0504df9f2c897ff/asylum-claims-awaiting-decision-datasets-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2bcb0504df9f2c897ff/asylum-claims-awaiting-decision-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-awaiting-decision-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -637,8 +640,9 @@ series:
         title: >-
           Tribunals Statistics Quarterly, April to June 2026, main tables:
           Table FIA_4
-        url: >-
-          https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+        url: https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-april-to-june-2026
+        fileUrl: https://assets.publishing.service.gov.uk/media/6ad7731e8ef5e8a9fc8ed612/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
+        localFile: datasets/assets.publishing.service.gov.uk/Tribunals_Statistics_Quarterly_Accessible_Main_Tables_Q1_2026_27.ods
         publisher: Ministry of Justice
         date: '2026-09-10'
       lines:
@@ -882,8 +886,9 @@ additionalSeries:
       title: >-
         Asylum seekers in receipt of support detailed datasets, year ending
         June 2026
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1199,7 +1204,7 @@ additionalSeries:
               - period: '2026-06'
                 value: 4204
   - id: hotel-breakdown
-    title: 'Where supported asylum seekers live, including hotels, 2022-2026'
+    title: Where people on UK asylum support live, including hotels, 2022-2026
     description: >-
       Quarter-end counts of people on Home Office asylum support by
       accommodation type, December 2022 (when hotels were first counted
@@ -1225,8 +1230,9 @@ additionalSeries:
       title: >-
         Asylum seekers in receipt of support detailed datasets, year ending
         June 2026
-      url: >-
-        https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2f1c9205b515d421eec/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/asylum-seekers-receipt-support-datasets-jun-2026.xlsx
       publisher: Home Office
       date: '2026-08-27'
     readings:
@@ -1395,74 +1401,6 @@ comparisons:
       Home Office's own accounts use a wider budget line that includes
       resettlement (next chart), so their totals are higher and should not be
       mixed with these.
-  - id: asylum-budget-line
-    title: The asylum budget line within the Home Office's day-to-day budget
-    description: >-
-      Home Office Resource DEL outturn, 2022-23 to 2025-26, and plans to
-      2028-29, split into the asylum business group and everything else. Plans
-      are marked.
-    unit: pounds
-    valueLabel: Resource DEL (cash)
-    sources:
-      - 28
-      - 29
-    groups:
-      - Asylum business group
-      - Rest of the Home Office, net of visa and passport income
-    groupLabel: part of the budget
-    allGroupsLabel: Total Resource DEL
-    defaultGroup: 0
-    items:
-      - label: 2022-23
-        value: 17005341000
-        values:
-          - 4498823000
-          - 12506518000
-      - label: 2023-24
-        value: 18856370000
-        values:
-          - 5424708000
-          - 13431662000
-      - label: 2024-25
-        value: 18149688000
-        values:
-          - 4512567000
-          - 13637121000
-      - label: 2025-26
-        value: 17919340000
-        values:
-          - 4181193000
-          - 13738147000
-      - label: 2026-27 (plan)
-        value: 19528445000
-        values:
-          - 4116034000
-          - 15412411000
-      - label: 2027-28 (plan)
-        value: 19736000000
-        values:
-          - 3795700000
-          - 15940300000
-      - label: 2028-29 (plan)
-        value: 19888500000
-        values:
-          - 3621700000
-          - 16266800000
-    note: >-
-      From the core table of the Home Office Annual Report and Accounts
-      2025-26, in £ thousands, multiplied up here. The asylum line is the
-      business group that held asylum support in each year, and its name and
-      boundary change: "Asylum and Protection" (2022-23), "Asylum Support,
-      Resettlement and Accommodation" (2023-24 to 2025-26) and "Asylum Group"
-      (plans). It includes resettlement, such as Afghan resettlement, so it is
-      larger than the NAO's asylum-support figure. 2021-22 is omitted because
-      the table shows no separate asylum group that year. "Rest of the Home
-      Office" is the total minus the asylum line; the total is net of visa and
-      passport fee income, which the table records as a negative line, so the
-      asylum line's share of gross spending is smaller than its share shown
-      here. The accounts say plans are higher partly because "Higher Net
-      Resource DEL in the SR years is due to the exclusion of Immigration
-      Health Surcharge."
   - id: system-costs-2024-25
     title: What asylum cost the Home Office and Ministry of Justice in 2024-25
     description: >-
@@ -1492,28 +1430,6 @@ comparisons:
       the NAO lists some further Ministry of Justice costs, such as legal aid,
       outside the figure. "Detention and removals" covers detention beds used
       for asylum and assisted voluntary returns only.
-  - id: hotels-share-of-people-and-cost
-    title: Hotels' share of people and of cost in asylum accommodation
-    description: >-
-      People in hotels as a share of everyone in Home Office asylum
-      accommodation, against hotels' share of the accommodation contracts'
-      cost, first seven months of 2024-25.
-    unit: percent
-    domainMax: 100
-    valueLabel: Share (%)
-    sources:
-      - 33
-    items:
-      - label: Share of people in asylum accommodation
-        value: 35
-      - label: Share of the contracts' cost
-        value: 76
-    note: >-
-      National Audit Office figures, both described as "around". Cost is
-      £1.3 billion of an estimated £1.7 billion in April to October 2024. The
-      people share is a snapshot in the same period; the hotel population has
-      fallen sharply since (see the accommodation chart), so the current
-      shares will differ.
 dataStillNeeded:
   - measure: >-
       Cases in the asylum system awaiting an appeal outcome or removal (Home
@@ -1558,15 +1474,70 @@ figures:
     id: hotel-breakdown
   - kind: comparison
     id: support-spending
-  - kind: comparison
+  - kind: compositionBar
     id: asylum-budget-line
+    title: The asylum budget line within the Home Office's day-to-day budget
+    description: >-
+      Home Office Resource DEL outturn, 2022-23 to 2025-26, and plans to
+      2028-29, split into the asylum business group and everything else, in
+      cash. Each bar is that year's total, printed beside it. Plans are marked.
+    rowLabel: Financial year
+    showCounts: true
+    countFormat: { unit: currency, currency: GBP, compact: true, decimals: 1 }
+    sources: [28, 29]
+    categories:
+      - { key: asylum, label: 'Asylum business group' }
+      - { key: rest, label: 'Rest of the Home Office, net of visa and passport income' }
+    rows:
+      - { label: '2022-23', total: 17005341000, values: { asylum: 4498823000, rest: 12506518000 } }
+      - { label: '2023-24', total: 18856370000, values: { asylum: 5424708000, rest: 13431662000 } }
+      - { label: '2024-25', total: 18149688000, values: { asylum: 4512567000, rest: 13637121000 } }
+      - { label: '2025-26', total: 17919340000, values: { asylum: 4181193000, rest: 13738147000 } }
+      - { label: '2026-27 (plan)', total: 19528445000, values: { asylum: 4116034000, rest: 15412411000 } }
+      - { label: '2027-28 (plan)', total: 19736000000, values: { asylum: 3795700000, rest: 15940300000 } }
+      - { label: '2028-29 (plan)', total: 19888500000, values: { asylum: 3621700000, rest: 16266800000 } }
+    note: >-
+      From the core table of the Home Office Annual Report and Accounts
+      2025-26, in £ thousands, multiplied up here. The asylum line is the
+      business group that held asylum support in each year, and its name and
+      boundary change: "Asylum and Protection" (2022-23), "Asylum Support,
+      Resettlement and Accommodation" (2023-24 to 2025-26) and "Asylum Group"
+      (plans). It includes resettlement, such as Afghan resettlement, so it is
+      larger than the NAO's asylum-support figure. 2021-22 is omitted because
+      the table shows no separate asylum group that year. "Rest of the Home
+      Office" is the total minus the asylum line; the total is net of visa and
+      passport fee income, which the table records as a negative line, so the
+      asylum line's share of gross spending is smaller than its share shown
+      here. The accounts say plans are higher partly because "Higher Net
+      Resource DEL in the SR years is due to the exclusion of Immigration
+      Health Surcharge."
   - kind: comparison
     id: system-costs-2024-25
-  - kind: comparison
+  - kind: barChart
     id: hotels-share-of-people-and-cost
+    title: >-
+      Hotels' share of people and of cost in UK asylum accommodation, 2024-25
+    description: >-
+      People in hotels as a share of everyone in Home Office asylum
+      accommodation, against hotels' share of the accommodation contracts'
+      cost, first seven months of 2024-25.
+    valueLabel: Share (%)
+    categoryLabel: Measure
+    format: { unit: percent, decimals: 0 }
+    domainMax: 100
+    sources: [33]
+    items:
+      - { label: Share of people in asylum accommodation, value: { value: 35, qualifier: about, asPublished: around 35% } }
+      - { label: Share of the contracts' cost, value: { value: 76, qualifier: about, asPublished: around 76% } }
+    note: >-
+      National Audit Office figures, both described as "around". Cost is
+      £1.3 billion of an estimated £1.7 billion in April to October 2024. The
+      people share is a snapshot in the same period; the hotel population has
+      fallen sharply since (see the accommodation chart), so the current
+      shares will differ.
   - kind: dataTable
     id: large-sites
-    title: Large sites used or proposed for asylum accommodation, 2026
+    title: Large sites used or proposed for UK asylum accommodation, 2026
     description: Former military and other large sites used, or proposed, for asylum accommodation, as described in the sources cited.
     caption: One row per site
     columns:

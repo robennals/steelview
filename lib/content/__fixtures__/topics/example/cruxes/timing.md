@@ -1,5 +1,6 @@
 ---
-question: Does the effect arrive soon or late?
+title: Does the effect arrive soon or late?
+tension: Both sides want the benefit and disagree on when it comes.
 kind: prediction
 divides: [one, two]
 positions:

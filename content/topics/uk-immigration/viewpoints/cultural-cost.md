@@ -1,5 +1,6 @@
 ---
 name: Large-scale immigration from very different cultures is eroding Britain's shared way of life
+shortName: "Protect shared culture"
 summary: "A country can absorb newcomers who come to share its way of life, but where that has failed the cost has been grave, as [in towns where gangs abused children while officials feared being called racist](#fact-crime-terrorism-and-group-exploitation/officials-feared-being-called-racist). Admit fewer people, choose them with integration in mind, and measure how each group fares."
 order: 5
 ---

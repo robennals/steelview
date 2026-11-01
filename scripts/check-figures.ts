@@ -18,7 +18,7 @@
  *
  * - a **fact** is matched against its own frontmatter only — its sources,
  *   series sources and verified derived figures;
- * - a **viewpoint, crux or the topic intro** is matched against the union of
+ * - a **viewpoint or the topic intro** is matched against the union of
  *   the corpora of the facts it cites (inline `#fact-…` links, plus the legacy
  *   `citesFacts` list), so it cannot state a figure no cited fact supports;
  * - a **principle** is matched topic-wide: principles are shared across
@@ -26,8 +26,9 @@
  *
  * It deliberately does *not* look at frontmatter. `claim` and `holds` are
  * already covered: a fact's claim is backed by that fact's own sources (rule
- * 3), and a crux position is a statement of what a viewpoint believes rather
- * than an assertion of fact. Bodies are the gap.
+ * 3), and a crux has no body: its positions state what a viewpoint believes
+ * rather than assert facts, and its tension may not carry figures. Bodies are
+ * the gap.
  *
  * It also deliberately does not extract years, ordinals, or bare small
  * integers. "in 2024", "the third route", "two of the five" are not figures
@@ -39,6 +40,11 @@
  * (`lib/content/schema.ts`) but is optional — some facts are point-in-time and
  * have nothing to chart — so this reads the raw frontmatter for it and reports
  * every numeric fact that lacks one. Advisories never fail the build.
+ *
+ * A series' and a comparison's own words — title, description, notes,
+ * labels (`chartProse`) — are audited like a component figure's, but listed
+ * as an advisory that does not fail the run: they were written before the
+ * audit reached them and hold dozens of unquoted figures still to source.
  *
  * Third output, the chart-value audit (`scripts/chart-values.ts`): every
  * number a series or comparison draws must be in its own source's quote, on
@@ -55,24 +61,23 @@ import matter from 'gray-matter';
 import { loadPrinciples, ContentError } from '../lib/content/load';
 import { citedFactIds } from '../lib/content/markdown';
 import { factFrontmatterSchema, topicFrontmatterSchema } from '../lib/content/schema';
-import { figureProse } from '../lib/content/figure-text';
+import { chartProse, figureProse } from '../lib/content/figure-text';
 import { isComponentFigure } from '../lib/content/types';
 import { auditValue, chartValues, isWeakMatch, type ValueVerdict } from './chart-values';
 import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
 
-import { verifiedDerivedFigures } from './derived-figures';
+import { checkDerivedFigures, verifiedDerivedFigures } from './derived-figures';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
 
 const KINDS = [
   { dir: 'facts', kind: 'fact' },
   { dir: 'viewpoints', kind: 'viewpoint' },
-  { dir: 'cruxes', kind: 'crux' },
 ] as const;
 
 /** One content item as the audit sees it: raw frontmatter plus markdown body. */
 export type AuditItem = {
-  kind: 'topic' | 'fact' | 'viewpoint' | 'crux' | 'principle';
+  kind: 'topic' | 'fact' | 'viewpoint' | 'principle';
   id: string;
   data: Record<string, unknown>;
   body: string;
@@ -157,12 +162,14 @@ function corpusFor(
 /**
  * The prose audit for one topic, pure so it can be tested: every figure in
  * every body must appear in the corpus that item is entitled to (see the file
- * comment). `items` is the topic intro, its facts, viewpoints and cruxes, and
- * the shared principles it references.
+ * comment). `items` is the topic intro, its facts and viewpoints, and the
+ * shared principles it references.
  */
 export function auditTopic(items: readonly AuditItem[]): {
   unmatched: Finding[];
   advisories: Finding[];
+  /** Unquoted figures in a series' or comparison's own prose (`chartProse`): advisory, unlike a component figure's. */
+  chartNotes: Finding[];
   values: AuditedValue[];
 } {
   const factQuotes = new Map(
@@ -174,11 +181,20 @@ export function auditTopic(items: readonly AuditItem[]): {
 
   const unmatched: Finding[] = [];
   const advisories: Finding[] = [];
+  const chartNotes: Finding[] = [];
   const values: AuditedValue[] = [];
 
   for (const item of items) {
     const label = `${item.kind}/${item.id}`;
     const { corpus, missing } = corpusFor(item, factQuotes, topicWide);
+    for (const { figure, inputs } of checkDerivedFigures(item.data).unquoted) {
+      unmatched.push({
+        item: `${label} derivedFigures`,
+        figure,
+        context: `derivedFigures entry for ${figure}`,
+        corpus: `derived from ${inputs.join(' and ')}, which ${inputs.length === 1 ? 'is' : 'are'} not quoted in this item’s sources`,
+      });
+    }
     const seen = new Set<string>();
     for (const figure of figuresIn(item.body)) {
       if (seen.has(canonical(figure))) continue;
@@ -219,6 +235,21 @@ export function auditTopic(items: readonly AuditItem[]): {
           }
         }
 
+        // A series' or comparison's own words, audited as a figure's are —
+        // but advisory for now: the audit reached them only after their
+        // notes were written, and they hold too many unquoted figures to fail on.
+        for (const { chart, prose } of chartProse(parsed.data)) {
+          const text = prose.join('\n');
+          const seenInChart = new Set<string>();
+          for (const found of figuresIn(text)) {
+            if (seenInChart.has(canonical(found))) continue;
+            seenInChart.add(canonical(found));
+            if (!quotedSomewhere(found, corpus)) {
+              chartNotes.push({ item: `${label} ${chart}`, figure: found, context: contextFor(text, found), corpus: missing });
+            }
+          }
+        }
+
         const derived = quoteCorpus(verifiedDerivedFigures(item.data));
         for (const v of chartValues(parsed.data)) {
           const verdict = auditValue(v, derived);
@@ -236,7 +267,7 @@ export function auditTopic(items: readonly AuditItem[]): {
     }
   }
 
-  return { unmatched, advisories, values };
+  return { unmatched, advisories, chartNotes, values };
 }
 
 /**
@@ -286,7 +317,7 @@ function printValues(values: readonly AuditedValue[], strict: boolean): number {
   return untraced.length;
 }
 
-/** A topic's intro, facts, viewpoints, cruxes and referenced principles, read from disk. */
+/** A topic's intro, facts, viewpoints and referenced principles, read from disk. */
 async function readTopic(slug: string): Promise<AuditItem[]> {
   const dir = path.join(CONTENT_ROOT, slug);
   const topicFile = matter(await readFile(path.join(dir, 'topic.md'), 'utf8'));
@@ -313,16 +344,18 @@ async function main(): Promise<void> {
   const strictValues = process.argv.includes('--strict-values');
   let unmatchedTotal = 0;
   let advisoryTotal = 0;
+  let chartNoteTotal = 0;
   let untracedTotal = 0;
 
   console.log('Figures audit — every money, percentage or thousands figure in a');
   console.log("markdown body must appear in a quoted source it may lean on: a fact's");
-  console.log('own sources, or the sources of the facts a viewpoint, crux or intro cites.\n');
+  console.log('own sources, or the sources of the facts a viewpoint or intro cites.\n');
 
   for (const slug of slugs) {
-    const { unmatched, advisories, values } = auditTopic(await readTopic(slug));
+    const { unmatched, advisories, chartNotes, values } = auditTopic(await readTopic(slug));
     unmatchedTotal += unmatched.length;
     advisoryTotal += advisories.length;
+    chartNoteTotal += chartNotes.length;
 
     console.log(`## ${slug}`);
     if (unmatched.length === 0) {
@@ -338,13 +371,20 @@ async function main(): Promise<void> {
       console.log(`\n  advisory — ${advisories.length} fact(s) with a figure in the claim and no time series:`);
       for (const a of advisories) console.log(`    ${a.item}: ${a.context}`);
     }
+    if (chartNotes.length > 0) {
+      console.log(`\n  advisory — ${chartNotes.length} figure(s) in a series' or comparison's own words, not in a source it may use:`);
+      for (const f of chartNotes) {
+        console.log(`    ${f.item}: ${f.figure} — ${f.corpus}`);
+        console.log(`      ${f.context}`);
+      }
+    }
     untracedTotal += printValues(values, strictValues);
     console.log('');
   }
 
   const failed = unmatchedTotal > 0 || (strictValues && untracedTotal > 0);
   console.log(
-    `${unmatchedTotal} unmatched figure(s), ${advisoryTotal} advisory, ` +
+    `${unmatchedTotal} unmatched figure(s), ${advisoryTotal} advisory, ${chartNoteTotal} unmatched in series and comparison prose (advisory), ` +
       `${untracedTotal} untraced chart value(s)${strictValues ? '' : ' (advisory; --strict-values fails on them)'}. ` +
       (failed ? 'FAIL' : 'PASS')
   );

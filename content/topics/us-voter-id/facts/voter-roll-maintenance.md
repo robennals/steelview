@@ -810,7 +810,7 @@ series:
             - {period: '2024', value: 9.1}
 additionalSeries:
   - id: removal-reasons
-    title: 'Why records were removed, US, 2006–2024'
+    title: Why voter records were removed, US, 2006–2024
     description: >-
       Removals in each two-year cycle by the three largest reasons states
       reported, with every other reason and the uncategorised balance combined,
@@ -906,7 +906,7 @@ additionalSeries:
               - {period: '2022', value: 4470244}
               - {period: '2024', value: 3524443}
   - id: eric-reports
-    title: 'Out-of-date records flagged by ERIC, by report type, 2013–2026'
+    title: Out-of-date voter records flagged by ERIC, by report type, 2013–2026
     description: >-
       Records ERIC's cross-state matching flagged to its member states each
       year, by report type, and how many members it covered. These are leads
@@ -1045,7 +1045,7 @@ additionalSeries:
               - {period: '2026', value: 23}
 comparisons:
   - id: state-removal-rates
-    title: Removal rates varied from under 1% to over 20% of registrants
+    title: Voter-roll removal rates by US state and territory, 2022–24
     description: >-
       Records removed as a share of registered voters, by state and territory,
       2022–24. All jurisdictions reporting a total are shown.
@@ -1173,7 +1173,7 @@ comparisons:
       - label: Utah
         value: 0.8
   - id: notice-outcomes
-    title: Most confirmation notices sent in 2022–24 were never returned
+    title: What happened to US voter-roll confirmation notices, 2022–24
     description: >-
       What happened to the 38.8 million confirmation notices states sent
       between the 2022 and 2024 general elections, as a share of notices sent.
@@ -1190,7 +1190,8 @@ comparisons:
       unreturned notice starts the NVRA's two-federal-election clock; it is
       not itself a removal.
     items:
-      - label: Unreturned (no reply and not returned undeliverable)
+      - label: "Unreturned"
+        detail: "No reply and not returned undeliverable"
         value: 68.9
       - label: Not categorised by the state
         value: 11.3
@@ -1198,34 +1199,18 @@ comparisons:
         value: 10.6
       - label: Returned undeliverable
         value: 8.5
-      - label: Returned by voter, confirming registration with new address
+      - label: "Returned by voter: new address"
+        detail: "Returned by voter, confirming registration with new address"
         value: 4.6
-      - label: Returned by voter, confirming registration is invalid
+      - label: "Returned by voter: registration invalid"
+        detail: "Returned by voter, confirming registration is invalid"
         value: 3.0
-      - label: Returned by voter, confirming registration with no change
+      - label: "Returned by voter: no change"
+        detail: "Returned by voter, confirming registration with no change"
         value: 3.0
-  - id: ohio-2012-notices
-    title: Few Ohio notice recipients said they had moved
-    description: >-
-      Replies to the roughly 1.5 million confirmation notices Ohio sent in 2012,
-      mostly to registrants identified by not voting, as described in the
-      Husted dissent. Approximate counts.
-    unit: count
-    valueLabel: Notices (approximate)
-    sources: [19]
-    note: >-
-      Figures are the approximations in Justice Breyer's dissent, citing the
-      trial record. The three categories do not add to 1.5 million; the
-      remainder, about 0.2 million, is not described there.
-    items:
-      - label: No return card at all ("more than 1,000,000")
-        value: 1000000
-      - label: Replied "I have not moved"
-        value: 235000
-      - label: Replied "I have moved"
-        value: 60000
   - id: pew-2011-baseline
-    title: Pew's estimate of inaccurate registrations, data to March 2011
+    title: >-
+      Pew's estimate of inaccurate US voter registrations, data to March 2011
     description: >-
       The only direct national estimate of inaccurate or no-longer-valid voter
       registrations, by type. Categories overlap; the first bar is the
@@ -1240,7 +1225,8 @@ comparisons:
       voters whose records have wrong details, so this is not a count of
       ineligible people. The categories overlap and must not be added.
     items:
-      - label: Inaccurate or no longer valid, de-duplicated total
+      - label: "Inaccurate or no longer valid"
+        detail: "De-duplicated total"
         value: 24000000
       - label: Out of date
         value: 12700000
@@ -1286,15 +1272,33 @@ figures:
     id: state-removal-rates
   - kind: comparison
     id: notice-outcomes
-  - kind: comparison
+  - kind: barChart
     id: ohio-2012-notices
+    title: 'Ohio: replies to 2012 voter-roll confirmation notices'
+    description: >-
+      Replies to the roughly 1.5 million confirmation notices Ohio sent in 2012,
+      mostly to registrants identified by not voting, as described in the
+      Husted dissent. Approximate counts.
+    valueLabel: Notices (approximate)
+    categoryLabel: Reply
+    format: { unit: count }
+    sort: none
+    sources: [19]
+    note: >-
+      Figures are the approximations in Justice Breyer's dissent, citing the
+      trial record. The three categories do not add to 1.5 million; the
+      remainder, about 0.2 million, is not described there.
+    items:
+      - { label: No return card at all, value: { value: 1000000, qualifier: more than, asPublished: 'more than 1,000,000' } }
+      - { label: Replied "I have not moved", value: { value: 235000, qualifier: about, asPublished: 'about 235,000' } }
+      - { label: Replied "I have moved", value: { value: 60000, qualifier: about, asPublished: 'about 60,000' } }
   - kind: series
     id: eric-reports
   - kind: comparison
     id: pew-2011-baseline
   - kind: dataTable
     id: nvra-rules
-    title: 'The federal rules for removing voters'
+    title: US federal rules for removing voters from the rolls
     description: 'The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections.'
     caption: 'One card per rule for states'
     layout: cards
@@ -1311,7 +1315,7 @@ figures:
         detail: { value: 'Only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections', sources: [21] }
   - kind: dataTable
     id: bulk-errors
-    title: 'Bulk removals that reached eligible voters, 2000–2026'
+    title: Bulk voter-roll removals that reached eligible voters, US, 2000–2026
     description: 'Programs that matched whole voter lists against another database, with what was flagged, what was later shown, and how each ended. Figures come from courts, officials, journalists and advocacy groups, as marked in the sources.'
     caption: 'One card per program'
     layout: timeline
@@ -1380,7 +1384,7 @@ figures:
         outcome: 'Counties told to reinstate them (September 2026)'
   - kind: dataTable
     id: bloated-roll-claims
-    title: 'Claims of bloated rolls, and what they counted'
+    title: Claims of bloated US voter rolls, and what they counted
     description: 'Four claims about ineligible names on voter lists, with what each compared.'
     caption: 'One card per claim'
     layout: timeline
@@ -1469,7 +1473,7 @@ The shares are from the EAC's corrected 2024 figures. [2](#source-voter-roll-mai
 
 Non-response has been the single largest reason in most cycles, at between about a third and two-fifths of removals. [13](#source-voter-roll-maintenance-13) [8](#source-voter-roll-maintenance-8) [7](#source-voter-roll-maintenance-7) [2](#source-voter-roll-maintenance-2)
 
-It rests on silence rather than on a record that the voter moved: the registrant did not return a card and did not vote for about four years. How many of these people were still living at their address is not measured nationally (see the Ohio chart below and Data still needed).
+It rests on silence rather than on a record that the voter moved: the registrant did not return a card and did not vote for about four years. How many of these people were still living at their address is not measured nationally (see the Ohio chart below and What we don't know yet).
 
 ## Observations {#voter-roll-maintenance--observations-state-removal-rates}
 
@@ -1570,10 +1574,7 @@ Abigail Thernstrom, a dissenting member of the US Commission on Civil Rights, te
 
 ### SAVE flags include citizens, at an unknown rate {#voter-roll-maintenance--save-flags-citizens}
 
-The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's figures, which are not audited: [46](#source-voter-roll-maintenance-46)
-
-- **Checked:** more than 65 million registrants in 26 states.
-- **Flagged as potential non-citizens:** 28,635.
+The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's national counts of voters checked and flagged, which are not audited, are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). [46](#source-voter-roll-maintenance-46)
 
 In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-maintenance-45) [48](#source-voter-roll-maintenance-48)
 

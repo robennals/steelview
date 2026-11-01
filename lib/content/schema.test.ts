@@ -43,6 +43,39 @@ test('a source url must be http or https', () => {
   assert.equal(result.success, false);
 });
 
+test('a source url must be a page a reader can open, not a data file', () => {
+  for (const url of [
+    'https://assets.publishing.service.gov.uk/media/abc/tables.ods',
+    'https://www.example.org/data.xlsx',
+    'https://www.ons.gov.uk/file?uri=/economy/datasets/rents/rents.xlsx',
+    'https://www.ons.gov.uk/generator?format=csv&uri=/economy/timeseries/abmi/pn2',
+    'https://api.worldbank.org/v2/country/IRN/indicator/SP.POP.TOTL?format=json',
+    'https://clerk.house.gov/evs/2026/roll307.xml',
+    'https://stat.link/f9aut5',
+  ]) {
+    const result = factFrontmatterSchema.safeParse({ claim: 'c', status: 'well-supported', sources: [{ ...source, url }] });
+    assert.equal(result.success, false, url);
+  }
+});
+
+test('a source url may be a web page or a PDF, and keeps its data file in fileUrl', () => {
+  for (const url of ['https://www.ons.gov.uk/economy/timeseries/abmi/pn2', 'https://www.iaea.org/sites/default/files/gov2026-50.pdf']) {
+    const parsed = factFrontmatterSchema.parse({
+      claim: 'c',
+      status: 'well-supported',
+      sources: [{ ...source, url, fileUrl: 'https://www.example.org/data.xlsx' }],
+    });
+    assert.equal(parsed.sources[0].fileUrl, 'https://www.example.org/data.xlsx');
+  }
+});
+
+test('a source localFile must sit under datasets', () => {
+  const parse = (localFile: string) =>
+    factFrontmatterSchema.safeParse({ claim: 'c', status: 'well-supported', sources: [{ ...source, localFile }] }).success;
+  assert.equal(parse('datasets/ons.gov.uk/uk1.zip'), true);
+  assert.equal(parse('public/uk1.zip'), false);
+});
+
 test('a source date accepts YYYY, YYYY-MM and YYYY-MM-DD but not prose', () => {
   for (const date of ['2024', '2024-11', '2024-11-28']) {
     assert.equal(
@@ -173,9 +206,10 @@ test('topic principle references default to empty and reject duplicates or empty
   assert.equal(topicFrontmatterSchema.safeParse({ ...topic, principles: [''] }).success, false);
 });
 
-test('a crux requires a known kind, two viewpoints and two positions', () => {
+test('a crux requires a tension, a known kind, two viewpoints and two positions', () => {
   const valid = {
-    question: 'Will integration keep pace?',
+    title: 'Will integration keep pace?',
+    tension: 'Everyone wants newcomers to settle in well.',
     kind: 'prediction',
     divides: ['one', 'two'],
     positions: [
@@ -185,6 +219,7 @@ test('a crux requires a known kind, two viewpoints and two positions', () => {
   };
   assert.equal(cruxFrontmatterSchema.safeParse(valid).success, true);
   assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, kind: 'vibes' }).success, false);
+  assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, tension: undefined }).success, false);
   assert.equal(cruxFrontmatterSchema.safeParse({ ...valid, divides: ['one'] }).success, false);
 });
 
@@ -199,10 +234,21 @@ test('a topic requires an ISO lastUpdated date', () => {
 test('every worked example of the visualization spec parses as a fact', () => {
   const parsed = factFrontmatterSchema.parse(figureExamplesFrontmatter());
   assert.deepEqual(parsed.figures?.map(f => f.kind), [
-    'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'tileMap',
-    'barChart', 'compositionBar', 'estimateRange', 'quoteComparison', 'pullQuote', 'claimCheck', 'caveatList',
-    'tileMap', 'geoMap', 'scatterPlot',
+    'series', 'comparison', 'dataTable', 'section', 'keyFigures', 'timeline', 'periodTimeline', 'map',
+    'barChart', 'compositionBar', 'estimateRange', 'quotes', 'quotes', 'pullQuote', 'claimCheck', 'caveatList',
+    'map', 'map', 'map', 'scatterPlot', 'barChart', 'barChart', 'barChart', 'sliceExplorer', 'smallMultiples', 'compositionBar', 'dataTable', 'section', 'section',
   ]);
+});
+
+test('tileMap and geoMap parse as a map with the matching default view, their preset names kept', () => {
+  const figures = factFrontmatterSchema.parse(figureExamplesFrontmatter()).figures ?? [];
+  const views = figures.flatMap(f => (f.kind === 'map' ? [`${f.id}: ${f.preset}, ${f.default}`] : []));
+  assert.deepEqual(views, ['rejection-by-state: us-states, tiles', 'voter-id-rules: us-states, tiles', 'postal-voting: world, map', 'asylum-per-head: europe, tiles']);
+  const parse = (figure: Record<string, unknown>) => factFrontmatterSchema.parse({ ...figureExamplesFrontmatter(), figures: [figure] }).figures?.[0];
+  const base = { id: 'm', title: 't', description: 'd', sources: [1], areaLabel: 'Area', valueLabel: 'v', data: {} };
+  assert.deepEqual(parse({ ...base, kind: 'tileMap', map: 'europe-countries' }), { ...parse({ ...base, kind: 'map', preset: 'europe', default: 'tiles' }) });
+  assert.deepEqual(parse({ ...base, kind: 'geoMap', regions: 'uk-itl1' }), { ...parse({ ...base, kind: 'map', preset: 'uk-regions' }) });
+  assert.equal(factFrontmatterSchema.safeParse({ ...figureExamplesFrontmatter(), figures: [{ ...base, kind: 'map', preset: 'europe-countries' }] }).success, false, 'the old names are the aliases\' only');
 });
 
 /** The fixture with figure `index` replaced, parsed; returns the paths of the issues. */
@@ -315,4 +361,204 @@ test('a series line may name a glossary entry, which must exist', () => {
   const unknown = seriesLineSchema.safeParse({ name: 'Net migration', glossary: 'no-such-term', points });
   assert.equal(unknown.success, false);
   assert.equal(unknown.error?.issues[0].message, 'unknown glossary term "no-such-term"');
+});
+
+/* ---------------------------------------------------- several sources per item */
+
+/** The fixture's timeline (figure 5) with its first event changed, parsed. */
+function timelineEvent(change: (event: Record<string, unknown>) => Record<string, unknown>) {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const timeline = figures[5] as { events: Record<string, unknown>[] };
+  figures[5] = { ...timeline, events: [change(timeline.events[0]), ...timeline.events.slice(1)] };
+  return factFrontmatterSchema.safeParse({ ...data, figures });
+}
+
+test('an item\'s `source: n` parses as `sources: [n]`, and `sources` is kept as written', () => {
+  const one = timelineEvent(e => e);
+  const several = timelineEvent(({ source, ...e }) => ({ ...e, sources: [source, 9] }));
+  assert.ok(one.success && several.success);
+  const first = (r: typeof one) => (r.success && r.data.figures?.[5].kind === 'timeline' ? r.data.figures[5].events[0] : undefined);
+  assert.deepEqual(first(one)?.sources, [3]);
+  assert.equal(first(one) && 'source' in first(one)!, false);
+  assert.deepEqual(first(several)?.sources, [3, 9]);
+});
+
+test('an item gives `source` or `sources`, not both, and a required one gives one of them', () => {
+  const both = timelineEvent(e => ({ ...e, sources: [9] }));
+  assert.ok(!both.success && both.error.issues.some(i => i.message.includes('not both')));
+  const withoutSource = (e: Record<string, unknown>) => Object.fromEntries(Object.entries(e).filter(([key]) => key !== 'source'));
+  const neither = timelineEvent(withoutSource);
+  assert.ok(!neither.success && neither.error.issues.some(i => i.path.join('.') === 'figures.5.events.0'));
+  const empty = timelineEvent(e => ({ ...withoutSource(e), sources: [] }));
+  assert.equal(empty.success, false);
+});
+
+test('a series event and a period may cite several sources, or none', () => {
+  const event = { period: '2020', label: 'A law' };
+  const series = (events: unknown[]) => factFrontmatterSchema.parse({
+    claim: 'c', status: 'unknown',
+    series: {
+      title: 't', description: 'd', periodLabel: 'Year', coverage: { from: '2020', to: '2021' }, events,
+      readings: [{ id: 'r', label: 'l', unit: 'count', valueLabel: 'v', lines: [{ name: 'n', points: [{ period: '2020', value: 1 }, { period: '2021', value: 2 }] }] }],
+      source,
+    },
+  }).series?.events;
+  assert.deepEqual(series([event])?.[0].sources, []);
+  assert.deepEqual(series([{ ...event, sources: [1, 2] }])?.[0].sources, [1, 2]);
+});
+
+test('a series line may carry its own source', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'c', status: 'unknown',
+    series: {
+      title: 't', description: 'd', periodLabel: 'Year', coverage: { from: '2020', to: '2021' },
+      readings: [{ id: 'r', label: 'l', unit: 'count', valueLabel: 'v', lines: [{ name: 'n', source, points: [{ period: '2020', value: 1 }, { period: '2021', value: 2 }] }] }],
+      source,
+    },
+  });
+  assert.equal(parsed.series?.readings[0].lines[0].source?.publisher, 'Office for National Statistics');
+});
+
+/* ------------------------------------------------------- qualified numbers */
+
+/** The fixture's qualified bar chart with its first item's value replaced, parsed. */
+function barValue(value: unknown) {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const index = figures.findIndex(f => f.id === 'deaths-by-region');
+  const bars = figures[index] as { items: Record<string, unknown>[] };
+  figures[index] = { ...bars, items: [{ ...bars.items[0], value }, ...bars.items.slice(1)] };
+  return factFrontmatterSchema.safeParse({ ...data, figures });
+}
+
+test('a bar row or comparison row may carry a detail, but not an empty one', () => {
+  const data = figureExamplesFrontmatter();
+  const parsed = factFrontmatterSchema.parse(data);
+  const bars = parsed.figures?.find(f => f.kind === 'barChart' && f.id === 'wa-by-race');
+  assert.ok(bars?.kind === 'barChart');
+  assert.equal(bars.items[1].detail, "The State Auditor's name for the group");
+  assert.equal(parsed.comparisons?.[0].items[0].detail, 'As the roll call records it');
+  const figures = (data.figures as Record<string, unknown>[]).map(f => (f.id === 'wa-by-race' ? { ...f, items: (f.items as object[]).map(item => ({ ...item, detail: '' })) } : f));
+  assert.equal(factFrontmatterSchema.safeParse({ ...data, figures }).success, false);
+});
+
+test('a figure number is bare, qualified with a known word, or a range running upwards', () => {
+  assert.ok(barValue(159).success);
+  assert.ok(barValue({ value: 159, qualifier: 'nearly', asPublished: 'nearly 160' }).success);
+  assert.ok(barValue({ low: 4, high: 6 }).success);
+  assert.equal(barValue({ value: 159, qualifier: 'roughly' }).success, false);
+  assert.equal(barValue({ low: 6, high: 4 }).success, false);
+  // Strict: a range with a value, or a misspelt key, fails rather than being dropped.
+  assert.equal(barValue({ value: 5, low: 4, high: 6 }).success, false);
+  assert.equal(barValue({ value: 5, qualifer: 'about' }).success, false);
+});
+
+test('a table cell may be a qualified number or a range, with or without sources', () => {
+  const cell = (value: unknown) => factFrontmatterSchema.safeParse({
+    claim: 'c', status: 'unknown',
+    figures: [{ kind: 'dataTable', id: 't', title: 't', description: 'd', sources: [1], caption: 'c', columns: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }], rows: [{ a: 'x', b: value }] }],
+  });
+  assert.ok(cell({ value: 159, qualifier: 'at least' }).success);
+  assert.ok(cell({ low: 4, high: 6, sources: [1] }).success);
+  assert.equal(cell({ low: 4 }).success, false);
+  assert.equal(cell({ low: 4, high: 6, value: 5 }).success, false);
+  assert.equal(cell({ value: 'text', qualifier: 'about' }).success, false);
+  assert.equal(cell({ low: 4, high: 6, qualifier: 'about' }).success, false);
+});
+
+test('key figures keep their sibling qualifier and accept the new words', () => {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const keys = figures[4] as { figures: Record<string, unknown>[] };
+  figures[4] = { ...keys, figures: [{ ...keys.figures[0], qualifier: 'over' }, { ...keys.figures[1], value: { low: 98, high: 99 } }] };
+  assert.ok(factFrontmatterSchema.safeParse({ ...data, figures }).success);
+});
+
+test('a scatter point takes a qualified coordinate but not a range', () => {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const index = figures.findIndex(f => f.kind === 'scatterPlot');
+  const scatter = figures[index] as { points: Record<string, unknown>[] };
+  const withX = (x: unknown) => {
+    figures[index] = { ...scatter, points: [{ ...scatter.points[0], x }, ...scatter.points.slice(1)] };
+    return factFrontmatterSchema.safeParse({ ...data, figures }).success;
+  };
+  assert.ok(withX({ value: 14, qualifier: 'about' }));
+  assert.equal(withX({ low: 10, high: 14 }), false);
+});
+
+test('a map datum may be qualified or a range, keeping its label', () => {
+  const data = figureExamplesFrontmatter();
+  const figures = [...(data.figures as Record<string, unknown>[])];
+  const map = figures[7] as { data: Record<string, unknown> };
+  figures[7] = { ...map, data: { ...map.data, OK: { value: 4.3, qualifier: 'about', label: '~4' }, DE: { low: 5, high: 6 } } };
+  assert.ok(factFrontmatterSchema.safeParse({ ...data, figures }).success);
+});
+
+/* ------------------------------------------------------------------- dates */
+
+test('a timeline event may be dated to a decade or a circa year, but not a span of decades', () => {
+  const dated = (date: string) => timelineEvent(e => ({ ...e, date })).success;
+  assert.ok(dated('1850s'));
+  assert.ok(dated('c. 1888'));
+  assert.equal(dated('1880s–1890s'), false);
+  assert.equal(dated('circa 1888'), false);
+});
+
+test('a table column may be a date column, and an unquoted YAML date in a cell stays a date', () => {
+  const parsed = factFrontmatterSchema.parse({
+    claim: 'c', status: 'unknown',
+    figures: [{ kind: 'dataTable', id: 't', title: 't', description: 'd', sources: [1], caption: 'c', columns: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B', format: 'date' }], rows: [{ a: 'x', b: new Date('2024-06-12') }] }],
+  });
+  const table = parsed.figures?.[0];
+  assert.ok(table?.kind === 'dataTable');
+  assert.equal(table.columns[1].format, 'date');
+  assert.equal(table.rows[0].b, '2024-06-12');
+});
+
+test('`quoteComparison`, the earlier name, parses as `quotes`, with no limit of four', () => {
+  const quote = (n: number) => ({ text: `Quote ${n}`, speaker: `Speaker ${n}`, source: 1 });
+  const figures = [{ kind: 'quoteComparison', id: 'old-name', question: 'Who said what?', quotes: [1, 2, 3, 4, 5].map(quote) }];
+  const parsed = factFrontmatterSchema.parse({ claim: 'c', status: 'complicated', figures });
+  assert.equal(parsed.figures?.[0].kind, 'quotes');
+  assert.equal(parsed.figures?.[0].kind === 'quotes' && parsed.figures[0].quotes.length, 5);
+});
+
+test('a quotes figure needs two quotes, each citing a source; a language is a BCP 47 tag', () => {
+  const index = figureIndex('postal-secrecy');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as unknown[]).slice(0, 1) })), [`figures.${index}.quotes`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as Record<string, unknown>[]).map((q, i) => (i === 0 ? { ...q, source: undefined } : q)) })), [`figures.${index}.quotes.0`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, quotes: (f.quotes as Record<string, unknown>[]).map((q, i) => (i === 0 ? { ...q, lang: 'German' } : q)) })), [`figures.${index}.quotes.0.lang`]);
+});
+
+test('a bar chart\'s rows give `value`, or with `series` a `values` map; only series take a style', () => {
+  const index = figureIndex('hours-to-count');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, series: undefined })), [0, 1, 2, 3].map(i => `figures.${index}.items.${i}`));
+  const single = figureIndex('wa-by-race');
+  assert.deepEqual(figureIssuePaths(single, f => ({ ...f, style: 'dumbbell' })), [`figures.${single}.style`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, series: [{ key: 'y2020', label: '2020' }] })), [`figures.${index}.series`]);
+});
+
+test('a dumbbell\'s end labels may be bare YAML years, kept as text', () => {
+  const parsed = factFrontmatterSchema.parse(figureExamplesFrontmatter());
+  const dumbbell = parsed.figures?.find(f => f.kind === 'barChart' && f.id === 'pre-vra-registration');
+  assert.ok(dumbbell?.kind === 'barChart');
+  assert.deepEqual(dumbbell.items[0].labels, { earlier: '1958', latest: '1964' });
+});
+
+test('a slice explorer needs a dimension, a measure and a row; a row\'s cells are strings or numbers', () => {
+  const index = figureIndex('war-powers-votes');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, measures: [] })), [`figures.${index}.measures`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, rows: [{ vote: 'House', members: [1] }] })), [`figures.${index}.rows.0.members`]);
+});
+
+test('a small-multiples figure needs a coverage and two panels of two points each', () => {
+  const index = figureIndex('chokepoint-traffic');
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, coverage: undefined })), [`figures.${index}.coverage`]);
+  assert.deepEqual(figureIssuePaths(index, f => ({ ...f, panels: (f.panels as unknown[]).slice(0, 1) })), [`figures.${index}.panels`]);
+  assert.deepEqual(
+    figureIssuePaths(index, f => ({ ...f, panels: (f.panels as Array<Record<string, unknown>>).map((p, i) => (i === 0 ? { ...p, points: [{ period: '2026-06', value: 1 }] } : p)) })),
+    [`figures.${index}.panels.0.points`],
+  );
 });

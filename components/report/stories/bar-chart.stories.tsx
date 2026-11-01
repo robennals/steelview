@@ -72,3 +72,30 @@ export const PoundsUnsorted: Story = {
     note: undefined,
   },
 };
+
+/**
+ * Values the source qualifies. "At least" ends in an arrowhead pointing
+ * right, "fewer than" in one pointing left, "about" in a dotted end, and a
+ * range is a bar to its low end with a whisker to its high end. The key
+ * names only the marks drawn; the value column and the Table view say it in
+ * words.
+ */
+export const QualifiedValues: Story = {
+  args: {
+    title: 'Deaths by region, as the counter gives them, May 2026',
+    description: 'Illustrative: the counter gives some regions only as a bound, an approximation or a range.',
+    valueLabel: 'Deaths',
+    categoryLabel: 'Region',
+    format: { unit: 'count' },
+    items: [
+      { label: 'North', value: { value: 159, qualifier: 'at least', asPublished: 'at least 159' } },
+      { label: 'Capital', value: 120, highlight: true },
+      { label: 'South', value: { value: 90, qualifier: 'about', asPublished: 'about 90' } },
+      { label: 'East', value: { low: 60, high: 80, asPublished: 'between 60 and 80' } },
+      { label: 'West', value: { value: 40, qualifier: 'fewer than', asPublished: 'fewer than 40' } },
+      { label: 'Islands', value: { value: 12, qualifier: 'over' } },
+    ],
+    sources: [{ label: 'Illustrative source' }],
+    note: undefined,
+  },
+};

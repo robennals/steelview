@@ -168,6 +168,19 @@ sources:
       September 6, 2007. There is no publicly available evidence of political
       decisions to either continue or cease activity on which to base a coding
       of continued exploration.
+      … Table 1: Proliferation Behavior Over Time Country Explore Pursue
+      Acquire United States 1939- 1942- 1945- Russia 1942- 1943- 1949-
+      United Kingdom 1940- 1941- 1952- France 1945- 1954- 1960- China
+      1952- 1955- 1964- Israel 1949- 1955- 1967- South Africa 1969-91
+      1974-91 1979-91 Pakistan 1972- 1972- 1987- India 1948- 1964-66,
+      72-75, 80- 1987- Korea, North 1962- 1980- 2006- Yugoslavia 1949-62,
+      74-87 1953-62, 82-87 South Korea 1969-81 1970-81 Libya 1970-2003
+      1970-2003 Brazil 1966-90 1975-90 Iraq 1975-91 1981-91 Iran 1974-79,
+      84- 1989- Syria 2000- 2002-07 Germany 1939-45 Japan 1941-45, 67-72
+      Switzerland 1945-69 Sweden 1945-70 Norway 1947-62 Egypt 1955-80
+      Italy 1955-58 Australia 1956-73 Germany, West 1957-58 Indonesia
+      1964-67 Taiwan 1967-76, 87-88 Romania 1978-89 Argentina 1978-90
+      Algeria 1983-91
     title: 'When Did (and Didn’t) States Proliferate? Chronicling the Spread of Nuclear Weapons (Philipp C. Bleek), text and Table 1'
     url: https://www.belfercenter.org/publication/when-did-and-didnt-states-proliferate
     publisher: Belfer Center for Science and International Affairs, Harvard Kennedy School
@@ -371,68 +384,6 @@ sources:
     publisher: Princeton University Press
     date: '2004'
 comparisons:
-  - id: nuclear-programmes
-    title: The 31 states that explored nuclear weapons, by how far they went, 1939–2017
-    description: >-
-      Every state Bleek codes as having at least explored a nuclear weapons
-      programme, by the furthest stage reached and where it stood in 2017.
-      Iran is the one state coded as still pursuing a weapon.
-    unit: count
-    valueLabel: States
-    shareTotal: 31
-    sources: [10]
-    items:
-      - label: Explored, then stopped without launching a programme
-        value: 14
-      - label: Acquired weapons and kept them
-        value: 9
-      - label: Launched a programme, stopped without a weapon
-        value: 6
-      - label: Launched a programme, still pursuing (Iran)
-        value: 1
-        highlight: true
-      - label: Acquired weapons, then gave them up (South Africa)
-        value: 1
-    note: >-
-      Bleek's own breakdown: of 31 states that explored, fourteen halted
-      exploration, seven launched programmes but have not acquired weapons,
-      and ten acquired weapons, one of which (South Africa) gave them up. The
-      "kept them" bar is ten minus South Africa; the "stopped" bar is seven
-      minus Iran, whose pursuit Bleek codes as open-ended from 1989. Stopped
-      programmes: Yugoslavia, South Korea, Libya, Brazil, Iraq and Syria
-      (Syria's pursuit ended in 2007 but Bleek still codes it as exploring).
-      Kazakhstan, Ukraine and Belarus, which inherited Soviet weapons, are not
-      in Bleek's table. Coding as of June 2017.
-  - id: sanctions-ties
-    title: How often sanctions succeed under three definitions (TIES dataset, 1945–2005)
-    description: >-
-      Share of the 1,412 threatened or imposed sanctions cases counted as
-      successes in the TIES dataset, under each of its three definitions of
-      success, for all cases and for the 1,024 cases with a known outcome.
-    unit: percent
-    valueLabel: '% of cases counted as a success'
-    domainMax: 100
-    sources: [13]
-    items:
-      - label: 'Strict: target gives in fully or partly (all cases)'
-        value: 27.2
-      - label: 'Strict (cases with a known outcome)'
-        value: 37.5
-      - label: 'Coders'' settlement scores (all cases)'
-        value: 32.2
-      - label: 'Coders'' settlement scores (known outcome)'
-        value: 44
-      - label: 'Relaxed: adds negotiated settlements (all cases)'
-        value: 40.8
-      - label: 'Relaxed (known outcome)'
-        value: 56
-    note: >-
-      From the authors' Table 1 and text. TIES includes trade disputes (672 of
-      the 1,412 cases are trade-only) and threats that were never carried out
-      (567 cases); the US is the primary sender in a bit over 48% of cases.
-      The table prints the relaxed known-outcome rate as 56.3%; the text says
-      56%. A slice for security goals against US adversaries alone would need
-      the case file, which was not downloaded.
   - id: air-power
     title: Air-power coercion attempts, 1917–1999, by outcome
     description: >-
@@ -493,10 +444,184 @@ dataStillNeeded:
       coercion success, the nearest systematic evidence found. No study of
       rally effects after air attacks was found.
 figures:
-  - kind: "comparison"
-    id: "nuclear-programmes"
-  - kind: "comparison"
-    id: "sanctions-ties"
+  - kind: periodTimeline
+    id: nuclear-programmes
+    title: The 31 states that explored nuclear weapons, and when, 1939–2017
+    description: When each state Bleek codes explored, pursued and acquired nuclear weapons. Of the 31,
+      fourteen stopped exploring without launching a programme, seven launched programmes without acquiring
+      weapons, and ten acquired them; Iran is the one state coded as still pursuing.
+    rowLabel: State
+    from: '1939'
+    to: 2017-06
+    categories:
+    - {id: explore, label: Explore}
+    - {id: pursue, label: Pursue}
+    - {id: acquire, label: Acquire}
+    sources: [10]
+    rows:
+    - label: United States
+      periods:
+      - {from: '1939', category: explore, label: Explore}
+      - {from: '1942', category: pursue, label: Pursue}
+      - {from: '1945', category: acquire, label: Acquire}
+    - label: Russia
+      periods:
+      - {from: '1942', category: explore, label: Explore}
+      - {from: '1943', category: pursue, label: Pursue}
+      - {from: '1949', category: acquire, label: Acquire}
+    - label: United Kingdom
+      periods:
+      - {from: '1940', category: explore, label: Explore}
+      - {from: '1941', category: pursue, label: Pursue}
+      - {from: '1952', category: acquire, label: Acquire}
+    - label: France
+      periods:
+      - {from: '1945', category: explore, label: Explore}
+      - {from: '1954', category: pursue, label: Pursue}
+      - {from: '1960', category: acquire, label: Acquire}
+    - label: China
+      periods:
+      - {from: '1952', category: explore, label: Explore}
+      - {from: '1955', category: pursue, label: Pursue}
+      - {from: '1964', category: acquire, label: Acquire}
+    - label: Israel
+      periods:
+      - {from: '1949', category: explore, label: Explore}
+      - {from: '1955', category: pursue, label: Pursue}
+      - {from: '1967', category: acquire, label: Acquire}
+    - label: South Africa
+      periods:
+      - {from: '1969', to: '1991', category: explore, label: Explore}
+      - {from: '1974', to: '1991', category: pursue, label: Pursue}
+      - {from: '1979', to: '1991', category: acquire, label: Acquire}
+    - label: Pakistan
+      periods:
+      - {from: '1972', category: explore, label: Explore}
+      - {from: '1972', category: pursue, label: Pursue}
+      - {from: '1987', category: acquire, label: Acquire}
+    - label: India
+      periods:
+      - {from: '1948', category: explore, label: Explore}
+      - {from: '1964', to: '1966', category: pursue, label: Pursue}
+      - {from: '1972', to: '1975', category: pursue, label: Pursue}
+      - {from: '1980', category: pursue, label: Pursue}
+      - {from: '1987', category: acquire, label: Acquire}
+    - label: North Korea
+      periods:
+      - {from: '1962', category: explore, label: Explore}
+      - {from: '1980', category: pursue, label: Pursue}
+      - {from: '2006', category: acquire, label: Acquire}
+    - label: Yugoslavia
+      periods:
+      - {from: '1949', to: '1962', category: explore, label: Explore}
+      - {from: '1974', to: '1987', category: explore, label: Explore}
+      - {from: '1953', to: '1962', category: pursue, label: Pursue}
+      - {from: '1982', to: '1987', category: pursue, label: Pursue}
+    - label: South Korea
+      periods:
+      - {from: '1969', to: '1981', category: explore, label: Explore}
+      - {from: '1970', to: '1981', category: pursue, label: Pursue}
+    - label: Libya
+      periods:
+      - {from: '1970', to: '2003', category: explore, label: Explore}
+      - {from: '1970', to: '2003', category: pursue, label: Pursue}
+    - label: Brazil
+      periods:
+      - {from: '1966', to: '1990', category: explore, label: Explore}
+      - {from: '1975', to: '1990', category: pursue, label: Pursue}
+    - label: Iraq
+      periods:
+      - {from: '1975', to: '1991', category: explore, label: Explore}
+      - {from: '1981', to: '1991', category: pursue, label: Pursue}
+    - label: Iran
+      periods:
+      - {from: '1974', to: '1979', category: explore, label: Explore}
+      - {from: '1984', category: explore, label: Explore}
+      - {from: '1989', category: pursue, label: Pursue}
+    - label: Syria
+      periods:
+      - {from: '2000', category: explore, label: Explore}
+      - {from: '2002', to: '2007', category: pursue, label: Pursue}
+    - label: Germany
+      periods:
+      - {from: '1939', to: '1945', category: explore, label: Explore}
+    - label: Japan
+      periods:
+      - {from: '1941', to: '1945', category: explore, label: Explore}
+      - {from: '1967', to: '1972', category: explore, label: Explore}
+    - label: Switzerland
+      periods:
+      - {from: '1945', to: '1969', category: explore, label: Explore}
+    - label: Sweden
+      periods:
+      - {from: '1945', to: '1970', category: explore, label: Explore}
+    - label: Norway
+      periods:
+      - {from: '1947', to: '1962', category: explore, label: Explore}
+    - label: Egypt
+      periods:
+      - {from: '1955', to: '1980', category: explore, label: Explore}
+    - label: Italy
+      periods:
+      - {from: '1955', to: '1958', category: explore, label: Explore}
+    - label: Australia
+      periods:
+      - {from: '1956', to: '1973', category: explore, label: Explore}
+    - label: West Germany
+      periods:
+      - {from: '1957', to: '1958', category: explore, label: Explore}
+    - label: Indonesia
+      periods:
+      - {from: '1964', to: '1967', category: explore, label: Explore}
+    - label: Taiwan
+      periods:
+      - {from: '1967', to: '1976', category: explore, label: Explore}
+      - {from: '1987', to: '1988', category: explore, label: Explore}
+    - label: Romania
+      periods:
+      - {from: '1978', to: '1989', category: explore, label: Explore}
+    - label: Argentina
+      periods:
+      - {from: '1978', to: '1990', category: explore, label: Explore}
+    - label: Algeria
+      periods:
+      - {from: '1983', to: '1991', category: explore, label: Explore}
+    events:
+    - {period: '1991', label: Iraq forced to give up its programme after the Gulf War, source: 10}
+    - {period: '2003', label: Libya abandons its programmes and allows inspections, source: 10}
+    - {period: '2007-09-06', label: Israel destroys Syria's Al-Kibar facility, source: 10}
+    - {period: '2015', label: Iran accepts the nuclear deal's limits, source: 10}
+    note: 'Bleek''s Table 1, coded as of June 2017. Stages overlap: a state that pursues or acquires is
+      also still coded as exploring, so the later stage is drawn over the earlier one. A bar with no end
+      was still open in 2017. Kazakhstan, Ukraine and Belarus, which inherited Soviet weapons, are not in
+      Bleek''s table. Bleek notes other codings: Jo and Gartzke date Iraq''s pursuit from 1973, and Iran
+      could "reasonably" be coded as dropping back to exploration after 2003 or in 2015.'
+  - kind: barChart
+    id: sanctions-ties
+    title: How often sanctions succeed under three definitions (TIES dataset, 1945–2005)
+    description: Share of the 1,412 threatened or imposed sanctions cases counted as successes in the TIES
+      dataset, under each of its three definitions of success, for all cases and for the cases with a known
+      outcome.
+    valueLabel: '% of cases counted as a success'
+    categoryLabel: Definition of success
+    format: {unit: percent, decimals: 1}
+    sort: none
+    domainMax: 100
+    sources: [13]
+    note: From the authors' Table 1 and text. TIES includes trade disputes (672 of the 1,412 cases are trade-only)
+      and threats that were never carried out (567 cases); the US is the primary sender in a bit over 48%
+      of cases. A slice for
+      security goals against US adversaries alone would need the case file, which was not downloaded.
+    series:
+    - {key: all, label: All cases}
+    - {key: known, label: Cases with a known outcome}
+    items:
+    - label: 'Strict: target gives in fully or partly'
+      values: {all: 27.2, known: 37.5}
+    - label: Coders' settlement scores
+      values: {all: 32.2, known: 44}
+    - label: 'Relaxed: adds negotiated settlements'
+      values: {all: 40.8, known: 56}
   - kind: "comparison"
     id: "air-power"
   - kind: "dataTable"
@@ -552,7 +677,9 @@ figures:
       - { text: "Thirty-one countries at least opened the door to potential nuclear weapons programs, seventeen of those launched weapons programs, and ten acquired deliverable nuclear weapons.", speaker: "Bleek", date: "2017", source: 10 }
   - kind: "dataTable"
     id: "studies"
-    title: "The other studies, with how each defines success"
+    title: >-
+      Studies of nuclear programmes, sanctions and air power, with how each
+      defines success
     description: "A success rate under one definition is not comparable with another."
     caption: "One card per study"
     layout: cards
@@ -712,19 +839,23 @@ In 2018 Mohammed bin Salman said Saudi Arabia did not want a bomb, "but without 
 
 Potter and Mukhatzhanova, reviewing the research, describe "past predictions of rapid proliferation" that "failed to materialize". [23](#source-outside-attempts-to-change-hostile-regimes-23) Bleek's record shows ten states with weapons after some 70 years of exploration by 31. [10](#source-outside-attempts-to-change-hostile-regimes-10)
 
-## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties}
+## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties-studies}
 
 ### None of these studies measures containment {#outside-attempts-to-change-hostile-regimes--no-study-of-containment}
 
-Every study here measures an attempt to topple, coerce or disarm. No systematic study of holding a hostile state in check over years, with a success rate of its own, was found (see Data still needed).
+Every study here measures an attempt to topple, coerce or disarm. No systematic study of holding a hostile state in check over years, with a success rate of its own, was found (see What we don't know yet).
+
+## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties-regime-change}
 
 ### The datasets were not built on a case like Iran {#outside-attempts-to-change-hostile-regimes--fit-to-iran}
 
 Downes and Monten expect most regime-change targets to be "poor, diverse countries". [3](#source-outside-attempts-to-change-hostile-regimes-3) Miller's threats worked against states "highly dependent on the United States", which Iran is not. [18](#source-outside-attempts-to-change-hostile-regimes-18) How far the general rates carry over to Iran is a judgement, not something these data settle.
 
-## About this data {#outside-attempts-to-change-hostile-regimes--about}
+## More {#outside-attempts-to-change-hostile-regimes--more-nuclear-programmes}
 
-**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The cards above keep each figure next to its definition.
+### About this report's data {#outside-attempts-to-change-hostile-regimes--about}
+
+**What is measured.** Each study counts a different kind of attempt (imposed regime change, covert operations, strikes on nuclear sites, sanctions, air coercion) over a different period, with its own definition of success. The cards keep each figure next to its definition.
 
 **Why there is no time series.** The studies publish pooled results over long periods, not rates by year.
 

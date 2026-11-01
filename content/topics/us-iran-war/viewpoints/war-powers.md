@@ -1,5 +1,6 @@
 ---
 name: Congress never approved this war, so it is against the law
+shortName: "Congress decides"
 summary: "[The Constitution says only Congress can declare war](#fact-decisions-law-and-diplomacy/declarations-and-instances), and Congress never approved this one. [Both the House and the Senate voted to end it](#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution). [The President kept it going by calling each new strike a separate action](#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes)."
 order: 4
 ---

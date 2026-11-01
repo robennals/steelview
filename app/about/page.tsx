@@ -18,8 +18,8 @@ export default function AboutPage() {
       <div className="prose-body">
         <p>
           Steelview puts every side of a divisive issue on one page: the data and what it shows, the strongest
-          version of each major viewpoint, the moral principles underneath them, and the specific questions on
-          which the sides genuinely disagree.
+          version of each major viewpoint, the moral principles underneath them, and the tensions at the heart of
+          the disagreement.
         </p>
         <h2>Every side, at its strongest</h2>
         <p>

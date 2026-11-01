@@ -1,5 +1,6 @@
 ---
 name: Voting by mail works, and the states that do it prove it
+shortName: "Mail works"
 summary: "Every voter should be able to vote by mail. States that mail every voter a ballot have done it for years without the fraud critics fear. Mail ballots have checks a polling place lacks, and they help the voters who find polling places hardest to reach."
 order: 2
 ---

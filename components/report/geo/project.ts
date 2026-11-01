@@ -40,19 +40,17 @@ export type FitOptions = {
   kind?: ProjectionKind | 'auto';
 };
 
-/** The bounding box of every point in every region. */
+/** The bounding box of every point in every region, dots included. */
 export function boundsOf(regions: GeoRegion[]): Bounds {
   const bounds = { minLon: Infinity, maxLon: -Infinity, minLat: Infinity, maxLat: -Infinity };
   for (const region of regions) {
-    for (const polygon of region.coordinates) {
-      for (const ring of polygon) {
-        for (const [lon, lat] of ring) {
-          if (lon < bounds.minLon) bounds.minLon = lon;
-          if (lon > bounds.maxLon) bounds.maxLon = lon;
-          if (lat < bounds.minLat) bounds.minLat = lat;
-          if (lat > bounds.maxLat) bounds.maxLat = lat;
-        }
-      }
+    const points = region.coordinates.flat(2);
+    if (region.point) points.push(region.point);
+    for (const [lon, lat] of points) {
+      if (lon < bounds.minLon) bounds.minLon = lon;
+      if (lon > bounds.maxLon) bounds.maxLon = lon;
+      if (lat < bounds.minLat) bounds.minLat = lat;
+      if (lat > bounds.maxLat) bounds.maxLat = lat;
     }
   }
   return bounds;
@@ -141,30 +139,87 @@ export function fitBounds(bounds: Bounds, { width, height, padding = 0, x = 0, y
   };
 }
 
+/**
+ * Each ring cut to a lon/lat box (Sutherland–Hodgman), dropping rings that
+ * fall wholly outside. A cropped map still clips its drawing to the frame;
+ * this only keeps the page from carrying the part of Russia, or of North
+ * Africa, that the crop would hide anyway. Pass a box a little larger than
+ * the extent: the projected frame's corners reach past a curved edge.
+ */
+export function clipToBounds(coordinates: LonLat[][][], b: Bounds): LonLat[][][] {
+  const edges: Array<{ inside: (p: LonLat) => boolean; cross: (a: LonLat, c: LonLat) => LonLat }> = [
+    { inside: ([lon]) => lon >= b.minLon, cross: (a, c) => atLon(a, c, b.minLon) },
+    { inside: ([lon]) => lon <= b.maxLon, cross: (a, c) => atLon(a, c, b.maxLon) },
+    { inside: ([, lat]) => lat >= b.minLat, cross: (a, c) => atLat(a, c, b.minLat) },
+    { inside: ([, lat]) => lat <= b.maxLat, cross: (a, c) => atLat(a, c, b.maxLat) },
+  ];
+  const clipRing = (ring: LonLat[]) =>
+    edges.reduce((points, { inside, cross }) => {
+      const out: LonLat[] = [];
+      points.forEach((point, i) => {
+        const previous = points[(i + points.length - 1) % points.length];
+        if (inside(point)) {
+          if (!inside(previous)) out.push(cross(previous, point));
+          out.push(point);
+        } else if (inside(previous)) out.push(cross(previous, point));
+      });
+      return out;
+    }, ring);
+  return coordinates.map(polygon => polygon.map(clipRing).filter(ring => ring.length >= 3)).filter(polygon => polygon.length > 0);
+}
+
+function atLon([x0, y0]: LonLat, [x1, y1]: LonLat, lon: number): LonLat {
+  return [lon, y0 + ((y1 - y0) * (lon - x0)) / (x1 - x0)];
+}
+
+function atLat([x0, y0]: LonLat, [x1, y1]: LonLat, lat: number): LonLat {
+  return [x0 + ((x1 - x0) * (lat - y0)) / (y1 - y0), lat];
+}
+
 const round = (n: number) => Math.round(n * 10) / 10;
 
 /**
  * A MultiPolygon as one SVG path. Holes are drawn as further subpaths and cut
- * out by `fill-rule: evenodd`, set on the path by the caller.
+ * out by `fill-rule: evenodd`, set on the path by the caller. A `tolerance`
+ * thins each ring for a small drawing (see `thin`); rings that thin to
+ * nothing are left out.
  */
-export function pathFor(coordinates: LonLat[][][], projection: Projection): string {
+export function pathFor(coordinates: LonLat[][][], projection: Projection, tolerance = 0): string {
   const parts: string[] = [];
   for (const polygon of coordinates) {
     for (const ring of polygon) {
       if (ring.length < 3) continue;
-      const points = ring.map(point => projection.project(point)).map(([px, py]) => `${round(px)},${round(py)}`);
-      parts.push(`M${points.join('L')}Z`);
+      const projected = ring.map(point => projection.project(point));
+      const kept = tolerance > 0 ? thin(projected, tolerance) : projected;
+      if (kept.length < 3) continue;
+      parts.push(`M${kept.map(([px, py]) => `${round(px)},${round(py)}`).join('L')}Z`);
     }
   }
   return parts.join('');
 }
 
 /**
+ * Drops each point closer than `tolerance` (in drawing units) to the last
+ * point kept: at thumbnail size a coastline's thousand points collapse onto
+ * a few dozen pixels, and drawing them all only bloats the markup.
+ */
+function thin(points: Array<[number, number]>, tolerance: number): Array<[number, number]> {
+  const kept: Array<[number, number]> = [];
+  for (const point of points) {
+    const last = kept[kept.length - 1];
+    if (!last || Math.hypot(point[0] - last[0], point[1] - last[1]) >= tolerance) kept.push(point);
+  }
+  return kept;
+}
+
+/**
  * The centre of a region's largest outline ring, by area: where a label or a
  * callout leader belongs. Area-weighted, so a coastline with many small
- * islands does not drag the point out to sea.
+ * islands does not drag the point out to sea. An area drawn as a dot is
+ * centred on its dot.
  */
 export function centroidOf(region: GeoRegion): LonLat {
+  if (region.point) return region.point;
   let best: LonLat[] = [];
   let bestArea = 0;
   for (const polygon of region.coordinates) {

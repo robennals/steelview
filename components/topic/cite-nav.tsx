@@ -62,9 +62,11 @@ export function CiteNav() {
       const url = citationUrl(link);
       if (!url) return;
 
-      event.preventDefault();
       // A fact's sheet, not a data panel's, which a fact opens on top of.
       const sheet = link.closest<HTMLElement>('dialog:has(.sv-modal__expand)');
+      // On a report's own page, a citation of that report is an ordinary jump.
+      if (!sheet && url.pathname === location.pathname) return;
+      event.preventDefault();
       if (sheet && url.pathname === location.pathname) moveSheetToEvidence(sheet, url.hash, router);
       else if (sheet) router.replace(`${url.pathname}${url.search}${url.hash}`, { scroll: false });
       else router.push(`${url.pathname}${url.search}${url.hash}`, { scroll: false });

@@ -1,5 +1,6 @@
 ---
 name: People who came lawfully on a path to settlement should be allowed to finish it
+shortName: "Keep our word"
 summary: "[About 2.2 million people](#fact-settlement-and-migrant-status/path-2-2-million) built their lives around a five-year path to settlement that the state set out. Change the terms for people who have not yet come, but let those already on the path finish it."
 order: 4
 ---
