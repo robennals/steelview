@@ -1077,6 +1077,32 @@ figures:
         names: { value: 'about 8,000', sources: [43] }
       - category: 'Leon County could confirm'
         names: { value: '34 of nearly 700 sent to it', sources: [43] }
+observationMarks:
+  machine-fraud-real-and-prosecuted: {rows: ["Kansas City, 1936", "Chicago, 1982"]}
+  stale-rolls-enabled-fraud: {rows: ["Chicago, 1982", "Kansas City, 1936"]}
+  in-person-ghost-voting: {rows: ["Voting in person in another's name, or repeatedly"]}
+  carter-baker-id-deters: {rows: ["Voting in person in another's name, or repeatedly"]}
+  id-would-not-reach: {rows: ["Officials stuffing, forging or miscounting ballots", "Absentee or mail ballot fraud", "Vote buying"]}
+  checkers-complicit: {rows: ["Officials stuffing, forging or miscounting ballots"]}
+  detected-is-a-floor: {whole: true}
+  impersonation-rare-modern: {rows: ["In-person voter impersonation", "Absentee ballot fraud", "Registration fraud"]}
+  modern-result-changing-cases-absentee: {whole: true}
+  louisiana-registration-collapse: {rows: ["Louisiana"]}
+  jim-crow-tools-discretionary: {rows: ["Louisiana"]}
+  pre-vra-stagnation: {rows: ["Alabama", "Louisiana", "Mississippi"]}
+  registration-gap-closed: {rows: ["Georgia", "Mississippi", "Virginia"]}
+  officials-did-the-fraud: {rows: ["Officials stuffing, forging or miscounting ballots"]}
+  case-table: {whole: true}
+  kansas-city-no-repeaters: {rows: ["Kansas City, 1936"]}
+  caught-by-prosecutors: {rows: ["Chicago, 1982", "Kansas City, 1936", "East Chicago, Indiana, 2003 primary", "North Carolina 9th District, 2018"]}
+  illinois-1960: {rows: ["Illinois, 1960"]}
+  chicago-1982-margin: {rows: ["Chicago, 1982"]}
+  florida-2000-list: {rows: ["Found in May 2000 to have been wrongly added", "Leon County could confirm"]}
+  florida-counter-reading: {rows: ["Found in May 2000 to have been wrongly added"]}
+  heritage-impersonation-small: {rows: ["Impersonation fraud at the polls", "Fraudulent use of absentee ballots", "False registration", "Buying votes", "Illegal \"assistance\" at the polls", "Altering the vote count"]}
+  heritage-impersonation-mail: {rows: ["Impersonation fraud at the polls"]}
+  indiana-no-impersonation: {rows: ["Impersonation fraud at the polls"]}
+  remedies-timeline: {rows: ["Louisville, Massachusetts and New York adopt the official secret ballot", "\"Almost 90 percent of the States\" have adopted the secret ballot"]}
 ---
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-case-methods}
 

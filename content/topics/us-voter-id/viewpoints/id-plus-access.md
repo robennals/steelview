@@ -33,6 +33,6 @@ How an ID rule is written matters. [Georgia's rejected mail ballots fell after i
 
 ### Both parties should pass free ID and early voting together
 
-Congress, or states one by one, should pass the two together: [free photo ID](#fact-voter-id-rules-in-the-us-and-abroad/chart-carter-baker), at least two weeks of early voting, and a sworn statement for those without ID.
+Congress, or states one by one, should pass the two together: [free photo ID](#fact-voter-id-rules-in-the-us-and-abroad/carter-baker-bargain), at least two weeks of early voting, and a sworn statement for those without ID.
 
 While [no rule ends the boost in trust from winning, as Georgia shows](#fact-opinion-and-confidence-in-elections/georgia-rebound), and [studies disagree on whether ID itself raises trust](#fact-opinion-and-confidence-in-elections/milyo-finds-effect), the aim is narrower: to remove the losers' complaint about unfair rules. Passed by both parties, this gives [every citizen an equal voice](#principle-an-equal-voice-for-every-citizen) and a result both sides can accept.

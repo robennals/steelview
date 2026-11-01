@@ -2036,6 +2036,37 @@ figures:
         shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
 observationMarks:
   about-half-of-refused-claimants-recorded-leaving: {lines: [Returns as a share of refused], from: '2010', to: '2022'}
+  late-claims-not-human-rights-claims: {rows: ["Asylum claim", "Medico-legal report", "Modern slavery referral", "Rule 35 medical report", "Judicial review", "Human rights or other rights-based application"]}
+  most-issues-refused: {whole: true}
+  article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2017"}
+  echr-share-not-measured: {rows: ["Human-rights applications raised in detention, 2019", "Foreign offenders' appeals won on human-rights grounds alone", "People granted status after being told they were liable to removal"]}
+  echr-hidden-in-other-rows: {rows: ["Human rights or other rights-based application", "Asylum claim", "Judicial review"]}
+  150000-about-15-times-enforced-returns: {rows: ["Proposed UK target (\"Removals Force\")", "UK enforced returns, 2025"]}
+  most-returns-are-voluntary: {lines: ["Enforced returns", "Voluntary returns"], at: "2025"}
+  human-rights-wins-about-3-percent: {lines: ["Allowed on human-rights grounds only"], from: "2015", to: "2020"}
+  returns-fell-then-recovered: {lines: ["Enforced returns", "Voluntary returns"], at: "2021"}
+  why-returns-fell-is-not-settled: {lines: ["Enforced returns", "Voluntary returns"], from: "2010", to: "2019"}
+  return-agreements: {lines: ["Enforced returns", "Voluntary returns"], at: "2025"}
+  fno-returns-near-peak: {lines: ["Foreign national offenders returned"], from: "2016", to: "2025", at: "2016"}
+  asylum-related-returns-at-record: {lines: ["Asylum-related returns (enforced and voluntary)"], at: "2025"}
+  refusals-outrun-returns: {lines: ["Refused at latest outcome", "Recorded as returned (enforced or voluntary)"], from: "2021", to: "2025"}
+  not-recorded-leaving: {lines: ["Refused at latest outcome", "Withdrawn at latest outcome", "Recorded as returned (enforced or voluntary)"], from: "2010", to: "2024"}
+  more-bailed-than-returned: {lines: ["Returned from the UK", "Bailed"], from: "2015", to: "2025"}
+  detention-use: {from: "2015", to: "2025"}
+  2022-update: {rows: ["Human rights or other rights-based application", "Modern slavery referral"]}
+  raised-is-not-caused: {whole: true}
+  fno-issues-differ: {rows: ["Appeal", "Rule 35 medical report", "Judicial review", "Asylum claim"]}
+  removal-directions-cancelled: {rows: ["Fresh asylum claim after removal directions set"]}
+  charter-reasons: {rows: ["Fresh asylum claim after removal directions set", "Judicial review lodged after removal directions set", "Further representations; removal deferred"]}
+  planned-fno-removals: {whole: true}
+  all-human-rights-appeals-53-percent: {lines: ["Allowed on human-rights grounds only"], from: "2015", to: "2020"}
+  ratio-is-not-a-block-rate: {lines: ["Allowed at First-tier Tribunal", "Allowed on human-rights grounds only"], from: "2015", to: "2020"}
+  fnos-in-community-growing: {lines: ["Foreign offenders liable to deportation in the community"], from: "2016-06", to: "2026-06", at: "2026-06"}
+  pledged-budget: {rows: ["Proposed UK target (\"Removals Force\")"]}
+  us-comparison: {rows: ["US deportations after interior arrest (yearly rate)"]}
+  france-pilot-about-4-percent: {lines: ["Returned to France (out)"]}
+  other-obstacles: {rows: ["Human-rights applications raised in detention, 2019", "Foreign offenders' appeals won on human-rights grounds alone"]}
+  observatory-cohort-figures: {lines: ["Returns as a share of refused", "Returns as a share of refused and withdrawn"], from: "2010", to: "2022"}
 ---
 Removals from the UK fell through the 2010s, collapsed during the pandemic and have risen each year since 2021, but enforced returns in the year to June 2026 (9,669) were less than half their 2004 level. [2](#source-removals-and-what-stops-them-2) [1](#source-removals-and-what-stops-them-1) Of the 40,605 returns that year, 76% were voluntary. Asylum-related returns reached 12,568, the highest in a series starting in 2010. [5](#source-removals-and-what-stops-them-5)
 

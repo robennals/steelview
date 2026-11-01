@@ -269,6 +269,12 @@ figures:
       - poll: YouGov, August 2025
         question: 'Support "admitting no more new migrants, and requiring large numbers of migrants who came to the UK in recent years to leave"'
         result: { value: Support 45%, sources: [11] }
+observationMarks:
+  remain-has-led-since-2016: {lines: ["Should remain a member", "Should withdraw"], from: "2016", to: "2025-10"}
+  wording-moves-the-answer: {rows: ["Whitestone Insights for the New Conservatives, 2023", "Survey reviewed by The Conversation, 2024"]}
+  conservative-and-reform-voters-lean-to-leaving: {lines: ["Should withdraw"], from: "2025-06", to: "2025-10"}
+  small-boat-removal-splits-the-public: {rows: ["YouGov, September 2023"]}
+  removal-support-targets-small-boat-arrivals: {rows: ["YouGov, August 2025"]}
 ---
 Polling on the ECHR and on removals is unusually sensitive to wording. The
 same public that chooses "remain" over "withdraw" also backs replacing

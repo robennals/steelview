@@ -666,6 +666,30 @@ figures:
     id: against-margins
   - kind: comparison
     id: ohio-referrals
+observationMarks:
+  found-on-rolls: {whole: true}
+  how-noncitizens-reach-rolls: {rows: ["Kansas, 1999–2013 (court finding)"]}
+  hundredths-of-a-percent: {rows: ["Louisiana, 2025 (suspected, preliminary)", "Georgia, 2024 audit (confirmed)"]}
+  full-roll-check-feasible: {rows: ["Georgia, 2024 audit (confirmed)"]}
+  georgia-2022-held-at-registration: {rows: ["Georgia, 2024 audit (confirmed)"]}
+  ohio-recurs: {whole: true}
+  below-margins: {rows: ["Georgia, 2020 presidential margin", "Iowa 1st District, 2024 margin", "Georgia, DHS-flagged registrants who had ever voted (2026)", "Iowa, non-citizens who voted in 2024 (statewide)"]}
+  close-local-races: {rows: ["Georgia, DHS-flagged registrants who had ever voted (2026)", "Iowa, non-citizens who voted in 2024 (statewide)", "Georgia, confirmed non-citizens who had ever voted (2024 audit)"]}
+  detected-is-a-floor: {rows: ["Ohio, 2020 general", "North Carolina, 2016 general", "Iowa, 2024 general"]}
+  some-noncitizens-vote: {rows: ["Ohio, 2020 general", "North Carolina, 2016 general", "Iowa, 2024 general"]}
+  votes-per-ballots: {rows: ["Brennan Center survey, 2016 (42 jurisdictions)", "Iowa, 2024 general"]}
+  alabama-2024: {rows: ["Alabama (state agency records, 2024)"]}
+  save-national-unaudited: {rows: ["Denton County, Texas (SAVE, 2025)", "Texas statewide (SAVE, 2025–26)"]}
+  state-records-would-have-cleared: {rows: ["Texas statewide (SAVE, 2025–26)"]}
+  both-errors-side-by-side: {rows: ["Texas, statewide SAVE check", "Alabama, 2024"]}
+  flag-lists-shrink: {rows: ["Denton County, Texas (SAVE, 2025)", "North Carolina (DMV records, 2016)"]}
+  texas-save-reversals: {rows: ["Texas statewide (SAVE, 2025–26)", "Denton County, Texas (SAVE, 2025)"]}
+  iowa-flags: {whole: true}
+  virginia-2024: {whole: true}
+  texas-2019: {rows: ["Texas statewide (SAVE, 2025–26)"]}
+  ohio-scale: {rows: ["2024"]}
+  kansas-court-findings: {rows: ["Kansas, 1999–2013 (court finding)"]}
+  referrals-not-convictions: {rows: ["Ohio, 2020 general"]}
 ---
 These reviews compare a state's voter list against records that say someone is not a citizen: driver's licence files, jury-duty excusals, immigration records and, since 2025, the federal SAVE database.
 

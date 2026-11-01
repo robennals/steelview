@@ -2513,6 +2513,50 @@ dataStillNeeded:
     Whether domestic training of doctors was capped while overseas recruitment rose
     is central to the training argument; the GMC and NHS England sources could not
     be retrieved for this report, so the doctor side rests on OECD stock figures.
+observationMarks:
+  fifth-of-nhs-staff: {lines: ["All staff", "Doctors"], at: "2025-06"}
+  british-held-posts-fell: {lines: ["British"], from: "2021", to: "2026"}
+  mac-names-underfunding: {lines: ["Care workers and support workers, independent sector"]}
+  care-pay-near-the-floor: {lines: ["Care workers and support workers, independent sector"], from: "2023", to: "2026", at: "2026"}
+  revocations-at-a-record: {lines: ["Skilled Worker", "Temporary Worker"], at: "2025"}
+  skill-threshold-lowered-then-raised: {lines: ["Health and Care Worker", "Other sponsored work"], from: "2020", to: "2025"}
+  dependants-near-half-at-peak: {lines: ["Main applicants", "Dependants"], at: "2023"}
+  graduate-switchers-jobs: {rows: ["Switched straight from a student visa"]}
+  revocation-rate-not-a-record: {lines: ["Skilled Worker"], from: "2014", to: "2025", at: "2025"}
+  care-visas-collapsed-before-the-closure: {lines: ["Care workers and senior care workers"], from: "2023-09", to: "2024-03", at: "2024-03"}
+  vacancies-held-as-recruitment-fell: {lines: ["All job roles"], from: "2024", to: "2026"}
+  care-vacancies-fell: {lines: ["All job roles"], from: "2022", to: "2026", at: "2026"}
+  visa-holders-two-in-five-claims: {lines: ["Held a visa or other leave", "Illegal entry routes"], at: "2025"}
+  graduate-claims-doubled: {lines: ["Graduate", "Study"], from: "2024", to: "2025"}
+  talent-routes-are-small: {lines: ["Talent, innovator and entrepreneur", "All work visas"]}
+  work-visas-rose-and-fell: {lines: ["All work visas"], from: "2021", to: "2025", at: "2023"}
+  main-applicants-fell-first: {lines: ["Main applicants", "Dependants"], from: "2023-09", to: "2024-06"}
+  nurse-visas-fell: {lines: ["Nurses", "Doctors"], from: "2023-03", to: "2026-06"}
+  recruiters-vacancies-fell: {lines: ["All job roles"], from: "2022", to: "2026"}
+  health-and-care-share-of-migrant-jobs: {lines: ["Non-EU"]}
+  uk-trained-joiners-rose: {lines: ["Educated in the UK", "Educated abroad"], from: "2023", to: "2025"}
+  then-both-fell: {lines: ["Educated in the UK", "Educated abroad"], from: "2025", to: "2026"}
+  training-research-predates-sponsorship: {lines: ["Educated in the UK"]}
+  uk-doctor-reliance: {rows: ["United Kingdom (England and Wales)", "OECD average (28 countries)"]}
+  uk-nurse-reliance: {rows: ["United Kingdom", "OECD average (28 countries)"]}
+  graduate-first-year-earnings: {rows: ["Graduate route, first year", "UK graduates, 15 months after graduating"]}
+  work-visas-main-and-dependants: {lines: ["All work visas"], at: "2025"}
+  mac-on-the-2025-threshold: {lines: ["Health and Care Worker", "Other sponsored work"], at: "2025"}
+  dependant-numbers-and-the-slower-fall: {lines: ["Main applicants", "Dependants"], from: "2023", to: "2025"}
+  technical-annex-fall: {lines: ["Main applicants", "Dependants"], from: "2023-12", to: "2024-12"}
+  closure-impact-and-home-office-summary: {lines: ["Care workers and senior care workers"], from: "2025-06", to: "2026-06"}
+  recruitment-april-to-june-2026: {lines: ["All job roles"], at: "2026"}
+  british-posts-narrower-measure: {lines: ["British"], from: "2022", to: "2026"}
+  mac-pay-recommendation: {whole: true}
+  revocations-earlier-years-and-breakdown: {lines: ["Skilled Worker", "Temporary Worker"], from: "2022", to: "2025"}
+  ethical-code-countries: {lines: ["Educated abroad"]}
+  training-research-further-reading: {lines: ["Educated in the UK"]}
+  other-work-visa-claims: {lines: ["Other work"], at: "2025"}
+  domestic-doctors-most-growth: {rows: ["OECD average (28 countries)"]}
+  graduate-earnings-expected-gap: {rows: ["Graduate route, first year", "UK graduates, 15 months after graduating"]}
+  graduate-earnings-above-2500: {rows: ["Graduate route, last three months of first year"]}
+  switchers-in-caring-jobs: {rows: ["Switched straight from a student visa", "Switched from the Graduate route"]}
+  students-staying-longer: {rows: ["Switched straight from a student visa"]}
 ---
 Work visas issued to people coming from abroad rose to 613,627 in 2023 and fell to 234,841 in the year to June 2026, 62% below the peak. [2](#source-work-and-study-routes-2) [1](#source-work-and-study-routes-1) Care workers account for most of both the rise and the fall: visas for caring occupations fell from 107,772 in 2023 to 344, and the fall began at the end of 2023, more than eighteen months before the route closed to new overseas recruits in July 2025. [5](#source-work-and-study-routes-5) [3](#source-work-and-study-routes-3) In England's adult social care, the share of posts held by British nationals fell from 85% to 67% between 2020/21 and 2025/26, and the vacancy rate came down from its 2021/22 peak to 6.1%. [21](#source-work-and-study-routes-21) [14](#source-work-and-study-routes-14)
 

@@ -1066,6 +1066,37 @@ figures:
           value: Switzerland's postal voting "hasn’t led to major political debates about security or fraud"
           sources:
             - 18
+observationMarks:
+  secret-ballot-against-watching: {rows: ["Louisville, Massachusetts, New York", "US states"]}
+  chile-secret-ballot-effect: {rows: ["Chile"]}
+  mail-voters-often-not-alone: {rows: ["Dowling et al., December 2010 (published 2019)"]}
+  german-court-reduced-control: {lines: ["Germany"], at: "2013"}
+  universal-postal-voting-is-rare: {rows: ["All voters may vote by post"]}
+  france-abolished-over-fraud: {whole: true}
+  uk-fraud-under-on-demand: {lines: ["United Kingdom"], from: "2001", to: "2015"}
+  uk-kept-on-demand-added-checks: {rows: ["Electoral Administration Act", "Elections Act: campaigners barred"]}
+  germany-postal-share-rose: {lines: ["Germany"], at: "2021"}
+  switzerland-about-90-percent: {whole: true}
+  uk-no-large-scale-fraud: {rows: ["Electoral Commission fraud data"]}
+  pressure-rarely-reported: {rows: ["Oregon, 1990s, reported second-hand"]}
+  in-person-not-fully-private: {rows: ["Same survey, in-person comparison", "Democracy Volunteers, UK, July 2024"]}
+  uk-checks-identifiers: {rows: ["Returned postal votes rejected because signature or date of birth could not be verified"]}
+  germany-no-reason-since-2008: {lines: ["Germany"], from: "2005", to: "2021"}
+  uk-postal-share-rose-after-2001: {lines: ["United Kingdom"], from: "2001", to: "2019"}
+  large-democracies-vote-by-post: {rows: ["All voters may vote by post", "Some voters, by country-specific criteria"]}
+  curing-uncommon-abroad: {whole: true}
+  france-widened-proxy: {rows: ["Presidential, after", "Legislative, after", "Municipal, after", "Cantonal, after"]}
+  france-abstention-not-higher: {rows: ["Presidential, before 1975", "Presidential, after", "Legislative, before 1975", "Legislative, after", "Municipal, before 1975", "Municipal, after", "Cantonal, before 1975", "Cantonal, after"]}
+  france-restoration-rejected: {whole: true}
+  secrecy-evidence-is-polling-place: {whole: true}
+  secrecy-doubts-matter: {rows: ["Dowling et al., December 2010 (published 2019)"]}
+  rasmussen-heartland-weak-measure: {rows: ["Rasmussen–Heartland, December 2023"]}
+  pressure-may-be-underreported: {rows: ["Rose pilot, Washington County, Oregon, 2000"]}
+  uk-election-courts: {rows: ["Birmingham (Bordesley Green and Aston)", "Woking", "Tower Hamlets"]}
+  uk-postal-help-insisted: {rows: ["Postal voters who had help filling in their ballot", "Of those, main reason \"another adult insisted on helping me choose who to vote for\""]}
+  uk-2024-no-systemic-problems: {rows: ["Postal voters satisfied with voting"]}
+  secrecy-trade-off-conceded: {rows: ["Germany's Constitutional Court, 2013", "Pickles review, 2016 (reporting submissions)"]}
+  no-study-of-mail-coercion: {rows: ["Birch and Watt, 2004 (as summarised by Essex)", "Southwell (Oregon), 2020"]}
 ---
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-germany-postal-share}
 

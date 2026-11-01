@@ -33,6 +33,6 @@ States should check their own records before writing to anyone. They should fini
 
 ### More states should share data, so matches can be found
 
-[Nine Republican-led states left ERIC in 2022 and 2023](#fact-voter-roll-maintenance/eric-departures), and [its reports of voters moving between states fell as members left](#fact-voter-roll-maintenance/eric-reports-fell). A match needs both states as members. A state that wants clean lists should rejoin ERIC, or build an equally wide match.
+[Nine Republican-led states left ERIC in 2022 and 2023](#fact-voter-roll-maintenance/eric-departures), and [its reports of voters moving between states fell as members left](#fact-voter-roll-maintenance/eric-reports-fell). [A match needs both states as members](#fact-voter-roll-maintenance/eric-reports-fell). A state that wants clean lists should rejoin ERIC, or build an equally wide match.
 
 [Honest elections that can be checked](#principle-verifiably-honest-elections) depend on knowing who is on the list, and [rules should mean what they say](#principle-rules-must-mean-what-they-say) for those who keep it. Eligible citizens should not have to re-prove what the state already knows.

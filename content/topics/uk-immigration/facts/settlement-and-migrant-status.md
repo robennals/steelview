@@ -1283,6 +1283,47 @@ dataStillNeeded:
     why: "The statement that a ten-year baseline would make the UK an outlier comes from a parliamentary committee and a research group; a country-by-country table from each government's rules would let a reader check it."
   - measure: "Evidence on whether longer waits for settlement change where skilled workers choose to go, or prompt people already in the UK to leave"
     why: "The available studies are of refugees and family migrants once in a country; the Migration Observatory says the effect on migration decisions is \"impossible to predict\"."
+observationMarks:
+  forecast-1-6-million: {lines: ["Work", "Other (including BN(O))"]}
+  nrpf-costs: {rows: ["Indefinite leave to remain (unit cost £310)"]}
+  non-working-groups: {rows: ["Dependants of worker visa holders", "Family visa holders", "Refugees and humanitarian protection"]}
+  2012-family-change: {lines: ["Family"], from: "2012", to: "2016"}
+  no-official-data-on-ilr-holders-work-or-benefits: {rows: ["Indefinite leave to remain (not EU scheme)", "EU Settlement Scheme"]}
+  euss-outnumber-non-eu-ilr: {rows: ["EU Settlement Scheme: settled-status grants since 2018", "Non-EU citizens holding indefinite leave, upper estimate (end of 2024)", "Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"]}
+  revoking-opposed-58-29: {rows: ["Remove it from current holders: support", "Remove it from current holders: oppose"]}
+  ending-for-new-arrivals-splits: {rows: ["End new grants of indefinite leave: support", "End new grants of indefinite leave: oppose"]}
+  path-2-2-million: {rows: ["On a temporary visa with a five-year path to settlement (end of 2024)"]}
+  surcharge-matches-average-use: {rows: ["Skilled Worker, over three years, from overseas (unit cost £153)"]}
+  ilr-fee-ten-times-cost: {rows: ["Indefinite leave to remain (unit cost £310)"]}
+  windrush-record: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
+  2010-peak: {lines: ["All settlement grants", "Other (including BN(O))"], at: "2010"}
+  rise-since-2017: {lines: ["All settlement grants", "Work", "Other (including BN(O))"], from: "2017", to: "2025"}
+  cps-projection: {lines: ["All settlement grants"]}
+  no-official-count-of-holders: {rows: ["Non-EU citizens holding indefinite leave, upper estimate (end of 2024)", "Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"]}
+  settlement-varies-by-route: {rows: ["Family", "Study", "Work"]}
+  work-cohorts-settle-more: {rows: ["Work"]}
+  uc-overstates-ilr: {rows: ["Indefinite leave to remain (not EU scheme)"]}
+  social-lettings-nationality: {rows: ["Indefinite leave to remain (not EU scheme)"]}
+  uk-settlement-fee-high-in-europe: {rows: ["UK – Global Talent visa settlement", "Switzerland – settlement for skilled workers"]}
+  bno-route-opened: {lines: ["Other (including BN(O))"], from: "2021", to: "2025"}
+  forecast-peak-and-assumption: {lines: ["All settlement grants"]}
+  forecast-drivers-in-detail: {lines: ["Work", "Other (including BN(O))"]}
+  cps-alternative-and-what-it-stands-by: {lines: ["All settlement grants"]}
+  what-the-234-billion-was: {whole: true}
+  non-eu-ilr-lower-figure: {rows: ["Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"]}
+  children-on-a-path: {rows: ["On a temporary visa with a five-year path to settlement (end of 2024)"]}
+  bno-adults-not-working: {rows: ["Hong Kong BN(O) visa holders"]}
+  protection-cohort-settles: {rows: ["Asylum (granted protection or other leave)"]}
+  command-paper-213000: {rows: ["Indefinite leave to remain (not EU scheme)"]}
+  no-reliable-claim-rate: {rows: ["Indefinite leave to remain (not EU scheme)"]}
+  global-talent-fee-below-cost: {rows: ["Global Talent with an approval letter, from overseas (unit cost £488)"]}
+  lords-on-the-surcharge: {whole: true}
+  why-fees-grow-over-ten-years: {rows: ["Skilled Worker, over three years, from overseas (unit cost £153)"]}
+  longer-routes-and-child-poverty: {whole: true}
+  windrush-generation: {whole: true}
+  windrush-detained-or-removed: {whole: true}
+  windrush-compensation-decisions: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
+  windrush-and-the-current-proposal: {whole: true}
 ---
 Indefinite leave to remain, also called settlement, lets a person live in the UK
 permanently, claim benefits on the same terms as British citizens, and later apply

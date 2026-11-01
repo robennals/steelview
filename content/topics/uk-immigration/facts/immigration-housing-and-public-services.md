@@ -1722,6 +1722,34 @@ dataStillNeeded:
     why: >-
       National pupil numbers are falling, but pressure from migration can be
       local; no local-authority capacity data were gathered.
+observationMarks:
+  investment-does-not-adjust: {lines: ["United Kingdom"]}
+  migration-share-of-household-growth: {rows: ["Migration category variant (ONS main projection)", "Zero net migration"]}
+  building-below-household-growth: {lines: ["Net additional dwellings"], at: "2025"}
+  migrants-concentrated-in-private-renting: {rows: ["Rents: UK-like countries", "Rents: all studies", "Rents: less comparable countries"]}
+  rent-growth-fell-as-migration-fell: {lines: ["United Kingdom"], from: "2024-03", to: "2026-09", at: "2026-09"}
+  immigration-explains-4-6-percent-of-house-price-rise: {rows: ["House prices: UK-like countries"]}
+  rent-effects: {rows: ["Rents: all studies", "House prices: all causal studies", "Rents: UK-like countries", "House prices: UK-like countries"]}
+  lower-migration-raises-spending-per-person: {lines: ["Funding per pupil"]}
+  building-peaked-before-migration: {lines: ["Net additional dwellings"], from: "2020", to: "2025", at: "2020"}
+  rents-are-still-rising: {lines: ["United Kingdom"], at: "2026-09"}
+  local-versus-regional-effects: {rows: ["House prices: UK-like countries", "House prices: less comparable countries"]}
+  public-investment-low: {whole: true}
+  health-capital-below-average: {lines: ["United Kingdom", "OECD median"], from: "2021", to: "2024"}
+  social-rent-building-fell-after-2010: {lines: ["Social rent"], from: "2011", to: "2025", at: "2025"}
+  day-to-day-spending-per-head-above-2010: {lines: ["Funding per pupil"], from: "2019", to: "2027", at: "2027"}
+  council-building-record: {lines: ["Social rent"], at: "2025"}
+  projections-not-a-target: {rows: ["Migration category variant (ONS main projection)", "Zero net migration"]}
+  social-lettings: {whole: true}
+  pupil-numbers-falling: {lines: ["All state-funded schools", "Primary"], from: "2019", to: "2026"}
+  gp-numbers-rising: {whole: true}
+  patients-per-gp-not-obtained: {whole: true}
+  uk-rank-2024: {rows: ["United Kingdom", "Germany", "Denmark", "Spain", "Portugal", "Ireland"]}
+  household-projection-revision: {lines: ["Net additional dwellings"], from: "2022", to: "2025"}
+  rent-timing-not-causal: {lines: ["United Kingdom"], from: "2024-03", to: "2026-09"}
+  how-the-4-6-percent-is-reached: {rows: ["House prices: UK-like countries"]}
+  eal-is-not-a-migration-measure: {lines: ["All state-funded schools"], at: "2026"}
+  local-pressure: {lines: ["All state-funded schools"], from: "2024", to: "2026"}
 ---
 Building in England has run below the number of new households the ONS projects. With zero net migration, the ONS projects 1,287,752 fewer households in England by 2032 than in its main projection — 5.0% of the projected total, and just over half of the 2.4 million projected increase. [1](#source-immigration-housing-and-public-services-1) [3](#source-immigration-housing-and-public-services-3) Prices, however, have risen far more than migration explains: a review commissioned by the Migration Advisory Committee puts immigration at roughly 4–6% of the rise in real UK house prices over three decades. [8](#source-immigration-housing-and-public-services-8)
 

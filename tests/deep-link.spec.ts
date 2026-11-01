@@ -52,6 +52,8 @@ test('a viewpoint step links to the collection it cites', async ({ page }) => {
   );
   expect(hrefs.length).toBeGreaterThan(0);
   for (const href of hrefs) expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
+  // So is a claim in a step's prose, which opens a panel when clicked.
+  await expect(page.locator('.sv-row--viewpoint .sv-walk__prose a[data-panel-link]').first()).toHaveAttribute('href', /^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
 });
 
 // Addresses are permanent and must keep working with no JavaScript to

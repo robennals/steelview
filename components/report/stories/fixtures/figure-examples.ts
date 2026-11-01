@@ -321,6 +321,11 @@ export const figureExamplesFact: Fact = {
       ]
     }
   ],
+  "observationMarks": {
+    "older-law": {
+      "whole": true
+    }
+  },
   "figures": [
     {
       "kind": "series"

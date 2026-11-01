@@ -107,7 +107,7 @@ export function validateTopic(topic: Topic): string[] {
       if (match[1] !== f.id || Number(match[2]) > sourceCount || Number(match[2]) < 1) errors.push(`fact ${f.id}: unknown source reference ${match[1]}-${match[2]}`);
     }
     errors.push(...figureErrors(f, topic));
-    errors.push(...observationMarkErrors(f));
+    errors.push(...observationMarkErrors(f), ...unmarkedObservationErrors(f));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -399,14 +399,17 @@ function knownSection(fact: Fact, section: string): boolean {
 /**
  * M1 — a mark must land on its observation's chart, since a reader takes what
  * it picks out as what the observation is about. Line charts take a region, a
- * point and lines, and comparisons and data tables take rows.
+ * point and lines, and comparisons, tables, timelines, quote comparisons and key
+ * figures take rows. `whole` says an observation is about the entire chart.
  */
+const CANNOT_SHOW_MARKS = 'is on a chart that cannot show marks yet';
+
 function observationMarkErrors(f: Fact): string[] {
-  const groups = observationGroups(f);
+  const groups = new Map([...observationGroups(f, 'subtleties'), ...observationGroups(f)]);
   return Object.entries(f.observationMarks ?? {}).flatMap(([id, mark]) => {
     const where = `fact ${f.id}: observation mark "${id}"`;
     const key = groups.get(id);
-    if (key === undefined) return [`${where} is not an observation of a chart`];
+    if (key === undefined) return [`${where} is not an observation or subtlety of a chart`];
     return markErrors(f, key, mark).map(error => `${where} ${error}`);
   });
 }
@@ -427,13 +430,24 @@ function markErrors(f: Fact, key: string, mark: ObservationMark): string[] {
     ];
   }
   const figure = componentFigure(f, key);
-  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label)
-    ?? (figure?.kind === 'dataTable' ? tableRowHeaders(figure) : undefined);
-  if (!rows) return ['is on a chart that cannot show marks yet'];
+  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label) ?? (figure && figureRows(figure));
+  if (!rows) return [CANNOT_SHOW_MARKS];
   return [
     ...(mark.from || mark.to || mark.at || mark.lines ? ['names periods or lines, but its chart has rows'] : []),
     ...(mark.rows ?? []).filter(row => !rows.includes(row)).map(row => `names "${row}", which is not a row of ${key}`),
   ];
+}
+
+/** What a mark can name on a library figure, or undefined if it has no parts to pick out. */
+function figureRows(figure: Figure): string[] | undefined {
+  switch (figure.kind) {
+    case 'dataTable': return tableRowHeaders(figure);
+    case 'keyFigures': return figure.figures.map(item => item.label);
+    case 'timeline': return figure.events.map(event => event.title);
+    case 'periodTimeline': return figure.rows.map(row => row.label);
+    case 'quoteComparison': return figure.quotes.map(quote => quote.speaker);
+    default: return undefined;
+  }
 }
 
 /** Each row's label in a data table: what its `highlight` and marks name it by. */
@@ -747,6 +761,18 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
   return errors;
+}
+
+/**
+ * M2 — a data panel selects each observation in turn, and a claim in a viewpoint
+ * opens the one it cites, so each must say what it picks out on any chart that
+ * can show it. An observation with nothing narrower to pick out says `whole`.
+ */
+function unmarkedObservationErrors(f: Fact): string[] {
+  const groups = new Map([...observationGroups(f, 'subtleties'), ...observationGroups(f)]);
+  return [...groups].flatMap(([id, key]) => f.observationMarks?.[id] || markErrors(f, key, {}).includes(CANNOT_SHOW_MARKS)
+    ? []
+    : [`fact ${f.id}: "${id}" has no entry in observationMarks`]);
 }
 
 /**

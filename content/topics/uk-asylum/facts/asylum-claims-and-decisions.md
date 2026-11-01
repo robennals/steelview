@@ -1857,6 +1857,27 @@ dataStillNeeded:
       Eurostat stopped publishing UK figures after Brexit, so UK comparisons
       rest on Home Office counts that are close to, but not defined
       identically with, Eurostat's first-time applicants.
+observationMarks:
+  small-boat-claims-mostly-granted: {rows: ["Arrived 2018", "Arrived 2020", "Arrived 2021", "Arrived 2022", "Arrived 2025"]}
+  grant-rates-by-nationality: {rows: ["Eritrea, 2025", "Sudan, 2025"]}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals allowed"], at: "2025"}
+  final-outcomes-after-appeal: {lines: ["At initial decision", "At latest outcome"], from: "2007", to: "2022"}
+  why-the-grant-rate-fell: {rows: ["Actual 2022", "Actual 2025"]}
+  within-nationality-falls: {rows: ["Syria, 2022", "Syria, 2025"]}
+  standard-of-proof: {lines: ["All nationalities (main applicants)"], from: "2022", to: "2025"}
+  claims-over-time: {lines: ["All claimants"], from: "2002", to: "2025", at: "2002"}
+  claims-now-falling: {lines: ["All claimants"], from: "2024", to: "2025"}
+  routes-before-claiming: {lines: ["All claimants"], at: "2025"}
+  uk-per-head-now-at-eu-average: {lines: ["United Kingdom", "EU27"], at: "2025"}
+  grant-rate-over-time: {lines: ["All nationalities (main applicants)"], from: "2022", to: "2025", at: "2022"}
+  recent-cohorts-incomplete: {lines: ["At initial decision", "At latest outcome"], from: "2023", to: "2025"}
+  withdrawals: {lines: ["Withdrawn"], from: "2021", to: "2024"}
+  appeals-backlog: {lines: ["Asylum and protection appeals allowed"], from: "2022", to: "2025"}
+  2023-2024-arrivals-granted-under-half: {rows: ["Arrived 2022", "Arrived 2023", "Arrived 2024"]}
+  eu-grant-rate-similar: {rows: ["United Kingdom", "EU27 as a whole"]}
+  uk-and-eu-by-nationality: {rows: ["Afghanistan, UK", "Afghanistan, EU27", "Somalia, UK", "Somalia, EU27", "Syria, UK", "Syria, EU27", "Iran, UK", "Iran, EU27", "Sudan, UK", "Sudan, EU27", "Vietnam, UK", "Vietnam, EU27"]}
+  people-and-cases: {lines: ["All claimants", "Main applicants only"], at: "2001"}
+  rank-depends-on-measure: {rows: ["United Kingdom"]}
 ---
 Asylum claims in the UK reached about 105,000 people in 2024, the highest since records began in 1979, and about 101,000 in 2025. [3](#source-asylum-claims-and-decisions-3) Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the EU+ and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7) The share of claims granted at initial decision fell from a record 76% in 2022 to 42% in 2025, [15](#source-asylum-claims-and-decisions-15) [16](#source-asylum-claims-and-decisions-16) and an appeal is allowed in about two in five cases heard. [26](#source-asylum-claims-and-decisions-26)
 

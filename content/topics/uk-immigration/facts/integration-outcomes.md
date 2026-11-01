@@ -1719,6 +1719,52 @@ comparisons:
       - label: British Muslims
         value: 28
         highlight: true
+observationMarks:
+  foreign-born-share-quadrupled: {lines: ["Born outside the UK"], from: "1951", to: "2021", at: "2021"}
+  recent-arrivals-struggle-with-english: {rows: ["Arrived 2011 to 2021", "Arrived before 1971"]}
+  identity-rises-with-time: {rows: ["Arrived 1981 to 1990", "Arrived 2011 to 2021"]}
+  denmark-menapt-vs-western: {lines: ["Immigrants from MENAPT countries", "Immigrants from Western countries"], at: "2019"}
+  denmark-annual-not-lifetime: {lines: ["Danish origin", "Immigrants from MENAPT countries"]}
+  denmark-cost-fell-with-employment: {lines: ["Immigrants from MENAPT countries"], from: "2014", to: "2019"}
+  muslim-attitudes-homosexuality: {rows: ["General public", "British Muslims"]}
+  attitude-survey-methods: {rows: ["General public", "British Muslims"]}
+  minority-pupils-outperform: {rows: ["White British", "Chinese", "Indian", "Asian other", "Bangladeshi", "Mixed White and Asian", "White Irish", "Mixed other", "Black African", "White other", "Pakistani", "Other", "Mixed White and Black African"]}
+  a-stock-not-a-flow: {lines: ["Born outside the UK"], at: "2021"}
+  fastest-changing-places: {rows: ["Barking and Dagenham", "Watford", "Havering", "Thurrock", "England and Wales"]}
+  eu-share-of-the-change: {rows: ["Boston", "Peterborough", "Thurrock", "Luton", "Barking and Dagenham", "Watford"]}
+  non-eu-origins-vary: {rows: ["Hillingdon", "Swindon", "Sandwell", "Leicester", "Dartford", "Salford"]}
+  english-rises-with-time: {rows: ["Arrived before 1971", "Arrived 2011 to 2021"]}
+  employment-gaps-narrowing: {lines: ["Pakistani and Bangladeshi", "Indian", "White British"], from: "2004", to: "2022"}
+  wider-labour-market: {lines: ["All"], from: "2010", to: "2022"}
+  gap-is-among-women: {rows: ["Pakistani and Bangladeshi"]}
+  muslim-employment: {rows: ["Muslim", "England and Wales"]}
+  muslim-qualifications: {rows: ["Muslim", "England and Wales"]}
+  denmark-route-matters: {lines: ["Immigrants from MENAPT countries", "Immigrants from Western countries"], at: "2019"}
+  denmark-descendants-are-children: {lines: ["Descendants, Western origin", "Descendants, MENAPT origin", "Descendants, other non-Western origin"]}
+  netherlands-by-motive: {rows: ["Labour migration", "Family migration", "Asylum migration"]}
+  netherlands-by-region: {rows: ["Morocco", "Horn of Africa and Sudan"]}
+  norway-model: {rows: ["R1 (Western Europe, North America, Australia, New Zealand)", "R3 (rest of the world)"]}
+  gcse-fsm: {rows: ["White British", "Irish traveller", "Gypsy, Roma"]}
+  university-entry: {lines: ["Chinese", "White"], at: "2024"}
+  cohesion-stable: {lines: ["People from different backgrounds get on well together"], from: "2023", to: "2024", at: "2024"}
+  trust-lower-than-2013: {lines: ["Many people in the neighbourhood can be trusted"], at: "2024"}
+  trust-tracks-deprivation: {lines: ["Many people in the neighbourhood can be trusted"]}
+  diversity-and-trust-research: {lines: ["Many people in the neighbourhood can be trusted"]}
+  muslim-belonging: {rows: ["British Muslims"]}
+  attitudes-generations: {rows: ["British Muslims"]}
+  non-eu-led-places: {rows: ["Hillingdon", "Dartford", "Swindon", "Sandwell", "Sutton"]}
+  census-origins-by-continent: {rows: ["Hillingdon", "Swindon", "Sandwell", "Leicester", "Dartford", "Salford"]}
+  snapshot-not-cohort: {whole: true}
+  religion-not-age-adjusted: {rows: ["Muslim"]}
+  denmark-all-immigrants-and-descendants: {lines: ["Immigrants from Western countries", "Immigrants from MENAPT countries", "Immigrants from other non-Western countries", "Descendants, Western origin", "Descendants, MENAPT origin", "Descendants, other non-Western origin"], at: "2019"}
+  denmark-employment-gap-value: {lines: ["Immigrants from MENAPT countries", "Danish origin"], at: "2019"}
+  netherlands-not-cpb: {whole: true}
+  norway-assumptions: {rows: ["R3 (rest of the world)"]}
+  every-group-entry-rate-rose: {whole: true}
+  ethnicity-is-not-generation: {whole: true}
+  lowest-attainment-scores: {rows: ["Gypsy, Roma", "Irish traveller", "Mixed White and Black Caribbean"]}
+  diversity-not-immigration: {lines: ["Many people in the neighbourhood can be trusted"]}
+  london-segregation-and-cohesion: {lines: ["People from different backgrounds get on well together"]}
 ---
 Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
 

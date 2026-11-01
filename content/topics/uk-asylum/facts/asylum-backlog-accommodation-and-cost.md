@@ -1592,6 +1592,26 @@ figures:
       - site: MOD Linton-on-Ouse, North Yorkshire
         status: { value: Discussions under way, sources: [39] }
         people: Not given per site
+observationMarks:
+  queue-moved-to-appeals: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
+  support-costs-about-4bn-a-year: {rows: ["2024-25"]}
+  backlog-and-hotels-below-peaks: {lines: ["People awaiting an initial decision"], from: "2023-06", to: "2026-06"}
+  hotels-third-of-people-three-quarters-of-cost: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
+  why-the-queue-rose-and-fell: {lines: ["People awaiting an initial decision"], from: "2021-06", to: "2026-06"}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals open at the tribunal"]}
+  support-fell-less-than-the-queue: {from: "2023-09", to: "2026-06"}
+  dispersal-kept-growing: {lines: ["Dispersal accommodation"]}
+  hotel-use-far-below-peak: {lines: ["Hotels"], from: "2023-09", to: "2026-06"}
+  large-sites-small-share: {lines: ["Initial accommodation, other contingency and large sites"], at: "2026-06"}
+  hotels-drove-the-rise-and-fall: {rows: ["2022-23", "2023-24", "2024-25"]}
+  share-of-home-office-budget: {rows: ["2023-24", "2025-26"]}
+  accommodation-dominates-system-cost: {rows: ["Accommodation and support", "Appeals", "Detention and removals"]}
+  contracts-cost-overrun: {rows: ["Share of the contracts' cost"]}
+  large-sites-cost-and-reversal: {rows: ["Wethersfield, Essex (former RAF base)", "Crowborough Training Camp, East Sussex", "MOD Bicester (Site A), between Piddington and Upper Arncott, Oxfordshire", "MOD Barnham, Suffolk", "MOD Linton-on-Ouse, North Yorkshire"]}
+  europe-uses-large-sites-too: {whole: true}
+  people-and-appeals-are-different-counts: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], at: "2026-06"}
+  whole-system-is-larger: {lines: ["People awaiting an initial decision"], at: "2024-06"}
+  hotel-shares-date-from-2024: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
 ---
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-queue}
 

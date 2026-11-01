@@ -725,6 +725,8 @@ export const observationMarkSchema = z.strictObject({
   at: partialDate.optional(),
   lines: z.array(z.string().min(1)).min(1).optional(),
   rows: z.array(z.string().min(1)).min(1).optional(),
+  /** The observation is about the chart as a whole, so nothing in it recedes. */
+  whole: z.literal(true).optional(),
 }).refine(mark => Object.keys(mark).length > 0, 'must pick out part of the chart');
 
 export const factFrontmatterSchema = z.object({

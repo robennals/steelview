@@ -405,6 +405,25 @@ figures:
     id: "hostage-taking"
     description: "The US Secretary of State designated Iran \"a state sponsor of wrongful detention\" on 27 February 2026, the day before the war."
     quote: { text: "The Iranian regime must stop taking hostages and release all Americans unjustly detained in Iran, steps that could end this designation and associated actions", speaker: "Marco Rubio", role: "US Secretary of State", date: "2026-02-27", source: 15 }
+observationMarks:
+  attacks-on-us-forces-before-the-war: {lines: ["Confirmed attacks (WINEP)"], from: "2023-10", to: "2024-12"}
+  argentine-court-buenos-aires-bombings: {rows: ["1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires"]}
+  us-convictions-iran-directed-plots: {rows: ["Plot to kill journalist Masih Alinejad in New York", "Second plot against Alinejad, organised by Farhad Shakeri"]}
+  plots-mostly-target-opponents: {rows: ["Plots in Europe, 2021–2024", "Of which targeted Iranian dissidents"]}
+  attacks-came-in-a-burst: {lines: ["Confirmed attacks (WINEP)"], from: "2023-10", to: "2024-01"}
+  pause-before-october-2023: {lines: ["Confirmed attacks (WINEP)"], at: "2023-10"}
+  no-foreknowledge-of-october-7: {lines: ["Confirmed attacks (WINEP)"], at: "2023-10"}
+  us-plots-were-foiled: {rows: ["Alleged plot to kill the Saudi ambassador in Washington", "Alleged tasking of Farhad Shakeri to surveil and plot against President-elect Trump", "Plot to kill journalist Masih Alinejad in New York", "Second plot against Alinejad, organised by Farhad Shakeri"]}
+  amia-indictee-held-office: {rows: ["AMIA bombing: seven Iranians and a Lebanese charged, including four former officials"]}
+  mi5-uk-plots-and-arrests: {rows: ["potentially lethal Iran-backed plots tracked", "arrests in the UK from Iran-linked operations"]}
+  irgc-behind-arson-front: {rows: ["arrests in the UK from Iran-linked operations"]}
+  mi5-targets-opponents: {rows: ["potentially lethal Iran-backed plots tracked"]}
+  plot-pace-varies: {rows: ["Plots in the dataset", "Plots in Europe in the decade after 9/11", "Plots in the decade 2011–2021"]}
+  plot-counts-one-author: {rows: ["Plots in the dataset", "Plots in the expanded dataset"]}
+  state-sponsor-since-1984: {rows: ["Syria", "Iran"]}
+  leading-state-sponsor: {rows: ["Iran"]}
+  houthi-materiel-similar-to-iranian: {rows: ["Iran"]}
+  similar-not-proven-supplied: {rows: ["Iran", "Armed groups in Iraq", "Armed groups in Lebanon"]}
 ---
 ## Observations {#iran-actions-abroad--observations-confirmed-attacks}
 

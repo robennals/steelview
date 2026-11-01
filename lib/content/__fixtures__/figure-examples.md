@@ -222,6 +222,8 @@ comparisons:
     items:
       - { label: For the bill, value: 50 }
       - { label: Against the bill, value: 50 }
+observationMarks:
+  older-law: {whole: true}
 figures:
   - kind: series
   - kind: comparison

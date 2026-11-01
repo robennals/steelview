@@ -1059,8 +1059,14 @@ test('a mark that lands on its chart passes', () => {
   assert.deepEqual(markErrors({ up: { at: '1992' } }), []);
 });
 
+test('every observation on a chart that can show marks must say what it picks out', () => {
+  const errors = (marks: Fact['observationMarks']) => validateTopic({ ...soundTopic(), facts: [markedFact(marks)] }).filter(error => error.includes('has no entry in observationMarks'));
+  assert.equal(errors(undefined).length, 2);
+  assert.deepEqual(errors({ up: { at: '1992' }, low: { whole: true } }), []);
+});
+
 test('a mark must name what is on its chart', () => {
-  assert.match(markErrors({ gone: { lines: ['Immigration'] } })[0], /"gone" is not an observation of a chart/);
+  assert.match(markErrors({ gone: { lines: ['Immigration'] } })[0], /"gone" is not an observation or subtlety of a chart/);
   assert.match(markErrors({ up: { lines: ['B'] } })[0], /names "B", which is not a line of people/);
   assert.match(markErrors({ up: { from: '1989' } })[0], /period 1989 is outside the series/);
   assert.match(markErrors({ up: { from: '1992', to: '1990' } })[0], /from before to/);

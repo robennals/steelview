@@ -601,6 +601,21 @@ figures:
     figures:
       - { value: 1000, qualifier: "fewer than", asPublished: "under 1,000", format: { unit: "count" }, label: "Patriot interceptors", period: "2026-07-27", source: 14 }
       - { value: 250, qualifier: "about", asPublished: "about 250", format: { unit: "count" }, label: "THAAD interceptors", period: "2026-07-27", source: 14 }
+observationMarks:
+  half-of-deaths-non-hostile: {lines: ["Hostile deaths", "Non-hostile deaths"]}
+  cost-38-to-47-billion: {rows: ["Pentagon, testimony 29 Apr", "CBO, to 1 Aug", "Pentagon to Congress, to 3 Sep", "Pentagon to Congress, reported by AP 29 Oct"]}
+  monthly-cost-going-forward: {rows: ["CBO, to 1 Aug"]}
+  no-count-after-april: {rows: ["HRANA", "Hengaw", "Iranian authorities (via WHO)", "Airwars"]}
+  displaced-millions: {rows: ["Displaced (WHO estimate)", "Population of Iran, 2025"]}
+  interceptor-stocks: {rows: ["Patriot interceptors", "THAAD interceptors"]}
+  civilian-minimum-by-april: {rows: ["HRANA, to 7 April"]}
+  iraq-overran-estimates: {rows: ["Daniels (White House budget office), 2002", "Appropriated for Iraq, FY2001–14"]}
+  us-deaths-small-share-of-iraq: {rows: ["Iran war, Feb–Oct 2026", "Operation Iraqi Freedom (2003–10)"]}
+  wounded-track-fighting: {lines: ["Wounded in action"], from: "2026-03", to: "2026-07", at: "2026-07"}
+  airwars-uses-hrana: {rows: ["HRANA", "Airwars"]}
+  most-deaths-military-by-hengaw: {rows: ["Hengaw, to 8 April"]}
+  counters-disagree: {rows: ["HRANA, to 7 April", "Hengaw, to 8 April"]}
+  cost-small-against-iraq: {rows: ["Iran war, Pentagon as reported 29 Oct 2026", "Iraq (OIF and New Dawn), FY2001–14"]}
 ---
 ## Observations {#human-and-financial-costs-of-the-war--observations-us-wounded}
 

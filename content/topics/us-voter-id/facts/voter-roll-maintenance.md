@@ -1407,6 +1407,29 @@ figures:
         compared: 'Removals states made under settlements'
         counts: { value: 'Registrations removed through the NVRA process: 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky', sources: [43] }
         outcome: 'Reported April 2025'
+observationMarks:
+  pew-only-direct-measure: {rows: ["Inaccurate or no longer valid, de-duplicated total"]}
+  pew-not-fraud: {rows: ["Incorrect address"]}
+  lists-contain-ineligible: {lines: ["Records removed"]}
+  eric-cross-state-movers: {lines: ["Cross-state movers"]}
+  eric-reports-fell: {lines: ["Cross-state movers"], from: "2021", to: "2025"}
+  bulk-matching-errs: {whole: true}
+  nonresponse-largest: {lines: ["No notice reply, missed two federal elections"]}
+  ohio-notice-replies: {rows: ["Replied \"I have not moved\"", "Replied \"I have moved\""]}
+  nvra-90-day-rule: {rows: ["Must finish"]}
+  eric-departures: {lines: ["Members covered by reports"], from: "2022", to: "2024"}
+  litigation-driven-removals: {rows: ["Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017"]}
+  bloated-claims-count-inactive: {rows: ["Judicial Watch, 2019: 378 counties above 100% registration", "Judicial Watch, October 2020: 353 counties with 1.8 million more registrants than eligible citizens"]}
+  florida-2000-list: {rows: ["Florida felon list, 2000"]}
+  save-flags-citizens: {rows: ["Texas SAVE check, 2025–26"]}
+  purge-totals-mostly-lawful: {whole: true}
+  notices-mostly-unreturned: {rows: ["Unreturned (no reply and not returned undeliverable)", "Returned undeliverable"]}
+  husted-ruling: {rows: ["May remove someone for a move"]}
+  virginia-2024-stay: {rows: ["Must finish"]}
+  mostly-moves-deaths-nonresponse: {lines: ["No notice reply, missed two federal elections", "Moved out of jurisdiction", "Died"]}
+  removals-21-million: {lines: ["Records removed"], at: "2024"}
+  removals-trend: {lines: ["Records removed"], from: "2008", to: "2024"}
+  state-range: {rows: ["Utah", "Puerto Rico", "Texas"]}
 ---
 ## Observations {#voter-roll-maintenance--observations-removals-count}
 

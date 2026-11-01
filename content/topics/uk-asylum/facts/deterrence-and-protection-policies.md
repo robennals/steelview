@@ -1635,6 +1635,35 @@ figures:
       - measure: 'Repayment of asylum support by refugees who can afford it, suggested at around £10,000'
         applies-to: Adults who received support
         status: { value: In the Bill; amount set by regulations, sources: [57, 59] }
+observationMarks:
+  australia-arrivals-fell-after-turnbacks: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
+  rwanda-cost-and-relocations: {whole: true}
+  offshore-cost-per-year: {lines: ["Estimated actual cost"]}
+  australia-outcomes: {rows: ["Died"]}
+  turnbacks-need-departure-country: {whole: true}
+  work-bans-reduce-employment: {rows: ["Fasani, Frattini and Minale (2021)", "Marbach, Hainmueller and Hangartner (2018)", "Hainmueller, Hangartner and Lawrence (2016)"]}
+  work-rights-modest-association: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  australia-peak: {lines: ["People arriving by boat"], from: "2009", to: "2013"}
+  offshore-processing-alone: {lines: ["People arriving by boat"], from: "2012", to: "2013"}
+  australia-cause: {lines: ["People arriving by boat"], from: "2013", to: "2014"}
+  australia-stayed-in-refugee-convention: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
+  returned-not-landed: {lines: ["Brought to Australia and transferred offshore", "Returned to country of departure"], from: "2015", to: "2019"}
+  nauru-transfers-resumed: {lines: ["Brought to Australia and transferred offshore"]}
+  offshore-fixed-costs: {lines: ["Estimated actual cost"], from: "2014", to: "2021"}
+  rwanda-untested: {whole: true}
+  denmark-intake-low: {lines: ["Denmark"], at: "2025"}
+  denmark-2016-fall-matched-sweden: {lines: ["Denmark", "Sweden"], from: "2015", to: "2016"}
+  denmark-several-changes: {lines: ["Denmark"], from: "2015", to: "2025"}
+  forty-year-low: {lines: ["Denmark"], from: "2020", to: "2025"}
+  denmark-grant-rate: {lines: ["Denmark"], at: "2025"}
+  denmark-rank-2025: {rows: ["Denmark", "Sweden", "Germany"]}
+  less-secure-status-no-employment-gain: {rows: ["Denmark, 2002", "Denmark, 2007", "Germany, 2016", "Sweden, 2016"]}
+  sweden-short-run-exception: {rows: ["Sweden (natural experiment, published 2020)"]}
+  no-uk-evaluation: {whole: true}
+  uk-work-rule: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  inspired-by-denmark: {rows: ["30-month protection, renewed at review only if return is still unsafe", "20-year wait for settlement on \"core protection\", unless the refugee switches to a work or study route", "Refugee family reunion"]}
+  bill-not-law: {rows: ["30-month protection, renewed at review only if return is still unsafe", "One \"protection status\" replaces refugee status and humanitarian protection", "Repayment of asylum support by refugees who can afford it, suggested at around £10,000"]}
+  arrivals-are-not-attempts: {lines: ["People arriving by boat"], from: "2014", to: "2016"}
 ---
 ## Observations {#deterrence-and-protection-policies--observations-arrivals}
 

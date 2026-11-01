@@ -935,6 +935,26 @@ figures:
           sources:
             - 29
         outcome: Eight convicted (by April 1984)
+observationMarks:
+  most-voidings-absentee: {rows: ["Mainly absentee or mail ballots", "Absentee or mail ballots, plus other illegal votes"]}
+  carter-baker-largest-source: {rows: ["Miami mayoral election (dated 1998 by Carter–Baker)"]}
+  each-case-caught-and-rerun: {rows: ["Miami mayoral election (dated 1998 by Carter–Baker)", "East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Paterson, N.J., 2020", "Aberdeen, Miss., 2020 primary", "Bridgeport, Conn., 2023 primary"]}
+  few-cases-against-ballots-cast: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
+  detected-fraud-is-a-floor: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
+  no-voidings-in-all-mail-states: {whole: true}
+  carter-baker-oregon: {whole: true}
+  officials-manipulated-count: {rows: ["Philadelphia, 1993", "Lincoln County, W.Va., 2010 primary"]}
+  refusals-ended-in-certification: {rows: ["Otero County, N.M., 2022 primary", "Cochise County, Ariz., 2022 general"]}
+  some-voidings-not-absentee: {rows: ["Ineligible or out-of-district voters, or ballot order", "Votes ruled invalid, voting method not stated", "Vote buying"]}
+  voided-races-small-and-close: {rows: ["East Chicago, Ind., 2003 primary: winning margin", "Vernon, Calif. (entry 2012): winning margin", "Weslaco, Tex., 2013: winning margin", "Perth Amboy, N.J. (entry 2015): winning margin", "Wetumpka, Ala. (entry 2017): winning margin", "Aberdeen, Miss., 2020 primary: winning margin", "Caddo Parish, La., 2023 runoff: winning margin", "Harris County, Tex., judicial race (entry 2024): winning margin"]}
+  invalid-could-change-winner: {rows: ["Vernon, Calif. (entry 2012): winning margin", "Vernon: ballots ruled invalid", "Weslaco, Tex., 2013: winning margin", "Weslaco: ballots illegally cast", "Perth Amboy, N.J. (entry 2015): winning margin", "Perth Amboy: illegal absentee ballots (at least)", "Wetumpka, Ala. (entry 2017): winning margin", "Wetumpka: absentee ballots thrown out", "Aberdeen, Miss., 2020 primary: winning margin", "Aberdeen: absentee ballots not valid", "Caddo Parish, La., 2023 runoff: winning margin", "Caddo Parish: illegal votes (at least)", "Harris County, Tex., judicial race (entry 2024): winning margin", "Harris County: illegal votes"]}
+  absentee-far-more-than-impersonation: {rows: ["Heritage: tagged absentee-ballot fraud", "Heritage: tagged impersonation at the polls", "News21: absentee ballot fraud", "News21: in-person voter impersonation"]}
+  absentee-schemes-voided-elections: {rows: ["East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Bridgeport, Conn., 2023 primary"]}
+  paterson-voided-no-convictions: {rows: ["Paterson, N.J., 2020"]}
+  no-signature-review-case-found: {rows: ["Arizona governor, 2022"]}
+  in-person-machine-fraud-record: {rows: ["Kansas City, 1936", "Chicago, 1982"]}
+  hand-count-of-a-sample: {rows: ["Absentee or mail ballots, plus other illegal votes"]}
+  floor-not-evidence-of-common: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
 ---
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-elections}
 

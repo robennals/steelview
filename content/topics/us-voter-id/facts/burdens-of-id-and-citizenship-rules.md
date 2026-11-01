@@ -1234,6 +1234,39 @@ dataStillNeeded:
     why: >-
       The 2006 and 2023 surveys asked different questions, so there is no
       trend in how many citizens lack ID.
+observationMarks:
+  no-id-versus-outdated-id: {rows: ["No government photo ID of any kind", "Unexpired licence lacking current name or address"]}
+  dpoc-not-readily-available: {rows: ["Cannot readily reach proof of citizenship (includes none)", "No proof-of-citizenship document at all"]}
+  national-panel-no-turnout-effect: {rows: ["National panel: registration", "National panel: turnout"]}
+  burden-without-turnout-effect: {rows: ["National panel: turnout", "GAO: Kansas turnout", "GAO: Tennessee turnout"]}
+  kansas-blocked-vs-noncitizens: {rows: ["Applications suspended or cancelled (2013–2016)", "Non-citizens confirmed on the rolls (1999–2013)"]}
+  kansas-dpoc-possession-unknown: {rows: ["Applications suspended or cancelled (2013–2016)"]}
+  arizona-218000: {whole: true}
+  rejected-texans-did-not-vote: {rows: ["Application or ballot rejected", "Mail ballot rejected", "Ballot rejected, then voted in person"]}
+  licence-by-age-income: {rows: ["Age 18–24", "Income under $30,000"]}
+  no-licence-by-race-party: {rows: ["Black", "Hispanic", "Independents/others", "White", "Republicans"]}
+  gao-larger-drops-young-new-black: {rows: ["GAO Kansas: Black vs white", "GAO Tennessee: Black vs white", "GAO Kansas: aged 18 vs 44–53", "GAO Tennessee: aged 18 vs 44–53", "GAO Kansas: newly registered vs 20+ years", "GAO Tennessee: newly registered vs 20+ years"]}
+  mobilisation-may-offset: {rows: ["National panel: non-white vs white"]}
+  georgia-rejections-near-national: {lines: ["Georgia", "United States"]}
+  two-states-opposite: {lines: ["Texas", "Georgia"], from: "2018", to: "2022"}
+  arizona-eight-noncitizens: {rows: ["Found to be non-citizens who voted"]}
+  who-ran-the-survey: {whole: true}
+  2006-survey-not-comparable: {rows: ["No government photo ID of any kind", "Cannot readily reach proof of citizenship (includes none)"]}
+  dpoc-by-group: {rows: ["Independents", "People of color", "Republicans"]}
+  georgia-gap-widened-2022: {lines: ["White minus nonwhite"], at: "2022"}
+  georgia-gap-predates-sb202: {lines: ["White minus Black"], from: "2014", to: "2020"}
+  georgia-few-problems-2022: {lines: ["White minus nonwhite"], at: "2022"}
+  georgia-2024-turnout: {lines: ["White", "Black"], from: "2020", to: "2024"}
+  gb-turnaways-small: {rows: ["May 2023 local, first turned away", "May 2023 local, did not return and vote", "July 2024 general, first turned away", "July 2024 general, did not return and vote"]}
+  gb-non-voters-cite-id: {rows: ["July 2024 general, did not return and vote"]}
+  kansas-noncitizens-not-zero: {rows: ["Non-citizens who registered or tried to (about 19 years)", "Non-citizens confirmed on the rolls (1999–2013)"]}
+  texas-still-above-baseline: {lines: ["Texas", "United States"], from: "2020", to: "2024"}
+  texas-rate-fell-after-primary: {lines: ["Texas"], at: "2022"}
+  texas-2018-denominator: {lines: ["Texas"], at: "2018"}
+  texas-march-2022-spike: {rows: ["Texas statewide, March 2022", "Harris County, March 2022", "Harris County, March 2018"]}
+  no-effect-on-fraud: {rows: ["National panel: registration", "National panel: turnout"]}
+  gao-kansas-tennessee: {rows: ["GAO: Kansas turnout", "GAO: Tennessee turnout"]}
+  why-no-licence: {rows: ["Don't drive or don't like driving", "Cost of a licence", "Unpaid fines or other financial or legal difficulties", "Lack of time", "Lack of underlying documents"]}
 ---
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-rejection-rate}
 

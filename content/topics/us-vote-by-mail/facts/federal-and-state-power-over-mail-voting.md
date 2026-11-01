@@ -843,6 +843,22 @@ figures:
           sources:
             - 12
             - 14
+observationMarks:
+  elections-clause-text: {rows: ["Elections Clause"]}
+  usps-rule-blocked: {rows: ["Postal Service final rule (published 26 Aug 2026)"]}
+  eo-14248-deadlines-enjoined: {rows: ["EO 14248 ballot-receipt provisions (25 Mar 2025)"]}
+  eo-14399-stands: {rows: ["EO 14399, Section 3 (31 Mar 2026)"]}
+  state-rules-move-both-ways: {lines: ["No-excuse or all-mail"]}
+  receipt-deadlines-swung-back: {lines: ["Counted if postmarked by Election Day and arriving later"], from: "2024-11", to: "2026-11"}
+  congress-set-uocava-rules: {rows: ["Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA)", "MOVE Act (amending UOCAVA)"]}
+  congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
+  watson-leaves-it-to-legislatures: {rows: ["Watson v. RNC (5–4)"]}
+  bills-on-both-sides: {rows: ["Freedom to Vote Act (Democratic)", "SAVE America Act (Republican)"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022", "S. 5271, photo ID only (Republican), 8 Aug 2026", "Needed to end debate"]}
+  save-america-mail-unclear: {rows: ["SAVE America Act (Republican)"]}
+  save-america-status: {rows: ["SAVE America Act (Republican)"]}
+  watson-appearance-of-fraud: {rows: ["Watson v. RNC (5–4)"]}
+  alito-congress-may-create-rules: {rows: ["Postal Service final rule (published 26 Aug 2026)"]}
 ---
 This report is a dated legal record, as of 29 October 2026, the week before the November midterms. Several items will change after that election: the SAVE America Act in a lame-duck session, the First Circuit appeals over both executive orders, and the Postal Service rule for later elections.
 

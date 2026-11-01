@@ -955,6 +955,29 @@ figures:
       - { text: "it's buried and we're watching it. We know exactly what they have", speaker: "Pete Hegseth", role: "US Defense Secretary", date: "2026-04-08", source: 11 }
       - { text: "no identifiable route to produce weapon-grade uranium", speaker: "Institute for Science and International Security (ISIS)", date: "2026-06-09", source: 2 }
       - { text: "cannot provide any information on the current size, composition or whereabouts", speaker: "IAEA", context: "Of the stock of enriched uranium.", date: "2026-09-01", source: 1 }
+observationMarks:
+  sixty-is-not-ninety: {lines: ["60% stock (IAEA estimate)"]}
+  only-non-weapon-state-at-60: {lines: ["60% stock (IAEA estimate)"], at: "2025-05-17"}
+  sixty-percent-growth: {lines: ["60% stock (IAEA estimate)"], from: "2024-10-26", to: "2025-05-17"}
+  stock-unaccounted-for: {lines: ["60% stock (IAEA estimate)"], at: "2025-06-13"}
+  deal-era-compliance: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2017-02-18", to: "2019-05-20"}
+  breaches-after-us-exit: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2018-05-14", to: "2019-07-01", at: "2019-07-01"}
+  geneva-talks-feb-2026: {whole: true}
+  board-referral-with-abstentions: {rows: ["GOV/2026/40, 10 June 2026", "GOV/2026/61, 9 September 2026 (referral to the UN)"]}
+  close-to-weapons-grade-before-strikes: {rows: ["\"Probably less than one week\""]}
+  no-route-to-weapons-grade: {rows: ["\"More than a year\"; \"no identifiable route\" to weapons-grade uranium"]}
+  access-narrowed-in-steps: {rows: ["Iran stops applying the Additional Protocol, ending complementary access", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck"]}
+  verification-stopped: {rows: ["US and Israeli strikes; verification stops again", "One inspection, at the Bushehr power plant"]}
+  ata-2025-not-building: {rows: ["\"Iran is not building a nuclear weapon\""]}
+  no-ongoing-programme-2025: {rows: ["\"no credible indications of an ongoing, undeclared structured nuclear programme\""]}
+  past-weapons-work: {rows: ["Weapons-relevant work \"took place under a structured programme\"", "A \"coordinated effort\" before the end of 2003"]}
+  mou-no-weapons-clause: {rows: ["\"Iran reaffirms that it shall not procure or develop nuclear weapons\""]}
+  total-stock-dips: {lines: ["Enriched stock (IAEA)"], from: "2021-05-22", to: "2024-08-17", at: "2021-08-30"}
+  estimates-after-2021: {lines: ["Enriched stock (IAEA)"], from: "2021-02-16", to: "2025-06-13"}
+  estimates-differ-by-measure: {rows: ["\"Probably less than one week\"", "9 to 12 months", "Enough for \"more than a dozen\" weapons if further enriched", "\"Unclear\""]}
+  damage-claims-conflict: {rows: ["Pete Hegseth", "IAEA"]}
+  grossi-june-2025: {rows: ["No information in June 2025 on \"a structured systematic … program to build or to construct a nuclear weapon\""]}
+  ata-2026-silent: {rows: ["Iran was \"intending to try to recover\" its nuclear infrastructure"]}
 ---
 ## Observations {#iran-nuclear-programme--observations-total-stock}
 

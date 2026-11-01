@@ -850,11 +850,23 @@ observationMarks:
   latest-fall: {lines: [Immigration], from: '2024', to: '2025'} # a region of some lines
   pandemic-dip: {lines: [Net migration], at: '2020'}            # a point, labelled with its value
   asylum-net-steady: {lines: [Asylum]}                          # some lines
-  uk-mid-table-per-head: {rows: [United Kingdom]}               # rows of a comparison or data table
+  uk-mid-table-per-head: {rows: [United Kingdom]}               # rows of a comparison or table
+  rules-tightened: {rows: [Immigration Act 2014]}               # a timeline event, by title
+  ministers-disagree: {rows: [Theresa May]}                     # a quote comparison's speaker
+  whole-picture: {whole: true}                                  # the entire chart; nothing recedes
 ```
 
 Marks are checked against the chart: every line, period and row must be on it.
-Other kinds of figure cannot show marks yet.
+Comparisons, data tables, key figures, timelines and period timelines take rows,
+by their row label, event title or figure label, and quote comparisons take
+speakers. Other kinds of figure cannot show marks yet. Use `whole` only when the
+observation really is about all of the chart. A subtlety takes a mark the same
+way, and is stepped through after its chart's observations.
+
+**Every observation must have a mark.** Selecting an observation is how a reader
+sees the data behind it, and a claim in a step opens the observation it cites.
+`check:integrity` fails on any observation or subtlety with no mark, on a chart
+that can show them.
 
 **Numbers stay traceable.** `asPublished` on a value gives the figure in the
 source's own words ("more than 7,200", "8.8%"); `check:figures` looks for that
@@ -985,11 +997,13 @@ through like a chart. Do not leave such a record as a table in the body: there
 it has no place in the walkthrough, and a report made only of body tables opens
 onto nothing on the topic page.
 
-**Facts in a step are plain text.** The evidence is beside the prose, so the
-citations in a step render with no link or underline. They are still required:
-they pick the chart, and they are the audit trail from claim to observation.
-The way into the data is "Explore this data" under the chart. Principle
-citations stay links.
+**Every claim in a step opens its data.** A citation in a step opens its
+collection's data panel in a pop-up, at the chart the cited observation or
+subtlety belongs to, as "Explore this data" under the step's chart does, and
+has a dotted underline. So every checkable claim in a step needs a citation, and
+a citation of an observation reaches a chart where one of a body section does
+not: it opens the report instead. Principle citations stay links to the
+principle.
 
 **Leave definitions to the chart.** Do not stop the argument to define a term
 the chart draws. Give the chart's line a `glossary` entry instead, and its

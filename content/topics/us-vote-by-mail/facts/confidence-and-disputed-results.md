@@ -714,6 +714,25 @@ figures:
         context: 'On Georgia''s 2021 election law, SB 202'
         date: 2024-05
         source: 10
+observationMarks:
+  mail-below-in-person: {lines: ["All voters"]}
+  confidence-follows-power: {lines: ["Republicans", "Democrats"]}
+  count-length-not-separated: {lines: ["Republicans"], at: "2020"}
+  mail-claims-2020: {lines: ["Republicans"], from: "2018", to: "2020"}
+  not-at-all-confident-grew: {lines: ["All adults"]}
+  mail-confidence-by-party: {lines: ["Republican candidate supporters", "Democratic candidate supporters"]}
+  mail-voters-trust-mail: {rows: ["Mail and absentee voters", "In-person voters"]}
+  winner-swing-after-elections: {lines: ["Republicans", "Democrats"]}
+  winner-effect-exceptions: {lines: ["Republicans"], at: "2016"}
+  honesty-long-run: {lines: ["US adults"], at: "2016"}
+  us-breaks-global-pattern: {rows: ["US 2026: approvers", "US 2026: disapprovers"]}
+  disputes-table: {whole: true}
+  mail-central-in-recent-disputes: {rows: ["United States, presidential, 2020", "Arizona, governor, 2022", "Bridgeport, Connecticut, mayoral primary, 2023"]}
+  every-dispute-resolved: {rows: ["Florida, presidential, 2000", "Ohio, presidential electoral votes, 2004", "Georgia, governor, 2018", "United States, presidential, 2020", "Arizona, governor, 2022", "Bridgeport, Connecticut, mayoral primary, 2023"]}
+  bridgeport-misconduct-found: {rows: ["Bridgeport, Connecticut, mayoral primary, 2023"]}
+  no-before-after-measure: {rows: ["Florida, presidential, 2000"]}
+  would-restriction-raise-confidence: {rows: ["Joshua Clinton", "M.V. Hood III and Seth C. McKee"]}
+  rule-effect-confounded: {rows: ["M.V. Hood III and Seth C. McKee"]}
 ---
 ## Observations {#confidence-and-disputed-results--observations-gallup-accuracy-party}
 

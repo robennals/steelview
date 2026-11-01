@@ -704,6 +704,19 @@ figures:
         does: { value: 'Creates an Independent Immigration Appeals Authority (IIAA) to replace the First-tier Tribunal. Adjudicators "wouldn’t have to be legally qualified"; the government says this would let it recruit more decision-makers and cut delays. The Home Secretary would appoint the Chair.', sources: [31, 33] }
       - part: Part 2 (clauses 17 to 20)
         does: { value: 'Rewrites how judges apply Article 8 (family and private life) in appeals, so that fewer people win a right to stay.', sources: [32, 34] }
+observationMarks:
+  uk-law-ties-article-31-to-the-first-safe-country: {rows: ["s37 Nationality and Borders Act 2022, in force 28 June 2022"]}
+  article-31-is-about-penalties: {rows: ["s31 Immigration and Asylum Act 1999"]}
+  wolfson-withdrawal-possible-refugee-convention-unnecessary: {rows: ["Can the UK leave?", "Can the problems be fixed inside the ECHR?", "Must the UK also leave the Refugee Convention?"]}
+  eu-may-end-law-enforcement-cooperation-on-denunciation: {rows: ["What Part Three covers", "Article 692(2)", "How both sides read it"]}
+  refugee-convention-ban-on-return-remains: {whole: true}
+  the-bill-sets-no-target: {rows: ["Part 2 (clauses 17 to 20)"]}
+  the-declaration-is-non-binding: {rows: ["Article 8 balance"]}
+  good-friday-agreement-is-disputed: {rows: ["Conclusion", "What the UK promised"]}
+  the-international-reading-is-still-adimis: {rows: ["Adimi (Divisional Court)", "UNHCR Guidelines on International Protection No. 14"]}
+  wolfsons-finding-is-legal-not-numerical: {rows: ["Does the ECHR constrain immigration policy?"]}
+  agreed-unanimously-with-dissent-recorded: {rows: ["Third-country processing and return hubs"]}
+  critics-doubt-the-iiaa: {rows: ["Part 1", "Part 2 (clauses 17 to 20)"]}
 ---
 The texts and legal opinions behind five questions, in the order the argument runs. Where a text is settled, it is quoted as settled; where lawyers disagree, both readings are given. None of these sources counts how many removals the ECHR blocks.
 

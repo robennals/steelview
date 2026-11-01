@@ -133,7 +133,7 @@ export function PeriodTimeline({
           });
           const outside = placed.filter(p => !p.inside);
           return (
-            <li key={`${row.label}-${r}`} className="sv-periods__line sv-periods__row">
+            <li key={`${row.label}-${r}`} className="sv-periods__line sv-periods__row" data-row={row.label}>
               <p className="sv-periods__label-cell sv-periods__row-label">{row.label}</p>
               <div className="sv-periods__cell">
                 <div className="sv-periods__track">

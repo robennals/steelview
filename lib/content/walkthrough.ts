@@ -1,4 +1,4 @@
-import { citedFactTargets, renderMarkdown } from './markdown';
+import { citedFactTargets, renderMarkdown, type PanelTarget } from './markdown';
 import { headlineFacts } from './rank-facts';
 import { componentFigure, factPath, figureLabel } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
@@ -12,10 +12,8 @@ export type WalkthroughStep = {
   markdown: string;
   /** The chart behind the section's first cited observation that sits beside a chart. */
   chart?: PreviewSlide;
-  /** The citation that chart was chosen for, in authoring syntax: `#fact-<fact>/<observation>`. */
-  citation?: string;
-  /** That citation's observation, as an element id: `<fact>--<observation>`. */
-  observation?: string;
+  /** The citation that chart was chosen for: `#fact-<id>/<section>`. */
+  cited?: { id: string; section: string };
 };
 
 export type Walkthrough = {
@@ -37,15 +35,17 @@ export type Observation = {
  * A fact's observations, grouped by the chart they are drawn beside, in
  * order. Observations sit under an `## Observations {#<fact>--observations-<key>}`
  * heading, where the key is the id of the reading, comparison or figure they
- * belong to, each headed `### <heading> {#<fact>--<id>}`.
+ * belong to, each headed `### <heading> {#<fact>--<id>}`. Subtleties attach to
+ * their charts the same way, under `## Subtleties {#<fact>--subtleties-<key>}`.
  */
-export function observationsByChart(fact: Fact): Map<string, Observation[]> {
+export function observationsByChart(fact: Fact, kind: 'observations' | 'subtleties' = 'observations'): Map<string, Observation[]> {
+  const groupHeading = new RegExp(`\\{#[a-z0-9-]+--${kind}-([a-z0-9-]+)\\}$`);
   const groups = new Map<string, Observation[]>();
   let group: Observation[] | undefined;
   let current: Observation | undefined;
   for (const line of fact.body.split('\n')) {
     if (line.startsWith('## ')) {
-      const key = line.match(/\{#[a-z0-9-]+--observations-([a-z0-9-]+)\}$/)?.[1];
+      const key = line.match(groupHeading)?.[1];
       group = key ? (groups.get(key) ?? groups.set(key, []).get(key)) : undefined;
       current = undefined;
       continue;
@@ -62,20 +62,27 @@ export function observationsByChart(fact: Fact): Map<string, Observation[]> {
   return groups;
 }
 
+/** What a data panel steps through on each chart: its observations, then its subtleties. */
+function panelObservations(fact: Fact): Map<string, Observation[]> {
+  const groups = observationsByChart(fact);
+  for (const [key, subtleties] of observationsByChart(fact, 'subtleties')) groups.set(key, [...(groups.get(key) ?? []), ...subtleties]);
+  return groups;
+}
+
 /** An observation, as an element id, with the part of its chart it picks out. */
 export type MarkedObservation = { id: string; mark: ObservationMark };
 
 /** The observations on one chart that pick out a part of it. */
 export function markedObservations(fact: Fact, key: string): MarkedObservation[] {
-  return (observationsByChart(fact).get(key) ?? []).flatMap(({ id }) => {
+  return (panelObservations(fact).get(key) ?? []).flatMap(({ id }) => {
     const mark = fact.observationMarks?.[id];
     return mark ? [{ id: `${fact.id}--${id}`, mark }] : [];
   });
 }
 
 /** Each observation's group key in a fact's body: the chart it is drawn beside. */
-export function observationGroups(fact: Fact): Map<string, string> {
-  return new Map([...observationsByChart(fact)].flatMap(([key, observations]) => observations.map(o => [o.id, key] as const)));
+export function observationGroups(fact: Fact, kind?: 'observations' | 'subtleties'): Map<string, string> {
+  return new Map([...observationsByChart(fact, kind)].flatMap(([key, observations]) => observations.map(o => [o.id, key] as const)));
 }
 
 /**
@@ -113,20 +120,46 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
       // A citation can also name a chart outright: `#fact-<fact>/chart-<id>`.
       const key = observation && (groups.get(id)?.get(observation) ?? observation.match(/^chart-(.+)$/)?.[1]);
       const chart = fact && key && chartFor(topic.slug, fact, key, observation);
-      if (chart) return { heading: heading.trim(), markdown, chart, citation: `#fact-${id}/${observation}`, observation: `${id}--${observation}` };
+      if (chart) return { heading: heading.trim(), markdown, chart, cited: { id, section: observation } };
     }
     return { heading: heading.trim(), markdown };
   });
   return { lead: lead.trim(), steps };
 }
 
+/** The key a chart's observations are grouped under. */
+function slideKey(fact: Fact, slide: PreviewSlide): string {
+  const series = slide.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === slide.chart);
+  return slide.reading ?? series?.readings[0].id ?? slide.chart;
+}
+
+/**
+ * Finds where a citation opens in its collection's data panel. A citation with
+ * no chart in a panel, like a subtlety of the whole report, has no such place.
+ */
+function panelTargets(topic: Topic): (id: string, section: string) => PanelTarget | undefined {
+  const collections = new Map(headlineFacts(topic.facts).map(fact => [fact.id, {
+    fact,
+    slides: factSlides(topic.slug, fact),
+    keys: new Map([...observationGroups(fact, 'subtleties'), ...observationGroups(fact)]),
+  }]));
+  return (id, section) => {
+    const collection = collections.get(id);
+    if (!collection) return undefined;
+    const { fact, slides, keys } = collection;
+    const key = keys.get(section) ?? section.match(/^chart-(.+)$/)?.[1];
+    const slide = slides.findIndex(s => s.chart === key || slideKey(fact, s) === key);
+    return slide < 0 ? undefined : { fact: id, observation: `${id}--${section}`, slide };
+  };
+}
+
 /** A step with its prose rendered, ready for a synchronous component. */
-export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'citation'> & {
+export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
   html: string;
-  /** "Explore this data", rendered as a citation so it opens the data collection over the page. */
+  /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
   exploreHtml?: string;
-  /** Whether the chart's collection has a data panel on the page for "Explore this data" to open. */
-  hasPanel: boolean;
+  /** Where "Explore this data" opens the chart's data panel. */
+  panel?: PanelTarget;
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -138,19 +171,17 @@ export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
  */
 export async function renderWalkthroughs(topic: Topic): Promise<Map<string, RenderedWalkthrough>> {
   const rendered = new Map<string, RenderedWalkthrough>();
-  const panels = new Set(headlineFacts(topic.facts).map(fact => fact.id));
+  const panelFor = panelTargets(topic);
   for (const viewpoint of topic.viewpoints) {
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, citation, observation }) => ({
+      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited }) => ({
         heading,
         chart,
-        observation,
-        hasPanel: chart !== undefined && panels.has(chart.fact.id),
-        // The step's chart is beside its prose, so the facts it cites are plain text.
-        html: await renderMarkdown(markdown, topic.slug, topic.facts, { citationsAsText: true }),
-        exploreHtml: citation && await renderMarkdown(`[Explore this data](${citation})`, topic.slug, topic.facts),
+        panel: cited && panelFor(cited.id, cited.section),
+        html: await renderMarkdown(markdown, topic.slug, topic.facts, { panelCitation: panelFor }),
+        exploreHtml: cited && await renderMarkdown(`[Explore this data](#fact-${cited.id}/${cited.section})`, topic.slug, topic.facts),
       }))),
     });
   }
@@ -176,16 +207,15 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[]): Promi
   const rendered = new Map<string, DataStep[]>();
   const options = { citationsAsText: true, footnotes: false };
   for (const fact of facts) {
-    const groups = observationsByChart(fact);
+    const groups = panelObservations(fact);
     rendered.set(fact.id, await Promise.all(factSlides(topic.slug, fact).map(async chart => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
-      const key = chart.reading ?? series?.readings[0].id ?? chart.chart;
       const figure = componentFigure(fact, chart.chart);
       const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
       return {
         chart,
         description,
-        observations: await Promise.all((groups.get(key) ?? []).map(async o => ({
+        observations: await Promise.all((groups.get(slideKey(fact, chart)) ?? []).map(async o => ({
           id: `${fact.id}--${o.id}`,
           heading: o.heading,
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),

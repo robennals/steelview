@@ -1149,6 +1149,33 @@ figures:
         design: 'Opinion data 2008–2024 and a 2024 survey experiment'
         measure: 'Confidence in results'
         finding: { value: 'Voters trust results less under procedures they oppose; effects largest for voter ID', sources: [21] }
+observationMarks:
+  photo-id-majorities: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
+  photo-id-across-races: {lines: ["All adults"], at: "2025-08"}
+  democrats-moved-toward-id: {lines: ["Dem/lean Dem"], from: "2021-04", to: "2025-08"}
+  proof-of-citizenship-support: {rows: ["All adults"]}
+  studies-find-no-effect: {rows: ["Stewart, Ansolabehere and Persily (2016)", "Cantoni and Pons (2019; QJE 2021)"]}
+  milyo-finds-effect: {rows: ["Milyo (2025, working paper)"]}
+  procedures-they-oppose: {rows: ["Clinton (APSR)"]}
+  confidence-follows-power: {lines: ["Republicans", "Democrats"]}
+  level-versus-not-at-all: {lines: ["All adults"]}
+  post-election-winner-swing: {lines: ["Republicans", "Democrats"]}
+  different-fears: {lines: ["Republicans", "Democrats"]}
+  shared-goals: {lines: ["Republicans", "Democrats"]}
+  eligibility-confidence-2026: {rows: ["Noncitizens who try to vote will be stopped — Republican supporters", "All legally qualified voters can vote — Democratic supporters"]}
+  sb202-self-reported: {rows: ["Republicans", "Democrats"]}
+  republicans-moved-toward-early-voting: {lines: ["Rep/lean Rep"], from: "2024-01", to: "2025-08"}
+  overlap-not-published: {lines: ["All adults"], at: "2025-08"}
+  georgia-rebound: {lines: ["Republicans", "Democrats"], from: "2021", to: "2022"}
+  exceptions-2008-2020: {lines: ["Republicans", "Democrats"], from: "2008", to: "2020"}
+  honesty-long-run: {lines: ["US adults"], at: "2016"}
+  gallup-policy-trend: {lines: ["Republicans", "Democrats"]}
+  approval-gap-by-administration: {rows: ["Biden 2021–24: approvers", "Biden 2021–24: disapprovers", "Trump II 2025–26: approvers", "Trump II 2025–26: disapprovers"]}
+  mail-versus-in-person: {lines: ["Republican candidate supporters", "Democratic candidate supporters"], from: "2024-10", to: "2026-10"}
+  no-gap-2026: {lines: ["Rep/lean Rep", "Dem/lean Dem"], from: "2024-07", to: "2026-07"}
+  access-measures-divide-more: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
+  global-winner-gap: {rows: ["World median 2025: approvers", "World median 2025: disapprovers", "US 2026: approvers", "US 2026: disapprovers"]}
+  expert-ratings: {rows: ["US 2026: approvers", "US 2026: disapprovers"]}
 ---
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-photo-id}
 

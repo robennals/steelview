@@ -1,8 +1,9 @@
 import type { Locator, Page } from '@playwright/test';
 
 // A topic page's viewpoints and data collections are accordion rows. A
-// viewpoint step's "Explore this data" opens that collection's own panel in a
-// pop-up; a citation elsewhere, as in a crux, opens its report over the page.
+// viewpoint step's "Explore this data", and each claim in its prose, opens a
+// collection's own panel in a pop-up; a citation elsewhere, as in a crux, opens
+// its report over the page.
 
 /** Where to click a row's toggle: its corner, as the centre of a walkthrough row's head is a thumbnail. */
 export const headCorner = { position: { x: 8, y: 8 } };

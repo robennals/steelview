@@ -1295,6 +1295,49 @@ figures:
         finding: '"no fraudulent absentee ballots"'
       - measure: Envelopes that should have been flagged
         finding: 'Two, one "mistakenly signed by the elector''s spouse"; in both cases the voter had filled in the ballot'
+observationMarks:
+  cobb-spouse-signature-passed: {rows: ["Envelopes that should have been flagged"]}
+  all-mail-states-not-different: {rows: ["Nevada (all-mail)", "Utah (all-mail)", "Oregon (all-mail)", "Colorado (all-mail)", "United States", "California (all-mail)", "Hawaii (all-mail)", "Washington (all-mail)", "District of Columbia (all-mail)", "Vermont (all-mail)"]}
+  checks-differ-by-state: {rows: ["Signature compared with the one on file", "Envelope must be signed, but the signature is not compared", "ID or Social Security number on the envelope"]}
+  rejection-about-one-percent: {lines: ["United States"]}
+  more-than-half-cured: {rows: ["Set aside for curing", "Cured by the voter and counted"]}
+  reviewers-disagree: {rows: ["How the audit describes matching"]}
+  signatures-largest-reason: {lines: ["Non-matching signature"], at: "2024"}
+  new-hampshire-due-process: {rows: ["Saucedo v. Gardner"]}
+  pennsylvania-no-signature-rejection: {rows: ["In re November 3, 2020 General Election"]}
+  washington-race-gaps: {rows: ["Black", "White"]}
+  washington-age-gaps: {rows: ["18–21", "65 and over"]}
+  florida-young-and-inexperienced: {rows: ["18–21", "65 and over"]}
+  county-strongest-predictor: {whole: true}
+  no-evidence-of-bias: {rows: ["Evidence of bias in decisions"]}
+  auditor-agreed-with-counties: {rows: ["Agreement with counties"]}
+  low-rejection-counties-accept-more: {rows: ["Whitman", "Lincoln", "Clallam", "Skagit", "Pierce", "Pacific", "Lewis", "Island", "Thurston", "Grant", "Klickitat", "Cowlitz", "Whatcom", "Spokane", "Grays Harbor", "Mason", "Skamania", "Walla Walla", "Yakima", "Jefferson", "Chelan", "Garfield", "Stevens", "Ferry", "San Juan", "Douglas", "Pend Oreille", "Columbia"]}
+  no-case-signature-review-changed-result: {whole: true}
+  id-number-checks-also-reject: {lines: ["Texas", "Georgia"], from: "2022", to: "2024"}
+  texas-rose-under-id-number: {lines: ["Texas"], from: "2020", to: "2024"}
+  georgia-fell-after-sb202: {lines: ["Georgia"]}
+  most-states-cure: {rows: ["Statewide duty to tell voters of a missing or mismatched signature and let them fix it"]}
+  training-and-bipartisan-review: {rows: ["Signature compared with the one on file"]}
+  rejections-against-all-votes: {lines: ["United States"], at: "2024"}
+  missing-signatures-smaller-share: {lines: ["Missing voter signature"], from: "2016", to: "2024"}
+  late-arrival-a-leading-reason: {lines: ["Arrived after the deadline"], at: "2024"}
+  already-voted-another-ballot: {rows: ["Voter already cast another ballot that was accepted"]}
+  other-requirement-rejections: {rows: ["No witness signature", "Required ID or other document missing or incomplete", "Not in required secrecy envelope", "Envelope not sealed", "Ballot missing from envelope", "No required postmark", "Unofficial envelope", "No resident address on envelope", "Several ballots in one envelope"]}
+  state-rates-range-widely: {rows: ["Arkansas", "Delaware", "Oklahoma", "Vermont (all-mail)", "Maine", "Indiana"]}
+  highest-rates-other-rules: {rows: ["Arkansas", "Delaware", "Oklahoma", "Texas"]}
+  race-gaps-not-mismatch-only: {rows: ["Black", "White"]}
+  men-and-non-english-ballots: {whole: true}
+  low-rejection-counties-cure-more: {rows: ["Whitman", "Lincoln", "Clallam", "Skagit", "Pierce", "Pacific", "Lewis", "Island", "Thurston", "Grant", "Klickitat", "Cowlitz", "Whatcom", "Spokane", "Grays Harbor", "Mason", "Skamania", "Walla Walla", "Yakima", "Jefferson", "Chelan", "Garfield", "Stevens", "Ferry", "San Juan", "Douglas", "Pend Oreille", "Columbia"]}
+  cure-coverage: {rows: ["Set aside for curing"]}
+  texas-cure-share: {rows: ["Set aside for curing"]}
+  fifth-circuit-fraud-risk: {rows: ["Richardson v. Texas Secretary of State"]}
+  higginbotham-perceived-mismatches: {rows: ["Richardson, Higginbotham, J."]}
+  lake-signature-claim-failed: {rows: ["Lake v. Hobbs"]}
+  cobb-no-fraudulent-ballots: {rows: ["Envelopes re-examined", "Fraudulent ballots found"]}
+  cobb-accepted-ballots-only: {rows: ["Which envelopes"]}
+  no-in-person-equivalent: {lines: ["United States"]}
+  signature-share-reporting: {lines: ["Non-matching signature"]}
+  texas-2020-low-point: {lines: ["Texas"], from: "2016", to: "2020"}
 ---
 Figures are for November general elections, from the federal Election Administration and Voting Survey (EAVS) unless stated. A rejected ballot is a returned ballot that was not counted because it failed a check: it arrived late, was unsigned, its signature did not match, or similar.
 

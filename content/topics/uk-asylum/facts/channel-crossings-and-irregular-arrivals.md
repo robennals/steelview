@@ -1962,6 +1962,26 @@ dataStillNeeded:
     Frontex's downloadable monthly file covers routes into the EU but not Channel
     exit attempts (arrivals plus people stopped), which appear in its press releases;
     a dataset would allow the UK route to be charted on the same basis as the EU routes.
+observationMarks:
+  crossings-since-2018: {lines: ["Whole year (2026: to 22 October)"], from: "2018", to: "2025"}
+  albanian-arrivals-have-stayed-low: {lines: ["Albanian nationals"], from: "2023-03", to: "2026-06"}
+  albanian-arrivals-collapsed-before-the-deal: {lines: ["Albanian nationals"], from: "2022-09", to: "2022-12"}
+  arrivals-fell-sharply-in-2026: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  the-uk-fall-is-within-the-european-range: {rows: ["UK: Channel small-boat arrivals", "All EU external borders"]}
+  the-peak-year-was-2022: {lines: ["Whole year (2026: to 22 October)"], from: "2021", to: "2025", at: "2022"}
+  what-caused-the-2026-fall-is-not-settled: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  fewer-boats-more-people-in-each: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  a-few-nationalities-make-up-most-arrivals: {lines: ["Iran", "Afghanistan", "Iraq", "Eritrea", "Albania", "Syria"]}
+  the-mix-has-shifted: {lines: ["Eritrea", "Sudan", "Somalia", "Syria"], from: "2024", to: "2025"}
+  boats-did-not-simply-replace-lorries: {lines: ["Small boats", "Detected inside the UK (often lorries or ferries)"]}
+  before-2018-the-figures-are-attempts-stopped-in-france: {whole: true}
+  crossings-are-seasonal: {lines: ["Arrivals"], from: "2025-01", to: "2026-09"}
+  crossings-into-the-eu-have-also-fallen: {lines: ["January to August"], from: "2024", to: "2026"}
+  weather-explains-little-of-the-2026-fall: {lines: ["Red days"], at: "2026"}
+  french-preventions-fell-in-step-with-arrivals: {lines: ["Arrived in the UK", "Stopped by French authorities"], from: "2025-01", to: "2026-10"}
+  interceptions-at-sea-are-not-counted: {lines: ["Stopped by French authorities"]}
+  compare-the-same-months-of-each-year: {lines: ["1 January to 22 October"]}
+  detected-arrivals-are-not-every-entry: {whole: true}
 ---
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-arrivals}
 

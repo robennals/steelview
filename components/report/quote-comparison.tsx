@@ -30,7 +30,7 @@ export function QuoteComparison({ question, quotes, id, description, sources, no
     <ReportFigure id={id} title={question} description={description} sources={sources} note={note} footer={footer} headingLevel={headingLevel} className="sv-quote-comparison">
       <ul className="sv-quote-comparison__columns" data-count={quotes.length}>
         {quotes.map(quote => (
-          <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-comparison__column">
+          <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-comparison__column" data-row={quote.speaker}>
             <figure className="sv-quote" data-variant="compared">
               {quote.position && <p className="sv-quote__meta"><span className="sv-quote__position">{quote.position}</span></p>}
               <blockquote className="sv-quote__text" cite={quote.source?.href}>

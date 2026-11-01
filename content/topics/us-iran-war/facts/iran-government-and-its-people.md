@@ -1313,6 +1313,38 @@ figures:
       - { date: "2025-12", title: "Organisers of a marathon where women ran unveiled arrested", category: "reversal", source: 7 }
       - { date: "2025-12", endDate: "2026-02", title: "Protest crackdown: 7,007 deaths by HRANA's count", category: "reversal", significance: "major", source: 1 }
       - { date: "2026-03-08", title: "Mojtaba Khamenei, the late Leader's son, named Leader", category: "succession", source: 15 }
+observationMarks:
+  political-executions-peaked-april-may: {lines: ["Political and security-related"], from: "2026-04", to: "2026-05"}
+  executions-rose-under-pezeshkian: {lines: ["IHRNGO"], from: "2024", to: "2025"}
+  executions-most-since-1989: {lines: ["IHRNGO"], at: "2025"}
+  turnout-record-lows: {lines: ["Turnout"], from: "2021-06", to: "2024-06"}
+  reformist-backed-president-2024: {lines: ["Turnout"], at: "2024-06"}
+  execution-rate-by-president: {rows: ["Ahmadinejad (8 years)", "Rouhani (8 years)", "Raisi (33 months)", "Pezeshkian (17 months)"]}
+  iran-top-recorded-executioner: {rows: ["Iran"]}
+  arrests-january-2026: {rows: ["28 Dec 2025 – 15 Feb 2026"]}
+  arrests-after-june-2025: {rows: ["13 June – early Sept 2025, after the twelve-day war", "Same period"]}
+  crackdowns-2019-2022-2026: {rows: ["November 2019", "2022–23 (Woman, Life, Freedom)", "Dec 2025 – Feb 2026"]}
+  few-prefer-islamic-republic: {rows: ["Islamic Republic"]}
+  satisfaction-at-weakening: {rows: ["Felt satisfaction at the weakening of the Islamic Republic during the war"]}
+  strikes-seen-as-aggression: {rows: ["Called the US–Israeli action \"military aggression against Iran\"", "Called it \"humanitarian intervention\""]}
+  january-2026-crackdown-toll: {rows: ["Protesters"]}
+  hijab-law-shelved: {rows: ["Harsher hijab law shelved by the Supreme National Security Council", "Speaker told in writing the hijab law \"should not be enacted for the time being\""]}
+  hereditary-succession: {rows: ["Mojtaba Khamenei, the late Leader's son, named Leader"]}
+  earlier-openings-reversed: {rows: ["Sixteen reformist publications closed in one week under President Khatami", "3,600 parliamentary candidates rejected, including 83 sitting members; about a thousand reinstated", "304 protesters killed under President Rouhani"]}
+  vetting-approves-few: {lines: ["Share allowed"], from: "2001-06", to: "2021-06"}
+  majlis-vetting: {lines: ["Share allowed"], from: "2001-06", to: "2005-06"}
+  growth-in-deal-years: {lines: ["GDP growth"], from: "2016", to: "2019"}
+  hrana-annual-rise: {lines: ["HRANA"], from: "2019-10", to: "2026-10", at: "2026-10"}
+  january-protest-executions: {lines: ["Political and security-related"], from: "2026-01", to: "2026-10"}
+  executions-fell-in-first-war-months: {lines: ["All executions"], from: "2026-02", to: "2026-03", at: "2026-03"}
+  drug-law-fall-reversed: {lines: ["IHRNGO"], from: "2015", to: "2020"}
+  executions-rose-after-june-2025-war: {lines: ["IHRNGO"], from: "2024", to: "2025"}
+  saudi-second-executioner: {rows: ["Iran", "Saudi Arabia"]}
+  no-verified-2009-count: {rows: ["June 2009"]}
+  counts-are-floors: {rows: ["Dec 2025 – Feb 2026"]}
+  freedom-house-iran-and-saudi: {rows: ["Iran", "Saudi Arabia"]}
+  counters-differ: {rows: ["2025 — IHRNGO", "2025 — Amnesty"]}
+  majlis-turnout-low: {rows: ["2020", "2024"]}
 ---
 ## Observations {#iran-government-and-its-people--observations-presidential-turnout}
 

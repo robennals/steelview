@@ -1336,6 +1336,39 @@ figures:
     id: ni-register-2002
   - kind: series
     id: canada-nonvoters
+observationMarks:
+  northern-ireland-after-personation: {rows: ["Northern Ireland"]}
+  britain-precaution-not-fraud: {rows: ["Great Britain"]}
+  ni-after-photo-id: {whole: true}
+  strict-states-exceptions: {rows: ["Strict photo ID"]}
+  rules-vary-widely: {rows: ["Non-strict, photo ID requested", "Strict photo ID", "Non-strict, non-photo ID accepted", "Strict, non-photo ID accepted"]}
+  carter-baker-bargain: {rows: ["Photo ID at the polls (2.5.1)", "Access"]}
+  carter-baker-split: {rows: ["Dissent (Daschle, Overton, Yzaguirre)", "Photo ID at the polls (2.5.1)"]}
+  strict-states-early-voting: {rows: ["Ohio", "Indiana", "Georgia", "Kansas (varies by county)", "Tennessee", "North Carolina", "Arkansas", "Wisconsin"]}
+  strict-states-without-early-voting: {rows: ["Mississippi", "New Hampshire"]}
+  canada-vouching: {lines: ["Electoral-process reasons, including ID"]}
+  early-adopters: {lines: ["States requesting or requiring ID"], from: "1950", to: "2000"}
+  ni-personation-unquantified: {rows: ["Northern Ireland"]}
+  canada-no-fraud-rationale: {rows: ["Canada"]}
+  canada-nonvoters: {lines: ["Electoral-process reasons, including ID"]}
+  dpoc-surge: {lines: ["States with a DPOC law enacted"], from: "2023", to: "2026"}
+  dpoc-not-all-in-effect: {lines: ["States with a DPOC law enacted"], at: "2026"}
+  photo-id-common-in-g7: {rows: ["Italy", "United Kingdom", "Canada", "France"]}
+  germany-japan-no-routine-check: {rows: ["Germany", "Japan"]}
+  state-supplies-id: {rows: ["Germany", "United Kingdom"]}
+  fallbacks-abroad: {rows: ["Canada", "Italy", "United Kingdom"]}
+  country-counts-depend-on-definition: {rows: ["France", "Germany"]}
+  britain-awareness-gaps: {rows: ["Aged 18 to 24", "Ethnic minority communities", "All Great Britain"]}
+  britain-turnaways-small-and-falling: {lines: ["Did not return and vote"], at: "2024-07"}
+  britain-turnaways-undercount: {lines: ["Initially turned away"], at: "2024-07"}
+  britain-confidence-and-personation: {whole: true}
+  ni-register-fell: {rows: ["August 2002 (household registration)", "December 2002 (individual registration)"]}
+  shift-to-photo: {lines: ["Photo ID requested or required", "Non-photo ID accepted"]}
+  strict-count-fell-then-rose: {lines: ["Strict photo ID (subset of photo)"], from: "2014", to: "2026"}
+  us-36-states-up-from-13: {lines: ["States requesting or requiring ID"], from: "2000", to: "2026"}
+  pace-of-adoption: {lines: ["States requesting or requiring ID"], from: "2010", to: "2014"}
+  courts-blocked-laws: {lines: ["States requesting or requiring ID"], at: "2014"}
+  two-counts-for-2000: {lines: ["States requesting or requiring ID"], at: "2000"}
 ---
 This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
 

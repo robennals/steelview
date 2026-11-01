@@ -675,6 +675,27 @@ figures:
         context: On what the case decided
         date: 2026-06
         source: 2
+observationMarks:
+  watson-left-it-to-legislatures: {rows: ["US Supreme Court"]}
+  watson-appearance-of-fraud: {rows: ["US Supreme Court"]}
+  back-to-2016-level: {lines: ["Count ballots arriving after Election Day"]}
+  grace-states-mixed: {lines: ["Count ballots arriving after Election Day"], at: "2026-11"}
+  late-share-of-rejections: {lines: ["United States"]}
+  late-rejections-rising-2026: {rows: ["Wisconsin spring primary, 2026", "Michigan August primary, 2026", "Washington primary, 2026"]}
+  postal-delays-and-postmarks: {whole: true}
+  slowest-states-mostly-heavy-mail: {rows: ["Arizona 2024", "Nevada 2024"]}
+  preprocessing-speeds-first-hours: {rows: ["No pre-processing before Election Day", "Pre-processing allowed"]}
+  gap-gone-by-24-hours: {rows: ["Pre-processing allowed"]}
+  late-ballots-small-in-nevada: {rows: ["Nevada general, 2024: Clark and Washoe counties"]}
+  2020-low: {lines: ["United States"], at: "2020"}
+  fifteen-versus-thirty: {rows: ["Washington", "Illinois", "Alaska", "District of Columbia", "Maryland", "California", "New York", "Oregon", "New Jersey", "Mississippi (business days)", "West Virginia", "Nevada", "Kansas", "Massachusetts", "Virginia", "Texas"]}
+  most-votes-counted-within-hours: {rows: ["Arizona 2024", "Nevada 2024", "Pennsylvania 2024", "Georgia 2024", "Michigan 2024", "Wisconsin 2024", "North Carolina 2024"]}
+  slow-states-not-only-mail: {rows: ["Arizona 2020", "Arizona 2024", "Nevada 2020", "Nevada 2024", "Pennsylvania 2020", "Pennsylvania 2024"]}
+  experts-rate-count-strong: {whole: true}
+  late-ballots-table: {whole: true}
+  nevada-2024-lead-change: {rows: ["Nevada general, 2024: Clark and Washoe counties"]}
+  processing-table: {whole: true}
+  processing-rules-vary: {rows: ["Pennsylvania", "Wisconsin"]}
 ---
 ## Observations {#ballot-deadlines-and-counting-speed--observations-receipt-deadline-states}
 

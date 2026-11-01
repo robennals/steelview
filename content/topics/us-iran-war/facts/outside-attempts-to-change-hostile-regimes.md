@@ -568,6 +568,29 @@ figures:
       - { study: "TIES (Morgan, Bapat & Kobayashi, 2014)", cases: "1,412 threatened or imposed sanctions, 1945–2005", success: "Three definitions (see chart)", finding: { value: "27.2% to 56%", sources: [13] } }
       - { study: "Global Sanctions Data Base (2024)", cases: "1,547 imposed sanctions, 1950–2023", success: "Per objective: total, partial, negotiated, failure, ongoing", finding: { value: "\"30 to 50 percent\" (2021 announcement, definition not stated)", sources: [14, 15] } }
       - { study: "Horowitz & Reiter (2001)", cases: "53 air-power coercion attempts, 1917–1999", success: "Target complies as demanded", finding: { value: "19 of 53", sources: [16, 17] } }
+observationMarks:
+  air-coercion-about-a-third: {rows: ["Succeeded", "Failed"]}
+  leadership-demands-lower-success: {rows: ["Succeeded"]}
+  predicted-cascades-did-not-happen: {rows: ["Potter & Mukhatzhanova", "Bleek"]}
+  saudi-2018-pledge: {rows: ["Mohammed bin Salman"]}
+  credibility-split: {rows: ["Press", "Weisiger & Yarhi-Milo"]}
+  nonproliferation-sanctions-three-of-22: {rows: ["Miller, Stopping the Bomb (2018)"]}
+  threats-plus-rewards: {rows: ["Mehta, Delaying Doomsday"]}
+  iraq-ended-after-war-and-inspection: {rows: ["Launched a programme, stopped without a weapon"]}
+  libya-2003-with-inspections: {rows: ["Launched a programme, stopped without a weapon"]}
+  imposed-regime-change-and-civil-war: {rows: ["Downes, Catastrophic Success (2021)"]}
+  democracy-only-in-favourable-conditions: {rows: ["Downes & Monten (2013)"]}
+  sanctions-weak-against-adversaries: {whole: true}
+  strong-ceasefire-agreements-hold: {rows: ["Fortna, Peace Time (2004)"]}
+  acquisition-base-rate: {rows: ["Explored, then stopped without launching a programme", "Acquired weapons and kept them", "Acquired weapons, then gave them up (South Africa)"]}
+  syria-returned-to-exploring: {rows: ["Launched a programme, stopped without a weapon"]}
+  osirak-coding-dispute: {rows: ["Launched a programme, stopped without a weapon"]}
+  iran-coding: {rows: ["Launched a programme, still pursuing (Iran)"]}
+  restoration-does-best: {rows: ["Downes, Catastrophic Success (2021)"]}
+  regime-change-and-relations: {rows: ["Downes, Catastrophic Success (2021)"]}
+  covert-attempts-failed: {rows: ["O'Rourke, Covert Regime Change"]}
+  sanctions-success-depends-on-definition: {rows: ["Strict: target gives in fully or partly (all cases)", "Relaxed (known outcome)"]}
+  gsdb-range: {rows: ["Strict: target gives in fully or partly (all cases)", "Relaxed (known outcome)"]}
 ---
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-nuclear-programmes}
 

@@ -1104,6 +1104,22 @@ figures:
       - { date: '2025-09', title: No 2025/26 quota for new UK Resettlement Scheme referrals, category: closed, source: 22 }
       - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
       - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
+observationMarks:
+  nationalities-with-safe-routes-rarely-came-by-boat: {rows: ["Ukraine", "Hong Kong"]}
+  family-reunion-was-the-main-route-for-boat-nationalities: {rows: ["Eritrea", "Sudan", "Iran"]}
+  after-the-pause: {rows: ["Eritrea", "Sudan", "Somalia", "Iran"]}
+  afghans-and-syrians-had-both: {rows: ["Afghanistan", "Syria"]}
+  planned-scale: {rows: ["UK Resettlement Scheme reopens for new referrals, with a yearly cap", "First arrivals expected in autumn on new community and student sponsorship routes"]}
+  two-country-schemes-dominate: {lines: ["Ukraine schemes", "BN(O) route"], from: "2021", to: "2025"}
+  grants-are-not-arrivals: {lines: ["Ukraine schemes"], at: "2022"}
+  resettlement-peaked-with-afghanistan: {lines: ["Afghan Resettlement Programme", "UK Resettlement Scheme", "Other resettlement schemes"], at: "2021"}
+  family-reunion-paused: {lines: ["Refugee family reunion"], from: "2022", to: "2025"}
+  ukrs-no-new-referrals: {lines: ["UK Resettlement Scheme"], at: "2025"}
+  routes-against-boats-over-time: {lines: ["Small-boat arrivals", "Out-of-country safe-route grants"], from: "2021", to: "2025"}
+  some-boat-nationalities-had-no-route: {rows: ["Albania", "Iraq", "Vietnam", "Turkey"]}
+  resettlement-is-reopening: {rows: ["UK Resettlement Scheme reopens for new referrals, with a yearly cap", "First arrivals expected in autumn on new community and student sponsorship routes"]}
+  not-a-test-of-cause: {rows: ["Ukraine", "Hong Kong", "Afghanistan"]}
+  small-boat-counts-miss-some-people: {rows: ["All other nationalities, stateless and not recorded"]}
 ---
 Safe and legal routes are the ways a person can be given permission to come
 to the UK for protection before travelling, instead of claiming asylum after

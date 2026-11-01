@@ -888,6 +888,25 @@ figures:
     id: effect-estimates
   - kind: comparison
     id: support-by-state-rule
+observationMarks:
+  universal-mail-raised-turnout-modestly: {rows: ["Universal mail ballots: turnout"]}
+  disabled-voters-use-mail-more: {rows: ["Voters with a disability", "Voters without a disability"]}
+  all-mail-states-lead: {rows: ["Oregon", "Washington", "Hawaii", "Utah", "Colorado"]}
+  older-voters-use-mail-most: {lines: ["65 and over"]}
+  no-partisan-tilt: {rows: ["Universal mail ballots: Democratic share of turnout"]}
+  democrats-use-mail-more: {rows: ["Democrats", "Republicans"]}
+  oregon-by-initiative: {rows: ["Oregon"]}
+  utah-all-mail-and-opt-in: {lines: ["No-excuse or all-mail"], from: "2024-11", to: "2026-11"}
+  west-votes-by-mail: {lines: ["West"]}
+  low-mail-states: {rows: ["Texas", "West Virginia", "Tennessee", "Arkansas"]}
+  mail-share-fell-after-2020: {lines: ["By mail"], from: "2020", to: "2024"}
+  mail-above-pre-pandemic: {lines: ["By mail", "In person before Election Day"], from: "2018", to: "2024"}
+  official-counts-match-survey: {lines: ["By mail"], from: "2020", to: "2024"}
+  no-excuse-states-grew: {lines: ["No-excuse or all-mail"]}
+  republican-support-fell: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
+  recent-adoptions: {rows: ["Utah", "Hawaii", "California", "Nevada", "Vermont (general elections only)", "District of Columbia"]}
+  eligibility-shifted-method: {rows: ["No-excuse eligibility at 65 (Texas 2020): turnout"]}
+  support-higher-where-used: {rows: ["States that mail every voter a ballot", "States that require an excuse"]}
 ---
 This report covers who votes by mail and what mail voting changes. How mail ballots are rejected, how fast they are counted, and how often they have been abused are in separate reports.
 

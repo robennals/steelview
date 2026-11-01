@@ -3101,6 +3101,37 @@ observationMarks:
   uk-mid-table-per-head: {rows: [United Kingdom]}
   uk-fourth-by-count: {rows: [United States, Germany, Canada, United Kingdom]}
   international-reasons: {rows: [Luxembourg, Malta]}
+  why-immigration-fell: {lines: ["Work", "Study"], from: "2023-12", to: "2024-12"}
+  eu-enlargement: {lines: ["Immigration"], from: "2004", to: "2007"}
+  rolling-year-peaks: {lines: ["Immigration", "Net migration"], from: "2022", to: "2023"}
+  late-1990s-causes: {lines: ["Immigration"], from: "1997", to: "2003"}
+  latest-fall-work-arrivals: {lines: ["Immigration", "Net migration"], from: "2024", to: "2025"}
+  recent-revisions: {lines: ["Net migration"], at: "2024"}
+  four-years-2022-to-2025: {lines: ["Immigration", "Net migration"], from: "2022", to: "2025"}
+  negative-years-list: {lines: ["Net migration"], from: "1964", to: "1993"}
+  late-1990s-timing: {lines: ["Net migration"], from: "1997", to: "2003"}
+  fall-before-2024-rules: {lines: ["Immigration"], from: "2023", to: "2024"}
+  late-2025-restrictions-not-yet-shown: {lines: ["Immigration", "Net migration"], at: "2025"}
+  study-net-after-departures: {lines: ["Study"], at: "2025-12"}
+  asylum-few-leave: {lines: ["Asylum"], at: "2025-12"}
+  british-net-why: {lines: ["British nationals"], from: "2022-12", to: "2025-12"}
+  bno-line-steadier: {lines: ["BN(O) route", "Ukraine scheme"]}
+  why-immigration-spiked: {lines: ["Non-EU+ nationals"], from: "2021-03", to: "2023-09"}
+  non-eu-surge-causes: {lines: ["Non-EU+ nationals"], from: "2021-03", to: "2023-09"}
+  eu-departures: {lines: ["EU+ nationals"], from: "2022-06"}
+  care-vacancies-behind-recruitment: {lines: ["Non-EU+ nationals"], from: "2022-03", to: "2023-09"}
+  eu-net-negative-since-2022: {lines: ["EU+ nationals"], from: "2022-06", to: "2025-12"}
+  migration-share-longer-run: {lines: ["Net migration and other", "Total change"], from: "2005", to: "2024"}
+  indirect-effect-through-births: {lines: ["Natural change"], at: "2024"}
+  ons-assumption-lowered: {lines: ["Principal (230,000 a year)"]}
+  projections-are-scenarios: {whole: true}
+  old-age-low-migration-and-pension-age: {lines: ["Low migration (105,000 a year)"], at: "2074"}
+  uk-fall-2024: {rows: ["United Kingdom", "New Zealand"]}
+  permanent-is-not-net: {whole: true}
+  oecd-neighbours-and-extremes: {rows: ["United Kingdom", "Norway", "Greece", "Finland", "Luxembourg", "Iceland", "Switzerland", "Ireland", "Japan", "Mexico"]}
+  no-comparable-net-series: {rows: ["United Kingdom"]}
+  international-coverage: {rows: ["Poland", "Slovakia"]}
+  international-differences: {whole: true}
 ---
 813,000 people moved to the UK for a year or more in 2025 and 642,000 left, so net migration was 171,000, down from a peak of 944,000 in the year to March 2023. [1](#source-immigration-against-the-long-run-1) [21](#source-immigration-against-the-long-run-21) The charts below set that against the whole ONS series back to 1964, the routes behind the recent rise and fall, what migration does to population growth now and under official projections, other OECD countries, and what governments promised.
 

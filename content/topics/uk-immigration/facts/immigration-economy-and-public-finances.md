@@ -2056,6 +2056,47 @@ dataStillNeeded:
   why: The HESA table used here covers fee income only.
 - measure: The share of UK patents or inventors who were born abroad
   why: "No UK birthplace-based measure was found; the founders figure covers only the 100 fastest-growing companies."
+observationMarks:
+  total-gdp-grew: {lines: ["UK GDP"], from: "2019", to: "2025"}
+  obr-per-head-effect-small: {whole: true}
+  g7-stalled-alike: {rows: ["United Kingdom", "Canada", "Germany"]}
+  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants (outside health and care)", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents (comparator, mean)", "All UK residents (comparator, median)", "Partner route (2022/23 cohort)"]}
+  lower-migration-raises-borrowing: {rows: ["Lower migration, spending left as planned", "Lower migration, spending per person held"]}
+  five-year-window: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
+  total-gdp-moves-with-migration: {whole: true}
+  non-uk-fee-share: {rows: ["Students domiciled outside the UK"]}
+  a-third-of-universities-in-deficit: {rows: ["Students domiciled outside the UK"]}
+  old-age-reverses-gains: {rows: ["High-wage migrant (30% above average pay)", "Average-wage migrant", "Low-wage migrant (half of average pay)"]}
+  small-wage-effects: {rows: ["5th percentile (lowest paid)", "Median", "90th percentile", "95th percentile (highest paid)"]}
+  gain-from-top-earners-and-stayers: {rows: ["Skilled Worker main applicants (outside health and care)"]}
+  earnings-by-route: {rows: ["Skilled Worker main applicants"]}
+  gdp-per-head-barely-grew: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2025"}
+  timing-not-cause: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2020"}
+  g7-levels: {lines: ["United Kingdom"], from: "2019", to: "2025"}
+  march-2026-revision: {rows: ["Migrants as productive as residents; capital keeps pace"]}
+  independent-forecasts: {rows: ["Lower migration, spending left as planned"]}
+  discounting-changes-the-sign: {rows: ["Age-matched UK resident (comparator, mean)"]}
+  routes-not-modelled: {whole: true}
+  earnings-and-age-decide: {rows: ["High-wage migrant (30% above average pay)", "Low-wage migrant (half of average pay)"]}
+  obr-profiles-behind-cps: {rows: ["Average-wage migrant"]}
+  earnings-catch-up: {rows: ["UK full-time employees (ASHE, reference)"]}
+  no-post-brexit-wage-studies: {whole: true}
+  g7-net-migration-not-shown: {whole: true}
+  obr-mirror-image: {whole: true}
+  obr-participation-and-productivity: {rows: ["Migrants work like residents; nearly all adults on work visas (about 90% participation)", "Migrants as productive as residents; capital keeps pace"]}
+  obr-delaying-not-resolving: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
+  obr-2024-long-run-scenarios: {whole: true}
+  lifetime-route-detail: {rows: ["Health and Care main applicants (all)", "Care workers (Health and Care visa)", "Other health and care occupations (mainly nurses and doctors)", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
+  mac-clearly-fiscally-positive: {rows: ["Skilled Worker main applicants (outside health and care)"]}
+  age-matched-comparators: {rows: ["Age-matched UK resident (comparator, mean)", "Skilled Worker main applicants (outside health and care)", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  childhood-paid-for-elsewhere: {rows: ["Average-wage migrant", "Representative UK resident"]}
+  earnings-dependants-family-and-ons: {rows: ["Skilled Worker dependants", "Health and Care dependants", "Family-route visa holders", "UK full-time employees (ASHE, reference)"]}
+  earnings-share-with-paye: {rows: ["Skilled Worker main applicants", "Skilled Worker dependants"]}
+  catch-up-data-limits: {rows: ["UK full-time employees (ASHE, reference)"]}
+  catch-up-who-stayed: {whole: true}
+  wage-effects-by-skill: {rows: ["5th percentile (lowest paid)", "95th percentile (highest paid)"]}
+  wage-effects-other-studies: {rows: ["5th percentile (lowest paid)", "90th percentile"]}
 ---
 This collection covers what is measured about immigration's effect on output, on the public finances and on wages: GDP and GDP per head over time and across the G7, the OBR's migration scenarios, modelled lifetime fiscal contributions by visa route, earnings by route, the record of headline cost estimates, wage effects by pay level, universities' reliance on international fees, and founders of fast-growing firms. Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.
 

@@ -1162,6 +1162,36 @@ figures:
       - { date: "2026-10-23", title: "Intelligence chief warns of Iran's \"advanced stages\" of planning attacks on US targets", description: "As reported by ISW/CTP; the memo itself could not be fetched.", category: "rearming", source: 45 }
       - { date: "2026-10-24", title: "Houthis fire missiles and drones at Saudi Arabia", description: "ISW/CTP.", category: "attacks", source: 46 }
       - { date: "2026-10-28", title: "AP: allies told to prepare for renewed action and Iranian retaliation", description: "AP's diplomats say the President has made no final decision.", category: "us", source: 49 }
+observationMarks:
+  house-passed-three-resolutions: {lines: ["Yes (end the war)", "No"], from: "2026-06-03", to: "2026-09-15"}
+  concurrent-resolutions-not-binding: {lines: ["Yes (end the war)", "No"], from: "2026-06-03", to: "2026-09-15"}
+  senate-adopted-one-resolution: {lines: ["Yes (end the war)", "No"], at: "2026-06-23"}
+  majority-disapproves: {lines: ["All adults"], from: "2026-03", to: "2026-10", at: "2026-10"}
+  republicans-support-but-falling: {lines: ["Rep/lean Rep"], from: "2026-03", to: "2026-10", at: "2026-10"}
+  congress-as-constraint: {rows: ["Yemen (Saudi-led war), 2019", "Iran, 2020"]}
+  no-un-authorisation-per-oman: {rows: ["Badr al Busaidi"]}
+  key-allies-did-not-join: {rows: ["UK, France and Germany"]}
+  both-sides-fired: {rows: ["Engaged a US Army Apache, \"forcing its crash landing\"", "Strikes on missile sites, mining, air defences, command", "Attacks on neutral-flagged vessels in Hormuz, on 25 and 27 Jun", "Strikes on drone, missile and command sites, on 26 and 28 Jun"]}
+  mou-broke-down: {rows: ["Memorandum of understanding signed", "Attacks on neutral-flagged vessels in Hormuz, on 25 and 27 Jun", "Strikes on drone, missile and command sites, on 26 and 28 Jun", "Strikes resume", "Blockade reimposed"]}
+  declarations-and-instances: {rows: ["All uses of force, 1798–2023"]}
+  binding-attempts-failed: {rows: ["Libya, 2011", "Yemen (Saudi-led war), 2019", "Iran, 2020", "Iran, 2025"]}
+  independents-opposed: {rows: ["Independents"]}
+  iran-reconstituting-missiles: {rows: ["ISW/CTP: Iran \"continuously made efforts to reconstitute its ballistic missile and drone programs\"", "New defence minister plans to rebuild \"in mountains and security structures\""]}
+  dni-warning-as-reported: {rows: ["Intelligence chief warns of Iran's \"advanced stages\" of planning attacks on US targets"]}
+  october-escalation: {rows: ["23 attacks on vessels near Hormuz", "Houthis fire missiles and drones at Saudi Arabia"]}
+  talks-continue-in-october: {rows: ["Qatari plan reported: Hormuz reopened for blockade lifted, over five days"]}
+  most-wanted-congress-asked: {rows: ["All voters"]}
+  campaign-said-stop-wars: {rows: ["Donald Trump"]}
+  terminated-letter-then-new-strikes: {rows: ["Hostilities that began 28 Feb \"have terminated\"", "Iran downed a US Apache (8 Jun); US strikes from 9 Jun", "US strikes on 26 and 28 Jun; MoU signed 17 Jun", "US strikes from 7 Jul", "US strikes in Iraq from 27 Jul on Iran-directed militias", "US strikes on Iran from 1 Sep, including state oil tankers"]}
+  separate-actions: {rows: ["Iran downed a US Apache (8 Jun); US strikes from 9 Jun", "US strikes on 26 and 28 Jun; MoU signed 17 Jun", "US strikes from 7 Jul", "US strikes in Iraq from 27 Jul on Iran-directed militias", "US strikes on Iran from 1 Sep, including state oil tankers"]}
+  only-one-report-started-the-clock: {rows: ["All War Powers reports", "Reports citing section 4(a)(1)"]}
+  republican-defections-small-but-growing: {lines: ["Republicans voting yes"], from: "2026-03-05", to: "2026-09-15", at: "2026-09-15"}
+  senate-defections: {lines: ["Republicans voting yes"], from: "2026-05-13", to: "2026-09-24"}
+  strikes-planned-after-midterms: {rows: ["NYT reports plans for \"a short and intensive operation\" after 3 November", "AP: allies told to prepare for renewed action and Iranian retaliation"]}
+  talks-under-way-when-strikes-came: {rows: ["Indirect US–Iran talks in Geneva on 17 and 26 Feb", "US and Israeli strikes; IAEA stops verification in Iran"]}
+  mou-no-weapons-pledge: {rows: ["Memorandum: \"Iran reaffirms that it shall not procure or develop nuclear weapons\""]}
+  party-split: {rows: ["Republicans", "Independents", "Democrats"]}
+  campaign-called-iran-very-close: {rows: ["Donald Trump"]}
 ---
 ## Observations {#decisions-law-and-diplomacy--observations-house-votes}
 

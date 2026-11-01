@@ -716,6 +716,24 @@ figures:
       - measure: 'Revamped SAVE database'
         does: { value: 'DHS citizenship checks of whole voter rolls against linked Social Security records. The government reports more than 65 million voters verified in 26 states and 28,635 flagged as potential non-citizens', sources: [39, 38] }
         status: { value: 'Blocked by a district judge in June 2026; that order stayed by the Supreme Court, 25 Sep 2026', sources: [37, 39] }
+observationMarks:
+  federal-form-sworn-citizenship: {rows: ["National Voter Registration Act (NVRA)", "SAVE America Act (Republican)"]}
+  freedom-to-vote-act-provisions: {rows: ["Freedom to Vote Act (Democratic)", "SAVE America Act (Republican)"]}
+  congress-has-set-national-floors: {rows: ["Voting Rights Act", "National Voter Registration Act (NVRA)", "Help America Vote Act (HAVA)"]}
+  hava-id-rule: {rows: ["Help America Vote Act (HAVA)"]}
+  crawford-upheld-photo-id: {rows: ["Crawford v. Marion County Election Board"]}
+  crawford-record: {rows: ["Crawford v. Marion County Election Board"]}
+  not-who-may-vote: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
+  moore-state-courts: {rows: ["Moore v. Harper"]}
+  congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022", "S. 5271, photo ID only (Republican), 8 Aug 2026", "Needed to end debate"]}
+  eo-14248-blocked: {rows: ["Executive Order 14248 (25 Mar 2025)"]}
+  eo-14399-allowed: {rows: ["Executive Order 14399 (31 Mar 2026)"]}
+  no-merits-ruling: {rows: ["Executive Order 14399 (31 Mar 2026)"]}
+  save-database-revived: {rows: ["Revamped SAVE database"]}
+  state-rules-vary: {whole: true}
+  house-passed-save-america-act: {rows: ["S. 5271, photo ID only (Republican), 8 Aug 2026"]}
+  save-america-act-status: {rows: ["S. 5271, photo ID only (Republican), 8 Aug 2026", "Needed to end debate"]}
 ---
 This report is a dated legal record. It is as of 23 October 2026, ten days before the midterms, and several items will change soon: the SAVE America Act in a lame-duck session, the First Circuit appeals, and the litigation over the SAVE database.
 

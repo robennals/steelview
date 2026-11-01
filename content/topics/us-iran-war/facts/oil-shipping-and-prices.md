@@ -767,6 +767,23 @@ figures:
       - { release: { value: "20 May 2026 (caption)", sources: [9] }, period: "First blockade, from 13 April", redirected: "91 ships" }
       - { release: { value: "5 Oct 2026", sources: [10] }, period: "Since 14 July", redirected: "130 vessels", disabled: "3 ships", destroyed: "13 commercial vessels, \"over the past 12 weeks\"" }
       - { release: { value: "10 Oct 2026", sources: [11] }, period: "Since 14 July", redirected: "135 ships", disabled: "4 vessels", destroyed: "10 tankers linked to the IRGC" }
+observationMarks:
+  pump-prices-up-by-half: {lines: ["US regular gasoline, monthly average"], from: "2026-02", to: "2026-05", at: "2026-05"}
+  hormuz-traffic-near-zero: {lines: ["All ships"], from: "2026-02", to: "2026-03", at: "2026-03"}
+  below-earlier-real-peaks: {lines: ["Real imported crude price"], from: "1981-01", to: "2026-05", at: "2026-05"}
+  shipping-attacks-october: {whole: true}
+  us-also-destroying-vessels: {rows: ["5 Oct 2026", "10 Oct 2026"]}
+  cbo-inflation-attribution: {rows: ["All items", "All items less food and energy"]}
+  brent-nearly-doubled: {lines: ["Brent spot, monthly average"], from: "2026-02", to: "2026-09"}
+  below-2008-nominal: {lines: ["Brent spot, monthly average"], from: "2008-07", to: "2026-09", at: "2026-04"}
+  wti-rose-less: {lines: ["WTI spot, monthly average"], from: "2026-02", to: "2026-04", at: "2026-04"}
+  hormuz-flows-collapsed: {lines: ["Total oil flows"], from: "2025-11", to: "2026-05", at: "2026-05"}
+  june-reopening-brief: {lines: ["All ships"], from: "2026-06", to: "2026-08"}
+  tracking-versus-other-reports: {lines: ["All ships", "Tankers"], from: "2026-03", to: "2026-10"}
+  blockade-enforced: {rows: ["10 Oct 2026"]}
+  hormuz-alone-collapsed: {rows: ["Strait of Hormuz", "Kerch Strait"]}
+  gasoline-cpi-up-a-third: {rows: ["Gasoline", "Energy", "All items less food and energy"]}
+  iranian-exports-collapsed: {rows: ["April 2026 (blockade from 13 April)", "May 2026"]}
 ---
 ## Observations {#oil-shipping-and-prices--observations-brent-monthly}
 
