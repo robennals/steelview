@@ -1,16 +1,21 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { barScale, barSpan } from './bar-layout';
-import { BarRows } from './bar-rows';
+import { barScale, orderBars, qualifiedSpan } from './bar-layout';
+import { BarQualificationKey, BarRows } from './bar-rows';
 import { ReportFigure } from './figure';
 import { formatValue } from './format';
-import type { SourceCredit, ValueFormat } from './types';
+import { extentValues, pointValue, qualificationOf, qualificationsIn, qualifiedLabel, qualifiedText, type FigureNumber } from './qualified';
+import { RankedColumns, fitsRankedColumns } from './ranked-columns';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type BarChartItem = {
   label: string;
-  value: number;
+  /** A bound ends in an arrowhead, an approximation in a dotted end, a range (`{ low, high }`) in a whisker. */
+  value: FigureNumber;
   /** Drawn in the accent and set in bold — for the one row the text is about (usually the UK). */
   highlight?: boolean;
+  /** What the one-line label leaves out: shown when the row is opened, and in the table. */
+  detail?: string;
 };
 
 export type BarChartProps = {
@@ -31,6 +36,15 @@ export type BarChartProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
+  /**
+   * Draw the compact preview: the linked title and the bars, every item. Over
+   * six items the rows are clamped thin; over twelve, with no negatives, no
+   * qualified values and at most one highlight, one ranked column per item.
+   * Qualified values keep their end marks; their key stays on the full figure.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -53,26 +67,44 @@ export function BarChart({
   sources,
   note,
   footer,
+  panel,
+  preview,
 }: BarChartProps) {
-  const ordered = sort === 'value' ? [...items].sort((a, b) => b.value - a.value) : items;
-  const scale = barScale(ordered.map(item => item.value), domainMax);
+  const ordered = orderBars(items, sort);
+  const scale = barScale(ordered.flatMap(item => extentValues(item.value)), domainMax);
+  const hasDetail = items.some(item => item.detail);
   const rows = ordered.map((item, i) => ({
     key: `${item.label}-${i}`,
     label: item.label,
-    valueText: formatValue(item.value, format),
+    valueText: qualifiedLabel(item.value, format),
     highlight: item.highlight,
-    segments: [barSpan(item.value, scale)],
+    segments: [qualifiedSpan(item.value, scale)],
+    detail: item.detail,
   }));
 
+  if (preview) {
+    // A column is a bare height, with no end mark: only a chart of exact values may become ranked columns.
+    const columns = items.every(item => qualificationOf(item.value) === 'exact') ? items.map(item => ({ ...item, value: pointValue(item.value) })) : [];
+    const graph = fitsRankedColumns(columns)
+      ? <RankedColumns items={columns} max={scale.domain[1]} format={value => formatValue(value, format)} />
+      : <BarRows rows={rows} scale={scale} format={format} label={valueLabel} preview />;
+    return <ReportFigure id={id} title={title} preview={preview} className="sv-bar-chart">{items.length > 0 && graph}</ReportFigure>;
+  }
+
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-bar-chart">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
       <p className="sv-chart__axis-label">{valueLabel}</p>
       {items.length === 0 ? (
         <p className="sv-report__empty">No values to show.</p>
       ) : (
         <ChartViewToggle
           label={title ?? valueLabel}
-          graph={<BarRows rows={rows} scale={scale} format={format} label={valueLabel} />}
+          graph={
+            <>
+              <BarQualificationKey qualifications={qualificationsIn(items.map(item => item.value))} />
+              <BarRows rows={rows} scale={scale} format={format} label={valueLabel} />
+            </>
+          }
           table={
             <div className="sv-chart__table-scroll">
               <table className="sv-chart__table">
@@ -81,13 +113,15 @@ export function BarChart({
                   <tr>
                     <th scope="col" className="sv-data__th-text">{categoryLabel}</th>
                     <th scope="col">{valueLabel}</th>
+                    {hasDetail && <th scope="col" className="sv-data__th-text">Detail</th>}
                   </tr>
                 </thead>
                 <tbody>
                   {ordered.map((item, i) => (
                     <tr key={`${item.label}-${i}`} data-highlight={item.highlight || undefined}>
                       <th scope="row">{item.label}</th>
-                      <td>{formatValue(item.value, format)}</td>
+                      <td>{qualifiedText(item.value, format)}</td>
+                      {hasDetail && <td className="sv-data__td-text sv-data__td-long">{item.detail ?? '—'}</td>}
                     </tr>
                   ))}
                 </tbody>

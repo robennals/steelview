@@ -251,6 +251,94 @@ export const figureExamplesFact: Fact = {
       "url": "https://example.org/fixture/30",
       "publisher": "National Conference of State Legislatures",
       "date": "2026"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: at least 159 deaths in the north, fewer than 40 in the west, about 90 in the south, between 60 and 80 in the east, and 120 in the capital. Of the dead, 62.5% were civilians, 30.1% combatants and 7.3% unidentified.",
+      "title": "Fixture: deaths by region, as the counter qualifies them",
+      "url": "https://example.org/fixture/31",
+      "publisher": "Fixture Casualty Counter",
+      "date": "2026-05"
+    },
+    {
+      "stance": "complicates",
+      "quote": "Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen. Die Zulassung der Briefwahl dient aber dem Ziel, eine möglichst umfassende Wahlbeteiligung zu erreichen.",
+      "title": "Fixture: Federal Constitutional Court, 2 BvC 7/10",
+      "url": "https://example.org/fixture/32",
+      "publisher": "Federal Constitutional Court of Germany",
+      "date": "2013-07-09"
+    },
+    {
+      "stance": "complicates",
+      "quote": "All political parties welcomed and supported postal voting on demand. Until very recently, none has treated electoral fraud as representing a problem.",
+      "title": "Fixture: Birmingham election court judgment",
+      "url": "https://example.org/fixture/33",
+      "publisher": "Election Court",
+      "date": "2005-04-04"
+    },
+    {
+      "stance": "complicates",
+      "quote": "It was argued that unrestricted postal voting undermines the fundamental secrecy of the ballot.",
+      "title": "Fixture: Securing the ballot (Pickles review)",
+      "url": "https://example.org/fixture/34",
+      "publisher": "UK Cabinet Office",
+      "date": "2016-08"
+    },
+    {
+      "stance": "supports",
+      "quote": "There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail. Oregon voters report high satisfaction with voting by mail.",
+      "title": "Fixture: Oregon's mail elections",
+      "url": "https://example.org/fixture/35",
+      "publisher": "The Conversation",
+      "date": "2020-09-03"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: counting 95% of the vote took 73 hours in Arizona in 2020 and 147 in 2024; 159 hours in Nevada in 2020 and 51 in 2024; 49 hours in Pennsylvania in 2020 and 8 in 2024; and at least 18 hours in Georgia in 2020, about 5 in 2024.",
+      "title": "Fixture: hours to count, 2020 and 2024",
+      "url": "https://example.org/fixture/36",
+      "publisher": "MIT Election Data and Science Lab",
+      "date": "2025-03"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: Black registration was 14.2% in Alabama in 1958 and 19.4% in 1964; 31.7% in Louisiana in 1956 and 31.8% in 1965; 4.4% in Mississippi in 1954 and 6.4% in 1964.",
+      "title": "Fixture: the Attorney General's registration estimates",
+      "url": "https://example.org/fixture/37",
+      "publisher": "US Department of Justice",
+      "date": "1965-03"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: on 15 September 2026 the House passed H.Con.Res. 93, 220 to 204: Republicans 7 yes and 203 no, Democrats 213 yes and 0 no. On 24 September the Senate rejected H.Con.Res. 89, 49 to 50: Republicans 4 yes and 49 no, Democrats 43 yes and 1 no, independents 2 yes and 0 no.",
+      "title": "Fixture: war-powers roll calls by party",
+      "url": "https://example.org/fixture/38",
+      "publisher": "Office of the Clerk, US House of Representatives",
+      "date": "2026-09"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: ships a day, June to September 2026 — Strait of Hormuz 31, 22, 9, 4; Bab el-Mandeb 30, 29, 28, 27; Suez Canal 40, 41, 43, 42; Malacca Strait 228, 231, 225, 230.",
+      "title": "Fixture: PortWatch daily chokepoint counts, monthly means",
+      "url": "https://example.org/fixture/39",
+      "publisher": "IMF PortWatch",
+      "date": "2026-10"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: the Kerch Strait counter began in July 2026: 12, 3 and 0 ships a day in July, August and September.",
+      "title": "Fixture: Kerch Strait counter",
+      "url": "https://example.org/fixture/40",
+      "publisher": "Fixture Ship Tracker",
+      "date": "2026-10"
+    },
+    {
+      "stance": "supports",
+      "quote": "Fixture: asylum applicants per 10,000 residents in 2024 were 95.1 in Cyprus, 70.8 in Greece, 30.0 in Germany, about 21 in Liechtenstein, 16.0 in the United Kingdom and under 0.1 in Hungary.",
+      "title": "Fixture: asylum applicants per head across Europe, 2024",
+      "url": "https://example.org/fixture/41",
+      "publisher": "Fixture Migration Observatory",
+      "date": "2025-03"
     }
   ],
   "series": {
@@ -312,7 +400,8 @@ export const figureExamplesFact: Fact = {
       "items": [
         {
           "label": "For the bill",
-          "value": 50
+          "value": 50,
+          "detail": "As the roll call records it"
         },
         {
           "label": "Against the bill",
@@ -332,6 +421,9 @@ export const figureExamplesFact: Fact = {
     {
       "kind": "dataTable",
       "id": "federal-laws",
+      "replaces": [
+        "federal-laws-list"
+      ],
       "title": "Federal voting laws and bills on registration and ID, 1965–2026",
       "description": "The federal laws in force on registration and ID, and the two parties' main bills of the past five years, with what became of each.",
       "sources": [],
@@ -419,7 +511,9 @@ export const figureExamplesFact: Fact = {
           "period": "2020",
           "periodLabel": "November 2020 general election",
           "asPublished": "more than 7,200",
-          "source": 11
+          "sources": [
+            11
+          ]
         },
         {
           "value": 98.7,
@@ -429,7 +523,9 @@ export const figureExamplesFact: Fact = {
           },
           "label": "of county decisions judged appropriate",
           "period": "2020",
-          "source": 11
+          "sources": [
+            11
+          ]
         }
       ]
     },
@@ -459,29 +555,45 @@ export const figureExamplesFact: Fact = {
       ],
       "events": [
         {
+          "date": "1980s",
+          "title": "Fixture: an event its source dates only to the decade",
+          "category": "designation",
+          "sources": [
+            3
+          ]
+        },
+        {
           "date": "1984-01-19",
           "title": "Iran designated a state sponsor of terrorism",
           "category": "designation",
-          "source": 3
+          "sources": [
+            3
+          ]
         },
         {
           "date": "2021-02-04",
           "title": "Assadi convicted in Antwerp",
           "category": "conviction",
           "significance": "major",
-          "source": 6
+          "sources": [
+            6
+          ]
         },
         {
           "date": "2024-11",
           "title": "Shakeri charged in New York",
           "category": "charge",
-          "source": 8
+          "sources": [
+            8
+          ]
         },
         {
           "date": "2026-02-27",
           "title": "Wrongful-detention designation",
           "category": "designation",
-          "source": 9
+          "sources": [
+            9
+          ]
         }
       ]
     },
@@ -523,7 +635,11 @@ export const figureExamplesFact: Fact = {
               "from": "2026-04-08",
               "to": "2026-07-07",
               "label": "Ceasefire",
-              "category": "ceasefire"
+              "category": "ceasefire",
+              "sources": [
+                2,
+                4
+              ]
             }
           ]
         },
@@ -534,12 +650,16 @@ export const figureExamplesFact: Fact = {
               "from": "2026-04-13",
               "to": "2026-06-18",
               "label": "First blockade",
-              "category": "blockade"
+              "category": "blockade",
+              "sources": [
+                3
+              ]
             },
             {
               "from": "2026-07-14",
               "label": "Second blockade",
-              "category": "blockade"
+              "category": "blockade",
+              "sources": []
             }
           ]
         },
@@ -550,7 +670,8 @@ export const figureExamplesFact: Fact = {
               "from": "2026-06-17",
               "to": "2026-07-08",
               "label": "MoU",
-              "category": "agreement"
+              "category": "agreement",
+              "sources": []
             }
           ]
         },
@@ -560,7 +681,8 @@ export const figureExamplesFact: Fact = {
             {
               "from": "2026-10-08",
               "label": "Pause",
-              "category": "pause"
+              "category": "pause",
+              "sources": []
             }
           ]
         }
@@ -569,12 +691,14 @@ export const figureExamplesFact: Fact = {
         {
           "period": "2026-05-01",
           "label": "Letter says hostilities \"have terminated\"",
-          "source": 4
+          "sources": [
+            4
+          ]
         }
       ]
     },
     {
-      "kind": "tileMap",
+      "kind": "map",
       "id": "rejection-by-state",
       "title": "Mail ballots rejected, by state, 2024",
       "description": "Share of returned mail ballots each state rejected in the November 2024 general election. The eight mostly-mail states and D.C. are outlined.",
@@ -583,7 +707,6 @@ export const figureExamplesFact: Fact = {
       ],
       "note": "Fixture: only six states are given, so every other state reads \"No data\". A real report gives all 51 areas from the EAVS table.",
       "valuesFrom": "EAVS 2024 Overview Table 1",
-      "map": "us-states",
       "areaLabel": "State",
       "highlight": [
         "CA",
@@ -619,7 +742,9 @@ export const figureExamplesFact: Fact = {
         "VT": 0.2,
         "ME": 0.2,
         "IN": 0.2
-      }
+      },
+      "preset": "us-states",
+      "default": "tiles"
     },
     {
       "kind": "barChart",
@@ -642,7 +767,8 @@ export const figureExamplesFact: Fact = {
         },
         {
           "label": "Native American",
-          "value": 1.59
+          "value": 1.59,
+          "detail": "The State Auditor's name for the group"
         },
         {
           "label": "Hispanic",
@@ -691,7 +817,9 @@ export const figureExamplesFact: Fact = {
             "military": 1221,
             "unclassified": 714
           },
-          "source": 12
+          "sources": [
+            12
+          ]
         },
         {
           "label": "Hengaw, 8 Apr",
@@ -699,7 +827,9 @@ export const figureExamplesFact: Fact = {
             "civilian": 1030,
             "other": 6620
           },
-          "source": 13
+          "sources": [
+            13
+          ]
         }
       ],
       "showCounts": true,
@@ -712,6 +842,7 @@ export const figureExamplesFact: Fact = {
       "description": "Each published estimate of the cost so far, with its range where the estimator gave one. Later estimates cover a longer war.",
       "sources": [],
       "valueLabel": "Estimated cost, US$ billion",
+      "itemLabel": "Estimator",
       "format": {
         "unit": "number",
         "decimals": 1
@@ -724,7 +855,9 @@ export const figureExamplesFact: Fact = {
           "year": "8 Apr 2026",
           "low": 25,
           "high": 35,
-          "source": 14
+          "sources": [
+            14
+          ]
         },
         {
           "label": "CSIS",
@@ -732,24 +865,30 @@ export const figureExamplesFact: Fact = {
           "estimate": 40,
           "low": 34,
           "high": 42,
-          "source": 15
+          "sources": [
+            15
+          ]
         },
         {
           "label": "CBO",
           "year": "1 Aug 2026",
           "estimate": 38,
-          "source": 16
+          "sources": [
+            16
+          ]
         },
         {
           "label": "Department of Defense",
           "year": "3 Sep 2026",
           "estimate": 43.6,
-          "source": 17
+          "sources": [
+            17
+          ]
         }
       ]
     },
     {
-      "kind": "quoteComparison",
+      "kind": "quotes",
       "id": "damage-claims",
       "question": "What did the strikes do to Iran's enriched uranium?",
       "description": "Four answers from the US government, an independent institute and the IAEA.",
@@ -759,20 +898,99 @@ export const figureExamplesFact: Fact = {
           "speaker": "Pete Hegseth",
           "role": "Secretary of Defense",
           "date": "2026-04",
-          "source": 18
+          "sources": [
+            18
+          ]
         },
         {
           "text": "no identifiable route",
           "speaker": "Institute for Science and International Security",
           "date": "2026-06",
-          "source": 19
+          "sources": [
+            19
+          ]
         },
         {
           "text": "cannot provide any information on the current size, composition or whereabouts",
           "speaker": "IAEA Director General",
           "date": "2026-06",
           "context": "Report to the Board of Governors",
-          "source": 1
+          "sources": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "quotes",
+      "id": "postal-secrecy",
+      "question": "Does postal voting give up the secrecy of the ballot?",
+      "description": "Two courts, a government review and a researcher, on what is lost when a ballot is filled in at home.",
+      "categoryLabel": "Who is speaking",
+      "categories": [
+        {
+          "id": "court",
+          "label": "Courts"
+        },
+        {
+          "id": "review",
+          "label": "Government reviews"
+        },
+        {
+          "id": "research",
+          "label": "Researchers"
+        }
+      ],
+      "quotes": [
+        {
+          "text": "Bei der Briefwahl ist die öffentliche Kontrolle der Stimmabgabe zurückgenommen … eine möglichst umfassende Wahlbeteiligung zu erreichen",
+          "speaker": "Federal Constitutional Court of Germany",
+          "date": "2013-07-09",
+          "stance": "court",
+          "translation": "With postal voting, public control of how the vote is cast is reduced … [it serves the aim of] the widest possible turnout. (This report's translation.)",
+          "lang": "de",
+          "sources": [
+            32
+          ]
+        },
+        {
+          "text": "Until very recently, none has treated electoral fraud as representing a problem.",
+          "speaker": "Richard Mawrey QC",
+          "role": "Election commissioner",
+          "date": "2005-04-04",
+          "context": "Birmingham election court judgment",
+          "stance": "court",
+          "sources": [
+            33
+          ]
+        },
+        {
+          "text": "unrestricted postal voting undermines the fundamental secrecy of the ballot",
+          "speaker": "Sir Eric Pickles's review",
+          "date": "2016-08",
+          "context": "Reporting submissions to the review",
+          "stance": "review",
+          "sources": [
+            34
+          ]
+        },
+        {
+          "text": "There has been no evidence that undue influence on voters has been a problem in Oregon elections conducted by mail.",
+          "speaker": "Priscilla Southwell",
+          "date": "2020-09-03",
+          "stance": "research",
+          "sources": [
+            35
+          ]
+        },
+        {
+          "text": "Oregon voters report high satisfaction with voting by mail.",
+          "speaker": "Priscilla Southwell",
+          "date": "2020-09-03",
+          "stance": "research",
+          "sources": [
+            35
+          ]
         }
       ]
     },
@@ -784,7 +1002,9 @@ export const figureExamplesFact: Fact = {
         "text": "Absentee ballots remain the largest source of potential voter fraud.",
         "speaker": "Commission on Federal Election Reform (Carter–Baker)",
         "date": "2005-09",
-        "source": 21
+        "sources": [
+          21
+        ]
       }
     },
     {
@@ -803,8 +1023,8 @@ export const figureExamplesFact: Fact = {
         23
       ],
       "evidence": {
-        "fact": "mail-ballot-privacy",
-        "section": "privacy-surveys"
+        "fact": "figure-examples",
+        "section": "chart-detected-is-a-floor"
       }
     },
     {
@@ -836,14 +1056,13 @@ export const figureExamplesFact: Fact = {
       ]
     },
     {
-      "kind": "tileMap",
+      "kind": "map",
       "id": "voter-id-rules",
       "title": "ID asked of voters at the polls, by state, 2026",
       "description": "The rule each state enforces when a voter arrives at the polls, from the strictest to none.",
       "sources": [
         27
       ],
-      "map": "us-states",
       "areaLabel": "State",
       "highlight": [],
       "categoryLabel": "ID asked of voters at the polls",
@@ -932,18 +1151,19 @@ export const figureExamplesFact: Fact = {
           "note": "First-time voters show ID"
         },
         "VT": "none"
-      }
+      },
+      "preset": "us-states",
+      "default": "tiles"
     },
     {
-      "kind": "geoMap",
+      "kind": "map",
       "id": "postal-voting",
       "title": "Who may vote by post from inside the country, 2025",
       "description": "Countries where in-country postal voting is open to all voters or to some. The United States is outlined.",
       "sources": [
         28
       ],
-      "note": "Fixture: only the thirteen countries the source names are assigned, so every other country reads \"No data\". Liechtenstein is too small to appear in the world outlines.",
-      "regions": "world",
+      "note": "Fixture: only the thirteen countries the source names are assigned, so every other country reads \"No data\". Liechtenstein, too small for the world outlines, is drawn as a dot.",
       "areaLabel": "Country",
       "highlight": [
         "US"
@@ -974,6 +1194,7 @@ export const figureExamplesFact: Fact = {
         "DE": "all",
         "IS": "all",
         "KR": "all",
+        "LI": "all",
         "LU": "all",
         "NZ": "all",
         "PL": "all",
@@ -984,6 +1205,54 @@ export const figureExamplesFact: Fact = {
         "AU": {
           "category": "some",
           "note": "Voters who cannot attend a polling place"
+        }
+      },
+      "preset": "world",
+      "default": "map"
+    },
+    {
+      "kind": "map",
+      "preset": "europe",
+      "default": "tiles",
+      "id": "asylum-per-head",
+      "title": "Asylum applicants per 10,000 residents, 2024",
+      "description": "Six of the EU+ countries and the UK by asylum applicants per head. The UK is outlined.",
+      "sources": [
+        41
+      ],
+      "note": "Fixture: only the six countries the source names are given, so every other country reads \"No data\".",
+      "areaLabel": "Country",
+      "highlight": [
+        "GB"
+      ],
+      "valueLabel": "Applicants per 10,000 residents",
+      "format": {
+        "unit": "number",
+        "decimals": 1
+      },
+      "breaks": [
+        0,
+        5,
+        10,
+        20,
+        30,
+        50,
+        100
+      ],
+      "data": {
+        "CY": 95.1,
+        "GR": 70.8,
+        "DE": 30,
+        "LI": {
+          "value": 21,
+          "qualifier": "about",
+          "asPublished": "about 21"
+        },
+        "GB": 16,
+        "HU": {
+          "value": 0.1,
+          "qualifier": "under",
+          "asPublished": "under 0.1"
         }
       }
     },
@@ -1067,28 +1336,534 @@ export const figureExamplesFact: Fact = {
           "group": "mostly-in-person"
         }
       ]
+    },
+    {
+      "kind": "barChart",
+      "id": "deaths-by-region",
+      "title": "Deaths by region, as the counter gives them, May 2026",
+      "description": "The counter gives some regions only as a bound, an approximation or a range; each bar shows which.",
+      "sources": [
+        31
+      ],
+      "valueLabel": "Deaths",
+      "categoryLabel": "Region",
+      "format": {
+        "unit": "count"
+      },
+      "items": [
+        {
+          "label": "North",
+          "value": {
+            "value": 159,
+            "qualifier": "at least",
+            "asPublished": "at least 159"
+          }
+        },
+        {
+          "label": "West",
+          "value": {
+            "value": 40,
+            "qualifier": "fewer than",
+            "asPublished": "fewer than 40"
+          }
+        },
+        {
+          "label": "South",
+          "value": {
+            "value": 90,
+            "qualifier": "about",
+            "asPublished": "about 90"
+          }
+        },
+        {
+          "label": "East",
+          "value": {
+            "low": 60,
+            "high": 80,
+            "asPublished": "between 60 and 80"
+          }
+        },
+        {
+          "label": "Capital",
+          "value": 120
+        }
+      ]
+    },
+    {
+      "kind": "barChart",
+      "id": "hours-to-count",
+      "title": "Hours to count 95% of the presidential vote, four states, 2020 and 2024",
+      "description": "Hours after polls closed until 95% of the vote had been reported, in each election.",
+      "sources": [
+        36
+      ],
+      "valueLabel": "Hours",
+      "categoryLabel": "State",
+      "format": {
+        "unit": "count"
+      },
+      "series": [
+        {
+          "key": "y2020",
+          "label": "2020"
+        },
+        {
+          "key": "y2024",
+          "label": "2024"
+        }
+      ],
+      "items": [
+        {
+          "label": "Arizona",
+          "values": {
+            "y2020": 73,
+            "y2024": 147
+          },
+          "detail": "Two presidential elections"
+        },
+        {
+          "label": "Nevada",
+          "values": {
+            "y2020": 159,
+            "y2024": 51
+          }
+        },
+        {
+          "label": "Pennsylvania",
+          "values": {
+            "y2020": 49,
+            "y2024": 8
+          }
+        },
+        {
+          "label": "Georgia",
+          "values": {
+            "y2020": {
+              "value": 18,
+              "qualifier": "at least",
+              "asPublished": "at least 18 hours"
+            },
+            "y2024": {
+              "value": 5,
+              "qualifier": "about",
+              "asPublished": "about 5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "barChart",
+      "id": "pre-vra-registration",
+      "title": "Black voter registration before the Voting Rights Act, three states, 1954–1965",
+      "description": "The Attorney General's estimates at the earliest and latest year he gave for each state.",
+      "sources": [
+        37
+      ],
+      "valueLabel": "Black voting-age residents registered, %",
+      "categoryLabel": "State",
+      "format": {
+        "unit": "percent",
+        "decimals": 1
+      },
+      "series": [
+        {
+          "key": "earlier",
+          "label": "Earliest estimate"
+        },
+        {
+          "key": "latest",
+          "label": "Latest estimate"
+        }
+      ],
+      "style": "dumbbell",
+      "items": [
+        {
+          "label": "Alabama",
+          "values": {
+            "earlier": 14.2,
+            "latest": 19.4
+          },
+          "labels": {
+            "earlier": "1958",
+            "latest": "1964"
+          }
+        },
+        {
+          "label": "Louisiana",
+          "values": {
+            "earlier": 31.7,
+            "latest": 31.8
+          },
+          "labels": {
+            "earlier": "1956",
+            "latest": "1965"
+          }
+        },
+        {
+          "label": "Mississippi",
+          "values": {
+            "earlier": 4.4,
+            "latest": 6.4
+          },
+          "labels": {
+            "earlier": "1954",
+            "latest": "1964"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "sliceExplorer",
+      "id": "war-powers-votes",
+      "title": "Votes on resolutions to end the Iran war, by party, September 2026",
+      "description": "How each party voted on the last House and Senate war-powers resolutions.",
+      "sources": [
+        38
+      ],
+      "dimensions": [
+        {
+          "key": "vote",
+          "label": "Roll call",
+          "plural": "roll calls",
+          "combinable": false
+        },
+        {
+          "key": "party",
+          "label": "Party",
+          "values": [
+            "Democratic",
+            "Independent",
+            "Republican"
+          ],
+          "plural": "parties"
+        },
+        {
+          "key": "position",
+          "label": "Position",
+          "values": [
+            "Yes",
+            "No"
+          ],
+          "plural": "positions"
+        }
+      ],
+      "measures": [
+        {
+          "key": "members",
+          "label": "Members voting",
+          "format": {
+            "unit": "count"
+          }
+        }
+      ],
+      "rows": [
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Republican",
+          "position": "Yes",
+          "members": 7
+        },
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Republican",
+          "position": "No",
+          "members": 203
+        },
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Democratic",
+          "position": "Yes",
+          "members": 213
+        },
+        {
+          "vote": "House, 15 Sep 2026",
+          "party": "Democratic",
+          "position": "No",
+          "members": 0
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Republican",
+          "position": "Yes",
+          "members": 4
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Republican",
+          "position": "No",
+          "members": 49
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Democratic",
+          "position": "Yes",
+          "members": 43
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Democratic",
+          "position": "No",
+          "members": 1
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Independent",
+          "position": "Yes",
+          "members": 2
+        },
+        {
+          "vote": "Senate, 24 Sep 2026",
+          "party": "Independent",
+          "position": "No",
+          "members": 0
+        }
+      ],
+      "defaultBreakdown": "party",
+      "defaultSplit": "position"
+    },
+    {
+      "kind": "smallMultiples",
+      "id": "chokepoint-traffic",
+      "title": "Ships a day through five chokepoints, June–September 2026",
+      "description": "Monthly means of daily ship counts, all on one scale; Hormuz is highlighted.",
+      "sources": [
+        39
+      ],
+      "valueLabel": "Ships a day, monthly average",
+      "format": {
+        "unit": "number",
+        "decimals": 0
+      },
+      "periodLabel": "Month",
+      "coverage": {
+        "from": "2026-06",
+        "to": "2026-09",
+        "note": "Our monthly means of the daily counts."
+      },
+      "panels": [
+        {
+          "name": "Strait of Hormuz",
+          "highlight": true,
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 31
+            },
+            {
+              "period": "2026-07",
+              "value": 22
+            },
+            {
+              "period": "2026-08",
+              "value": 9
+            },
+            {
+              "period": "2026-09",
+              "value": 4
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Bab el-Mandeb",
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 30
+            },
+            {
+              "period": "2026-07",
+              "value": 29
+            },
+            {
+              "period": "2026-08",
+              "value": 28
+            },
+            {
+              "period": "2026-09",
+              "value": 27
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Suez Canal",
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 40
+            },
+            {
+              "period": "2026-07",
+              "value": 41
+            },
+            {
+              "period": "2026-08",
+              "value": 43
+            },
+            {
+              "period": "2026-09",
+              "value": 42
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Malacca Strait",
+          "points": [
+            {
+              "period": "2026-06",
+              "value": 228
+            },
+            {
+              "period": "2026-07",
+              "value": 231
+            },
+            {
+              "period": "2026-08",
+              "value": 225
+            },
+            {
+              "period": "2026-09",
+              "value": 230
+            }
+          ],
+          "sources": []
+        },
+        {
+          "name": "Kerch Strait",
+          "coverage": {
+            "from": "2026-07",
+            "to": "2026-09",
+            "note": "The counter began in July 2026."
+          },
+          "points": [
+            {
+              "period": "2026-07",
+              "value": 12
+            },
+            {
+              "period": "2026-08",
+              "value": 3
+            },
+            {
+              "period": "2026-09",
+              "value": 0
+            }
+          ],
+          "sources": [
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "compositionBar",
+      "id": "deaths-split",
+      "title": "Deaths by status, as the counter splits them, May 2026",
+      "description": "The counter's own percentages, which it rounds to one decimal place.",
+      "sources": [
+        31
+      ],
+      "categories": [
+        {
+          "key": "civilian",
+          "label": "Civilian"
+        },
+        {
+          "key": "combatant",
+          "label": "Combatant"
+        },
+        {
+          "key": "unidentified",
+          "label": "Unidentified"
+        }
+      ],
+      "rows": [
+        {
+          "label": "Fixture Casualty Counter",
+          "values": {
+            "civilian": 62.5,
+            "combatant": 30.1,
+            "unidentified": 7.3
+          },
+          "sources": []
+        }
+      ],
+      "unit": "percent",
+      "rowLabel": "Counter"
+    },
+    {
+      "kind": "dataTable",
+      "id": "count-releases",
+      "title": "The counter's releases by region, 2026",
+      "description": "When the counter last published each region's figure, and the figure as it gave it.",
+      "sources": [
+        31
+      ],
+      "caption": "One row per region",
+      "columns": [
+        {
+          "key": "region",
+          "label": "Region",
+          "rowHeader": true
+        },
+        {
+          "key": "published",
+          "label": "Last published",
+          "format": "date"
+        },
+        {
+          "key": "deaths",
+          "label": "Deaths",
+          "format": {
+            "unit": "count"
+          }
+        }
+      ],
+      "rows": [
+        {
+          "region": "North",
+          "published": "2026-05-12",
+          "deaths": {
+            "value": 159,
+            "qualifier": "at least",
+            "asPublished": "at least 159"
+          }
+        },
+        {
+          "region": "East",
+          "published": "2026-05",
+          "deaths": {
+            "low": 60,
+            "high": 80,
+            "asPublished": "between 60 and 80"
+          }
+        },
+        {
+          "region": "Capital",
+          "published": "2026",
+          "deaths": 120
+        }
+      ],
+      "highlight": [],
+      "defaultSort": {
+        "key": "published",
+        "direction": "ascending"
+      }
+    },
+    {
+      "kind": "section",
+      "id": "audit-method"
+    },
+    {
+      "kind": "section",
+      "id": "remainder"
     }
   ],
   "id": "figure-examples",
-  "body": "This fixture exists so every figure kind can be seen, tested and validated in\nthe order an author writes it.\n\n## Provisions of the Freedom to Vote Act {#figure-examples--freedom-to-vote-act-provisions}\n\nThis section is placed between the federal-laws table and the key figures by a\n`section` entry, not left at the end of the body.\n\n## Observations {#figure-examples--observations-federal-laws}\n\n### The record is mostly older law {#figure-examples--older-law}\n\nOf the rows shown, the only one in force is the 1965 Act.\n\n## Subtleties {#figure-examples--subtleties-wa-by-race}\n\n### Rates before controls {#figure-examples--before-controls}\n\nThese rates are before any control for age or county.\n\n## What the rest of the body says {#figure-examples--remainder}\n\nBody sections that no figure places render after the last figure, as before."
+  "body": "## Provisions of the Freedom to Vote Act {#figure-examples--freedom-to-vote-act-provisions}\n\nThis section is placed between the federal-laws table and the key figures by a\n`section` entry, not left at the end of the body.\n\n## Observations {#figure-examples--observations-federal-laws}\n\n### The record is mostly older law {#figure-examples--older-law}\n\nOf the rows shown, the only one in force is the 1965 Act.\n\n## Subtleties {#figure-examples--subtleties-wa-by-race}\n\n### Rates before controls {#figure-examples--before-controls}\n\nThese rates are before any control for age or county.\n\n## What the rest of the body says {#figure-examples--remainder}\n\nA body section sits where its `section` entry places it.\n\n### How the audit sample was drawn {#figure-examples--audit-method}\n\nThis `###` section is placed by its own `section` entry, after the last\nfigure; the `##` section it sits in has an entry of its own and follows it."
 };
 
-export const figureExamplesBodyHtml: string = "<p>This fixture exists so every figure kind can be seen, tested and validated in\nthe order an author writes it.</p>\n<h2 id=\"figure-examples--freedom-to-vote-act-provisions\">Provisions of the Freedom to Vote Act</h2>\n<p>This section is placed between the federal-laws table and the key figures by a\n<code>section</code> entry, not left at the end of the body.</p>\n<h2 id=\"figure-examples--observations-federal-laws\">Observations</h2>\n<details id=\"figure-examples--older-law\" class=\"sv-observation\"><summary>The record is mostly older law</summary><div class=\"sv-observation__body\">\n<p>Of the rows shown, the only one in force is the 1965 Act.</p>\n</div></details><h2 id=\"figure-examples--subtleties-wa-by-race\">Subtleties</h2>\n<details id=\"figure-examples--before-controls\" class=\"sv-observation\"><summary>Rates before controls</summary><div class=\"sv-observation__body\">\n<p>These rates are before any control for age or county.</p>\n</div></details><h2 id=\"figure-examples--remainder\">What the rest of the body says</h2>\n<p>Body sections that no figure places render after the last figure, as before.</p>";
-
-/** The fact the claim check's evidence link names. */
-export const mailBallotPrivacyFact: Fact = {
-  "id": "mail-ballot-privacy",
-  "claim": "Surveys of mail-ballot privacy measure reported pressure, not fraud.",
-  "status": "complicated",
-  "sources": [
-    {
-      "stance": "supports",
-      "quote": "q",
-      "title": "t",
-      "url": "https://example.org/privacy",
-      "publisher": "p",
-      "date": "2024"
-    }
-  ],
-  "body": "## Privacy surveys {#mail-ballot-privacy--privacy-surveys}\n\nWhat the surveys asked."
-};
+export const figureExamplesBodyHtml: string = "<h2 id=\"figure-examples--freedom-to-vote-act-provisions\">Provisions of the Freedom to Vote Act</h2>\n<p>This section is placed between the federal-laws table and the key figures by a\n<code>section</code> entry, not left at the end of the body.</p>\n<h2 id=\"figure-examples--observations-federal-laws\">Observations</h2>\n<details id=\"figure-examples--older-law\" class=\"sv-observation\"><summary>The record is mostly older law</summary><div class=\"sv-observation__body\">\n<p>Of the rows shown, the only one in force is the 1965 Act.</p>\n</div></details><h2 id=\"figure-examples--subtleties-wa-by-race\">Subtleties</h2>\n<details id=\"figure-examples--before-controls\" class=\"sv-observation\"><summary>Rates before controls</summary><div class=\"sv-observation__body\">\n<p>These rates are before any control for age or county.</p>\n</div></details><h2 id=\"figure-examples--remainder\">What the rest of the body says</h2>\n<p>A body section sits where its <code>section</code> entry places it.</p>\n<section id=\"figure-examples--audit-method\" class=\"sv-evidence-section\"><h3>How the audit sample was drawn</h3>\n<p>This <code>###</code> section is placed by its own <code>section</code> entry, after the last\nfigure; the <code>##</code> section it sits in has an entry of its own and follows it.</p></section>";

@@ -136,7 +136,7 @@ export const WithMarkers: Story = {
 export const CategoricalIdeaPostalVoting: Story = {
   args: {
     title: 'Who may vote by post in their own country',
-    description: 'Eleven countries open in-country postal voting to all voters and two to some, among those checked so far. Every other country is not yet extracted from IDEA\'s tables, so it shows as No data, not as "no postal voting". Liechtenstein (all voters) is too small to draw at this scale.',
+    description: 'Eleven countries open in-country postal voting to all voters and two to some, among those checked so far. Every other country is not yet extracted from IDEA\'s tables, so it shows as No data, not as "no postal voting". Liechtenstein (all voters), too small for its outline at this scale, is the outlined dot between Switzerland and Austria.',
     regions: WORLD_COUNTRIES,
     contextRegions: undefined,
     extent: undefined,
@@ -146,6 +146,7 @@ export const CategoricalIdeaPostalVoting: Story = {
     format: undefined,
     breaks: undefined,
     insets: [{ regionIds: ['LU'] }],
+    highlight: ['LI'],
     areaLabel: 'Country',
     sources: IDEA_POSTAL_SOURCES,
   },

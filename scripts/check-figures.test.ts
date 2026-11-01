@@ -86,7 +86,59 @@ test('a figure-table cell with an unquoted figure is reported against its figure
   assert.ok(!auditTopic([quoted]).unmatched.some((f) => f.figure === '87.5%'));
 });
 
+test('a comparison or series note with an unquoted figure is an advisory, not a failure', () => {
+  const item = figureFixture();
+  const comparison = (item.data.comparisons as Array<{ id: string; note?: string }>).find((c) => c.id === 'senate-votes')!;
+  comparison.note = 'Shares do not sum to 100%. One vote in 2019 drew 61.3% support.';
+  (item.data.series as { coverage: { note?: string } }).coverage.note = 'Rounded to the nearest 12,345.';
+  const { unmatched, chartNotes } = auditTopic([item]);
+  assert.deepEqual(
+    chartNotes.map((f) => [f.item, f.figure]),
+    [['fact/figure-examples series', '12,345'], ['fact/figure-examples comparison senate-votes', '61.3%']]
+  );
+  assert.ok(!unmatched.some((f) => f.figure === '61.3%' || f.figure === '12,345'));
+});
+
 test('figure values reach the chart-value audit', () => {
   const values = auditTopic([figureFixture()]).values.filter((v) => v.chart === 'figure wa-by-race');
   assert.equal(values.length, 5);
+});
+
+test('qualified bars are traced by their wording, and a range by both ends', () => {
+  const values = auditTopic([figureFixture()]).values.filter((v) => v.chart === 'figure deaths-by-region');
+  assert.deepEqual(values.map((v) => [v.where, v.verdict]), [
+    ['figure deaths-by-region bar "North"', 'quoted'],
+    ['figure deaths-by-region bar "West"', 'quoted'],
+    ['figure deaths-by-region bar "South"', 'quoted'],
+    ['figure deaths-by-region bar "East" low', 'quoted'],
+    ['figure deaths-by-region bar "East" high', 'quoted'],
+    ['figure deaths-by-region bar "Capital"', 'quoted'],
+  ]);
+});
+
+test('a range with no wording of its own is untraced unless both ends are quoted', () => {
+  const item = figureFixture();
+  const bars = (item.data.figures as Array<{ id?: string; items?: Array<Record<string, unknown>> }>).find((f) => f.id === 'deaths-by-region')!;
+  bars.items![3].value = { low: 60, high: 85 };
+  const verdicts = auditTopic([item]).values.filter((v) => v.chart === 'figure deaths-by-region' && v.where.includes('"East"')).map((v) => v.verdict);
+  assert.deepEqual(verdicts, ['quoted', 'untraced']);
+});
+
+test('a derived figure with an unquoted input is an unmatched finding, and the audit carries on', () => {
+  const { unmatched } = auditTopic([
+    {
+      kind: 'fact',
+      id: 'a',
+      data: { claim: 'A claim', sources: [{ quote: '46,497 arrivals' }], derivedFigures: [{ method: 'ratio-percent', figure: '5.7%', numerator: 46497, denominator: 813000, decimals: 1 }] },
+      body: 'That is 5.7% of all arrivals.',
+    },
+    fact('b', 'about 1.4% of ballots', 'Rejections ran at 1.4%.'),
+  ]);
+  assert.deepEqual(
+    unmatched.map((f) => [f.item, f.figure, f.corpus]),
+    [
+      ['fact/a derivedFigures', '5.7%', 'derived from 813000, which is not quoted in this item’s sources'],
+      ['fact/a', '5.7%', "not in this fact's sources"],
+    ]
+  );
 });

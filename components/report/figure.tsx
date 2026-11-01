@@ -1,12 +1,15 @@
 import type { ReactNode } from 'react';
 import { ObservationBar } from '@/components/topic/observation-bar';
-import type { SourceCredit } from './types';
+import { PanelSources } from '@/components/topic/sources-slot';
+import { ChartAbout } from './chart-about';
+import type { FigurePreview, SourceCredit } from './types';
 
 /**
  * The frame every report component sits in: a heading that says what the
  * reader is looking at, a sentence on what it shows, in a data panel the
- * observation being shown, the component itself, the source it rests on, and
- * an optional "About this data" note.
+ * observation being shown, the component itself, the sources it rests on, and
+ * an optional "About this data" note. In a data panel the description, note and
+ * list of observations fold into `ChartAbout`, and the sources into one row.
  *
  * Same markup and classes as the topic charts (`sv-chart`), so a new
  * component placed between two existing charts is indistinguishable from
@@ -23,6 +26,8 @@ export function ReportFigure({
   footer,
   headingLevel = 2,
   className,
+  preview,
+  panel,
   children,
 }: {
   id?: string;
@@ -35,11 +40,44 @@ export function ReportFigure({
   footer?: ReactNode;
   headingLevel?: 2 | 3;
   className?: string;
-  children: ReactNode;
+  /** Draw only the linked title and the graph (see `FigurePreview`). */
+  preview?: FigurePreview;
+  /** Drawn in a data panel: filling it, with its description and note folded into one line. */
+  panel?: boolean;
+  children?: ReactNode;
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3';
+  const classes = ['sv-chart', 'sv-report', className].filter(Boolean).join(' ');
+  if (preview) {
+    // A slide sits under its topic's heading, so its title is one level down.
+    return (
+      <figure className={classes} id={id} data-preview>
+        {title && (
+          <figcaption className="sv-chart__caption">
+            <h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{title}</a> : title}</h3>
+          </figcaption>
+        )}
+        {children && <div className="sv-chart__preview">{children}</div>}
+      </figure>
+    );
+  }
+  const noteBody = typeof note === 'string' ? <p>{note}</p> : note;
+  if (panel) {
+    // The step around it carries the Observations, which the bar shows one at a time.
+    return (
+      <figure className={classes} id={id} data-panel-chart>
+        <figcaption className="sv-chart__caption">
+          {title && <Heading className="sv-graph-heading">{title}</Heading>}
+          <ChartAbout description={description}>{noteBody}</ChartAbout>
+        </figcaption>
+        <ObservationBar />
+        {children}
+        <PanelSources />
+      </figure>
+    );
+  }
   return (
-    <figure className={['sv-chart', 'sv-report', className].filter(Boolean).join(' ')} id={id}>
+    <figure className={classes} id={id}>
       {(title || description) && (
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}
@@ -53,7 +91,7 @@ export function ReportFigure({
       {note && (
         <details className="sv-chart__methodology">
           <summary>About this data</summary>
-          {typeof note === 'string' ? <p>{note}</p> : note}
+          {noteBody}
         </details>
       )}
     </figure>

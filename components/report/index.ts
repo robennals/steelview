@@ -10,12 +10,15 @@
 // Foundations
 export * from './types';
 export { formatValue, formatDate, dateToYear, compareDates } from './format';
+export * from './qualified';
+export { ChartAbout } from './chart-about';
 export { ReportFigure, SourceCredits, SourceLine } from './figure';
 export { ChoiceGroup, FilterChips, type Choice } from './controls';
 
 // Data
 export * from './key-figures';
 export * from './bar-chart';
+export * from './paired-bar-chart';
 export * from './slice-explorer';
 export * from './composition-bar';
 export * from './small-multiples';
@@ -25,6 +28,7 @@ export * from './data-cards';
 export * from './scatter-plot';
 
 // Maps
+export * from './area-map';
 export * from './geo-map';
 export * from './tile-map';
 export type { GeoRegion, LonLat } from './geo/types';
@@ -34,7 +38,9 @@ export { partitionRegions } from './geo/regions';
 export { WORLD_COUNTRIES } from './geo/world-countries';
 export { EUROPE_COUNTRIES, EUROPE_EXTENT } from './geo/europe-countries';
 export { UK_ITL1_REGIONS } from './geo/uk-itl1';
-export { EUROPE_COUNTRY_TILES, US_STATE_TILES, UK_REGION_TILES, type MapTile } from './geo/tiles';
+export { US_STATES, US_TERRITORIES } from './geo/us-states';
+export { EUROPE_COUNTRY_TILES, US_STATE_TILES, US_TERRITORY_TILES, UK_REGION_TILES, type MapTile } from './geo/tiles';
+export { WORLD_COUNTRY_TILES } from './geo/world-tiles';
 
 // Timelines
 export * from './timeline';

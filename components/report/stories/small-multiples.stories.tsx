@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { SmallMultiples } from '../small-multiples';
 import { nationalityPanels, onsLtimSource } from './fixtures/data';
+import { figureExamplesFact } from './fixtures/figure-examples';
+import { figureContext, smallMultiplesProps } from '@/lib/content/figure-props';
+import type { FigureOf } from '@/lib/content/types';
 
 const meta = {
   title: 'Data/SmallMultiples',
@@ -41,3 +44,14 @@ export const IndependentScales: Story = {
 export const FewPanels: Story = {
   args: { panels: nationalityPanels.slice(0, 4), title: 'The four largest named non-EU+ nationalities' },
 };
+
+const chokepoints = figureExamplesFact.figures?.find((f): f is FigureOf<'smallMultiples'> => f.kind === 'smallMultiples');
+if (!chokepoints) throw new Error('the figure fixture has no smallMultiples');
+
+/**
+ * A `smallMultiples` figure as content renders it: one highlighted panel
+ * (a heavier rule and the accent line), and a panel whose source publishes
+ * a shorter range, crediting its own source under its name and noting its
+ * range in About this data. Fixture data.
+ */
+export const FromContent: Story = { args: smallMultiplesProps(chokepoints, figureContext(figureExamplesFact)) };

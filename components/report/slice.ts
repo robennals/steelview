@@ -26,6 +26,14 @@ export type SliceDimension = {
   last?: string[];
   /** Lower-case plural for the status line: "reasons". Defaults to "<label> categories". */
   plural?: string;
+  /**
+   * `false` for a dimension whose values must never be added together or
+   * averaged — separate roll calls, separate polls — because the sum is a
+   * true number that measures nothing. Unless it is what the bars are, the
+   * reader sees one of its values at a time, and it is never offered to
+   * split by. Defaults to true.
+   */
+  combinable?: boolean;
 };
 
 export type SliceAggregation = 'sum' | 'mean';
@@ -130,6 +138,18 @@ export function slice({
     groups = [...groups.filter(g => !pinned.has(g.key)), ...groups.filter(g => pinned.has(g.key))];
   }
   return { groups, splitKeys };
+}
+
+/**
+ * The filters actually applied: a dimension that may not be combined, and
+ * is not what the bars are, is held to its one picked value (its first, if
+ * none is picked), so its values are never added together.
+ */
+export function appliedFilters(rows: SliceRow[], dimensions: SliceDimension[], breakdown: SliceDimension, filters: SliceFilters, picks: Record<string, string>): SliceFilters {
+  const held = dimensions
+    .filter(d => d.combinable === false && d.key !== breakdown.key)
+    .map(d => [d.key, [picks[d.key] ?? filters[d.key]?.[0] ?? dimensionValues(rows, d)[0]]] as const);
+  return { ...filters, ...Object.fromEntries(held) };
 }
 
 export function pluralOf(dimension: SliceDimension): string {

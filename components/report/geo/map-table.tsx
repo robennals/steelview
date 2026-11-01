@@ -1,3 +1,4 @@
+import { pointValue } from '../qualified';
 import type { ValueFormat } from '../types';
 import { datumText, type MapData } from './choropleth';
 
@@ -23,8 +24,8 @@ export function MapTable({
   format?: ValueFormat;
 }) {
   const rows = [...areas].sort((a, b) => {
-    const va = data[a.id]?.value;
-    const vb = data[b.id]?.value;
+    const va = data[a.id] && pointValue(data[a.id]);
+    const vb = data[b.id] && pointValue(data[b.id]);
     if (va === undefined && vb === undefined) return a.name.localeCompare(b.name);
     if (va === undefined) return 1;
     if (vb === undefined) return -1;

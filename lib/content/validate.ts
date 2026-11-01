@@ -1,6 +1,10 @@
+import { extentValues, pointValue, type FigureNumber } from '@/components/report/qualified';
+import { appliedFilters, slice } from '@/components/report/slice';
+import { observationTargets } from './chart-observations';
 import { citedFactTargets, neededClaims } from './markdown';
-import { geoRegions, mapTiles } from './map-presets';
-import { comparePeriods } from './period';
+import { mapAreaIds, mapAreas } from './map-presets';
+import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
+import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
@@ -95,6 +99,7 @@ export function validateTopic(topic: Topic): string[] {
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
       chartIds.add(chart.id);
+      errors.push(...rowLabelErrors(chart.items, `fact ${f.id}: comparison ${chart.id}`));
       if (chart.domainMax !== undefined && chart.items.some(item => item.value > chart.domainMax!)) {
         errors.push(`fact ${f.id}: comparison domainMax must be at least every item value`);
       }
@@ -126,6 +131,7 @@ export function validateTopic(topic: Topic): string[] {
     }
     errors.push(...figureErrors(f, topic));
     errors.push(...observationMarkErrors(f));
+    errors.push(...bodyPlacementErrors(f));
     // rule 5
     if (f.status === 'contested') {
       if (!f.sources.some((s) => s.stance === 'supports')) {
@@ -185,11 +191,6 @@ export function validateTopic(topic: Topic): string[] {
   return errors;
 }
 
-/** The ids a fact's charts answer to: `series`, each `additionalSeries` id and each comparison id. */
-export function chartIdsOf(fact: Fact): string[] {
-  return [...(fact.series ? ['series'] : []), ...(fact.additionalSeries ?? []).map(s => s.id), ...(fact.comparisons ?? []).map(c => c.id)];
-}
-
 /**
  * A topic's home-page preview charts resolve, appear once each, and between
  * them represent every viewpoint: each viewpoint must cite, inline, the fact
@@ -203,12 +204,14 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
   const seen = new Set<string>();
   for (const { fact, chart, reading } of previews) {
     const key = `${fact}/${chart}`;
-    const target = factById.get(fact);
-    if (!target || !chartIdsOf(target).includes(chart)) errors.push(`topic: preview chart ${key} does not resolve to a chart`);
-    else if (reading !== undefined) {
-      const series = chart === 'series' ? target.series : target.additionalSeries?.find(s => s.id === chart);
-      if (!series) errors.push(`topic: preview chart ${key} is not a series, so it cannot name a reading`);
-      else if (!series.readings.some(r => r.id === reading)) errors.push(`topic: preview chart ${key} has no reading "${reading}"`);
+    const owner = factById.get(fact);
+    const target = owner && previewTarget(owner, chart);
+    if (!target) errors.push(`topic: preview chart ${key} does not resolve to a chart or figure`);
+    else if (target.kind === 'figure' && !isPreviewable(target)) {
+      errors.push(`topic: preview chart ${key} is a ${target.figure.kind} figure, which has no graph to preview — choose a series, a comparison or a figure of kind ${PREVIEW_FIGURE_KINDS.join(', ')}`);
+    } else if (reading !== undefined) {
+      if (target.kind !== 'series') errors.push(`topic: preview chart ${key} is not a series, so it cannot name a reading`);
+      else if (!target.series.readings.some(r => r.id === reading)) errors.push(`topic: preview chart ${key} has no reading "${reading}"`);
     }
     if (seen.has(key)) errors.push(`topic: preview chart ${key} is listed twice`);
     seen.add(key);
@@ -344,6 +347,9 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
       errors.push(`${where} cites unknown source ${band.source} for its "not measured since" note`);
     }
   }
+  for (const event of series.events) {
+    for (const n of event.sources) if (n > sourceCount) errors.push(`${where} event "${event.label}" cites unknown source ${n}`);
+  }
 
   // A coverage end of "2026" runs to the end of 2026, so an event dated
   // "2026-03" is inside it; compare against the end's own precision. Events
@@ -399,6 +405,53 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
   return errors;
 }
 
+/**
+ * Everything in a body sits on a chart, as the slides are how a report is read:
+ * an `## Observations`, `## Subtleties` or `## More` group addressed
+ * `{#<fact>--<kind>-<id>}` to a series reading, comparison, figure or placed
+ * section (`observationTargets`), or a body section placed by a `section`
+ * entry. Text before the first group, or a group that attaches to nothing, is
+ * shown on no slide, and one whose id looks like a slip says what it meant.
+ */
+function bodyPlacementErrors(f: Fact): string[] {
+  const targets = observationTargets(f);
+  const placed = new Set((f.figures ?? []).flatMap(figure => (figure.kind === 'section' ? [`${f.id}--${figure.id}`] : [])));
+  const notTargets = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...(f.featuredCharts ?? [])];
+  const errors: string[] = [];
+  if (/^## /m.test(f.body) && f.body.split(/^## /m)[0].trim()) errors.push(`fact ${f.id}: the body has text before its first "##" group, which no slide shows — put it in a chart's "## More {#${f.id}--more-<id>}"`);
+  for (const [, heading] of f.body.matchAll(/^## (.*)$/gm)) {
+    const anchor = heading.match(/\{#([a-z0-9-]+)\}\s*$/)?.[1] ?? '';
+    const id = anchor.match(new RegExp(`^${f.id}--(?:observations|subtleties|more)-([a-z0-9-]+)$`))?.[1];
+    if ((id && targets.includes(id)) || placed.has(anchor)) continue;
+    const meant = id && !notTargets.includes(id) ? targets.find(target => looksLikeSlipFor(id, target)) : undefined;
+    errors.push(`fact ${f.id}: "## ${heading}" sits on no chart, so no slide shows it — address it to a series reading, comparison, figure or placed section of this fact${meant ? `; did you mean "${meant}"?` : ''}`);
+  }
+  for (const [anchor, chart] of Object.entries(f.movedAnchors ?? {})) {
+    if (!targets.includes(chart)) errors.push(`fact ${f.id}: moved anchor "${anchor}" names "${chart}", which is not a series reading, comparison or figure of this fact`);
+  }
+  return errors;
+}
+
+/** `id` is `target` with a hyphenated part added or dropped at either end, or within two single-letter edits of it. */
+function looksLikeSlipFor(id: string, target: string): boolean {
+  const [shorter, longer] = id.length < target.length ? [id, target] : [target, id];
+  if (longer.startsWith(`${shorter}-`) || longer.endsWith(`-${shorter}`)) return true;
+  return editDistance(id, target) <= 2;
+}
+
+/** The Levenshtein distance between two short strings. */
+function editDistance(a: string, b: string): number {
+  let previous = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const current = [i];
+    for (let j = 1; j <= b.length; j++) {
+      current[j] = Math.min(previous[j] + 1, current[j - 1] + 1, previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    previous = current;
+  }
+  return previous[b.length];
+}
+
 /** Whether `#fact-<id>/<section>` names something on the fact's page: its finding, a chart or figure, or a body anchor. */
 function knownSection(fact: Fact, section: string): boolean {
   return section === 'finding' ||
@@ -406,7 +459,8 @@ function knownSection(fact: Fact, section: string): boolean {
     fact.series?.readings.some(reading => section === `chart-${reading.id}`) === true ||
     fact.additionalSeries?.some(s => section === `chart-${s.id}` || s.readings.some(r => section === `chart-${r.id}`)) === true ||
     fact.comparisons?.some(chart => section === `chart-${chart.id}`) === true ||
-    fact.figures?.some(figure => isComponentFigure(figure) && section === `chart-${figure.id}`) === true ||
+    fact.figures?.some(figure => isComponentFigure(figure) && (section === `chart-${figure.id}` || figure.replaces?.includes(section) === true)) === true ||
+    fact.movedAnchors?.[section] !== undefined ||
     fact.body.includes(`{#${fact.id}--${section}}`);
 }
 
@@ -418,7 +472,7 @@ function knownSection(fact: Fact, section: string): boolean {
 /**
  * M1 — a mark must land on its observation's chart, since a reader takes what
  * it picks out as what the observation is about. Line charts take a region, a
- * point and lines, and comparisons and data tables take rows.
+ * point and lines; most other charts take rows (see `figureRows`).
  */
 function observationMarkErrors(f: Fact): string[] {
   const groups = observationGroups(f);
@@ -446,13 +500,28 @@ function markErrors(f: Fact, key: string, mark: ObservationMark): string[] {
     ];
   }
   const figure = componentFigure(f, key);
-  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label)
-    ?? (figure?.kind === 'dataTable' ? tableRowHeaders(figure) : undefined);
+  const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label) ?? (figure && figureRows(figure));
   if (!rows) return ['is on a chart that cannot show marks yet'];
   return [
     ...(mark.from || mark.to || mark.at || mark.lines ? ['names periods or lines, but its chart has rows'] : []),
     ...(mark.rows ?? []).filter(row => !rows.includes(row)).map(row => `names "${row}", which is not a row of ${key}`),
   ];
+}
+
+/** What a mark can name on a figure, or undefined for a kind that cannot show marks yet. */
+function figureRows(figure: ComponentFigure): string[] | undefined {
+  switch (figure.kind) {
+    case 'dataTable': return tableRowHeaders(figure);
+    case 'barChart': return figure.items.map(item => item.label);
+    case 'compositionBar': return figure.rows.map(row => row.label);
+    case 'estimateRange': return figure.estimates.map(estimate => estimate.label);
+    case 'smallMultiples': return figure.panels.map(panel => panel.name);
+    case 'timeline': return figure.events.map(event => event.title);
+    case 'periodTimeline': return figure.rows.map(row => row.label);
+    case 'quotes': return figure.quotes.map(quote => quote.speaker);
+    case 'map': return Object.keys(figure.areas ?? figure.data ?? {});
+    default: return undefined;
+  }
 }
 
 /** Each row's label in a data table: what its `highlight` and marks name it by. */
@@ -480,6 +549,19 @@ export function figureErrors(f: Fact, topic: Topic): string[] {
     if (taken.has(figure.id)) errors.push(`${at(figure, i)} id "${figure.id}" is already used by another chart, reading or figure`);
     taken.add(figure.id);
   });
+  // A replaced anchor becomes an element id on the page too, so it may not
+  // still be in the body, name a chart, or be replaced twice.
+  const chartAnchors = new Set([...taken].map(id => `chart-${id}`));
+  const replaced = new Set<string>();
+  figures.forEach((figure, i) => {
+    if (!isComponentFigure(figure)) return;
+    for (const anchor of figure.replaces ?? []) {
+      if (replaced.has(anchor)) errors.push(`${at(figure, i)} replaces "${anchor}", which another figure already replaces`);
+      else if (chartAnchors.has(anchor)) errors.push(`${at(figure, i)} replaces "${anchor}", which is the id of a chart or figure`);
+      else if (f.body.includes(`{#${f.id}--${anchor}}`)) errors.push(`${at(figure, i)} replaces "${anchor}", which is still an anchor in the body`);
+      replaced.add(anchor);
+    }
+  });
 
   // F3 — once present, `figures` is the whole reading order: every chart
   // the fact has is placed exactly once, so none silently drops to the end.
@@ -503,8 +585,9 @@ export function figureErrors(f: Fact, topic: Topic): string[] {
     const where = at(figure, i);
 
     // F4
-    if (figure.kind === 'section' && !new RegExp(`^##\\s.*\\{#${escapeRegExp(f.id)}--${escapeRegExp(figure.id)}\\}\\s*$`, 'm').test(f.body)) {
-      errors.push(`${where} no body section headed "## … {#${f.id}--${figure.id}}"`);
+    if (figure.kind === 'section') {
+      const error = sectionHeadingError(f.body, `${f.id}--${figure.id}`);
+      if (error) errors.push(`${where} ${error}`);
     }
     if (!isComponentFigure(figure)) return;
 
@@ -540,6 +623,9 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
           if (typeof column.format === 'object' && value !== undefined && value !== null && typeof value !== 'number') {
             errors.push(`${where} row ${r + 1} column "${column.key}" has a numeric format, so its cells must be numbers or null`);
           }
+          if (column.format === 'date' && value !== undefined && value !== null && !PARTIAL_DATE.test(String(value))) {
+            errors.push(`${where} row ${r + 1} column "${column.key}" is a date column, so "${String(value)}" must be YYYY, YYYY-MM or YYYY-MM-DD`);
+          }
         }
       });
       if (figure.defaultSort && !keys.includes(figure.defaultSort.key)) errors.push(`${where} defaultSort key "${figure.defaultSort.key}" is not a column`);
@@ -559,7 +645,7 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       if (new Set(ids).size !== ids.length) errors.push(`${where} category ids must be unique`);
       for (const event of figure.events) {
         if (!ids.includes(event.category)) errors.push(`${where} event "${event.title}" has unknown category "${event.category}"`);
-        if (event.endDate && comparePeriods(event.endDate, event.date) < 0) errors.push(`${where} event "${event.title}" ends before it starts`);
+        if (event.endDate && comparePeriods(event.endDate, datePlacement(event.date)) < 0) errors.push(`${where} event "${event.title}" ends before it starts`);
       }
       break;
     }
@@ -581,16 +667,19 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
     }
     case 'keyFigures':
       if (figure.figures.length > 6) errors.push(`${where} at most six key figures`);
-      for (const kf of figure.figures) if (kf.change && !Number.isFinite(kf.change.value)) errors.push(`${where} "${kf.label}" has a change that is not a finite number`);
+      for (const kf of figure.figures) {
+        if (kf.change && !Number.isFinite(kf.change.value)) errors.push(`${where} "${kf.label}" has a change that is not a finite number`);
+        // The older sibling `qualifier`/`asPublished` and a qualified `value` say the same thing; two places can disagree.
+        if (typeof kf.value === 'object' && (kf.qualifier !== undefined || kf.asPublished !== undefined)) {
+          errors.push(`${where} "${kf.label}" gives its qualifier or wording beside a qualified value — put them in \`value\` only`);
+        }
+      }
       break;
-    case 'tileMap':
-      errors.push(...mapErrors(figure, mapTiles(figure.map).map(tile => tile.id), figure.map, where));
-      break;
-    case 'geoMap': {
-      const areas = geoRegions(figure.regions).regions.map(region => region.id);
-      errors.push(...mapErrors(figure, areas, figure.regions, where));
+    case 'map': {
+      const shown = mapAreas(figure).tiles.map(tile => tile.id);
+      errors.push(...mapErrors(figure, mapAreaIds(figure.preset), shown, figure.preset, where));
       for (const inset of figure.insets ?? []) {
-        for (const id of inset.regionIds) if (!areas.includes(id)) errors.push(`${where} inset area "${id}" is not an area of ${figure.regions}`);
+        for (const id of inset.regionIds) if (!shown.includes(id)) errors.push(`${where} inset area "${id}" is not an area of ${figure.preset}`);
       }
       break;
     }
@@ -605,42 +694,66 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
         const domain = figure[axis].domain;
         if (!domain) continue;
         if (!(domain[0] < domain[1])) errors.push(`${where} ${axis} domain must run from low to high`);
-        for (const p of figure.points) if (p[axis] < domain[0] || p[axis] > domain[1]) errors.push(`${where} point "${p.id}" falls outside the ${axis} domain`);
+        for (const p of figure.points) if (pointValue(p[axis]) < domain[0] || pointValue(p[axis]) > domain[1]) errors.push(`${where} point "${p.id}" falls outside the ${axis} domain`);
       }
       break;
     }
     case 'barChart': {
-      const { domainMax } = figure;
-      if (domainMax !== undefined && figure.items.some(item => item.value > domainMax)) errors.push(`${where} domainMax must be at least every value`);
+      const { domainMax, series } = figure;
+      errors.push(...rowLabelErrors(figure.items, where));
+      const drawn = figure.items.flatMap(item => [item.value, ...Object.values(item.values ?? {})].filter((v): v is FigureNumber => v !== undefined && v !== null));
+      if (domainMax !== undefined && drawn.some(value => extentValues(value).some(v => v > domainMax))) errors.push(`${where} domainMax must be at least every value, a range's high end included`);
+      if (series) errors.push(...pairedBarErrors(figure, series, where));
       break;
     }
+    case 'sliceExplorer':
+      errors.push(...sliceErrors(figure, where));
+      break;
+    case 'smallMultiples':
+      errors.push(...smallMultiplesErrors(figure, where));
+      break;
     case 'compositionBar': {
       const keys = figure.categories.map(c => c.key);
       if (new Set(keys).size !== keys.length) errors.push(`${where} category keys must be unique`);
       for (const row of figure.rows) {
         for (const key of Object.keys(row.values)) if (!keys.includes(key)) errors.push(`${where} row "${row.label}" has unknown category "${key}"`);
-        if (!(Object.values(row.values).reduce((a, b) => a + b, 0) > 0)) errors.push(`${where} row "${row.label}" totals zero`);
+        const parts = Object.values(row.values);
+        if (parts.some(part => extentValues(part).some(v => v < 0))) errors.push(`${where} row "${row.label}" has a negative part — a composition's parts are sizes`);
+        if (!(parts.reduce<number>((sum, part) => sum + pointValue(part), 0) > 0)) errors.push(`${where} row "${row.label}" totals zero`);
+        const sumError = compositionSumError(parts, row.total ?? (figure.unit === 'percent' ? 100 : undefined));
+        if (sumError) errors.push(`${where} row "${row.label}" ${sumError}`);
       }
       break;
     }
     case 'estimateRange': {
       const { domain } = figure;
+      errors.push(...rowLabelErrors(figure.estimates, where));
       for (const e of figure.estimates) {
-        const present = [e.low, e.estimate, e.high].filter((v): v is number => v !== undefined);
+        const present = [e.low, e.estimate === undefined ? undefined : pointValue(e.estimate), e.high].filter((v): v is number => v !== undefined);
         if (present.length === 0) errors.push(`${where} "${e.label}" needs an estimate, a low or a high`);
         if (present.some((v, i) => i > 0 && v < present[i - 1])) errors.push(`${where} "${e.label}" must have low ≤ estimate ≤ high`);
         if (domain && present.some(v => v < domain[0] || v > domain[1])) errors.push(`${where} "${e.label}" falls outside the domain`);
       }
       break;
     }
-    case 'quoteComparison':
-      for (const quote of figure.quotes) errors.push(...verbatimErrors(where, quote.text, quote.source, f));
+    case 'quotes': {
+      for (const quote of figure.quotes) errors.push(...verbatimErrors(where, quote.text, quote.sources, f));
+      // A stance names a category; a category no quote takes would be an empty filter.
+      const ids = (figure.categories ?? []).map(c => c.id);
+      if (new Set(ids).size !== ids.length) errors.push(`${where} category ids must be unique`);
+      for (const quote of figure.quotes) {
+        if (quote.stance === undefined) continue;
+        if (!figure.categories) errors.push(`${where} quote by "${quote.speaker}" has stance "${quote.stance}", but the figure has no \`categories\``);
+        else if (!ids.includes(quote.stance)) errors.push(`${where} quote by "${quote.speaker}" has unknown stance "${quote.stance}"`);
+      }
+      for (const id of ids) if (!figure.quotes.some(quote => quote.stance === id)) errors.push(`${where} category "${id}" has no quote`);
       break;
+    }
     case 'pullQuote':
-      errors.push(...verbatimErrors(where, figure.quote.text, figure.quote.source, f));
+      errors.push(...verbatimErrors(where, figure.quote.text, figure.quote.sources, f));
       break;
     case 'claimCheck': {
-      errors.push(...verbatimErrors(where, figure.claim, figure.claimSource, f));
+      errors.push(...verbatimErrors(where, figure.claim, [figure.claimSource], f));
       const { evidence } = figure;
       if (evidence) {
         const target = topic.facts.find(fact => fact.id === evidence.fact);
@@ -656,11 +769,166 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
 }
 
 /**
- * F9, for tile maps and geo maps alike: every area id belongs to the preset,
- * a numeric scale runs upwards, categories are distinct and every assignment
- * names one, and any area left without a value or category is explained.
+ * F10, for a bar chart with `series`: the series keys are distinct, every
+ * row gives every series (`null` where the source has no figure, so a gap
+ * is a decision, not an omission) and at least one value, a dumbbell has
+ * exactly two series, and only a dumbbell labels its ends, by series key.
  */
-function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>,areas: string[], preset: string, where: string): string[] {
+/** Past this a row label wraps into a block beside its bar; AUTHORING asks for about 40. */
+const MAX_ROW_LABEL = 60;
+
+/** A chart row is one short title; what else it has to say goes behind the row (`detail`, or an estimate's `note`). */
+function rowLabelErrors(rows: Array<{ label: string }>, where: string): string[] {
+  return rows.filter(row => row.label.length > MAX_ROW_LABEL).map(row => `${where} row label "${row.label}" is over ${MAX_ROW_LABEL} characters: give the row a short title and put the rest in \`detail\` (\`note\` on an estimate)`);
+}
+
+function pairedBarErrors(figure: FigureOf<'barChart'>, series: Array<{ key: string }>, where: string): string[] {
+  const errors: string[] = [];
+  const keys = series.map(s => s.key);
+  if (new Set(keys).size !== keys.length) errors.push(`${where} series keys must be unique`);
+  const dumbbell = figure.style === 'dumbbell';
+  if (dumbbell && keys.length !== 2) errors.push(`${where} a dumbbell joins two measures, but the chart has ${keys.length} series`);
+  for (const item of figure.items) {
+    const values = item.values ?? {};
+    for (const key of Object.keys(values)) if (!keys.includes(key)) errors.push(`${where} row "${item.label}" has a value for "${key}", which is not a series`);
+    const missing = keys.filter(key => !(key in values));
+    if (missing.length > 0) errors.push(`${where} row "${item.label}" has no value for ${missing.map(key => `"${key}"`).join(', ')} — give \`null\` where the source publishes none`);
+    if (keys.every(key => values[key] === null)) errors.push(`${where} row "${item.label}" has no values`);
+    if (item.labels && !dumbbell) errors.push(`${where} row "${item.label}" labels its ends, which only a dumbbell has`);
+    for (const key of Object.keys(item.labels ?? {})) if (!keys.includes(key)) errors.push(`${where} row "${item.label}" labels "${key}", which is not a series`);
+  }
+  return errors;
+}
+
+/**
+ * A slice explorer's dimensions, measures, rows and defaults agree. Every
+ * row names a value of every dimension (one of its `values` when they are
+ * listed) and no combination twice — a repeated row would be added in
+ * twice — and measures hold numbers. The defaults name what exists, never
+ * split by a dimension that may not be combined, and draw at least one bar,
+ * so the server-rendered chart is never empty.
+ */
+function sliceErrors(figure: FigureOf<'sliceExplorer'>, where: string): string[] {
+  const errors: string[] = [];
+  const dimensionKeys = figure.dimensions.map(d => d.key);
+  const measureKeys = figure.measures.map(m => m.key);
+  const keys = [...dimensionKeys, ...measureKeys];
+  if (new Set(keys).size !== keys.length) errors.push(`${where} dimension and measure keys must all be distinct`);
+  const seen = new Set<string>();
+  figure.rows.forEach((row, r) => {
+    for (const key of Object.keys(row)) if (!keys.includes(key)) errors.push(`${where} row ${r + 1} has key "${key}", which is not a dimension or measure`);
+    for (const d of figure.dimensions) {
+      const cell = row[d.key];
+      if (cell === undefined) errors.push(`${where} row ${r + 1} has no "${d.key}"`);
+      else if (d.values && !d.values.includes(String(cell))) errors.push(`${where} row ${r + 1} has ${d.key} "${cell}", which is not one of its values`);
+    }
+    for (const m of measureKeys) if (row[m] !== undefined && typeof row[m] !== 'number') errors.push(`${where} row ${r + 1} measure "${m}" must be a number`);
+    const combination = JSON.stringify(dimensionKeys.map(key => String(row[key])));
+    if (seen.has(combination)) errors.push(`${where} row ${r + 1} repeats the combination ${dimensionKeys.map(key => `${key} "${row[key]}"`).join(', ')}, so it would be counted twice`);
+    seen.add(combination);
+  });
+  for (const d of figure.dimensions) {
+    const used = new Set(figure.rows.map(row => String(row[d.key])));
+    for (const value of d.values ?? []) if (!used.has(value)) errors.push(`${where} dimension "${d.key}" lists "${value}", which no row has`);
+    for (const value of d.last ?? []) if (!used.has(value)) errors.push(`${where} dimension "${d.key}" keeps "${value}" last, but no row has it`);
+  }
+  const dimension = (key: string | undefined, what: string) => {
+    if (key === undefined) return undefined;
+    const found = figure.dimensions.find(d => d.key === key);
+    if (!found) errors.push(`${where} ${what} "${key}" is not a dimension`);
+    return found;
+  };
+  const breakdown = dimension(figure.defaultBreakdown, 'defaultBreakdown') ?? figure.dimensions[0];
+  const split = dimension(figure.defaultSplit, 'defaultSplit');
+  if (split && split.key === breakdown.key) errors.push(`${where} defaultSplit "${split.key}" is also the breakdown`);
+  if (split?.combinable === false) errors.push(`${where} defaultSplit "${split.key}" may not be combined, so it cannot split a bar`);
+  if (figure.defaultMeasure !== undefined && !measureKeys.includes(figure.defaultMeasure)) errors.push(`${where} defaultMeasure "${figure.defaultMeasure}" is not a measure`);
+  for (const [key, values] of Object.entries(figure.defaultFilters ?? {})) {
+    const d = dimension(key, 'defaultFilters key');
+    if (!d) continue;
+    const used = new Set(figure.rows.map(row => String(row[key])));
+    for (const value of values) if (!used.has(value)) errors.push(`${where} defaultFilters ${key} "${value}" is not a value any row has`);
+    if (d.combinable === false && values.length > 1) errors.push(`${where} defaultFilters ${key} picks ${values.length} values of a dimension that may not be combined — pick one`);
+  }
+  if (errors.length === 0) {
+    const measure = figure.measures.find(m => m.key === figure.defaultMeasure) ?? figure.measures[0];
+    const filters = appliedFilters(figure.rows, figure.dimensions, breakdown, figure.defaultFilters ?? {}, {});
+    const shown = slice({ rows: figure.rows, breakdown, split, measure: measure.key, aggregation: measure.aggregation, filters });
+    if (shown.groups.length === 0) errors.push(`${where} its default view draws no bars — change defaultFilters`);
+  }
+  return errors;
+}
+
+/**
+ * Small multiples are series: panel names are distinct; each panel's points
+ * run strictly forwards and from end to end of the published range — the
+ * figure's `coverage`, or the panel's own inside it — so no panel shows only
+ * the stretch that suits the text; and with per-panel coverage the figure's
+ * is their union, exactly.
+ */
+function smallMultiplesErrors(figure: FigureOf<'smallMultiples'>, where: string): string[] {
+  const errors: string[] = [];
+  const names = figure.panels.map(p => p.name);
+  if (new Set(names).size !== names.length) errors.push(`${where} panel names must be unique`);
+  const { coverage } = figure;
+  if (comparePeriods(coverage.to, coverage.from) < 0) errors.push(`${where} coverage ends before it starts`);
+  for (const panel of figure.panels) {
+    const at = `${where} panel "${panel.name}"`;
+    if (panel.points.some((point, i) => i > 0 && comparePeriods(point.period, panel.points[i - 1].period) <= 0)) errors.push(`${at}: points must run forwards in time, with no repeats`);
+    const span = panel.coverage ?? coverage;
+    const says = panel.coverage ? 'its own coverage runs' : 'the coverage runs';
+    const first = panel.points[0].period;
+    const last = panel.points[panel.points.length - 1].period;
+    if (comparePeriods(first, span.from) !== 0) errors.push(`${at}: starts at "${first}" but ${says} from "${span.from}" — show the whole published range`);
+    if (comparePeriods(last, span.to) !== 0) errors.push(`${at}: ends at "${last}" but ${says} to "${span.to}" — show the whole published range`);
+    if (panel.coverage && (comparePeriods(panel.coverage.from, coverage.from) < 0 || comparePeriods(panel.coverage.to, coverage.to) > 0)) {
+      errors.push(`${at}: its own coverage ${panel.coverage.from}–${panel.coverage.to} runs outside the figure's ${coverage.from}–${coverage.to}`);
+    }
+  }
+  if (figure.panels.some(p => p.coverage)) {
+    const spans = figure.panels.map(p => p.coverage ?? coverage);
+    const earliest = spans.map(s => s.from).sort(comparePeriods)[0];
+    const latest = spans.map(s => s.to).sort(comparePeriods).at(-1)!;
+    if (comparePeriods(coverage.from, earliest) !== 0 || comparePeriods(coverage.to, latest) !== 0) {
+      errors.push(`${where} coverage ${coverage.from}–${coverage.to} must be the union of its panels' ranges, ${earliest}–${latest}`);
+    }
+  }
+  return errors;
+}
+
+/**
+ * F10 — a composition's parts add up. Against the row's stated `total`, or
+ * 100 for percentages without one, the parts may miss by what rounding can
+ * explain: half a unit in each part's last published place (three parts
+ * published to one decimal may miss by 0.15). Anything more means a
+ * part is missing, double-counted or mistyped — and the bar, which always
+ * fills its width, would hide it. Undefined when the row adds up.
+ */
+export function compositionSumError(parts: FigureNumber[], expected: number | undefined): string | undefined {
+  if (expected === undefined) return undefined;
+  // Each part may be off by half a unit in its own last place; a range by its coarser end's.
+  const placesOf = (part: FigureNumber) => Math.min(...extentValues(part).map(decimalPlaces));
+  const tolerance = parts.reduce<number>((total, part) => total + 0.5 * 10 ** -placesOf(part), 0);
+  const sum = parts.reduce<number>((total, part) => total + pointValue(part), 0);
+  if (Math.abs(sum - expected) <= tolerance + 1e-9) return undefined;
+  const places = Math.max(0, ...parts.map(placesOf));
+  const shown = (n: number) => String(Number(n.toFixed(places + 2)));
+  return `sums to ${shown(sum)}, not ${shown(expected)} — more than rounding (±${shown(tolerance)}) can explain`;
+}
+
+/** Decimal places a number is written with: 2 for 33.25, 0 for 120. */
+function decimalPlaces(n: number): number {
+  return /\.(\d+)$/.exec(String(n))?.[1].length ?? 0;
+}
+
+/**
+ * F9, for every map (and its older spellings, tile and geo maps): every area id belongs to the preset,
+ * a numeric scale runs upwards, categories are distinct and every assignment
+ * names one, and any area drawn without a value or category is explained.
+ * `areas` is every id the preset knows; `shown` the ones this figure draws —
+ * fewer when an optional row, such as the US territories, is left out.
+ */
+function mapErrors(figure: FigureOf<'map'>, areas: string[], shown: string[], preset: string, where: string): string[] {
   const errors: string[] = [];
   const keyed = figure.categories ? figure.areas ?? {} : figure.data ?? {};
   for (const key of Object.keys(keyed)) if (!areas.includes(key)) errors.push(`${where} "${key}" is not an area of ${preset}`);
@@ -679,7 +947,7 @@ function mapErrors(figure: FigureOf<'tileMap'> | FigureOf<'geoMap'>,areas: strin
     }
   }
   // A missing area reads "No data"; unexplained, a gap looks like a selection.
-  const missing = areas.filter(id => !(id in keyed));
+  const missing = shown.filter(id => !(id in keyed));
   if (missing.length > 0 && !figure.note) {
     const shown = missing.length > 12 ? `${missing.slice(0, 12).join(', ')} and ${missing.length - 12} more` : missing.join(', ');
     errors.push(`${where} has no data for ${shown} — say why in \`note\``);
@@ -704,6 +972,26 @@ function describeRef(key: string): string {
   return `featured chart "${id}"`;
 }
 
+/**
+ * Why a `section` figure cannot move the body heading `{#<anchor>}`, or
+ * undefined if it can: it must head a `##` or `###` section, and a `###`
+ * under Observations or Subtleties is a disclosure item, not a section
+ * (markdown.ts, rehypeEvidenceSections).
+ */
+function sectionHeadingError(body: string, anchor: string): string | undefined {
+  const lines = body.split('\n');
+  const at = lines.findIndex(line => new RegExp(`^#{2,3}\\s.*\\{#${escapeRegExp(anchor)}\\}\\s*$`).test(line));
+  if (at === -1) return `no body section headed "## … {#${anchor}}" or "### … {#${anchor}}"`;
+  if (lines[at].startsWith('## ')) return undefined;
+  const parent = lines.slice(0, at).findLast(line => line.startsWith('## '));
+  const parentId = parent?.match(/\{#([a-z0-9-]+)\}\s*$/)?.[1] ?? '';
+  const parentText = parent?.replace(/^##\s+/, '').replace(/\s*\{#[a-z0-9-]+\}\s*$/, '').trim().toLowerCase();
+  if (/--(observations|subtleties)$/.test(parentId) || parentText === 'observations' || parentText === 'subtleties') {
+    return `"{#${anchor}}" heads an item under Observations or Subtleties, which stays in its disclosure`;
+  }
+  return undefined;
+}
+
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -715,18 +1003,20 @@ export function normaliseQuote(text: string): string {
 
 /**
  * F11 — a quote on the page is the source's words. Each fragment between
- * omission marks ("…" or "...") must appear in the cited source's quote;
- * fragments under four characters are too short to mean anything.
+ * omission marks ("…" or "...") must appear in the quote of one of the
+ * sources it cites; fragments under four characters are too short to mean
+ * anything.
  */
-function verbatimErrors(where: string, text: string, citation: number, f: Fact): string[] {
-  const quote = factSources(f)[citation - 1]?.quote;
-  if (quote === undefined) return []; // F2 reports the bad citation
-  const haystack = normaliseQuote(quote);
+function verbatimErrors(where: string, text: string, citations: number[], f: Fact): string[] {
+  const sources = factSources(f);
+  const quotes = citations.flatMap(n => (sources[n - 1] ? [normaliseQuote(sources[n - 1].quote)] : []));
+  if (quotes.length === 0) return []; // F2 reports the bad citation
+  const cited = citations.length === 1 ? `source ${citations[0]}` : `any of sources ${citations.join(', ')}`;
   return text
     .split(/…|\.\.\./)
     .map(fragment => normaliseQuote(fragment))
-    .filter(fragment => fragment.length >= 4 && !haystack.includes(fragment))
-    .map(fragment => `${where} "${fragment}" is not in the quote of source ${citation} — quotes must be verbatim`);
+    .filter(fragment => fragment.length >= 4 && !quotes.some(quote => quote.includes(fragment)))
+    .map(fragment => `${where} "${fragment}" is not in the quote of ${cited} — quotes must be verbatim`);
 }
 
 /**

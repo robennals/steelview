@@ -16,7 +16,7 @@ export type PullQuoteProps = {
 export function PullQuote({ quote, variant = 'pull' }: PullQuoteProps) {
   return (
     <figure className="sv-quote sv-pull-quote" data-variant={variant} id={quoteAnchor(quote)}>
-      <blockquote className="sv-quote__text" cite={quote.source?.href}>
+      <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href}>
         <p>{quote.text}</p>
       </blockquote>
       <QuoteAttribution quote={quote} />

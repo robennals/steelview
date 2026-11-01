@@ -338,21 +338,54 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **Known rendering limits** (until the shared components change):
 
+- a `dataTable` of more than 15 rows shows only its first 10, in its
+  `defaultSort` order, until the reader asks for the rest (every row is
+  there with JavaScript off). Sort it so the rows the report's argument
+  rests on come first; a highlighted row past the tenth is not lifted into
+  the preview. Markdown tables in the body scroll sideways but have no
+  edge shadow;
+- a `periodTimeline` label that fits neither inside its bar nor in free
+  space just right of it is not drawn (the legend, readout and table name
+  it), and the fit is judged for a phone-width track, so a label may be
+  left off on a desktop that had room. Stages drawn over one another
+  (explore, pursue, acquire) only show a label on a stage long enough to
+  hold it;
 - an observation group not tied to a visual needs the literal heading
   `## Observations {#<fact-id>--observations-<slug>}` to render as expandos,
   and is missing from the topic page's walkthrough, so give it a
   [figure](AUTHORING.md#figures) with the same id wherever one would honestly
   show it;
 - a rule or status per area (a rule per state or country) is a categorical
-  `tileMap` or `geoMap` figure; a categorical table with more than one
-  column per area is a `dataTable` figure. Policy dates on a series go in
-  its `events`;
+  `map` figure; a categorical table with more than one column per area is a
+  `dataTable` figure. Policy dates on a series go in its `events`;
+- a `map` draws only its preset's areas: US states and territories, the
+  EU27 with EFTA and the UK, UK ITL1 regions, or the world's sovereign
+  states. A map of other areas (US counties, Balkan states outside EFTA, a
+  territory such as Greenland) has no preset yet. On the world tiles and on
+  the real shapes, values are read from the readout and the table, not
+  printed; the dots for small states and US territories carry no label;
 - a fact file reaches the component library through `figures`
   ([AUTHORING.md, Figures](AUTHORING.md#figures)), which also sets the
-  reading order. `GeoMap` (kind `geoMap`) and `ScatterPlot` (kind
-  `scatterPlot`) are figure kinds; `QuoteBrowser`, `SliceExplorer` and
-  `SmallMultiples` are not yet, so a report plan that needs one says so at
-  stage 4b;
+  reading order. Maps are kind `map` (`AreaMap`; `tileMap` and `geoMap`
+  are older spellings of it), real shapes and tiles from one dataset. A `quotes` figure of up to four quotes sets them side by
+  side and of more becomes a filterable list (`QuoteBrowser`); two measures
+  per row are a `barChart` with `series`, paired or a dumbbell, never
+  stacked; a tidy table a reader should be able to cut differently is a
+  `sliceExplorer` (mark separate votes or polls `combinable: false`); and
+  the same measure over time for many items is `smallMultiples`, every
+  panel on one scale and across the whole published range;
+- a number the source gives as a bound, an approximation or a range is a
+  qualified value (`{ value, qualifier }` or `{ low, high }`, see
+  [AUTHORING.md, Figures](AUTHORING.md#figures)) on tables, key figures,
+  bars, compositions and numeric maps. Fact-level `comparisons` and series
+  points still take bare numbers only, and a scatter point takes no range;
+  move a qualified comparison to a `barChart` figure;
+- an item resting on several sources takes `sources: [n, …]`; a line of a
+  series from a different publisher takes its own `source` object;
+- a timeline event may be dated to a decade or circa a year; a table column
+  of dates is `format: date`. A span of decades is a `periodTimeline`;
+- a `compositionBar` with `unit: percent` or a row `total` must add up
+  within rounding — the build reports the row, the sum and the total;
 
 ## 6. Write the viewpoints
 

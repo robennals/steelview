@@ -1081,6 +1081,18 @@ additionalSeries:
     Care workers became eligible in February 2022; restrictions announced in December
     2023, including a bar on care workers bringing dependants, took effect in spring 2024;
     the route closed to new overseas care recruits in July 2025.
+  events:
+  - period: '2022-02'
+    label: Care workers become eligible
+    note: The Health and Care Worker route is expanded to take care workers.
+    source: 2
+  - period: '2024-03'
+    label: Care workers can no longer bring dependants
+    note: Dated March/April 2024 in the source, with a higher salary threshold and sponsorship limited to employers regulated by the Care Quality Commission.
+    source: 13
+  - period: '2025-07'
+    label: Route closes to new overseas care workers
+    sources: [5, 19]
   periodLabel: Quarter ending
   coverage:
     from: 2020-12
@@ -1211,6 +1223,18 @@ additionalSeries:
     with all sponsored jobs shown for scale. These are entry clearance grants to sponsored
     work main applicants. Dependants are not included, because the dataset records
     occupation only for the person sponsored.
+  events:
+  - period: '2022-02'
+    label: Care workers become eligible
+    note: The Health and Care Worker route is expanded to take care workers.
+    source: 2
+  - period: '2024-03'
+    label: Care workers can no longer bring dependants
+    note: Dated March/April 2024 in the source, with a higher salary threshold and sponsorship limited to employers regulated by the Care Quality Commission.
+    source: 13
+  - period: '2025-07'
+    label: Route closes to new overseas care workers
+    sources: [5, 19]
   periodLabel: Quarter ending
   coverage:
     from: 2021-03
@@ -2455,7 +2479,8 @@ comparisons:
   - label: Graduate route, first year
     value: 21000
     highlight: true
-  - label: Graduate route, last three months of first year
+  - label: "Graduate route, end of first year"
+    detail: "Last three months of first year"
     value: 24240
   - label: UK graduates, 15 months after graduating
     value: 26000
@@ -2518,10 +2543,6 @@ dataStillNeeded:
     is central to the training argument; the GMC and NHS England sources could not
     be retrieved for this report, so the doctor side rests on OECD stock figures.
 ---
-Work visas issued to people coming from abroad rose to 613,627 in 2023 and fell to 234,841 in the year to June 2026, 62% below the peak. [2](#source-work-and-study-routes-2) [1](#source-work-and-study-routes-1) Care workers account for most of both the rise and the fall: visas for caring occupations fell from 107,772 in 2023 to 344, and the fall began at the end of 2023, more than eighteen months before the route closed to new overseas recruits in July 2025. [5](#source-work-and-study-routes-5) [3](#source-work-and-study-routes-3) In England's adult social care, the share of posts held by British nationals fell from 85% to 67% between 2020/21 and 2025/26, and the vacancy rate came down from its 2021/22 peak to 6.1%. [21](#source-work-and-study-routes-21) [14](#source-work-and-study-routes-14)
-
-The report then follows the same workers into the NHS and nursing register, sets UK reliance on foreign-trained staff against every OECD country that reports it, and covers two questions about study and work routes: what Graduate route holders earn, and how many visa holders later claim asylum.
-
 ## Observations {#work-and-study-routes--observations-routes}
 
 ### Work visas more than doubled in two years and have fallen back most of the way {#work-and-study-routes--work-visas-rose-and-fell}
@@ -2569,6 +2590,10 @@ Main applicants on the route peaked in the third quarter of 2023 and dropped by 
 ### The government's account of the fall {#work-and-study-routes--technical-annex-fall}
 
 The government's technical annex puts the 2023-to-2024 fall in the whole route at 68%, to 110,800, and attributes it to Home Office scrutiny of employers, compliance action and the spring 2024 dependant rule. [11](#source-work-and-study-routes-11)
+
+### Fewer arrivals is not fewer visa holders {#work-and-study-routes--fewer-arrivals-not-fewer-holders}
+
+Every visa chart here counts people applying from abroad. Health and Care Worker extensions granted inside the UK rose 19% to 336,215 in the year to June 2026, as people who arrived in 2022 and 2023 renewed their leave. [7](#source-work-and-study-routes-7) The number of people holding these visas has therefore not fallen in step with new grants.
 
 ## Observations {#work-and-study-routes--observations-occupations}
 
@@ -2649,6 +2674,10 @@ The Home Office revoked 1,948 worker sponsor licences between July 2024 and June
 ### Earlier years, and what the series leaves out {#work-and-study-routes--revocations-earlier-years-and-breakdown}
 
 The 1,948 revocations between July 2024 and June 2025 compare with 937 the year before and 261 and 247 in the two years before that. [27](#source-work-and-study-routes-27) [28](#source-work-and-study-routes-28) The series has no sector or reason breakdown.
+
+### The care route's own data cannot measure exploitation {#work-and-study-routes--exploitation-not-measured}
+
+The Migration Advisory Committee reported exploitation on the route and tied it to low pay and visas linked to one employer, but this report found no official series that counts exploited workers by visa route, and licence revocations count employers rather than victims. [26](#source-work-and-study-routes-26) [27](#source-work-and-study-routes-27) See What we don't know yet.
 
 ## Observations {#work-and-study-routes--observations-revocation-rate}
 
@@ -2754,12 +2783,10 @@ Of Graduate visa holders, 19% earned at least £2,500 in their first full month,
 
 Students are also staying longer than they used to: 41% of the 2020 study cohort still held leave five years later, against 17% to 18% for the 2012 to 2016 cohorts; see *Student Migration and Subsequent Residence*. [49](#source-work-and-study-routes-49)
 
-## Subtleties {#work-and-study-routes--subtleties}
+## More {#work-and-study-routes--more-routes}
 
-### Fewer arrivals is not fewer visa holders {#work-and-study-routes--fewer-arrivals-not-fewer-holders}
+Work visas issued to people coming from abroad rose to 613,627 in 2023 and fell to 234,841 in the year to June 2026, 62% below the peak. [2](#source-work-and-study-routes-2) [1](#source-work-and-study-routes-1)
 
-Every visa chart here counts people applying from abroad. Health and Care Worker extensions granted inside the UK rose 19% to 336,215 in the year to June 2026, as people who arrived in 2022 and 2023 renewed their leave. [7](#source-work-and-study-routes-7) The number of people holding these visas has therefore not fallen in step with new grants.
+## More {#work-and-study-routes--more-occupations}
 
-### The care route's own data cannot measure exploitation {#work-and-study-routes--exploitation-not-measured}
-
-The Migration Advisory Committee reported exploitation on the route and tied it to low pay and visas linked to one employer, but this report found no official series that counts exploited workers by visa route, and licence revocations count employers rather than victims. [26](#source-work-and-study-routes-26) [27](#source-work-and-study-routes-27) See Data still needed.
+Care workers account for most of both the rise and the fall: visas for caring occupations fell from 107,772 in 2023 to 344, and the fall began at the end of 2023, more than eighteen months before the route closed to new overseas recruits in July 2025. [5](#source-work-and-study-routes-5) [3](#source-work-and-study-routes-3)

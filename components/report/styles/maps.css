@@ -90,6 +90,72 @@
     box-shadow: inset 0 0 0 1px var(--rule-strong);
   }
 
+  /* ------------------------------------------- qualified numeric figures */
+
+  /* A figure that is a bound, an approximation or a range keeps its colour
+     and gains a stipple of fine dots in the tile's text colour: texture, so
+     "not exact" survives greyscale and colour blindness. The SVG pattern on
+     GeoMap uses the same dot. */
+  .sv-map-legend__stipple,
+  .sv-tile-map__tile[data-stippled="true"] {
+    background-image: radial-gradient(circle, color-mix(in srgb, currentColor 40%, transparent) 0 0.75px, transparent 1.05px);
+    background-size: 5px 5px;
+  }
+
+  .sv-map-legend__stipple {
+    display: inline-block;
+    width: 1.4rem;
+    height: 0.75rem;
+    vertical-align: -0.1rem;
+    color: var(--ink);
+    background-color: var(--paper-sunk);
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+  }
+
+  .sv-map-legend__qualifications {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: 0.75rem;
+    color: var(--ink-2);
+  }
+
+  .sv-map-legend__glyph {
+    color: var(--ink);
+    font-size: 0.6875rem;
+  }
+
+  .sv-geo-map__stipple {
+    pointer-events: none;
+  }
+
+  /* A bound's ▲ or ▼ on the real-shape view, in ink with a paper halo so it
+     reads on any step of the ramp. */
+  .sv-geo-map__glyph {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: var(--ink);
+    stroke: var(--paper);
+    stroke-width: 2.5px;
+    paint-order: stroke;
+    pointer-events: none;
+  }
+
+  .sv-geo-map__stipple-dot {
+    fill: var(--ink);
+    fill-opacity: 0.45;
+  }
+
+  /* A range ("0.4–0.8%") may break after its dash rather than run off the tile. */
+  .sv-tile-map__tile[data-range="true"] .sv-tile-map__value {
+    white-space: normal;
+  }
+
   /* -------------------------------------------------- categorical maps */
 
   /* One look per category slot, shared by tiles, legend swatches (CSS
@@ -100,6 +166,7 @@
      full series colour, so the categories still differ in greyscale:
        1 none · 2 dots on a 6px grid · 3 horizontal lines · 4 vertical lines
        5 grid · 6 diagonal (perpendicular to the "No data" hatch).
+     Slot 7 is the neutral ground of a `quiet` category: no tint, no overlay.
      The palette is categorical even for ordered categories: an ordered ramp
      would read as a measured quantity. */
   .sv-report {
@@ -109,6 +176,7 @@
     --sv-cat-fill-4: color-mix(in srgb, var(--sv-series-4) 30%, var(--paper));
     --sv-cat-fill-5: color-mix(in srgb, var(--sv-series-5) 30%, var(--paper));
     --sv-cat-fill-6: color-mix(in srgb, var(--sv-series-6) 30%, var(--paper));
+    --sv-cat-fill-7: var(--paper-sunk);
 
     --sv-cat-bg-1: var(--sv-cat-fill-1);
     --sv-cat-bg-2:
@@ -127,6 +195,7 @@
     --sv-cat-bg-6:
       repeating-linear-gradient(135deg, var(--sv-series-6) 0 1px, transparent 1px 5px),
       var(--sv-cat-fill-6);
+    --sv-cat-bg-7: var(--sv-cat-fill-7);
   }
 
   .sv-cat-fill[data-slot="1"] { --sv-cat-tint: var(--sv-cat-fill-1); background: var(--sv-cat-bg-1); }
@@ -135,6 +204,7 @@
   .sv-cat-fill[data-slot="4"] { --sv-cat-tint: var(--sv-cat-fill-4); background: var(--sv-cat-bg-4); }
   .sv-cat-fill[data-slot="5"] { --sv-cat-tint: var(--sv-cat-fill-5); background: var(--sv-cat-bg-5); }
   .sv-cat-fill[data-slot="6"] { --sv-cat-tint: var(--sv-cat-fill-6); background: var(--sv-cat-bg-6); }
+  .sv-cat-fill[data-slot="7"] { --sv-cat-tint: var(--sv-cat-fill-7); background: var(--sv-cat-bg-7); }
 
   /* Text sits on a patch of the plain tint, so a pattern line never runs
      through a letter and the measured contrast is the contrast read. */
@@ -289,6 +359,37 @@
     }
   }
 
+  /* An area too small for its outline (Monaco, Tuvalu, Washington DC) is a
+     dot in its own fill, ringed in ink so a pale step still shows against the
+     sea, inside a transparent hit circle that takes the pointer. */
+  .sv-geo-map__dot {
+    cursor: pointer;
+  }
+
+  .sv-geo-map__dot:focus-visible {
+    outline: none;
+  }
+
+  .sv-geo-map__dot-hit {
+    fill: transparent;
+  }
+
+  .sv-geo-map__dot-mark {
+    stroke: var(--ink-3);
+    stroke-width: 1;
+  }
+
+  .sv-geo-map__dot[data-highlight="true"] .sv-geo-map__dot-mark {
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+
+  .sv-geo-map__dot[data-active="true"] .sv-geo-map__dot-mark,
+  .sv-geo-map__dot:focus-visible .sv-geo-map__dot-mark {
+    stroke: var(--ink);
+    stroke-width: 2.5;
+  }
+
   /* A highlighted region keeps its ink outline even with no data. */
   .sv-geo-map__region[data-missing="true"]:not([data-highlight="true"]) {
     stroke: var(--rule-strong);
@@ -391,19 +492,24 @@
 
   /* ----------------------------------------------------------- TileMap */
 
+  /* The grid, not each tile, is square-celled: its aspect ratio is the
+     layout's columns over rows, and every row an equal share of it. So a
+     tile spanning cells fills them exactly, and an empty row (the gap above
+     the US territories) keeps its height. */
   .sv-tile-map__grid {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(var(--sv-tile-cols), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--sv-tile-rows), minmax(0, 1fr));
+    aspect-ratio: var(--sv-tile-cols) / var(--sv-tile-rows);
     gap: 3px;
     max-width: calc(var(--sv-tile-cols) * 4.75rem);
   }
 
   .sv-tile-map__tile {
     position: relative;
-    aspect-ratio: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -464,6 +570,63 @@
     z-index: 1;
   }
 
+  /* A grid too wide for its column — the world's 28 — scrolls sideways
+     rather than shrinking its tiles past use. Tiles keep at least 1.1875rem
+     (1.75rem on a phone, where a finger does the pointing), and print only
+     their code and a category's mark or a bound's ▲/▼; the readout and the
+     table carry the number. */
+  .sv-tile-map__scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] {
+    --sv-tile-min: 1.1875rem;
+    gap: 2px;
+    max-width: none;
+    min-width: calc(var(--sv-tile-cols) * var(--sv-tile-min) + (var(--sv-tile-cols) - 1) * 2px);
+    /* Room for a focus outline on the edge tiles inside the scroller. */
+    margin: 3px;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__tile {
+    padding: 0.1rem 0.15rem;
+    justify-content: flex-start;
+    gap: 0.05rem;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__code {
+    font-size: 0.5625rem;
+    letter-spacing: 0;
+  }
+
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__value {
+    font-size: 0.5625rem;
+  }
+
+  /* At this size the "No data" hatch runs through the letters; the code sits
+     on a patch of paper, as a category's mark sits on its plain tint. */
+  .sv-tile-map__grid[data-cols="dense"] .sv-tile-map__tile[data-missing="true"] > .sv-tile-map__code {
+    align-self: flex-start;
+    background: var(--paper);
+    padding: 0 0.1rem;
+    margin: 0 -0.1rem;
+  }
+
+  @media (max-width: 33.99rem) {
+    .sv-tile-map__grid[data-cols="dense"] {
+      --sv-tile-min: 1.75rem;
+    }
+  }
+
+  /* On a wide screen the world grid runs past the text column towards the
+     page edge, as a wide table does, so it fits without scrolling. */
+  @media (min-width: 46rem) {
+    .sv-tile-map__scroll:has(> .sv-tile-map__grid[data-cols="dense"]) {
+      width: calc(100% + 4.5rem);
+    }
+  }
+
   /* Wide grids (Europe has nine columns) get small type on a phone: the
      value stays, shortened, and the code shrinks first. */
   @media (max-width: 33.99rem) {
@@ -481,6 +644,12 @@
 
     .sv-tile-map__grid[data-cols="many"] .sv-tile-map__value {
       font-size: 0.6875rem;
+    }
+
+    /* A range takes two short lines rather than one that runs off the tile. */
+    .sv-tile-map__grid[data-cols="many"] .sv-tile-map__tile[data-range="true"] .sv-tile-map__value {
+      font-size: 0.5rem;
+      line-height: 0.95;
     }
   }
 }

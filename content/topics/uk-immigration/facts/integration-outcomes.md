@@ -1437,39 +1437,6 @@ comparisons:
       - label: Arrived 2011 to 2021
         value: 99.9
         values: [37.4, 49.7, 10.8, 2.0]
-  - id: women-employment
-    title: Employment rate of women by ethnic group, Great Britain, 2022
-    description: >-
-      The share of women aged 16 to 64 in work in Great Britain in 2022, for every ethnic
-      group in the published breakdown.
-    unit: percent
-    valueLabel: Share of women aged 16 to 64 in work
-    domainMax: 100
-    sources: [18]
-    note: >-
-      Annual Population Survey, 2022. Men's rates in the same table: All 79,
-      White British 79, White other 86, Indian 84, Pakistani and Bangladeshi
-      75, Asian other 75, Black 74, Mixed 67, Other 75.
-    items:
-      - label: White other
-        value: 79
-      - label: White British
-        value: 74
-      - label: All women
-        value: 72
-        highlight: true
-      - label: Mixed
-        value: 71
-      - label: Indian
-        value: 70
-      - label: Asian other
-        value: 68
-      - label: Black
-        value: 66
-      - label: Other
-        value: 60
-      - label: Pakistani and Bangladeshi
-        value: 46
   - id: employment-by-religion
     title: Employment rate by religion, England and Wales, Census 2021
     description: >-
@@ -1551,7 +1518,8 @@ comparisons:
       plotted; the full regional breakdown is in the Dutch chapters and is not
       reproduced here.
     items:
-      - label: Japan, North America, Oceania, British Isles, Scandinavia, Switzerland
+      - label: "Japan, North America, Oceania and others"
+        detail: "Japan, North America, Oceania, British Isles, Scandinavia, Switzerland"
         value: 200
       - label: Southern Africa
         value: 150
@@ -1585,7 +1553,8 @@ comparisons:
       including most refugees. Children are assumed to behave like
       non-immigrants. Built on 2006 behaviour; published in Norwegian in 2013.
     items:
-      - label: R1 (Western Europe, North America, Australia, New Zealand)
+      - label: "R1 (Western Europe, North America, others)"
+        detail: "Western Europe, North America, Australia, New Zealand"
         value: 0.8
       - label: R2 (Eastern European EU countries)
         value: -0.8
@@ -1727,9 +1696,70 @@ comparisons:
       - label: British Muslims
         value: 28
         highlight: true
+figures:
+- kind: series
+- kind: series
+  id: employment
+- kind: series
+  id: denmark
+- kind: series
+  id: higher-education
+- kind: series
+  id: cohesion
+- kind: comparison
+  id: fastest-changing-areas
+- kind: comparison
+  id: english-proficiency
+- kind: barChart
+  id: women-employment
+  title: Employment rate of women by ethnic group, Great Britain, 2022
+  description: "The share of women and men aged 16 to 64 in work in Great Britain in 2022, by ethnic group. Every group in the published breakdown is shown, ranked by the rate for women."
+  valueLabel: "Share aged 16 to 64 in work"
+  categoryLabel: "Ethnic group"
+  format: { unit: percent }
+  domainMax: 100
+  sources: [18]
+  note: "Annual Population Survey, 2022."
+  series:
+  - { key: women, label: "Women" }
+  - { key: men, label: "Men" }
+  items:
+  - label: "White other"
+    values: { women: 79, men: 86 }
+  - label: "White British"
+    values: { women: 74, men: 79 }
+  - label: "All"
+    values: { women: 72, men: 79 }
+    highlight: true
+  - label: "Mixed"
+    values: { women: 71, men: 67 }
+  - label: "Indian"
+    values: { women: 70, men: 84 }
+  - label: "Asian other"
+    values: { women: 68, men: 75 }
+  - label: "Black"
+    values: { women: 66, men: 74 }
+  - label: "Other"
+    values: { women: 60, men: 75 }
+  - label: "Pakistani and Bangladeshi"
+    values: { women: 46, men: 75 }
+- kind: comparison
+  id: employment-by-religion
+- kind: comparison
+  id: netherlands-by-motive
+- kind: comparison
+  id: netherlands-by-region
+- kind: comparison
+  id: norway-by-region
+- kind: comparison
+  id: gcse-by-ethnicity
+- kind: comparison
+  id: gcse-fsm
+- kind: comparison
+  id: attitudes-homosexuality
+movedAnchors:
+  observations-segregation: cohesion-and-trust
 ---
-Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
-
 ## Observations {#integration-outcomes--observations-foreign-born-share}
 
 ### The foreign-born share has roughly quadrupled since 1951 {#integration-outcomes--foreign-born-share-quadrupled}
@@ -1912,20 +1942,6 @@ These are ethnic groups, most of whose pupils were born in the UK. The school fi
 
 Average Attainment 8 scores in 2022/23 were 20.3 for Gypsy and Roma pupils, 26.8 for Irish traveller pupils and 39.1 for Mixed White and Black Caribbean pupils. The Education Policy Institute found most ethnic groups achieved higher GCSE grades than White British pupils in 2023. [35](#source-integration-outcomes-35) [36](#source-integration-outcomes-36)
 
-## Observations {#integration-outcomes--observations-segregation}
-
-### Residential segregation fell for every ethnic group, 1991–2021 {#integration-outcomes--segregation-fell}
-
-On the standard measure, the index of dissimilarity across neighbourhoods, segregation declined steadily for every ethnic group, White and minority, across the four censuses from 1991 to 2021. The largest fall was for the Black African group; Bangladeshi, Black Caribbean and Indian segregation also fell sharply. White British segregation was 0.55 in 2001 and 2011 and 0.53 in 2021. [41](#source-integration-outcomes-41) [43](#source-integration-outcomes-43)
-
-### The standard measure is of evenness, not of who lives next to whom {#integration-outcomes--evenness-not-exposure}
-
-The index compares how evenly each group is spread across neighbourhoods relative to everyone else. A growing group can become more evenly spread while more of its members' neighbours belong to the same group; the study does not report that second measure, called isolation or exposure, and none was found for 2021. [42](#source-integration-outcomes-42)
-
-### Between schools, segregation was highest in non-Christian faith schools {#integration-outcomes--school-segregation}
-
-A 2017 analysis of 2011–16 school census data counted a school as segregated when its share of White British pupils differed from its ten nearest schools' by more than 15 percentage points. By that test 84% of primary and 93% of secondary non-Christian faith schools were segregated. No later measure was found. [44](#source-integration-outcomes-44) [45](#source-integration-outcomes-45)
-
 ## Observations {#integration-outcomes--observations-cohesion-and-trust}
 
 ### Cohesion has stayed high {#integration-outcomes--cohesion-stable}
@@ -1954,6 +1970,18 @@ Almost all of the trust research relates trust to an area's ethnic mix, not to i
 
 The London study found diversity linked to higher perceived cohesion, with segregation within neighbourhoods linked to lower cohesion. [50](#source-integration-outcomes-50) [51](#source-integration-outcomes-51) [52](#source-integration-outcomes-52)
 
+### Residential segregation fell for every ethnic group, 1991–2021 {#integration-outcomes--segregation-fell}
+
+On the standard measure, the index of dissimilarity across neighbourhoods, segregation declined steadily for every ethnic group, White and minority, across the four censuses from 1991 to 2021. The largest fall was for the Black African group; Bangladeshi, Black Caribbean and Indian segregation also fell sharply. White British segregation was 0.55 in 2001 and 2011 and 0.53 in 2021. [41](#source-integration-outcomes-41) [43](#source-integration-outcomes-43)
+
+### The standard measure is of evenness, not of who lives next to whom {#integration-outcomes--evenness-not-exposure}
+
+The index compares how evenly each group is spread across neighbourhoods relative to everyone else. A growing group can become more evenly spread while more of its members' neighbours belong to the same group; the study does not report that second measure, called isolation or exposure, and none was found for 2021. [42](#source-integration-outcomes-42)
+
+### Between schools, segregation was highest in non-Christian faith schools {#integration-outcomes--school-segregation}
+
+A 2017 analysis of 2011–16 school census data counted a school as segregated when its share of White British pupils differed from its ten nearest schools' by more than 15 percentage points. By that test 84% of primary and 93% of secondary non-Christian faith schools were segregated. No later measure was found. [44](#source-integration-outcomes-44) [45](#source-integration-outcomes-45)
+
 ## Observations {#integration-outcomes--observations-attitudes-homosexuality}
 
 ### British Muslims are markedly more conservative than the public on homosexuality {#integration-outcomes--muslim-attitudes-homosexuality}
@@ -1978,7 +2006,11 @@ The one academic study comparing generations, from 2009, found young Muslims mor
 
 No British Social Attitudes or European Social Survey series of these attitudes by religion and generation was found.
 
-## Subtleties {#integration-outcomes--subtleties}
+## More {#integration-outcomes--more-foreign-born-share}
+
+Who arrives and how they fare afterwards are measured by different statistics, and most of the UK's are by ethnicity or religion rather than by country of birth or generation. Read together, they show wide differences between groups, with most gaps narrowing over time: language improves with years in the country, employment gaps have shrunk, the children of most minority groups outperform White British pupils at school, and residential segregation has fallen. No UK fiscal estimate by origin was found; the three countries that do find large differences by origin and by reason for migrating. [1](#source-integration-outcomes-1) [6](#source-integration-outcomes-6) [11](#source-integration-outcomes-11) [36](#source-integration-outcomes-36) [41](#source-integration-outcomes-41) [20](#source-integration-outcomes-20)
+
+## Subtleties {#integration-outcomes--subtleties-foreign-born-share}
 
 ### What this report does not measure {#integration-outcomes--what-is-not-measured}
 

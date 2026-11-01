@@ -901,166 +901,6 @@ additionalSeries:
                 value: 64156
               - period: '2025'
                 value: 48814
-comparisons:
-  - id: routes-by-nationality
-    title: How each nationality came to the UK, January 2018 to June 2026
-    description: >-
-      People of each nationality who arrived by small boat or were offered a
-      safe and legal route from outside the UK, 2018 Q1 to 2026 Q2, the whole
-      period the small-boat data cover. Switch routes to compare one at a time.
-    unit: count
-    valueLabel: People, 2018 Q1 to 2026 Q2
-    sources:
-      - 40
-      - 41
-      - 42
-      - 43
-    groupLabel: route
-    allGroupsLabel: All routes
-    groups:
-      - Small boat
-      - Ukraine schemes
-      - BN(O) route
-      - Resettlement
-      - Refugee family reunion
-    items:
-      - label: Ukraine
-        value: 286605
-        values: [12, 286547, 6, 0, 40]
-      - label: Hong Kong
-        value: 109710
-        values: [0, 0, 109710, 0, 0]
-      - label: China
-        value: 76140
-        values: [75, 11, 75843, 3, 208]
-      - label: Afghanistan
-        value: 74641
-        values: [29057, 294, 0, 38315, 6975]
-      - label: All other nationalities, stateless and not recorded
-        value: 50489
-        values: [28017, 2636, 1954, 2486, 15396]
-      - label: Iran
-        value: 43721
-        values: [31122, 108, 0, 58, 12433]
-      - label: Syria
-        value: 40979
-        values: [14916, 67, 0, 12248, 13748]
-      - label: Eritrea
-        value: 31639
-        values: [20977, 1, 0, 276, 10385]
-      - label: Sudan
-        value: 23598
-        values: [14481, 21, 0, 821, 8275]
-      - label: Iraq
-        value: 22095
-        values: [19640, 162, 0, 1082, 1211]
-      - label: Albania
-        value: 15467
-        values: [15422, 6, 1, 0, 38]
-      - label: Vietnam
-        value: 9902
-        values: [8750, 18, 28, 0, 1106]
-      - label: Turkey
-        value: 9473
-        values: [7542, 153, 8, 3, 1767]
-      - label: Somalia
-        value: 9373
-        values: [6967, 0, 1, 808, 1597]
-      - label: Yemen
-        value: 7364
-        values: [3427, 17, 1, 27, 3892]
-      - label: Ethiopia
-        value: 6982
-        values: [4112, 3, 0, 132, 2735]
-    note: >-
-      Nationality as recorded in each Home Office detailed dataset: IER_D01
-      (small boats), Vis_D02 (Ukraine and BN(O) visas issued), Res_D02
-      (resettlement, all schemes) and Fam_D01 (family reunion visas). The
-      fifteen nationalities shown are the largest by combined total; every
-      other nationality, people recorded as stateless or "Refugee", and small-
-      boat arrivals whose nationality is "Not currently recorded" are in the
-      residual. BN(O) visa holders are recorded mostly as Hong Kong or China
-      nationals, so both appear. Visa figures are grants, not arrivals;
-      resettlement figures are arrivals. Component totals match the published
-      figures: 290,044 Ukraine visas and 187,552 visas on the BN(O) route
-      since each scheme opened.
-  - id: routes-by-nationality-latest
-    title: How each nationality came to the UK, year to June 2026
-    description: >-
-      The same nationalities and routes for the year ending June 2026, the
-      first full year after family reunion was paused on 4 September 2025.
-    unit: count
-    valueLabel: People, year ending June 2026
-    sources:
-      - 40
-      - 41
-      - 42
-      - 43
-    groupLabel: route
-    allGroupsLabel: All routes
-    groups:
-      - Small boat
-      - Ukraine schemes
-      - BN(O) route
-      - Resettlement
-      - Refugee family reunion
-    items:
-      - label: Ukraine
-        value: 15527
-        values: [1, 15523, 0, 0, 3]
-      - label: Afghanistan
-        value: 9530
-        values: [4042, 0, 0, 3350, 2138]
-      - label: All other nationalities, stateless and not recorded
-        value: 8684
-        values: [5766, 58, 131, 184, 2545]
-      - label: Eritrea
-        value: 6839
-        values: [5875, 0, 0, 16, 948]
-      - label: Sudan
-        value: 5665
-        values: [4191, 0, 0, 54, 1420]
-      - label: Iran
-        value: 5031
-        values: [3657, 1, 0, 0, 1373]
-      - label: Somalia
-        value: 4192
-        values: [3901, 0, 0, 68, 223]
-      - label: Hong Kong
-        value: 3046
-        values: [0, 0, 3046, 0, 0]
-      - label: China
-        value: 2839
-        values: [34, 0, 2765, 0, 40]
-      - label: Syria
-        value: 2244
-        values: [1003, 5, 0, 133, 1103]
-      - label: Ethiopia
-        value: 2186
-        values: [1364, 0, 0, 0, 822]
-      - label: Yemen
-        value: 2149
-        values: [517, 0, 0, 0, 1632]
-      - label: Iraq
-        value: 1570
-        values: [1336, 2, 0, 35, 197]
-      - label: Turkey
-        value: 1023
-        values: [783, 6, 2, 0, 232]
-      - label: Vietnam
-        value: 931
-        values: [723, 0, 0, 0, 208]
-      - label: Albania
-        value: 185
-        values: [181, 0, 0, 0, 4]
-    note: >-
-      July 2025 to June 2026 (2025 Q3 to 2026 Q2). Same datasets, nationalities
-      and residual as the chart above, so no nationality drops out because it
-      fell in rank. Family reunion grants in this year include applications
-      made before the pause, which can reach the data up to 240 days later.
-      Totals match the published year: 33,374 small-boat arrivals, 15,595
-      Ukraine visas, 5,944 visas on the BN(O) route, 3,840 people resettled and 12,888
-      family reunion visas.
 dataStillNeeded:
   - measure: >-
       Small-boat arrivals who were the partner or child of a refugee already in
@@ -1081,10 +921,97 @@ figures:
   - kind: series
   - kind: series
     id: boats-and-routes
-  - kind: comparison
+  - kind: compositionBar
     id: routes-by-nationality
-  - kind: comparison
+    title: How each nationality came to the UK, January 2018 to June 2026
+    description: >-
+      People of each nationality who arrived by small boat or were offered a
+      safe and legal route from outside the UK, 2018 Q1 to 2026 Q2, the whole
+      period the small-boat data cover.
+      Each bar is one nationality's own total, printed beside it, so compare
+      shares across bars, not sizes. Ordered by the share who came by boat, with
+      the residual last.
+    rowLabel: Nationality
+    showCounts: true
+    sources: [40, 41, 42, 43]
+    categories:
+      - { key: boat, label: 'Small boat' }
+      - { key: ukraine, label: 'Ukraine schemes' }
+      - { key: bno, label: 'BN(O) route' }
+      - { key: resettlement, label: 'Resettlement' }
+      - { key: family, label: 'Refugee family reunion' }
+    rows:
+      - { label: 'Albania', total: 15467, values: { boat: 15422, ukraine: 6, bno: 1, resettlement: 0, family: 38 } }
+      - { label: 'Iraq', total: 22095, values: { boat: 19640, ukraine: 162, bno: 0, resettlement: 1082, family: 1211 } }
+      - { label: 'Vietnam', total: 9902, values: { boat: 8750, ukraine: 18, bno: 28, resettlement: 0, family: 1106 } }
+      - { label: 'Turkey', total: 9473, values: { boat: 7542, ukraine: 153, bno: 8, resettlement: 3, family: 1767 } }
+      - { label: 'Somalia', total: 9373, values: { boat: 6967, ukraine: 0, bno: 1, resettlement: 808, family: 1597 } }
+      - { label: 'Iran', total: 43721, values: { boat: 31122, ukraine: 108, bno: 0, resettlement: 58, family: 12433 } }
+      - { label: 'Eritrea', total: 31639, values: { boat: 20977, ukraine: 1, bno: 0, resettlement: 276, family: 10385 } }
+      - { label: 'Sudan', total: 23598, values: { boat: 14481, ukraine: 21, bno: 0, resettlement: 821, family: 8275 } }
+      - { label: 'Ethiopia', total: 6982, values: { boat: 4112, ukraine: 3, bno: 0, resettlement: 132, family: 2735 } }
+      - { label: 'Yemen', total: 7364, values: { boat: 3427, ukraine: 17, bno: 1, resettlement: 27, family: 3892 } }
+      - { label: 'Afghanistan', total: 74641, values: { boat: 29057, ukraine: 294, bno: 0, resettlement: 38315, family: 6975 } }
+      - { label: 'Syria', total: 40979, values: { boat: 14916, ukraine: 67, bno: 0, resettlement: 12248, family: 13748 } }
+      - { label: 'China', total: 76140, values: { boat: 75, ukraine: 11, bno: 75843, resettlement: 3, family: 208 } }
+      - { label: 'Ukraine', total: 286605, values: { boat: 12, ukraine: 286547, bno: 6, resettlement: 0, family: 40 } }
+      - { label: 'Hong Kong', total: 109710, values: { boat: 0, ukraine: 0, bno: 109710, resettlement: 0, family: 0 } }
+      - { label: 'All other nationalities, stateless and not recorded', total: 50489, values: { boat: 28017, ukraine: 2636, bno: 1954, resettlement: 2486, family: 15396 } }
+    note: >-
+      Nationality as recorded in each Home Office detailed dataset: IER_D01
+      (small boats), Vis_D02 (Ukraine and BN(O) visas issued), Res_D02
+      (resettlement, all schemes) and Fam_D01 (family reunion visas). The
+      fifteen nationalities shown are the largest by combined total; every
+      other nationality, people recorded as stateless or "Refugee", and small-
+      boat arrivals whose nationality is "Not currently recorded" are in the
+      residual. BN(O) visa holders are recorded mostly as Hong Kong or China
+      nationals, so both appear. Visa figures are grants, not arrivals;
+      resettlement figures are arrivals. Component totals match the published
+      figures: 290,044 Ukraine visas and 187,552 visas on the BN(O) route
+      since each scheme opened.
+  - kind: compositionBar
     id: routes-by-nationality-latest
+    title: How each nationality came to the UK, year to June 2026
+    description: >-
+      The same nationalities and routes for the year ending June 2026, the
+      first full year after family reunion was paused on 4 September 2025.
+      Each bar is one nationality's own total, printed beside it, so compare
+      shares across bars, not sizes. Ordered by the share who came by boat, with
+      the residual last.
+    rowLabel: Nationality
+    showCounts: true
+    sources: [40, 41, 42, 43]
+    categories:
+      - { key: boat, label: 'Small boat' }
+      - { key: ukraine, label: 'Ukraine schemes' }
+      - { key: bno, label: 'BN(O) route' }
+      - { key: resettlement, label: 'Resettlement' }
+      - { key: family, label: 'Refugee family reunion' }
+    rows:
+      - { label: 'Albania', total: 185, values: { boat: 181, ukraine: 0, bno: 0, resettlement: 0, family: 4 } }
+      - { label: 'Somalia', total: 4192, values: { boat: 3901, ukraine: 0, bno: 0, resettlement: 68, family: 223 } }
+      - { label: 'Eritrea', total: 6839, values: { boat: 5875, ukraine: 0, bno: 0, resettlement: 16, family: 948 } }
+      - { label: 'Iraq', total: 1570, values: { boat: 1336, ukraine: 2, bno: 0, resettlement: 35, family: 197 } }
+      - { label: 'Vietnam', total: 931, values: { boat: 723, ukraine: 0, bno: 0, resettlement: 0, family: 208 } }
+      - { label: 'Turkey', total: 1023, values: { boat: 783, ukraine: 6, bno: 2, resettlement: 0, family: 232 } }
+      - { label: 'Sudan', total: 5665, values: { boat: 4191, ukraine: 0, bno: 0, resettlement: 54, family: 1420 } }
+      - { label: 'Iran', total: 5031, values: { boat: 3657, ukraine: 1, bno: 0, resettlement: 0, family: 1373 } }
+      - { label: 'Ethiopia', total: 2186, values: { boat: 1364, ukraine: 0, bno: 0, resettlement: 0, family: 822 } }
+      - { label: 'Syria', total: 2244, values: { boat: 1003, ukraine: 5, bno: 0, resettlement: 133, family: 1103 } }
+      - { label: 'Afghanistan', total: 9530, values: { boat: 4042, ukraine: 0, bno: 0, resettlement: 3350, family: 2138 } }
+      - { label: 'Yemen', total: 2149, values: { boat: 517, ukraine: 0, bno: 0, resettlement: 0, family: 1632 } }
+      - { label: 'China', total: 2839, values: { boat: 34, ukraine: 0, bno: 2765, resettlement: 0, family: 40 } }
+      - { label: 'Ukraine', total: 15527, values: { boat: 1, ukraine: 15523, bno: 0, resettlement: 0, family: 3 } }
+      - { label: 'Hong Kong', total: 3046, values: { boat: 0, ukraine: 0, bno: 3046, resettlement: 0, family: 0 } }
+      - { label: 'All other nationalities, stateless and not recorded', total: 8684, values: { boat: 5766, ukraine: 58, bno: 131, resettlement: 184, family: 2545 } }
+    note: >-
+      July 2025 to June 2026 (2025 Q3 to 2026 Q2). Same datasets, nationalities
+      and residual as the chart above, so no nationality drops out because it
+      fell in rank. Family reunion grants in this year include applications
+      made before the pause, which can reach the data up to 240 days later.
+      Totals match the published year: 33,374 small-boat arrivals, 15,595
+      Ukraine visas, 5,944 visas on the BN(O) route, 3,840 people resettled and 12,888
+      family reunion visas.
   - kind: timeline
     id: reopening
     title: UK safe and legal route openings, closures and pauses, 2021–2027
@@ -1105,29 +1032,6 @@ figures:
       - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
       - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
 ---
-Safe and legal routes are the ways a person can be given permission to come
-to the UK for protection before travelling, instead of claiming asylum after
-arriving. Since 2021 most such permissions have gone through two schemes for
-specific countries. The UK has granted 290,044 Ukraine visas since March 2022
-and 187,552 visas on the BN(O) route to people from Hong Kong since January 2021
-[3](#source-safe-and-legal-routes-3)
-[5](#source-safe-and-legal-routes-5). Almost no Ukrainians or Hong Kongers
-crossed the Channel by small boat in the same years
-[40](#source-safe-and-legal-routes-40). The main small-boat nationalities had
-far smaller routes. For Eritreans, Sudanese, Somalis and Iranians the largest
-was refugee family reunion, which let a refugee's partner and children join
-them. It was paused on 4 September 2025
-[14](#source-safe-and-legal-routes-14)
-[18](#source-safe-and-legal-routes-18). The UK Resettlement Scheme, which
-had no quota for new referrals in 2025/26, reopened on 28 September 2026 with
-a yearly cap [22](#source-safe-and-legal-routes-22)
-[24](#source-safe-and-legal-routes-24)
-[26](#source-safe-and-legal-routes-26).
-
-These are counts side by side. They show which nationalities had a route.
-They do not show what a route causes, or how many people wanted one and had
-none (see Data still needed).
-
 ## Observations {#safe-and-legal-routes--observations-all-routes}
 
 ### Two schemes for specific countries account for most grants since 2021 {#safe-and-legal-routes--two-country-schemes-dominate}
@@ -1327,3 +1231,13 @@ small-boat arrivals and 12,888 family reunion grants in the year to June 2026
 [29](#source-safe-and-legal-routes-29)
 [16](#source-safe-and-legal-routes-16). Family reunion remains closed
 [20](#source-safe-and-legal-routes-20).
+
+## More {#safe-and-legal-routes--more-all-routes}
+
+Safe and legal routes are the ways a person can be given permission to come to the UK for protection before travelling, instead of claiming asylum after arriving.
+
+These are counts side by side. They show which nationalities had a route. They do not show what a route causes, or how many people wanted one and had none (see What we don't know yet).
+
+## More {#safe-and-legal-routes--more-reopening}
+
+The UK Resettlement Scheme, which had no quota for new referrals in 2025/26, reopened on 28 September 2026 with a yearly cap [22](#source-safe-and-legal-routes-22) [24](#source-safe-and-legal-routes-24) [26](#source-safe-and-legal-routes-26).

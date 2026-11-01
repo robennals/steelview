@@ -696,7 +696,8 @@ comparisons:
       - 'Yes: in-person impersonation'
       - Method not confirmed
     items:
-      - label: Officials stuffing, forging or miscounting ballots
+      - label: "Officials stuffing or miscounting ballots"
+        detail: "Officials stuffing, forging or miscounting ballots"
         value: 8
         values: [6, 2, 0, 0]
       - label: Absentee or mail ballot fraud
@@ -705,11 +706,13 @@ comparisons:
       - label: Vote buying
         value: 2
         values: [2, 0, 0, 0]
-      - label: Voting in person in another's name, or repeatedly
+      - label: "In-person impersonation or repeat voting"
+        detail: "Voting in person in another's name, or repeatedly"
         value: 2
         highlight: true
         values: [0, 0, 2, 0]
-      - label: Method not confirmed from a primary or court source
+      - label: "Method not confirmed"
+        detail: "From a primary or court source"
         value: 2
         values: [0, 0, 0, 2]
     note: >-
@@ -811,68 +814,6 @@ comparisons:
       not break it down. These are allegations: of those whose resolution
       could be determined, News21 found 46 percent ended in acquittals, dropped
       charges or no charges.
-  - id: black-registration-1965
-    title: >-
-      Black voter registration in 1965, the six US states the Voting Rights Act
-      originally covered
-    description: >-
-      Percentage of voting-age Black residents registered to vote in 1965, as
-      tabulated for Congress and reproduced by the Supreme Court.
-    unit: percent
-    valueLabel: Black registration rate, 1965 (%)
-    domainMax: 100
-    sources: [38]
-    items:
-      - label: Virginia
-        value: 38.3
-      - label: South Carolina
-        value: 37.3
-      - label: Louisiana
-        value: 31.6
-      - label: Georgia
-        value: 27.4
-      - label: Alabama
-        value: 19.3
-      - label: Mississippi
-        value: 6.7
-        highlight: true
-    note: >-
-      White registration in the same table: Alabama 69.2, Georgia 62.6,
-      Louisiana 80.5, Mississippi 69.9, South Carolina 75.7, Virginia 61.1. The
-      six are the states covered by section 5 of the Voting Rights Act in 1965,
-      the set the source tabulates. The 1965 figures predate or coincide with
-      the Act; the Georgia white figure is printed "62.[6]" in the source text.
-  - id: black-registration-2004
-    title: >-
-      Black voter registration in 2004, the six US states the Voting Rights Act
-      originally covered
-    description: >-
-      Percentage of voting-age Black residents registered to vote in 2004,
-      Census Bureau figures in the same table.
-    unit: percent
-    valueLabel: Black registration rate, 2004 (%)
-    domainMax: 100
-    sources: [38]
-    items:
-      - label: Mississippi
-        value: 76.1
-        highlight: true
-      - label: Alabama
-        value: 72.9
-      - label: Louisiana
-        value: 71.1
-      - label: South Carolina
-        value: 71.1
-      - label: Georgia
-        value: 64.2
-      - label: Virginia
-        value: 57.4
-    note: >-
-      White registration in 2004: Alabama 73.8, Georgia 63.5, Louisiana 75.1,
-      Mississippi 72.3, South Carolina 74.4, Virginia 68.2. 1965 and 2004 come
-      from different collections (Congress's 1965 estimates; Census Bureau
-      surveys in 2004), so the change mixes a real rise with a change of
-      source.
 relatedFacts:
   - voter-roll-maintenance
   - non-citizens-on-voter-rolls
@@ -1046,10 +987,103 @@ figures:
     id: heritage-methods
   - kind: comparison
     id: news21-methods
-  - kind: comparison
+  - kind: barChart
+    id: louisiana-black-registrants
+    title: Black share of Louisiana's registered voters, 1898–1956
+    description: >-
+      Black voters as a share of everyone registered in Louisiana, at each
+      point the Supreme Court gave in Louisiana v. United States (1965).
+    valueLabel: Black share of registered voters (%)
+    categoryLabel: When
+    format: { unit: percent }
+    sort: none
+    sources: [36]
+    note: >-
+      The court gives these points, not a yearly count, so they are bars rather
+      than a line. The 1921–1944 bar is a ceiling: the share "never exceeded
+      one percent" in those years. The 1944 figure is where the court's "next
+      dozen years" to March 1956 began. These are shares of registered voters,
+      not registration rates like those in the charts that follow.
+    items:
+      - { label: '1898, new constitution adopted', value: { value: 44, qualifier: about, asPublished: approximately 44% } }
+      - { label: '1921–1944, under the interpretation test', value: { value: 1, qualifier: at most, asPublished: never exceeded one percent } }
+      - { label: '1944', value: { value: 0.2, asPublished: two-tenths of one percent } }
+      - { label: 'March 1956', value: { value: 15, qualifier: about, asPublished: approximately 15% } }
+  - kind: barChart
+    id: pre-vra-registration
+    title: Black voter registration before the Voting Rights Act, three states, 1954–1965
+    description: >-
+      The Attorney General's estimates at the earliest and latest year he gave
+      for each state, as the Supreme Court reported them. The years differ by
+      state.
+    valueLabel: Voting-age Black residents registered (%)
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    domainMax: 100
+    sources: [37]
+    style: dumbbell
+    series:
+      - { key: earlier, label: Earliest estimate }
+      - { key: latest, label: Latest estimate }
+    items:
+      - { label: Alabama, values: { earlier: 14.2, latest: 19.4 }, labels: { earlier: 1958, latest: 1964 } }
+      - { label: Louisiana, values: { earlier: 31.7, latest: 31.8 }, labels: { earlier: 1956, latest: 1965 } }
+      - { label: Mississippi, values: { earlier: 4.4, latest: 6.4 }, labels: { earlier: 1954, latest: 1964 } }
+  - kind: barChart
     id: black-registration-1965
-  - kind: comparison
+    title: >-
+      Black voter registration in 1965, the six US states the Voting Rights Act
+      originally covered
+    description: >-
+      Percentage of voting-age Black and white residents registered to vote in
+      1965, as tabulated for Congress and reproduced by the Supreme Court.
+    valueLabel: Registration rate, 1965 (%)
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    domainMax: 100
+    sources: [38]
+    series:
+      - { key: black, label: Black }
+      - { key: white, label: White }
+    note: >-
+      The six are the states covered by section 5 of the Voting Rights Act in
+      1965, the set the source tabulates. The 1965 figures predate or coincide
+      with the Act; the Georgia white figure is printed "62.[6]" in the source
+      text.
+    items:
+      - { label: Virginia, values: { black: 38.3, white: 61.1 } }
+      - { label: South Carolina, values: { black: 37.3, white: 75.7 } }
+      - { label: Louisiana, values: { black: 31.6, white: 80.5 } }
+      - { label: Georgia, values: { black: 27.4, white: { value: 62.6, asPublished: '62.[6]' } } }
+      - { label: Alabama, values: { black: 19.3, white: 69.2 } }
+      - { label: Mississippi, values: { black: 6.7, white: 69.9 }, highlight: true }
+  - kind: barChart
     id: black-registration-2004
+    title: >-
+      Black voter registration in 2004, the six US states the Voting Rights Act
+      originally covered
+    description: >-
+      Percentage of voting-age Black and white residents registered to vote in
+      2004, Census Bureau figures in the same table.
+    valueLabel: Registration rate, 2004 (%)
+    categoryLabel: State
+    format: { unit: percent, decimals: 1 }
+    domainMax: 100
+    sources: [38]
+    series:
+      - { key: black, label: Black }
+      - { key: white, label: White }
+    note: >-
+      1965 and 2004 come from different collections (Congress's 1965 estimates;
+      Census Bureau surveys in 2004), so the change mixes a real rise with a
+      change of source.
+    items:
+      - { label: Mississippi, values: { black: 76.1, white: 72.3 }, highlight: true }
+      - { label: Alabama, values: { black: 72.9, white: 73.8 } }
+      - { label: Louisiana, values: { black: 71.1, white: 75.1 } }
+      - { label: South Carolina, values: { black: 71.1, white: 74.4 } }
+      - { label: Georgia, values: { black: 64.2, white: 63.5 } }
+      - { label: Virginia, values: { black: 57.4, white: 68.2 } }
   - kind: timeline
     id: remedies
     title: US remedies for election fraud and exclusion, 1888–2002
@@ -1194,31 +1228,23 @@ In News21's database of alleged cases since 2000, in-person impersonation is by 
 
 Justin Levitt, counting every specific, credible allegation from 2000 to 2014 rather than prosecutions, found about 31 incidents among more than 1 billion ballots cast in general and primary elections. [32](#source-election-fraud-and-voter-exclusion-history-32) Both counts share the detection limit above.
 
-## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
+## Observations {#election-fraud-and-voter-exclusion-history--observations-louisiana-black-registrants}
 
 ### Louisiana: from 44% of registrants to under 1% {#election-fraud-and-voter-exclusion-history--louisiana-registration-collapse}
 
-As the Supreme Court recounted in Louisiana v. United States (1965) [36](#source-election-fraud-and-voter-exclusion-history-36):
-
-| Year | Black share of Louisiana's registered voters |
-| --- | --- |
-| 1898, new constitution adopted | about 44% |
-| Under a "grandfather clause" and, from 1921, an "interpretation test", until 1944 | "never exceeded one percent" |
-| 1956 | about 15% |
+As the Supreme Court recounted in Louisiana v. United States (1965), Black voters were about 44% of Louisiana's registered voters when the state adopted its 1898 constitution. Under a "grandfather clause" and, from 1921, an "interpretation test", their share "never exceeded one percent" until 1944. By 1956 it was about 15%. [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 After 1956 a legislative committee and the Citizens Councils challenged Black voters on the rolls, and "thousands of Negroes, but virtually no whites, were purged". [36](#source-election-fraud-and-voter-exclusion-history-36)
+
+## Observations {#election-fraud-and-voter-exclusion-history--observations-pre-vra-registration}
 
 ### Before the Voting Rights Act, registration barely moved {#election-fraud-and-voter-exclusion-history--pre-vra-stagnation}
 
 By the Attorney General's estimates to Congress in 1965, Black registration barely moved in the decade before the Act, with white registration "roughly 50 percentage points or more ahead". [37](#source-election-fraud-and-voter-exclusion-history-37)
 
-| State | Black registration, earlier | Black registration, latest |
-| --- | --- | --- |
-| Alabama | 14.2% (1958) | 19.4% (1964) |
-| Louisiana | 31.7% (1956) | 31.8% (1965) |
-| Mississippi | 4.4% (1954) | 6.4% (1964) |
+The table Congress used in 2006, in the next chart, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
 
-The table Congress used in 2006, charted above, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
+## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
 
 ### The tools turned on officials' discretion {#election-fraud-and-voter-exclusion-history--jim-crow-tools-discretionary}
 
@@ -1254,7 +1280,7 @@ Stuart's analysis put errors at "probably more than 25%" of the list, with Black
 
 Abigail Thernstrom testified to the Senate in 2001 that the Commission's own data showed whites "erroneously placed on the purge list at almost twice the rate of blacks". [45](#source-election-fraud-and-voter-exclusion-history-45) The sources agree the list was badly inaccurate; they disagree on whether its errors fell harder on Black voters.
 
-## Observations {#election-fraud-and-voter-exclusion-history--observations}
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-black-registration-2004}
 
 ### Georgia 2018: registrations on hold, with photo ID as the fallback {#election-fraud-and-voter-exclusion-history--georgia-exact-match}
 
@@ -1262,21 +1288,29 @@ In October 2018 more than 53,000 registrations were on hold under Georgia's "exa
 
 Those voters could still vote by showing a driver's licence or state photo ID at the polls. [46](#source-election-fraud-and-voter-exclusion-history-46)
 
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-modern-results}
+
 ### Officials who refused to certify were made to certify {#election-fraud-and-voter-exclusion-history--certification-refusals}
 
 In June 2022, Otero County, New Mexico, certified its primary only after the state supreme court ordered it to. [47](#source-election-fraud-and-voter-exclusion-history-47)
 
 In November 2022, two Cochise County, Arizona, supervisors voted to delay certification past the legal deadline. A judge ordered certification and both were indicted: Peggy Judd pleaded guilty to a misdemeanour, and Tom Crosby was awaiting trial as of September 2025 (no later outcome found). [48](#source-election-fraud-and-voter-exclusion-history-48) Refusals in 2025–26 were not searched.
 
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-pre-vra-registration}
+
 ### Northern Ireland: exclusion through the franchise and ward lines {#election-fraud-and-voter-exclusion-history--northern-ireland-comparator}
 
 The UK's Cameron Commission found in 1969 that in Londonderry about three in five adults were Catholic while Unionists held three in five council seats, and that the property-based local franchise excluded about a quarter of those who could vote in Stormont elections. [49](#source-election-fraud-and-voter-exclusion-history-49) Northern Ireland's later voter-ID laws are covered in [the report on ID rules](#fact-voter-id-rules-in-the-us-and-abroad).
+
+## Subtleties {#election-fraud-and-voter-exclusion-history--subtleties-case-methods}
 
 ### The fraud record and the exclusion record have no common measure {#election-fraud-and-voter-exclusion-history--no-common-measure}
 
 The fraud cases are counted in convictions and altered ballots per precinct; the exclusion record is counted in registration rates across whole states. No source converts both into votes lost or gained, so which danger has been larger cannot be read from these data.
 
-## About this data {#election-fraud-and-voter-exclusion-history--about}
+## More {#election-fraud-and-voter-exclusion-history--more-case-methods}
+
+### About this report's data {#election-fraud-and-voter-exclusion-history--about}
 
 **What is measured.** Named cases where a court opinion, a Justice Department report or a state election board describes how fraud or exclusion was done. Added to these are three compilations of detected modern fraud (Heritage, News21, Levitt) and the registration tables the Supreme Court reproduced.
 
@@ -1284,6 +1318,6 @@ The fraud cases are counted in convictions and altered ballots per precinct; the
 
 **Scanning errors.** Court opinions are read in the Caselaw Access Project's text, which contains some scanning errors (for example "62.[6]"). Quotes keep those errors rather than correcting them.
 
-**Why there is no time series.** No source publishes a consistent count of election-crime prosecutions by year or method: the Justice Department's annual reports list examples, not totals, and the compilations differ in method and coverage. The registration figures are published for 1965 and 2004 in one table; the annual state tables that would make a series were not reached (see Data still needed).
+**Why there is no time series.** No source publishes a consistent count of election-crime prosecutions by year or method: the Justice Department's annual reports list examples, not totals, and the compilations differ in method and coverage. The registration figures are published for 1965 and 2004 in one table; the annual state tables that would make a series were not reached (see What we don't know yet).
 
 **What this is commonly mistaken for.** A count of detected cases is not a count of fraud. A case where fraud was proven is not proof that the outcome changed: of the cases here, East Chicago, North Carolina's 9th District and Paterson were voided or rerun, while Illinois 1960 and Chicago 1982 did not change the top race.

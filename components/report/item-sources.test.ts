@@ -9,15 +9,15 @@ import { compose } from './composition';
 const hengaw = { label: 'Hengaw', href: '#source-x-13', number: 13 };
 
 test('a composition row keeps its own source through compose, and only when it has one', () => {
-  const { rows } = compose([{ key: 'a', label: 'A' }], [{ label: 'r', values: { a: 1 }, source: hengaw }, { label: 's', values: { a: 2 } }]);
-  assert.deepEqual(rows[0].source, hengaw);
-  assert.equal('source' in rows[1], false);
+  const { rows } = compose([{ key: 'a', label: 'A' }], [{ label: 'r', values: { a: 1 }, sources: [hengaw] }, { label: 's', values: { a: 2 } }]);
+  assert.deepEqual(rows[0].sources, [hengaw]);
+  assert.equal('sources' in rows[1], false);
 });
 
 test('a composition row\'s source is printed after its label, in the bar and in the table', () => {
   const html = renderToStaticMarkup(createElement(CompositionBar, {
     categories: [{ key: 'civilian', label: 'Civilian' }, { key: 'other', label: 'Other' }],
-    rows: [{ label: 'Hengaw, 8 Apr', values: { civilian: 1030, other: 6620 }, source: hengaw }],
+    rows: [{ label: 'Hengaw, 8 Apr', values: { civilian: 1030, other: 6620 }, sources: [hengaw] }],
   }));
   assert.equal(html.match(/Hengaw, 8 Apr<span class="sv-item-credit"><span><a href="#source-x-13">Hengaw \[13\]<\/a><\/span><\/span>/g)?.length, 2);
 });
@@ -27,4 +27,14 @@ test('a caveat\'s sources are printed after why', () => {
     items: [{ measure: 'Household pressure', why: 'Rarely reported.', sources: [{ label: 'Brennan Center', href: '#source-x-24', number: 24 }] }],
   }));
   assert.match(html, /Rarely reported\.<span class="sv-item-credit"><span><a href="#source-x-24">Brennan Center \[24\]<\/a><\/span><\/span>/);
+});
+
+test('percentages print as published, not as recomputed shares; counts print their shares', () => {
+  const parts = { categories: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }, { key: 'c', label: 'C' }] };
+  const percent = renderToStaticMarkup(createElement(CompositionBar, { ...parts, unit: 'percent', rows: [{ label: 'r', values: { a: 33.3, b: 33.3, c: { value: 33.3, qualifier: 'about' } } }] }));
+  assert.match(percent, /<span class="sv-composition__segment-share">33\.3%<\/span>/);
+  assert.match(percent, /<span class="sv-composition__segment-share">about 33\.3%<\/span>/);
+  assert.match(percent, /<td>33\.3%<\/td>/);
+  const counts = renderToStaticMarkup(createElement(CompositionBar, { ...parts, rows: [{ label: 'r', values: { a: 1, b: 1, c: 2 } }] }));
+  assert.match(counts, /<span class="sv-composition__segment-share">25%<\/span>/);
 });

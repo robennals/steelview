@@ -1935,7 +1935,8 @@ comparisons:
     value: -33.0
   - label: Western Balkans
     value: -30.2
-  - label: Eastern Mediterranean (Greece, Cyprus, Bulgaria)
+  - label: "Eastern Mediterranean"
+    detail: "Greece, Cyprus, Bulgaria"
     value: -16.0
   - label: Western Mediterranean (Spain)
     value: 27.9

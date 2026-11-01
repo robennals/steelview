@@ -509,7 +509,9 @@ On 27 February 2026 the Secretary of State designated Iran "a state sponsor of w
 
 He said releasing detained Americans were "steps that could end this designation". [15](#source-iran-actions-abroad-15) No series of cases by year was found.
 
-## About this data {#iran-actions-abroad--about}
+## More {#iran-actions-abroad--more-confirmed-attacks}
+
+### About this report's data {#iran-actions-abroad--about}
 
 **What this measures.** Court outcomes, US designations, one tracker of attacks on US forces, one UN weapons inspection and counts of plots from one researcher and from MI5. Each has its own counter, named beside every figure.
 

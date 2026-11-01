@@ -65,6 +65,13 @@ test('a line with its own range names it in the legend, the table and About this
   assert.match(html, /WTI, 1986–1990; Brent, 1987–1990/);
 });
 
+test('a line with its own source is credited after the reading\'s source, numbered after every reading source', () => {
+  const s = oilSeries();
+  s.readings[0].lines[1].source = { ...source, publisher: 'Brent publisher' };
+  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series: s, sourceOffset: 2 }));
+  assert.match(html, /Sources: <span><a href="#source-oil-3">Example publisher \[3\]<\/a><\/span><span>; <a href="#source-oil-4">Brent publisher \[4\]<\/a><\/span>/);
+});
+
 /** WTI alone, with an estimate in 1987 and forecasts for 1989–1990. */
 function statusSeries(): Series {
   const s = oilSeries();
@@ -142,4 +149,47 @@ test('a preview\'s screen-reader description mentions no event strip or method-c
 test('a preview with nowhere to link draws its title as plain text', () => {
   const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series: oilSeries(), preview: {} }));
   assert.match(html, /<h3 class="sv-graph-heading">[^<]+<\/h3>/);
+});
+
+test('About this data names a reading’s table and a line’s own coverage note', () => {
+  const s = oilSeries();
+  s.readings[0].valuesFrom = 'EIA spot price table, column B';
+  s.readings[0].lines[1].coverage = { from: '1987', to: '1990', note: 'ICE Brent from its first published day.' };
+  const about = renderChart(s).match(/<details class="sv-chart__methodology"[\s\S]*?<\/details>/)?.[0] ?? '';
+  assert.match(about, /<h3 class="sv-chart__reading-head">In dollars<\/h3><p class="sv-chart__note">Values from EIA spot price table, column B\.<\/p>/);
+  assert.match(about, /<strong>Brent:<\/strong> ICE Brent from its first published day\./);
+});
+
+/** Oil prices read two ways, with two dated events and a definitional break. */
+function twoPanelSeries(): Series {
+  const s = oilSeries();
+  s.events = [{ period: '1987', label: 'Cartel meets', sources: [] }, { period: '1989', label: 'Pipeline opens', sources: [] }];
+  s.breaks = [{ period: '1988', label: 'New benchmark', note: 'The benchmark changed.' }];
+  s.readings = [s.readings[0], { ...s.readings[0], id: 'index', label: 'As an index' }];
+  return s;
+}
+
+test('a multi-panel series shows its event key once, after the last panel', () => {
+  const html = renderChart(twoPanelSeries());
+  const [first, last] = html.split('<section class="sv-chart__reading"').slice(1);
+  assert.doesNotMatch(first, /sv-event-strip__key/);
+  assert.match(first, /class="sv-event-strip__marker" href="#sv-event-strip-oil--index-events-1"/);
+  assert.equal((last.match(/<ol class="sv-event-strip__key">/g) ?? []).length, 1);
+  assert.match(first, /listed after the last graph/);
+  // Both panels point their break line at the one Method Changes entry, under the first.
+  assert.match(first, /href="#oil--price-method-1988"/);
+  assert.match(last, /href="#oil--price-method-1988"/);
+  assert.match(last, /explained in Method Changes below the first graph/);
+});
+
+test('Method Changes lists each break once, under the first panel, citing the series source', async () => {
+  const { FactCharts } = await import('./fact-figures');
+  const fact = { id: 'oil', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: twoPanelSeries() };
+  const html = renderToStaticMarkup(createElement(FactCharts, { fact }));
+  assert.equal((html.match(/<summary>Method Changes<\/summary>/g) ?? []).length, 1);
+  assert.equal((html.match(/id="oil--price-method-1988"/g) ?? []).length, 1);
+  // Citation 2: the fact's one source, then the series source.
+  assert.match(html, /The benchmark changed\. <a href="#source-oil-2">\[2\]<\/a>/);
+  const [first] = html.split('<section class="sv-chart__reading"').slice(1);
+  assert.match(first, /Method Changes/);
 });

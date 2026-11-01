@@ -1,30 +1,33 @@
 import type { PreviewFit } from '@/lib/chart/series-chart';
-import type { PreviewSlide } from '@/lib/content/preview';
+import { isPreviewable, previewTarget, type PreviewSlide } from '@/lib/content/preview';
 import { figureContext } from '@/lib/content/figure-props';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
-import { componentFigure } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
-import { FactFigure, type FigurePage } from './fact-figures';
+import { FactFigure, PreviewFigure, type FigurePage } from './fact-figures';
 import { SeriesChart } from './series-chart';
 
 /**
- * A preview slide's chart, through the same shared component the topic page
- * uses. A library figure needs `page`, which only a walkthrough's slides do.
+ * A slide's chart, through the same shared component the topic page uses. A
+ * graph-like figure draws its compact preview, as a chart does; a figure set as
+ * type (a table, a quote) is drawn whole, which needs `page`.
  */
 export function SlideChart({ slide, fit, titleHref, page }: { slide: PreviewSlide; fit?: PreviewFit; titleHref?: string; page?: FigurePage }) {
   const { fact, chart } = slide;
   const preview = { href: titleHref, reading: slide.reading, fit };
-  const seriesIndex = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
-  const series = chart === 'series' ? fact.series : fact.additionalSeries?.[seriesIndex];
-  if (series) {
-    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={seriesSourceOffset(fact, seriesIndex)} sources={factSources(fact)} preview={preview} />;
+  const target = previewTarget(fact, chart);
+  switch (target?.kind) {
+    case 'series':
+      return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={target.series} sourceOffset={seriesSourceOffset(fact, target.index)} sources={factSources(fact)} preview={preview} />;
+    case 'comparison':
+      // A preview draws no source line, and a comparison is a client component, so
+      // the fact's sources (each with its quote) would only weigh down the page.
+      return <ComparisonChart fact={{ id: fact.id }} chart={target.comparison} sources={[]} preview={preview} />;
+    case 'figure': {
+      const context = figureContext(fact, page?.asOf);
+      if (isPreviewable(target)) return <PreviewFigure figure={target.figure} context={context} preview={preview} />;
+      return page ? <div className="sv-slide__figure"><FactFigure figure={target.figure} context={context} page={page} /></div> : null;
+    }
+    default:
+      return null;
   }
-  const comparison = fact.comparisons?.find(c => c.id === chart);
-  // A preview draws no source line, and a comparison is a client component, so
-  // the fact's sources (each with its quote) would only weigh down the page.
-  if (comparison) return <ComparisonChart fact={{ id: fact.id }} chart={comparison} sources={[]} preview={preview} />;
-  const figure = componentFigure(fact, chart);
-  return figure && page
-    ? <div className="sv-slide__figure"><FactFigure figure={figure} context={figureContext(fact, page.asOf)} page={page} /></div>
-    : null;
 }

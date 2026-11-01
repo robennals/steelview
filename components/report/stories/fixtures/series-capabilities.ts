@@ -80,8 +80,8 @@ export const URANIUM_NOT_MEASURED_SINCE: Series = {
   },
   breaks: [],
   events: [
-    { period: '2025-06-13', label: 'Strikes on Iran’s nuclear sites', source: 1 },
-    { period: '2026-02-28', label: 'Verification stops', source: 1 },
+    { period: '2025-06-13', label: 'Strikes on Iran’s nuclear sites', sources: [1] },
+    { period: '2026-02-28', label: 'Verification stops', sources: [1] },
   ],
   source: {
     stance: 'supports',
@@ -163,13 +163,13 @@ export const BRENT_FOCUS_WINDOW: Series = {
   focus: { from: `${Number(BRENT_LAST.slice(0, 4)) - 1}${BRENT_LAST.slice(4)}`, label: 'Last 12 months' },
   breaks: [],
   events: [
-    { period: '2026-02-28', label: 'US and Israel strike Iran' },
-    { period: '2026-04-08', label: 'Two-week ceasefire' },
-    { period: '2026-04-13', label: 'US blockade of Iranian ports' },
-    { period: '2026-06-17', label: 'Islamabad memorandum; blockade lifted' },
-    { period: '2026-07-14', label: 'Blockade resumed' },
-    { period: '2026-09-01', label: 'Renewed exchanges of strikes' },
-    { period: '2026-10-08', label: 'Trump rules out strikes before the midterms' },
+    { period: '2026-02-28', label: 'US and Israel strike Iran', sources: [] },
+    { period: '2026-04-08', label: 'Two-week ceasefire', sources: [] },
+    { period: '2026-04-13', label: 'US blockade of Iranian ports', sources: [] },
+    { period: '2026-06-17', label: 'Islamabad memorandum; blockade lifted', sources: [] },
+    { period: '2026-07-14', label: 'Blockade resumed', sources: [] },
+    { period: '2026-09-01', label: 'Renewed exchanges of strikes', sources: [] },
+    { period: '2026-10-08', label: 'Trump rules out strikes before the midterms', sources: [] },
   ],
   source: {
     stance: 'supports',

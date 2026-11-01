@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { FactArticle } from '@/components/topic/fact-article';
-import { figureExamplesBodyHtml, figureExamplesFact, mailBallotPrivacyFact } from './fixtures/figure-examples';
+import { figureExamplesBodyHtml, figureExamplesFact } from './fixtures/figure-examples';
 
 const meta = {
   title: 'Existing/FactFigures',
@@ -16,18 +16,15 @@ const meta = {
   },
   args: {
     slug: 'figure-examples',
-    variant: 'page',
+    variant: 'modal',
     fact: figureExamplesFact,
     bodyHtml: figureExamplesBodyHtml,
-    topic: { lastUpdated: '2026-10-29', facts: [figureExamplesFact, mailBallotPrivacyFact] },
+    topic: { lastUpdated: '2026-10-29', facts: [figureExamplesFact] },
   },
 } satisfies Meta<typeof FactArticle>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Every kind, in reading order, as a fact's own page. */
+/** Every kind, in reading order, as the sheet over a topic draws them. */
 export const EveryKind: Story = {};
-
-/** The same fact inside the sheet over its topic. */
-export const InModal: Story = { args: { variant: 'modal' } };

@@ -59,8 +59,8 @@ export const DETENTION_MARKERS_ILLUSTRATIVE: MapMarker[] = [
 /**
  * Asylum applicants per 10,000 residents, 2024, EU+ and the UK. Real figures:
  * the Migration Observatory's Figure 18 extract, as carried in the
- * `asylum-claims-in-historical-and-european-context` fact. Liechtenstein
- * (21.2) is in the source but not in the tile preset.
+ * `asylum-claims-in-historical-and-european-context` fact, plus
+ * Liechtenstein (21.2), which the fact's note quotes from the same source.
  */
 export const ASYLUM_PER_10K_2024: MapData = {
   CY: { value: 95.05 },
@@ -72,6 +72,7 @@ export const ASYLUM_PER_10K_2024: MapData = {
   LU: { value: 32.81 },
   CH: { value: 30.81 },
   DE: { value: 30.02 },
+  LI: { value: 21.2 },
   AT: { value: 27.2 },
   IT: { value: 26.9 },
   SI: { value: 26.53 },
@@ -156,8 +157,8 @@ export const NCSL_VOTER_ID_SOURCES: SourceCredit[] = [
  * countries the research draft confirms are assigned — eleven where postal
  * voting is open to all voters, France and Australia where it is open to some
  * — and every other country is left as "No data": IDEA's full country lists
- * are published as images and have not yet been extracted. Liechtenstein is
- * assigned but too small to appear in the world outlines.
+ * are published as images and have not yet been extracted. Liechtenstein, too
+ * small for the world outlines, is drawn as a dot.
  */
 export const IDEA_POSTAL_VOTING_2025: CategoryEncoding = {
   categoryLabel: 'Who may vote by post in-country, 2025',
@@ -174,3 +175,10 @@ export const IDEA_POSTAL_VOTING_2025: CategoryEncoding = {
 export const IDEA_POSTAL_SOURCES: SourceCredit[] = [
   { label: 'International IDEA, Special Voting Arrangements', href: 'https://www.idea.int/data-tools/tools/special-voting-arrangements/postal-in-country' },
 ];
+
+/**
+ * Illustrative only: invented shares for the five US territories, to show the
+ * territories row a US tile map gains when its data covers one. Not Census
+ * Bureau figures.
+ */
+export const US_TERRITORIES_ILLUSTRATIVE: MapData = { PR: { value: 2 }, GU: { value: 30 }, VI: { value: 33 }, MP: { value: 45 }, AS: { value: 27 } };

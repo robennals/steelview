@@ -7,7 +7,7 @@ import type { Fact, Topic } from './types';
 export type BodiedFact = { fact: Fact; bodyHtml: string };
 
 /**
- * Everything both renderings of a fact need: its own page and the modal that
+ * What both renderings of a fact share: its own page and the modal that
  * intercepts it. Loaded once, here, so the two cannot disagree about what a
  * fact is.
  */

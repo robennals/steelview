@@ -154,7 +154,7 @@ test('the page behind the panel is scroll-locked', async ({ page }) => {
 // Everything above is presentation layered on markup that works on its own.
 // With JavaScript off there is no panel and nothing is intercepted: a fact row
 // and a viewpoint's fact chip are ordinary links, and following either one
-// loads that fact's page — the whole fact, at its own address.
+// loads that report's own page — the whole report, at its own address.
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
@@ -171,10 +171,9 @@ test.describe('with JavaScript disabled', () => {
       'Work and Study Visas and the Care Workforce'
     );
     await expect(page.locator('.sv-chart').first()).toBeVisible();
-    await expect(page.locator('.sv-references blockquote').first()).toBeHidden();
-    await page.locator('.sv-references > summary').click();
-    await page.locator('.sv-source-quote > summary').first().click();
-    await expect(page.locator('.sv-references blockquote').first()).toBeVisible();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeHidden();
+    await page.locator('.sv-chart__sources > summary').first().click();
+    await expect(page.locator('.sv-chart__sources blockquote').first()).toBeVisible();
   });
 });
 
@@ -221,7 +220,7 @@ test('facts open with the network offline and Forward restores the modal', async
   await expect(page.locator(`a[href^="${factUrl(HEADLINE)}"]:focus`)).toHaveCount(1);
 });
 
-test('Expand loads the standalone fact page', async ({ page }) => {
+test('Expand loads the report\'s own page', async ({ page }) => {
   await page.goto(TOPIC);
   await openCollection(page, HEADLINE);
   const expand = page.getByRole('link', { name: 'Expand', exact: true });
