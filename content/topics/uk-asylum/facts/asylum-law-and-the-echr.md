@@ -705,8 +705,6 @@ figures:
       - part: Part 2 (clauses 17 to 20)
         does: { value: 'Rewrites how judges apply Article 8 (family and private life) in appeals, so that fewer people win a right to stay.', sources: [32, 34] }
 ---
-The texts and legal opinions behind five questions, in the order the argument runs. Where a text is settled, it is quoted as settled; where lawyers disagree, both readings are given. None of these sources counts how many removals the ECHR blocks.
-
 ## Observations {#asylum-law-and-the-echr--observations-article-31}
 
 ### UK law ties the Article 31 defence to the first safe country {#asylum-law-and-the-echr--uk-law-ties-article-31-to-the-first-safe-country}
@@ -809,3 +807,7 @@ The Public Law Project says there is "no evidence that the Bill will achieve
 its policy objectives". The Commons Library notes the tension between
 statutory rules on Article 8 and the fact that the Strasbourg Court decides
 what Article 8 means. [38](#source-asylum-law-and-the-echr-38) [39](#source-asylum-law-and-the-echr-39)
+
+## More {#asylum-law-and-the-echr--more-article-31}
+
+Where a text is settled, it is quoted as settled; where lawyers disagree, both readings are given. None of these sources counts how many removals the ECHR blocks.

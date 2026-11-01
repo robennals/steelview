@@ -1,4 +1,5 @@
 import { formatValue } from '../format';
+import type { Qualification } from '../qualified';
 import type { ValueFormat } from '../types';
 import type { MapScale } from './choropleth';
 
@@ -14,11 +15,14 @@ export function MapLegend({
   format,
   valueLabel,
   showNoData,
+  qualifications = [],
 }: {
   scale: MapScale;
   format?: ValueFormat;
   valueLabel: string;
   showNoData: boolean;
+  /** The qualifications among the map's figures: each mark that appears is explained, and only those. */
+  qualifications?: Array<Exclude<Qualification, 'exact'>>;
 }) {
   const { bins } = scale;
   const bounds = [bins[0].from, ...bins.map(bin => bin.to)];
@@ -58,6 +62,29 @@ export function MapLegend({
           </span>
         )}
       </div>
+      {qualifications.length > 0 && <QualificationKey qualifications={qualifications} />}
     </div>
+  );
+}
+
+/**
+ * What the marks on a qualified figure mean: a glyph on a bounded area's
+ * label, and a stipple over every area whose figure is not exact. Glyph and
+ * texture, never colour alone, so the key holds in greyscale.
+ */
+function QualificationKey({ qualifications }: { qualifications: Array<Exclude<Qualification, 'exact'>> }) {
+  const range = qualifications.includes('range');
+  return (
+    <ul className="sv-map-legend__qualifications">
+      {qualifications.includes('lower-bound') && (
+        <li><span className="sv-map-legend__glyph" aria-hidden="true">▲</span> At least this value: the source gives a lower bound</li>
+      )}
+      {qualifications.includes('upper-bound') && (
+        <li><span className="sv-map-legend__glyph" aria-hidden="true">▼</span> At most this value: the source gives an upper bound</li>
+      )}
+      <li>
+        <span className="sv-map-legend__stipple" aria-hidden="true" /> Stippled: not an exact figure — approximate{range ? ', a bound or a range (shaded at its midpoint)' : ' or a bound'}
+      </li>
+    </ul>
   );
 }

@@ -1062,36 +1062,6 @@ additionalSeries:
               - {period: '2019', value: 5}
               - {period: '2021', value: 7}
 comparisons:
-  - id: us-rules-2026
-    title: 'What US states ask of in-person voters, 2026'
-    description: >-
-      All 50 states and Washington, D.C., by NCSL's two-way classification of
-      the ID law in force as of August 2026.
-    unit: count
-    valueLabel: 'States (including D.C. in the last bar)'
-    shareTotal: 51
-    sources: [1, 2]
-    items:
-      - label: 'No ID document requested (14 states and D.C.)'
-        value: 15
-      - label: 'Non-strict, photo ID requested'
-        value: 14
-      - label: 'Strict photo ID'
-        value: 10
-      - label: 'Non-strict, non-photo ID accepted'
-        value: 8
-      - label: 'Strict, non-photo ID accepted'
-        value: 4
-    note: >-
-      "Strict" means a voter without accepted ID votes a provisional ballot
-      that counts only if they take a further step after Election Day, usually
-      showing ID at an election office. In "non-strict" states some voters
-      without ID can cast a ballot that counts without further action, for
-      example by signing an affidavit. States with no document rule check
-      voters in other ways, most often by signature. NCSL flags Alabama,
-      Oklahoma, Wyoming and South Carolina as borderline cases between
-      categories. These are in-person rules only; mail-ballot ID rules are
-      not covered.
   - id: early-voting-strict-states
     title: How early in-person voting can start in the US strict-photo-ID states
     description: >-
@@ -1132,42 +1102,6 @@ comparisons:
       state with no early voting, has a non-strict photo-ID law and is not
       shown. Days of voting offered are fewer than these figures, because
       early voting ends before Election Day and may not run every day.
-  - id: gb-awareness
-    title: 'Awareness of the photo-ID rule, July 2024 UK general election'
-    description: >-
-      Share of people aware they needed photo ID to vote at a polling station,
-      by nation and group (public opinion survey for the Electoral
-      Commission, carried out immediately after the election).
-    unit: percent
-    valueLabel: '% aware of the requirement'
-    domainMax: 100
-    sources: [29]
-    items:
-      - label: Scotland
-        value: 90
-      - label: White people
-        value: 90
-      - label: Wales
-        value: 89
-      - label: Northern Ireland
-        value: 89
-      - label: ABC1 social grades
-        value: 88
-      - label: All Great Britain
-        value: 87
-        highlight: true
-      - label: England
-        value: 87
-      - label: C2DE social grades
-        value: 86
-      - label: Ethnic minority communities
-        value: 76
-      - label: Aged 18 to 24
-        value: 71
-    note: >-
-      The Electoral Commission reports these figures. It gives older groups
-      only as "at least 91%" for people aged 45 and over, so they are not
-      plotted.
   - id: ni-register-2002
     title: "Northern Ireland's electoral register before and after the 2002 Act"
     description: >-
@@ -1230,10 +1164,166 @@ figures:
   - kind: series
   - kind: series
     id: photo-and-strict
-  - kind: comparison
+  - kind: map
     id: us-rules-2026
+    title: 'What US states ask of in-person voters, 2026'
+    description: >-
+      All 50 states and Washington, D.C., by NCSL's two-way classification of
+      the ID law in force as of August 2026.
+    preset: us-states
+    default: tiles
+    areaLabel: State
+    categoryLabel: ID asked of in-person voters
+    sources: [1, 2, 4, 18]
+    note: >-
+      "Strict" means a voter without accepted ID votes a provisional ballot
+      that counts only if they take a further step after Election Day, usually
+      showing ID at an election office. In "non-strict" states some voters
+      without ID can cast a ballot that counts without further action, for
+      example by signing an affidavit. States with no document rule check
+      voters in other ways, most often by signature. The 36 states with a rule
+      are named in NCSL's Table 1; the 14 states and D.C. shown as requesting
+      no document are the rest. NCSL flags Alabama, Oklahoma, Wyoming and South
+      Carolina as borderline cases between categories. These are in-person
+      rules only; mail-ballot ID rules are not covered.
+    categories:
+      - { id: strict-photo, label: Strict photo ID, mark: SP }
+      - { id: strict-non-photo, label: 'Strict, non-photo ID accepted', mark: SN }
+      - { id: non-strict-photo, label: 'Non-strict, photo ID requested', mark: P }
+      - { id: non-strict-non-photo, label: 'Non-strict, non-photo ID accepted', mark: N }
+      - { id: none, label: No ID document requested, mark: "—" }
+    areas:
+      AR: strict-photo
+      GA: strict-photo
+      IN: strict-photo
+      KS: strict-photo
+      MS: strict-photo
+      NH: strict-photo
+      NC: strict-photo
+      OH: strict-photo
+      TN: strict-photo
+      WI: strict-photo
+      AZ: strict-non-photo
+      IA: strict-non-photo
+      ND: strict-non-photo
+      WY: { category: strict-non-photo, note: NCSL flags this as a borderline case between categories }
+      AL: { category: non-strict-photo, note: NCSL flags this as a borderline case between categories }
+      FL: non-strict-photo
+      ID: non-strict-photo
+      KY: non-strict-photo
+      LA: { category: non-strict-photo, note: Louisiana drops its affidavit option from 2027, which NCSL says will make it the 11th strict photo-ID state }
+      MI: non-strict-photo
+      MO: non-strict-photo
+      MT: non-strict-photo
+      NE: non-strict-photo
+      RI: non-strict-photo
+      SC: { category: non-strict-photo, note: NCSL flags this as a borderline case between categories }
+      SD: non-strict-photo
+      TX: non-strict-photo
+      WV: non-strict-photo
+      AK: non-strict-non-photo
+      CO: non-strict-non-photo
+      CT: non-strict-non-photo
+      DE: non-strict-non-photo
+      OK: { category: non-strict-non-photo, note: NCSL flags this as a borderline case between categories }
+      UT: non-strict-non-photo
+      VA: non-strict-non-photo
+      WA: non-strict-non-photo
+      CA: none
+      DC: none
+      HI: none
+      IL: none
+      MA: none
+      MD: none
+      ME: none
+      MN: none
+      NJ: none
+      NM: none
+      NV: none
+      NY: none
+      OR: none
+      PA: none
+      VT: none
   - kind: series
     id: dpoc-laws
+  - kind: map
+    id: dpoc-status-2026
+    title: 'Which states have a proof-of-citizenship law, and its status, 2026'
+    description: >-
+      The 13 states on NCSL's list of laws requiring documentary proof of
+      citizenship to register, by what NCSL says of each law's status.
+    preset: us-states
+    default: tiles
+    areaLabel: State
+    categoryLabel: Documentary proof of citizenship to register
+    sources: [17, 18]
+    note: >-
+      Read from NCSL's list as of September 2026, and its July 2026 summary for
+      the two states with a federal-only list. "NCSL notes no block or delay"
+      is what the list does not say, not a separate finding that a law is
+      being applied. Six of the 13 states ask for documents only when state
+      records cannot confirm citizenship; the sources read name only Georgia
+      and Florida among them, so the map has no category for it. Guam's 2025
+      law is excluded.
+    categories:
+      - { id: enacted, label: Law enacted; NCSL notes no block or delay, mark: L }
+      - { id: federal-only, label: 'Law enacted; without proof, a federal-only ballot', mark: F }
+      - { id: affidavit-reinstated, label: 'Law enacted; a judge reinstated the affidavit', mark: A }
+      - { id: from-2027, label: 'Enacted; takes effect 1 January 2027', mark: '27' }
+      - { id: not-in-effect, label: Enacted; not currently in effect, mark: X }
+      - { id: none, label: Not on NCSL's list, mark: "—", quiet: true }
+    areas:
+      AL: { category: not-in-effect, note: Enacted 2011 }
+      AK: none
+      AZ: { category: enacted, note: Enacted 2004 }
+      AR: none
+      CA: none
+      CO: none
+      CT: none
+      DE: none
+      DC: none
+      FL: { category: from-2027, note: Enacted 2026; asks only when records cannot confirm citizenship }
+      GA: { category: enacted, note: Enacted 2010; asks only when records cannot confirm citizenship }
+      HI: none
+      ID: none
+      IL: none
+      IN: { category: enacted, note: Enacted 2024 }
+      IA: none
+      KS: { category: not-in-effect, note: Enacted 2011; not in effect due to a court decision }
+      KY: none
+      LA: { category: enacted, note: Enacted 2024 }
+      ME: none
+      MD: none
+      MA: none
+      MI: none
+      MN: none
+      MS: { category: enacted, note: Enacted 2026 }
+      MO: none
+      MT: none
+      NE: none
+      NV: none
+      NH: { category: affidavit-reinstated, note: Enacted 2024; injunction 28 May 2026 }
+      NJ: none
+      NM: none
+      NY: none
+      NC: none
+      ND: none
+      OH: none
+      OK: none
+      OR: none
+      PA: none
+      RI: none
+      SC: none
+      SD: { category: federal-only, note: Enacted 2026 }
+      TN: { category: enacted, note: Enacted 2011 }
+      TX: none
+      UT: { category: federal-only, note: Enacted 2026 }
+      VT: none
+      VA: none
+      WA: none
+      WV: none
+      WI: none
+      WY: { category: enacted, note: Enacted 2025 }
   - kind: comparison
     id: early-voting-strict-states
   - kind: dataTable
@@ -1261,7 +1351,7 @@ figures:
     id: g7
     title: 'Polling-place ID in the G7 democracies'
     description: 'What each G7 member asks of in-person voters. The table shows every member, not a chosen subset.'
-    note: 'Why this set: the G7 is the complete group of large, high-income democracies most often compared with the US, and each member''s rule can be checked against its own election law. A wider group such as the OECD''s 38 members would be better, but no neutral, fetchable source classifies all of them (see Data still needed). A dash in the Since column means the start date was not established from the sources read.'
+    note: 'Why this set: the G7 is the complete group of large, high-income democracies most often compared with the US, and each member''s rule can be checked against its own election law. A wider group such as the OECD''s 38 members would be better, but no neutral, fetchable source classifies all of them (see What we don''t know yet). A dash in the Since column means the start date was not established from the sources read.'
     caption: 'One row per country'
     columns:
       - { key: country, label: 'Country', rowHeader: true }
@@ -1332,15 +1422,40 @@ figures:
         record: { value: 'None cited in the legislative summary', sources: [32] }
   - kind: series
     id: gb-turnaways
-  - kind: comparison
+  - kind: barChart
     id: gb-awareness
+    title: 'Awareness of the photo-ID rule, July 2024 UK general election'
+    description: >-
+      Share of people aware they needed photo ID to vote at a polling station,
+      by nation and group (public opinion survey for the Electoral
+      Commission, carried out immediately after the election).
+    valueLabel: '% aware of the requirement'
+    categoryLabel: Nation or group
+    format: { unit: percent, decimals: 0 }
+    domainMax: 100
+    sort: none
+    sources: [29]
+    note: >-
+      The Electoral Commission reports these figures. It gives older groups
+      only as "at least 91%" for people aged 45 and over, so that bar is a
+      lower bound.
+    items:
+      - { label: Aged 45 and over, value: { value: 91, qualifier: at least, asPublished: at least 91% } }
+      - { label: Scotland, value: 90 }
+      - { label: White people, value: 90 }
+      - { label: Wales, value: 89 }
+      - { label: Northern Ireland, value: 89 }
+      - { label: ABC1 social grades, value: 88 }
+      - { label: All Great Britain, value: 87, highlight: true }
+      - { label: England, value: 87 }
+      - { label: C2DE social grades, value: 86 }
+      - { label: Ethnic minority communities, value: 76 }
+      - { label: Aged 18 to 24, value: 71 }
   - kind: comparison
     id: ni-register-2002
   - kind: series
     id: canada-nonvoters
 ---
-This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
-
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-states-with-id}
 
 ### Thirty-six states now ask for ID, up from 13 in 2000 {#voter-id-rules-in-the-us-and-abroad--us-36-states-up-from-13}
@@ -1454,6 +1569,10 @@ Canada lets a voter without ID make a written declaration if another elector at 
 
 A country that checks a polling card, accepts any document, asks only on request or allows vouching can be counted either way. France's rule does not apply in its smallest communes, and Germany's applies only on request. [37](#source-voter-id-rules-in-the-us-and-abroad-37) [38](#source-voter-id-rules-in-the-us-and-abroad-38) Global tallies circulating in the US debate were not traced to a source that publishes its country-by-country coding, so none is used here.
 
+### "Other democracies require ID" and "other democracies adopted ID because of fraud" are different claims {#voter-id-rules-in-the-us-and-abroad--require-versus-adopted-after-fraud}
+
+Most G7 members ask voters for ID, but of the three recent adopters only Northern Ireland acted after recorded personation; Britain and Canada acted on a perceived gap. [27](#source-voter-id-rules-in-the-us-and-abroad-27) [25](#source-voter-id-rules-in-the-us-and-abroad-25) [32](#source-voter-id-rules-in-the-us-and-abroad-32) Countries such as Italy have required ID for decades, so their rule says nothing about whether fraud prompted it. [41](#source-voter-id-rules-in-the-us-and-abroad-41)
+
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-adoption-reasons}
 
 ### Northern Ireland adopted ID after organised personation {#voter-id-rules-in-the-us-and-abroad--northern-ireland-after-personation}
@@ -1527,17 +1646,11 @@ Electoral-process reasons, which include being unable to prove identity or addre
 
 A Canadian voter with no ID may vote after a written declaration, if an elector listed at the same polling station shows ID and vouches for them. [33](#source-voter-id-rules-in-the-us-and-abroad-33) Canada's rule also accepts two non-photo IDs instead of one photo ID. [33](#source-voter-id-rules-in-the-us-and-abroad-33)
 
-## Subtleties {#voter-id-rules-in-the-us-and-abroad--subtleties}
+## More {#voter-id-rules-in-the-us-and-abroad--more-states-with-id}
 
-### "Other democracies require ID" and "other democracies adopted ID because of fraud" are different claims {#voter-id-rules-in-the-us-and-abroad--require-versus-adopted-after-fraud}
+This report covers ID shown at the polling station and documents needed to register. It does not cover ID for mail ballots, which NCSL tracks separately, or whether these rules change turnout, which is in [Burdens of ID and citizenship-proof rules](#fact-burdens-of-id-and-citizenship-rules).
 
-Most G7 members ask voters for ID, but of the three recent adopters only Northern Ireland acted after recorded personation; Britain and Canada acted on a perceived gap. [27](#source-voter-id-rules-in-the-us-and-abroad-27) [25](#source-voter-id-rules-in-the-us-and-abroad-25) [32](#source-voter-id-rules-in-the-us-and-abroad-32) Countries such as Italy have required ID for decades, so their rule says nothing about whether fraud prompted it. [41](#source-voter-id-rules-in-the-us-and-abroad-41)
-
-### Britain's small turnaway rate does not by itself show the rule stopped fraud {#voter-id-rules-in-the-us-and-abroad--turnaways-are-not-fraud-stopped}
-
-The people turned away were people without accepted ID, not detected impostors; the government's evaluation found no way to know whether any personation went undetected. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [28](#source-voter-id-rules-in-the-us-and-abroad-28) The rate measures the rule's cost at the polling station, not its benefit.
-
-## About this data {#voter-id-rules-in-the-us-and-abroad--about}
+### About this report's data {#voter-id-rules-in-the-us-and-abroad--about}
 
 **US series.** NCSL has published no single historical table, so the 1950–2026 line combines NCSL's two retrospective accounts with its voter-ID page as archived by the Internet Archive in the autumn of each federal election year from 2010 (September 2009 for the first point).
 
@@ -1552,3 +1665,9 @@ Each count is the figure NCSL stated at the time, not a reconstruction. Points a
 Northern Ireland, Britain and Canada are given adoption histories because they are the cases most often cited in US debate.
 
 **Britain.** Turnaway figures are from polling-station records reported to the Electoral Commission; the awareness figures are from a public opinion survey carried out for the Commission immediately after the election. Both are quoted from the Commission's own reports; the Commons Library briefing is used for personation, adoption history and the government's evaluation.
+
+## Subtleties {#voter-id-rules-in-the-us-and-abroad--subtleties-gb-turnaway-share}
+
+### Britain's small turnaway rate does not by itself show the rule stopped fraud {#voter-id-rules-in-the-us-and-abroad--turnaways-are-not-fraud-stopped}
+
+The people turned away were people without accepted ID, not detected impostors; the government's evaluation found no way to know whether any personation went undetected. [29](#source-voter-id-rules-in-the-us-and-abroad-29) [28](#source-voter-id-rules-in-the-us-and-abroad-28) The rate measures the rule's cost at the polling station, not its benefit.

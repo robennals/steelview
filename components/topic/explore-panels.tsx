@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 
 type Shown = { fact: string; observation: string };
@@ -75,11 +76,12 @@ export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
 
 /**
  * A viewpoint step's chart, where any click follows the step's "Explore this
- * data", the chart's title included. A legend's definition still opens.
+ * data", the chart's title included. A legend's definition and the sources row
+ * still open.
  */
 export function ExplorableChart({ children }: { children: ReactNode }) {
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.target instanceof Element && event.target.closest('.sv-glossary')) return;
+    if (event.target instanceof Element && event.target.closest('.sv-glossary, .sv-chart__sources')) return;
     const explore = event.currentTarget.closest('.sv-walk__chart')?.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
     if (!explore) return;
     event.preventDefault();
@@ -120,9 +122,7 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
     dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
 
     // Straight to the chart holding the observation, with nothing to scroll past.
-    const slide = dialog.querySelector(`[data-observation="${CSS.escape(observation)}"]`)?.closest('.sv-walk__slide');
-    const strip = slide?.parentElement;
-    if (slide && strip) strip.scrollLeft = Array.from(strip.children).indexOf(slide) * strip.clientWidth;
+    showPanelStep(dialog, observation);
 
     return () => {
       unwireExit();

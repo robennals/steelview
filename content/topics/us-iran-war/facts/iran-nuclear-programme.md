@@ -693,6 +693,16 @@ series:
       only level Iran then held; from August 2019 they give the total at all
       levels. One extra point, 1 July 2019, comes from the IAEA's special
       report on the breach (GOV/INF/2019/8).
+  notMeasuredSince:
+    label: No IAEA stock figure since the strikes
+    note: >-
+      The IAEA stopped verification when the attacks began on 13 June 2025
+      and had withdrawn its inspectors by the end of June. Its September 2026
+      report says it "cannot provide any information on the current size,
+      composition or whereabouts of the stockpile of enriched uranium in
+      Iran".
+    source: 1
+    until: '2026-09-01'
   breaks:
     - period: '2021-05-22'
       label: 'IAEA estimates replace verified totals'
@@ -710,7 +720,7 @@ series:
     - period: '2019-07-01'
       label: Stock limit exceeded
       note: The IAEA verifies 205.0 kg, above the 202.8 kg limit.
-      source: 15
+      sources: [15, 9]
     - period: '2019-07-08'
       label: Enrichment above 3.67% begins
       note: The IAEA's monitors show Iran enriching above the deal's 3.67% cap.
@@ -783,6 +793,16 @@ additionalSeries:
         Iran began enriching to 60% on 17 April 2021 (GOV/2021/28); the first
         quarterly figure is for 22 May 2021. All points are IAEA estimates.
         For 13 June 2025 the IAEA says it verified 432.9 kg of the 440.9 kg.
+    notMeasuredSince:
+      label: No IAEA figure since the strikes
+      note: >-
+        The IAEA stopped verification when the attacks began on 13 June 2025
+        and had withdrawn its inspectors by the end of June. Its September
+        2026 report says it "cannot provide any information on the current
+        size, composition or whereabouts of the stockpile of enriched uranium
+        in Iran".
+      source: 1
+      until: '2026-09-01'
     events:
       - period: '2025-06-12'
         label: IAEA Board finds non-compliance
@@ -813,37 +833,6 @@ additionalSeries:
           - name: 60% stock (IAEA estimate)
             glossary: enriched-uranium
             points: [{period: '2021-05-22', value: 2.4}, {period: '2021-08-30', value: 10.0}, {period: '2021-11-06', value: 17.7}, {period: '2022-02-19', value: 33.2}, {period: '2022-05-15', value: 43.1}, {period: '2022-08-21', value: 55.6}, {period: '2022-10-22', value: 62.3}, {period: '2023-02-12', value: 87.5}, {period: '2023-05-13', value: 114.1}, {period: '2023-08-19', value: 121.6}, {period: '2023-10-28', value: 128.3}, {period: '2024-02-10', value: 121.5}, {period: '2024-05-11', value: 142.1}, {period: '2024-08-17', value: 164.7}, {period: '2024-10-26', value: 182.3}, {period: '2025-02-08', value: 274.8}, {period: '2025-05-17', value: 408.6}, {period: '2025-06-13', value: 440.9}]
-comparisons:
-  - id: board-votes
-    title: IAEA Board of Governors votes on Iran resolutions, 2026
-    description: >-
-      How the 34 voting Board members cast their votes on the two 2026
-      resolutions on Iran's safeguards non-compliance. The September
-      resolution sent the matter to the UN Security Council and General
-      Assembly.
-    unit: count
-    valueLabel: Board members
-    sources: [13, 14]
-    groupLabel: how members voted
-    allGroupsLabel: All votes cast
-    groups:
-      - In favour
-      - Against
-      - Abstained
-    defaultGroup: 0
-    items:
-      - label: GOV/2026/40, 10 June 2026
-        value: 34
-        values: [21, 3, 10]
-      - label: GOV/2026/61, 9 September 2026 (referral to the UN)
-        value: 34
-        values: [23, 3, 8]
-    note: >-
-      Each total is the sum of the vote counts the resolution itself records
-      (21 + 3 + 10 and 23 + 3 + 8). The June 2025 non-compliance resolution
-      (GOV/2025/38) and the November 2025 resolution (GOV/2025/71) are not
-      charted: neither text could be fetched (both URLs returned errors), so
-      their votes are not confirmed at source.
 relatedFacts:
   - outside-attempts-to-change-hostile-regimes
   - decisions-law-and-diplomacy
@@ -883,8 +872,31 @@ figures:
   - kind: "series"
   - kind: "series"
     id: "sixty-percent-stock"
-  - kind: "comparison"
-    id: "board-votes"
+  - kind: compositionBar
+    id: board-votes
+    title: IAEA Board of Governors votes on Iran resolutions, 2026
+    description: How the 34 voting Board members cast their votes on the two 2026 resolutions on Iran's
+      safeguards non-compliance. The September resolution sent the matter to the UN Security Council and
+      General Assembly.
+    rowLabel: Resolution
+    showCounts: true
+    categories:
+    - {key: in-favour, label: In favour}
+    - {key: against, label: Against}
+    - {key: abstained, label: Abstained}
+    rows:
+    - label: GOV/2026/40, 10 June 2026
+      values: {in-favour: 21, against: 3, abstained: 10}
+      total: 34
+      source: 13
+    - label: GOV/2026/61, 9 September 2026 (referral to the UN)
+      values: {in-favour: 23, against: 3, abstained: 8}
+      total: 34
+      source: 14
+    note: 'Each total is the sum of the vote counts the resolution itself records (21 + 3 + 10 and 23 +
+      3 + 8). The June 2025 non-compliance resolution (GOV/2025/38) and the November 2025 resolution (GOV/2025/71)
+      are not charted: neither text could be fetched (both URLs returned errors), so their votes are not
+      confirmed at source.'
   - kind: "timeline"
     id: "inspections"
     title: What IAEA inspectors could see in Iran, 2016–2026
@@ -896,7 +908,7 @@ figures:
     events:
       - { date: "2016-01-16", title: "Implementation Day: the 2015 deal's limits take effect", category: "access", source: 10 }
       - { date: "2018-08", title: "Complementary access to every site it \"needed to visit\"", category: "access", source: 23 }
-      - { date: "2021-02-23", title: "No access to its monitoring data", category: "lost", source: 34 }
+      - { date: "2021-02-23", title: "No access to its monitoring data", category: "lost", sources: [34, 1] }
       - { date: "2021-02", title: "Iran stops applying the Additional Protocol, ending complementary access", category: "lost", source: 1 }
       - { date: "2021-05", title: "Can no longer verify the total stock; figures become estimates", category: "lost", source: 34 }
       - { date: "2025-06-13", endDate: "2025-06-30", title: "Strikes on Iran's nuclear sites; verification stops and inspectors leave", category: "strikes", significance: "major", source: 1 }
@@ -904,7 +916,7 @@ figures:
       - { date: "2025-09-09", endDate: "2025-11-20", title: "Cairo agreement on inspection procedures, then ended by Iran", category: "access", source: 1 }
       - { date: "2026-02", title: "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck", category: "access", source: 2 }
       - { date: "2026-02-28", title: "US and Israeli strikes; verification stops again", category: "strikes", significance: "major", source: 1 }
-      - { date: "2026-06-01", endDate: "2026-06-03", title: "One inspection, at the Bushehr power plant", category: "access", source: 1 }
+      - { date: "2026-06-01", endDate: "2026-06-03", title: "One inspection, at the Bushehr power plant", category: "access", sources: [1, 2] }
       - { date: "2026-09-01", title: "No information on the size, composition or location of the enriched stock", category: "lost", source: 1 }
   - kind: "timeline"
     id: "statements"
@@ -922,7 +934,7 @@ figures:
       - { date: "2025-03", title: "\"Iran is not building a nuclear weapon\"", description: "Khamenei \"has not reauthorized\" the programme, \"though pressure has probably built on him\".", category: "us-intelligence", source: 4 }
       - { date: "2025-05", title: "\"no credible indications of an ongoing, undeclared structured nuclear programme\"", description: "Three sites were \"part of an undeclared structured nuclear programme … until the early 2000s\"; Iran \"sanitised locations\".", category: "iaea", source: 6 }
       - { date: "2026-03", title: "No information in June 2025 on \"a structured systematic … program to build or to construct a nuclear weapon\"", description: "IAEA chief Grossi, as quoted by CRS.", category: "iaea", source: 3 }
-      - { date: "2026-03", title: "Iran was \"intending to try to recover\" its nuclear infrastructure", description: "No judgment on a weapons decision.", category: "us-intelligence", source: 5 }
+      - { date: "2026-03", title: "Iran was \"intending to try to recover\" its nuclear infrastructure", description: "No judgment on a weapons decision.", category: "us-intelligence", sources: [5, 3] }
       - { date: "2026-06", title: "\"Iran reaffirms that it shall not procure or develop nuclear weapons\"", description: "US–Iran memorandum, as quoted by CRS.", category: "agreement", source: 3 }
   - kind: "dataTable"
     id: "breakout"
@@ -945,16 +957,25 @@ figures:
       - { when: "May 2026", estimate: "At least two and a half years", measures: "A weapon, without foreign help", who: { value: "FDD's own judgment", sources: [12] } }
       - { when: "Jun 2026", estimate: "\"More than a year\"; \"no identifiable route\" to weapons-grade uranium", measures: "A first weapon not carried by a missile", who: { value: "ISIS's own judgment", sources: [2] } }
       - { when: "Oct 2026", estimate: "\"Unclear\"", who: { value: "CRS", sources: [3] } }
-  - kind: "quoteComparison"
-    id: "damage-claims"
-    question: "What did the strikes do to Iran's enriched uranium?"
-    description: "Answers from Iran, the US government, an independent institute and the IAEA, none of them independently checked."
-    note: "On 8 April 2026 Gen. Dan Caine, Chairman of the Joint Chiefs, said \"nearly 80% of Iran's nuclear industrial base was hit\". In 2026 US and Iranian officials also said Iran \"has not resumed enriching uranium\" (CRS)."
+  - kind: quotes
+    id: damage-claims
+    question: What did the strikes do to Iran's enriched uranium and nuclear industry?
+    description: Iran's foreign minister, the US Defense Secretary and the Chairman of the Joint Chiefs,
+      an independent institute, US and Iranian officials, and the IAEA, in 2026, none of them independently
+      checked.
     quotes:
-      - { text: "under the rubble", speaker: "Abbas Araghchi", role: "Iran's foreign minister", context: "He added that Iran has \"no plan\" to recover it (CRS).", date: "2026-03-15", source: 3 }
-      - { text: "it's buried and we're watching it. We know exactly what they have", speaker: "Pete Hegseth", role: "US Defense Secretary", date: "2026-04-08", source: 11 }
-      - { text: "no identifiable route to produce weapon-grade uranium", speaker: "Institute for Science and International Security (ISIS)", date: "2026-06-09", source: 2 }
-      - { text: "cannot provide any information on the current size, composition or whereabouts", speaker: "IAEA", context: "Of the stock of enriched uranium.", date: "2026-09-01", source: 1 }
+    - {text: under the rubble, speaker: Abbas Araghchi, role: Iran's foreign minister, context: 'Iran has
+        "no plan" to recover it, he added; as quoted by CRS', date: '2026-03-15', source: 3}
+    - {text: it's buried and we're watching it. We know exactly what they have, speaker: Pete Hegseth, role: US
+        Secretary of Defense, date: '2026-04-08', source: 11}
+    - {text: nearly 80% of Iran's nuclear industrial base was hit, speaker: Gen. Dan Caine, role: Chairman
+        of the Joint Chiefs of Staff, date: '2026-04-08', source: 11}
+    - {text: Iran has no identifiable route to produce weapon-grade uranium, speaker: Institute for Science
+        and International Security, date: '2026-06-09', source: 2}
+    - {text: Iran has not resumed enriching uranium, speaker: US and Iranian officials, context: As reported
+        by CRS, date: '2026', source: 3}
+    - {text: 'cannot provide any information on the current size, composition or whereabouts of the stockpile
+        of enriched uranium in Iran', speaker: IAEA, context: Report GOV/2026/50, date: '2026-09-01', source: 1}
 ---
 ## Observations {#iran-nuclear-programme--observations-total-stock}
 
@@ -1072,7 +1093,9 @@ Time to weapons-grade uranium, time to a working weapon and the size of the stoc
 
 The Pentagon said "nearly 80%" of Iran's nuclear industrial base was "hit", not destroyed. [11](#source-iran-nuclear-programme-11) US and Iranian officials say enrichment has not resumed, but the IAEA cannot verify whether it has. [3](#source-iran-nuclear-programme-3) [1](#source-iran-nuclear-programme-1) No source read here publishes evidence that settles which claim is right; CRS notes that neither the US government nor the IAEA has described evidence of covert production. [3](#source-iran-nuclear-programme-3)
 
-## About this data {#iran-nuclear-programme--about}
+## More {#iran-nuclear-programme--more-total-stock}
+
+### About this report's data {#iran-nuclear-programme--about}
 
 **What is measured.** The two charts are the IAEA's own quarterly figures for Iran's enriched uranium, in kilograms of uranium. Each point names its report in the Sources. The timelines, table and quotes collect dated statements; they are records of what was said, not measurements.
 

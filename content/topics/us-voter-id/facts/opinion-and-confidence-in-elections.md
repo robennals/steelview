@@ -966,17 +966,23 @@ comparisons:
     sources: [14]
     note: 'Values are the NET (very plus somewhat confident) column of the data table for Pew''s chart "Democratic supporters are more confident than GOP backers that noncitizens are not able to vote". Groups are supporters of each party''s House candidates. "All voters" (Pew''s "All RVs") includes those backing neither.'
     items:
-      - label: 'Noncitizens who try to vote will be stopped — all voters'
+      - label: "Noncitizens stopped — all voters"
+        detail: "Noncitizens who try to vote will be stopped"
         value: 68
-      - label: 'Noncitizens who try to vote will be stopped — Republican supporters'
+      - label: "Noncitizens stopped — Republican supporters"
+        detail: "Noncitizens who try to vote will be stopped"
         value: 45
-      - label: 'Noncitizens who try to vote will be stopped — Democratic supporters'
+      - label: "Noncitizens stopped — Democratic supporters"
+        detail: "Noncitizens who try to vote will be stopped"
         value: 90
-      - label: 'All legally qualified voters can vote — all voters'
+      - label: "Qualified voters can vote — all voters"
+        detail: "All legally qualified voters can vote"
         value: 80
-      - label: 'All legally qualified voters can vote — Republican supporters'
+      - label: "Qualified voters can vote — Republican supporters"
+        detail: "All legally qualified voters can vote"
         value: 90
-      - label: 'All legally qualified voters can vote — Democratic supporters'
+      - label: "Qualified voters can vote — Democratic supporters"
+        detail: "All legally qualified voters can vote"
         value: 72
   - id: leadership-gap-by-administration
     title: 'US confidence in the honesty of elections, by approval of national leadership, 2006–2026'
@@ -1193,7 +1199,7 @@ Gallup's differently worded item runs the other way over a longer period: Republ
 
 ### Both majorities exist, but how many back both is not published {#opinion-and-confidence-in-elections--overlap-not-published}
 
-Photo ID (83%) and two weeks of early voting (80%) were asked of the same half-sample in August 2025. [1](#source-opinion-and-confidence-in-elections-1) [2](#source-opinion-and-confidence-in-elections-2) Pew does not publish how many respondents favoured both. The two shares alone guarantee that a large majority backed both, but not the exact size of that group; see Data still needed.
+Photo ID (83%) and two weeks of early voting (80%) were asked of the same half-sample in August 2025. [1](#source-opinion-and-confidence-in-elections-1) [2](#source-opinion-and-confidence-in-elections-2) Pew does not publish how many respondents favoured both. The two shares alone guarantee that a large majority backed both, but not the exact size of that group; see What we don't know yet.
 
 ## Observations {#opinion-and-confidence-in-elections--observations-gallup-photo-id}
 
@@ -1337,13 +1343,15 @@ Clinton finds voters "less likely to express confidence in election results cond
 
 This fits the Georgia pattern. It suggests a rule raises confidence among its supporters and lowers it among its opponents, so its net effect on confidence depends on how widely it is supported.
 
-## About this data {#opinion-and-confidence-in-elections--about}
+## More {#opinion-and-confidence-in-elections--more-pew-photo-id}
+
+### About this report's data {#opinion-and-confidence-in-elections--about}
 
 **What this measures.** These are opinion surveys of adults or registered voters. Each pollster's figures are shown in its own series, because Pew counts independents who lean to a party as partisans and Gallup does not.
 
 **Wording differs.** Gallup asks about "photo identification at their voting place", Pew about "government-issued photo identification".
 
-**What it does not measure.** No series measures whether a given rule changed anyone's confidence; the four studies above take that up. Opinion polls are commonly read as evidence about fraud or access themselves; they measure belief, not the rate of either. For what is actually found, see [the burdens of ID and citizenship rules](#fact-burdens-of-id-and-citizenship-rules) and [non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls).
+**What it does not measure.** No series measures whether a given rule changed anyone's confidence; the four studies in this report take that up. Opinion polls are commonly read as evidence about fraud or access themselves; they measure belief, not the rate of either. For what is actually found, see [the burdens of ID and citizenship rules](#fact-burdens-of-id-and-citizenship-rules) and [non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls).
 
 **How it compares.** The only consistent cross-country measure here is Gallup's World Poll, which asks the same honesty question in more than 100 countries and publishes the global median. No source found gives per-country support for photo ID in the same wording, so support for ID rules has no international comparison.
 

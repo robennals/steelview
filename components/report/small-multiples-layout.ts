@@ -1,9 +1,16 @@
 import { compareDates, dateToYear } from './format';
 import { linearScale, niceTicks } from './scale';
-import type { PartialDate } from './types';
+import type { PartialDate, SourceCredit } from './types';
 
 export type PanelPoint = { period: PartialDate; value: number };
-export type PanelInput = { name: string; points: PanelPoint[] };
+export type PanelInput = {
+  name: string;
+  points: PanelPoint[];
+  /** Set in bold with its line in the accent: the one panel the text is about. */
+  highlight?: boolean;
+  /** The panel's own sources, when it rests on a different one from the rest, credited under its name. */
+  sources?: SourceCredit[];
+};
 
 export type PanelLayout = {
   name: string;

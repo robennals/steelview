@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { comparePeriods, normalizePeriod, periodToYear, periodYear } from './period';
+import { compareCoarseFirst, comparePeriods, datePlacement, isApproximateDate, normalizePeriod, periodToYear, periodYear } from './period';
 
 test('a partial date normalizes to the first instant it can mean', () => {
   assert.equal(normalizePeriod('1964'), '1964-01-01');
@@ -23,4 +23,20 @@ test('placement puts a mid-year break in the middle of its year', () => {
 
 test('periodYear is the year a period falls in', () => {
   assert.equal(periodYear('2021-06-30'), 2021);
+});
+
+test('a table date sorts chronologically, a coarser date before the finer dates inside it', () => {
+  const dates = ['2026-06-12', '2025', '2026-06', '2026', '2026-01-31', '2026-03'];
+  assert.deepEqual([...dates].sort(compareCoarseFirst), ['2025', '2026', '2026-01-31', '2026-03', '2026-06', '2026-06-12']);
+});
+
+test('an approximate date is a decade or a circa year, placed at its decade\'s start or its year', () => {
+  assert.ok(isApproximateDate('1850s'));
+  assert.ok(isApproximateDate('c. 1888'));
+  assert.ok(!isApproximateDate('1855s'));
+  assert.ok(!isApproximateDate('1880s–1890s'));
+  assert.ok(!isApproximateDate('1888'));
+  assert.equal(datePlacement('1850s'), '1850');
+  assert.equal(datePlacement('c. 1888'), '1888');
+  assert.equal(datePlacement('2024-11'), '2024-11');
 });

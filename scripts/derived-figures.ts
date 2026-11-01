@@ -7,17 +7,36 @@ export const derivedFigureSchema = z.discriminatedUnion('method', [
   z.object({ method: z.literal('series-mean'), figure: z.string(), reading: z.string(), line: z.string(), from: z.number().int(), to: z.number().int(), roundTo: z.number().positive() }),
 ]);
 
-/** Accept a derived figure only after checking its arithmetic and its source inputs. */
-export function verifiedDerivedFigures(data: Record<string, unknown>): string[] {
+/** A derived figure whose inputs are not all in the item's quotes, and the inputs that are missing. */
+export type UnquotedDerivation = { figure: string; inputs: string[] };
+
+/**
+ * Check every derived figure's arithmetic and source inputs. A figure whose
+ * input is not quoted is returned in `unquoted` for check:figures to report
+ * — one unsourced input must not stop the whole audit — and is left out of
+ * `verified`, so prose leaning on it is unmatched too. A wrong calculation or
+ * an incomplete series is an authoring error in the derivation itself and
+ * still throws.
+ */
+export function checkDerivedFigures(data: Record<string, unknown>): { verified: string[]; unquoted: UnquotedDerivation[] } {
   const calculations = z.array(derivedFigureSchema).parse(data.derivedFigures ?? []);
   const corpus = quoteCorpus(collectQuotes(data));
-  return calculations.map(c => {
+  const verified: string[] = [];
+  const unquoted: UnquotedDerivation[] = [];
+  for (const c of calculations) {
     let result: number;
     if (c.method === 'ratio-percent') {
-      if (![c.numerator, c.denominator].every(n => quotedSomewhere(String(n), corpus))) throw new Error(`Unquoted input for ${c.figure}`);
+      const missing = [c.numerator, c.denominator].map(String).filter(n => !quotedSomewhere(n, corpus));
+      if (missing.length) {
+        unquoted.push({ figure: c.figure, inputs: missing });
+        continue;
+      }
       result = Number((100 * c.numerator / c.denominator).toFixed(c.decimals));
     } else if (c.method === 'complement-percent') {
-      if (!quotedSomewhere(`${c.percent}%`, corpus)) throw new Error(`Unquoted input for ${c.figure}`);
+      if (!quotedSomewhere(`${c.percent}%`, corpus)) {
+        unquoted.push({ figure: c.figure, inputs: [`${c.percent}%`] });
+        continue;
+      }
       result = Number((100 - c.percent).toFixed(c.decimals));
     } else {
       const series = data.series as { readings?: Array<{ id: string; lines: Array<{ name: string; points: Array<{ period: string; value: number }> }> }> } | undefined;
@@ -27,6 +46,12 @@ export function verifiedDerivedFigures(data: Record<string, unknown>): string[] 
     }
     const expected = Number(c.figure.replace(/[,%]/g, ''));
     if (result !== expected || (c.method !== 'series-mean' && !c.figure.endsWith('%'))) throw new Error(`Incorrect calculation for ${c.figure}: got ${result}`);
-    return c.figure;
-  });
+    verified.push(c.figure);
+  }
+  return { verified, unquoted };
+}
+
+/** The derived figures that pass: arithmetic checked, every input quoted. */
+export function verifiedDerivedFigures(data: Record<string, unknown>): string[] {
+  return checkDerivedFigures(data).verified;
 }

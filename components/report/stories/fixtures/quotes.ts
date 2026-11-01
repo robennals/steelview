@@ -17,10 +17,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2026-05-27",
     "context": "Net migration to the UK",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/long-term-international-migration-flows-to-and-from-the-uk/"
-    }
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/long-term-international-migration-flows-to-and-from-the-uk/"
+      }
+    ]
   },
   {
     "id": "illegal-arrivals-drove-the-net-migration-rise-3",
@@ -32,10 +34,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2026-05-21",
     "context": "Long-term international migration, provisional: year ending December 2025",
-    "source": {
-      "label": "Office for National Statistics",
-      "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025"
-    }
+    "sources": [
+      {
+        "label": "Office for National Statistics",
+        "href": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025"
+      }
+    ]
   },
   {
     "id": "illegal-arrivals-drove-the-net-migration-rise-4",
@@ -47,10 +51,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2026-05-21",
     "context": "How many people come to the UK via illegal entry routes?",
-    "source": {
-      "label": "Home Office",
-      "href": "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-come-to-the-uk-via-illegal-entry-routes"
-    }
+    "sources": [
+      {
+        "label": "Home Office",
+        "href": "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-come-to-the-uk-via-illegal-entry-routes"
+      }
+    ]
   },
   {
     "id": "how-people-actually-arrive-9",
@@ -62,10 +68,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2024-05-22",
     "context": "UK and Albania working innovatively to build on migration partnership success",
-    "source": {
-      "label": "Foreign, Commonwealth & Development Office",
-      "href": "https://www.gov.uk/government/news/uk-and-albania-working-innovatively-to-build-on-migration-partnership-success"
-    }
+    "sources": [
+      {
+        "label": "Foreign, Commonwealth & Development Office",
+        "href": "https://www.gov.uk/government/news/uk-and-albania-working-innovatively-to-build-on-migration-partnership-success"
+      }
+    ]
   },
   {
     "id": "asylum-claims-in-historical-and-european-context-1",
@@ -77,10 +85,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-08-01",
     "context": "Asylum and refugee resettlement in the UK",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/migration-to-the-uk-asylum/"
-    }
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/migration-to-the-uk-asylum/"
+      }
+    ]
   },
   {
     "id": "asylum-claims-in-historical-and-european-context-5",
@@ -92,10 +102,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-08-01",
     "context": "Asylum and refugee resettlement in the UK",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/migration-to-the-uk-asylum/"
-    }
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/migration-to-the-uk-asylum/"
+      }
+    ]
   },
   {
     "id": "asylum-accommodation-cost-overrun-1",
@@ -108,10 +120,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-05",
     "context": "The Home Office's asylum accommodation contracts",
-    "source": {
-      "label": "National Audit Office",
-      "href": "https://www.nao.org.uk/wp-content/uploads/2025/05/home-offices-asylum-accommodation-contracts.pdf"
-    }
+    "sources": [
+      {
+        "label": "National Audit Office",
+        "href": "https://www.nao.org.uk/wp-content/uploads/2025/05/home-offices-asylum-accommodation-contracts.pdf"
+      }
+    ]
   },
   {
     "id": "skilled-worker-fiscal-gain-concentrated-1",
@@ -123,10 +137,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-12",
     "context": "The Fiscal Impact of Immigration",
-    "source": {
-      "label": "Migration Advisory Committee",
-      "href": "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
-    }
+    "sources": [
+      {
+        "label": "Migration Advisory Committee",
+        "href": "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
+      }
+    ]
   },
   {
     "id": "care-worker-route-fiscally-negative-1",
@@ -139,10 +155,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-12",
     "context": "The Fiscal Impact of Immigration",
-    "source": {
-      "label": "Migration Advisory Committee",
-      "href": "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
-    }
+    "sources": [
+      {
+        "label": "Migration Advisory Committee",
+        "href": "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
+      }
+    ]
   },
   {
     "id": "migrants-access-to-benefits-1",
@@ -154,10 +172,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2026-06-23",
     "context": "The fiscal impact of immigration in the UK",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
-    }
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
+      }
+    ]
   },
   {
     "id": "wage-effects-small-and-uneven-1",
@@ -169,10 +189,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2018-09",
     "context": "EEA migration in the UK: final report",
-    "source": {
-      "label": "Migration Advisory Committee",
-      "href": "https://assets.publishing.service.gov.uk/media/5ba26c1de5274a54d5c39be2/Final_EEA_report.PDF"
-    }
+    "sources": [
+      {
+        "label": "Migration Advisory Committee",
+        "href": "https://assets.publishing.service.gov.uk/media/5ba26c1de5274a54d5c39be2/Final_EEA_report.PDF"
+      }
+    ]
   },
   {
     "id": "overseas-recruitment-and-domestic-training-3",
@@ -184,10 +206,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-05-12",
     "context": "Restoring control over the immigration system",
-    "source": {
-      "label": "HM Government",
-      "href": "https://assets.publishing.service.gov.uk/media/6821aec3f16c0654b19060ac/restoring-control-over-the-immigration-system-white-paper.pdf"
-    }
+    "sources": [
+      {
+        "label": "HM Government",
+        "href": "https://assets.publishing.service.gov.uk/media/6821aec3f16c0654b19060ac/restoring-control-over-the-immigration-system-white-paper.pdf"
+      }
+    ]
   },
   {
     "id": "housing-cost-effect-positive-but-small-2",
@@ -199,10 +223,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2026-06-19",
     "context": "Migration and housing costs: what does international evidence imply for the UK?",
-    "source": {
-      "label": "Migration Advisory Committee",
-      "href": "https://www.gov.uk/government/publications/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk-accessible"
-    }
+    "sources": [
+      {
+        "label": "Migration Advisory Committee",
+        "href": "https://www.gov.uk/government/publications/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk-accessible"
+      }
+    ]
   },
   {
     "id": "public-opinion-on-immigration-3",
@@ -214,10 +240,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2026-02-17",
     "context": "Two thirds of Britons believe the total number of people coming into the UK is too high",
-    "source": {
-      "label": "Ipsos",
-      "href": "https://www.ipsos.com/en-uk/two-thirds-britons-believe-total-number-people-coming-uk-too-high"
-    }
+    "sources": [
+      {
+        "label": "Ipsos",
+        "href": "https://www.ipsos.com/en-uk/two-thirds-britons-believe-total-number-people-coming-uk-too-high"
+      }
+    ]
   },
   {
     "id": "immigration-is-salient-and-objection-varies-by-route-6",
@@ -229,10 +257,12 @@ export const institutionQuotes: Quote[] = [
     ],
     "date": "2025-01-24",
     "context": "UK Public Opinion toward Immigration: Overall Attitudes and Level of Concern",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/"
-    }
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/"
+      }
+    ]
   }
 ];
 
@@ -245,10 +275,12 @@ export const trustQuotes: Quote[] = [
     "role": "Independent research centre",
     "date": "2019-12-13",
     "context": "Immigration, diversity and social cohesion",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/immigration-diversity-and-social-cohesion/"
-    },
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/immigration-diversity-and-social-cohesion/"
+      }
+    ],
     "position": "Finds lower trust"
   },
   {
@@ -258,10 +290,12 @@ export const trustQuotes: Quote[] = [
     "role": "Independent research centre",
     "date": "2019-12-13",
     "context": "Immigration, diversity and social cohesion",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/immigration-diversity-and-social-cohesion/"
-    },
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/immigration-diversity-and-social-cohesion/"
+      }
+    ],
     "position": "Finds no strong effect"
   },
   {
@@ -271,10 +305,12 @@ export const trustQuotes: Quote[] = [
     "role": "Independent research centre",
     "date": "2019-12-13",
     "context": "Immigration, diversity and social cohesion",
-    "source": {
-      "label": "The Migration Observatory, University of Oxford",
-      "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/immigration-diversity-and-social-cohesion/"
-    },
+    "sources": [
+      {
+        "label": "The Migration Observatory, University of Oxford",
+        "href": "https://migrationobservatory.ox.ac.uk/resources/briefings/immigration-diversity-and-social-cohesion/"
+      }
+    ],
     "position": "Measures diversity, not immigration"
   }
 ];
@@ -286,10 +322,12 @@ export const housingEstimateQuote: Quote = {
   "role": "Independent advisory body",
   "date": "2026-06-19",
   "context": "Migration and housing costs: what does international evidence imply for the UK?",
-  "source": {
-    "label": "Migration Advisory Committee",
-    "href": "https://www.gov.uk/government/publications/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk-accessible"
-  }
+  "sources": [
+    {
+      "label": "Migration Advisory Committee",
+      "href": "https://www.gov.uk/government/publications/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk-accessible"
+    }
+  ]
 };
 
 export const housingSummaryQuote: Quote = {
@@ -299,10 +337,12 @@ export const housingSummaryQuote: Quote = {
   "role": "Independent advisory body",
   "date": "2026-06-19",
   "context": "Migration and housing costs: what does international evidence imply for the UK?",
-  "source": {
-    "label": "Migration Advisory Committee",
-    "href": "https://www.gov.uk/government/publications/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk-accessible"
-  }
+  "sources": [
+    {
+      "label": "Migration Advisory Committee",
+      "href": "https://www.gov.uk/government/publications/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk/migration-and-housing-costs-what-does-international-evidence-imply-for-the-uk-accessible"
+    }
+  ]
 };
 
 /** A long quote, for showing clamping and how a big quote wraps. */
@@ -313,8 +353,10 @@ export const detectionLimitsQuote: Quote = {
   "role": "Government department",
   "date": "2026-05-21",
   "context": "How many people come to the UK via illegal entry routes?",
-  "source": {
-    "label": "Home Office",
-    "href": "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-come-to-the-uk-via-illegal-entry-routes"
-  }
+  "sources": [
+    {
+      "label": "Home Office",
+      "href": "https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-come-to-the-uk-via-illegal-entry-routes"
+    }
+  ]
 };

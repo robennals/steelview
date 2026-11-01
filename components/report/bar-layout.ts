@@ -1,5 +1,6 @@
 import { linearScale, zeroBasedDomain } from './scale';
 import { formatValue } from './format';
+import { isRange, pointValue, qualificationOf, type FigureNumber, type Qualification } from './qualified';
 import type { ValueFormat } from './types';
 
 /**
@@ -24,12 +25,36 @@ export function barScale(values: number[], domainMax?: number): BarScale {
   return { domain, ticks, x, zero: x(0) };
 }
 
+/** The order bars are drawn in: largest first for `value` (the default; a range by its midpoint), as given for `none`. */
+export function orderBars<T extends { value: FigureNumber }>(items: T[], sort: 'value' | 'none' = 'value'): T[] {
+  return sort === 'value' ? [...items].sort((a, b) => pointValue(b.value) - pointValue(a.value)) : items;
+}
+
 export type Span = { left: number; width: number };
 
 /** One bar from zero to `value`; negative values extend left of zero. */
 export function barSpan(value: number, scale: BarScale): Span {
   const end = scale.x(value);
   return { left: Math.min(end, scale.zero), width: Math.abs(end - scale.zero) };
+}
+
+/** A bar for a qualified value: its span, how it is qualified, and for a range the whisker beyond it. */
+export type QualifiedSpan = Span & { qualification: Qualification; whisker?: Span; negative?: boolean };
+
+/**
+ * One bar for a value as the source gives it: to the value — a bound or an
+ * approximation is marked at the end, not moved — or, for a range, to
+ * `low` with a whisker on to `high`, so the drawn bar never claims more than
+ * the source's smallest figure.
+ */
+export function qualifiedSpan(value: FigureNumber, scale: BarScale): QualifiedSpan {
+  const qualification = qualificationOf(value);
+  if (isRange(value)) {
+    const whisker = { left: scale.x(value.low), width: Math.max(0, scale.x(value.high) - scale.x(value.low)) };
+    return { ...barSpan(value.low, scale), qualification, whisker, ...(value.low < 0 ? { negative: true } : null) };
+  }
+  const point = pointValue(value);
+  return { ...barSpan(point, scale), qualification, ...(point < 0 ? { negative: true } : null) };
 }
 
 /**
@@ -78,6 +103,23 @@ export function tickLabels(ticks: number[], format: ValueFormat = {}): Array<{ v
     value,
     label: format.compact === undefined && compact && !compactsExactly(value) ? null : formatValue(value, ticksAs),
   }));
+}
+
+/** The narrowest a bar track gets, in tick-label characters: beside its label and value in a dense chart on a phone, or in a chart of a few rows. */
+const NARROWEST_TRACK_CH = { dense: 24, roomy: 46 };
+
+/**
+ * `tickLabels` thinned to what the track can hold: a label every second or
+ * third tick when all of them, each with a gap, would be wider than the track.
+ * Positions are percentages and the track's width is only known in the browser,
+ * so this allows for the narrowest the track gets. Zero stays labelled.
+ */
+export function axisTickLabels(ticks: number[], format: ValueFormat = {}, { dense = false } = {}): Array<{ value: number; label: string | null }> {
+  const labels = tickLabels(ticks, format);
+  const longest = Math.max(...labels.map(tick => tick.label?.length ?? 0));
+  const every = Math.ceil((labels.length * (longest + 2)) / NARROWEST_TRACK_CH[dense ? 'dense' : 'roomy']);
+  const zero = Math.max(0, ticks.indexOf(0));
+  return labels.map((tick, i) => (Math.abs(i - zero) % every === 0 ? tick : { ...tick, label: null }));
 }
 
 function compactsExactly(value: number): boolean {

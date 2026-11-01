@@ -14,6 +14,12 @@ export type MapCategory = {
   label: string;
   /** One to three characters printed on every tile in this category: "SP". The non-colour cue on a tile map. */
   mark: string;
+  /**
+   * Draw this category as background: a plain neutral fill, so a large
+   * remainder ("Not on the list", 38 states) recedes behind the areas the
+   * figure is about. It takes no fill or pattern from the others.
+   */
+  quiet?: boolean;
 };
 
 export type CategoryAssignment = { category: string; note?: string };
@@ -51,12 +57,18 @@ export function isCategorical<T extends MapEncoding>(encoding: T): encoding is E
   return encoding.categories !== undefined;
 }
 
-/** Slot 1 to 6 for each category, in list order. */
+/** The one neutral, unpatterned look in maps.css, for a `quiet` category. It is not one of the six. */
+export const QUIET_SLOT = 7;
+
+/** Slot 1 upward for each category, in list order, skipping a `quiet` one, which takes `QUIET_SLOT`. */
 export function categorySlots(categories: MapCategory[]): Map<string, number> {
   if (categories.length > MAX_CATEGORIES) {
     throw new Error(`A categorical map has at most ${MAX_CATEGORIES} categories; got ${categories.length}.`);
   }
-  return new Map(categories.map((category, i) => [category.id, i + 1]));
+  const quiet = categories.filter(category => category.quiet);
+  if (quiet.length > 1) throw new Error('A categorical map has at most one quiet category: two would look the same.');
+  const distinct = categories.filter(category => !category.quiet);
+  return new Map([...distinct.map((category, i): [string, number] => [category.id, i + 1]), ...quiet.map((category): [string, number] => [category.id, QUIET_SLOT])]);
 }
 
 /** The category an area is in, or undefined for "No data" (no assignment, or one naming an unknown category). */

@@ -872,12 +872,14 @@ comparisons:
         highlight: true
       - label: No non-expired driver's licence
         value: 20760000
-      - label: Unexpired licence lacking current name or address
+      - label: "Licence lacks current name or address"
+        detail: "Unexpired licence lacking current name or address"
         value: 28600000
       - label: No proof-of-citizenship document at all
         value: 3800000
         highlight: true
-      - label: Cannot readily reach proof of citizenship (includes none)
+      - label: "Cannot readily reach proof of citizenship"
+        detail: "Includes none"
         value: 21300000
   - id: why-no-licence
     title: Reasons US adult citizens give for having no driver's licence, 2023
@@ -903,7 +905,8 @@ comparisons:
       - label: Cost of a licence
         value: 8
         highlight: true
-      - label: Unpaid fines or other financial or legal difficulties
+      - label: "Financial or legal difficulties"
+        detail: "Unpaid fines or other financial or legal difficulties"
         value: 4
         highlight: true
       - label: Lack of time
@@ -1014,32 +1017,6 @@ comparisons:
       - label: Independents
         value: 13
         values: [4, 9]
-  - id: kansas-dpoc
-    title: 'Kansas: applicants blocked by proof of citizenship against non-citizens found'
-    description: >-
-      Registration applications suspended or cancelled for lack of proof of
-      citizenship from 1 January 2013 until the 2016 preliminary injunction,
-      beside the trial court's counts of non-citizen registrations over about
-      19 years.
-    unit: count
-    valueLabel: People
-    sources: [14, 15]
-    note: >-
-      Figures are the federal district court's findings after a 2018 trial.
-      "Blocked" is applicants suspended or cancelled, not citizens shown to be
-      unable to obtain documents; the court found no evidence on how many
-      lacked them. The 67 are the 39 who registered before the law and 28
-      stopped by it. The non-citizen counts
-      cover registrations from 1999; the blocked count covers about three
-      years.
-    items:
-      - label: Applications suspended or cancelled (2013–2016)
-        value: 31089
-        highlight: true
-      - label: Non-citizens who registered or tried to (about 19 years)
-        value: 67
-      - label: Non-citizens confirmed on the rolls (1999–2013)
-        value: 39
   - id: arizona-maricopa
     title: 'Maricopa County, Arizona: suspected non-citizen registrants referred for investigation, 2026'
     description: >-
@@ -1060,145 +1037,6 @@ comparisons:
         value: 60
       - label: Found to be non-citizens who voted
         value: 8
-        highlight: true
-  - id: texas-march-2022
-    title: Mail ballots rejected in Texas's March 2022 primary, the first under SB 1
-    description: >-
-      Share of returned mail ballots rejected, statewide and in two large
-      counties, with Harris County's 2018 primary as the before point.
-    unit: percent
-    valueLabel: Rejected, % of mail ballots returned
-    domainMax: 25
-    sources: [16, 17]
-    note: >-
-      Statewide and Williamson County figures are officials' final counts as
-      reported by NPR; Harris County's are the county's. Texas permits mail
-      voting only for voters aged 65 and over, voters with disabilities and a
-      few other groups, so this is a burden on those voters in particular. The
-      2018 Harris figure is "less than 0.3%" in the source.
-    items:
-      - label: Texas statewide, March 2022
-        value: 12.38
-        highlight: true
-      - label: Harris County, March 2022
-        value: 19
-      - label: Williamson County, March 2022
-        value: 11.5
-      - label: Harris County, March 2018
-        value: 0.3
-  - id: texas-what-next
-    title: What Texans with rejected mail voting did next, March 2022 primary
-    description: >-
-      Brennan Center analysis (Journal of Politics, 2025) of every Texan who
-      requested a mail ballot for the March 2022 primary.
-    unit: count
-    valueLabel: Voters
-    sources: [18]
-    note: >-
-      Counts are as reported by Votebeat from the study ("roughly", "more
-      than"). About 85% of those rejected had voted in the 2016, 2018 and 2020
-      general elections.
-    items:
-      - label: Requested a mail ballot
-        value: 215000
-      - label: Application or ballot rejected
-        value: 30000
-      - label: Mail ballot rejected
-        value: 18000
-      - label: Ballot rejected, then voted in person
-        value: 344
-        highlight: true
-  - id: turnout-overall
-    title: Estimated effect of strict US voter ID laws on turnout
-    description: >-
-      Point estimates in percentage points: the national voter-file panel
-      (all states with strict ID laws, 2008–2018) and GAO's two-state study
-      (2012 general election against 2008). Negative means lower turnout.
-    unit: percent
-    valueLabel: Effect on turnout (percentage points)
-    domainMax: 4
-    sources: [27, 28]
-    note: >-
-      The national estimates carry 95% confidence intervals of −3.0 to +2.8
-      points (turnout) and −2.3 to +2.1 (registration). GAO reports ranges
-      across its three data sources rather than confidence intervals; the bar
-      shows the end of each range nearer zero, and the larger ends are 2.2
-      (Kansas) and 3.2 (Tennessee).
-    items:
-      - label: 'National panel: registration'
-        value: -0.1
-      - label: 'National panel: turnout'
-        value: -0.1
-        highlight: true
-      - label: 'GAO: Kansas turnout'
-        value: -1.9
-      - label: 'GAO: Tennessee turnout'
-        value: -2.2
-  - id: turnout-by-group
-    title: >-
-      Estimated extra effect of strict US voter ID laws on particular groups'
-      turnout
-    description: >-
-      How much more (negative) or less (positive) a group's turnout changed
-      than a comparison group's, in percentage points.
-    unit: percent
-    valueLabel: Difference in effect (percentage points)
-    domainMax: 8
-    sources: [27, 29]
-    note: >-
-      The national panel estimate (+1.4) has a 95% confidence interval of −0.5
-      to +3.2 and compares non-white with white voters across all strict-ID
-      states. GAO's estimates are for Kansas and Tennessee in 2012 and compare
-      Black with white registrants, 18-year-olds with 44–53-year-olds, and
-      those registered under a year with those registered 20 years or more.
-    items:
-      - label: 'National panel: non-white vs white'
-        value: 1.4
-        highlight: true
-      - label: 'GAO Kansas: Black vs white'
-        value: -3.7
-      - label: 'GAO Tennessee: Black vs white'
-        value: -1.5
-      - label: 'GAO Kansas: aged 18 vs 44–53'
-        value: -7.1
-      - label: 'GAO Tennessee: aged 18 vs 44–53'
-        value: -1.3
-      - label: 'GAO Kansas: newly registered vs 20+ years'
-        value: -5.2
-      - label: 'GAO Tennessee: newly registered vs 20+ years'
-        value: -4.6
-  - id: great-britain
-    title: 'Great Britain: people turned away at a polling station for lack of accepted ID'
-    description: >-
-      Share of people who tried to vote in person, from polling-station staff
-      records, in the first three rounds of elections with the requirement:
-      those first turned away, and those who did not come back and vote.
-    unit: percent
-    valueLabel: Share of people attempting to vote in person (%)
-    domainMax: 1
-    sources: [36]
-    note: >-
-      From the Electoral Commission's Table 1. May 2023 covers English local
-      elections, May 2024 English and Welsh local elections (data from 278
-      authorities, with no absolute numbers), and July 2024 the general
-      election across Great Britain. The Commission says the records
-      undercount. A free Voter Authority Certificate is available to people
-      without accepted ID; 58% knew of it in 2024. About 4% of non-voters in
-      July 2024 gave an unprompted reason related to ID; that is a share of
-      non-voters, a different denominator, and is not plotted.
-    items:
-      - label: May 2023 local, first turned away
-        value: 0.7
-      - label: May 2023 local, did not return and vote
-        value: 0.25
-      - label: May 2024 local, first turned away
-        value: 0.6
-      - label: May 2024 local, did not return and vote
-        value: 0.2
-      - label: July 2024 general, first turned away
-        value: 0.25
-      - label: July 2024 general, did not return and vote
-        value: 0.08
         highlight: true
 relatedFacts:
   - non-citizens-on-voter-rolls
@@ -1239,6 +1077,137 @@ dataStillNeeded:
     why: >-
       The 2006 and 2023 surveys asked different questions, so there is no
       trend in how many citizens lack ID.
+figures:
+  - kind: series
+  - kind: series
+    id: georgia-midterm-gap
+  - kind: series
+    id: georgia-presidential
+  - kind: comparison
+    id: documents-held
+  - kind: comparison
+    id: why-no-licence
+  - kind: comparison
+    id: licence-by-group
+  - kind: comparison
+    id: licence-by-age-income
+  - kind: comparison
+    id: dpoc-by-group
+  - kind: barChart
+    id: kansas-dpoc
+    title: 'Kansas: applicants blocked by proof of citizenship against non-citizens found'
+    description: >-
+      Registration applications suspended or cancelled for lack of proof of
+      citizenship from 1 January 2013 until the 2016 preliminary injunction,
+      beside the trial court's counts of non-citizen registrations over about
+      19 years.
+    valueLabel: People
+    categoryLabel: Count
+    format: { unit: count }
+    sort: none
+    sources: [14, 15]
+    note: >-
+      Figures are the federal district court's findings after a 2018 trial.
+      "Blocked" is applicants suspended or cancelled, not citizens shown to be
+      unable to obtain documents; the court found no evidence on how many
+      lacked them. The 67 are the 39 who registered before the law and 28
+      stopped by it. The non-citizen counts
+      cover registrations from 1999; the blocked count covers about three
+      years.
+    items:
+      - { label: "Suspended or cancelled (2013–2016)", detail: "Applications suspended or cancelled", value: 31089, highlight: true }
+      - { label: "Non-citizen registrants (about 19 years)", detail: "Non-citizens who registered or tried to", value: { value: 67, qualifier: at most, asPublished: 'at most, 67 noncitizens' } }
+      - { label: "Non-citizens on the rolls (1999–2013)", detail: "Non-citizens confirmed on the rolls", value: 39 }
+  - kind: comparison
+    id: arizona-maricopa
+  - kind: barChart
+    id: texas-march-2022
+    title: Mail ballots rejected in Texas's March 2022 primary, the first under SB 1
+    description: >-
+      Share of returned mail ballots rejected, statewide and in two large
+      counties, with Harris County's 2018 primary as the before point.
+    valueLabel: Rejected, % of mail ballots returned
+    categoryLabel: Place and election
+    format: { unit: percent, decimals: 2 }
+    domainMax: 25
+    sort: none
+    sources: [16, 17]
+    note: >-
+      Statewide and Williamson County figures are officials' final counts as
+      reported by NPR; Harris County's are the county's. Texas permits mail
+      voting only for voters aged 65 and over, voters with disabilities and a
+      few other groups, so this is a burden on those voters in particular.
+    items:
+      - { label: 'Texas statewide, March 2022', value: 12.38, highlight: true }
+      - { label: 'Harris County, March 2022', value: 19 }
+      - { label: 'Williamson County, March 2022', value: 11.5 }
+      - { label: 'Harris County, March 2018', value: { value: 0.3, qualifier: under, asPublished: less than 0.3% } }
+  - kind: barChart
+    id: texas-what-next
+    title: What Texans with rejected mail voting did next, March 2022 primary
+    description: >-
+      Brennan Center analysis (Journal of Politics, 2025) of every Texan who
+      requested a mail ballot for the March 2022 primary.
+    valueLabel: Voters
+    categoryLabel: Step
+    format: { unit: count }
+    sort: none
+    sources: [18]
+    note: >-
+      Counts are as reported by Votebeat from the study. About 85% of those
+      rejected had voted in the 2016, 2018 and 2020 general elections.
+    items:
+      - { label: Requested a mail ballot, value: { value: 215000, qualifier: about, asPublished: 'roughly 215,000' } }
+      - { label: Application or ballot rejected, value: 30000 }
+      - { label: Mail ballot rejected, value: { value: 18000, qualifier: more than, asPublished: 'more than 18,000' } }
+      - { label: 'Ballot rejected, then voted in person', value: 344, highlight: true }
+  - kind: estimateRange
+    id: turnout-overall
+    title: Estimated effect of strict US voter ID laws on turnout
+    description: >-
+      The national voter-file panel (all states with strict ID laws, 2008–2018)
+      and GAO's two-state study (2012 general election against 2008), in
+      percentage points. Negative means lower turnout.
+    valueLabel: Effect (percentage points)
+    itemLabel: Study and measure
+    format: { unit: number, decimals: 1, fixed: true }
+    intervalLabel: 95% confidence interval (national panel); range across data sources (GAO)
+    note: >-
+      GAO reports a range across its three data sources rather than a central
+      estimate or a confidence interval, so its rows show the range only.
+    estimates:
+      - { label: 'National panel: registration', year: 2008–2018, estimate: -0.1, low: -2.3, high: 2.1, source: 27 }
+      - { label: 'National panel: turnout', year: 2008–2018, estimate: -0.1, low: -3.0, high: 2.8, source: 27 }
+      - { label: 'GAO: Kansas turnout', year: 2012, low: -2.2, high: -1.9, source: 28 }
+      - { label: 'GAO: Tennessee turnout', year: 2012, low: -3.2, high: -2.2, source: 28 }
+  - kind: estimateRange
+    id: turnout-by-group
+    title: >-
+      Estimated extra effect of strict US voter ID laws on particular groups'
+      turnout
+    description: >-
+      How much more (negative) or less (positive) a group's turnout changed
+      than a comparison group's, in percentage points.
+    valueLabel: Difference in effect (percentage points)
+    itemLabel: Study and groups compared
+    format: { unit: number, decimals: 1, fixed: true }
+    intervalLabel: 95% confidence interval
+    note: >-
+      The national panel compares non-white with white voters across all
+      strict-ID states. GAO's estimates are for Kansas and Tennessee in 2012
+      and compare Black with white registrants, 18-year-olds with
+      44–53-year-olds, and those registered under a year with those registered
+      20 years or more; GAO gives no interval for them.
+    estimates:
+      - { label: 'National panel: non-white vs white', year: 2008–2018, estimate: 1.4, low: -0.5, high: 3.2, source: 27 }
+      - { label: 'GAO Kansas: Black vs white', year: 2012, estimate: -3.7, source: 29 }
+      - { label: 'GAO Tennessee: Black vs white', year: 2012, estimate: -1.5, source: 29 }
+      - { label: 'GAO Kansas: aged 18 vs 44–53', year: 2012, estimate: -7.1, source: 29 }
+      - { label: 'GAO Tennessee: aged 18 vs 44–53', year: 2012, estimate: -1.3, source: 29 }
+      - { label: 'GAO Kansas: newly registered vs 20+ years', year: 2012, estimate: -5.2, source: 29 }
+      - { label: 'GAO Tennessee: newly registered vs 20+ years', year: 2012, estimate: -4.6, source: 29 }
+movedAnchors:
+  observations-great-britain: turnout-overall
 ---
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-rejection-rate}
 
@@ -1423,17 +1392,19 @@ In Kansas the extra drop was largest for 18-year-olds, then for the newly regist
 
 The national study's estimate for non-white relative to white turnout is slightly positive and not significantly different from zero. Campaigns became 4.7 points more likely to contact non-white voters, which "might have offset modest effects" of the laws. [27](#source-burdens-of-id-and-citizenship-rules-27) If so, the lack of a turnout effect partly reflects effort spent overcoming the rule, not a rule with no cost.
 
-## Observations {#burdens-of-id-and-citizenship-rules--observations-great-britain}
+## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-turnout-overall}
 
 ### Great Britain's turnaways were small and fell at each election {#burdens-of-id-and-citizenship-rules--gb-turnaways-small}
 
-Both shares fell at each round; at the July 2024 general election those who did not return came to about 16,000 people. [36](#source-burdens-of-id-and-citizenship-rules-36) About two-thirds of those first turned away in 2024 came back with ID and voted. [36](#source-burdens-of-id-and-citizenship-rules-36)
+The chart is in [the report on ID rules](#fact-voter-id-rules-in-the-us-and-abroad/chart-gb-turnaway-share). The share first turned away and the share who did not come back both fell at each round; at the July 2024 general election those who did not return came to about 16,000 people. [36](#source-burdens-of-id-and-citizenship-rules-36) About two-thirds of those first turned away in 2024 came back with ID and voted. [36](#source-burdens-of-id-and-citizenship-rules-36) A free Voter Authority Certificate is available to people without accepted ID; 58% knew of it in 2024. [36](#source-burdens-of-id-and-citizenship-rules-36)
 
 ### Some British non-voters say the ID rule kept them away {#burdens-of-id-and-citizenship-rules--gb-non-voters-cite-id}
 
 Around 4% of people who did not vote in 2024 gave an unprompted reason related to the ID rules, and non-voters in lower social grades were more likely to say they lacked the required ID. [36](#source-burdens-of-id-and-citizenship-rules-36) This is the closest published measure of deterrence beyond those turned away at the door; no US equivalent was found.
 
-## What this does and does not measure {#burdens-of-id-and-citizenship-rules--scope}
+## More {#burdens-of-id-and-citizenship-rules--more-rejection-rate}
+
+### What this does and does not measure {#burdens-of-id-and-citizenship-rules--scope}
 
 This report counts people who met an obstacle — no document, a blocked application, a rejected ballot — and estimates whether total turnout changed.
 

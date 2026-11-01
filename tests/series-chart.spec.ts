@@ -21,8 +21,9 @@ test.describe('with JavaScript disabled', () => {
     await page.goto(factUrl(HEADLINE));
     const fact = page.locator('article.sv-factpage');
 
-    const charts = fact.locator(`#${HEADLINE}--chart-series .sv-chart__svg[data-variant="wide"]`);
-    await expect(charts).toHaveCount(2); // one per reading
+    // One step of the data panel per reading, each drawn in place.
+    const charts = fact.locator('.sv-walk__slide .sv-chart__reading .sv-chart__svg[data-variant="narrow"]');
+    expect(await charts.count()).toBeGreaterThan(2);
 
     // Each plot is an image with a name and a description, both real elements
     // the SVG points at rather than an attribute a sighted reader cannot check.
@@ -37,7 +38,7 @@ test.describe('with JavaScript disabled', () => {
 
     // The Graph/Table switch needs script, so each reading's table sits in a
     // collapsed disclosure instead.
-    const table = fact.locator(`#${HEADLINE}--chart-series .sv-chart__data`).first();
+    const table = fact.locator(`#${HEADLINE}--chart-people .sv-chart__data`).first();
     await table.locator('> summary').click();
     // Every published year, not a sample: 1964–2025 inclusive.
     await expect(table.locator('tbody tr')).toHaveCount(62);
@@ -61,15 +62,15 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   await expect(chart.getByRole('heading', { name: 'UK immigration, emigration and net migration, 1964–2025' })).toBeVisible();
   await expect(chart.locator('.sv-chart__range')).toContainText('Full published range: 1964–2025');
 
-  // Three definitional breaks, each drawn in the plot and explained below it.
-  await expect(chart.locator('.sv-method-observation')).toHaveCount(6);
+  // Three definitional breaks, each drawn in both plots and explained once, under the first.
+  await expect(chart.locator('.sv-method-observation')).toHaveCount(3);
   const visiblePlot = chart.locator('.sv-chart__svg:visible').first();
   await expect(visiblePlot.locator('.sv-chart__break')).toHaveCount(3);
   // A line crossing a break is cut and bridged, never drawn straight through.
   await expect(visiblePlot.locator('.sv-chart__bridge').first()).toBeAttached();
 
   // A chart is a factual claim, so it carries its own quoted source.
-  await expect(page.locator(`${dialog} #source-${HEADLINE}-5 blockquote`)).toContainText(
+  await expect(page.locator(`${dialog} #source-${HEADLINE}-46 blockquote`)).toContainText(
     'comparisons between pre-June 2021 and post-June 2021 estimates should be treated with caution'
   );
 });

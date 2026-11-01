@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 import { ReportFigure } from './figure';
 import { formatDate, formatValue } from './format';
-import type { PartialDate, SourceCredit, ValueFormat } from './types';
+import { isRange, rangeText, type FigureNumber } from './qualified';
+import type { FigurePreview, PartialDate, SourceCredit, ValueFormat } from './types';
 
 export type KeyFigureChange = {
   value: number;
@@ -12,10 +13,9 @@ export type KeyFigureChange = {
 };
 
 export type KeyFigure = {
-  value: number;
+  /** A bound or approximation (`{ value: 7200, qualifier: 'more than' }`) prints its word before the number; a range prints "4–6%". */
+  value: FigureNumber;
   format?: ValueFormat;
-  /** Printed before the number, for a figure the source gives as a bound or approximation: "more than 7,200". */
-  qualifier?: 'about' | 'more than' | 'at least' | 'fewer than' | 'at most';
   /** What the number is, in plain words: "people awaiting an initial asylum decision". */
   label: string;
   /** The period or date the figure is for — always shown, because a headline number without a date is the commonest way to mislead with a true one. */
@@ -23,7 +23,8 @@ export type KeyFigure = {
   /** Overrides the formatted period, e.g. "year ending March 2026". */
   periodLabel?: string;
   change?: KeyFigureChange;
-  source?: SourceCredit;
+  /** Every citation the figure rests on, as "[n]" marks after its period. */
+  sources?: SourceCredit[];
 };
 
 export type KeyFiguresProps = {
@@ -35,35 +36,38 @@ export type KeyFiguresProps = {
   note?: ReactNode;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
   footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
+  /** Draw the compact preview: the linked title and every figure with its label, period and change; sources stay on the full figure. */
+  preview?: FigurePreview;
 };
 
 /**
- * Two to four headline numbers set as type: a large serif figure, what it
+ * One to six headline numbers set as type: a large serif figure, what it
  * counts, when, and — if given — the change against a named comparison.
  * No boxes and no up/down colours: a fall in asylum grants is not good or
  * bad news in this register, so direction is carried by the sign and the
  * words, never by green and red.
  */
-export function KeyFigures({ figures, id, title, description, sources, note, footer }: KeyFiguresProps) {
+export function KeyFigures({ figures, id, title, description, sources, note, footer, panel, preview }: KeyFiguresProps) {
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} className="sv-key-figures">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} preview={preview} className="sv-key-figures">
       <div className="sv-key-figures__frame">
         <dl className="sv-key-figures__list" data-count={figures.length}>
           {figures.map((figure, i) => (
             <div key={`${figure.label}-${i}`} className="sv-key-figures__item">
               <dt className="sv-key-figures__label">{figure.label}</dt>
               <dd className="sv-key-figures__value">
-                {figure.qualifier && <span className="sv-key-figures__qualifier">{figure.qualifier} </span>}
-                {formatValue(figure.value, figure.format)}
+                <KeyValue value={figure.value} format={figure.format} />
               </dd>
               <dd className="sv-key-figures__meta">
                 <span className="sv-key-figures__period">{figure.periodLabel ?? formatDate(figure.period)}</span>
-                {figure.source && (
-                  <>
+                {!preview && figure.sources?.map((source, s) => (
+                  <span key={`${source.label}-${s}`}>
                     {' '}
-                    <SourceMark source={figure.source} />
-                  </>
-                )}
+                    <SourceMark source={source} />
+                  </span>
+                ))}
               </dd>
               {figure.change && (
                 <dd className="sv-key-figures__change">
@@ -76,6 +80,18 @@ export function KeyFigures({ figures, id, title, description, sources, note, foo
         </dl>
       </div>
     </ReportFigure>
+  );
+}
+
+/** The large figure: its qualifier set small before it, a range written once. */
+function KeyValue({ value, format }: { value: FigureNumber; format?: ValueFormat }) {
+  if (typeof value === 'number') return formatValue(value, format);
+  if (isRange(value)) return rangeText(value.low, value.high, format);
+  return (
+    <>
+      {value.qualifier && <span className="sv-key-figures__qualifier">{value.qualifier} </span>}
+      {formatValue(value.value, format)}
+    </>
   );
 }
 

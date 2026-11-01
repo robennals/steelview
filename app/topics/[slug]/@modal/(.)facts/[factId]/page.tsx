@@ -17,10 +17,10 @@ export const dynamicParams = false;
  * replacing the page — so the reader keeps the topic they were reading, and
  * the URL is the fact's real address rather than something invented for a
  * panel. A cold load of that URL never reaches this file: it renders
- * `facts/[factId]/page.tsx`, the standalone page.
+ * `facts/[factId]/page.tsx`, the report's own page.
  *
- * There is no second copy of the fact to keep in step, because both routes
- * render `FactArticle` from the same loaded content. The sheet around it is
+ * Both routes render `FactArticle` from the same loaded content, so there is
+ * no second copy of the report's text to keep in step. The sheet around it is
  * `FactSheet`, in the topic layout.
  */
 export default async function FactModalPage({

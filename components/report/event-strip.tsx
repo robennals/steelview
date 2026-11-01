@@ -3,14 +3,15 @@ import { CHART_GEOMETRY } from '@/lib/chart/series-chart';
 import { DetailsTarget } from './details-target';
 import { SourceLine } from './figure';
 import { compareDates, formatDate } from './format';
-import { edgeOf, percentAlong, stackLevels, toYear, yearTicks, type TimeSpan } from './time-axis';
+import { edgeOf, percentAlong, stackLevels, timeTicks, toYear, type TimeSpan } from './time-axis';
 import type { PartialDate, SourceCredit } from './types';
 
 export type StripEvent = {
   date: PartialDate;
   label: string;
   description?: string;
-  source?: SourceCredit;
+  /** The citations that date the event, listed in its key entry. */
+  sources?: SourceCredit[];
   href?: string;
 };
 
@@ -39,6 +40,12 @@ export type EventStripProps = {
    * shown, so no event silently drops out of the chart.
    */
   window?: { from: PartialDate; to: PartialDate };
+  /**
+   * The `id` of another EventStrip on the page, for the same events, whose
+   * key these markers point at. This strip then shows no key of its own: the
+   * panels of a multi-panel series share one key, after the last panel.
+   */
+  keyIn?: string;
 };
 
 const pct = (n: number) => `${Math.round(n * 1000) / 1000}%`;
@@ -70,6 +77,7 @@ export function EventLane({
   keyId,
   showAxis,
   numbers = events.map((_, i) => i + 1),
+  linked = true,
 }: {
   span: TimeSpan;
   events: StripEvent[];
@@ -77,6 +85,8 @@ export function EventLane({
   showAxis: boolean;
   /** Each marker's number in the key, when the lane shows only some of the key's events. */
   numbers?: number[];
+  /** Markers link to their key items. Off in a preview, which draws no key: each marker then names its event itself. */
+  linked?: boolean;
 }) {
   const positions = events.map(e => percentAlong(toYear(e.date), span));
   // A numbered marker is ~1.4rem wide; at a 340px plot that is ~7% of the span.
@@ -91,23 +101,21 @@ export function EventLane({
         {events.map((e, i) => (
           <span key={`stem-${i}`} className="sv-event-strip__stem" aria-hidden="true" style={{ left: pct(positions[i]), '--sv-strip-level': levels[i] }} />
         ))}
-        {events.map((e, i) => (
-          <a
-            key={i}
-            className="sv-event-strip__marker"
-            href={`#${keyId}-${numbers[i]}`}
-            style={{ left: pct(positions[i]), '--sv-strip-level': levels[i] }}
-            aria-label={`${numbers[i]}: ${formatDate(e.date)}, ${e.label}`}
-          >
-            <span aria-hidden="true">{numbers[i]}</span>
-          </a>
-        ))}
+        {events.map((e, i) => {
+          const style = { left: pct(positions[i]), '--sv-strip-level': levels[i] };
+          const number = <span aria-hidden="true">{numbers[i]}</span>;
+          return linked ? (
+            <a key={i} className="sv-event-strip__marker" href={`#${keyId}-${numbers[i]}`} style={style} aria-label={`${numbers[i]}: ${formatDate(e.date)}, ${e.label}`}>{number}</a>
+          ) : (
+            <span key={i} className="sv-event-strip__marker" style={style} role="img" aria-label={`${formatDate(e.date)}: ${e.label}`}>{number}</span>
+          );
+        })}
       </div>
       {showAxis && (
         <div className="sv-event-strip__axis" aria-hidden="true">
-          {yearTicks(span).map(tick => (
-            <span key={tick.year} className="sv-event-strip__tick" data-minor={tick.minor || undefined} data-edge={edgeOf(percentAlong(tick.year, span))} style={{ left: pct(percentAlong(tick.year, span)) }}>
-              {tick.year}
+          {timeTicks(span).map(tick => (
+            <span key={tick.at} className="sv-event-strip__tick" data-minor={tick.minor || undefined} data-edge={edgeOf(percentAlong(tick.at, span))} style={{ left: pct(percentAlong(tick.at, span)) }}>
+              {tick.label}
             </span>
           ))}
         </div>
@@ -151,7 +159,7 @@ export function EventKey({ events, keyId, title, outside = [] }: {
             </>
           );
           // Nothing to expand: a plain item still carries the id the marker links to.
-          if (!e.description && !e.source && !e.href) {
+          if (!e.description && !e.sources?.length && !e.href) {
             return <li key={i} id={id} className="sv-event-strip__item" data-bare="">{head}</li>;
           }
           return (
@@ -160,7 +168,7 @@ export function EventKey({ events, keyId, title, outside = [] }: {
                 <summary className="sv-event-strip__summary">{head}</summary>
                 <div className="sv-event-strip__body">
                   {e.description && <p className="sv-event-strip__desc">{e.description}</p>}
-                  {e.source && <SourceLine sources={[e.source]} />}
+                  {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
                   {e.href && <p className="sv-event-strip__link"><a href={e.href}>See the evidence</a></p>}
                 </div>
               </details>
@@ -180,21 +188,24 @@ export function EventKey({ events, keyId, title, outside = [] }: {
  * It marks when things happened and nothing more: a marker beside a turn in
  * the line is an invitation to look, not a claim that one caused the other.
  */
-export function EventStrip({ from, to, events, align = 'series-chart', showAxis = true, keyTitle = 'Events marked above', id, window: shown }: EventStripProps) {
+export function EventStrip({ from, to, events, align = 'series-chart', showAxis = true, keyTitle = 'Events marked above', id, window: shown, keyIn }: EventStripProps) {
   const reactId = useId();
-  const keyId = `sv-event-strip-${id ?? reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const ownPrefix = `sv-event-strip-${id ?? reactId.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const keyId = keyIn === undefined ? ownPrefix : `sv-event-strip-${keyIn}`;
   const span = { from: toYear(from), to: toYear(to) };
   const ordered = [...events].sort((a, b) => toYear(a.date) - toYear(b.date));
-  // The island scopes itself to the strip's root; with no id given, the key's
-  // own prefix is unique and free.
-  const rootId = id ?? keyId;
+  // The island scopes itself to the strip's root; with no id given, the
+  // strip's own key prefix is unique and free.
+  const rootId = id ?? ownPrefix;
   const outside = ordered.map(e => shown !== undefined && !(compareDates(e.date, shown.from) >= 0 && (compareDates(e.date, shown.to) <= 0 || e.date.startsWith(shown.to))));
   const marked = ordered.flatMap((e, i) => (outside[i] ? [] : [{ event: e, number: i + 1 }]));
   return (
     <div className="sv-event-strip" id={rootId} data-align={typeof align === 'string' ? align : 'custom'} style={alignVars(align)}>
       <EventLane span={span} events={marked.map(m => m.event)} numbers={marked.map(m => m.number)} keyId={keyId} showAxis={showAxis} />
-      <EventKey events={ordered} keyId={keyId} title={keyTitle} outside={outside} />
-      <DetailsTarget rootId={rootId} />
+      {keyIn === undefined && <>
+        <EventKey events={ordered} keyId={keyId} title={keyTitle} outside={outside} />
+        <DetailsTarget rootId={rootId} />
+      </>}
     </div>
   );
 }

@@ -33,7 +33,7 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
+  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
   title: Economic and fiscal outlook – March 2024 (CP 1027), Box 2.3
   url: "https://obr.uk/docs/dlm_uploads/E03057758_OBR_EFO-March-2024_Web-AccessibleFinal.pdf"
   publisher: Office for Budget Responsibility
@@ -1820,39 +1820,6 @@ comparisons:
     value: 0.7
   - label: Germany
     value: -0.2
-- id: obr-gdp-per-person
-  title: 'OBR: UK GDP per person if net migration were 200,000 a year higher'
-  description: "Scenario estimates of output per person in 2028-29 if net migration (arrivals minus departures) ran above the official forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, in its March 2024 scenarios. The lower-migration scenario is the mirror image."
-  unit: percent
-  valueLabel: GDP per person, % difference from central forecast
-  sources:
-  - 3
-  - 4
-  - 5
-  note: "The OBR describes the first case as \"largely unchanged\" and gives no number; it is plotted at zero. All three cases assume net migration 200,000 a year higher, settling at 515,000 in 2028-29."
-  items:
-  - label: "Migrants work like residents; nearly all adults on work visas (about 90% participation)"
-    value: 0.8
-  - label: Migrants as productive as residents; capital keeps pace
-    value: 0
-  - label: Capital stock does not adjust
-    value: -0.4
-- id: obr-gdp
-  title: 'OBR: total UK GDP if net migration were 200,000 a year higher'
-  description: "Scenario estimates of total output (GDP) in 2028-29 if net migration (arrivals minus departures) ran above the official forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, in the same three cases as the GDP-per-person chart, from March 2024."
-  unit: percent
-  valueLabel: Total GDP, % difference from central forecast
-  sources:
-  - 3
-  - 4
-  - 5
-  items:
-  - label: Nearly all adults on work visas (about 90% participation)
-    value: 2.2
-  - label: Migrants as productive as residents; capital keeps pace
-    value: 1.5
-  - label: Capital stock does not adjust
-    value: 1
 - id: obr-borrowing
   title: 'OBR: UK borrowing in 2028-29 under higher or lower net migration'
   description: "Estimated change in government borrowing in 2028-29 if net migration (arrivals minus departures) ran above or below forecast. This is the change in public sector net borrowing against the Office for Budget Responsibility's central forecast, in its March 2024 scenarios with net migration 200,000 a year higher or lower. Negative means less borrowing."
@@ -1885,9 +1852,11 @@ comparisons:
   - 28
   note: "MAC baseline: 3.0% real discount rate and 1.8% real growth in taxes and spending. \"Age-matched UK resident\" has the same starting-age mix as Skilled Worker main applicants outside health and care. The Partner route (partners of British citizens and settled residents) comes from the MAC annual report. Students, Graduate route, refugees and other family routes have not been modelled. All values are means except the UK resident median, shown because most residents are below the mean."
   items:
-  - label: Skilled Worker main applicants (outside health and care)
+  - label: "Skilled Worker main applicants"
+    detail: "Outside health and care"
     value: 689000
-  - label: "Other health and care occupations (mainly nurses and doctors)"
+  - label: "Other health and care occupations"
+    detail: "Mainly nurses and doctors"
     value: 166000
   - label: Age-matched UK resident (comparator, mean)
     value: 117000
@@ -1908,66 +1877,6 @@ comparisons:
   - label: All UK residents (comparator, median)
     value: -145000
     highlight: true
-- id: obr-cumulative-age-66
-  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 66'
-  description: "Illustrative running totals of tax paid minus public spending received to age 66, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
-  unit: pounds
-  valueLabel: Cumulative taxes minus spending to age 66
-  sources:
-  - 37
-  - 30
-  - 33
-  note: "Read from the OBR's published chart data (sheet C4.13, as corrected on 14 November 2024), in £ thousand and rounded here to the nearest £1,000. Cumulative tax paid minus public spending received, from birth for the resident and from arrival at 25 for the migrants. The migrant lines include visa fees and the health surcharge, no welfare for five years, and £20,000 of public investment per arrival; they exclude dependants. The OBR presents this as a stylised illustration, not a forecast for any real cohort."
-  items:
-  - label: High-wage migrant (30% above average pay)
-    value: 1247000
-  - label: Average-wage migrant
-    value: 722000
-  - label: Representative UK resident
-    value: 309000
-    highlight: true
-  - label: Low-wage migrant (half of average pay)
-    value: -198000
-- id: obr-cumulative-age-82
-  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 82'
-  description: "Illustrative running totals of tax paid minus public spending received to age 82, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
-  unit: pounds
-  valueLabel: Cumulative taxes minus spending to age 82
-  sources:
-  - 37
-  - 30
-  - 33
-  note: "Read from the OBR's published chart data (sheet C4.13, as corrected on 14 November 2024), in £ thousand and rounded here to the nearest £1,000. Cumulative tax paid minus public spending received, from birth for the resident and from arrival at 25 for the migrants. The migrant lines include visa fees and the health surcharge, no welfare for five years, and £20,000 of public investment per arrival; they exclude dependants. The OBR presents this as a stylised illustration, not a forecast for any real cohort."
-  items:
-  - label: High-wage migrant (30% above average pay)
-    value: 1010000
-  - label: Average-wage migrant
-    value: 405000
-  - label: Representative UK resident
-    value: -7000
-    highlight: true
-  - label: Low-wage migrant (half of average pay)
-    value: -653000
-- id: obr-cumulative-age-100
-  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 100'
-  description: "Illustrative running totals of tax paid minus public spending received to age 100, for migrant workers and for a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
-  unit: pounds
-  valueLabel: Cumulative taxes minus spending to age 100
-  sources:
-  - 37
-  - 30
-  - 33
-  note: "Read from the OBR's published chart data (sheet C4.13, as corrected on 14 November 2024), in £ thousand and rounded here to the nearest £1,000. Cumulative tax paid minus public spending received, from birth for the resident and from arrival at 25 for the migrants. The migrant lines include visa fees and the health surcharge, no welfare for five years, and £20,000 of public investment per arrival; they exclude dependants. The OBR presents this as a stylised illustration, not a forecast for any real cohort."
-  items:
-  - label: High-wage migrant (30% above average pay)
-    value: 252000
-  - label: Average-wage migrant
-    value: -405000
-  - label: Representative UK resident
-    value: -818000
-    highlight: true
-  - label: Low-wage migrant (half of average pay)
-    value: -1555000
 - id: earnings-by-route
   title: Median earnings by UK visa route, 2023/24
   description: "Median (middle) yearly earnings in 2023/24 of people granted UK entry visas, by visa route, beside the UK full-time median. These are median annual adjusted PAYE earnings in financial year 2023/24 of people aged 18–65 granted entry clearance visas from April 2019 to March 2023. The UK full-time median is there for reference."
@@ -2036,6 +1945,91 @@ comparisons:
     value: 14364460000
   - label: Students domiciled outside the UK
     value: 12396906000
+figures:
+- kind: series
+- kind: series
+  id: gdp-total-series
+- kind: series
+  id: g7-series
+- kind: comparison
+  id: g7-growth
+- kind: barChart
+  id: obr-gdp-per-person
+  replaces: ["chart-obr-gdp"]
+  title: 'OBR: UK GDP, per person and in total, if net migration were 200,000 a year higher'
+  description: "Scenario estimates of output per person and total GDP in 2028-29 if net migration (arrivals minus departures) ran above forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, for each measure in the same three cases, in its March 2024 scenarios. The lower-migration scenario is the mirror image."
+  valueLabel: "% difference from central forecast, 2028-29"
+  categoryLabel: "Case"
+  format: { unit: percent, decimals: 1 }
+  sources: [3, 4, 5]
+  note: "The OBR describes the first case as \"largely unchanged\" and gives no number; it is plotted at zero. All three cases assume net migration 200,000 a year higher, settling at 515,000 in 2028-29."
+  series:
+  - { key: per-person, label: "GDP per person" }
+  - { key: total, label: "Total GDP" }
+  items:
+  - label: "Nearly all adults on work visas"
+    detail: "About 90% participation"
+    values: { per-person: 0.8, total: 2.2 }
+  - label: "Migrants as productive as residents"
+    detail: "Capital keeps pace"
+    values: { per-person: { value: 0, qualifier: "about", asPublished: "largely unchanged" }, total: 1.5 }
+  - label: "Capital stock does not adjust"
+    values: { per-person: -0.4, total: 1 }
+- kind: comparison
+  id: obr-borrowing
+- kind: comparison
+  id: lifetime-by-route
+- kind: dataTable
+  id: headline-estimates
+  title: "Estimates of immigration's effect on UK public finances, side by side"
+  description: "The headline estimates of what immigration costs or adds, with what each covers and where it stands now."
+  caption: "One row per estimate"
+  sources: [53, 58, 17, 28, 51, 52]
+  columns:
+    - { key: estimate, label: "Estimate", rowHeader: true }
+    - { key: covers, label: "Covers" }
+    - { key: figure, label: "Figure" }
+    - { key: status, label: "Status" }
+  rows:
+    - { estimate: "Centre for Policy Studies (2025)", covers: "Lifetime cost of settling recent migrants, from OBR profiles", figure: "£234 billion cost (£8,200 per household)", status: "Withdrawn by the CPS" }
+    - { estimate: "Reform UK (2026)", covers: "2021–2025 arrivals settling in 2026–2030, to old age", figure: "£622.5 bn undiscounted; £154 bn discounted", status: "Reform's own figures; method disputed" }
+    - { estimate: "MAC (2025)", covers: "2022/23 Skilled Worker cohort, lifetime, discounted", figure: "+£47.1bn", status: "Current" }
+    - { estimate: "MAC (2025)", covers: "2022/23 Partner-route cohort, lifetime, discounted", figure: "−£109,000 per applicant", status: "Current" }
+    - { estimate: "Oxford Economics (2018)", covers: "One year, 2016/17: EEA, non-EEA, UK-born", figure: "+£4.7b, −£9.0b, −£41.4b", status: "Static, pre-Brexit" }
+    - { estimate: "Dustmann and Frattini (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "+£4.4b, −£118b, −£591b", status: "Static, pre-Brexit" }
+    - { estimate: "Migration Watch (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "−£13.6b, −£134.9b, −£565b", status: "Static, pre-Brexit" }
+- kind: barChart
+  id: obr-cumulative-by-age
+  replaces: ["chart-obr-cumulative-age-66", "chart-obr-cumulative-age-82", "chart-obr-cumulative-age-100"]
+  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 66, 82 and 100'
+  description: "Illustrative running totals of tax paid minus public spending received to ages 66, 82 and 100, for migrants and a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
+  valueLabel: "Cumulative taxes minus spending"
+  categoryLabel: "Profile"
+  format: { unit: currency, currency: GBP }
+  sources: [37, 30, 33]
+  note: "Read from the OBR's published chart data (sheet C4.13, as corrected on 14 November 2024), in £ thousand and rounded here to the nearest thousand pounds. Cumulative tax paid minus public spending received, from birth for the resident and from arrival at 25 for the migrants. The migrant lines include visa fees and the health surcharge, no welfare for five years, and £20,000 of public investment per arrival; they exclude dependants. The OBR presents this as a stylised illustration, not a forecast for any real cohort."
+  series:
+  - { key: age-66, label: "To age 66" }
+  - { key: age-82, label: "To age 82" }
+  - { key: age-100, label: "To age 100" }
+  items:
+  - label: "High-wage migrant"
+    detail: "30% above average pay"
+    values: { age-66: 1247000, age-82: 1010000, age-100: 252000 }
+  - label: "Average-wage migrant"
+    values: { age-66: 722000, age-82: 405000, age-100: -405000 }
+  - label: "Representative UK resident"
+    values: { age-66: 309000, age-82: -7000, age-100: -818000 }
+    highlight: true
+  - label: "Low-wage migrant"
+    detail: "Half of average pay"
+    values: { age-66: -198000, age-82: -653000, age-100: -1555000 }
+- kind: comparison
+  id: earnings-by-route
+- kind: comparison
+  id: wage-effects-by-percentile
+- kind: comparison
+  id: tuition-fees-by-domicile
 relatedFacts:
 - work-and-study-routes
 - immigration-housing-and-public-services
@@ -2056,9 +2050,9 @@ dataStillNeeded:
   why: The HESA table used here covers fee income only.
 - measure: The share of UK patents or inventors who were born abroad
   why: "No UK birthplace-based measure was found; the founders figure covers only the 100 fastest-growing companies."
+movedAnchors:
+  observations-founders: earnings-by-route
 ---
-This collection covers what is measured about immigration's effect on output, on the public finances and on wages: GDP and GDP per head over time and across the G7, the OBR's migration scenarios, modelled lifetime fiscal contributions by visa route, earnings by route, the record of headline cost estimates, wage effects by pay level, universities' reliance on international fees, and founders of fast-growing firms. Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.
-
 ## Observations {#immigration-economy-and-public-finances--observations-gdp-per-head}
 
 ### GDP per head has barely grown since 2019 {#immigration-economy-and-public-finances--gdp-per-head-barely-grew}
@@ -2091,7 +2085,7 @@ On the World Bank series, GDP per head rose more between 2019 and 2025 in the Un
 
 ### Net migration is not shown here {#immigration-economy-and-public-finances--g7-net-migration-not-shown}
 
-Net migration per head for these countries over the same years is not shown here (see Data still needed). [81](#source-immigration-economy-and-public-finances-81)
+Net migration per head for these countries over the same years is not shown here (see What we don't know yet). [81](#source-immigration-economy-and-public-finances-81)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp-per-person}
 
@@ -2103,6 +2097,10 @@ In March 2026 the OBR said effects on real GDP per person "are relatively small 
 
 After the ONS revised up emigration by British nationals, the OBR cut its net migration forecast by around 60,000 people a year, lowering the adult population in 2030 by around 200,000. Because the extra emigrants were assumed to be younger and lower-paid, the change left potential output per person "broadly unchanged". [9](#source-immigration-economy-and-public-finances-9) [10](#source-immigration-economy-and-public-finances-10)
 
+### Total GDP moves with migration in every case {#immigration-economy-and-public-finances--total-gdp-moves-with-migration}
+
+In the same scenarios total GDP in 2028-29 is 1.5 per cent higher with migrants as productive as residents, 1 per cent higher if capital does not adjust, and 2.2 per cent higher with very high participation. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
+
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-gdp-per-person}
 
 ### The lower-migration scenario {#immigration-economy-and-public-finances--obr-mirror-image}
@@ -2112,12 +2110,6 @@ In the OBR's March 2024 scenarios, the lower-migration scenario is the mirror im
 ### Participation and productivity {#immigration-economy-and-public-finances--obr-participation-and-productivity}
 
 In March 2026 the OBR summarised the literature. It adds that migration is likely to raise participation, because migrants are younger, but that the effect on productivity "is much more uncertain". [8](#source-immigration-economy-and-public-finances-8) [11](#source-immigration-economy-and-public-finances-11)
-
-## Observations {#immigration-economy-and-public-finances--observations-obr-gdp}
-
-### Total GDP moves with migration in every case {#immigration-economy-and-public-finances--total-gdp-moves-with-migration}
-
-In the same scenarios total GDP in 2028-29 is 1.5 per cent higher with migrants as productive as residents, 1 per cent higher if capital does not adjust, and 2.2 per cent higher with very high participation. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-borrowing}
 
@@ -2179,29 +2171,25 @@ The MAC calls the route "clearly fiscally positive", which it says is "almost in
 
 Residents with the same starting ages as Skilled Worker main applicants average +£117,000 (median −£47,000). Care workers are "broadly similar to the UK median for the age group". Health and Care dependants fall short of their own age-matched comparator of +£84,000. [23](#source-immigration-economy-and-public-finances-23) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
 
-## Observations {#immigration-economy-and-public-finances--observations-obr-cumulative-age-66}
+## Observations {#immigration-economy-and-public-finances--observations-obr-cumulative-by-age}
 
 ### Earnings and age at arrival decide the result {#immigration-economy-and-public-finances--earnings-and-age-decide}
 
 In the OBR's stylised profiles, a migrant arriving at 25 on average pay is a net contributor "by their second year", while a resident of the same age becomes one only in their 40s. A migrant earning 30 per cent above average stays a net benefit even living to 100; one on half the average falls behind the average resident in their early 40s. [30](#source-immigration-economy-and-public-finances-30) [31](#source-immigration-economy-and-public-finances-31) [32](#source-immigration-economy-and-public-finances-32)
 
-## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-cumulative-age-66}
-
-### Why the migrant is ahead at first {#immigration-economy-and-public-finances--childhood-paid-for-elsewhere}
-
-The migrant arriving at 25 becomes a net contributor before a resident of the same age because the migrant's childhood education and health were paid for elsewhere. [30](#source-immigration-economy-and-public-finances-30) [31](#source-immigration-economy-and-public-finances-31) [32](#source-immigration-economy-and-public-finances-32)
-
-## Observations {#immigration-economy-and-public-finances--observations-obr-cumulative-age-82}
-
 ### These profiles are the basis of the £234bn estimate {#immigration-economy-and-public-finances--obr-profiles-behind-cps}
 
 The Centre for Policy Studies read these OBR profiles to age 82 for its 2025 estimate — for example, about £405,000 for an average-wage migrant arriving at 25 — and applied them to projected settlement numbers. [54](#source-immigration-economy-and-public-finances-54) [37](#source-immigration-economy-and-public-finances-37)
 
-## Observations {#immigration-economy-and-public-finances--observations-obr-cumulative-age-100}
-
 ### Old age reverses most of the gains {#immigration-economy-and-public-finances--old-age-reverses-gains}
 
 Every line falls after state pension age as health, care and pension costs mount. The correction of November 2024 made the low-wage migrant "significantly less fiscally beneficial, and substantially so at older ages". The OBR's representative migrant has no dependants; the OBR says it chose "a more typical migrant on a work visa and no dependants". [33](#source-immigration-economy-and-public-finances-33) [34](#source-immigration-economy-and-public-finances-34) [37](#source-immigration-economy-and-public-finances-37)
+
+## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-cumulative-by-age}
+
+### Why the migrant is ahead at first {#immigration-economy-and-public-finances--childhood-paid-for-elsewhere}
+
+The migrant arriving at 25 becomes a net contributor before a resident of the same age because the migrant's childhood education and health were paid for elsewhere. [30](#source-immigration-economy-and-public-finances-30) [31](#source-immigration-economy-and-public-finances-31) [32](#source-immigration-economy-and-public-finances-32)
 
 ## Observations {#immigration-economy-and-public-finances--observations-earnings-by-route}
 
@@ -2231,6 +2219,10 @@ Entry-year pay fell sharply in 2025. The data mix full-time and part-time work. 
 
 Of non-EU migrants first on payroll in 2015, 60% were still there in 2025; of EU migrants, 45%. These data are by nationality, not by visa route. [48](#source-immigration-economy-and-public-finances-48)
 
+### Foreign-born founders are over-represented among the fastest-growing firms {#immigration-economy-and-public-finances--foreign-born-founders}
+
+The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
+
 ## Observations {#immigration-economy-and-public-finances--observations-headline-estimates}
 
 ### The £234bn was withdrawn by its author {#immigration-economy-and-public-finances--234bn-withdrawn}
@@ -2251,17 +2243,7 @@ Reform argues that discounting understates long-run costs. Madeleine Sumption (M
 
 Every pre-Brexit study the Migration Observatory reviewed put the fiscal effect at less than +1% or -1% of GDP, with recent migrants more positive than longer-settled ones; "there are no fiscal analyses covering the entire post-Brexit immigration system". [50](#source-immigration-economy-and-public-finances-50) [49](#source-immigration-economy-and-public-finances-49) [62](#source-immigration-economy-and-public-finances-62)
 
-### Estimates of immigration's effect on UK public finances, side by side {#immigration-economy-and-public-finances--estimates-table}
-
-| Estimate | Covers | Figure | Status |
-| --- | --- | --- | --- |
-| Centre for Policy Studies (2025) | Lifetime cost of settling recent migrants, from OBR profiles | £234 billion cost (£8,200 per household) | Withdrawn by the CPS |
-| Reform UK (2026) | 2021–2025 arrivals settling in 2026–2030, to old age | £622.5 bn undiscounted; £154 bn discounted | Reform's own figures; method disputed |
-| MAC (2025) | 2022/23 Skilled Worker cohort, lifetime, discounted | +£47.1bn | Current |
-| MAC (2025) | 2022/23 Partner-route cohort, lifetime, discounted | −£109,000 per applicant | Current |
-| Oxford Economics (2018) | One year, 2016/17: EEA, non-EEA, UK-born | +£4.7b, −£9.0b, −£41.4b | Static, pre-Brexit |
-| Dustmann and Frattini (2014) | 1995–2011: EEA, non-EEA, UK-born | +£4.4b, −£118b, −£591b | Static, pre-Brexit |
-| Migration Watch (2014) | 1995–2011: EEA, non-EEA, UK-born | −£13.6b, −£134.9b, −£565b | Static, pre-Brexit |
+### Static and lifetime estimates are not comparable {#immigration-economy-and-public-finances--estimates-table}
 
 Static estimates count one period's taxes and spending; lifetime estimates project and discount. The two kinds are not comparable. [53](#source-immigration-economy-and-public-finances-53) [58](#source-immigration-economy-and-public-finances-58) [17](#source-immigration-economy-and-public-finances-17) [28](#source-immigration-economy-and-public-finances-28) [51](#source-immigration-economy-and-public-finances-51) [52](#source-immigration-economy-and-public-finances-52)
 
@@ -2295,8 +2277,6 @@ The Office for Students found 35.8 per cent of institutions in deficit in 2024-2
 
 In 2024/25 UK-domiciled students paid 53.7% of higher-education course fees at UK providers; the rest came from students domiciled elsewhere. Fees are only part of university income, so this is not a share of income. [74](#source-immigration-economy-and-public-finances-74)
 
-## Observations {#immigration-economy-and-public-finances--observations-founders}
+## More {#immigration-economy-and-public-finances--more-lifetime-by-route}
 
-### Foreign-born founders are over-represented among the fastest-growing firms {#immigration-economy-and-public-finances--foreign-born-founders}
-
-The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
+Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.

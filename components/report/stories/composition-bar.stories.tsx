@@ -76,12 +76,39 @@ export const RowSources: Story = {
       { key: 'other', label: 'Other' },
     ],
     rows: [
-      { label: 'Counter A', values: { civilian: 1701, military: 1221, unclassified: 714 }, source: { label: 'Illustrative source', href: '#source-example-1', number: 1 } },
-      { label: 'Counter B', values: { civilian: 1030, other: 6620 }, source: { label: 'Second illustrative source', href: '#source-example-2', number: 2 } },
+      { label: 'Counter A', values: { civilian: 1701, military: 1221, unclassified: 714 }, sources: [{ label: 'Illustrative source', href: '#source-example-1', number: 1 }] },
+      { label: 'Counter B', values: { civilian: 1030, other: 6620 }, sources: [{ label: 'Second illustrative source', href: '#source-example-2', number: 2 }] },
     ],
     showCounts: true,
     rowLabel: 'Counter',
     sources: undefined,
+    note: undefined,
+  },
+};
+
+/**
+ * The source's own percentages (`unit: percent`): labels print them as
+ * published — 33.3% stays 33.3% — and the validator checks each row adds up
+ * to 100 within rounding (here 99.9, inside three parts' ±0.15). A part the
+ * source gives only approximately says so.
+ */
+export const PublishedPercentages: Story = {
+  args: {
+    title: 'How respondents answered, by survey wave',
+    description: 'Illustrative data: each wave’s percentages as published, rounded to one decimal place.',
+    unit: 'percent',
+    rowLabel: 'Wave',
+    categories: [
+      { key: 'yes', label: 'Yes' },
+      { key: 'no', label: 'No' },
+      { key: 'unsure', label: 'Unsure' },
+    ],
+    rows: [
+      { label: 'Wave 1', values: { yes: 33.3, no: 33.3, unsure: 33.3 } },
+      { label: 'Wave 2', values: { yes: { value: 41, qualifier: 'about' }, no: 47.5, unsure: 11.5 } },
+    ],
+    showCounts: false,
+    sources: [{ label: 'Illustrative data' }],
     note: undefined,
   },
 };

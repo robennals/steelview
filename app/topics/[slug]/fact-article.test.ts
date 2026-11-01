@@ -2,9 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { FactArticle } from '@/components/topic/fact-article';
+import { BackToTopic, FactArticle } from '@/components/topic/fact-article';
 import * as storyFixture from '@/components/report/stories/fixtures/figure-examples';
-import { figureExamplesFact, figureExamplesPage, mailBallotPrivacyFact } from '@/lib/content/__fixtures__/figure-examples';
+import { figureExamplesFact, figureExamplesPage } from '@/lib/content/__fixtures__/figure-examples';
 import type { Fact } from '@/lib/content/types';
 import { renderMarkdown } from '@/lib/content/markdown';
 
@@ -23,21 +23,57 @@ const fact = {
   body: 'Context.',
 };
 
-test('data still needed is omitted unless a collection names a material gap', () => {
-  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'topic', fact, bodyHtml: '<p>Context.</p>', variant: 'page' }));
-  assert.doesNotMatch(html, /Data still needed/);
+test('a sheet leaves out what is still unknown unless a collection names a material gap', () => {
+  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'topic', fact, bodyHtml: '<p>Context.</p>', variant: 'modal' }));
+  assert.doesNotMatch(html, /What we don.*t know yet/);
 });
 
-test('data still needed appears at the end of a collection before sources', () => {
+test('a sheet says what is still unknown at the end of a collection, before its sources', () => {
   const html = renderToStaticMarkup(createElement(FactArticle, {
     slug: 'topic',
     fact: { ...fact, dataStillNeeded: [{ measure: 'Route history', why: 'The stock cannot be linked to its original route.' }] },
     bodyHtml: '<p>Context.</p>',
+    variant: 'modal',
+  }));
+  assert.match(html, /id="example--data-still-needed">What we don.*t know yet/);
+  assert.match(html, /Route history/);
+  assert.ok(html.indexOf('Route history') < html.indexOf('class="sv-references"'));
+});
+
+test('on its own page a report is its title, its claim, its panel and links to related reports', async () => {
+  const { fact: parsed, bodyHtml } = await figureExamplesPage(figureExamplesFact());
+  const related = { ...parsed, id: 'related-report', title: 'A related report' };
+  const html = renderToStaticMarkup(createElement(FactArticle, {
+    slug: 'figure-examples',
+    fact: parsed,
+    bodyHtml,
+    supporting: [{ fact: related, bodyHtml: '<p>Its whole text.</p>' }],
+    variant: 'page',
+    panel: createElement('div', { id: 'the-panel' }),
+    topic: { lastUpdated: '2026-10-29', facts: [parsed] },
+  }));
+  assert.ok(html.indexOf('<h1 class="sv-factpage__claim">') < html.indexOf('id="figure-examples--finding"'));
+  assert.ok(html.indexOf('id="figure-examples--finding"') < html.indexOf('id="the-panel"'));
+  assert.match(html, /id="evidence-related-report"><a href="\/topics\/figure-examples\/facts\/related-report">A related report/);
+  assert.doesNotMatch(html, /<figure|data-viz=|class="sv-references"|Whole report|Its whole text/);
+});
+
+test('the way back from a report reaches its row, and from a supporting report its parent\'s', () => {
+  const back = (f: Fact) => renderToStaticMarkup(createElement(BackToTopic, { slug: 'topic', topicTitle: 'A topic', fact: f }));
+  assert.match(back(fact), /href="\/topics\/topic#fact-example"/);
+  assert.match(back({ ...fact, id: 'detail', supports: 'example' }), /href="\/topics\/topic#fact-example"/);
+  assert.match(back(fact), /A topic/);
+});
+
+test('a supporting report names the report it belongs to and links to it', () => {
+  const html = renderToStaticMarkup(createElement(FactArticle, {
+    slug: 'topic',
+    fact: { ...fact, id: 'detail', supports: 'example' },
+    parent: { ...fact, title: 'The parent report' },
+    bodyHtml: '<p>Context.</p>',
     variant: 'page',
   }));
-  assert.match(html, /Data still needed/);
-  assert.match(html, /Route history/);
-  assert.ok(html.indexOf('Data still needed') < html.indexOf('Sources'));
+  assert.match(html, /href="\/topics\/topic\/facts\/example"[^>]*>The parent report/);
 });
 
 /* ---------------------------------------------------------------- figures */
@@ -48,8 +84,8 @@ async function renderFixture(change: (f: Fact) => Fact = f => f) {
     slug: 'figure-examples',
     fact: parsed,
     bodyHtml,
-    variant: 'page',
-    topic: { lastUpdated: '2026-10-29', facts: [parsed, mailBallotPrivacyFact] },
+    variant: 'modal',
+    topic: { lastUpdated: '2026-10-29', facts: [parsed] },
   }));
 }
 
@@ -81,6 +117,10 @@ test('figures render in the order written, with unplaced body sections after the
     'figure-examples--chart-voter-id-rules',
     'figure-examples--chart-postal-voting',
     'figure-examples--chart-count-speed',
+    'figure-examples--chart-deaths-by-region',
+    'figure-examples--chart-deaths-split',
+    'figure-examples--chart-count-releases',
+    'figure-examples--audit-method',
     'figure-examples--remainder',
   ].map(id => html.indexOf(`id="${id}"`));
   assert.ok(order.every(i => i >= 0), `missing ids: ${order}`);
@@ -115,6 +155,11 @@ test('without figures, a fact keeps the old order: series, comparisons, then the
   assert.ok(html.indexOf('id="figure-examples--observations-federal-laws"') > section);
 });
 
+test('a replaced anchor is an alias just before its figure, so an old link lands on the figure', async () => {
+  const html = await renderFixture();
+  assert.match(html, /<div class="sv-anchor-aliases"><span id="figure-examples--federal-laws-list" data-alias-for="figure-examples--chart-federal-laws"><\/span><\/div><figure[^>]*id="figure-examples--chart-federal-laws"/);
+});
+
 test('with JavaScript off, a figure table is in default order and a map\'s areas are in its noscript table', async () => {
   const html = await renderFixture();
   const table = figureMarkup(html, 'figure-examples--chart-federal-laws');
@@ -142,7 +187,6 @@ test('the Storybook copy of the figure fixture matches the fixture file', async 
   const plain = (value: unknown) => JSON.parse(JSON.stringify(value));
   assert.deepEqual(plain(storyFixture.figureExamplesFact), plain(parsed), 'regenerate components/report/stories/fixtures/figure-examples.ts');
   assert.equal(storyFixture.figureExamplesBodyHtml, bodyHtml);
-  assert.deepEqual(plain(storyFixture.mailBallotPrivacyFact), plain(mailBallotPrivacyFact));
 });
 
 test('a featured supporting fact\'s charts render where its figure entry is, once, whether or not it has figures', async () => {
@@ -166,7 +210,7 @@ test('a featured supporting fact\'s charts render where its figure entry is, onc
   };
   const supporting = await Promise.all([plainChild, figuredChild].map(async c => ({ fact: c, bodyHtml: await renderMarkdown(c.body, 'figure-examples') })));
   const { bodyHtml } = await figureExamplesPage(fact);
-  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'figure-examples', fact, bodyHtml, supporting, variant: 'page' }));
+  const html = renderToStaticMarkup(createElement(FactArticle, { slug: 'figure-examples', fact, bodyHtml, supporting, variant: 'modal' }));
   const at = (id: string) => html.indexOf(`id="${id}"`);
   assert.ok(at('figure-examples--chart-senate-votes') < at('figured-child--chart-figured-child-bars'));
   assert.ok(at('figured-child--chart-figured-child-bars') < at('plain-child--chart-plain-child-bars'));

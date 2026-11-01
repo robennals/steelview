@@ -48,8 +48,23 @@ export const Qualified: Story = {
     title: 'How the auditor re-checked signature decisions',
     description: 'Illustrative: a source that says "more than 7,200" is shown as it says it, not as an exact count.',
     figures: [
-      { value: 7200, qualifier: 'more than', format: { unit: 'count' }, label: 'signatures re-examined', period: '2020', periodLabel: 'November 2020 general election' },
+      { value: { value: 7200, qualifier: 'more than' }, format: { unit: 'count' }, label: 'signatures re-examined', period: '2020', periodLabel: 'November 2020 general election' },
       { value: 98.7, format: { unit: 'percent', decimals: 1 }, label: 'of county decisions judged appropriate', period: '2020' },
+    ],
+    sources: [{ label: 'Illustrative source' }],
+  },
+};
+
+/** Every qualification a key figure can carry: a bound either way, an approximation and a published range, written once. */
+export const QualifiedValues: Story = {
+  args: {
+    title: 'Deaths by region, as the counter gives them',
+    description: 'Illustrative: each figure is printed in the shape the source gives it.',
+    figures: [
+      { value: { value: 159, qualifier: 'at least' }, format: { unit: 'count' }, label: 'deaths in the north', period: '2026-05' },
+      { value: { value: 40, qualifier: 'fewer than' }, format: { unit: 'count' }, label: 'deaths in the west', period: '2026-05' },
+      { value: { value: 90, qualifier: 'about' }, format: { unit: 'count' }, label: 'deaths in the south', period: '2026-05' },
+      { value: { low: 4, high: 6 }, format: { unit: 'percent', decimals: 0 }, label: 'of the population displaced in the east', period: '2026-05' },
     ],
     sources: [{ label: 'Illustrative source' }],
   },

@@ -17,7 +17,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     tags: ['Channel crossings', 'Asylum'],
     date: '2024-03-12',
     context: 'Debate in the chamber',
-    source: illustrative,
+    sources: [illustrative],
   },
   {
     id: 'speaker-b-2024-05',
@@ -28,7 +28,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     tags: ['Channel crossings', 'Returns'],
     date: '2024-05-02',
     context: 'Radio interview',
-    source: illustrative,
+    sources: [illustrative],
   },
   {
     id: 'speaker-c-2024-07',
@@ -39,7 +39,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     tags: ['Channel crossings', 'International cooperation'],
     date: '2024-07-18',
     context: 'Conference speech',
-    source: illustrative,
+    sources: [illustrative],
   },
   {
     id: 'speaker-d-2024-09',
@@ -50,7 +50,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     tags: ['Asylum'],
     date: '2024-09-04',
     context: 'Committee hearing',
-    source: illustrative,
+    sources: [illustrative],
   },
   {
     id: 'speaker-e-2024-11',
@@ -61,7 +61,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     tags: ['Channel crossings', 'Returns'],
     date: '2024-11-20',
     context: 'Debate in the chamber',
-    source: illustrative,
+    sources: [illustrative],
   },
   {
     id: 'speaker-f-2025-02',
@@ -72,7 +72,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     tags: ['Asylum', 'Local services'],
     date: '2025-02-11',
     context: 'Local radio phone-in',
-    source: illustrative,
+    sources: [illustrative],
   },
   {
     id: 'speaker-g-undated',
@@ -81,7 +81,7 @@ export const illustrativeDebateQuotes: Quote[] = [
     role: 'Independent member',
     tags: ['Channel crossings'],
     context: 'Written statement',
-    source: illustrative,
+    sources: [illustrative],
   },
 ];
 

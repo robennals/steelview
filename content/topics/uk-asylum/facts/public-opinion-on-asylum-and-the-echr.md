@@ -272,12 +272,6 @@ figures:
         question: 'Support "admitting no more new migrants, and requiring large numbers of migrants who came to the UK in recent years to leave"'
         result: { value: Support 45%, sources: [11] }
 ---
-Polling on the ECHR and on removals is unusually sensitive to wording. The
-same public that chooses "remain" over "withdraw" also backs replacing
-"the current European system of human rights laws" when the question offers
-faster deportation, so each result below is shown with the question asked.
-[1](#source-public-opinion-on-asylum-and-the-echr-1) [7](#source-public-opinion-on-asylum-and-the-echr-7)
-
 ## Observations {#public-opinion-on-asylum-and-the-echr--observations-echr-membership}
 
 ### Remain has led withdraw since 2016 {#public-opinion-on-asylum-and-the-echr--remain-has-led-since-2016}
@@ -320,3 +314,7 @@ leave. Counted across all adults, that came to 38% who included small-boat
 asylum seekers and 16% who included asylum seekers who came through the
 legal process. [11](#source-public-opinion-on-asylum-and-the-echr-11)
 [12](#source-public-opinion-on-asylum-and-the-echr-12)
+
+## More {#public-opinion-on-asylum-and-the-echr--more-echr-membership}
+
+Polling on the ECHR and on removals is unusually sensitive to wording. The same public that chooses "remain" over "withdraw" also backs replacing "the current European system of human rights laws" when the question offers faster deportation, so each result in this report is shown with the question asked. [1](#source-public-opinion-on-asylum-and-the-echr-1) [7](#source-public-opinion-on-asylum-and-the-echr-7)

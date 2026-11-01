@@ -1,8 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateTopic } from './validate';
+import { compositionSumError, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
-import { figureExamplesTopic } from './__fixtures__/figure-examples';
+import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
+import { factSources } from './sources';
+import { US_STATE_TILES } from '../../components/report/geo/tiles';
 
 function fact(over: Partial<Fact> & { id: string }): Fact {
   return {
@@ -483,7 +485,7 @@ test('rule 14: backwards coverage is reported', () => {
 
 test('rule 14: an event marked outside the coverage is reported', () => {
   const t = topicWithSeries({
-    events: [{ period: '2001', label: 'law takes effect' }],
+    events: [{ period: '2001', label: 'law takes effect', sources: [] }],
   });
   const errors = validateTopic(t);
   assert.ok(
@@ -494,7 +496,7 @@ test('rule 14: an event marked outside the coverage is reported', () => {
 
 test('rule 14: an event inside the final year of a year-precision coverage is accepted', () => {
   const t = topicWithSeries({
-    events: [{ period: '1993-03', label: 'law takes effect' }],
+    events: [{ period: '1993-03', label: 'law takes effect', sources: [] }],
   });
   const errors = validateTopic(t);
   assert.ok(!errors.some((e) => e.includes('event at')), errors.join('\n'));
@@ -546,7 +548,7 @@ test('rule 14: mixed period granularity orders the way a reader would order it',
 
 test('evidence targets and source footnotes must resolve, including summaries', () => {
   const topic = soundTopic();
-  topic.facts[0].body = '## Context {#alpha--context}\n\nMeasured. [1](#source-alpha-1)';
+  topic.facts[0].body = '### Context {#alpha--context}\n\nMeasured. [1](#source-alpha-1)';
   topic.viewpoints[0].summary = '[finding](#fact-alpha/context)';
   assert.deepEqual(validateTopic(topic), []);
   topic.viewpoints[0].summary = '[finding](#fact-alpha/missing)';
@@ -631,6 +633,12 @@ function figuresTopic() {
 
 const hasError = (topic: Topic, text: string) => validateTopic(topic).some(e => e.includes(text));
 
+test('the fixture claim check points at evidence the fixture itself holds, with no stub fact beside it', () => {
+  const topic = figureExamplesTopic();
+  assert.deepEqual(topic.facts.map(f => f.id), ['figure-examples']);
+  assert.equal(figureOf(topic.facts[0], 'claimCheck').evidence?.fact, 'figure-examples');
+});
+
 test('the figure fixture is sound', () => {
   assert.deepEqual(validateTopic(figureExamplesTopic()), []);
 });
@@ -645,8 +653,23 @@ test('F1: a figure id may not repeat another figure, chart or reading id', () =>
 
 test('F2: every figure citation is one of the fact\'s numbered sources', () => {
   const { topic, fact } = figuresTopic();
-  figureOf(fact, 'timeline').events[0].source = 99;
-  assert.ok(hasError(topic, 'figure court-record: cites source 99, but the fact has 31'));
+  figureOf(fact, 'timeline').events[0].sources = [99];
+  assert.ok(hasError(topic, `figure court-record: cites source 99, but the fact has ${factSources(fact).length}`));
+});
+
+test('F2: every number in an item\'s `sources` is checked, not only the first', () => {
+  const { topic, fact } = figuresTopic();
+  figureOf(fact, 'timeline').events[0].sources = [3, 98];
+  figureOf(fact, 'keyFigures').figures[0].sources = [11, 97];
+  figureOf(fact, 'periodTimeline').rows[0].periods[0].sources = [2, 96];
+  const errors = validateTopic(topic);
+  for (const n of [98, 97, 96]) assert.ok(errors.some(e => e.includes(`cites source ${n}, but the fact has ${factSources(fact).length}`)), `source ${n}`);
+});
+
+test('a series event citing an unknown source is reported', () => {
+  const { topic, fact } = figuresTopic();
+  fact.series!.events = [{ period: '2020', label: 'Law', sources: [1, 95] }];
+  assert.ok(hasError(topic, 'series event "Law" cites unknown source 95'));
 });
 
 test('F3: once present, figures place every chart exactly once and nothing else', () => {
@@ -660,10 +683,47 @@ test('F3: once present, figures place every chart exactly once and nothing else'
   assert.ok(hasError(topic, 'references featured chart "mail-ballot-privacy", which this fact does not have in featuredCharts'));
 });
 
-test('F4: a section figure names an h2 in the body', () => {
+test('F4: a section figure names an h2 or h3 in the body, not an Observations or Subtleties item', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'section').id = 'no-such-section';
   assert.ok(hasError(topic, 'figure no-such-section: no body section headed'));
+  // The fixture places "### … {#figure-examples--audit-method}" as well as an h2.
+  assert.ok(fact.figures?.some(f => f.kind === 'section' && f.id === 'audit-method'));
+  figureOf(fact, 'section').id = 'older-law';
+  assert.ok(hasError(topic, 'figure older-law: "{#figure-examples--older-law}" heads an item under Observations or Subtleties'));
+});
+
+test('every group in a body must attach to a chart, and text before the first group fails too', () => {
+  const { topic, fact } = figuresTopic();
+  const group = (kind: string, id: string) => `\n\n## ${kind === 'subtleties' ? 'Subtleties' : 'Observations'} {#figure-examples--${kind}-${id}}\n\n### An item {#figure-examples--item-${kind}-${id}}\n\nText.`;
+  fact.figures?.push({ kind: 'section', id: 'observations-placed' });
+  fact.body += [
+    // Attached: a reading, a comparison, a figure, a section entry, and a group a section entry places whole.
+    group('observations', 'rejected-share'),
+    group('observations', 'senate-votes'),
+    group('subtleties', 'court-record'),
+    group('observations', 'audit-method'),
+    group('observations', 'placed'),
+  ].join('');
+  assert.deepEqual(validateTopic(topic), []);
+
+  fact.body += [group('observations', 'federal-law'), group('subtleties', 'series'), group('observations', 'rejected-share-total')].join('');
+  const errors = validateTopic(topic);
+  assert.equal(errors.length, 3, errors.join('\n'));
+  assert.ok(hasError(topic, '--observations-federal-law}" sits on no chart, so no slide shows it — address it to a series reading, comparison, figure or placed section of this fact; did you mean "federal-laws"?'));
+  assert.ok(hasError(topic, '--subtleties-series}" sits on no chart'));
+  assert.ok(hasError(topic, '--observations-rejected-share-total}" sits on no chart, so no slide shows it — address it to a series reading, comparison, figure or placed section of this fact; did you mean "rejected-share"?'));
+
+  fact.body = 'An opening.\n\n' + fact.body;
+  assert.ok(hasError(topic, 'the body has text before its first "##" group'));
+});
+
+test('a section that moved to a chart keeps its anchor, and must name a real chart', () => {
+  const { topic, fact } = figuresTopic();
+  fact.movedAnchors = { 'old-section': 'rejected-share' };
+  assert.deepEqual(validateTopic(topic), []);
+  fact.movedAnchors = { 'old-section': 'no-such-chart' };
+  assert.ok(hasError(topic, 'moved anchor "old-section" names "no-such-chart"'));
 });
 
 test('F5: every figure but a caveat list cites a source', () => {
@@ -711,7 +771,7 @@ test('F7: timeline categories exist and periods run forwards', () => {
   const { topic, fact } = figuresTopic();
   const timeline = figureOf(fact, 'timeline');
   timeline.events[0].category = 'nope';
-  timeline.events[1].endDate = '2020';
+  timeline.events[2].endDate = '2020';
   const periods = figureOf(fact, 'periodTimeline');
   periods.rows[0].periods[0].to = '2026-01';
   periods.rows[1].periods[0].category = 'nope';
@@ -733,7 +793,7 @@ test('F8: at most six key figures, each change a finite number', () => {
 
 test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a gap', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap');
+  const map = figureOf(fact, 'map', 'rejection-by-state');
   map.data = { ...map.data, XX: 1 };
   map.highlight = ['YY'];
   map.breaks = [0, 2, 1];
@@ -746,6 +806,35 @@ test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a 
   assert.ok(hasError(topic, 'say why in `note`'));
 });
 
+test('F9: the US territories are areas of us-states, and count as gaps only once a figure names one', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'map', 'rejection-by-state');
+  map.note = undefined;
+  map.data = Object.fromEntries(US_STATE_TILES.map(tile => [tile.id, 1]));
+  assert.ok(!hasError(topic, `figure ${map.id}: has no data`), 'all 50 states and DC leave no gap');
+  map.data = { ...map.data, PR: 1.4 };
+  assert.ok(!hasError(topic, '"PR" is not an area'));
+  assert.ok(hasError(topic, `figure ${map.id}: has no data for GU, MP, AS, VI — say why in \`note\``));
+});
+
+test('F9, map: an inset must enlarge an area the map draws', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'map', 'rejection-by-state');
+  map.insets = [{ regionIds: ['DC'] }];
+  assert.ok(!hasError(topic, 'inset area'));
+  map.insets = [{ regionIds: ['GU'] }];
+  assert.ok(hasError(topic, 'figure rejection-by-state: inset area "GU" is not an area of us-states'), 'a territory the figure does not name is not drawn');
+});
+
+test('F10: a row label stays one short title, in a bar chart, a comparison and an estimate range', () => {
+  const { topic, fact } = figuresTopic();
+  const long = 'A label that has grown a period, a sample size and a coverage note far past a title';
+  figureOf(fact, 'barChart').items[0].label = long;
+  figureOf(fact, 'estimateRange').estimates[0].label = long;
+  fact.comparisons![0].items[0].label = long;
+  assert.equal(validateTopic(topic).filter(error => error.includes('is over 60 characters')).length, 3);
+});
+
 test('F10: bars fit their axis, compositions their categories, estimates their order', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'barChart').domainMax = 1;
@@ -753,7 +842,7 @@ test('F10: bars fit their axis, compositions their categories, estimates their o
   composition.rows[0].values = { civilian: 0, nope: 0 };
   const estimates = figureOf(fact, 'estimateRange');
   estimates.estimates[0] = { ...estimates.estimates[0], low: 40, high: 30 };
-  estimates.estimates[2] = { label: 'Empty', source: 16 };
+  estimates.estimates[2] = { label: 'Empty', sources: [16] };
   estimates.domain = [30, 41];
   assert.ok(hasError(topic, 'figure wa-by-race: domainMax must be at least every value'));
   assert.ok(hasError(topic, 'row "HRANA, 7 Apr" has unknown category "nope"'));
@@ -767,7 +856,7 @@ test('F11: quotes and claims are verbatim, allowing omissions, curly quotes and 
   const { topic, fact } = figuresTopic();
   const pull = figureOf(fact, 'pullQuote');
   pull.quote.text = 'ABSENTEE ballots remain … source of potential voter fraud…';
-  const compared = figureOf(fact, 'quoteComparison');
+  const compared = figureOf(fact, 'quotes', 'damage-claims');
   compared.quotes[0].text = 'buried and we’re watching it';
   assert.deepEqual(validateTopic(topic), []);
   pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
@@ -776,11 +865,183 @@ test('F11: quotes and claims are verbatim, allowing omissions, curly quotes and 
   assert.ok(hasError(topic, 'figure one-in-five: "half of mail-in voters cheated" is not in the quote of source 22'));
 });
 
+test('F11: a quote citing several sources need only appear in one of them', () => {
+  const { topic, fact } = figuresTopic();
+  const pull = figureOf(fact, 'pullQuote');
+  pull.quote.sources = [24, 21];
+  assert.deepEqual(validateTopic(topic), []);
+  pull.quote.text = 'Absentee ballots are the largest source of voter fraud.';
+  assert.ok(hasError(topic, 'is not in the quote of any of sources 24, 21'));
+});
+
+test('F11: every quote of a long quotes figure is verbatim, the non-English one in its own words', () => {
+  const { topic, fact } = figuresTopic();
+  const quotes = figureOf(fact, 'quotes', 'postal-secrecy');
+  quotes.quotes[0].text = 'With postal voting, public control of how the vote is cast is reduced';
+  assert.ok(hasError(topic, 'figure postal-secrecy: "with postal voting, public control of how the vote is cast is reduced" is not in the quote of source 32'));
+});
+
+test('quotes: a stance names one of the figure\'s categories, and every category has a quote', () => {
+  const { topic, fact } = figuresTopic();
+  const quotes = figureOf(fact, 'quotes', 'postal-secrecy');
+  quotes.quotes[2].stance = 'nope';
+  assert.ok(hasError(topic, 'figure postal-secrecy: quote by "Sir Eric Pickles\'s review" has unknown stance "nope"'));
+  assert.ok(hasError(topic, 'figure postal-secrecy: category "review" has no quote'));
+  quotes.categories?.push({ id: 'court', label: 'Again' });
+  assert.ok(hasError(topic, 'figure postal-secrecy: category ids must be unique'));
+  const pair = figureOf(fact, 'quotes', 'damage-claims');
+  pair.quotes[0].stance = 'court';
+  assert.ok(hasError(topic, 'figure damage-claims: quote by "Pete Hegseth" has stance "court", but the figure has no `categories`'));
+});
+
+test('F10: a paired bar chart gives every series in every row, and only a dumbbell of two labels its ends', () => {
+  const { topic, fact } = figuresTopic();
+  const paired = figureOf(fact, 'barChart', 'hours-to-count');
+  paired.items[0].values = { y2020: 73 };
+  assert.ok(hasError(topic, 'figure hours-to-count: row "Arizona" has no value for "y2024" — give `null` where the source publishes none'));
+  paired.items[0].values = { y2020: null, y2024: null };
+  assert.ok(hasError(topic, 'row "Arizona" has no values'));
+  paired.items[1].values = { y2020: 159, y2024: 51, y2028: 1 };
+  assert.ok(hasError(topic, 'row "Nevada" has a value for "y2028", which is not a series'));
+  paired.items[2].labels = { y2020: '2020' };
+  assert.ok(hasError(topic, 'row "Pennsylvania" labels its ends, which only a dumbbell has'));
+  paired.domainMax = 100;
+  assert.ok(hasError(topic, 'figure hours-to-count: domainMax must be at least every value'));
+  const dumbbell = figureOf(fact, 'barChart', 'pre-vra-registration');
+  dumbbell.series?.push({ key: 'third', label: 'Third' });
+  assert.ok(hasError(topic, 'figure pre-vra-registration: a dumbbell joins two measures, but the chart has 3 series'));
+  dumbbell.items[0].labels = { earlier: '1958', nope: '1964' };
+  assert.ok(hasError(topic, 'row "Alabama" labels "nope", which is not a series'));
+});
+
+test('slice explorer: rows name every dimension\'s value once, measures are numbers, and the defaults exist', () => {
+  const { topic, fact } = figuresTopic();
+  const slices = figureOf(fact, 'sliceExplorer');
+  slices.rows.push({ vote: 'House, 15 Sep 2026', party: 'Republican', position: 'Yes', members: 7 });
+  slices.rows.push({ vote: 'House, 15 Sep 2026', party: 'Green', position: 'Yes', members: 'many', extra: 1 });
+  slices.rows.push({ party: 'Republican', position: 'No', members: 1 });
+  const errors = validateTopic(topic);
+  const has = (text: string) => assert.ok(errors.some(e => e.includes(text)), text);
+  has('figure war-powers-votes: row 11 repeats the combination vote "House, 15 Sep 2026", party "Republican", position "Yes", so it would be counted twice');
+  has('row 12 has party "Green", which is not one of its values');
+  has('row 12 measure "members" must be a number');
+  has('row 12 has key "extra", which is not a dimension or measure');
+  has('row 13 has no "vote"');
+});
+
+test('slice explorer: a dimension that may not be combined is never a split, and its default is one value', () => {
+  const { topic, fact } = figuresTopic();
+  const slices = figureOf(fact, 'sliceExplorer');
+  slices.defaultSplit = 'vote';
+  assert.ok(hasError(topic, 'figure war-powers-votes: defaultSplit "vote" may not be combined, so it cannot split a bar'));
+  slices.defaultSplit = 'party';
+  assert.ok(hasError(topic, 'defaultSplit "party" is also the breakdown'));
+  slices.defaultSplit = 'position';
+  slices.defaultFilters = { vote: ['House, 15 Sep 2026', 'Senate, 24 Sep 2026'] };
+  assert.ok(hasError(topic, 'defaultFilters vote picks 2 values of a dimension that may not be combined — pick one'));
+  slices.defaultFilters = { party: ['Independent'] };
+  assert.ok(hasError(topic, 'its default view draws no bars'), 'independents have no House row, and House is the first roll call');
+  slices.defaultFilters = { party: ['Independent'], vote: ['Senate, 24 Sep 2026'] };
+  slices.defaultMeasure = 'senators';
+  assert.ok(hasError(topic, 'defaultMeasure "senators" is not a measure'));
+  slices.defaultMeasure = undefined;
+  slices.dimensions[1].values?.push('Green');
+  assert.ok(hasError(topic, 'dimension "party" lists "Green", which no row has'));
+});
+
+test('small multiples: every panel runs across the whole published range, its own if it has one', () => {
+  const { topic, fact } = figuresTopic();
+  const multiples = figureOf(fact, 'smallMultiples');
+  multiples.panels[1].points = multiples.panels[1].points.slice(1);
+  assert.ok(hasError(topic, 'figure chokepoint-traffic: panel "Bab el-Mandeb": starts at "2026-07" but the coverage runs from "2026-06" — show the whole published range'));
+  multiples.panels[4].points = multiples.panels[4].points.slice(0, 2);
+  assert.ok(hasError(topic, 'panel "Kerch Strait": ends at "2026-08" but its own coverage runs to "2026-09"'));
+  multiples.panels[2].points = [...multiples.panels[2].points].reverse();
+  assert.ok(hasError(topic, 'panel "Suez Canal": points must run forwards in time, with no repeats'));
+  multiples.panels[3].name = 'Suez Canal';
+  assert.ok(hasError(topic, 'panel names must be unique'));
+  multiples.panels[4].coverage = { from: '2026-05', to: '2026-09' };
+  assert.ok(hasError(topic, 'its own coverage 2026-05–2026-09 runs outside the figure\'s 2026-06–2026-09'));
+});
+
+test('small multiples: when every panel has its own coverage the figure\'s is their union', () => {
+  const { topic, fact } = figuresTopic();
+  const multiples = figureOf(fact, 'smallMultiples');
+  for (const panel of multiples.panels) panel.coverage ??= { from: '2026-06', to: '2026-09' };
+  multiples.coverage = { from: '2026-06', to: '2026-10' };
+  assert.ok(hasError(topic, 'coverage 2026-06–2026-10 must be the union of its panels\' ranges, 2026-06–2026-09'));
+});
+
+test('F6: a date column holds partial dates', () => {
+  const { topic, fact } = figuresTopic();
+  const table = figureOf(fact, 'dataTable');
+  table.columns[0].format = 'date';
+  assert.deepEqual(validateTopic(topic), []);
+  table.rows[0].year = '2025-13';
+  assert.ok(hasError(topic, 'column "year" is a date column, so "2025-13" must be YYYY, YYYY-MM or YYYY-MM-DD'));
+});
+
+test('F7: an approximate timeline date is placed at its year for the end-before-start check', () => {
+  const { topic, fact } = figuresTopic();
+  const event = figureOf(fact, 'timeline').events[0];
+  event.date = 'c. 1984';
+  event.endDate = '1985';
+  assert.deepEqual(validateTopic(topic), []);
+  event.date = '1990s';
+  assert.ok(hasError(topic, 'ends before it starts'));
+});
+
+test('F10: a composition row adds up to its stated total, or to 100 for percentages, within rounding', () => {
+  const { topic, fact } = figuresTopic();
+  const composition = figureOf(fact, 'compositionBar');
+  composition.rows[0].total = 3636;
+  assert.deepEqual(validateTopic(topic), []);
+  composition.rows[0].total = 3640;
+  assert.ok(hasError(topic, 'row "HRANA, 7 Apr" sums to 3636, not 3640 — more than rounding (±1.5) can explain'));
+  composition.rows[0].total = undefined;
+  composition.unit = 'percent';
+  composition.rows = [{ label: 'Thirds', values: { civilian: 33.3, military: 33.3, unclassified: 33.3 }, sources: [12] }];
+  // 99.9 is within three parts' rounding at one decimal (±0.15).
+  assert.deepEqual(validateTopic(topic), []);
+  composition.rows[0].values.unclassified = 33.1;
+  assert.ok(hasError(topic, 'row "Thirds" sums to 99.7, not 100 — more than rounding (±0.15) can explain'));
+});
+
+test('the composition tolerance is half a unit in each part\'s own last place', () => {
+  assert.equal(compositionSumError([33, 33.5, 33.6], 100), undefined); // 100.1, within 0.5 + 0.05 + 0.05
+  assert.match(compositionSumError([50, 48], 100) ?? '', /sums to 98, not 100/); // 98, beyond 0.5 + 0.5
+  assert.equal(compositionSumError([1, 2], undefined), undefined);
+  assert.equal(compositionSumError([{ value: 40, qualifier: 'about' }, { low: 55, high: 65 }], 100), undefined);
+});
+
+test('F8: a key figure qualifies its value in one place', () => {
+  const { topic, fact } = figuresTopic();
+  const audit = figureOf(fact, 'keyFigures').figures[0];
+  audit.value = { value: 7200, qualifier: 'more than' };
+  assert.ok(hasError(topic, '"signatures re-examined" gives its qualifier or wording beside a qualified value'));
+  audit.qualifier = undefined;
+  audit.asPublished = undefined;
+  assert.deepEqual(validateTopic(topic), []);
+});
+
+test('F10: a range\'s high end counts for domainMax, and a composition part may not be negative', () => {
+  const { topic, fact } = figuresTopic();
+  const bars = figureOf(fact, 'barChart', 'deaths-by-region');
+  bars.domainMax = 150;
+  bars.items = bars.items.map(item => (item.label === 'East' ? item : { ...item, value: 10 }));
+  assert.deepEqual(validateTopic(topic), []);
+  bars.domainMax = 70;
+  assert.ok(hasError(topic, "domainMax must be at least every value, a range's high end included"));
+  bars.domainMax = undefined;
+  figureOf(fact, 'compositionBar').rows[0].values.civilian = { low: -1, high: 2 };
+  assert.ok(hasError(topic, 'row "HRANA, 7 Apr" has a negative part'));
+});
+
 test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
   const { topic, fact } = figuresTopic();
   const check = figureOf(fact, 'claimCheck');
-  check.evidence = { fact: 'mail-ballot-privacy', section: 'nope' };
-  assert.ok(hasError(topic, 'unknown section "nope" in fact "mail-ballot-privacy"'));
+  check.evidence = { fact: 'figure-examples', section: 'nope' };
+  assert.ok(hasError(topic, 'unknown section "nope" in fact "figure-examples"'));
   check.evidence = { fact: 'nope' };
   assert.ok(hasError(topic, 'evidence names "nope", which is not a fact in this topic'));
 });
@@ -789,8 +1050,8 @@ test('F12: a claim check\'s evidence is a fact, and its section exists', () => {
 
 test('F1, F2, F5: the categorical tile map, geo map and scatter plot are held to the shared rules', () => {
   const { topic, fact } = figuresTopic();
-  figureOf(fact, 'tileMap', 'voter-id-rules').id = 'federal-laws';
-  figureOf(fact, 'geoMap').sources = [99];
+  figureOf(fact, 'map', 'voter-id-rules').id = 'federal-laws';
+  figureOf(fact, 'map', 'postal-voting').sources = [99];
   figureOf(fact, 'scatterPlot').sources = [];
   assert.ok(hasError(topic, 'figure federal-laws: id "federal-laws" is already used'));
   assert.ok(hasError(topic, 'figure postal-voting: cites source 99'));
@@ -799,21 +1060,21 @@ test('F1, F2, F5: the categorical tile map, geo map and scatter plot are held to
 
 test('F9, categorical: category ids are unique', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.categories![1] = { ...map.categories![1], id: 'strict-photo' };
   assert.ok(hasError(topic, 'figure voter-id-rules: category ids must be unique'));
 });
 
 test('F9, categorical: category marks are unique', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.categories![1] = { ...map.categories![1], mark: 'SP' };
   assert.ok(hasError(topic, 'figure voter-id-rules: category marks must be unique'));
 });
 
 test('F9, categorical: every assignment names a category, bare or with a note', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.areas = { ...map.areas, GA: 'nope', AR: { category: 'also-nope', note: 'n' } };
   assert.ok(hasError(topic, '"GA" has unknown category "nope"'));
   assert.ok(hasError(topic, '"AR" has unknown category "also-nope"'));
@@ -821,14 +1082,14 @@ test('F9, categorical: every assignment names a category, bare or with a note', 
 
 test('F9, categorical: area ids belong to the preset', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   map.areas = { ...map.areas, XX: 'none' };
   assert.ok(hasError(topic, 'figure voter-id-rules: "XX" is not an area of us-states'));
 });
 
 test('F9, categorical: an area with no category needs a note saying why', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'tileMap', 'voter-id-rules');
+  const map = figureOf(fact, 'map', 'voter-id-rules');
   delete map.areas!.VT;
   assert.ok(hasError(topic, 'figure voter-id-rules: has no data for VT — say why in `note`'));
   map.note = 'Vermont is not yet coded.';
@@ -837,28 +1098,28 @@ test('F9, categorical: an area with no category needs a note saying why', () => 
 
 test('F9, geo map: area, highlight and inset ids belong to the preset', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'geoMap');
-  map.areas = { ...map.areas, LI: 'all' };
+  const map = figureOf(fact, 'map', 'postal-voting');
+  map.areas = { ...map.areas, ZZ: 'all' };
   map.highlight = ['XX'];
   map.insets = [{ regionIds: ['YY'] }];
-  assert.ok(hasError(topic, 'figure postal-voting: "LI" is not an area of world'));
+  assert.ok(hasError(topic, 'figure postal-voting: "ZZ" is not an area of world'));
   assert.ok(hasError(topic, 'figure postal-voting: highlight "XX" is not an area of world'));
   assert.ok(hasError(topic, 'figure postal-voting: inset area "YY" is not an area of world'));
 });
 
 test('F9, geo map: a gap needs a note, and a long list of gaps is shortened', () => {
   const { topic, fact } = figuresTopic();
-  figureOf(fact, 'geoMap').note = undefined;
+  figureOf(fact, 'map', 'postal-voting').note = undefined;
   const error = validateTopic(topic).find(e => e.includes('figure postal-voting: has no data'));
   assert.ok(error, 'expected a missing-note error');
   assert.match(error, /and \d+ more — say why in `note`/);
 });
 
-test('F9, numeric geo map: the tile map\'s numeric rules apply', () => {
+test('F9, numeric map on real shapes: the tile map\'s numeric rules apply', () => {
   const { topic, fact } = figuresTopic();
-  const map = figureOf(fact, 'geoMap');
+  const map = figureOf(fact, 'map', 'postal-voting');
   Object.assign(map, {
-    regions: 'uk-itl1',
+    preset: 'uk-regions',
     categoryLabel: undefined,
     categories: undefined,
     areas: undefined,
@@ -869,7 +1130,7 @@ test('F9, numeric geo map: the tile map\'s numeric rules apply', () => {
     breaks: [0, 2, 1],
     domain: [5, 1],
   });
-  assert.ok(hasError(topic, 'figure postal-voting: "not-a-region" is not an area of uk-itl1'));
+  assert.ok(hasError(topic, 'figure postal-voting: "not-a-region" is not an area of uk-regions'));
   assert.ok(hasError(topic, 'figure postal-voting: breaks must be strictly ascending'));
   assert.ok(hasError(topic, 'figure postal-voting: domain must run from low to high'));
 });
@@ -911,6 +1172,16 @@ test('scatter plot: highlight ids are point ids', () => {
   const { topic, fact } = figuresTopic();
   figureOf(fact, 'scatterPlot').highlight = ['tx'];
   assert.ok(hasError(topic, 'figure count-speed: highlight "tx" is not a point'));
+});
+
+test('a figure\'s replaced anchors are link targets, and may not clash with another id', () => {
+  const { topic, fact } = figuresTopic();
+  topic.viewpoints[0].body = 'See [the laws](#fact-figure-examples/federal-laws-list).';
+  assert.deepEqual(validateTopic(topic), []);
+  figureOf(fact, 'barChart').replaces = ['federal-laws-list', 'chart-federal-laws', 'older-law'];
+  assert.ok(hasError(topic, 'figure wa-by-race: replaces "federal-laws-list", which another figure already replaces'));
+  assert.ok(hasError(topic, 'figure wa-by-race: replaces "chart-federal-laws", which is the id of a chart or figure'));
+  assert.ok(hasError(topic, 'figure wa-by-race: replaces "older-law", which is still an anchor in the body'));
 });
 
 test('a viewpoint may cite a component figure by its chart id', () => {
@@ -995,7 +1266,7 @@ test('a "not measured since" band may not end after the topic was last updated, 
 test('an event inside a "not measured since" band passes; its end defaults to lastUpdated', () => {
   const t = topicWithSeries({
     notMeasuredSince: { label: 'Not verified', note: 'Access ended.', source: 1 },
-    events: [{ period: '2001', label: 'verification stops' }],
+    events: [{ period: '2001', label: 'verification stops', sources: [] }],
   });
   assert.deepEqual(validateTopic(t), []);
 });
@@ -1033,8 +1304,8 @@ test('preview charts: each must resolve to a chart on a fact in the topic', () =
   const t = previewedTopic();
   t.previewCharts = [{ fact: 'alpha', chart: 'shares' }, { fact: 'alpha', chart: 'nope' }, { fact: 'missing', chart: 'series' }];
   const errors = validateTopic(t);
-  assert.ok(errors.includes('topic: preview chart alpha/nope does not resolve to a chart'), errors.join('\n'));
-  assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart alpha/nope does not resolve to a chart or figure'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart or figure'), errors.join('\n'));
 });
 
 test('preview charts: the same chart may not be listed twice', () => {
@@ -1075,6 +1346,31 @@ test('a mark that lands on its chart passes', () => {
   assert.deepEqual(markErrors({ up: { at: '1992' } }), []);
 });
 
+/** A row each kind that takes marks would name, from the figure fixture's example of it. */
+function firstRow(figure: ReturnType<typeof figureExamplesFact>['figures'] extends (infer F)[] | undefined ? F : never): string | undefined {
+  switch (figure.kind) {
+    case 'barChart': return figure.items[0].label;
+    case 'compositionBar': return figure.rows[0].label;
+    case 'estimateRange': return figure.estimates[0].label;
+    case 'smallMultiples': return figure.panels[0].name;
+    case 'timeline': return figure.events[0].title;
+    case 'periodTimeline': return figure.rows[0].label;
+    case 'quotes': return figure.quotes[0].speaker;
+    case 'map': return Object.keys(figure.areas ?? figure.data ?? {})[0];
+    default: return undefined;
+  }
+}
+
+test('a mark can name a row of every kind of figure that takes them, and only a real one', () => {
+  const example = figureExamplesFact();
+  const figures = example.figures!.flatMap(figure => { const row = firstRow(figure); return row && 'id' in figure && figure.id ? [{ id: figure.id, kind: figure.kind, row }] : []; });
+  assert.deepEqual([...new Set(figures.map(f => f.kind))].sort(), ['barChart', 'compositionBar', 'estimateRange', 'map', 'periodTimeline', 'quotes', 'smallMultiples', 'timeline']);
+  const body = figures.map(({ id }) => `## Observations {#${example.id}--observations-${id}}\n\n### Seen {#${example.id}--seen-${id}}\n\nText.`).join('\n\n');
+  const errors = (marks: Fact['observationMarks']) => validateTopic(figureExamplesTopic({ ...example, body: `${example.body}\n\n${body}`, observationMarks: marks })).filter(error => error.includes('observation mark'));
+  assert.deepEqual(errors(Object.fromEntries(figures.map(f => [`seen-${f.id}`, { rows: [f.row] }]))), []);
+  for (const f of figures) assert.match(errors({ [`seen-${f.id}`]: { rows: ['No such row'] } })[0], /names "No such row", which is not a row/, f.kind);
+});
+
 test('a mark must name what is on its chart', () => {
   assert.match(markErrors({ gone: { lines: ['Immigration'] } })[0], /"gone" is not an observation of a chart/);
   assert.match(markErrors({ up: { lines: ['B'] } })[0], /names "B", which is not a line of people/);
@@ -1084,4 +1380,41 @@ test('a mark must name what is on its chart', () => {
   assert.match(markErrors({ up: { rows: ['UK'] } })[0], /is a line chart/);
   assert.match(markErrors({ low: { rows: ['France'] } })[0], /names "France", which is not a row of c/);
   assert.match(markErrors({ low: { lines: ['Immigration'] } })[0], /its chart has rows/);
+});
+
+/** The figure fixture with every viewpoint citing its fact, so a preview of any of its figures covers them all. */
+function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
+  const t = figureExamplesTopic();
+  for (const v of t.viewpoints) v.body = 'See [the figures](#fact-figure-examples).';
+  t.previewCharts = previewCharts;
+  return t;
+}
+
+test('preview charts: a graph-like figure of every previewable kind may be previewed', () => {
+  const ids = ['wa-by-race', 'hours-to-count', 'war-powers-votes', 'chokepoint-traffic', 'deaths-by-counter', 'cost-estimates', 'count-speed', 'rejection-by-state', 'postal-voting', 'court-record', 'war-periods', 'audit-recheck'];
+  assert.deepEqual(validateTopic(previewedFigures(ids.map(chart => ({ fact: 'figure-examples', chart })))), []);
+});
+
+test('preview charts: a text figure is rejected, naming its kind', () => {
+  const t = previewedFigures(['federal-laws', 'damage-claims', 'carter-baker', 'one-in-five', 'detected-is-a-floor'].map(chart => ({ fact: 'figure-examples', chart })));
+  const errors = validateTopic(t);
+  for (const [id, kind] of [['federal-laws', 'dataTable'], ['damage-claims', 'quotes'], ['carter-baker', 'pullQuote'], ['one-in-five', 'claimCheck'], ['detected-is-a-floor', 'caveatList']]) {
+    assert.ok(errors.some(e => e.startsWith(`topic: preview chart figure-examples/${id} is a ${kind} figure, which has no graph to preview`)), errors.join('\n'));
+  }
+});
+
+test('preview charts: a body section placed by figures is not a figure a slide can draw', () => {
+  const errors = validateTopic(previewedFigures([{ fact: 'figure-examples', chart: 'freedom-to-vote-act-provisions' }]));
+  assert.ok(errors.includes('topic: preview chart figure-examples/freedom-to-vote-act-provisions does not resolve to a chart or figure'), errors.join('\n'));
+});
+
+test('preview charts: a figure has no readings to name', () => {
+  const errors = validateTopic(previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race', reading: 'people' }]));
+  assert.ok(errors.includes('topic: preview chart figure-examples/wa-by-race is not a series, so it cannot name a reading'), errors.join('\n'));
+});
+
+test('preview charts: a previewed figure counts its fact towards every viewpoint citing it', () => {
+  const t = previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race' }]);
+  t.viewpoints[1].body = 'Cites no fact.';
+  assert.deepEqual(validateTopic(t), ['topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts']);
 });

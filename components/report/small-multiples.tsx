@@ -3,8 +3,8 @@ import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
 import { tickLabels } from './bar-layout';
 import { formatDate, formatValue } from './format';
 import { layoutPanels, type PanelInput } from './small-multiples-layout';
-import type { SourceCredit, ValueFormat } from './types';
-import { ReportFigure } from './figure';
+import type { FigurePreview, SourceCredit, ValueFormat } from './types';
+import { ReportFigure, SourceCredits } from './figure';
 
 export type { PanelInput as SmallMultiplesPanel, PanelPoint as SmallMultiplesPoint } from './small-multiples-layout';
 
@@ -28,6 +28,17 @@ export type SmallMultiplesProps = {
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
+  /** Rendered after the source line and before "About this data": the figure's Observations. */
+  footer?: ReactNode;
+  /** Drawn in a data panel: filling the panel, its description and note folded into one line. */
+  panel?: boolean;
+  /**
+   * Draw the compact preview: the linked title, one line naming the measure,
+   * the scale and the date range, and every panel with its name, latest value
+   * and line on its gridlines — clamped to fit the slide, never dropped. Tick
+   * labels, per-panel dates and sources stay on the full figure.
+   */
+  preview?: FigurePreview;
 };
 
 /**
@@ -53,19 +64,27 @@ export function SmallMultiples({
   description,
   sources,
   note,
+  footer,
+  panel,
+  preview,
 }: SmallMultiplesProps) {
   const layout = layoutPanels(panels, { independentScales, zeroBased });
   const first = layout.periods[0];
   const last = layout.periods.at(-1);
 
+  const scaleText = independentScales ? 'each panel has its own scale' : 'all panels share one scale';
+
   const graph = (
-    <ul className="sv-multiples__grid">
+    <ul className="sv-multiples__grid" data-preview={preview ? 'true' : undefined}>
       {layout.panels.map((panel, index) => {
         const source = panels[index];
         const latest = panel.last?.point;
         return (
-          <li key={panel.name} className="sv-multiples__panel">
-            <h3 className="sv-multiples__name">{panel.name}</h3>
+          <li key={panel.name} className="sv-multiples__panel" data-row={panel.name} data-highlight={source.highlight || undefined}>
+            <h3 className="sv-multiples__name">
+              {panel.name}
+              {source.sources && !preview && <SourceCredits sources={source.sources} />}
+            </h3>
             <p className="sv-multiples__latest">
               {latest ? (
                 <>
@@ -83,7 +102,7 @@ export function SmallMultiples({
             >
               {tickLabels(panel.ticks.map(t => t.value), format).map((tick, i) => (
                 <span key={tick.value} className="sv-multiples__tick" style={{ top: `${panel.ticks[i].y}%` }} aria-hidden="true">
-                  {tick.label !== null && <span className="sv-multiples__tick-label">{tick.label}</span>}
+                  {tick.label !== null && !preview && <span className="sv-multiples__tick-label">{tick.label}</span>}
                 </span>
               ))}
               <svg className="sv-multiples__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -93,15 +112,28 @@ export function SmallMultiples({
                 <span className="sv-multiples__end" style={{ left: `${panel.last.x}%`, top: `${panel.last.y}%` }} aria-hidden="true" />
               )}
             </div>
-            <p className="sv-multiples__range" aria-hidden="true">
-              <span>{first && formatDate(first)}</span>
-              <span>{last && formatDate(last)}</span>
-            </p>
+            {!preview && (
+              <p className="sv-multiples__range" aria-hidden="true">
+                <span>{first && formatDate(first)}</span>
+                <span>{last && formatDate(last)}</span>
+              </p>
+            )}
           </li>
         );
       })}
     </ul>
   );
+
+  if (preview) {
+    return (
+      <ReportFigure id={id} title={title} preview={preview} className="sv-multiples">
+        <p className="sv-chart__axis-label">
+          {valueLabel} · {scaleText}{first && last ? ` · ${formatDate(first)}–${formatDate(last)}` : ''}
+        </p>
+        {graph}
+      </ReportFigure>
+    );
+  }
 
   const byPanel = panels.map(panel => new Map(panel.points.map(point => [point.period, point.value])));
   const table = (
@@ -111,7 +143,7 @@ export function SmallMultiples({
         <thead>
           <tr>
             <th scope="col" className="sv-data__th-text">{periodLabel}</th>
-            {panels.map(panel => <th key={panel.name} scope="col">{panel.name}</th>)}
+            {panels.map(panel => <th key={panel.name} scope="col" data-highlight={panel.highlight || undefined}>{panel.name}</th>)}
           </tr>
         </thead>
         <tbody>
@@ -130,10 +162,10 @@ export function SmallMultiples({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} className="sv-multiples">
+    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-multiples">
       <p className="sv-chart__axis-label">
         {valueLabel}
-        {independentScales ? ' · each panel has its own scale' : ' · all panels share one scale'}
+        {' · '}{scaleText}
       </p>
       <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
     </ReportFigure>

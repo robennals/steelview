@@ -6,6 +6,9 @@
  *
  * Positions are a compromise between geography and a clean grid. Neighbours
  * stay neighbours where possible; exact adjacency cannot survive the grid.
+ * A tile may span a few cells where one cell would pull its neighbours too
+ * far from their places; spans stay small, so every area keeps roughly the
+ * same weight and the smallest stay as easy to see and to click.
  */
 
 export type MapTile = {
@@ -15,9 +18,12 @@ export type MapTile = {
   code: string;
   /** Full name, used in the readout and the table. */
   name: string;
-  /** Zero-based grid position. */
+  /** Zero-based grid position of the tile's top-left cell. */
   row: number;
   col: number;
+  /** Width and height in cells. Default 1. */
+  w?: number;
+  h?: number;
 };
 
 /** The UK's twelve ITL1 regions, ids matching `UK_ITL1_REGIONS`. */
@@ -37,9 +43,14 @@ export const UK_REGION_TILES: MapTile[] = [
 ];
 
 /**
- * The EU27 plus the UK, Norway, Switzerland and Iceland, keyed by ISO 3166-1
- * alpha-2 code ("GB" for the UK, shown as "UK"; "GR" for Greece, which
- * Eurostat writes "EL" — map Eurostat tables onto these ids when joining).
+ * The EU27, the four EFTA states (Iceland, Liechtenstein, Norway,
+ * Switzerland) and the UK — every country in Eurostat's "EU+" tables — keyed
+ * by ISO 3166-1 alpha-2 code ("GB" for the UK, shown as "UK"; "GR" for
+ * Greece, which Eurostat writes "EL" — map Eurostat tables onto these ids
+ * when joining). Liechtenstein takes the cell under Switzerland, with Italy
+ * one to the west of it, under France: there is no free cell between
+ * Switzerland and Austria, and Italy still borders France, Switzerland and
+ * Malta.
  */
 export const EUROPE_COUNTRY_TILES: MapTile[] = [
   { id: 'IS', code: 'IS', name: 'Iceland', row: 0, col: 0 },
@@ -66,11 +77,12 @@ export const EUROPE_COUNTRY_TILES: MapTile[] = [
   { id: 'RO', code: 'RO', name: 'Romania', row: 4, col: 7 },
   { id: 'PT', code: 'PT', name: 'Portugal', row: 5, col: 1 },
   { id: 'ES', code: 'ES', name: 'Spain', row: 5, col: 2 },
-  { id: 'IT', code: 'IT', name: 'Italy', row: 5, col: 4 },
+  { id: 'IT', code: 'IT', name: 'Italy', row: 5, col: 3 },
+  { id: 'LI', code: 'LI', name: 'Liechtenstein', row: 5, col: 4 },
   { id: 'SI', code: 'SI', name: 'Slovenia', row: 5, col: 5 },
   { id: 'HR', code: 'HR', name: 'Croatia', row: 5, col: 6 },
   { id: 'BG', code: 'BG', name: 'Bulgaria', row: 5, col: 7 },
-  { id: 'MT', code: 'MT', name: 'Malta', row: 6, col: 4 },
+  { id: 'MT', code: 'MT', name: 'Malta', row: 6, col: 3 },
   { id: 'GR', code: 'GR', name: 'Greece', row: 6, col: 7 },
   { id: 'CY', code: 'CY', name: 'Cyprus', row: 6, col: 8 },
 ];
@@ -78,10 +90,22 @@ export const EUROPE_COUNTRY_TILES: MapTile[] = [
 /**
  * The fifty US states plus the District of Columbia, keyed by USPS
  * two-letter code. The widely used NPR-style layout, with Alaska and Hawaii
- * in the left-hand corners.
+ * in the left-hand corners, and three states drawn larger where the extra
+ * cells were empty in that layout, so no neighbour moves:
+ *
+ * - Alaska, 2×2, in the top-left corner it already had to itself.
+ * - California, 1×2, running down the coast beside Utah and Arizona, so
+ *   it now borders Arizona as it does on the map.
+ * - Texas, 2×2, under New Mexico and beside Oklahoma — both real borders —
+ *   where the one-cell layout left it alone on the bottom row under
+ *   Oklahoma. (It now also sits under Arizona, which it does not touch.)
+ *
+ * Montana is left at one cell: widening it either pushes North Dakota off
+ * South Dakota or leaves a hole in the Rockies, a worse distortion than a
+ * small Montana.
  */
 export const US_STATE_TILES: MapTile[] = [
-  { id: 'AK', code: 'AK', name: 'Alaska', row: 0, col: 0 },
+  { id: 'AK', code: 'AK', name: 'Alaska', row: 0, col: 0, w: 2, h: 2 },
   { id: 'ME', code: 'ME', name: 'Maine', row: 0, col: 11 },
   { id: 'VT', code: 'VT', name: 'Vermont', row: 1, col: 10 },
   { id: 'NH', code: 'NH', name: 'New Hampshire', row: 1, col: 11 },
@@ -106,7 +130,7 @@ export const US_STATE_TILES: MapTile[] = [
   { id: 'PA', code: 'PA', name: 'Pennsylvania', row: 3, col: 8 },
   { id: 'NJ', code: 'NJ', name: 'New Jersey', row: 3, col: 9 },
   { id: 'CT', code: 'CT', name: 'Connecticut', row: 3, col: 10 },
-  { id: 'CA', code: 'CA', name: 'California', row: 4, col: 1 },
+  { id: 'CA', code: 'CA', name: 'California', row: 4, col: 1, h: 2 },
   { id: 'UT', code: 'UT', name: 'Utah', row: 4, col: 2 },
   { id: 'CO', code: 'CO', name: 'Colorado', row: 4, col: 3 },
   { id: 'NE', code: 'NE', name: 'Nebraska', row: 4, col: 4 },
@@ -130,6 +154,21 @@ export const US_STATE_TILES: MapTile[] = [
   { id: 'AL', code: 'AL', name: 'Alabama', row: 6, col: 7 },
   { id: 'GA', code: 'GA', name: 'Georgia', row: 6, col: 8 },
   { id: 'HI', code: 'HI', name: 'Hawaii', row: 7, col: 0 },
-  { id: 'TX', code: 'TX', name: 'Texas', row: 7, col: 4 },
+  { id: 'TX', code: 'TX', name: 'Texas', row: 6, col: 2, w: 2, h: 2 },
   { id: 'FL', code: 'FL', name: 'Florida', row: 7, col: 9 },
+];
+
+/**
+ * The five inhabited US territories, keyed by USPS code, as a row under the
+ * states: the Pacific three under Hawaii, Puerto Rico and the US Virgin
+ * Islands under Florida, one empty row above so they read as apart from the
+ * states. Shown only when a figure has data for one of them (see
+ * `mapAreas` in lib/content/map-presets.ts).
+ */
+export const US_TERRITORY_TILES: MapTile[] = [
+  { id: 'GU', code: 'GU', name: 'Guam', row: 9, col: 0 },
+  { id: 'MP', code: 'MP', name: 'Northern Mariana Islands', row: 9, col: 1 },
+  { id: 'AS', code: 'AS', name: 'American Samoa', row: 9, col: 2 },
+  { id: 'PR', code: 'PR', name: 'Puerto Rico', row: 9, col: 9 },
+  { id: 'VI', code: 'VI', name: 'US Virgin Islands', row: 9, col: 10 },
 ];

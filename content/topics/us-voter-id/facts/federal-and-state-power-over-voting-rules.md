@@ -564,9 +564,11 @@ comparisons:
     domainMax: 100
     sources: [23, 27]
     items:
-      - label: 'Freedom to Vote: John R. Lewis Act (Democratic), 19 Jan 2022'
+      - label: "Freedom to Vote: John R. Lewis Act"
+        detail: "Democratic, 19 Jan 2022"
         value: 49
-      - label: 'S. 5271, photo ID only (Republican), 8 Aug 2026'
+      - label: "S. 5271, photo ID only"
+        detail: "Republican, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
         value: 60
@@ -720,8 +722,6 @@ figures:
         does: { value: 'DHS citizenship checks of whole voter rolls against linked Social Security records. The government reports more than 65 million voters verified in 26 states and 28,635 flagged as potential non-citizens', sources: [39, 38] }
         status: { value: 'Blocked by a district judge in June 2026; that order stayed by the Supreme Court, 25 Sep 2026', sources: [37, 39] }
 ---
-This report is a dated legal record. It is as of 23 October 2026, ten days before the midterms, and several items will change soon: the SAVE America Act in a lame-duck session, the First Circuit appeals, and the litigation over the SAVE database.
-
 ## Observations {#federal-and-state-power-over-voting-rules--observations-elections-clause}
 
 ### The Elections Clause names state legislatures and Congress, not the President {#federal-and-state-power-over-voting-rules--elections-clause-text}
@@ -829,7 +829,7 @@ The only merits rulings on presidential power so far are the two district-court 
 
 A district judge blocked the revamped SAVE system in June 2026 under the Social Security Act, the Privacy Act and the Administrative Procedure Act. [39](#source-federal-and-state-power-over-voting-rules-39) In September the Supreme Court stayed that order, saying it stopped "individualized inquiries, which are permitted under federal law" during the 90 days before an election. [37](#source-federal-and-state-power-over-voting-rules-37)
 
-The checks and flags in the table are the government's own figures, and its opponents said no error rate had been released. [38](#source-federal-and-state-power-over-voting-rules-38) What those flags turned out to be is in [the report on non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls).
+The government's own counts of voters checked and flagged, and what those flags turned out to be, are in [the report on non-citizens on voter rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). Its opponents said no error rate had been released. [38](#source-federal-and-state-power-over-voting-rules-38)
 
 ### States still set most ID rules, and those rules keep changing {#federal-and-state-power-over-voting-rules--state-rules-vary}
 
@@ -837,13 +837,19 @@ The number of states asking for ID at the polls has nearly tripled since 2000, r
 
 The Supreme Court let New Hampshire enforce a new law dropping student IDs on 22 October 2026, saying lower federal courts "should ordinarily not alter the election rules on the eve of an election". [43](#source-federal-and-state-power-over-voting-rules-43) The state-by-state detail and its trend are in [the report on voter ID rules](#fact-voter-id-rules-in-the-us-and-abroad).
 
-## Subtleties {#federal-and-state-power-over-voting-rules--subtleties}
+## More {#federal-and-state-power-over-voting-rules--more-elections-clause}
+
+This report is a dated legal record. It is as of 23 October 2026, ten days before the midterms, and several items will change soon: the SAVE America Act in a lame-duck session, the First Circuit appeals, and the litigation over the SAVE database.
+
+## Subtleties {#federal-and-state-power-over-voting-rules--subtleties-senate-votes}
 
 ### This is a legal record, so it has no trend chart {#federal-and-state-power-over-voting-rules--no-time-series}
 
 Laws, orders and rulings are dated events, not quantities measured each year, so there is no time series of federal power to plot. This report's chart compares Senate votes instead.
 
-The one countable trend in this area, the number of states with ID laws, is charted in [the voter ID rules report](#fact-voter-id-rules-in-the-us-and-abroad) to keep one copy of that data. Its NCSL counts are quoted above. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41)
+The one countable trend in this area, the number of states with ID laws, is charted in [the voter ID rules report](#fact-voter-id-rules-in-the-us-and-abroad) to keep one copy of that data. Its NCSL counts are quoted in this report's sources. [40](#source-federal-and-state-power-over-voting-rules-40) [41](#source-federal-and-state-power-over-voting-rules-41)
+
+## Subtleties {#federal-and-state-power-over-voting-rules--subtleties-holdings}
 
 ### "The courts blocked Trump's election order" mixes up two orders {#federal-and-state-power-over-voting-rules--two-orders-two-outcomes}
 

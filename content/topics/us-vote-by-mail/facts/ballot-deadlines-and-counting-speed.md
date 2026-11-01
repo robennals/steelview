@@ -439,55 +439,9 @@ comparisons:
         value: 3
       - label: Texas
         value: 1
-      - label: 'The other 35 states (receipt by Election Day)'
+      - label: "The other 35 states"
+        detail: "Receipt by Election Day"
         value: 0
-        highlight: true
-  - id: hours-to-count
-    title: 'Hours to count 95% of the presidential vote, seven battleground states, 2020 and 2024'
-    description: 'Hours after polls closed until 95% of the two-party presidential vote had been reported (MIT Election Lab, from Edison Research data).'
-    unit: count
-    valueLabel: 'Hours'
-    sources: [10]
-    note: >-
-      MIT's Table 1, which covers only these seven states. MIT says the hours
-      "may be overstated by the duration of the media reporting process, plus
-      up to half an hour". Nationally, a majority of the 2024 vote was counted
-      in about 2 hours.
-    items:
-      - label: 'Arizona 2020'
-        value: 73
-      - label: 'Arizona 2024'
-        value: 147
-        highlight: true
-      - label: 'Nevada 2020'
-        value: 159
-      - label: 'Nevada 2024'
-        value: 51
-        highlight: true
-      - label: 'Pennsylvania 2020'
-        value: 49
-      - label: 'Pennsylvania 2024'
-        value: 8
-        highlight: true
-      - label: 'Georgia 2020'
-        value: 18
-      - label: 'Georgia 2024'
-        value: 5
-        highlight: true
-      - label: 'Michigan 2020'
-        value: 17
-      - label: 'Michigan 2024'
-        value: 9
-        highlight: true
-      - label: 'Wisconsin 2020'
-        value: 8
-      - label: 'Wisconsin 2024'
-        value: 9
-        highlight: true
-      - label: 'North Carolina 2020'
-        value: 3
-      - label: 'North Carolina 2024'
-        value: 6
         highlight: true
   - id: preprocessing-four-hours
     title: 'Share of votes reported four hours after polls closed, by whether states allowed mail ballots to be processed early, 2020'
@@ -523,8 +477,30 @@ figures:
     id: late-share-series
   - kind: comparison
     id: grace-windows
-  - kind: comparison
+  - kind: barChart
     id: hours-to-count
+    title: 'Hours to count 95% of the presidential vote, seven battleground states, 2020 and 2024'
+    description: 'Hours after polls closed until 95% of the two-party presidential vote had been reported (MIT Election Lab, from Edison Research data).'
+    valueLabel: Hours
+    categoryLabel: State
+    format: { unit: count }
+    sources: [10]
+    note: >-
+      MIT's Table 1, which covers only these seven states. MIT says the hours
+      "may be overstated by the duration of the media reporting process, plus
+      up to half an hour". Nationally, a majority of the 2024 vote was counted
+      in about 2 hours.
+    series:
+      - { key: y2020, label: '2020' }
+      - { key: y2024, label: '2024' }
+    items:
+      - { label: Arizona, values: { y2020: 73, y2024: 147 } }
+      - { label: Nevada, values: { y2020: 159, y2024: 51 } }
+      - { label: Pennsylvania, values: { y2020: 49, y2024: 8 } }
+      - { label: Georgia, values: { y2020: 18, y2024: 5 } }
+      - { label: Michigan, values: { y2020: 17, y2024: 9 } }
+      - { label: Wisconsin, values: { y2020: 8, y2024: 9 } }
+      - { label: North Carolina, values: { y2020: 3, y2024: 6 } }
   - kind: comparison
     id: preprocessing-four-hours
   - kind: dataTable
@@ -790,7 +766,9 @@ On the arguments that Election Day receipt protects integrity and confidence, it
 
 The opinion said legislatures may have set Election Day deadlines because "an election-day deadline avoids the appearance of fraud from late-arriving ballots". [2](#source-ballot-deadlines-and-counting-speed-2) It did not decide whether that view is right: "The question today is not whether requiring ballots to be received by election day is a good or bad idea". [2](#source-ballot-deadlines-and-counting-speed-2)
 
-## About this data {#ballot-deadlines-and-counting-speed--about}
+## More {#ballot-deadlines-and-counting-speed--more-receipt-deadline-states}
+
+### About this report's data {#ballot-deadlines-and-counting-speed--about}
 
 **What this measures.** State law on when a mail ballot must arrive (NCSL), why returned mail ballots were rejected (EAVS), and how fast votes were reported (MIT, from Edison Research data used by news media).
 

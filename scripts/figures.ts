@@ -69,9 +69,23 @@ function spreadScale(text: string): string {
   return text.replace(SCALED_RANGE, '$1$2 $5$3$1$4 $5');
 }
 
-/** Every money / percentage / thousands figure in `text`, with a range's scale on both ends. */
+/**
+ * "Do not sum to 100%", "a 100%-minus calculation", "100% means traffic as
+ * usual": 100% as the whole a set of shares is measured against, which is
+ * arithmetic, not a figure a source must state. Only these framings are
+ * skipped — "100% of ballots were counted" is still a figure.
+ */
+const WHOLE_BEFORE = /\b(?:sums?|summing|summed|adds?|adding|added|totals?|totalling|comes?|coming)\s+(?:up\s+)?to\s+$/i;
+const WHOLE_AFTER = /^(?:-minus\b|\s+means\b)/i;
+
+function isTheWhole(text: string, index: number, figure: string): boolean {
+  return canonical(figure) === '100%' && (WHOLE_BEFORE.test(text.slice(0, index)) || WHOLE_AFTER.test(text.slice(index + figure.length)));
+}
+
+/** Every money / percentage / thousands figure in `text`, as written, with a range's scale on both ends — except 100% as the whole (`isTheWhole`). */
 export function figuresIn(text: string): string[] {
-  return (spreadScale(text).match(FIGURE) ?? []).map((f) => f.trim());
+  const spread = spreadScale(text);
+  return [...spread.matchAll(FIGURE)].filter((m) => !isTheWhole(spread, m.index, m[0])).map((m) => m[0].trim());
 }
 
 /**
@@ -93,7 +107,7 @@ export function figuresIn(text: string): string[] {
  * space groups thousands (`1 000` in French): a plain one separates columns.
  */
 const QUOTE_NUMBER =
-  /[£$€]?\d(?:[\d,]*\d)?(?:[\u00a0\u202f]\d{3})*(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
+  /[£$€]?\d(?:[\d,]*\d)?(?:[\u00a0\u2009\u202f]\d{3})*(?:\.\d+)?(?:\s*(?:billion|bn|million|mn|trillion|tn|thousand|m|k)\b)?(?:\s*(?:%|percent\b|per\s?cent\b|pct\b))?/gi;
 
 const SPELLED_NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 

@@ -2,6 +2,12 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { QuoteBrowser } from '../quote-browser';
 import { institutionQuotes } from './fixtures/quotes';
 import { illustrativeDebateQuotes } from './fixtures/illustrative-quotes';
+import { figureContext, quoteBrowserProps } from '@/lib/content/figure-props';
+import type { FigureOf } from '@/lib/content/types';
+import { figureExamplesFact } from './fixtures/figure-examples';
+
+const postalSecrecy = figureExamplesFact.figures?.find((f): f is FigureOf<'quotes'> => f.kind === 'quotes' && f.id === 'postal-secrecy');
+if (!postalSecrecy) throw new Error('the figure fixture has no postal-secrecy quotes');
 
 const meta = {
   title: 'Quotes/QuoteBrowser',
@@ -50,3 +56,11 @@ export const Searched: Story = { args: { initialSearch: 'asylum' } };
 
 /** A search that matches nothing says so, rather than leaving a gap. */
 export const NoMatches: Story = { args: { initialSearch: 'lighthouse' } };
+
+/**
+ * A `quotes` figure of more than four, as content renders it: filters by
+ * category ("Who is speaking") and by speaker, since one speaker is quoted
+ * twice. The German court's words carry their language and a translation,
+ * set beside them without quotation marks. Fixture sources.
+ */
+export const FromContent: Story = { args: quoteBrowserProps(postalSecrecy, figureContext(figureExamplesFact)) };

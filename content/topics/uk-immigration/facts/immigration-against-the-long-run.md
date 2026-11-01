@@ -3101,9 +3101,43 @@ observationMarks:
   uk-mid-table-per-head: {rows: [United Kingdom]}
   uk-fourth-by-count: {rows: [United States, Germany, Canada, United Kingdom]}
   international-reasons: {rows: [Luxembourg, Malta]}
+figures:
+- kind: series
+- kind: series
+  id: routes
+- kind: series
+  id: nationality
+- kind: series
+  id: components
+- kind: series
+  id: projections
+- kind: comparison
+  id: oecd-permanent-per-head
+- kind: comparison
+  id: oecd-permanent-count
+- kind: comparison
+  id: international-immigration
+- kind: dataTable
+  id: pledges
+  replaces: ["pledges"]
+  title: "Pledges on net migration and what happened, 2010–2024"
+  description: "What governing parties promised about the level of net migration, set against the ONS series in the first chart."
+  caption: "One row per manifesto pledge"
+  layout: cards
+  leadColumn: pledge
+  columns:
+    - { key: election, label: "Election", rowHeader: true }
+    - { key: pledge, label: "Pledge (source wording)" }
+    - { key: outcome, label: "What happened to net migration" }
+  rows:
+    - { election: "2010, Conservative", pledge: { value: "\"take net migration back to the levels of the 1990s—tens of thousands a year, not hundreds of thousands\"", sources: [38] }, outcome: "Above 100,000 in every year of the 2010s" }
+    - { election: "2015, Conservative", pledge: { value: "\"keep our ambition of delivering annual net migration in the tens of thousands\"", sources: [38] }, outcome: "Above 100,000 every year to 2019" }
+    - { election: "2017, Conservative", pledge: { value: "\"annual net migration in the tens of thousands\"", sources: [39] }, outcome: "Above 100,000 every year to 2019" }
+    - { election: "2019, Conservative", pledge: { value: "\"overall numbers will come down\" (no number)", sources: [40] }, outcome: "Rose to the 944,000 peak in the year to March 2023" }
+    - { election: "2024, Conservative", pledge: { value: "annual cap on work and family visas, with \"year-on-year reductions\"", sources: [41] }, outcome: "Not elected" }
+    - { election: "2024, Labour", pledge: { value: "reduce legal migration, no number", sources: [41] }, outcome: "171,000 in 2025, down from 331,000 in 2024" }
+    - { election: "2024, Reform UK", pledge: { value: "net migration \"should be zero\"", sources: [41] }, outcome: "Not in government" }
 ---
-813,000 people moved to the UK for a year or more in 2025 and 642,000 left, so net migration was 171,000, down from a peak of 944,000 in the year to March 2023. [1](#source-immigration-against-the-long-run-1) [21](#source-immigration-against-the-long-run-21) The charts below set that against the whole ONS series back to 1964, the routes behind the recent rise and fall, what migration does to population growth now and under official projections, other OECD countries, and what governments promised.
-
 ## Observations {#immigration-against-the-long-run--observations-people}
 
 ### Gross immigration is far above any historical norm, even after two years of falling {#immigration-against-the-long-run--gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling}
@@ -3363,23 +3397,6 @@ Poland and Slovakia exclude Ukrainians under temporary protection from these mig
 
 The comparison starts with non-EU+ foreign nationals. Switching to EU+ or all arrivals changes the ranking: these are different questions, so a high total does not by itself establish a high non-EU+ inflow. [11](#source-immigration-against-the-long-run-11) This is [gross arrivals](#glossary-gross-arrivals): countries with substantial outward migration can have high arrivals without equally high [net migration](#glossary-net-migration). [8](#source-immigration-against-the-long-run-8) [46](#source-immigration-against-the-long-run-46)
 
-
-## Pledges, outcomes and public preferences {#immigration-against-the-long-run--pledges}
-
-What governing parties promised about the level of net migration, set against the ONS series in the first chart:
-
-| Election | Pledge (source wording) | What happened to net migration |
-|---|---|---|
-| 2010, Conservative | "take net migration back to the levels of the 1990s—tens of thousands a year, not hundreds of thousands" [38](#source-immigration-against-the-long-run-38) | Above 100,000 in every year of the 2010s |
-| 2015, Conservative | "keep our ambition of delivering annual net migration in the tens of thousands" [38](#source-immigration-against-the-long-run-38) | Above 100,000 every year to 2019 |
-| 2017, Conservative | "annual net migration in the tens of thousands" [39](#source-immigration-against-the-long-run-39) | Above 100,000 every year to 2019 |
-| 2019, Conservative | "overall numbers will come down" (no number) [40](#source-immigration-against-the-long-run-40) | Rose to the 944,000 peak in the year to March 2023 |
-| 2024, Conservative | annual cap on work and family visas, with "year-on-year reductions" [41](#source-immigration-against-the-long-run-41) | Not elected |
-| 2024, Labour | reduce legal migration, no number [41](#source-immigration-against-the-long-run-41) | 171,000 in 2025, down from 331,000 in 2024 |
-| 2024, Reform UK | net migration "should be zero" [41](#source-immigration-against-the-long-run-41) | Not in government |
-
-Public preferences, latest reading: in the Ipsos and British Future tracker (fieldwork June to July 2025), 41% wanted immigration reduced "a lot", 16% reduced a little, 21% kept the same and 15% increased. [42](#source-immigration-against-the-long-run-42) Immigration's salience as an issue was below 5% in 1994, peaked at 56% in September 2015, fell to around 5% in 2020 and reached 51% in September 2025. [43](#source-immigration-against-the-long-run-43)
-
 ## Observations {#immigration-against-the-long-run--observations-pledges}
 
 ### "Tens of thousands" was met only during Covid {#immigration-against-the-long-run--tens-of-thousands-met-only-in-covid}
@@ -3388,8 +3405,12 @@ From 1998 until 2020, net migration never fell below 100,000 in any rolling year
 
 ### Pledges since 2019 have named a direction, not a number {#immigration-against-the-long-run--later-pledges-unquantified}
 
-The 2019 Conservative manifesto replaced the numerical target with a promise that numbers would "come down"; in 2024 the Conservatives proposed a cap and Labour named no number. Of the parties above, only Reform UK has named a level, zero. [40](#source-immigration-against-the-long-run-40) [41](#source-immigration-against-the-long-run-41)
+The 2019 Conservative manifesto replaced the numerical target with a promise that numbers would "come down"; in 2024 the Conservatives proposed a cap and Labour named no number. Of the parties here, only Reform UK has named a level, zero. [40](#source-immigration-against-the-long-run-40) [41](#source-immigration-against-the-long-run-41)
 
 ### A majority want lower immigration, but views softened while numbers were high {#immigration-against-the-long-run--public-preferences}
 
 57% wanted immigration reduced in 2025 (41% "a lot" plus 16% "a little"), against 35% who wanted it kept the same or increased. Opposition to immigration fell from the early 2010s to the early 2020s, while net migration stayed above 100,000, and has risen again since 2022; attitudes in 2025 were still less negative than before the early 2010s. [42](#source-immigration-against-the-long-run-42) [43](#source-immigration-against-the-long-run-43)
+
+## More {#immigration-against-the-long-run--more-pledges}
+
+Public preferences, latest reading: in the Ipsos and British Future tracker (fieldwork June to July 2025), 41% wanted immigration reduced "a lot", 16% reduced a little, 21% kept the same and 15% increased. [42](#source-immigration-against-the-long-run-42) Immigration's salience as an issue was below 5% in 1994, peaked at 56% in September 2015, fell to around 5% in 2020 and reached 51% in September 2025. [43](#source-immigration-against-the-long-run-43)

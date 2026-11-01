@@ -60,3 +60,10 @@ test('fixed keeps trailing zeros so a column of decimals lines up', () => {
   assert.equal(formatValue(16, { unit: 'percent', fixed: true }), '16.0%');
   assert.equal(formatValue(16, { unit: 'percent' }), '16%');
 });
+
+test('compact keeps the decimals asked for at any magnitude', () => {
+  assert.equal(formatValue(43_600_000_000, { unit: 'currency', currency: 'USD', compact: true, decimals: 1 }), '$43.6bn');
+  assert.equal(formatValue(12_000_000, { compact: true, decimals: 1, fixed: true }), '12.0m');
+  // Without decimals, the prose habit: one place under ten, none above.
+  assert.equal(formatValue(43_600_000_000, { unit: 'currency', currency: 'USD', compact: true }), '$44bn');
+});

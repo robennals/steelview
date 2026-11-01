@@ -19,6 +19,7 @@ import {
   yearTicks,
   dropCrowdedTicks,
   tickLabelWidth,
+  zoneLabelPlacement,
   decimate,
   layoutContext,
 } from './series-chart';
@@ -269,6 +270,12 @@ function span(from: number, to: number): Series {
     readings: [{ ...s.readings[0], lines: [{ name: 'Immigration', points: [{ period: String(from), value: 1 }, { period: String(to), value: 2 }] }] }],
   };
 }
+
+test('a zone label starts inside a zone that holds it, and ends at the right edge of one that does not', () => {
+  assert.deepEqual(zoneLabelPlacement(500, 700, 'Forecast', 12), { x: 504, anchor: 'start' });
+  // The real crude price series: a forecast of 15 months on a 50-year axis.
+  assert.deepEqual(zoneLabelPlacement(680, 700, 'Forecast', 12), { x: 696, anchor: 'end' });
+});
 
 test('tickLabelWidth allows 0.6em per character plus a gap', () => {
   assert.equal(tickLabelWidth('2020', 10), 30);

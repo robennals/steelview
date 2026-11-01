@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { allFactParams, factDescription, loadFactPage } from '@/lib/content/fact-page';
 import { factPath } from '@/lib/content/types';
+import { renderDataWalkthroughs } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
-import { FactArticle, FactCrumbs } from '@/components/topic/fact-article';
+import { DataPanel } from '@/components/topic/data-rows';
+import { BackToTopic, FactArticle } from '@/components/topic/fact-article';
+import { panelCharts } from '@/components/topic/fact-figures';
 import { FactJsonLd } from '@/components/topic/fact-json-ld';
 
 export async function generateStaticParams() {
@@ -40,13 +43,17 @@ export async function generateMetadata({
 }
 
 /**
- * A fact at its own address.
+ * A report at its own address: its data panel, the one a topic page opens in a
+ * row, with a way back to the topic and the rest of the report under it.
  *
- * This is the canonical rendering: the modal over the topic page is an
- * interception of exactly this route, showing exactly this component. Both
- * kinds of fact get a page — a supporting fact is cited as readily as a
- * headline one — and a supporting fact's page opens by naming the claim it is
- * evidence for, because that claim is what makes the detail mean anything.
+ * The sheet over a topic page is an interception of this route. Both kinds of
+ * fact get a page — a supporting fact is cited as readily as a headline one —
+ * and a supporting fact's page opens by naming the claim it is evidence for,
+ * because that claim is what makes the detail mean anything.
+ *
+ * Unlike a row's, the panel's charts are drawn here, so the page is whole
+ * without script; and its observations keep their footnotes and fact links,
+ * since the sources they point at are on this page.
  */
 export default async function FactPage({
   params,
@@ -57,13 +64,17 @@ export default async function FactPage({
   const data = await loadFactPage(slug, factId);
   if (!data) notFound();
   const { topic, fact, bodyHtml, supporting, parent } = data;
+  const walkthroughs = await renderDataWalkthroughs(topic, [fact], { citationsAsText: false, footnotes: true });
+  const steps = walkthroughs.get(fact.id) ?? [];
+  const charts = panelCharts(fact, { slug, asOf: topic.lastUpdated, facts: topic.facts }, { addressed: true });
 
   return (
-    <main className="sv-wrap sv-factmain">
+    <main className="sv-wrap sv-wrap--wide sv-factmain">
       <FactJsonLd slug={slug} topic={topic} fact={fact} />
-      <FactCrumbs slug={slug} topicTitle={topic.title} />
+      <BackToTopic slug={slug} topicTitle={topic.title} fact={fact} />
       <FactArticle
         variant="page"
+        panel={steps.length > 0 && <DataPanel slug={slug} fact={fact} steps={steps} charts={charts} />}
         slug={slug}
         fact={fact}
         bodyHtml={bodyHtml}
