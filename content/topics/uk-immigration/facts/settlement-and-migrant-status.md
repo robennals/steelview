@@ -677,7 +677,9 @@ sources:
   - stance: supports
     quote: "EUSS_QTR: Quarterly applications received and concluded to the EU settlement scheme, by outcome and nationality, 28 August 2018 to 30 June 2026 … Table 2 EUSS_QTR: Quarterly applications concluded … Settled 4,476,552"
     title: "EU Settlement Scheme quarterly statistics, June 2026: table EUSS_QTR"
-    url: "https://assets.publishing.service.gov.uk/media/6a8c11b7042872d923842818/eu-settlement-scheme-quarterly-statistics-tables-jun-2026.ods"
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a8c11b7042872d923842818/eu-settlement-scheme-quarterly-statistics-tables-jun-2026.ods
+    localFile: datasets/assets.publishing.service.gov.uk/eu-settlement-scheme-quarterly-statistics-tables-jun-2026.ods
     publisher: "Home Office"
     date: '2026-08-27'
 series:
