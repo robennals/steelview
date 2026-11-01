@@ -38,6 +38,14 @@ async function openFigures(page: Page) {
   return { viewpoint, figures };
 }
 
+/** How far `below` starts under `above`, measured at one moment as a row still opening moves both. */
+async function gapBetween(within: Locator, above: string, below: string) {
+  return within.evaluate(
+    (el, [upper, lower]) => el.querySelector(lower)!.getBoundingClientRect().top - el.querySelector(upper)!.getBoundingClientRect().bottom,
+    [above, below],
+  );
+}
+
 /** Wheel up over `table`, already at its top: the page should move instead. */
 async function expectWheelMovesPage(page: Page, table: Locator) {
   await hoverAtTop(page, table);
@@ -332,9 +340,7 @@ test('on a phone, a short bar chart takes the height it needs, neither clipped n
   for (const slide of await slides.all()) {
     const clipped = await slide.locator('.sv-slide').evaluate(el => el.scrollHeight > el.clientHeight);
     expect(clipped).toBe(false);
-    const bars = await slide.locator('.sv-comparison__rows').boundingBox();
-    const explore = await slide.locator('.sv-walk__explore').boundingBox();
-    expect(explore!.y - (bars!.y + bars!.height)).toBeLessThan(60);
+    expect(await gapBetween(slide, '.sv-comparison__rows', '.sv-walk__explore')).toBeLessThan(60);
   }
 });
 
@@ -345,9 +351,7 @@ test('on a phone, each viewpoint step explains itself directly above its chart',
   const steps = viewpoint.locator('.sv-walk__step[data-chart]');
   await expect(steps.first().locator('.sv-chart').first()).toBeAttached();
   for (const step of await steps.all()) {
-    const text = await step.locator('.sv-walk__text').boundingBox();
-    const chart = await step.locator('.sv-walk__chart').boundingBox();
-    const gap = chart!.y - (text!.y + text!.height);
+    const gap = await gapBetween(step, '.sv-walk__text', '.sv-walk__chart');
     expect(gap).toBeGreaterThanOrEqual(0);
     expect(gap).toBeLessThan(24);
   }
