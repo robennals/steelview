@@ -847,7 +847,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `keyFigures` | one to six headline numbers, each with a `period` and its own `source` (or `sources`); `qualifier: more than` for a bound |
 | `timeline` | dated events in `categories`, each with its own `source` (or `sources`); a date may be a decade (`1850s`) or a circa year (`c. 1888`) |
 | `periodTimeline` | spans per row, with point `events`; a period or event may cite its own `sources`. A period with no `to` runs to the axis end: the topic's `lastUpdated` unless the figure sets `to`. It reads "still in force" when the axis ends on `lastUpdated`, and "no end by <axis end>" when the data stops earlier (`to: '2017-06'`). A label goes inside its bar if it fits, else just right of it if that part of the row is free, else only in the legend, the hover-and-focus readout and the table — so keep labels short and name categories in `categories`. Spans under 18 months get month ticks |
-| `map` | one dataset over a preset's areas, drawn both in real shapes and as equal tiles from one legend, with a Map / Tiles / Table switch; shaded by a number or by a category. `preset: us-states`, `europe`, `uk-regions` or `world`; `default: map` (the default) or `tiles` picks the view shown first, which is also what a reader without JavaScript sees beside the table. Optional enlarged `insets` for the real-shape view. See "A map draws every area twice" below |
+| `map` | one dataset over a preset's areas, drawn both in real shapes and as tiles from one legend, with a Map / Tiles / Table switch; shaded by a number or by a category. `preset: us-states`, `europe`, `uk-regions` or `world`; `default: map` (the default) or `tiles` picks the view shown first, which is also what a reader without JavaScript sees beside the table. Optional enlarged `insets` for the real-shape view, for a single small area a reader must see at once; both views already zoom to an area when it is clicked, so a world map needs none. See "A map draws every area twice" below |
 | `tileMap`, `geoMap` | older spellings of `map`, still accepted: `tileMap` with `map: us-states`, `europe-countries` or `uk-regions` is a `map` with `default: tiles`; `geoMap` with `regions: world`, `europe` or `uk-itl1` is a `map` with `default: map` (`uk-itl1` is `uk-regions`). New figures use `map` |
 | `barChart` | bars in any format, dollars included: one `value` a row, or with `series` (two or more measures in the same unit) a `values` map a row, drawn as paired bars (`style: paired`, the default) or, for exactly two, a `dumbbell`; never stacked; a row may carry a `detail` |
 | `compositionBar` | the parts of a whole, one bar per row; a row from another counter cites its own `source` (or `sources`); the parts must add up (`unit: percent`, or a row `total`) |
@@ -1251,7 +1251,7 @@ coding it as a number, which would imply a false order:
     categoryLabel: ID asked of voters at the polls
     sources: [2]
     categories:              # two to six, in legend order
-      - { id: strict-photo, label: Strict photo ID, mark: SP }   # mark: 1–3 characters printed on each tile
+      - { id: strict-photo, label: Strict photo ID, mark: SP }   # mark: 1–3 characters shown in the key and the table; tiles print names, their tint says the category
       - { id: none, label: No document requested, mark: "—" }
     areas:                   # area id → category, or { category, note }
       AR: { category: strict-photo, note: A free voter ID card is issued on request }
@@ -1274,7 +1274,11 @@ point at a small one:
 | `us-states` | the 50 states and DC (USPS codes), plus `PR`, `VI`, `GU`, `AS`, `MP` once the figure names one | Alaska and Hawaii moved below the 48, as usual; DC and the territories are dots | Alaska, California and Texas span several cells; the territories are a row under the states |
 | `europe` | the EU27, the four EFTA states and the UK (ISO two-letter codes, `GB` for the UK, `GR` for Greece) | cropped to Europe, other countries drawn plainly as context; Liechtenstein and Malta also have dots | one tile each |
 | `uk-regions` | the twelve ITL1 regions (slugs such as `london`) | ONS outlines | one tile each |
-| `world` | the 197 sovereign states: UN members, Palestine, Vatican City, Kosovo, Taiwan (ISO two-letter codes) | Equal Earth; the 29 states too small for the outlines are dots; Greenland, Western Sahara and the other territories are drawn plainly as context, not as areas | one tile per state in a world-shaped grid, too dense for numbers: tiles print their code and a mark or ▲/▼, and the readout and table give the value |
+| `world` | the 197 sovereign states: UN members, Palestine, Vatican City, Kosovo, Taiwan (ISO two-letter codes) | Mercator, from Cape Horn to the Arctic islands; the 29 states too small for the outlines are dots; Greenland, Western Sahara and the other territories are drawn plainly as context, not as areas | one tile per state, sized by the country's area down to one cell, in a world-shaped grid with real gaps for the oceans and seas. Tiles print their code and a mark or ▲/▼ until zoomed in, then their value; the readout and table give it at any zoom |
+
+Clicking an area in either view zooms to it with its neighbours in view, and
+the view has zoom buttons. The table is one list with a row per area, sorted
+and filtered by any of its columns.
 
 A number the source qualifies keeps its colour in both views, gains ▲ or ▼
 (on its tile, or at its centre on the shapes) and a stipple; the legend

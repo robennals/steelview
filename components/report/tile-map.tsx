@@ -34,17 +34,18 @@ type TileMapCommon = {
 export type TileMapProps = TileMapCommon & MapEncoding;
 
 /**
- * A grid cartogram: every area one equal tile, shaded on the same stepped
- * scale as GeoMap and labelled with its code and value.
+ * A grid cartogram: every area a rectangle of whole cells, shaded on the same
+ * stepped scale as GeoMap and labelled with its code and value.
  *
- * Use it to compare areas of very different size on an equal footing — EU
- * countries by asylum claims per head, states or regions by a rate — where a
- * true-shape map would let the biggest landmass dominate. Every tile carries
- * its number, so the colour is a guide to the pattern rather than the only
- * way to read a value.
+ * Use it where small areas must stay easy to see and to point at — EU
+ * countries by asylum claims per head, states or regions by a rate. A preset
+ * says how its tiles are sized: the world's follow each country's area, down
+ * to one cell, and the others are close to equal. Every tile that has room
+ * carries its number, so the colour is a guide to the pattern rather than the
+ * only way to read a value.
  *
  * Given `categories` instead of `data`, it shows a rule or category per area:
- * each category gets a tint, a pattern and a short mark printed on its tiles,
+ * each category gets a tint and a pattern on its tiles, and a short mark in the key,
  * so no category rests on colour alone and none implies an order.
  */
 export function TileMap(props: TileMapProps) {
@@ -71,6 +72,6 @@ export function TileMap(props: TileMapProps) {
 
 /** What the tile view's screen-reader description says about the drawing itself. */
 export function tileSentence(tiles: MapTile[], categorical: boolean): string {
-  const drawn = categorical ? 'Each area is an equal tile marked with its category\'s code.' : `${tiles.length} areas, each drawn as an equal tile.`;
-  return isDenseLayout(tiles) && !categorical ? `${drawn} The tiles are too small to print values; tab to a tile or use the Table switch to read one.` : drawn;
+  const drawn = categorical ? 'Each area is a tile shaded by its category.' : `${tiles.length} areas, each drawn as a tile.`;
+  return isDenseLayout(tiles) && !categorical ? `${drawn} The tiles print values only when zoomed in; tab to a tile or use the Table switch to read one.` : drawn;
 }
