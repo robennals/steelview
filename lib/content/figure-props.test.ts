@@ -4,7 +4,7 @@ import { EUROPE_COUNTRIES, EUROPE_EXTENT } from '@/components/report/geo/europe-
 import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TILES } from '@/components/report/geo/tiles';
 import { UK_ITL1_REGIONS } from '@/components/report/geo/uk-itl1';
 import { US_STATES } from '@/components/report/geo/us-states';
-import { WORLD_COUNTRIES } from '@/components/report/geo/world-countries';
+import { WORLD_COUNTRIES, WORLD_EXTENT } from '@/components/report/geo/world-countries';
 import { WORLD_COUNTRY_TILES } from '@/components/report/geo/world-tiles';
 import { figureExamplesFact } from './__fixtures__/figure-examples';
 import {
@@ -180,7 +180,7 @@ test('a geoMap is a map that opens on its shapes; every preset pairs tiles with 
   assert.deepEqual(props.tiles, WORLD_COUNTRY_TILES);
   assert.equal(props.regions.length, 197);
   assert.deepEqual((props.contextRegions ?? []).map(r => r.id).sort(), ['AQ', 'CYN', 'EH', 'FK', 'GL', 'NC', 'PR', 'SOL', 'TF']);
-  assert.equal(props.extent, undefined);
+  assert.equal(props.extent, WORLD_EXTENT);
   assert.deepEqual(props.highlight, ['US']);
   assert.deepEqual(props.insets, [{ regionIds: ['LU'], label: 'Luxembourg' }]);
   assert.deepEqual(props.categoryData?.AU, { category: 'some', note: 'Voters who cannot attend a polling place' });

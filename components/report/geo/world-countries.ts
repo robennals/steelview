@@ -1,3 +1,4 @@
+import type { Bounds } from './project';
 import type { GeoRegion } from './types';
 
 /**
@@ -237,6 +238,13 @@ const WORLD_SMALL_STATES: GeoRegion[] = [
   { id: 'TV', code: 'TUV', name: "Tuvalu", coordinates: [], point: [179.2, -8.5] },
   { id: 'VA', code: 'VAT', name: "Vatican City", coordinates: [], point: [12.45, 41.9] },
 ];
+
+/**
+ * What a world map shows: from Cape Horn up to the Arctic islands. Antarctica
+ * and the far north are left out, because Mercator would spend a third of the
+ * drawing's height on them.
+ */
+export const WORLD_EXTENT: Bounds = { minLon: -180, maxLon: 180, minLat: -56, maxLat: 80 };
 
 /** Every outline, then every small state as a dot: 197 sovereign states and Natural Earth's other mapped areas. */
 export const WORLD_COUNTRIES: GeoRegion[] = [...WORLD_OUTLINES, ...WORLD_SMALL_STATES];

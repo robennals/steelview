@@ -5,7 +5,7 @@ import { partitionRegions } from '../geo/regions';
 import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TILES } from '../geo/tiles';
 import { UK_ITL1_REGIONS } from '../geo/uk-itl1';
 import { US_STATES, US_TERRITORIES } from '../geo/us-states';
-import { WORLD_COUNTRIES } from '../geo/world-countries';
+import { WORLD_COUNTRIES, WORLD_EXTENT } from '../geo/world-countries';
 import { WORLD_COUNTRY_TILES } from '../geo/world-tiles';
 import {
   ASYLUM_EUROPE_SOURCES,
@@ -31,7 +31,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'One dataset drawn two ways from one legend: real shapes (GeoMap\'s drawing), where a reader sees where things are, and equal tiles (TileMap\'s), where a small state counts as much as a large one and is as easy to point at. A switch moves between Map, Tiles and Table; `defaultView` picks the view shown first, which is also what a reader without JavaScript sees beside the table. Pass a tile layout and the outlines with the same ids — `US_STATE_TILES` with `US_STATES`, `EUROPE_COUNTRY_TILES` with `EUROPE_COUNTRIES`, `UK_REGION_TILES` with `UK_ITL1_REGIONS`, `WORLD_COUNTRY_TILES` with `WORLD_COUNTRIES` — and any other outlines as `contextRegions`. Content reaches it as the `map` figure kind. Areas too small to outline are dots in the map view; every area is focusable in both views with the same readout.',
+          'One dataset drawn two ways from one legend: real shapes (GeoMap\'s drawing), where a reader sees where things are, and tiles (TileMap\'s), where the smallest state is at least one clear cell and easy to point at. A switch moves between Map, Tiles and Table; `defaultView` picks the view shown first, which is also what a reader without JavaScript sees beside the table. Pass a tile layout and the outlines with the same ids — `US_STATE_TILES` with `US_STATES`, `EUROPE_COUNTRY_TILES` with `EUROPE_COUNTRIES`, `UK_REGION_TILES` with `UK_ITL1_REGIONS`, `WORLD_COUNTRY_TILES` with `WORLD_COUNTRIES` — and any other outlines as `contextRegions`. Content reaches it as the `map` figure kind. Areas too small to outline are dots in the map view; every area is focusable in both views with the same readout.',
       },
     },
   },
@@ -139,6 +139,7 @@ const worldArgs = {
   tiles: WORLD_COUNTRY_TILES,
   regions: world.regions,
   contextRegions: world.context,
+  extent: WORLD_EXTENT,
   ...IDEA_POSTAL_VOTING_2025,
   data: undefined,
   valueLabel: undefined,

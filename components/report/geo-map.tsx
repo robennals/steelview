@@ -30,7 +30,7 @@ type GeoMapCommon = {
    * bounds of `regions`. Useful when an area has far-flung territories.
    */
   extent?: Bounds;
-  /** Defaults to `auto`: a local projection for a country, Equal Earth for a continent or the world. */
+  /** Defaults to `auto`: a local projection for a country, Equal Earth for a continent, Mercator for the world. */
   projection?: ProjectionKind | 'auto';
   markers?: MapMarker[];
   /** What a marker's size measures, e.g. "People detained". */

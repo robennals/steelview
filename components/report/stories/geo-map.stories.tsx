@@ -3,7 +3,7 @@ import { GeoMap, type GeoMapProps } from '../geo-map';
 import { EUROPE_COUNTRIES, EUROPE_EXTENT } from '../geo/europe-countries';
 import { partitionRegions } from '../geo/regions';
 import { UK_ITL1_REGIONS } from '../geo/uk-itl1';
-import { WORLD_COUNTRIES } from '../geo/world-countries';
+import { WORLD_COUNTRIES, WORLD_EXTENT } from '../geo/world-countries';
 import {
   ASYLUM_EUROPE_SOURCES,
   ASYLUM_PER_10K_2024,
@@ -27,7 +27,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A choropleth over real outlines — any `GeoRegion[]`. Presets: `WORLD_COUNTRIES` and `EUROPE_COUNTRIES` (Natural Earth, ISO 2-letter ids) and `UK_ITL1_REGIONS` (ONS). Use it when *where* matters: a regional pattern, or point locations drawn as markers. The drawing takes its proportions from the geography, and the projection is chosen from the extent — a local projection for one country, equal-area Equal Earth for a continent or the world. Covered areas with no figure are hatched as "No data", never shaded as zero; neighbours outside the dataset go in `contextRegions` and are drawn plainly (`partitionRegions` splits a preset for you). Small areas can be redrawn in enlarged `insets`. Hover or tab to an area for its value; the Table switch lists every figure. When the only question is which areas are higher, prefer TileMap.',
+          'A choropleth over real outlines — any `GeoRegion[]`. Presets: `WORLD_COUNTRIES` and `EUROPE_COUNTRIES` (Natural Earth, ISO 2-letter ids) and `UK_ITL1_REGIONS` (ONS). Use it when *where* matters: a regional pattern, or point locations drawn as markers. The drawing takes its proportions from the geography, and the projection is chosen from the extent — a local projection for one country, equal-area Equal Earth for a continent, Mercator for the world. Covered areas with no figure are hatched as "No data", never shaded as zero; neighbours outside the dataset go in `contextRegions` and are drawn plainly (`partitionRegions` splits a preset for you). Small areas can be redrawn in enlarged `insets`. Hover or tab to an area for its value; the Table switch lists every figure. When the only question is which areas are higher, prefer TileMap.',
       },
     },
   },
@@ -53,14 +53,14 @@ type Story = StoryObj<typeof meta>;
 /** A continent: real data, neighbours as plain context, two small states enlarged. */
 export const Europe: Story = {};
 
-/** The whole world on the equal-area Equal Earth projection. */
+/** The whole world on the Mercator projection. */
 export const World: Story = {
   args: {
     title: 'Share of residents born abroad, selected countries',
     description: 'Illustrative data: round numbers chosen to demonstrate the component, not checked against UN estimates. Countries outside the illustrative set are drawn plainly as context.',
     regions: world.regions,
     contextRegions: world.context,
-    extent: undefined,
+    extent: WORLD_EXTENT,
     data: WORLD_SHARE_ILLUSTRATIVE,
     valueLabel: 'Share of residents born abroad',
     format: { unit: 'percent', decimals: 0 },
@@ -139,13 +139,12 @@ export const CategoricalIdeaPostalVoting: Story = {
     description: 'Eleven countries open in-country postal voting to all voters and two to some, among those checked so far. Every other country is not yet extracted from IDEA\'s tables, so it shows as No data, not as "no postal voting". Liechtenstein (all voters), too small for its outline at this scale, is the outlined dot between Switzerland and Austria.',
     regions: WORLD_COUNTRIES,
     contextRegions: undefined,
-    extent: undefined,
     ...IDEA_POSTAL_VOTING_2025,
     data: undefined,
     valueLabel: undefined,
     format: undefined,
     breaks: undefined,
-    insets: [{ regionIds: ['LU'] }],
+    extent: WORLD_EXTENT,
     highlight: ['LI'],
     areaLabel: 'Country',
     sources: IDEA_POSTAL_SOURCES,

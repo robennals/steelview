@@ -4,7 +4,7 @@ import { EUROPE_COUNTRY_TILES, UK_REGION_TILES, US_STATE_TILES, US_TERRITORY_TIL
 import type { GeoRegion } from '../../components/report/geo/types';
 import { UK_ITL1_REGIONS } from '../../components/report/geo/uk-itl1';
 import { US_STATES, US_TERRITORIES } from '../../components/report/geo/us-states';
-import { WORLD_COUNTRIES } from '../../components/report/geo/world-countries';
+import { WORLD_COUNTRIES, WORLD_EXTENT } from '../../components/report/geo/world-countries';
 import { WORLD_COUNTRY_TILES } from '../../components/report/geo/world-tiles';
 import type { MAP_PRESETS } from './schema';
 import type { FigureOf } from './types';
@@ -34,7 +34,7 @@ const PRESETS: Record<MapPreset, PresetAreas> = {
   // extent crops to Europe and keeps far-flung territories off the drawing.
   europe: { tiles: EUROPE_COUNTRY_TILES, outlines: EUROPE_COUNTRIES, extent: EUROPE_EXTENT },
   'uk-regions': { tiles: UK_REGION_TILES, outlines: UK_ITL1_REGIONS },
-  world: { tiles: WORLD_COUNTRY_TILES, outlines: WORLD_COUNTRIES },
+  world: { tiles: WORLD_COUNTRY_TILES, outlines: WORLD_COUNTRIES, extent: WORLD_EXTENT },
 };
 
 type NamingFigure = Pick<FigureOf<'map'>, 'categories' | 'areas' | 'data' | 'highlight'>;
