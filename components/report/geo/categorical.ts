@@ -6,7 +6,7 @@ import type { MapValueEncoding } from './choropleth';
  * voters — rather than a number. Coding a category as a value would give it a
  * false order and a legend of made-up steps, so a categorical map has its own
  * encoding: a slot (fill, pattern and colour) per category in list order, a
- * short mark printed on every tile, and a count per category.
+ * short mark shown in the key and the table, and a count per category.
  */
 
 export type MapCategory = {

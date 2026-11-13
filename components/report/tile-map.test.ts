@@ -30,13 +30,14 @@ const tileHtml = (html: string, id: string) => {
   return match[0];
 };
 
-test('every tile in a category carries its mark, slot and an aria-label naming the category', () => {
+test('a category tile prints its name and code but no mark, and carries its slot and an aria-label naming the category', () => {
   const html = renderToStaticMarkup(createElement(TileMap, { tiles: US_STATE_TILES, ...rules, areaLabel: 'State' }));
-  for (const [id, mark, slot] of [['AR', 'SP', '1'], ['GA', 'SP', '1'], ['AK', 'N', '2']]) {
+  for (const [id, slot] of [['AR', '1'], ['GA', '1'], ['AK', '2']]) {
     const tile = tileHtml(html, id);
-    assert.match(tile, new RegExp(`<span class="sv-tile-map__value" aria-hidden="true">${mark}</span>`));
+    assert.doesNotMatch(tile, /sv-tile-map__value/);
     assert.match(tile, new RegExp(`data-slot="${slot}"`));
   }
+  assert.match(tileHtml(html, 'AR'), /<span class="sv-tile-map__name" aria-hidden="true">Arkansas<\/span><span class="sv-tile-map__code" aria-hidden="true">AR<\/span>/);
   assert.match(tileHtml(html, 'AR'), /aria-label="Arkansas: Strict photo ID"/);
   assert.match(tileHtml(html, 'AR'), /data-readout="Arkansas: Strict photo ID — Free ID card on request"/);
   const missing = tileHtml(html, 'WY');
@@ -51,11 +52,31 @@ test('the legend counts each category and the missing areas', () => {
   assert.match(html, /No data <span class="sv-category-legend__count">\(48\)<\/span>/);
 });
 
-test('the table has one row group per category, then No data', () => {
+const rowsOf = (html: string) => [...html.matchAll(/<th scope="row">([^<]+)<\/th><td[^>]*>(.*?)<\/td>/g)].map(m => [m[1], m[2].replace(/<[^>]*>/g, '')]);
+
+test('a categorical table is one table: a row per area and a column for its category, no sections', () => {
   const html = renderToStaticMarkup(createElement(TileMap, { tiles: US_STATE_TILES, ...rules, areaLabel: 'State' }));
-  const groups = [...html.matchAll(/<th colSpan="2" scope="rowgroup"[^>]*>(.*?)<\/th>/g)].map(m => m[1]);
-  assert.deepEqual(groups, ['Strict photo ID — 2 states', 'Non-strict ID — 1 state', 'No data — 48 states']);
-  assert.match(html, /<th scope="col" class="sv-data__th-text">Note<\/th>/);
+  assert.doesNotMatch(html, /rowgroup/);
+  assert.equal(html.match(/<tbody/g)?.length, 1);
+  const rows = rowsOf(html);
+  assert.equal(rows.length, 51);
+  // Category order, then alphabetical; areas with no category last.
+  assert.deepEqual(rows.slice(0, 3).map(row => row[0]), ['Arkansas', 'Georgia', 'Alaska']);
+  assert.deepEqual(rows[0], ['Arkansas', 'SPStrict photo ID']);
+  assert.deepEqual(rows[3], ['Alabama', 'No data']);
+  assert.match(html, /<td class="sv-data__td-text sv-area-table__note">Free ID card on request<\/td>/);
+  for (const heading of ['State', 'ID rule at the polls', 'Note']) assert.match(html, new RegExp(`aria-sort="[a-z]+"><button[^>]*>${heading}<`));
+  assert.match(html, /<option value="Non-strict ID">Non-strict ID<\/option>/);
+  assert.match(html, /<option value="No data">No data<\/option>/);
+});
+
+test('a numeric table sorts largest first and filters by a range', () => {
+  const html = renderToStaticMarkup(createElement(TileMap, { tiles: US_STATE_TILES, data: { AR: { value: 12 }, GA: { value: 40 } }, valueLabel: 'Share', format: { unit: 'percent' }, areaLabel: 'State' }));
+  assert.deepEqual(rowsOf(html).slice(0, 3), [['Georgia', '40%'], ['Arkansas', '12%'], ['Alabama', 'No data']]);
+  assert.match(html, /aria-label="Share: at least"/);
+  assert.match(html, /aria-label="Share: at most"/);
+  assert.doesNotMatch(html, /<select/);
+  assert.doesNotMatch(html, />Note</);
 });
 
 test('numeric mode is unchanged: tiles carry values and no slot', () => {
@@ -155,7 +176,7 @@ test('a tile spanning cells is placed by its top-left cell and its span, and the
   assert.match(html, /--sv-tile-cols:3;--sv-tile-rows:3/);
 });
 
-test('the world grid is too dense to print values: a tile keeps its code and only a bound\'s glyph', () => {
+test('a world tile is too small to print its value until zoomed in: it keeps its code and only a bound\'s glyph', () => {
   const html = renderToStaticMarkup(createElement(TileMap, {
     tiles: WORLD_COUNTRY_TILES,
     valueLabel: 'Share',
@@ -166,7 +187,35 @@ test('the world grid is too dense to print values: a tile keeps its code and onl
   assert.match(tileHtml(html, 'FR'), /<span class="sv-tile-map__value" aria-hidden="true"><\/span>/);
   assert.match(tileHtml(html, 'FR'), /aria-label="France: 13%"/);
   assert.match(tileHtml(html, 'TV'), />▲<\/span>/);
-  assert.match(html, /too small to print values/);
+  assert.match(tileHtml(html, 'FR'), /<span class="sv-tile-map__value sv-tile-map__value--zoomed" aria-hidden="true">13%<\/span>/);
+  assert.match(html, /print values only when zoomed in/);
+});
+
+test('every outlined country carries its name for the map to show where it fits, and a dot does not', () => {
+  const html = renderToStaticMarkup(createElement(GeoMap, {
+    regions: [
+      { id: 'big', name: 'Big', coordinates: [[[[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]]]] },
+      { id: 'tiny', name: 'Tiny', coordinates: [], point: [5, 5] },
+    ],
+    valueLabel: 'Share',
+    data: { big: { value: 1 } },
+  }));
+  assert.match(html, /<text class="sv-geo-map__label"[^>]*data-label-for="big" aria-hidden="true">Big<\/text>/);
+  assert.doesNotMatch(html, /data-label-for="tiny"/);
+  // Outlines, dots and names are siblings, so each needs a key of its own.
+  assert.equal(new Set([...html.matchAll(/data-label-for="([^"]+)"/g)].map(m => m[1])).size, 1);
+});
+
+test('every area says where a click zooms to, and a preview does not zoom', () => {
+  const props = { tiles: [{ id: 'a', code: 'A', name: 'A', row: 1, col: 2, w: 3, h: 2 }], valueLabel: 'Share', data: { a: { value: 1 } } };
+  assert.match(tileHtml(renderToStaticMarkup(createElement(TileMap, props)), 'a'), /data-focus="2 1 3 2"/);
+  const map = renderToStaticMarkup(createElement(GeoMap, { regions: UK_ITL1_REGIONS, valueLabel: 'Share', data: { london: { value: 3 } } }));
+  assert.match(map, /<path class="sv-geo-map__region"[^>]*data-region="london"[^>]*data-focus="[\d. ]+"/);
+  assert.match(map, /aria-label="Zoom in"/);
+  assert.match(map, /aria-label="Zoom out"/);
+  assert.match(map, />Whole map<\/button>/);
+  const preview = renderToStaticMarkup(createElement(AreaMap, { ...numeric, preview: { href: '/x' } }));
+  assert.doesNotMatch(preview, /data-focus|Zoom in/);
 });
 
 /* ------------------------------------------------- AreaMap: both views */

@@ -2,7 +2,7 @@ import { dateToYear, formatDate } from './format';
 import type { PartialDate } from './types';
 
 /**
- * The shared horizontal time axis of PeriodTimeline and EventStrip: a span of
+ * The shared horizontal time axis of PeriodTimeline and its event markers: a span of
  * fractional years, positions as percentages of it (so HTML can lay out bars
  * and markers without measuring), and round year ticks.
  */

@@ -1,6 +1,6 @@
 import { useId, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { EventKey, EventLane, type StripEvent } from './event-strip';
+import { MarkerCards, MarkerKey, MarkerLane, groupMarkers, numberMarkers, type MarkerEvent } from './event-markers';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatDate, slugify } from './format';
 import { MapReadout } from './geo/map-readout';
@@ -27,8 +27,8 @@ export type PeriodCategory = { id: string; label: string };
 
 export type PeriodTimelineProps = {
   rows: PeriodRow[];
-  /** Point events, drawn as numbered markers in a lane under the rows and listed below. */
-  events?: StripEvent[];
+  /** Point events, drawn as numbered markers in a lane under the rows, each opening its own card. */
+  events?: MarkerEvent[];
   categories?: PeriodCategory[];
   /** Axis start. Defaults to the start of the earliest year in the data. */
   from?: number | PartialDate;
@@ -54,7 +54,7 @@ export type PeriodTimelineProps = {
   panel?: boolean;
   /**
    * Draw the compact preview: the linked title, the category key, every row
-   * and period, the event markers and one axis. The event list, the open-end
+   * and period, the event markers and one axis. The event cards, the open-end
    * key and the Table view stay on the full figure.
    */
   preview?: FigurePreview;
@@ -103,7 +103,15 @@ export function PeriodTimeline({
   const span = periodSpan({ rows, events, from, to });
   const slotOf = new Map(categories.map((c, i) => [c.id, i + 1]));
   const ticks = timeTicks(span, preview ? PREVIEW_TICKS : undefined);
-  const orderedEvents = [...events].sort((a, b) => toYear(a.date) - toYear(b.date));
+  const markers = numberMarkers(events);
+  const markerAt = markers.map(m => percentAlong(toYear(m.event.date), span));
+  // A numbered marker is ~1.4rem wide, and each further character of a
+  // group's label ~0.4rem: at a 340px track, ~7% and ~2% of the span.
+  const markerGroups = groupMarkers(markers, markerAt, { disc: 7, perDigit: 2, within: [0, 100] }).map(({ members, center }) => ({
+    members,
+    left: center,
+    lines: members.map(m => markerAt[markers.indexOf(m)]),
+  }));
   const hasOpen = rows.some(r => r.periods.some(p => !p.to));
   const axisEnd = to === undefined ? String(span.to) : typeof to === 'number' ? String(to) : formatDate(to);
   const stillInForce = asOf !== undefined && toYear(asOf) === span.to;
@@ -127,10 +135,24 @@ export function PeriodTimeline({
     <span key={tick.at} className="sv-periods__grid" style={{ left: `${percentAlong(tick.at, span)}%` }} aria-hidden="true" />
   ));
 
+  // Each event's dotted line runs unbroken up through every row from its
+  // marker, however tall a row's label makes it, on a layer over the rows.
+  const markerLines = markers.length > 0 && (
+    <div className="sv-periods__line sv-periods__line--axis sv-periods__marker-lines" aria-hidden="true">
+      <span className="sv-periods__label-cell" />
+      <div className="sv-periods__marker-layer">
+        {markers.map((m, i) => (
+          <span key={m.number} className="sv-periods__marker-line" data-kind={m.event.kind} data-marker-line={m.number} style={{ left: `${markerAt[i]}%` }} />
+        ))}
+      </div>
+    </div>
+  );
+
   // The rows, event lane and axis: inside the hover-and-focus readout on the full figure, alone in a preview.
   const plot = (
     <>
       {!preview && axis}
+      <div className="sv-periods__body">
       <ol className="sv-periods__rows" aria-label={title ?? 'Periods'}>
         {rows.map((row, r) => {
           const bars = row.periods.map(period => {
@@ -173,10 +195,12 @@ export function PeriodTimeline({
           );
         })}
       </ol>
-      {orderedEvents.length > 0 && (
+      {markerLines}
+      </div>
+      {markers.length > 0 && (
         <div className="sv-periods__line sv-periods__line--events">
           <p className="sv-periods__label-cell sv-periods__row-label">Events</p>
-          <EventLane span={span} events={orderedEvents} keyId={`${baseId}-event`} showAxis={false} linked={!preview} />
+          <MarkerLane groups={markerGroups} cardsId={`${baseId}-event`} interactive={!preview} />
         </div>
       )}
       {axis}
@@ -184,7 +208,7 @@ export function PeriodTimeline({
   );
 
   const graph = (
-    <div className="sv-periods" data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined}>
+    <div className="sv-periods" data-marker-root="" data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined}>
       {categories.length > 0 && (
         <ul className="sv-chart__legend sv-periods__legend">
           {categories.map(c => (
@@ -202,7 +226,10 @@ export function PeriodTimeline({
           {stillInForce ? 'Arrowhead: no end date — still in force' : `Arrowhead: no end date by ${axisEnd}, where the axis ends`}
         </p>
       )}
-      {orderedEvents.length > 0 && !preview && <EventKey events={orderedEvents} keyId={`${baseId}-event`} />}
+      {!preview && <>
+        <MarkerKey markers={markers} />
+        <MarkerCards markers={markers} groups={markerGroups.map(g => g.members)} cardsId={`${baseId}-event`} />
+      </>}
     </div>
   );
 
@@ -234,11 +261,11 @@ export function PeriodTimeline({
               </tr>
             )),
           )}
-          {orderedEvents.map((e, i) => (
-            <tr key={`event-${i}`}>
-              <th scope="row">Event {i + 1}</th>
-              <td>{e.label}</td>
-              <td>{formatDate(e.date)}</td>
+          {markers.map(({ event, number }) => (
+            <tr key={`event-${number}`}>
+              <th scope="row">Event {number}</th>
+              <td>{event.label}</td>
+              <td>{formatDate(event.date)}</td>
               <td>—</td>
             </tr>
           ))}

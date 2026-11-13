@@ -3,7 +3,7 @@ import { formatValue } from '../format';
 import { MarkerShape, shapeForSlot } from '../marker-shape';
 import type { ValueFormat } from '../types';
 import { MapReadout } from './map-readout';
-import { aspectOf, boundsOf, centroidOf, clipToBounds, fitBounds, pathFor, type Bounds, type Projection, type ProjectionKind } from './project';
+import { aspectOf, boundsOf, centroidOf, clipToBounds, fitBounds, focusBoxOf, pathFor, type Bounds, type Projection, type ProjectionKind } from './project';
 import type { AreaLook } from './shading';
 import type { GeoRegion } from './types';
 
@@ -60,6 +60,7 @@ function CategoryPatterns({ idPrefix, slots }: { idPrefix: string; slots: number
         width={size}
         height={size}
         patternTransform={slot === 6 ? 'rotate(45)' : undefined}
+        data-base-transform={slot === 6 ? 'rotate(45)' : ''}
         style={{ color: `var(--sv-series-${slot})`, fill: `var(--sv-cat-fill-${slot})` }}
       >
         <rect width={size} height={size} />
@@ -136,7 +137,8 @@ type GeoDrawingProps = {
 /**
  * The real-shape view: projected outlines, dots for areas too small to
  * outline, optional enlarged insets and point markers, each area focusable
- * with its sentence in the shared readout.
+ * with its sentence in the shared readout. Clicking an area zooms to it; see
+ * MapReadout.
  */
 export function GeoDrawing({ regions, contextRegions, extent, projection: projectionKind, markers, markerValueLabel, markerFormat, insets, highlight, lookFor, slots, categorical, label, baseId, descriptionId, preview = false }: GeoDrawingProps) {
   const hatchId = `${baseId}-hatch`;
@@ -196,8 +198,8 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
   /**
    * Every area's outline, then every dot over all the outlines, so a later
    * neighbour's fill never hides a dot (Washington DC under Maryland). A
-   * bound's ▲ or ▼ sits at the area's centre, or above its dot: on a map
-   * with no labels it is the mark that says "at least" in greyscale.
+   * bound's ▲ or ▼ sits at the area's centre, or above its dot: it is the
+   * mark that says "at least" in greyscale. Names go over everything.
    */
   const regionPaths = (projectionToUse: Projection, list: GeoRegion[], interactive: boolean) => {
     const drawn = list.map(region => {
@@ -210,13 +212,14 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
         'data-readout': look.readout,
         'data-missing': look.missing ? 'true' : undefined,
         'data-highlight': highlight.includes(region.id) ? 'true' : undefined,
+        'data-focus': interactive && !preview ? focusBoxOf(region, projectionToUse) : undefined,
       };
       // A dot, when there is one, is what a keyboard reaches; an outline under
       // it (Washington DC's) still answers the pointer.
       const focusable = interactive ? { ...(preview ? null : { tabIndex: 0 }), role: 'img', 'aria-label': look.ariaLabel } : { 'aria-hidden': true };
       const [gx, gy] = dot ? [dot[0], dot[1] - DOT_RADIUS - 5] : projectionToUse.project(centroidOf(region));
       const outline = d && (
-        <Fragment key={region.id}>
+        <Fragment key={`outline-${region.id}`}>
           <path
             className="sv-geo-map__region"
             d={d}
@@ -231,7 +234,7 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
         </Fragment>
       );
       const marks = (
-        <Fragment key={region.id}>
+        <Fragment key={`marks-${region.id}`}>
           {dot && (
             <g className="sv-geo-map__dot" {...areaAttributes} {...focusable}>
               <circle className="sv-geo-map__dot-hit" cx={dot[0]} cy={dot[1]} r={DOT_HIT_RADIUS} />
@@ -242,9 +245,16 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
           {look.glyph && <text className="sv-geo-map__glyph" x={gx} y={gy} aria-hidden="true">{look.glyph}</text>}
         </Fragment>
       );
-      return { outline, marks };
+      // Every outlined area's name, at its centre: MapReadout shows it only
+      // where it has room, clear of other names, at the current zoom.
+      const name = interactive && !preview && d && (
+        <text key={`name-${region.id}`} className="sv-geo-map__label" x={gx} y={gy} dy={look.glyph ? '1.1em' : undefined} data-label-for={region.id} aria-hidden="true">
+          {region.name}
+        </text>
+      );
+      return { outline, marks, name };
     });
-    return [...drawn.map(area => area.outline), ...drawn.map(area => area.marks)];
+    return [...drawn.map(area => area.outline), ...drawn.map(area => area.marks), ...drawn.map(area => area.name)];
   };
 
   const drawing = (
@@ -256,15 +266,16 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
       aria-label={label}
       aria-describedby={descriptionId}
       data-insets={placedInsets.length > 0 ? 'true' : undefined}
+      data-zoom-stage=""
     >
       <defs>
         {/* Rotated so the lines run top-left to bottom-right, like the CSS
             hatch on the legend swatch and on tiles. */}
-        <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
+        <pattern id={hatchId} patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)" data-base-transform="rotate(-45)">
           <rect className="sv-geo-map__hatch-ground" width="5" height="5" />
           <line className="sv-geo-map__hatch-line" x1="0" y1="0" x2="0" y2="5" />
         </pattern>
-        <pattern id={stippleId} patternUnits="userSpaceOnUse" width="4" height="4">
+        <pattern id={stippleId} patternUnits="userSpaceOnUse" width="4" height="4" data-base-transform="">
           <circle className="sv-geo-map__stipple-dot" cx="2" cy="2" r="0.7" />
         </pattern>
         <clipPath id={clipId}>
@@ -273,14 +284,21 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
         {categorical && <CategoryPatterns idPrefix={`${baseId}-cat`} slots={slots} />}
       </defs>
       <g clipPath={`url(#${clipId})`}>
-        {contextRegions.length > 0 && (
-          <g className="sv-geo-map__context" aria-hidden="true">
-            {cropped(contextRegions).filter(region => region.coordinates.length > 0).map(region => (
-              <path key={region.id} d={pathFor(region.coordinates, projection)} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
-            ))}
-          </g>
-        )}
-        <g className="sv-geo-map__regions">{regionPaths(projection, cropped(regions), true)}</g>
+        <g data-zoom-layer="">
+          {contextRegions.length > 0 && (
+            <g className="sv-geo-map__context" aria-hidden="true">
+              {cropped(contextRegions).filter(region => region.coordinates.length > 0).map(region => (
+                <path key={region.id} d={pathFor(region.coordinates, projection)} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
+              ))}
+            </g>
+          )}
+          <g className="sv-geo-map__regions">{regionPaths(projection, cropped(regions), true)}</g>
+          {orderedMarkers.length > 0 && (
+            <g className="sv-geo-map__markers">
+              {orderedMarkers.map(({ marker, index }) => markerGlyph(marker, index, projection, true))}
+            </g>
+          )}
+        </g>
       </g>
 
       {placedInsets.map(inset => {
@@ -309,14 +327,12 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
           </g>
         );
       })}
-
-      {orderedMarkers.length > 0 && (
-        <g className="sv-geo-map__markers">
-          {orderedMarkers.map(({ marker, index }) => markerGlyph(marker, index, projection, true))}
-        </g>
-      )}
     </svg>
   );
   if (preview) return drawing;
-  return <MapReadout hint={`Hover over or tab to a region to read its ${categorical ? 'category' : 'value'}.`}>{drawing}</MapReadout>;
+  return (
+    <MapReadout key="shapes" hint={`Hover over or tab to a region to read its ${categorical ? 'category' : 'value'}; click it to zoom in.`} frame={frame}>
+      {drawing}
+    </MapReadout>
+  );
 }

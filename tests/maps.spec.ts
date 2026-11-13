@@ -64,6 +64,68 @@ test('a world map opening on its shapes offers one tile per sovereign state', as
   await expect(map.locator('.sv-map__readout')).toHaveText(/^Tuvalu: \S/);
 });
 
+test('clicking a country zooms to it, in both drawings, and the buttons take it back', async ({ page }) => {
+  await page.goto(POSTAL_URL);
+  const map = page.locator(POSTAL_MAP);
+  const interactive = map.locator('.sv-map__interactive');
+  const zoomIn = map.getByRole('button', { name: 'Zoom in' });
+  const whole = map.getByRole('button', { name: 'Whole map' });
+
+  await expect(whole).toBeDisabled();
+  await map.locator('.sv-geo-map__region[data-region="DE"]').click();
+  await expect(interactive).toHaveAttribute('data-zoomed', /.+/);
+  await expect(whole).toBeEnabled();
+  await whole.click();
+  await expect(interactive).not.toHaveAttribute('data-zoomed', /.+/);
+
+  await zoomIn.click();
+  await expect(interactive).toHaveAttribute('data-zoomed', 'true');
+  await whole.click();
+
+  // Whole, only the largest countries have room for their names.
+  await expect(map.locator('.sv-geo-map__label[data-label-for="RU"]')).toHaveAttribute('data-label', 'large');
+  await expect(map.locator('.sv-geo-map__label[data-label-for="LU"]')).not.toHaveAttribute('data-label', /.+/);
+  await map.locator('.sv-chart__view-controls button', { hasText: 'Tiles' }).click();
+  await expect(map.locator('.sv-tile-map__tile[data-region="RU"]')).toHaveAttribute('data-label', 'name');
+  await expect(map.locator('.sv-tile-map__tile[data-region="LU"]')).not.toHaveAttribute('data-label', /.+/);
+  // Tiles zoom only a little: a click nudges in, and the buttons stop at the detail scale.
+  await map.locator('.sv-tile-map__tile[data-region="DE"]').click();
+  await expect(interactive).toHaveAttribute('data-zoomed', 'true');
+  await expect(interactive).toHaveAttribute('style', /--sv-map-zoom: 1\.5/);
+  await zoomIn.click();
+  await zoomIn.click();
+  await expect(interactive).toHaveAttribute('data-zoomed', 'detail');
+  await expect(zoomIn).toBeDisabled();
+  // The disabled button has dropped focus; Escape works from any tile.
+  await map.locator('.sv-tile-map__tile[data-region="DE"]').focus();
+  await page.keyboard.press('Escape');
+  await expect(interactive).not.toHaveAttribute('data-zoomed', /.+/);
+});
+
+test('the table is one list of areas that sorts and filters by column', async ({ page }) => {
+  await page.goto(POSTAL_URL);
+  const map = page.locator(POSTAL_MAP);
+  await map.locator('.sv-chart__view-controls button', { hasText: 'Table' }).click();
+  // In a data panel the table's scroll box runs to the bottom of the step.
+  const scroller = await map.locator('.sv-area-table .sv-chart__table-scroll').boundingBox();
+  const figure = await map.boundingBox();
+  expect(figure!.y + figure!.height - (scroller!.y + scroller!.height)).toBeLessThan(80);
+  const names = map.locator('table.sv-chart__table tbody th[scope="row"]');
+  await expect(names).toHaveCount(197);
+  await expect(map.locator('table.sv-chart__table tbody')).toHaveCount(1);
+
+  await map.getByRole('searchbox', { name: 'Country', exact: true }).fill('lux');
+  await expect(names).toHaveText(['Luxembourg']);
+  await map.getByRole('searchbox', { name: 'Country', exact: true }).fill('');
+
+  await map.getByRole('combobox').selectOption('All voters may vote by post');
+  await expect(names).toHaveCount(11);
+  await map.getByRole('button', { name: 'Country', exact: true }).click();
+  await expect(names.first()).toHaveText('Canada');
+  await map.getByRole('button', { name: 'Country', exact: true }).click();
+  await expect(names.first()).toHaveText('United States');
+});
+
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
@@ -75,5 +137,6 @@ test.describe('with JavaScript disabled', () => {
     await map.locator('summary', { hasText: 'Show the numbers' }).click();
     await expect(map.locator('details table tbody th[scope="row"]')).toHaveCount(areas);
     await expect(map.locator('details table tbody th[scope="row"]', { hasText: 'Liechtenstein' })).toHaveCount(1);
+    await expect(map.getByRole('button', { name: 'Zoom in' })).toBeHidden();
   });
 });

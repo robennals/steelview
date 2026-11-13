@@ -1,24 +1,29 @@
 import type { GeoRegion, LonLat } from './types';
 
 /**
- * Two deliberately small map projections, and a fit into a box.
+ * Three deliberately small map projections, and a fit into a box.
  *
  * - **local**: equirectangular with longitude squeezed by the cosine of the
  *   centre latitude. At the scale of one country or region it is within a
  *   few per cent of a conformal projection, and a reader, or a test, can
  *   check it by hand.
  * - **equal-earth**: the Equal Earth projection (Šavrič, Patterson & Jenny,
- *   2018), for continents and the world. It is equal-area, which is what a
- *   choropleth needs: on a Mercator map Russia and Canada out-shout every
- *   shaded country near the equator.
+ *   2018), for a continent. It is equal-area, so one large country does not
+ *   out-shout the rest of a regional map.
+ * - **mercator**: for the whole world. It keeps every country's shape, and
+ *   gives Europe, where most of the countries a reader looks for sit, far more
+ *   room than an equal-area world map does; the price is that high latitudes
+ *   are drawn large. Latitudes past 85° are held at 85°, because the
+ *   projection runs to infinity at the poles.
  *
- * `auto` picks local for anything up to about the size of Europe's core and
- * Equal Earth beyond. No d3: the formulas are a dozen lines.
+ * `auto` picks local for anything up to about the size of Europe's core,
+ * Equal Earth for a continent and Mercator for the whole world. No d3: the
+ * formulas are a dozen lines.
  */
 
 export type Bounds = { minLon: number; maxLon: number; minLat: number; maxLat: number };
 
-export type ProjectionKind = 'local' | 'equal-earth';
+export type ProjectionKind = 'local' | 'equal-earth' | 'mercator';
 
 export type Projection = {
   /** [lon, lat] in degrees → [x, y] in the fitted box (y grows downward). */
@@ -56,14 +61,16 @@ export function boundsOf(regions: GeoRegion[]): Bounds {
   return bounds;
 }
 
-/** Local for a country or a compact region; Equal Earth once the extent is continental. */
+/** Local for a country or a compact region, Equal Earth once the extent is continental, Mercator once it spans the world. */
 export function chooseProjection(bounds: Bounds): ProjectionKind {
+  if (bounds.maxLon - bounds.minLon > 180) return 'mercator';
   return bounds.maxLon - bounds.minLon > 60 || bounds.maxLat - bounds.minLat > 45 ? 'equal-earth' : 'local';
 }
 
 const RADIANS = Math.PI / 180;
 const [A1, A2, A3, A4] = [1.340264, -0.081106, 0.000893, 0.003796];
 const M = Math.sqrt(3) / 2;
+const MERCATOR_LIMIT = 85;
 
 /** Equal Earth on the unit sphere: [λ, φ] in radians → [x, y] with y up. */
 export function equalEarth(lambda: number, phi: number): [number, number] {
@@ -75,10 +82,17 @@ export function equalEarth(lambda: number, phi: number): [number, number] {
   return [x, y];
 }
 
+/** Mercator's y on the unit sphere for a latitude in degrees, y up. */
+export function mercatorY(lat: number): number {
+  const held = Math.max(-MERCATOR_LIMIT, Math.min(MERCATOR_LIMIT, lat));
+  return Math.log(Math.tan(Math.PI / 4 + (held * RADIANS) / 2));
+}
+
 /** The chosen projection, unscaled, with y up and the extent's centre meridian at x = 0. */
 function rawProjection(kind: ProjectionKind, bounds: Bounds): (point: LonLat) => [number, number] {
   const centreLon = (bounds.minLon + bounds.maxLon) / 2;
   if (kind === 'equal-earth') return ([lon, lat]) => equalEarth((lon - centreLon) * RADIANS, lat * RADIANS);
+  if (kind === 'mercator') return ([lon, lat]) => [(lon - centreLon) * RADIANS, mercatorY(lat)];
   const squeeze = Math.cos(((bounds.minLat + bounds.maxLat) / 2) * RADIANS);
   return ([lon, lat]) => [(lon - centreLon) * squeeze * RADIANS, lat * RADIANS];
 }
@@ -220,16 +234,7 @@ function thin(points: Array<[number, number]>, tolerance: number): Array<[number
  */
 export function centroidOf(region: GeoRegion): LonLat {
   if (region.point) return region.point;
-  let best: LonLat[] = [];
-  let bestArea = 0;
-  for (const polygon of region.coordinates) {
-    const ring = polygon[0] ?? [];
-    const area = Math.abs(signedArea(ring));
-    if (area > bestArea) {
-      bestArea = area;
-      best = ring;
-    }
-  }
+  const best = largestRing(region);
   const a = signedArea(best);
   if (a === 0) return best[0] ?? [0, 0];
   let cx = 0;
@@ -242,6 +247,35 @@ export function centroidOf(region: GeoRegion): LonLat {
     cy += (y0 + y1) * cross;
   }
   return [cx / (6 * a), cy / (6 * a)];
+}
+
+/** A region's largest outline by area: its mainland, not an island or a far-flung territory. */
+function largestRing(region: GeoRegion): LonLat[] {
+  let best: LonLat[] = [];
+  let bestArea = 0;
+  for (const polygon of region.coordinates) {
+    const ring = polygon[0] ?? [];
+    const area = Math.abs(signedArea(ring));
+    if (area > bestArea) {
+      bestArea = area;
+      best = ring;
+    }
+  }
+  return best;
+}
+
+/**
+ * The box a click on this region zooms to, as "x y width height" in drawing
+ * units: its mainland, so France does not take in French Guiana or the
+ * United States Hawaii. An area with no outline is the point of its dot.
+ */
+export function focusBoxOf(region: GeoRegion, projection: Projection): string {
+  const ring = largestRing(region);
+  const points = (ring.length > 0 ? ring : [region.point ?? [0, 0]]).map(point => projection.project(point));
+  const xs = points.map(([x]) => x);
+  const ys = points.map(([, y]) => y);
+  const [x, y] = [Math.min(...xs), Math.min(...ys)];
+  return [x, y, Math.max(...xs) - x, Math.max(...ys) - y].map(round).join(' ');
 }
 
 function signedArea(ring: LonLat[]): number {

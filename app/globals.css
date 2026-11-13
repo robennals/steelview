@@ -61,6 +61,8 @@
   --sv-series-6: #006d7c;
   --sv-series-7: #8a5a00;
   --sv-series-8: #5d6b31;
+  /* A measurement change, not an event: an amber no chart line reaches first. */
+  --sv-method-change: var(--sv-series-7);
 
   --measure: 34rem;
   --wrap: 44rem;
@@ -944,16 +946,16 @@
     overflow: visible;
   }
 
-  .sv-chart__svg[data-variant="wide"] {
+  .sv-chart__variant[data-variant="wide"] {
     display: none;
   }
 
   @media (min-width: 34rem) {
-    .sv-chart__svg[data-variant="narrow"] {
+    .sv-chart__variant[data-variant="narrow"] {
       display: none;
     }
 
-    .sv-chart__svg[data-variant="wide"] {
+    .sv-chart__variant[data-variant="wide"] {
       display: block;
     }
   }
@@ -961,11 +963,11 @@
   /* On paper there is no media query and no room to choose: print the wide
      plot, and print the numbers with it. */
   @media print {
-    .sv-chart__svg[data-variant="narrow"] {
+    .sv-chart__variant[data-variant="narrow"] {
       display: none;
     }
 
-    .sv-chart__svg[data-variant="wide"] {
+    .sv-chart__variant[data-variant="wide"] {
       display: block;
     }
 
@@ -1216,7 +1218,7 @@
   .sv-chart__table-scroll {
     max-height: 24rem;
     overflow: auto;
-    overscroll-behavior: contain;
+    overscroll-behavior-x: contain;
     border-top: 1px solid var(--rule);
   }
 
@@ -2333,6 +2335,26 @@
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
 
+  /* A chart or table cut off by its box fades out at the edge with more beyond
+     it, as most scrollbars stay hidden until used. Each fade follows how far the
+     box has scrolled, so it goes at the end, and a box that fits never has one. */
+  @property --sv-fade-bottom { syntax: "<length>"; inherits: false; initial-value: 0px; }
+  @property --sv-fade-right { syntax: "<length>"; inherits: false; initial-value: 0px; }
+  @keyframes sv-fade-bottom { from { --sv-fade-bottom: 3rem; } to { --sv-fade-bottom: 0px; } }
+  @keyframes sv-fade-right { from { --sv-fade-right: 3rem; } to { --sv-fade-right: 0px; } }
+
+  .sv-walk__chart .sv-slide, .sv-slide__figure, .sv-chart__table-scroll {
+    mask-image:
+      linear-gradient(to bottom, #000 calc(100% - var(--sv-fade-bottom)), transparent),
+      linear-gradient(to right, #000 calc(100% - var(--sv-fade-right)), transparent);
+    mask-composite: intersect;
+    animation: sv-fade-bottom linear both, sv-fade-right linear both;
+    animation-timeline: scroll(self block), scroll(self inline);
+  }
+
+  /* A mask would cut off the box's focus outline. */
+  .sv-chart__table-scroll:focus-visible { mask-image: none; }
+
   .sv-walk__explore { margin-top: 0.5rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; }
   .sv-walk__explore p { margin: 0; }
   .sv-walk__explore p::after { content: " →"; color: var(--accent); }
@@ -2455,13 +2477,17 @@
   @media (max-width: 47.5rem) {
     .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
-    /* The chart's row grows past 18rem for a figure too long to fit, so it pushes the prose down rather than running over it. */
-    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(18rem, auto) auto; align-content: start; height: auto; gap: 1rem; }
+    /* In a row the strip fits the step showing (walkthrough.tsx), not the longest
+       step. In a sheet it keeps its height, and scrolls what does not fit. */
+    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-walk-step-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    /* A step's explanation comes first, as the chart means little without it. The
+       chart's row grows past 18rem for a figure too long to fit, rather than running out of it. */
+    .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(18rem, auto); align-content: start; height: auto; gap: 1rem; }
     .sv-walk__step:not([data-chart]) { grid-template-rows: auto; }
-    /* A table reads down the page, so it takes the height it needs. */
-    .sv-walk__step:has(.sv-slide__figure) { grid-template-rows: auto auto; }
-    /* The chart leads on a phone, so a step always opens on its evidence. */
-    .sv-walk__chart { order: -1; }
+    /* A table or a list of bars takes the height it needs, so a short one leaves
+       no gap, and a long one scrolls in a box smaller than the screen. */
+    .sv-walk__step:has(.sv-slide__figure, .sv-comparison__rows) { grid-template-rows: auto auto; }
+    .sv-walk:not([data-layout="strip"]) .sv-walk__chart .sv-slide { max-height: min(32rem, 80vh); }
     .sv-walk__text { overflow: visible; }
     .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] { height: 50rem; }
     /* A whole claim will not fit beside the controls, so it gets the width under them. */
@@ -2471,7 +2497,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-walk, .sv-walk__outline-step { transition: none; }
+    .sv-walk, .sv-walk__outline-step, .sv-row .sv-walk__strip { transition: none; }
   }
 
   /* ------------------------------------------------------ fact citations */
@@ -3131,20 +3157,20 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    so it fills the height as well as the width. Each breakpoint sits between
    the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.78 and 1.33. */
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
-.sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
-.sv-chart[data-preview] .sv-chart__svg:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
+.sv-chart[data-preview] .sv-chart__variant { display: none; width: 100%; height: 100%; }
+.sv-chart[data-preview] .sv-chart__variant:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
 @container (aspect-ratio < 3.55) {
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview"] { display: block; }
 }
 @container (aspect-ratio < 1.54) {
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-tall"] { display: block; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview-medium"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview-tall"] { display: block; }
 }
 /* A data panel's full chart: the graph takes whatever its controls and notes
    leave, at the nearest shape, as a preview does. Its ratios are 4.0, 3.16 and 2.5. */
 .sv-chart[data-panel-chart] { display: flex; flex: 1 1 auto; flex-direction: column; margin: 0; }
-.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { display: flex; flex: 1 1 auto; flex-direction: column; }
+.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]:not([hidden])) { display: flex; flex: 1 1 auto; flex-direction: column; }
 .sv-chart[data-panel-chart] .sv-graph-heading { margin: 0 0 0.2rem; font-size: 1.1rem; }
 .sv-chart[data-panel-chart] .sv-chart__view-controls { align-self: flex-start; }
 /* The notes under the graph stay small, so the graph has the room. */
@@ -3187,24 +3213,34 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-panel-chart] .sv-method-changes-group { margin: 0.2rem 0 0; padding: 0; }
 .sv-chart[data-panel-chart] .sv-method-changes-group > summary { font-size: 0.85rem; }
 .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 0; min-height: 12rem; container-type: size; }
-.sv-chart[data-panel-chart] .sv-chart__svg { display: none; width: 100%; height: 100%; }
-.sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+.sv-chart[data-panel-chart] .sv-chart__variant { display: none; width: 100%; height: 100%; }
+/* A marked plot keeps exactly the shape it was drawn at, with its markers
+   under it, so each marker stays under its date whatever the space. */
+.sv-chart[data-panel-chart] .sv-chart__frame {
+  /* The second term is the plot's own minimum: at that height a browser can
+     report the container as having none. */
+  width: min(100cqw, calc((max(100cqh, 12rem) - var(--sv-lane-levels) * 1.6rem) * var(--sv-frame-ratio)));
+  height: auto;
+  margin-inline: auto;
+}
+.sv-chart[data-panel-chart] .sv-chart__frame > .sv-chart__svg { height: auto; }
+.sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: block; }
 /* Rows of bars spread into spare height, each up to --sv-row-room from the next,
    and any height beyond that stays under the chart. A row whose label wraps
    can need more than that, so the rows are never held under their own height. */
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
 @container (aspect-ratio < 3.55) {
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: block; }
 }
 @container (aspect-ratio < 2.8) {
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: none; }
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-broad"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-broad"] { display: block; }
 }
 @media (max-width: 40rem) {
-  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg { display: none; }
-  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
   /* A long title takes its height from the graph, not from the panel's edge. */
   .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
   .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 16rem; min-height: 12rem; }
@@ -3214,6 +3250,9 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    controls and notes leave, its rows sharing the space. One too long for the
    space scrolls with the step. */
 .sv-report[data-panel-chart] :is(.sv-bars, .sv-estimates, .sv-periods, .sv-map__interactive) { flex: 1 1 auto; display: flex; flex-direction: column; margin-block: 0; }
+/* A map's table fills what the step leaves, and scrolls inside that. */
+.sv-report[data-panel-chart] .sv-area-table { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+.sv-report[data-panel-chart] .sv-area-table .sv-chart__table-scroll { flex: 1 1 0; min-height: 12rem; max-height: none; }
 .sv-report[data-panel-chart] :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-evenly; margin-block: 0; }
 .sv-report[data-panel-chart] :is(.sv-bars__row, .sv-estimates__row) { margin: 0; }
 .sv-report[data-panel-chart] .sv-composition__row + .sv-composition__row { margin-top: 0; }
@@ -3233,9 +3272,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 @media (width > 47.5rem) {
   /* The whole map scaled to the space left: a tile grid is sized by the height as well as the width. */
   .sv-report[data-panel-chart] .sv-geo-map__svg { flex: 1 1 0; min-height: 16rem; width: 100%; height: 100%; max-height: none; }
-  .sv-report[data-panel-chart] .sv-tile-map__scroll { flex: 1 1 0; min-height: 16rem; overflow: visible; container-type: size; }
+  .sv-report[data-panel-chart] .sv-tile-map__scroll { flex: 1 1 0; min-height: 16rem; container-type: size; }
   .sv-report[data-panel-chart] .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; }
-  .sv-report[data-panel-chart] .sv-tile-map__grid[data-cols="dense"] { min-width: 0; margin: 0 auto; gap: 1px; }
   /* Small multiples: every panel packed to fill the step, the line stretched to its cell. */
   .sv-report[data-panel-chart] .sv-multiples__grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
   .sv-report[data-panel-chart] .sv-multiples__panel { display: flex; flex-direction: column; min-height: 0; }
@@ -3245,8 +3283,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* On a phone every shape's type would shrink too far, so the narrow plot,
    drawn for that width, is used whatever the space. */
 @media (max-width: 40rem) {
-  .sv-chart[data-preview] .sv-chart__plot .sv-chart__svg { display: none; }
-  .sv-chart[data-preview] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
+  .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant { display: none; }
+  .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
 }
 .sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
@@ -3367,15 +3405,15 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview .sv-periods__bar-label { overflow: hidden; text-overflow: ellipsis; }
 .sv-chart__preview .sv-periods__row-label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .sv-chart__preview .sv-periods__line--events { padding-top: .2rem; }
-.sv-chart__preview .sv-periods__line--events .sv-event-strip__lane { --sv-strip-step: 1.05rem; padding-bottom: .1rem; }
-.sv-chart__preview .sv-event-strip__marker { width: 1rem; height: 1rem; font-size: .55rem; }
+.sv-chart__preview .sv-periods__line--events .sv-markers { --sv-marker-step: 1.05rem; margin-bottom: .1rem; }
+.sv-chart__preview .sv-markers__marker { min-width: 1rem; height: 1rem; padding: 0 .2rem; font-size: .55rem; }
 .sv-periods[data-compact] .sv-periods__row,
 .sv-periods[data-compact] .sv-periods__row:first-child { padding: 0; border: 0; align-items: center; }
 .sv-periods[data-compact] .sv-periods__track { height: .5rem; }
 .sv-periods[data-compact] .sv-periods__legend { margin-bottom: .15rem; }
 .sv-periods[data-compact] .sv-periods__line--events { padding-top: 0; }
-.sv-periods[data-compact] .sv-event-strip__lane { --sv-strip-step: .85rem; }
-.sv-periods[data-compact] .sv-event-strip__marker { width: .85rem; height: .85rem; font-size: .5rem; }
+.sv-periods[data-compact] .sv-markers { --sv-marker-step: .85rem; }
+.sv-periods[data-compact] .sv-markers__marker { min-width: .85rem; height: .85rem; padding: 0 .15rem; font-size: .5rem; }
 .sv-periods[data-compact] .sv-periods__axis { height: 1rem; }
 .sv-periods[data-compact] .sv-periods__tick { top: .05rem; }
 .sv-periods[data-compact] .sv-periods__row-label { padding-top: 0; font-size: .6rem; line-height: 1.1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -3401,8 +3439,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-tile-map__fit > .sv-tile-map__grid { width: min(100cqw, 100cqh * var(--sv-tile-cols) / var(--sv-tile-rows)); margin-inline: auto; gap: 2px; }
 .sv-tile-map__fit .sv-tile-map__tile { padding: 0; align-items: center; justify-content: center; }
 .sv-tile-map__fit .sv-tile-map__code { font-size: .55rem; }
-/* The world grid fits the slide like any other: no minimum tile size, no sideways scroll. */
-.sv-tile-map__fit > .sv-tile-map__grid[data-cols="dense"] { min-width: 0; margin: 0 auto; gap: 1px; }
+/* The world grid fits the slide like any other. */
+.sv-tile-map__fit > .sv-tile-map__grid[data-cols="dense"] { margin: 0 auto; gap: 1px; }
 /* A category legend's long labels would otherwise take the map's whole slide on a phone. */
 .sv-chart__preview .sv-map-legend__title { margin: 0 0 .1rem; font-size: .66rem; }
 .sv-chart__preview .sv-category-legend__list { gap: .1rem .7rem; font-size: .66rem; line-height: 1.2; }

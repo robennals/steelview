@@ -1,5 +1,5 @@
 /* Fact-report library — the labelled scatter plot. The two size variants
-   switch with the series charts' .sv-chart__svg[data-variant] rules. */
+   switch with the series charts' .sv-chart__variant[data-variant] rules. */
 
 @layer components {
   .sv-scatter__x-label {

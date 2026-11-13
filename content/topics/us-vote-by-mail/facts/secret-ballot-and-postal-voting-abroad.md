@@ -738,8 +738,6 @@ figures:
     areaLabel: Country
     categoryLabel: Who may vote by post in-country
     highlight: [US]
-    insets:
-      - { regionIds: [LU], label: Luxembourg }
     sources: [3, 4]
     note: >-
       All voters (11): Canada, Germany, Iceland, South Korea, Liechtenstein,

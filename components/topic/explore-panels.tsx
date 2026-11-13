@@ -27,9 +27,16 @@ export function useChartsWanted(fact: string): boolean {
   return explore?.wanted === fact || explore?.shown?.fact === fact;
 }
 
+/** Marks the history entry a sheet added, with the observation it opened at. */
+const SHEET_ENTRY = 'svExploreSheet';
+
 /**
  * The topic page's data panels, which a viewpoint can open in a sheet. Opening
  * adds a history entry, so Back closes the sheet as it does a fact's.
+ *
+ * The sheet knows its own entry by a mark in its history state, not by the
+ * observation in the address: a reader who arrived on that address (a shared
+ * link) has it on the entry beneath too, and Back would land on a match.
  */
 export function ExplorePanels({ children }: { children: ReactNode }) {
   const [shown, setShown] = useState<PanelTarget | null>(null);
@@ -37,13 +44,13 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
 
   // Coming back from a fact opened over the sheet lands on the sheet's own entry.
   useEffect(() => {
-    const onPopState = () => setShown(open => (open && location.hash === `#${open.observation}` ? open : null));
+    const onPopState = () => setShown(open => (open && history.state?.[SHEET_ENTRY] === open.observation ? open : null));
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
   const open = useCallback((next: PanelTarget) => {
-    history.pushState(history.state, '', `#${next.observation}`);
+    history.pushState({ ...history.state, [SHEET_ENTRY]: next.observation }, '', `#${next.observation}`);
     setShown(next);
   }, []);
   const leave = useCallback(() => history.back(), []);

@@ -1,14 +1,14 @@
 /**
- * Grid-cartogram layouts: every area as one equal tile, placed roughly where
- * it sits on the map. Equal tiles answer "which areas are higher" without the
- * bias of a true-shape map, where the largest areas dominate the eye
- * regardless of how many people live in them.
+ * Grid-cartogram layouts: every area as a rectangle of whole cells, placed
+ * roughly where it sits on the map. A tile keeps the smallest areas as easy
+ * to see and to click as the largest.
  *
  * Positions are a compromise between geography and a clean grid. Neighbours
  * stay neighbours where possible; exact adjacency cannot survive the grid.
- * A tile may span a few cells where one cell would pull its neighbours too
- * far from their places; spans stay small, so every area keeps roughly the
- * same weight and the smallest stay as easy to see and to click.
+ * The layouts here are close to equal: a tile spans a few cells only where
+ * one cell would pull its neighbours too far from their places, so that each
+ * can print its value at full size. The world's, in `world-tiles.ts`, follows
+ * each country's area instead.
  */
 
 export type MapTile = {

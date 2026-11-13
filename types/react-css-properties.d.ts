@@ -18,12 +18,8 @@ declare module 'react' {
     /** Bar rows: a bar's, dumbbell dot's or series mark's fill, by series. */
     '--sv-bar-fill'?: string;
     /** Event strip (and a long timeline's preview lane): plot insets that line it up with the chart above, and marker stacking. */
-    '--sv-strip-left'?: string;
-    '--sv-strip-right'?: string;
-    '--sv-strip-left-narrow'?: string;
-    '--sv-strip-right-narrow'?: string;
-    '--sv-strip-left-wide'?: string;
-    '--sv-strip-right-wide'?: string;
+    '--sv-frame-ratio'?: number;
+    '--sv-lane-levels'?: number;
     '--sv-strip-levels'?: number;
     '--sv-strip-level'?: number;
     /** Period timeline: the category colour of a span or legend swatch. */
