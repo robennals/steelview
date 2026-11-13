@@ -263,6 +263,7 @@ test('opening a claim brings its picked row into view on a long timeline', async
   await claim.click();
   const step = page.locator('dialog[open] .sv-walk__step').filter({ has: page.locator('[data-observation$="--verification-stopped"]') });
   await expect(step.locator('[data-row][data-mark-picked]').first()).toBeInViewport();
+  await expect(step.locator('.sv-observe').first()).toBeInViewport();
 });
 
 test('clicking a viewpoint step\'s chart opens the panel too, title included', async ({ page }) => {
@@ -404,8 +405,10 @@ test('an observation on a comparison picks out its rows, and keeps them when the
   const row = await openDataRow(page, longRun);
   const tab = row.locator('.sv-walk__tab').filter({ hasText: 'Arrivals per head by nationality' }).first();
   await tab.click();
-  const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls)').first();
+  const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls):has([data-row="Malta"])').first();
   await expect(step.locator('.sv-comparison__rows')).toBeVisible();
+  // A far chart is a long slide away, and its controls move until it lands.
+  await expect.poll(() => step.evaluate(el => Math.abs(el.getBoundingClientRect().left - el.parentElement!.getBoundingClientRect().left))).toBeLessThan(2);
   await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
   await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
   await step.locator('.sv-comparison-controls button').first().click();

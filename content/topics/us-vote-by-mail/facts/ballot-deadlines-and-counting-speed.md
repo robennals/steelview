@@ -2,7 +2,7 @@
 title: Ballot Receipt Deadlines, Late Ballots and Counting Speed
 claimSources: [5, 7, 10, 15, 16]
 claim: >-
-  Fewer states now count ballots that arrive after Election Day than in 2020, late arrival causes a steady share of rejections, and the slowest counts are mostly in heavy-mail western states.
+  Fewer states now count ballots that arrive after Election Day than in 2020, late arrival causes 12.1% to 26.9% of rejections, and the slowest counts are mostly in heavy-mail western states.
 status: well-supported
 sources:
   # 1
@@ -501,13 +501,33 @@ figures:
       - { label: Michigan, values: { y2020: 17, y2024: 9 } }
       - { label: Wisconsin, values: { y2020: 8, y2024: 9 } }
       - { label: North Carolina, values: { y2020: 3, y2024: 6 } }
+  - kind: dataTable
+    id: count-speed-named
+    title: 'Which states counted fast and slow in 2024, in MIT''s words'
+    description: 'States MIT Election Lab names as fast or slow to count, and its finding on what slows a count.'
+    sources: [10]
+    caption: One card per group of states
+    layout: cards
+    leadColumn: says
+    columns:
+      - key: states
+        label: States
+        rowHeader: true
+      - key: says
+        label: What MIT says
+        sortable: false
+    rows:
+      - { states: Texas and Florida, says: '"successfully counted an enormous number of votes (both well over ten million) within about a day"' }
+      - { states: 'Washington, California, Nevada, Arizona, Utah, Colorado and Alaska', says: 'States "in the west and southwest" with "a larger proportion of votes left to count by the end of 24 hours"' }
+      - { states: 'Mississippi, Maine, Maryland, Massachusetts and Michigan', says: '"also slower to report"' }
+      - { states: States with many mail ballots, says: '"states were slower to report overall vote counts if they had large volumes of mail ballots, prohibited preprocessing mail ballots, and allowed mail ballots to arrive after Election Day"' }
   - kind: comparison
     id: preprocessing-four-hours
   - kind: dataTable
     id: late-ballots
     title: US late mail ballots, and what they are measured against
     description: 'Each card uses a different election and denominator, so the figures are not comparable with one another.'
-    caption: One card per election
+    caption: One card per election or postal change
     layout: cards
     leadColumn: late
     columns:
@@ -527,7 +547,7 @@ figures:
           sources:
             - 9
         against:
-          value: 'Nearly 1.3 million ballots cast in the two counties; 669,445 mail ballots returned statewide'
+          value: 'Nearly 1.3 million ballots cast in the two counties; 669,445 mail ballots returned statewide; the winner took both counties "by margins far exceeding the number of ballots received post-Election Day"'
           sources:
             - 9
             - 3
@@ -567,6 +587,15 @@ figures:
           value: '584,463 rejected, 1.2% of returned mail ballots'
           sources:
             - 3
+      - election: 'US Postal Service, since 2024'
+        late:
+          value: 'In 2024 it brought in a system that "postmarks mail when it reaches regional centers, not when it first enters the mail stream"'
+          sources:
+            - 8
+        against:
+          value: 'The Postal Service says "more than 95% of mail ballots have arrived on time in recent elections"'
+          sources:
+            - 8
   - kind: dataTable
     id: processing-rules
     title: >-
@@ -657,39 +686,37 @@ observationMarks:
   watson-left-it-to-legislatures: {rows: ["US Supreme Court"]}
   watson-appearance-of-fraud: {rows: ["US Supreme Court"]}
   back-to-2016-level: {lines: ["Count ballots arriving after Election Day"]}
-  grace-states-mixed: {lines: ["Count ballots arriving after Election Day"], at: "2026-11"}
+  grace-states-mixed: {rows: ["Texas", "Alaska", "Mississippi (business days)", "California", "New York"]}
   late-share-of-rejections: {lines: ["United States"]}
   late-rejections-rising-2026: {rows: ["Wisconsin spring primary, 2026", "Michigan August primary, 2026", "Washington primary, 2026"]}
-  postal-delays-and-postmarks: {whole: true}
-  slowest-states-mostly-heavy-mail: {rows: ["Arizona 2024", "Nevada 2024"]}
+  postal-delays-and-postmarks: {rows: ["US Postal Service, since 2024"]}
+  slowest-states-mostly-heavy-mail: {rows: ["Washington, California, Nevada, Arizona, Utah, Colorado and Alaska", "States with many mail ballots"]}
   preprocessing-speeds-first-hours: {rows: ["No pre-processing before Election Day", "Pre-processing allowed"]}
   gap-gone-by-24-hours: {rows: ["Pre-processing allowed"]}
   late-ballots-small-in-nevada: {rows: ["Nevada general, 2024: Clark and Washoe counties"]}
   2020-low: {lines: ["United States"], at: "2020"}
   fifteen-versus-thirty: {rows: ["Washington", "Illinois", "Alaska", "District of Columbia", "Maryland", "California", "New York", "Oregon", "New Jersey", "Mississippi (business days)", "West Virginia", "Nevada", "Kansas", "Massachusetts", "Virginia", "Texas"]}
-  most-votes-counted-within-hours: {rows: ["Arizona 2024", "Nevada 2024", "Pennsylvania 2024", "Georgia 2024", "Michigan 2024", "Wisconsin 2024", "North Carolina 2024"]}
-  slow-states-not-only-mail: {rows: ["Arizona 2020", "Arizona 2024", "Nevada 2020", "Nevada 2024", "Pennsylvania 2020", "Pennsylvania 2024"]}
+  most-votes-counted-within-hours: {rows: ["Pennsylvania", "Georgia", "Michigan", "Wisconsin", "North Carolina"]}
+  slow-states-not-only-mail: {rows: ["Arizona", "Nevada", "Pennsylvania"]}
   experts-rate-count-strong: {whole: true}
   late-ballots-table: {whole: true}
   nevada-2024-lead-change: {rows: ["Nevada general, 2024: Clark and Washoe counties"]}
   processing-table: {whole: true}
   processing-rules-vary: {rows: ["Pennsylvania", "Wisconsin"]}
+  texas-florida-counted-fast: {rows: ["Texas and Florida"]}
+  prepare-early-still-slow: {rows: ["Arizona", "Nevada"]}
 ---
 ## Observations {#ballot-deadlines-and-counting-speed--observations-receipt-deadline-states}
 
-### Grace periods rose in 2020 and are back to their 2016 level {#ballot-deadlines-and-counting-speed--back-to-2016-level}
+### States counting late ballots peaked at 21 in 2020 and are down to 15, against 13 in 2016 {#ballot-deadlines-and-counting-speed--back-to-2016-level}
 
 The number of states counting late-arriving ballots peaked in November 2020 and has fallen since (chart). [15](#source-ballot-deadlines-and-counting-speed-15) NCSL expects the count of states requiring Election Day receipt in 2026 to be "roughly the same as it was in November 2016". [15](#source-ballot-deadlines-and-counting-speed-15)
 
 North Dakota, Ohio and Utah moved to Election Day receipt in 2025. Kansas legislated the same change, but a court has blocked it for now (both marked under the chart). [1](#source-ballot-deadlines-and-counting-speed-1)
 
-### Grace periods are not confined to one kind of state {#ballot-deadlines-and-counting-speed--grace-states-mixed}
-
-The states still counting postmarked ballots that arrive late include Texas, Alaska, Kansas, Mississippi and West Virginia, as well as California, New York and Illinois. [1](#source-ballot-deadlines-and-counting-speed-1) Windows run from one day in Texas to about three weeks in Washington (next chart).
-
 ## Observations {#ballot-deadlines-and-counting-speed--observations-late-share}
 
-### Late arrival is a steady share of rejections {#ballot-deadlines-and-counting-speed--late-share-of-rejections}
+### Since 2016, late arrival has caused 12.1% to 26.9% of rejections, depending on the election {#ballot-deadlines-and-counting-speed--late-share-of-rejections}
 
 In every federal general election since 2016, between about one in eight and more than one in four rejected mail ballots was rejected for arriving too late (chart). [7](#source-ballot-deadlines-and-counting-speed-7) [5](#source-ballot-deadlines-and-counting-speed-5) [16](#source-ballot-deadlines-and-counting-speed-16)
 
@@ -707,17 +734,15 @@ The Supreme Court described Mississippi as "one of roughly 30 States" counting l
 
 Its separate count for military and overseas voters is "Thirty states and Washington, D.C.", which accept at least some such ballots after Election Day. [1](#source-ballot-deadlines-and-counting-speed-1) Both numbers are right; they count different ballots.
 
+### States still counting late ballots include Texas, Alaska and Mississippi, as well as California and New York {#ballot-deadlines-and-counting-speed--grace-states-mixed}
+
+The states still counting postmarked ballots that arrive late include Texas, Alaska, Kansas, Mississippi and West Virginia, as well as California, New York and Illinois. [1](#source-ballot-deadlines-and-counting-speed-1) Windows run from one day in Texas to about three weeks in Washington (chart).
+
 ## Observations {#ballot-deadlines-and-counting-speed--observations-hours-to-count}
 
 ### Most of the vote is counted within hours {#ballot-deadlines-and-counting-speed--most-votes-counted-within-hours}
 
 In 2024 a majority of the national vote was counted in about two hours and three-quarters in about three. [10](#source-ballot-deadlines-and-counting-speed-10) Every state had reported more than 75% of its presidential vote within about five days. [10](#source-ballot-deadlines-and-counting-speed-10)
-
-### The slowest counts are mostly in heavy-mail western states {#ballot-deadlines-and-counting-speed--slowest-states-mostly-heavy-mail}
-
-MIT names Washington, California, Nevada, Arizona, Utah, Colorado and Alaska as having the most left to count after a day. California reported "about a third of its votes" over the month after Election Day. [10](#source-ballot-deadlines-and-counting-speed-10)
-
-Texas and Florida, each with well over ten million votes, counted almost all of them within about a day. [10](#source-ballot-deadlines-and-counting-speed-10)
 
 ### Mail volume is not the only cause of slow counts {#ballot-deadlines-and-counting-speed--slow-states-not-only-mail}
 
@@ -737,7 +762,7 @@ In 2020, states that let officials prepare mail ballots before Election Day had 
 
 ### The early-processing gap is gone within a day {#ballot-deadlines-and-counting-speed--gap-gone-by-24-hours}
 
-By 24 hours after polls closed, "the gap between states had essentially disappeared". [12](#source-ballot-deadlines-and-counting-speed-12) Arizona and Nevada process mail ballots on receipt and were still among the slowest states in 2024 (table below). [11](#source-ballot-deadlines-and-counting-speed-11) [10](#source-ballot-deadlines-and-counting-speed-10)
+By 24 hours after polls closed, "the gap between states had essentially disappeared". [12](#source-ballot-deadlines-and-counting-speed-12)
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-late-ballots}
 
@@ -751,13 +776,13 @@ Less than 1 percent of ballots cast in Nevada's two largest counties arrived aft
 
 Against mail ballots rather than all ballots the share is larger: the two counties' late ballots alone come to nearly one in fifty of the mail ballots returned statewide. [9](#source-ballot-deadlines-and-counting-speed-9) [3](#source-ballot-deadlines-and-counting-speed-3)
 
-### Late rejections rose in the 2026 primaries {#ballot-deadlines-and-counting-speed--late-rejections-rising-2026}
+### Late rejections rose in some 2026 primaries {#ballot-deadlines-and-counting-speed--late-rejections-rising-2026}
 
 In Wisconsin, Michigan and Washington, more mail ballots arrived too late in 2026 primaries than in the previous comparable election (see the cards). [8](#source-ballot-deadlines-and-counting-speed-8) None of these ballots was counted.
 
 Washington, an all-mail state with a grace period, shows that late rejections happen under postmark rules as well as under Election Day deadlines. [8](#source-ballot-deadlines-and-counting-speed-8) [1](#source-ballot-deadlines-and-counting-speed-1)
 
-### Postal changes bear on both kinds of deadline {#ballot-deadlines-and-counting-speed--postal-delays-and-postmarks}
+### Since 2024 the Postal Service has postmarked mail at regional centres {#ballot-deadlines-and-counting-speed--postal-delays-and-postmarks}
 
 The Postal Service says more than 95% of mail ballots have arrived on time in recent elections. [8](#source-ballot-deadlines-and-counting-speed-8) Since 2024 it postmarks mail at regional centres rather than where it is posted, which the reporting says has "particularly affected" states that rely on postmarks. [8](#source-ballot-deadlines-and-counting-speed-8)
 
@@ -775,6 +800,10 @@ Processing rules are NCSL's as of September 2026 and may differ from those in fo
 
 Most states let officials begin processing mail ballots before Election Day; six, including Pennsylvania and Wisconsin, allow it only on Election Day. [11](#source-ballot-deadlines-and-counting-speed-11) No state allows results to be released before polls close. [11](#source-ballot-deadlines-and-counting-speed-11)
 
+### Arizona and Nevada prepare ballots early yet still count slowly {#ballot-deadlines-and-counting-speed--prepare-early-still-slow}
+
+Both start work on mail ballots on receipt, yet were the two slowest of these seven states in 2024: Arizona took 147 hours to count 95% of the vote, and Nevada 51. [11](#source-ballot-deadlines-and-counting-speed-11) [10](#source-ballot-deadlines-and-counting-speed-10)
+
 ## Observations {#ballot-deadlines-and-counting-speed--observations-watson}
 
 ### The Supreme Court left receipt deadlines to legislatures {#ballot-deadlines-and-counting-speed--watson-left-it-to-legislatures}
@@ -786,6 +815,16 @@ On the arguments that Election Day receipt protects integrity and confidence, it
 ### The Court recognised a reason a legislature might choose Election Day receipt {#ballot-deadlines-and-counting-speed--watson-appearance-of-fraud}
 
 The opinion said legislatures may have set Election Day deadlines because "an election-day deadline avoids the appearance of fraud from late-arriving ballots". [2](#source-ballot-deadlines-and-counting-speed-2) It did not decide whether that view is right: "The question today is not whether requiring ballots to be received by election day is a good or bad idea". [2](#source-ballot-deadlines-and-counting-speed-2)
+
+## Observations {#ballot-deadlines-and-counting-speed--observations-count-speed-named}
+
+### Texas and Florida each counted more than ten million votes in about a day {#ballot-deadlines-and-counting-speed--texas-florida-counted-fast}
+
+Texas and Florida "successfully counted an enormous number of votes (both well over ten million) within about a day". [10](#source-ballot-deadlines-and-counting-speed-10)
+
+### The slowest counts are mostly in western states, and many mail ballots slow a count {#ballot-deadlines-and-counting-speed--slowest-states-mostly-heavy-mail}
+
+MIT names Washington, California, Nevada, Arizona, Utah, Colorado and Alaska as having the most left to count after a day. California reported "about a third of its votes" over the month after Election Day. [10](#source-ballot-deadlines-and-counting-speed-10) MIT's 2020 study found counts slower where states had "large volumes of mail ballots". [10](#source-ballot-deadlines-and-counting-speed-10)
 
 ## More {#ballot-deadlines-and-counting-speed--more-receipt-deadline-states}
 

@@ -1060,7 +1060,6 @@ comparisons:
     groupLabel: answer
     allGroupsLabel: All answers
     groups: [Increased confidence, Decreased confidence, Don't know]
-    defaultGroup: 0
     note: 'From Table 1 of the report ("SB 202 and Its Effect on Voter Confidence"). "Increased" adds "greatly" and "somewhat increase" (all voters 14.7 + 27.5 = 42.2); "decreased" adds "somewhat" and "greatly decrease" (16.2 + 8.4 = 24.6); "don''t know" is as published. Each row sums to 100, which is the bar total.'
     items:
       - label: All voters
@@ -1098,6 +1097,29 @@ dataStillNeeded:
     why: 'Every series here is pre-election for 2026. A post-election reading would show whether the 2025–26 break from the winner–loser pattern survives a result.'
 figures:
   - kind: series
+  - kind: dataTable
+    id: photo-id-by-race
+    title: Support for requiring photo ID, by race and ethnicity
+    description: 'What Pew and Gallup report on support for photo ID across racial and ethnic groups. Polls and years differ by row.'
+    caption: 'One row per group'
+    columns:
+      - { key: group, label: 'Group', rowHeader: true }
+      - { key: favor, label: 'Favor photo ID', sortable: false }
+    rows:
+      - group: 'Every racial and ethnic group (Pew, 2025)'
+        favor: { value: 'At least seven-in-ten', sources: [1] }
+      - group: 'White adults (Gallup, 2024)'
+        favor: { value: '86%', sources: [23] }
+      - group: 'Non-White adults (Gallup, 2024)'
+        favor: { value: '80%', sources: [23] }
+      - group: 'White Democrats (Pew, 2021)'
+        favor: { value: '54%', sources: [4] }
+      - group: 'Black Democrats (Pew, 2021)'
+        favor: { value: '65%', sources: [4] }
+      - group: 'Hispanic Democrats (Pew, 2021)'
+        favor: { value: '72%', sources: [4] }
+      - group: 'Asian Democrats (Pew, 2021)'
+        favor: { value: '71%', sources: [4] }
   - kind: series
     id: pew-early-voting-series
   - kind: series
@@ -1106,10 +1128,36 @@ figures:
     id: proof-of-citizenship-by-group
   - kind: series
     id: gallup-concerns
+  - kind: barChart
+    id: shared-goals-importance
+    title: Americans who say each election goal is important, 2026
+    description: 'Share of US adults who say each goal is very or somewhat important in US elections (Pew).'
+    valueLabel: '% who say it is important'
+    categoryLabel: Goal
+    format: { unit: percent }
+    domainMax: 100
+    sort: none
+    sources: [13]
+    items:
+      - { label: No eligible voters are prevented from voting, value: 90 }
+      - { label: No ineligible voters are permitted to vote, value: 85 }
   - kind: comparison
     id: pew-2026-eligibility-confidence
   - kind: series
     id: gallup-accuracy
+  - kind: barChart
+    id: not-at-all-confident
+    title: Americans not at all confident that votes will be accurately cast and counted (Gallup)
+    description: 'Share of US adults "not at all confident" in the vote, in the two years Gallup gives in its 2024 report.'
+    valueLabel: '% not at all confident'
+    categoryLabel: Year
+    format: { unit: percent }
+    domainMax: 100
+    sort: none
+    sources: [8]
+    items:
+      - { label: '2004', value: 6 }
+      - { label: '2024', value: 19 }
   - kind: series
     id: spae-nationwide
   - kind: series
@@ -1156,19 +1204,19 @@ figures:
         measure: 'Confidence in results'
         finding: { value: 'Voters trust results less under procedures they oppose; effects largest for voter ID', sources: [21] }
 observationMarks:
-  photo-id-majorities: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
-  photo-id-across-races: {lines: ["All adults"], at: "2025-08"}
+  photo-id-majorities: {lines: ["Rep/lean Rep", "Dem/lean Dem"], at: "2025-08"}
+  photo-id-across-races: {rows: ["Every racial and ethnic group (Pew, 2025)"]}
   democrats-moved-toward-id: {lines: ["Dem/lean Dem"], from: "2021-04", to: "2025-08"}
   proof-of-citizenship-support: {rows: ["All adults"]}
   studies-find-no-effect: {rows: ["Stewart, Ansolabehere and Persily (2016)", "Cantoni and Pons (2019; QJE 2021)"]}
   milyo-finds-effect: {rows: ["Milyo (2025, working paper)"]}
   procedures-they-oppose: {rows: ["Clinton (APSR)"]}
-  confidence-follows-power: {lines: ["Republicans", "Democrats"]}
+  confidence-follows-power: {lines: ["Republicans", "Democrats"], from: "2004", to: "2024"}
   level-versus-not-at-all: {lines: ["All adults"]}
-  post-election-winner-swing: {lines: ["Republicans", "Democrats"]}
-  different-fears: {lines: ["Republicans", "Democrats"]}
-  shared-goals: {lines: ["Republicans", "Democrats"]}
-  eligibility-confidence-2026: {rows: ["Noncitizens who try to vote will be stopped — Republican supporters", "All legally qualified voters can vote — Democratic supporters"]}
+  post-election-winner-swing: {lines: ["Republicans", "Democrats"], from: "2012", to: "2024"}
+  different-fears: {lines: ["Republicans"], from: "2008", to: "2024"}
+  shared-goals: {rows: ["No eligible voters are prevented from voting", "No ineligible voters are permitted to vote"]}
+  eligibility-confidence-2026: {rows: ["Noncitizens stopped — Republican supporters", "Qualified voters can vote — Republican supporters", "Qualified voters can vote — Democratic supporters"]}
   sb202-self-reported: {rows: ["Republicans", "Democrats"]}
   republicans-moved-toward-early-voting: {lines: ["Rep/lean Rep"], from: "2024-01", to: "2025-08"}
   overlap-not-published: {lines: ["All adults"], at: "2025-08"}
@@ -1182,6 +1230,10 @@ observationMarks:
   access-measures-divide-more: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
   global-winner-gap: {rows: ["World median 2025: approvers", "World median 2025: disapprovers", "US 2026: approvers", "US 2026: disapprovers"]}
   expert-ratings: {rows: ["US 2026: approvers", "US 2026: disapprovers"]}
+  photo-id-83-percent: {lines: ["All adults"], at: "2025-08"}
+  gallup-gap-record-2024: {lines: ["Republicans", "Democrats"], at: "2024"}
+  no-confidence-tripled: {rows: ["2004", "2024"]}
+  studies-disagree: {rows: ["Stewart, Ansolabehere and Persily (2016)", "Cantoni and Pons (2019; QJE 2021)", "Milyo (2025, working paper)"]}
 ---
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-photo-id}
 
@@ -1191,30 +1243,27 @@ Every Pew reading since 2018 shows large majorities of both parties in favour of
 
 MIT's post-election survey of voters finds Republican support "nearly unanimous" (92.4% in 2024) and Democratic support rebounding after a dip. [10](#source-opinion-and-confidence-in-elections-10)
 
-### Democratic support for photo ID has risen since 2021–22 {#opinion-and-confidence-in-elections--democrats-moved-toward-id}
+### Democratic support for photo ID has risen since 2021 {#opinion-and-confidence-in-elections--democrats-moved-toward-id}
 
 In Pew's series, Democratic support was flat at 61% from 2021 to 2023 and then rose in 2024 and 2025 (chart). [3](#source-opinion-and-confidence-in-elections-3) [1](#source-opinion-and-confidence-in-elections-1) Gallup's Democrats dipped in 2022 and then rose 14 points by 2024. [6](#source-opinion-and-confidence-in-elections-6) [5](#source-opinion-and-confidence-in-elections-5)
 
 Republican support stayed in the 90s throughout. The rise came while photo ID was being argued over in Congress and the states; the surveys do not establish why it happened.
-
-### Support for photo ID crosses racial groups {#opinion-and-confidence-in-elections--photo-id-across-races}
-
-Pew finds at least seven in ten adults in each racial and ethnic group it reports favour photo ID requirements (2025). [1](#source-opinion-and-confidence-in-elections-1) Among Democrats in 2021, White Democrats were the least supportive.
-
-| Group | Favour photo ID |
-| --- | --- |
-| White adults (Gallup, 2024) | 86% [23](#source-opinion-and-confidence-in-elections-23) |
-| Non-White adults (Gallup, 2024) | 80% [23](#source-opinion-and-confidence-in-elections-23) |
-| White Democrats (Pew, 2021) | 54% [4](#source-opinion-and-confidence-in-elections-4) |
-| Black Democrats (Pew, 2021) | 65% [4](#source-opinion-and-confidence-in-elections-4) |
-| Hispanic Democrats (Pew, 2021) | 72% [4](#source-opinion-and-confidence-in-elections-4) |
-| Asian Democrats (Pew, 2021) | 71% [4](#source-opinion-and-confidence-in-elections-4) |
 
 ### Access measures divide the parties more than ID does {#opinion-and-confidence-in-elections--access-measures-divide-more}
 
 Automatic registration splits the parties far more than photo ID, and Republican support for it fell after 2018 and has not recovered (chart). [1](#source-opinion-and-confidence-in-elections-1) [4](#source-opinion-and-confidence-in-elections-4)
 
 No-excuse mail voting splits them further: 83% of Democrats and 32% of Republicans favoured it in 2025. [1](#source-opinion-and-confidence-in-elections-1) Of the access measures Pew asks about, only early in-person voting has majority support in both parties.
+
+### 83% of adults favoured requiring photo ID in August 2025 {#opinion-and-confidence-in-elections--photo-id-83-percent}
+
+Pew's August 2025 reading is the highest in its series. [1](#source-opinion-and-confidence-in-elections-1)
+
+## Observations {#opinion-and-confidence-in-elections--observations-photo-id-by-race}
+
+### At least seven in ten adults in every racial group Pew reports favour photo ID {#opinion-and-confidence-in-elections--photo-id-across-races}
+
+Pew finds at least seven in ten adults in each racial and ethnic group it reports favour photo ID requirements (2025). [1](#source-opinion-and-confidence-in-elections-1) Among Democrats in 2021, White Democrats were the least supportive.
 
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-early-voting}
 
@@ -1224,7 +1273,7 @@ In Pew's series, Republican support for two weeks of early in-person voting was 
 
 Gallup's differently worded item runs the other way over a longer period: Republican support fell between 2016 and 2024 while Democrats' stayed high (Gallup chart below). [5](#source-opinion-and-confidence-in-elections-5) [6](#source-opinion-and-confidence-in-elections-6) Read together, the two series show Republican support falling after 2016 and partly recovering by 2025.
 
-### Both majorities exist, but how many back both is not published {#opinion-and-confidence-in-elections--overlap-not-published}
+### 80% of adults favoured two weeks of early voting in August 2025; how many back both this and photo ID is not published {#opinion-and-confidence-in-elections--overlap-not-published}
 
 Photo ID (83%) and two weeks of early voting (80%) were asked of the same half-sample in August 2025. [1](#source-opinion-and-confidence-in-elections-1) [2](#source-opinion-and-confidence-in-elections-2) Pew does not publish how many respondents favoured both. The two shares alone guarantee that a large majority backed both, but not the exact size of that group; see What we don't know yet.
 
@@ -1236,7 +1285,7 @@ In Gallup's three readings, photo ID and early voting each have the support of a
 
 ## Observations {#opinion-and-confidence-in-elections--observations-proof-of-citizenship-by-group}
 
-### Proof of citizenship at registration has the same level of support as photo ID {#opinion-and-confidence-in-elections--proof-of-citizenship-support}
+### 83% of adults favour proof of citizenship at first registration {#opinion-and-confidence-in-elections--proof-of-citizenship-support}
 
 Support for requiring proof of citizenship at first registration matches support for photo ID, and divides by party and race in the same way (chart). [5](#source-opinion-and-confidence-in-elections-5) [23](#source-opinion-and-confidence-in-elections-23)
 
@@ -1244,7 +1293,7 @@ Gallup asked the question for the first time in 2024, so there is no trend. The 
 
 ## Observations {#opinion-and-confidence-in-elections--observations-gallup-ineligible-voting}
 
-### The parties fear different failures, and the gap has grown on one side {#opinion-and-confidence-in-elections--different-fears}
+### Republicans have grown more likely to expect ineligible voting to be a major problem {#opinion-and-confidence-in-elections--different-fears}
 
 Republicans have grown more likely to expect ineligible voting to be a major problem, and Democrats less likely (chart). [8](#source-opinion-and-confidence-in-elections-8) Concern that eligible voters will be blocked is similar in both parties, apart from a Democratic spike in 2020 (next chart). [8](#source-opinion-and-confidence-in-elections-8)
 
@@ -1252,19 +1301,21 @@ In open-ended answers in October 2026, 19% of Republican voters raised illegitim
 
 Democratic voters more often raised legitimate voters being denied access (10%) or interference by the Trump administration (11%). [14](#source-opinion-and-confidence-in-elections-14)
 
-### Both goals are nearly universal {#opinion-and-confidence-in-elections--shared-goals}
+## Observations {#opinion-and-confidence-in-elections--observations-shared-goals-importance}
+
+### At least 85% of adults call each goal important {#opinion-and-confidence-in-elections--shared-goals}
 
 90% of adults said in April 2026 that it is important that "no eligible voters are prevented from voting" and 85% that "no ineligible voters are permitted to vote". [13](#source-opinion-and-confidence-in-elections-13) The parties disagree about which goal current elections fall short of, not about whether both matter.
 
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-2026-eligibility-confidence}
 
-### Republicans doubt noncitizens will be stopped; Democrats doubt every eligible voter can vote {#opinion-and-confidence-in-elections--eligibility-confidence-2026}
+### Republicans doubt noncitizens will be stopped; Democrats are less sure every eligible voter can vote {#opinion-and-confidence-in-elections--eligibility-confidence-2026}
 
 Each side is least confident in the safeguard the other side worries about less (chart). [14](#source-opinion-and-confidence-in-elections-14) Republican confidence that noncitizens will be stopped is up from 35% among Trump voters in 2024. [14](#source-opinion-and-confidence-in-elections-14)
 
 ## Observations {#opinion-and-confidence-in-elections--observations-gallup-accuracy-party}
 
-### Confidence in the count follows the party in power {#opinion-and-confidence-in-elections--confidence-follows-power}
+### Confidence in the count has mostly followed the party in power {#opinion-and-confidence-in-elections--confidence-follows-power}
 
 Republicans were more confident than Democrats under George W. Bush, the two converged in 2008, and Democrats were more confident under Barack Obama and Joe Biden (changes of president are marked under the chart). [8](#source-opinion-and-confidence-in-elections-8) [9](#source-opinion-and-confidence-in-elections-9) The gap reached a record 56 points in 2024. [8](#source-opinion-and-confidence-in-elections-8)
 
@@ -1281,6 +1332,16 @@ A study of 2016 finds the winner effect outweighed pre-election "rigged" messagi
 More than half of Americans have been confident in every Gallup reading since 2004 (chart), most of all in 2004 and 2006. [9](#source-opinion-and-confidence-in-elections-9) But the share "not at all confident" rose from 6% in 2004 to 19% in 2024. [8](#source-opinion-and-confidence-in-elections-8)
 
 Confidence in one's own polling place is higher: 76% in 2024. [8](#source-opinion-and-confidence-in-elections-8)
+
+### The party gap reached 56 points in 2024, the widest on the chart {#opinion-and-confidence-in-elections--gallup-gap-record-2024}
+
+84% of Democrats against 28% of Republicans, which Gallup calls a record. [8](#source-opinion-and-confidence-in-elections-8)
+
+## Observations {#opinion-and-confidence-in-elections--observations-not-at-all-confident}
+
+### The share not at all confident has roughly tripled, from 6% in 2004 to 19% in 2024 {#opinion-and-confidence-in-elections--no-confidence-tripled}
+
+Gallup says the share "has steadily climbed" over the period. [8](#source-opinion-and-confidence-in-elections-8) Most Americans are still very or somewhat confident (previous chart).
 
 ## Observations {#opinion-and-confidence-in-elections--observations-spae-nationwide-party}
 
@@ -1358,17 +1419,21 @@ Milyo finds that adopting strict ID raised the probability of high confidence by
 
 He notes as "an important limitation" that few states adopted or removed strict ID in the period. [18](#source-opinion-and-confidence-in-elections-18)
 
-### Two national studies find no effect on confidence {#opinion-and-confidence-in-elections--studies-find-no-effect}
+### Two national studies find no gain from ID laws in confidence or perceived fraud {#opinion-and-confidence-in-elections--studies-find-no-effect}
 
 Stewart, Ansolabehere and Persily find that people in states with ID laws "do not have greater confidence in elections or perceive lower rates of voter impersonation fraud", and that many people do not know whether their state has such a law. [19](#source-opinion-and-confidence-in-elections-19)
 
 Cantoni and Pons find strict ID has "no effect on fraud – actual or perceived", alongside no effect on turnout. [20](#source-opinion-and-confidence-in-elections-20) Milyo attributes his different result to the direct confidence measure and longer period, not to his party controls. [18](#source-opinion-and-confidence-in-elections-18)
 
-### Agreement with the rules matters as well as who wins {#opinion-and-confidence-in-elections--procedures-they-oppose}
+### Voters trust results less under rules they oppose, especially voter ID {#opinion-and-confidence-in-elections--procedures-they-oppose}
 
 Clinton finds voters "less likely to express confidence in election results conducted using procedures they oppose", beyond the effects of partisan control and outcomes, with "particularly large" effects for voter ID laws and among Republicans and independents. [21](#source-opinion-and-confidence-in-elections-21)
 
 This fits the Georgia pattern. It suggests a rule raises confidence among its supporters and lowers it among its opponents, so its net effect on confidence depends on how widely it is supported.
+
+### Studies disagree on whether strict ID raises confidence {#opinion-and-confidence-in-elections--studies-disagree}
+
+Two national studies find no gain, and a third finds a rise of 14 percentage points in high confidence. They use different measures and periods. [18](#source-opinion-and-confidence-in-elections-18) [19](#source-opinion-and-confidence-in-elections-19) [20](#source-opinion-and-confidence-in-elections-20)
 
 ## More {#opinion-and-confidence-in-elections--more-pew-photo-id}
 

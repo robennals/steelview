@@ -972,7 +972,7 @@ reading's source line, and the chart-value audit traces that line's points to
 its quote as well as the reading's.
 
 **Observations attach by id.** A component figure's DOM id is
-`<fact>--chart-<id>`, so viewpoints cite it as `#fact-<fact>/chart-<id>`.
+`<fact>--chart-<id>`. Viewpoints and cruxes cite its observations, not the figure.
 `## Observations {#<fact>--observations-<id>}` and
 `## Subtleties {#<fact>--subtleties-<id>}` are stepped through in the chart's
 observation bar, and `## More {#<fact>--more-<id>}` is read in its More. A
@@ -1372,7 +1372,7 @@ one, whether a series, a comparison or a [figure](#figures). So the section's
 first such citation decides what the reader sees. "The economy grew, but people
 did not get richer" must cite the GDP-per-head observation before the total-GDP
 one, or the reader sees total GDP rising beside a claim about people's incomes.
-A citation can also name a visual outright, as `#fact-<fact>/chart-<id>`. Read
+Read
 each step on the page to confirm its chart shows its claim. A section with no
 such citation shows text alone, which should be rare.
 
@@ -1383,13 +1383,22 @@ through like a chart. Do not leave such a record as a table in the body: there
 it has no place in the walkthrough, and a report made only of body tables opens
 onto nothing on the topic page.
 
-**Every claim in a step opens its data.** A citation in a step opens its
-collection's data panel in a pop-up, at the chart the cited observation or
-subtlety belongs to, as "Explore this data" under the step's chart does, and
-has a dotted underline. So every checkable claim in a step needs a citation, and
-a citation of an observation reaches a chart where one of a body section does
-not: it opens the report instead. Principle citations stay links to the
-principle.
+**Every link shows its fact on a chart.** A citation in a viewpoint, a crux or the
+topic's introduction opens its collection's data panel in a pop-up, with the cited
+observation selected and its mark picking out the data, and has a dotted
+underline. So a link passes only if a reader can read the claim off the
+highlighted part of the chart: the plotted values, a row's text, an event or a
+quote. Text in the observation's explanation does not count, nor does the chart's
+title. Every part of the claim must be there, for the same place, period and
+measure, and the numbers must match.
+
+If the chart does not show the claim, first link an observation whose chart does.
+If none exists, add one, or add the fact to a chart from a source the report
+already cites. Failing that, say what the data does show. Argument is not linked.
+`check:integrity` fails on a link to a report, a whole chart or a passage of text,
+and on a link whose observation picks out nothing. It cannot judge whether the
+highlighted data says what the claim says: read each link on the page. Principle
+citations stay links to the principle.
 
 **Leave definitions to the chart.** Do not stop the argument to define a term
 the chart draws. Give the chart's line a `glossary` entry instead, and its

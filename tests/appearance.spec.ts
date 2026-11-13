@@ -71,7 +71,7 @@ test('opening every row of a topic at phone width does not widen the page', asyn
 // `crime-terrorism-and-group-exploitation` has a seven-column markdown table.
 test('a prose table sits in its own box, not the page, and its headers do not run together', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/topics/us-voter-id/facts/opinion-and-confidence-in-elections#opinion-and-confidence-in-elections--photo-id-across-races');
+  await page.goto('/topics/us-voter-id/facts/voter-roll-maintenance#voter-roll-maintenance--mostly-moves-deaths-nonresponse');
   const overflows = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth
   );

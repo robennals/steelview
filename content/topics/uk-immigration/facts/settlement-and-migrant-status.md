@@ -1283,8 +1283,32 @@ figures:
   estimates:
   - { label: "All five years", year: 2026–2030, estimate: 1600000, low: 1300000, high: 2200000, source: 3 }
   - { label: "Peak year", year: 2028, estimate: 450000, low: 359000, high: 620000, source: 3 }
+- kind: dataTable
+  id: forecast-drivers
+  title: "What drives the forecast rise in settlement"
+  description: "The three groups of visas the Home Office names as behind the rise in people settling, with the extra settlement applications it expects from each."
+  caption: "One row per group of visas"
+  columns:
+    - {"key": "cohort", "label": "Visas", "rowHeader": true}
+    - {"key": "granted", "label": "Granted"}
+    - {"key": "expected", "label": "Settlement applications expected"}
+  rows:
+    - {"cohort": "Hong Kong BN(O) visas", "granted": {"value": "154,000 people in 2021 and 2022", "sources": [12]}, "expected": {"value": "92,000 additional in 2026 and 54,000 in 2027", "sources": [12]}}
+    - {"cohort": "Health and Care entry visas", "granted": {"value": "616,000 between 2022 and 2024, \"including a significant cohort working in the care sector\"", "sources": [12]}, "expected": {"value": "384,000 additional between 2027 and 2029", "sources": [12]}}
+    - {"cohort": "Skilled Worker entry visas", "granted": {"value": "344,000 between 2022 and 2024", "sources": [13]}, "expected": {"value": "around 222,000 between 2027 and 2029", "sources": [13]}}
 - kind: series
   id: windrush-compensation
+- kind: dataTable
+  id: windrush-findings
+  title: "What the Windrush Lessons Learned Review found"
+  description: "What the independent review of the Windrush scandal, by Wendy Williams, found the state did to people who were here lawfully."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "The review's words"}
+  rows:
+    - {"finding": "What the state did", "says": {"value": "\"It removed and detained others. And through policies designed to combat illegal migration, it denied people access to work, housing and services, even though they were here lawfully and therefore lawfully entitled to access them.\"", "sources": [94]}}
+    - {"finding": "How many were detained or removed", "says": {"value": "\"It identified 164 people in the country before 1973 who'd either been detained or removed – or both – since 2002\"", "sources": [95]}}
 - kind: barChart
   id: settled-and-on-a-path
   title: Who holds UK settlement, and who is on a path to it
@@ -1308,6 +1332,20 @@ figures:
     value: { low: 621000, high: 820000 }
 - kind: comparison
   id: path-by-group
+- kind: dataTable
+  id: not-working-by-group
+  title: "Who is not working among people on a path to settlement"
+  description: "How many adults in each group on a five-year path to settlement were not working, in the Migration Observatory's summary, and what that means for the proposed employment rule."
+  caption: "One row per group"
+  columns:
+    - {"key": "group", "label": "Group", "rowHeader": true}
+    - {"key": "says", "label": "The Migration Observatory's words"}
+  rows:
+    - {"group": "Adult Skilled Worker dependants", "says": {"value": "\"around half of adult Skilled Worker dependants were not working\" (HMRC data, 2023/24)", "sources": [19]}}
+    - {"group": "Dependants on Health & Care visas", "says": {"value": "\"a third of dependants on Health & Care visas\" were not working (HMRC data, 2023/24)", "sources": [19]}}
+    - {"group": "Adults on family visas", "says": {"value": "\"around a third of adults on family visas were not working by their fifth year in the UK\"", "sources": [19]}}
+    - {"group": "Refugees", "says": {"value": "\"around 45% of refugees granted protection or resettled between 2015 and 2023 were not working by their fifth year in the UK\"", "sources": [19]}}
+    - {"group": "Everyone on the path", "says": {"value": "\"Hundreds of thousands of migrants would therefore currently not be eligible for settlement under the proposed mandatory employment rule.\"", "sources": [19]}}
 - kind: comparison
   id: cohort-2020
 - kind: comparison
@@ -1349,10 +1387,45 @@ figures:
     values: { fee: 205, cost: 488 }
   - label: "Visit visa, up to six months"
     values: { fee: 135, cost: 159 }
+- kind: dataTable
+  id: route-costs
+  title: "What a Skilled Worker pays on the way to settlement"
+  description: "The yearly health charge, how it is set, and what a single Skilled Worker pays in fees before settling."
+  caption: "One row per cost"
+  columns:
+    - {"key": "cost", "label": "Cost", "rowHeader": true}
+    - {"key": "says", "label": "What the source says"}
+  rows:
+    - {"cost": "Yearly health charge", "says": {"value": "\"£1,035 per year for all other visa and immigration applications, for example £3,105 for a 3-year visa\"", "sources": [84]}}
+    - {"cost": "How the health charge is set", "says": {"value": "\"The charge is based on how much healthcare an 'average' Health Charge payer is expected to use and not directly linked to the healthcare usage of each individual payee.\"", "sources": [85]}}
+    - {"cost": "Fees before settlement, single Skilled Worker", "says": {"value": "\"a total of around £9,900 in fees before obtaining settlement in five years\"; if the same person waited ten years, \"a total of £16,900, mostly because the Immigration Health Surcharge is paid for every year of residence\"", "sources": [87]}}
+- kind: dataTable
+  id: no-recourse
+  title: "No recourse to public funds: what the condition means and what it costs"
+  description: "How the bar on most benefits applies to people on temporary visas, and what the councils that report spend supporting them, from the Home Affairs Committee."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "The committee's words"}
+  rows:
+    - {"finding": "On a temporary visa", "says": {"value": "\"Immigrants with temporary permission to be in the UK are usually subject to the No Recourse to Public Funds (NRPF) condition, which means they are not eligible for most benefits.\"", "sources": [41]}}
+    - {"finding": "After settlement", "says": {"value": "\"Once an immigrant is granted Indefinite Leave to Remain, they become eligible for accessing benefits on the same terms as British citizens.\"", "sources": [41]}}
+    - {"finding": "What councils spend", "says": {"value": "\"In 2024/25, the 91 local authorities that provided data to the NRPF Network spent £94 million on support to NRPF households.\"", "sources": [91]}}
 - kind: comparison
   id: settlement-fees-europe
 - kind: comparison
   id: ilr-polling
+- kind: dataTable
+  id: ilr-poll-detail
+  title: "YouGov on indefinite leave: Reform UK voters and particular groups, September 2025"
+  description: "Detail from the YouGov poll of adults in Great Britain: where Reform UK voters stand, and which groups most people would let stay permanently."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "YouGov's words"}
+  rows:
+    - {"finding": "Reform UK voters", "says": {"value": "\"Two thirds (64%) support ending the granting of ILR, while 54% back removing it from those who already have it.\"", "sources": [101]}}
+    - {"finding": "Who should keep it", "says": {"value": "\"the majority of the public want to continue allowing permanent residency for: those who have lived in Britain for over 10 years; those in full time work and paying taxes; NHS workers; those married to a British citizen, or those with children who are citizens; and those who have set up businesses in the UK\"", "sources": [103]}}
 - kind: dataTable
   id: rules
   replaces: ["rules"]
@@ -1373,7 +1446,7 @@ figures:
     - { date: "2020", text: "Hong Kong BN(O) policy statement", says: { value: "After five years, holders who have \"stayed free of criminality\" and \"supported themselves financially\" can apply for settled status; the route reflects \"the UK's historic and moral commitment to BN(O) citizens\".", sources: [43, 44] } }
     - { date: "current", text: "Skilled Worker visa guidance", says: { value: "\"After 5 years, you may be able to apply to settle permanently in the UK\".", sources: [42] } }
     - { date: "Nov 2025", text: "A Fairer Pathway to Settlement (CP 1448)", says: { value: "Proposes applying the changes \"to everyone in the country today who has not already received indefinite leave to remain\", and says the government \"would never\" take away settled status already granted.", sources: [53, 54] } }
-    - { date: "Mar 2026", text: "Home Affairs Committee report", says: { value: "Calls applying the changes to people already here \"not unprecedented\", but sees no justification for applying them to pre-2021 arrivals.", sources: [51, 61] } }
+    - { date: "Mar 2026", text: "Home Affairs Committee report", says: { value: "Finds it \"common\" for the Home Office to apply transitional protections, \"but there is also precedent\" for applying rule changes to people already in the UK. Calls applying these changes to people already here \"not unprecedented\", but sees no justification for applying them to pre-2021 arrivals.", sources: [50, 51, 61] } }
     - { date: "Sep 2026", text: "Home Secretary to the Home Affairs Committee", says: { value: "The new policy, including any transitional arrangements, will be set out \"later this year\"; a large group who arrived in 2022 would otherwise qualify in February 2027.", sources: [64] } }
 - kind: dataTable
   id: proposal
@@ -1392,19 +1465,20 @@ figures:
     - { element: "Reductions and additions", proposal: { value: "Five years off for taxable income of at least £50,270 and seven off for £125,140; five or ten years added for receiving public funds; up to 20 added for illegal entry, to a maximum of 30 years.", sources: [58] } }
     - { element: "New minimum conditions", proposal: { value: "B2 English, and national insurance contributions for at least three years, in effect earnings of at least £12,570 a year.", sources: [59] } }
     - { element: "Benefits after settlement", proposal: { value: "Asks whether benefits should be reserved for British citizens.", sources: [56] } }
-    - { element: "Who is out of scope", proposal: { value: "EU Settlement Scheme status, Windrush Scheme grants, and anyone already settled.", sources: [55] } }
+    - { element: "Who is out of scope", proposal: { value: "EU Settlement Scheme status, \"in line with the UK’s obligations under the Withdrawal Agreement\"; Windrush Scheme grants; and anyone already settled.", sources: [55] } }
 - kind: dataTable
   id: comparators
   replaces: ["comparators"]
   title: "Waits for permanent residence elsewhere"
   description: "No source found sets out standard waits for every high-income country from official rules, so there is no chart. This is what the sources say."
-  caption: "One row per country or group"
+  caption: "One row per country, group or finding"
   columns:
     - { key: place, label: "Country or group", rowHeader: true }
     - { key: rule, label: "Rule" }
     - { key: source, label: "Source" }
   rows:
-    - { place: "Most high-income countries", rule: "Standard settlement period \"usually five years\"", source: { value: "Home Affairs Committee", sources: [68] } }
+    - { place: "Most high-income countries", rule: "A ten-year standard would make the UK \"an outlier among most high-income countries, where the standard settlement period is usually five years\"", source: { value: "Home Affairs Committee", sources: [68] } }
+    - { place: "Evidence on longer waits", rule: "\"There is limited evidence on how more stringent requirements and a longer path to ILR may affect immigration and emigration.\"", source: { value: "Migration Observatory", sources: [71] } }
     - { place: "Switzerland and Japan", rule: "Ten-year routes to settlement", source: { value: "Home Affairs Committee; Migration Observatory", sources: [68, 69] } }
     - { place: "Denmark, Sweden, Italy", rule: "Minimum employment requirements for permanent residence", source: { value: "Migration Observatory", sources: [69] } }
     - { place: "Singapore (Work Permit holders)", rule: "No route described here; holders may not marry a citizen or permanent resident without approval, or give birth in Singapore", source: { value: "Ministry of Manpower", sources: [70] } }
@@ -1422,46 +1496,64 @@ dataStillNeeded:
   - measure: "Evidence on whether longer waits for settlement change where skilled workers choose to go, or prompt people already in the UK to leave"
     why: "The available studies are of refugees and family migrants once in a country; the Migration Observatory says the effect on migration decisions is \"impossible to predict\"."
 observationMarks:
-  forecast-1-6-million: {lines: ["Work", "Other (including BN(O))"]}
-  nrpf-costs: {rows: ["Indefinite leave to remain (unit cost £310)"]}
-  non-working-groups: {rows: ["Dependants of worker visa holders", "Family visa holders", "Refugees and humanitarian protection"]}
+  forecast-1-6-million: {rows: ["All five years"]}
+  nrpf-costs: {rows: ["On a temporary visa"]}
+  non-working-groups: {rows: ["Adult Skilled Worker dependants", "Adults on family visas"]}
   2012-family-change: {lines: ["Family"], from: "2012", to: "2016"}
-  no-official-data-on-ilr-holders-work-or-benefits: {rows: ["Indefinite leave to remain (not EU scheme)", "EU Settlement Scheme"]}
-  euss-outnumber-non-eu-ilr: {rows: ["EU Settlement Scheme: settled-status grants since 2018", "Non-EU citizens holding indefinite leave, upper estimate (end of 2024)", "Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"]}
+  no-official-data-on-ilr-holders-work-or-benefits: {rows: ["Indefinite leave to remain"]}
+  euss-outnumber-non-eu-ilr: {rows: ["EU Settlement Scheme grants", "Non-EU citizens holding indefinite leave"]}
   revoking-opposed-58-29: {rows: ["Remove it from current holders: support", "Remove it from current holders: oppose"]}
   ending-for-new-arrivals-splits: {rows: ["End new grants of indefinite leave: support", "End new grants of indefinite leave: oppose"]}
-  path-2-2-million: {rows: ["On a temporary visa with a five-year path to settlement (end of 2024)"]}
-  surcharge-matches-average-use: {rows: ["Skilled Worker, over three years, from overseas (unit cost £153)"]}
-  ilr-fee-ten-times-cost: {rows: ["Indefinite leave to remain (unit cost £310)"]}
-  windrush-record: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
+  path-2-2-million: {rows: ["On a five-year path to settlement"]}
+  surcharge-matches-average-use: {rows: ["How the health charge is set"]}
+  ilr-fee-ten-times-cost: {rows: ["Indefinite leave to remain"]}
+  windrush-record: {rows: ["What the state did"]}
   2010-peak: {lines: ["All settlement grants", "Other (including BN(O))"], at: "2010"}
   rise-since-2017: {lines: ["All settlement grants", "Work", "Other (including BN(O))"], from: "2017", to: "2025"}
-  cps-projection: {lines: ["All settlement grants"]}
-  no-official-count-of-holders: {rows: ["Non-EU citizens holding indefinite leave, upper estimate (end of 2024)", "Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"]}
+  cps-projection: {whole: true}
+  no-official-count-of-holders: {rows: ["Non-EU citizens holding indefinite leave"]}
   settlement-varies-by-route: {rows: ["Family", "Study", "Work"]}
   work-cohorts-settle-more: {rows: ["Work"]}
-  uc-overstates-ilr: {rows: ["Indefinite leave to remain (not EU scheme)"]}
-  social-lettings-nationality: {rows: ["Indefinite leave to remain (not EU scheme)"]}
-  uk-settlement-fee-high-in-europe: {rows: ["UK – Global Talent visa settlement", "Switzerland – settlement for skilled workers"]}
+  uc-overstates-ilr: {rows: ["Indefinite leave to remain"]}
+  social-lettings-nationality: {rows: ["Indefinite leave to remain"]}
+  uk-settlement-fee-high-in-europe: {rows: ["UK – Global Talent visa settlement", "Switzerland – skilled workers"]}
   bno-route-opened: {lines: ["Other (including BN(O))"], from: "2021", to: "2025"}
-  forecast-peak-and-assumption: {lines: ["All settlement grants"]}
-  forecast-drivers-in-detail: {lines: ["Work", "Other (including BN(O))"]}
-  cps-alternative-and-what-it-stands-by: {lines: ["All settlement grants"]}
+  forecast-peak-and-assumption: {rows: ["Peak year"]}
+  forecast-drivers-in-detail: {rows: ["Hong Kong BN(O) visas", "Health and Care entry visas", "Skilled Worker entry visas"]}
+  cps-alternative-and-what-it-stands-by: {whole: true}
   what-the-234-billion-was: {whole: true}
-  non-eu-ilr-lower-figure: {rows: ["Non-EU citizens holding indefinite leave, lower estimate (end of 2024)"]}
-  children-on-a-path: {rows: ["On a temporary visa with a five-year path to settlement (end of 2024)"]}
+  non-eu-ilr-lower-figure: {rows: ["Non-EU citizens holding indefinite leave"]}
+  children-on-a-path: {rows: ["On a five-year path to settlement"]}
   bno-adults-not-working: {rows: ["Hong Kong BN(O) visa holders"]}
-  protection-cohort-settles: {rows: ["Asylum (granted protection or other leave)"]}
-  command-paper-213000: {rows: ["Indefinite leave to remain (not EU scheme)"]}
-  no-reliable-claim-rate: {rows: ["Indefinite leave to remain (not EU scheme)"]}
-  global-talent-fee-below-cost: {rows: ["Global Talent with an approval letter, from overseas (unit cost £488)"]}
+  protection-cohort-settles: {rows: ["Asylum"]}
+  command-paper-213000: {rows: ["Indefinite leave to remain"]}
+  no-reliable-claim-rate: {rows: ["Indefinite leave to remain"]}
+  global-talent-fee-below-cost: {rows: ["Global Talent with an approval letter"]}
   lords-on-the-surcharge: {whole: true}
-  why-fees-grow-over-ten-years: {rows: ["Skilled Worker, over three years, from overseas (unit cost £153)"]}
+  why-fees-grow-over-ten-years: {rows: ["Skilled Worker, over three years"]}
   longer-routes-and-child-poverty: {whole: true}
   windrush-generation: {whole: true}
   windrush-detained-or-removed: {whole: true}
   windrush-compensation-decisions: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
   windrush-and-the-current-proposal: {whole: true}
+  settlement-unlocks-benefits: {rows: ["On a temporary visa", "After settlement"]}
+  nrpf-council-costs: {rows: ["What councils spend"]}
+  skilled-dependants-half-not-working: {rows: ["Adult Skilled Worker dependants"]}
+  hundreds-of-thousands-would-fail: {rows: ["Everyone on the path"]}
+  skilled-worker-route-costs: {rows: ["Fees before settlement, single Skilled Worker", "Yearly health charge"]}
+  guidance-said-may-be-able-to-apply: {rows: ["Skilled Worker visa guidance"]}
+  high-court-struck-down-mid-route-change-2008: {rows: ["R (HSMP Forum Ltd) v Secretary of State (High Court)"]}
+  transitional-protection-precedent: {rows: ["Home Affairs Committee report"]}
+  revocation-needs-new-law: {rows: ["Nationality, Immigration and Asylum Act 2002, s.76"]}
+  bno-historic-and-moral-commitment: {rows: ["Hong Kong BN(O) policy statement"]}
+  family-route-two-to-five-2012: {rows: ["Family route change"]}
+  eu-status-out-of-scope: {rows: ["Who is out of scope"]}
+  status-of-earned-settlement: {whole: true}
+  dependants-ten-year-route: {rows: ["Standard wait"]}
+  ten-year-baseline-outlier: {rows: ["Most high-income countries"]}
+  behaviour-evidence-limited: {rows: ["Evidence on longer waits"]}
+  reform-voters-back-removal: {rows: ["Reform UK voters"]}
+  majorities-keep-for-workers: {rows: ["Who should keep it"]}
 ---
 ## Observations {#settlement-and-migrant-status--observations-grants}
 
@@ -1496,7 +1588,7 @@ The Hong Kong BN(O) route opened in January 2021.
 
 ## Observations {#settlement-and-migrant-status--observations-settlement-forecast}
 
-### About 1.6 million are expected to qualify in 2026–30 {#settlement-and-migrant-status--forecast-1-6-million}
+### About 1.6 million are expected to settle in 2026–30 {#settlement-and-migrant-status--forecast-1-6-million}
 
 The Home Office forecasts 1.3 million to 2.2 million people settling in 2026–2030 (central
 estimate 1.6m). [3](#source-settlement-and-migrant-status-3) It names three drivers: Hong
@@ -1522,15 +1614,6 @@ The forecast peaks at 359,000 to 620,000 in 2028 (central estimate 450,000).
 [3](#source-settlement-and-migrant-status-3) It assumes people settle at historical rates;
 the range reflects uncertainty about that. [14](#source-settlement-and-migrant-status-14)
 
-### The three drivers in detail {#settlement-and-migrant-status--forecast-drivers-in-detail}
-
-The Home Office names three drivers: 154,000 visas granted to Hong Kong BN(O) holders in
-2021–22 (an extra 92,000 applications in 2026 and 54,000 in 2027); 616,000 Health and Care
-entry visas in 2022–24 (384,000 extra applications in 2027–29, peaking at 210,000 in
-2028); and 344,000 Skilled Worker entry visas in 2022–24 (around 222,000 applications).
-[12](#source-settlement-and-migrant-status-12)
-[13](#source-settlement-and-migrant-status-13)
-
 ### The alternative case, and what the CPS stands by {#settlement-and-migrant-status--cps-alternative-and-what-it-stands-by}
 
 The Centre for Policy Studies projection found as many as 1.24 million recent migrants
@@ -1545,7 +1628,7 @@ saving from removing existing settlement.
 
 ## Observations {#settlement-and-migrant-status--observations-settled-and-on-a-path}
 
-### EU Settlement Scheme holders far outnumber non-EU holders of indefinite leave {#settlement-and-migrant-status--euss-outnumber-non-eu-ilr}
+### EU Settlement Scheme grants far outnumber non-EU holders of indefinite leave {#settlement-and-migrant-status--euss-outnumber-non-eu-ilr}
 
 Just under 4.6 million settled-status grants have been made under the EU Settlement Scheme
 since 2018. [2](#source-settlement-and-migrant-status-2) The Migration Observatory
@@ -1584,14 +1667,6 @@ The Migration Observatory puts the number of children on a path at 430,000 to 52
 
 ## Observations {#settlement-and-migrant-status--observations-path-by-group}
 
-### Dependants and family visa holders are the groups least often in work {#settlement-and-migrant-status--non-working-groups}
-
-HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not
-working, and a third of Health and Care dependants. About a third of adults on family
-visas were not working by their fifth year, and around 45% of refugees. On current
-circumstances, hundreds of thousands would fail the proposed employment requirement.
-[19](#source-settlement-and-migrant-status-19)
-
 ## Subtleties {#settlement-and-migrant-status--subtleties-path-by-group}
 
 ### Adult BN(O) visa holders {#settlement-and-migrant-status--bno-adults-not-working}
@@ -1628,7 +1703,7 @@ had indefinite leave within ten years. [28](#source-settlement-and-migrant-statu
 
 ## Observations {#settlement-and-migrant-status--observations-universal-credit-by-status}
 
-### No official data on what indefinite-leave holders earn or claim {#settlement-and-migrant-status--no-official-data-on-ilr-holders-work-or-benefits}
+### The closest official measure: 2.7% of people on Universal Credit hold indefinite leave {#settlement-and-migrant-status--no-official-data-on-ilr-holders-work-or-benefits}
 
 No published series reports the employment, earnings or benefit receipt of people with
 indefinite leave by route. The closest measure is Universal Credit by recorded status:
@@ -1670,14 +1745,14 @@ cannot be compared with those estimates.
 
 ## Observations {#settlement-and-migrant-status--observations-rules}
 
-### Guidance said "may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
+### Skilled Worker guidance says "you may be able to apply" {#settlement-and-migrant-status--guidance-said-may-be-able-to-apply}
 
 The Skilled Worker guidance says "After 5 years, you may be able to apply to settle
 permanently", subject to the other requirements. [42](#source-settlement-and-migrant-status-42) The BN(O) policy
 statement is the most explicit, framing the route as a "historic and moral commitment".
 [43](#source-settlement-and-migrant-status-43) [44](#source-settlement-and-migrant-status-44)
 
-### The High Court struck down a mid-route change in 2008 {#settlement-and-migrant-status--high-court-struck-down-mid-route-change-2008}
+### In 2008 the High Court ruled a mid-route change "conspicuous unfairness and an abuse of power" {#settlement-and-migrant-status--high-court-struck-down-mid-route-change-2008}
 
 In *HSMP Forum*, the minister had argued that migrants could not expect the rules at their
 first grant to apply for the rest of their stay. [49](#source-settlement-and-migrant-status-49) The court held that the
@@ -1686,19 +1761,27 @@ in force when they joined, and found no public interest outweighing the unfairne
 [47](#source-settlement-and-migrant-status-47) [48](#source-settlement-and-migrant-status-48) The ruling turned on what that scheme's documents said; whether
 a court would read today's "may be able to apply" the same way has not been tested.
 
-### Applying changes to people already here has precedent both ways {#settlement-and-migrant-status--transitional-protection-precedent}
+### MPs found it "common" to protect people already on a route, "but there is also precedent" for changing the rules for them {#settlement-and-migrant-status--transitional-protection-precedent}
 
 The Home Affairs Committee found it "common" for the Home Office to give transitional
 protection, "but there is also precedent" for applying rule changes to people already in
 the UK. [50](#source-settlement-and-migrant-status-50) It accepted that extending routes for at least some people
 already here is "essential" to the government's aim. [62](#source-settlement-and-migrant-status-62)
 
-### Removing settlement already granted would need new law {#settlement-and-migrant-status--revocation-needs-new-law}
+### The law lets indefinite leave be revoked only on individual grounds {#settlement-and-migrant-status--revocation-needs-new-law}
 
 Section 76 allows revocation only on the individual grounds in the record of rules.
 [45](#source-settlement-and-migrant-status-45) [46](#source-settlement-and-migrant-status-46) No court has ruled on a general removal of settled status, because
 none has been attempted; how courts would treat a new Act, including claims to private and
 family life, is a prediction.
+
+### The government called the Hong Kong BN(O) route a "historic and moral commitment" {#settlement-and-migrant-status--bno-historic-and-moral-commitment}
+
+The BN(O) policy statement says the route reflects "the UK's historic and moral commitment to BN(O) citizens". It is the most explicit of the texts on this route.
+
+### The family route went from two years to five in 2012 {#settlement-and-migrant-status--family-route-two-to-five-2012}
+
+The qualifying period for family settlement rose from two to five years in 2012. [11](#source-settlement-and-migrant-status-11) [52](#source-settlement-and-migrant-status-52)
 
 ## Observations {#settlement-and-migrant-status--observations-proposal}
 
@@ -1718,6 +1801,10 @@ Employed Skilled Worker dependants had median earnings of £30,200 in 2023/24 an
 Care dependants £22,100, well below the £50,270 needed for a five-year route, so most would
 face ten years. [67](#source-settlement-and-migrant-status-67)
 
+### EU settled status is outside the reforms, under the Withdrawal Agreement {#settlement-and-migrant-status--eu-status-out-of-scope}
+
+EU Settlement Scheme status is outside the government's proposed reforms, in line with its obligations under the Withdrawal Agreement. [55](#source-settlement-and-migrant-status-55)
+
 ## Observations {#settlement-and-migrant-status--observations-comparators}
 
 ### A ten-year baseline would make the UK an outlier {#settlement-and-migrant-status--ten-year-baseline-outlier}
@@ -1728,7 +1815,7 @@ although Switzerland and Japan have ten-year routes. [68](#source-settlement-and
 Observatory says waits of 15 to 30 years "would be unusual among high-income countries".
 [69](#source-settlement-and-migrant-status-69)
 
-### Whether waits change behaviour is not established {#settlement-and-migrant-status--behaviour-evidence-limited}
+### The evidence on whether longer waits change behaviour is limited {#settlement-and-migrant-status--behaviour-evidence-limited}
 
 The Migration Observatory finds "limited evidence" on how longer paths affect migration,
 citing one survey-based study that found no significant effect on prospective migrants'
@@ -1747,24 +1834,6 @@ Across UK Visas and Immigration, fees recovered 256% of cost in 2024/25.
 [83](#source-settlement-and-migrant-status-83) Not every fee is above cost: a short visit
 visa is £135 against £159. [80](#source-settlement-and-migrant-status-80)
 [81](#source-settlement-and-migrant-status-81)
-
-### The health surcharge is set at expected average use {#settlement-and-migrant-status--surcharge-matches-average-use}
-
-Most adults pay a £1,035 surcharge per year of their visa.
-[84](#source-settlement-and-migrant-status-84) The Home Office sets it on "how much
-healthcare an 'average' Health Charge payer is expected to use", not each person's use.
-[85](#source-settlement-and-migrant-status-85) It comes on top of tax and national
-insurance. A single Skilled Worker's fees before settlement come to around £9,900 over
-five years and would be £16,900 over ten. [87](#source-settlement-and-migrant-status-87)
-
-### No recourse to public funds: council costs are measured, numbers are not {#settlement-and-migrant-status--nrpf-costs}
-
-People on temporary visas are usually barred from most benefits until they settle.
-[41](#source-settlement-and-migrant-status-41) The 91 councils that reported to the NRPF
-Network spent £94 million supporting households with no recourse in 2024/25.
-[91](#source-settlement-and-migrant-status-91) No official count exists of how many
-people, or how many children, are subject to the condition.
-[92](#source-settlement-and-migrant-status-92)
 
 ## Subtleties {#settlement-and-migrant-status--subtleties-fees-and-costs}
 
@@ -1800,15 +1869,6 @@ settlement costs were 336% higher than the average of the other European countri
 [89](#source-settlement-and-migrant-status-89)
 
 ## Observations {#settlement-and-migrant-status--observations-windrush-paid}
-
-### Windrush: people with a lawful right to stay were treated as if they had none {#settlement-and-migrant-status--windrush-record}
-
-The Windrush Lessons Learned Review found the scandal "foreseeable and avoidable": the
-government removed and detained people, and denied others work, housing and services, even
-though they were lawfully entitled to them. [93](#source-settlement-and-migrant-status-93)
-[94](#source-settlement-and-migrant-status-94) By August 2026 the compensation scheme had
-paid £133,475,539.07 on 4,221 claims. [97](#source-settlement-and-migrant-status-97)
-[96](#source-settlement-and-migrant-status-96)
 
 ## Subtleties {#settlement-and-migrant-status--subtleties-windrush-paid}
 
@@ -1865,3 +1925,83 @@ Indefinite leave to remain, also called settlement, lets a person live in the UK
 ## More {#settlement-and-migrant-status--more-settled-and-on-a-path}
 
 Two things are often run together. Grants are a flow: 199,628 people were granted settlement in the year to June 2026, the most since 2011. [1](#source-settlement-and-migrant-status-1) Holders are a stock, and no official count of them exists; the best estimate for non-EU citizens is 621,000 to 820,000 at the end of 2024, against just under 4.6 million settled-status grants under the separate EU Settlement Scheme. [4](#source-settlement-and-migrant-status-4) [5](#source-settlement-and-migrant-status-5) [2](#source-settlement-and-migrant-status-2)
+
+## Observations {#settlement-and-migrant-status--observations-forecast-drivers}
+
+### The rise comes from Hong Kong BN(O), Health and Care and Skilled Worker visas issued since 2021 {#settlement-and-migrant-status--forecast-drivers-in-detail}
+
+The Home Office names three drivers: 154,000 visas granted to Hong Kong BN(O) holders in
+2021–22 (an extra 92,000 applications in 2026 and 54,000 in 2027); 616,000 Health and Care
+entry visas in 2022–24 (384,000 extra applications in 2027–29, peaking at 210,000 in
+2028); and 344,000 Skilled Worker entry visas in 2022–24 (around 222,000 applications).
+[12](#source-settlement-and-migrant-status-12)
+[13](#source-settlement-and-migrant-status-13)
+
+
+## Observations {#settlement-and-migrant-status--observations-no-recourse}
+
+### People on temporary visas are usually barred from most benefits {#settlement-and-migrant-status--nrpf-costs}
+
+Immigrants with temporary permission are usually subject to the No Recourse to Public Funds condition, which means they are not eligible for most benefits. [41](#source-settlement-and-migrant-status-41) No official count exists of how many people, or how many children, are subject to the condition.
+
+### Settlement opens up the benefits that people on temporary visas cannot claim {#settlement-and-migrant-status--settlement-unlocks-benefits}
+
+Once granted indefinite leave, a person becomes eligible for benefits on the same terms as British citizens. People on temporary visas are usually not eligible for most benefits. [41](#source-settlement-and-migrant-status-41)
+
+### Councils that report spent £94 million on households with no recourse in 2024/25 {#settlement-and-migrant-status--nrpf-council-costs}
+
+The 91 councils that reported to the NRPF Network spent £94 million supporting households with no recourse in 2024/25. [91](#source-settlement-and-migrant-status-91)
+
+
+## Observations {#settlement-and-migrant-status--observations-not-working-by-group}
+
+### About half of adult Skilled Worker dependants, and a third of adults on family visas by their fifth year, were not working {#settlement-and-migrant-status--non-working-groups}
+
+HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not
+working, and a third of Health and Care dependants. About a third of adults on family
+visas were not working by their fifth year, and around 45% of refugees. On current
+circumstances, hundreds of thousands would fail the proposed employment requirement.
+[19](#source-settlement-and-migrant-status-19)
+
+### Around half of adult Skilled Worker dependants were not working {#settlement-and-migrant-status--skilled-dependants-half-not-working}
+
+HMRC data for 2023/24 show around half of adult Skilled Worker dependants were not working. [19](#source-settlement-and-migrant-status-19)
+
+### Hundreds of thousands would not yet meet the proposed employment rule {#settlement-and-migrant-status--hundreds-of-thousands-would-fail}
+
+On current circumstances, the Migration Observatory finds, hundreds of thousands of migrants would not be eligible for settlement under the proposed mandatory employment rule. [19](#source-settlement-and-migrant-status-19)
+
+
+## Observations {#settlement-and-migrant-status--observations-route-costs}
+
+### The yearly health charge is set at what an average payer is expected to use {#settlement-and-migrant-status--surcharge-matches-average-use}
+
+Most adults pay a £1,035 surcharge per year of their visa. [84](#source-settlement-and-migrant-status-84) The Home Office sets it on "how much healthcare an 'average' Health Charge payer is expected to use", not each person's use. [85](#source-settlement-and-migrant-status-85)
+
+### A single Skilled Worker pays around £9,900 in fees before settling after five years {#settlement-and-migrant-status--skilled-worker-route-costs}
+
+A single Skilled Worker's fees before settlement come to around £9,900 over five years and would be £16,900 over ten, mostly because the health charge is paid every year. [84](#source-settlement-and-migrant-status-84) [87](#source-settlement-and-migrant-status-87)
+
+
+## Observations {#settlement-and-migrant-status--observations-windrush-findings}
+
+### Windrush: people lawfully entitled to be here were removed, detained and denied work and housing {#settlement-and-migrant-status--windrush-record}
+
+The Windrush Lessons Learned Review found the scandal "foreseeable and avoidable": the
+government removed and detained people, and denied others work, housing and services, even
+though they were lawfully entitled to them. [93](#source-settlement-and-migrant-status-93)
+[94](#source-settlement-and-migrant-status-94) By August 2026 the compensation scheme had
+paid £133,475,539.07 on 4,221 claims. [97](#source-settlement-and-migrant-status-97)
+[96](#source-settlement-and-migrant-status-96)
+
+
+## Observations {#settlement-and-migrant-status--observations-ilr-poll-detail}
+
+### Reform UK voters back removing indefinite leave from those who hold it {#settlement-and-migrant-status--reform-voters-back-removal}
+
+54% of Reform UK voters backed removing it from those who already have it. [101](#source-settlement-and-migrant-status-101)
+
+### Majorities want to keep permanent residence for full-time workers and NHS staff {#settlement-and-migrant-status--majorities-keep-for-workers}
+
+Majorities wanted to keep permanent residence for people in the UK over ten years, those in full-time work, NHS workers, spouses of British citizens and business founders. [103](#source-settlement-and-migrant-status-103)
+

@@ -4,7 +4,7 @@ import { observationTargets } from './chart-observations';
 import { citedFactTargets, neededClaims } from './markdown';
 import { mapAreaIds, mapAreas } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
-import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroup } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
@@ -130,7 +130,7 @@ export function validateTopic(topic: Topic): string[] {
       if (match[1] !== f.id || Number(match[2]) > sourceCount || Number(match[2]) < 1) errors.push(`fact ${f.id}: unknown source reference ${match[1]}-${match[2]}`);
     }
     errors.push(...figureErrors(f, topic));
-    errors.push(...observationMarkErrors(f), ...unmarkedObservationErrors(f));
+    errors.push(...observationMarkErrors(f));
     errors.push(...bodyPlacementErrors(f));
     // rule 5
     if (f.status === 'contested') {
@@ -1058,6 +1058,38 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
   return errors;
+}
+
+/**
+ * What a published topic must also satisfy, for a reader to see each fact it
+ * links to. Separate from `validateTopic`, whose fixtures exercise other rules
+ * with citations of bare reports.
+ */
+export function evidenceErrors(topic: Topic): string[] {
+  return [...citationTargetErrors(topic, new Map(topic.facts.map(fact => [fact.id, fact]))), ...topic.facts.flatMap(unmarkedObservationErrors)];
+}
+
+/**
+ * M3 — a reader follows a citation to see the fact on a chart. So a viewpoint, a
+ * crux or the topic's introduction may only cite an observation of a chart that
+ * picks out the data showing it: not a report, a whole chart or a passage of text.
+ */
+function citationTargetErrors(topic: Topic, factById: Map<string, Fact>): string[] {
+  const texts: [string, string][] = [
+    ['topic intro', topic.intro],
+    ...topic.viewpoints.map((v): [string, string] => [`viewpoint ${v.id}`, `${v.body}\n${v.summary}`]),
+    ...topic.cruxes.map((c): [string, string] => [`crux ${c.id}`, [c.body, ...c.positions.map(p => p.holds)].join('\n')]),
+  ];
+  return texts.flatMap(([what, body]) => citedFactTargets(body).flatMap(({ id, section }) => {
+    const fact = factById.get(id);
+    if (!fact) return [];
+    const link = `#fact-${id}${section ? `/${section}` : ''}`;
+    const key = section && observationGroups(fact).get(section);
+    if (!key || !factSlides(topic.slug, fact).some(slide => slideGroup(fact, slide) === key)) return [`${what}: ${link} is not an observation of a chart`];
+    const mark = fact.observationMarks?.[section];
+    if (mark && !mark.whole) return [];
+    return markErrors(fact, key, {}).includes(CANNOT_SHOW_MARKS) ? [] : [`${what}: ${link} picks out no part of its chart`];
+  }));
 }
 
 /**

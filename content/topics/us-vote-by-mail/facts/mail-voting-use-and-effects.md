@@ -847,6 +847,22 @@ figures:
     items:
       - { label: Voters with a disability, value: { value: 53, qualifier: more than, asPublished: More than 53% } }
       - { label: Voters without a disability, value: 42 }
+  - kind: barChart
+    id: disability-difficulty
+    title: US voters with disabilities who had difficulty voting, by how they voted, 2020
+    description: >-
+      Share of people with disabilities who experienced difficulties voting by
+      mail, and at a polling place, in November 2020, from the Rutgers
+      University survey released by the Election Assistance Commission.
+    valueLabel: '% who had difficulty'
+    categoryLabel: How they voted
+    format: { unit: percent, decimals: 0 }
+    sort: none
+    domainMax: 100
+    sources: [14]
+    items:
+      - { label: Voted by mail, value: 5 }
+      - { label: Voted at a polling place, value: 18 }
   - kind: estimateRange
     id: effect-estimates
     title: 'Estimated effects of mail-voting rules on turnout and party share'
@@ -901,21 +917,25 @@ observationMarks:
   universal-mail-raised-turnout-modestly: {rows: ["Universal mail ballots: turnout"]}
   disabled-voters-use-mail-more: {rows: ["Voters with a disability", "Voters without a disability"]}
   all-mail-states-lead: {rows: ["Oregon", "Washington", "Hawaii", "Utah", "Colorado"]}
-  older-voters-use-mail-most: {lines: ["65 and over"]}
-  no-partisan-tilt: {rows: ["Universal mail ballots: Democratic share of turnout"]}
+  older-voters-use-mail-most: {lines: ["18 to 24", "25 to 44", "45 to 64", "65 and over"], at: "2024"}
+  no-partisan-tilt: {rows: ["Universal mail ballots: Democratic share"]}
   democrats-use-mail-more: {rows: ["Democrats", "Republicans"]}
   oregon-by-initiative: {rows: ["Oregon"]}
-  utah-all-mail-and-opt-in: {lines: ["No-excuse or all-mail"], from: "2024-11", to: "2026-11"}
-  west-votes-by-mail: {lines: ["West"]}
-  low-mail-states: {rows: ["Texas", "West Virginia", "Tennessee", "Arkansas"]}
+  utah-all-mail-and-opt-in: {rows: ["Utah"]}
+  west-votes-by-mail: {lines: ["West", "Northeast", "Midwest", "South"], at: "2024"}
+  low-mail-states: {rows: ["Oklahoma", "Louisiana", "Kentucky", "Alabama", "North Carolina", "Georgia", "South Carolina", "Texas", "West Virginia", "Tennessee", "Arkansas"]}
   mail-share-fell-after-2020: {lines: ["By mail"], from: "2020", to: "2024"}
   mail-above-pre-pandemic: {lines: ["By mail", "In person before Election Day"], from: "2018", to: "2024"}
   official-counts-match-survey: {lines: ["By mail"], from: "2020", to: "2024"}
   no-excuse-states-grew: {lines: ["No-excuse or all-mail"]}
   republican-support-fell: {lines: ["Rep/lean Rep", "Dem/lean Dem"]}
   recent-adoptions: {rows: ["Utah", "Hawaii", "California", "Nevada", "Vermont (general elections only)", "District of Columbia"]}
-  eligibility-shifted-method: {rows: ["No-excuse eligibility at 65 (Texas 2020): turnout"]}
+  eligibility-shifted-method: {rows: ["No-excuse eligibility at 65: turnout"]}
   support-higher-where-used: {rows: ["States that mail every voter a ballot", "States that require an excuse"]}
+  disabled-voters-find-mail-easier: {rows: ["Voted by mail", "Voted at a polling place"]}
+  states-moved-both-ways: {lines: ["No-excuse or all-mail"]}
+  three-measures: {lines: ["By mail"], at: "2024"}
+  studies-predate-split: {rows: ["Universal mail ballots: turnout", "Universal mail ballots: Democratic share"]}
 ---
 ## Observations {#mail-voting-use-and-effects--observations-cps-method}
 
@@ -955,13 +975,9 @@ Election offices' counts and voters' own reports agree on the shape: a peak in 2
 
 NCSL expects seven more states to offer no-excuse or all-mail voting in November 2026 than in 2016 (chart). [25](#source-mail-voting-use-and-effects-25) The count peaked in 2020, dropped by 2022 and has crept up since.
 
-States have moved in both directions: several adopted all-mail voting after 2016, while Utah has voted to end automatic mail ballots (events under the chart). [11](#source-mail-voting-use-and-effects-11) [12](#source-mail-voting-use-and-effects-12)
+### States have moved in both directions {#mail-voting-use-and-effects--states-moved-both-ways}
 
-### Utah, a Republican-led state, votes by mail, but is moving to mail on request {#mail-voting-use-and-effects--utah-all-mail-and-opt-in}
-
-Utah has sent every voter a ballot since all its counties adopted it in 2019, and in 2024 more than nine in ten of its votes came by mail. [11](#source-mail-voting-use-and-effects-11) [5](#source-mail-voting-use-and-effects-5)
-
-A 2025 law changes that: from 2029 "a voter will not receive a ballot by mail unless the voter requests to receive a ballot by mail". A request lasts eight years. [12](#source-mail-voting-use-and-effects-12) NCSL's table does not yet show the change.
+The count of states offering mail voting to every voter rose from 30 in 2016 to 38 in 2020, fell to 35 in 2022 and is expected to reach 37 in 2026 (chart). [25](#source-mail-voting-use-and-effects-25) Several states adopted all-mail voting after 2016, while Utah has voted to end automatic mail ballots (events under the chart). [11](#source-mail-voting-use-and-effects-11) [12](#source-mail-voting-use-and-effects-12)
 
 ## Observations {#mail-voting-use-and-effects--observations-pew-mail}
 
@@ -981,9 +997,15 @@ Oregon's statewide system came from a 1998 citizen initiative, after the state h
 
 Six of the nine first used it statewide from 2019 onward, around and after the pandemic; only Oregon, Washington and Colorado ran statewide mail elections before 2019. [11](#source-mail-voting-use-and-effects-11)
 
+### Utah has mailed every voter a ballot since 2019, and is moving to mail on request {#mail-voting-use-and-effects--utah-all-mail-and-opt-in}
+
+Utah has sent every voter a ballot since all its counties adopted it in 2019, and in 2024 more than nine in ten of its votes came by mail. [11](#source-mail-voting-use-and-effects-11) [5](#source-mail-voting-use-and-effects-5)
+
+A 2025 law changes that: from 2029 "a voter will not receive a ballot by mail unless the voter requests to receive a ballot by mail". A request lasts eight years. [12](#source-mail-voting-use-and-effects-12) NCSL's table does not yet show the change.
+
 ## Observations {#mail-voting-use-and-effects--observations-state-mail-share}
 
-### The mostly-mail states lead, but not all of them vote mostly by mail {#mail-voting-use-and-effects--all-mail-states-lead}
+### Five states cast more than nine in ten ballots by mail {#mail-voting-use-and-effects--all-mail-states-lead}
 
 Oregon, Washington, Hawaii, Utah and Colorado cast more than nine in ten ballots by mail in 2024. Vermont, DC and Nevada, which also mail every voter a ballot, cast between two-fifths and two-thirds that way (chart). [5](#source-mail-voting-use-and-effects-5)
 
@@ -1001,9 +1023,9 @@ In 2024 Democratic voters were about half as likely again as Republicans to vote
 
 ## Observations {#mail-voting-use-and-effects--observations-mail-use-by-disability}
 
-### Voters with disabilities rely on mail more, and find it easier {#mail-voting-use-and-effects--disabled-voters-use-mail-more}
+### Voters with disabilities rely on mail more {#mail-voting-use-and-effects--disabled-voters-use-mail-more}
 
-In 2020 more than half of voters with disabilities voted by mail, a larger share than other voters (chart). [14](#source-mail-voting-use-and-effects-14) Disabled voters who voted by mail were far less likely to report difficulty than those who voted at a polling place: 5% against 18%. [14](#source-mail-voting-use-and-effects-14)
+In 2020 more than half of voters with disabilities voted by mail, a larger share than other voters (chart). [14](#source-mail-voting-use-and-effects-14)
 
 ## Observations {#mail-voting-use-and-effects--observations-effect-estimates}
 
@@ -1011,7 +1033,7 @@ In 2020 more than half of voters with disabilities voted by mail, a larger share
 
 As California, Utah and Washington counties switched to universal mail ballots between 1996 and 2018, turnout rose by about 2 points of the citizen voting-age population (chart). [15](#source-mail-voting-use-and-effects-15) That is a real but small effect, and it comes from years before mail voting split by party.
 
-### Mail voting gave neither party an advantage {#mail-voting-use-and-effects--no-partisan-tilt}
+### Universal mail moved the Democratic share of turnout by only 0.1 points {#mail-voting-use-and-effects--no-partisan-tilt}
 
 The same study found universal mail raised the Democratic share of turnout by only 0.1 points with trends included, with an upper bound of "only about 0.3%". [16](#source-mail-voting-use-and-effects-16) Vote-share effects were "modest or null". [17](#source-mail-voting-use-and-effects-17)
 
@@ -1044,6 +1066,12 @@ The Census notes that some people who returned a mail ballot in person may have 
 ### The effect studies predate the party split in mail voting {#mail-voting-use-and-effects--studies-predate-split}
 
 The universal-mail study ends in 2018, and the no-excuse study covers one election. [15](#source-mail-voting-use-and-effects-15) [18](#source-mail-voting-use-and-effects-18) Since 2020, Democrats have used mail far more than Republicans. [13](#source-mail-voting-use-and-effects-13) Whether a rule change now would shift party shares is not measured by either study.
+
+## Observations {#mail-voting-use-and-effects--observations-disability-difficulty}
+
+### Voters with disabilities report far less difficulty by mail than at a polling place {#mail-voting-use-and-effects--disabled-voters-find-mail-easier}
+
+Disabled voters who voted by mail were far less likely to report difficulty than those who voted at a polling place: 5% against 18%. [14](#source-mail-voting-use-and-effects-14)
 
 ## More {#mail-voting-use-and-effects--more-cps-method}
 

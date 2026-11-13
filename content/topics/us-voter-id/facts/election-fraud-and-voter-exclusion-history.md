@@ -695,7 +695,7 @@ comparisons:
     groupLabel: whether an ID check would reach it
     allGroupsLabel: All cases
     groups:
-      - 'No: no one voted under a false identity'
+      - 'No: a polling-place ID check would not reach it'
       - 'Partly: judges took part'
       - 'Yes: in-person impersonation'
       - Method not confirmed
@@ -967,6 +967,23 @@ figures:
         reach: 'No'
         outcome: { value: 'New election ordered, August 2020; Mendez indictment dismissed April 2026, state appealing; Jackson''s charges being dropped (as of May 2026)', sources: [30] }
   - kind: dataTable
+    id: carter-baker-on-id
+    title: 'What the Carter–Baker Commission said about ID and fraud, 2005'
+    description: 'The commission''s findings on how much fraud there is and what ID could do about it.'
+    caption: 'One card per finding'
+    layout: cards
+    leadColumn: said
+    columns:
+      - { key: finding, label: 'Finding', rowHeader: true }
+      - { key: said, label: 'What it said', sortable: false }
+    rows:
+      - finding: 'Carter–Baker Commission: what ID could do'
+        said: { value: '"A good ID system could deter, detect, or eliminate several potential avenues of fraud— such as multiple voting or voting by individuals using the identities of others or those who are deceased"', sources: [35] }
+      - finding: 'Carter–Baker Commission: how much fraud'
+        said: { value: '"There is no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election"', sources: [35] }
+      - finding: 'Carter–Baker Commission: absentee ballots'
+        said: { value: '"Absentee ballots remain the largest source of potential voter fraud"', sources: [35] }
+  - kind: dataTable
     id: modern-results
     title: Three modern US election results voided or rerun, 2003–2020
     description: 'The margin in each modern election that was voided or rerun, and what the record found.'
@@ -991,6 +1008,19 @@ figures:
     id: heritage-methods
   - kind: comparison
     id: news21-methods
+  - kind: dataTable
+    id: impersonation-counts
+    title: Two counts of in-person voter impersonation in the US
+    description: 'What two separate counts found since 2000. Both cover detected or alleged cases only.'
+    caption: 'One row per count'
+    columns:
+      - { key: count, label: 'Count', rowHeader: true }
+      - { key: found, label: 'In-person impersonation found', sortable: false }
+    rows:
+      - count: 'News21, 2000–2012'
+        found: { value: '10 of 2,068 alleged fraud cases', sources: [31] }
+      - count: 'Justin Levitt, 2000–2014'
+        found: { value: 'About 31 incidents among more than 1 billion ballots', sources: [32] }
   - kind: barChart
     id: louisiana-black-registrants
     title: Black share of Louisiana's registered voters, 1898–1956
@@ -1010,7 +1040,7 @@ figures:
       not registration rates like those in the charts that follow.
     items:
       - { label: '1898, new constitution adopted', value: { value: 44, qualifier: about, asPublished: approximately 44% } }
-      - { label: '1921–1944, under the interpretation test', value: { value: 1, qualifier: at most, asPublished: never exceeded one percent } }
+      - { label: '1921–1944, under the interpretation test', detail: 'The test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not"', value: { value: 1, qualifier: at most, asPublished: never exceeded one percent } }
       - { label: '1944', value: { value: 0.2, asPublished: two-tenths of one percent } }
       - { label: 'March 1956', value: { value: 15, qualifier: about, asPublished: approximately 15% } }
   - kind: barChart
@@ -1123,19 +1153,19 @@ figures:
         names: { value: '34 of nearly 700 sent to it', sources: [43] }
 observationMarks:
   machine-fraud-real-and-prosecuted: {rows: ["Kansas City, 1936", "Chicago, 1982"]}
-  stale-rolls-enabled-fraud: {rows: ["Chicago, 1982", "Kansas City, 1936"]}
-  in-person-ghost-voting: {rows: ["Voting in person in another's name, or repeatedly"]}
-  carter-baker-id-deters: {rows: ["Voting in person in another's name, or repeatedly"]}
-  id-would-not-reach: {rows: ["Officials stuffing, forging or miscounting ballots", "Absentee or mail ballot fraud", "Vote buying"]}
-  checkers-complicit: {rows: ["Officials stuffing, forging or miscounting ballots"]}
+  stale-rolls-enabled-fraud: {rows: ["Chicago, 1982"]}
+  in-person-ghost-voting: {rows: ["In-person impersonation or repeat voting"]}
+  carter-baker-id-deters: {rows: ["Carter–Baker Commission: what ID could do"]}
+  id-would-not-reach: {rows: ["Officials stuffing or miscounting ballots", "Absentee or mail ballot fraud", "Vote buying"]}
+  checkers-complicit: {rows: ["Officials stuffing or miscounting ballots"]}
   detected-is-a-floor: {whole: true}
-  impersonation-rare-modern: {rows: ["In-person voter impersonation", "Absentee ballot fraud", "Registration fraud"]}
-  modern-result-changing-cases-absentee: {whole: true}
-  louisiana-registration-collapse: {rows: ["Louisiana"]}
-  jim-crow-tools-discretionary: {rows: ["Louisiana"]}
+  impersonation-rare-modern: {rows: ["In-person voter impersonation"]}
+  modern-result-changing-cases-absentee: {rows: ["East Chicago, 2003 primary", "North Carolina 9th District, 2018", "Paterson, 2020 council election"]}
+  louisiana-registration-collapse: {rows: ["1898, new constitution adopted", "1921–1944, under the interpretation test", "1944"]}
+  jim-crow-tools-discretionary: {rows: ["1921–1944, under the interpretation test"]}
   pre-vra-stagnation: {rows: ["Alabama", "Louisiana", "Mississippi"]}
   registration-gap-closed: {rows: ["Georgia", "Mississippi", "Virginia"]}
-  officials-did-the-fraud: {rows: ["Officials stuffing, forging or miscounting ballots"]}
+  officials-did-the-fraud: {rows: ["Officials stuffing or miscounting ballots"]}
   case-table: {whole: true}
   kansas-city-no-repeaters: {rows: ["Kansas City, 1936"]}
   caught-by-prosecutors: {rows: ["Chicago, 1982", "Kansas City, 1936", "East Chicago, Indiana, 2003 primary", "North Carolina 9th District, 2018"]}
@@ -1147,16 +1177,23 @@ observationMarks:
   heritage-impersonation-mail: {rows: ["Impersonation fraud at the polls"]}
   indiana-no-impersonation: {rows: ["Impersonation fraud at the polls"]}
   remedies-timeline: {rows: ["Louisville, Massachusetts and New York adopt the official secret ballot", "\"Almost 90 percent of the States\" have adopted the secret ballot"]}
+  chicago-judges-took-part: {rows: ["Chicago, 1982"]}
+  officials-or-mail: {rows: ["Officials stuffing or miscounting ballots", "Absentee or mail ballot fraud"]}
+  two-counts-rare: {rows: ["News21, 2000–2012", "Justin Levitt, 2000–2014"]}
+  no-common-measure: {whole: true}
+  certification-refusals: {whole: true}
+  northern-ireland-comparator: {whole: true}
+  georgia-exact-match: {rows: ["Georgia"]}
 ---
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-case-methods}
 
-### Most documented fraud was done by the people running the election {#election-fraud-and-voter-exclusion-history--officials-did-the-fraud}
+### Election officials did the fraud in more cases than any other method {#election-fraud-and-voter-exclusion-history--officials-did-the-fraud}
 
 In eight of the twenty cases, election officials did the fraud themselves: stuffing the box, forging ballots or leaving returns out of the count. [12](#source-election-fraud-and-voter-exclusion-history-12) [16](#source-election-fraud-and-voter-exclusion-history-16) [17](#source-election-fraud-and-voter-exclusion-history-17) [18](#source-election-fraud-and-voter-exclusion-history-18) [19](#source-election-fraud-and-voter-exclusion-history-19) [22](#source-election-fraud-and-voter-exclusion-history-22)
 
 In Chicago in 1982, election judges cast ballots in the names of voters who had moved or died, more than one-third of the votes in one precinct. [3](#source-election-fraud-and-voter-exclusion-history-3) In another precinct, a Republican judge voted names a Democratic precinct captain gave her on slips of paper. [4](#source-election-fraud-and-voter-exclusion-history-4)
 
-### In-person voting in other people's names is in the record too {#election-fraud-and-voter-exclusion-history--in-person-ghost-voting}
+### Voting repeatedly, or in person in other people's names, is in the record too {#election-fraud-and-voter-exclusion-history--in-person-ghost-voting}
 
 The record does contain the fraud a polling-place ID check is aimed at. Tammany Hall's paid "repeaters" voted several times each, changing their facial hair between votes. [13](#source-election-fraud-and-voter-exclusion-history-13)
 
@@ -1166,7 +1203,7 @@ In Washington in 2004, one of 19 suspected "ghost voters" was confirmed to have 
 
 ### An ID check would not have touched 14 of the 20 cases {#election-fraud-and-voter-exclusion-history--id-would-not-reach}
 
-In fourteen cases nobody came to the polls under a false identity: officials changed or added ballots, ballots went by mail, or real voters sold their votes.
+In fourteen cases a polling-place ID check would not have reached the fraud: officials changed or added ballots, ballots went by mail, or real voters sold their votes.
 
 An ID check confirms that the voter is the person registered under that name, which this fraud never relied on. Levitt describes polling-place ID rules as designed for "people showing up at the polls pretending to be somebody else". [32](#source-election-fraud-and-voter-exclusion-history-32)
 
@@ -1176,11 +1213,9 @@ In Chicago and Kansas City, votes were cast in other people's names at the polls
 
 Whether a photo requirement would still have made the ghost voting harder (by forcing judges to accept missing ID openly, or by deterring party workers) is not something the records measure.
 
-### The Carter–Baker Commission held that ID would deter some of these methods {#election-fraud-and-voter-exclusion-history--carter-baker-id-deters}
+### Officials or mail ballots account for 14 of the 20 cases {#election-fraud-and-voter-exclusion-history--officials-or-mail}
 
-The 2005 commission found "no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election". [35](#source-election-fraud-and-voter-exclusion-history-35)
-
-It judged that a good ID system "could deter, detect, or eliminate" multiple voting and voting "using the identities of others or those who are deceased", the method of Chicago's ghost voting. It also called absentee ballots "the largest source of potential voter fraud". [35](#source-election-fraud-and-voter-exclusion-history-35)
+Eight of the twenty cases were done by officials and six by absentee or mail ballot. The other six are vote buying, in-person impersonation or repeat voting, and cases whose method is not confirmed. These are the cases this report lists, not a sample of all US fraud.
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-cases}
 
@@ -1188,7 +1223,7 @@ It judged that a good ID system "could deter, detect, or eliminate" multiple vot
 
 Each card gives how the fraud was done, whether a polling-place ID check would reach it, and what happened, as of the date shown.
 
-### Machine fraud was large, and was prosecuted {#election-fraud-and-voter-exclusion-history--machine-fraud-real-and-prosecuted}
+### Kansas City's and Chicago's frauds led to hundreds of convictions {#election-fraud-and-voter-exclusion-history--machine-fraud-real-and-prosecuted}
 
 Kansas City's 1936 fraud led to hundreds of convictions and Chicago's 1982 fraud to dozens (see the timeline). [7](#source-election-fraud-and-voter-exclusion-history-7) [1](#source-election-fraud-and-voter-exclusion-history-1) [2](#source-election-fraud-and-voter-exclusion-history-2) In Kansas City's ninth trial, the judge noted no jury had yet acquitted a defendant. [11](#source-election-fraud-and-voter-exclusion-history-11)
 
@@ -1200,7 +1235,7 @@ A precinct captain testified that he put about 150 "ghosts and sleepers" on the 
 
 In another precinct about 150 names were written into the poll book after the polls closed, with as many ballots added. [9](#source-election-fraud-and-voter-exclusion-history-9) In a third, one witness did see a man vote two or three times. [10](#source-election-fraud-and-voter-exclusion-history-10)
 
-### Stale rolls supplied the names the fraud used {#election-fraud-and-voter-exclusion-history--stale-rolls-enabled-fraud}
+### Chicago's 1982 fraud cast ballots in the names of dead or departed voters {#election-fraud-and-voter-exclusion-history--stale-rolls-enabled-fraud}
 
 Chicago's 1982 fraud used registrants whom precinct workers knew had died or moved but left on the list; ballots were then cast in their names. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) Kansas City's fraud began with a padded roll. [8](#source-election-fraud-and-voter-exclusion-history-8)
 
@@ -1220,9 +1255,21 @@ On his reading, Adamowski would have won and Nixon would still have lost. How th
 
 The 1982 governor's race was decided by 5,074 votes statewide. [6](#source-election-fraud-and-voter-exclusion-history-6) The two Chicago schemes described on appeal cast straight Democratic tickets, the party of the losing candidate, Adlai Stevenson. [3](#source-election-fraud-and-voter-exclusion-history-3) [4](#source-election-fraud-and-voter-exclusion-history-4) The Heritage Foundation attributes an estimate of at least 100,000 fraudulent votes citywide to US Attorney Dan Webb, citing press reports from 1983. [50](#source-election-fraud-and-voter-exclusion-history-50) No primary source read gives a citywide count.
 
+### In Chicago, election judges took part in the fraud {#election-fraud-and-voter-exclusion-history--chicago-judges-took-part}
+
+Judges themselves cast ballots in the names of voters who had moved or died, more than one-third of the votes in one precinct. [3](#source-election-fraud-and-voter-exclusion-history-3) An ID rule is enforced by those same judges.
+
+## Observations {#election-fraud-and-voter-exclusion-history--observations-carter-baker-on-id}
+
+### The Carter–Baker Commission said a good ID system could deter multiple voting and impersonation {#election-fraud-and-voter-exclusion-history--carter-baker-id-deters}
+
+The 2005 commission found "no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election". [35](#source-election-fraud-and-voter-exclusion-history-35)
+
+It judged that a good ID system "could deter, detect, or eliminate" multiple voting and voting "using the identities of others or those who are deceased", the method of Chicago's ghost voting. It also called absentee ballots "the largest source of potential voter fraud". [35](#source-election-fraud-and-voter-exclusion-history-35)
+
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-modern-results}
 
-### The modern cases that changed results were absentee {#election-fraud-and-voter-exclusion-history--modern-result-changing-cases-absentee}
+### All three modern results voided or rerun turned on absentee or mail ballots {#election-fraud-and-voter-exclusion-history--modern-result-changing-cases-absentee}
 
 All three modern results that were voided or rerun turned on absentee or mail ballots.
 
@@ -1252,11 +1299,15 @@ Heritage calls its list "a sampling" that is "not comprehensive". [34](#source-e
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-news21-methods}
 
-### Two independent counts find impersonation rare among detected fraud {#election-fraud-and-voter-exclusion-history--impersonation-rare-modern}
+### In-person impersonation made up 10 of News21's 2,068 alleged cases {#election-fraud-and-voter-exclusion-history--impersonation-rare-modern}
 
-In News21's database of alleged cases since 2000, in-person impersonation is by far the smallest named category. [31](#source-election-fraud-and-voter-exclusion-history-31)
+In News21's database of alleged cases since 2000, in-person impersonation is far below the two largest categories it named. [31](#source-election-fraud-and-voter-exclusion-history-31)
 
-Justin Levitt, counting every specific, credible allegation from 2000 to 2014 rather than prosecutions, found about 31 incidents among more than 1 billion ballots cast in general and primary elections. [32](#source-election-fraud-and-voter-exclusion-history-32) Both counts share the detection limit above.
+## Observations {#election-fraud-and-voter-exclusion-history--observations-impersonation-counts}
+
+### Two separate counts find few cases of in-person impersonation {#election-fraud-and-voter-exclusion-history--two-counts-rare}
+
+News21 found 10 cases among the 2,068 alleged cases it collected. [31](#source-election-fraud-and-voter-exclusion-history-31) Justin Levitt, counting every specific, credible allegation from 2000 to 2014 rather than prosecutions, found about 31 incidents among more than 1 billion ballots cast in general and primary elections. [32](#source-election-fraud-and-voter-exclusion-history-32) Both counts share the detection limit above.
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-louisiana-black-registrants}
 
@@ -1266,21 +1317,19 @@ As the Supreme Court recounted in Louisiana v. United States (1965), Black voter
 
 After 1956 a legislative committee and the Citizens Councils challenged Black voters on the rolls, and "thousands of Negroes, but virtually no whites, were purged". [36](#source-election-fraud-and-voter-exclusion-history-36)
 
-## Observations {#election-fraud-and-voter-exclusion-history--observations-pre-vra-registration}
-
-### Before the Voting Rights Act, registration barely moved {#election-fraud-and-voter-exclusion-history--pre-vra-stagnation}
-
-By the Attorney General's estimates to Congress in 1965, Black registration barely moved in the decade before the Act, with white registration "roughly 50 percentage points or more ahead". [37](#source-election-fraud-and-voter-exclusion-history-37)
-
-The table Congress used in 2006, in the next chart, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
-
-## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-1965}
-
 ### The tools turned on officials' discretion {#election-fraud-and-voter-exclusion-history--jim-crow-tools-discretionary}
 
 The courts found that Louisiana's interpretation test gave registrars "a virtually uncontrolled discretion as to who should vote and who should not", and that registrars in 21 parishes used it against Black applicants. [36](#source-election-fraud-and-voter-exclusion-history-36)
 
 The other main tool, the poll tax, was a charge for voting; the Supreme Court struck it down for state elections in 1966. [40](#source-election-fraud-and-voter-exclusion-history-40) Whether a uniform, free photo ID resembles these tools is a judgement the sources do not settle.
+
+## Observations {#election-fraud-and-voter-exclusion-history--observations-pre-vra-registration}
+
+### Before the Voting Rights Act, Black registration rose about five points or less in three Deep South states {#election-fraud-and-voter-exclusion-history--pre-vra-stagnation}
+
+By the Attorney General's estimates to Congress in 1965, Black registration rose about five points or less in the decade before the Act, with white registration "roughly 50 percentage points or more ahead". [37](#source-election-fraud-and-voter-exclusion-history-37)
+
+The table Congress used in 2006, in the next chart, shows the gap still there in 1965: Mississippi's white rate was 69.9 percent. [38](#source-election-fraud-and-voter-exclusion-history-38)
 
 ## Observations {#election-fraud-and-voter-exclusion-history--observations-black-registration-2004}
 

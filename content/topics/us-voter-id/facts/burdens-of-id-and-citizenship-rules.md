@@ -868,18 +868,19 @@ comparisons:
       not additive.
     items:
       - label: No government photo ID of any kind
+        detail: "Just over 1% of adult citizens"
         value: 2600000
         highlight: true
       - label: No non-expired driver's licence
         value: 20760000
       - label: "Licence lacks current name or address"
-        detail: "Unexpired licence lacking current name or address"
+        detail: "Unexpired licence; ninety-six percent of these lack the current address"
         value: 28600000
       - label: No proof-of-citizenship document at all
         value: 3800000
         highlight: true
       - label: "Cannot readily reach proof of citizenship"
-        detail: "Includes none"
+        detail: "Includes none; over 9% of adult citizens"
         value: 21300000
   - id: why-no-licence
     title: Reasons US adult citizens give for having no driver's licence, 2023
@@ -1115,9 +1116,28 @@ figures:
       cover registrations from 1999; the blocked count covers about three
       years.
     items:
-      - { label: "Suspended or cancelled (2013–2016)", detail: "Applications suspended or cancelled", value: 31089, highlight: true }
+      - { label: "Suspended or cancelled (2013–2016)", detail: "Applications suspended or cancelled for lack of proof of citizenship", value: 31089, highlight: true }
       - { label: "Non-citizen registrants (about 19 years)", detail: "Non-citizens who registered or tried to", value: { value: 67, qualifier: at most, asPublished: 'at most, 67 noncitizens' } }
       - { label: "Non-citizens on the rolls (1999–2013)", detail: "Non-citizens confirmed on the rolls", value: 39 }
+  - kind: dataTable
+    id: kansas-findings
+    title: 'Kansas: what the court found about the blocked applicants'
+    description: 'The trial court''s findings on who the blocked applicants were and whether they had documents.'
+    caption: 'One card per finding'
+    layout: cards
+    leadColumn: said
+    columns:
+      - { key: finding, label: 'Question', rowHeader: true }
+      - { key: said, label: 'What the court said', sortable: false }
+    rows:
+      - finding: 'How many lacked a document'
+        said: { value: '"There is no evidence about how many canceled and suspended applicants in fact lack DPOC"', sources: [37] }
+      - finding: 'How many on the suspense list were citizens'
+        said: { value: 'On the state''s expert''s own estimate, "more than 99% of the individuals on the suspense list are United States citizens"', sources: [15] }
+      - finding: 'The expert''s estimate of those lacking access'
+        said: { value: '2.2% of the suspense list, "not statistically distinguishable from zero" (margin of error 2.7%)', sources: [37] }
+      - finding: 'The expert''s estimate of "immediate access"'
+        said: { value: '97.8% of citizens on the suspense list, including people whose document someone else "keeps", itself an additional step', sources: [37] }
   - kind: comparison
     id: arizona-maricopa
   - kind: barChart
@@ -1158,7 +1178,7 @@ figures:
       rejected had voted in the 2016, 2018 and 2020 general elections.
     items:
       - { label: Requested a mail ballot, value: { value: 215000, qualifier: about, asPublished: 'roughly 215,000' } }
-      - { label: Application or ballot rejected, value: 30000 }
+      - { label: Application or ballot rejected, detail: 'Of these, "roughly 90%" did "not find another way to participate in the 2022 primary"', value: 30000 }
       - { label: Mail ballot rejected, value: { value: 18000, qualifier: more than, asPublished: 'more than 18,000' } }
       - { label: 'Ballot rejected, then voted in person', value: 344, highlight: true }
   - kind: estimateRange
@@ -1184,10 +1204,11 @@ figures:
     id: turnout-by-group
     title: >-
       Estimated extra effect of strict US voter ID laws on particular groups'
-      turnout
+      turnout, and on campaign contact
     description: >-
       How much more (negative) or less (positive) a group's turnout changed
-      than a comparison group's, in percentage points.
+      than a comparison group's, in percentage points, and the change in
+      campaigns' contact with non-white voters.
     valueLabel: Difference in effect (percentage points)
     itemLabel: Study and groups compared
     format: { unit: number, decimals: 1, fixed: true }
@@ -1197,9 +1218,12 @@ figures:
       strict-ID states. GAO's estimates are for Kansas and Tennessee in 2012
       and compare Black with white registrants, 18-year-olds with
       44–53-year-olds, and those registered under a year with those registered
-      20 years or more; GAO gives no interval for them.
+      20 years or more; GAO gives no interval for them. The campaign-contact
+      row is the rise in the likelihood that a campaign contacted non-white
+      voters, not a turnout effect; the study gives no interval for it here.
     estimates:
       - { label: 'National panel: non-white vs white', year: 2008–2018, estimate: 1.4, low: -0.5, high: 3.2, source: 27 }
+      - { label: 'National panel: campaign contact with non-white voters', year: 2008–2018, estimate: 4.7, source: 27 }
       - { label: 'GAO Kansas: Black vs white', year: 2012, estimate: -3.7, source: 29 }
       - { label: 'GAO Tennessee: Black vs white', year: 2012, estimate: -1.5, source: 29 }
       - { label: 'GAO Kansas: aged 18 vs 44–53', year: 2012, estimate: -7.1, source: 29 }
@@ -1208,39 +1232,42 @@ figures:
       - { label: 'GAO Tennessee: newly registered vs 20+ years', year: 2012, estimate: -4.6, source: 29 }
 movedAnchors:
   observations-great-britain: turnout-overall
+  subtleties-kansas-dpoc: kansas-findings
 observationMarks:
-  no-id-versus-outdated-id: {rows: ["No government photo ID of any kind", "Unexpired licence lacking current name or address"]}
-  dpoc-not-readily-available: {rows: ["Cannot readily reach proof of citizenship (includes none)", "No proof-of-citizenship document at all"]}
+  no-id-versus-outdated-id: {rows: ["No government photo ID of any kind", "Licence lacks current name or address"]}
+  dpoc-not-readily-available: {rows: ["Cannot readily reach proof of citizenship", "No proof-of-citizenship document at all"]}
   national-panel-no-turnout-effect: {rows: ["National panel: registration", "National panel: turnout"]}
   burden-without-turnout-effect: {rows: ["National panel: turnout", "GAO: Kansas turnout", "GAO: Tennessee turnout"]}
-  kansas-blocked-vs-noncitizens: {rows: ["Applications suspended or cancelled (2013–2016)", "Non-citizens confirmed on the rolls (1999–2013)"]}
-  kansas-dpoc-possession-unknown: {rows: ["Applications suspended or cancelled (2013–2016)"]}
+  kansas-blocked-vs-noncitizens: {rows: ["Suspended or cancelled (2013–2016)", "Non-citizens on the rolls (1999–2013)"]}
+  kansas-dpoc-possession-unknown: {rows: ["How many lacked a document"]}
   arizona-218000: {whole: true}
-  rejected-texans-did-not-vote: {rows: ["Application or ballot rejected", "Mail ballot rejected", "Ballot rejected, then voted in person"]}
+  rejected-texans-did-not-vote: {rows: ["Application or ballot rejected"]}
   licence-by-age-income: {rows: ["Age 18–24", "Income under $30,000"]}
-  no-licence-by-race-party: {rows: ["Black", "Hispanic", "Independents/others", "White", "Republicans"]}
+  no-licence-by-race-party: {rows: ["Black", "Hispanic", "White"]}
   gao-larger-drops-young-new-black: {rows: ["GAO Kansas: Black vs white", "GAO Tennessee: Black vs white", "GAO Kansas: aged 18 vs 44–53", "GAO Tennessee: aged 18 vs 44–53", "GAO Kansas: newly registered vs 20+ years", "GAO Tennessee: newly registered vs 20+ years"]}
-  mobilisation-may-offset: {rows: ["National panel: non-white vs white"]}
-  georgia-rejections-near-national: {lines: ["Georgia", "United States"]}
+  mobilisation-may-offset: {rows: ["National panel: campaign contact with non-white voters"]}
+  georgia-rejections-near-national: {lines: ["Georgia", "United States"], from: "2016", to: "2024"}
   two-states-opposite: {lines: ["Texas", "Georgia"], from: "2018", to: "2022"}
   arizona-eight-noncitizens: {rows: ["Found to be non-citizens who voted"]}
   who-ran-the-survey: {whole: true}
-  2006-survey-not-comparable: {rows: ["No government photo ID of any kind", "Cannot readily reach proof of citizenship (includes none)"]}
+  2006-survey-not-comparable: {rows: ["No government photo ID of any kind", "Cannot readily reach proof of citizenship"]}
   dpoc-by-group: {rows: ["Independents", "People of color", "Republicans"]}
   georgia-gap-widened-2022: {lines: ["White minus nonwhite"], at: "2022"}
   georgia-gap-predates-sb202: {lines: ["White minus Black"], from: "2014", to: "2020"}
   georgia-few-problems-2022: {lines: ["White minus nonwhite"], at: "2022"}
   georgia-2024-turnout: {lines: ["White", "Black"], from: "2020", to: "2024"}
-  gb-turnaways-small: {rows: ["May 2023 local, first turned away", "May 2023 local, did not return and vote", "July 2024 general, first turned away", "July 2024 general, did not return and vote"]}
-  gb-non-voters-cite-id: {rows: ["July 2024 general, did not return and vote"]}
-  kansas-noncitizens-not-zero: {rows: ["Non-citizens who registered or tried to (about 19 years)", "Non-citizens confirmed on the rolls (1999–2013)"]}
+  gb-turnaways-small: {whole: true}
+  gb-non-voters-cite-id: {whole: true}
+  kansas-noncitizens-not-zero: {rows: ["Non-citizen registrants (about 19 years)", "Non-citizens on the rolls (1999–2013)"]}
   texas-still-above-baseline: {lines: ["Texas", "United States"], from: "2020", to: "2024"}
   texas-rate-fell-after-primary: {lines: ["Texas"], at: "2022"}
   texas-2018-denominator: {lines: ["Texas"], at: "2018"}
   texas-march-2022-spike: {rows: ["Texas statewide, March 2022", "Harris County, March 2022", "Harris County, March 2018"]}
   no-effect-on-fraud: {rows: ["National panel: registration", "National panel: turnout"]}
   gao-kansas-tennessee: {rows: ["GAO: Kansas turnout", "GAO: Tennessee turnout"]}
-  why-no-licence: {rows: ["Don't drive or don't like driving", "Cost of a licence", "Unpaid fines or other financial or legal difficulties", "Lack of time", "Lack of underlying documents"]}
+  why-no-licence: {rows: ["Don't drive or don't like driving", "Cost of a licence", "Financial or legal difficulties", "Lack of time", "Lack of underlying documents"]}
+  kansas-expert-citizens: {rows: ["How many on the suspense list were citizens"]}
+  no-extra-effect-non-white: {rows: ["National panel: non-white vs white"]}
 ---
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-rejection-rate}
 
@@ -1252,13 +1279,13 @@ Texas's line rises after its ID-number rule and stays well above both its 2020 r
 
 The March 2022 primary's spike (chart below) was not repeated in November. [16](#source-burdens-of-id-and-citizenship-rules-16) [19](#source-burdens-of-id-and-citizenship-rules-19) The state election office credited redesigned envelopes, extra instructions, voter education and voters getting used to the rule. [16](#source-burdens-of-id-and-citizenship-rules-16) Note too that 2020 was Texas's low point: its 2016 and 2018 rates were about twice as high. [26](#source-burdens-of-id-and-citizenship-rules-26)
 
-### Georgia's rate fell after SB 202 and has sat near the national rate {#burdens-of-id-and-citizenship-rules--georgia-rejections-near-national}
+### Since SB 202, Georgia's rate has been below its 2016 and 2018 rates and near the national rate {#burdens-of-id-and-citizenship-rules--georgia-rejections-near-national}
 
 Georgia's line, high under signature matching in 2016 and 2018, has sat close to the national line since SB 202 replaced signatures with an ID number. [21](#source-burdens-of-id-and-citizenship-rules-21) [22](#source-burdens-of-id-and-citizenship-rules-22) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [39](#source-burdens-of-id-and-citizenship-rules-39) [26](#source-burdens-of-id-and-citizenship-rules-26) Its 2020 point is a floor, because the state's count missed some county rejections. [25](#source-burdens-of-id-and-citizenship-rules-25)
 
 In a survey of county election offices, 32% said fewer mail ballots were rejected in 2022, though a plurality said the new verification had not reduced rejections. [33](#source-burdens-of-id-and-citizenship-rules-33)
 
-### The two states' ID-number rules produced opposite movements {#burdens-of-id-and-citizenship-rules--two-states-opposite}
+### From 2018 to 2022 Texas's rate rose and Georgia's fell, under their new ID-number rules {#burdens-of-id-and-citizenship-rules--two-states-opposite}
 
 Texas's number had to match whichever one was on the voter's registration record, and rejections rose; Georgia's replaced signature matching, and rejections fell. [16](#source-burdens-of-id-and-citizenship-rules-16) [33](#source-burdens-of-id-and-citizenship-rules-33) So an ID requirement's effect on rejections depends on its design and what it replaces. It is not evidence about polling-place photo ID.
 
@@ -1298,7 +1325,7 @@ The white–Black gap grew about as much from 2020 to 2024 as from 2016 to 2020,
 
 ### Few citizens have no photo ID at all; many more hold an outdated licence {#burdens-of-id-and-citizenship-rules--no-id-versus-outdated-id}
 
-The bar for no photo ID of any kind, about 1% of adult citizens, is a fraction of the bar for a licence without current name or address, nearly always an old address. [1](#source-burdens-of-id-and-citizenship-rules-1) Whether that group is burdened depends on the rule: a law accepting any current photo ID does not touch them; one requiring a matching address would.
+The bar for no photo ID of any kind, just over 1% of adult citizens, is a fraction of the bar for a licence without current name or address, nearly always an old address. [1](#source-burdens-of-id-and-citizenship-rules-1) Whether that group is burdened depends on the rule: a law accepting any current photo ID does not touch them; one requiring a matching address would.
 
 ### About one citizen in ten cannot readily produce proof of citizenship {#burdens-of-id-and-citizenship-rules--dpoc-not-readily-available}
 
@@ -1322,9 +1349,9 @@ Not driving is by far the most common reason for having no licence; cost and oth
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-licence-by-group}
 
-### Black, Hispanic and independent citizens are most likely to have no licence at all {#burdens-of-id-and-citizenship-rules--no-licence-by-race-party}
+### Black and Hispanic citizens are at least three times as likely as white citizens to have no licence {#burdens-of-id-and-citizenship-rules--no-licence-by-race-party}
 
-On the chart's default view, no licence at all, Black, Hispanic and independent citizens are about three times as likely as white citizens or Republicans to have none. [3](#source-burdens-of-id-and-citizenship-rules-3) [5](#source-burdens-of-id-and-citizenship-rules-5) For white citizens the more common problem is an outdated licence. [3](#source-burdens-of-id-and-citizenship-rules-3) A missing licence is not the same as missing photo ID, which the survey does not break down by group.
+On the chart's default view, no licence at all, Black (18%) and Hispanic (15%) citizens are at least three times as likely as white citizens (5%) to have none; independents (18%) are also high. [3](#source-burdens-of-id-and-citizenship-rules-3) [5](#source-burdens-of-id-and-citizenship-rules-5) For white citizens the more common problem is an outdated licence. [3](#source-burdens-of-id-and-citizenship-rules-3) A missing licence is not the same as missing photo ID, which the survey does not break down by group.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-licence-by-age-income}
 
@@ -1340,11 +1367,11 @@ Every group has a gap, Republicans included; independents and people of color ha
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-kansas-dpoc}
 
-### Kansas blocked 31,089 applicants against at most 39 non-citizens on its rolls {#burdens-of-id-and-citizenship-rules--kansas-blocked-vs-noncitizens}
+### Kansas blocked 31,089 applicants against 39 confirmed non-citizens on its rolls {#burdens-of-id-and-citizenship-rules--kansas-blocked-vs-noncitizens}
 
 The blocked applications were 12.4% of new registrations from 2013 to 2015; the confirmed non-citizens on the rolls were 0.002% of registered voters. [14](#source-burdens-of-id-and-citizenship-rules-14) [15](#source-burdens-of-id-and-citizenship-rules-15)
 
-The trial court noted that even the state's expert's estimate implied more than 99% of applicants held in suspense were citizens. [15](#source-burdens-of-id-and-citizenship-rules-15) In 2020 the Tenth Circuit upheld its injunction, holding that the requirement unconstitutionally burdened the right to vote and was preempted by federal registration law. [38](#source-burdens-of-id-and-citizenship-rules-38)
+In 2020 the Tenth Circuit upheld its injunction, holding that the requirement unconstitutionally burdened the right to vote and was preempted by federal registration law. [38](#source-burdens-of-id-and-citizenship-rules-38)
 
 ### Non-citizen registrations in Kansas were real but few {#burdens-of-id-and-citizenship-rules--kansas-noncitizens-not-zero}
 
@@ -1352,20 +1379,19 @@ The court did find confirmed non-citizen registrations. [15](#source-burdens-of-
 
 In 2016 the court found that evidence "insufficient to show that noncitizens actually voted". [13](#source-burdens-of-id-and-citizenship-rules-13) After trial it found the confirmed cases "largely explained by administrative error, confusion, or mistake". [15](#source-burdens-of-id-and-citizenship-rules-15)
 
-## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-kansas-dpoc}
+## Observations {#burdens-of-id-and-citizenship-rules--observations-kansas-findings}
 
-### "Blocked" is not the same as "unable to prove citizenship" {#burdens-of-id-and-citizenship-rules--kansas-dpoc-possession-unknown}
+### The court found no evidence of how many blocked applicants lacked a document {#burdens-of-id-and-citizenship-rules--kansas-dpoc-possession-unknown}
 
 The 31,089 are applicants who did not supply a document in time. The court found "no evidence about how many" of them lacked one. [37](#source-burdens-of-id-and-citizenship-rules-37) It inferred they lacked ready access, did not know enough about the rule, or were unable or unwilling to take the steps. [37](#source-burdens-of-id-and-citizenship-rules-37)
 
-The only estimate came from the state's expert, Jesse Richman, in a survey of the suspense list: [37](#source-burdens-of-id-and-citizenship-rules-37)
-
-| Richman's estimate | Figure | The court's view |
-| --- | --- | --- |
-| Applicants lacking access to proof of citizenship | 2.2% | Not distinguishable from zero (margin of error 2.7%) |
-| Citizens with "immediate access" | 97.8% | Includes people whose document someone else "keeps", itself an extra step |
+The only estimate came from the state's expert, Jesse Richman, in a survey of the suspense list; the table gives it and what the court made of it. [37](#source-burdens-of-id-and-citizenship-rules-37)
 
 The record does not say how many could have complied with more effort and how many had no document.
+
+### Even the state's expert's estimate implied more than 99% of the suspense list were citizens {#burdens-of-id-and-citizenship-rules--kansas-expert-citizens}
+
+The state's expert estimated that 0.7% of people on the suspense list were non-citizens. The court noted that, taken at face value, this means more than 99% were citizens. [15](#source-burdens-of-id-and-citizenship-rules-15) The suspense list is the 14,770 applicants still suspended in March 2016, not all 31,089 blocked. [14](#source-burdens-of-id-and-citizenship-rules-14)
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-arizona-maricopa}
 
@@ -1409,9 +1435,9 @@ GAO compared Kansas and Tennessee, which tightened their ID rules for the 2012 g
 
 Of the ten earlier studies GAO reviewed, five found no significant turnout effect, four a decrease and one an increase. [30](#source-burdens-of-id-and-citizenship-rules-30)
 
-### The national and state estimates are less opposed than they look {#burdens-of-id-and-citizenship-rules--burden-without-turnout-effect}
+### The national study's interval does not rule out drops like those GAO found in Kansas and Tennessee {#burdens-of-id-and-citizenship-rules--burden-without-turnout-effect}
 
-GAO's Kansas and Tennessee estimates lie inside the national study's 95 percent confidence interval for the average effect. [27](#source-burdens-of-id-and-citizenship-rules-27) [28](#source-burdens-of-id-and-citizenship-rules-28) The national study rules out large average effects, not effects of that size in particular states or elections.
+GAO's Kansas range lies inside the national study's 95 percent confidence interval for the average effect, and its Tennessee range overlaps it. [27](#source-burdens-of-id-and-citizenship-rules-27) [28](#source-burdens-of-id-and-citizenship-rules-28) The national study rules out large average effects, not effects of that size in particular states or elections.
 
 Neither measures burden directly. The blocked applicants, rejected ballots and people without ID in this report met an obstacle; turnout studies measure whether the total number voting changed.
 
@@ -1419,11 +1445,15 @@ Neither measures burden directly. The blocked applicants, rejected ballots and p
 
 ### GAO found larger drops among young, newly registered and Black registrants {#burdens-of-id-and-citizenship-rules--gao-larger-drops-young-new-black}
 
-In Kansas the extra drop was largest for 18-year-olds, then for the newly registered, then for Black registrants; Tennessee showed the same pattern, smaller for age and race. GAO found no larger effect for Hispanic or Asian-American registrants. [29](#source-burdens-of-id-and-citizenship-rules-29)
+In Kansas the extra drop was largest for 18-year-olds, then for the newly registered, then for Black registrants; Tennessee's drops ran the same way, smaller for age and race. GAO found no larger effect for Hispanic or Asian-American registrants. [29](#source-burdens-of-id-and-citizenship-rules-29)
 
-### The national panel finds no extra effect on non-white voters, and more campaign contact {#burdens-of-id-and-citizenship-rules--mobilisation-may-offset}
+### The national panel finds no extra effect on non-white voters {#burdens-of-id-and-citizenship-rules--no-extra-effect-non-white}
 
-The national study's estimate for non-white relative to white turnout is slightly positive and not significantly different from zero. Campaigns became 4.7 points more likely to contact non-white voters, which "might have offset modest effects" of the laws. [27](#source-burdens-of-id-and-citizenship-rules-27) If so, the lack of a turnout effect partly reflects effort spent overcoming the rule, not a rule with no cost.
+The national study's estimate for non-white relative to white turnout is slightly positive and not significantly different from zero. [27](#source-burdens-of-id-and-citizenship-rules-27)
+
+### Campaigns became 4.7 points more likely to contact non-white voters {#burdens-of-id-and-citizenship-rules--mobilisation-may-offset}
+
+Campaigns became 4.7 points more likely to contact non-white voters, which "might have offset modest effects" of the laws. [27](#source-burdens-of-id-and-citizenship-rules-27) If so, the lack of a turnout effect partly reflects effort spent overcoming the rule, not a rule with no cost.
 
 ## Subtleties {#burdens-of-id-and-citizenship-rules--subtleties-turnout-overall}
 

@@ -513,7 +513,7 @@ figures:
     - {key: military, label: Military}
     - {key: unclassified, label: 'Not classified, or not split, by the counter'}
     rows:
-    - label: HRANA, to 7 April
+    - label: HRANA, to 7 April (civilians include at least 254 children)
       values: {civilian: 1701, military: 1221, unclassified: 714}
       source: 1
     - label: Hengaw, to 8 April
@@ -553,7 +553,8 @@ figures:
       Estimates of what the Iran war has cost the US military, by estimator and
       date, April–October 2026
     description: Each published estimate of the war's cost to the Defense Department, in the order of the
-      date it runs to, with its range where the estimator gave one. Not adjusted for inflation.
+      date it runs to, with its range where the estimator gave one, and CBO's estimate for each further
+      month. Not adjusted for inflation.
     valueLabel: Estimated cost, US$ billion
     format: {unit: number, decimals: 1}
     intervalLabel: Range the estimator published
@@ -576,6 +577,8 @@ figures:
       estimate: {value: 38, qualifier: about}
       asPublished: approximately $38 billion
       source: 11
+    - {label: 'CBO, each further month', year: from Aug 2026, low: 2, high: 3, asPublished: $2 billion to $3 billion,
+      source: 11}
     - {label: Pentagon to Congress, year: to 3 Sep 2026, estimate: 43.6, asPublished: $43.6 billion, source: 9}
     - {label: 'Hegseth, July projection', year: to end of Sep 2026, estimate: 37.5, asPublished: $37.5 billion,
       source: 9}
@@ -587,28 +590,34 @@ figures:
     id: "war-costs-for-scale"
   - kind: "comparison"
     id: "iraq-estimates-vs-appropriations"
-  - kind: "keyFigures"
+  - kind: "dataTable"
     id: "interceptors"
     title: "US interceptor stocks, CSIS estimates"
     description: "CSIS's estimates of US inventories on 27 July 2026, built from budget documents, not Pentagon figures."
-    figures:
-      - { value: 1000, qualifier: "fewer than", asPublished: "under 1,000", format: { unit: "count" }, label: "Patriot interceptors", period: "2026-07-27", source: 14 }
-      - { value: 250, qualifier: "about", asPublished: "about 250", format: { unit: "count" }, label: "THAAD interceptors", period: "2026-07-27", source: 14 }
+    caption: "One row per interceptor"
+    columns:
+      - { key: "interceptor", label: "Interceptor", rowHeader: true, sortable: false }
+      - { key: "stock", label: "Stock, 27 July 2026", sortable: false }
+      - { key: "says", label: "What CSIS says", sortable: false }
+    rows:
+      - { interceptor: "Patriot interceptors", stock: { value: "Under 1,000", sources: [14] }, says: "The war \"required extensive use of interceptors\"" }
+      - { interceptor: "THAAD interceptors", stock: { value: "About 250", sources: [14] }, says: "\"Diminished stockpiles\"" }
 observationMarks:
   half-of-deaths-non-hostile: {lines: ["Hostile deaths", "Non-hostile deaths"]}
-  cost-38-to-47-billion: {rows: ["Pentagon, testimony 29 Apr", "CBO, to 1 Aug", "Pentagon to Congress, to 3 Sep", "Pentagon to Congress, reported by AP 29 Oct"]}
-  monthly-cost-going-forward: {rows: ["CBO, to 1 Aug"]}
+  cost-38-to-47-billion: {rows: ["Pentagon, testimony", "Pentagon to Congress", "Pentagon to Congress, reported by AP"]}
+  monthly-cost-going-forward: {rows: ["CBO, each further month"]}
   no-count-after-april: {rows: ["HRANA", "Hengaw", "Iranian authorities (via WHO)", "Airwars"]}
-  displaced-millions: {rows: ["Displaced (WHO estimate)", "Population of Iran, 2025"]}
+  displaced-millions: {rows: ["Displaced (WHO estimate)"]}
   interceptor-stocks: {rows: ["Patriot interceptors", "THAAD interceptors"]}
-  civilian-minimum-by-april: {rows: ["HRANA, to 7 April"]}
-  iraq-overran-estimates: {rows: ["Daniels (White House budget office), 2002", "Appropriated for Iraq, FY2001–14"]}
+  civilian-minimum-by-april: {rows: ["HRANA, to 7 April (civilians include at least 254 children)"]}
+  iraq-overran-estimates: {rows: ["Daniels, 2002", "Lindsey, Sep 2002", "Appropriated for Iraq, FY2001–14"]}
   us-deaths-small-share-of-iraq: {rows: ["Iran war, Feb–Oct 2026", "Operation Iraqi Freedom (2003–10)"]}
   wounded-track-fighting: {lines: ["Wounded in action"], from: "2026-03", to: "2026-07", at: "2026-07"}
   airwars-uses-hrana: {rows: ["HRANA", "Airwars"]}
   most-deaths-military-by-hengaw: {rows: ["Hengaw, to 8 April"]}
-  counters-disagree: {rows: ["HRANA, to 7 April", "Hengaw, to 8 April"]}
-  cost-small-against-iraq: {rows: ["Iran war, Pentagon as reported 29 Oct 2026", "Iraq (OIF and New Dawn), FY2001–14"]}
+  counters-disagree: {rows: ["HRANA, to 7 April (civilians include at least 254 children)", "Hengaw, to 8 April"]}
+  cost-small-against-iraq: {rows: ["Iran war, Pentagon as reported 29 Oct 2026", "Iraq"]}
+  deaths-in-the-thousands: {rows: ["HRANA, to 7 April (civilians include at least 254 children)", "Hengaw, to 8 April", "Iranian authorities via WHO, to 21 July"]}
 ---
 ## Observations {#human-and-financial-costs-of-the-war--observations-us-wounded}
 
@@ -628,7 +637,7 @@ Reports in early October gave a total of 21; DCAS has since added one more non-h
 
 ## Observations {#human-and-financial-costs-of-the-war--observations-iranian-deaths-by-counter}
 
-### At least 1,701 Iranian civilians were killed by early April, by HRANA's minimum count {#human-and-financial-costs-of-the-war--civilian-minimum-by-april}
+### At least 1,701 Iranian civilians were killed by early April, at least 254 of them children, by HRANA's minimum count {#human-and-financial-costs-of-the-war--civilian-minimum-by-april}
 
 HRANA counted 1,701 civilians killed by the April ceasefire, including at least 254 children. [1](#source-human-and-financial-costs-of-the-war-1) It counts incident by incident, takes minimums, and warns of undercounting.
 
@@ -637,6 +646,10 @@ HRANA counted 1,701 civilians killed by the April ceasefire, including at least 
 Hengaw counts 6,620 military personnel killed, mostly Revolutionary Guards and army. Its civilians are 13.5% of its total. [2](#source-human-and-financial-costs-of-the-war-2)
 
 Its method is not published, and it also alleges that military units moved into civilian buildings. [2](#source-human-and-financial-costs-of-the-war-2)
+
+### Every count puts Iranian deaths in the thousands {#human-and-financial-costs-of-the-war--deaths-in-the-thousands}
+
+HRANA's civilian, military and unclassified deaths alone run to thousands by 7 April, Hengaw counts 7,650 by 8 April, and the authorities report 3,375 by 21 July (chart). [1](#source-human-and-financial-costs-of-the-war-1) [2](#source-human-and-financial-costs-of-the-war-2) [3](#source-human-and-financial-costs-of-the-war-3)
 
 ### The counters disagree on the split more than on the scale {#human-and-financial-costs-of-the-war--counters-disagree}
 
@@ -652,7 +665,7 @@ That is about one in every 29 people in Iran (chart). [3](#source-human-and-fina
 
 ## Observations {#human-and-financial-costs-of-the-war--observations-cost-estimates}
 
-### Official estimates have risen from $25 billion to over $40 billion {#human-and-financial-costs-of-the-war--cost-38-to-47-billion}
+### The Pentagon's figure has nearly doubled, from $25 billion in April to $47.1 billion {#human-and-financial-costs-of-the-war--cost-38-to-47-billion}
 
 CBO put the cost at about $38 billion by August, and the Pentagon at $43.6 billion by early September (chart). [11](#source-human-and-financial-costs-of-the-war-11) [9](#source-human-and-financial-costs-of-the-war-9)
 
@@ -690,7 +703,7 @@ Even the high estimate the budget director called "very, very high" was a quarte
 
 ## Observations {#human-and-financial-costs-of-the-war--observations-counter-methods}
 
-### No count covers the fighting after April except the government's {#human-and-financial-costs-of-the-war--no-count-after-april}
+### No death count covers the fighting after April except the government's {#human-and-financial-costs-of-the-war--no-count-after-april}
 
 HRANA's and Hengaw's counts end at the April ceasefire. [1](#source-human-and-financial-costs-of-the-war-1) [2](#source-human-and-financial-costs-of-the-war-2) After that, only the authorities' totals and Airwars' incident tallies exist. [3](#source-human-and-financial-costs-of-the-war-3) [5](#source-human-and-financial-costs-of-the-war-5)
 

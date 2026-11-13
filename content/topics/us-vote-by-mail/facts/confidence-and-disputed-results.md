@@ -481,6 +481,15 @@ additionalSeries:
             points: [{period: '2020-10', value: 36}, {period: '2022-10', value: 37}, {period: '2024-10', value: 38}, {period: '2026-10', value: 42}]
           - name: Democratic candidate supporters
             points: [{period: '2020-10', value: 77}, {period: '2022-10', value: 88}, {period: '2024-10', value: 85}, {period: '2026-10', value: 64}]
+      - id: pew-count-compared
+        label: 'All voters: in person against by mail'
+        unit: percent
+        valueLabel: '% confident'
+        lines:
+          - name: Votes cast in person
+            points: [{period: '2020-10', value: 91}, {period: '2022-10', value: 84}, {period: '2024-10', value: 85}, {period: '2026-10', value: 79}]
+          - name: Votes cast by absentee or mail-in ballot
+            points: [{period: '2020-10', value: 59}, {period: '2022-10', value: 62}, {period: '2024-10', value: 61}, {period: '2026-10', value: 53}]
   - id: spae-nationwide
     title: 'Confident that votes nationwide were counted as intended, after the election, by party (MIT SPAE), 2012–2024'
     description: >-
@@ -714,9 +723,9 @@ figures:
         date: 2024-05
         source: 10
 observationMarks:
-  mail-below-in-person: {lines: ["All voters"]}
+  mail-below-in-person: {lines: ["Votes cast in person", "Votes cast by absentee or mail-in ballot"]}
   confidence-follows-power: {lines: ["Republicans", "Democrats"]}
-  count-length-not-separated: {lines: ["Republicans"], at: "2020"}
+  count-length-not-separated: {lines: ["Republicans"], from: "2016", to: "2020"}
   mail-claims-2020: {lines: ["Republicans"], from: "2018", to: "2020"}
   not-at-all-confident-grew: {lines: ["All adults"]}
   mail-confidence-by-party: {lines: ["Republican candidate supporters", "Democratic candidate supporters"]}
@@ -724,7 +733,7 @@ observationMarks:
   winner-swing-after-elections: {lines: ["Republicans", "Democrats"]}
   winner-effect-exceptions: {lines: ["Republicans"], at: "2016"}
   honesty-long-run: {lines: ["US adults"], at: "2016"}
-  us-breaks-global-pattern: {rows: ["US 2026: approvers", "US 2026: disapprovers"]}
+  us-breaks-global-pattern: {rows: ["United States, 2026"]}
   disputes-table: {whole: true}
   mail-central-in-recent-disputes: {rows: ["United States, presidential, 2020", "Arizona, governor, 2022", "Bridgeport, Connecticut, mayoral primary, 2023"]}
   every-dispute-resolved: {rows: ["Florida, presidential, 2000", "Ohio, presidential electoral votes, 2004", "Georgia, governor, 2018", "United States, presidential, 2020", "Arizona, governor, 2022", "Bridgeport, Connecticut, mayoral primary, 2023"]}
@@ -735,9 +744,9 @@ observationMarks:
 ---
 ## Observations {#confidence-and-disputed-results--observations-gallup-accuracy-party}
 
-### Confidence in the count follows the party in power {#confidence-and-disputed-results--confidence-follows-power}
+### Voters of the president's party were usually the more confident in the count {#confidence-and-disputed-results--confidence-follows-power}
 
-Republicans were more confident than Democrats under George W. Bush, and Democrats more confident under Barack Obama and Joe Biden (changes of president are marked under the chart). [2](#source-confidence-and-disputed-results-2) [3](#source-confidence-and-disputed-results-3) The gap reached a record 56 points in 2024. [2](#source-confidence-and-disputed-results-2)
+Republicans were more confident than Democrats under George W. Bush until the two tied in 2008, and Democrats more confident under Barack Obama and Joe Biden. Under Donald Trump, Republicans led in 2018 but not in 2020 (changes of president are marked under the chart). [2](#source-confidence-and-disputed-results-2) [3](#source-confidence-and-disputed-results-3) The gap reached a record 56 points in 2024. [2](#source-confidence-and-disputed-results-2)
 
 A study pooling about 30 national surveys from 2000 to 2012 finds "a consistent relationship between voting for the winner and confidence in election administration". [6](#source-confidence-and-disputed-results-6)
 
@@ -752,10 +761,6 @@ After the result, Republican confidence fell further, to 22% in MIT's post-elect
 More than half of Americans have been confident in every Gallup reading since 2004. [3](#source-confidence-and-disputed-results-3) But the share "not at all confident" rose from 6% in 2004 to 19% in 2024. [2](#source-confidence-and-disputed-results-2)
 
 ## Observations {#confidence-and-disputed-results--observations-pew-count-by-mail}
-
-### Voters trust the mail count less than the in-person count {#confidence-and-disputed-results--mail-below-in-person}
-
-In each of Pew's four October readings since 2020, fewer voters were confident that mail and absentee votes would be counted as intended than votes cast in person (chart, both panels). [22](#source-confidence-and-disputed-results-22)
 
 ### Republicans have stayed low on the mail count; Democrats fell in 2026 {#confidence-and-disputed-results--mail-confidence-by-party}
 
@@ -783,7 +788,7 @@ In surveys from the 2000s, winners' confidence in their own vote rose about 20 p
 
 A study of 2016 finds the winner effect outweighed pre-election "rigged" messaging from elites. [8](#source-confidence-and-disputed-results-8) In 2018 the usual winner effect did not appear, and in 2008 both parties' confidence fell to 57%. [7](#source-confidence-and-disputed-results-7) [3](#source-confidence-and-disputed-results-3)
 
-### The series cannot separate counting time from who won {#confidence-and-disputed-results--count-length-not-separated}
+### Republican trust fell to 22% after the 2020 count, but the series cannot separate that from losing {#confidence-and-disputed-results--count-length-not-separated}
 
 Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Because the same voters also lost, these series cannot show whether a long count or a changing lead lowers confidence on its own; see What we don't know yet.
 
@@ -836,6 +841,12 @@ Clinton finds voters "less likely to express confidence in election results cond
 ### A rule's confidence effect is hard to separate from winning {#confidence-and-disputed-results--rule-effect-confounded}
 
 Georgia Republicans' confidence in the statewide count rebounded in 2022, the first general election under that law (SB 202). The authors caution this may be "the noted winner's effect", since the party won almost every statewide office that year. [10](#source-confidence-and-disputed-results-10)
+
+## Observations {#confidence-and-disputed-results--observations-pew-count-compared}
+
+### Voters trust the mail count less than the in-person count {#confidence-and-disputed-results--mail-below-in-person}
+
+In each of Pew's four October readings since 2020, fewer voters were confident that mail and absentee votes would be counted as intended than votes cast in person (chart). [22](#source-confidence-and-disputed-results-22)
 
 ## More {#confidence-and-disputed-results--more-gallup-accuracy-party}
 

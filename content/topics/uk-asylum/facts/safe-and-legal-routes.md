@@ -987,7 +987,7 @@ figures:
     title: How each nationality came to the UK, year to June 2026
     description: >-
       The same nationalities and routes for the year ending June 2026, the
-      first full year after family reunion was paused on 4 September 2025.
+      year in which family reunion was paused, on 4 September 2025.
       Each bar is one nationality's own total, printed beside it, so compare
       shares across bars, not sizes. Ordered by the share who came by boat, with
       the residual last.
@@ -1042,14 +1042,15 @@ figures:
       - { date: '2025-07', title: Afghan schemes close to new applicants and referrals, category: closed, source: 12 }
       - { date: '2025-09-04', title: Refugee family reunion paused, category: closed, significance: major, source: 14 }
       - { date: '2025-09', title: No 2025/26 quota for new UK Resettlement Scheme referrals, category: closed, source: 22 }
+      - { date: '2026-09-28', title: 'Arrivals expected "to number in the hundreds at first", then "into the low thousands"', category: planned, source: 26 }
       - { date: '2026-09-28', title: 'UK Resettlement Scheme reopens for new referrals, with a yearly cap', category: opened, significance: major, source: 24 }
       - { date: '2027', title: First arrivals expected in autumn on new community and student sponsorship routes, category: planned, source: 28 }
 observationMarks:
   nationalities-with-safe-routes-rarely-came-by-boat: {rows: ["Ukraine", "Hong Kong"]}
   family-reunion-was-the-main-route-for-boat-nationalities: {rows: ["Eritrea", "Sudan", "Iran"]}
-  after-the-pause: {rows: ["Eritrea", "Sudan", "Somalia", "Iran"]}
+  after-the-pause: {rows: ["Eritrea", "Sudan", "Iran"]}
   afghans-and-syrians-had-both: {rows: ["Afghanistan", "Syria"]}
-  planned-scale: {rows: ["UK Resettlement Scheme reopens for new referrals, with a yearly cap", "First arrivals expected in autumn on new community and student sponsorship routes"]}
+  planned-scale: {rows: ["Arrivals expected \"to number in the hundreds at first\", then \"into the low thousands\"", "UK Resettlement Scheme reopens for new referrals, with a yearly cap"]}
   two-country-schemes-dominate: {lines: ["Ukraine schemes", "BN(O) route"], from: "2021", to: "2025"}
   grants-are-not-arrivals: {lines: ["Ukraine schemes"], at: "2022"}
   resettlement-peaked-with-afghanistan: {lines: ["Afghan Resettlement Programme", "UK Resettlement Scheme", "Other resettlement schemes"], at: "2021"}
@@ -1060,6 +1061,8 @@ observationMarks:
   resettlement-is-reopening: {rows: ["UK Resettlement Scheme reopens for new referrals, with a yearly cap", "First arrivals expected in autumn on new community and student sponsorship routes"]}
   not-a-test-of-cause: {rows: ["Ukraine", "Hong Kong", "Afghanistan"]}
   small-boat-counts-miss-some-people: {rows: ["All other nationalities, stateless and not recorded"]}
+  afghans-large-route-still-crossed: {rows: ["Afghanistan"]}
+  eritreans-and-sudanese-largest-boat-groups: {rows: ["Eritrea", "Sudan"]}
 ---
 ## Observations {#safe-and-legal-routes--observations-all-routes}
 
@@ -1146,7 +1149,7 @@ that were not crossing by boat (see the next chart).
 
 ## Observations {#safe-and-legal-routes--observations-routes-by-nationality}
 
-### Nationalities with a large safe route almost never came by boat {#safe-and-legal-routes--nationalities-with-safe-routes-rarely-came-by-boat}
+### Ukrainians and Hong Kongers got hundreds of thousands of visas, and almost none came by boat {#safe-and-legal-routes--nationalities-with-safe-routes-rarely-came-by-boat}
 
 From 2018 to June 2026, 12 Ukrainians and no Hong Kong nationals were
 recorded arriving by small boat, against 290,044 Ukraine visas and 187,552
@@ -1157,7 +1160,7 @@ place: the Ukraine Sponsorship Scheme for Ukrainians and their families with
 a UK sponsor, and BN(O) for BN(O) passport holders resident in Hong Kong
 [6](#source-safe-and-legal-routes-6) [8](#source-safe-and-legal-routes-8).
 
-### For most boat nationalities, family reunion was the largest route {#safe-and-legal-routes--family-reunion-was-the-main-route-for-boat-nationalities}
+### For most boat nationalities, family reunion was the largest safe route {#safe-and-legal-routes--family-reunion-was-the-main-route-for-boat-nationalities}
 
 For Eritreans, Sudanese, Iranians, Ethiopians and Yemenis, more than nine in
 ten safe-route grants from 2018 to June 2026 were family reunion visas, and
@@ -1196,6 +1199,10 @@ Albanians received almost none
 [43](#source-safe-and-legal-routes-43). The data do not say whether they would
 have qualified for a route.
 
+### Afghans had the largest resettlement route and still crossed {#safe-and-legal-routes--afghans-large-route-still-crossed}
+
+Afghans had the largest resettlement route from 2018 to June 2026, and were still among the largest small-boat nationalities. [11](#source-safe-and-legal-routes-11) [40](#source-safe-and-legal-routes-40)
+
 ## Subtleties {#safe-and-legal-routes--subtleties-routes-by-nationality}
 
 ### A side-by-side count is not a test of cause {#safe-and-legal-routes--not-a-test-of-cause}
@@ -1218,7 +1225,7 @@ part of the Home Office's safe and legal routes tables
 
 ## Observations {#safe-and-legal-routes--observations-routes-by-nationality-latest}
 
-### After the pause, boat arrivals far exceeded safe-route grants for Eritreans, Sudanese, Somalis and Iranians {#safe-and-legal-routes--after-the-pause}
+### In the year to June 2026, boat arrivals far exceeded safe-route grants for Eritreans, Sudanese and Iranians {#safe-and-legal-routes--after-the-pause}
 
 In the year to June 2026 small-boat arrivals were 33,374, 23% fewer than the
 year before [29](#source-safe-and-legal-routes-29). Eritreans were the largest
@@ -1234,6 +1241,10 @@ more safe-route grants than they had boat arrivals, through resettlement
 (Afghans) and family reunion. Afghanistan, Yemen, Sudan, Iran and Syria were
 the top family reunion nationalities, at 17%, 13%, 11%, 11% and 9% of grants
 [17](#source-safe-and-legal-routes-17).
+
+### Eritreans and Sudanese were the largest small-boat nationalities in the year to June 2026 {#safe-and-legal-routes--eritreans-and-sudanese-largest-boat-groups}
+
+Eritreans were the largest group at 5,875 arrivals and Sudanese the next at 4,191. [31](#source-safe-and-legal-routes-31) [32](#source-safe-and-legal-routes-32)
 
 ## Observations {#safe-and-legal-routes--observations-reopening}
 

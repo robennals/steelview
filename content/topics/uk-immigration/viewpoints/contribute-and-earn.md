@@ -1,34 +1,34 @@
 ---
 name: Choose migrants for what they contribute, and make settlement something they earn
 shortName: "Contribute and earn"
-summary: "The gain from immigration [comes from well-paid workers who stay; the low-paid care route and its dependants cost the public finances](#fact-immigration-economy-and-public-finances/skilled-workers-gain-care-workers-cost). Select for contribution, police each route for its purpose, and make permanent settlement something people earn by working and paying in."
+summary: "The biggest gain from immigration [comes from skilled workers outside health and care](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain); [care workers and adult dependants on the health and care route cost the public finances](#fact-immigration-economy-and-public-finances/care-route-net-cost). Select for contribution, police each route for its purpose, and make permanent settlement something people earn by working and paying in."
 order: 7
 ---
 Immigration is not good or bad in bulk. It depends on who comes and what they do. Britain should choose people for what they contribute, and make the right to stay for good something they earn.
 
-### The gain from immigration comes from well-paid workers
+### The biggest gain comes from skilled workers outside health and care
 
-The government's migration advisers have worked out what each group adds to or takes from the public purse over a lifetime. [Skilled workers outside health and care add hundreds of thousands of pounds each, while care workers and adult dependants on the health and care route cost money](#fact-immigration-economy-and-public-finances/skilled-workers-gain-care-workers-cost). The gain is concentrated. [The top tenth of earners provide almost two-fifths of it, and for lower earners a temporary stay is better for the public purse than a permanent one](#fact-immigration-economy-and-public-finances/gain-from-top-earners-and-stayers).
+The government's migration advisers have worked out what each group adds to or takes from the public purse over a lifetime. [Skilled workers outside health and care add hundreds of thousands of pounds each](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain), while [care workers and adult dependants on the health and care route cost money](#fact-immigration-economy-and-public-finances/care-route-net-cost). The gain is concentrated. [Among skilled workers outside health and care, the top tenth of earners provide almost two-fifths of it](#fact-immigration-economy-and-public-finances/gain-from-top-earners-and-stayers), and [for lower earners a temporary stay is better for the public purse than a permanent one](#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners).
 
-### The care route shows what happens when selection is loose
+### Work visas surged when the bar was cut and care workers were added
 
-[In 2020 the skill bar for a work visa was cut to A-level, and in 2022 care workers were added](#fact-work-and-study-routes/skill-threshold-lowered-then-raised). [Each health and care visa holder then brought more than one family member on average](#fact-work-and-study-routes/dependants-near-half-at-peak). [About half of students who switched straight into work became care workers](#fact-work-and-study-routes/graduate-switchers-jobs). Meanwhile, [British-held care jobs fell by about 130,000](#fact-work-and-study-routes/british-held-posts-fell).
+[In 2020 the skill bar for a work visa was cut to A-level, and in 2022 care workers were added](#fact-work-and-study-routes/skill-threshold-lowered-then-raised). [Each health and care visa holder then brought more than one family member on average](#fact-work-and-study-routes/dependants-outnumbered-main-applicants). [About half of students who switched straight into work became care workers](#fact-work-and-study-routes/student-switchers-became-care-workers). Meanwhile, [British-held care jobs fell by about 130,000](#fact-work-and-study-routes/british-held-posts-fell).
 
-Abuse followed. [The Home Office cancelled a record number of employers' licences to hire migrants, with adult social care among the worst sectors](#fact-work-and-study-routes/revocations-at-a-record). While [as a share of all employers with licences, cancellations are back to their mid-2010s level](#fact-work-and-study-routes/revocation-rate-not-a-record), that is only because [the number of such employers roughly quadrupled](#fact-work-and-study-routes/revocation-rate-not-a-record), which shows how fast sponsorship grew.
+Abuse followed. [The Home Office cancelled a record number of employers' licences to hire migrants](#fact-work-and-study-routes/revocations-at-a-record), with [adult social care among the worst sectors](#fact-work-and-study-routes/social-care-among-worst-sectors). While [as a share of skilled-worker employers with licences, cancellations are back to their mid-2010s level](#fact-work-and-study-routes/revocation-rate-not-a-record), that is only because [the number of such employers roughly quadrupled](#fact-work-and-study-routes/skilled-sponsors-quadrupled), which shows how fast sponsorship grew.
 
-### Enforcement worked, and care has coped so far without overseas recruits
+### Care visas collapsed after closer checks, and vacancies have not risen so far
 
-[Care visas collapsed once officials checked employers more closely, well before the route closed](#fact-work-and-study-routes/care-visas-collapsed-before-the-closure). Since overseas recruitment ran down, [care vacancies have not risen so far](#fact-work-and-study-routes/vacancies-held-as-recruitment-fell), and [the vacancy rate is the lowest since records began](#fact-work-and-study-routes/care-vacancies-fell).
+[Care visas collapsed well before the route closed](#fact-work-and-study-routes/care-visas-collapsed-before-the-closure), [once officials checked employers more closely](#fact-work-and-study-routes/scrutiny-began-the-fall). Since overseas recruitment ran down, [care vacancies have not risen so far](#fact-work-and-study-routes/vacancies-held-as-recruitment-fell), and [the vacancy rate is the lowest in ten years](#fact-work-and-study-routes/care-vacancies-fell).
 
-While [British-held care jobs are still falling](#fact-work-and-study-routes/british-held-posts-fell) and [care pay sits just above the legal minimum](#fact-work-and-study-routes/care-pay-near-the-floor), the answer is to raise pay and recruit at home, not to reopen the route.
+While [the British share of care jobs is still falling](#fact-work-and-study-routes/british-share-still-falling) and [care pay sits just above the legal minimum](#fact-work-and-study-routes/care-pay-near-the-floor), the answer is to raise pay and recruit at home, not to reopen the route.
 
 ### Every route must be used for its purpose
 
-[Two in five people claiming asylum had held a visa](#fact-work-and-study-routes/visa-holders-two-in-five-claims), and [claims from people on the graduate visa more than doubled](#fact-work-and-study-routes/graduate-claims-doubled). While [these are a small fraction of the visas each route issues](#fact-work-and-study-routes/graduate-claims-doubled), a visa granted to study or work should be used to study or work.
+[About two in five people claiming asylum had held a visa](#fact-work-and-study-routes/visa-holders-two-in-five-claims), and [claims from people on the graduate visa more than doubled](#fact-work-and-study-routes/graduate-claims-doubled). A visa granted to study or work should be used to study or work.
 
 ### Settlement should follow contribution
 
-Settlement gives a person [most of the benefits that people on temporary visas cannot claim](#fact-settlement-and-migrant-status/nrpf-costs). [Those who contribute earn a share](#principle-contribution-earns-a-share), and [a government's first duty is to its own people](#principle-first-duty-to-its-own-people), who pay for what settlement unlocks. [Hundreds of thousands would not yet meet the proposed requirement to be in work](#fact-settlement-and-migrant-status/non-working-groups). A longer route gives them time to.
+Settlement gives a person [most of the benefits that people on temporary visas cannot claim](#fact-settlement-and-migrant-status/settlement-unlocks-benefits). [Those who contribute earn a share](#principle-contribution-earns-a-share), and [a government's first duty is to its own people](#principle-first-duty-to-its-own-people), who pay for what settlement unlocks. [Hundreds of thousands would not yet meet the proposed requirement to be in work](#fact-settlement-and-migrant-status/hundreds-of-thousands-would-fail). A longer route gives them time to.
 
 While [a ten-year standard wait would make Britain an outlier among rich countries](#fact-settlement-and-migrant-status/ten-year-baseline-outlier), that is a fair price on the lower-paid routes. High earners would keep a short path.
 

@@ -656,6 +656,10 @@ series:
     to the total. Health and Care Worker is the route that took care workers from February
     2022 until it closed to new overseas recruits in July 2025.
   periodLabel: Year
+  events:
+  - { period: '2020', label: Skill threshold cut to A-level equivalent, source: 8 }
+  - { period: '2022', label: Care workers added to the Health and Care Worker route, source: 2 }
+  - { period: '2025', label: Skill threshold raised back to degree level, source: 9 }
   coverage:
     from: '2005'
     to: '2025'
@@ -2553,10 +2557,53 @@ dataStillNeeded:
     Whether domestic training of doctors was capped while overseas recruitment rose
     is central to the training argument; the GMC and NHS England sources could not
     be retrieved for this report, so the doctor side rests on OECD stock figures.
+figures:
+- kind: series
+- kind: series
+  id: health-care-route
+- kind: series
+  id: care-occupations
+- kind: series
+  id: social-care-workforce
+- kind: dataTable
+  id: care-route-findings
+  title: "What official reports found about the care route"
+  description: "Findings on why care is short of staff, who fills its posts and how employers broke the rules, in the words of the bodies that made them."
+  caption: "One row per finding"
+  columns:
+    - {"key": "topic", "label": "Topic", "rowHeader": true}
+    - {"key": "says", "label": "What the source says"}
+  rows:
+    - {"topic": "Root cause of staff shortages", "says": {"value": "\"the underlying cause of these workforce difficulties is the underfunding of the social care sector\" and \"immigration could not solve these workforce issues alone\"", "sources": [25]}}
+    - {"topic": "Visas tied to one employer", "says": {"value": "\"Migrants in the sector on the H&CW visa are even more susceptible to exploitation as their right to reside in the UK is directly linked to their employer\"", "sources": [26]}}
+    - {"topic": "Posts on Health and Care Worker visas", "says": {"value": "\"An estimated 150,000 posts were filled by people employed on the Health and Care Worker visa as at March 2026\"", "sources": [19]}}
+    - {"topic": "Posts filled by British workers", "says": {"value": "\"decreased from 85% of the workforce in 2020/21, to 67% in 2025/26. This is a decrease of 130,000 posts over the period, including 40,000 over the last year.\"", "sources": [21]}}
+    - {"topic": "Students who switched straight into work", "says": {"value": "\"Almost half of student switchers work as Senior care workers or Care workers (49%)\"", "sources": [48]}}
+    - {"topic": "Why work visas began to fall", "says": {"value": "\"due to more scrutiny applied by the Home Office to employers in the health and social care sector, and compliance activity taken against employers\"", "sources": [3]}}
+    - {"topic": "Why licences were revoked", "says": {"value": "Rule breaking \"which includes: underpayment of workers facilitating the entry of individuals to circumvent the immigration rules failing to provide promised work\"", "sources": [28]}}
+    - {"topic": "Sectors with the most abuse", "says": {"value": "\"Adult social care, hospitality, retail and construction are among the sectors with the highest levels of abuse\"", "sources": [27]}}
+- kind: series
+  id: sponsor-revocations
+- kind: series
+  id: registered-sponsors
+- kind: series
+  id: nurse-joiners
+- kind: series
+  id: nhs-nationality
+- kind: series
+  id: asylum-prior-route
+- kind: comparison
+  id: foreign-trained-doctors
+- kind: comparison
+  id: foreign-trained-nurses
+- kind: comparison
+  id: graduate-earnings
+- kind: comparison
+  id: graduate-switcher-jobs
 observationMarks:
   fifth-of-nhs-staff: {lines: ["All staff", "Doctors"], at: "2025-06"}
-  british-held-posts-fell: {lines: ["British"], from: "2021", to: "2026"}
-  mac-names-underfunding: {lines: ["Care workers and support workers, independent sector"]}
+  british-held-posts-fell: {rows: ["Posts filled by British workers"]}
+  mac-names-underfunding: {rows: ["Root cause of staff shortages"]}
   care-pay-near-the-floor: {lines: ["Care workers and support workers, independent sector"], from: "2023", to: "2026", at: "2026"}
   revocations-at-a-record: {lines: ["Skilled Worker", "Temporary Worker"], at: "2025"}
   skill-threshold-lowered-then-raised: {lines: ["Health and Care Worker", "Other sponsored work"], from: "2020", to: "2025"}
@@ -2565,8 +2612,8 @@ observationMarks:
   revocation-rate-not-a-record: {lines: ["Skilled Worker"], from: "2014", to: "2025", at: "2025"}
   care-visas-collapsed-before-the-closure: {lines: ["Care workers and senior care workers"], from: "2023-09", to: "2024-03", at: "2024-03"}
   vacancies-held-as-recruitment-fell: {lines: ["All job roles"], from: "2024", to: "2026"}
-  care-vacancies-fell: {lines: ["All job roles"], from: "2022", to: "2026", at: "2026"}
-  visa-holders-two-in-five-claims: {lines: ["Held a visa or other leave", "Illegal entry routes"], at: "2025"}
+  care-vacancies-fell: {lines: ["All job roles"], from: "2017", to: "2026", at: "2026"}
+  visa-holders-two-in-five-claims: {lines: ["Held a visa or other leave", "Illegal entry routes", "Other or unmatched"], at: "2025"}
   graduate-claims-doubled: {lines: ["Graduate", "Study"], from: "2024", to: "2025"}
   talent-routes-are-small: {lines: ["Talent, innovator and entrepreneur", "All work visas"]}
   work-visas-rose-and-fell: {lines: ["All work visas"], from: "2021", to: "2025", at: "2023"}
@@ -2594,9 +2641,20 @@ observationMarks:
   other-work-visa-claims: {lines: ["Other work"], at: "2025"}
   domestic-doctors-most-growth: {rows: ["OECD average (28 countries)"]}
   graduate-earnings-expected-gap: {rows: ["Graduate route, first year", "UK graduates, 15 months after graduating"]}
-  graduate-earnings-above-2500: {rows: ["Graduate route, last three months of first year"]}
+  graduate-earnings-above-2500: {rows: ["Graduate route, end of first year"]}
   switchers-in-caring-jobs: {rows: ["Switched straight from a student visa", "Switched from the Graduate route"]}
   students-staying-longer: {rows: ["Switched straight from a student visa"]}
+  visas-tied-to-one-employer: {rows: ["Visas tied to one employer"]}
+  care-posts-on-visas: {rows: ["Posts on Health and Care Worker visas"]}
+  licence-revocation-reasons: {rows: ["Why licences were revoked"]}
+  social-care-among-worst-sectors: {rows: ["Sectors with the most abuse"]}
+  scrutiny-began-the-fall: {rows: ["Why work visas began to fall"]}
+  student-switchers-became-care-workers: {rows: ["Students who switched straight into work"]}
+  british-share-still-falling: {lines: ["British"], from: "2022", to: "2026"}
+  dependants-outnumbered-main-applicants: {lines: ["Main applicants", "Dependants"], from: "2022-12", to: "2023-09"}
+  skilled-sponsors-quadrupled: {lines: ["Skilled Worker"], from: "2019", to: "2025"}
+  exploitation-not-measured: {whole: true}
+  fewer-arrivals-not-fewer-holders: {whole: true}
 ---
 ## Observations {#work-and-study-routes--observations-routes}
 
@@ -2604,7 +2662,7 @@ observationMarks:
 
 For the eleven years to mid-2021 there were fewer than 200,000 work visas a year, partly because EU nationals needed no visa while free movement lasted. Health and Care Worker and Skilled Worker visas drove the rise to 613,627 in 2023, and together made up 76% of work visas that year. [2](#source-work-and-study-routes-2) The total was 234,841 in the year to June 2026. [1](#source-work-and-study-routes-1)
 
-### The skill threshold was lowered in 2020 and raised again in July 2025 {#work-and-study-routes--skill-threshold-lowered-then-raised}
+### The skill threshold was cut to A-level equivalent in 2020, care workers were added in 2022, and the threshold rose again in July 2025 {#work-and-study-routes--skill-threshold-lowered-then-raised}
 
 The post-Brexit system cut the skill threshold for a work visa from degree level (RQF 6) to A-level equivalent (RQF 3), opening sponsored visas to mid-skilled occupations. Care workers were added to the Health and Care Worker route separately, in February 2022. [8](#source-work-and-study-routes-8) [2](#source-work-and-study-routes-2) On 22 July 2025 the threshold went back to RQF 6. [9](#source-work-and-study-routes-9)
 
@@ -2640,6 +2698,10 @@ The Migration Advisory Committee counted 173,900 dependants on the Health and Ca
 
 Main applicants on the route peaked in the third quarter of 2023 and dropped by four-fifths within two quarters. Dependants stayed high into early 2024, then fell by about two-thirds in the quarter after care workers lost the right to bring them. [13](#source-work-and-study-routes-13)
 
+### At the peak, Health and Care visas went to more dependants than main applicants {#work-and-study-routes--dependants-outnumbered-main-applicants}
+
+From early 2022, more visas each quarter went to dependants than to main applicants. The Migration Advisory Committee found a dependant ratio of 1.21 between October 2022 and September 2023, against 0.77 for other Skilled Worker occupations. [10](#source-work-and-study-routes-10)
+
 ## Subtleties {#work-and-study-routes--subtleties-health-care-visas}
 
 ### The government's account of the fall {#work-and-study-routes--technical-annex-fall}
@@ -2668,9 +2730,9 @@ The Home Office also attributes the start of the fall to compliance action again
 
 ## Observations {#work-and-study-routes--observations-vacancy-rate}
 
-### Care vacancies fell from their 2021/22 peak to the lowest rate in the series {#work-and-study-routes--care-vacancies-fell}
+### Care vacancies fell from their 2021/22 peak to the lowest rate in the last ten years {#work-and-study-routes--care-vacancies-fell}
 
-Skills for Care puts the 2021/22 vacancy rate at 10.4%, the highest since its records began in 2012/13, and the 2025/26 rate at 6.1%, one point below 2018/19. [14](#source-work-and-study-routes-14) It credits international recruitment with part of the fall, and changes in economic inactivity and fewer vacancies elsewhere with another part; it does not say how much each contributed. [16](#source-work-and-study-routes-16) [17](#source-work-and-study-routes-17)
+Skills for Care's main report puts the 2021/22 vacancy rate at 10.4%, the highest since its records began in 2012/13, and the 2025/26 rate at 6.1%, one point below 2018/19. The revised appendix this chart uses gives a slightly lower 2021/22 peak. [14](#source-work-and-study-routes-14) It credits international recruitment with part of the fall, and changes in economic inactivity and fewer vacancies elsewhere with another part; it does not say how much each contributed. [16](#source-work-and-study-routes-16) [17](#source-work-and-study-routes-17)
 
 ### Vacancies did not rise as overseas recruitment ran down {#work-and-study-routes--vacancies-held-as-recruitment-fell}
 
@@ -2688,13 +2750,13 @@ Around 2,000 people were recruited from abroad between April and June 2026. [18]
 
 ## Observations {#work-and-study-routes--observations-nationality}
 
-### British-held care posts fell by about 130,000 {#work-and-study-routes--british-held-posts-fell}
-
-Posts filled by British nationals fell from 85% of the workforce in 2020/21 to 67% in 2025/26, about 130,000 fewer posts, 40,000 of them in the last year. [21](#source-work-and-study-routes-21) Skills for Care attributes the decline to fewer British people starting care jobs, not to more leaving. [23](#source-work-and-study-routes-23) About 150,000 posts were held by people on Health and Care Worker visas in March 2026. [19](#source-work-and-study-routes-19)
-
 ### A quarter of jobs held by non-EU migrants are in health and care {#work-and-study-routes--health-and-care-share-of-migrant-jobs}
 
 By December 2025 a quarter of jobs held by employees who registered for National Insurance with a non-EU nationality were in health and care, up from 22% in February 2022; 161,000 Skilled Worker visas had gone to non-EU care workers by the end of 2025. [37](#source-work-and-study-routes-37)
+
+### The British share of care posts is still falling {#work-and-study-routes--british-share-still-falling}
+
+The British share of adult social care posts has fallen every year since 2020/21 and fell again in 2025/26. [21](#source-work-and-study-routes-21)
 
 ## Subtleties {#work-and-study-routes--subtleties-nationality}
 
@@ -2704,13 +2766,9 @@ Elsewhere in the same Skills for Care report, measured from 2021/22 across local
 
 ## Observations {#work-and-study-routes--observations-pay-premium}
 
-### Care pay sits close to the legal minimum, and experience earns little more {#work-and-study-routes--care-pay-near-the-floor}
+### Care pay sits about 5% above the legal minimum, and the margin has narrowed since 2022/23 {#work-and-study-routes--care-pay-near-the-floor}
 
 The median care worker earned £12.60 an hour in March 2026, 39p above the National Living Wage. Workers with five or more years' experience earned about 12p an hour more than new starters, down from 33p in 2016. [24](#source-work-and-study-routes-24) The chart shows the average premium over the minimum wage narrowing since 2022/23, as the minimum wage rose faster than care pay.
-
-### The Migration Advisory Committee names underfunding as the root cause {#work-and-study-routes--mac-names-underfunding}
-
-The Migration Advisory Committee said "the underlying cause of these workforce difficulties is the underfunding of the social care sector" and "immigration could not solve these workforce issues alone". Its main recommendation, on pay, went unimplemented. [25](#source-work-and-study-routes-25) It said low pay and visas tied to one employer left migrant care workers open to exploitation. [26](#source-work-and-study-routes-26)
 
 ## Subtleties {#work-and-study-routes--subtleties-pay-premium}
 
@@ -2772,13 +2830,13 @@ In June 2025, 21.3% of hospital and community health staff with a recorded natio
 
 ## Observations {#work-and-study-routes--observations-claim-route}
 
-### Two in five people claiming asylum had held a visa {#work-and-study-routes--visa-holders-two-in-five-claims}
+### About two in five people claiming asylum had held a visa {#work-and-study-routes--visa-holders-two-in-five-claims}
 
 Of 85,891 people who claimed asylum in the year to June 2026, 41% (34,999) had held a visa or other leave, slightly more than the 40% (33,949) who arrived by small boat. [50](#source-work-and-study-routes-50) [51](#source-work-and-study-routes-51) [52](#source-work-and-study-routes-52) The Home Office notes the rise coincided with the rise in visa grants up to 2023, and that a claim can come long after the visa was granted, during or after the period of leave. [53](#source-work-and-study-routes-53)
 
 ## Observations {#work-and-study-routes--observations-visa-route}
 
-### Graduate visa claims doubled as study-visa claims fell {#work-and-study-routes--graduate-claims-doubled}
+### Graduate visa claims more than doubled as study-visa claims fell {#work-and-study-routes--graduate-claims-doubled}
 
 In the year to June 2026, claims from people who last held a study visa fell 35% and claims from work-visa holders rose 16%; Graduate visa holders' claims more than doubled to 5,130. [54](#source-work-and-study-routes-54) Each route's claims are a small fraction of the visas it issued. The dataset records the last leave held, not how the person first entered.
 
@@ -2845,3 +2903,45 @@ Work visas issued to people coming from abroad rose to 613,627 in 2023 and fell 
 ## More {#work-and-study-routes--more-occupations}
 
 Care workers account for most of both the rise and the fall: visas for caring occupations fell from 107,772 in 2023 to 344, and the fall began at the end of 2023, more than eighteen months before the route closed to new overseas recruits in July 2025. [5](#source-work-and-study-routes-5) [3](#source-work-and-study-routes-3)
+
+## Observations {#work-and-study-routes--observations-care-route-findings}
+
+### The Migration Advisory Committee names underfunding as the root cause, and says immigration could not solve it alone {#work-and-study-routes--mac-names-underfunding}
+
+The Migration Advisory Committee said "the underlying cause of these workforce difficulties is the underfunding of the social care sector" and "immigration could not solve these workforce issues alone". Its main recommendation, on pay, went unimplemented. [25](#source-work-and-study-routes-25)
+
+### British-held care posts fell by about 130,000 {#work-and-study-routes--british-held-posts-fell}
+
+Posts filled by British nationals fell from 85% of the workforce in 2020/21 to 67% in 2025/26, about 130,000 fewer posts, 40,000 of them in the last year. [21](#source-work-and-study-routes-21) Skills for Care attributes the decline to fewer British people starting care jobs, not to more leaving. [23](#source-work-and-study-routes-23)
+
+### Visas tied to one employer left migrant care workers open to exploitation {#work-and-study-routes--visas-tied-to-one-employer}
+
+The committee said low pay and visas tied to one employer left migrant care workers open to exploitation. [26](#source-work-and-study-routes-26)
+
+### About 150,000 care posts are filled by people on Health and Care Worker visas {#work-and-study-routes--care-posts-on-visas}
+
+About 150,000 posts were held by people on Health and Care Worker visas in March 2026. [19](#source-work-and-study-routes-19)
+
+### Licences were revoked for underpaying workers and failing to provide promised work {#work-and-study-routes--licence-revocation-reasons}
+
+The Home Office gives underpayment, helping people get round the rules and failing to provide promised work as reasons. [28](#source-work-and-study-routes-28)
+
+### Adult social care is among the sectors with the most abuse {#work-and-study-routes--social-care-among-worst-sectors}
+
+The Home Office names adult social care, hospitality, retail and construction among the sectors with the highest levels of abuse. [27](#source-work-and-study-routes-27)
+
+### Work visas began to fall as the Home Office checked employers more closely {#work-and-study-routes--scrutiny-began-the-fall}
+
+The Home Office attributes the fall in work visas from late 2023 to more scrutiny of employers in health and social care, and to compliance activity against them. [3](#source-work-and-study-routes-3)
+
+### About half of students who switched straight into work became care workers {#work-and-study-routes--student-switchers-became-care-workers}
+
+49% of people who switched straight from a student visa to sponsored work were care workers or senior care workers. [48](#source-work-and-study-routes-48)
+
+
+## Observations {#work-and-study-routes--observations-sponsors}
+
+### Registered Skilled Worker sponsors roughly quadrupled from 2019 to 2025 {#work-and-study-routes--skilled-sponsors-quadrupled}
+
+Registered Skilled Worker sponsors at the end of 2025 were a little over four times the number at the end of 2019.
+

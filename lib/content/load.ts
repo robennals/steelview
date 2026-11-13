@@ -10,7 +10,7 @@ import {
   topicFrontmatterSchema,
 } from './schema';
 import { rankFacts, sortViewpoints } from './rank-facts';
-import { validateTopic } from './validate';
+import { evidenceErrors, validateTopic } from './validate';
 import type { Topic, Item, Principle } from './types';
 
 const CONTENT_ROOT = path.join(process.cwd(), 'content', 'topics');
@@ -147,7 +147,7 @@ export async function loadTopic(
   }
 
   if (options.validateIntegrity) {
-    const errors = validateTopic(topic);
+    const errors = [...validateTopic(topic), ...evidenceErrors(topic)];
     if (errors.length > 0) {
       throw new ContentError(`Topic "${slug}" has ${errors.length} problem(s):\n  - ${errors.join('\n  - ')}`);
     }

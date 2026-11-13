@@ -2102,6 +2102,9 @@
     transition: box-shadow 0.15s;
   }
 
+  /* Stays in view above a long chart, which a picked row can scroll. */
+  .sv-walk__chart .sv-observe { position: sticky; top: 0; z-index: 2; }
+
   .sv-observe[data-toggles] { cursor: pointer; }
 
   @media (hover: hover) {

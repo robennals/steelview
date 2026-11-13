@@ -1992,6 +1992,18 @@ figures:
 - kind: comparison
   id: lifetime-by-route
 - kind: dataTable
+  id: mac-who-adds-most
+  title: "Where the fiscal gain from skilled workers comes from"
+  description: "What the Migration Advisory Committee found about which skilled workers add most to the public finances over a lifetime."
+  caption: "One row per finding"
+  columns:
+    - {"key": "finding", "label": "Finding", "rowHeader": true}
+    - {"key": "says", "label": "The committee's words"}
+  rows:
+    - {"finding": "Top earners", "says": {"value": "The top 10% of earners outside health and care, \"with a minimum salary in 2022/23 of £131,000\", \"account for 39% of the total contribution\"", "sources": [24]}}
+    - {"finding": "Those who stay and those who leave", "says": {"value": "\"The lifetime net contribution of those who remain in the UK is +£931,000, whilst it is only +£174,000 for those who leave.\"", "sources": [19]}}
+    - {"finding": "Lower earners", "says": {"value": "\"Among the lower-earning skilled worker groups, temporary migration will be more beneficial than permanent migration from a fiscal perspective.\"", "sources": [27]}}
+- kind: dataTable
   id: headline-estimates
   title: "Estimates of immigration's effect on UK public finances, side by side"
   description: "The headline estimates of what immigration costs or adds, with what each covers and where it stands now."
@@ -2005,8 +2017,8 @@ figures:
   rows:
     - { estimate: "Centre for Policy Studies (2025)", covers: "Lifetime cost of settling recent migrants, from OBR profiles", figure: "£234 billion cost (£8,200 per household)", status: "Withdrawn by the CPS" }
     - { estimate: "Reform UK (2026)", covers: "2021–2025 arrivals settling in 2026–2030, to old age", figure: "£622.5 bn undiscounted; £154 bn discounted", status: "Reform's own figures; method disputed" }
-    - { estimate: "MAC (2025)", covers: "2022/23 Skilled Worker cohort, lifetime, discounted", figure: "+£47.1bn", status: "Current" }
-    - { estimate: "MAC (2025)", covers: "2022/23 Partner-route cohort, lifetime, discounted", figure: "−£109,000 per applicant", status: "Current" }
+    - { estimate: "MAC (2025), Skilled Worker cohort", covers: "2022/23 Skilled Worker cohort, lifetime, discounted", figure: "+£47.1bn", status: "Current" }
+    - { estimate: "MAC (2025), Partner route", covers: "2022/23 Partner-route cohort, lifetime, discounted", figure: "−£109,000 per applicant", status: "Current" }
     - { estimate: "Oxford Economics (2018)", covers: "One year, 2016/17: EEA, non-EEA, UK-born", figure: "+£4.7b, −£9.0b, −£41.4b", status: "Static, pre-Brexit" }
     - { estimate: "Dustmann and Frattini (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "+£4.4b, −£118b, −£591b", status: "Static, pre-Brexit" }
     - { estimate: "Migration Watch (2014)", covers: "1995–2011: EEA, non-EEA, UK-born", figure: "−£13.6b, −£134.9b, −£565b", status: "Static, pre-Brexit" }
@@ -2042,6 +2054,31 @@ figures:
   id: wage-effects-by-percentile
 - kind: comparison
   id: tuition-fees-by-domicile
+- kind: barChart
+  id: university-deficits
+  title: "English higher-education institutions reporting a deficit"
+  description: "The share of higher-education institutions in England reporting a deficit, from the Office for Students, in 2024-25 and as forecast for 2025-26."
+  valueLabel: "Institutions in deficit (%)"
+  categoryLabel: "Year"
+  format: {"unit": "percent", "decimals": 1}
+  sort: none
+  sources: [72]
+  items:
+    - {"label": "2024-25, reported", "value": 35.8}
+    - {"label": "2025-26, forecast", "value": 42.7}
+- kind: barChart
+  id: fast-growth-founders
+  title: "Foreign-born founders of the UK's fastest-growing companies"
+  description: "How often the UK's fastest-growing companies had a founder born abroad, from The Entrepreneurs Network, beside the foreign-born share of the population."
+  valueLabel: "Share (%)"
+  categoryLabel: "Measure"
+  format: {"unit": "percent", "decimals": 0}
+  sort: none
+  sources: [75, 76, 77]
+  items:
+    - {"label": "Companies with a foreign-born founder or co-founder", "value": 54, "detail": "54 of the 100 fastest-growing companies"}
+    - {"label": "Founders and co-founders born overseas", "value": 42, "detail": "91 of 219"}
+    - {"label": "Foreign-born share of the UK population", "value": {"value": 16, "qualifier": "about", "asPublished": "around 16%"}, "detail": "2023"}
 relatedFacts:
 - work-and-study-routes
 - immigration-housing-and-public-services
@@ -2064,38 +2101,38 @@ dataStillNeeded:
   why: "No UK birthplace-based measure was found; the founders figure covers only the 100 fastest-growing companies."
 observationMarks:
   total-gdp-grew: {lines: ["UK GDP"], from: "2019", to: "2025"}
-  obr-per-head-effect-small: {whole: true}
+  obr-per-head-effect-small: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
   g7-stalled-alike: {rows: ["United Kingdom", "Canada", "Germany"]}
-  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants (outside health and care)", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
-  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents (comparator, mean)", "All UK residents (comparator, median)", "Partner route (2022/23 cohort)"]}
+  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents (comparator, mean)", "All UK residents (comparator, median)"]}
   lower-migration-raises-borrowing: {rows: ["Lower migration, spending left as planned", "Lower migration, spending per person held"]}
   five-year-window: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
-  total-gdp-moves-with-migration: {whole: true}
+  total-gdp-moves-with-migration: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
   non-uk-fee-share: {rows: ["Students domiciled outside the UK"]}
-  a-third-of-universities-in-deficit: {rows: ["Students domiciled outside the UK"]}
-  old-age-reverses-gains: {rows: ["High-wage migrant (30% above average pay)", "Average-wage migrant", "Low-wage migrant (half of average pay)"]}
-  small-wage-effects: {rows: ["5th percentile (lowest paid)", "Median", "90th percentile", "95th percentile (highest paid)"]}
-  gain-from-top-earners-and-stayers: {rows: ["Skilled Worker main applicants (outside health and care)"]}
+  a-third-of-universities-in-deficit: {rows: ["2024-25, reported"]}
+  old-age-reverses-gains: {rows: ["High-wage migrant", "Average-wage migrant"]}
+  small-wage-effects: {rows: ["5th percentile (lowest paid)", "Median", "75th percentile", "90th percentile", "95th percentile (highest paid)"]}
+  gain-from-top-earners-and-stayers: {rows: ["Top earners"]}
   earnings-by-route: {rows: ["Skilled Worker main applicants"]}
   gdp-per-head-barely-grew: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2025"}
   timing-not-cause: {lines: ["UK GDP per head"], from: "2019", to: "2025", at: "2020"}
   g7-levels: {lines: ["United Kingdom"], from: "2019", to: "2025"}
-  march-2026-revision: {rows: ["Migrants as productive as residents; capital keeps pace"]}
+  march-2026-revision: {rows: ["Migrants as productive as residents"]}
   independent-forecasts: {rows: ["Lower migration, spending left as planned"]}
   discounting-changes-the-sign: {rows: ["Age-matched UK resident (comparator, mean)"]}
   routes-not-modelled: {whole: true}
-  earnings-and-age-decide: {rows: ["High-wage migrant (30% above average pay)", "Low-wage migrant (half of average pay)"]}
+  earnings-and-age-decide: {rows: ["High-wage migrant", "Low-wage migrant"]}
   obr-profiles-behind-cps: {rows: ["Average-wage migrant"]}
   earnings-catch-up: {rows: ["UK full-time employees (ASHE, reference)"]}
   no-post-brexit-wage-studies: {whole: true}
   g7-net-migration-not-shown: {whole: true}
   obr-mirror-image: {whole: true}
-  obr-participation-and-productivity: {rows: ["Migrants work like residents; nearly all adults on work visas (about 90% participation)", "Migrants as productive as residents; capital keeps pace"]}
+  obr-participation-and-productivity: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents"]}
   obr-delaying-not-resolving: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
   obr-2024-long-run-scenarios: {whole: true}
-  lifetime-route-detail: {rows: ["Health and Care main applicants (all)", "Care workers (Health and Care visa)", "Other health and care occupations (mainly nurses and doctors)", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
-  mac-clearly-fiscally-positive: {rows: ["Skilled Worker main applicants (outside health and care)"]}
-  age-matched-comparators: {rows: ["Age-matched UK resident (comparator, mean)", "Skilled Worker main applicants (outside health and care)", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  lifetime-route-detail: {rows: ["Health and Care main applicants (all)", "Care workers (Health and Care visa)", "Other health and care occupations", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
+  mac-clearly-fiscally-positive: {rows: ["Skilled Worker main applicants"]}
+  age-matched-comparators: {rows: ["Age-matched UK resident (comparator, mean)", "Skilled Worker main applicants", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
   childhood-paid-for-elsewhere: {rows: ["Average-wage migrant", "Representative UK resident"]}
   earnings-dependants-family-and-ons: {rows: ["Skilled Worker dependants", "Health and Care dependants", "Family-route visa holders", "UK full-time employees (ASHE, reference)"]}
   earnings-share-with-paye: {rows: ["Skilled Worker main applicants", "Skilled Worker dependants"]}
@@ -2103,6 +2140,19 @@ observationMarks:
   catch-up-who-stayed: {whole: true}
   wage-effects-by-skill: {rows: ["5th percentile (lowest paid)", "95th percentile (highest paid)"]}
   wage-effects-other-studies: {rows: ["5th percentile (lowest paid)", "90th percentile"]}
+  capital-does-not-adjust: {rows: ["Capital stock does not adjust"]}
+  skilled-workers-large-net-gain: {rows: ["Skilled Worker main applicants"]}
+  care-route-net-cost: {rows: ["Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  care-workers-net-cost: {rows: ["Care workers (Health and Care visa)"]}
+  partner-route-lifetime-cost: {rows: ["Partner route (2022/23 cohort)"]}
+  stayers-worth-more: {rows: ["Those who stay and those who leave"]}
+  temporary-better-for-lower-earners: {rows: ["Lower earners"]}
+  foreign-born-founders: {rows: ["Companies with a foreign-born founder or co-founder"]}
+  mac-cohort-adds-47bn: {rows: ["MAC (2025), Skilled Worker cohort"]}
+  234bn-withdrawn: {rows: ["Centre for Policy Studies (2025)"]}
+  622bn-undiscounted: {rows: ["Reform UK (2026)"]}
+  no-post-brexit-total: {whole: true}
+  estimates-table: {whole: true}
 movedAnchors:
   observations-founders: earnings-by-route
 ---
@@ -2118,7 +2168,7 @@ The 2019–2025 window contains the 2020 pandemic fall in output as well as othe
 
 ## Observations {#immigration-economy-and-public-finances--observations-gdp-total}
 
-### Total GDP kept growing while GDP per head stalled {#immigration-economy-and-public-finances--total-gdp-grew}
+### Total GDP grew from 2019 to 2025 {#immigration-economy-and-public-finances--total-gdp-grew}
 
 Total GDP rose from 2,673,465 to 2,817,414 (£ million, 2023 prices) between 2019 and 2025, while output per person barely moved. A larger population raises total output; whether it raises output per person is the separate question the OBR scenarios address. [2](#source-immigration-economy-and-public-finances-2) [1](#source-immigration-economy-and-public-finances-1)
 
@@ -2130,7 +2180,7 @@ The World Bank series uses market exchange rates, so the gaps between countries'
 
 ## Observations {#immigration-economy-and-public-finances--observations-g7-growth}
 
-### The UK was fifth of the seven G7 countries for growth in GDP per head after 2019 {#immigration-economy-and-public-finances--g7-stalled-alike}
+### The UK was fifth of the seven G7 countries for growth in GDP per head after 2019, and Canada and Germany did worse {#immigration-economy-and-public-finances--g7-stalled-alike}
 
 On the World Bank series, GDP per head rose more between 2019 and 2025 in the United States, Italy, Japan and France than in the UK; Canada grew less and Germany shrank slightly. The UK's stall was shared by other large economies, so on its own it is not evidence about migration. [81](#source-immigration-economy-and-public-finances-81)
 
@@ -2142,7 +2192,7 @@ Net migration per head for these countries over the same years is not shown here
 
 ## Observations {#immigration-economy-and-public-finances--observations-obr-gdp-per-person}
 
-### The OBR finds the per-head effect small and of uncertain sign {#immigration-economy-and-public-finances--obr-per-head-effect-small}
+### In the OBR's scenarios the effect on GDP per person is under 1%, up or down {#immigration-economy-and-public-finances--obr-per-head-effect-small}
 
 In March 2026 the OBR said effects on real GDP per person "are relatively small in either a positive or negative direction". [8](#source-immigration-economy-and-public-finances-8) [11](#source-immigration-economy-and-public-finances-11) In March 2024 scenarios, 200,000 more net migrants a year leave it "largely unchanged" if as productive as residents, 0.4% lower if the capital stock does not adjust, and 0.8% higher if nearly all adults arrive on work visas. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
 
@@ -2150,9 +2200,13 @@ In March 2026 the OBR said effects on real GDP per person "are relatively small 
 
 After the ONS revised up emigration by British nationals, the OBR cut its net migration forecast by around 60,000 people a year, lowering the adult population in 2030 by around 200,000. Because the extra emigrants were assumed to be younger and lower-paid, the change left potential output per person "broadly unchanged". [9](#source-immigration-economy-and-public-finances-9) [10](#source-immigration-economy-and-public-finances-10)
 
-### Total GDP moves with migration in every case {#immigration-economy-and-public-finances--total-gdp-moves-with-migration}
+### Total GDP is higher with more migration in every OBR case {#immigration-economy-and-public-finances--total-gdp-moves-with-migration}
 
 In the same scenarios total GDP in 2028-29 is 1.5 per cent higher with migrants as productive as residents, 1 per cent higher if capital does not adjust, and 2.2 per cent higher with very high participation. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
+
+### If capital does not keep up, extra migrants leave output per person 0.4% lower {#immigration-economy-and-public-finances--capital-does-not-adjust}
+
+In the March 2024 scenarios, 200,000 more net migrants a year leave GDP per person 0.4% lower in 2028-29 if the capital stock does not adjust. [3](#source-immigration-economy-and-public-finances-3) [4](#source-immigration-economy-and-public-finances-4) [5](#source-immigration-economy-and-public-finances-5)
 
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-obr-gdp-per-person}
 
@@ -2198,10 +2252,6 @@ The Migration Advisory Committee models the 329,200 people who arrived on the Sk
 
 On the Migration Advisory Committee's method the whole UK resident population has a mean lifetime contribution of −£39,000 and a median of −£145,000. [23](#source-immigration-economy-and-public-finances-23) [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22) Partners of British citizens and settled residents arriving on the Partner route in 2022/23 are modelled at −£109,000 each. [28](#source-immigration-economy-and-public-finances-28)
 
-### Most of the gain comes from top earners and from those who stay {#immigration-economy-and-public-finances--gain-from-top-earners-and-stayers}
-
-The top 10% of earners outside health and care (salary at least £131,000) account for 39% of that group's contribution. Main applicants who stay are modelled at +£931,000 and those who leave at +£174,000. The MAC concludes that for lower earners temporary migration is fiscally better than permanent, and for higher earners the reverse. [24](#source-immigration-economy-and-public-finances-24) [19](#source-immigration-economy-and-public-finances-19) [27](#source-immigration-economy-and-public-finances-27)
-
 ### Discounting can change the sign {#immigration-economy-and-public-finances--discounting-changes-the-sign}
 
 The MAC uses a 3.0% real discount rate, "broadly in line with HMT Green Book". Without discounting, the future contribution of a 25-year-old UK resident would be −£186,000 rather than +£184,000, because old-age costs fall late in life. Any lifetime figure has to state its discount rate to be compared with another. [26](#source-immigration-economy-and-public-finances-26) [25](#source-immigration-economy-and-public-finances-25)
@@ -2209,6 +2259,22 @@ The MAC uses a 3.0% real discount rate, "broadly in line with HMT Green Book". W
 ### Most routes have not been modelled {#immigration-economy-and-public-finances--routes-not-modelled}
 
 The MAC has not estimated lifetime effects for refugees, students or other routes; the Migration Observatory expects refugees to be more negative because of lower employment and greater need for support. [29](#source-immigration-economy-and-public-finances-29)
+
+### Skilled Worker main applicants outside health and care are a large net gain {#immigration-economy-and-public-finances--skilled-workers-large-net-gain}
+
+Main applicants on the Skilled Worker route outside health and care average +£689,000 over their lifetimes. [18](#source-immigration-economy-and-public-finances-18)
+
+### Care workers and Health and Care adult dependants cost more than they pay over a lifetime {#immigration-economy-and-public-finances--care-route-net-cost}
+
+Care workers average −£36,000 and Health and Care adult dependants −£67,000. [21](#source-immigration-economy-and-public-finances-21) [22](#source-immigration-economy-and-public-finances-22)
+
+### Care workers cost more than they pay over a lifetime {#immigration-economy-and-public-finances--care-workers-net-cost}
+
+Care workers on the Health and Care visa average −£36,000 over their lifetimes. [21](#source-immigration-economy-and-public-finances-21)
+
+### Partner-route arrivals are modelled at a cost of £109,000 each {#immigration-economy-and-public-finances--partner-route-lifetime-cost}
+
+Partners of British citizens and settled residents arriving on the Partner route in 2022/23 are modelled at −£109,000 each. [28](#source-immigration-economy-and-public-finances-28)
 
 ## Subtleties {#immigration-economy-and-public-finances--subtleties-lifetime-by-route}
 
@@ -2246,7 +2312,7 @@ The migrant arriving at 25 becomes a net contributor before a resident of the sa
 
 ## Observations {#immigration-economy-and-public-finances--observations-earnings-by-route}
 
-### Earnings differ widely by route {#immigration-economy-and-public-finances--earnings-by-route}
+### Skilled Worker main applicants had median earnings of £56,600, the highest of the routes shown {#immigration-economy-and-public-finances--earnings-by-route}
 
 In 2023/24 median annual earnings were £56,600 for Skilled Worker main applicants, £47,900 for Senior or Specialist Workers and £30,900 for Health and Care main applicants; care workers and home carers earned £23,100. [38](#source-immigration-economy-and-public-finances-38) [39](#source-immigration-economy-and-public-finances-39) [40](#source-immigration-economy-and-public-finances-40) [43](#source-immigration-economy-and-public-finances-43) The Home Office advises caution in comparing routes, because work eligibility differs. [41](#source-immigration-economy-and-public-finances-41) [42](#source-immigration-economy-and-public-finances-42)
 
@@ -2272,10 +2338,6 @@ Entry-year pay fell sharply in 2025. The data mix full-time and part-time work. 
 
 Of non-EU migrants first on payroll in 2015, 60% were still there in 2025; of EU migrants, 45%. These data are by nationality, not by visa route. [48](#source-immigration-economy-and-public-finances-48)
 
-### Foreign-born founders are over-represented among the fastest-growing firms {#immigration-economy-and-public-finances--foreign-born-founders}
-
-The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
-
 ## Observations {#immigration-economy-and-public-finances--observations-headline-estimates}
 
 ### The £234bn was withdrawn by its author {#immigration-economy-and-public-finances--234bn-withdrawn}
@@ -2300,9 +2362,13 @@ Every pre-Brexit study the Migration Observatory reviewed put the fiscal effect 
 
 Static estimates count one period's taxes and spending; lifetime estimates project and discount. The two kinds are not comparable. [53](#source-immigration-economy-and-public-finances-53) [58](#source-immigration-economy-and-public-finances-58) [17](#source-immigration-economy-and-public-finances-17) [28](#source-immigration-economy-and-public-finances-28) [51](#source-immigration-economy-and-public-finances-51) [52](#source-immigration-economy-and-public-finances-52)
 
+### The government's advisers model one year's Skilled Worker route arrivals at +£47.1bn {#immigration-economy-and-public-finances--mac-cohort-adds-47bn}
+
+The Migration Advisory Committee models the 329,200 people who arrived on the Skilled Worker route in 2022/23, including Health and Care visas and dependants, at a net £47.1bn over their lifetimes. [17](#source-immigration-economy-and-public-finances-17)
+
 ## Observations {#immigration-economy-and-public-finances--observations-wage-effects-by-percentile}
 
-### Average wage effects are small; slightly negative at the bottom, positive further up {#immigration-economy-and-public-finances--small-wage-effects}
+### EU immigration lowered the lowest wages by 5.2% and raised wages from the median up {#immigration-economy-and-public-finances--small-wage-effects}
 
 The Migration Advisory Committee found migration "is not a major determinate of the wages of UK-born workers". Its update implies EU immigration over 1993–2017 lowered UK-born wages by 5.2% at the 5th percentile and raised them by 1.6% at the median and by 4.4 and 3.1 per cent at the 90th and 95th percentiles, as short-run estimates. [65](#source-immigration-economy-and-public-finances-65) [66](#source-immigration-economy-and-public-finances-66)
 
@@ -2322,10 +2388,6 @@ Expressed per year, a 2022 study found immigration over 1994–2016 cut the hour
 
 ## Observations {#immigration-economy-and-public-finances--observations-tuition-fees-by-domicile}
 
-### A third of English universities are in deficit {#immigration-economy-and-public-finances--a-third-of-universities-in-deficit}
-
-The Office for Students found 35.8 per cent of institutions in deficit in 2024-25, forecast to rise to 42.7 per cent in 2025-26. It lists "an overreliance on fee income from international students" among the risks, alongside over-optimistic recruitment forecasts. [72](#source-immigration-economy-and-public-finances-72) [73](#source-immigration-economy-and-public-finances-73)
-
 ### Students from outside the UK pay close to half of course fees {#immigration-economy-and-public-finances--non-uk-fee-share}
 
 In 2024/25 UK-domiciled students paid 53.7% of higher-education course fees at UK providers; the rest came from students domiciled elsewhere. Fees are only part of university income, so this is not a share of income. [74](#source-immigration-economy-and-public-finances-74)
@@ -2333,3 +2395,32 @@ In 2024/25 UK-domiciled students paid 53.7% of higher-education course fees at U
 ## More {#immigration-economy-and-public-finances--more-lifetime-by-route}
 
 Fiscal figures are model estimates resting on stated assumptions; the assumptions are given beside each one.
+
+## Observations {#immigration-economy-and-public-finances--observations-mac-who-adds-most}
+
+### The top tenth of earners outside health and care provide almost two-fifths of the gain {#immigration-economy-and-public-finances--gain-from-top-earners-and-stayers}
+
+The top 10% of earners outside health and care (salary at least £131,000) account for 39% of that group's contribution. [24](#source-immigration-economy-and-public-finances-24)
+
+### Skilled workers who stay are worth far more than those who leave {#immigration-economy-and-public-finances--stayers-worth-more}
+
+Main applicants outside health and care who stay are modelled at +£931,000, and those who leave at +£174,000. [19](#source-immigration-economy-and-public-finances-19)
+
+### For lower earners, temporary migration is better for the public finances than permanent {#immigration-economy-and-public-finances--temporary-better-for-lower-earners}
+
+The MAC concludes that for lower earners temporary migration is fiscally better than permanent, and for higher earners the reverse. [27](#source-immigration-economy-and-public-finances-27)
+
+
+## Observations {#immigration-economy-and-public-finances--observations-university-deficits}
+
+### More than a third of English universities were in deficit in 2024-25 {#immigration-economy-and-public-finances--a-third-of-universities-in-deficit}
+
+The Office for Students found 35.8 per cent of institutions in deficit in 2024-25, forecast to rise to 42.7 per cent in 2025-26. It lists "an overreliance on fee income from international students" among the risks, alongside over-optimistic recruitment forecasts. [72](#source-immigration-economy-and-public-finances-72) [73](#source-immigration-economy-and-public-finances-73)
+
+
+## Observations {#immigration-economy-and-public-finances--observations-fast-growth-founders}
+
+### 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder {#immigration-economy-and-public-finances--foreign-born-founders}
+
+The Entrepreneurs Network found that 54 of the UK's 100 fastest-growing companies had a foreign-born founder or co-founder, and 91 of 219 founders (42%) were born overseas, against a foreign-born population of around 16%. The sample is 100 companies selected on valuation growth between June 2024 and May 2025; it says nothing about migrants on most visa routes. No UK measure of foreign-born inventors was found. [75](#source-immigration-economy-and-public-finances-75) [76](#source-immigration-economy-and-public-finances-76) [77](#source-immigration-economy-and-public-finances-77) [78](#source-immigration-economy-and-public-finances-78)
+

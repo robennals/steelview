@@ -921,7 +921,7 @@ additionalSeries:
     breaks: []
     events:
       - period: '2023-10'
-        label: NPR reports nine states have left ERIC
+        label: NPR reports nine Republican-led states have left ERIC
         note: 'NPR: all nine were Republican-led, and all left without a plan to replace it.'
         source: 25
       - period: '2024-07'
@@ -1226,7 +1226,7 @@ comparisons:
       ineligible people. The categories overlap and must not be added.
     items:
       - label: "Inaccurate or no longer valid"
-        detail: "De-duplicated total"
+        detail: 'De-duplicated total, data to March 2011: "nearly 13 percent of the national total". An "inaccurate" record is "an eligible voter whose file has incorrect data"'
         value: 24000000
       - label: Out of date
         value: 12700000
@@ -1412,28 +1412,30 @@ figures:
         counts: { value: 'Registrations removed through the NVRA process: 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky', sources: [43] }
         outcome: 'Reported April 2025'
 observationMarks:
-  pew-only-direct-measure: {rows: ["Inaccurate or no longer valid, de-duplicated total"]}
-  pew-not-fraud: {rows: ["Incorrect address"]}
+  pew-only-direct-measure: {rows: ["Inaccurate or no longer valid"]}
+  pew-not-fraud: {rows: ["Inaccurate or no longer valid"]}
   lists-contain-ineligible: {lines: ["Records removed"]}
-  eric-cross-state-movers: {lines: ["Cross-state movers"]}
-  eric-reports-fell: {lines: ["Cross-state movers"], from: "2021", to: "2025"}
-  bulk-matching-errs: {whole: true}
-  nonresponse-largest: {lines: ["No notice reply, missed two federal elections"]}
+  eric-cross-state-movers: {lines: ["Cross-state movers"], from: "2013", to: "2026"}
+  eric-reports-fell: {lines: ["Cross-state movers"], from: "2021", to: "2024"}
+  bulk-matching-errs: {rows: ["Florida felon list, 2000", "Alabama non-citizens, 2024", "Texas SAVE check, 2025–26"]}
+  nonresponse-largest: {lines: ["No notice reply, missed two federal elections", "Moved out of jurisdiction"], at: "2024"}
   ohio-notice-replies: {rows: ["Replied \"I have not moved\"", "Replied \"I have moved\""]}
-  nvra-90-day-rule: {rows: ["Must finish"]}
+  nvra-90-day-rule: {rows: ["Florida non-citizens, 2012", "Alabama non-citizens, 2024"]}
   eric-departures: {lines: ["Members covered by reports"], from: "2022", to: "2024"}
   litigation-driven-removals: {rows: ["Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017"]}
   bloated-claims-count-inactive: {rows: ["Judicial Watch, 2019: 378 counties above 100% registration", "Judicial Watch, October 2020: 353 counties with 1.8 million more registrants than eligible citizens"]}
   florida-2000-list: {rows: ["Florida felon list, 2000"]}
   save-flags-citizens: {rows: ["Texas SAVE check, 2025–26"]}
   purge-totals-mostly-lawful: {whole: true}
-  notices-mostly-unreturned: {rows: ["Unreturned (no reply and not returned undeliverable)", "Returned undeliverable"]}
+  notices-mostly-unreturned: {rows: ["Unreturned", "Returned undeliverable"]}
   husted-ruling: {rows: ["May remove someone for a move"]}
   virginia-2024-stay: {rows: ["Must finish"]}
-  mostly-moves-deaths-nonresponse: {lines: ["No notice reply, missed two federal elections", "Moved out of jurisdiction", "Died"]}
+  mostly-moves-deaths-nonresponse: {lines: ["No notice reply, missed two federal elections", "Moved out of jurisdiction", "Died"], at: "2024"}
   removals-21-million: {lines: ["Records removed"], at: "2024"}
   removals-trend: {lines: ["Records removed"], from: "2008", to: "2024"}
   state-range: {rows: ["Utah", "Puerto Rico", "Texas"]}
+  ninety-day-limit: {rows: ["Must finish"]}
+  removal-waits-two-elections: {rows: ["May remove someone for a move"]}
 ---
 ## Observations {#voter-roll-maintenance--observations-removals-count}
 
@@ -1469,7 +1471,7 @@ This is a statement about records, built into the federal process; it is not an 
 
 The shares are from the EAC's corrected 2024 figures. [2](#source-voter-roll-maintenance-2) The same three were the largest named reasons in every cycle since 2006, although in the 2006 cycle the catch-all "other" category, which then included duplicates, was larger than any of them. [15](#source-voter-roll-maintenance-15) [7](#source-voter-roll-maintenance-7) In the latest cycle both moves and non-response reached their highest counts in the series. [2](#source-voter-roll-maintenance-2)
 
-### The non-response route is the largest and least certain {#voter-roll-maintenance--nonresponse-largest}
+### In 2024 an unanswered notice and two missed elections was the largest reason for removal {#voter-roll-maintenance--nonresponse-largest}
 
 Non-response has been the single largest reason in most cycles, at between about a third and two-fifths of removals. [13](#source-voter-roll-maintenance-13) [8](#source-voter-roll-maintenance-8) [7](#source-voter-roll-maintenance-7) [2](#source-voter-roll-maintenance-2)
 
@@ -1510,7 +1512,7 @@ The Electronic Registration Information Center (ERIC), a members' compact of sta
 
 These are leads, not removals: members must still contact movers under federal and state law. [23](#source-voter-roll-maintenance-23) ERIC itself says "Illegal voting is exceedingly rare". [24](#source-voter-roll-maintenance-24)
 
-### Cross-state mover reports fell after 2021 as members left {#voter-roll-maintenance--eric-reports-fell}
+### Cross-state mover reports fell from about 3.5 million in 2021 to about 0.7 million in 2024 {#voter-roll-maintenance--eric-reports-fell}
 
 Cross-state mover reports peaked in 2021 and fell steeply as members left; the members reading shows the drop. [23](#source-voter-roll-maintenance-23)
 
@@ -1518,7 +1520,7 @@ A cross-state match needs both states in the compact, so fewer members means few
 
 ## Observations {#voter-roll-maintenance--observations-eric-members}
 
-### Nine Republican-led states left ERIC in 2022–23 {#voter-roll-maintenance--eric-departures}
+### By October 2023 nine Republican-led states had left ERIC {#voter-roll-maintenance--eric-departures}
 
 NPR reported in October 2023 that "Nine states — all Republican-led — have now withdrawn from ERIC" without a replacement. [25](#source-voter-roll-maintenance-25) In order of departure they were Louisiana, Alabama, Missouri, Florida, West Virginia, Iowa, Ohio, Virginia and Texas. [26](#source-voter-roll-maintenance-26) The chart marks the report, Hawaii's joining and Virginia's order to rejoin.
 
@@ -1526,7 +1528,7 @@ Iowa objected to ERIC's bylaws, including its requirement that members contact e
 
 ## Observations {#voter-roll-maintenance--observations-pew-2011-baseline}
 
-### The only direct measure of inaccurate registrations dates from 2011 {#voter-roll-maintenance--pew-only-direct-measure}
+### The only direct national estimate, from data to March 2011, put nearly 13 percent of records as inaccurate or no longer valid {#voter-roll-maintenance--pew-only-direct-measure}
 
 Pew's study, using data from 2004 to March 2011 and published in February 2012, put inaccurate or no-longer-valid records at nearly 13 percent of the national total; the chart breaks that down by type. Pew said the analysis "likely underestimates" the problem. [27](#source-voter-roll-maintenance-27)
 
@@ -1540,14 +1542,6 @@ Pew counted as "inaccurate" an eligible voter whose file has wrong details, such
 
 ## Observations {#voter-roll-maintenance--observations-nvra-rules}
 
-### The 90-day limit has stopped late programs {#voter-roll-maintenance--nvra-90-day-rule}
-
-The Eleventh Circuit held in 2014 that Florida's 2012 non-citizen program, first using motor-vehicle records and then the federal SAVE database, broke the 90-day limit; two named plaintiffs flagged by it were citizens. [22](#source-voter-roll-maintenance-22)
-
-The court said eligible voters "removed days or weeks before Election Day will likely not be able to correct the State's errors in time to vote." [22](#source-voter-roll-maintenance-22) In October 2024 a federal judge blocked Alabama's program on the same ground, finding it began "eighty-four days before" the election. [37](#source-voter-roll-maintenance-37)
-
-The limit does not cover individual removals for death, request or conviction. [21](#source-voter-roll-maintenance-21)
-
 ### The Supreme Court upheld non-voting as a trigger for notices {#voter-roll-maintenance--husted-ruling}
 
 In *Husted v. A. Philip Randolph Institute* (2018), the Court ruled 5–4 that Ohio's process, which uses failure to vote as the reason to send a confirmation notice and removes only after the notice and two-election steps, "does not violate the Failure-to-Vote Clause or any other part of the NVRA". Four justices dissented. [18](#source-voter-roll-maintenance-18) [19](#source-voter-roll-maintenance-19)
@@ -1558,11 +1552,19 @@ On 30 October 2024 the Supreme Court stayed a district-court order that had requ
 
 The district court had found, according to the challengers' filing, that the state "failed to show that any of the 1,610 people removed" were non-citizens. No count of citizens among them has been published. [39](#source-voter-roll-maintenance-39)
 
+### States must finish systematic removals 90 days before a federal election {#voter-roll-maintenance--ninety-day-limit}
+
+The National Voter Registration Act sets the limit for any program "to systematically remove the names of ineligible voters". [21](#source-voter-roll-maintenance-21)
+
+### Removing someone for a move can take through two federal general elections {#voter-roll-maintenance--removal-waits-two-elections}
+
+Without written confirmation, a state must send a notice and wait through two federal general elections with no voting. The Election Assistance Commission says that because of this "it is inevitable that voter lists will contain some number of voter records for individuals who are no longer eligible to vote". [3](#source-voter-roll-maintenance-3)
+
 ## Observations {#voter-roll-maintenance--observations-bulk-errors}
 
 ### Bulk matches have repeatedly flagged eligible voters {#voter-roll-maintenance--bulk-matching-errs}
 
-Every programme in the timeline flagged people who were eligible. The Brennan Center describes the two usual causes as bad source data (Arkansas's felony list) and loose matching rules (Texas's "weak" death matches, Crosscheck's name-and-birth-date match). [29](#source-voter-roll-maintenance-29)
+Programmes in the timeline flagged people who were eligible. The Brennan Center describes the two usual causes as bad source data (Arkansas's felony list) and loose matching rules (Texas's "weak" death matches, Crosscheck's name-and-birth-date match). [29](#source-voter-roll-maintenance-29)
 
 A 2017 Stanford-led study estimated that Crosscheck applied nationally would "impede 300 legal votes for every double vote prevented." [30](#source-voter-roll-maintenance-30) In North Carolina, the challengers' brief quotes the Fourth Circuit as finding "97.6% of persons identified by the DMV as noncitizens, in fact were citizens". [39](#source-voter-roll-maintenance-39)
 
@@ -1589,6 +1591,14 @@ Flagged Texans who do not reply within 30 days are cancelled but can be reinstat
 The Brennan Center's "almost 16 million voters" purged between 2014 and 2016 is the EAC's total of removals for every reason, more than half of them moves and deaths (see the first two charts). [29](#source-voter-roll-maintenance-29) [9](#source-voter-roll-maintenance-9)
 
 The Brennan Center itself says that "When done correctly, purges ensure the voter rolls are accurate and up-to-date." [29](#source-voter-roll-maintenance-29) The errors in the timeline are real but are thousands to hundreds of thousands of records against removals in the tens of millions; no national count of wrongful removals exists.
+
+### The 90-day limit has stopped late programs {#voter-roll-maintenance--nvra-90-day-rule}
+
+The Eleventh Circuit held in 2014 that Florida's 2012 non-citizen program, first using motor-vehicle records and then the federal SAVE database, broke the 90-day limit; two named plaintiffs flagged by it were citizens. [22](#source-voter-roll-maintenance-22)
+
+The court said eligible voters "removed days or weeks before Election Day will likely not be able to correct the State's errors in time to vote." [22](#source-voter-roll-maintenance-22) In October 2024 a federal judge blocked Alabama's program on the same ground, finding it began "eighty-four days before" the election. [37](#source-voter-roll-maintenance-37)
+
+The limit does not cover individual removals for death, request or conviction. [21](#source-voter-roll-maintenance-21)
 
 ## Observations {#voter-roll-maintenance--observations-bloated-roll-claims}
 
