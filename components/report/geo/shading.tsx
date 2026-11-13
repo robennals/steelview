@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 import { boundGlyph, isRange, pointValue, qualificationsIn } from '../qualified';
-import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, type MapEncoding } from './categorical';
+import { categoryRows, numericRows } from './area-rows';
+import { AreaTable } from './area-table';
+import { categoryAriaText, categoryCounts, categoryOf, categoryReadoutText, categorySlots, categorySummary, isCategorical, NO_DATA, type MapEncoding } from './categorical';
 import { CategoryLegend } from './category-legend';
-import { CategoryTable } from './category-table';
 import { PREVIEW_CLOSING, datumText, isStippled, mapScale, mapSummary, readoutText, tileText } from './choropleth';
 import { MapLegend } from './map-legend';
-import { MapTable } from './map-table';
 
 /** How one area is drawn and read, whichever way the map is shaded and whichever view draws it. */
 export type AreaLook = {
@@ -13,9 +13,9 @@ export type AreaLook = {
   readout: string;
   /** What a focused area is called: "Arkansas: Strict photo ID". */
   ariaLabel: string;
-  /** Printed on a tile: the value, or the category's mark. */
+  /** Printed on a numeric tile: the value. Empty for a category, which its tint and pattern show. */
   tileText: string;
-  /** Printed on a tile too small for the value: a bound's ▲ or ▼, or the category's mark. */
+  /** Printed on a numeric tile too small for the value: a bound's ▲ or ▼. Empty for a category. */
   denseText: string;
   /** A bound's ▲ or ▼, drawn on the real-shape view where no value is printed. */
   glyph?: '▲' | '▼';
@@ -65,12 +65,11 @@ export function mapShading(
       categorical: true,
       lookFor: area => {
         const category = categoryOf(area.id, encoding);
-        const mark = category?.mark ?? '–';
         return {
           readout: categoryReadoutText(area.name, category, encoding.categoryData[area.id]?.note),
           ariaLabel: categoryAriaText(area.name, category),
-          tileText: mark,
-          denseText: category ? mark : '',
+          tileText: '',
+          denseText: '',
           insetText: category?.label ?? 'No data',
           slot: category && slotOf.get(category.id),
           missing: !category,
@@ -80,7 +79,15 @@ export function mapShading(
         };
       },
       legend: <CategoryLegend categoryLabel={encoding.categoryLabel} categories={encoding.categories} slots={slotOf} counts={counts} />,
-      table: <CategoryTable caption={caption} areaLabel={areaLabel} areas={areas} encoding={encoding} />,
+      table: (
+        <AreaTable
+          caption={caption}
+          areaLabel={areaLabel}
+          valueLabel={encoding.categoryLabel}
+          rows={categoryRows(areas, encoding, slotOf)}
+          choices={[...encoding.categories.map(category => category.label), ...(counts.get(NO_DATA) ? [NO_DATA] : [])]}
+        />
+      ),
       slots: [...slotOf.values()],
       summary: (intro, extra) => [categorySummary(areas, encoding), intro, extra, preview ? PREVIEW_CLOSING : 'Use the Table switch to see every area.'].filter(Boolean).join(' '),
     };
@@ -115,7 +122,7 @@ export function mapShading(
       };
     },
     legend: <MapLegend scale={scale} format={format} valueLabel={valueLabel} showNoData={areas.some(area => !data[area.id])} qualifications={qualifications} />,
-    table: <MapTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} areas={areas} data={data} format={format} />,
+    table: <AreaTable caption={caption} areaLabel={areaLabel} valueLabel={valueLabel} rows={numericRows(areas, data, format)} />,
     slots: [],
     summary: (intro, extra) => mapSummary([intro, `Shaded by ${valueLabel.toLowerCase()}.`].filter(Boolean).join(' '), areas, data, format, extra, preview ? PREVIEW_CLOSING : undefined),
   };

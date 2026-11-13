@@ -60,10 +60,11 @@ export type AreaMapProps = AreaMapCommon & MapEncoding;
 
 /**
  * One dataset drawn two ways from one legend: in real shapes, where the
- * reader sees where things are, and as equal tiles, where a small state
- * counts as much as a large one and every area is as easy to point at.
+ * reader sees where things are, and as tiles, where the smallest state is at
+ * least one clear cell and every area is easy to point at.
  * A switch moves between Map, Tiles and Table; `defaultView` picks the
- * first. Every area is focusable in both drawings, with the same readout.
+ * first. Every area is focusable in both drawings, with the same readout, and
+ * both zoom to an area when it is clicked.
  *
  * Use it for a map whose readers need both questions answered — where, and
  * which areas are higher. TileMap and GeoMap remain for a figure that only

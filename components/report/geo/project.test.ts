@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { GeoRegion, LonLat } from './types';
-import { aspectOf, boundsOf, centroidOf, chooseProjection, clipToBounds, equalEarth, fitBounds, fitProjection, pathFor } from './project';
+import { aspectOf, boundsOf, centroidOf, chooseProjection, clipToBounds, equalEarth, fitBounds, fitProjection, focusBoxOf, mercatorY, pathFor } from './project';
 import { UK_ITL1_REGIONS } from './uk-itl1';
+import { WORLD_EXTENT } from './world-countries';
 
 /** A 2°×1° box on the equator, where the cosine squeeze is within 0.004% of 1. */
 const box: GeoRegion = {
@@ -80,9 +81,9 @@ test('centroidOf lands inside the region', () => {
   assert.ok(lon > -0.4 && lon < 0.1 && lat > 51.35 && lat < 51.65, `London centroid ${lon},${lat}`);
 });
 
-test('the projection is chosen from the extent: local for a country, Equal Earth beyond', () => {
+test('the projection is chosen from the extent: local for a country, Equal Earth for a continent, Mercator for the world', () => {
   assert.equal(chooseProjection(boundsOf(UK_ITL1_REGIONS)), 'local');
-  assert.equal(chooseProjection({ minLon: -180, maxLon: 180, minLat: -60, maxLat: 85 }), 'equal-earth');
+  assert.equal(chooseProjection({ minLon: -180, maxLon: 180, minLat: -60, maxLat: 85 }), 'mercator');
   assert.equal(chooseProjection({ minLon: -25, maxLon: 42, minLat: 34, maxLat: 71.5 }), 'equal-earth');
 });
 
@@ -106,10 +107,36 @@ test('Equal Earth is equal-area: two cells of equal true area project to equal a
   assert.ok(Math.abs(ratio(0) / ratio(60) - 1) < 0.01, `area ratio at 0° vs 60°: ${ratio(0) / ratio(60)}`);
 });
 
+test('Mercator keeps a country\'s shape: a degree of latitude stretches with a degree of longitude', () => {
+  near([mercatorY(0)], [0], 1e-12);
+  // At 60°N a degree of longitude covers half the ground, so the map doubles everything there.
+  const stretch = (mercatorY(60.5) - mercatorY(59.5)) / (Math.PI / 180);
+  assert.ok(Math.abs(stretch - 2) < 0.01, `stretch at 60°: ${stretch}`);
+});
+
+test('Mercator holds the poles at 85°, where the projection would run to infinity', () => {
+  assert.equal(mercatorY(90), mercatorY(85));
+  assert.equal(mercatorY(-90), mercatorY(-85));
+});
+
+test('a click zooms to a region\'s mainland, not to the box around its far-flung parts', () => {
+  const projection = fitBounds({ minLon: 0, maxLon: 100, minLat: 0, maxLat: 50 }, { width: 200, height: 100, kind: 'local' });
+  const island: GeoRegion = {
+    id: 'i',
+    name: 'I',
+    coordinates: [[[[10, 10], [30, 10], [30, 30], [10, 30]]], [[[90, 40], [91, 40], [91, 41]]]],
+  };
+  const [x, , width] = focusBoxOf(island, projection).split(' ').map(Number);
+  const [left] = projection.project([10, 20]);
+  const [right] = projection.project([30, 20]);
+  assert.ok(Math.abs(x - left) < 0.1 && Math.abs(width - (right - left)) < 0.1);
+  assert.equal(focusBoxOf({ id: 'd', name: 'D', coordinates: [], point: [50, 25] }, projection).split(' ').slice(2).join(' '), '0 0');
+});
+
 test('a map is drawn in the proportions of its geography', () => {
   assert.ok(aspectOf(boundsOf(UK_ITL1_REGIONS)) > 1.4, 'the UK is tall');
-  const world = aspectOf({ minLon: -180, maxLon: 180, minLat: -60, maxLat: 85 });
-  assert.ok(world > 0.4 && world < 0.6, `the world is wide: ${world}`);
+  const world = aspectOf(WORLD_EXTENT);
+  assert.ok(world > 0.5 && world < 0.65, `the world is wide: ${world}`);
 });
 
 test('the fitted frame is the box the extent occupies, for clipping', () => {

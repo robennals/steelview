@@ -1,12 +1,12 @@
 import { MapReadout } from './map-readout';
+import { TILE_ZOOM } from './zoom';
 import type { AreaLook } from './shading';
 import type { MapTile } from './tiles';
 
 /**
- * Past this many columns (the world grid has 28) a tile is too small to
- * print a number: it shows its code and, on a numeric map, only a bound's
- * ▲ or ▼, and the grid keeps a minimum tile size, scrolling sideways on a
- * phone rather than shrinking every tile below a fingertip.
+ * Past this many columns (the world grid has 60) a tile is too small to
+ * print a number until the reader zooms in: it shows its code and, on a
+ * numeric map, only a bound's ▲ or ▼.
  */
 const DENSE_COLUMNS = 16;
 
@@ -33,9 +33,11 @@ type TileGridProps = {
 };
 
 /**
- * The tile view: every area one tile (or a few cells, where the layout
- * spans them) in a CSS grid, each printing its code and its value or mark,
- * and each focusable, with its sentence in the shared readout.
+ * The tile view: every area one rectangle of whole cells in a CSS grid, each
+ * printing its name, or its code where the name does not fit (MapReadout
+ * decides, at every zoom), and on a numeric map its value. A categorical
+ * tile prints no mark: its tint and pattern say the category. Each tile is
+ * focusable, with its sentence in the shared readout. Clicking a tile zooms to it; see MapReadout.
  */
 export function TileGrid({ tiles, lookFor, highlight, label, descriptionId, categorical, preview = false }: TileGridProps) {
   const rows = Math.max(...tiles.map(tile => tile.row + (tile.h ?? 1)));
@@ -47,6 +49,7 @@ export function TileGrid({ tiles, lookFor, highlight, label, descriptionId, cate
       aria-label={label}
       aria-describedby={descriptionId}
       data-cols={dense ? 'dense' : cols > 6 ? 'many' : undefined}
+      data-zoom-layer=""
       style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}
     >
       {tiles.map(tile => {
@@ -67,9 +70,13 @@ export function TileGrid({ tiles, lookFor, highlight, label, descriptionId, cate
             data-highlight={highlight.includes(tile.id) ? 'true' : undefined}
             tabIndex={preview ? undefined : 0}
             aria-label={look.ariaLabel}
+            data-short={dense && (tile.h ?? 1) === 1 ? 'true' : undefined}
+            data-focus={preview ? undefined : `${tile.col} ${tile.row} ${tile.w ?? 1} ${tile.h ?? 1}`}
           >
+            {!preview && <span className="sv-tile-map__name" aria-hidden="true">{tile.name}</span>}
             <span className="sv-tile-map__code" aria-hidden="true">{tile.code}</span>
-            {!preview && <span className="sv-tile-map__value" aria-hidden="true">{dense ? look.denseText : look.tileText}</span>}
+            {!preview && !categorical && <span className="sv-tile-map__value" aria-hidden="true">{dense ? look.denseText : look.tileText}</span>}
+            {!preview && !categorical && dense && <span className="sv-tile-map__value sv-tile-map__value--zoomed" aria-hidden="true">{look.tileText}</span>}
           </li>
         );
       })}
@@ -78,8 +85,8 @@ export function TileGrid({ tiles, lookFor, highlight, label, descriptionId, cate
   // Sized by its container, so the whole grid fits the slide's height as well as its width.
   if (preview) return <div className="sv-tile-map__fit" style={{ '--sv-tile-cols': cols, '--sv-tile-rows': rows }}>{grid}</div>;
   return (
-    <MapReadout hint={`Hover over or tab to a tile to read its full name and ${categorical ? 'category' : 'value'}.`}>
-      <div className="sv-tile-map__scroll">{grid}</div>
+    <MapReadout key="tiles" hint={`Hover over or tab to a tile to read its full name and ${categorical ? 'category' : 'value'}; click it to zoom in.`} frame={{ x: 0, y: 0, width: cols, height: rows }} limits={TILE_ZOOM}>
+      <div className="sv-tile-map__scroll" data-zoom-stage="">{grid}</div>
     </MapReadout>
   );
 }
