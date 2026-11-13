@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createElement } from 'react';
+import { Fragment, createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { figureExamplesFact, figureExamplesTopic } from '@/lib/content/__fixtures__/figure-examples';
 import { areaMapProps, figureContext, figureDomId } from '@/lib/content/figure-props';
@@ -9,7 +9,7 @@ import { factSlides } from '@/lib/content/preview';
 import { isComponentFigure, type Fact } from '@/lib/content/types';
 import { renderDataWalkthroughs, viewpointWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from './chart-thumb';
-import { FactFigures, PanelChart, vizDomId } from './fact-figures';
+import { PanelChart, panelCharts } from './fact-figures';
 import { ObservationStep } from './observation-bar';
 import { SlideChart } from './slide-chart';
 
@@ -198,9 +198,8 @@ for (const figure of libraryFigures) {
     assert.equal(steps(`chart-${id}`)[0].chart?.chart, id);
   });
 
-  test(`a ${kind} (${id}) is a visualization on its fact's page, with the id its links name`, () => {
-    const html = renderToStaticMarkup(createElement(FactFigures, { fact: observed, observations: {}, subtleties: {}, sections: {}, featured: [], page: observedPage }));
-    assert.match(html, new RegExp(`id="${vizDomId(observed, id)}" data-viz="[^"]`));
+  test(`a ${kind} (${id}) is drawn in its fact's panel, with the id its links name`, () => {
+    const html = renderToStaticMarkup(createElement(Fragment, null, panelCharts(observed, observedPage)));
     assert.equal(html.split(`id="${figureDomId(observed, id)}"`).length, 2, 'its chart id appears once');
   });
 }

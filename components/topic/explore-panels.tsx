@@ -169,7 +169,7 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
           </button>
         </div>
         <div className="sv-modal__scroll">
-          <article className="sv-factpage sv-factpanel" data-variant="modal">
+          <article className="sv-factpage sv-factpanel">
             <ShownObservation.Provider value={observation}>{children}</ShownObservation.Provider>
           </article>
         </div>

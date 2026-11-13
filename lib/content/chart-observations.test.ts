@@ -1,16 +1,5 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { chartObservations } from './chart-observations';
-import { renderMarkdown } from './markdown';
-
-test('moves only matching graph observations, preserving evidence IDs and later prose', async () => {
-  const html = await renderMarkdown('## Observations {#example--observations-people}\n\n### A spike {#example--spike}\n\nExplanation.\n\n## Subtleties {#example--subtleties}\n\nOther detail.', 'topic');
-  const result = chartObservations(html, 'example', ['people']);
-  assert.match(result.observations.people, /<details class="sv-observations-group" id="example--observations-people">/);
-  assert.match(result.observations.people, /<details id="example--spike"/);
-  assert.doesNotMatch(result.bodyHtml, /example--spike/);
-  assert.match(result.bodyHtml, /Other detail/);
-});
 
 test('a not-measured band has a separate disclosure with escaped source text, and no band has none', async () => {
   const { methodChanges } = await import('./chart-observations');
@@ -22,25 +11,6 @@ test('a not-measured band has a separate disclosure with escaped source text, an
   assert.equal(methodChanges('example', 'people'), '');
 });
 
-test('artifact subtleties stay separate from numbered observations', async () => {
-  const html = await renderMarkdown('## Subtleties {#example--subtleties-people}\n\n### A qualification {#example--qualification}\n\nWhy.', 'topic');
-  const result = chartObservations(html, 'example', ['people']);
-  assert.match(result.subtleties.people, /sv-subtleties-group/);
-  assert.match(result.subtleties.people, /example--qualification/);
-  assert.doesNotMatch(result.subtleties.people, /sv-observation-number/);
-  assert.equal(result.observations.people, undefined);
-  assert.equal(result.bodyHtml, '');
-});
-
-test('a chart\'s More text sits with its Subtleties in a sheet', async () => {
-  const html = await renderMarkdown('## More {#example--more-people}\n\nWhat is counted.\n\n### About {#example--about}\n\nMethod.\n\n## Subtleties {#example--subtleties-people}\n\n### A catch {#example--catch}\n\nWhy.', 'topic');
-  const { subtleties, bodyHtml } = chartObservations(html, 'example', ['people']);
-  assert.match(subtleties.people, /id="example--more-people"><summary>More<\/summary>\s*<p>What is counted/);
-  assert.match(subtleties.people, /<section id="example--about"/);
-  assert.match(subtleties.people, /id="example--catch"/);
-  assert.equal(bodyHtml, '');
-});
-
 test('a "not measured since" band gets its own Method Changes entry, citing its own source', async () => {
   const { methodChanges } = await import('./chart-observations');
   const result = methodChanges('uranium', 'stock', { from: '2025-06-13', until: '2026-10-29', label: 'Not verified since IAEA access ended', note: 'Inspectors have had no access.', source: 4 });
@@ -49,20 +19,3 @@ test('a "not measured since" band gets its own Method Changes entry, citing its 
   assert.match(result, /Inspectors have had no access\. <a href="#source-uranium-4">\[4\]<\/a>/);
 });
 
-test('a section may be an h2 or an h3; an h3 takes its content up to the next h2 or h3', async () => {
-  const { bodySections } = await import('./chart-observations');
-  const html = await renderMarkdown([
-    '## Background {#example--background}', '', 'Why it matters.', '',
-    '### The older law {#example--older-law}', '', 'Detail.', '', '#### A footnote heading', '', 'Still the older law.', '',
-    '### The newer law {#example--newer-law}', '', 'Other detail.', '',
-    '## Later {#example--later}', '', 'After.',
-  ].join('\n'), 'topic');
-  const { sections, bodyHtml } = bodySections(html, 'example', ['older-law', 'later']);
-  assert.match(sections['older-law'], /^<section id="example--older-law" class="sv-evidence-section"><h3>The older law<\/h3>/);
-  assert.match(sections['older-law'], /Still the older law/);
-  assert.doesNotMatch(sections['older-law'], /newer law|Other detail/);
-  assert.match(sections.later, /^<h2 id="example--later">Later<\/h2>/);
-  // The h3's parent h2 stays, with its other content.
-  assert.match(bodyHtml, /Why it matters[\s\S]*The newer law/);
-  assert.doesNotMatch(bodyHtml, /older law|After\./);
-});

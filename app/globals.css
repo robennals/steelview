@@ -267,27 +267,10 @@
     margin: 0;
   }
 
-  .sv-subtitle {
-    font-style: italic;
-    color: var(--ink-2);
-    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
-    line-height: 1.45;
-    max-width: var(--measure);
-    text-wrap: pretty;
-    margin: 0.85rem 0 0;
-  }
-
   /* Small, and under the title rather than over the facts: it is provenance,
      not an introduction. */
   .sv-pagehead__meta {
     margin-top: 1rem;
-  }
-
-  .sv-rule {
-    height: 0;
-    border: 0;
-    border-top: 1px solid var(--rule);
-    margin: 1.75rem 0;
   }
 
   .sv-meta {
@@ -413,146 +396,6 @@
     font-style: italic;
   }
 
-  /* ----------------------------------------------------------- disclosure */
-
-  .sv-item {
-    border-bottom: 1px solid var(--rule);
-  }
-
-  /* The whole row is the control, and it has to look like one: the page's
-     entire value is behind these rows, so an affordance nobody notices
-     defeats the product. Three signals, all of them on the row rather than
-     on the glyph alone — a hover wash, a marker that reads as a button, and
-     a persistent wash plus a rule while open. */
-  .sv-item__summary {
-    list-style: none;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    min-height: 44px;
-    padding: 0.9rem 3rem 0.9rem 0;
-    -webkit-tap-highlight-color: transparent;
-    transition: background-color 120ms ease;
-  }
-
-  .sv-item__summary::-webkit-details-marker {
-    display: none;
-  }
-
-  /* The row wash. A pseudo-element rather than a background on the summary
-     so it can bleed into the page gutters and read as a full-width row,
-     without moving a single character of the text. */
-  .sv-item__summary::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: -0.75rem;
-    right: -0.75rem;
-    background: transparent;
-    transition: background-color 120ms ease;
-  }
-
-  .sv-item__summary:hover::before,
-  .sv-item[open] > .sv-item__summary::before {
-    background: var(--paper-sunk);
-  }
-
-  /* The marker: a drawn plus inside a ring, which loses its stem when open.
-     Ringed rather than bare so it reads as a control at a glance; drawn in
-     gradients rather than borders so the two strokes can be toggled
-     independently. */
-  .sv-item__summary::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0.72rem;
-    width: 1.65rem;
-    height: 1.65rem;
-    border: 1px solid var(--rule-strong);
-    border-radius: 999px;
-    color: var(--ink-3);
-    background-image:
-      linear-gradient(currentColor, currentColor),
-      linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-position: center, center;
-    background-size: 11px 1.5px, 1.5px 11px;
-    transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease,
-      background-size 140ms ease;
-  }
-
-  .sv-item[open] > .sv-item__summary::after {
-    background-size: 11px 1.5px, 1.5px 0;
-    color: var(--paper);
-    background-color: var(--ink);
-    border-color: var(--ink);
-  }
-
-  .sv-item__summary:hover::after {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  .sv-item[open] > .sv-item__summary:hover::after {
-    color: var(--paper);
-    background-color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* An underline on hover, the oldest "this is a link" signal there is. */
-  .sv-item__summary:hover .sv-item__claim {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.16em;
-    text-decoration-color: var(--accent);
-  }
-
-  /* A darker closing rule under an open row, so a reader scrolling a long
-     expanded body can still see where the item ends. */
-  .sv-item[open] {
-    border-bottom-color: var(--ink);
-  }
-
-  .sv-item__body {
-    padding: 0 0 1.75rem;
-    max-width: var(--measure);
-  }
-
-  .sv-item__claim {
-    display: block;
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 1.0625rem;
-    line-height: 1.35;
-    letter-spacing: -0.015em;
-    text-wrap: pretty;
-    color: var(--ink);
-  }
-
-  @media (min-width: 40rem) {
-    .sv-item__claim {
-      font-size: 1.1875rem;
-    }
-  }
-
-  .sv-item__note {
-    display: block;
-    margin-top: 0.3rem;
-    color: var(--ink-2);
-    font-style: italic;
-    line-height: 1.45;
-    font-size: 1rem;
-    text-wrap: pretty;
-  }
-
-  /* A collection nested in a report keeps a left rule, marking what is nested. */
-  :is(.sv-fact, .sv-subfact) {
-    padding-left: 0.9rem;
-    border-left: 3px solid var(--ink);
-  }
-
   /* ------------------------------------------------------------- statuses */
 
   /* A claim check's verdict is carried by three channels at once: the text
@@ -632,24 +475,6 @@
   .sv-related { margin: 0; padding-left: 1.2rem; font-family: var(--font-sans); }
   .sv-related li { margin-block: 0.25rem; }
 
-  /* --------------------------------------------- data still needed */
-
-  .sv-data-needed {
-    margin-top: 2.25rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule);
-  }
-
-  .sv-data-needed h3 {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin: 0 0 0.75rem;
-  }
-
   .sv-data-needed__list {
     list-style: none;
     margin: 0;
@@ -677,76 +502,7 @@
     color: var(--ink-2);
   }
 
-  /* One step down in weight from the headline row it sits under, so the
-     hierarchy is visible without reading the heading above it. */
-  .sv-subfact > .sv-item__summary {
-    padding-top: 0.85rem;
-    padding-bottom: 0.85rem;
-  }
-
-  .sv-subfact .sv-item__claim {
-    font-size: 1rem;
-  }
-
-  .sv-subfact > .sv-item__body {
-    padding-bottom: 1.25rem;
-  }
-
-  /* ------------------------------------------------------------- facts list */
-
-  /* A fact row is a link to that fact's own page, not a control that reveals
-     it in place. Both readings still exist — with JavaScript the link is
-     intercepted into the panel over this page, without it the page loads —
-     but either way it is a reference, so the marker is an arrow rather than
-     the plus a disclosure uses. Two different behaviours must not wear the
-     same affordance. */
-
-  .sv-factrow {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .sv-factrow::after {
-    top: 50%;
-    right: 0.35rem;
-    width: 0.46rem;
-    height: 0.46rem;
-    border: 0;
-    border-top: 1.5px solid currentColor;
-    border-right: 1.5px solid currentColor;
-    border-radius: 0;
-    background: none;
-    color: var(--ink-3);
-    transform: translateY(-50%) rotate(45deg);
-    transition: transform 140ms ease, color 120ms ease;
-  }
-
-  .sv-factrow:hover::after {
-    color: var(--accent);
-    transform: translate(0.2rem, -50%) rotate(45deg);
-  }
-
   /* ---------------------------------------------------------- fact bodies */
-
-  .sv-stance {
-    margin-top: 1.5rem;
-  }
-
-  .sv-stance__head {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin: 0 0 0.75rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--rule);
-  }
 
   .sv-source {
     margin: 0 0 1.15rem;
@@ -815,17 +571,6 @@
 
   .sv-chart__caption {
     margin-bottom: 1.2rem;
-  }
-
-  .sv-chart__title {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: -0.005em;
-    color: var(--ink);
-    margin: 0 0 0.4rem;
-    text-wrap: balance;
   }
 
   .sv-chart__desc {
@@ -988,8 +733,6 @@
     fill: none;
   }
 
-
-
   .sv-chart__break {
     stroke: var(--ink-4);
     stroke-dasharray: 2 4;
@@ -1094,56 +837,6 @@
     fill: var(--ink-3);
     font-family: var(--font-sans);
     font-variant-numeric: tabular-nums;
-  }
-
-  .sv-chart__breaks {
-    margin-top: 1.4rem;
-  }
-
-  .sv-chart__breaks-head,
-  .sv-chart__source-head,
-  .sv-chart__reading-source-head {
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    margin: 0 0 0.6rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .sv-chart__breaks dl {
-    margin: 0;
-  }
-
-  .sv-chart__break-item + .sv-chart__break-item {
-    margin-top: 0.7rem;
-  }
-
-  .sv-chart__break-item dt {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--ink-2);
-  }
-
-  .sv-chart__break-item dd {
-    margin: 0.15rem 0 0;
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--ink-3);
-    text-wrap: pretty;
-  }
-
-  .sv-chart__source {
-    margin-top: 1.4rem;
-  }
-
-  .sv-chart__reading-source {
-    margin-top: 0.8rem;
   }
 
   /* The numbers themselves: the screen-reader alternative to the plot, and
@@ -1279,170 +972,6 @@
     color: var(--ink);
   }
 
-  /* ------------------------------------------------------------- chipsets */
-
-  /* The three relationships a viewpoint has to the facts must read as three
-     different relationships. Each gets its own frame, not its own colour. */
-
-  .sv-chips {
-    margin-top: 1.6rem;
-  }
-
-  .sv-chips__label {
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin: 0 0 0.5rem;
-    color: var(--ink-3);
-    text-wrap: balance;
-  }
-
-  .sv-chips__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .sv-chips__list > li {
-    border-top: 1px solid var(--rule);
-  }
-
-  .sv-chips__list > li:first-child {
-    border-top: 0;
-  }
-
-  .sv-chips__list a {
-    display: flex;
-    align-items: flex-start;
-    min-height: 44px;
-    padding: 0.72rem 0;
-    text-decoration: none;
-    line-height: 1.4;
-    text-wrap: pretty;
-  }
-
-  .sv-chips__list a::before {
-    content: "";
-    flex: none;
-    width: 0.55rem;
-    height: 1px;
-    margin-top: 0.68em;
-    margin-right: 0.6rem;
-    background: var(--rule-strong);
-  }
-
-  .sv-chips__list a:hover {
-    color: var(--accent);
-    text-decoration: underline;
-    text-decoration-color: currentColor;
-    text-underline-offset: 0.18em;
-  }
-
-  /* Builds on — plain, load-bearing. */
-  .sv-chips--builds .sv-chips__list {
-    border-left: 3px solid var(--ink);
-    padding-left: 0.9rem;
-  }
-
-  /* Accepts, though it cuts against this view — the page's proof that it is
-     steelmanning. Framed, on raised paper, at least as present as "Builds on". */
-  .sv-chips--accepts {
-    margin-top: 1.6rem;
-    background: var(--paper-raised);
-    border: 1px solid var(--rule-strong);
-    padding: 1rem 1.05rem 0.65rem;
-  }
-
-  .sv-chips--accepts .sv-chips__label {
-    color: var(--accent);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    margin-bottom: 0.65rem;
-  }
-
-  .sv-chips--accepts .sv-chips__label::before {
-    content: "";
-    flex: none;
-    align-self: center;
-    width: 0.85rem;
-    height: 0.85rem;
-    border: 1px solid currentColor;
-    background: linear-gradient(135deg, currentColor 0 50%, transparent 50% 100%);
-  }
-
-  .sv-chips--accepts .sv-chips__list a {
-    font-size: 1.0625rem;
-    color: var(--ink);
-  }
-
-  .sv-chips--accepts .sv-chips__list a::before {
-    width: 0.5rem;
-    height: 0.5rem;
-    border: 1px solid var(--accent);
-    background: none;
-    margin-top: 0.46em;
-  }
-
-  .sv-chips--accepts .sv-chips__list > li {
-    border-top-color: var(--rule);
-  }
-
-  /* Sets aside — present and checkable, deliberately the quietest. */
-  .sv-chips--aside .sv-chips__list {
-    border-left: 1px dotted var(--rule-strong);
-    padding-left: 0.9rem;
-  }
-
-  .sv-chips--aside .sv-chips__list a {
-    color: var(--ink-2);
-    font-size: 1rem;
-  }
-
-  .sv-chips--aside .sv-chips__list a::before {
-    width: 0.55rem;
-    border-top: 1px dotted var(--ink-4);
-    background: none;
-    height: 0;
-    margin-top: 0.68em;
-  }
-
-  /* Rests on — principles, not facts. Short names, so a row of tags. */
-  .sv-tags {
-    margin-top: 1.6rem;
-  }
-
-  .sv-tags__list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .sv-tags__list a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 0 0.85rem;
-    border: 1px solid var(--rule-strong);
-    border-radius: 999px;
-    text-decoration: none;
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    color: var(--ink-2);
-  }
-
-  .sv-tags__list a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
   /* --------------------------------------------------------------- cruxes */
 
   /* Columns of equal width, as many as fit: every side in one line on a wide
@@ -1465,13 +994,6 @@
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--ink);
-  }
-
-  .sv-position dt a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    text-decoration-color: var(--rule-strong);
   }
 
   .sv-position dd {
@@ -1654,17 +1176,6 @@
     font-size: 0.9em;
     background: var(--paper-sunk);
     padding: 0.1em 0.3em;
-  }
-
-  .prose-body--lede {
-    color: var(--ink);
-    font-size: 1.0625rem;
-  }
-
-  @media (min-width: 40rem) {
-    .prose-body--lede {
-      font-size: 1.1875rem;
-    }
   }
 
   /* ------------------------------------------------------------ home page */
@@ -1977,7 +1488,6 @@
   .sv-slide .sv-chart { margin: 0; }
   .sv-slide .sv-chart__caption .sv-graph-heading { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-
   .sv-carousel__controls { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.75rem; }
 
   .sv-carousel__step {
@@ -2176,7 +1686,6 @@
 
   /* Opened, the whole claim shows. */
   .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; }
-
 
   /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
@@ -2643,38 +2152,6 @@
     max-width: var(--measure);
   }
 
-  /* The popup title stays clearly above every heading inside the article. */
-  .sv-factpage[data-variant="modal"] .sv-factpage__claim {
-    font-size: clamp(1.75rem, 1.35rem + 1vw, 2.125rem);
-    line-height: 1.35;
-    letter-spacing: -0.015em;
-  }
-
-  .sv-factpage[data-variant="modal"] .sv-parentnote {
-    margin-top: 0;
-    margin-bottom: 1.1rem;
-  }
-
-  .sv-factpage[data-variant="modal"] .sv-factpage__body {
-    margin-top: 1.1rem;
-  }
-
-  /* The fact's permanent address, stated on the page rather than left to the
-     URL bar: this is the link a reader is meant to be able to take away. */
-  .sv-permalink {
-    margin: 1.75rem 0 0;
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .sv-permalink a {
-    color: var(--accent);
-    text-decoration-color: var(--accent);
-  }
-
   /* --------------------------------------------------------- fact panel */
 
   /* Background scroll lock. Chrome inerts the page behind a modal dialog but
@@ -2753,8 +2230,6 @@
     background: var(--paper-raised);
   }
 
-  .sv-modal__title-slot { flex: 1; min-width: 0; }
-
   /* The report's title, here rather than over the data. */
   .sv-modal__title {
     flex: 1;
@@ -2780,22 +2255,6 @@
     text-transform: uppercase;
     color: var(--ink-3);
     margin: 0;
-  }
-
-  .sv-modal__expand {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-height: 44px;
-    color: var(--ink-2);
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    text-decoration: none;
-  }
-
-  .sv-modal__expand:hover {
-    color: var(--accent);
   }
 
   .sv-modal__close {
@@ -2826,63 +2285,15 @@
     color: var(--accent);
   }
 
-  /* ------------------------------------------- one visualization at a time */
-
-  /* A data collection opened at one of its visualizations shows that one
-     alone, at full size with its own controls, under tabs for the rest
-     (viz-tabs.tsx). Everything else in the report waits behind "Whole
-     report", except its sources, which the visualization's footnotes link to. */
-  .sv-factpage[data-focus] .sv-factpage__body > :not(.sv-viz, .sv-references) { display: none; }
-  .sv-factpage[data-focus] .sv-viz:not([data-viz-active]) { display: none; }
-
   /* A data panel lifted into a sheet by a viewpoint's "Explore this data". */
   .sv-factpanel .sv-walk { padding: 0; opacity: 1; transform: none; }
-  /* The visualization takes the sheet's full width; its prose keeps a reading width. */
-  .sv-factpage[data-focus] .sv-factpage__body { max-width: none; }
-
-  /* In the sheet, a single visualization gets nearly the whole screen. */
+  /* A data panel gets nearly the whole screen. */
   @media (min-width: 40rem) {
-    .sv-modal__panel:has(.sv-factpage[data-focus]),
-    .sv-modal__panel[data-wide]:not(:has(.sv-factpage[data-whole])) {
+    .sv-modal__panel[data-wide] {
       width: min(76rem, 100%);
       height: min(92dvh, 64rem);
     }
   }
-
-  /* One row that scrolls sideways, however many visualizations there are. */
-  .sv-viz-tabs ul {
-    display: flex;
-    gap: 0.4rem;
-    margin: 0.75rem 0 1.25rem;
-    padding: 0 0 0.9rem;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    border-bottom: 1px solid var(--rule);
-    list-style: none;
-  }
-
-  .sv-viz-tabs li { flex: none; }
-
-  .sv-viz-tabs button {
-    max-width: 22rem;
-    padding: 0.4rem 0.75rem;
-    overflow: hidden;
-    border: 1px solid var(--rule);
-    border-radius: 99px;
-    background: var(--paper);
-    color: var(--ink-3);
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 500;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
-    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-  }
-
-  .sv-viz-tabs button:hover { color: var(--ink); border-color: var(--rule-strong); }
-  .sv-viz-tabs button[aria-current] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-  .sv-viz-tabs .sv-viz-tabs__all { color: var(--accent); border-style: dashed; }
 
   .sv-modal__scroll {
     flex: 1 1 auto;
@@ -2910,68 +2321,20 @@
 /* Evidence remains addressable in both a sheet and the full article. */
 .sv-finding { font-size: 1.15rem; line-height: 1.65; margin-block: 1rem 1.5rem; }
 .sv-footnote { vertical-align: super; font-size: .72em; white-space: nowrap; margin-inline: .15em; }
-.sv-chart__credit, .sv-references p { font-size: .8rem; color: var(--ink-3); margin-block: .5rem; }
-.sv-references { margin-top: 2.5rem; }
-.sv-references li { padding: .5rem; scroll-margin-top: 1.5rem; }
+.sv-chart__credit{ font-size: .8rem; color: var(--ink-3); margin-block: .5rem; }
 .sv-target, .sv-factpage :target { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
 .sv-factpage [id] { scroll-margin-top: 1.5rem; }
 h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
-/* A replaced anchor (`replaces`) is an empty mark before its figure: the
-   figure takes the highlight, without JavaScript too. */
-.sv-anchor-aliases > span { display: block; }
-.sv-factpage .sv-anchor-aliases > :target { background: none; outline: none; }
-.sv-factpage .sv-anchor-aliases:has(:target) + * { background: var(--accent-wash); outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 4px; }
+
 /* In a data panel the selected thumbnail and the open observation already say
    where a link landed; the wash is for finding a line in a long list. */
-.sv-factpage .sv-walk .sv-target, .sv-factpage .sv-walk :target, .sv-walk .sv-target, .sv-walk h3.sv-target + p, .sv-walk h3:target + p,
-.sv-factpage .sv-walk .sv-anchor-aliases:has(:target) + * { background: none; outline: none; }
-.sv-evidence-index { margin-top: 1.5rem; }
-.sv-evidence-index > summary { cursor: pointer; font-size: .85rem; }
+.sv-factpage .sv-walk .sv-target, .sv-factpage .sv-walk :target, .sv-walk .sv-target, .sv-walk h3.sv-target + p, .sv-walk h3:target + p{ background: none; outline: none; }
 
 .sv-chart__methodology { margin-top: 1rem; font-size: .875rem; color: var(--ink-3); overflow-wrap: anywhere; }
 .sv-chart__methodology > summary { cursor: pointer; }
 .sv-chart__methodology[open] > summary { margin-bottom: 1rem; }
 .sv-chart__method-note { margin-block: 1rem; }
 
-/* References and supporting evidence are apparatus, not more finding headlines. */
-.sv-references > summary {
-  display: flex;
-  align-items: baseline;
-  gap: .65rem;
-  cursor: pointer;
-  list-style: none;
-  font-family: var(--font-sans);
-  font-size: .8125rem;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  border-top: 1px solid var(--rule-strong);
-  padding-block: 1.1rem;
-}
-.sv-references > summary::-webkit-details-marker { display: none; }
-.sv-references > summary::before { content: '+'; }
-.sv-references[open] > summary::before { content: '−'; }
-.sv-references > summary:hover { color: var(--accent); }
-.sv-references > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.sv-references .sv-reference-group__title {
-  font-family: var(--font-sans);
-  font-size: .875rem;
-  font-weight: 600;
-  line-height: 1.5;
-  color: var(--ink-2);
-  margin-block: 1rem .5rem;
-}
-.sv-reference-group + .sv-reference-group { margin-top: 1.5rem; }
-.sv-references ol { padding-left: 1.4rem; list-style: decimal; }
-.sv-references .sv-source {
-  border-left: 0;
-  font-size: 1rem;
-  line-height: 1.55;
-  padding: .75rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.sv-references blockquote { margin-top: .65rem; color: var(--ink-2); }
 .sv-chart__credit { font-family: var(--font-sans); line-height: 1.5; }
 
 /* Observations reveal their explanation only when the reader asks for it. */
@@ -3004,32 +2367,6 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-observation__body { padding: .1rem 0 1rem 1.35rem; }
 .sv-observation__body > * { margin-block: 0 1em; }
 .sv-observation__body > :last-child { margin-bottom: 0; }
-
-/* The source list stays compact; a quote opens independently of its citation. */
-.sv-source-quote { margin-top: .6rem; min-width: 0; }
-.sv-source-quote > summary {
-  display: flex;
-  align-items: baseline;
-  gap: .55rem;
-  list-style: none;
-  cursor: pointer;
-  color: var(--ink-3);
-}
-.sv-source-quote > summary::-webkit-details-marker { display: none; }
-.sv-source-quote > summary::before { content: '+'; flex: none; font-family: var(--font-sans); }
-.sv-source-quote[open] > summary::before { content: '−'; }
-.sv-source-quote__preview {
-  min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.sv-source-quote__expanded { display: none; font-family: var(--font-sans); font-size: .8rem; }
-.sv-source-quote[open] .sv-source-quote__preview { display: none; }
-.sv-source-quote[open] .sv-source-quote__expanded { display: inline; }
-.sv-source-quote > summary:hover { color: var(--accent); }
-.sv-source-quote > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.sv-references .sv-source-quote blockquote { margin-top: .65rem; border: 0; padding: 0; }
 
 .sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
 .sv-row-detail__hint + .sv-comparison__rows { margin-top: 0; }
@@ -3109,13 +2446,11 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   text-transform: uppercase;
 }
 
-.sv-observations-group > summary, .sv-subtleties-group > summary, .sv-method-changes-group > summary {
+ .sv-method-changes-group > summary {
   cursor: pointer;
   font: 600 15px/1.5 var(--font-sans);
   padding: 12px 0;
 }
-.sv-observations-count { color: var(--muted); font-weight: 400; margin-left: 6px; }
-.sv-observation-number { font: 600 12px var(--font-sans); margin-right: 6px; }
 .sv-chart__annotation-key { margin: 6px 0; font: 13px/1.5 var(--font-sans); color: #666; }
 
 .sv-comparison {

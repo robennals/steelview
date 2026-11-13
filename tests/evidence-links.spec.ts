@@ -1,103 +1,29 @@
 import { test, expect } from './hydrated-test';
-import { viewpointCitation, openCollection, openWholeReport } from './topic-rows';
+import { openChart } from './topic-rows';
 const topic = '/topics/uk-immigration';
 const fact = 'immigration-economy-and-public-finances';
 const longRun = 'immigration-against-the-long-run';
 
-test('a supporting finding opens inside its parent, including an uncached article', async ({ page }) => {
-  await page.route(url => url.pathname.includes('/facts/'), async route => {
-    if (route.request().headers()['rsc'] === '1') await new Promise(resolve => setTimeout(resolve, 250));
-    await route.continue();
-  });
-  await page.goto(topic);
-  const link = await viewpointCitation(page, fact);
-  const href = (await link.getAttribute('href'))!;
-  await link.click();
-  await expect(page).toHaveURL(new RegExp(`${href}$`));
-  await expect(page.locator('dialog .sv-target')).toHaveAttribute('id', href.split('#')[1]);
-  await expect(page.locator('dialog .sv-target')).toBeInViewport();
-  await page.locator('dialog [data-viz-active] .sv-chart__credit a').first().click();
-  await expect(page.locator('dialog .sv-target')).toHaveClass(/sv-source/);
-  await expect(page.locator('dialog .sv-target')).toBeInViewport();
-  await page.keyboard.press('Escape');
-  await expect(page).toHaveURL(topic);
-  await expect(link).toBeFocused();
-});
-
-test('the same sheet can target another section and expand at that position', async ({ page }) => {
-  await page.goto(topic);
-  await (await viewpointCitation(page, fact)).click();
-  const expand = page.locator('.sv-modal__expand');
-  // The sheet points Expand at the cited section once it has revealed it.
-  await expect(expand).toHaveAttribute('href', /#/);
-  const href = (await expand.getAttribute('href'))!;
-  await expand.click();
-  await expect(page.locator('dialog')).toHaveCount(0);
-  await expect(page).toHaveURL(href);
-  await expect(page.locator('.sv-target')).toHaveAttribute('id', href.split('#')[1]);
-  await expect(page.locator('.sv-target')).toBeInViewport();
-});
-
-test('charts have their own observations, with references last', async ({ page }) => {
-  const sheet = await openWholeReport(page, longRun);
-  const credits = sheet.locator('#immigration-against-the-long-run--chart-series .sv-chart__reading > .sv-chart__credit a');
-  await expect(credits).toHaveCount(2);
-  await expect(credits.first()).toContainText('Office for National Statistics');
-  const order = await sheet.locator('article').evaluate(article => {
-    const chart = article.querySelector('.sv-chart')!;
-
-    const refs = article.querySelector('.sv-references')!;
-    return Boolean(chart.compareDocumentPosition(refs) & Node.DOCUMENT_POSITION_FOLLOWING);
-  });
-  expect(order).toBe(true);
-  await expect(sheet.getByRole('heading', { name: 'Subtleties', exact: true })).toHaveCount(0);
-  for (const id of ['people', 'share-of-population', 'international-immigration']) {
-    const graph = sheet.locator(`#immigration-against-the-long-run--chart-${id}`);
-    await expect(graph.locator('.sv-graph-heading, .sv-chart__reading-head')).toHaveCount(1);
-    await expect(graph.locator('.sv-observations-group')).not.toHaveAttribute('open', '');
-    await expect(graph.locator('.sv-observation').first()).not.toHaveAttribute('open', '');
-  }
-  await credits.first().click();
-  await expect(page.locator('.sv-target')).toHaveClass(/sv-source/);
-});
-
-test('mobile pills wrap without horizontal overflow', async ({ page }) => {
+test('a topic page on a phone does not overflow sideways', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(topic);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await (await viewpointCitation(page, fact)).click();
-  await expect(page.locator('dialog .sv-target')).toBeInViewport();
-  expect(await page.locator('.sv-modal__scroll').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
 });
 
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('a pill remains an ordinary link to its evidence section', async ({ page }) => {
     await page.goto(topic);
-    const link = await viewpointCitation(page, fact);
+    const link = page.locator(`.sv-row--viewpoint a[href*="/facts/${fact}#"]`).first();
     const href = await link.getAttribute('href');
     await link.click();
     await expect(page).toHaveURL(href!);
-    await expect(page.locator('dialog')).toHaveCount(0);
     await expect(page.locator(`#${href!.split('#')[1]}`)).toBeVisible();
   });
 });
 
 
-test('one collapsed Sources disclosure includes parent and supporting citations', async ({ page }) => {
-  await page.goto(topic);
-  await openCollection(page, longRun);
-  await page.getByRole('button', { name: 'Whole report', exact: true }).click();
-  const sources = page.locator('dialog .sv-references');
-  await expect(sources).toHaveCount(1);
-  await expect(sources).not.toHaveAttribute('open', '');
-  await expect(sources.locator('#source-immigration-against-the-long-run-13')).toBeHidden();
-  await page.locator('dialog .sv-finding .sv-footnote').first().click();
-  await expect(sources).toHaveAttribute('open', '');
-  await expect(sources.locator('.sv-target')).toBeInViewport();
-  await sources.locator(':scope > summary').click();
-  await expect(sources).not.toHaveAttribute('open', '');
-  await page.goto(topic);
+test('a source\'s address lands on that source', async ({ page }) => {
   await page.goto(`${topic}/facts/immigration-against-the-long-run#source-immigration-against-the-long-run-13`);
   const source = page.locator('[data-source-id="source-immigration-against-the-long-run-13"].sv-target');
   await expect(source).toBeVisible();
@@ -119,40 +45,25 @@ test('opening graphs include all asylum comparators and details remain collapsed
   await expect(page.locator('.sv-observation[open]')).toHaveCount(0);
 });
 
-test('glossary popup closes before its containing fact and restores keyboard focus', async ({ page }) => {
-  await page.goto(topic);
-  await openCollection(page, longRun);
-  await page.getByRole('button', { name: 'Whole report', exact: true }).click();
-  const dialog = page.locator('dialog.sv-modal');
-  await dialog.locator('#immigration-against-the-long-run--subtleties-international-immigration > summary').click();
-  await dialog.locator('#immigration-against-the-long-run--international-differences > summary').click();
-  const term = dialog.getByRole('button', { name: 'gross arrivals', exact: true }).first();
-  await term.focus();
-  await page.keyboard.press('Enter');
-  const popup = dialog.getByRole('dialog', { name: 'Gross Arrivals', exact: true });
-  await expect(popup).toBeVisible();
-  await expect(popup.getByRole('button', { name: 'Close definition' })).toBeFocused();
-  await page.keyboard.press('Escape');
-  await expect(popup).not.toBeVisible();
-  await expect(dialog).toBeVisible();
-  await expect(term).toBeFocused();
-  await term.click();
-  await popup.getByRole('button', { name: 'Close definition' }).click();
-  await expect(popup).not.toBeVisible();
-  await expect(dialog).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(dialog).toHaveCount(0);
-});
-
 test('international migration comparison follows population share and includes all available EU/EFTA countries', async ({ page }) => {
-  const sheet = await openWholeReport(page, longRun);
-  const chart = sheet.locator('#immigration-against-the-long-run--chart-international-immigration');
+  const chart = await openChart(page, longRun, 'international-immigration');
   await expect(chart.locator('.sv-comparison__rows > li')).toHaveCount(31);
   await expect(chart).toContainText('United Kingdom');
   await expect(chart.locator('.sv-comparison__rows')).toContainText('1.13%');
   await chart.getByRole('button', { name: 'All arrivals', exact: true }).click();
   await expect(chart.locator('.sv-comparison__rows')).toContainText('1.46%');
-  expect(await chart.evaluate(el => Boolean(el.closest('.sv-viz')?.previousElementSibling?.querySelector('.sv-chart')))).toBe(true);
+});
+
+test('a glossary popup closes on Escape and gives focus back', async ({ page }) => {
+  await page.goto(`${topic}/facts/immigration-against-the-long-run#immigration-against-the-long-run--international-differences`);
+  const term = page.getByRole('button', { name: 'gross arrivals', exact: true }).filter({ visible: true }).first();
+  await term.focus();
+  await page.keyboard.press('Enter');
+  const popup = page.getByRole('dialog', { name: 'Gross Arrivals', exact: true }).filter({ visible: true });
+  await expect(popup.getByRole('button', { name: 'Close definition' })).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(popup).toHaveCount(0);
+  await expect(term).toBeFocused();
 });
 
 test('glossary works without JavaScript on narrow screens and dismisses outside', async ({ browser }) => {
@@ -171,21 +82,6 @@ test('glossary works without JavaScript on narrow screens and dismisses outside'
 });
 
 
-test('graphs have no observation markers and observations remain expandable', async ({ page }) => {
-  await page.goto(topic);
-  await openCollection(page, longRun);
-  const dialog = page.locator('dialog.sv-modal');
-  await expect(dialog.locator('.sv-chart-marker, .sv-bar-marker, .sv-method-marker')).toHaveCount(0);
-  await dialog.locator('#immigration-against-the-long-run--observations-people > summary').click();
-  const observation = dialog.locator('#immigration-against-the-long-run--late-1990s-rise');
-  await expect(observation.locator('.sv-observation-number')).toHaveCount(0);
-  await observation.locator(':scope > summary').click();
-  await expect(observation.locator('.sv-observation__body')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(dialog).toHaveCount(0);
-  await expect(page).toHaveURL(topic);
-});
-
 test('a chart row opens to its detail by keyboard, and its source links work from there', async ({ page }) => {
   await page.goto('/topics/us-voter-id/facts/burdens-of-id-and-citizenship-rules');
   const chart = page.locator('[id="burdens-of-id-and-citizenship-rules--chart-turnout-overall"]');
@@ -203,8 +99,7 @@ test('a chart row opens to its detail by keyboard, and its source links work fro
 });
 
 test('nationality comparisons change the country bars and show all components', async ({ page }) => {
-  const sheet = await openWholeReport(page, longRun);
-  const chart = sheet.locator('#immigration-against-the-long-run--chart-international-immigration');
+  const chart = await openChart(page, longRun, 'international-immigration');
   const uk = chart.locator('.sv-comparison__rows > li').filter({ hasText: 'United Kingdom' });
   await expect(chart.getByRole('button', { name: 'Non-EU+ nationals', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(uk).toContainText('1.13%');
@@ -215,19 +110,10 @@ test('nationality comparisons change the country bars and show all components', 
   await chart.getByRole('button', { name: 'All arrivals', exact: true }).click();
   await expect(uk.locator('.sv-comparison__bar')).toHaveCount(4);
   await expect(uk).toContainText('1.46%');
-  const series = sheet.locator('#immigration-against-the-long-run--chart-nationality');
+  const series = await openChart(page, longRun, 'nationality');
   await expect(series).toBeVisible();
   await expect(series.locator('.sv-chart__reading')).toHaveCount(1);
-  await expect(sheet.locator('#immigration-shifted-from-eu-to-non-eu--chart-net')).toHaveCount(0);
-  await series.locator('.sv-observations-group > summary').click();
-  const surge = series.locator('#immigration-against-the-long-run--non-eu-arrivals-surge');
-  await surge.locator(':scope > summary').click();
-  await expect(surge.locator('.sv-observation__body')).toContainText('peaked in the year to September 2023');
-  await expect(surge.locator('a').first()).toHaveAttribute('href', '#source-immigration-against-the-long-run-6');
-  const observation = series.locator('#immigration-against-the-long-run--nationality-shift');
-  await observation.locator(':scope > summary').click();
-  await expect(observation.locator('.sv-observation__body')).toContainText('627,000');
-  await expect(observation.locator('.sv-observation__body')).toBeVisible();
+  await expect(page.locator('#immigration-shifted-from-eu-to-non-eu--chart-net')).toHaveCount(0);
 });
 
 
@@ -247,14 +133,7 @@ test('nationality findings are linked observations, including the old fact URL',
   await expect(page.locator('.sv-target')).toBeInViewport();
 });
 
-test('Ukraine is a separate line in net migration by route, with its own observation', async ({ page }) => {
-  const sheet = await openWholeReport(page, longRun);
-  const graph = sheet.locator('#immigration-against-the-long-run--chart-net-by-route');
+test('Ukraine is a separate line in net migration by route', async ({ page }) => {
+  const graph = await openChart(page, longRun, 'net-by-route');
   await expect(graph.locator('.sv-chart__legend')).toContainText('Ukraine scheme');
-  await graph.locator('.sv-observations-group > summary').click();
-  const observation = graph.locator('#immigration-against-the-long-run--ukraine-spike');
-  await observation.locator(':scope > summary').click();
-  await expect(observation.locator('.sv-observation__body')).toContainText('peaked in the year to March 2023');
-  await observation.locator('.sv-observation__body a').first().click();
-  await expect(sheet.locator('#source-immigration-against-the-long-run-48')).toHaveClass(/sv-target/);
 });

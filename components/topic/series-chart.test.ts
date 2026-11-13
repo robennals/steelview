@@ -188,14 +188,14 @@ test('every marker sits on its own dotted line, drawn in each shape of the plot'
 });
 
 test('a measurement change credits the series source, and has no Method Changes entry', async () => {
-  const { FactCharts } = await import('./fact-figures');
+  const { PanelChart } = await import('./fact-figures');
   const fact = { id: 'oil', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: twoPanelSeries() };
-  const html = renderToStaticMarkup(createElement(FactCharts, { fact }));
+  const slide = { fact, chart: 'series', reading: fact.series.readings[0].id, label: fact.series.title, href: '' };
+  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic', facts: [fact] } }));
   assert.doesNotMatch(html, /<summary>Method Changes<\/summary>/);
-  // Citation 2: the fact's one source, then the series source.
   const card = html.match(/data-kind="method" data-marker="2">[\s\S]*?<\/button><\/div>/)?.[0] ?? '';
   assert.match(card, /The benchmark changed\./);
-  assert.match(card, /#source-oil-2/);
+  assert.match(card, new RegExp(fact.series.source.url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 });
 
 test('a focus window marks only what is inside it, and says how many are not', () => {

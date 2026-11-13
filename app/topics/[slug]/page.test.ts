@@ -208,8 +208,8 @@ test('a crux is a row: its tension closed, and what each side holds under its sh
   assert.match(html, /sv-tag">Tension between principles</);
   assert.match(html, /sv-row__title">Speed and care</);
   assert.match(html, /sv-row__subtitle">Both matter, and hurrying costs care\.</);
-  assert.match(html, /<a href="#viewpoint-one">One view<\/a>/);
-  assert.match(html, /<a href="#viewpoint-two">Two view<\/a>/);
+  assert.match(html, /<dt>One view<\/dt>/);
+  assert.match(html, /<dt>Two view<\/dt>/);
   assert.match(html, /<dd>Soon\.<\/dd>/);
 });
 
@@ -288,7 +288,6 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
   // Only the headline fact is a row in the list — a fact that supports
   // another is not, whatever the reader has or hasn't clicked yet.
   assert.equal(html.match(/class="sv-row sv-row--walk sv-row--data"/g)?.length, 1);
-  assert.equal(html.match(/class="sv-item sv-subfact"/g), null);
   // Only a row can be opened by the way back from a report's own page, so the
   // headline fact alone is a `#fact-<id>` anchor here.
   assert.equal(html.match(/id="fact-/g)?.length, 1);

@@ -59,8 +59,7 @@ function citedFactId(href: string): string | undefined {
  * `/topics/<slug>/facts/<id>` — the fact's canonical address — so a citation
  * is an ordinary link that a crawler can follow, an importer can resolve and a
  * reader with no JavaScript can click. `class="sv-cite"` carries the citation
- * treatment; `data-fact-id` names the fact so the client router can turn the
- * click into a modal without re-parsing the href.
+ * treatment.
  */
 function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes }: { slug: string; facts: Fact[]; citationsAsText: boolean; footnotes: boolean }) {
   return (tree: Root) => {
@@ -92,7 +91,6 @@ function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes }: { 
       const data = (node.data ??= {});
       const props = ((data as { hProperties?: Record<string, unknown> }).hProperties ??= {});
       props.className = ['sv-cite'];
-      props['data-fact-id'] = factId;
     });
   };
 }
