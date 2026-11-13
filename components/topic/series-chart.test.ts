@@ -169,27 +169,42 @@ function twoPanelSeries(): Series {
   return s;
 }
 
-test('a multi-panel series shows its event key once, after the last panel', () => {
+test('every panel carries its own cards, numbering events and measurement changes together by date', () => {
   const html = renderChart(twoPanelSeries());
-  const [first, last] = html.split('<section class="sv-chart__reading"').slice(1);
-  assert.doesNotMatch(first, /sv-event-strip__key/);
-  assert.match(first, /class="sv-event-strip__marker" href="#sv-event-strip-oil--index-events-1"/);
-  assert.equal((last.match(/<ol class="sv-event-strip__key">/g) ?? []).length, 1);
-  assert.match(first, /listed after the last graph/);
-  // Both panels point their break line at the one Method Changes entry, under the first.
-  assert.match(first, /href="#oil--price-method-1988"/);
-  assert.match(last, /href="#oil--price-method-1988"/);
-  assert.match(last, /explained in Method Changes below the first graph/);
+  for (const panel of html.split('<section class="sv-chart__reading"').slice(1)) {
+    const cards = [...panel.matchAll(/popover="auto" role="dialog" aria-label="([^"]+)"/g)].map(m => m[1]);
+    assert.deepEqual(cards, ['Event: Cartel meets', 'Measurement change: New benchmark', 'Event: Pipeline opens']);
+  }
 });
 
-test('Method Changes lists each break once, under the first panel, citing the series source', async () => {
+test('every marker sits on its own dotted line, drawn in each shape of the plot', () => {
+  const html = renderChart(twoPanelSeries());
+  const [first] = html.split('<section class="sv-chart__reading"').slice(1);
+  // One line per marker in each of the two shapes.
+  assert.equal(first.match(/<line class="sv-chart__marker-line"/g)?.length, 6);
+  assert.equal(first.match(/<line class="sv-chart__marker-line" data-kind="method"/g)?.length, 2);
+  assert.doesNotMatch(first, /class="sv-chart__break"/);
+  assert.equal(first.match(/<button[^>]*class="sv-markers__marker"/g)?.length, 6);
+});
+
+test('a measurement change credits the series source, and has no Method Changes entry', async () => {
   const { FactCharts } = await import('./fact-figures');
   const fact = { id: 'oil', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: twoPanelSeries() };
   const html = renderToStaticMarkup(createElement(FactCharts, { fact }));
-  assert.equal((html.match(/<summary>Method Changes<\/summary>/g) ?? []).length, 1);
-  assert.equal((html.match(/id="oil--price-method-1988"/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /<summary>Method Changes<\/summary>/);
   // Citation 2: the fact's one source, then the series source.
-  assert.match(html, /The benchmark changed\. <a href="#source-oil-2">\[2\]<\/a>/);
-  const [first] = html.split('<section class="sv-chart__reading"').slice(1);
-  assert.match(first, /Method Changes/);
+  const card = html.match(/data-kind="method" data-marker="2">[\s\S]*?<\/button><\/div>/)?.[0] ?? '';
+  assert.match(card, /The benchmark changed\./);
+  assert.match(card, /#source-oil-2/);
+});
+
+test('a focus window marks only what is inside it, and says how many are not', () => {
+  const s = twoPanelSeries();
+  s.readings = [s.readings[0]];
+  s.focus = { from: '1988', to: '1990', label: 'Recent' };
+  const html = renderChart(s);
+  const view = (name: string) => html.split(`data-focus-view="${name}"`)[1];
+  assert.equal(view('window').split('data-focus-view')[0].match(/popover="auto"/g)?.length, 2);
+  assert.match(view('window'), /1 more marked outside this period, shown under Full range\./);
+  assert.equal(view('full').match(/popover="auto"/g)?.length, 3);
 });

@@ -101,7 +101,7 @@ function Plot({
   const byId = new Map(points.map(point => [point.id, point]));
   return (
     <svg
-      className="sv-chart__svg sv-scatter__svg"
+      className="sv-chart__svg sv-chart__variant sv-scatter__svg"
       data-variant={variant}
       viewBox={`0 0 ${g.width} ${g.height}`}
       role="group"

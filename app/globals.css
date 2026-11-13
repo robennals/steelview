@@ -61,6 +61,8 @@
   --sv-series-6: #006d7c;
   --sv-series-7: #8a5a00;
   --sv-series-8: #5d6b31;
+  /* A measurement change, not an event: an amber no chart line reaches first. */
+  --sv-method-change: var(--sv-series-7);
 
   --measure: 34rem;
   --wrap: 44rem;
@@ -944,16 +946,16 @@
     overflow: visible;
   }
 
-  .sv-chart__svg[data-variant="wide"] {
+  .sv-chart__variant[data-variant="wide"] {
     display: none;
   }
 
   @media (min-width: 34rem) {
-    .sv-chart__svg[data-variant="narrow"] {
+    .sv-chart__variant[data-variant="narrow"] {
       display: none;
     }
 
-    .sv-chart__svg[data-variant="wide"] {
+    .sv-chart__variant[data-variant="wide"] {
       display: block;
     }
   }
@@ -961,11 +963,11 @@
   /* On paper there is no media query and no room to choose: print the wide
      plot, and print the numbers with it. */
   @media print {
-    .sv-chart__svg[data-variant="narrow"] {
+    .sv-chart__variant[data-variant="narrow"] {
       display: none;
     }
 
-    .sv-chart__svg[data-variant="wide"] {
+    .sv-chart__variant[data-variant="wide"] {
       display: block;
     }
 
@@ -3125,20 +3127,20 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    so it fills the height as well as the width. Each breakpoint sits between
    the two shapes' width-to-height ratios: 4.0 and 3.16, then 1.78 and 1.33. */
 .sv-chart[data-preview] .sv-chart__plot { flex: 1; min-height: 9.5rem; container-type: size; }
-.sv-chart[data-preview] .sv-chart__svg { display: none; width: 100%; height: 100%; }
-.sv-chart[data-preview] .sv-chart__svg:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
+.sv-chart[data-preview] .sv-chart__variant { display: none; width: 100%; height: 100%; }
+.sv-chart[data-preview] .sv-chart__variant:is([data-variant="preview-wide"], [data-variant="preview-medium"]) { display: block; }
 @container (aspect-ratio < 3.55) {
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview"] { display: block; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview"] { display: block; }
 }
 @container (aspect-ratio < 1.54) {
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-medium"] { display: none; }
-  .sv-chart[data-preview] .sv-chart__svg[data-variant="preview-tall"] { display: block; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview-medium"] { display: none; }
+  .sv-chart[data-preview] .sv-chart__variant[data-variant="preview-tall"] { display: block; }
 }
 /* A data panel's full chart: the graph takes whatever its controls and notes
    leave, at the nearest shape, as a preview does. Its ratios are 4.0, 3.16 and 2.5. */
 .sv-chart[data-panel-chart] { display: flex; flex: 1 1 auto; flex-direction: column; margin: 0; }
-.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { display: flex; flex: 1 1 auto; flex-direction: column; }
+.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]:not([hidden])) { display: flex; flex: 1 1 auto; flex-direction: column; }
 .sv-chart[data-panel-chart] .sv-graph-heading { margin: 0 0 0.2rem; font-size: 1.1rem; }
 .sv-chart[data-panel-chart] .sv-chart__view-controls { align-self: flex-start; }
 /* The notes under the graph stay small, so the graph has the room. */
@@ -3182,24 +3184,34 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-panel-chart] .sv-method-changes-group { margin: 0.2rem 0 0; padding: 0; }
 .sv-chart[data-panel-chart] .sv-method-changes-group > summary { font-size: 0.85rem; }
 .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 0; min-height: 12rem; container-type: size; }
-.sv-chart[data-panel-chart] .sv-chart__svg { display: none; width: 100%; height: 100%; }
-.sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: block; }
+.sv-chart[data-panel-chart] .sv-chart__variant { display: none; width: 100%; height: 100%; }
+/* A marked plot keeps exactly the shape it was drawn at, with its markers
+   under it, so each marker stays under its date whatever the space. */
+.sv-chart[data-panel-chart] .sv-chart__frame {
+  /* The second term is the plot's own minimum: at that height a browser can
+     report the container as having none. */
+  width: min(100cqw, calc((max(100cqh, 12rem) - var(--sv-lane-levels) * 1.6rem) * var(--sv-frame-ratio)));
+  height: auto;
+  margin-inline: auto;
+}
+.sv-chart[data-panel-chart] .sv-chart__frame > .sv-chart__svg { height: auto; }
+.sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: block; }
 /* Rows of bars spread into spare height, each up to --sv-row-room from the next,
    and any height beyond that stays under the chart. A row whose label wraps
    can need more than that, so the rows are never held under their own height. */
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
 @container (aspect-ratio < 3.55) {
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-wide"] { display: none; }
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: block; }
 }
 @container (aspect-ratio < 2.8) {
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview"] { display: none; }
-  .sv-chart[data-panel-chart] .sv-chart__svg[data-variant="preview-broad"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-broad"] { display: block; }
 }
 @media (max-width: 40rem) {
-  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg { display: none; }
-  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
+  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant { display: none; }
+  .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
   /* A long title takes its height from the graph, not from the panel's edge. */
   .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
   .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 16rem; min-height: 12rem; }
@@ -3240,8 +3252,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* On a phone every shape's type would shrink too far, so the narrow plot,
    drawn for that width, is used whatever the space. */
 @media (max-width: 40rem) {
-  .sv-chart[data-preview] .sv-chart__plot .sv-chart__svg { display: none; }
-  .sv-chart[data-preview] .sv-chart__plot .sv-chart__svg[data-variant="narrow"] { display: block; }
+  .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant { display: none; }
+  .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
 }
 .sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
@@ -3362,15 +3374,15 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview .sv-periods__bar-label { overflow: hidden; text-overflow: ellipsis; }
 .sv-chart__preview .sv-periods__row-label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .sv-chart__preview .sv-periods__line--events { padding-top: .2rem; }
-.sv-chart__preview .sv-periods__line--events .sv-event-strip__lane { --sv-strip-step: 1.05rem; padding-bottom: .1rem; }
-.sv-chart__preview .sv-event-strip__marker { width: 1rem; height: 1rem; font-size: .55rem; }
+.sv-chart__preview .sv-periods__line--events .sv-markers { --sv-marker-step: 1.05rem; margin-bottom: .1rem; }
+.sv-chart__preview .sv-markers__marker { min-width: 1rem; height: 1rem; padding: 0 .2rem; font-size: .55rem; }
 .sv-periods[data-compact] .sv-periods__row,
 .sv-periods[data-compact] .sv-periods__row:first-child { padding: 0; border: 0; align-items: center; }
 .sv-periods[data-compact] .sv-periods__track { height: .5rem; }
 .sv-periods[data-compact] .sv-periods__legend { margin-bottom: .15rem; }
 .sv-periods[data-compact] .sv-periods__line--events { padding-top: 0; }
-.sv-periods[data-compact] .sv-event-strip__lane { --sv-strip-step: .85rem; }
-.sv-periods[data-compact] .sv-event-strip__marker { width: .85rem; height: .85rem; font-size: .5rem; }
+.sv-periods[data-compact] .sv-markers { --sv-marker-step: .85rem; }
+.sv-periods[data-compact] .sv-markers__marker { min-width: .85rem; height: .85rem; padding: 0 .15rem; font-size: .5rem; }
 .sv-periods[data-compact] .sv-periods__axis { height: 1rem; }
 .sv-periods[data-compact] .sv-periods__tick { top: .05rem; }
 .sv-periods[data-compact] .sv-periods__row-label { padding-top: 0; font-size: .6rem; line-height: 1.1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
