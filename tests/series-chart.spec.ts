@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { openCollection } from './topic-rows';
+import { openChart } from './topic-rows';
 
 // Depends on authored uk-immigration content: the headline fact
 // `immigration-against-the-long-run` carries the ONS 1964–2025 series, with
@@ -9,7 +9,6 @@ import { openCollection } from './topic-rows';
 const TOPIC = '/topics/uk-immigration';
 const factUrl = (id: string) => `${TOPIC}/facts/${id}`;
 const HEADLINE = 'immigration-against-the-long-run';
-const dialog = 'dialog.sv-modal';
 
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
@@ -48,19 +47,8 @@ test.describe('with JavaScript disabled', () => {
   });
 });
 
-test('the chart draws both readings, and marks the breaks rather than smoothing them', async ({
-  page,
-}) => {
-  await page.goto(TOPIC);
-  await openCollection(page, HEADLINE);
-  const chart = page.locator(`${dialog} .sv-chart`).first();
-
-  await expect(chart.locator('.sv-chart__reading')).toHaveCount(2);
-  await expect(
-    chart.getByRole('heading', { name: 'As a Share of the UK Population' })
-  ).toBeVisible();
-  await expect(chart.getByRole('heading', { name: 'UK Migration Over Time' })).toBeVisible();
-  await expect(chart.getByRole('heading', { name: 'UK immigration, emigration and net migration, 1964–2025' })).toBeVisible();
+test('the chart marks the breaks rather than smoothing them', async ({ page }) => {
+  const chart = await openChart(page, HEADLINE, 'people');
   await expect(chart.locator('.sv-chart__range')).toContainText('Full published range: 1964–2025');
 
   // Three definitional breaks, each marked on the plot as a measurement change.
@@ -68,20 +56,6 @@ test('the chart draws both readings, and marks the breaks rather than smoothing 
   await expect(visiblePlot.locator('.sv-chart__marker-line[data-kind="method"]')).toHaveCount(3);
   // A line crossing a break is cut and bridged, never drawn straight through.
   await expect(visiblePlot.locator('.sv-chart__bridge').first()).toBeAttached();
-
-  // A chart is a factual claim, so it carries its own quoted source.
-  await expect(page.locator(`${dialog} #source-${HEADLINE}-46 blockquote`)).toContainText(
-    'comparisons between pre-June 2021 and post-June 2021 estimates should be treated with caution'
-  );
-});
-
-test('closing the panel takes the chart off the page with it', async ({ page }) => {
-  await page.goto(TOPIC);
-  await openCollection(page, HEADLINE);
-  await expect(page.locator(`${dialog} .sv-chart`).first()).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(page.locator(`${dialog} .sv-chart`)).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
 });
 
 // Depends on authored us-voter-id content: the fact

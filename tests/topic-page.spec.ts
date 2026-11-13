@@ -1,6 +1,6 @@
 import type { Locator, Page } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { headCorner, openDataRow, openTab, openViewpoint, viewpointCitation } from './topic-rows';
+import { headCorner, openDataRow, openTab, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -164,16 +164,18 @@ test('a data panel opened from a page already at its observation still closes', 
   await expect(page.locator('dialog[open]')).toHaveCount(0);
 });
 
-test('closing a fact keeps the tab that was showing', async ({ page }) => {
+// The whole head of a row toggles it, not just its title: a click at the
+// bottom edge, away from any text, must open it.
+test('the whole row head opens the row, not just the title', async ({ page }) => {
   await page.goto(DATA);
-  const citation = await viewpointCitation(page, 'work-and-study-routes');
-  await citation.click();
-  await expect(page.locator('dialog.sv-modal')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
-  await expect(page).toHaveURL(new RegExp(`${DATA}$`));
-  await expect(citation).toBeFocused();
-  await expect(page.locator('.sv-row--data').first()).toBeVisible();
+  const row = page.locator('.sv-row--data').first();
+  await row.scrollIntoViewIfNeeded();
+  const box = await row.locator('.sv-row__head').boundingBox();
+  if (!box) throw new Error('row head has no layout box');
+
+  await page.mouse.click(box.x + box.width / 2, box.y + box.height - 2);
+
+  await expect(row.locator('.sv-row__toggle')).toHaveAttribute('aria-expanded', 'true');
 });
 
 /** Where the page stands on each frame for a moment, once `act` has run. */

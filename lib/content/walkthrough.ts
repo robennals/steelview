@@ -202,7 +202,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
   return rendered;
 }
 
-/** The title of a report's last slide, and of the same list in a sheet. */
+/** The title of a report's last slide. */
 export const UNKNOWNS_LABEL = "What we don't know yet";
 
 /** One step of a data collection: a chart with its observations rendered, ready to step through, or its last step, what the report cannot yet say. */
@@ -224,7 +224,7 @@ export type DataStep = {
 };
 
 /**
- * Each chart's addresses: its own, the view a fact sheet shows it in, its
+ * Each chart's addresses: its own, the view it was once shown alone in, its
  * Observations and Subtleties groups and each old anchor it stands in for
  * (`replaces`, `movedAnchors`). An address the readings of one series share
  * belongs to the first of them, as `--observations` and `--subtleties`, a group

@@ -18,8 +18,8 @@ import type { Series, SeriesLine, SeriesPoint, SeriesReading } from '@/lib/conte
  * Two size variants, both rendered, one shown by a CSS media query.
  *
  * An SVG with a `viewBox` scales its *text* along with everything else, so a
- * single chart tuned for a 660px desktop panel arrives at 7px type in a 390px
- * modal, and one tuned for 390px arrives at cartoon size on desktop. Rendering
+ * single chart tuned for a 660px desktop panel arrives at 7px type on a 390px
+ * phone, and one tuned for 390px arrives at cartoon size on desktop. Rendering
  * both and letting CSS choose costs two path strings and keeps the labels at a
  * readable size at either end. The hidden one is `display: none`, so it is out
  * of the accessibility tree rather than duplicated in it.

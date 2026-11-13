@@ -1,22 +1,13 @@
 import { listTopicSlugs, loadTopic } from './load';
-import { renderMarkdown } from './markdown';
 import { supportingFactsByParent } from './rank-facts';
 import type { Fact, Topic } from './types';
 
-/** A fact and its rendered markdown body. */
-export type BodiedFact = { fact: Fact; bodyHtml: string };
-
-/**
- * What both renderings of a fact share: its own page and the modal that
- * intercepts it. Loaded once, here, so the two cannot disagree about what a
- * fact is.
- */
+/** What a report's own page shows around its data panel. */
 export type FactPageData = {
   topic: Topic;
   fact: Fact;
-  bodyHtml: string;
-  /** Related data collections: grouped details and contextual cross-links. */
-  supporting: BodiedFact[];
+  /** Related data collections, each linked from the page. */
+  supporting: Fact[];
   /** The broader fact this detail is grouped with, when it has one. */
   parent?: Fact;
 };
@@ -27,18 +18,10 @@ export async function loadFactPage(slug: string, factId: string): Promise<FactPa
   if (!fact) return null;
 
   const relatedIds = new Set([...(supportingFactsByParent(topic.facts).get(fact.id) ?? []).map(child => child.id), ...(fact.relatedFacts ?? [])]);
-  const supporting = await Promise.all(
-    topic.facts.filter(child => relatedIds.has(child.id)).map(async (child) => ({
-      fact: child,
-      bodyHtml: await renderMarkdown(child.body, slug, topic.facts),
-    }))
-  );
-
   return {
     topic,
     fact,
-    bodyHtml: await renderMarkdown(fact.body, slug, topic.facts),
-    supporting,
+    supporting: topic.facts.filter(child => relatedIds.has(child.id)),
     parent: fact.supports ? topic.facts.find((f) => f.id === fact.supports) : undefined,
   };
 }

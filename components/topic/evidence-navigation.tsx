@@ -7,8 +7,7 @@ import { decodeHash } from './open-details';
 
 /**
  * Fragments on a report's own page: a chart or observation of its data panel,
- * or a section of the report under it, nested evidence included. A sheet has
- * no need of this: FactModal handles every in-page link there.
+ * or a section of the report under it.
  *
  * The hash goes through state so that an observation is showing by the time
  * it is revealed: its cycler follows `ShownObservation` as it renders.

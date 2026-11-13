@@ -288,7 +288,6 @@ test('a supporting fact is listed under its parent, not as a top-level row', () 
   // Only the headline fact is a row in the list — a fact that supports
   // another is not, whatever the reader has or hasn't clicked yet.
   assert.equal(html.match(/class="sv-row sv-row--walk sv-row--data"/g)?.length, 1);
-  assert.equal(html.match(/class="sv-item sv-subfact"/g), null);
   // Only a row can be opened by the way back from a report's own page, so the
   // headline fact alone is a `#fact-<id>` anchor here.
   assert.equal(html.match(/id="fact-/g)?.length, 1);

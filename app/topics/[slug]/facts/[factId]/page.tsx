@@ -44,10 +44,9 @@ export async function generateMetadata({
 
 /**
  * A report at its own address: its data panel, the one a topic page opens in a
- * row, with a way back to the topic and the rest of the report under it.
+ * row, with a way back to the topic and links to related reports under it.
  *
- * The sheet over a topic page is an interception of this route. Both kinds of
- * fact get a page — a supporting fact is cited as readily as a headline one —
+ * Both kinds of fact get a page — a supporting fact is cited as readily as a headline one —
  * and a supporting fact's page opens by naming the claim it is evidence for,
  * because that claim is what makes the detail mean anything.
  *
@@ -63,7 +62,7 @@ export default async function FactPage({
   const { slug, factId } = await params;
   const data = await loadFactPage(slug, factId);
   if (!data) notFound();
-  const { topic, fact, bodyHtml, supporting, parent } = data;
+  const { topic, fact, supporting, parent } = data;
   const walkthroughs = await renderDataWalkthroughs(topic, [fact], { citationsAsText: false, footnotes: true });
   const steps = walkthroughs.get(fact.id) ?? [];
   const charts = panelCharts(fact, { slug, asOf: topic.lastUpdated, facts: topic.facts }, { addressed: true });
@@ -73,14 +72,11 @@ export default async function FactPage({
       <FactJsonLd slug={slug} topic={topic} fact={fact} />
       <BackToTopic slug={slug} topicTitle={topic.title} fact={fact} />
       <FactArticle
-        variant="page"
         panel={steps.length > 0 && <DataPanel slug={slug} fact={fact} steps={steps} charts={charts} />}
         slug={slug}
         fact={fact}
-        bodyHtml={bodyHtml}
         supporting={supporting}
         parent={parent}
-        topic={topic}
       />
     </main>
   );
