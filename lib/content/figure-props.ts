@@ -1,5 +1,5 @@
 import type * as R from '@/components/report';
-import { stripEvents } from '@/components/topic/series-chart';
+import { eventMarkers } from '@/components/topic/series-chart';
 import { aboutThisDataNote } from './figure-text';
 import { mapAreas } from './map-presets';
 import { factSources, figureCitations } from './sources';
@@ -165,7 +165,7 @@ export function periodTimelineProps(f: FigureOf<'periodTimeline'>, c: FigureCont
       label: row.label,
       periods: row.periods.map(period => ({ from: period.from, to: period.to, label: period.label, category: period.category, sources: period.sources.map(c.credit) })),
     })),
-    events: stripEvents(f, c.fact.id, c.sources, c.panel),
+    events: eventMarkers(f, c.fact.id, c.sources, c.panel),
   };
 }
 

@@ -99,9 +99,9 @@ function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fa
   const series = seriesId === undefined ? fact.series : fact.additionalSeries?.[index];
   if (!series) return null;
   const sourceOffset = seriesSourceOffset(fact, index);
-  // Breaks and the not-measured band belong to the series, not a reading: listed once.
+  // The not-measured band belongs to the series, not a reading: listed once.
   const host = methodChangesReadingId(series);
-  const methods = (readingId: string) => (readingId === host ? methodChanges(fact.id, readingId, series.breaks, sourceOffset + 1, unmeasuredSpan(series)) : '');
+  const methods = (readingId: string) => (readingId === host ? methodChanges(fact.id, readingId, unmeasuredSpan(series)) : '');
   const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methods(reading.id)} className="sv-graph-observations" />]));
   return <Viz fact={fact} chart={seriesId ?? 'series'} label={series.title}>
     <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />
@@ -122,7 +122,7 @@ export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigureP
   if (series) {
     const sourceOffset = seriesSourceOffset(fact, index);
     const reading = series.readings.find(r => r.id === only) ?? series.readings[0];
-    const method = methodChanges(fact.id, reading.id, series.breaks, sourceOffset + 1, unmeasuredSpan(series), n => sources[n - 1].url);
+    const method = methodChanges(fact.id, reading.id, unmeasuredSpan(series), n => sources[n - 1].url);
     return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={markedObservations(fact, reading.id)} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);

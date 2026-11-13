@@ -83,7 +83,7 @@ export const NotMeasuredSinceUranium: Story = {
       stock: (
         <Prose
           className="sv-graph-observations"
-          html={methodChanges('story-uranium', 'stock', [], URANIUM_SOURCES.length + 1, unmeasuredSpan(URANIUM_NOT_MEASURED_SINCE))}
+          html={methodChanges('story-uranium', 'stock', unmeasuredSpan(URANIUM_NOT_MEASURED_SINCE))}
         />
       ),
     },

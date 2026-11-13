@@ -1,5 +1,5 @@
 import type { Series } from '@/lib/content/types';
-import type { StripEvent } from '../../event-strip';
+import type { MarkerEvent } from '../../event-markers';
 import type { PeriodCategory, PeriodRow } from '../../period-timeline';
 import type { TimelineCategory, TimelineEvent } from '../../timeline';
 import type { SourceCredit } from '../../types';
@@ -217,7 +217,7 @@ export const ROUTE_PERIODS: PeriodRow[] = [
   },
 ];
 
-export const ROUTE_EVENTS: StripEvent[] = [
+export const ROUTE_EVENTS: MarkerEvent[] = [
   { date: '2022', label: 'Ukraine humanitarian routes open', sources: [ONS_UKRAINE] },
   { date: '2023-06', label: 'Asylum backlog peaks at 175,000 people', sources: [HOME_OFFICE_SUMMARY] },
 ];
@@ -233,15 +233,6 @@ export const GOVERNMENT_PERIODS_ILLUSTRATIVE: PeriodRow[] = [
   },
   { label: 'Rwanda partnership', periods: [{ from: '2022-04', to: '2024-07', label: 'In force' }] },
   { label: 'Illegal Migration Act', periods: [{ from: '2023-07', to: '2024-07', label: 'Duty to remove' }] },
-];
-
-/** Asylum-policy events for the EventStrip demo; mixed sourced and illustrative, each one labelled. */
-export const ASYLUM_EVENTS: StripEvent[] = [
-  { date: '2002', label: 'Previous peak: 103,081 claims', sources: [{ label: 'Home Office', href: 'https://www.gov.uk/government/statistics/immigration-system-statistics-year-ending-march-2026/how-many-people-claim-asylum-in-the-uk' }] },
-  { date: '2022-04', label: 'Rwanda asylum partnership announced', sources: [ILLUSTRATIVE] },
-  { date: '2023-06', label: 'Asylum backlog peaks at 175,000 people', sources: [HOME_OFFICE_SUMMARY] },
-  { date: '2023-07', label: 'Illegal Migration Act passed', sources: [ILLUSTRATIVE] },
-  { date: '2024-07', label: 'Rwanda scheme abandoned', sources: [ILLUSTRATIVE] },
 ];
 
 const ASYLUM_CLAIMS: Array<[string, number]> = [

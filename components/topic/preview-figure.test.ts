@@ -206,12 +206,12 @@ test('a timeline preview lists every event on one line, and past twelve marks ea
   assert.match(long, /Jun 2014: Event 14/);
 });
 
-test('a period timeline preview draws every period and event marker, but no event list or open-end key', () => {
+test('a period timeline preview draws every period and event marker, but no event cards or open-end key', () => {
   const html = preview('war-periods');
   assertCompact(html, 'war-periods', 'Ceasefire, blockade, memorandum and strike-pause periods, 2026');
   assert.equal(html.match(/class="sv-periods__bar"/g)?.length, 5);
-  assert.match(html, /<span class="sv-event-strip__marker"[^>]*role="img"/);
-  assert.doesNotMatch(html, /sv-event-strip__key|sv-periods__open-key|<a class="sv-event-strip__marker"/);
+  assert.match(html, /<span class="sv-markers__marker"[^>]*role="img"/);
+  assert.doesNotMatch(html, /sv-marker-card|sv-marker-key|sv-periods__open-key|<button[^>]*sv-markers__marker/);
   // Labels stay on their row, as on the full figure; a bar takes no focus and feeds no readout.
   assert.match(html, /class="sv-periods__bar-label"[^>]*>Ceasefire</);
   assert.match(html, /class="sv-periods__side-label"[^>]*>MoU</);

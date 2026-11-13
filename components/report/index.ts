@@ -45,7 +45,7 @@ export { WORLD_COUNTRY_TILES } from './geo/world-tiles';
 // Timelines
 export * from './timeline';
 export * from './period-timeline';
-export * from './event-strip';
+export * from './event-markers';
 
 // Quotes
 export type { Quote } from './quote-attribution';

@@ -366,16 +366,19 @@ test('an observation on a comparison picks out its rows, and keeps them when the
   await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
 });
 
-test('a chart\'s description is one line until opened, and method notes are inside it', async ({ page }) => {
+test('a chart\'s description is one line until opened', async ({ page }) => {
   await page.goto(DATA);
   const row = page.locator('.sv-row--data').first();
   await row.locator('.sv-row__toggle').click(headCorner);
   const step = row.locator('.sv-walk__slide').first();
   const about = step.locator('.sv-chart__about').first();
   await expect(about).toBeVisible();
-  await expect(step.locator('.sv-method-changes-group').first()).toBeHidden();
-  await step.getByRole('link', { name: 'See method changes' }).click();
-  await expect(step.locator('.sv-method-changes-group').first()).toBeVisible();
+  await expect(about).not.toHaveAttribute('open');
+  // The row is still settling as it opens, which can swallow the first click.
+  await expect(async () => {
+    await about.locator('summary').click();
+    await expect(about).toHaveAttribute('open', '', { timeout: 500 });
+  }).toPass();
 });
 
 test('the arrows move the chart strip and leave the selected chart alone', async ({ page }) => {

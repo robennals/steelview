@@ -181,10 +181,6 @@ test('graphs have no observation markers and observations remain expandable', as
   await expect(observation.locator('.sv-observation-number')).toHaveCount(0);
   await observation.locator(':scope > summary').click();
   await expect(observation.locator('.sv-observation__body')).toBeVisible();
-  await dialog.locator('.sv-method-changes-group > summary').first().click();
-  const method = dialog.locator('.sv-method-observation').first();
-  await method.locator(':scope > summary').click();
-  await expect(method.locator('.sv-observation__body')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).toHaveCount(0);
   await expect(page).toHaveURL(topic);
@@ -234,28 +230,6 @@ test('nationality comparisons change the country bars and show all components', 
   await expect(observation.locator('.sv-observation__body')).toBeVisible();
 });
 
-
-test('measurement lines retain linked explanations without observation circles', async ({ page }) => {
-  const sheet = await openWholeReport(page, longRun);
-  const graph = sheet.locator('#immigration-against-the-long-run--chart-people');
-  await expect(graph.locator('.sv-method-marker')).toHaveCount(0);
-  await expect(graph.locator('.sv-chart__svg:visible .sv-chart__break')).toHaveCount(3);
-  await expect(graph.locator('.sv-observations-group .sv-method-observation')).toHaveCount(0);
-  await graph.locator('.sv-method-changes-group > summary').click();
-  const methods = graph.locator('.sv-method-observation');
-  await expect(methods).toHaveCount(3);
-  for (const method of await methods.all()) {
-    await expect(method.locator('.sv-observation-number')).toHaveCount(0);
-    await method.locator(':scope > summary').click();
-    await expect(method.locator('.sv-observation__body')).toBeVisible();
-    await expect(method.locator('a')).toHaveAttribute('href', '#source-immigration-against-the-long-run-46');
-  }
-  await page.goto(`${topic}/facts/immigration-against-the-long-run#immigration-against-the-long-run--people-method-1991`);
-  await expect(page.locator('.sv-method-changes-group[open]')).toHaveCount(1);
-  await expect(page.locator('.sv-target')).toHaveClass(/sv-method-observation/);
-  await expect(page.locator('.sv-target')).toHaveAttribute('open', '');
-  await expect(page.locator('.sv-target')).toBeInViewport();
-});
 
 test('net-migration peak is a graph observation, with its old URL redirected', async ({ page }) => {
   await page.goto(`${topic}/facts/net-migration-peak-and-fall`);
