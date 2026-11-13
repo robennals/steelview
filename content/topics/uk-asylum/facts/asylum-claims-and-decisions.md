@@ -1924,7 +1924,7 @@ Sudan and Eritrea had the highest initial grant rates of the main nationalities 
 
 ### Rates fell within most nationalities, steeply for some {#asylum-claims-and-decisions--within-nationality-falls}
 
-The Syrian grant rate fell from 98% to 10% in a year after the fall of the Assad regime, and the Pakistani rate from 46% to 25%. [14](#source-asylum-claims-and-decisions-14) Of the ten nationalities with most decisions in 2025, only Sudan was granted at a higher rate than in 2022. [17](#source-asylum-claims-and-decisions-17)
+The Syrian grant rate fell from 98% to 10% in a year, and the Pakistani rate from 46% to 25%. [14](#source-asylum-claims-and-decisions-14) Of the ten nationalities with most decisions in 2025, only Sudan was granted at a higher rate than in 2022. [17](#source-asylum-claims-and-decisions-17)
 
 ## Observations {#asylum-claims-and-decisions--observations-syrian-grant-rate-years}
 

@@ -20,11 +20,11 @@ Families pay too: [pump prices went up by about half](#fact-oil-shipping-and-pri
 
 [Most Americans disapprove of the war](#fact-decisions-law-and-diplomacy/most-disapprove-gallup). [Independents oppose it by more than two to one](#fact-decisions-law-and-diplomacy/independents-opposed). [Even support among Republicans is falling](#fact-decisions-law-and-diplomacy/republicans-support-but-falling).
 
-### The war has cost far fewer lives than Iraq, but that does not make it worth it
+### Costing fewer lives than Iraq does not make the war worth it
 
 This war is smaller than the Iraq war. [Far fewer Americans have died](#fact-human-and-financial-costs-of-the-war/us-deaths-small-share-of-iraq), and [half of those deaths were not in combat](#fact-human-and-financial-costs-of-the-war/half-of-deaths-non-hostile). [After allowing for inflation, oil prices have stayed below the peaks of 1981, 2008 and 2022](#fact-oil-shipping-and-prices/below-earlier-real-peaks). While all of that is true, being cheaper than the worst war does not make a war worth fighting. Every dollar and every life still has to be justified.
 
-### Iran's allies attacked US forces before the war, but that is a reason to bring them home
+### Attacks on US troops are a reason to bring them home
 
 While [groups allied with Iran attacked US and coalition forces more than 200 times before the war](#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war), that is a reason to bring the troops home. It is not a reason to fight until Iran's government falls.
 

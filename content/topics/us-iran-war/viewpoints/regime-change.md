@@ -20,13 +20,13 @@ The government also goes after its critics abroad. [Most recent Iranian plots in
 
 [Turnout in the last two presidential elections was the lowest ever](#fact-iran-government-and-its-people/turnout-record-lows). [In one online survey, few Iranians said they want the current system of government](#fact-iran-government-and-its-people/few-prefer-islamic-republic). [Most said they were glad to see it weakened during the war](#fact-iran-government-and-its-people/satisfaction-at-weakening). [The new Supreme Leader is the son of the old one](#fact-iran-government-and-its-people/hereditary-succession).
 
-### Imposing a government from outside risks civil war, so Iranians must choose theirs
+### Iranians must choose their own government
 
 While [overthrowing a government from outside more than doubles the risk of civil war](#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war), that argues against imposing a government, not for standing aside. [Democracy has followed only where conditions helped it](#fact-outside-attempts-to-change-hostile-regimes/democracy-only-in-favourable-conditions), so Iranians must choose their leaders.
 
 While war has been followed by more repression, that argues for helping Iranians directly, not only striking. [More than 20,000 people were arrested after the June 2025 war](#fact-iran-government-and-its-people/arrests-after-june-2025), [political executions peaked around the ceasefire in this one](#fact-iran-government-and-its-people/political-executions-peaked-april-may), and [many Iranians surveyed called the strikes an attack](#fact-iran-government-and-its-people/strikes-seen-as-aggression).
 
-### Iranians have already risked their lives, so America should help them
+### America should help Iranians do it themselves
 
 The US can weaken the government's security forces and stop it rebuilding them, protect its critics abroad, and help Iranians get online and organise beyond its reach.
 

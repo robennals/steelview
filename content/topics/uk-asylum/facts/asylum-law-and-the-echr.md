@@ -576,7 +576,7 @@ dataStillNeeded:
       be shown as disputed.
   - measure: 'Article 8 grant, refusal, appeal and removal outcomes after the Immigration and Asylum Bill takes effect'
     why: >-
-      The impact assessment's 11,700 extra refusals a year is modelling under
+      The impact assessment's 11,700 extra refusals are modelling under
       stated assumptions, not a measured effect. Whether statutory limits on
       Article 8 change outcomes, and whether the effect lasts, can only be
       measured once the Bill is in force.
@@ -882,7 +882,7 @@ Part 2 of the Bill contains measures to reform how Article 8, the right to famil
 
 ### The Bill's impact assessment models more refusals but sets no target {#asylum-law-and-the-echr--the-bill-sets-no-target}
 
-The impact assessment models about 11,700 more Article 8 refusals a year
+The impact assessment models about 11,700 more Article 8 refusals
 after appeal, but says "it is not a target or forecast" and that a fixed
 target would not be appropriate. [34](#source-asylum-law-and-the-echr-34) [35](#source-asylum-law-and-the-echr-35) It estimates that 55% of people
 refused under Article 8 may not leave the UK, and expects 3,600 more a year

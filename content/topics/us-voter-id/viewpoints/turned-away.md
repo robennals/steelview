@@ -16,7 +16,7 @@ An ID check stops one thing: someone voting as another person. [Two separate cou
 
 While [each review charted found some non-citizens who voted](#fact-non-citizens-on-voter-rolls/some-noncitizens-vote), the numbers are tiny. [The votes found are between about 1 and 22 per million ballots](#fact-non-citizens-on-voter-rolls/votes-per-ballots). The counts are also [far fewer than the margins in recent close races](#fact-non-citizens-on-voter-rolls/below-margins). And [reviews that give a cause trace non-citizens on the lists to mistakes](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls). Officials can fix those without asking every citizen for a birth certificate.
 
-### Kansas's proof-of-citizenship rule blocked far more applicants than non-citizens found
+### Kansas's rule blocked far more applicants than it found non-citizens
 
 [Kansas blocked 31,089 applicants who did not show citizenship documents in time](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens). [From 1999 to 2013, 39 non-citizens were confirmed on its rolls](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens). [Even the state's own expert's figures suggested nearly all those on its suspense list were citizens](#fact-burdens-of-id-and-citizenship-rules/kansas-expert-citizens). While [the court did not know how many actually lacked a document](#fact-burdens-of-id-and-citizenship-rules/kansas-dpoc-possession-unknown), every one was kept off the list.
 
@@ -28,7 +28,7 @@ While [each review charted found some non-citizens who voted](#fact-non-citizens
 
 Officials have shut people out before: [Louisiana cut Black voters from about 44% of registered voters to under 1%](#fact-election-fraud-and-voter-exclusion-history/louisiana-registration-collapse), and by 1921 was using [a test that let registrars decide who could vote](#fact-election-fraud-and-voter-exclusion-history/jim-crow-tools-discretionary). While a free, uniform ID is not a literacy test, bulk checks still sweep up eligible voters. [About 90% of Texas mail voters rejected in one primary did not vote otherwise](#fact-burdens-of-id-and-citizenship-rules/rejected-texans-did-not-vote).
 
-### The cost falls hardest on the young and poor, who most often lack an up-to-date licence
+### Young and poor voters most often lack an up-to-date licence
 
 [The young and poor are most likely to lack an up-to-date licence](#fact-burdens-of-id-and-citizenship-rules/licence-by-age-income). [Black and Hispanic citizens are at least three times as likely as white citizens to have no licence](#fact-burdens-of-id-and-citizenship-rules/no-licence-by-race-party). [The worst off should be weighed first](#principle-priority-to-the-worst-off).
 

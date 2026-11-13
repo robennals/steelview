@@ -18,15 +18,15 @@ The US is already at war with Iran. If it stops halfway, it leaves a weakened, a
 
 [Iraq's nuclear programme ended after a war forced it to accept close inspection](#fact-outside-attempts-to-change-hostile-regimes/iraq-ended-after-war-and-inspection). Bombing alone is less reliable. [It makes a country give in only about a third of the time](#fact-outside-attempts-to-change-hostile-regimes/air-coercion-about-a-third). [It is more likely to work when the target's military is vulnerable](#fact-outside-attempts-to-change-hostile-regimes/military-vulnerability). So the US should keep up the pressure on Iran's military until inspectors are in.
 
-### Stopping early could make America look weak and leave its friends exposed
+### Stopping early would leave America's friends exposed
 
 While [research is split on whether backing down makes enemies bolder](#fact-outside-attempts-to-change-hostile-regimes/credibility-split), the risk is too serious to ignore with [the worst dangers](#principle-safety-from-catastrophic-threats) at stake. Backing down would also leave America's friends exposed. [Saudi Arabia came under Houthi missile and drone fire in October](#fact-decisions-law-and-diplomacy/houthi-fire-on-saudi-arabia), and America should [stand by its allies](#principle-loyalty-to-allies).
 
-### The goal should not be overthrowing Iran's government, which risks civil war
+### Finishing the job does not mean overthrowing Iran's government
 
 [When outsiders overthrow a government, the risk of civil war more than doubles](#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war). [Demanding new leaders makes bombing less likely to work](#fact-outside-attempts-to-change-hostile-regimes/leadership-demands-lower-success). So the goals should be limited and clear. Iran must stop enriching uranium and building missiles. Its uranium must be found, or shown to be destroyed.
 
-### Both sides kept firing through the ceasefire, so the war needs an end point
+### The war needs a clear end point
 
 [Both sides fired during the ceasefire](#fact-decisions-law-and-diplomacy/both-sides-fired), so a pause is not an end. While [researchers said in 2011 that Iran lacked the conditions of past successful strikes](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran), that calls for limited goals, not quitting. While [most Americans disapprove](#fact-decisions-law-and-diplomacy/most-disapprove-gallup), clear goals would show them when it will end.
 

@@ -18,7 +18,7 @@ In New Hampshire, [a federal court found that voters were not told their ballot 
 
 [In Washington, Black voters' ballots were rejected at four times white voters' rate](#fact-mail-ballot-rejection-and-signature-checks/washington-race-gaps), counting unsigned envelopes too. [The youngest voters were rejected most](#fact-mail-ballot-rejection-and-signature-checks/washington-age-gaps). [Their gap held for mismatches alone](#fact-mail-ballot-rejection-and-signature-checks/youngest-mismatches-alone), and [first-time voters were rejected far more than others](#fact-mail-ballot-rejection-and-signature-checks/first-time-voters-rejected-more). [Studies in Florida found the same for young and inexperienced voters](#fact-mail-ballot-rejection-and-signature-checks/florida-young-and-inexperienced).
 
-### In Washington, the county of the ballot mattered most
+### In Washington, a ballot's county mattered most
 
 [The county mattered most](#fact-mail-ballot-rejection-and-signature-checks/county-strongest-predictor). [For mismatches alone, two counties were 18 times as likely as another to reject a ballot](#fact-mail-ballot-rejection-and-signature-checks/county-strongest-predictor). That falls short of [an equal voice for every citizen](#principle-an-equal-voice-for-every-citizen).
 

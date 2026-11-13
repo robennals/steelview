@@ -6,13 +6,13 @@ order: 6
 ---
 The shortages people blame on immigration were caused by decades of low investment. Britain should invest in homes and services, and stop making migrants' lives deliberately hard.
 
-### Britain's government has invested less than most rich countries for decades
+### Britain has invested less than most rich countries for decades
 
 [The UK government invested a smaller share of GDP than the typical rich country in every year for three decades](#fact-immigration-housing-and-public-services/public-investment-low). [It spent a smaller share of GDP than the average rich country on health buildings and equipment](#fact-immigration-housing-and-public-services/health-capital-below-average). [In England, building of homes for social rent fell by more than four-fifths after 2010, and is still under a third of its old level](#fact-immigration-housing-and-public-services/social-rent-building-fell-after-2010).
 
 [Housebuilding peaked in 2019-20](#fact-immigration-housing-and-public-services/building-peaked-before-migration), before [net migration peaked in 2023](#fact-immigration-against-the-long-run/net-migration-peaked), and [much public investment is fixed up to the end of a spending period, so it does not respond straight away to the population](#fact-immigration-housing-and-public-services/investment-does-not-adjust). While [school funding per pupil is higher than in 2010-11](#fact-immigration-housing-and-public-services/day-to-day-spending-per-head-above-2010) and [health spending per person has almost doubled since 2000](#fact-immigration-housing-and-public-services/health-spending-per-person-doubled), that shows where the gap is: in homes, buildings and equipment.
 
-### Migrants staff a growing share of the NHS, and care relies on them too
+### Migrants make up a growing share of NHS staff
 
 [About a fifth of NHS staff in England are not British, and over a third of doctors](#fact-work-and-study-routes/fifth-of-nhs-staff). [About 150,000 care jobs are done by people on health and care visas](#fact-work-and-study-routes/care-posts-on-visas).
 

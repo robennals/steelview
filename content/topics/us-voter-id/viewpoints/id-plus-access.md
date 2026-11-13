@@ -20,7 +20,7 @@ In Georgia, [most Republicans said the 2021 election law raised their trust, whi
 
 Each party's national bill would do the same on a bigger scale. [One would require proof of citizenship and photo ID](#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions). [The other would have required early voting and made ID states accept alternatives](#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions). [Both stalled in the Senate, the Democrats' bill at 49 votes and a photo-ID version of the Republicans' at 52, with 60 needed](#fact-federal-and-state-power-over-voting-rules/national-bills-stalled).
 
-### Large majorities in both parties already back photo ID, one half of a deal
+### Large majorities in both parties back photo ID
 
 [Large majorities in both parties support photo ID](#fact-opinion-and-confidence-in-elections/photo-id-majorities), and [Democratic support has grown since 2021](#fact-opinion-and-confidence-in-elections/democrats-moved-toward-id). [Republican support for two weeks of early voting rose in 2025](#fact-opinion-and-confidence-in-elections/republicans-moved-toward-early-voting). While no poll publishes how many people back both, [83% of adults back photo ID](#fact-opinion-and-confidence-in-elections/photo-id-83-percent) and [80% back two weeks of early voting](#fact-opinion-and-confidence-in-elections/overlap-not-published), so most people must.
 
@@ -32,7 +32,7 @@ A commission led by Democrat Jimmy Carter and Republican James Baker [paired pho
 
 How an ID rule is written matters. [Georgia's rejected mail ballots have been below their 2016 and 2018 rates since it replaced signature checks with an ID number](#fact-burdens-of-id-and-citizenship-rules/georgia-rejections-near-national). But [rejections rose in Texas under its rule, which had to match the voter's registration record](#fact-burdens-of-id-and-citizenship-rules/two-states-opposite).
 
-### Trust still rises with winning, so both parties should pass free ID and early voting together
+### Both parties should pass free ID and early voting together
 
 Congress, or states one by one, should pass the two together: free photo ID, at least two weeks of early voting, and a sworn statement for those without ID.
 

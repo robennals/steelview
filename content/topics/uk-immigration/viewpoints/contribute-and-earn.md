@@ -10,13 +10,13 @@ Immigration is not good or bad in bulk. It depends on who comes and what they do
 
 The government's migration advisers have worked out what each group adds to or takes from the public purse over a lifetime. [Skilled workers outside health and care add hundreds of thousands of pounds each](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain), while [care workers and adult dependants on the health and care route cost money](#fact-immigration-economy-and-public-finances/care-route-net-cost). The gain is concentrated. [Among skilled workers outside health and care, the top tenth of earners provide almost two-fifths of it](#fact-immigration-economy-and-public-finances/gain-from-top-earners-and-stayers), and [for lower earners a temporary stay is better for the public purse than a permanent one](#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners).
 
-### Work visas surged when the bar was cut and care workers were added
+### Work visas surged when the rules were loosened
 
 [In 2020 the skill bar for a work visa was cut to A-level, and in 2022 care workers were added](#fact-work-and-study-routes/skill-threshold-lowered-then-raised). [Each health and care visa holder then brought more than one family member on average](#fact-work-and-study-routes/dependants-outnumbered-main-applicants). [About half of students who switched straight into work became care workers](#fact-work-and-study-routes/student-switchers-became-care-workers). Meanwhile, [British-held care jobs fell by about 130,000](#fact-work-and-study-routes/british-held-posts-fell).
 
 Abuse followed. [The Home Office cancelled a record number of employers' licences to hire migrants](#fact-work-and-study-routes/revocations-at-a-record), with [adult social care among the worst sectors](#fact-work-and-study-routes/social-care-among-worst-sectors). While [as a share of skilled-worker employers with licences, cancellations are back to their mid-2010s level](#fact-work-and-study-routes/revocation-rate-not-a-record), that is only because [the number of such employers roughly quadrupled](#fact-work-and-study-routes/skilled-sponsors-quadrupled), which shows how fast sponsorship grew.
 
-### Care visas collapsed after closer checks, and vacancies have not risen so far
+### Care-worker visas collapsed in late 2023
 
 [Care visas collapsed well before the route closed](#fact-work-and-study-routes/care-visas-collapsed-before-the-closure), [once officials checked employers more closely](#fact-work-and-study-routes/scrutiny-began-the-fall). Since overseas recruitment ran down, [care vacancies have not risen so far](#fact-work-and-study-routes/vacancies-held-as-recruitment-fell), and [the vacancy rate is the lowest in ten years](#fact-work-and-study-routes/care-vacancies-fell).
 

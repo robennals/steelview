@@ -6,13 +6,13 @@ order: 3
 ---
 The weak point in American elections is the voter list, not the line at the polls. Cleaning the list stops more fraud than checking ID at the door, and burdens fewer voters.
 
-### A national estimate found millions of wrong or out-of-date records on voter lists
+### A national study found millions of out-of-date records on voter lists
 
 [A national estimate, from data to March 2011, found about one record in eight wrong or out of date](#fact-voter-roll-maintenance/pew-only-direct-measure). Lists can keep people no longer eligible for years, because [removing someone for a move can take through two federal general elections](#fact-voter-roll-maintenance/removal-waits-two-elections).
 
 While [some of those records are eligible voters with wrong details](#fact-voter-roll-maintenance/pew-not-fraud), and stale records are not votes, old names are what fraud has used. [Chicago's 1982 fraud cast ballots in the names of people who had died or moved](#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud).
 
-### An ID check would only partly have reached that fraud
+### An ID check would have caught only some of that fraud
 
 In Chicago, [election judges took part in the fraud](#fact-election-fraud-and-voter-exclusion-history/chicago-judges-took-part), and they are the people who would have checked ID. Taking a dead voter's name off the list stops the fraud, whoever is checking.
 
@@ -28,11 +28,11 @@ In Chicago, [election judges took part in the fraud](#fact-election-fraud-and-vo
 
 [The biggest way people were removed in 2024 was an unanswered notice and two missed federal elections](#fact-voter-roll-maintenance/nonresponse-largest). That shows silence, not a move. [In Ohio, more of those who replied said they had not moved than said they had](#fact-voter-roll-maintenance/ohio-notice-replies).
 
-### States must finish clean-ups 90 days before a federal election, so they should start early
+### States should clean their lists early
 
 States should check their own records before writing to anyone. They should finish large clean-ups early, because [federal law bars them in the 90 days before a federal election](#fact-voter-roll-maintenance/ninety-day-limit), and [courts have stopped late ones](#fact-voter-roll-maintenance/nvra-90-day-rule). They should publish each program's error rate. And they should give flagged voters time and a simple way to answer.
 
-### Fewer states now share data, and more should
+### Fewer states now share voter data
 
 [By October 2023 nine Republican-led states had left ERIC](#fact-voter-roll-maintenance/eric-departures), and [its reports of voters moving between states fell from about 3.5 million in 2021 to about 0.7 million in 2024](#fact-voter-roll-maintenance/eric-reports-fell). A match needs both states as members. A state that wants clean lists should rejoin ERIC, or build an equally wide match.
 

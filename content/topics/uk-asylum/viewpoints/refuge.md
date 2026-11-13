@@ -6,7 +6,7 @@ order: 2
 ---
 Britain has an [obligation to people in danger](#principle-obligation-to-people-in-danger). Britain should give refugees safe ways to come, fair hearings, and the right to work while they wait.
 
-### Most people who cross the Channel and get a decision are granted protection
+### Most Channel crossers who get a decision are granted protection
 
 [Most small-boat arrivals who got a decision were granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). [The largest groups now crossing, Eritreans and Sudanese](#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups), [are granted in the great majority of cases](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted).
 
@@ -16,7 +16,7 @@ Britain has an [obligation to people in danger](#principle-obligation-to-people-
 
 While [grant rates have fallen since 2022](#fact-asylum-claims-and-decisions/grant-rate-over-time), some of that reflects real change, as in [Syria, where the rate fell from 98% to 10% in a year](#fact-asylum-claims-and-decisions/syrian-grant-rate-fell), and [a 2022 law raised the bar of proof](#fact-asylum-claims-and-decisions/standard-of-proof), which may explain some of the rest. That makes fair appeals matter more. Yet ministers plan [an appeals body whose adjudicators need not be lawyers](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal), [with a chair the Home Secretary appoints](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal). If [rules must mean what they say](#principle-rules-must-mean-what-they-say), the Refugee Convention's promise needs a fair hearing.
 
-### Ukrainians and Hong Kongers got safe routes and almost never came by boat
+### Ukrainians and Hong Kongers had safe routes and almost never came by boat
 
 [Hundreds of thousands of Ukrainians and Hong Kongers got visas, and almost none came by boat](#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat). [For Eritreans, Sudanese and Iranians, the main safe route was joining family here](#fact-safe-and-legal-routes/family-reunion-was-the-main-route-for-boat-nationalities). [In the year to June 2026, which took in the pause, their boat arrivals far exceeded their safe-route grants](#fact-safe-and-legal-routes/after-the-pause).
 

@@ -30,7 +30,9 @@ sources:
   # 2
   - stance: supports
     quote: >-
-      <legis-num>H CON RES 40</legis-num> ... <vote-result>Failed</vote-result>
+      <legis-num>H CON RES 40</legis-num> ... <vote-desc>Directing the
+      President, pursuant to section 5(c) of the War Powers Resolution, to
+      remove United States Armed Forces from hostilities with Iran</vote-desc> ... <vote-result>Failed</vote-result>
       ... <action-date>16-Apr-2026</action-date> ...
       <party>Republican</party><yea-total>1</yea-total><nay-total>212</nay-total><present-total>1</present-total><not-voting-total>3</not-voting-total>
       ...
@@ -48,7 +50,9 @@ sources:
   # 3
   - stance: supports
     quote: >-
-      <legis-num>H CON RES 75</legis-num> ... <vote-result>Failed</vote-result>
+      <legis-num>H CON RES 75</legis-num> ... <vote-desc>Directing the
+      President, pursuant to section 5(c) of the War Powers Resolution, to
+      remove the United States Armed Forces from hostilities against the Islamic Republic of Iran</vote-desc> ... <vote-result>Failed</vote-result>
       ... <action-date>14-May-2026</action-date> ...
       <party>Republican</party><yea-total>3</yea-total><nay-total>210</nay-total><present-total>0</present-total><not-voting-total>4</not-voting-total>
       ...
@@ -83,7 +87,9 @@ sources:
   # 5
   - stance: supports
     quote: >-
-      <legis-num>H CON RES 89</legis-num> ... <vote-result>Passed</vote-result>
+      <legis-num>H CON RES 89</legis-num> ... <vote-desc>Directing the
+      President, pursuant to section 5(c) of the War Powers Resolution, to
+      remove United States Armed Forces from hostilities with Iran</vote-desc> ... <vote-result>Passed</vote-result>
       ... <action-date>23-Jul-2026</action-date> ...
       <party>Republican</party><yea-total>4</yea-total><nay-total>207</nay-total><present-total>0</present-total><not-voting-total>7</not-voting-total>
       ...
@@ -99,7 +105,9 @@ sources:
   # 6
   - stance: supports
     quote: >-
-      <legis-num>H CON RES 93</legis-num> ... <vote-result>Passed</vote-result>
+      <legis-num>H CON RES 93</legis-num> ... <vote-desc>Directing the
+      President, pursuant to section 5(c) of the War Powers Resolution, to
+      remove United States Armed Forces from hostilities with Iran</vote-desc> ... <vote-result>Passed</vote-result>
       ... <action-date>15-Sep-2026</action-date> ...
       <party>Republican</party><yea-total>7</yea-total><nay-total>203</nay-total><present-total>0</present-total><not-voting-total>8</not-voting-total>
       ...
@@ -1019,6 +1027,37 @@ figures:
   - kind: "series"
   - kind: "series"
     id: "senate-votes-series"
+  - kind: "dataTable"
+    id: "war-votes"
+    title: Every vote Congress held on the Iran war that the report found, March–September 2026
+    description: "Floor votes in the House and Senate on measures about the war, from the House Clerk's roll calls and the Senate's vote list to 10 October 2026. Each would have ended the war or brought a measure to end it to the floor; none would have approved it."
+    caption: "One row per vote"
+    columns:
+      - { key: "date", label: "Date", format: "date" }
+      - { key: "measure", label: "Measure", rowHeader: true, sortable: false }
+      - { key: "would", label: "What a yes would have done", sortable: false }
+      - { key: "result", label: "Result", sortable: false }
+    rows:
+      - { date: "2026-03-04", measure: "Senate: S.J.Res. 104", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–53", sources: [7] } }
+      - { date: "2026-03-05", measure: "House: H.Con.Res. 38", would: "Remove US forces from hostilities with Iran", result: { value: "Failed, 212–219", sources: [1] } }
+      - { date: "2026-03-18", measure: "Senate: S.J.Res. 118", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–53", sources: [7] } }
+      - { date: "2026-03-24", measure: "Senate: S.J.Res. 116", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–53", sources: [7] } }
+      - { date: "2026-04-15", measure: "Senate: S.J.Res. 123", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–52", sources: [7] } }
+      - { date: "2026-04-16", measure: "House: H.Con.Res. 40", would: "Remove US forces from hostilities with Iran", result: { value: "Failed, 213–214", sources: [2] } }
+      - { date: "2026-04-22", measure: "Senate: S.J.Res. 114", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 46–51", sources: [7] } }
+      - { date: "2026-04-30", measure: "Senate: S.J.Res. 184", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–50", sources: [7] } }
+      - { date: "2026-05-13", measure: "Senate: S.J.Res. 163", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 49–50", sources: [7] } }
+      - { date: "2026-05-14", measure: "House: H.Con.Res. 75", would: "Remove US forces from hostilities with Iran", result: { value: "Failed, 212–212", sources: [3] } }
+      - { date: "2026-05-19", measure: "Senate: S.J.Res. 185 (discharge)", would: "Bring to the floor a resolution to remove US forces", result: { value: "Agreed to, 50–47", sources: [7] } }
+      - { date: "2026-06-03", measure: "House: H.Con.Res. 86", would: "Remove US forces from hostilities with Iran", result: { value: "Passed, 215–208", sources: [4] } }
+      - { date: "2026-06-16", measure: "Senate: S.J.Res. 172", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–48", sources: [7] } }
+      - { date: "2026-06-23", measure: "Senate: H.Con.Res. 86", would: "Remove US forces from hostilities with Iran", result: { value: "Agreed to, 50–48", sources: [7] } }
+      - { date: "2026-06-24", measure: "Senate: S.J.Res. 185 (proceed)", would: "Take up a resolution to remove US forces", result: { value: "Rejected, 47–50", sources: [7] } }
+      - { date: "2026-07-23", measure: "House: H.Con.Res. 89", would: "Remove US forces from hostilities with Iran", result: { value: "Passed, 214–208", sources: [5] } }
+      - { date: "2026-07-23", measure: "Senate: S.J.Res. 180", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 47–49", sources: [7] } }
+      - { date: "2026-07-30", measure: "Senate: S.J.Res. 181", would: "Bring to the floor a resolution to remove US forces", result: { value: "Rejected, 49–50", sources: [7] } }
+      - { date: "2026-09-15", measure: "House: H.Con.Res. 93", would: "Remove US forces from hostilities with Iran", result: { value: "Passed, 220–204", sources: [6] } }
+      - { date: "2026-09-24", measure: "Senate: H.Con.Res. 89", would: "Remove US forces from hostilities with Iran", result: { value: "Rejected, 49–50", sources: [7] } }
   - kind: "series"
     id: "pew-approval-series"
   - kind: compositionBar
@@ -1276,6 +1315,7 @@ figures:
       - { date: "2026-10-24", title: "Houthis fire missiles and drones at Saudi Arabia", description: "ISW/CTP.", category: "attacks", source: 46 }
       - { date: "2026-10-28", title: "AP: allies told to prepare for renewed action and Iranian retaliation", description: "AP's diplomats say the President has made no final decision.", category: "us", source: 49 }
 observationMarks:
+  votes-all-to-end-the-war: {rows: ["Senate: S.J.Res. 104", "House: H.Con.Res. 38", "Senate: S.J.Res. 118", "Senate: S.J.Res. 116", "Senate: S.J.Res. 123", "House: H.Con.Res. 40", "Senate: S.J.Res. 114", "Senate: S.J.Res. 184", "Senate: S.J.Res. 163", "House: H.Con.Res. 75", "Senate: S.J.Res. 185 (discharge)", "House: H.Con.Res. 86", "Senate: S.J.Res. 172", "Senate: H.Con.Res. 86", "Senate: S.J.Res. 185 (proceed)", "House: H.Con.Res. 89", "Senate: S.J.Res. 180", "Senate: S.J.Res. 181", "House: H.Con.Res. 93", "Senate: H.Con.Res. 89"]}
   house-passed-three-resolutions: {lines: ["Yes (end the war)", "No"], from: "2026-06-03", to: "2026-09-15"}
   concurrent-resolutions-not-binding: {rows: ["Iran, 2026"]}
   senate-adopted-one-resolution: {lines: ["Yes (end the war)", "No"], at: "2026-06-23"}
@@ -1338,6 +1378,15 @@ In the Senate, Republican yes votes rose from one to four (chart below). With th
 Twelve of the Senate's votes failed. A motion to discharge succeeded in May, but the resolution then failed a motion to proceed. In June the Senate adopted H.Con.Res.86, which the House had passed, so both chambers adopted one resolution (chart). [7](#source-decisions-law-and-diplomacy-7) [8](#source-decisions-law-and-diplomacy-8)
 
 The Senate rejected the next House resolution, H.Con.Res.89, by one vote in September. GovTrack's list shows no Iran war-powers vote after that, as of late October. [9](#source-decisions-law-and-diplomacy-9)
+
+## Observations {#decisions-law-and-diplomacy--observations-war-votes}
+
+### All 20 votes found on the war were on ending it, and none on approving it {#decisions-law-and-diplomacy--votes-all-to-end-the-war}
+
+Of the 20 floor votes on the war found, March to September 2026, six were in the
+House and 14 in the Senate. Every one was on a measure "to remove United States
+Armed Forces from hostilities" with Iran, or on bringing one to the floor. None
+was on a measure to approve the war. [1](#source-decisions-law-and-diplomacy-1) [4](#source-decisions-law-and-diplomacy-4) [7](#source-decisions-law-and-diplomacy-7)
 
 ## Observations {#decisions-law-and-diplomacy--observations-senate-crossovers}
 

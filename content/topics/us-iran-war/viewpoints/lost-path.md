@@ -24,10 +24,10 @@ In 2025, [UN nuclear inspectors found no credible sign of an active weapons prog
 
 Bombing cannot make up for that. [Strikes on nuclear sites have only slowed programmes a little](#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly), and [worked best long before a country neared a bomb](#fact-outside-attempts-to-change-hostile-regimes/strikes-worked-early). [The same researchers said in 2011 that Iran lacked the conditions of past successes](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran). Toppling the government is riskier still: [when outsiders overthrow a government, the risk of civil war more than doubles](#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war).
 
-### Iran's openings were reversed, so the plan rested on watching it
+### Iran did not need to become friendly, only to be watched
 
 [While earlier openings in Iran were reversed](#fact-iran-government-and-its-people/earlier-openings-reversed), keeping it in check never depended on Iran becoming freer. [Turnout in the last two presidential elections was the lowest ever](#fact-iran-government-and-its-people/turnout-record-lows), and [executions rose fastest under the moderate president](#fact-iran-government-and-its-people/execution-rate-by-president). There were even some signs of change: [in 2024 voters chose the one moderate candidate](#fact-iran-government-and-its-people/reformist-backed-president-2024), and [a harsher headscarf law was put on hold, most likely with the Supreme Leader's consent](#fact-iran-government-and-its-people/hijab-law-shelved). But what kept Iran in check was inspectors being able to watch.
 
-### Key allies stayed out of the strikes, and the US should go back to inspections
+### The US should go back to inspections
 
 [Oman's foreign minister said the UN never approved the war](#fact-decisions-law-and-diplomacy/no-un-authorisation-per-oman). [Key European allies did not join the strikes](#fact-decisions-law-and-diplomacy/key-allies-did-not-join). The US should stop the bombing for good. Then it should rebuild what it threw away. That means inspectors on the ground, and a deal that gives Iran a reason to let them in.

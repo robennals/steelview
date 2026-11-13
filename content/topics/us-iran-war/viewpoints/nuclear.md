@@ -15,13 +15,13 @@ Before the strikes, [US intelligence judged Iran probably under a week from bomb
 
 [The hardest step in building a nuclear bomb is enriching uranium, which means making it purer](#needed). [Nuclear power plants need uranium enriched to only a few percent](#needed), while [bombs need about 90%](#fact-iran-nuclear-programme/sixty-is-not-ninety). [Iran is the only country without nuclear weapons making 60% uranium](#fact-iran-nuclear-programme/only-non-weapon-state-at-60), and [little extra work takes that to bomb grade](#fact-iran-nuclear-programme/sixty-is-not-ninety). [Its stock more than doubled in under eight months before the strikes](#fact-iran-nuclear-programme/sixty-percent-growth).
 
-### Iran had hidden weapons work before, and inspectors could not vouch for it now
+### Inspectors could not vouch that Iran's programme was peaceful
 
 While [US intelligence judged in 2025 that Iran was not building a bomb](#fact-iran-nuclear-programme/ata-2025-not-building), [it warned that pressure to build one was growing](#fact-iran-nuclear-programme/ata-2025-not-building). [UN inspectors found no credible sign of an active weapons programme](#fact-iran-nuclear-programme/no-ongoing-programme-2025), but [could not be sure Iran's programme was peaceful](#fact-iran-nuclear-programme/no-assurance-peaceful): [Iran once ran a secret programme to develop weapons technology and hid the evidence](#fact-iran-nuclear-programme/past-weapons-work).
 
 [In 2021 Iran stopped inspectors' extra "complementary access" visits](#fact-iran-nuclear-programme/complementary-access-ended), and [the inspectors' board later found it in breach of its obligations](#fact-iran-nuclear-programme/board-non-compliance). With uranium so close to bomb grade, one decision could start the last stretch to a bomb.
 
-### Iran already uses violence abroad, and a bomb would make it bolder
+### A bomb would make Iran bolder
 
 Iran already uses violence against its enemies. [A federal criminal court in Argentina held Iran-backed Hezbollah responsible for two Buenos Aires bombings](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). [US courts have convicted men hired by its Revolutionary Guards to kill a journalist in America](#fact-iran-actions-abroad/us-convictions-iran-directed-plots). [Iran-allied groups attacked US and coalition forces more than 200 times in 2023–24](#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war).
 

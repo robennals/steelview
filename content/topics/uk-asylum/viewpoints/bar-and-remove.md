@@ -18,13 +18,13 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 A rule that rewards crossing keeps the boats coming. [Australia's boat arrivals fell to almost none after it began turning boats back and barring boat arrivals from ever settling](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks). While [most small-boat arrivals who got a decision were granted](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), Britain can protect refugees through routes it controls.
 
-### Changing the law inside the ECHR has been tried, and appeal wins soon climbed back
+### Appeal wins climbed back after the last attempt to curb them
 
 [Around a 2014 law, foreign offenders' human-rights appeal wins fell by about three-quarters, then climbed back most of the way within two years](#fact-removals-and-what-stops-them/article-8-reforms-cut-then-faded). Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail), and [that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary).
 
 While [no published source counts how many removals the ECHR blocks](#fact-removals-and-what-stops-them/echr-share-not-measured), [the counts that exist miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims). So they may understate it.
 
-### In one poll, a majority backed British laws to deport illegal migrants
+### In one poll, most backed British laws to deport illegal migrants
 
 Under [democratic consent](#principle-democratic-consent-over-membership), removal rules belong to a Parliament that voters can sack. [A majority in one poll backed replacing European rights law with British laws to promptly deport illegal migrants](#fact-public-opinion-on-asylum-and-the-echr/whitestone-54-percent), though [polls since 2016 have shown more people backing staying in the ECHR than leaving](#fact-public-opinion-on-asylum-and-the-echr/remain-has-led-since-2016). [The EU could end police cooperation if Britain left, but that would be its own choice](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation), and Britain could try to negotiate it.
 

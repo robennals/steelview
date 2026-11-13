@@ -6,7 +6,7 @@ order: 3
 ---
 A refusal should mean leaving, or [rules do not mean what they say](#principle-rules-must-mean-what-they-say). Most of what stands in the way is Britain's own doing. British law can fix it without leaving the European Convention on Human Rights (ECHR).
 
-### Few of the issues raised against removal are human-rights applications
+### Few challenges to removal are human-rights claims
 
 [In 2019, for people held for removal, the commonest issues raised were asylum claims, medical reports, modern-slavery referrals and legal challenges](#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims). [Human-rights applications were a small share](#fact-removals-and-what-stops-them/human-rights-applications-small-share). [From 2015/16 to 2020/21, foreign offenders' human-rights appeal wins equalled only about 3% of deportations](#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent).
 
@@ -14,7 +14,7 @@ A refusal should mean leaving, or [rules do not mean what they say](#principle-r
 
 [The queue for first decisions is down by more than three-quarters from its peak](#fact-asylum-backlog-accommodation-and-cost/backlog-and-hotels-below-peaks), and [hotel use by over two-thirds](#fact-asylum-backlog-accommodation-and-cost/hotel-use-far-below-peak). [Hotels held about a third of people but took three-quarters of the cost](#fact-asylum-backlog-accommodation-and-cost/hotels-third-of-people-three-quarters-of-cost), so closing them is where the savings are.
 
-### The Bill would replace the appeals tribunal and rewrite family-life appeals
+### The new Bill would overhaul appeals
 
 The Immigration and Asylum Bill [replaces the tribunal](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal) and [rewrites family-life appeals](#fact-asylum-law-and-the-echr/bill-rewrites-article-8-appeals). [The queue has moved there](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals). [Its assessment models thousands more refusals, not as a target](#fact-asylum-law-and-the-echr/the-bill-sets-no-target). While [many may not leave](#fact-asylum-law-and-the-echr/many-refused-may-not-leave), each refusal opens the way to removal.
 

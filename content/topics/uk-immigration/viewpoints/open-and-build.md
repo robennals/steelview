@@ -10,7 +10,7 @@ Britain is richer with the people who come here to work. It should keep welcomin
 
 [Skilled workers outside health and care add hundreds of thousands of pounds each over their lives](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain). [The government's migration advisers expect one year's skilled workers to add tens of billions of pounds to the public purse](#fact-immigration-economy-and-public-finances/mac-cohort-adds-47bn). Cutting numbers would cost money. [In the government's budget watchdog's scenarios, lower migration raises borrowing within five years](#fact-immigration-economy-and-public-finances/lower-migration-raises-borrowing). And [the economy is bigger with more migration in every case the watchdog modelled](#fact-immigration-economy-and-public-finances/total-gdp-moves-with-migration).
 
-### About a fifth of NHS staff are not British, and universities and an ageing Britain need migrants too
+### About a fifth of NHS staff are not British
 
 [About a fifth of NHS staff in England are not British, and over a third of doctors](#fact-work-and-study-routes/fifth-of-nhs-staff). [Students from abroad pay close to half of university course fees](#fact-immigration-economy-and-public-finances/non-uk-fee-share), and [over a third of English universities are already in deficit](#fact-immigration-economy-and-public-finances/a-third-of-universities-in-deficit).
 
@@ -26,7 +26,7 @@ Migration does add demand. [Rent growth more than halved](#fact-immigration-hous
 
 [Immigration is more likely to raise prices where planning rules hold back building](#fact-immigration-housing-and-public-services/local-versus-regional-effects), and [migrants are almost half of London's construction workers](#fact-immigration-housing-and-public-services/migrants-in-london-construction). Fixing the planning rules would let Britain build. Cutting migration would take away many of the people who do the building.
 
-### Immigration moved wages only a few percent, so cutting it would do little for people here
+### Immigration has moved wages by only a few percent
 
 [The government's advisers estimate that 24 years of EU immigration cut the lowest wages by about 5% and raised wages from the median up](#fact-immigration-economy-and-public-finances/small-wage-effects). While [care workers, and adult dependants on the health and care route, cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-route-net-cost), that is a reason to choose carefully. It is no case against the workers who pay their way.
 

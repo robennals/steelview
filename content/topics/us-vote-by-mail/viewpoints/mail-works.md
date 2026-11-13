@@ -6,7 +6,7 @@ order: 2
 ---
 Every voter should be able to vote by mail. The states that mail every voter a ballot show it can be done honestly.
 
-### No election thrown out in the Heritage fraud list was in a long-standing all-mail state
+### None of the Heritage list's overturned elections was in an all-mail state
 
 [None of the elections thrown out for fraud in the Heritage Foundation's list was in a long-standing all-mail state](#fact-absentee-fraud-and-manipulation-of-the-count/no-voidings-in-all-mail-states). Yet [Oregon, Washington, Hawaii, Utah and Colorado cast more than nine in ten ballots by mail](#fact-mail-voting-use-and-effects/all-mail-states-lead). A commission that warned about absentee ballots still [found "little evidence of fraud in Oregon"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-oregon). And [in 2024 all-mail states fell on both sides of the national rejection rate](#fact-mail-ballot-rejection-and-signature-checks/all-mail-states-not-different).
 
@@ -26,7 +26,7 @@ Every voter should be able to vote by mail. The states that mail every voter a b
 
 [Germany cast almost half its 2021 vote by post](#fact-secret-ballot-and-postal-voting-abroad/germany-postal-share-rose), and [Switzerland votes about 90% by post](#fact-secret-ballot-and-postal-voting-abroad/switzerland-about-90-percent). While [a court found thousands of postal votes falsified after Britain let anyone vote by post](#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand), Britain did not end postal voting. Instead, [it added identity checks and banned campaigners from handling postal votes](#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks). [In recent years its Electoral Commission has found no evidence of large-scale fraud](#fact-secret-ballot-and-postal-voting-abroad/uk-no-large-scale-fraud).
 
-### In Oregon few mail voters felt pressured, and polling places are not fully private either
+### Few Oregon mail voters felt pressured
 
 While [nearly a quarter of mail voters have someone else in the room](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone), [in Oregon surveys 1% or fewer felt pressured](#fact-secret-ballot-and-postal-voting-abroad/pressure-rarely-reported). [Polling places are not fully private either](#fact-secret-ballot-and-postal-voting-abroad/in-person-not-fully-private). [Voters of the president's party were usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power), so shrinking mail voting would not fix trust.
 

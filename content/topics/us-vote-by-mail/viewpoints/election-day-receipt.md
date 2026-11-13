@@ -20,13 +20,13 @@ An election should have a clear end. Every ballot should be in officials' hands 
 
 Postmarks are also a weak guide: [since 2024, the Postal Service has postmarked mail at regional centres](#fact-ballot-deadlines-and-counting-speed/postal-delays-and-postmarks). A deadline based on arrival does not need them.
 
-### Big states can count fast, and banning early preparation slows a count
+### Big states can count fast
 
 [Texas and Florida each counted more than ten million votes in about a day](#fact-ballot-deadlines-and-counting-speed/texas-florida-counted-fast). [The slowest counts are mostly in western states, and many mail ballots slow a count](#fact-ballot-deadlines-and-counting-speed/slowest-states-mostly-heavy-mail). [Letting officials prepare mail ballots before Election Day speeds up the first hours of the count](#fact-ballot-deadlines-and-counting-speed/preprocessing-speeds-first-hours).
 
 While early preparation helps, it is not enough on its own. [Arizona and Nevada prepare ballots early yet still count slowly](#fact-ballot-deadlines-and-counting-speed/prepare-early-still-slow). Ending late arrival would remove one more cause of delay.
 
-### In Nevada's largest counties, late ballots were too few to decide the race
+### Late ballots were too few to decide Nevada's race
 
 [In Nevada's two largest counties, late ballots were far below the winner's margins](#fact-ballot-deadlines-and-counting-speed/late-ballots-small-in-nevada). While that race was not close enough for late ballots to matter, a rule should not be judged only by that. [Republican trust fell to 22% after the 2020 count](#fact-confidence-and-disputed-results/count-length-not-separated), but they had also lost, so no one can say if a long count lowers trust on its own. A democracy that wants [results the losers can accept](#principle-results-the-losers-can-accept) should not wait to find out.
 

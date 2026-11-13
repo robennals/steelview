@@ -10,13 +10,13 @@ Britain should stop giving migrants the right to stay for good. People who alrea
 
 Indefinite leave to remain, or settlement, is the right to stay in Britain for life. [The Home Office expects about 1.6 million people to settle by 2030](#fact-settlement-and-migrant-status/forecast-1-6-million). [The rise comes from health and care, skilled-worker and Hong Kong visas issued since 2021](#fact-settlement-and-migrant-status/forecast-drivers-in-detail). Once settled, [a person can claim most of the benefits that people on temporary visas cannot](#fact-settlement-and-migrant-status/settlement-unlocks-benefits). Voters should get to decide that before it happens.
 
-### Care workers, health and care dependants and partners cost more than they pay over a lifetime
+### Some visa groups cost more than they pay over a lifetime
 
 Government advisers find that [care workers, and the adult family members of health and care workers, cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-route-net-cost). [Partners arriving on the family route come out at a cost of £109,000 each](#fact-immigration-economy-and-public-finances/partner-route-lifetime-cost). [About half of adult skilled-worker dependants were not working, and a third of adults on family visas were not working by their fifth year](#fact-settlement-and-migrant-status/non-working-groups).
 
 The same advisers conclude that [for lower earners, a temporary stay is better for the public purse than a permanent one](#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners). And in the budget watchdog's figures, [old age reverses most of the gains](#fact-immigration-economy-and-public-finances/old-age-reverses-gains). Settlement turns a working stay into decades of claims on pensions, health and care.
 
-### Skilled workers are worth keeping, and a renewable visa would keep them
+### Skilled workers pay in more than they take out
 
 Under a five-year renewable visa, the well-paid engineer stays. [A skilled worker outside health and care adds hundreds of thousands of pounds over a lifetime](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain). The person who does not work is not renewed.
 

@@ -12,7 +12,7 @@ The Constitution settles who writes election rules. Each state's voters should c
 
 This keeps [decisions close to the people](#principle-decisions-made-closest-to-the-people) who live with them. If a state's voters dislike its ID rule, they can elect lawmakers who will change it. That is [democratic consent](#principle-democratic-consent-over-membership) at the level where it counts most.
 
-### Courts have blocked a president's proof-of-citizenship rule, and rightly
+### Courts have blocked a president's proof-of-citizenship rule
 
 [Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule, and one held that it goes beyond a president's power](#fact-federal-and-state-power-over-voting-rules/two-courts-blocked-2025-order). That is right, whatever one thinks of proof of citizenship. A rule one president can impose by order, the next can cancel.
 
@@ -26,7 +26,7 @@ While [the Supreme Court let the 2026 order's citizenship lists go ahead](#fact-
 
 [The Republican bill would require proof of citizenship and photo ID](#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions). [The Democratic one would have required early voting and made ID states accept alternatives](#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions). [Both stalled short of the 60 votes needed in the Senate: 49 for the Democrats' bill, 52 for a photo-ID version of the Republicans'](#fact-federal-and-state-power-over-voting-rules/national-bills-stalled). Either would force one side's choice on every state, and the next majority would force its own.
 
-### Congress has set only a few national rules, and should leave the rest to the states
+### Congress should leave most election rules to the states
 
 Some [national minimum rules Congress has set since 1965](#fact-federal-and-state-power-over-voting-rules/congress-has-set-national-floors) were plainly needed: [Black registration in three Deep South states rose about five points or less in the years before the Voting Rights Act](#fact-election-fraud-and-voter-exclusion-history/pre-vra-stagnation).
 

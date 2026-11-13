@@ -6,13 +6,13 @@ order: 4
 ---
 People who came to Britain lawfully, on a path the state set out, should be allowed to finish it. Parliament can change the rules for people who have not yet come.
 
-### About 2.2 million people were on the path to settlement Britain offered
+### About 2.2 million people are on the path to settlement
 
 Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). They took jobs, moved their families and put their children in school.
 
 They have also paid. [Over five years, a skilled worker pays thousands of pounds in fees and a yearly health charge](#fact-settlement-and-migrant-status/skilled-worker-route-costs), on top of tax. [The settlement fee alone is ten times what it costs the Home Office to process](#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost). Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
 
-### Britain usually protects people already on a route, and a court has enforced it
+### Britain usually protects people already on a route
 
 The government once toughened the rules for skilled migrants already here. [In 2008 the High Court ruled that changing the scheme midway was "conspicuous unfairness and an abuse of power"](#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008). [MPs found it "common" for the Home Office to protect people already on a route](#fact-settlement-and-migrant-status/transitional-protection-precedent). [For Hong Kong's British Nationals (Overseas), the government called the route a "historic and moral commitment"](#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment).
 
