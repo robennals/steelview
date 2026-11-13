@@ -43,6 +43,39 @@ test('a source url must be http or https', () => {
   assert.equal(result.success, false);
 });
 
+test('a source url must be a page a reader can open, not a data file', () => {
+  for (const url of [
+    'https://assets.publishing.service.gov.uk/media/abc/tables.ods',
+    'https://www.example.org/data.xlsx',
+    'https://www.ons.gov.uk/file?uri=/economy/datasets/rents/rents.xlsx',
+    'https://www.ons.gov.uk/generator?format=csv&uri=/economy/timeseries/abmi/pn2',
+    'https://api.worldbank.org/v2/country/IRN/indicator/SP.POP.TOTL?format=json',
+    'https://clerk.house.gov/evs/2026/roll307.xml',
+    'https://stat.link/f9aut5',
+  ]) {
+    const result = factFrontmatterSchema.safeParse({ claim: 'c', status: 'well-supported', sources: [{ ...source, url }] });
+    assert.equal(result.success, false, url);
+  }
+});
+
+test('a source url may be a web page or a PDF, and keeps its data file in fileUrl', () => {
+  for (const url of ['https://www.ons.gov.uk/economy/timeseries/abmi/pn2', 'https://www.iaea.org/sites/default/files/gov2026-50.pdf']) {
+    const parsed = factFrontmatterSchema.parse({
+      claim: 'c',
+      status: 'well-supported',
+      sources: [{ ...source, url, fileUrl: 'https://www.example.org/data.xlsx' }],
+    });
+    assert.equal(parsed.sources[0].fileUrl, 'https://www.example.org/data.xlsx');
+  }
+});
+
+test('a source localFile must sit under datasets', () => {
+  const parse = (localFile: string) =>
+    factFrontmatterSchema.safeParse({ claim: 'c', status: 'well-supported', sources: [{ ...source, localFile }] }).success;
+  assert.equal(parse('datasets/ons.gov.uk/uk1.zip'), true);
+  assert.equal(parse('public/uk1.zip'), false);
+});
+
 test('a source date accepts YYYY, YYYY-MM and YYYY-MM-DD but not prose', () => {
   for (const date of ['2024', '2024-11', '2024-11-28']) {
     assert.equal(

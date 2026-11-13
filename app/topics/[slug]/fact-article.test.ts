@@ -174,7 +174,7 @@ test('a categorical tile map, a geo map and a scatter plot render from a fact fi
   const html = await renderFixture();
   const tiles = figureMarkup(html, 'figure-examples--chart-voter-id-rules');
   assert.match(tiles, /aria-label="Arkansas: Strict photo ID"/);
-  assert.match(tiles, /scope="rowgroup"/);
+  assert.match(tiles, /scope="row"/);
   const geo = figureMarkup(html, 'figure-examples--chart-postal-voting');
   assert.match(geo, /<path[^>]*data-region="US"[^>]*data-highlight="true"/);
   assert.match(geo, /aria-label="Australia: Some voters"/);

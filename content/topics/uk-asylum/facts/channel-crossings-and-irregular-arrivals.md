@@ -448,8 +448,9 @@ series:
     title: >-
       Migrants detected crossing the English Channel in small boats: time series (23
       October 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    url: https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    localFile: datasets/assets.publishing.service.gov.uk/23_October_2026_Small_boats_-_time_series.ods
     publisher: Home Office
     date: '2026-10-23'
   readings:
@@ -633,8 +634,9 @@ additionalSeries:
       in the UK and recorded detections at UK ports. This may differ from the information
       given when the detection was initially recorded.
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -895,8 +897,9 @@ additionalSeries:
       on different methods of entry as different datasets have different levels of
       coverage.
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:
@@ -999,8 +1002,9 @@ additionalSeries:
     title: >-
       Migrants detected crossing the English Channel in small boats: time series (23
       October 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    url: https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    localFile: datasets/assets.publishing.service.gov.uk/23_October_2026_Small_boats_-_time_series.ods
     publisher: Home Office
     date: '2026-10-23'
   readings:
@@ -1252,8 +1256,9 @@ additionalSeries:
     title: >-
       Monthly detections of illegal border-crossings (IBC), January 2009 to August
       2026
-    url: >-
-      https://www.frontex.europa.eu/assets/Migratory_routes/2026/Monthly_detections_of_IBC_2026_10_05.xlsx
+    url: https://www.frontex.europa.eu/what-we-do/monitoring-and-risk-analysis/migratory-map/
+    fileUrl: https://www.frontex.europa.eu/assets/Migratory_routes/2026/Monthly_detections_of_IBC_2026_10_05.xlsx
+    localFile: datasets/frontex.europa.eu/Monthly_detections_of_IBC_2026_10_05.xlsx
     publisher: Frontex
     date: '2026-10-05'
   readings:
@@ -1447,8 +1452,9 @@ additionalSeries:
     title: >-
       Migrants detected crossing the English Channel in small boats: time series (23
       October 2026)
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    url: https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats
+    fileUrl: https://assets.publishing.service.gov.uk/media/6adb41a0b62d80a107bc5c3f/23_October_2026_Small_boats_-_time_series.ods
+    localFile: datasets/assets.publishing.service.gov.uk/23_October_2026_Small_boats_-_time_series.ods
     publisher: Home Office
     date: '2026-10-23'
   readings:
@@ -1747,8 +1753,9 @@ additionalSeries:
       IER_D01: Number of detected arrivals via illegal routes to the UK, 2018 Q1 to
       2026 Q2 - dataset
     title: Illegal entry routes to the UK detailed datasets, year ending June 2026
-    url: >-
-      https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
   readings:

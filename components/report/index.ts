@@ -35,7 +35,7 @@ export type { GeoRegion, LonLat } from './geo/types';
 export type { MapCategory, CategoryAssignment, CategoryData, CategoryEncoding, MapEncoding } from './geo/categorical';
 export type { Bounds, ProjectionKind } from './geo/project';
 export { partitionRegions } from './geo/regions';
-export { WORLD_COUNTRIES } from './geo/world-countries';
+export { WORLD_COUNTRIES, WORLD_EXTENT } from './geo/world-countries';
 export { EUROPE_COUNTRIES, EUROPE_EXTENT } from './geo/europe-countries';
 export { UK_ITL1_REGIONS } from './geo/uk-itl1';
 export { US_STATES, US_TERRITORIES } from './geo/us-states';

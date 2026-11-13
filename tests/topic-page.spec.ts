@@ -116,6 +116,21 @@ test('a viewpoint opens a data panel without leaving its tab', async ({ page }) 
   await expect(viewpoint).toBeVisible();
 });
 
+// A reader can arrive on the observation's own address (a shared link); the
+// sheet adds its own entry on top, and Close must still leave it.
+test('a data panel opened from a page already at its observation still closes', async ({ page }) => {
+  await page.goto(TOPIC);
+  const first = await openViewpoint(page, 'open-and-build');
+  const href = await first.locator('.sv-walk__slide').first().getByRole('link', { name: 'Explore this data' }).getAttribute('href');
+  await page.goto(`${TOPIC}${new URL(href!, 'http://x').hash}`);
+  const viewpoint = await openViewpoint(page, 'open-and-build');
+  // Dispatched rather than clicked: scrolling the link into view sets the opening row moving again.
+  await viewpoint.locator('.sv-walk__slide').first().getByRole('link', { name: 'Explore this data' }).dispatchEvent('click');
+  await expect(page.locator('dialog[open]')).toHaveCount(1);
+  await page.locator('dialog[open] .sv-modal__close').click();
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+});
+
 test('closing a fact keeps the tab that was showing', async ({ page }) => {
   await page.goto(DATA);
   const citation = await viewpointCitation(page, 'work-and-study-routes');
