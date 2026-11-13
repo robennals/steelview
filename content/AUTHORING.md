@@ -248,7 +248,8 @@ It has to be easy to take in at a glance.
   several numbers, it needs a chart.
 - **Dated events go on the timeline.** When a law, policy or event bears on a
   movement in a series, add it to the series' `events`: it appears as a
-  numbered marker under the chart, with its details one click away. Do not
+  numbered marker under the chart, on a dotted line up through the plot, and
+  choosing the number shows that one event. Do not
   narrate the sequence of changes in a block of text.
 - **Observations are short, and can be seen on the chart.** A summary heading
   that states the claim in one line, then one to three short sentences and their
@@ -651,8 +652,8 @@ The chart then draws a small strip of the full range with the window
 outlined, says in words which period the plot shows, and draws the window at
 readable scale; a switch shows the full range instead, and the table still
 holds every value. The window must lie inside the coverage and hold at least
-two points of some line. Events outside it stay in the numbered key, marked
-"(outside the period shown)". `focus` is for reading the recent past
+two points of some line. Events outside it have no marker there; a line under
+the chart counts them, and Full range shows them. `focus` is for reading the recent past
 closely, never for hiding the rest: the coverage rule is unchanged.
 
 **A series carries its own quoted source**, in the same shape as a fact's
@@ -662,8 +663,9 @@ source of its own.
 
 **Events are marked, not narrated.** The `events` array on a series takes a
 period, a short label, an optional one-sentence note and the number of the
-fact citation that dates it. Each event becomes a numbered marker on a strip
-under the chart, lined up with the time axis. An event marks when something
+fact citation that dates it. Each event becomes a numbered marker under the
+chart, on a dotted line running up through the plot at its date, and the
+number opens a card with that one event. An event marks when something
 happened; it does not claim the movement beside it was caused by it — that
 claim, if the evidence supports one, belongs in an observation with its
 source. A change in how the data was *measured* is a break, not an event.
@@ -672,7 +674,10 @@ source. A change in how the data was *measured* is a break, not an event.
 takes a period, a short label and a note in the source's own terms.
 `immigration-against-the-long-run` marks three: LTIM replacing IPS-alone in
 1991, administrative data backdated to 2012, and the June 2021 method change.
-The line still runs through them; the reader is told what changed.
+The line still runs through them; the reader is told what changed. Each break
+is marked just as an event is, numbered in the same date order with its card,
+in its own amber square and named "Measurement change", so it is never read
+as something that happened in the world.
 
 **Estimates and forecasts are drawn, not dropped.** When a source mixes
 history with estimates, provisional values or forecasts, run the series to
@@ -689,7 +694,8 @@ nobody has measured since — not because the source ends — add
 the source's terms, the numbered `source` that says so, and optionally `until`
 (it defaults to the topic's `lastUpdated`, and may not be later). The chart
 hatches the gap from the last point to `until`, writes a key line under the
-plot, and adds a Method Changes entry the key line links to. Events may fall
+plot, and adds a Method Changes entry the key line links to. It has no single
+date to mark, so it is the one measurement note kept there. Events may fall
 inside the band.
 
 **Multiple readings, not a toggle you can ship the flattering half of.** A
@@ -700,10 +706,9 @@ own misleading framing, and a share alone hides that the growth is mostly in
 the numerator. `religion-of-arrivals-is-not-recorded` does the same with
 share and volume, and its body says why — "Share down, volume up; the chart
 carries both readings, and either one quoted alone gives the wrong picture."
-Every panel draws the series' event markers, breaks and not-measured band,
-but what they share is listed once: the numbered event key after the last
-panel, and Method Changes under the first (so its anchors are
-`<fact>--<first reading>-method-<period>`).
+Every panel draws the series' event and measurement-change markers, each
+opening its own card, and its not-measured band, which is explained once, in
+Method Changes under the first panel.
 
 A reading's `label` is a subheading, drawn only when a series has more than
 one reading, so it never stands in for the title: the series `title` is what
@@ -743,7 +748,7 @@ from a causal explanation, and a supported cause from a plausible hypothesis.
 Check policy dates: a later restriction cannot explain an earlier turn. Note
 lags and incomplete effects when relevant. Do not manufacture a story for every
 small wiggle; if a major movement has no established explanation, say what is
-unknown. Explain measurement breaks in Method Changes so readers do not mistake them for events.
+unknown. Mark measurement changes as `breaks` so readers do not mistake them for events.
 
 ### Home-page order
 
@@ -2198,13 +2203,10 @@ qualification worth the reader's attention.
 
 ### Keep Observations Off the Plot
 
-Do not overlay observation circles on the plotted data. Keep vertical dashed
-lines for measurement changes, with a brief key linking to their explanations.
-Observations belong in the collapsed Observations group beneath the graph.
-Measurement changes have their own collapsed Method Changes section beside it.
-Both use expandable summaries and stable IDs for direct links. Method-change summaries identify the date and change;
-they do not need matching numbers. The `series.breaks` metadata generates these
-explanations automatically. Keep dashed segments along the data series where
+Do not overlay observation circles on the plotted data. Observations belong in
+the collapsed Observations group beneath the graph, with expandable summaries
+and stable IDs for direct links. Measurement changes are marked under the graph
+from the `series.breaks` metadata. Keep dashed segments along the data series where
 methods change, so incompatible measurements do not appear to be a continuous trend.
 
 ### Nationality Breakdowns and Selectable Country Comparisons
@@ -2237,19 +2239,17 @@ main graph sequence, including its observation groups and measurement-change exp
 one data definition and one set of source citations instead of copying numbers
 into a second fact.
 
-### Method Changes Have Their Own Section
+### Measurement Changes Are Marked on the Graph
 
 Keep Observations focused on patterns in the data and explanations of real-world
-events. Changes in measurement, definitions or coverage belong in a separate
-**Method Changes** expando beneath each affected graph, after Observations and
-any Subtleties. Omit this section when there are no changes to explain.
+events. Changes in measurement, definitions or coverage go in the series'
+`breaks`, which draws each as a marker of its own colour and shape with a card
+giving its date, label and note, citing the series source. A reader finds them
+where the line changes, not in a list elsewhere.
 
-Series `breaks` automatically generate dated, individually expandable entries in
-Method Changes. Keep the vertical dashed lines and their link to the relevant
-explanation, without circles. Source links refer to the series source. Preserve
-stable entry IDs so existing links still open the right explanation. Do not
-duplicate these entries under About this data; reserve that expando for general
-collation, calculations and coverage notes.
+Do not repeat these under About this data; reserve that expando for general
+collation, calculations and coverage notes. A "not measured since" band spans a
+period rather than a date, so it keeps its **Method Changes** expando.
 
 ### One Data Collection Can Contain Several Observations
 
