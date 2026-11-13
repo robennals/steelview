@@ -33,7 +33,9 @@ export function CruxRows({ cruxes, viewpointsById }: CruxRowsProps) {
           className="sv-row--crux"
           title={crux.title}
           subtitle={crux.tension}
-          meta={<p className="sv-row__meta"><span className="sv-tag">{KIND_LABELS[crux.kind]}</span></p>}
+          // Keyed because this server-built element sits beside TopicRow's own
+          // heading children on the client, where React asks for a key.
+          meta={<p key="meta" className="sv-row__meta"><span className="sv-tag">{KIND_LABELS[crux.kind]}</span></p>}
           thumbs={null}
         >
           <dl className="sv-positions">
