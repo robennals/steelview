@@ -208,8 +208,8 @@ test('a crux is a row: its tension closed, and what each side holds under its sh
   assert.match(html, /sv-tag">Tension between principles</);
   assert.match(html, /sv-row__title">Speed and care</);
   assert.match(html, /sv-row__subtitle">Both matter, and hurrying costs care\.</);
-  assert.match(html, /<a href="#viewpoint-one">One view<\/a>/);
-  assert.match(html, /<a href="#viewpoint-two">Two view<\/a>/);
+  assert.match(html, /<dt>One view<\/dt>/);
+  assert.match(html, /<dt>Two view<\/dt>/);
   assert.match(html, /<dd>Soon\.<\/dd>/);
 });
 

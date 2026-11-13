@@ -1467,13 +1467,6 @@
     color: var(--ink);
   }
 
-  .sv-position dt a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    text-decoration-color: var(--rule-strong);
-  }
-
   .sv-position dd {
     margin: 0;
     font-family: var(--font-serif);

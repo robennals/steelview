@@ -114,29 +114,19 @@ test('a tab keeps its open rows while another is showing', async ({ page }) => {
   await expect(viewpoint).toHaveAttribute('data-open', 'true');
 });
 
-test('a link to a viewpoint from a crux brings up the viewpoint', async ({ page }) => {
+test('a crux is plain text: it links to nothing', async ({ page }) => {
   await page.goto(DATA);
   const crux = page.locator('.sv-row--crux').first();
   await crux.locator('.sv-row__toggle').click(headCorner);
-  await crux.locator('.sv-position a').first().click();
-  await expect(page.locator('.sv-row--viewpoint[data-open]')).toBeInViewport();
+  await expect(crux.locator('.sv-position dt').first()).toBeVisible();
+  await expect(crux.locator('.sv-positions a')).toHaveCount(0);
 });
 
-// The row open above it closes as this one opens, which moves everything up.
-test('a crux\'s viewpoint stays in view as the open row above it closes', async ({ page }) => {
-  await page.goto(TOPIC);
-  await page.locator('.sv-row--viewpoint').first().locator('.sv-row__toggle').click(headCorner);
-  await openTab(page, 'Data');
-  const crux = page.locator('.sv-row--crux').first();
-  await crux.locator('.sv-row__toggle').click(headCorner);
-  const first = await page.locator('.sv-row--viewpoint').first().getAttribute('id');
-  const link = crux.locator(`.sv-position a:not([href="#${first}"])`).first();
-  const row = page.locator((await link.getAttribute('href')) ?? '');
-  await link.click();
-  await expect(row).toHaveAttribute('data-open', 'true');
-  await page.waitForTimeout(800);
-  await expect(row.locator('.sv-row__title')).toBeInViewport();
-  expect(await row.evaluate(el => el.getBoundingClientRect().top)).toBeLessThan(200);
+test('a link to a viewpoint loaded cold brings up the viewpoint, opened', async ({ page }) => {
+  await page.goto(`${TOPIC}#viewpoint-open-and-build`);
+  const viewpoint = page.locator('#viewpoint-open-and-build');
+  await expect(viewpoint).toHaveAttribute('data-open', 'true');
+  await expect(viewpoint).toBeInViewport();
 });
 
 test('a link to a crux loaded cold brings up the crux, opened', async ({ page }) => {
