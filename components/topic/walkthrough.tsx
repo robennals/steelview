@@ -59,6 +59,17 @@ export function Walkthrough({ name, headings, noun, endLabel, thumbs, children }
     return () => observer.disconnect();
   }, [measureTabs]);
 
+  // On a phone a row's strip is only as tall as the step showing (globals.css).
+  // That step's height can change too, as its chart loads.
+  useEffect(() => {
+    const row = strip.current;
+    const current = row?.children[index];
+    if (!row || !current) return;
+    const observer = new ResizeObserver(() => row.style.setProperty('--sv-walk-step-height', `${current.getBoundingClientRect().height}px`));
+    observer.observe(current);
+    return () => observer.disconnect();
+  }, [strip, index]);
+
   /** Bring the next miniatures into view, a whole line of them at a time. The selection stays. */
   const pageTabs = (direction: 1 | -1) => {
     const row = tabs.current;
