@@ -1,5 +1,4 @@
 import { test, expect } from './hydrated-test';
-import { viewpointCitation } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the reports
 // `crime-terrorism-and-group-exploitation`, `immigration-economy-and-public-finances`
@@ -139,13 +138,12 @@ test('the address of a merged fact redirects to its report', async ({ page }) =>
   await expect(page.locator('h1.sv-factpage__claim')).toContainText('Immigration, the Economy and the Public Finances');
 });
 
-test('clicking a citation opens the fact it points at', async ({ page }) => {
-  await page.goto(TOPIC);
-  await (await viewpointCitation(page, 'work-and-study-routes')).click();
-  await expect(page).toHaveURL(new RegExp(`${factUrl('work-and-study-routes')}#`));
-  await expect(page.locator('dialog.sv-modal #sv-modal-title')).toContainText(
-    'Work and Study Visas and the Care Workforce'
-  );
+test('a related report opens as a page of its own, not over the one you are on', async ({ page }) => {
+  await page.goto(factUrl(LONG_RUN));
+  await page.locator('.sv-related a').first().click();
+  await expect(page).not.toHaveURL(new RegExp(`${factUrl(LONG_RUN)}$`));
+  await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
+  await expect(page.locator('dialog')).toHaveCount(0);
 });
 
 // A viewpoint's "Explore this data" is a real link, for a new tab or a crawler.

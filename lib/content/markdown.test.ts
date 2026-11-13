@@ -48,7 +48,6 @@ test('a link to a fact anchor is marked as a citation', async () => {
   assert.match(html, /<a[^>]*href="\/topics\/example\/facts\/net-migration-2024"/);
   assert.doesNotMatch(html, /href="#fact-/);
   assert.match(html, /class="sv-cite"/);
-  assert.match(html, /data-fact-id="net-migration-2024"/);
   assert.match(html, />reached 944,000<\/a>/);
 });
 
@@ -59,7 +58,6 @@ test('ordinary links and other in-page anchors are left alone', async () => {
   );
   assert.match(html, /href="#principle-fairness"/);
   assert.doesNotMatch(html, /sv-cite/);
-  assert.doesNotMatch(html, /data-fact-id/);
 });
 
 test('a #needed link renders as its plain text, with no link', async () => {
@@ -84,7 +82,7 @@ test('a citation with a data panel opens the panel', async () => {
   );
   assert.equal(html, '<p>'
     + '<a href="/topics/example/facts/alpha#alpha--peak" class="sv-cite" data-panel-link="" data-panel-fact="alpha" data-panel-observation="alpha--peak">Panel</a> and '
-    + '<a href="/topics/example/facts/beta#beta--rise" class="sv-cite" data-fact-id="beta">no panel</a>.</p>');
+    + '<a href="/topics/example/facts/beta#beta--rise" class="sv-cite">no panel</a>.</p>');
 });
 
 test('without footnotes, source footnotes are left out and the prose kept', async () => {
@@ -118,7 +116,6 @@ test('citedFactIds ignores a fact anchor that is not a link', () => {
 test('section citations retain a stable fragment and sections wrap their explanation', async () => {
   const html = await renderMarkdown('[the number](#fact-alpha/comparison)', 'example');
   assert.match(html, /href="\/topics\/example\/facts\/alpha#alpha--comparison"/);
-  assert.match(html, /data-fact-id="alpha"/);
   const body = await renderMarkdown('### Comparison {#alpha--comparison}\n\nMeasured here. [1](#source-alpha-1)', 'example');
   assert.match(body, /<section id="alpha--comparison"/);
   assert.match(body, /class="sv-footnote"/);

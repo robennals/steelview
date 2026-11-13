@@ -77,7 +77,7 @@ own rankings by `lib/content/rank-facts.ts`; viewpoint order is the explicit
 
 ### Data Collections, Datasets and Observations
 
-The reader-facing section is **Data**, and each popup is a **data collection**:
+The reader-facing section is **Data**, and each row in it is a **data collection**:
 a set of datasets, graphs and other evidence breaking down one aspect of the
 topic. An individual graph or table is a dataset or artifact within that
 collection. An **observation** explains a finding in those data. Do not equate
@@ -223,7 +223,7 @@ Specific factual conclusions belong in the cited opening finding and in
 addressable observations beneath the relevant artifacts. A neutral title does
 not require vague observations or withholding conclusions supported by data.
 
-`claim` opens the collection's row on the topic page and leads its popup, so
+`claim` opens the collection's row on the topic page and leads its own page, so
 it is a **one-sentence overview** saying what the report mainly finds,
 specific enough to be checkable but without a list of figures. The reader's
 attention belongs on the charts. The figures appear in
@@ -350,7 +350,7 @@ The design references are [LessWrong](https://www.lesswrong.com/),
 [Substack](https://substack.com/) and
 [Our World in Data](https://ourworldindata.org/population-growth): borrow their
 attention to reading measure, whitespace and distinct editorial/chart typography.
-Check long and short facts in both the popup and their own page, on desktop and
+Check long and short facts in both their row and their own page, on desktop and
 mobile. Hierarchy must survive without relying on bold everywhere.
 
 Long explanations of sourcing, collation, derivation and methodology belong in
@@ -365,7 +365,7 @@ and across countries, how confident to be, and what it is commonly mistaken for.
 
 ### Addressable findings and source footnotes
 
-One popup may contain several statistics. Give each finding a stable section ID:
+One collection may contain several statistics. Give each finding a stable section ID:
 
 ```markdown
 ## Observations {#example--observations}
@@ -2203,7 +2203,7 @@ legend. Definitions live in `lib/content/glossary.ts`; reuse the same definition
 across facts. Unknown glossary IDs fail rendering. Keep each definition short,
 plain and specific about the measurement; factual claims needing evidence belong
 in a linked fact rather than a glossary. Explain the term without opening another
-definition. The native popup works above a fact popup, dismisses on Escape or an
+definition. The native popup works above a data panel, dismisses on Escape or an
 outside click, and has a close button. It works without JavaScript.
 
 ### Show the Parts of a Total

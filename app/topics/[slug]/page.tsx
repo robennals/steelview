@@ -117,7 +117,7 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
    * larger claim and reads inside that claim, so the rows are the things the
    * argument is actually about rather than every checkable item on the page.
    * The supporting facts, and the shape of the argument they carry, live on
-   * the parent fact's own reading (its modal or page).
+   * the parent fact's own page.
    */
   const headline = orderHeadlineFacts(topic);
 

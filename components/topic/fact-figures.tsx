@@ -21,7 +21,7 @@ import {
   SmallMultiples,
   Timeline,
 } from '@/components/report';
-import { bodySections, chartObservations, methodChanges, observationTargets } from '@/lib/content/chart-observations';
+import { methodChanges } from '@/lib/content/chart-observations';
 import { unmeasuredSpan } from '@/lib/chart/series-chart';
 import {
   areaMapProps,
@@ -49,16 +49,13 @@ import {
 import { factSlides, type PreviewSlide } from '@/lib/content/preview';
 import { factCitations, markedObservations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
-import { componentFigure, figureLabel } from '@/lib/content/types';
+import { componentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { ChartSources } from './chart-sources';
 import { Prose } from './prose';
-import { SeriesChart, methodChangesReadingId } from './series-chart';
+import { SeriesChart } from './series-chart';
 import { SourcesSlot } from './sources-slot';
-
-/** A fact and its rendered body, shared by full pages and previews. */
-export type BodiedFact = { fact: Fact; bodyHtml: string };
 
 /** What a figure needs from the topic around its fact. */
 export type FigurePage = {
@@ -68,45 +65,6 @@ export type FigurePage = {
   /** The topic's facts, so a claim check's evidence link lands on the right page. */
   facts: Pick<Fact, 'id' | 'supports'>[];
 };
-
-type Groups = { observations?: Record<string, string>; subtleties?: Record<string, string> };
-
-type VizProps = { fact: Pick<Fact, 'id'>; chart: string; label: string; children: ReactNode };
-
-/**
- * One visualization in a data collection, marked so the collection can be
- * read one visualization at a time: `VizTabs` lists every one as a tab, and a
- * link into it (an observation, say) shows it on its own. The id is the
- * address of that view.
- */
-function Viz({ fact, chart, label, children }: VizProps) {
-  return <div className="sv-viz" id={vizDomId(fact, chart)} data-viz={label}>{children}</div>;
-}
-
-/** The address of one visualization's view: `#<fact>--viz-<chart>`. */
-export function vizDomId(fact: Pick<Fact, 'id'>, chart: string): string {
-  return `${fact.id}--viz-${chart}`;
-}
-
-/** The Observations and Subtleties under one chart or figure, or nothing. */
-function groupProse(id: string, { observations = {}, subtleties = {} }: Groups) {
-  return (observations[id] || subtleties[id]) && <Prose html={(observations[id] ?? '') + (subtleties[id] ?? '')} className="sv-graph-observations" />;
-}
-
-/** The fact's `series` (no `seriesId`) or one `additionalSeries`, with its readings' observation groups and Method Changes. */
-function FactSeries({ fact, seriesId, observations = {}, subtleties = {} }: { fact: Fact; seriesId?: string } & Groups) {
-  const index = seriesId === undefined ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === seriesId);
-  const series = seriesId === undefined ? fact.series : fact.additionalSeries?.[index];
-  if (!series) return null;
-  const sourceOffset = seriesSourceOffset(fact, index);
-  // The not-measured band belongs to the series, not a reading: listed once.
-  const host = methodChangesReadingId(series);
-  const methods = (readingId: string) => (readingId === host ? methodChanges(fact.id, readingId, unmeasuredSpan(series)) : '');
-  const readingGroups = Object.fromEntries(series.readings.map(reading => [reading.id, <Prose key={reading.id} html={(observations[reading.id] ?? "") + (subtleties[reading.id] ?? "") + methods(reading.id)} className="sv-graph-observations" />]));
-  return <Viz fact={fact} chart={seriesId ?? 'series'} label={series.title}>
-    <SeriesChart chartId={seriesId} factId={fact.id} series={series} sourceOffset={sourceOffset} sources={factSources(fact)} observations={readingGroups} />
-  </Viz>;
-}
 
 /**
  * One chart of a data panel in full: its controls and method changes, for one
@@ -147,152 +105,56 @@ export function panelCharts(fact: Fact, page: FigurePage, { addressed = false } 
   });
 }
 
-/** The fixed order a fact without `figures` has always used: series, additional series, featured charts, comparisons. */
-export function FactCharts({ fact, observations = {}, subtleties = {}, afterSeries }: { fact: Fact; observations?: Record<string, string>; subtleties?: Record<string, string>; afterSeries?: ReactNode }) {
-  return <>
-    {fact.series && <FactSeries fact={fact} observations={observations} subtleties={subtleties} />}
-    {fact.additionalSeries?.map(series => <FactSeries key={series.id} fact={fact} seriesId={series.id} observations={observations} subtleties={subtleties} />)}
-    {afterSeries}
-    {fact.comparisons?.map(chart => <Viz key={chart.id} fact={fact} chart={chart.id} label={chart.title}>
-      <ComparisonChart fact={fact} chart={chart} sources={factSources(fact)} observations={groupProse(chart.id, { observations, subtleties })} />
-    </Viz>)}
-  </>;
-}
-
-/** A fact's observation groups, keyed by reading, comparison, figure and section id (`observationTargets`). */
-export function chartGroups(fact: Fact, bodyHtml: string) {
-  return chartObservations(bodyHtml, fact.id, observationTargets(fact));
-}
-
-/**
- * The observation groups and placed sections of a fact with `figures`: every
- * reading, comparison, component figure and `section` id can carry its own
- * Observations and Subtleties, and each `section` is lifted out of the body to
- * sit where its figure entry does.
- */
-export function figureGroups(fact: Fact, bodyHtml: string) {
-  const figures = fact.figures ?? [];
-  const sectionIds = figures.flatMap(f => (f.kind === 'section' ? [f.id] : []));
-  const grouped = chartGroups(fact, bodyHtml);
-  const { sections, bodyHtml: rest } = bodySections(grouped.bodyHtml, fact.id, sectionIds);
-  return { observations: grouped.observations, subtleties: grouped.subtleties, sections, bodyHtml: rest };
-}
-
-/** The charts of a supporting fact named in `featuredCharts`, with its own observation groups. */
-export function FeaturedCharts({ child, page }: { child: BodiedFact; page: FigurePage }) {
-  if (child.fact.figures) {
-    const groups = figureGroups(child.fact, child.bodyHtml);
-    return <FactFigures fact={child.fact} observations={groups.observations} subtleties={groups.subtleties} sections={groups.sections} featured={[]} page={page} />;
-  }
-  const childGroups = chartGroups(child.fact, child.bodyHtml);
-  return <FactCharts fact={child.fact} observations={childGroups.observations} subtleties={childGroups.subtleties} />;
-}
-
-/**
- * A fact's `figures`, in the order written: its series and comparisons, the
- * charts of featured supporting facts, sections of its body, and library
- * figures, each with its own Observations inside its frame.
- */
-export function FactFigures({ fact, observations, subtleties, sections, featured, page }: {
-  fact: Fact;
-  observations: Record<string, string>;
-  subtleties: Record<string, string>;
-  sections: Record<string, string>;
-  /** Supporting facts named in featuredCharts, with their rendered bodies. */
-  featured: BodiedFact[];
-  page: FigurePage;
-}): ReactNode {
-  const context = figureContext(fact, page.asOf);
-  return (fact.figures ?? []).map((figure, i) => {
-    switch (figure.kind) {
-      case 'series':
-        return <FactSeries key={`series-${figure.id ?? ''}`} fact={fact} seriesId={figure.id} observations={observations} subtleties={subtleties} />;
-      case 'comparison': {
-        const chart = fact.comparisons?.find(c => c.id === figure.id);
-        return chart && <Viz key={`comparison-${chart.id}`} fact={fact} chart={chart.id} label={chart.title}>
-          <ComparisonChart fact={fact} chart={chart} sources={context.sources} observations={groupProse(chart.id, { observations, subtleties })} />
-        </Viz>;
-      }
-      case 'featured': {
-        const child = featured.find(({ fact: f }) => f.id === figure.fact);
-        return child && <FeaturedCharts key={`featured-${figure.fact}`} child={child} page={page} />;
-      }
-      case 'section':
-        return <Prose key={`section-${figure.id}`} html={(sections[figure.id] ?? '') + (observations[figure.id] ?? '') + (subtleties[figure.id] ?? '')} />;
-      default:
-        return <Viz key={`${figure.kind}-${figure.id}-${i}`} fact={fact} chart={figure.id} label={figureLabel(figure)}>
-          {figure.replaces && <AnchorAliases factId={fact.id} anchors={figure.replaces} target={figureDomId(fact, figure.id)} />}
-          <FactFigure figure={figure} context={context} page={page} footer={groupProse(figure.id, { observations, subtleties })} />
-        </Viz>;
-    }
-  });
-}
-
-/**
- * The old anchors of prose a figure replaced (`replaces`), as empty elements
- * just before it, so a link written before the conversion still lands on the
- * figure. Placed before the figure rather than inside it, every kind gets
- * them without passing them through its component; the highlight follows to
- * the figure (globals.css with JavaScript off, revealEvidence with it on).
- */
-function AnchorAliases({ factId, anchors, target }: { factId: string; anchors: string[]; target: string }) {
-  return (
-    <div className="sv-anchor-aliases">
-      {anchors.map(anchor => <span key={anchor} id={`${factId}--${anchor}`} data-alias-for={target} />)}
-    </div>
-  );
-}
-
-/** One library figure: the adapter's props into its component, with Observations as the frame's footer. */
-export function FactFigure({ figure, context, page, footer }: { figure: ComponentFigure; context: FigureContext; page: FigurePage; footer?: ReactNode }) {
+/** One library figure: the adapter's props into its component. */
+export function FactFigure({ figure, context, page }: { figure: ComponentFigure; context: FigureContext; page: FigurePage }) {
   switch (figure.kind) {
     case 'dataTable':
       return figure.layout
-        ? <DataCards {...dataTableProps(figure, context)} layout={figure.layout} leadColumn={figure.leadColumn} dateColumn={figure.dateColumn} footer={footer} />
-        : <DataTable {...dataTableProps(figure, context)} footer={footer} />;
+        ? <DataCards {...dataTableProps(figure, context)} layout={figure.layout} leadColumn={figure.leadColumn} dateColumn={figure.dateColumn} />
+        : <DataTable {...dataTableProps(figure, context)} />;
     case 'keyFigures':
-      return <KeyFigures {...keyFiguresProps(figure, context)} footer={footer} />;
+      return <KeyFigures {...keyFiguresProps(figure, context)} />;
     case 'timeline':
-      return <Timeline {...timelineProps(figure, context)} footer={footer} />;
+      return <Timeline {...timelineProps(figure, context)} />;
     case 'periodTimeline':
-      return <PeriodTimeline {...periodTimelineProps(figure, context)} footer={footer} />;
+      return <PeriodTimeline {...periodTimelineProps(figure, context)} />;
     case 'map':
-      return <AreaMap {...areaMapProps(figure, context)} footer={footer} />;
+      return <AreaMap {...areaMapProps(figure, context)} />;
     case 'scatterPlot':
-      return <ScatterPlot {...scatterPlotProps(figure, context)} footer={footer} />;
+      return <ScatterPlot {...scatterPlotProps(figure, context)} />;
     case 'barChart':
       return figure.series
-        ? <PairedBarChart {...pairedBarChartProps(figure, context)} footer={footer} />
-        : <BarChart {...barChartProps(figure, context)} footer={footer} />;
+        ? <PairedBarChart {...pairedBarChartProps(figure, context)} />
+        : <BarChart {...barChartProps(figure, context)} />;
     case 'sliceExplorer':
-      return <SliceExplorer {...sliceExplorerProps(figure, context)} footer={footer} />;
+      return <SliceExplorer {...sliceExplorerProps(figure, context)} />;
     case 'smallMultiples':
-      return <SmallMultiples {...smallMultiplesProps(figure, context)} footer={footer} />;
+      return <SmallMultiples {...smallMultiplesProps(figure, context)} />;
     case 'compositionBar':
-      return <CompositionBar {...compositionBarProps(figure, context)} footer={footer} />;
+      return <CompositionBar {...compositionBarProps(figure, context)} />;
     case 'estimateRange':
-      return <EstimateRange {...estimateRangeProps(figure, context)} footer={footer} />;
+      return <EstimateRange {...estimateRangeProps(figure, context)} />;
     case 'quotes':
       return figure.quotes.length <= SIDE_BY_SIDE_QUOTES
-        ? <QuoteComparison {...quoteComparisonProps(figure, context)} footer={footer} />
-        : <QuoteBrowser {...quoteBrowserProps(figure, context)} footer={footer} />;
+        ? <QuoteComparison {...quoteComparisonProps(figure, context)} />
+        : <QuoteBrowser {...quoteBrowserProps(figure, context)} />;
     // These three draw no frame of their own; one without a title gives them
     // the figure's id, description, Observations and note like every other.
     case 'pullQuote':
       return (
-        <ReportFigure id={figureDomId(context.fact, figure.id)} description={figure.description} note={figure.note} footer={footer} panel={context.panel}>
+        <ReportFigure id={figureDomId(context.fact, figure.id)} description={figure.description} note={figure.note} panel={context.panel}>
           <PullQuote {...pullQuoteProps(figure, context)} />
         </ReportFigure>
       );
     case 'claimCheck':
       return (
-        <ReportFigure id={figureDomId(context.fact, figure.id)} footer={footer} panel={context.panel}>
+        <ReportFigure id={figureDomId(context.fact, figure.id)} panel={context.panel}>
           <ClaimCheck {...claimCheckProps(figure, { ...context, slug: page.slug, facts: page.facts })} />
         </ReportFigure>
       );
     case 'caveatList':
       return (
-        <ReportFigure id={figureDomId(context.fact, figure.id)} footer={footer} panel={context.panel}>
+        <ReportFigure id={figureDomId(context.fact, figure.id)} panel={context.panel}>
           <CaveatList {...caveatListProps(figure, context)} />
         </ReportFigure>
       );
