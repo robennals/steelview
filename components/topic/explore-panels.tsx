@@ -4,7 +4,9 @@ import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffe
 import { createPortal } from 'react-dom';
 import type { PanelTarget } from '@/lib/content/markdown';
 import { showPanelStep } from '@/lib/content/evidence-target';
+import { EXPLORE_HASH } from '@/lib/content/types';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
+import { decodeHash } from './open-details';
 import { Prose } from './prose';
 
 type Explore = {
@@ -54,6 +56,22 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
     setShown(next);
   }, []);
   const leave = useCallback(() => history.back(), []);
+
+  // An `#explore=` address (a home-page preview's title) opens its chart's
+  // sheet over the plain topic page, so closing it (Back) lands there rather
+  // than off the site. Heard on arrival and on any later change of hash.
+  useEffect(() => {
+    const explore = () => {
+      const hash = decodeHash(location.hash.slice(1));
+      if (!hash.startsWith(EXPLORE_HASH)) return;
+      const chart = hash.slice(EXPLORE_HASH.length);
+      history.replaceState(history.state, '', location.pathname + location.search);
+      open({ fact: chart.split('--')[0], observation: chart });
+    };
+    explore();
+    window.addEventListener('hashchange', explore);
+    return () => window.removeEventListener('hashchange', explore);
+  }, [open]);
   const explore = useMemo(() => ({ shown, wanted, want, open, leave }), [shown, wanted, open, leave]);
 
   return <ExploreContext.Provider value={explore}>{children}</ExploreContext.Provider>;

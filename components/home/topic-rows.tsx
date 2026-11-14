@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
-import { topicPath, type Topic } from '@/lib/content/types';
+import { explorePath, topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
 import { PreviewCarousel } from './preview-carousel';
@@ -21,7 +21,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
           <div className="sv-slide" key={slide.href}>
-            <SlideChart slide={slide} titleHref={topicPath(topic.slug)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
+            <SlideChart slide={slide} titleHref={explorePath(topic.slug, slide.fact.id, slide.chart)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
           </div>
         ))}
       </PreviewCarousel>
@@ -68,7 +68,7 @@ export function TopicRows({ topics }: { topics: Topic[] }) {
               <ul className="sv-row__thumbs" aria-hidden="true">
                 {slides.slice(0, THUMBS).map(slide => (
                   <li key={slide.href}>
-                    <div className="sv-row__thumb"><ChartThumb fact={slide.fact} chart={slide.chart} reading={slide.reading} /></div>
+                    <div className="sv-row__thumb"><ChartThumb fact={slide.fact} chart={slide.chart} reading={slide.reading} preview /></div>
                     <span>{slide.label}</span>
                   </li>
                 ))}

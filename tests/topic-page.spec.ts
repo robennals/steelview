@@ -536,14 +536,22 @@ test('choosing an observation picks out its part of the graph', async ({ page })
   const shownMark = step.locator('.sv-chart__svg:visible [data-mark-shown]');
   const dimmed = (name: string) => step.locator(`svg:visible [data-series="${name}"][data-mark-dimmed]`);
 
-  // A point: the 2025 value on the immigration line, with the other lines receding.
+  // Closed, an observation is only a heading: the whole graph stays in view.
   await expect(lines.first()).toBeVisible();
+  await expect(step.locator('[data-mark-dimmed], [data-mark-shown]')).toHaveCount(0);
+
+  // Opened, a point: the 2025 value on the immigration line, with the other lines receding.
+  const toggle = step.locator('.sv-observe__item:not([hidden]) .sv-observe__toggle');
+  await toggle.click();
+  // The opened claim is set apart from its reasoning.
+  await expect(step.locator('.sv-observe__item:not([hidden]) .sv-observe__claim')).toHaveCSS('font-weight', '600');
   await expect(shownMark.locator('.sv-chart__mark-label')).toHaveText('813,000');
   await expect(dimmed('Net migration')).toHaveCount(1);
   await expect(dimmed('Immigration')).toHaveCount(0);
 
   // A region: the four years from 2021, with the plot either side of them veiled.
   await step.getByRole('button', { name: 'Next observation' }).click();
+  await toggle.click();
   await expect(shownMark.locator('.sv-chart__mark-veil')).toHaveCount(2);
   await expect(dimmed('Emigration')).toHaveCount(1);
   await expect(dimmed('Net migration')).toHaveCount(0);
@@ -558,6 +566,7 @@ test('an observation on a comparison picks out its rows, and keeps them when the
   await expect(step.locator('.sv-comparison__rows')).toBeVisible();
   // A far chart is a long slide away, and its controls move until it lands.
   await expect.poll(() => step.evaluate(el => Math.abs(el.getBoundingClientRect().left - el.parentElement!.getBoundingClientRect().left))).toBeLessThan(2);
+  await step.locator('.sv-observe__item:not([hidden]) .sv-observe__toggle').click();
   await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
   await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
   await step.locator('.sv-comparison-controls button').first().click();

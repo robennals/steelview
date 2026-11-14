@@ -54,6 +54,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   return <figure className="sv-chart sv-comparison" id={`${fact.id}--chart-${chart.id}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
     <figcaption className="sv-chart__caption">
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
+      {chart.subtitle && <p className="sv-chart__subtitle">{chart.subtitle}</p>}
       {!preview && (panel
         ? <ChartAbout description={chart.description}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
         : <p className="sv-chart__desc">{chart.description}</p>)}
@@ -68,7 +69,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
      : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined} style={{ '--sv-row-count': items.length }}>
       {items.map((item, index) => {
         const cells = <>
-          <span className="sv-comparison__label"><span title={preview ? item.label : undefined}>{item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></span>
+          <span className="sv-comparison__label"><span title={preview ? [item.label, item.subtitle].filter(Boolean).join(': ') : undefined}>{item.subtitle ? <><span className="sv-comparison__name">{item.label}</span><span className="sv-comparison__subtitle">{item.subtitle}</span></> : item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></span>
           <span className="sv-comparison__track" aria-hidden="true">
             <span className="sv-comparison__zero" style={{ left: `${zero}%` }} />
             {chart.groups && selected < 0 ? item.values!.map((value, i) => <span key={i} className="sv-comparison__bar" style={{ background: `var(--sv-group-${i})`, left: `${item.values!.slice(0, i).reduce((a, b) => a + b, 0) / range * 100}%`, width: `${value / range * 100}%` }} />) : <span className="sv-comparison__bar" data-highlight={item.highlight || undefined} style={{ left: `${(Math.min(0, item.value) - min) / range * 100}%`, width: `${Math.abs(item.value) / range * 100}%` }} /> }
