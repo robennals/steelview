@@ -9,8 +9,10 @@ import { useCarousel } from './use-carousel';
  * Every slide is server-rendered into a horizontally scroll-snapped strip, so
  * without JavaScript each chart is still reachable by scrolling. Script adds
  * the previous/next buttons, one dot per chart, a "2 / 4" count and
- * arrow keys. Every slide has one fixed height (globals.css), so the charts
- * are all one size and nothing moves when the chart changes.
+ * arrow keys. On a wide screen every slide has one fixed height (globals.css),
+ * so the charts are all one size and nothing moves when the chart changes. On
+ * a phone each slide is as tall as its chart, so a short chart leaves no empty
+ * space, and the strip follows the slide showing.
  */
 export function PreviewCarousel({ name, labels, children }: { name: string; labels: string[]; children: ReactNode }) {
   const slides = Children.toArray(children);

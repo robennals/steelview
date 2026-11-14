@@ -30,6 +30,18 @@ export function useCarousel(count: number) {
     setAnnounced(position);
   }, []);
 
+  // The height of the slide showing, as `--sv-strip-height` on the strip, for
+  // a strip that fits its current slide rather than its tallest (globals.css,
+  // on a phone). A slide's height can change too, as its chart lays out.
+  useEffect(() => {
+    const el = strip.current;
+    const current = el?.children[index];
+    if (!el || !current) return;
+    const observer = new ResizeObserver(() => el.style.setProperty('--sv-strip-height', `${current.getBoundingClientRect().height}px`));
+    observer.observe(current);
+    return () => observer.disconnect();
+  }, [index]);
+
   useEffect(() => {
     const el = strip.current;
     const landed = () => { destination.current = null; };

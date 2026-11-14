@@ -1478,9 +1478,13 @@
 
   .sv-slide { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 
-  /* On a phone titles and legends wrap onto more lines, so slides are taller. */
-  @media (max-width: 40rem) {
-    .sv-carousel__slide { height: 25rem; }
+  /* On a phone a fixed height would leave a short chart floating in empty
+     space, so each slide is as tall as its chart, and the strip as tall as the
+     slide showing (use-carousel.ts). Without script the strip takes the
+     tallest slide's height. */
+  @media (max-width: 47.5rem) {
+    .sv-carousel__strip { align-items: flex-start; height: var(--sv-strip-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    .sv-carousel__slide { height: auto; }
   }
   .sv-slide .sv-chart { flex: 1; }
 
@@ -1532,12 +1536,20 @@
 
   @media (max-width: 47.5rem) {
     .sv-row__thumbs { display: none; }
-    .sv-row__columns, .sv-positions { padding-inline: 1rem; }
+    .sv-positions { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
+    /* Width is scarce on a phone: the charts run to the card's edges, lined up
+       with the title, and the viewpoint list, which would only fit truncated,
+       is left to the report. */
+    .sv-row__columns { padding-inline: 0; gap: 1rem; }
+    .sv-carousel { padding: 1rem 1rem 0.75rem; border-inline: 0; border-radius: 0; }
+    .sv-row__side { padding-inline: 1rem; }
+    .sv-row__side-head, .sv-row__viewpoints { display: none; }
+    .sv-row__cta { margin-top: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot { transition: none; }
+    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot, .sv-carousel__strip { transition: none; }
   }
 
   /* ------------------------------------------------ viewpoint walkthroughs */
@@ -1987,9 +1999,9 @@
   @media (max-width: 47.5rem) {
     .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
-    /* In a row the strip fits the step showing (walkthrough.tsx), not the longest
+    /* In a row the strip fits the step showing (use-carousel.ts), not the longest
        step. In a sheet it keeps its height, and scrolls what does not fit. */
-    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-walk-step-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-strip-height, auto); overflow-y: hidden; transition: height 0.25s; }
     /* A step's explanation comes first, as the chart means little without it. The
        chart's row grows past 18rem for a figure too long to fit, rather than running out of it. */
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(18rem, auto); align-content: start; height: auto; gap: 1rem; }
