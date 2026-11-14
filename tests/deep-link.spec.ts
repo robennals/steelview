@@ -202,6 +202,21 @@ test('in a sheet, Escape closes the More panel first, and only then the sheet', 
   await expect(sheet).toHaveCount(0);
 });
 
+test('every chart kind leaves the same gap between its title and the line under it', async ({ page }) => {
+  await page.goto('/topics/us-voter-id/facts/burdens-of-id-and-citizenship-rules');
+  const gaps = new Set<number>();
+  const tabs = page.locator('.sv-walk__tab');
+  for (let i = 0; i < await tabs.count(); i++) {
+    await tabs.nth(i).click();
+    const slide = page.locator('.sv-walk__slide').nth(i);
+    const heading = slide.locator('.sv-graph-heading').first();
+    const line = slide.locator('.sv-chart__about > summary, .sv-chart__subtitle').first();
+    if (!(await line.isVisible())) continue;
+    gaps.add(Math.round((await line.boundingBox())!.y - ((await heading.boundingBox())!.y + (await heading.boundingBox())!.height)));
+  }
+  expect([...gaps]).toHaveLength(1);
+});
+
 test('a report\'s last slide says what is not known yet, and has its old address', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--data-still-needed`);
   await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText("What we don't know yet");
