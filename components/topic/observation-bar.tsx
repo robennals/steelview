@@ -92,6 +92,18 @@ function markChart(root: Element, observation?: Observation) {
   }
 }
 
+/** Brings the first picked row into view in its slide, leaving the page and the panel's strip where they are. */
+function revealPicked(root: Element) {
+  const row = [...root.querySelectorAll('[data-mark-picked]')].find(element => element.checkVisibility());
+  for (let scroller = row?.parentElement; row && scroller && scroller !== root; scroller = scroller.parentElement) {
+    if (scroller.scrollHeight <= scroller.clientHeight || getComputedStyle(scroller).overflowY === 'visible') continue;
+    const box = scroller.getBoundingClientRect();
+    const { top, height } = row.getBoundingClientRect();
+    scroller.scrollTop += top - box.top - (box.height - height) / 2;
+    return;
+  }
+}
+
 /**
  * The shown observation as one line, between a chart's title and its graph:
  * its claim, which opens to its reasoning when clicked. A chart's Subtleties come
@@ -110,6 +122,7 @@ export function ObservationBar() {
     if (!root) return;
     const apply = () => markChart(root, shown);
     apply();
+    revealPicked(root);
     const redraws = new MutationObserver(apply);
     redraws.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-row'] });
     return () => redraws.disconnect();

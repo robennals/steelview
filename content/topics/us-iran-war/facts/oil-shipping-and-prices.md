@@ -721,6 +721,17 @@ figures:
     id: "gasoline-monthly-series"
   - kind: "comparison"
     id: "cpi-september-2026"
+  - kind: "dataTable"
+    id: "cbo-inflation"
+    title: "CBO's estimate of higher inflation in early 2027"
+    description: "How much higher CBO now puts inflation in the first quarter of 2027 than it projected in February 2026, in its letter on the costs of the conflict with Iran."
+    caption: "One row per measure"
+    columns:
+      - { key: "measure", label: "Measure", rowHeader: true, sortable: false }
+      - { key: "higher", label: "Higher than CBO projected in February 2026", sortable: false }
+    rows:
+      - { measure: "PCE inflation, first quarter of 2027", higher: { value: "0.5 percentage points", sources: [5] } }
+      - { measure: "Core PCE inflation, first quarter of 2027", higher: { value: "0.3 percentage points", sources: [5] } }
   - kind: "series"
     id: "hormuz-transits-series"
   - kind: "series"
@@ -825,11 +836,30 @@ figures:
       - { key: "disabled", label: "Disabled", sortable: false }
       - { key: "destroyed", label: "Destroyed", sortable: false }
     rows:
-      - { release: { value: "20 May 2026 (caption)", sources: [9] }, period: "First blockade, from 13 April", redirected: "91 ships" }
+      - { release: { value: "20 May 2026 (caption)", sources: [9] }, period: 'First blockade, from 13 April; forces "continue to fully enforce the blockade"', redirected: "91 ships" }
       - { release: { value: "5 Oct 2026", sources: [10] }, period: "Since 14 July", redirected: "130 vessels", disabled: "3 ships", destroyed: "13 commercial vessels, \"over the past 12 weeks\"" }
       - { release: { value: "10 Oct 2026", sources: [11] }, period: "Since 14 July", redirected: "135 ships", disabled: "4 vessels", destroyed: "10 tankers linked to the IRGC" }
 movedAnchors:
   tanker-war: hormuz-transits
+observationMarks:
+  pump-prices-up-by-half: {lines: ["US regular gasoline, monthly average"], from: "2026-02", to: "2026-05", at: "2026-05"}
+  hormuz-traffic-near-zero: {lines: ["All ships"], from: "2026-02", to: "2026-03", at: "2026-03"}
+  below-earlier-real-peaks: {lines: ["Real imported crude price"], from: "1981-01", to: "2026-10", at: "2026-10"}
+  us-also-destroying-vessels: {rows: ["5 Oct 2026", "10 Oct 2026"]}
+  cbo-inflation-attribution: {rows: ["PCE inflation, first quarter of 2027", "Core PCE inflation, first quarter of 2027"]}
+  brent-nearly-doubled: {lines: ["Brent spot, monthly average"], from: "2026-02", to: "2026-09"}
+  below-2008-nominal: {lines: ["Brent spot, monthly average"], from: "2008-07", to: "2026-09", at: "2026-04"}
+  wti-rose-less: {lines: ["WTI spot, monthly average"], from: "2026-02", to: "2026-04", at: "2026-04"}
+  hormuz-flows-collapsed: {lines: ["Total oil flows"], from: "2025-11", to: "2026-05", at: "2026-05"}
+  june-reopening-brief: {lines: ["All ships"], from: "2026-06", to: "2026-08"}
+  tracking-versus-other-reports: {lines: ["All ships", "Tankers"], from: "2026-03", to: "2026-10"}
+  blockade-enforced: {rows: ["10 Oct 2026"]}
+  hormuz-alone-collapsed: {rows: ["Strait of Hormuz", "Kerch Strait"]}
+  gasoline-cpi-up-a-third: {rows: ["Gasoline", "Energy", "All items less food and energy"]}
+  iranian-exports-collapsed: {rows: ["April 2026 (blockade from 13 April)", "May 2026"]}
+  first-blockade-into-may: {rows: ["20 May 2026 (caption)"]}
+  tanker-war-disrupted-little: {lines: ["All ships"], from: "2026-02", to: "2026-10"}
+  other-chokepoints-fell-earlier: {rows: ["Strait of Hormuz", "Bab el-Mandeb Strait", "Suez Canal", "Kerch Strait"]}
 ---
 ## Observations {#oil-shipping-and-prices--observations-brent-monthly}
 
@@ -873,7 +903,9 @@ In the latest week it was $4.269, below the record of $5.006 set in mid-2022. [3
 
 BLS reports gasoline up 34.2 percent over the year to September, accounting for most of the energy index's rise. [4](#source-oil-shipping-and-prices-4) Prices excluding food and energy rose far less (chart).
 
-### CBO attributes about half a point of extra inflation to the war {#oil-shipping-and-prices--cbo-inflation-attribution}
+## Observations {#oil-shipping-and-prices--observations-cbo-inflation}
+
+### CBO now expects inflation about half a point higher than it did before the war {#oil-shipping-and-prices--cbo-inflation-attribution}
 
 CBO estimates headline PCE inflation in early 2027 will be 0.5 percentage points higher than it projected before the war, and core inflation 0.3 points higher. [5](#source-oil-shipping-and-prices-5)
 
@@ -935,15 +967,15 @@ ISW/CTP judges the spring blockade had "a limited but notable effect" on Iran's 
 
 CENTCOM reports turning around 135 ships and disabling four by 10 October, and says enforcement will continue against "any vessels trying to run the blockade". [11](#source-oil-shipping-and-prices-11) [10](#source-oil-shipping-and-prices-10) These figures have no independent check.
 
+### The first blockade was still turning ships back on 20 May {#oil-shipping-and-prices--first-blockade-into-may}
+
+A CENTCOM caption of 20 May counted 91 ships redirected since the first blockade began on 13 April, weeks after the 1 May letter said hostilities had ended. [9](#source-oil-shipping-and-prices-9)
+
 ### US forces are also destroying ships {#oil-shipping-and-prices--us-also-destroying-vessels}
 
 CENTCOM's early-October releases say US forces destroyed 13 commercial vessels in one, and 10 IRGC-linked tankers in the other. [10](#source-oil-shipping-and-prices-10) [11](#source-oil-shipping-and-prices-11)
 
 The two releases use different categories, and CENTCOM does not explain the difference. The 1 September War Powers letter reported strikes on Iranian state oil tankers. [19](#source-oil-shipping-and-prices-19)
-
-### Attacks on shipping continued in October {#oil-shipping-and-prices--shipping-attacks-october}
-
-Officials told Bloomberg of 23 recorded attacks on vessels in or near Hormuz in the first two weeks of October, at least five hitting engine rooms. [13](#source-oil-shipping-and-prices-13) The report, relayed by ISW/CTP, does not say who carried out each attack.
 
 ## Subtleties {#oil-shipping-and-prices--subtleties-hormuz-transits}
 

@@ -634,6 +634,40 @@ dataStillNeeded:
 figures:
   - kind: comparison
     id: voided-elections
+  - kind: dataTable
+    id: voided-by-state
+    title: Elections voided or overturned in Heritage's fraud list, by state
+    description: 'The 32 elections in the chart above, listed by state, with the long-standing all-mail states last.'
+    sources: [10]
+    note: >-
+      The list under the chart above, set out by state. An "entry" year is the
+      year Heritage gives the record, used where the text does not date the
+      election.
+    caption: One row per state
+    columns:
+      - key: state
+        label: State
+        rowHeader: true
+      - key: elections
+        label: Elections voided or overturned
+        sortable: false
+    rows:
+      - { state: Alabama, elections: 'Guntersville (entry 2004); Brighton, 2016; Wetumpka (entry 2017)' }
+      - { state: California, elections: 'Fresno County school boards (entry 1993); Compton, 2001; Vernon (entry 2012); Compton, 2021' }
+      - { state: Connecticut, elections: 'Bridgeport, 2023' }
+      - { state: Florida, elections: 'Hardee County sheriff, 1992; Hialeah mayor, 1993; Eatonville, 2020' }
+      - { state: Georgia, elections: 'House District 28, 2018' }
+      - { state: Indiana, elections: 'East Chicago, 2003' }
+      - { state: Louisiana, elections: 'Turkey Creek, 2014; Caddo Parish, 2023' }
+      - { state: Mississippi, elections: 'Aberdeen, 2020' }
+      - { state: Missouri, elections: 'House District 78 primary, 2016' }
+      - { state: New Jersey, elections: 'Perth Amboy (entry 2015); Paterson, 2020' }
+      - { state: North Carolina, elections: 'Pembroke, 2013 and 2015; Lumberton (entry 2016); 9th District, 2018' }
+      - { state: Ohio, elections: 'Lorain (entry 2015)' }
+      - { state: Pennsylvania, elections: 'Philadelphia state senate special, 1993' }
+      - { state: Texas, elections: 'Woodlands Road Utility District (entries 2012–2014); Weslaco, 2013; Kaufman County primary (entry 2018); Kleberg County (entry 2018); Mission (entry 2018); Harris County 180th District Court (entry 2024)' }
+      - { state: West Virginia, elections: 'Lincoln County, 2010' }
+      - { state: 'Colorado, Oregon, Utah, Washington', elections: None of the 32 }
   - kind: barChart
     id: margin-and-invalid-ballots
     title: Winning margin against ballots ruled invalid, voided elections involving absentee ballots
@@ -676,6 +710,28 @@ figures:
       - { label: "Harris County, Tex. (entry 2024)", detail: "Judicial race", values: { margin: 449, invalid: 1482 } }
   - kind: comparison
     id: absentee-and-impersonation-cases
+  - kind: dataTable
+    id: cases-against-ballots
+    title: Absentee fraud cases in two compilations, against mail ballots counted in one election
+    description: 'The absentee counts from the chart above, beside the mail ballots counted in the 2024 general election alone.'
+    sources: [10, 11, 12, 14]
+    note: >-
+      Neither compilation has a denominator of ballots cast, so no source turns
+      these counts into a rate per ballot. The ballot count is one election;
+      the case counts cover decades.
+    caption: One row per count
+    columns:
+      - key: measure
+        label: What is counted
+        rowHeader: true
+      - key: count
+        label: Number
+        format: text
+        sortable: false
+    rows:
+      - { measure: 'Heritage: tagged absentee-ballot fraud, outcomes 1982–2025', count: '387' }
+      - { measure: 'News21: alleged absentee ballot fraud, since 2000', count: '491' }
+      - { measure: Returned mail ballots counted in the 2024 general election alone, count: '47,629,437' }
   - kind: dataTable
     id: absentee-cases
     title: Organised US absentee and mail-ballot cases, 1980–2026
@@ -805,6 +861,25 @@ figures:
         remedy: 'New primary ordered, November 2023'
         criminal: Not covered by the sources read
   - kind: dataTable
+    id: carter-baker
+    title: 'What the bipartisan Carter–Baker commission said about absentee and mail fraud, 2005'
+    description: 'The commission''s words on absentee ballots, on all-mail Oregon and on US elections overall.'
+    sources: [13]
+    caption: One card per subject
+    layout: cards
+    leadColumn: said
+    columns:
+      - key: subject
+        label: Subject
+        rowHeader: true
+      - key: said
+        label: What it said
+        sortable: false
+    rows:
+      - { subject: Absentee ballots, said: '"Absentee ballots remain the largest source of potential voter fraud"' }
+      - { subject: Oregon, said: '"little evidence of fraud in Oregon, where the entire state votes by mail"' }
+      - { subject: US elections overall, said: '"no evidence of extensive fraud in U.S. elections"' }
+  - kind: dataTable
     id: officials
     title: >-
       US officials and the count: tampering, and refused or challenged results
@@ -916,6 +991,27 @@ figures:
         outcome: Eight convicted (by April 1984)
 movedAnchors:
   observations-survey: absentee-cases
+observationMarks:
+  most-voidings-absentee: {rows: ["Mainly absentee or mail ballots", "Absentee or mail, plus other illegal votes"]}
+  carter-baker-largest-source: {rows: ["Absentee ballots"]}
+  each-case-caught-and-rerun: {rows: ["Philadelphia, 1993 state senate special", "Miami mayoral election (dated 1998 by Carter–Baker)", "East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Paterson, N.J., 2020", "Aberdeen, Miss., 2020 primary", "Bridgeport, Conn., 2023 primary"]}
+  few-cases-against-ballots-cast: {rows: ["Heritage: tagged absentee-ballot fraud, outcomes 1982–2025", "News21: alleged absentee ballot fraud, since 2000", "Returned mail ballots counted in the 2024 general election alone"]}
+  detected-fraud-is-a-floor: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
+  no-voidings-in-all-mail-states: {rows: ["Colorado, Oregon, Utah, Washington"]}
+  carter-baker-oregon: {rows: ["Oregon"]}
+  officials-manipulated-count: {rows: ["Philadelphia, 1993", "Lincoln County, W.Va., 2010 primary"]}
+  refusals-ended-in-certification: {rows: ["Otero County, N.M., 2022 primary", "Cochise County, Ariz., 2022 general"]}
+  some-voidings-not-absentee: {rows: ["Ineligible voters or ballot order", "Votes ruled invalid", "Vote buying"]}
+  voided-races-small-and-close: {rows: ["East Chicago, Ind., 2003 primary", "Vernon, Calif. (entry 2012)", "Weslaco, Tex., 2013", "Perth Amboy, N.J. (entry 2015)", "Wetumpka, Ala. (entry 2017)", "Aberdeen, Miss., 2020 primary", "Caddo Parish, La., 2023 runoff", "Harris County, Tex. (entry 2024)"]}
+  invalid-could-change-winner: {rows: ["Vernon, Calif. (entry 2012)", "Weslaco, Tex., 2013", "Perth Amboy, N.J. (entry 2015)", "Wetumpka, Ala. (entry 2017)", "Aberdeen, Miss., 2020 primary", "Caddo Parish, La., 2023 runoff", "Harris County, Tex. (entry 2024)"]}
+  absentee-far-more-than-impersonation: {rows: ["Heritage: tagged absentee-ballot fraud", "Heritage: tagged impersonation at the polls", "News21: absentee ballot fraud", "News21: in-person voter impersonation"]}
+  absentee-schemes-voided-elections: {rows: ["East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Bridgeport, Conn., 2023 primary"]}
+  paterson-voided-no-convictions: {rows: ["Paterson, N.J., 2020"]}
+  no-signature-review-case-found: {rows: ["Arizona governor, 2022"]}
+  in-person-machine-fraud-record: {rows: ["Kansas City, 1936", "Chicago, 1982"]}
+  hand-count-of-a-sample: {rows: ["Absentee or mail, plus other illegal votes"]}
+  floor-not-evidence-of-common: {rows: ["Heritage: tagged absentee-ballot fraud", "News21: absentee ballot fraud"]}
+  rasmussen-pointer: {whole: true}
 ---
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-elections}
 
@@ -926,10 +1022,6 @@ In this report's hand count of Heritage's file, about two-thirds of the voided o
 ### Not every voided election was an absentee case {#absentee-fraud-and-manipulation-of-the-count--some-voidings-not-absentee}
 
 Eleven were not. Georgia's 28th House District in 2018 was overturned over out-of-district voters, Compton's 2001 election over ballot order, and Pembroke, North Carolina, redid elections over residency. [10](#source-absentee-fraud-and-manipulation-of-the-count-10)
-
-### No voided election is in a long-standing all-mail state {#absentee-fraud-and-manipulation-of-the-count--no-voidings-in-all-mail-states}
-
-None of the 32 is in Colorado, Oregon, Utah or Washington. Their entries are individuals, often casting a dead or absent relative's ballot; one Washington man was caught because his wife's signature did not match. [10](#source-absentee-fraud-and-manipulation-of-the-count-10)
 
 ## Subtleties {#absentee-fraud-and-manipulation-of-the-count--subtleties-voided-elections}
 
@@ -953,10 +1045,6 @@ In each charted case that gives a count of invalid ballots, they outnumbered the
 
 Two separately built compilations, Heritage's and News21's, each find absentee-ballot fraud many times more often than voting in person under another's name. [10](#source-absentee-fraud-and-manipulation-of-the-count-10) [12](#source-absentee-fraud-and-manipulation-of-the-count-12)
 
-### Detected cases are few against the mail ballots cast {#absentee-fraud-and-manipulation-of-the-count--few-cases-against-ballots-cast}
-
-Heritage's absentee entries span four decades. In the 2024 general election alone, 47,629,437 returned mail ballots were counted. [14](#source-absentee-fraud-and-manipulation-of-the-count-14) No source turns the case counts into a rate per ballot.
-
 ## Subtleties {#absentee-fraud-and-manipulation-of-the-count--subtleties-absentee-and-impersonation-cases}
 
 ### Detected fraud is a floor, not a measure {#absentee-fraud-and-manipulation-of-the-count--detected-fraud-is-a-floor}
@@ -977,21 +1065,13 @@ That counts are a floor does not show the true rate is high. No source measures 
 
 North Carolina's elections board found its 2018 congressional race "corrupted by fraud, improprieties, and irregularities so pervasive" that it ordered a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) Courts did the same in East Chicago, Bridgeport and elsewhere (see the timeline). [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9)
 
-### Each case was local, caught and rerun {#absentee-fraud-and-manipulation-of-the-count--each-case-caught-and-rerun}
+### Known schemes were local and caught, and most were rerun {#absentee-fraud-and-manipulation-of-the-count--each-case-caught-and-rerun}
 
-Every scheme in the timeline whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was a new election. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
+Every scheme in the timeline whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was usually a new election; in Philadelphia a judge overturned the result. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
 
 ### Paterson: a court voided the election, but no one has been convicted {#absentee-fraud-and-manipulation-of-the-count--paterson-voided-no-convictions}
 
 A judge ordered Paterson's May 2020 council election rerun. [6](#source-absentee-fraud-and-manipulation-of-the-count-6) The winner's indictment was dismissed in April 2026 on speedy-trial and disclosure grounds; the state is appealing. As of May 2026 no one has been convicted. [7](#source-absentee-fraud-and-manipulation-of-the-count-7) [8](#source-absentee-fraud-and-manipulation-of-the-count-8)
-
-### Carter–Baker called absentee ballots the largest source of potential fraud {#absentee-fraud-and-manipulation-of-the-count--carter-baker-largest-source}
-
-The 2005 bipartisan commission wrote that "absentee ballots remain the largest source of potential voter fraud", and that voters at home or in nursing homes are more open to pressure. It urged states to stop candidates and party workers handling absentee ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
-
-### The same commission found little fraud in all-mail Oregon {#absentee-fraud-and-manipulation-of-the-count--carter-baker-oregon}
-
-It found "little evidence of fraud in Oregon, where the entire state votes by mail", and "no evidence of extensive fraud in U.S. elections". It still asked Oregon for better precautions against intercepted ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
 
 ## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-officials}
 
@@ -999,7 +1079,7 @@ It found "little evidence of fraud in Oregon, where the entire state votes by ma
 
 In Lincoln County, West Virginia, the county clerk himself falsified absentee ballots and stuffed boxes, and in Philadelphia city commissioners were found complicit. [10](#source-absentee-fraud-and-manipulation-of-the-count-10) Chicago's 1982 fraud was done by election judges. [20](#source-absentee-fraud-and-manipulation-of-the-count-20) [18](#source-absentee-fraud-and-manipulation-of-the-count-18)
 
-### Recent refusals to certify ended in certification {#absentee-fraud-and-manipulation-of-the-count--refusals-ended-in-certification}
+### Two refusals to certify in 2022 ended in certification {#absentee-fraud-and-manipulation-of-the-count--refusals-ended-in-certification}
 
 In Otero and Cochise counties in 2022, officials who refused or delayed certification were ordered to certify, and did. Two Cochise supervisors were indicted. [24](#source-absentee-fraud-and-manipulation-of-the-count-24) [25](#source-absentee-fraud-and-manipulation-of-the-count-25) Refusals since 2023 were not searched.
 
@@ -1018,6 +1098,28 @@ Kansas City's 1936 fraud and Chicago's 1982 fraud, both run by officials at the 
 ### A widely cited survey of mail voters is not a fraud estimate {#absentee-fraud-and-manipulation-of-the-count--rasmussen-pointer}
 
 A 2023 Rasmussen–Heartland poll reported that about one in five 2020 mail voters filled out a ballot "in part or in full" for a friend or relative. [27](#source-absentee-fraud-and-manipulation-of-the-count-27) Its questions include lawful help, and critics note an opt-in panel and results "wildly out of line" with signature-flag rates. [28](#source-absentee-fraud-and-manipulation-of-the-count-28) It is weighed beside stronger surveys in [the secret-ballot report](#fact-secret-ballot-and-postal-voting-abroad/rasmussen-heartland-weak-measure).
+
+## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-voided-by-state}
+
+### No voided election is in a long-standing all-mail state {#absentee-fraud-and-manipulation-of-the-count--no-voidings-in-all-mail-states}
+
+None of the 32 is in Colorado, Oregon, Utah or Washington. Their entries are individuals, often casting a dead or absent relative's ballot; one Washington man was caught because his wife's signature did not match. [10](#source-absentee-fraud-and-manipulation-of-the-count-10)
+
+## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-cases-against-ballots}
+
+### Detected cases are few against the mail ballots cast {#absentee-fraud-and-manipulation-of-the-count--few-cases-against-ballots-cast}
+
+Heritage's absentee entries span four decades. In the 2024 general election alone, 47,629,437 returned mail ballots were counted. [14](#source-absentee-fraud-and-manipulation-of-the-count-14) No source turns the case counts into a rate per ballot.
+
+## Observations {#absentee-fraud-and-manipulation-of-the-count--observations-carter-baker}
+
+### Carter–Baker called absentee ballots "the largest source of potential voter fraud" {#absentee-fraud-and-manipulation-of-the-count--carter-baker-largest-source}
+
+The 2005 bipartisan commission wrote that "absentee ballots remain the largest source of potential voter fraud", and that voters at home or in nursing homes are more open to pressure. It urged states to stop candidates and party workers handling absentee ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
+
+### The same commission found "little evidence of fraud in Oregon" {#absentee-fraud-and-manipulation-of-the-count--carter-baker-oregon}
+
+It found "little evidence of fraud in Oregon, where the entire state votes by mail", and "no evidence of extensive fraud in U.S. elections". It still asked Oregon for better precautions against intercepted ballots. [13](#source-absentee-fraud-and-manipulation-of-the-count-13)
 
 ## More {#absentee-fraud-and-manipulation-of-the-count--more-voided-elections}
 

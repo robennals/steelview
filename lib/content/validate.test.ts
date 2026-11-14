@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { compositionSumError, validateTopic } from './validate';
+import { compositionSumError, evidenceErrors, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { factSources } from './sources';
@@ -1346,6 +1346,25 @@ test('a mark that lands on its chart passes', () => {
   assert.deepEqual(markErrors({ up: { at: '1992' } }), []);
 });
 
+test('every observation on a chart that can show marks must say what it picks out', () => {
+  const errors = (marks: Fact['observationMarks']) => evidenceErrors({ ...soundTopic(), viewpoints: [], cruxes: [], facts: [markedFact(marks)] });
+  assert.equal(errors(undefined).length, 2);
+  assert.deepEqual(errors({ up: { at: '1992' }, low: { whole: true } }), []);
+});
+
+test('a linked fact must be an observation of a chart that picks out where it is seen', () => {
+  const errors = (link: string, marks: Fact['observationMarks']) => evidenceErrors({
+    ...soundTopic(),
+    cruxes: [],
+    viewpoints: [{ ...soundTopic().viewpoints[0], summary: 'S', body: `### A step\n\n[Up](${link}).` }],
+    facts: [markedFact({ low: { rows: ['UK'] }, ...marks })],
+  }).filter(error => error.startsWith('viewpoint'));
+  assert.deepEqual(errors('#fact-f/up', { up: { at: '1992' } }), []);
+  assert.match(errors('#fact-f/up', { up: { whole: true } })[0], /picks out no part of its chart/);
+  assert.match(errors('#fact-f', {})[0], /is not an observation of a chart/);
+  assert.match(errors('#fact-f/chart-c', {})[0], /is not an observation of a chart/);
+});
+
 /** A row each kind that takes marks would name, from the figure fixture's example of it. */
 function firstRow(figure: ReturnType<typeof figureExamplesFact>['figures'] extends (infer F)[] | undefined ? F : never): string | undefined {
   switch (figure.kind) {
@@ -1372,7 +1391,7 @@ test('a mark can name a row of every kind of figure that takes them, and only a 
 });
 
 test('a mark must name what is on its chart', () => {
-  assert.match(markErrors({ gone: { lines: ['Immigration'] } })[0], /"gone" is not an observation of a chart/);
+  assert.match(markErrors({ gone: { lines: ['Immigration'] } })[0], /"gone" is not an observation or subtlety of a chart/);
   assert.match(markErrors({ up: { lines: ['B'] } })[0], /names "B", which is not a line of people/);
   assert.match(markErrors({ up: { from: '1989' } })[0], /period 1989 is outside the series/);
   assert.match(markErrors({ up: { from: '1992', to: '1990' } })[0], /from before to/);

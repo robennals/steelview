@@ -55,7 +55,7 @@ export function KeyFigures({ figures, id, title, description, sources, note, foo
       <div className="sv-key-figures__frame">
         <dl className="sv-key-figures__list" data-count={figures.length}>
           {figures.map((figure, i) => (
-            <div key={`${figure.label}-${i}`} className="sv-key-figures__item">
+            <div key={`${figure.label}-${i}`} className="sv-key-figures__item" data-row={figure.label}>
               <dt className="sv-key-figures__label">{figure.label}</dt>
               <dd className="sv-key-figures__value">
                 <KeyValue value={figure.value} format={figure.format} />

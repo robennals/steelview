@@ -73,6 +73,18 @@ test('with citationsAsText, a fact citation renders as its plain text and other 
   assert.equal(html, '<p>Arrivals rose <em>sharply</em>, as <a href="#principle-p" class="sv-principle-cite">one</a> and <a href="https://example.com">two</a> say.</p>');
 });
 
+test('a citation with a data panel opens the panel', async () => {
+  const html = await renderMarkdown(
+    '[Panel](#fact-alpha/peak) and [no panel](#fact-beta/rise).',
+    SLUG, [], {
+      panelCitation: (id, section) => id === 'alpha' ? { fact: id, observation: `${id}--${section}` } : undefined,
+    },
+  );
+  assert.equal(html, '<p>'
+    + '<a href="/topics/example/facts/alpha#alpha--peak" class="sv-cite" data-panel-link="" data-panel-fact="alpha" data-panel-observation="alpha--peak">Panel</a> and '
+    + '<a href="/topics/example/facts/beta#beta--rise" class="sv-cite">no panel</a>.</p>');
+});
+
 test('without footnotes, source footnotes are left out and the prose kept', async () => {
   const html = await renderMarkdown('Arrivals rose. [2](#source-alpha-2) [1](#source-alpha-1)', SLUG, [], { footnotes: false });
   assert.equal(html, '<p>Arrivals rose.</p>');

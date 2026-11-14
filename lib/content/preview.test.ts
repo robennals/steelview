@@ -5,7 +5,7 @@ import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-e
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews, slideGroup } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure } from './types';
-import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, viewpointWalkthrough } from './walkthrough';
+import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -135,6 +135,30 @@ test('every headline data collection has something to walk through', async () =>
       assert.ok(factSlides(slug, fact).length > 0, `${slug}/${fact.id} has no charts`);
     }
   }
+});
+
+test('a step\'s citations open the panel chart they belong to', async () => {
+  const topic = await loadTopic('uk-immigration');
+  const fact = topic.facts.find(f => f.id === 'immigration-housing-and-public-services')!;
+  const slides = factSlides(topic.slug, fact);
+  const [first, second] = [...observationGroups(fact)].filter(([, key], i, all) => all.findIndex(([, k]) => k === key) === i);
+  const viewpoint = topic.viewpoints[0];
+  const body = `### A step\n\n[This](#fact-${fact.id}/${first[0]}), [that](#fact-${fact.id}/${second[0]}) and [the chart](#fact-${fact.id}/chart-${slides[3].chart}).`;
+  const rendered = await renderWalkthroughs({ ...topic, viewpoints: [{ ...viewpoint, body }] });
+  const [step] = rendered.get(viewpoint.id)!.steps;
+
+  assert.equal(step.panel?.observation, `${fact.id}--${first[0]}`);
+  const links = [...step.html.matchAll(/data-panel-observation="([^"]*)"/g)];
+  assert.deepEqual(links.map(([, observation]) => observation), [`${fact.id}--${first[0]}`, `${fact.id}--${second[0]}`, `${fact.id}--chart-${slides[3].chart}`]);
+});
+
+test('a citation of a subtlety opens the chart the subtlety belongs to', async () => {
+  const topic = await loadTopic('us-iran-war');
+  const viewpoint = topic.viewpoints[0];
+  const fact = topic.facts.find(f => f.id === 'iran-nuclear-programme')!;
+  const body = `### A step\n\n[Not weapons grade](#fact-${fact.id}/sixty-is-not-ninety).`;
+  const rendered = await renderWalkthroughs({ ...topic, viewpoints: [{ ...viewpoint, body }] });
+  assert.match(rendered.get(viewpoint.id)!.steps[0].html, /data-panel-observation="iran-nuclear-programme--sixty-is-not-ninety"/);
 });
 
 test('resolvePreviews resolves figure ids to the figure, its title and its DOM id on the fact page', () => {

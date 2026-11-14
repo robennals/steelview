@@ -730,6 +730,10 @@ series:
       label: 'South Carolina asks voters for a document'
       note: 'The first state to do so; no photo was required, just a document bearing the voter''s name.'
       source: 5
+    - period: '2000'
+      label: 'States with ID rules "had Democratic and Republican majorities"'
+      note: 'NCSL, on the states that had ID rules by 2000.'
+      source: 5
     - period: '2008'
       label: 'First strict laws take effect in Georgia and Indiana'
       note: 'Indiana''s law went ahead after the Supreme Court upheld it in Crawford v. Marion County.'
@@ -1244,6 +1248,23 @@ figures:
       OR: none
       PA: none
       VT: none
+  - kind: dataTable
+    id: strict-state-exceptions
+    title: Free ID and exceptions in three strict US states
+    description: 'What three strict states offer voters who cannot easily get ID, from NCSL''s state tables.'
+    caption: 'One card per state'
+    layout: cards
+    leadColumn: offers
+    columns:
+      - { key: state, label: 'State', rowHeader: true }
+      - { key: offers, label: 'What it offers', sortable: false }
+    rows:
+      - state: 'Georgia'
+        offers: { value: 'A "free voter ID card issued by the state or county"', sources: [3] }
+      - state: 'Wisconsin'
+        offers: { value: 'A pledge "to provide temporary free IDs to those in need"', sources: [3] }
+      - state: 'Tennessee'
+        offers: { value: 'An indigent voter may "execute an affidavit of identity" instead', sources: [3] }
   - kind: series
     id: dpoc-laws
   - kind: map
@@ -1345,6 +1366,8 @@ figures:
         said: { value: 'States should reach out "by providing more offices, including mobile ones, to register voters and provide photo IDs free of charge"', sources: [20] }
       - recommendation: 'Its view of fraud'
         said: { value: '"No evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election"', sources: [20] }
+      - recommendation: 'Carter on Georgia''s 2005 law'
+        said: { value: 'It "requires that you buy a voter ID card, which costs you about $20 for five years, or $35 for 10 years. That is a poll tax"', sources: [22] }
       - recommendation: 'Dissent (Daschle, Overton, Yzaguirre)'
         said: { value: 'The ID proposal was "the most troublesome recommendation", and "for some … nothing short of a modern day poll tax"', sources: [21] }
   - kind: dataTable
@@ -1453,8 +1476,63 @@ figures:
       - { label: Aged 18 to 24, value: 71 }
   - kind: comparison
     id: ni-register-2002
+  - kind: dataTable
+    id: ni-after-photo
+    title: Northern Ireland after photo ID
+    description: 'What the House of Commons Library reports about Northern Ireland once photo ID was required.'
+    caption: 'One row per measure'
+    columns:
+      - { key: measure, label: 'Measure', rowHeader: true }
+      - { key: figure, label: 'What was found', sortable: false }
+    rows:
+      - measure: 'Turnout'
+        figure: { value: '"There was no evidence to suggest a fall in turnout"', sources: [27] }
+      - measure: 'Tendered ballots issued, 2005 general election'
+        figure: { value: '55, a 94% reduction from 1983', sources: [27] }
+      - measure: 'Personation convictions since 2002'
+        figure: { value: 'One', sources: [27] }
+      - measure: 'Electors who believed fraud was commonplace, early 2000s'
+        figure: { value: '66%', sources: [27] }
+      - measure: 'Electors thinking at least some fraud took place, 2017'
+        figure: { value: '28%', sources: [27] }
   - kind: series
     id: canada-nonvoters
+observationMarks:
+  northern-ireland-after-personation: {rows: ["Northern Ireland"]}
+  britain-precaution-not-fraud: {rows: ["Great Britain"]}
+  ni-after-photo-id: {rows: ["Turnout"]}
+  strict-states-exceptions: {rows: ["Georgia"]}
+  rules-vary-widely: {rows: ["AR", "GA", "IN", "KS", "MS", "NH", "NC", "OH", "TN", "WI", "AZ", "IA", "ND", "WY", "AL", "FL", "ID", "KY", "LA", "MI", "MO", "MT", "NE", "RI", "SC", "SD", "TX", "WV", "AK", "CO", "CT", "DE", "OK", "UT", "VA", "WA"]}
+  carter-baker-bargain: {rows: ["Photo ID at the polls (2.5.1)", "Access"]}
+  carter-baker-split: {rows: ["Carter on Georgia's 2005 law"]}
+  strict-states-early-voting: {rows: ["Ohio", "Indiana", "Georgia", "Kansas (varies by county)", "Tennessee", "North Carolina", "Arkansas", "Wisconsin"]}
+  strict-states-without-early-voting: {rows: ["Mississippi", "New Hampshire"]}
+  canada-vouching: {rows: ["Canada"]}
+  early-adopters: {lines: ["States requesting or requiring ID"], from: "1950", to: "2000"}
+  ni-personation-unquantified: {rows: ["Northern Ireland"]}
+  canada-no-fraud-rationale: {rows: ["Canada"]}
+  canada-nonvoters: {lines: ["Electoral-process reasons, including ID"]}
+  dpoc-surge: {lines: ["States with a DPOC law enacted"], from: "2023", to: "2026"}
+  dpoc-not-all-in-effect: {lines: ["States with a DPOC law enacted"], at: "2026"}
+  photo-id-common-in-g7: {rows: ["Italy", "United Kingdom", "Canada", "France"]}
+  germany-japan-no-routine-check: {rows: ["Germany", "Japan"]}
+  state-supplies-id: {rows: ["Germany", "United Kingdom"]}
+  fallbacks-abroad: {rows: ["Canada", "Italy", "United Kingdom"]}
+  country-counts-depend-on-definition: {rows: ["France", "Germany"]}
+  britain-awareness-gaps: {rows: ["Aged 18 to 24", "Ethnic minority communities", "All Great Britain"]}
+  britain-turnaways-small-and-falling: {lines: ["Did not return and vote"], at: "2024-07"}
+  britain-turnaways-undercount: {lines: ["Initially turned away"], at: "2024-07"}
+  britain-confidence-and-personation: {whole: true}
+  ni-register-fell: {rows: ["August 2002 (household registration)", "December 2002 (individual registration)"]}
+  shift-to-photo: {lines: ["Photo ID requested or required", "Non-photo ID accepted"]}
+  strict-count-fell-then-rose: {lines: ["Strict photo ID (subset of photo)"], from: "2014", to: "2026"}
+  us-36-states-up-from-13: {lines: ["States requesting or requiring ID"], from: "2000", to: "2026"}
+  pace-of-adoption: {lines: ["States requesting or requiring ID"], from: "2010", to: "2014"}
+  courts-blocked-laws: {lines: ["States requesting or requiring ID"], at: "2014"}
+  two-counts-for-2000: {lines: ["States requesting or requiring ID"], at: "2000"}
+  ni-personation-fell: {rows: ["Tendered ballots issued, 2005 general election", "Personation convictions since 2002"]}
+  require-versus-adopted-after-fraud: {rows: ["Italy", "United Kingdom", "Canada"]}
+  turnaways-are-not-fraud-stopped: {lines: ["Initially turned away"], at: "2024-07"}
 ---
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-states-with-id}
 
@@ -1498,7 +1576,9 @@ NCSL's strict list included Texas and Arkansas in 2014 but shrank by 2020 as cou
 
 The two lines cut across each other, so every combination exists, and the states that ask for no document check voters in other ways, most often by signature. [1](#source-voter-id-rules-in-the-us-and-abroad-1) [2](#source-voter-id-rules-in-the-us-and-abroad-2) The rules keep changing: NCSL's change log lists several changes in 2026 alone, two of them marked on the photo-ID chart above. [4](#source-voter-id-rules-in-the-us-and-abroad-4)
 
-### Even strict states have exceptions and some offer free ID {#voter-id-rules-in-the-us-and-abroad--strict-states-exceptions}
+## Observations {#voter-id-rules-in-the-us-and-abroad--observations-strict-state-exceptions}
+
+### Georgia offers a free voter ID card, and other strict states have exceptions {#voter-id-rules-in-the-us-and-abroad--strict-states-exceptions}
 
 Some strict states make room for voters who cannot easily get ID:
 
@@ -1539,7 +1619,7 @@ Mississippi and New Hampshire are strict-photo states and, with Alabama, the onl
 
 The report asked states both to require photo ID and to supply it free, with mobile offices registering voters and issuing cards. [20](#source-voter-id-rules-in-the-us-and-abroad-20) It also recommended proof of citizenship at registration. [20](#source-voter-id-rules-in-the-us-and-abroad-20)
 
-### The commission split, and its co-chair called Georgia's 2005 law a poll tax {#voter-id-rules-in-the-us-and-abroad--carter-baker-split}
+### Carter called Georgia's 2005 law a poll tax because voters had to buy the card {#voter-id-rules-in-the-us-and-abroad--carter-baker-split}
 
 Three commissioners dissented from the ID recommendation. [21](#source-voter-id-rules-in-the-us-and-abroad-21) In a September 2005 interview, Carter said Georgia's new law, which charged about $20 for a five-year card or $35 for ten years, "is a poll tax", because the commission's plan required "that the voter ID card be free of charge". [22](#source-voter-id-rules-in-the-us-and-abroad-22) Georgia now offers a free card. [3](#source-voter-id-rules-in-the-us-and-abroad-3)
 
@@ -1563,6 +1643,10 @@ The Carter–Baker report observed that "most advanced democracies have fraud-pr
 
 Canada lets a voter without ID make a written declaration if another elector at the same polling station vouches for them; Italy lets a poll official or a known local voter attest to identity. [33](#source-voter-id-rules-in-the-us-and-abroad-33) [41](#source-voter-id-rules-in-the-us-and-abroad-41) Britain has no such fallback on the day: in 2023 its then government rejected vouching, saying it "would undermine the integrity of the check". [23](#source-voter-id-rules-in-the-us-and-abroad-23)
 
+### Canada keeps vouching as a fallback {#voter-id-rules-in-the-us-and-abroad--canada-vouching}
+
+A Canadian voter with no ID may vote after a written declaration, if an elector listed at the same polling station shows ID and vouches for them. [33](#source-voter-id-rules-in-the-us-and-abroad-33) Canada's rule also accepts two non-photo IDs instead of one photo ID. [33](#source-voter-id-rules-in-the-us-and-abroad-33)
+
 ## Subtleties {#voter-id-rules-in-the-us-and-abroad--subtleties-g7}
 
 ### Counts of "countries requiring voter ID" depend on what counts as ID {#voter-id-rules-in-the-us-and-abroad--country-counts-depend-on-definition}
@@ -1585,7 +1669,7 @@ A 1998 government review found postal-vote malpractice but said personation at p
 
 The Electoral Commission later wrote that the extent of fraud "has never been quantified", so the impact of the measures could not be assessed accurately. [31](#source-voter-id-rules-in-the-us-and-abroad-31)
 
-### Britain adopted ID to close a gap, not after a rise in detected personation {#voter-id-rules-in-the-us-and-abroad--britain-precaution-not-fraud}
+### Britain adopted ID on a "precautionary principle", with few personation cases on record {#voter-id-rules-in-the-us-and-abroad--britain-precaution-not-fraud}
 
 The Electoral Commission recommended ID in 2014 because polling-station voting "had few checks in place to detect fraud" once registration and postal voting were tightened. Lord Pickles, recommending pilots, accepted that allegations were low and prosecutions rare, and invoked a "precautionary principle". [25](#source-voter-id-rules-in-the-us-and-abroad-25) Since 2016, polling-station personation has produced five convictions and six cautions (as of August 2025). [24](#source-voter-id-rules-in-the-us-and-abroad-24)
 
@@ -1625,26 +1709,21 @@ The Electoral Commission attributed the fall mainly to ending the practice of ca
 
 The fall measures the registration reform passed with photo ID, not people turned away at the polls.
 
-### After photo ID, Northern Ireland recorded much less suspected personation and no fall in turnout {#voter-id-rules-in-the-us-and-abroad--ni-after-photo-id}
+## Observations {#voter-id-rules-in-the-us-and-abroad--observations-ni-after-photo}
 
-Researcher Stuart Wilks-Heeg, quoted by the Commons Library, found "no evidence to suggest a fall in turnout". The other measures cited: [27](#source-voter-id-rules-in-the-us-and-abroad-27)
+### After photo ID, Northern Ireland saw no evidence of a fall in turnout {#voter-id-rules-in-the-us-and-abroad--ni-after-photo-id}
 
-| Measure | Figure |
-|---|---|
-| Tendered ballots issued, 2005 general election | 55, a 94% reduction from 1983 [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
-| Personation convictions since 2002 | One [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
-| Electors who believed fraud was commonplace, early 2000s | 66% [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
-| Electors thinking at least some fraud took place, 2017 | 28% [27](#source-voter-id-rules-in-the-us-and-abroad-27) |
+Researcher Stuart Wilks-Heeg, quoted by the Commons Library, found "no evidence to suggest a fall in turnout". [27](#source-voter-id-rules-in-the-us-and-abroad-27)
+
+### After photo ID, Northern Ireland recorded much less suspected personation {#voter-id-rules-in-the-us-and-abroad--ni-personation-fell}
+
+Tendered ballots, issued when someone has already voted in a person's name, fell sharply, and there has been one personation conviction since 2002. The share of electors who thought fraud took place fell too, though the two surveys asked different questions. [27](#source-voter-id-rules-in-the-us-and-abroad-27)
 
 ## Observations {#voter-id-rules-in-the-us-and-abroad--observations-canada-process-reasons}
 
 ### Few Canadian non-voters cite process problems, including ID {#voter-id-rules-in-the-us-and-abroad--canada-nonvoters}
 
 Electoral-process reasons, which include being unable to prove identity or address, stayed a small share of non-voters' main reasons at all three elections. [34](#source-voter-id-rules-in-the-us-and-abroad-34) [35](#source-voter-id-rules-in-the-us-and-abroad-35) [36](#source-voter-id-rules-in-the-us-and-abroad-36) The category also includes other problems, so the share blocked by ID alone is smaller and is not published.
-
-### Canada keeps vouching as a fallback {#voter-id-rules-in-the-us-and-abroad--canada-vouching}
-
-A Canadian voter with no ID may vote after a written declaration, if an elector listed at the same polling station shows ID and vouches for them. [33](#source-voter-id-rules-in-the-us-and-abroad-33) Canada's rule also accepts two non-photo IDs instead of one photo ID. [33](#source-voter-id-rules-in-the-us-and-abroad-33)
 
 ## More {#voter-id-rules-in-the-us-and-abroad--more-states-with-id}
 

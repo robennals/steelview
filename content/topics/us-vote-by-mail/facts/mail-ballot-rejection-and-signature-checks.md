@@ -1221,6 +1221,76 @@ figures:
       MO: notary
       OK: notary
   - kind: dataTable
+    id: state-safeguards
+    title: 'State safeguards on signature checks: curing, training and review by both parties'
+    description: 'How many states must let voters fix a signature problem, and two states'' rules on who checks signatures.'
+    caption: One card per safeguard
+    layout: cards
+    leadColumn: rule
+    columns:
+      - key: where
+        label: Where
+        rowHeader: true
+      - key: rule
+        label: The rule
+        sortable: false
+    rows:
+      - where: Thirty-five states and Washington, D.C.
+        rule:
+          value: 'Must "notify voters when there is a missing signature or a signature discrepancy" and give them "an opportunity to correct it"'
+          sources:
+            - 30
+      - where: Washington
+        rule:
+          value: '"All personnel assigned to verify signatures must receive training on statewide standards for signature verification"'
+          sources:
+            - 29
+      - where: Colorado
+        rule:
+          value: 'If the signatures do not match, "two other election judges of different political party affiliations shall simultaneously compare the signatures"'
+          sources:
+            - 29
+  - kind: dataTable
+    id: rejection-gaps
+    title: 'Who is rejected most: what Washington''s auditor and Florida studies found'
+    description: 'Findings the rejection charts cannot show: comparisons after controls, for mismatches alone, and from other studies.'
+    caption: One card per finding
+    layout: cards
+    leadColumn: finding
+    columns:
+      - key: who
+        label: Who
+        rowHeader: true
+      - key: finding
+        label: Finding
+        sortable: false
+    rows:
+      - who: 'Youngest voters, Washington, 2020'
+        finding:
+          value: 'After controls, "almost three times more likely" to be rejected than the oldest voters; "consistent when we considered only ballots rejected for mismatched signatures"'
+          sources:
+            - 19
+      - who: 'First-time voters, Washington, 2020'
+        finding:
+          value: 'Rejection rate "more than five times greater than for voters with previous voting experience"'
+          sources:
+            - 20
+      - who: 'County of the ballot, Washington, 2020'
+        finding:
+          value: '"the most significant variable related to rejection"; for mismatches alone, "ballots from two counties having 18 times the likelihood of rejection as another county"'
+          sources:
+            - 21
+      - who: 'Younger voters, Florida, 2018'
+        finding:
+          value: '"younger voters and voters needing assistance are disproportionately likely to have their VBM ballots rejected"'
+          sources:
+            - 26
+      - who: 'Inexperienced mail voters, Florida, 2016 and 2018'
+        finding:
+          value: '"three and 2.75 times more likely, respectively" to be rejected than experienced mail voters'
+          sources:
+            - 27
+  - kind: dataTable
     id: washington-recheck
     title: 'Washington''s re-check of its counties'' signature decisions, 2020'
     description: What the state auditor's review found when it repeated the counties' work.
@@ -1237,7 +1307,7 @@ figures:
     rows:
       - measure: How the audit describes matching
         finding:
-          value: '"inherently subjective"; "even experienced reviewers can come to different conclusions"'
+          value: '"inherently subjective"; "even experienced reviewers can come to different conclusions"; "Members of our own team participating in the review also disagreed on whether many of the signatures matched"'
           sources:
             - 23
       - measure: Ballots re-checked
@@ -1265,6 +1335,11 @@ figures:
           value: None found
           sources:
             - 24
+      - measure: Counties with lower rejection rates
+        finding:
+          value: '"more likely to accept less conclusive signatures"'
+          sources:
+            - 22
   - kind: dataTable
     id: courts
     title: US court rulings on rejecting ballots for a signature mismatch
@@ -1337,6 +1412,52 @@ figures:
         finding: '"no fraudulent absentee ballots"'
       - measure: Envelopes that should have been flagged
         finding: 'Two, one "mistakenly signed by the elector''s spouse"; in both cases the voter had filled in the ballot'
+observationMarks:
+  cobb-spouse-signature-passed: {rows: ["Which envelopes", "Envelopes that should have been flagged"]}
+  all-mail-states-not-different: {rows: ["Nevada (all-mail)", "Utah (all-mail)", "Oregon (all-mail)", "Colorado (all-mail)", "United States", "California (all-mail)", "Hawaii (all-mail)", "Washington (all-mail)", "District of Columbia (all-mail)", "Vermont (all-mail)"]}
+  checks-differ-by-state: {rows: ["AZ", "AR", "CA", "CO", "FL", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "ME", "MA", "MI", "MS", "MT", "NE", "NV", "NH", "NJ", "NY", "ND", "OH", "OR", "RI", "SD", "TN", "TX", "UT", "WA", "WV", "PR", "CT", "DE", "GA", "MD", "NM", "PA", "VT", "VA", "WY", "DC", "VI", "AL", "AK", "LA", "MN", "NC", "SC", "WI", "MO", "OK"]}
+  rejection-about-one-percent: {lines: ["United States"]}
+  more-than-half-cured: {rows: ["Set aside for curing", "Cured by the voter and counted"]}
+  reviewers-disagree: {rows: ["How the audit describes matching"]}
+  signatures-largest-reason: {lines: ["Non-matching signature", "Missing voter signature", "Arrived after the deadline"], at: "2024"}
+  new-hampshire-due-process: {rows: ["Saucedo v. Gardner"]}
+  pennsylvania-no-signature-rejection: {rows: ["In re November 3, 2020 General Election"]}
+  washington-race-gaps: {rows: ["Black", "White"]}
+  washington-age-gaps: {rows: ["18–21", "65 and over"]}
+  florida-young-and-inexperienced: {rows: ["Younger voters, Florida, 2018", "Inexperienced mail voters, Florida, 2016 and 2018"]}
+  county-strongest-predictor: {rows: ["County of the ballot, Washington, 2020"]}
+  no-evidence-of-bias: {rows: ["Evidence of bias in decisions"]}
+  auditor-agreed-with-counties: {rows: ["Agreement with counties"]}
+  low-rejection-counties-accept-more: {rows: ["Counties with lower rejection rates"]}
+  id-number-checks-also-reject: {lines: ["Texas", "Georgia"], from: "2022", to: "2024"}
+  texas-rose-under-id-number: {lines: ["Texas"], from: "2020", to: "2024"}
+  georgia-fell-after-sb202: {lines: ["Georgia"]}
+  most-states-cure: {rows: ["Thirty-five states and Washington, D.C."]}
+  training-and-bipartisan-review: {rows: ["Colorado"]}
+  rejections-against-all-votes: {lines: ["United States"], at: "2024"}
+  missing-signatures-smaller-share: {lines: ["Missing voter signature"], from: "2016", to: "2024"}
+  late-arrival-a-leading-reason: {lines: ["Arrived after the deadline"], at: "2024"}
+  already-voted-another-ballot: {rows: ["Voter already cast an accepted ballot"]}
+  other-requirement-rejections: {rows: ["No witness signature", "Required ID or document missing", "Not in required secrecy envelope", "Envelope not sealed", "Ballot missing from envelope", "No required postmark", "Unofficial envelope", "No resident address on envelope", "Several ballots in one envelope"]}
+  state-rates-range-widely: {rows: ["Arkansas", "Delaware", "Oklahoma", "Vermont (all-mail)", "Maine", "Indiana"]}
+  highest-rates-other-rules: {rows: ["Arkansas", "Delaware", "Oklahoma", "Texas"]}
+  race-gaps-not-mismatch-only: {rows: ["Black", "White"]}
+  men-and-non-english-ballots: {whole: true}
+  low-rejection-counties-cure-more: {rows: ["Whitman", "Lincoln", "Clallam", "Skagit", "Pierce", "Pacific", "Lewis", "Island", "Thurston", "Grant", "Klickitat", "Cowlitz", "Whatcom", "Spokane", "Grays Harbor", "Mason", "Skamania", "Walla Walla", "Yakima", "Jefferson", "Chelan", "Garfield", "Stevens", "Ferry", "San Juan", "Douglas", "Pend Oreille", "Columbia"]}
+  cure-coverage: {rows: ["Set aside for curing"]}
+  texas-cure-share: {rows: ["Set aside for curing"]}
+  fifth-circuit-fraud-risk: {rows: ["Richardson v. Texas Secretary of State"]}
+  higginbotham-perceived-mismatches: {rows: ["Richardson, Higginbotham, J."]}
+  lake-signature-claim-failed: {rows: ["Lake v. Hobbs"]}
+  cobb-no-fraudulent-ballots: {rows: ["Envelopes re-examined", "Fraudulent ballots found"]}
+  cobb-accepted-ballots-only: {rows: ["Which envelopes"]}
+  no-in-person-equivalent: {lines: ["United States"]}
+  signature-share-reporting: {lines: ["Non-matching signature"]}
+  texas-2020-low-point: {lines: ["Texas"], from: "2016", to: "2020"}
+  youngest-mismatches-alone: {rows: ["Youngest voters, Washington, 2020"]}
+  first-time-voters-rejected-more: {rows: ["First-time voters, Washington, 2020"]}
+  rejected-is-not-fraud: {lines: ["United States"]}
+  washington-excludes-late: {whole: true}
 ---
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-rejection-rate}
 
@@ -1360,7 +1481,7 @@ Rejection records a failed procedural check, such as lateness or a signature tha
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-rejection-reasons}
 
-### Mismatched signatures are now the most common listed reason {#mail-ballot-rejection-and-signature-checks--signatures-largest-reason}
+### Signature problems are now the most common listed reason {#mail-ballot-rejection-and-signature-checks--signatures-largest-reason}
 
 A non-matching signature was the most common listed reason in four of the five elections from 2016 to 2024, and reached 40.7% of rejections in 2024. [8](#source-mail-ballot-rejection-and-signature-checks-8) [6](#source-mail-ballot-rejection-and-signature-checks-6) [5](#source-mail-ballot-rejection-and-signature-checks-5) [2](#source-mail-ballot-rejection-and-signature-checks-2) Late arrival led in 2012 and 2014 and again in 2018. [10](#source-mail-ballot-rejection-and-signature-checks-10) [9](#source-mail-ballot-rejection-and-signature-checks-9) [7](#source-mail-ballot-rejection-and-signature-checks-7)
 
@@ -1386,11 +1507,11 @@ Much of the remainder sits in "other". In 2022 about a quarter of "other" reject
 
 Texas's line rises after SB 1 required an ID or Social Security number on the envelope, and has stayed above both its 2020 rate and the national line. [13](#source-mail-ballot-rejection-and-signature-checks-13) [14](#source-mail-ballot-rejection-and-signature-checks-14) In its first primary under the rule, many voters missed the new field on the envelope. [12](#source-mail-ballot-rejection-and-signature-checks-12)
 
-### Georgia's rate fell after it replaced signature matching with an ID number {#mail-ballot-rejection-and-signature-checks--georgia-fell-after-sb202}
+### Georgia's rate has stayed below its 2016 and 2018 levels since it replaced signature matching with an ID number {#mail-ballot-rejection-and-signature-checks--georgia-fell-after-sb202}
 
-Georgia's line, high under signature matching in 2016 and 2018, has sat near the national line since SB 202. [39](#source-mail-ballot-rejection-and-signature-checks-39) [7](#source-mail-ballot-rejection-and-signature-checks-7) [15](#source-mail-ballot-rejection-and-signature-checks-15) [16](#source-mail-ballot-rejection-and-signature-checks-16) Those earlier rates count every reason, not just signatures. In a survey of county election offices, a plurality said the new check had not reduced rejections. [17](#source-mail-ballot-rejection-and-signature-checks-17)
+Georgia's line, high under signature matching in 2016 and 2018, has sat near the national line since SB 202, though above its 0.4% of 2020. [39](#source-mail-ballot-rejection-and-signature-checks-39) [7](#source-mail-ballot-rejection-and-signature-checks-7) [15](#source-mail-ballot-rejection-and-signature-checks-15) [16](#source-mail-ballot-rejection-and-signature-checks-16) Those earlier rates count every reason, not just signatures. In a survey of county election offices, a plurality said the new check had not reduced rejections. [17](#source-mail-ballot-rejection-and-signature-checks-17)
 
-### An ID-number check is not a rejection-free alternative {#mail-ballot-rejection-and-signature-checks--id-number-checks-also-reject}
+### An ID-number check also rejects ballots {#mail-ballot-rejection-and-signature-checks--id-number-checks-also-reject}
 
 The two states moved in opposite directions under similar-sounding rules: Texas added a number check, Georgia used one to replace signature matching. [12](#source-mail-ballot-rejection-and-signature-checks-12) [17](#source-mail-ballot-rejection-and-signature-checks-17) So what a number check does to rejections depends on its design and on what it replaces.
 
@@ -1416,9 +1537,9 @@ A missing witness signature was the next-largest specific reason, at 5.6%, and e
 
 Arkansas, Delaware and Oklahoma rejected the largest shares in 2024; Vermont, Maine and Indiana the smallest. [4](#source-mail-ballot-rejection-and-signature-checks-4) Where a voter lives makes a large difference to the chance their ballot is not counted.
 
-### All-mail states were not significantly different from the rest {#mail-ballot-rejection-and-signature-checks--all-mail-states-not-different}
+### All-mail states fall on both sides of the national rejection rate {#mail-ballot-rejection-and-signature-checks--all-mail-states-not-different}
 
-The EAC found the counted and rejected shares "not significantly different" between states that held all-mail elections and those that did not. [1](#source-mail-ballot-rejection-and-signature-checks-1) The highlighted all-mail states sit throughout the middle and lower part of the chart. [4](#source-mail-ballot-rejection-and-signature-checks-4) [31](#source-mail-ballot-rejection-and-signature-checks-31)
+The EAC found the counted and rejected shares "not significantly different" between states that held all-mail elections and those that did not. [1](#source-mail-ballot-rejection-and-signature-checks-1) Four of the highlighted all-mail states sit above the 1.2% national rate and five below it. [4](#source-mail-ballot-rejection-and-signature-checks-4) [31](#source-mail-ballot-rejection-and-signature-checks-31)
 
 ### The highest rates were not all in signature-matching states {#mail-ballot-rejection-and-signature-checks--highest-rates-other-rules}
 
@@ -1440,23 +1561,11 @@ Men were 42 percent more likely than women to have a ballot rejected. In King Co
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-washington-age}
 
-### Young and first-time voters were rejected most {#mail-ballot-rejection-and-signature-checks--washington-age-gaps}
+### The youngest voters were rejected most {#mail-ballot-rejection-and-signature-checks--washington-age-gaps}
 
-After controls, the youngest voters were almost three times as likely as the oldest to be rejected, and this held for mismatched signatures alone. [19](#source-mail-ballot-rejection-and-signature-checks-19) First-time voters were rejected at more than five times the rate of voters who had voted before. [20](#source-mail-ballot-rejection-and-signature-checks-20)
-
-### Florida studies found the same pattern {#mail-ballot-rejection-and-signature-checks--florida-young-and-inexperienced}
-
-In Florida's 2018 election, younger voters and voters needing assistance were "disproportionately likely" to have mail ballots rejected, with "significant variation" across counties. [26](#source-mail-ballot-rejection-and-signature-checks-26) Inexperienced mail voters were about three times as likely to be rejected in 2016 and 2018. [27](#source-mail-ballot-rejection-and-signature-checks-27) Both come from the authors' summaries; the full papers were not read.
+After controls, the youngest voters were almost three times as likely as the oldest to be rejected, and this held for mismatched signatures alone. [19](#source-mail-ballot-rejection-and-signature-checks-19)
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-washington-counties}
-
-### The county a ballot was cast in mattered more than anything else {#mail-ballot-rejection-and-signature-checks--county-strongest-predictor}
-
-After controlling for age, race, education and income, ballots in some counties were four to seven times as likely as in others to be rejected for a mismatched or missing signature. For mismatches alone, two counties were 18 times as likely as another. [21](#source-mail-ballot-rejection-and-signature-checks-21)
-
-### Low-rejection counties accepted less conclusive signatures {#mail-ballot-rejection-and-signature-checks--low-rejection-counties-accept-more}
-
-Counties with lower rejection rates were more likely to accept less conclusive signature matches, which could explain part of the difference. [22](#source-mail-ballot-rejection-and-signature-checks-22) Some of the gap is a choice about how much doubt to allow, not only error.
 
 ### Low-rejection counties also cured more ballots {#mail-ballot-rejection-and-signature-checks--low-rejection-counties-cure-more}
 
@@ -1478,17 +1587,9 @@ In 2024 Texas sent 5.8% of its mail ballots into curing, against 1.5% nationally
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-state-rules}
 
-### States check mail ballots in very different ways {#mail-ballot-rejection-and-signature-checks--checks-differ-by-state}
+### Every state checks mail ballots, in very different ways {#mail-ballot-rejection-and-signature-checks--checks-differ-by-state}
 
 Most states compare signatures, but nine and DC check only that the envelope is signed, and six ask for an ID number. [28](#source-mail-ballot-rejection-and-signature-checks-28) The groups overlap: Ohio and Texas compare signatures and also check a number. Utah will drop signature matching for ID digits in 2029. [28](#source-mail-ballot-rejection-and-signature-checks-28)
-
-### Some states require training and bipartisan review {#mail-ballot-rejection-and-signature-checks--training-and-bipartisan-review}
-
-Washington requires everyone who checks signatures to be trained on statewide standards, and Colorado has two more judges, of different parties, review any mismatch. [29](#source-mail-ballot-rejection-and-signature-checks-29) All ten Washington counties the auditor visited had trained their staff. [25](#source-mail-ballot-rejection-and-signature-checks-25)
-
-### Most states must let voters fix signature problems {#mail-ballot-rejection-and-signature-checks--most-states-cure}
-
-Thirty-five states and DC require officials to tell voters of a missing signature or a discrepancy and give them a chance to correct it. [30](#source-mail-ballot-rejection-and-signature-checks-30) The count includes states that do not compare signatures, which can only be curing missing ones.
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-washington-recheck}
 
@@ -1500,13 +1601,17 @@ Re-checking a random sample, the auditor agreed with counties on more than 98 pe
 
 In the auditor's words: "We found no evidence of bias in those decisions. While that is good news, it also means we are not able to explain what causes rejection rates to vary for these groups of voters." [24](#source-mail-ballot-rejection-and-signature-checks-24)
 
-### Trained reviewers, the auditors included, disagreed about matches {#mail-ballot-rejection-and-signature-checks--reviewers-disagree}
+### The auditor called matching "inherently subjective", and its own team disagreed about many signatures {#mail-ballot-rejection-and-signature-checks--reviewers-disagree}
 
 The audit calls matching "inherently subjective". It found that "even experienced reviewers can come to different conclusions", that its own team disagreed on many signatures, and that counties read the state's criteria differently. [23](#source-mail-ballot-rejection-and-signature-checks-23)
 
+### Low-rejection counties accepted less conclusive signatures {#mail-ballot-rejection-and-signature-checks--low-rejection-counties-accept-more}
+
+Counties with lower rejection rates were more likely to accept less conclusive signature matches, which could explain part of the difference. [22](#source-mail-ballot-rejection-and-signature-checks-22) Some of the gap is a choice about how much doubt to allow, not only error.
+
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-courts}
 
-### A federal court required notice before a mismatch rejection in New Hampshire {#mail-ballot-rejection-and-signature-checks--new-hampshire-due-process}
+### A federal court found New Hampshire voters got no notice, and officials no training or standards {#mail-ballot-rejection-and-signature-checks--new-hampshire-due-process}
 
 The court found that voters were not told their ballot had been rejected and moderators had no handwriting training or standards. [32](#source-mail-ballot-rejection-and-signature-checks-32) The court noted that 275 of 78,430 absentee ballots there were rejected for a mismatch in 2016. [32](#source-mail-ballot-rejection-and-signature-checks-32)
 
@@ -1540,9 +1645,33 @@ The audit found two envelopes that should have been flagged. One was "mistakenly
 
 The envelopes came from boxes of "accepted" ballots. [37](#source-mail-ballot-rejection-and-signature-checks-37) The audit could find wrongly accepted ballots, but not valid ballots wrongly rejected, and finding no fraud in a sample shows little about how many forged signatures checks miss.
 
-### No case was found of signature review being used to change a result {#mail-ballot-rejection-and-signature-checks--no-case-signature-review-changed-result}
+## Observations {#mail-ballot-rejection-and-signature-checks--observations-rejection-gaps}
 
-The sources gathered for this report contain no case of officials using signature review to change an election result. The one attempt found to overturn a result over signature checks, Arizona's 2022 governor's race, failed in court. [36](#source-mail-ballot-rejection-and-signature-checks-36) The search was not exhaustive; see What we don't know yet.
+### The youngest voters' gap held for mismatched signatures alone {#mail-ballot-rejection-and-signature-checks--youngest-mismatches-alone}
+
+After controls, the youngest voters were almost three times as likely as the oldest to be rejected, and the audit calls this "consistent when we considered only ballots rejected for mismatched signatures". [19](#source-mail-ballot-rejection-and-signature-checks-19)
+
+### First-time voters were rejected far more than others {#mail-ballot-rejection-and-signature-checks--first-time-voters-rejected-more}
+
+First-time voters were rejected at more than five times the rate of voters who had voted before. [20](#source-mail-ballot-rejection-and-signature-checks-20)
+
+### The county mattered most: for mismatches alone, two counties were 18 times as likely as another to reject a ballot {#mail-ballot-rejection-and-signature-checks--county-strongest-predictor}
+
+After controlling for age, race, education and income, ballots in some counties were four to seven times as likely as in others to be rejected for a mismatched or missing signature. For mismatches alone, two counties were 18 times as likely as another. [21](#source-mail-ballot-rejection-and-signature-checks-21)
+
+### Florida studies found the same pattern {#mail-ballot-rejection-and-signature-checks--florida-young-and-inexperienced}
+
+In Florida's 2018 election, younger voters and voters needing assistance were "disproportionately likely" to have mail ballots rejected, with "significant variation" across counties. [26](#source-mail-ballot-rejection-and-signature-checks-26) Inexperienced mail voters were about three times as likely to be rejected in 2016 and 2018. [27](#source-mail-ballot-rejection-and-signature-checks-27) Both come from the authors' summaries; the full papers were not read.
+
+## Observations {#mail-ballot-rejection-and-signature-checks--observations-state-safeguards}
+
+### Thirty-five states and DC must let voters fix signature problems {#mail-ballot-rejection-and-signature-checks--most-states-cure}
+
+Thirty-five states and DC require officials to tell voters of a missing signature or a discrepancy and give them a chance to correct it. [30](#source-mail-ballot-rejection-and-signature-checks-30) The count includes states that do not compare signatures, which can only be curing missing ones.
+
+### Colorado has two judges from different parties check any mismatch {#mail-ballot-rejection-and-signature-checks--training-and-bipartisan-review}
+
+Washington requires everyone who checks signatures to be trained on statewide standards, and Colorado has two more judges, of different parties, review any mismatch. [29](#source-mail-ballot-rejection-and-signature-checks-29) All ten Washington counties the auditor visited had trained their staff. [25](#source-mail-ballot-rejection-and-signature-checks-25)
 
 ## More {#mail-ballot-rejection-and-signature-checks--more-rejection-rate}
 

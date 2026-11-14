@@ -2,7 +2,7 @@ import type { Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
 import type { RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from '@/components/topic/chart-thumb';
-import { ExplorableChart, ExploreLink } from '@/components/topic/explore-panels';
+import { ExplorableChart, ExploreLink, ExploreProse } from '@/components/topic/explore-panels';
 import { Prose } from '@/components/topic/prose';
 import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { rowCharts } from '@/lib/content/row-charts';
@@ -22,13 +22,13 @@ function Step({ step, number }: StepProps) {
       <div className="sv-walk__text">
         <p className="sv-walk__kicker">Step {number}</p>
         <h3 className="sv-walk__heading">{step.heading}</h3>
-        <Prose html={step.html} className="sv-walk__prose" />
+        <ExploreProse html={step.html} className="sv-walk__prose" />
       </div>
       {step.chart && (
         <div className="sv-walk__chart">
           <ExplorableChart><LazyChart index={number - 1} /></ExplorableChart>
-          {step.hasPanel && step.observation
-            ? <ExploreLink fact={step.chart.fact.id} observation={step.observation} href={step.chart.href} />
+          {step.panel
+            ? <ExploreLink {...step.panel} href={step.chart.href} />
             : step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
         </div>
       )}

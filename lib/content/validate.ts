@@ -4,7 +4,7 @@ import { observationTargets } from './chart-observations';
 import { citedFactTargets, neededClaims } from './markdown';
 import { mapAreaIds, mapAreas } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
-import { PREVIEW_FIGURE_KINDS, isPreviewable, previewTarget } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroup } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
@@ -472,14 +472,17 @@ function knownSection(fact: Fact, section: string): boolean {
 /**
  * M1 — a mark must land on its observation's chart, since a reader takes what
  * it picks out as what the observation is about. Line charts take a region, a
- * point and lines; most other charts take rows (see `figureRows`).
+ * point and lines; most other charts take rows (see `figureRows`). `whole` says
+ * an observation is about the entire chart.
  */
+const CANNOT_SHOW_MARKS = 'is on a chart that cannot show marks yet';
+
 function observationMarkErrors(f: Fact): string[] {
   const groups = observationGroups(f);
   return Object.entries(f.observationMarks ?? {}).flatMap(([id, mark]) => {
     const where = `fact ${f.id}: observation mark "${id}"`;
     const key = groups.get(id);
-    if (key === undefined) return [`${where} is not an observation of a chart`];
+    if (key === undefined) return [`${where} is not an observation or subtlety of a chart`];
     return markErrors(f, key, mark).map(error => `${where} ${error}`);
   });
 }
@@ -501,7 +504,7 @@ function markErrors(f: Fact, key: string, mark: ObservationMark): string[] {
   }
   const figure = componentFigure(f, key);
   const rows = f.comparisons?.find(c => c.id === key)?.items.map(item => item.label) ?? (figure && figureRows(figure));
-  if (!rows) return ['is on a chart that cannot show marks yet'];
+  if (!rows) return [CANNOT_SHOW_MARKS];
   return [
     ...(mark.from || mark.to || mark.at || mark.lines ? ['names periods or lines, but its chart has rows'] : []),
     ...(mark.rows ?? []).filter(row => !rows.includes(row)).map(row => `names "${row}", which is not a row of ${key}`),
@@ -1055,6 +1058,50 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 
   return errors;
+}
+
+/**
+ * What a published topic must also satisfy, for a reader to see each fact it
+ * links to. Separate from `validateTopic`, whose fixtures exercise other rules
+ * with citations of bare reports.
+ */
+export function evidenceErrors(topic: Topic): string[] {
+  return [...citationTargetErrors(topic, new Map(topic.facts.map(fact => [fact.id, fact]))), ...topic.facts.flatMap(unmarkedObservationErrors)];
+}
+
+/**
+ * M3 — a reader follows a citation to see the fact on a chart. So a viewpoint, a
+ * crux or the topic's introduction may only cite an observation of a chart that
+ * picks out the data showing it: not a report, a whole chart or a passage of text.
+ */
+function citationTargetErrors(topic: Topic, factById: Map<string, Fact>): string[] {
+  const texts: [string, string][] = [
+    ['topic intro', topic.intro],
+    ...topic.viewpoints.map((v): [string, string] => [`viewpoint ${v.id}`, `${v.body}\n${v.summary}`]),
+    ...topic.cruxes.map((c): [string, string] => [`crux ${c.id}`, [c.body, ...c.positions.map(p => p.holds)].join('\n')]),
+  ];
+  return texts.flatMap(([what, body]) => citedFactTargets(body).flatMap(({ id, section }) => {
+    const fact = factById.get(id);
+    if (!fact) return [];
+    const link = `#fact-${id}${section ? `/${section}` : ''}`;
+    const key = section && observationGroups(fact).get(section);
+    if (!key || !factSlides(topic.slug, fact).some(slide => slideGroup(fact, slide) === key)) return [`${what}: ${link} is not an observation of a chart`];
+    const mark = fact.observationMarks?.[section];
+    if (mark && !mark.whole) return [];
+    return markErrors(fact, key, {}).includes(CANNOT_SHOW_MARKS) ? [] : [`${what}: ${link} picks out no part of its chart`];
+  }));
+}
+
+/**
+ * M2 — a data panel selects each observation in turn, and a claim in a viewpoint
+ * opens the one it cites, so each must say what it picks out on any chart that
+ * can show it. An observation with nothing narrower to pick out says `whole`.
+ */
+function unmarkedObservationErrors(f: Fact): string[] {
+  const groups = observationGroups(f);
+  return [...groups].flatMap(([id, key]) => f.observationMarks?.[id] || markErrors(f, key, {}).includes(CANNOT_SHOW_MARKS)
+    ? []
+    : [`fact ${f.id}: "${id}" has no entry in observationMarks`]);
 }
 
 /**

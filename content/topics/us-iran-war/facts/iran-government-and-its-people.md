@@ -579,6 +579,9 @@ additionalSeries:
       - period: '2025-06'
         label: 'Twelve-day war with Israel'
         source: 35
+      - period: '2025'
+        label: 'Highest number of recorded executions since 1989'
+        source: 35
     source:
       stance: supports
       quote: >-
@@ -871,7 +874,7 @@ comparisons:
     description: 'IHRNGO''s average monthly executions for each presidency, from Ahmadinejad (2005–2013) to Pezeshkian''s first 17 months (July 2024 – December 2025).'
     unit: count
     valueLabel: 'Executions per month'
-    sources: [35]
+    sources: [35, 22]
     note: 'From IHRNGO''s chart "Average monthly executions per president". IHRNGO''s totals per term are 3,337 (Ahmadinejad), 4,249 (Rouhani), 1,714 (Raisi, 33 months) and 2,292 (Pezeshkian, 17 months).'
     items:
       - label: 'Ahmadinejad (8 years)'
@@ -881,6 +884,7 @@ comparisons:
       - label: 'Raisi (33 months)'
         value: 51
       - label: 'Pezeshkian (17 months)'
+        detail: 'Elected as "the sole moderate" in the field'
         value: 135
         highlight: true
   - id: freedom-house-2026
@@ -1320,11 +1324,46 @@ figures:
       - { date: "2004-01", title: "3,600 parliamentary candidates rejected, including 83 sitting members; about a thousand reinstated", category: "reversal", source: 18 }
       - { date: "2019-11", title: "304 protesters killed under President Rouhani", category: "reversal", source: 6 }
       - { date: "2024-07", title: "Pezeshkian, the field's one moderate, elected", category: "opening", source: 22 }
-      - { date: "2024-12", title: "Harsher hijab law shelved by the Supreme National Security Council", category: "opening", source: 13 }
+      - { date: "2024-12", title: "Harsher hijab law shelved by the Supreme National Security Council", description: "\"most likely with the consent of Supreme Leader Ali Khamenei\"; its decisions \"require the Supreme Leader’s signature\".", category: "opening", source: 13 }
       - { date: "2025-05", title: "Speaker told in writing the hijab law \"should not be enacted for the time being\"", category: "opening", source: 14 }
       - { date: "2025-12", title: "Organisers of a marathon where women ran unveiled arrested", category: "reversal", source: 7 }
-      - { date: "2025-12", endDate: "2026-02", title: "Protest crackdown: 7,007 deaths by HRANA's count", category: "reversal", significance: "major", source: 1 }
+      - { date: "2025-12", endDate: "2026-02", title: "Protest crackdown: 7,007 deaths by HRANA's count", description: "UN fact-finding mission: these acts \"amount to the crimes against humanity of murder, imprisonment, torture\".", category: "reversal", significance: "major", sources: [1, 4] }
       - { date: "2026-03-08", title: "Mojtaba Khamenei, the late Leader's son, named Leader", category: "succession", source: 15 }
+observationMarks:
+  political-executions-peaked-april-may: {lines: ["Political and security-related"], from: "2026-04", to: "2026-05"}
+  executions-rose-under-pezeshkian: {lines: ["IHRNGO"], from: "2024", to: "2025"}
+  executions-most-since-1989: {lines: ["IHRNGO"], at: "2025"}
+  turnout-record-lows: {lines: ["Turnout"], from: "2021-06", to: "2024-06"}
+  reformist-backed-president-2024: {rows: ["Pezeshkian, the field's one moderate, elected"]}
+  execution-rate-by-president: {rows: ["Ahmadinejad (8 years)", "Rouhani (8 years)", "Raisi (33 months)", "Pezeshkian (17 months)"]}
+  iran-top-recorded-executioner: {rows: ["Iran"]}
+  arrests-january-2026: {rows: ["28 Dec 2025 – 15 Feb 2026"]}
+  arrests-after-june-2025: {rows: ["13 June – early Sept 2025, after the twelve-day war", "Same period"]}
+  crackdowns-2019-2022-2026: {rows: ["November 2019", "2022–23 (Woman, Life, Freedom)", "Dec 2025 – Feb 2026"]}
+  few-prefer-islamic-republic: {rows: ["Islamic Republic"]}
+  satisfaction-at-weakening: {rows: ["Satisfied the Islamic Republic weakened"]}
+  strikes-seen-as-aggression: {rows: ["Called it \"military aggression\"", "Called it \"humanitarian intervention\""]}
+  january-2026-crackdown-toll: {rows: ["Protesters"]}
+  hijab-law-shelved: {rows: ["Harsher hijab law shelved by the Supreme National Security Council"]}
+  hereditary-succession: {rows: ["Mojtaba Khamenei, the late Leader's son, named Leader"]}
+  earlier-openings-reversed: {rows: ["Sixteen reformist publications closed in one week under President Khatami", "3,600 parliamentary candidates rejected, including 83 sitting members; about a thousand reinstated", "304 protesters killed under President Rouhani"]}
+  vetting-approves-few: {lines: ["Share allowed"], from: "2001-06", to: "2021-06"}
+  majlis-vetting: {lines: ["Share allowed"], from: "2001-06", to: "2005-06"}
+  growth-in-deal-years: {lines: ["GDP growth"], from: "2016", to: "2019"}
+  hrana-annual-rise: {lines: ["HRANA"], from: "2019-10", to: "2026-10", at: "2026-10"}
+  january-protest-executions: {lines: ["Political and security-related"], from: "2026-01", to: "2026-10"}
+  executions-fell-in-first-war-months: {lines: ["All executions"], from: "2026-02", to: "2026-03", at: "2026-03"}
+  drug-law-fall-reversed: {lines: ["IHRNGO"], from: "2015", to: "2020"}
+  executions-rose-after-june-2025-war: {lines: ["IHRNGO"], from: "2024", to: "2025"}
+  saudi-second-executioner: {rows: ["Iran", "Saudi Arabia"]}
+  no-verified-2009-count: {rows: ["June 2009"]}
+  counts-are-floors: {rows: ["Dec 2025 – Feb 2026"]}
+  freedom-house-iran-and-saudi: {rows: ["Iran", "Saudi Arabia"]}
+  counters-differ: {rows: ["2025"]}
+  majlis-turnout-low: {rows: ["2020", "2024"]}
+  un-crimes-against-humanity: {rows: ["Protest crackdown: 7,007 deaths by HRANA's count"]}
+  war-cuts-both-ways: {lines: ["All executions"], from: "2026-02", to: "2026-04"}
+  moderation-and-repression-together: {rows: ["Pezeshkian, the field's one moderate, elected", "Harsher hijab law shelved by the Supreme National Security Council", "Protest crackdown: 7,007 deaths by HRANA's count"]}
 ---
 ## Observations {#iran-government-and-its-people--observations-presidential-turnout}
 
@@ -1333,12 +1372,6 @@ figures:
 Turnout fell to 48.8 percent in 2021 and to 40 percent in the 2024 first round, each a record low since 1979 (chart). [21](#source-iran-government-and-its-people-21)
 
 Parliamentary turnout fell the same way, to the lowest since the revolution in 2024 (chart below). [24](#source-iran-government-and-its-people-24) Earlier swings were large: turnout was highest in 1997 and 2009 (chart). [33](#source-iran-government-and-its-people-33)
-
-### In 2024 voters elected the one moderate in the field {#iran-government-and-its-people--reformist-backed-president-2024}
-
-After Raisi's death, Masoud Pezeshkian, "the sole moderate in an original field of four", won the runoff with 53.7 percent of the vote. [22](#source-iran-government-and-its-people-22)
-
-Turnout rose to 49.8 percent in the runoff, about ten points above the first round. [22](#source-iran-government-and-its-people-22) [21](#source-iran-government-and-its-people-21) He was one of only six candidates the Guardian Council approved (next chart). [23](#source-iran-government-and-its-people-23)
 
 ## Observations {#iran-government-and-its-people--observations-candidates-share}
 
@@ -1362,7 +1395,7 @@ IHRNGO recorded at least 1,639 executions in 2025, the highest number since 1989
 
 Amnesty's separate count for 2025 is higher still (chart below). [25](#source-iran-government-and-its-people-25)
 
-### Executions rose fastest under Pezeshkian {#iran-government-and-its-people--executions-rose-under-pezeshkian}
+### Executions jumped in Pezeshkian's first full year {#iran-government-and-its-people--executions-rose-under-pezeshkian}
 
 The monthly rate under Pezeshkian is more than double the rate under Raisi, by IHRNGO's count (chart below). [35](#source-iran-government-and-its-people-35)
 
@@ -1398,7 +1431,7 @@ The monthly total recovered after the ceasefire but stayed well below its pre-wa
 
 ## Observations {#iran-government-and-its-people--observations-hrana-monthly-political}
 
-### Political executions peaked during and just after the war {#iran-government-and-its-people--political-executions-peaked-april-may}
+### Political executions peaked around the April ceasefire {#iran-government-and-its-people--political-executions-peaked-april-may}
 
 Executions on political and security charges ran the other way: HRANA's peak months were April and May 2026, with 29 between them (chart). [37](#source-iran-government-and-its-people-37)
 
@@ -1422,15 +1455,13 @@ The March 2024 parliamentary election drew 41 percent, "the lowest participation
 
 ## Observations {#iran-government-and-its-people--observations-january-2026-deaths}
 
-### HRANA confirmed 7,007 deaths in the January 2026 crackdown, most of them protesters {#iran-government-and-its-people--january-2026-crackdown-toll}
+### HRANA confirmed 7,007 deaths in the crackdown of December 2025 to February 2026, most of them protesters {#iran-government-and-its-people--january-2026-crackdown-toll}
 
 HRANA's 7,007 counts every confirmed death in its 50-day record, protesters and others (chart). [1](#source-iran-government-and-its-people-1)
 
 It is a floor: 11,744 more cases were still under review when it was published. [1](#source-iran-government-and-its-people-1)
 
 The government counted 3,117 dead by late January, including people it called "rioters". [4](#source-iran-government-and-its-people-4)
-
-The UN mission found the crackdown amounted to "crimes against humanity of murder, imprisonment, torture". [4](#source-iran-government-and-its-people-4)
 
 ## Observations {#iran-government-and-its-people--observations-amnesty-executions-2025}
 
@@ -1450,7 +1481,7 @@ IHRNGO and Amnesty were close for 2023 and 2024, but about 500 apart for 2025 (c
 
 ## Observations {#iran-government-and-its-people--observations-executions-per-president}
 
-### The execution rate rose under every recent president {#iran-government-and-its-people--execution-rate-by-president}
+### The execution rate rose under every recent president, and fastest under the moderate Pezeshkian {#iran-government-and-its-people--execution-rate-by-president}
 
 By IHRNGO's count, the average monthly rate rose from Ahmadinejad to Rouhani to Raisi, then more than doubled under Pezeshkian (chart). [35](#source-iran-government-and-its-people-35)
 
@@ -1472,7 +1503,7 @@ In GAMAAN's June 2026 online sample, about 13% chose the Islamic Republic, down 
 
 ## Observations {#iran-government-and-its-people--observations-gamaan-war-views}
 
-### Respondents split on whether the strikes were aggression {#iran-government-and-its-people--strikes-seen-as-aggression}
+### Many respondents called the strikes aggression, and about as many called them humanitarian intervention {#iran-government-and-its-people--strikes-seen-as-aggression}
 
 42% in GAMAAN's sample called the US–Israeli action "military aggression against Iran", while about 40% called it "humanitarian intervention" (chart). [11](#source-iran-government-and-its-people-11) Most opposed Iran building nuclear weapons.
 
@@ -1500,21 +1531,31 @@ Its published list names 4,555 people, against 3,038 on the government's list. [
 
 ## Observations {#iran-government-and-its-people--observations-arrests}
 
-### Repression widened after the June 2025 war {#iran-government-and-its-people--arrests-after-june-2025}
+### More than 20,000 people were arrested after the June 2025 war {#iran-government-and-its-people--arrests-after-june-2025}
 
 In the three months after the June 2025 war, Amnesty and Human Rights Watch counted over 20,000 arrests, including "dissidents, human rights defenders, journalists" and foreign nationals; the police's own figure was about 21,000. [10](#source-iran-government-and-its-people-10) At least nine men were executed on political or espionage charges. [10](#source-iran-government-and-its-people-10)
 
-### The January 2026 crackdown brought more than 50,000 arrests {#iran-government-and-its-people--arrests-january-2026}
+### The crackdown of December 2025 to February 2026 brought more than 50,000 arrests {#iran-government-and-its-people--arrests-january-2026}
 
 HRANA counted 53,777 arrests during the crackdown, including hundreds of children and school students. [1](#source-iran-government-and-its-people-1)
 
 ## Observations {#iran-government-and-its-people--observations-openings-and-reversals}
 
-### The harsher hijab law was shelved, with the Leader's assent {#iran-government-and-its-people--hijab-law-shelved}
+### A UN mission found crimes against humanity in the crackdown {#iran-government-and-its-people--un-crimes-against-humanity}
 
-In December 2024 the Supreme National Security Council put the new hijab law "on hold"; its decisions "require the Supreme Leader's signature". [13](#source-iran-government-and-its-people-13) In May 2025 the Speaker said he had been told in writing not to enact it. [14](#source-iran-government-and-its-people-14)
+The UN fact-finding mission found the crackdown amounted to "crimes against humanity of murder, imprisonment, torture". [4](#source-iran-government-and-its-people-4)
+
+### The harsher hijab law was shelved, most likely with the Leader's consent {#iran-government-and-its-people--hijab-law-shelved}
+
+In December 2024 the Supreme National Security Council put the new hijab law "on hold", "most likely with the consent of Supreme Leader Ali Khamenei"; its decisions "require the Supreme Leader's signature". [13](#source-iran-government-and-its-people-13) In May 2025 the Speaker said he had been told in writing not to enact it. [14](#source-iran-government-and-its-people-14)
 
 What was halted is the new law's enactment. The existing hijab rules stayed, and Freedom House records arrests in December 2025 over unveiled women at a marathon. [7](#source-iran-government-and-its-people-7)
+
+### In 2024 voters elected the one moderate in the field {#iran-government-and-its-people--reformist-backed-president-2024}
+
+After Raisi's death, Masoud Pezeshkian, "the sole moderate in an original field of four", won the runoff with 53.7 percent of the vote. [22](#source-iran-government-and-its-people-22)
+
+Turnout rose to 49.8 percent in the runoff, about ten points above the first round. [22](#source-iran-government-and-its-people-22) [21](#source-iran-government-and-its-people-21) He was one of only six candidates the Guardian Council approved. [23](#source-iran-government-and-its-people-23)
 
 ### Earlier openings were reversed while reformists held the presidency {#iran-government-and-its-people--earlier-openings-reversed}
 

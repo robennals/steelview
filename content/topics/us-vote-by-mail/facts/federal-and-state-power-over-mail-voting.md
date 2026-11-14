@@ -664,6 +664,34 @@ figures:
           sources:
             - 18
             - 23
+      - year: 119th Congress
+        measure: Universal Right to Vote by Mail Act
+        does:
+          value: Would require states to offer no-excuse mail voting for federal races
+          sources:
+            - 16
+        status: Introduced
+      - year: 119th Congress
+        measure: Vote at Home Act
+        does:
+          value: Would require states to offer all-mail elections for federal races
+          sources:
+            - 16
+        status: Introduced
+      - year: 119th Congress
+        measure: Make Elections Great Again (MEGA) Act
+        does:
+          value: '"would prohibit states from sending voters ballots for federal elections except on request"'
+          sources:
+            - 16
+        status: Introduced
+      - year: 119th Congress
+        measure: Mail Ballot Integrity Act
+        does:
+          value: '"would prohibit states from sending voters ballots for federal elections except on request" and limit mail voting to voters in specified categories'
+          sources:
+            - 16
+        status: Introduced
   - kind: dataTable
     id: holdings
     title: >-
@@ -790,20 +818,38 @@ figures:
           sources:
             - 12
             - 14
+observationMarks:
+  elections-clause-text: {rows: ["Elections Clause"]}
+  usps-rule-blocked: {rows: ["EO 14399, Section 3 (31 Mar 2026)", "Postal Service final rule (published 26 Aug 2026)"]}
+  eo-14248-deadlines-enjoined: {rows: ["California v. Trump (D. Mass.)"]}
+  eo-14399-stands: {rows: ["Trump v. California lets EO 14399 proceed"]}
+  receipt-deadlines-swung-back: {rows: ["North Dakota, Ohio and Utah end grace periods"]}
+  congress-set-uocava-rules: {rows: ["Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA)", "MOVE Act (amending UOCAVA)"]}
+  congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
+  watson-leaves-it-to-legislatures: {rows: ["Watson v. RNC (5–4)"]}
+  bills-on-both-sides: {rows: ["Universal Right to Vote by Mail Act", "Vote at Home Act", "Make Elections Great Again (MEGA) Act", "Mail Ballot Integrity Act"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271, photo ID only", "Needed to end debate"]}
+  save-america-mail-unclear: {rows: ["SAVE America Act (Republican)"]}
+  save-america-status: {rows: ["SAVE America Act (Republican)"]}
+  watson-appearance-of-fraud: {rows: ["Watson v. RNC (5–4)"]}
+  alito-congress-may-create-rules: {rows: ["Postal Service final rule (published 26 Aug 2026)"]}
+  no-merits-ruling: {rows: ["Trump v. California (stay)"]}
+  order-versus-rule: {rows: ["EO 14399, Section 3 (31 Mar 2026)", "Postal Service final rule (published 26 Aug 2026)"]}
+  why-this-chart: {whole: true}
 ---
 ## Observations {#federal-and-state-power-over-mail-voting--observations-federal-actions}
 
-### States have moved mail-voting rules in both directions {#federal-and-state-power-over-mail-voting--state-rules-move-both-ways}
-
-The number of states offering mail voting to every voter rose sharply for 2020, fell back as temporary rules ended, and is expected to be seven above its 2016 level in November 2026 ([chart in the report on mail voting use](#fact-mail-voting-use-and-effects/chart-state-rule-counts)). [33](#source-federal-and-state-power-over-mail-voting-33)
-
-Within that rise, states pulled the other way too. Utah, which mails every voter a ballot, will send ballots only on request from 2029. [32](#source-federal-and-state-power-over-mail-voting-32) Oregon's all-mail system was adopted by its own voters, by citizen initiative in 1998. [31](#source-federal-and-state-power-over-mail-voting-31)
-
-### Receipt deadlines have swung back to their 2016 pattern {#federal-and-state-power-over-mail-voting--receipt-deadlines-swung-back}
+### North Dakota, Ohio and Utah ended their grace periods in 2025 {#federal-and-state-power-over-mail-voting--receipt-deadlines-swung-back}
 
 More states counted late-arriving mailed ballots in 2020; by November 2026 NCSL expects the count of states requiring Election Day receipt to be "roughly the same as it was in November 2016" ([chart in the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states)). [33](#source-federal-and-state-power-over-mail-voting-33)
 
 North Dakota, Ohio and Utah ended their grace periods in 2025. Kansas legislated an end too, but a district court in Kansas blocked it in July 2026, so Kansas still counts ballots arriving within three days. [30](#source-federal-and-state-power-over-mail-voting-30) Detail by state is in [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed).
+
+### The Supreme Court let the March 2026 order go ahead {#federal-and-state-power-over-mail-voting--eo-14399-stands}
+
+In August the Supreme Court lifted an injunction against Executive Order 14399, calling it "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch". [18](#source-federal-and-state-power-over-mail-voting-18) It added that this "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful". [19](#source-federal-and-state-power-over-mail-voting-19)
+
+The dissent said the ruling "merely postpones adjudication" of whether the President's actions are lawful. [20](#source-federal-and-state-power-over-mail-voting-20)
 
 ## Observations {#federal-and-state-power-over-mail-voting--observations-senate-votes}
 
@@ -827,7 +873,7 @@ The House passed the SAVE America Act, 218–213, in February 2026 and again in 
 
 The Congressional Research Service, writing on 10 July, listed a ban on sending ballots except on request only as "a proposed amendment to the House-passed" bill. [16](#source-federal-and-state-power-over-mail-voting-16) The bill text was not read.
 
-### Bills on both sides would set national mail rules {#federal-and-state-power-over-mail-voting--bills-on-both-sides}
+### Bills now in Congress would push mail voting in opposite directions {#federal-and-state-power-over-mail-voting--bills-on-both-sides}
 
 The Universal Right to Vote by Mail Act and the Vote at Home Act would require no-excuse mail voting and all-mail elections. The MEGA Act and the Mail Ballot Integrity Act would ban sending ballots except on request and limit mail voting to specified voters. [16](#source-federal-and-state-power-over-mail-voting-16) None has passed.
 
@@ -849,7 +895,7 @@ The Supreme Court has held that Congress's power over the times, places and mann
 
 The same ruling drew a line at "who may vote", which stays with the states. [4](#source-federal-and-state-power-over-mail-voting-4) Who may vote by mail, as opposed to who may vote, has not been tested against that line in the sources read.
 
-### *Watson* left receipt deadlines to legislatures, and said Congress could set one {#federal-and-state-power-over-mail-voting--watson-leaves-it-to-legislatures}
+### *Watson* left receipt deadlines to legislatures, and a national deadline to elected representatives {#federal-and-state-power-over-mail-voting--watson-leaves-it-to-legislatures}
 
 The Court held, 5–4, that "nothing in the federal election-day statutes requires ballots to be received by election day". [24](#source-federal-and-state-power-over-mail-voting-24) It said policy arguments "are properly directed to legislatures, not courts". [27](#source-federal-and-state-power-over-mail-voting-27)
 
@@ -858,6 +904,10 @@ It pointed to Congress: "If varied deadlines for ballot receipt similarly call f
 ### *Watson* recognised a reason states give for Election Day deadlines {#federal-and-state-power-over-mail-voting--watson-appearance-of-fraud}
 
 The Court noted that legislatures "may have shared plaintiffs' view that an election-day deadline avoids the appearance of fraud from late-arriving ballots". [27](#source-federal-and-state-power-over-mail-voting-27) It also read UOCAVA as confirming that "States have the power to set the date by which they must be received". [26](#source-federal-and-state-power-over-mail-voting-26)
+
+### A district court held the 2025 order's receipt-deadline rules beyond presidential power {#federal-and-state-power-over-mail-voting--eo-14248-deadlines-enjoined}
+
+The federal court in Massachusetts held that the challenged sections of Executive Order 14248 "exceeded the President's constitutional authority" and conflicted with federal statutes. [28](#source-federal-and-state-power-over-mail-voting-28) Its July 2026 injunction covers the order's "Election Day ballot receipt deadlines"; the government has appealed. [29](#source-federal-and-state-power-over-mail-voting-29)
 
 ## Observations {#federal-and-state-power-over-mail-voting--observations-live-measures}
 
@@ -870,16 +920,6 @@ Justice Kavanaugh, concurring, gave a narrower reason: the rule may be within th
 ### Two justices said Congress could authorise such a rule {#federal-and-state-power-over-mail-voting--alito-congress-may-create-rules}
 
 Justices Alito and Thomas dissented: "Even assuming the rule here is a regulation of elections, Congress may create such rules under the Elections Clause. And, by statute, it may authorize the Postal Service to issue such rules." [22](#source-federal-and-state-power-over-mail-voting-22) In their view the dispute was about the Postal Service's statutory powers, not the states' constitutional ones.
-
-### The order behind the rule was allowed to stand {#federal-and-state-power-over-mail-voting--eo-14399-stands}
-
-In August the Supreme Court lifted an injunction against Executive Order 14399, calling it "an internal directive" that "neither requires nor forbids anything of anyone outside the Executive Branch". [18](#source-federal-and-state-power-over-mail-voting-18) It added that this "does not mean that any measure taken by the Government to implement the Order will necessarily be lawful". [19](#source-federal-and-state-power-over-mail-voting-19)
-
-The dissent said the ruling "merely postpones adjudication" of whether the President's actions are lawful. [20](#source-federal-and-state-power-over-mail-voting-20)
-
-### A district court held the 2025 order's receipt-deadline rules beyond presidential power {#federal-and-state-power-over-mail-voting--eo-14248-deadlines-enjoined}
-
-The federal court in Massachusetts held that the challenged sections of Executive Order 14248 "exceeded the President's constitutional authority" and conflicted with federal statutes. [28](#source-federal-and-state-power-over-mail-voting-28) Its July 2026 injunction covers the order's "Election Day ballot receipt deadlines"; the government has appealed. [29](#source-federal-and-state-power-over-mail-voting-29)
 
 ## More {#federal-and-state-power-over-mail-voting--more-federal-actions}
 
@@ -901,7 +941,7 @@ The March 2026 order itself is not blocked; the Supreme Court let it proceed. [1
 
 ## Subtleties {#federal-and-state-power-over-mail-voting--subtleties-holdings}
 
-### No court has ruled on the merits of presidential power over mail rules above the district level {#federal-and-state-power-over-mail-voting--no-merits-ruling}
+### The Supreme Court did not decide whether the March 2026 order is lawful {#federal-and-state-power-over-mail-voting--no-merits-ruling}
 
 The Supreme Court's 2026 rulings were on standing, timing and stays. [19](#source-federal-and-state-power-over-mail-voting-19) [21](#source-federal-and-state-power-over-mail-voting-21) The only merits rulings on the President's election orders are from district courts, and they are under appeal. [28](#source-federal-and-state-power-over-mail-voting-28) [29](#source-federal-and-state-power-over-mail-voting-29)
 

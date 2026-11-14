@@ -842,6 +842,11 @@ additionalSeries:
       note: >-
         The full calendar-year run of the Home Office initial decisions
         dataset; 2026 is a half year and is left off.
+    events:
+    - period: '2022'
+      label: Nationality and Borders Act raises the standard of proof
+      note: Applicants must now show "on the balance of probabilities" that they would face persecution, a higher threshold than before.
+      source: 17
     breaks:
       - period: '2003'
         label: Exceptional leave replaced
@@ -1679,6 +1684,29 @@ dataStillNeeded:
       Eurostat stopped publishing UK figures after Brexit, so UK comparisons
       rest on Home Office counts that are close to, but not defined
       identically with, Eurostat's first-time applicants.
+observationMarks:
+  small-boat-claims-mostly-granted: {rows: ["Granted asylum or other protection", "Refused"]}
+  grant-rates-by-nationality: {rows: ["Sudan", "Eritrea", "Bangladesh", "Syria", "India"]}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals allowed"], at: "2025"}
+  final-outcomes-after-appeal: {lines: ["At initial decision", "At latest outcome"], from: "2007", to: "2022"}
+  why-the-grant-rate-fell: {rows: ["Actual 2022", "Actual 2025"]}
+  within-nationality-falls: {rows: ["Syria", "Pakistan"]}
+  standard-of-proof: {lines: ["All nationalities (main applicants)"], from: "2022", to: "2025"}
+  claims-over-time: {lines: ["All claimants"], from: "2002", to: "2025", at: "2002"}
+  claims-now-falling: {lines: ["All claimants"], from: "2024", to: "2025"}
+  routes-before-claiming: {lines: ["All claimants"], at: "2025"}
+  uk-per-head-now-at-eu-average: {lines: ["United Kingdom", "EU27"], at: "2025"}
+  grant-rate-over-time: {lines: ["All nationalities (main applicants)"], from: "2022", to: "2025", at: "2022"}
+  recent-cohorts-incomplete: {lines: ["At initial decision", "At latest outcome"], from: "2023", to: "2025"}
+  withdrawals: {lines: ["Withdrawn"], from: "2021", to: "2024"}
+  appeals-backlog: {lines: ["Asylum and protection appeals allowed"], from: "2022", to: "2025"}
+  2023-2024-arrivals-granted-under-half: {rows: ["Arrived 2022", "Arrived 2023", "Arrived 2024"]}
+  eu-grant-rate-similar: {rows: ["United Kingdom", "EU27 as a whole"]}
+  uk-and-eu-by-nationality: {rows: ["Afghanistan", "Somalia", "Iran", "Sudan", "Vietnam"]}
+  people-and-cases: {lines: ["All claimants", "Main applicants only"], at: "2001"}
+  rank-depends-on-measure: {rows: ["United Kingdom"]}
+  sudanese-and-eritreans-mostly-granted: {rows: ["Sudan", "Eritrea"]}
+  syrian-grant-rate-fell: {rows: ["Year to June 2025", "Year to June 2026"]}
 figures:
   - kind: series
   - kind: series
@@ -1703,7 +1731,7 @@ figures:
     categoryLabel: Nationality
     format: { unit: percent, decimals: 1 }
     domainMax: 100
-    sources: [42]
+    sources: [42, 14]
     style: dumbbell
     series:
       - { key: y2022, label: '2022' }
@@ -1720,15 +1748,40 @@ figures:
       - { label: Vietnam, values: { y2022: 73.8, y2025: 19.0 } }
       - { label: Somalia, values: { y2022: 78.4, y2025: 35.0 } }
       - { label: India, values: { y2022: 4.8, y2025: 0.5 } }
-      - { label: Syria, values: { y2022: 98.4, y2025: 9.3 } }
+      - { label: Syria, values: { y2022: 98.4, y2025: 9.3 }, detail: 'Home Office rolling years: 98% in the year to June 2025, 10% in the year to June 2026' }
     note: >-
       Calculated from Asy_D02: grants of protection and other leave divided by
       grants plus refusals, main applicants, by year of decision. Syria is
       added beyond the top ten because the Home Office singles out its fall.
       Some 2022 bases are small: Bangladesh 297, Somalia 273 and India 228
       decisions.
+  - kind: barChart
+    id: syrian-grant-rate-years
+    title: Syrian initial grant rate, years to June 2025 and June 2026
+    description: Share of Syrian nationals' initial asylum decisions that were grants, in two rolling years, as the Home Office reports them.
+    valueLabel: Share of initial decisions that were grants
+    categoryLabel: Year
+    format: { unit: percent, decimals: 0 }
+    sort: none
+    domainMax: 100
+    sources: [14]
+    items:
+      - { label: Year to June 2025, value: 98 }
+      - { label: Year to June 2026, value: 10 }
   - kind: comparison
     id: grant-rate-decomposition
+  - kind: barChart
+    id: small-boat-decisions
+    title: Small-boat arrivals since 2018 with an initial asylum decision
+    description: People who arrived by small boat since 2018, claimed asylum and had received a substantive initial decision, by that decision, as published in July 2026.
+    valueLabel: People
+    categoryLabel: Initial decision
+    format: { unit: count }
+    sort: none
+    sources: [18]
+    items:
+      - { label: Granted asylum or other protection, value: 79589 }
+      - { label: Refused, value: 53305 }
   - kind: compositionBar
     id: small-boat-outcomes
     title: >-
@@ -1835,7 +1888,7 @@ Claims made from 28 June 2022 must show persecution "on the balance of probabili
 
 ## Observations {#asylum-claims-and-decisions--observations-cohort-grant-rate}
 
-### Appeals and reconsiderations raise the final grant rate {#asylum-claims-and-decisions--final-outcomes-after-appeal}
+### Appeals and reconsiderations raised final grant rates by 20 points on average for 2007–2022 claims {#asylum-claims-and-decisions--final-outcomes-after-appeal}
 
 Following each year's claims to their latest outcome, the grant rate for claims made in 2007–2022 ended on average 20 percentage points above the initial rate, and between 8 and 29 points above it in every year. [22](#source-asylum-claims-and-decisions-22) [23](#source-asylum-claims-and-decisions-23) For claims made in 2010–2019, the latest-outcome grant rate was between about half and three-quarters.
 
@@ -1865,9 +1918,19 @@ The open asylum appeals caseload grew from 6,319 at the end of June 2022 to 87,4
 
 In the year to June 2026, 92% of Sudanese and 84% of Eritrean claims decided were granted, against 11% for Bangladeshis, 10% for Syrians and 1% for Indians. [13](#source-asylum-claims-and-decisions-13)
 
+### Most Sudanese and Eritrean claims were granted in 2025 {#asylum-claims-and-decisions--sudanese-and-eritreans-mostly-granted}
+
+Sudan and Eritrea had the highest initial grant rates of the main nationalities in the chart in 2025, and again in the year to June 2026, at 92% and 84%. [13](#source-asylum-claims-and-decisions-13) [42](#source-asylum-claims-and-decisions-42)
+
 ### Rates fell within most nationalities, steeply for some {#asylum-claims-and-decisions--within-nationality-falls}
 
-The Syrian grant rate fell from 98% to 10% in a year after the fall of the Assad regime, and the Pakistani rate from 46% to 25%. [14](#source-asylum-claims-and-decisions-14) Of the ten nationalities with most decisions in 2025, only Sudan was granted at a higher rate than in 2022. [17](#source-asylum-claims-and-decisions-17)
+The Syrian grant rate fell from 98% to 10% in a year, and the Pakistani rate from 46% to 25%. [14](#source-asylum-claims-and-decisions-14) Of the ten nationalities with most decisions in 2025, only Sudan was granted at a higher rate than in 2022. [17](#source-asylum-claims-and-decisions-17)
+
+## Observations {#asylum-claims-and-decisions--observations-syrian-grant-rate-years}
+
+### Syrians' grant rate fell from 98% to 10% in a year {#asylum-claims-and-decisions--syrian-grant-rate-fell}
+
+The grant rate for Syrian nationals fell from 98% in the year to June 2025 to 10% in the year to June 2026. [14](#source-asylum-claims-and-decisions-14)
 
 ## Observations {#asylum-claims-and-decisions--observations-grant-rate-decomposition}
 
@@ -1875,11 +1938,13 @@ The Syrian grant rate fell from 98% to 10% in a year after the fall of the Assad
 
 Applying each nationality's 2022 grant rate to the 2025 mix of decisions gives a rate about seven points below 2022's. Applying 2025 rates to the 2022 mix gives a rate close to 2025's. So the shift towards lower-grant nationalities such as Pakistanis, Bangladeshis and Indians explains a minority of the fall; lower rates for the same nationalities, notably Afghans, Syrians, Turks and Vietnamese, explain most of it. This calculation cannot say why rates fell within a nationality: a higher standard of proof, changed country conditions and a different mix of cases decided are all candidates. [12](#source-asylum-claims-and-decisions-12) [17](#source-asylum-claims-and-decisions-17)
 
-## Observations {#asylum-claims-and-decisions--observations-small-boat-outcomes}
+## Observations {#asylum-claims-and-decisions--observations-small-boat-decisions}
 
 ### Most decided small-boat claims were granted {#asylum-claims-and-decisions--small-boat-claims-mostly-granted}
 
 Of 178,845 people who arrived by small boat in 2018–2025 and claimed asylum, 79,589 had been granted at initial decision and 53,305 refused, a grant rate of 60% on cases. [18](#source-asylum-claims-and-decisions-18) [19](#source-asylum-claims-and-decisions-19) Rates vary by nationality: 86% for Eritreans who arrived in 2025, 34% for Afghans. [21](#source-asylum-claims-and-decisions-21)
+
+## Observations {#asylum-claims-and-decisions--observations-small-boat-outcomes}
 
 ### 2023 and 2024 arrivals were refused more often than granted, and many claims ended without a decision {#asylum-claims-and-decisions--2023-2024-arrivals-granted-under-half}
 

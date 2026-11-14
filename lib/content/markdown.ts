@@ -61,7 +61,7 @@ function citedFactId(href: string): string | undefined {
  * reader with no JavaScript can click. `class="sv-cite"` carries the citation
  * treatment.
  */
-function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes }: { slug: string; facts: Fact[]; citationsAsText: boolean; footnotes: boolean }) {
+function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes, panelCitation }: { slug: string; facts: Fact[] } & Required<Pick<RenderOptions, 'citationsAsText' | 'footnotes'>> & Pick<RenderOptions, 'panelCitation'>) {
   return (tree: Root) => {
     visit(tree, 'link', (node: Link, index, parent) => {
       if (node.url === NEEDED_HREF || (citationsAsText && citedFactId(node.url))) {
@@ -90,7 +90,13 @@ function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes }: { 
       node.url = factPath(slug, fact?.supports ?? factId) + (target ? `#${target}` : '');
       const data = (node.data ??= {});
       const props = ((data as { hProperties?: Record<string, unknown> }).hProperties ??= {});
+      const panel = section ? panelCitation?.(factId, section) : undefined;
       props.className = ['sv-cite'];
+      if (panel) {
+        props['data-panel-link'] = '';
+        props['data-panel-fact'] = panel.fact;
+        props['data-panel-observation'] = panel.observation;
+      }
     });
   };
 }
@@ -104,12 +110,12 @@ function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes }: { 
 /** One processor per topic — the only thing that varies between them is the slug. */
 const processors = new Map<string, ReturnType<typeof buildProcessor>>();
 
-function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, citationsAsText = false, footnotes = true) {
+function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, { citationsAsText = false, footnotes = true, panelCitation }: RenderOptions = {}) {
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkEscapeHtml)
-    .use(remarkMarkFactCitations, { slug, facts, citationsAsText, footnotes })
+    .use(remarkMarkFactCitations, { slug, facts, citationsAsText, footnotes, panelCitation })
     .use(remarkEvidenceAnchors)
     .use(remarkRehype)
     .use(rehypeGlossary, { namespace })
@@ -119,17 +125,34 @@ function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, cita
     .freeze();
 }
 
-/**
- * With `citationsAsText`, a fact citation renders as its plain text, with no
- * link: for prose drawn beside the evidence it cites, where the chart is
- * already on screen and a link to it would only repeat it. With `footnotes`
- * false, `[n](#source-…)` footnotes are left out: for a fact's prose shown
- * away from the fact, where the sources they point to are not on the page.
- */
-export async function renderMarkdown(md: string, slug: string, facts: Fact[] = [], { citationsAsText = false, footnotes = true } = {}): Promise<string> {
+/** Where a citation opens in its collection's data panel. */
+export type PanelTarget = {
+  fact: string;
+  /** The cited section, as an element id: `<fact>--<section>`. It is the page's address while the panel is open. */
+  observation: string;
+};
+
+type RenderOptions = {
+  /**
+   * A fact citation renders as its plain text, with no link: for a fact's prose
+   * shown inside its own data panel, beside the evidence it cites.
+   */
+  citationsAsText?: boolean;
+  /**
+   * False leaves out `[n](#source-…)` footnotes: for a fact's prose shown away
+   * from the fact, where the sources they point to are not on the page.
+   */
+  footnotes?: boolean;
+  /**
+   * Where a citation opens the data panel on this page, rather than its report.
+   */
+  panelCitation?: (id: string, section: string) => PanelTarget | undefined;
+};
+
+export async function renderMarkdown(md: string, slug: string, facts: Fact[] = [], options: RenderOptions = {}): Promise<string> {
   if (!md.trim()) return '';
-  const plain = citationsAsText || !footnotes;
-  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16), citationsAsText, footnotes) : facts.length || plain ? buildProcessor(slug, facts, slug, citationsAsText, footnotes) : processors.get(slug);
+  const plain = options.citationsAsText || options.footnotes === false || options.panelCitation;
+  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16), options) : facts.length || plain ? buildProcessor(slug, facts, slug, options) : processors.get(slug);
   if (!processor) {
     processor = buildProcessor(slug);
     processors.set(slug, processor);

@@ -1,18 +1,18 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode, type SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
+import type { PanelTarget } from '@/lib/content/markdown';
 import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
-
-type Shown = { fact: string; observation: string };
+import { Prose } from './prose';
 
 type Explore = {
-  shown: Shown | null;
+  shown: PanelTarget | null;
   /** The collection whose charts a reader is about to want. */
   wanted: string | null;
   want: (fact: string) => void;
-  open: (shown: Shown) => void;
+  open: (shown: PanelTarget) => void;
   leave: () => void;
 };
 
@@ -39,7 +39,7 @@ const SHEET_ENTRY = 'svExploreSheet';
  * link) has it on the entry beneath too, and Back would land on a match.
  */
 export function ExplorePanels({ children }: { children: ReactNode }) {
-  const [shown, setShown] = useState<Shown | null>(null);
+  const [shown, setShown] = useState<PanelTarget | null>(null);
   const [wanted, want] = useState<string | null>(null);
 
   // Coming back from a fact opened over the sheet lands on the sheet's own entry.
@@ -49,7 +49,7 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  const open = useCallback((next: Shown) => {
+  const open = useCallback((next: PanelTarget) => {
     history.pushState({ ...history.state, [SHEET_ENTRY]: next.observation }, '', `#${next.observation}`);
     setShown(next);
   }, []);
@@ -59,7 +59,9 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
   return <ExploreContext.Provider value={explore}>{children}</ExploreContext.Provider>;
 }
 
-type ExploreLinkProps = { fact: string; observation: string; href: string };
+const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+
+type ExploreLinkProps = PanelTarget & { href: string };
 
 /**
  * "Explore this data" under a viewpoint step: opens the collection's own data
@@ -70,7 +72,7 @@ type ExploreLinkProps = { fact: string; observation: string; href: string };
 export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
   const explore = useContext(ExploreContext);
   const onClick = (event: MouseEvent) => {
-    if (!explore || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!explore || !isPlainClick(event)) return;
     event.preventDefault();
     explore.open({ fact, observation });
   };
@@ -79,6 +81,36 @@ export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
       <p><a className="sv-cite" href={href} data-panel-link onClick={onClick} onPointerEnter={() => explore?.want(fact)} onFocus={() => explore?.want(fact)}>Explore this data</a></p>
     </div>
   );
+}
+
+/** The panel a rendered citation opens, from the data `renderMarkdown` gave it. */
+function citedPanel(target: EventTarget): PanelTarget | null {
+  const link = target instanceof Element ? target.closest<HTMLAnchorElement>('a[data-panel-fact]') : null;
+  const { panelFact: fact, panelObservation: observation } = link?.dataset ?? {};
+  return fact && observation ? { fact, observation } : null;
+}
+
+type ExploreProseProps = { html: string; className: string };
+
+/**
+ * A viewpoint step's prose, whose citations open their collections' data panels
+ * as "Explore this data" does. They arrive as raw HTML, so are handled here for
+ * the whole of it. Each is still a link to the report, for a new tab or with no
+ * script.
+ */
+export function ExploreProse({ html, className }: ExploreProseProps) {
+  const explore = useContext(ExploreContext);
+  const onClick = (event: MouseEvent) => {
+    const cited = citedPanel(event.target);
+    if (!cited || !explore || !isPlainClick(event)) return;
+    event.preventDefault();
+    explore.open(cited);
+  };
+  const onIntent = (event: SyntheticEvent) => {
+    const cited = citedPanel(event.target);
+    if (cited) explore?.want(cited.fact);
+  };
+  return <div onClick={onClick} onPointerOver={onIntent} onFocus={onIntent}><Prose html={html} className={className} /></div>;
 }
 
 /**
@@ -115,7 +147,7 @@ export function PanelHost({ fact, title, children }: PanelHostProps) {
 
 type PanelSheetProps = { title: string; observation: string; leave: () => void; children: ReactNode };
 
-/** The sheet around a data panel, open at one observation from its first frame. */
+/** The sheet around a data panel, open at one chart and observation from its first frame. */
 function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();

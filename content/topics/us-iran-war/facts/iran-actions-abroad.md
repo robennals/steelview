@@ -406,10 +406,26 @@ figures:
     id: "hostage-taking"
     description: "The US Secretary of State designated Iran \"a state sponsor of wrongful detention\" on 27 February 2026, the day before the war."
     quote: { text: "The Iranian regime must stop taking hostages and release all Americans unjustly detained in Iran, steps that could end this designation and associated actions", speaker: "Marco Rubio", role: "US Secretary of State", date: "2026-02-27", source: 15 }
+observationMarks:
+  attacks-on-us-forces-before-the-war: {lines: ["Confirmed attacks (WINEP)"], from: "2023-10", to: "2024-12"}
+  argentine-court-buenos-aires-bombings: {rows: ["1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires"]}
+  us-convictions-iran-directed-plots: {rows: ["Plot to kill journalist Masih Alinejad in New York", "Second plot against Alinejad, organised by Farhad Shakeri"]}
+  plots-mostly-target-opponents: {rows: ["Plots in Europe, 2021–2024", "Of which targeted Iranian dissidents"]}
+  attacks-came-in-a-burst: {lines: ["Confirmed attacks (WINEP)"], from: "2023-10", to: "2024-01"}
+  pause-before-october-2023: {lines: ["Confirmed attacks (WINEP)"], at: "2023-10"}
+  no-foreknowledge-of-october-7: {lines: ["Confirmed attacks (WINEP)"], at: "2023-10"}
+  us-plots-were-foiled: {rows: ["Alleged plot to kill the Saudi ambassador in Washington", "Alleged tasking of Farhad Shakeri to surveil and plot against President-elect Trump", "Plot to kill journalist Masih Alinejad in New York", "Second plot against Alinejad, organised by Farhad Shakeri"]}
+  amia-indictee-held-office: {rows: ["AMIA bombing: seven Iranians and a Lebanese charged, including four former officials"]}
+  plot-pace-varies: {rows: ["Plots in the dataset", "Plots in Europe in the decade after 9/11", "Plots in the decade 2011–2021"]}
+  plot-counts-one-author: {rows: ["Plots in the dataset", "Plots in the expanded dataset"]}
+  state-sponsor-since-1984: {rows: ["Syria", "Iran"]}
+  leading-state-sponsor: {rows: ["Iran"]}
+  houthi-materiel-similar-to-iranian: {rows: ["Iran"]}
+  similar-not-proven-supplied: {rows: ["Iran", "Armed groups in Iraq", "Armed groups in Lebanon"]}
 ---
 ## Observations {#iran-actions-abroad--observations-confirmed-attacks}
 
-### Iran-aligned militias attacked US forces more than 200 times before this war {#iran-actions-abroad--attacks-on-us-forces-before-the-war}
+### Iran-aligned militias attacked US and coalition forces more than 200 times before this war {#iran-actions-abroad--attacks-on-us-forces-before-the-war}
 
 The Washington Institute's tracker confirmed 223 attacks on US and coalition bases in Iraq and Syria between October 2023 and December 2024 (chart). [17](#source-iran-actions-abroad-17)
 
@@ -441,11 +457,11 @@ The finding is that items are "similar" to those Iran develops or operates, not 
 
 ## Observations {#iran-actions-abroad--observations-court-record}
 
-### Argentina's highest criminal court held Iran-backed Hezbollah responsible for two bombings {#iran-actions-abroad--argentine-court-buenos-aires-bombings}
+### A federal criminal court in Argentina held Iran-backed Hezbollah responsible for two bombings {#iran-actions-abroad--argentine-court-buenos-aires-bombings}
 
 In April 2024 the Cassation Court ruled that both Buenos Aires bombings were carried out by Hezbollah "sponsored by the government of Iran", and blamed then-president Rafsanjani and other officials. [1](#source-iran-actions-abroad-1) Iran denies involvement; no one has been tried in person.
 
-### US courts have sentenced men hired to kill a critic of the regime on US soil {#iran-actions-abroad--us-convictions-iran-directed-plots}
+### US courts have sentenced men hired, for Iran's Revolutionary Guards, to kill a journalist on US soil {#iran-actions-abroad--us-convictions-iran-directed-plots}
 
 Three men have been sentenced for plots against Masih Alinejad that DOJ says were directed by the Iranian government and the IRGC (timeline). [4](#source-iran-actions-abroad-4) [5](#source-iran-actions-abroad-5) In Belgium an Iranian diplomat was convicted of plotting to bomb an opposition rally. [3](#source-iran-actions-abroad-3)
 

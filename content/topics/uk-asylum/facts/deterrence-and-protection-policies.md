@@ -668,6 +668,11 @@ series:
       the Internet Archive copy of 13 December 2020. The Australian government
       has not published a comparable annual series since, so the chart stops in
       2016. Counts exclude crew from 1989.
+  events:
+  - period: '2013'
+    label: Boat arrivals barred from settling; boats turned back
+    note: Boats arriving from 19 July 2013 were barred from settlement in Australia, and from December 2013 boats were returned to their country of departure.
+    sources: [7, 2]
   breaks:
     - period: '1989'
       label: Department of Immigration figures, excluding crew
@@ -1399,6 +1404,7 @@ comparisons:
         value: 263
       - label: Died
         value: 18
+        detail: By 31 January 2021
     note: >-
       Department of Home Affairs answers to Senate questions on notice, as
       reproduced in the Kaldor Centre's Policy Brief 11 (Table 1). "Returned"
@@ -1466,12 +1472,42 @@ figures:
   - kind: series
   - kind: series
     id: australia-interceptions
+  - kind: dataTable
+    id: turnback-definitions
+    title: How Operation Sovereign Borders defines turnbacks and take-backs
+    description: The two ways Australia has returned people on boats, in the operation's own words.
+    caption: One card per term
+    layout: cards
+    leadColumn: means
+    columns:
+      - { key: term, label: Term, rowHeader: true }
+      - { key: means, label: What it means, sortable: false }
+    rows:
+      - term: Turnback
+        means: { value: '"the safe removal of vessels from Australian waters, with passengers and crew returned to their countries of departure"', sources: [3] }
+      - term: Take-back
+        means: { value: 'A transfer, often at sea, of passengers from one sovereign authority to another "where Australia works with a country of departure in order to see the safe return of passengers and crew"', sources: [3] }
   - kind: series
     id: australia-offshore-cost
   - kind: comparison
     id: australia-outcomes
   - kind: comparison
     id: rwanda-spend
+  - kind: dataTable
+    id: rwanda-results
+    title: What the Rwanda partnership cost and who was sent, to June 2024
+    description: Total Home Office spending on the Rwanda partnership and the Illegal Migration Act, and the people sent to Rwanda.
+    caption: One row per measure
+    columns:
+      - { key: measure, label: Measure, rowHeader: true }
+      - { key: result, label: Result, sortable: false }
+    rows:
+      - measure: Home Office spend on the partnership and the Illegal Migration Act
+        result: { value: £715 million, sources: [25] }
+      - measure: Asylum seekers sent to Rwanda
+        result: { value: None, sources: [24] }
+      - measure: Volunteers sent to Rwanda
+        result: { value: Four, sources: [24] }
   - kind: series
     id: denmark-comparators
   - kind: series
@@ -1521,7 +1557,7 @@ figures:
     rows:
       - study: Di Iasio and Wahba (working paper, 2023)
         data: First-time asylum applicants to EU countries, 2008 to 2020
-        finding: { value: 'Networks are the strongest pull; a work ban one per cent shorter is associated with 0.18% more first-time applications', sources: [42, 43] }
+        finding: { value: 'Networks are the strongest pull; a work ban one per cent shorter is associated with 0.18% more first-time applications; the authors say bans "are not a strong deterrence"', sources: [42, 43] }
       - study: Fasani, Frattini and Minale (2021)
         data: Refugees arriving in European countries, 1985 to 2012
         finding: { value: 'A work ban at arrival cut later employment probability by 15%, with effects lasting up to 10 years', sources: [44] }
@@ -1560,6 +1596,39 @@ figures:
       - measure: 'Repayment of asylum support by refugees who can afford it, suggested at around £10,000'
         applies-to: Adults who received support
         status: { value: In the Bill; amount set by regulations, sources: [57, 59] }
+observationMarks:
+  australia-arrivals-fell-after-turnbacks: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
+  rwanda-cost-and-relocations: {rows: ["Home Office spend on the partnership and the Illegal Migration Act"]}
+  offshore-cost-per-year: {lines: ["Estimated actual cost"], from: "2013", to: "2025"}
+  australia-outcomes: {rows: ["Back in Australia", "Returned to country of origin", "Resettled in a third country"]}
+  turnbacks-need-departure-country: {rows: ["Take-back"]}
+  work-bans-reduce-employment: {rows: ["Fasani, Frattini and Minale (2021)", "Marbach, Hainmueller and Hangartner (2018)"]}
+  work-rights-modest-association: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  australia-peak: {lines: ["People arriving by boat"], from: "2009", to: "2013"}
+  offshore-processing-alone: {lines: ["People arriving by boat"], from: "2012", to: "2013"}
+  australia-cause: {lines: ["People arriving by boat"], from: "2013", to: "2014"}
+  australia-stayed-in-refugee-convention: {lines: ["People arriving by boat"], from: "2013", to: "2016"}
+  returned-not-landed: {lines: ["Brought to Australia and transferred offshore", "Returned to country of departure"], from: "2015", to: "2019"}
+  nauru-transfers-resumed: {lines: ["Brought to Australia and transferred offshore"]}
+  offshore-fixed-costs: {lines: ["Estimated actual cost"], from: "2014", to: "2021"}
+  rwanda-untested: {whole: true}
+  denmark-intake-low: {lines: ["Denmark"], at: "2025"}
+  denmark-2016-fall-matched-sweden: {lines: ["Denmark", "Sweden"], from: "2015", to: "2016"}
+  denmark-several-changes: {lines: ["Denmark"], from: "2015", to: "2025"}
+  forty-year-low: {lines: ["Denmark"], from: "2020", to: "2025"}
+  denmark-grant-rate: {lines: ["Denmark"], at: "2025"}
+  denmark-rank-2025: {lines: ["Denmark", "Sweden", "Germany"], at: "2025"}
+  less-secure-status-no-employment-gain: {rows: ["Denmark, 2002", "Denmark, 2007", "Germany, 2016", "Sweden, 2016"]}
+  sweden-short-run-exception: {rows: ["Sweden (natural experiment, published 2020)"]}
+  no-uk-evaluation: {whole: true}
+  uk-work-rule: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  inspired-by-denmark: {rows: ["30-month protection, renewed at review only if return is still unsafe", "20-year wait for settlement on \"core protection\", unless the refugee switches to a work or study route", "Refugee family reunion"]}
+  bill-not-law: {rows: ["30-month protection, renewed at review only if return is still unsafe", "One \"protection status\" replaces refugee status and humanitarian protection", "Repayment of asylum support by refugees who can afford it, suggested at around £10,000"]}
+  arrivals-are-not-attempts: {lines: ["People arriving by boat"], from: "2014", to: "2016"}
+  no-asylum-seekers-sent: {rows: ["Asylum seekers sent to Rwanda", "Volunteers sent to Rwanda"]}
+  eighteen-had-died: {rows: ["Died"]}
+  authors-say-bans-not-a-strong-deterrent: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  thirty-month-protection: {rows: ["30-month protection, renewed at review only if return is still unsafe"]}
 ---
 ## Observations {#deterrence-and-protection-policies--observations-arrivals}
 
@@ -1583,10 +1652,6 @@ The Kaldor Centre, which opposes offshore processing, reads the fall in arrivals
 
 The Australian government described offshore processing as part of a "broad chain of measures end to end", and as minister Peter Dutton argued that letting people move from Manus to Australia would bring the boats back. Both readings fit the annual data. [12](#source-deterrence-and-protection-policies-12) [13](#source-deterrence-and-protection-policies-13)
 
-### Takebacks rely on the country of departure's cooperation {#deterrence-and-protection-policies--turnbacks-need-departure-country}
-
-Operation Sovereign Borders defines a turnback as removing a vessel from Australian waters with passengers returned to their country of departure, and a takeback as a transfer to that country's authorities "where Australia works with a country of departure". [3](#source-deterrence-and-protection-policies-3)
-
 ### Australia did this while remaining in the Refugee Convention {#deterrence-and-protection-policies--australia-stayed-in-refugee-convention}
 
 Australia has ratified the 1951 Refugee Convention and its 1967 Protocol. The Kaldor Centre argues that offshore processing breached those obligations. Australia has no bill or charter of rights, so the policy could not be challenged in Australian courts on the ground that it broke international law. [19](#source-deterrence-and-protection-policies-19) [20](#source-deterrence-and-protection-policies-20)
@@ -1596,6 +1661,12 @@ Australia has ratified the 1951 Refugee Convention and its 1967 Protocol. The Ka
 ### Arrivals are not attempts {#deterrence-and-protection-policies--arrivals-are-not-attempts}
 
 A boat turned back is not counted as an arrival; the Parliamentary Library notes, for example, that one boat in 2014 was turned back and not counted. The zero arrivals for 2015 and 2016 therefore mean no boat landed, not that no boat set out. The next chart shows the boats intercepted. [4](#source-deterrence-and-protection-policies-4) [8](#source-deterrence-and-protection-policies-8)
+
+## Observations {#deterrence-and-protection-policies--observations-turnback-definitions}
+
+### Takebacks rely on the country of departure's cooperation {#deterrence-and-protection-policies--turnbacks-need-departure-country}
+
+Operation Sovereign Borders defines a turnback as removing a vessel from Australian waters with passengers returned to their country of departure, and a takeback as a transfer to that country's authorities "where Australia works with a country of departure". [3](#source-deterrence-and-protection-policies-3)
 
 ## Observations {#deterrence-and-protection-policies--observations-after-sovereign-borders}
 
@@ -1609,9 +1680,9 @@ The Refugee Council of Australia reports that transfers to Nauru resumed in late
 
 ## Observations {#deterrence-and-protection-policies--observations-offshore-cost}
 
-### Offshore processing cost about a billion Australian dollars a year at its height {#deterrence-and-protection-policies--offshore-cost-per-year}
+### Offshore processing has cost billions of Australian dollars since 2012-13 {#deterrence-and-protection-policies--offshore-cost-per-year}
 
-Two sets of government figures compiled by the Kaldor Centre put the cost at an average of at least A$1 billion a year, peaking at A$1.49 billion in 2017-18. The Refugee Council of Australia puts total spending since 2012 at more than A$13 billion. [17](#source-deterrence-and-protection-policies-17) [21](#source-deterrence-and-protection-policies-21)
+Two sets of government figures compiled by the Kaldor Centre put the cost at an average of at least A$1 billion a year, reaching upwards of A$1.49 billion in 2017-18. The Refugee Council of Australia puts total spending since 2012 at more than A$13 billion. [17](#source-deterrence-and-protection-policies-17) [21](#source-deterrence-and-protection-policies-21)
 
 ### Costs stayed high as the number of people held fell {#deterrence-and-protection-policies--offshore-fixed-costs}
 
@@ -1625,17 +1696,27 @@ Of approximately 4,180 people transferred from 2012 to 2014, 2,043 were back in 
 
 The Refugee Council of Australia's count to December 2025 covers 4,359 people transferred, including those sent since 2023: 1,547 resettled in third countries, 978 returned or removed, and 21 dead. [23](#source-deterrence-and-protection-policies-23)
 
+### 18 people sent offshore had died by January 2021 {#deterrence-and-protection-policies--eighteen-had-died}
+
+Of the 4,180 people transferred from 2012 to 2014, 18 had died by 31 January 2021, offshore or in Australia after medical evacuation. [14](#source-deterrence-and-protection-policies-14) [16](#source-deterrence-and-protection-policies-16)
+
 ## Observations {#deterrence-and-protection-policies--observations-rwanda-spend}
 
-### The UK spent £715 million and sent four volunteers {#deterrence-and-protection-policies--rwanda-cost-and-relocations}
+### The scheme was never tested as a deterrent {#deterrence-and-protection-policies--rwanda-untested}
+
+The National Audit Office did not judge value for money, because that rests on whether the partnership deterred journeys. With no asylum seekers relocated, there is no evidence on that either way. [29](#source-deterrence-and-protection-policies-29) [24](#source-deterrence-and-protection-policies-24)
+
+## Observations {#deterrence-and-protection-policies--observations-rwanda-results}
+
+### The UK spent £715 million on the Rwanda scheme and the Illegal Migration Act {#deterrence-and-protection-policies--rwanda-cost-and-relocations}
 
 The Home Office spent £715 million on the Rwanda partnership and the Illegal Migration Act up to June 2024, including £290 million paid to Rwanda. Four volunteers and no asylum seekers were sent to Rwanda. Ending the partnership avoided over £220 million in scheduled payments. [25](#source-deterrence-and-protection-policies-25) [26](#source-deterrence-and-protection-policies-26) [24](#source-deterrence-and-protection-policies-24) [28](#source-deterrence-and-protection-policies-28)
 
 The £715 million covers the Illegal Migration Act as well as the partnership, so it is not all the cost of relocating four people. The payments to Rwanda were mostly fixed sums due whatever the number relocated, and the other categories are largely fixed costs; per person, the agreement also provided up to £150,874 for processing and support over five years. [27](#source-deterrence-and-protection-policies-27) [25](#source-deterrence-and-protection-policies-25) [30](#source-deterrence-and-protection-policies-30)
 
-### The scheme was never tested as a deterrent {#deterrence-and-protection-policies--rwanda-untested}
+### Four volunteers and no asylum seekers were sent to Rwanda {#deterrence-and-protection-policies--no-asylum-seekers-sent}
 
-The National Audit Office did not judge value for money, because that rests on whether the partnership deterred journeys. With no asylum seekers relocated, there is no evidence on that either way. [29](#source-deterrence-and-protection-policies-29) [24](#source-deterrence-and-protection-policies-24)
+During more than two years of the policy, only four volunteers and no asylum seekers were sent to Rwanda. [24](#source-deterrence-and-protection-policies-24)
 
 ## Observations {#deterrence-and-protection-policies--observations-per-head}
 
@@ -1689,11 +1770,19 @@ The one cross-country study of destinations finds that shorter work bans go with
 
 Studies across Europe, Germany and Switzerland find that delaying work or decisions lowers refugees' employment for years afterwards. In 2021 the Migration Advisory Committee urged the government to review the UK ban, citing "clear evidence of the harm" and "little evidence" of significant benefits. [44](#source-deterrence-and-protection-policies-44) [45](#source-deterrence-and-protection-policies-45) [46](#source-deterrence-and-protection-policies-46) [47](#source-deterrence-and-protection-policies-47)
 
+### The study's authors say work bans are not a strong deterrent {#deterrence-and-protection-policies--authors-say-bans-not-a-strong-deterrent}
+
+The authors conclude that "employment bans are not a strong deterrence for asylum seekers given their modest association to asylum flows". [42](#source-deterrence-and-protection-policies-42)
+
 ### Ministers argue earlier work rights would draw more crossings {#deterrence-and-protection-policies--uk-work-rule}
 
 In Parliament the Home Secretary said in November 2025 that a right to work while waiting "would be a huge pull factor", and in September 2025 a Home Office minister said cutting the wait to three months "could act as a pull factor". No published Home Office estimate of the size of that effect was found (see What we don't know yet). [49](#source-deterrence-and-protection-policies-49) [50](#source-deterrence-and-protection-policies-50)
 
 ## Observations {#deterrence-and-protection-policies--observations-uk-2026}
+
+### Refugee protection now lasts 30 months, renewed only if return is still unsafe {#deterrence-and-protection-policies--thirty-month-protection}
+
+Adults and accompanied children claiming from 2 March 2026 receive 30 months' protection, renewed at review only if return is still unsafe. This is in force through the Immigration Rules. [51](#source-deterrence-and-protection-policies-51)
 
 ### The government presents the changes as following Denmark {#deterrence-and-protection-policies--inspired-by-denmark}
 

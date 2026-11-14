@@ -1,4 +1,4 @@
-import { citedFactTargets, renderMarkdown } from './markdown';
+import { citedFactTargets, renderMarkdown, type PanelTarget } from './markdown';
 import { headlineFacts } from './rank-facts';
 import { chartCitations, footnotesIn } from './sources';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
@@ -13,10 +13,8 @@ export type WalkthroughStep = {
   markdown: string;
   /** The chart behind the section's first cited observation that sits beside a chart. */
   chart?: PreviewSlide;
-  /** The citation that chart was chosen for, in authoring syntax: `#fact-<fact>/<observation>`. */
-  citation?: string;
-  /** That citation's observation, as an element id: `<fact>--<observation>`. */
-  observation?: string;
+  /** The citation that chart was chosen for: `#fact-<id>/<section>`. */
+  cited?: { id: string; section: string };
 };
 
 export type Walkthrough = {
@@ -158,20 +156,37 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
       // an old anchor of prose a figure now stands in for (`replaces`).
       const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
       const chart = fact && key && chartFor(topic.slug, fact, key, observation);
-      if (chart) return { heading: heading.trim(), markdown, chart, citation: `#fact-${id}/${observation}`, observation: `${id}--${observation}` };
+      if (chart) return { heading: heading.trim(), markdown, chart, cited: { id, section: observation } };
     }
     return { heading: heading.trim(), markdown };
   });
   return { lead: lead.trim(), steps };
 }
 
+/**
+ * Finds where a citation opens in its collection's data panel: an observation of
+ * one of the panel's charts, or an address of the chart itself. Anything else
+ * has no such place.
+ */
+function panelTargets(topic: Topic): (id: string, section: string) => PanelTarget | undefined {
+  const addresses = new Set(headlineFacts(topic.facts).flatMap(fact => {
+    const slides = factSlides(topic.slug, fact);
+    const groups = observationsByChart(fact);
+    return [...slides.flatMap(slide => (groups.get(slideGroup(fact, slide)) ?? []).map(o => `${fact.id}--${o.id}`)), ...chartAnchors(fact, slides).flat()];
+  }));
+  return (id, section) => {
+    const observation = `${id}--${section}`;
+    return addresses.has(observation) ? { fact: id, observation } : undefined;
+  };
+}
+
 /** A step with its prose rendered, ready for a synchronous component. */
-export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'citation'> & {
+export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
   html: string;
-  /** "Explore this data", rendered as a citation so it opens the data collection over the page. */
+  /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
   exploreHtml?: string;
-  /** Whether the chart's collection has a data panel on the page for "Explore this data" to open. */
-  hasPanel: boolean;
+  /** Where "Explore this data" opens the chart's data panel. */
+  panel?: PanelTarget;
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -183,19 +198,17 @@ export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
  */
 export async function renderWalkthroughs(topic: Topic): Promise<Map<string, RenderedWalkthrough>> {
   const rendered = new Map<string, RenderedWalkthrough>();
-  const panels = new Set(headlineFacts(topic.facts).map(fact => fact.id));
+  const panelFor = panelTargets(topic);
   for (const viewpoint of topic.viewpoints) {
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, citation, observation }) => ({
+      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited }) => ({
         heading,
         chart,
-        observation,
-        hasPanel: chart !== undefined && panels.has(chart.fact.id),
-        // The step's chart is beside its prose, so the facts it cites are plain text.
-        html: await renderMarkdown(markdown, topic.slug, topic.facts, { citationsAsText: true }),
-        exploreHtml: citation && await renderMarkdown(`[Explore this data](${citation})`, topic.slug, topic.facts),
+        panel: cited && panelFor(cited.id, cited.section),
+        html: await renderMarkdown(markdown, topic.slug, topic.facts, { panelCitation: panelFor }),
+        exploreHtml: cited && await renderMarkdown(`[Explore this data](#fact-${cited.id}/${cited.section})`, topic.slug, topic.facts),
       }))),
     });
   }

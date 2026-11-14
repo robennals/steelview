@@ -1468,6 +1468,20 @@ dataStillNeeded:
       expensive per person or only large in total.
 figures:
   - kind: series
+  - kind: barChart
+    id: appeal-clearance-time
+    title: Mean time to clear a First-tier Tribunal immigration appeal, April to June 2026
+    description: Mean weeks taken to clear an appeal at the First-tier Tribunal (Immigration and Asylum Chamber) in April to June 2026, by category.
+    valueLabel: Mean weeks to clear
+    categoryLabel: Appeal category
+    format: { unit: number, decimals: 0 }
+    sort: none
+    sources: [5]
+    items:
+      - { label: Asylum and protection, value: 72, highlight: true }
+      - { label: Human rights, value: 74 }
+      - { label: All categories, value: 65 }
+      - { label: EEA free movement, value: 48 }
   - kind: series
     id: support-by-accommodation
   - kind: series
@@ -1563,14 +1577,40 @@ figures:
       - site: MOD Linton-on-Ouse, North Yorkshire
         status: { value: Discussions under way, sources: [39] }
         people: Not given per site
+observationMarks:
+  queue-moved-to-appeals: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
+  support-costs-about-4bn-a-year: {rows: ["2024-25"]}
+  backlog-and-hotels-below-peaks: {lines: ["People awaiting an initial decision"], from: "2023-06", to: "2026-06"}
+  hotels-third-of-people-three-quarters-of-cost: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
+  why-the-queue-rose-and-fell: {lines: ["People awaiting an initial decision"], from: "2021-06", to: "2026-06"}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals open at the tribunal"]}
+  support-fell-less-than-the-queue: {from: "2023-09", to: "2026-06"}
+  dispersal-kept-growing: {lines: ["Dispersal accommodation"]}
+  hotel-use-far-below-peak: {lines: ["Hotels"], from: "2023-09", to: "2026-06"}
+  large-sites-small-share: {lines: ["Initial accommodation, other contingency and large sites"], at: "2026-06"}
+  hotels-drove-the-rise-and-fall: {rows: ["2022-23", "2023-24", "2024-25"]}
+  share-of-home-office-budget: {rows: ["2023-24", "2025-26"]}
+  accommodation-dominates-system-cost: {rows: ["Accommodation and support", "Appeals", "Detention and removals"]}
+  contracts-cost-overrun: {rows: ["Share of the contracts' cost"]}
+  large-sites-cost-and-reversal: {rows: ["Wethersfield, Essex (former RAF base)", "Crowborough Training Camp, East Sussex", "MOD Bicester (Site A), between Piddington and Upper Arncott, Oxfordshire", "MOD Barnham, Suffolk", "MOD Linton-on-Ouse, North Yorkshire"]}
+  europe-uses-large-sites-too: {whole: true}
+  people-and-appeals-are-different-counts: {lines: ["People awaiting an initial decision", "Asylum and protection appeals open at the tribunal"], at: "2026-06"}
+  whole-system-is-larger: {lines: ["People awaiting an initial decision"], at: "2024-06"}
+  hotel-shares-date-from-2024: {rows: ["Share of people in asylum accommodation", "Share of the contracts' cost"]}
+  appeals-queue-fourteen-times: {lines: ["Asylum and protection appeals open at the tribunal"], from: "2022-06", to: "2026-06"}
+  asylum-appeal-takes-72-weeks: {rows: ["Asylum and protection"]}
 ---
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-queue}
 
-### The first-decision backlog and hotel use are far below their peaks {#asylum-backlog-accommodation-and-cost--backlog-and-hotels-below-peaks}
+### The first-decision queue is 77% below its June 2023 peak {#asylum-backlog-accommodation-and-cost--backlog-and-hotels-below-peaks}
 
 40,168 people were waiting for an initial decision at the end of June 2026, 77% fewer than at the June 2023 peak of 175,457 and the lowest number since June 2019. The queue is still longer than it was through the 2010s: it grew from 7,240 in December 2010 to 35,855 in December 2018. [1](#source-asylum-backlog-accommodation-and-cost-1) [2](#source-asylum-backlog-accommodation-and-cost-2)
 
 Hotel use fell by the same order: 16,021 supported asylum seekers were in hotels at the end of June 2026, 71% below the peak of 56,018 in September 2023 (see the accommodation charts below). [17](#source-asylum-backlog-accommodation-and-cost-17)
+
+### Open asylum appeals are more than fourteen times their June 2022 level {#asylum-backlog-accommodation-and-cost--appeals-queue-fourteen-times}
+
+Open asylum and protection appeals at the First-tier Tribunal rose from 6,319 at the end of June 2022 to 90,341 at the end of June 2026, more than fourteen times as many. [3](#source-asylum-backlog-accommodation-and-cost-3) [4](#source-asylum-backlog-accommodation-and-cost-4)
 
 ### The queue has moved into the appeals system {#asylum-backlog-accommodation-and-cost--queue-moved-to-appeals}
 
@@ -1599,6 +1639,12 @@ The first-decision line counts people, including dependants; the tribunal line c
 ### The whole asylum caseload is larger than either line, and its latest count is from 2024 {#asylum-backlog-accommodation-and-cost--whole-system-is-larger}
 
 The Home Office's count of all cases in the asylum system, including people awaiting an appeal outcome or removal, rose from 55,814 in June 2014 to 224,742 in June 2024, when 40% were awaiting an initial decision. It has not been published beyond June 2024 because of a change of casework system. The NAO also found that 41% of a sample of people who claimed in January 2023 had open claims that were neither awaiting an appeal nor further submissions, and had not been removed. [10](#source-asylum-backlog-accommodation-and-cost-10) [11](#source-asylum-backlog-accommodation-and-cost-11) [15](#source-asylum-backlog-accommodation-and-cost-15)
+
+## Observations {#asylum-backlog-accommodation-and-cost--observations-appeal-clearance-time}
+
+### An asylum appeal took 72 weeks on average to clear, well over a year {#asylum-backlog-accommodation-and-cost--asylum-appeal-takes-72-weeks}
+
+The mean time to clear an asylum or protection appeal was 72 weeks in April to June 2026, against 65 weeks across all categories. [5](#source-asylum-backlog-accommodation-and-cost-5)
 
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-support}
 

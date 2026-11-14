@@ -1219,10 +1219,9 @@
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--accent);
-    text-decoration: none;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
-
-  .sv-home__about:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 
   /* Opening a row holds the clicked head still by scrolling in step with the
      row above closing (topic-accordion.tsx); the browser's own scroll
@@ -1300,8 +1299,8 @@
   .sv-row__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
   .sv-row__heading, .sv-row__thumbs, .sv-row__chevron { pointer-events: none; }
-  .sv-row__link { position: relative; color: inherit; text-decoration: none; pointer-events: auto; transition: color 0.2s; }
-  .sv-row__link:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+  .sv-row__link { position: relative; color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.15em; pointer-events: auto; transition: color 0.2s; }
+  .sv-row__link:hover { color: var(--accent); }
 
   .sv-row__subtitle {
     margin: 0.3rem 0 0;
@@ -1615,6 +1614,9 @@
     background: var(--paper);
     transition: box-shadow 0.15s;
   }
+
+  /* Stays in view above a long chart, which a picked row can scroll. */
+  .sv-walk__chart .sv-observe { position: sticky; top: 0; z-index: 2; }
 
   .sv-observe[data-toggles] { cursor: pointer; }
 
@@ -2010,16 +2012,14 @@
 
   /* ------------------------------------------------------ fact citations */
 
-  /* An inline fact citation reads as ordinary prose: the evidence it stands
-     on is drawn beside the text, so the clause needs no mark of its own. It
-     is still a link into the data, and shows that on hover and focus.
-
-     A principle citation keeps a dotted rule in the principle hue, since the
-     principle's text is not on screen beside the argument. The dots are a
-     repeating background rather than a dotted text-decoration, because
-     browsers pack decoration dots so tightly they read as a smudged solid
-     line, and give no control over the spacing. */
+  /* An inline citation keeps the prose's colour and has a dotted rule, in the
+     accent hue for a fact and the principle hue for a principle, so the claim
+     reads as prose but can be seen to be clickable. The dots are a repeating
+     background rather than a dotted text-decoration,
+     because browsers pack decoration dots so tightly they read as a smudged
+     solid line, and give no control over the spacing. */
   .prose-body a.sv-cite {
+    --sv-cite-hue: var(--accent);
     color: inherit;
     text-decoration: none;
     transition: color 0.15s;
@@ -2031,12 +2031,17 @@
   }
 
   .prose-body a.sv-principle-cite {
-    --sv-cite-strength: 65%;
+    --sv-cite-hue: var(--principle);
     color: var(--ink);
     text-decoration: none;
+  }
+
+  .prose-body a.sv-cite,
+  .prose-body a.sv-principle-cite {
+    --sv-cite-strength: 65%;
     background-image: radial-gradient(
       circle,
-      color-mix(in srgb, var(--principle) var(--sv-cite-strength), transparent) 0.8px,
+      color-mix(in srgb, var(--sv-cite-hue) var(--sv-cite-strength), transparent) 0.8px,
       transparent 1.2px
     );
     background-size: 5px 2.4px;
@@ -2047,11 +2052,14 @@
 
   /* On dark paper a part-transparent dot all but disappears. */
   @media (prefers-color-scheme: dark) {
+    .prose-body a.sv-cite,
     .prose-body a.sv-principle-cite {
       --sv-cite-strength: 100%;
     }
   }
 
+  .prose-body a.sv-cite:hover,
+  .prose-body a.sv-cite:focus-visible,
   .prose-body a.sv-principle-cite:hover,
   .prose-body a.sv-principle-cite:focus-visible {
     --sv-cite-strength: 100%;
@@ -2509,9 +2517,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__about > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
 .sv-chart__about > summary::-webkit-details-marker { display: none; }
 .sv-chart__about-text { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); }
+.sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 0.2em; }
 .sv-chart__about-toggle::after { content: "More ▾"; }
-.sv-chart__about > summary:hover .sv-chart__about-toggle { text-decoration: underline; text-underline-offset: 0.2em; }
 .sv-chart__about[open] > summary { margin-bottom: 0.4rem; }
 .sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
 .sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
@@ -2624,8 +2631,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__caption { margin-bottom: .5rem; }
 .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); min-height: 2.5em; }
 .sv-slide__figure .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); }
-.sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-decoration: none; }
-.sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: .15em; }
+.sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-underline-offset: .15em; }
+.sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr) 3.5rem; }

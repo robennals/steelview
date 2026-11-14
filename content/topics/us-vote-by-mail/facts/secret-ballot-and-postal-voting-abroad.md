@@ -988,10 +988,45 @@ figures:
       - { label: Municipal, values: { before: { value: 23.1, asPublished: '23,1 p 100' }, after: { value: 21.4, asPublished: '21,4 p 100' } } }
       - { label: Cantonal, values: { before: { value: 39, asPublished: '39 p 100' }, after: { value: 33.6, asPublished: '33,6 p 100' } } }
   - kind: dataTable
+    id: france-postal-voting
+    title: 'France: why postal voting was abolished in 1975, and attempts to restore it'
+    description: 'The law that abolished postal voting, the reason given for it, and later bills.'
+    caption: One card per step
+    layout: cards
+    leadColumn: says
+    columns:
+      - key: step
+        label: Step
+        rowHeader: true
+      - key: says
+        label: What happened
+        sortable: false
+    rows:
+      - step: Law of 31 December 1975
+        says:
+          value: 'Abolished postal voting, which every party had condemned as "l''occasion de fraudes graves" (the occasion of serious fraud), and widened voting by proxy'
+          sources:
+            - 5
+      - step: International IDEA's account
+        says:
+          value: '"In 1975, France introduced personal voting and abolished postal voting because of the incidence of fraud"'
+          sources:
+            - 8
+      - step: 'National Assembly, 3 February 2022'
+        says:
+          value: Rejected a bill to restore postal voting
+          sources:
+            - 6
+      - step: Senate bill for presidential elections
+        says:
+          value: 'Lapsed: "Cette proposition de loi organique est caduque"'
+          sources:
+            - 7
+  - kind: dataTable
     id: secret-ballot
     title: 'The secret ballot around the world: when and why it was adopted'
     description: 'Where the secret ballot came in, and what it was for.'
-    caption: One card per adoption
+    caption: One card per place
     layout: timeline
     leadColumn: says
     dateColumn: when
@@ -1017,6 +1052,12 @@ figures:
         when: '1872'
         says:
           value: The Australian system was enacted after a committee found it "the best possible remedy"
+          sources:
+            - 1
+      - where: US states before the secret ballot
+        when: Before 1888
+        says:
+          value: 'Attempts to standardise ballots "were easily thwarted — the vote buyer could simply place a ballot in the hands of the bribed voter and watch until he placed it in the polling box"'
           sources:
             - 1
       - where: 'Louisville, Massachusetts, New York'
@@ -1265,10 +1306,70 @@ figures:
           value: Switzerland's postal voting "hasn’t led to major political debates about security or fraud"
           sources:
             - 18
+  - kind: dataTable
+    id: switzerland-postal
+    title: 'Switzerland: how much of the vote is postal, and proven fraud'
+    description: 'Switzerland has no national series, so this gives what cantons report, and two cases.'
+    caption: One row per finding
+    columns:
+      - key: finding
+        label: Finding
+        rowHeader: true
+      - key: says
+        label: What the sources say
+        sortable: false
+    rows:
+      - finding: Share voting by post
+        says:
+          value: '"Cantons report that around 90% of citizens now vote by post"'
+          sources:
+            - 19
+      - finding: 'Bern, 2016'
+        says:
+          value: '300 votes "declared void after investigators discovered they all had the same handwriting"'
+          sources:
+            - 19
+      - finding: 'Upper Valais, 2018'
+        says:
+          value: A man convicted of forging at least 193 ballots
+          sources:
+            - 20
+observationMarks:
+  secret-ballot-against-watching: {rows: ["US states before the secret ballot"]}
+  chile-secret-ballot-effect: {rows: ["Chile"]}
+  mail-voters-often-not-alone: {rows: ["Dowling et al., December 2010 (published 2019)"]}
+  german-court-reduced-control: {rows: ["Germany's Constitutional Court, 2013"]}
+  universal-postal-voting-is-rare: {rows: ["CA", "DE", "IS", "KR", "LI", "LU", "NZ", "PL", "CH", "GB", "US"]}
+  france-abolished-over-fraud: {rows: ["Law of 31 December 1975", "International IDEA's account"]}
+  uk-fraud-under-on-demand: {rows: ["Postal voting on demand", "Birmingham (Bordesley Green and Aston)"]}
+  uk-kept-on-demand-added-checks: {rows: ["Electoral Administration Act", "Elections Act: campaigners barred"]}
+  germany-postal-share-rose: {lines: ["Germany"], at: "2021"}
+  switzerland-about-90-percent: {rows: ["Share voting by post"]}
+  uk-no-large-scale-fraud: {rows: ["Electoral Commission fraud data"]}
+  pressure-rarely-reported: {rows: ["Oregon, 1990s, reported second-hand"]}
+  in-person-not-fully-private: {rows: ["Same survey, in-person comparison"]}
+  uk-checks-identifiers: {rows: ["Returned postal votes rejected because signature or date of birth could not be verified"]}
+  germany-no-reason-since-2008: {lines: ["Germany"], from: "2005", to: "2021"}
+  uk-postal-share-rose-after-2001: {lines: ["United Kingdom"], from: "2001", to: "2019"}
+  large-democracies-vote-by-post: {rows: ["US", "GB", "DE", "CH", "CA"]}
+  curing-uncommon-abroad: {whole: true}
+  france-widened-proxy: {rows: ["Law of 31 December 1975"]}
+  france-abstention-not-higher: {rows: ["Presidential", "Legislative", "Municipal", "Cantonal"]}
+  france-restoration-rejected: {rows: ["National Assembly, 3 February 2022", "Senate bill for presidential elections"]}
+  secrecy-evidence-is-polling-place: {whole: true}
+  secrecy-doubts-matter: {rows: ["Dowling et al., December 2010 (published 2019)"]}
+  rasmussen-heartland-weak-measure: {rows: ["Rasmussen–Heartland, December 2023"]}
+  pressure-may-be-underreported: {rows: ["Rose pilot, Washington County, Oregon, 2000"]}
+  uk-election-courts: {rows: ["Birmingham (Bordesley Green and Aston)", "Woking", "Tower Hamlets"]}
+  uk-postal-help-insisted: {rows: ["Postal voters who had help filling in their ballot", "Of those, main reason \"another adult insisted on helping me choose who to vote for\""]}
+  uk-2024-no-systemic-problems: {rows: ["Postal voters satisfied with voting"]}
+  secrecy-trade-off-conceded: {rows: ["Germany's Constitutional Court, 2013", "Pickles review, 2016 (reporting submissions)"]}
+  no-study-of-mail-coercion: {rows: ["Birch and Watt, 2004 (as summarised by Essex)", "Southwell (Oregon), 2020"]}
+  mail-voters-doubt-secrecy: {rows: ["Dowling et al., December 2010 (published 2019)"]}
 ---
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-germany-postal-share}
 
-### Germany's postal vote grew steadily for decades {#secret-ballot-and-postal-voting-abroad--germany-postal-share-rose}
+### Germany cast almost half its 2021 vote by post, after decades of growth {#secret-ballot-and-postal-voting-abroad--germany-postal-share-rose}
 
 Germany's postal share rose from about one voter in twenty in 1957 to more than a quarter in 2017, and jumped to almost half in 2021. [34](#source-secret-ballot-and-postal-voting-abroad-34) It fell back in 2025; the source gives no reasons for either move.
 
@@ -1276,31 +1377,15 @@ Germany's postal share rose from about one voter in twenty in 1957 to more than 
 
 Since 2008 German voters have not had to give a reason. The Constitutional Court noted the legislator's view that a significant rise in postal voting "was not to be feared" from the change; the share later rose sharply. [17](#source-secret-ballot-and-postal-voting-abroad-17) [34](#source-secret-ballot-and-postal-voting-abroad-34)
 
-### Germany's court conceded postal voting weakens control, and upheld it {#secret-ballot-and-postal-voting-abroad--german-court-reduced-control}
-
-In 2013 the court held that with postal voting "public control of how the vote is cast is reduced" and integrity "is not guaranteed to the same degree" as at a polling station. [17](#source-secret-ballot-and-postal-voting-abroad-17)
-
-It upheld it as serving the widest possible participation, adding that lawmakers must ensure no election principle is "substantially hollowed out", which it found "plainly not the case at present". [17](#source-secret-ballot-and-postal-voting-abroad-17)
-
-### Switzerland votes about 90% by post, with occasional proven fraud {#secret-ballot-and-postal-voting-abroad--switzerland-about-90-percent}
-
-Cantons report that "around 90%" of Swiss citizens vote by post, which has not led to "major political debates about security or fraud". [19](#source-secret-ballot-and-postal-voting-abroad-19) [18](#source-secret-ballot-and-postal-voting-abroad-18)
-
-Cases occur: in Bern 300 votes were voided in 2016 for identical handwriting, and an Upper Valais man was convicted in 2018 of forging at least 193 ballots. [19](#source-secret-ballot-and-postal-voting-abroad-19) [20](#source-secret-ballot-and-postal-voting-abroad-20)
-
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-uk-postal-share}
 
 ### Britain's postal vote took off after postal voting on demand in 2001 {#secret-ballot-and-postal-voting-abroad--uk-postal-share-rose-after-2001}
 
 For half a century postal votes were a few percent of the UK vote. After voters no longer had to give a reason, in 2001, they reached about a fifth of valid votes by 2010 and stayed there. [35](#source-secret-ballot-and-postal-voting-abroad-35)
 
-### Britain's largest frauds came with postal voting on demand {#secret-ballot-and-postal-voting-abroad--uk-fraud-under-on-demand}
-
-The Tower Hamlets election court wrote that "postal voting on demand made personation once again viable". [11](#source-secret-ballot-and-postal-voting-abroad-11) The Birmingham judgment of 2005 had found "literally thousands of votes" falsified, perhaps half of the winners' votes in two wards. [10](#source-secret-ballot-and-postal-voting-abroad-10)
-
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-idea-postal-voting}
 
-### Few countries offer postal voting to every voter {#secret-ballot-and-postal-voting-abroad--universal-postal-voting-is-rare}
+### Only 11 countries let every voter vote by post from home {#secret-ballot-and-postal-voting-abroad--universal-postal-voting-is-rare}
 
 Only 11 of the 204 countries International IDEA codes let all voters vote by post at home. [3](#source-secret-ballot-and-postal-voting-abroad-3) [4](#source-secret-ballot-and-postal-voting-abroad-4)
 
@@ -1316,25 +1401,13 @@ IDEA notes that letting voters correct an invalid ballot, as many US states do, 
 
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-france-abstention}
 
-### France abolished postal voting in 1975, citing serious fraud {#secret-ballot-and-postal-voting-abroad--france-abolished-over-fraud}
-
-The Interior Ministry said in 1988 that every party had condemned postal voting as the occasion of "fraudes graves" (serious fraud) after each election. With no voter ever appearing in person, it allowed votes for "electeurs fictifs" (fictitious voters; the source prints French without accents). [5](#source-secret-ballot-and-postal-voting-abroad-5) IDEA gives the same reason. [8](#source-secret-ballot-and-postal-voting-abroad-8)
-
-### France widened proxy voting instead {#secret-ballot-and-postal-voting-abroad--france-widened-proxy}
-
-The 1975 law abolished postal voting while widening voting by proxy at the same time, so remote voting did not simply end. [5](#source-secret-ballot-and-postal-voting-abroad-5) IDEA's 2025 list counts France among countries allowing postal voting for some voters. [3](#source-secret-ballot-and-postal-voting-abroad-3)
-
 ### Abstention did not rise overall after abolition, by the government's figures {#secret-ballot-and-postal-voting-abroad--france-abstention-not-higher}
 
 Abstention fell at presidential, municipal and cantonal elections and rose at legislative ones, which the ministry put down to low turnout in June 1988. [5](#source-secret-ballot-and-postal-voting-abroad-5) These are a government's own averages, not a test of cause.
 
-### Restoring postal voting was rejected in 2022 {#secret-ballot-and-postal-voting-abroad--france-restoration-rejected}
-
-The National Assembly rejected a bill to restore postal voting on 3 February 2022. [6](#source-secret-ballot-and-postal-voting-abroad-6) A 2023 Senate bill to allow it for presidential elections has lapsed. [7](#source-secret-ballot-and-postal-voting-abroad-7)
-
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-secret-ballot}
 
-### The secret ballot was adopted so no one could watch a vote {#secret-ballot-and-postal-voting-abroad--secret-ballot-against-watching}
+### Before the secret ballot, a vote buyer could hand over a ballot and watch it cast {#secret-ballot-and-postal-voting-abroad--secret-ballot-against-watching}
 
 Before it, "the vote buyer could simply place a ballot in the hands of the bribed voter and watch until he placed it in the polling box". [1](#source-secret-ballot-and-postal-voting-abroad-1) Reformers argued secrecy would end bribery's payoff and protect "the weak and dependent against intimidation and coercion by employers and creditors". [1](#source-secret-ballot-and-postal-voting-abroad-1)
 
@@ -1348,9 +1421,9 @@ These reforms secured secrecy inside a polling booth. No study read here measure
 
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-privacy-surveys}
 
-### Mail ballots are often filled in with others present {#secret-ballot-and-postal-voting-abroad--mail-voters-often-not-alone}
+### Nearly a quarter of mail voters had someone else in the room {#secret-ballot-and-postal-voting-abroad--mail-voters-often-not-alone}
 
-In the strongest survey, over 23 percent of mail voters had someone else in the room and more than six percent showed their ballot. Mail voters were likelier than Election Day voters to doubt their vote was secret. [21](#source-secret-ballot-and-postal-voting-abroad-21)
+In the strongest survey, over 23 percent of mail voters had someone else in the room and more than six percent showed their ballot. [21](#source-secret-ballot-and-postal-voting-abroad-21)
 
 ### Doubts about secrecy change behaviour {#secret-ballot-and-postal-voting-abroad--secrecy-doubts-matter}
 
@@ -1360,7 +1433,7 @@ Letters assuring people their ballot was secret raised turnout by an estimated 3
 
 Its questions count lawful help to a spouse or child as filling out a ballot, and helping a disabled voter is "perfectly legal in every state". [26](#source-secret-ballot-and-postal-voting-abroad-26) Its opt-in sample, small mail subsample and low mail share make even its secrecy figures far weaker than the 2010 survey's. [24](#source-secret-ballot-and-postal-voting-abroad-24) [26](#source-secret-ballot-and-postal-voting-abroad-26)
 
-### Few voters report pressure {#secret-ballot-and-postal-voting-abroad--pressure-rarely-reported}
+### In Oregon surveys, 1% or fewer felt pressured {#secret-ballot-and-postal-voting-abroad--pressure-rarely-reported}
 
 In the Oregon reports "1%, or fewer" felt pressured by another person's presence. [28](#source-secret-ballot-and-postal-voting-abroad-28) Oregon researcher Priscilla Southwell wrote that there had been "no evidence that undue influence on voters – like bribes or threats – has been a problem". [29](#source-secret-ballot-and-postal-voting-abroad-29)
 
@@ -1372,6 +1445,10 @@ Britain's 2016 fraud review heard that household undue influence goes unreported
 
 In the same 2010 survey, 22 percent of in-person voters had no privacy screen. [21](#source-secret-ballot-and-postal-voting-abroad-21) UK observers saw family voting at 21% of polling stations in 2024. [30](#source-secret-ballot-and-postal-voting-abroad-30)
 
+### Mail voters were likelier to say their choices were not kept secret {#secret-ballot-and-postal-voting-abroad--mail-voters-doubt-secrecy}
+
+Those who voted by mail were "almost 10 percentage points" likelier than Election Day voters to say so. [21](#source-secret-ballot-and-postal-voting-abroad-21)
+
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-uk-election-courts}
 
 ### British election courts found organised postal fraud and voided elections {#secret-ballot-and-postal-voting-abroad--uk-election-courts}
@@ -1382,13 +1459,17 @@ In Birmingham in 2005 a judge found "literally thousands of votes" falsified, ca
 
 It responded by requiring a signature and date of birth (2006), banning campaigners from handling postal votes and making postal votes lapse (2022). [12](#source-secret-ballot-and-postal-voting-abroad-12) [14](#source-secret-ballot-and-postal-voting-abroad-14) [13](#source-secret-ballot-and-postal-voting-abroad-13) Northern Ireland does not offer postal voting on demand. [16](#source-secret-ballot-and-postal-voting-abroad-16)
 
-### Recent detected fraud in Britain is low {#secret-ballot-and-postal-voting-abroad--uk-no-large-scale-fraud}
+### The Electoral Commission found "no evidence of large-scale electoral fraud" in 2019–2023 {#secret-ballot-and-postal-voting-abroad--uk-no-large-scale-fraud}
 
 The Electoral Commission found "no evidence of large-scale electoral fraud" in 2019–2023: 11 convictions from 1,462 allegations of every kind. [15](#source-secret-ballot-and-postal-voting-abroad-15) Like all detected counts, these are a floor (see [the US fraud report](#fact-absentee-fraud-and-manipulation-of-the-count/detected-fraud-is-a-floor)).
 
+### After Britain let anyone vote by post, a court found thousands of postal votes falsified {#secret-ballot-and-postal-voting-abroad--uk-fraud-under-on-demand}
+
+The Tower Hamlets election court wrote that "postal voting on demand made personation once again viable". [11](#source-secret-ballot-and-postal-voting-abroad-11) The Birmingham judgment of 2005 had found "literally thousands of votes" falsified, perhaps half of the winners' votes in two wards. [10](#source-secret-ballot-and-postal-voting-abroad-10)
+
 ## Observations {#secret-ballot-and-postal-voting-abroad--observations-uk-2024}
 
-### Britain's identifier check rejected 2.2% of returned postal votes {#secret-ballot-and-postal-voting-abroad--uk-checks-identifiers}
+### Britain checks postal votes on signature and date of birth, and rejected 2.2% in 2024 {#secret-ballot-and-postal-voting-abroad--uk-checks-identifiers}
 
 In 2024, 2.2% of returned postal votes were rejected because the signature and date of birth could not be verified, a level "broadly similar" to earlier polls. [16](#source-secret-ballot-and-postal-voting-abroad-16) Britain's check pairs a signature with a fact that needs no judgement, the date of birth.
 
@@ -1409,6 +1490,34 @@ Germany's court upheld postal voting while conceding reduced control and integri
 ### No study here measures coercion of mail voters {#secret-ballot-and-postal-voting-abroad--no-study-of-mail-coercion}
 
 Observers who count family voting at polling stations say they "are unable to collect data" on it for postal votes. [31](#source-secret-ballot-and-postal-voting-abroad-31) The surveys above measure presence and help, not pressure (see What we don't know yet).
+
+### Germany's court conceded postal voting weakens control, and upheld it {#secret-ballot-and-postal-voting-abroad--german-court-reduced-control}
+
+In 2013 the court held that with postal voting "public control of how the vote is cast is reduced" and integrity "is not guaranteed to the same degree" as at a polling station. [17](#source-secret-ballot-and-postal-voting-abroad-17)
+
+It upheld it as serving the widest possible participation, adding that lawmakers must ensure no election principle is "substantially hollowed out", which it found "plainly not the case at present". [17](#source-secret-ballot-and-postal-voting-abroad-17)
+
+## Observations {#secret-ballot-and-postal-voting-abroad--observations-switzerland-postal}
+
+### Switzerland votes about 90% by post, with occasional proven fraud {#secret-ballot-and-postal-voting-abroad--switzerland-about-90-percent}
+
+Cantons report that "around 90%" of Swiss citizens vote by post, which has not led to "major political debates about security or fraud". [19](#source-secret-ballot-and-postal-voting-abroad-19) [18](#source-secret-ballot-and-postal-voting-abroad-18)
+
+Cases occur: in Bern 300 votes were voided in 2016 for identical handwriting, and an Upper Valais man was convicted in 2018 of forging at least 193 ballots. [19](#source-secret-ballot-and-postal-voting-abroad-19) [20](#source-secret-ballot-and-postal-voting-abroad-20)
+
+## Observations {#secret-ballot-and-postal-voting-abroad--observations-france-postal-voting}
+
+### France abolished postal voting in 1975, citing serious fraud {#secret-ballot-and-postal-voting-abroad--france-abolished-over-fraud}
+
+The Interior Ministry said in 1988 that every party had condemned postal voting as the occasion of "fraudes graves" (serious fraud) after each election. With no voter ever appearing in person, it allowed votes for "electeurs fictifs" (fictitious voters; the source prints French without accents). [5](#source-secret-ballot-and-postal-voting-abroad-5) IDEA gives the same reason. [8](#source-secret-ballot-and-postal-voting-abroad-8)
+
+### France widened proxy voting instead {#secret-ballot-and-postal-voting-abroad--france-widened-proxy}
+
+The 1975 law abolished postal voting while widening voting by proxy at the same time, so remote voting did not simply end. [5](#source-secret-ballot-and-postal-voting-abroad-5) IDEA's 2025 list counts France among countries allowing postal voting for some voters. [3](#source-secret-ballot-and-postal-voting-abroad-3)
+
+### Restoring postal voting was rejected in 2022 {#secret-ballot-and-postal-voting-abroad--france-restoration-rejected}
+
+The National Assembly rejected a bill to restore postal voting on 3 February 2022. [6](#source-secret-ballot-and-postal-voting-abroad-6) A 2023 Senate bill to allow it for presidential elections has lapsed. [7](#source-secret-ballot-and-postal-voting-abroad-7)
 
 ## More {#secret-ballot-and-postal-voting-abroad--more-germany-postal-share}
 

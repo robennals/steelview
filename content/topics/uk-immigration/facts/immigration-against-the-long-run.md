@@ -3092,7 +3092,7 @@ dataStillNeeded:
 observationMarks:
   gross-immigration-is-far-above-any-historical-norm-even-after-two-years-of-falling: {lines: [Immigration], at: '2025'}
   net-migration-is-not-unusual-at-all: {lines: [Total net migration], from: '2023-03'}
-  four-years-gross-and-net: {lines: [Immigration, Net migration], from: '2021', to: '2024'}
+  four-years-gross-and-net: {lines: ["Net migration"], from: "2021", to: "2024"}
   negative-years-came-from-emigration: {from: '1964', to: '1978'}
   late-1990s-rise: {lines: [Immigration], from: '1997', to: '2003'}
   pandemic-dip: {lines: [Immigration, Net migration], from: '2019', to: '2021'}
@@ -3114,6 +3114,44 @@ observationMarks:
   uk-mid-table-per-head: {rows: [United Kingdom]}
   uk-fourth-by-count: {rows: [United States, Germany, Canada, United Kingdom]}
   international-reasons: {rows: [Luxembourg, Malta]}
+  why-immigration-fell: {lines: ["Total net migration", "Work", "Study"], from: "2023-12", to: "2024-12"}
+  eu-enlargement: {lines: ["Immigration"], from: "2004", to: "2007"}
+  rolling-year-peaks: {lines: ["Immigration", "Net migration"], from: "2022", to: "2023"}
+  late-1990s-causes: {lines: ["Immigration"], from: "1997", to: "2003"}
+  latest-fall-work-arrivals: {lines: ["Immigration", "Net migration"], from: "2024", to: "2025"}
+  recent-revisions: {lines: ["Net migration"], at: "2024"}
+  four-years-2022-to-2025: {lines: ["Immigration", "Net migration"], from: "2022", to: "2025"}
+  negative-years-list: {lines: ["Net migration"], from: "1964", to: "1993"}
+  late-1990s-timing: {lines: ["Net migration"], from: "1997", to: "2003"}
+  fall-before-2024-rules: {lines: ["Immigration"], from: "2023", to: "2024"}
+  late-2025-restrictions-not-yet-shown: {lines: ["Immigration", "Net migration"], at: "2025"}
+  study-net-after-departures: {lines: ["Study"], at: "2025-12"}
+  asylum-few-leave: {lines: ["Asylum"], at: "2025-12"}
+  british-net-why: {lines: ["British nationals"], from: "2022-12", to: "2025-12"}
+  bno-line-steadier: {lines: ["BN(O) route", "Ukraine scheme"]}
+  why-immigration-spiked: {lines: ["Non-EU+ nationals"], from: "2021-03", to: "2023-09"}
+  non-eu-surge-causes: {lines: ["Non-EU+ nationals"], from: "2021-03", to: "2023-09"}
+  eu-departures: {lines: ["EU+ nationals"], from: "2022-06"}
+  care-vacancies-behind-recruitment: {lines: ["Non-EU+ nationals"], from: "2022-03", to: "2023-09"}
+  eu-net-negative-since-2022: {lines: ["EU+ nationals"], from: "2022-06", to: "2025-12"}
+  migration-share-longer-run: {lines: ["Net migration and other", "Total change"], from: "2005", to: "2024"}
+  indirect-effect-through-births: {lines: ["Natural change"], at: "2024"}
+  ons-assumption-lowered: {lines: ["Principal (230,000 a year)"]}
+  projections-are-scenarios: {whole: true}
+  old-age-low-migration-and-pension-age: {lines: ["Low migration (105,000 a year)"], at: "2074"}
+  uk-fall-2024: {rows: ["United Kingdom", "New Zealand"]}
+  permanent-is-not-net: {whole: true}
+  oecd-neighbours-and-extremes: {rows: ["United Kingdom", "Norway", "Greece", "Finland", "Luxembourg", "Iceland", "Switzerland", "Ireland", "Japan", "Mexico"]}
+  no-comparable-net-series: {rows: ["United Kingdom"]}
+  international-coverage: {rows: ["Poland", "Slovakia"]}
+  international-differences: {whole: true}
+  record-immigration-2021-to-2024: {lines: ["Immigration"], from: "2021", to: "2024", at: "2023"}
+  tens-of-thousands-met-only-in-covid: {lines: ["Net migration"], from: "2010", to: "2025", at: "2020"}
+  net-migration-peaked: {lines: ["Total net migration"], at: "2023-03"}
+  british-net-emigration: {lines: ["British nationals"], from: "2019-06", to: "2025-12", at: "2025-12"}
+  old-age-ratio-2074: {lines: ["Zero net migration", "Principal (230,000 a year)"], at: "2074"}
+  later-pledges-unquantified: {rows: ["2019, Conservative", "2024, Conservative", "2024, Labour"]}
+  public-preferences: {rows: ["Reduced a lot", "Reduced a little"]}
 figures:
 - kind: series
 - kind: series
@@ -3150,6 +3188,20 @@ figures:
     - { election: "2024, Conservative", pledge: { value: "annual cap on work and family visas, with \"year-on-year reductions\"", sources: [41] }, outcome: "Not elected" }
     - { election: "2024, Labour", pledge: { value: "reduce legal migration, no number", sources: [41] }, outcome: "171,000 in 2025, down from 331,000 in 2024" }
     - { election: "2024, Reform UK", pledge: { value: "net migration \"should be zero\"", sources: [41] }, outcome: "Not in government" }
+- kind: barChart
+  id: immigration-preferences
+  title: "What people want to happen to immigration numbers, 2025"
+  description: "The share of people who want immigration numbers reduced, kept the same or increased, in the Ipsos and British Future tracker. Fieldwork ran from June to July 2025."
+  valueLabel: "Share of respondents (%)"
+  categoryLabel: "Preference"
+  format: {"unit": "percent", "decimals": 0}
+  sort: none
+  sources: [42]
+  items:
+    - {"label": "Reduced a lot", "value": 41}
+    - {"label": "Reduced a little", "value": 16}
+    - {"label": "Stay the same", "value": 21}
+    - {"label": "Increased", "value": 15}
 ---
 ## Observations {#immigration-against-the-long-run--observations-people}
 
@@ -3157,7 +3209,7 @@ figures:
 
 813,000 people moved to the UK for a year or more in 2025, well below the 2023 peak but still higher than every year in the series before 2018. [1](#source-immigration-against-the-long-run-1) [46](#source-immigration-against-the-long-run-46)
 
-### From 2021 to 2024, arrivals ran far above net migration {#immigration-against-the-long-run--four-years-gross-and-net}
+### Net migration added about 2.5 million people from 2021 to 2024 {#immigration-against-the-long-run--four-years-gross-and-net}
 
 The gap between the lines is the people who left. Adding the chart's values for 2021 to 2024 gives about 4.8 million long-term arrivals and about 2.5 million net migration. [46](#source-immigration-against-the-long-run-46) [22](#source-immigration-against-the-long-run-22)
 
@@ -3176,6 +3228,14 @@ Immigration and net migration both fell in 2020, then rose sharply in 2021. [46]
 ### 2025: the latest fall came from fewer arrivals, not more departures {#immigration-against-the-long-run--latest-fall}
 
 Immigration fell from 1,012,000 in 2024 to 813,000 in 2025, while emigration also fell slightly, to 642,000. [46](#source-immigration-against-the-long-run-46)
+
+### Immigration from 2021 to 2024 was above every earlier year in the record {#immigration-against-the-long-run--record-immigration-2021-to-2024}
+
+Each of the four years from 2021 to 2024 is higher than any year from 1964, where this record starts, to 2020. [46](#source-immigration-against-the-long-run-46)
+
+### Since the 2010 pledge, net migration has fallen below 100,000 only in 2020, during Covid {#immigration-against-the-long-run--tens-of-thousands-met-only-in-covid}
+
+From 1998 until 2020, net migration never fell below 100,000 in any rolling year. It did so only in the years ending September and December 2020, when pandemic travel restrictions were in place, and it rose sharply after them. [46](#source-immigration-against-the-long-run-46) [38](#source-immigration-against-the-long-run-38) [21](#source-immigration-against-the-long-run-21)
 
 ## Subtleties {#immigration-against-the-long-run--subtleties-people}
 
@@ -3251,9 +3311,17 @@ By the end of 2025 asylum was level with work and behind only study. Its line ha
 
 In the year to December 2025 net migration was negative 136,000 for British nationals and negative 42,000 for EU+ nationals. [22](#source-immigration-against-the-long-run-22) [12](#source-immigration-against-the-long-run-12)
 
+### Net migration peaked at 944,000 in the year to March 2023 {#immigration-against-the-long-run--net-migration-peaked}
+
+Total net migration reached its highest point, 944,000, in the rolling year to March 2023. [1](#source-immigration-against-the-long-run-1)
+
+### British nationals leave on net {#immigration-against-the-long-run--british-net-emigration}
+
+British nationals' net migration is below zero in every period shown, and was negative 136,000 in the year to December 2025. [22](#source-immigration-against-the-long-run-22) [12](#source-immigration-against-the-long-run-12)
+
 ## Subtleties {#immigration-against-the-long-run--subtleties-net-by-route}
 
-### Late 2023–2024: recruitment slowed and visa rules tightened {#immigration-against-the-long-run--why-immigration-fell}
+### Late 2023–2024: net migration for work and study fell as visa rules tightened {#immigration-against-the-long-run--why-immigration-fell}
 
 Work visas began falling in late 2023, especially in care. The Home Office says closer scrutiny of employers and enforcement against non-compliance likely contributed to the initial decline, which began before the 2024 rule changes. [7](#source-immigration-against-the-long-run-7) Restrictions on bringing family members for care workers and most international students then helped reduce arrivals. [6](#source-immigration-against-the-long-run-6)
 
@@ -3347,9 +3415,13 @@ ONS now assumes long-term net migration of 230,000 a year, down from 340,000 in 
 
 ## Observations {#immigration-against-the-long-run--observations-old-age-ratio}
 
-### Every assumption ages the population; migration changes how fast {#immigration-against-the-long-run--migration-slows-ageing-but-does-not-stop-it}
+### The population ages fastest with zero net migration, and more slowly the higher migration is {#immigration-against-the-long-run--migration-slows-ageing-but-does-not-stop-it}
 
 On this chart's fixed-age measure there were about 302 people aged 65 and over per 1,000 aged 16 to 64 in 2024. By 2074 the projected ratio reaches about 457 with high migration, 525 on the principal assumption and 641 with zero net migration. Higher migration slows the rise, by making the population larger, but does not stop it. [52](#source-immigration-against-the-long-run-52) [35](#source-immigration-against-the-long-run-35)
+
+### By 2074 the old-age ratio is 641 with zero net migration and 525 on the main projection {#immigration-against-the-long-run--old-age-ratio-2074}
+
+Both lines start at about 302 people aged 65 and over per 1,000 aged 16 to 64 in 2024. By 2074 the zero net migration line reaches 641 and the principal assumption 525. [52](#source-immigration-against-the-long-run-52) [35](#source-immigration-against-the-long-run-35)
 
 ## Subtleties {#immigration-against-the-long-run--subtleties-old-age-ratio}
 
@@ -3412,18 +3484,17 @@ The comparison starts with non-EU+ foreign nationals. Switching to EU+ or all ar
 
 ## Observations {#immigration-against-the-long-run--observations-pledges}
 
-### "Tens of thousands" was met only during Covid {#immigration-against-the-long-run--tens-of-thousands-met-only-in-covid}
-
-From 1998 until 2020, net migration never fell below 100,000 in any rolling year. It did so only in the years ending September and December 2020, when pandemic travel restrictions were in place, and it rose sharply after them. [46](#source-immigration-against-the-long-run-46) [38](#source-immigration-against-the-long-run-38) [21](#source-immigration-against-the-long-run-21)
-
-### Pledges since 2019 have named a direction, not a number {#immigration-against-the-long-run--later-pledges-unquantified}
+### Conservative and Labour pledges since 2019 have named a direction, not a number {#immigration-against-the-long-run--later-pledges-unquantified}
 
 The 2019 Conservative manifesto replaced the numerical target with a promise that numbers would "come down"; in 2024 the Conservatives proposed a cap and Labour named no number. Of the parties here, only Reform UK has named a level, zero. [40](#source-immigration-against-the-long-run-40) [41](#source-immigration-against-the-long-run-41)
-
-### A majority want lower immigration, but views softened while numbers were high {#immigration-against-the-long-run--public-preferences}
-
-57% wanted immigration reduced in 2025 (41% "a lot" plus 16% "a little"), against 35% who wanted it kept the same or increased. Opposition to immigration fell from the early 2010s to the early 2020s, while net migration stayed above 100,000, and has risen again since 2022; attitudes in 2025 were still less negative than before the early 2010s. [42](#source-immigration-against-the-long-run-42) [43](#source-immigration-against-the-long-run-43)
 
 ## More {#immigration-against-the-long-run--more-pledges}
 
 Public preferences, latest reading: in the Ipsos and British Future tracker (fieldwork June to July 2025), 41% wanted immigration reduced "a lot", 16% reduced a little, 21% kept the same and 15% increased. [42](#source-immigration-against-the-long-run-42) Immigration's salience as an issue was below 5% in 1994, peaked at 56% in September 2015, fell to around 5% in 2020 and reached 51% in September 2025. [43](#source-immigration-against-the-long-run-43)
+
+## Observations {#immigration-against-the-long-run--observations-immigration-preferences}
+
+### A majority wanted immigration reduced in 2025 {#immigration-against-the-long-run--public-preferences}
+
+57% wanted immigration reduced in 2025 (41% "a lot" plus 16% "a little"), against 35% who wanted it kept the same or increased. Opposition to immigration fell from the early 2010s to the early 2020s, while net migration stayed above 100,000, and has risen again since 2022; attitudes in 2025 were still less negative than before the early 2010s. [42](#source-immigration-against-the-long-run-42) [43](#source-immigration-against-the-long-run-43)
+

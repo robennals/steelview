@@ -1733,6 +1733,11 @@ additionalSeries:
       minus Albanian nationals, including people whose nationality is not yet recorded.
       Monthly figures for late 2022, which this quarterly dataset cannot show, are
       quoted in Observations from the Migration Observatory.
+  events:
+  - period: '2022-12'
+    label: UK–Albania returns agreement signed
+    note: Signed on 13 December 2022, in the last month of this point's quarter.
+    source: 31
   breaks:
   - period: 2022-09
     label: 2022 Q3 small-boat total from caseworking systems
@@ -1975,10 +1980,73 @@ dataStillNeeded:
     Frontex's downloadable monthly file covers routes into the EU but not Channel
     exit attempts (arrivals plus people stopped), which appear in its press releases;
     a dataset would allow the UK route to be charted on the same basis as the EU routes.
+figures:
+- kind: series
+- kind: series
+  id: nationality
+- kind: series
+  id: routes
+- kind: series
+  id: monthly
+- kind: series
+  id: europe
+- kind: series
+  id: weather
+- kind: series
+  id: preventions
+- kind: series
+  id: albania
+- kind: dataTable
+  id: albania-what-changed
+  title: What changed for Albanian small-boat arrivals around the 2022 returns deal
+  description: The fall in Albanian arrivals in late 2022, the returns deal, and what happened to Albanian claims and returns.
+  caption: One card per change
+  layout: cards
+  leadColumn: says
+  columns:
+    - { key: change, label: Change, rowHeader: true }
+    - { key: says, label: What the source says, sortable: false }
+  rows:
+    - change: Arrivals before the deal
+      says: { value: 'Around 9,000 in July to September 2022, around 1,000 in October and 166 in November; the deal was announced in December.', sources: [30] }
+    - change: Returns deal
+      says: { value: 'Signed on 13 December 2022. The Migration Observatory says it "could be a major driver of continuing low numbers".', sources: [30, 31] }
+    - change: Claim processing
+      says: { value: 'The government "prioritised the processing of Albanian asylum applications after arrivals spiked in 2022".', sources: [33] }
+    - change: Initial decisions
+      says: { value: 'Almost half were positive in 2021 and 2022; this "fell to just 3% in 2024".', sources: [34] }
+    - change: Returns
+      says: { value: '"overall returns to the country increased sharply following the signing of a returns agreement".', sources: [33] }
+- kind: comparison
+  id: europe-change
+observationMarks:
+  crossings-since-2018: {lines: ["Whole year (2026: to 22 October)"], from: "2018", to: "2026"}
+  albanian-arrivals-have-stayed-low: {lines: ["Albanian nationals"], from: "2023-03", to: "2026-06"}
+  albanian-arrivals-collapsed-before-the-deal: {rows: ["Arrivals before the deal", "Returns deal"]}
+  arrivals-fell-sharply-in-2026: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  the-uk-fall-is-within-the-european-range: {rows: ["UK: Channel small-boat arrivals", "All EU external borders"]}
+  the-peak-year-was-2022: {lines: ["Whole year (2026: to 22 October)"], from: "2021", to: "2025", at: "2022"}
+  what-caused-the-2026-fall-is-not-settled: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  fewer-boats-more-people-in-each: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
+  a-few-nationalities-make-up-most-arrivals: {lines: ["Iran", "Afghanistan", "Iraq", "Eritrea", "Albania", "Syria"]}
+  the-mix-has-shifted: {lines: ["Eritrea", "Sudan", "Somalia", "Syria"], from: "2024", to: "2025"}
+  boats-did-not-simply-replace-lorries: {lines: ["Small boats", "Detected inside the UK (often lorries or ferries)"]}
+  before-2018-the-figures-are-attempts-stopped-in-france: {whole: true}
+  crossings-are-seasonal: {lines: ["Arrivals"], from: "2025-01", to: "2026-09"}
+  crossings-into-the-eu-have-also-fallen: {lines: ["January to August"], from: "2024", to: "2026"}
+  weather-explains-little-of-the-2026-fall: {lines: ["Red days"], at: "2026"}
+  french-preventions-fell-in-step-with-arrivals: {lines: ["Arrived in the UK", "Stopped by French authorities"], from: "2025-01", to: "2026-10"}
+  interceptions-at-sea-are-not-counted: {lines: ["Stopped by French authorities"]}
+  compare-the-same-months-of-each-year: {lines: ["1 January to 22 October"]}
+  detected-arrivals-are-not-every-entry: {whole: true}
+  deal-could-be-a-major-driver: {rows: ["Returns deal"]}
+  albanian-claims-prioritised: {rows: ["Claim processing"]}
+  albanian-claims-nearly-all-refused: {rows: ["Initial decisions"]}
+  returns-to-albania-rose: {rows: ["Returns"]}
 ---
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-arrivals}
 
-### About 193,000 people crossed from 2018 to 2025 {#channel-crossings-and-irregular-arrivals--crossings-since-2018}
+### More than two hundred thousand people have crossed since 2018 {#channel-crossings-and-irregular-arrivals--crossings-since-2018}
 
 The Migration Observatory counts around 193,000 people detected reaching the UK in small boats from 2018 to the end of 2025. [1](#source-channel-crossings-and-irregular-arrivals-1) Adding the 16,300 who arrived in 2026 up to 9 September takes the total past two hundred thousand. [3](#source-channel-crossings-and-irregular-arrivals-3) Crossings were small until 2020: 10,608 across 2018–2020 together. [2](#source-channel-crossings-and-irregular-arrivals-2)
 
@@ -2053,7 +2121,7 @@ Frontex recorded just over 91 000 irregular crossings into the EU in January–S
 
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-europe-change}
 
-### The UK's fall is within the range of European routes {#channel-crossings-and-irregular-arrivals--the-uk-fall-is-within-the-european-range}
+### The UK's 2026 fall came during a wider European fall {#channel-crossings-and-irregular-arrivals--the-uk-fall-is-within-the-european-range}
 
 Over January–August, the UK's fall was larger than the EU total's and smaller than the falls on the Central Mediterranean, Western African and eastern land-border routes. Frontex's January–September release gives the Central Mediterranean down 56% and the Western African route down 45%. The Western Mediterranean rose 26%. [20](#source-channel-crossings-and-irregular-arrivals-20) The comparison shows that the UK's fall happened during a wider European one. It cannot show whether the two share a cause.
 
@@ -2075,10 +2143,28 @@ France changed its maritime law to allow boats to be intercepted at sea in limit
 
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-albania-people}
 
+### Albanian arrivals have stayed low since 2023 {#channel-crossings-and-irregular-arrivals--albanian-arrivals-have-stayed-low}
+
+Albanian arrivals have stayed under a thousand a year since 2023, while arrivals from other countries recovered. Several things changed together after 2022, and the Migration Observatory says the deal "could be a major driver" of the continuing low numbers. [30](#source-channel-crossings-and-irregular-arrivals-30) The government prioritised Albanian asylum cases, and returns to Albania rose sharply. Albania accounts for 76% of all small-boat returns. [33](#source-channel-crossings-and-irregular-arrivals-33) The share of Albanian claims granted at first decision fell from almost half in 2021–2022 to 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34) No source separates the effect of the deal from faster processing, more refusals and more returns.
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-albania-what-changed}
+
 ### Albanian arrivals collapsed before the returns deal {#channel-crossings-and-irregular-arrivals--albanian-arrivals-collapsed-before-the-deal}
 
 The UK and Albania signed their returns agreement on 13 December 2022. Albania already accepted removals from the UK before then. [31](#source-channel-crossings-and-irregular-arrivals-31) Albanian arrivals had already fallen: from around 9,000 in July–September 2022 to around 1,000 in October, 166 in November and 28 in December. [30](#source-channel-crossings-and-irregular-arrivals-30) The fall was specific to Albanians: arrivals of other nationalities rose in the last quarter of 2022. [32](#source-channel-crossings-and-irregular-arrivals-32) The deal therefore cannot explain the initial collapse.
 
-### Albanian arrivals have stayed low since {#channel-crossings-and-irregular-arrivals--albanian-arrivals-have-stayed-low}
+### The Migration Observatory says the deal could be a major driver of the continuing low numbers {#channel-crossings-and-irregular-arrivals--deal-could-be-a-major-driver}
 
-Albanian arrivals have stayed under a thousand a year since 2023, while arrivals from other countries recovered. Several things changed together after 2022, and the Migration Observatory says the deal "could be a major driver" of the continuing low numbers. [30](#source-channel-crossings-and-irregular-arrivals-30) The government prioritised Albanian asylum cases, and returns to Albania rose sharply. Albania accounts for 76% of all small-boat returns. [33](#source-channel-crossings-and-irregular-arrivals-33) The share of Albanian claims granted at first decision fell from almost half in 2021–2022 to 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34) No source separates the effect of the deal from faster processing, more refusals and more returns.
+The Migration Observatory says the deal "could be a major driver of continuing low numbers of Albanian small boat arrivals", while finding it difficult to attribute the first fall to the deal. [30](#source-channel-crossings-and-irregular-arrivals-30)
+
+### The government prioritised Albanian asylum claims {#channel-crossings-and-irregular-arrivals--albanian-claims-prioritised}
+
+The government prioritised the processing of Albanian asylum applications after arrivals spiked in 2022. [33](#source-channel-crossings-and-irregular-arrivals-33)
+
+### Nearly all Albanian claims were refused at first decision by 2024 {#channel-crossings-and-irregular-arrivals--albanian-claims-nearly-all-refused}
+
+Almost half of initial decisions on Albanian claims were positive in 2021 and 2022, and just 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34)
+
+### Returns to Albania rose sharply {#channel-crossings-and-irregular-arrivals--returns-to-albania-rose}
+
+Overall returns to Albania increased sharply following the returns agreement, and 76% of all returns of small-boat arrivals have been to Albania. [33](#source-channel-crossings-and-irregular-arrivals-33)

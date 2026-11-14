@@ -256,6 +256,66 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   await expect(explore).toBeFocused();
 });
 
+test('a claim about another chart is underlined, and opens that chart in its panel', async ({ page }) => {
+  await page.goto(TOPIC);
+  const viewpoint = await openViewpoint(page, 'blame-underinvestment');
+  const claim = viewpoint.locator('.sv-walk__slide').first().locator('.sv-walk__prose a.sv-cite', { hasText: 'Building of homes for social rent' });
+  await expect(claim).toHaveCSS('background-image', /radial-gradient/);
+  await claim.click();
+
+  const sheet = page.locator('dialog[open]');
+  await expect(sheet.locator('.sv-modal__title')).toBeVisible();
+  await expect(page).toHaveURL(new RegExp(`${TOPIC}#immigration-housing-and-public-services--social-rent-building-fell-after-2010$`));
+  await expect(sheet.locator('.sv-walk__tab[aria-current]')).toContainText('home');
+  await expect(sheet.locator('[data-observation="immigration-housing-and-public-services--social-rent-building-fell-after-2010"]')).toBeInViewport();
+
+  await page.keyboard.press('Escape');
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await expect(viewpoint).toHaveAttribute('data-open', 'true');
+  await expect(claim).toBeFocused();
+});
+
+test('a claim opens its observation with the data behind it picked out', async ({ page }) => {
+  await page.goto('/topics/uk-immigration');
+  const viewpoint = await openViewpoint(page, 'economic-cost');
+  const claim = viewpoint.locator('.sv-walk__prose a[data-panel-observation$="--net-migration-is-not-unusual-at-all"]').first();
+  await viewpoint.locator('.sv-walk__outline-step').nth(await viewpoint.locator('.sv-walk__slide').evaluateAll(
+    slides => slides.findIndex(slide => slide.querySelector('a[data-panel-observation$="--net-migration-is-not-unusual-at-all"]')),
+  )).click();
+  await claim.click();
+
+  const sheet = page.locator('dialog[open]');
+  const step = sheet.locator('.sv-walk__step').filter({ has: page.locator('[data-observation$="--net-migration-is-not-unusual-at-all"]') });
+  await expect(step.locator('[data-observation$="--net-migration-is-not-unusual-at-all"]')).toBeVisible();
+  await expect(step.locator('[data-series][data-mark-dimmed]').first()).toBeAttached();
+  await expect(step.locator('[data-series="Total net migration"][data-mark-dimmed]')).toHaveCount(0);
+});
+
+test('a subtlety opens in its chart\'s panel, selected like an observation', async ({ page }) => {
+  await page.goto('/topics/us-iran-war');
+  const viewpoint = await openViewpoint(page, 'nuclear');
+  const claim = viewpoint.locator('.sv-walk__prose a[data-panel-observation$="--sixty-is-not-ninety"]').first();
+  await viewpoint.locator('.sv-walk__outline-step').nth(await viewpoint.locator('.sv-walk__slide').evaluateAll(
+    slides => slides.findIndex(slide => slide.querySelector('a[data-panel-observation$="--sixty-is-not-ninety"]')),
+  )).click();
+  await claim.click();
+  await expect(page.locator('dialog[open] [data-observation$="--sixty-is-not-ninety"]')).toBeVisible();
+});
+
+test('opening a claim brings its picked row into view on a long timeline', async ({ page }) => {
+  await page.goto('/topics/us-iran-war');
+  const row = page.locator('.sv-row--viewpoint').filter({ has: page.locator('a[data-panel-observation$="--verification-stopped"]') }).first();
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const claim = row.locator('.sv-walk__prose a[data-panel-observation$="--verification-stopped"]').first();
+  await row.locator('.sv-walk__outline-step').nth(await row.locator('.sv-walk__slide').evaluateAll(
+    slides => slides.findIndex(slide => slide.querySelector('a[data-panel-observation$="--verification-stopped"]')),
+  )).click();
+  await claim.click();
+  const step = page.locator('dialog[open] .sv-walk__step').filter({ has: page.locator('[data-observation$="--verification-stopped"]') });
+  await expect(step.locator('[data-row][data-mark-picked]').first()).toBeInViewport();
+  await expect(step.locator('.sv-observe').first()).toBeInViewport();
+});
+
 test('clicking a viewpoint step\'s chart opens the panel too, title included', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = await openViewpoint(page, 'open-and-build');
@@ -443,8 +503,11 @@ test('the whole observation bubble opens and closes, shows it can, and leaves it
     return { backgroundColor, boxShadow };
   });
   const resting = await look();
-  await bubble.hover();
-  await expect.poll(async () => (await look()).boxShadow).not.toBe(resting.boxShadow);
+  // Hovered again if the row, still settling, moves the bubble from under the mouse.
+  await expect(async () => {
+    await bubble.hover();
+    expect((await look()).boxShadow).not.toBe(resting.boxShadow);
+  }).toPass();
   expect((await look()).backgroundColor).toBe(resting.backgroundColor);
 
   // The chart's scrolling clips at the slide's edges, which must leave the shadow room.
@@ -491,8 +554,10 @@ test('an observation on a comparison picks out its rows, and keeps them when the
   const row = await openDataRow(page, longRun);
   const tab = row.locator('.sv-walk__tab').filter({ hasText: 'Arrivals per head by nationality' }).first();
   await tab.click();
-  const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls)').first();
+  const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls):has([data-row="Malta"])').first();
   await expect(step.locator('.sv-comparison__rows')).toBeVisible();
+  // A far chart is a long slide away, and its controls move until it lands.
+  await expect.poll(() => step.evaluate(el => Math.abs(el.getBoundingClientRect().left - el.parentElement!.getBoundingClientRect().left))).toBeLessThan(2);
   await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
   await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
   await step.locator('.sv-comparison-controls button').first().click();

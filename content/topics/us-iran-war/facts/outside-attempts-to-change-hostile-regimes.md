@@ -587,7 +587,7 @@ figures:
       periods:
       - {from: '1983', to: '1991', category: explore, label: Explore}
     events:
-    - {period: '1991', label: Iraq forced to give up its programme after the Gulf War, source: 10}
+    - {period: '1991', label: 'Iraq forced to give up its programme after the Gulf War and "submit to an intensive verification regime"', source: 10}
     - {period: '2003', label: Libya abandons its programmes and allows inspections, source: 10}
     - {period: '2007-09-06', label: Israel destroys Syria's Al-Kibar facility, source: 10}
     - {period: '2015', label: Iran accepts the nuclear deal's limits, source: 10}
@@ -640,10 +640,21 @@ figures:
       - { study: "Downes, Catastrophic Success (2021)", cases: "120 imposed regime changes, 1816–2008", success: "No success score; outcomes are civil war within ten years, violent removal of the installed leader, later disputes, UN voting", finding: { value: "Civil war risk \"more than doubles\"; four and a half times for leadership change", sources: [1] } }
       - { study: "Downes & Monten (2013)", cases: "70 twentieth-century cases (107 in the dataset, 1816–2003)", success: "The target becomes a democracy", finding: { value: "Only where development, homogeneity and representative experience were favourable", sources: [3, 4] } }
       - { study: "O'Rourke, Covert Regime Change", cases: "64 covert US attempts, 1947–89", success: "The US-backed side takes power", finding: { value: "\"Unsuccessful more than 60 percent of the time\"", sources: [5, 6] } }
-  - kind: "pullQuote"
+  - kind: "dataTable"
     id: "strikes"
+    title: "What Kreps and Fuhrmann found on strikes on nuclear sites (2011)"
     description: "Kreps and Fuhrmann studied 16 attacks on nuclear facilities, 1942–2007, measuring delay to the target's programme."
-    quote: { text: "There is evidence that the peacetime attacks delayed the target's nuclear program, although the size of this effect is rather modest.", speaker: "Kreps and Fuhrmann", context: "Attacking the Atom", date: "2011", source: 8 }
+    caption: "One card per finding"
+    layout: cards
+    leadColumn: finding
+    columns:
+      - { key: "topic", label: "Question", rowHeader: true, sortable: false }
+      - { key: "finding", label: "Finding", sortable: false }
+    rows:
+      - { topic: "Size of the delay", finding: { value: "Peacetime attacks delayed programmes, \"although the size of this effect is rather modest\"", sources: [8] } }
+      - { topic: "When strikes worked", finding: { value: "When the attacker \"struck well before a nuclear threat was imminent\"", sources: [8] } }
+      - { topic: "Wartime strikes", finding: { value: "\"less successful\"", sources: [8] } }
+      - { topic: "Iran, as of 2011", finding: { value: "\"many of the conditions that were conducive to past success are not present in the contemporary Iran case\"", sources: [8] } }
   - kind: "dataTable"
     id: "nonproliferation-pressure"
     title: "Studies of pressure on nuclear programmes and of ceasefires"
@@ -658,7 +669,7 @@ figures:
       - { key: "finding", label: "Main finding", sortable: false }
     rows:
       - { study: "Miller, Stopping the Bomb (2018)", cases: "22 US sanctions episodes after a programme had started", success: "The programme stopped", finding: { value: "Three of 22; the threat of sanctions deterred others from starting", sources: [18] } }
-      - { study: "Mehta, Delaying Doomsday", cases: "All proliferators, plus case studies of India, Iran and North Korea", success: "Nuclear reversal", finding: { value: "Threats plus face-saving rewards, with force \"on the table\"", sources: [19] } }
+      - { study: "Mehta, Delaying Doomsday", cases: "All proliferators, plus case studies of India, Iran and North Korea", success: "Nuclear reversal", finding: { value: "Reversal \"most likely when states are threatened with sanctions and offered face-saving rewards\", with force \"on the table\"", sources: [19] } }
       - { study: "Fortna, Peace Time (2004)", cases: "Ceasefires between states (number not on the page read)", success: "Peace lasts", finding: { value: "\"Strong agreements markedly lessen the risk of further war\"", sources: [24] } }
   - kind: "quoteComparison"
     id: "credibility"
@@ -694,7 +705,36 @@ figures:
       - { study: "Hufbauer, Schott, Elliott & Oegg, Economic Sanctions Reconsidered, 3rd edition", cases: "204 sanctions episodes, WWI–2000", success: "Sanctions \"contributed significantly\" to partial or full success", finding: { value: "\"About one-third\"", sources: [11] } }
       - { study: "TIES (Morgan, Bapat & Kobayashi, 2014)", cases: "1,412 threatened or imposed sanctions, 1945–2005", success: "Three definitions (see chart)", finding: { value: "27.2% to 56%", sources: [13] } }
       - { study: "Global Sanctions Data Base (2024)", cases: "1,547 imposed sanctions, 1950–2023", success: "Per objective: total, partial, negotiated, failure, ongoing", finding: { value: "\"30 to 50 percent\" (2021 announcement, definition not stated)", sources: [14, 15] } }
-      - { study: "Horowitz & Reiter (2001)", cases: "53 air-power coercion attempts, 1917–1999", success: "Target complies as demanded", finding: { value: "19 of 53", sources: [16, 17] } }
+      - { study: "Horowitz & Reiter (2001)", cases: "53 air-power coercion attempts, 1917–1999", success: "Target complies as demanded", finding: { value: "19 of 53; \"more likely to work if the target's military vulnerability is higher\"; \"success is less likely when the attacker demands the target change its leadership\"", sources: [16, 17] } }
+observationMarks:
+  air-coercion-about-a-third: {rows: ["Succeeded", "Failed"]}
+  leadership-demands-lower-success: {rows: ["Horowitz & Reiter (2001)"]}
+  predicted-cascades-did-not-happen: {rows: ["Potter & Mukhatzhanova"]}
+  saudi-2018-pledge: {rows: ["Mohammed bin Salman"]}
+  credibility-split: {rows: ["Press", "Weisiger & Yarhi-Milo"]}
+  nonproliferation-sanctions-three-of-22: {rows: ["Miller, Stopping the Bomb (2018)"]}
+  threats-plus-rewards: {rows: ["Mehta, Delaying Doomsday"]}
+  iraq-ended-after-war-and-inspection: {rows: ["Iraq"]}
+  libya-2003-with-inspections: {rows: ["Libya"]}
+  imposed-regime-change-and-civil-war: {rows: ["Downes, Catastrophic Success (2021)"]}
+  democracy-only-in-favourable-conditions: {rows: ["Downes & Monten (2013)"]}
+  sanctions-weak-against-adversaries: {whole: true}
+  strong-ceasefire-agreements-hold: {rows: ["Fortna, Peace Time (2004)"]}
+  acquisition-base-rate: {rows: ["United States", "Russia", "United Kingdom", "France", "China", "Israel", "South Africa", "Pakistan", "India", "North Korea"]}
+  syria-returned-to-exploring: {rows: ["Syria"]}
+  osirak-coding-dispute: {rows: ["Iraq"]}
+  iran-coding: {rows: ["Iran"]}
+  restoration-does-best: {rows: ["Downes, Catastrophic Success (2021)"]}
+  regime-change-and-relations: {rows: ["Downes, Catastrophic Success (2021)"]}
+  covert-attempts-failed: {rows: ["O'Rourke, Covert Regime Change"]}
+  sanctions-success-depends-on-definition: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
+  gsdb-range: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
+  military-vulnerability: {rows: ["Horowitz & Reiter (2001)"]}
+  strikes-delay-modestly: {rows: ["Size of the delay", "Wartime strikes"]}
+  strikes-worked-early: {rows: ["When strikes worked"]}
+  past-success-conditions-absent-for-iran: {rows: ["Iran, as of 2011"]}
+  fit-to-iran: {rows: ["Downes & Monten (2013)"]}
+  no-study-of-containment: {whole: true}
 ---
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-nuclear-programmes}
 
@@ -746,10 +786,6 @@ The Global Sanctions Data Base, the largest set here, scores each imposed sancti
 
 Horowitz and Reiter count 19 successes in 53 attempts from 1917 to 1999. [17](#source-outside-attempts-to-change-hostile-regimes-17) Success was likelier when the target's military was vulnerable; how exposed its civilians were made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
 
-### Demanding a change of leader made bombing less likely to work {#outside-attempts-to-change-hostile-regimes--leadership-demands-lower-success}
-
-"Success is less likely when the attacker demands the target change its leadership." The target's regime type made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
-
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-regime-change}
 
 ### Imposed regime change more than doubles the risk of civil war {#outside-attempts-to-change-hostile-regimes--imposed-regime-change-and-civil-war}
@@ -778,7 +814,11 @@ O'Rourke finds Cold War covert operations "unsuccessful more than 60 percent of 
 
 ### Strikes on nuclear sites have delayed programmes modestly {#outside-attempts-to-change-hostile-regimes--strikes-delay-modestly}
 
-Kreps and Fuhrmann find that peacetime strikes delayed programmes, "although the size of this effect is rather modest", and wartime strikes did less well. [8](#source-outside-attempts-to-change-hostile-regimes-8) Their successes came when the attacker struck "well before a nuclear threat was imminent". [8](#source-outside-attempts-to-change-hostile-regimes-8)
+Kreps and Fuhrmann find that peacetime strikes delayed programmes, "although the size of this effect is rather modest", and wartime strikes did less well. [8](#source-outside-attempts-to-change-hostile-regimes-8)
+
+### Strikes worked best well before a country neared a bomb {#outside-attempts-to-change-hostile-regimes--strikes-worked-early}
+
+Their successes came when the attacker struck "well before a nuclear threat was imminent". [8](#source-outside-attempts-to-change-hostile-regimes-8)
 
 ### The same authors say past-success conditions are absent for Iran {#outside-attempts-to-change-hostile-regimes--past-success-conditions-absent-for-iran}
 
@@ -792,7 +832,7 @@ In Miller's data, once a programme had started, US sanctions succeeded "in only 
 
 Threats worked when "credible" and when the state was "highly dependent on the United States". [18](#source-outside-attempts-to-change-hostile-regimes-18)
 
-### Threats plus face-saving rewards make reversal most likely {#outside-attempts-to-change-hostile-regimes--threats-plus-rewards}
+### Sanctions threats plus face-saving rewards make reversal most likely {#outside-attempts-to-change-hostile-regimes--threats-plus-rewards}
 
 Mehta finds reversal "most likely" when states face sanctions and are offered "face-saving rewards", especially with force "on the table". The summary read gives no figures. [19](#source-outside-attempts-to-change-hostile-regimes-19)
 
@@ -815,6 +855,16 @@ In 2018 Mohammed bin Salman said Saudi Arabia did not want a bomb, "but without 
 ### Past predictions of rapid spread did not come true {#outside-attempts-to-change-hostile-regimes--predicted-cascades-did-not-happen}
 
 Potter and Mukhatzhanova, reviewing the research, describe "past predictions of rapid proliferation" that "failed to materialize". [23](#source-outside-attempts-to-change-hostile-regimes-23) Bleek's record shows ten states with weapons after some 70 years of exploration by 31. [10](#source-outside-attempts-to-change-hostile-regimes-10)
+
+## Observations {#outside-attempts-to-change-hostile-regimes--observations-studies}
+
+### Bombing is more likely to work when the target's military is vulnerable {#outside-attempts-to-change-hostile-regimes--military-vulnerability}
+
+Horowitz and Reiter find coercion "more likely to work if the target's military vulnerability is higher", while civilian vulnerability has "no effect". [16](#source-outside-attempts-to-change-hostile-regimes-16)
+
+### Demanding a change of leader made bombing less likely to work {#outside-attempts-to-change-hostile-regimes--leadership-demands-lower-success}
+
+"Success is less likely when the attacker demands the target change its leadership." The target's regime type made no difference. [16](#source-outside-attempts-to-change-hostile-regimes-16)
 
 ## Subtleties {#outside-attempts-to-change-hostile-regimes--subtleties-studies}
 

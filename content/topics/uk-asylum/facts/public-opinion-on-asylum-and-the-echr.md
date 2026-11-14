@@ -271,6 +271,13 @@ figures:
       - poll: YouGov, August 2025
         question: 'Support "admitting no more new migrants, and requiring large numbers of migrants who came to the UK in recent years to leave"'
         result: { value: Support 45%, sources: [11] }
+observationMarks:
+  remain-has-led-since-2016: {lines: ["Should remain a member", "Should withdraw"], from: "2016", to: "2025-10"}
+  wording-moves-the-answer: {rows: ["Whitestone Insights for the New Conservatives, 2023", "Survey reviewed by The Conversation, 2024"]}
+  conservative-and-reform-voters-lean-to-leaving: {lines: ["Should withdraw"], from: "2025-06", to: "2025-10"}
+  small-boat-removal-splits-the-public: {rows: ["YouGov, September 2023"]}
+  removal-support-targets-small-boat-arrivals: {rows: ["YouGov, August 2025"]}
+  whitestone-54-percent: {rows: ["Whitestone Insights for the New Conservatives, 2023"]}
 ---
 ## Observations {#public-opinion-on-asylum-and-the-echr--observations-echr-membership}
 
@@ -299,6 +306,10 @@ A question that does not name the ECHR but promises to "promptly deport
 illegal migrants" drew 54% support, while offering middle options cut
 outright support for leaving to 16%.
 [7](#source-public-opinion-on-asylum-and-the-echr-7) [6](#source-public-opinion-on-asylum-and-the-echr-6)
+
+### 54% in one 2023 poll backed new British laws enabling prompt deportation of illegal migrants {#public-opinion-on-asylum-and-the-echr--whitestone-54-percent}
+
+Whitestone Insights asked about replacing the European system of human rights laws with British laws that "enable the Government to promptly deport illegal migrants". 54% supported this. The question did not name the ECHR. [7](#source-public-opinion-on-asylum-and-the-echr-7)
 
 ### Removal of small-boat arrivals splits the public {#public-opinion-on-asylum-and-the-echr--small-boat-removal-splits-the-public}
 
