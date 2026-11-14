@@ -11,3 +11,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # Source data files
 
 Copies of the data files behind our sources are in a git-ignored `datasets/` folder in the main checkout, not in this repo. Never commit one. `content/SOURCE-FILES.md` explains how to find and add them.
+
+# Checks before a pull request
+
+Run the checks yourself; do not wait for GitHub CI, which only runs after a merge to `main`.
+
+1. Merge the latest `origin/main` into your branch, so you test what will be merged.
+2. Run `heavy run -- pnpm check`, then `heavy run -- pnpm test:e2e`. The E2E run reuses the build `pnpm check` made.
+3. Paste both results into the pull request description.
+
+If CI fails on `main`, fixing it is a task of its own; it does not block other pull requests.
