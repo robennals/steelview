@@ -549,10 +549,11 @@ additionalSeries:
           - name: Share allowed
             points: [{period: '1980-01', value: 77.4}, {period: '1981-07', value: 5.6}, {period: '1981-10', value: 8.7}, {period: '1985-08', value: 6}, {period: '1989-07', value: 2.5}, {period: '1993-06', value: 3.1}, {period: '1997-05', value: 1.7}, {period: '2001-06', value: 1.2}, {period: '2005-06', value: 0.8}, {period: '2009-06', value: 0.8}, {period: '2013-06', value: 1.2}, {period: '2017-05', value: 0.4}, {period: '2021-06', value: 1.2}, {period: '2024-06', value: 7.5}]
   - id: ihrngo-executions-series
-    title: 'Executions per year in Iran, counted by Iran Human Rights (IHRNGO), 2008–2025'
+    title: 'Executions per year in Iran'
+    subtitle: 'As counted by the group Iran Human Rights (IHRNGO), 2008–2025'
     description: >-
-      Executions IHRNGO confirmed from at least two sources, each year since its
-      first annual report. These are minimums. Presidents' terms and the June
+      Executions counted by the group Iran Human Rights (IHRNGO), 2008–2025.
+      Each was confirmed from at least two sources, so these are minimums. Presidents' terms and the June
       2025 war are marked under the chart.
     periodLabel: 'Calendar year'
     coverage:
@@ -624,6 +625,7 @@ additionalSeries:
         label: 'Executions recorded by IHRNGO'
         unit: count
         valueLabel: 'Executions (minimum)'
+        unitInTitle: true
         lines:
           - name: IHRNGO
             points: [{period: '2008', value: 350}, {period: '2009', value: 402}, {period: '2010', value: 546}, {period: '2011', value: 676}, {period: '2012', value: 580}, {period: '2013', value: 687}, {period: '2014', value: 753}, {period: '2015', value: 972}, {period: '2016', value: 530}, {period: '2017', value: 517}, {period: '2018', value: 273}, {period: '2019', value: 280}, {period: '2020', value: 267}, {period: '2021', value: 333}, {period: '2022', value: 582}, {period: '2023', value: 834}, {period: '2024', value: 975}, {period: '2025', value: 1639}]

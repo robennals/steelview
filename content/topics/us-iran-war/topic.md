@@ -10,7 +10,7 @@ previewCharts:
   - fact: human-and-financial-costs-of-the-war
     chart: us-deaths-earlier-wars
   - fact: iran-nuclear-programme
-    chart: series
+    chart: sixty-percent-stock
   - fact: iran-government-and-its-people
     chart: ihrngo-executions-series
   - fact: decisions-law-and-diplomacy

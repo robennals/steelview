@@ -14,7 +14,7 @@ export const glossary: Record<string, { title: string; definition: string }> = {
   },
   'enriched-uranium': {
     title: 'Enriched Uranium',
-    definition: 'Uranium processed to raise its share of U-235, the form that sustains a nuclear chain reaction. The percentage is that share: weapons typically use about 90%.',
+    definition: 'Uranium processed to raise its share of U-235, the form that sustains a nuclear chain reaction. The percentage is that share. Natural uranium is about 0.7% U-235, so anything above that counts as enriched, however little. Power reactors use about 3–5%; 20% or more is called highly enriched; weapons typically use about 90%. A stock\'s weight usually adds every level together, so most of a large stock can be low-enriched.',
   },
   'strait-of-hormuz': {
     title: 'Strait of Hormuz',
