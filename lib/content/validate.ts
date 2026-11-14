@@ -8,6 +8,7 @@ import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGr
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
+import { headlineFacts } from './rank-facts';
 import { observationGroups } from './walkthrough';
 
 /**
@@ -202,10 +203,13 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
   if (previews.length === 0) return [];
   const errors: string[] = [];
   const seen = new Set<string>();
+  const headline = new Set(headlineFacts(topic.facts).map(f => f.id));
   for (const { fact, chart, reading } of previews) {
     const key = `${fact}/${chart}`;
     const owner = factById.get(fact);
     const target = owner && previewTarget(owner, chart);
+    // A slide opens its chart over the report, in its collection's data panel, which only a headline fact has.
+    if (owner && !headline.has(fact)) errors.push(`topic: preview chart ${key} is on a supporting fact, which has no data panel on the report — preview a chart of the headline fact it supports`);
     if (!target) errors.push(`topic: preview chart ${key} does not resolve to a chart or figure`);
     else if (target.kind === 'figure' && !isPreviewable(target)) {
       errors.push(`topic: preview chart ${key} is a ${target.figure.kind} figure, which has no graph to preview — choose a series, a comparison or a figure of kind ${PREVIEW_FIGURE_KINDS.join(', ')}`);

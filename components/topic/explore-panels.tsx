@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import type { PanelTarget } from '@/lib/content/markdown';
 import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
+import { decodeHash } from './open-details';
 import { Prose } from './prose';
 
 type Explore = {
@@ -34,11 +35,17 @@ const SHEET_ENTRY = 'svExploreSheet';
  * The topic page's data panels, which a viewpoint can open in a sheet. Opening
  * adds a history entry, so Back closes the sheet as it does a fact's.
  *
+ * Arriving at a chart's or observation's address — from a home-page chart, a
+ * shared link or a link on the page — opens it in its sheet over the report.
+ * The address moves off the entry the reader arrived on, onto a new one for
+ * the sheet, so Back closes the sheet onto the report rather than leaving the
+ * page.
+ *
  * The sheet knows its own entry by a mark in its history state, not by the
- * observation in the address: a reader who arrived on that address (a shared
- * link) has it on the entry beneath too, and Back would land on a match.
+ * observation in the address, so a reload of that entry reopens the sheet
+ * without adding another.
  */
-export function ExplorePanels({ children }: { children: ReactNode }) {
+export function ExplorePanels({ panels, children }: { panels: string[]; children: ReactNode }) {
   const [shown, setShown] = useState<PanelTarget | null>(null);
   const [wanted, want] = useState<string | null>(null);
 
@@ -50,10 +57,28 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
   }, []);
 
   const open = useCallback((next: PanelTarget) => {
-    history.pushState({ ...history.state, [SHEET_ENTRY]: next.observation }, '', `#${next.observation}`);
+    // A reload of the sheet's own entry is already its entry.
+    if (history.state?.[SHEET_ENTRY] !== next.observation) {
+      history.pushState({ ...history.state, [SHEET_ENTRY]: next.observation }, '', `#${next.observation}`);
+    }
     setShown(next);
   }, []);
   const leave = useCallback(() => history.back(), []);
+
+  useEffect(() => {
+    const openAddressed = () => {
+      const observation = decodeHash(location.hash.slice(1));
+      const fact = panels.find(id => observation.startsWith(`${id}--`));
+      const selector = `[data-chart-anchor="${CSS.escape(observation)}"], [data-observation="${CSS.escape(observation)}"]`;
+      if (!fact || !document.querySelector(selector)) return;
+      if (history.state?.[SHEET_ENTRY] !== observation) history.replaceState(history.state, '', location.pathname + location.search);
+      open({ fact, observation });
+    };
+    openAddressed();
+    window.addEventListener('hashchange', openAddressed);
+    return () => window.removeEventListener('hashchange', openAddressed);
+  }, [panels, open]);
+
   const explore = useMemo(() => ({ shown, wanted, want, open, leave }), [shown, wanted, open, leave]);
 
   return <ExploreContext.Provider value={explore}>{children}</ExploreContext.Provider>;
@@ -114,19 +139,31 @@ export function ExploreProse({ html, className }: ExploreProseProps) {
 }
 
 /**
- * A viewpoint step's chart, where any click follows the step's "Explore this
- * data", the chart's title included. A legend's definition and the sources row
- * still open.
+ * A viewpoint step's chart column — the chart and its "Explore this data" —
+ * where a click anywhere follows that link, the chart's title included. A
+ * link of its own, a legend's definition and the sources row still do their
+ * own thing. A zoom-in pointer and an expand mark in its corner say a click
+ * shows it larger (globals.css). The mark is decoration: "Explore this data"
+ * is the control a keyboard or screen reader uses.
  */
 export function ExplorableChart({ children }: { children: ReactNode }) {
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.target instanceof Element && event.target.closest('.sv-glossary, .sv-chart__sources')) return;
-    const explore = event.currentTarget.closest('.sv-walk__chart')?.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
+    if (event.target instanceof Element && event.target.closest('a, .sv-glossary, .sv-chart__sources')) return;
+    const explore = event.currentTarget.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
     if (!explore) return;
     event.preventDefault();
     explore.click();
   };
-  return <div className="sv-slide sv-slide--explorable" onClick={onClick}>{children}</div>;
+  return (
+    <div className="sv-walk__chart sv-walk__chart--explorable" onClick={onClick}>
+      <span className="sv-walk__expand" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" />
+        </svg>
+      </span>
+      {children}
+    </div>
+  );
 }
 
 type PanelHostProps = { fact: string; title: string; children: ReactNode };

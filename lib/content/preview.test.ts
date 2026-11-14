@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { listTopicSlugs, loadTopic } from './load';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
-import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews, slideGroup } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, reportChartPath, resolvePreviews, slideGroup } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure } from './types';
 import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, viewpointWalkthrough } from './walkthrough';
@@ -19,6 +19,16 @@ test('resolvePreviews returns the UK slides in authored order, each linked to it
   assert.equal(slides[0].label, slides[0].fact.series!.title);
   assert.equal(slides[0].reading, 'share-of-population');
   assert.equal(slides[0].href, '/topics/uk-immigration/facts/immigration-against-the-long-run#immigration-against-the-long-run--chart-series');
+});
+
+test('a home-page slide leads to its chart on the report, at an address its data panel answers to', async () => {
+  const topic = await loadTopic('uk-immigration');
+  const [slide] = resolvePreviews(topic);
+  const path = reportChartPath(topic.slug, slide);
+  // The slide names a reading, so the address is that reading's, not the series' first.
+  assert.equal(path, '/topics/uk-immigration#immigration-against-the-long-run--chart-share-of-population');
+  const steps = (await renderDataWalkthroughs(topic, headlineFacts(topic.facts))).get(slide.fact.id)!;
+  assert.ok(steps.some(step => step.anchors.includes(path.split('#')[1])));
 });
 
 test('two charts from one fact get distinct labels', async () => {

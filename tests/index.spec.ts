@@ -124,3 +124,27 @@ test.describe('without JavaScript', () => {
     await expect(page).toHaveURL(/\/topics\/us-iran-war$/);
   });
 });
+
+test('a preview chart\'s title opens it over its report, and Back closes it onto the report; the rest of it opens nothing', async ({ page }) => {
+  await page.goto('/');
+  const row = rows(page).filter({ hasText: 'Voting by mail in the US' });
+  await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
+  const carousel = row.locator('.sv-carousel');
+  await carousel.getByRole('button', { name: /^Chart \d+: Who may vote by post/ }).click();
+  const slide = carousel.locator('.sv-carousel__slide').filter({ hasText: 'Who may vote by post' });
+  // A country neither looks clickable nor is.
+  const country = slide.locator('.sv-geo-map__region').first();
+  await expect(country).not.toHaveCSS('cursor', 'pointer');
+  await country.click({ force: true });
+  await expect(page).toHaveURL(/\/$/);
+  await slide.locator('.sv-graph-heading a').click();
+  await expect(page).toHaveURL(/\/topics\/us-vote-by-mail#secret-ballot-and-postal-voting-abroad--chart-idea-postal-voting$/);
+  const sheet = page.locator('dialog.sv-modal[open]');
+  await expect(sheet.locator('.sv-walk__tab[aria-current="step"]')).toContainText('Who may vote by post');
+  // A reload keeps the sheet, and adds no second entry for it.
+  await page.reload();
+  await expect(sheet.locator('.sv-walk__tab[aria-current="step"]')).toContainText('Who may vote by post');
+  await page.goBack();
+  await expect(sheet).toHaveCount(0);
+  await expect(page).toHaveURL(/\/topics\/us-vote-by-mail$/);
+});

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
+import { reportChartPath, resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
 import { topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
@@ -21,7 +21,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
           <div className="sv-slide" key={slide.href}>
-            <SlideChart slide={slide} titleHref={topicPath(topic.slug)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
+            <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
           </div>
         ))}
       </PreviewCarousel>

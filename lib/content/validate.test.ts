@@ -1308,6 +1308,13 @@ test('preview charts: each must resolve to a chart on a fact in the topic', () =
   assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart or figure'), errors.join('\n'));
 });
 
+test('preview charts: each must be on a headline fact, which has a data panel on the report', () => {
+  const t = previewedTopic();
+  t.facts[0].supports = t.facts[1].id;
+  const errors = validateTopic(t);
+  assert.ok(errors.includes('topic: preview chart alpha/shares is on a supporting fact, which has no data panel on the report — preview a chart of the headline fact it supports'), errors.join('\n'));
+});
+
 test('preview charts: the same chart may not be listed twice', () => {
   const t = previewedTopic();
   t.previewCharts = [{ fact: 'alpha', chart: 'shares' }, { fact: 'alpha', chart: 'shares' }];

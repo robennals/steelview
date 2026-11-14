@@ -1,4 +1,4 @@
-import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
+import { componentFigure, factPath, figureLabel, isComponentFigure, topicPath } from './types';
 import type { ComponentFigure, Fact, Series, Topic } from './types';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -96,6 +96,15 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
 export function slideGroup(fact: Fact, { chart, reading }: Pick<PreviewSlide, 'chart' | 'reading'>): string {
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
   return reading ?? series?.readings[0].id ?? chart;
+}
+
+/**
+ * A home-page slide's chart on its topic's report, opened over it in its
+ * collection's data panel (`ExplorePanels`). Every preview chart's collection
+ * has a panel there: `validateTopic` requires it to be a headline fact.
+ */
+export function reportChartPath(slug: string, slide: Pick<PreviewSlide, 'fact' | 'chart' | 'reading'>): string {
+  return `${topicPath(slug)}#${slide.fact.id}--chart-${slideGroup(slide.fact, slide)}`;
 }
 
 /**
