@@ -55,6 +55,8 @@ export type EstimateRangeProps = {
   domain?: [number, number];
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -92,6 +94,7 @@ export function EstimateRange({
   domain,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -206,7 +209,7 @@ export function EstimateRange({
     </div>
   );
 
-  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-estimate-range">{graph}</ReportFigure>;
+  if (preview) return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-estimate-range">{graph}</ReportFigure>;
 
   const hasNote = estimates.some(e => e.note);
   const table = (
@@ -246,7 +249,7 @@ export function EstimateRange({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-estimate-range">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-estimate-range">
       <p className="sv-chart__axis-label">{valueLabel}</p>
       <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
     </ReportFigure>

@@ -193,6 +193,6 @@ export function PreviewFigure({ figure, context, preview }: { figure: ComponentF
     case 'smallMultiples':
       return <SmallMultiples {...smallMultiplesProps(figure, context)} preview={preview} />;
     default:
-      return <ReportFigure id={figureDomId(context.fact, figure.id)} title={'title' in figure ? figure.title : undefined} preview={preview} />;
+      return <ReportFigure id={figureDomId(context.fact, figure.id)} title={'title' in figure ? figure.title : undefined} subtitle={'subtitle' in figure ? figure.subtitle : undefined} preview={preview} />;
   }
 }

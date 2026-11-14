@@ -625,7 +625,7 @@ additionalSeries:
         label: 'Executions recorded by IHRNGO'
         unit: count
         valueLabel: 'Executions (minimum)'
-        unitInTitle: true
+        unitInHeading: true
         lines:
           - name: IHRNGO
             points: [{period: '2008', value: 350}, {period: '2009', value: 402}, {period: '2010', value: 546}, {period: '2011', value: 676}, {period: '2012', value: 580}, {period: '2013', value: 687}, {period: '2014', value: 753}, {period: '2015', value: 972}, {period: '2016', value: 530}, {period: '2017', value: 517}, {period: '2018', value: 273}, {period: '2019', value: 280}, {period: '2020', value: 267}, {period: '2021', value: 333}, {period: '2022', value: 582}, {period: '2023', value: 834}, {period: '2024', value: 975}, {period: '2025', value: 1639}]

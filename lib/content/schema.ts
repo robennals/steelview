@@ -183,10 +183,11 @@ export const seriesReadingSchema = z.object({
   /** The value-axis label — what one unit on the vertical axis means. */
   valueLabel: z.string().min(1),
   /**
-   * The series title already says what the axis counts ("Executions per year
-   * in Iran"), so a preview leaves out the value label. The full chart keeps it.
+   * The series title or subtitle already says what the axis counts
+   * ("Executions per year in Iran"; "Share of ballots by method"), so a preview
+   * leaves out the value label. The full chart keeps it.
    */
-  unitInTitle: z.boolean().optional(),
+  unitInHeading: z.boolean().optional(),
   /**
    * A short unit written after every value on the axis ("kg" makes "500 kg"),
    * so the reader needs no separate label line above the graph to read it.
@@ -393,6 +394,7 @@ const figureBase = {
   id: slugId,
   replaces,
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   /** The visible one-sentence orientation, and the screen-reader description. */
   description: z.string().min(1),
   /** Citations the whole figure rests on. Kinds whose items each cite a source may leave this empty. */

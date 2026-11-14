@@ -150,7 +150,7 @@ test('a series subtitle is drawn under the title, in the full chart and the prev
 
 test('a preview leaves out the value label when the title already says what is counted', () => {
   const plain = oilSeries();
-  const named = { ...plain, readings: plain.readings.map(r => ({ ...r, unitInTitle: true })) };
+  const named = { ...plain, readings: plain.readings.map(r => ({ ...r, unitInHeading: true })) };
   const draw = (series: Series, preview?: { href: string }) => renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, preview }));
   assert.match(draw(plain, { href: '/x' }), /sv-chart__axis-label/);
   assert.doesNotMatch(draw(named, { href: '/x' }), /sv-chart__axis-label/);

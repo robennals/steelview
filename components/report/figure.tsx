@@ -20,6 +20,7 @@ import type { FigurePreview, SourceCredit } from './types';
 export function ReportFigure({
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -32,6 +33,8 @@ export function ReportFigure({
 }: {
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source. Shown with the title everywhere, previews included. */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   /** Method notes, caveats, coverage: shown collapsed under "About this data". */
@@ -55,6 +58,7 @@ export function ReportFigure({
         {title && (
           <figcaption className="sv-chart__caption">
             <h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{title}</a> : title}</h3>
+            {subtitle && <p className="sv-chart__subtitle">{subtitle}</p>}
           </figcaption>
         )}
         {children && <div className="sv-chart__preview">{children}</div>}
@@ -68,6 +72,7 @@ export function ReportFigure({
       <figure className={classes} id={id} data-panel-chart>
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}
+          {subtitle && <p className="sv-chart__subtitle">{subtitle}</p>}
           <ChartAbout description={description}>{noteBody}</ChartAbout>
         </figcaption>
         <ObservationBar />
@@ -81,6 +86,7 @@ export function ReportFigure({
       {(title || description) && (
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}
+          {subtitle && <p className="sv-chart__subtitle">{subtitle}</p>}
           {description && <p className="sv-chart__desc">{description}</p>}
         </figcaption>
       )}

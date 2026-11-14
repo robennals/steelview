@@ -31,6 +31,8 @@ export type CompositionBarProps = {
   rowLabel?: string;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -68,6 +70,7 @@ export function CompositionBar({
   rowLabel = 'Group',
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -137,7 +140,7 @@ export function CompositionBar({
     </>
   );
 
-  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-composition">{graph}</ReportFigure>;
+  if (preview) return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-composition">{graph}</ReportFigure>;
 
   const table = (
     <div className="sv-chart__table-scroll">
@@ -172,7 +175,7 @@ export function CompositionBar({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-composition">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-composition">
       <ChartViewToggle label={title ?? 'Composition'} graph={graph} table={table} />
     </ReportFigure>
   );

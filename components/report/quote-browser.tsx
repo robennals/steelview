@@ -13,6 +13,8 @@ export type QuoteBrowserProps = {
   quotes: Quote[];
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -53,6 +55,7 @@ export function QuoteBrowser({
   quotes,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -98,7 +101,7 @@ export function QuoteBrowser({
   }, [quotes, selectedPositions, selectedTags, selectedSpeakers, query, sort]);
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-quote-browser">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-quote-browser">
       <div className="sv-quote-browser__controls">
         {/* A single position is not a choice, so the filter only appears when there is something to compare. */}
         {positionChoices.length > 1 && (
