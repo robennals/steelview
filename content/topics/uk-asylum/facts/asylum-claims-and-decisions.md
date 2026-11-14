@@ -622,7 +622,8 @@ series:
               value: 82559
 additionalSeries:
   - id: per-head-series
-    title: 'Asylum claims per 1,000 residents, UK and EU, 2014–2025'
+    title: 'Asylum claims per 1,000 residents'
+    subtitle: 'UK, EU27, Germany, France, Spain and Italy, 2014–2025'
     description: >-
       First-time asylum applicants per 1,000 residents in the EU27 as a whole
       and in the four EU countries the Home Office names as receiving the most
@@ -652,6 +653,7 @@ additionalSeries:
         label: Claims per 1,000 residents
         unit: count
         valueLabel: Asylum applicants per 1,000 residents
+        unitInHeading: true
         note: >-
           Derived. EU lines divide Eurostat first-time applicants by Eurostat
           population on 1 January of the same year. The UK line divides Home
@@ -934,7 +936,8 @@ additionalSeries:
               - period: '2025'
                 value: 42.1
   - id: cohort-series
-    title: 'What happened to UK asylum claims, by year of claim, 2007–2025'
+    title: 'What happened to UK asylum claims'
+    subtitle: 'Main applicants by year of claim, 2007–2025, outcomes as at July 2026'
     description: >-
       Each year's claims (main applicants) followed to their latest recorded
       outcome as at July 2026: the grant rate at initial decision and at latest
@@ -1255,7 +1258,8 @@ additionalSeries:
               - period: '2025'
                 value: 9009
   - id: appeals-series
-    title: UK asylum appeals at the First-tier Tribunal, 2007/08–2025/26
+    title: 'Asylum appeals decided and allowed'
+    subtitle: 'First-tier Tribunal, UK, financial years 2007/08 to 2025/26'
     description: >-
       Asylum, protection and revocation-of-protection appeals determined at a
       hearing or on the papers each financial year, and the share allowed.
@@ -1390,10 +1394,11 @@ additionalSeries:
                 value: 14606
 comparisons:
   - id: per-head-2025
-    title: Asylum claims per 1,000 residents across Europe, 2025
+    title: 'Claims per 1,000 residents, by country'
+    subtitle: 'All 31 EU+ countries and the UK, 2025'
     description: >-
-      2025, all 31 EU+ countries and the UK, ranked from highest to lowest.
-      First-time applicants for EU+ countries; people claiming asylum for the
+      Countries ranked from highest to lowest. First-time applicants for EU+
+      countries; people claiming asylum for the
       UK.
     unit: count
     valueLabel: 'Applicants per 1,000 residents'
@@ -1476,9 +1481,11 @@ comparisons:
       Rankings that count all applicants, including repeat applications, put
       the UK lower (see Subtleties).
   - id: count-2025
-    title: Total asylum claims across Europe, 2025
+    title: 'Asylum claims by country'
+    subtitle: 'All 31 EU+ countries and the UK, 2025'
     description: >-
-      2025, all 31 EU+ countries and the UK, ranked from highest to lowest.
+      Countries ranked from highest to lowest: first-time applicants for EU+
+      countries, people claiming asylum for the UK.
     unit: count
     valueLabel: 'First-time applicants (UK: people claiming asylum)'
     sources:
@@ -1555,9 +1562,8 @@ comparisons:
       Office people claiming asylum for the UK. The complete EU+ comparator
       set is kept.
   - id: grant-rate-decomposition
-    title: >-
-      How much of the 2022–2025 fall in the UK grant rate is a change of
-      nationality mix?
+    title: 'Nationality mix and the UK grant rate'
+    subtitle: 'Initial decisions, main applicants, 2022 and 2025, with two what-ifs'
     description: >-
       UK initial grant rate, main applicants: the actual 2022 and 2025 rates,
       and two counterfactuals that hold either the nationality mix or each
@@ -1586,12 +1592,11 @@ comparisons:
       The answer depends on treating each nationality as one group; changes
       in who claims within a nationality show up as within-nationality change.
   - id: recognition-2025
-    title: >-
-      Share of first-instance asylum decisions that were positive across Europe,
-      2025
+    title: 'Asylum grant rates across Europe'
+    subtitle: 'First decisions, all EU+ countries, the EU27 and the UK, 2025'
     description: >-
-      All EU+ countries, the EU27 as a whole and the UK, ranked from highest
-      to lowest. People, including dependants.
+      Countries and the EU27 as a whole, ranked from highest to lowest.
+      People, including dependants.
     unit: percent
     valueLabel: Positive decisions as a share of all first-instance decisions
     domainMax: 100
@@ -1727,7 +1732,8 @@ figures:
     id: count-2025
   - kind: barChart
     id: grant-rate-by-nationality
-    title: UK initial grant rate by nationality, 2022 and 2025
+    title: 'UK grant rate by nationality'
+    subtitle: 'Initial decisions, ten biggest nationalities and Syria, 2022 and 2025'
     description: >-
       Main applicants. The ten nationalities with the most initial decisions
       in 2025, plus Syria, and all nationalities together.
@@ -1761,7 +1767,8 @@ figures:
       decisions.
   - kind: barChart
     id: syrian-grant-rate-years
-    title: Syrian initial grant rate, years to June 2025 and June 2026
+    title: 'Syrian grant rate in the UK'
+    subtitle: 'Initial decisions, years to June 2025 and June 2026'
     description: Share of Syrian nationals' initial asylum decisions that were grants, in two rolling years, as the Home Office reports them.
     valueLabel: Share of initial decisions that were grants
     categoryLabel: Year
@@ -1776,7 +1783,8 @@ figures:
     id: grant-rate-decomposition
   - kind: barChart
     id: small-boat-decisions
-    title: Small-boat arrivals since 2018 with an initial asylum decision
+    title: 'Initial decisions on small-boat arrivals'
+    subtitle: 'People arriving since 2018 with a decision, UK, as published July 2026'
     description: People who arrived by small boat since 2018, claimed asylum and had received a substantive initial decision, by that decision, as published in July 2026.
     valueLabel: People
     categoryLabel: Initial decision
@@ -1788,9 +1796,8 @@ figures:
       - { label: Refused, value: 53305 }
   - kind: compositionBar
     id: small-boat-outcomes
-    title: >-
-      Initial outcomes of UK small-boat arrivals' asylum claims, by year of
-      arrival
+    title: 'Outcomes of small-boat claims by year'
+    subtitle: 'Initial outcome, UK, by year of arrival, as recorded in mid-2026'
     description: >-
       People (main applicants and dependants) who arrived by small boat in each
       year and claimed asylum, by initial outcome as recorded in mid-2026. Each
@@ -1824,7 +1831,8 @@ figures:
     id: recognition-2025
   - kind: barChart
     id: recognition-by-nationality
-    title: UK and EU27 first-instance grant rates for the same nationalities, 2025
+    title: 'UK and EU27 grant rates by nationality'
+    subtitle: 'Top UK nationalities and Syria, first decisions, 2025'
     description: >-
       For the nationalities with the most UK initial decisions in 2025, plus
       Syria: the share of first-instance decisions that were positive in the

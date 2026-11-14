@@ -572,7 +572,8 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: People waiting for a UK asylum decision or appeal, 2015-2026
+  title: 'Waiting for an asylum decision or appeal'
+  subtitle: 'Initial decisions and open tribunal appeals, UK, 2015–2026'
   description: >-
     Quarter-end counts of people waiting for an initial Home Office decision on
     an asylum claim, and of asylum and protection appeals open at the
@@ -832,10 +833,11 @@ series:
               value: 90341
 additionalSeries:
   - id: support-by-accommodation
-    title: 'People on Home Office asylum support, by type, 2014-2026'
+    title: 'People on asylum support'
+    subtitle: 'By type of support, UK, March 2014 to June 2026'
     description: >-
       Quarter-end counts of asylum seekers receiving Home Office support,
-      main applicants and dependants, March 2014 to June 2026. Hotels are
+      main applicants and dependants. Hotels are
       inside the first line throughout; the Home Office has counted them
       separately only since December 2022 (next chart).
     periodLabel: Quarter ending
@@ -1204,7 +1206,8 @@ additionalSeries:
               - period: '2026-06'
                 value: 4204
   - id: hotel-breakdown
-    title: Where people on UK asylum support live, including hotels, 2022-2026
+    title: 'Where people on asylum support live'
+    subtitle: 'By accommodation, including hotels, UK, December 2022 to June 2026'
     description: >-
       Quarter-end counts of people on Home Office asylum support by
       accommodation type, December 2022 (when hotels were first counted
@@ -1371,7 +1374,8 @@ additionalSeries:
                 value: 4204
 comparisons:
   - id: support-spending
-    title: Home Office spending on asylum support, by financial year
+    title: 'Spending on asylum support'
+    subtitle: 'Home Office, by financial year, 2019-20 to 2024-25, in cash'
     description: >-
       Home Office direct spending on asylum support (accommodation, cash
       support, grants to local authorities and related costs), for each year
@@ -1402,7 +1406,8 @@ comparisons:
       resettlement (next chart), so their totals are higher and should not be
       mixed with these.
   - id: system-costs-2024-25
-    title: What asylum cost the Home Office and Ministry of Justice in 2024-25
+    title: 'The cost of the asylum system'
+    subtitle: 'Main areas, Home Office and Ministry of Justice, 2024-25'
     description: >-
       The National Audit Office's estimate of the main areas of spending on the
       asylum system, 2024-25, from actual costs.
@@ -1470,8 +1475,9 @@ figures:
   - kind: series
   - kind: barChart
     id: appeal-clearance-time
-    title: Mean time to clear a First-tier Tribunal immigration appeal, April to June 2026
-    description: Mean weeks taken to clear an appeal at the First-tier Tribunal (Immigration and Asylum Chamber) in April to June 2026, by category.
+    title: 'Time to clear an immigration appeal'
+    subtitle: 'Mean weeks at the First-tier Tribunal, by category, April to June 2026'
+    description: Mean weeks taken to clear an appeal at the First-tier Tribunal (Immigration and Asylum Chamber).
     valueLabel: Mean weeks to clear
     categoryLabel: Appeal category
     format: { unit: number, decimals: 0 }
@@ -1490,7 +1496,8 @@ figures:
     id: support-spending
   - kind: compositionBar
     id: asylum-budget-line
-    title: The asylum budget line within the Home Office's day-to-day budget
+    title: 'Asylum in the Home Office budget'
+    subtitle: 'Day-to-day spending, 2022-23 to 2028-29, in cash; later years are plans'
     description: >-
       Home Office Resource DEL outturn, 2022-23 to 2025-26, and plans to
       2028-29, split into the asylum business group and everything else, in
@@ -1529,8 +1536,8 @@ figures:
     id: system-costs-2024-25
   - kind: barChart
     id: hotels-share-of-people-and-cost
-    title: >-
-      Hotels' share of people and of cost in UK asylum accommodation, 2024-25
+    title: 'Hotels'' share of people and cost'
+    subtitle: 'UK asylum accommodation, first seven months of 2024-25'
     description: >-
       People in hotels as a share of everyone in Home Office asylum
       accommodation, against hotels' share of the accommodation contracts'
@@ -1551,7 +1558,8 @@ figures:
       shares will differ.
   - kind: dataTable
     id: large-sites
-    title: Large sites used or proposed for UK asylum accommodation, 2026
+    title: 'Large asylum accommodation sites'
+    subtitle: 'Former military and other sites used or proposed, UK, 2026'
     description: Former military and other large sites used, or proposed, for asylum accommodation, as described in the sources cited.
     caption: One row per site
     columns:

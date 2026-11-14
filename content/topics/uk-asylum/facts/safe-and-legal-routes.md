@@ -489,7 +489,8 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: 'People offered a safe and legal route from outside the UK, 2010-2025'
+  title: 'People offered a safe and legal route'
+  subtitle: 'Granted from outside the UK, by route, 2010–2025'
   description: >-
     Out-of-country grants on each UK safe and legal (humanitarian) route in
     each calendar year: Ukraine and BN(O) visas granted, refugee family reunion
@@ -537,6 +538,7 @@ series:
       label: All routes
       unit: count
       valueLabel: People offered a route from outside the UK that year
+      unitInHeading: true
       note: >-
         Excludes in-country extensions to people already in the UK on these
         routes, which Hum_01 adds to its headline total.
@@ -727,6 +729,7 @@ series:
       label: Family reunion and resettlement only
       unit: count
       valueLabel: People offered a route from outside the UK that year
+      unitInHeading: true
       source:
         stance: supports
         quote: >-
@@ -845,7 +848,8 @@ series:
               value: 6
 additionalSeries:
   - id: boats-and-routes
-    title: UK small-boat arrivals and safe-route grants, 2018-2025
+    title: 'Small-boat arrivals and safe-route grants'
+    subtitle: 'People each year, all nationalities, UK, 2018–2025'
     description: >-
       People detected arriving by small boat each calendar year, against
       people offered a safe and legal route from outside the UK in the same
@@ -936,7 +940,8 @@ figures:
     id: boats-and-routes
   - kind: compositionBar
     id: routes-by-nationality
-    title: How each nationality came to the UK, January 2018 to June 2026
+    title: 'How each nationality came to the UK'
+    subtitle: 'By small boat or a safe route, January 2018 to June 2026'
     description: >-
       People of each nationality who arrived by small boat or were offered a
       safe and legal route from outside the UK, 2018 Q1 to 2026 Q2, the whole
@@ -984,10 +989,12 @@ figures:
       since each scheme opened.
   - kind: compositionBar
     id: routes-by-nationality-latest
-    title: How each nationality came to the UK, year to June 2026
+    title: 'How each nationality came, latest year'
+    subtitle: 'By small boat or a safe route, UK, year to June 2026'
     description: >-
-      The same nationalities and routes for the year ending June 2026, the
-      year in which family reunion was paused, on 4 September 2025.
+      People of each nationality who arrived by small boat or were offered a
+      safe and legal route from outside the UK, in the year ending June 2026,
+      the year in which family reunion was paused, on 4 September 2025.
       Each bar is one nationality's own total, printed beside it, so compare
       shares across bars, not sizes. Ordered by the share who came by boat, with
       the residual last.
@@ -1027,7 +1034,8 @@ figures:
       family reunion visas.
   - kind: timeline
     id: reopening
-    title: UK safe and legal route openings, closures and pauses, 2021–2027
+    title: 'Safe route openings and closures'
+    subtitle: 'UK routes opened, closed or paused, 2021–2027, with plans'
     description: When each safe and legal route opened, closed or was paused, and what is planned next.
     sources: [6, 21, 26]
     categories:
