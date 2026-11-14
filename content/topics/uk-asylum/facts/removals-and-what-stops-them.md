@@ -817,7 +817,6 @@ series:
       label: Returns by type
       unit: count
       valueLabel: Returns recorded that year
-      unitInHeading: true
       lines:
         - name: Enforced returns
           points:

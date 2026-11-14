@@ -245,7 +245,7 @@ sources:
     date: '2024-03-04'
 series:
   title: 'Attacks on US forces in Iraq and Syria'
-  subtitle: 'Confirmed attacks by Iran-aligned militias, Oct 2023 – Dec 2024'
+  subtitle: 'Confirmed attacks a month by Iran-aligned militias, Oct 2023 – Dec 2024'
   description: >-
     Attacks the Washington Institute's Militia Spotlight tracker confirmed and
     gave a serial number, by month. Claimed attacks on Israel are excluded.

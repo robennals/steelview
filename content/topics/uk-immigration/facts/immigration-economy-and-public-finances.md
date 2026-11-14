@@ -519,7 +519,6 @@ series:
     alongside: gdp-total
     unit: count
     valueLabel: £ per person, 2023 prices
-    unitInHeading: true
     lines:
     - name: UK GDP per head
       coverage:
@@ -867,7 +866,6 @@ additionalSeries:
     label: GDP per head, G7
     unit: count
     valueLabel: US$ per person, 2015 prices
-    unitInHeading: true
     lines:
     - name: United Kingdom
       points:

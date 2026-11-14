@@ -970,7 +970,6 @@ additionalSeries:
         label: 'Approve of Trump''s handling'
         unit: percent
         valueLabel: '% who approve'
-        unitInHeading: true
         lines:
           - name: All adults
             points: [{period: '2026-03', value: 37}, {period: '2026-10', value: 33}]

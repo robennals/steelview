@@ -766,7 +766,6 @@ series:
       label: 'States with an ID requirement in force'
       unit: count
       valueLabel: 'States'
-      unitInHeading: true
       note: >-
         Compiled from NCSL pages, one count per year shown: 1950, 1970, 1971,
         1977 and 1980 from the History of Voter ID page (the first five

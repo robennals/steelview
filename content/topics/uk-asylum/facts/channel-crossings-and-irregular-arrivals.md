@@ -646,7 +646,6 @@ additionalSeries:
     label: People
     unit: count
     valueLabel: People detected arriving by small boat
-    unitInHeading: true
     lines:
     - name: Iran
       points:
@@ -911,7 +910,6 @@ additionalSeries:
     label: People
     unit: count
     valueLabel: People detected
-    unitInHeading: true
     lines:
     - name: Small boats
       points:
@@ -1018,7 +1016,6 @@ additionalSeries:
     label: People
     unit: count
     valueLabel: People detected arriving by small boat
-    unitInHeading: true
     lines:
     - name: Arrivals
       points:
@@ -1775,7 +1772,6 @@ additionalSeries:
     label: People
     unit: count
     valueLabel: People detected arriving by small boat
-    unitInHeading: true
     lines:
     - name: Albanian nationals
       points:

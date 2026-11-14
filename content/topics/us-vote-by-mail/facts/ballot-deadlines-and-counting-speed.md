@@ -344,7 +344,6 @@ series:
       label: 'Number of states'
       unit: count
       valueLabel: 'States'
-      unitInHeading: true
       lines:
         - name: 'Count ballots arriving after Election Day'
           points: [{period: '2016-11', value: 13}, {period: '2020-01', value: 15}, {period: '2020-11', value: 21}, {period: '2022-11', value: 19}, {period: '2024-11', value: 18}, {period: '2026-11', value: 15}]

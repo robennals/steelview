@@ -538,7 +538,6 @@ series:
       label: All routes
       unit: count
       valueLabel: People offered a route from outside the UK that year
-      unitInHeading: true
       note: >-
         Excludes in-country extensions to people already in the UK on these
         routes, which Hum_01 adds to its headline total.
@@ -729,7 +728,6 @@ series:
       label: Family reunion and resettlement only
       unit: count
       valueLabel: People offered a route from outside the UK that year
-      unitInHeading: true
       source:
         stance: supports
         quote: >-

@@ -180,14 +180,12 @@ export const seriesReadingSchema = z.object({
   label: z.string().min(1),
   /** `count` formats 1,441,000 and 1.4m; `percent` formats 2.10%. */
   unit: z.enum(['count', 'percent']),
-  /** The value-axis label — what one unit on the vertical axis means. */
-  valueLabel: z.string().min(1),
   /**
-   * The series title or subtitle already says what the axis counts
-   * ("Executions per year in Iran"; "Share of ballots by method"), so a preview
-   * leaves out the value label. The full chart keeps it.
+   * Exactly what one unit on the vertical axis counts. No line on the chart
+   * shows it: the title, subtitle or tickUnit must make the unit clear, and a
+   * data panel's More says this in full.
    */
-  unitInHeading: z.boolean().optional(),
+  valueLabel: z.string().min(1),
   /**
    * A short unit written after every value on the axis ("kg" makes "500 kg"),
    * so the reader needs no separate label line above the graph to read it.

@@ -95,8 +95,7 @@ export function BarChart({
   }
 
   return (
-    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
-      <p className="sv-chart__axis-label">{valueLabel}</p>
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} measure={valueLabel} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
       {items.length === 0 ? (
         <p className="sv-report__empty">No values to show.</p>
       ) : (

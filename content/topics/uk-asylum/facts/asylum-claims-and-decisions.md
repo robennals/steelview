@@ -514,7 +514,6 @@ series:
       label: People claiming asylum
       unit: count
       valueLabel: People recorded as claiming asylum that year
-      unitInHeading: true
       lines:
         - name: All claimants
           points:
@@ -653,7 +652,6 @@ additionalSeries:
         label: Claims per 1,000 residents
         unit: count
         valueLabel: Asylum applicants per 1,000 residents
-        unitInHeading: true
         note: >-
           Derived. EU lines divide Eurostat first-time applicants by Eurostat
           population on 1 January of the same year. The UK line divides Home
@@ -881,7 +879,6 @@ additionalSeries:
         label: Initial grant rate
         unit: percent
         valueLabel: Share of initial decisions that were grants
-        unitInHeading: true
         lines:
           - name: All nationalities (main applicants)
             points:

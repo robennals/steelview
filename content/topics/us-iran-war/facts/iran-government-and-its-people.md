@@ -490,7 +490,6 @@ series:
       label: 'Turnout, first or only round'
       unit: percent
       valueLabel: '% of eligible voters'
-      unitInHeading: true
       lines:
         - name: Turnout
           points: [{period: '1980-01', value: 67.42}, {period: '1981-07', value: 64.24}, {period: '1981-10', value: 74.26}, {period: '1985-08', value: 54.78}, {period: '1989-07', value: 54.59}, {period: '1993-06', value: 50.66}, {period: '1997-05', value: 79.92}, {period: '2001-06', value: 66.77}, {period: '2005-06', value: 62.84}, {period: '2009-06', value: 85.22}, {period: '2013-06', value: 76.25}, {period: '2017-05', value: 73}, {period: '2021-06', value: 48.8}, {period: '2024-06', value: 40}]
@@ -538,7 +537,6 @@ additionalSeries:
         label: 'Candidates registered and allowed'
         unit: count
         valueLabel: 'Candidates'
-        unitInHeading: true
         lines:
           - name: Registered
             points: [{period: '1980-01', value: 124}, {period: '1981-07', value: 71}, {period: '1981-10', value: 46}, {period: '1985-08', value: 50}, {period: '1989-07', value: 79}, {period: '1993-06', value: 128}, {period: '1997-05', value: 238}, {period: '2001-06', value: 814}, {period: '2005-06', value: 1014}, {period: '2009-06', value: 475}, {period: '2013-06', value: 686}, {period: '2017-05', value: 1636}, {period: '2021-06', value: 592}, {period: '2024-06', value: 80}]
@@ -629,7 +627,6 @@ additionalSeries:
         label: 'Executions recorded by IHRNGO'
         unit: count
         valueLabel: 'Executions (minimum)'
-        unitInHeading: true
         lines:
           - name: IHRNGO
             points: [{period: '2008', value: 350}, {period: '2009', value: 402}, {period: '2010', value: 546}, {period: '2011', value: 676}, {period: '2012', value: 580}, {period: '2013', value: 687}, {period: '2014', value: 753}, {period: '2015', value: 972}, {period: '2016', value: 530}, {period: '2017', value: 517}, {period: '2018', value: 273}, {period: '2019', value: 280}, {period: '2020', value: 267}, {period: '2021', value: 333}, {period: '2022', value: 582}, {period: '2023', value: 834}, {period: '2024', value: 975}, {period: '2025', value: 1639}]
@@ -729,7 +726,6 @@ additionalSeries:
         label: 'All executions'
         unit: count
         valueLabel: 'Executions per month'
-        unitInHeading: true
         lines:
           - name: All executions
             points: [{period: '2025-10', value: 200}, {period: '2025-11', value: 324}, {period: '2025-12', value: 404}, {period: '2026-01', value: 334}, {period: '2026-02', value: 282}, {period: '2026-03', value: 10}, {period: '2026-04', value: 30}, {period: '2026-05', value: 73}, {period: '2026-06', value: 114}, {period: '2026-07', value: 73}, {period: '2026-08', value: 85}, {period: '2026-09', value: 69}, {period: '2026-10', value: 5}]
@@ -737,7 +733,6 @@ additionalSeries:
         label: 'Political and security-related executions'
         unit: count
         valueLabel: 'Executions per month'
-        unitInHeading: true
         lines:
           - name: Political and security-related
             points: [{period: '2025-10', value: 1}, {period: '2025-11', value: 0}, {period: '2025-12', value: 1}, {period: '2026-01', value: 4}, {period: '2026-02', value: 0}, {period: '2026-03', value: 8}, {period: '2026-04', value: 14}, {period: '2026-05', value: 15}, {period: '2026-06', value: 5}, {period: '2026-07', value: 9}, {period: '2026-08', value: 6}, {period: '2026-09', value: 3}, {period: '2026-10', value: 3}]
@@ -776,7 +771,6 @@ additionalSeries:
         label: 'Real GDP growth'
         unit: percent
         valueLabel: '% change on previous year'
-        unitInHeading: true
         lines:
           - name: GDP growth
             points: [{period: '1961', value: 10.4}, {period: '1962', value: 7.9}, {period: '1963', value: 7.0}, {period: '1964', value: 8.5}, {period: '1965', value: 17.0}, {period: '1966', value: 11.5}, {period: '1967', value: 11.3}, {period: '1968', value: 14.4}, {period: '1969', value: 15.5}, {period: '1970', value: 10.9}, {period: '1971', value: 13.7}, {period: '1972', value: 14.5}, {period: '1973', value: 7.4}, {period: '1974', value: 5.8}, {period: '1975', value: -0.3}, {period: '1976', value: 18.3}, {period: '1977', value: -2.8}, {period: '1978', value: -12.8}, {period: '1979', value: -12.0}, {period: '1980', value: -21.6}, {period: '1981', value: -5.7}, {period: '1982', value: 23.2}, {period: '1983', value: 11.1}, {period: '1984', value: -7.1}, {period: '1985', value: 1.9}, {period: '1986', value: -9.8}, {period: '1987', value: -0.2}, {period: '1988', value: -6.1}, {period: '1989', value: 6.1}, {period: '1990', value: 13.6}, {period: '1991', value: 12.7}, {period: '1992', value: 3.3}, {period: '1993', value: -1.5}, {period: '1994', value: -1.7}, {period: '1995', value: 2.4}, {period: '1996', value: 6.4}, {period: '1997', value: 1.4}, {period: '1998', value: 2.1}, {period: '1999', value: 2.0}, {period: '2000', value: 5.8}, {period: '2001', value: 2.4}, {period: '2002', value: 8.1}, {period: '2003', value: 8.6}, {period: '2004', value: 4.3}, {period: '2005', value: 3.2}, {period: '2006', value: 5.0}, {period: '2007', value: 8.2}, {period: '2008', value: 0.3}, {period: '2009', value: 1.0}, {period: '2010', value: 5.8}, {period: '2011', value: 2.6}, {period: '2012', value: -3.7}, {period: '2013', value: -1.5}, {period: '2014', value: 5.0}, {period: '2015', value: -1.4}, {period: '2016', value: 8.8}, {period: '2017', value: 3.0}, {period: '2018', value: -3.7}, {period: '2019', value: -2.4}, {period: '2020', value: 4.4}, {period: '2021', value: 4.1}, {period: '2022', value: 4.4}, {period: '2023', value: 5.3}, {period: '2024', value: 3.7}, {period: '2025', value: -2.8}]
@@ -815,7 +809,6 @@ additionalSeries:
         label: 'Consumer price inflation'
         unit: percent
         valueLabel: '% change on previous year'
-        unitInHeading: true
         lines:
           - name: Inflation
             points: [{period: '1960', value: 9.8}, {period: '1961', value: 3.2}, {period: '1962', value: 0.7}, {period: '1963', value: 0.4}, {period: '1964', value: 3.8}, {period: '1965', value: 2.2}, {period: '1966', value: -0.4}, {period: '1967', value: 1.6}, {period: '1968', value: 0.7}, {period: '1969', value: 3.6}, {period: '1970', value: 1.7}, {period: '1971', value: 4.2}, {period: '1972', value: 6.4}, {period: '1973', value: 9.8}, {period: '1974', value: 14.2}, {period: '1975', value: 12.9}, {period: '1976', value: 11.3}, {period: '1977', value: 27.3}, {period: '1978', value: 11.7}, {period: '1979', value: 10.5}, {period: '1980', value: 20.6}, {period: '1981', value: 24.2}, {period: '1982', value: 18.7}, {period: '1983', value: 19.7}, {period: '1984', value: 12.5}, {period: '1985', value: 4.4}, {period: '1986', value: 18.4}, {period: '1987', value: 28.6}, {period: '1988', value: 28.7}, {period: '1989', value: 22.3}, {period: '1990', value: 7.6}, {period: '1991', value: 17.1}, {period: '1992', value: 25.8}, {period: '1993', value: 21.2}, {period: '1994', value: 31.4}, {period: '1995', value: 49.7}, {period: '1996', value: 28.9}, {period: '1997', value: 17.3}, {period: '1998', value: 17.9}, {period: '1999', value: 20.1}, {period: '2000', value: 14.5}, {period: '2001', value: 11.3}, {period: '2002', value: 14.3}, {period: '2003', value: 16.5}, {period: '2004', value: 14.8}, {period: '2005', value: 13.4}, {period: '2006', value: 10.0}, {period: '2007', value: 17.3}, {period: '2008', value: 25.4}, {period: '2009', value: 13.6}, {period: '2010', value: 10.1}, {period: '2011', value: 26.3}, {period: '2012', value: 27.3}, {period: '2013', value: 36.6}, {period: '2014', value: 16.6}, {period: '2015', value: 12.5}, {period: '2016', value: 7.2}, {period: '2017', value: 8.0}, {period: '2018', value: 18.0}, {period: '2019', value: 39.9}, {period: '2020', value: 30.6}, {period: '2021', value: 43.4}, {period: '2022', value: 43.5}, {period: '2023', value: 44.6}, {period: '2024', value: 32.5}, {period: '2025', value: 42.2}]

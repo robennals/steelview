@@ -21,6 +21,7 @@ export function ReportFigure({
   title,
   subtitle,
   description,
+  measure,
   sources,
   note,
   footer,
@@ -35,6 +36,8 @@ export function ReportFigure({
   /** A short line under the title: the period, cases or source. Shown with the title everywhere, previews included. */
   subtitle?: string;
   description?: ReactNode;
+  /** Exactly what the numbers count. The chart draws no unit line, so it is said with the description. */
+  measure?: string;
   sources?: SourceCredit[];
   /** Method notes, caveats, coverage: shown collapsed under "About this data". */
   note?: ReactNode;
@@ -71,7 +74,7 @@ export function ReportFigure({
       <figure className={classes} id={id} data-panel-chart>
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}
-          <ChartAbout subtitle={subtitle} description={description}>{noteBody}</ChartAbout>
+          <ChartAbout subtitle={subtitle} description={description} measure={measure}>{noteBody}</ChartAbout>
         </figcaption>
         <ObservationBar />
         {children}

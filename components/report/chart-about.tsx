@@ -9,6 +9,8 @@ type ChartAboutProps = {
   /** The chart's subtitle, which is the line shown; the description then waits behind More. */
   subtitle?: string;
   description?: ReactNode;
+  /** Exactly what the numbers count ("US service members killed"), which the chart has no line for. */
+  measure?: string;
   children?: ReactNode;
 };
 
@@ -24,7 +26,7 @@ type ChartAboutProps = {
  *
  * The list is of links, so that without JavaScript it still leads to each.
  */
-export function ChartAbout({ subtitle, description, children }: ChartAboutProps) {
+export function ChartAbout({ subtitle, description, measure, children }: ChartAboutProps) {
   const step = useChartStep();
   const details = useRef<HTMLDetailsElement>(null);
   const [open, setOpen] = useState(false);
@@ -64,7 +66,7 @@ export function ChartAbout({ subtitle, description, children }: ChartAboutProps)
     event.currentTarget.querySelector('summary')?.focus();
   };
 
-  if (!description && !children && !more && !sources && observations.length === 0) {
+  if (!description && !measure && !children && !more && !sources && observations.length === 0) {
     return subtitle ? <p className="sv-chart__subtitle">{subtitle}</p> : null;
   }
 
@@ -83,6 +85,7 @@ export function ChartAbout({ subtitle, description, children }: ChartAboutProps)
       </summary>
       <div className="sv-chart__about-pop">
       {description && <p className="sv-chart__about-desc">{description}</p>}
+      {measure && <p className="sv-chart__about-measure"><span className="sv-chart__about-label">Measured: </span>{measure}</p>}
       {observations.length > 0 && (
         <nav aria-label="On this chart">
           <p className="sv-chart__about-label">On this chart</p>

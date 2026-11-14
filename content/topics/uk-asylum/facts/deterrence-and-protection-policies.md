@@ -894,7 +894,6 @@ additionalSeries:
         label: Cost in A$ million
         unit: count
         valueLabel: Australian dollars, millions (nominal)
-        unitInHeading: true
         lines:
           - name: 'Estimated actual cost'
             points:

@@ -55,14 +55,13 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
       {chart.subtitle && !panel && <p className="sv-chart__subtitle">{chart.subtitle}</p>}
       {!preview && (panel
-        ? <ChartAbout subtitle={chart.subtitle} description={chart.description}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
+        ? <ChartAbout subtitle={chart.subtitle} description={chart.description} measure={chart.valueLabel}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
         : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
     {panel && <ObservationBar />}
     {chart.groups && !preview && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
       {[...chart.groups, allGroupsLabel].map((label, index) => { const value = index === chart.groups!.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
     </fieldset>}
-    {!preview && <p className="sv-chart__axis-label" aria-live="polite">{chart.groups ? `${selected < 0 ? allGroupsLabel : chart.groups[selected]} · ` : ''}{chart.valueLabel}</p>}
     {!preview && hasDetail && <RowDetailHint />}
     {columns ? <RankedColumns items={items} max={max} format={format} />
      : <ol className="sv-comparison__rows" data-dense={preview || chart.items.length > 12 || undefined} data-compact={(preview && items.length > COMPACT_PREVIEW_ITEMS) || undefined} style={{ '--sv-row-count': items.length }}>

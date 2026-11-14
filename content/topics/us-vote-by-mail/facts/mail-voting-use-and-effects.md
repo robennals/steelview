@@ -470,7 +470,6 @@ additionalSeries:
         label: 'Share of counted ballots, by method'
         unit: percent
         valueLabel: '% of turnout'
-        unitInHeading: true
         note: 'Values for 2016–2020 are from the 2020 report, 2022 from the 2022 report and 2024 from the 2024 report.'
         lines:
           - name: By mail
@@ -531,7 +530,6 @@ additionalSeries:
         label: 'Number of states'
         unit: count
         valueLabel: 'States'
-        unitInHeading: true
         lines:
           - name: No-excuse or all-mail
             points: [{period: '2016-11', value: 30}, {period: '2020-01', value: 32}, {period: '2020-11', value: 38}, {period: '2022-11', value: 35}, {period: '2024-11', value: 36}, {period: '2026-11', value: 37}]
@@ -873,7 +871,7 @@ figures:
   - kind: estimateRange
     id: effect-estimates
     title: 'Effects of mail-voting rules'
-    subtitle: 'On turnout and party share, estimates from two studies'
+    subtitle: 'Percentage points of turnout and party share, from two studies'
     description: >-
       Estimates from two studies, in percentage points, against no effect:
       universal mail ballots in California, Utah and Washington counties,

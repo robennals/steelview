@@ -758,7 +758,6 @@ series:
       label: Born outside the UK
       unit: percent
       valueLabel: Share of usual residents born outside the UK
-      unitInHeading: true
       source:
         stance: supports
         quote: >-
@@ -817,7 +816,6 @@ additionalSeries:
         label: Employment rate
         unit: percent
         valueLabel: Share of 16- to 64-year-olds in work
-        unitInHeading: true
         lines:
           - name: All
             points:
@@ -1002,7 +1000,7 @@ additionalSeries:
               - { period: '2022', value: 68 }
   - id: denmark
     title: 'Denmark: net fiscal contribution by origin'
-    subtitle: 'Average per person per year, 2014–2019'
+    subtitle: 'DKK thousand per person per year, 2019 prices, 2014–2019'
     description: >-
       Average yearly taxes paid per person in Denmark minus transfers and public services
       used, for people of different origins. The groups are people of Danish origin, and
@@ -1130,7 +1128,6 @@ additionalSeries:
         label: Entry rate at 18
         unit: percent
         valueLabel: Share of state-school 18-year-olds accepted to higher education
-        unitInHeading: true
         lines:
           - name: Chinese
             points:
@@ -1296,7 +1293,6 @@ additionalSeries:
         label: Share of adults agreeing
         unit: percent
         valueLabel: Share of adults in England
-        unitInHeading: true
         lines:
           - name: People from different backgrounds get on well together
             points:
@@ -1317,7 +1313,7 @@ additionalSeries:
 comparisons:
   - id: fastest-changing-areas
     title: 'Rise in the foreign-born share, by area'
-    subtitle: 'Local areas, England and Wales, 2011 to 2021 Censuses'
+    subtitle: 'Percentage points, local areas, England and Wales, 2011–2021'
     description: >-
       The 20 local areas in England and Wales where the share of residents born outside
       the UK rose most between 2011 and 2021. These are local authorities, compared
@@ -1495,7 +1491,7 @@ comparisons:
         value: 51.4
   - id: netherlands-by-motive
     title: 'Netherlands: fiscal contribution by motive'
-    subtitle: 'Lifetime net contribution per immigrant, by reason for migrating'
+    subtitle: '€ thousand per immigrant over a lifetime, by reason for migrating'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by reason for migrating. The figure is the net contribution over
@@ -1520,7 +1516,7 @@ comparisons:
         value: -475
   - id: netherlands-by-region
     title: 'Netherlands: fiscal contribution by origin'
-    subtitle: 'Lifetime net contribution per immigrant, by region of origin'
+    subtitle: '€ thousand per immigrant over a lifetime, by region of origin'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by region of origin. The figure is the net contribution over the
@@ -1557,7 +1553,7 @@ comparisons:
         value: -600
   - id: norway-by-region
     title: 'Norway: fiscal effect of extra immigrants'
-    subtitle: 'Modelled per immigrant arriving in 2015, by country group'
+    subtitle: 'NOK million per immigrant arriving in 2015, by country group'
     description: >-
       Modelled gain or cost to Norway's public finances per extra immigrant arriving in
       2015, including descendants, by country group. From a Statistics Norway model, the

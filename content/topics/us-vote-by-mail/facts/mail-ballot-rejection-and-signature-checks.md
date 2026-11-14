@@ -735,7 +735,6 @@ series:
       label: Share of returned mail ballots rejected
       unit: percent
       valueLabel: Rejected, % of returned mail ballots
-      unitInHeading: true
       note: >-
         Each point is the national rejection rate printed in that cycle's
         report: 2012 and 2014 as a share of absentee ballots submitted for
@@ -977,7 +976,7 @@ comparisons:
       - {label: Vermont (all-mail), value: 0.2, highlight: true}
   - id: washington-race
     title: 'Washington: rejections by race'
-    subtitle: 'Ballots rejected, by race and ethnicity, 2020 general election'
+    subtitle: 'Share of ballots cast that were rejected, by race and ethnicity, 2020'
     description: >-
       Share of each group's ballots rejected for any reason except lateness,
       with race and ethnicity estimated from surname and address.
@@ -998,7 +997,7 @@ comparisons:
       - {label: White, value: 0.63, highlight: true}
   - id: washington-age
     title: 'Washington: rejections by age'
-    subtitle: 'Ballots rejected, by age group, 2020 general election'
+    subtitle: 'Share of ballots cast that were rejected, by age group, 2020'
     description: >-
       Share of each age group's ballots rejected for any reason except
       lateness.
@@ -1015,7 +1014,7 @@ comparisons:
       - {label: '65 and over', value: 0.17}
   - id: washington-counties
     title: 'Washington: rejections by county'
-    subtitle: 'Ballots rejected in each of 39 counties, 2020 general election'
+    subtitle: 'Share of ballots cast that were rejected, 39 counties, 2020'
     description: >-
       Share of ballots rejected for any reason except lateness, before any
       adjustment for who votes there.

@@ -714,7 +714,6 @@ series:
     label: By route
     unit: count
     valueLabel: Work visas issued in the year
-    unitInHeading: true
     lines:
     - name: All work visas
       points:
@@ -989,7 +988,6 @@ series:
     label: Main applicants and dependants
     unit: count
     valueLabel: Work visas issued in the year
-    unitInHeading: true
     lines:
     - name: Main applicants
       points:
@@ -1127,7 +1125,6 @@ additionalSeries:
     label: Main applicants and dependants
     unit: count
     valueLabel: Visas issued in the quarter
-    unitInHeading: true
     lines:
     - name: Main applicants
       points:
@@ -1281,7 +1278,6 @@ additionalSeries:
     label: By occupation
     unit: count
     valueLabel: Main applicants granted visas in the quarter
-    unitInHeading: true
     lines:
     - name: All sponsored occupations
       points:
@@ -1717,7 +1713,6 @@ additionalSeries:
     alongside: revocation-rate
     unit: count
     valueLabel: Licences revoked in the year
-    unitInHeading: true
     lines:
     - name: Skilled Worker
       points:
@@ -1989,7 +1984,6 @@ additionalSeries:
     label: New joiners by place of education
     unit: count
     valueLabel: People joining the register for the first time
-    unitInHeading: true
     lines:
     - name: Educated in the UK
       points:
@@ -2063,7 +2057,6 @@ additionalSeries:
     label: Non-British share of staff
     unit: percent
     valueLabel: Percentage of staff with known nationality
-    unitInHeading: true
     lines:
     - name: All staff
       points:
@@ -2166,7 +2159,6 @@ additionalSeries:
     label: All claims by entry route
     unit: count
     valueLabel: People claiming asylum in the year
-    unitInHeading: true
     lines:
     - name: Illegal entry routes
       points:
@@ -2226,7 +2218,6 @@ additionalSeries:
     label: Claims by visa held
     unit: count
     valueLabel: People claiming asylum in the year
-    unitInHeading: true
     lines:
     - name: Study
       points:

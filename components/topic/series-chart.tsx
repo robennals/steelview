@@ -595,17 +595,13 @@ function Reading({
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`} data-marker-root="">
-      {intro && !preview && (panel ? <ChartAbout subtitle={series.subtitle} description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
+      {intro && !preview && (panel ? <ChartAbout subtitle={series.subtitle} description={intro} measure={reading.valueLabel}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
       {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
       {!preview && plottedReadings(series).length > 1 && <h3 className={switched ? 'sv-visually-hidden' : 'sv-chart__reading-head'}>{reading.label}</h3>}
       {panel && !switched && <ObservationBar />}
-      {/* A preview keeps the unit, though not the period, unless the title already says it; ticks that carry it need no line at all. */}
-      {!(reading.tickUnit && (!partner || partner.tickUnit)) && !(preview && reading.unitInHeading) && (
-        <p className="sv-chart__axis-label">
-          {partner
-            ? <>Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}{!preview && <>. By {midSentence(series.periodLabel)}</>}</>
-            : preview ? reading.valueLabel : <>{reading.valueLabel}, by {midSentence(series.periodLabel)}</>}
-        </p>
+      {/* Charts carry no unit line, except where two axes need telling apart; ticks that carry both units need none. */}
+      {partner && !(reading.tickUnit && partner.tickUnit) && (
+        <p className="sv-chart__axis-label">Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}</p>
       )}
 
       <p className="sv-visually-hidden" id={descriptionId}>

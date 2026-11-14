@@ -740,7 +740,6 @@ series:
       label: Share of returned mail ballots rejected
       unit: percent
       valueLabel: Rejected, % of returned mail ballots
-      unitInHeading: true
       note: >-
         2016: rejected divided by returned, calculated from the counts in the
         2016 report's Overview Table 2 (its own percentage column divides by
@@ -760,7 +759,7 @@ series:
 additionalSeries:
   - id: georgia-midterm-gap
     title: 'Racial turnout gaps in Georgia'
-    subtitle: 'White turnout minus nonwhite and Black turnout, 2014–2022'
+    subtitle: 'Percentage points, white minus nonwhite and Black turnout, 2014–2022'
     description: >-
       Turnout of white citizens of voting age minus turnout of nonwhite and of
       Black citizens, in percentage points, from the Brennan Center's
@@ -1195,7 +1194,7 @@ figures:
   - kind: estimateRange
     id: turnout-overall
     title: Effect of strict ID laws on turnout
-    subtitle: 'National panel 2008–2018; GAO study of Kansas and Tennessee, 2012'
+    subtitle: 'Percentage points; national panel 2008–2018, and GAO on Kansas and Tennessee'
     description: >-
       The national voter-file panel (all states with strict ID laws, 2008–2018)
       and GAO's two-state study (2012 general election against 2008), in
@@ -1215,7 +1214,7 @@ figures:
   - kind: estimateRange
     id: turnout-by-group
     title: Effect of strict ID laws by group
-    subtitle: "Extra effect on some groups' turnout, and on campaign contact"
+    subtitle: 'Extra effect in percentage points, on some groups and on campaign contact'
 
     description: >-
       How much more (negative) or less (positive) a group's turnout changed

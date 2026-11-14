@@ -249,8 +249,7 @@ export function EstimateRange({
   );
 
   return (
-    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-estimate-range">
-      <p className="sv-chart__axis-label">{valueLabel}</p>
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} measure={valueLabel} sources={sources} note={note} footer={footer} panel={panel} className="sv-estimate-range">
       <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
     </ReportFigure>
   );

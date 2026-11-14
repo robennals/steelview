@@ -1001,7 +1001,6 @@ additionalSeries:
         label: Net migration by route and nationality
         unit: count
         valueLabel: Net long-term migration (arrivals minus departures)
-        unitInHeading: true
         note: >-
           Non-EU+ lines come from Table 4b, by the reason a person originally
           came, so a student who leaves counts against Study. "Ukraine scheme"
@@ -1585,7 +1584,6 @@ additionalSeries:
         label: Components of population change
         unit: count
         valueLabel: Change in UK population over the year to mid-year
-        unitInHeading: true
         note: >-
           ONS publishes these in thousands to one decimal place; they are shown
           here in people. "Net migration and other" is ONS's own category:
@@ -1768,7 +1766,6 @@ additionalSeries:
         label: Projected population
         unit: count
         valueLabel: UK population at mid-year
-        unitInHeading: true
         note: >-
           Sum of every single-year age and both sexes in each file's Population
           sheet. The zero variant also sets migration between the four UK

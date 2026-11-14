@@ -351,7 +351,6 @@ series:
       label: 'Wounded in action'
       unit: count
       valueLabel: 'Service members wounded in the month'
-      unitInHeading: true
       note: 'Sum of the Epic Fury and Overseas Operations monthly "tot_wia" values.'
       lines:
         - name: Wounded in action
@@ -360,7 +359,6 @@ series:
       label: 'Deaths, hostile and non-hostile'
       unit: count
       valueLabel: 'Service members who died in the month'
-      unitInHeading: true
       note: >-
         Hostile deaths are the monthly "tot_kia" column (killed in action and
         died of wounds; it sums to the 7 + 4 hostile deaths in the category
@@ -434,7 +432,7 @@ comparisons:
         value: 4418
   - id: war-costs-for-scale
     title: 'US war costs'
-    subtitle: 'Iran war estimates; Iraq and Afghanistan appropriations, FY2001–14'
+    subtitle: 'US$ billions: Iran war estimates; Iraq and Afghanistan to FY2014'
     description: >-
       The latest Defense Department estimate of the Iran war's cost, beside
       what Congress appropriated for the Iraq and Afghanistan operations over
@@ -467,7 +465,7 @@ comparisons:
         value: 815
   - id: iraq-estimates-vs-appropriations
     title: 'Iraq war: cost estimates and appropriations'
-    subtitle: 'Estimates made in 2002–03, against appropriations through FY2014'
+    subtitle: 'US$ billions: estimates made in 2002–03, against appropriations to FY2014'
     description: >-
       The upper end of each total-cost estimate for the Iraq war, with the
       date it was made, beside the appropriations for Iraq through FY2014.
@@ -576,7 +574,7 @@ figures:
   - kind: estimateRange
     id: cost-estimates
     title: "Estimates of the Iran war's cost"
-    subtitle: Cost to the US military, by estimator and date, April–October 2026
+    subtitle: 'US$ billions to the US military, by estimator, April–October 2026'
     description: Each published estimate of the war's cost to the Defense Department, in the order of the
       date it runs to, with its range where the estimator gave one, and CBO's estimate for each further
       month. Not adjusted for inflation.

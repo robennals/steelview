@@ -625,7 +625,6 @@ series:
       label: Net additional dwellings
       unit: count
       valueLabel: Net additional dwellings in the financial year
-      unitInHeading: true
       lines:
         - name: Net additional dwellings
           points:
@@ -732,7 +731,6 @@ additionalSeries:
         label: Annual change in average private rent
         unit: percent
         valueLabel: Change on the same month a year earlier
-        unitInHeading: true
         lines:
           - name: United Kingdom
             points:
@@ -1030,7 +1028,6 @@ additionalSeries:
         label: Pupils by phase
         unit: count
         valueLabel: Pupils on the January census
-        unitInHeading: true
         lines:
           - name: All state-funded schools
             points:
@@ -1173,7 +1170,6 @@ additionalSeries:
         label: Completions by tenure
         unit: count
         valueLabel: Homes completed or acquired in the financial year
-        unitInHeading: true
         lines:
           - name: All affordable homes
             points:
@@ -1348,7 +1344,6 @@ additionalSeries:
         label: Real funding per pupil, change since 2010-11
         unit: percent
         valueLabel: 'Cumulative change since 2010-11, 2025-26 prices'
-        unitInHeading: true
         lines:
           - name: Funding per pupil
             points:
@@ -1423,7 +1418,6 @@ additionalSeries:
         label: Government investment, % of GDP
         unit: percent
         valueLabel: General government investment as a share of GDP
-        unitInHeading: true
         lines:
           - name: United Kingdom
             points:

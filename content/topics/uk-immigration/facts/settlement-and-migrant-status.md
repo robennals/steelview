@@ -734,7 +734,6 @@ series:
       label: Grants of settlement
       unit: count
       valueLabel: People granted settlement that year
-      unitInHeading: true
       lines:
         - name: All settlement grants
           points:
