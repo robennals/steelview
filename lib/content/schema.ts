@@ -191,6 +191,11 @@ export const seriesReadingSchema = z.object({
    * accept values no quote states.
    */
   valuesFrom: z.string().min(1).optional(),
+  /**
+   * Whether the value axis reaches zero; default true. Set false only when
+   * zero means nothing on this scale, and say why in `note`.
+   */
+  zeroBased: z.boolean().optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 

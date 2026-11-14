@@ -506,9 +506,20 @@ export function windowTicks(
 }
 
 /**
+ * The value axis for the points a plot shows. It reaches zero unless the
+ * reading sets `zeroBased: false`: a line from 22 to 58 on an axis starting
+ * at 20 reads as nearly tripling when it did not.
+ */
+function valueTicksFor(reading: SeriesReading, shown: SeriesPoint[][]): number[] {
+  const values = shown.flatMap((points) => points.map((p) => p.value));
+  if (reading.zeroBased !== false) values.push(0);
+  return niceTicks(Math.min(...values), Math.max(...values));
+}
+
+/**
  * Lay out one reading's plot. With a `window`, the x domain is the window and
  * the y domain is fitted to the values inside it (plus the nearest point
- * either side); the caller clips the lines at the plot edges. Without one,
+ * either side, and zero — see `valueTicksFor`); the caller clips the lines at the plot edges. Without one,
  * the domain is the full published range and a dense line is decimated.
  */
 export function layoutReading(
@@ -523,8 +534,7 @@ export function layoutReading(
   const shown = reading.lines.map((line: SeriesLine) =>
     window ? pointsAround(line.points, window) : thinned(line.points, geometry.plotWidth)
   );
-  const values = shown.flatMap((points) => points.map((p) => p.value));
-  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  const ticks = valueTicksFor(reading, shown);
   const valueMin = ticks[0];
   const valueMax = ticks[ticks.length - 1];
 
@@ -655,8 +665,7 @@ export function layoutContext(
   const geometry = CONTEXT_GEOMETRY[variant];
   const slots = seriesSlots(series);
   const shown = reading.lines.map((line) => thinned(line.points, geometry.plotWidth));
-  const values = shown.flatMap((points) => points.map((p) => p.value));
-  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  const ticks = valueTicksFor(reading, shown);
   const end = axisEnd(series);
   const fromYear = periodToYear(series.coverage.from);
   const toYear = periodToYear(end);
