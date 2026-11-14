@@ -80,6 +80,72 @@ test('a Subtlety\'s address opens its chart at that Subtlety, marked as one', as
   await expect(observation.locator('.sv-observe__body')).toBeVisible();
 });
 
+test('a series\' readings are one chart, whose "Show as" switch follows its observations', async ({ page }) => {
+  const work = 'work-and-study-routes';
+  await page.goto(`${factUrl(work)}#${work}--skilled-sponsors-quadrupled`);
+  const chart = page.locator(`[id="${work}--chart-sponsor-revocations"]`);
+  const showAs = chart.getByRole('group', { name: 'Show as' }).filter({ visible: true });
+  // The observation's link opens the view it is about.
+  await expect(showAs.getByRole('button', { name: 'Registered sponsors' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator(`[id="${work}--chart-sponsors"]`)).toBeVisible();
+  await expect(page.locator(`[id="${work}--chart-revocations"]`)).toBeHidden();
+  // Stepping back to an observation about the other view shows that view.
+  await page.locator(`[data-observation="${work}--skilled-sponsors-quadrupled"]`).getByRole('button', { name: 'Previous observation' }).click();
+  await expect(page.locator(`[data-observation="${work}--revocation-rate-not-a-record"]`)).toBeVisible();
+  await expect(page.locator(`[id="${work}--chart-revocations"]`)).toBeVisible();
+  // Choosing a view moves to its first observation.
+  await chart.getByRole('group', { name: 'Show as' }).filter({ visible: true }).getByRole('button', { name: 'Registered sponsors' }).click();
+  await expect(page.locator(`[data-observation="${work}--skilled-sponsors-quadrupled"]`)).toBeVisible();
+  // The switch is its buttons alone, with no label on the page.
+  await expect(chart.locator('.sv-show-as .sv-control__label')).toHaveCount(0);
+  // Graph or Table, and which view, are separate choices: changing one keeps the other.
+  const display = chart.getByRole('group', { name: /display$/ }).filter({ visible: true });
+  await display.getByRole('button', { name: 'Table' }).click();
+  const views = chart.getByRole('group', { name: 'Show as' }).filter({ visible: true });
+  await views.getByRole('button', { name: 'Licences revoked and revocation rate' }).click();
+  await expect(chart.getByRole('group', { name: /display$/ }).filter({ visible: true }).getByRole('button', { name: 'Table' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(chart.locator('.sv-chart__table').filter({ visible: true })).toBeVisible();
+  await chart.getByRole('group', { name: /display$/ }).filter({ visible: true }).getByRole('button', { name: 'Graph' }).click();
+  await expect(chart.getByRole('group', { name: 'Show as' }).filter({ visible: true }).getByRole('button', { name: 'Licences revoked and revocation rate' })).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('a chart with a "Show as" switch still fills its slide', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const work = 'work-and-study-routes';
+  await page.goto(`${factUrl(work)}#${work}--chart-sponsor-revocations`);
+  const chart = page.locator(`[id="${work}--chart-sponsor-revocations"]`);
+  const slide = page.locator('.sv-slide').filter({ has: chart });
+  const plot = chart.locator('.sv-chart__plot').filter({ visible: true });
+  await expect(plot).toBeVisible();
+  // The plot takes the room the slide has, not just its 12rem minimum.
+  const [plotBox, slideBox] = [await plot.boundingBox(), await slide.boundingBox()];
+  expect(plotBox!.height).toBeGreaterThan(slideBox!.height * 0.4);
+});
+
+test('a reading drawn alongside another shares its plot, read against a right-hand axis', async ({ page }) => {
+  const economy = 'immigration-economy-and-public-finances';
+  await page.goto(`${factUrl(economy)}#${economy}--total-gdp-grew`);
+  const chart = page.locator(`[id="${economy}--chart-series"]`);
+  // Both readings in one view, with nothing to switch.
+  await expect(chart.getByRole('group', { name: 'Show as' })).toHaveCount(0);
+  await expect(page.locator(`[data-observation="${economy}--total-gdp-grew"]`)).toBeVisible();
+  await expect(chart.locator('.sv-chart__key-name').filter({ hasText: 'UK GDP (right axis)' })).toBeVisible();
+  const plot = chart.locator('.sv-chart__svg:visible').first();
+  await expect(plot.locator('text[data-axis="right"]').first()).toBeAttached();
+  // A short title, with its detail under it.
+  await expect(chart.locator('.sv-graph-heading')).toHaveText('UK GDP');
+  await expect(chart.locator('.sv-chart__subtitle')).toContainText('1948–2025');
+});
+
+test('the old address of a chart merged into another opens the reading it became', async ({ page }) => {
+  const work = 'work-and-study-routes';
+  await page.goto(`${factUrl(work)}#${work}--chart-registered-sponsors`);
+  const showAs = page.locator(`[id="${work}--chart-sponsor-revocations"]`).getByRole('group', { name: 'Show as' });
+  await expect(showAs.getByRole('button', { name: 'Registered sponsors' })).toHaveAttribute('aria-pressed', 'true');
+  // An address for a chart is not one for its first finding, so that stays closed.
+  await expect(page.locator(`[data-observation="${work}--skilled-sponsors-quadrupled"] .sv-observe__body`)).toBeHidden();
+});
+
 test('More lists a chart\'s observations and Subtleties, and one goes straight to it, with focus', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--chart-nationality-arrivals`);
   const slide = page.locator('.sv-walk__slide:has(.sv-walk__tab), .sv-walk__slide').filter({ has: page.locator(`[data-chart-anchor="${LONG_RUN}--chart-nationality-arrivals"]`) });

@@ -563,6 +563,53 @@ subtitle. It says what is shown, not what it finds; findings belong in
 observations. Everything else follows in later sentences, one click away.
 Support the introduction from the collection's own sources.
 
+<a id="context-on-the-chart"></a>
+**Every chart carries its own context.** A reader who sees only one chart, as
+a reader of a viewpoint step does, must not come away with a simpler story
+than the report as a whole tells. So whatever is needed to make sense of a
+chart goes on that chart, not on another one further down the report:
+
+- **Other times:** the long run, not only the years that make the point.
+- **Other places:** the comparable countries or areas, per head as well as in
+  total (see [Comparing across space](#comparing-across-space)).
+- **Other ways of showing the same data:** a count and its rate, a total and
+  its per-head figure, money and real terms. These are a series' `readings`,
+  behind its "Show as" switch.
+- **The other numbers it needs:** the denominator, the base rate, the size of
+  the whole, or the measure that runs the other way, such as a stock beside a
+  flow.
+
+The test: if a chart could leave a reader with a conclusion that another chart
+in the report would correct, the correction belongs on this chart, as another
+reading, line or comparator. Context that cannot be drawn, such as a
+definition, a source's limits or an unmeasured gap, goes in the chart's
+Subtleties or More.
+
+<a id="merge-charts"></a>
+**Merge charts that share a form and give each other context.** Two charts
+are one chart when both hold: they are drawn the same way (two time series
+over overlapping years, or two bar charts of the same items), and one is
+context for the other, in any of the ways above. Merge them, in the first of
+these ways that fits:
+
+1. **Lines on one plot**, when both are in the same unit: the UK and the EU
+   average, or two counters of the same thing.
+2. **A reading drawn `alongside`**, against a right-hand axis, when the units
+   differ but one plot answers one question: a total and its per-head figure,
+   a count and its rate. See
+   [Show things together](#show-things-together).
+3. **Readings behind the "Show as" switch**, when seeing both at once would
+   crowd the plot or mislead: more than two measures, or ones only loosely
+   related.
+
+Charts drawn in different ways stay separate even when related, such as a
+time series beside a one-year ranking of countries. So does a chart that
+answers a different question from the same data. Link from an observation on
+one to the other instead. A merge keeps every observation and every old
+address (`movedAnchors`), so no link breaks. Bar charts, tables and other
+figures cannot merge this way yet: until they have the same controls, keep
+them separate and say in an observation which chart supplies their context.
+
 **Say what a chart covers, and where.** Readers assume a chart in a UK report
 is about the UK, so one about anywhere else names the place in its title or
 subtitle: “Australia: asylum-seeker boat arrivals”. A chart narrower than the
@@ -747,22 +794,70 @@ plot, and adds a Method Changes entry the key line links to. It has no single
 date to mark, so it is the one measurement note kept there. Events may fall
 inside the band.
 
-**Multiple readings, not a toggle you can ship the flattering half of.** A
-`series` carries one or more `readings` and the chart draws every one. The
-owner asked for migration both in absolute numbers and as a share of
-population, and both are needed: a raw count in a growing population is its
-own misleading framing, and a share alone hides that the growth is mostly in
-the numerator. `religion-of-arrivals-is-not-recorded` does the same with
-share and volume, and its body says why — "Share down, volume up; the chart
-carries both readings, and either one quoted alone gives the wrong picture."
-Every panel draws the series' event and measurement-change markers, each
+<a id="show-things-together"></a>
+**Show things together where they read together.** Before reaching for a
+switch, ask whether the reader should see both at once. A total and its
+per-head figure, or a count and its rate, usually should: the point is the
+gap between them, and a switch hides one while the reader looks at the other.
+Give the first reading `alongside: <reading-id>` to draw the second on its
+plot, against a right-hand axis. Then:
+
+- **Both axes share the gridlines**, and both start at zero when nothing goes
+  below it, so neither axis can be stretched to make a crossing or a gap that
+  is not in the data.
+- **Every line on the plot has its own name.** The right-hand lines are keyed
+  "(right axis)", and the label above the graph names both axes' units.
+- **One plot, one view:** the reading drawn alongside is not a "Show as" choice
+  of its own, and its observations are read on the plot that draws it.
+
+Draw two readings together only when one plot answers one question: the
+total against the per-head figure, not the per-head figure against something
+measured in another year. More than two measures, or two that are only loosely
+related, stay separate views behind the switch.
+
+**Several readings, one chart, a "Show as" switch.** A `series` carries one
+or more `readings`: the same data counted in people and as a share of the
+population, in money and in real terms, as a number and as a rate. A raw
+count in a growing population is its own misleading framing, and a share
+alone hides that the growth is mostly in the numerator, so both belong on the
+chart. A series with several readings is one chart, which shows one reading
+at a time under a "Show as" switch. So that the switch cannot ship the
+flattering half:
+
+- **Every reading is one click away.** The data panel draws the switch. A
+  viewpoint step's chart and the home-page carousel draw the one plot they
+  cite, and are clicked as a whole to open the panel, so a switch there would
+  do nothing; that is one more reason to draw a reading the step needs
+  `alongside` the one it cites.
+- **The observations walk through every reading.** A chart's observations
+  are read reading by reading, in reading order, and stepping to an
+  observation shows the reading it is about. Choosing a reading moves to its
+  first observation.
+- **A link opens the reading it is about.** A link to an observation, or to
+  `#<fact>--chart-<reading>`, opens the chart on that reading.
+- **Order readings by the report's argument, not a side's.** The first reading
+  is the one the chart's first observation needs. The reading that qualifies
+  it comes next, never left for a separate chart.
+
+To merge two series into one, move the second's reading into the first,
+giving it the second's `source` as the reading's own `source`. Keep its
+Observations group, which is filed under the reading id and so moves with it.
+Give a line that starts later its own `coverage`. Map the old chart's address
+to the reading in `movedAnchors` (`chart-<old-id>: <reading-id>`), so links
+to it still open that reading. A merge renumbers no sources when the second
+series came straight after the first and has only its series `source`.
+Otherwise renumber the footnotes, as for any change to source order.
+
+Every reading draws the series' event and measurement-change markers, each
 opening its own card, and its not-measured band, which is explained once, in
-Method Changes under the first panel.
+Method Changes.
 
-A reading's `label` is a subheading, drawn only when a series has more than
-one reading, so it never stands in for the title: the series `title` is what
-says what the chart covers and where.
+A reading's `label` names it on the "Show as" switch, and is a subheading
+where the readings are drawn one after another, without the switch. It never
+stands in for the title: the series `title` is what says what the chart covers
+and where, so a merged series' title names every reading it carries.
 
+<a id="comparing-across-space"></a>
 **Comparing across space.** Where a stat is per-country, compare to
 comparable countries. Comparator choice is the cross-sectional form of date
 cherry-picking, so it gets the same discipline:
@@ -815,7 +910,7 @@ charts, listed in `previewCharts` in `topic.md` as `fact` and `chart` pairs
 of a graph-like figure in the fact's `figures` — see below). Each
 slide is one chart: for a series with several readings, add `reading` to name
 the one the slide draws (default: the first). The full chart, a click away,
-still draws every reading, and holds everything a slide leaves out — a slide
+offers every reading behind its "Show as" switch, and holds everything a slide leaves out — a slide
 is only the chart's title, its subtitle and the graph. The slide's title opens
 the topic page with that chart in a sheet, as a viewpoint's “Explore this
 data” does (`#explore=<fact>--chart-<chart>`). The
