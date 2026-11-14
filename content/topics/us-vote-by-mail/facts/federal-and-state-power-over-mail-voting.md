@@ -490,11 +490,11 @@ sources:
     date: '2026-08-26'
 comparisons:
   - id: senate-votes
-    title: US Senate votes on national voting-rules bills, against the 60 needed
+    title: Senate votes on national voting rules
+    subtitle: Senators voting yes, against the 60 needed, 2022 and 2026
     description: >-
-      Senators voting yes on two cloture votes on national voting-rules bills,
-      2022 and 2026, against the 60 needed to end debate. Only the 2022 bill
-      dealt with mail voting.
+      Yes votes on two cloture votes on national voting-rules bills, which
+      need 60 to end debate. Only the 2022 bill dealt with mail voting.
     unit: count
     valueLabel: Senators voting yes
     domainMax: 100
@@ -509,7 +509,8 @@ comparisons:
       - label: "Freedom to Vote: John R. Lewis Act"
         detail: "Democratic, 19 Jan 2022"
         value: 49
-      - label: "S. 5271, photo ID only"
+      - label: "S. 5271"
+        subtitle: Photo ID only
         detail: "Republican, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
@@ -544,7 +545,8 @@ dataStillNeeded:
 figures:
   - kind: timeline
     id: federal-actions
-    title: 'Federal bills, orders and rulings on mail voting, and state deadline changes, 2021–2026'
+    title: 'Federal moves on mail voting'
+    subtitle: 'Bills, orders, rulings and state deadline changes, 2021–2026'
     description: >-
       Each dated move in Congress, by the President and in the courts, with
       the changes to state receipt deadlines that fell among them.
@@ -570,7 +572,8 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: federal-laws
-    title: 'Federal laws, bills and orders on mail voting, 1986–2026'
+    title: 'Federal laws and bills on mail voting'
+    subtitle: 'Including orders, 1986–2026, status at 29 October 2026'
     description: 'What each federal law, bill or order does on mail voting, and where it stood on 29 October 2026.'
     caption: 'One card per law, bill or order'
     layout: timeline
@@ -694,8 +697,8 @@ figures:
         status: Introduced
   - kind: dataTable
     id: holdings
-    title: >-
-      Who may set US mail-voting rules: what the Constitution and courts say
+    title: Who may set mail-voting rules
+    subtitle: What the US Constitution and courts say
     description: 'The constitutional text and the main court rulings on who sets election rules, oldest first.'
     caption: One card per text or ruling
     layout: timeline
@@ -762,8 +765,9 @@ figures:
             - 22
   - kind: dataTable
     id: live-measures
-    title: 'Live federal measures on mail voting, 29 October 2026'
-    description: The federal actions still in play the week before the November midterms.
+    title: 'Live federal measures on mail voting'
+    subtitle: 'As of 29 October 2026, the week before the midterms'
+    description: The federal actions still in play.
     caption: One card per measure
     layout: cards
     leadColumn: does
@@ -828,7 +832,7 @@ observationMarks:
   congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
   watson-leaves-it-to-legislatures: {rows: ["Watson v. RNC (5–4)"]}
   bills-on-both-sides: {rows: ["Universal Right to Vote by Mail Act", "Vote at Home Act", "Make Elections Great Again (MEGA) Act", "Mail Ballot Integrity Act"]}
-  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271, photo ID only", "Needed to end debate"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271", "Needed to end debate"]}
   save-america-mail-unclear: {rows: ["SAVE America Act (Republican)"]}
   save-america-status: {rows: ["SAVE America Act (Republican)"]}
   watson-appearance-of-fraud: {rows: ["Watson v. RNC (5–4)"]}

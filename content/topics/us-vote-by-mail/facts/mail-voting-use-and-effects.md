@@ -351,7 +351,8 @@ sources:
     publisher: Gallup
     date: '2022-11-04'
 series:
-  title: 'How Americans voted, by method, age and region (Census survey), 2018–2024'
+  title: 'How voters say they voted'
+  subtitle: 'By method, age and region, Census survey, 2018–2024'
   description: >-
     Share of people who said they voted who voted in person on Election Day,
     in person before Election Day, or by mail, in each November election since
@@ -479,7 +480,8 @@ additionalSeries:
           - name: In person on Election Day
             points: [{period: '2016', value: 54.5}, {period: '2018', value: 58.2}, {period: '2020', value: 30.5}, {period: '2024', value: 37.4}]
   - id: state-rules
-    title: 'States offering mail voting to every voter, 2016–2026'
+    title: 'State rules on who may vote by mail'
+    subtitle: 'Number of states under each rule, 2016–2026'
     description: >-
       Number of states (excluding DC) that offer no-excuse absentee voting or
       send every voter a ballot, against those that require an excuse, at each
@@ -529,6 +531,7 @@ additionalSeries:
         label: 'Number of states'
         unit: count
         valueLabel: 'States'
+        unitInHeading: true
         lines:
           - name: No-excuse or all-mail
             points: [{period: '2016-11', value: 30}, {period: '2020-01', value: 32}, {period: '2020-11', value: 38}, {period: '2022-11', value: 35}, {period: '2024-11', value: 36}, {period: '2026-11', value: 37}]
@@ -537,7 +540,8 @@ additionalSeries:
           - name: COVID-19 excuse added for 2020 only
             points: [{period: '2016-11', value: 0}, {period: '2020-01', value: 0}, {period: '2020-11', value: 10}, {period: '2022-11', value: 0}, {period: '2024-11', value: 0}, {period: '2026-11', value: 0}]
   - id: pew-mail-support
-    title: 'Support for letting any voter vote by mail, by party (Pew), 2020–2025'
+    title: 'Support for letting anyone vote by mail'
+    subtitle: 'US adults and each party, Pew surveys, 2020–2025'
     description: >-
       Share of US adults who favour "allowing any voter to vote by mail if they
       want to", in every Pew survey that asked it. Republicans and Democrats
@@ -583,7 +587,8 @@ additionalSeries:
             points: [{period: '2020-04', value: 87}, {period: '2024-01', value: 84}, {period: '2025-08', value: 83}]
 comparisons:
   - id: state-mail-share
-    title: 'Mail ballots as a share of each state''s turnout, 2024'
+    title: 'Mail ballots as a share of turnout'
+    subtitle: 'By state and territory, 2024 general election'
     description: >-
       Share of all counted ballots in the November 2024 general election that
       were cast by mail, in every state and territory that reported it.
@@ -716,7 +721,8 @@ comparisons:
       - label: 'Guam'
         value: 0.3
   - id: mail-use-by-party
-    title: US voters who voted by mail, by party, 2024
+    title: Who voted by mail, by party
+    subtitle: Share of each party's voters, MIT survey, November 2024
     description: >-
       Share of each party's voters who said they voted by mail in the November
       2024 election, from MIT's Survey of the Performance of American
@@ -765,9 +771,9 @@ figures:
     id: pew-mail-support
   - kind: dataTable
     id: adoption
-    title: >-
-      When the eight states and DC that mail every voter a ballot adopted it
-    description: 'The eight states and DC that mail every voter a ballot, in the order they adopted it.'
+    title: When all-mail voting came in
+    subtitle: The eight states and DC that mail every voter a ballot
+    description: 'Each one in the order it adopted all-mail voting, with when and how.'
     sources:
       - 11
     caption: One row per state
@@ -832,11 +838,10 @@ figures:
     id: mail-use-by-party
   - kind: barChart
     id: mail-use-by-disability
-    title: US voters who voted by mail, with and without a disability, 2020
+    title: Mail voting and disability
+    subtitle: Voters with and without a disability, Rutgers survey for the EAC, 2020
     description: >-
-      Share of voters with and without a disability who voted by mail in
-      November 2020, from the Rutgers University survey released by the
-      Election Assistance Commission.
+      Share of voters in each group who voted by mail in November 2020.
     valueLabel: '% who voted by mail'
     categoryLabel: Voters
     format: { unit: percent, decimals: 0 }
@@ -851,11 +856,11 @@ figures:
       - { label: Voters without a disability, value: 42 }
   - kind: barChart
     id: disability-difficulty
-    title: US voters with disabilities who had difficulty voting, by how they voted, 2020
+    title: Difficulty voting with a disability
+    subtitle: By how they voted, Rutgers survey for the EAC, 2020
     description: >-
       Share of people with disabilities who experienced difficulties voting by
-      mail, and at a polling place, in November 2020, from the Rutgers
-      University survey released by the Election Assistance Commission.
+      mail, and at a polling place, in November 2020.
     valueLabel: '% who had difficulty'
     categoryLabel: How they voted
     format: { unit: percent, decimals: 0 }
@@ -867,7 +872,8 @@ figures:
       - { label: Voted at a polling place, value: 18 }
   - kind: estimateRange
     id: effect-estimates
-    title: 'Estimated effects of mail-voting rules on turnout and party share'
+    title: 'Effects of mail-voting rules'
+    subtitle: 'On turnout and party share, estimates from two studies'
     description: >-
       Estimates from two studies, in percentage points, against no effect:
       universal mail ballots in California, Utah and Washington counties,
@@ -893,7 +899,8 @@ figures:
       - { label: 'No-excuse eligibility at 65: turnout', year: 'Texas 2020', estimate: 0.02, high: 0.26, note: Upper bound of the 95% confidence interval., source: 18 }
   - kind: barChart
     id: support-by-state-rule
-    title: 'Support for letting any voter vote by mail, by the rule in the respondent''s state, 2025'
+    title: 'Support for mail voting, by state rule'
+    subtitle: 'Favour letting any voter vote by mail, Pew, August 2025'
     description: >-
       Share of US adults, and of each party, who favour allowing any voter to
       vote by mail, grouped by whether their state mails every voter a
