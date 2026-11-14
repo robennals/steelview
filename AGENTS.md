@@ -31,3 +31,13 @@ look like — so the next topic gets it right without Rob having to ask again.
 - **Check the docs first.** If the mistake breaks a rule the docs already
   state, the fix is to follow the rule, and perhaps make it easier to find —
   not to add a second copy.
+
+# Checks before a pull request
+
+Run the checks yourself; do not wait for GitHub CI, which only runs after a merge to `main`.
+
+1. Merge the latest `origin/main` into your branch, so you test what will be merged.
+2. Run `heavy run -- pnpm check`, then `heavy run -- pnpm test:e2e`. The E2E run reuses the build `pnpm check` made.
+3. Paste both results into the pull request description.
+
+If CI fails on `main`, fixing it is a task of its own; it does not block other pull requests.
