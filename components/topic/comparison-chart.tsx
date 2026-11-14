@@ -4,7 +4,6 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import type { Fact, Source } from '@/lib/content/types';
 import { ChartAbout } from '@/components/report/chart-about';
 import { ObservationBar } from './observation-bar';
-import { PanelSources } from './sources-slot';
 import { COMPACT_PREVIEW_ITEMS, RankedColumns, fitsRankedColumns } from '@/components/report/ranked-columns';
 import { DetailRow, RowDetailHint } from '@/components/report/row-detail';
 import type { PreviewFit } from '@/lib/chart/series-chart';
@@ -54,9 +53,9 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   return <figure className="sv-chart sv-comparison" id={`${fact.id}--chart-${chart.id}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
     <figcaption className="sv-chart__caption">
       <Heading className="sv-graph-heading">{preview?.href ? <a href={preview.href}>{chart.title}</a> : chart.title}</Heading>
-      {chart.subtitle && <p className="sv-chart__subtitle">{chart.subtitle}</p>}
+      {chart.subtitle && !panel && <p className="sv-chart__subtitle">{chart.subtitle}</p>}
       {!preview && (panel
-        ? <ChartAbout description={chart.description}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
+        ? <ChartAbout subtitle={chart.subtitle} description={chart.description}>{aboutText && <p>{aboutText}</p>}</ChartAbout>
         : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
     {panel && <ObservationBar />}
@@ -83,7 +82,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
     {chart.groups && selected < 0 && <div className="sv-comparison-legend">{chart.groups.map((label, i) => <span key={label}><i style={{ background: `var(--sv-group-${i})` }} />{label}</span>)}</div>}
     {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th>{hasDetail && <th>Detail</th>}</tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{format(value)}</td>)}<td>{format(item.value)}</td>{hasDetail && <td>{item.detail ?? '—'}</td>}</tr>)}</tbody></table></div></details>}
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
-    {panel ? <PanelSources /> : !preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
+    {!panel && !preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
     {observations}
     {aboutText && !preview && !panel && <details className="sv-chart__methodology"><summary>About this data</summary><p>{aboutText}</p></details>}
   </figure>;

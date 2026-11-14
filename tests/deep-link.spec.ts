@@ -134,7 +134,8 @@ test('a reading drawn alongside another shares its plot, read against a right-ha
   await expect(plot.locator('text[data-axis="right"]').first()).toBeAttached();
   // A short title, with its detail under it.
   await expect(chart.locator('.sv-graph-heading')).toHaveText('UK GDP');
-  await expect(chart.locator('.sv-chart__subtitle')).toContainText('1948–2025');
+  // In a data panel the subtitle is the line More sits on.
+  await expect(chart.locator('.sv-chart__about-text').first()).toContainText('1948–2025');
 });
 
 test('the old address of a chart merged into another opens the reading it became', async ({ page }) => {
@@ -162,15 +163,43 @@ test('More lists a chart\'s observations and Subtleties, and one goes straight t
   await expect(slide.locator('.sv-observe__item:not([hidden]) .sv-observe__body')).toBeVisible();
 });
 
-test('a sources row is one line, and opens to each source in full', async ({ page }) => {
+test('a sources row is one line in the chart\'s More panel, and opens to each source in full', async ({ page }) => {
   await page.goto(factUrl(LONG_RUN));
-  const row = page.locator('.sv-walk__slide').first().locator('.sv-chart__sources');
+  const slide = page.locator('.sv-walk__slide').first();
+  await slide.locator('.sv-chart__about > summary').first().click();
+  const row = slide.locator('.sv-chart__sources');
   await expect(row.locator('> summary')).toContainText(/^Sources?:/);
   expect((await row.locator('> summary').boundingBox())!.height).toBeLessThan(28);
   await row.locator('> summary').click();
   const source = row.locator('.sv-source').first();
   await expect(source.locator('a')).toHaveAttribute('href', /^https?:/);
   await expect(source.locator('blockquote')).toBeVisible();
+});
+
+test('More shows the subtitle\'s description and sources over the chart, without moving it, and Escape closes it', async ({ page }) => {
+  await page.goto(factUrl(LONG_RUN));
+  const slide = page.locator('.sv-walk__slide').first();
+  const about = slide.locator('.sv-chart__about').first();
+  const graph = slide.locator('.sv-observe').first();
+  const before = (await graph.boundingBox())!.y;
+  await about.locator('> summary').click();
+  await expect(about.locator('.sv-chart__about-desc')).toBeVisible();
+  await expect(about.locator('.sv-chart__sources')).toBeVisible();
+  expect((await graph.boundingBox())!.y).toBe(before);
+  await page.keyboard.press('Escape');
+  await expect(about).not.toHaveAttribute('open', '');
+});
+
+test('in a sheet, Escape closes the More panel first, and only then the sheet', async ({ page }) => {
+  await page.goto('/topics/us-iran-war#explore=human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const sheet = page.locator('dialog[open]');
+  const about = sheet.locator('.sv-walk__slide:has([id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]) .sv-chart__about').first();
+  await about.locator('> summary').click();
+  await page.keyboard.press('Escape');
+  await expect(about).not.toHaveAttribute('open', '');
+  await expect(sheet).toHaveCount(1);
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
 });
 
 test('a report\'s last slide says what is not known yet, and has its old address', async ({ page }) => {
@@ -234,6 +263,7 @@ test.describe('with JavaScript disabled', () => {
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
     await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
     await expect(page.locator('.sv-chart__sources blockquote').first()).toBeHidden();
+    await page.locator('.sv-chart__about > summary').first().click();
     await page.locator('.sv-chart__sources > summary').first().click();
     await expect(page.locator('.sv-chart__sources blockquote').first()).toBeVisible();
     // Nothing steps through the charts, so they run down the page, and every

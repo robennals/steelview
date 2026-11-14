@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { ObservationBar } from '@/components/topic/observation-bar';
-import { PanelSources } from '@/components/topic/sources-slot';
 import { ChartAbout } from './chart-about';
 import type { FigurePreview, SourceCredit } from './types';
 
@@ -72,12 +71,10 @@ export function ReportFigure({
       <figure className={classes} id={id} data-panel-chart>
         <figcaption className="sv-chart__caption">
           {title && <Heading className="sv-graph-heading">{title}</Heading>}
-          {subtitle && <p className="sv-chart__subtitle">{subtitle}</p>}
-          <ChartAbout description={description}>{noteBody}</ChartAbout>
+          <ChartAbout subtitle={subtitle} description={description}>{noteBody}</ChartAbout>
         </figcaption>
         <ObservationBar />
         {children}
-        <PanelSources />
       </figure>
     );
   }

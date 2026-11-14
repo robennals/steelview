@@ -586,7 +586,7 @@ test('an observation on a comparison picks out its rows, and keeps them when the
   await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
 });
 
-test('a chart\'s description is one line until opened', async ({ page }) => {
+test('a chart\'s subtitle line opens its More panel', async ({ page }) => {
   await page.goto(DATA);
   const row = page.locator('.sv-row--data').first();
   await row.locator('.sv-row__toggle').click(headCorner);
@@ -596,7 +596,7 @@ test('a chart\'s description is one line until opened', async ({ page }) => {
   await expect(about).not.toHaveAttribute('open');
   // The row is still settling as it opens, which can swallow the first click.
   await expect(async () => {
-    await about.locator('summary').click();
+    await about.locator('> summary').click();
     await expect(about).toHaveAttribute('open', '', { timeout: 500 });
   }).toPass();
 });

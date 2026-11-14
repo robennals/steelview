@@ -11,7 +11,6 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
 import { lineSourceNumbers } from '@/lib/content/sources';
-import { PanelSources } from './sources-slot';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   alongsideOf,
@@ -596,7 +595,7 @@ function Reading({
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`} data-marker-root="">
-      {intro && !preview && (panel ? <ChartAbout description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
+      {intro && !preview && (panel ? <ChartAbout subtitle={series.subtitle} description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
       {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
       {!preview && plottedReadings(series).length > 1 && <h3 className={switched ? 'sv-visually-hidden' : 'sv-chart__reading-head'}>{reading.label}</h3>}
       {panel && !switched && <ObservationBar />}
@@ -669,7 +668,7 @@ function Reading({
         </p>
       )}
 
-      {panel ? !switched && <PanelSources /> : !preview && <SourceLine sources={credits} />}
+      {!panel && !preview && <SourceLine sources={credits} />}
 
       {observations}
     </section>
@@ -774,15 +773,15 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         {preview
           ? <h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3>
           : <h2 className="sv-graph-heading">{series.title}</h2>}
-        {series.subtitle && <p className="sv-chart__subtitle">{series.subtitle}</p>}
+        {/* A data panel puts the subtitle in its More line instead (ChartAbout). */}
+        {series.subtitle && !panel && <p className="sv-chart__subtitle">{series.subtitle}</p>}
       </figcaption>
 
       <SeriesHighlight>
         {switched
           ? <>
-            {panel ? <ChartAbout description={series.description}>{about}</ChartAbout> : !preview && <p className="sv-chart__desc">{series.description}</p>}
+            {panel ? <ChartAbout subtitle={series.subtitle} description={series.description}>{about}</ChartAbout> : !preview && <p className="sv-chart__desc">{series.description}</p>}
             <ShowAs views={readings.map(r => ({ id: r.id, label: readingName(series, r) }))} bar={panel ? <ObservationBar /> : undefined}>{readingSections}</ShowAs>
-            {panel && <PanelSources />}
           </>
           : readingSections}
       </SeriesHighlight>

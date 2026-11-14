@@ -2581,14 +2581,26 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* The notes under the graph stay small, so the graph has the room. */
 .sv-chart[data-panel-chart] :is(.sv-chart__axis-label, .sv-chart__annotation-key, .sv-chart__credit) { margin-block: 0 0.3rem; }
 /* The description on one line, opening to the rest (chart-about.tsx). */
-.sv-chart__about { margin: 0 0 0.3rem; font: .875rem/1.5 var(--font-sans); color: var(--ink-3); }
+.sv-chart__about { position: relative; margin: 0 0 0.3rem; font: .875rem/1.5 var(--font-sans); color: var(--ink-3); }
 .sv-chart__about > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
 .sv-chart__about > summary::-webkit-details-marker { display: none; }
 .sv-chart__about-text { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .sv-chart__about-toggle { flex: none; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 0.2em; }
 .sv-chart__about-toggle::after { content: "More ▾"; }
-.sv-chart__about[open] > summary { margin-bottom: 0.4rem; }
-.sv-chart__about[open] .sv-chart__about-text { white-space: normal; }
+/* More opens a panel floating over the chart, so the graph below does not move. */
+.sv-chart__about-pop {
+  position: absolute; top: calc(100% + 0.35rem); left: 0; right: 0; z-index: 30;
+  max-height: min(28rem, 60vh); overflow-y: auto;
+  padding: 0.75rem 1rem; border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--paper); box-shadow: 0 6px 24px rgb(20 25 40 / 0.18);
+  color: var(--ink-2);
+}
+.sv-chart__about-desc { color: var(--ink-2); }
+/* The line and More are one control: hovering either underlines both. */
+.sv-chart__about > summary:hover .sv-chart__about-text { text-decoration: underline; text-underline-offset: 0.2em; }
+/* A viewpoint step's chart opens its data panel from anywhere, its title included. */
+.sv-slide--explorable:hover .sv-graph-heading { text-decoration: underline; text-underline-offset: 0.15em; }
+.sv-chart__about-pop .sv-chart__sources { margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px solid var(--rule); }
 .sv-chart__about[open] .sv-chart__about-toggle::after { content: "Less ▴"; }
 .sv-chart__about p { margin: 0 0 0.4rem; }
 /* One line closed, whatever the width: the names give way before the count. */
