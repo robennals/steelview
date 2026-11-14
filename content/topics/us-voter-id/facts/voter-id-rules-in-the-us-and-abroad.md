@@ -700,7 +700,8 @@ sources:
     publisher: Electoral Commission
     date: '2023-07-13'
 series:
-  title: 'US states requesting or requiring ID at the polls, 1950–2026'
+  title: 'States with voter ID laws'
+  subtitle: 'Requesting or requiring ID at the polls, 1950–2026'
   description: >-
     Number of states where every in-person voter is asked for an
     identification document, as NCSL counted at the time. Points are the
@@ -765,6 +766,7 @@ series:
       label: 'States with an ID requirement in force'
       unit: count
       valueLabel: 'States'
+      unitInHeading: true
       note: >-
         Compiled from NCSL pages, one count per year shown: 1950, 1970, 1971,
         1977 and 1980 from the History of Voter ID page (the first five

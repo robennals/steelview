@@ -1377,7 +1377,8 @@ additionalSeries:
               - period: '2027'
                 value: 8.1
   - id: investment
-    title: 'Government investment as a share of GDP: UK and OECD median, 1995–2024'
+    title: 'Government investment as a share of GDP'
+    subtitle: 'UK and the OECD median, 1995–2024'
     description: >-
       Government investment as a share of GDP, for the UK and for the median country in
       the OECD, a group of rich countries. Investment here is general government gross
@@ -1412,6 +1413,7 @@ additionalSeries:
         label: Government investment, % of GDP
         unit: percent
         valueLabel: General government investment as a share of GDP
+        unitInHeading: true
         lines:
           - name: United Kingdom
             points:

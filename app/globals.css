@@ -2449,6 +2449,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-comparison__name { display: block; font-weight: 600; }
 .sv-chart__subtitle { margin: .2rem 0 0; font-family: var(--font-sans); font-size: .875rem; line-height: 1.35; color: var(--ink-3); }
 .sv-comparison__subtitle { display: block; color: var(--ink-3); }
+/* A preview has a fixed height, so a row's subtitle keeps to one line there; the full chart shows it whole. */
+.sv-chart[data-preview] .sv-comparison__subtitle { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .sv-comparison__track { position: relative; display: block; height: .9rem; background: var(--paper-sunk); }
 .sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }

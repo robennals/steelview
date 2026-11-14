@@ -848,7 +848,8 @@ additionalSeries:
             points: [{period: '2016', value: 53.9}, {period: '2020', value: 59.9}, {period: '2024', value: 59.3}]
 comparisons:
   - id: documents-held
-    title: US adult citizens without each kind of document, 2023
+    title: 'Adult citizens without ID documents'
+    subtitle: 'US, by kind of document, 2023'
     description: >-
       Estimated US citizens aged 18 or over, national survey fielded
       September–October 2023. "No photo ID of any kind" and "outdated licence"

@@ -468,7 +468,8 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
 series:
-  title: 'People claiming asylum in the UK, 2001–2025'
+  title: 'People claiming asylum in the UK'
+  subtitle: '2001–2025'
   description: >-
     Every person recorded as claiming asylum in the UK in each calendar year of
     the Home Office claims dataset, main applicants and dependants together,
@@ -513,6 +514,7 @@ series:
       label: People claiming asylum
       unit: count
       valueLabel: People recorded as claiming asylum that year
+      unitInHeading: true
       lines:
         - name: All claimants
           points:
@@ -829,7 +831,8 @@ additionalSeries:
               - period: '2025'
                 value: 2.18
   - id: grant-rate-series
-    title: 'Share of UK asylum claims granted at initial decision, 2001–2025'
+    title: 'Share of asylum claims granted'
+    subtitle: 'At the first decision, UK, 2001–2025'
     description: >-
       Grants of refugee status, humanitarian protection or other leave as a
       share of grants plus refusals, main applicants, by the year the initial
@@ -876,6 +879,7 @@ additionalSeries:
         label: Initial grant rate
         unit: percent
         valueLabel: Share of initial decisions that were grants
+        unitInHeading: true
         lines:
           - name: All nationalities (main applicants)
             points:

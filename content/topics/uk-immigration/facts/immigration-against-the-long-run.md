@@ -531,7 +531,8 @@ sources:
     publisher: OECD
     date: '2025-11-03'
 series:
-  title: UK immigration, emigration and net migration, 1964–2025
+  title: 'UK migration'
+  subtitle: 'Immigration, emigration and net migration, 1964–2025'
   description: >-
     How many people moved to the UK long term each year, how many left, and the difference
     between the two, called net migration. The figures run from 1964 to 2025. A long-term

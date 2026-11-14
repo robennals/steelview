@@ -479,7 +479,8 @@ figures:
     id: grace-windows
   - kind: barChart
     id: hours-to-count
-    title: 'Hours to count 95% of the presidential vote, seven battleground states, 2020 and 2024'
+    title: 'How long the count took'
+    subtitle: 'Hours to count 95% of the presidential vote, seven swing states, 2020 and 2024'
     description: 'Hours after polls closed until 95% of the two-party presidential vote had been reported (MIT Election Lab, from Edison Research data).'
     valueLabel: Hours
     categoryLabel: State

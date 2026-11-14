@@ -411,7 +411,8 @@ sources:
   publisher: The Migration Observatory, University of Oxford
   date: '2025-10-22'
 series:
-  title: Small-boat arrivals across the Channel, 2018–2026
+  title: 'Small-boat crossings of the Channel'
+  subtitle: 'People and boats detected arriving, 2018–2026'
   description: >-
     People detected arriving in the UK by small boat each calendar year, from the
     Home Office's daily operational count. One line is the whole year; the other counts

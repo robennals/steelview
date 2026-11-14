@@ -683,7 +683,8 @@ sources:
     publisher: "Home Office"
     date: '2026-08-27'
 series:
-  title: 'Grants of settlement in the UK, 2010–2025'
+  title: 'People granted settlement in the UK'
+  subtitle: '2010–2025'
   description: >-
     Settlement, or indefinite leave to remain, lets a person live in the UK permanently;
     this counts grants made each calendar year. It leaves out the EU Settlement Scheme and
@@ -733,6 +734,7 @@ series:
       label: Grants of settlement
       unit: count
       valueLabel: People granted settlement that year
+      unitInHeading: true
       lines:
         - name: All settlement grants
           points:

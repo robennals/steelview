@@ -433,7 +433,8 @@ series:
     date: '2025-04-30'
 additionalSeries:
   - id: eavs-mode
-    title: 'How ballots were cast, from official counts (EAVS), 2016–2024'
+    title: 'How Americans cast their ballots'
+    subtitle: 'Share of ballots by method, official counts, 2016–2024'
     description: >-
       Share of all counted ballots cast by mail, in person before Election Day
       and in person on Election Day, as reported by state and local election
@@ -468,6 +469,7 @@ additionalSeries:
         label: 'Share of counted ballots, by method'
         unit: percent
         valueLabel: '% of turnout'
+        unitInHeading: true
         note: 'Values for 2016–2020 are from the 2020 report, 2022 from the 2022 report and 2024 from the 2024 report.'
         lines:
           - name: By mail

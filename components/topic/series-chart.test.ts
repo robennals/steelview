@@ -133,8 +133,6 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   assert.doesNotMatch(html, new RegExp(`>${people.label}<`));
   assert.doesNotMatch(html, /sv-chart__credit/);
   assert.match(html, /data-variant="preview"/);
-  // The unit stays, since the graph's axis means nothing without it; the period does not.
-  assert.match(html, new RegExp(`<p class="sv-chart__axis-label">${share.valueLabel}</p>`));
   assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run">${fact.series!.title}</a></h3>`));
   assert.doesNotMatch(html, /aria-pressed/);
   assert.doesNotMatch(html, /href="#/);

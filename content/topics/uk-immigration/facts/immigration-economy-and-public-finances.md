@@ -1848,7 +1848,8 @@ comparisons:
   - label: Higher migration, spending left as planned
     value: -19900000000.0
 - id: lifetime-by-route
-  title: "Modelled lifetime net fiscal contribution, by visa route and against UK residents"
+  title: 'Lifetime fiscal contribution by visa route'
+  subtitle: 'Modelled net contribution per person, against UK residents'
   description: "Modelled taxes paid minus public spending received over the rest of a person's life, by visa route and for UK residents. Figures are present values from 2022/23. Migrant groups are the 2022/23 Skilled Worker and Partner-route cohorts; UK resident rows are the comparators used by the Migration Advisory Committee."
   unit: pounds
   valueLabel: Mean lifetime net contribution per person (present value)
@@ -1867,23 +1868,29 @@ comparisons:
   - label: "Other health and care occupations"
     detail: "Mainly nurses and doctors"
     value: 166000
-  - label: Age-matched UK resident (comparator, mean)
+  - label: 'Age-matched UK resident'
+    subtitle: 'Comparator, mean'
     value: 117000
     highlight: true
-  - label: Health and Care main applicants (all)
+  - label: 'Health and Care main applicants'
+    subtitle: 'All occupations'
     value: 54000
   - label: Skilled Worker adult dependants
     value: 3000
-  - label: Care workers (Health and Care visa)
+  - label: 'Care workers'
+    subtitle: 'Health and Care visa'
     value: -36000
-  - label: All UK residents (comparator, mean)
+  - label: 'All UK residents, mean'
+    subtitle: 'Comparator'
     value: -39000
     highlight: true
   - label: Health and Care adult dependants
     value: -67000
-  - label: Partner route (2022/23 cohort)
+  - label: 'Partner route'
+    subtitle: '2022/23 cohort'
     value: -109000
-  - label: All UK residents (comparator, median)
+  - label: 'All UK residents, median'
+    subtitle: 'Comparator'
     value: -145000
     highlight: true
 - id: earnings-by-route
@@ -2098,8 +2105,8 @@ observationMarks:
   total-gdp-grew: {lines: ["UK GDP"], from: "2019", to: "2025"}
   obr-per-head-effect-small: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
   g7-stalled-alike: {rows: ["United Kingdom", "Canada", "Germany"]}
-  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
-  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents (comparator, mean)", "All UK residents (comparator, median)"]}
+  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants", "Care workers", "Health and Care adult dependants"]}
+  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents, mean", "All UK residents, median"]}
   lower-migration-raises-borrowing: {rows: ["Lower migration, spending left as planned", "Lower migration, spending per person held"]}
   five-year-window: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
   total-gdp-moves-with-migration: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
@@ -2114,7 +2121,7 @@ observationMarks:
   g7-levels: {lines: ["United Kingdom"], from: "2019", to: "2025"}
   march-2026-revision: {rows: ["Migrants as productive as residents"]}
   independent-forecasts: {rows: ["Lower migration, spending left as planned"]}
-  discounting-changes-the-sign: {rows: ["Age-matched UK resident (comparator, mean)"]}
+  discounting-changes-the-sign: {rows: ["Age-matched UK resident"]}
   routes-not-modelled: {whole: true}
   earnings-and-age-decide: {rows: ["High-wage migrant", "Low-wage migrant"]}
   obr-profiles-behind-cps: {rows: ["Average-wage migrant"]}
@@ -2125,9 +2132,9 @@ observationMarks:
   obr-participation-and-productivity: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents"]}
   obr-delaying-not-resolving: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
   obr-2024-long-run-scenarios: {whole: true}
-  lifetime-route-detail: {rows: ["Health and Care main applicants (all)", "Care workers (Health and Care visa)", "Other health and care occupations", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
+  lifetime-route-detail: {rows: ["Health and Care main applicants", "Care workers", "Other health and care occupations", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
   mac-clearly-fiscally-positive: {rows: ["Skilled Worker main applicants"]}
-  age-matched-comparators: {rows: ["Age-matched UK resident (comparator, mean)", "Skilled Worker main applicants", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  age-matched-comparators: {rows: ["Age-matched UK resident", "Skilled Worker main applicants", "Care workers", "Health and Care adult dependants"]}
   childhood-paid-for-elsewhere: {rows: ["Average-wage migrant", "Representative UK resident"]}
   earnings-dependants-family-and-ons: {rows: ["Skilled Worker dependants", "Health and Care dependants", "Family-route visa holders", "UK full-time employees (ASHE, reference)"]}
   earnings-share-with-paye: {rows: ["Skilled Worker main applicants", "Skilled Worker dependants"]}
@@ -2137,9 +2144,9 @@ observationMarks:
   wage-effects-other-studies: {rows: ["5th percentile (lowest paid)", "90th percentile"]}
   capital-does-not-adjust: {rows: ["Capital stock does not adjust"]}
   skilled-workers-large-net-gain: {rows: ["Skilled Worker main applicants"]}
-  care-route-net-cost: {rows: ["Care workers (Health and Care visa)", "Health and Care adult dependants"]}
-  care-workers-net-cost: {rows: ["Care workers (Health and Care visa)"]}
-  partner-route-lifetime-cost: {rows: ["Partner route (2022/23 cohort)"]}
+  care-route-net-cost: {rows: ["Care workers", "Health and Care adult dependants"]}
+  care-workers-net-cost: {rows: ["Care workers"]}
+  partner-route-lifetime-cost: {rows: ["Partner route"]}
   stayers-worth-more: {rows: ["Those who stay and those who leave"]}
   temporary-better-for-lower-earners: {rows: ["Lower earners"]}
   foreign-born-founders: {rows: ["Companies with a foreign-born founder or co-founder"]}

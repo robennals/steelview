@@ -443,7 +443,8 @@ sources:
     date: '2022-03-28'
 comparisons:
   - id: registrants-found
-    title: Non-citizen registrants found per million registrants, by state review
+    title: 'Non-citizens found on voter rolls'
+    subtitle: 'Per million registered voters, by state review'
     description: >-
       Non-citizens each review found on the rolls, per million people registered
       in that state at the time. Each bar is a different review, period and
@@ -467,15 +468,20 @@ comparisons:
       chart but one. These are found cases; none of these reviews estimates
       undetected ones.
     items:
-      - label: Georgia, 2024 audit (confirmed)
+      - label: 'Georgia'
+        subtitle: '2024 audit, confirmed'
         value: 2.4
-      - label: Kansas, 1999–2013 (court finding)
+      - label: 'Kansas'
+        subtitle: '1999–2013, court finding'
         value: 22.1
-      - label: Ohio, 2024 referrals (apparent)
+      - label: 'Ohio'
+        subtitle: '2024 referrals, apparent'
         value: 73.2
-      - label: Iowa, 2024 review (identified)
+      - label: 'Iowa'
+        subtitle: '2024 review, identified'
         value: 120.4
-      - label: Louisiana, 2025 (suspected, preliminary)
+      - label: 'Louisiana'
+        subtitle: '2025, suspected, preliminary'
         value: 134.5
   - id: votes-found
     title: Non-citizen votes found per million ballots, by election
@@ -760,10 +766,10 @@ figures:
   - kind: comparison
     id: ohio-referrals
 observationMarks:
-  found-on-rolls: {rows: ["Georgia, 2024 audit (confirmed)", "Kansas, 1999–2013 (court finding)", "Ohio, 2024 referrals (apparent)", "Iowa, 2024 review (identified)", "Louisiana, 2025 (suspected, preliminary)"]}
+  found-on-rolls: {rows: ["Georgia", "Kansas", "Ohio", "Iowa", "Louisiana"]}
   how-noncitizens-reach-rolls: {rows: ["Texas, 2025–26", "Arizona, 2024", "North Carolina, 2016", "Kansas, 1999–2013"]}
-  hundredths-of-a-percent: {rows: ["Louisiana, 2025 (suspected, preliminary)", "Georgia, 2024 audit (confirmed)"]}
-  full-roll-check-feasible: {rows: ["Georgia, 2024 audit (confirmed)"]}
+  hundredths-of-a-percent: {rows: ["Louisiana", "Georgia"]}
+  full-roll-check-feasible: {rows: ["Georgia"]}
   georgia-2022-held-at-registration: {rows: ["Georgia, 2022 audit"]}
   ohio-recurs: {rows: ["2019", "2021", "2022", "2024"]}
   below-margins: {rows: ["Georgia, 2020 presidential margin", "Iowa 1st District, 2024 margin", "Georgia, DHS-flagged, ever voted", "Iowa non-citizen voters, 2024 (statewide)"]}
@@ -781,7 +787,7 @@ observationMarks:
   virginia-2024: {whole: true}
   texas-2019: {rows: ["Texas statewide (SAVE, 2025–26)"]}
   ohio-scale: {rows: ["2024"]}
-  kansas-court-findings: {rows: ["Kansas, 1999–2013 (court finding)"]}
+  kansas-court-findings: {rows: ["Kansas"]}
   referrals-not-convictions: {rows: ["Ohio, 2020 general"]}
   arizona-218000-no-proof: {rows: ["Arizona, 2024"]}
   checks-rest-on-records: {rows: ["Texas, 2025–26", "North Carolina, 2016", "Georgia, 2024 audit", "Iowa, 2024"]}

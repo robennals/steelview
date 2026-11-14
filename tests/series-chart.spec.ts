@@ -32,7 +32,7 @@ test.describe('with JavaScript disabled', () => {
     await expect(plot).toHaveAttribute('role', 'img');
     await expect(plot).toHaveAttribute(
       'aria-label',
-      /UK immigration, emigration and net migration, 1964.2025 . UK Migration Over Time/
+      /UK migration . UK Migration Over Time/
     );
     const descId = await plot.getAttribute('aria-describedby');
     await expect(fact.locator(`#${descId}`)).toHaveText(/definitional breaks/);

@@ -727,7 +727,8 @@ figures:
     id: uk-postal-votes
   - kind: map
     id: idea-postal-voting
-    title: Who may vote by post from inside the country, 2025
+    title: 'Who can vote by post'
+    subtitle: 'By country, for voters at home, 2025'
     description: >-
       Each country by whether International IDEA lists it as allowing
       in-country postal voting for all voters, for some, or neither. IDEA

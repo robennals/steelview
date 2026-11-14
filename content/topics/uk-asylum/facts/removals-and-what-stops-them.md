@@ -768,7 +768,8 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-28'
 series:
-  title: 'Returns from the UK by type, 2004–2025'
+  title: 'Returns from the UK, by type'
+  subtitle: '2004–2025'
   description: >-
     Every return the Home Office records in each calendar year from 2004, the
     first year of its returns table: enforced returns, voluntary returns, and
@@ -816,6 +817,7 @@ series:
       label: Returns by type
       unit: count
       valueLabel: Returns recorded that year
+      unitInHeading: true
       lines:
         - name: Enforced returns
           points:

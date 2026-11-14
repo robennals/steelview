@@ -668,7 +668,8 @@ sources:
     publisher: Georgia Secretary of State
     date: '2020-12-29'
 series:
-  title: 'Returned mail ballots rejected in US general elections, and why, 2012–2024'
+  title: 'Rejected mail ballots'
+  subtitle: 'Share of returned mail ballots rejected, and why, 2012–2024'
   description: >-
     The share of returned mail (before 2016, absentee) ballots that states
     rejected in each November general election, and the share of those
@@ -734,6 +735,7 @@ series:
       label: Share of returned mail ballots rejected
       unit: percent
       valueLabel: Rejected, % of returned mail ballots
+      unitInHeading: true
       note: >-
         Each point is the national rejection rate printed in that cycle's
         report: 2012 and 2014 as a share of absentee ballots submitted for

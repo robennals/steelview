@@ -448,7 +448,8 @@ sources:
     publisher: Gallup
     date: '2024-10-23'
 series:
-  title: 'Support for requiring photo ID, and for automatic registration, by party (Pew), 2018–2025'
+  title: 'Support for photo ID and automatic registration'
+  subtitle: 'By party, Pew surveys, 2018–2025'
   description: >-
     Share of US adults who favour requiring all voters to show government-issued
     photo identification, and who favour automatically registering all eligible

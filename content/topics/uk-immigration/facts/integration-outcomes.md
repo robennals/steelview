@@ -722,7 +722,8 @@ sources:
     publisher: 'Kashyap and Lewis, Ethnic and Racial Studies 36(12)'
     date: '2012-04-26'
 series:
-  title: 'Foreign-born share of the resident population, England and Wales, Census 1951–2021'
+  title: 'Foreign-born share of the population'
+  subtitle: 'England and Wales, census years 1951–2021'
   description: >-
     The share of people usually living in England and Wales who were born outside the UK,
     at selected Censuses. Shown for each Census for which the Office for National
@@ -757,6 +758,7 @@ series:
       label: Born outside the UK
       unit: percent
       valueLabel: Share of usual residents born outside the UK
+      unitInHeading: true
       source:
         stance: supports
         quote: >-
