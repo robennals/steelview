@@ -18,7 +18,7 @@ export default defineConfig({
   // the environment variable of that name. It is built from a string because
   // tsconfig's ES2017 target rejects a named group in a regex literal.
   webServer: {
-    command: 'pnpm build && pnpm start',
+    command: 'pnpm build:if-changed && pnpm start',
     wait: { stdout: new RegExp(String.raw`(?<PLAYWRIGHT_TEST_BASE_URL>http://localhost:\d+)[\s\S]*Ready in`) },
     timeout: 180_000,
   },
