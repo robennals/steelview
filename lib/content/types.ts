@@ -114,3 +114,14 @@ export function topicPath(slug: string): string {
 export function factPath(slug: string, factId: string): string {
   return `/topics/${slug}/facts/${factId}`;
 }
+
+/** What a topic page's hash starts with when it should open one chart in a sheet on arrival. */
+export const EXPLORE_HASH = 'explore=';
+
+/**
+ * The topic page, opening the chart `chart` of `factId` in a sheet, as a
+ * viewpoint's "Explore this data" does: where a home-page preview's title leads.
+ */
+export function explorePath(slug: string, factId: string, chart: string): string {
+  return `${topicPath(slug)}#${EXPLORE_HASH}${factId}--chart-${chart}`;
+}

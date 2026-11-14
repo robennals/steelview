@@ -84,6 +84,19 @@ test('a preview is its title and bars: the value label and credit stay on the fu
   assert.doesNotMatch(html, /sv-chart__credit/);
 });
 
+test('a row subtitle is drawn under its label, in the full chart and the preview alike', () => {
+  const withSubtitle = { ...chart, items: chart.items.map((item, i) => i === 0 ? { ...item, subtitle: 'Iraq, 2003–2010' } : item) };
+  for (const html of [render(withSubtitle), renderPreview(withSubtitle)]) {
+    assert.match(html, new RegExp(`<span class="sv-comparison__name">${chart.items[0].label}</span><span class="sv-comparison__subtitle">Iraq, 2003–2010</span>`));
+  }
+});
+
+test('a chart subtitle is drawn under the title, in the full chart and the preview alike', () => {
+  for (const html of [render({ ...chart, subtitle: 'Since 2001' }), renderPreview({ ...chart, subtitle: 'Since 2001' })]) {
+    assert.match(html, /<\/h[23]><p class="sv-chart__subtitle">Since 2001<\/p>/);
+  }
+});
+
 test('a dense preview keeps every item and states the highlighted one\'s rank', () => {
   const items = Array.from({ length: 32 }, (_, i) => ({ label: i === 16 ? 'United Kingdom' : `Country ${i}`, value: 40 - i, highlight: i === 16 || undefined }));
   const html = renderPreview({ id: 'per-person', title: 'Per person', description: 'd', unit: 'count', valueLabel: 'Per 10,000', sources: [1], items });

@@ -44,7 +44,7 @@ export function ObservationStep({ observations, more = '', addressed = false, ch
   // be sent to one by a link, which is asking to read it, so it opens too.
   const shown = useContext(ShownObservation);
   const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => observations.some(o => o.id === shown));
   const [jumps, setJumps] = useState(0);
   const [followed, setFollowed] = useState(shown);
   if (followed !== shown) {
@@ -114,19 +114,21 @@ export function ObservationBar() {
   const step = useContext(Step);
   const ref = useRef<HTMLDivElement>(null);
   const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
-  const shown = enhanced ? step?.observations[step.index] : undefined;
+  // Only an opened observation marks the chart: a closed one is a heading the
+  // reader has not chosen yet, and the whole chart stays in view under it.
+  const marked = enhanced && step?.open ? step.observations[step.index] : undefined;
 
   // The chart can redraw under the mark, as when a table is sorted, so it is reapplied.
   useEffect(() => {
     const root = ref.current?.closest('.sv-walk__step');
     if (!root) return;
-    const apply = () => markChart(root, shown);
+    const apply = () => markChart(root, marked);
     apply();
     revealPicked(root);
     const redraws = new MutationObserver(apply);
     redraws.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ['data-row'] });
     return () => redraws.disconnect();
-  }, [shown]);
+  }, [marked]);
 
   const jumps = step?.jumps ?? 0;
   useEffect(() => {

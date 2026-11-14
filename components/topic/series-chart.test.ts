@@ -133,9 +133,29 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   assert.doesNotMatch(html, new RegExp(`>${people.label}<`));
   assert.doesNotMatch(html, /sv-chart__credit/);
   assert.match(html, /data-variant="preview"/);
+  // The unit stays, since the graph's axis means nothing without it; the period does not.
+  assert.match(html, new RegExp(`<p class="sv-chart__axis-label">${share.valueLabel}</p>`));
   assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run">${fact.series!.title}</a></h3>`));
   assert.doesNotMatch(html, /aria-pressed/);
   assert.doesNotMatch(html, /href="#/);
+});
+
+test('a series subtitle is drawn under the title, in the full chart and the preview alike', () => {
+  const series = { ...oilSeries(), subtitle: 'Daily prices, 2026' };
+  for (const preview of [undefined, { href: '/x' }]) {
+    const html = renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, preview }));
+    assert.match(html, /<\/h[23]><p class="sv-chart__subtitle">Daily prices, 2026<\/p>/);
+  }
+});
+
+test('a preview leaves out the value label when the title already says what is counted', () => {
+  const plain = oilSeries();
+  const named = { ...plain, readings: plain.readings.map(r => ({ ...r, unitInTitle: true })) };
+  const draw = (series: Series, preview?: { href: string }) => renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, preview }));
+  assert.match(draw(plain, { href: '/x' }), /sv-chart__axis-label/);
+  assert.doesNotMatch(draw(named, { href: '/x' }), /sv-chart__axis-label/);
+  // The full chart keeps it, with the period.
+  assert.match(draw(named), /<p class="sv-chart__axis-label">[^<]*, by /);
 });
 
 test('a preview\'s screen-reader description mentions no event strip or method-change section it does not draw', async () => {

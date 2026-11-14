@@ -749,7 +749,8 @@ sources:
     publisher: U.S. National Archives
     date: '1787-09-17'
 series:
-  title: 'House votes on resolutions to end the Iran war, by party, March–September 2026'
+  title: 'House votes to end the war'
+  subtitle: 'Each House vote on withdrawing US forces, March–September 2026'
   description: >-
     Every House roll call on a concurrent resolution directing the President to
     remove US forces from hostilities with Iran, 5 March to 15 September 2026.
