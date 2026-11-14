@@ -54,7 +54,7 @@ import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { ComparisonChart } from './comparison-chart';
 import { ChartSources } from './chart-sources';
 import { Prose } from './prose';
-import { SeriesChart } from './series-chart';
+import { methodChangesReadingId, SeriesChart } from './series-chart';
 import { SourcesSlot } from './sources-slot';
 
 /** What a figure needs from the topic around its fact. */
@@ -67,21 +67,21 @@ export type FigurePage = {
 };
 
 /**
- * One chart of a data panel in full: its controls and method changes, for one
- * reading of a series. Its observations come from the step it sits in, and its
- * sources row from the `SourcesSlot` around it. Its other source links lead to
+ * One chart of a data panel in full: its controls and method changes, and for
+ * a series every reading, behind its "Show as" switch. Its observations come
+ * from the step it sits in, and its sources row from the `SourcesSlot` around it. Its other source links lead to
  * the sources themselves, since a panel on a topic page has no list to link to.
  */
 export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigurePage }) {
-  const { fact, chart, reading: only } = slide;
+  const { fact, chart } = slide;
   const sources = factSources(fact);
   const index = chart === 'series' ? -1 : (fact.additionalSeries ?? []).findIndex(s => s.id === chart);
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.[index];
   if (series) {
     const sourceOffset = seriesSourceOffset(fact, index);
-    const reading = series.readings.find(r => r.id === only) ?? series.readings[0];
-    const method = methodChanges(fact.id, reading.id, unmeasuredSpan(series), n => sources[n - 1].url);
-    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} onlyReading={reading.id} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={markedObservations(fact, reading.id)} />;
+    const method = methodChanges(fact.id, methodChangesReadingId(series), unmeasuredSpan(series), n => sources[n - 1].url);
+    const marks = Object.fromEntries(series.readings.map(r => [r.id, markedObservations(fact, r.id)]));
+    return <SeriesChart factId={fact.id} chartId={chart === 'series' ? undefined : chart} series={series} sourceOffset={sourceOffset} sources={sources} panel notes={<Prose html={method} className="sv-graph-observations" />} marks={marks} />;
   }
   const comparison = fact.comparisons?.find(c => c.id === chart);
   if (comparison) return <ComparisonChart fact={fact} chart={comparison} sources={[]} panel />;

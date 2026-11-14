@@ -21,7 +21,8 @@ test.describe('with JavaScript disabled', () => {
     await page.goto(factUrl(HEADLINE));
     const fact = page.locator('article.sv-factpage');
 
-    // One step of the data panel per reading, each drawn in place.
+    // Every reading of every series, each drawn in place: without script a
+    // series' "Show as" switch draws its readings one after another.
     const charts = fact.locator('.sv-walk__slide .sv-chart__reading .sv-chart__svg[data-variant="narrow"]');
     expect(await charts.count()).toBeGreaterThan(2);
 
@@ -49,7 +50,8 @@ test.describe('with JavaScript disabled', () => {
 
 test('the chart marks the breaks rather than smoothing them', async ({ page }) => {
   const chart = await openChart(page, HEADLINE, 'people');
-  await expect(chart.locator('.sv-chart__range')).toContainText('Full published range: 1964–2025');
+  // The range is the whole series', said once above its "Show as" switch.
+  await expect(page.locator(`[id="${HEADLINE}--chart-series"] .sv-chart__range`)).toContainText('Full published range: 1964–2025');
 
   // Three definitional breaks, each marked on the plot as a measurement change.
   const visiblePlot = chart.locator('.sv-chart__svg:visible').first();

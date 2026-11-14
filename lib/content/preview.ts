@@ -1,3 +1,4 @@
+import { plotReadingId } from '@/lib/chart/series-chart';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { ComponentFigure, Fact, Series, Topic } from './types';
 
@@ -90,28 +91,31 @@ export function resolvePreviews(topic: Topic): PreviewSlide[] {
 }
 
 /**
- * The id a chart's Observations and Subtleties are filed under: the reading it
- * draws, the only reading of a one-reading series, or the chart itself.
+ * The ids a slide's Observations and Subtleties are filed under: each reading a
+ * series slide can show, in order (for a preview, the plot that draws its
+ * reading, with any reading drawn alongside; else all of them, between which
+ * the reader switches), or the chart itself.
  */
-export function slideGroup(fact: Fact, { chart, reading }: Pick<PreviewSlide, 'chart' | 'reading'>): string {
+export function slideGroups(fact: Fact, { chart, reading }: Pick<PreviewSlide, 'chart' | 'reading'>): string[] {
   const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
-  return reading ?? series?.readings[0].id ?? chart;
+  if (!series) return [chart];
+  if (!reading) return series.readings.map(r => r.id);
+  const plot = series.readings.find(r => r.id === plotReadingId(series, reading));
+  return plot ? [plot.id, ...(plot.alongside ? [plot.alongside] : [])] : [reading];
 }
 
 /**
  * Every chart a data collection draws, in the order its page shows them: the
  * order of its `figures` if it has them, or else the main series, any further
- * series, then its comparisons. A series with several readings is a slide per
- * reading, since each reading has observations of its own and a slide draws
- * only one. Library figures (a table of rulings, a timeline) are slides too, so
+ * series, then its comparisons. A series with several readings is one slide,
+ * which shows one reading at a time with a "Show as" switch between them, so
+ * another way of reading the same data is always a click away rather than a
+ * separate chart. Library figures (a table of rulings, a timeline) are slides too, so
  * a collection of laws and statements can be walked through like one of numbers.
  */
 export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
-  const slide = (chart: string, label: string, reading?: string): PreviewSlide =>
-    ({ fact, chart, reading, label, href: `${factPath(slug, fact.id)}#${fact.id}--chart-${reading ?? chart}` });
-  const seriesSlides = (chart: string, series: NonNullable<Fact['series']>) => series.readings.length === 1
-    ? [slide(chart, series.title)]
-    : series.readings.map(reading => slide(chart, `${series.title}: ${reading.label}`, reading.id));
+  const slide = (chart: string, label: string): PreviewSlide =>
+    ({ fact, chart, label, href: `${factPath(slug, fact.id)}#${fact.id}--chart-${chart}` });
   const comparisonSlide = (id: string) => {
     const comparison = fact.comparisons?.find(c => c.id === id);
     return comparison ? [slide(comparison.id, comparison.title)] : [];
@@ -120,15 +124,15 @@ export function factSlides(slug: string, fact: Fact): PreviewSlide[] {
     return fact.figures.flatMap(figure => {
       if (figure.kind === 'series') {
         const series = figure.id ? fact.additionalSeries?.find(s => s.id === figure.id) : fact.series;
-        return series ? seriesSlides(figure.id ?? 'series', series) : [];
+        return series ? [slide(figure.id ?? 'series', series.title)] : [];
       }
       if (figure.kind === 'comparison') return comparisonSlide(figure.id);
       return isComponentFigure(figure) ? [slide(figure.id, figureLabel(figure))] : [];
     });
   }
   return [
-    ...(fact.series ? seriesSlides('series', fact.series) : []),
-    ...(fact.additionalSeries ?? []).flatMap(s => seriesSlides(s.id, s)),
+    ...(fact.series ? [slide('series', fact.series.title)] : []),
+    ...(fact.additionalSeries ?? []).map(s => slide(s.id, s.title)),
     ...(fact.comparisons ?? []).flatMap(c => comparisonSlide(c.id)),
   ];
 }

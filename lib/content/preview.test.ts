@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { listTopicSlugs, loadTopic } from './load';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
-import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews, slideGroup } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, resolvePreviews, slideGroups } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure } from './types';
 import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, viewpointWalkthrough } from './walkthrough';
@@ -67,15 +67,36 @@ test('a data step answers to its chart\'s address and to each anchor its figure 
   ]);
 });
 
-test('the readings of one series leave a shared address to the first of them', async () => {
+test('a series with several readings is one slide, which every reading\'s addresses open', async () => {
   const topic = figureExamplesTopic();
   const fact = topic.facts[0];
   const reading = (label: string, id: string) => ({ ...fact.series!.readings[0], id, label });
-  const two = { ...fact, series: { ...fact.series!, readings: [reading('One', 'one'), reading('Two', 'two')] } };
-  const [first, second] = (await renderDataWalkthroughs(topic, [two])).get(fact.id)!.filter(s => s.chart?.chart === 'series');
-  assert.ok(first.anchors.includes(`${fact.id}--chart-series`));
-  assert.ok(first.anchors.includes(`${fact.id}--viz-series`));
-  assert.deepEqual(second.anchors, [`${fact.id}--chart-two`, `${fact.id}--observations-two`, `${fact.id}--subtleties-two`]);
+  const two = { ...fact, series: { ...fact.series!, readings: [reading('One', 'one'), reading('Two', 'two')] }, movedAnchors: { 'chart-old': 'two' } };
+  const steps = (await renderDataWalkthroughs(topic, [two])).get(fact.id)!.filter(s => s.chart?.chart === 'series');
+  assert.equal(steps.length, 1);
+  const [step] = steps;
+  // Each view knows its own addresses, an old one moved to it included, so a link to one opens that view.
+  const address = (...anchors: string[]) => anchors.map(anchor => `${fact.id}--${anchor}`);
+  assert.deepEqual(step.views, [
+    { id: 'one', label: 'One', anchors: address('chart-one', 'observations-one', 'subtleties-one') },
+    { id: 'two', label: 'Two', anchors: address('chart-two', 'observations-two', 'subtleties-two', 'chart-old') },
+  ]);
+  for (const anchor of ['chart-series', 'viz-series', 'chart-one', 'chart-two', 'observations-two', 'subtleties-two']) {
+    assert.ok(step.anchors.includes(`${fact.id}--${anchor}`), anchor);
+  }
+});
+
+test('each observation on a series with several readings names the reading it is about, in reading order', async () => {
+  const topic = figureExamplesTopic();
+  const fact = topic.facts[0];
+  const reading = (label: string, id: string) => ({ ...fact.series!.readings[0], id, label });
+  const body = [
+    '## Observations {#report--observations-two}', '', '### About two {#report--about-two}', '', 'Two.', '',
+    '## Observations {#report--observations-one}', '', '### About one {#report--about-one}', '', 'One.',
+  ].join('\n');
+  const two = { ...fact, id: 'report', body, figures: undefined, series: { ...fact.series!, readings: [reading('One', 'one'), reading('Two', 'two')] } };
+  const [step] = (await renderDataWalkthroughs(topic, [two])).get('report')!;
+  assert.deepEqual(step.observations.map(o => [o.id, o.view]), [['report--about-one', 'one'], ['report--about-two', 'two']]);
 });
 
 test('an observation keeps its footnotes on the report\'s own page, and only there', async () => {
@@ -113,7 +134,7 @@ test('a chart\'s sources are what it draws and what its text cites, and the firs
   const fact = topic.facts[0];
   const slides = factSlides(topic.slug, fact);
   const last = slides.at(-1)!;
-  const key = slideGroup(fact, last);
+  const [key] = slideGroups(fact, last);
   const body = `## Subtleties {#${fact.id}--subtleties-${key}}\n\n### A catch {#${fact.id}--catch}\n\nWhy. [1](#source-${fact.id}-1)\n\n## More {#${fact.id}--more-${key}}\n\nMore. [2](#source-${fact.id}-2)`;
   const cited = factCitations({ ...fact, body, claimSources: [2] }, slides);
   assert.ok(cited.at(-1)!.includes(1) && cited.at(-1)!.includes(2));
