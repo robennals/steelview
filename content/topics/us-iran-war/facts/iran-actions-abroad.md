@@ -244,7 +244,8 @@ sources:
     publisher: Al Jazeera
     date: '2024-03-04'
 series:
-  title: 'Confirmed attacks on US and coalition forces in Iraq and Syria by Iran-aligned militias, by month, October 2023 – December 2024'
+  title: 'Attacks on US forces in Iraq and Syria'
+  subtitle: 'Confirmed attacks by Iran-aligned militias, Oct 2023 – Dec 2024'
   description: >-
     Attacks the Washington Institute's Militia Spotlight tracker confirmed and
     gave a serial number, by month. Claimed attacks on Israel are excluded.
@@ -298,7 +299,8 @@ series:
           points: [{period: '2023-10', value: 32}, {period: '2023-11', value: 58}, {period: '2023-12', value: 38}, {period: '2024-01', value: 52}, {period: '2024-02', value: 2}, {period: '2024-03', value: 0}, {period: '2024-04', value: 2}, {period: '2024-05', value: 0}, {period: '2024-06', value: 0}, {period: '2024-07', value: 4}, {period: '2024-08', value: 3}, {period: '2024-09', value: 7}, {period: '2024-10', value: 16}, {period: '2024-11', value: 8}, {period: '2024-12', value: 1}]
 comparisons:
   - id: yemen-panel-matched-materiel
-    title: 'Houthi materiel inspected by the UN Panel of Experts, by where similar items are developed or operated, 2023–24'
+    title: 'Houthi materiel inspected by UN experts'
+    subtitle: 'By where similar items are developed or operated, UN panel, 2023–24'
     description: 'Number of inspected items the Panel found strongly similar to materiel developed or operated by each state or group, in its final report of October 2024.'
     unit: count
     valueLabel: 'Inspected items'
@@ -347,8 +349,8 @@ figures:
     id: "yemen-panel-matched-materiel"
   - kind: "timeline"
     id: "court-record"
-    title: >-
-      Court findings, convictions and charges over Iran-linked plots, 2011–2026
+    title: Court cases over Iran-linked plots
+    subtitle: Court findings, convictions and charges, 2011–2026
     description: "Court rulings and convictions are shown separately from charges, which are allegations that have not been tested in court."
     note: "Each entry is as of the date shown, except the first Alinejad case, whose status is as of 30 October 2025."
     categories:
@@ -365,7 +367,8 @@ figures:
       - { date: "2026-09-21", title: "AMIA bombing: seven Iranians and a Lebanese charged, including four former officials", description: "Argentine federal judge (Rafecas): charged as indirect perpetrators; trial in absentia under constitutional challenge.", category: "charge", source: 2 }
   - kind: "timeline"
     id: "state-sponsors"
-    title: US list of state sponsors of terrorism, by date designated
+    title: US list of state sponsors of terrorism
+    subtitle: Each country on the list, by the date it was designated
     description: "The US list as last readable on state.gov, a copy captured on 31 December 2025."
     categories:
       - { id: "designated", label: "Designated" }
@@ -376,8 +379,9 @@ figures:
       - { date: "2021-01-12", title: "Cuba", category: "designated", source: 8 }
   - kind: "dataTable"
     id: "plot-counts"
-    title: "Plots abroad attributed to Iran, in one author's dataset"
-    description: "Counts by Matthew Levitt of the Washington Institute, from open sources. He calls the dataset \"in no way a comprehensive listing\", and target categories overlap, so they do not add to the total."
+    title: "Plots abroad attributed to Iran"
+    subtitle: "Counts in one author's dataset: Matthew Levitt, Washington Institute"
+    description: "Counts Levitt compiled from open sources. He calls the dataset \"in no way a comprehensive listing\", and target categories overlap, so they do not add to the total."
     caption: "One row per count"
     columns:
       - { key: "measure", label: "Measure", rowHeader: true, sortable: false }
@@ -397,7 +401,8 @@ figures:
       - { measure: "Of which used criminal perpetrators", count: { value: 16, sources: [12], asPublished: "sixteen" }, period: "2021–2024" }
   - kind: "keyFigures"
     id: "mi5"
-    title: "MI5's statements on Iran-backed plots in the UK"
+    title: "MI5 on Iran-backed plots in the UK"
+    subtitle: "MI5's own statements, October 2025 and October 2026"
     description: "MI5's own totals, published without a case list or definitions, measuring different things over different years."
     figures:
       - { value: 20, qualifier: "more than", asPublished: "more than twenty", format: { unit: "count" }, label: "potentially lethal Iran-backed plots tracked", period: "2025-10-16", periodLabel: "The year to Oct 2025", source: 14 }

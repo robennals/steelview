@@ -814,7 +814,8 @@ series:
           points: [{period: '2026-03-05', value: 4}, {period: '2026-04-16', value: 1}, {period: '2026-05-14', value: 1}, {period: '2026-06-03', value: 0}, {period: '2026-07-23', value: 0}, {period: '2026-09-15', value: 0}]
 additionalSeries:
   - id: senate-votes-series
-    title: 'Senate votes on measures to end the Iran war, by party, March–September 2026'
+    title: 'Senate votes to end the war'
+    subtitle: 'Each war-powers roll call, by party, March–September 2026'
     description: >-
       All 14 Senate roll calls on Iran war-powers measures, 4 March to 24
       September 2026: motions to discharge or proceed to joint resolutions, and
@@ -875,9 +876,8 @@ additionalSeries:
           - name: Democrats voting no
             points: [{period: '2026-03-04', value: 1}, {period: '2026-03-18', value: 1}, {period: '2026-03-24', value: 1}, {period: '2026-04-15', value: 1}, {period: '2026-04-22', value: 1}, {period: '2026-04-30', value: 1}, {period: '2026-05-13', value: 1}, {period: '2026-05-19', value: 1}, {period: '2026-06-16', value: 1}, {period: '2026-06-23', value: 1}, {period: '2026-06-24', value: 1}, {period: '2026-07-30', value: 1}, {period: '2026-09-24', value: 1}]
   - id: pew-approval-series
-    title: >-
-      US approval of the Iran war in Pew's surveys, with the war's main events,
-      March–October 2026
+    title: 'US approval of the Iran war'
+    subtitle: "Pew's surveys, March and October 2026, with the war's main events"
     description: >-
       Share of US adults who approve of President Trump's handling of the
       military action against Iran, and who say using force was the right
@@ -970,6 +970,7 @@ additionalSeries:
         label: 'Approve of Trump''s handling'
         unit: percent
         valueLabel: '% who approve'
+        unitInHeading: true
         lines:
           - name: All adults
             points: [{period: '2026-03', value: 37}, {period: '2026-10', value: 33}]
@@ -989,8 +990,9 @@ additionalSeries:
             points: [{period: '2026-03', value: 71}, {period: '2026-10', value: 65}]
 comparisons:
   - id: war-powers-reports-1975-2017
-    title: 'War Powers reports by presidents, and those that started the 60-day clock, 1975–March 2017'
-    description: 'Reports submitted to Congress under the War Powers Resolution from 1975 to March 2017, and the number that cited section 4(a)(1), which starts the 60-day withdrawal requirement (CRS).'
+    title: 'War Powers reports to Congress'
+    subtitle: 'All reports, and those that started the 60-day clock, 1975–March 2017'
+    description: 'Reports presidents submitted to Congress under the War Powers Resolution, and the number that cited section 4(a)(1), which starts the 60-day withdrawal requirement (CRS).'
     unit: count
     valueLabel: 'Reports'
     sources: [11]
@@ -1030,7 +1032,8 @@ figures:
     id: "senate-votes-series"
   - kind: "dataTable"
     id: "war-votes"
-    title: Every vote Congress held on the Iran war that the report found, March–September 2026
+    title: Every vote Congress held on the war
+    subtitle: House and Senate floor votes the report found, March–September 2026
     description: "Floor votes in the House and Senate on measures about the war, from the House Clerk's roll calls and the Senate's vote list to 10 October 2026. Each would have ended the war or brought a measure to end it to the floor; none would have approved it."
     caption: "One row per vote"
     columns:
@@ -1064,7 +1067,8 @@ figures:
   - kind: compositionBar
     id: gallup-june-by-party
     valuesFrom: "Gallup's final topline, question 24, party table"
-    title: Approval of the US military action against Iran, by party (Gallup), June 2026
+    title: Approval of the war, by party
+    subtitle: Gallup poll of US adults, 1–15 June 2026
     description: Share of US adults who approve or disapprove of "this U.S. military action against Iran"
       (Gallup, telephone, 1–15 June 2026, 1,001 adults).
     rowLabel: Group
@@ -1089,7 +1093,8 @@ figures:
   - kind: compositionBar
     id: quinnipiac-march-by-party
     valuesFrom: "Quinnipiac's release of 9 March 2026, question 10"
-    title: Support for the US military action against Iran, by party (Quinnipiac), March 2026
+    title: Support for the war, by party
+    subtitle: Quinnipiac poll of registered voters, 6–8 March 2026
     description: Share of registered voters who support or oppose "the U.S. military action against Iran"
       (Quinnipiac, 6–8 March 2026, 1,002 registered voters).
     rowLabel: Group
@@ -1113,9 +1118,8 @@ figures:
   - kind: compositionBar
     id: quinnipiac-congress-approval
     valuesFrom: "Quinnipiac's release of 9 March 2026, question 15"
-    title: >-
-      Should the President have received Congress's approval before acting
-      against Iran? By party (Quinnipiac), March 2026
+    title: Should the President have asked Congress?
+    subtitle: Registered voters by party, Quinnipiac poll, 6–8 March 2026
     description: Answers of registered voters to "Do you think President Trump should have received approval
       from Congress before taking military action against Iran, or not?" (Quinnipiac, 6–8 March 2026).
     rowLabel: Group
@@ -1149,7 +1153,8 @@ figures:
       - { text: "will not be attacking Iran at any time prior to the Midterm Elections … having productive discussions with the Islamic Republic of Iran", speaker: "Donald Trump, President", context: "Social media post", date: "2026-10-08", source: 42 }
   - kind: periodTimeline
     id: war-powers-letters
-    title: The President's War Powers letters on the Iran war, 2026
+    title: The President's War Powers letters
+    subtitle: 2026, against the ceasefire, memorandum, blockade and pledge
     description: Each letter the President sent Congress under the War Powers Resolution in 2026, numbered
       on the line under the bars, against when the ceasefire, the memorandum, the blockade and the pledge
       not to strike were in force. Letters from June on report new military action. Bars without an end
@@ -1210,7 +1215,8 @@ figures:
       June; ISW/CTP calls it "the June 18 MoU". The pledge bar starts with the President's post of 8 October.
   - kind: "timeline"
     id: "war-powers-letters-said"
-    title: What the President's War Powers letters said, 2026
+    title: What the War Powers letters said
+    subtitle: The President's letters to Congress on the war, 2026
     description: "Each letter's own words where it could be read; the 1 May letter is known only through quotation."
     categories:
       - { id: "report", label: "Report of military action" }
@@ -1233,8 +1239,8 @@ figures:
       - { text: "refusal to seek congressional authorization before the 60-day mark", speaker: "Lawfare", context: "On the Trump administration", date: "2026-05-08", source: 10 }
   - kind: "dataTable"
     id: "earlier-votes"
-    title: >-
-      US uses of force without authorisation, and Congress's votes, 2011–2026
+    title: Congress and unauthorised uses of force
+    subtitle: Votes on US operations, 2011–2026, and research on Congress's effect
     description: "The main roll calls found on these operations, the count of all uses of force since 1798, and one study of Congress's effect."
     caption: "One row per vote or count"
     columns:
@@ -1252,7 +1258,8 @@ figures:
       - { operation: "All uses of force, 1798–2023", result: { value: "\"Hundreds of instances\"; 11 declarations of war covering five wars", sources: [19] } }
   - kind: "timeline"
     id: "ceasefire-incidents"
-    title: The US–Iran ceasefire record, April–July 2026
+    title: The US–Iran ceasefire record
+    subtitle: April–July 2026
     description: "Attacks, strikes and agreements during the ceasefire, from the President's letters and ISW/CTP. No Iranian or neutral record was found."
     categories:
       - { id: "iran", label: "Iran acted" }
@@ -1273,7 +1280,8 @@ figures:
       - { date: "2026-07-14", title: "Blockade reimposed", category: "us", sources: [34, 50] }
   - kind: "timeline"
     id: "negotiations"
-    title: US–Iran negotiations and agreements, 2016–2026
+    title: US–Iran negotiations and agreements
+    subtitle: 2016–2026
     description: "The talks and agreements between the US and Iran, from the 2015 deal to the latest proposals."
     categories:
       - { id: "talks", label: "Talks and proposals" }
@@ -1300,7 +1308,8 @@ figures:
       - { text: "exercise wisdom and pursue political solutions", speaker: "UAE foreign ministry", date: "2026-10-28", source: 49 }
   - kind: "timeline"
     id: "latest"
-    title: The latest events in the Iran war, July–October 2026
+    title: The latest events in the war
+    subtitle: July–October 2026
     description: "Assessments and reports since the ceasefire ended. Most come from one source, named on each entry, and are not official findings."
     categories:
       - { id: "rearming", label: "Iran's forces, as assessed" }

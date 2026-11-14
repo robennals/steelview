@@ -429,7 +429,8 @@ sources:
     publisher: Arms Control Association
     date: '2023-01'
 series:
-  title: 'Turnout in presidential elections, Iran, 1980–2024'
+  title: "Turnout in Iran's presidential elections"
+  subtitle: 'First or only round, 1980–2024'
   description: >-
     Votes cast as a share of eligible voters in each presidential election's
     first (or only) round. The source changes in 2017, marked as a break.
@@ -489,12 +490,14 @@ series:
       label: 'Turnout, first or only round'
       unit: percent
       valueLabel: '% of eligible voters'
+      unitInHeading: true
       lines:
         - name: Turnout
           points: [{period: '1980-01', value: 67.42}, {period: '1981-07', value: 64.24}, {period: '1981-10', value: 74.26}, {period: '1985-08', value: 54.78}, {period: '1989-07', value: 54.59}, {period: '1993-06', value: 50.66}, {period: '1997-05', value: 79.92}, {period: '2001-06', value: 66.77}, {period: '2005-06', value: 62.84}, {period: '2009-06', value: 85.22}, {period: '2013-06', value: 76.25}, {period: '2017-05', value: 73}, {period: '2021-06', value: 48.8}, {period: '2024-06', value: 40}]
 additionalSeries:
   - id: candidate-vetting
-    title: 'Presidential candidates registered and allowed to run, Iran, 1980–2024'
+    title: "Iran's presidential candidates"
+    subtitle: 'How many registered and how many were allowed to run, 1980–2024'
     description: >-
       How many people registered for each presidential election and how many
       the Ministry of Interior and Guardian Council allowed to run, with the
@@ -535,6 +538,7 @@ additionalSeries:
         label: 'Candidates registered and allowed'
         unit: count
         valueLabel: 'Candidates'
+        unitInHeading: true
         lines:
           - name: Registered
             points: [{period: '1980-01', value: 124}, {period: '1981-07', value: 71}, {period: '1981-10', value: 46}, {period: '1985-08', value: 50}, {period: '1989-07', value: 79}, {period: '1993-06', value: 128}, {period: '1997-05', value: 238}, {period: '2001-06', value: 814}, {period: '2005-06', value: 1014}, {period: '2009-06', value: 475}, {period: '2013-06', value: 686}, {period: '2017-05', value: 1636}, {period: '2021-06', value: 592}, {period: '2024-06', value: 80}]
@@ -630,7 +634,8 @@ additionalSeries:
           - name: IHRNGO
             points: [{period: '2008', value: 350}, {period: '2009', value: 402}, {period: '2010', value: 546}, {period: '2011', value: 676}, {period: '2012', value: 580}, {period: '2013', value: 687}, {period: '2014', value: 753}, {period: '2015', value: 972}, {period: '2016', value: 530}, {period: '2017', value: 517}, {period: '2018', value: 273}, {period: '2019', value: 280}, {period: '2020', value: 267}, {period: '2021', value: 333}, {period: '2022', value: 582}, {period: '2023', value: 834}, {period: '2024', value: 975}, {period: '2025', value: 1639}]
   - id: hrana-annual-series
-    title: 'Executions per October-to-October year in Iran, counted by HRANA, 2016–17 to 2025–26'
+    title: 'Executions per year in Iran, by HRANA'
+    subtitle: 'By the group HRANA, October-to-October years, 2016–17 to 2025–26'
     description: >-
       Executions documented by HRANA's Statistics Center in each reporting year,
       which runs from about 10 October to 8 October. Each point is placed at the
@@ -670,7 +675,8 @@ additionalSeries:
           - name: HRANA
             points: [{period: '2017-10', value: 505}, {period: '2018-10', value: 265}, {period: '2019-10', value: 238}, {period: '2020-10', value: 249}, {period: '2021-10', value: 272}, {period: '2022-10', value: 528}, {period: '2023-10', value: 664}, {period: '2024-10', value: 823}, {period: '2025-10', value: 1553}, {period: '2026-10', value: 2003}]
   - id: hrana-monthly-series
-    title: 'Executions per month in Iran, all and political or security-related, counted by HRANA, October 2025 – October 2026'
+    title: 'Executions per month in Iran'
+    subtitle: 'All and political or security-related, by HRANA, Oct 2025 – Oct 2026'
     description: >-
       Executions HRANA documented in each month of its latest reporting year,
       and the subset on political and security-related charges. October 2025
@@ -723,6 +729,7 @@ additionalSeries:
         label: 'All executions'
         unit: count
         valueLabel: 'Executions per month'
+        unitInHeading: true
         lines:
           - name: All executions
             points: [{period: '2025-10', value: 200}, {period: '2025-11', value: 324}, {period: '2025-12', value: 404}, {period: '2026-01', value: 334}, {period: '2026-02', value: 282}, {period: '2026-03', value: 10}, {period: '2026-04', value: 30}, {period: '2026-05', value: 73}, {period: '2026-06', value: 114}, {period: '2026-07', value: 73}, {period: '2026-08', value: 85}, {period: '2026-09', value: 69}, {period: '2026-10', value: 5}]
@@ -730,11 +737,13 @@ additionalSeries:
         label: 'Political and security-related executions'
         unit: count
         valueLabel: 'Executions per month'
+        unitInHeading: true
         lines:
           - name: Political and security-related
             points: [{period: '2025-10', value: 1}, {period: '2025-11', value: 0}, {period: '2025-12', value: 1}, {period: '2026-01', value: 4}, {period: '2026-02', value: 0}, {period: '2026-03', value: 8}, {period: '2026-04', value: 14}, {period: '2026-05', value: 15}, {period: '2026-06', value: 5}, {period: '2026-07', value: 9}, {period: '2026-08', value: 6}, {period: '2026-09', value: 3}, {period: '2026-10', value: 3}]
   - id: gdp-growth-series
-    title: 'Economic growth in Iran, 1961–2025'
+    title: 'Economic growth in Iran'
+    subtitle: 'Change in real GDP on the previous year, 1961–2025'
     description: >-
       Annual change in real GDP. The 2015 nuclear deal's implementation and the
       US withdrawal are marked under the chart.
@@ -767,11 +776,13 @@ additionalSeries:
         label: 'Real GDP growth'
         unit: percent
         valueLabel: '% change on previous year'
+        unitInHeading: true
         lines:
           - name: GDP growth
             points: [{period: '1961', value: 10.4}, {period: '1962', value: 7.9}, {period: '1963', value: 7.0}, {period: '1964', value: 8.5}, {period: '1965', value: 17.0}, {period: '1966', value: 11.5}, {period: '1967', value: 11.3}, {period: '1968', value: 14.4}, {period: '1969', value: 15.5}, {period: '1970', value: 10.9}, {period: '1971', value: 13.7}, {period: '1972', value: 14.5}, {period: '1973', value: 7.4}, {period: '1974', value: 5.8}, {period: '1975', value: -0.3}, {period: '1976', value: 18.3}, {period: '1977', value: -2.8}, {period: '1978', value: -12.8}, {period: '1979', value: -12.0}, {period: '1980', value: -21.6}, {period: '1981', value: -5.7}, {period: '1982', value: 23.2}, {period: '1983', value: 11.1}, {period: '1984', value: -7.1}, {period: '1985', value: 1.9}, {period: '1986', value: -9.8}, {period: '1987', value: -0.2}, {period: '1988', value: -6.1}, {period: '1989', value: 6.1}, {period: '1990', value: 13.6}, {period: '1991', value: 12.7}, {period: '1992', value: 3.3}, {period: '1993', value: -1.5}, {period: '1994', value: -1.7}, {period: '1995', value: 2.4}, {period: '1996', value: 6.4}, {period: '1997', value: 1.4}, {period: '1998', value: 2.1}, {period: '1999', value: 2.0}, {period: '2000', value: 5.8}, {period: '2001', value: 2.4}, {period: '2002', value: 8.1}, {period: '2003', value: 8.6}, {period: '2004', value: 4.3}, {period: '2005', value: 3.2}, {period: '2006', value: 5.0}, {period: '2007', value: 8.2}, {period: '2008', value: 0.3}, {period: '2009', value: 1.0}, {period: '2010', value: 5.8}, {period: '2011', value: 2.6}, {period: '2012', value: -3.7}, {period: '2013', value: -1.5}, {period: '2014', value: 5.0}, {period: '2015', value: -1.4}, {period: '2016', value: 8.8}, {period: '2017', value: 3.0}, {period: '2018', value: -3.7}, {period: '2019', value: -2.4}, {period: '2020', value: 4.4}, {period: '2021', value: 4.1}, {period: '2022', value: 4.4}, {period: '2023', value: 5.3}, {period: '2024', value: 3.7}, {period: '2025', value: -2.8}]
   - id: inflation-series
-    title: 'Consumer price inflation in Iran, 1960–2025'
+    title: 'Consumer price inflation in Iran'
+    subtitle: 'Change in consumer prices on the previous year, 1960–2025'
     description: >-
       Annual change in consumer prices. The 2015 nuclear deal's implementation
       and the US withdrawal are marked under the chart.
@@ -804,14 +815,14 @@ additionalSeries:
         label: 'Consumer price inflation'
         unit: percent
         valueLabel: '% change on previous year'
+        unitInHeading: true
         lines:
           - name: Inflation
             points: [{period: '1960', value: 9.8}, {period: '1961', value: 3.2}, {period: '1962', value: 0.7}, {period: '1963', value: 0.4}, {period: '1964', value: 3.8}, {period: '1965', value: 2.2}, {period: '1966', value: -0.4}, {period: '1967', value: 1.6}, {period: '1968', value: 0.7}, {period: '1969', value: 3.6}, {period: '1970', value: 1.7}, {period: '1971', value: 4.2}, {period: '1972', value: 6.4}, {period: '1973', value: 9.8}, {period: '1974', value: 14.2}, {period: '1975', value: 12.9}, {period: '1976', value: 11.3}, {period: '1977', value: 27.3}, {period: '1978', value: 11.7}, {period: '1979', value: 10.5}, {period: '1980', value: 20.6}, {period: '1981', value: 24.2}, {period: '1982', value: 18.7}, {period: '1983', value: 19.7}, {period: '1984', value: 12.5}, {period: '1985', value: 4.4}, {period: '1986', value: 18.4}, {period: '1987', value: 28.6}, {period: '1988', value: 28.7}, {period: '1989', value: 22.3}, {period: '1990', value: 7.6}, {period: '1991', value: 17.1}, {period: '1992', value: 25.8}, {period: '1993', value: 21.2}, {period: '1994', value: 31.4}, {period: '1995', value: 49.7}, {period: '1996', value: 28.9}, {period: '1997', value: 17.3}, {period: '1998', value: 17.9}, {period: '1999', value: 20.1}, {period: '2000', value: 14.5}, {period: '2001', value: 11.3}, {period: '2002', value: 14.3}, {period: '2003', value: 16.5}, {period: '2004', value: 14.8}, {period: '2005', value: 13.4}, {period: '2006', value: 10.0}, {period: '2007', value: 17.3}, {period: '2008', value: 25.4}, {period: '2009', value: 13.6}, {period: '2010', value: 10.1}, {period: '2011', value: 26.3}, {period: '2012', value: 27.3}, {period: '2013', value: 36.6}, {period: '2014', value: 16.6}, {period: '2015', value: 12.5}, {period: '2016', value: 7.2}, {period: '2017', value: 8.0}, {period: '2018', value: 18.0}, {period: '2019', value: 39.9}, {period: '2020', value: 30.6}, {period: '2021', value: 43.4}, {period: '2022', value: 43.5}, {period: '2023', value: 44.6}, {period: '2024', value: 32.5}, {period: '2025', value: 42.2}]
 comparisons:
   - id: january-2026-deaths
-    title: >-
-      Deaths in Iran's protests of 28 December 2025 – 15 February 2026, by
-      HRANA's category, as of 23 February 2026
+    title: "Deaths in Iran's 2025–26 protests"
+    subtitle: "By HRANA's category, 28 Dec 2025 – 15 Feb 2026, as of 23 February"
     description: 'All deaths HRANA had confirmed in the 50-day record, split into its categories. A further 11,744 cases were under review and are not included.'
     unit: count
     valueLabel: 'Deaths confirmed by HRANA'
@@ -832,7 +843,8 @@ comparisons:
       - label: Military and government forces
         value: 207
   - id: amnesty-executions-per-million-2025
-    title: Recorded executions per million residents by country, 2025
+    title: Executions per million residents
+    subtitle: By country, as recorded by Amnesty International, 2025
     description: 'Amnesty''s recorded executions in 2025 divided by each country''s 2025 population (World Bank).'
     unit: count
     valueLabel: 'Executions per million residents'
@@ -870,9 +882,8 @@ comparisons:
       - label: Japan
         value: 0.01
   - id: executions-per-president
-    title: >-
-      Average executions per month in Iran under each president, 2005–2025
-      (IHRNGO)
+    title: "Executions per month, by Iran's president"
+    subtitle: "Monthly average under each president, IHRNGO's count, 2005–2025"
     description: 'IHRNGO''s average monthly executions for each presidency, from Ahmadinejad (2005–2013) to Pezeshkian''s first 17 months (July 2024 – December 2025).'
     unit: count
     valueLabel: 'Executions per month'
@@ -890,7 +901,8 @@ comparisons:
         value: 135
         highlight: true
   - id: freedom-house-2026
-    title: 'Freedom in the World scores, 195 countries, 2026 edition (covering 2025)'
+    title: 'Freedom in the World scores'
+    subtitle: 'Freedom House, 195 countries, 2026 edition (covering 2025)'
     description: 'Freedom House''s aggregate score out of 100 for every country it rates, lowest first. Iran and Saudi Arabia are highlighted.'
     unit: count
     valueLabel: 'Score out of 100'
@@ -1098,9 +1110,8 @@ comparisons:
       - {label: "Sweden", value: 99}
       - {label: "Finland", value: 100}
   - id: gamaan-preferred-system
-    title: >-
-      Preferred form of political system in Iran, GAMAAN online survey, June
-      2026
+    title: 'Preferred political system in Iran'
+    subtitle: 'GAMAAN online survey of people inside Iran, June 2026'
     description: 'Answers to "Which form of political system do you prefer?" among respondents inside Iran, weighted to literate residents aged 15 and over (fieldwork 20–27 June 2026).'
     unit: percent
     valueLabel: '% of respondents'
@@ -1125,9 +1136,8 @@ comparisons:
       - label: 'Lack the knowledge to choose'
         value: 19.1
   - id: gamaan-war-views
-    title: >-
-      Views inside Iran of the war and the regime, GAMAAN online survey, June
-      2026
+    title: 'Views in Iran of the war and the regime'
+    subtitle: 'GAMAAN online survey of people inside Iran, June 2026'
     description: 'Share of respondents inside Iran agreeing with each statement (fieldwork 20–27 June 2026). Each bar is a separate question.'
     unit: percent
     valueLabel: '% of respondents'
@@ -1192,7 +1202,8 @@ figures:
     id: "inflation-series"
   - kind: barChart
     id: majlis-turnout
-    title: Turnout in parliamentary (Majlis) elections, Iran, 2016, 2020 and 2024
+    title: "Turnout in Iran's parliamentary elections"
+    subtitle: Majlis elections of 2016, 2020 and 2024, Interior Ministry figures
     description: Votes cast as a share of eligible voters, by the Interior Ministry's figures as reported
       by Al Jazeera.
     valueLabel: '% of eligible voters'
@@ -1212,7 +1223,8 @@ figures:
     id: "january-2026-deaths"
   - kind: "dataTable"
     id: "crackdown-deaths"
-    title: Deaths in Iran's crackdowns, by counter and method
+    title: Deaths in Iran's crackdowns
+    subtitle: By counter and method, June 2009 – February 2026
     description: "Each count comes from a different counter using a different method, so they cannot be read as one series."
     caption: "One row per count"
     columns:
@@ -1232,8 +1244,9 @@ figures:
       - { crackdown: "Dec 2025 – Feb 2026", counter: "Published names", count: "HRANA 4,555; government 3,038", method: "Named individuals", asof: { value: "26 Feb 2026", sources: [5] } }
   - kind: "dataTable"
     id: "arrests"
-    title: Arrests in Iran after crackdowns and outside attacks
-    description: "Arrests counted after the June 2025 war and during the January 2026 crackdown, by counter."
+    title: Arrests in Iran
+    subtitle: After the June 2025 war and in the January 2026 crackdown, by counter
+    description: "Each row is one counter's figure for one period."
     caption: "One row per count"
     columns:
       - { key: "period", label: "Period", rowHeader: true, sortable: false }
@@ -1248,7 +1261,8 @@ figures:
       - { period: "28 Dec 2025 – 15 Feb 2026", counter: "HRANA", arrests: "53,777", asof: { value: "23 Feb 2026", sources: [1] } }
   - kind: barChart
     id: amnesty-executions-2025
-    title: Recorded executions by country, 2025 (Amnesty International)
+    title: Executions by country
+    subtitle: As recorded by Amnesty International, 2025
     description: Executions Amnesty recorded in each of the 17 countries known to have executed people in
       2025. These are minimums.
     valueLabel: Executions recorded
@@ -1282,7 +1296,8 @@ figures:
     id: "amnesty-executions-per-million-2025"
   - kind: barChart
     id: iran-execution-counters
-    title: Executions in Iran by counter, 2023–2025
+    title: Executions in Iran, by counter
+    subtitle: IHRNGO and Amnesty International, 2023–2025
     description: IHRNGO and Amnesty International each publish a minimum count for Iran by calendar year.
       They are separate counts and differ, most of all for 2025.
     valueLabel: Executions (minimum)
@@ -1314,7 +1329,8 @@ figures:
     id: "gamaan-war-views"
   - kind: "timeline"
     id: "openings-and-reversals"
-    title: Openings and reversals in Iran, 2000–2026
+    title: Openings and reversals in Iran
+    subtitle: 2000–2026
     description: "Dated moves toward and away from openness in Iran, as the sources report them."
     categories:
       - { id: "opening", label: "Opening" }
