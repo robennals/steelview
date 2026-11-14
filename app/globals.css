@@ -1538,6 +1538,12 @@
     .sv-row__thumbs { display: none; }
     .sv-positions { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
+    /* Where a row has a tags line, the arrow sits smaller at its end, so the
+       title and overview get the head's whole width rather than wrapping
+       beside it. */
+    .sv-row__head:has(.sv-row__meta) .sv-row__chevron { position: absolute; top: 1.2rem; right: 1rem; width: 1.4rem; height: 1.4rem; }
+    .sv-row__head:has(.sv-row__meta) .sv-row__chevron::after { left: 50%; top: 50%; width: 0.4rem; height: 0.4rem; transform: translate(-50%, -70%) rotate(45deg); }
+    .sv-row__meta { padding-right: 2rem; }
     /* Width is scarce on a phone: the charts run to the card's edges, lined up
        with the title, and the viewpoint list, which would only fit truncated,
        is left to the report. */
