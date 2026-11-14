@@ -28,7 +28,8 @@ import { periodSpan } from '@/components/report/period-timeline';
 import { seriesColor } from '@/components/report/scale';
 import { defaultChoices, sliceView } from '@/components/report/slice-view';
 import { layoutPanels } from '@/components/report/small-multiples-layout';
-import { extentValues, pointValue } from '@/components/report/qualified';
+import { extentValues, pointValue, qualificationOf } from '@/components/report/qualified';
+import { fitsRankedColumns } from '@/components/report/ranked-columns';
 import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
 
 /**
@@ -40,10 +41,15 @@ import { percentAlong, spanOf, toYear } from '@/components/report/time-axis';
  * Each silhouette is drawn from the same layout code as the chart it stands
  * for, so it cannot show a different shape from the slide: a series reading
  * from `SeriesChart`'s narrow plot, cropped to the plot area; a comparison as
- * one column per item; each figure kind from its component's own scales
+ * the horizontal rows it is drawn as, or the ranked columns a long one becomes
+ * in a preview; each figure kind from its component's own scales
  * (`figureThumb`), or plain rows where a kind has no shape of its own.
+ *
+ * `preview` says the chart it stands for is drawn as a preview (a home-page or
+ * viewpoint slide) rather than in full (a data panel), since a long bar chart
+ * changes shape between the two.
  */
-export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string; reading?: string }) {
+export function ChartThumb({ fact, chart, reading, preview = false }: { fact: Fact; chart: string; reading?: string; preview?: boolean }) {
   const target = previewTarget(fact, chart);
   switch (target?.kind) {
     case 'series': {
@@ -58,10 +64,15 @@ export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string
         </Thumb>
       );
     }
-    case 'comparison':
-      return <ColumnsThumb items={target.comparison.items} />;
+    case 'comparison': {
+      const { items, groups, domainMax } = target.comparison;
+      // As ComparisonChart draws it: grouped bars are sorted, and only a preview becomes columns.
+      return preview && !groups && fitsRankedColumns(items)
+        ? <ColumnsThumb items={items} />
+        : <BarsThumb items={items} sort={groups ? 'value' : 'none'} domainMax={domainMax} />;
+    }
     case 'figure':
-      return figureThumb(target.figure, fact);
+      return figureThumb(target.figure, fact, preview);
     default:
       return null;
   }
@@ -72,11 +83,16 @@ export function ChartThumb({ fact, chart, reading }: { fact: Fact; chart: string
  * and its component's layout helpers. A kind with no case — tables, quotes
  * and key figures, which are set as type — is plain rows.
  */
-export function figureThumb(figure: ComponentFigure, fact: Fact): ReactNode {
+export function figureThumb(figure: ComponentFigure, fact: Fact, preview = false): ReactNode {
   const context = figureContext(fact);
   switch (figure.kind) {
-    case 'barChart':
-      return figure.series ? <PairedBarsThumb {...pairedBarChartProps(figure, context)} /> : <BarsThumb {...barChartProps(figure, context)} />;
+    case 'barChart': {
+      if (figure.series) return <PairedBarsThumb {...pairedBarChartProps(figure, context)} />;
+      const bars = barChartProps(figure, context);
+      // As BarChart draws it: a preview of many exact values becomes ranked columns.
+      const columns = bars.items.every(item => qualificationOf(item.value) === 'exact') ? bars.items.map(item => ({ ...item, value: pointValue(item.value) })) : [];
+      return preview && fitsRankedColumns(columns) ? <ColumnsThumb items={columns} /> : <BarsThumb {...bars} />;
+    }
     case 'compositionBar':
       return <CompositionThumb {...compositionBarProps(figure, context)} />;
     case 'estimateRange':
@@ -146,7 +162,7 @@ function ColumnsThumb({ items }: { items: Array<{ value: number; highlight?: boo
  * published range is a bar to its low end and a whisker on to its high end,
  * as on the chart; a bound's arrowhead is too small to draw here.
  */
-function BarsThumb({ items, sort, domainMax }: BarChartProps) {
+function BarsThumb({ items, sort, domainMax }: Pick<BarChartProps, 'items' | 'sort' | 'domainMax'>) {
   const ordered = orderBars(items, sort);
   const scale = barScale(ordered.flatMap(item => extentValues(item.value)), domainMax);
   const row = 100 / Math.max(1, ordered.length);

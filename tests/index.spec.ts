@@ -90,6 +90,20 @@ test('on a phone an open row leaves out its viewpoints, and its carousel is only
   expect(heights.size).toBeGreaterThan(1);
 });
 
+test('a preview\'s title opens its topic with that chart in a sheet, which closes onto the topic page', async ({ page }) => {
+  await page.goto('/');
+  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const row = rows(page).filter({ has: slide });
+  if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
+  await slide.locator('.sv-graph-heading a').click();
+  await expect(page).toHaveURL(/\/topics\/us-iran-war#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars$/);
+  const sheet = page.locator('dialog[open]');
+  await expect(sheet.locator('[id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]')).toBeInViewport();
+  await sheet.locator('.sv-modal__close').click();
+  await expect(sheet).toHaveCount(0);
+  await expect(page).toHaveURL(/\/topics\/us-iran-war$/);
+});
+
 test('every row shows its tags', async ({ page }) => {
   await page.goto('/');
   for (const n of [0, 1, 2, 3]) await expect(rows(page).nth(n).locator('.sv-tag').first()).toBeVisible();
