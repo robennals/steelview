@@ -47,6 +47,8 @@ type GeoMapCommon = {
   areaLabel?: string;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: string;
   sources?: SourceCredit[];
   note?: string;
@@ -87,6 +89,7 @@ export function GeoMap(props: GeoMapProps) {
     areaLabel = 'Region',
     id,
     title,
+    subtitle,
     description,
     sources,
     note,
@@ -168,7 +171,7 @@ export function GeoMap(props: GeoMapProps) {
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-geo-map">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-geo-map">
       <ChartViewToggle label={title ?? what} graph={graph} table={table} />
     </ReportFigure>
   );

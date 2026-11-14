@@ -44,6 +44,8 @@ export type PeriodTimelineProps = {
   rowLabel?: string;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: string;
   sources?: SourceCredit[];
   note?: string;
@@ -90,6 +92,7 @@ export function PeriodTimeline({
   rowLabel = 'Row',
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -233,7 +236,7 @@ export function PeriodTimeline({
     </div>
   );
 
-  if (preview) return <ReportFigure id={id} title={title} preview={preview} className="sv-period-timeline">{graph}</ReportFigure>;
+  if (preview) return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-period-timeline">{graph}</ReportFigure>;
 
   const table = (
     <div className="sv-chart__table-scroll">
@@ -275,7 +278,7 @@ export function PeriodTimeline({
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-period-timeline">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-period-timeline">
       <ChartViewToggle label={title ?? 'Periods'} graph={graph} table={table} />
     </ReportFigure>
   );

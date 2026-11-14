@@ -601,7 +601,7 @@ function Reading({
       {!preview && plottedReadings(series).length > 1 && <h3 className={switched ? 'sv-visually-hidden' : 'sv-chart__reading-head'}>{reading.label}</h3>}
       {panel && !switched && <ObservationBar />}
       {/* A preview keeps the unit, though not the period, unless the title already says it; ticks that carry it need no line at all. */}
-      {!(reading.tickUnit && (!partner || partner.tickUnit)) && !(preview && reading.unitInTitle) && (
+      {!(reading.tickUnit && (!partner || partner.tickUnit)) && !(preview && reading.unitInHeading) && (
         <p className="sv-chart__axis-label">
           {partner
             ? <>Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}{!preview && <>. By {midSentence(series.periodLabel)}</>}</>

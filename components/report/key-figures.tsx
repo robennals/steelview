@@ -31,6 +31,8 @@ export type KeyFiguresProps = {
   figures: KeyFigure[];
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -49,9 +51,9 @@ export type KeyFiguresProps = {
  * bad news in this register, so direction is carried by the sign and the
  * words, never by green and red.
  */
-export function KeyFigures({ figures, id, title, description, sources, note, footer, panel, preview }: KeyFiguresProps) {
+export function KeyFigures({ figures, id, title, subtitle, description, sources, note, footer, panel, preview }: KeyFiguresProps) {
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} preview={preview} className="sv-key-figures">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} preview={preview} className="sv-key-figures">
       <div className="sv-key-figures__frame">
         <dl className="sv-key-figures__list" data-count={figures.length}>
           {figures.map((figure, i) => (

@@ -31,6 +31,8 @@ export type BarChartProps = {
   domainMax?: number;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -63,6 +65,7 @@ export function BarChart({
   domainMax,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -88,11 +91,11 @@ export function BarChart({
     const graph = fitsRankedColumns(columns)
       ? <RankedColumns items={columns} max={scale.domain[1]} format={value => formatValue(value, format)} />
       : <BarRows rows={rows} scale={scale} format={format} label={valueLabel} preview />;
-    return <ReportFigure id={id} title={title} preview={preview} className="sv-bar-chart">{items.length > 0 && graph}</ReportFigure>;
+    return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-bar-chart">{items.length > 0 && graph}</ReportFigure>;
   }
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
       <p className="sv-chart__axis-label">{valueLabel}</p>
       {items.length === 0 ? (
         <p className="sv-report__empty">No values to show.</p>

@@ -551,8 +551,7 @@ compared, and the source when the reader needs it to trust the number (“As
 counted by the group Iran Human Rights (IHRNGO), 2008–2025”). Both show
 wherever the chart does, previews included, so keep the subtitle to one line
 on a phone, about 70 characters. No two charts in a report share a title; the
-build checks. `series`, `additionalSeries` and `comparisons` take a
-`subtitle`; other figures do not yet, so their title carries the period.
+build checks. Every chart and figure with a title takes a `subtitle`.
 
 **Every chart stands alone.** A reader can land on any chart with no context,
 seeing only its title and subtitle. Together they say what is measured, where
@@ -624,8 +623,9 @@ have to look elsewhere to know what a number on an axis counts. Give a line
 chart reading a short `tickUnit` (“kg”) and every axis number carries it (“500
 kg”), with no separate unit line. Where the unit is too long for the numbers,
 `valueLabel` prints it as a line above the graph. Leave the unit out of a
-preview only when the title already says what is counted (“Executions per year
-in Iran”): set `unitInTitle: true`, and the full chart keeps its `valueLabel`.
+preview only when the title or subtitle already says what is counted
+(“Executions per year in Iran”; “Share of ballots by method”): set
+`unitInHeading: true`, and the full chart keeps its `valueLabel`.
 
 **Never write “k” beside a unit that already has a prefix.** Readers see one
 “k” in “10k kg” and take it for 10 kg, missing the thousand. Axis numbers under

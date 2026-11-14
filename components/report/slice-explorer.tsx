@@ -32,6 +32,8 @@ export type SliceExplorerProps = {
   chipLimit?: number;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -77,6 +79,7 @@ export function SliceExplorer({
   chipLimit = 8,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -102,7 +105,7 @@ export function SliceExplorer({
 
   if (preview) {
     return (
-      <ReportFigure id={id} title={title} preview={preview} className="sv-slice">
+      <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-slice">
         <p className="sv-control__status">{status}</p>
         {legend}
         {result.groups.length > 0 && bars(true)}
@@ -114,7 +117,7 @@ export function SliceExplorer({
   const valueOrDash = (value: number | null) => (value === null ? '—' : formatValue(value, format));
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-slice">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-slice">
       <div className="sv-slice__controls">
         {dimensions.length > 1 && (
           <ChoiceGroup
