@@ -796,7 +796,8 @@ series:
             - {period: '2026', value: 36}
 additionalSeries:
   - id: photo-and-strict
-    title: US states with photo, non-photo and strict-photo ID rules, 2009–2026
+    title: States by type of ID rule
+    subtitle: 'Photo, non-photo and strict-photo ID, as NCSL counted, 2009–2026'
     description: >-
       States with an ID requirement in force, split by whether a photo is
       required, with NCSL's "strict photo" states (no counted ballot without
@@ -890,9 +891,8 @@ additionalSeries:
               - {period: '2024', value: 9}
               - {period: '2026', value: 10}
   - id: dpoc-laws
-    title: >-
-      US states with laws requiring documentary proof of citizenship to
-      register, 2004–2026
+    title: Proof-of-citizenship laws enacted
+    subtitle: 'States requiring documents to register, cumulative, 2004–2026'
     description: >-
       Cumulative number of states whose current documentary-proof-of-citizenship
       law had been enacted by each year, by NCSL's enactment dates. Not all are
@@ -961,7 +961,8 @@ additionalSeries:
               - {period: '2025', value: 9}
               - {period: '2026', value: 13}
   - id: gb-turnaways
-    title: 'People turned away for lack of ID at British polling stations, 2023–2024'
+    title: 'Britain: voters turned away for no ID'
+    subtitle: 'Share of in-person voters, 2023–2024 elections'
     description: >-
       Share of people who tried to vote in person who were first turned away
       for lack of accepted ID, and share who did not come back and vote. May
@@ -1028,7 +1029,8 @@ additionalSeries:
               - {period: '2024-05', value: 0.2}
               - {period: '2024-07', value: 0.08}
   - id: canada-nonvoters
-    title: 'Canadian non-voters citing electoral-process reasons, 2015–2021'
+    title: 'Canada: non-voters citing process reasons'
+    subtitle: 'Main reason for not voting, federal elections 2015–2021'
     description: >-
       Share of non-voters whose main reason for not voting was an
       electoral-process problem, a category that includes being unable to
@@ -1069,11 +1071,11 @@ additionalSeries:
               - {period: '2021', value: 7}
 comparisons:
   - id: early-voting-strict-states
-    title: How early in-person voting can start in the US strict-photo-ID states
+    title: Early voting in strict-photo-ID states
+    subtitle: 'Days before Election Day it can start, 2026 general-election rules'
     description: >-
-      Days before Election Day that early in-person voting can begin in each
-      of the 10 strict-photo-ID states, 2026 general-election rules. Zero means
-      no early voting for all voters.
+      When early in-person voting can begin in each of the 10 strict-photo-ID
+      states. Zero means no early voting for all voters.
     unit: count
     valueLabel: 'Days before Election Day'
     sources: [2, 19]
@@ -1084,7 +1086,8 @@ comparisons:
         value: 28
       - label: Georgia
         value: 22
-      - label: Kansas (varies by county)
+      - label: Kansas
+        subtitle: Varies by county
         value: 20
       - label: Tennessee
         value: 20
@@ -1109,7 +1112,8 @@ comparisons:
       shown. Days of voting offered are fewer than these figures, because
       early voting ends before Election Day and may not run every day.
   - id: ni-register-2002
-    title: "Northern Ireland's electoral register before and after the 2002 Act"
+    title: "Northern Ireland's electoral register"
+    subtitle: 'Before and after the first canvass under the 2002 Act'
     description: >-
       Names on the register in August 2002, before the first canvass under
       individual registration, and in December 2002, after it.
@@ -1117,9 +1121,11 @@ comparisons:
     valueLabel: 'Names on the register'
     sources: [30]
     items:
-      - label: 'August 2002 (household registration)'
+      - label: 'August 2002'
+        subtitle: 'Household registration'
         value: 1192136
-      - label: 'December 2002 (individual registration)'
+      - label: 'December 2002'
+        subtitle: 'Individual registration'
         value: 1072346
         highlight: true
     note: >-
@@ -1172,7 +1178,8 @@ figures:
     id: photo-and-strict
   - kind: map
     id: us-rules-2026
-    title: 'What US states ask of in-person voters, 2026'
+    title: 'Voter ID rules by state'
+    subtitle: 'What each state asks of in-person voters, August 2026 (NCSL)'
     description: >-
       All 50 states and Washington, D.C., by NCSL's two-way classification of
       the ID law in force as of August 2026.
@@ -1252,8 +1259,9 @@ figures:
       VT: none
   - kind: dataTable
     id: strict-state-exceptions
-    title: Free ID and exceptions in three strict US states
-    description: 'What three strict states offer voters who cannot easily get ID, from NCSL''s state tables.'
+    title: Free ID and exceptions in strict states
+    subtitle: 'Georgia, Wisconsin and Tennessee, from NCSL''s state tables'
+    description: 'What three strict states offer voters who cannot easily get ID.'
     caption: 'One card per state'
     layout: cards
     leadColumn: offers
@@ -1271,7 +1279,8 @@ figures:
     id: dpoc-laws
   - kind: map
     id: dpoc-status-2026
-    title: 'Which states have a proof-of-citizenship law, and its status, 2026'
+    title: 'Proof-of-citizenship laws by state'
+    subtitle: 'Status of each law on NCSL''s list, September 2026'
     description: >-
       The 13 states on NCSL's list of laws requiring documentary proof of
       citizenship to register, by what NCSL says of each law's status.
@@ -1351,7 +1360,8 @@ figures:
     id: early-voting-strict-states
   - kind: dataTable
     id: carter-baker
-    title: 'The Carter–Baker Commission''s ID bargain, 2005'
+    title: 'Carter–Baker Commission''s ID bargain'
+    subtitle: 'Its 2005 proposals and findings, and a dissent'
     description: 'The ID proposals of the bipartisan Commission on Federal Election Reform, chaired by Jimmy Carter and James Baker, which reported in September 2005.'
     caption: 'One card per proposal, finding or dissent'
     layout: cards
@@ -1374,8 +1384,9 @@ figures:
         said: { value: 'The ID proposal was "the most troublesome recommendation", and "for some … nothing short of a modern day poll tax"', sources: [21] }
   - kind: dataTable
     id: g7
-    title: 'Polling-place ID in the G7 democracies'
-    description: 'What each G7 member asks of in-person voters. The table shows every member, not a chosen subset.'
+    title: 'Polling-place ID in the G7'
+    subtitle: 'All seven members, not a chosen subset'
+    description: 'What each G7 member asks of in-person voters.'
     note: 'Why this set: the G7 is the complete group of large, high-income democracies most often compared with the US, and each member''s rule can be checked against its own election law. A wider group such as the OECD''s 38 members would be better, but no neutral, fetchable source classifies all of them (see What we don''t know yet). A dash in the Since column means the start date was not established from the sources read.'
     caption: 'One row per country'
     columns:
@@ -1422,7 +1433,8 @@ figures:
         since: '—'
   - kind: dataTable
     id: adoption-reasons
-    title: 'Northern Ireland, Britain and Canada: why they adopted ID'
+    title: 'Why three places adopted voter ID'
+    subtitle: 'Northern Ireland, Great Britain and Canada'
     description: 'When each place adopted voter ID, the reason it gave, and the fraud on record beforehand.'
     caption: 'One card per place'
     layout: cards
@@ -1449,7 +1461,8 @@ figures:
     id: gb-turnaways
   - kind: barChart
     id: gb-awareness
-    title: 'Awareness of the photo-ID rule, July 2024 UK general election'
+    title: 'UK: awareness of the photo-ID rule'
+    subtitle: 'By nation and group, after the July 2024 general election'
     description: >-
       Share of people aware they needed photo ID to vote at a polling station,
       by nation and group (public opinion survey for the Electoral
@@ -1481,6 +1494,7 @@ figures:
   - kind: dataTable
     id: ni-after-photo
     title: Northern Ireland after photo ID
+    subtitle: 'Turnout, personation and public opinion'
     description: 'What the House of Commons Library reports about Northern Ireland once photo ID was required.'
     caption: 'One row per measure'
     columns:
@@ -1507,7 +1521,7 @@ observationMarks:
   rules-vary-widely: {rows: ["AR", "GA", "IN", "KS", "MS", "NH", "NC", "OH", "TN", "WI", "AZ", "IA", "ND", "WY", "AL", "FL", "ID", "KY", "LA", "MI", "MO", "MT", "NE", "RI", "SC", "SD", "TX", "WV", "AK", "CO", "CT", "DE", "OK", "UT", "VA", "WA"]}
   carter-baker-bargain: {rows: ["Photo ID at the polls (2.5.1)", "Access"]}
   carter-baker-split: {rows: ["Carter on Georgia's 2005 law"]}
-  strict-states-early-voting: {rows: ["Ohio", "Indiana", "Georgia", "Kansas (varies by county)", "Tennessee", "North Carolina", "Arkansas", "Wisconsin"]}
+  strict-states-early-voting: {rows: ["Ohio", "Indiana", "Georgia", "Kansas", "Tennessee", "North Carolina", "Arkansas", "Wisconsin"]}
   strict-states-without-early-voting: {rows: ["Mississippi", "New Hampshire"]}
   canada-vouching: {rows: ["Canada"]}
   early-adopters: {lines: ["States requesting or requiring ID"], from: "1950", to: "2000"}
@@ -1525,7 +1539,8 @@ observationMarks:
   britain-turnaways-small-and-falling: {lines: ["Did not return and vote"], at: "2024-07"}
   britain-turnaways-undercount: {lines: ["Initially turned away"], at: "2024-07"}
   britain-confidence-and-personation: {whole: true}
-  ni-register-fell: {rows: ["August 2002 (household registration)", "December 2002 (individual registration)"]}
+  ni-register-fell: {rows: ["August 2002", "December 2002"]}
+
   shift-to-photo: {lines: ["Photo ID requested or required", "Non-photo ID accepted"]}
   strict-count-fell-then-rose: {lines: ["Strict photo ID (subset of photo)"], from: "2014", to: "2026"}
   us-36-states-up-from-13: {lines: ["States requesting or requiring ID"], from: "2000", to: "2026"}

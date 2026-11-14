@@ -510,7 +510,8 @@ series:
           points: [{period: '2018-10', value: 78}, {period: '2021-04', value: 82}, {period: '2024-01', value: 79}, {period: '2025-08', value: 77}]
 additionalSeries:
   - id: pew-early-voting-series
-    title: 'Support for two weeks of early in-person voting, by party (Pew), 2021–2025'
+    title: 'Support for two weeks of early voting'
+    subtitle: 'In-person early voting, by party (Pew), 2021–2025'
     description: >-
       Share of US adults who favour making early in-person voting available for
       at least two weeks before Election Day. Leaners are counted with each
@@ -551,7 +552,8 @@ additionalSeries:
           - name: Dem/lean Dem
             points: [{period: '2021-04', value: 91}, {period: '2024-01', value: 88}, {period: '2025-08', value: 89}]
   - id: gallup-policy
-    title: 'Support for photo ID, early voting and automatic registration, by party (Gallup), 2016–2024'
+    title: 'Gallup: support for three voting policies'
+    subtitle: 'Photo ID, early voting and automatic registration, by party, 2016–2024'
     description: >-
       Share of US adults who favour each policy in the three Gallup polls that
       asked all three. Gallup's party groups do not include leaners, so
@@ -614,7 +616,8 @@ additionalSeries:
           - name: Democrats
             points: [{period: '2016-08', value: 80}, {period: '2022-07', value: 81}, {period: '2024-10', value: 79}]
   - id: gallup-concerns
-    title: 'Expect ineligible voting, or eligible voters blocked, to be a major problem, by party (Gallup), 2008–2024'
+    title: 'Expected voting problems'
+    subtitle: 'Share calling each a major problem, by party (Gallup), 2008–2024'
     description: >-
       Share of US adults who expect each irregularity to be a major problem in
       that year's presidential election.
@@ -661,7 +664,8 @@ additionalSeries:
           - name: Democrats
             points: [{period: '2008', value: 38}, {period: '2016', value: 36}, {period: '2020', value: 62}, {period: '2024', value: 37}]
   - id: gallup-accuracy
-    title: 'Confident that votes nationwide will be accurately cast and counted, by party (Gallup), 2004–2024'
+    title: 'Confidence votes are counted accurately'
+    subtitle: 'Nationwide, asked before each election, by party (Gallup), 2004–2024'
     description: >-
       Share of US adults very or somewhat confident, asked before each election.
       Changes of president are marked under the chart.
@@ -719,7 +723,8 @@ additionalSeries:
           - name: Democrats
             points: [{period: '2004', value: 59}, {period: '2006', value: 66}, {period: '2008', value: 57}, {period: '2016', value: 85}, {period: '2018', value: 69}, {period: '2020', value: 76}, {period: '2022', value: 85}, {period: '2024', value: 84}]
   - id: spae-nationwide
-    title: 'Confident that votes nationwide were counted as intended, after the election, by party (MIT SPAE), 2012–2024'
+    title: 'Confidence votes were counted as intended'
+    subtitle: 'Voters after each election, by party (MIT SPAE), 2012–2024'
     description: >-
       Share of voters very or somewhat confident, asked in the weeks after each
       November election. Winners of the presidency: Democratic 2012 and 2020,
@@ -758,7 +763,8 @@ additionalSeries:
           - name: Democrats
             points: [{period: '2012', value: 84}, {period: '2016', value: 69}, {period: '2020', value: 93}, {period: '2022', value: 92}, {period: '2024', value: 79}]
   - id: pew-fair-accurate
-    title: 'Confident the coming November elections will be conducted fairly and accurately, by party (Pew), 2020–2026'
+    title: 'Confidence in fair, accurate elections'
+    subtitle: 'The coming November elections, by party (Pew), 2020–2026'
     description: >-
       Share of US adults very or somewhat confident, asked in spring or summer
       before each federal election. Leaners are counted with each party.
@@ -802,7 +808,8 @@ additionalSeries:
           - name: Dem/lean Dem
             points: [{period: '2020-04', value: 46}, {period: '2022-08', value: 81}, {period: '2024-07', value: 77}, {period: '2026-07', value: 58}]
   - id: pew-count-by-mode
-    title: 'Confident votes will be counted as voters intend, in person and by mail, by candidate supported (Pew), 2020–2026'
+    title: 'Confidence in mail and in-person counts'
+    subtitle: 'Votes counted as intended, by candidate supported (Pew), 2020–2026'
     description: >-
       Share of registered voters very or somewhat confident that votes cast
       each way across the US will be counted as intended, asked each October.
@@ -852,7 +859,8 @@ additionalSeries:
           - name: Democratic candidate supporters
             points: [{period: '2020-10', value: 77}, {period: '2022-10', value: 88}, {period: '2024-10', value: 85}, {period: '2026-10', value: 64}]
   - id: gallup-honesty
-    title: 'Confidence in the honesty of elections, US adults (Gallup World Poll), 2006–2026'
+    title: 'Confidence in the honesty of elections'
+    subtitle: 'US adults (Gallup World Poll), 2006–2026'
     description: >-
       Share of US adults answering yes to whether they have confidence in the
       honesty of elections, the same question Gallup asks in more than 100
@@ -896,7 +904,8 @@ additionalSeries:
           - name: US adults
             points: [{period: '2006', value: 52}, {period: '2007', value: 50}, {period: '2008', value: 47}, {period: '2009', value: 59}, {period: '2010', value: 44}, {period: '2011', value: 48}, {period: '2012', value: 42}, {period: '2013', value: 39}, {period: '2014', value: 40}, {period: '2015', value: 40}, {period: '2016', value: 30}, {period: '2017', value: 47}, {period: '2018', value: 37}, {period: '2019', value: 40}, {period: '2020', value: 45}, {period: '2021', value: 50}, {period: '2022', value: 49}, {period: '2023', value: 44}, {period: '2024', value: 51}, {period: '2025', value: 47}, {period: '2026', value: 49}]
   - id: georgia-confidence
-    title: 'Georgia: confident the statewide vote was counted as intended, by party, 2020–2022'
+    title: 'Georgia: confidence in the statewide count'
+    subtitle: 'Vote counted as intended, by party, 2020–2022'
     description: >-
       Share of Georgia voters very or somewhat confident, in surveys after the
       2020 election, in 2021, and after the 2022 midterm, the first general
@@ -933,7 +942,8 @@ additionalSeries:
             points: [{period: '2020', value: 26}, {period: '2021', value: 28}, {period: '2022', value: 70}]
 comparisons:
   - id: proof-of-citizenship-by-group
-    title: 'Support for requiring proof of citizenship at first registration, by party and race, October 2024'
+    title: 'Support for proof of citizenship'
+    subtitle: 'At first registration, by party and race (Gallup), October 2024'
     description: 'Share of US adults who favour requiring people registering to vote for the first time to provide proof of citizenship (Gallup, October 1–12, 2024).'
     unit: percent
     valueLabel: '% who favor'
@@ -959,7 +969,8 @@ comparisons:
       - label: People of color
         value: 76
   - id: pew-2026-eligibility-confidence
-    title: 'Confidence that ineligible voters will be stopped and eligible voters can vote, by candidate supported, October 2026'
+    title: 'Confidence in voter eligibility checks'
+    subtitle: 'Ineligible stopped, eligible able to vote, by candidate backed, Oct 2026'
     description: 'Share of registered voters very or somewhat confident in each statement about the November 2026 elections (Pew, September 28–October 4, 2026).'
     unit: percent
     valueLabel: '% confident'
@@ -986,7 +997,8 @@ comparisons:
         detail: "All legally qualified voters can vote"
         value: 72
   - id: leadership-gap-by-administration
-    title: 'US confidence in the honesty of elections, by approval of national leadership, 2006–2026'
+    title: 'Confidence by approval of leadership'
+    subtitle: 'US confidence in election honesty, by administration, 2006–2026'
     description: 'Average share confident in the honesty of elections among Americans who approve and who disapprove of the country''s leadership, by administration (Gallup World Poll).'
     unit: percent
     valueLabel: '% confident'
@@ -1024,7 +1036,8 @@ comparisons:
         value: 49
         highlight: true
   - id: winner-gap-worldwide
-    title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
+    title: 'Approvers vs disapprovers, world and US'
+    subtitle: 'Confident in election honesty: world median 2025 and the US (Gallup)'
     description: 'Share confident in the honesty of elections among those who approve and disapprove of their national leadership (Gallup World Poll). The world figure is the 2025 median across more than 100 countries.'
     unit: percent
     valueLabel: '% confident'
@@ -1052,7 +1065,8 @@ comparisons:
         value: 52
         highlight: true
   - id: sb202-effect-on-confidence
-    title: 'Georgia voters: did SB 202 change your confidence in Georgia elections? 2022'
+    title: "Georgia: SB 202's effect on confidence"
+    subtitle: "2021 mail-ballot ID law; voters' view by party after the 2022 midterm"
     description: 'Self-reported effect of SB 202 on confidence, by party, among Georgia voters surveyed after the 2022 midterm (Hood and McKee).'
     unit: percent
     valueLabel: '% of voters'
@@ -1100,7 +1114,8 @@ figures:
   - kind: series
   - kind: dataTable
     id: photo-id-by-race
-    title: Support for requiring photo ID, by race and ethnicity
+    title: Support for photo ID by race
+    subtitle: 'Pew and Gallup polls, 2021–2025'
     description: 'What Pew and Gallup report on support for photo ID across racial and ethnic groups. Polls and years differ by row.'
     caption: 'One row per group'
     columns:
@@ -1131,7 +1146,8 @@ figures:
     id: gallup-concerns
   - kind: barChart
     id: shared-goals-importance
-    title: Americans who say each election goal is important, 2026
+    title: Election goals Americans call important
+    subtitle: 'US adults (Pew), 2026'
     description: 'Share of US adults who say each goal is very or somewhat important in US elections (Pew).'
     valueLabel: '% who say it is important'
     categoryLabel: Goal
@@ -1148,7 +1164,8 @@ figures:
     id: gallup-accuracy
   - kind: barChart
     id: not-at-all-confident
-    title: Americans not at all confident that votes will be accurately cast and counted (Gallup)
+    title: Not at all confident in the vote
+    subtitle: 'US adults, votes accurately cast and counted (Gallup), 2004 and 2024'
     description: 'Share of US adults "not at all confident" in the vote, in the two years Gallup gives in its 2024 report.'
     valueLabel: '% not at all confident'
     categoryLabel: Year
@@ -1177,7 +1194,9 @@ figures:
     id: sb202-effect-on-confidence
   - kind: dataTable
     id: id-and-confidence-studies
-    title: Studies of whether US ID rules change confidence
+    title: Studies of ID rules and confidence
+    subtitle: 'Four US studies, using different measures and periods'
+
     description: 'Four studies of whether ID rules themselves move confidence, rather than who wins. They use different measures and periods, and their results differ.'
     caption: 'One card per study'
     layout: cards

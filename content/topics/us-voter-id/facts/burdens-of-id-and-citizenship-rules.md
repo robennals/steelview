@@ -679,7 +679,8 @@ sources:
     publisher: United States Court of Appeals for the Tenth Circuit
     date: '2020-04-29'
 series:
-  title: 'Mail ballots rejected, Texas and Georgia against the US, general elections 2016–2024'
+  title: 'Share of mail ballots rejected'
+  subtitle: 'Texas and Georgia against the US, general elections 2016–2024'
   description: >-
     Share of returned mail ballots that were rejected (2024: not counted) in
     each November general election, as reported by states to the federal
@@ -739,6 +740,7 @@ series:
       label: Share of returned mail ballots rejected
       unit: percent
       valueLabel: Rejected, % of returned mail ballots
+      unitInHeading: true
       note: >-
         2016: rejected divided by returned, calculated from the counts in the
         2016 report's Overview Table 2 (its own percentage column divides by
@@ -757,7 +759,8 @@ series:
           points: [{period: '2016', value: 0.95}, {period: '2018', value: 1.4}, {period: '2020', value: 0.8}, {period: '2022', value: 1.5}, {period: '2024', value: 1.2}]
 additionalSeries:
   - id: georgia-midterm-gap
-    title: 'Racial turnout gaps in Georgia, general elections 2014–2022'
+    title: 'Racial turnout gaps in Georgia'
+    subtitle: 'White turnout minus nonwhite and Black turnout, 2014–2022'
     description: >-
       Turnout of white citizens of voting age minus turnout of nonwhite and of
       Black citizens, in percentage points, from the Brennan Center's
@@ -804,7 +807,8 @@ additionalSeries:
           - name: White minus Black
             points: [{period: '2014', value: 3.3}, {period: '2016', value: 6.0}, {period: '2018', value: 3.9}, {period: '2020', value: 6.4}, {period: '2022', value: 7.3}]
   - id: georgia-presidential
-    title: 'Turnout of white and Black Georgians, presidential elections 2016–2024'
+    title: 'Georgia turnout by race'
+    subtitle: 'White and Black Georgians, presidential elections 2016–2024'
     description: >-
       Ballots cast as a share of citizen voting-age population, from the
       Brennan Center's 2024 voter-file analysis.
@@ -884,7 +888,8 @@ comparisons:
         detail: "Includes none; over 9% of adult citizens"
         value: 21300000
   - id: why-no-licence
-    title: Reasons US adult citizens give for having no driver's licence, 2023
+    title: Why citizens have no driver's licence
+    subtitle: 'Reasons given by US adult citizens without one, 2023'
     description: >-
       Share of adult citizens without a driver's licence giving each reason.
       The four bureaucratic or economic reasons (cost, fines, time and
@@ -918,9 +923,8 @@ comparisons:
         value: 3
         highlight: true
   - id: licence-by-group
-    title: >-
-      No licence, or a licence without current name or address, by race and
-      party, US, 2023
+    title: Licence problems by race and party
+    subtitle: 'No licence, or one lacking current name or address, 2023'
     description: >-
       Share of adult citizens in each group. The first part of each bar is no
       driver's licence at all; the second is a licence that does not show the
@@ -961,7 +965,8 @@ comparisons:
         value: 31
         values: [18, 13]
   - id: licence-by-age-income
-    title: No licence with current name and address, by age and income, US, 2023
+    title: Licence problems by age and income
+    subtitle: 'No licence showing current name and address, 2023'
     description: Share of adult citizens in each group without a driver's licence showing their current name and address (includes those with no licence).
     unit: percent
     valueLabel: Share of adult citizens in group (%)
@@ -988,8 +993,8 @@ comparisons:
       - label: Income over $100,000
         value: 9
   - id: dpoc-by-group
-    title: >-
-      Proof of citizenship not readily available, by race and party, US, 2023
+    title: Proof of citizenship by race and party
+    subtitle: 'Adult citizens without it readily available, 2023'
     description: >-
       Share of adult citizens in each group. The first part of each bar has no
       birth certificate, passport, naturalization or citizenship certificate;
@@ -1020,7 +1025,8 @@ comparisons:
         value: 13
         values: [4, 9]
   - id: arizona-maricopa
-    title: 'Maricopa County, Arizona: suspected non-citizen registrants referred for investigation, 2026'
+    title: 'Maricopa County non-citizen referrals'
+    subtitle: 'Arizona, registrants referred for investigation, 2026'
     description: >-
       The county attorney's review of registrants referred by the county
       recorder, announced 28 September 2026. The county has more than 2.5
@@ -1097,7 +1103,8 @@ figures:
     id: dpoc-by-group
   - kind: barChart
     id: kansas-dpoc
-    title: 'Kansas: applicants blocked by proof of citizenship against non-citizens found'
+    title: 'Kansas: blocked applicants and non-citizens'
+    subtitle: 'Proof-of-citizenship law, as found by a federal court in 2018'
     description: >-
       Registration applications suspended or cancelled for lack of proof of
       citizenship from 1 January 2013 until the 2016 preliminary injunction,
@@ -1122,7 +1129,8 @@ figures:
       - { label: "Non-citizens on the rolls (1999–2013)", detail: "Non-citizens confirmed on the rolls", value: 39 }
   - kind: dataTable
     id: kansas-findings
-    title: 'Kansas: what the court found about the blocked applicants'
+    title: 'Kansas: what the court found'
+    subtitle: 'Applicants blocked by the proof-of-citizenship law, 2013–2016'
     description: 'The trial court''s findings on who the blocked applicants were and whether they had documents.'
     caption: 'One card per finding'
     layout: cards
@@ -1143,7 +1151,8 @@ figures:
     id: arizona-maricopa
   - kind: barChart
     id: texas-march-2022
-    title: Mail ballots rejected in Texas's March 2022 primary, the first under SB 1
+    title: Texas primary mail ballots rejected
+    subtitle: 'March 2022, the first election under SB 1'
     description: >-
       Share of returned mail ballots rejected, statewide and in two large
       counties, with Harris County's 2018 primary as the before point.
@@ -1165,7 +1174,8 @@ figures:
       - { label: 'Harris County, March 2018', value: { value: 0.3, qualifier: under, asPublished: less than 0.3% } }
   - kind: barChart
     id: texas-what-next
-    title: What Texans with rejected mail voting did next, March 2022 primary
+    title: What rejected Texas mail voters did next
+    subtitle: 'March 2022 primary, every Texan who asked for a mail ballot'
     description: >-
       Brennan Center analysis (Journal of Politics, 2025) of every Texan who
       requested a mail ballot for the March 2022 primary.
@@ -1184,7 +1194,8 @@ figures:
       - { label: 'Ballot rejected, then voted in person', value: 344, highlight: true }
   - kind: estimateRange
     id: turnout-overall
-    title: Estimated effect of strict US voter ID laws on turnout
+    title: Effect of strict ID laws on turnout
+    subtitle: 'National panel 2008–2018; GAO study of Kansas and Tennessee, 2012'
     description: >-
       The national voter-file panel (all states with strict ID laws, 2008–2018)
       and GAO's two-state study (2012 general election against 2008), in
@@ -1203,9 +1214,9 @@ figures:
       - { label: 'GAO: Tennessee turnout', year: 2012, low: -3.2, high: -2.2, source: 28 }
   - kind: estimateRange
     id: turnout-by-group
-    title: >-
-      Estimated extra effect of strict US voter ID laws on particular groups'
-      turnout, and on campaign contact
+    title: Effect of strict ID laws by group
+    subtitle: "Extra effect on some groups' turnout, and on campaign contact"
+
     description: >-
       How much more (negative) or less (positive) a group's turnout changed
       than a comparison group's, in percentage points, and the change in
