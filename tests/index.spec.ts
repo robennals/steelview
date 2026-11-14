@@ -73,6 +73,8 @@ test('on a phone an open row leaves out its viewpoints, and its carousel is only
   const row = rows(page).first();
   await expect(row.locator('.sv-row__viewpoints')).toBeHidden();
   await expect(row.locator('.sv-row__cta')).toBeVisible();
+  // Counted as the topic page names them.
+  await expect(row.locator('.sv-row__counts')).toContainText(/\d+ (crux|cruxes) ·/);
   const carousel = row.locator('.sv-carousel');
   const strip = carousel.locator('.sv-carousel__strip');
   const heights = new Set<number>();

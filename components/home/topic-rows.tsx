@@ -12,7 +12,7 @@ const THUMBS = 3;
 const updated = (date: string) =>
   new Date(`${date}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
-const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+const plural = (n: number, word: string, words = `${word}s`) => `${n} ${n === 1 ? word : words}`;
 
 /** An open row's body: the topic's chart carousel beside its viewpoints and the report link. */
 function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] }) {
@@ -37,7 +37,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
         </ul>
         <Link className="sv-row__cta" href={topicPath(topic.slug)}>Read the full report <span aria-hidden="true">→</span></Link>
         <p className="sv-row__counts">
-          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'disagreement')} · {plural(topic.facts.length, 'fact')}
+          {plural(topic.viewpoints.length, 'viewpoint')} · {plural(topic.cruxes.length, 'crux', 'cruxes')} · {plural(topic.facts.length, 'fact')}
         </p>
       </div>
     </div>
