@@ -182,6 +182,16 @@ export const seriesReadingSchema = z.object({
   unit: z.enum(['count', 'percent']),
   /** The value-axis label — what one unit on the vertical axis means. */
   valueLabel: z.string().min(1),
+  /**
+   * The series title already says what the axis counts ("Executions per year
+   * in Iran"), so a preview leaves out the value label. The full chart keeps it.
+   */
+  unitInTitle: z.boolean().optional(),
+  /**
+   * A short unit written after every value on the axis ("kg" makes "500 kg"),
+   * so the reader needs no separate label line above the graph to read it.
+   */
+  tickUnit: z.string().min(1).max(6).optional(),
   /** Anything the reader must know to read this reading honestly, e.g. that it is derived. */
   note: z.string().optional(),
   source: sourceSchema.optional(),
@@ -223,8 +233,16 @@ export const seriesEventSchema = z.object({
   ...citationFields,
 }).superRefine(citationRule({ required: false })).transform(toSources);
 
+/**
+ * A short line under a chart's title, shown everywhere the title is, previews
+ * included: the context the title is too short to carry, such as the period
+ * or which cases are compared ("The Iran war beside Iraq and Afghanistan").
+ */
+const chartSubtitle = z.string().min(1).optional();
+
 export const seriesSchema = z.object({
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   /**
    * What the chart shows, in words. This is the screen-reader description and
    * the sighted reader's orientation, so it is required rather than derived
@@ -280,6 +298,7 @@ export const seriesSchema = z.object({
 export const comparisonChartSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   description: z.string().min(1),
   unit: z.enum(['count', 'percent', 'pounds']),
   valueLabel: z.string().min(1),
@@ -307,6 +326,8 @@ export const comparisonChartSchema = z.object({
     value: z.number().finite(),
     highlight: z.boolean().optional(),
     values: z.array(z.number().finite().nonnegative()).optional(),
+    /** A short second line under the label, saying what the row is ("Iraq, 2003–2010"). Unlike `detail`, always shown, previews included. */
+    subtitle: z.string().min(1).optional(),
     /** What the one-line `label` leaves out: period, sample size, coverage. Opens under the row. */
     detail: z.string().min(1).optional(),
   })).min(2),

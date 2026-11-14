@@ -1687,7 +1687,7 @@
   }
 
   /* Opened, the whole claim shows. */
-  .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; }
+  .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; font-weight: 600; color: var(--ink); }
 
   /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
@@ -2378,22 +2378,31 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 
 .sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
 .sv-row-detail__hint + .sv-comparison__rows { margin-top: 0; }
-.sv-comparison__row { display: block; margin-bottom: .75rem; }
-.sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
-.sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
+/* Each row's label sits left of its bar and its value right, as in a preview;
+   the scale under the rows lines up with the bars' column. */
+.sv-comparison { --sv-label-col: 35%; --sv-value-col: 4.5rem; --sv-row-gap: .75rem; }
+.sv-comparison__row { display: grid; grid-template-columns: var(--sv-label-col) minmax(0, 1fr) var(--sv-value-col); align-items: center; gap: var(--sv-row-gap); margin-bottom: .75rem; }
+.sv-comparison__label { display: contents; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; }
+.sv-comparison__label > span { font-family: var(--font-sans); font-size: .8125rem; line-height: 1.35; }
+.sv-comparison__label > :last-child { grid-column: 3; text-align: right; font-variant-numeric: tabular-nums; }
+.sv-comparison__track { grid-column: 2; grid-row: 1; }
+@media (max-width: 40rem) {
+  .sv-comparison { --sv-label-col: 40%; --sv-value-col: 3.5rem; --sv-row-gap: .5rem; }
+}
+.sv-comparison__name { display: block; font-weight: 600; }
+.sv-chart__subtitle { margin: .2rem 0 0; font-family: var(--font-sans); font-size: .875rem; line-height: 1.35; color: var(--ink-3); }
+.sv-comparison__subtitle { display: block; color: var(--ink-3); }
 .sv-comparison__track { position: relative; display: block; height: .9rem; background: var(--paper-sunk); }
 .sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }
 .sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
-.sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
+.sv-comparison__scale { display: flex; justify-content: space-between; margin-left: calc(var(--sv-label-col) + var(--sv-row-gap)); margin-right: calc(var(--sv-value-col) + var(--sv-row-gap)); font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
 .sv-comparison__rows[data-dense] { --sv-row-room: 2.5rem; }
-.sv-comparison__rows[data-dense] .sv-comparison__row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
-.sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
-.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
-.sv-comparison__rows[data-dense] .sv-comparison__label > :last-child { grid-column: 3; text-align: right; }
-.sv-comparison__rows[data-dense] .sv-comparison__track { grid-column: 2; grid-row: 1; }
+.sv-comparison:has(.sv-comparison__rows[data-dense]) { --sv-label-col: 7.5rem; --sv-value-col: 4rem; --sv-row-gap: .5rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__row { margin-bottom: .45rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .75rem; line-height: 1.3; }
 @media (max-width: 40rem) {
-  .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
+  .sv-comparison:has(.sv-comparison__rows[data-dense]) { --sv-label-col: 5.5rem; --sv-value-col: 3.5rem; --sv-row-gap: .4rem; }
 }
 
 /* Definitions are a small second layer above the fact sheet. */
@@ -2632,6 +2641,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); min-height: 2.5em; }
 .sv-slide__figure .sv-chart__caption .sv-graph-heading { margin: 0; font: 600 1.05rem/1.25 var(--font-display); letter-spacing: -0.015em; color: var(--ink); }
 .sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-underline-offset: .15em; }
+.sv-chart[data-preview] .sv-chart__caption .sv-graph-heading:has(+ .sv-chart__subtitle) { min-height: 0; }
+.sv-chart[data-preview] .sv-chart__subtitle { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .8rem; }
 .sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }

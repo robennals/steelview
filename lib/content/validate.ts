@@ -95,6 +95,7 @@ export function validateTopic(topic: Topic): string[] {
     for (const series of datasets) errors.push(...seriesErrors(f.id, series, topic.lastUpdated, sourceCount));
     const artifactIds = ['series', ...(f.additionalSeries ?? []).map(s => s.id), ...datasets.flatMap(s => s.readings.map(r => r.id)), ...(f.comparisons ?? []).map(c => c.id)];
     if (new Set(artifactIds).size !== artifactIds.length) errors.push(`fact ${f.id}: chart IDs must be unique`);
+    errors.push(...chartTitleErrors(f));
     const chartIds = new Set<string>();
     for (const chart of f.comparisons ?? []) {
       if (chartIds.has(chart.id)) errors.push(`fact ${f.id}: duplicate comparison chart id ${chart.id}`);
@@ -779,6 +780,18 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
  */
 /** Past this a row label wraps into a block beside its bar; AUTHORING asks for about 40. */
 const MAX_ROW_LABEL = 60;
+
+/** Each chart in a report has its own title, so a reader can tell any two apart by title alone. */
+function chartTitleErrors(f: Fact): string[] {
+  const titles = [
+    ...(f.series ? [f.series.title] : []),
+    ...(f.additionalSeries ?? []).map(s => s.title),
+    ...(f.comparisons ?? []).map(c => c.title),
+    ...(f.figures ?? []).flatMap(figure => isComponentFigure(figure) && 'title' in figure && figure.title ? [figure.title] : []),
+  ];
+  const repeated = new Set(titles.filter((title, i) => titles.indexOf(title) !== i));
+  return [...repeated].map(title => `fact ${f.id}: two charts are titled "${title}" — give each chart in a report its own title`);
+}
 
 /** A chart row is one short title; what else it has to say goes behind the row (`detail`, or an estimate's `note`). */
 function rowLabelErrors(rows: Array<{ label: string }>, where: string): string[] {

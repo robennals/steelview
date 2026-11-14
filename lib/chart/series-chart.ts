@@ -196,9 +196,21 @@ export function tickLabelWidth(label: string, fontSize: number): number {
 }
 
 /**
- * Drop interior ticks too close to either end tick to fit their labels. The
- * ends are always kept: they name the published range. A 1950–2026 axis at
- * 390px otherwise prints "2020" over "2026".
+ * The geometry with its plot moved right, and narrowed, until the widest value
+ * label fits left of it: a unit on every tick ("500 kg") can outgrow the
+ * fixed inset. The canvas keeps its size, so the chart's shape is unchanged.
+ */
+function roomForTicks(geometry: ChartGeometry, labels: string[]): ChartGeometry {
+  const needed = Math.ceil(Math.max(0, ...labels.map(label => tickLabelWidth(label, geometry.fontSize))) + 8);
+  if (needed <= geometry.left) return geometry;
+  return { ...geometry, left: needed, plotWidth: geometry.plotWidth - (needed - geometry.left) };
+}
+
+/**
+ * Drop interior ticks too close to a neighbour to fit their labels, working
+ * from the left so the kept ones stay evenly spread. The ends are always kept:
+ * they name the published range. A 1950–2026 axis at 390px otherwise prints
+ * "2020" over "2026", and a yearly 2017–2026 axis runs its years together.
  */
 export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: T[], fontSize: number): T[] {
   if (ticks.length <= 2) return ticks;
@@ -206,7 +218,11 @@ export function dropCrowdedTicks<T extends { x: number; label: string }>(ticks: 
   const last = ticks[ticks.length - 1];
   const fits = (a: T, b: T) =>
     Math.abs(a.x - b.x) >= (tickLabelWidth(a.label, fontSize) + tickLabelWidth(b.label, fontSize)) / 2;
-  return ticks.filter((tick, index) => index === 0 || index === ticks.length - 1 || (fits(tick, first) && fits(tick, last)));
+  const kept = [first];
+  for (const tick of ticks.slice(1, -1)) {
+    if (fits(tick, kept[kept.length - 1]) && fits(tick, last)) kept.push(tick);
+  }
+  return [...kept, last];
 }
 
 const MONTH_NAMES = new Set([
@@ -240,7 +256,11 @@ export function formatValue(value: number, unit: SeriesUnit): string {
   return withSign(Math.abs(value).toLocaleString('en-GB'), value < 0);
 }
 
-/** The compact value, for an axis tick: `1.5m` · `250k` · `0` · `2.5%`. */
+/**
+ * The value for an axis tick: `1.5m` · `250k` · `10,000` · `0` · `2.5%`.
+ * Below 100,000 it is written in full: beside a unit such as kg, readers
+ * take "10k" to be 10 kg and miss the thousand.
+ */
 export function formatTick(value: number, unit: SeriesUnit): string {
   if (unit === 'percent') {
     if (value === 0) return '0%';
@@ -249,8 +269,8 @@ export function formatTick(value: number, unit: SeriesUnit): string {
   const magnitude = Math.abs(value);
   if (magnitude === 0) return '0';
   if (magnitude >= 1_000_000) return withSign(`${tidy(magnitude / 1_000_000)}m`, value < 0);
-  if (magnitude >= 1000) return withSign(`${tidy(magnitude / 1000)}k`, value < 0);
-  return withSign(String(magnitude), value < 0);
+  if (magnitude >= 100_000) return withSign(`${tidy(magnitude / 1000)}k`, value < 0);
+  return withSign(magnitude.toLocaleString('en-GB'), value < 0);
 }
 
 /* ------------------------------------------------------------------ colour */
@@ -517,16 +537,18 @@ export function layoutReading(
   variant: SeriesVariant,
   window?: FocusWindow
 ): ReadingLayout {
-  const geometry = CHART_GEOMETRY[variant];
+  const base = CHART_GEOMETRY[variant];
   const slots = seriesSlots(series);
 
   const shown = reading.lines.map((line: SeriesLine) =>
-    window ? pointsAround(line.points, window) : thinned(line.points, geometry.plotWidth)
+    window ? pointsAround(line.points, window) : thinned(line.points, base.plotWidth)
   );
   const values = shown.flatMap((points) => points.map((p) => p.value));
   const ticks = niceTicks(Math.min(...values), Math.max(...values));
   const valueMin = ticks[0];
   const valueMax = ticks[ticks.length - 1];
+  const tickText = (value: number) => (reading.tickUnit ? `${formatTick(value, reading.unit)} ${reading.tickUnit}` : formatTick(value, reading.unit));
+  const geometry = roomForTicks(base, ticks.map(tickText));
 
   // The declared coverage, not the data, sets the time domain: the two are
   // equal by rule 14, and saying so here means the axis is drawn from the
@@ -582,7 +604,7 @@ export function layoutReading(
       value,
       y: y(value),
       label:
-        index % geometry.valueLabelEvery === labelOffset ? formatTick(value, reading.unit) : null,
+        index % geometry.valueLabelEvery === labelOffset ? tickText(value) : null,
     })),
     timeTicks: dropCrowdedTicks(
       window || shortMonthly

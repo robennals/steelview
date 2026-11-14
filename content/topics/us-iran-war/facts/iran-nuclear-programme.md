@@ -671,10 +671,15 @@ sources:
     publisher: International Atomic Energy Agency (IAEA)
     date: '2025-02-26'
 series:
-  title: "Iran's enriched-uranium stock, all enrichment levels, February 2017 – 13 June 2025"
+  title: "Iran's enriched-uranium stock"
+  subtitle: 'All enrichment levels, from under 2% to 60%, February 2017 – 13 June 2025'
   description: >-
     Kilograms of uranium in Iran's enriched stock, as reported in each IAEA
-    quarterly report, against the 2015 deal's limit of 202.8 kg. Figures
+    quarterly report, against the 2015 deal's limit of 202.8 kg. Most of it is
+    low-enriched: of the IAEA's last estimate, for 13 June 2025, 440.9 kg was
+    enriched to 60% and the rest to 20% or less. Weights are of the
+    uranium alone, not of the uranium hexafluoride (UF6) gas it is enriched
+    in. Figures
     were verified by inspectors to February 2021 and estimated by the IAEA
     after that. The last figure is the IAEA's estimate for 13 June 2025, the
     day Israel's strikes began; there is no later figure (as of 1 September
@@ -764,6 +769,7 @@ series:
       label: Total enriched stock, kg of uranium
       unit: count
       valueLabel: kg of uranium (not of UF6 gas)
+      tickUnit: kg
       note: >-
         Each point is the figure in that quarter's IAEA report (sources 17–49,
         51 and the series source), in kilograms of uranium. The deal's limit
@@ -778,11 +784,16 @@ series:
           points: [{period: '2017-02-18', value: 202.8}, {period: '2025-06-13', value: 202.8}]
 additionalSeries:
   - id: sixty-percent-stock
-    title: "Iran's stock of uranium enriched to 60%, May 2021 – 13 June 2025"
+    title: "Iran's uranium enriched to 60%"
+    subtitle: 'IAEA estimates, May 2021 – 13 June 2025. Weapons typically use uranium enriched to about 90%.'
     description: >-
-      Kilograms of uranium enriched up to 60% U-235, in the form of UF6 gas,
-      as estimated in each IAEA quarterly report from the first one after
-      production began. Weapons uranium typically contains about 90%, according to the Congressional Research Service. The last
+      Kilograms of uranium enriched up to 60% U-235, as estimated in each IAEA
+      quarterly report from the first one after production began. It is held
+      as uranium hexafluoride (UF6), the gas that enrichment centrifuges spin.
+      Weapons uranium typically contains about 90%, according to the
+      Congressional Research Service, which also reports a November 2024 US
+      intelligence finding that Iran's stockpile, if further enriched, would
+      have been sufficient for "more than a dozen nuclear weapons". The last
       figure, for 13 June 2025, is the IAEA's latest; it has published none
       since (as of 1 September 2026).
     periodLabel: 'Date the IAEA figure describes'
@@ -824,6 +835,7 @@ additionalSeries:
         label: Uranium enriched to 60%, kg of uranium
         unit: count
         valueLabel: kg of uranium (in UF6 form)
+        tickUnit: kg
         note: >-
           Each point is the "uranium enriched up to 60% U-235" figure in that
           quarter's IAEA report (sources 34–49 and 51); the last is the

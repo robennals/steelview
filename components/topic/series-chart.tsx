@@ -81,7 +81,8 @@ function Plot({
   markers?: { groups: PlacedGroup[]; cardsId: string };
 }) {
   const layout = layoutReading(series, reading, variant, window);
-  const g = CHART_GEOMETRY[variant];
+  // The layout's own geometry: its plot may sit further right, to fit the value labels.
+  const g = layout.geometry;
   const hatchId = `${descriptionId}-${variant}-hatch`;
   const clipId = `${descriptionId}-${variant}-clip`;
   const right = g.left + g.plotWidth;
@@ -560,9 +561,10 @@ function Reading({
       {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
       {!preview && series.readings.length > 1 && <h3 className="sv-chart__reading-head">{reading.label}</h3>}
       {panel && <ObservationBar />}
-      {!preview && (
+      {/* A preview keeps the unit, though not the period, unless the title already says it; ticks that carry it need no line at all. */}
+      {!reading.tickUnit && !(preview && reading.unitInTitle) && (
         <p className="sv-chart__axis-label">
-          {reading.valueLabel}, by {midSentence(series.periodLabel)}
+          {preview ? reading.valueLabel : <>{reading.valueLabel}, by {midSentence(series.periodLabel)}</>}
         </p>
       )}
 
@@ -720,9 +722,12 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
   return (
     // A panel draws a series once per reading, and the first takes its address.
     <figure className="sv-chart" id={onlyReading && onlyReading !== series.readings[0].id ? undefined : `${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
-      {preview
-        ? <figcaption className="sv-chart__caption"><h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3></figcaption>
-        : <figcaption className="sv-chart__caption"><h2 className="sv-graph-heading">{series.title}</h2></figcaption>}
+      <figcaption className="sv-chart__caption">
+        {preview
+          ? <h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3>
+          : <h2 className="sv-graph-heading">{series.title}</h2>}
+        {series.subtitle && <p className="sv-chart__subtitle">{series.subtitle}</p>}
+      </figcaption>
 
       <SeriesHighlight>
         {readings.map((reading, i) => (
