@@ -543,22 +543,47 @@ marks the subject country; `detail` holds what a short label leaves out (see
 zero baseline and signed values extend on the correct side of it. Label scope and
 period in the visible description. Source indexes reuse the fact's citation list.
 
-**Every chart stands alone.** A reader can land on any chart with no context,
-seeing only its title and the first line of its `description`. So the first
-sentence is a free-standing introduction of at most 130 characters: what is
-measured and, where the title names a programme, law, visa route, body or term
-of art, what that thing is. It says what is shown, not what it finds; findings
-belong in observations. Everything else follows in later sentences, one click
-away. Support the introduction from the collection's own sources.
+**A chart has a short title, and a subtitle for the rest.** The title is a
+few plain words a reader takes in at a glance: “US military deaths”,
+“Executions per year in Iran”, “House votes to end the war”. The `subtitle`
+carries the context the title is too short for: the period, which cases are
+compared, and the source when the reader needs it to trust the number (“As
+counted by the group Iran Human Rights (IHRNGO), 2008–2025”). Both show
+wherever the chart does, previews included, so keep the subtitle to one line
+on a phone, about 70 characters. No two charts in a report share a title; the
+build checks. `series`, `additionalSeries` and `comparisons` take a
+`subtitle`; other figures do not yet, so their title carries the period.
 
-**A chart's title says what it covers, and where.** Readers assume a chart in a
-UK report is about the UK, so one about anywhere else opens with the place:
-“Australia: asylum-seeker boat arrivals, 1976-2016”. A chart narrower than the
+**Every chart stands alone.** A reader can land on any chart with no context,
+seeing only its title and subtitle. Together they say what is measured, where
+and when. The first sentence of the `description` then says, in at most 130
+characters, what the chart shows and, where the title names a programme, law,
+visa route, body or term of art, what that thing is, without repeating the
+subtitle. It says what is shown, not what it finds; findings belong in
+observations. Everything else follows in later sentences, one click away.
+Support the introduction from the collection's own sources.
+
+**Say what a chart covers, and where.** Readers assume a chart in a UK report
+is about the UK, so one about anywhere else names the place in its title or
+subtitle: “Australia: asylum-seeker boat arrivals”. A chart narrower than the
 report's country names its area (“England and Wales”, “Great Britain”). The
 report's own country may stay unnamed only where nothing else could be meant;
 in a collection that mixes countries, name it. Tables and timelines follow the
 same rule. A title must also make sense without its neighbours, so no “the
 other studies” or “the same era”, and name the subject, not the finding.
+
+**Every axis has its unit, on the numbers where it fits.** A reader should not
+have to look elsewhere to know what a number on an axis counts. Give a line
+chart reading a short `tickUnit` (“kg”) and every axis number carries it (“500
+kg”), with no separate unit line. Where the unit is too long for the numbers,
+`valueLabel` prints it as a line above the graph. Leave the unit out of a
+preview only when the title already says what is counted (“Executions per year
+in Iran”): set `unitInTitle: true`, and the full chart keeps its `valueLabel`.
+
+**Never write “k” beside a unit that already has a prefix.** Readers see one
+“k” in “10k kg” and take it for 10 kg, missing the thousand. Axis numbers under
+100,000 are written in full for this reason (“10,000 kg”); in prose and labels,
+write the number in full or move to a bigger unit (“10 tonnes”).
 
 <a id="row-labels"></a>
 **A row label is one short title.** On a `barChart`, a `comparisons` chart or an
@@ -573,6 +598,19 @@ stays in the title ("recorded only", "statewide"), and one that matters across
 the chart also goes in the `description`, since a reader may never open a row.
 If a description used to say something is "in each label", make it say the row
 opens to show it.
+
+**Give a named row a subtitle only when the name needs one.** A `comparisons`
+row may take a `subtitle`, drawn as a grey line under its name, which is then
+bold. Use it when the name alone does not say what the row is: “Operation Iraqi
+Freedom” needs “Iraq, 2003–2010”. A row that is plainly what it says (“Texas”,
+“Germany”) stays a one-line label. Unlike `detail`, a subtitle always shows,
+previews included, so keep it to a few words.
+
+**A chart's thumbnail has the chart's shape.** The miniature on a report's
+chart tabs, a viewpoint's steps and a closed home-page row stands for the chart,
+so it is drawn from the same layout: horizontal bars for a bar chart, columns
+only where the chart itself is drawn as columns (a long preview), lines for a
+series. A new chart kind gets a thumbnail of its own shape, never a borrowed one.
 
 **Charts are shared product primitives, not report-specific artwork.** Use the
 existing `SeriesChart` and `ComparisonChart` data shapes, and the [`figures`](#figures)
@@ -778,7 +816,9 @@ of a graph-like figure in the fact's `figures` — see below). Each
 slide is one chart: for a series with several readings, add `reading` to name
 the one the slide draws (default: the first). The full chart, a click away,
 still draws every reading, and holds everything a slide leaves out — a slide
-is only the chart's title and the graph. The
+is only the chart's title, its subtitle and the graph. The slide's title opens
+the topic page with that chart in a sheet, as a viewpoint's “Explore this
+data” does (`#explore=<fact>--chart-<chart>`). The
 carousel is the first evidence many readers see, so choosing it is choosing
 what the topic looks like — and a carousel that mostly backs one side has
 failed however good it looks. Choose by these rules:
@@ -997,7 +1037,10 @@ movedAnchors:
 
 **Marks.** `observationMarks` in a fact's frontmatter says what each
 observation is about, by observation id. It is picked out on the chart when a
-reader reaches the observation in a data panel, and everything else recedes:
+reader opens the observation in a data panel, or follows a link to it, and
+everything else recedes. A chart only looks different from normal because of
+something the reader did: a closed observation is just its heading, and the
+whole chart stays at full strength under it.
 
 ```yaml
 observationMarks:
@@ -1999,6 +2042,7 @@ them.
 | A `quotes` figure has two or more quotes; a `stance` names one of its `categories`, category ids are unique and each has a quote | `lib/content/schema.ts`, `lib/content/validate.ts` (`kindErrors`) |
 | A claim check's evidence names a fact in the topic, and a section on it | `lib/content/validate.ts` (F12) |
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
+| No two charts in a report share a title | `lib/content/validate.ts` (`chartTitleErrors`) |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
 | Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
 | Series and comparison prose (advisory): a figure in a series' or comparison's title, description, notes or labels is quoted like a component figure's | `scripts/check-figures.ts`, `lib/content/figure-text.ts` (`chartProse`) |
@@ -2049,9 +2093,13 @@ Run this before opening a pull request.
       in the charts below it.
 - [ ] Every chart's description opens with a free-standing sentence of at most
       130 characters saying what is shown, explaining anything its title names.
-- [ ] Read alone, every chart, table and timeline title says what it covers
-      and where: another country leads the title, an area narrower than the
-      report's country is named, and it needs no neighbouring chart to make sense.
+- [ ] Every chart title is a few plain words, unique in its report, with a
+      subtitle for the period, cases and source; read alone, title and
+      subtitle say what it covers and where: another country is named, an
+      area narrower than the report's country is named, and it needs no
+      neighbouring chart to make sense.
+- [ ] Every axis shows its unit, on the numbers (`tickUnit`) where it fits;
+      no "k" beside a unit like "kg".
 - [ ] Every observation fits about three lines (350 characters).
 - [ ] No paragraph longer than four lines. Numbers sit in charts, tables or
       key figures, not recited in prose; dated events are `events` on the
@@ -2206,6 +2254,14 @@ in a linked fact rather than a glossary. Explain the term without opening anothe
 definition. The native popup works above a data panel, dismisses on Escape or an
 outside click, and has a close button. It works without JavaScript.
 
+**A term for an amount says what level counts.** When a chart measures
+something technical (“enriched uranium”), its definition says what counts as
+the thing and gives the general scale: natural uranium is about 0.7% U-235,
+anything above counts as enriched, reactors use 3–5%, weapons about 90%. The
+chart's own text, with sources, then says how notable this amount is (what it
+would take to make a weapon), since a big raw number read alone can alarm or
+reassure wrongly.
+
 ### Show the Parts of a Total
 
 When a chart includes a total and component lines, show every part needed to add
@@ -2216,6 +2272,13 @@ verify the sum for every period. For example, detected illegal arrivals are spli
 into small-boat and non-boat detected arrivals; “non-boat” here does not include
 legal immigration. If components overlap, do not present them as an additive
 breakdown.
+
+**Do not let a total stand for its worrying part.** Where readers will take a
+total to be the part that matters, show that part, or split the total. Iran's
+enriched-uranium stock, all levels together, reached almost ten tonnes; readers
+take that for bomb material, when 441 kg of it was enriched to 60% and the rest
+to 20% or less. The topic's preview shows the 60% stock, and the total says
+what it is made of.
 
 ### Keep Observations With Their Graph
 
