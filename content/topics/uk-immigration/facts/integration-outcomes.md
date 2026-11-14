@@ -778,7 +778,8 @@ series:
             - { period: '2021', value: 16.8 }
 additionalSeries:
   - id: employment
-    title: 'Employment rate by ethnic group, ages 16 to 64, Great Britain, 2004–2022'
+    title: 'Employment rate by ethnic group'
+    subtitle: 'Ages 16 to 64, Great Britain, 2004–2022'
     description: >-
       The share of 16- to 64-year-olds in work each year in Great Britain, by ethnic
       group, with the overall rate for comparison. It covers every ethnic group the Annual
@@ -816,6 +817,7 @@ additionalSeries:
         label: Employment rate
         unit: percent
         valueLabel: Share of 16- to 64-year-olds in work
+        unitInHeading: true
         lines:
           - name: All
             points:
@@ -999,9 +1001,8 @@ additionalSeries:
               - { period: '2021', value: 67 }
               - { period: '2022', value: 68 }
   - id: denmark
-    title: >-
-      Denmark: average annual net contribution to public finances by origin,
-      2014–2019
+    title: 'Denmark: net fiscal contribution by origin'
+    subtitle: 'Average per person per year, 2014–2019'
     description: >-
       Average yearly taxes paid per person in Denmark minus transfers and public services
       used, for people of different origins. The groups are people of Danish origin, and
@@ -1096,7 +1097,8 @@ additionalSeries:
               - { period: '2018', value: -114 }
               - { period: '2019', value: -106 }
   - id: higher-education
-    title: 'Entry rate into higher education at 18 by ethnic group, England, 2006–2024'
+    title: 'Higher education entry at 18'
+    subtitle: 'By ethnic group, English state-school pupils, 2006–2024'
     description: >-
       The share of 18-year-olds from English state schools accepted onto a full-time
       undergraduate course, by ethnic group. It counts acceptances through UCAS, the
@@ -1128,6 +1130,7 @@ additionalSeries:
         label: Entry rate at 18
         unit: percent
         valueLabel: Share of state-school 18-year-olds accepted to higher education
+        unitInHeading: true
         lines:
           - name: Chinese
             points:
@@ -1256,7 +1259,8 @@ additionalSeries:
               - { period: '2023', value: 29.8 }
               - { period: '2024', value: 29.8 }
   - id: cohesion
-    title: 'Neighbourhood trust and cohesion, England, 2018/19–2024/25'
+    title: 'Neighbourhood trust and cohesion'
+    subtitle: 'Share of adults in England agreeing, 2018/19–2024/25'
     description: >-
       How many adults in England trust people in their neighbourhood, and how many say
       people from different backgrounds get on there. One line is the share of adults who
@@ -1292,6 +1296,7 @@ additionalSeries:
         label: Share of adults agreeing
         unit: percent
         valueLabel: Share of adults in England
+        unitInHeading: true
         lines:
           - name: People from different backgrounds get on well together
             points:
@@ -1311,8 +1316,8 @@ additionalSeries:
               - { period: '2024', value: 40.28 }
 comparisons:
   - id: fastest-changing-areas
-    title: >-
-      Where the foreign-born share rose most, England and Wales, 2011 to 2021
+    title: 'Rise in the foreign-born share, by area'
+    subtitle: 'Local areas, England and Wales, 2011 to 2021 Censuses'
     description: >-
       The 20 local areas in England and Wales where the share of residents born outside
       the UK rose most between 2011 and 2021. These are local authorities, compared
@@ -1407,9 +1412,8 @@ comparisons:
         values: [1.76, 1.67]
         highlight: true
   - id: english-proficiency
-    title: >-
-      English proficiency of residents born abroad, by when they arrived,
-      England and Wales, 2021
+    title: 'English proficiency by arrival period'
+    subtitle: 'Residents born abroad, England and Wales, Census 2021'
     description: >-
       How well people born outside the UK and living in England and Wales say they speak
       English, by when they arrived, Census 2021. It covers everyone born outside the UK
@@ -1452,7 +1456,8 @@ comparisons:
         value: 99.9
         values: [37.4, 49.7, 10.8, 2.0]
   - id: employment-by-religion
-    title: Employment rate by religion, England and Wales, Census 2021
+    title: 'Employment rate by religion'
+    subtitle: 'Ages 16 to 64, England and Wales, Census 2021'
     description: >-
       The share of people aged 16 to 64 in work (employees and self-employed) in England
       and Wales in March 2021, by religion. Every religion the Census tick-box lists is
@@ -1489,8 +1494,8 @@ comparisons:
       - label: Muslim
         value: 51.4
   - id: netherlands-by-motive
-    title: >-
-      Netherlands: lifetime net fiscal contribution by reason for migrating
+    title: 'Netherlands: fiscal contribution by motive'
+    subtitle: 'Lifetime net contribution per immigrant, by reason for migrating'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by reason for migrating. The figure is the net contribution over
@@ -1514,7 +1519,8 @@ comparisons:
       - label: Asylum migration
         value: -475
   - id: netherlands-by-region
-    title: 'Netherlands: lifetime net fiscal contribution by region of origin'
+    title: 'Netherlands: fiscal contribution by origin'
+    subtitle: 'Lifetime net contribution per immigrant, by region of origin'
     description: >-
       The estimated average lifetime gain or cost to Dutch public finances per immigrant
       to the Netherlands, by region of origin. The figure is the net contribution over the
@@ -1550,7 +1556,8 @@ comparisons:
       - label: Horn of Africa and Sudan
         value: -600
   - id: norway-by-region
-    title: 'Norway: modelled net fiscal effect of extra immigrants'
+    title: 'Norway: fiscal effect of extra immigrants'
+    subtitle: 'Modelled per immigrant arriving in 2015, by country group'
     description: >-
       Modelled gain or cost to Norway's public finances per extra immigrant arriving in
       2015, including descendants, by country group. From a Statistics Norway model, the
@@ -1575,7 +1582,8 @@ comparisons:
       - label: R3 (rest of the world)
         value: -4.1
   - id: gcse-by-ethnicity
-    title: GCSE results by ethnic group, England, 2022/23
+    title: 'GCSE results by ethnic group'
+    subtitle: 'Attainment 8 score, England, 2022/23'
     description: >-
       Average GCSE results at the end of secondary school in England, as an Attainment 8
       score out of 90, by detailed ethnic group. It covers pupils at the end of Key Stage
@@ -1632,7 +1640,8 @@ comparisons:
       - label: Gypsy, Roma
         value: 20.3
   - id: gcse-fsm
-    title: GCSE results of pupils eligible for free school meals, by ethnic group, England, 2022/23
+    title: 'GCSE results of free-school-meal pupils'
+    subtitle: 'By ethnic group, Attainment 8 score, England, 2022/23'
     description: >-
       Average GCSE score (Attainment 8, out of 90) in England for pupils eligible for free
       school meals, a measure of low family income. Every detailed ethnic group is shown.
@@ -1685,9 +1694,8 @@ comparisons:
       - label: Gypsy, Roma
         value: 16.1
   - id: attitudes-homosexuality
-    title: >-
-      British Muslims and the general public saying it would be undesirable to
-      outlaw homosexuality, 2024
+    title: 'Views on outlawing homosexuality'
+    subtitle: 'British Muslims and the general public, one 2024 poll'
     description: >-
       The share of British Muslims and of the general public who said it would be
       undesirable to outlaw homosexuality in the UK. From one 2024 online poll by J.L.
@@ -1769,7 +1777,8 @@ figures:
   id: denmark
 - kind: dataTable
   id: denmark-who-came
-  title: "Denmark: why immigrants came, and what that means for the accounts"
+  title: 'Denmark: why immigrants came'
+  subtitle: 'Reasons for coming and average net contribution, 2019'
   description: "Why different groups of immigrants came to Denmark, and the average net contribution in 2019 by reason for coming, from the Danish finance ministry."
   caption: "One row per group"
   columns:
@@ -1786,7 +1795,8 @@ figures:
   id: cohesion
 - kind: dataTable
   id: segregation-index
-  title: "Residential segregation in England and Wales, 1991–2021"
+  title: 'Residential segregation'
+  subtitle: 'England and Wales, index of dissimilarity, 1991–2021'
   description: "How segregation across neighbourhoods has changed between censuses, on the index of dissimilarity, the standard measure."
   caption: "One row per finding"
   columns:
@@ -1802,7 +1812,8 @@ figures:
   id: english-proficiency
 - kind: barChart
   id: identity-by-arrival
-  title: "Non-EU-born residents giving a UK-only national identity, by when they arrived, England and Wales, 2021"
+  title: 'UK-only national identity by arrival'
+  subtitle: 'Non-EU-born residents, England and Wales, Census 2021'
   description: "The share of non-EU-born residents of England and Wales who gave a national identity from the UK only, by when they arrived, Census 2021. One Census, so this compares people who arrived at different times, not the same people over time."
   valueLabel: "Share giving a UK-only identity (%)"
   categoryLabel: "Arrived"
@@ -1815,7 +1826,8 @@ figures:
     - {"label": "2011 to 2021", "value": 20}
 - kind: barChart
   id: women-employment
-  title: Employment rate of women by ethnic group, Great Britain, 2022
+  title: 'Employment by sex and ethnic group'
+  subtitle: 'Women and men aged 16 to 64, Great Britain, 2022'
   description: "The share of women and men aged 16 to 64 in work in Great Britain in 2022, by ethnic group. Every group in the published breakdown is shown, ranked by the rate for women."
   valueLabel: "Share aged 16 to 64 in work"
   categoryLabel: "Ethnic group"
@@ -1862,7 +1874,8 @@ figures:
   id: attitudes-homosexuality
 - kind: dataTable
   id: attitude-polls
-  title: "The polls of British Muslim attitudes and their limits"
+  title: 'Polls of British Muslim attitudes'
+  subtitle: 'How each was carried out, and its main limitation'
   description: "The surveys behind these findings, how each was carried out, and the main limitation of each."
   caption: "One row per survey"
   columns:

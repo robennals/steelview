@@ -50,7 +50,7 @@ test('a report\'s own page shows an observation in its chart, picking out what i
 test('a chart\'s address opens the data panel at that chart', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--chart-nationality`);
   const tab = page.locator('.sv-walk__tab[aria-current]');
-  await expect(tab).toContainText('UK migration by nationality');
+  await expect(tab).toContainText('Arrivals by nationality');
   await expect(page.locator('.sv-walk')).toBeInViewport();
   // The selected tab says where the link landed, so the chart itself is not tinted.
   await expect(page.locator(`[id="${LONG_RUN}--chart-nationality"]`)).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
@@ -59,7 +59,7 @@ test('a chart\'s address opens the data panel at that chart', async ({ page }) =
 
 test('an observation\'s address opens that chart at that observation', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--nationality-shift`);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Arrivals by nationality');
   const observation = page.locator(`[data-observation="${LONG_RUN}--nationality-shift"]`);
   await expect(observation).toBeVisible();
   await expect(observation).toHaveClass(/sv-target/);
@@ -69,7 +69,7 @@ test('an observation\'s address opens that chart at that observation', async ({ 
   const source = page.locator('.sv-walk__slide:has(.sv-walk__tab) .sv-target, .sv-chart__sources .sv-target');
   await expect(source).toBeVisible();
   await expect(source).toHaveClass(/sv-source/);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Arrivals by nationality');
 });
 
 test('a Subtlety\'s address opens its chart at that Subtlety, marked as one', async ({ page }) => {
@@ -217,12 +217,12 @@ test('a section that moved to a chart keeps its address', async ({ page }) => {
 
 test('a table that became a slide keeps its address', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--pledges`);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Pledges on net migration');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Net migration pledges and outcomes');
 });
 
 test('the address a sheet expands to opens the same chart', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--viz-nationality`);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Arrivals by nationality');
 });
 
 // Addresses are permanent: a fact merged into a report keeps working, and

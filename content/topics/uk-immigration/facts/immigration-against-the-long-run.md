@@ -951,7 +951,8 @@ series:
             - {period: '2025', value: 0.25}
 additionalSeries:
   - id: routes
-    title: UK net migration by route, reason and nationality, 2019–2025
+    title: 'Net migration by route and nationality'
+    subtitle: 'Non-EU+ by reason for coming, EU+ and British, 2019–2025'
     description: >-
       Net migration is long-term arrivals minus departures; this chart splits it by
       nationality and by people's reason for first coming. Each rolling year is divided
@@ -1000,6 +1001,7 @@ additionalSeries:
         label: Net migration by route and nationality
         unit: count
         valueLabel: Net long-term migration (arrivals minus departures)
+        unitInHeading: true
         note: >-
           Non-EU+ lines come from Table 4b, by the reason a person originally
           came, so a student who leaves counts against Study. "Ukraine scheme"
@@ -1311,7 +1313,8 @@ additionalSeries:
               - {period: 2025-09, value: 202000}
               - {period: 2025-12, value: 171000}
   - id: nationality
-    title: UK migration by nationality, 2012–2025
+    title: 'Arrivals by nationality'
+    subtitle: 'EU+, non-EU+ and British nationals moving to the UK, 2012–2025'
     description: >-
       People moving to the UK long term, shown separately for EU+, non-EU+ and British
       nationals. EU+ includes the EU and EFTA from mid-2021; the earlier definition covers
@@ -1544,7 +1547,8 @@ additionalSeries:
               - {period: 2025-09, value: 121000}
               - {period: 2025-12, value: 110000}
   - id: components
-    title: What drives UK population change, mid-1982 to mid-2025
+    title: 'Sources of UK population change'
+    subtitle: 'Natural change and net migration, years to June, 1982–2025'
     description: >-
       Yearly change in UK population, split into births minus deaths (natural change) and
       arrivals minus departures (net migration). Years run to the end of June.
@@ -1581,6 +1585,7 @@ additionalSeries:
         label: Components of population change
         unit: count
         valueLabel: Change in UK population over the year to mid-year
+        unitInHeading: true
         note: >-
           ONS publishes these in thousands to one decimal place; they are shown
           here in people. "Net migration and other" is ONS's own category:
@@ -1728,9 +1733,8 @@ additionalSeries:
               - {period: '2024', value: 668200}
               - {period: '2025', value: 227700}
   - id: projections
-    title: >-
-      Projected UK population and old-age ratio under four migration
-      assumptions, 2024–2124
+    title: 'UK population projections'
+    subtitle: 'Population and old-age ratio under four migration levels, 2024–2124'
     description: >-
       Official projections of UK population, and of older people relative to working-age
       people, under four levels of net migration. They are the Office for National
@@ -1764,6 +1768,7 @@ additionalSeries:
         label: Projected population
         unit: count
         valueLabel: UK population at mid-year
+        unitInHeading: true
         note: >-
           Sum of every single-year age and both sexes in each file's Population
           sheet. The zero variant also sets migration between the four UK
@@ -2607,7 +2612,8 @@ additionalSeries:
               - {period: '2124', value: 578}
 comparisons:
   - id: oecd-permanent-per-head
-    title: Permanent-type migration per head, OECD countries, 2024
+    title: 'Permanent-type migration per head'
+    subtitle: 'Share of population, OECD countries, 2024'
     description: >-
       Foreign nationals newly given a status that can lead to long-term residence in 2024,
       as a share of each OECD country's population. The OECD calls these permanent-type
@@ -2706,7 +2712,8 @@ comparisons:
       - label: Mexico
         value: 0.0556
   - id: oecd-permanent-count
-    title: Permanent-type migration in people, OECD countries, 2024
+    title: 'Permanent-type migration in people'
+    subtitle: 'OECD countries, 2024'
     description: >-
       Foreign nationals newly given a status that can lead to long-term residence in 2024,
       in each OECD country, counted in people. These are the same inflows as the per-head
@@ -2797,7 +2804,8 @@ comparisons:
       - label: Latvia
         value: 2661
   - id: international-immigration
-    title: Arrivals per head by nationality, UK and EU and EFTA countries, 2024
+    title: 'Arrivals per head by nationality'
+    subtitle: 'UK and EU and EFTA countries, 2024'
     description: >-
       Arrivals in the UK and in EU and EFTA countries in 2024 as a share of each country's
       population, split by nationality. EU+ and non-EU+ bars count foreign nationals; each
@@ -3172,8 +3180,9 @@ figures:
 - kind: dataTable
   id: pledges
   replaces: ["pledges"]
-  title: "Pledges on net migration and what happened, 2010–2024"
-  description: "What governing parties promised about the level of net migration, set against the ONS series in the first chart."
+  title: 'Net migration pledges and outcomes'
+  subtitle: 'What governing parties promised, 2010–2024'
+  description: "What governing parties promised about the level of net migration, set against the ONS net migration figures."
   caption: "One row per manifesto pledge"
   layout: cards
   leadColumn: pledge
@@ -3191,7 +3200,8 @@ figures:
     - { election: "2024, Reform UK", pledge: { value: "net migration \"should be zero\"", sources: [41] }, outcome: "Not in government" }
 - kind: barChart
   id: immigration-preferences
-  title: "What people want to happen to immigration numbers, 2025"
+  title: 'What people want for immigration numbers'
+  subtitle: 'Ipsos and British Future tracker, June–July 2025'
   description: "The share of people who want immigration numbers reduced, kept the same or increased, in the Ipsos and British Future tracker. Fieldwork ran from June to July 2025."
   valueLabel: "Share of respondents (%)"
   categoryLabel: "Preference"

@@ -908,7 +908,8 @@ series:
               value: 20199
 additionalSeries:
   - id: windrush-compensation
-    title: 'Windrush Compensation Scheme: cumulative amount paid, 2019–2026'
+    title: 'Windrush compensation paid'
+    subtitle: 'Cumulative total since the scheme opened, 2019–2026'
     description: >-
       Compensation for the Windrush generation: Commonwealth migrants up to 1973 with a
       right to stay but no papers to prove it. They are named after HMT Windrush,
@@ -1104,8 +1105,8 @@ additionalSeries:
                   value: 133475539
 comparisons:
   - id: path-by-group
-    title: >-
-      People on a five-year path to UK settlement, by visa group, end of 2024
+    title: 'People on a five-year path to settlement'
+    subtitle: 'By visa group, end of 2024, Migration Observatory'
     description: "People on temporary visas that can lead to settlement, the right to live in the UK permanently, after five years, by type of visa. This is the breakdown by the Migration Observatory at the University of Oxford of the roughly 2.2 million holders of those visas, by the visa they held at the end of 2024."
     unit: count
     valueLabel: "People holding the visa"
@@ -1125,9 +1126,8 @@ comparisons:
         value: 189000
     note: "These five groups are the ones the Migration Observatory names; together they come to 2,172,000 against its rounded total of \"around 2.2 million\". The worker figure includes some people on visas that do not lead to settlement, such as intra-company transfers."
   - id: cohort-2020
-    title: >-
-      Where people who arrived in the UK in 2020 were five years on, by route of
-      entry
+    title: 'Status of 2020 arrivals five years on'
+    subtitle: 'At the end of 2025, by route of entry'
     description: "People who began what the Home Office calls a \"migrant journey\" in 2020, by route of entry and by their status at the end of 2025. Status means indefinite leave (the right to stay permanently), still on temporary leave, or leave expired (expected to have left). Ranked by size of route."
     unit: count
     valueLabel: "People"
@@ -1180,8 +1180,8 @@ comparisons:
           - 237
     note: "From Home Office table MJ_03. The six routes are the table's complete set and add up to its total of 344,058. Asylum covers claims made in 2020 that ended in a grant of protection or other leave; refused claims are not in the data. Visitors are excluded."
   - id: universal-credit-by-status
-    title: >-
-      People on Universal Credit by immigration status, Great Britain, July 2025
+    title: 'Universal Credit by immigration status'
+    subtitle: 'People receiving it, Great Britain, July 2025'
     description: "Universal Credit is a benefit; this splits the people receiving it in Great Britain by their recorded immigration status. The figures are for July 2025 and show the share of the 8.0 million people on Universal Credit in each status group the Department for Work and Pensions records."
     unit: percent
     valueLabel: "Share of people on Universal Credit"
@@ -1212,7 +1212,8 @@ comparisons:
         value: 0.4
     note: "Every group the Department for Work and Pensions publishes; they sum to 100.0%. These are \"statistics in development\". Status is recorded when someone claims or their circumstances change, and the department is not usually told when someone with indefinite leave becomes a British citizen, so the indefinite-leave group includes some citizens."
   - id: settlement-fees-europe
-    title: "Cost of applying for permanent residence, UK and European science nations, 2025"
+    title: 'Cost of permanent residence'
+    subtitle: 'Applicant fees, UK and European science nations, 2025'
     description: "What an applicant pays for the right to stay permanently in the UK and other European countries in a Royal Society comparison. Each bar is the applicant fee for permanent residence (or the nearest equivalent for researchers) in every European country in the comparison, 2025, in pounds at nominal exchange rates."
     unit: pounds
     valueLabel: "Applicant cost (£)"
@@ -1220,37 +1221,45 @@ comparisons:
       - 90
       - 88
     items:
-      - label: "Switzerland – skilled workers"
+      - label: "Switzerland"
+        subtitle: "Skilled workers"
         detail: "Settlement for skilled workers"
         value: 3871
-      - label: "UK – Global Talent visa settlement"
+      - label: "UK"
+        subtitle: "Global Talent visa settlement"
         value: 3029
         highlight: true
-      - label: "Denmark – researchers"
+      - label: "Denmark"
+        subtitle: "Researchers"
         detail: "Residence permit for researchers"
         value: 812
-      - label: "Netherlands – researchers"
+      - label: "Netherlands"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 207
-      - label: "France – researchers"
+      - label: "France"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 192
-      - label: "Germany – researchers"
+      - label: "Germany"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 170
-      - label: "Italy – EU Blue Card"
+      - label: "Italy"
+        subtitle: "EU Blue Card"
         value: 152
-      - label: "Sweden – researchers"
+      - label: "Sweden"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 117
-      - label: "Spain – researchers"
+      - label: "Spain"
+        subtitle: "Researchers"
         detail: "Settlement for dedicated researchers"
         value: 37
     note: "All nine countries in the Royal Society's Table 12, which compares European countries with dedicated researcher or skilled-worker settlement routes; non-European countries in the study are not in this table. The UK figure is the 2025 fee; the Home Office fee table from 8 October 2026 puts it at £3,226. Adjusted for purchasing power the UK ranks first."
   - id: ilr-polling
-    title: >-
-      Support in Great Britain for ending and for removing indefinite leave,
-      September 2025
+    title: 'Polling on indefinite leave'
+    subtitle: 'Ending new grants and removing it, Great Britain, September 2025'
     description: "A poll on ending new grants of indefinite leave, the right to live in the UK permanently, and removing it from those who hold it. YouGov asked adults in Great Britain in September 2025, and the bars show support and opposition on each question."
     unit: percent
     valueLabel: "Share of respondents"
@@ -1273,7 +1282,8 @@ figures:
 - kind: series
 - kind: estimateRange
   id: settlement-forecast
-  title: "People the Home Office expects to settle, 2026–2030 and in the peak year"
+  title: 'People expected to settle'
+  subtitle: 'Home Office forecast, 2026–2030 and the peak year'
   description: "People the Home Office expects to gain settlement, the right to live in the UK permanently, in 2026–2030 and in the peak year. The forecast is under current rules, shown as a central estimate with a range."
   valueLabel: People settling
   itemLabel: Forecast
@@ -1287,7 +1297,8 @@ figures:
   - { label: "Peak year", year: 2028, estimate: 450000, low: 359000, high: 620000, source: 3 }
 - kind: dataTable
   id: forecast-drivers
-  title: "What drives the forecast rise in settlement"
+  title: 'What drives the forecast rise in settlement'
+  subtitle: 'The visa groups the Home Office names'
   description: "The three groups of visas the Home Office names as behind the rise in people settling, with the extra settlement applications it expects from each."
   caption: "One row per group of visas"
   columns:
@@ -1302,7 +1313,8 @@ figures:
   id: windrush-compensation
 - kind: dataTable
   id: windrush-findings
-  title: "What the Windrush Lessons Learned Review found"
+  title: 'What the Windrush review found'
+  subtitle: 'The independent Windrush Lessons Learned Review, by Wendy Williams'
   description: "What the independent review of the Windrush scandal, by Wendy Williams, found the state did to people who were here lawfully."
   caption: "One row per finding"
   columns:
@@ -1313,7 +1325,8 @@ figures:
     - {"finding": "How many were detained or removed", "says": {"value": "\"It identified 164 people in the country before 1973 who'd either been detained or removed – or both – since 2002\"", "sources": [95]}}
 - kind: barChart
   id: settled-and-on-a-path
-  title: Who holds UK settlement, and who is on a path to it
+  title: 'Settled, and on a path to settlement'
+  subtitle: 'Three separate measures, not to be added together'
   description: "Three separate measures of people with, or on a route to, settlement, which is the right to live in the UK permanently. Each is the best available: EU Settlement Scheme settled-status grants since 2018, the estimated stock of non-EU citizens with indefinite leave at the end of 2024 (lower and upper estimates), and people on temporary visas with a five-year path to settlement at the end of 2024."
   valueLabel: "People"
   categoryLabel: "Measure"
@@ -1336,7 +1349,8 @@ figures:
   id: path-by-group
 - kind: dataTable
   id: not-working-by-group
-  title: "Who is not working among people on a path to settlement"
+  title: 'Not working, on a path to settlement'
+  subtitle: 'Adults on a five-year path, Migration Observatory summary'
   description: "How many adults in each group on a five-year path to settlement were not working, in the Migration Observatory's summary, and what that means for the proposed employment rule."
   caption: "One row per group"
   columns:
@@ -1354,7 +1368,8 @@ figures:
   id: universal-credit-by-status
 - kind: barChart
   id: fees-and-costs
-  title: "Home Office fees for main applications, against its own estimated unit cost"
+  title: 'Home Office fees against unit cost'
+  subtitle: 'Main application on each route, fees from 8 October 2026'
   description: "What the Home Office charges for the main application on each major route, beside its estimated processing cost. Fees are those from 8 October 2026. Two fees are below their unit cost."
   valueLabel: "Per applicant (£)"
   categoryLabel: "Application"
@@ -1391,7 +1406,8 @@ figures:
     values: { fee: 135, cost: 159 }
 - kind: dataTable
   id: route-costs
-  title: "What a Skilled Worker pays on the way to settlement"
+  title: 'What a Skilled Worker pays to settle'
+  subtitle: 'Health charge and fees for a single applicant'
   description: "The yearly health charge, how it is set, and what a single Skilled Worker pays in fees before settling."
   caption: "One row per cost"
   columns:
@@ -1403,7 +1419,8 @@ figures:
     - {"cost": "Fees before settlement, single Skilled Worker", "says": {"value": "\"a total of around £9,900 in fees before obtaining settlement in five years\"; if the same person waited ten years, \"a total of £16,900, mostly because the Immigration Health Surcharge is paid for every year of residence\"", "sources": [87]}}
 - kind: dataTable
   id: no-recourse
-  title: "No recourse to public funds: what the condition means and what it costs"
+  title: 'No recourse to public funds'
+  subtitle: 'What the condition means and what councils spend'
   description: "How the bar on most benefits applies to people on temporary visas, and what the councils that report spend supporting them, from the Home Affairs Committee."
   caption: "One row per finding"
   columns:
@@ -1419,7 +1436,8 @@ figures:
   id: ilr-polling
 - kind: dataTable
   id: ilr-poll-detail
-  title: "YouGov on indefinite leave: Reform UK voters and particular groups, September 2025"
+  title: 'Indefinite leave poll by group'
+  subtitle: 'Reform UK voters and who most would let stay, September 2025'
   description: "Detail from the YouGov poll of adults in Great Britain: where Reform UK voters stand, and which groups most people would let stay permanently."
   caption: "One row per finding"
   columns:
@@ -1431,7 +1449,8 @@ figures:
 - kind: dataTable
   id: rules
   replaces: ["rules"]
-  title: "The rules on settlement: a record"
+  title: 'The rules on settlement'
+  subtitle: 'A record of texts and rulings, in date order'
   description: "A record of texts and rulings, not a measurement, so it has no chart."
   caption: "One row per text or ruling, in date order"
   layout: timeline
@@ -1453,7 +1472,8 @@ figures:
 - kind: dataTable
   id: proposal
   replaces: ["proposal"]
-  title: "The earned-settlement proposal and its status"
+  title: 'The earned-settlement proposal'
+  subtitle: 'Proposed in November 2025 (CP 1448), and its status'
   description: "What the government proposed in November 2025 (CP 1448), element by element."
   caption: "One row per element of the proposal"
   layout: cards
@@ -1471,7 +1491,8 @@ figures:
 - kind: dataTable
   id: comparators
   replaces: ["comparators"]
-  title: "Waits for permanent residence elsewhere"
+  title: 'Waits for permanent residence abroad'
+  subtitle: 'Other countries, from what the sources say'
   description: "No source found sets out standard waits for every high-income country from official rules, so there is no chart. This is what the sources say."
   caption: "One row per country, group or finding"
   columns:
@@ -1518,7 +1539,7 @@ observationMarks:
   work-cohorts-settle-more: {rows: ["Work"]}
   uc-overstates-ilr: {rows: ["Indefinite leave to remain"]}
   social-lettings-nationality: {rows: ["Indefinite leave to remain"]}
-  uk-settlement-fee-high-in-europe: {rows: ["UK – Global Talent visa settlement", "Switzerland – skilled workers"]}
+  uk-settlement-fee-high-in-europe: {rows: ["UK", "Switzerland"]}
   bno-route-opened: {lines: ["Other (including BN(O))"], from: "2021", to: "2025"}
   forecast-peak-and-assumption: {rows: ["Peak year"]}
   forecast-drivers-in-detail: {rows: ["Hong Kong BN(O) visas", "Health and Care entry visas", "Skilled Worker entry visas"]}
