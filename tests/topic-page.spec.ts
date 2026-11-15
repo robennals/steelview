@@ -106,6 +106,18 @@ test('the tabs stay on screen, and a new tab starts at its top', async ({ page }
   await expect.poll(() => tabs.evaluate(el => Math.abs(el.getBoundingClientRect().top))).toBeLessThan(1);
 });
 
+test('a viewpoint step\'s chart draws the reading it cites, with no switch, as a click opens the full chart', async ({ page }) => {
+  await page.goto(TOPIC);
+  const viewpoint = await openViewpoint(page, 'economic-cost');
+  const step = viewpoint.locator('.sv-walk__slide').first();
+  await expect(step.locator('.sv-chart__svg:visible').first()).toHaveAttribute('aria-label', /UK Migration Over Time/);
+  await expect(step.getByRole('group', { name: 'Show as' })).toHaveCount(0);
+  // A reading drawn alongside the cited one is on its plot all the same.
+  await viewpoint.locator('.sv-walk__outline-step').filter({ hasText: 'Output per person' }).click();
+  const gdp = viewpoint.locator('.sv-walk__slide').filter({ hasText: 'Output per person has barely moved' });
+  await expect(gdp.locator('.sv-chart__svg:visible').first()).toHaveAttribute('aria-label', /GDP per head and total GDP/);
+});
+
 test('a tab keeps its open rows while another is showing', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = await openViewpoint(page, 'open-and-build');

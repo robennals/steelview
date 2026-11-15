@@ -2,7 +2,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Series, SeriesPoint } from '@/lib/content/types';
 import {
+  alignedTicks,
+  drawnLines,
   plotMark,
+  plotReadingId,
+  plottedReadings,
   CHART_GEOMETRY,
   formatTick,
   formatValue,
@@ -494,14 +498,67 @@ test('a region veils the plot either side of it, and a point carries its value',
   const data = series();
   const reading = data.readings[0];
   const layout = layoutReading(data, reading, 'wide');
+  const drawn = drawnLines(data, reading);
   const { left, plotWidth } = layout.geometry;
-  const region = plotMark(layout, reading, { from: '1991', to: '1992' });
+  const region = plotMark(layout, drawn, { from: '1991', to: '1992' });
   assert.deepEqual(region.veils, [{ x0: left, x1: layout.x('1991') }, { x0: layout.x('1992'), x1: left + plotWidth }]);
   assert.deepEqual(region.points, []);
-  assert.deepEqual(plotMark(layout, reading, { from: '1991' }).veils, [{ x0: left, x1: layout.x('1991') }]);
-  const point = plotMark(layout, reading, { lines: ['Net migration'], at: '1992' });
+  assert.deepEqual(plotMark(layout, drawn, { from: '1991' }).veils, [{ x0: left, x1: layout.x('1991') }]);
+  const point = plotMark(layout, drawn, { lines: ['Net migration'], at: '1992' });
   assert.deepEqual(point.veils, []);
   assert.deepEqual(point.points.map(p => p.label), ['50']);
-  assert.deepEqual(plotMark(layout, reading, { at: '1992' }).points.map(p => p.label), ['300', '50']);
-  assert.deepEqual(plotMark(layout, reading, { lines: ['Immigration'] }), { veils: [], points: [] });
+  assert.deepEqual(plotMark(layout, drawn, { at: '1992' }).points.map(p => p.label), ['300', '50']);
+  assert.deepEqual(plotMark(layout, drawn, { lines: ['Immigration'] }), { veils: [], points: [] });
+});
+
+/** The fixture with its share reading drawn alongside its people reading. */
+function together(): Series {
+  const data = series();
+  const share = data.readings[1];
+  return { ...data, readings: [{ ...data.readings[0], alongside: 'share' }, { ...share, lines: [{ ...share.lines[0], name: 'Immigration share' }] }] };
+}
+
+test('ticks for a second axis sit on the first axis\'s gridlines, on round numbers', () => {
+  const ticks = alignedTicks(0.3, 1.2, 4);
+  assert.equal(ticks.length, 5);
+  assert.ok(ticks[0] <= 0.3 && ticks[4] >= 1.2);
+  // Evenly spaced, on a step from the 1-2-2.5-5 ladder.
+  assert.deepEqual(ticks, [0.25, 0.5, 0.75, 1, 1.25]);
+  assert.deepEqual(alignedTicks(10, 90, 4), [0, 25, 50, 75, 100]);
+});
+
+test('a reading drawn alongside another is on its plot, against a right-hand axis on the same gridlines', () => {
+  const data = together();
+  const [people, share] = data.readings;
+  assert.deepEqual(plottedReadings(data).map(r => r.id), ['people']);
+  assert.equal(plotReadingId(data, 'share'), 'people');
+  assert.equal(plotReadingId(data, 'people'), 'people');
+
+  const layout = layoutReading(data, people, 'wide');
+  const alone = layoutReading(series(), series().readings[0], 'wide');
+  // Room is made on the right for the second axis's labels.
+  assert.ok(layout.geometry.plotWidth < alone.geometry.plotWidth);
+  assert.deepEqual(layout.lines.map(l => [l.name, l.axis]), [['Immigration', 'left'], ['Net migration', 'left'], ['Immigration share', 'right']]);
+  assert.equal(layout.rightTicks.length, layout.valueTicks.length);
+  layout.rightTicks.forEach((tick, i) => assert.ok(Math.abs(tick.y - layout.valueTicks[i].y) < 1e-9));
+  assert.ok(layout.rightTicks.some(tick => tick.label?.endsWith('%')));
+  // Both axes start at zero when nothing goes below it, so their slopes compare.
+  assert.equal(layoutReading({ ...data, readings: [{ ...people, lines: [people.lines[0]] }, share] }, { ...people, lines: [people.lines[0]] }, 'wide').valueTicks[0].value, 0);
+  assert.equal(layout.rightTicks[0].value, 0);
+  // A right-axis point is placed on the right-axis scale.
+  const top = share.lines[0].points.at(-1)!;
+  assert.ok(Math.abs(layout.lines[2].last.y - layout.y2(top.value)) < 1e-9);
+
+  // An observation about the reading drawn alongside marks its line, in its unit.
+  const mark = plotMark(layout, drawnLines(data, people), { lines: ['Immigration', 'Immigration share'], at: '1993' });
+  assert.deepEqual(mark.points.map(p => p.label), ['400', formatValue(top.value, 'percent')]);
+});
+
+test('a plot with a reading alongside tables both readings\' lines', () => {
+  const data = together();
+  const rows = readingRows(data, data.readings[0]);
+  assert.equal(rows[0].cells.length, 3);
+  assert.deepEqual(drawnLines(data, data.readings[0]).map(d => [d.line.name, d.unit, d.axis]), [
+    ['Immigration', 'count', 'left'], ['Net migration', 'count', 'left'], ['Immigration share', 'percent', 'right'],
+  ]);
 });

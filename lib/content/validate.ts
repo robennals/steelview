@@ -4,7 +4,7 @@ import { observationTargets } from './chart-observations';
 import { citedFactTargets, neededClaims } from './markdown';
 import { mapAreaIds, mapAreas } from './map-presets';
 import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
-import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroup } from './preview';
+import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroups } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
@@ -262,6 +262,21 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
     errors.push(
       `${where} coverage runs backwards — from "${series.coverage.from}" to "${series.coverage.to}"`
     );
+  }
+
+  // A reading drawn alongside another shares its plot: it names another reading
+  // of this series, one that is not itself drawn alongside, nor drawing one.
+  for (const reading of series.readings) {
+    if (reading.alongside === undefined) continue;
+    const partner = series.readings.find(r => r.id === reading.alongside);
+    if (!partner || partner === reading) errors.push(`${where} reading "${reading.id}" is drawn alongside "${reading.alongside}", which is not another reading of this series`);
+    else if (partner.alongside !== undefined) errors.push(`${where} reading "${reading.id}" is drawn alongside "${partner.id}", which draws another reading itself`);
+    else if (series.readings.some(r => r !== reading && r.alongside === partner.id)) errors.push(`${where} reading "${partner.id}" is drawn alongside two readings`);
+    else if (series.readings.some(r => r.alongside === reading.id)) errors.push(`${where} reading "${reading.id}" both draws a reading alongside and is drawn alongside one`);
+    // A plot's lines are told apart by name: their colour, legend key and highlight follow it.
+    const shared = partner?.lines.filter(line => reading.lines.some(own => own.name === line.name)) ?? [];
+    for (const line of shared) errors.push(`${where} readings "${reading.id}" and "${reading.alongside}" share a plot and both have a line "${line.name}"; give one a name of its own`);
+    if (series.focus) errors.push(`${where} draws a reading alongside another and has a focus window, whose context strip draws one axis only`);
   }
 
   const seenReadings = new Set<string>();
@@ -1102,7 +1117,7 @@ function citationTargetErrors(topic: Topic, factById: Map<string, Fact>): string
     if (!fact) return [];
     const link = `#fact-${id}${section ? `/${section}` : ''}`;
     const key = section && observationGroups(fact).get(section);
-    if (!key || !factSlides(topic.slug, fact).some(slide => slideGroup(fact, slide) === key)) return [`${what}: ${link} is not an observation of a chart`];
+    if (!key || !factSlides(topic.slug, fact).some(slide => slideGroups(fact, slide).includes(key))) return [`${what}: ${link} is not an observation of a chart`];
     const mark = fact.observationMarks?.[section];
     if (mark && !mark.whole) return [];
     return markErrors(fact, key, {}).includes(CANNOT_SHOW_MARKS) ? [] : [`${what}: ${link} picks out no part of its chart`];
