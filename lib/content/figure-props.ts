@@ -67,6 +67,7 @@ function frame(f: Extract<Figure, { title: string }>, c: FigureContext) {
   return {
     id: figureDomId(c.fact, f.id),
     title: f.title,
+    subtitle: f.subtitle,
     description: f.description,
     sources: figureCredits(f, c),
     note: aboutThisDataNote(f),

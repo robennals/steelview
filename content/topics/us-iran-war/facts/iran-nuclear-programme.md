@@ -886,7 +886,8 @@ figures:
     id: "sixty-percent-stock"
   - kind: "dataTable"
     id: "enrichment-levels"
-    title: "What each level of uranium enrichment means"
+    title: "What uranium enrichment levels mean"
+    subtitle: "From the 2015 deal's cap to the level used in weapons"
     description: "Levels of enrichment in the 2015 deal, in Iran's stock and in nuclear weapons, with what the sources say about each."
     caption: "One row per level"
     columns:
@@ -899,7 +900,8 @@ figures:
       - { level: "About 90%", means: { value: "Uranium used in nuclear weapons \"typically contains about 90%\"", sources: [3] } }
   - kind: compositionBar
     id: board-votes
-    title: IAEA Board of Governors votes on Iran resolutions, 2026
+    title: IAEA Board votes on Iran
+    subtitle: Board of Governors resolutions, June and September 2026
     description: How the 34 voting Board members cast their votes on the two 2026 resolutions on Iran's
       safeguards non-compliance. The September resolution sent the matter to the UN Security Council and
       General Assembly.
@@ -924,7 +926,8 @@ figures:
       confirmed at source.'
   - kind: "timeline"
     id: "inspections"
-    title: What IAEA inspectors could see in Iran, 2016–2026
+    title: What IAEA inspectors could see in Iran
+    subtitle: January 2016 – September 2026
     description: "What the IAEA could verify in Iran at each step, from the 2015 deal taking effect to its latest report."
     categories:
       - { id: "access", label: "Inspections or agreed access" }
@@ -947,7 +950,8 @@ figures:
       - { date: "2026-09-01", title: "No information on the size, composition or location of the enriched stock", description: "The IAEA \"cannot provide any information on the current size, composition or whereabouts\" of the stock.", category: "lost", source: 1 }
   - kind: "timeline"
     id: "statements"
-    title: "What the IAEA and US intelligence said about weapons work, 2011–2026"
+    title: "Official statements on weapons work"
+    subtitle: "What the IAEA and US intelligence said about Iran, 2011–2026"
     description: "Official statements on whether Iran had a weapons programme, by date. They are records of what was said, not measurements."
     categories:
       - { id: "iaea", label: "IAEA" }
@@ -965,7 +969,8 @@ figures:
       - { date: "2026-06", title: "\"Iran reaffirms that it shall not procure or develop nuclear weapons\"", description: "US–Iran memorandum, as quoted by CRS.", category: "agreement", source: 3 }
   - kind: "dataTable"
     id: "breakout"
-    title: "How close Iran was to weapons-grade uranium or a weapon, by source and date"
+    title: "How close Iran was to a weapon"
+    subtitle: "Estimates of time to weapons-grade uranium or a weapon, 2022–2026"
     description: "Published estimates, which measure different things: time to weapons-grade uranium, time to a weapon, or the size of the stock."
     caption: "One row per estimate"
     columns:

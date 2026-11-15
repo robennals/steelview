@@ -668,7 +668,8 @@ sources:
     publisher: Georgia Secretary of State
     date: '2020-12-29'
 series:
-  title: 'Returned mail ballots rejected in US general elections, and why, 2012–2024'
+  title: 'Rejected mail ballots'
+  subtitle: 'Share of returned mail ballots rejected, and why, 2012–2024'
   description: >-
     The share of returned mail (before 2016, absentee) ballots that states
     rejected in each November general election, and the share of those
@@ -769,7 +770,8 @@ series:
           points: [{period: '2012', value: 32.1}, {period: '2014', value: 29.3}, {period: '2016', value: 23.1}, {period: '2018', value: 26.9}, {period: '2020', value: 12.1}, {period: '2022', value: 23.1}, {period: '2024', value: 17.8}]
 additionalSeries:
   - id: texas-georgia
-    title: 'Mail ballots rejected, Texas and Georgia against the US, general elections 2016–2024'
+    title: 'Texas and Georgia rejection rates'
+    subtitle: 'Returned mail ballots rejected, against the US rate, 2016–2024'
     description: >-
       Share of returned mail ballots that were rejected (2024: not counted) in
       Texas, which added an ID-number check in 2021, and Georgia, which
@@ -849,7 +851,8 @@ additionalSeries:
             points: [{period: '2016', value: 1.0}, {period: '2018', value: 1.4}, {period: '2020', value: 0.8}, {period: '2022', value: 1.5}, {period: '2024', value: 1.2}]
 comparisons:
   - id: reasons-2024
-    title: Why returned mail ballots were rejected, 2024 general election
+    title: Why mail ballots were rejected
+    subtitle: Share of rejections given each reason, 2024 general election
     description: >-
       Share of rejected mail ballots given each reason, in states that
       reported that reason. Shares are calculated separately for each reason
@@ -904,11 +907,11 @@ comparisons:
       - label: No ballot application on record
         value: 0
   - id: states-2024
-    title: Returned mail ballots not counted, by state, 2024 general election
+    title: Mail ballots not counted, by state
+    subtitle: Share of returned mail ballots, 2024 general election
     description: >-
-      Share of returned mail ballots not counted in each state and DC, with
-      the eight all-mail states and DC highlighted and the national rate
-      for comparison.
+      Each state and DC, with the eight all-mail states and DC highlighted
+      and the national rate for comparison.
     unit: percent
     valueLabel: Not counted, % of returned mail ballots
     sources: [4, 31]
@@ -972,7 +975,8 @@ comparisons:
       - {label: Maine, value: 0.2}
       - {label: Vermont (all-mail), value: 0.2, highlight: true}
   - id: washington-race
-    title: 'Washington, 2020 general election: ballots rejected by race and ethnicity'
+    title: 'Washington: rejections by race'
+    subtitle: 'Share of ballots cast that were rejected, by race and ethnicity, 2020'
     description: >-
       Share of each group's ballots rejected for any reason except lateness,
       with race and ethnicity estimated from surname and address.
@@ -992,7 +996,8 @@ comparisons:
       - {label: Asian/Pacific Islander, value: 1.24}
       - {label: White, value: 0.63, highlight: true}
   - id: washington-age
-    title: 'Washington, 2020 general election: ballots rejected by age'
+    title: 'Washington: rejections by age'
+    subtitle: 'Share of ballots cast that were rejected, by age group, 2020'
     description: >-
       Share of each age group's ballots rejected for any reason except
       lateness.
@@ -1008,10 +1013,11 @@ comparisons:
       - {label: '45–64', value: 0.38}
       - {label: '65 and over', value: 0.17}
   - id: washington-counties
-    title: 'Washington, 2020 general election: ballots rejected by county'
+    title: 'Washington: rejections by county'
+    subtitle: 'Share of ballots cast that were rejected, 39 counties, 2020'
     description: >-
-      Share of ballots rejected in each of Washington's 39 counties, for any
-      reason except lateness, before any adjustment for who votes there.
+      Share of ballots rejected for any reason except lateness, before any
+      adjustment for who votes there.
     unit: percent
     valueLabel: Rejected, % of ballots cast
     sources: [18]
@@ -1061,7 +1067,8 @@ comparisons:
       - {label: Pend Oreille, value: 0.2}
       - {label: Columbia, value: 0.04}
   - id: cure-2024
-    title: Mail ballots set aside for curing, and what happened to them, 2024
+    title: Mail ballots set aside for curing
+    subtitle: How many voters then fixed them, states reporting data, 2024
     description: >-
       Ballots flagged for a fixable problem, such as a missing or mismatched
       signature, in states that reported curing data, and how many voters
@@ -1139,7 +1146,8 @@ figures:
     id: cure-2024
   - kind: map
     id: state-rules
-    title: How US states check a returned mail ballot, with ID-number states outlined, October 2026
+    title: How states check mail ballots
+    subtitle: Main envelope check, ID-number states outlined, October 2026
     description: >-
       The main check each state makes on a returned mail ballot envelope.
       States that also require an ID or Social Security number on the
@@ -1222,7 +1230,8 @@ figures:
       OK: notary
   - kind: dataTable
     id: state-safeguards
-    title: 'State safeguards on signature checks: curing, training and review by both parties'
+    title: 'Safeguards on signature checks'
+    subtitle: 'Curing, training and review by both parties, by state'
     description: 'How many states must let voters fix a signature problem, and two states'' rules on who checks signatures.'
     caption: One card per safeguard
     layout: cards
@@ -1252,7 +1261,8 @@ figures:
             - 29
   - kind: dataTable
     id: rejection-gaps
-    title: 'Who is rejected most: what Washington''s auditor and Florida studies found'
+    title: 'Mail-ballot rejections, by group'
+    subtitle: 'What Washington''s auditor and Florida studies found'
     description: 'Findings the rejection charts cannot show: comparisons after controls, for mismatches alone, and from other studies.'
     caption: One card per finding
     layout: cards
@@ -1292,7 +1302,8 @@ figures:
             - 27
   - kind: dataTable
     id: washington-recheck
-    title: 'Washington''s re-check of its counties'' signature decisions, 2020'
+    title: 'Washington''s signature re-check'
+    subtitle: 'The state auditor reviews counties'' signature decisions, 2020'
     description: What the state auditor's review found when it repeated the counties' work.
     caption: One card per measure
     layout: cards
@@ -1342,8 +1353,9 @@ figures:
             - 22
   - kind: dataTable
     id: courts
-    title: US court rulings on rejecting ballots for a signature mismatch
-    description: 'What courts have held about signature rejections, notice and the chance to fix a ballot.'
+    title: Court rulings on signature rejections
+    subtitle: US courts on mismatches, notice and the chance to fix a ballot
+    description: 'What each court held.'
     caption: One card per ruling or opinion
     layout: timeline
     leadColumn: held
@@ -1391,7 +1403,8 @@ figures:
             - 36
   - kind: dataTable
     id: cobb-audit
-    title: 'Cobb County, Georgia: the state''s 2020 signature audit'
+    title: 'Cobb County, Georgia signature audit'
+    subtitle: 'The state''s 2020 review of accepted absentee envelopes'
     description: What state investigators found when they re-examined a sample of the county's accepted absentee envelopes.
     sources:
       - 37
@@ -1569,7 +1582,7 @@ After controls, the youngest voters were almost three times as likely as the old
 
 ### Low-rejection counties also cured more ballots {#mail-ballot-rejection-and-signature-checks--low-rejection-counties-cure-more}
 
-Among the ten audited counties, those with lower rejection rates got 65 percent of flagged ballots cured, against 50 percent in the others. [25](#source-mail-ballot-rejection-and-signature-checks-25)
+Among the ten audited counties, those with lower rejection rates got 65 percent of flagged ballots [cured](#glossary-curing), against 50 percent in the others. [25](#source-mail-ballot-rejection-and-signature-checks-25)
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-cure-2024}
 

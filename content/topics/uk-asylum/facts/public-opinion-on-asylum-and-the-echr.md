@@ -163,7 +163,8 @@ sources:
     publisher: The Conversation
     date: '2025-10-09'
 series:
-  title: British adults on remaining in or withdrawing from the ECHR, 2013-2025
+  title: 'Polls on ECHR membership'
+  subtitle: 'British adults saying remain or withdraw, 2013–2025'
   description: >-
     Share of British adults saying Britain should remain a member of the
     European Convention on Human Rights, and share saying it should withdraw,
@@ -244,9 +245,8 @@ figures:
   - kind: series
   - kind: dataTable
     id: removals
-    title: >-
-      Polls on the ECHR and removals from Britain: how the question changes the
-      answer, 2023–2025
+    title: 'Polls on the ECHR and removals'
+    subtitle: 'Each result with the question asked, Britain, 2023–2025'
     description: Polls on the ECHR and on removals, each result shown with the question asked.
     caption: One card per poll
     layout: cards

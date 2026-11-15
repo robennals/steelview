@@ -5,7 +5,7 @@ import { cellText, cellValue, comparisonFor, sortRows } from './table-sort';
 
 export type DataCardsProps = Pick<
   DataTableProps,
-  'columns' | 'rows' | 'caption' | 'highlight' | 'defaultSort' | 'id' | 'title' | 'description' | 'sources' | 'note' | 'footer' | 'panel'
+  'columns' | 'rows' | 'caption' | 'highlight' | 'defaultSort' | 'id' | 'title' | 'subtitle' | 'description' | 'sources' | 'note' | 'footer' | 'panel'
 > & {
   /** 'timeline' strings the cards along a rule, for rows that run in order of time. */
   layout: 'cards' | 'timeline';
@@ -36,6 +36,7 @@ export function DataCards({
   dateColumn,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -53,7 +54,7 @@ export function DataCards({
   const filled = (row: DataTableRow, column: DataTableColumn | undefined): column is DataTableColumn => column !== undefined && cellText(row[column.key], column.format) !== '—';
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-cards">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-cards">
       <List className="sv-cards__list" data-layout={layout} aria-label={caption}>
         {ordered.map((row, i) => {
           const name = String(cellValue(row[header.key]));

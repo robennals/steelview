@@ -385,7 +385,8 @@ sources:
     date: '2004'
 comparisons:
   - id: air-power
-    title: Air-power coercion attempts, 1917–1999, by outcome
+    title: Air-power coercion attempts
+    subtitle: By outcome, 1917–1999, as counted by Horowitz and Reiter
     description: >-
       All 53 attempts Horowitz and Reiter identify to coerce a state with air
       power, counted as a success when the target changed its behaviour as
@@ -446,7 +447,8 @@ dataStillNeeded:
 figures:
   - kind: periodTimeline
     id: nuclear-programmes
-    title: The 31 states that explored nuclear weapons, and when, 1939–2017
+    title: States that explored nuclear weapons
+    subtitle: All 31, and when each explored, pursued or acquired them, 1939–2017
     description: When each state Bleek codes explored, pursued and acquired nuclear weapons. Of the 31,
       fourteen stopped exploring without launching a programme, seven launched programmes without acquiring
       weapons, and ten acquired them; Iran is the one state coded as still pursuing.
@@ -598,7 +600,8 @@ figures:
       could "reasonably" be coded as dropping back to exploration after 2003 or in 2015.'
   - kind: barChart
     id: sanctions-ties
-    title: How often sanctions succeed under three definitions (TIES dataset, 1945–2005)
+    title: How often sanctions succeed
+    subtitle: Under three definitions of success, TIES dataset, 1945–2005
     description: Share of the 1,412 threatened or imposed sanctions cases counted as successes in the TIES
       dataset, under each of its three definitions of success, for all cases and for the cases with a known
       outcome.
@@ -626,7 +629,8 @@ figures:
     id: "air-power"
   - kind: "dataTable"
     id: "regime-change"
-    title: "Studies of outside attempts to change governments, with how each defines success"
+    title: "Studies of outside regime change"
+    subtitle: "Three studies, with how each defines success"
     description: "Three studies of regime change imposed from outside, openly or covertly."
     caption: "One card per study"
     layout: cards
@@ -642,8 +646,9 @@ figures:
       - { study: "O'Rourke, Covert Regime Change", cases: "64 covert US attempts, 1947–89", success: "The US-backed side takes power", finding: { value: "\"Unsuccessful more than 60 percent of the time\"", sources: [5, 6] } }
   - kind: "dataTable"
     id: "strikes"
-    title: "What Kreps and Fuhrmann found on strikes on nuclear sites (2011)"
-    description: "Kreps and Fuhrmann studied 16 attacks on nuclear facilities, 1942–2007, measuring delay to the target's programme."
+    title: "Strikes on nuclear sites"
+    subtitle: "Kreps and Fuhrmann's 2011 study of 16 attacks, 1942–2007"
+    description: "What the study found, measuring how far each attack delayed the target's programme."
     caption: "One card per finding"
     layout: cards
     leadColumn: finding
@@ -657,7 +662,8 @@ figures:
       - { topic: "Iran, as of 2011", finding: { value: "\"many of the conditions that were conducive to past success are not present in the contemporary Iran case\"", sources: [8] } }
   - kind: "dataTable"
     id: "nonproliferation-pressure"
-    title: "Studies of pressure on nuclear programmes and of ceasefires"
+    title: "Studies of nuclear pressure and ceasefires"
+    subtitle: "Three studies, with how each defines success"
     description: "What sanctions, rewards and ceasefire terms have achieved, with how each study defines success."
     caption: "One card per study"
     layout: cards
@@ -688,9 +694,8 @@ figures:
       - { text: "Thirty-one countries at least opened the door to potential nuclear weapons programs, seventeen of those launched weapons programs, and ten acquired deliverable nuclear weapons.", speaker: "Bleek", date: "2017", source: 10 }
   - kind: "dataTable"
     id: "studies"
-    title: >-
-      Studies of nuclear programmes, sanctions and air power, with how each
-      defines success
+    title: "Nuclear, sanctions and air-power studies"
+    subtitle: "Five studies, with how each defines success"
     description: "A success rate under one definition is not comparable with another."
     caption: "One card per study"
     layout: cards

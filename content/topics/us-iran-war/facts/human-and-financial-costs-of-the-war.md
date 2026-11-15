@@ -281,7 +281,8 @@ sources:
     publisher: Associated Press (via WCAX)
     date: '2026-10-29'
 series:
-  title: 'US service members wounded and killed in the Iran war, by month (DCAS), February–October 2026'
+  title: 'US military casualties in the Iran war'
+  subtitle: 'Wounded and deaths by month, February–October 2026 (Defense Department)'
   description: >-
     Wounded in action, and deaths split into hostile and non-hostile, in each
     month since the war began, as recorded by the Defense Department's
@@ -371,11 +372,12 @@ series:
           points: [{period: '2026-02', value: 0}, {period: '2026-03', value: 7}, {period: '2026-04', value: 0}, {period: '2026-05', value: 0}, {period: '2026-06', value: 0}, {period: '2026-07', value: 1}, {period: '2026-08', value: 0}, {period: '2026-09', value: 2}, {period: '2026-10', value: 1}]
 comparisons:
   - id: displacement-and-population
-    title: 'People displaced inside Iran, against its population, as of 21 July 2026'
+    title: 'People displaced inside Iran'
+    subtitle: "WHO's estimate as of 21 July 2026, against Iran's population"
     description: >-
-      WHO's estimate of people displaced in Iran, and the deaths reported by
-      the Iranian authorities, each shown as a share of Iran's 2025
-      population (World Bank).
+      The people displaced, and the deaths reported by the Iranian
+      authorities, each shown as a share of Iran's 2025 population (World
+      Bank).
     unit: count
     valueLabel: 'People'
     shareTotal: 92417681
@@ -429,7 +431,8 @@ comparisons:
         subtitle: 'Iraq, 2003–2010'
         value: 4418
   - id: war-costs-for-scale
-    title: 'War costs for scale: the Iran war against Iraq and Afghanistan appropriations'
+    title: 'US war costs'
+    subtitle: 'US$ billions: Iran war estimates; Iraq and Afghanistan to FY2014'
     description: >-
       The latest Defense Department estimate of the Iran war's cost, beside
       what Congress appropriated for the Iraq and Afghanistan operations over
@@ -444,20 +447,25 @@ comparisons:
       post-9/11 operations together, not Iraq alone. The Iran figures are
       cost estimates; the Iraq and Afghanistan figures are appropriations.
     items:
-      - label: 'Iran war, Pentagon to 3 Sep 2026'
+      - label: 'Iran war, to 3 Sep 2026'
+        subtitle: 'Pentagon estimate'
         value: 43.6
         highlight: true
-      - label: 'Iran war, Pentagon as reported 29 Oct 2026'
+      - label: 'Iran war, reported 29 Oct 2026'
+        subtitle: 'Pentagon estimate, reported by AP'
         value: 47.1
         highlight: true
       - label: "Afghanistan and other counterterror"
+        subtitle: "Appropriations, FY2001–14"
         detail: "OEF, FY2001–14"
         value: 686
       - label: "Iraq"
+        subtitle: "Appropriations, FY2001–14"
         detail: "OIF and New Dawn, FY2001–14"
         value: 815
   - id: iraq-estimates-vs-appropriations
-    title: 'The Iraq war: early cost estimates against what Congress appropriated'
+    title: 'Iraq war: cost estimates and appropriations'
+    subtitle: 'US$ billions: estimates made in 2002–03, against appropriations to FY2014'
     description: >-
       The upper end of each total-cost estimate for the Iraq war, with the
       date it was made, beside the appropriations for Iraq through FY2014.
@@ -475,12 +483,13 @@ comparisons:
       charted.
     items:
       - label: "Daniels, 2002"
-        detail: "White House budget office"
+        subtitle: "White House budget office"
         value: 60
       - label: "Lindsey, Sep 2002"
-        detail: "White House economic adviser"
+        subtitle: "White House economic adviser"
         value: 200
-      - label: 'Brookings, Aug 2003 (after the invasion)'
+      - label: 'Brookings, Aug 2003'
+        subtitle: 'After the invasion'
         value: 300
       - label: 'Appropriated for Iraq, FY2001–14'
         value: 815
@@ -515,7 +524,8 @@ figures:
   - kind: "series"
   - kind: compositionBar
     id: iranian-deaths-by-counter
-    title: Deaths in Iran from the war, by counter, early April 2026 (and the government count to 21 July)
+    title: Deaths in Iran from the war, by counter
+    subtitle: Independent counts to early April 2026; the government's to 21 July
     description: Each counter's deaths split into civilians, military, and deaths it does not classify.
       HRANA to 7 April and Hengaw to 8 April cover the 40 days to the ceasefire; the Iranian authorities'
       count, relayed by WHO, runs to 21 July and is not split.
@@ -544,6 +554,7 @@ figures:
   - kind: "dataTable"
     id: "counter-methods"
     title: "How each count of Iranian deaths works"
+    subtitle: "The five counters found of the war's toll in Iran, 2026"
     description: "What each counter covers and how it counts. Only the first two separate civilians, and their counts stop at the April ceasefire."
     caption: "One row per counter"
     columns:
@@ -562,9 +573,8 @@ figures:
     id: "displacement-and-population"
   - kind: estimateRange
     id: cost-estimates
-    title: >-
-      Estimates of what the Iran war has cost the US military, by estimator and
-      date, April–October 2026
+    title: "Estimates of the Iran war's cost"
+    subtitle: 'US$ billions to the US military, by estimator, April–October 2026'
     description: Each published estimate of the war's cost to the Defense Department, in the order of the
       date it runs to, with its range where the estimator gave one, and CBO's estimate for each further
       month. Not adjusted for inflation.
@@ -605,8 +615,9 @@ figures:
     id: "iraq-estimates-vs-appropriations"
   - kind: "dataTable"
     id: "interceptors"
-    title: "US interceptor stocks, CSIS estimates"
-    description: "CSIS's estimates of US inventories on 27 July 2026, built from budget documents, not Pentagon figures."
+    title: "US interceptor stocks"
+    subtitle: "CSIS estimates, 27 July 2026"
+    description: "US Patriot and THAAD inventories, which CSIS built from budget documents, not Pentagon figures."
     caption: "One row per interceptor"
     columns:
       - { key: "interceptor", label: "Interceptor", rowHeader: true, sortable: false }
@@ -629,7 +640,7 @@ observationMarks:
   airwars-uses-hrana: {rows: ["HRANA", "Airwars"]}
   most-deaths-military-by-hengaw: {rows: ["Hengaw, to 8 April"]}
   counters-disagree: {rows: ["HRANA, to 7 April (civilians include at least 254 children)", "Hengaw, to 8 April"]}
-  cost-small-against-iraq: {rows: ["Iran war, Pentagon as reported 29 Oct 2026", "Iraq"]}
+  cost-small-against-iraq: {rows: ["Iran war, reported 29 Oct 2026", "Iraq"]}
   deaths-in-the-thousands: {rows: ["HRANA, to 7 April (civilians include at least 254 children)", "Hengaw, to 8 April", "Iranian authorities via WHO, to 21 July"]}
 ---
 ## Observations {#human-and-financial-costs-of-the-war--observations-us-wounded}
@@ -652,7 +663,7 @@ Reports in early October gave a total of 21; DCAS has since added one more non-h
 
 ### At least 1,701 Iranian civilians were killed by early April, at least 254 of them children, by HRANA's minimum count {#human-and-financial-costs-of-the-war--civilian-minimum-by-april}
 
-HRANA counted 1,701 civilians killed by the April ceasefire, including at least 254 children. [1](#source-human-and-financial-costs-of-the-war-1) It counts incident by incident, takes minimums, and warns of undercounting.
+[HRANA](#glossary-hrana) counted 1,701 civilians killed by the April ceasefire, including at least 254 children. [1](#source-human-and-financial-costs-of-the-war-1) It counts incident by incident, takes minimums, and warns of undercounting.
 
 ### By Hengaw's count, most of those killed were military {#human-and-financial-costs-of-the-war--most-deaths-military-by-hengaw}
 
@@ -702,7 +713,7 @@ CBO attributes the war's lower cost to "relatively few U.S. forces" being involv
 
 ### So far the war has cost a small fraction of Iraq's appropriations {#human-and-financial-costs-of-the-war--cost-small-against-iraq}
 
-The Pentagon's latest figure is about a seventeenth of the $815 billion appropriated for Iraq through FY2014 (chart). [22](#source-human-and-financial-costs-of-the-war-22) [17](#source-human-and-financial-costs-of-the-war-17) Iraq's appropriations built up over 13 years.
+The Pentagon's latest figure is about a seventeenth of the $815 billion appropriated for Iraq through FY2014 (chart). [22](#source-human-and-financial-costs-of-the-war-22) [17](#source-human-and-financial-costs-of-the-war-17) Iraq's [appropriations](#glossary-appropriation) built up over 13 years.
 
 ## Observations {#human-and-financial-costs-of-the-war--observations-iraq-estimates-vs-appropriations}
 

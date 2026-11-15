@@ -46,6 +46,8 @@ export type TimelineProps = {
   initialMajorOnly?: boolean;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: string;
   sources?: SourceCredit[];
   note?: string;
@@ -103,6 +105,7 @@ export function Timeline({
   initialMajorOnly = false,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -131,7 +134,7 @@ export function Timeline({
 
   if (preview) {
     return (
-      <ReportFigure id={id} title={title} preview={preview} className="sv-timeline">
+      <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-timeline">
         {resolvedCategories.length > 1 && (
           <ul className="sv-chart__legend sv-timeline__legend">
             {resolvedCategories.map(c => (
@@ -167,7 +170,7 @@ export function Timeline({
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
       {(showChips || showMajorToggle) && (
         <div className="sv-timeline__controls">
           {showChips && (

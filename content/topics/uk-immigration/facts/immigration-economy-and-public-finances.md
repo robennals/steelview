@@ -843,7 +843,8 @@ series:
         value: 2817.4
 additionalSeries:
 - id: g7-series
-  title: GDP per head across the G7, 1960–2025
+  title: 'GDP per head across the G7'
+  subtitle: 'US dollars at 2015 prices, 1960–2025'
   description: "Economic output per person in the seven large economies of the G7, in US dollars at 2015 prices and market exchange rates. This is real GDP per person, from the World Bank. All seven G7 members are shown; the UK is the subject."
   periodLabel: Year
   coverage:
@@ -1806,7 +1807,8 @@ additionalSeries:
         value: 45418
 comparisons:
 - id: g7-growth
-  title: Change in GDP per head, 2019 to 2025, G7
+  title: 'Change in GDP per head across the G7'
+  subtitle: 'Real terms, 2019 to 2025'
   description: "How much output per person changed between 2019 and 2025 in each of the seven large economies of the G7, ranked. This is the cumulative change in real GDP per person. The UK is highlighted."
   unit: percent
   valueLabel: '% change in GDP per head, 2019–2025'
@@ -1830,7 +1832,8 @@ comparisons:
   - label: Germany
     value: -0.2
 - id: obr-borrowing
-  title: 'OBR: UK borrowing in 2028-29 under higher or lower net migration'
+  title: 'Borrowing under higher or lower migration'
+  subtitle: 'Office for Budget Responsibility scenarios for 2028-29'
   description: "Estimated change in government borrowing in 2028-29 if net migration (arrivals minus departures) ran above or below forecast. This is the change in public sector net borrowing against the Office for Budget Responsibility's central forecast, in its March 2024 scenarios with net migration 200,000 a year higher or lower. Negative means less borrowing."
   unit: pounds
   valueLabel: Change in borrowing in 2028-29
@@ -1848,7 +1851,8 @@ comparisons:
   - label: Higher migration, spending left as planned
     value: -19900000000.0
 - id: lifetime-by-route
-  title: "Modelled lifetime net fiscal contribution, by visa route and against UK residents"
+  title: 'Lifetime fiscal contribution by visa route'
+  subtitle: 'Modelled net contribution per person, against UK residents'
   description: "Modelled taxes paid minus public spending received over the rest of a person's life, by visa route and for UK residents. Figures are present values from 2022/23. Migrant groups are the 2022/23 Skilled Worker and Partner-route cohorts; UK resident rows are the comparators used by the Migration Advisory Committee."
   unit: pounds
   valueLabel: Mean lifetime net contribution per person (present value)
@@ -1867,27 +1871,34 @@ comparisons:
   - label: "Other health and care occupations"
     detail: "Mainly nurses and doctors"
     value: 166000
-  - label: Age-matched UK resident (comparator, mean)
+  - label: 'Age-matched UK resident'
+    subtitle: 'Comparator, mean'
     value: 117000
     highlight: true
-  - label: Health and Care main applicants (all)
+  - label: 'Health and Care main applicants'
+    subtitle: 'All occupations'
     value: 54000
   - label: Skilled Worker adult dependants
     value: 3000
-  - label: Care workers (Health and Care visa)
+  - label: 'Care workers'
+    subtitle: 'Health and Care visa'
     value: -36000
-  - label: All UK residents (comparator, mean)
+  - label: 'All UK residents, mean'
+    subtitle: 'Comparator'
     value: -39000
     highlight: true
   - label: Health and Care adult dependants
     value: -67000
-  - label: Partner route (2022/23 cohort)
+  - label: 'Partner route'
+    subtitle: '2022/23 cohort'
     value: -109000
-  - label: All UK residents (comparator, median)
+  - label: 'All UK residents, median'
+    subtitle: 'Comparator'
     value: -145000
     highlight: true
 - id: earnings-by-route
-  title: Median earnings by UK visa route, 2023/24
+  title: 'Median earnings by visa route'
+  subtitle: 'People granted UK entry visas, against UK full-time median, 2023/24'
   description: "Median (middle) yearly earnings in 2023/24 of people granted UK entry visas, by visa route, beside the UK full-time median. These are median annual adjusted PAYE earnings in financial year 2023/24 of people aged 18–65 granted entry clearance visas from April 2019 to March 2023. The UK full-time median is there for reference."
   unit: pounds
   valueLabel: Median annual earnings
@@ -1918,7 +1929,8 @@ comparisons:
   - label: Family-route visa holders
     value: 20200
 - id: wage-effects-by-percentile
-  title: "Implied effect of EU immigration on UK-born wages, 1993–2017, by wage level"
+  title: 'EU immigration and UK-born wages'
+  subtitle: 'Implied effect by wage level, 1993–2017'
   description: "Implied effect on UK-born workers' wages, at each pay level, of the rise in the EU-born share of the working-age population. This is the Migration Advisory Committee's update of work by Dustmann, Frattini and Preston, giving the total effect implied by the 6.7-point rise in that share at each point of the UK-born wage distribution. Ordered from lowest to highest paid."
   unit: percent
   valueLabel: '% change in UK-born nominal wages'
@@ -1941,7 +1953,8 @@ comparisons:
   - label: "95th percentile (highest paid)"
     value: 3.1
 - id: tuition-fees-by-domicile
-  title: Who pays UK universities' course fees, 2024/25
+  title: 'Who pays UK universities'' course fees'
+  subtitle: 'Fee income by where students are domiciled, 2024/25'
   description: "Course fees received by UK higher-education providers in 2024/25, split between students from the UK and those from elsewhere. Students are grouped by where they are domiciled."
   unit: pounds
   valueLabel: Course fee income, 2024/25
@@ -1963,7 +1976,8 @@ figures:
 - kind: barChart
   id: obr-gdp-per-person
   replaces: ["chart-obr-gdp"]
-  title: 'OBR: UK GDP, per person and in total, if net migration were 200,000 a year higher'
+  title: 'GDP under higher net migration'
+  subtitle: 'Per person and in total, if 200,000 a year higher, 2028-29'
   description: "Scenario estimates of output per person and total GDP in 2028-29 if net migration (arrivals minus departures) ran above forecast. Each bar is the difference from the Office for Budget Responsibility's central forecast, for each measure in the same three cases, in its March 2024 scenarios. The lower-migration scenario is the mirror image."
   valueLabel: "% difference from central forecast, 2028-29"
   categoryLabel: "Case"
@@ -1988,7 +2002,8 @@ figures:
   id: lifetime-by-route
 - kind: dataTable
   id: mac-who-adds-most
-  title: "Where the fiscal gain from skilled workers comes from"
+  title: 'Skilled workers'' fiscal gain'
+  subtitle: 'Migration Advisory Committee findings, over a lifetime'
   description: "What the Migration Advisory Committee found about which skilled workers add most to the public finances over a lifetime."
   caption: "One row per finding"
   columns:
@@ -2000,7 +2015,8 @@ figures:
     - {"finding": "Lower earners", "says": {"value": "\"Among the lower-earning skilled worker groups, temporary migration will be more beneficial than permanent migration from a fiscal perspective.\"", "sources": [27]}}
 - kind: dataTable
   id: headline-estimates
-  title: "Estimates of immigration's effect on UK public finances, side by side"
+  title: 'Estimates of immigration''s fiscal effect'
+  subtitle: 'Headline UK estimates, side by side'
   description: "The headline estimates of what immigration costs or adds, with what each covers and where it stands now."
   caption: "One row per estimate"
   sources: [53, 58, 17, 28, 51, 52]
@@ -2020,7 +2036,8 @@ figures:
 - kind: barChart
   id: obr-cumulative-by-age
   replaces: ["chart-obr-cumulative-age-66", "chart-obr-cumulative-age-82", "chart-obr-cumulative-age-100"]
-  title: 'OBR: cumulative fiscal impact of migrants and UK residents by age 66, 82 and 100'
+  title: 'Lifetime fiscal impact by age'
+  subtitle: 'Stylised profiles of migrants and a UK resident, to ages 66, 82, 100'
   description: "Illustrative running totals of tax paid minus public spending received to ages 66, 82 and 100, for migrants and a UK resident. These are stylised profiles from the Office for Budget Responsibility: a migrant worker arriving at 25 on three wage levels, and a representative UK resident counted from birth. Not discounted."
   valueLabel: "Cumulative taxes minus spending"
   categoryLabel: "Profile"
@@ -2051,7 +2068,8 @@ figures:
   id: tuition-fees-by-domicile
 - kind: barChart
   id: university-deficits
-  title: "English higher-education institutions reporting a deficit"
+  title: 'Universities reporting a deficit'
+  subtitle: 'England, 2024-25 and forecast for 2025-26'
   description: "The share of higher-education institutions in England reporting a deficit, from the Office for Students, in 2024-25 and as forecast for 2025-26."
   valueLabel: "Institutions in deficit (%)"
   categoryLabel: "Year"
@@ -2063,7 +2081,8 @@ figures:
     - {"label": "2025-26, forecast", "value": 42.7}
 - kind: barChart
   id: fast-growth-founders
-  title: "Foreign-born founders of the UK's fastest-growing companies"
+  title: 'Foreign-born founders of fast-growing firms'
+  subtitle: 'The UK''s fastest-growing companies, The Entrepreneurs Network'
   description: "How often the UK's fastest-growing companies had a founder born abroad, from The Entrepreneurs Network, beside the foreign-born share of the population."
   valueLabel: "Share (%)"
   categoryLabel: "Measure"
@@ -2098,8 +2117,8 @@ observationMarks:
   total-gdp-grew: {lines: ["UK GDP"], from: "2019", to: "2025"}
   obr-per-head-effect-small: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
   g7-stalled-alike: {rows: ["United Kingdom", "Canada", "Germany"]}
-  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
-  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents (comparator, mean)", "All UK residents (comparator, median)"]}
+  skilled-workers-gain-care-workers-cost: {rows: ["Skilled Worker main applicants", "Care workers", "Health and Care adult dependants"]}
+  average-resident-is-a-lifetime-net-cost: {rows: ["All UK residents, mean", "All UK residents, median"]}
   lower-migration-raises-borrowing: {rows: ["Lower migration, spending left as planned", "Lower migration, spending per person held"]}
   five-year-window: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
   total-gdp-moves-with-migration: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents", "Capital stock does not adjust"]}
@@ -2114,7 +2133,7 @@ observationMarks:
   g7-levels: {lines: ["United Kingdom"], from: "2019", to: "2025"}
   march-2026-revision: {rows: ["Migrants as productive as residents"]}
   independent-forecasts: {rows: ["Lower migration, spending left as planned"]}
-  discounting-changes-the-sign: {rows: ["Age-matched UK resident (comparator, mean)"]}
+  discounting-changes-the-sign: {rows: ["Age-matched UK resident"]}
   routes-not-modelled: {whole: true}
   earnings-and-age-decide: {rows: ["High-wage migrant", "Low-wage migrant"]}
   obr-profiles-behind-cps: {rows: ["Average-wage migrant"]}
@@ -2125,9 +2144,9 @@ observationMarks:
   obr-participation-and-productivity: {rows: ["Nearly all adults on work visas", "Migrants as productive as residents"]}
   obr-delaying-not-resolving: {rows: ["Higher migration, spending per person held", "Higher migration, spending left as planned"]}
   obr-2024-long-run-scenarios: {whole: true}
-  lifetime-route-detail: {rows: ["Health and Care main applicants (all)", "Care workers (Health and Care visa)", "Other health and care occupations", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
+  lifetime-route-detail: {rows: ["Health and Care main applicants", "Care workers", "Other health and care occupations", "Skilled Worker adult dependants", "Health and Care adult dependants"]}
   mac-clearly-fiscally-positive: {rows: ["Skilled Worker main applicants"]}
-  age-matched-comparators: {rows: ["Age-matched UK resident (comparator, mean)", "Skilled Worker main applicants", "Care workers (Health and Care visa)", "Health and Care adult dependants"]}
+  age-matched-comparators: {rows: ["Age-matched UK resident", "Skilled Worker main applicants", "Care workers", "Health and Care adult dependants"]}
   childhood-paid-for-elsewhere: {rows: ["Average-wage migrant", "Representative UK resident"]}
   earnings-dependants-family-and-ons: {rows: ["Skilled Worker dependants", "Health and Care dependants", "Family-route visa holders", "UK full-time employees (ASHE, reference)"]}
   earnings-share-with-paye: {rows: ["Skilled Worker main applicants", "Skilled Worker dependants"]}
@@ -2137,9 +2156,9 @@ observationMarks:
   wage-effects-other-studies: {rows: ["5th percentile (lowest paid)", "90th percentile"]}
   capital-does-not-adjust: {rows: ["Capital stock does not adjust"]}
   skilled-workers-large-net-gain: {rows: ["Skilled Worker main applicants"]}
-  care-route-net-cost: {rows: ["Care workers (Health and Care visa)", "Health and Care adult dependants"]}
-  care-workers-net-cost: {rows: ["Care workers (Health and Care visa)"]}
-  partner-route-lifetime-cost: {rows: ["Partner route (2022/23 cohort)"]}
+  care-route-net-cost: {rows: ["Care workers", "Health and Care adult dependants"]}
+  care-workers-net-cost: {rows: ["Care workers"]}
+  partner-route-lifetime-cost: {rows: ["Partner route"]}
   stayers-worth-more: {rows: ["Those who stay and those who leave"]}
   temporary-better-for-lower-earners: {rows: ["Lower earners"]}
   foreign-born-founders: {rows: ["Companies with a foreign-born founder or co-founder"]}

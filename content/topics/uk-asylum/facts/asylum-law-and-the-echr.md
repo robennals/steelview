@@ -587,7 +587,8 @@ dataStillNeeded:
 figures:
   - kind: dataTable
     id: article-31
-    title: Article 31 of the Refugee Convention and "coming directly", 1999–2025
+    title: 'Article 31 and "coming directly"'
+    subtitle: 'How UK courts, Parliament, UNHCR and a study read it, 1999–2025'
     description: How UK courts, Parliament, UNHCR and one legal study have read the Refugee Convention's defence for refugees who stopped on the way.
     caption: One card per ruling, law, guideline or study
     layout: timeline
@@ -619,7 +620,8 @@ figures:
         says: { value: '"Few refugees are able to enter the islands of the United Kingdom without first passing through the territory of another state".', sources: [6] }
   - kind: dataTable
     id: refugee-convention
-    title: What the Refugee Convention says, and what stays if the UK leaves the ECHR
+    title: 'What the Refugee Convention says'
+    subtitle: 'And what stays if the UK leaves the ECHR'
     description: The two Refugee Convention articles this topic turns on, and the Wolfson review's advice on keeping the Convention after leaving the ECHR.
     caption: One card per provision
     layout: cards
@@ -636,7 +638,8 @@ figures:
         says: { value: 'Wolfson: "a stringent regime could be pursued outside of the ECHR, while remaining within the Refugee Convention".', sources: [10] }
   - kind: dataTable
     id: wolfson-review
-    title: What the Wolfson review advised on the ECHR, 2025
+    title: 'The Wolfson review''s ECHR advice'
+    subtitle: 'Lord Wolfson''s advice to the Leader of the Opposition, October 2025'
     description: Legal advice to the Leader of the Opposition from Lord Wolfson of Tredegar KC, dated 2 October 2025. It contains no count of removals blocked by the ECHR.
     caption: One card per question the review answers
     layout: cards
@@ -657,7 +660,8 @@ figures:
         advice: { value: 'They "do not constitute legal barriers to leaving the ECHR".', sources: [11] }
   - kind: dataTable
     id: tca-part-three
-    title: What leaving the ECHR would do to UK–EU policing cooperation
+    title: 'Leaving the ECHR and EU policing ties'
+    subtitle: 'Part Three of the UK–EU Trade and Cooperation Agreement'
     description: The settled text of Part Three of the UK–EU Trade and Cooperation Agreement (TCA).
     caption: One card per provision
     layout: cards
@@ -676,7 +680,8 @@ figures:
         says: { value: 'Wolfson and CAJ agree: it gives the EU a ground to end Part Three, and only Part Three.', sources: [21, 44] }
   - kind: dataTable
     id: leaving-the-echr
-    title: Would leaving the ECHR breach the Good Friday Agreement?
+    title: 'The ECHR and the Good Friday Agreement'
+    subtitle: 'Would leaving the ECHR breach it? Two readings'
     description: Contested law. The two readings of the same commitment, side by side.
     caption: One card per point of dispute
     layout: cards
@@ -696,7 +701,8 @@ figures:
         caj: { value: 'The Irish government "has categorically rejected the idea of ECHR withdrawal as being compliant with the B/GFA".', sources: [19] }
   - kind: dataTable
     id: chisinau-declaration
-    title: What the Chişinău Declaration on the ECHR says, May 2026
+    title: 'The Chişinău Declaration on the ECHR'
+    subtitle: 'Adopted by all 46 Council of Europe states, May 2026'
     description: Adopted by all 46 Council of Europe states, including the UK, on 15 May 2026, a year after a letter led by Italy and Denmark that the UK did not sign.
     caption: One card per topic
     layout: cards
@@ -723,7 +729,8 @@ figures:
         says: { value: 'Listed as approaches "envisaged by several member States", provided states "continue to fulfil their Convention obligations".', sources: [26] }
   - kind: dataTable
     id: immigration-and-asylum-bill
-    title: What the UK's Immigration and Asylum Bill would change, 2026
+    title: 'The Immigration and Asylum Bill'
+    subtitle: 'What it would change, UK, introduced 30 June 2026'
     description: The Bill was introduced in the Commons on 30 June 2026.
     caption: One card per part of the Bill or finding of its impact assessment
     layout: cards
@@ -874,7 +881,7 @@ from the references to "return hubs". [22](#source-asylum-law-and-the-echr-22) [
 
 ### The Bill replaces the tribunal with a body whose adjudicators need not be lawyers, chaired by a Home Secretary appointee {#asylum-law-and-the-echr--bill-replaces-the-tribunal}
 
-The Independent Immigration Appeals Authority would replace the First-tier Tribunal. Its adjudicators "wouldn’t have to be legally qualified", and the Home Secretary would appoint its Chair. [31](#source-asylum-law-and-the-echr-31) [33](#source-asylum-law-and-the-echr-33)
+The Independent Immigration Appeals Authority would replace the [First-tier Tribunal](#glossary-first-tier-tribunal). Its adjudicators "wouldn’t have to be legally qualified", and the Home Secretary would appoint its Chair. [31](#source-asylum-law-and-the-echr-31) [33](#source-asylum-law-and-the-echr-33)
 
 ### The Bill rewrites how judges apply Article 8 in appeals {#asylum-law-and-the-echr--bill-rewrites-article-8-appeals}
 

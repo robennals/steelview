@@ -411,7 +411,8 @@ sources:
   publisher: The Migration Observatory, University of Oxford
   date: '2025-10-22'
 series:
-  title: Small-boat arrivals across the Channel, 2018–2026
+  title: 'Small-boat crossings of the Channel'
+  subtitle: 'People and boats detected arriving, 2018–2026'
   description: >-
     People detected arriving in the UK by small boat each calendar year, from the
     Home Office's daily operational count. One line is the whole year; the other counts
@@ -593,7 +594,8 @@ series:
         value: 68.6
 additionalSeries:
 - id: nationality
-  title: UK small-boat arrivals by nationality, 2018–2025
+  title: 'Small-boat arrivals by nationality'
+  subtitle: 'Top ten nationalities and the rest, UK, 2018–2025'
   description: >-
     People detected arriving by small boat each year, by recorded nationality. The
     ten nationalities with the most arrivals over 2018–2025 are shown by name, in
@@ -862,7 +864,8 @@ additionalSeries:
       - period: '2025'
         value: 9354
 - id: routes
-  title: Detected illegal arrivals in the UK by method, 2018–2025
+  title: 'Detected illegal arrivals by method'
+  subtitle: 'Small boats, air, lorries and ports, UK, 2018–2025'
   description: >-
     People detected arriving in the UK by an illegal route, by method of entry, each
     year. Detection rates differ by method, so the lines show what was detected, not
@@ -981,7 +984,8 @@ additionalSeries:
       - period: '2025'
         value: 204
 - id: monthly
-  title: UK small-boat arrivals by month, January 2018 to October 2026
+  title: 'Small-boat arrivals by month'
+  subtitle: 'UK, January 2018 to 22 October 2026'
   description: >-
     People detected arriving by small boat each month, from the Home Office's daily
     operational count. Crossings are seasonal, so a month is best compared with the
@@ -1228,7 +1232,8 @@ additionalSeries:
       - period: 2026-10
         value: 1739
 - id: europe
-  title: Irregular crossings into the EU, 2009–2026
+  title: 'Irregular crossings into the EU'
+  subtitle: 'Detected at the EU''s external borders, by Frontex, 2009–2026'
   description: >-
     Detections of irregular border crossings at the EU's external borders, all routes,
     from Frontex. One line is the whole year; the other counts only January to August,
@@ -1344,9 +1349,8 @@ additionalSeries:
       - period: '2026'
         value: 76778
 - id: weather
-  title: >-
-    Good Channel-crossing weather and arrivals per good day, January–August
-    2020–2026
+  title: 'Channel crossing weather and arrivals'
+  subtitle: 'Good-weather “red days” and arrivals per red day, Jan–Aug 2020–2026'
   description: >-
     Red days are days the Met Office judged at least one crossing attempt likely.
     The first reading counts red days from January to August each year; the second
@@ -1420,9 +1424,8 @@ additionalSeries:
       - period: '2026'
         value: 144
 - id: preventions
-  title: >-
-    Channel crossings stopped by the French authorities, May 2024 to October
-    2026
+  title: 'Crossings stopped by French authorities'
+  subtitle: 'People arrived and stopped, by month, May 2024 to October 2026'
   description: >-
     People who reached the UK by small boat, and people the French authorities report
     stopping from leaving France, by the month in which each reporting week ends.
@@ -1718,7 +1721,8 @@ additionalSeries:
       - period: 2026-10
         value: 57.9
 - id: albania
-  title: Albanian and other small-boat arrivals in the UK by quarter, 2018–2026
+  title: 'Albanian small-boat arrivals'
+  subtitle: 'Albanians and everyone else, UK, by quarter, 2018–2026'
   description: >-
     People detected arriving by small boat each quarter: Albanian nationals, and everyone
     else. The UK–Albania returns agreement was announced on 13 December 2022, in the
@@ -1911,9 +1915,8 @@ additionalSeries:
         value: 7413
 comparisons:
 - id: europe-change
-  title: >-
-    Change in irregular crossings into the EU and the UK, January–August 2026
-    against January–August 2025
+  title: 'Change in irregular crossings'
+  subtitle: 'January to August 2026 against the same months of 2025, EU and UK'
   description: >-
     Percentage change in detected irregular crossings on each Frontex route into the
     EU, the EU total, and small-boat arrivals in the UK, over the same eight months.
@@ -1934,9 +1937,11 @@ comparisons:
     EU's external border; the UK figure counts people arriving in the UK, most of
     whom will have crossed into the EU earlier.
   items:
-  - label: Western African route (Canary Islands)
+  - label: Western African route
+    subtitle: Canary Islands
     value: -57.5
-  - label: Central Mediterranean (Italy, Malta)
+  - label: Central Mediterranean
+    subtitle: Italy, Malta
     value: -54.1
   - label: Eastern land borders
     value: -48.3
@@ -1950,7 +1955,8 @@ comparisons:
   - label: "Eastern Mediterranean"
     detail: "Greece, Cyprus, Bulgaria"
     value: -16.0
-  - label: Western Mediterranean (Spain)
+  - label: Western Mediterranean
+    subtitle: Spain
     value: 27.9
   - label: Albania to Greece (circular route)
     value: 28.6
@@ -1998,7 +2004,8 @@ figures:
   id: albania
 - kind: dataTable
   id: albania-what-changed
-  title: What changed for Albanian small-boat arrivals around the 2022 returns deal
+  title: 'Albanian arrivals and the returns deal'
+  subtitle: 'UK small-boat arrivals, claims and returns around December 2022'
   description: The fall in Albanian arrivals in late 2022, the returns deal, and what happened to Albanian claims and returns.
   caption: One card per change
   layout: cards
@@ -2163,7 +2170,7 @@ The government prioritised the processing of Albanian asylum applications after 
 
 ### Nearly all Albanian claims were refused at first decision by 2024 {#channel-crossings-and-irregular-arrivals--albanian-claims-nearly-all-refused}
 
-Almost half of initial decisions on Albanian claims were positive in 2021 and 2022, and just 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34)
+Almost half of [initial decisions](#glossary-initial-decision) on Albanian claims were positive in 2021 and 2022, and just 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34)
 
 ### Returns to Albania rose sharply {#channel-crossings-and-irregular-arrivals--returns-to-albania-rose}
 

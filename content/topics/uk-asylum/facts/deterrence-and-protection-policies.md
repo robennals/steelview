@@ -648,7 +648,8 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-14'
 series:
-  title: 'Australia: asylum-seeker boat arrivals, 1976-2016'
+  title: 'Australia: asylum-seeker boat arrivals'
+  subtitle: 'People arriving by boat each year, 1976–2016'
   description: >-
     People arriving in Australia by boat in each calendar year, as compiled by
     the Australian Parliamentary Library. Offshore processing restarted in
@@ -789,8 +790,8 @@ series:
               value: 0
 additionalSeries:
   - id: australia-interceptions
-    title: >-
-      Australia: people on boats intercepted after September 2013, by outcome
+    title: 'Australia: boats intercepted since 2013'
+    subtitle: 'People on boats after September 2013, by outcome'
     description: >-
       People (excluding crew) on boats that tried to reach Australia after
       Operation Sovereign Borders began, split into those brought to Australia
@@ -855,7 +856,8 @@ additionalSeries:
               - period: '2019'
                 value: 33
   - id: australia-offshore-cost
-    title: 'Australia: cost of offshore processing, 2012-13 to 2024-25'
+    title: 'Australia: cost of offshore processing'
+    subtitle: 'Nauru and Papua New Guinea, A$ million, 2012-13 to 2024-25'
     description: >-
       Estimated actual annual cost of offshore management (Nauru and Papua New
       Guinea), in millions of Australian dollars, by financial year ending June.
@@ -922,8 +924,8 @@ additionalSeries:
               - period: '2025'
                 value: 575.2
   - id: denmark-comparators
-    title: >-
-      Denmark, Sweden and Germany: first-time asylum applicants, 2008-2025
+    title: 'First-time asylum applicants'
+    subtitle: 'Denmark, Sweden and Germany, non-EU applicants, 2008–2025'
     description: >-
       Non-EU first-time asylum applicants per 10,000 residents, and in people,
       for Denmark and the two neighbours it is most often compared with. Denmark
@@ -1223,9 +1225,8 @@ additionalSeries:
               - period: '2025'
                 value: 113170
   - id: grant-rates
-    title: >-
-      Denmark, Sweden and Germany: share of first-instance asylum decisions that
-      were positive, 2008-2025
+    title: 'Asylum grant rates'
+    subtitle: 'Denmark, Sweden and Germany, first-instance decisions, 2008–2025'
     description: >-
       Positive first-instance decisions (refugee status, subsidiary protection
       or humanitarian status) as a share of all first-instance decisions, for
@@ -1383,7 +1384,8 @@ additionalSeries:
                 value: 32
 comparisons:
   - id: australia-outcomes
-    title: 'Australia: what happened to the people it sent offshore'
+    title: 'Australia: people sent offshore'
+    subtitle: 'Sent to Nauru or Papua New Guinea in 2012–2014, as of January 2021'
     description: >-
       The 4,180 people transferred to Nauru or Papua New Guinea from August 2012
       to 2014, by where they were on 31 January 2021.
@@ -1414,7 +1416,8 @@ comparisons:
       covers 4,359 people including transfers since 2023 and does not split into
       parts that add to its total, so it is cited in the Observations instead.
   - id: rwanda-spend
-    title: What the UK spent on the Rwanda partnership, to June 2024
+    title: 'Spending on the Rwanda partnership'
+    subtitle: 'UK Home Office, by type, April 2022 to June 2024'
     description: >-
       Home Office spending on the Migration and Economic Development Partnership
       with Rwanda and the Illegal Migration Act 2023, April 2022 to June 2024,
@@ -1474,7 +1477,8 @@ figures:
     id: australia-interceptions
   - kind: dataTable
     id: turnback-definitions
-    title: How Operation Sovereign Borders defines turnbacks and take-backs
+    title: 'Australia: turnbacks and take-backs'
+    subtitle: 'As Operation Sovereign Borders defines them'
     description: The two ways Australia has returned people on boats, in the operation's own words.
     caption: One card per term
     layout: cards
@@ -1495,7 +1499,8 @@ figures:
     id: rwanda-spend
   - kind: dataTable
     id: rwanda-results
-    title: What the Rwanda partnership cost and who was sent, to June 2024
+    title: 'Rwanda partnership: cost and who went'
+    subtitle: 'UK spending and people sent to Rwanda, to June 2024'
     description: Total Home Office spending on the Rwanda partnership and the Illegal Migration Act, and the people sent to Rwanda.
     caption: One row per measure
     columns:
@@ -1514,9 +1519,8 @@ figures:
     id: grant-rates
   - kind: dataTable
     id: residence-status
-    title: >-
-      Denmark, Germany and Sweden: temporary versus permanent status and
-      refugees' employment
+    title: 'Temporary status and refugees'' work'
+    subtitle: 'Denmark, Germany and Sweden: reforms and employment'
     description: European reforms that made permanent residence harder or slower to get, partly on the argument that it would push refugees into work. The UK government gives the same reason for its 2026 changes.
     caption: One card per reform or study
     layout: timeline
@@ -1544,7 +1548,8 @@ figures:
         finding: { value: 'Less take-up of Swedish language courses; no effect on employment, education or welfare receipt in the first year', sources: [41] }
   - kind: dataTable
     id: work-rights
-    title: European studies of work rights for people waiting on an asylum claim
+    title: 'Work rights while waiting on a claim'
+    subtitle: 'Four European studies of work bans and waiting times'
     description: Four European studies of work bans and waiting times. In the UK, a person waiting on an asylum claim may ask for permission to work after 12 months, and only in jobs on the Immigration Salary List.
     caption: One card per study
     layout: cards
@@ -1569,7 +1574,8 @@ figures:
         finding: { value: An extra year waiting for a decision meant a 20% lower employment rate later, sources: [46] }
   - kind: dataTable
     id: uk-2026
-    title: The UK's 2026 changes to refugee protection
+    title: 'The UK''s 2026 refugee protection changes'
+    subtitle: 'Each measure, who it applies to and how far it has gone'
     description: The measures in the UK's new approach to refugee protection, who each applies to and how far each has gone.
     caption: One card per measure
     layout: cards
@@ -1786,7 +1792,7 @@ Adults and accompanied children claiming from 2 March 2026 receive 30 months' pr
 
 ### The government presents the changes as following Denmark {#deterrence-and-protection-policies--inspired-by-denmark}
 
-The March 2026 statement calls the reset "inspired by Denmark’s success" and aims to "reduce the pull factors driving illegal migration". The Danish evidence above shows a low and falling intake, alongside a Swedish fall of similar timing and a grant rate near the EU's. [31](#source-deterrence-and-protection-policies-31)
+The March 2026 statement calls the reset "inspired by Denmark’s success" and aims to "reduce the pull factors driving illegal migration". The Danish evidence above shows a low and falling intake, alongside a Swedish fall of similar timing and a [grant rate](#glossary-grant-rate) near the EU's. [31](#source-deterrence-and-protection-policies-31)
 
 ### The Bill is not yet law {#deterrence-and-protection-policies--bill-not-law}
 

@@ -360,7 +360,8 @@ sources:
     publisher: CBS New York (Associated Press)
     date: '2024-02-27'
 series:
-  title: 'Confident that votes nationwide will be accurately cast and counted, by party (Gallup), 2004–2024'
+  title: 'Pre-election confidence, by party'
+  subtitle: 'Votes nationwide accurately cast and counted, Gallup, 2004–2024'
   description: >-
     Share of US adults very or somewhat confident, asked before each election.
     Changes of president and the disputed results in this report are marked
@@ -432,7 +433,8 @@ series:
           points: [{period: '2004', value: 59}, {period: '2006', value: 66}, {period: '2008', value: 57}, {period: '2016', value: 85}, {period: '2018', value: 69}, {period: '2020', value: 76}, {period: '2022', value: 85}, {period: '2024', value: 84}]
 additionalSeries:
   - id: pew-count-by-mode
-    title: 'Confident votes will be counted as voters intend, in person and by mail, by candidate supported (Pew), 2020–2026'
+    title: 'Confidence in mail and in-person counts'
+    subtitle: 'Votes counted as intended, by candidate backed, Pew, 2020–2026'
     description: >-
       Share of registered voters very or somewhat confident that votes cast
       each way across the US will be counted as intended, asked each October.
@@ -491,7 +493,8 @@ additionalSeries:
           - name: Votes cast by absentee or mail-in ballot
             points: [{period: '2020-10', value: 59}, {period: '2022-10', value: 62}, {period: '2024-10', value: 61}, {period: '2026-10', value: 53}]
   - id: spae-nationwide
-    title: 'Confident that votes nationwide were counted as intended, after the election, by party (MIT SPAE), 2012–2024'
+    title: 'Post-election confidence, by party'
+    subtitle: 'Votes nationwide counted as intended, MIT survey, 2012–2024'
     description: >-
       Share of voters very or somewhat confident, asked in the weeks after each
       November election. Winners of the presidency: Democratic 2012 and 2020,
@@ -530,7 +533,8 @@ additionalSeries:
           - name: Democrats
             points: [{period: '2012', value: 84}, {period: '2016', value: 69}, {period: '2020', value: 93}, {period: '2022', value: 92}, {period: '2024', value: 79}]
   - id: gallup-honesty
-    title: 'Confidence in the honesty of elections, US adults (Gallup World Poll), 2006–2026'
+    title: 'Confidence in honest elections'
+    subtitle: 'US adults, Gallup World Poll, 2006–2026'
     description: >-
       Share of US adults answering yes to whether they have confidence in the
       honesty of elections, the same question Gallup asks in more than 100
@@ -575,7 +579,8 @@ additionalSeries:
             points: [{period: '2006', value: 52}, {period: '2007', value: 50}, {period: '2008', value: 47}, {period: '2009', value: 59}, {period: '2010', value: 44}, {period: '2011', value: 48}, {period: '2012', value: 42}, {period: '2013', value: 39}, {period: '2014', value: 40}, {period: '2015', value: 40}, {period: '2016', value: 30}, {period: '2017', value: 47}, {period: '2018', value: 37}, {period: '2019', value: 40}, {period: '2020', value: 45}, {period: '2021', value: 50}, {period: '2022', value: 49}, {period: '2023', value: 44}, {period: '2024', value: 51}, {period: '2025', value: 47}, {period: '2026', value: 49}]
 comparisons:
   - id: mail-count-by-voting-method
-    title: 'Confident mail and absentee votes will be counted as intended, by how the respondent votes, October 2026'
+    title: 'Mail-count confidence, by voting method'
+    subtitle: 'Registered voters, by how they vote, Pew, October 2026'
     description: 'Share of registered voters very or somewhat confident that mail and absentee votes across the US will be counted as voters intend, among those voting by mail or absentee and those voting in person (Pew, September 28–October 4, 2026).'
     unit: percent
     valueLabel: '% confident'
@@ -618,7 +623,8 @@ figures:
     id: gallup-honesty
   - kind: barChart
     id: winner-gap-worldwide
-    title: 'Approvers and disapprovers of national leadership confident in election honesty: world median and the US'
+    title: 'Election confidence, by view of leaders'
+    subtitle: 'Approvers and disapprovers, world median and the US, Gallup'
     description: 'Share confident in the honesty of elections among those who approve and disapprove of their national leadership (Gallup World Poll). The world figure is the 2025 median across more than 100 countries.'
     valueLabel: '% confident'
     categoryLabel: Where and when
@@ -640,7 +646,8 @@ figures:
       - { label: 'United States, 2026', values: { approve: 41, disapprove: 52 }, highlight: true }
   - kind: dataTable
     id: disputes
-    title: Six disputed US election results, and how each ended
+    title: Disputed US election results
+    subtitle: Six cases, and how each ended
     description: 'What was challenged in each dispute, whether mail ballots were central, and how it ended.'
     caption: One card per dispute
     layout: timeline

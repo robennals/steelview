@@ -4,7 +4,7 @@ shortName: "Don't turn voters away"
 summary: "[Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected](#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern), and [non-citizens' votes are found at about 1 to 22 per million ballots](#fact-non-citizens-on-voter-rolls/votes-per-ballots). But [Kansas's citizenship-document rule blocked tens of thousands of applicants](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens). A sworn promise of citizenship, backed by careful records checks, protects the voter list without shutting citizens out."
 order: 2
 ---
-Every citizen should have [an equal voice](#principle-an-equal-voice-for-every-citizen). A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and proof-of-citizenship rules prevent almost nothing, and their cost falls on people who can least afford it.
+Every citizen should have [an equal voice](#principle-an-equal-voice-for-every-citizen). A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) rules prevent almost nothing, and their cost falls on people who can least afford it.
 
 ### ID checks at the polls stop a kind of fraud that almost never happens
 

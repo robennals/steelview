@@ -561,9 +561,10 @@ test('choosing an observation picks out its part of the graph', async ({ page })
   await expect(dimmed('Net migration')).toHaveCount(1);
   await expect(dimmed('Immigration')).toHaveCount(0);
 
-  // A region: the four years from 2021, with the plot either side of them veiled.
+  // Stepping on from an open observation opens the next, so its mark shows at
+  // once: a region, the four years from 2021, with the plot either side veiled.
   await step.getByRole('button', { name: 'Next observation' }).click();
-  await toggle.click();
+  await expect(step.locator('.sv-observe__item:not([hidden]) .sv-observe__body')).toBeVisible();
   await expect(shownMark.locator('.sv-chart__mark-veil')).toHaveCount(2);
   await expect(dimmed('Emigration')).toHaveCount(1);
   await expect(dimmed('Net migration')).toHaveCount(0);
@@ -586,7 +587,7 @@ test('an observation on a comparison picks out its rows, and keeps them when the
   await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
 });
 
-test('a chart\'s description is one line until opened', async ({ page }) => {
+test('a chart\'s subtitle line opens its More panel', async ({ page }) => {
   await page.goto(DATA);
   const row = page.locator('.sv-row--data').first();
   await row.locator('.sv-row__toggle').click(headCorner);
@@ -596,7 +597,7 @@ test('a chart\'s description is one line until opened', async ({ page }) => {
   await expect(about).not.toHaveAttribute('open');
   // The row is still settling as it opens, which can swallow the first click.
   await expect(async () => {
-    await about.locator('summary').click();
+    await about.locator('> summary').click();
     await expect(about).toHaveAttribute('open', '', { timeout: 500 });
   }).toPass();
 });

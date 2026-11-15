@@ -35,14 +35,14 @@ test('a short bar chart preview spreads its rows a little, and a wrapped label k
   const row = rows(page).filter({ hasText: 'Voter ID and citizenship checks' });
   await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
   // Five rows at 2.5rem each, against 108px at their own spacing.
-  const short = row.locator('.sv-comparison').filter({ hasText: 'Non-citizen registrants found' }).locator('.sv-comparison__rows');
+  const short = row.locator('.sv-comparison').filter({ hasText: 'Non-citizens found on voter rolls' }).locator('.sv-comparison__rows');
   await expect(short.locator('> li')).toHaveCount(5);
   await expect.poll(() => short.evaluate(list => list.clientHeight)).toBe(200);
 
   // On a phone the slide is as tall as its chart, so nothing spreads the rows,
   // but labels wrapped onto two or three lines are never cut off.
   await page.setViewportSize({ width: 390, height: 844 });
-  const wrapped = row.locator('.sv-comparison').filter({ hasText: 'Adult citizens without each kind' }).locator('.sv-comparison__rows');
+  const wrapped = row.locator('.sv-comparison').filter({ hasText: 'Adult citizens without ID documents' }).locator('.sv-comparison__rows');
   const { height, content } = await wrapped.evaluate(list => ({ height: list.clientHeight, content: list.scrollHeight }));
   expect(content).toBeLessThanOrEqual(height);
 });

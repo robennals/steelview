@@ -717,7 +717,8 @@ sources:
     publisher: Texas Secretary of State
     date: '2026-09-15'
 series:
-  title: 'Voter registration records removed per two-year cycle, US, 2004–2024'
+  title: 'Voter records removed'
+  subtitle: 'Per two-year cycle, US, 2004–2024'
   description: >-
     Records states reported removing from their voter lists in the two years
     before each federal general election, in records and as a share of
@@ -810,7 +811,8 @@ series:
             - {period: '2024', value: 9.1}
 additionalSeries:
   - id: removal-reasons
-    title: Why voter records were removed, US, 2006–2024
+    title: Why voter records were removed
+    subtitle: 'By reason, per two-year cycle, US, 2006–2024'
     description: >-
       Removals in each two-year cycle by the three largest reasons states
       reported, with every other reason and the uncategorised balance combined,
@@ -906,7 +908,8 @@ additionalSeries:
               - {period: '2022', value: 4470244}
               - {period: '2024', value: 3524443}
   - id: eric-reports
-    title: Out-of-date voter records flagged by ERIC, by report type, 2013–2026
+    title: Out-of-date records flagged by ERIC
+    subtitle: 'Electronic Registration Information Center, by report type, 2013–2026'
     description: >-
       Records ERIC's cross-state matching flagged to its member states each
       year, by report type, and how many members it covered. These are leads
@@ -1045,10 +1048,11 @@ additionalSeries:
               - {period: '2026', value: 23}
 comparisons:
   - id: state-removal-rates
-    title: Voter-roll removal rates by US state and territory, 2022–24
+    title: Removal rates by state
+    subtitle: 'Records removed, % of registered voters, states and territories, 2022–24'
     description: >-
-      Records removed as a share of registered voters, by state and territory,
-      2022–24. All jurisdictions reporting a total are shown.
+      Records removed as a share of registered voters, by state and territory.
+      All jurisdictions reporting a total are shown.
     unit: percent
     valueLabel: Records removed, % of registered voters
     domainMax: 25
@@ -1173,7 +1177,8 @@ comparisons:
       - label: Utah
         value: 0.8
   - id: notice-outcomes
-    title: What happened to US voter-roll confirmation notices, 2022–24
+    title: What happened to confirmation notices
+    subtitle: 'US, 2022–24, as a share of notices sent'
     description: >-
       What happened to the 38.8 million confirmation notices states sent
       between the 2022 and 2024 general elections, as a share of notices sent.
@@ -1209,8 +1214,8 @@ comparisons:
         detail: "Returned by voter, confirming registration with no change"
         value: 3.0
   - id: pew-2011-baseline
-    title: >-
-      Pew's estimate of inaccurate US voter registrations, data to March 2011
+    title: Inaccurate voter registrations
+    subtitle: "Pew's national estimate, by type, data to March 2011"
     description: >-
       The only direct national estimate of inaccurate or no-longer-valid voter
       registrations, by type. Categories overlap; the first bar is the
@@ -1274,7 +1279,8 @@ figures:
     id: notice-outcomes
   - kind: barChart
     id: ohio-2012-notices
-    title: 'Ohio: replies to 2012 voter-roll confirmation notices'
+    title: 'Ohio: replies to confirmation notices'
+    subtitle: 'Notices sent in 2012, as described in the Husted dissent'
     description: >-
       Replies to the roughly 1.5 million confirmation notices Ohio sent in 2012,
       mostly to registrants identified by not voting, as described in the
@@ -1298,8 +1304,9 @@ figures:
     id: pew-2011-baseline
   - kind: dataTable
     id: nvra-rules
-    title: US federal rules for removing voters from the rolls
-    description: 'The National Voter Registration Act of 1993 (NVRA) sets the rules for federal elections.'
+    title: Federal rules for removing voters
+    subtitle: 'Under the National Voter Registration Act of 1993 (NVRA)'
+    description: 'What the law requires of states for federal elections.'
     caption: 'One card per rule for states'
     layout: cards
     leadColumn: detail
@@ -1315,7 +1322,8 @@ figures:
         detail: { value: 'Only on written confirmation, or after an unanswered forwardable notice followed by no voting through two federal general elections', sources: [21] }
   - kind: dataTable
     id: bulk-errors
-    title: Bulk voter-roll removals that reached eligible voters, US, 2000–2026
+    title: Bulk removals that reached eligible voters
+    subtitle: 'US list-matching programs, 2000–2026'
     description: 'Programs that matched whole voter lists against another database, with what was flagged, what was later shown, and how each ended. Figures come from courts, officials, journalists and advocacy groups, as marked in the sources.'
     caption: 'One card per program'
     layout: timeline
@@ -1384,7 +1392,9 @@ figures:
         outcome: 'Counties told to reinstate them (September 2026)'
   - kind: dataTable
     id: bloated-roll-claims
-    title: Claims of bloated US voter rolls, and what they counted
+    title: Claims of bloated voter rolls
+    subtitle: 'Four US claims, and what each counted'
+
     description: 'Four claims about ineligible names on voter lists, with what each compared.'
     caption: 'One card per claim'
     layout: timeline
@@ -1576,7 +1586,7 @@ Abigail Thernstrom, a dissenting member of the US Commission on Civil Rights, te
 
 ### SAVE flags include citizens, at an unknown rate {#voter-roll-maintenance--save-flags-citizens}
 
-The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's national counts of voters checked and flagged, which are not audited, are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). [46](#source-voter-roll-maintenance-46)
+The federal [SAVE](#glossary-save) database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's national counts of voters checked and flagged, which are not audited, are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). [46](#source-voter-roll-maintenance-46)
 
 In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-maintenance-45) [48](#source-voter-roll-maintenance-48)
 
@@ -1584,7 +1594,7 @@ In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-mainte
 - **July 2026:** the elections director said SAVE had "some inaccurate information" while "most of the data" matched the licence agency's.
 - **September 2026:** 578 of the 2,724 (21.2%) had demonstrated citizenship, 506 of them because passport information was added to SAVE after the first run.
 
-Flagged Texans who do not reply within 30 days are cancelled but can be reinstated at the polls with proof of citizenship. [44](#source-voter-roll-maintenance-44) The non-citizen findings themselves are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls).
+Flagged Texans who do not reply within 30 days are cancelled but can be reinstated at the polls with [proof of citizenship](#glossary-documentary-proof-of-citizenship). [44](#source-voter-roll-maintenance-44) The non-citizen findings themselves are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls).
 
 ### Advocates' purge totals are mostly the lawful removals in the federal data {#voter-roll-maintenance--purge-totals-mostly-lawful}
 

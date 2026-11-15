@@ -513,7 +513,8 @@ sources:
     date: '1988-03-25'
 comparisons:
   - id: voided-elections
-    title: Elections voided or overturned in Heritage's fraud list, by what was found
+    title: Voided elections, by what was found
+    subtitle: In the Heritage Foundation's fraud list, 1992–2023
     description: >-
       Every election-level voiding, overturning or court-ordered rerun in the
       Heritage Foundation's Election Fraud Map data file (archived July 2026),
@@ -566,7 +567,8 @@ comparisons:
       Heritage gives the record, used where the text does not date the
       election. Heritage's list is a sample, not a complete record.
   - id: absentee-and-impersonation-cases
-    title: Absentee fraud and in-person impersonation in two case compilations
+    title: Absentee fraud and impersonation cases
+    subtitle: As counted in two compilations, Heritage and News21
     description: >-
       Entries in Heritage's Election Fraud Map data file (outcomes 1982–2025)
       and alleged cases in News21's 2012 database (since 2000), for the two
@@ -636,8 +638,9 @@ figures:
     id: voided-elections
   - kind: dataTable
     id: voided-by-state
-    title: Elections voided or overturned in Heritage's fraud list, by state
-    description: 'The 32 elections in the chart above, listed by state, with the long-standing all-mail states last.'
+    title: Voided elections, by state
+    subtitle: The 32 voided or overturned in Heritage's fraud list
+    description: 'Listed by state, with the long-standing all-mail states last.'
     sources: [10]
     note: >-
       The list under the chart above, set out by state. An "entry" year is the
@@ -670,7 +673,8 @@ figures:
       - { state: 'Colorado, Oregon, Utah, Washington', elections: None of the 32 }
   - kind: barChart
     id: margin-and-invalid-ballots
-    title: Winning margin against ballots ruled invalid, voided elections involving absentee ballots
+    title: Winning margins and invalid ballots
+    subtitle: Voided elections involving absentee or mail ballots
     description: >-
       For each voided election involving absentee or mail ballots whose record
       gives a winning margin: the margin as first counted, and the number of
@@ -712,8 +716,9 @@ figures:
     id: absentee-and-impersonation-cases
   - kind: dataTable
     id: cases-against-ballots
-    title: Absentee fraud cases in two compilations, against mail ballots counted in one election
-    description: 'The absentee counts from the chart above, beside the mail ballots counted in the 2024 general election alone.'
+    title: Absentee fraud cases against ballots cast
+    subtitle: Two compilations, against one election's mail ballots
+    description: 'Heritage''s and News21''s absentee counts, beside the mail ballots counted in the 2024 general election alone.'
     sources: [10, 11, 12, 14]
     note: >-
       Neither compilation has a denominator of ballots cast, so no source turns
@@ -734,7 +739,8 @@ figures:
       - { measure: Returned mail ballots counted in the 2024 general election alone, count: '47,629,437' }
   - kind: dataTable
     id: absentee-cases
-    title: Organised US absentee and mail-ballot cases, 1980–2026
+    title: Organised absentee and mail-ballot cases
+    subtitle: US schemes, 1980–2026
     description: 'How each scheme worked, how it came to light and how it ended. A dash means the source read does not say.'
     caption: One card per case
     layout: timeline
@@ -862,7 +868,8 @@ figures:
         criminal: Not covered by the sources read
   - kind: dataTable
     id: carter-baker
-    title: 'What the bipartisan Carter–Baker commission said about absentee and mail fraud, 2005'
+    title: 'The Carter–Baker commission on mail fraud'
+    subtitle: 'What the bipartisan commission said, 2005'
     description: 'The commission''s words on absentee ballots, on all-mail Oregon and on US elections overall.'
     sources: [13]
     caption: One card per subject
@@ -881,8 +888,8 @@ figures:
       - { subject: US elections overall, said: '"no evidence of extensive fraud in U.S. elections"' }
   - kind: dataTable
     id: officials
-    title: >-
-      US officials and the count: tampering, and refused or challenged results
+    title: Officials and the count
+    subtitle: Tampering, and refused or challenged results, US cases
     description: 'Cases where officials tampered with a count, or refused or challenged a result.'
     caption: One card per case
     layout: timeline
@@ -942,8 +949,9 @@ figures:
         outcome: 'Claim rejected, May 2023'
   - kind: dataTable
     id: in-person
-    title: US in-person and machine fraud cases, 1936–1982
-    description: 'Large polling-place cases from the same record, for comparison with the absentee cases.'
+    title: In-person and machine fraud cases
+    subtitle: Large US polling-place cases, 1936–1982
+    description: 'For comparison with the absentee and mail-ballot cases.'
     caption: One card per case
     layout: timeline
     leadColumn: how

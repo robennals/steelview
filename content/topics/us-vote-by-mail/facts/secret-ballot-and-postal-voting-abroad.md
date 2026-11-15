@@ -507,7 +507,8 @@ sources:
     publisher: University of Essex (REF 2014)
     date: '2014'
 series:
-  title: 'Germany: share of Bundestag voters who voted by post, 1957–2025'
+  title: 'Germany: postal voting'
+  subtitle: 'Share of Bundestag voters who voted by post, 1957–2025'
   description: >-
     Voters who cast their vote with a postal-ballot certificate, as a share of
     all voters, at every federal (Bundestag) election since 1957.
@@ -589,12 +590,11 @@ series:
     date: '2025'
 additionalSeries:
   - id: uk-postal-votes
-    title: >-
-      United Kingdom: postal votes as a share of valid votes at general
-      elections, 1945–2019
+    title: 'United Kingdom: postal votes'
+    subtitle: 'Share of valid votes, general elections, 1945–2019'
     description: >-
       Postal votes included in the count as a percentage of all valid votes,
-      at every UK general election from 1945 to 2019.
+      at every general election.
     periodLabel: General election
     coverage:
       from: '1945'
@@ -727,7 +727,8 @@ figures:
     id: uk-postal-votes
   - kind: map
     id: idea-postal-voting
-    title: Who may vote by post from inside the country, 2025
+    title: 'Who can vote by post'
+    subtitle: 'By country, for voters at home, 2025'
     description: >-
       Each country by whether International IDEA lists it as allowing
       in-country postal voting for all voters, for some, or neither. IDEA
@@ -960,9 +961,8 @@ figures:
       ZM: none
   - kind: barChart
     id: france-abstention
-    title: >-
-      France: average abstention before and after postal voting was abolished in
-      1975
+    title: 'France: abstention and postal voting'
+    subtitle: 'Average abstention before and after postal voting ended in 1975'
     description: >-
       Average abstention at each type of French election before the law of
       31 December 1975 and from then to 1988, as the Interior Ministry gave it
@@ -989,7 +989,8 @@ figures:
       - { label: Cantonal, values: { before: { value: 39, asPublished: '39 p 100' }, after: { value: 33.6, asPublished: '33,6 p 100' } } }
   - kind: dataTable
     id: france-postal-voting
-    title: 'France: why postal voting was abolished in 1975, and attempts to restore it'
+    title: 'France: the end of postal voting'
+    subtitle: 'Why it was abolished in 1975, and attempts to restore it'
     description: 'The law that abolished postal voting, the reason given for it, and later bills.'
     caption: One card per step
     layout: cards
@@ -1024,7 +1025,8 @@ figures:
             - 7
   - kind: dataTable
     id: secret-ballot
-    title: 'The secret ballot around the world: when and why it was adopted'
+    title: 'Adoption of the secret ballot'
+    subtitle: 'When and why it was adopted, around the world'
     description: 'Where the secret ballot came in, and what it was for.'
     caption: One card per place
     layout: timeline
@@ -1080,7 +1082,8 @@ figures:
             - 2
   - kind: dataTable
     id: privacy-surveys
-    title: How private is a mail ballot? US and UK surveys, ranked by method
+    title: How private is a mail ballot?
+    subtitle: US and UK surveys, ranked by method
     description: 'Strongest method first. The questions differ, so the figures cannot share one chart.'
     caption: One card per survey
     layout: cards
@@ -1156,7 +1159,8 @@ figures:
         mode: In person
   - kind: timeline
     id: uk-election-courts
-    title: 'Britain: election-court cases and the reforms that followed'
+    title: 'Britain: election-court cases'
+    subtitle: 'From postal voting on demand to the reforms that followed'
     description: 'Postal voting on demand, the frauds found in court, and the rule changes that came after.'
     sources:
       - 9
@@ -1223,8 +1227,9 @@ figures:
         source: 14
   - kind: dataTable
     id: uk-2024
-    title: 'Britain''s 2024 general election: postal voting'
-    description: 'How postal voting went in 2024, with 2019 where the report gives it.'
+    title: 'Britain: postal voting in 2024'
+    subtitle: 'General election, with 2019 figures where available'
+    description: 'How postal voting went at that election.'
     sources:
       - 16
     caption: One row per measure
@@ -1261,9 +1266,8 @@ figures:
         y2019: 72%
   - kind: dataTable
     id: secrecy-views
-    title: >-
-      Does postal voting weaken the secret ballot? What courts and reviews said
-      in Europe and the US
+    title: Does postal voting weaken secrecy?
+    subtitle: What courts and reviews said in Europe and the US
     description: 'What courts, reviews and researchers have said, for and against.'
     caption: 'One card per court, review or writer'
     layout: cards
@@ -1308,7 +1312,8 @@ figures:
             - 18
   - kind: dataTable
     id: switzerland-postal
-    title: 'Switzerland: how much of the vote is postal, and proven fraud'
+    title: 'Switzerland: postal voting and fraud'
+    subtitle: 'How much of the vote is postal, and proven fraud cases'
     description: 'Switzerland has no national series, so this gives what cantons report, and two cases.'
     caption: One row per finding
     columns:

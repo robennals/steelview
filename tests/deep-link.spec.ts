@@ -50,7 +50,7 @@ test('a report\'s own page shows an observation in its chart, picking out what i
 test('a chart\'s address opens the data panel at that chart', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--chart-nationality`);
   const tab = page.locator('.sv-walk__tab[aria-current]');
-  await expect(tab).toContainText('UK migration by nationality');
+  await expect(tab).toContainText('Arrivals by nationality');
   await expect(page.locator('.sv-walk')).toBeInViewport();
   // The selected tab says where the link landed, so the chart itself is not tinted.
   await expect(page.locator(`[id="${LONG_RUN}--chart-nationality"]`)).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
@@ -59,7 +59,7 @@ test('a chart\'s address opens the data panel at that chart', async ({ page }) =
 
 test('an observation\'s address opens that chart at that observation', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--nationality-shift`);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Arrivals by nationality');
   const observation = page.locator(`[data-observation="${LONG_RUN}--nationality-shift"]`);
   await expect(observation).toBeVisible();
   await expect(observation).toHaveClass(/sv-target/);
@@ -69,7 +69,7 @@ test('an observation\'s address opens that chart at that observation', async ({ 
   const source = page.locator('.sv-walk__slide:has(.sv-walk__tab) .sv-target, .sv-chart__sources .sv-target');
   await expect(source).toBeVisible();
   await expect(source).toHaveClass(/sv-source/);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Arrivals by nationality');
 });
 
 test('a Subtlety\'s address opens its chart at that Subtlety, marked as one', async ({ page }) => {
@@ -134,7 +134,8 @@ test('a reading drawn alongside another shares its plot, read against a right-ha
   await expect(plot.locator('text[data-axis="right"]').first()).toBeAttached();
   // A short title, with its detail under it.
   await expect(chart.locator('.sv-graph-heading')).toHaveText('UK GDP');
-  await expect(chart.locator('.sv-chart__subtitle')).toContainText('1948–2025');
+  // In a data panel the subtitle is the line More sits on.
+  await expect(chart.locator('.sv-chart__about-text').first()).toContainText('1948–2025');
 });
 
 test('the old address of a chart merged into another opens the reading it became', async ({ page }) => {
@@ -162,15 +163,58 @@ test('More lists a chart\'s observations and Subtleties, and one goes straight t
   await expect(slide.locator('.sv-observe__item:not([hidden]) .sv-observe__body')).toBeVisible();
 });
 
-test('a sources row is one line, and opens to each source in full', async ({ page }) => {
+test('a sources row is one line in the chart\'s More panel, and opens to each source in full', async ({ page }) => {
   await page.goto(factUrl(LONG_RUN));
-  const row = page.locator('.sv-walk__slide').first().locator('.sv-chart__sources');
+  const slide = page.locator('.sv-walk__slide').first();
+  await slide.locator('.sv-chart__about > summary').first().click();
+  const row = slide.locator('.sv-chart__sources');
   await expect(row.locator('> summary')).toContainText(/^Sources?:/);
   expect((await row.locator('> summary').boundingBox())!.height).toBeLessThan(28);
   await row.locator('> summary').click();
   const source = row.locator('.sv-source').first();
   await expect(source.locator('a')).toHaveAttribute('href', /^https?:/);
   await expect(source.locator('blockquote')).toBeVisible();
+});
+
+test('More shows the subtitle\'s description and sources over the chart, without moving it, and Escape closes it', async ({ page }) => {
+  await page.goto(factUrl(LONG_RUN));
+  const slide = page.locator('.sv-walk__slide').first();
+  const about = slide.locator('.sv-chart__about').first();
+  const graph = slide.locator('.sv-observe').first();
+  const before = (await graph.boundingBox())!.y;
+  await about.locator('> summary').click();
+  await expect(about.locator('.sv-chart__about-desc')).toBeVisible();
+  await expect(about.locator('.sv-chart__sources')).toBeVisible();
+  expect((await graph.boundingBox())!.y).toBe(before);
+  await page.keyboard.press('Escape');
+  await expect(about).not.toHaveAttribute('open', '');
+});
+
+test('in a sheet, Escape closes the More panel first, and only then the sheet', async ({ page }) => {
+  await page.goto('/topics/us-iran-war#explore=human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const sheet = page.locator('dialog[open]');
+  const about = sheet.locator('.sv-walk__slide:has([id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]) .sv-chart__about').first();
+  await about.locator('> summary').click();
+  await page.keyboard.press('Escape');
+  await expect(about).not.toHaveAttribute('open', '');
+  await expect(sheet).toHaveCount(1);
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+});
+
+test('every chart kind leaves the same gap between its title and the line under it', async ({ page }) => {
+  await page.goto('/topics/us-voter-id/facts/burdens-of-id-and-citizenship-rules');
+  const gaps = new Set<number>();
+  const tabs = page.locator('.sv-walk__tab');
+  for (let i = 0; i < await tabs.count(); i++) {
+    await tabs.nth(i).click();
+    const slide = page.locator('.sv-walk__slide').nth(i);
+    const heading = slide.locator('.sv-graph-heading').first();
+    const line = slide.locator('.sv-chart__about > summary, .sv-chart__subtitle').first();
+    if (!(await line.isVisible())) continue;
+    gaps.add(Math.round((await line.boundingBox())!.y - ((await heading.boundingBox())!.y + (await heading.boundingBox())!.height)));
+  }
+  expect([...gaps]).toHaveLength(1);
 });
 
 test('a report\'s last slide says what is not known yet, and has its old address', async ({ page }) => {
@@ -188,12 +232,12 @@ test('a section that moved to a chart keeps its address', async ({ page }) => {
 
 test('a table that became a slide keeps its address', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--pledges`);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Pledges on net migration');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Net migration pledges and outcomes');
 });
 
 test('the address a sheet expands to opens the same chart', async ({ page }) => {
   await page.goto(`${factUrl(LONG_RUN)}#${LONG_RUN}--viz-nationality`);
-  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('UK migration by nationality');
+  await expect(page.locator('.sv-walk__tab[aria-current]')).toContainText('Arrivals by nationality');
 });
 
 // Addresses are permanent: a fact merged into a report keeps working, and
@@ -234,6 +278,7 @@ test.describe('with JavaScript disabled', () => {
     await expect(page.locator('h1.sv-factpage__claim')).toBeVisible();
     await expect(page.locator('dialog.sv-modal')).toHaveCount(0);
     await expect(page.locator('.sv-chart__sources blockquote').first()).toBeHidden();
+    await page.locator('.sv-chart__about > summary').first().click();
     await page.locator('.sv-chart__sources > summary').first().click();
     await expect(page.locator('.sv-chart__sources blockquote').first()).toBeVisible();
     // Nothing steps through the charts, so they run down the page, and every
