@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
+import { chartAddress, reportChartPath, resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
 import { previewPanel } from '@/lib/content/preview-panel';
-import { explorePath, topicPath, type Topic } from '@/lib/content/types';
+import { topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
 import { PreviewCarousel } from './preview-carousel';
@@ -22,8 +22,8 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
     <div className="sv-row__columns">
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
-          <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.fact.title ?? slide.fact.claim} observation={`${slide.fact.id}--chart-${slide.chart}`}>
-            <SlideChart slide={slide} titleHref={explorePath(topic.slug, slide.fact.id, slide.chart)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
+          <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.fact.title ?? slide.fact.claim} observation={chartAddress(slide)}>
+            <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
           </PreviewChart>
         ))}
       </PreviewCarousel>

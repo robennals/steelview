@@ -161,19 +161,23 @@ test('a viewpoint opens a data panel without leaving its tab', async ({ page }) 
   await expect(viewpoint).toBeVisible();
 });
 
-// A reader can arrive on the observation's own address (a shared link); the
-// sheet adds its own entry on top, and Close must still leave it.
-test('a data panel opened from a page already at its observation still closes', async ({ page }) => {
+// A reader can arrive on an observation's own address (a shared link, or a
+// chart on the home page). Its sheet opens over the report, and Close leaves
+// it onto the report, not off the page.
+test('arriving at an observation\'s address opens its data panel, which closes onto the report', async ({ page }) => {
   await page.goto(TOPIC);
   const first = await openViewpoint(page, 'open-and-build');
   const href = await first.locator('.sv-walk__slide').first().getByRole('link', { name: 'Explore this data' }).getAttribute('href');
-  await page.goto(`${TOPIC}${new URL(href!, 'http://x').hash}`);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  // Dispatched rather than clicked: scrolling the link into view sets the opening row moving again.
-  await viewpoint.locator('.sv-walk__slide').first().getByRole('link', { name: 'Explore this data' }).dispatchEvent('click');
-  await expect(page.locator('dialog[open]')).toHaveCount(1);
-  await page.locator('dialog[open] .sv-modal__close').click();
-  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  // A new tab, as a shared link opens in: on this page it would be a jump within it.
+  const arrived = await page.context().newPage();
+  await arrived.goto(`${TOPIC}${new URL(href!, 'http://x').hash}`);
+  await expect(arrived.locator('dialog[open]')).toHaveCount(1);
+  // A reload keeps the sheet, with the report still beneath it.
+  await arrived.reload();
+  await expect(arrived.locator('dialog[open]')).toHaveCount(1);
+  await arrived.locator('dialog[open] .sv-modal__close').click();
+  await expect(arrived.locator('dialog[open]')).toHaveCount(0);
+  await expect(arrived).toHaveURL(new RegExp(`${TOPIC}$`));
 });
 
 // The whole head of a row toggles it, not just its title: a click at the
@@ -333,6 +337,13 @@ test('clicking a viewpoint step\'s chart opens the panel too, title included', a
   const viewpoint = await openViewpoint(page, 'open-and-build');
   const heading = viewpoint.locator('.sv-walk__slide').first().locator('.sv-graph-heading');
   await expect(heading.locator('a')).toHaveCount(0);
+  // Pointing at the chart shows it can be clicked: its title and "Explore this data" are underlined.
+  const explore = viewpoint.locator('.sv-walk__slide').first().locator('.sv-walk__explore a');
+  await expect(heading).not.toHaveCSS('text-decoration-line', 'underline');
+  await expect(explore).not.toHaveCSS('text-decoration-line', 'underline');
+  await viewpoint.locator('.sv-walk__slide').first().locator('.sv-walk__chart--explorable').hover();
+  await expect(heading).toHaveCSS('text-decoration-line', 'underline');
+  await expect(explore).toHaveCSS('text-decoration-line', 'underline');
   await heading.click();
   await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
 });

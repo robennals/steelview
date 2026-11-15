@@ -201,6 +201,11 @@ export const seriesReadingSchema = z.object({
    */
   valuesFrom: z.string().min(1).optional(),
   /**
+   * Whether the value axis reaches zero; default true. Set false only when
+   * zero means nothing on this scale, and say why in `note`.
+   */
+  zeroBased: z.boolean().optional(),
+  /**
    * Another reading of the same series to draw on this one's plot, against a
    * second value axis on the right: a count and its rate, a total and its
    * per-head figure, seen together rather than one at a time. That reading is

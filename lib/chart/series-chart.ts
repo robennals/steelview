@@ -588,10 +588,20 @@ export function windowTicks(
 }
 
 /**
+ * The span a value axis covers: the values, and zero when `fromZero`. An axis
+ * reaches zero unless its reading sets `zeroBased: false`, as a line from 22
+ * to 58 on an axis starting at 20 reads as nearly tripling when it did not.
+ */
+function valueSpan(values: number[], fromZero: boolean): [number, number] {
+  return fromZero ? [Math.min(0, ...values), Math.max(0, ...values)] : [Math.min(...values), Math.max(...values)];
+}
+
+/**
  * Lay out one reading's plot. With a `window`, the x domain is the window and
  * the y domain is fitted to the values inside it (plus the nearest point
- * either side); the caller clips the lines at the plot edges. Without one,
- * the domain is the full published range and a dense line is decimated.
+ * either side, and zero — see `valueSpan`); the caller clips the lines
+ * at the plot edges. Without one, the domain is the full published range and
+ * a dense line is decimated.
  */
 export function layoutReading(
   series: Series,
@@ -610,14 +620,14 @@ export function layoutReading(
   const valuesOn = (axis: DrawnLine['axis']) => shown.flatMap((points, i) => (drawn[i].axis === axis ? points.map((p) => p.value) : []));
   const values = valuesOn('left');
   // Two axes are compared by their slopes, which only mean the same on both if
-  // both start at zero: a data range that never goes below zero is drawn from it.
-  const floor = (vals: number[]) => (partner ? Math.min(0, ...vals) : Math.min(...vals));
-  const ticks = niceTicks(floor(values), Math.max(...values));
+  // both start at zero, so a plot with a reading alongside always does.
+  const fromZero = reading.zeroBased !== false || partner !== undefined;
+  const ticks = niceTicks(...valueSpan(values, fromZero));
   const valueMin = ticks[0];
   const valueMax = ticks[ticks.length - 1];
   const tickText = (value: number, on: SeriesReading = reading) => (on.tickUnit ? `${formatTick(value, on.unit)} ${on.tickUnit}` : formatTick(value, on.unit));
   const rightValues = valuesOn('right');
-  const rightTicks = partner ? alignedTicks(floor(rightValues), Math.max(...rightValues), ticks.length - 1) : [];
+  const rightTicks = partner ? alignedTicks(...valueSpan(rightValues, true), ticks.length - 1) : [];
   const leftFitted = roomForTicks(base, ticks.map(value => tickText(value)));
   const geometry = partner ? roomOnRight(leftFitted, rightTicks.map(value => tickText(value, partner))) : leftFitted;
 
@@ -762,8 +772,7 @@ export function layoutContext(
   const geometry = CONTEXT_GEOMETRY[variant];
   const slots = seriesSlots(series);
   const shown = reading.lines.map((line) => thinned(line.points, geometry.plotWidth));
-  const values = shown.flatMap((points) => points.map((p) => p.value));
-  const ticks = niceTicks(Math.min(...values), Math.max(...values));
+  const ticks = niceTicks(...valueSpan(shown.flatMap((points) => points.map((p) => p.value)), reading.zeroBased !== false));
   const end = axisEnd(series);
   const fromYear = periodToYear(series.coverage.from);
   const toYear = periodToYear(end);
