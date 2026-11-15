@@ -1284,7 +1284,7 @@ observationMarks:
 
 ### Texas has stayed well above its 2020 rate and the national rate {#burdens-of-id-and-citizenship-rules--texas-still-above-baseline}
 
-Texas's line rises after its ID-number rule and stays well above both its 2020 rate and the national line. [19](#source-burdens-of-id-and-citizenship-rules-19) [20](#source-burdens-of-id-and-citizenship-rules-20) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [25](#source-burdens-of-id-and-citizenship-rules-25) Texas also sent 5.8% of its 2024 mail ballots into curing, the process for fixing errors, against 1.5% nationally. [20](#source-burdens-of-id-and-citizenship-rules-20) [24](#source-burdens-of-id-and-citizenship-rules-24) The figures are not split by reason, so the share due to the ID rule is unknown.
+Texas's line rises after its ID-number rule and stays well above both its 2020 rate and the national line. [19](#source-burdens-of-id-and-citizenship-rules-19) [20](#source-burdens-of-id-and-citizenship-rules-20) [23](#source-burdens-of-id-and-citizenship-rules-23) [24](#source-burdens-of-id-and-citizenship-rules-24) [25](#source-burdens-of-id-and-citizenship-rules-25) Texas also sent 5.8% of its 2024 mail ballots into [curing](#glossary-curing), the process for fixing errors, against 1.5% nationally. [20](#source-burdens-of-id-and-citizenship-rules-20) [24](#source-burdens-of-id-and-citizenship-rules-24) The figures are not split by reason, so the share due to the ID rule is unknown.
 
 ### Texas's rate fell sharply after the first primary {#burdens-of-id-and-citizenship-rules--texas-rate-fell-after-primary}
 
@@ -1350,7 +1350,7 @@ Its sponsors were VoteRiders (which helps voters get ID), Public Wise, the Brenn
 
 ### The 2006 survey's larger figure measured something else {#burdens-of-id-and-citizenship-rules--2006-survey-not-comparable}
 
-A 2006 Brennan Center survey found 11% of adult citizens lacked "current, unexpired" government photo ID, and 7% lacked ready access to proof of citizenship. [10](#source-burdens-of-id-and-citizenship-rules-10) The 2023 survey's smallest bar counts people with no photo ID of any kind. The two are not a trend, and the 2006 figure is not the number of citizens with no ID.
+A 2006 Brennan Center survey found 11% of adult citizens lacked "current, unexpired" government photo ID, and 7% lacked ready access to [proof of citizenship](#glossary-documentary-proof-of-citizenship). [10](#source-burdens-of-id-and-citizenship-rules-10) The 2023 survey's smallest bar counts people with no photo ID of any kind. The two are not a trend, and the 2006 figure is not the number of citizens with no ID.
 
 ## Observations {#burdens-of-id-and-citizenship-rules--observations-why-no-licence}
 

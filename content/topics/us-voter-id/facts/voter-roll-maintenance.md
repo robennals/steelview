@@ -1586,7 +1586,7 @@ Abigail Thernstrom, a dissenting member of the US Commission on Civil Rights, te
 
 ### SAVE flags include citizens, at an unknown rate {#voter-roll-maintenance--save-flags-citizens}
 
-The federal SAVE database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's national counts of voters checked and flagged, which are not audited, are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). [46](#source-voter-roll-maintenance-46)
+The federal [SAVE](#glossary-save) database was overhauled in 2025 to check citizenship in bulk. The Solicitor General's national counts of voters checked and flagged, which are not audited, are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls/save-national-unaudited). [46](#source-voter-roll-maintenance-46)
 
 In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-maintenance-45) [48](#source-voter-roll-maintenance-48)
 
@@ -1594,7 +1594,7 @@ In Texas: [47](#source-voter-roll-maintenance-47) [45](#source-voter-roll-mainte
 - **July 2026:** the elections director said SAVE had "some inaccurate information" while "most of the data" matched the licence agency's.
 - **September 2026:** 578 of the 2,724 (21.2%) had demonstrated citizenship, 506 of them because passport information was added to SAVE after the first run.
 
-Flagged Texans who do not reply within 30 days are cancelled but can be reinstated at the polls with proof of citizenship. [44](#source-voter-roll-maintenance-44) The non-citizen findings themselves are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls).
+Flagged Texans who do not reply within 30 days are cancelled but can be reinstated at the polls with [proof of citizenship](#glossary-documentary-proof-of-citizenship). [44](#source-voter-roll-maintenance-44) The non-citizen findings themselves are in [Non-Citizens on US Voter Rolls](#fact-non-citizens-on-voter-rolls).
 
 ### Advocates' purge totals are mostly the lawful removals in the federal data {#voter-roll-maintenance--purge-totals-mostly-lawful}
 

@@ -1582,7 +1582,7 @@ After controls, the youngest voters were almost three times as likely as the old
 
 ### Low-rejection counties also cured more ballots {#mail-ballot-rejection-and-signature-checks--low-rejection-counties-cure-more}
 
-Among the ten audited counties, those with lower rejection rates got 65 percent of flagged ballots cured, against 50 percent in the others. [25](#source-mail-ballot-rejection-and-signature-checks-25)
+Among the ten audited counties, those with lower rejection rates got 65 percent of flagged ballots [cured](#glossary-curing), against 50 percent in the others. [25](#source-mail-ballot-rejection-and-signature-checks-25)
 
 ## Observations {#mail-ballot-rejection-and-signature-checks--observations-cure-2024}
 

@@ -881,7 +881,7 @@ from the references to "return hubs". [22](#source-asylum-law-and-the-echr-22) [
 
 ### The Bill replaces the tribunal with a body whose adjudicators need not be lawyers, chaired by a Home Secretary appointee {#asylum-law-and-the-echr--bill-replaces-the-tribunal}
 
-The Independent Immigration Appeals Authority would replace the First-tier Tribunal. Its adjudicators "wouldn’t have to be legally qualified", and the Home Secretary would appoint its Chair. [31](#source-asylum-law-and-the-echr-31) [33](#source-asylum-law-and-the-echr-33)
+The Independent Immigration Appeals Authority would replace the [First-tier Tribunal](#glossary-first-tier-tribunal). Its adjudicators "wouldn’t have to be legally qualified", and the Home Secretary would appoint its Chair. [31](#source-asylum-law-and-the-echr-31) [33](#source-asylum-law-and-the-echr-33)
 
 ### The Bill rewrites how judges apply Article 8 in appeals {#asylum-law-and-the-echr--bill-rewrites-article-8-appeals}
 

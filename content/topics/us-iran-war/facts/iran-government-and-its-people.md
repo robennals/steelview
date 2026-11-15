@@ -629,6 +629,7 @@ additionalSeries:
         valueLabel: 'Executions (minimum)'
         lines:
           - name: IHRNGO
+            glossary: ihrngo
             points: [{period: '2008', value: 350}, {period: '2009', value: 402}, {period: '2010', value: 546}, {period: '2011', value: 676}, {period: '2012', value: 580}, {period: '2013', value: 687}, {period: '2014', value: 753}, {period: '2015', value: 972}, {period: '2016', value: 530}, {period: '2017', value: 517}, {period: '2018', value: 273}, {period: '2019', value: 280}, {period: '2020', value: 267}, {period: '2021', value: 333}, {period: '2022', value: 582}, {period: '2023', value: 834}, {period: '2024', value: 975}, {period: '2025', value: 1639}]
   - id: hrana-annual-series
     title: 'Executions per year in Iran, by HRANA'
@@ -670,6 +671,7 @@ additionalSeries:
         valueLabel: 'Executions (minimum)'
         lines:
           - name: HRANA
+            glossary: hrana
             points: [{period: '2017-10', value: 505}, {period: '2018-10', value: 265}, {period: '2019-10', value: 238}, {period: '2020-10', value: 249}, {period: '2021-10', value: 272}, {period: '2022-10', value: 528}, {period: '2023-10', value: 664}, {period: '2024-10', value: 823}, {period: '2025-10', value: 1553}, {period: '2026-10', value: 2003}]
   - id: hrana-monthly-series
     title: 'Executions per month in Iran'
@@ -1402,7 +1404,7 @@ In 2024 it barred a smaller share of sitting members who sought re-election. [19
 
 ### Executions in 2025 were the most since 1989 {#iran-government-and-its-people--executions-most-since-1989}
 
-IHRNGO recorded at least 1,639 executions in 2025, the highest number since 1989 (chart). [35](#source-iran-government-and-its-people-35) Its count has risen every year since 2020.
+[IHRNGO](#glossary-ihrngo) recorded at least 1,639 executions in 2025, the highest number since 1989 (chart). [35](#source-iran-government-and-its-people-35) Its count has risen every year since 2020.
 
 Amnesty's separate count for 2025 is higher still (chart below). [25](#source-iran-government-and-its-people-25)
 
@@ -1428,7 +1430,7 @@ It finds executions "tend to increase when authorities fear social unrest and wh
 
 ### A third counter shows the same rise {#iran-government-and-its-people--hrana-annual-rise}
 
-HRANA counts from October to October. Its latest year, to October 2026, was its highest in ten reporting years (chart). [36](#source-iran-government-and-its-people-36)
+[HRANA](#glossary-hrana) counts from October to October. Its latest year, to October 2026, was its highest in ten reporting years (chart). [36](#source-iran-government-and-its-people-36)
 
 Like IHRNGO, it shows a low around 2018–19 and a rise every year since.
 

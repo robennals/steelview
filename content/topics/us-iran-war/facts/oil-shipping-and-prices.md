@@ -587,6 +587,7 @@ additionalSeries:
         valueLabel: 'Billion cubic feet a day'
         lines:
           - name: LNG flows
+            glossary: lng
             points: [{period: '2025-02', value: 11.7}, {period: '2025-05', value: 11.0}, {period: '2025-08', value: 10.9}, {period: '2025-11', value: 10.5}, {period: '2026-02', value: 7.4}, {period: '2026-05', value: 0.8}]
 comparisons:
   - id: cpi-september-2026
@@ -942,7 +943,7 @@ EIA warns that ship-tracking signals in the strait have been "especially unrelia
 
 ### Oil through the strait fell by more than three-quarters by the second quarter {#oil-shipping-and-prices--hormuz-flows-collapsed}
 
-EIA puts oil flows in the second quarter of 2026 at under a quarter of their 2025 level, and LNG flows near zero (chart). [26](#source-oil-shipping-and-prices-26)
+EIA puts oil flows in the second quarter of 2026 at under a quarter of their 2025 level, and [LNG](#glossary-lng) flows near zero (chart). [26](#source-oil-shipping-and-prices-26)
 
 EIA estimates production shut in across the region peaked at 10.9 million barrels a day in May and fell to 4.8 million in September. [7](#source-oil-shipping-and-prices-7)
 

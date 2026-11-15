@@ -1792,7 +1792,7 @@ Adults and accompanied children claiming from 2 March 2026 receive 30 months' pr
 
 ### The government presents the changes as following Denmark {#deterrence-and-protection-policies--inspired-by-denmark}
 
-The March 2026 statement calls the reset "inspired by Denmark’s success" and aims to "reduce the pull factors driving illegal migration". The Danish evidence above shows a low and falling intake, alongside a Swedish fall of similar timing and a grant rate near the EU's. [31](#source-deterrence-and-protection-policies-31)
+The March 2026 statement calls the reset "inspired by Denmark’s success" and aims to "reduce the pull factors driving illegal migration". The Danish evidence above shows a low and falling intake, alongside a Swedish fall of similar timing and a [grant rate](#glossary-grant-rate) near the EU's. [31](#source-deterrence-and-protection-policies-31)
 
 ### The Bill is not yet law {#deterrence-and-protection-policies--bill-not-law}
 

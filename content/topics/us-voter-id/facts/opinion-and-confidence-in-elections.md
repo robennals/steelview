@@ -1273,7 +1273,7 @@ Republican support stayed in the 90s throughout. The rise came while photo ID wa
 
 Automatic registration splits the parties far more than photo ID, and Republican support for it fell after 2018 and has not recovered (chart). [1](#source-opinion-and-confidence-in-elections-1) [4](#source-opinion-and-confidence-in-elections-4)
 
-No-excuse mail voting splits them further: 83% of Democrats and 32% of Republicans favoured it in 2025. [1](#source-opinion-and-confidence-in-elections-1) Of the access measures Pew asks about, only early in-person voting has majority support in both parties.
+[No-excuse](#glossary-no-excuse-absentee) mail voting splits them further: 83% of Democrats and 32% of Republicans favoured it in 2025. [1](#source-opinion-and-confidence-in-elections-1) Of the access measures Pew asks about, only early in-person voting has majority support in both parties.
 
 ### 83% of adults favoured requiring photo ID in August 2025 {#opinion-and-confidence-in-elections--photo-id-83-percent}
 
@@ -1307,7 +1307,7 @@ In Gallup's three readings, photo ID and early voting each have the support of a
 
 ### 83% of adults favour proof of citizenship at first registration {#opinion-and-confidence-in-elections--proof-of-citizenship-support}
 
-Support for requiring proof of citizenship at first registration matches support for photo ID, and divides by party and race in the same way (chart). [5](#source-opinion-and-confidence-in-elections-5) [23](#source-opinion-and-confidence-in-elections-23)
+Support for requiring [proof of citizenship](#glossary-documentary-proof-of-citizenship) at first registration matches support for photo ID, and divides by party and race in the same way (chart). [5](#source-opinion-and-confidence-in-elections-5) [23](#source-opinion-and-confidence-in-elections-23)
 
 Gallup asked the question for the first time in 2024, so there is no trend. The question does not say what documents would count, which is where the dispute over such rules lies (see [the burdens of ID and citizenship rules](#fact-burdens-of-id-and-citizenship-rules)).
 

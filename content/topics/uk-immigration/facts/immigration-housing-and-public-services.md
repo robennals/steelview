@@ -627,6 +627,7 @@ series:
       valueLabel: Net additional dwellings in the financial year
       lines:
         - name: Net additional dwellings
+          glossary: net-additional-dwellings
           points:
             - period: '1992'
               value: 165000

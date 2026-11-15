@@ -1520,6 +1520,7 @@ additionalSeries:
               - period: '2020'
                 value: 568
           - name: Allowed at First-tier Tribunal
+            glossary: first-tier-tribunal
             points:
               - period: '2008'
                 value: 271

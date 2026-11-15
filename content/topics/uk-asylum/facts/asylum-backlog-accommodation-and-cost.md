@@ -648,6 +648,7 @@ series:
         date: '2026-09-10'
       lines:
         - name: People awaiting an initial decision
+          glossary: initial-decision
           points:
             - period: '2015-06'
               value: 16163
@@ -1612,13 +1613,13 @@ observationMarks:
 
 ### The first-decision queue is 77% below its June 2023 peak {#asylum-backlog-accommodation-and-cost--backlog-and-hotels-below-peaks}
 
-40,168 people were waiting for an initial decision at the end of June 2026, 77% fewer than at the June 2023 peak of 175,457 and the lowest number since June 2019. The queue is still longer than it was through the 2010s: it grew from 7,240 in December 2010 to 35,855 in December 2018. [1](#source-asylum-backlog-accommodation-and-cost-1) [2](#source-asylum-backlog-accommodation-and-cost-2)
+40,168 people were waiting for an [initial decision](#glossary-initial-decision) at the end of June 2026, 77% fewer than at the June 2023 peak of 175,457 and the lowest number since June 2019. The queue is still longer than it was through the 2010s: it grew from 7,240 in December 2010 to 35,855 in December 2018. [1](#source-asylum-backlog-accommodation-and-cost-1) [2](#source-asylum-backlog-accommodation-and-cost-2)
 
 Hotel use fell by the same order: 16,021 supported asylum seekers were in hotels at the end of June 2026, 71% below the peak of 56,018 in September 2023 (see the accommodation charts below). [17](#source-asylum-backlog-accommodation-and-cost-17)
 
 ### Open asylum appeals are more than fourteen times their June 2022 level {#asylum-backlog-accommodation-and-cost--appeals-queue-fourteen-times}
 
-Open asylum and protection appeals at the First-tier Tribunal rose from 6,319 at the end of June 2022 to 90,341 at the end of June 2026, more than fourteen times as many. [3](#source-asylum-backlog-accommodation-and-cost-3) [4](#source-asylum-backlog-accommodation-and-cost-4)
+Open asylum and protection appeals at the [First-tier Tribunal](#glossary-first-tier-tribunal) rose from 6,319 at the end of June 2022 to 90,341 at the end of June 2026, more than fourteen times as many. [3](#source-asylum-backlog-accommodation-and-cost-3) [4](#source-asylum-backlog-accommodation-and-cost-4)
 
 ### The queue has moved into the appeals system {#asylum-backlog-accommodation-and-cost--queue-moved-to-appeals}
 
@@ -1688,7 +1689,7 @@ Hotels took £2.3 billion of the £3.6 billion spent in 2022-23. Hotel spending 
 
 ### The asylum line is about a quarter of the Home Office's net day-to-day budget {#asylum-backlog-accommodation-and-cost--share-of-home-office-budget}
 
-The asylum business group was 29% of the Home Office's Resource DEL outturn in 2023-24 and 23% in 2025-26 (asylum line divided by the total, from the core table). The total is net of visa and passport fee income, which makes the asylum share larger than it would be against gross spending, and the asylum line includes resettlement, such as £222.1 million for Afghan resettlement in 2025-26. Plans to 2028-29 have the line falling every year. [28](#source-asylum-backlog-accommodation-and-cost-28) [29](#source-asylum-backlog-accommodation-and-cost-29) [31](#source-asylum-backlog-accommodation-and-cost-31)
+The asylum business group was 29% of the Home Office's [Resource DEL](#glossary-resource-del) outturn in 2023-24 and 23% in 2025-26 (asylum line divided by the total, from the core table). The total is net of visa and passport fee income, which makes the asylum share larger than it would be against gross spending, and the asylum line includes resettlement, such as £222.1 million for Afghan resettlement in 2025-26. Plans to 2028-29 have the line falling every year. [28](#source-asylum-backlog-accommodation-and-cost-28) [29](#source-asylum-backlog-accommodation-and-cost-29) [31](#source-asylum-backlog-accommodation-and-cost-31)
 
 ## Observations {#asylum-backlog-accommodation-and-cost--observations-system-costs-2024-25}
 

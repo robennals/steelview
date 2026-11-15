@@ -2170,7 +2170,7 @@ The government prioritised the processing of Albanian asylum applications after 
 
 ### Nearly all Albanian claims were refused at first decision by 2024 {#channel-crossings-and-irregular-arrivals--albanian-claims-nearly-all-refused}
 
-Almost half of initial decisions on Albanian claims were positive in 2021 and 2022, and just 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34)
+Almost half of [initial decisions](#glossary-initial-decision) on Albanian claims were positive in 2021 and 2022, and just 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34)
 
 ### Returns to Albania rose sharply {#channel-crossings-and-irregular-arrivals--returns-to-albania-rose}
 

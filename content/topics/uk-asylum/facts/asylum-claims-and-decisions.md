@@ -968,6 +968,7 @@ additionalSeries:
         valueLabel: Grants as a share of grants plus refusals
         lines:
           - name: At initial decision
+            glossary: initial-decision
             points:
               - period: '2007'
                 value: 29.7
@@ -1877,7 +1878,7 @@ In the year to June 2026, 52% of people claiming asylum came by illegal entry ro
 
 ### People and cases are different counts {#asylum-claims-and-decisions--people-and-cases}
 
-One claim can cover dependants. The headline counts people; grant rates are calculated on main applicants, one per case. The 2001 figure is main applicants only, because dependants enter the data in 2002. [37](#source-asylum-claims-and-decisions-37)
+One claim can cover dependants. The headline counts people; [grant rates](#glossary-grant-rate) are calculated on main applicants, one per case. The 2001 figure is main applicants only, because dependants enter the data in 2002. [37](#source-asylum-claims-and-decisions-37)
 
 ## Observations {#asylum-claims-and-decisions--observations-per-head}
 
@@ -1951,7 +1952,7 @@ Applying each nationality's 2022 grant rate to the 2025 mix of decisions gives a
 
 ### Most decided small-boat claims were granted {#asylum-claims-and-decisions--small-boat-claims-mostly-granted}
 
-Of 178,845 people who arrived by small boat in 2018–2025 and claimed asylum, 79,589 had been granted at initial decision and 53,305 refused, a grant rate of 60% on cases. [18](#source-asylum-claims-and-decisions-18) [19](#source-asylum-claims-and-decisions-19) Rates vary by nationality: 86% for Eritreans who arrived in 2025, 34% for Afghans. [21](#source-asylum-claims-and-decisions-21)
+Of 178,845 people who arrived by small boat in 2018–2025 and claimed asylum, 79,589 had been granted at [initial decision](#glossary-initial-decision) and 53,305 refused, a grant rate of 60% on cases. [18](#source-asylum-claims-and-decisions-18) [19](#source-asylum-claims-and-decisions-19) Rates vary by nationality: 86% for Eritreans who arrived in 2025, 34% for Afghans. [21](#source-asylum-claims-and-decisions-21)
 
 ## Observations {#asylum-claims-and-decisions--observations-small-boat-outcomes}
 
@@ -1985,7 +1986,7 @@ These figures count people who claim asylum inside the UK. They do not count res
 
 ## More {#asylum-claims-and-decisions--more-per-head-2025}
 
-Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the EU+ and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7)
+Per head of population that was about 15 claims per 10,000 residents in 2025, mid-table in the [EU+](#glossary-eu-plus) and level with the EU-wide rate of 1.5 per thousand. [10](#source-asylum-claims-and-decisions-10) [7](#source-asylum-claims-and-decisions-7)
 
 ## More {#asylum-claims-and-decisions--more-grant-rate}
 

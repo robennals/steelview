@@ -824,7 +824,7 @@ The bars span two orders of magnitude partly because the states count different 
 
 ### A check of a whole statewide roll is now routine {#non-citizens-on-voter-rolls--full-roll-check-feasible}
 
-Texas ran its entire roll, more than 18 million voters, through SAVE in 2025 and flagged about 0.015% of it. [2](#source-non-citizens-on-voter-rolls-2) [3](#source-non-citizens-on-voter-rolls-3) Ohio's office says it now identifies non-citizens "at the time of registration". [9](#source-non-citizens-on-voter-rolls-9)
+Texas ran its entire roll, more than 18 million voters, through [SAVE](#glossary-save) in 2025 and flagged about 0.015% of it. [2](#source-non-citizens-on-voter-rolls-2) [3](#source-non-citizens-on-voter-rolls-3) Ohio's office says it now identifies non-citizens "at the time of registration". [9](#source-non-citizens-on-voter-rolls-9)
 
 Before SAVE was opened to bulk checks in 2025, states such as Georgia and North Carolina relied on licence, jury and individual immigration-record checks. [24](#source-non-citizens-on-voter-rolls-24) [14](#source-non-citizens-on-voter-rolls-14) [20](#source-non-citizens-on-voter-rolls-20)
 
@@ -832,7 +832,7 @@ Before SAVE was opened to bulk checks in 2025, states such as Georgia and North 
 
 The longest record comes from the Kansas litigation. The district court found that at most 67 non-citizens registered or tried to register, and 39 got onto the rolls; it found the cases "largely explained by administrative error, confusion, or mistake". [22](#source-non-citizens-on-voter-rolls-22)
 
-Kansas's proof-of-citizenship law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
+Kansas's [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
 
 ## Observations {#non-citizens-on-voter-rolls--observations-how-they-got-on}
 

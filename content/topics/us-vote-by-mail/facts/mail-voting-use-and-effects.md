@@ -532,6 +532,7 @@ additionalSeries:
         valueLabel: 'States'
         lines:
           - name: No-excuse or all-mail
+            glossary: no-excuse-absentee
             points: [{period: '2016-11', value: 30}, {period: '2020-01', value: 32}, {period: '2020-11', value: 38}, {period: '2022-11', value: 35}, {period: '2024-11', value: 36}, {period: '2026-11', value: 37}]
           - name: Excuse required
             points: [{period: '2016-11', value: 20}, {period: '2020-01', value: 18}, {period: '2020-11', value: 2}, {period: '2022-11', value: 15}, {period: '2024-11', value: 14}, {period: '2026-11', value: 13}]
@@ -980,7 +981,7 @@ Election offices' counts and voters' own reports agree on the shape: a peak in 2
 
 ### More states offer mail voting to everyone than in 2016 {#mail-voting-use-and-effects--no-excuse-states-grew}
 
-NCSL expects seven more states to offer no-excuse or all-mail voting in November 2026 than in 2016 (chart). [25](#source-mail-voting-use-and-effects-25) The count peaked in 2020, dropped by 2022 and has crept up since.
+NCSL expects seven more states to offer [no-excuse](#glossary-no-excuse-absentee) or all-mail voting in November 2026 than in 2016 (chart). [25](#source-mail-voting-use-and-effects-25) The count peaked in 2020, dropped by 2022 and has crept up since.
 
 ### States have moved in both directions {#mail-voting-use-and-effects--states-moved-both-ways}
 

@@ -1196,6 +1196,7 @@ additionalSeries:
               - {period: 2025-09, value: 89000}
               - {period: 2025-12, value: 83000}
           - name: Other non-EU+
+            glossary: eu-plus
             points:
               - {period: 2019-06, value: 20000}
               - {period: 2019-09, value: 20000}
@@ -1225,6 +1226,7 @@ additionalSeries:
               - {period: 2025-09, value: 16000}
               - {period: 2025-12, value: 18000}
           - name: EU+ nationals
+            glossary: eu-plus
             points:
               - {period: 2019-06, value: 126000}
               - {period: 2019-09, value: 114000}
@@ -1375,6 +1377,7 @@ additionalSeries:
         valueLabel: People moving to the UK for a year or more
         lines:
           - name: Non-EU+ nationals
+            glossary: eu-plus
             points:
               - {period: 2012-06, value: 238000}
               - {period: 2012-09, value: 232000}
@@ -1432,6 +1435,7 @@ additionalSeries:
               - {period: 2025-09, value: 659000}
               - {period: 2025-12, value: 627000}
           - name: EU+ nationals
+            glossary: eu-plus
             points:
               - {period: 2012-06, value: 327000}
               - {period: 2012-09, value: 322000}
@@ -3261,7 +3265,7 @@ The Migration Observatory links the wider rise to a growing economy and low unem
 
 ### Work arrivals drove the 2025 fall {#immigration-against-the-long-run--latest-fall-work-arrivals}
 
-Non-EU+ work-related arrivals fell by 47% in 2025, the main reason net migration continued falling. Departures had risen between 2022 and 2024, so the explanation differs across the decline. [20](#source-immigration-against-the-long-run-20)
+Non-[EU+](#glossary-eu-plus) work-related arrivals fell by 47% in 2025, the main reason net migration continued falling. Departures had risen between 2022 and 2024, so the explanation differs across the decline. [20](#source-immigration-against-the-long-run-20)
 
 ### Recent years have been revised, and the latest are provisional {#immigration-against-the-long-run--recent-revisions}
 

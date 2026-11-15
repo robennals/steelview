@@ -767,7 +767,7 @@ Both bills in the chart failed to end debate: the Democrats' in January 2022 and
 
 ### The House has passed the SAVE Act or SAVE America Act three times {#federal-and-state-power-over-voting-rules--house-passed-save-america-act}
 
-- **10 April 2025:** the SAVE Act (proof of citizenship to register) passed 220–208, with four Democrats in favour. [24](#source-federal-and-state-power-over-voting-rules-24)
+- **10 April 2025:** the SAVE Act ([proof of citizenship](#glossary-documentary-proof-of-citizenship) to register) passed 220–208, with four Democrats in favour. [24](#source-federal-and-state-power-over-voting-rules-24)
 - **11 February 2026:** the SAVE America Act, which combined it with a photo-ID requirement, passed 218–213. [25](#source-federal-and-state-power-over-voting-rules-25)
 - **22 July 2026:** the House passed it again, packaged with the National Defense Authorization Act to make it harder to vote down in the Senate. [26](#source-federal-and-state-power-over-voting-rules-26)
 
@@ -800,7 +800,7 @@ The NVRA's federal form, written by the Election Assistance Commission, "require
 
 ### The Freedom to Vote Act would have set national access rules and required ID states to accept alternatives {#federal-and-state-power-over-voting-rules--freedom-to-vote-act-provisions}
 
-The bill would have required early voting, no-excuse absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
+The bill would have required early voting, [no-excuse](#glossary-no-excuse-absentee) absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
 
 The two parties' main bills of the past five years therefore both sought national standards, in opposite directions: one mandating ID and proof of citizenship, the other limiting what ID states could demand.
 

@@ -730,7 +730,7 @@ In 2024 that was 17.8% of rejections, the third-largest reason after signature p
 
 ### The low point came when the most states had grace periods {#ballot-deadlines-and-counting-speed--2020-low}
 
-Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that grace periods caused the drop.
+Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that [grace periods](#glossary-grace-period) caused the drop.
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-grace-windows}
 

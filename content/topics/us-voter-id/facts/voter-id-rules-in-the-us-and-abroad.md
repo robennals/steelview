@@ -879,6 +879,7 @@ additionalSeries:
               - {period: '2024', value: 15}
               - {period: '2026', value: 12}
           - name: Strict photo ID (subset of photo)
+            glossary: strict-photo-id
             points:
               - {period: '2009', value: 2}
               - {period: '2010', value: 2}
@@ -1608,7 +1609,7 @@ NCSL's tables do not say whether every strict state offers a free ID card.
 
 ### Proof-of-citizenship laws more than doubled in 2024–2026 {#voter-id-rules-in-the-us-and-abroad--dpoc-surge}
 
-After five states enacted documentary-proof-of-citizenship laws by 2011, the count did not move until 2024. Eight states then acted in three years. [17](#source-voter-id-rules-in-the-us-and-abroad-17) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
+After five states enacted documentary-[proof-of-citizenship](#glossary-documentary-proof-of-citizenship) laws by 2011, the count did not move until 2024. Eight states then acted in three years. [17](#source-voter-id-rules-in-the-us-and-abroad-17) [18](#source-voter-id-rules-in-the-us-and-abroad-18)
 
 ### Many proof-of-citizenship laws are not in force, or only ask when records cannot confirm citizenship {#voter-id-rules-in-the-us-and-abroad--dpoc-not-all-in-effect}
 

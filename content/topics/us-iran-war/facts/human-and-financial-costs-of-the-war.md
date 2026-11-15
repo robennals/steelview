@@ -663,7 +663,7 @@ Reports in early October gave a total of 21; DCAS has since added one more non-h
 
 ### At least 1,701 Iranian civilians were killed by early April, at least 254 of them children, by HRANA's minimum count {#human-and-financial-costs-of-the-war--civilian-minimum-by-april}
 
-HRANA counted 1,701 civilians killed by the April ceasefire, including at least 254 children. [1](#source-human-and-financial-costs-of-the-war-1) It counts incident by incident, takes minimums, and warns of undercounting.
+[HRANA](#glossary-hrana) counted 1,701 civilians killed by the April ceasefire, including at least 254 children. [1](#source-human-and-financial-costs-of-the-war-1) It counts incident by incident, takes minimums, and warns of undercounting.
 
 ### By Hengaw's count, most of those killed were military {#human-and-financial-costs-of-the-war--most-deaths-military-by-hengaw}
 
@@ -713,7 +713,7 @@ CBO attributes the war's lower cost to "relatively few U.S. forces" being involv
 
 ### So far the war has cost a small fraction of Iraq's appropriations {#human-and-financial-costs-of-the-war--cost-small-against-iraq}
 
-The Pentagon's latest figure is about a seventeenth of the $815 billion appropriated for Iraq through FY2014 (chart). [22](#source-human-and-financial-costs-of-the-war-22) [17](#source-human-and-financial-costs-of-the-war-17) Iraq's appropriations built up over 13 years.
+The Pentagon's latest figure is about a seventeenth of the $815 billion appropriated for Iraq through FY2014 (chart). [22](#source-human-and-financial-costs-of-the-war-22) [17](#source-human-and-financial-costs-of-the-war-17) Iraq's [appropriations](#glossary-appropriation) built up over 13 years.
 
 ## Observations {#human-and-financial-costs-of-the-war--observations-iraq-estimates-vs-appropriations}
 
