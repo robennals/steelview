@@ -77,6 +77,11 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
   return <ExploreContext.Provider value={explore}>{children}</ExploreContext.Provider>;
 }
 
+/** Opens a collection's data panel in a sheet, at one observation; null outside a topic page. */
+export function useOpenPanel(): ((target: PanelTarget) => void) | null {
+  return useContext(ExploreContext)?.open ?? null;
+}
+
 export const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 
 type ExploreLinkProps = PanelTarget & { href: string };

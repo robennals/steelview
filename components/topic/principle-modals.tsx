@@ -6,7 +6,11 @@ import { Prose } from './prose';
 
 type Preview = { id: string; name: string; bodyHtml: string };
 
-type PrincipleSheetProps = {
+type InfoSheetProps = {
+  /** What kind of thing the sheet holds, above it: "Principle". */
+  eyebrow: string;
+  /** Sized to what it holds, and on a phone rising from the bottom, for a few lines rather than a page. */
+  compact?: boolean;
   labelledBy: string;
   /** The link that opened the sheet, which gets focus back when it closes. */
   trigger: HTMLElement | null;
@@ -14,8 +18,8 @@ type PrincipleSheetProps = {
   children: ReactNode;
 };
 
-/** The sheet a principle is read in, over the page it was mentioned on. */
-function PrincipleSheet({ labelledBy, trigger, onClose, children }: PrincipleSheetProps) {
+/** The sheet a principle, or a cited finding, is read in, over the page it was mentioned on. */
+export function InfoSheet({ eyebrow, compact, labelledBy, trigger, onClose, children }: InfoSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -49,9 +53,9 @@ function PrincipleSheet({ labelledBy, trigger, onClose, children }: PrincipleShe
 
   return (
     <dialog ref={dialogRef} className="sv-modal" aria-labelledby={labelledBy}>
-      <div className="sv-modal__panel">
+      <div className="sv-modal__panel" data-compact={compact || undefined}>
         <div className="sv-modal__bar">
-          <p className="sv-modal__eyebrow">Principle</p>
+          <p className="sv-modal__eyebrow">{eyebrow}</p>
           <button type="button" className="sv-modal__close" onClick={onClose}>
             <span className="sv-modal__close-label">Close</span>
             <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
@@ -89,9 +93,9 @@ export function PrincipleModals({ principles }: { principles: Preview[] }) {
 
   if (!active) return null;
   return (
-    <PrincipleSheet labelledBy="sv-principle-modal-title" trigger={active.trigger} onClose={close}>
+    <InfoSheet eyebrow="Principle" labelledBy="sv-principle-modal-title" trigger={active.trigger} onClose={close}>
       <h2 id="sv-principle-modal-title">{active.principle.name}</h2>
       <Prose html={active.principle.bodyHtml} />
-    </PrincipleSheet>
+    </InfoSheet>
   );
 }

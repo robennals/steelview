@@ -2067,6 +2067,181 @@
     .sv-walk, .sv-walk__outline-step, .sv-row .sv-walk__strip { transition: none; }
   }
 
+  /* ------------------------------------------------ viewpoint slideshows */
+
+  /* A trial layout (components/viewpoints/slideshow.tsx): a viewpoint is a
+     slideshow of text slides and graph slides. Closed, a row is just its short
+     name and its stance. */
+  .sv-row--deck .sv-row__subtitle { max-width: 48rem; }
+
+  .sv-deck {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0.75rem 1.5rem 1.5rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s, transform 0.45s;
+  }
+
+  .sv-row[data-open] .sv-deck { opacity: 1; transform: none; transition-delay: 0.12s; }
+
+  /* Only on a wide screen are the slides listed down the left. */
+  .sv-deck__outline { display: none; margin: 0; padding: 0; list-style: none; }
+
+  @media (width > 64rem) {
+    .sv-deck { grid-template-columns: minmax(14rem, 1fr) minmax(0, 2.6fr); gap: 2rem; align-items: start; }
+    .sv-deck__outline { display: block; position: sticky; top: 1rem; }
+  }
+
+  .sv-deck__outline-item {
+    display: flex;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.5rem 0.4rem;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: var(--ink-3);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    line-height: 1.35;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  .sv-deck__outline li[data-chart] .sv-deck__outline-item { padding-left: 2.35rem; font-size: 0.76rem; color: var(--ink-4); }
+  .sv-deck__outline-item:hover { color: var(--ink); }
+  .sv-deck__outline-item:disabled { cursor: default; }
+  .sv-deck__outline-item[aria-current] { color: var(--ink); background: var(--accent-wash); }
+
+  .sv-deck__number {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .sv-deck__outline-item[aria-current] .sv-deck__number { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+
+  /* Three rising bars: a chart, drawn in CSS. */
+  .sv-deck__chart-glyph {
+    flex: none;
+    width: 0.9rem;
+    height: 0.8rem;
+    margin-top: 0.15rem;
+    margin-left: -1.5rem;
+    background:
+      linear-gradient(currentColor, currentColor) 0 100% / 0.2rem 40% no-repeat,
+      linear-gradient(currentColor, currentColor) 50% 100% / 0.2rem 70% no-repeat,
+      linear-gradient(currentColor, currentColor) 100% 100% / 0.2rem 100% no-repeat;
+    opacity: 0.7;
+  }
+
+  /* Clear of the sticky section tabs when a step brings it back on screen. */
+  .sv-deck__stage { min-width: 0; scroll-margin-top: 4.5rem; }
+
+  /* One segment per slide, filled up to the one showing. */
+  .sv-deck__progress { display: flex; gap: 3px; margin-bottom: 1.25rem; }
+  .sv-deck__progress span { flex: 1; height: 3px; border-radius: 2px; background: var(--rule); transition: background-color 0.25s; }
+  .sv-deck__progress span[data-done] { background: var(--accent); }
+
+  /* The strip fits the slide showing (use-carousel.ts), so a short slide leaves no gap. */
+  .sv-deck__strip {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: var(--sv-strip-height, auto);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    outline: none;
+    transition: height 0.25s;
+  }
+
+  .sv-deck__strip::-webkit-scrollbar { display: none; }
+  .sv-deck__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .sv-deck__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
+  .sv-deck__slide > * { flex: 1; min-width: 0; }
+
+  .sv-deck__text { max-width: var(--measure); padding-bottom: 0.5rem; }
+
+  .sv-deck__heading {
+    margin: 0 0 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 1.2rem + 0.9vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .sv-deck__prose { font-size: 1.08rem; line-height: 1.6; }
+  .sv-deck__prose p { margin: 0 0 0.9rem; }
+
+  .sv-deck__chart { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  /* What the graph shows, read before the graph. */
+  .sv-deck__shows {
+    margin: 0;
+    padding-left: 0.75rem;
+    border-left: 3px solid var(--accent);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--ink-3);
+  }
+
+  .sv-deck__chart .sv-slide { max-height: min(34rem, 75vh); overflow-y: auto; }
+
+  .sv-deck__controls { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1.25rem; }
+  .sv-deck__count { margin: 0; font-family: var(--font-sans); font-size: 0.8rem; font-variant-numeric: tabular-nums; color: var(--ink-4); }
+
+  .sv-deck__back, .sv-deck__next {
+    min-width: 6.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+  }
+
+  .sv-deck__back { border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink); }
+  .sv-deck__next { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); }
+  .sv-deck__next:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
+  .sv-deck__back:disabled { opacity: 0; pointer-events: none; }
+  .sv-deck__next:disabled { background: var(--paper-sunk); border-color: var(--paper-sunk); color: var(--ink-4); cursor: default; }
+
+  /* A cited finding's pop-up (claim-popups.tsx) ends with the way on to its data. */
+  .sv-modal__body:has(.sv-claim__more) h2 { margin-bottom: 0.6rem; }
+  .sv-claim__more { margin-top: 1.25rem; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; }
+  .sv-claim__more a::after { content: " →"; color: var(--accent); }
+
+  @media (max-width: 47.5rem) {
+    .sv-deck { padding-inline: 1rem; }
+    .sv-row--deck .sv-row__title, .sv-row--deck[data-open] .sv-row__title { font-size: 1.35rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-deck, .sv-deck__strip, .sv-deck__progress span { transition: none; }
+  }
+
+  /* Nothing can open a slideshow row without script. */
+  @media (scripting: none) {
+    .sv-row--deck .sv-row__body { grid-template-rows: 1fr; }
+    .sv-row--deck .sv-row__toggle, .sv-row--deck .sv-row__chevron { display: none; }
+    .sv-deck { opacity: 1; transform: none; }
+  }
+
   /* ------------------------------------------------------ fact citations */
 
   /* An inline citation keeps the prose's colour and has a dotted rule, in the
@@ -2350,6 +2525,17 @@
 
   .sv-modal__close:hover {
     color: var(--accent);
+  }
+
+  /* A compact sheet is sized to what it holds. On a phone it rises from the
+     bottom over the dimmed page, so the reader keeps their place. */
+  .sv-modal:has(> .sv-modal__panel[data-compact]) { background: rgb(0 0 0 / 0.35); }
+  .sv-modal__panel[data-compact] { height: auto; max-height: 85dvh; }
+
+  @media (max-width: 40rem) {
+    .sv-modal[open]:has(> .sv-modal__panel[data-compact]) { align-items: flex-end; }
+    .sv-modal__panel[data-compact] { border-radius: 1rem 1rem 0 0; padding-bottom: env(safe-area-inset-bottom); }
+    .sv-modal__panel[data-compact] .sv-modal__bar { padding-top: 0.35rem; }
   }
 
   /* A data panel lifted into a sheet by a viewpoint's "Explore this data". */

@@ -3,12 +3,13 @@ import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
-import { renderDataWalkthroughs, renderWalkthroughs, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
+import { renderCitedClaims, renderDataWalkthroughs, renderWalkthroughs, type CitedClaim, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
 import { DataRows } from '@/components/topic/data-rows';
 import { ExplorePanels } from '@/components/topic/explore-panels';
 import { TopicPanel, TopicTabs } from '@/components/topic/topic-tabs';
 import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
+import { SLIDESHOW_TOPICS, ViewpointSlides } from '@/components/viewpoints/viewpoint-slides';
 import { PrincipleModals } from '@/components/topic/principle-modals';
 import { CruxRows } from '@/components/topic/crux-rows';
 import type { ItemKind, Topic } from '@/lib/content/types';
@@ -103,10 +104,12 @@ export function orderHeadlineFacts(topic: Topic): Topic['facts'] {
  * kept free of `loadTopic` so it is unit-testable without a real content
  * directory.
  */
-export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }: {
+export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs, claims = {} }: {
   topic: Topic;
   bodies: Map<string, string>;
   walkthroughs: Map<string, RenderedWalkthrough>;
+  /** The findings the viewpoints cite, for a topic whose viewpoints are slideshows. */
+  claims?: Record<string, CitedClaim>;
   /** Each headline data collection's charts and observations, keyed by fact id. */
   dataWalkthroughs: Map<string, DataStep[]>;
 }) {
@@ -140,7 +143,9 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs }:
             <div className="sv-section__head sv-section__head--tab">
               <h2 className="sv-section__title">Viewpoints</h2>
             </div>
-            <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />
+            {SLIDESHOW_TOPICS.has(topic.slug)
+              ? <ViewpointSlides slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} claims={claims} />
+              : <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />}
           </section>
         </TopicPanel>
       )}
@@ -179,6 +184,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const bodies = await buildBodies(topic, slug);
   const walkthroughs = await renderWalkthroughs(topic);
   const dataWalkthroughs = await renderDataWalkthroughs(topic, orderHeadlineFacts(topic));
+  const claims = SLIDESHOW_TOPICS.has(slug) ? await renderCitedClaims(topic) : {};
 
   /*
    * The page head is the title and nothing else: readers came for the facts,
@@ -194,7 +200,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         <p className="sv-meta sv-pagehead__meta">Last updated {topic.lastUpdated}</p>
       </header>
 
-      <TopicSections topic={topic} bodies={bodies} walkthroughs={walkthroughs} dataWalkthroughs={dataWalkthroughs} />
+      <TopicSections topic={topic} bodies={bodies} walkthroughs={walkthroughs} dataWalkthroughs={dataWalkthroughs} claims={claims} />
     </main>
   );
 }

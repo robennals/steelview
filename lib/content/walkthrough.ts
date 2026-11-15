@@ -4,7 +4,7 @@ import { alongsideOf, plotReadingId, plottedReadings } from '@/lib/chart/series-
 import { chartCitations, footnotesIn } from './sources';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
-import { factSlides, slideGroups, type PreviewSlide } from './preview';
+import { factSlides, isPreviewable, previewTarget, slideGroups, type PreviewSlide } from './preview';
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
@@ -185,6 +185,19 @@ function panelTargets(topic: Topic): (id: string, section: string) => PanelTarge
   };
 }
 
+/** Whether a slide's chart is a graph, rather than a table, quote or other figure set as type. */
+function isGraph({ fact, chart }: PreviewSlide): boolean {
+  const target = previewTarget(fact, chart);
+  return !!target && isPreviewable(target);
+}
+
+/** What a chart shows, as its series, comparison or figure describes it. */
+export function chartDescription(fact: Fact, chart: string): string {
+  const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
+  const figure = componentFigure(fact, chart);
+  return series?.description ?? fact.comparisons?.find(c => c.id === chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
+}
+
 /** A step with its prose rendered, ready for a synchronous component. */
 export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
   html: string;
@@ -192,6 +205,12 @@ export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
   exploreHtml?: string;
   /** Where "Explore this data" opens the chart's data panel. */
   panel?: PanelTarget;
+  /**
+   * Set when the step's chart is a graph that earns a slide of its own in a
+   * viewpoint slideshow, with what it shows. A table or a quote does not: it
+   * reads as more text, which the step's prose already carries.
+   */
+  chartSlide?: { description: string };
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -214,10 +233,52 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
         panel: cited && panelFor(cited.id, cited.section),
         html: await renderMarkdown(markdown, topic.slug, topic.facts, { panelCitation: panelFor }),
         exploreHtml: cited && await renderMarkdown(`[Explore this data](#fact-${cited.id}/${cited.section})`, topic.slug, topic.facts),
+        chartSlide: chart && isGraph(chart) ? { description: chartDescription(chart.fact, chart.chart) } : undefined,
       }))),
     });
   }
   return rendered;
+}
+
+/** One finding a viewpoint cites, ready to read in a pop-up beside the claim that cites it. */
+export type CitedClaim = {
+  /** The finding, as its observation's heading, rendered without a paragraph. */
+  heading: string;
+  /** Its explanation. */
+  html: string;
+  /** The data collection it comes from. */
+  collection: string;
+  /** Where its collection's data panel opens at it, when the topic page has one. */
+  panel?: PanelTarget;
+  /** Its place in its collection's own page. */
+  href: string;
+};
+
+/**
+ * Every observation the viewpoints cite, keyed by its element id
+ * (`<fact>--<observation>`), for a slideshow to open in a pop-up rather than
+ * sending the reader into the whole data collection. Like a data panel on a
+ * topic page, it leaves out footnotes and fact links, which the collection
+ * itself carries.
+ */
+export async function renderCitedClaims(topic: Topic): Promise<Record<string, CitedClaim>> {
+  const options = { citationsAsText: true, footnotes: false };
+  const panelFor = panelTargets(topic);
+  const claims: Record<string, CitedClaim> = {};
+  for (const { id, section } of topic.viewpoints.flatMap(v => citedFactTargets(v.body))) {
+    const key = `${id}--${section}`;
+    const fact = topic.facts.find(f => f.id === id);
+    const observation = fact && [...observationsByChart(fact).values()].flat().find(o => o.id === section);
+    if (key in claims || !fact || !observation) continue;
+    claims[key] = {
+      heading: (await renderMarkdown(observation.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),
+      html: await renderMarkdown(observation.markdown, topic.slug, topic.facts, options),
+      collection: fact.title ?? fact.claim,
+      panel: panelFor(id, section),
+      href: `${factPath(topic.slug, id)}#${key}`,
+    };
+  }
+  return claims;
 }
 
 /** The title of a report's last slide. */
@@ -295,8 +356,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
     const charts = await Promise.all(slides.map(async (chart, i) => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
       const keys = slideGroups(fact, chart);
-      const figure = componentFigure(fact, chart.chart);
-      const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
+      const description = chartDescription(fact, chart.chart);
       // A view is a reading with a plot of its own, with any reading drawn alongside it.
       const plotted = series ? plottedReadings(series) : [];
       const views = series && plotted.length > 1
