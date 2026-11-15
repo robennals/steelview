@@ -77,7 +77,7 @@ export function ExplorePanels({ children }: { children: ReactNode }) {
   return <ExploreContext.Provider value={explore}>{children}</ExploreContext.Provider>;
 }
 
-const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+export const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 
 type ExploreLinkProps = PanelTarget & { href: string };
 
@@ -163,10 +163,20 @@ export function PanelHost({ fact, title, children }: PanelHostProps) {
   );
 }
 
-type PanelSheetProps = { title: string; observation: string; leave: () => void; children: ReactNode };
+type PanelSheetProps = {
+  title: string;
+  observation: string;
+  leave: () => void;
+  /** Whether the panel is in the sheet yet. The home page fetches it as the sheet opens. */
+  loaded?: boolean;
+  children: ReactNode;
+};
 
-/** The sheet around a data panel, open at one chart and observation from its first frame. */
-function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
+/**
+ * The sheet around a data panel, open at one chart and observation from the
+ * first frame the panel is in it. A topic page's sheets, and the home page's.
+ */
+export function PanelSheet({ title, observation, leave, loaded = true, children }: PanelSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -178,9 +188,6 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
     document.documentElement.classList.add('sv-modal-open');
     dialog.querySelector<HTMLElement>('.sv-modal__close')?.focus();
 
-    // Straight to the chart holding the observation, with nothing to scroll past.
-    showPanelStep(dialog, observation);
-
     return () => {
       unwireExit();
       document.documentElement.classList.remove('sv-modal-open');
@@ -188,7 +195,12 @@ function PanelSheet({ title, observation, leave, children }: PanelSheetProps) {
       dialog.close();
       if (trigger instanceof HTMLElement) trigger.focus();
     };
-  }, [leave, observation]);
+  }, [leave]);
+
+  // Straight to the chart holding the observation, with nothing to scroll past.
+  useLayoutEffect(() => {
+    if (loaded && dialogRef.current) showPanelStep(dialogRef.current, observation);
+  }, [loaded, observation]);
 
   const onClick = (event: MouseEvent<HTMLDialogElement>) => {
     const dialog = dialogRef.current;
