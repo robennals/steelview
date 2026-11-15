@@ -720,8 +720,8 @@
   }
 
   /* A preview's areas cannot be focused or zoomed, so they look as clickable
-     as what holds them: on the home page not at all, and in a viewpoint, whose
-     whole chart opens its data, as much as the rest of it. */
+     as what holds them: a home-page slide or a viewpoint's chart, which opens
+     its data from anywhere on it. */
   [data-preview] .sv-geo-map__region,
   [data-preview] .sv-geo-map__dot,
   [data-preview] .sv-geo-map__marker,

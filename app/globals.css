@@ -2247,27 +2247,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem;
   }
 
   .sv-modal::backdrop {
     background: transparent;
   }
 
-  /* Keep the topic visible around the sheet, even on a phone. Long facts
-     scroll inside it while the controls remain within reach. The sheet is
-     always its full height, not sized to its content, so it opens at the size
-     it will have rather than growing when the article arrives. */
+  /* On a phone the sheet is the whole screen: a chart needs all the room
+     there is, and the page around it would only be a sliver. Wider, the page
+     shows around it. Long facts scroll inside it while the controls remain
+     within reach. The sheet is always its full height, not sized to its
+     content, so it opens at the size it will have rather than growing when
+     the article arrives. */
   .sv-modal__panel {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: min(78dvh, 48rem);
+    height: 100%;
     background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
   }
 
   @media (min-width: 40rem) {
@@ -2277,6 +2275,10 @@
 
     .sv-modal__panel {
       width: min(42rem, 100%);
+      height: min(78dvh, 48rem);
+      border: 1px solid var(--rule);
+      border-radius: 1rem;
+      box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
     }
   }
 
@@ -2703,6 +2705,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    at, the chart's title is underlined, and so is "Explore this data" under
    it, solid and link-coloured. */
 .sv-walk__chart--explorable { position: relative; cursor: zoom-in; }
+/* A home-page slide opens its chart's data in a sheet the same way. */
+.sv-slide--explorable { cursor: zoom-in; }
 .sv-walk__chart--explorable .sv-chart__caption .sv-graph-heading { padding-right: 1.75rem; }
 .sv-walk__expand {
   position: absolute;

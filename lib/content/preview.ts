@@ -105,14 +105,22 @@ export function slideGroups(fact: Fact, { chart, reading }: Pick<PreviewSlide, '
 }
 
 /**
+ * The address of a slide's chart in its collection's data panel. A slide
+ * naming a reading has the address of the chart showing it: the reading whose
+ * plot draws it.
+ */
+export function chartAddress(slide: Pick<PreviewSlide, 'fact' | 'chart' | 'reading'>): string {
+  return `${slide.fact.id}--chart-${slide.reading ? slideGroups(slide.fact, slide)[0] : slide.chart}`;
+}
+
+/**
  * A home-page slide's chart on its topic's report, opened over it in its
- * collection's data panel (`ExplorePanels`). Every preview chart's collection
- * has a panel there: `validateTopic` requires it to be a headline fact.
+ * collection's data panel (`ExplorePanels`): where its title leads in a new
+ * tab or with no script. Every preview chart's collection has a panel there:
+ * `validateTopic` requires it to be a headline fact.
  */
 export function reportChartPath(slug: string, slide: Pick<PreviewSlide, 'fact' | 'chart' | 'reading'>): string {
-  // A slide naming a reading opens the chart showing it: the reading whose plot draws it.
-  const address = slide.reading ? slideGroups(slide.fact, slide)[0] : slide.chart;
-  return `${topicPath(slug)}#${slide.fact.id}--chart-${address}`;
+  return `${topicPath(slug)}#${chartAddress(slide)}`;
 }
 
 /**

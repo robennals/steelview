@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { reportChartPath, resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
+import { chartAddress, reportChartPath, resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
+import { previewPanel } from '@/lib/content/preview-panel';
 import { topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
 import { PreviewCarousel } from './preview-carousel';
+import { PreviewChart, PreviewSheets } from './preview-sheet';
 import { TopicAccordion, TopicRow } from './topic-accordion';
 
 /** How many chart silhouettes a closed row shows. */
@@ -20,9 +22,9 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
     <div className="sv-row__columns">
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
-          <div className="sv-slide" key={slide.href}>
+          <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.fact.title ?? slide.fact.claim} observation={chartAddress(slide)}>
             <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
-          </div>
+          </PreviewChart>
         ))}
       </PreviewCarousel>
       <div className="sv-row__side">
@@ -48,37 +50,39 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
 export function TopicRows({ topics }: { topics: Topic[] }) {
   if (topics.length === 0) return null;
   return (
-    <TopicAccordion initial={topics[0].slug}>
-      {topics.map(topic => {
-        const slides = resolvePreviews(topic);
-        return (
-          <TopicRow
-            key={topic.slug}
-            slug={topic.slug}
-            title={topic.title}
-            href={topicPath(topic.slug)}
-            subtitle={topic.subtitle}
-            meta={
-              <p className="sv-row__meta">
-                {(topic.tags ?? []).map(tag => <span className="sv-tag" key={tag}>{tag}</span>)}
-                <span>Updated {updated(topic.lastUpdated)}</span>
-              </p>
-            }
-            thumbs={
-              <ul className="sv-row__thumbs" aria-hidden="true">
-                {slides.slice(0, THUMBS).map(slide => (
-                  <li key={slide.href}>
-                    <div className="sv-row__thumb"><ChartThumb fact={slide.fact} chart={slide.chart} reading={slide.reading} preview /></div>
-                    <span>{slide.label}</span>
-                  </li>
-                ))}
-              </ul>
-            }
-          >
-            <RowPreview topic={topic} slides={slides} />
-          </TopicRow>
-        );
-      })}
-    </TopicAccordion>
+    <PreviewSheets load={previewPanel}>
+      <TopicAccordion initial={topics[0].slug}>
+        {topics.map(topic => {
+          const slides = resolvePreviews(topic);
+          return (
+            <TopicRow
+              key={topic.slug}
+              slug={topic.slug}
+              title={topic.title}
+              href={topicPath(topic.slug)}
+              subtitle={topic.subtitle}
+              meta={
+                <p className="sv-row__meta">
+                  {(topic.tags ?? []).map(tag => <span className="sv-tag" key={tag}>{tag}</span>)}
+                  <span>Updated {updated(topic.lastUpdated)}</span>
+                </p>
+              }
+              thumbs={
+                <ul className="sv-row__thumbs" aria-hidden="true">
+                  {slides.slice(0, THUMBS).map(slide => (
+                    <li key={slide.href}>
+                      <div className="sv-row__thumb"><ChartThumb fact={slide.fact} chart={slide.chart} reading={slide.reading} preview /></div>
+                      <span>{slide.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              }
+            >
+              <RowPreview topic={topic} slides={slides} />
+            </TopicRow>
+          );
+        })}
+      </TopicAccordion>
+    </PreviewSheets>
   );
 }
