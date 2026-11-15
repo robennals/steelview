@@ -90,18 +90,36 @@ test('on a phone an open row leaves out its viewpoints, and its carousel is only
   expect(heights.size).toBeGreaterThan(1);
 });
 
-test('a preview\'s title opens its topic with that chart in a sheet, which closes onto the topic page', async ({ page }) => {
+test('a preview chart opens its data in a sheet over the home page, which Back closes', async ({ page }) => {
   await page.goto('/');
   const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
   const row = rows(page).filter({ has: slide });
   if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
   await slide.locator('.sv-graph-heading a').click();
-  await expect(page).toHaveURL(/\/topics\/us-iran-war#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars$/);
   const sheet = page.locator('dialog[open]');
-  await expect(sheet.locator('[id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]')).toBeInViewport();
+  const anchor = page.locator('[data-chart-anchor="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]');
+  await expect(sheet.locator('.sv-walk__slide', { has: anchor })).toBeInViewport();
+  await expect(page).toHaveURL(/\/$/);
+  await page.goBack();
+  await expect(sheet).toHaveCount(0);
+  await expect(page).toHaveURL(/\/$/);
+
+  // Clicking anywhere on the chart opens it too, and the close button closes it.
+  await slide.click({ position: { x: 200, y: 150 } });
+  await expect(sheet).toHaveCount(1);
   await sheet.locator('.sv-modal__close').click();
   await expect(sheet).toHaveCount(0);
-  await expect(page).toHaveURL(/\/topics\/us-iran-war$/);
+});
+
+test('a sheet fills a phone\'s screen', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const slide = page.locator('[data-preview]#human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars');
+  const row = rows(page).filter({ has: slide });
+  if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 200, y: 12 } });
+  await slide.locator('.sv-graph-heading a').click();
+  const box = await page.locator('dialog[open] .sv-modal__panel').boundingBox();
+  expect(box).toEqual({ x: 0, y: 0, width: 390, height: 844 });
 });
 
 test('every row shows its tags', async ({ page }) => {

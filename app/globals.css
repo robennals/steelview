@@ -2248,27 +2248,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem;
   }
 
   .sv-modal::backdrop {
     background: transparent;
   }
 
-  /* Keep the topic visible around the sheet, even on a phone. Long facts
-     scroll inside it while the controls remain within reach. The sheet is
-     always its full height, not sized to its content, so it opens at the size
-     it will have rather than growing when the article arrives. */
+  /* On a phone the sheet is the whole screen: a chart needs all the room
+     there is, and the page around it would only be a sliver. Wider, the page
+     shows around it. Long facts scroll inside it while the controls remain
+     within reach. The sheet is always its full height, not sized to its
+     content, so it opens at the size it will have rather than growing when
+     the article arrives. */
   .sv-modal__panel {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: min(78dvh, 48rem);
+    height: 100%;
     background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
   }
 
   @media (min-width: 40rem) {
@@ -2278,6 +2276,10 @@
 
     .sv-modal__panel {
       width: min(42rem, 100%);
+      height: min(78dvh, 48rem);
+      border: 1px solid var(--rule);
+      border-radius: 1rem;
+      box-shadow: 0 24px 64px rgb(0 0 0 / 0.3), 0 6px 18px rgb(0 0 0 / 0.2);
     }
   }
 
