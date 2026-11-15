@@ -74,10 +74,10 @@ export function ObservationStep({ observations, views, more = '', addressed = fa
     index,
     open,
     jumps,
-    go: (to: number) => {
-      setIndex((to + observations.length) % observations.length);
-      setOpen(false);
-    },
+    // Stepping keeps the reader's choice: from an open observation the next
+    // opens too, with its part of the chart picked out; from a closed one it
+    // stays a heading.
+    go: (to: number) => setIndex((to + observations.length) % observations.length),
     show: (to: number) => {
       setIndex(to);
       setOpen(true);

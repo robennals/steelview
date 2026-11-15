@@ -561,9 +561,10 @@ test('choosing an observation picks out its part of the graph', async ({ page })
   await expect(dimmed('Net migration')).toHaveCount(1);
   await expect(dimmed('Immigration')).toHaveCount(0);
 
-  // A region: the four years from 2021, with the plot either side of them veiled.
+  // Stepping on from an open observation opens the next, so its mark shows at
+  // once: a region, the four years from 2021, with the plot either side veiled.
   await step.getByRole('button', { name: 'Next observation' }).click();
-  await toggle.click();
+  await expect(step.locator('.sv-observe__item:not([hidden]) .sv-observe__body')).toBeVisible();
   await expect(shownMark.locator('.sv-chart__mark-veil')).toHaveCount(2);
   await expect(dimmed('Emigration')).toHaveCount(1);
   await expect(dimmed('Net migration')).toHaveCount(0);
