@@ -172,6 +172,9 @@ test('arriving at an observation\'s address opens its data panel, which closes o
   const arrived = await page.context().newPage();
   await arrived.goto(`${TOPIC}${new URL(href!, 'http://x').hash}`);
   await expect(arrived.locator('dialog[open]')).toHaveCount(1);
+  // A reload keeps the sheet, with the report still beneath it.
+  await arrived.reload();
+  await expect(arrived.locator('dialog[open]')).toHaveCount(1);
   await arrived.locator('dialog[open] .sv-modal__close').click();
   await expect(arrived.locator('dialog[open]')).toHaveCount(0);
   await expect(arrived).toHaveURL(new RegExp(`${TOPIC}$`));
