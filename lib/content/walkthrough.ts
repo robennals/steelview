@@ -266,6 +266,8 @@ export async function renderCitedClaims(topic: Topic): Promise<Record<string, Ci
   const panelFor = panelTargets(topic);
   const claims: Record<string, CitedClaim> = {};
   for (const { id, section } of topic.viewpoints.flatMap(v => citedFactTargets(v.body))) {
+    // A citation of a whole collection names no one finding to show.
+    if (!section) continue;
     const key = `${id}--${section}`;
     const fact = topic.facts.find(f => f.id === id);
     const observation = fact && [...observationsByChart(fact).values()].flat().find(o => o.id === section);
