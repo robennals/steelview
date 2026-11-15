@@ -1,9 +1,10 @@
 import { citedFactTargets, renderMarkdown, type PanelTarget } from './markdown';
 import { headlineFacts } from './rank-facts';
+import { alongsideOf, plotReadingId, plottedReadings } from '@/lib/chart/series-chart';
 import { chartCitations, footnotesIn } from './sources';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
-import { factSlides, slideGroup, type PreviewSlide } from './preview';
+import { factSlides, slideGroups, type PreviewSlide } from './preview';
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
@@ -91,9 +92,13 @@ export function chartMore(fact: Pick<Fact, 'body'>): Map<string, string> {
  * What is cited sits on a chart, so this is what makes a source shown at all.
  */
 export function slideCitations(fact: Fact, slide: Pick<PreviewSlide, 'chart' | 'reading'>): number[] {
-  const key = slideGroup(fact, slide);
-  const prose = [...(observationsByChart(fact).get(key) ?? []).map(o => `${o.heading}\n${o.markdown}`), chartMore(fact).get(key) ?? ''];
-  return [...new Set([...chartCitations(fact, slide.chart, slide.reading), ...prose.flatMap(text => footnotesIn(text, fact.id))])];
+  const keys = slideGroups(fact, slide);
+  const groups = observationsByChart(fact);
+  const more = chartMore(fact);
+  const prose = keys.flatMap(key => [...(groups.get(key) ?? []).map(o => `${o.heading}\n${o.markdown}`), more.get(key) ?? '']);
+  // A series key is a reading, which has sources of its own; any other chart ignores it.
+  const drawn = keys.flatMap(key => chartCitations(fact, slide.chart, key));
+  return [...new Set([...drawn, ...prose.flatMap(text => footnotesIn(text, fact.id))])];
 }
 
 /**
@@ -172,7 +177,7 @@ function panelTargets(topic: Topic): (id: string, section: string) => PanelTarge
   const addresses = new Set(headlineFacts(topic.facts).flatMap(fact => {
     const slides = factSlides(topic.slug, fact);
     const groups = observationsByChart(fact);
-    return [...slides.flatMap(slide => (groups.get(slideGroup(fact, slide)) ?? []).map(o => `${fact.id}--${o.id}`)), ...chartAnchors(fact, slides).flat()];
+    return [...slides.flatMap(slide => slideGroups(fact, slide).flatMap(key => groups.get(key) ?? []).map(o => `${fact.id}--${o.id}`)), ...chartAnchors(fact, slides).flat()];
   }));
   return (id, section) => {
     const observation = `${id}--${section}`;
@@ -226,8 +231,17 @@ export type DataStep = {
   chart?: PreviewSlide;
   /** On the last step, the measurements that would change the report. */
   unknowns?: NonNullable<Fact['dataStillNeeded']>;
-  /** The observations and Subtleties of this chart, in order: what to notice in it. `heading` is rendered, without a paragraph. */
-  observations: { id: string; heading: string; html: string; mark?: ObservationMark; subtlety: boolean; href: string; label: string }[];
+  /**
+   * The observations and Subtleties of this chart, in order: what to notice in it. `heading` is rendered, without a paragraph.
+   * `view` is the reading each is about, on a chart with `views`.
+   */
+  observations: { id: string; heading: string; html: string; mark?: ObservationMark; subtlety: boolean; href: string; label: string; view?: string }[];
+  /**
+   * A series' readings, for its "Show as" switch, when it has more than one: each
+   * observation shows the reading it is about, and a link to one of a reading's
+   * `anchors` opens at its first observation.
+   */
+  views?: { id: string; label: string; anchors: string[] }[];
   /** What the chart shows. */
   description: string;
   /** The chart's further text (`chartMore`), rendered, for its More. */
@@ -239,22 +253,29 @@ export type DataStep = {
 /**
  * Each chart's addresses: its own, the view it was once shown alone in, its
  * Observations and Subtleties groups and each old anchor it stands in for
- * (`replaces`, `movedAnchors`). An address the readings of one series share
- * belongs to the first of them, as `--observations` and `--subtleties`, a group
- * about no one chart, belong to the first chart.
+ * (`replaces`, `movedAnchors`), for each reading a series slide shows. As
+ * `--observations` and `--subtleties`, groups about no one chart, belong to the
+ * first chart, an address two slides share belongs to the first of them.
  */
 function chartAnchors(fact: Fact, slides: PreviewSlide[]): string[][] {
   const taken = new Set<string>();
   return slides.map(slide => {
-    const key = slideGroup(fact, slide);
+    const keys = slideGroups(fact, slide);
     const replaced = componentFigure(fact, slide.chart)?.replaces ?? [];
-    const moved = Object.entries(fact.movedAnchors ?? {}).flatMap(([anchor, chart]) => (chart === key ? [anchor] : []));
-    const anchors = [`chart-${slide.chart}`, `chart-${key}`, `chart-${slide.chart}-methodology`, `viz-${slide.chart}`, `observations-${key}`, `subtleties-${key}`, ...replaced, ...moved, 'observations', 'subtleties']
+    const moved = Object.entries(fact.movedAnchors ?? {}).flatMap(([anchor, chart]) => (keys.includes(chart) ? [anchor] : []));
+    const grouped = keys.flatMap(key => [`chart-${key}`, `observations-${key}`, `subtleties-${key}`]);
+    const anchors = [`chart-${slide.chart}`, `chart-${slide.chart}-methodology`, `viz-${slide.chart}`, ...grouped, ...replaced, ...moved, 'observations', 'subtleties']
       .map(anchor => `${fact.id}--${anchor}`)
       .filter(anchor => !taken.has(anchor));
     anchors.forEach(anchor => taken.add(anchor));
     return [...new Set(anchors)];
   });
+}
+
+/** The addresses that name one reading of a series: its own, its groups' and any old anchor moved to it. */
+function readingAnchors(fact: Fact, reading: string): string[] {
+  const moved = Object.entries(fact.movedAnchors ?? {}).flatMap(([anchor, key]) => (key === reading ? [anchor] : []));
+  return [`chart-${reading}`, `observations-${reading}`, `subtleties-${reading}`, ...moved].map(anchor => `${fact.id}--${anchor}`);
 }
 
 /**
@@ -273,16 +294,25 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
     const anchors = chartAnchors(fact, slides);
     const charts = await Promise.all(slides.map(async (chart, i) => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
-      const key = slideGroup(fact, chart);
+      const keys = slideGroups(fact, chart);
       const figure = componentFigure(fact, chart.chart);
       const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
+      // A view is a reading with a plot of its own, with any reading drawn alongside it.
+      const plotted = series ? plottedReadings(series) : [];
+      const views = series && plotted.length > 1
+        ? plotted.map(r => ({ id: r.id, label: r.label, anchors: [r, alongsideOf(series, r)].flatMap(drawn => (drawn ? readingAnchors(fact, drawn.id) : [])) }))
+        : undefined;
+      // Each reading's observations, then its Subtleties, reading by reading, so
+      // stepping through them moves through the views in order.
+      const viewObservations = keys.flatMap(key => (groups.get(key) ?? []).map(o => ({ ...o, view: views && series ? plotReadingId(series, key) : undefined })));
       return {
         label: chart.label,
         chart,
         description,
-        more: await renderMarkdown(more.get(key) ?? '', topic.slug, topic.facts, options),
+        views,
+        more: await renderMarkdown(keys.map(key => more.get(key) ?? '').filter(Boolean).join('\n\n'), topic.slug, topic.facts, options),
         anchors: anchors[i],
-        observations: await Promise.all((groups.get(key) ?? []).map(async o => {
+        observations: await Promise.all(viewObservations.map(async o => {
           const heading = (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, '');
           return ({
           id: `${fact.id}--${o.id}`,
@@ -291,6 +321,7 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
           html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
           mark: fact.observationMarks?.[o.id],
           subtlety: o.subtlety,
+          view: o.view,
           href: `${factPath(topic.slug, fact.id)}#${fact.id}--${o.id}`,
           });
         })),

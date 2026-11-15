@@ -818,6 +818,45 @@
     margin-bottom: 0.5rem;
   }
 
+  /* A Graph/Table switch with further controls beside it, as a series'
+     "Show as": one row, wrapping on a narrow screen. */
+  .sv-chart__view-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1rem;
+    margin-top: 0.35rem;
+  }
+
+  .sv-chart__view-bar > .sv-chart__view-controls {
+    margin-top: 0;
+  }
+
+  /* A series' "Show as" switch: one row, even with long reading names, so a
+     panel slide still holds its chart without scrolling on a phone. */
+  .sv-show-as > .sv-control {
+    align-items: center;
+    margin: 0;
+  }
+
+  @media (max-width: 40rem) {
+    .sv-show-as {
+      flex: 1 1 12rem;
+      min-width: 0;
+    }
+
+    .sv-show-as .sv-control__options {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+    }
+
+    .sv-show-as .sv-control__option {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+  }
+
   .sv-chart__zone-label {
     fill: var(--ink-3);
     font-family: var(--font-sans);
@@ -2534,7 +2573,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* A data panel's full chart: the graph takes whatever its controls and notes
    leave, at the nearest shape, as a preview does. Its ratios are 4.0, 3.16 and 2.5. */
 .sv-chart[data-panel-chart] { display: flex; flex: 1 1 auto; flex-direction: column; margin: 0; }
-.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]:not([hidden])) { display: flex; flex: 1 1 auto; flex-direction: column; }
+.sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view:not([hidden]), .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]:not([hidden])) { display: flex; flex: 1 1 auto; flex-direction: column; }
 .sv-chart[data-panel-chart] .sv-graph-heading { margin: 0 0 0.2rem; font-size: 1.1rem; }
 .sv-chart[data-panel-chart] .sv-chart__view-controls { align-self: flex-start; }
 /* The notes under the graph stay small, so the graph has the room. */
@@ -2606,7 +2645,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
   /* A long title takes its height from the graph, not from the panel's edge. */
-  .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
+  .sv-chart[data-panel-chart], .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view, .sv-chart__reading, .sv-chart__view) { min-height: 0; }
   .sv-chart[data-panel-chart] .sv-chart__plot { flex: 1 1 16rem; min-height: 12rem; }
 }
 

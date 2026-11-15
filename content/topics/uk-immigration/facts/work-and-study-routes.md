@@ -1669,12 +1669,14 @@ additionalSeries:
       publisher: Skills for Care
       date: '2026-10-14'
 - id: sponsor-revocations
-  title: UK sponsor licences revoked, 2012–2025
+  title: UK sponsor licences revoked
+  subtitle: In number, by route, and as a share of registered Skilled Worker sponsors, 2012–2025
   description: >-
     A sponsor licence lets an organisation bring in overseas workers or students; this
-    counts those the Home Office revoked each year. Revocations are counted by calendar
-    year and by route. A revoked sponsor can no longer employ or recruit people on that
-    route.
+    counts those the Home Office revoked each year, by calendar year and by route, beside
+    how many organisations held a licence. A revoked sponsor can no longer employ or
+    recruit people on that route. The number of sponsors grew fast after 2019, so the
+    count of revocations and their share of sponsors can tell different stories.
   periodLabel: Year
   coverage:
     from: '2012'
@@ -1683,7 +1685,8 @@ additionalSeries:
       The transparency table runs from the first quarter of 2012 to the second quarter
       of 2026; the chart sums complete calendar years. Licences covering several routes
       are counted under each. The table has no breakdown by sector, by reason, or
-      by the number of workers each sponsor employed.
+      by the number of workers each sponsor employed. Sponsor counts are at the end of
+      each year, from the sponsor register table.
   breaks:
   - period: '2016'
     label: Administrative revocations counted
@@ -1705,6 +1708,7 @@ additionalSeries:
   readings:
   - id: revocations
     label: Licences revoked
+    alongside: revocation-rate
     unit: count
     valueLabel: Licences revoked in the year
     lines:
@@ -1798,48 +1802,67 @@ additionalSeries:
         value: 11
       - period: '2025'
         value: 24
-- id: registered-sponsors
-  title: UK registered sponsors and the revocation rate, 2014–2025
-  description: >-
-    How many organisations were licensed to bring in overseas workers or students, and how
-    often Skilled Worker licences were revoked. Sponsor counts are at the end of each
-    year. The revocation rate is Skilled Worker revocations in the year as a share of
-    Skilled Worker sponsors.
-  periodLabel: Year
-  coverage:
-    from: '2014'
-    to: '2025'
+  - id: revocation-rate
+    label: Revocation rate
+    unit: percent
+    valueLabel: Licences revoked as % of registered sponsors
     note: >-
-      The sponsor register table starts in the first quarter of 2014; each point is
-      the count at the end of the year. The revocation rate is derived by us: Skilled
-      Worker licences revoked in the calendar year (table SC_01) divided by Skilled
-      Worker sponsors registered at the end of that year (table SP_01).
-  breaks:
-  - period: '2016'
-    label: Administrative revocations counted
-    note: >-
-      Home Office: "Following a review of the definitions used in producing this data,
-      there has been a change in the way this data is reported from Q2 2016. Figures
-      now include administrative revocations and the suspension of a licence when
-      an immediate revocation is completed."
-  source:
-    stance: supports
-    quote: >-
-      SP_01: Number of sponsoring organisations registered to sponsor an overseas
-      national in Skilled Worker, Temporary Worker and Student routes
-    title: Sponsorship transparency data, April to June 2026 (SP_01)
-    url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
-    fileUrl: https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
-    localFile: datasets/assets.publishing.service.gov.uk/sponsorship-transparency-data-apr-to-jun-2026.ods
-    publisher: UK Visas and Immigration
-    date: '2026-08-27'
-  readings:
+      Derived: Skilled Worker licences revoked in the calendar year (table SC_01)
+      divided by Skilled Worker sponsors registered at the end of that year (table
+      SP_01). A record number of revocations can still be an ordinary share of a
+      register that has grown.
+    lines:
+    - name: Skilled Worker revocation rate
+      coverage:
+        from: '2014'
+        to: '2025'
+        note: The sponsor register table starts in the first quarter of 2014.
+      points:
+      - period: '2014'
+        value: 2.24
+      - period: '2015'
+        value: 2.79
+      - period: '2016'
+        value: 2.14
+      - period: '2017'
+        value: 2.24
+      - period: '2018'
+        value: 0.96
+      - period: '2019'
+        value: 1.32
+      - period: '2020'
+        value: 0.96
+      - period: '2021'
+        value: 0.1
+      - period: '2022'
+        value: 0.5
+      - period: '2023'
+        value: 0.4
+      - period: '2024'
+        value: 1.35
+      - period: '2025'
+        value: 2.5
   - id: sponsors
     label: Registered sponsors
     unit: count
     valueLabel: Sponsors registered at the end of the year
+    source:
+      stance: supports
+      quote: >-
+        SP_01: Number of sponsoring organisations registered to sponsor an overseas
+        national in Skilled Worker, Temporary Worker and Student routes
+      title: Sponsorship transparency data, April to June 2026 (SP_01)
+      url: https://www.gov.uk/government/statistical-data-sets/migration-transparency-data
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a8c3bc8d166fab554a3c3fe/sponsorship-transparency-data-apr-to-jun-2026.ods
+      localFile: datasets/assets.publishing.service.gov.uk/sponsorship-transparency-data-apr-to-jun-2026.ods
+      publisher: UK Visas and Immigration
+      date: '2026-08-27'
     lines:
     - name: Skilled Worker
+      coverage:
+        from: '2014'
+        to: '2025'
+        note: The sponsor register table starts in the first quarter of 2014.
       points:
       - period: '2014'
         value: 27088
@@ -1866,6 +1889,10 @@ additionalSeries:
       - period: '2025'
         value: 123911
     - name: Temporary Worker
+      coverage:
+        from: '2014'
+        to: '2025'
+        note: The sponsor register table starts in the first quarter of 2014.
       points:
       - period: '2014'
         value: 3622
@@ -1892,6 +1919,10 @@ additionalSeries:
       - period: '2025'
         value: 4872
     - name: Student
+      coverage:
+        from: '2014'
+        to: '2025'
+        note: The sponsor register table starts in the first quarter of 2014.
       points:
       - period: '2014'
         value: 1590
@@ -1917,37 +1948,6 @@ additionalSeries:
         value: 1048
       - period: '2025'
         value: 994
-  - id: revocation-rate
-    label: Skilled Worker revocation rate
-    unit: percent
-    valueLabel: Licences revoked as % of registered sponsors
-    lines:
-    - name: Skilled Worker
-      points:
-      - period: '2014'
-        value: 2.24
-      - period: '2015'
-        value: 2.79
-      - period: '2016'
-        value: 2.14
-      - period: '2017'
-        value: 2.24
-      - period: '2018'
-        value: 0.96
-      - period: '2019'
-        value: 1.32
-      - period: '2020'
-        value: 0.96
-      - period: '2021'
-        value: 0.1
-      - period: '2022'
-        value: 0.5
-      - period: '2023'
-        value: 0.4
-      - period: '2024'
-        value: 1.35
-      - period: '2025'
-        value: 2.5
 - id: nurse-joiners
   title: Nurses, midwives and nursing associates joining the UK register, 2020/21–2025/26
   description: >-
@@ -2585,8 +2585,6 @@ figures:
 - kind: series
   id: sponsor-revocations
 - kind: series
-  id: registered-sponsors
-- kind: series
   id: nurse-joiners
 - kind: series
   id: nhs-nationality
@@ -2609,7 +2607,7 @@ observationMarks:
   skill-threshold-lowered-then-raised: {lines: ["Health and Care Worker", "Other sponsored work"], from: "2020", to: "2025"}
   dependants-near-half-at-peak: {lines: ["Main applicants", "Dependants"], at: "2023"}
   graduate-switchers-jobs: {rows: ["Switched straight from a student visa"]}
-  revocation-rate-not-a-record: {lines: ["Skilled Worker"], from: "2014", to: "2025", at: "2025"}
+  revocation-rate-not-a-record: {lines: ["Skilled Worker revocation rate"], from: "2014", to: "2025", at: "2025"}
   care-visas-collapsed-before-the-closure: {lines: ["Care workers and senior care workers"], from: "2023-09", to: "2024-03", at: "2024-03"}
   vacancies-held-as-recruitment-fell: {lines: ["All job roles"], from: "2024", to: "2026"}
   care-vacancies-fell: {lines: ["All job roles"], from: "2017", to: "2026", at: "2026"}
@@ -2655,6 +2653,8 @@ observationMarks:
   skilled-sponsors-quadrupled: {lines: ["Skilled Worker"], from: "2019", to: "2025"}
   exploitation-not-measured: {whole: true}
   fewer-arrivals-not-fewer-holders: {whole: true}
+movedAnchors:
+  chart-registered-sponsors: sponsors
 ---
 ## Observations {#work-and-study-routes--observations-routes}
 

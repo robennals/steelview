@@ -31,7 +31,18 @@ export function useChartStep() {
   return useContext(Step);
 }
 
-type ObservationStepProps = { observations: Observation[]; more?: string; addressed?: boolean; children?: ReactNode };
+/**
+ * Where a link to `shown` starts a chart's observations: at that observation, or
+ * at the first observation of the view it names; -1 if it names neither.
+ */
+function startAt(observations: Observation[], views: DataStep['views'], shown: string | null): number {
+  const at = observations.findIndex(o => o.id === shown);
+  if (at >= 0 || !shown) return at;
+  const view = views?.find(v => v.anchors.includes(shown));
+  return view ? observations.findIndex(o => o.view === view.id) : -1;
+}
+
+type ObservationStepProps = { observations: Observation[]; views?: DataStep['views']; more?: string; addressed?: boolean; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -39,20 +50,21 @@ type ObservationStepProps = { observations: Observation[]; more?: string; addres
  * arrives after its step, so this holds the reader's place while `ObservationBar`
  * is drawn first in the step and then inside the chart.
  */
-export function ObservationStep({ observations, more = '', addressed = false, children }: ObservationStepProps) {
+export function ObservationStep({ observations, views, more = '', addressed = false, children }: ObservationStepProps) {
   // Opened at one of these observations, start there. A report's own page can
   // be sent to one by a link, which is asking to read it, so it opens too.
   const shown = useContext(ShownObservation);
-  const [index, setIndex] = useState(() => Math.max(0, observations.findIndex(o => o.id === shown)));
+  const [index, setIndex] = useState(() => Math.max(0, startAt(observations, views, shown)));
   const [open, setOpen] = useState(() => observations.some(o => o.id === shown));
   const [jumps, setJumps] = useState(0);
   const [followed, setFollowed] = useState(shown);
   if (followed !== shown) {
     setFollowed(shown);
-    const at = observations.findIndex(o => o.id === shown);
+    const at = startAt(observations, views, shown);
     if (at >= 0) {
       setIndex(at);
-      setOpen(true);
+      // A link to a view is to its chart, not to its first finding's reasoning.
+      setOpen(observations[at].id === shown);
     }
   }
   const step = useMemo(() => ({

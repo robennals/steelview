@@ -201,6 +201,13 @@ export const seriesReadingSchema = z.object({
    * accept values no quote states.
    */
   valuesFrom: z.string().min(1).optional(),
+  /**
+   * Another reading of the same series to draw on this one's plot, against a
+   * second value axis on the right: a count and its rate, a total and its
+   * per-head figure, seen together rather than one at a time. That reading is
+   * then not a view of its own, and its observations are read on this one.
+   */
+  alongside: z.string().min(1).optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 

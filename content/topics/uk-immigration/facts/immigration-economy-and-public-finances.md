@@ -495,13 +495,14 @@ sources:
   publisher: The Entrepreneurs Network
   date: "2025"
 series:
-  title: GDP per head in the UK, 1955–2025
-  description: "Gross domestic product (GDP), the UK's total economic output, divided by its population and measured at 2023 prices. This is real GDP for every year the Office for National Statistics series publishes. It is output per person, not income per person or how that output is shared."
+  title: UK GDP
+  subtitle: Per head and for the whole economy, at 2023 prices, 1948–2025
+  description: "Gross domestic product (GDP), the UK's total economic output, at 2023 prices: divided by the population, or for the whole economy. This is real GDP for every year the Office for National Statistics series publish. A larger population raises total output even when output per person does not change, so the two can tell different stories. Per head is output per person, not income per person or how that output is shared."
   periodLabel: Year
   coverage:
-    from: "1955"
+    from: "1948"
     to: "2025"
-    note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero) and ends in 2025; quarterly values run to 2026 Q2. Values are from the release of 13 August 2026, the latest the ONS series page returned on 29 October 2026."
+    note: "Values are from the ONS release of 13 August 2026, the latest the ONS series pages returned on 29 October 2026; quarterly values run to 2026 Q2."
   breaks: []
   source:
     stance: supports
@@ -515,10 +516,15 @@ series:
   readings:
   - id: gdp-per-head
     label: GDP per head
+    alongside: gdp-total
     unit: count
     valueLabel: £ per person, 2023 prices
     lines:
     - name: UK GDP per head
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero)."
       points:
       - period: "1955"
         value: 11505
@@ -662,30 +668,20 @@ series:
         value: 40153
       - period: "2025"
         value: 40546
-additionalSeries:
-- id: gdp-total-series
-  title: Total UK GDP, 1948–2025
-  description: "Gross domestic product (GDP), the total output of the whole UK economy, at 2023 prices, in £ billion. This is real GDP, shown beside GDP per head because a larger population raises total output even when output per person does not change."
-  periodLabel: Year
-  coverage:
-    from: "1948"
-    to: "2025"
-    note: "ONS series ABMI, chained volume measure, published in £ million and shown here divided by 1,000. The annual series starts in 1948. Release of 13 August 2026."
-  breaks: []
-  source:
-    stance: supports
-    quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
-    title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
-    url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
-    fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
-    localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
-    publisher: Office for National Statistics
-    date: "2026-08-13"
-  readings:
   - id: gdp-total
     label: Total GDP
     unit: count
     valueLabel: £ billion, 2023 prices
+    note: "ONS series ABMI, chained volume measure, published in £ million and shown here divided by 1,000. The annual series starts in 1948."
+    source:
+      stance: supports
+      quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
+      title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
+      url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+      fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+      localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
+      publisher: Office for National Statistics
+      date: "2026-08-13"
     lines:
     - name: UK GDP
       points:
@@ -845,6 +841,7 @@ additionalSeries:
         value: 2780.9
       - period: "2025"
         value: 2817.4
+additionalSeries:
 - id: g7-series
   title: GDP per head across the G7, 1960–2025
   description: "Economic output per person in the seven large economies of the G7, in US dollars at 2015 prices and market exchange rates. This is real GDP per person, from the World Bank. All seven G7 members are shown; the UK is the subject."
@@ -1960,8 +1957,6 @@ comparisons:
 figures:
 - kind: series
 - kind: series
-  id: gdp-total-series
-- kind: series
   id: g7-series
 - kind: comparison
   id: g7-growth
@@ -2155,6 +2150,7 @@ observationMarks:
   estimates-table: {whole: true}
 movedAnchors:
   observations-founders: earnings-by-route
+  chart-gdp-total-series: gdp-total
 ---
 ## Observations {#immigration-economy-and-public-finances--observations-gdp-per-head}
 

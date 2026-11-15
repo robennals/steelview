@@ -15,7 +15,7 @@ type Comparison = NonNullable<Fact['comparisons']>[number];
 export type ChartPreview = {
   /** Where the title links. Without one the title is plain text, as in a step whose whole chart is clickable. */
   href?: string;
-  /** For a series, the one reading to draw (default: the first). */
+  /** For a series, the one reading to draw (default: the first), with any reading drawn alongside it. */
   reading?: string;
   /** For a series, the shape of the space it sits in (default: wide, as a carousel slide is). */
   fit?: PreviewFit;

@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
 import type { Fact } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
-import { slideGroup } from '@/lib/content/preview';
+import { previewTarget } from '@/lib/content/preview';
+import { plottedReadings } from '@/lib/chart/series-chart';
 import type { DataStep } from '@/lib/content/walkthrough';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartAbout } from '@/components/report/chart-about';
@@ -53,12 +54,15 @@ function ChartStep({ step, number, addressed }: ChartStepProps) {
   const slide = step.chart;
   if (!slide) return null;
   const { fact, chart } = slide;
-  const drawn = [`${fact.id}--chart-${chart}`, `${fact.id}--chart-${slideGroup(fact, slide)}`];
+  // The ids the chart carries itself: its own, and each reading that has a plot.
+  const target = previewTarget(fact, chart);
+  const plots = target?.kind === 'series' ? plottedReadings(target.series).map(r => r.id) : [];
+  const drawn = [chart, ...plots].map(id => `${fact.id}--chart-${id}`);
   return (
     <div className="sv-walk__step" data-chart>
       {step.anchors.map(anchor => <span key={anchor} className="sv-walk__anchor" id={addressed && !drawn.includes(anchor) ? anchor : undefined} data-chart-anchor={anchor} />)}
       <div className="sv-walk__chart">
-        <ObservationStep observations={step.observations} more={step.more} addressed={addressed}>
+        <ObservationStep observations={step.observations} views={step.views} more={step.more} addressed={addressed}>
           <div className="sv-slide">
             <LazyChart index={number - 1}>
               <ChartAbout description={step.description} />

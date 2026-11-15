@@ -513,6 +513,20 @@ test('rule 14: a break annotated outside the coverage is reported', () => {
   );
 });
 
+test('a reading drawn alongside another names one, of the same series, whose lines it does not repeat', () => {
+  const draw = (alongside: string, rename = true) => {
+    const t = topicWithSeries();
+    const s = t.facts[0].series!;
+    const partner = { ...s.readings[0], id: 'share', lines: s.readings[0].lines.map(line => ({ ...line, name: rename ? `${line.name} share` : line.name })) };
+    s.readings = [{ ...s.readings[0], alongside }, partner];
+    return validateTopic(t);
+  };
+  assert.deepEqual(draw('share').filter(e => e.includes('alongside') || e.includes('share a plot')), []);
+  assert.ok(draw('nothing').some(e => e.includes('drawn alongside "nothing", which is not another reading')));
+  assert.ok(draw('people').some(e => e.includes('which is not another reading')));
+  assert.ok(draw('share', false).some(e => e.includes('share a plot and both have a line')));
+});
+
 test('rule 14: two readings may not share an id', () => {
   const t = topicWithSeries();
   const s = t.facts[0].series!;

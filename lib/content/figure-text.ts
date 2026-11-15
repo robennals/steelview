@@ -123,10 +123,11 @@ export function chartProse(fact: Pick<Fact, 'series' | 'additionalSeries' | 'com
   return charts.map(({ chart, prose }) => ({ chart, prose: prose.filter((s): s is string => typeof s === 'string' && s.length > 0) }));
 }
 
-/** A series' title, description and notes, and each reading's, break's, event's and line's words. Sources are quotes, not prose. */
+/** A series' title, subtitle, description and notes, and each reading's, break's, event's and line's words. Sources are quotes, not prose. */
 function seriesProse(series: Series): Array<string | undefined> {
   return [
     ...base(series),
+    series.subtitle,
     series.periodLabel,
     series.coverage.note,
     series.notMeasuredSince?.label,
