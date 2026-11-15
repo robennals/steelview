@@ -65,7 +65,7 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
                   <li key={i}>
                     <RowThumb step={i}>
                       <span className="sv-row__thumb" aria-hidden="true">
-                        {step.chart ? <ChartThumb fact={step.chart.fact} chart={step.chart.chart} reading={step.chart.reading} /> : <span className="sv-walk__no-chart">No chart</span>}
+                        {step.chart ? <ChartThumb fact={step.chart.fact} chart={step.chart.chart} reading={step.chart.reading} preview /> : <span className="sv-walk__no-chart">No chart</span>}
                       </span>
                       <span className="sv-walk__thumb-label">{i + 1}. {step.heading}</span>
                     </RowThumb>

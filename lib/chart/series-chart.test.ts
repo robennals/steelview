@@ -113,13 +113,15 @@ test('yearTicks labels every year for short series and names both ends of longer
   assert.deepEqual(yearTicks(1964, 2025, 20), [1964, 1980, 2000, 2020, 2025]);
 });
 
-test('formatValue is the exact number, formatTick the compact one', () => {
+test('formatValue is the exact number, formatTick the compact one above 100,000', () => {
   assert.equal(formatValue(1441000, 'count'), '1,441,000');
   assert.equal(formatValue(-60000, 'count'), '−60,000');
   assert.equal(formatValue(2.1, 'percent'), '2.10%');
   assert.equal(formatValue(-0.11, 'percent'), '−0.11%');
   assert.equal(formatTick(1500000, 'count'), '1.5m');
   assert.equal(formatTick(-250000, 'count'), '−250k');
+  assert.equal(formatTick(10000, 'count'), '10,000');
+  assert.equal(formatTick(1600, 'count'), '1,600');
   assert.equal(formatTick(0, 'count'), '0');
   assert.equal(formatTick(0, 'percent'), '0%');
   assert.equal(formatTick(2.5, 'percent'), '2.5%');
@@ -228,6 +230,29 @@ test('the narrow variant drops tick labels but never the zero one', () => {
   const zero = narrow.valueTicks.find((t) => t.value === 0);
   assert.equal(zero?.label, '0');
   assert.ok(narrow.valueTicks.some((t) => t.label === null));
+});
+
+test('a tick unit is written on every labelled value, and the plot moves right only as far as it needs to fit', () => {
+  const s = series();
+  const plain = layoutReading(s, s.readings[0], 'narrow');
+  const withUnit = { ...s.readings[0], tickUnit: 'kg' };
+  const narrow = layoutReading(s, withUnit, 'narrow');
+  assert.ok(narrow.valueTicks.every(t => t.label === null || t.label.endsWith(' kg')));
+  assert.ok(narrow.geometry.left > plain.geometry.left);
+  // The canvas keeps its width: the plot narrows by what the inset grew.
+  assert.equal(narrow.geometry.left + narrow.geometry.plotWidth, plain.geometry.left + plain.geometry.plotWidth);
+  // Labels that already fit leave the plot where it was.
+  assert.equal(layoutReading(s, s.readings[0], 'wide').geometry.left, CHART_GEOMETRY.wide.left);
+});
+
+test('crowded year ticks are thinned between themselves, not only beside the ends', () => {
+  const ticks = Array.from({ length: 10 }, (_, i) => ({ x: i * 25, label: String(2017 + i) }));
+  const kept = dropCrowdedTicks(ticks, 11);
+  assert.equal(kept[0].label, '2017');
+  assert.equal(kept[kept.length - 1].label, '2026');
+  const gaps = kept.slice(1).map((tick, i) => tick.x - kept[i].x);
+  assert.ok(gaps.every(gap => gap >= tickLabelWidth('2017', 11)), JSON.stringify(kept));
+  assert.ok(kept.length > 2);
 });
 
 test('pathFor emits plain segments, never a smoothing curve', () => {

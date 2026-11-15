@@ -15,8 +15,8 @@ import { SlideChart } from './slide-chart';
 
 const fact = figureExamplesFact();
 
-function thumb(chart: string, of: Fact = fact): string {
-  return renderToStaticMarkup(createElement(ChartThumb, { fact: of, chart }));
+function thumb(chart: string, of: Fact = fact, preview = false): string {
+  return renderToStaticMarkup(createElement(ChartThumb, { fact: of, chart, preview }));
 }
 
 /** Every silhouette is decoration: one hidden SVG, no text. */
@@ -31,13 +31,20 @@ test('a series thumbnail draws its first reading as decorative lines', () => {
   assert.ok((html.match(/<path /g)?.length ?? 0) >= 1);
 });
 
-test('a comparison thumbnail draws one column per item, marking the highlighted one', () => {
-  const items = Array.from({ length: 12 }, (_, i) => ({ label: `Country ${i}`, value: 12 - i, highlight: i === 4 || undefined }));
-  const withComparison: Fact = { ...fact, comparisons: [{ id: 'per-head', title: 'Per head', description: 'd', unit: 'count', valueLabel: 'v', sources: [1], items }] };
-  const html = thumb('per-head', withComparison);
-  assertDecorative(html);
-  assert.equal(html.match(/class="sv-thumb__column"/g)?.length, 12);
-  assert.equal(html.match(/data-highlight="true"/g)?.length, 1);
+test('a comparison thumbnail is drawn as its chart is: horizontal rows, or a long preview\'s columns', () => {
+  const comparison = (length: number): Fact => ({ ...fact, comparisons: [{ id: 'per-head', title: 'Per head', description: 'd', unit: 'count', valueLabel: 'v', sources: [1], items: Array.from({ length }, (_, i) => ({ label: `Country ${i}`, value: length - i, highlight: i === 1 || undefined })) }] });
+  // A row is a bar across the frame: full height divided among the items, not the full width.
+  const rowHeights = (html: string) => [...html.matchAll(/class="sv-thumb__column"[^>]* height="([\d.]+)"/g)].map(m => Number(m[1]));
+  for (const html of [thumb('per-head', comparison(4)), thumb('per-head', comparison(4), true), thumb('per-head', comparison(14))]) {
+    assertDecorative(html);
+    assert.ok(rowHeights(html).every(height => height < 100 / 4), html);
+    assert.equal(html.match(/data-highlight="true"/g)?.length, 1);
+  }
+  const columns = thumb('per-head', comparison(14), true);
+  assert.equal(columns.match(/class="sv-thumb__column"/g)?.length, 14);
+  // Columns share the frame's width, each its own x; rows each start at the scale's zero.
+  assert.equal(new Set([...columns.matchAll(/ x="([\d.]+)"/g)].map(m => m[1])).size, 14);
+  assert.equal(new Set([...thumb('per-head', comparison(14)).matchAll(/ x="([\d.]+)"/g)].map(m => m[1])).size, 1);
 });
 
 test('a bar chart thumbnail draws one bar per item', () => {

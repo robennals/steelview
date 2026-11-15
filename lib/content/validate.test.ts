@@ -568,6 +568,15 @@ test('comparison charts require valid citations and unique IDs', () => {
   assert.ok(errors.some(e => e.includes('duplicate comparison chart id countries')));
 });
 
+test('two charts in one report may not share a title', () => {
+  const topic = soundTopic();
+  const chart = (id: string, title: string) => ({ id, title, description: 'd', unit: 'count' as const, valueLabel: 'People', sources: [1], items: [{ label: 'A', value: 10 }, { label: 'B', value: 20 }] });
+  topic.facts[0].comparisons = [chart('first', 'Arrivals'), chart('second', 'Departures')];
+  assert.ok(!validateTopic(topic).some(e => e.includes('two charts are titled')));
+  topic.facts[0].comparisons = [chart('first', 'Arrivals'), chart('second', 'Arrivals')];
+  assert.ok(validateTopic(topic).some(e => e.includes('two charts are titled "Arrivals"')));
+});
+
 test('featured charts must come from supporting facts with visual evidence', () => {
   const topic = soundTopic();
   topic.facts[0].featuredCharts = ['gamma'];
@@ -601,7 +610,7 @@ test('related facts permit contextual connections but must resolve', () => {
 
 test('additional datasets validate their own coverage and share the fact source list', () => {
   const topic = topicWithSeries();
-  const extra = { id: 'nationality', ...series() };
+  const extra = { id: 'nationality', ...series(), title: 'Arrivals by nationality' };
   extra.readings[0].id = 'nationality-arrivals';
   topic.facts[0].additionalSeries = [extra];
   topic.facts[0].claimSources = [3];

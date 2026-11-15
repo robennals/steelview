@@ -1478,9 +1478,13 @@
 
   .sv-slide { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 
-  /* On a phone titles and legends wrap onto more lines, so slides are taller. */
-  @media (max-width: 40rem) {
-    .sv-carousel__slide { height: 25rem; }
+  /* On a phone a fixed height would leave a short chart floating in empty
+     space, so each slide is as tall as its chart, and the strip as tall as the
+     slide showing (use-carousel.ts). Without script the strip takes the
+     tallest slide's height. */
+  @media (max-width: 47.5rem) {
+    .sv-carousel__strip { align-items: flex-start; height: var(--sv-strip-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    .sv-carousel__slide { height: auto; }
   }
   .sv-slide .sv-chart { flex: 1; }
 
@@ -1532,12 +1536,26 @@
 
   @media (max-width: 47.5rem) {
     .sv-row__thumbs { display: none; }
-    .sv-row__columns, .sv-positions { padding-inline: 1rem; }
+    .sv-positions { padding-inline: 1rem; }
     .sv-row__head { padding-inline: 1rem; }
+    /* Where a row has a tags line, the arrow sits smaller at its end, so the
+       title and overview get the head's whole width rather than wrapping
+       beside it. */
+    .sv-row__head:has(.sv-row__meta) .sv-row__chevron { position: absolute; top: 1.2rem; right: 1rem; width: 1.4rem; height: 1.4rem; }
+    .sv-row__head:has(.sv-row__meta) .sv-row__chevron::after { left: 50%; top: 50%; width: 0.4rem; height: 0.4rem; transform: translate(-50%, -70%) rotate(45deg); }
+    .sv-row__meta { padding-right: 2rem; }
+    /* Width is scarce on a phone: the charts run to the card's edges, lined up
+       with the title, and the viewpoint list, which would only fit truncated,
+       is left to the report. */
+    .sv-row__columns { padding-inline: 0; gap: 1rem; }
+    .sv-carousel { padding: 1rem 1rem 0.75rem; border-inline: 0; border-radius: 0; }
+    .sv-row__side { padding-inline: 1rem; }
+    .sv-row__side-head, .sv-row__viewpoints { display: none; }
+    .sv-row__cta { margin-top: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot { transition: none; }
+    .sv-row, .sv-row__title, .sv-row__body, .sv-row__columns, .sv-row__chevron, .sv-carousel__dot, .sv-carousel__strip { transition: none; }
   }
 
   /* ------------------------------------------------ viewpoint walkthroughs */
@@ -1687,7 +1705,7 @@
   }
 
   /* Opened, the whole claim shows. */
-  .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; }
+  .sv-observe__item[data-open] .sv-observe__claim { white-space: normal; font-weight: 600; color: var(--ink); }
 
   /* A long Subtlety scrolls in place, so the graph keeps its room. */
   .sv-observe__body { margin-top: 0.4rem; }
@@ -1986,9 +2004,9 @@
   @media (max-width: 47.5rem) {
     .sv-row--walk .sv-walk__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
     .sv-walk { padding-inline: 1rem; }
-    /* In a row the strip fits the step showing (walkthrough.tsx), not the longest
+    /* In a row the strip fits the step showing (use-carousel.ts), not the longest
        step. In a sheet it keeps its height, and scrolls what does not fit. */
-    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-walk-step-height, auto); overflow-y: hidden; transition: height 0.25s; }
+    .sv-row .sv-walk__strip { align-items: flex-start; height: var(--sv-strip-height, auto); overflow-y: hidden; transition: height 0.25s; }
     /* A step's explanation comes first, as the chart means little without it. The
        chart's row grows past 18rem for a figure too long to fit, rather than running out of it. */
     .sv-walk__step, .sv-walk__step[data-chart] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(18rem, auto); align-content: start; height: auto; gap: 1rem; }
@@ -2377,22 +2395,31 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 
 .sv-comparison__rows { --sv-row-room: 3.75rem; list-style: none; padding: 0; margin: 1rem 0 .4rem; }
 .sv-row-detail__hint + .sv-comparison__rows { margin-top: 0; }
-.sv-comparison__row { display: block; margin-bottom: .75rem; }
-.sv-comparison__label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; margin-bottom: .3rem; }
-.sv-comparison__label > :last-child { flex: none; font-variant-numeric: tabular-nums; }
+/* Each row's label sits left of its bar and its value right, as in a preview;
+   the scale under the rows lines up with the bars' column. */
+.sv-comparison { --sv-label-col: 35%; --sv-value-col: 4.5rem; --sv-row-gap: .75rem; }
+.sv-comparison__row { display: grid; grid-template-columns: var(--sv-label-col) minmax(0, 1fr) var(--sv-value-col); align-items: center; gap: var(--sv-row-gap); margin-bottom: .75rem; }
+.sv-comparison__label { display: contents; font-family: var(--font-sans); font-size: .8125rem; line-height: 1.4; }
+.sv-comparison__label > span { font-family: var(--font-sans); font-size: .8125rem; line-height: 1.35; }
+.sv-comparison__label > :last-child { grid-column: 3; text-align: right; font-variant-numeric: tabular-nums; }
+.sv-comparison__track { grid-column: 2; grid-row: 1; }
+@media (max-width: 40rem) {
+  .sv-comparison { --sv-label-col: 40%; --sv-value-col: 3.5rem; --sv-row-gap: .5rem; }
+}
+.sv-comparison__name { display: block; font-weight: 600; }
+.sv-chart__subtitle { margin: .2rem 0 0; font-family: var(--font-sans); font-size: .875rem; line-height: 1.35; color: var(--ink-3); }
+.sv-comparison__subtitle { display: block; color: var(--ink-3); }
 .sv-comparison__track { position: relative; display: block; height: .9rem; background: var(--paper-sunk); }
 .sv-comparison__bar { position: absolute; height: 100%; background: var(--sv-series-1); }
 .sv-comparison__bar[data-highlight] { background: var(--accent); }
 .sv-comparison__zero { position: absolute; top: -.15rem; bottom: -.15rem; width: 1px; background: var(--ink-3); z-index: 1; }
-.sv-comparison__scale { display: flex; justify-content: space-between; font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
+.sv-comparison__scale { display: flex; justify-content: space-between; margin-left: calc(var(--sv-label-col) + var(--sv-row-gap)); margin-right: calc(var(--sv-value-col) + var(--sv-row-gap)); font-family: var(--font-sans); font-size: .7rem; color: var(--ink-3); }
 .sv-comparison__rows[data-dense] { --sv-row-room: 2.5rem; }
-.sv-comparison__rows[data-dense] .sv-comparison__row { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: .5rem; margin-bottom: .45rem; }
-.sv-comparison__rows[data-dense] .sv-comparison__label { display: contents; }
-.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-family: var(--font-sans); font-size: .75rem; line-height: 1.3; }
-.sv-comparison__rows[data-dense] .sv-comparison__label > :last-child { grid-column: 3; text-align: right; }
-.sv-comparison__rows[data-dense] .sv-comparison__track { grid-column: 2; grid-row: 1; }
+.sv-comparison:has(.sv-comparison__rows[data-dense]) { --sv-label-col: 7.5rem; --sv-value-col: 4rem; --sv-row-gap: .5rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__row { margin-bottom: .45rem; }
+.sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .75rem; line-height: 1.3; }
 @media (max-width: 40rem) {
-  .sv-comparison__rows[data-dense] .sv-comparison__row { grid-template-columns: 5.5rem minmax(0, 1fr) 3.5rem; gap: .4rem; }
+  .sv-comparison:has(.sv-comparison__rows[data-dense]) { --sv-label-col: 5.5rem; --sv-value-col: 3.5rem; --sv-row-gap: .4rem; }
 }
 
 /* Definitions are a small second layer above the fact sheet. */
@@ -2663,6 +2690,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   }
 }
 .sv-chart[data-preview] .sv-chart__caption a { color: inherit; text-underline-offset: .15em; }
+.sv-chart[data-preview] .sv-chart__caption .sv-graph-heading:has(+ .sv-chart__subtitle) { min-height: 0; }
+.sv-chart[data-preview] .sv-chart__subtitle { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: .8rem; }
 .sv-chart[data-preview] .sv-chart__caption a:hover { color: var(--accent); }
 .sv-chart[data-preview] .sv-chart__axis-label { margin: 0; font-size: .75rem; }
 .sv-chart[data-preview] .sv-comparison__rows[data-dense] .sv-comparison__label > span { font-size: .72rem; line-height: 1.2; }

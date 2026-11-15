@@ -202,7 +202,10 @@ sources:
       (as of July 16, 2020) … Total Hostile Deaths 3,481 ... Total Nonhostile
       Deaths 937 ... Total Deaths 4,418 ... Total Wounded in Action 31,994 …
       [Operation Enduring Freedom] Total Deaths 2,349 ... Total Wounded In
-      Action 20,149 … [Operation New Dawn] Total Deaths 74
+      Action 20,149 … [Operation New Dawn] Total Deaths 74 … Table 8. Persian
+      Gulf War: Casualty Summary (Desert Shield and Desert Storm; as of July 16,
+      2020) … Total Hostile Deaths 147 ... Total Nonhostile Deaths 235 ... Total
+      In-Theater Deaths 382
     title: 'American War and Military Operations Casualties: Lists and Statistics (RL32492)'
     url: https://www.everycrsreport.com/files/2020-07-29_RL32492_e7d48d4caf03cdd007922fe2dc0d50d2a5594721.html
     publisher: Congressional Research Service
@@ -391,10 +394,11 @@ comparisons:
       - label: 'Population of Iran, 2025'
         value: 92417681
   - id: us-deaths-earlier-wars
-    title: 'US military deaths: the Iran war (to 28 October 2026) and the Iraq and Afghanistan operations'
+    title: 'US military deaths'
+    subtitle: 'The Iran war, to 28 October 2026, beside the US wars in the region since 1990'
     description: >-
-      Total US service member deaths, hostile and non-hostile, in each
-      operation as recorded by the Defense Department.
+      Total US service member deaths in each war, hostile and non-hostile, as
+      recorded by the Defense Department.
     unit: count
     valueLabel: 'US service members killed'
     sources: [16, 23]
@@ -402,18 +406,27 @@ comparisons:
       Iran war: DCAS, Operation Epic Fury plus Overseas Operations (15 + 7),
       extracted 28 October 2026, of which 11 hostile and 11 non-hostile.
       Earlier operations: CRS RL32492 as of 16 July 2020 (OIF 3,481 hostile
-      and 937 non-hostile). The Iran war has lasted eight months; OIF ran
-      2003–2010, OEF 2001–2014 and New Dawn 2010–2011, so this compares
-      totals, not rates.
+      and 937 non-hostile; Gulf War 147 hostile and 235 non-hostile deaths in
+      the theatre of operations, from CRS Table 8 — the report's Table 1 gives
+      383). The Iran war has lasted eight months; the Gulf War ran
+      August 1990–1991, OIF 2003–2010, OEF 2001–2014 and New Dawn 2010–2011,
+      so this compares totals, not rates.
     items:
-      - label: 'Iran war, Feb–Oct 2026'
+      - label: 'Iran war'
+        subtitle: 'Iran, February–October 2026'
         value: 22
         highlight: true
-      - label: 'Operation New Dawn (Iraq, 2010–11)'
+      - label: 'Operation New Dawn'
+        subtitle: 'Iraq, 2010–2011'
         value: 74
-      - label: 'Operation Enduring Freedom (Afghanistan)'
+      - label: 'Gulf War'
+        subtitle: 'Kuwait and Iraq, 1990–1991'
+        value: 382
+      - label: 'Operation Enduring Freedom'
+        subtitle: 'Afghanistan, 2001–2014'
         value: 2349
-      - label: 'Operation Iraqi Freedom (2003–10)'
+      - label: 'Operation Iraqi Freedom'
+        subtitle: 'Iraq, 2003–2010'
         value: 4418
   - id: war-costs-for-scale
     title: 'War costs for scale: the Iran war against Iraq and Afghanistan appropriations'
@@ -611,7 +624,7 @@ observationMarks:
   interceptor-stocks: {rows: ["Patriot interceptors", "THAAD interceptors"]}
   civilian-minimum-by-april: {rows: ["HRANA, to 7 April (civilians include at least 254 children)"]}
   iraq-overran-estimates: {rows: ["Daniels, 2002", "Lindsey, Sep 2002", "Appropriated for Iraq, FY2001–14"]}
-  us-deaths-small-share-of-iraq: {rows: ["Iran war, Feb–Oct 2026", "Operation Iraqi Freedom (2003–10)"]}
+  us-deaths-small-share-of-iraq: {rows: ["Iran war", "Operation Iraqi Freedom"]}
   wounded-track-fighting: {lines: ["Wounded in action"], from: "2026-03", to: "2026-07", at: "2026-07"}
   airwars-uses-hrana: {rows: ["HRANA", "Airwars"]}
   most-deaths-military-by-hengaw: {rows: ["Hengaw, to 8 April"]}
