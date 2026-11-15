@@ -12,7 +12,7 @@ export function SourcesSlot({ row, children }: { row: ReactNode; children: React
   return <Slot.Provider value={row}>{children}</Slot.Provider>;
 }
 
-/** Where a panel chart's sources row sits: at its foot. */
-export function PanelSources() {
+/** A panel chart's sources row, which its More panel shows (see `ChartAbout`). */
+export function usePanelSources(): ReactNode {
   return useContext(Slot);
 }

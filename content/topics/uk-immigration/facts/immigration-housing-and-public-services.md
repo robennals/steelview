@@ -579,7 +579,8 @@ sources:
     publisher: Department for Education
     date: '2026-01-29'
 series:
-  title: 'Net additional dwellings in England, 1991-92 to 2024-25'
+  title: 'Net additional dwellings'
+  subtitle: 'England, financial years 1991-92 to 2024-25'
   description: >-
     The net change in England's number of homes each financial year: new homes,
     conversions and changes of use, minus demolitions. Financial years run from April to
@@ -626,6 +627,7 @@ series:
       valueLabel: Net additional dwellings in the financial year
       lines:
         - name: Net additional dwellings
+          glossary: net-additional-dwellings
           points:
             - period: '1992'
               value: 165000
@@ -697,7 +699,8 @@ series:
               value: 208600
 additionalSeries:
   - id: rents
-    title: 'Private rent growth in the UK, January 2016 to September 2026'
+    title: 'Private rent growth'
+    subtitle: 'Annual change each month, UK, January 2016 to September 2026'
     description: >-
       Annual change in the average private rent paid in the UK, covering new
       and existing tenancies, each month. Net migration peaked at 944,000 in the
@@ -991,7 +994,8 @@ additionalSeries:
               - period: '2026-09'
                 value: 3.8
   - id: pupil-numbers
-    title: 'Pupils in state-funded schools in England, 2016 to 2026'
+    title: 'Pupils in state-funded schools'
+    subtitle: 'England, January census, 2016 to 2026'
     description: >-
       The number of pupils in England's state-funded schools at each January school
       census, by primary, secondary and other schools. Independent schools are not
@@ -1123,7 +1127,8 @@ additionalSeries:
               - period: '2026'
                 value: 230101
   - id: affordable-homes
-    title: 'Affordable and social rent homes completed in England, 1991-92 to 2024-25'
+    title: 'Affordable and social rent homes'
+    subtitle: 'Completed in England, financial years 1991-92 to 2024-25'
     description: >-
       New affordable homes completed in England each financial year, and the social rent
       homes, let at lower rents, among them. This is a gross count of new build and
@@ -1308,7 +1313,8 @@ additionalSeries:
               - period: '2025'
                 value: 12267
   - id: school-funding
-    title: 'School funding per pupil in England, real terms, 2010-11 to 2026-27'
+    title: 'School funding per pupil'
+    subtitle: 'England, real-terms change since 2010-11, to 2026-27'
     description: >-
       Funding per pupil for 5–16 year olds in England's state-funded schools, after
       inflation, shown as the change since 2010-11. This is revenue funding, adjusted
@@ -1377,7 +1383,8 @@ additionalSeries:
               - period: '2027'
                 value: 8.1
   - id: investment
-    title: 'Government investment as a share of GDP: UK and OECD median, 1995–2024'
+    title: 'Government investment as a share of GDP'
+    subtitle: 'UK and the OECD median, 1995–2024'
     description: >-
       Government investment as a share of GDP, for the UK and for the median country in
       the OECD, a group of rich countries. Investment here is general government gross
@@ -1539,7 +1546,8 @@ additionalSeries:
                 value: 3.96
 comparisons:
   - id: household-growth-by-variant
-    title: Projected household growth in England by migration assumption
+    title: 'Projected household growth'
+    subtitle: 'England, 2022 to 2032, by migration assumption'
     description: >-
       How many more households England is projected to have in mid-2032 than in mid-2022,
       under different assumptions, ranked. These are the Office for National Statistics'
@@ -1577,7 +1585,8 @@ comparisons:
       household formation rates variant changes how many households a given
       population forms, not migration.
   - id: government-investment-oecd-2024
-    title: Government investment across the OECD in 2024
+    title: 'Government investment across the OECD'
+    subtitle: 'Share of GDP, 2024'
     description: >-
       Government investment as a share of GDP in 2024, for every member of the OECD, a
       group of rich countries, with data. Investment here is general government gross
@@ -1683,7 +1692,8 @@ figures:
   id: household-growth-by-variant
 - kind: barChart
   id: homes-against-households
-  title: "Homes added against households projected in England"
+  title: 'Homes added against households projected'
+  subtitle: 'England, 2024-25 against the 2022–2032 yearly average'
   description: "The net number of homes England added in 2024-25, beside the average number of extra households a year the Office for National Statistics projects for 2022 to 2032."
   valueLabel: "Per year"
   categoryLabel: "Measure"
@@ -1695,9 +1705,8 @@ figures:
     - {"label": "Projected additional households a year, 2022–2032", "value": 242000}
 - kind: barChart
   id: house-price-and-rent-effects
-  title: >-
-    International studies: how much house prices and rents rise per point of
-    immigrant share
+  title: 'Immigration and house prices and rents'
+  subtitle: 'International studies: rise per point of immigrant share'
   description: "Estimated rise in house prices or rents when the immigrant share of the population rises by one percentage point, by study group. Figures are median estimated percentage rises, from a review of international studies commissioned by the Migration Advisory Committee. A dash means the review gives no median for that group."
   valueLabel: "Median effect of a 1-point rise in immigrant share"
   categoryLabel: "Study group"
@@ -1719,7 +1728,8 @@ figures:
     values: { prices: null, rents: 0.64 }
 - kind: dataTable
   id: official-findings
-  title: "What official reviews and forecasters say on housing, investment and spending"
+  title: 'Official findings on housing and services'
+  subtitle: 'Reviews and forecasters on housing, investment and spending'
   description: "Findings on immigration and housing costs, public investment, spending per person and council building, in the words of the bodies that made them."
   caption: "One row per finding"
   columns:
@@ -1736,7 +1746,8 @@ figures:
     - {"topic": "Council-built affordable homes", "says": {"value": "\"10,480 or 16% of all new affordable housing completions were delivered by local authorities, the highest recorded value in the available period (since 1991-92)\"", "sources": [37]}}
 - kind: dataTable
   id: migrant-housing-tenure
-  title: "Migrants and housing tenure, England and Wales, 2021"
+  title: 'Migrants and housing tenure'
+  subtitle: 'England and Wales, Census 2021'
   description: "How the foreign-born fit into private renting and home ownership in England and Wales, in the Migration Observatory's reading of the 2021 Census."
   caption: "One row per group"
   columns:

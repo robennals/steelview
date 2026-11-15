@@ -555,20 +555,21 @@ sources:
     date: '2026-10-23'
 comparisons:
   - id: senate-votes
-    title: US Senate votes on national voting-rules bills, against the 60 needed
+    title: Senate votes on national voting rules
+    subtitle: 'Yes votes in 2022 and 2026, against the 60 needed to end debate'
     description: >-
       Senators voting yes on the two recorded cloture-type votes on national
-      voting-rules bills, 2022 and 2026, against the 60 needed to end debate.
+      voting-rules bills.
     unit: count
     valueLabel: Senators voting yes
     domainMax: 100
     sources: [23, 27]
     items:
       - label: "Freedom to Vote: John R. Lewis Act"
-        detail: "Democratic, 19 Jan 2022"
+        subtitle: "Democratic bill, 19 Jan 2022"
         value: 49
-      - label: "S. 5271, photo ID only"
-        detail: "Republican, 8 Aug 2026"
+      - label: "S. 5271"
+        subtitle: "Republican photo-ID-only bill, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
         value: 60
@@ -617,9 +618,8 @@ figures:
       source: 1
   - kind: dataTable
     id: holdings
-    title: >-
-      Key US court holdings on who sets voting rules and what they may require,
-      2008–2026
+    title: Court rulings on who sets voting rules
+    subtitle: 'Key US holdings, and what the rules may require, 2008–2026'
     description: 'The main court rulings on who sets voter ID and registration rules.'
     note: 'The ITCA vote of 7–2 is from the opinion''s own line-up: Justice Scalia wrote for six justices, Justice Kennedy joined in part, and Justices Thomas and Alito dissented.'
     caption: 'One card per ruling'
@@ -657,7 +657,8 @@ figures:
         holding: { value: 'Stayed the June order blocking the revamped SAVE system, so DHS can use it again', sources: [37] }
   - kind: dataTable
     id: federal-laws
-    title: 'Federal voting laws and bills on registration and ID, 1965–2026'
+    title: 'Federal voting laws and bills'
+    subtitle: 'On registration and ID, 1965–2026'
     description: 'The federal laws in force on registration and ID, and the main bills since 2021.'
     caption: 'One card per law or bill'
     layout: timeline
@@ -698,8 +699,8 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: live-measures
-    title: >-
-      Live US federal measures on proof of citizenship and ID, 23 October 2026
+    title: Live federal measures on ID
+    subtitle: 'Proof of citizenship and photo ID, as of 23 October 2026'
     description: 'Where each federal measure on proof of citizenship and ID stood ten days before the midterms.'
     caption: 'One card per measure'
     layout: cards
@@ -731,14 +732,15 @@ observationMarks:
   not-who-may-vote: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
   moore-state-courts: {rows: ["Moore v. Harper"]}
   congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council of Arizona"]}
-  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271, photo ID only", "Needed to end debate"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271", "Needed to end debate"]}
   eo-14248-blocked: {rows: ["Executive Order 14248 (25 Mar 2025)"]}
   eo-14399-allowed: {rows: ["Executive Order 14399 (31 Mar 2026)"]}
   no-merits-ruling: {rows: ["Trump v. California"]}
   save-database-revived: {rows: ["Revamped SAVE database"]}
   state-rules-vary: {whole: true}
-  house-passed-save-america-act: {rows: ["S. 5271, photo ID only"]}
-  save-america-act-status: {rows: ["S. 5271, photo ID only", "Needed to end debate"]}
+  house-passed-save-america-act: {rows: ["S. 5271"]}
+  save-america-act-status: {rows: ["S. 5271", "Needed to end debate"]}
+
   save-america-act-provisions: {rows: ["SAVE America Act (Republican)"]}
   laws-require-no-id-for-all: {rows: ["Voting Rights Act", "National Voter Registration Act (NVRA)", "Help America Vote Act (HAVA)"]}
   order-binds-no-state: {rows: ["Trump v. California"]}
@@ -765,7 +767,7 @@ Both bills in the chart failed to end debate: the Democrats' in January 2022 and
 
 ### The House has passed the SAVE Act or SAVE America Act three times {#federal-and-state-power-over-voting-rules--house-passed-save-america-act}
 
-- **10 April 2025:** the SAVE Act (proof of citizenship to register) passed 220–208, with four Democrats in favour. [24](#source-federal-and-state-power-over-voting-rules-24)
+- **10 April 2025:** the SAVE Act ([proof of citizenship](#glossary-documentary-proof-of-citizenship) to register) passed 220–208, with four Democrats in favour. [24](#source-federal-and-state-power-over-voting-rules-24)
 - **11 February 2026:** the SAVE America Act, which combined it with a photo-ID requirement, passed 218–213. [25](#source-federal-and-state-power-over-voting-rules-25)
 - **22 July 2026:** the House passed it again, packaged with the National Defense Authorization Act to make it harder to vote down in the Senate. [26](#source-federal-and-state-power-over-voting-rules-26)
 
@@ -798,7 +800,7 @@ The NVRA's federal form, written by the Election Assistance Commission, "require
 
 ### The Freedom to Vote Act would have set national access rules and required ID states to accept alternatives {#federal-and-state-power-over-voting-rules--freedom-to-vote-act-provisions}
 
-The bill would have required early voting, no-excuse absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
+The bill would have required early voting, [no-excuse](#glossary-no-excuse-absentee) absentee voting and same-day registration, and required states with ID laws "to accept specified information or documentation to satisfy ID requirements". [22](#source-federal-and-state-power-over-voting-rules-22)
 
 The two parties' main bills of the past five years therefore both sought national standards, in opposite directions: one mandating ID and proof of citizenship, the other limiting what ID states could demand.
 

@@ -435,6 +435,18 @@ test('a window layout puts the window ends at the plot edges and fits its y doma
   assert.ok(layoutReading(s, s.readings[0], 'wide').valueTicks.at(-1)!.value >= 1000);
 });
 
+test('the value axis starts at zero unless the reading opts out', () => {
+  const s = series();
+  const high = { ...s.readings[0], lines: [{ name: 'Immigration', points: [{ period: '1990', value: 52 }, { period: '1993', value: 58 }] }] };
+  assert.equal(layoutReading(s, high, 'wide').valueTicks[0].value, 0);
+  assert.equal(layoutReading(s, high, 'wide', { from: '1991', to: '1993' }).valueTicks[0].value, 0);
+  // The context strip has no value labels, so check its lowest point sits well clear of the floor.
+  const context = layoutContext(s, high, 'wide', { from: '1991', to: '1993' });
+  const floor = context.geometry.top + context.geometry.plotHeight;
+  assert.ok(context.lines[0].points[0].y < floor - context.geometry.plotHeight / 2);
+  assert.ok(layoutReading(s, { ...high, zeroBased: false }, 'wide').valueTicks[0].value >= 50);
+});
+
 test('a one-year window has month ticks: every month wide, every third narrow, the year on the first and on January', () => {
   const s = monthly();
   const window = { from: '2025-10-20', to: '2026-10-20' };

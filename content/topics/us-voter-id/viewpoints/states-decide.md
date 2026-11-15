@@ -14,7 +14,7 @@ This keeps [decisions close to the people](#principle-decisions-made-closest-to-
 
 ### Courts have blocked a president's proof-of-citizenship rule
 
-[Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule, and one held that it goes beyond a president's power](#fact-federal-and-state-power-over-voting-rules/two-courts-blocked-2025-order). That is right, whatever one thinks of proof of citizenship. A rule one president can impose by order, the next can cancel.
+[Two federal courts have permanently blocked the 2025 order's proof-of-citizenship rule, and one held that it goes beyond a president's power](#fact-federal-and-state-power-over-voting-rules/two-courts-blocked-2025-order). That is right, whatever one thinks of [proof of citizenship](#glossary-documentary-proof-of-citizenship). A rule one president can impose by order, the next can cancel.
 
 While [the Supreme Court let the 2026 order's citizenship lists go ahead](#fact-federal-and-state-power-over-voting-rules/eo-14399-allowed), it did so because [the order requires nothing of anyone outside the executive branch](#fact-federal-and-state-power-over-voting-rules/order-binds-no-state), and [it did not rule on the order's lawfulness](#fact-federal-and-state-power-over-voting-rules/no-merits-ruling). If states can ignore the lists, the choice stays theirs.
 

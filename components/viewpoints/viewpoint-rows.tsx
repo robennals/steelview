@@ -25,12 +25,12 @@ function Step({ step, number }: StepProps) {
         <ExploreProse html={step.html} className="sv-walk__prose" />
       </div>
       {step.chart && (
-        <div className="sv-walk__chart">
-          <ExplorableChart><LazyChart index={number - 1} /></ExplorableChart>
+        <ExplorableChart>
+          <div className="sv-slide"><LazyChart index={number - 1} /></div>
           {step.panel
             ? <ExploreLink {...step.panel} href={step.chart.href} />
             : step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
-        </div>
+        </ExplorableChart>
       )}
     </div>
   );

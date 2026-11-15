@@ -32,7 +32,7 @@ test.describe('with JavaScript disabled', () => {
     await expect(plot).toHaveAttribute('role', 'img');
     await expect(plot).toHaveAttribute(
       'aria-label',
-      /UK immigration, emigration and net migration, 1964.2025 . UK Migration Over Time/
+      /UK migration . UK Migration Over Time/
     );
     const descId = await plot.getAttribute('aria-describedby');
     await expect(fact.locator(`#${descId}`)).toHaveText(/definitional breaks/);
@@ -50,7 +50,7 @@ test.describe('with JavaScript disabled', () => {
 
 test('the chart marks the breaks rather than smoothing them', async ({ page }) => {
   const chart = await openChart(page, HEADLINE, 'people');
-  // The range is the whole series', said once above its "Show as" switch.
+  // The range is the whole series', said once in the chart's More panel under its title.
   await expect(page.locator(`[id="${HEADLINE}--chart-series"] .sv-chart__range`)).toContainText('Full published range: 1964–2025');
 
   // Three definitional breaks, each marked on the plot as a measurement change.

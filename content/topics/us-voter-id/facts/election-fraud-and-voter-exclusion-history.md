@@ -682,9 +682,8 @@ sources:
     date: '2008-04-16'
 comparisons:
   - id: case-methods
-    title: >-
-      Twenty US election-fraud cases, by method and whether a polling-place ID
-      check would reach them
+    title: Twenty fraud cases by method
+    subtitle: '1878–2020, and whether a polling-place ID check would reach each'
     description: >-
       Each documented case from 1878 to 2020, counted once under the method its
       court or prosecution record puts at the centre. Colours show whether
@@ -748,7 +747,8 @@ comparisons:
       the names of the dead, which would place some of the "Partly" cases
       closer to "Yes".
   - id: heritage-methods
-    title: Heritage Foundation fraud list, entries by type
+    title: Heritage Foundation fraud list by type
+    subtitle: 'Election Fraud Map entries, outcomes 1982–2025'
     description: >-
       Entries in the Heritage Foundation's Election Fraud Map data file, as
       archived on 27 July 2026, by the fraud types Heritage assigns. One entry
@@ -791,10 +791,11 @@ comparisons:
       and 2 more describe mail ballots in their text, so at most 18 describe
       only in-person impersonation. All Heritage categories are shown.
   - id: news21-methods
-    title: News21's alleged US fraud cases, 2000–2012, by type
+    title: News21's alleged fraud cases by type
+    subtitle: '2000–2012, from public records requests to all 50 states'
     description: >-
-      Alleged election-fraud cases News21 collected from public records
-      requests to all 50 states, by the categories it published.
+      Alleged election-fraud cases News21 collected, by the categories it
+      published.
     unit: count
     valueLabel: Alleged cases
     shareTotal: 2068
@@ -875,7 +876,8 @@ figures:
     id: case-methods
   - kind: dataTable
     id: cases
-    title: Twenty documented cases of US election fraud, 1878–2020
+    title: Twenty documented fraud cases
+    subtitle: 'US, 1878–2020'
     description: 'How each fraud was done, whether a polling-place ID check would reach it, and what happened.'
     caption: 'One card per case'
     layout: timeline
@@ -968,7 +970,8 @@ figures:
         outcome: { value: 'New election ordered, August 2020; Mendez indictment dismissed April 2026, state appealing; Jackson''s charges being dropped (as of May 2026)', sources: [30] }
   - kind: dataTable
     id: carter-baker-on-id
-    title: 'What the Carter–Baker Commission said about ID and fraud, 2005'
+    title: 'Carter–Baker Commission on ID and fraud'
+    subtitle: 'The Commission on Federal Election Reform, 2005'
     description: 'The commission''s findings on how much fraud there is and what ID could do about it.'
     caption: 'One card per finding'
     layout: cards
@@ -985,7 +988,8 @@ figures:
         said: { value: '"Absentee ballots remain the largest source of potential voter fraud"', sources: [35] }
   - kind: dataTable
     id: modern-results
-    title: Three modern US election results voided or rerun, 2003–2020
+    title: Modern US results voided or rerun
+    subtitle: 'Three elections, 2003–2020'
     description: 'The margin in each modern election that was voided or rerun, and what the record found.'
     caption: 'One card per election'
     layout: timeline
@@ -1010,7 +1014,8 @@ figures:
     id: news21-methods
   - kind: dataTable
     id: impersonation-counts
-    title: Two counts of in-person voter impersonation in the US
+    title: Counts of in-person impersonation
+    subtitle: 'Two separate US counts, 2000–2014'
     description: 'What two separate counts found since 2000. Both cover detected or alleged cases only.'
     caption: 'One row per count'
     columns:
@@ -1023,7 +1028,8 @@ figures:
         found: { value: 'About 31 incidents among more than 1 billion ballots', sources: [32] }
   - kind: barChart
     id: louisiana-black-registrants
-    title: Black share of Louisiana's registered voters, 1898–1956
+    title: "Louisiana: Black share of registered voters"
+    subtitle: '1898–1956, as given by the Supreme Court in 1965'
     description: >-
       Black voters as a share of everyone registered in Louisiana, at each
       point the Supreme Court gave in Louisiana v. United States (1965).
@@ -1045,7 +1051,8 @@ figures:
       - { label: 'March 1956', value: { value: 15, qualifier: about, asPublished: approximately 15% } }
   - kind: barChart
     id: pre-vra-registration
-    title: Black voter registration before the Voting Rights Act, three states, 1954–1965
+    title: Black voter registration before 1965
+    subtitle: 'Alabama, Louisiana and Mississippi, before the Voting Rights Act'
     description: >-
       The Attorney General's estimates at the earliest and latest year he gave
       for each state, as the Supreme Court reported them. The years differ by
@@ -1065,9 +1072,8 @@ figures:
       - { label: Mississippi, values: { earlier: 4.4, latest: 6.4 }, labels: { earlier: 1954, latest: 1964 } }
   - kind: barChart
     id: black-registration-1965
-    title: >-
-      Black voter registration in 1965, the six US states the Voting Rights Act
-      originally covered
+    title: Black and white registration, 1965
+    subtitle: 'The six states the Voting Rights Act originally covered'
     description: >-
       Percentage of voting-age Black and white residents registered to vote in
       1965, as tabulated for Congress and reproduced by the Supreme Court.
@@ -1093,9 +1099,8 @@ figures:
       - { label: Mississippi, values: { black: 6.7, white: 69.9 }, highlight: true }
   - kind: barChart
     id: black-registration-2004
-    title: >-
-      Black voter registration in 2004, the six US states the Voting Rights Act
-      originally covered
+    title: Black and white registration, 2004
+    subtitle: 'The six states the Voting Rights Act originally covered'
     description: >-
       Percentage of voting-age Black and white residents registered to vote in
       2004, Census Bureau figures in the same table.
@@ -1120,7 +1125,8 @@ figures:
       - { label: Virginia, values: { black: 57.4, white: 68.2 } }
   - kind: timeline
     id: remedies
-    title: US remedies for election fraud and exclusion, 1888–2002
+    title: US remedies for fraud and exclusion
+    subtitle: '1888–2002'
     description: The main national reforms, in order.
     categories:
       - { id: ballot, label: Ballot reform }
@@ -1136,8 +1142,10 @@ figures:
       - { date: '2002', title: Help America Vote Act, description: Set an ID rule for some first-time voters who registered by mail., category: rolls, source: 41 }
   - kind: dataTable
     id: florida-2000
-    title: Florida's first voter-removal list, 2000
-    description: 'By the Civil Rights Commission''s account.'
+    title: Florida's first voter-removal list
+    subtitle: '2000, by the US Commission on Civil Rights'' account'
+    description: 'How many names the list held, and how many proved wrong.'
+
     caption: 'One row per count'
     columns:
       - { key: category, label: 'Category', rowHeader: true }

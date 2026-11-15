@@ -41,6 +41,8 @@ export type DataTableProps = {
   width?: 'text' | 'wide';
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -79,6 +81,7 @@ export function DataTable({
   width = columns.length > 3 ? 'wide' : 'text',
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -117,7 +120,7 @@ export function DataTable({
   };
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className={width === 'wide' ? 'sv-data sv-data--wide' : 'sv-data'}>
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className={width === 'wide' ? 'sv-data sv-data--wide' : 'sv-data'}>
       <div className="sv-data__frame" data-collapsed={collapsed || undefined} data-overflow-start={overflow.start || undefined} data-overflow-end={overflow.end || undefined}>
         <div className="sv-data__scroll" ref={scroll} tabIndex={0} role="region" aria-label={caption}>
           <table className="sv-data__table">

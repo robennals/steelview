@@ -443,11 +443,12 @@ sources:
     date: '2022-03-28'
 comparisons:
   - id: registrants-found
-    title: Non-citizen registrants found per million registrants, by state review
+    title: 'Non-citizens found on voter rolls'
+    subtitle: 'Per million registered voters, by state review'
     description: >-
       Non-citizens each review found on the rolls, per million people registered
       in that state at the time. Each bar is a different review, period and
-      method; the status of the count is in each label.
+      method; the status of the count is in each row's subtitle.
     unit: count
     valueLabel: Non-citizen registrants per million registrants
     sources: [22, 14, 10, 12, 8, 13]
@@ -467,18 +468,24 @@ comparisons:
       chart but one. These are found cases; none of these reviews estimates
       undetected ones.
     items:
-      - label: Georgia, 2024 audit (confirmed)
+      - label: 'Georgia'
+        subtitle: '2024 audit, confirmed'
         value: 2.4
-      - label: Kansas, 1999–2013 (court finding)
+      - label: 'Kansas'
+        subtitle: '1999–2013, court finding'
         value: 22.1
-      - label: Ohio, 2024 referrals (apparent)
+      - label: 'Ohio'
+        subtitle: '2024 referrals, apparent'
         value: 73.2
-      - label: Iowa, 2024 review (identified)
+      - label: 'Iowa'
+        subtitle: '2024 review, identified'
         value: 120.4
-      - label: Louisiana, 2025 (suspected, preliminary)
+      - label: 'Louisiana'
+        subtitle: '2025, suspected, preliminary'
         value: 134.5
   - id: votes-found
-    title: Non-citizen votes found per million ballots, by election
+    title: Non-citizen votes found
+    subtitle: 'Per million ballots cast, by election review'
     description: >-
       Ballots that reviews found were cast by non-citizens, per million ballots
       cast in that election. Each bar is a different review and method.
@@ -497,20 +504,24 @@ comparisons:
       than"), so it is approximate. Ohio's later figure of 167 voters spans federal elections from
       2018, so it has no single-election denominator and is not shown here.
     items:
-      - label: "Brennan Center survey, 2016"
-        detail: "42 jurisdictions"
+      - label: "Brennan Center survey"
+        subtitle: "2016, 42 jurisdictions"
         value: 1.3
-      - label: Ohio, 2020 general
+      - label: Ohio
+        subtitle: "2020 general election"
         value: 2.2
-      - label: North Carolina, 2016 general
+      - label: North Carolina
+        subtitle: "2016 general election"
         value: 8.5
-      - label: Iowa, 2024 general
+      - label: Iowa
+        subtitle: "2024 general election"
         value: 21.9
   - id: flags-reversed
-    title: Share of flagged US voter registrants later shown to be citizens
+    title: Flagged voters later shown to be citizens
+    subtitle: 'Share of those a database match flagged as possible non-citizens'
     description: >-
-      Of the people a database match flagged as possible non-citizens, the
-      share later shown to be citizens, by program. Each figure is as of the
+      The share of flagged people later shown to be citizens, by program.
+      Each figure is as of the
       date its source gives and is a minimum where reviews are unfinished.
     unit: percent
     valueLabel: Flagged people later shown to be citizens (%)
@@ -528,16 +539,21 @@ comparisons:
       Transportation records, and its later 277 came from a separate check, so
       the share of the 2,176 who were citizens has not been published.
     items:
-      - label: Denton County, Texas (SAVE, 2025)
+      - label: Denton County, Texas
+        subtitle: SAVE check, 2025
         value: 16.7
-      - label: Texas statewide (SAVE, 2025–26)
+      - label: Texas statewide
+        subtitle: SAVE check, 2025–26
         value: 21.2
-      - label: Alabama (state agency records, 2024)
+      - label: Alabama
+        subtitle: State agency records, 2024
         value: 61.5
-      - label: North Carolina (DMV records, 2016)
+      - label: North Carolina
+        subtitle: DMV records, 2016
         value: 97.6
   - id: against-margins
-    title: Non-citizen voters found, against two recent close US margins
+    title: Non-citizen voters against close margins
+    subtitle: 'Two close US races, beside non-citizen voters states found'
     description: >-
       Votes separating the candidates in two close races, beside the
       non-citizen voters that the same states' reviews found. Counts, not
@@ -554,23 +570,26 @@ comparisons:
       election; Georgia's 9 are confirmed non-citizens who had voted in some
       earlier election, none in November 2024.
     items:
-      - label: Georgia, 2020 presidential margin
+      - label: Georgia presidential margin
+        subtitle: "2020, after the recount"
         value: 11779
         highlight: true
-      - label: Iowa 1st District, 2024 margin
+      - label: Iowa 1st District margin
+        subtitle: "2024 House race, after the recount"
         value: 798
         highlight: true
-      - label: "Georgia, DHS-flagged, ever voted"
-        detail: "Georgia, DHS-flagged registrants who had ever voted (2026)"
+      - label: "Georgia, DHS-flagged"
+        subtitle: "Registrants who had ever voted, 2026"
         value: 150
-      - label: "Iowa non-citizen voters, 2024 (statewide)"
-        detail: "Iowa, non-citizens who voted in 2024 (statewide)"
+      - label: "Iowa non-citizen voters (statewide)"
+        subtitle: "Voted in 2024"
         value: 35
-      - label: "Georgia, confirmed non-citizens, ever voted"
-        detail: "Georgia, confirmed non-citizens who had ever voted (2024 audit)"
+      - label: "Georgia, confirmed non-citizens"
+        subtitle: "Had ever voted, 2024 audit"
         value: 9
   - id: ohio-referrals
-    title: Ohio's non-citizen referrals, by year announced
+    title: Ohio's non-citizen referrals
+    subtitle: 'Apparent non-citizens referred for prosecution, by year announced'
     description: >-
       Apparent non-citizens Ohio's Secretary of State referred for possible
       prosecution, as AP compared them in August 2024. More than 8 million
@@ -645,7 +664,8 @@ figures:
     id: registrants-found
   - kind: dataTable
     id: how-they-got-on
-    title: What state reviews show about how people reached the rolls, and the records that revealed them
+    title: How non-citizens reached the rolls
+    subtitle: 'What state reviews show, and the records that revealed them'
     description: 'What each review says about how non-citizens got on the list or were flagged, and which government record showed it. Not every review gives a cause.'
     caption: 'One card per review'
     layout: cards
@@ -683,7 +703,8 @@ figures:
     id: votes-found
   - kind: dataTable
     id: multi-election-counts
-    title: Non-citizen voters found or referred across several elections
+    title: Non-citizen voters across elections
+    subtitle: 'Found or referred, in counts spanning more than one election'
     description: >-
       Counts that span more than one election, or that are referrals rather
       than findings, so they have no single-election rate.
@@ -723,7 +744,8 @@ figures:
     id: flags-reversed
   - kind: dataTable
     id: both-errors
-    title: 'Non-citizens found against citizens wrongly flagged, by review'
+    title: 'Non-citizens found and citizens flagged'
+    subtitle: 'Texas, Denton County and Alabama reviews'
     description: 'The two counts each review with a published follow-up produces.'
     caption: 'One row per review'
     columns:
@@ -744,7 +766,8 @@ figures:
     id: against-margins
   - kind: dataTable
     id: officials-on-scale
-    title: What election officials say about scale
+    title: Election officials on scale
+    subtitle: "Louisiana's and Ohio's top election officials, 2025"
     description: 'Two secretaries of state on how much non-citizen voting matters.'
     caption: 'One card per official'
     layout: cards
@@ -760,29 +783,30 @@ figures:
   - kind: comparison
     id: ohio-referrals
 observationMarks:
-  found-on-rolls: {rows: ["Georgia, 2024 audit (confirmed)", "Kansas, 1999–2013 (court finding)", "Ohio, 2024 referrals (apparent)", "Iowa, 2024 review (identified)", "Louisiana, 2025 (suspected, preliminary)"]}
+  found-on-rolls: {rows: ["Georgia", "Kansas", "Ohio", "Iowa", "Louisiana"]}
   how-noncitizens-reach-rolls: {rows: ["Texas, 2025–26", "Arizona, 2024", "North Carolina, 2016", "Kansas, 1999–2013"]}
-  hundredths-of-a-percent: {rows: ["Louisiana, 2025 (suspected, preliminary)", "Georgia, 2024 audit (confirmed)"]}
-  full-roll-check-feasible: {rows: ["Georgia, 2024 audit (confirmed)"]}
+  hundredths-of-a-percent: {rows: ["Louisiana", "Georgia"]}
+  full-roll-check-feasible: {rows: ["Georgia"]}
   georgia-2022-held-at-registration: {rows: ["Georgia, 2022 audit"]}
   ohio-recurs: {rows: ["2019", "2021", "2022", "2024"]}
-  below-margins: {rows: ["Georgia, 2020 presidential margin", "Iowa 1st District, 2024 margin", "Georgia, DHS-flagged, ever voted", "Iowa non-citizen voters, 2024 (statewide)"]}
+  below-margins: {rows: ["Georgia presidential margin", "Iowa 1st District margin", "Georgia, DHS-flagged", "Iowa non-citizen voters (statewide)"]}
   close-local-races: {rows: ["Louisiana's top election official, 2025"]}
-  detected-is-a-floor: {rows: ["Ohio, 2020 general", "North Carolina, 2016 general", "Iowa, 2024 general"]}
-  some-noncitizens-vote: {rows: ["Brennan Center survey, 2016", "Ohio, 2020 general", "North Carolina, 2016 general", "Iowa, 2024 general"]}
-  votes-per-ballots: {rows: ["Brennan Center survey, 2016", "Iowa, 2024 general"]}
-  alabama-2024: {rows: ["Alabama (state agency records, 2024)"]}
-  save-national-unaudited: {rows: ["Denton County, Texas (SAVE, 2025)", "Texas statewide (SAVE, 2025–26)"]}
+  detected-is-a-floor: {rows: ["Ohio", "North Carolina", "Iowa"]}
+  some-noncitizens-vote: {rows: ["Brennan Center survey", "Ohio", "North Carolina", "Iowa"]}
+  votes-per-ballots: {rows: ["Brennan Center survey", "Iowa"]}
+  alabama-2024: {rows: ["Alabama"]}
+  save-national-unaudited: {rows: ["Denton County, Texas", "Texas statewide"]}
   state-records-would-have-cleared: {rows: ["Travis County, Texas"]}
   both-errors-side-by-side: {rows: ["Texas, statewide SAVE check", "Alabama, 2024"]}
-  flag-lists-shrink: {rows: ["Denton County, Texas (SAVE, 2025)", "North Carolina (DMV records, 2016)"]}
-  texas-save-reversals: {rows: ["Texas statewide (SAVE, 2025–26)", "Denton County, Texas (SAVE, 2025)"]}
+  flag-lists-shrink: {rows: ["Denton County, Texas", "North Carolina"]}
+  texas-save-reversals: {rows: ["Texas statewide", "Denton County, Texas"]}
   iowa-flags: {whole: true}
   virginia-2024: {whole: true}
-  texas-2019: {rows: ["Texas statewide (SAVE, 2025–26)"]}
+  texas-2019: {rows: ["Texas statewide"]}
   ohio-scale: {rows: ["2024"]}
-  kansas-court-findings: {rows: ["Kansas, 1999–2013 (court finding)"]}
-  referrals-not-convictions: {rows: ["Ohio, 2020 general"]}
+  kansas-court-findings: {rows: ["Kansas"]}
+  referrals-not-convictions: {rows: ["Ohio"]}
+
   arizona-218000-no-proof: {rows: ["Arizona, 2024"]}
   checks-rest-on-records: {rows: ["Texas, 2025–26", "North Carolina, 2016", "Georgia, 2024 audit", "Iowa, 2024"]}
 ---
@@ -800,7 +824,7 @@ The bars span two orders of magnitude partly because the states count different 
 
 ### A check of a whole statewide roll is now routine {#non-citizens-on-voter-rolls--full-roll-check-feasible}
 
-Texas ran its entire roll, more than 18 million voters, through SAVE in 2025 and flagged about 0.015% of it. [2](#source-non-citizens-on-voter-rolls-2) [3](#source-non-citizens-on-voter-rolls-3) Ohio's office says it now identifies non-citizens "at the time of registration". [9](#source-non-citizens-on-voter-rolls-9)
+Texas ran its entire roll, more than 18 million voters, through [SAVE](#glossary-save) in 2025 and flagged about 0.015% of it. [2](#source-non-citizens-on-voter-rolls-2) [3](#source-non-citizens-on-voter-rolls-3) Ohio's office says it now identifies non-citizens "at the time of registration". [9](#source-non-citizens-on-voter-rolls-9)
 
 Before SAVE was opened to bulk checks in 2025, states such as Georgia and North Carolina relied on licence, jury and individual immigration-record checks. [24](#source-non-citizens-on-voter-rolls-24) [14](#source-non-citizens-on-voter-rolls-14) [20](#source-non-citizens-on-voter-rolls-20)
 
@@ -808,7 +832,7 @@ Before SAVE was opened to bulk checks in 2025, states such as Georgia and North 
 
 The longest record comes from the Kansas litigation. The district court found that at most 67 non-citizens registered or tried to register, and 39 got onto the rolls; it found the cases "largely explained by administrative error, confusion, or mistake". [22](#source-non-citizens-on-voter-rolls-22)
 
-Kansas's proof-of-citizenship law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
+Kansas's [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) law, meanwhile, left 31,089 applicants denied registration. These are applicants who did not supply documents, not people shown to be citizens. [22](#source-non-citizens-on-voter-rolls-22)
 
 ## Observations {#non-citizens-on-voter-rolls--observations-how-they-got-on}
 

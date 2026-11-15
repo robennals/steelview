@@ -1,5 +1,5 @@
 import { plotReadingId } from '@/lib/chart/series-chart';
-import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
+import { componentFigure, factPath, figureLabel, isComponentFigure, topicPath } from './types';
 import type { ComponentFigure, Fact, Series, Topic } from './types';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -102,6 +102,25 @@ export function slideGroups(fact: Fact, { chart, reading }: Pick<PreviewSlide, '
   if (!reading) return series.readings.map(r => r.id);
   const plot = series.readings.find(r => r.id === plotReadingId(series, reading));
   return plot ? [plot.id, ...(plot.alongside ? [plot.alongside] : [])] : [reading];
+}
+
+/**
+ * The address of a slide's chart in its collection's data panel. A slide
+ * naming a reading has the address of the chart showing it: the reading whose
+ * plot draws it.
+ */
+export function chartAddress(slide: Pick<PreviewSlide, 'fact' | 'chart' | 'reading'>): string {
+  return `${slide.fact.id}--chart-${slide.reading ? slideGroups(slide.fact, slide)[0] : slide.chart}`;
+}
+
+/**
+ * A home-page slide's chart on its topic's report, opened over it in its
+ * collection's data panel (`ExplorePanels`): where its title leads in a new
+ * tab or with no script. Every preview chart's collection has a panel there:
+ * `validateTopic` requires it to be a headline fact.
+ */
+export function reportChartPath(slug: string, slide: Pick<PreviewSlide, 'fact' | 'chart' | 'reading'>): string {
+  return `${topicPath(slug)}#${chartAddress(slide)}`;
 }
 
 /**

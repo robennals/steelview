@@ -768,7 +768,8 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-28'
 series:
-  title: 'Returns from the UK by type, 2004–2025'
+  title: 'Returns from the UK, by type'
+  subtitle: '2004–2025'
   description: >-
     Every return the Home Office records in each calendar year from 2004, the
     first year of its returns table: enforced returns, voluntary returns, and
@@ -957,7 +958,8 @@ series:
               value: 18354
 additionalSeries:
   - id: fno-asylum-dataset
-    title: UK returns of foreign offenders and asylum-related returns, 2010–2025
+    title: 'Offender and asylum-related returns'
+    subtitle: 'Foreign offenders and people who claimed asylum, UK, 2010–2025'
     description: >-
       Returns of foreign national offenders (enforced, voluntary and port), and
       enforced plus voluntary returns of people who had claimed asylum at some
@@ -1076,9 +1078,8 @@ additionalSeries:
               - period: '2025'
                 value: 12396
   - id: refused-cohorts
-    title: >-
-      Refused and withdrawn UK asylum claims, and returns recorded, by year of
-      claim, 2007–2025
+    title: 'Refused claims and later returns'
+    subtitle: 'UK, main applicants by year of claim, 2007–2025, as at July 2026'
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
       2026: how many were refused or withdrew at their latest outcome, and how
@@ -1305,7 +1306,8 @@ additionalSeries:
               - period: '2025'
                 value: 7.8
   - id: detention-leavers-dataset
-    title: People leaving UK immigration detention, by outcome, 2010–2025
+    title: 'Leaving immigration detention'
+    subtitle: 'By outcome, UK, 2010–2025'
     description: >-
       Every exit from immigration detention each year, by what happened next:
       returned from the UK, bailed (by the Home Secretary or an immigration
@@ -1445,7 +1447,8 @@ additionalSeries:
               - period: '2025'
                 value: 759
   - id: fno-appeals-dataset
-    title: Foreign offenders’ appeals against UK deportation, 2008/09–2020/21
+    title: 'Foreign offenders’ deportation appeals'
+    subtitle: 'Lodged and allowed, UK, financial years 2008/09 to 2020/21'
     description: >-
       Appeals against deportation lodged by foreign national offenders in each
       financial year (labelled by the year it starts), how many were allowed at
@@ -1517,6 +1520,7 @@ additionalSeries:
               - period: '2020'
                 value: 568
           - name: Allowed at First-tier Tribunal
+            glossary: first-tier-tribunal
             points:
               - period: '2008'
                 value: 271
@@ -1574,9 +1578,8 @@ additionalSeries:
               - period: '2020'
                 value: 44
   - id: fnos-community-dataset
-    title: >-
-      Foreign offenders liable to UK deportation living in the community,
-      2012–2026
+    title: 'Foreign offenders in the community'
+    subtitle: 'Liable to deportation, out of prison or detention, UK, 2012–2026'
     description: >-
       Foreign national offenders subject to deportation action who have
       finished their sentence and are living in the community rather than in
@@ -1736,7 +1739,8 @@ additionalSeries:
               - period: '2026-06'
                 value: 21294
   - id: france-pilot-dataset
-    title: 'UK–France "one in, one out" pilot: people moved each month, August 2025 – June 2026'
+    title: 'UK–France "one in, one out" pilot'
+    subtitle: 'People moved each month, August 2025 to June 2026'
     description: >-
       Small-boat arrivals returned to France ("out") and people transferred
       from France to the UK ("in") each month under the UK–France Agreement on
@@ -1819,7 +1823,8 @@ additionalSeries:
                 value: 314
 comparisons:
   - id: detention-issues
-    title: Issues raised during UK immigration detention before removal, 2019
+    title: 'Issues raised in immigration detention'
+    subtitle: 'Share of 2019 UK detentions after immigration offences'
     description: >-
       Share of detentions in 2019 in which each issue was raised, for people
       detained in the UK after immigration offences (not foreign offenders, not
@@ -1862,10 +1867,11 @@ comparisons:
       - label: Appeal
         value: 3
   - id: detention-issues-return
-    title: >-
-      Share of UK immigration detentions ending in return, by issue raised, 2019
+    title: 'Detentions ending in return, by issue'
+    subtitle: 'UK immigration detentions, 2019'
     description: >-
-      For the same 2019 detentions, the share that ended with the person
+      For 2019 detentions of people held after immigration offences, the
+      share that ended with the person
       returned from the UK, by issue raised, against detentions in which none
       of the issues was raised.
     unit: percent
@@ -1899,9 +1905,8 @@ comparisons:
       - label: Modern slavery referral
         value: 1
   - id: charter-failures
-    title: >-
-      Why foreign offenders were not removed from the UK on two Jamaica charter
-      flights, 2016–2017
+    title: 'Failed removals on Jamaica charters'
+    subtitle: 'Foreign offenders, flights of September 2016 and March 2017'
     description: >-
       The most common reasons removals failed on the September 2016 and March
       2017 charter flights to Jamaica, which planned 307 removals between them
@@ -1930,7 +1935,8 @@ comparisons:
         detail: "For lack of resources"
         value: 13
   - id: removal-scale
-    title: Removals a year — the UK record, a proposed target, and the EU and US
+    title: 'Removals a year'
+    subtitle: 'UK record and target, beside the EU and US'
     description: >-
       Annual removals or returns on each measure. The UK lines are calendar
       2025 and 2004 from the Home Office; the target is the Conservative
@@ -1954,14 +1960,16 @@ comparisons:
       - label: "US deportations after interior arrest"
         detail: "Yearly rate"
         value: 200000
-      - label: Proposed UK target ("Removals Force")
+      - label: Proposed UK target
+        subtitle: 'Conservative "Removals Force" pledge'
         value: 150000
         highlight: true
       - label: EU-27 returns to non-EU countries, 2025
         value: 139270
       - label: UK enforced and voluntary returns, 2025
         value: 39715
-      - label: UK enforced returns, 2004 (series high)
+      - label: UK enforced returns, 2004
+        subtitle: Series high
         value: 21425
       - label: UK enforced returns, 2025
         value: 9908
@@ -2016,7 +2024,8 @@ figures:
   - kind: series
   - kind: barChart
     id: return-costs
-    title: Average cost of a UK return, enforced and voluntary, 2024/25
+    title: 'Average cost of a return'
+    subtitle: 'Enforced and voluntary, UK, 2024/25'
     description: The average cost of one enforced return and one voluntary return in the 2024/25 financial year.
     valueLabel: Average cost per return
     categoryLabel: Type of return
@@ -2037,7 +2046,8 @@ figures:
     id: detention-issues-return
   - kind: barChart
     id: issue-outcomes
-    title: What became of issues raised in UK detentions ending in 2017
+    title: 'Outcomes of issues raised in detention'
+    subtitle: 'UK detentions ending in 2017, people detained from the community'
     description: Issues raised during detentions ending in 2017, for immigration offenders detained from the community, by the outcome recorded when the Home Office looked back at them.
     valueLabel: Share of issues raised
     categoryLabel: Outcome
@@ -2061,7 +2071,8 @@ figures:
     id: france-pilot-dataset
   - kind: estimateRange
     id: unlawful-population
-    title: Estimates of the UK population without lawful status, 2017
+    title: 'People without lawful status'
+    subtitle: 'Two estimates of the UK population, both for 2017'
     description: The two latest estimates, both for 2017 and both made by the residual method. The Home Office makes no official estimate.
     valueLabel: People without lawful status
     nullValue: null
@@ -2072,9 +2083,8 @@ figures:
       - { label: 'Pew, revised March 2025', low: 700000, high: 900000, source: 69 }
   - kind: dataTable
     id: echr-share
-    title: >-
-      What the nearest measures of the ECHR's weight in UK removals show, and
-      leave out
+    title: 'Measures of the ECHR''s role in removals'
+    subtitle: 'The nearest published measures and what each leaves out'
     description: No published source counts removals stopped by the ECHR. These are the nearest measures, each of which answers a narrower question.
     caption: One card per measure
     layout: cards
@@ -2104,7 +2114,7 @@ observationMarks:
   article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2017"}
   echr-share-not-measured: {rows: ["Removals stopped by the ECHR", "People granted status after being told they were liable to removal"]}
   echr-hidden-in-other-rows: {rows: ["Human rights or other rights-based application", "Asylum claim", "Judicial review"]}
-  150000-about-15-times-enforced-returns: {rows: ["Proposed UK target (\"Removals Force\")", "UK enforced returns, 2025"]}
+  150000-about-15-times-enforced-returns: {rows: ["Proposed UK target", "UK enforced returns, 2025"]}
   most-returns-are-voluntary: {lines: ["Enforced returns", "Voluntary returns"], at: "2025"}
   human-rights-wins-about-3-percent: {rows: ["Foreign offenders' appeals won on human-rights grounds alone"]}
   returns-fell-then-recovered: {lines: ["Enforced returns", "Voluntary returns"], at: "2021"}
@@ -2125,7 +2135,7 @@ observationMarks:
   all-human-rights-appeals-53-percent: {lines: ["Allowed on human-rights grounds only"], from: "2015", to: "2020"}
   ratio-is-not-a-block-rate: {lines: ["Allowed at First-tier Tribunal", "Allowed on human-rights grounds only"], from: "2015", to: "2020"}
   fnos-in-community-growing: {lines: ["Foreign offenders liable to deportation in the community"], from: "2016-06", to: "2026-06", at: "2026-06"}
-  pledged-budget: {rows: ["Proposed UK target (\"Removals Force\")"]}
+  pledged-budget: {rows: ["Proposed UK target"]}
   us-comparison: {rows: ["US deportations after interior arrest"]}
   france-pilot-about-4-percent: {lines: ["Returned to France (out)"]}
   other-obstacles: {rows: ["Human-rights applications raised in detention, 2019", "Foreign offenders' appeals won on human-rights grounds alone"]}

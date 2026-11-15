@@ -551,8 +551,7 @@ compared, and the source when the reader needs it to trust the number (“As
 counted by the group Iran Human Rights (IHRNGO), 2008–2025”). Both show
 wherever the chart does, previews included, so keep the subtitle to one line
 on a phone, about 70 characters. No two charts in a report share a title; the
-build checks. `series`, `additionalSeries` and `comparisons` take a
-`subtitle`; other figures do not yet, so their title carries the period.
+build checks. Every chart and figure with a title takes a `subtitle`.
 
 **Every chart stands alone.** A reader can land on any chart with no context,
 seeing only its title and subtitle. Together they say what is measured, where
@@ -619,13 +618,18 @@ in a collection that mixes countries, name it. Tables and timelines follow the
 same rule. A title must also make sense without its neighbours, so no “the
 other studies” or “the same era”, and name the subject, not the finding.
 
-**Every axis has its unit, on the numbers where it fits.** A reader should not
-have to look elsewhere to know what a number on an axis counts. Give a line
-chart reading a short `tickUnit` (“kg”) and every axis number carries it (“500
-kg”), with no separate unit line. Where the unit is too long for the numbers,
-`valueLabel` prints it as a line above the graph. Leave the unit out of a
-preview only when the title already says what is counted (“Executions per year
-in Iran”): set `unitInTitle: true`, and the full chart keeps its `valueLabel`.
+**Every number's unit is clear without a unit line.** Charts draw no
+separate line naming the unit, so the reader must get it from one of three
+places. The title, when it says what is counted (“US military deaths”,
+“Executions per year in Iran”). The numbers themselves: “%” and “£” are printed
+on them, and a line chart reading's short `tickUnit` (“kg”) is written after
+every axis number (“500 kg”). Or the subtitle, for a unit or scale the title
+does not carry (“US$ billions, not adjusted for inflation”; “Percentage
+points”; “Share of returned mail ballots”). `valueLabel` still says exactly
+what is measured: a data panel's More shows it as “Measured: …”, and tables use
+it as the column heading. Scatter plots and line charts with a
+second axis name both axes (“Left: … Right: …”), and small multiples state
+their scale, since a title cannot.
 
 **Never write “k” beside a unit that already has a prefix.** Readers see one
 “k” in “10k kg” and take it for 10 kg, missing the thousand. Axis numbers under
@@ -2193,8 +2197,8 @@ Run this before opening a pull request.
       subtitle say what it covers and where: another country is named, an
       area narrower than the report's country is named, and it needs no
       neighbouring chart to make sense.
-- [ ] Every axis shows its unit, on the numbers (`tickUnit`) where it fits;
-      no "k" beside a unit like "kg".
+- [ ] Every number's unit is clear from the title, the numbers (`tickUnit`)
+      or the subtitle, with no unit line; no "k" beside a unit like "kg".
 - [ ] Every observation fits about three lines (350 characters).
 - [ ] No paragraph longer than four lines. Numbers sit in charts, tables or
       key figures, not recited in prose; dated events are `events` on the

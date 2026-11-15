@@ -286,7 +286,8 @@ sources:
     publisher: Pahrump Valley Times
     date: '2026-04-22'
 series:
-  title: 'States counting mail ballots that arrive after Election Day, 2016–2026'
+  title: 'Deadlines for mail ballots to arrive'
+  subtitle: 'Number of states under each deadline rule, 2016–2026'
   description: >-
     Number of states that count mailed ballots received after Election Day if
     postmarked by then, against the number requiring receipt by Election Day,
@@ -350,7 +351,8 @@ series:
           points: [{period: '2016-11', value: 37}, {period: '2020-01', value: 35}, {period: '2020-11', value: 29}, {period: '2022-11', value: 31}, {period: '2024-11', value: 32}, {period: '2026-11', value: 35}]
 additionalSeries:
   - id: late-share-series
-    title: 'Late arrival as a share of rejected mail ballots, 2016–2024'
+    title: 'Late ballots among rejections'
+    subtitle: 'Share of rejected mail ballots rejected as late, 2016–2024'
     description: >-
       Share of rejected mail ballots that were rejected because they were not
       received on time, nationally, in each federal general election.
@@ -390,7 +392,8 @@ additionalSeries:
             points: [{period: '2016', value: 23.1}, {period: '2018', value: 26.9}, {period: '2020', value: 12.1}, {period: '2022', value: 23.1}, {period: '2024', value: 17.8}]
 comparisons:
   - id: grace-windows
-    title: 'How many days after Election Day a postmarked mail ballot may arrive, by state, 2026'
+    title: 'Grace periods for postmarked ballots'
+    subtitle: 'Days after Election Day a ballot may arrive, by state, 2026'
     description: 'Latest day a domestic mail ballot postmarked by Election Day may arrive and still count, in days after Election Day, for the 15 states and DC that allow it; the other 35 states require receipt by Election Day.'
     unit: count
     valueLabel: 'Days after Election Day'
@@ -444,8 +447,9 @@ comparisons:
         value: 0
         highlight: true
   - id: preprocessing-four-hours
-    title: 'Share of votes reported four hours after polls closed, by whether states allowed mail ballots to be processed early, 2020'
-    description: 'Average state in the 2020 general election (MIT Election Lab analysis, as summarised by Charles Stewart III).'
+    title: 'Early processing and count speed'
+    subtitle: 'Votes reported four hours after polls closed, average state, 2020'
+    description: 'Share of votes reported, by whether a state let mail ballots be processed before Election Day (MIT Election Lab analysis, as summarised by Charles Stewart III).'
     unit: percent
     valueLabel: '% of votes reported'
     domainMax: 100
@@ -479,7 +483,8 @@ figures:
     id: grace-windows
   - kind: barChart
     id: hours-to-count
-    title: 'Hours to count 95% of the presidential vote, seven battleground states, 2020 and 2024'
+    title: 'How long the count took'
+    subtitle: 'Hours to count 95% of the presidential vote, seven swing states, 2020 and 2024'
     description: 'Hours after polls closed until 95% of the two-party presidential vote had been reported (MIT Election Lab, from Edison Research data).'
     valueLabel: Hours
     categoryLabel: State
@@ -503,7 +508,8 @@ figures:
       - { label: North Carolina, values: { y2020: 3, y2024: 6 } }
   - kind: dataTable
     id: count-speed-named
-    title: 'Which states counted fast and slow in 2024, in MIT''s words'
+    title: 'Fast and slow counts, in MIT''s words'
+    subtitle: '2024 general election, MIT Election Lab'
     description: 'States MIT Election Lab names as fast or slow to count, and its finding on what slows a count.'
     sources: [10]
     caption: One card per group of states
@@ -525,7 +531,8 @@ figures:
     id: preprocessing-four-hours
   - kind: dataTable
     id: late-ballots
-    title: US late mail ballots, and what they are measured against
+    title: Late mail ballots
+    subtitle: Each figure with what it is measured against
     description: 'Each card uses a different election and denominator, so the figures are not comparable with one another.'
     caption: One card per election or postal change
     layout: cards
@@ -598,10 +605,9 @@ figures:
             - 8
   - kind: dataTable
     id: processing-rules
-    title: >-
-      When states may begin processing mail ballots, beside count speed and mail
-      share
-    description: Seven battleground states. Processing rules are as of September 2026 and may differ from those in force in 2020.
+    title: When states may start processing
+    subtitle: Seven battleground states, with count speed and mail share
+    description: Processing rules are as of September 2026 and may differ from those in force in 2020.
     sources:
       - 1
       - 3
@@ -724,7 +730,7 @@ In 2024 that was 17.8% of rejections, the third-largest reason after signature p
 
 ### The low point came when the most states had grace periods {#ballot-deadlines-and-counting-speed--2020-low}
 
-Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that grace periods caused the drop.
+Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that [grace periods](#glossary-grace-period) caused the drop.
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-grace-windows}
 

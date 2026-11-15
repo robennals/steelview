@@ -32,6 +32,7 @@ test('a source\'s address lands on that source', async ({ page }) => {
 
 test('a chart\'s sources row links to the source itself on the report\'s own page, as in its row', async ({ page }) => {
   await page.goto(`${topic}/facts/immigration-against-the-long-run`);
+  await page.locator('.sv-chart__about > summary').first().click();
   await page.locator('.sv-chart__sources > summary').first().click();
   await expect(page.locator('.sv-chart__sources a').first()).toHaveAttribute('href', /^https?:/);
 });

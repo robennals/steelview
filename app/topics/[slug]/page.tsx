@@ -130,7 +130,7 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs, c
   ];
 
   return (
-    <ExplorePanels>
+    <ExplorePanels panels={headline.map((fact) => fact.id)}>
       <PrincipleModals principles={topic.principles.map((principle) => ({
         id: principle.id,
         name: principle.name,

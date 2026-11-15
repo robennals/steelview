@@ -490,11 +490,11 @@ sources:
     date: '2026-08-26'
 comparisons:
   - id: senate-votes
-    title: US Senate votes on national voting-rules bills, against the 60 needed
+    title: Senate votes on national voting rules
+    subtitle: Senators voting yes, against the 60 needed, 2022 and 2026
     description: >-
-      Senators voting yes on two cloture votes on national voting-rules bills,
-      2022 and 2026, against the 60 needed to end debate. Only the 2022 bill
-      dealt with mail voting.
+      Yes votes on two cloture votes on national voting-rules bills, which
+      need 60 to end debate. Only the 2022 bill dealt with mail voting.
     unit: count
     valueLabel: Senators voting yes
     domainMax: 100
@@ -509,7 +509,8 @@ comparisons:
       - label: "Freedom to Vote: John R. Lewis Act"
         detail: "Democratic, 19 Jan 2022"
         value: 49
-      - label: "S. 5271, photo ID only"
+      - label: "S. 5271"
+        subtitle: Photo ID only
         detail: "Republican, 8 Aug 2026"
         value: 52
       - label: Needed to end debate
@@ -544,7 +545,8 @@ dataStillNeeded:
 figures:
   - kind: timeline
     id: federal-actions
-    title: 'Federal bills, orders and rulings on mail voting, and state deadline changes, 2021–2026'
+    title: 'Federal moves on mail voting'
+    subtitle: 'Bills, orders, rulings and state deadline changes, 2021–2026'
     description: >-
       Each dated move in Congress, by the President and in the courts, with
       the changes to state receipt deadlines that fell among them.
@@ -570,7 +572,8 @@ figures:
     id: senate-votes
   - kind: dataTable
     id: federal-laws
-    title: 'Federal laws, bills and orders on mail voting, 1986–2026'
+    title: 'Federal laws and bills on mail voting'
+    subtitle: 'Including orders, 1986–2026, status at 29 October 2026'
     description: 'What each federal law, bill or order does on mail voting, and where it stood on 29 October 2026.'
     caption: 'One card per law, bill or order'
     layout: timeline
@@ -694,8 +697,8 @@ figures:
         status: Introduced
   - kind: dataTable
     id: holdings
-    title: >-
-      Who may set US mail-voting rules: what the Constitution and courts say
+    title: Who may set mail-voting rules
+    subtitle: What the US Constitution and courts say
     description: 'The constitutional text and the main court rulings on who sets election rules, oldest first.'
     caption: One card per text or ruling
     layout: timeline
@@ -762,8 +765,9 @@ figures:
             - 22
   - kind: dataTable
     id: live-measures
-    title: 'Live federal measures on mail voting, 29 October 2026'
-    description: The federal actions still in play the week before the November midterms.
+    title: 'Live federal measures on mail voting'
+    subtitle: 'As of 29 October 2026, the week before the midterms'
+    description: The federal actions still in play.
     caption: One card per measure
     layout: cards
     leadColumn: does
@@ -828,7 +832,7 @@ observationMarks:
   congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
   watson-leaves-it-to-legislatures: {rows: ["Watson v. RNC (5–4)"]}
   bills-on-both-sides: {rows: ["Universal Right to Vote by Mail Act", "Vote at Home Act", "Make Elections Great Again (MEGA) Act", "Mail Ballot Integrity Act"]}
-  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271, photo ID only", "Needed to end debate"]}
+  national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271", "Needed to end debate"]}
   save-america-mail-unclear: {rows: ["SAVE America Act (Republican)"]}
   save-america-status: {rows: ["SAVE America Act (Republican)"]}
   watson-appearance-of-fraud: {rows: ["Watson v. RNC (5–4)"]}
@@ -843,7 +847,7 @@ observationMarks:
 
 More states counted late-arriving mailed ballots in 2020; by November 2026 NCSL expects the count of states requiring Election Day receipt to be "roughly the same as it was in November 2016" ([chart in the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed/chart-receipt-deadline-states)). [33](#source-federal-and-state-power-over-mail-voting-33)
 
-North Dakota, Ohio and Utah ended their grace periods in 2025. Kansas legislated an end too, but a district court in Kansas blocked it in July 2026, so Kansas still counts ballots arriving within three days. [30](#source-federal-and-state-power-over-mail-voting-30) Detail by state is in [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed).
+North Dakota, Ohio and Utah ended their [grace periods](#glossary-grace-period) in 2025. Kansas legislated an end too, but a district court in Kansas blocked it in July 2026, so Kansas still counts ballots arriving within three days. [30](#source-federal-and-state-power-over-mail-voting-30) Detail by state is in [the report on ballot deadlines](#fact-ballot-deadlines-and-counting-speed).
 
 ### The Supreme Court let the March 2026 order go ahead {#federal-and-state-power-over-mail-voting--eo-14399-stands}
 
@@ -855,7 +859,7 @@ The dissent said the ruling "merely postpones adjudication" of whether the Presi
 
 ### National bills from both parties stalled in the Senate {#federal-and-state-power-over-mail-voting--national-bills-stalled}
 
-The Democrats' Freedom to Vote Act, which would have required every state to offer no-excuse absentee voting, failed to end debate in October 2021 and again in January 2022. [10](#source-federal-and-state-power-over-mail-voting-10) [11](#source-federal-and-state-power-over-mail-voting-11)
+The Democrats' Freedom to Vote Act, which would have required every state to offer [no-excuse](#glossary-no-excuse-absentee) absentee voting, failed to end debate in October 2021 and again in January 2022. [10](#source-federal-and-state-power-over-mail-voting-10) [11](#source-federal-and-state-power-over-mail-voting-11)
 
 In August 2026 a Republican photo-ID bill, S. 5271, also failed to reach 60 votes (chart). [14](#source-federal-and-state-power-over-mail-voting-14) Bills that would require or restrict mail voting nationally have been introduced on both sides in the current Congress. [16](#source-federal-and-state-power-over-mail-voting-16)
 
@@ -929,7 +933,7 @@ This report is a dated legal record, as of 29 October 2026, the week before the 
 
 **What is measured.** The text of the Constitution, federal statutes, executive orders and court rulings, and NCSL's counts of state mail-voting rules. Case histories for the 2026 litigation come from court opinions, the Civil Rights Litigation Clearinghouse and the Brennan Center, which is co-counsel for plaintiffs; its dates match the Supreme Court's orders. [23](#source-federal-and-state-power-over-mail-voting-23)
 
-**As of.** Sources were read up to 29 October 2026. Reporting on the SAVE America Act was last checked for the voter-ID topic on 23 October 2026. That topic covers the registration and ID side of the same federal fights: proof of citizenship, the federal registration form and the SAVE database.
+**As of.** Sources were read up to 29 October 2026. Reporting on the SAVE America Act was last checked for the voter-ID topic on 23 October 2026. That topic covers the registration and ID side of the same federal fights: [proof of citizenship](#glossary-documentary-proof-of-citizenship), the federal registration form and the SAVE database.
 
 **What it is commonly mistaken for.** "States decide" is not the same as "legislatures decide": state courts and, in Oregon's case, citizen initiatives also set rules. [5](#source-federal-and-state-power-over-mail-voting-5) [31](#source-federal-and-state-power-over-mail-voting-31) Nor does *Watson* say states must accept late ballots; it says federal law lets them choose. [24](#source-federal-and-state-power-over-mail-voting-24)
 

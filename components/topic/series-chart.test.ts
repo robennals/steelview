@@ -8,16 +8,6 @@ import { validateTopic } from '@/lib/content/validate';
 import { BRENT_FOCUS_WINDOW } from '@/components/report/stories/fixtures/series-capabilities';
 import { SeriesChart } from './series-chart';
 
-// Depends on authored us-voter-id content: the fact
-// `voter-id-rules-in-the-us-and-abroad` carries the NCSL ID-law series whose
-// period label is "Year of NCSL count".
-test('the axis caption keeps an acronym in the period label', async () => {
-  const topic = await loadTopic('us-voter-id');
-  const fact = topic.facts.find(f => f.id === 'voter-id-rules-in-the-us-and-abroad');
-  assert.ok(fact?.series, 'expected the ID-law series');
-  const html = renderToStaticMarkup(createElement(SeriesChart, { factId: fact.id, series: fact.series }));
-  assert.match(html, /<p class="sv-chart__axis-label">[^<]*, by year of NCSL count<\/p>/);
-});
 
 const source = {
   stance: 'supports' as const,
@@ -133,8 +123,6 @@ test('a preview draws one reading, without the Graph/Table switch, and links out
   assert.doesNotMatch(html, new RegExp(`>${people.label}<`));
   assert.doesNotMatch(html, /sv-chart__credit/);
   assert.match(html, /data-variant="preview"/);
-  // The unit stays, since the graph's axis means nothing without it; the period does not.
-  assert.match(html, new RegExp(`<p class="sv-chart__axis-label">${share.valueLabel}</p>`));
   assert.match(html, new RegExp(`<figcaption class="sv-chart__caption"><h3 class="sv-graph-heading"><a href="/topics/uk-immigration/facts/immigration-against-the-long-run">${fact.series!.title}</a></h3>`));
   assert.doesNotMatch(html, /aria-pressed/);
   assert.doesNotMatch(html, /href="#/);
@@ -148,14 +136,11 @@ test('a series subtitle is drawn under the title, in the full chart and the prev
   }
 });
 
-test('a preview leaves out the value label when the title already says what is counted', () => {
-  const plain = oilSeries();
-  const named = { ...plain, readings: plain.readings.map(r => ({ ...r, unitInTitle: true })) };
-  const draw = (series: Series, preview?: { href: string }) => renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, preview }));
-  assert.match(draw(plain, { href: '/x' }), /sv-chart__axis-label/);
-  assert.doesNotMatch(draw(named, { href: '/x' }), /sv-chart__axis-label/);
-  // The full chart keeps it, with the period.
-  assert.match(draw(named), /<p class="sv-chart__axis-label">[^<]*, by /);
+test('a chart draws no unit line; a data panel says what is measured in its More panel', () => {
+  const series = oilSeries();
+  const draw = (props: { preview?: { href: string }; panel?: boolean }) => renderToStaticMarkup(createElement(SeriesChart, { factId: 'oil', series, ...props }));
+  for (const html of [draw({}), draw({ preview: { href: '/x' } }), draw({ panel: true })]) assert.doesNotMatch(html, /sv-chart__axis-label/);
+  assert.match(draw({ panel: true }), new RegExp(`Measured: </span>${series.readings[0].valueLabel}`));
 });
 
 test('a preview\'s screen-reader description mentions no event strip or method-change section it does not draw', async () => {

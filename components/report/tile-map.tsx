@@ -17,6 +17,8 @@ type TileMapCommon = {
   areaLabel?: string;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: string;
   sources?: SourceCredit[];
   note?: string;
@@ -49,7 +51,7 @@ export type TileMapProps = TileMapCommon & MapEncoding;
  * so no category rests on colour alone and none implies an order.
  */
 export function TileMap(props: TileMapProps) {
-  const { tiles, highlight = [], areaLabel = 'Area', id, title, description, sources, note, footer, panel, headingLevel } = props;
+  const { tiles, highlight = [], areaLabel = 'Area', id, title, subtitle, description, sources, note, footer, panel, headingLevel } = props;
   const what = props.categories ? props.categoryLabel : props.valueLabel;
   const reactId = useId();
   const descriptionId = `sv-tile-map-${id ?? slugify(title ?? what)}-${reactId.replace(/[^a-zA-Z0-9]/g, '')}-desc`;
@@ -64,7 +66,7 @@ export function TileMap(props: TileMapProps) {
   );
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-tile-map">
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-tile-map">
       <ChartViewToggle label={title ?? what} graph={graph} table={shading.table} />
     </ReportFigure>
   );

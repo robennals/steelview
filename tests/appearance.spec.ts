@@ -26,8 +26,8 @@ test('at phone width a figure too long for its slide grows, and draws its map', 
   await openTab(page, 'Data');
   const row = page.locator('.sv-row--data').first();
   await row.locator('.sv-row__toggle').click(headCorner);
-  await row.locator('.sv-walk__tab', { hasText: 'proof-of-citizenship' }).click();
-  const slide = row.locator('.sv-walk__slide[aria-label*="proof-of-citizenship"]');
+  await row.locator('.sv-walk__tab', { hasText: 'Proof-of-citizenship laws by state' }).click();
+  const slide = row.locator('.sv-walk__slide[aria-label*="Proof-of-citizenship laws by state"]');
   const chart = slide.locator('.sv-slide');
   await expect(slide.locator('.sv-tile-map__grid')).toBeVisible();
   const { overflow, height } = await chart.evaluate(el => ({ overflow: el.scrollHeight - el.clientHeight, height: el.clientHeight }));

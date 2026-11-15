@@ -11,7 +11,6 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
 import { lineSourceNumbers } from '@/lib/content/sources';
-import { PanelSources } from './sources-slot';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   alongsideOf,
@@ -509,7 +508,6 @@ function Reading({
   markers,
   preview,
   panel,
-  about,
   marks,
   switched,
 }: {
@@ -526,8 +524,6 @@ function Reading({
   preview?: ChartPreview;
   /** Drawn in a data panel, with its sources row in place of the source credit. */
   panel?: boolean;
-  /** What "About this data" says, which a data panel keeps with the description. */
-  about?: ReactNode;
   marks?: MarkedObservation[];
   /** One of several views behind a "Show as" switch, which draws the description, observation bar and sources row once for all of them. */
   switched?: boolean;
@@ -596,17 +592,13 @@ function Reading({
 
   return (
     <section className="sv-chart__reading" id={`${factId}--chart-${reading.id}`} data-marker-root="">
-      {intro && !preview && (panel ? <ChartAbout description={intro}>{about}</ChartAbout> : <p className="sv-chart__desc">{intro}</p>)}
+      {intro && !preview && !panel && <p className="sv-chart__desc">{intro}</p>}
       {/* One reading is the chart itself, so its label would only repeat the title in fewer words. */}
       {!preview && plottedReadings(series).length > 1 && <h3 className={switched ? 'sv-visually-hidden' : 'sv-chart__reading-head'}>{reading.label}</h3>}
       {panel && !switched && <ObservationBar />}
-      {/* A preview keeps the unit, though not the period, unless the title already says it; ticks that carry it need no line at all. */}
-      {!(reading.tickUnit && (!partner || partner.tickUnit)) && !(preview && reading.unitInTitle) && (
-        <p className="sv-chart__axis-label">
-          {partner
-            ? <>Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}{!preview && <>. By {midSentence(series.periodLabel)}</>}</>
-            : preview ? reading.valueLabel : <>{reading.valueLabel}, by {midSentence(series.periodLabel)}</>}
-        </p>
+      {/* Charts carry no unit line, except where two axes need telling apart; ticks that carry both units need none. */}
+      {partner && !(reading.tickUnit && partner.tickUnit) && (
+        <p className="sv-chart__axis-label">Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}</p>
       )}
 
       <p className="sv-visually-hidden" id={descriptionId}>
@@ -669,7 +661,7 @@ function Reading({
         </p>
       )}
 
-      {panel ? !switched && <PanelSources /> : !preview && <SourceLine sources={credits} />}
+      {!panel && !preview && <SourceLine sources={credits} />}
 
       {observations}
     </section>
@@ -766,7 +758,7 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
     {notes}
   </>;
   const readingSections = readings.map((reading, i) => (
-    <Reading intro={i === 0 && !switched ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} markers={markers} preview={preview} panel={panel} about={about} marks={[reading, alongsideOf(series, reading)].flatMap(r => (r && marks?.[r.id]) ?? [])} switched={switched} key={reading.id} series={series} reading={reading} factId={factId} credits={[reading, alongsideOf(series, reading)].flatMap(r => (r ? readingCredits(series, series.readings.indexOf(r), sourceOffset, factId) : []))} />
+    <Reading intro={i === 0 && !switched ? series.description : undefined} observations={preview ? undefined : observations[reading.id]} markers={markers} preview={preview} panel={panel} marks={[reading, alongsideOf(series, reading)].flatMap(r => (r && marks?.[r.id]) ?? [])} switched={switched} key={reading.id} series={series} reading={reading} factId={factId} credits={[reading, alongsideOf(series, reading)].flatMap(r => (r ? readingCredits(series, series.readings.indexOf(r), sourceOffset, factId) : []))} />
   ));
   return (
     <figure className="sv-chart" id={`${factId}--chart-${chartId}`} data-preview={preview ? true : undefined} data-panel-chart={panel ? true : undefined}>
@@ -774,15 +766,17 @@ export function SeriesChart({ factId, chartId = 'series', series, sourceOffset =
         {preview
           ? <h3 className="sv-graph-heading">{preview.href ? <a href={preview.href}>{series.title}</a> : series.title}</h3>
           : <h2 className="sv-graph-heading">{series.title}</h2>}
-        {series.subtitle && <p className="sv-chart__subtitle">{series.subtitle}</p>}
+        {/* A data panel puts the subtitle in its More line, under the title as every chart's is. */}
+        {panel
+          ? <ChartAbout subtitle={series.subtitle} description={series.description} measure={switched ? undefined : readings[0].valueLabel}>{about}</ChartAbout>
+          : series.subtitle && <p className="sv-chart__subtitle">{series.subtitle}</p>}
       </figcaption>
 
       <SeriesHighlight>
         {switched
           ? <>
-            {panel ? <ChartAbout description={series.description}>{about}</ChartAbout> : !preview && <p className="sv-chart__desc">{series.description}</p>}
+            {!panel && !preview && <p className="sv-chart__desc">{series.description}</p>}
             <ShowAs views={readings.map(r => ({ id: r.id, label: readingName(series, r) }))} bar={panel ? <ObservationBar /> : undefined}>{readingSections}</ShowAs>
-            {panel && <PanelSources />}
           </>
           : readingSections}
       </SeriesHighlight>

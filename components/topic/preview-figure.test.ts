@@ -36,6 +36,11 @@ function assertCompact(html: string, id: string, title: string) {
   assert.doesNotMatch(html, /sv-chart__desc|sv-chart__view-controls|sv-chart__credit|sv-chart__methodology|About this data|<noscript/);
 }
 
+test('a figure preview draws its subtitle under the title', () => {
+  const html = preview('wa-by-race', variant('wa-by-race', f => ({ ...f, subtitle: 'Washington, 2020' })));
+  assert.match(html, /<\/h3><p class="sv-chart__subtitle">Washington, 2020<\/p>/);
+});
+
 test('a bar chart preview is its title and every bar, with no axis', () => {
   const html = preview('wa-by-race');
   assertCompact(html, 'wa-by-race', 'Mail ballots rejected in Washington, by race, 2020');

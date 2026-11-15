@@ -180,13 +180,12 @@ export const seriesReadingSchema = z.object({
   label: z.string().min(1),
   /** `count` formats 1,441,000 and 1.4m; `percent` formats 2.10%. */
   unit: z.enum(['count', 'percent']),
-  /** The value-axis label — what one unit on the vertical axis means. */
-  valueLabel: z.string().min(1),
   /**
-   * The series title already says what the axis counts ("Executions per year
-   * in Iran"), so a preview leaves out the value label. The full chart keeps it.
+   * Exactly what one unit on the vertical axis counts. No line on the chart
+   * shows it: the title, subtitle or tickUnit must make the unit clear, and a
+   * data panel's More says this in full.
    */
-  unitInTitle: z.boolean().optional(),
+  valueLabel: z.string().min(1),
   /**
    * A short unit written after every value on the axis ("kg" makes "500 kg"),
    * so the reader needs no separate label line above the graph to read it.
@@ -201,6 +200,11 @@ export const seriesReadingSchema = z.object({
    * accept values no quote states.
    */
   valuesFrom: z.string().min(1).optional(),
+  /**
+   * Whether the value axis reaches zero; default true. Set false only when
+   * zero means nothing on this scale, and say why in `note`.
+   */
+  zeroBased: z.boolean().optional(),
   /**
    * Another reading of the same series to draw on this one's plot, against a
    * second value axis on the right: a count and its rate, a total and its
@@ -400,6 +404,7 @@ const figureBase = {
   id: slugId,
   replaces,
   title: z.string().min(1),
+  subtitle: chartSubtitle,
   /** The visible one-sentence orientation, and the screen-reader description. */
   description: z.string().min(1),
   /** Citations the whole figure rests on. Kinds whose items each cite a source may leave this empty. */

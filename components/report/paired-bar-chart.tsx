@@ -39,6 +39,8 @@ export type PairedBarChartProps = {
   domainMax?: number;
   id?: string;
   title?: string;
+  /** A short line under the title: the period, cases or source (see ReportFigure). */
+  subtitle?: string;
   description?: ReactNode;
   sources?: SourceCredit[];
   note?: ReactNode;
@@ -78,6 +80,7 @@ export function PairedBarChart({
   domainMax,
   id,
   title,
+  subtitle,
   description,
   sources,
   note,
@@ -133,7 +136,7 @@ export function PairedBarChart({
 
   if (preview) {
     return (
-      <ReportFigure id={id} title={title} preview={preview} className="sv-bar-chart">
+      <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-bar-chart">
         {legend}
         <BarRows rows={rows} scale={scale} format={format} layout={layout} label={valueLabel} preview />
       </ReportFigure>
@@ -141,8 +144,7 @@ export function PairedBarChart({
   }
 
   return (
-    <ReportFigure id={id} title={title} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
-      <p className="sv-chart__axis-label">{valueLabel}</p>
+    <ReportFigure id={id} title={title} subtitle={subtitle} description={description} measure={valueLabel} sources={sources} note={note} footer={footer} panel={panel} className="sv-bar-chart">
       <ChartViewToggle
         label={title ?? valueLabel}
         graph={
