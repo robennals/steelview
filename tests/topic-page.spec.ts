@@ -715,6 +715,17 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
   });
 
+  test('open, a topic on the home page also runs to the screen\'s edges, growing from its card', async ({ page }) => {
+    await page.goto('/');
+    const row = page.locator('.sv-row').nth(1);
+    expect((await row.boundingBox())!.width).toBeLessThan(390);
+    await row.locator('.sv-row__toggle').click(headCorner);
+    await expect(row).toHaveAttribute('data-open', 'true');
+    // The width is a transition, not a jump.
+    expect(await row.evaluate(el => getComputedStyle(el).transitionProperty)).toMatch(/margin/);
+    await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
+  });
+
   test('a cited claim opens its finding in a pop-up, which leads on to the data', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);

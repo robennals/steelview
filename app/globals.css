@@ -1271,7 +1271,14 @@
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 16px;
-    transition: box-shadow 0.4s, border-color 0.3s;
+    /* A row that runs to the screen's edges when open (a phone, below) widens
+       in step with its body opening, rather than jumping. */
+    transition:
+      box-shadow 0.4s,
+      border-color 0.3s,
+      margin 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-width 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-radius 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .sv-row:not([data-open]):hover {
@@ -2245,8 +2252,10 @@
   @media (max-width: 47.5rem) {
     .sv-deck { padding-inline: 1rem; }
     .sv-row--deck .sv-row__title, .sv-row--deck[data-open] .sv-row__title { font-size: 1.35rem; }
-    /* Width is scarce on a phone: open, a viewpoint runs to the screen's edges. */
-    .sv-row--deck[data-open] { margin-inline: -1.25rem; border-inline: 0; border-radius: 0; }
+    /* Width is scarce on a phone: open, a viewpoint, or a topic on the home
+       page, runs to the screen's edges, growing out of its card as it opens
+       (the transition is with .sv-row's). */
+    .sv-row--deck[data-open], .sv-home .sv-row[data-open] { margin-inline: -1.25rem; border-left-width: 0; border-right-width: 0; border-radius: 0; }
     /* The arrow sits small at the end of the title's line, as on the home page,
        so the overview and the graphs below get the whole width. */
     .sv-row--deck .sv-row__chevron { position: absolute; top: 1.35rem; right: 1rem; width: 1.4rem; height: 1.4rem; }
@@ -2257,7 +2266,7 @@
 
   /* Between a phone and a tablet the page has wider margins to reach. */
   @media (min-width: 40rem) and (max-width: 47.5rem) {
-    .sv-row--deck[data-open] { margin-inline: -2rem; }
+    .sv-row--deck[data-open], .sv-home .sv-row[data-open] { margin-inline: -2rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
