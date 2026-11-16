@@ -5,7 +5,9 @@ import { ExplorableChart, ExploreLink } from '@/components/topic/explore-panels'
 import { Prose } from '@/components/topic/prose';
 import { rowCharts } from '@/lib/content/row-charts';
 import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
-import { TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
+import { ChartThumb } from '@/components/topic/chart-thumb';
+import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { ClaimPopups } from './claim-popups';
 import { Slideshow } from './slideshow';
 
@@ -65,9 +67,10 @@ type ViewpointSlidesProps = {
 };
 
 /**
- * The viewpoints as rows, none open at first, each a slideshow once open: one
- * card per step of the argument, made with a graph where the step has one.
- * Tapping a cited claim opens the finding behind it in a pop-up.
+ * The viewpoints as rows, none open at first. Closed, a row previews the graphs
+ * its argument is made with, each opening the row at its card. Open, it is a
+ * slideshow: one card per step of the argument, made with a graph where the
+ * step has one. Tapping a cited claim opens the finding behind it in a pop-up.
  */
 export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: ViewpointSlidesProps) {
   return (
@@ -75,16 +78,32 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
+          const graphs = steps.flatMap((step, card) => (step.chart && step.chartCard ? [{ step, chart: step.chart, card }] : []));
           return (
             <TopicRow
               key={viewpoint.id}
               slug={viewpoint.id}
               anchor={anchorFor('viewpoint', viewpoint.id)}
-              className="sv-row--deck sv-row--viewpoint"
+              className="sv-row--walk sv-row--deck sv-row--viewpoint"
               title={viewpoint.shortName}
               subtitle={viewpoint.name}
               meta={null}
-              thumbs={null}
+              thumbs={
+                <ThumbStrip
+                  total={graphs.length}
+                  steps={graphs.map(({ card }) => card)}
+                  thumbs={graphs.map(({ step, chart, card }) => (
+                    <li key={card}>
+                      <RowThumb step={card}>
+                        <span className="sv-row__thumb" aria-hidden="true">
+                          <ChartThumb fact={chart.fact} chart={chart.chart} reading={chart.reading} preview />
+                        </span>
+                        <span className="sv-walk__thumb-label">{card + 1}. {step.heading}</span>
+                      </RowThumb>
+                    </li>
+                  ))}
+                />
+              }
             >
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id, true)}>
                 <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)}>

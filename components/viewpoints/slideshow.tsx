@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
+import { useStepRequest } from '@/components/home/topic-accordion';
 import { useCarousel } from '@/components/home/use-carousel';
 
 type SlideshowProps = {
@@ -25,6 +26,12 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
   const { strip, index, announced, enhanced, go, onKeyDown, onScroll } = useCarousel(count);
   const last = index === count - 1;
   const stage = useRef<HTMLDivElement>(null);
+
+  // Opened from a thumbnail on the closed row: start on that card.
+  const request = useStepRequest();
+  useEffect(() => {
+    if (request) go(request.step, true);
+  }, [request, go]);
 
   /**
    * Move to a slide, and if the reader has scrolled down past the top of the

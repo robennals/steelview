@@ -737,3 +737,16 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   await expect(card.locator('.sv-chart')).toHaveCount(0);
   await expect(card.locator('.sv-deck__prose')).toContainText('£715 million');
 });
+
+test('a closed slideshow viewpoint previews its graphs, and a graph opens the row at its card', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(SLIDES_TOPIC);
+  const row = page.locator(SLIDES_VIEWPOINT);
+  // Four of its six steps are made with graphs; the two made with tables have no thumbnail.
+  const thumbs = row.locator('.sv-walk__thumb');
+  await expect(thumbs).toHaveCount(4);
+  await expect(thumbs.nth(3)).toContainText('6. Britain should open safe routes');
+  await thumbs.nth(3).click();
+  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Britain should open safe routes');
+  await expect(row.locator('.sv-deck__card').nth(5)).toBeInViewport();
+});
