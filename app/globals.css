@@ -2170,12 +2170,13 @@
   /* A card with a graph never scrolls: the graph takes the room there is. */
   .sv-deck__card[data-graph] { overflow: visible; }
 
-  /* The point the card makes. */
+  /* The point the card makes: a sentence of the argument, well under the
+     viewpoint's name in size, so a whole point fits with room for the line under it. */
   .sv-deck__heading {
     flex: none;
     margin: 0 0 0.4rem;
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.7rem);
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
     font-weight: 600;
     line-height: 1.18;
     letter-spacing: -0.02em;
@@ -2184,18 +2185,17 @@
 
   .sv-deck__prose { max-width: var(--measure); font-size: 1.05rem; line-height: 1.6; }
   .sv-deck__prose p { margin: 0 0 0.9rem; }
-  .sv-deck__card:not([data-graph]) .sv-deck__prose { margin-top: 0.5rem; }
 
-  /* What the graph shows, on a line or two, opening to the reasoning, which
-     floats over the graph so the graph does not move. */
-  .sv-deck__details { position: relative; flex: none; margin: 0 0 0.75rem; font-family: var(--font-sans); font-size: 0.875rem; line-height: 1.45; color: var(--ink-3); }
-  .sv-deck__details > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
+  /* The step of reasoning that completes the card's point: read card after
+     card, heading and line make the argument. On a card with a graph, the
+     line opens the evidence, which floats over the graph so it does not move. */
+  .sv-deck__details { position: relative; flex: none; margin: 0 0 0.75rem; max-width: var(--measure); font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.5; color: var(--ink-2); }
+  .sv-deck__details > summary { display: block; list-style: none; cursor: pointer; }
   .sv-deck__details > summary::-webkit-details-marker { display: none; }
-  .sv-deck__shows { flex: 1; min-width: 0; display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  .sv-deck__more { flex: none; font-weight: 600; color: var(--accent); }
+  .sv-deck__more { margin-left: 0.4em; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; white-space: nowrap; color: var(--accent); }
   .sv-deck__more::after { content: "More ▾"; }
   .sv-deck__details[open] .sv-deck__more::after { content: "Less ▴"; }
-  .sv-deck__details > summary:hover :is(.sv-deck__shows, .sv-deck__more) { text-decoration: underline; text-underline-offset: 0.2em; }
+  .sv-deck__details > summary:hover .sv-deck__more { text-decoration: underline; text-underline-offset: 0.2em; }
 
   .sv-deck__pop {
     position: absolute;
@@ -2215,12 +2215,25 @@
 
   .sv-deck__pop .sv-deck__prose { font-family: var(--font-serif); font-size: 1rem; }
 
-  /* The graph fills the rest of the card. Its own title and description would
-     repeat the card's line, so it shows only what is drawn, and its sources. */
-  .sv-deck__card .sv-walk__chart { flex: 1; min-height: 0; }
+  /* The graph fills the rest of the card, under its own title, set small: it
+     names what is drawn, while the card's heading says what it shows. */
+  .sv-deck__graphs { display: flex; flex: 1; flex-direction: column; gap: 1rem; min-height: 0; }
+  .sv-deck__card .sv-walk__chart { flex: 1; min-width: 0; min-height: 0; }
+
+  /* A card's two graphs sit side by side where there is room. On a phone they
+     go one above the other, and the card grows to give each a readable height
+     rather than squeezing them into one screen. */
+  @media (width > 47.5rem) {
+    .sv-deck__graphs[data-count="2"] { flex-direction: row; gap: 1.5rem; }
+  }
+
+  @media (max-width: 47.5rem) {
+    .sv-deck__card:has(.sv-deck__graphs[data-count="2"]) { height: auto; min-height: var(--sv-card-height); }
+    .sv-deck__graphs[data-count="2"] > .sv-walk__chart { flex: none; height: 24rem; }
+  }
   .sv-deck__card .sv-walk__chart > .sv-slide { flex: 1; min-height: 0; display: flex; flex-direction: column; }
   .sv-deck__card .sv-walk__chart > .sv-slide > * { flex: 1; min-height: 0; }
-  .sv-deck__card .sv-chart :is(.sv-chart__caption, .sv-chart__desc) { display: none; }
+  .sv-deck__card .sv-chart .sv-chart__desc { display: none; }
   /* The expand mark says the graph opens; the link is for a keyboard, and shows when it has focus. */
   .sv-deck__card .sv-walk__explore:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
@@ -2943,8 +2956,12 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    rather than spreading apart to fill it. */
 .sv-deck__card .sv-chart__preview :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: none; margin-block: auto; justify-content: flex-start; gap: 1rem; }
 .sv-deck__card .sv-chart__preview .sv-bars__row { font-size: .9rem; }
-/* The chart's title is the card's, so its first line makes room for the expand mark instead. */
-.sv-deck__card .sv-walk__chart--explorable :is(.sv-chart__legend, .sv-chart__preview > :first-child) { padding-right: 1.75rem; }
+/* A card's graph keeps its title, small, for what is drawn: the card's heading makes the point. */
+.sv-deck__card .sv-chart[data-preview] .sv-chart__caption { margin-bottom: .35rem; }
+.sv-deck__card .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { min-height: 0; font: 600 .85rem/1.3 var(--font-sans); letter-spacing: 0; color: var(--ink-2); }
+.sv-deck__card .sv-chart[data-preview] .sv-chart__subtitle { margin: .1rem 0 0; font: .8rem/1.35 var(--font-sans); color: var(--ink-3); }
+/* The chart's title sits beside the expand mark, so its first line makes room for it. */
+.sv-deck__card .sv-walk__chart--explorable .sv-chart__caption { padding-right: 1.75rem; }
 .sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
 .sv-chart[data-preview] .sv-comparison__rows { margin: .4rem 0; }

@@ -958,7 +958,7 @@ function decimalPlaces(n: number): number {
 
 /**
  * F9, for every map (and its older spellings, tile and geo maps): every area id belongs to the preset,
- * an arrow starts at a shaded area, a crop and a numeric scale run upwards,
+ * an arrow that starts at an area starts at a shaded one, a crop and a numeric scale run upwards,
  * categories are distinct and every assignment names one, and any area drawn
  * without a value or category is explained.
  * `areas` is every id the preset knows; `shown` the ones this figure draws —
@@ -970,7 +970,7 @@ function mapErrors(figure: FigureOf<'map'>, areas: string[], shown: string[], pr
   for (const key of Object.keys(keyed)) if (!areas.includes(key)) errors.push(`${where} "${key}" is not an area of ${preset}`);
   for (const id of figure.highlight) if (!areas.includes(id)) errors.push(`${where} highlight "${id}" is not an area of ${preset}`);
   // An arrow starts at an area, which the map must draw, shaded, so its thickness and its readout have a value.
-  for (const id of figure.flows?.from ?? []) {
+  for (const id of figure.flows?.from.filter(start => typeof start === 'string') ?? []) {
     if (!areas.includes(id)) errors.push(`${where} flow from "${id}" is not an area of ${preset}`);
     else if (!(id in keyed)) errors.push(`${where} flow from "${id}" has no datum`);
   }

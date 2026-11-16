@@ -300,6 +300,15 @@ test('arrows on the real shapes converge through their places, thickest from the
   assert.doesNotMatch(tiles, /sv-geo-map__flow"/, 'the tiles draw no arrows');
 });
 
+test('an arrow can start at a named place rather than an area, and its start and end are named', () => {
+  const flows = { label: 'Crossings', from: [{ place: { label: 'Harbour', lon: -80, lat: 30 } }], via: [], to: { label: 'Landing', lon: -75, lat: 35 } };
+  const html = renderToStaticMarkup(createElement(AreaMap, { ...numeric, flows }));
+  assert.equal((html.match(/<path class="sv-geo-map__flow"/g) ?? []).length, 1);
+  assert.equal((html.match(/marker-end=/g) ?? []).length, 1, 'with nowhere to meet, the arrow is whole');
+  assert.deepEqual([...html.matchAll(/<text class="sv-geo-map__flow-label"[^>]*>([^<]+)<\/text>/g)].map(m => m[1]), ['Harbour', 'Landing']);
+  assert.match(html, /Crossings: arrows from Harbour to Landing\./);
+});
+
 test('GeoMap markers are drawn, keyed by shape and listed in the table', () => {
   const html = renderToStaticMarkup(createElement(GeoMap, {
     regions: UK_ITL1_REGIONS,

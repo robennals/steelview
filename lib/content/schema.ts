@@ -665,15 +665,16 @@ function mapEncodingRule(what: 'map' | 'tile map' | 'geo map') {
 const mapPlace = z.strictObject({ label: z.string().min(1), lon: z.number().min(-180).max(180), lat: z.number().min(-90).max(90) });
 
 /**
- * Arrows on the real-shape view: from each area in `from`, through the `via`
+ * Arrows on the real-shape view: from each start in `from`, through the `via`
  * places in turn, to `to`. They converge, so the last stretch is one arrow.
- * On a numeric map each area's arrow is as thick as its datum. The tiles draw
- * none; the screen-reader text and the table name the route.
+ * A start is an area, whose arrow on a numeric map is as thick as its datum,
+ * or a place, such as a stretch of coast. The tiles draw none; the
+ * screen-reader text names the route.
  */
 const mapFlows = z.strictObject({
   /** What the arrows show, for the key: "Route to the UK". */
   label: z.string().min(1),
-  from: z.array(z.string().min(1)).min(1),
+  from: z.array(z.union([z.string().min(1), mapPlace])).min(1),
   via: z.array(mapPlace).default([]),
   to: mapPlace,
 });

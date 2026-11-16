@@ -16,6 +16,8 @@ export type WalkthroughStep = {
   chart?: PreviewSlide;
   /** The citation that chart was chosen for: `#fact-<id>/<section>`. */
   cited?: { id: string; section: string };
+  /** The graphs a slideshow card is made with (`cardGraphs`), each with the citation it was chosen for. */
+  graphs: { chart: PreviewSlide; cited: { id: string; section: string } }[];
 };
 
 export type Walkthrough = {
@@ -152,20 +154,37 @@ function chartFor(slug: string, fact: Fact, key: string, observation: string): P
 export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkthrough {
   const [lead, ...sections] = viewpoint.body.split(/^### /m);
   const groups = new Map(topic.facts.map(fact => [fact.id, observationGroups(fact)]));
+  /** The charts behind a passage's citations, in order, each with the citation it was chosen for. */
+  const chartsCited = (markdown: string) => citedFactTargets(markdown).flatMap(({ id, section: observation }) => {
+    const fact = topic.facts.find(f => f.id === id);
+    // A citation can also name a chart outright, `#fact-<fact>/chart-<id>`, or
+    // an old anchor of prose a figure now stands in for (`replaces`).
+    const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
+    const chart = fact && key && chartFor(topic.slug, fact, key, observation);
+    return chart ? [{ chart, cited: { id, section: observation } }] : [];
+  });
   const steps = sections.map(section => {
     const [heading, ...rest] = section.split('\n');
     const markdown = rest.join('\n').trim();
-    for (const { id, section: observation } of citedFactTargets(markdown)) {
-      const fact = topic.facts.find(f => f.id === id);
-      // A citation can also name a chart outright, `#fact-<fact>/chart-<id>`, or
-      // an old anchor of prose a figure now stands in for (`replaces`).
-      const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
-      const chart = fact && key && chartFor(topic.slug, fact, key, observation);
-      if (chart) return { heading: heading.trim(), markdown, chart, cited: { id, section: observation } };
-    }
-    return { heading: heading.trim(), markdown };
+    const [first] = chartsCited(markdown);
+    return { heading: heading.trim(), markdown, ...first, graphs: cardGraphs(chartsCited(splitFirstParagraph(markdown)[0])) };
   });
   return { lead: lead.trim(), steps };
+}
+
+/** How many graphs a slideshow card shows at most: two can sit side by side, or one above the other on a phone. */
+const CARD_GRAPHS = 2;
+
+/**
+ * The graphs a slideshow card is made with: those behind the claims its
+ * reasoning line cites, in order, so the line's claims are what the reader
+ * sees. A line that cites no data makes a card of text. A table or a quote is
+ * never one: it reads as more text, which the card already gives.
+ */
+function cardGraphs(inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
+  const graphs = inReasoning.filter(({ chart }) => isGraph(chart));
+  const unique = graphs.filter(({ chart }, i) => graphs.findIndex(g => g.chart.fact.id === chart.fact.id && g.chart.chart === chart.chart && g.chart.reading === chart.reading) === i);
+  return unique.slice(0, CARD_GRAPHS);
 }
 
 /**
@@ -186,27 +205,43 @@ function panelTargets(topic: Topic): (id: string, section: string) => PanelTarge
 }
 
 /**
- * A step's chart, as a slideshow card draws it, when it is a graph rather than
- * a table, quote or other figure set as type: those read as more text, which
- * the step's prose already gives. The card's subtitle is what the graph shows,
- * its title and subtitle, which the graph then leaves out.
+ * Whether a step's chart is a graph rather than a table, quote or other figure
+ * set as type: a slideshow card is made with a graph, while the others read as
+ * more text, which the step's prose already gives.
  */
-function chartCard({ fact, chart, label }: PreviewSlide): RenderedStep['chartCard'] {
+function isGraph({ fact, chart }: PreviewSlide): boolean {
   const target = previewTarget(fact, chart);
-  if (!target || !isPreviewable(target)) return undefined;
-  const drawn = target.kind === 'series' ? target.series : target.kind === 'comparison' ? target.comparison : target.figure;
-  return { title: label, subtitle: 'subtitle' in drawn ? drawn.subtitle : undefined };
+  return !!target && isPreviewable(target);
+}
+
+/** A section's first paragraph, and the rest. */
+function splitFirstParagraph(markdown: string): [string, string] {
+  const [first, ...rest] = markdown.split(/\n\s*\n/);
+  return [first, rest.join('\n\n')];
 }
 
 /** A step with its prose rendered, ready for a synchronous component. */
-export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
+/** One of a slideshow card's graphs, with where it opens its data. */
+export type CardGraph = {
+  chart: PreviewSlide;
+  /** Where the graph opens its collection's data panel, when the topic page has one. */
+  panel?: PanelTarget;
+  /** "Explore this data", rendered as a citation so it opens the collection's report, for a graph with no panel. */
+  exploreHtml: string;
+};
+
+export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited' | 'graphs'> & {
   html: string;
   /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
   exploreHtml?: string;
   /** Where "Explore this data" opens the chart's data panel. */
   panel?: PanelTarget;
-  /** What a slideshow card says its graph shows (`chartCard`), when the step's chart is a graph. */
-  chartCard?: { title: string; subtitle?: string };
+  /** The graphs a slideshow card is made with (`cardGraphs`). */
+  graphs: CardGraph[];
+  /** For a slideshow card: the section's first paragraph, the step of reasoning that completes its heading, rendered without its paragraph. */
+  reasoningHtml: string;
+  /** For a slideshow card: the rest of the section, the evidence, rendered. */
+  evidenceHtml: string;
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -223,14 +258,22 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited }) => ({
-        heading,
-        chart,
-        panel: cited && panelFor(cited.id, cited.section),
-        html: await renderMarkdown(markdown, topic.slug, topic.facts, { panelCitation: panelFor }),
-        exploreHtml: cited && await renderMarkdown(`[Explore this data](#fact-${cited.id}/${cited.section})`, topic.slug, topic.facts),
-        chartCard: chart && chartCard(chart),
-      }))),
+      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited, graphs }) => {
+        const render = (md: string) => renderMarkdown(md, topic.slug, topic.facts, { panelCitation: panelFor });
+        const explore = ({ id, section }: { id: string; section: string }) => renderMarkdown(`[Explore this data](#fact-${id}/${section})`, topic.slug, topic.facts);
+        const [reasoning, evidence] = splitFirstParagraph(markdown);
+        return {
+          heading,
+          chart,
+          panel: cited && panelFor(cited.id, cited.section),
+          html: await render(markdown),
+          exploreHtml: cited && await explore(cited),
+          graphs: await Promise.all(graphs.map(async graph => ({ chart: graph.chart, panel: panelFor(graph.cited.id, graph.cited.section), exploreHtml: await explore(graph.cited) }))),
+          // Inline, for a card's subtitle line.
+          reasoningHtml: (await render(reasoning)).replace(/^<p>|<\/p>\s*$/g, ''),
+          evidenceHtml: await render(evidence),
+        };
+      })),
     });
   }
   return rendered;
