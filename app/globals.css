@@ -2204,8 +2204,8 @@
 
   /* The step of reasoning that completes the card's point: read card after
      card, heading and line make the argument. On a card with a graph, the
-     line opens the evidence, which floats over the graph so it does not move. */
-  .sv-deck__details { position: relative; flex: none; margin: 0 0 0.75rem; max-width: var(--measure); font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.5; color: var(--ink-2); }
+     line opens the evidence under it, inside the card, which grows to hold it. */
+  .sv-deck__details { flex: none; margin: 0 0 0.75rem; max-width: var(--measure); font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.5; color: var(--ink-2); }
   .sv-deck__details > summary { display: block; list-style: none; cursor: pointer; }
   .sv-deck__details > summary::-webkit-details-marker { display: none; }
   .sv-deck__more { margin-left: 0.4em; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; white-space: nowrap; color: var(--accent); }
@@ -2213,23 +2213,12 @@
   .sv-deck__details[open] .sv-deck__more::after { content: "Less ▴"; }
   .sv-deck__details > summary:hover .sv-deck__more { text-decoration: underline; text-underline-offset: 0.2em; }
 
-  .sv-deck__pop {
-    position: absolute;
-    top: calc(100% + 0.35rem);
-    left: 0;
-    right: 0;
-    z-index: 30;
-    max-height: min(28rem, 60svh);
-    overflow-y: auto;
-    padding: 0.9rem 1.1rem 0.2rem;
-    border: 1px solid var(--rule);
-    border-radius: 8px;
-    background: var(--paper);
-    box-shadow: 0 6px 24px rgb(20 25 40 / 0.18);
-    color: var(--ink-2);
-  }
-
+  /* The evidence, set off by a rule at its side, with no space above its first
+     line or below its last beyond the card's own. */
+  .sv-deck__pop { margin-top: 0.6rem; padding-left: 0.9rem; border-left: 3px solid var(--rule); color: var(--ink-2); }
   .sv-deck__pop .sv-deck__prose { font-family: var(--font-serif); font-size: 1rem; }
+  .sv-deck__pop .sv-deck__prose > :first-child { margin-top: 0; }
+  .sv-deck__pop .sv-deck__prose > :last-child { margin-bottom: 0; }
 
   /* The graph fills the rest of the card, under its own title, set small: it
      names what is drawn, while the card's heading says what it shows. */
