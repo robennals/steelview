@@ -6,6 +6,7 @@ import { figureExamplesFact } from '@/lib/content/__fixtures__/figure-examples';
 import { figureContext } from '@/lib/content/figure-props';
 import type { ComponentFigure } from '@/lib/content/types';
 import { FactFigure } from './fact-figures';
+import { SlideChart } from './slide-chart';
 
 const fact = figureExamplesFact();
 const context = figureContext(fact, '2026-10-29');
@@ -30,6 +31,17 @@ test('a long list filters by category and, since one speaker is quoted twice, by
   assert.match(list, /Who is speaking/);
   assert.match(list, />Speaker</);
   assert.match(list, /Government reviews/);
+});
+
+test('on a slideshow card a collection of quotes is a carousel, in date order, marking the speakers the card\'s point rests on', () => {
+  const html = renderToStaticMarkup(createElement(SlideChart, { slide: { fact, chart: 'postal-secrecy', label: 'Postal secrecy', href: '/x' }, fit: 'card', page, picked: ['Priscilla Southwell'] }));
+  assert.match(html, /class="sv-chart sv-quote-carousel"/);
+  assert.doesNotMatch(html, /sv-quote-browser/, 'not the filterable list');
+  const slides = [...html.matchAll(/<figure class="sv-quote-carousel__slide"( data-picked="true")?[^>]*aria-label="Quote (\d+) of (\d+): ([^"]+)"/g)];
+  assert.equal(slides.length, 5, 'every quote is drawn, for a reader without JavaScript');
+  const dates = [...html.matchAll(/<time dateTime="([^"]+)"/g)].map(m => m[1]);
+  assert.deepEqual(dates, [...dates].sort(), 'oldest first');
+  assert.deepEqual(slides.filter(([, picked]) => picked).map(([, , , , speaker]) => speaker), ['Priscilla Southwell', 'Priscilla Southwell'], 'both of her quotes, and only hers, are marked');
 });
 
 test('a quote not in English is marked with its language and has its translation beside it, outside the quotation', () => {

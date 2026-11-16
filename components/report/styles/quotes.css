@@ -477,4 +477,54 @@
   .sv-caveats__why {
     color: var(--ink-2);
   }
+
+  /* A collection of quotes in a slideshow card (quote-carousel.tsx): one quote
+     at a time, large, with who said it; the strip follows the quote showing.
+     A quote the card's point rests on is marked at its side. */
+  .sv-quote-carousel { display: flex; flex-direction: column; margin: 0; }
+
+  .sv-quote-carousel__strip {
+    display: flex;
+    align-items: flex-start;
+    height: var(--sv-strip-height, auto);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    outline: none;
+    transition: height 0.25s;
+  }
+
+  .sv-quote-carousel__strip::-webkit-scrollbar { display: none; }
+  .sv-quote-carousel__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+
+  .sv-quote-carousel__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0.25rem 0 0.25rem 1rem;
+    border-left: 3px solid var(--rule);
+    scroll-snap-align: start;
+  }
+
+  .sv-quote-carousel__slide[data-picked] { border-left-color: var(--accent); }
+
+  .sv-quote-carousel__text { margin: 0; }
+  .sv-quote-carousel__text p {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .sv-quote-carousel__controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.9rem; }
+  .sv-quote-carousel__controls .sv-carousel__step:disabled { opacity: 0.35; cursor: default; }
+
+  /* The dot of a quote the card's point rests on is ringed, whichever is showing. */
+  .sv-quote-carousel .sv-carousel__dot[data-picked]:not([aria-current]) { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sv-quote-carousel__strip { transition: none; }
+  }
 }

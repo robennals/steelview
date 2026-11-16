@@ -5,7 +5,7 @@ import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-e
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, reportChartPath, resolvePreviews, slideGroups } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure } from './types';
-import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, repeatedCardGraphErrors, viewpointWalkthrough } from './walkthrough';
+import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, repeatedCardVisualErrors, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -226,11 +226,11 @@ test('every previewable kind has an example in the figure fixture', () => {
 
 test('a slideshow viewpoint may not show one graph on two cards', async () => {
   const topic = await loadTopic('uk-asylum');
-  assert.deepEqual(repeatedCardGraphErrors(topic), [], 'the published viewpoints show each graph once');
+  assert.deepEqual(repeatedCardVisualErrors(topic), [], 'the published viewpoints show each graph once');
   const cite = '[The queue has moved to appeals](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals).';
   const viewpoint = { ...topic.viewpoints[0], body: `Lead.\n\n### First point\n\n${cite}\n\n### Second point\n\n${cite}\n` };
-  const errors = repeatedCardGraphErrors({ ...topic, viewpoints: [viewpoint] });
+  const errors = repeatedCardVisualErrors({ ...topic, viewpoints: [viewpoint] });
   assert.equal(errors.length, 1);
-  assert.match(errors[0], /"Second point" shows the same graph as "First point"/);
-  assert.deepEqual(repeatedCardGraphErrors({ ...topic, slug: 'not-a-slideshow', viewpoints: [viewpoint] }), [], 'checked only where viewpoints are slideshows');
+  assert.match(errors[0], /"Second point" shows the same evidence as "First point"/);
+  assert.deepEqual(repeatedCardVisualErrors({ ...topic, slug: 'not-a-slideshow', viewpoints: [viewpoint] }), [], 'checked only where viewpoints are slideshows');
 });

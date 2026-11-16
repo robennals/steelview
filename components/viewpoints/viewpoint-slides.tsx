@@ -17,17 +17,17 @@ type StepCardProps = { step: RenderedStep; index: number };
  * One step of the argument, as one card. Its heading makes the point, and the
  * line under it, the section's first paragraph, completes the step: read card
  * after card, the two make the whole argument. The rest of the section is the
- * evidence. A card made with a graph opens it from that line, over the graph;
+ * evidence. A card made with a graph or quotes opens it from that line, over them;
  * a card without one gives it in full.
  * Citations open in pop-ups (`ClaimPopups`).
  */
 function StepCard({ step, index }: StepCardProps) {
-  const graph = step.cardGraph;
+  const visual = step.cardVisual;
   const reasoning = <span className="sv-deck__reasoning" dangerouslySetInnerHTML={{ __html: step.reasoningHtml }} />;
   return (
-    <div className="sv-deck__card" data-graph={graph ? true : undefined}>
+    <div className="sv-deck__card" data-visual={visual ? true : undefined}>
       <h3 className="sv-deck__heading">{step.heading}</h3>
-      {graph ? (
+      {visual ? (
         <>
           <details className="sv-deck__details">
             <summary>
@@ -40,9 +40,9 @@ function StepCard({ step, index }: StepCardProps) {
           </details>
           <ExplorableChart>
             <div className="sv-slide"><LazyChart index={index} /></div>
-            {graph.panel
-              ? <ExploreLink {...graph.panel} href={graph.chart.href} />
-              : <Prose html={graph.exploreHtml} className="sv-walk__explore" />}
+            {visual.panel
+              ? <ExploreLink {...visual.panel} href={visual.chart.href} />
+              : <Prose html={visual.exploreHtml} className="sv-walk__explore" />}
           </ExplorableChart>
         </>
       ) : (
@@ -66,7 +66,7 @@ type ViewpointSlidesProps = {
 /**
  * The viewpoints as rows, none open at first. Closed, a row previews the graphs
  * its argument is made with, each opening the row at its card. Open, it is a
- * slideshow: one card per step of the argument, made with a graph where the
+ * slideshow: one card per step of the argument, made with a graph or quotes where the
  * step has one. Tapping a cited claim opens the finding behind it in a pop-up.
  */
 export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: ViewpointSlidesProps) {
@@ -76,7 +76,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
-          const graphs = steps.flatMap((step, card) => (step.cardGraph ? [{ step, chart: step.cardGraph.chart, card }] : []));
+          const graphs = steps.flatMap((step, card) => (step.cardVisual ? [{ step, chart: step.cardVisual.chart, card }] : []));
           return (
             <TopicRow
               key={viewpoint.id}

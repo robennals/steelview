@@ -13,7 +13,7 @@ import { SlideChart } from '@/components/topic/slide-chart';
  * `LazyCharts` when the row opens: a viewpoint's step charts as previews, or
  * every chart of a data collection in full, in step order. A step without a chart is `null`.
  * A viewpoint shown as a slideshow (`cards`) gets each card's graph instead
- * (`cardGraph`), at a card's shapes.
+ * (`cardVisual`), at a card's shapes.
  *
  * Callable from the browser, so every argument is checked against the content
  * rather than trusted; anything unknown gets no charts.
@@ -25,12 +25,13 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
   if (kind === 'viewpoint') {
     const viewpoint = topic.viewpoints.find(v => v.id === id);
     if (!viewpoint) return [];
-    const drawn = (chart: PreviewSlide, fit: 'card' | 'tall', key: number) => <Fragment key={key}>
-      <SlideChart slide={chart} fit={fit} page={page} />
+    const drawn = (chart: PreviewSlide, fit: 'card' | 'tall', key: number, picked?: string[]) => <Fragment key={key}>
+      <SlideChart slide={chart} fit={fit} page={page} picked={picked} />
       <ChartSources fact={chart.fact} numbers={slideCitations(chart.fact, chart)} />
     </Fragment>;
     const { steps } = viewpointWalkthrough(topic, viewpoint);
-    if (cards) return steps.map(({ cardGraph }, i) => (cardGraph ? drawn(cardGraph.chart, 'card', i) : null));
+    // A card of quotes picks out the speakers its point rests on: the rows its observation marks.
+    if (cards) return steps.map(({ cardVisual }, i) => (cardVisual ? drawn(cardVisual.chart, 'card', i, cardVisual.chart.fact.observationMarks?.[cardVisual.cited.section]?.rows) : null));
     return steps.map(({ chart }, i) => (chart ? drawn(chart, 'tall', i) : null));
   }
   if (kind === 'data') {
