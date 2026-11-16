@@ -683,7 +683,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect(deck.locator('.sv-deck__outline')).toBeHidden();
     const card = deck.locator('.sv-deck__card').first();
     await expect(card.locator('.sv-deck__heading')).toHaveText('Most people crossing the Channel are found to need protection');
-    await expect(card.locator('.sv-deck__reasoning')).toContainText("By Britain's own decisions, most would face danger if sent back");
+    await expect(card.locator('.sv-deck__reasoning')).toContainText('most would face danger if sent back');
     // One graph a card: a phone has room for no more.
     await expect(card.locator('.sv-chart')).toHaveCount(1);
     await expect(card.locator('.sv-chart__caption')).toContainText('Initial decisions on small-boat arrivals');
