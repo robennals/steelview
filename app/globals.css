@@ -2069,8 +2069,8 @@
   /* ------------------------------------------------ viewpoint slideshows */
 
   /* A trial layout (components/viewpoints/slideshow.tsx): a viewpoint is a
-     slideshow of text slides and graph slides. Closed, a row is just its short
-     name and its stance. */
+     slideshow of cards, one per point of its argument, each made with a graph
+     where it can be. Closed, a row is just its short name and its stance. */
   .sv-row--deck .sv-row__subtitle { max-width: 48rem; }
 
   .sv-deck {
@@ -2109,7 +2109,6 @@
     transition: color 0.2s, background-color 0.2s;
   }
 
-  .sv-deck__outline li[data-chart] .sv-deck__outline-item { padding-left: 2.35rem; font-size: 0.76rem; color: var(--ink-4); }
   .sv-deck__outline-item:hover { color: var(--ink); }
   .sv-deck__outline-item:disabled { cursor: default; }
   .sv-deck__outline-item[aria-current] { color: var(--ink); background: var(--accent-wash); }
@@ -2128,20 +2127,6 @@
 
   .sv-deck__outline-item[aria-current] .sv-deck__number { border-color: var(--accent); background: var(--accent); color: var(--paper); }
 
-  /* Three rising bars: a chart, drawn in CSS. */
-  .sv-deck__chart-glyph {
-    flex: none;
-    width: 0.9rem;
-    height: 0.8rem;
-    margin-top: 0.15rem;
-    margin-left: -1.5rem;
-    background:
-      linear-gradient(currentColor, currentColor) 0 100% / 0.2rem 40% no-repeat,
-      linear-gradient(currentColor, currentColor) 50% 100% / 0.2rem 70% no-repeat,
-      linear-gradient(currentColor, currentColor) 100% 100% / 0.2rem 100% no-repeat;
-    opacity: 0.7;
-  }
-
   /* Clear of the sticky section tabs when a step brings it back on screen. */
   .sv-deck__stage { min-width: 0; scroll-margin-top: 4.5rem; }
 
@@ -2150,55 +2135,94 @@
   .sv-deck__progress span { flex: 1; height: 3px; border-radius: 2px; background: var(--rule); transition: background-color 0.25s; }
   .sv-deck__progress span[data-done] { background: var(--accent); }
 
-  /* The strip fits the slide showing (use-carousel.ts), so a short slide leaves no gap. */
+  /* Every card is one height, so nothing moves between them and a graph has
+     the whole of what its title leaves. On a phone that is most of the screen. */
+  .sv-deck { --sv-card-height: 34rem; }
+
+  @media (max-width: 47.5rem) {
+    .sv-deck { --sv-card-height: clamp(26rem, calc(100svh - 11rem), 42rem); }
+  }
+
   .sv-deck__strip {
     position: relative;
     display: flex;
-    align-items: flex-start;
-    height: var(--sv-strip-height, auto);
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     outline: none;
-    transition: height 0.25s;
   }
 
   .sv-deck__strip::-webkit-scrollbar { display: none; }
   .sv-deck__strip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
   .sv-deck__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
-  .sv-deck__slide > * { flex: 1; min-width: 0; }
 
-  .sv-deck__text { max-width: var(--measure); padding-bottom: 0.5rem; }
+  .sv-deck__card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--sv-card-height);
+    overflow-y: auto;
+  }
 
+  /* A card with a graph never scrolls: the graph takes the room there is. */
+  .sv-deck__card[data-graph] { overflow: visible; }
+
+  /* The point the card makes. */
   .sv-deck__heading {
-    margin: 0 0 1rem;
+    flex: none;
+    margin: 0 0 0.4rem;
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 1.2rem + 0.9vw, 1.75rem);
+    font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.7rem);
     font-weight: 600;
     line-height: 1.18;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
-  .sv-deck__prose { font-size: 1.08rem; line-height: 1.6; }
+  .sv-deck__prose { max-width: var(--measure); font-size: 1.05rem; line-height: 1.6; }
   .sv-deck__prose p { margin: 0 0 0.9rem; }
+  .sv-deck__card:not([data-graph]) .sv-deck__prose { margin-top: 0.5rem; }
 
-  .sv-deck__chart { display: flex; flex-direction: column; gap: 0.75rem; }
+  /* What the graph shows, on a line or two, opening to the reasoning, which
+     floats over the graph so the graph does not move. */
+  .sv-deck__details { position: relative; flex: none; margin: 0 0 0.75rem; font-family: var(--font-sans); font-size: 0.875rem; line-height: 1.45; color: var(--ink-3); }
+  .sv-deck__details > summary { display: flex; align-items: baseline; gap: 0.75rem; list-style: none; cursor: pointer; }
+  .sv-deck__details > summary::-webkit-details-marker { display: none; }
+  .sv-deck__shows { flex: 1; min-width: 0; display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .sv-deck__more { flex: none; font-weight: 600; color: var(--accent); }
+  .sv-deck__more::after { content: "More ▾"; }
+  .sv-deck__details[open] .sv-deck__more::after { content: "Less ▴"; }
+  .sv-deck__details > summary:hover :is(.sv-deck__shows, .sv-deck__more) { text-decoration: underline; text-underline-offset: 0.2em; }
 
-  /* What the graph shows, read before the graph. */
-  .sv-deck__shows {
-    margin: 0;
-    padding-left: 0.75rem;
-    border-left: 3px solid var(--accent);
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    line-height: 1.45;
-    color: var(--ink-3);
+  .sv-deck__pop {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    right: 0;
+    z-index: 30;
+    max-height: calc(var(--sv-card-height) - 8rem);
+    overflow-y: auto;
+    padding: 0.9rem 1.1rem 0.2rem;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: 0 6px 24px rgb(20 25 40 / 0.18);
+    color: var(--ink-2);
   }
 
-  .sv-deck__chart .sv-slide { max-height: min(34rem, 75vh); overflow-y: auto; }
+  .sv-deck__pop .sv-deck__prose { font-family: var(--font-serif); font-size: 1rem; }
+
+  /* The graph fills the rest of the card. Its own title and description would
+     repeat the card's line, so it shows only what is drawn, and its sources. */
+  .sv-deck__card .sv-walk__chart { flex: 1; min-height: 0; }
+  .sv-deck__card .sv-walk__chart > .sv-slide { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .sv-deck__card .sv-walk__chart > .sv-slide > * { flex: 1; min-height: 0; }
+  .sv-deck__card .sv-chart :is(.sv-chart__caption, .sv-chart__desc) { display: none; }
+  /* The expand mark says the graph opens; the link is for a keyboard, and shows when it has focus. */
+  .sv-deck__card .sv-walk__explore:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
   .sv-deck__controls { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1.25rem; }
   .sv-deck__count { margin: 0; font-family: var(--font-sans); font-size: 0.8rem; font-variant-numeric: tabular-nums; color: var(--ink-4); }
@@ -2231,7 +2255,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-deck, .sv-deck__strip, .sv-deck__progress span { transition: none; }
+    .sv-deck, .sv-deck__progress span { transition: none; }
   }
 
   /* Nothing can open a slideshow row without script. */
@@ -2890,6 +2914,37 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant { display: none; }
   .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
 }
+
+/* A slideshow card's graph (components/viewpoints/viewpoint-slides.tsx) has
+   most of the card, and on a phone most of the screen, which is taller than
+   it is wide. It shows the shape nearest its space as other previews do, with
+   a portrait shape for that. On a phone the wider shapes' type would shrink
+   too far, so there it is the narrow plot or the portrait one. Breakpoints sit
+   between the shapes' width-to-height ratios: 1.78, 1.33 and 0.67. */
+.sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant { display: none; }
+.sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-medium"] { display: block; }
+@container (aspect-ratio < 1.54) {
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-medium"] { display: none; }
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-tall"] { display: block; }
+}
+@container (aspect-ratio < 0.95) {
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-tall"] { display: none; }
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-portrait"] { display: block; }
+}
+@media (max-width: 40rem) {
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant:not([data-variant="narrow"]) { display: none; }
+  .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: block; }
+  @container (aspect-ratio < 0.95) {
+    .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="narrow"] { display: none; }
+    .sv-deck__card .sv-chart[data-preview] .sv-chart__plot .sv-chart__variant[data-variant="preview-portrait"] { display: block; }
+  }
+}
+/* Rows of bars keep their size and sit together in the middle of a card,
+   rather than spreading apart to fill it. */
+.sv-deck__card .sv-chart__preview :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: none; margin-block: auto; justify-content: flex-start; gap: 1rem; }
+.sv-deck__card .sv-chart__preview .sv-bars__row { font-size: .9rem; }
+/* The chart's title is the card's, so its first line makes room for the expand mark instead. */
+.sv-deck__card .sv-walk__chart--explorable :is(.sv-chart__legend, .sv-chart__preview > :first-child) { padding-right: 1.75rem; }
 .sv-chart[data-preview] .sv-chart__legend { margin-bottom: .25rem; font-size: .7rem; gap: .1rem .9rem; }
 .sv-chart[data-preview] .sv-comparison__columns { flex: 1; min-height: 6rem; height: auto; }
 .sv-chart[data-preview] .sv-comparison__rows { margin: .4rem 0; }

@@ -15,25 +15,43 @@ import { Slideshow } from './slideshow';
  */
 export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
 
-/** A step's claim and its reasoning, alone on a slide. Its citations open in pop-ups (`ClaimPopups`). */
-function TextSlide({ step }: { step: RenderedStep }) {
-  return (
-    <div className="sv-deck__text">
-      <h3 className="sv-deck__heading">{step.heading}</h3>
-      <Prose html={step.html} className="sv-deck__prose" />
-    </div>
-  );
-}
+type StepCardProps = { step: RenderedStep; index: number };
 
-/** The graph a step leans on, under a line saying what it shows. */
-function ChartSlide({ step, description, href, index }: { step: RenderedStep; description: string; href: string; index: number }) {
+/**
+ * One step of the argument, as one card: its point as the title, then, when
+ * it leans on a graph, a line saying what the graph shows, which opens to the
+ * reasoning, over the graph filling the rest of the card. A step with no graph
+ * gives its reasoning in full instead. Citations in the reasoning open in
+ * pop-ups (`ClaimPopups`).
+ */
+function StepCard({ step, index }: StepCardProps) {
+  const { chart, chartCard: graph } = step;
   return (
-    <div className="sv-deck__chart sv-walk__chart">
-      <p className="sv-deck__shows">{description}</p>
-      <ExplorableChart><LazyChart index={index} /></ExplorableChart>
-      {step.panel
-        ? <ExploreLink {...step.panel} href={href} />
-        : step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
+    <div className="sv-deck__card" data-graph={chart && graph ? true : undefined}>
+      <h3 className="sv-deck__heading">{step.heading}</h3>
+      {chart && graph ? (
+        <>
+          <details className="sv-deck__details">
+            <summary>
+              <span className="sv-deck__shows">
+                {graph.title}{graph.subtitle && <span className="sv-deck__shows-sub">{`. ${graph.subtitle}`}</span>}
+              </span>
+              <span className="sv-deck__more" aria-hidden="true" />
+            </summary>
+            <div className="sv-deck__pop">
+              <Prose html={step.html} className="sv-deck__prose" />
+            </div>
+          </details>
+          <ExplorableChart>
+            <div className="sv-slide"><LazyChart index={index} /></div>
+            {step.panel
+              ? <ExploreLink {...step.panel} href={chart.href} />
+              : step.exploreHtml && <Prose html={step.exploreHtml} className="sv-walk__explore" />}
+          </ExplorableChart>
+        </>
+      ) : (
+        <Prose html={step.html} className="sv-deck__prose" />
+      )}
     </div>
   );
 }
@@ -47,11 +65,9 @@ type ViewpointSlidesProps = {
 };
 
 /**
- * The viewpoints as rows, none open at first, each a slideshow once open: every
- * step's text on a slide, and after it, when the step leans on a graph, the
- * graph on a slide of its own. Tables and quotes get no slide: they read as
- * more text, which the step's prose already gives. Tapping a cited claim opens
- * the finding behind it in a pop-up.
+ * The viewpoints as rows, none open at first, each a slideshow once open: one
+ * card per step of the argument, made with a graph where the step has one.
+ * Tapping a cited claim opens the finding behind it in a pop-up.
  */
 export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: ViewpointSlidesProps) {
   return (
@@ -59,12 +75,6 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
-          const slides = steps.flatMap((step, i) => [
-            { outline: { label: step.heading, chart: false }, slide: <TextSlide key={`text-${i}`} step={step} /> },
-            ...(step.chartSlide && step.chart
-              ? [{ outline: { label: step.chart.label, chart: true }, slide: <ChartSlide key={`chart-${i}`} step={step} description={step.chartSlide.description} href={step.chart.href} index={i} /> }]
-              : []),
-          ]);
           return (
             <TopicRow
               key={viewpoint.id}
@@ -76,9 +86,9 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
               meta={null}
               thumbs={null}
             >
-              <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
-                <Slideshow name={viewpoint.name} outline={slides.map(s => s.outline)}>
-                  {slides.map(s => s.slide)}
+              <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id, true)}>
+                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)}>
+                  {steps.map((step, i) => <StepCard key={i} step={step} index={i} />)}
                 </Slideshow>
               </LazyCharts>
             </TopicRow>

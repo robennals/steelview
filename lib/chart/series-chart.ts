@@ -33,19 +33,21 @@ export type ChartVariant = 'narrow' | 'wide';
  * shapes, from very wide to nearly square, and the page shows whichever best
  * fills the space it has, so the chart is never squeezed into a band.
  */
-export type PreviewVariant = 'preview-wide' | 'preview' | 'preview-broad' | 'preview-medium' | 'preview-tall';
+export type PreviewVariant = 'preview-wide' | 'preview' | 'preview-broad' | 'preview-medium' | 'preview-tall' | 'preview-portrait';
 export type SeriesVariant = ChartVariant | PreviewVariant;
 
 /**
  * Where a preview sits decides the shapes it is drawn at, widest first: a
- * carousel slide is wide, a walkthrough step beside its prose is tall. Drawing
- * only the shapes a place can use keeps a page of previews light. A data
- * panel's full chart fills the space left around its controls.
+ * carousel slide is wide, a walkthrough step beside its prose is tall, and a
+ * slideshow card, which on a phone is most of the screen, can be taller than
+ * it is wide. Drawing only the shapes a place can use keeps a page of previews
+ * light. A data panel's full chart fills the space left around its controls.
  */
-export type PreviewFit = 'wide' | 'tall' | 'panel';
+export type PreviewFit = 'wide' | 'tall' | 'card' | 'panel';
 export const PREVIEW_VARIANTS: Record<PreviewFit, PreviewVariant[]> = {
   wide: ['preview-wide', 'preview'],
   tall: ['preview-medium', 'preview-tall'],
+  card: ['preview-medium', 'preview-tall', 'preview-portrait'],
   panel: ['preview-wide', 'preview', 'preview-broad'],
 };
 
@@ -88,6 +90,8 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
   'preview-broad': previewGeometry(750, 300),
   'preview-medium': previewGeometry(600, 338),
   'preview-tall': previewGeometry(520, 390),
+  // A phone's width, so its type stays the size of the narrow chart's.
+  'preview-portrait': previewGeometry(360, 540),
   narrow: {
     width: 360,
     height: 250,

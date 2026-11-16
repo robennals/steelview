@@ -185,17 +185,17 @@ function panelTargets(topic: Topic): (id: string, section: string) => PanelTarge
   };
 }
 
-/** Whether a slide's chart is a graph, rather than a table, quote or other figure set as type. */
-function isGraph({ fact, chart }: PreviewSlide): boolean {
+/**
+ * A step's chart, as a slideshow card draws it, when it is a graph rather than
+ * a table, quote or other figure set as type: those read as more text, which
+ * the step's prose already gives. The card's subtitle is what the graph shows,
+ * its title and subtitle, which the graph then leaves out.
+ */
+function chartCard({ fact, chart, label }: PreviewSlide): RenderedStep['chartCard'] {
   const target = previewTarget(fact, chart);
-  return !!target && isPreviewable(target);
-}
-
-/** What a chart shows, as its series, comparison or figure describes it. */
-export function chartDescription(fact: Fact, chart: string): string {
-  const series = chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart);
-  const figure = componentFigure(fact, chart);
-  return series?.description ?? fact.comparisons?.find(c => c.id === chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
+  if (!target || !isPreviewable(target)) return undefined;
+  const drawn = target.kind === 'series' ? target.series : target.kind === 'comparison' ? target.comparison : target.figure;
+  return { title: label, subtitle: 'subtitle' in drawn ? drawn.subtitle : undefined };
 }
 
 /** A step with its prose rendered, ready for a synchronous component. */
@@ -205,12 +205,8 @@ export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
   exploreHtml?: string;
   /** Where "Explore this data" opens the chart's data panel. */
   panel?: PanelTarget;
-  /**
-   * Set when the step's chart is a graph that earns a slide of its own in a
-   * viewpoint slideshow, with what it shows. A table or a quote does not: it
-   * reads as more text, which the step's prose already carries.
-   */
-  chartSlide?: { description: string };
+  /** What a slideshow card says its graph shows (`chartCard`), when the step's chart is a graph. */
+  chartCard?: { title: string; subtitle?: string };
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -233,7 +229,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
         panel: cited && panelFor(cited.id, cited.section),
         html: await renderMarkdown(markdown, topic.slug, topic.facts, { panelCitation: panelFor }),
         exploreHtml: cited && await renderMarkdown(`[Explore this data](#fact-${cited.id}/${cited.section})`, topic.slug, topic.facts),
-        chartSlide: chart && isGraph(chart) ? { description: chartDescription(chart.fact, chart.chart) } : undefined,
+        chartCard: chart && chartCard(chart),
       }))),
     });
   }
@@ -358,7 +354,8 @@ export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], option
     const charts = await Promise.all(slides.map(async (chart, i) => {
       const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
       const keys = slideGroups(fact, chart);
-      const description = chartDescription(fact, chart.chart);
+      const figure = componentFigure(fact, chart.chart);
+      const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
       // A view is a reading with a plot of its own, with any reading drawn alongside it.
       const plotted = series ? plottedReadings(series) : [];
       const views = series && plotted.length > 1

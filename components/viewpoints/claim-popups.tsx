@@ -25,7 +25,7 @@ export function ClaimPopups({ claims, children }: ClaimPopupsProps) {
 
   const onClick = (event: MouseEvent) => {
     if (!isPlainClick(event)) return;
-    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('.sv-deck__text a.sv-cite') : null;
+    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('.sv-deck__prose a.sv-cite') : null;
     const claim = link && claims[decodeURIComponent(link.hash.slice(1))];
     if (!link || !claim) return;
     event.preventDefault();
