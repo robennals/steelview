@@ -12,8 +12,8 @@ import { SlideChart } from '@/components/topic/slide-chart';
  * The charts of one row on a topic page, drawn here and fetched by
  * `LazyCharts` when the row opens: a viewpoint's step charts as previews, or
  * every chart of a data collection in full, in step order. A step without a chart is `null`.
- * A viewpoint shown as a slideshow (`cards`) gets its cards' graphs instead
- * (`cardGraphs`), every card's in turn, at a card's shapes.
+ * A viewpoint shown as a slideshow (`cards`) gets each card's graph instead
+ * (`cardGraph`), at a card's shapes.
  *
  * Callable from the browser, so every argument is checked against the content
  * rather than trusted; anything unknown gets no charts.
@@ -30,7 +30,7 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
       <ChartSources fact={chart.fact} numbers={slideCitations(chart.fact, chart)} />
     </Fragment>;
     const { steps } = viewpointWalkthrough(topic, viewpoint);
-    if (cards) return steps.flatMap(step => step.graphs).map(({ chart }, i) => drawn(chart, 'card', i));
+    if (cards) return steps.map(({ cardGraph }, i) => (cardGraph ? drawn(cardGraph.chart, 'card', i) : null));
     return steps.map(({ chart }, i) => (chart ? drawn(chart, 'tall', i) : null));
   }
   if (kind === 'data') {

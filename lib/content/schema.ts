@@ -332,6 +332,12 @@ export const comparisonChartSchema = z.object({
   allGroupsLabel: z.string().min(1).optional(),
   groups: z.array(z.string().min(1)).min(2).optional(),
   defaultGroup: z.number().int().nonnegative().optional(),
+  /**
+   * How a grouped comparison orders its rows: largest first (`value`, the
+   * default), or as written (`written`), for rows with an order of their own,
+   * such as years.
+   */
+  order: z.enum(['value', 'written']).optional(),
   items: z.array(z.object({
     label: z.string().min(1),
     value: z.number().finite(),

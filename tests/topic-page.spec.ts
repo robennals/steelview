@@ -676,7 +676,7 @@ const SLIDES_VIEWPOINT = '#viewpoint-refuge';
 test.describe('a slideshow viewpoint on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  test('each card makes its point, completes it in a line that opens the evidence, and shows the graphs that line cites', async ({ page }) => {
+  test('each card makes its point, completes it in a line that opens the evidence, and shows the graph that line cites', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
     const deck = page.locator(`${SLIDES_VIEWPOINT} .sv-deck`);
@@ -684,9 +684,9 @@ test.describe('a slideshow viewpoint on a phone', () => {
     const card = deck.locator('.sv-deck__card').first();
     await expect(card.locator('.sv-deck__heading')).toHaveText('Most people crossing the Channel are found to need protection');
     await expect(card.locator('.sv-deck__reasoning')).toContainText('These are refugees');
-    // The line cites two findings, each on its own graph.
-    await expect(card.locator('.sv-chart')).toHaveCount(2);
-    await expect(card.locator('.sv-chart__caption').first()).toContainText('Initial decisions on small-boat arrivals');
+    // One graph a card: a phone has room for no more.
+    await expect(card.locator('.sv-chart')).toHaveCount(1);
+    await expect(card.locator('.sv-chart__caption')).toContainText('Initial decisions on small-boat arrivals');
     const evidence = card.locator('.sv-deck__pop');
     await expect(evidence).toBeHidden();
     await card.locator('.sv-deck__more').click();
@@ -695,8 +695,24 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await deck.getByRole('button', { name: /Next/ }).click();
     const line = deck.locator('.sv-deck__card').nth(1);
     await expect(line).toBeInViewport();
-    // A line graph on a phone's tall card is drawn at its portrait shape.
+    // A line graph on a phone is drawn at its portrait shape.
     await expect(line.locator('.sv-chart__variant[data-variant="preview-portrait"]')).toBeVisible();
+
+    // Each segment of the progress bar goes to its point.
+    await deck.getByRole('button', { name: /^Point 3:/ }).click();
+    await expect(deck.locator('.sv-deck__card').nth(2)).toBeInViewport();
+    await expect(deck.getByRole('button', { name: /^Point 3:/ })).toHaveAttribute('aria-current', 'step');
+  });
+
+  test('open, a viewpoint runs to the screen\'s edges, its arrow on the title\'s line', async ({ page }) => {
+    await page.goto(SLIDES_TOPIC);
+    const row = page.locator(SLIDES_VIEWPOINT);
+    const title = await row.locator('.sv-row__title').boundingBox();
+    const chevron = await row.locator('.sv-row__chevron').boundingBox();
+    expect(Math.abs(chevron!.y + chevron!.height / 2 - (title!.y + 14))).toBeLessThan(16);
+    await row.locator('.sv-row__toggle').click(headCorner);
+    await expect(row).toHaveAttribute('data-open', 'true');
+    await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
   });
 
   test('a cited claim opens its finding in a pop-up, which leads on to the data', async ({ page }) => {
@@ -715,6 +731,28 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await popup.getByRole('link', { name: 'See the data' }).click();
     await expect(popup).toHaveCount(0);
     await expect(page.getByRole('dialog', { name: 'Asylum Claims and Decisions in the UK and Europe' })).toBeVisible();
+  });
+
+  test('a card\'s graph can switch between views, every year shown', async ({ page }) => {
+    await page.goto(SLIDES_TOPIC);
+    const row = page.locator('#viewpoint-bar-and-remove');
+    await row.locator('.sv-row__toggle').click(headCorner);
+    await row.getByRole('button', { name: /^Point 2:/ }).click();
+    const card = row.locator('.sv-deck__card').nth(1);
+    await expect(card.locator('.sv-deck__heading')).toHaveText('Refugees know they can stay, even if their claims are refused');
+    const chart = card.locator('.sv-comparison');
+    await expect(chart.locator('.sv-chart__caption')).toContainText('What became of each year’s asylum claims');
+    // The whole of the data, in year order, not a chosen stretch of it.
+    const years = chart.locator('.sv-comparison__row');
+    await expect(years).toHaveCount(19);
+    await expect(years.first()).toHaveAttribute('data-row', '2007');
+    await expect(years.last()).toHaveAttribute('data-row', '2025');
+    const returned = chart.getByRole('button', { name: 'Refused and returned' });
+    await returned.click();
+    await expect(returned).toHaveAttribute('aria-pressed', 'true');
+    await expect(years.first()).toHaveAttribute('data-row', '2007');
+    // Switching views does not open the chart's data.
+    await expect(page.locator('dialog[open]')).toHaveCount(0);
   });
 });
 
@@ -742,16 +780,16 @@ test('a closed slideshow viewpoint previews its graphs, and a graph opens the ro
   await page.setViewportSize({ width: 1400, height: 900 });
   await page.goto(SLIDES_TOPIC);
   const row = page.locator(SLIDES_VIEWPOINT);
-  // Five graphs on its first three cards; the rest are cards of text.
+  // A graph on each of its first three cards; the rest are cards of text.
   const thumbs = row.locator('.sv-walk__thumb');
-  await expect(thumbs).toHaveCount(5);
-  await expect(thumbs.nth(4)).toContainText('3. Safe routes keep people out of the boats');
-  await thumbs.nth(4).click();
+  await expect(thumbs).toHaveCount(3);
+  await expect(thumbs.nth(2)).toContainText('3. Safe routes keep people out of the boats');
+  await thumbs.nth(2).click();
   await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Safe routes keep people out of the boats');
   await expect(row.locator('.sv-deck__card').nth(2)).toBeInViewport();
 });
 
-test('a slideshow card can be made with a map of where the boats leave from, and one with two graphs', async ({ page }) => {
+test('a slideshow card can be made with a map of where the boats leave from', async ({ page }) => {
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
@@ -761,8 +799,4 @@ test('a slideshow card can be made with a map of where the boats leave from, and
   // An arrow from each coast the boats leave from, each named, to Kent.
   await expect(card.locator('.sv-geo-map__flow')).toHaveCount(2);
   await expect(card.locator('.sv-geo-map__flow-label')).toHaveText(['Northern French beaches', 'Belgian coast', 'Kent']);
-  // How many are refused, beside how many of those refused leave.
-  const stay = row.locator('.sv-deck__card').nth(1);
-  await expect(stay.locator('.sv-deck__heading')).toHaveText('Refugees know they can stay, even if their claims are refused');
-  await expect(stay.locator('.sv-chart__caption')).toHaveText([/Initial decisions on small-boat arrivals/, /Refused claims and later returns/]);
 });

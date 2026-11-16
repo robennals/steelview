@@ -146,14 +146,14 @@ export function ExploreProse({ html, className }: ExploreProseProps) {
 /**
  * A viewpoint step's chart column — the chart and its "Explore this data" —
  * where a click anywhere follows that link, the chart's title included. A
- * link of its own, a legend's definition and the sources row still do their
- * own thing. A zoom-in pointer and an expand mark in its corner say a click
+ * link or button of its own, a legend's definition and the sources row still
+ * do their own thing. A zoom-in pointer and an expand mark in its corner say a click
  * shows it larger (globals.css). The mark is decoration: "Explore this data"
  * is the control a keyboard or screen reader uses.
  */
 export function ExplorableChart({ children }: { children: ReactNode }) {
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.target instanceof Element && event.target.closest('a, .sv-glossary, .sv-chart__sources')) return;
+    if (event.target instanceof Element && event.target.closest('a, button, .sv-glossary, .sv-chart__sources')) return;
     const explore = event.currentTarget.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
     if (!explore) return;
     event.preventDefault();

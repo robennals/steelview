@@ -16,8 +16,8 @@ export type WalkthroughStep = {
   chart?: PreviewSlide;
   /** The citation that chart was chosen for: `#fact-<id>/<section>`. */
   cited?: { id: string; section: string };
-  /** The graphs a slideshow card is made with (`cardGraphs`), each with the citation it was chosen for. */
-  graphs: { chart: PreviewSlide; cited: { id: string; section: string } }[];
+  /** The graph a slideshow card is made with (`cardGraph`), with the citation it was chosen for. */
+  cardGraph?: { chart: PreviewSlide; cited: { id: string; section: string } };
 };
 
 export type Walkthrough = {
@@ -167,24 +167,20 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
     const [heading, ...rest] = section.split('\n');
     const markdown = rest.join('\n').trim();
     const [first] = chartsCited(markdown);
-    return { heading: heading.trim(), markdown, ...first, graphs: cardGraphs(chartsCited(splitFirstParagraph(markdown)[0])) };
+    return { heading: heading.trim(), markdown, ...first, cardGraph: cardGraph(chartsCited(splitFirstParagraph(markdown)[0])) };
   });
   return { lead: lead.trim(), steps };
 }
 
-/** How many graphs a slideshow card shows at most: two can sit side by side, or one above the other on a phone. */
-const CARD_GRAPHS = 2;
-
 /**
- * The graphs a slideshow card is made with: those behind the claims its
- * reasoning line cites, in order, so the line's claims are what the reader
- * sees. A line that cites no data makes a card of text. A table or a quote is
- * never one: it reads as more text, which the card already gives.
+ * The graph a slideshow card is made with: the first graph behind the claims
+ * its reasoning line cites, so the line's claim is what the reader sees. One,
+ * because a phone has room for one; a graph with several views shows them as
+ * modes. A line that cites no graph makes a card of text. A table or a quote
+ * is never one: it reads as more text, which the card already gives.
  */
-function cardGraphs(inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
-  const graphs = inReasoning.filter(({ chart }) => isGraph(chart));
-  const unique = graphs.filter(({ chart }, i) => graphs.findIndex(g => g.chart.fact.id === chart.fact.id && g.chart.chart === chart.chart && g.chart.reading === chart.reading) === i);
-  return unique.slice(0, CARD_GRAPHS);
+function cardGraph(inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
+  return inReasoning.find(({ chart }) => isGraph(chart));
 }
 
 /**
@@ -221,7 +217,7 @@ function splitFirstParagraph(markdown: string): [string, string] {
 }
 
 /** A step with its prose rendered, ready for a synchronous component. */
-/** One of a slideshow card's graphs, with where it opens its data. */
+/** A slideshow card's graph, with where it opens its data. */
 export type CardGraph = {
   chart: PreviewSlide;
   /** Where the graph opens its collection's data panel, when the topic page has one. */
@@ -230,14 +226,14 @@ export type CardGraph = {
   exploreHtml: string;
 };
 
-export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited' | 'graphs'> & {
+export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited' | 'cardGraph'> & {
   html: string;
   /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
   exploreHtml?: string;
   /** Where "Explore this data" opens the chart's data panel. */
   panel?: PanelTarget;
-  /** The graphs a slideshow card is made with (`cardGraphs`). */
-  graphs: CardGraph[];
+  /** The graph a slideshow card is made with (`cardGraph`). */
+  cardGraph?: CardGraph;
   /** For a slideshow card: the section's first paragraph, the step of reasoning that completes its heading, rendered without its paragraph. */
   reasoningHtml: string;
   /** For a slideshow card: the rest of the section, the evidence, rendered. */
@@ -258,7 +254,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited, graphs }) => {
+      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited, cardGraph }) => {
         const render = (md: string) => renderMarkdown(md, topic.slug, topic.facts, { panelCitation: panelFor });
         const explore = ({ id, section }: { id: string; section: string }) => renderMarkdown(`[Explore this data](#fact-${id}/${section})`, topic.slug, topic.facts);
         const [reasoning, evidence] = splitFirstParagraph(markdown);
@@ -268,7 +264,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
           panel: cited && panelFor(cited.id, cited.section),
           html: await render(markdown),
           exploreHtml: cited && await explore(cited),
-          graphs: await Promise.all(graphs.map(async graph => ({ chart: graph.chart, panel: panelFor(graph.cited.id, graph.cited.section), exploreHtml: await explore(graph.cited) }))),
+          cardGraph: cardGraph && { chart: cardGraph.chart, panel: panelFor(cardGraph.cited.id, cardGraph.cited.section), exploreHtml: await explore(cardGraph.cited) },
           // Inline, for a card's subtitle line.
           reasoningHtml: (await render(reasoning)).replace(/^<p>|<\/p>\s*$/g, ''),
           evidenceHtml: await render(evidence),

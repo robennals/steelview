@@ -2130,27 +2130,30 @@
   /* Clear of the sticky section tabs when a step brings it back on screen. */
   .sv-deck__stage { min-width: 0; scroll-margin-top: 4.5rem; }
 
-  /* One segment per slide, filled up to the one showing. */
-  .sv-deck__progress { display: flex; gap: 3px; margin-bottom: 1.25rem; }
-  .sv-deck__progress span { flex: 1; height: 3px; border-radius: 2px; background: var(--rule); transition: background-color 0.25s; }
-  .sv-deck__progress span[data-done] { background: var(--accent); }
+  /* One segment per point, filled up to the one showing. Each is a button to
+     its point, with a hit area taller than the line it draws. */
+  .sv-deck__progress { display: flex; gap: 3px; margin: 0 0 0.75rem; padding: 0; list-style: none; }
+  .sv-deck__progress li { flex: 1; }
+  .sv-deck__progress button { display: block; width: 100%; height: 1.25rem; padding: 0; border: 0; background: none; cursor: pointer; }
+  .sv-deck__progress button::before { content: ""; display: block; height: 3px; border-radius: 2px; background: var(--rule); transition: background-color 0.25s, height 0.15s; }
+  .sv-deck__progress button[data-done]::before { background: var(--accent); }
+  .sv-deck__progress button:hover::before { height: 5px; }
+  .sv-deck__progress button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
-  /* Every card is one height, so nothing moves between them and a graph has
-     the whole of what its title leaves. On a phone that is most of the screen. */
-  .sv-deck { --sv-card-height: 34rem; }
-
-  @media (max-width: 47.5rem) {
-    .sv-deck { --sv-card-height: clamp(26rem, calc(100svh - 11rem), 42rem); }
-  }
-
+  /* A card is as tall as its point, its line and its graph. The strip follows
+     the card showing (use-carousel.ts), so a short card leaves no gap above the
+     controls. */
   .sv-deck__strip {
     position: relative;
     display: flex;
+    align-items: flex-start;
+    height: var(--sv-strip-height, auto);
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     outline: none;
+    transition: height 0.25s;
   }
 
   .sv-deck__strip::-webkit-scrollbar { display: none; }
@@ -2158,17 +2161,7 @@
 
   .sv-deck__slide { position: relative; display: flex; flex: 0 0 100%; min-width: 0; overflow: hidden; scroll-snap-align: start; }
 
-  .sv-deck__card {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    min-width: 0;
-    height: var(--sv-card-height);
-    overflow-y: auto;
-  }
-
-  /* A card with a graph never scrolls: the graph takes the room there is. */
-  .sv-deck__card[data-graph] { overflow: visible; }
+  .sv-deck__card { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 
   /* The point the card makes: a sentence of the argument, well under the
      viewpoint's name in size, so a whole point fits with room for the line under it. */
@@ -2203,7 +2196,7 @@
     left: 0;
     right: 0;
     z-index: 30;
-    max-height: calc(var(--sv-card-height) - 8rem);
+    max-height: min(28rem, 60svh);
     overflow-y: auto;
     padding: 0.9rem 1.1rem 0.2rem;
     border: 1px solid var(--rule);
@@ -2217,23 +2210,10 @@
 
   /* The graph fills the rest of the card, under its own title, set small: it
      names what is drawn, while the card's heading says what it shows. */
-  .sv-deck__graphs { display: flex; flex: 1; flex-direction: column; gap: 1rem; min-height: 0; }
-  .sv-deck__card .sv-walk__chart { flex: 1; min-width: 0; min-height: 0; }
+  .sv-deck__card .sv-walk__chart { min-width: 0; }
+  /* The graph is drawn whole, at its own height, rather than scrolling in a box. */
+  .sv-deck__card .sv-walk__chart > .sv-slide { overflow: visible; mask-image: none; animation: none; }
 
-  /* A card's two graphs sit side by side where there is room. On a phone they
-     go one above the other, and the card grows to give each a readable height
-     rather than squeezing them into one screen. */
-  @media (width > 47.5rem) {
-    .sv-deck__graphs[data-count="2"] { flex-direction: row; gap: 1.5rem; }
-  }
-
-  @media (max-width: 47.5rem) {
-    .sv-deck__card:has(.sv-deck__graphs[data-count="2"]) { height: auto; min-height: var(--sv-card-height); }
-    .sv-deck__graphs[data-count="2"] > .sv-walk__chart { flex: none; height: 24rem; }
-  }
-  .sv-deck__card .sv-walk__chart > .sv-slide { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-  .sv-deck__card .sv-walk__chart > .sv-slide > * { flex: 1; min-height: 0; }
-  .sv-deck__card .sv-chart .sv-chart__desc { display: none; }
   /* The expand mark says the graph opens; the link is for a keyboard, and shows when it has focus. */
   .sv-deck__card .sv-walk__explore:not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
@@ -2265,10 +2245,23 @@
   @media (max-width: 47.5rem) {
     .sv-deck { padding-inline: 1rem; }
     .sv-row--deck .sv-row__title, .sv-row--deck[data-open] .sv-row__title { font-size: 1.35rem; }
+    /* Width is scarce on a phone: open, a viewpoint runs to the screen's edges. */
+    .sv-row--deck[data-open] { margin-inline: -1.25rem; border-inline: 0; border-radius: 0; }
+    /* The arrow sits small at the end of the title's line, as on the home page,
+       so the overview and the graphs below get the whole width. */
+    .sv-row--deck .sv-row__chevron { position: absolute; top: 1.35rem; right: 1rem; width: 1.4rem; height: 1.4rem; }
+    .sv-row--deck .sv-row__chevron::after { left: 50%; top: 50%; width: 0.4rem; height: 0.4rem; transform: translate(-50%, -70%) rotate(45deg); }
+    .sv-row--deck .sv-row__heading { flex-basis: 100%; }
+    .sv-row--deck .sv-row__title { padding-right: 2rem; }
+  }
+
+  /* Between a phone and a tablet the page has wider margins to reach. */
+  @media (min-width: 40rem) and (max-width: 47.5rem) {
+    .sv-row--deck[data-open] { margin-inline: -2rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sv-deck, .sv-deck__progress span { transition: none; }
+    .sv-deck, .sv-deck__strip, .sv-deck__progress button::before { transition: none; }
   }
 
   /* Nothing can open a slideshow row without script. */
@@ -2956,6 +2949,15 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    rather than spreading apart to fill it. */
 .sv-deck__card .sv-chart__preview :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: none; margin-block: auto; justify-content: flex-start; gap: 1rem; }
 .sv-deck__card .sv-chart__preview .sv-bars__row { font-size: .9rem; }
+/* A card's graph is drawn at its own height: a line graph's plot gets a set
+   one, tall on a phone, which the portrait shape fills; a map keeps its shape. */
+.sv-deck__card .sv-chart[data-preview] .sv-chart__plot { flex: none; height: clamp(15rem, 46svh, 24rem); }
+.sv-deck__card .sv-chart__preview .sv-geo-map__svg { flex: none; height: auto; max-height: 60svh; }
+/* A card's grouped graph switches between its groups with a row of small
+   buttons; the card says what is being compared, so their legend is for a screen reader. */
+.sv-deck__card .sv-comparison-controls { margin: .2rem 0 .5rem; gap: 4px; }
+.sv-deck__card .sv-comparison-controls legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.sv-deck__card .sv-comparison-controls button { padding: 4px 8px; font-size: 12px; }
 /* A card's graph keeps its title, small, for what is drawn: the card's heading makes the point. */
 .sv-deck__card .sv-chart[data-preview] .sv-chart__caption { margin-bottom: .35rem; }
 .sv-deck__card .sv-chart[data-preview] .sv-chart__caption .sv-graph-heading { min-height: 0; font: 600 .85rem/1.3 var(--font-sans); letter-spacing: 0; color: var(--ink-2); }

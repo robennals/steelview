@@ -17,27 +17,23 @@ import { Slideshow } from './slideshow';
  */
 export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
 
-type StepCardProps = {
-  step: RenderedStep;
-  /** Where the card's first graph is among the viewpoint's (`rowCharts`), the others following it. */
-  firstGraph: number;
-};
+type StepCardProps = { step: RenderedStep; index: number };
 
 /**
  * One step of the argument, as one card. Its heading makes the point, and the
  * line under it, the section's first paragraph, completes the step: read card
  * after card, the two make the whole argument. The rest of the section is the
- * evidence. A card made with a graph opens it from that line, over the graph,
- * which fills the rest of the card; a card without one gives it in full.
+ * evidence. A card made with a graph opens it from that line, over the graph;
+ * a card without one gives it in full.
  * Citations open in pop-ups (`ClaimPopups`).
  */
-function StepCard({ step, firstGraph }: StepCardProps) {
-  const { graphs } = step;
+function StepCard({ step, index }: StepCardProps) {
+  const graph = step.cardGraph;
   const reasoning = <span className="sv-deck__reasoning" dangerouslySetInnerHTML={{ __html: step.reasoningHtml }} />;
   return (
-    <div className="sv-deck__card" data-graph={graphs.length > 0 || undefined}>
+    <div className="sv-deck__card" data-graph={graph ? true : undefined}>
       <h3 className="sv-deck__heading">{step.heading}</h3>
-      {graphs.length > 0 ? (
+      {graph ? (
         <>
           <details className="sv-deck__details">
             <summary>
@@ -48,16 +44,12 @@ function StepCard({ step, firstGraph }: StepCardProps) {
               <Prose html={step.evidenceHtml} className="sv-deck__prose" />
             </div>
           </details>
-          <div className="sv-deck__graphs" data-count={graphs.length}>
-            {graphs.map((graph, i) => (
-              <ExplorableChart key={i}>
-                <div className="sv-slide"><LazyChart index={firstGraph + i} /></div>
-                {graph.panel
-                  ? <ExploreLink {...graph.panel} href={graph.chart.href} />
-                  : <Prose html={graph.exploreHtml} className="sv-walk__explore" />}
-              </ExplorableChart>
-            ))}
-          </div>
+          <ExplorableChart>
+            <div className="sv-slide"><LazyChart index={index} /></div>
+            {graph.panel
+              ? <ExploreLink {...graph.panel} href={graph.chart.href} />
+              : <Prose html={graph.exploreHtml} className="sv-walk__explore" />}
+          </ExplorableChart>
         </>
       ) : (
         <>
@@ -85,13 +77,12 @@ type ViewpointSlidesProps = {
  */
 export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: ViewpointSlidesProps) {
   return (
-    <ClaimPopups claims={claims}>
+    <>
+      <ClaimPopups claims={claims} />
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
-          const graphs = steps.flatMap((step, card) => step.graphs.map(({ chart }) => ({ step, chart, card })));
-          // Each card's first graph among the viewpoint's, as `rowCharts` lists them.
-          const firstGraphs = steps.map((_, i) => steps.slice(0, i).reduce((n, step) => n + step.graphs.length, 0));
+          const graphs = steps.flatMap((step, card) => (step.cardGraph ? [{ step, chart: step.cardGraph.chart, card }] : []));
           return (
             <TopicRow
               key={viewpoint.id}
@@ -102,11 +93,15 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
               subtitle={viewpoint.name}
               meta={null}
               thumbs={
+                // Without a key, React's development build reports this strip as an
+                // unkeyed list child of TopicRow. The walkthrough rows pass the same
+                // strip without the warning; the cause is not yet found.
                 <ThumbStrip
+                  key="thumbs"
                   total={graphs.length}
                   steps={graphs.map(({ card }) => card)}
                   thumbs={graphs.map(({ step, chart, card }) => (
-                    <li key={`${card}-${chart.chart}`}>
+                    <li key={card}>
                       <RowThumb step={card}>
                         <span className="sv-row__thumb" aria-hidden="true">
                           <ChartThumb fact={chart.fact} chart={chart.chart} reading={chart.reading} preview />
@@ -120,13 +115,13 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
             >
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id, true)}>
                 <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)}>
-                  {steps.map((step, i) => <StepCard key={i} step={step} firstGraph={firstGraphs[i]} />)}
+                  {steps.map((step, i) => <StepCard key={i} step={step} index={i} />)}
                 </Slideshow>
               </LazyCharts>
             </TopicRow>
           );
         })}
       </TopicAccordion>
-    </ClaimPopups>
+    </>
   );
 }
