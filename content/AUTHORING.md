@@ -1530,8 +1530,9 @@ one or two short paragraphs, rarely more than about 80 words.
 **Choose the visual first.** For each step, pick the graph that shows the
 step's claim on its face, then write the line around it. A graph is the
 default; a [collection of quotes](#figures) is for a point that rests on what
-people with standing have said, such as a government's own statement, shown
-one quote at a time with the others a tap away. If no visual in the reports
+people with standing have said, such as a government's own statement. The card
+shows only the quotes its point rests on: the speakers its observation marks.
+The whole collection, which a reader can filter, opens from the card. If no visual in the reports
 shows the claim, that is a gap to raise at stage 5, or a sign the step is not a
 data claim.
 
@@ -1553,8 +1554,8 @@ Two points that need the same graph are one point; merge them.
 a statement is shown as a `dataTable`, `timeline`, `periodTimeline` or
 `quotes` figure, with its observations attached by id. It then steps through
 like a chart in its report, and a pill to it opens it there. On a card, a
-`quotes` figure is drawn one quote at a time; a step that rests on a table or a
-timeline is a card of text. Do not leave such a record as a table in the body:
+`quotes` figure shows the quotes the card's point rests on; a step that rests on
+a table or a timeline is a card of text. Do not leave such a record as a table in the body:
 there it has no place in the walkthrough, and a report made only of body tables
 opens onto nothing on the topic page.
 

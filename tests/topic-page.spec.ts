@@ -809,22 +809,25 @@ test('a slideshow card can be made with a map of where the boats leave from', as
   await expect(card.locator('.sv-geo-map__flow-label')).toHaveText(['Northern French beaches', 'Belgian coast', 'Kent']);
 });
 
-test('a slideshow card can be made with quotes, one at a time, opening on those its point rests on', async ({ page }) => {
+test('a slideshow card can be made with quotes: those its point rests on, and the whole collection a click away', async ({ page }) => {
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
   await row.getByRole('button', { name: /^Point 4:/ }).click();
   const card = row.locator('.sv-deck__card').nth(3);
   await expect(card.locator('.sv-deck__heading')).toHaveText('Human-rights claims stop removals, the Home Office says');
-  const carousel = card.locator('.sv-quote-carousel');
-  await expect(carousel.locator('.sv-chart__caption')).toContainText('What do the Home Office and others say human-rights law does to removals?');
-  // Every quote, in date order; it opens on the first of the Home Office's.
-  await expect(carousel.locator('.sv-carousel__dot')).toHaveCount(6);
-  const showing = carousel.locator('.sv-carousel__dot[aria-current]');
-  await expect(showing).toHaveAttribute('aria-label', /^Quote 4: Home Office$/);
-  await expect(carousel.locator('.sv-carousel__dot[data-picked]')).toHaveCount(2);
-  // The counterpoint is one step away, and moving does not open the chart's data.
-  await carousel.getByRole('button', { name: 'Quote 3: House of Commons Library' }).click();
-  await expect(carousel.locator('.sv-carousel__dot[aria-current]')).toHaveAttribute('aria-label', 'Quote 3: House of Commons Library');
-  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  const quotes = card.locator('.sv-card-quotes');
+  await expect(quotes.locator('.sv-chart__caption')).toContainText('What do the Home Office and others say human-rights law does to removals?');
+  // The Home Office's two quotes, stacked, and no slideshow within the slideshow.
+  await expect(quotes.locator('.sv-card-quotes__item')).toHaveCount(2);
+  await expect(quotes.locator('.sv-card-quotes__item').first()).toContainText('Home Office');
+  await expect(quotes.locator('.sv-carousel__dot')).toHaveCount(0);
+  await expect(quotes.locator('.sv-card-quotes__more')).toHaveText('2 of 6 quotes · See all');
+  // See all opens the whole collection, which a reader can filter.
+  await quotes.locator('.sv-card-quotes__all').click();
+  // The data, and only the data: not also a pop-up for the link that opens it.
+  const sheet = page.locator('dialog[open]');
+  await expect(sheet).toHaveCount(1);
+  await expect(sheet.locator('.sv-quote-browser .sv-control__status')).toHaveText('Showing 6 of 6 quotes');
+  await expect(sheet.locator('.sv-quote-browser input[type="search"]')).toHaveCount(1);
 });
