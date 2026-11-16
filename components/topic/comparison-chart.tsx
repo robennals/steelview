@@ -36,8 +36,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   const [selected, setSelected] = useState(chart.defaultGroup ?? -1);
   const groupLabel = chart.groupLabel ?? 'group';
   const allGroupsLabel = chart.allGroupsLabel ?? 'All groups';
-  const grouped = chart.groups ? chart.items.map(item => ({ ...item, value: selected < 0 ? item.value : item.values![selected] })) : chart.items;
-  const items = chart.groups && chart.order !== 'written' ? grouped.sort((a, b) => b.value - a.value) : grouped;
+  const items = chart.groups ? chart.items.map(item => ({ ...item, value: selected < 0 ? item.value : item.values![selected] })).sort((a, b) => b.value - a.value) : chart.items;
   // A slideshow card's graph is the argument's evidence, so its groups can be switched there too.
   const switchGroups = chart.groups && (!preview || preview.fit === 'card') ? chart.groups : undefined;
   const min = Math.min(0, ...items.map(item => item.value));
