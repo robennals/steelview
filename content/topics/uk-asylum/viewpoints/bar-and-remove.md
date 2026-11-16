@@ -18,7 +18,7 @@ The Refugee Convention, the United Nations treaty on refugees, [forbids sending 
 
 ### Refugees know they can stay, even if their claims are refused
 
-[About two in five small-boat arrivals who got a decision were refused](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), but [fewer than half of those refused on 2015–2021 claims are recorded as leaving](#fact-removals-and-what-stops-them/about-half-of-refused-claimants-recorded-leaving). Either way, the crossing usually ends in staying.
+[Refused claimants used to be returned more often than not; for claims since 2015, under a third have been](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). Granted or refused, most people who claim end up staying.
 
 [Asylum claims were the commonest issue raised by people held for removal in 2019](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention), yet [most issues raised led to no positive decision](#fact-removals-and-what-stops-them/most-issues-refused). [The appeals queue is more than fourteen times as long as in June 2022](#fact-asylum-backlog-accommodation-and-cost/appeals-queue-fourteen-times), and [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks).
 

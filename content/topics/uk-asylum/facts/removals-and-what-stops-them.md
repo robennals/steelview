@@ -767,6 +767,14 @@ sources:
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/unauthorised-migration-in-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-28'
+  - stance: supports
+    quote: 'Asy_D04: Outcome analysis of asylum claims, 2007-2025 - dataset'
+    title: 'Outcome analysis of asylum claims detailed dataset, year ending June 2026 (Asy_D04)'
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    publisher: Home Office
+    date: '2026-08-27'
 series:
   title: 'Returns from the UK, by type'
   subtitle: '2004–2025'
@@ -1822,6 +1830,57 @@ additionalSeries:
               - period: '2026-06'
                 value: 314
 comparisons:
+  - id: what-became-of-claims
+    title: 'What became of each year’s asylum claims'
+    subtitle: 'UK, main applicants by year of claim, 2007–2025, outcomes as at July 2026'
+    description: >-
+      Main applicants who claimed asylum in each year from 2007 to 2025, by what
+      had happened by July 2026: granted protection; refused or withdrawn with no
+      return recorded; refused or withdrawn and recorded as returned; or another
+      or unknown outcome. Recent years are still working through decisions,
+      appeals and returns.
+    unit: count
+    valueLabel: Main applicants
+    groupLabel: outcome
+    itemLabel: Year of claim
+    allGroupsLabel: All outcomes
+    order: written
+    groups: [Granted, 'Refused, no record of leaving', Refused and returned, Other or not yet known]
+    sources: [73]
+    valuesFrom: >-
+      Asy_D04, latest outcome and recorded returns by year of claim, main
+      applicants; "refused" counts refused and withdrawn claims together
+    note: >-
+      Each year's claims are followed to their latest outcome, as at July 2026,
+      from the same Home Office table as the refused-claims chart. "Refused, no
+      record of leaving" is refused and withdrawn claims less the returns recorded
+      for that year's claims. Returns are counted across the whole year's claims,
+      not matched to each refusal, so this split is an approximation. "Other or
+      not yet known" is administrative outcomes and claims with no outcome yet.
+      Claims from recent years are still being decided and appealed, and returns
+      come later, so their returns will rise.
+      Not being recorded as leaving is not proof of staying: some people leave
+      without being recorded.
+    items:
+      - { label: '2007', value: 23432, values: [10164, 5285, 6820, 1163] }
+      - { label: '2008', value: 25933, values: [11571, 6023, 7535, 804] }
+      - { label: '2009', value: 24487, values: [10945, 5820, 6937, 785] }
+      - { label: '2010', value: 17916, values: [7725, 3988, 5586, 617] }
+      - { label: '2011', value: 19865, values: [9187, 4489, 5592, 597] }
+      - { label: '2012', value: 21843, values: [10177, 5197, 6131, 338] }
+      - { label: '2013', value: 23584, values: [11253, 5476, 6358, 497] }
+      - { label: '2014', value: 25033, values: [14238, 5420, 4857, 518] }
+      - { label: '2015', value: 32733, values: [18683, 9199, 4146, 705] }
+      - { label: '2016', value: 30747, values: [15450, 10435, 4069, 793] }
+      - { label: '2017', value: 26547, values: [13652, 9190, 2934, 771] }
+      - { label: '2018', value: 29504, values: [17428, 8814, 2363, 899] }
+      - { label: '2019', value: 35737, values: [21117, 10454, 2959, 1207] }
+      - { label: '2020', value: 29440, values: [18998, 7087, 2122, 1233] }
+      - { label: '2021', value: 48182, values: [29779, 11823, 3331, 3249] }
+      - { label: '2022', value: 76948, values: [35936, 24983, 9336, 6693] }
+      - { label: '2023', value: 68462, values: [25107, 32552, 5765, 5038] }
+      - { label: '2024', value: 82368, values: [29255, 42028, 4792, 6293] }
+      - { label: '2025', value: 82559, values: [30022, 39286, 3317, 9934] }
   - id: detention-issues
     title: 'Issues raised in immigration detention'
     subtitle: 'Share of 2019 UK detentions after immigration offences'
@@ -2038,6 +2097,8 @@ figures:
     id: fno-asylum-dataset
   - kind: series
     id: refused-cohorts
+  - kind: comparison
+    id: what-became-of-claims
   - kind: series
     id: detention-leavers-dataset
   - kind: comparison
@@ -2107,6 +2168,7 @@ figures:
       - measure: The government's position
         shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
 observationMarks:
+  fewer-refused-recorded-leaving: {rows: ["2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"]}
   unlawful-population-estimates: {rows: ["Greater London Authority, central estimate", "Greater London Authority, with UK-born children", "Pew, as first published", "Pew, revised March 2025"]}
   about-half-of-refused-claimants-recorded-leaving: {lines: ["Returns as a share of refused"], from: "2015", to: "2021"}
   late-claims-not-human-rights-claims: {rows: ["Asylum claim", "Medico-legal report", "Modern slavery referral", "Rule 35 medical report", "Further submissions", "Judicial review", "Human rights or other rights-based application"]}
@@ -2188,6 +2250,12 @@ The government said 58,000 people had their asylum claim refused between June 20
 ### Not recorded leaving is not the same as still here {#removals-and-what-stops-them--not-recorded-leaving}
 
 193,000 people who claimed asylum in 2010–2024 and were refused or withdrew had not been recorded leaving by January 2026. The Migration Observatory treats this as an upper bound, because some were later granted status or left unrecorded, including via Ireland. [71](#source-removals-and-what-stops-them-71) [72](#source-removals-and-what-stops-them-72)
+
+## Observations {#removals-and-what-stops-them--observations-what-became-of-claims}
+
+### Fewer of those refused are recorded leaving: over half before 2014, under a third since 2015 {#removals-and-what-stops-them--fewer-refused-recorded-leaving}
+
+Of main applicants who claimed asylum in each year up to 2013, more than half of those refused or withdrawn are recorded as returned. For every year of claims since 2015, under a third are. In every year from 2007 to 2025, at least three in five claimants were either granted protection or are not recorded as leaving. [73](#source-removals-and-what-stops-them-73) Claims from recent years are still working through appeals, and returns come later, so their share will rise. Not being recorded as leaving is an upper bound on staying: the Migration Observatory notes that some people were later granted status or left without being recorded. [71](#source-removals-and-what-stops-them-71)
 
 ## Observations {#removals-and-what-stops-them--observations-cohort-share}
 
