@@ -16,7 +16,7 @@ The Refugee Convention, the United Nations treaty on refugees, [forbids sending 
 
 ### People who claim asylum can expect to stay, even if they are refused
 
-[Of claims refused or withdrawn, over half ended in a recorded return up to 2013, and under a third in every year since 2015](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So most people whose claims fail are, as far as the records show, still here.
+[Since 2015, under one in seven asylum claims each year has ended in a recorded return, and under a third of failed ones, down from over a quarter and over half up to 2013](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So most people who claim, granted or refused, are, as far as the records show, still here.
 
 [Asylum claims were the commonest issue raised by people held for removal in 2019](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention), yet [most issues raised led to no positive decision](#fact-removals-and-what-stops-them/most-issues-refused). [The appeals queue is more than fourteen times as long as in June 2022](#fact-asylum-backlog-accommodation-and-cost/appeals-queue-fourteen-times), and [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks).
 

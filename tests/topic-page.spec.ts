@@ -757,6 +757,8 @@ test.describe('a slideshow viewpoint on a phone', () => {
     const graph = card.locator('.sv-chart__variant[data-variant="preview-portrait"]');
     await expect(graph).toBeVisible();
     await expect(card.locator('.sv-chart__legend')).toContainText('Returns as a share of refused and withdrawn');
+    // Of everyone who claims, not only those refused.
+    await expect(card.locator('.sv-chart__legend')).toContainText('Returns as a share of all claims');
     await expect(graph.locator('text', { hasText: /^2007$/ })).toHaveCount(1);
     await expect(graph.locator('text', { hasText: /^2025$/ })).toHaveCount(1);
   });
