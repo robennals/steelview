@@ -1694,7 +1694,7 @@ dataStillNeeded:
 observationMarks:
   small-boat-claims-mostly-granted: {rows: ["Granted asylum or other protection", "Refused"]}
   grant-rates-by-nationality: {rows: ["Sudan", "Eritrea", "Bangladesh", "Syria", "India"]}
-  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals allowed"], at: "2025"}
+  two-in-five-appeals-allowed: {lines: ["Asylum and protection appeals allowed"], from: "2007", to: "2025"}
   final-outcomes-after-appeal: {lines: ["At initial decision", "At latest outcome"], from: "2007", to: "2022"}
   why-the-grant-rate-fell: {rows: ["Actual 2022", "Actual 2025"]}
   within-nationality-falls: {rows: ["Syria", "Pakistan"]}
@@ -1914,7 +1914,7 @@ Withdrawn claims, which end without a decision, rose with the claims made from 2
 
 ## Observations {#asylum-claims-and-decisions--observations-appeals-allowed}
 
-### Two in five asylum appeals are allowed {#asylum-claims-and-decisions--two-in-five-appeals-allowed}
+### Between a quarter and a half of asylum appeals have been allowed each year since 2007 {#asylum-claims-and-decisions--two-in-five-appeals-allowed}
 
 39% of asylum and protection appeals determined in April–June 2026 were allowed. [26](#source-asylum-claims-and-decisions-26) The allowed share rose from about a quarter in 2007/08 to about half in 2021/22–2022/23, and has fallen back since, to 39% in 2025/26. The appeals counted here were decided in that year and may concern claims refused years earlier.
 

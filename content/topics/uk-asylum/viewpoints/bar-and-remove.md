@@ -16,23 +16,23 @@ They were already safe in [France or Belgium, where the boats leave from](#fact-
 
 The Refugee Convention, the United Nations treaty on refugees, [forbids sending a refugee back to danger](#fact-asylum-law-and-the-echr/article-33-forbids-return), and [its rule on illegal entry bars penalties](#fact-asylum-law-and-the-echr/article-31-is-about-penalties). Neither article says Britain must decide every claim.
 
-### Refugees know they can stay, even if their claims are refused
+### Since 2015, most people refused asylum have not been recorded leaving
 
-[Refused claimants used to be returned more often than not; for claims since 2015, under a third have been](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). Granted or refused, most people who claim end up staying.
+[Refused claimants used to be returned more often than not; for claims since 2015, under a third have been](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So a claim is a way to stay, whatever its outcome.
 
 [Asylum claims were the commonest issue raised by people held for removal in 2019](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention), yet [most issues raised led to no positive decision](#fact-removals-and-what-stops-them/most-issues-refused). [The appeals queue is more than fourteen times as long as in June 2022](#fact-asylum-backlog-accommodation-and-cost/appeals-queue-fourteen-times), and [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks).
 
 ### Australia shows the boats stop when crossing stops paying
 
-As long as a crossing can end in staying, people will pay smugglers to try. [Australia's boat arrivals fell to almost none after it began turning boats back and barring boat arrivals from ever settling](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks).
+[Australia's boat arrivals fell to almost none after it began turning boats back and barring boat arrivals from ever settling](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks). Once a crossing could no longer end in staying, the boats stopped.
 
 While [most small-boat arrivals who got a decision were granted](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), Britain can protect refugees through routes it controls.
 
-### Britain's last curb inside the ECHR was undone within two years
+### Curbs made inside the ECHR would likely fail in court, a review for the Conservatives found
 
-Tightening the rules while staying in the Convention has been tried. [After a 2014 law, foreign offenders' human-rights appeal wins fell by about three-quarters, then climbed back most of the way within two years](#fact-removals-and-what-stops-them/article-8-reforms-cut-then-faded).
+Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail), and [that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary). So the only sure way to limit these claims is to leave.
 
-Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail), and [that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary). While [no published source counts how many removals the ECHR blocks](#fact-removals-and-what-stops-them/echr-share-not-measured), [the counts that exist miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims). So they may understate it.
+While [no published source counts how many removals the ECHR blocks](#fact-removals-and-what-stops-them/echr-share-not-measured), [the counts that exist miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims). So they may understate it.
 
 ### Voters, not a European court, should decide who is removed
 

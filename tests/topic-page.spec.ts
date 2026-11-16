@@ -683,7 +683,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect(deck.locator('.sv-deck__outline')).toBeHidden();
     const card = deck.locator('.sv-deck__card').first();
     await expect(card.locator('.sv-deck__heading')).toHaveText('Most people crossing the Channel are found to need protection');
-    await expect(card.locator('.sv-deck__reasoning')).toContainText('These are refugees');
+    await expect(card.locator('.sv-deck__reasoning')).toContainText("By Britain's own decisions, most would face danger if sent back");
     // One graph a card: a phone has room for no more.
     await expect(card.locator('.sv-chart')).toHaveCount(1);
     await expect(card.locator('.sv-chart__caption')).toContainText('Initial decisions on small-boat arrivals');
@@ -739,7 +739,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await row.locator('.sv-row__toggle').click(headCorner);
     await row.getByRole('button', { name: /^Point 2:/ }).click();
     const card = row.locator('.sv-deck__card').nth(1);
-    await expect(card.locator('.sv-deck__heading')).toHaveText('Refugees know they can stay, even if their claims are refused');
+    await expect(card.locator('.sv-deck__heading')).toHaveText('Since 2015, most people refused asylum have not been recorded leaving');
     const chart = card.locator('.sv-comparison');
     await expect(chart.locator('.sv-chart__caption')).toContainText('What became of each year’s asylum claims');
     // The whole of the data, in year order, not a chosen stretch of it.
@@ -765,7 +765,7 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   // One card per step of the argument, the last its conclusion.
   await expect(outline.locator('li')).toHaveCount(6);
   await expect(outline.locator('li').last()).toContainText('So Britain should open safe routes, decide claims fairly, and let people work');
-  const deterrence = outline.getByRole('button', { name: /Deterrence has cost/ });
+  const deterrence = outline.getByRole('button', { name: /deterrence scheme failed/ });
   await deterrence.click();
   await expect(deterrence).toHaveAttribute('aria-current', 'step');
   // Its line cites a table, which reads as more text, so the card gives its evidence in full.
@@ -783,9 +783,9 @@ test('a closed slideshow viewpoint previews its graphs, and a graph opens the ro
   // A graph on each of its first three cards; the rest are cards of text.
   const thumbs = row.locator('.sv-walk__thumb');
   await expect(thumbs).toHaveCount(3);
-  await expect(thumbs.nth(2)).toContainText('3. Safe routes keep people out of the boats');
+  await expect(thumbs.nth(2)).toContainText('3. Where a safe route existed, people could come without a boat');
   await thumbs.nth(2).click();
-  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Safe routes keep people out of the boats');
+  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Where a safe route existed, people could come without a boat');
   await expect(row.locator('.sv-deck__card').nth(2)).toBeInViewport();
 });
 

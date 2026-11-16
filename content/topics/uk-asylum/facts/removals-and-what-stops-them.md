@@ -2173,7 +2173,7 @@ observationMarks:
   about-half-of-refused-claimants-recorded-leaving: {lines: ["Returns as a share of refused"], from: "2015", to: "2021"}
   late-claims-not-human-rights-claims: {rows: ["Asylum claim", "Medico-legal report", "Modern slavery referral", "Rule 35 medical report", "Further submissions", "Judicial review", "Human rights or other rights-based application"]}
   most-issues-refused: {rows: ["No positive decision", "Positive decision or concession"]}
-  article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2017"}
+  article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2020"}
   echr-share-not-measured: {rows: ["Removals stopped by the ECHR", "People granted status after being told they were liable to removal"]}
   echr-hidden-in-other-rows: {rows: ["Human rights or other rights-based application", "Asylum claim", "Judicial review"]}
   150000-about-15-times-enforced-returns: {rows: ["Proposed UK target", "UK enforced returns, 2025"]}
@@ -2333,9 +2333,9 @@ Of 24,289 planned foreign-offender removals in 2014/15–2016/17, 16,517 (68%) s
 
 ## Observations {#removals-and-what-stops-them--observations-fno-appeals}
 
-### Human-rights appeal wins fell by about three-quarters around the 2014 Act, then climbed back most of the way {#removals-and-what-stops-them--article-8-reforms-cut-then-faded}
+### Human-rights appeal wins fell from 2012/13 to 2015/16, rose to 2017/18, then fell again {#removals-and-what-stops-them--article-8-reforms-cut-then-faded}
 
-Appeals allowed on human-rights grounds only rose to 337 in 2012/13, fell to 150 in 2013/14, before the Immigration Act 2014 took effect, and to 92 in 2015/16, roughly three-quarters below 2012/13, then climbed back to 285 in 2017/18. [41](#source-removals-and-what-stops-them-41) The 2014 Act raised the bar for offenders' appeals while leaving judges some discretion. [49](#source-removals-and-what-stops-them-49) The rebound coincides with the 2017 Supreme Court judgment that paused "deport first, appeal later", so the data cannot separate the two. [50](#source-removals-and-what-stops-them-50)
+Appeals allowed on human-rights grounds only rose to 337 in 2012/13, fell to 150 in 2013/14, before the Immigration Act 2014 took effect, and to 92 in 2015/16, roughly three-quarters below 2012/13, then climbed back to 285 in 2017/18, and fell again to 44 in 2020/21, when appeals lodged also fell, to 568. [41](#source-removals-and-what-stops-them-41) The counts move with the number of appeals lodged, and most of the fall came before the 2014 Act took effect. The 2014 Act raised the bar for offenders' appeals while leaving judges some discretion. [49](#source-removals-and-what-stops-them-49) The rebound coincides with the 2017 Supreme Court judgment that paused "deport first, appeal later", so the data cannot separate the two. [50](#source-removals-and-what-stops-them-50)
 
 ### Across all immigration cases, human-rights appeals usually succeed {#removals-and-what-stops-them--all-human-rights-appeals-53-percent}
 

@@ -6,25 +6,25 @@ order: 3
 ---
 A refusal should mean leaving, or [rules do not mean what they say](#principle-rules-must-mean-what-they-say). Most of what stands in the way is Britain's own doing. British law can fix it without leaving the European Convention on Human Rights (ECHR).
 
-### Human-rights law is not what stops most removals
+### Few challenges to removal are human-rights applications
 
-A refusal should mean leaving, or [rules do not mean what they say](#principle-rules-must-mean-what-they-say). But [human-rights applications were a small share of what was raised against removal in 2019](#fact-removals-and-what-stops-them/human-rights-applications-small-share), so leaving the Convention would not touch most of it.
+A refusal should mean leaving, or [rules do not mean what they say](#principle-rules-must-mean-what-they-say). But [human-rights applications were a small share of what was raised against removal](#fact-removals-and-what-stops-them/human-rights-applications-small-share), so leaving the Convention would not touch most of it.
 
 [In 2019, for people held for removal, the commonest issues raised were asylum claims, medical reports, modern-slavery referrals and legal challenges](#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims). [From 2015/16 to 2020/21, foreign offenders' human-rights appeal wins equalled only about 3% of deportations](#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent).
 
-### Britain is already clearing its own queues
+### Britain is already clearing its first-decision queue
 
 [The queue for first decisions is down by more than three-quarters from its peak](#fact-asylum-backlog-accommodation-and-cost/backlog-and-hotels-below-peaks). Faster decisions cut the wait, and the cost with it.
 
 [Hotel use is down by over two-thirds](#fact-asylum-backlog-accommodation-and-cost/hotel-use-far-below-peak). [Hotels held about a third of people but took three-quarters of the cost](#fact-asylum-backlog-accommodation-and-cost/hotels-third-of-people-three-quarters-of-cost), so closing them is where the savings are.
 
-### Parliament can speed up appeals without leaving the ECHR
+### Parliament is already rewriting appeals without leaving the ECHR
 
-[The queue has moved to appeals](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals), and the Immigration and Asylum Bill [replaces the tribunal](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal) and [rewrites family-life appeals](#fact-asylum-law-and-the-echr/bill-rewrites-article-8-appeals). None of that needs Britain to leave.
+[The queue has moved to appeals](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals), and the Immigration and Asylum Bill [replaces the tribunal](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal) and [rewrites family-life appeals](#fact-asylum-law-and-the-echr/bill-rewrites-article-8-appeals). None of that needs Britain to leave the Convention.
 
 [Its assessment models thousands more refusals, not as a target](#fact-asylum-law-and-the-echr/the-bill-sets-no-target). While [many may not leave](#fact-asylum-law-and-the-echr/many-refused-may-not-leave), each refusal opens the way to removal.
 
-While [the fall in offenders' human-rights wins around a 2014 law faded](#fact-removals-and-what-stops-them/article-8-reforms-cut-then-faded), Europe now backs the judges. [All 46 ECHR countries agreed its court needs "strong reasons" to overrule national courts on family life](#fact-asylum-law-and-the-echr/all-46-agreed-strong-reasons). [That is not binding](#fact-asylum-law-and-the-echr/the-declaration-is-non-binding), but every member agreed it.
+Europe also backs national judges here. [All 46 ECHR countries agreed its court needs "strong reasons" to overrule national courts on family life](#fact-asylum-law-and-the-echr/all-46-agreed-strong-reasons). [That is not binding](#fact-asylum-law-and-the-echr/the-declaration-is-non-binding), but every member agreed it.
 
 ### Albanian crossings stayed low once refusals and returns sped up
 
@@ -34,9 +34,9 @@ While [the fall in offenders' human-rights wins around a 2014 law faded](#fact-r
 
 Protection should also last only as long as the danger. After Syria's government fell, [Syrians' grant rate dropped from 98% to 10% in a year](#fact-asylum-claims-and-decisions/syrian-grant-rate-fell). That is the case for the rule that [protection lasts 30 months, renewed only if return is still unsafe](#fact-deterrence-and-protection-policies/thirty-month-protection).
 
-### Leaving the ECHR would cost more than it gains
+### Leaving the ECHR could cost police cooperation, and the ban on return would remain
 
-[The EU could end police and criminal-records cooperation](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation), and [the Refugee Convention's ban on returning refugees to danger would remain](#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains). Britain would pay a real price and still not be free to send refugees back to danger.
+[The EU could end police and criminal-records cooperation](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation), and [the Refugee Convention's ban on returning refugees to danger would remain](#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains). Britain could pay a real price and still not be free to send refugees back to danger.
 
 [Whether leaving breaks the Good Friday Agreement is disputed](#fact-asylum-law-and-the-echr/good-friday-agreement-is-disputed).
 
