@@ -6,9 +6,11 @@ import { useCarousel } from '@/components/home/use-carousel';
 
 type SlideshowProps = {
   name: string;
-  /** Each card's point, for the outline and the count. */
+  /** The name of an opening card that comes before the points, unnumbered: "The position". */
+  opening?: string;
+  /** Each point, numbered, for the outline and the count. */
   headings: string[];
-  /** One card per heading, in order. */
+  /** The opening card, if there is one, then one card per heading, in order. */
   children: ReactNode[];
 };
 
@@ -21,7 +23,9 @@ type SlideshowProps = {
  * Every slide is server-rendered into a scroll-snapped strip, so without
  * JavaScript each is still reachable by scrolling.
  */
-export function Slideshow({ name, headings, children }: SlideshowProps) {
+export function Slideshow({ name, opening, headings, children }: SlideshowProps) {
+  const labels = opening ? [opening, ...headings] : headings;
+  const first = opening ? 1 : 0;
   const count = children.length;
   const { strip, index, announced, enhanced, go, onKeyDown, onScroll } = useCarousel(count);
   const last = index === count - 1;
@@ -48,11 +52,11 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
   return (
     <div className="sv-deck" role="region" aria-roledescription="carousel" aria-label={`${name}, one slide at a time`}>
       <ol className="sv-deck__outline">
-        {headings.map((heading, i) => (
+        {labels.map((label, i) => (
           <li key={i}>
             <button type="button" className="sv-deck__outline-item" aria-current={i === index ? 'step' : undefined} disabled={!enhanced} onClick={() => go(i)}>
-              <span className="sv-deck__number" aria-hidden="true">{i + 1}</span>
-              <span>{heading}</span>
+              <span className="sv-deck__number" aria-hidden="true" data-opening={i < first || undefined}>{i < first ? '' : i + 1 - first}</span>
+              <span>{label}</span>
             </button>
           </li>
         ))}
@@ -61,7 +65,7 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
       <div className="sv-deck__stage" ref={stage}>
         {enhanced && (
           <div className="sv-deck__progress" aria-hidden="true">
-            {headings.map((_, i) => <span key={i} data-done={i <= index || undefined} />)}
+            {labels.map((_, i) => <span key={i} data-done={i <= index || undefined} />)}
           </div>
         )}
         <div
@@ -74,12 +78,12 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
           onScroll={onScroll}
         >
           {children.map((slide, i) => (
-            <div className="sv-deck__slide" key={i} role="group" aria-roledescription="slide" aria-label={`Slide ${i + 1} of ${count}: ${headings[i]}`}>
+            <div className="sv-deck__slide" key={i} role="group" aria-roledescription="slide" aria-label={`Slide ${i + 1} of ${count}: ${labels[i]}`}>
               {slide}
             </div>
           ))}
         </div>
-        {enhanced && <p className="sv-visually-hidden" aria-live="polite">Slide {announced + 1} of {count}: {headings[announced]}</p>}
+        {enhanced && <p className="sv-visually-hidden" aria-live="polite">Slide {announced + 1} of {count}: {labels[announced]}</p>}
         {enhanced && count > 1 && (
           <div className="sv-deck__controls">
             <button type="button" className="sv-deck__back" disabled={index === 0} onClick={() => step(index - 1)}>

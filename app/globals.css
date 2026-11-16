@@ -2183,6 +2183,21 @@
   }
 
   .sv-deck__prose { max-width: var(--measure); font-size: 1.05rem; line-height: 1.6; }
+
+  /* The opening card: the position, large, then the case point by point.
+     On a wide screen the outline beside it already lists the points. */
+  .sv-deck__lead { font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem); line-height: 1.5; color: var(--ink); }
+  .sv-deck__case-head { margin: 0.75rem 0 0.4rem; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-4); }
+  .sv-deck__case { margin: 0; padding-left: 1.4rem; list-style: decimal; font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.4; color: var(--ink-2); }
+  .sv-deck__case li { margin-bottom: 0.55rem; padding-left: 0.2rem; }
+  .sv-deck__case li:last-child { font-weight: 600; color: var(--ink); }
+
+  @media (width > 64rem) {
+    .sv-deck__case-head, .sv-deck__case { display: none; }
+  }
+
+  /* The opening's entry in the outline is not one of the numbered points. */
+  .sv-deck__number[data-opening] { border-style: dashed; }
   .sv-deck__prose p { margin: 0 0 0.9rem; }
   .sv-deck__card:not([data-graph]) .sv-deck__prose { margin-top: 0.5rem; }
 

@@ -209,7 +209,13 @@ export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
   chartCard?: { title: string; subtitle?: string };
 };
 
-export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
+export type RenderedWalkthrough = {
+  /** The position the steps argue for, as markdown. */
+  lead: string;
+  /** The same, rendered, for a slideshow's opening card. */
+  leadHtml: string;
+  steps: RenderedStep[];
+};
 
 /**
  * Every viewpoint's walkthrough with its prose rendered, keyed by viewpoint id.
@@ -223,6 +229,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
+      leadHtml: await renderMarkdown(lead, topic.slug, topic.facts, { panelCitation: panelFor }),
       steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited }) => ({
         heading,
         chart,
