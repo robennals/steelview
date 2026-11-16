@@ -750,3 +750,15 @@ test('a closed slideshow viewpoint previews its graphs, and a graph opens the ro
   await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Britain should open safe routes');
   await expect(row.locator('.sv-deck__card').nth(5)).toBeInViewport();
 });
+
+test('a slideshow card can be made with a map, its arrows converging on northern France', async ({ page }) => {
+  await page.goto(SLIDES_TOPIC);
+  const row = page.locator('#viewpoint-bar-and-remove');
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const card = row.locator('.sv-deck__card').first();
+  await expect(card.locator('.sv-deck__heading')).toHaveText('Few refugees reach Britain without passing through other countries');
+  await expect(card.locator('.sv-deck__shows')).toContainText('Where people crossing the Channel come from');
+  // One arrow from each of the ten largest nationalities, and the crossing itself.
+  await expect(card.locator('.sv-geo-map__flow')).toHaveCount(11);
+  await expect(card.locator('.sv-geo-map__flow-label')).toHaveText('Northern France');
+});

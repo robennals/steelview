@@ -410,6 +410,18 @@ sources:
     https://migrationobservatory.ox.ac.uk/resources/commentaries/albanian-asylum-seekers-in-the-uk-and-eu-a-look-at-recent-data/
   publisher: The Migration Observatory, University of Oxford
   date: '2025-10-22'
+- stance: supports
+  quote: >-
+    Data on nationality, age on arrival, and sex comes from the latest information
+    at the time of data extraction for small boat arrivals, recorded detections
+    in the UK and recorded detections at UK ports. This may differ from the information
+    given when the detection was initially recorded.
+  title: Illegal entry routes to the UK detailed datasets, year ending June 2026
+  url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+  fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+  localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+  publisher: Home Office
+  date: '2026-08-27'
 series:
   title: 'Small-boat crossings of the Channel'
   subtitle: 'People and boats detected arriving, 2018–2026'
@@ -1990,6 +2002,36 @@ figures:
 - kind: series
 - kind: series
   id: nationality
+- kind: map
+  id: where-crossers-come-from
+  title: 'Where people crossing the Channel come from'
+  subtitle: 'Small-boat arrivals to the UK by nationality, 2018–2025'
+  description: >-
+    People detected arriving in the UK by small boat in 2018–2025, for the ten
+    nationalities with the most arrivals. The arrows show the route the Migration
+    Observatory describes: through the EU to the beaches of northern France, then
+    across the Channel.
+  preset: world
+  areaLabel: Nationality
+  valueLabel: People arriving by small boat, 2018–2025
+  breaks: [0, 10000, 20000, 30000, 40000]
+  data: {IR: 30285, AF: 27468, IQ: 19227, ER: 19135, AL: 15382, SY: 14747, SD: 12648, VN: 8437, TR: 7368, SO: 5169}
+  crop: {minLon: -15, maxLon: 110, minLat: -2, maxLat: 62}
+  flows:
+    label: Route to the UK
+    from: [IR, AF, IQ, ER, AL, SY, SD, VN, TR, SO]
+    via: [{label: Northern France, lon: 1.9, lat: 50.9}]
+    to: {label: Kent, lon: 1.1, lat: 51.2}
+  sources: [35, 21]
+  valuesFrom: >-
+    The yearly figures in the nationality chart above, added up over 2018–2025
+  note: >-
+    Each country's figure is the sum of its yearly small-boat arrivals in 2018–2025,
+    from the nationality chart above. Only the ten nationalities with the most arrivals
+    are shaded. Every other country reads "No data" because the chart groups the
+    remaining nationalities together, and keeps people with no recorded nationality
+    apart. The arrows show the general route the Migration Observatory describes, not
+    any one person's journey: the countries each person passed through are not recorded.
 - kind: series
   id: routes
 - kind: series
@@ -2036,6 +2078,7 @@ observationMarks:
   what-caused-the-2026-fall-is-not-settled: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
   fewer-boats-more-people-in-each: {lines: ["1 January to 22 October"], from: "2025", to: "2026"}
   a-few-nationalities-make-up-most-arrivals: {lines: ["Iran", "Afghanistan", "Iraq", "Eritrea", "Albania", "Syria"]}
+  largest-groups-come-from-outside-the-eu: {rows: [IR, AF, IQ, ER, AL, SY, SD, VN, TR, SO]}
   the-mix-has-shifted: {lines: ["Eritrea", "Sudan", "Somalia", "Syria"], from: "2024", to: "2025"}
   boats-did-not-simply-replace-lorries: {lines: ["Small boats", "Detected inside the UK (often lorries or ferries)"]}
   before-2018-the-figures-are-attempts-stopped-in-france: {whole: true}
@@ -2101,6 +2144,12 @@ From 2018 to 2025, people from six countries made up 65% of arrivals: Iran (16%)
 ### The mix has shifted towards the Horn of Africa and Sudan {#channel-crossings-and-irregular-arrivals--the-mix-has-shifted}
 
 Eritreans were the largest group in the year to June 2026, with 5,875 arrivals. Sudanese arrivals rose 11% to 4,191, and Somali arrivals rose 76% to 3,901. [16](#source-channel-crossings-and-irregular-arrivals-16) [15](#source-channel-crossings-and-irregular-arrivals-15) Syrian arrivals fell by 67% between 2024 and 2025, which the Home Office attributes to the fall of the Assad regime. [17](#source-channel-crossings-and-irregular-arrivals-17) Albanian arrivals rose and fell within 2022 (see the Albanian chart below).
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-where-crossers-come-from}
+
+### The largest groups crossing come from outside the EU, by way of northern France {#channel-crossings-and-irregular-arrivals--largest-groups-come-from-outside-the-eu}
+
+All ten nationalities with the most small-boat arrivals in 2018–2025 are from outside the EU: Iran, Afghanistan, Iraq, Eritrea, Albania, Syria, Sudan, Vietnam, Turkey and Somalia. Together they made up most arrivals. [35](#source-channel-crossings-and-irregular-arrivals-35) The boats leave from the beaches of northern France, and the Migration Observatory says most people who cross travel through the EU to get there. [21](#source-channel-crossings-and-irregular-arrivals-21)
 
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-route-people}
 
