@@ -807,6 +807,10 @@ test('a slideshow card can be made with a map of where the boats leave from', as
   // An arrow from each coast the boats leave from, each named, to Kent.
   await expect(card.locator('.sv-geo-map__flow')).toHaveCount(2);
   await expect(card.locator('.sv-geo-map__flow-label')).toHaveText(['Northern French beaches', 'Belgian coast', 'Kent']);
+  // Clicking the map opens its data, and nothing else: not also a pop-up for a claim behind it.
+  await card.locator('.sv-geo-map__svg').locator('visible=true').first().click();
+  await expect(page.locator('dialog[open]')).toHaveCount(1);
+  await expect(page.locator('dialog[open] .sv-factpanel')).toHaveCount(1);
 });
 
 test('a slideshow card can be made with quotes: those its point rests on, and the whole collection a click away', async ({ page }) => {
