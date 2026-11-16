@@ -63,8 +63,6 @@ export type ChartGeometry = {
   markerRadius: number;
   /** Label every nth value tick — narrow charts cannot fit them all. */
   valueLabelEvery: number;
-  /** Time-axis ticks land on multiples of this many years. */
-  yearTickStep: number;
   /** In a focus window shorter than three years, a tick every this many months. */
   monthTickStep: number;
 };
@@ -80,7 +78,6 @@ const previewGeometry = (width: number, height: number): ChartGeometry => ({
   fontSize: 12,
   markerRadius: 4,
   valueLabelEvery: 1,
-  yearTickStep: 10,
   monthTickStep: 2,
 });
 
@@ -102,7 +99,6 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
     fontSize: 11,
     markerRadius: 4,
     valueLabelEvery: 2,
-    yearTickStep: 20,
     monthTickStep: 3,
   },
   wide: {
@@ -115,8 +111,7 @@ export const CHART_GEOMETRY: Record<SeriesVariant, ChartGeometry> = {
     fontSize: 13,
     markerRadius: 4.5,
     valueLabelEvery: 1,
-    yearTickStep: 10,
-    monthTickStep: 1,
+      monthTickStep: 1,
   },
 };
 
@@ -190,6 +185,23 @@ export function alignedTicks(min: number, max: number, intervals: number): numbe
  * Longer series retain the sparse decade-style ticks, while always naming
  * both ends of the published range.
  */
+/** The steps a time axis labels years at, finest first. */
+const YEAR_STEPS = [1, 2, 5, 10, 20, 25, 50, 100];
+/** Past this many labels an axis reads as a fence rather than a scale. */
+const MAX_YEAR_TICKS = 8;
+
+/**
+ * How many years apart an axis labels its years: the finest step whose
+ * labels fit the plot's width and come to no more than `MAX_YEAR_TICKS`, so
+ * a reader can find a year the text names without counting gridlines. A
+ * thirteen-year series gets every other year, not just 2010 and 2020.
+ */
+export function yearTickStep(fromYear: number, toYear: number, geometry: Pick<ChartGeometry, 'plotWidth' | 'fontSize'>): number {
+  const fit = Math.floor(geometry.plotWidth / (tickLabelWidth(String(toYear), geometry.fontSize) + 4));
+  const most = Math.max(2, Math.min(MAX_YEAR_TICKS, fit));
+  return YEAR_STEPS.find(step => Math.floor((toYear - fromYear) / step) + 1 <= most) ?? YEAR_STEPS[YEAR_STEPS.length - 1];
+}
+
 export function yearTicks(fromYear: number, toYear: number, step: number): number[] {
   if (toYear - fromYear <= 10) {
     return Array.from({ length: toYear - fromYear + 1 }, (_, i) => fromYear + i);
@@ -574,7 +586,7 @@ export function windowTicks(
   const from = periodToYear(window.from);
   const to = periodToYear(window.to);
   if (to - from >= 3) {
-    return yearTicks(Math.ceil(from), Math.floor(to), geometry.yearTickStep).map((year) => ({ year, x: x(String(year)), label: String(year) }));
+    return yearTicks(Math.ceil(from), Math.floor(to), yearTickStep(Math.ceil(from), Math.floor(to), geometry)).map((year) => ({ year, x: x(String(year)), label: String(year) }));
   }
   const ticks: TimeTick[] = [];
   const [startYear, startMonth] = normalizePeriod(window.from).split('-').map(Number);
@@ -705,7 +717,7 @@ export function layoutReading(
     timeTicks: dropCrowdedTicks(
       window || shortMonthly
         ? windowTicks(window ?? { from: series.coverage.from, to: end }, geometry, x)
-        : yearTicks(periodYear(series.coverage.from), periodYear(end), geometry.yearTickStep).map(
+        : yearTicks(periodYear(series.coverage.from), periodYear(end), yearTickStep(periodYear(series.coverage.from), periodYear(end), geometry)).map(
             (year) => ({ year, x: x(String(year)), label: String(year) })
           ),
       geometry.fontSize
@@ -792,7 +804,7 @@ export function layoutContext(
       points: shown[index].map((point) => ({ x: x(point.period), y: y(point.value), point })),
     })),
     timeTicks: dropCrowdedTicks(
-      yearTicks(periodYear(series.coverage.from), periodYear(end), CHART_GEOMETRY[variant].yearTickStep).map(
+      yearTicks(periodYear(series.coverage.from), periodYear(end), yearTickStep(periodYear(series.coverage.from), periodYear(end), geometry)).map(
         (year) => ({ year, x: x(String(year)), label: String(year) })
       ),
       geometry.fontSize

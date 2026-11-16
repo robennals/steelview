@@ -21,6 +21,7 @@ import {
   seriesTable,
   splitRuns,
   yearTicks,
+  yearTickStep,
   dropCrowdedTicks,
   tickLabelWidth,
   zoneLabelPlacement,
@@ -109,6 +110,16 @@ test('niceTicks lands on round numbers that span the data', () => {
 test('niceTicks does not degenerate on a flat series', () => {
   assert.deepEqual(niceTicks(5, 5), [0, 5, 10]);
   assert.deepEqual(niceTicks(0, 0), [-1, 0, 1]);
+});
+
+test('yearTickStep labels as finely as the plot has room for, up to eight labels', () => {
+  // Thirteen financial years on a phone: every other year, so 2014 has a label, not just 2010 and 2020.
+  assert.equal(yearTickStep(2008, 2020, CHART_GEOMETRY['preview-portrait']), 2);
+  assert.equal(yearTickStep(2008, 2020, CHART_GEOMETRY.narrow), 2);
+  // A long series keeps its decades.
+  assert.equal(yearTickStep(1964, 2025, CHART_GEOMETRY.wide), 10);
+  // A short one labels every year.
+  assert.equal(yearTickStep(2019, 2025, CHART_GEOMETRY.narrow), 1);
 });
 
 test('yearTicks labels every year for short series and names both ends of longer ones', () => {
@@ -316,9 +327,9 @@ test('dropCrowdedTicks drops interior ticks that would print over an end tick, n
   assert.deepEqual(dropCrowdedTicks(ticks.slice(2), 11).map((t) => t.label), ['2020', '2026']);
 });
 
-test('a 1950–2026 axis drops 2020 at narrow width and keeps it at wide width', () => {
+test('a 1950–2026 axis labels its decades, dropping 2020 beside 2026 at narrow width and keeping it at wide width', () => {
   const s = span(1950, 2026);
-  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow').timeTicks.map((t) => t.label), ['1950', '1960', '1980', '2000', '2026']);
+  assert.deepEqual(layoutReading(s, s.readings[0], 'narrow').timeTicks.map((t) => t.label), ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2026']);
   assert.deepEqual(
     layoutReading(s, s.readings[0], 'wide').timeTicks.map((t) => t.label),
     ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020', '2026']
