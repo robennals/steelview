@@ -14,7 +14,7 @@ They set off from [France or Belgium, where the boats leave from](#fact-channel-
 
 The Refugee Convention, the United Nations treaty on refugees, [forbids sending a refugee back to danger](#fact-asylum-law-and-the-echr/article-33-forbids-return), and [its rule on illegal entry bars penalties](#fact-asylum-law-and-the-echr/article-31-is-about-penalties). Neither article says Britain must decide every claim, so Britain can refuse to hear these claims without sending anyone back to danger.
 
-### Since 2015, most failed asylum claims have not ended in a recorded return
+### People who claim asylum can expect to stay, even if they are refused
 
 [Of claims refused or withdrawn, over half ended in a recorded return up to 2013, and under a third in every year since 2015](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So most people whose claims fail are, as far as the records show, still here.
 
