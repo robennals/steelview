@@ -27,8 +27,10 @@ export function ClaimPopups({ claims }: ClaimPopupsProps) {
     const onClick = (event: globalThis.MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('.sv-deck__card a.sv-cite') : null;
-      const claim = link && claims[decodeURIComponent(link.hash.slice(1))];
-      if (!link || !claim) return;
+      // A card's "Explore this data" is a citation too, but opens the data, not a pop-up.
+      if (!link || link.closest('.sv-walk__explore')) return;
+      const claim = claims[decodeURIComponent(link.hash.slice(1))];
+      if (!claim) return;
       event.preventDefault();
       setActive({ claim, trigger: link });
     };
