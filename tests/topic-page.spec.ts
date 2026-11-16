@@ -733,26 +733,20 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect(page.getByRole('dialog', { name: 'Asylum Claims and Decisions in the UK and Europe' })).toBeVisible();
   });
 
-  test('a card\'s graph can switch between views, every year shown', async ({ page }) => {
+  test('a card\'s point about a trend is drawn as a line over every year', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     const row = page.locator('#viewpoint-bar-and-remove');
     await row.locator('.sv-row__toggle').click(headCorner);
     await row.getByRole('button', { name: /^Point 2:/ }).click();
     const card = row.locator('.sv-deck__card').nth(1);
-    await expect(card.locator('.sv-deck__heading')).toHaveText('Since 2015, most people refused asylum have not been recorded leaving');
-    const chart = card.locator('.sv-comparison');
-    await expect(chart.locator('.sv-chart__caption')).toContainText('What became of each year’s asylum claims');
-    // The whole of the data, in year order, not a chosen stretch of it.
-    const years = chart.locator('.sv-comparison__row');
-    await expect(years).toHaveCount(19);
-    await expect(years.first()).toHaveAttribute('data-row', '2007');
-    await expect(years.last()).toHaveAttribute('data-row', '2025');
-    const returned = chart.getByRole('button', { name: 'Refused and returned' });
-    await returned.click();
-    await expect(returned).toHaveAttribute('aria-pressed', 'true');
-    await expect(years.first()).toHaveAttribute('data-row', '2007');
-    // Switching views does not open the chart's data.
-    await expect(page.locator('dialog[open]')).toHaveCount(0);
+    await expect(card.locator('.sv-deck__heading')).toHaveText('Since 2015, most failed asylum claims have not ended in a recorded return');
+    await expect(card.locator('.sv-chart__caption')).toContainText('Refused claims and later returns');
+    // The share each year, as lines, from the first year of claims to the last.
+    const graph = card.locator('.sv-chart__variant[data-variant="preview-portrait"]');
+    await expect(graph).toBeVisible();
+    await expect(card.locator('.sv-chart__legend')).toContainText('Returns as a share of refused and withdrawn');
+    await expect(graph.locator('text', { hasText: /^2007$/ })).toHaveCount(1);
+    await expect(graph.locator('text', { hasText: /^2025$/ })).toHaveCount(1);
   });
 });
 
