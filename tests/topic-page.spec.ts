@@ -770,6 +770,8 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
   const outline = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__outline`);
   await expect(outline).toBeVisible();
+  // With the list showing, the numbered circles would only repeat it.
+  await expect(page.locator(`${SLIDES_VIEWPOINT} .sv-deck__points`)).toBeHidden();
   // One card per step of the argument, the last its conclusion.
   await expect(outline.locator('li')).toHaveCount(6);
   await expect(outline.locator('li').last()).toContainText('So Britain should open safe routes, decide claims fairly, and let people work');
@@ -817,7 +819,7 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
-  await row.getByRole('button', { name: /^Point 4:/ }).click();
+  await row.locator('.sv-deck__outline-item').nth(3).click();
   const card = row.locator('.sv-deck__card').nth(3);
   await expect(card.locator('.sv-deck__heading')).toHaveText('Human-rights claims stop removals, the Home Office says');
   const quotes = card.locator('.sv-card-quotes');

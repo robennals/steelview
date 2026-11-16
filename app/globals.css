@@ -2091,7 +2091,8 @@
 
   .sv-row[data-open] .sv-deck { opacity: 1; transform: none; transition-delay: 0.12s; }
 
-  /* Only on a wide screen are the slides listed down the left. */
+  /* Only on a wide screen are the slides listed down the left; the numbered
+     circles stand in for the list on narrower screens. */
   .sv-deck__outline { display: none; margin: 0; padding: 0; list-style: none; }
 
   @media (width > 64rem) {
@@ -2141,6 +2142,8 @@
      ringed in the accent, and each is a button to its point. Circles, like
      the outline's, so they read as places to go, not a gauge. */
   .sv-deck__points { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+  /* Where the outline shows, it already marks the point showing and goes to any point. */
+  @media (width > 64rem) { .sv-deck__points { display: none; } }
 
   .sv-deck__points button {
     display: grid;
