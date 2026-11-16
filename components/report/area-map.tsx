@@ -4,6 +4,7 @@ import { ReportFigure } from './figure';
 import { slugify } from './format';
 import { mapSentence } from './geo-map';
 import type { MapEncoding } from './geo/categorical';
+import { flowSentence, type MapFlows } from './geo/flow-arrows';
 import { GeoDrawing, type MapInset } from './geo/geo-drawing';
 import type { Bounds } from './geo/project';
 import { mapShading } from './geo/shading';
@@ -27,6 +28,8 @@ type AreaMapCommon = {
   extent?: Bounds;
   /** Areas redrawn enlarged beside the real-shape view. */
   insets?: MapInset[];
+  /** Arrows on the real-shape view, converging on one place. The tiles draw none. */
+  flows?: MapFlows;
   /** The view shown first, and the one a reader without JavaScript sees beside the table. Defaults to `map`. */
   defaultView?: AreaMapView;
   /** Areas to outline, in both views. Never changes the colour. */
@@ -73,7 +76,7 @@ export type AreaMapProps = AreaMapCommon & MapEncoding;
  * needs one.
  */
 export function AreaMap(props: AreaMapProps) {
-  const { tiles, regions, contextRegions = [], extent, insets = [], defaultView = 'map', highlight = [], areaLabel = 'Area', id, title, subtitle, description, sources, note, footer, panel, headingLevel, preview } = props;
+  const { tiles, regions, contextRegions = [], extent, insets = [], flows, defaultView = 'map', highlight = [], areaLabel = 'Area', id, title, subtitle, description, sources, note, footer, panel, headingLevel, preview } = props;
   const what = props.categories ? props.categoryLabel : props.valueLabel;
   const label = title ?? what;
   const reactId = useId();
@@ -87,7 +90,7 @@ export function AreaMap(props: AreaMapProps) {
       graph: (
         <>
           {shading.legend}
-          <p className="sv-visually-hidden" id={descriptionId}>{shading.summary(mapSentence(regions, shading.categorical))}</p>
+          <p className="sv-visually-hidden" id={descriptionId}>{shading.summary(mapSentence(regions, shading.categorical), flows && flowSentence(flows, regions))}</p>
           <GeoDrawing
             regions={regions}
             contextRegions={contextRegions}
@@ -95,6 +98,7 @@ export function AreaMap(props: AreaMapProps) {
             projection="auto"
             markers={[]}
             insets={preview ? [] : insets}
+            flows={flows}
             highlight={highlight}
             lookFor={shading.lookFor}
             slots={shading.slots}

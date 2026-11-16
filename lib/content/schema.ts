@@ -661,6 +661,23 @@ function mapEncodingRule(what: 'map' | 'tile map' | 'geo map') {
   };
 }
 
+/** A point on a map that an arrow passes through or ends at, named for the readout and the table: "Northern France". */
+const mapPlace = z.strictObject({ label: z.string().min(1), lon: z.number().min(-180).max(180), lat: z.number().min(-90).max(90) });
+
+/**
+ * Arrows on the real-shape view: from each area in `from`, through the `via`
+ * places in turn, to `to`. They converge, so the last stretch is one arrow.
+ * On a numeric map each area's arrow is as thick as its datum. The tiles draw
+ * none; the screen-reader text and the table name the route.
+ */
+const mapFlows = z.strictObject({
+  /** What the arrows show, for the key: "Route to the UK". */
+  label: z.string().min(1),
+  from: z.array(z.string().min(1)).min(1),
+  via: z.array(mapPlace).default([]),
+  to: mapPlace,
+});
+
 const mapFields = {
   ...figureBase,
   /** Table heading for the areas: "State". */
@@ -669,6 +686,9 @@ const mapFields = {
   highlight: z.array(z.string()).default([]),
   /** Areas too small to see at full scale, redrawn enlarged beside the real-shape view. */
   insets: z.array(z.object({ regionIds: z.array(z.string().min(1)).min(1), label: z.string().min(1).optional() })).optional(),
+  /** The lon/lat box the real-shape view shows, in place of its preset's: a world map cropped to the part of the world its data is in. */
+  crop: z.strictObject({ minLon: z.number(), maxLon: z.number(), minLat: z.number(), maxLat: z.number() }).optional(),
+  flows: mapFlows.optional(),
   ...mapEncodingFields,
 };
 

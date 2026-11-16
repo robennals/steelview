@@ -284,6 +284,22 @@ test('an inset enlarges an area in the real-shape view, with its value under it'
   assert.match(html, /sv-geo-map__inset-value[^>]*>4%<\/text>/);
 });
 
+test('arrows on the real shapes converge through their places, thickest from the largest value, and are read aloud', () => {
+  const flows = { label: 'Route east', from: [{ regionId: 'CA', weight: 1 }, { regionId: 'TX', weight: 4 }], via: [{ label: 'Chicago', lon: -87.6, lat: 41.9 }], to: { label: 'New York', lon: -74, lat: 40.7 } };
+  const html = renderToStaticMarkup(createElement(AreaMap, { ...numeric, flows }));
+  const widths = [...html.matchAll(/<path class="sv-geo-map__flow" d="[^"]*" style="stroke-width:([\d.]+)"/g)].map(m => Number(m[1]));
+  // A branch from each area, then the shared stretch once, at the heaviest's width, with the only arrowhead.
+  assert.equal(widths.length, 3);
+  assert.ok(widths[0] < widths[1], 'California, a quarter of Texas, draws thinner');
+  assert.equal(widths[2], widths[1]);
+  assert.equal((html.match(/marker-end=/g) ?? []).length, 1);
+  assert.match(html, /<text class="sv-geo-map__flow-label"[^>]*>Chicago<\/text>/);
+  assert.match(html, /Route east: arrows from California, Texas through Chicago to New York\./);
+
+  const tiles = renderToStaticMarkup(createElement(AreaMap, { ...numeric, flows, defaultView: 'tiles' }));
+  assert.doesNotMatch(tiles, /sv-geo-map__flow"/, 'the tiles draw no arrows');
+});
+
 test('GeoMap markers are drawn, keyed by shape and listed in the table', () => {
   const html = renderToStaticMarkup(createElement(GeoMap, {
     regions: UK_ITL1_REGIONS,
