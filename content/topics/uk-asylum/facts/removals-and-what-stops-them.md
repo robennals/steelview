@@ -2114,7 +2114,45 @@ figures:
         shows: { value: The Home Office does not hold this data, sources: [17] }
       - measure: The government's position
         shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
+  - kind: quotes
+    id: said-about-the-echr
+    question: What do the Home Office and others say human-rights law does to removals?
+    description: >-
+      What the Home Office, the House of Commons Library and the Migration
+      Observatory say about how often the ECHR stops a removal, in date order.
+    quotes:
+      - text: Article 8 rights are also used to stop the removal of those who are living here illegally. In January to September 2022, 86% of people who raised rights-based applications, while in detention awaiting removal, were released.
+        speaker: Home Office
+        context: Additional statistics referred to in the asylum policy statement
+        date: '2025-11-21'
+        source: 30
+      - text: we see examples of foreign national offenders who are being allowed to stay in the UK on the basis of an Article 3 protection claim, despite committing serious criminal offences in the UK
+        speaker: Home Office
+        context: 'Restoring Order and Control (CP 1418)'
+        date: '2025-11-17'
+        source: 58
+      - text: From 2015/16 to 2024/25, immigration judges granted 61,000 out of the 115,000 human rights appeals brought against the Home Office (53%).
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376)'
+        date: '2025-10-27'
+        source: 47
+      - text: If someone would experience treatment reaching this threshold, as interpreted by the court, they cannot be removed under any circumstances.
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376), on Article 3'
+        date: '2025-10-27'
+        source: 48
+      - text: In the same 2015/16 to 2020/21 period, the Home Office removed 31,400 foreign national offenders from the UK. The 1,000 foreign criminals able to block deportation on ECHR grounds alone represent 3% of that figure.
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376)'
+        date: '2025-10-27'
+        source: 45
+      - text: the Home Office said it did not hold data on … the number of people issued notices of liability to remove who were subsequently granted legal status (e.g., following a human rights claim)
+        speaker: The Migration Observatory, University of Oxford
+        context: Deportation and returns of unauthorised migrants from the UK
+        date: '2026-03-31'
+        source: 17
 observationMarks:
+  home-office-says-rights-claims-stop-removals: {rows: ["Home Office"]}
   fewer-refused-recorded-leaving: {lines: ["Returns as a share of refused and withdrawn"], from: "2007", to: "2025"}
   unlawful-population-estimates: {rows: ["Greater London Authority, central estimate", "Greater London Authority, with UK-born children", "Pew, as first published", "Pew, revised March 2025"]}
   about-half-of-refused-claimants-recorded-leaving: {lines: ["Returns as a share of refused"], from: "2015", to: "2021"}
@@ -2323,6 +2361,12 @@ By 30 June 2026, 1,087 people had been returned to France and 1,117 brought to t
 ### Hundreds of thousands, on estimates now nine years old {#removals-and-what-stops-them--unlawful-population-estimates}
 
 The Home Office makes no official estimate of the population without lawful status. [70](#source-removals-and-what-stops-them-70) The two latest estimates are for 2017, and Pew revised its range down in March 2025. [69](#source-removals-and-what-stops-them-69) Both use the residual method: the foreign-born population minus an estimate of those here lawfully.
+
+## Observations {#removals-and-what-stops-them--observations-said-about-the-echr}
+
+### The Home Office says human-rights claims are used to stop removals {#removals-and-what-stops-them--home-office-says-rights-claims-stop-removals}
+
+In November 2025 the Home Office said Article 8 is used to stop removals, and that 86% of people who raised a rights-based application while held for removal in January to September 2022 were released. It has not yet published the analysis behind that figure. [30](#source-removals-and-what-stops-them-30) It also said some foreign offenders have stayed on Article 3 grounds despite serious crimes. [58](#source-removals-and-what-stops-them-58) Released is not the same as never removed, and these are the government's own statements.
 
 ## Observations {#removals-and-what-stops-them--observations-echr-share}
 

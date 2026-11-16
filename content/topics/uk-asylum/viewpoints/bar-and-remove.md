@@ -26,17 +26,11 @@ The Refugee Convention, the United Nations treaty on refugees, [forbids sending 
 
 While [most small-boat arrivals who got a decision were granted](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), Britain can protect refugees through routes it controls.
 
-### Curbs made inside the ECHR would likely fail in court, a review for the Conservatives found
+### Human-rights claims stop removals, the Home Office says
 
-Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail), and [that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary). If limits inside the Convention would fail, leaving is the way to make them hold.
+[The Home Office says Article 8 is used to stop removals, and that 86% of people who raised a rights-based claim while held for removal in 2022 were released](#fact-removals-and-what-stops-them/home-office-says-rights-claims-stop-removals). [Lord Wolfson judged that limits inside the ECHR would likely fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail). If limits inside the Convention would fail, leaving is the way to make removals hold.
 
-While [no published source counts how many removals the ECHR blocks](#fact-removals-and-what-stops-them/echr-share-not-measured), [the counts that exist miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims). So they may understate it.
-
-### Voters, not a European court, should decide who is removed
-
-Under [democratic consent](#principle-democratic-consent-over-membership), rules on who must leave belong to a Parliament that voters can sack. [A majority in one poll backed replacing European rights law with British laws to promptly deport illegal migrants](#fact-public-opinion-on-asylum-and-the-echr/whitestone-54-percent).
-
-While [polls since 2016 have shown more people backing staying in the ECHR than leaving](#fact-public-opinion-on-asylum-and-the-echr/remain-has-led-since-2016), that is a choice for voters to make. [The EU could end police cooperation if Britain left, but that would be its own choice](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation), and Britain could try to negotiate it.
+Leaving is lawful, [he advised](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary). While [human-rights wins equal about 3% of offender deportations](#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent), [those counts miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims), and [no published source counts the removals the ECHR stops](#fact-removals-and-what-stops-them/echr-share-not-measured).
 
 ### So Britain should bar these claims, remove those who come, and leave the ECHR
 
