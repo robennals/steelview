@@ -698,7 +698,8 @@ test.describe('a slideshow viewpoint on a phone', () => {
     // A line graph on a phone is drawn at its portrait shape.
     await expect(line.locator('.sv-chart__variant[data-variant="preview-portrait"]')).toBeVisible();
 
-    // Each segment of the progress bar goes to its point.
+    // A numbered circle per point goes to it, and the one showing is marked.
+    await expect(deck.getByRole('button', { name: /^Point 3:/ })).toHaveText('3');
     await deck.getByRole('button', { name: /^Point 3:/ }).click();
     await expect(deck.locator('.sv-deck__card').nth(2)).toBeInViewport();
     await expect(deck.getByRole('button', { name: /^Point 3:/ })).toHaveAttribute('aria-current', 'step');

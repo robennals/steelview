@@ -60,11 +60,13 @@ export function Slideshow({ name, headings, children }: SlideshowProps) {
 
       <div className="sv-deck__stage" ref={stage}>
         {enhanced && (
-          // One segment per point, filled up to the one showing; each goes to its point.
-          <ol className="sv-deck__progress">
+          // A numbered circle per point, the one showing filled; each goes to its point.
+          <ol className="sv-deck__points">
             {headings.map((heading, i) => (
               <li key={i}>
-                <button type="button" aria-label={`Point ${i + 1}: ${heading}`} aria-current={i === index ? 'step' : undefined} data-done={i <= index || undefined} onClick={() => step(i)} />
+                <button type="button" aria-label={`Point ${i + 1}: ${heading}`} aria-current={i === index ? 'step' : undefined} data-seen={i < index || undefined} onClick={() => step(i)}>
+                  <span aria-hidden="true">{i + 1}</span>
+                </button>
               </li>
             ))}
           </ol>
