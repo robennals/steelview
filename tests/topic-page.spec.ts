@@ -794,7 +794,7 @@ test('a slideshow card can be made with a map of where the boats leave from', as
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
   const card = row.locator('.sv-deck__card').first();
-  await expect(card.locator('.sv-deck__heading')).toHaveText('People crossing the Channel have already passed through other safe countries');
+  await expect(card.locator('.sv-deck__heading')).toHaveText('People crossing the Channel have already passed through other countries, where British law expects them to claim asylum');
   await expect(card.locator('.sv-chart__caption')).toContainText('Where the small boats leave from');
   // An arrow from each coast the boats leave from, each named, to Kent.
   await expect(card.locator('.sv-geo-map__flow')).toHaveCount(2);

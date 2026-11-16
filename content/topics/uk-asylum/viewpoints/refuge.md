@@ -30,11 +30,11 @@ For the groups who do cross, [boat arrivals far exceeded safe-route grants in th
 
 ### Britain's deterrence scheme failed at great cost
 
-[Britain spent £715 million on the Rwanda scheme and a related law](#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations), and [sent no asylum seekers](#fact-deterrence-and-protection-policies/no-asylum-seekers-sent). That money would do more good spent on routes and hearings.
+[Britain spent £715 million on the Rwanda scheme and a related law](#fact-deterrence-and-protection-policies/rwanda-cost-and-relocations), and [sent no asylum seekers](#fact-deterrence-and-protection-policies/no-asylum-seekers-sent). So Britain paid for a deterrent that never ran.
 
 [Australia's offshore camps cost billions](#fact-deterrence-and-protection-policies/offshore-cost-per-year), and [18 people sent there had died by 2021](#fact-deterrence-and-protection-policies/eighteen-had-died). While [Australia's arrivals fell to almost none after it turned boats back](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks), [handing people back at sea relies on the departure country working with Australia](#fact-deterrence-and-protection-policies/turnbacks-need-departure-country).
 
-### Letting people work helps them, and draws only modestly more claims
+### Work bans hurt refugees and do little to deter claims
 
 [Work bans lower refugees' employment for years afterwards](#fact-deterrence-and-protection-policies/work-bans-reduce-employment), and [the study's authors judge that bans are not a strong deterrent](#fact-deterrence-and-protection-policies/authors-say-bans-not-a-strong-deterrent). A ban holds refugees back without keeping many people away.
 

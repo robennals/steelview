@@ -1610,6 +1610,7 @@ observationMarks:
   turnbacks-need-departure-country: {rows: ["Take-back"]}
   work-bans-reduce-employment: {rows: ["Fasani, Frattini and Minale (2021)", "Marbach, Hainmueller and Hangartner (2018)"]}
   work-rights-modest-association: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
+  networks-strongest-pull: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
   australia-peak: {lines: ["People arriving by boat"], from: "2009", to: "2013"}
   offshore-processing-alone: {lines: ["People arriving by boat"], from: "2012", to: "2013"}
   australia-cause: {lines: ["People arriving by boat"], from: "2013", to: "2014"}
@@ -1767,6 +1768,10 @@ Jutvik and Robinson found that refugees on temporary permits had higher incomes 
 All five findings come from Denmark, Germany and Sweden, and they measure employment rather than the number of people who claim asylum. No evaluation of the UK's 30-month protection, which began on 2 March 2026, was found. [51](#source-deterrence-and-protection-policies-51)
 
 ## Observations {#deterrence-and-protection-policies--observations-work-rights}
+
+### People from home already there are the strongest pull to a destination, one European study finds {#deterrence-and-protection-policies--networks-strongest-pull}
+
+The one cross-country study of where asylum seekers apply finds that "the strongest pull factor for asylum seekers to a destination is social networks": earlier applicants and migrants from the same country already there. It is a working paper on EU countries, 2008 to 2020, not the UK. [42](#source-deterrence-and-protection-policies-42)
 
 ### Work rights show a modest association with where people claim {#deterrence-and-protection-policies--work-rights-modest-association}
 

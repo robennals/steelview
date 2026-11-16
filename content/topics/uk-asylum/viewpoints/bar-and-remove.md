@@ -3,34 +3,32 @@ name: "No one who enters illegally should be allowed to stay: bar their asylum c
 shortName: "Bar and remove"
 summary: "[Few refugees can reach Britain without first passing through another country](#fact-asylum-law-and-the-echr/few-reach-the-uk-without-passing-through-another-state). [Asylum claims were the commonest issue raised by people held for removal in 2019](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention), and [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks). Britain should refuse asylum to anyone who enters illegally, remove them, and leave the ECHR so that no court can reopen the door."
 order: 1
-researchNeeded:
-  - "many choose it for work, family or the English language"
 ---
 Anyone who enters Britain illegally should not be allowed to stay. Britain should refuse their claims, remove them, and leave European human-rights law if it stands in the way.
 
-### People crossing the Channel have already passed through other safe countries
+### People crossing the Channel have already passed through other countries, where British law expects them to claim asylum
 
-They were already safe in [France or Belgium, where the boats leave from](#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium). So the crossing is not an escape from danger but a choice of Britain, and [many choose it for work, family or the English language](#needed). Britain can refuse those claims without sending anyone back to danger.
+They set off from [France or Belgium, where the boats leave from](#fact-channel-crossings-and-irregular-arrivals/boats-leave-from-france-and-belgium), and [British law expects a refugee who stopped in another country to have sought protection there](#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country). Crossing on to Britain is a choice of where to claim: [the strongest pull to a destination, one European study finds, is people from home already there](#fact-deterrence-and-protection-policies/networks-strongest-pull).
 
-[Few refugees can reach Britain without first passing through another country](#fact-asylum-law-and-the-echr/few-reach-the-uk-without-passing-through-another-state). [Since 2022, British law has expected a refugee who stopped in another country to have sought protection there](#fact-asylum-law-and-the-echr/uk-law-ties-article-31-to-the-first-safe-country).
+[Few refugees can reach Britain without first passing through another country](#fact-asylum-law-and-the-echr/few-reach-the-uk-without-passing-through-another-state).
 
-The Refugee Convention, the United Nations treaty on refugees, [forbids sending a refugee back to danger](#fact-asylum-law-and-the-echr/article-33-forbids-return), and [its rule on illegal entry bars penalties](#fact-asylum-law-and-the-echr/article-31-is-about-penalties). Neither article says Britain must decide every claim.
+The Refugee Convention, the United Nations treaty on refugees, [forbids sending a refugee back to danger](#fact-asylum-law-and-the-echr/article-33-forbids-return), and [its rule on illegal entry bars penalties](#fact-asylum-law-and-the-echr/article-31-is-about-penalties). Neither article says Britain must decide every claim, so Britain can refuse to hear these claims without sending anyone back to danger.
 
 ### Since 2015, most people refused asylum have not been recorded leaving
 
-[Refused claimants used to be returned more often than not; for claims since 2015, under a third have been](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So a claim is a way to stay, whatever its outcome.
+[Refused claimants used to be returned more often than not; for claims since 2015, under a third have been](#fact-removals-and-what-stops-them/fewer-refused-recorded-leaving). So most people who are refused are, as far as the records show, still here.
 
 [Asylum claims were the commonest issue raised by people held for removal in 2019](#fact-removals-and-what-stops-them/asylum-claims-commonest-in-detention), yet [most issues raised led to no positive decision](#fact-removals-and-what-stops-them/most-issues-refused). [The appeals queue is more than fourteen times as long as in June 2022](#fact-asylum-backlog-accommodation-and-cost/appeals-queue-fourteen-times), and [an asylum appeal takes over a year on average](#fact-asylum-backlog-accommodation-and-cost/asylum-appeal-takes-72-weeks).
 
-### Australia shows the boats stop when crossing stops paying
+### Australia's boats stopped once it began turning them back
 
-[Australia's boat arrivals fell to almost none after it began turning boats back and barring boat arrivals from ever settling](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks). Once a crossing could no longer end in staying, the boats stopped.
+[Australia's boat arrivals fell to almost none after it began turning boats back](#fact-deterrence-and-protection-policies/australia-arrivals-fell-after-turnbacks), though [barring boat arrivals from ever settling had not stopped them on its own](#fact-deterrence-and-protection-policies/offshore-processing-alone). [Even a research centre that opposes offshore processing links the fall to the turnbacks](#fact-deterrence-and-protection-policies/australia-cause). Turning the boats back worked where barring settlement had not.
 
 While [most small-boat arrivals who got a decision were granted](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted), Britain can protect refugees through routes it controls.
 
 ### Curbs made inside the ECHR would likely fail in court, a review for the Conservatives found
 
-Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail), and [that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary). So the only sure way to limit these claims is to leave.
+Lord Wolfson, advising the Conservative leader, [judged that new limits inside the European Convention on Human Rights (ECHR) would probably fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail), and [that leaving is lawful](#fact-asylum-law-and-the-echr/wolfson-withdrawal-possible-refugee-convention-unnecessary). If limits inside the Convention would fail, leaving is the way to make them hold.
 
 While [no published source counts how many removals the ECHR blocks](#fact-removals-and-what-stops-them/echr-share-not-measured), [the counts that exist miss danger claims argued inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims). So they may understate it.
 
@@ -42,6 +40,6 @@ While [polls since 2016 have shown more people backing staying in the ECHR than 
 
 ### So Britain should bar these claims, remove those who come, and leave the ECHR
 
-That ends the reward for crossing, and gives Britain back the power to decide who stays. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people).
+Barring these claims and removing those who come would end the reward for crossing, and leaving the ECHR would put those rules in Parliament's hands. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people).
 
 While [the Conservatives' promised removals would be about 15 times today's enforced returns](#fact-removals-and-what-stops-them/150000-about-15-times-enforced-returns), [most returns are already voluntary](#fact-removals-and-what-stops-them/most-returns-are-voluntary), and [far cheaper](#fact-removals-and-what-stops-them/voluntary-returns-far-cheaper). Meanwhile [asylum support costs around £4 billion a year](#fact-asylum-backlog-accommodation-and-cost/support-costs-about-4bn-a-year).
