@@ -58,26 +58,6 @@ function StepCard({ step, index }: StepCardProps) {
   );
 }
 
-type OpeningCardProps = { leadHtml: string; headings: string[] };
-
-/**
- * The position the slideshow argues for, before its first point: without it,
- * the cards that follow are evidence with nothing to add up to. On a phone,
- * where there is no list of points beside the cards, it lists them, so the
- * reader sees the whole case before stepping through it.
- */
-function OpeningCard({ leadHtml, headings }: OpeningCardProps) {
-  return (
-    <div className="sv-deck__card sv-deck__opening">
-      <Prose html={leadHtml} className="sv-deck__prose sv-deck__lead" />
-      <p className="sv-deck__case-head">The case, point by point</p>
-      <ol className="sv-deck__case">
-        {headings.map((heading, i) => <li key={i}>{heading}</li>)}
-      </ol>
-    </div>
-  );
-}
-
 type ViewpointSlidesProps = {
   slug: string;
   viewpoints: Viewpoint[];
@@ -89,17 +69,15 @@ type ViewpointSlidesProps = {
 /**
  * The viewpoints as rows, none open at first. Closed, a row previews the graphs
  * its argument is made with, each opening the row at its card. Open, it is a
- * slideshow: the position it argues for, then one card per step of the
- * argument, made with a graph where the step has one, the last its conclusion.
- * Tapping a cited claim opens the finding behind it in a pop-up.
+ * slideshow: one card per step of the argument, made with a graph where the
+ * step has one. Tapping a cited claim opens the finding behind it in a pop-up.
  */
 export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: ViewpointSlidesProps) {
   return (
     <ClaimPopups claims={claims}>
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
-          const { leadHtml, steps } = walkthroughs.get(viewpoint.id) ?? { leadHtml: '', steps: [] };
-          const headings = steps.map(step => step.heading);
+          const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
           const graphs = steps.flatMap((step, card) => (step.chart && step.chartCard ? [{ step, chart: step.chart, card }] : []));
           return (
             <TopicRow
@@ -113,10 +91,10 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
               thumbs={
                 <ThumbStrip
                   total={graphs.length}
-                  steps={graphs.map(({ card }) => card + 1)}
+                  steps={graphs.map(({ card }) => card)}
                   thumbs={graphs.map(({ step, chart, card }) => (
                     <li key={card}>
-                      <RowThumb step={card + 1}>
+                      <RowThumb step={card}>
                         <span className="sv-row__thumb" aria-hidden="true">
                           <ChartThumb fact={chart.fact} chart={chart.chart} reading={chart.reading} preview />
                         </span>
@@ -128,8 +106,8 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
               }
             >
               <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id, true)}>
-                <Slideshow name={viewpoint.name} opening="The position" headings={headings}>
-                  {[<OpeningCard key="opening" leadHtml={leadHtml} headings={headings} />, ...steps.map((step, i) => <StepCard key={i} step={step} index={i} />)]}
+                <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)}>
+                  {steps.map((step, i) => <StepCard key={i} step={step} index={i} />)}
                 </Slideshow>
               </LazyCharts>
             </TopicRow>

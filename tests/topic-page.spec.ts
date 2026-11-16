@@ -676,23 +676,13 @@ const SLIDES_VIEWPOINT = '#viewpoint-refuge';
 test.describe('a slideshow viewpoint on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  test('it opens on the position, with the case point by point, then makes each point over a graph', async ({ page }) => {
+  test('each card makes its point over a graph, with the reasoning a tap away', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
     const deck = page.locator(`${SLIDES_VIEWPOINT} .sv-deck`);
     await expect(deck.locator('.sv-deck__outline')).toBeHidden();
-    const opening = deck.locator('.sv-deck__card').first();
-    await expect(opening.locator('.sv-deck__lead')).toContainText('Britain should give refugees safe ways to come');
-    // The points, read in order, end in what the viewpoint wants done.
-    const points = opening.locator('.sv-deck__case li');
-    await expect(points).toHaveCount(6);
-    await expect(points.first()).toHaveText('Most people who cross the Channel turn out to need protection');
-    await expect(points.last()).toHaveText('Britain should open safe routes, decide claims fairly, and let people work');
-
-    await deck.getByRole('button', { name: /Next/ }).click();
-    const card = deck.locator('.sv-deck__card').nth(1);
-    await expect(card).toBeInViewport();
-    await expect(card.locator('.sv-deck__heading')).toHaveText('Most people who cross the Channel turn out to need protection');
+    const card = deck.locator('.sv-deck__card').first();
+    await expect(card.locator('.sv-deck__heading')).toHaveText('Most Channel crossers who get a decision are granted protection');
     await expect(card.locator('.sv-deck__shows')).toContainText('Initial decisions on small-boat arrivals');
     await expect(card.locator('.sv-chart')).toBeVisible();
     // The graph's own title would repeat the card's line.
@@ -703,7 +693,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect(reasoning).toContainText('Eritreans and Sudanese');
 
     await deck.getByRole('button', { name: /Next/ }).click();
-    const line = deck.locator('.sv-deck__card').nth(2);
+    const line = deck.locator('.sv-deck__card').nth(1);
     await expect(line).toBeInViewport();
     // A line graph on a phone's tall card is drawn at its portrait shape.
     await expect(line.locator('.sv-chart__variant[data-variant="preview-portrait"]')).toBeVisible();
@@ -712,8 +702,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
   test('a cited claim opens its finding in a pop-up, which leads on to the data', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
-    await page.locator(`${SLIDES_VIEWPOINT} .sv-deck`).getByRole('button', { name: /Next/ }).click();
-    const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(1);
+    const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).first();
     await card.locator('.sv-deck__details > summary').click();
     const claim = card.locator('a.sv-cite').first();
     await claim.click();
@@ -731,21 +720,19 @@ test.describe('a slideshow viewpoint on a phone', () => {
   });
 });
 
-test('a slideshow viewpoint on a wide screen lists the position and its points down the left, a point with no graph giving its reasoning', async ({ page }) => {
+test('a slideshow viewpoint on a wide screen lists its points down the left, a point with no graph giving its reasoning', async ({ page }) => {
   await page.setViewportSize({ width: 1400, height: 900 });
   await page.goto(SLIDES_TOPIC);
   await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
   const outline = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__outline`);
   await expect(outline).toBeVisible();
-  // The position, then one card per step of the argument; the outline already lists them, so the opening card does not.
-  await expect(outline.locator('li')).toHaveCount(7);
-  await expect(outline.locator('li').first()).toHaveText('The position');
-  await expect(page.locator(`${SLIDES_VIEWPOINT} .sv-deck__case`)).toBeHidden();
-  const deterrence = outline.getByRole('button', { name: /Deterrence has cost/ });
-  await deterrence.click();
-  await expect(deterrence).toHaveAttribute('aria-current', 'step');
+  // One card per step of the argument.
+  await expect(outline.locator('li')).toHaveCount(6);
+  const rwanda = outline.getByRole('button', { name: /Rwanda scheme/ });
+  await rwanda.click();
+  await expect(rwanda).toHaveAttribute('aria-current', 'step');
   // Its evidence is a table, which reads as more text, so the card is its reasoning.
-  const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(4);
+  const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(3);
   await expect(card).toBeInViewport();
   await expect(card.locator('.sv-chart')).toHaveCount(0);
   await expect(card.locator('.sv-deck__prose')).toContainText('£715 million');
@@ -761,15 +748,15 @@ test('a closed slideshow viewpoint previews its graphs, and a graph opens the ro
   await expect(thumbs.nth(3)).toContainText('6. Britain should open safe routes');
   await thumbs.nth(3).click();
   await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Britain should open safe routes');
-  await expect(row.locator('.sv-deck__card').nth(6)).toBeInViewport();
+  await expect(row.locator('.sv-deck__card').nth(5)).toBeInViewport();
 });
 
 test('a slideshow card can be made with a map, its arrows converging on northern France', async ({ page }) => {
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
-  const card = row.locator('.sv-deck__card').nth(1);
-  await expect(card.locator('.sv-deck__heading')).toHaveText('People who cross the Channel have already passed through other countries, where British law expects them to claim');
+  const card = row.locator('.sv-deck__card').first();
+  await expect(card.locator('.sv-deck__heading')).toHaveText('Few refugees reach Britain without passing through other countries');
   await expect(card.locator('.sv-deck__shows')).toContainText('Where people crossing the Channel come from');
   // One arrow from each of the ten largest nationalities, and the crossing itself.
   await expect(card.locator('.sv-geo-map__flow')).toHaveCount(11);
