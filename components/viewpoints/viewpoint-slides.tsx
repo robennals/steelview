@@ -11,12 +11,6 @@ import { ThumbStrip } from '@/components/topic/thumb-strip';
 import { ClaimPopups } from './claim-popups';
 import { Slideshow } from './slideshow';
 
-/**
- * The topics whose viewpoints are shown as slideshows, a trial of a simpler
- * layout before it replaces the step-and-chart walkthrough everywhere.
- */
-export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
-
 type StepCardProps = { step: RenderedStep; index: number };
 
 /**

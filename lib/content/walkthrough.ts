@@ -6,6 +6,12 @@ import { componentFigure, factPath, figureLabel, isComponentFigure } from './typ
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
 import { factSlides, isPreviewable, previewTarget, slideGroups, type PreviewSlide } from './preview';
 
+/**
+ * The topics whose viewpoints are shown as slideshows, a trial of a simpler
+ * layout before it replaces the step-and-chart walkthrough everywhere.
+ */
+export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
+
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
   /** The section's heading: one claim in the argument. */
@@ -217,6 +223,31 @@ function splitFirstParagraph(markdown: string): [string, string] {
 }
 
 /** A step with its prose rendered, ready for a synchronous component. */
+/**
+ * M4 — each card of a slideshow viewpoint makes its own point with its own
+ * graph. A graph shown on two cards makes the reader look at the same data
+ * twice as if it were new evidence; two points that need it are one point.
+ * Checked for the topics shown as slideshows: the walkthrough rows of the
+ * others still repeat some charts.
+ */
+export function repeatedCardGraphErrors(topic: Topic): string[] {
+  if (!SLIDESHOW_TOPICS.has(topic.slug)) return [];
+  return topic.viewpoints.flatMap(viewpoint => {
+    const shown = new Map<string, string>();
+    return viewpointWalkthrough(topic, viewpoint).steps.flatMap(({ heading, cardGraph }) => {
+      if (!cardGraph) return [];
+      const { fact, chart, reading, label } = cardGraph.chart;
+      const key = `${fact.id}:${chart}:${reading ?? ''}`;
+      const first = shown.get(key);
+      if (!first) {
+        shown.set(key, heading);
+        return [];
+      }
+      return [`viewpoint ${viewpoint.id}: "${heading}" shows the same graph as "${first}" (${label}); make them one point, or cite another graph first`];
+    });
+  });
+}
+
 /** A slideshow card's graph, with where it opens its data. */
 export type CardGraph = {
   chart: PreviewSlide;
