@@ -1962,6 +1962,14 @@ comparisons:
     value: 28.6
 dataStillNeeded:
 - measure: >-
+    Small-boat departures by place: each stretch of the northern French coast,
+    and Belgium
+  why: >-
+    No official source found counts departures by place, so the map shows where
+    the boats leave from without sizing its arrows. The French coastguard's
+    annual reports count rescues by département, which are not departures and
+    leave out Belgium.
+- measure: >-
     An official series of irregular entry attempts and detections before 2018, by
     method (lorries, trains, ferries, juxtaposed controls)
   why: >-

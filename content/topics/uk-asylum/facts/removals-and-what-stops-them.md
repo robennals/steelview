@@ -775,6 +775,24 @@ sources:
     localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
     publisher: Home Office
     date: '2026-08-27'
+  - stance: complicates
+    quote: >-
+      Rule 39 requests listed by respondent State processed by the Court in
+      2023, 2024 and 2025 … United Kingdom 49 13 1 63 54 11 65 197 21 0 218
+      300 45 1 346
+    title: 'Rule 39 requests listed by respondent State processed by the Court in 2023, 2024 and 2025'
+    url: https://www.echr.coe.int/documents/d/echr/stats_art_39_02_eng
+    publisher: European Court of Human Rights
+    date: '2026-01-28'
+  - stance: complicates
+    quote: >-
+      the European Court of Human Rights did not rule that the policy or
+      relocations were unlawful, but it prohibited the removal of three of
+      those on last night’s flight.
+    title: 'Migration and Economic Development Partnership with Rwanda (Home Secretary''s statement)'
+    url: https://hansard.parliament.uk/Commons/2022-06-15/debates/78DA690C-B53E-4F57-B28B-2FA0F6FB0E6B/MigrationAndEconomicDevelopmentPartnershipWithRwanda
+    publisher: House of Commons Hansard
+    date: '2022-06-15'
 series:
   title: 'Returns from the UK, by type'
   subtitle: '2004–2025'
@@ -2126,6 +2144,9 @@ figures:
     rows:
       - measure: Removals stopped by the ECHR
         shows: { value: No published source counts them, sources: [17] }
+      - measure: Emergency orders from the Strasbourg court pausing a UK removal
+        shows: { value: '1 granted out of 346 UK requests in 2023 to 2025, 300 of which were outside what the court decides', sources: [74] }
+        leaves-out: An order only pauses a removal while a case is heard; claims decided by UK courts and tribunals under the Human Rights Act do not appear
       - measure: Human-rights applications raised in detention, 2019
         shows: { value: '5% of detentions, against 47% for asylum claims', sources: [21, 22] }
         leaves-out: Article 3 risk on return is argued inside asylum claims, and people never put forward for removal because removal is not possible do not appear
@@ -2181,6 +2202,7 @@ observationMarks:
   most-issues-refused: {rows: ["No positive decision", "Positive decision or concession"]}
   article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2020"}
   echr-share-not-measured: {rows: ["Removals stopped by the ECHR", "People granted status after being told they were liable to removal"]}
+  strasbourg-rarely-stops-uk-removals: {rows: ["Emergency orders from the Strasbourg court pausing a UK removal"]}
   echr-hidden-in-other-rows: {rows: ["Human rights or other rights-based application", "Asylum claim", "Judicial review"]}
   150000-about-15-times-enforced-returns: {rows: ["Proposed UK target", "UK enforced returns, 2025"]}
   most-returns-are-voluntary: {lines: ["Enforced returns", "Voluntary returns"], at: "2025"}
@@ -2390,6 +2412,10 @@ In November 2025 the Home Office said Article 8 is used to stop removals, and th
 ### What share of failed removals the ECHR blocks is not measured {#removals-and-what-stops-them--echr-share-not-measured}
 
 No published source counts removals stopped by the ECHR. The Home Office does not hold data on people granted status after being told they were liable to removal. [17](#source-removals-and-what-stops-them-17) The proxies above each answer a narrower question, and both may understate the ECHR's weight. [21](#source-removals-and-what-stops-them-21) [45](#source-removals-and-what-stops-them-45)
+
+### The Strasbourg court rarely orders a UK removal paused {#removals-and-what-stops-them--strasbourg-rarely-stops-uk-removals}
+
+The European Court of Human Rights can order a country to pause a removal while it hears a case. In 2023 to 2025 it received 346 such requests about the UK. It found 300 outside what it decides, refused 45 and granted 1. [74](#source-removals-and-what-stops-them-74) In June 2022 it did stop three people being removed on the first flight to Rwanda. The Home Secretary told Parliament that the court had not ruled the policy unlawful. [75](#source-removals-and-what-stops-them-75)
 
 ### The detention and appeal counts miss Article 3 risk argued inside asylum claims {#removals-and-what-stops-them--counts-miss-article-3-in-asylum-claims}
 

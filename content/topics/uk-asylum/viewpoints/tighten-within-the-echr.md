@@ -10,7 +10,7 @@ A refusal should mean leaving, or [rules do not mean what they say](#principle-r
 
 A refusal should mean leaving, or [rules do not mean what they say](#principle-rules-must-mean-what-they-say). But [few challenges to removal are human-rights applications](#fact-removals-and-what-stops-them/human-rights-applications-small-share). And [most claims that return would be dangerous are made under the Refugee Convention, not the ECHR](#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains). Leaving the ECHR would not remove those challenges.
 
-[In 2019, people held for removal most often raised asylum claims, medical reports, modern-slavery referrals and court challenges](#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims). [From 2015/16 to 2020/21, foreign offenders who won appeals on human-rights grounds alone equalled about 3% of those deported](#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent).
+[In 2019, people held for removal most often raised asylum claims, medical reports, modern-slavery referrals and court challenges](#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims). [From 2015/16 to 2020/21, foreign offenders who won appeals on human-rights grounds alone equalled about 3% of those deported](#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent). [And the Strasbourg court rarely steps in: in 2023 to 2025 it granted one of 346 UK requests to pause a removal](#fact-removals-and-what-stops-them/strasbourg-rarely-stops-uk-removals).
 
 ### Britain has cut its first-decision queue, and Parliament is now rewriting appeals
 
@@ -34,7 +34,7 @@ Protection should also last only as long as the danger. [After Syria's governmen
 
 If Britain left, [the EU could end police and criminal-records cooperation](#fact-asylum-law-and-the-echr/eu-may-end-law-enforcement-cooperation-on-denunciation). And [the Refugee Convention's ban on sending refugees back to danger would still apply](#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains). Britain could pay a real price and still not be free to return refugees to danger.
 
-[Whether leaving would break the Good Friday Agreement is disputed](#fact-asylum-law-and-the-echr/good-friday-agreement-is-disputed).
+[When the Supreme Court stopped the Rwanda plan in 2023, it said Acts of Parliament that give effect to the Refugee Convention protect asylum seekers from return to danger, not only the Human Rights Act](#fact-asylum-law-and-the-echr/refugee-convention-ban-on-return-remains). [Whether leaving would break the Good Friday Agreement is disputed](#fact-asylum-law-and-the-echr/good-friday-agreement-is-disputed).
 
 ### So Britain should fix every stage and keep the Convention
 
