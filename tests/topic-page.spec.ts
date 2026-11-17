@@ -716,6 +716,15 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
   });
 
+  test('open, a data report or a crux also runs to the screen\'s edges', async ({ page }) => {
+    await page.goto(`${SLIDES_TOPIC}#data`);
+    for (const row of [page.locator('.sv-row--data').first(), page.locator('.sv-row--crux').first()]) {
+      await row.locator('.sv-row__toggle').click(headCorner);
+      await expect(row).toHaveAttribute('data-open', 'true');
+      await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
+    }
+  });
+
   test('open, a topic on the home page also runs to the screen\'s edges, growing from its card', async ({ page }) => {
     await page.goto('/');
     const row = page.locator('.sv-row').nth(1);
@@ -752,7 +761,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await row.getByRole('button', { name: /^Point 2:/ }).click();
     const card = row.locator('.sv-deck__card').nth(1);
     await expect(card.locator('.sv-deck__heading')).toHaveText('People who claim asylum can expect to stay, even if they are refused');
-    await expect(card.locator('.sv-chart__caption')).toContainText('Refused claims and later returns');
+    await expect(card.locator('.sv-chart__caption')).toContainText('Asylum claims and later returns');
     // The share each year, as lines, from the first year of claims to the last.
     const graph = card.locator('.sv-chart__variant[data-variant="preview-portrait"]');
     await expect(graph).toBeVisible();
