@@ -1683,6 +1683,11 @@ failed however good its argument. In practice:
   mislead ("ISIS" here is a nuclear-research institute). Write "a leading
   group of nuclear experts" or "experts at two US research groups" in the
   viewpoint; the report names them in full.
+- **One meaning on first reading.** A reader should never have to go back
+  and choose between two readings: which word is the verb, what "it" or
+  "this" refers to, whether a number is a count or a share, or who holds
+  the view. If a sentence could be taken two ways, rewrite it so only the
+  one you mean fits.
 - **Read it aloud.** If a sentence needs a second reading, rewrite it.
 
 **Every sentence must earn its place in the argument.** Short is not enough;
