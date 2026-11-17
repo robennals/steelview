@@ -223,7 +223,6 @@ function splitFirstParagraph(markdown: string): [string, string] {
   return [first, rest.join('\n\n')];
 }
 
-/** A step with its prose rendered, ready for a synchronous component. */
 /**
  * M4 — each card of a slideshow viewpoint makes its own point with its own
  * graph or quotes. One shown on two cards puts the same evidence in front of
@@ -258,6 +257,7 @@ export type CardVisual = {
   exploreHtml: string;
 };
 
+/** A step with its prose rendered, ready for a synchronous component. */
 export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited' | 'cardVisual'> & {
   html: string;
   /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
