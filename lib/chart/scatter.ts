@@ -27,6 +27,7 @@ export const SCATTER_GEOMETRY: Record<SeriesVariant, ScatterGeometry> = {
   'preview-broad': { ...CHART_GEOMETRY['preview-broad'], pointRadius: 4, labelSize: 11 },
   'preview-medium': { ...CHART_GEOMETRY['preview-medium'], pointRadius: 4, labelSize: 11 },
   'preview-tall': { ...CHART_GEOMETRY['preview-tall'], pointRadius: 4, labelSize: 11 },
+  'preview-portrait': { ...CHART_GEOMETRY['preview-portrait'], pointRadius: 4, labelSize: 11 },
   narrow: { ...CHART_GEOMETRY.narrow, height: 300, plotHeight: 300 - 12 - 30, pointRadius: 4, labelSize: 10 },
   wide: { ...CHART_GEOMETRY.wide, height: 420, plotHeight: 420 - 14 - 34, pointRadius: 5, labelSize: 12 },
 };

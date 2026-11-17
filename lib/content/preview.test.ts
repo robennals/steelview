@@ -5,7 +5,7 @@ import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-e
 import { PREVIEW_FIGURE_KINDS, factSlides, previewTarget, reportChartPath, resolvePreviews, slideGroups } from './preview';
 import { headlineFacts } from './rank-facts';
 import { isComponentFigure } from './types';
-import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, viewpointWalkthrough } from './walkthrough';
+import { chartMore, factCitations, observationGroups, observationsByChart, renderDataWalkthroughs, renderWalkthroughs, repeatedCardVisualErrors, viewpointWalkthrough } from './walkthrough';
 
 test('resolvePreviews returns the UK slides in authored order, each linked to its chart on the fact page', async () => {
   const slides = resolvePreviews(await loadTopic('uk-immigration'));
@@ -222,4 +222,15 @@ test('previewTarget finds the series, comparisons and component figures, and not
 test('every previewable kind has an example in the figure fixture', () => {
   const kinds = new Set(figureExamplesFact().figures!.map(f => f.kind));
   for (const kind of PREVIEW_FIGURE_KINDS) assert.ok(kinds.has(kind), kind);
+});
+
+test('a slideshow viewpoint may not show one graph on two cards', async () => {
+  const topic = await loadTopic('uk-asylum');
+  assert.deepEqual(repeatedCardVisualErrors(topic), [], 'the published viewpoints show each graph once');
+  const cite = '[The queue has moved to appeals](#fact-asylum-backlog-accommodation-and-cost/queue-moved-to-appeals).';
+  const viewpoint = { ...topic.viewpoints[0], body: `Lead.\n\n### First point\n\n${cite}\n\n### Second point\n\n${cite}\n` };
+  const errors = repeatedCardVisualErrors({ ...topic, viewpoints: [viewpoint] });
+  assert.equal(errors.length, 1);
+  assert.match(errors[0], /"Second point" shows the same evidence as "First point"/);
+  assert.deepEqual(repeatedCardVisualErrors({ ...topic, slug: 'not-a-slideshow', viewpoints: [viewpoint] }), [], 'checked only where viewpoints are slideshows');
 });

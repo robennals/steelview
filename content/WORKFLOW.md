@@ -391,14 +391,24 @@ now costs one file; found later it costs every viewpoint that cites it.
 
 **The agent drafts each viewpoint** from its outline and the observations
 that now exist, with every empirical assertion a pill to an observation. A
-viewpoint is read as a walkthrough of charts
-([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each step's
-chart before writing its text. Each viewpoint is a short lead, then one `###`
-section per outline argument: the heading is the argument's one-line claim, and
-beneath it two or three short sentences say what to notice in the chart and why
-it matters, with no bullet lists. The section's first chart-backed citation
-picks the chart, so cite the observation that shows the claim first. Write in
-short, plain sentences a middle-school reader can follow. Pill text states the
+viewpoint is read as a slideshow of cards, one per section
+([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each card's
+visual before writing its text. Each viewpoint is a short lead, then one `###`
+section per outline argument. Each section is a card:
+
+- **the heading**, the argument's point in one sentence;
+- **the line**, the section's first paragraph: one to three sentences, about 25
+  to 55 words, that complete the step and cite the data it rests on;
+- **one visual**: the graph or collection of quotes behind the line's first
+  citation of one, so cite the observation that shows the point first;
+- **the evidence**, the rest of the section, which opens under "More": the
+  further facts and any concession, rarely more than about 80 words.
+
+That amount of text beside one visual is the target: the headings and lines,
+read card after card, make the whole argument, and each card shows the data it
+rests on. Everything a viewpoint says must be true and backed by what it cites
+([Write an argument someone can follow](AUTHORING.md#write-an-argument-someone-can-follow)).
+Write in short, plain sentences a middle-school reader can follow. Pill text states the
 point the argument needs and leaves exact figures, dates and sources to the
 chart and the report. The
 human and agent then edit together, one viewpoint at a time, until the
@@ -407,10 +417,17 @@ holder of that view would find it better argued than their own version
 
 - **Review the headings first.** Read each viewpoint's headings alone before
   its text: if they do not add up to the title, fix the argument before the
-  prose.
-- **Review each step's chart.** Step through each viewpoint on the topic page.
-  A chart that does not show its step's claim means reordering the citations,
-  choosing another observation, or going back to stage 5 for the chart it needs.
+  prose. A heading that could be a chart's title reports a finding; rewrite it
+  as what the finding shows for the argument.
+- **Then the lines.** Read heading and line, card after card: they should flow
+  as one argument, with nothing in the evidence needed to follow it.
+- **Review each card's visual.** Step through each viewpoint on the topic page.
+  A visual that does not show its card's point means reordering the citations
+  in the line, choosing another observation, or going back to stage 5 for the
+  graph it needs. No two cards show the same visual.
+- **Check every claim against its evidence**, headings and lines included:
+  each is sourced, a value, or follows from what is cited, and a chart's whole
+  range supports what is said about it.
 - **Leave definitions to the legend.** Where a step would define a term its
   chart draws, give the chart's line a `glossary` entry instead.
 - **The agent proposes; the human decides** on every change of argument.

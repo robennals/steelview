@@ -767,6 +767,14 @@ sources:
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/unauthorised-migration-in-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-28'
+  - stance: supports
+    quote: 'Asy_D04: Outcome analysis of asylum claims, 2007-2025 - dataset'
+    title: 'Outcome analysis of asylum claims detailed dataset, year ending June 2026 (Asy_D04)'
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c49e1b45e4e555421ede/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/outcome-analysis-asylum-claims-datasets-jun-2026.xlsx
+    publisher: Home Office
+    date: '2026-08-27'
 series:
   title: 'Returns from the UK, by type'
   subtitle: '2004–2025'
@@ -1078,7 +1086,7 @@ additionalSeries:
               - period: '2025'
                 value: 12396
   - id: refused-cohorts
-    title: 'Refused claims and later returns'
+    title: 'Asylum claims and later returns'
     subtitle: 'UK, main applicants by year of claim, 2007–2025, as at July 2026'
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
@@ -1234,15 +1242,16 @@ additionalSeries:
               - period: '2025'
                 value: 3317
       - id: cohort-share
-        label: Returns as a share of refused claims
+        label: Returns as a share of claims
         unit: percent
         valueLabel: Returns as a percent of each year's claims
         note: >-
           Derived: enforced plus voluntary returns from each year's claims,
-          divided by that year's refusals, and by its refusals plus withdrawals,
-          at latest outcome. Returns are counted for the whole year's claims, so
-          neither is a matched rate: the share of refused can count someone who
-          withdrew.
+          divided by that year's refusals, by its refusals plus withdrawals, at
+          latest outcome, and by all of that year's claims (main applicants,
+          whatever their outcome, from the same Home Office table). Returns are
+          counted for the whole year's claims, so none is a matched rate: the
+          share of refused can count someone who withdrew.
         lines:
           - name: Returns as a share of refused
             points:
@@ -1305,6 +1314,27 @@ additionalSeries:
                 value: 10.2
               - period: '2025'
                 value: 7.8
+          - name: Returns as a share of all claims
+            points:
+              - {period: '2007', value: 29.1}
+              - {period: '2008', value: 29.1}
+              - {period: '2009', value: 28.3}
+              - {period: '2010', value: 31.2}
+              - {period: '2011', value: 28.2}
+              - {period: '2012', value: 28.1}
+              - {period: '2013', value: 27}
+              - {period: '2014', value: 19.4}
+              - {period: '2015', value: 12.7}
+              - {period: '2016', value: 13.2}
+              - {period: '2017', value: 11.1}
+              - {period: '2018', value: 8}
+              - {period: '2019', value: 8.3}
+              - {period: '2020', value: 7.2}
+              - {period: '2021', value: 6.9}
+              - {period: '2022', value: 12.1}
+              - {period: '2023', value: 8.4}
+              - {period: '2024', value: 5.8}
+              - {period: '2025', value: 4}
   - id: detention-leavers-dataset
     title: 'Leaving immigration detention'
     subtitle: 'By outcome, UK, 2010–2025'
@@ -2106,12 +2136,50 @@ figures:
         shows: { value: The Home Office does not hold this data, sources: [17] }
       - measure: The government's position
         shows: { value: 'Says Article 8 is used to stop removals and cites the 86% release figure, but its impact assessment sets no target for fewer Article 8 grants or successful appeals', sources: [30, 59] }
+  - kind: quotes
+    id: said-about-the-echr
+    question: What do the Home Office and others say human-rights law does to removals?
+    description: >-
+      What the Home Office, the House of Commons Library and the Migration
+      Observatory say about how often the ECHR stops a removal, in date order.
+    quotes:
+      - text: Article 8 rights are also used to stop the removal of those who are living here illegally. In January to September 2022, 86% of people who raised rights-based applications, while in detention awaiting removal, were released.
+        speaker: Home Office
+        context: Additional statistics referred to in the asylum policy statement
+        date: '2025-11-21'
+        source: 30
+      - text: we see examples of foreign national offenders who are being allowed to stay in the UK on the basis of an Article 3 protection claim, despite committing serious criminal offences in the UK
+        speaker: Home Office
+        context: 'Restoring Order and Control (CP 1418)'
+        date: '2025-11-17'
+        source: 58
+      - text: From 2015/16 to 2024/25, immigration judges granted 61,000 out of the 115,000 human rights appeals brought against the Home Office (53%).
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376)'
+        date: '2025-10-27'
+        source: 47
+      - text: If someone would experience treatment reaching this threshold, as interpreted by the court, they cannot be removed under any circumstances.
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376), on Article 3'
+        date: '2025-10-27'
+        source: 48
+      - text: In the same 2015/16 to 2020/21 period, the Home Office removed 31,400 foreign national offenders from the UK. The 1,000 foreign criminals able to block deportation on ECHR grounds alone represent 3% of that figure.
+        speaker: House of Commons Library
+        context: 'Immigration and the ECHR (CBP-10376)'
+        date: '2025-10-27'
+        source: 45
+      - text: the Home Office said it did not hold data on … the number of people issued notices of liability to remove who were subsequently granted legal status (e.g., following a human rights claim)
+        speaker: The Migration Observatory, University of Oxford
+        context: Deportation and returns of unauthorised migrants from the UK
+        date: '2026-03-31'
+        source: 17
 observationMarks:
+  home-office-says-rights-claims-stop-removals: {rows: ["Home Office"]}
+  fewer-refused-recorded-leaving: {lines: ["Returns as a share of all claims", "Returns as a share of refused and withdrawn"], from: "2007", to: "2025"}
   unlawful-population-estimates: {rows: ["Greater London Authority, central estimate", "Greater London Authority, with UK-born children", "Pew, as first published", "Pew, revised March 2025"]}
-  about-half-of-refused-claimants-recorded-leaving: {lines: ["Returns as a share of refused"], from: "2015", to: "2021"}
   late-claims-not-human-rights-claims: {rows: ["Asylum claim", "Medico-legal report", "Modern slavery referral", "Rule 35 medical report", "Further submissions", "Judicial review", "Human rights or other rights-based application"]}
   most-issues-refused: {rows: ["No positive decision", "Positive decision or concession"]}
-  article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2017"}
+  article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2020"}
   echr-share-not-measured: {rows: ["Removals stopped by the ECHR", "People granted status after being told they were liable to removal"]}
   echr-hidden-in-other-rows: {rows: ["Human rights or other rights-based application", "Asylum claim", "Judicial review"]}
   150000-about-15-times-enforced-returns: {rows: ["Proposed UK target", "UK enforced returns, 2025"]}
@@ -2191,9 +2259,9 @@ The government said 58,000 people had their asylum claim refused between June 20
 
 ## Observations {#removals-and-what-stops-them--observations-cohort-share}
 
-### Fewer than half of those refused on 2015–2021 claims are recorded as leaving {#removals-and-what-stops-them--about-half-of-refused-claimants-recorded-leaving}
+### Since 2015, under one in seven claims and under a third of failed claims each year have ended in a recorded return {#removals-and-what-stops-them--fewer-refused-recorded-leaving}
 
-Across claims made in 2010–2022, returns come to around half of refusals. [15](#source-removals-and-what-stops-them-15) The line starts near three-quarters, drops to about a third for 2017 and 2018, and recovers to a little over half by 2022. Later years are still working through decisions and appeals.
+Of all main applicants who claimed asylum in each year, more than a quarter are recorded as returned for every year of claims from 2007 to 2013, and under one in seven for every year since 2015. Of those whose claims were refused or withdrawn, the share was more than half up to 2013, and under a third since 2015. [73](#source-removals-and-what-stops-them-73) Measured against refused claims alone, the share is higher: over two-thirds up to 2013, under half in every year from 2015 to 2021, and just over half for 2022. Claims from recent years are still working through appeals, and returns come later, so their share will rise. For small-boat arrivals the Home Office gives only a running total: 9,694 people who arrived by small boat between 2018 and June 2026 have been returned. [6](#source-removals-and-what-stops-them-6) Not being recorded as leaving is an upper bound on staying: the Migration Observatory notes that some people were later granted status or left without being recorded. [71](#source-removals-and-what-stops-them-71)
 
 ## Subtleties {#removals-and-what-stops-them--subtleties-cohort-share}
 
@@ -2265,9 +2333,9 @@ Of 24,289 planned foreign-offender removals in 2014/15–2016/17, 16,517 (68%) s
 
 ## Observations {#removals-and-what-stops-them--observations-fno-appeals}
 
-### Human-rights appeal wins fell by about three-quarters around the 2014 Act, then climbed back most of the way {#removals-and-what-stops-them--article-8-reforms-cut-then-faded}
+### Human-rights appeal wins fell from 2012/13 to 2015/16, rose to 2017/18, then fell again {#removals-and-what-stops-them--article-8-reforms-cut-then-faded}
 
-Appeals allowed on human-rights grounds only rose to 337 in 2012/13, fell to 150 in 2013/14, before the Immigration Act 2014 took effect, and to 92 in 2015/16, roughly three-quarters below 2012/13, then climbed back to 285 in 2017/18. [41](#source-removals-and-what-stops-them-41) The 2014 Act raised the bar for offenders' appeals while leaving judges some discretion. [49](#source-removals-and-what-stops-them-49) The rebound coincides with the 2017 Supreme Court judgment that paused "deport first, appeal later", so the data cannot separate the two. [50](#source-removals-and-what-stops-them-50)
+Appeals allowed on human-rights grounds only rose to 337 in 2012/13, fell to 150 in 2013/14, before the Immigration Act 2014 took effect, and to 92 in 2015/16, roughly three-quarters below 2012/13, then climbed back to 285 in 2017/18, and fell again to 44 in 2020/21, when appeals lodged also fell, to 568. [41](#source-removals-and-what-stops-them-41) The counts move with the number of appeals lodged, and most of the fall came before the 2014 Act took effect. The 2014 Act raised the bar for offenders' appeals while leaving judges some discretion. [49](#source-removals-and-what-stops-them-49) The rebound coincides with the 2017 Supreme Court judgment that paused "deport first, appeal later", so the data cannot separate the two. [50](#source-removals-and-what-stops-them-50)
 
 ### Across all immigration cases, human-rights appeals usually succeed {#removals-and-what-stops-them--all-human-rights-appeals-53-percent}
 
@@ -2310,6 +2378,12 @@ By 30 June 2026, 1,087 people had been returned to France and 1,117 brought to t
 ### Hundreds of thousands, on estimates now nine years old {#removals-and-what-stops-them--unlawful-population-estimates}
 
 The Home Office makes no official estimate of the population without lawful status. [70](#source-removals-and-what-stops-them-70) The two latest estimates are for 2017, and Pew revised its range down in March 2025. [69](#source-removals-and-what-stops-them-69) Both use the residual method: the foreign-born population minus an estimate of those here lawfully.
+
+## Observations {#removals-and-what-stops-them--observations-said-about-the-echr}
+
+### The Home Office says human-rights claims are used to stop removals {#removals-and-what-stops-them--home-office-says-rights-claims-stop-removals}
+
+In November 2025 the Home Office said Article 8 is used to stop removals, and that 86% of people who raised a rights-based application while held for removal in January to September 2022 were released. It has not yet published the analysis behind that figure. [30](#source-removals-and-what-stops-them-30) It also said some foreign offenders have stayed on Article 3 grounds despite serious crimes. [58](#source-removals-and-what-stops-them-58) Released is not the same as never removed, and these are the government's own statements.
 
 ## Observations {#removals-and-what-stops-them--observations-echr-share}
 

@@ -918,4 +918,31 @@
       line-height: 0.95;
     }
   }
+
+  /* Arrows over the shading (flow-arrows.tsx): ink on a paper halo, so they
+     read over any fill, and never take a colour that could be read as a
+     value. They keep their weight at any zoom. */
+  .sv-geo-map__flows { pointer-events: none; }
+
+  .sv-geo-map__flow,
+  .sv-geo-map__flow-halo {
+    fill: none;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .sv-geo-map__flow { stroke: var(--ink-2); opacity: 0.85; }
+  .sv-geo-map__flow-halo { stroke: var(--paper); opacity: 0.9; }
+  .sv-geo-map__flow-head path { fill: var(--ink-2); }
+
+  .sv-geo-map__flow-label {
+    font-family: var(--font-sans);
+    font-size: calc(11px / var(--sv-map-zoom, 1));
+    font-weight: 600;
+    fill: var(--ink);
+    stroke: var(--paper);
+    stroke-width: calc(2.5px / var(--sv-map-zoom, 1));
+    stroke-linejoin: round;
+    paint-order: stroke;
+  }
 }

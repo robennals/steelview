@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { formatValue } from '../format';
 import { MarkerShape, shapeForSlot } from '../marker-shape';
 import type { ValueFormat } from '../types';
+import { FlowArrows, type MapFlows } from './flow-arrows';
 import { MapReadout } from './map-readout';
 import { aspectOf, boundsOf, centroidOf, clipToBounds, fitBounds, focusBoxOf, pathFor, type Bounds, type Projection, type ProjectionKind } from './project';
 import type { AreaLook } from './shading';
@@ -117,6 +118,8 @@ type GeoDrawingProps = {
   markerValueLabel?: string;
   markerFormat?: ValueFormat;
   insets: MapInset[];
+  /** Arrows drawn over the shading, converging on one place. */
+  flows?: MapFlows;
   highlight: string[];
   lookFor: (region: GeoRegion) => AreaLook;
   /** The categorical slots in use: one SVG pattern each. */
@@ -136,11 +139,11 @@ type GeoDrawingProps = {
 
 /**
  * The real-shape view: projected outlines, dots for areas too small to
- * outline, optional enlarged insets and point markers, each area focusable
+ * outline, optional enlarged insets, arrows and point markers, each area focusable
  * with its sentence in the shared readout. Clicking an area zooms to it; see
  * MapReadout.
  */
-export function GeoDrawing({ regions, contextRegions, extent, projection: projectionKind, markers, markerValueLabel, markerFormat, insets, highlight, lookFor, slots, categorical, label, baseId, descriptionId, preview = false }: GeoDrawingProps) {
+export function GeoDrawing({ regions, contextRegions, extent, projection: projectionKind, markers, markerValueLabel, markerFormat, insets, flows, highlight, lookFor, slots, categorical, label, baseId, descriptionId, preview = false }: GeoDrawingProps) {
   const hatchId = `${baseId}-hatch`;
   const stippleId = `${baseId}-stipple`;
   const clipId = `${baseId}-clip`;
@@ -293,6 +296,7 @@ export function GeoDrawing({ regions, contextRegions, extent, projection: projec
             </g>
           )}
           <g className="sv-geo-map__regions">{regionPaths(projection, cropped(regions), true)}</g>
+          {flows && <FlowArrows flows={flows} regions={regions} projection={projection} idPrefix={baseId} />}
           {orderedMarkers.length > 0 && (
             <g className="sv-geo-map__markers">
               {orderedMarkers.map(({ marker, index }) => markerGlyph(marker, index, projection, true))}

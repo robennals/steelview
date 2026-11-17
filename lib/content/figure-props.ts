@@ -201,14 +201,32 @@ function mapEncoding(f: FigureOf<'map'>): R.MapEncoding {
 }
 
 /** A `map` figure (or its older spellings `tileMap` and `geoMap`) as an AreaMap: the preset's tiles and shapes, opening on its `default` view. */
+/**
+ * A map's arrows. One from an area is as thick as the area's value on a
+ * numeric map: a point's value, or a range's midpoint. One from a place, or on
+ * a categorical map, takes the shared width.
+ */
+function mapFlows(f: FigureOf<'map'>): R.AreaMapProps['flows'] {
+  if (!f.flows) return undefined;
+  const weight = (area: string) => {
+    const datum = f.categories ? undefined : f.data?.[area];
+    if (datum === undefined || typeof datum === 'number') return datum;
+    return 'value' in datum ? datum.value : (datum.low + datum.high) / 2;
+  };
+  return { ...f.flows, from: f.flows.from.map(start => (typeof start === 'string' ? { regionId: start, weight: weight(start) } : { place: start })) };
+}
+
 export function areaMapProps(f: FigureOf<'map'>, c: FigureContext): R.AreaMapProps {
+  const areas = mapAreas(f);
   return {
     ...frame(f, c),
-    ...mapAreas(f),
+    ...areas,
+    extent: f.crop ?? areas.extent,
     defaultView: f.default,
     areaLabel: f.areaLabel,
     highlight: f.highlight,
     insets: f.insets,
+    flows: mapFlows(f),
     ...mapEncoding(f),
   };
 }

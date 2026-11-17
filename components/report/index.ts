@@ -50,6 +50,7 @@ export * from './event-markers';
 // Quotes
 export type { Quote } from './quote-attribution';
 export * from './quote-browser';
+export * from './card-quotes';
 export * from './pull-quote';
 export * from './quote-comparison';
 

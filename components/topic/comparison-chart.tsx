@@ -37,6 +37,8 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   const groupLabel = chart.groupLabel ?? 'group';
   const allGroupsLabel = chart.allGroupsLabel ?? 'All groups';
   const items = chart.groups ? chart.items.map(item => ({ ...item, value: selected < 0 ? item.value : item.values![selected] })).sort((a, b) => b.value - a.value) : chart.items;
+  // A slideshow card's graph is the argument's evidence, so its groups can be switched there too.
+  const switchGroups = chart.groups && (!preview || preview.fit === 'card') ? chart.groups : undefined;
   const min = Math.min(0, ...items.map(item => item.value));
   const max = Math.max(0, chart.domainMax ?? 0, ...items.map(item => item.value));
   const range = max - min || 1;
@@ -59,8 +61,8 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
         : <p className="sv-chart__desc">{chart.description}</p>)}
     </figcaption>
     {panel && <ObservationBar />}
-    {chart.groups && !preview && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
-      {[...chart.groups, allGroupsLabel].map((label, index) => { const value = index === chart.groups!.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
+    {switchGroups && <fieldset className="sv-comparison-controls"><legend>Compare by {groupLabel}</legend>
+      {[...switchGroups, allGroupsLabel].map((label, index) => { const value = index === switchGroups.length ? -1 : index; return <button type="button" key={label} aria-pressed={selected === value} onClick={() => setSelected(value)}>{label}</button>; })}
     </fieldset>}
     {!preview && hasDetail && <RowDetailHint />}
     {columns ? <RankedColumns items={items} max={max} format={format} />
@@ -70,7 +72,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
           <span className="sv-comparison__label"><span title={preview ? [item.label, item.subtitle].filter(Boolean).join(': ') : undefined}>{item.subtitle ? <><span className="sv-comparison__name">{item.label}</span><span className="sv-comparison__subtitle">{item.subtitle}</span></> : item.label}</span><span>{format(item.value)}{formatShare(item.value) && <span className="sv-comparison__share"> · {formatShare(item.value)}</span>}</span></span>
           <span className="sv-comparison__track" aria-hidden="true">
             <span className="sv-comparison__zero" style={{ left: `${zero}%` }} />
-            {chart.groups && selected < 0 ? item.values!.map((value, i) => <span key={i} className="sv-comparison__bar" style={{ background: `var(--sv-group-${i})`, left: `${item.values!.slice(0, i).reduce((a, b) => a + b, 0) / range * 100}%`, width: `${value / range * 100}%` }} />) : <span className="sv-comparison__bar" data-highlight={item.highlight || undefined} style={{ left: `${(Math.min(0, item.value) - min) / range * 100}%`, width: `${Math.abs(item.value) / range * 100}%` }} /> }
+            {chart.groups && selected < 0 ? item.values!.map((value, i) => <span key={i} className="sv-comparison__bar" style={{ background: `var(--sv-group-${i})`, left: `${item.values!.slice(0, i).reduce((a, b) => a + b, 0) / range * 100}%`, width: `${value / range * 100}%` }} />) : <span className="sv-comparison__bar" data-highlight={item.highlight || undefined} style={{ left: `${(Math.min(0, item.value) - min) / range * 100}%`, width: `${Math.abs(item.value) / range * 100}%`, ...(chart.groups && selected >= 0 ? { background: `var(--sv-group-${selected})` } : null) }} /> }
           </span>
         </>;
         return item.detail && !preview

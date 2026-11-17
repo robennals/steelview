@@ -1506,33 +1506,87 @@ floor, not the target.
 
 ### Lead with the data
 
-A viewpoint is read as a walkthrough of data, not as an essay with links. On
-the topic page its row shows one chart per section. Opened, it steps through
-the sections one at a time, each section's claim and text beside its chart.
-The chart is the evidence; the text says what to notice in it and why that
-matters to the argument.
+A viewpoint is read as a slideshow of cards, one per section, each making one
+point of the argument with the evidence for it. A card is three things:
 
-**Choose the chart first.** For each step, pick the visualization that shows
-the step's claim on its face, then write the text around it. If no chart in the
-reports shows the claim, that is a gap to raise at stage 5, or a sign the step
-is not a data claim.
+- **The heading: the point.** One sentence of the argument, under about fifteen
+  words ([Write an argument someone can follow](#write-an-argument-someone-can-follow)).
+- **The line: the section's first paragraph.** One to three sentences, about 25
+  to 55 words, that complete the step: they give the data the point rests on,
+  as pills, and say what it shows for the argument. It sits under the heading,
+  and opens the rest of the section under "More".
+- **One visual: the graph or collection of quotes behind the line's first
+  citation of one.** It fills the rest of the card.
 
-**Cite the chart's observation first.** A step's chart is not named anywhere:
-it is the visual beside the first observation the section cites that sits beside
-one, whether a series, a comparison or a [figure](#figures). So the section's
-first such citation decides what the reader sees. "The economy grew, but people
-did not get richer" must cite the GDP-per-head observation before the total-GDP
-one, or the reader sees total GDP rising beside a claim about people's incomes.
-Read
-each step on the page to confirm its chart shows its claim. A section with no
-such citation shows text alone, which should be rare.
+That combination is the target: a reader who reads only headings and lines,
+card after card, gets the whole argument, and sees on each card the data that
+backs it. The slideshow is live for the topics in `SLIDESHOW_TOPICS`
+(`lib/content/walkthrough.ts`), so far `uk-asylum`; the others still show the
+older step-by-step walkthrough, and are rewritten to this target as they are
+revised. The rest of the section, under "More", is the evidence a doubting
+reader wants: the further facts, and any concession with the answer to it, in
+one or two short paragraphs, rarely more than about 80 words.
+
+**Choose the visual first.** For each step, pick the graph that shows the
+step's claim on its face, then write the line around it. A graph is the
+default; a [collection of quotes](#figures) is for a point that rests on what
+people with standing have said, such as a government's own statement. The card
+shows only the quotes its point rests on: the speakers its observation marks.
+The whole collection, which a reader can filter, opens from the card. If no visual in the reports
+shows the claim, that is a gap to raise at stage 5, or a sign the step is not a
+data claim.
+
+**The line's first citation of a graph or quotes picks the visual.** A table,
+a timeline set as type or a passage of text never does: they read as more text,
+which the card already gives. So cite the observation that shows the point
+first, in the line. A line that cites no graph or quotes makes a card of text,
+which is right for a value, a legal reading or the conclusion, and should
+otherwise be rare. "The economy grew, but people did not get richer" must cite
+the GDP-per-head observation before the total-GDP one, or the reader sees total
+GDP rising beside a claim about people's incomes.
+
+**One visual, one card.** Two cards may not show the same graph or collection
+of quotes: the reader would be shown the same evidence twice as if it were new.
+Two points that need the same graph are one point; merge them.
+`check:integrity` fails on a repeat (rule M4).
 
 **Evidence that is not a number still gets a visual.** A court ruling, a law or
 a statement is shown as a `dataTable`, `timeline`, `periodTimeline` or
-`quoteComparison` figure, with its observations attached by id. It then steps
-through like a chart. Do not leave such a record as a table in the body: there
-it has no place in the walkthrough, and a report made only of body tables opens
-onto nothing on the topic page.
+`quotes` figure, with its observations attached by id. It then steps through
+like a chart in its report, and a pill to it opens it there. On a card, a
+`quotes` figure shows the quotes the card's point rests on; a step that rests on
+a table or a timeline is a card of text. Do not leave such a record as a table in the body:
+there it has no place in the walkthrough, and a report made only of body tables
+opens onto nothing on the topic page.
+
+**Everything a viewpoint says must be true.** A steelman makes its case only
+from true statements, and each is one of three things:
+
+- a fact, backed by evidence it cites;
+- a value judgment, stated as one ("Britain has an obligation to people in
+  danger");
+- what follows from what it cites, including a conditional ("if limits inside
+  the Convention would fail, leaving is the way to make them hold").
+
+Where a fact is contested, a viewpoint may rest on a citable source it can
+defend as trustworthy, named in the claim ("the Home Office says"). The dispute
+is then about how far to trust that source, or what the real answer is, and
+belongs in a crux. In practice:
+
+- **Nothing unsourced.** No claim about cause, motive or what people know
+  without a source that shows it. A pattern that fits a cause is not evidence
+  of the cause: if the report says its data "is not a test of cause", the
+  viewpoint cannot claim one.
+- **No predictions or comparisons the evidence does not make.** Say what has
+  happened, or state the conditional.
+- **Headings and lines are claims too.** The rule covers every sentence, not
+  only the pills.
+
+**Show the whole range, and claim only what it shows.** A chart shows every
+period its data covers; never cut a range to the years that fit a claim. A
+claim that holds for only part of the range says which part and what the rest
+shows ("over half up to 2013, under a third every year since 2015"). If the
+whole range does not support it, the claim goes.
 
 **Every link shows its fact on a chart.** A citation in a viewpoint, a crux or the
 topic's introduction opens its collection's data panel in a pop-up, with the cited
@@ -1541,7 +1595,8 @@ underline. So a link passes only if a reader can read the claim off the
 highlighted part of the chart: the plotted values, a row's text, an event or a
 quote. Text in the observation's explanation does not count, nor does the chart's
 title. Every part of the claim must be there, for the same place, period and
-measure, and the numbers must match.
+measure, and the numbers must match. Say which measure: "refused or
+withdrawn" is not "refused".
 
 If the chart does not show the claim, first link an observation whose chart does.
 If none exists, add one, or add the fact to a chart from a source the report
@@ -1580,6 +1635,14 @@ make the whole case: someone who accepted every heading should accept the
 title. A reader skimming the headings gets the argument; a reader who doubts
 one reads the section beneath it.
 
+**Test each heading: could it be a chart's title?** "Australia's boat arrivals
+fell to almost none once boats were turned back" could; it reports a finding.
+The heading says what the finding shows for this argument: "Australia's boats
+stopped once it began turning them back". A heading that only reports data
+belongs in the report as an observation; in the viewpoint, the visual under it
+carries the data. The last heading is the conclusion, and reads as one:
+"So Britain should …".
+
 ```markdown
 A regime with Iran's record could not be allowed the one weapon that would put
 it beyond punishment. …
@@ -1592,9 +1655,10 @@ Iran is [the only state without nuclear weapons enriching uranium to 60%](#fact-
 …
 ```
 
-Under each heading, write two or three short sentences of ordinary prose — no
-bullet lists — that fit beside a chart without scrolling. The paragraphs give the evidence for that heading's claim and
-explain why it supports it. Deal with the strongest relevant difficulty in the
+Under each heading, write the line and then the evidence, as
+[Lead with the data](#lead-with-the-data) describes, in ordinary prose with no
+bullet lists. The line completes the step and names the data behind it; the
+evidence gives the rest of what supports it and explains why. Deal with the strongest relevant difficulty in the
 section it bears on, rather than collecting objections at the end. The last
 section states the policy or judgment the earlier sections support, and its
 heading says what that is. A sequence of unrelated true headings is not an
@@ -1668,8 +1732,10 @@ into a certainty, a correlation into a cause, or one subgroup into everyone.
 For legal claims, distinguish an obligation to hear a claim from an obligation
 to grant protection; everyday wording must preserve the actual scope of the law.
 
-Aim for about 150–250 words across four to six sections. These are editing
-defaults, not quotas. Use fewer words when they suffice. Six sections
+Aim for four to six sections of about 100 words each: a heading of up to about
+fifteen words, a line of 25 to 55, and evidence of up to about 80, so a
+viewpoint runs to about 450–600 words. These are editing defaults, not
+quotas. Use fewer words when they suffice. Six sections
 is a ceiling: past it, the headings read as a list of points rather than an
 argument, so merge the claims that make the same step. Use `###` headings only,
 never bold mini-headings or nested levels. The summary should give the central
@@ -2146,6 +2212,7 @@ them.
 | Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
 | Series and comparison prose (advisory): a figure in a series' or comparison's title, description, notes or labels is quoted like a component figure's | `scripts/check-figures.ts`, `lib/content/figure-text.ts` (`chartProse`) |
 | Chart values (advisory): a qualified value by its `asPublished`, both ends of a range, against any of the item's sources | `scripts/check-figures.ts`, `lib/content/figure-text.ts` |
+| A slideshow viewpoint shows each graph or collection of quotes on one card only (M4) | `lib/content/walkthrough.ts` (`repeatedCardVisualErrors`), run by `pnpm check:integrity` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

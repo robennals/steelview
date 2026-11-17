@@ -4,7 +4,13 @@ import { alongsideOf, plotReadingId, plottedReadings } from '@/lib/chart/series-
 import { chartCitations, footnotesIn } from './sources';
 import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
-import { factSlides, slideGroups, type PreviewSlide } from './preview';
+import { factSlides, isPreviewable, previewTarget, slideGroups, type PreviewSlide } from './preview';
+
+/**
+ * The topics whose viewpoints are shown as slideshows, a trial of a simpler
+ * layout before it replaces the step-and-chart walkthrough everywhere.
+ */
+export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
@@ -16,6 +22,8 @@ export type WalkthroughStep = {
   chart?: PreviewSlide;
   /** The citation that chart was chosen for: `#fact-<id>/<section>`. */
   cited?: { id: string; section: string };
+  /** The graph or quotes a slideshow card is made with (`cardVisual`), with the citation it was chosen for. */
+  cardVisual?: { chart: PreviewSlide; cited: { id: string; section: string } };
 };
 
 export type Walkthrough = {
@@ -152,20 +160,34 @@ function chartFor(slug: string, fact: Fact, key: string, observation: string): P
 export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkthrough {
   const [lead, ...sections] = viewpoint.body.split(/^### /m);
   const groups = new Map(topic.facts.map(fact => [fact.id, observationGroups(fact)]));
+  /** The charts behind a passage's citations, in order, each with the citation it was chosen for. */
+  const chartsCited = (markdown: string) => citedFactTargets(markdown).flatMap(({ id, section: observation }) => {
+    const fact = topic.facts.find(f => f.id === id);
+    // A citation can also name a chart outright, `#fact-<fact>/chart-<id>`, or
+    // an old anchor of prose a figure now stands in for (`replaces`).
+    const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
+    const chart = fact && key && chartFor(topic.slug, fact, key, observation);
+    return chart ? [{ chart, cited: { id, section: observation } }] : [];
+  });
   const steps = sections.map(section => {
     const [heading, ...rest] = section.split('\n');
     const markdown = rest.join('\n').trim();
-    for (const { id, section: observation } of citedFactTargets(markdown)) {
-      const fact = topic.facts.find(f => f.id === id);
-      // A citation can also name a chart outright, `#fact-<fact>/chart-<id>`, or
-      // an old anchor of prose a figure now stands in for (`replaces`).
-      const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
-      const chart = fact && key && chartFor(topic.slug, fact, key, observation);
-      if (chart) return { heading: heading.trim(), markdown, chart, cited: { id, section: observation } };
-    }
-    return { heading: heading.trim(), markdown };
+    const [first] = chartsCited(markdown);
+    return { heading: heading.trim(), markdown, ...first, cardVisual: cardVisual(chartsCited(splitFirstParagraph(markdown)[0])) };
   });
   return { lead: lead.trim(), steps };
+}
+
+/**
+ * What a slideshow card is made with: the first graph or collection of quotes
+ * behind the claims its reasoning line cites, so the line's claim is what the
+ * reader sees. One, because a phone has room for one; a graph with several
+ * views shows them as modes, and a collection of quotes one quote at a time. A
+ * line that cites neither makes a card of text. A table is never one: it reads
+ * as more text, which the card already gives.
+ */
+function cardVisual(inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
+  return inReasoning.find(({ chart }) => isGraph(chart) || componentFigure(chart.fact, chart.chart)?.kind === 'quotes');
 }
 
 /**
@@ -185,13 +207,69 @@ function panelTargets(topic: Topic): (id: string, section: string) => PanelTarge
   };
 }
 
+/**
+ * Whether a step's chart is a graph rather than a table, quote or other figure
+ * set as type: a slideshow card is made with a graph, while the others read as
+ * more text, which the step's prose already gives.
+ */
+function isGraph({ fact, chart }: PreviewSlide): boolean {
+  const target = previewTarget(fact, chart);
+  return !!target && isPreviewable(target);
+}
+
+/** A section's first paragraph, and the rest. */
+function splitFirstParagraph(markdown: string): [string, string] {
+  const [first, ...rest] = markdown.split(/\n\s*\n/);
+  return [first, rest.join('\n\n')];
+}
+
+/**
+ * M4 — each card of a slideshow viewpoint makes its own point with its own
+ * graph or quotes. One shown on two cards puts the same evidence in front of
+ * the reader twice as if it were new; two points that need it are one point.
+ * Checked for the topics shown as slideshows: the walkthrough rows of the
+ * others still repeat some charts.
+ */
+export function repeatedCardVisualErrors(topic: Topic): string[] {
+  if (!SLIDESHOW_TOPICS.has(topic.slug)) return [];
+  return topic.viewpoints.flatMap(viewpoint => {
+    const shown = new Map<string, string>();
+    return viewpointWalkthrough(topic, viewpoint).steps.flatMap(({ heading, cardVisual }) => {
+      if (!cardVisual) return [];
+      const { fact, chart, reading, label } = cardVisual.chart;
+      const key = `${fact.id}:${chart}:${reading ?? ''}`;
+      const first = shown.get(key);
+      if (!first) {
+        shown.set(key, heading);
+        return [];
+      }
+      return [`viewpoint ${viewpoint.id}: "${heading}" shows the same evidence as "${first}" (${label}); make them one point, or cite another graph first`];
+    });
+  });
+}
+
+/** A slideshow card's graph or quotes, with where it opens its data. */
+export type CardVisual = {
+  chart: PreviewSlide;
+  /** Where the graph opens its collection's data panel, when the topic page has one. */
+  panel?: PanelTarget;
+  /** "Explore this data", rendered as a citation so it opens the collection's report, for a graph with no panel. */
+  exploreHtml: string;
+};
+
 /** A step with its prose rendered, ready for a synchronous component. */
-export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited'> & {
+export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited' | 'cardVisual'> & {
   html: string;
   /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
   exploreHtml?: string;
   /** Where "Explore this data" opens the chart's data panel. */
   panel?: PanelTarget;
+  /** The graph or quotes a slideshow card is made with (`cardVisual`). */
+  cardVisual?: CardVisual;
+  /** For a slideshow card: the section's first paragraph, the step of reasoning that completes its heading, rendered without its paragraph. */
+  reasoningHtml: string;
+  /** For a slideshow card: the rest of the section, the evidence, rendered. */
+  evidenceHtml: string;
 };
 
 export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
@@ -208,16 +286,68 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited }) => ({
-        heading,
-        chart,
-        panel: cited && panelFor(cited.id, cited.section),
-        html: await renderMarkdown(markdown, topic.slug, topic.facts, { panelCitation: panelFor }),
-        exploreHtml: cited && await renderMarkdown(`[Explore this data](#fact-${cited.id}/${cited.section})`, topic.slug, topic.facts),
-      }))),
+      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited, cardVisual }) => {
+        const render = (md: string) => renderMarkdown(md, topic.slug, topic.facts, { panelCitation: panelFor });
+        const explore = ({ id, section }: { id: string; section: string }) => renderMarkdown(`[Explore this data](#fact-${id}/${section})`, topic.slug, topic.facts);
+        const [reasoning, evidence] = splitFirstParagraph(markdown);
+        return {
+          heading,
+          chart,
+          panel: cited && panelFor(cited.id, cited.section),
+          html: await render(markdown),
+          exploreHtml: cited && await explore(cited),
+          cardVisual: cardVisual && { chart: cardVisual.chart, panel: panelFor(cardVisual.cited.id, cardVisual.cited.section), exploreHtml: await explore(cardVisual.cited) },
+          // Inline, for a card's subtitle line.
+          reasoningHtml: (await render(reasoning)).replace(/^<p>|<\/p>\s*$/g, ''),
+          evidenceHtml: await render(evidence),
+        };
+      })),
     });
   }
   return rendered;
+}
+
+/** One finding a viewpoint cites, ready to read in a pop-up beside the claim that cites it. */
+export type CitedClaim = {
+  /** The finding, as its observation's heading, rendered without a paragraph. */
+  heading: string;
+  /** Its explanation. */
+  html: string;
+  /** The data collection it comes from. */
+  collection: string;
+  /** Where its collection's data panel opens at it, when the topic page has one. */
+  panel?: PanelTarget;
+  /** Its place in its collection's own page. */
+  href: string;
+};
+
+/**
+ * Every observation the viewpoints cite, keyed by its element id
+ * (`<fact>--<observation>`), for a slideshow to open in a pop-up rather than
+ * sending the reader into the whole data collection. Like a data panel on a
+ * topic page, it leaves out footnotes and fact links, which the collection
+ * itself carries.
+ */
+export async function renderCitedClaims(topic: Topic): Promise<Record<string, CitedClaim>> {
+  const options = { citationsAsText: true, footnotes: false };
+  const panelFor = panelTargets(topic);
+  const claims: Record<string, CitedClaim> = {};
+  for (const { id, section } of topic.viewpoints.flatMap(v => citedFactTargets(v.body))) {
+    // A citation of a whole collection names no one finding to show.
+    if (!section) continue;
+    const key = `${id}--${section}`;
+    const fact = topic.facts.find(f => f.id === id);
+    const observation = fact && [...observationsByChart(fact).values()].flat().find(o => o.id === section);
+    if (key in claims || !fact || !observation) continue;
+    claims[key] = {
+      heading: (await renderMarkdown(observation.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),
+      html: await renderMarkdown(observation.markdown, topic.slug, topic.facts, options),
+      collection: fact.title ?? fact.claim,
+      panel: panelFor(id, section),
+      href: `${factPath(topic.slug, id)}#${key}`,
+    };
+  }
+  return claims;
 }
 
 /** The title of a report's last slide. */

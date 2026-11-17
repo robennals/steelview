@@ -153,6 +153,15 @@ test('a tileMap is a map that opens on its tiles, its preset resolved to tiles a
   assert.equal(props.note?.endsWith('Values from EAVS 2024 Overview Table 1.'), true);
 });
 
+test('a map\'s arrows are weighted by their areas\' values, and its crop replaces the preset\'s extent', () => {
+  const map = figureOf('map', 'rejection-by-state');
+  const to = { label: 'There', lon: 0, lat: 0 };
+  const props = areaMapProps({ ...map, data: { ...map.data, NV: { low: 2, high: 4 } }, flows: { label: 'Route', from: ['DE', 'AR', 'NV'], via: [], to }, crop: { minLon: -100, maxLon: -70, minLat: 25, maxLat: 45 } }, context);
+  assert.deepEqual(props.flows, { label: 'Route', from: [{ regionId: 'DE', weight: 5.1 }, { regionId: 'AR', weight: 8.8 }, { regionId: 'NV', weight: 3 }], via: [], to });
+  assert.deepEqual(props.extent, { minLon: -100, maxLon: -70, minLat: 25, maxLat: 45 });
+  assert.equal(areaMapProps(map, context).flows, undefined);
+});
+
 test('the US territories join both views only when the figure names one', () => {
   const map = figureOf('map', 'rejection-by-state');
   const props = areaMapProps({ ...map, data: { ...map.data, PR: 1 } }, context);

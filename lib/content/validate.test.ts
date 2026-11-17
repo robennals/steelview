@@ -829,6 +829,17 @@ test('F9: a tile map uses its preset\'s areas, ascending breaks, and explains a 
   assert.ok(hasError(topic, 'say why in `note`'));
 });
 
+test('F9: a map\'s arrows start at shaded areas of its preset, and its crop runs upwards', () => {
+  const { topic, fact } = figuresTopic();
+  const map = figureOf(fact, 'map', 'rejection-by-state');
+  map.flows = { label: 'Route', from: ['XX', 'GU', 'DE'], via: [], to: { label: 'There', lon: 0, lat: 0 } };
+  map.crop = { minLon: 10, maxLon: 0, minLat: 0, maxLat: 10 };
+  assert.ok(hasError(topic, 'flow from "XX" is not an area of us-states'));
+  assert.ok(hasError(topic, 'flow from "GU" has no datum'));
+  assert.ok(!hasError(topic, 'flow from "DE"'), 'a shaded state may start an arrow');
+  assert.ok(hasError(topic, 'crop must run from low to high'));
+});
+
 test('F9: the US territories are areas of us-states, and count as gaps only once a figure names one', () => {
   const { topic, fact } = figuresTopic();
   const map = figureOf(fact, 'map', 'rejection-by-state');
