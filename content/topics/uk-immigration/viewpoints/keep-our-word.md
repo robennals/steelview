@@ -6,17 +6,17 @@ order: 4
 ---
 People who came to Britain lawfully, on a path the state set out, should be allowed to finish it. Parliament can change the rules for people who have not yet come.
 
-### About 2.2 million people are on the path to settlement
+### About 2.2 million people built their lives around a path the state set out
 
-Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). They took jobs, moved their families and put their children in school.
+Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). Many took jobs, moved their families and put their children in school.
 
 They have also paid. [Over five years, a skilled worker pays thousands of pounds in fees and a yearly health charge](#fact-settlement-and-migrant-status/skilled-worker-route-costs), on top of tax. [The settlement fee alone is ten times what it costs the Home Office to process](#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost). Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
 
-### Britain usually protects people already on a route
+### Britain has usually let people already on a route finish it
 
-The government once toughened the rules for skilled migrants already here. [In 2008 the High Court ruled that changing the scheme midway was "conspicuous unfairness and an abuse of power"](#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008). [MPs found it "common" for the Home Office to protect people already on a route](#fact-settlement-and-migrant-status/transitional-protection-precedent). [For Hong Kong's British Nationals (Overseas), the government called the route a "historic and moral commitment"](#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment).
+The government once toughened the rules for skilled migrants already here. [The High Court ruled in 2008 that changing the scheme midway was "conspicuous unfairness and an abuse of power"](#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008). [MPs found it "common" for the Home Office to protect people already on a route](#fact-settlement-and-migrant-status/transitional-protection-precedent).
 
-While [the skilled-worker guidance says only that people "may be able to apply"](#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply), and [rules have sometimes been changed for people already here](#fact-settlement-and-migrant-status/transitional-protection-precedent), nobody uproots a family for "may" unless they trust the state to mean it. [Rules must mean what they say](#principle-rules-must-mean-what-they-say), in the sense people reasonably took them.
+[For Hong Kong's British Nationals (Overseas), the government called the route a "historic and moral commitment"](#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment). While [the skilled-worker guidance says only that people "may be able to apply"](#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply), and [rules have sometimes been changed for people already here](#fact-settlement-and-migrant-status/transitional-protection-precedent), nobody uproots a family for "may" unless they trust the state to mean it. [Rules must mean what they say](#principle-rules-must-mean-what-they-say), in the sense people reasonably took them.
 
 ### Keeping the promise keeps well-paid workers Britain needs
 
@@ -26,8 +26,12 @@ While [around half of adult skilled-worker dependants were not working](#fact-se
 
 ### Treating lawful status as doubtful does real harm
 
-Britain has seen what happens when lawful status is treated as doubtful. In the Windrush scandal, [people with every right to be here were detained, removed and denied work and homes](#fact-settlement-and-migrant-status/windrush-record). Reopening the status of lawful residents risks the same mistakes. [A ten-year wait would make Britain an outlier among rich countries, where five years is usual](#fact-settlement-and-migrant-status/ten-year-baseline-outlier), though [the evidence on whether longer waits drive people away is limited](#fact-settlement-and-migrant-status/behaviour-evidence-limited).
+Britain has seen what happens when lawful status is treated as doubtful. In the Windrush scandal, [people with every right to be here were detained, removed and denied work and homes](#fact-settlement-and-migrant-status/windrush-record). Reopening the status of lawful residents risks the same mistakes.
 
-### Change the terms only for people who have not yet come
+[A ten-year wait would make Britain an outlier among rich countries, where five years is usual](#fact-settlement-and-migrant-status/ten-year-baseline-outlier). While [the evidence on whether longer waits drive people away is limited](#fact-settlement-and-migrant-status/behaviour-evidence-limited), Britain would make newcomers wait twice as long as most rich countries do.
 
-The public draws the line in the same place. [Most people oppose taking settlement away from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29). [Ending it for new arrivals splits the country evenly](#fact-settlement-and-migrant-status/ending-for-new-arrivals-splits), and [majorities want to keep it for full-time workers and NHS staff](#fact-settlement-and-migrant-status/majorities-keep-for-workers). Parliament may set any terms it likes for people who have not yet come. Everyone who arrived on a five-year path should be able to finish it on the terms they were given.
+### So change the terms only for people who have not yet come
+
+Parliament may set any terms it likes for people who have not yet come. But everyone who arrived on a five-year path should be able to finish it on the terms they were given. The public draws the line in the same place: [most people oppose taking settlement away from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29).
+
+[Ending settlement for new arrivals splits the country evenly](#fact-settlement-and-migrant-status/ending-for-new-arrivals-splits), and [majorities want to keep it for full-time workers and NHS staff](#fact-settlement-and-migrant-status/majorities-keep-for-workers).

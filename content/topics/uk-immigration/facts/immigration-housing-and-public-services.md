@@ -1805,7 +1805,7 @@ observationMarks:
   local-versus-regional-effects: {rows: ["Planning limits and prices"]}
   public-investment-low: {lines: ["United Kingdom", "OECD median"], from: "1995", to: "2024"}
   health-capital-below-average: {rows: ["Health buildings and equipment"]}
-  social-rent-building-fell-after-2010: {lines: ["Social rent"], from: "2011", to: "2025", at: "2025"}
+  social-rent-building-fell-after-2010: {lines: ["Social rent"]}
   day-to-day-spending-per-head-above-2010: {lines: ["Funding per pupil"], from: "2011", to: "2027", at: "2027"}
   council-building-record: {rows: ["Council-built affordable homes"]}
   projections-not-a-target: {rows: ["Migration category variant", "Zero net migration"]}
@@ -1907,9 +1907,9 @@ A falling national roll does not rule out pressure in areas where migrants settl
 
 ## Observations {#immigration-housing-and-public-services--observations-affordable-completions}
 
-### Social rent building fell by more than four-fifths after 2010-11, and is still under a third of its old level {#immigration-housing-and-public-services--social-rent-building-fell-after-2010}
+### Since 2013-14, social rent building has been lower every year than in any year from 1991-92 to 2012-13 {#immigration-housing-and-public-services--social-rent-building-fell-after-2010}
 
-Social rent completions fell from 39,562 in 2010-11 to 5,827 in 2016-17, and were 12,267 in 2024-25 — less than a third of the 2010-11 level. [36](#source-immigration-housing-and-public-services-36) Total affordable completions held up because the new affordable rent tenure, at higher rents, replaced much of social rent from 2011-12.
+Social rent completions were between 17,580 and 57,023 a year from 1991-92, where this record starts, to 2012-13. Every year since, they have been 12,267 or fewer; they fell to 5,827 in 2016-17 and were 12,267 in 2024-25. [36](#source-immigration-housing-and-public-services-36) Total affordable completions held up because the new affordable rent tenure, at higher rents, replaced much of social rent from 2011-12.
 
 ## Observations {#immigration-housing-and-public-services--observations-school-funding-per-pupil}
 
