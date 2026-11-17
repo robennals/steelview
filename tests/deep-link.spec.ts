@@ -256,16 +256,16 @@ test('a related report opens as a page of its own, not over the one you are on',
   await expect(page.locator('dialog')).toHaveCount(0);
 });
 
-// A viewpoint's "Explore this data" is a real link, for a new tab or a crawler.
-test('a viewpoint step links to the collection it cites', async ({ page }) => {
-  await page.goto(TOPIC);
+// A card's "Explore this data" is a real link, for a new tab or a crawler.
+test('a viewpoint card links to the collection it cites', async ({ page }) => {
+  await page.goto('/topics/uk-asylum');
   const hrefs = await page.locator('.sv-row--viewpoint .sv-walk__explore a').evaluateAll(
     links => links.map(link => link.getAttribute('href') ?? '')
   );
   expect(hrefs.length).toBeGreaterThan(0);
-  for (const href of hrefs) expect(href).toMatch(/^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
-  // So is a claim in a step's prose, which opens a panel when clicked.
-  await expect(page.locator('.sv-row--viewpoint .sv-walk__prose a[data-panel-link]').first()).toHaveAttribute('href', /^\/topics\/uk-immigration\/facts\/[a-z0-9-]+#/);
+  for (const href of hrefs) expect(href).toMatch(/^\/topics\/uk-asylum\/facts\/[a-z0-9-]+#/);
+  // So is a claim in a card's prose, which opens its finding in a pop-up when clicked.
+  await expect(page.locator('.sv-row--viewpoint .sv-deck__card a.sv-cite').first()).toHaveAttribute('href', /^\/topics\/uk-asylum\/facts\/[a-z0-9-]+#/);
 });
 
 // Addresses are permanent and must keep working with no JavaScript to

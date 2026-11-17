@@ -232,5 +232,4 @@ test('a slideshow viewpoint may not show one graph on two cards', async () => {
   const errors = repeatedCardVisualErrors({ ...topic, viewpoints: [viewpoint] });
   assert.equal(errors.length, 1);
   assert.match(errors[0], /"Second point" shows the same evidence as "First point"/);
-  assert.deepEqual(repeatedCardVisualErrors({ ...topic, slug: 'not-a-slideshow', viewpoints: [viewpoint] }), [], 'checked only where viewpoints are slideshows');
 });

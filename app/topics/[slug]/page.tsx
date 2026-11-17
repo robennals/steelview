@@ -3,12 +3,11 @@ import { loadTopic, listTopicSlugs } from '@/lib/content/load';
 import { headlineFacts } from '@/lib/content/rank-facts';
 import { renderMarkdown } from '@/lib/content/markdown';
 import { topicPath } from '@/lib/content/types';
-import { SLIDESHOW_TOPICS, renderCitedClaims, renderDataWalkthroughs, renderWalkthroughs, type CitedClaim, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
+import { renderCitedClaims, renderDataWalkthroughs, renderWalkthroughs, type CitedClaim, type DataStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { absoluteUrl } from '@/lib/site';
 import { DataRows } from '@/components/topic/data-rows';
 import { ExplorePanels } from '@/components/topic/explore-panels';
 import { TopicPanel, TopicTabs } from '@/components/topic/topic-tabs';
-import { ViewpointRows } from '@/components/viewpoints/viewpoint-rows';
 import { ViewpointSlides } from '@/components/viewpoints/viewpoint-slides';
 import { PrincipleModals } from '@/components/topic/principle-modals';
 import { CruxRows } from '@/components/topic/crux-rows';
@@ -143,9 +142,7 @@ export function TopicSections({ topic, bodies, walkthroughs, dataWalkthroughs, c
             <div className="sv-section__head sv-section__head--tab">
               <h2 className="sv-section__title">Viewpoints</h2>
             </div>
-            {SLIDESHOW_TOPICS.has(topic.slug)
-              ? <ViewpointSlides slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} claims={claims} />
-              : <ViewpointRows slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} />}
+            <ViewpointSlides slug={topic.slug} viewpoints={topic.viewpoints} walkthroughs={walkthroughs} claims={claims} />
           </section>
         </TopicPanel>
       )}
@@ -184,7 +181,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const bodies = await buildBodies(topic, slug);
   const walkthroughs = await renderWalkthroughs(topic);
   const dataWalkthroughs = await renderDataWalkthroughs(topic, orderHeadlineFacts(topic));
-  const claims = SLIDESHOW_TOPICS.has(slug) ? await renderCitedClaims(topic) : {};
+  const claims = await renderCitedClaims(topic);
 
   /*
    * The page head is the title and nothing else: readers came for the facts,

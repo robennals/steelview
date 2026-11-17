@@ -162,10 +162,10 @@ test('a scatter preview draws every point at its fit\'s shapes and the narrow pl
   assert.doesNotMatch(html, /tabindex/);
   assert.match(html, /Days before Election Day processing may begin/);
   assert.match(html, /Hours to count 95% of the vote/);
-  const tall = renderToStaticMarkup(createElement(PreviewFigure, { figure: figure('count-speed'), context: figureContext(base), preview: { href: '/x', fit: 'tall' } }));
-  assert.match(tall, /data-variant="preview-medium"/);
-  assert.match(tall, /data-variant="preview-tall"/);
-  assert.doesNotMatch(tall, /data-variant="preview"/);
+  const card = renderToStaticMarkup(createElement(PreviewFigure, { figure: figure('count-speed'), context: figureContext(base), preview: { href: '/x', fit: 'card' } }));
+  assert.match(card, /data-variant="preview-medium"/);
+  assert.match(card, /data-variant="preview-tall"/);
+  assert.doesNotMatch(card, /data-variant="preview"/);
 });
 
 test('a tile map preview draws every tile with its code, sized to fit, and no focus stops', () => {
