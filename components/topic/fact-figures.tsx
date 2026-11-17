@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import {
   type FigurePreview,
+  type Quote,
   AreaMap,
   BarChart,
   CaveatList,
@@ -64,6 +65,12 @@ export type FigurePage = {
   asOf?: string;
   /** The topic's facts, so a claim check's evidence link lands on the right page. */
   facts: Pick<Fact, 'id' | 'supports'>[];
+  /**
+   * Every quote in the topic (`topicQuotes`), given to a panel: its list of
+   * quotes is the topic's whole collection, not one report's. A report's own
+   * page leaves it out and lists only its own.
+   */
+  quotes?: Quote[];
 };
 
 /**
@@ -135,6 +142,17 @@ export function FactFigure({ figure, context, page }: { figure: ComponentFigure;
     case 'estimateRange':
       return <EstimateRange {...estimateRangeProps(figure, context)} />;
     case 'quotes':
+      if (page.quotes && page.quotes.length > figure.quotes.length) {
+        return (
+          <QuoteBrowser
+            {...quoteBrowserProps(figure, context)}
+            title="Every quote on this topic"
+            description="Every quote collected for this topic, in date order. Pick a question to see the quotes that answer it."
+            quotes={page.quotes}
+            tagLabel="Question"
+          />
+        );
+      }
       return figure.quotes.length <= SIDE_BY_SIDE_QUOTES
         ? <QuoteComparison {...quoteComparisonProps(figure, context)} />
         : <QuoteBrowser {...quoteBrowserProps(figure, context)} />;

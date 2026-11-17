@@ -27,6 +27,7 @@ import {
   smallMultiplesProps,
   timelineProps,
   toValueFormat,
+  topicQuotes,
 } from './figure-props';
 import type { Fact, FigureKind, FigureOf } from './types';
 
@@ -296,4 +297,19 @@ test('small multiples keep panel highlights and own sources, and name each panel
   assert.deepEqual(props.panels[4].sources, [{ label: 'Fixture Ship Tracker', href: '#source-figure-examples-40', number: 40 }]);
   assert.equal(props.note, 'Our monthly means of the daily counts. Kerch Strait: The counter began in July 2026.');
   assert.deepEqual(props.sources?.map(s => s.number), [39, 40]);
+});
+
+test('a topic\'s quotes are every collection\'s, each tagged with its question and credited to its own report', () => {
+  const collections = fact.figures!.filter((f): f is FigureOf<'quotes'> => f.kind === 'quotes');
+  assert.ok(collections.length > 1, 'the fixture has more than one collection');
+  // A second report, citing its own sources, with one of the collections.
+  const other: Fact = { ...fact, id: 'other-report', figures: [collections[0]] };
+  const quotes = topicQuotes([fact, other], '2026-10-29');
+  const count = collections.reduce((n, f) => n + f.quotes.length, 0) + collections[0].quotes.length;
+  assert.equal(quotes.length, count);
+  assert.deepEqual([...new Set(quotes.map(q => q.tags?.[0]))], collections.map(f => f.question));
+  const others = quotes.filter(q => q.id?.startsWith('other-report--'));
+  assert.equal(others.length, collections[0].quotes.length);
+  // In a panel a source links to the source itself.
+  assert.match(others[0].sources![0].href!, /^https?:/);
 });

@@ -35,7 +35,7 @@ export function SlideChart({ slide, fit, titleHref, page, picked }: {
       if (isPreviewable(target)) return <PreviewFigure figure={target.figure} context={context} preview={preview} />;
       // A card shows the quotes its point rests on; the whole collection is a click away.
       if (fit === 'card' && target.figure.kind === 'quotes') {
-        return <CardQuotes title={target.figure.question} quotes={quoteBrowserProps(target.figure, context).quotes} picked={picked} />;
+        return <CardQuotes title={target.figure.question} quotes={quoteBrowserProps(target.figure, context).quotes} picked={picked} total={page?.quotes?.length} />;
       }
       return page ? <div className="sv-slide__figure"><FactFigure figure={target.figure} context={context} page={page} /></div> : null;
     }

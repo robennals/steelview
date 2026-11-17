@@ -846,3 +846,16 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   await expect(sheet.locator('.sv-quote-browser .sv-control__status')).toHaveText('Showing 6 of 6 quotes');
   await expect(sheet.locator('.sv-quote-browser input[type="search"]')).toHaveCount(1);
 });
+
+// us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and
+// research on whether rule changes move trust in results.
+test('a data panel lists every quote on its topic, which a reader can narrow to one question', async ({ page }) => {
+  await page.goto('/topics/us-vote-by-mail#data');
+  const row = page.locator('#fact-ballot-deadlines-and-counting-speed');
+  await row.locator('.sv-row__toggle').click(headCorner);
+  const quotes = row.locator('.sv-quote-browser');
+  await expect(quotes.locator('.sv-graph-heading')).toHaveText('Every quote on this topic');
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 5 of 5 quotes');
+  await quotes.getByRole('button', { name: /Watson v\. RNC/ }).click();
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 5 quotes');
+});
