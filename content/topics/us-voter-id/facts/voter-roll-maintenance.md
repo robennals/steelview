@@ -1426,12 +1426,12 @@ observationMarks:
   pew-not-fraud: {rows: ["Inaccurate or no longer valid"]}
   lists-contain-ineligible: {lines: ["Records removed"]}
   eric-cross-state-movers: {lines: ["Cross-state movers"], from: "2013", to: "2026"}
-  eric-reports-fell: {lines: ["Cross-state movers"], from: "2021", to: "2024"}
+  eric-reports-fell: {lines: ["Cross-state movers"], from: "2013", to: "2026"}
   bulk-matching-errs: {rows: ["Florida felon list, 2000", "Alabama non-citizens, 2024", "Texas SAVE check, 2025–26"]}
   nonresponse-largest: {lines: ["No notice reply, missed two federal elections", "Moved out of jurisdiction"], at: "2024"}
   ohio-notice-replies: {rows: ["Replied \"I have not moved\"", "Replied \"I have moved\""]}
   nvra-90-day-rule: {rows: ["Florida non-citizens, 2012", "Alabama non-citizens, 2024"]}
-  eric-departures: {lines: ["Members covered by reports"], from: "2022", to: "2024"}
+  eric-departures: {lines: ["Members covered by reports"], from: "2013", to: "2026"}
   litigation-driven-removals: {rows: ["Judicial Watch tally, 2025: over five million names removed after its lawsuits since 2017"]}
   bloated-claims-count-inactive: {rows: ["Judicial Watch, 2019: 378 counties above 100% registration", "Judicial Watch, October 2020: 353 counties with 1.8 million more registrants than eligible citizens"]}
   florida-2000-list: {rows: ["Florida felon list, 2000"]}
@@ -1522,9 +1522,9 @@ The Electronic Registration Information Center (ERIC), a members' compact of sta
 
 These are leads, not removals: members must still contact movers under federal and state law. [23](#source-voter-roll-maintenance-23) ERIC itself says "Illegal voting is exceedingly rare". [24](#source-voter-roll-maintenance-24)
 
-### Cross-state mover reports fell from about 3.5 million in 2021 to about 0.7 million in 2024 {#voter-roll-maintenance--eric-reports-fell}
+### Cross-state mover reports peaked at about 3.5 million in 2021, and have been about 0.7 million a year or fewer since 2024 {#voter-roll-maintenance--eric-reports-fell}
 
-Cross-state mover reports peaked in 2021 and fell steeply as members left; the members reading shows the drop. [23](#source-voter-roll-maintenance-23)
+Cross-state mover reports rose in most years from 2013, while membership grew, to a peak in 2021. They fell steeply as members left, and have stayed at about 0.7 million a year or fewer since 2024; the members reading shows the change in membership. [23](#source-voter-roll-maintenance-23)
 
 A cross-state match needs both states in the compact, so fewer members means fewer possible matches. ERIC does not say how much of the fall is due to departures rather than fewer moves.
 

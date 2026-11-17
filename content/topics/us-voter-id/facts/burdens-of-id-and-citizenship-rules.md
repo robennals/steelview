@@ -1258,7 +1258,7 @@ observationMarks:
   gao-larger-drops-young-new-black: {rows: ["GAO Kansas: Black vs white", "GAO Tennessee: Black vs white", "GAO Kansas: aged 18 vs 44–53", "GAO Tennessee: aged 18 vs 44–53", "GAO Kansas: newly registered vs 20+ years", "GAO Tennessee: newly registered vs 20+ years"]}
   mobilisation-may-offset: {rows: ["National panel: campaign contact with non-white voters"]}
   georgia-rejections-near-national: {lines: ["Georgia", "United States"], from: "2016", to: "2024"}
-  two-states-opposite: {lines: ["Texas", "Georgia"], from: "2018", to: "2022"}
+  two-states-opposite: {lines: ["Texas", "Georgia"], from: "2016", to: "2024"}
   arizona-eight-noncitizens: {rows: ["Found to be non-citizens who voted"]}
   who-ran-the-survey: {whole: true}
   2006-survey-not-comparable: {rows: ["No government photo ID of any kind", "Cannot readily reach proof of citizenship"]}
@@ -1296,7 +1296,7 @@ Georgia's line, high under signature matching in 2016 and 2018, has sat close to
 
 In a survey of county election offices, 32% said fewer mail ballots were rejected in 2022, though a plurality said the new verification had not reduced rejections. [33](#source-burdens-of-id-and-citizenship-rules-33)
 
-### From 2018 to 2022 Texas's rate rose and Georgia's fell, under their new ID-number rules {#burdens-of-id-and-citizenship-rules--two-states-opposite}
+### Under their 2021 ID-number rules, Texas's rate has been above its 2016 and 2018 rates, and Georgia's below {#burdens-of-id-and-citizenship-rules--two-states-opposite}
 
 Texas's number had to match whichever one was on the voter's registration record, and rejections rose; Georgia's replaced signature matching, and rejections fell. [16](#source-burdens-of-id-and-citizenship-rules-16) [33](#source-burdens-of-id-and-citizenship-rules-33) So an ID requirement's effect on rejections depends on its design and what it replaces. It is not evidence about polling-place photo ID.
 
