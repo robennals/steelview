@@ -314,14 +314,17 @@ test('on a phone, a viewpoint fits the card showing, with no empty space', async
   await page.goto(ASYLUM);
   const viewpoint = await openViewpoint(page, 'bar-and-remove');
   await expect(viewpoint.locator('.sv-chart').first()).toBeAttached();
-  const strip = viewpoint.locator('.sv-deck__strip');
   const slides = viewpoint.locator('.sv-deck__slide');
   const heights = new Set<number>();
   for (let i = 0; i < await slides.count(); i++) {
     if (i > 0) await viewpoint.locator('.sv-deck__next').click();
-    const height = await slides.nth(i).evaluate(el => Math.round(el.getBoundingClientRect().height));
-    heights.add(height);
-    await expect.poll(() => strip.evaluate(el => Math.round(el.getBoundingClientRect().height))).toBe(height);
+    // A card can grow as its chart draws, so the strip and the slide are measured together.
+    const gap = () => viewpoint.evaluate((el, n) => {
+      const height = (box: Element) => Math.round(box.getBoundingClientRect().height);
+      return height(el.querySelector('.sv-deck__strip')!) - height(el.querySelectorAll('.sv-deck__slide')[n]);
+    }, i);
+    await expect.poll(gap, { message: `card ${i + 1}` }).toBe(0);
+    heights.add(await slides.nth(i).evaluate(el => Math.round(el.getBoundingClientRect().height)));
   }
   expect(heights.size).toBeGreaterThan(1);
 });
