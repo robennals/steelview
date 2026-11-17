@@ -1086,7 +1086,7 @@ additionalSeries:
               - period: '2025'
                 value: 12396
   - id: refused-cohorts
-    title: 'Refused claims and later returns'
+    title: 'Asylum claims and later returns'
     subtitle: 'UK, main applicants by year of claim, 2007–2025, as at July 2026'
     description: >-
       Main applicants who claimed asylum in each year, followed up to July
@@ -2177,7 +2177,6 @@ observationMarks:
   home-office-says-rights-claims-stop-removals: {rows: ["Home Office"]}
   fewer-refused-recorded-leaving: {lines: ["Returns as a share of all claims", "Returns as a share of refused and withdrawn"], from: "2007", to: "2025"}
   unlawful-population-estimates: {rows: ["Greater London Authority, central estimate", "Greater London Authority, with UK-born children", "Pew, as first published", "Pew, revised March 2025"]}
-  about-half-of-refused-claimants-recorded-leaving: {lines: ["Returns as a share of refused"], from: "2015", to: "2021"}
   late-claims-not-human-rights-claims: {rows: ["Asylum claim", "Medico-legal report", "Modern slavery referral", "Rule 35 medical report", "Further submissions", "Judicial review", "Human rights or other rights-based application"]}
   most-issues-refused: {rows: ["No positive decision", "Positive decision or concession"]}
   article-8-reforms-cut-then-faded: {lines: ["Allowed on human-rights grounds only"], from: "2012", to: "2020"}
@@ -2263,10 +2262,6 @@ The government said 58,000 people had their asylum claim refused between June 20
 ### Since 2015, under one in seven claims and under a third of failed claims each year have ended in a recorded return {#removals-and-what-stops-them--fewer-refused-recorded-leaving}
 
 Of all main applicants who claimed asylum in each year, more than a quarter are recorded as returned for every year of claims from 2007 to 2013, and under one in seven for every year since 2015. Of those whose claims were refused or withdrawn, the share was more than half up to 2013, and under a third since 2015. [73](#source-removals-and-what-stops-them-73) Measured against refused claims alone, the share is higher: over two-thirds up to 2013, under half in every year from 2015 to 2021, and just over half for 2022. Claims from recent years are still working through appeals, and returns come later, so their share will rise. For small-boat arrivals the Home Office gives only a running total: 9,694 people who arrived by small boat between 2018 and June 2026 have been returned. [6](#source-removals-and-what-stops-them-6) Not being recorded as leaving is an upper bound on staying: the Migration Observatory notes that some people were later granted status or left without being recorded. [71](#source-removals-and-what-stops-them-71)
-
-### Fewer than half of those refused on 2015–2021 claims are recorded as leaving {#removals-and-what-stops-them--about-half-of-refused-claimants-recorded-leaving}
-
-Across claims made in 2010–2022, returns come to around half of refusals. [15](#source-removals-and-what-stops-them-15) The line starts near three-quarters, drops to about a third for 2017 and 2018, and recovers to a little over half by 2022. Later years are still working through decisions and appeals.
 
 ## Subtleties {#removals-and-what-stops-them--subtleties-cohort-share}
 
