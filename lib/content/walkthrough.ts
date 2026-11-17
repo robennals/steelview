@@ -12,6 +12,15 @@ import { factSlides, isPreviewable, previewTarget, slideGroups, type PreviewSlid
  */
 export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
 
+/**
+ * What a viewpoint is called on its topic page, and so wherever else it is
+ * listed: a slideshow's rows go by the short name, with the full one under it;
+ * the walkthrough rows by the full name.
+ */
+export function viewpointTitle(slug: string, viewpoint: Pick<Viewpoint, 'name' | 'shortName'>): string {
+  return SLIDESHOW_TOPICS.has(slug) ? viewpoint.shortName : viewpoint.name;
+}
+
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
   /** The section's heading: one claim in the argument. */

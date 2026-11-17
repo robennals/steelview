@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { chartAddress, reportChartPath, resolvePreviews, type PreviewSlide } from '@/lib/content/preview';
 import { previewPanel } from '@/lib/content/preview-panel';
+import { viewpointTitle } from '@/lib/content/walkthrough';
 import { topicPath, type Topic } from '@/lib/content/types';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { SlideChart } from '@/components/topic/slide-chart';
@@ -33,7 +34,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
           {topic.viewpoints.map((v, i) => (
             <li key={v.id}>
               <i className="sv-row__marker" style={{ background: `var(--sv-series-${(i % 8) + 1})` }} />
-              <span>{v.name}</span>
+              <span>{viewpointTitle(topic.slug, v)}</span>
             </li>
           ))}
         </ul>
