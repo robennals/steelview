@@ -732,7 +732,7 @@ figures:
 observationMarks:
   mail-below-in-person: {lines: ["Votes cast in person", "Votes cast by absentee or mail-in ballot"]}
   confidence-follows-power: {lines: ["Republicans", "Democrats"]}
-  count-length-not-separated: {lines: ["Republicans"], from: "2016", to: "2020"}
+  count-length-not-separated: {lines: ["Republicans"], at: "2020"}
   mail-claims-2020: {lines: ["Republicans"], from: "2018", to: "2020"}
   not-at-all-confident-grew: {lines: ["All adults"]}
   mail-confidence-by-party: {lines: ["Republican candidate supporters", "Democratic candidate supporters"]}
@@ -797,7 +797,7 @@ A study of 2016 finds the winner effect outweighed pre-election "rigged" messagi
 
 ### Republican trust fell to 22% after the 2020 count, but the series cannot separate that from losing {#confidence-and-disputed-results--count-length-not-separated}
 
-Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Because the same voters also lost, these series cannot show whether a long count or a changing lead lowers confidence on its own; see What we don't know yet.
+Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Across the whole chart, Republican confidence was high after the party's wins in 2016 and 2024 and low after its losses in 2012 and 2020. Because the same voters also lost in 2020, these series cannot show whether a long count or a changing lead lowers confidence on its own; see What we don't know yet.
 
 ## Observations {#confidence-and-disputed-results--observations-gallup-honesty-total}
 

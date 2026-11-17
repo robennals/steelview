@@ -8,28 +8,32 @@ Voting should normally happen in a polling booth, where no one can see how you v
 
 ### The secret ballot protects voters from being watched
 
-The secret ballot was brought in to stop vote buying. Before it, [a vote buyer could hand a bribed voter a ballot and watch him cast it](#fact-secret-ballot-and-postal-voting-abroad/secret-ballot-against-watching). Secrecy worked. [In Chile, landlords lost their sway over how local people voted once ballots became secret](#fact-secret-ballot-and-postal-voting-abroad/chile-secret-ballot-effect).
+Reformers brought in the secret ballot to stop vote buying. Before it, [a vote buyer could hand a bribed voter a ballot and watch him cast it](#fact-secret-ballot-and-postal-voting-abroad/secret-ballot-against-watching). Secrecy worked. [In Chile, landlords lost their sway over how local people voted once ballots became secret](#fact-secret-ballot-and-postal-voting-abroad/chile-secret-ballot-effect).
 
 ### A ballot filled in at home is not secret in the same way
 
 A kitchen table has no booth. [In the best national survey, nearly a quarter of mail voters had someone else in the room](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone). [Mail voters were also more likely to say their choices were not kept secret](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-doubt-secrecy).
 
-While Germany's top court upheld postal voting, [it said postal voting reduces public control of how the vote is cast](#fact-secret-ballot-and-postal-voting-abroad/german-court-reduced-control). [Honest elections must also be seen to be honest](#principle-verifiably-honest-elections). That needs a vote that is both free and seen to be free.
+While Germany's top court upheld postal voting, [it said postal voting reduces public control of how the vote is cast](#fact-secret-ballot-and-postal-voting-abroad/german-court-reduced-control). [Honest elections must also be seen to be honest](#principle-verifiably-honest-elections). A vote cast where others can watch is harder to see as free.
 
-### Most elections overturned in the Heritage fraud list involved mail ballots
+### Mail ballots are the biggest fraud risk, and most known overturned elections involved them
 
-[Most elections thrown out for fraud in the Heritage Foundation's list involved absentee ballots](#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee). A bipartisan commission called them ["the largest source of potential voter fraud"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source).
+[A bipartisan commission called absentee ballots "the largest source of potential voter fraud"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-largest-source). In the Heritage Foundation's list of fraud cases, [most elections thrown out for fraud involved absentee ballots](#fact-absentee-fraud-and-manipulation-of-the-count/most-voidings-absentee).
 
-[Known schemes were local and caught, and most were rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun). They are also [few against tens of millions of mail ballots](#fact-absentee-fraud-and-manipulation-of-the-count/few-cases-against-ballots-cast). While that is true, caught fraud is only the part we can see. [In Cobb County, Georgia, an envelope signed by a spouse passed](#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed). The voter had filled in that ballot, but it shows a check can miss a wrong signature. No one knows how much gets through, which calls for caution, not comfort.
+While [known schemes were local and caught, and most were rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun), caught fraud is only the part we can see. [Checks can miss a wrong signature: in Cobb County, Georgia, an envelope signed by a spouse passed](#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed). The voter had filled in that ballot. [The known cases are few against tens of millions of mail ballots](#fact-absentee-fraud-and-manipulation-of-the-count/few-cases-against-ballots-cast), but no one knows how much gets through. That calls for caution, not comfort.
 
-### Few countries let every voter vote by post from home
+### Few countries let everyone vote by post, and Britain found fraud when it did
 
-[Only 11 countries let every voter vote by post from home](#fact-secret-ballot-and-postal-voting-abroad/universal-postal-voting-is-rare). [France banned postal voting in 1975 because of serious fraud](#fact-secret-ballot-and-postal-voting-abroad/france-abolished-over-fraud). [After Britain let anyone vote by post, a court found thousands of postal votes falsified](#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand). While Britain kept postal voting, [it added identity checks and banned campaigners from handling postal votes](#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks).
+[Only 11 countries let every voter vote by post from home](#fact-secret-ballot-and-postal-voting-abroad/universal-postal-voting-is-rare). [After Britain let anyone vote by post, a court found thousands of postal votes falsified](#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand). [France banned postal voting in 1975 because of serious fraud](#fact-secret-ballot-and-postal-voting-abroad/france-abolished-over-fraud).
 
-### Mailing everyone a ballot raises turnout only a little
+While [Britain kept postal voting for all, adding identity checks and banning campaigners from handling postal votes](#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks), those checks came only after the fraud had been found.
 
-[Sending every voter a ballot raised turnout only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly). [Voters trust the mail count less than the in-person count](#fact-confidence-and-disputed-results/mail-below-in-person).
+### Mailing everyone a ballot adds little turnout, and voters trust mail counts less
 
-[Voters of the president's party were usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power). While no rule can fix that alone, [results the losers can accept](#principle-results-the-losers-can-accept) are easier to build on voting both sides trust.
+[Sending every voter a ballot raised turnout only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly). And [in every Pew poll since 2020, fewer voters trusted the mail count than the in-person count](#fact-confidence-and-disputed-results/mail-below-in-person). So mailing everyone a ballot gains little, using a method fewer voters trust.
 
-Polling booths should be the default, with weeks of early voting. [Voters with disabilities rely on mail ballots more](#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more), so anyone with a reason should get one, and no one else.
+While [voters of the president's party are usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power), [results the losers can accept](#principle-results-the-losers-can-accept) are still easier to build on a way of voting that both sides trust.
+
+### So polling booths should be the default, with mail for anyone who needs it
+
+Polling booths should be the default, with weeks of early voting. [Voters with disabilities rely on mail ballots more than other voters](#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more). So anyone with a reason to vote by mail should get a mail ballot, and no one else.
