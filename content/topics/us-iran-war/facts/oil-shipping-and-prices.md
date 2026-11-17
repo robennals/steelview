@@ -850,8 +850,8 @@ figures:
 movedAnchors:
   tanker-war: hormuz-transits
 observationMarks:
-  pump-prices-up-by-half: {lines: ["US regular gasoline, monthly average"], from: "2026-02", to: "2026-05", at: "2026-05"}
-  hormuz-traffic-near-zero: {lines: ["All ships"], from: "2026-02", to: "2026-03", at: "2026-03"}
+  pump-prices-up-by-half: {lines: ["US regular gasoline, monthly average"], from: "2026-02", to: "2026-10", at: "2026-05"}
+  hormuz-traffic-near-zero: {lines: ["All ships"], from: "2026-02", to: "2026-10", at: "2026-03"}
   below-earlier-real-peaks: {lines: ["Real imported crude price"], from: "1981-01", to: "2026-10", at: "2026-10"}
   us-also-destroying-vessels: {rows: ["5 Oct 2026", "10 Oct 2026"]}
   cbo-inflation-attribution: {rows: ["PCE inflation, first quarter of 2027", "Core PCE inflation, first quarter of 2027"]}
@@ -921,7 +921,7 @@ BLS does not attribute the rise, and the Federal Reserve's September statement c
 
 ## Observations {#oil-shipping-and-prices--observations-hormuz-transits}
 
-### Tracked traffic through Hormuz fell to almost nothing within days {#oil-shipping-and-prices--hormuz-traffic-near-zero}
+### Tracked traffic through Hormuz fell to almost nothing within days, and has stayed far below normal {#oil-shipping-and-prices--hormuz-traffic-near-zero}
 
 PortWatch counted 57 ships on the day of the first strikes and none four days later. [25](#source-oil-shipping-and-prices-25)
 
