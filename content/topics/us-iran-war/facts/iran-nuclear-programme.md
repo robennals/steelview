@@ -1011,9 +1011,9 @@ figures:
 observationMarks:
   sixty-is-not-ninety: {rows: ["From 60% to weapons grade", "About 90%"]}
   only-non-weapon-state-at-60: {rows: ["60%"]}
-  sixty-percent-growth: {lines: ["60% stock (IAEA estimate)"], from: "2024-10-26", to: "2025-06-13"}
+  sixty-percent-growth: {lines: ["60% stock (IAEA estimate)"], from: "2021-05-22", to: "2025-06-13"}
   stock-unaccounted-for: {rows: ["Strikes on Iran's nuclear sites; verification stops and inspectors leave", "Inspections at 7 of 13 facilities not struck in 2025, none of the 8 struck", "No information on the size, composition or location of the enriched stock"]}
-  deal-era-compliance: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2017-02-18", to: "2019-05-20"}
+  deal-era-compliance: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2017-02-18", to: "2025-06-13"}
   breaches-after-us-exit: {lines: ["Enriched stock (IAEA)", "Limit under the 2015 deal"], from: "2018-05-14", to: "2019-07-01", at: "2019-07-01"}
   board-referral-with-abstentions: {rows: ["GOV/2026/40, 10 June 2026", "GOV/2026/61, 9 September 2026 (referral to the UN)"]}
   close-to-weapons-grade-before-strikes: {rows: ["\"Probably less than one week\""]}
@@ -1037,9 +1037,11 @@ observationMarks:
 ---
 ## Observations {#iran-nuclear-programme--observations-total-stock}
 
-### From February 2017 to May 2019 the stock stayed under the deal's limit {#iran-nuclear-programme--deal-era-compliance}
+### The stock stayed under the deal's limit until about a year after the US left, then rose far above it {#iran-nuclear-programme--deal-era-compliance}
 
 Every IAEA report from February 2017 to May 2019 found the stock under the 2015 deal's limit and enrichment no higher than 3.67%. [17](#source-iran-nuclear-programme-17) [26](#source-iran-nuclear-programme-26) In August 2018 the IAEA said it had made complementary access visits "to all the sites and locations in Iran which it needed to visit". [23](#source-iran-nuclear-programme-23)
+
+In July 2019, about a year after the US left the deal, the IAEA found the stock over the limit. [15](#source-iran-nuclear-programme-15) From then on it rose far above it (chart).
 
 In 2016 Iran slightly exceeded the deal's cap on heavy water, a material that is not enriched uranium, and was back within the limit by December. [9](#source-iran-nuclear-programme-9)
 
@@ -1059,7 +1061,7 @@ From February 2021 the IAEA lost access to its monitoring data, and from May 202
 
 ## Observations {#iran-nuclear-programme--observations-sixty-percent}
 
-### The 60% stock more than doubled in under eight months before the strikes {#iran-nuclear-programme--sixty-percent-growth}
+### Iran built its 60% stock slowly for three years, then more than doubled it before the 2025 strikes {#iran-nuclear-programme--sixty-percent-growth}
 
 Iran began enriching to 60% in April 2021 and built the stock slowly for three years. [34](#source-iran-nuclear-programme-34) It then more than doubled, from 182.3 kg in October 2024 to 440.9 kg on the day the strikes began. [48](#source-iran-nuclear-programme-48) [50](#source-iran-nuclear-programme-50)
 

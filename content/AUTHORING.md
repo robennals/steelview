@@ -56,7 +56,7 @@ collection:
 | --- | --- |
 | **Data** | A collection of datasets and artifacts exploring one aspect of the topic, with observations, context, methods and sources. |
 | **Observation** | An addressable finding about a graph or dataset, explaining what to notice and why. Usually the target of a viewpoint’s factual citation. |
-| **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then a walkthrough of headed steps, each one claim shown by one chart, whose claims add up to its title, in plain language, citing inline the observations it rests on and concedes. |
+| **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then a slideshow of cards, each one point shown by at most one visual, whose points add up to its title, in plain language, citing inline the observations it rests on and concedes. |
 | **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A tension at the heart of a disagreement between viewpoints: principles in conflict, different predictions, or missing data. |
 
@@ -1520,10 +1520,7 @@ point of the argument with the evidence for it. A card is three things:
 
 That combination is the target: a reader who reads only headings and lines,
 card after card, gets the whole argument, and sees on each card the data that
-backs it. The slideshow is live for the topics in `SLIDESHOW_TOPICS`
-(`lib/content/walkthrough.ts`), so far `uk-asylum`; the others still show the
-older step-by-step walkthrough, and are rewritten to this target as they are
-revised. The rest of the section, under "More", is the evidence a doubting
+backs it. The rest of the section, under "More", is the evidence a doubting
 reader wants: the further facts, and any concession with the answer to it, in
 one or two short paragraphs, rarely more than about 80 words.
 
@@ -2218,7 +2215,7 @@ them.
 | Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
 | Series and comparison prose (advisory): a figure in a series' or comparison's title, description, notes or labels is quoted like a component figure's | `scripts/check-figures.ts`, `lib/content/figure-text.ts` (`chartProse`) |
 | Chart values (advisory): a qualified value by its `asPublished`, both ends of a range, against any of the item's sources | `scripts/check-figures.ts`, `lib/content/figure-text.ts` |
-| A slideshow viewpoint shows each graph or collection of quotes on one card only (M4) | `lib/content/walkthrough.ts` (`repeatedCardVisualErrors`), run by `pnpm check:integrity` |
+| A viewpoint shows each graph or collection of quotes on one card only (M4) | `lib/content/walkthrough.ts` (`repeatedCardVisualErrors`), run by `pnpm check:integrity` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

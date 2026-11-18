@@ -6,21 +6,6 @@ import { componentFigure, factPath, figureLabel, isComponentFigure } from './typ
 import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
 import { factSlides, isPreviewable, previewTarget, slideGroups, type PreviewSlide } from './preview';
 
-/**
- * The topics whose viewpoints are shown as slideshows, a trial of a simpler
- * layout before it replaces the step-and-chart walkthrough everywhere.
- */
-export const SLIDESHOW_TOPICS = new Set(['uk-asylum']);
-
-/**
- * What a viewpoint is called on its topic page, and so wherever else it is
- * listed: a slideshow's rows go by the short name, with the full one under it;
- * the walkthrough rows by the full name.
- */
-export function viewpointTitle(slug: string, viewpoint: Pick<Viewpoint, 'name' | 'shortName'>): string {
-  return SLIDESHOW_TOPICS.has(slug) ? viewpoint.shortName : viewpoint.name;
-}
-
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
   /** The section's heading: one claim in the argument. */
@@ -236,11 +221,8 @@ function splitFirstParagraph(markdown: string): [string, string] {
  * M4 — each card of a slideshow viewpoint makes its own point with its own
  * graph or quotes. One shown on two cards puts the same evidence in front of
  * the reader twice as if it were new; two points that need it are one point.
- * Checked for the topics shown as slideshows: the walkthrough rows of the
- * others still repeat some charts.
  */
 export function repeatedCardVisualErrors(topic: Topic): string[] {
-  if (!SLIDESHOW_TOPICS.has(topic.slug)) return [];
   return topic.viewpoints.flatMap(viewpoint => {
     const shown = new Map<string, string>();
     return viewpointWalkthrough(topic, viewpoint).steps.flatMap(({ heading, cardVisual }) => {

@@ -164,11 +164,11 @@ test('a walkthrough slide draws a library figure only when given its page', asyn
   assert.equal(renderToStaticMarkup(createElement(SlideChart, { slide })), '');
 });
 
-test('a walkthrough slide draws a graph-like figure compactly, and a text figure only when given its page', () => {
+test('a slide draws a graph-like figure compactly, and a text figure only when given its page', () => {
   const topic = figureExamplesTopic();
   const page = { slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts };
   const slideOf = (chart: string) => ({ fact, chart, label: chart, href: '/x' });
-  assert.match(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('wa-by-race'), fit: 'tall', page })), /<figure[^>]*data-preview[\s\S]*sv-chart__preview/);
+  assert.match(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('wa-by-race'), fit: 'card', page })), /<figure[^>]*data-preview[\s\S]*sv-chart__preview/);
   assert.match(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('federal-laws'), page })), /sv-slide__figure[\s\S]*<table/);
   assert.equal(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('federal-laws') })), '');
   assert.equal(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('no-such-chart'), page })), '');
@@ -196,7 +196,7 @@ for (const figure of libraryFigures) {
     assert.ok(slide.label.length > 0);
     assert.equal(slide.href, `/topics/${observedTopic.slug}/facts/${observed.id}#${figureDomId(observed, id)}`);
     assert.match(renderToStaticMarkup(createElement(ChartThumb, { fact: observed, chart: id })), /^<svg class="sv-thumb"/);
-    assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, fit: 'tall', page: observedPage })), /<figure/);
+    assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, fit: 'card', page: observedPage })), /<figure/);
   });
 
   test(`a viewpoint step citing an observation on a ${kind} (${id}) shows it`, () => {

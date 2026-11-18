@@ -1226,7 +1226,7 @@ figures:
 observationMarks:
   photo-id-majorities: {lines: ["Rep/lean Rep", "Dem/lean Dem"], at: "2025-08"}
   photo-id-across-races: {rows: ["Every racial and ethnic group (Pew, 2025)"]}
-  democrats-moved-toward-id: {lines: ["Dem/lean Dem"], from: "2021-04", to: "2025-08"}
+  democrats-moved-toward-id: {lines: ["Dem/lean Dem"], from: "2018-10", to: "2025-08"}
   proof-of-citizenship-support: {rows: ["All adults"]}
   studies-find-no-effect: {rows: ["Stewart, Ansolabehere and Persily (2016)", "Cantoni and Pons (2019; QJE 2021)"]}
   milyo-finds-effect: {rows: ["Milyo (2025, working paper)"]}
@@ -1238,9 +1238,9 @@ observationMarks:
   shared-goals: {rows: ["No eligible voters are prevented from voting", "No ineligible voters are permitted to vote"]}
   eligibility-confidence-2026: {rows: ["Noncitizens stopped — Republican supporters", "Qualified voters can vote — Republican supporters", "Qualified voters can vote — Democratic supporters"]}
   sb202-self-reported: {rows: ["Republicans", "Democrats"]}
-  republicans-moved-toward-early-voting: {lines: ["Rep/lean Rep"], from: "2024-01", to: "2025-08"}
+  republicans-moved-toward-early-voting: {lines: ["Rep/lean Rep"], from: "2021-04", to: "2025-08"}
   overlap-not-published: {lines: ["All adults"], at: "2025-08"}
-  georgia-rebound: {lines: ["Republicans", "Democrats"], from: "2021", to: "2022"}
+  georgia-rebound: {lines: ["Republicans", "Democrats"], from: "2020", to: "2022"}
   exceptions-2008-2020: {lines: ["Republicans", "Democrats"], from: "2008", to: "2020"}
   honesty-long-run: {lines: ["US adults"], at: "2016"}
   gallup-policy-trend: {lines: ["Republicans", "Democrats"]}
@@ -1263,9 +1263,9 @@ Every Pew reading since 2018 shows large majorities of both parties in favour of
 
 MIT's post-election survey of voters finds Republican support "nearly unanimous" (92.4% in 2024) and Democratic support rebounding after a dip. [10](#source-opinion-and-confidence-in-elections-10)
 
-### Democratic support for photo ID has risen since 2021 {#opinion-and-confidence-in-elections--democrats-moved-toward-id}
+### Democratic support for photo ID is higher than when Pew first asked in 2018 {#opinion-and-confidence-in-elections--democrats-moved-toward-id}
 
-In Pew's series, Democratic support was flat at 61% from 2021 to 2023 and then rose in 2024 and 2025 (chart). [3](#source-opinion-and-confidence-in-elections-3) [1](#source-opinion-and-confidence-in-elections-1) Gallup's Democrats dipped in 2022 and then rose 14 points by 2024. [6](#source-opinion-and-confidence-in-elections-6) [5](#source-opinion-and-confidence-in-elections-5)
+In Pew's series, Democratic support dipped slightly from 2018 to 2021, was flat at 61% from 2021 to 2023, and then rose in 2024 and 2025 to its highest reading (chart). [3](#source-opinion-and-confidence-in-elections-3) [1](#source-opinion-and-confidence-in-elections-1) Gallup's Democrats dipped in 2022 and then rose 14 points by 2024. [6](#source-opinion-and-confidence-in-elections-6) [5](#source-opinion-and-confidence-in-elections-5)
 
 Republican support stayed in the 90s throughout. The rise came while photo ID was being argued over in Congress and the states; the surveys do not establish why it happened.
 
@@ -1287,9 +1287,9 @@ Pew finds at least seven in ten adults in each racial and ethnic group it report
 
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-early-voting}
 
-### Republican support for early voting rose in 2025 {#opinion-and-confidence-in-elections--republicans-moved-toward-early-voting}
+### Republican support for early voting has risen since Pew first asked in 2021 {#opinion-and-confidence-in-elections--republicans-moved-toward-early-voting}
 
-In Pew's series, Republican support for two weeks of early in-person voting was nearly flat from 2021 to January 2024, then rose in August 2025 (chart). [1](#source-opinion-and-confidence-in-elections-1)
+In Pew's series, Republican support for two weeks of early in-person voting was nearly flat from April 2021 to January 2024, then rose in August 2025 (chart). [1](#source-opinion-and-confidence-in-elections-1)
 
 Gallup's differently worded item runs the other way over a longer period: Republican support fell between 2016 and 2024 while Democrats' stayed high (Gallup chart below). [5](#source-opinion-and-confidence-in-elections-5) [6](#source-opinion-and-confidence-in-elections-6) Read together, the two series show Republican support falling after 2016 and partly recovering by 2025.
 

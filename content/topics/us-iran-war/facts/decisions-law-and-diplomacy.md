@@ -1325,7 +1325,7 @@ figures:
       - { date: "2026-10-28", title: "AP: allies told to prepare for renewed action and Iranian retaliation", description: "AP's diplomats say the President has made no final decision.", category: "us", source: 49 }
 observationMarks:
   votes-all-to-end-the-war: {rows: ["Senate: S.J.Res. 104", "House: H.Con.Res. 38", "Senate: S.J.Res. 118", "Senate: S.J.Res. 116", "Senate: S.J.Res. 123", "House: H.Con.Res. 40", "Senate: S.J.Res. 114", "Senate: S.J.Res. 184", "Senate: S.J.Res. 163", "House: H.Con.Res. 75", "Senate: S.J.Res. 185 (discharge)", "House: H.Con.Res. 86", "Senate: S.J.Res. 172", "Senate: H.Con.Res. 86", "Senate: S.J.Res. 185 (proceed)", "House: H.Con.Res. 89", "Senate: S.J.Res. 180", "Senate: S.J.Res. 181", "House: H.Con.Res. 93", "Senate: H.Con.Res. 89"]}
-  house-passed-three-resolutions: {lines: ["Yes (end the war)", "No"], from: "2026-06-03", to: "2026-09-15"}
+  house-passed-three-resolutions: {lines: ["Yes (end the war)", "No"], from: "2026-03-05", to: "2026-09-15"}
   concurrent-resolutions-not-binding: {rows: ["Iran, 2026"]}
   senate-adopted-one-resolution: {lines: ["Yes (end the war)", "No"], at: "2026-06-23"}
   majority-disapproves: {lines: ["All adults"], from: "2026-03", to: "2026-10", at: "2026-10"}
@@ -1366,7 +1366,7 @@ observationMarks:
 ---
 ## Observations {#decisions-law-and-diplomacy--observations-house-votes}
 
-### A House majority voted to end the war three times {#decisions-law-and-diplomacy--house-passed-three-resolutions}
+### The House narrowly rejected the first three resolutions to end the war, then passed the next three {#decisions-law-and-diplomacy--house-passed-three-resolutions}
 
 The House rejected the first three resolutions by margins of seven votes or fewer, including a tie, then adopted the next three, from June to September (chart). [1](#source-decisions-law-and-diplomacy-1) [3](#source-decisions-law-and-diplomacy-3) [6](#source-decisions-law-and-diplomacy-6)
 

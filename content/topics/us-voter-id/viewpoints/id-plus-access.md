@@ -6,34 +6,38 @@ order: 4
 ---
 Democracy works only if the losing side accepts defeat and waits for the next election. It will do that only if it trusts the result. That is why [results the losers can accept](#principle-results-the-losers-can-accept) matter more than any one rule.
 
-### Americans are losing trust in election results
+### Trust in the count mostly follows which party holds power
 
-[Trust in the national count has mostly followed the party in power](#fact-opinion-and-confidence-in-elections/confidence-follows-power), and [the gap between the parties hit a record 56 points in 2024](#fact-opinion-and-confidence-in-elections/gallup-gap-record-2024). [After each presidential election, the winning side grows more confident and the losing side less](#fact-opinion-and-confidence-in-elections/post-election-winner-swing). [The share of Americans with no confidence at all has roughly tripled in 20 years](#fact-opinion-and-confidence-in-elections/no-confidence-tripled).
+[Trust in the national count has mostly followed the party in power](#fact-opinion-and-confidence-in-elections/confidence-follows-power). [In 2024 the gap between the parties hit a record 56 points](#fact-opinion-and-confidence-in-elections/gallup-gap-record-2024). A side that distrusts the count may refuse to accept a defeat.
 
-### Each side doubts a different safeguard
+[After each presidential election, the winning side grows more confident and the losing side less](#fact-opinion-and-confidence-in-elections/post-election-winner-swing). [The share of Americans with no confidence at all has roughly tripled in 20 years](#fact-opinion-and-confidence-in-elections/no-confidence-tripled).
 
-[Republicans doubt non-citizens will be stopped, and Democrats are less sure than Republicans that every eligible voter will be able to vote](#fact-opinion-and-confidence-in-elections/eligibility-confidence-2026). [Republicans increasingly worry that ineligible people will vote](#fact-opinion-and-confidence-in-elections/different-fears). Yet [at least 85% of Americans call each goal important](#fact-opinion-and-confidence-in-elections/shared-goals). A rule that answers one fear and ignores the other gives half the country a reason to reject a defeat.
+### Each side fears a different failure, but nearly everyone wants both prevented
+
+[Republicans doubt non-citizens will be stopped](#fact-opinion-and-confidence-in-elections/eligibility-confidence-2026). [Democrats are less sure than Republicans that every eligible voter can vote](#fact-opinion-and-confidence-in-elections/eligibility-confidence-2026). Yet [at least 85% of Americans call each goal important](#fact-opinion-and-confidence-in-elections/shared-goals).
+
+[Republicans have grown more likely to expect ineligible people to vote](#fact-opinion-and-confidence-in-elections/different-fears). A rule that answers one fear and ignores the other gives half the country a reason to reject a defeat.
 
 ### Rules passed by one side lower the other side's trust
 
-In Georgia, [most Republicans said the 2021 election law raised their trust, while the largest group of Democrats said it lowered theirs](#fact-opinion-and-confidence-in-elections/sb202-self-reported). [Voters trust results less when they oppose the rules used, especially for voter ID](#fact-opinion-and-confidence-in-elections/procedures-they-oppose).
+In Georgia, [most Republicans said the 2021 election law raised their trust](#fact-opinion-and-confidence-in-elections/sb202-self-reported). [The largest group of Democrats said it lowered theirs](#fact-opinion-and-confidence-in-elections/sb202-self-reported). [Voters trust results less when they oppose the rules used, especially for voter ID](#fact-opinion-and-confidence-in-elections/procedures-they-oppose).
 
-Each party's national bill would do the same on a bigger scale. [One would require proof of citizenship and photo ID](#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions). [The other would have required early voting and made ID states accept alternatives](#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions). [Both stalled in the Senate, the Democrats' bill at 49 votes and a photo-ID version of the Republicans' at 52, with 60 needed](#fact-federal-and-state-power-over-voting-rules/national-bills-stalled).
+Each party's national bill would do the same on a bigger scale. [One would require proof of citizenship and photo ID](#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions). [The other would have required early voting and made ID states accept alternatives](#fact-federal-and-state-power-over-voting-rules/freedom-to-vote-act-provisions). [Both stalled in the Senate short of the 60 votes needed](#fact-federal-and-state-power-over-voting-rules/national-bills-stalled).
 
-### Large majorities in both parties back photo ID
+### Most Americans back both photo ID and early voting
 
-[Large majorities in both parties support photo ID](#fact-opinion-and-confidence-in-elections/photo-id-majorities), and [Democratic support has grown since 2021](#fact-opinion-and-confidence-in-elections/democrats-moved-toward-id). [Republican support for two weeks of early voting rose in 2025](#fact-opinion-and-confidence-in-elections/republicans-moved-toward-early-voting). While no poll publishes how many people back both, [83% of adults back photo ID](#fact-opinion-and-confidence-in-elections/photo-id-83-percent) and [80% back two weeks of early voting](#fact-opinion-and-confidence-in-elections/overlap-not-published), so most people must.
+[83% of adults back photo ID](#fact-opinion-and-confidence-in-elections/photo-id-83-percent), and [80% back two weeks of early voting](#fact-opinion-and-confidence-in-elections/overlap-not-published). No poll publishes how many back both, but with shares that high, most people must.
 
-A commission led by Democrat Jimmy Carter and Republican James Baker [paired photo ID with free cards](#fact-voter-id-rules-in-the-us-and-abroad/carter-baker-bargain). Carter [called Georgia's 2005 law a poll tax because voters had to pay](#fact-voter-id-rules-in-the-us-and-abroad/carter-baker-split). [Georgia now gives the card free](#fact-voter-id-rules-in-the-us-and-abroad/strict-states-exceptions).
+[Large majorities in both parties support photo ID](#fact-opinion-and-confidence-in-elections/photo-id-majorities). [Democratic support is higher than when Pew first asked in 2018](#fact-opinion-and-confidence-in-elections/democrats-moved-toward-id). [Republican support for two weeks of early voting has risen since Pew first asked in 2021](#fact-opinion-and-confidence-in-elections/republicans-moved-toward-early-voting).
 
-### Most strict photo-ID states already let everyone vote early
+### Strict ID and easy voting can work together, as most strict-ID states show
 
-[Eight of the 10 strict photo-ID states also let everyone vote early](#fact-voter-id-rules-in-the-us-and-abroad/strict-states-early-voting), though [two offer no early voting for all voters](#fact-voter-id-rules-in-the-us-and-abroad/strict-states-without-early-voting). Canada shows a fallback: [a voter without ID may vote if a voter from the same polling station vouches for them](#fact-voter-id-rules-in-the-us-and-abroad/canada-vouching).
+[Eight of the 10 strict photo-ID states also let everyone vote early, starting two to four weeks before Election Day](#fact-voter-id-rules-in-the-us-and-abroad/strict-states-early-voting). In those states, voters must show photo ID but have weeks in which to vote.
 
-How an ID rule is written matters. [Georgia's rejected mail ballots have been below their 2016 and 2018 rates since it replaced signature checks with an ID number](#fact-burdens-of-id-and-citizenship-rules/georgia-rejections-near-national). But [rejections rose in Texas under its rule, which had to match the voter's registration record](#fact-burdens-of-id-and-citizenship-rules/two-states-opposite).
+[Two strict states offer no early voting for all voters](#fact-voter-id-rules-in-the-us-and-abroad/strict-states-without-early-voting). How an ID rule is written matters too. [Georgia's rejected mail ballots have been below their 2016 and 2018 rates since it replaced signature checks with an ID number](#fact-burdens-of-id-and-citizenship-rules/georgia-rejections-near-national). But [Texas's rejections rose under its rule, which had to match the voter's registration record](#fact-burdens-of-id-and-citizenship-rules/two-states-opposite).
 
-### Both parties should pass free ID and early voting together
+### So both parties should pass free ID and early voting together
 
-Congress, or states one by one, should pass the two together: free photo ID, at least two weeks of early voting, and a sworn statement for those without ID.
+Congress, or states one by one, should pass the two together. That means free photo ID, at least two weeks of early voting, and a sworn statement for those without ID. Passed by both parties, this gives [every citizen an equal voice](#principle-an-equal-voice-for-every-citizen).
 
-While trust still rises with winning, as when [Georgia Republicans' trust jumped from 28% to 70% in 2022](#fact-opinion-and-confidence-in-elections/georgia-rebound), and [studies disagree on whether ID itself raises trust](#fact-opinion-and-confidence-in-elections/studies-disagree), the aim is narrower: to remove the losers' complaint about unfair rules. Passed by both parties, this gives [every citizen an equal voice](#principle-an-equal-voice-for-every-citizen) and a result both sides can accept.
+A commission led by Democrat Jimmy Carter and Republican James Baker [paired photo ID with free cards](#fact-voter-id-rules-in-the-us-and-abroad/carter-baker-bargain). Trust will still rise and fall with winning: [Georgia Republicans' trust rose from 26% after 2020 to 70% in 2022](#fact-opinion-and-confidence-in-elections/georgia-rebound). And [studies disagree on whether ID itself raises trust](#fact-opinion-and-confidence-in-elections/studies-disagree). While no rule can end distrust, this one removes the losers' complaint that the rules were unfair.

@@ -10,6 +10,8 @@ import { headCorner, openDataRow, openTab, openViewpoint } from './topic-rows';
 
 const TOPIC = '/topics/uk-immigration';
 const DATA = `${TOPIC}#data`;
+/** Its viewpoints' content has settled, so tests of how a viewpoint behaves use it. */
+const ASYLUM = '/topics/uk-asylum';
 const longRun = 'UK Migration and Population Over the Long Run';
 
 /** Put a scrolling box, at its own top, at the top of the screen, and the mouse over it. */
@@ -26,16 +28,6 @@ async function hoverAtTop(page: Page, box: Locator) {
   }).toPass();
   const { x, y, width } = (await box.boundingBox())!;
   await page.mouse.move(x + width / 2, y + 40);
-}
-
-/** A viewpoint opened with its figures loaded. These depend on us-iran-war's first viewpoint having long tables. */
-async function openFigures(page: Page) {
-  await page.goto('/topics/us-iran-war');
-  const viewpoint = page.locator('.sv-row--viewpoint').first();
-  await viewpoint.locator('.sv-row__toggle').click(headCorner);
-  const figures = viewpoint.locator('.sv-walk__chart .sv-slide__figure');
-  await expect(figures.first()).toBeAttached();
-  return { viewpoint, figures };
 }
 
 /** How far `below` starts under `above`, measured at one moment as a row still opening moves both. */
@@ -106,18 +98,6 @@ test('the tabs stay on screen, and a new tab starts at its top', async ({ page }
   await expect.poll(() => tabs.evaluate(el => Math.abs(el.getBoundingClientRect().top))).toBeLessThan(1);
 });
 
-test('a viewpoint step\'s chart draws the reading it cites, with no switch, as a click opens the full chart', async ({ page }) => {
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'economic-cost');
-  const step = viewpoint.locator('.sv-walk__slide').first();
-  await expect(step.locator('.sv-chart__svg:visible').first()).toHaveAttribute('aria-label', /UK Migration Over Time/);
-  await expect(step.getByRole('group', { name: 'Show as' })).toHaveCount(0);
-  // A reading drawn alongside the cited one is on its plot all the same.
-  await viewpoint.locator('.sv-walk__outline-step').filter({ hasText: 'Output per person' }).click();
-  const gdp = viewpoint.locator('.sv-walk__slide').filter({ hasText: 'Output per person has barely moved' });
-  await expect(gdp.locator('.sv-chart__svg:visible').first()).toHaveAttribute('aria-label', /GDP per head and total GDP/);
-});
-
 test('a tab keeps its open rows while another is showing', async ({ page }) => {
   await page.goto(TOPIC);
   const viewpoint = await openViewpoint(page, 'open-and-build');
@@ -152,9 +132,10 @@ test('a link to a crux loaded cold brings up the crux, opened', async ({ page })
 
 // The sheet's data panel sits on the Data tab, closed or not.
 test('a viewpoint opens a data panel without leaving its tab', async ({ page }) => {
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  await viewpoint.locator('.sv-walk__slide').first().getByRole('link', { name: 'Explore this data' }).click();
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'refuge');
+  const card = viewpoint.locator('.sv-deck__card').first();
+  await card.locator('.sv-graph-heading').click();
   await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator('dialog[open]')).toHaveCount(0);
@@ -165,19 +146,19 @@ test('a viewpoint opens a data panel without leaving its tab', async ({ page }) 
 // chart on the home page). Its sheet opens over the report, and Close leaves
 // it onto the report, not off the page.
 test('arriving at an observation\'s address opens its data panel, which closes onto the report', async ({ page }) => {
-  await page.goto(TOPIC);
-  const first = await openViewpoint(page, 'open-and-build');
-  const href = await first.locator('.sv-walk__slide').first().getByRole('link', { name: 'Explore this data' }).getAttribute('href');
+  await page.goto(ASYLUM);
+  const first = await openViewpoint(page, 'refuge');
+  const href = await first.locator('.sv-deck__card').first().getByRole('link', { name: 'Explore this data' }).getAttribute('href');
   // A new tab, as a shared link opens in: on this page it would be a jump within it.
   const arrived = await page.context().newPage();
-  await arrived.goto(`${TOPIC}${new URL(href!, 'http://x').hash}`);
+  await arrived.goto(`${ASYLUM}${new URL(href!, 'http://x').hash}`);
   await expect(arrived.locator('dialog[open]')).toHaveCount(1);
   // A reload keeps the sheet, with the report still beneath it.
   await arrived.reload();
   await expect(arrived.locator('dialog[open]')).toHaveCount(1);
   await arrived.locator('dialog[open] .sv-modal__close').click();
   await expect(arrived.locator('dialog[open]')).toHaveCount(0);
-  await expect(arrived).toHaveURL(new RegExp(`${TOPIC}$`));
+  await expect(arrived).toHaveURL(new RegExp(`${ASYLUM}$`));
 });
 
 // The whole head of a row toggles it, not just its title: a click at the
@@ -254,108 +235,72 @@ test('a data collection loads its charts only when its row opens', async ({ page
 });
 
 test('a viewpoint opens the data panel, not a report, at the step it cites', async ({ page }) => {
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  await viewpoint.locator('.sv-walk__outline-step').nth(1).click();
-  const explore = viewpoint.locator('.sv-walk__slide').nth(1).getByRole('link', { name: 'Explore this data' });
-  await explore.click();
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'bar-and-remove');
+  await viewpoint.locator('.sv-deck__outline-item').nth(1).click();
+  const card = viewpoint.locator('.sv-deck__card').nth(1);
+  await expect(card).toBeInViewport();
+  await expect(card.locator('.sv-chart').first()).toBeVisible();
+  // On a card the link shows only to the keyboard; a pointer clicks the chart.
+  const explore = card.getByRole('link', { name: 'Explore this data' });
+  await explore.focus();
+  await page.keyboard.press('Enter');
 
   const sheet = page.locator('dialog[open]');
-  await expect(sheet.locator('.sv-modal__title')).toContainText('Work and Study Visas and the Care Workforce');
+  await expect(sheet.locator('.sv-modal__title')).toContainText('Removals and Returns from the UK');
   await expect(sheet.locator('.sv-walk__tab[aria-current]')).toBeVisible();
-  await expect(page).toHaveURL(new RegExp(`${TOPIC}#work-and-study-routes--`));
+  await expect(page).toHaveURL(new RegExp(`${ASYLUM}#removals-and-what-stops-them--`));
 
   await page.keyboard.press('Escape');
   await expect(page.locator('dialog[open]')).toHaveCount(0);
-  await expect(page).toHaveURL(new RegExp(`${TOPIC}$`));
+  await expect(page).toHaveURL(new RegExp(`${ASYLUM}$`));
   await expect(viewpoint).toHaveAttribute('data-open', 'true');
   await expect(explore).toBeFocused();
 });
 
-test('a claim about another chart is underlined, and opens that chart in its panel', async ({ page }) => {
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'blame-underinvestment');
-  const claim = viewpoint.locator('.sv-walk__slide').first().locator('.sv-walk__prose a.sv-cite', { hasText: 'Building of homes for social rent' });
-  await expect(claim).toHaveCSS('background-image', /radial-gradient/);
-  await claim.click();
-
-  const sheet = page.locator('dialog[open]');
-  await expect(sheet.locator('.sv-modal__title')).toBeVisible();
-  await expect(page).toHaveURL(new RegExp(`${TOPIC}#immigration-housing-and-public-services--social-rent-building-fell-after-2010$`));
-  await expect(sheet.locator('.sv-walk__tab[aria-current]')).toContainText('home');
-  await expect(sheet.locator('[data-observation="immigration-housing-and-public-services--social-rent-building-fell-after-2010"]')).toBeInViewport();
-
-  await page.keyboard.press('Escape');
-  await expect(page.locator('dialog[open]')).toHaveCount(0);
-  await expect(viewpoint).toHaveAttribute('data-open', 'true');
-  await expect(claim).toBeFocused();
-});
-
 test('a claim opens its observation with the data behind it picked out', async ({ page }) => {
-  await page.goto('/topics/uk-immigration');
-  const viewpoint = await openViewpoint(page, 'economic-cost');
-  const claim = viewpoint.locator('.sv-walk__prose a[data-panel-observation$="--net-migration-is-not-unusual-at-all"]').first();
-  await viewpoint.locator('.sv-walk__outline-step').nth(await viewpoint.locator('.sv-walk__slide').evaluateAll(
-    slides => slides.findIndex(slide => slide.querySelector('a[data-panel-observation$="--net-migration-is-not-unusual-at-all"]')),
-  )).click();
-  await claim.click();
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'bar-and-remove');
+  await viewpoint.locator('.sv-deck__outline-item').nth(1).click();
+  await viewpoint.locator('.sv-deck__card').nth(1).locator('.sv-deck__reasoning a[href$="--fewer-refused-recorded-leaving"]').first().click();
+  await page.locator('dialog[open]').getByRole('link', { name: 'See the data' }).click();
 
   const sheet = page.locator('dialog[open]');
-  const step = sheet.locator('.sv-walk__step').filter({ has: page.locator('[data-observation$="--net-migration-is-not-unusual-at-all"]') });
-  await expect(step.locator('[data-observation$="--net-migration-is-not-unusual-at-all"]')).toBeVisible();
-  await expect(step.locator('[data-series][data-mark-dimmed]').first()).toBeAttached();
-  await expect(step.locator('[data-series="Total net migration"][data-mark-dimmed]')).toHaveCount(0);
+  const step = sheet.locator('.sv-walk__step').filter({ has: page.locator('[data-observation$="--fewer-refused-recorded-leaving"]') });
+  await expect(step.locator('[data-observation$="--fewer-refused-recorded-leaving"]')).toBeVisible();
+  // The line the finding is not about is dimmed; the two it is about are not.
+  await expect(step.locator('[data-series="Returns as a share of refused"][data-mark-dimmed]').first()).toBeAttached();
+  await expect(step.locator('[data-series="Returns as a share of all claims"][data-mark-dimmed]')).toHaveCount(0);
 });
 
-test('a subtlety opens in its chart\'s panel, selected like an observation', async ({ page }) => {
-  await page.goto('/topics/us-iran-war');
-  const viewpoint = await openViewpoint(page, 'nuclear');
-  const claim = viewpoint.locator('.sv-walk__prose a[data-panel-observation$="--sixty-is-not-ninety"]').first();
-  await viewpoint.locator('.sv-walk__outline-step').nth(await viewpoint.locator('.sv-walk__slide').evaluateAll(
-    slides => slides.findIndex(slide => slide.querySelector('a[data-panel-observation$="--sixty-is-not-ninety"]')),
-  )).click();
-  await claim.click();
+test('a subtlety\'s address opens its chart\'s panel, selected like an observation', async ({ page }) => {
+  await page.goto('/topics/us-iran-war#iran-nuclear-programme--sixty-is-not-ninety');
   await expect(page.locator('dialog[open] [data-observation$="--sixty-is-not-ninety"]')).toBeVisible();
 });
 
-test('opening a claim brings its picked row into view on a long timeline', async ({ page }) => {
-  await page.goto('/topics/us-iran-war');
-  const row = page.locator('.sv-row--viewpoint').filter({ has: page.locator('a[data-panel-observation$="--verification-stopped"]') }).first();
-  await row.locator('.sv-row__toggle').click(headCorner);
-  const claim = row.locator('.sv-walk__prose a[data-panel-observation$="--verification-stopped"]').first();
-  await row.locator('.sv-walk__outline-step').nth(await row.locator('.sv-walk__slide').evaluateAll(
-    slides => slides.findIndex(slide => slide.querySelector('a[data-panel-observation$="--verification-stopped"]')),
-  )).click();
-  await claim.click();
+test('opening a finding brings its picked row into view on a long timeline', async ({ page }) => {
+  await page.goto('/topics/us-iran-war#iran-nuclear-programme--verification-stopped');
   const step = page.locator('dialog[open] .sv-walk__step').filter({ has: page.locator('[data-observation$="--verification-stopped"]') });
   await expect(step.locator('[data-row][data-mark-picked]').first()).toBeInViewport();
   await expect(step.locator('.sv-observe').first()).toBeInViewport();
 });
 
-test('clicking a viewpoint step\'s chart opens the panel too, title included', async ({ page }) => {
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  const heading = viewpoint.locator('.sv-walk__slide').first().locator('.sv-graph-heading');
+test('clicking a card\'s chart opens the panel too, title included', async ({ page }) => {
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'refuge');
+  const card = viewpoint.locator('.sv-deck__card').first();
+  const heading = card.locator('.sv-graph-heading');
   await expect(heading.locator('a')).toHaveCount(0);
-  // Pointing at the chart shows it can be clicked: its title and "Explore this data" are underlined.
-  const explore = viewpoint.locator('.sv-walk__slide').first().locator('.sv-walk__explore a');
+  // Pointing at the chart shows it can be clicked: its title is underlined.
   await expect(heading).not.toHaveCSS('text-decoration-line', 'underline');
-  await expect(explore).not.toHaveCSS('text-decoration-line', 'underline');
-  await viewpoint.locator('.sv-walk__slide').first().locator('.sv-walk__chart--explorable').hover();
+  await card.locator('.sv-walk__chart--explorable').hover();
   await expect(heading).toHaveCSS('text-decoration-line', 'underline');
-  await expect(explore).toHaveCSS('text-decoration-line', 'underline');
   await heading.click();
   await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
 });
 
 test('scrolling up over a table at its top moves the page', async ({ page }) => {
   await page.setViewportSize({ width: 601, height: 800 });
-
-  await page.goto('/topics/us-iran-war');
-  const viewpoint = page.locator('.sv-row--viewpoint').first();
-  await viewpoint.locator('.sv-row__toggle').click(headCorner);
-  await expectWheelMovesPage(page, viewpoint.locator('.sv-walk__slide').first().locator('.sv-data__scroll, .sv-chart__table-scroll').first());
-
   await page.goto(DATA);
   const row = page.locator('.sv-row--data').first();
   await row.locator('.sv-row__toggle').click(headCorner);
@@ -364,60 +309,24 @@ test('scrolling up over a table at its top moves the page', async ({ page }) => 
   await expectWheelMovesPage(page, step.locator('.sv-chart__table-scroll').first());
 });
 
-test('on a phone, the step card fits the step showing, with no empty space', async ({ page }) => {
+test('on a phone, a viewpoint fits the card showing, with no empty space', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'bar-and-remove');
   await expect(viewpoint.locator('.sv-chart').first()).toBeAttached();
-  const strip = viewpoint.locator('.sv-walk__strip');
-  const steps = viewpoint.locator('.sv-walk__step');
+  const slides = viewpoint.locator('.sv-deck__slide');
   const heights = new Set<number>();
-  for (let i = 0; i < await steps.count(); i++) {
-    if (i > 0) await viewpoint.locator('.sv-walk__next').click();
-    const step = steps.nth(i);
-    const stepHeight = await step.evaluate(el => Math.round(el.getBoundingClientRect().height));
-    heights.add(stepHeight);
-    await expect.poll(() => strip.evaluate(el => Math.round(el.getBoundingClientRect().height))).toBe(stepHeight);
+  for (let i = 0; i < await slides.count(); i++) {
+    if (i > 0) await viewpoint.locator('.sv-deck__next').click();
+    // A card can grow as its chart draws, so the strip and the slide are measured together.
+    const gap = () => viewpoint.evaluate((el, n) => {
+      const height = (box: Element) => Math.round(box.getBoundingClientRect().height);
+      return height(el.querySelector('.sv-deck__strip')!) - height(el.querySelectorAll('.sv-deck__slide')[n]);
+    }, i);
+    await expect.poll(gap, { message: `card ${i + 1}` }).toBe(0);
+    heights.add(await slides.nth(i).evaluate(el => Math.round(el.getBoundingClientRect().height)));
   }
   expect(heights.size).toBeGreaterThan(1);
-});
-
-test('on a phone, a long chart scrolls in its own box, then hands on to the page', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  const { viewpoint, figures } = await openFigures(page);
-  const longest = await figures.evaluateAll(els => {
-    const heights = els.map(el => el.scrollHeight);
-    return heights.indexOf(Math.max(...heights));
-  });
-  for (let i = 0; i < longest; i++) await viewpoint.locator('.sv-walk__next').click();
-  const figure = figures.nth(longest);
-  await expect.poll(async () => (await figure.boundingBox())!.x).toBeLessThan(390);
-  await expect.poll(async () => (await figure.boundingBox())!.x).toBeGreaterThanOrEqual(0);
-  expect(await figure.evaluate(el => el.scrollHeight > el.clientHeight)).toBe(true);
-  expect((await figure.boundingBox())!.height).toBeLessThanOrEqual(844 * 0.8);
-
-  await hoverAtTop(page, figure);
-  await page.mouse.wheel(0, 100);
-  await expect.poll(() => figure.evaluate(el => el.scrollTop)).toBeGreaterThan(0);
-  await expectWheelMovesPage(page, figure);
-});
-
-test('a long chart fades out at its bottom edge until there is no more to see, and a short one never does', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  const { figures } = await openFigures(page);
-  const fades = await figures.evaluateAll(els => els.map(el => ({
-    overflows: el.scrollHeight > el.clientHeight + 1,
-    fade: parseFloat(getComputedStyle(el).getPropertyValue('--sv-fade-bottom')),
-  })));
-  expect(fades.some(figure => figure.overflows)).toBe(true);
-  for (const { overflows, fade } of fades) {
-    if (overflows) expect(fade).toBeGreaterThan(0);
-    else expect(fade).toBe(0);
-  }
-
-  const long = figures.nth(fades.findIndex(figure => figure.overflows));
-  await long.evaluate(el => { el.scrollTop = el.scrollHeight; });
-  await expect.poll(() => long.evaluate(el => parseFloat(getComputedStyle(el).getPropertyValue('--sv-fade-bottom')))).toBe(0);
 });
 
 test('on a phone, a short bar chart takes the height it needs, neither clipped nor padded', async ({ page }) => {
@@ -431,19 +340,6 @@ test('on a phone, a short bar chart takes the height it needs, neither clipped n
     const clipped = await slide.locator('.sv-slide').evaluate(el => el.scrollHeight > el.clientHeight);
     expect(clipped).toBe(false);
     expect(await gapBetween(slide, '.sv-comparison__rows', '.sv-walk__explore')).toBeLessThan(60);
-  }
-});
-
-test('on a phone, each viewpoint step explains itself directly above its chart', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  const steps = viewpoint.locator('.sv-walk__step[data-chart]');
-  await expect(steps.first().locator('.sv-chart').first()).toBeAttached();
-  for (const step of await steps.all()) {
-    const gap = await gapBetween(step, '.sv-walk__text', '.sv-walk__chart');
-    expect(gap).toBeGreaterThanOrEqual(0);
-    expect(gap).toBeLessThan(24);
   }
 });
 
@@ -641,23 +537,15 @@ test('the "more" tile opens a data row at the first chart it stands for', async 
   await expect(row.locator('.sv-walk__tab').nth(6)).toHaveAttribute('aria-current', 'step');
 });
 
-test('a thumbnail opens a viewpoint at that step', async ({ page }) => {
-  await page.goto(TOPIC);
-  const row = page.locator('#viewpoint-open-and-build');
-  await row.locator('.sv-walk__thumb').nth(3).click();
-  await expect(row.locator('.sv-walk__outline-step').nth(3)).toHaveAttribute('aria-current', 'step');
-  await expect(row.locator('.sv-walk__slide').nth(3)).toBeInViewport({ ratio: 0.5 });
-});
-
-test('a thumbnail still moves the row after it was closed on another step', async ({ page }) => {
-  await page.goto(TOPIC);
-  const row = page.locator('#viewpoint-open-and-build');
-  const thumb = row.locator('.sv-walk__thumb').nth(3);
+test('a thumbnail still moves the row after it was closed on another card', async ({ page }) => {
+  await page.goto(ASYLUM);
+  const row = page.locator('#viewpoint-refuge');
+  const thumb = row.locator('.sv-walk__thumb').nth(2);
   await thumb.click();
-  await row.locator('.sv-walk__outline-step').first().click();
+  await row.locator('.sv-deck__outline-item').first().click();
   await row.locator('.sv-row__toggle').click(headCorner);
   await thumb.click();
-  await expect(row.locator('.sv-walk__outline-step').nth(3)).toHaveAttribute('aria-current', 'step');
+  await expect(row.locator('.sv-deck__outline-item').nth(2)).toHaveAttribute('aria-current', 'step');
 });
 
 test('a keyboard reader keeps their place when a thumbnail opens the row', async ({ page }) => {

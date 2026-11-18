@@ -28,7 +28,7 @@ export type ChartVariant = 'narrow' | 'wide';
 
 /**
  * A series can also be drawn at preview size, for a carousel slide or a
- * walkthrough step, sized so its type stays readable there rather than
+ * slideshow card, sized so its type stays readable there rather than
  * shrinking a full-size chart into the space. A preview is drawn at several
  * shapes, from very wide to nearly square, and the page shows whichever best
  * fills the space it has, so the chart is never squeezed into a band.
@@ -38,15 +38,13 @@ export type SeriesVariant = ChartVariant | PreviewVariant;
 
 /**
  * Where a preview sits decides the shapes it is drawn at, widest first: a
- * carousel slide is wide, a walkthrough step beside its prose is tall, and a
- * slideshow card, which on a phone is most of the screen, can be taller than
- * it is wide. Drawing only the shapes a place can use keeps a page of previews
+ * carousel slide is wide, and a slideshow card, which on a phone is most of
+ * the screen, can be taller than it is wide. Drawing only the shapes a place can use keeps a page of previews
  * light. A data panel's full chart fills the space left around its controls.
  */
-export type PreviewFit = 'wide' | 'tall' | 'card' | 'panel';
+export type PreviewFit = 'wide' | 'card' | 'panel';
 export const PREVIEW_VARIANTS: Record<PreviewFit, PreviewVariant[]> = {
   wide: ['preview-wide', 'preview'],
-  tall: ['preview-medium', 'preview-tall'],
   card: ['preview-medium', 'preview-tall', 'preview-portrait'],
   panel: ['preview-wide', 'preview', 'preview-broad'],
 };

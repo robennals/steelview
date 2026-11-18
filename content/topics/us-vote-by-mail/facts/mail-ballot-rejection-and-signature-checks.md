@@ -1443,7 +1443,7 @@ observationMarks:
   auditor-agreed-with-counties: {rows: ["Agreement with counties"]}
   low-rejection-counties-accept-more: {rows: ["Counties with lower rejection rates"]}
   id-number-checks-also-reject: {lines: ["Texas", "Georgia"], from: "2022", to: "2024"}
-  texas-rose-under-id-number: {lines: ["Texas"], from: "2020", to: "2024"}
+  texas-rose-under-id-number: {lines: ["Texas", "United States"]}
   georgia-fell-after-sb202: {lines: ["Georgia"]}
   most-states-cure: {rows: ["Thirty-five states and Washington, D.C."]}
   training-and-bipartisan-review: {rows: ["Colorado"]}
@@ -1518,7 +1518,7 @@ Much of the remainder sits in "other". In 2022 about a quarter of "other" reject
 
 ### Texas's rejections rose under its ID-number check and stayed above the national rate {#mail-ballot-rejection-and-signature-checks--texas-rose-under-id-number}
 
-Texas's line rises after SB 1 required an ID or Social Security number on the envelope, and has stayed above both its 2020 rate and the national line. [13](#source-mail-ballot-rejection-and-signature-checks-13) [14](#source-mail-ballot-rejection-and-signature-checks-14) In its first primary under the rule, many voters missed the new field on the envelope. [12](#source-mail-ballot-rejection-and-signature-checks-12)
+Texas's line rises after SB 1 required an ID or Social Security number on the envelope, and has stayed above every earlier Texas rate shown and above the national line. [13](#source-mail-ballot-rejection-and-signature-checks-13) [14](#source-mail-ballot-rejection-and-signature-checks-14) In its first primary under the rule, many voters missed the new field on the envelope. [12](#source-mail-ballot-rejection-and-signature-checks-12)
 
 ### Georgia's rate has stayed below its 2016 and 2018 levels since it replaced signature matching with an ID number {#mail-ballot-rejection-and-signature-checks--georgia-fell-after-sb202}
 

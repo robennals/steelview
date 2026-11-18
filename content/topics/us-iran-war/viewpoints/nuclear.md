@@ -11,24 +11,30 @@ An Iran with nuclear weapons would be far more dangerous than Iran today. Stoppi
 
 ### Iran was close to having enough uranium for a bomb
 
-Before the strikes, [US intelligence judged Iran probably under a week from bomb-grade uranium for one bomb](#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes).
+[Iran built up its uranium enriched to 60% for four years, and fastest just before the June 2025 strikes](#fact-iran-nuclear-programme/sixty-percent-growth). [Bombs need about 90%, and little extra work gets there from 60%](#fact-iran-nuclear-programme/sixty-is-not-ninety). [In May 2025, US intelligence judged Iran probably under a week from enough bomb-grade uranium for one bomb](#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes).
 
-[The hardest step in building a nuclear bomb is enriching uranium, which means making it purer](#needed). [Nuclear power plants need uranium enriched to only a few percent](#needed), while [bombs need about 90%](#fact-iran-nuclear-programme/sixty-is-not-ninety). [Iran is the only country without nuclear weapons making 60% uranium](#fact-iran-nuclear-programme/only-non-weapon-state-at-60), and [little extra work takes that to bomb grade](#fact-iran-nuclear-programme/sixty-is-not-ninety). [Its stock more than doubled in under eight months before the strikes](#fact-iran-nuclear-programme/sixty-percent-growth).
+[The hardest step in building a nuclear bomb is enriching uranium, which means making it purer](#needed). [Nuclear power plants need uranium enriched to only a few percent](#needed). [Iran is the only country without nuclear weapons making 60% uranium](#fact-iran-nuclear-programme/only-non-weapon-state-at-60).
 
 ### Inspectors could not vouch that Iran's programme was peaceful
 
-While [US intelligence judged in 2025 that Iran was not building a bomb](#fact-iran-nuclear-programme/ata-2025-not-building), [it warned that pressure to build one was growing](#fact-iran-nuclear-programme/ata-2025-not-building). [UN inspectors found no credible sign of an active weapons programme](#fact-iran-nuclear-programme/no-ongoing-programme-2025), but [could not be sure Iran's programme was peaceful](#fact-iran-nuclear-programme/no-assurance-peaceful): [Iran once ran a secret programme to develop weapons technology and hid the evidence](#fact-iran-nuclear-programme/past-weapons-work).
+[In 2025, UN inspectors said they could not assure the world that Iran's programme was peaceful](#fact-iran-nuclear-programme/no-assurance-peaceful). [Iran once ran a secret programme to develop weapons technology, and hid the evidence](#fact-iran-nuclear-programme/past-weapons-work). With uranium so close to bomb grade, one decision could start the last short step.
 
-[In 2021 Iran stopped inspectors' extra "complementary access" visits](#fact-iran-nuclear-programme/complementary-access-ended), and [the inspectors' board later found it in breach of its obligations](#fact-iran-nuclear-programme/board-non-compliance). With uranium so close to bomb grade, one decision could start the last stretch to a bomb.
+[In 2021 Iran stopped the inspectors' extra visits](#fact-iran-nuclear-programme/complementary-access-ended). [The inspectors' board later found it in breach of its obligations](#fact-iran-nuclear-programme/board-non-compliance). While [US intelligence judged in 2025 that Iran was not building a bomb](#fact-iran-nuclear-programme/ata-2025-not-building), [it warned that pressure on Iran's leader to build one was growing](#fact-iran-nuclear-programme/ata-2025-not-building).
 
-### A bomb would make Iran bolder
+### Iran already attacks its enemies, and a bomb would let it do so more freely
 
-Iran already uses violence against its enemies. [A federal criminal court in Argentina held Iran-backed Hezbollah responsible for two Buenos Aires bombings](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). [US courts have convicted men hired by its Revolutionary Guards to kill a journalist in America](#fact-iran-actions-abroad/us-convictions-iran-directed-plots). [Iran-allied groups attacked US and coalition forces more than 200 times in 2023–24](#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war).
+[A court in Argentina held Iran-backed Hezbollah responsible for two bombings in Buenos Aires](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). [Men hired by Iran's Revolutionary Guards plotted to kill a journalist in America, and US courts have sentenced them](#fact-iran-actions-abroad/us-convictions-iran-directed-plots). Today Iran must fear being hit back.
 
-For now, Iran must fear retaliation. A bomb would change that: others would fear using force against it, so it could attack more freely. One day it might use the bomb itself.
+A bomb would change that. Other countries would fear using force against Iran, so it could attack more freely. One day it might use the bomb itself. [Groups allied with Iran attacked US and coalition forces more than 200 times in 2023 and 2024](#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war), even without one.
 
-### Sanctions alone were unlikely to stop it
+### An Iranian bomb could lead others in the region to build their own
 
-[Sanctions have rarely stopped a nuclear programme once it has started](#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22). An Iranian bomb could also lead others to build their own. While [past fears of bombs spreading quickly mostly proved wrong](#fact-outside-attempts-to-change-hostile-regimes/predicted-cascades-did-not-happen), this time [Saudi Arabia's crown prince has said his country would build a bomb if Iran did](#fact-outside-attempts-to-change-hostile-regimes/saudi-2018-pledge).
+[Saudi Arabia's crown prince has said his country would build a bomb if Iran did](#fact-outside-attempts-to-change-hostile-regimes/saudi-2018-pledge). A Middle East with several nuclear powers would be more dangerous still.
 
-So the choice was never between war and a peaceful Iran. It was between striking while Iran's uranium could be reached, and later facing a nuclear Iran no one could stop.
+While [past fears that bombs would spread quickly mostly proved wrong](#fact-outside-attempts-to-change-hostile-regimes/predicted-cascades-did-not-happen), the risk is too grave to bet that they will prove wrong again.
+
+### So the US had to strike while Iran's uranium could still be reached
+
+[Sanctions have rarely stopped a nuclear programme once it has started](#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22). So the choice was never between war and a peaceful Iran. It was between striking now and leaving Iran one short step from a bomb.
+
+Waiting would have meant trusting a government that has hidden weapons work before. A war is a terrible cost. A nuclear-armed Iran would be a worse one.

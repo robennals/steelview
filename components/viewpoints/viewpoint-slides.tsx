@@ -1,6 +1,6 @@
 import type { Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
-import { viewpointTitle, type CitedClaim, type RenderedStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
+import type { CitedClaim, RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ExplorableChart, ExploreLink } from '@/components/topic/explore-panels';
 import { Prose } from '@/components/topic/prose';
 import { rowCharts } from '@/lib/content/row-charts';
@@ -83,7 +83,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
               slug={viewpoint.id}
               anchor={anchorFor('viewpoint', viewpoint.id)}
               className="sv-row--walk sv-row--deck sv-row--viewpoint"
-              title={viewpointTitle(slug, viewpoint)}
+              title={viewpoint.shortName}
               subtitle={viewpoint.name}
               meta={null}
               thumbs={
@@ -107,7 +107,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
                 />
               }
             >
-              <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id, true)}>
+              <LazyCharts load={rowCharts.bind(null, slug, 'viewpoint', viewpoint.id)}>
                 <Slideshow name={viewpoint.name} headings={steps.map(step => step.heading)}>
                   {steps.map((step, i) => <StepCard key={i} step={step} index={i} />)}
                 </Slideshow>

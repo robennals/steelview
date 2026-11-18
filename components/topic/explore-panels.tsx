@@ -1,12 +1,11 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode, type SyntheticEvent } from 'react';
+import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import type { PanelTarget } from '@/lib/content/markdown';
 import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 import { decodeHash } from './open-details';
-import { Prose } from './prose';
 
 type Explore = {
   shown: PanelTarget | null;
@@ -111,36 +110,6 @@ export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
       <p><a className="sv-cite" href={href} data-panel-link onClick={onClick} onPointerEnter={() => explore?.want(fact)} onFocus={() => explore?.want(fact)}>Explore this data</a></p>
     </div>
   );
-}
-
-/** The panel a rendered citation opens, from the data `renderMarkdown` gave it. */
-function citedPanel(target: EventTarget): PanelTarget | null {
-  const link = target instanceof Element ? target.closest<HTMLAnchorElement>('a[data-panel-fact]') : null;
-  const { panelFact: fact, panelObservation: observation } = link?.dataset ?? {};
-  return fact && observation ? { fact, observation } : null;
-}
-
-type ExploreProseProps = { html: string; className: string };
-
-/**
- * A viewpoint step's prose, whose citations open their collections' data panels
- * as "Explore this data" does. They arrive as raw HTML, so are handled here for
- * the whole of it. Each is still a link to the report, for a new tab or with no
- * script.
- */
-export function ExploreProse({ html, className }: ExploreProseProps) {
-  const explore = useContext(ExploreContext);
-  const onClick = (event: MouseEvent) => {
-    const cited = citedPanel(event.target);
-    if (!cited || !explore || !isPlainClick(event)) return;
-    event.preventDefault();
-    explore.open(cited);
-  };
-  const onIntent = (event: SyntheticEvent) => {
-    const cited = citedPanel(event.target);
-    if (cited) explore?.want(cited.fact);
-  };
-  return <div onClick={onClick} onPointerOver={onIntent} onFocus={onIntent}><Prose html={html} className={className} /></div>;
 }
 
 /**
