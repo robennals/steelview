@@ -567,6 +567,16 @@ sources:
     localFile: datasets/ueaeprints.uea.ac.uk/McConnachie_-_Landmark_Cases_Adimi_for_UEA_Open_Access.docx
     publisher: 'Kirsten McConnachie, University of East Anglia'
     date: '2025'
+  - stance: supports
+    quote: >-
+      Asylum seekers are thus protected against refoulement not only by the
+      Human Rights Act but also by provisions in the 1993 Act, the 2002 Act and
+      the 2004 Act, under which Parliament has given effect to the Refugee
+      Convention as well as the ECHR.
+    title: 'R (AAA and others) v Secretary of State for the Home Department [2023] UKSC 42 (the Rwanda judgment)'
+    url: https://supremecourt.uk/uploads/uksc_2023_0093_etc_judgment_636270e30e.pdf
+    publisher: The Supreme Court of the United Kingdom
+    date: '2023-11-15'
 dataStillNeeded:
   - measure: 'A published UK government legal assessment of whether leaving the ECHR is compatible with the Good Friday Agreement'
     why: >-
@@ -811,7 +821,7 @@ concept through the Dublin rules. [43](#source-asylum-law-and-the-echr-43)
 The Refugee Convention's Article 33(1) forbids returning a refugee "in any
 manner whatsoever" to where their life or freedom would be threatened. In UK
 practice, most claims of risk on return are asylum claims under the Refugee
-Convention, not Article 3 ECHR claims. [40](#source-asylum-law-and-the-echr-40) [41](#source-asylum-law-and-the-echr-41)
+Convention, not Article 3 ECHR claims. [40](#source-asylum-law-and-the-echr-40) [41](#source-asylum-law-and-the-echr-41) When the Supreme Court found the Rwanda plan unlawful in 2023, it said asylum seekers are protected from return to danger by Acts of Parliament that give effect to the Refugee Convention, not only by the Human Rights Act. [47](#source-asylum-law-and-the-echr-47)
 
 ## Observations {#asylum-law-and-the-echr--observations-wolfson-review}
 

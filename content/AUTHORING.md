@@ -999,7 +999,7 @@ has; the rest draw a component (see Storybook for each one's look):
 | `sliceExplorer` | tidy `rows` × `dimensions` × `measures` that a reader breaks down, filters and splits (votes by roll call × party × position); a dimension that must never be added together — separate votes or polls — is `combinable: false`. Every row is also listed under "All N rows of the data" |
 | `smallMultiples` | one small line per item (`panels`, each a `name` and `points`), on one shared scale unless `independentScales`; every panel runs across the figure's `coverage`, or its own; `highlight` marks the panel the text is about, and a panel may cite its own `source` |
 | `scatterPlot` | two measures per area plotted against each other, every point labelled (`label`, one to four characters) and named; optional `groups` and `highlight` |
-| `quotes` | two or more quotes answering one `question`: up to four side by side in the order written, more as a list in date order a reader can filter by category and speaker (every quote listed with JavaScript off). A quote may name a `stance` from the figure's `categories` (with `categoryLabel` naming the filter), and a quote not in English gives its `lang` and a `translation`, shown beside it. `quoteComparison`, the kind's earlier name, still parses as `quotes` |
+| `quotes` | two or more quotes answering one `question`: up to four side by side in the order written, more as a list in date order a reader can filter by category and speaker. In a topic page's data panel, a collection lists every quote on the topic, filterable by question as well (every quote listed with JavaScript off). A quote may name a `stance` from the figure's `categories` (with `categoryLabel` naming the filter), and a quote not in English gives its `lang` and a `translation`, shown beside it. `quoteComparison`, the kind's earlier name, still parses as `quotes` |
 | `pullQuote` | one quote set apart |
 | `claimCheck` | a well-known claim, quoted, set against the evidence, with a link to the fact that sets it out |
 | `caveatList` | what the figures above do not show |
@@ -1532,7 +1532,8 @@ step's claim on its face, then write the line around it. A graph is the
 default; a [collection of quotes](#figures) is for a point that rests on what
 people with standing have said, such as a government's own statement. The card
 shows only the quotes its point rests on: the speakers its observation marks.
-The whole collection, which a reader can filter, opens from the card. If no visual in the reports
+Every quote on the topic, from every collection, opens from the card as one list a
+reader can narrow to one question. If no visual in the reports
 shows the claim, that is a gap to raise at stage 5, or a sign the step is not a
 data claim.
 
@@ -1683,6 +1684,11 @@ failed however good its argument. In practice:
   mislead ("ISIS" here is a nuclear-research institute). Write "a leading
   group of nuclear experts" or "experts at two US research groups" in the
   viewpoint; the report names them in full.
+- **One meaning on first reading.** A reader should never have to go back
+  and choose between two readings: which word is the verb, what "it" or
+  "this" refers to, whether a number is a count or a share, or who holds
+  the view. If a sentence could be taken two ways, rewrite it so only the
+  one you mean fits.
 - **Read it aloud.** If a sentence needs a second reading, rewrite it.
 
 **Every sentence must earn its place in the argument.** Short is not enough;

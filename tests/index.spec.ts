@@ -180,3 +180,16 @@ test.describe('without JavaScript', () => {
     await expect(page).toHaveURL(/\/topics\/us-iran-war$/);
   });
 });
+
+test('each topic lists its viewpoints as its own page names them, in the same order', async ({ page }) => {
+  await page.goto('/');
+  const listed = await page.locator('.sv-row').evaluateAll(rows => rows.map(row => ({
+    href: row.querySelector<HTMLAnchorElement>('.sv-row__cta')?.getAttribute('href'),
+    names: [...row.querySelectorAll('.sv-row__viewpoints li')].map(li => li.textContent?.trim()),
+  })));
+  expect(listed.length).toBeGreaterThan(1);
+  for (const { href, names } of listed) {
+    await page.goto(href!);
+    await expect(page.locator('.sv-row--viewpoint .sv-row__title'), href!).toHaveText(names.map(name => name!));
+  }
+});

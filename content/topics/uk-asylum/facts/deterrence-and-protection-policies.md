@@ -647,6 +647,16 @@ sources:
     url: 'https://migrationobservatory.ox.ac.uk/resources/briefings/asylum-in-the-uk/'
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-07-14'
+  - stance: complicates
+    quote: >-
+      However, there are limited circumstances in which small boats can be
+      turned around safely in the English Channel. In view of this, the policy
+      is currently withdrawn and there are no current plans for the turnaround
+      tactics to be reintroduced under Defence primacy.
+    title: 'Written question UIN 90882: small boats turnaround policy (answered by Robert Jenrick)'
+    url: https://questions-statements.parliament.uk/written-questions/detail/2022-11-18/90882
+    publisher: UK Parliament (Home Office answer)
+    date: '2022-11-28'
 series:
   title: 'Australia: asylum-seeker boat arrivals'
   subtitle: 'People arriving by boat each year, 1976–2016'
@@ -1477,9 +1487,9 @@ figures:
     id: australia-interceptions
   - kind: dataTable
     id: turnback-definitions
-    title: 'Australia: turnbacks and take-backs'
-    subtitle: 'As Operation Sovereign Borders defines them'
-    description: The two ways Australia has returned people on boats, in the operation's own words.
+    title: 'Turning boats back: Australia and Britain'
+    subtitle: 'As Operation Sovereign Borders defines them, and Britain''s 2022 policy'
+    description: The two ways Australia has returned people on boats, in the operation's own words, and what became of Britain's own turnback policy.
     caption: One card per term
     layout: cards
     leadColumn: means
@@ -1491,6 +1501,8 @@ figures:
         means: { value: '"the safe removal of vessels from Australian waters, with passengers and crew returned to their countries of departure"', sources: [3] }
       - term: Take-back
         means: { value: 'A transfer, often at sea, of passengers from one sovereign authority to another "where Australia works with a country of departure in order to see the safe return of passengers and crew"', sources: [3] }
+      - term: Britain's turnaround tactic, 2022
+        means: { value: 'Withdrawn by November 2022, when the government said boats can be turned around safely in the Channel only in limited circumstances', sources: [60] }
   - kind: series
     id: australia-offshore-cost
   - kind: comparison
@@ -1608,6 +1620,7 @@ observationMarks:
   offshore-cost-per-year: {lines: ["Estimated actual cost"], from: "2013", to: "2025"}
   australia-outcomes: {rows: ["Back in Australia", "Returned to country of origin", "Resettled in a third country"]}
   turnbacks-need-departure-country: {rows: ["Take-back"]}
+  uk-turnbacks-withdrawn: {rows: ["Britain's turnaround tactic, 2022"]}
   work-bans-reduce-employment: {rows: ["Fasani, Frattini and Minale (2021)", "Marbach, Hainmueller and Hangartner (2018)"]}
   work-rights-modest-association: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
   networks-strongest-pull: {rows: ["Di Iasio and Wahba (working paper, 2023)"]}
@@ -1674,6 +1687,10 @@ A boat turned back is not counted as an arrival; the Parliamentary Library notes
 ### Takebacks rely on the country of departure's cooperation {#deterrence-and-protection-policies--turnbacks-need-departure-country}
 
 Operation Sovereign Borders defines a turnback as removing a vessel from Australian waters with passengers returned to their country of departure, and a takeback as a transfer to that country's authorities "where Australia works with a country of departure". [3](#source-deterrence-and-protection-policies-3)
+
+### Britain withdrew its own turnback policy, citing safety at sea {#deterrence-and-protection-policies--uk-turnbacks-withdrawn}
+
+Britain had a policy of turning small boats back in the Channel. By November 2022 it had withdrawn it, saying boats can be turned around safely in the Channel only in limited circumstances, and that it had no plans to bring the policy back. [60](#source-deterrence-and-protection-policies-60)
 
 ## Observations {#deterrence-and-protection-policies--observations-after-sovereign-borders}
 

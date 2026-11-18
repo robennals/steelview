@@ -1,6 +1,6 @@
 import type { Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
-import type { RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
+import { viewpointTitle, type RenderedStep, type RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { ExplorableChart, ExploreLink, ExploreProse } from '@/components/topic/explore-panels';
 import { Prose } from '@/components/topic/prose';
@@ -55,7 +55,7 @@ export function ViewpointRows({ slug, viewpoints, walkthroughs }: ViewpointRowsP
             slug={viewpoint.id}
             anchor={anchorFor('viewpoint', viewpoint.id)}
             className="sv-row--walk sv-row--viewpoint"
-            title={viewpoint.name}
+            title={viewpointTitle(slug, viewpoint)}
             subtitle={plain(lead)}
             meta={null}
             thumbs={

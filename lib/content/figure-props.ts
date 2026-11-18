@@ -382,6 +382,18 @@ function quotesOf(f: FigureOf<'quotes'>, c: FigureContext): R.Quote[] {
   }));
 }
 
+/**
+ * Every quote a topic has collected, for the one list its panels show: each
+ * tagged with the question its collection answers, so a reader can narrow the
+ * list to one question, and credited to its own report's sources.
+ */
+export function topicQuotes(facts: Fact[], asOf?: string): R.Quote[] {
+  return facts.flatMap(fact => {
+    const context = figureContext(fact, asOf, { panel: true });
+    return (fact.figures ?? []).flatMap(figure => (figure.kind === 'quotes' ? quotesOf(figure, context).map(q => ({ ...q, tags: [figure.question] })) : []));
+  });
+}
+
 /** A `quotes` figure of up to four, side by side in the order written. */
 export function quoteComparisonProps(f: FigureOf<'quotes'>, c: FigureContext): R.QuoteComparisonProps {
   return {

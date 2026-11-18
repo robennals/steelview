@@ -2,6 +2,7 @@
 
 import { Fragment, type ReactNode } from 'react';
 import { listTopicSlugs, loadTopic } from './load';
+import { topicQuotes } from './figure-props';
 import { slideCitations, viewpointWalkthrough } from './walkthrough';
 import type { PreviewSlide } from './preview';
 import { ChartSources } from '@/components/topic/chart-sources';
@@ -22,11 +23,13 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
   if (!(await listTopicSlugs()).includes(slug)) return [];
   const topic = await loadTopic(slug);
   const page = { slug, asOf: topic.lastUpdated, facts: topic.facts };
+  const quotes = topicQuotes(topic.facts, topic.lastUpdated);
   if (kind === 'viewpoint') {
     const viewpoint = topic.viewpoints.find(v => v.id === id);
     if (!viewpoint) return [];
     const drawn = (chart: PreviewSlide, fit: 'card' | 'tall', key: number, picked?: string[]) => <Fragment key={key}>
-      <SlideChart slide={chart} fit={fit} page={page} picked={picked} />
+      {/* A card's quotes lead on to the topic's whole list, so it counts that; a step drawn in full lists only its own. */}
+      <SlideChart slide={chart} fit={fit} page={fit === 'card' ? { ...page, quotes } : page} picked={picked} />
       <ChartSources fact={chart.fact} numbers={slideCitations(chart.fact, chart)} />
     </Fragment>;
     const { steps } = viewpointWalkthrough(topic, viewpoint);
@@ -37,8 +40,9 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
   if (kind === 'data') {
     const fact = topic.facts.find(f => f.id === id);
     if (!fact) return [];
-    // Every chart and figure is drawn in full, with its controls.
-    return panelCharts(fact, page);
+    // Every chart and figure is drawn in full, with its controls, and its list
+    // of quotes is the topic's whole collection.
+    return panelCharts(fact, { ...page, quotes });
   }
   return [];
 }

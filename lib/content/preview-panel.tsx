@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { listTopicSlugs, loadTopic } from './load';
+import { topicQuotes } from './figure-props';
 import { renderDataWalkthroughs } from './walkthrough';
 import { DataPanel } from '@/components/topic/data-rows';
 import { panelCharts } from '@/components/topic/fact-figures';
@@ -21,6 +22,6 @@ export async function previewPanel(slug: string, factId: string): Promise<ReactN
   const fact = topic.facts.find(f => f.id === factId);
   if (!fact) return null;
   const steps = (await renderDataWalkthroughs(topic, [fact])).get(fact.id) ?? [];
-  const page = { slug, asOf: topic.lastUpdated, facts: topic.facts };
+  const page = { slug, asOf: topic.lastUpdated, facts: topic.facts, quotes: topicQuotes(topic.facts, topic.lastUpdated) };
   return <DataPanel slug={slug} fact={fact} steps={steps} charts={panelCharts(fact, page)} />;
 }
