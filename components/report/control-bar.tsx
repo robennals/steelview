@@ -201,23 +201,23 @@ function Pop({ name, face, children, active, single, align = 'start' }: PopProps
   useEffect(() => {
     const panel = pop.current;
     if (!panel) return;
-    const place = (event: ToggleEvent) => {
-      if (event.newState !== 'open' || !button.current) return;
+    // The pop-up is fixed in the top layer, so it is placed under its button
+    // when it opens, and again whenever the page or a box around it scrolls.
+    const place = () => {
+      if (!button.current || !panel.matches(':popover-open')) return;
       const at = button.current.getBoundingClientRect();
       const width = panel.offsetWidth;
       const left = align === 'end' ? at.right - width : at.left;
       panel.style.top = `${at.bottom + 6}px`;
       panel.style.left = `${Math.max(8, Math.min(left, innerWidth - width - 8))}px`;
     };
-    const close = (event: Event) => {
-      if (event.target instanceof Node && panel.contains(event.target)) return;
-      if (panel.matches(':popover-open')) panel.hidePopover();
-    };
     panel.addEventListener('toggle', place);
-    addEventListener('scroll', close, true);
+    addEventListener('scroll', place, true);
+    addEventListener('resize', place);
     return () => {
       panel.removeEventListener('toggle', place);
-      removeEventListener('scroll', close, true);
+      removeEventListener('scroll', place, true);
+      removeEventListener('resize', place);
     };
   }, [align]);
   return (
