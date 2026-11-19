@@ -2,10 +2,10 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { isPlainClick, PanelSheet } from '@/components/topic/explore-panels';
+import { focusedItems, isPlainClick, PanelSheet } from '@/components/topic/explore-panels';
 
 /** A preview chart a reader opened: the data collection it belongs to, and the chart in it. */
-type Shown = { slug: string; fact: string; title: string; observation: string };
+type Shown = { slug: string; fact: string; title: string; observation: string; highlight?: string[] };
 
 type Sheets = {
   open: (shown: Shown) => void;
@@ -76,7 +76,7 @@ export function PreviewSheets({ load, children }: PreviewSheetsProps) {
     <SheetsContext.Provider value={sheets}>
       {children}
       {shown && createPortal(
-        <PanelSheet title={shown.title} observation={shown.observation} leave={leave} loaded={loaded}>
+        <PanelSheet title={shown.title} observation={shown.observation} highlight={shown.highlight} leave={leave} loaded={loaded}>
           {loaded ? panels[key] : <div className="sv-walk__chart-loading" aria-hidden="true" />}
         </PanelSheet>,
         document.body,
@@ -98,7 +98,7 @@ export function PreviewChart({ children, ...chart }: PreviewChartProps) {
     if (!sheets || !isPlainClick(event)) return;
     if (event.target instanceof Element && event.target.closest('.sv-glossary')) return;
     event.preventDefault();
-    sheets.open(chart);
+    sheets.open({ ...chart, highlight: focusedItems(event.target, event.currentTarget) });
   };
   const want = () => sheets?.want(chart.slug, chart.fact);
   return <div className="sv-slide sv-slide--explorable" onClick={onClick} onPointerEnter={want} onFocus={want}>{children}</div>;

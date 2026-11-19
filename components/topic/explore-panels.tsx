@@ -1,18 +1,22 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type MouseEvent, type RefObject, type ReactNode } from 'react';
+import { HighlightedQuotes } from '@/components/report';
 import { createPortal } from 'react-dom';
 import type { PanelTarget } from '@/lib/content/markdown';
 import { showPanelStep } from '@/lib/content/evidence-target';
 import { wireModalExit } from '@/lib/modal/wire-modal-exit';
 import { decodeHash } from './open-details';
 
+/** A chart open in a sheet, with the items the reader clicked on its card to open it, for the sheet to show first. */
+type Shown = PanelTarget & { highlight?: string[] };
+
 type Explore = {
-  shown: PanelTarget | null;
+  shown: Shown | null;
   /** The collection whose charts a reader is about to want. */
   wanted: string | null;
   want: (fact: string) => void;
-  open: (shown: PanelTarget) => void;
+  open: (shown: Shown) => void;
   leave: () => void;
 };
 
@@ -52,7 +56,7 @@ const SHEET_ENTRY = 'svExploreSheet';
  * without adding another.
  */
 export function ExplorePanels({ panels, children }: { panels: string[]; children: ReactNode }) {
-  const [shown, setShown] = useState<PanelTarget | null>(null);
+  const [shown, setShown] = useState<Shown | null>(null);
   const [wanted, want] = useState<string | null>(null);
 
   // Coming back from a fact opened over the sheet lands on the sheet's own entry.
@@ -62,7 +66,7 @@ export function ExplorePanels({ panels, children }: { panels: string[]; children
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  const open = useCallback((next: PanelTarget) => {
+  const open = useCallback((next: Shown) => {
     // A reload of the sheet's own entry is already its entry.
     if (history.state?.[SHEET_ENTRY] !== next.observation) {
       history.pushState({ ...history.state, [SHEET_ENTRY]: next.observation }, '', `#${next.observation}`);
@@ -95,6 +99,20 @@ export function useOpenPanel(): ((target: PanelTarget) => void) | null {
   return useContext(ExploreContext)?.open ?? null;
 }
 
+/**
+ * The items a click on a preview card asks the sheet to show first, by the
+ * `data-explore-focus` each carries (a card quote's anchor): the one clicked,
+ * or, for a click elsewhere on the card, every one it shows.
+ */
+export function focusedItems(target: EventTarget | null, card: Element): string[] {
+  const clicked = target instanceof Element ? target.closest<HTMLElement>('[data-explore-focus]') : null;
+  const items = clicked && card.contains(clicked) ? [clicked] : [...card.querySelectorAll<HTMLElement>('[data-explore-focus]')];
+  return items.flatMap(item => (item.dataset.exploreFocus ? [item.dataset.exploreFocus] : []));
+}
+
+/** What a click on an explorable chart picked out, handed to the "Explore this data" link it follows. */
+const ClickedItems = createContext<RefObject<string[]> | null>(null);
+
 export const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 
 type ExploreLinkProps = PanelTarget & { href: string };
@@ -107,10 +125,13 @@ type ExploreLinkProps = PanelTarget & { href: string };
  */
 export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
   const explore = useContext(ExploreContext);
+  const clickedRef = useContext(ClickedItems);
   const onClick = (event: MouseEvent) => {
     if (!explore || !isPlainClick(event)) return;
     event.preventDefault();
-    explore.open({ fact, observation });
+    const highlight = clickedRef?.current ?? [];
+    if (clickedRef) clickedRef.current = [];
+    explore.open({ fact, observation, highlight });
   };
   return (
     <div className="prose-body sv-walk__explore">
@@ -128,22 +149,26 @@ export function ExploreLink({ fact, observation, href }: ExploreLinkProps) {
  * is the control a keyboard or screen reader uses.
  */
 export function ExplorableChart({ children }: { children: ReactNode }) {
+  const clickedRef = useRef<string[]>([]);
   const onClick = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof Element && event.target.closest('a, button, .sv-glossary, .sv-chart__sources')) return;
     const explore = event.currentTarget.querySelector<HTMLAnchorElement>('.sv-walk__explore a');
     if (!explore) return;
     event.preventDefault();
+    clickedRef.current = focusedItems(event.target, event.currentTarget);
     explore.click();
   };
   return (
-    <div className="sv-walk__chart sv-walk__chart--explorable" onClick={onClick}>
-      <span className="sv-walk__expand" aria-hidden="true">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" />
-        </svg>
-      </span>
-      {children}
-    </div>
+    <ClickedItems.Provider value={clickedRef}>
+      <div className="sv-walk__chart sv-walk__chart--explorable" onClick={onClick}>
+        <span className="sv-walk__expand" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9" />
+          </svg>
+        </span>
+        {children}
+      </div>
+    </ClickedItems.Provider>
   );
 }
 
@@ -197,16 +222,20 @@ export function PanelHost({ fact, title, steps, children }: PanelHostProps) {
   if (!shown || !explore) return children;
   const step = holding(shown.observation);
   return createPortal(
-    <PanelSheet title={step?.label ?? title} observation={shown.observation} leave={explore.leave}>
+    <PanelSheet title={step?.label ?? title} observation={shown.observation} highlight={shown.highlight} leave={explore.leave}>
       {step ? <AloneStep step={step} /> : children}
     </PanelSheet>,
     document.body,
   );
 }
 
+const NONE: string[] = [];
+
 type PanelSheetProps = {
   title: string;
   observation: string;
+  /** The items of the card the sheet was opened from, to show first and outline (HighlightedQuotes). */
+  highlight?: string[];
   leave: () => void;
   /** Whether the panel is in the sheet yet. The home page fetches it as the sheet opens. */
   loaded?: boolean;
@@ -217,7 +246,7 @@ type PanelSheetProps = {
  * The sheet around a data panel, open at one chart from the first frame the
  * panel is in it. A topic page's sheets, and the home page's.
  */
-export function PanelSheet({ title, observation, leave, loaded = true, children }: PanelSheetProps) {
+export function PanelSheet({ title, observation, highlight = NONE, leave, loaded = true, children }: PanelSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
 
@@ -274,7 +303,9 @@ export function PanelSheet({ title, observation, leave, loaded = true, children 
         <div className="sv-modal__scroll">
           <article className="sv-factpage sv-factpanel">
             <ShownObservation.Provider value={observation}>
-              <SheetFocus.Provider value={observation}>{children}</SheetFocus.Provider>
+              <SheetFocus.Provider value={observation}>
+                <HighlightedQuotes.Provider value={highlight}>{children}</HighlightedQuotes.Provider>
+              </SheetFocus.Provider>
             </ShownObservation.Provider>
           </article>
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, type ReactNode } from 'react';
+import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 import { ChoiceGroup, FilterChips } from './controls';
 import { ControlBar, chipsSummary, type BarItem } from './control-bar';
 import { ReportFigure } from './figure';
@@ -9,7 +9,14 @@ import { quoteAnchor, type Quote } from './quote-attribution';
 import { QuoteCard } from './quote-card';
 import type { SourceCredit } from './types';
 
-export type QuoteSort = 'oldest' | 'newest';
+export type QuoteSort = 'oldest' | 'newest' | 'highlighted';
+
+/**
+ * Quotes to put first and outline, by `quoteAnchor`: those of the card a
+ * reader clicked to open the list, so they find the ones they came for. A
+ * list given some starts in "Highlighted first" order.
+ */
+export const HighlightedQuotes = createContext<string[]>([]);
 
 export type QuoteBrowserProps = {
   quotes: Quote[];
@@ -37,9 +44,10 @@ export type QuoteBrowserProps = {
   panel?: boolean;
 };
 
-const SORTS = [
-  { value: 'oldest' as const, label: 'Oldest first' },
-  { value: 'newest' as const, label: 'Newest first' },
+const SORTS: Array<{ value: QuoteSort; label: string }> = [
+  { value: 'highlighted', label: 'Highlighted first' },
+  { value: 'oldest', label: 'Oldest first' },
+  { value: 'newest', label: 'Newest first' },
 ];
 
 /**
@@ -50,6 +58,8 @@ const SORTS = [
  * order is the calendar's rather than the editor's, and the "Showing n of m"
  * line means a filter never hides that it is filtering. The full list renders
  * on the server, so the page reads, prints and searches without JavaScript.
+ * Opened from a card's quotes (HighlightedQuotes), those come first,
+ * outlined, then the rest oldest first; the date orders are a click away.
  */
 export function QuoteBrowser({
   quotes,
@@ -72,7 +82,10 @@ export function QuoteBrowser({
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const [selectedSpeakers, setSelectedSpeakers] = useState<Set<string>>(new Set());
   const [query, setQuery] = useState(initialSearch);
-  const [sort, setSort] = useState<QuoteSort>(defaultSort);
+  const anchors = useContext(HighlightedQuotes);
+  const highlighted = useMemo(() => anchors.filter(anchor => quotes.some(q => quoteAnchor(q) === anchor)), [anchors, quotes]);
+  const [sort, setSort] = useState<QuoteSort>(highlighted.length > 0 ? 'highlighted' : defaultSort);
+  const sorts = highlighted.length > 0 ? SORTS : SORTS.filter(s => s.value !== 'highlighted');
 
   const positionChoices = useMemo(
     () => chipChoices(quotes.flatMap(q => (q.position ? [q.position] : [])), positions),
@@ -90,13 +103,19 @@ export function QuoteBrowser({
         (selectedSpeakers.size === 0 || selectedSpeakers.has(q.speaker)) &&
         (needle === '' || [q.text, q.translation ?? '', q.speaker].some(field => field.toLowerCase().includes(needle))),
     );
+    // Highlighted first: the highlighted quotes in the card's order, then the rest oldest first.
+    const rank = (q: Quote) => {
+      const at = sort === 'highlighted' ? highlighted.indexOf(quoteAnchor(q)) : -1;
+      return at < 0 ? highlighted.length : at;
+    };
     // Undated quotes go last in either direction: they cannot be placed, and
     // putting them first would give them prominence they have not earned.
     return matches.sort((a, b) => {
+      if (rank(a) !== rank(b)) return rank(a) - rank(b);
       if (!a.date || !b.date) return a.date ? -1 : b.date ? 1 : 0;
-      return sort === 'oldest' ? compareDates(a.date, b.date) : compareDates(b.date, a.date);
+      return sort === 'newest' ? compareDates(b.date, a.date) : compareDates(a.date, b.date);
     });
-  }, [quotes, selectedPositions, selectedTags, selectedSpeakers, query, sort]);
+  }, [quotes, selectedPositions, selectedTags, selectedSpeakers, query, sort, highlighted]);
 
   const chips = (key: string, label: string, choices: ReturnType<typeof chipChoices>, selected: Set<string>, onChange: (next: Set<string>) => void): BarItem => ({
     key,
@@ -111,7 +130,7 @@ export function QuoteBrowser({
     ...(tagChoices.length > 1 ? [chips('tag', tagLabel, tagChoices, selectedTags, setSelectedTags)] : []),
     // With every speaker quoted once, a speaker chip picks one quote: the search does that already.
     ...(speakerChoices.length > 1 && speakerChoices.length < quotes.length ? [chips('speaker', speakerLabel, speakerChoices, selectedSpeakers, setSelectedSpeakers)] : []),
-    { key: 'order', label: 'Order', hideLabel: true, single: true, summary: sort === 'oldest' ? 'Oldest first' : 'Newest first', panel: <ChoiceGroup label="Order" choices={SORTS} value={sort} onChange={setSort} hideLabel /> },
+    { key: 'order', label: 'Order', hideLabel: true, single: true, summary: (sorts.find(s => s.value === sort) ?? sorts[0]).label, panel: <ChoiceGroup label="Order" choices={sorts} value={sort} onChange={setSort} hideLabel /> },
   ];
 
   return (
@@ -129,7 +148,7 @@ export function QuoteBrowser({
       ) : (
         <ol className="sv-quote-browser__list">
           {shown.map(quote => (
-            <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-browser__item" data-row={quote.speaker}>
+            <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-browser__item" data-row={quote.speaker} data-highlighted={highlighted.includes(quoteAnchor(quote)) || undefined}>
               <QuoteCard quote={quote} permalink />
             </li>
           ))}

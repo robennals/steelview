@@ -121,6 +121,12 @@
     scroll-margin-top: 1.5rem;
   }
 
+  /* The quotes of the card the list was opened from, first and outlined. */
+  .sv-quote-browser__item[data-highlighted] .sv-quote-card {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
   .sv-quote-browser__item:target .sv-quote-card {
     border-color: var(--accent);
     box-shadow: 0 0 0 1px var(--accent);
