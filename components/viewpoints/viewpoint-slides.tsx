@@ -76,7 +76,7 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };
-          const graphs = steps.flatMap((step, card) => (step.cardVisual ? [{ step, chart: step.cardVisual.chart, card }] : []));
+          const graphs = steps.flatMap((step, card) => (step.cardVisual ? [{ step, chart: step.cardVisual.chart, picked: step.cardVisual.picked, card }] : []));
           return (
             <TopicRow
               key={viewpoint.id}
@@ -94,11 +94,11 @@ export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: View
                   key="thumbs"
                   total={graphs.length}
                   steps={graphs.map(({ card }) => card)}
-                  thumbs={graphs.map(({ step, chart, card }) => (
+                  thumbs={graphs.map(({ step, chart, picked, card }) => (
                     <li key={card}>
                       <RowThumb step={card}>
                         <span className="sv-row__thumb" aria-hidden="true">
-                          <ChartThumb fact={chart.fact} chart={chart.chart} reading={chart.reading} preview />
+                          <ChartThumb fact={chart.fact} chart={chart.chart} reading={chart.reading} picked={picked} preview />
                         </span>
                         <span className="sv-walk__thumb-label">{card + 1}. {step.heading}</span>
                       </RowThumb>

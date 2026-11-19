@@ -950,8 +950,9 @@ shapes need one, but no description, Graph/Table switch, filters, method
 key, notes or sources. Long figures are clamped to the slide's fixed height,
 never cut: over six rows become thin one-line rows, a bar chart of more than
 twelve exact values becomes ranked columns (as a long comparison does), and a
-timeline of more than twelve events becomes one marker per event on a time
-axis. Text figures — `dataTable`, `quotes` (and `quoteComparison`), `pullQuote`,
+timeline draws every event as a marker on its time axis, with cards for at
+most three: the events the slide's claim picks out, else its major events,
+else its latest. Text figures — `dataTable`, `quotes` (and `quoteComparison`), `pullQuote`,
 `claimCheck`, `caveatList` — and placed `section`s have no graph, and the
 build rejects them. Each kind's thumbnail on a closed row is drawn from the
 same layout; kinds set as type, such as `keyFigures`, thumbnail as plain rows.

@@ -140,10 +140,12 @@ test('a map thumbnail draws its default view, and leaves out the areas the map d
   assert.ok(regions.some(region => region.point), 'the world preset has dot areas');
 });
 
-test('timeline thumbnails mark every event, and every period of every row', () => {
+test('timeline thumbnails draw their preview: every event on the axis, its cards below; and every period of every row', () => {
   const events = thumb('court-record');
   assertDecorative(events);
-  assert.equal(events.match(/<line x1=/g)?.length, 5);
+  // Every event a dot on the broken axis, and a blank card for the one the preview gives a card to.
+  assert.equal(events.match(/class="sv-thumb__dot"/g)?.length, 6);
+  assert.equal(events.match(/class="sv-thumb__card"/g)?.length, 1);
   const periods = thumb('war-periods');
   assertDecorative(periods);
   assert.equal(periods.match(/<rect /g)?.length, 5);
