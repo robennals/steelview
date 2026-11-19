@@ -2034,6 +2034,13 @@
   .sv-factpanel .sv-walk__strip { flex: 1; min-height: 0; }
 
   .sv-factpanel .sv-walk[data-layout="strip"] .sv-walk__step[data-chart] { height: auto; }
+  /* One chart alone, with no miniatures above it, takes all of the height. */
+  .sv-factpanel .sv-walk[data-alone] { grid-template-rows: minmax(0, 1fr); }
+  /* Its title is the sheet's, so it is not said twice, and the sheet is its
+     frame: no box of its own inside it, and its edges line up with the title. */
+  .sv-factpanel .sv-walk[data-alone] .sv-graph-heading { display: none; }
+  .sv-factpanel .sv-walk[data-alone] .sv-walk__stage { padding: 0; border: none; border-radius: 0; background: none; }
+  .sv-factpanel .sv-walk[data-alone] .sv-walk__chart .sv-slide { padding-inline: 0; }
 
   /* Beside the outline, previous/next buttons and a step count would only
      repeat it, so they appear only where it is hidden. */

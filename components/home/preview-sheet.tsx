@@ -31,9 +31,9 @@ type PreviewSheetsProps = {
 };
 
 /**
- * The home page's chart sheets. Clicking a preview chart opens its data
- * collection's panel in a sheet over the home page, at that chart, as a
- * viewpoint's chart does on a topic page. Opening adds a history entry, so
+ * The home page's chart sheets. Clicking a preview chart opens that chart
+ * alone, larger, in a sheet over the home page, as a viewpoint's chart does on
+ * a topic page. Opening adds a history entry, so
  * Back closes the sheet.
  *
  * The panels are not in the page: each is fetched the first time a reader

@@ -1,6 +1,6 @@
 import type { Locator, Page } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { headCorner, openDataRow, openTab, openViewpoint } from './topic-rows';
+import { expectChartAlone, headCorner, openDataRow, openTab, openViewpoint } from './topic-rows';
 
 // These assertions depend on authored uk-immigration content: the topic
 // title "UK immigration", the report `immigration-against-the-long-run`, and
@@ -136,7 +136,7 @@ test('a viewpoint opens a data panel without leaving its tab', async ({ page }) 
   const viewpoint = await openViewpoint(page, 'refuge');
   const card = viewpoint.locator('.sv-deck__card').first();
   await card.locator('.sv-graph-heading').click();
-  await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
+  await expect(page.locator('dialog[open] .sv-walk[data-alone] .sv-chart').first()).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.locator('dialog[open]')).toHaveCount(0);
   await expect(viewpoint).toBeVisible();
@@ -247,8 +247,9 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   await page.keyboard.press('Enter');
 
   const sheet = page.locator('dialog[open]');
-  await expect(sheet.locator('.sv-modal__title')).toContainText('Removals and Returns from the UK');
-  await expect(sheet.locator('.sv-walk__tab[aria-current]')).toBeVisible();
+  // Titled with the chart it opened, not its collection.
+  await expect(sheet.locator('.sv-modal__title')).toHaveText(await card.locator('.sv-graph-heading').first().innerText());
+  await expectChartAlone(sheet);
   await expect(page).toHaveURL(new RegExp(`${ASYLUM}#removals-and-what-stops-them--`));
 
   await page.keyboard.press('Escape');
@@ -258,7 +259,7 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   await expect(explore).toBeFocused();
 });
 
-test('a claim opens its observation with the data behind it picked out', async ({ page }) => {
+test('a claim\'s "See the data" opens the chart behind it alone', async ({ page }) => {
   await page.goto(ASYLUM);
   const viewpoint = await openViewpoint(page, 'bar-and-remove');
   await viewpoint.locator('.sv-deck__outline-item').nth(1).click();
@@ -266,23 +267,18 @@ test('a claim opens its observation with the data behind it picked out', async (
   await page.locator('dialog[open]').getByRole('link', { name: 'See the data' }).click();
 
   const sheet = page.locator('dialog[open]');
-  const step = sheet.locator('.sv-walk__step').filter({ has: page.locator('[data-observation$="--fewer-refused-recorded-leaving"]') });
-  await expect(step.locator('[data-observation$="--fewer-refused-recorded-leaving"]')).toBeVisible();
-  // The line the finding is not about is dimmed; the two it is about are not.
-  await expect(step.locator('[data-series="Returns as a share of refused"][data-mark-dimmed]').first()).toBeAttached();
-  await expect(step.locator('[data-series="Returns as a share of all claims"][data-mark-dimmed]')).toHaveCount(0);
+  await expectChartAlone(sheet);
+  // Nothing on the chart is picked out or dimmed: no observation is shown to explain it.
+  await expect(sheet.locator('[data-mark-dimmed], [data-mark-picked], [data-mark-shown]')).toHaveCount(0);
 });
 
-test('a subtlety\'s address opens its chart\'s panel, selected like an observation', async ({ page }) => {
+test('a subtlety\'s address opens the chart it is about, alone', async ({ page }) => {
+  await page.goto('/topics/us-iran-war/facts/iran-nuclear-programme');
+  const heading = await page.locator('.sv-walk__step:has([data-observation$="--sixty-is-not-ninety"]) .sv-graph-heading').first().innerText();
   await page.goto('/topics/us-iran-war#iran-nuclear-programme--sixty-is-not-ninety');
-  await expect(page.locator('dialog[open] [data-observation$="--sixty-is-not-ninety"]')).toBeVisible();
-});
-
-test('opening a finding brings its picked row into view on a long timeline', async ({ page }) => {
-  await page.goto('/topics/us-iran-war#iran-nuclear-programme--verification-stopped');
-  const step = page.locator('dialog[open] .sv-walk__step').filter({ has: page.locator('[data-observation$="--verification-stopped"]') });
-  await expect(step.locator('[data-row][data-mark-picked]').first()).toBeInViewport();
-  await expect(step.locator('.sv-observe').first()).toBeInViewport();
+  const sheet = page.locator('dialog[open]');
+  await expectChartAlone(sheet);
+  await expect(sheet.locator('.sv-modal__title')).toHaveText(heading);
 });
 
 test('clicking a card\'s chart opens the panel too, title included', async ({ page }) => {
@@ -296,7 +292,7 @@ test('clicking a card\'s chart opens the panel too, title included', async ({ pa
   await card.locator('.sv-walk__chart--explorable').hover();
   await expect(heading).toHaveCSS('text-decoration-line', 'underline');
   await heading.click();
-  await expect(page.locator('dialog[open] .sv-walk__tab').first()).toBeVisible();
+  await expectChartAlone(page.locator('dialog[open]'));
 });
 
 test('scrolling up over a table at its top moves the page', async ({ page }) => {
@@ -639,7 +635,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await claim.click();
     await popup.getByRole('link', { name: 'See the data' }).click();
     await expect(popup).toHaveCount(0);
-    await expect(page.getByRole('dialog', { name: 'Asylum Claims and Decisions in the UK and Europe' })).toBeVisible();
+    await expectChartAlone(page.locator('dialog[open]'));
   });
 
   test('a card\'s point about a trend is drawn as a line over every year', async ({ page }) => {

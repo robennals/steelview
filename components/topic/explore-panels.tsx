@@ -21,6 +21,12 @@ const ExploreContext = createContext<Explore | null>(null);
 /** The observation a panel's sheet was opened at, for the cycler that holds it. */
 export const ShownObservation = createContext<string | null>(null);
 
+/** Inside a sheet, the address it opened at: its panel shows only the chart holding it. */
+const SheetFocus = createContext<string | null>(null);
+
+/** Whether a chart is shown alone in a sheet, where its observations give way to the chart itself. */
+export const ChartAlone = createContext(false);
+
 /** Whether a collection's charts are wanted before its row is open. */
 export function useChartsWanted(fact: string): boolean {
   const explore = useContext(ExploreContext);
@@ -31,8 +37,9 @@ export function useChartsWanted(fact: string): boolean {
 const SHEET_ENTRY = 'svExploreSheet';
 
 /**
- * The topic page's data panels, which a viewpoint can open in a sheet. Opening
- * adds a history entry, so Back closes the sheet as it does a fact's.
+ * The topic page's data panels, one chart of which a viewpoint can open in a
+ * sheet. Opening adds a history entry, so Back closes the sheet as it does a
+ * fact's.
  *
  * Arriving at a chart's or observation's address — from a home-page chart, a
  * shared link or a link on the page — opens it in its sheet over the report.
@@ -83,7 +90,7 @@ export function ExplorePanels({ panels, children }: { panels: string[]; children
   return <ExploreContext.Provider value={explore}>{children}</ExploreContext.Provider>;
 }
 
-/** Opens a collection's data panel in a sheet, at one observation; null outside a topic page. */
+/** Opens the chart holding one observation in a sheet; null outside a topic page. */
 export function useOpenPanel(): ((target: PanelTarget) => void) | null {
   return useContext(ExploreContext)?.open ?? null;
 }
@@ -93,8 +100,8 @@ export const isPlainClick = (event: MouseEvent) => event.button === 0 && !event.
 type ExploreLinkProps = PanelTarget & { href: string };
 
 /**
- * "Explore this data" under a viewpoint step: opens the collection's own data
- * panel in a sheet at once, since the panel is already on the page. Its charts
+ * "Explore this data" under a viewpoint step: opens the chart it cites in a
+ * sheet at once, since the collection's panel is already on the page. Its charts
  * start loading as the reader reaches for the link. It is still a link to the
  * observation, for a new tab or with no script.
  */
@@ -140,18 +147,59 @@ export function ExplorableChart({ children }: { children: ReactNode }) {
   );
 }
 
-type PanelHostProps = { fact: string; title: string; children: ReactNode };
+/** One of a panel's charts, for a sheet that shows it alone. */
+type PanelStep = {
+  content: ReactNode;
+  /** The chart's title, which becomes the sheet's. */
+  label: string;
+  /** The ids that address the chart: its own anchors, its observations' and its views'. */
+  addresses: string[];
+};
+
+type PanelHostProps = {
+  fact: string;
+  title: string;
+  steps: PanelStep[];
+  children: ReactNode;
+};
+
+/** A chart shown alone, in the panel's own layout, without its miniatures or observations. */
+function AloneStep({ step }: { step: PanelStep }) {
+  return (
+    <ChartAlone.Provider value>
+      <div className="sv-walk" data-layout="strip" data-alone>
+        <div className="sv-walk__stage">
+          <div className="sv-walk__strip">
+            <div className="sv-walk__slide">{step.content}</div>
+          </div>
+        </div>
+      </div>
+    </ChartAlone.Provider>
+  );
+}
 
 /**
  * Where a collection's data panel sits: in its row, or while a viewpoint has it
- * open, in a sheet. It is the one panel either way, moved rather than copied.
+ * open, in a sheet. In a sheet, on a topic page or the home page, it is just
+ * the one chart the reader clicked, larger, under its title: the other charts
+ * and the observations stay in the row. An address no one chart holds, such as
+ * a source's, gets the whole panel, under the collection's title.
  */
-export function PanelHost({ fact, title, children }: PanelHostProps) {
+export function PanelHost({ fact, title, steps, children }: PanelHostProps) {
   const explore = useContext(ExploreContext);
+  const inSheet = useContext(SheetFocus);
   const shown = explore?.shown?.fact === fact ? explore.shown : null;
+  const holding = (address: string) => steps.find(step => step.addresses.includes(address));
+  if (inSheet) {
+    const step = holding(inSheet);
+    return step ? <AloneStep step={step} /> : children;
+  }
   if (!shown || !explore) return children;
+  const step = holding(shown.observation);
   return createPortal(
-    <PanelSheet title={title} observation={shown.observation} leave={explore.leave}>{children}</PanelSheet>,
+    <PanelSheet title={step?.label ?? title} observation={shown.observation} leave={explore.leave}>
+      {step ? <AloneStep step={step} /> : children}
+    </PanelSheet>,
     document.body,
   );
 }
@@ -166,8 +214,8 @@ type PanelSheetProps = {
 };
 
 /**
- * The sheet around a data panel, open at one chart and observation from the
- * first frame the panel is in it. A topic page's sheets, and the home page's.
+ * The sheet around a data panel, open at one chart from the first frame the
+ * panel is in it. A topic page's sheets, and the home page's.
  */
 export function PanelSheet({ title, observation, leave, loaded = true, children }: PanelSheetProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -225,7 +273,9 @@ export function PanelSheet({ title, observation, leave, loaded = true, children 
         </div>
         <div className="sv-modal__scroll">
           <article className="sv-factpage sv-factpanel">
-            <ShownObservation.Provider value={observation}>{children}</ShownObservation.Provider>
+            <ShownObservation.Provider value={observation}>
+              <SheetFocus.Provider value={observation}>{children}</SheetFocus.Provider>
+            </ShownObservation.Provider>
           </article>
         </div>
       </div>

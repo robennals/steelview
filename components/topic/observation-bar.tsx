@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore, type MouseEvent, type ReactNode } from 'react';
 import type { DataStep } from '@/lib/content/walkthrough';
-import { ShownObservation } from './explore-panels';
+import { ChartAlone, ShownObservation } from './explore-panels';
 import { Prose } from './prose';
 
 const noSubscription = () => () => {};
@@ -120,10 +120,12 @@ function revealPicked(root: Element) {
  * The shown observation as one line, between a chart's title and its graph:
  * its claim, which opens to its reasoning when clicked. A chart's Subtleties come
  * after its observations and say so in the count. Without JavaScript every
- * observation is shown in full, one after another. Outside a step, nothing.
+ * observation is shown in full, one after another. Outside a step, or on a
+ * chart shown alone in a sheet, nothing: there the chart speaks for itself.
  */
 export function ObservationBar() {
   const step = useContext(Step);
+  const alone = useContext(ChartAlone);
   const ref = useRef<HTMLDivElement>(null);
   const enhanced = useSyncExternalStore(noSubscription, () => true, () => false);
   // Only an opened observation marks the chart: a closed one is a heading the
@@ -147,7 +149,7 @@ export function ObservationBar() {
     if (jumps > 0) ref.current?.querySelector<HTMLElement>('.sv-observe__toggle')?.focus();
   }, [jumps]);
 
-  if (!step || step.observations.length === 0) return null;
+  if (!step || alone || step.observations.length === 0) return null;
   const { observations, addressed, index, open, go, toggle } = step;
   const many = observations.length > 1;
 
