@@ -399,6 +399,9 @@ test('a pop-up closes around its chart, a graph keeping a wide shape, in the mid
   await page.goto(`${ASYLUM}#asylum-claims-and-decisions--uk-per-head-now-at-eu-average`);
   const sheet = page.locator('dialog[open] .sv-modal__panel');
   const bottom = async (locator: Locator) => { const box = (await locator.boundingBox())!; return box.y + box.height; };
+  // A sheet is shown only once its chart has arrived, and so has its final size.
+  const settled = () => expect(sheet).toHaveCSS('opacity', '1');
+  await settled();
   // The Graph/Table switch stands apart from the legend under it.
   const legend = (await sheet.locator('.sv-chart__legend').boundingBox())!;
   expect(legend.y - await bottom(sheet.locator('.sv-chart__view-controls'))).toBeGreaterThanOrEqual(8);
@@ -411,16 +414,20 @@ test('a pop-up closes around its chart, a graph keeping a wide shape, in the mid
   const box = (await sheet.boundingBox())!;
   expect(Math.abs(box.y - (900 - (box.y + box.height)))).toBeLessThan(4);
 
+  // A fresh load each time, so the sheet measured is the one just opened.
+  await page.goto('/');
   await page.goto(`${ASYLUM}#deterrence-and-protection-policies--turnbacks-need-departure-country`);
+  await settled();
   const cards = sheet.locator('.sv-walk__slide').first();
-  await expect(cards).toBeVisible();
   expect(await bottom(sheet) - await bottom(cards)).toBeLessThan(80);
   expect((await sheet.boundingBox())!.height).toBeLessThan(600);
 
   // Rows of bars keep their own height, and the sheet closes around them too.
+  // A fresh load each time, so the sheet measured is the one just opened.
+  await page.goto('/');
   await page.goto(`${ASYLUM}#asylum-claims-and-decisions--why-the-grant-rate-fell`);
+  await settled();
   const bars = sheet.locator('.sv-comparison');
-  await expect(bars).toBeVisible();
   expect(await bottom(sheet) - await bottom(bars.locator('.sv-comparison__scale'))).toBeLessThan(80);
   expect((await sheet.boundingBox())!.height).toBeLessThan(600);
 });
