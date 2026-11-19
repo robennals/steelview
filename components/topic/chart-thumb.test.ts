@@ -91,6 +91,16 @@ test('a composition thumbnail draws every part of every row', () => {
   assert.equal(html.match(/<rect /g)?.length, 5);
 });
 
+test('a composition thumbnail draws bars of counts to one scale', () => {
+  const html = thumb('deaths-by-counter');
+  const ends = [...html.matchAll(/<rect x="([\d.]+)" width="([\d.]+)" y="([\d.]+)"/g)].map(m => ({ end: Number(m[1]) + Number(m[2]), y: Number(m[3]) }));
+  const rowEnd = (y: number) => Math.max(...ends.filter(e => e.y === y).map(e => e.end));
+  const [hrana, hengaw] = [...new Set(ends.map(e => e.y))].sort((a, b) => a - b).map(rowEnd);
+  // Hengaw's 7,650 fills the width; HRANA's 3,636 reaches under half of it.
+  assert.ok(Math.abs(hengaw - 100) < 1e-6);
+  assert.ok(Math.abs(hrana - (3636 / 7650) * 100) < 1e-6);
+});
+
 test('an estimate range thumbnail draws an interval or a dot for every estimate', () => {
   const html = thumb('cost-estimates');
   assertDecorative(html);

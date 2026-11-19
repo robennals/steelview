@@ -27,6 +27,8 @@ import {
   zoneLabelPlacement,
   decimate,
   layoutContext,
+  bandPath,
+  stackFloors,
 } from './series-chart';
 
 const source = {
@@ -572,4 +574,37 @@ test('a plot with a reading alongside tables both readings\' lines', () => {
   assert.deepEqual(drawnLines(data, data.readings[0]).map(d => [d.line.name, d.unit, d.axis]), [
     ['Immigration', 'count', 'left'], ['Net migration', 'count', 'left'], ['Immigration share', 'percent', 'right'],
   ]);
+});
+
+test('a stacked reading draws each line on the total of the lines before it; marks keep the line\'s own value', () => {
+  const s = series();
+  const people = s.readings[0];
+  const lines = [
+    { name: 'Granted', points: [{ period: '1990', value: 10 }, { period: '1991', value: 20 }, { period: '1992', value: 30 }, { period: '1993', value: 40 }] },
+    { name: 'Refused', points: [{ period: '1990', value: 5 }, { period: '1991', value: 5 }, { period: '1992', value: 10 }, { period: '1993', value: 60 }] },
+  ];
+  s.breaks = [];
+  s.readings = [{ ...people, stacked: true, lines }];
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const [granted, refused] = layout.lines;
+  // The first band sits on zero, the second on the first; the top edge is the total.
+  assert.deepEqual(granted.band!.floor.map(p => p.y), lines[0].points.map(() => layout.y(0)));
+  assert.deepEqual(refused.band!.floor.map(p => p.y), granted.band!.top.map(p => p.y));
+  assert.deepEqual(refused.band!.top.map(p => p.y), [15, 25, 40, 100].map(layout.y));
+  // The axis reaches the largest total, not the largest single value.
+  assert.ok(layout.valueTicks[layout.valueTicks.length - 1].value >= 100);
+  assert.match(bandPath(refused.band!), /^M.* Z$/);
+  const mark = plotMark(layout, drawnLines(s, s.readings[0]), { lines: ['Refused'], at: '1993' });
+  assert.deepEqual(mark.points.map(p => [p.y, p.label]), [[layout.y(100), formatValue(60, 'count')]]);
+});
+
+test('stack floors are the running totals of the lines before each', () => {
+  const at = (values: number[]) => values.map((value, i) => ({ period: String(2000 + i), value }));
+  assert.deepEqual(stackFloors([at([1, 2]), at([3, 4]), at([5, 6])]), [[0, 0], [1, 2], [4, 6]]);
+  assert.deepEqual(stackFloors([]), []);
+});
+
+test('an unstacked reading has no bands', () => {
+  const s = series();
+  assert.ok(layoutReading(s, s.readings[0], 'wide').lines.every(line => line.band === undefined));
 });
