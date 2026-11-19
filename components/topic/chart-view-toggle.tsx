@@ -1,6 +1,9 @@
 'use client';
 
 import { createContext, useContext, useState, type ReactNode } from 'react';
+import { ChoiceGroup } from '@/components/report/controls';
+import { ControlBar, type BarItem } from '@/components/report/control-bar';
+import { useShowAsSwitch } from './show-as';
 
 type View = 'graph' | 'alternate' | 'table';
 
@@ -28,7 +31,6 @@ export function ChartViewToggle({
   table,
   graphLabel = 'Graph',
   alternate,
-  controls,
 }: {
   label: string;
   /** The view shown first, and the one rendered on the server. */
@@ -37,8 +39,6 @@ export function ChartViewToggle({
   /** The first button's name, e.g. "Map". */
   graphLabel?: string;
   alternate?: { label: string; graph: ReactNode };
-  /** Further controls on the same row, after the switch: a series' "Show as". */
-  controls?: ReactNode;
 }) {
   const own = useState<View>('graph');
   const [view, setView] = useContext(SharedView) ?? own;
@@ -50,9 +50,22 @@ export function ChartViewToggle({
     </div>
   );
 
+  const showAs = useShowAsSwitch();
+  const readings: BarItem[] = showAs
+    ? [{
+        key: 'show-as',
+        label: 'Show as',
+        summary: showAs.views.find(v => v.id === showAs.current)?.label ?? '',
+        hideLabel: true,
+        single: true,
+        panel: <ChoiceGroup label="Show as" hideLabel choices={showAs.views.map(v => ({ value: v.id, label: v.label }))} value={showAs.current} onChange={showAs.choose} />,
+      }]
+    : [];
+
   return (
     <div className="sv-chart__view">
-      {controls ? <div className="sv-chart__view-bar">{switcher}{controls}</div> : switcher}
+      {/* A series with several readings adds a "Show as" dropdown beside the switch. */}
+      {showAs ? <ControlBar label={`${label} controls`} lead={switcher} items={readings} /> : switcher}
       {view === 'graph' ? graph : view === 'alternate' ? alternate?.graph : table}
       {/* The switch needs script, but every value must stay readable without
           it, so a no-JS reader gets the table as a collapsed disclosure. */}

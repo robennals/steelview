@@ -826,49 +826,11 @@
     margin-bottom: 0.5rem;
   }
 
-  /* A Graph/Table switch with further controls beside it, as a series'
-     "Show as": one row, wrapping on a narrow screen. */
-  .sv-chart__view-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem 1rem;
-    margin-top: 0.35rem;
-  }
-
-  .sv-chart__view-bar > .sv-chart__view-controls {
-    margin-top: 0;
-  }
-
-  /* The switch row stands apart from the legend or graph under it, so a
-     reader does not take the switch for one of the legend's keys. */
-  .sv-chart__view > :is(.sv-chart__view-controls, .sv-chart__view-bar) {
+  /* The Graph/Table switch stands apart from the legend or graph under it,
+     so a reader does not take it for one of the legend's keys. A switch
+     inside a control bar has the bar's own margin. */
+  .sv-chart__view > .sv-chart__view-controls {
     margin-bottom: 0.75rem;
-  }
-
-  /* A series' "Show as" switch: one row, even with long reading names, so a
-     panel slide still holds its chart without scrolling on a phone. */
-  .sv-show-as > .sv-control {
-    align-items: center;
-    margin: 0;
-  }
-
-  @media (max-width: 40rem) {
-    .sv-show-as {
-      flex: 1 1 12rem;
-      min-width: 0;
-    }
-
-    .sv-show-as .sv-control__options {
-      display: flex;
-      flex-wrap: nowrap;
-      width: 100%;
-    }
-
-    .sv-show-as .sv-control__option {
-      flex: 1 1 0;
-      min-width: 0;
-    }
   }
 
   .sv-chart__zone-label {
@@ -1918,9 +1880,8 @@
   .sv-slide__figure .sv-chart__methodology,
   .sv-slide__figure .sv-item-credit,
   .sv-slide__figure .sv-footnote,
-  .sv-slide__figure .sv-timeline__controls,
   .sv-slide__figure .sv-timeline__key,
-  .sv-slide__figure .sv-quote-browser__controls,
+  .sv-slide__figure :is(.sv-timeline, .sv-quote-browser) .sv-bar,
   .sv-slide__figure .sv-control__status { display: none; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
@@ -2990,7 +2951,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-walk[data-alone] .sv-chart[data-panel-chart],
   .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]) { min-height: 0; }
   /* Only the graph gives way: its controls keep their size. */
-  .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__view-controls, .sv-chart__view-bar, .sv-control) { flex-shrink: 0; }
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__view-controls, .sv-bar, .sv-control) { flex-shrink: 0; }
 }
 
 /* On a phone every shape's type would shrink too far, so the narrow plot,
