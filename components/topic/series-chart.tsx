@@ -4,7 +4,7 @@ import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
-import { ShowAs, ShowAsSwitch } from './show-as';
+import { ShowAs } from './show-as';
 import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
 import { aboutThisDataNote } from '@/lib/content/figure-text';
@@ -607,8 +607,7 @@ function Reading({
 
       {(graph => preview
         ? graph
-        // The switch is made here, once per reading, and handed to a client component, so it needs a key.
-        : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} controls={switched ? <ShowAsSwitch key="show-as" /> : undefined} />)(<>
+        : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} />)(<>
           {/* The legend is part of the graph, not its data table: it identifies
               the rendered lines without repeating a dated value beside each name. */}
           <ul className="sv-chart__legend">

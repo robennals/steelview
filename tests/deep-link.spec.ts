@@ -1,3 +1,4 @@
+import type { Locator } from '@playwright/test';
 import { test, expect } from './hydrated-test';
 
 // These assertions depend on authored uk-immigration content: the reports
@@ -80,36 +81,42 @@ test('a Subtlety\'s address opens its chart at that Subtlety, marked as one', as
   await expect(observation.locator('.sv-observe__body')).toBeVisible();
 });
 
-test('a series\' readings are one chart, whose "Show as" switch follows its observations', async ({ page }) => {
+/** The "Show as" dropdown of a series chart: its button names the reading shown. */
+const showAsButton = (chart: Locator, reading: string) => chart.getByRole('button', { name: `Show as: ${reading}` }).filter({ visible: true });
+
+/** Choose a reading from a series chart's "Show as" dropdown. */
+async function showAs(chart: Locator, from: string, to: string) {
+  await showAsButton(chart, from).click();
+  await chart.getByRole('group', { name: 'Show as' }).filter({ visible: true }).getByRole('button', { name: to }).click();
+}
+
+test('a series\' readings are one chart, whose "Show as" dropdown follows its observations', async ({ page }) => {
   const work = 'work-and-study-routes';
   await page.goto(`${factUrl(work)}#${work}--skilled-sponsors-quadrupled`);
   const chart = page.locator(`[id="${work}--chart-sponsor-revocations"]`);
-  const showAs = chart.getByRole('group', { name: 'Show as' }).filter({ visible: true });
   // The observation's link opens the view it is about.
-  await expect(showAs.getByRole('button', { name: 'Registered sponsors' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(showAsButton(chart, 'Registered sponsors')).toBeVisible();
   await expect(page.locator(`[id="${work}--chart-sponsors"]`)).toBeVisible();
   await expect(page.locator(`[id="${work}--chart-revocations"]`)).toBeHidden();
   // Stepping back to an observation about the other view shows that view.
   await page.locator(`[data-observation="${work}--skilled-sponsors-quadrupled"]`).getByRole('button', { name: 'Previous observation' }).click();
   await expect(page.locator(`[data-observation="${work}--revocation-rate-not-a-record"]`)).toBeVisible();
   await expect(page.locator(`[id="${work}--chart-revocations"]`)).toBeVisible();
-  // Choosing a view moves to its first observation.
-  await chart.getByRole('group', { name: 'Show as' }).filter({ visible: true }).getByRole('button', { name: 'Registered sponsors' }).click();
+  // Choosing a view moves to its first observation, and closes the dropdown.
+  await showAs(chart, 'Licences revoked and revocation rate', 'Registered sponsors');
   await expect(page.locator(`[data-observation="${work}--skilled-sponsors-quadrupled"]`)).toBeVisible();
-  // The switch is its buttons alone, with no label on the page.
-  await expect(chart.locator('.sv-show-as .sv-control__label')).toHaveCount(0);
+  await expect(chart.getByRole('group', { name: 'Show as' }).filter({ visible: true })).toHaveCount(0);
   // Graph or Table, and which view, are separate choices: changing one keeps the other.
   const display = chart.getByRole('group', { name: /display$/ }).filter({ visible: true });
   await display.getByRole('button', { name: 'Table' }).click();
-  const views = chart.getByRole('group', { name: 'Show as' }).filter({ visible: true });
-  await views.getByRole('button', { name: 'Licences revoked and revocation rate' }).click();
+  await showAs(chart, 'Registered sponsors', 'Licences revoked and revocation rate');
   await expect(chart.getByRole('group', { name: /display$/ }).filter({ visible: true }).getByRole('button', { name: 'Table' })).toHaveAttribute('aria-pressed', 'true');
   await expect(chart.locator('.sv-chart__table').filter({ visible: true })).toBeVisible();
   await chart.getByRole('group', { name: /display$/ }).filter({ visible: true }).getByRole('button', { name: 'Graph' }).click();
-  await expect(chart.getByRole('group', { name: 'Show as' }).filter({ visible: true }).getByRole('button', { name: 'Licences revoked and revocation rate' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(showAsButton(chart, 'Licences revoked and revocation rate')).toBeVisible();
 });
 
-test('a chart with a "Show as" switch still fills its slide', async ({ page }) => {
+test('a chart with a "Show as" dropdown still fills its slide', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   const work = 'work-and-study-routes';
   await page.goto(`${factUrl(work)}#${work}--chart-sponsor-revocations`);
@@ -127,7 +134,7 @@ test('a reading drawn alongside another shares its plot, read against a right-ha
   await page.goto(`${factUrl(economy)}#${economy}--total-gdp-grew`);
   const chart = page.locator(`[id="${economy}--chart-series"]`);
   // Both readings in one view, with nothing to switch.
-  await expect(chart.getByRole('group', { name: 'Show as' })).toHaveCount(0);
+  await expect(chart.getByRole('button', { name: /^Show as:/ })).toHaveCount(0);
   await expect(page.locator(`[data-observation="${economy}--total-gdp-grew"]`)).toBeVisible();
   await expect(chart.locator('.sv-chart__key-name').filter({ hasText: 'UK GDP (right axis)' })).toBeVisible();
   const plot = chart.locator('.sv-chart__svg:visible').first();
@@ -141,8 +148,7 @@ test('a reading drawn alongside another shares its plot, read against a right-ha
 test('the old address of a chart merged into another opens the reading it became', async ({ page }) => {
   const work = 'work-and-study-routes';
   await page.goto(`${factUrl(work)}#${work}--chart-registered-sponsors`);
-  const showAs = page.locator(`[id="${work}--chart-sponsor-revocations"]`).getByRole('group', { name: 'Show as' });
-  await expect(showAs.getByRole('button', { name: 'Registered sponsors' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(showAsButton(page.locator(`[id="${work}--chart-sponsor-revocations"]`), 'Registered sponsors')).toBeVisible();
   // An address for a chart is not one for its first finding, so that stays closed.
   await expect(page.locator(`[data-observation="${work}--skilled-sponsors-quadrupled"] .sv-observe__body`)).toBeHidden();
 });
@@ -306,4 +312,78 @@ test('a malformed hash does not break the page', async ({ page }) => {
   await page.goto(`${TOPIC}#%zz`);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
   await expect(page.locator('.sv-row--viewpoint').first()).toBeVisible();
+});
+
+// A figure's controls are one line of dropdowns (control-bar.tsx), with a
+// search icon first and whatever does not fit in "More".
+const removals = 'removals-and-what-stops-them';
+const echrQuotes = `/topics/uk-asylum/facts/${removals}#${removals}--chart-said-about-the-echr`;
+
+test('on a phone, a quote list\'s filters are one line of dropdowns, and ticking one keeps every name in its list', async ({ page }) => {
+  await page.setViewportSize({ width: 380, height: 800 });
+  await page.goto(echrQuotes);
+  const quotes = page.locator(`[id="${removals}--chart-said-about-the-echr"]`);
+  const row = quotes.locator('.sv-bar__row');
+  const buttons = row.locator(':scope > .sv-bar__button');
+  // Search, Speaker and Order, side by side: one row.
+  await expect(buttons).toHaveCount(3);
+  const tops = await buttons.evaluateAll(all => all.map(b => Math.round(b.getBoundingClientRect().top)));
+  expect(new Set(tops).size).toBe(1);
+  await expect(buttons.first()).toHaveAccessibleName('Search quotes and speakers');
+
+  await quotes.getByRole('button', { name: 'Speaker: All' }).click();
+  const speakers = quotes.locator('.sv-bar__pop:popover-open');
+  await speakers.getByRole('button', { name: /House of Commons Library/ }).click();
+  // Ticking a speaker ticks it; the list stays open with every name in it.
+  await expect(speakers.getByRole('button', { name: /House of Commons Library/ })).toHaveAttribute('aria-pressed', 'true');
+  await expect(speakers.getByRole('button')).toHaveText([/Home Office/, /House of Commons Library/, /Migration Observatory/, 'Show all']);
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 6 quotes');
+  // The button says what is set, cut short rather than pushing Order into "More".
+  await expect(quotes.getByRole('button', { name: 'Speaker: House of Commons Library' })).toBeVisible();
+  await expect(quotes.getByRole('button', { name: 'Order: Oldest first' })).toBeVisible();
+});
+
+test('a quote list\'s search opens as a row of its own, under filters that stay put', async ({ page }) => {
+  await page.goto(echrQuotes);
+  const quotes = page.locator(`[id="${removals}--chart-said-about-the-echr"]`);
+  await expect(quotes.getByRole('searchbox')).toHaveCount(0);
+  await quotes.getByRole('button', { name: 'Search quotes and speakers' }).click();
+  const search = quotes.getByRole('searchbox', { name: 'Search quotes and speakers' });
+  await expect(search).toBeFocused();
+  await search.fill('Article 3');
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 1 of 6 quotes');
+  const speaker = quotes.getByRole('button', { name: 'Speaker: All' });
+  await expect(speaker).toBeVisible();
+  expect((await search.boundingBox())!.y).toBeGreaterThan((await speaker.boundingBox())!.y);
+  // Closing the search clears it, so no hidden search keeps filtering.
+  await quotes.getByRole('button', { name: 'Close search' }).click();
+  await expect(quotes.getByRole('searchbox')).toHaveCount(0);
+  await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 6 of 6 quotes');
+});
+
+test('dropdowns that do not fit move into "More"', async ({ page }) => {
+  await page.setViewportSize({ width: 250, height: 800 });
+  await page.goto(echrQuotes);
+  const quotes = page.locator(`[id="${removals}--chart-said-about-the-echr"]`);
+  await expect(quotes.getByRole('button', { name: /^Speaker:/ })).toHaveCount(0);
+  await quotes.getByRole('button', { name: 'More' }).click();
+  const more = quotes.locator('.sv-bar__pop:popover-open');
+  await expect(more.getByRole('heading')).toHaveText(['Speaker', 'Order']);
+  await more.getByRole('button', { name: /Home Office/ }).click();
+  await expect(quotes.getByRole('button', { name: 'More: 1 set' })).toBeVisible();
+});
+
+test('a ticked timeline category keeps its name readable', async ({ page }) => {
+  const nuclear = 'iran-nuclear-programme';
+  await page.goto(`/topics/us-iran-war/facts/${nuclear}#${nuclear}--chart-statements`);
+  const timeline = page.locator(`[id="${nuclear}--chart-statements"]`);
+  await timeline.getByRole('button', { name: 'Category: All' }).click();
+  const iaea = timeline.locator('.sv-bar__pop:popover-open').getByRole('button', { name: /IAEA/ });
+  await iaea.click();
+  await expect(iaea).toHaveAttribute('aria-pressed', 'true');
+  // The old chip turned its name paper-coloured on an ink fill; a ticked line stays on paper.
+  const text = await iaea.locator('.sv-timeline__chip-text').evaluate(name => getComputedStyle(name).color);
+  const ground = await timeline.locator('.sv-bar__pop:popover-open').evaluate(list => getComputedStyle(list).backgroundColor);
+  expect(text).not.toBe(ground);
+  await expect(timeline.getByRole('button', { name: 'Category: IAEA' })).toBeVisible();
 });

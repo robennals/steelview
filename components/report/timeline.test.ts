@@ -76,5 +76,5 @@ test('a preview draws every event on its axis, cards for a few, and counts the r
   assert.match(html, /and 3 more events on the time line/);
   // Every event is read out in words, the carded ones included.
   assert.match(html, /<ol class="sv-visually-hidden"><li>11 Oct 2011: Event A of the court record \(c\)<\/li>/);
-  assert.doesNotMatch(html, /sv-control__status|sv-timeline__controls|<details/);
+  assert.doesNotMatch(html, /sv-control__status|sv-bar|<details/);
 });
