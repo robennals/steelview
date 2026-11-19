@@ -1,7 +1,8 @@
 'use client';
 
 import { Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { ChoiceGroup, FilterChips } from './controls';
+import { ChoiceGroup, FilterChips, type Choice } from './controls';
+import { ControlBar, chipsSummary, type BarItem } from './control-bar';
 import { ReportFigure, SourceLine } from './figure';
 import { isApproximateDate } from '@/lib/content/period';
 import { formatDate } from './format';
@@ -219,38 +220,43 @@ export function Timeline({
   const counts = new Map<string, number>();
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
   const ringed = new Set([...open, ...marked]);
+  const categoryChoices = resolvedCategories.map(c => ({
+    value: c.id,
+    label: (
+      <span className="sv-timeline__chip-label" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
+        <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__chip-icon" />
+        <span className="sv-timeline__chip-text">{c.label}</span>
+      </span>
+    ),
+    count: counts.get(c.id) ?? 0,
+  }));
+  const majorChoices: Choice<'all' | 'major'>[] = [{ value: 'all', label: 'All events' }, { value: 'major', label: 'Major only' }];
+  const controlItems: BarItem[] = [
+    ...(showChips
+      ? [{
+          key: 'category',
+          label: 'Category',
+          summary: chipsSummary(selected, v => resolvedCategories.find(c => c.id === v)?.label ?? v),
+          active: selected.size > 0,
+          panel: <FilterChips label="Category" hideLabel selected={selected} onChange={setSelected} choices={categoryChoices} />,
+        }]
+      : []),
+    ...(showMajorToggle
+      ? [{
+          key: 'major',
+          label: 'Show',
+          summary: majorOnly ? 'Major only' : 'All events',
+          active: majorOnly,
+          hideLabel: true,
+          single: true,
+          panel: <ChoiceGroup label="Show" hideLabel value={majorOnly ? 'major' : 'all'} onChange={value => setMajorOnly(value === 'major')} choices={majorChoices} />,
+        }]
+      : []),
+  ];
 
   return (
     <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
-      {(showChips || showMajorToggle) && (
-        <div className="sv-timeline__controls">
-          {showChips && (
-            <FilterChips
-              label="Category"
-              selected={selected}
-              onChange={setSelected}
-              choices={resolvedCategories.map(c => ({
-                value: c.id,
-                label: (
-                  <span className="sv-timeline__chip-label" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
-                    <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__chip-icon" />
-                    <span className="sv-timeline__chip-text">{c.label}</span>
-                  </span>
-                ),
-                count: counts.get(c.id) ?? 0,
-              }))}
-            />
-          )}
-          {showMajorToggle && (
-            <ChoiceGroup
-              label="Show"
-              value={majorOnly ? 'major' : 'all'}
-              onChange={value => setMajorOnly(value === 'major')}
-              choices={[{ value: 'all', label: 'All events' }, { value: 'major', label: 'Major only' }]}
-            />
-          )}
-        </div>
-      )}
+      {(showChips || showMajorToggle) && <ControlBar label="Filter events" items={controlItems} />}
       {!showChips && legend}
       {hasMajor && hasMinor && !majorOnly && (
         <p className="sv-timeline__key">

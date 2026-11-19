@@ -208,7 +208,7 @@ test('a timeline preview draws every event on its axis and cards for the major o
   assert.match(html, /<li>1980s: Fixture: an event its source dates only to the decade/);
   // The empty years between 1984 and 2021 are cut out of the axis.
   assert.equal(html.match(/class="sv-timeline__break"/g)?.length, 1);
-  assert.doesNotMatch(html, /sv-control__status|sv-timeline__controls/);
+  assert.doesNotMatch(html, /sv-control__status|sv-bar/);
 });
 
 test('a timeline preview on a slideshow card gives its cards to the events the card\'s claim picks out', () => {
