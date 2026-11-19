@@ -1,4 +1,5 @@
 import { test, expect } from './hydrated-test';
+import { expectChartAlone } from './topic-rows';
 
 const rows = (page: import('@playwright/test').Page) => page.locator('.sv-row');
 const toggle = (page: import('@playwright/test').Page, n: number) => rows(page).nth(n).locator('.sv-row__toggle');
@@ -99,6 +100,7 @@ test('a preview chart opens its data in a sheet over the home page, which Back c
   const sheet = page.locator('dialog[open]');
   const anchor = page.locator('[data-chart-anchor="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]');
   await expect(sheet.locator('.sv-walk__slide', { has: anchor })).toBeInViewport();
+  await expectChartAlone(sheet);
   await expect(page).toHaveURL(/\/$/);
   await page.goBack();
   await expect(sheet).toHaveCount(0);

@@ -8,8 +8,8 @@ import { DataPanel } from '@/components/topic/data-rows';
 import { panelCharts } from '@/components/topic/fact-figures';
 
 /**
- * One data collection's whole panel, as a topic page's sheet shows it: its
- * charts drawn in full and its observations. Fetched by the home page when a
+ * One data collection's whole panel, its charts drawn in full, of which a
+ * sheet shows the one chart a reader opened. Fetched by the home page when a
  * reader opens a preview chart, so the page does not carry a panel for every
  * preview it shows.
  *

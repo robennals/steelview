@@ -22,7 +22,7 @@ function RowPreview({ topic, slides }: { topic: Topic; slides: PreviewSlide[] })
     <div className="sv-row__columns">
       <PreviewCarousel name={topic.title} labels={slides.map(s => s.label)}>
         {slides.map(slide => (
-          <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.fact.title ?? slide.fact.claim} observation={chartAddress(slide)}>
+          <PreviewChart key={slide.href} slug={topic.slug} fact={slide.fact.id} title={slide.label} observation={chartAddress(slide)}>
             <SlideChart slide={slide} titleHref={reportChartPath(topic.slug, slide)} page={{ slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts }} />
           </PreviewChart>
         ))}

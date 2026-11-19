@@ -85,14 +85,22 @@ type DataPanelProps = {
 
 /**
  * A data collection's charts and observations: the body of its row on the
- * topic page, which a viewpoint's "Explore this data" lifts into a sheet, and
- * the top of its report's own page.
+ * topic page, one chart of which a viewpoint's "Explore this data" lifts into
+ * a sheet, and the top of its report's own page.
  */
 export function DataPanel({ slug, fact, steps, charts }: DataPanelProps) {
   const title = fact.title ?? fact.claim;
+  const stepNodes = steps.map((step, i) => step.unknowns
+    ? <UnknownsStep key={i} fact={fact} step={step} addressed={charts !== undefined} />
+    : <ChartStep key={i} step={step} number={i + 1} addressed={charts !== undefined} />);
+  const panelSteps = steps.map((step, i) => ({
+    content: stepNodes[i],
+    label: step.label,
+    addresses: [...step.anchors, ...step.observations.map(o => o.id), ...(step.views ?? []).flatMap(view => view.anchors)],
+  }));
   return (
     <LazyCharts fact={fact.id} load={rowCharts.bind(null, slug, 'data', fact.id)} drawn={charts}>
-      <PanelHost fact={fact.id} title={title}>
+      <PanelHost fact={fact.id} title={title} steps={panelSteps}>
         <Walkthrough
           name={title}
           headings={steps.map(s => s.label)}
@@ -100,9 +108,7 @@ export function DataPanel({ slug, fact, steps, charts }: DataPanelProps) {
           endLabel="Last chart"
           thumbs={steps.map(s => <StepThumb key={s.label} fact={fact} step={s} />)}
         >
-          {steps.map((step, i) => step.unknowns
-            ? <UnknownsStep key={i} fact={fact} step={step} addressed={charts !== undefined} />
-            : <ChartStep key={i} step={step} number={i + 1} addressed={charts !== undefined} />)}
+          {stepNodes}
         </Walkthrough>
       </PanelHost>
     </LazyCharts>

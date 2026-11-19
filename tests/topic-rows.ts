@@ -1,11 +1,25 @@
-import type { Locator, Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 
 // A topic page's viewpoints and data collections are accordion rows. A
-// viewpoint step's "Explore this data", and each claim in its prose, opens a
-// collection's own panel in a pop-up.
+// viewpoint step's "Explore this data", and each claim in its prose, opens
+// the chart it cites in a pop-up.
 
 /** Where to click a row's toggle: its corner, as the centre of a walkthrough row's head is a thumbnail. */
 export const headCorner = { position: { x: 8, y: 8 } };
+
+/**
+ * A chart sheet shows the one chart it was opened at, larger, under the
+ * chart's title: no second title over the chart, no miniatures of the
+ * collection's other charts, and no observations to step through.
+ */
+export async function expectChartAlone(sheet: Locator): Promise<void> {
+  await expect(sheet.locator('.sv-walk[data-alone] .sv-chart, .sv-walk[data-alone] .sv-report').first()).toBeVisible();
+  await expect(sheet.locator('.sv-walk__step')).toHaveCount(1);
+  await expect(sheet.locator('.sv-modal__title')).not.toBeEmpty();
+  await expect(sheet.locator('.sv-graph-heading:visible')).toHaveCount(0);
+  await expect(sheet.locator('.sv-walk__tab')).toHaveCount(0);
+  await expect(sheet.locator('.sv-observe')).toHaveCount(0);
+}
 
 /** Bring up one of a topic page's tabs. Without JavaScript there are none: every panel is already showing. */
 export async function openTab(page: Page, name: 'Viewpoints' | 'Data'): Promise<void> {
