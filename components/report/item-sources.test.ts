@@ -38,3 +38,37 @@ test('percentages print as published, not as recomputed shares; counts print the
   const counts = renderToStaticMarkup(createElement(CompositionBar, { ...parts, rows: [{ label: 'r', values: { a: 1, b: 1, c: 2 } }] }));
   assert.match(counts, /<span class="sv-composition__segment-share">25%<\/span>/);
 });
+
+test('rows drawn to scale open to their own split at full width; a row\'s source moves out of the clickable summary', () => {
+  const categories = [{ key: 'boat', label: 'Small boat' }, { key: 'ukraine', label: 'Ukraine schemes' }, { key: 'family', label: 'Family reunion' }];
+  const html = renderToStaticMarkup(createElement(CompositionBar, {
+    categories,
+    showCounts: true,
+    rows: [
+      { label: 'Albania', values: { boat: 181, ukraine: 0, family: 4 }, sources: [hengaw] },
+      { label: 'Eritrea', values: { boat: 5875, family: 948 } },
+    ],
+  }));
+  assert.equal(html.match(/<details class="sv-row-detail">/g)?.length, 2);
+  assert.match(html, /Select a row for its details/);
+  // Albania's bar is drawn to scale in the summary, and at full width when opened.
+  const albania = html.slice(html.indexOf('data-row="Albania"'), html.indexOf('data-row="Eritrea"'));
+  assert.match(albania, /<summary[^>]*>[\s\S]*class="sv-composition__bar" style="width:2\.7\d*%"[\s\S]*<\/summary>/);
+  assert.match(albania, /<div class="sv-row-detail__body">[\s\S]*class="sv-composition__bar" style="width:100%"/);
+  assert.match(albania, /Small boat: 97\.8% \(181\)/);
+  assert.doesNotMatch(albania.slice(albania.indexOf('sv-composition__detail-parts')), /Ukraine/);
+  // The source link is in the opened part, not the summary.
+  const summary = albania.slice(albania.indexOf('<summary'), albania.indexOf('</summary>'));
+  assert.doesNotMatch(summary, /#source-x-13/);
+  assert.match(albania, /sv-composition__detail-sources">Source: <span class="sv-item-credit"><span><a href="#source-x-13">/);
+});
+
+test('rows that are all full length, as percentages always are, do not open', () => {
+  const html = renderToStaticMarkup(createElement(CompositionBar, {
+    categories: [{ key: 'a', label: 'A' }, { key: 'b', label: 'B' }],
+    unit: 'percent',
+    rows: [{ label: 'r', values: { a: 40, b: 60 } }, { label: 's', values: { a: 79, b: 19 } }],
+  }));
+  assert.doesNotMatch(html, /sv-row-detail/);
+  assert.doesNotMatch(html, /Select a row/);
+});

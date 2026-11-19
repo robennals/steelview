@@ -28,8 +28,9 @@ test('up to four quotes sit side by side; more become a list a reader can filter
 
 test('a long list filters by category and, since one speaker is quoted twice, by speaker', () => {
   const list = render('postal-secrecy');
-  assert.match(list, /Who is speaking/);
-  assert.match(list, />Speaker</);
+  // Each filter is a dropdown on the control bar, named for what it sets and its setting.
+  assert.match(list, /aria-label="Who is speaking: All"/);
+  assert.match(list, /aria-label="Speaker: All"/);
   assert.match(list, /Government reviews/);
 });
 

@@ -748,6 +748,14 @@
     transition: stroke-width 140ms ease;
   }
 
+  /* A stacked line's band: its colour, light enough that the gridlines and
+     the line along its top still read through it. */
+  .sv-chart__band {
+    fill: currentColor;
+    fill-opacity: 0.35;
+    stroke: none;
+  }
+
   /* Wider transparent stroke makes a thin data line practical to target. */
   .sv-chart__line-hit {
     fill: none;
@@ -818,43 +826,11 @@
     margin-bottom: 0.5rem;
   }
 
-  /* A Graph/Table switch with further controls beside it, as a series'
-     "Show as": one row, wrapping on a narrow screen. */
-  .sv-chart__view-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem 1rem;
-    margin-top: 0.35rem;
-  }
-
-  .sv-chart__view-bar > .sv-chart__view-controls {
-    margin-top: 0;
-  }
-
-  /* A series' "Show as" switch: one row, even with long reading names, so a
-     panel slide still holds its chart without scrolling on a phone. */
-  .sv-show-as > .sv-control {
-    align-items: center;
-    margin: 0;
-  }
-
-  @media (max-width: 40rem) {
-    .sv-show-as {
-      flex: 1 1 12rem;
-      min-width: 0;
-    }
-
-    .sv-show-as .sv-control__options {
-      display: flex;
-      flex-wrap: nowrap;
-      width: 100%;
-    }
-
-    .sv-show-as .sv-control__option {
-      flex: 1 1 0;
-      min-width: 0;
-    }
+  /* The Graph/Table switch stands apart from the legend or graph under it,
+     so a reader does not take it for one of the legend's keys. A switch
+     inside a control bar has the bar's own margin. */
+  .sv-chart__view > .sv-chart__view-controls {
+    margin-bottom: 0.75rem;
   }
 
   .sv-chart__zone-label {
@@ -1904,9 +1880,8 @@
   .sv-slide__figure .sv-chart__methodology,
   .sv-slide__figure .sv-item-credit,
   .sv-slide__figure .sv-footnote,
-  .sv-slide__figure .sv-timeline__controls,
   .sv-slide__figure .sv-timeline__key,
-  .sv-slide__figure .sv-quote-browser__controls,
+  .sv-slide__figure :is(.sv-timeline, .sv-quote-browser) .sv-bar,
   .sv-slide__figure .sv-control__status { display: none; }
   /* Where a step's chart will be while its row's charts load (lazy-charts.tsx). */
   .sv-walk__chart-loading { flex: 1; border-radius: 8px; background: var(--paper-sunk); }
@@ -2602,6 +2577,25 @@
       width: min(76rem, 100%);
       height: min(92dvh, 64rem);
     }
+    /* One chart alone: the sheet closes around it rather than leave space
+       empty under it. A graph is as tall as its shape at the sheet's width
+       (below), and rows of bars, cards of text or a table read best at
+       their own height. A map grows into the whole sheet. Until the chart
+       is in it the sheet keeps its full height. */
+    .sv-modal__panel[data-wide]:has(.sv-walk[data-alone]):not(:has(:is(.sv-map__interactive, .sv-multiples__grid))) {
+      height: auto;
+      max-height: min(92dvh, 64rem, 100dvh - 5rem);
+    }
+    /* Its size comes from its chart, so until the chart has arrived it is not
+       shown, rather than appear at one size and jump to another. It is only
+       transparent, not hidden, so its close button can still take focus. */
+    .sv-modal__panel[data-wide]:has(.sv-walk__chart-loading) {
+      opacity: 0;
+    }
+    /* Its foot, now that the chart is what ends it, is as wide as its sides. */
+    .sv-modal__panel[data-wide]:has(.sv-walk[data-alone]):not(:has(:is(.sv-map__interactive, .sv-multiples__grid))) > .sv-modal__scroll {
+      padding-bottom: 1.4rem;
+    }
   }
 
   .sv-modal__scroll {
@@ -2891,6 +2885,9 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    can need more than that, so the rows are never held under their own height. */
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
+/* In a pop-up that closes around them, the rows ask for that same room, so
+   they sit as far apart as they would in a taller space. */
+.sv-walk[data-alone] .sv-chart[data-panel-chart] .sv-comparison__rows { flex-basis: calc(var(--sv-row-count) * var(--sv-row-room)); }
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: block; }
@@ -2917,6 +2914,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-report[data-panel-chart] :is(.sv-bars__rows, .sv-composition__rows, .sv-estimates__rows, .sv-periods__rows) { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-evenly; margin-block: 0; }
 .sv-report[data-panel-chart] :is(.sv-bars__row, .sv-estimates__row) { margin: 0; }
 .sv-report[data-panel-chart] .sv-composition__row + .sv-composition__row { margin-top: 0; }
+/* Rows spread to fill the step, but never closer than this: a row's name must sit nearer its own bar than the bar above it. */
+.sv-report[data-panel-chart] .sv-composition__rows { row-gap: .85rem; }
 /* The right padding holds an open period's arrowhead, and a small multiple's last dot, inside the step. */
 .sv-report[data-panel-chart] .sv-periods__line { padding-right: .45rem; }
 .sv-report[data-panel-chart] .sv-multiples__grid { padding-right: .3rem; }
@@ -2939,6 +2938,20 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
   .sv-report[data-panel-chart] .sv-multiples__grid { flex: 1 1 auto; grid-auto-rows: 1fr; }
   .sv-report[data-panel-chart] .sv-multiples__panel { display: flex; flex-direction: column; min-height: 0; }
   .sv-report[data-panel-chart] .sv-multiples__plot { flex: 1 1 auto; min-height: 4.75rem; height: auto; }
+}
+
+/* A graph alone in a pop-up is drawn at its tallest panel shape, 2.5 times as
+   wide as it is tall, with room for any event numbers under it: steeper
+   lines read worse, so it grows no taller, and the sheet closes around it. */
+@media (min-width: 40rem) {
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] { container-type: inline-size; }
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] .sv-chart__plot { flex: 0 1 auto; height: calc(100cqw / 2.5 + var(--sv-lane-levels, 0) * 1.6rem); }
+  /* On a short screen that is more than the sheet has, so the graph gives way,
+     and is drawn at a wider shape, rather than run off the sheet's foot. */
+  .sv-walk[data-alone] .sv-chart[data-panel-chart],
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__highlight, .sv-show-as__view, .sv-chart__reading, .sv-chart__view, .sv-chart__focus, [data-focus-view]) { min-height: 0; }
+  /* Only the graph gives way: its controls keep their size. */
+  .sv-walk[data-alone] .sv-chart[data-panel-chart] :is(.sv-chart__view-controls, .sv-bar, .sv-control) { flex-shrink: 0; }
 }
 
 /* On a phone every shape's type would shrink too far, so the narrow plot,
@@ -3092,6 +3105,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview .sv-bars__row,
 .sv-chart__preview .sv-estimates__row { margin: 0; }
 .sv-chart__preview .sv-composition__row + .sv-composition__row { margin-top: 0; }
+/* As in a panel: a name sits nearer its own bar than the one above. Compact rows set name and bar on one line. */
+.sv-chart__preview .sv-composition__rows:not([data-compact]) { row-gap: .55rem; }
 .sv-chart__preview .sv-bars__row { font-size: .8rem; }
 .sv-bars[data-compact] .sv-bars__row { grid-template-columns: minmax(6rem, 34%) minmax(0, 1fr) var(--sv-bars-value, 6ch); grid-template-areas: "label track value"; align-items: center; column-gap: .4rem; font-size: .66rem; line-height: 1.15; }
 .sv-bars[data-compact] .sv-bars__label { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: left; }

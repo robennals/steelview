@@ -295,6 +295,31 @@ test('clicking a card\'s chart opens the panel too, title included', async ({ pa
   await expectChartAlone(page.locator('dialog[open]'));
 });
 
+test('a pop-up first shows at its final size, not growing as its chart arrives', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'refuge');
+  // The height of the sheet on every frame it can be seen, from the click until the chart is in it.
+  await page.evaluate(() => {
+    const heights: number[] = [];
+    const record = () => {
+      const panel = document.querySelector('dialog[open] .sv-modal__panel');
+      if (panel && getComputedStyle(panel).opacity !== '0') {
+        heights.push(Math.round(panel.getBoundingClientRect().height));
+        document.documentElement.dataset.shownHeights = heights.join(' ');
+      }
+      requestAnimationFrame(record);
+    };
+    requestAnimationFrame(record);
+  });
+  await viewpoint.locator('.sv-deck__card').first().locator('.sv-graph-heading').click();
+  await expectChartAlone(page.locator('dialog[open]'));
+  await page.waitForTimeout(300);
+  const heights = (await page.locator('html').getAttribute('data-shown-heights'))!.split(' ');
+  expect(heights.length).toBeGreaterThan(0);
+  expect(new Set(heights).size).toBe(1);
+});
+
 test('scrolling up over a table at its top moves the page', async ({ page }) => {
   await page.setViewportSize({ width: 601, height: 800 });
   await page.goto(DATA);
@@ -367,6 +392,44 @@ test('a short bar chart spreads its bars a little, with its scale under them, in
   expect(second!.y - first!.y).toBeGreaterThan(55);
   expect(second!.y - first!.y).toBeLessThan(65);
   expect(scale!.y - (second!.y + second!.height)).toBeLessThan(40);
+});
+
+test('a pop-up closes around its chart, a graph keeping a wide shape, in the middle of the screen', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(`${ASYLUM}#asylum-claims-and-decisions--uk-per-head-now-at-eu-average`);
+  const sheet = page.locator('dialog[open] .sv-modal__panel');
+  const bottom = async (locator: Locator) => { const box = (await locator.boundingBox())!; return box.y + box.height; };
+  // A sheet is shown only once its chart has arrived, and so has its final size.
+  const settled = () => expect(sheet).toHaveCSS('opacity', '1');
+  await settled();
+  // The Graph/Table switch stands apart from the legend under it.
+  const legend = (await sheet.locator('.sv-chart__legend').boundingBox())!;
+  expect(legend.y - await bottom(sheet.locator('.sv-chart__view-controls'))).toBeGreaterThanOrEqual(8);
+  // The graph keeps a wide shape, as steeper lines read worse, and the sheet ends just under it.
+  const graph = (await sheet.locator('.sv-chart__svg:visible').first().boundingBox())!;
+  expect(graph.width / graph.height).toBeGreaterThan(2.3);
+  expect(graph.width).toBeGreaterThan(1000);
+  expect(await bottom(sheet) - (graph.y + graph.height)).toBeLessThan(80);
+  // A sheet shorter than the screen stays in the middle of it.
+  const box = (await sheet.boundingBox())!;
+  expect(Math.abs(box.y - (900 - (box.y + box.height)))).toBeLessThan(4);
+
+  // A fresh load each time, so the sheet measured is the one just opened.
+  await page.goto('/');
+  await page.goto(`${ASYLUM}#deterrence-and-protection-policies--turnbacks-need-departure-country`);
+  await settled();
+  const cards = sheet.locator('.sv-walk__slide').first();
+  expect(await bottom(sheet) - await bottom(cards)).toBeLessThan(80);
+  expect((await sheet.boundingBox())!.height).toBeLessThan(600);
+
+  // Rows of bars keep their own height, and the sheet closes around them too.
+  // A fresh load each time, so the sheet measured is the one just opened.
+  await page.goto('/');
+  await page.goto(`${ASYLUM}#asylum-claims-and-decisions--why-the-grant-rate-fell`);
+  await settled();
+  const bars = sheet.locator('.sv-comparison');
+  expect(await bottom(sheet) - await bottom(bars.locator('.sv-comparison__scale'))).toBeLessThan(80);
+  expect((await sheet.boundingBox())!.height).toBeLessThan(600);
 });
 
 for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
@@ -728,7 +791,7 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   const sheet = page.locator('dialog[open]');
   await expect(sheet).toHaveCount(1);
   await expect(sheet.locator('.sv-quote-browser .sv-control__status')).toHaveText('Showing 6 of 6 quotes');
-  await expect(sheet.locator('.sv-quote-browser input[type="search"]')).toHaveCount(1);
+  await expect(sheet.locator('.sv-quote-browser').getByRole('button', { name: 'Search quotes and speakers' })).toHaveCount(1);
 });
 
 // us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and
@@ -740,6 +803,8 @@ test('a data panel lists every quote on its topic, which a reader can narrow to 
   const quotes = row.locator('.sv-quote-browser');
   await expect(quotes.locator('.sv-graph-heading')).toHaveText('Every quote on this topic');
   await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 5 of 5 quotes');
-  await quotes.getByRole('button', { name: /Watson v\. RNC/ }).click();
+  // Each question is a line of the Question dropdown.
+  await quotes.getByRole('button', { name: 'Question: All' }).click();
+  await quotes.locator('.sv-bar__pop:popover-open').getByRole('button', { name: /Watson v\. RNC/ }).click();
   await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 5 quotes');
 });

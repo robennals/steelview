@@ -212,6 +212,13 @@ export const seriesReadingSchema = z.object({
    * then not a view of its own, and its observations are read on this one.
    */
   alongside: z.string().min(1).optional(),
+  /**
+   * The lines are parts of one whole — outcomes of each year's claims — so
+   * each is drawn as a band stacked on the ones before it, and the top edge
+   * is the total. Every line must give the same periods, as counts that are
+   * never negative.
+   */
+  stacked: z.boolean().optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 

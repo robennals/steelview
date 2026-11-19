@@ -1,7 +1,8 @@
 'use client';
 
-import { useId, useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { ChoiceGroup, FilterChips } from './controls';
+import { ControlBar, chipsSummary, type BarItem } from './control-bar';
 import { ReportFigure } from './figure';
 import { compareDates } from './format';
 import { quoteAnchor, type Quote } from './quote-attribution';
@@ -67,7 +68,6 @@ export function QuoteBrowser({
   footer,
   panel,
 }: QuoteBrowserProps) {
-  const searchId = useId();
   const [selectedPositions, setSelectedPositions] = useState<Set<string>>(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const [selectedSpeakers, setSelectedSpeakers] = useState<Set<string>>(new Set());
@@ -98,31 +98,25 @@ export function QuoteBrowser({
     });
   }, [quotes, selectedPositions, selectedTags, selectedSpeakers, query, sort]);
 
+  const chips = (key: string, label: string, choices: ReturnType<typeof chipChoices>, selected: Set<string>, onChange: (next: Set<string>) => void): BarItem => ({
+    key,
+    label,
+    summary: chipsSummary(selected),
+    active: selected.size > 0,
+    panel: <FilterChips label={label} hideLabel choices={choices} selected={selected} onChange={onChange} />,
+  });
+  const controlItems: BarItem[] = [
+    // A single position is not a choice, so the filter only appears when there is something to compare.
+    ...(positionChoices.length > 1 ? [chips('position', positionLabel, positionChoices, selectedPositions, setSelectedPositions)] : []),
+    ...(tagChoices.length > 1 ? [chips('tag', tagLabel, tagChoices, selectedTags, setSelectedTags)] : []),
+    // With every speaker quoted once, a speaker chip picks one quote: the search does that already.
+    ...(speakerChoices.length > 1 && speakerChoices.length < quotes.length ? [chips('speaker', speakerLabel, speakerChoices, selectedSpeakers, setSelectedSpeakers)] : []),
+    { key: 'order', label: 'Order', hideLabel: true, single: true, summary: sort === 'oldest' ? 'Oldest first' : 'Newest first', panel: <ChoiceGroup label="Order" choices={SORTS} value={sort} onChange={setSort} hideLabel /> },
+  ];
+
   return (
     <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} className="sv-quote-browser">
-      <div className="sv-quote-browser__controls">
-        {/* A single position is not a choice, so the filter only appears when there is something to compare. */}
-        {positionChoices.length > 1 && (
-          <FilterChips label={positionLabel} choices={positionChoices} selected={selectedPositions} onChange={setSelectedPositions} />
-        )}
-        {tagChoices.length > 1 && <FilterChips label={tagLabel} choices={tagChoices} selected={selectedTags} onChange={setSelectedTags} />}
-        {/* With every speaker quoted once, a speaker chip picks one quote: the search does that already. */}
-        {speakerChoices.length > 1 && speakerChoices.length < quotes.length && (
-          <FilterChips label={speakerLabel} choices={speakerChoices} selected={selectedSpeakers} onChange={setSelectedSpeakers} />
-        )}
-        <div className="sv-quote-browser__row">
-          <label className="sv-visually-hidden" htmlFor={searchId}>Search quotes and speakers</label>
-          <input
-            id={searchId}
-            className="sv-control__search"
-            type="search"
-            placeholder="Search quotes and speakers"
-            value={query}
-            onChange={event => setQuery(event.target.value)}
-          />
-          <ChoiceGroup label="Order" choices={SORTS} value={sort} onChange={setSort} hideLabel />
-        </div>
-      </div>
+      <ControlBar label="Filter and sort quotes" items={controlItems} search={{ value: query, onChange: setQuery, placeholder: 'Search quotes and speakers' }} />
 
       <p className="sv-control__status" aria-live="polite">
         Showing {shown.length} of {quotes.length} {quotes.length === 1 ? 'quote' : 'quotes'}

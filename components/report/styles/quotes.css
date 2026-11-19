@@ -108,22 +108,6 @@
 
   /* ------------------------------------------------------ quote browser */
 
-  .sv-quote-browser__controls {
-    margin-bottom: 0.5rem;
-  }
-
-  .sv-quote-browser__row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.6rem 0.75rem;
-    margin-bottom: 0.85rem;
-  }
-
-  .sv-quote-browser__row .sv-control {
-    margin: 0;
-  }
-
   .sv-quote-browser__list {
     list-style: none;
     margin: 0;

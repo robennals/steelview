@@ -4,7 +4,7 @@ import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
-import { ShowAs, ShowAsSwitch } from './show-as';
+import { ShowAs } from './show-as';
 import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
 import { aboutThisDataNote } from '@/lib/content/figure-text';
@@ -15,6 +15,7 @@ import { quotedPhrases, sourcePassages } from '@/lib/content/source-passage';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   alongsideOf,
+  bandPath,
   CHART_GEOMETRY,
   drawnLines,
   focusWindow,
@@ -214,6 +215,8 @@ function Plot({
 
       {layout.lines.map((line) => (
         <g key={line.name} data-series={line.name} style={{ color: `var(--sv-series-${line.slot})` }} clipPath={window ? `url(#${clipId})` : undefined}>
+          {/* A stacked line fills its band down to the lines below it. */}
+          {line.band && <path className="sv-chart__band" d={bandPath(line.band)} />}
           {/* A bridge is the step across a break: same colour, dashed and
               faded, so the eye reads "these two ends are not the same
               measurement" instead of one continuous trend. */}
@@ -578,7 +581,8 @@ function Reading({
     const variants: SeriesVariant[] = preview ? [...PREVIEW_VARIANTS[preview.fit ?? 'wide'], 'narrow'] : panel ? [...PREVIEW_VARIANTS.panel, 'narrow'] : ['narrow', 'wide'];
     const groups = new Map(variants.map(variant => [variant, preview ? [] : placeMarkers(series, reading, variant, shown, inView)]));
     return <>
-      <div className="sv-chart__plot">
+      {/* Whether a row of event numbers sits under the graph, so a pop-up can leave room for it. */}
+      <div className="sv-chart__plot" style={{ '--sv-lane-levels': [...groups.values()].some(placed => placed.length > 0) ? 1 : 0 }}>
         {variants.map(variant => (
           <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} window={preview ? undefined : shown} marks={panel ? marks : undefined} markers={preview ? undefined : { groups: groups.get(variant) ?? [], cardsId }} />
         ))}
@@ -608,8 +612,7 @@ function Reading({
 
       {(graph => preview
         ? graph
-        // The switch is made here, once per reading, and handed to a client component, so it needs a key.
-        : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} controls={switched ? <ShowAsSwitch key="show-as" /> : undefined} />)(<>
+        : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} />)(<>
           {/* The legend is part of the graph, not its data table: it identifies
               the rendered lines without repeating a dated value beside each name. */}
           <ul className="sv-chart__legend">
