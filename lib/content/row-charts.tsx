@@ -28,11 +28,11 @@ export async function rowCharts(slug: string, kind: 'viewpoint' | 'data', id: st
     const { steps } = viewpointWalkthrough(topic, viewpoint);
     return steps.map(({ cardVisual }, i) => {
       if (!cardVisual) return null;
-      const { chart, cited } = cardVisual;
+      const { chart, picked } = cardVisual;
       return (
         <Fragment key={i}>
-          {/* A card of quotes picks out the speakers its point rests on: the rows its observation marks. */}
-          <SlideChart slide={chart} fit="card" page={page} picked={chart.fact.observationMarks?.[cited.section]?.rows} />
+          {/* A card picks out the rows its point rests on: the speakers of its quotes, the events of its timeline. */}
+          <SlideChart slide={chart} fit="card" page={page} picked={picked} />
           <ChartSources fact={chart.fact} numbers={slideCitations(chart.fact, chart)} />
         </Fragment>
       );

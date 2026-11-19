@@ -16,8 +16,12 @@ export type WalkthroughStep = {
   chart?: PreviewSlide;
   /** The citation that chart was chosen for: `#fact-<id>/<section>`. */
   cited?: { id: string; section: string };
-  /** The graph or quotes a slideshow card is made with (`cardVisual`), with the citation it was chosen for. */
-  cardVisual?: { chart: PreviewSlide; cited: { id: string; section: string } };
+  /**
+   * The graph or quotes a slideshow card is made with (`cardVisual`), with the
+   * citation it was chosen for and the rows (`observationMarks`) that every
+   * citation of it in the card's line picks out.
+   */
+  cardVisual?: { chart: PreviewSlide; cited: { id: string; section: string }; picked: string[] };
 };
 
 export type Walkthrough = {
@@ -181,7 +185,12 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
  * as more text, which the card already gives.
  */
 function cardVisual(inReasoning: { chart: PreviewSlide; cited: { id: string; section: string } }[]) {
-  return inReasoning.find(({ chart }) => isGraph(chart) || componentFigure(chart.fact, chart.chart)?.kind === 'quotes');
+  const first = inReasoning.find(({ chart }) => isGraph(chart) || componentFigure(chart.fact, chart.chart)?.kind === 'quotes');
+  if (!first) return undefined;
+  // A line can cite two findings about one chart, as two cases on one timeline.
+  const marks = first.chart.fact.observationMarks;
+  const sameChart = inReasoning.filter(({ chart }) => chart.fact.id === first.chart.fact.id && chart.chart === first.chart.chart);
+  return { ...first, picked: [...new Set(sameChart.flatMap(({ cited }) => marks?.[cited.section]?.rows ?? []))] };
 }
 
 /**
@@ -242,6 +251,8 @@ export function repeatedCardVisualErrors(topic: Topic): string[] {
 /** A slideshow card's graph or quotes, with where it opens its data. */
 export type CardVisual = {
   chart: PreviewSlide;
+  /** The rows the card's line picks out on it: a timeline's thumbnail gives them its cards, as the card does. */
+  picked: string[];
   /** Where the graph opens its collection's data panel, when the topic page has one. */
   panel?: PanelTarget;
   /** "Explore this data", rendered as a citation so it opens the collection's report, for a graph with no panel. */
@@ -287,7 +298,7 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
           panel: cited && panelFor(cited.id, cited.section),
           html: await render(markdown),
           exploreHtml: cited && await explore(cited),
-          cardVisual: cardVisual && { chart: cardVisual.chart, panel: panelFor(cardVisual.cited.id, cardVisual.cited.section), exploreHtml: await explore(cardVisual.cited) },
+          cardVisual: cardVisual && { chart: cardVisual.chart, picked: cardVisual.picked, panel: panelFor(cardVisual.cited.id, cardVisual.cited.section), exploreHtml: await explore(cardVisual.cited) },
           // Inline, for a card's subtitle line.
           reasoningHtml: (await render(reasoning)).replace(/^<p>|<\/p>\s*$/g, ''),
           evidenceHtml: await render(evidence),

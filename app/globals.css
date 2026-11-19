@@ -1769,6 +1769,9 @@
   /* A row a reader has opened stays readable, whatever the observation is about. */
   [data-row][data-mark-dimmed]:has(details[open]) { opacity: 1; }
   [data-row][data-mark-picked] { font-weight: 600; }
+  /* A timeline's cards stay readable: the picked ones are outlined instead (timelines.css). */
+  .sv-timeline__item[data-row][data-mark-dimmed] { opacity: 1; }
+  .sv-timeline__item[data-row][data-mark-picked] { font-weight: inherit; }
 
   /* Without JavaScript every observation shows, one after another. */
   .sv-observe__item:not([hidden]) ~ .sv-observe__item:not([hidden]) { margin-top: 1rem; }
@@ -3085,8 +3088,7 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-chart__preview .sv-bars__rows,
 .sv-chart__preview .sv-composition__rows,
 .sv-chart__preview .sv-estimates__rows,
-.sv-chart__preview .sv-periods__rows,
-.sv-chart__preview .sv-timeline__lines { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
+.sv-chart__preview .sv-periods__rows { flex: 1; display: flex; flex-direction: column; justify-content: space-evenly; margin: 0; }
 .sv-chart__preview .sv-bars__row,
 .sv-chart__preview .sv-estimates__row { margin: 0; }
 .sv-chart__preview .sv-composition__row + .sv-composition__row { margin-top: 0; }
@@ -3158,18 +3160,6 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 /* A compact track is too thin to hold a label; the row label and the key still name every bar. */
 .sv-periods[data-compact] .sv-periods__bar-label,
 .sv-periods[data-compact] .sv-periods__side-label { display: none; }
-/* Timelines: one line per event, or past twelve one marker each on an axis. */
-.sv-timeline__lines { list-style: none; padding: 0; font: .78rem/1.3 var(--font-sans); }
-.sv-timeline__line { display: flex; align-items: baseline; gap: .45rem; min-width: 0; color: var(--sv-timeline-color); }
-.sv-timeline__line-icon { flex: none; align-self: center; }
-.sv-timeline__line time { flex: none; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.sv-timeline__line-title { overflow: hidden; color: var(--ink); white-space: nowrap; text-overflow: ellipsis; }
-.sv-timeline__lines[data-compact] { font-size: .66rem; line-height: 1.15; }
-.sv-timeline__lane { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-inline: .45rem; font-family: var(--font-sans); }
-.sv-timeline__lane-track { position: relative; list-style: none; margin: 0; padding: 0; height: calc(var(--sv-strip-levels, 1) * .9rem + .6rem); border-bottom: 1px solid var(--rule-strong); }
-.sv-timeline__lane-mark { position: absolute; bottom: calc(var(--sv-strip-level, 0) * .9rem + .2rem); transform: translateX(-50%); line-height: 0; }
-.sv-timeline__lane-icon { width: .7rem; height: .7rem; fill: currentColor; }
-.sv-timeline__lane-axis { position: relative; height: 1.3rem; }
 /* Maps: the whole map scaled to the space left. A tile grid is sized by its
    container's height as well as its width, so every tile fits. */
 .sv-chart__preview .sv-geo-map__svg { flex: 1 1 0; min-height: 0; width: 100%; height: 100%; max-height: none; }
@@ -3226,3 +3216,5 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
 .sv-thumb__area { opacity: .8; }
 .sv-thumb__area[data-missing] { fill: var(--rule); }
 .sv-thumb__rule { stroke: var(--ink-4); stroke-width: 1; }
+.sv-thumb__card { fill: var(--paper); stroke: var(--rule-strong); stroke-width: 1; }
+.sv-thumb__text, .sv-thumb__label { fill: var(--ink-4); opacity: .6; }
