@@ -65,7 +65,7 @@
 
   /* The marker follows the label, joined to its last word by a no-break
      space so it never wraps onto a line of its own. */
-  .sv-row-detail > summary :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child)::after {
+  .sv-row-detail > summary :is(.sv-bars__label, .sv-estimates__label, .sv-composition__label, .sv-comparison__label > :first-child)::after {
     content: "\00a0\25B8";
     color: var(--ink-3);
     font-size: 1.4em;
@@ -73,15 +73,15 @@
     line-height: 0;
   }
 
-  .sv-row-detail[open] > summary :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child)::after {
+  .sv-row-detail[open] > summary :is(.sv-bars__label, .sv-estimates__label, .sv-composition__label, .sv-comparison__label > :first-child)::after {
     content: "\00a0\25BE";
   }
 
-  .sv-row-detail > summary:hover :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child) {
+  .sv-row-detail > summary:hover :is(.sv-bars__label, .sv-estimates__label, .sv-composition__label, .sv-comparison__label > :first-child) {
     color: var(--ink);
   }
 
-  .sv-row-detail > summary:hover :is(.sv-bars__label, .sv-estimates__label, .sv-comparison__label > :first-child)::after {
+  .sv-row-detail > summary:hover :is(.sv-bars__label, .sv-estimates__label, .sv-composition__label, .sv-comparison__label > :first-child)::after {
     color: var(--accent);
   }
 
@@ -842,6 +842,38 @@
     .sv-composition__segment[data-fit="large"] .sv-composition__segment-name {
       display: inline;
     }
+  }
+
+  /* An opened row: its split at full width, then each part counted. */
+  .sv-composition__summary {
+    display: block;
+  }
+
+  .sv-composition__detail-caption,
+  .sv-composition__detail-sources {
+    margin: 0.5rem 0 0.3rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  .sv-composition__detail-parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1rem;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-2);
+  }
+
+  .sv-composition__detail-parts li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .sv-composition__count {

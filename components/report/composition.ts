@@ -29,8 +29,13 @@ export type CompositionSegment = {
   share: number;
 };
 
-/** `total` is the source's stated total when it gives one, else the parts' sum. Shares are always of the parts' sum, so a bar fills its width. */
-export type CompositionRow = { label: string; total: number; segments: CompositionSegment[]; sources?: SourceCredit[] };
+/**
+ * `total` is the source's stated total when it gives one, else the parts'
+ * sum. Shares are always of the parts' sum. `length` is how long the bar is,
+ * 0–100: its parts' sum against the largest row's, so two bars of the same
+ * length always stand for the same amount.
+ */
+export type CompositionRow = { label: string; total: number; length: number; segments: CompositionSegment[]; sources?: SourceCredit[] };
 
 export const OTHER_KEY = '__other';
 
@@ -43,13 +48,18 @@ export const OTHER_KEY = '__other';
 export function compose(
   categories: CompositionCategory[],
   rows: CompositionRowInput[],
-  { otherThreshold, otherLabel = 'Other' }: { otherThreshold?: number; otherLabel?: string } = {},
+  { otherThreshold, otherLabel = 'Other', unit }: { otherThreshold?: number; otherLabel?: string; unit?: 'percent' | 'count' } = {},
 ): { categories: CompositionCategory[]; rows: CompositionRow[] } {
   const size = (row: CompositionRowInput, key: string) => {
     const part = row.values[key];
     return part === undefined ? 0 : Math.max(0, pointValue(part));
   };
   const totals = rows.map(row => categories.reduce((sum, category) => sum + size(row, category.key), 0));
+  // Rows of percentages are each a whole (100%), so they are drawn the same
+  // length. Rows of counts are drawn to one scale, the largest row filling
+  // the width.
+  const longest = Math.max(0, ...totals);
+  const lengthOf = (rowIndex: number) => (unit === 'percent' || longest === 0 ? 100 : (totals[rowIndex] / longest) * 100);
   const shareOf = (rowIndex: number, key: string) => (totals[rowIndex] > 0 ? (size(rows[rowIndex], key) / totals[rowIndex]) * 100 : 0);
 
   const folded = new Set(
@@ -77,7 +87,7 @@ export function compose(
         const value = [...folded].reduce((sum, key) => sum + size(row, key), 0);
         segments.push({ key: OTHER_KEY, label: otherLabel, value, share: totals[i] > 0 ? (value / totals[i]) * 100 : 0 });
       }
-      return { label: row.label, total: row.total ?? totals[i], segments, ...(row.sources ? { sources: row.sources } : {}) };
+      return { label: row.label, total: row.total ?? totals[i], length: lengthOf(i), segments, ...(row.sources ? { sources: row.sources } : {}) };
     }),
   };
 }

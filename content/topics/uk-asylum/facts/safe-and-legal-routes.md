@@ -944,8 +944,8 @@ figures:
       People of each nationality who arrived by small boat or were offered a
       safe and legal route from outside the UK, 2018 Q1 to 2026 Q2, the whole
       period the small-boat data cover.
-      Each bar is one nationality's own total, printed beside it, so compare
-      shares across bars, not sizes. Ordered by the share who came by boat, with
+      Each bar is one nationality's own total, drawn to one scale and printed
+      beside it. Ordered by the share who came by boat, with
       the residual last.
     rowLabel: Nationality
     showCounts: true
@@ -993,8 +993,8 @@ figures:
       People of each nationality who arrived by small boat or were offered a
       safe and legal route from outside the UK, in the year ending June 2026,
       the year in which family reunion was paused, on 4 September 2025.
-      Each bar is one nationality's own total, printed beside it, so compare
-      shares across bars, not sizes. Ordered by the share who came by boat, with
+      Each bar is one nationality's own total, drawn to one scale and printed
+      beside it. Ordered by the share who came by boat, with
       the residual last.
     rowLabel: Nationality
     showCounts: true
