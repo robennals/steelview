@@ -527,6 +527,24 @@ test('a reading drawn alongside another names one, of the same series, whose lin
   assert.ok(draw('share', false).some(e => e.includes('share a plot and both have a line')));
 });
 
+test('a stacked reading adds up: counts, two or more lines on the same periods, none negative, its plot its own', () => {
+  const stack = (edit: (s: Series) => void = () => {}) => {
+    const t = topicWithSeries();
+    const s = t.facts[0].series!;
+    const first = s.readings[0].lines[0];
+    s.readings[0] = { ...s.readings[0], stacked: true, lines: [first, { ...first, name: 'Emigration' }] };
+    edit(s);
+    return validateTopic(t).filter(e => e.includes('stack'));
+  };
+  assert.deepEqual(stack(), []);
+  assert.ok(stack(s => { s.readings[0].unit = 'percent'; }).some(e => e.includes('unit must be count')));
+  assert.ok(stack(s => { s.readings[0].lines.pop(); }).some(e => e.includes('has one line')));
+  assert.ok(stack(s => { s.readings[0].lines[1] = { ...s.readings[0].lines[1], points: s.readings[0].lines[1].points.map((p, i) => (i === 1 ? { ...p, period: '1991-06' } : p)) }; }).some(e => e.includes('different periods')));
+  assert.ok(stack(s => { s.readings[0].lines[1] = { ...s.readings[0].lines[1], points: s.readings[0].lines[1].points.map((p, i) => (i === 1 ? { ...p, value: -1 } : p)) }; }).some(e => e.includes('negative value')));
+  assert.ok(stack(s => { s.readings.push({ ...s.readings[0], id: 'share', stacked: undefined, alongside: 'people', lines: [{ ...s.readings[0].lines[0], name: 'Share' }] }); }).some(e => e.includes('no reading can share its plot')));
+  assert.ok(stack(s => { s.focus = { from: '1992', label: 'Recent' }; }).some(e => e.includes('focus window')));
+});
+
 test('rule 14: two readings may not share an id', () => {
   const t = topicWithSeries();
   const s = t.facts[0].series!;

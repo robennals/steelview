@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { compose, compositionColor, type CompositionCategory, type CompositionRowInput, type CompositionSegment } from './composition';
+import { compose, compositionColor, type CompositionCategory, type CompositionRow, type CompositionRowInput, type CompositionSegment } from './composition';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
 import { qualifiedLabel, qualifiedText } from './qualified';
 import { COMPACT_PREVIEW_ITEMS, DENSE_PREVIEW_ITEMS } from './ranked-columns';
+import { DetailRow, RowDetailHint } from './row-detail';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
 
 export type { CompositionCategory, CompositionRowInput } from './composition';
@@ -53,8 +54,10 @@ function formatShare(share: number): string {
 }
 
 /**
- * How a whole divides into parts, compared across a few rows: each bar is
- * 100%, so a reader compares shares, not sizes. Labels sit inside a segment
+ * How a whole divides into parts, compared across a few rows. Bars of counts
+ * share one scale, so a bar's length is its row's total and two bars of the
+ * same length stand for the same amount; bars of percentages are each 100%
+ * and so all the same length. Labels sit inside a segment
  * only when it is wide enough to hold them; every part is named in the
  * legend and every share (and count) is in the table, so a thin segment is
  * never unlabelled — only labelled elsewhere.
@@ -78,7 +81,7 @@ export function CompositionBar({
   panel,
   preview,
 }: CompositionBarProps) {
-  const composed = compose(categories, rows, { otherThreshold, otherLabel });
+  const composed = compose(categories, rows, { otherThreshold, otherLabel, unit });
   // Up to four places, so a published 12.25% is not rounded to 12.3%.
   const published = { unit: 'percent', decimals: 4 } as const;
   const shareLabel = (segment: CompositionSegment) =>
@@ -89,6 +92,53 @@ export function CompositionBar({
       : `${segment.share.toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`;
   const color = (key: string) => compositionColor(categories, key);
   const totalText = (total: number) => formatValue(total, countFormat);
+  const countText = (segment: CompositionSegment) => (segment.published === undefined ? formatValue(segment.value, countFormat) : qualifiedText(segment.published, countFormat));
+  // Drawn to scale, a small row's parts can be too thin to see, so on the
+  // full chart each row opens to show its own split at full width.
+  const opens = !preview && composed.rows.some(row => row.length < 100);
+
+  /** A row's bar, `length` percent of the width, each part labelled where it has room. */
+  const bar = (row: CompositionRow, length: number) => (
+    <div className="sv-composition__bar" style={{ width: `${length}%` }} aria-hidden="true">
+      {row.segments.map(segment => {
+        // Room for a label depends on the segment's width on the page, not its share of a short bar.
+        const width = (segment.share * length) / 100;
+        return segment.share > 0 ? (
+          <span
+            key={segment.key}
+            className="sv-composition__segment"
+            data-fit={width >= 28 ? 'large' : width >= 12 ? 'medium' : width >= 6 ? 'small' : undefined}
+            style={{ width: `${segment.share}%`, background: color(segment.key) }}
+          >
+            <span className="sv-composition__segment-name">{segment.label} </span>
+            <span className="sv-composition__segment-share">{shareLabel(segment)}</span>
+          </span>
+        ) : null;
+      })}
+    </div>
+  );
+
+  /**
+   * A row's name, total and bar to scale, with the bar's words for a screen
+   * reader. A row that opens carries its sources in what it opens to, since
+   * a link inside the clickable summary cannot be reached reliably.
+   */
+  const rowSummary = (row: CompositionRow, withSources: boolean) => (
+    <>
+      <p className="sv-composition__head">
+        <span className="sv-composition__label">
+          {row.label}
+          {row.sources && withSources && <SourceCredits sources={row.sources} />}
+        </span>
+        {showCounts && <span className="sv-composition__total">{totalText(row.total)}<span className="sv-composition__total-word"> total</span></span>}
+      </p>
+      {/* The text equivalent of the bar, in stacking order. */}
+      <p className="sv-visually-hidden">
+        {row.segments.map(s => `${s.label} ${shareLabel(s)}`).join(', ')}
+      </p>
+      {bar(row, row.length)}
+    </>
+  );
 
   const graph = (
     <>
@@ -100,6 +150,7 @@ export function CompositionBar({
           </li>
         ))}
       </ul>
+      {opens && <RowDetailHint />}
       <ol
         className="sv-composition__rows"
         data-compact={(preview && composed.rows.length > COMPACT_PREVIEW_ITEMS) || undefined}
@@ -108,32 +159,23 @@ export function CompositionBar({
       >
         {composed.rows.map(row => (
           <li key={row.label} className="sv-composition__row" data-row={row.label}>
-            <p className="sv-composition__head">
-              <span className="sv-composition__label">
-                {row.label}
-                {row.sources && !preview && <SourceCredits sources={row.sources} />}
-              </span>
-              {showCounts && <span className="sv-composition__total">{totalText(row.total)}<span className="sv-composition__total-word"> total</span></span>}
-            </p>
-            {/* The text equivalent of the bar, in stacking order. */}
-            <p className="sv-visually-hidden">
-              {row.segments.map(s => `${s.label} ${shareLabel(s)}`).join(', ')}
-            </p>
-            <div className="sv-composition__bar" aria-hidden="true">
-              {row.segments.map(segment =>
-                segment.share > 0 ? (
-                  <span
-                    key={segment.key}
-                    className="sv-composition__segment"
-                    data-fit={segment.share >= 28 ? 'large' : segment.share >= 12 ? 'medium' : segment.share >= 6 ? 'small' : undefined}
-                    style={{ width: `${segment.share}%`, background: color(segment.key) }}
-                  >
-                    <span className="sv-composition__segment-name">{segment.label} </span>
-                    <span className="sv-composition__segment-share">{shareLabel(segment)}</span>
-                  </span>
-                ) : null,
-              )}
-            </div>
+            {opens ? (
+              <DetailRow rowClass="sv-composition__summary" summary={rowSummary(row, false)}>
+                {/* The row on its own, at full width, so a thin part can be seen and counted. */}
+                <p className="sv-composition__detail-caption">{row.label}: each part&rsquo;s share of {showCounts ? `its ${totalText(row.total)}` : 'the row'}</p>
+                {bar(row, 100)}
+                <ul className="sv-composition__detail-parts">
+                  {/* Parts this row has none of are left out; the table lists every part. */}
+                  {row.segments.filter(segment => segment.value > 0).map(segment => (
+                    <li key={segment.key}>
+                      <i className="sv-bars__swatch" style={{ background: color(segment.key) }} aria-hidden="true" />
+                      {segment.label}: {shareText(segment)}{showCounts && ` (${countText(segment)})`}
+                    </li>
+                  ))}
+                </ul>
+                {row.sources && <p className="sv-composition__detail-sources">Source: <SourceCredits sources={row.sources} /></p>}
+              </DetailRow>
+            ) : rowSummary(row, !preview)}
           </li>
         ))}
       </ol>
@@ -163,7 +205,7 @@ export function CompositionBar({
               {row.segments.map(segment => (
                 <td key={segment.key}>
                   {shareText(segment)}
-                  {showCounts && <span className="sv-composition__count"> ({segment.published === undefined ? formatValue(segment.value, countFormat) : qualifiedText(segment.published, countFormat)})</span>}
+                  {showCounts && <span className="sv-composition__count"> ({countText(segment)})</span>}
                 </td>
               ))}
               {showCounts && <td>{formatValue(row.total, countFormat)}</td>}

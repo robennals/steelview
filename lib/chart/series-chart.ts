@@ -364,6 +364,8 @@ export type PlottedLine = {
   /** Estimate and provisional points, drawn as hollow circles when the reading is sparse enough to mark points. */
   hollow: PlottedPoint[];
   last: PlottedPoint;
+  /** In a stacked reading, the band the line fills: its own points along the top, and the total of the lines below along the floor. */
+  band?: { top: PlottedPoint[]; floor: PlottedPoint[] };
 };
 
 export type ValueTick = { value: number; y: number; label: string | null };
@@ -628,10 +630,16 @@ export function layoutReading(
   const slots = seriesSlots(series);
 
   const drawn = drawnLines(series, reading);
+  // A stacked reading is never thinned: thinning keeps each line's own
+  // extremes, which would leave the bands' periods out of step.
   const shown = drawn.map(({ line }) =>
-    window ? pointsAround(line.points, window) : thinned(line.points, base.plotWidth)
+    window ? pointsAround(line.points, window) : reading.stacked ? line.points : thinned(line.points, base.plotWidth)
   );
-  const valuesOn = (axis: DrawnLine['axis']) => shown.flatMap((points, i) => (drawn[i].axis === axis ? points.map((p) => p.value) : []));
+  // Each stacked line sits on the total of the lines before it, so its top
+  // edge is that running total and the top line's is the whole.
+  const floors = reading.stacked ? stackFloors(shown) : null;
+  const floorOf = (line: number, point: number) => floors?.[line][point] ?? 0;
+  const valuesOn = (axis: DrawnLine['axis']) => shown.flatMap((points, i) => (drawn[i].axis === axis ? points.map((p, j) => p.value + floorOf(i, j)) : []));
   const values = valuesOn('left');
   // Two axes are compared by their slopes, which only mean the same on both if
   // both start at zero, so a plot with a reading alongside always does.
@@ -672,7 +680,7 @@ export function layoutReading(
 
   const lines: PlottedLine[] = drawn.map(({ line, axis }, index) => {
     const yOf = axis === 'right' ? y2 : y;
-    const plotted = shown[index].map((point) => ({ x: x(point.period), y: yOf(point.value), point }));
+    const plotted = shown[index].map((point, j) => ({ x: x(point.period), y: yOf(point.value + floorOf(index, j)), point }));
     const { runs, bridges } = splitRuns(plotted, breakPeriods);
     return {
       name: line.name,
@@ -682,6 +690,7 @@ export function layoutReading(
       bridges,
       hollow: markPoints ? plotted.filter((p) => runKind(p.point) === 'estimate') : [],
       last: plotted[plotted.length - 1],
+      ...(floors ? { band: { top: plotted, floor: shown[index].map((point, j) => ({ x: x(point.period), y: yOf(floorOf(index, j)), point })) } } : {}),
     };
   });
 
@@ -734,6 +743,20 @@ export function layoutReading(
   };
 }
 
+/**
+ * For each line of a stack, the total of the lines before it at each point.
+ * The lines give the same periods (validate.ts checks), so points line up by
+ * position.
+ */
+export function stackFloors(lines: SeriesPoint[][]): number[][] {
+  let running = lines[0]?.map(() => 0) ?? [];
+  return lines.map(points => {
+    const floor = running;
+    running = points.map((point, j) => (floor[j] ?? 0) + point.value);
+    return floor;
+  });
+}
+
 /** An observation's mark as drawn on a plot: veils over what it is not about, and dots on what it is. */
 export type PlottedMark = {
   veils: Array<{ x0: number; x1: number }>;
@@ -757,7 +780,9 @@ export function plotMark(layout: ReadingLayout, drawn: DrawnLine[], mark: Observ
     const source = drawn.find(d => d.line.name === line.name && d.axis === line.axis);
     const point = source?.line.points.find(p => p.period === mark.at);
     const y = line.axis === 'right' ? layout.y2 : layout.y;
-    return source && point ? [{ x: layout.x(point.period), y: y(point.value), slot: line.slot, label: formatValue(point.value, source.unit) }] : [];
+    // On a stack the dot sits on the line's band, at the running total; its label is still the line's own value.
+    const stackedY = line.band?.top.find(p => p.point.period === mark.at)?.y;
+    return source && point ? [{ x: layout.x(point.period), y: stackedY ?? y(point.value), slot: line.slot, label: formatValue(point.value, source.unit) }] : [];
   });
   return { veils, points };
 }
@@ -810,6 +835,11 @@ export function layoutContext(
     breaks: series.breaks.map((gap) => x(gap.period)),
     window: { x0: x(window.from), x1: x(window.to) },
   };
+}
+
+/** An SVG `d` for a stacked line's band: along its top, then back along its floor. */
+export function bandPath(band: { top: PlottedPoint[]; floor: PlottedPoint[] }): string {
+  return `${pathFor([...band.top, ...[...band.floor].reverse()])} Z`;
 }
 
 /** An SVG `d` for a run of points — plain line segments, never a smoothing curve. */

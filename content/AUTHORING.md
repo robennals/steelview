@@ -1179,7 +1179,10 @@ row's stated `total` (optional) or, without one, to 100 when the figure has
 `unit: percent` — within what rounding explains: half a unit in each part's
 last published place (three parts at one decimal may miss by 0.15). Otherwise
 the build fails with the row, the sum and the expected total, because a bar
-always fills its width and would hide a missing or double-counted part. With
+is drawn from its parts and would hide a missing or double-counted part.
+Bars of counts share one scale, so a bar's length is its row's total and two
+bars of the same length always stand for the same amount; with
+`unit: percent` every bar is a whole and drawn full length. With
 `unit: percent` the labels and table print the source's percentages as
 published (33.3% stays 33.3%); widths stay proportional. Without a `unit`
 nothing is checked unless a row states a `total`.
