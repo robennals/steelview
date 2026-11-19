@@ -53,8 +53,10 @@ function formatShare(share: number): string {
 }
 
 /**
- * How a whole divides into parts, compared across a few rows: each bar is
- * 100%, so a reader compares shares, not sizes. Labels sit inside a segment
+ * How a whole divides into parts, compared across a few rows. Bars of counts
+ * share one scale, so a bar's length is its row's total and two bars of the
+ * same length stand for the same amount; bars of percentages are each 100%
+ * and so all the same length. Labels sit inside a segment
  * only when it is wide enough to hold them; every part is named in the
  * legend and every share (and count) is in the table, so a thin segment is
  * never unlabelled — only labelled elsewhere.
@@ -78,7 +80,7 @@ export function CompositionBar({
   panel,
   preview,
 }: CompositionBarProps) {
-  const composed = compose(categories, rows, { otherThreshold, otherLabel });
+  const composed = compose(categories, rows, { otherThreshold, otherLabel, unit });
   // Up to four places, so a published 12.25% is not rounded to 12.3%.
   const published = { unit: 'percent', decimals: 4 } as const;
   const shareLabel = (segment: CompositionSegment) =>
@@ -119,20 +121,22 @@ export function CompositionBar({
             <p className="sv-visually-hidden">
               {row.segments.map(s => `${s.label} ${shareLabel(s)}`).join(', ')}
             </p>
-            <div className="sv-composition__bar" aria-hidden="true">
-              {row.segments.map(segment =>
-                segment.share > 0 ? (
+            <div className="sv-composition__bar" style={{ width: `${row.length}%` }} aria-hidden="true">
+              {row.segments.map(segment => {
+                // Room for a label depends on the segment's width on the page, not its share of a short bar.
+                const width = (segment.share * row.length) / 100;
+                return segment.share > 0 ? (
                   <span
                     key={segment.key}
                     className="sv-composition__segment"
-                    data-fit={segment.share >= 28 ? 'large' : segment.share >= 12 ? 'medium' : segment.share >= 6 ? 'small' : undefined}
+                    data-fit={width >= 28 ? 'large' : width >= 12 ? 'medium' : width >= 6 ? 'small' : undefined}
                     style={{ width: `${segment.share}%`, background: color(segment.key) }}
                   >
                     <span className="sv-composition__segment-name">{segment.label} </span>
                     <span className="sv-composition__segment-share">{shareLabel(segment)}</span>
                   </span>
-                ) : null,
-              )}
+                ) : null;
+              })}
             </div>
           </li>
         ))}

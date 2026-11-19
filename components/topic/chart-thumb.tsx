@@ -266,15 +266,17 @@ function PanelsThumb({ panels, independentScales, zeroBased }: SmallMultiplesPro
 }
 
 /** One full-width bar per row, split into its parts' shares in the chart's colours. */
-function CompositionThumb({ categories, rows, otherThreshold, otherLabel }: CompositionBarProps) {
-  const composed = compose(categories, rows, { otherThreshold, otherLabel });
+function CompositionThumb({ categories, rows, otherThreshold, otherLabel, unit }: CompositionBarProps) {
+  const composed = compose(categories, rows, { otherThreshold, otherLabel, unit });
   const row = 100 / Math.max(1, composed.rows.length);
   return (
     <Thumb>
       {composed.rows.flatMap((r, i) => {
-        const starts = r.segments.map((_, j) => r.segments.slice(0, j).reduce((sum, s) => sum + s.share, 0));
+        // As on the chart, a bar's length is its row's total against the longest row's.
+        const scale = r.length / 100;
+        const starts = r.segments.map((_, j) => r.segments.slice(0, j).reduce((sum, s) => sum + s.share, 0) * scale);
         return r.segments.map((segment, j) => segment.share > 0 && (
-          <rect key={`${i}-${segment.key}`} x={starts[j]} width={segment.share} y={i * row + row * 0.2} height={row * 0.6} fill={compositionColor(categories, segment.key)} />
+          <rect key={`${i}-${segment.key}`} x={starts[j]} width={segment.share * scale} y={i * row + row * 0.2} height={row * 0.6} fill={compositionColor(categories, segment.key)} />
         ));
       })}
     </Thumb>

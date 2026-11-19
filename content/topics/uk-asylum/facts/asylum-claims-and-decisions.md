@@ -1799,8 +1799,8 @@ figures:
     description: >-
       People (main applicants and dependants) who arrived by small boat in each
       year and claimed asylum, by initial outcome as recorded in mid-2026. Each
-      bar is one year's arrivals, with that year's total beside it, so compare
-      shares across bars, not sizes.
+      bar is one year's arrivals, drawn to one scale so its length is that
+      year's total, which is also printed beside it.
     rowLabel: Year of arrival
     showCounts: true
     sources: [36, 18]
