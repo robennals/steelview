@@ -1255,6 +1255,94 @@ additionalSeries:
                 value: 4447
               - period: '2025'
                 value: 9009
+  - id: small-boat-outcomes-series
+    title: 'Outcomes of small-boat claims by year'
+    subtitle: 'Initial outcome, UK, by year of arrival, as recorded in mid-2026'
+    description: >-
+      People (main applicants and dependants) who arrived by small boat in each
+      year and claimed asylum, stacked by initial outcome as recorded in
+      mid-2026, so the top edge is each year's total.
+    periodLabel: Year of arrival
+    coverage:
+      from: '2018'
+      to: '2025'
+      note: >-
+        The full range of IER_D03 in the year ending June 2026 release, which
+        re-extracts the 2018–2025 arrivals and so differs slightly from the
+        Home Office's published Table 1 (178,845 claims). Appeals are not
+        included: a refusal here may since have been overturned. "Granted"
+        includes refugee status, humanitarian protection and other leave.
+    breaks: []
+    source:
+      stance: supports
+      quote: >-
+        IER_D03: Initial decisions on asylum claims from small boat arrivals, by
+        arrival date, 2018 Q1 to 2025 Q4 - dataset
+      title: >-
+        Illegal entry routes to the UK detailed datasets, year ending June 2026
+      url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+      fileUrl: https://assets.publishing.service.gov.uk/media/6a85c41d3d82f78d5c514551/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+      localFile: datasets/assets.publishing.service.gov.uk/illegal-entry-routes-to-the-uk-dataset-jun-2026.xlsx
+      publisher: Home Office
+      date: '2026-08-27'
+    readings:
+      - id: small-boat-outcomes
+        label: People by initial outcome
+        unit: count
+        valueLabel: People who arrived by small boat and claimed asylum, by initial outcome
+        valuesFrom: "IER_D03, initial outcome by year of arrival"
+        stacked: true
+        lines:
+          - name: Granted
+            points:
+              - { period: '2018', value: 145 }
+              - { period: '2019', value: 815 }
+              - { period: '2020', value: 4166 }
+              - { period: '2021', value: 15872 }
+              - { period: '2022', value: 17178 }
+              - { period: '2023', value: 10758 }
+              - { period: '2024', value: 13732 }
+              - { period: '2025', value: 18743 }
+          - name: Refused
+            points:
+              - { period: '2018', value: 129 }
+              - { period: '2019', value: 948 }
+              - { period: '2020', value: 3458 }
+              - { period: '2021', value: 5082 }
+              - { period: '2022', value: 7093 }
+              - { period: '2023', value: 10881 }
+              - { period: '2024', value: 14784 }
+              - { period: '2025', value: 14016 }
+          - name: Withdrawn
+            points:
+              - { period: '2018', value: 5 }
+              - { period: '2019', value: 41 }
+              - { period: '2020', value: 405 }
+              - { period: '2021', value: 3111 }
+              - { period: '2022', value: 9862 }
+              - { period: '2023', value: 4272 }
+              - { period: '2024', value: 4272 }
+              - { period: '2025', value: 2214 }
+          - name: Administrative outcome
+            points:
+              - { period: '2018', value: 1 }
+              - { period: '2019', value: 4 }
+              - { period: '2020', value: 176 }
+              - { period: '2021', value: 923 }
+              - { period: '2022', value: 6266 }
+              - { period: '2023', value: 1086 }
+              - { period: '2024', value: 681 }
+              - { period: '2025', value: 471 }
+          - name: Awaiting initial decision
+            points:
+              - { period: '2018', value: 0 }
+              - { period: '2019', value: 5 }
+              - { period: '2020', value: 71 }
+              - { period: '2021', value: 288 }
+              - { period: '2022', value: 789 }
+              - { period: '2023', value: 613 }
+              - { period: '2024', value: 1807 }
+              - { period: '2025', value: 4508 }
   - id: appeals-series
     title: 'Asylum appeals decided and allowed'
     subtitle: 'First-tier Tribunal, UK, financial years 2007/08 to 2025/26'
@@ -1707,7 +1795,7 @@ observationMarks:
   recent-cohorts-incomplete: {lines: ["At initial decision", "At latest outcome"], from: "2023", to: "2025"}
   withdrawals: {lines: ["Withdrawn"], from: "2021", to: "2024"}
   appeals-backlog: {lines: ["Asylum and protection appeals allowed"], from: "2022", to: "2025"}
-  2023-2024-arrivals-granted-under-half: {rows: ["Arrived 2022", "Arrived 2023", "Arrived 2024"]}
+  2023-2024-arrivals-granted-under-half: {lines: ["Granted", "Refused"], from: "2023", to: "2024", at: "2024"}
   eu-grant-rate-similar: {rows: ["United Kingdom", "EU27 as a whole"]}
   uk-and-eu-by-nationality: {rows: ["Afghanistan", "Somalia", "Iran", "Sudan", "Vietnam"]}
   people-and-cases: {lines: ["All claimants", "Main applicants only"], at: "2001"}
@@ -1792,39 +1880,8 @@ figures:
     items:
       - { label: Granted asylum or other protection, value: 79589 }
       - { label: Refused, value: 53305 }
-  - kind: compositionBar
-    id: small-boat-outcomes
-    title: 'Outcomes of small-boat claims by year'
-    subtitle: 'Initial outcome, UK, by year of arrival, as recorded in mid-2026'
-    description: >-
-      People (main applicants and dependants) who arrived by small boat in each
-      year and claimed asylum, by initial outcome as recorded in mid-2026. Each
-      bar is one year's arrivals, drawn to one scale so its length is that
-      year's total, which is also printed beside it.
-    rowLabel: Year of arrival
-    showCounts: true
-    sources: [36, 18]
-    categories:
-      - { key: granted, label: 'Granted' }
-      - { key: refused, label: 'Refused' }
-      - { key: withdrawn, label: 'Withdrawn' }
-      - { key: administrative, label: 'Administrative outcome' }
-      - { key: awaiting, label: 'Awaiting initial decision' }
-    rows:
-      - { label: 'Arrived 2018', total: 280, values: { granted: 145, refused: 129, withdrawn: 5, administrative: 1, awaiting: 0 } }
-      - { label: 'Arrived 2019', total: 1813, values: { granted: 815, refused: 948, withdrawn: 41, administrative: 4, awaiting: 5 } }
-      - { label: 'Arrived 2020', total: 8276, values: { granted: 4166, refused: 3458, withdrawn: 405, administrative: 176, awaiting: 71 } }
-      - { label: 'Arrived 2021', total: 25276, values: { granted: 15872, refused: 5082, withdrawn: 3111, administrative: 923, awaiting: 288 } }
-      - { label: 'Arrived 2022', total: 41188, values: { granted: 17178, refused: 7093, withdrawn: 9862, administrative: 6266, awaiting: 789 } }
-      - { label: 'Arrived 2023', total: 27610, values: { granted: 10758, refused: 10881, withdrawn: 4272, administrative: 1086, awaiting: 613 } }
-      - { label: 'Arrived 2024', total: 35276, values: { granted: 13732, refused: 14784, withdrawn: 4272, administrative: 681, awaiting: 1807 } }
-      - { label: 'Arrived 2025', total: 39952, values: { granted: 18743, refused: 14016, withdrawn: 2214, administrative: 471, awaiting: 4508 } }
-    note: >-
-      From IER_D03 in the year ending June 2026 release, which re-extracts the
-      2018–2025 arrivals and so differs slightly from the Home Office's
-      published Table 1 (178,845 claims). Appeals are not included: a refusal
-      here may since have been overturned. "Granted" includes refugee status,
-      humanitarian protection and other leave.
+  - kind: series
+    id: small-boat-outcomes-series
   - kind: comparison
     id: recognition-2025
   - kind: barChart

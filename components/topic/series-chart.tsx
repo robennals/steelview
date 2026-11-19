@@ -14,6 +14,7 @@ import { lineSourceNumbers } from '@/lib/content/sources';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   alongsideOf,
+  bandPath,
   CHART_GEOMETRY,
   drawnLines,
   focusWindow,
@@ -213,6 +214,8 @@ function Plot({
 
       {layout.lines.map((line) => (
         <g key={line.name} data-series={line.name} style={{ color: `var(--sv-series-${line.slot})` }} clipPath={window ? `url(#${clipId})` : undefined}>
+          {/* A stacked line fills its band down to the lines below it. */}
+          {line.band && <path className="sv-chart__band" d={bandPath(line.band)} />}
           {/* A bridge is the step across a break: same colour, dashed and
               faded, so the eye reads "these two ends are not the same
               measurement" instead of one continuous trend. */}

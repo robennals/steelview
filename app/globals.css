@@ -748,6 +748,14 @@
     transition: stroke-width 140ms ease;
   }
 
+  /* A stacked line's band: its colour, light enough that the gridlines and
+     the line along its top still read through it. */
+  .sv-chart__band {
+    fill: currentColor;
+    fill-opacity: 0.35;
+    stroke: none;
+  }
+
   /* Wider transparent stroke makes a thin data line practical to target. */
   .sv-chart__line-hit {
     fill: none;

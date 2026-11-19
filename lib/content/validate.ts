@@ -7,7 +7,7 @@ import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
 import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroups } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
-import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
+import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, SeriesLine, Topic } from './types';
 import { headlineFacts } from './rank-facts';
 import { observationGroups } from './walkthrough';
 
@@ -277,6 +277,22 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
     const shared = partner?.lines.filter(line => reading.lines.some(own => own.name === line.name)) ?? [];
     for (const line of shared) errors.push(`${where} readings "${reading.id}" and "${reading.alongside}" share a plot and both have a line "${line.name}"; give one a name of its own`);
     if (series.focus) errors.push(`${where} draws a reading alongside another and has a focus window, whose context strip draws one axis only`);
+  }
+
+  // A stacked reading's bands sit on one another, so they must line up period
+  // for period, add up (counts, none negative) and own their plot.
+  for (const reading of series.readings.filter(r => r.stacked)) {
+    if (reading.unit !== 'count') errors.push(`${where} reading "${reading.id}" is stacked, so its unit must be count: shares and rates do not add up`);
+    if (reading.lines.length < 2) errors.push(`${where} reading "${reading.id}" is stacked but has one line; a stack needs two or more parts`);
+    if (reading.alongside !== undefined || series.readings.some(r => r.alongside === reading.id)) errors.push(`${where} reading "${reading.id}" is stacked, so no reading can share its plot`);
+    if (series.focus) errors.push(`${where} has a stacked reading and a focus window, whose context strip draws lines, not a stack`);
+    const periods = (line: SeriesLine) => line.points.map(p => p.period).join(',');
+    for (const line of reading.lines.slice(1)) {
+      if (periods(line) !== periods(reading.lines[0])) errors.push(`${where} reading "${reading.id}" is stacked, but line "${line.name}" has different periods from "${reading.lines[0].name}"`);
+    }
+    for (const line of reading.lines) {
+      if (line.points.some(p => p.value < 0)) errors.push(`${where} reading "${reading.id}" is stacked, but line "${line.name}" has a negative value`);
+    }
   }
 
   const seenReadings = new Set<string>();
