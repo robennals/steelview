@@ -11,6 +11,7 @@ import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
 import { lineSourceNumbers } from '@/lib/content/sources';
+import { quotedPhrases, sourcePassages } from '@/lib/content/source-passage';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   alongsideOf,
@@ -702,6 +703,7 @@ export function eventMarkers(series: Pick<Series, 'events'>, factId: string, sou
     label: event.label,
     description: event.note,
     sources: event.sources.map(n => citation(n, factId, sources, directSources)),
+    passages: sourcePassages(quotedPhrases(event.label, event.note), event.sources, sources, n => citation(n, factId, sources, directSources)),
   }));
 }
 

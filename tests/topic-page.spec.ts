@@ -792,6 +792,21 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   await expect(sheet).toHaveCount(1);
   await expect(sheet.locator('.sv-quote-browser .sv-control__status')).toHaveText('Showing 6 of 6 quotes');
   await expect(sheet.locator('.sv-quote-browser').getByRole('button', { name: 'Search quotes and speakers' })).toHaveCount(1);
+  // Opened from See all, the card's two quotes come first, outlined, in the card's order.
+  const items = sheet.locator('.sv-quote-browser__item');
+  const cardQuote = (n: number) => quotes.locator('.sv-card-quotes__text').nth(n).innerText();
+  const first = (await cardQuote(0)).replace(/^“|”$/g, '');
+  const second = (await cardQuote(1)).replace(/^“|”$/g, '');
+  await expect(sheet.getByRole('button', { name: /Order: Highlighted first/ })).toHaveCount(1);
+  await expect(items.nth(0)).toContainText(first);
+  await expect(items.nth(1)).toContainText(second);
+  await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(2);
+  // Clicking one quote on the card puts that one first, and outlines it alone.
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await quotes.locator('.sv-card-quotes__item').nth(1).click();
+  await expect(items.nth(0)).toContainText(second);
+  await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(1);
 });
 
 // us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and

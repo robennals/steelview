@@ -38,12 +38,12 @@ test('on a slideshow card a collection of quotes shows only the quotes its point
   const html = renderToStaticMarkup(createElement(SlideChart, { slide: { fact, chart: 'postal-secrecy', label: 'Postal secrecy', href: '/x' }, fit: 'card', page, picked: ['Priscilla Southwell'] }));
   assert.match(html, /class="sv-chart sv-card-quotes"/);
   assert.doesNotMatch(html, /sv-quote-browser|sv-carousel/, 'neither the filterable list nor a slideshow of its own');
-  const shown = [...html.matchAll(/<li class="sv-card-quotes__item">/g)];
+  const shown = [...html.matchAll(/<li class="sv-card-quotes__item"/g)];
   assert.equal(shown.length, 2, 'both of her quotes, one under the other');
   assert.doesNotMatch(html, /Richard Mawrey QC/, 'and no one else\'s');
   assert.match(html, /2 of 5 quotes · <span class="sv-card-quotes__all">See all<\/span>/);
   const named = renderToStaticMarkup(createElement(SlideChart, { slide: { fact, chart: 'postal-secrecy', label: 'Postal secrecy', href: '/x' }, fit: 'card', page }));
-  assert.equal([...named.matchAll(/<li class="sv-card-quotes__item">/g)].length, 1, 'a card naming no speaker shows the first quote');
+  assert.equal([...named.matchAll(/<li class="sv-card-quotes__item"/g)].length, 1, 'a card naming no speaker shows the first quote');
 });
 
 test('a quote not in English is marked with its language and has its translation beside it, outside the quotation', () => {
