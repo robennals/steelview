@@ -4,7 +4,8 @@ import { useId, useMemo, useState, type ReactNode } from 'react';
 import { ChoiceGroup, FilterChips } from './controls';
 import { ReportFigure } from './figure';
 import { compareDates } from './format';
-import { QuoteAttribution, QuoteTranslation, quoteAnchor, type Quote } from './quote-attribution';
+import { quoteAnchor, type Quote } from './quote-attribution';
+import { QuoteCard } from './quote-card';
 import type { SourceCredit } from './types';
 
 export type QuoteSort = 'oldest' | 'newest';
@@ -27,8 +28,6 @@ export type QuoteBrowserProps = {
   speakerLabel?: string;
   /** Chronological either way; oldest first by default, so the record reads in the order it was made. */
   defaultSort?: QuoteSort;
-  /** Quotes longer than this many characters are clamped behind "Read full quote". */
-  clampAt?: number;
   /** Words to start the search with, e.g. from a link that points at one speaker's quotes. */
   initialSearch?: string;
   /** Rendered after the source line and before "About this data": the figure's Observations. */
@@ -64,7 +63,6 @@ export function QuoteBrowser({
   tagLabel = 'Topic',
   speakerLabel = 'Speaker',
   defaultSort = 'oldest',
-  clampAt = 320,
   initialSearch = '',
   footer,
   panel,
@@ -138,30 +136,7 @@ export function QuoteBrowser({
         <ol className="sv-quote-browser__list">
           {shown.map(quote => (
             <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-browser__item" data-row={quote.speaker}>
-              <figure className="sv-quote" data-variant="listed">
-                {(quote.position || (quote.tags && quote.tags.length > 0)) && (
-                  <p className="sv-quote__meta">
-                    {quote.position && <span className="sv-quote__position">{quote.position}</span>}
-                    {quote.tags?.map(tag => <span key={tag} className="sv-quote__tag">{tag}</span>)}
-                  </p>
-                )}
-                <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href} lang={quote.lang} data-clamp={quote.text.length > clampAt || undefined}>
-                  <p>{quote.text}</p>
-                </blockquote>
-                {quote.text.length > clampAt && (
-                  // A native <details> with no body: opening it lifts the clamp
-                  // through CSS, so the full quote is one tap away with
-                  // JavaScript off, and the text exists only once in the page.
-                  <details className="sv-quote__more">
-                    <summary>
-                      <span data-when="closed">Read full quote</span>
-                      <span data-when="open">Show less</span>
-                    </summary>
-                  </details>
-                )}
-                {quote.translation && <QuoteTranslation translation={quote.translation} />}
-                <QuoteAttribution quote={quote} permalink />
-              </figure>
+              <QuoteCard quote={quote} permalink />
             </li>
           ))}
         </ol>

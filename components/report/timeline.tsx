@@ -9,7 +9,8 @@ import { MarkerIcon, shapeForSlot } from './marker-shape';
 import { seriesColor } from './scale';
 import { tickEdge } from './time-axis';
 import { baselinePieces, eventAxis, namesOnAxis, previewEvents, sortEvents, type EventAxis } from './timeline-layout';
-import type { FigurePreview, PartialDate, SourceCredit } from './types';
+import { SourcePassages } from './source-passage';
+import type { FigurePreview, PartialDate, SourceCredit, SourcePassage } from './types';
 
 export type TimelineEvent = {
   /**
@@ -29,6 +30,8 @@ export type TimelineEvent = {
   sources?: SourceCredit[];
   /** Where to read more, e.g. the fact this event is evidence in. */
   href?: string;
+  /** The sentences the words its title and description quote came from, shown when its card is opened. */
+  passages?: SourcePassage[];
 };
 
 export type TimelineCategory = { id: string; label: string };
@@ -294,7 +297,7 @@ export function Timeline({
               {visible.map(({ e, i }) => {
                 const category = labelOf.get(e.category) ?? e.category;
                 const head = <CardHead event={e} marker={marker(e, 'sv-timeline__card-marker')} category={category} major={e.significance === 'major' && hasMinor} />;
-                const detail = e.description || (e.sources && e.sources.length > 0) || e.href;
+                const detail = e.description || (e.sources && e.sources.length > 0) || e.href || (e.passages && e.passages.length > 0);
                 return (
                   <li
                     key={`${e.date}-${i}-${e.title}`}
@@ -313,6 +316,7 @@ export function Timeline({
                             {e.description && <> · {e.description}</>}
                           </p>
                           {e.href && <p className="sv-timeline__link"><a href={e.href}>Read more</a></p>}
+                          <SourcePassages passages={e.passages} />
                           {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
                         </div>
                       </details>

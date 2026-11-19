@@ -10,6 +10,7 @@ import { componentFigure, isComponentFigure } from './types';
 import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
 import { headlineFacts } from './rank-facts';
 import { observationGroups } from './walkthrough';
+import { normaliseWithOffsets } from './source-passage';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -1041,7 +1042,7 @@ function escapeRegExp(value: string): string {
 
 /** Unicode NFC, straight quotes, collapsed whitespace, lower case: what F11 compares. */
 export function normaliseQuote(text: string): string {
-  return text.normalize('NFC').replace(/[\u2018\u2019\u201A\u2032]/g, "'").replace(/[\u201C\u201D\u201E\u2033]/g, '"').replace(/\s+/g, ' ').trim().toLowerCase();
+  return normaliseWithOffsets(text.normalize('NFC')).text;
 }
 
 /**

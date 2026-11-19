@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { ReportFigure } from './figure';
-import { QuoteAttribution, QuoteTranslation, quoteAnchor, type Quote } from './quote-attribution';
+import { quoteAnchor, type Quote } from './quote-attribution';
+import { QuoteCard } from './quote-card';
 import type { SourceCredit } from './types';
 
 export type QuoteComparisonProps = {
@@ -33,14 +34,7 @@ export function QuoteComparison({ question, quotes, id, description, sources, no
       <ul className="sv-quote-comparison__columns" data-count={quotes.length}>
         {quotes.map(quote => (
           <li key={quoteAnchor(quote)} id={quoteAnchor(quote)} className="sv-quote-comparison__column" data-row={quote.speaker}>
-            <figure className="sv-quote" data-variant="compared">
-              {quote.position && <p className="sv-quote__meta"><span className="sv-quote__position">{quote.position}</span></p>}
-              <blockquote className="sv-quote__text" cite={quote.sources?.[0]?.href} lang={quote.lang}>
-                <p>{quote.text}</p>
-              </blockquote>
-              {quote.translation && <QuoteTranslation translation={quote.translation} />}
-              <QuoteAttribution quote={quote} />
-            </figure>
+            <QuoteCard quote={quote} />
           </li>
         ))}
       </ul>

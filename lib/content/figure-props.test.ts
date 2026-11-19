@@ -98,12 +98,17 @@ test('open periods end at the topic\'s lastUpdated; closed ones leave the axis a
   assert.equal(periodTimelineProps(periods, context).asOf, '2026-10-29');
 });
 
-test('period-timeline events are strip events crediting their citation', () => {
+test('period-timeline events are strip events crediting their citation, with the sentence their quoted words came from', () => {
+  const whiteHouse = { label: 'The White House', href: '#source-figure-examples-4', number: 4 };
   assert.deepEqual(periodTimelineProps(figureOf('periodTimeline'), context).events, [{
     date: '2026-05-01',
     label: 'Letter says hostilities "have terminated"',
     description: undefined,
-    sources: [{ label: 'The White House', href: '#source-figure-examples-4', number: 4 }],
+    sources: [whiteHouse],
+    passages: [{
+      source: whiteHouse,
+      parts: [{ text: 'The President reported that hostilities with Iran "' }, { text: 'have terminated', quoted: true }, { text: '".' }],
+    }],
   }]);
 });
 
