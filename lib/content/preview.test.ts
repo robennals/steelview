@@ -233,3 +233,15 @@ test('a slideshow viewpoint may not show one graph on two cards', async () => {
   assert.equal(errors.length, 1);
   assert.match(errors[0], /"Second point" shows the same evidence as "First point"/);
 });
+
+test('a card whose line cites two findings about one timeline picks out the events of both', async () => {
+  const topic = await loadTopic('us-iran-war');
+  const viewpoint = topic.viewpoints.find(v => v.id === 'nuclear')!;
+  const step = viewpointWalkthrough(topic, viewpoint).steps.find(s => s.heading.startsWith('Iran already attacks'))!;
+  assert.equal(step.cardVisual?.chart.chart, 'court-record');
+  assert.deepEqual(step.cardVisual?.picked, [
+    '1992 Israeli Embassy bombing (29 dead) and 1994 AMIA bombing (85 dead), Buenos Aires',
+    'Plot to kill journalist Masih Alinejad in New York',
+    'Second plot against Alinejad, organised by Farhad Shakeri',
+  ]);
+});

@@ -17,7 +17,10 @@ export function SlideChart({ slide, fit, titleHref, page, picked }: {
   fit?: PreviewFit;
   titleHref?: string;
   page?: FigurePage;
-  /** On a slideshow card of quotes, the speakers its point rests on (`CardQuotes`). */
+  /**
+   * On a slideshow card, the rows its point rests on: the speakers a card of
+   * quotes shows (`CardQuotes`), the events a timeline gives cards to.
+   */
   picked?: string[];
 }) {
   const { fact, chart } = slide;
@@ -32,7 +35,7 @@ export function SlideChart({ slide, fit, titleHref, page, picked }: {
       return <ComparisonChart fact={{ id: fact.id }} chart={target.comparison} sources={[]} preview={preview} />;
     case 'figure': {
       const context = figureContext(fact, page?.asOf);
-      if (isPreviewable(target)) return <PreviewFigure figure={target.figure} context={context} preview={preview} />;
+      if (isPreviewable(target)) return <PreviewFigure figure={target.figure} context={context} preview={preview} picked={picked} />;
       // A card shows the quotes its point rests on; the whole collection is a click away.
       if (fit === 'card' && target.figure.kind === 'quotes') {
         return <CardQuotes title={target.figure.question} quotes={quoteBrowserProps(target.figure, context).quotes} picked={picked} total={page?.quotes?.length} />;

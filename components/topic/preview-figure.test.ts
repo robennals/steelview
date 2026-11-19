@@ -196,19 +196,26 @@ test('a map preview draws its default view alone, with its key and no Map / Tile
   assert.doesNotMatch(shapes, /sv-tile-map__grid|<button/);
 });
 
-test('a timeline preview lists every event on one line, and past twelve marks each on an axis', () => {
+test('a timeline preview draws every event on its axis and cards for the major ones', () => {
   const html = preview('court-record');
   assertCompact(html, 'court-record', 'Court findings, convictions and designations, 1984–2026');
-  assert.equal(html.match(/class="sv-timeline__line"/g)?.length, 5);
-  assert.match(html, /Iran designated a state sponsor of terrorism/);
-  // A decade is shown as written, not as a machine-readable date.
-  assert.match(html, /<span>1980s<\/span>/);
+  assert.equal(html.match(/class="sv-timeline__pin"/g)?.length, 5);
+  // The one major event gets the card; the rest are counted.
+  assert.equal(html.match(/<li class="sv-timeline__item"/g)?.length, 1);
+  assert.match(html, /Assadi convicted in Antwerp/);
+  assert.match(html, /and 4 more events on the time line/);
+  // A decade is read out as written, not as a machine-readable date.
+  assert.match(html, /<li>1980s: Fixture: an event its source dates only to the decade/);
+  // The empty years between 1984 and 2021 are cut out of the axis.
+  assert.equal(html.match(/class="sv-timeline__break"/g)?.length, 1);
   assert.doesNotMatch(html, /sv-control__status|sv-timeline__controls/);
-  const long = preview('court-record', variant('court-record', f => (f.kind === 'timeline'
-    ? { ...f, events: Array.from({ length: 15 }, (_, i) => ({ date: `${2000 + i}-06`, title: `Event ${i}`, category: 'charge', sources: [8] })) }
-    : f)));
-  assert.equal(long.match(/class="sv-timeline__lane-mark"/g)?.length, 15);
-  assert.match(long, /Jun 2014: Event 14/);
+});
+
+test('a timeline preview on a slideshow card gives its cards to the events the card\'s claim picks out', () => {
+  const ctx = figureContext(base);
+  const html = renderToStaticMarkup(createElement(PreviewFigure, { figure: figure('court-record'), context: ctx, preview: { href }, picked: ['Shakeri charged in New York'] }));
+  assert.equal(html.match(/<li class="sv-timeline__item"/g)?.length, 1);
+  assert.match(html, /<span class="sv-timeline__title">Shakeri charged in New York<\/span>/);
 });
 
 test('a period timeline preview draws every period and event marker, but no event cards or open-end key', () => {

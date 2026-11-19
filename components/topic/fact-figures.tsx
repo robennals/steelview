@@ -186,7 +186,13 @@ export function FactFigure({ figure, context, page }: { figure: ComponentFigure;
  * without a case here draws its linked title alone, so a kind added to that
  * list before its presentation exists degrades to a label, not a crash.
  */
-export function PreviewFigure({ figure, context, preview }: { figure: ComponentFigure; context: FigureContext; preview: FigurePreview }) {
+export function PreviewFigure({ figure, context, preview, picked }: {
+  figure: ComponentFigure;
+  context: FigureContext;
+  preview: FigurePreview;
+  /** The rows the claim it illustrates is about: a timeline gives them its cards. */
+  picked?: string[];
+}) {
   switch (figure.kind) {
     case 'barChart':
       return figure.series
@@ -201,7 +207,7 @@ export function PreviewFigure({ figure, context, preview }: { figure: ComponentF
     case 'map':
       return <AreaMap {...areaMapProps(figure, context)} preview={preview} />;
     case 'timeline':
-      return <Timeline {...timelineProps(figure, context)} preview={preview} />;
+      return <Timeline {...timelineProps(figure, context)} preview={preview} picked={picked} />;
     case 'periodTimeline':
       return <PeriodTimeline {...periodTimelineProps(figure, context)} preview={preview} />;
     case 'keyFigures':
