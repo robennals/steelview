@@ -580,7 +580,8 @@ function Reading({
     const variants: SeriesVariant[] = preview ? [...PREVIEW_VARIANTS[preview.fit ?? 'wide'], 'narrow'] : panel ? [...PREVIEW_VARIANTS.panel, 'narrow'] : ['narrow', 'wide'];
     const groups = new Map(variants.map(variant => [variant, preview ? [] : placeMarkers(series, reading, variant, shown, inView)]));
     return <>
-      <div className="sv-chart__plot">
+      {/* Whether a row of event numbers sits under the graph, so a pop-up can leave room for it. */}
+      <div className="sv-chart__plot" style={{ '--sv-lane-levels': [...groups.values()].some(placed => placed.length > 0) ? 1 : 0 }}>
         {variants.map(variant => (
           <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} window={preview ? undefined : shown} marks={panel ? marks : undefined} markers={preview ? undefined : { groups: groups.get(variant) ?? [], cardsId }} />
         ))}
