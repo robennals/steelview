@@ -390,7 +390,9 @@ now costs one file; found later it costs every viewpoint that cites it.
 ## 6. Write the viewpoints
 
 **The agent drafts each viewpoint** from its outline and the observations
-that now exist, with every empirical assertion a pill to an observation. A
+that now exist, with every empirical assertion a pill to an observation,
+except one the card's own visual shows
+([Citations and data order](AUTHORING.md#citations-and-data-order)). A
 viewpoint is read as a slideshow of cards, one per section
 ([Lead with the data](AUTHORING.md#lead-with-the-data)), so choose each card's
 visual before writing its text. Each viewpoint is a short lead, then one `###`
@@ -426,8 +428,9 @@ holder of that view would find it better argued than their own version
   in the line, choosing another observation, or going back to stage 5 for the
   graph it needs. No two cards show the same visual.
 - **Check every claim against its evidence**, headings and lines included:
-  each is sourced, a value, or follows from what is cited, and a chart's whole
-  range supports what is said about it.
+  each is sourced, shown by the card's visual, a value, or follows from what is
+  cited, and a chart's whole range supports what is said about it. A pill to
+  data the card already shows is clutter; take it out.
 - **Leave definitions to the legend.** Where a step would define a term its
   chart draws, give the chart's line a `glossary` entry instead.
 - **The agent proposes; the human decides** on every change of argument.
