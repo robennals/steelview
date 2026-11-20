@@ -1,7 +1,7 @@
 ---
 name: Iran must never get a nuclear weapon, and its past shows why
 shortName: "No Iranian bomb"
-summary: "Iran was close to having enough material for a bomb, and [no inspector has seen its most enriched uranium since June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for). [Iran has backed deadly attacks abroad](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). Stopping it from getting a bomb was worth a war."
+summary: "Iran was close to having enough material for a bomb, and [no inspector has seen its most enriched uranium since June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for). [Iran has backed deadly attacks abroad](#fact-iran-actions-abroad/argentine-court-buenos-aires-bombings). The strikes have stopped its enrichment for now, and stopping it from getting a bomb was worth a war."
 order: 1
 researchNeeded:
   - "The hardest step in building a nuclear bomb is enriching uranium, which means making it purer"
@@ -33,8 +33,14 @@ A bomb would change that. Other countries would fear using force against Iran, s
 
 While [past fears that bombs would spread quickly mostly proved wrong](#fact-outside-attempts-to-change-hostile-regimes/predicted-cascades-did-not-happen), the risk is too grave to bet that they will prove wrong again.
 
-### So the US had to strike while Iran's uranium could still be reached
+### The strikes have stopped Iran making bomb-grade uranium, for now
 
-[Sanctions have rarely stopped a nuclear programme once it has started](#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22). So the choice was never between war and a peaceful Iran. It was between striking now and leaving Iran one short step from a bomb.
+[US officials, Iran and an independent institute all say Iran's enrichment has stopped](#fact-iran-nuclear-programme/strikes-halted-enrichment). [For the first time in 20 years, that institute sees no way for Iran to make bomb-grade uranium](#fact-iran-nuclear-programme/no-route-to-weapons-grade). [Before the first strikes, in 2025, US intelligence judged it under a week away](#fact-iran-nuclear-programme/close-to-weapons-grade-before-strikes).
 
-Waiting would have meant trusting a government that has hidden weapons work before. A war is a terrible cost. A nuclear-armed Iran would be a worse one.
+No inspector has checked these claims, and [no one can say where Iran's most enriched uranium is](#fact-iran-nuclear-programme/stock-unaccounted-for). [Past strikes on nuclear sites delayed programmes only modestly](#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly). So on the accounts we have, Iran has been set back, though perhaps not for long.
+
+### So the US was right to strike, and must not let Iran rebuild
+
+[Sanctions have rarely stopped a nuclear programme once it has started](#fact-outside-attempts-to-change-hostile-regimes/nonproliferation-sanctions-three-of-22). So the choice was never between war and a peaceful Iran. It was between striking and leaving Iran one short step from a bomb.
+
+While [talks were under way when the strikes began](#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came), [Iran had spent four years adding to its 60% uranium before the first strikes](#fact-iran-nuclear-programme/sixty-percent-growth), and nothing had stopped it. Waiting would have meant trusting a government that has hidden weapons work before. A war is a terrible cost. A nuclear-armed Iran would be a worse one, so the US must not let Iran rebuild what the strikes set back.

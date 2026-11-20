@@ -12,6 +12,8 @@ Under the Constitution, a President cannot take the country to war alone. [Congr
 
 [The administration did not seek Congress's approval before the 60-day mark](#fact-decisions-law-and-diplomacy/no-authorisation-sought). The rule exists so that [the people, through their representatives, decide](#principle-democratic-consent-over-membership) whether Americans are sent to kill and die.
 
+While [the President says he acted under his own power as Commander in Chief, in defence of allies](#fact-decisions-law-and-diplomacy/president-cites-commander-in-chief), commanding the forces is not the same as choosing war. And [he filed his reports "consistent with" the War Powers law](#fact-decisions-law-and-diplomacy/president-cites-commander-in-chief), whose 60-day limit the war has since passed.
+
 ### When Congress has voted, it has voted to end the war
 
 [After narrowly rejecting three resolutions, the House passed three to end the war](#fact-decisions-law-and-diplomacy/house-passed-three-resolutions). [The Senate passed one of those resolutions](#fact-decisions-law-and-diplomacy/senate-adopted-one-resolution). So both chambers have voted to end it.

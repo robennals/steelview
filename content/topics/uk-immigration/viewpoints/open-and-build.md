@@ -1,7 +1,7 @@
 ---
 name: Immigration makes Britain richer; build the homes and services, rather than shut the door
 shortName: "Open and build"
-summary: "Skilled workers [pay far more into the public finances than they take out](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain), and Britain needs more of them, not fewer. [Immigration is a small part of why homes cost so much](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise); the answer to the pressure that remains is to build."
+summary: "Skilled workers [pay far more into the public finances than they take out](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain), and Britain needs more of them, not fewer. [Immigration is a small part of why homes cost so much](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise); the answer to the extra demand it adds is to build."
 order: 2
 ---
 Britain is richer with the people who come here to work. It should keep welcoming them, and build the homes and services a growing country needs.
@@ -18,11 +18,11 @@ So cutting numbers would cost money. [In the government's budget watchdog's scen
 
 Britain is also ageing. [With no net migration, there would be 641 people aged 65 or over for every 1,000 of working age by 2074, against 525 on the main projection](#fact-immigration-against-the-long-run/old-age-ratio-2074). While [migrants grow old too, which reverses much of their early gain](#fact-immigration-economy-and-public-finances/old-age-reverses-gains), the alternative is fewer workers carrying more pensioners, sooner.
 
-### Immigration is a small part of why homes cost so much
+### Immigration adds a little to housing costs; cheap borrowing drove most of the rise
 
-[A review for the government's advisers found that immigration explains only a small part of the long rise in house prices](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise). [Housebuilding peaked in 2019-20](#fact-immigration-housing-and-public-services/building-peaked-before-migration), before [net migration peaked in 2023](#fact-immigration-against-the-long-run/net-migration-peaked).
+[In countries like Britain, raising the immigrant share by one point raises house prices by under 1%, and rents by a little more](#fact-immigration-housing-and-public-services/rent-effects). [Bank of England economists find that falling interest rates more than account for the rise in house prices against incomes since 1985](#fact-immigration-housing-and-public-services/falling-interest-rates-explain-price-rise).
 
-And [net migration has fallen by four-fifths](#fact-immigration-against-the-long-run/net-migration-is-not-unusual-at-all), yet [rents are still rising](#fact-immigration-housing-and-public-services/rents-are-still-rising). Migration does add demand. [Rent growth more than halved as numbers fell](#fact-immigration-housing-and-public-services/rent-growth-fell-as-migration-fell), and [migration is just over half of expected household growth](#fact-immigration-housing-and-public-services/migration-share-of-household-growth). Those are reasons to build more homes, not to shut the door.
+[The government's advisers put immigration's share of the long rise in house prices at about 4–6%](#fact-immigration-housing-and-public-services/immigration-explains-4-6-percent-of-house-price-rise). The extra demand is real: [migration is just over half of expected household growth](#fact-immigration-housing-and-public-services/migration-share-of-household-growth), and [rent growth more than halved as numbers fell](#fact-immigration-housing-and-public-services/rent-growth-fell-as-migration-fell). More people need more homes. That is a reason to build them, not to shut the door.
 
 ### Building more homes needs migrant workers
 

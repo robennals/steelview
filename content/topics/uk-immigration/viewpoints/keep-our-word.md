@@ -1,7 +1,7 @@
 ---
 name: People who came lawfully on a path to settlement should be allowed to finish it
 shortName: "Keep our word"
-summary: "[About 2.2 million people](#fact-settlement-and-migrant-status/path-2-2-million) built their lives around a five-year path to settlement that the state set out. Change the terms for people who have not yet come, but let those already on the path finish it."
+summary: "[About 2.2 million people](#fact-settlement-and-migrant-status/path-2-2-million) built their lives around a five-year path to settlement that the state set out, and [the government proposes making them wait longer](#fact-settlement-and-migrant-status/proposal-covers-people-already-here). Change the terms for people who have not yet come, but let those already on the path finish it."
 order: 4
 ---
 People who came to Britain lawfully, on a path the state set out, should be allowed to finish it. Parliament can change the rules for people who have not yet come.
@@ -10,7 +10,13 @@ People who came to Britain lawfully, on a path the state set out, should be allo
 
 Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). Many took jobs, moved their families and put their children in school.
 
-They have also paid. [Over five years, a skilled worker pays thousands of pounds in fees and a yearly health charge](#fact-settlement-and-migrant-status/skilled-worker-route-costs), on top of tax. [The settlement fee alone is ten times what it costs the Home Office to process](#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost). Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
+They came because the state set out the terms. Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
+
+### The government now proposes to make them wait longer, part-way through
+
+[The government proposes applying a longer wait to everyone here who has not yet settled](#fact-settlement-and-migrant-status/proposal-covers-people-already-here). [Most adult dependants of skilled workers would face the ten-year route](#fact-settlement-and-migrant-status/dependants-ten-year-route).
+
+[Hundreds of thousands would not yet meet the proposed rule that they be in work](#fact-settlement-and-migrant-status/hundreds-of-thousands-would-fail). While [the Home Secretary is still deciding whether to protect some of them](#fact-settlement-and-migrant-status/transitional-arrangements-undecided), nothing yet protects people already on the path.
 
 ### Britain has usually let people already on a route finish it
 
@@ -18,17 +24,17 @@ The government once toughened the rules for skilled migrants already here. [The 
 
 [For Hong Kong's British Nationals (Overseas), the government called the route a "historic and moral commitment"](#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment). While [the skilled-worker guidance says only that people "may be able to apply"](#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply), and [rules have sometimes been changed for people already here](#fact-settlement-and-migrant-status/transitional-protection-precedent), nobody uproots a family for "may" unless they trust the state to mean it. [Rules must mean what they say](#principle-rules-must-mean-what-they-say), in the sense people reasonably took them.
 
-### Keeping the promise keeps well-paid workers Britain needs
+### Many on the path are well-paid workers, worth more to Britain if they stay
 
 [Skilled workers on the main visa earn a median of £56,600 a year](#fact-immigration-economy-and-public-finances/earnings-by-route). The government's advisers find that [skilled workers who stay are worth far more to the public purse than those who leave](#fact-immigration-economy-and-public-finances/stayers-worth-more).
 
-While [around half of adult skilled-worker dependants were not working](#fact-settlement-and-migrant-status/skilled-dependants-half-not-working), and [care workers cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-workers-net-cost), that is a case for different terms for future arrivals. It is not a case for breaking the terms given to people already here.
+While [the evidence on whether longer waits drive people away is limited](#fact-settlement-and-migrant-status/behaviour-evidence-limited), Britain gains nothing by giving its best-paid newcomers a reason to go. And while [around half of adult skilled-worker dependants were not working](#fact-settlement-and-migrant-status/skilled-dependants-half-not-working), and [care workers cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-workers-net-cost), that is a case for different terms for future arrivals, not for breaking the terms given to people already here.
 
-### Treating lawful status as doubtful does real harm
+### A longer wait would cost these families more, for years longer
 
-Britain has seen what happens when lawful status is treated as doubtful. In the Windrush scandal, [people with every right to be here were detained, removed and denied work and homes](#fact-settlement-and-migrant-status/windrush-record). Reopening the status of lawful residents risks the same mistakes.
+[A single skilled worker pays about £9,900 in fees before settling after five years, and would pay £16,900 over ten](#fact-settlement-and-migrant-status/skilled-worker-route-costs). Until they settle, [they are barred from most benefits](#fact-settlement-and-migrant-status/nrpf-costs), however long they have worked and paid tax.
 
-[A ten-year wait would make Britain an outlier among rich countries, where five years is usual](#fact-settlement-and-migrant-status/ten-year-baseline-outlier). While [the evidence on whether longer waits drive people away is limited](#fact-settlement-and-migrant-status/behaviour-evidence-limited), Britain would make newcomers wait twice as long as most rich countries do.
+[A ten-year wait would make Britain an outlier among rich countries, where five years is usual](#fact-settlement-and-migrant-status/ten-year-baseline-outlier). And Britain has wronged lawful residents before: in the Windrush scandal, [people with every right to be here were detained, removed and denied work and homes](#fact-settlement-and-migrant-status/windrush-record). While those victims already had the right to stay, which people on a path do not yet have, it shows how the state's mistakes about status fall on families.
 
 ### So change the terms only for people who have not yet come
 

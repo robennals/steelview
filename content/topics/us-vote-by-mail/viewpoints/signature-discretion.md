@@ -10,7 +10,7 @@ A mail ballot should not be thrown out because an election worker thinks a signa
 
 [A signature that does not match is now the most common reason given for rejecting a mail ballot](#fact-mail-ballot-rejection-and-signature-checks/signatures-largest-reason). Yet [Washington's state auditor called signature matching "inherently subjective", and its own reviewers disagreed about many signatures](#fact-mail-ballot-rejection-and-signature-checks/reviewers-disagree).
 
-The check can also miss a wrong signature. [In Cobb County, Georgia, an envelope signed by the voter's spouse passed](#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed). The voter had filled in that ballot.
+Many flagged ballots come from the real voter. [Where voters are told of a problem, more than half the ballots set aside are corrected and counted](#fact-mail-ballot-rejection-and-signature-checks/more-than-half-cured). Where they are not told, those ballots are simply lost. And the check can miss a wrong signature: [in Cobb County, Georgia, an envelope signed by the voter's spouse passed](#fact-mail-ballot-rejection-and-signature-checks/cobb-spouse-signature-passed).
 
 ### The same rule gives very different results from county to county
 

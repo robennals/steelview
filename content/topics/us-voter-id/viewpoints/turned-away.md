@@ -1,16 +1,16 @@
 ---
-name: These rules keep eligible citizens from voting, to stop fraud that barely exists
+name: These rules keep eligible citizens from voting, to stop fraud that is rarely found
 shortName: "Don't turn voters away"
-summary: "[Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected](#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern), and [non-citizens' votes are found at about 1 to 22 per million ballots](#fact-non-citizens-on-voter-rolls/votes-per-ballots). But [Kansas's citizenship-document rule blocked tens of thousands of applicants](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens). A sworn promise of citizenship, backed by careful records checks, protects the voter list without shutting citizens out."
+summary: "[Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected](#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern), and [non-citizens' votes are found at about 1 to 22 per million ballots](#fact-non-citizens-on-voter-rolls/votes-per-ballots). But [Kansas's citizenship-document rule blocked tens of thousands of applicants](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens), and [Texas's ID-number rule rejected one mail ballot in eight in its first primary](#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike). A sworn promise of citizenship, backed by careful records checks, protects the voter list without shutting citizens out."
 order: 2
 ---
-Every citizen should have [an equal voice](#principle-an-equal-voice-for-every-citizen). A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) rules prevent almost nothing, and their cost falls on people who can least afford it.
+Every citizen should have [an equal voice](#principle-an-equal-voice-for-every-citizen). A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) rules aim at fraud that is rarely found, and their cost falls on people who can least afford it.
 
-### ID checks at the polls stop a kind of fraud that almost never happens
+### ID checks at the polls aim at a kind of fraud that is almost never found
 
 An ID check at the polls stops people voting in someone else's name. [In one count of alleged fraud since 2000, that was 10 of 2,068 cases](#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern). [Another found about 31 incidents among more than 1 billion ballots](#fact-election-fraud-and-voter-exclusion-history/two-counts-rare).
 
-When the Supreme Court upheld Indiana's ID law, [the record held no evidence of such fraud in Indiana's whole history](#fact-federal-and-state-power-over-voting-rules/crawford-record). [Britain brought in ID on a "precautionary principle"](#fact-voter-id-rules-in-the-us-and-abroad/britain-precaution-not-fraud). [It has had five convictions for voting as someone else at a polling station since 2016](#fact-voter-id-rules-in-the-us-and-abroad/britain-precaution-not-fraud). [In 14 of 20 recorded cases, an ID check would not have reached the fraud](#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach). [All three recent results thrown out turned on mail ballots](#fact-election-fraud-and-voter-exclusion-history/modern-result-changing-cases-absentee).
+Found cases are only the ones caught. But nothing shows a large hidden share, and [a national study found strict ID had no effect on fraud, actual or perceived](#fact-opinion-and-confidence-in-elections/studies-find-no-effect). When the Supreme Court upheld Indiana's ID law, [the record held no evidence of such fraud in Indiana's whole history](#fact-federal-and-state-power-over-voting-rules/crawford-record). [In 14 of 20 recorded cases, an ID check would not have reached the fraud](#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach).
 
 ### Non-citizens' votes are too rare to justify demanding papers from every citizen
 
@@ -24,11 +24,17 @@ While [each review charted found some non-citizens who voted](#fact-non-citizens
 
 While [the court did not know how many actually lacked a document](#fact-burdens-of-id-and-citizenship-rules/kansas-dpoc-possession-unknown), every one was kept off the list. Many citizens would struggle: [about one adult citizen in ten cannot quickly produce proof of citizenship](#fact-burdens-of-id-and-citizenship-rules/dpoc-not-readily-available).
 
-### Checks run by officials wrongly flag citizens
+### Texas's ID-number rule for mail ballots cost thousands of voters their vote
 
-[Most people Alabama flagged as non-citizens in 2024 were citizens](#fact-non-citizens-on-voter-rolls/alabama-2024). [In Texas and Alabama, more citizens were wrongly flagged than people were referred or removed](#fact-non-citizens-on-voter-rolls/both-errors-side-by-side). Bulk checks sweep up eligible voters.
+[In the first primary under its new rule, Texas rejected 12.38% of mail ballots](#fact-burdens-of-id-and-citizenship-rules/texas-march-2022-spike), mostly for a missing or mismatched ID number. [About 90% of the voters rejected did not vote another way](#fact-burdens-of-id-and-citizenship-rules/rejected-texans-did-not-vote).
 
-Voters whose ballots are rejected often do not vote at all. [About 90% of Texas mail voters rejected in one primary did not vote another way](#fact-burdens-of-id-and-citizenship-rules/rejected-texans-did-not-vote). Officials have shut voters out before. [Louisiana cut Black voters from about 44% of registered voters to under 1%](#fact-election-fraud-and-voter-exclusion-history/louisiana-registration-collapse). While a free, uniform ID is not a literacy test, a careless check can still keep citizens out.
+While [the rate fell sharply after that first primary](#fact-burdens-of-id-and-citizenship-rules/texas-rate-fell-after-primary), [Texas has stayed well above its 2020 rate and the national rate](#fact-burdens-of-id-and-citizenship-rules/texas-still-above-baseline). These were voters already on the list. How an ID rule is written decides who loses a vote.
+
+### Records checks flag many citizens, so a flag must start a check, not end a registration
+
+[Most people Alabama made inactive as non-citizens in 2024 were citizens](#fact-non-citizens-on-voter-rolls/alabama-2024). [In every program with a published follow-up, a large share of those flagged turned out to be citizens](#fact-non-citizens-on-voter-rolls/flag-lists-shrink). A flag is a question, not an answer.
+
+[In Texas and Alabama, more citizens were wrongly flagged than people were referred or removed](#fact-non-citizens-on-voter-rolls/both-errors-side-by-side). Officials have shut voters out before: [Louisiana cut Black voters from about 44% of registered voters to under 1%](#fact-election-fraud-and-voter-exclusion-history/louisiana-registration-collapse). A free, uniform check is not a literacy test, but a flag acted on without notice can still keep citizens out.
 
 ### The burden falls hardest on young, poor, Black and Hispanic citizens
 
@@ -36,8 +42,8 @@ Voters whose ballots are rejected often do not vote at all. [About 90% of Texas 
 
 While [a national study found no clear fall in turnout](#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect), [it cannot rule out drops like those in Kansas and Tennessee](#fact-burdens-of-id-and-citizenship-rules/burden-without-turnout-effect). [Those drops were biggest among young, newly registered and Black voters](#fact-burdens-of-id-and-citizenship-rules/gao-larger-drops-young-new-black). [Campaigns contacted more non-white voters](#fact-burdens-of-id-and-citizenship-rules/mobilisation-may-offset), which may have offset some. But a cost voters must overcome is still a cost.
 
-### So keep the sworn promise of citizenship, and back it with records checks
+### So keep the sworn promise of citizenship, and back it with records checks that give notice
 
-Keep [the federal form's sworn statement of citizenship, made under penalty of perjury](#fact-federal-and-state-power-over-voting-rules/federal-form-sworn-citizenship). Check registrations against records, and give flagged voters notice and time to answer. Where states ask for ID, let anyone without it sign a sworn statement instead.
+Keep [the federal form's sworn statement of citizenship, made under penalty of perjury](#fact-federal-and-state-power-over-voting-rules/federal-form-sworn-citizenship). Check registrations against records, but treat a match as a reason to ask, and give flagged voters notice and time to answer before anything changes. Where states ask for ID, let anyone without it sign a sworn statement instead.
 
 Congress should not pass the SAVE America Act, which [would require proof of citizenship to register](#fact-federal-and-state-power-over-voting-rules/save-america-act-provisions).

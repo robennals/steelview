@@ -383,6 +383,29 @@ sources:
     url: https://press.princeton.edu/books/paperback/9780691115122/peace-time
     publisher: Princeton University Press
     date: '2004'
+  # 25
+  - stance: complicates
+    quote: >-
+      Our findings show that major nonviolent campaigns have achieved success
+      53 percent of the time, compared with 26 percent for violent resistance
+      campaigns. … although campaigns that receive external state support
+      are more than three times likelier to succeed against a repressive
+      opponent, international sanctions have no effect on the outcomes of the
+      campaigns. … the security force defections make nonviolent campaigns
+      forty-six times more likely to succeed than nonviolent campaigns where
+      defections do not occur. … Overt external state support for a campaign
+      has no effect on the success of nonviolent campaigns. For violent
+      campaigns, however, it nearly triples their chances of success. Our
+      findings are similar regarding international sanctions, which have no
+      effect on the probability that a nonviolent campaign achieves success.
+      … Receiving foreign direct assistance may also contribute to a
+      delegitimization of the local nonviolent movement. … Would-be
+      nonviolent campaigns that are crushed in their infancy (and therefore
+      fail) cannot be included in the data set.
+    title: 'Why Civil Resistance Works: The Strategic Logic of Nonviolent Conflict (Stephan and Chenoweth, International Security 33:1)'
+    url: https://www.belfercenter.org/sites/default/files/legacy/files/IS3301_pp007-044_Stephan_Chenoweth.pdf
+    publisher: Belfer Center for Science and International Affairs, Harvard Kennedy School
+    date: '2008'
 comparisons:
   - id: air-power
     title: Air-power coercion attempts
@@ -437,6 +460,15 @@ dataStillNeeded:
     why: >-
       The article is paywalled; only the exchange's abstract was read, so
       Pape's stricter rate cannot be shown beside the others.
+  - measure: >-
+      Studies of particular kinds of outside help to an uprising from within,
+      such as internet access, protection of exiles or sanctions aimed at the
+      security forces, and whether each made the security forces likelier to
+      defect.
+    why: >-
+      Stephan and Chenoweth test only overt state backing and general
+      sanctions, which made no difference to nonviolent campaigns. Whether
+      narrower help does better is untested here.
   - measure: >-
       Studies of whether outside attacks rally a population behind a
       repressive government, or weaken it.
@@ -630,8 +662,8 @@ figures:
   - kind: "dataTable"
     id: "regime-change"
     title: "Studies of outside regime change"
-    subtitle: "Three studies, with how each defines success"
-    description: "Three studies of regime change imposed from outside, openly or covertly."
+    subtitle: "Four studies, with how each defines success"
+    description: "Three studies of regime change imposed from outside, openly or covertly, and one of uprisings from within, including what outside backing did for them."
     caption: "One card per study"
     layout: cards
     leadColumn: finding
@@ -644,6 +676,7 @@ figures:
       - { study: "Downes, Catastrophic Success (2021)", cases: "120 imposed regime changes, 1816–2008", success: "No success score; outcomes are civil war within ten years, violent removal of the installed leader, later disputes, UN voting", finding: { value: "Civil war risk \"more than doubles\"; four and a half times for leadership change", sources: [1] } }
       - { study: "Downes & Monten (2013)", cases: "70 twentieth-century cases (107 in the dataset, 1816–2003)", success: "The target becomes a democracy", finding: { value: "Only where development, homogeneity and representative experience were favourable", sources: [3, 4] } }
       - { study: "O'Rourke, Covert Regime Change", cases: "64 covert US attempts, 1947–89", success: "The US-backed side takes power", finding: { value: "\"Unsuccessful more than 60 percent of the time\"", sources: [5, 6] } }
+      - { study: "Stephan & Chenoweth (2008)", cases: "323 campaigns from within against a government, an occupation or for independence, 1900–2006", success: "The campaign's stated goal is met within two years, and the campaign visibly helped", finding: { value: "Nonviolent campaigns won 53% of the time, armed ones 26%; when security forces defected, nonviolent campaigns were far likelier to win; outside states' backing and sanctions made no difference to nonviolent campaigns", sources: [25] } }
   - kind: "dataTable"
     id: "strikes"
     title: "Strikes on nuclear sites"
@@ -732,6 +765,8 @@ observationMarks:
   restoration-does-best: {rows: ["Downes, Catastrophic Success (2021)"]}
   regime-change-and-relations: {rows: ["Downes, Catastrophic Success (2021)"]}
   covert-attempts-failed: {rows: ["O'Rourke, Covert Regime Change"]}
+  outside-backing-did-not-help-nonviolent-campaigns: {rows: ["Stephan & Chenoweth (2008)"]}
+  security-force-defections-decide: {rows: ["Stephan & Chenoweth (2008)"]}
   sanctions-success-depends-on-definition: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
   gsdb-range: {rows: ["Strict: target gives in fully or partly", "Relaxed: adds negotiated settlements"]}
   military-vulnerability: {rows: ["Horowitz & Reiter (2001)"]}
@@ -814,6 +849,14 @@ Downes and Monten find that interveners "will meet with little success" unless t
 ### Most covert US attempts to change governments failed {#outside-attempts-to-change-hostile-regimes--covert-attempts-failed}
 
 O'Rourke finds Cold War covert operations "unsuccessful more than 60 percent of the time", with targets more likely to have a civil war within ten years. [5](#source-outside-attempts-to-change-hostile-regimes-5) Most backed authoritarian forces, and the successes came mostly against "democratic governments, weak states, and American allies". [6](#source-outside-attempts-to-change-hostile-regimes-6) [7](#source-outside-attempts-to-change-hostile-regimes-7)
+
+### Outside backing made no difference to nonviolent uprisings {#outside-attempts-to-change-hostile-regimes--outside-backing-did-not-help-nonviolent-campaigns}
+
+Stephan and Chenoweth find that overt support from an outside state "has no effect on the success of nonviolent campaigns", and that sanctions on the government have none either. For armed campaigns, outside support "nearly triples" the chance of success. [25](#source-outside-attempts-to-change-hostile-regimes-25) They suggest foreign help "may also contribute to a delegitimization" of a nonviolent movement. [25](#source-outside-attempts-to-change-hostile-regimes-25) Pooling both kinds of campaign facing a crackdown, they find outside support made success "more than three times likelier", so the result depends on keeping the two apart. [25](#source-outside-attempts-to-change-hostile-regimes-25)
+
+### Uprisings from within won when the security forces turned {#outside-attempts-to-change-hostile-regimes--security-force-defections-decide}
+
+Nonviolent campaigns succeeded 53% of the time from 1900 to 2006, against 26% for armed ones. [25](#source-outside-attempts-to-change-hostile-regimes-25) Where the security forces defected, a nonviolent campaign was "forty-six times more likely to succeed". [25](#source-outside-attempts-to-change-hostile-regimes-25) The authors warn that campaigns crushed early may be missing from their data, which would flatter the success rates. [25](#source-outside-attempts-to-change-hostile-regimes-25)
 
 ## Observations {#outside-attempts-to-change-hostile-regimes--observations-strikes}
 

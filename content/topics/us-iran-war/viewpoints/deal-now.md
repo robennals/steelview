@@ -38,4 +38,6 @@ The US should lift the blockade step by step, as inspectors confirm that Iran ha
 
 [Qatar is pushing a plan: Iran reopens the Strait of Hormuz and the US ends its blockade](#fact-decisions-law-and-diplomacy/qatari-plan). With nuclear limits and inspections added, the US should take that deal while it still has the upper hand.
 
+The blockade is what the US has to trade: [Iran's oil exports collapsed after the first blockade began](#fact-oil-shipping-and-prices/iranian-exports-collapsed). While [talks in October made no progress](#fact-decisions-law-and-diplomacy/talks-continue-in-october), that is a reason to keep pressing, not to stop talking.
+
 [War should be the last resort](#principle-war-only-as-a-last-resort), so a fair deal should be taken when it is offered. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people), and a deal that can be checked serves Americans better than endless war.

@@ -511,6 +511,17 @@ sources:
     url: https://static.case.law/f2d/843/html/1070-01.html
     publisher: US Court of Appeals for the Eighth Circuit (via Caselaw Access Project)
     date: '1988-03-25'
+  # 31
+  - stance: supports
+    quote: >-
+      conducted the election entirely by-mail due to the coronavirus
+      pandemic. ... rejected 24% of absentee/mail-in ballots in the 3rd Ward
+      ... voided the May 12 election and ordered a redo election for Nov. 3,
+      2020.
+    title: What happened in two redo elections in 2020
+    url: https://news.ballotpedia.org/2020/10/27/what-happened-in-two-redo-elections-in-2020/
+    publisher: Ballotpedia News
+    date: '2020-10-27'
 comparisons:
   - id: voided-elections
     title: Voided elections, by what was found
@@ -831,8 +842,9 @@ figures:
             - 2
       - case: 'Paterson, N.J., 2020'
         how:
-          value: Hundreds of mail ballots found bundled in mailboxes; the winner charged with mail-ballot fraud
+          value: 'In an election held entirely by mail because of the pandemic, hundreds of mail ballots were found bundled in mailboxes; 24% of the ward''s mail ballots were rejected, and the winner was charged with mail-ballot fraud'
           sources:
+            - 31
             - 6
             - 7
         margin: Not given
@@ -1015,6 +1027,7 @@ observationMarks:
   absentee-far-more-than-impersonation: {rows: ["Heritage: tagged absentee-ballot fraud", "Heritage: tagged impersonation at the polls", "News21: absentee ballot fraud", "News21: in-person voter impersonation"]}
   absentee-schemes-voided-elections: {rows: ["East Chicago, Ind., 2003 primary", "North Carolina 9th District, 2018", "Bridgeport, Conn., 2023 primary"]}
   paterson-voided-no-convictions: {rows: ["Paterson, N.J., 2020"]}
+  paterson-was-all-mail: {rows: ["Paterson, N.J., 2020"]}
   no-signature-review-case-found: {rows: ["Arizona governor, 2022"]}
   in-person-machine-fraud-record: {rows: ["Kansas City, 1936", "Chicago, 1982"]}
   hand-count-of-a-sample: {rows: ["Absentee or mail, plus other illegal votes"]}
@@ -1076,6 +1089,10 @@ North Carolina's elections board found its 2018 congressional race "corrupted by
 ### Known schemes were local and caught, and most were rerun {#absentee-fraud-and-manipulation-of-the-count--each-case-caught-and-rerun}
 
 Every scheme in the timeline whose discovery is recorded was exposed by an election contest, an investigation or a paper trail, and the remedy was usually a new election; in Philadelphia a judge overturned the result. [1](#source-absentee-fraud-and-manipulation-of-the-count-1) [3](#source-absentee-fraud-and-manipulation-of-the-count-3) [9](#source-absentee-fraud-and-manipulation-of-the-count-9) No statewide or presidential result in this record was overturned for absentee fraud.
+
+### Paterson's voided election was held entirely by mail {#absentee-fraud-and-manipulation-of-the-count--paterson-was-all-mail}
+
+New Jersey held Paterson's May 2020 council election entirely by mail because of the pandemic. [31](#source-absentee-fraud-and-manipulation-of-the-count-31) Postal inspectors found hundreds of ballots bundled together in mailboxes, and 24% of the ward's mail ballots were rejected. [7](#source-absentee-fraud-and-manipulation-of-the-count-7) [31](#source-absentee-fraud-and-manipulation-of-the-count-31) New Jersey is not one of the long-standing all-mail states, so the case does not count against them, but it is an election in which every ballot was a mail ballot.
 
 ### Paterson: a court voided the election, but no one has been convicted {#absentee-fraud-and-manipulation-of-the-count--paterson-voided-no-convictions}
 

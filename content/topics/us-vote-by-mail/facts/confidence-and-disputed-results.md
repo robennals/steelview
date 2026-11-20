@@ -359,6 +359,58 @@ sources:
     url: https://www.cbsnews.com/newyork/news/bridgeport-mayor-election-joe-ganim-projected-winner/
     publisher: CBS New York (Associated Press)
     date: '2024-02-27'
+  # 21
+  - stance: supports
+    quote: >-
+      Using a preregistered survey experiment of nearly 10,000 Americans,
+      this article shows that informing voters about longer-than-expected
+      vote counting time induces a large, significant decrease in trust in
+      the election. However, viewing a “prebunking” video in advance of being
+      informed of the delay in results more than makes up for the
+      delay-induced decrease in election trust. Our findings have two
+      important implications. First, unexpected delays in calling elections
+      induce distrust even without misinformation from third parties.
+      Second, providing voters with information about vote counting and the
+      legitimate reasons for delays increases trust and mitigates the
+      distrust induced by delays. ... “How much do you trust
+      election results in the state of Arizona?” ... Table 2. Percent trusting
+      elections in Arizona “some” or “a lot” in each experimental condition.
+      No delay info + no prebunk 66.7% Delay info + no prebunk 60.2% No delay
+      info + prebunk video 69.1% Delay info + prebunk 64.1% ... Republican
+      respondents exhibit a decline in trust almost three times as large as
+      Democrats and Independents in response to the delay messaging (3.6%
+      points for Democrats, 9.6 for Republicans). ... a basic prebunking
+      intervention with a simple message from the Arizona Secretary of State
+      is enough to counteract much of the decrease in trust induced by
+      delayed election results.
+    title: 'Voters distrust delayed election results, but a prebunking message inoculates against distrust (PNAS Nexus 3(10), pgae414)'
+    url: https://doi.org/10.1093/pnasnexus/pgae414
+    publisher: 'PNAS Nexus (Mackenzie Lockhart, Jennifer Gaudette, Seth J. Hill, Thad Kousser, Mindy Romero and Laura Uribe)'
+    date: '2024-10-15'
+  # 22
+  - stance: supports
+    quote: >-
+      "Just by the way the vote counts progressed, people believed that voter
+      fraud was more likely." ... "reversing the pattern, where a candidate
+      takes the lead and keeps the lead, lessens beliefs in fraud." ...
+      "Counting these mail-in votes earlier could prevent such a drastic
+      change in results near the end of an election."
+    title: 'Unconscious Cognitive Processes May Fuel Election Fraud Beliefs (on Vaz, Ingendahl, Mata and Alves, "Stop the Count!", Psychological Science 36(8), 676–688)'
+    url: https://www.psychologicalscience.org/news/2025-oct-election-fraud.html
+    publisher: Association for Psychological Science
+    date: '2025-10-20'
+  # 23
+  - stance: supports
+    quote: >-
+      the scientists conducted a series of seven studies with participants
+      from the United States and the United Kingdom. ... The researchers used
+      the actual vote-count progression from the 2020 presidential election
+      in the state of Georgia ... Observing a candidate come from behind to
+      win late in the count made participants more suspicious of fraud.
+    title: A common cognitive bias is fueling distrust in election outcomes, according to new psychology research
+    url: https://www.psypost.org/a-common-cognitive-bias-is-fueling-distrust-in-election-outcomes-according-to-new-psychology-research/
+    publisher: PsyPost (Karina Petrova)
+    date: '2025-10-22'
 series:
   title: 'Pre-election confidence, by party'
   subtitle: 'Votes nationwide accurately cast and counted, Gallup, 2004–2024'
@@ -592,6 +644,24 @@ comparisons:
         value: 76
       - label: 'In-person voters'
         value: 47
+  - id: delay-trust-experiment
+    title: 'Trust after a slow count, in an experiment'
+    subtitle: 'Share trusting Arizona election results, by what respondents were told, 2023 survey experiment'
+    description: 'Share of nearly 10,000 US respondents trusting election results in Arizona "some" or "a lot", by whether they were told the 2022 governor''s race took six days to call and whether they first saw a short official video explaining how votes are counted (Lockhart and others, PNAS Nexus, 2024).'
+    unit: percent
+    valueLabel: '% trusting the results'
+    domainMax: 100
+    sources: [21]
+    note: 'Respondents were randomly assigned to the four groups. Most lived outside Arizona. The "No opinion" answer was left out, as the authors preregistered.'
+    items:
+      - label: 'Not told of a delay'
+        value: 66.7
+      - label: 'Told the race took six days to call'
+        value: 60.2
+      - label: 'Saw the video, not told of a delay'
+        value: 69.1
+      - label: 'Saw the video, then told of the delay'
+        value: 64.1
 relatedFacts:
   - ballot-deadlines-and-counting-speed
 dataStillNeeded:
@@ -609,8 +679,8 @@ dataStillNeeded:
       (Clinton), not a measured effect of mail restrictions.
   - measure: 'Confidence by party and voting method after the 3 November 2026 midterm'
     why: 'Every 2026 reading here is pre-election. A post-election reading would show whether the 2026 pattern, with Democrats less confident in mail counting, survives the result.'
-  - measure: 'Any study linking the length of a count, or a lead changing during it, to confidence in the result'
-    why: 'Counting speed is argued to drive suspicion; none of the series here separates counting time from who won.'
+  - measure: 'A study of real elections linking the length of a count, or a lead changing during it, to confidence in the result'
+    why: 'Two experiments find that delays and late lead changes lower trust, but they tell respondents about a count rather than observe voters after one. None of the series here separates counting time from who won.'
 figures:
   - kind: series
   - kind: series
@@ -619,6 +689,8 @@ figures:
     id: mail-count-by-voting-method
   - kind: series
     id: spae-nationwide
+  - kind: comparison
+    id: delay-trust-experiment
   - kind: series
     id: gallup-honesty
   - kind: barChart
@@ -748,6 +820,8 @@ observationMarks:
   no-before-after-measure: {rows: ["Florida, presidential, 2000"]}
   would-restriction-raise-confidence: {rows: ["Joshua Clinton", "M.V. Hood III and Seth C. McKee"]}
   rule-effect-confounded: {rows: ["M.V. Hood III and Seth C. McKee"]}
+  delay-lowers-trust: {rows: ["Not told of a delay", "Told the race took six days to call"]}
+  explaining-the-delay-limits-the-drop: {rows: ["Saw the video, then told of the delay"]}
 ---
 ## Observations {#confidence-and-disputed-results--observations-gallup-accuracy-party}
 
@@ -771,11 +845,11 @@ More than half of Americans have been confident in every Gallup reading since 20
 
 ### Republicans have stayed low on the mail count; Democrats fell in 2026 {#confidence-and-disputed-results--mail-confidence-by-party}
 
-At most 42% of Republican candidates' supporters have been confident in the mail count in any reading. [22](#source-confidence-and-disputed-results-22)
+At most 42% of Republican candidates' supporters have been confident in the mail count in any reading. [25](#source-confidence-and-disputed-results-25)
 
 Democratic confidence in it fell from 85% among Harris voters in 2024 to 64% in October 2026. [1](#source-confidence-and-disputed-results-1)
 
-In-person confidence also rose among Republicans and fell among Democrats between 2024 and 2026. [22](#source-confidence-and-disputed-results-22)
+In-person confidence also rose among Republicans and fell among Democrats between 2024 and 2026. [25](#source-confidence-and-disputed-results-25)
 
 ## Observations {#confidence-and-disputed-results--observations-mail-count-by-voting-method}
 
@@ -798,6 +872,20 @@ A study of 2016 finds the winner effect outweighed pre-election "rigged" messagi
 ### Republican trust fell to 22% after the 2020 count, but the series cannot separate that from losing {#confidence-and-disputed-results--count-length-not-separated}
 
 Republican confidence was already low before the 2020 count and fell further after it. [3](#source-confidence-and-disputed-results-3) [5](#source-confidence-and-disputed-results-5) Across the whole chart, Republican confidence was high after the party's wins in 2016 and 2024 and low after its losses in 2012 and 2020. Because the same voters also lost in 2020, these series cannot show whether a long count or a changing lead lowers confidence on its own; see What we don't know yet.
+
+## Observations {#confidence-and-disputed-results--observations-delay-trust-experiment}
+
+### Told that a count took six days, people trusted the result less {#confidence-and-disputed-results--delay-lowers-trust}
+
+In a survey experiment of nearly 10,000 Americans, 66.7% of those told nothing about timing trusted Arizona's election results, against 60.2% of those told its 2022 governor's race took six days to call (chart). [21](#source-confidence-and-disputed-results-21) The drop among Republicans, 9.6 points, was almost three times the drop among Democrats, 3.6 points. [21](#source-confidence-and-disputed-results-21)
+
+A separate series of seven studies, with participants in the US and UK, found that seeing a candidate come from behind late in the count made people more suspicious of fraud, including when they were shown the real 2020 Georgia count. [23](#source-confidence-and-disputed-results-23) Its lead author suggests counting mail ballots earlier to avoid "such a drastic change in results near the end". [22](#source-confidence-and-disputed-results-22)
+
+### Explaining the count beforehand undid most of the drop {#confidence-and-disputed-results--explaining-the-delay-limits-the-drop}
+
+People who first saw a short video from Arizona's Secretary of State on how votes are counted, and were then told of the delay, trusted the result at 64.1%, close to the 66.7% of people told nothing (chart). [21](#source-confidence-and-disputed-results-21) The authors conclude that delays "induce distrust even without misinformation", and that explaining them in advance "mitigates" it. [21](#source-confidence-and-disputed-results-21)
+
+Both studies tell respondents about a count rather than watch real voters after one, so neither measures how much a slow count moves trust in a real election.
 
 ## Observations {#confidence-and-disputed-results--observations-gallup-honesty-total}
 
@@ -853,7 +941,7 @@ Georgia Republicans' confidence in the statewide count rebounded in 2022, the fi
 
 ### Voters trust the mail count less than the in-person count {#confidence-and-disputed-results--mail-below-in-person}
 
-In each of Pew's four October readings since 2020, fewer voters were confident that mail and absentee votes would be counted as intended than votes cast in person (chart). [22](#source-confidence-and-disputed-results-22)
+In each of Pew's four October readings since 2020, fewer voters were confident that mail and absentee votes would be counted as intended than votes cast in person (chart). [25](#source-confidence-and-disputed-results-25)
 
 ## More {#confidence-and-disputed-results--more-gallup-accuracy-party}
 

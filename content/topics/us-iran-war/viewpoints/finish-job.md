@@ -4,7 +4,7 @@ shortName: "Finish the job"
 summary: "If the US stops now, it leaves an angry, weakened Iran with [uranium inspectors cannot locate](#fact-iran-nuclear-programme/stock-unaccounted-for) and [missiles that experts say it is rebuilding](#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles). The US should finish the job with clear, limited goals, and then keep inspectors in place."
 order: 3
 ---
-The US is already at war with Iran. If it stops halfway, it leaves a weakened, angry Iran with more reason than ever to want a bomb.
+The US is already at war with Iran. If it stops halfway, it leaves an angry Iran with its uranium out of sight and its missiles being rebuilt. The US should keep up the pressure until inspectors confirm nothing is left.
 
 ### Stopping now would leave Iran's most dangerous uranium out of sight
 
@@ -16,11 +16,11 @@ Until inspectors find the uranium, or see that it was destroyed, the danger rema
 
 [Experts at two US research groups say Iran has been rebuilding its missiles and drones since the April ceasefire](#fact-decisions-law-and-diplomacy/iran-reconstituting-missiles). [The top US intelligence official reportedly warned that Iran is planning attacks on US targets](#fact-decisions-law-and-diplomacy/dni-warning-as-reported).
 
-### Bombing alone is not enough: Iran must be made to accept inspectors
+### Pressure has opened countries to inspectors before, when it was kept up and came with a way out
 
-[Iraq's nuclear programme ended only after a war forced it to accept close inspection](#fact-outside-attempts-to-change-hostile-regimes/iraq-ended-after-war-and-inspection). [Bombing alone makes a country give in only about a third of the time](#fact-outside-attempts-to-change-hostile-regimes/air-coercion-about-a-third). So the pressure must last until inspectors are in.
+[Iraq's nuclear programme ended only after a war and years of close inspection](#fact-outside-attempts-to-change-hostile-regimes/iraq-ended-after-war-and-inspection). [Libya gave up its programme and let inspectors in](#fact-outside-attempts-to-change-hostile-regimes/libya-2003-with-inspections). [Countries give up a programme most often when threatened with sanctions, with force on the table, and offered face-saving rewards](#fact-outside-attempts-to-change-hostile-regimes/threats-plus-rewards).
 
-[Bombing is more likely to work when the target's military is open to attack](#fact-outside-attempts-to-change-hostile-regimes/military-vulnerability). So the US should keep up the pressure on Iran's military.
+[Bombing alone makes a country give in only about a third of the time](#fact-outside-attempts-to-change-hostile-regimes/air-coercion-about-a-third), so bombs cannot be the whole plan. But [bombing works more often when the target's military is open to attack](#fact-outside-attempts-to-change-hostile-regimes/military-vulnerability). The US should keep the pressure on, and offer Iran a way out that includes inspectors.
 
 ### Backing down now could make Iran and its allies bolder
 

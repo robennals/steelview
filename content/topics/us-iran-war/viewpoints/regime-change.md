@@ -1,10 +1,10 @@
 ---
 name: Iran's government kills its own people, and America should help Iranians bring it down
 shortName: "Help Iranians bring it down"
-summary: "Iran's government [killed thousands of protesters in the crackdown of winter 2025–26](#fact-iran-government-and-its-people/january-2026-crackdown-toll) and [put more people to death in 2025 than in any year since 1989](#fact-iran-government-and-its-people/executions-most-since-1989). [Few Iranians in one online survey want it](#fact-iran-government-and-its-people/few-prefer-islamic-republic). The US should help them end it."
+summary: "Iran's government [killed thousands of protesters in the crackdown of winter 2025–26](#fact-iran-government-and-its-people/january-2026-crackdown-toll) and [put more people to death in 2025 than in any year since 1989](#fact-iran-government-and-its-people/executions-most-since-1989). [Few Iranians in one online survey want it](#fact-iran-government-and-its-people/few-prefer-islamic-republic). Iranians must end it themselves, and the US should stand with them."
 order: 5
 ---
-Iran's government kills its own people by the thousands. It has no right to be left alone, and the US should help Iranians bring it down.
+Iran's government kills its own people by the thousands. It has no right to be left alone. Iranians must bring it down themselves, and the US should stand with them while they do.
 
 ### The government kills people who protest
 
@@ -24,14 +24,14 @@ Iran's government kills its own people by the thousands. It has no right to be l
 
 Nor do Iranians choose their top leader. [The new Supreme Leader is the son of the old one](#fact-iran-government-and-its-people/hereditary-succession).
 
-### Overthrow from outside risks civil war, so Iranians must do it themselves
+### Iranians must win this themselves, and outsiders can only stand with them
 
-While [overthrowing a government from outside more than doubles the risk of civil war](#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war), that argues against imposing a government, not for standing aside. [Democracy has followed only where conditions helped it](#fact-outside-attempts-to-change-hostile-regimes/democracy-only-in-favourable-conditions), so Iranians must choose their own leaders.
+[Peaceful uprisings have won far more often when the security forces turned against the government](#fact-outside-attempts-to-change-hostile-regimes/security-force-defections-decide). [Outside backing has made no difference to whether peaceful uprisings win](#fact-outside-attempts-to-change-hostile-regimes/outside-backing-did-not-help-nonviolent-campaigns). And [overthrowing a government from outside more than doubles the risk of civil war](#fact-outside-attempts-to-change-hostile-regimes/imposed-regime-change-and-civil-war).
 
-[More than 20,000 people were arrested after the June 2025 war](#fact-iran-government-and-its-people/arrests-after-june-2025). [Political executions peaked around this war's ceasefire](#fact-iran-government-and-its-people/political-executions-peaked-april-may). [In one survey, about as many Iranians called the strikes an attack on Iran as called them humanitarian help](#fact-iran-government-and-its-people/strikes-seen-as-aggression). While war has brought more repression and split opinion, that argues for helping Iranians directly, not only striking.
+So America cannot win this for Iranians, and should not try to impose a government. [Democracy has followed only where conditions helped it](#fact-outside-attempts-to-change-hostile-regimes/democracy-only-in-favourable-conditions). [In one survey, about as many Iranians called the strikes an attack on Iran as called them humanitarian help](#fact-iran-government-and-its-people/strikes-seen-as-aggression), and [more than 20,000 people were arrested after the June 2025 war](#fact-iran-government-and-its-people/arrests-after-june-2025).
 
-### So America should help Iranians end this government themselves
+### So America should stand with Iranians while they end this government themselves
 
-The US can weaken the government's security forces and stop it rebuilding them. It can protect the government's critics abroad. It can help Iranians get online and organise beyond the government's reach.
+[We have a duty to help people in danger](#principle-obligation-to-people-in-danger), even when help cannot decide the outcome. America can protect the government's critics abroad, help Iranians get online and talk to each other, and refuse any deal that props up the security forces that kill them.
 
-[We have a duty to help people in danger](#principle-obligation-to-people-in-danger), even when helping is hard. Iranians have risked their lives for a better government. [They want a government chosen by its people](#principle-democratic-consent-over-membership), and America should stand with them until they get it.
+None of this has been shown to win an uprising. But Iranians have risked their lives for a better government. [They want a government chosen by its people](#principle-democratic-consent-over-membership), and America should stand with them until they get it.

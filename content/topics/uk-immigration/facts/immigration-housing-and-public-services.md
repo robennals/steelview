@@ -578,6 +578,17 @@ sources:
       https://explore-education-statistics.service.gov.uk/find-statistics/school-funding-statistics/2025-26
     publisher: Department for Education
     date: '2026-01-29'
+  - stance: complicates
+    quote: >-
+      It shows that the rise in house prices relative to incomes between 1985
+      and 2018 can be more than accounted for by the substantial decline in the
+      real risk-free interest rate observed over the period. This is slightly
+      offset by net increases in home-ownership costs from higher rates of tax.
+    title: 'UK house prices and three decades of decline in the risk-free real interest rate (Staff Working Paper No. 837)'
+    url: >-
+      https://www.bankofengland.co.uk/-/media/boe/files/working-paper/2019/uk-house-prices-and-three-decades-of-decline-in-the-risk-free-real-interest-rate.pdf
+    publisher: Bank of England (David Miles and Victoria Monro)
+    date: '2019-12-20'
 series:
   title: 'Net additional dwellings'
   subtitle: 'England, financial years 1991-92 to 2024-25'
@@ -1729,7 +1740,7 @@ figures:
 - kind: dataTable
   id: official-findings
   title: 'Official findings on housing and services'
-  subtitle: 'Reviews and forecasters on housing, investment and spending'
+  subtitle: 'Reviews, forecasters and researchers on housing, investment and spending'
   description: "Findings on immigration and housing costs, public investment, spending per person and council building, in the words of the bodies that made them."
   caption: "One row per finding"
   columns:
@@ -1737,6 +1748,7 @@ figures:
     - {"key": "says", "label": "What the source says"}
   rows:
     - {"topic": "Immigration and house prices", "says": {"value": "Immigration \"can explain approximately 4-6% of the total increase in UK house prices over the last three decades\" and is \"unlikely to be a dominant driver of rising housing costs in the UK\"", "sources": [8, 9]}}
+    - {"topic": "Interest rates and house prices", "says": {"value": "Bank of England economists find that \"the rise in house prices relative to incomes between 1985 and 2018 can be more than accounted for by the substantial decline in the real risk-free interest rate\"", "sources": [47]}}
     - {"topic": "Planning limits and prices", "says": {"value": "\"in dense areas or where planning constraints limit construction, immigration-driven demand shocks are more likely to raise prices\"", "sources": [10]}}
     - {"topic": "Migrants in construction", "says": {"value": "\"Migrants make up around 46% of construction employment in London\"", "sources": [15]}}
     - {"topic": "Public investment and population", "says": {"value": "\"a significant proportion of public investment is fixed in nominal terms up to the end of a Spending Review period, so does not respond immediately to changes in the size of the population\"", "sources": [45]}}
@@ -1798,6 +1810,7 @@ observationMarks:
   migrants-concentrated-in-private-renting: {rows: ["People in privately rented homes"]}
   rent-growth-fell-as-migration-fell: {lines: ["United Kingdom"], from: "2024-03", to: "2026-09", at: "2026-09"}
   immigration-explains-4-6-percent-of-house-price-rise: {rows: ["Immigration and house prices"]}
+  falling-interest-rates-explain-price-rise: {rows: ["Interest rates and house prices"]}
   rent-effects: {rows: ["UK-like countries"]}
   lower-migration-raises-spending-per-person: {rows: ["Day-to-day spending per person"]}
   building-peaked-before-migration: {lines: ["Net additional dwellings"], from: "2020", to: "2025", at: "2020"}
@@ -1976,6 +1989,10 @@ Home ownership was 17% for migrants who had arrived in the past five years and 6
 ### Immigration explains about 4–6% of the real house-price rise {#immigration-housing-and-public-services--immigration-explains-4-6-percent-of-house-price-rise}
 
 In markets most like the UK's, the median study finds a one-point rise in the immigrant share raises house prices by 0.65%. For the UK, the review says this "can explain approximately 4-6%" of the three-decade rise in real house prices. It calls immigration "unlikely to be a dominant driver" of UK housing costs, while finding the effect positive. [8](#source-immigration-housing-and-public-services-8) [13](#source-immigration-housing-and-public-services-13) [9](#source-immigration-housing-and-public-services-9)
+
+### Falling interest rates more than account for the rise in house prices against incomes since 1985 {#immigration-housing-and-public-services--falling-interest-rates-explain-price-rise}
+
+A Bank of England staff paper finds that the long fall in real interest rates more than accounts for the rise in house prices relative to incomes from 1985 to 2018, slightly offset by higher taxes on owning a home. It is the authors' view, not the Bank's, and it explains prices relative to incomes, not rents. [47](#source-immigration-housing-and-public-services-47)
 
 ### Immigration is more likely to raise prices where planning limits construction {#immigration-housing-and-public-services--local-versus-regional-effects}
 

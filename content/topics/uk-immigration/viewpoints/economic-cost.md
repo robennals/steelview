@@ -12,11 +12,11 @@ Britain has taken in more people than it can house, and its people are no richer
 
 [Migration now makes up almost all of the country's population growth](#fact-immigration-against-the-long-run/migration-is-almost-all-population-growth).
 
-### Britain's economy grew, but its people are barely any richer
+### More people make the economy bigger, but barely make anyone richer
 
-Output per person grew for decades. But [since 2019 it has barely moved](#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew), even as [the economy as a whole grew](#fact-immigration-economy-and-public-finances/total-gdp-grew). So the people already here are, on average, no better off.
+[Since 2019, output per person has barely moved](#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew), even as [the economy as a whole grew](#fact-immigration-economy-and-public-finances/total-gdp-grew). The budget watchdog expects no more: [in its scenarios, migration moves output per person by under 1%, up or down](#fact-immigration-economy-and-public-finances/obr-per-head-effect-small).
 
-The government's budget watchdog shows how this can happen. In its scenarios, [extra migrants leave output per person lower if buildings and equipment do not keep up](#fact-immigration-economy-and-public-finances/capital-does-not-adjust). And [much public investment does not respond straight away to a bigger population](#fact-immigration-housing-and-public-services/investment-does-not-adjust). While [the watchdog puts the effect on output per person at under 1%, up or down](#fact-immigration-economy-and-public-finances/obr-per-head-effect-small), and [Canada and Germany stalled too](#fact-immigration-economy-and-public-finances/g7-stalled-alike), its figures still promise no real gain per head.
+So a bigger economy is not a richer people. [More migration raises total output in every one of the watchdog's cases](#fact-immigration-economy-and-public-finances/total-gdp-moves-with-migration), but [extra migrants leave output per person lower if buildings and equipment do not keep up](#fact-immigration-economy-and-public-finances/capital-does-not-adjust), and [much public investment does not respond straight away to a bigger population](#fact-immigration-housing-and-public-services/investment-does-not-adjust). While [Canada and Germany stalled too](#fact-immigration-economy-and-public-finances/g7-stalled-alike), so migration is not the only cause of the stall, the growth it brings does little for living standards.
 
 ### Migration is expected to add half of England's new households, and building falls short
 

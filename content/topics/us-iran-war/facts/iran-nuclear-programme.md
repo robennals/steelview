@@ -1034,6 +1034,7 @@ observationMarks:
   complementary-access-ended: {rows: ["Iran stops applying the Additional Protocol, ending complementary access"]}
   board-non-compliance: {rows: ["IAEA Board: Iran's failures \"constitute non-compliance with its obligations\""]}
   iran-says-under-rubble: {rows: ["Abbas Araghchi"]}
+  strikes-halted-enrichment: {rows: ["Institute for Science and International Security", "US and Iranian officials"]}
 ---
 ## Observations {#iran-nuclear-programme--observations-total-stock}
 
@@ -1154,6 +1155,10 @@ In June 2026 ISIS wrote that "for the first time in 20 years, Iran has no identi
 Time to weapons-grade uranium, time to a working weapon and the size of the stock are different measures, and the table keeps them apart. Most post-strike figures are reported second-hand, through CRS or FDD; CRS concludes that "the current assessed timeline is unclear". [3](#source-iran-nuclear-programme-3)
 
 ## Observations {#iran-nuclear-programme--observations-damage-claims}
+
+### Both governments and an independent institute say enrichment has stopped; no inspector has checked {#iran-nuclear-programme--strikes-halted-enrichment}
+
+The Chairman of the Joint Chiefs said in April 2026 that "nearly 80% of Iran's nuclear industrial base was hit". [11](#source-iran-nuclear-programme-11) In June ISIS found that Iran "has no identifiable route to produce weapon-grade uranium". [2](#source-iran-nuclear-programme-2) US and Iranian officials say enrichment has not resumed. [3](#source-iran-nuclear-programme-3) No inspector has been able to confirm any of this, and the IAEA cannot say where the enriched uranium is. [1](#source-iran-nuclear-programme-1)
 
 ### Iran says its enriched uranium is under the rubble {#iran-nuclear-programme--iran-says-under-rubble}
 

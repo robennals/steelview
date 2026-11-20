@@ -1,7 +1,7 @@
 ---
 name: Ballots should arrive by Election Day, and be counted fast
 shortName: "Ballots in by Election Day"
-summary: "An election should have an end. Ballots should reach officials by the time polls close on Election Day, and states should count fast enough that the result is known within a day or so. States that do both show it can be done."
+summary: "An election should have an end. Ballots that arrive after Election Day have been fought over up to the Supreme Court, and slow counts make people trust the result less. Ballots should reach officials by the time polls close, and states should count fast enough that the result is known within a day or so."
 order: 3
 ---
 An election should have a clear end. Every ballot should be in officials' hands when the polls close, and the result should be known within a day or so. Both are choices states can make.
@@ -11,6 +11,18 @@ An election should have a clear end. Every ballot should be in officials' hands 
 Election Day is the day of the election. A ballot that arrives a week later was not part of it. [The Supreme Court left the choice of deadline to lawmakers](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), so each state can make that rule.
 
 [Rules should mean what they say](#principle-rules-must-mean-what-they-say). The Court also noted a reason lawmakers may choose an Election Day deadline: [it "avoids the appearance of fraud from late-arriving ballots"](#fact-ballot-deadlines-and-counting-speed/watson-appearance-of-fraud).
+
+### Ballots that arrive late become something to fight over
+
+In 2020, [Pennsylvania's late-arriving ballots were kept apart on a Supreme Court justice's order, left out of the certified count, and fought over until 2021](#fact-ballot-deadlines-and-counting-speed/pennsylvania-2020-late-ballots-litigated). A ballot in by poll close leaves nothing to fight over.
+
+Those 10,097 ballots were far fewer than Biden's margin, so they changed nothing. But in a race closer than the number of late ballots, the winner would have turned on how the courts ruled. [Elections need results the losers can accept](#principle-results-the-losers-can-accept), and a rule must work in the close race, not only the easy one.
+
+### Slow counts make people trust the result less
+
+[In a survey experiment, people told that a race took six days to call trusted the result less than people told nothing](#fact-confidence-and-disputed-results/delay-lowers-trust). Late ballots slow the count: [MIT found counts were slower where states let mail ballots arrive after Election Day](#fact-ballot-deadlines-and-counting-speed/slowest-states-mostly-heavy-mail).
+
+While [explaining the count in advance undid most of the drop](#fact-confidence-and-disputed-results/explaining-the-delay-limits-the-drop), a count that ends sooner leaves less to explain. The experiment tells people about a delay rather than watching voters after a real one, and [the 2020 fall in Republican trust cannot be separated from losing](#fact-confidence-and-disputed-results/count-length-not-separated).
 
 ### Most states already require ballots by Election Day, and more are returning to it
 
@@ -22,19 +34,13 @@ Both Republican and Democratic states count late ballots. [States still counting
 
 While [late arrival has caused 12.1% to 26.9% of rejected mail ballots since 2016, depending on the election](#fact-ballot-deadlines-and-counting-speed/late-share-of-rejections), the answer is to help voters meet the deadline, not to drop it. States can mail ballots early, provide drop boxes, and say plainly when to post them.
 
-Giving extra days does not end late ballots either. [Washington counts ballots that arrive weeks after Election Day](#fact-ballot-deadlines-and-counting-speed/fifteen-versus-thirty). Yet [late rejections rose in its 2026 primary, as they did in Wisconsin and Michigan](#fact-ballot-deadlines-and-counting-speed/late-rejections-rising-2026). Postmarks are also a weak guide: [since 2024, the Postal Service has postmarked mail at regional centres](#fact-ballot-deadlines-and-counting-speed/postal-delays-and-postmarks).
+A later deadline does not end late ballots either. [Washington counts ballots that arrive weeks after Election Day](#fact-ballot-deadlines-and-counting-speed/fifteen-versus-thirty). Yet [late rejections rose in its 2026 primary, as they did in Wisconsin and Michigan](#fact-ballot-deadlines-and-counting-speed/late-rejections-rising-2026). Postmarks are also a weak guide: [since 2024, the Postal Service has postmarked mail at regional centres](#fact-ballot-deadlines-and-counting-speed/postal-delays-and-postmarks).
 
 ### Big states show a count can finish within a day
 
-[Texas and Florida each counted more than ten million votes in about a day](#fact-ballot-deadlines-and-counting-speed/texas-florida-counted-fast). [In 2024, most swing states counted nearly all their votes within hours](#fact-ballot-deadlines-and-counting-speed/most-votes-counted-within-hours). So a fast count is a choice a state can make.
+[In 2024, most swing states counted nearly all their votes within hours](#fact-ballot-deadlines-and-counting-speed/most-votes-counted-within-hours), and [Texas and Florida each counted more than ten million votes in about a day](#fact-ballot-deadlines-and-counting-speed/texas-florida-counted-fast). So a fast count is a choice a state can make.
 
-While [Arizona and Nevada still count slowly though they prepare ballots early](#fact-ballot-deadlines-and-counting-speed/prepare-early-still-slow), [MIT found counts were slower where states let mail ballots arrive after Election Day](#fact-ballot-deadlines-and-counting-speed/slowest-states-mostly-heavy-mail). Ending late arrival removes one cause of delay.
-
-### A close race should not hang on ballots that arrive after the vote
-
-While [late ballots were far fewer than the winner's margins in Nevada's two largest counties in 2024](#fact-ballot-deadlines-and-counting-speed/late-ballots-small-in-nevada), a rule must also hold in a close race. In 2020, the year the most states counted late ballots, [Republican trust in the count fell to 22%](#fact-confidence-and-disputed-results/count-length-not-separated).
-
-Republicans had also lost that year, so no one can say whether a long count lowers trust on its own. A democracy that wants [results the losers can accept](#principle-results-the-losers-can-accept) should not wait to find out.
+While [Arizona and Nevada still count slowly though they prepare ballots early](#fact-ballot-deadlines-and-counting-speed/prepare-early-still-slow), ending late arrival removes one cause of delay that a state controls.
 
 ### So every state should require ballots by poll close, and count fast
 

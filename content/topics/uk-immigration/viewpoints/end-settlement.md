@@ -28,11 +28,11 @@ Government advisers find that [care workers, and the adult family members of hea
 
 While [people with settlement outside the EU scheme were 2.7% of those on Universal Credit](#fact-settlement-and-migrant-status/no-official-data-on-ilr-holders-work-or-benefits), this step rests on principle, not numbers. And while [people with EU settled status far outnumber other holders](#fact-settlement-and-migrant-status/euss-outnumber-non-eu-ilr), and [are outside the reforms under the Brexit treaty](#fact-settlement-and-migrant-status/eu-status-out-of-scope), Britain should act where Parliament can.
 
-### Fewer arrivals alone will not undo the change
+### Only more people leaving than arriving would undo the change
 
-Lower arrivals would leave [the 2.5 million people added by net migration in 2021–24](#fact-immigration-against-the-long-run/four-years-gross-and-net) in place. Only years in which more people leave than arrive would reverse that.
+[Net migration added about 2.5 million people in 2021–24](#fact-immigration-against-the-long-run/four-years-gross-and-net), and [England is adding fewer homes each year than the households it expects](#fact-immigration-housing-and-public-services/building-below-household-growth). Lower arrivals would leave those people in place. Only years in which more people leave than arrive would reverse that.
 
-While [Britain's past years of net emigration came when arrivals were a fraction of today's](#fact-immigration-against-the-long-run/negative-years-came-from-emigration), [British citizens already leave on net](#fact-immigration-against-the-long-run/british-net-emigration). So arrivals need only fall below departures. While [the population ages fastest with no net migration](#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it), that is a price worth paying. A country should not have to accept for ever a change it never chose.
+While [Britain's past years of net emigration came when arrivals were a fraction of today's](#fact-immigration-against-the-long-run/negative-years-came-from-emigration), [British citizens already leave on net](#fact-immigration-against-the-long-run/british-net-emigration). So arrivals need only fall below departures. While [the population ages fastest with no net migration](#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it), that is a price worth paying. [Most people wanted immigration reduced](#fact-immigration-against-the-long-run/public-preferences), and a country should not have to accept for ever a change it did not choose.
 
 ### So replace settlement with renewable visas and keep benefits for citizens
 

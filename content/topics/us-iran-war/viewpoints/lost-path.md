@@ -1,5 +1,5 @@
 ---
-name: The war killed Iranians and threw away a slower plan that was working
+name: The war killed Iranians and threw away a slower plan that had worked
 shortName: "The slower path"
 summary: "Iran was dangerous, but [in every check from 2017 to 2019, its uranium stock stayed under the 2015 deal's limit](#fact-iran-nuclear-programme/deal-era-compliance). The war has [killed thousands of Iranians](#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands), [all but stopped inspections](#fact-iran-nuclear-programme/verification-stopped) and thrown away the plan that had kept Iran in check."
 order: 2
@@ -16,7 +16,7 @@ Iran was dangerous, but talks and inspections had kept it in check before. Choos
 
 [Iran's uranium stock stayed under the 2015 deal's limit until about a year after the US left the deal, then rose far above it](#fact-iran-nuclear-programme/deal-era-compliance). So the deal held Iran back for as long as it lasted.
 
-Even then, the talking went on. [US–Iran talks were under way in Geneva two days before the strikes](#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came).
+Iran's most dangerous uranium came after the deal was gone: [it began building up uranium enriched to 60% in 2021](#fact-iran-nuclear-programme/sixty-percent-growth). Even then, the talking went on. [US–Iran talks were under way in Geneva two days before the strikes](#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came), so the war threw away the chance to restore the deal.
 
 ### Iran was not about to build a bomb
 
@@ -28,7 +28,7 @@ While [Iran was the only country without nuclear weapons making 60% uranium](#fa
 
 [Since the war began, inspectors have visited only one site in Iran, a power plant](#fact-iran-nuclear-programme/verification-stopped). [No inspector has seen Iran's 60% uranium since the first strikes, in June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for).
 
-[Bombing nuclear sites has only slowed programmes a little](#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly). [It worked best long before a country neared a bomb](#fact-outside-attempts-to-change-hostile-regimes/strikes-worked-early). [In 2011 the same researchers said Iran lacked the conditions of past successes](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran).
+While [inspectors' access had narrowed in steps since 2021, long before the war](#fact-iran-nuclear-programme/access-narrowed-in-steps), that came after the deal fell apart, and a new deal could reverse it. [A leading group of experts now sees no way for Iran to make bomb-grade uranium, but gives no estimate of how long that will last](#fact-iran-nuclear-programme/no-route-to-weapons-grade). [Past strikes on nuclear sites slowed programmes only a little](#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly), and [in 2011 the researchers who found that said Iran lacked the conditions of past successes](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran).
 
 ### Keeping Iran in check never needed Iran to become friendly
 

@@ -1221,7 +1221,7 @@ figures:
       - { id: "report", label: "Report of military action" }
       - { id: "over", label: "Hostilities declared over" }
     events:
-      - { date: "2026-03-02", title: "Letter: strikes on Iran from 28 Feb", category: "report", source: 12 }
+      - { date: "2026-03-02", title: "Letter: strikes on Iran from 28 Feb", description: "Cites the President's authority \"as Commander in Chief\", acting \"in collective self-defense of our regional allies\", and is filed \"consistent with\" the War Powers Resolution.", category: "report", source: 12 }
       - { date: "2026-05-01", title: "Letter: hostilities that began 28 Feb \"have terminated\"", description: "It argues the administration has complied with the \"60-day cut-off\".", category: "over", sources: [10, 13] }
       - { date: "2026-06-12", title: "Letter: \"military action commenced on June 9, 2026\"", description: "After Iran engaged a US Apache on 8 June.", category: "report", source: 14 }
       - { date: "2026-06-29", title: "Letter: \"military actions taken\" on 26 and 28 June", description: "After Iranian attacks on vessels on 25 and 27 June.", category: "report", source: 15 }
@@ -1344,6 +1344,7 @@ observationMarks:
   talks-continue-in-october: {rows: ["Qatari plan reported: Hormuz reopened for blockade lifted, over five days"]}
   most-wanted-congress-asked: {rows: ["All voters"]}
   terminated-letter-then-new-strikes: {rows: ["Letter: hostilities that began 28 Feb \"have terminated\"", "Letter: \"military action commenced on June 9, 2026\"", "Letter: \"military actions taken\" on 26 and 28 June", "Letter: \"military action commenced on July 7, 2026\"", "Letter: \"military action commenced on July 27, 2026\"", "Letter: \"military action commenced on September 1, 2026\""]}
+  president-cites-commander-in-chief: {rows: ["Letter: strikes on Iran from 28 Feb"]}
   separate-actions: {rows: ["Letter: \"military action commenced on June 9, 2026\"", "Letter: \"military actions taken\" on 26 and 28 June", "Letter: \"military action commenced on July 7, 2026\"", "Letter: \"military action commenced on July 27, 2026\"", "Letter: \"military action commenced on September 1, 2026\""]}
   only-one-report-started-the-clock: {rows: ["All War Powers reports", "Reports citing section 4(a)(1)"]}
   republican-defections-small-but-growing: {lines: ["Republicans voting yes"], from: "2026-03-05", to: "2026-09-15", at: "2026-09-15"}
@@ -1462,6 +1463,10 @@ On election night 2024 the President said "I'm not going to start a war. I'm goi
 In his 2024 convention speech he said Iran was "very close to having a nuclear weapon" and blamed his predecessor. [32](#source-decisions-law-and-diplomacy-32) Both lines were said by the same candidate in the same year.
 
 ## Observations {#decisions-law-and-diplomacy--observations-war-powers-letters-said}
+
+### The President cites his own power as Commander in Chief {#decisions-law-and-diplomacy--president-cites-commander-in-chief}
+
+The first letter, of 2 March, says the President acted under his "constitutional authority as Commander in Chief", in "collective self-defense of our regional allies, including Israel". It is filed "consistent with" the War Powers Resolution. [12](#source-decisions-law-and-diplomacy-12)
 
 ### Hostilities were declared over, then new strikes were reported {#decisions-law-and-diplomacy--terminated-letter-then-new-strikes}
 

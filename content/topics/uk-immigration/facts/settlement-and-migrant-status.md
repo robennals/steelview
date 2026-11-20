@@ -1557,6 +1557,7 @@ observationMarks:
   windrush-generation: {whole: true}
   windrush-detained-or-removed: {whole: true}
   windrush-compensation-decisions: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
+  windrush-compensation-paid: {lines: ["Cumulative amount paid (£)"], at: "2026-08"}
   windrush-and-the-current-proposal: {whole: true}
   settlement-unlocks-benefits: {rows: ["On a temporary visa", "After settlement"]}
   nrpf-council-costs: {rows: ["What councils spend"]}
@@ -1569,6 +1570,8 @@ observationMarks:
   revocation-needs-new-law: {rows: ["Nationality, Immigration and Asylum Act 2002, s.76"]}
   bno-historic-and-moral-commitment: {rows: ["Hong Kong BN(O) policy statement"]}
   family-route-two-to-five-2012: {rows: ["Family route change"]}
+  proposal-covers-people-already-here: {rows: ["A Fairer Pathway to Settlement (CP 1448)"]}
+  transitional-arrangements-undecided: {rows: ["Home Secretary to the Home Affairs Committee"]}
   eu-status-out-of-scope: {rows: ["Who is out of scope"]}
   status-of-earned-settlement: {whole: true}
   dependants-ten-year-route: {rows: ["Standard wait"]}
@@ -1805,6 +1808,14 @@ The BN(O) policy statement says the route reflects "the UK's historic and moral 
 
 The qualifying period for family settlement rose from two to five years in 2012. [11](#source-settlement-and-migrant-status-11) [52](#source-settlement-and-migrant-status-52)
 
+### The government proposes applying the longer wait to everyone not yet settled {#settlement-and-migrant-status--proposal-covers-people-already-here}
+
+The November 2025 command paper proposes applying the changes "to everyone in the country today who has not already received indefinite leave to remain", so people due to settle "in the coming months and years" would face the new requirements. It says the government "would never" take settlement from those who already hold it. [53](#source-settlement-and-migrant-status-53) [54](#source-settlement-and-migrant-status-54) In September 2026 the Home Secretary said transitional arrangements were still to be decided. [64](#source-settlement-and-migrant-status-64)
+
+### Protection for people already on the path is still undecided {#settlement-and-migrant-status--transitional-arrangements-undecided}
+
+In September 2026 the Home Secretary said the new settlement policy, "as well as any transitional arrangements we might decide to implement", would be set out later in the year, noting that a large group who arrived in 2022 would otherwise qualify in February 2027. [64](#source-settlement-and-migrant-status-64)
+
 ## Observations {#settlement-and-migrant-status--observations-proposal}
 
 ### A year on, the core changes are not in the rules {#settlement-and-migrant-status--status-of-earned-settlement}
@@ -1891,6 +1902,10 @@ settlement costs were 336% higher than the average of the other European countri
 [89](#source-settlement-and-migrant-status-89)
 
 ## Observations {#settlement-and-migrant-status--observations-windrush-paid}
+
+### The state has paid Windrush victims well over a hundred million pounds {#settlement-and-migrant-status--windrush-compensation-paid}
+
+By August 2026 the Windrush Compensation Scheme had paid £133,475,539.07 on 4,221 claims, to people the state had wrongly treated as having no right to be here, and to their families. [97](#source-settlement-and-migrant-status-97)
 
 ## Subtleties {#settlement-and-migrant-status--subtleties-windrush-paid}
 
