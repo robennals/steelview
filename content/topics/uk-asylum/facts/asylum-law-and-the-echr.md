@@ -131,7 +131,9 @@ sources:
       specific legislation. However, any legislation that sought to provide
       meaningful mitigations or solutions to these problems would face
       significant and potentially debilitating litigation (including in the UK)
-      and would likely be held incompatible with the ECHR
+      and would likely be held incompatible with the ECHR (as with the Northern
+      Ireland Troubles (Legacy and Reconciliation) Act 2023 which is going to the
+      UK Supreme Court (“UKSC”) in October 2025).
     title: Master ECHR Review (legal advice to the Leader of the Opposition)
     url: >-
       https://ukhumanrightsblog.com/wp-content/uploads/2025/10/Master-ECHR-Review-02.10.25-FINAL-1.pdf
@@ -145,7 +147,8 @@ sources:
       withdrawal from ECAT and, at least, significantly amend the Modern
       Slavery Act 2015, I do not consider it necessary at this time to leave
       the Refugee Convention to be able to achieve your policy goals on
-      immigration
+      immigration (although it would be necessary to remove or limit the
+      reference to those instruments in domestic UK legislation).
     title: Master ECHR Review (legal advice to the Leader of the Opposition)
     url: >-
       https://ukhumanrightsblog.com/wp-content/uploads/2025/10/Master-ECHR-Review-02.10.25-FINAL-1.pdf
@@ -208,16 +211,16 @@ sources:
     publisher: 'Foreign, Commonwealth and Development Office'
     date: '2021-04'
   - stance: supports
-    quote: >-
-      Part Three of the TCA concerns criminal law enforcement co-operation. It
-      provides for close co-operation on a range of issues: 269.1. Exchanges of
-      DNA, fingerprints and vehicles registration data (Title II & ANNEX 39);
-      […] 269.2. Transfer and processing of passenger name record data (Title
-      III & ANNEX 40); 269.3. Cooperation on operational information (Title
-      IV); 269.4. Cooperation with Europol (Title V & ANNEX 41); 269.5.
-      Cooperation with Eurojust (Title VI & ANNEX 42); 269.6. Surrender (Title
-      VII & ANNEX 43); 269.7. Mutual assistance (Title VIII); and 269.8.
-      Exchange of criminal record information (Title IX & ANNEX 44).
+    quote: |-
+      Part Three of the TCA concerns criminal law enforcement co-operation. It provides for close co-operation on a range of issues:
+      - 269.1. Exchanges of DNA, fingerprints and vehicles registration data (Title II & ANNEX 39); […]
+      - 269.2. Transfer and processing of passenger name record data (Title III & ANNEX 40);
+      - 269.3. Cooperation on operational information (Title IV);
+      - 269.4. Cooperation with Europol (Title V & ANNEX 41);
+      - 269.5. Cooperation with Eurojust (Title VI & ANNEX 42);
+      - 269.6. Surrender (Title VII & ANNEX 43);
+      - 269.7. Mutual assistance (Title VIII); and
+      - 269.8. Exchange of criminal record information (Title IX & ANNEX 44).
     title: Master ECHR Review (legal advice to the Leader of the Opposition)
     url: >-
       https://ukhumanrightsblog.com/wp-content/uploads/2025/10/Master-ECHR-Review-02.10.25-FINAL-1.pdf
@@ -332,16 +335,10 @@ sources:
     publisher: Council of Europe Committee of Ministers
     date: '2026-05-15'
   - stance: supports
-    quote: >-
-      45. States Parties may establish their own immigration policies, which
-      may include co-operation with third countries, provided that they
-      continue to fulfil their Convention obligations. 46. It is important that
-      States, including those that are exposed to mass arrivals, can pursue new
-      approaches to address and potentially deter irregular migration. Amongst
-      the forms of new approaches that have been envisaged by several member
-      States are processing requests for international protection in a third
-      country, third country "return hubs", and co-operation with countries of
-      transit.
+    quote: |-
+      45. States Parties may establish their own immigration policies, which may include co-operation with third countries, provided that they continue to fulfil their Convention obligations.
+
+      46. It is important that States, including those that are exposed to mass arrivals, can pursue new approaches to address and potentially deter irregular migration. Amongst the forms of new approaches that have been envisaged by several member States are processing requests for international protection in a third country, third country "return hubs", and co-operation with countries of transit.
     title: 'Chişinău Declaration, CM(2026)99-final, paragraphs 45-46 (full text as reproduced by EIN)'
     url: >-
       https://www.ein.org.uk/news/new-council-europe-declaration-clarifies-echr-interpretation-immigration-and-asylum-law
@@ -546,8 +543,8 @@ sources:
     date: '2025-10-02'
   - stance: supports
     quote: >-
-      S. 37 in force at 28.6.2022 by S.I. 2022/590 , regs. 1(2) , 2 , Sch. 1
-      para. 19 (with Sch. 2 para. 6 )
+      S. 37 in force at 28.6.2022 by S.I. 2022/590, regs. 1(2), 2, Sch. 1
+      para. 19 (with Sch. 2 para. 6)
     title: 'Nationality and Borders Act 2022, section 37: commencement information'
     url: 'https://www.legislation.gov.uk/ukpga/2022/36/section/37'
     publisher: legislation.gov.uk (The National Archives)

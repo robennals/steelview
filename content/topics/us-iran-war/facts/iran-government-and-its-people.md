@@ -11,31 +11,34 @@ derivedFigures:
 sources:
   # 1
   - stance: supports
-    quote: >-
-      This report adopts a disciplined human rights methodology centered on
-      documenting minimum verifiable cases rather than publishing maximal
-      estimates. ... • Protesters killed: 6,488 • Children killed, counted
-      separately and not included among protesters: 236 • Civilians killed,
-      non-protester: 76 • Military and government forces killed: 207 • Total
-      fatalities: 7,007 An additional 11,744 cases remain under review and are
-      not included in confirmed totals. ... • Total arrests: 53,777 • Children,
-      teenagers, and school students arrested: 555 • University students
-      arrested: 147
+    quote: |-
+      This report adopts a disciplined human rights methodology centered on documenting minimum verifiable cases rather than publishing maximal estimates. ...
+
+      Across the first fifty days covered by this report, consolidated documentation records:
+
+      - Protesters killed: 6,488
+      - Children killed, counted separately and not included among protesters: 236
+      - Civilians killed, non-protester: 76
+      - Military and government forces killed: 207
+      - Total fatalities: 7,007
+
+      An additional 11,744 cases remain under review and are not included in confirmed totals. Separately, HRA documented eight civilian deaths resulting from clashes between civilians in public. ...
+
+      - Total arrests: 53,777
+      - Children, teenagers, and school students arrested: 555
+      - University students arrested: 147
     title: 'The Crimson Winter: A 50 Day Record of Iran’s 2025–2026 Nationwide Protests'
     url: https://www.en-hrana.org/the-crimson-winter-a-50-day-record-of-irans-2025-2026-nationwide-protests/
     publisher: HRANA (Human Rights Activists News Agency)
     date: '2026-02-23'
   # 2
   - stance: supports
-    quote: >-
-      Iranian state television has released the first official death toll from
-      the recent antigovernment protests that engulfed the country, reporting
-      that 3,117 people were killed during the crackdown. ... The US-based Human
-      Rights Activists News Agency (HRANA) has said 4,519 were killed during the
-      wave of demonstrations, including 4,251 protesters, 197 security
-      personnel, 35 people aged under 18 and 38 bystanders who it says were
-      neither protesters nor security personnel. ... HRANA also said 9,049
-      additional deaths were under review.
+    quote: |-
+      Iranian state television has released the first official death toll from the recent antigovernment protests that engulfed the country, reporting that 3,117 people were killed during the crackdown. ...
+
+      The US-based Human Rights Activists News Agency (HRANA) has said 4,519 were killed during the wave of demonstrations, including 4,251 protesters, 197 security personnel, 35 people aged under 18 and 38 bystanders who it says were neither protesters nor security personnel. ...
+
+      HRANA also said 9,049 additional deaths were under review.
     title: 'At least 3,117 people killed during Iran protests, state media report'
     url: https://www.aljazeera.com/news/2026/1/21/at-least-3117-people-killed-during-iran-protests-state-media-reports
     publisher: Al Jazeera
@@ -56,21 +59,16 @@ sources:
     date: '2026-01-27'
   # 4
   - stance: supports
-    quote: >-
-      On 21 January, the Foundation of Martyrs and Veterans Affairs announced
-      that 3,117 individuals had been killed, including members of the security
-      forces, and 690 'rioters'. At the time of writing the present report, one
-      credible human rights organization had estimated that over 7,000 people,
-      including up to 6,500 protesters, over 230 children and at least 200
-      members of the security forces had been killed. ... [conditions] have
-      made it difficult for the Mission to arrive at precise estimates at the
-      time of writing of the number of people killed and injured. ... A
-      credible human rights organization estimated that by mid-February, over
-      50,000 people had been arrested ... credible human rights organizations
-      recording at least 464 executions between July and September. A further
-      222 people were executed in October alone – the highest monthly total
-      recorded in at least 25 years. ... amount to the crimes against humanity
-      of murder, imprisonment, torture
+    quote: |-
+      On 21 January, the Foundation of Martyrs and Veterans Affairs announced that 3,117 individuals had been killed, including members of the security forces, and 690 'rioters'. At the time of writing the present report, one credible human rights organization had estimated that over 7,000 people, including up to 6,500 protesters, over 230 children and at least 200 members of the security forces had been killed. ...
+
+      [conditions] have made it difficult for the Mission to arrive at precise estimates at the time of writing of the number of people killed and injured. ...
+
+      A credible human rights organization estimated that by mid-February, over 50,000 people had been arrested ...
+
+      credible human rights organizations recording at least 464 executions between July and September. A further 222 people were executed in October alone – the highest monthly total recorded in at least 25 years. ...
+
+      In relation to the attack on Evin prison compound, the Mission finds that Israel committed the war crime of intentionally directing attacks against a civilian object. It also finds that many gross human rights violations committed by the Islamic Republic of Iran amount to the crimes against humanity of murder, imprisonment, torture, sexual violence, gender persecution, enforced disappearance and other inhumane acts, committed as part of a widespread and systematic attack directed against a civilian population, namely women, ethnic and religious minorities, human rights defenders and perceived dissenting or opposing actors.
     title: 'Report of the Independent International Fact-Finding Mission on the Islamic Republic of Iran (A/HRC/61/60)'
     url: https://www.ecoi.net/en/file/local/2139753/a-hrc-61crp-2.pdf
     publisher: UN Human Rights Council, Independent International Fact-Finding Mission on Iran
@@ -101,40 +99,44 @@ sources:
     date: '2020-05-20'
   # 7
   - stance: supports
-    quote: >-
-      Freedom in the World 2026 Iran Not Free 10 100 PR Political Rights 4 40
-      CL Civil Liberties 6 60 Last Year's Score & Status 11 100 Not Free ...
-      Authorities responded harshly to the Woman, Life, Freedom movement, which
-      began in 2022 ... In early 2024, a United Nations fact-finding mission
-      reported that at least 551 protesters had been killed. ... In 2023, the
-      parliament approved a bill that would impose heavier penalties, including
-      steeper fines and longer prison terms, on women who do not wear the
-      hijab. Implementation was scheduled to begin in December 2024, but it was
-      paused by the Pezeshkian administration and remained pending during
-      2025. Widespread defiance of the hijab mandate continued, and in December
-      2025 authorities arrested the organizers of a marathon on Kish Island in
-      which many women competed without a headscarf.
+    quote: |-
+      Freedom in the World 2026
+      Iran
+      Not Free 10/100
+
+      PR Political Rights | CL Civil Liberties | Last Year's Score & Status
+      4/40 | 6/60 | 11/100 Not Free
+
+      Authorities responded harshly to the Woman, Life, Freedom movement, which began in 2022 with a series of protests to denounce state violence against women following the death of Jina Mahsa Amini, a 22-year-old Kurdish woman who had been arrested and beaten in Tehran for allegedly wearing her hijab improperly. To suppress the demonstrations, security forces used lethal force and allegedly engaged in rape and other forms of sexual violence against detainees. In early 2024, a United Nations fact-finding mission reported that at least 551 protesters had been killed.
+
+      A new wave of protests erupted across the country in late December 2025, when merchants, students, and other groups of citizens mobilized to demand government action or wholesale political change in the face of soaring inflation, a collapsing currency, and other dire economic and policy problems. Security officials used force and threats of harsh punishment in their attempts to disperse the assemblies, though President Pezeshkian initially acknowledged the protesters’ grievances and urged “dialogue” on how to address them. …
+
+      In 2023, the parliament approved a bill that would impose heavier penalties, including steeper fines and longer prison terms, on women who do not wear the hijab. Implementation was scheduled to begin in December 2024, but it was paused by the Pezeshkian administration and remained pending during 2025. Widespread defiance of the hijab mandate continued, and in December 2025 authorities arrested the organizers of a marathon on Kish Island in which many women competed without a headscarf.
     title: 'Freedom in the World 2026: Iran'
     url: https://freedomhouse.org/country/iran/freedom-world/2026
     publisher: Freedom House
     date: '2026'
   # 8
   - stance: complicates
-    quote: >-
-      Freedom in the World 2026 Saudi Arabia Not Free 9 100 PR Political Rights
-      1 40 CL Civil Liberties 8 60 Last Year's Score & Status 9 100 Not Free
+    quote: |-
+      Freedom in the World 2026
+      Saudi Arabia
+      Not Free 9/100
+
+      PR Political Rights | CL Civil Liberties | Last Year's Score & Status
+      1/40 | 8/60 | 9/100 Not Free
     title: 'Freedom in the World 2026: Saudi Arabia'
     url: https://freedomhouse.org/country/saudi-arabia/freedom-world/2026
     publisher: Freedom House
     date: '2026'
   # 9
   - stance: complicates
-    quote: >-
-      Freedom House rates people’s access to political rights and civil
-      liberties in 208 countries and territories through its annual Freedom in
-      the World report. ... Country or Territory | Freedom in the World Score |
-      Political Rights | Civil Liberties ... Iran | 10/100 Not Free | 4 | 6 ...
-      Saudi Arabia | 9/100 Not Free
+    quote: |-
+      Freedom House rates people’s access to political rights and civil liberties in 208 countries and territories through its annual Freedom in the World report. …
+
+      Country or Territory | Freedom in the World Score | Political Rights | Civil Liberties | Freedom on the Net Score | Obstacles to Access | Limits on Content | Violations of User Rights
+      Iran | 10/100 Not Free | 4 | 6 | 9/100 Not Free | 5 | 3 | 1
+      Saudi Arabia | 9/100 Not Free | 1 | 8 | 25/100 Not Free | 13 | 7 | 5
     title: 'Countries and Territories (Freedom in the World scores)'
     url: https://freedomhouse.org/country/scores
     publisher: Freedom House
@@ -145,9 +147,15 @@ sources:
       Since 13 June, Iranian authorities have arrested over 20,000 people,
       including dissidents, human rights defenders, journalists, social media
       users, families of victims unlawfully killed in nationwide protests and
-      foreign nationals. ... In an 12 August statement, Saeed Montazer
-      Al-Mahdi, spokesperson for the police, announced that about 21,000 people
-      had been arrested. ... At least nine men have been executed on
+      foreign nationals. Others targeted include Afghans, members of the Baluchi
+      and Kurdish ethnic minorities, and members of the Baha’i, Christian and
+      Jewish religious minorities. ... Gholamhossein Mohseni Eje’i, the Head of
+      the Judiciary, announced on 22 July that heavy punishments, including the
+      death penalty, awaited people who he said “had cooperated with Israel.” In
+      an 12 August statement, Saeed Montazer Al-Mahdi, spokesperson for the
+      police, announced that about 21,000 people had been arrested. Senior
+      officials have called for expedited trials and executions for
+      “supporting” or “collaborating” with hostile states. ... At least nine men have been executed on
       politically motivated charges and/or accusations of espionage for Israel
     title: 'Iran: Authorities unleash wave of oppression after hostilities with Israel'
     url: https://www.amnesty.org/en/latest/news/2025/09/iran-authorities-unleash-wave-of-oppression-after-hostilities-with-israel/
@@ -155,38 +163,45 @@ sources:
     date: '2025-09-03'
   # 11
   - stance: supports
-    quote: >-
-      The findings in this report are based on a weighted sample of 31,450
-      respondents inside Iran. ... 42% considered the U.S. and Israeli military
-      action to be 'military aggression against Iran,' while nearly the same
-      share disagreed ... About 40% viewed the U.S. and Israeli military
-      operation as a form of 'humanitarian intervention' (R2P), while about 48%
-      disagreed ... about 38% of society reported that they had supported
-      military intervention both before and after the 39-day war. By contrast,
-      about 27% said they had opposed military intervention both before and
-      after the war. ... about 60% felt satisfaction at the weakening of the
-      Islamic Republic during the war ... about 59% opposed Iran building
-      nuclear weapons ... about 47% did not consider closing the Strait of
-      Hormuz to be the right action ... about 68% of society believes that the
-      agreement did not serve the interests of the Iranian people ... Only
-      about 14% had a positive assessment of the regime's response
+    quote: |-
+      The findings in this report are based on a weighted sample of 31,450 respondents inside Iran. ...
+
+      42% considered the U.S. and Israeli military action to be 'military aggression against Iran,' while nearly the same share disagreed ...
+
+      About 40% viewed the U.S. and Israeli military operation as a form of 'humanitarian intervention' (R2P), while about 48% disagreed ...
+
+      about 38% of society reported that they had supported military intervention both before and after the 39-day war. By contrast, about 27% said they had opposed military intervention both before and after the war. Among those whose position changed, a limited decline in support for foreign military intervention is visible: about 8% moved from support to opposition, while about 4% moved from opposition to support.
+
+      In assessing two statements about the consequences of the war for the Islamic Republic, the results indicate that a substantial share of society held an unsympathetic view toward the regime: about 60% felt satisfaction at the weakening of the Islamic Republic during the war. Regarding the killing of the Supreme Leader of the Islamic Republic, about 52% said they were not saddened, while about 24% said they were saddened and about 24% had no opinion. ...
+
+      about 59% opposed Iran building nuclear weapons ...
+
+      about 47% did not consider closing the Strait of Hormuz to be the right action ...
+
+      about 68% of society believes that the agreement did not serve the interests of the Iranian people ...
+
+      In light of the mass killings and arrests carried out during the regime’s response to the January 2026 protests, about 80% of the target population regarded the regime’s handling of the protests as “wrong”; this includes about 75% who assessed it as “completely wrong” and about 5% who assessed it as “somewhat wrong.” Only about 14% had a positive assessment of the regime's response
     title: 'Iranians’ Attitudes Toward the 2026 Protests and War'
     url: https://gamaan.org/2026/07/27/iranians-attitudes-toward-the-2026-protests-and-war/
     publisher: GAMAAN (Group for Analyzing and Measuring Attitudes in Iran)
     date: '2026-07-27'
   # 12
   - stance: supports
-    quote: >-
-      Which form of political system do you prefer? ... Republic non-federal
-      16.6% federal 10.9% ... Monarchy non-federal 25.4% federal 8.5% ...
-      Islamic Republic (I.R.) %13.4 ... The form of the alternative to the I.R.
-      doesn't matter to me %6.1 ... I lack the knowledge to choose an
-      alternative to the I.R. %19.1 ... about 13% chose the “Islamic Republic,”
-      indicating a decline of about 7 percentage points compared with last
-      year. ... After weighting, the effective sample size is approximately
-      6,211. ... the survey reports an approximate 95% credibility level with a
-      conservative credibility interval of ±3 percentage points. ... about 97%
-      received the survey link through Psiphon
+    quote: |-
+      Which form of political system do you prefer? ...
+      Republic non-federal 16.6% federal 10.9% ...
+      Monarchy non-federal 25.4% federal 8.5% ...
+      Islamic Republic (I.R.) %13.4 ...
+      The form of the alternative to the I.R. doesn't matter to me %6.1 ...
+      I lack the knowledge to choose an alternative to the I.R. %19.1 ...
+
+      Preference for this political system also increased by about 6 percentage points compared with last year. By contrast, about 13% chose the “Islamic Republic,” indicating a decline of about 7 percentage points compared with last year. In addition, 6% said that the form of the system replacing the Islamic Republic did not matter to them, and 19% stated that they lacked sufficient knowledge and information to determine an alternative system. ...
+
+      After weighting, the effective sample size is approximately 6,211. ...
+
+      the survey reports an approximate 95% credibility level with a conservative credibility interval of ±3 percentage points. ...
+
+      about 97% received the survey link through Psiphon
     title: 'Iranians’ Attitudes Toward the 2026 Protests and 39-Day War: Survey Report (Figure 17 and methodology)'
     url: https://gamaan.org/wp-content/uploads/2026/07/GAMAAN-2026-Protests-and-War-Survey-Report-Final-English.pdf
     publisher: GAMAAN (Group for Analyzing and Measuring Attitudes in Iran)
@@ -197,9 +212,18 @@ sources:
       Iran's Supreme National Security (SNSC) may have shelved the
       controversial new hijab law, some lawmakers and the media outlets in
       Tehran say, most likely with the consent of Supreme Leader Ali Khamenei.
-      ... several lawmakers, including Deputy Speaker Ali Nikzad, have
+      For months, the law imposing heavy fines and even prison sentences on
+      women violating hijab regulations has sparked division among the public
+      and even Islamic government politicians. ... A day after the speech,
+      Ghalibaf said Khamenei's order was clear and promised to give precedence
+      to any hijab-related motion or bill, and the police and other authorities
+      including Tehran Metro security increased their pressure on women and
+      businesses such as shops, restaurants, cafes to enforce hijab rules. In
+      recent days, several lawmakers, including Deputy Speaker Ali Nikzad, have
       confirmed that the Supreme National Security Council (SNSC) has decided
-      to put the hijab law on hold for now ... The President heads the
+      to put the hijab law on hold for now. Speaking to the Khabar Online news
+      website on Saturday, Nikzad admitted he was unsure how long the
+      suspension of the law’s implementation would last. ... The President heads the
       Security Council, but all its decisions require the Supreme Leader’s
       signature to come into effect.
     title: 'Has Khamenei backtracked from strict hijab enforcement?'
@@ -212,8 +236,11 @@ sources:
       Ghalibaf told lawmakers during a tense parliamentary session that the
       SNSC 'has notified the parliament in writing that this [Chastity and
       Hijab] law should not be enacted for the time being,' adding, 'In this
-      case, I cannot enact the law.' The law ... was finalized and published on
-      November 30, 2024. ... An unjust law will not be enforced, and if it is,
+      case, I cannot enact the law.' The law - officially titled the "Support
+      for Families by Promoting the Culture of Chastity and Hijab" - was
+      finalized and published on November 30, 2024. It comprises 74 articles
+      across five chapters, aiming to enforce stricter compliance with the
+      country's mandatory hijab regulations and broader modesty codes. ... An unjust law will not be enforced, and if it is,
       it will create discontent.
     title: 'Iran’s security council halts implementation of new hijab bill: Parliament speaker'
     url: https://web.archive.org/web/20260921111825/https://www.rudaw.net/english/middleeast/iran/25052025
@@ -221,25 +248,28 @@ sources:
     date: '2025-05-25'
   # 15
   - stance: supports
-    quote: >-
-      Iran's Assembly of Experts announced in a statement on Sunday that
-      Mojtaba Khamenei has been chosen as the country's new supreme leader,
-      days after Iran International first reported on Tuesday that the
-      Assembly of Experts had selected him under pressure from the
-      Revolutionary Guards. ... “In today’s extraordinary session, the Assembly
-      of Experts, by the decisive vote of its members, selected and introduced
-      Ayatollah Seyed Mojtaba Hosseini Khamenei as the third leader of the
-      sacred system of the Islamic Republic of Iran,” the body said in a
-      statement.
+    quote: |-
+      Iran's Assembly of Experts announced in a statement on Sunday that Mojtaba Khamenei has been chosen as the country's new supreme leader, days after Iran International first reported on Tuesday that the Assembly of Experts had selected him under pressure from the Revolutionary Guards.
+
+      “In today’s extraordinary session, the Assembly of Experts, by the decisive vote of its members, selected and introduced Ayatollah Seyed Mojtaba Hosseini Khamenei as the third leader of the sacred system of the Islamic Republic of Iran,” the body said in a statement.
     title: "Iran announces Khamenei’s son Mojtaba as country's new supreme leader"
     url: https://www.iranintl.com/en/202603086813
     publisher: Iran International
     date: '2026-03-08'
   # 16
   - stance: supports
-    quote: >-
-      Chief of State: Leader of the Islamic Revolution Ayatollah Mojtaba
-      KHAMENEI (since 8 March 2026) ... 2013-06-14 ... Turnout 72.71
+    quote: |-
+      Description of government structure:
+      Chief of State: Leader of the Islamic Revolution Ayatollah Mojtaba KHAMENEI (since 8 March 2026)
+      Head of Government: President Massoud PEZESHKIAN (since July 2024) …
+
+      Elections …
+
+      2013-06-14 | Status: Held
+      Iranian President
+      Votes 36,704,156
+      Registered 50,483,192
+      Turnout 72.71
     title: 'Country Profile: Iran, Islamic Republic of'
     url: https://www.electionguide.org/countries/id/103/
     publisher: IFES ElectionGuide
@@ -277,11 +307,10 @@ sources:
     date: '2024-01-07'
   # 20
   - stance: supports
-    quote: >-
-      • Seven presidential candidates approved by Iran’s Guardian Council to
-      run out of 592 who registered, with three later dropping out • Zero women
-      out of the 40 who registered approved to run for the presidency ... • 73
-      percent turnout in Iran’s last presidential election in 2017
+    quote: |-
+      - Seven presidential candidates approved by Iran’s Guardian Council to run out of 592 who registered, with three later dropping out
+      - Zero women out of the 40 who registered approved to run for the presidency ...
+      - 73 percent turnout in Iran’s last presidential election in 2017
     title: 'Iran’s election: By the numbers'
     url: https://www.aljazeera.com/news/2021/6/18/irans-election-by-the-numbers
     publisher: Al Jazeera
@@ -291,7 +320,13 @@ sources:
     quote: >-
       Only 40 percent of more than 61 million eligible Iranians voted, the
       Ministry of Interior said on Saturday, a new low in presidential
-      elections since the country’s 1979 revolution. ... The lowest
+      elections since the country’s 1979 revolution. The final numbers from
+      election headquarters at the ministry showed that the moderate Pezeshkian
+      received more than 10.41 million votes from a total of more than 24.5
+      million ballots counted, trailed by former nuclear negotiator Saeed Jalili
+      with 9.47 million votes. ... Like all major elections in the past four
+      years, the vote on Friday saw a low turnout, but the final number was
+      much lower than the 45-53 percent suggested by polls. The lowest
       presidential turnout in the more than four-decade history of the Islamic
       republic was the one that got Raisi into office, with 48.8 percent.
     title: 'Iran heads to presidential run-off on July 5 amid record low turnout'
@@ -302,10 +337,16 @@ sources:
   - stance: supports
     quote: >-
       Pezeshkian acknowledges ‘difficult path ahead’ after winning run-off
-      election with 53.7 percent of the vote ... Participation in the run-off
+      election with 53.7 percent of the vote. Iran’s president-elect Masoud
+      Pezeshkian has promised to serve all Iranians in his first public address
+      after being declared the winner of an election run-off against his
+      hardline rival Saeed Jalili. ... Russian President Vladimir Putin was
+      among several world leaders to congratulate Pezeshkian, but Western
+      leaders were yet to respond. Participation in the run-off
       was 49.8 percent in the tight race between Pezeshkian, the sole moderate
       in an original field of four candidates who has pledged to open Iran to
-      the world, and the former nuclear negotiator Jalili
+      the world, and the former nuclear negotiator Jalili, a staunch advocate
+      of deepening Iran’s ties with Russia and China.
     title: 'Centrist Masoud Pezeshkian will be Iran’s next president'
     url: https://www.aljazeera.com/news/2024/7/6/irans-reformist-masoud-pezeshkian-wins-run-off-presidential-vote-reports
     publisher: Al Jazeera
@@ -326,7 +367,10 @@ sources:
     quote: >-
       The country saw a voter turnout of 41 percent in Friday’s elections for
       the national legislature and Assembly of Experts, the lowest
-      participation since Iran’s 1979 Islamic Revolution ... “Around 25 million
+      participation since Iran’s 1979 Islamic Revolution, according to results
+      released on Monday. The vote was the first since nationwide protests
+      broke out in 2022 over the death of Mahsa Amini, who died while in the
+      custody of Iran’s so-called morality police. ... “Around 25 million
       people participated with a turnout of 41 percent,” Interior Minister
       Ahmad Vahidi said ... The lowest previous turnout was in the
       parliamentary elections in 2020, which saw a 42 percent turnout during
@@ -337,20 +381,14 @@ sources:
     date: '2024-03-04'
   # 25
   - stance: supports
-    quote: >-
-      Amnesty International recorded 2,707 executions in 2025, an increase by
-      78% from the 1,518 known executions in 2024. It is the highest figure
-      recorded by Amnesty International since 1981 ... a spike in executions in
-      Iran, where the country total reached at least 2,159, more than doubling
-      the 2024 figure of at least 972; and accounting for 80% of all recorded
-      executions. ... The known totals do not include the thousands of people
-      believed to have been executed in China ... EXECUTIONS RECORDED GLOBALLY
-      IN 2025 Afghanistan (6), China (+), Egypt (23), Iran ( 2,159+), Iraq (+),
-      Japan (1), Kuwait (17), North Korea (+), Saudi Arabia (356+), Singapore
-      (17), Somalia (17+), South Sudan (1), Taiwan (1), United Arab Emirates
-      (UAE, 3), USA (47), Viet Nam (+), Yemen (51+). ... The executions known
-      to have been carried out in Iran and Saudi Arabia accounted for 93% of
-      the total.
+    quote: |-
+      Amnesty International recorded 2,707 executions in 2025, an increase by 78% from the 1,518 known executions in 2024. It is the highest figure recorded by Amnesty International since 1981, when 3,191 executions were recorded (excluding China). The rise in executions was primarily linked to a spike in executions in Iran, where the country total reached at least 2,159, more than doubling the 2024 figure of at least 972; and accounting for 80% of all recorded executions. ...
+
+      The known totals do not include the thousands of people believed to have been executed in China ...
+
+      EXECUTIONS RECORDED GLOBALLY IN 2025 Afghanistan (6), China (+), Egypt (23), Iran ( 2,159+), Iraq (+), Japan (1), Kuwait (17), North Korea (+), Saudi Arabia (356+), Singapore (17), Somalia (17+), South Sudan (1), Taiwan (1), United Arab Emirates (UAE, 3), USA (47), Viet Nam (+), Yemen (51+). ...
+
+      The executions known to have been carried out in Iran and Saudi Arabia accounted for 93% of the total.
     title: 'Death Sentences and Executions 2025 (ACT 50/0778/2026)'
     url: https://www.amnesty.org/en/wp-content/uploads/2026/05/ACT5007782026ENGLISH.pdf
     publisher: Amnesty International
@@ -366,13 +404,20 @@ sources:
     date: '2025-04-08'
   # 27
   - stance: supports
-    quote: >-
-      "indicator":{"id":"SP.POP.TOTL","value":"Population, total"} ... "lastupdated":"2026-10-08"
-      ... Iran, Islamic Rep. 2025 92417681 ... Saudi Arabia 2025 36973555 ...
-      Kuwait 2025 4865298 ... Singapore 2025 6111175 ... Yemen, Rep. 2025
-      41773878 ... Somalia, Fed. Rep. 2025 19654739 ... United Arab Emirates
-      2025 11513149 ... Egypt, Arab Rep. 2025 118365995 ... United States 2025
-      341784857 ... Afghanistan 2025 43844111 ... South Sudan 2025 12188788 ...
+    quote: |-
+      "indicator":{"id":"SP.POP.TOTL","value":"Population, total"} ...
+      "lastupdated":"2026-10-08" ...
+      Iran, Islamic Rep. 2025 92417681 ...
+      Saudi Arabia 2025 36973555 ...
+      Kuwait 2025 4865298 ...
+      Singapore 2025 6111175 ...
+      Yemen, Rep. 2025 41773878 ...
+      Somalia, Fed. Rep. 2025 19654739 ...
+      United Arab Emirates 2025 11513149 ...
+      Egypt, Arab Rep. 2025 118365995 ...
+      United States 2025 341784857 ...
+      Afghanistan 2025 43844111 ...
+      South Sudan 2025 12188788 ...
       Japan 2025 123366734
     title: 'World Development Indicators: Population, total (SP.POP.TOTL)'
     url: https://data.worldbank.org/indicator/SP.POP.TOTL?locations=AF-EG-IR-JP-KW-SA-SG-SO-SS-AE-US-YE-IQ
@@ -472,13 +517,22 @@ series:
       source: 35
   source:
     stance: supports
-    quote: >-
-      Province | no. eligible voters | no. votes | Turnout (percent) ... Iran
-      (total) ... [Turnout (percent), by election:] 1st (1980) 67.42; 2nd
-      (1981) 64.24; 3rd (1981) 74.26; 4th (1985) 54.78; 5th (1989) 54.59; 6th
-      (1993) 50.66; 7th (1997) 79.92; 8th (2001) 66.77; 9th, first round
-      (2005) 62.84; 9th, second round (2005) 59.76; 10th (2009) 85.22; 11th
-      (2013) 76.25
+    quote: |-
+      Province: Iran (total)
+
+      | no. eligible voters | no. votes | Turnout (percent)
+      1st Presidential Election (1980) | 20,993,643 | 14,152,887 | 67.42
+      2nd Presidential Election (1981) | 22,687,017 | 14,573,803 | 64.24
+      3rd Presidential Election (1981) | 22,687,017 | 16,847,717 | 74.26
+      4th Presidential Election (1985) | 25,993,802 | 14,238,587 | 54.78
+      5th Presidential Election (1989) | 30,139,598 | 16,452,677 | 54.59
+      6th Presidential Election (1993) | 33,156,055 | 16,796,787 | 50.66
+      7th Presidential Election (1997) | 36,466,487 | 29,145,745 | 79.92
+      8th Presidential Election (2001) | 42,170,230 | 28,155,819 | 66.77
+      9th Presidential Election (first round) (2005) | 46,786,418 | 29,400,857 | 62.84
+      9th Presidential Election (second round) (2005) | 46,786,418 | 27,959,253 | 59.76
+      10th Presidential Election (2009) | 46,199,997 | 39,371,214 | 85.22
+      11th Presidential Election (2013) | 48,288,799 | 36,821,538 | 76.25
     title: 'Iran Presidential Elections, All Provinces (workbook)'
     url: https://irandataportal.syr.edu/presidential-elections
     fileUrl: https://irandataportal.syr.edu/wp-content/uploads/Iran-Presidential-Elections-All-Provinces-1.xlsx
@@ -519,15 +573,24 @@ additionalSeries:
         note: 'The Iran Data Portal infographic ends in 2017; later counts are from news reports of the Guardian Council''s lists.'
     source:
       stance: supports
-      quote: >-
-        Presidential Elections in Iran Number of Candidates Registered and
-        Allowed to Run ... 1st 1980 124 ... 2nd 1981 71 ... 3rd 1981 46 ... 4th
-        1985 50 ... 5th 1989 79 ... 6th 1993 128 ... 7th 1997 238 ... 8th 2001
-        814 ... 9th 2005 1014 ... 10th 2009 475 ... 11th 2013 686 ... 12th 2017
-        1636 ... Candidates submitting their candidacy are first vetted by the
-        Ministry of Interior and then by the Guardian Council. ... Number of
-        candidates allowed to run may be different from the number of
-        candidates finally ran.
+      quote: |-
+        Presidential Elections in Iran Number of Candidates Registered and Allowed to Run ...
+        1st 1980 124 ...
+        2nd 1981 71 ...
+        3rd 1981 46 ...
+        4th 1985 50 ...
+        5th 1989 79 ...
+        6th 1993 128 ...
+        7th 1997 238 ...
+        8th 2001 814 ...
+        9th 2005 1014 ...
+        10th 2009 475 ...
+        11th 2013 686 ...
+        12th 2017 1636 ...
+
+        Candidates submitting their candidacy are first vetted by the Ministry of Interior and then by the Guardian Council. ...
+
+        Number of candidates allowed to run may be different from the number of candidates finally ran.
       title: 'Presidential Elections in Iran: Number of Candidates Registered and Allowed to Run (infographic)'
       url: https://irandataportal.syr.edu/wp-content/uploads/Review-of-Presidential-Elections.pdf
       publisher: Iran Data Portal, Syracuse University
@@ -587,37 +650,30 @@ additionalSeries:
         source: 35
     source:
       stance: supports
-      quote: >-
-        EXECUTION TRENDS IN THE LAST 18 YEARS (2008-2025) [bar labels, 2008 to
-        2025 in order:] 350 402 546 676 580 687 753 972 530 517 273 280 267 333
-        582 834 975 1639 ... From IHRNGO’s first annual report in 2008 to 2025,
-        Iranian authorities have executed at least 11,196 people ... At least
-        1,639 people were executed, marking the highest number of recorded
-        executions since 1989 and a dramatic 68% increase compared to 2024, when
-        975 executions were recorded. ... With 222 executions, October was the
-        bloodiest month in 2025 ... Only 113 executions (under 7%) were
-        announced by official sources ... 60% of executions took place in the second
-        half of the year. ... Execution numbers tend to increase when
-        authorities fear social unrest and when the attention of the
-        international community is focused on other geopolitical issues. ... A
-        new surge in executions began in the months after the 12-day war between
-        Iran and Israel in June ... Following the death of President Ebrahim
-        Raisi on 19 May 2024, Iran held a presidential election marked by the
-        lowest voter turnout in the history of the Islamic Republic. ... At least
-        2,292 people have been executed since Masoud Pezeshkian took office in
-        July 2024. By comparison, during the less than three years of Ebrahim
-        Raisi’s presidency (2021–2024), and the 8-year presidential terms of
-        Hassan Rouhani (2013–2021) and Mahmoud Ahmadinejad (2005–2013), at least
-        1,714, 4,249, and 3,337 people were executed, respectively. ... The
-        average number of monthly executions under Pezeshkian reached 135 (more
-        than four executions per day), compared to 51 per month during Raisi’s
-        tenure, 44 under Rouhani, and 35 under Ahmadinejad. ... The 2017
-        Amendment created hope that it would eventually lead to a complete halt
-        in drug-related executions, and while it did lead to a decline in
-        executions of men and a complete drop in executions of women until
-        2021, the outcome was not guaranteed. Since 2021, the 2017 Amendment has
-        been reversed in practice, with drug-related executions rising from an
-        average of 26 per year between 2018-2020 to at least 795 in 2025.
+      quote: |-
+        EXECUTION TRENDS IN THE LAST 18 YEARS (2008-2025) [bar labels, 2008 to 2025 in order:] 350 402 546 676 580 687 753 972 530 517 273 280 267 333 582 834 975 1639 ...
+
+        From IHRNGO’s first annual report in 2008 to 2025, Iranian authorities have executed at least 11,196 people ...
+
+        At least 1,639 people were executed, marking the highest number of recorded executions since 1989 and a dramatic 68% increase compared to 2024, when 975 executions were recorded. ...
+
+        With 222 executions, October was the bloodiest month in 2025 ...
+
+        Only 113 executions (under 7%) were announced by official sources ...
+
+        60% of executions took place in the second half of the year. ...
+
+        Execution numbers tend to increase when authorities fear social unrest and when the attention of the international community is focused on other geopolitical issues. ...
+
+        A new surge in executions began in the months after the 12-day war between Iran and Israel in June ...
+
+        Following the death of President Ebrahim Raisi on 19 May 2024, Iran held a presidential election marked by the lowest voter turnout in the history of the Islamic Republic. ...
+
+        At least 2,292 people have been executed since Masoud Pezeshkian took office in July 2024. By comparison, during the less than three years of Ebrahim Raisi’s presidency (2021–2024), and the 8-year presidential terms of Hassan Rouhani (2013–2021) and Mahmoud Ahmadinejad (2005–2013), at least 1,714, 4,249, and 3,337 people were executed, respectively. ...
+
+        However, the increase during the first five months of Pezeshkian’s presidency was particularly dramatic. The average number of monthly executions under Pezeshkian reached 135 (more than four executions per day), compared to 51 per month during Raisi’s tenure, 44 under Rouhani, and 35 under Ahmadinejad. Over the course of all these presidential terms, Iran has maintained an execution rate of at least one person per day. ...
+
+        The 2017 Amendment created hope that it would eventually lead to a complete halt in drug-related executions, and while it did lead to a decline in executions of men and a complete drop in executions of women until 2021, the outcome was not guaranteed. Since 2021, the 2017 Amendment has been reversed in practice, with drug-related executions rising from an average of 26 per year between 2018-2020 to at least 795 in 2025.
       title: 'Annual Report on the Death Penalty in Iran 2025'
       url: https://iranhr.net/media/files/2025_Annual_Report_on_the_Death_Penalty.pdf
       publisher: Iran Human Rights (IHRNGO) and ECPM
@@ -652,14 +708,21 @@ additionalSeries:
         source: 28
     source:
       stance: supports
-      quote: >-
-        Ten-Year Trend of Executions in Iran (2016–2026) ... executions declined
-        from 505 in 2016–2017 to 238 in 2018–2019. The number then increased
-        each year from 2019–2020 onward, reaching 2,003 in 2025–2026, the
-        highest total recorded across these ten reporting periods. ...
-        2025-2026 2,003 2024-2025 1,553 2023-2024 823 2022-2023 664 2021-2022
-        528 2020-2021 272 2019-2020 249 2018-2019 238 2017-2018 265 2016-2017
-        505
+      quote: |-
+        Ten-Year Trend of Executions in Iran (2016–2026) ...
+
+        executions declined from 505 in 2016–2017 to 238 in 2018–2019. The number then increased each year from 2019–2020 onward, reaching 2,003 in 2025–2026, the highest total recorded across these ten reporting periods. ...
+
+        - 2025-2026 2,003
+        - 2024-2025 1,553
+        - 2023-2024 823
+        - 2022-2023 664
+        - 2021-2022 528
+        - 2020-2021 272
+        - 2019-2020 249
+        - 2018-2019 238
+        - 2017-2018 265
+        - 2016-2017 505
       title: 'Annual Report on Execution in Iran 2025–2026'
       url: https://www.en-hrana.org/wp-content/uploads/2026/10/Annual-Report-on-Execution-in-Iran-2025-2026-EN.pdf
       publisher: HRANA (Human Rights Activists in Iran Statistics Center)
@@ -704,21 +767,33 @@ additionalSeries:
         source: 29
     source:
       stance: supports
-      quote: >-
-        the highest number of executions was recorded in December 2025, while
-        the lowest full-month total was recorded in March 2026. The figures for
-        October 2025 and October 2026, which cover only the last 22 days and the
-        first seven days of those months respectively, are not representative
-        of a full month. [Monthly chart labels, October 2025 to October 2026:]
-        200 324 404 334 282 10 30 73 114 73 85 69 5 ... Political and
-        security-related executions 69 ... ◄ 35 people (51% of all political and
-        security-related executions) were executed in connection with the
-        January 2026 (Dey 1404) protests. ◄ 29 people were executed in April
-        (14) and May 2026 (15) alone, the peak of executions during this period.
-        ... By Month of Execution Month Number October 2025 1 November 2025 0
-        December 2025 1 January 2026 4 February 2026 0 March 2026 8 April 2026
-        14 May 2026 15 June 2026 5 July 2026 9 August 2026 6 September 2026 3
-        October 2026 3 Total 69
+      quote: |-
+        the highest number of executions was recorded in December 2025, while the lowest full-month total was recorded in March 2026. The figures for October 2025 and October 2026, which cover only the last 22 days and the first seven days of those months respectively, are not representative of a full month.
+
+        [Monthly chart labels, October 2025 to October 2026:] 200 324 404 334 282 10 30 73 114 73 85 69 5 ...
+
+        Political and security-related executions 69 ...
+
+        ◄ 35 people (51% of all political and security-related executions) were executed in connection with the January 2026 (Dey 1404) protests.
+        ◄ 29 people were executed in April (14) and May 2026 (15) alone, the peak of executions during this period.
+        ◄ 29 people were executed on charges of moharebeh (alone or alongside other charges). ...
+
+        By Month of Execution
+        Month | Number
+        October 2025 | 1
+        November 2025 | 0
+        December 2025 | 1
+        January 2026 | 4
+        February 2026 | 0
+        March 2026 | 8
+        April 2026 | 14
+        May 2026 | 15
+        June 2026 | 5
+        July 2026 | 9
+        August 2026 | 6
+        September 2026 | 3
+        October 2026 | 3
+        Total | 69
       title: 'Annual Report on Execution in Iran 2025–2026 (monthly chart and political executions by month)'
       url: https://www.en-hrana.org/wp-content/uploads/2026/10/Annual-Report-on-Execution-in-Iran-2025-2026-EN.pdf
       publisher: HRANA (Human Rights Activists in Iran Statistics Center)
@@ -758,10 +833,13 @@ additionalSeries:
         source: 32
     source:
       stance: supports
-      quote: >-
-        "indicator":{"id":"NY.GDP.MKTP.KD.ZG","value":"GDP growth (annual %)"},
-        "country":{"id":"IR","value":"Iran, Islamic Rep."} ... "lastupdated":"2026-10-08"
-        ... "date":"2025","value":-2.82597163290347 ... "date":"2016","value":8.8150866425182
+      quote: |-
+        GDP growth (annual %) - Iran, Islamic Rep. …
+
+        Selected Countries and Economies
+
+        Country | Most Recent Year | Most Recent Value
+        Iran, Islamic Rep. | 2025 | -2.8
       title: 'World Development Indicators: GDP growth (annual %), Iran'
       url: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?locations=IR
       fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100
@@ -796,10 +874,13 @@ additionalSeries:
         source: 32
     source:
       stance: supports
-      quote: >-
-        "indicator":{"id":"FP.CPI.TOTL.ZG","value":"Inflation, consumer prices
-        (annual %)"},"country":{"id":"IR","value":"Iran, Islamic Rep."} ...
-        "lastupdated":"2026-10-08" ... "date":"2025","value":42.1712244965444
+      quote: |-
+        Inflation, consumer prices (annual %) - Iran, Islamic Rep. …
+
+        Selected Countries and Economies
+
+        Country | Most Recent Year | Most Recent Value
+        Iran, Islamic Rep. | 2025 | 42.2
       title: 'World Development Indicators: Inflation, consumer prices (annual %), Iran'
       url: https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=IR
       fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100

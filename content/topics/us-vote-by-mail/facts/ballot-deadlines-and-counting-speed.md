@@ -7,256 +7,217 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      Thirty-five states require absentee/mail ballots returned by mail to be
-      received on or before Election Day. Fifteen states, plus Guam, Puerto
-      Rico, the Virgin Islands and Washington, D.C., will accept and count a
-      mailed ballot if it is received after Election Day but postmarked on or
-      before (sometimes only before) Election Day. ... In July 2026, a
-      district court judge in Kansas issued a preliminary injunction on the
-      law requiring absentee ballots to be received by the close of polls on
-      Election Day. ... Under the injunction, ballots can be counted if they
-      are postmarked by Election Day and received within three days of an
-      election. ... North Dakota HB 1165 (2025) changed the receipt deadline
-      for absentee ballots to be received before the close of polls on
-      Election Day. ... Ohio SB 293 (2025) changed the receipt deadline for
-      most absentee ballots to the close of polls on Election Day. ... The
-      bill maintains a carve-out for military and overseas voters’ ballots,
-      which will still be accepted if received within the four-day
-      post-election period. Utah HB 300 (2025) required ballots to be
-      received by the election officer by 8 p.m. on Election Day. ... Alaska
-      ... Must be received within 10 days if postmarked on or before Election
-      Day. ... California ... Must be received no later than seven days after
-      Election Day. ... District of Columbia ... Must be received within ten
-      days of the election if postmarked on or before Election Day. ...
-      Illinois ... Must be received within 14 days of the election if
-      postmarked on or before Election Day. ... Kansas ... Must be received by
-      the third day after an election if postmarked by Election Day. ...
-      Maryland ... Must be received within 10 days after the election by 10
-      a.m. if postmarked on or before Election Day. Massachusetts ... Must be
-      received by 5 p.m. on the third day after the election if postmarked on
-      or before Election Day. ... Mississippi ... Must be received within five
-      business days of the election if postmarked on or before Election Day.
-      ... Nevada ... Must be received by 5 p.m. on the fourth day following
-      the election if postmarked by Election Day. ... New Jersey ... Must be
-      received within 144 hours (six days) of the close of the polls if
-      postmarked on or before Election Day. ... New York ... Must be received
-      within seven days of the election if postmarked by Election Day. ...
-      Oregon ... Must be received within seven days of the election if
-      postmarked on or before Election Day. ... Texas ... Must be received by
-      5 p.m. on the day after the election if postmarked on or before
-      Election Day. ... Virginia ... Must be received before noon on the third
-      day after the election if postmarked by Election Day. ... Washington ...
-      Must be received no later than the day before certification, which is
-      21 days after a general election and 14 days after a primary if
-      postmarked on or before Election Day. West Virginia ... Must be received
-      before the canvass (which begins on the fifth day after the election) if
-      postmarked on or before Election Day. ... Ballot Receipt Deadlines for
-      Military and Overseas Voters ... Twenty states require ballots from
-      military and overseas voters to be received by the close of polls on
-      Election Day. Thirty states and Washington, D.C. accept at least some
-      military and overseas ballots received after Election Day.
+    quote: |-
+      Thirty-five states require absentee/mail ballots returned by mail to be received on or before Election Day. Fifteen states, plus Guam, Puerto Rico, the Virgin Islands and Washington, D.C., will accept and count a mailed ballot if it is received after Election Day but postmarked on or before (sometimes only before) Election Day. ...
+
+      In July 2026, a district court judge in Kansas issued a preliminary injunction on the law requiring absentee ballots to be received by the close of polls on Election Day. The secretary of state filed an appeal that was blocked by the Kansas Supreme Court. Under the injunction, ballots can be counted if they are postmarked by Election Day and received within three days of an election. ...
+
+      North Dakota HB 1165 (2025) changed the receipt deadline for absentee ballots to be received before the close of polls on Election Day. ...
+
+      Ohio SB 293 (2025) changed the receipt deadline for most absentee ballots to the close of polls on Election Day. ... The bill maintains a carve-out for military and overseas voters’ ballots, which will still be accepted if received within the four-day post-election period.
+
+      Utah HB 300 (2025) required ballots to be received by the election officer by 8 p.m. on Election Day. ...
+
+      State | Mail Receipt by Election Day | Postmarked by Election Day | Absentee/Mail Ballot Deadline Details
+      Alaska | | ✓ | Must be received within 10 days if postmarked on or before Election Day.
+      California | | ✓ | Must be received no later than seven days after Election Day.
+      District of Columbia | | ✓ | Must be received within ten days of the election if postmarked on or before Election Day.
+      Illinois | | ✓ | Must be received within 14 days of the election if postmarked on or before Election Day.
+      Kansas | | ✓ | Must be received by the third day after an election if postmarked by Election Day. Note: the current statute is temporarily enjoined, thus the requirement for ballots to be received by 7 p.m. on Election Day is not currently in effect.
+      Maryland | | ✓ | Must be received within 10 days after the election by 10 a.m. if postmarked on or before Election Day.
+      Massachusetts | | ✓ | Must be received by 5 p.m. on the third day after the election if postmarked on or before Election Day.
+      Mississippi | | ✓ | Must be received within five business days of the election if postmarked on or before Election Day.
+      Nevada | | ✓ | Must be received by 5 p.m. on the fourth day following the election if postmarked by Election Day. Ballots with unclear postmarks received by the third day following the election are deemed to have been postmarked on or before Election Day.
+      New Jersey | | ✓ | Must be received within 144 hours (six days) of the close of the polls if postmarked on or before Election Day. Mail-delivered ballots without postmarks that arrive within 48 hours of the close of the polls will be considered valid.
+      New York | | ✓ | Must be received within seven days of the election if postmarked by Election Day.
+      Oregon | | ✓ | Must be received within seven days of the election if postmarked on or before Election Day.
+      Texas | | ✓ | Must be received by 5 p.m. on the day after the election if postmarked on or before Election Day.
+      Virginia | | ✓ | Must be received before noon on the third day after the election if postmarked by Election Day. Beginning Jan. 1, 2027, ballots postmarked by Election Day must be received by 5 p.m. on the third day after the election.
+      Washington | | ✓ | Must be received no later than the day before certification, which is 21 days after a general election and 14 days after a primary if postmarked on or before Election Day.
+      West Virginia | | ✓ | Must be received before the canvass (which begins on the fifth day after the election) if postmarked on or before Election Day.
+
+      Ballot Receipt Deadlines for Military and Overseas Voters ...
+
+      Twenty states require ballots from military and overseas voters to be received by the close of polls on Election Day. Thirty states and Washington, D.C. accept at least some military and overseas ballots received after Election Day.
     title: 'Table 11: Receipt and Postmark Deadlines for Absentee/Mail Ballots'
     url: https://www.ncsl.org/elections-and-campaigns/table-11-receipt-and-postmark-deadlines-for-absentee-mail-ballots
     publisher: National Conference of State Legislatures
     date: '2026-09-25'
   # 2
   - stance: supports
-    quote: >-
-      Mississippi is one of roughly 30 States that count at least some
-      absentee ballots mailed by election day but received afterward. ...
-      State legislatures may have used an election-day deadline for any number
-      of reasons unrelated to federal requirements. For example, they may have
-      shared plaintiffs' view that an election-day deadline avoids the
-      appearance of fraud from late-arriving ballots. ... Finally, plaintiffs
-      assert that requiring ballots to be received by election day protects
-      election integrity and increases voter confidence in election results.
-      ... As we have said time and again, however, policy arguments are
-      properly directed to legislatures, not courts. ... The question today is
-      not whether requiring ballots to be received by election day is a good
-      or bad idea; the question is whether the idea has made its way into the
-      United States Code.
+    quote: |-
+      Mississippi is one of roughly 30 States that count at least some absentee ballots mailed by election day but received afterward. ...
+
+      State legislatures may have used an election-day deadline for any number of reasons unrelated to federal requirements. For example, they may have shared plaintiffs' view that an election-day deadline avoids the appearance of fraud from late-arriving ballots. ...
+
+      Finally, plaintiffs assert that requiring ballots to be received by election day protects election integrity and increases voter confidence in election results. See, e. g., Brief for Republican Respondents 46–48; accord, post, at 712–718. As we have said time and again, however, policy arguments are properly directed to legislatures, not courts. See, e. g., SAS Institute Inc. v. Iancu, 584 U. S. 357, 368 (2018); BP p.l.c. v. Mayor and City Council of Baltimore, 593 U. S. 230, 245 (2021). The question today is not whether requiring ballots to be received by election day is a good or bad idea; the question is whether the idea has made its way into the United States Code.
     title: 'Watson v. Republican National Committee, 609 U.S. 672 (2026), slip opinion'
     url: https://www.supremecourt.gov/opinions/25pdf/609us2r65_g314.pdf
     publisher: Supreme Court of the United States
     date: '2026-06-29'
   # 3
   - stance: supports
-    quote: >-
-      Of the mail ballots that were returned by voters, 47,629,437 were
-      reported as being counted and 584,463 were reported as being rejected,
-      for a count rate of 98.8% of the mail ballots that were returned and a
-      rejection rate of 1.2% of the mail ballots that were returned. ...
-      Overview Table 1: Mail Voting in the 2024 General Election ... % Turnout
-      by Mail ... Arizona [3] 74.7% 3,582,082 2,859,348 79.8% 2,816,885 98.5%
-      ... Georgia [6] 5.1% 327,241 273,512 83.6% 268,751 98.3% ... Michigan
-      35.4% 2,213,167 2,081,265 94.0% 2,017,704 96.9% ... Nevada 44.1%
-      2,069,339 669,445 32.4% 656,140 98.0% ... North Carolina 5.2% 451,176
-      307,185 68.1% 298,269 97.1% ... Pennsylvania [20] 27.3% 2,204,273
-      1,952,372 88.6% 1,933,102 99.0% ... Wisconsin [24] 16.6% 614,367
-      575,257 93.6% 572,434 99.5% ... Returned ballot envelope did not have
-      required postmark 0.9%
+    quote: |-
+      Of the mail ballots that were returned by voters, 47,629,437 were reported as being counted and 584,463 were reported as being rejected, for a count rate of 98.8% of the mail ballots that were returned and a rejection rate of 1.2% of the mail ballots that were returned. The mail ballot return rate for the 2024 EAVS was statistically significantly higher than the rate for 2022 (59.7%), but was similar to the return rate for 2020 (77.8%). ...
+
+      Overview Table 1: Mail Voting in the 2024 General Election
+
+      State | % Turnout by Mail | Total Mail Ballots Transmitted | Total Mail Ballots Returned | % Mail Ballots Returned | Mail Ballots Counted, Total | Mail Ballots Counted, % of Returned
+      Arizona [3] | 74.7% | 3,582,082 | 2,859,348 | 79.8% | 2,816,885 | 98.5%
+      Georgia [6] | 5.1% | 327,241 | 273,512 | 83.6% | 268,751 | 98.3%
+      Michigan | 35.4% | 2,213,167 | 2,081,265 | 94.0% | 2,017,704 | 96.9%
+      Nevada | 44.1% | 2,069,339 | 669,445 | 32.4% | 656,140 | 98.0%
+      North Carolina [18] | 5.2% | 451,176 | 307,185 | 68.1% | 298,269 | 97.1%
+      Pennsylvania [20] | 27.3% | 2,204,273 | 1,952,372 | 88.6% | 1,933,102 | 99.0%
+      Wisconsin [24] | 16.6% | 614,367 | 575,257 | 93.6% | 572,434 | 99.5%
+
+      … Table 1. Most Common Reason For Mail Ballot Rejection Was a Non-Matching Or Incomplete Signature
+
+      Reason | Percentage of Rejected Mail Ballots
+      Returned ballot envelope did not have required postmark | 0.9%
     title: 'Election Administration and Voting Survey 2024 Comprehensive Report (pp. 14–15 and Overview Table 1)'
     url: https://eac.gov/sites/default/files/2025-07/2024_EAVS_Report_508.pdf
     publisher: U.S. Election Assistance Commission
     date: '2025-06-30'
   # 4
   - stance: supports
-    quote: >-
-      Of the mail ballots that were returned by voters, 35,718,700 were
-      reported as being counted and 549,824 were reported as being rejected,
-      for a count rate of 97.4% of the mail ballots that were returned and a
-      rejection rate of 1.5% of the mail ballots that were returned. ... Other
-      reason not listed 32.7% ... Ballot had a non-matching or incomplete
-      signature 26.9% ... not received on time/missed the deadline 23.1%
+    quote: |-
+      Of the mail ballots that were returned by voters, 35,718,700 were reported as being counted and 549,824 were reported as being rejected, for a count rate of 97.4% of the mail ballots that were returned and a rejection rate of 1.5% of the mail ballots that were returned. ...
+
+      Table 1. Most Common Reason for Mail Ballot Rejection was “Other”
+
+      Reason | Percentage of Rejected Mail Ballots
+      Other reason not listed | 32.7%
+      Ballot had a non-matching or incomplete signature | 26.9%
+      Ballot was not received on time/missed the deadline | 23.1%
     title: 'Election Administration and Voting Survey 2022 Comprehensive Report (p. 13 and Table 1)'
     url: https://www.eac.gov/sites/default/files/2023-06/2022_EAVS_Report_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2023-06-29'
   # 5
   - stance: supports
-    quote: >-
-      Other common reasons for rejection included that the voter had already
-      voted in person (13.5%), the ballot was received after the state’s
-      deadline for submitting a mailed ballot (12.1%), and there was no voter
-      signature on the mailed ballot or the mailed ballot envelope (12.1%). ...
-      Table 2. The Most Common Reason for Rejecting Mailed Ballots Was for a
-      Non-Matching Signature ... Ballot not received on time/missed deadline
-      12.1%
+    quote: |-
+      Other common reasons for rejection included that the voter had already voted in person (13.5%), the ballot was received after the state’s deadline for submitting a mailed ballot (12.1%), and there was no voter signature on the mailed ballot or the mailed ballot envelope (12.1%). Additional information about mail voting in the 2020 general election, including statistics by state, can be found in Appendix A of this chapter. ...
+
+      Table 2. The Most Common Reason for Rejecting Mailed Ballots Was for a Non-Matching Signature
+
+      Reason | Percentage of Rejected Ballots
+      Ballot not received on time/missed deadline | 12.1%
     title: 'Election Administration and Voting Survey 2020 Comprehensive Report (Table 2)'
     url: https://www.eac.gov/sites/default/files/document_library/files/2020_EAVS_Report_Final_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2021-08'
   # 6
   - stance: supports
-    quote: >-
-      "Other" reason given 34.9% ... Ballot not received on time/missed
-      deadline 26.9% ... Non-matching signature 15.8%
+    quote: |-
+      Table 1. Most Common Reason for By-Mail Ballot Rejection is “Other”
+
+      Reason | Percentage of Rejected Ballots
+      “Other” reason given | 34.9%
+      Ballot not received on time/missed deadline | 26.9%
+      Non-matching signature | 15.8%
     title: 'The Election Administration and Voting Survey: 2018 Comprehensive Report (Table 1)'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/6/2018_EAVS_Report.pdf
     publisher: U.S. Election Assistance Commission
     date: '2019-06'
   # 7
   - stance: supports
-    quote: >-
-      Rejected (total) 1.0% ... Non-matching signature 27.5% ... Ballot not
-      received on time/missed deadline 23.1% ... No voter signature 20.0%
+    quote: |-
+      Table 1. Top Reasons for Rejecting Absentee Ballots
+
+       | Percentage of ballots returned and submitted for counting
+      Rejected (total) | 1.0%
+      Non-matching signature | 27.5%
+      Ballot not received on time/missed deadline | 23.1%
+      No voter signature | 20.0%
     title: 'The Election Administration and Voting Survey: 2016 Comprehensive Report (Table 1)'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/6/2016_EAVS_Comprehensive_Report.pdf
     publisher: U.S. Election Assistance Commission
     date: '2017-06'
   # 8
   - stance: complicates
-    quote: >-
-      The rate at which mail votes have been rejected for arriving late has
-      ticked up in primaries this year and general elections last year in
-      roughly a dozen states ... In Wisconsin ... lateness accounted for about
-      5,000 rejected mail ballots in the spring primary this year, or 78% of
-      all tossed ballots. During the last spring election, in 2023, the figure
-      was roughly 2,300, or 47% of all tossed votes. ... In Michigan’s primary
-      earlier this month, more than 10,000 mail ballots were rejected for
-      arriving after the state’s deadline of 8 p.m. on Election Day. That is
-      nearly double the number of ballots rejected in 2024. In Washington, the
-      number of late-arriving mail ballots increased from about 16,000 to more
-      than 20,000 in the same period. ... The Postal Service further slowed
-      down mail in 2024 when it implemented a centralized system that
-      postmarks mail when it reaches regional centers, not when it first
-      enters the mail stream. The delay has particularly affected mail voting,
-      especially in states that rely on postmarks to determine if a ballot is
-      valid. ... In a statement, the Postal Service countered claims that the
-      agency has become unreliable by noting that more than 95% of mail
-      ballots have arrived on time in recent elections. ... In Washington’s
-      primary earlier this year, 75% of rejected mail ballots were tossed
-      because they arrived too late.
+    quote: |-
+      The rate at which mail votes have been rejected for arriving late has ticked up in primaries this year and general elections last year in roughly a dozen states ...
+
+      In Wisconsin ... lateness accounted for about 5,000 rejected mail ballots in the spring primary this year, or 78% of all tossed ballots. During the last spring election, in 2023, the figure was roughly 2,300, or 47% of all tossed votes. The increase is particularly striking when comparing primaries in 2024 and this year.
+
+      In Michigan’s primary earlier this month, more than 10,000 mail ballots were rejected for arriving after the state’s deadline of 8 p.m. on Election Day. That is nearly double the number of ballots rejected in 2024. In Washington, the number of late-arriving mail ballots increased from about 16,000 to more than 20,000 in the same period. ...
+
+      The Postal Service further slowed down mail in 2024 when it implemented a centralized system that postmarks mail when it reaches regional centers, not when it first enters the mail stream. The delay has particularly affected mail voting, especially in states that rely on postmarks to determine if a ballot is valid. ...
+
+      In a statement, the Postal Service countered claims that the agency has become unreliable by noting that more than 95% of mail ballots have arrived on time in recent elections. ...
+
+      In Washington’s primary earlier this year, 75% of rejected mail ballots were tossed because they arrived too late.
     title: 'More mail ballots are arriving late this cycle, and they’re getting tossed (New York Times, reprinted)'
     url: https://www.inquirer.com/politics/more-late-mail-in-votes-rejected-trump-postal-service-slow-drop-box-20260831.html
     publisher: The Philadelphia Inquirer (Adam Sella and Nick Corasaniti, New York Times)
     date: '2026-08-31'
   # 9
   - stance: supports
-    quote: >-
-      Less than 1 percent of the ballots cast in Nevada's two largest counties
-      in the 2024 general election were received after Election Day. About
-      9,500 Clark County mail ballots and 2,400 ballots in Washoe County were
-      received post-Election Day out of the nearly 1.3 million ballots cast in
-      both areas. Nevada law allows any mail ballot to be received up to four
-      days after Election Day, as long as it is postmarked by Election Day.
-      ... Sen. Jacky Rosen (D-NV) was losing to Republican Sam Brown on
-      election night, but took the lead the following night once the roughly
-      50,000 Clark County mail ballots received on Election Day were counted.
-      Rosen ultimately won Clark and Washoe counties by margins far exceeding
-      the number of ballots received post-Election Day.
+    quote: |-
+      Less than 1 percent of the ballots cast in Nevada's two largest counties in the 2024 general election were received after Election Day. About 9,500 Clark County mail ballots and 2,400 ballots in Washoe County were received post-Election Day out of the nearly 1.3 million ballots cast in both areas. Nevada law allows any mail ballot to be received up to four days after Election Day, as long as it is postmarked by Election Day. ...
+
+      Sen. Jacky Rosen (D-NV) was losing to Republican Sam Brown on election night, but took the lead the following night once the roughly 50,000 Clark County mail ballots received on Election Day were counted. Rosen ultimately won Clark and Washoe counties by margins far exceeding the number of ballots received post-Election Day.
     title: 'Was a large percentage of votes received after Election Day in Nevada in 2024?'
     url: https://thenevadaindependent.com/article/was-a-large-percentage-of-votes-received-after-election-day-in-nevada-in-2024
     publisher: The Nevada Independent (Eric Neugeboren)
     date: '2025-01-31'
   # 10
   - stance: supports
-    quote: >-
-      A MEDSL report found that “states were slower to report overall vote
-      counts if they had large volumes of mail ballots, prohibited
-      preprocessing mail ballots, and allowed mail ballots to arrive after
-      Election Day.” ... States in the west and southwest — especially
-      Washington, California, Nevada, Arizona, Utah, Colorado, and Alaska (not
-      visualized) — stand out as having a larger proportion of votes left to
-      count by the end of 24 hours. Mississippi, Maine, Maryland,
-      Massachusetts and Michigan were also slower to report ... most large
-      jumps due to California incrementally reporting about a third of its
-      votes over the course of the month after Election Day. ... Texas and
-      Florida stand out as states that successfully counted an enormous number
-      of votes (both well over ten million) within about a day ... every
-      state had counted and reported more than 75% of votes cast for either
-      presidential candidate within about 5 days. ... Nationally, it took only
-      about 2 hours to count a majority of the vote, and only about 3 hours to
-      count 75% of it. ... State Hours in 2020 Hours in 2024 Factor increase
-      2024/2020 Arizona 73 147 2.01 Georgia 18 5 0.28 Michigan 17 9 0.53
-      Nevada 159 51 0.32 North Carolina 3 6 2.00 Pennsylvania 49 8 0.16
-      Wisconsin 8 9 1.13 Table 1: The number of hours to count 95% of the
-      two-party presidential vote in seven battleground states from 2020 and
-      2024. The numbers may be overstated by the duration of the media
-      reporting process, plus up to half an hour
+    quote: |-
+      A MEDSL report found that “states were slower to report overall vote counts if they had large volumes of mail ballots, prohibited preprocessing mail ballots, and allowed mail ballots to arrive after Election Day.” ...
+
+      States in the west and southwest — especially Washington, California, Nevada, Arizona, Utah, Colorado, and Alaska (not visualized) — stand out as having a larger proportion of votes left to count by the end of 24 hours. Mississippi, Maine, Maryland, Massachusetts and Michigan were also slower to report ...
+
+      most large jumps due to California incrementally reporting about a third of its votes over the course of the month after Election Day. ...
+
+      Texas and Florida stand out as states that successfully counted an enormous number of votes (both well over ten million) within about a day, and required very few updates after that. ...
+
+      every state had counted and reported more than 75% of votes cast for either presidential candidate within about 5 days. ...
+
+      Nationally, it took only about 2 hours to count a majority of the vote, and only about 3 hours to count 75% of it. ...
+
+      State | Hours in 2020 | Hours in 2024 | Factor increase 2024/2020
+      Arizona | 73 | 147 | 2.01
+      Georgia | 18 | 5 | 0.28
+      Michigan | 17 | 9 | 0.53
+      Nevada | 159 | 51 | 0.32
+      North Carolina | 3 | 6 | 2.00
+      Pennsylvania | 49 | 8 | 0.16
+      Wisconsin | 8 | 9 | 1.13
+
+      Table 1: The number of hours to count 95% of the two-party presidential vote in seven battleground states from 2020 and 2024. The numbers may be overstated by the duration of the media reporting process, plus up to half an hour
     title: 'How long did it take to count the vote in 2024?'
     url: https://electionlab.mit.edu/articles/how-long-did-it-take-count-vote-2024
     publisher: MIT Election Data + Science Lab (Samuel Baltz)
     date: '2024-12-06'
   # 11
   - stance: supports
-    quote: >-
-      Forty-four states, Washington, D.C., Puerto Rico and the Virgin Islands
-      permit election officials to begin processing absentee/mail ballots
-      prior to the election ... Six states permit election officials to begin
-      processing absentee/mail ballots on Election Day, but prior to the
-      closing of the polls: Alabama, Mississippi, New Hampshire, Pennsylvania,
-      West Virginia and Wisconsin. ... None of these states allow the results
-      of scanned ballots to be viewed or released before the close of polls on
-      Election Day. ... Arizona ... Upon receipt. ... Georgia ... Verification
-      of driver's license or state identification number conducted upon
-      receipt, and further processing can begin at 8 a.m. on the third Monday
-      before Election Day. ... Michigan ... Signature verification conducted
-      upon receipt. Jurisdictions with at least 5,000 people may begin further
-      processing eight days before Election Day ... Nevada ... Signature
-      verification conducted upon receipt. ... North Carolina ... At county
-      board of elections meetings, beginning the fifth Tuesday before Election
-      Day. ... Pennsylvania ... 7 a.m. on Election Day. ... Wisconsin ...
-      After the polls open on Election Day.
+    quote: |-
+      Forty-four states, Washington, D.C., Puerto Rico and the Virgin Islands permit election officials to begin processing absentee/mail ballots prior to the election: Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota, Missouri, Montana, Nebraska, Nevada, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington and Wyoming.
+
+      Six states permit election officials to begin processing absentee/mail ballots on Election Day, but prior to the closing of the polls: Alabama, Mississippi, New Hampshire, Pennsylvania, West Virginia and Wisconsin. ...
+
+      None of these states allow the results of scanned ballots to be viewed or released before the close of polls on Election Day. ...
+
+      State | When Absentee/Mail Ballot Processing Can Begin (includes common processes like examination and sorting) | When Processed Absentee/Mail Ballots Can Be Scanned (but results not released until after close of polls)
+      Arizona | Upon receipt. | Scanning can begin immediately after processing.
+      Georgia | Verification of driver's license or state identification number conducted upon receipt, and further processing can begin at 8 a.m. on the third Monday before Election Day. | Third Monday before Election Day.
+      Michigan | Signature verification conducted upon receipt. Jurisdictions with at least 5,000 people may begin further processing eight days before Election Day, and other jurisdictions may begin the Monday before Election Day. | Jurisdictions with a population of at least 5,000 that have established an early tabulation absent voter counting board may scan ballots eight days before Election Day. All other jurisdictions that have established an early tabulation absent voter counting board may scan ballots on the Monday immediately before Election Day.
+      Nevada | Signature verification conducted upon receipt. | Fifteen days before Election Day, and counting must be completed by the seventh day after the election.
+      North Carolina | At county board of elections meetings, beginning the fifth Tuesday before Election Day. | Beginning on the fifth Tuesday before Election Day, after envelopes have been verified and accepted.
+      Pennsylvania | 7 a.m. on Election Day. | At 7 a.m. on Election Day.
+      Wisconsin | After the polls open on Election Day. | After the polls open on Election Day.
     title: 'Table 16: When Absentee/Mail Ballot Processing and Counting Can Begin'
     url: https://www.ncsl.org/elections-and-campaigns/table-16-when-absentee-mail-ballot-processing-and-counting-can-begin
     publisher: National Conference of State Legislatures
     date: '2026-09-15'
   # 12
   - stance: complicates
-    quote: >-
-      In the statistical analysis performed in the MEDSL report, the failure
-      to pre-process did slow down the count, on average, but by a small
-      amount. Within four hours of the polls closing, the average state with
-      no pre-processing had reported 63% of its votes, compared to 78% that
-      didn’t restrict pre-processing. At the twenty-four-hour point, the gap
-      between states had essentially disappeared. In a later academic paper
-      written by me and two MEDSL colleagues, we also found that states with
-      more mail ballots reported at a slower pace. However, the effect of
-      mail-ballot load also declined over time. ... In 2020, seventeen states
-      prohibited processing of mail ballots before Election Day. In 2024, that
-      number declined to seven.
+    quote: |-
+      In the statistical analysis performed in the MEDSL report, the failure to pre-process did slow down the count, on average, but by a small amount. Within four hours of the polls closing, the average state with no pre-processing had reported 63% of its votes, compared to 78% that didn’t restrict pre-processing. At the twenty-four-hour point, the gap between states had essentially disappeared. In a later academic paper written by me and two MEDSL colleagues, we also found that states with more mail ballots reported at a slower pace. However, the effect of mail-ballot load also declined over time. ...
+
+      First, pre-processing make a difference, although it makes the biggest difference in the early hours of counting. In 2020, seventeen states prohibited processing of mail ballots before Election Day. In 2024, that number declined to seven.
     title: 'Looking back to 2020 for a Guide to How Fast the Votes Will Be Reported in 2024'
     url: https://electionupdates.caltech.edu/?p=7034
     publisher: Election Updates (Charles Stewart III, MIT)
@@ -322,19 +283,16 @@ series:
       source: 1
   source:
     stance: supports
-    quote: >-
-      Many states enacted policies allowing ballots to be received after
-      Election Day during the pandemic, but since then, states have slowly
-      moved in the opposite direction of requiring Election Day receipt for
-      most absentee/mail ballots. As a result, the count of states requiring
-      Election Day receipt for the November 2026 election is expected to be
-      roughly the same as it was in November 2016, despite a dip in that count
-      around the peak of the pandemic. ... Date/Election Election Day receipt
-      Post-Election Day receipt November 2016 37 states and D.C. 13 states
-      January 2020 35 states 15 states and D.C. November 2020 29 states 21
-      states and D.C. November 2022 31 states 19 states and D.C. November 2024
-      32 states 18 states and D.C. November 2026 (expected) 35 states 15
-      states and D.C.
+    quote: |-
+      Many states enacted policies allowing ballots to be received after Election Day during the pandemic, but since then, states have slowly moved in the opposite direction of requiring Election Day receipt for most absentee/mail ballots. As a result, the count of states requiring Election Day receipt for the November 2026 election is expected to be roughly the same as it was in November 2016, despite a dip in that count around the peak of the pandemic. ...
+
+      Date/Election | Election Day receipt | Post-Election Day receipt
+      November 2016 | 37 states and D.C. | 13 states
+      January 2020 | 35 states | 15 states and D.C.
+      November 2020 | 29 states | 21 states and D.C.
+      November 2022 | 31 states | 19 states and D.C.
+      November 2024 | 32 states | 18 states and D.C.
+      November 2026 (expected) | 35 states | 15 states and D.C.
     title: 'Evolution of Absentee/Mail Voting Laws, 2016–2026 (Table 5)'
     url: https://www.ncsl.org/elections-and-campaigns/evolution-of-absentee-mail-voting-laws-2016-2026
     publisher: National Conference of State Legislatures
@@ -369,15 +327,17 @@ additionalSeries:
         a reason drop out of that reason's share.
     source:
       stance: supports
-      quote: >-
-        Table 1. Most Common Reason For Mail Ballot Rejection Was a
-        Non-Matching Or Incomplete Signature ... Ballot envelope had a
-        non-matching or incomplete signature 40.7% ... Other reason not listed
-        18.1% ... Ballot was not received on time/missed the deadline 17.8%
-        ... Voter already cast another ballot that was accepted 11.1% ...
-        Ballot envelope did not have a voter signature 10% ... Casewise
-        deletion was used at the state level in calculating national
-        percentages, and because of this, percentages do not total 100%.
+      quote: |-
+        Table 1. Most Common Reason For Mail Ballot Rejection Was a Non-Matching Or Incomplete Signature
+
+        Reason | Percentage of Rejected Mail Ballots
+        Ballot envelope had a non-matching or incomplete signature | 40.7%
+        Other reason not listed | 18.1%
+        Ballot was not received on time/missed the deadline | 17.8%
+        Voter already cast another ballot that was accepted | 11.1%
+        Ballot envelope did not have a voter signature | 10%
+
+        … Casewise deletion was used at the state level in calculating national percentages, and because of this, percentages do not total 100%.
       title: 'Election Administration and Voting Survey 2024 Comprehensive Report (Table 1)'
       url: https://eac.gov/sites/default/files/2025-07/2024_EAVS_Report_508.pdf
       publisher: U.S. Election Assistance Commission

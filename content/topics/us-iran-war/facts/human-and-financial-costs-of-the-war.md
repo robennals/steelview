@@ -9,57 +9,55 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      Aggregated data since the beginning of the conflict on February 28,
-      2026, based on incidents recorded in the incident tab and using minimum
-      values for figures marked "more than": • Civilian fatalities: 1,701
-      people (including at least 254 children) • Military fatalities: 1,221
-      people • Unclassified fatalities (civilian/military): 714 people …
-      Delays in medical reporting, difficulties in confirming identities, and
-      restricted access to certain provinces may result in temporary
-      undercounting. … they have not been included in the event-based
-      calculations
+    quote: |-
+      Aggregated data since the beginning of the conflict on February 28, 2026, based on incidents recorded in the incident tab and using minimum values for figures marked "more than":
+      - Civilian fatalities: 1,701 people (including at least 254 children)
+      - Military fatalities: 1,221 people
+      - Unclassified fatalities (civilian/military): 714 people …
+
+      Delays in medical reporting, difficulties in confirming identities, and restricted access to certain provinces may result in temporary undercounting. …
+
+      they have not been included in the event-based calculations
     title: 'Day 39 of U.S. and Israeli Attacks on Iran: Extensive Damage to the Rail Network and Roads'
     url: https://www.en-hrana.org/day-39-of-u-s-and-israeli-attacks-on-iran-extensive-damage-to-the-rail-network-and-roads/
     publisher: HRANA (Human Rights Activists News Agency)
     date: '2026-04-07'
   # 2
   - stance: complicates
-    quote: >-
-      According to data collected by Hengaw, at least 7,650 people were
-      killed during the recent war, of whom 1,030 (equivalent to 13.5%) were
-      civilians. … At least 6,620 military personnel were killed, the
-      majority of whom were members of the Islamic Revolutionary Guard Corps
-      (IRGC) and the army. … Hengaw has repeatedly emphasized during the
-      conflict that Iranian military forces abandoned official bases and were
-      stationed in civilian locations, including schools, student
-      dormitories, and mosques within residential areas. … To date, no
-      comprehensive official report on military casualties has been issued
-      by state authorities.
+    quote: |-
+      According to data collected by Hengaw, at least 7,650 people were killed during the recent war, of whom 1,030 (equivalent to 13.5%) were civilians. …
+
+      At least 6,620 military personnel were killed, the majority of whom were members of the Islamic Revolutionary Guard Corps (IRGC) and the army. …
+
+      Hengaw has repeatedly emphasized during the conflict that Iranian military forces abandoned official bases and were stationed in civilian locations, including schools, student dormitories, and mosques within residential areas. …
+
+      To date, no comprehensive official report on military casualties has been issued by state authorities.
     title: 'At least 7,650 killed in 40 days of war, including 1,030 civilians — Hengaw’s tenth report'
     url: https://hengaw.org/en/content/article-40331
     publisher: Hengaw Organization for Human Rights
     date: '2026-04-08'
   # 3
   - stance: supports
-    quote: >-
-      Iran 3 200 000 [Displaced] 33 806 [Injured] 3 375 [Deaths] … All
-      numbers are estimates and may differ from other sources due to data
-      cutoff times. … Since the beginning of the hostilities on 28 February,
-      national authorities reported 3375 deaths and 33 806 injuries in the
-      Islamic Republic of Iran, including 15 injuries following strikes on 7
-      June. An additional 50 deaths and more than 517 injuries have been
-      reported as occurring between 27 June – 19 July … Cumulative figures
-      since 28 February have yet to be reported.
+    quote: |-
+      KEY AFFECTED COUNTRIES | Displaced | Injured | Deaths
+      Iran | 3 200 000 | 33 806 | 3 375
+
+      All numbers are estimates and may differ from other sources due to data cutoff times. Estimates may be revised upward or downward over time. …
+
+      Since the beginning of the hostilities on 28 February, national authorities reported 3375 deaths and 33 806 injuries in the Islamic Republic of Iran, including 15 injuries following strikes on 7 June. An additional 50 deaths and more than 517 injuries have been reported as occurring between 27 June – 19 July, with fatalities including five women and two children, while 35 women and 19 children have been reported injured. Cumulative figures since 28 February have yet to be reported.
     title: 'Middle East escalation of conflict — Global external situation report #10 (data as of 21 July)'
     url: https://cdn.who.int/media/docs/default-source/middle-east-situation-report/middle-east-conflict-global-situation-report-22-july-2026.pdf
     publisher: World Health Organization
     date: '2026-07-22'
   # 4
   - stance: supports
-    quote: >-
-      "indicator":{"id":"SP.POP.TOTL","value":"Population, total"},"country":{"id":"IR","value":"Iran,
-      Islamic Rep."},"countryiso3code":"IRN","date":"2025","value":92417681
+    quote: |-
+      Population, total - Iran, Islamic Rep. …
+
+      Selected Countries and Economies
+
+      Country | Most Recent Year | Most Recent Value
+      Iran, Islamic Rep. | 2025 | 92,417,681
     title: 'World Development Indicators: Population, total (SP.POP.TOTL), Iran'
     url: https://data.worldbank.org/indicator/SP.POP.TOTL?locations=IR
     fileUrl: https://api.worldbank.org/v2/country/IRN/indicator/SP.POP.TOTL?format=json
@@ -70,7 +68,7 @@ sources:
   - stance: supports
     quote: >-
       Over 40 days Airwars tracked 267 civilian harm incidents and has
-      published 71. … In June, U.S. strikes began again after negotiations
+      published 71. New incidents are released once they have been fully researched. In June, U.S. strikes began again after negotiations
       faltered. Airwars' rapid response team has tracked 34 further incidents
       of civilian harm, of which 23 have been published.
     title: 'Israeli, Iranian and US forces in Iran 2026 (conflict page)'
@@ -110,16 +108,14 @@ sources:
     date: '2026-10-10'
   # 9
   - stance: supports
-    quote: >-
-      The Pentagon's latest figure comprises $11.2 billion already obligated
-      for operating expenses ... plus $32.4 billion in unfunded replacement
-      costs for munitions, damaged aircraft and other assets … The new
-      Pentagon estimate of $43.6 billion is current as of Sept. 3, the
-      document said … the CBO said the war cost $38.1 billion through July …
-      The IG, meanwhile, put the figure at $33.4 billion. Its estimate ran
-      through June. Defense Secretary Pete Hegseth testified in July that the
-      war would cost $37.5 billion through the end of September. The Pentagon
-      has asked Congress for $67.1 billion in supplemental spending
+    quote: |-
+      The Pentagon's latest figure comprises $11.2 billion already obligated for operating expenses ... plus $32.4 billion in unfunded replacement costs for munitions, damaged aircraft and other assets …
+
+      The Pentagon’s new partial estimate is close to figures publicized earlier this week in separate reports from the department’s inspector general and the Congressional Budget Office, both of which cited U.S. military cost figures as the source of their estimates. The new Pentagon estimate of $43.6 billion is current as of Sept. 3, the document said — the most recent reckoning.
+
+      By comparison, the CBO said the war cost $38.1 billion through July …
+
+      The IG, meanwhile, put the figure at $33.4 billion. Its estimate ran through June. Defense Secretary Pete Hegseth testified in July that the war would cost $37.5 billion through the end of September. The Pentagon has asked Congress for $67.1 billion in supplemental spending
     title: "Pentagon's latest Iran war cost estimate: $43.6 billion"
     url: https://rollcall.com/2026/09/18/pentagons-latest-iran-war-cost-estimate-43-6-billion/
     publisher: Roll Call
@@ -135,23 +131,18 @@ sources:
     date: '2026-04-29'
   # 11
   - stance: supports
-    quote: >-
-      CBO estimates that as of August 1, 2026, the armed conflict with Iran
-      has cost DoD approximately $38 billion. … if the level of violence
-      remained as low as it was in May and June, an additional month of
-      conflict would cost $2 billion; if the intensity of the conflict
-      increased to roughly the level experienced in July, the cost per month
-      would increase to $3 billion. … CBO relied on government databases and
-      public reports because DoD did not respond to CBO's requests for
-      information. … This past June, the Administration requested $87.6
-      billion in supplemental appropriations, of which $67.1 billion was for
-      DoD to pay for the conflict. … relatively few U.S. forces have been
-      involved compared with the much larger and longer U.S. operations in
-      Iraq and Afghanistan … in the first quarter of 2027, inflation
-      (measured year over year) in the price index for personal consumption
-      expenditures (PCE) is now estimated to be 0.5 percentage points higher
-      than the agency projected in February 2026, and core PCE inflation is
-      estimated to be 0.3 percentage points higher
+    quote: |-
+      CBO estimates that as of August 1, 2026, the armed conflict with Iran has cost DoD approximately $38 billion. That amount reflects the costs of replacing expended munitions and equipment lost in battle, increased flying hours, other operations, and increased fuel costs. …
+
+      if the level of violence remained as low as it was in May and June, an additional month of conflict would cost $2 billion; if the intensity of the conflict increased to roughly the level experienced in July, the cost per month would increase to $3 billion. …
+
+      CBO relied on government databases and public reports because DoD did not respond to CBO's requests for information. …
+
+      This past June, the Administration requested $87.6 billion in supplemental appropriations, of which $67.1 billion was for DoD to pay for the conflict. …
+
+      relatively few U.S. forces have been involved compared with the much larger and longer U.S. operations in Iraq and Afghanistan …
+
+      in the first quarter of 2027, inflation (measured year over year) in the price index for personal consumption expenditures (PCE) is now estimated to be 0.5 percentage points higher than the agency projected in February 2026, and core PCE inflation is estimated to be 0.3 percentage points higher
     title: Costs of the Armed Conflict With Iran (letter, 15 September 2026; archived 1 October 2026)
     url: https://web.archive.org/web/20261001081726id_/https://www.cbo.gov/publication/62756
     publisher: Congressional Budget Office
@@ -197,45 +188,44 @@ sources:
     date: '2026-04-21'
   # 16
   - stance: supports
-    quote: >-
-      Table 12. Operation Iraqi Freedom: Casualty Summary by Casualty Category
-      (as of July 16, 2020) … Total Hostile Deaths 3,481 ... Total Nonhostile
-      Deaths 937 ... Total Deaths 4,418 ... Total Wounded in Action 31,994 …
-      [Operation Enduring Freedom] Total Deaths 2,349 ... Total Wounded In
-      Action 20,149 … [Operation New Dawn] Total Deaths 74 … Table 8. Persian
-      Gulf War: Casualty Summary (Desert Shield and Desert Storm; as of July 16,
-      2020) … Total Hostile Deaths 147 ... Total Nonhostile Deaths 235 ... Total
-      In-Theater Deaths 382
+    quote: |-
+      Table 12. Operation Iraqi Freedom: Casualty Summary by Casualty Category (as of July 16, 2020) …
+      Total Hostile Deaths 3,481 ...
+      Total Nonhostile Deaths 937 ...
+      Total Deaths 4,418 ...
+      Total Wounded in Action 31,994 …
+
+      [Operation Enduring Freedom] Total Deaths 2,349 ...
+      Total Wounded In Action 20,149 …
+
+      [Operation New Dawn] Total Deaths 74 …
+
+      Table 8. Persian Gulf War: Casualty Summary (Desert Shield and Desert Storm; as of July 16, 2020) …
+      Total Hostile Deaths 147 ...
+      Total Nonhostile Deaths 235 ...
+      Total In-Theater Deaths 382
     title: 'American War and Military Operations Casualties: Lists and Statistics (RL32492)'
     url: https://www.everycrsreport.com/files/2020-07-29_RL32492_e7d48d4caf03cdd007922fe2dc0d50d2a5594721.html
     publisher: Congressional Research Service
     date: '2020-07-29'
   # 17
   - stance: supports
-    quote: >-
-      Congress has approved appropriations for the past 13 years of war that
-      total $1.6 trillion ... $686 billion (43%) for Operation Enduring
-      Freedom (OEF) for Afghanistan and other counterterror operations
-      received; $815 billion (51%) for Operation Iraqi Freedom (OIF)/Operation
-      New Dawn (OND)
+    quote: |-
+      Congress has approved appropriations for the past 13 years of war that total $1.6 trillion ...
+      - $686 billion (43%) for Operation Enduring Freedom (OEF) for Afghanistan and other counterterror operations received;
+      - $815 billion (51%) for Operation Iraqi Freedom (OIF)/Operation New Dawn (OND)
     title: 'The Cost of Iraq, Afghanistan, and Other Global War on Terror Operations Since 9/11 (RL33110)'
     url: https://www.everycrsreport.com/reports/RL33110.html
     publisher: Congressional Research Service
     date: '2014-12-08'
   # 18
   - stance: supports
-    quote: >-
-      In September 2002, White House economic adviser Lawrence Lindsey told
-      The Wall Street Journal that a U.S. intervention in Iraq could cost
-      between $100 billion and $200 billion... White House Budget Director
-      Mitchell E. Daniels Jr. labeled that figure as 'very, very high' and
-      estimated total war costs at between $50 billion to $60 billion. …
-      Brookings Institution senior fellows Michael O'Hanlon and Lael Brainard
-      estimated in August 2003 that military and reconstruction costs could
-      range from $150 billion to $300 billion. … On the eve of the war in
-      March 2003, an independent task force report from the Council on
-      Foreign Relations estimated that stabilizing Iraq could cost some $20
-      billion a year for several years
+    quote: |-
+      In September 2002, White House economic adviser Lawrence Lindsey told The Wall Street Journal that a U.S. intervention in Iraq could cost between $100 billion and $200 billion—a figure that approximates current spending. White House Budget Director Mitchell E. Daniels Jr. labeled that figure as 'very, very high' and estimated total war costs at between $50 billion to $60 billion. Lindsey resigned in January 2003. …
+
+      Brookings Institution senior fellows Michael O'Hanlon and Lael Brainard estimated in August 2003 that military and reconstruction costs could range from $150 billion to $300 billion. …
+
+      On the eve of the war in March 2003, an independent task force report from the Council on Foreign Relations estimated that stabilizing Iraq could cost some $20 billion a year for several years
     title: "Iraq War's Price Tag"
     url: https://www.cfr.org/backgrounder/iraq-wars-price-tag
     publisher: Council on Foreign Relations
@@ -321,24 +311,25 @@ series:
       source: 21
   source:
     stance: supports
-    quote: >-
-      [Operation Epic Fury, monthly] "month_Year":"FEBRUARY 2026" …
-      "tot_kia":"0" … "tot_acc":"0" … "tot_wia":"36" … "month_Year":"MARCH
-      2026" … "tot_kia":"7" … "tot_acc":"7" … "tot_total":"14" …
-      "tot_wia":"342" … "month_Year":"APRIL 2026" … "tot_wia":"34" …
-      "month_Year":"JUNE 2026" … "tot_wia":"5" … "month_Year":"JULY 2026" …
-      "tot_kia":"0" … "tot_acc":"1" … "tot_wia":"0" … [Overseas Operations,
-      monthly] "month_Year":"JULY 2026" … "tot_kia":"4" … "tot_acc":"0" …
-      "tot_wia":"350" … "month_Year":"SEPTEMBER 2026" … "tot_acc":"2" …
-      "tot_wia":"94" … "month_Year":"OCTOBER 2026" … "tot_acc":"1" …
-      "tot_wia":"4" … [category totals] Epic Fury "total":"15",
-      "casualty_CATEGORIES":"TOTAL DEATHS" … "airforce":"6","spaceforce":"0","total":"6",
-      "casualty_CATEGORIES":"ACCIDENT" … "total":"8",
-      "casualty_CATEGORIES":"TOTAL NON-HOSTILE DEATHS" … "total":"417",
-      "casualty_CATEGORIES":"WOUNDED IN ACTION (WIA)" … Overseas Operations
-      "total":"7", "casualty_CATEGORIES":"TOTAL DEATHS" … "total":"3",
-      "casualty_CATEGORIES":"TOTAL NON-HOSTILE DEATHS" … "total":"448",
-      "casualty_CATEGORIES":"WOUNDED IN ACTION (WIA)" …
+    quote: |-
+      [Operation Epic Fury, monthly] "month_Year":"FEBRUARY 2026" … "tot_kia":"0" … "tot_acc":"0" … "tot_wia":"36" …
+      "month_Year":"MARCH 2026" … "tot_kia":"7" … "tot_acc":"7" … "tot_total":"14" … "tot_wia":"342" …
+      "month_Year":"APRIL 2026" … "tot_wia":"34" …
+      "month_Year":"JUNE 2026" … "tot_wia":"5" …
+      "month_Year":"JULY 2026" … "tot_kia":"0" … "tot_acc":"1" … "tot_wia":"0" …
+
+      [Overseas Operations, monthly] "month_Year":"JULY 2026" … "tot_kia":"4" … "tot_acc":"0" … "tot_wia":"350" …
+      "month_Year":"SEPTEMBER 2026" … "tot_acc":"2" … "tot_wia":"94" …
+      "month_Year":"OCTOBER 2026" … "tot_acc":"1" … "tot_wia":"4" …
+
+      [category totals]
+      Epic Fury "total":"15", "casualty_CATEGORIES":"TOTAL DEATHS" …
+      "airforce":"6","spaceforce":"0","total":"6", "casualty_CATEGORIES":"ACCIDENT" …
+      "total":"8", "casualty_CATEGORIES":"TOTAL NON-HOSTILE DEATHS" …
+      "total":"417", "casualty_CATEGORIES":"WOUNDED IN ACTION (WIA)" …
+      Overseas Operations "total":"7", "casualty_CATEGORIES":"TOTAL DEATHS" …
+      "total":"3", "casualty_CATEGORIES":"TOTAL NON-HOSTILE DEATHS" …
+      "total":"448", "casualty_CATEGORIES":"WOUNDED IN ACTION (WIA)" …
       "extractionDate":"October 28, 2026"
     title: 'Defense Casualty Analysis System: conflict casualty summaries, Operation Epic Fury and Overseas Operations (monthly and by category)'
     url: https://dcas.dmdc.osd.mil/dcas/app/conflictCasualties/oo

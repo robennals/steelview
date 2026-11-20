@@ -90,7 +90,7 @@ sources:
     quote: >-
       Over a quarter of Black adult citizens and Hispanic adult citizens do not
       have a driver’s license with their current name and/or address (28% and
-      … 27% respectively), compared to about one out of five adult citizens who
+      27% respectively), compared to about one out of five adult citizens who
       identify as Asian/Pacific Islander (21%) or White (18%). Eighteen percent
       of Black adult citizens, 15% of Hispanic adult citizens, and 13% of
       Asian/Pacific Islander adult citizens do not have a license at all,
@@ -131,18 +131,10 @@ sources:
     date: '2024-06'
   # 6
   - stance: supports
-    quote: >-
-      Younger Americans overall are far less likely to have a driver’s license
-      with their current name and/or address, with 41% of those between the
-      ages of 18-24 and 38% between the ages of 25-29 indicating this, compared
-      to 24% between the ages of 30-49, 13% between the ages of 50-64, and 11%
-      of adult citizens over the age of 65. … Thirty-nine percent of those with
-      annual incomes under $30,000 do not have a license with their current
-      name and/or address, including 23% who do not have a license at all.
-      Twenty-one percent of those making between $30,000 and $50,000 annually
-      do not have a license with their current name and/or address, compared
-      to 15% making between $50,000 and $100,000 and 9% of those making over
-      $100,000.
+    quote: |-
+      Younger Americans overall are far less likely to have a driver’s license with their current name and/or address, with 41% of those between the ages of 18-24 and 38% between the ages of 25-29 indicating this, compared to 24% between the ages of 30-49, 13% between the ages of 50-64, and 11% of adult citizens over the age of 65.
+
+      … Thirty-nine percent of those with annual incomes under $30,000 do not have a license with their current name and/or address, including 23% who do not have a license at all. Twenty-one percent of those making between $30,000 and $50,000 annually do not have a license with their current name and/or address, compared to 15% making between $50,000 and $100,000 and 9% of those making over $100,000.
     title: 'Who Lacks ID in America Today? An Exploration of Voter ID Access, Barriers, and Knowledge'
     url: https://cdce.umd.edu/sites/cdce.umd.edu/files/pubs/Voter%20ID%20survey%20Key%20Results%20June%202024.pdf
     publisher: Center for Democracy and Civic Engagement, University of Maryland
@@ -207,325 +199,260 @@ sources:
     date: '2006-11'
   # 11
   - stance: supports
-    quote: >-
-      New information obtained by Votebeat this week showed that the MVD has
-      historically categorized anyone with a pre-1996 license as a U.S.
-      citizen, even though the agency has not obtained their proof of
-      citizenship, such as a birth certificate or passport. … All of the voters
-      attested to their U.S. citizenship under penalty of perjury when they
-      registered to vote, as required by federal law. Only two on the list have
-      so far been identified as noncitizens. Overall, at least 696,713
-      residents in Arizona received their license prior to 1996 and have been
-      categorized in state records as U.S. citizens, without providing proof of
-      citizenship. At least 218,000 of them are voters, according to data
-      provided by the Secretary of State’s Office. … The problem has been
-      occurring since 2004, when Arizona enacted a unique law requiring
-      documented proof of citizenship to vote. … Under the law, Arizona
-      driver’s licenses issued after October 1996 count as proof of
-      citizenship for someone registering to vote.
+    quote: |-
+      New information obtained by Votebeat this week showed that the MVD has historically categorized anyone with a pre-1996 license as a U.S. citizen, even though the agency has not obtained their proof of citizenship, such as a birth certificate or passport.
+
+      … That’s not the case: All of the voters attested to their U.S. citizenship under penalty of perjury when they registered to vote, as required by federal law. Only two on the list have so far been identified as noncitizens.
+
+      How, and how many, voters were miscategorized
+
+      Overall, at least 696,713 residents in Arizona received their license prior to 1996 and have been categorized in state records as U.S. citizens, without providing proof of citizenship. At least 218,000 of them are voters, according to data provided by the Secretary of State’s Office.
+
+      … The problem has been occurring since 2004, when Arizona enacted a unique law requiring documented proof of citizenship to vote.
+
+      … Under the law, Arizona driver’s licenses issued after October 1996 count as proof of citizenship for someone registering to vote.
     title: 'Arizona labeled longtime residents as citizens without proof for years, leading to voter roll errors'
     url: https://votebeat.org/arizona/2024/10/03/citizenship-proof-error-federal-only-voter-registration-drivers-license-records
     publisher: Votebeat
     date: '2024-10-03'
   # 12
   - stance: complicates
-    quote: >-
-      The Maricopa County Recorder’s Office referred 207 people registered to
-      vote who were suspected of not being U.S. citizens to the attorney’s
-      office, according to Mitchell. Sixty of those had voted in at least one
-      election. During their investigation, the attorney’s office found that
-      eight of those 60 were not US citizens. … All eight received their
-      driver’s license before Oct. 1, 1996, when the MVD started requiring
-      proof of citizenship for a driver’s license, according to Mitchell. …
-      More than 2.5 million people are registered to vote in Maricopa County.
+    quote: |-
+      The Maricopa County Recorder’s Office referred 207 people registered to vote who were suspected of not being U.S. citizens to the attorney’s office, according to Mitchell. Sixty of those had voted in at least one election. During their investigation, the attorney’s office found that eight of those 60 were not US citizens.
+
+      … All eight received their driver’s license before Oct. 1, 1996, when the MVD started requiring proof of citizenship for a driver’s license, according to Mitchell.
+
+      … More than 2.5 million people are registered to vote in Maricopa County.
     title: Investigation into 200+ names finds 8 non-citizens voted in Maricopa County since 2012
     url: https://www.azfamily.com/2026/09/28/8-noncitizens-voted-maricopa-county-due-systemic-flaw-official-says/
     publisher: AZFamily (KTVK/KPHO)
     date: '2026-09-28'
   # 13
   - stance: complicates
-    quote: >-
-      The Secretary also identified an incident, summarized in a letter in the
-      record, where employees of a hog farm “were transported to [a county]
-      office by their employer to register to vote” even though a county clerk
-      stated that “some of these employees felt they were pressured to
-      register even though they may not be legal.” … In its preliminary
-      injunction analysis, the district court had concluded that the evidence
-      submitted about this incident was “insufficient to show that noncitizens
-      actually voted.” Id., Vol. 4, at 867 (Mem. & Order, filed May 17, 2016).
+    quote: |-
+      The Secretary also identified an incident, summarized in a letter in the record, where employees of a hog farm “were transported to [a county] office by their employer to register to vote” even though a county clerk stated that “some of these employees felt they were pressured to register even though they may not be legal.”
+
+      … In its preliminary injunction analysis, the district court had concluded that the evidence submitted about this incident was “insufficient to show that noncitizens actually voted.” Id., Vol. 4, at 867 (Mem. & Order, filed May 17, 2016).
     title: Fish v. Schwab, No. 18-3133 (opinion)
     url: https://web.archive.org/web/2020/https://www.ca10.uscourts.gov/opinions/18/18-3133.pdf
     publisher: United States Court of Appeals for the Tenth Circuit
     date: '2020-04-29'
   # 14
   - stance: supports
-    quote: >-
-      As of March 28, 2016, before the preliminary injunction was issued
-      requiring Defendant to register to vote applicants suspended or canceled
-      for failure to provide DPOC, there were 14,770 applicants on the suspense
-      list. Of these, 5,655 were motor voter applicants. As of March 28, 2016,
-      16,319 individuals had their applications canceled under K.A.R. §
-      7-23-15 due to lack of DPOC. Of these, 11,147 were motor voter
-      applicants. These figures amount to 31,089 total applicants who were
-      denied registration for failure to provide DPOC, 16,802 of whom applied
-      through the DOV. … Canceled or suspended applicants represented 12.4% of
-      new voter registrations between January 1, 2013 and December 11, 2015.
+    quote: |-
+      As of March 28, 2016, before the preliminary injunction was issued requiring Defendant to register to vote applicants suspended or canceled for failure to provide DPOC, there were 14,770 applicants on the suspense list. Of these, 5,655 were motor voter applicants. As of March 28, 2016, 16,319 individuals had their applications canceled under K.A.R. § 7-23-15 due to lack of DPOC. Of these, 11,147 were motor voter applicants. These figures amount to 31,089 total applicants who were denied registration for failure to provide DPOC, 16,802 of whom applied through the DOV.
+
+      Professor Michael McDonald testified as an expert witness for Plaintiffs about the composition of the suspense and cancellation lists.
+
+      … 22,814, or 70.9% of the applicants on the September 2015 list, remained on the December 2015 list. Canceled or suspended applicants represented 12.4% of new voter registrations between January 1, 2013 and December 11, 2015.
     title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
     url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
     publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
     date: '2018-06-18'
   # 15
   - stance: supports
-    quote: >-
-      the evidence shows that 67 noncitizen individuals registered to vote
-      under the attestation regime, or attempted to register after the DPOC
-      law was passed. Of these, 39 successfully registered to vote despite the
-      attestation requirement, and 28 noncitizens attempted to register to
-      vote after the DPOC law was passed but were thwarted by operation of
-      that law. … although Dr. Richman did not provide a margin of error, Dr.
-      Ansolabehere did, and determined that Dr. Richman’s estimate that 0.7% of the people on the
-      suspense list are noncitizens is statistically indistinguishable from
-      zero. … Moreover, taken at face value, the corollary to Dr. Richman’s
-      estimate that 0.7% of people on the Suspense List are noncitizens, is
-      that more than 99% of the individuals on the suspense list are United
-      States citizens. … there are only 39 confirmed noncitizens who
-      successfully registered to vote between 1999 and 2013 when the DPOC law
-      became effective. This is but .002% of all registered voters in Kansas
-      as of January 1, 2013 (1,762,330). … these numbers support the opinions
-      of Drs. Minnite, McDonald, and Hersh that while there is evidence of a
-      small number of noncitizen registrations in Kansas, it is largely
-      explained by administrative error, confusion, or mistake. … The Court
-      has already determined that at most, 67 noncitizens registered or
-      attempted to register in Kansas over the last 19 years.
+    quote: |-
+      the evidence shows that 67 noncitizen individuals registered to vote under the attestation regime, or attempted to register after the DPOC law was passed. Of these, 39 successfully registered to vote despite the attestation requirement, and 28 noncitizens attempted to register to vote after the DPOC law was passed but were thwarted by operation of that law. Extrapolating percentages based on these numbers, the total number of confirmed noncitizens who successfully registered to vote between 1999 and 2013 is .002% of all registered voters in Kansas as of January 1, 2013.
+
+      … although Dr. Richman did not provide a margin of error, Dr. Ansolabehere did, and determined that Dr. Richman’s estimate that 0.7% of the people on the suspense list are noncitizens is statistically indistinguishable from zero.
+
+      … Moreover, taken at face value, the corollary to Dr. Richman’s estimate that 0.7% of people on the Suspense List are noncitizens, is that more than 99% of the individuals on the suspense list are United States citizens.
+
+      … there are only 39 confirmed noncitizens who successfully registered to vote between 1999 and 2013 when the DPOC law became effective. This is but .002% of all registered voters in Kansas as of January 1, 2013 (1,762,330).
+
+      … these numbers support the opinions of Drs. Minnite, McDonald, and Hersh that while there is evidence of a small number of noncitizen registrations in Kansas, it is largely explained by administrative error, confusion, or mistake.
+
+      … The Court has already determined that at most, 67 noncitizens registered or attempted to register in Kansas over the last 19 years.
     title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
     url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
     publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
     date: '2018-06-18'
   # 16
   - stance: supports
-    quote: >-
-      During the state's primary in March, state officials said 24,636 mail-in
-      ballots were rejected in that election. That's a 12.38% rejection rate —
-      far higher than in previous contests. According to the U.S. Election
-      Assistance Commission, Texas' mail ballot rejection rate during the 2020
-      general election was 0.8% and it was 1.5% in 2018. The surge in the
-      rejection rate in March followed a voting law passed by Republicans in
-      the state legislature in 2021 that created new ID requirements for mail
-      ballots. Local officials said confusion created by the law, known as
-      Senate Bill 1, tripped up many voters. In many cases,
-      voters completely missed the field on the ballot return envelope that
-      requires either a partial Social Security number or driver's license
-      number. … Sam Taylor, assistant secretary of state for communications,
-      attributes the decrease in the mail ballot rejection rate to updates to
-      the return ballot in some Texas counties, as well as additional voter
-      information included in mail ballots by local officials. He says various
-      voter education campaigns following the March primary have also helped.
-      … Taylor also said rejection rates were always likely to improve as
-      "voters got used to" the new mail ballot process.
+    quote: |-
+      During the state's primary in March, state officials said 24,636 mail-in ballots were rejected in that election. That's a 12.38% rejection rate — far higher than in previous contests. According to the U.S. Election Assistance Commission, Texas' mail ballot rejection rate during the 2020 general election was 0.8% and it was 1.5% in 2018. The surge in the rejection rate in March followed a voting law passed by Republicans in the state legislature in 2021 that created new ID requirements for mail ballots. Local officials said confusion created by the law, known as Senate Bill 1, tripped up many voters. In many cases, voters completely missed the field on the ballot return envelope that requires either a partial Social Security number or driver's license number.
+
+      … Sam Taylor, assistant secretary of state for communications, attributes the decrease in the mail ballot rejection rate to updates to the return ballot in some Texas counties, as well as additional voter information included in mail ballots by local officials. He says various voter education campaigns following the March primary have also helped.
+
+      … Taylor also said rejection rates were always likely to improve as "voters got used to" the new mail ballot process.
     title: Texas officials say they're rejecting fewer mail ballots than the primary's big spike
     url: https://www.tpr.org/news/2022-11-06/texas-officials-say-theyre-rejecting-fewer-mail-ballots-than-the-primarys-big-spike
     publisher: NPR (via Texas Public Radio)
     date: '2022-11-06'
   # 17
   - stance: supports
-    quote: >-
-      Perhaps most notably, in Harris County — home to Houston, and the state's
-      most populous county — officials said they rejected a whopping 19%
-      percent of the mail ballots they received, or 6,888 mail ballots in
-      total. During the primary election in 2018, the county had only rejected
-      135 mail ballots out of more than 48,000, election officials said in a
-      statement. That's less than 0.3%. But the issues were widespread, as
-      final figures have come out. In Williamson County — a historically
-      Republican suburban county north of Austin that's been turning blue in
-      the past few years — officials there rejected 11.5% of returned mail
-      ballots. … And the ID number they provide has to match what's on their
-      voter registration record, which could be from decades ago. … The ID
-      field was located under the envelope flap, which Davis said is easy to
-      miss. … "Based on what we have heard from county election officials, the
-      vast majority of mail-in ballot rejections were due to voters who did
-      not provide any ID information on their carrier envelope," Sam Taylor,
-      assistant secretary of state for communications, said in a statement.
+    quote: |-
+      Perhaps most notably, in Harris County — home to Houston, and the state's most populous county — officials said they rejected a whopping 19% percent of the mail ballots they received, or 6,888 mail ballots in total. During the primary election in 2018, the county had only rejected 135 mail ballots out of more than 48,000, election officials said in a statement. That's less than 0.3%. But the issues were widespread, as final figures have come out. In Williamson County — a historically Republican suburban county north of Austin that's been turning blue in the past few years — officials there rejected 11.5% of returned mail ballots.
+
+      … And the ID number they provide has to match what's on their voter registration record, which could be from decades ago.
+
+      … The ID field was located under the envelope flap, which Davis said is easy to miss.
+
+      … "Based on what we have heard from county election officials, the vast majority of mail-in ballot rejections were due to voters who did not provide any ID information on their carrier envelope," Sam Taylor, assistant secretary of state for communications, said in a statement.
     title: In Texas, thousands of mail ballots were rejected following new ID requirements
     url: https://www.kut.org/2022-03-16/in-texas-thousands-of-mail-ballots-were-rejected-following-new-id-requirements
     publisher: NPR (via KUT)
     date: '2022-03-16'
   # 18
   - stance: supports
-    quote: >-
-      The study found that 30,000 voters in that primary — or 1 out of 7 voters
-      who started the process to vote by mail — had either their application
-      or ballot rejected, and that “roughly 90% of these individuals did not
-      find another way to participate in the 2022 primary.” … About 85% of
-      voters whose applications or ballots were rejected had voted in general
-      elections in 2016, 2018, and 2020 … Texas has long had strict limits on
-      voting by mail, allowing it only for certain groups of people, including
-      voters age 65 and up and people with disabilities. … They looked at the
-      demographics and the voting history of the roughly 215,000 Texans who
-      requested a mail ballot for that primary … Out of the more than 18,000
-      voters whose mail ballots were rejected, only 344 voted in person.
+    quote: |-
+      The study found that 30,000 voters in that primary — or 1 out of 7 voters who started the process to vote by mail — had either their application or ballot rejected, and that “roughly 90% of these individuals did not find another way to participate in the 2022 primary.”
+
+      The authors said their findings show the potentially lasting effects of restrictive voting policies on even the most engaged voters.
+
+      About 85% of voters whose applications or ballots were rejected had voted in general elections in 2016, 2018, and 2020, said co-author Kevin Morris, a senior research fellow and voting policy scholar with the Brennan Center’s Democracy Program.
+
+      “This is a group of people that are super highly engaged in the political process,” Morris told Votebeat. “They have a long history and habit of voting, so to see these effects among them is a big deal.”
+
+      … Texas has long had strict limits on voting by mail, allowing it only for certain groups of people, including voters age 65 and up and people with disabilities.
+
+      … They looked at the demographics and the voting history of the roughly 215,000 Texans who requested a mail ballot for that primary
+
+      … Out of the more than 18,000 voters whose mail ballots were rejected, only 344 voted in person.
     title: New study shows lasting effects of Texas’ ID requirements to vote by mail
     url: https://www.votebeat.org/texas/2025/05/28/mail-voting-decline-under-senate-bill-1-election-law-id-requirement/
     publisher: Votebeat
     date: '2025-05-28'
   # 19
   - stance: supports
-    quote: >-
-      444,150 mail ballots transmitted • 83.2% of transmitted mail ballots
-      returned by voters • 96.6% of returned mail ballots counted • 3.4% of
-      returned mail ballots rejected
+    quote: |-
+      - 444,150 mail ballots transmitted
+      - 83.2% of transmitted mail ballots returned by voters
+      - 96.6% of returned mail ballots counted
+      - 3.4% of returned mail ballots rejected
     title: '2022 EAVS Data Brief: Texas'
     url: https://www.eac.gov/sites/default/files/2023-10/2022_EAVS_Data_Brief_TX_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2023-08'
   # 20
   - stance: supports
-    quote: >-
-      463,200 mail ballots transmitted 86.0% of transmitted mail ballots
-      returned by voters 96.5% of returned mail ballots counted … 5.8% of mail
-      ballots entered ballot curing process
+    quote: |-
+      Mail Voting
+      - 463,200 mail ballots transmitted
+      - 86.0% of transmitted mail ballots returned by voters
+      - 96.5% of returned mail ballots counted
+      - Did not allow drop boxes
+      - 5.8% of mail ballots entered ballot curing process
     title: '2024 EAVS Data Brief: Texas'
     url: https://www.eac.gov/sites/default/files/2026-07/2024_EAVS_Data_Brief_TX.pdf
     publisher: U.S. Election Assistance Commission
     date: '2025'
   # 21
   - stance: supports
-    quote: >-
-      280,897 mail ballots transmitted • 89.8% of transmitted mail ballots
-      returned by voters • 98.5% of returned mail ballots counted • 1.5% of
-      returned mail ballots rejected
+    quote: |-
+      - 280,897 mail ballots transmitted
+      - 89.8% of transmitted mail ballots returned by voters
+      - 98.5% of returned mail ballots counted
+      - 1.5% of returned mail ballots rejected
     title: '2022 EAVS Data Brief: Georgia'
     url: https://www.eac.gov/sites/default/files/2023-10/2022_EAVS_Data_Brief_GA_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2023-08'
   # 22
   - stance: supports
-    quote: >-
-      327,241 mail ballots transmitted 83.6% of transmitted mail ballots
-      returned by voters 98.3% of returned mail ballots counted
+    quote: |-
+      - 327,241 mail ballots transmitted
+      - 83.6% of transmitted mail ballots returned by voters
+      - 98.3% of returned mail ballots counted
     title: '2024 EAVS Data Brief: Georgia'
     url: https://www.eac.gov/sites/default/files/2026-07/2024_EAVS_Data_Brief_GA.pdf
     publisher: U.S. Election Assistance Commission
     date: '2025'
   # 23
   - stance: supports
-    quote: >-
-      97.4% of returned mail ballots counted • 1.5% of returned mail ballots
-      rejected
+    quote: |-
+      - 97.4% of returned mail ballots counted
+      - 1.5% of returned mail ballots rejected
     title: '2022 EAVS Data Brief: United States'
     url: https://www.eac.gov/sites/default/files/2023-10/2022_EAVS_Data_Brief_US_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2023-08'
   # 24
   - stance: supports
-    quote: >-
-      66,867,671 mail ballots transmitted … 72.0% of transmitted mail ballots
-      returned by voters … 98.8% of returned mail ballots counted … 1.5% of
-      mail ballots entered ballot curing process
+    quote: |-
+      Mail Voting
+      - 66,867,671 mail ballots transmitted
+      - 72.0% of transmitted mail ballots returned by voters
+      - 98.8% of returned mail ballots counted
+      - 41.8% of mail ballots returned at drop boxes
+      - 1.5% of mail ballots entered ballot curing process
     title: '2024 EAVS Data Brief: United States'
     url: https://www.eac.gov/sites/default/files/2026-07/2024_EAVS_Data_Brief_US.pdf
     publisher: U.S. Election Assistance Commission
     date: '2025'
   # 25
   - stance: supports
-    quote: >-
-      This means that 77.8% of the transmitted mailed ballots were returned by
-      voters, and of the returned ballots, 98.8% were counted and 0.8% were
-      rejected. … Overview Table 2: Voter Turnout by Mail … Mailed Ballots
-      Rejected, Total, % of Returned … Georgia [2] 1,311,361 99.6 4,804 0.4 …
-      Texas 982,362 99.4 8,304 0.8 … [2] Data on rejected mailed ballots for
-      Georgia include rejected ballots entered by counties into the state voter
-      registration system as of February 2021, which does not necessarily
-      include all ballots rejected by counties. … Georgia [2] 1,311,361 26.1
-      1,759,036 1,316,165 74.8
+    quote: |-
+      This means that 77.8% of the transmitted mailed ballots were returned by voters, and of the returned ballots, 98.8% were counted and 0.8% were rejected.
+
+      … Overview Table 2: Voter Turnout by Mail
+      State | Total Mail Voters | % Turnout by Mail | Total Mailed Ballots Transmitted | Total Mailed Ballots Returned | % Mailed Ballots Returned
+      Georgia [2] | 1,311,361 | 26.1 | 1,759,036 | 1,316,165 | 74.8
+      Texas | 982,362 | 8.6 | 1,208,665 | 988,364 | 81.8
+      U.S. Total | 69,486,966 | 43.1 | 90,687,978 | 70,551,227 | 77.8
+
+      State | Mailed Ballots Counted, Total | Mailed Ballots Counted, % of Returned | Mailed Ballots Rejected, Total | Mailed Ballots Rejected, % of Returned
+      Georgia [2] | 1,311,361 | 99.6 | 4,804 | 0.4
+      Texas | 982,362 | 99.4 | 8,304 | 0.8
+      U.S. Total | 69,560,318 | 98.8 | 560,826 | 0.8
+
+      … [2] Data on rejected mailed ballots for Georgia include rejected ballots entered by counties into the state voter registration system as of February 2021, which does not necessarily include all ballots rejected by counties.
     title: 'Election Administration and Voting Survey 2020 Comprehensive Report'
     url: https://www.eac.gov/sites/default/files/document_library/files/2020_EAVS_Report_Final_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2021-08'
   # 26
   - stance: supports
-    quote: >-
-      Of these returned ballots, 91.8 percent were counted in the 2018 general
-      elections and 1.4 percent were rejected. … Overview Table 2: By-Mail and
-      In-Person Early Voting … Georgia 3,951,876 281,490 242,661 86.21 218,858
-      90.19 7,512 3.10 16,291 6.71 … Texas 7,976,548 621,386 533,566 85.87
-      527,787 98.92 9,377 1.76 -3,598 -0.67
+    quote: |-
+      Of these returned ballots, 91.8 percent were counted in the 2018 general elections and 1.4 percent were rejected.
+
+      … Overview Table 2: By-Mail and In-Person Early Voting
+      State | Total Voter Turnout | Total By-Mail Ballots Transmitted | By-Mail Ballots Returned by Voters, Total | By-Mail Ballots Returned by Voters, Pct. of Transmitted | Counted, Total | Counted, Pct. of Returned | Rejected, Total | Rejected, Pct. of Returned | Other, Total | Other, Pct. of Returned | In-Person Early Voters, Total | In-Person Early Voters, Pct. of Total Ballots Cast
+      Georgia | 3,951,876 | 281,490 | 242,661 | 86.21 | 218,858 | 90.19 | 7,512 | 3.10 | 16,291 | 6.71 | 1,893,368 | 47.91
+      Texas | 7,976,548 | 621,386 | 533,566 | 85.87 | 527,787 | 98.92 | 9,377 | 1.76 | -3,598 | -0.67 | 5,452,510 | 68.36
+      U.S. Total | 120,314,461 | 42,444,522 | 30,377,407 | 71.57 | 27,881,846 | 91.78 | 430,190 | 1.42 | 2,065,371 | 6.80 | 20,854,871 | 22.04
     title: 'The Election Administration and Voting Survey: 2018 Comprehensive Report'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/6/2018_EAVS_Report.pdf
     publisher: U.S. Election Assistance Commission
     date: '2019-06'
   # 27
   - stance: complicates
-    quote: >-
-      Using a difference-in-differences design on a 1.6-billion-observations
-      panel dataset, 2008–2018, we find that the laws have no negative effect
-      on registration or turnout, overall or for any group defined by race,
-      gender, age, or party affiliation. … Based on this specification, we
-      obtain point estimates of -0.1 percentage point for effects both on
-      overall registration and turnout (with 95 percent confidence intervals of
-      [-2.3; 2.1pp] and [-3.0; 2.8pp], respectively), and +1.4pp for the effect
-      on the turnout of non-white voters relative to whites (with a 95 percent
-      confidence interval of [-0.5; 3.2pp]). … However, the likelihood that
-      non-white voters were contacted by a campaign increases by 4.7 percentage
-      points, suggesting that parties’ mobilization might have offset modest
-      effects of the laws on the participation of ethnic minorities. Finally,
-      strict ID requirements have no effect on fraud – actual or perceived.
+    quote: |-
+      Using a difference-in-differences design on a 1.6-billion-observations panel dataset, 2008–2018, we find that the laws have no negative effect on registration or turnout, overall or for any group defined by race, gender, age, or party affiliation. These results hold through a large number of specifications. Our most demanding specification controls for state, year, and voter fixed effects, along with state and voter time-varying controls. Based on this specification, we obtain point estimates of -0.1 percentage point for effects both on overall registration and turnout (with 95 percent confidence intervals of [-2.3; 2.1pp] and [-3.0; 2.8pp], respectively), and +1.4pp for the effect on the turnout of non-white voters relative to whites (with a 95 percent confidence interval of [-0.5; 3.2pp]).
+
+      … However, the likelihood that non-white voters were contacted by a campaign increases by 4.7 percentage points, suggesting that parties’ mobilization might have offset modest effects of the laws on the participation of ethnic minorities. Finally, strict ID requirements have no effect on fraud – actual or perceived.
     title: 'Strict ID Laws Don’t Stop Voters: Evidence from a U.S. Nationwide Panel, 2008–2018 (Quarterly Journal of Economics 136(4), 2021)'
     url: https://www.nber.org/papers/w25522
     publisher: National Bureau of Economic Research
     date: '2021-05'
   # 28
   - stance: supports
-    quote: >-
-      GAO conducted a quasi-experimental analysis to compare voter turnout in
-      Kansas and Tennessee to turnout in the four comparison states that did
-      not have changes in their voter ID requirements from the 2008 to 2012
-      general elections. … GAO found that turnout among eligible and registered voters declined more
-      in Kansas and Tennessee than it declined in comparison states—by an
-      estimated 1.9 to 2.2 percentage points more in Kansas and 2.2 to 3.2
-      percentage points more in Tennessee—and the results were consistent
-      across the different data sources and voter populations used in the
-      analysis.
+    quote: |-
+      GAO conducted a quasi-experimental analysis to compare voter turnout in Kansas and Tennessee to turnout in the four comparison states that did not have changes in their voter ID requirements from the 2008 to 2012 general elections. In selecting these states from among 14 potential states that modified their ID requirements and 35 potential comparison states, GAO applied criteria to ensure that the states did not have other factors present in their election environments that may have significantly affected turnout.
+
+      … GAO found that turnout among eligible and registered voters declined more in Kansas and Tennessee than it declined in comparison states—by an estimated 1.9 to 2.2 percentage points more in Kansas and 2.2 to 3.2 percentage points more in Tennessee—and the results were consistent across the different data sources and voter populations used in the analysis.
     title: 'Elections: Issues Related to State Voter Identification Laws (GAO-14-634, reissued 27 February 2015)'
     url: https://www.gao.gov/products/gao-14-634
     publisher: U.S. Government Accountability Office
     date: '2014-09'
   # 29
   - stance: supports
-    quote: >-
-      Age. In Kansas, the turnout effect among registrants who were 18 years
-      old in 2008 was 7.1 percentage points larger in size than the turnout
-      effect among registrants between the ages of 44 and 53. The change in
-      turnout in Tennessee was reduced among 18 year-old registrants by 1.3
-      percentage points more than among 44 to 53 year-olds. … We estimate that
-      turnout was reduced among African-American registrants by 3.7 percentage
-      points more than among Whites in Kansas and 1.5 percentage points more
-      than among Whites in Tennessee. However, we did not find reductions in
-      turnout among Asian-American or Hispanic registrants, as compared with
-      White registrants … In Kansas, the reduction in turnout for people
-      registered to vote within 1 year prior to Election Day 2008 was 5.2
-      percentage points larger in size than for people registered to vote for
-      20 years or longer prior to Election Day 2008. In Tennessee, the effect
-      on turnout for people registered to vote within 1 year prior to Election
-      Day 2008 was 4.6 percentage points larger than the effect for people
-      registered to vote for 20 years or longer prior to Election Day 2008.
+    quote: |-
+      Age. In Kansas, the turnout effect among registrants who were 18 years old in 2008 was 7.1 percentage points larger in size than the turnout effect among registrants between the ages of 44 and 53. The change in turnout in Tennessee was reduced among 18 year-old registrants by 1.3 percentage points more than among 44 to 53 year-olds.
+
+      … We estimate that turnout was reduced among African-American registrants by 3.7 percentage points more than among Whites in Kansas and 1.5 percentage points more than among Whites in Tennessee. However, we did not find reductions in turnout among Asian-American or Hispanic registrants, as compared with White registrants
+
+      … In Kansas, the reduction in turnout for people registered to vote within 1 year prior to Election Day 2008 was 5.2 percentage points larger in size than for people registered to vote for 20 years or longer prior to Election Day 2008. In Tennessee, the effect on turnout for people registered to vote within 1 year prior to Election Day 2008 was 4.6 percentage points larger than the effect for people registered to vote for 20 years or longer prior to Election Day 2008.
     title: 'Elections: Issues Related to State Voter Identification Laws (GAO-14-634, reissued 27 February 2015)'
     url: https://www.gao.gov/assets/gao-14-634.pdf
     publisher: U.S. Government Accountability Office
     date: '2014-09'
   # 30
   - stance: complicates
-    quote: >-
-      Another 10 studies GAO reviewed showed mixed effects of various forms of
-      state voter ID requirements on turnout. All 10 studies examined general
-      elections before 2008, and 1 of the 10 studies also included the 2004
-      through 2012 general elections. Five of these 10 studies found that ID
-      requirements had no statistically significant effect on turnout; in
-      contrast 4 studies found decreases in turnout and 1 found an increase in
-      turnout that were statistically significant. … GAO identified direct
-      costs for these forms of ID in 17 states that require voters to present a
-      photo or government-issued ID at the polls and do not allow voters to
-      affirm their own identities, and found that driver's license direct
-      costs, for example, range from $14.50 to $58.50.
+    quote: |-
+      Another 10 studies GAO reviewed showed mixed effects of various forms of state voter ID requirements on turnout. All 10 studies examined general elections before 2008, and 1 of the 10 studies also included the 2004 through 2012 general elections. Five of these 10 studies found that ID requirements had no statistically significant effect on turnout; in contrast 4 studies found decreases in turnout and 1 found an increase in turnout that were statistically significant.
+
+      … GAO identified direct costs for these forms of ID in 17 states that require voters to present a photo or government-issued ID at the polls and do not allow voters to affirm their own identities, and found that driver's license direct costs, for example, range from $14.50 to $58.50.
     title: 'Elections: Issues Related to State Voter Identification Laws (GAO-14-634, reissued 27 February 2015)'
     url: https://www.gao.gov/products/gao-14-634
     publisher: U.S. Government Accountability Office
@@ -560,32 +487,24 @@ sources:
     date: '2024-05'
   # 33
   - stance: complicates
-    quote: >-
-      Within this context the Republican-controlled General Assembly passed an
-      omnibus reform bill known as the Election Integrity Act of 2021
-      (hereafter referred to as SB 202). … A plurality of LEOs indicated that
-      the absentee ballot/application verification process did not result in
-      fewer rejections … SB 202 altered verification for absentee applications and ballots from
-      signature verification to use of a driver’s license or state ID number.
-      Almost half of the counties responding indicated that processing of
-      absentee applications (49%) and ballots (46%) was faster in 2022. In
-      addition, 34% of counties reported fewer ABM applications rejected and
-      32% reported fewer ABM ballots rejected as compared to 2022.
+    quote: |-
+      Within this context the Republican-controlled General Assembly passed an omnibus reform bill known as the Election Integrity Act of 2021 (hereafter referred to as SB 202).
+
+      … A plurality of LEOs indicated that the absentee ballot/application verification process did not result in fewer rejections
+
+      … SB 202 altered verification for absentee applications and ballots from signature verification to use of a driver’s license or state ID number. Almost half of the counties responding indicated that processing of absentee applications (49%) and ballots (46%) was faster in 2022. In addition, 34% of counties reported fewer ABM applications rejected and 32% reported fewer ABM ballots rejected as compared to 2022.
     title: Gauging the Effects of SB 202 on Voting in Georgia
     url: https://electionlab.mit.edu/sites/default/files/2024-05/5_sb202-MEDSLReport.pdf
     publisher: MIT Election Data and Science Lab (report by M.V. Hood III and Seth C. McKee)
     date: '2024-05'
   # 34
   - stance: supports
-    quote: >-
-      Turnout in Georgia is especially worthy of examination, considering that
-      its newly enacted Senate Bill 202 erected multiple barriers to voting in
-      the state. … White turnout was 8.6 percentage points higher than nonwhite turnout in
-      the midterm election this year — higher than any general election in the
-      past decade, and roughly 50 percent higher than in the last two midterms.
-      … Several factors affect turnout, including poll site resources and
-      weather, among others, so we cannot say whether the passage of S.B. 202
-      is the cause of the turnout gaps’ growth.
+    quote: |-
+      Turnout in Georgia is especially worthy of examination, considering that its newly enacted Senate Bill 202 erected multiple barriers to voting in the state.
+
+      … White turnout was 8.6 percentage points higher than nonwhite turnout in the midterm election this year — higher than any general election in the past decade, and roughly 50 percent higher than in the last two midterms.
+
+      … Several factors affect turnout, including poll site resources and weather, among others, so we cannot say whether the passage of S.B. 202 is the cause of the turnout gaps’ growth.
     title: Georgia’s Racial Turnout Gap Grew in 2022
     url: https://www.brennancenter.org/our-work/analysis-opinion/georgias-racial-turnout-gap-grew-2022
     publisher: Brennan Center for Justice
@@ -607,61 +526,31 @@ sources:
     date: '2024-12-23'
   # 36
   - stance: complicates
-    quote: >-
-      Only 58% of people were aware of the Voter Authority Certificate and
-      this was similar across England, Scotland, and Wales. … 0.08% of people
-      who tried to vote at a polling station in July 2024 were not able to
-      because of the ID requirement … At least 0.25% of people who tried to
-      vote at a polling station were initially not issued with a ballot paper
-      because they did not have an accepted form of ID. Around two-thirds of
-      these people returned later in the day with an accepted form of ID and
-      were able to vote. By the close of poll, 0.08% of people who tried to
-      vote in person were not issued with a ballot paper due to the ID
-      requirement. This means around 16,000 people who tried to vote at a
-      polling station were not issued with a ballot paper because they could
-      not show an accepted form of ID. … Table 1: Polling station voters who
-      were initially turned away and percentage of those who did not return
-      May 2023 (England) May 2024* (England and Wales) July 2024 (Great
-      Britain) Initially turned away 0.7% (37,000) 0.6% 0.25% (50,000) Turned
-      away and did not return 0.25% (14,000) 0.2% 0.08% (16,000) … We found
-      that 4% of the people who said they did not vote gave an unprompted
-      reason that was related to the ID rules. … The clearest evidence relates
-      to the lower, C2DE social grade. When prompted, 10% of people who did
-      not vote said that the ID requirement was the reason, with 6% saying
-      that this was because they did not have the required ID. This was
-      higher for C2DE non-voters compared to ABC1 non-voters (8% compared to
-      3%).
+    quote: |-
+      Only 58% of people were aware of the Voter Authority Certificate and this was similar across England, Scotland, and Wales.
+
+      … 0.08% of people who tried to vote at a polling station in July 2024 were not able to because of the ID requirement
+
+      … At least 0.25% of people who tried to vote at a polling station were initially not issued with a ballot paper because they did not have an accepted form of ID. Around two-thirds of these people returned later in the day with an accepted form of ID and were able to vote. By the close of poll, 0.08% of people who tried to vote in person were not issued with a ballot paper due to the ID requirement. This means around 16,000 people who tried to vote at a polling station were not issued with a ballot paper because they could not show an accepted form of ID.
+
+      … Table 1: Polling station voters who were initially turned away and percentage of those who did not return
+      | May 2023 (England) | May 2024* (England and Wales) | July 2024 (Great Britain)
+      Initially turned away | 0.7% (37,000) | 0.6% | 0.25% (50,000)
+      Turned away and did not return | 0.25% (14,000) | 0.2% | 0.08% (16,000)
+
+      … We found that 4% of the people who said they did not vote gave an unprompted reason that was related to the ID rules.
+
+      … The clearest evidence relates to the lower, C2DE social grade. When prompted, 10% of people who did not vote said that the ID requirement was the reason, with 6% saying that this was because they did not have the required ID. This was higher for C2DE non-voters compared to ABC1 non-voters (8% compared to 3%).
     title: Voter ID at the 2024 UK general election (page last updated 19 August 2025)
     url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/voter-id-2024-uk-general-election
     publisher: Electoral Commission
     date: '2024-07-29'
   # 37
   - stance: complicates
-    quote: >-
-      There was little admissible evidence presented at trial about the rate
-      of DPOC possession by suspended and canceled applicants. … There is no
-      evidence about how many canceled and suspended applicants in fact lack
-      DPOC, although the Court can reasonably infer from the suspense and
-      cancelation numbers that either (1) these applicants lack immediate
-      access to such documents because they were repeatedly notified of the
-      need to produce DPOC in order to register, yet they did not complete the
-      registration process; or (2) these applicants were not well enough
-      informed about the DPOC requirement to locate their DPOC and provide it
-      to the county election office in order to become registered; or (3)
-      these applicants were otherwise unable or unwilling to go through the
-      steps to produce DPOC. Dr. Jesse Richman estimates that only 2.2% of the
-      applicants on the suspense list lack access to DPOC, based on a survey
-      he conducted of individuals on the suspense list. Yet Dr. Richman’s
-      results are not statistically distinguishable from zero, as the margin
-      of error is 2.7%. Furthermore, Dr. Richman concludes that 97.8% of
-      citizens on the suspense list have what he describes as “immediate
-      access” to DPOC, but his estimate includes individuals who do not
-      personally possess DPOC, but have someone who “keeps” such a document
-      for them. Obtaining a document from another person constitutes an
-      additional step in the voter registration process, which increases the
-      costs of voting. … The remaining category of evidence offered by
-      Defendant to demonstrate the degree of noncitizen registration in Kansas
-      is statistical estimates generated by his expert, Dr. Jesse Richman.
+    quote: |-
+      There was little admissible evidence presented at trial about the rate of DPOC possession by suspended and canceled applicants. As already discussed, the McFerron Survey is inadmissible, but even if admissible, the Court gives its findings no weight due to its many methodological flaws. There is no evidence about how many canceled and suspended applicants in fact lack DPOC, although the Court can reasonably infer from the suspense and cancelation numbers that either (1) these applicants lack immediate access to such documents because they were repeatedly notified of the need to produce DPOC in order to register, yet they did not complete the registration process; or (2) these applicants were not well enough informed about the DPOC requirement to locate their DPOC and provide it to the county election office in order to become registered; or (3) these applicants were otherwise unable or unwilling to go through the steps to produce DPOC. Dr. Jesse Richman estimates that only 2.2% of the applicants on the suspense list lack access to DPOC, based on a survey he conducted of individuals on the suspense list. Yet Dr. Richman’s results are not statistically distinguishable from zero, as the margin of error is 2.7%. Furthermore, Dr. Richman concludes that 97.8% of citizens on the suspense list have what he describes as “immediate access” to DPOC, but his estimate includes individuals who do not personally possess DPOC, but have someone who “keeps” such a document for them. Obtaining a document from another person constitutes an additional step in the voter registration process, which increases the costs of voting.
+
+      … The remaining category of evidence offered by Defendant to demonstrate the degree of noncitizen registration in Kansas is statistical estimates generated by his expert, Dr. Jesse Richman.
     title: 'Fish v. Kobach, Nos. 16-2105-JAR-JPO and 15-9300-JAR-JPO, Findings of Fact and Conclusions of Law'
     url: https://clearinghouse-umich-production.s3.amazonaws.com/media/doc/143642.pdf
     publisher: United States District Court for the District of Kansas (via Civil Rights Litigation Clearinghouse)
@@ -723,14 +612,14 @@ series:
         rejected, so they slightly overstate rejection.
   source:
     stance: supports
-    quote: >-
-      Overview Table 2: Absentee Voting … Total Voter Turnout, Total Ballots
-      Transmitted, Total Ballots Returned, Counted Total, Pct. Returned,
-      Rejected Total, Pct. Transmitted … Georgia 4,147,161 236,925 213,033
-      199,356 93.58 13,677 5.77 0 0.00 … Texas 8,701,152 520,027 468,150
-      449,258 95.96 8,177 1.57 10,715 2.29 … U.S. TOTAL 140,114,502 41,651,526
-      33,378,450 32,982,211 98.81 318,728 0.77 77,511 0.23 … (7) Ballots
-      Rejected, Pct uses question C4b divided by question C1a
+    quote: |-
+      Overview Table 2: Absentee Voting
+      … Total Voter Turnout, Total Ballots Transmitted, Total Ballots Returned, Counted Total, Pct. Returned, Rejected Total, Pct. Transmitted
+      … Georgia 4,147,161 236,925 213,033 199,356 93.58 13,677 5.77 0 0.00
+      … Texas 8,701,152 520,027 468,150 449,258 95.96 8,177 1.57 10,715 2.29
+      … U.S. TOTAL 140,114,502 41,651,526 33,378,450 32,982,211 98.81 318,728 0.77 77,511 0.23
+
+      … (7) Ballots Rejected, Pct uses question C4b divided by question C1a
     title: The Election Administration and Voting Survey 2016 Comprehensive Report
     url: https://www.eac.gov/sites/default/files/eac_assets/1/6/2016_EAVS_Comprehensive_Report.pdf
     publisher: U.S. Election Assistance Commission
