@@ -2542,9 +2542,8 @@ h3.sv-target + p, h3:target + p { background: var(--accent-wash); }
    can need more than that, so the rows are never held under their own height. */
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows { flex: 1 1 auto; display: flex; flex-direction: column; min-height: min-content; max-height: calc(var(--sv-row-count) * var(--sv-row-room)); }
 .sv-chart:is([data-preview], [data-panel-chart]) .sv-comparison__rows > li { flex: 1 1 auto; }
-/* In a pop-up that closes around them, the rows ask for that same room, so
-   they sit as far apart as they would in a taller space. */
-.sv-walk[data-alone] .sv-chart[data-panel-chart] .sv-comparison__rows { flex-basis: calc(var(--sv-row-count) * var(--sv-row-room)); }
+/* A pop-up closes around its chart, so it has no spare height: the rows keep
+   their own spacing and the pop-up is only as tall as they need. */
 @container (aspect-ratio < 3.55) {
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview-wide"] { display: none; }
   .sv-chart[data-panel-chart] .sv-chart__variant[data-variant="preview"] { display: block; }

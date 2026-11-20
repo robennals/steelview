@@ -315,6 +315,18 @@ test('a pop-up closes around its chart, a graph keeping a wide shape, in the mid
   await settled();
   const bars = sheet.locator('.sv-comparison');
   expect(await bottom(sheet) - await bottom(bars.locator('.sv-comparison__scale'))).toBeLessThan(80);
+  // The rows are not spread apart: each is only as tall as its label and bar.
+  const spare = await bars.locator('.sv-comparison__rows > li').evaluateAll(items => items.map(item =>
+    item.getBoundingClientRect().height - Math.max(...[...item.querySelectorAll('*')].map(child => child.getBoundingClientRect().height))));
+  expect(spare.length).toBeGreaterThan(1);
+  for (const extra of spare) expect(extra).toBeLessThan(2);
+
+  // Rows that open fit whole too: the last row's tap target does not reach past the chart and make it scroll.
+  await page.goto('/');
+  await page.goto('/topics/us-iran-war#human-and-financial-costs-of-the-war--deaths-in-the-thousands');
+  await settled();
+  await expect(sheet.locator('.sv-row-detail').first()).toBeVisible();
+  expect(await sheet.locator('.sv-slide').evaluate(slide => slide.scrollHeight - slide.clientHeight)).toBe(0);
 });
 
 test('a chart\'s subtitle line in its sheet opens its More panel', async ({ page }) => {
