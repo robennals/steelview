@@ -36,8 +36,8 @@ export default function AboutPage() {
         </p>
         <p>
           Each report is researched and written by a person and an AI working together.{' '}
-          <Link href="/how-its-made">How Steelview is made</Link> explains who does what, and the checks every
-          report passes before it is published.
+          <Link href="/how-its-made">How Steelview is made</Link> explains who does what, and the rules every
+          report follows before it is published.
         </p>
         <h2>What you should leave with</h2>
         <p>

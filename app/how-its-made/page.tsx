@@ -55,11 +55,11 @@ export default function HowItsMadePage() {
             shows, and each admitting the facts that cut against it.
           </li>
           <li>
-            <strong>The person approves publication</strong> once the automated checks below pass.
+            <strong>The person approves publication</strong> once the report meets every rule below.
           </li>
         </ol>
 
-        <h2>The checks every report passes</h2>
+        <h2>The rules every report follows</h2>
         <ul>
           <li>
             <strong>Every fact has a quoted source.</strong> Nothing is presented as a fact without a quote from
@@ -75,8 +75,8 @@ export default function HowItsMadePage() {
             sources on both sides of the dispute.
           </li>
           <li>
-            <strong>Every viewpoint admits what cuts against it.</strong> Each must acknowledge at least one
-            well-established fact that is inconvenient for it.
+            <strong>Every viewpoint admits what cuts against it.</strong> Each one sets out the strongest
+            evidence against its own case, and says why it still holds.
           </li>
           <li>
             <strong>No one decides which facts come first.</strong> The order is worked out from what every
