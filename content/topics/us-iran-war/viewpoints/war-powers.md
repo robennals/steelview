@@ -16,7 +16,7 @@ Under the Constitution, a President cannot take the country to war alone. [Congr
 
 ### The war has run past the law's 60-day limit, whatever the White House calls it
 
-[Two months in, the White House told Congress the fighting had ended. Then new strikes followed](#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes). [It reported each new strike as a new action](#fact-decisions-law-and-diplomacy/separate-actions), yet [the first blockade was still turning ships back weeks after that letter](#fact-oil-shipping-and-prices/first-blockade-into-may). [The War Powers law sets a 60-day limit on using force without Congress's approval](#fact-decisions-law-and-diplomacy/sixty-day-requirement), and one war does not become many by giving each strike a new start date.
+[Two months in, the White House told Congress the fighting had ended. Then new strikes followed](#fact-decisions-law-and-diplomacy/terminated-letter-then-new-strikes). It reported each new strike as a new action, yet [the first blockade was still turning ships back weeks after that letter](#fact-oil-shipping-and-prices/first-blockade-into-may). [The War Powers law sets a 60-day limit on using force without Congress's approval](#fact-decisions-law-and-diplomacy/sixty-day-requirement), and one war does not become many by giving each strike a new start date.
 
 ### Presidents have long sidestepped this rule, which is why it must be enforced now
 

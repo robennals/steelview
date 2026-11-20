@@ -24,7 +24,7 @@ In Denmark, [men born to non-Western immigrants are convicted more often than th
 
 ### Where the cost of each group is counted, the gaps are wide
 
-In Denmark, [immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey cost the public purse on average, while Western immigrants pay in](#fact-integration-outcomes/denmark-menapt-vs-western). While [those are one year's accounts](#fact-integration-outcomes/denmark-annual-not-lifetime), [for an intake that came especially for asylum or family reunion](#fact-integration-outcomes/denmark-intake-asylum-and-family), and [the average cost fell by about a third in five years](#fact-integration-outcomes/denmark-cost-fell-with-employment), the gap between the groups is still wide. Britain should count the same for its own immigrants and their children.
+In Denmark, [immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey cost the public purse on average, while Western immigrants pay in](#fact-integration-outcomes/denmark-menapt-vs-western). While [those are one year's accounts](#fact-integration-outcomes/denmark-annual-not-lifetime), [for an intake that came especially for asylum or family reunion](#fact-integration-outcomes/denmark-intake-asylum-and-family), and the average cost fell by about a third in five years, the gap between the groups is still wide. Britain should count the same for its own immigrants and their children.
 
 ### So admit far fewer, choose for integration, and measure the results
 

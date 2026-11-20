@@ -28,7 +28,7 @@ While [a federal appeals court let Texas go on rejecting ballots without notice,
 
 ### The answer is a better check, not no check
 
-Dropping checks altogether is not the answer. [Texas's rejections rose after it added an ID-number check](#fact-mail-ballot-rejection-and-signature-checks/texas-rose-under-id-number), while [Georgia's stayed below its 2016 and 2018 levels after it swapped signatures for an ID number](#fact-mail-ballot-rejection-and-signature-checks/georgia-fell-after-sb202). So the design of a check matters.
+Dropping checks altogether is not the answer. [Texas's rejections rose after it added an ID-number check](#fact-mail-ballot-rejection-and-signature-checks/texas-rose-under-id-number), while Georgia's stayed below its 2016 and 2018 levels after it swapped signatures for an ID number. So the design of a check matters.
 
 ### So voters must be told of a problem and allowed to fix it
 

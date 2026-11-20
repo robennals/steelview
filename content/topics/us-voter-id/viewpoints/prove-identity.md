@@ -8,7 +8,7 @@ An election should be decided by the people allowed to vote, each voting once. T
 
 ### Fraud at the polls has happened, and ID checks are built to stop it
 
-The record holds the fraud an ID check is aimed at: [people voted several times, or in other people's names](#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting). [Frauds in Kansas City and Chicago led to hundreds of convictions](#fact-election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted). A bipartisan commission [said good ID could deter it](#fact-election-fraud-and-voter-exclusion-history/carter-baker-id-deters). While [14 of the 20 recorded cases were done by officials or by mail](#fact-election-fraud-and-voter-exclusion-history/officials-or-mail), that is a reason to guard those routes too, not to leave the polls open.
+The record holds the fraud an ID check is aimed at: [people voted several times, or in other people's names](#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting). [Frauds in Kansas City and Chicago led to hundreds of convictions](#fact-election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted). A bipartisan commission [said good ID could deter it](#fact-election-fraud-and-voter-exclusion-history/carter-baker-id-deters). While 14 of the 20 recorded cases were done by officials or by mail, that is a reason to guard those routes too, not to leave the polls open.
 
 ### State reviews keep finding non-citizens on voter lists
 
