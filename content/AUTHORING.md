@@ -630,11 +630,13 @@ context for the other, in any of the ways above. Merge them, in the first of
 these ways that fits:
 
 1. **Lines on one plot**, when both are in the same unit: the UK and the EU
-   average, or two counters of the same thing.
-2. **A reading drawn `alongside`**, against a right-hand axis, when the units
-   differ but one plot answers one question: a total and its per-head figure,
-   a count and its rate. See
+   average, or two counters of the same thing. Two measures of growth in one
+   thing, such as a total and its per-head figure, are made the same unit
+   this way: the percentage change since a shared year. See
    [Show things together](#show-things-together).
+2. **A reading drawn `alongside`**, against a second axis, when the units
+   differ, cannot share a scale, and one plot answers one question: a count
+   and its rate.
 3. **Readings behind the "Show as" switch**, when seeing both at once would
    crowd the plot or mislead: more than two measures, or ones only loosely
    related.
@@ -666,7 +668,8 @@ does not carry (“US$ billions, not adjusted for inflation”; “Percentage
 points”; “Share of returned mail ballots”). `valueLabel` still says exactly
 what is measured: a data panel's More shows it as “Measured: …”, and tables use
 it as the column heading. Scatter plots and line charts with a
-second axis name both axes (“Left: … Right: …”), and small multiples state
+second axis name both axes (“Left: … Right: …”, or each line's unit when both
+axes are on the left), and small multiples state
 their scale, since a title cannot.
 
 **Never write “k” beside a unit that already has a prefix.** Readers see one
@@ -841,14 +844,31 @@ inside the band.
 switch, ask whether the reader should see both at once. A total and its
 per-head figure, or a count and its rate, usually should: the point is the
 gap between them, and a switch hides one while the reader looks at the other.
-Give the first reading `alongside: <reading-id>` to draw the second on its
-plot, against a right-hand axis. Then:
+
+**Growth in one thing goes on one axis.** A total and its per-head figure are
+compared by how fast each grew, and two axes cannot show that: where each line
+sits depends on how its axis happens to be scaled, so the faster-growing line
+can look the flatter. Instead, make the first reading the percentage change
+since a year both lines cover, as `unit: percent`, with both lines on it. Its
+`note` says the values are derived and how. Each measure in its own units
+follows as a further reading behind the "Show as" switch, so readers can still
+read the amounts. UK GDP is the example: "Growth since 1955", then "GDP per
+head, £" and "Total GDP, £ billion".
+
+**Two axes only for measures that cannot share a scale**, such as a count and
+its rate. Give the first reading `alongside: <reading-id>` to draw the second
+on its plot, against a second axis. Then:
 
 - **Both axes share the gridlines**, and both start at zero when nothing goes
   below it, so neither axis can be stretched to make a crossing or a gap that
   is not in the data.
-- **Every line on the plot has its own name.** The right-hand lines are keyed
-  "(right axis)", and the label above the graph names both axes' units.
+- **Each axis is in its line's colour.** An axis read by one line takes that
+  line's colour, and hovering the line lights up its axis.
+- **Every line on the plot has its own name.** The second axis is on the right
+  by default; its lines are keyed "(right axis)", and the label above the graph
+  names both axes' units. With `alongsideAxis: left` it stands left of the
+  first, further out, so the reader sees both scales together; the label above
+  the graph then names each unit by its line, in the line's colour.
 - **One plot, one view:** the reading drawn alongside is not a "Show as" choice
   of its own, and its observations are read on the plot that draws it.
 

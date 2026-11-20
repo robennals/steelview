@@ -213,6 +213,12 @@ export const seriesReadingSchema = z.object({
    */
   alongside: z.string().min(1).optional(),
   /**
+   * Where the axis of the reading drawn alongside goes: `right` of the plot
+   * (the default), or `left`, beside this reading's own axis and further out.
+   * Either way, an axis read by one line has its numbers in that line's colour.
+   */
+  alongsideAxis: z.enum(['left', 'right']).optional(),
+  /**
    * The lines are parts of one whole — outcomes of each year's claims — so
    * each is drawn as a band stacked on the ones before it, and the top edge
    * is the total. Every line must give the same periods, as counts that are

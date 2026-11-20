@@ -248,6 +248,22 @@ function roomOnRight(geometry: ChartGeometry, labels: string[]): ChartGeometry {
   return needed <= inset ? geometry : { ...geometry, plotWidth: geometry.plotWidth - (needed - inset) };
 }
 
+/** The gap between two value axes stacked on the left, so their columns of numbers read as two. */
+const STACKED_AXIS_GAP = 16;
+
+/**
+ * The geometry with its plot moved right, and narrowed, until two columns of
+ * value labels fit left of it: the reading's own beside the plot, and the one
+ * drawn alongside further out. Also returns where that outer column ends.
+ */
+function roomForStackedTicks(geometry: ChartGeometry, own: string[], outer: string[]): { geometry: ChartGeometry; outerX: number } {
+  const widest = (labels: string[]) => Math.max(0, ...labels.map(label => tickLabelWidth(label, geometry.fontSize)));
+  const ownColumn = widest(own);
+  const needed = Math.ceil(8 + ownColumn + STACKED_AXIS_GAP + widest(outer));
+  const fitted = needed <= geometry.left ? geometry : { ...geometry, left: needed, plotWidth: geometry.plotWidth - (needed - geometry.left) };
+  return { geometry: fitted, outerX: fitted.left - 8 - ownColumn - STACKED_AXIS_GAP };
+}
+
 /**
  * Drop interior ticks too close to a neighbour to fit their labels, working
  * from the left so the kept ones stay evenly spread. The ends are always kept:
@@ -377,8 +393,13 @@ export type ReadingLayout = {
   geometry: ChartGeometry;
   lines: PlottedLine[];
   valueTicks: ValueTick[];
-  /** The right-hand axis's ticks, on the same gridlines, when a reading is drawn alongside. */
-  rightTicks: ValueTick[];
+  /** The ticks of the reading drawn alongside, on the same gridlines, when there is one. */
+  secondTicks: ValueTick[];
+  /**
+   * Where that second axis's labels sit: right of the plot, starting at `x`,
+   * or left of the reading's own axis, ending at `x`.
+   */
+  secondAxis: { side: 'left' | 'right'; x: number } | null;
   timeTicks: TimeTick[];
   breaks: BreakMark[];
   /** The y of value 0, when zero is inside the domain — the line a net series crosses. */
@@ -649,9 +670,13 @@ export function layoutReading(
   const valueMax = ticks[ticks.length - 1];
   const tickText = (value: number, on: SeriesReading = reading) => (on.tickUnit ? `${formatTick(value, on.unit)} ${on.tickUnit}` : formatTick(value, on.unit));
   const rightValues = valuesOn('right');
-  const rightTicks = partner ? alignedTicks(...valueSpan(rightValues, true), ticks.length - 1) : [];
-  const leftFitted = roomForTicks(base, ticks.map(value => tickText(value)));
-  const geometry = partner ? roomOnRight(leftFitted, rightTicks.map(value => tickText(value, partner))) : leftFitted;
+  const secondTicks = partner ? alignedTicks(...valueSpan(rightValues, true), ticks.length - 1) : [];
+  const ownLabels = ticks.map(value => tickText(value));
+  const secondLabels = partner ? secondTicks.map(value => tickText(value, partner)) : [];
+  const stacked = partner && reading.alongsideAxis === 'left' ? roomForStackedTicks(base, ownLabels, secondLabels) : null;
+  const leftFitted = roomForTicks(base, ownLabels);
+  const geometry = stacked ? stacked.geometry : partner ? roomOnRight(leftFitted, secondLabels) : leftFitted;
+  const secondAxis = !partner ? null : stacked ? { side: 'left' as const, x: stacked.outerX } : { side: 'right' as const, x: geometry.left + geometry.plotWidth + 8 };
 
   // The declared coverage, not the data, sets the time domain: the two are
   // equal by rule 14, and saying so here means the axis is drawn from the
@@ -673,7 +698,7 @@ export function layoutReading(
     geometry.plotHeight -
     ((value - domain[0]) / (domain[domain.length - 1] - domain[0] || 1)) * geometry.plotHeight;
   const y = scale(ticks);
-  const y2 = scale(rightTicks);
+  const y2 = scale(secondTicks);
 
   const breakPeriods = series.breaks.map((b) => b.period);
   const markPoints = shown.reduce((n, points) => n + points.length, 0) <= HOLLOW_MARKER_LIMIT;
@@ -714,13 +739,14 @@ export function layoutReading(
       label:
         index % geometry.valueLabelEvery === labelOffset ? tickText(value) : null,
     })),
-    rightTicks: partner
-      ? rightTicks.map((value, index) => ({
+    secondTicks: partner
+      ? secondTicks.map((value, index) => ({
         value,
         y: y2(value),
         label: index % geometry.valueLabelEvery === labelOffset ? tickText(value, partner) : null,
       }))
       : [],
+    secondAxis,
     timeTicks: dropCrowdedTicks(
       window || shortMonthly
         ? windowTicks(window ?? { from: series.coverage.from, to: end }, geometry, x)

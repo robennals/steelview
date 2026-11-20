@@ -546,8 +546,8 @@ sources:
   date: "2025"
 series:
   title: UK GDP
-  subtitle: Per head and for the whole economy, at 2023 prices, 1948–2025
-  description: "Gross domestic product (GDP), the UK's total economic output, at 2023 prices: divided by the population, or for the whole economy. This is real GDP for every year the Office for National Statistics series publish. A larger population raises total output even when output per person does not change, so the two can tell different stories. Per head is output per person, not income per person or how that output is shared."
+  subtitle: Per head and for the whole economy, at 2023 prices
+  description: "Gross domestic product (GDP), the UK's total economic output, at 2023 prices: divided by the population, or for the whole economy. This is real GDP for every year the Office for National Statistics series publish. A larger population raises total output even when output per person does not change, so the two can tell different stories. The first view puts both on one scale, as the percentage each has grown since 1955; the others show each in pounds. Per head is output per person, not income per person or how that output is shared."
   periodLabel: Year
   coverage:
     from: "1948"
@@ -564,9 +564,319 @@ series:
     publisher: Office for National Statistics
     date: "2026-08-13"
   readings:
+  - id: gdp-growth
+    label: Growth since 1955
+    unit: percent
+    valueLabel: "% change since 1955, at 2023 prices"
+    note: "Derived from the two ONS series charted in the other views: each year's value divided by its 1955 value, minus one. The ONS does not publish these percentages."
+    lines:
+    - name: UK GDP per head
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero)."
+      points:
+      - period: "1955"
+        value: 0.0
+      - period: "1956"
+        value: 1.2
+      - period: "1957"
+        value: 2.7
+      - period: "1958"
+        value: 3.7
+      - period: "1959"
+        value: 7.4
+      - period: "1960"
+        value: 13.3
+      - period: "1961"
+        value: 15.4
+      - period: "1962"
+        value: 15.6
+      - period: "1963"
+        value: 20.4
+      - period: "1964"
+        value: 26.4
+      - period: "1965"
+        value: 28.2
+      - period: "1966"
+        value: 29.5
+      - period: "1967"
+        value: 32.3
+      - period: "1968"
+        value: 38.9
+      - period: "1969"
+        value: 40.9
+      - period: "1970"
+        value: 44.3
+      - period: "1971"
+        value: 48.7
+      - period: "1972"
+        value: 54.7
+      - period: "1973"
+        value: 64.4
+      - period: "1974"
+        value: 60.3
+      - period: "1975"
+        value: 57.9
+      - period: "1976"
+        value: 62.7
+      - period: "1977"
+        value: 66.7
+      - period: "1978"
+        value: 73.7
+      - period: "1979"
+        value: 80.0
+      - period: "1980"
+        value: 76.1
+      - period: "1981"
+        value: 75.0
+      - period: "1982"
+        value: 78.7
+      - period: "1983"
+        value: 86.1
+      - period: "1984"
+        value: 89.9
+      - period: "1985"
+        value: 97.2
+      - period: "1986"
+        value: 102.9
+      - period: "1987"
+        value: 113.5
+      - period: "1988"
+        value: 124.6
+      - period: "1989"
+        value: 129.4
+      - period: "1990"
+        value: 130.1
+      - period: "1991"
+        value: 126.1
+      - period: "1992"
+        value: 126.1
+      - period: "1993"
+        value: 130.7
+      - period: "1994"
+        value: 138.0
+      - period: "1995"
+        value: 143.1
+      - period: "1996"
+        value: 148.8
+      - period: "1997"
+        value: 160.3
+      - period: "1998"
+        value: 168.0
+      - period: "1999"
+        value: 174.9
+      - period: "2000"
+        value: 186.4
+      - period: "2001"
+        value: 192.1
+      - period: "2002"
+        value: 195.8
+      - period: "2003"
+        value: 203.9
+      - period: "2004"
+        value: 209.4
+      - period: "2005"
+        value: 215.6
+      - period: "2006"
+        value: 220.3
+      - period: "2007"
+        value: 227.0
+      - period: "2008"
+        value: 224.2
+      - period: "2009"
+        value: 207.2
+      - period: "2010"
+        value: 211.6
+      - period: "2011"
+        value: 211.7
+      - period: "2012"
+        value: 214.3
+      - period: "2013"
+        value: 217.6
+      - period: "2014"
+        value: 225.2
+      - period: "2015"
+        value: 229.7
+      - period: "2016"
+        value: 234.4
+      - period: "2017"
+        value: 242.6
+      - period: "2018"
+        value: 246.2
+      - period: "2019"
+        value: 248.8
+      - period: "2020"
+        value: 213.2
+      - period: "2021"
+        value: 238.7
+      - period: "2022"
+        value: 252.5
+      - period: "2023"
+        value: 248.8
+      - period: "2024"
+        value: 249.0
+      - period: "2025"
+        value: 252.4
+    - name: UK GDP
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series ABMI starts in 1948; shown here from 1955, so both lines grow from the same year."
+      source:
+        stance: supports
+        quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
+        title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
+        url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+        fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+        localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
+        publisher: Office for National Statistics
+        date: "2026-08-13"
+      points:
+      - period: "1955"
+        value: 0.0
+      - period: "1956"
+        value: 1.7
+      - period: "1957"
+        value: 3.7
+      - period: "1958"
+        value: 5.1
+      - period: "1959"
+        value: 9.6
+      - period: "1960"
+        value: 16.5
+      - period: "1961"
+        value: 19.6
+      - period: "1962"
+        value: 20.9
+      - period: "1963"
+        value: 26.7
+      - period: "1964"
+        value: 34.0
+      - period: "1965"
+        value: 36.8
+      - period: "1966"
+        value: 38.9
+      - period: "1967"
+        value: 42.8
+      - period: "1968"
+        value: 50.6
+      - period: "1969"
+        value: 53.4
+      - period: "1970"
+        value: 57.6
+      - period: "1971"
+        value: 63.3
+      - period: "1972"
+        value: 70.4
+      - period: "1973"
+        value: 81.5
+      - period: "1974"
+        value: 76.9
+      - period: "1975"
+        value: 74.2
+      - period: "1976"
+        value: 79.5
+      - period: "1977"
+        value: 83.9
+      - period: "1978"
+        value: 91.6
+      - period: "1979"
+        value: 98.7
+      - period: "1980"
+        value: 94.7
+      - period: "1981"
+        value: 93.6
+      - period: "1982"
+        value: 97.4
+      - period: "1983"
+        value: 105.7
+      - period: "1984"
+        value: 110.3
+      - period: "1985"
+        value: 118.9
+      - period: "1986"
+        value: 125.8
+      - period: "1987"
+        value: 138.1
+      - period: "1988"
+        value: 151.0
+      - period: "1989"
+        value: 157.1
+      - period: "1990"
+        value: 158.5
+      - period: "1991"
+        value: 154.9
+      - period: "1992"
+        value: 155.6
+      - period: "1993"
+        value: 161.4
+      - period: "1994"
+        value: 170.3
+      - period: "1995"
+        value: 176.8
+      - period: "1996"
+        value: 184.1
+      - period: "1997"
+        value: 197.9
+      - period: "1998"
+        value: 207.6
+      - period: "1999"
+        value: 216.7
+      - period: "2000"
+        value: 231.0
+      - period: "2001"
+        value: 238.9
+      - period: "2002"
+        value: 244.7
+      - period: "2003"
+        value: 255.8
+      - period: "2004"
+        value: 264.1
+      - period: "2005"
+        value: 274.2
+      - period: "2006"
+        value: 282.4
+      - period: "2007"
+        value: 293.6
+      - period: "2008"
+        value: 293.4
+      - period: "2009"
+        value: 275.4
+      - period: "2010"
+        value: 283.9
+      - period: "2011"
+        value: 287.1
+      - period: "2012"
+        value: 293.1
+      - period: "2013"
+        value: 299.8
+      - period: "2014"
+        value: 312.4
+      - period: "2015"
+        value: 321.3
+      - period: "2016"
+        value: 330.6
+      - period: "2017"
+        value: 343.6
+      - period: "2018"
+        value: 350.5
+      - period: "2019"
+        value: 356.1
+      - period: "2020"
+        value: 310.3
+      - period: "2021"
+        value: 345.3
+      - period: "2022"
+        value: 368.3
+      - period: "2023"
+        value: 369.6
+      - period: "2024"
+        value: 374.4
+      - period: "2025"
+        value: 380.7
   - id: gdp-per-head
-    label: GDP per head
-    alongside: gdp-total
+    label: GDP per head, £
     unit: count
     valueLabel: £ per person, 2023 prices
     lines:
@@ -719,7 +1029,7 @@ series:
       - period: "2025"
         value: 40546
   - id: gdp-total
-    label: Total GDP
+    label: Total GDP, £ billion
     unit: count
     valueLabel: £ billion, 2023 prices
     note: "ONS series ABMI, chained volume measure, published in £ million and shown here divided by 1,000. The annual series starts in 1948."
@@ -2220,8 +2530,10 @@ observationMarks:
 movedAnchors:
   observations-founders: earnings-by-route
   chart-gdp-total-series: gdp-total
+  observations-gdp-per-head: gdp-growth
+  observations-gdp-total: gdp-growth
 ---
-## Observations {#immigration-economy-and-public-finances--observations-gdp-per-head}
+## Observations {#immigration-economy-and-public-finances--observations-gdp-growth}
 
 ### GDP per head has barely grown since 2019 {#immigration-economy-and-public-finances--gdp-per-head-barely-grew}
 
@@ -2230,8 +2542,6 @@ In pounds per person at 2023 prices, UK GDP per head was 40,125 in 2019 and 40,5
 ### The series shows timing, not cause {#immigration-economy-and-public-finances--timing-not-cause}
 
 The 2019–2025 window contains the 2020 pandemic fall in output as well as other shocks. A series of GDP per head cannot by itself say how much of the stall, if any, is due to migration; that needs a model, and the OBR's scenarios are further down. No study attributing the stall among its causes was found. [1](#source-immigration-economy-and-public-finances-1) [8](#source-immigration-economy-and-public-finances-8)
-
-## Observations {#immigration-economy-and-public-finances--observations-gdp-total}
 
 ### Total GDP grew from 2019 to 2025 {#immigration-economy-and-public-finances--total-gdp-grew}
 

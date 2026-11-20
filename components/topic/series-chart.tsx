@@ -36,6 +36,7 @@ import {
   tickLabelWidth,
   unmeasuredSpan,
   PREVIEW_VARIANTS,
+  type PlottedLine,
   type SeriesVariant,
   type FocusWindow,
   zoneLabelPlacement,
@@ -72,6 +73,12 @@ function readingName(series: Series, reading: SeriesReading): string {
 }
 const FORECAST_LABEL = 'Forecast';
 
+/** The one line read against an axis, if only one is: its axis then takes the line's colour and name. */
+function soleLine(lines: PlottedLine[], axis: PlottedLine['axis']): PlottedLine | undefined {
+  const on = lines.filter(line => line.axis === axis);
+  return on.length === 1 ? on[0] : undefined;
+}
+
 function Plot({
   series,
   reading,
@@ -102,6 +109,9 @@ function Plot({
   const forecastLabel = layout.forecastX !== null ? zoneLabelPlacement(layout.forecastX, right, FORECAST_LABEL, g.fontSize) : null;
   const bottom = g.top + g.plotHeight;
   const placed = markers?.groups;
+  const secondAxis = layout.secondAxis;
+  const ownAxisLine = partner ? soleLine(layout.lines, 'left') : undefined;
+  const secondAxisLine = partner ? soleLine(layout.lines, 'right') : undefined;
   const drawing = (
     <svg
       className={placed ? 'sv-chart__svg' : 'sv-chart__svg sv-chart__variant'}
@@ -287,40 +297,44 @@ function Plot({
         );
       })}
 
-      {layout.valueTicks.map((tick) =>
-        tick.label === null ? null : (
-          <text
-            key={`vlabel-${tick.value}`}
-            className="sv-chart__tick"
-            x={g.left - 8}
-            y={tick.y}
-            fontSize={g.fontSize}
-            textAnchor="end"
-            dominantBaseline="middle"
-          >
-            {tick.label}
-          </text>
-        )
-      )}
-
-      {/* The axis of the reading drawn alongside, on the same gridlines, its
-          labels in the colour of the line read against it when there is one. */}
-      {layout.rightTicks.map((tick) =>
-        tick.label === null ? null : (
-          <text
-            key={`rlabel-${tick.value}`}
-            className="sv-chart__tick"
-            data-axis="right"
-            x={g.left + g.plotWidth + 8}
-            y={tick.y}
-            fontSize={g.fontSize}
-            textAnchor="start"
-            dominantBaseline="middle"
-            style={partner?.lines.length === 1 ? { fill: `var(--sv-series-${layout.lines.find(line => line.axis === 'right')?.slot ?? 1})` } : undefined}
-          >
-            {tick.label}
-          </text>
-        )
+      {/* With a second axis, each axis read by one line takes that line's
+          colour and name, so hovering the line lights up its axis too. */}
+      <g className="sv-chart__axis-ticks" data-series={ownAxisLine?.name} style={ownAxisLine ? { color: `var(--sv-series-${ownAxisLine.slot})` } : undefined}>
+        {layout.valueTicks.map((tick) =>
+          tick.label === null ? null : (
+            <text
+              key={`vlabel-${tick.value}`}
+              className="sv-chart__tick"
+              x={g.left - 8}
+              y={tick.y}
+              fontSize={g.fontSize}
+              textAnchor="end"
+              dominantBaseline="middle"
+            >
+              {tick.label}
+            </text>
+          )
+        )}
+      </g>
+      {secondAxis && (
+        <g className="sv-chart__axis-ticks" data-series={secondAxisLine?.name} style={secondAxisLine ? { color: `var(--sv-series-${secondAxisLine.slot})` } : undefined}>
+          {layout.secondTicks.map((tick) =>
+            tick.label === null ? null : (
+              <text
+                key={`rlabel-${tick.value}`}
+                className="sv-chart__tick"
+                data-axis={secondAxis.side}
+                x={secondAxis.x}
+                y={tick.y}
+                fontSize={g.fontSize}
+                textAnchor={secondAxis.side === 'left' ? 'end' : 'start'}
+                dominantBaseline="middle"
+              >
+                {tick.label}
+              </text>
+            )
+          )}
+        </g>
       )}
 
       {layout.timeTicks.map((tick) => (
@@ -551,7 +565,7 @@ function Reading({
   const description = [
     series.description,
     `Read as ${midSentence(reading.label)}: ${reading.valueLabel}.`,
-    partner ? `Drawn with it, against the right-hand axis: ${midSentence(partner.label)}, ${midSentence(partner.valueLabel)}.` : null,
+    partner ? `Drawn with it, against ${reading.alongsideAxis === 'left' ? 'a second axis left of the first' : 'the right-hand axis'}: ${midSentence(partner.label)}, ${midSentence(partner.valueLabel)}.` : null,
     window && !preview
       ? `The graph shows ${spanText(window)}; a strip above it shows the full published range ${spanText(series.coverage)}.`
       : null,
@@ -603,7 +617,15 @@ function Reading({
       {panel && !switched && <ObservationBar />}
       {/* Charts carry no unit line, except where two axes need telling apart; ticks that carry both units need none. */}
       {partner && !(reading.tickUnit && partner.tickUnit) && (
-        <p className="sv-chart__axis-label">Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}</p>
+        reading.alongsideAxis === 'left'
+          // Both axes are on the left, so each unit is named by its line, in the line's colour.
+          ? <p className="sv-chart__axis-label">{[reading, partner].map((r, i) => {
+            const name = r.lines.length === 1 ? r.lines[0].name : undefined;
+            return <span key={r.id}>{i > 0 && ' '}{name
+              ? <span data-series={name} style={{ color: `var(--sv-series-${slots.get(name) ?? 1})` }}>{name}</span>
+              : r.label}: {midSentence(r.valueLabel)}{i === 0 ? ' (inner axis).' : ' (outer axis).'}</span>;
+          })}</p>
+          : <p className="sv-chart__axis-label">Left: {reading.valueLabel}. Right: {midSentence(partner.valueLabel)}</p>
       )}
 
       <p className="sv-visually-hidden" id={descriptionId}>
@@ -628,7 +650,7 @@ function Reading({
                   <line x1="1" y1="4" x2="19" y2="4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray={seriesStrokeDash(slots.get(line.name) ?? 1)} />
                   <circle cx="10" cy="4" r="3" fill="currentColor" />
                 </svg>
-                <span className="sv-chart__key-name">{line.glossary ? <GlossaryTerm term={line.glossary}>{line.name}</GlossaryTerm> : line.name}{spanSuffix(series, line)}{axis === 'right' && ' (right axis)'}</span>
+                <span className="sv-chart__key-name">{line.glossary ? <GlossaryTerm term={line.glossary}>{line.name}</GlossaryTerm> : line.name}{spanSuffix(series, line)}{axis === 'right' && reading.alongsideAxis !== 'left' && ' (right axis)'}</span>
               </li>
             ))}
           </ul>
