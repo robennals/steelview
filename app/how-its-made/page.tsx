@@ -60,11 +60,6 @@ export default function HowItsMadePage() {
             <strong>The person approves publication</strong> once the report meets every rule below.
           </li>
         </ol>
-        <p>
-          <strong>A note on today’s reports.</strong> The viewpoints on the site now were drafted by AI while
-          Steelview was being built. Each is being replaced with a human-written version, and this note will
-          come down when they all have been.
-        </p>
 
         <h2>The rules every report follows</h2>
         <ul>
