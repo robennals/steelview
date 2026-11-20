@@ -4,7 +4,7 @@ import { factPath, topicPath } from '@/lib/content/types';
 import { absoluteUrl } from '@/lib/site';
 
 /**
- * Home, About, every topic, and every fact — headline and supporting alike.
+ * Home, the About, How it's made and Privacy pages, every topic, and every fact — headline and supporting alike.
  *
  * Facts are listed individually because they are the unit other people cite;
  * a crawler that only ever saw topic pages would index the argument and not
@@ -19,6 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: absoluteUrl('/'), changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/about'), changeFrequency: 'monthly', priority: 0.5 },
+    { url: absoluteUrl('/how-its-made'), changeFrequency: 'monthly', priority: 0.5 },
+    { url: absoluteUrl('/privacy'), changeFrequency: 'yearly', priority: 0.2 },
     ...topics.flatMap((topic) => [
       {
         url: absoluteUrl(topicPath(topic.slug)),

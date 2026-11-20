@@ -235,10 +235,71 @@
     border-top: 1px solid var(--rule);
   }
 
+  .sv-masthead__nav,
+  .sv-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+  }
+
+  .sv-masthead__nav {
+    margin-left: auto;
+  }
+
+  .sv-masthead__nav a,
+  .sv-footer__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink-3);
+    text-decoration: none;
+  }
+
+  .sv-masthead__nav a:hover,
+  .sv-footer__nav a:hover {
+    color: var(--ink);
+  }
+
   .sv-footer__inner {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    column-gap: 2rem;
     min-height: 4rem;
+    padding-block: 1rem;
+  }
+
+  .sv-footer__credit {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--ink-3);
+  }
+
+  .sv-footer__credit a {
+    color: inherit;
+  }
+
+  /* The About page's author: a photo beside the bio, stacked on a phone. */
+  .sv-author {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.25rem 1.5rem;
+  }
+
+  .sv-author > div {
+    flex: 1 1 18rem;
+  }
+
+  .sv-author__photo {
+    border-radius: 50%;
+    width: 7.5rem;
+    height: 7.5rem;
+    object-fit: cover;
   }
 
   /* ------------------------------------------------------------ page head */

@@ -7,11 +7,13 @@ import { test, expect } from './hydrated-test';
 const TOPIC = '/topics/uk-immigration';
 const FACT = `${TOPIC}/facts/immigration-against-the-long-run`;
 
-test('the sitemap lists the home page, every topic and every fact', async ({ request }) => {
+test('the sitemap lists the site’s own pages, every topic and every fact', async ({ request }) => {
   const xml = await (await request.get('/sitemap.xml')).text();
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
-  expect(locs.some((l) => new URL(l).pathname === '/')).toBe(true);
+  expect(locs.map((l) => new URL(l).pathname)).toEqual(
+    expect.arrayContaining(['/', '/about', '/how-its-made', '/privacy'])
+  );
   expect(locs.some((l) => new URL(l).pathname === TOPIC)).toBe(true);
 
   const factPaths = locs

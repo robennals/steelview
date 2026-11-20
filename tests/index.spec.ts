@@ -30,6 +30,29 @@ test('the tagline links to the About page', async ({ page }) => {
   await expect(page).toHaveURL(/\/about$/);
 });
 
+test('each footer page opens, and the feedback link writes to the contact address', async ({ page }) => {
+  await page.goto('/');
+  const footer = page.getByRole('navigation', { name: 'Footer' });
+  for (const [name, path, heading] of [
+    ['About', '/about', 'About Steelview'],
+    ['How it’s made', '/how-its-made', 'How Steelview is made'],
+    ['Privacy', '/privacy', 'Privacy'],
+  ] as const) {
+    await footer.getByRole('link', { name, exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`${path}$`));
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(heading);
+  }
+  await expect(footer.getByRole('link', { name: 'Feedback' })).toHaveAttribute('href', 'mailto:feedback@steelview.org');
+});
+
+test('the About page names its author, with a photo that loads', async ({ page }) => {
+  await page.goto('/about');
+  await expect(page.getByRole('link', { name: 'Rob Ennals' }).first()).toHaveAttribute('href', 'https://robennals.org');
+  const photo = page.getByRole('img', { name: 'Rob Ennals' });
+  await expect(photo).toBeVisible();
+  await expect.poll(() => photo.evaluate(img => (img instanceof HTMLImageElement ? img.naturalWidth : 0))).toBeGreaterThan(0);
+});
+
 test('a short bar chart preview spreads its rows a little, and a wrapped label keeps its height', async ({ page }) => {
   await page.goto('/');
   const row = rows(page).filter({ hasText: 'Voter ID and citizenship checks' });
