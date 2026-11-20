@@ -26,8 +26,14 @@ In Denmark, [men born to non-Western immigrants are convicted more often than th
 
 In Denmark, [immigrants from the Middle East, North Africa, Pakistan, Afghanistan and Turkey cost the public purse on average, while Western immigrants pay in](#fact-integration-outcomes/denmark-menapt-vs-western). While [those are one year's accounts](#fact-integration-outcomes/denmark-annual-not-lifetime), [for an intake that came especially for asylum or family reunion](#fact-integration-outcomes/denmark-intake-asylum-and-family), and the average cost fell by about a third in five years, the gap between the groups is still wide. Britain should count the same for its own immigrants and their children.
 
+### Where crime is counted by nationality, some groups stand far apart
+
+In Britain, [after adjusting for age and sex, Afghan nationals were convicted of sex offences at seven times the British rate in 2020–22](#fact-crime-terrorism-and-group-exploitation/afghan-sex-offence-rate), and [Albanian, Iraqi and Afghan citizens were cautioned or convicted of crimes far more often than British citizens](#fact-crime-terrorism-and-group-exploitation/rates-vary-by-nationality). While [across all offences, foreign nationals are convicted at about the British rate](#fact-crime-terrorism-and-group-exploitation/offence-types-differ), an average over every nationality hides the groups that differ most, and those are what an immigration system chooses between.
+
 ### So admit far fewer, choose for integration, and measure the results
 
 A people is entitled to continuity in its way of life and to a say over who joins it. So Britain should admit far fewer people, and favour those likely to share its language and laws. It should record the ethnicity of every suspect, and publish how each group fares by origin and generation.
+
+The government resists even that: [the Ministry of Justice is appealing an order to publish convictions by nationality and offence](#fact-crime-terrorism-and-group-exploitation/detailed-figures-withheld).
 
 While [non-citizens are cautioned or convicted at about their share of adults](#fact-crime-terrorism-and-group-exploitation/non-citizens-share-matches-population), [segregation has fallen](#fact-integration-outcomes/segregation-fell) and [most minority groups outscore White British pupils](#fact-integration-outcomes/minority-pupils-outperform), national averages do not answer for Rotherham.

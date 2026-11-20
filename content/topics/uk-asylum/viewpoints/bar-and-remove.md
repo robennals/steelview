@@ -22,6 +22,10 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 [The Home Office says people use the right to family life, Article 8, to stop removals. It says 86% of people who made a human-rights claim while held for removal in 2022 were released](#fact-removals-and-what-stops-them/home-office-says-rights-claims-stop-removals). [Lord Wolfson, advising the Conservative leader, judged that new limits written within the ECHR would likely fail in court](#fact-asylum-law-and-the-echr/wolfson-limits-inside-the-echr-likely-fail). If limits within the ECHR would fail, leaving it is the way to make removals stick. While [foreign offenders who won on human-rights grounds alone equalled only about 3% of those deported](#fact-removals-and-what-stops-them/human-rights-wins-about-3-percent), [that count misses claims of danger made inside asylum cases](#fact-removals-and-what-stops-them/counts-miss-article-3-in-asylum-claims), and [no published figure counts the removals the ECHR stops](#fact-removals-and-what-stops-them/echr-share-not-measured).
 
+### Nationalities that claim asylum are convicted more often, and the state does not count who claimed it
+
+[After adjusting for age and sex, Afghan nationals were convicted of sex offences at seven times the British rate](#fact-offending-by-nationality/afghan-sex-offence-rate), and [Iraqi, Afghan and Iranian citizens were convicted of crimes at four to six and a half times the British rate](#fact-offending-by-nationality/asylum-nationalities-all-offences). [No statistics record whether those offenders had claimed asylum](#fact-offending-by-nationality/no-asylum-status-data), and [the Ministry of Justice is appealing an order to publish more detailed figures](#fact-offending-by-nationality/detailed-figures-withheld). Britain cannot weigh the risk of whom it admits without counting it.
+
 ### So Britain should bar these claims, remove those who come, and leave the ECHR
 
 If Britain refused these claims and removed those who come, crossing would no longer pay. Leaving the ECHR would let Parliament set those rules. A government's first duty is to its own people.
