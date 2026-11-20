@@ -6,12 +6,15 @@ import { test, expect } from './hydrated-test';
 
 const TOPIC = '/topics/uk-immigration';
 
-test('the sitemap lists the home page, the About page and every topic, and no data collections', async ({ request }) => {
+test('the sitemap lists the site’s own pages and every topic, and no data collections', async ({ request }) => {
   const xml = await (await request.get('/sitemap.xml')).text();
   const paths = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
 
   expect(paths).toContain('/');
   expect(paths).toContain('/about');
+  expect(paths).toContain('/how-its-made');
+  expect(paths).toContain('/privacy');
+  expect(paths).toContain('/feedback');
   for (const slug of ['uk-asylum', 'uk-immigration', 'us-iran-war', 'us-vote-by-mail', 'us-voter-id']) {
     expect(paths).toContain(`/topics/${slug}`);
   }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { fontVariables } from "./fonts";
 import { HydrationMarker } from "@/components/hydration-marker";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, SOURCE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -34,12 +34,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="sv-wordmark">
               Steelview<span className="sv-wordmark__stop" aria-hidden="true">.</span>
             </Link>
+            <nav className="sv-masthead__nav" aria-label="Site">
+              <Link href="/about">About</Link>
+              <Link href="/how-its-made">How it’s made</Link>
+            </nav>
           </div>
         </div>
         <div className="flex-1">{children}</div>
         <div className="sv-footer">
           <div className="sv-wrap sv-footer__inner">
-            <span className="sv-meta">Steelview</span>
+            <p className="sv-footer__credit">
+              Steelview is made by <a href="https://robennals.org">Rob Ennals</a>. Writing licensed{' '}
+              <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+            </p>
+            <nav className="sv-footer__nav" aria-label="Footer">
+              <Link href="/about">About</Link>
+              <Link href="/how-its-made">How it’s made</Link>
+              <Link href="/privacy">Privacy</Link>
+              <Link href="/feedback">Feedback</Link>
+              <a href={SOURCE_URL}>Source</a>
+            </nav>
           </div>
         </div>
         <HydrationMarker />

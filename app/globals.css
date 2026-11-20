@@ -228,10 +228,145 @@
     border-top: 1px solid var(--rule);
   }
 
+  .sv-masthead__nav,
+  .sv-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+  }
+
+  .sv-masthead__nav {
+    margin-left: auto;
+  }
+
+  .sv-masthead__nav a,
+  .sv-footer__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink-3);
+    text-decoration: none;
+  }
+
+  .sv-masthead__nav a:hover,
+  .sv-footer__nav a:hover {
+    color: var(--ink);
+  }
+
   .sv-footer__inner {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    column-gap: 2rem;
     min-height: 4rem;
+    padding-block: 1rem;
+  }
+
+  .sv-footer__credit {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    color: var(--ink-3);
+  }
+
+  .sv-footer__credit a {
+    color: inherit;
+  }
+
+  /* The About page's author: a photo beside the bio, stacked on a phone. */
+  .sv-author {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.25rem 1.5rem;
+  }
+
+  .sv-author > div {
+    flex: 1 1 18rem;
+  }
+
+  .sv-author__photo {
+    border-radius: 50%;
+    width: 7.5rem;
+    height: 7.5rem;
+    object-fit: cover;
+  }
+
+  /* The feedback form: plain labelled fields in the page's own type, and one
+     solid button, so it reads as part of the page rather than a widget. */
+  .sv-form {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    font-family: var(--font-sans);
+  }
+
+  .sv-form__field {
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .sv-form__hint {
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-form__field :is(input, textarea) {
+    font: inherit;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .sv-form__field :is(input, textarea):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .sv-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .sv-form__error {
+    margin: 0;
+    color: var(--accent);
+  }
+
+  .sv-form__submit {
+    font: inherit;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--ink);
+    border: 0;
+    border-radius: 4px;
+    padding: 0.7rem 1.5rem;
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  .sv-form__submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  .sv-form__sent {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--paper-raised);
+    border-left: 3px solid var(--accent);
   }
 
   /* ------------------------------------------------------------ page head */

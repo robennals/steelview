@@ -4,7 +4,7 @@ import { topicPath } from '@/lib/content/types';
 import { absoluteUrl } from '@/lib/site';
 
 /**
- * Home, About and every topic: a fact has no page of its own. `lastModified`
+ * Home, About, How it's made, Privacy, Feedback and every topic: a fact has no page of its own. `lastModified`
  * comes from the topic's own `lastUpdated`, the only date the content model
  * has, so it says something true rather than "whenever this built".
  */
@@ -15,6 +15,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: absoluteUrl('/'), changeFrequency: 'weekly', priority: 1 },
     { url: absoluteUrl('/about'), changeFrequency: 'monthly', priority: 0.5 },
+    { url: absoluteUrl('/how-its-made'), changeFrequency: 'monthly', priority: 0.5 },
+    { url: absoluteUrl('/privacy'), changeFrequency: 'yearly', priority: 0.2 },
+    { url: absoluteUrl('/feedback'), changeFrequency: 'yearly', priority: 0.2 },
     ...topics.map((topic) => ({
       url: absoluteUrl(topicPath(topic.slug)),
       lastModified: topic.lastUpdated,
