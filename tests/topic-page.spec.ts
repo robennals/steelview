@@ -429,7 +429,13 @@ test('a pop-up closes around its chart, a graph keeping a wide shape, in the mid
   await settled();
   const bars = sheet.locator('.sv-comparison');
   expect(await bottom(sheet) - await bottom(bars.locator('.sv-comparison__scale'))).toBeLessThan(80);
+  // The rows are not spread apart: each is only as tall as its label and bar.
+  const spare = await bars.locator('.sv-comparison__rows > li').evaluateAll(items => items.map(item =>
+    item.getBoundingClientRect().height - Math.max(...[...item.querySelectorAll('*')].map(child => child.getBoundingClientRect().height))));
+  expect(spare.length).toBeGreaterThan(1);
+  for (const extra of spare) expect(extra).toBeLessThan(2);
   expect((await sheet.boundingBox())!.height).toBeLessThan(600);
+
 });
 
 for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
