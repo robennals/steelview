@@ -8,7 +8,7 @@ An election should have a clear end. Every ballot should be in officials' hands 
 
 ### Election Day should be the last day a ballot can arrive
 
-Election Day is the day of the election, and [rules should mean what they say](#principle-rules-must-mean-what-they-say): a ballot that arrives a week later was not part of it. [The Supreme Court left the choice of deadline to lawmakers](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), and noted a reason they may choose Election Day: [it "avoids the appearance of fraud from late-arriving ballots"](#fact-ballot-deadlines-and-counting-speed/watson-appearance-of-fraud).
+Election Day is the day of the election, and [rules should mean what they say](#principle-rules-must-mean-what-they-say): a ballot that arrives a week later was not part of it. [The Supreme Court left the choice of deadline to lawmakers](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), and noted a reason they may choose Election Day: it "avoids the appearance of fraud from late-arriving ballots".
 
 ### Most states already require ballots by Election Day, and more are returning to it
 

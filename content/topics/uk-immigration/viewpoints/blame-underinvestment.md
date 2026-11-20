@@ -20,7 +20,7 @@ The hostile environment is the set of rules that make migrants' lives hard on pu
 
 ### Hate crime spikes after major events, so politicians should take care whom they blame
 
-[Racially and religiously motivated crimes spike after major events](#fact-crime-terrorism-and-group-exploitation/hate-crime-spikes-follow-events). [After the Southport murders, August 2024 was the worst month on record](#fact-crime-terrorism-and-group-exploitation/august-2024-worst-month). The figures cannot show how much the politics around these events added. Still, the risk is reason enough for care.
+[Racially and religiously motivated crimes spike after major events](#fact-crime-terrorism-and-group-exploitation/hate-crime-spikes-follow-events). After the Southport murders, August 2024 was the worst month on record. The figures cannot show how much the politics around these events added. Still, the risk is reason enough for care.
 
 ### So invest in homes and services, and end the hostile environment
 
