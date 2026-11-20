@@ -6,6 +6,7 @@ import { ChartAbout } from '@/components/report/chart-about';
 import { ObservationBar } from './observation-bar';
 import { COMPACT_PREVIEW_ITEMS, RankedColumns, fitsRankedColumns } from '@/components/report/ranked-columns';
 import { DetailRow, RowDetailHint } from '@/components/report/row-detail';
+import { formatValue } from '@/components/report/format';
 import type { PreviewFit } from '@/lib/chart/series-chart';
 
 type Comparison = NonNullable<Fact['comparisons']>[number];
@@ -43,7 +44,11 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
   const max = Math.max(0, chart.domainMax ?? 0, ...items.map(item => item.value));
   const range = max - min || 1;
   const zero = -min / range * 100;
-  const format = (value: number) => value > 0 && value < .01 ? `<0.01${chart.unit === 'percent' ? '%' : ''}` : `${value < 0 ? '−' : ''}${chart.unit === 'pounds' ? '£' : ''}${Math.abs(value).toLocaleString('en-GB', { maximumFractionDigits: 2 })}${chart.unit === 'percent' ? '%' : ''}`;
+  const exact = (value: number) => value > 0 && value < .01 ? `<0.01${chart.unit === 'percent' ? '%' : ''}` : `${value < 0 ? '−' : ''}${chart.unit === 'pounds' ? '£' : ''}${Math.abs(value).toLocaleString('en-GB', { maximumFractionDigits: 2 })}${chart.unit === 'percent' ? '%' : ''}`;
+  // Beside a bar, a figure of a million or more is written as prose writes it, £290m, so it fits its column; the breakdown table keeps every digit.
+  const format = (value: number) => chart.unit !== 'percent' && Math.abs(value) >= 1e6
+    ? formatValue(value, chart.unit === 'pounds' ? { compact: true, unit: 'currency', currency: 'GBP' } : { compact: true })
+    : exact(value);
   const aboutText = aboutThisDataNote(chart);
   const formatShare = (value: number) => chart.shareTotal ? `${(value / chart.shareTotal * 100).toLocaleString('en-GB', { maximumFractionDigits: 1 })}%` : null;
   const at = (hash: string) => `${preview?.href ?? ''}#${hash}`;
@@ -81,7 +86,7 @@ export function ComparisonChart({ fact, chart, sources, observations, preview, p
       })}
     </ol>}
     {chart.groups && selected < 0 && <div className="sv-comparison-legend">{chart.groups.map((label, i) => <span key={label}><i style={{ background: `var(--sv-group-${i})` }} />{label}</span>)}</div>}
-    {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th>{hasDetail && <th>Detail</th>}</tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{format(value)}</td>)}<td>{format(item.value)}</td>{hasDetail && <td>{item.detail ?? '—'}</td>}</tr>)}</tbody></table></div></details>}
+    {chart.groups && !preview && <details className="sv-chart__data"><summary>Show all breakdowns</summary><div className="sv-breakdown-table"><table><caption>{chart.title}, by {groupLabel}</caption><thead><tr><th scope="col">{chart.itemLabel ?? 'Category'}</th>{chart.groups.map(group => <th key={group}>{group}</th>)}<th>Total</th>{hasDetail && <th>Detail</th>}</tr></thead><tbody>{chart.items.map(item => <tr key={item.label}><th>{item.label}</th>{item.values!.map((value, i) => <td key={i}>{exact(value)}</td>)}<td>{exact(item.value)}</td>{hasDetail && <td>{item.detail ?? '—'}</td>}</tr>)}</tbody></table></div></details>}
     {!preview && <p className="sv-comparison__scale" aria-hidden="true"><span>{format(min)}</span><span>{format(max)}</span></p>}
     {!panel && !preview && <p className="sv-chart__credit">Source: {chart.sources.map((n, i) => <span key={n}>{i > 0 && '; '}<a href={at(`source-${fact.id}-${n}`)}>{sources[n - 1].publisher} [{n}]</a></span>)}</p>}
     {observations}

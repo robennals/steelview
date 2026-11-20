@@ -188,6 +188,31 @@ test('clicking a card\'s chart opens the panel too, title included', async ({ pa
   await expectChartAlone(page.locator('dialog[open]'));
 });
 
+test('a pop-up first shows at its final size, not growing as its chart arrives', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'refuge');
+  // The height of the sheet on every frame it can be seen, from the click until the chart is in it.
+  await page.evaluate(() => {
+    const heights: number[] = [];
+    const record = () => {
+      const panel = document.querySelector('dialog[open] .sv-modal__panel');
+      if (panel && getComputedStyle(panel).opacity !== '0') {
+        heights.push(Math.round(panel.getBoundingClientRect().height));
+        document.documentElement.dataset.shownHeights = heights.join(' ');
+      }
+      requestAnimationFrame(record);
+    };
+    requestAnimationFrame(record);
+  });
+  await viewpoint.locator('.sv-deck__card').first().locator('.sv-graph-heading').click();
+  await expectChartAlone(page.locator('dialog[open]'));
+  await page.waitForTimeout(300);
+  const heights = (await page.locator('html').getAttribute('data-shown-heights'))!.split(' ');
+  expect(heights.length).toBeGreaterThan(0);
+  expect(new Set(heights).size).toBe(1);
+});
+
 test('on a phone, a viewpoint fits the card showing, with no empty space', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(ASYLUM);
@@ -246,12 +271,14 @@ test('a card\'s chart with several readings opens in full with its "Show as" swi
   const card = viewpoint.locator('.sv-deck__card').nth(2);
   await expect(card).toBeInViewport();
   // A card draws the one reading its point is about, with no switch.
-  await expect(card.getByRole('group', { name: 'Show as' }).filter({ visible: true })).toHaveCount(0);
+  await expect(card.getByRole('button', { name: /^Show as:/ }).filter({ visible: true })).toHaveCount(0);
   await card.locator('.sv-graph-heading').first().click();
 
   const sheet = page.locator('dialog[open]');
   await expectChartAlone(sheet);
   await expect(page).toHaveURL(/#work-and-study-routes--/);
+  // Its "Show as" dropdown offers every reading.
+  await sheet.getByRole('button', { name: /^Show as:/ }).filter({ visible: true }).click();
   const showAs = sheet.getByRole('group', { name: 'Show as' }).filter({ visible: true });
   await expect(showAs.getByRole('button')).toHaveText(['Licences revoked and revocation rate', 'Registered sponsors']);
   await showAs.getByRole('button', { name: 'Registered sponsors' }).click();
@@ -259,6 +286,35 @@ test('a card\'s chart with several readings opens in full with its "Show as" swi
   await expect(sheet.locator('[id="work-and-study-routes--chart-revocations"]')).toBeHidden();
   // Its sources and its "About this chart" come with it.
   await expect(sheet.locator('.sv-chart__about').filter({ visible: true }).first()).toBeVisible();
+});
+
+test('a pop-up closes around its chart, a graph keeping a wide shape, in the middle of the screen', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(`${ASYLUM}#asylum-claims-and-decisions--chart-appeals-series`);
+  const sheet = page.locator('dialog[open] .sv-modal__panel');
+  const bottom = async (locator: Locator) => { const box = (await locator.boundingBox())!; return box.y + box.height; };
+  // A sheet is shown only once its chart has arrived, and so has its final size.
+  const settled = () => expect(sheet).toHaveCSS('opacity', '1');
+  await settled();
+  // The Graph/Table switch stands apart from the legend under it.
+  const legend = (await sheet.locator('.sv-chart__legend').filter({ visible: true }).first().boundingBox())!;
+  expect(legend.y - await bottom(sheet.locator('.sv-chart__view-controls').filter({ visible: true }).first())).toBeGreaterThanOrEqual(8);
+  // The graph keeps a wide shape, as steeper lines read worse, and the sheet ends just under it.
+  const graph = (await sheet.locator('.sv-chart__svg:visible').first().boundingBox())!;
+  expect(graph.width / graph.height).toBeGreaterThan(2.3);
+  expect(graph.width).toBeGreaterThan(1000);
+  expect(await bottom(sheet) - (graph.y + graph.height)).toBeLessThan(80);
+  // A sheet shorter than the screen stays in the middle of it.
+  const box = (await sheet.boundingBox())!;
+  expect(Math.abs(box.y - (900 - (box.y + box.height)))).toBeLessThan(4);
+
+  // Rows of bars keep their own height, and the sheet closes around them too.
+  // A fresh load each time, so the sheet measured is the one just opened.
+  await page.goto('/');
+  await page.goto(`${ASYLUM}#removals-and-what-stops-them--chart-detention-issues`);
+  await settled();
+  const bars = sheet.locator('.sv-comparison');
+  expect(await bottom(sheet) - await bottom(bars.locator('.sv-comparison__scale'))).toBeLessThan(80);
 });
 
 test('a chart\'s subtitle line in its sheet opens its More panel', async ({ page }) => {
@@ -323,7 +379,7 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect(card.locator('.sv-chart')).toHaveCount(1);
     await expect(card.locator('.sv-chart__caption')).toContainText('Initial decisions on small-boat arrivals');
     // The line is the card's only text: nothing opens under it.
-    await expect(card.locator('details, .sv-deck__prose')).toHaveCount(0);
+    await expect(card.locator(':scope > details, .sv-deck__prose')).toHaveCount(0);
 
     await deck.getByRole('button', { name: /Next/ }).click();
     const line = deck.locator('.sv-deck__card').nth(1);
@@ -478,7 +534,22 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   const sheet = page.locator('dialog[open]');
   await expect(sheet).toHaveCount(1);
   await expect(sheet.locator('.sv-quote-browser .sv-control__status')).toHaveText('Showing 6 of 6 quotes');
-  await expect(sheet.locator('.sv-quote-browser input[type="search"]')).toHaveCount(1);
+  await expect(sheet.locator('.sv-quote-browser').getByRole('button', { name: 'Search quotes and speakers' })).toHaveCount(1);
+  // Opened from See all, the card's two quotes come first, outlined, in the card's order.
+  const items = sheet.locator('.sv-quote-browser__item');
+  const cardQuote = (n: number) => quotes.locator('.sv-card-quotes__text').nth(n).innerText();
+  const first = (await cardQuote(0)).replace(/^“|”$/g, '');
+  const second = (await cardQuote(1)).replace(/^“|”$/g, '');
+  await expect(sheet.getByRole('button', { name: /Order: Highlighted first/ })).toHaveCount(1);
+  await expect(items.nth(0)).toContainText(first);
+  await expect(items.nth(1)).toContainText(second);
+  await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(2);
+  // Clicking one quote on the card puts that one first, and outlines it alone.
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await quotes.locator('.sv-card-quotes__item').nth(1).click();
+  await expect(items.nth(0)).toContainText(second);
+  await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(1);
 });
 
 // us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and
@@ -489,6 +560,8 @@ test('a quotes chart opened in full lists every quote on its topic, which a read
   const quotes = page.locator('dialog[open] .sv-quote-browser');
   await expect(quotes.locator('.sv-graph-heading')).toHaveText('Every quote on this topic');
   await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 5 of 5 quotes');
-  await quotes.getByRole('button', { name: /Watson v\. RNC/ }).click();
+  // Each question is a line of the Question dropdown.
+  await quotes.getByRole('button', { name: 'Question: All' }).click();
+  await quotes.locator('.sv-bar__pop:popover-open').getByRole('button', { name: /Watson v\. RNC/ }).click();
   await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 5 quotes');
 });

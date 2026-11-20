@@ -1,7 +1,8 @@
 'use client';
 
 import { Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { ChoiceGroup, FilterChips } from './controls';
+import { ChoiceGroup, FilterChips, type Choice } from './controls';
+import { ControlBar, chipsSummary, type BarItem } from './control-bar';
 import { ReportFigure, SourceLine } from './figure';
 import { isApproximateDate } from '@/lib/content/period';
 import { formatDate } from './format';
@@ -9,7 +10,8 @@ import { MarkerIcon, shapeForSlot } from './marker-shape';
 import { seriesColor } from './scale';
 import { tickEdge } from './time-axis';
 import { baselinePieces, eventAxis, namesOnAxis, previewEvents, sortEvents, type EventAxis } from './timeline-layout';
-import type { FigurePreview, PartialDate, SourceCredit } from './types';
+import { SourcePassages } from './source-passage';
+import type { FigurePreview, PartialDate, SourceCredit, SourcePassage } from './types';
 
 export type TimelineEvent = {
   /**
@@ -29,6 +31,8 @@ export type TimelineEvent = {
   sources?: SourceCredit[];
   /** Where to read more, e.g. the fact this event is evidence in. */
   href?: string;
+  /** The sentences the words its title and description quote came from, shown when its card is opened. */
+  passages?: SourcePassage[];
 };
 
 export type TimelineCategory = { id: string; label: string };
@@ -219,38 +223,43 @@ export function Timeline({
   const counts = new Map<string, number>();
   for (const e of sorted) if (!majorOnly || e.significance === 'major') counts.set(e.category, (counts.get(e.category) ?? 0) + 1);
   const ringed = new Set([...open, ...marked]);
+  const categoryChoices = resolvedCategories.map(c => ({
+    value: c.id,
+    label: (
+      <span className="sv-timeline__chip-label" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
+        <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__chip-icon" />
+        <span className="sv-timeline__chip-text">{c.label}</span>
+      </span>
+    ),
+    count: counts.get(c.id) ?? 0,
+  }));
+  const majorChoices: Choice<'all' | 'major'>[] = [{ value: 'all', label: 'All events' }, { value: 'major', label: 'Major only' }];
+  const controlItems: BarItem[] = [
+    ...(showChips
+      ? [{
+          key: 'category',
+          label: 'Category',
+          summary: chipsSummary(selected, v => resolvedCategories.find(c => c.id === v)?.label ?? v),
+          active: selected.size > 0,
+          panel: <FilterChips label="Category" hideLabel selected={selected} onChange={setSelected} choices={categoryChoices} />,
+        }]
+      : []),
+    ...(showMajorToggle
+      ? [{
+          key: 'major',
+          label: 'Show',
+          summary: majorOnly ? 'Major only' : 'All events',
+          active: majorOnly,
+          hideLabel: true,
+          single: true,
+          panel: <ChoiceGroup label="Show" hideLabel value={majorOnly ? 'major' : 'all'} onChange={value => setMajorOnly(value === 'major')} choices={majorChoices} />,
+        }]
+      : []),
+  ];
 
   return (
     <ReportFigure id={id} title={title} subtitle={subtitle} description={description} sources={sources} note={note} footer={footer} panel={panel} headingLevel={headingLevel} className="sv-timeline">
-      {(showChips || showMajorToggle) && (
-        <div className="sv-timeline__controls">
-          {showChips && (
-            <FilterChips
-              label="Category"
-              selected={selected}
-              onChange={setSelected}
-              choices={resolvedCategories.map(c => ({
-                value: c.id,
-                label: (
-                  <span className="sv-timeline__chip-label" style={{ color: seriesColor(slotOf.get(c.id) ?? 1) }}>
-                    <MarkerIcon shape={shapeForSlot(slotOf.get(c.id) ?? 1)} className="sv-timeline__chip-icon" />
-                    <span className="sv-timeline__chip-text">{c.label}</span>
-                  </span>
-                ),
-                count: counts.get(c.id) ?? 0,
-              }))}
-            />
-          )}
-          {showMajorToggle && (
-            <ChoiceGroup
-              label="Show"
-              value={majorOnly ? 'major' : 'all'}
-              onChange={value => setMajorOnly(value === 'major')}
-              choices={[{ value: 'all', label: 'All events' }, { value: 'major', label: 'Major only' }]}
-            />
-          )}
-        </div>
-      )}
+      {(showChips || showMajorToggle) && <ControlBar label="Filter events" items={controlItems} />}
       {!showChips && legend}
       {hasMajor && hasMinor && !majorOnly && (
         <p className="sv-timeline__key">
@@ -294,7 +303,7 @@ export function Timeline({
               {visible.map(({ e, i }) => {
                 const category = labelOf.get(e.category) ?? e.category;
                 const head = <CardHead event={e} marker={marker(e, 'sv-timeline__card-marker')} category={category} major={e.significance === 'major' && hasMinor} />;
-                const detail = e.description || (e.sources && e.sources.length > 0) || e.href;
+                const detail = e.description || (e.sources && e.sources.length > 0) || e.href || (e.passages && e.passages.length > 0);
                 return (
                   <li
                     key={`${e.date}-${i}-${e.title}`}
@@ -313,6 +322,7 @@ export function Timeline({
                             {e.description && <> · {e.description}</>}
                           </p>
                           {e.href && <p className="sv-timeline__link"><a href={e.href}>Read more</a></p>}
+                          <SourcePassages passages={e.passages} />
                           {e.sources && e.sources.length > 0 && <SourceLine sources={e.sources} />}
                         </div>
                       </details>

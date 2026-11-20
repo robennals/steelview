@@ -1,5 +1,5 @@
 import { formatDate, slugify } from './format';
-import type { PartialDate, SourceCredit } from './types';
+import type { PartialDate, SourceCredit, SourcePassage } from './types';
 
 /**
  * One sourced quote, as every quote component takes it.
@@ -27,6 +27,8 @@ export type Quote = {
   context?: string;
   /** Where to check it: one or more numbered references. */
   sources?: SourceCredit[];
+  /** The sentence the words came from, from each source's quoted passage, for a full view to show under the quote. */
+  passages?: SourcePassage[];
 };
 
 /** The DOM id of a quote, so a quote can be linked to and cited by address. */
@@ -54,9 +56,33 @@ export function QuoteTranslation({ translation }: { translation: string }) {
  * apparatus voice, so the reader never mistakes the attribution for the quote.
  */
 export function QuoteAttribution({ quote, permalink = false }: { quote: Quote; permalink?: boolean }) {
+  return (
+    <figcaption className="sv-quote__attribution">
+      <QuoteSpeaker quote={quote} />
+      <QuoteDetails quote={quote} permalink={permalink} />
+    </figcaption>
+  );
+}
+
+/** Who said it, and in what capacity: "Abbas Araghchi, Iran's foreign minister". */
+export function QuoteSpeaker({ quote }: { quote: Quote }) {
+  return (
+    <span className="sv-quote__speaker">
+      <cite>{quote.speaker}</cite>
+      {quote.role && <span className="sv-quote__role">, {quote.role}</span>}
+    </span>
+  );
+}
+
+/**
+ * Where it was said, when, where to check it, and a link to the quote itself,
+ * run together with middle dots. `date={false}` leaves the date to a caller
+ * that shows it elsewhere.
+ */
+export function QuoteDetails({ quote, permalink = false, date = true }: { quote: Quote; permalink?: boolean; date?: boolean }) {
   const details = [
     quote.context && <span key="context">{quote.context}</span>,
-    quote.date && <time key="date" dateTime={quote.date}>{formatDate(quote.date)}</time>,
+    date && quote.date && <time key="date" dateTime={quote.date}>{formatDate(quote.date)}</time>,
     quote.sources && quote.sources.length > 0 && (
       <span key="source">
         {quote.sources.length > 1 ? 'Sources' : 'Source'}:{' '}
@@ -70,24 +96,16 @@ export function QuoteAttribution({ quote, permalink = false }: { quote: Quote; p
     ),
     permalink && <a key="link" className="sv-quote__permalink" href={`#${quoteAnchor(quote)}`}>Link to this quote</a>,
   ].filter(Boolean);
-
+  if (details.length === 0) return null;
   return (
-    <figcaption className="sv-quote__attribution">
-      <span className="sv-quote__speaker">
-        <cite>{quote.speaker}</cite>
-        {quote.role && <span className="sv-quote__role">, {quote.role}</span>}
-      </span>
-      {details.length > 0 && (
-        <span className="sv-quote__details">
-          {details.map((detail, i) => (
-            <span key={i}>
-              {i > 0 && <span aria-hidden="true"> · </span>}
-              {detail}
-            </span>
-          ))}
+    <span className="sv-quote__details">
+      {details.map((detail, i) => (
+        <span key={i}>
+          {i > 0 && <span aria-hidden="true"> · </span>}
+          {detail}
         </span>
-      )}
-    </figcaption>
+      ))}
+    </span>
   );
 }
 

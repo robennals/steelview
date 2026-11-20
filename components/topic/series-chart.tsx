@@ -4,13 +4,14 @@ import { ChartViewToggle } from './chart-view-toggle';
 import { GlossaryTerm } from './glossary-term';
 import type { ChartPreview } from './comparison-chart';
 import { FocusSwitch } from './focus-switch';
-import { ShowAs, ShowAsSwitch } from './show-as';
+import { ShowAs } from './show-as';
 import { ObservationBar } from './observation-bar';
 import { SeriesHighlight } from './series-highlight';
 import { aboutThisDataNote } from '@/lib/content/figure-text';
 import { comparePeriods } from '@/lib/content/period';
 import type { MarkedObservation } from '@/lib/content/walkthrough';
 import { lineSourceNumbers } from '@/lib/content/sources';
+import { quotedPhrases, sourcePassages } from '@/lib/content/source-passage';
 import type { Series, SeriesLine, SeriesPoint, SeriesReading, Source } from '@/lib/content/types';
 import {
   alongsideOf,
@@ -580,7 +581,8 @@ function Reading({
     const variants: SeriesVariant[] = preview ? [...PREVIEW_VARIANTS[preview.fit ?? 'wide'], 'narrow'] : panel ? [...PREVIEW_VARIANTS.panel, 'narrow'] : ['narrow', 'wide'];
     const groups = new Map(variants.map(variant => [variant, preview ? [] : placeMarkers(series, reading, variant, shown, inView)]));
     return <>
-      <div className="sv-chart__plot">
+      {/* Whether a row of event numbers sits under the graph, so a pop-up can leave room for it. */}
+      <div className="sv-chart__plot" style={{ '--sv-lane-levels': [...groups.values()].some(placed => placed.length > 0) ? 1 : 0 }}>
         {variants.map(variant => (
           <Plot key={variant} series={series} reading={reading} variant={variant} descriptionId={descriptionId} window={preview ? undefined : shown} marks={panel ? marks : undefined} markers={preview ? undefined : { groups: groups.get(variant) ?? [], cardsId }} />
         ))}
@@ -610,8 +612,7 @@ function Reading({
 
       {(graph => preview
         ? graph
-        // The switch is made here, once per reading, and handed to a client component, so it needs a key.
-        : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} controls={switched ? <ShowAsSwitch key="show-as" /> : undefined} />)(<>
+        : <ChartViewToggle label={reading.label} graph={graph} table={<ReadingTable series={series} reading={reading} />} />)(<>
           {/* The legend is part of the graph, not its data table: it identifies
               the rendered lines without repeating a dated value beside each name. */}
           <ul className="sv-chart__legend">
@@ -702,6 +703,7 @@ export function eventMarkers(series: Pick<Series, 'events'>, factId: string, sou
     label: event.label,
     description: event.note,
     sources: event.sources.map(n => citation(n, factId, sources, directSources)),
+    passages: sourcePassages(quotedPhrases(event.label, event.note), event.sources, sources, n => citation(n, factId, sources, directSources)),
   }));
 }
 

@@ -29,6 +29,17 @@ export type SourceCredit = {
 };
 
 /**
+ * The words around something an item quotes, copied from the passage its
+ * source is cited for: so a quote of a few words can be read in the
+ * sentence it came from. `quoted` parts are the words the item quotes; a
+ * part that is only "…" marks where the passage starts or stops mid-sentence.
+ */
+export type SourcePassage = {
+  source: SourceCredit;
+  parts: Array<{ text: string; quoted?: boolean }>;
+};
+
+/**
  * A figure drawn as a compact preview, as on a home-page carousel slide: its
  * title, linked to the full figure on `href` (the fact's page), and the graph
  * alone. The description, controls, Table view, keys that explain method,

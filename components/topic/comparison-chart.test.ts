@@ -128,3 +128,13 @@ test('About this data names the table the values come from, with or without a no
   assert.match(about({ ...chart, valuesFrom: 'FBI table 4' }), /<p>Values from FBI table 4\.<\/p>/);
   assert.match(about({ ...chart, note: 'Counts to 2024.', valuesFrom: 'FBI table 4' }), /<p>Counts to 2024\. Values from FBI table 4\.<\/p>/);
 });
+
+test('a figure of a million or more is written as prose writes it beside its bar, and in full in the breakdown table', () => {
+  const html = render({ ...chart, unit: 'pounds', items: [
+    { label: 'Payments', value: 290_000_000, values: [290_000_000, 0] },
+    { label: 'Flights', value: 950_000, values: [0, 950_000] },
+  ] });
+  assert.match(html, />£290m</);
+  assert.match(html, />£950,000</);
+  assert.match(html, /<td>£290,000,000<\/td>/);
+});

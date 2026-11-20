@@ -591,8 +591,10 @@ sources:
   # 33
   - stance: supports
     quote: >-
-      They said: 'He will start a war.' I'm not going to start a war. I'm going
-      to stop wars.
+      You know, we had no war — four years, we had no wars, except we defeated
+      ISIS. We defeated ISIS in record time, but we had no wars. They said: 'He
+      will start a war.' I'm not going to start a war. I'm going to stop wars.
+      But this is also a massive victory for democracy and for freedom.
     title: 'Remarks Accepting Election as the 47th President of the United States in Palm Beach, Florida'
     url: https://www.presidency.ucsb.edu/documents/remarks-accepting-election-the-47th-president-the-united-states-palm-beach-florida
     publisher: The American Presidency Project (UC Santa Barbara)

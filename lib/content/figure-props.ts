@@ -2,6 +2,7 @@ import type * as R from '@/components/report';
 import { eventMarkers } from '@/components/topic/series-chart';
 import { aboutThisDataNote } from './figure-text';
 import { mapAreas } from './map-presets';
+import { quotedPhrases, sourcePassages } from './source-passage';
 import { factSources, figureCitations } from './sources';
 import { topicPath } from './types';
 import type { Fact, Figure, FigureOf, FigureValueFormat, Source } from './types';
@@ -149,6 +150,7 @@ export function timelineProps(f: FigureOf<'timeline'>, c: FigureContext): R.Time
       category: event.category,
       significance: event.significance,
       sources: event.sources.map(c.credit),
+      passages: sourcePassages(quotedPhrases(event.title, event.description), event.sources, c.sources, c.credit),
     })),
   };
 }
@@ -365,6 +367,7 @@ function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): 
     date: q.date,
     context: q.context,
     sources: q.sources.map(c.credit),
+    passages: sourcePassages([q.text], q.sources, c.sources, c.credit),
   };
 }
 

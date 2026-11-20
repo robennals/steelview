@@ -1,7 +1,6 @@
 'use client';
 
 import { Children, createContext, useContext, useState, useSyncExternalStore, type ReactNode } from 'react';
-import { ChoiceGroup } from '@/components/report/controls';
 import { SharedChartView } from './chart-view-toggle';
 import { useChartStep } from './observation-bar';
 
@@ -20,9 +19,9 @@ type ShowAsProps = {
 
 /**
  * One series' readings, one at a time: the same data in people and per head,
- * in money and in real terms. Each reading draws a `ShowAsSwitch` among its own
- * controls, so another way of reading the data is a click away rather than a
- * separate chart.
+ * in money and in real terms. Each reading's control bar offers the others as a
+ * "Show as" dropdown beside Graph/Table (`useShowAsSwitch`), so another way of
+ * reading the data is a click away rather than a separate chart.
  *
  * In a data panel the view follows the observation being read, so a link to an
  * observation opens the view it is about, and choosing a view moves to its first
@@ -59,15 +58,7 @@ export function ShowAs({ views, bar, children }: ShowAsProps) {
   );
 }
 
-/** The "Show as" switch of the series this sits in. Without JavaScript, or outside a `ShowAs`, nothing. */
-export function ShowAsSwitch() {
-  const switcher = useContext(Views);
-  if (!switcher) return null;
-  const { views, current, choose } = switcher;
-  return (
-    <div className="sv-show-as">
-      {/* Named for a screen reader only: on the page it is just its buttons. */}
-      <ChoiceGroup label="Show as" hideLabel choices={views.map(v => ({ value: v.id, label: v.label }))} value={current} onChange={choose} />
-    </div>
-  );
+/** The views of the series this sits in, for a control bar to offer. Without JavaScript, or outside a `ShowAs`, null. */
+export function useShowAsSwitch() {
+  return useContext(Views);
 }
