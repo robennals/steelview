@@ -112,11 +112,10 @@ figures:
       How often people of nationalities that make up many asylum claims are
       cautioned or convicted, per head of population, as a multiple of the
       rate for British citizens: 1 is the British rate. Choose sex offences
-      adjusted for age and sex, or all offences, not adjusted.
+      adjusted for age and sex, or all offences or prison, not adjusted.
     valueLabel: Conviction rate as a multiple of the British rate
     itemLabel: Group
-    pointLabel: Cautions and convictions
-    compareLabel: Prison population
+    pointLabel: Rate multiple
     intervalLabel: Range from chance alone (95%)
     nullValue: 1
     nullLabel: British rate
@@ -199,7 +198,6 @@ figures:
       estimate: 6.48
       low: 5.96
       high: 7.04
-      compare: { estimate: 7.71, low: 6.66, high: 8.92 }
       year: "2021"
       sources: [4]
     - label: "Afghanistan"
@@ -207,7 +205,6 @@ figures:
       estimate: 4.16
       low: 3.78
       high: 4.58
-      compare: { estimate: 4.92, low: 4.16, high: 5.83 }
       year: "2021"
       sources: [4]
     - label: "Iran"
@@ -215,7 +212,6 @@ figures:
       estimate: 3.97
       low: 3.65
       high: 4.31
-      compare: { estimate: 4.86, low: 4.21, high: 5.61 }
       year: "2021"
       sources: [4]
     - label: "Syria"
@@ -223,7 +219,6 @@ figures:
       estimate: 1.35
       low: 1.1
       high: 1.66
-      compare: { estimate: 2.41, low: 1.8, high: 3.22 }
       year: "2021"
       sources: [4]
     - label: "All foreign citizens"
@@ -231,7 +226,41 @@ figures:
       estimate: 1.14
       low: 1.13
       high: 1.15
-      compare: { estimate: 1.18, low: 1.16, high: 1.2 }
+      year: "2021"
+      sources: [4]
+    - label: "Iraq"
+      group: "Prison population, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
+      estimate: 7.71
+      low: 6.66
+      high: 8.92
+      year: "2021"
+      sources: [4]
+    - label: "Afghanistan"
+      group: "Prison population, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
+      estimate: 4.92
+      low: 4.16
+      high: 5.83
+      year: "2021"
+      sources: [4]
+    - label: "Iran"
+      group: "Prison population, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
+      estimate: 4.86
+      low: 4.21
+      high: 5.61
+      year: "2021"
+      sources: [4]
+    - label: "Syria"
+      group: "Prison population, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
+      estimate: 2.41
+      low: 1.8
+      high: 3.22
+      year: "2021"
+      sources: [4]
+    - label: "All foreign citizens"
+      group: "Prison population, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
+      estimate: 1.18
+      low: 1.16
+      high: 1.2
       year: "2021"
       sources: [4]
 observationMarks:
