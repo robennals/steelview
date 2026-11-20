@@ -4,7 +4,7 @@ import { CONTACT_EMAIL, SOURCE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'How Steelview is made',
-  description: 'How a person and an AI research, write and check each Steelview report together.',
+  description: 'How each Steelview report is made: a person writes the viewpoints, and an AI finds the evidence and checks them.',
   alternates: { canonical: '/how-its-made' },
 };
 
@@ -18,10 +18,11 @@ export default function HowItsMadePage() {
       </header>
       <div className="prose-body">
         <p>
-          Every Steelview report is made by a person and an AI working together. The person decides what to
-          cover, judges whether each side has been treated fairly, and approves everything before it is
-          published. The AI does more research, analysis and checking than a person could do alone: reading the primary sources, gathering every relevant data series, and verifying each figure
-          against the source it came from.
+          Every Steelview report is made by a person and an AI working together. The person chooses what to
+          cover, writes every viewpoint, and approves everything before it is published. The AI does more
+          research, analysis and checking than a person could do alone: reading the primary sources, gathering
+          every relevant data series, verifying each figure against the source it came from, and checking that
+          each viewpoint is a strong and faithful version of what its holders actually argue.
         </p>
         <p>
           Steelview is partly an experiment in how far that partnership can go. With AI doing the legwork, a
@@ -38,11 +39,11 @@ export default function HowItsMadePage() {
             fighting over, and what is deliberately left out.
           </li>
           <li>
-            <strong>The AI outlines how each side argues it</strong>, and the person corrects the outline until
-            every major viewpoint is there and each is put the way its own holders would put it.
+            <strong>The person writes the viewpoints</strong>, one for each major side, each put the way its own
+            holders would put it.
           </li>
           <li>
-            <strong>The AI finds the evidence</strong> each argument depends on, from official statistics,
+            <strong>The AI finds the evidence</strong> each viewpoint depends on, from official statistics,
             courts, academic studies and other primary sources, along with the context needed to judge it
             fairly: the longer run, comparable countries, the base rate.
           </li>
@@ -51,13 +52,19 @@ export default function HowItsMadePage() {
             reviews them.
           </li>
           <li>
-            <strong>The two write the viewpoints together</strong>, each resting on what the evidence actually
-            shows, and each admitting the facts that cut against it.
+            <strong>The AI checks each viewpoint</strong>: that the evidence backs up what it claims, that it
+            admits the facts that cut against it, and that it is as strong a version of the argument as its
+            holders make. The person revises it in response.
           </li>
           <li>
             <strong>The person approves publication</strong> once the report meets every rule below.
           </li>
         </ol>
+        <p>
+          <strong>A note on today’s reports.</strong> The viewpoints on the site now were drafted by AI while
+          Steelview was being built. Each is being replaced with a human-written version, and this note will
+          come down when they all have been.
+        </p>
 
         <h2>The rules every report follows</h2>
         <ul>

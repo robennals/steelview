@@ -35,7 +35,7 @@ export default function AboutPage() {
           countries use the source’s complete set rather than a convenient few.
         </p>
         <p>
-          Each report is researched and written by a person and an AI working together.{' '}
+          The viewpoints are written by a person; an AI finds the evidence and checks each argument against it.{' '}
           <Link href="/how-its-made">How Steelview is made</Link> explains who does what, and the rules every
           report follows before it is published.
         </p>
