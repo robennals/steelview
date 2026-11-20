@@ -1090,11 +1090,11 @@
       "track track";
     align-items: baseline;
     column-gap: 0.85rem;
-    row-gap: 0.25rem;
-    /* Each row on its own band, ruled off from the next, with the gridlines
-       running unbroken behind it, so a name is easy to follow to its mark. */
-    padding-block: 0.5rem;
-    border-bottom: 1px solid var(--rule);
+    row-gap: 0.1rem;
+    /* Room between rows; the line through each row's plot (below) leads the
+       eye from a name to its mark. On a phone the name sits above its line,
+       so the space goes above the name, keeping it nearest its own line. */
+    padding-block: 0.8rem 0.3rem;
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1.35;
@@ -1151,6 +1151,17 @@
 
   .sv-estimates__rows {
     position: relative;
+  }
+
+  /* A light line through the middle of the plot, level with the name and the
+     mark, as in a printed dot plot. */
+  .sv-estimates__track::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-top: 1px solid var(--rule);
   }
 
   .sv-estimates__null {
@@ -1285,6 +1296,10 @@
     }
 
 
+
+    .sv-estimates__row {
+      padding-block: 0.5rem;
+    }
 
     .sv-estimates__label {
       text-align: right;
