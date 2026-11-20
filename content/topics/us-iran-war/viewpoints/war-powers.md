@@ -8,7 +8,7 @@ Under the Constitution, a President cannot take the country to war alone. [Congr
 
 ### Only Congress can declare war, and it has not approved this one
 
-[The Constitution gives Congress, not the President, the power to declare war](#fact-decisions-law-and-diplomacy/congress-declares-war). [Every vote Congress has held on the war, as far as the record shows, was on ending it](#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war), and [the administration did not seek Congress's approval before the 60-day mark](#fact-decisions-law-and-diplomacy/no-authorisation-sought). The rule exists so that the people, through their representatives, decide whether Americans are sent to kill and die.
+[The Constitution gives Congress, not the President, the power to declare war](#fact-decisions-law-and-diplomacy/congress-declares-war). [Every vote Congress has held on the war, as far as the record shows, was on ending it](#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war), and [the administration did not seek Congress's approval before the 60-day mark](#fact-decisions-law-and-diplomacy/no-authorisation-sought). [The President says he acted as Commander in Chief, in defence of allies, and filed his reports "consistent with" the War Powers law](#fact-decisions-law-and-diplomacy/president-cites-commander-in-chief). But commanding the forces is not choosing war. The rule exists so that the people, through their representatives, decide whether Americans are sent to kill and die.
 
 ### When Congress has voted, it has voted to end the war
 

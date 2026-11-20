@@ -413,6 +413,17 @@ sources:
     https://migrationobservatory.ox.ac.uk/resources/commentaries/albanian-asylum-seekers-in-the-uk-and-eu-a-look-at-recent-data/
   publisher: The Migration Observatory, University of Oxford
   date: '2025-10-22'
+- stance: supports
+  quote: >-
+    Asy_D01: Asylum claims, 2001 Q1 to 2026 Q2 - dataset
+  title: >-
+    Asylum claims and initial decisions detailed datasets, year ending June
+    2026
+  url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+  fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+  localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
+  publisher: Home Office
+  date: '2026-08-27'
 series:
   title: 'Small-boat crossings of the Channel'
   subtitle: 'People and boats detected arriving, 2018–2026'
@@ -1916,6 +1927,251 @@ additionalSeries:
         value: 4431
       - period: 2026-06
         value: 7413
+- id: albania-claims
+  title: 'Albanian asylum claims'
+  subtitle: 'People claiming asylum in the UK by any route, by quarter, 2001–2026'
+  description: >-
+    Everyone of Albanian nationality who claimed asylum in the UK each quarter, however
+    they arrived: by small boat, by lorry, on a visa or after entering unseen. It counts
+    main applicants and their dependants.
+  periodLabel: Quarter ending
+  coverage:
+    from: 2001-03
+    to: 2026-06
+    note: >-
+      The Home Office dataset runs from 2001 Q1 to 2026 Q2; each point is plotted at
+      the last month of its quarter. The Home Office warns that its 2001–2009 totals
+      should not be compared directly with earlier publications.
+  events:
+  - period: '2022-12'
+    label: UK–Albania returns agreement signed
+    note: Signed on 13 December 2022, in the last month of this point's quarter.
+    source: 31
+  source:
+    stance: supports
+    quote: >-
+      Asy_D01: Asylum claims, 2001 Q1 to 2026 Q2 - dataset
+    title: >-
+      Asylum claims and initial decisions detailed datasets, year ending June
+      2026
+    url: https://www.gov.uk/government/statistical-data-sets/immigration-system-statistics-data-tables
+    fileUrl: https://assets.publishing.service.gov.uk/media/6a85c2d7c9205b515d421eeb/asylum-claims-datasets-jun-2026.xlsx
+    localFile: datasets/assets.publishing.service.gov.uk/asylum-claims-datasets-jun-2026.xlsx
+    publisher: Home Office
+    date: '2026-08-27'
+  readings:
+  - id: albania-claims-people
+    label: People
+    unit: count
+    valuesFrom: 'Asy_D01, Albanian nationality rows summed over age, sex, applicant type, UASC and location of claim for each quarter'
+    valueLabel: People claiming asylum, main applicants and dependants
+    lines:
+    - name: Albanian nationals, every route
+      points:
+      - period: 2001-03
+        value: 363
+      - period: 2001-06
+        value: 235
+      - period: 2001-09
+        value: 225
+      - period: 2001-12
+        value: 240
+      - period: 2002-03
+        value: 309
+      - period: 2002-06
+        value: 375
+      - period: 2002-09
+        value: 368
+      - period: 2002-12
+        value: 298
+      - period: 2003-03
+        value: 260
+      - period: 2003-06
+        value: 157
+      - period: 2003-09
+        value: 148
+      - period: 2003-12
+        value: 121
+      - period: 2004-03
+        value: 126
+      - period: 2004-06
+        value: 68
+      - period: 2004-09
+        value: 75
+      - period: 2004-12
+        value: 74
+      - period: 2005-03
+        value: 67
+      - period: 2005-06
+        value: 52
+      - period: 2005-09
+        value: 39
+      - period: 2005-12
+        value: 41
+      - period: 2006-03
+        value: 54
+      - period: 2006-06
+        value: 47
+      - period: 2006-09
+        value: 44
+      - period: 2006-12
+        value: 38
+      - period: 2007-03
+        value: 50
+      - period: 2007-06
+        value: 49
+      - period: 2007-09
+        value: 45
+      - period: 2007-12
+        value: 48
+      - period: 2008-03
+        value: 44
+      - period: 2008-06
+        value: 36
+      - period: 2008-09
+        value: 40
+      - period: 2008-12
+        value: 53
+      - period: 2009-03
+        value: 78
+      - period: 2009-06
+        value: 68
+      - period: 2009-09
+        value: 44
+      - period: 2009-12
+        value: 46
+      - period: 2010-03
+        value: 51
+      - period: 2010-06
+        value: 60
+      - period: 2010-09
+        value: 57
+      - period: 2010-12
+        value: 51
+      - period: 2011-03
+        value: 68
+      - period: 2011-06
+        value: 75
+      - period: 2011-09
+        value: 112
+      - period: 2011-12
+        value: 184
+      - period: 2012-03
+        value: 176
+      - period: 2012-06
+        value: 213
+      - period: 2012-09
+        value: 273
+      - period: 2012-12
+        value: 355
+      - period: 2013-03
+        value: 421
+      - period: 2013-06
+        value: 351
+      - period: 2013-09
+        value: 376
+      - period: 2013-12
+        value: 493
+      - period: 2014-03
+        value: 534
+      - period: 2014-06
+        value: 420
+      - period: 2014-09
+        value: 453
+      - period: 2014-12
+        value: 565
+      - period: 2015-03
+        value: 476
+      - period: 2015-06
+        value: 480
+      - period: 2015-09
+        value: 501
+      - period: 2015-12
+        value: 541
+      - period: 2016-03
+        value: 482
+      - period: 2016-06
+        value: 473
+      - period: 2016-09
+        value: 428
+      - period: 2016-12
+        value: 501
+      - period: 2017-03
+        value: 473
+      - period: 2017-06
+        value: 457
+      - period: 2017-09
+        value: 470
+      - period: 2017-12
+        value: 458
+      - period: 2018-03
+        value: 541
+      - period: 2018-06
+        value: 557
+      - period: 2018-09
+        value: 709
+      - period: 2018-12
+        value: 802
+      - period: 2019-03
+        value: 1117
+      - period: 2019-06
+        value: 931
+      - period: 2019-09
+        value: 1001
+      - period: 2019-12
+        value: 1184
+      - period: 2020-03
+        value: 1102
+      - period: 2020-06
+        value: 543
+      - period: 2020-09
+        value: 689
+      - period: 2020-12
+        value: 1192
+      - period: 2021-03
+        value: 1104
+      - period: 2021-06
+        value: 1201
+      - period: 2021-09
+        value: 1343
+      - period: 2021-12
+        value: 1831
+      - period: 2022-03
+        value: 1616
+      - period: 2022-06
+        value: 3447
+      - period: 2022-09
+        value: 8726
+      - period: 2022-12
+        value: 3011
+      - period: 2023-03
+        value: 1393
+      - period: 2023-06
+        value: 1004
+      - period: 2023-09
+        value: 1308
+      - period: 2023-12
+        value: 722
+      - period: 2024-03
+        value: 551
+      - period: 2024-06
+        value: 581
+      - period: 2024-09
+        value: 853
+      - period: 2024-12
+        value: 622
+      - period: 2025-03
+        value: 436
+      - period: 2025-06
+        value: 528
+      - period: 2025-09
+        value: 532
+      - period: 2025-12
+        value: 429
+      - period: 2026-03
+        value: 330
+      - period: 2026-06
+        value: 312
 comparisons:
 - id: europe-change
   title: 'Change in irregular crossings'
@@ -2040,6 +2296,8 @@ figures:
   id: preventions
 - kind: series
   id: albania
+- kind: series
+  id: albania-claims
 - kind: dataTable
   id: albania-what-changed
   title: 'Albanian arrivals and the returns deal'
@@ -2089,6 +2347,8 @@ observationMarks:
   albanian-claims-prioritised: {rows: ["Claim processing"]}
   albanian-claims-nearly-all-refused: {rows: ["Initial decisions"]}
   returns-to-albania-rose: {rows: ["Returns"]}
+  albanian-claims-fell-by-every-route: {lines: ["Albanian nationals, every route"], from: "2022-09", to: "2026-06"}
+  albanian-claims-are-not-every-entry: {lines: ["Albanian nationals, every route"]}
 ---
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-arrivals}
 
@@ -2198,6 +2458,18 @@ France changed its maritime law to allow boats to be intercepted at sea in limit
 ### Albanian arrivals have stayed low since 2023 {#channel-crossings-and-irregular-arrivals--albanian-arrivals-have-stayed-low}
 
 Albanian arrivals have stayed under a thousand a year since 2023, while arrivals from other countries recovered. Several things changed together after 2022, and the Migration Observatory says the deal "could be a major driver" of the continuing low numbers. [30](#source-channel-crossings-and-irregular-arrivals-30) The government prioritised Albanian asylum cases, and returns to Albania rose sharply. Albania accounts for 76% of all small-boat returns. [33](#source-channel-crossings-and-irregular-arrivals-33) The share of Albanian claims granted at first decision fell from almost half in 2021–2022 to 3% in 2024. [34](#source-channel-crossings-and-irregular-arrivals-34) No source separates the effect of the deal from faster processing, more refusals and more returns.
+
+## Observations {#channel-crossings-and-irregular-arrivals--observations-albania-claims-people}
+
+### Albanian asylum claims by every route fell too {#channel-crossings-and-irregular-arrivals--albanian-claims-fell-by-every-route}
+
+Albanians did not simply switch from boats to another way of claiming. Counting every route, Albanian asylum claims peaked in July to September 2022. Every quarter of 2025 was below every quarter from 2018 to 2024, and April to June 2026 had the fewest claims in a quarter since 2012. [35](#source-channel-crossings-and-irregular-arrivals-35)
+
+## Subtleties {#channel-crossings-and-irregular-arrivals--subtleties-albania-claims-people}
+
+### Claims are not everyone who comes {#channel-crossings-and-irregular-arrivals--albanian-claims-are-not-every-entry}
+
+The chart counts people who claimed asylum. Someone who enters or overstays without claiming is not in it, and no published figure counts them, so the chart cannot show whether some Albanians now come without claiming. [35](#source-channel-crossings-and-irregular-arrivals-35)
 
 ## Observations {#channel-crossings-and-irregular-arrivals--observations-albania-what-changed}
 

@@ -1,6 +1,6 @@
 ---
 title: Ballot Receipt Deadlines, Late Ballots and Counting Speed
-claimSources: [5, 7, 10, 15, 16]
+claimSources: [5, 7, 10, 18, 19]
 claim: >-
   Fewer states now count ballots that arrive after Election Day than in 2020, late arrival causes 12.1% to 26.9% of rejections, and the slowest counts are mostly in heavy-mail western states.
 status: well-supported
@@ -246,6 +246,41 @@ sources:
     url: https://pvtimes.com/news/nevada-braces-for-supreme-court-ruling-on-mail-ballots-184962/
     publisher: Pahrump Valley Times
     date: '2026-04-22'
+  # 15
+  - stance: supports
+    quote: >-
+      About 10,000 Pennsylvania votes are still sitting in purgatory. ...
+      There were 10,097 ballots received during the grace period ...
+      Late-arriving ballots remain excluded from Pennsylvania’s certified
+      presidential vote tallies ... The justices will decide Jan. 8 whether to
+      take up cases challenging those ballots ... Joe Biden’s 81,000-vote
+      victory in the state
+    title: '10,000 Pennsylvania votes are in limbo. They won’t change the outcome. They could still have a huge impact.'
+    url: https://www.inquirer.com/politics/election/pennsylvania-late-mail-ballots-supreme-court-20201220.html
+    publisher: The Philadelphia Inquirer (Jonathan Lai)
+    date: '2020-12-20'
+  # 16
+  - stance: supports
+    quote: >-
+      ordered county elections officials in Pennsylvania to keep separate
+      mail-in ballots that arrived after Election Day ... in response to a
+      plea from the state Republican Party ... The state's top court granted
+      a three-day extension, and the Supreme Court refused to block it.
+    title: Justice Alito orders Pennsylvania officials to separate ballots that arrived after Election Day
+    url: https://www.pbs.org/newshour/politics/justice-alito-orders-pennsylvania-officials-to-separate-ballots-that-arrived-after-election-day
+    publisher: PBS NewsHour (Associated Press)
+    date: '2020-11-06'
+  # 17
+  - stance: supports
+    quote: >-
+      Petition DENIED. Justice Thomas, dissenting from the denial of
+      certiorari. ... Justice Alito, with whom Justice Gorsuch joins,
+      dissenting from the denial of certiorari. ... Petition for certiorari
+      denied on February 22, 2021.
+    title: Republican Party of Pennsylvania v. Degraffenreid (case file)
+    url: https://www.scotusblog.com/case-files/cases/republican-party-of-pennsylvania-v-degraffenreid-2
+    publisher: SCOTUSblog
+    date: '2021-02-22'
 series:
   title: 'Deadlines for mail ballots to arrive'
   subtitle: 'Number of states under each deadline rule, 2016–2026'
@@ -268,7 +303,7 @@ series:
     - period: '2020-03'
       label: 'Pandemic rule changes'
       note: 'NCSL: "Many states enacted policies allowing ballots to be received after Election Day during the pandemic".'
-      source: 15
+      source: 18
     - period: '2025'
       label: 'North Dakota, Ohio and Utah require receipt by Election Day'
       note: 'Ohio keeps a four-day window for military and overseas ballots.'
@@ -431,8 +466,8 @@ dataStillNeeded:
       largest counties have a published figure here.
   - measure: 'Late rejections in the 3 November 2026 general election, especially in North Dakota, Ohio and Utah, which ended their grace periods in 2025'
     why: 'The rising late rejections here are from primaries. The first general election under the new deadlines will show whether voters adapt or rejections rise.'
-  - measure: 'Any study linking how long a count takes, or whether the lead changes during it, to voters'' confidence in the result'
-    why: 'The argument that slow counts breed suspicion is untested by any source found here; a measured link, or its absence, would decide whether counting speed is a trust question or only a convenience.'
+  - measure: 'A study of real elections linking how long a count takes, or whether the lead changes during it, to voters'' confidence in the result'
+    why: 'Survey experiments find that telling people about a slow count, or a late lead change, lowers trust (see [confidence and disputed results](#fact-confidence-and-disputed-results)). None measures voters after a real count, so how much counting speed moves trust in practice is still open.'
   - measure: 'Late arrival''s share of rejections in EAVS 2004–2014'
     why: 'The chart starts in 2016. The longer run would show whether 2020''s low share was unusual or part of a trend.'
 figures:
@@ -508,6 +543,17 @@ figures:
         label: Measured against
         sortable: false
     rows:
+      - election: 'Pennsylvania general, 2020'
+        late:
+          value: '10,097 received during a three-day grace period set by the state''s top court; kept separate on a Supreme Court justice''s order, and left out of the certified presidential count'
+          sources:
+            - 15
+            - 16
+        against:
+          value: 'Biden''s 81,000-vote margin in the state; the Supreme Court declined to hear the challenge in February 2021, over three dissents'
+          sources:
+            - 15
+            - 17
       - election: 'Nevada general, 2024: Clark and Washoe counties'
         late:
           value: 'About 9,500 + 2,400 received after Election Day, inside the four-day window'
@@ -549,7 +595,7 @@ figures:
         late:
           value: 17.8% of rejected mail ballots
           sources:
-            - 16
+            - 19
         against:
           value: '584,463 rejected, 1.2% of returned mail ballots'
           sources:
@@ -660,6 +706,7 @@ observationMarks:
   preprocessing-speeds-first-hours: {rows: ["No pre-processing before Election Day", "Pre-processing allowed"]}
   gap-gone-by-24-hours: {rows: ["Pre-processing allowed"]}
   late-ballots-small-in-nevada: {rows: ["Nevada general, 2024: Clark and Washoe counties"]}
+  pennsylvania-2020-late-ballots-litigated: {rows: ["Pennsylvania general, 2020"]}
   2020-low: {lines: ["United States"], at: "2020"}
   fifteen-versus-thirty: {rows: ["Washington", "Illinois", "Alaska", "District of Columbia", "Maryland", "California", "New York", "Oregon", "New Jersey", "Mississippi (business days)", "West Virginia", "Nevada", "Kansas", "Massachusetts", "Virginia", "Texas"]}
   most-votes-counted-within-hours: {rows: ["Pennsylvania", "Georgia", "Michigan", "Wisconsin", "North Carolina"]}
@@ -676,7 +723,7 @@ observationMarks:
 
 ### States counting late ballots peaked at 21 in 2020 and are down to 15, against 13 in 2016 {#ballot-deadlines-and-counting-speed--back-to-2016-level}
 
-The number of states counting late-arriving ballots peaked in November 2020 and has fallen since (chart). [15](#source-ballot-deadlines-and-counting-speed-15) NCSL expects the count of states requiring Election Day receipt in 2026 to be "roughly the same as it was in November 2016". [15](#source-ballot-deadlines-and-counting-speed-15)
+The number of states counting late-arriving ballots peaked in November 2020 and has fallen since (chart). [18](#source-ballot-deadlines-and-counting-speed-18) NCSL expects the count of states requiring Election Day receipt in 2026 to be "roughly the same as it was in November 2016". [18](#source-ballot-deadlines-and-counting-speed-18)
 
 North Dakota, Ohio and Utah moved to Election Day receipt in 2025. Kansas legislated the same change, but a court has blocked it for now (both marked under the chart). [1](#source-ballot-deadlines-and-counting-speed-1)
 
@@ -684,13 +731,13 @@ North Dakota, Ohio and Utah moved to Election Day receipt in 2025. Kansas legisl
 
 ### Since 2016, late arrival has caused 12.1% to 26.9% of rejections, depending on the election {#ballot-deadlines-and-counting-speed--late-share-of-rejections}
 
-In every federal general election since 2016, between about one in eight and more than one in four rejected mail ballots was rejected for arriving too late (chart). [7](#source-ballot-deadlines-and-counting-speed-7) [5](#source-ballot-deadlines-and-counting-speed-5) [16](#source-ballot-deadlines-and-counting-speed-16)
+In every federal general election since 2016, between about one in eight and more than one in four rejected mail ballots was rejected for arriving too late (chart). [7](#source-ballot-deadlines-and-counting-speed-7) [5](#source-ballot-deadlines-and-counting-speed-5) [19](#source-ballot-deadlines-and-counting-speed-19)
 
-In 2024 that was 17.8% of rejections, the third-largest reason after signature problems and "other". [16](#source-ballot-deadlines-and-counting-speed-16) Rejections themselves were 1.2% of returned mail ballots. [3](#source-ballot-deadlines-and-counting-speed-3)
+In 2024 that was 17.8% of rejections, the third-largest reason after signature problems and "other". [19](#source-ballot-deadlines-and-counting-speed-19) Rejections themselves were 1.2% of returned mail ballots. [3](#source-ballot-deadlines-and-counting-speed-3)
 
 ### The low point came when the most states had grace periods {#ballot-deadlines-and-counting-speed--2020-low}
 
-Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [15](#source-ballot-deadlines-and-counting-speed-15) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that [grace periods](#glossary-grace-period) caused the drop.
+Late arrival's share of rejections was lowest in 2020, when the most states counted ballots arriving after Election Day (charts). [5](#source-ballot-deadlines-and-counting-speed-5) [18](#source-ballot-deadlines-and-counting-speed-18) The two series come from different sources, and much else about voting changed in 2020, so the timing alone does not show that [grace periods](#glossary-grace-period) caused the drop.
 
 ## Observations {#ballot-deadlines-and-counting-speed--observations-grace-windows}
 
@@ -735,6 +782,12 @@ By 24 hours after polls closed, "the gap between states had essentially disappea
 ### US late mail ballots, and what they are measured against {#ballot-deadlines-and-counting-speed--late-ballots-table}
 
 Each card uses a different election and denominator, so the figures are not comparable with one another.
+
+### In Pennsylvania in 2020, ballots that arrived after Election Day were fought over up to the Supreme Court {#ballot-deadlines-and-counting-speed--pennsylvania-2020-late-ballots-litigated}
+
+Pennsylvania's top court extended the 2020 deadline by three days, and 10,097 ballots arrived in that window. [16](#source-ballot-deadlines-and-counting-speed-16) [15](#source-ballot-deadlines-and-counting-speed-15) At the state Republican Party's request, Justice Alito ordered them kept separate, and they were left out of the certified presidential count. [16](#source-ballot-deadlines-and-counting-speed-16) [15](#source-ballot-deadlines-and-counting-speed-15)
+
+They were far fewer than Biden's 81,000-vote margin. [15](#source-ballot-deadlines-and-counting-speed-15) The Supreme Court declined to hear the case in February 2021, with Justices Thomas, Alito and Gorsuch dissenting. [17](#source-ballot-deadlines-and-counting-speed-17)
 
 ### Nevada's late ballots were few against the votes cast and the margins {#ballot-deadlines-and-counting-speed--late-ballots-small-in-nevada}
 

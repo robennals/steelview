@@ -1103,6 +1103,14 @@ figures:
           sources:
             - 21
         mode: In person
+      - survey: 'Gerber, Huber, Doherty and Dowling (published 2013)'
+        method: Nationally representative survey, with regression analysis
+        asked: Whether voters believe their ballot choices are kept secret
+        finding:
+          value: '25 per cent did not believe their choices are kept secret; social forces had "a greater effect on vote choices among people who doubt the formal secrecy of the ballot"'
+          sources:
+            - 23
+        mode: Any
       - survey: 'Rasmussen–Heartland, December 2023'
         method: 'Opt-in, mostly online panel, which critics say "cannot have a margin of error"; about 325 mail voters; asked three years after 2020'
         asked: 'Did someone fill out your ballot, or did you fill out another''s, "in part or in full" (lawful help included)'
@@ -1343,7 +1351,7 @@ observationMarks:
   france-abstention-not-higher: {rows: ["Presidential", "Legislative", "Municipal", "Cantonal"]}
   france-restoration-rejected: {rows: ["National Assembly, 3 February 2022", "Senate bill for presidential elections"]}
   secrecy-evidence-is-polling-place: {whole: true}
-  secrecy-doubts-matter: {rows: ["Dowling et al., December 2010 (published 2019)"]}
+  secrecy-doubts-matter: {rows: ["Gerber, Huber, Doherty and Dowling (published 2013)"]}
   rasmussen-heartland-weak-measure: {rows: ["Rasmussen–Heartland, December 2023"]}
   pressure-may-be-underreported: {rows: ["Rose pilot, Washington County, Oregon, 2000"]}
   uk-election-courts: {rows: ["Birmingham (Bordesley Green and Aston)", "Woking", "Tower Hamlets"]}

@@ -185,11 +185,10 @@ examination yields, not about what is popular.
 
 **Narrow before you contest.** The default move on a claim that looks
 contested is to narrow it until it clears the 90% bar. "Immigration lowers
-wages" is contested. What `uk-immigration` ships instead is
-`wage-effects-small-and-uneven`: "Migration has not been a major determinant
-of UK-born workers' wages, though the effect is mildly negative for
-lower-paid workers and mildly positive for higher-paid ones" — well-supported,
-and more useful to both sides than the contested version. A `contested` fact
+wages" is contested. "Migration has not been a major determinant of
+UK-born workers' wages, though the effect is mildly negative for lower-paid
+workers and mildly positive for higher-paid ones" is well-supported, and more
+useful to both sides than the contested version. A `contested` fact
 that could have been split into a well-supported core plus a genuinely open
 remainder is an authoring failure. Where the open remainder is what the sides
 are divided over, name that tension in a crux.
@@ -199,16 +198,15 @@ disagreement is central to what the sides are arguing about and a reader
 needs to understand why the evidence points both ways. It costs sources on
 both sides — the build requires at least one `supports` and one `contests`
 source — plus a body explaining the shape of the disagreement. More than a
-handful in a topic means the facts have not been narrowed enough.
-`uk-immigration` currently has none, which is the healthy end of the range,
-not a gap.
+handful in a topic means the facts have not been narrowed enough. A topic
+with none is at the healthy end of the range, not short of something.
 
 **Prefer an affirmative restatement to a negation.** Most `not-supported`
 facts are better handled by having a well-supported fact saying the opposite.
 Stating a myth in a claim line in order to deny it repeats the myth and
 spends the slot on someone else's framing. Before writing `not-supported`,
 try to write the positive claim that displaces it — usually the same sources
-support it. `how-people-actually-arrive` does this job: "Of the 813,000
+support it. A claim such as this does the job: "Of the 813,000
 people who moved to the UK long-term in 2025, about 46,500 were detected
 arriving by illegal routes — 5.7% — while study was the largest single reason
 for non-EU+ arrivals at 47%". A reader who holds the opposite belief gets it
@@ -222,14 +220,9 @@ people do not hold (`complicated`), genuinely unsettled (`unknown`), or
 contrary to the evidence (`not-supported`). Their job is to stop a reader
 thinking the page ignored X.
 
-The schema already encodes their rank. Only `well-supported` and `contested`
-facts may appear in a viewpoint's `citesFacts`; only `well-supported` facts
-may be `acknowledges`. So a non-claiming fact can only ever reach
-`setsAside`, and `setsAside` is not counted by the fact ranker — which puts
-these facts in the unranked tail by construction. You cannot accidentally
-open a topic with a claim nobody is making. `immigration-and-local-social-trust`
-(`unknown`) and `public-opinion-on-immigration` (`complicated`) both live
-there.
+Wherever facts are listed by status, these come after the facts that claim
+something (`FACT_STATUS_ORDER` in `lib/content/rank-facts.ts`), so a topic
+never opens on a claim nobody is making.
 
 The healthy shape of a topic is mostly `well-supported`, a few `contested`
 that genuinely divide the sides, and a short tail of the rest defusing
@@ -342,7 +335,8 @@ comparison is not required for topics that cannot sensibly be sliced by country;
 use the relevant groups instead. Lack of effort is not a reason. Search for data
 before claiming it is unavailable, and offer the closest useful comparison with
 its limits made explicit. Similarity or rarity alone does not make something
-good or bad. Never substitute asylum claims for illegal entries or stocks for flows.
+good or bad. Never substitute a related measure for the one the claim is about:
+applications are not arrivals, and stocks are not flows.
 
 **Important sub-slices belong in the opening graphs.** If a slice is central to
 the argument—especially if a viewpoint cites it—show it there rather than hiding
@@ -556,18 +550,17 @@ advisory for now: it lists untraced values and exits 0, and
 The audit checks the arithmetic and inputs; a derivation whose input is not in
 the fact's quotes is reported as an unmatched figure (and the prose using it
 is unmatched too), while a wrong result fails outright. Readers should be able to reproduce
-it from the collapsed methodology explanation. For population-adjusted migration,
-source the population denominator and explain its vintages there. Absolute flows
+it from the collapsed methodology explanation. For a rate per head of population,
+source the denominator and explain its vintages there. Absolute counts
 and population shares answer different questions; neither substitutes for the
 other. Do not let lengthy collation notes crowd out the evidence.
 
-**An honest gap beats a plausible number.** `religion-of-arrivals-is-not-recorded`
-opens by stating that no official statistic records the religion of people
-arriving in the UK, and cites the ONS FOI response saying so. The absence is
-itself context: it tells the reader that any per-year figure they have seen
-is either a decennial Census cross-tabulation or a count of arrivals from
-Muslim-majority countries relabelled. Where a number does not exist, say that
-it does not exist and say what gets substituted for it.
+**An honest gap beats a plausible number.** Where no official statistic
+measures something readers have seen figures for, say so, cite the source that
+says so, and say what the figures in circulation actually count. If no
+statistic records the religion of people arriving in a country, for example,
+any yearly figure a reader has seen is a census cross-tabulation or a count of
+arrivals from certain countries relabelled. The absence is itself context.
 
 ---
 
@@ -930,13 +923,10 @@ cherry-picking, so it gets the same discipline:
 - show **where the subject sits in the full distribution**, not only against
   the two neighbours that make the point.
 
-`asylum-claims-in-historical-and-european-context` does all three in its claim
-line: "Around 108,000 people claimed asylum in the UK in 2024, the highest
-since records began in 1979 and just above the 2002 peak — but per head of
-population that was only the seventeenth-largest intake in the EU+, at 16
-claims per 10,000 residents." Time and space in one sentence, and the
-position in the distribution given as a rank rather than as two flattering
-neighbours.
+A claim line can do all three in one sentence: "the highest number on record,
+but per head of population only the seventeenth-largest of the 31 countries
+compared". Time and space together, and the position in the distribution
+given as a rank rather than as two flattering neighbours.
 
 **Charts follow the concrete opening finding**, ahead of the detailed context
 and Subtleties.
@@ -1017,16 +1007,6 @@ else its latest. Text figures — `dataTable`, `quotes` (and `quoteComparison`),
 build rejects them. Each kind's thumbnail on a closed row is drawn from the
 same layout; kinds set as type, such as `keyFigures`, thumbnail as plain rows.
 
-`uk-immigration` opens on `immigration-against-the-long-run`, read as a
-share of the population since 1964 (`reading: share-of-population`), which is
-what makes the magnitude legible. Then the modelled lifetime fiscal
-contribution by visa route (`immigration-economy-and-public-finances` /
-`lifetime-by-route`), government investment against the OECD
-(`immigration-housing-and-public-services` / `investment`), grants of
-settlement (`settlement-and-migrant-status` / `series`) and the foreign-born
-share since 1951 (`integration-outcomes` / `series`). Five charts, because
-seven viewpoints lean on five distinct bodies of evidence; between them they
-cover all seven.
 
 ### Figures
 
@@ -1529,14 +1509,7 @@ Keep it in the viewpoint's own spirit: "Keep our word", not "Pro-migrant".
 
 A viewpoint title is a one-line proposition someone would actually say, not a
 keyword label. "Open and welcoming" is a label. "Immigration makes Britain
-better off, and we should welcome it" is a claim. The five in
-`uk-immigration` are all propositions:
-
-- We need the right kind of immigration, not simply less of it
-- Too much immigration too fast damages the fabric of our society
-- Immigration makes Britain better off, and we should welcome it
-- A country should have a meaningful say over who joins it
-- We have a moral duty to help people fleeing danger
+better off, and we should welcome it" is a claim.
 
 **The set should match what people actually argue**, not an analyst's
 taxonomy of why they argue it. The question is not "what are the possible
@@ -1713,6 +1686,23 @@ belongs in the report as an observation; in the viewpoint, the visual under it
 carries the data. The last heading is the conclusion, and reads as one:
 "So Britain should …".
 
+**Complete the chain, and test every link.** The headings must cover, in
+order: what is happening, and why it is bad (or good and under threat); what
+causes it, where the remedy depends on the cause; and why the remedy would
+work. Showing only that a remedy is possible or lawful, without first showing
+the problem it solves, leaves out the first link. Then put each link to the
+objection a doubting reader would raise first, and answer it in that step:
+
+- **Measure the whole problem.** A claim that a measure reduced a problem must
+  show the problem's total fell, not only one channel of it, which may simply
+  have moved to another.
+- **Show how a result was reached.** A measure can hit its target in a way
+  that defeats the point; say which way it was reached.
+- **Account for the obvious causes.** A claim that one thing drove a change
+  must reckon with the causes a reader will think of first.
+- **Read the latest data.** If recent figures move against a step, say what
+  they show and why the step still holds.
+
 ```markdown
 A regime with Iran's record could not be allowed the one weapon that would put
 it beyond punishment. …
@@ -1732,8 +1722,7 @@ evidence gives the rest of what supports it and explains why. Deal with the stro
 section it bears on, rather than collecting objections at the end. The last
 section states the policy or judgment the earlier sections support, and its
 heading says what that is. A sequence of unrelated true headings is not an
-argument, however good its citations. `us-iran-war` is the model for how
-headings build an argument, though its sections are longer than this guide now asks.
+argument, however good its citations.
 
 **Write so a middle-school reader can follow every sentence.** Many readers
 find long or complicated sentences hard, and a viewpoint that loses them has
@@ -2016,9 +2005,9 @@ viewpoint.
 
 `order` is an explicit integer. **It must not group one side of the argument
 together.** Alternate across the spectrum, so a reader scrolling meets
-disagreement rather than a bloc. `uk-immigration` runs: right-kind (1),
-too-much-too-fast (2), makes-Britain-better-off (3), country-should-decide
-(4), moral-duty (5).
+disagreement rather than a bloc: a topic whose viewpoints run from
+restrictive to open does not put its restrictive ones first and its open ones
+last.
 
 ---
 
@@ -2462,8 +2451,7 @@ harmless part with a worrying one, readers assume all of it is the worrying
 kind. Iran's enriched uranium totalled almost ten tonnes, which reads as ten
 tonnes of bomb material, but only 441 kg of it was enriched to 60%; the rest
 was enriched to 20% or less. So chart the worrying part on its own, or break
-the total into its parts. The Iran topic's home-page chart shows the 60% stock,
-and the full total's description says what it is made of.
+the total into its parts, and say in the total's description what it is made of.
 
 ### Keep Observations With Their Graph
 
@@ -2492,14 +2480,14 @@ methods change, so incompatible measurements do not appear to be a continuous tr
 
 ### Nationality Breakdowns and Selectable Country Comparisons
 
-If an argument distinguishes EU from non-EU immigration, expose those series in
-the main charts. Keep a country's own nationals separate rather than folding
+If an argument distinguishes groups of people, such as EU from non-EU
+nationals, show those groups as series in the main charts. Keep a country's own nationals separate rather than folding
 returnees into a foreign-national group. Say whether the grouping is nationality,
 birthplace or previous residence; they cannot be substituted for one another.
-State membership changes and EU versus EU+ (EU plus EFTA) differences visibly.
-Country comparisons should use a consistent grouping and common year. Use the
-same population-adjusted measure for each destination, with denominator timing
-and refugee-coverage differences disclosed.
+Show changes in a group's membership visibly, such as EU against EU+ (the EU
+plus EFTA). Country comparisons should use a consistent grouping and common
+year. Use the same per-head measure for each country, and disclose differences
+in denominator timing and in who is counted.
 
 A comparison can define `groups`, a `defaultGroup` index, and a `values` array on
 every item in the same group order. The default can show the slice the argument
@@ -2536,8 +2524,7 @@ period rather than a date, so it keeps its **Method Changes** expando.
 
 A statistic or trend already explained by a graph normally belongs in an
 observation, not in another fact card. Viewpoint pills can link directly to that
-observation. For example, the fall from the UK net-migration peak lives in the
-immigration-rates fact. Preserve old URLs with redirects when merging facts.
+observation. Preserve old URLs with redirects when merging facts.
 
 For artifact-specific subtleties, use
 `## Subtleties {#my-fact--subtleties-people}` for the `people` reading (or a
