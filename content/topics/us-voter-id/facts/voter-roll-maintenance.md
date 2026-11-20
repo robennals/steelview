@@ -646,6 +646,17 @@ sources:
     url: https://www.sos.texas.gov/about/newsreleases/2026/091526.shtml
     publisher: Texas Secretary of State
     date: '2026-09-15'
+  - stance: supports
+    quote: |-
+      Louisiana’s top election official said she has discovered 390 non-citizen registered voters in the state, with 79 voting in at least one election over the past several decades. The 390 suspected non-citizen voters represent approximately 0.01% of the roughly 2.9 million registered voters in Louisiana.
+
+      … In a later interview, Landry acknowledged the possibility that some of her findings could be attributed to errors or outdated information.
+
+      … While Landry said voter fraud is “not a systemic problem in Louisiana,” she noted that some local elections have been decided by just a handful of votes. She didn’t say if the newly discovered noncitizen voters impacted any of those elections.
+    title: Louisiana election investigation finds 79 noncitizens have voted since 1980s
+    url: https://www.newsfromthestates.com/article/louisiana-election-investigation-finds-79-noncitizens-have-voted-1980s
+    publisher: Louisiana Illuminator (via News From The States)
+    date: '2025-09-04'
 series:
   title: 'Voter records removed'
   subtitle: 'Per two-year cycle, US, 2004–2024'
@@ -1144,33 +1155,41 @@ comparisons:
         detail: "Returned by voter, confirming registration with no change"
         value: 3.0
   - id: pew-2011-baseline
-    title: Inaccurate voter registrations
-    subtitle: "Pew's national estimate, by type, data to March 2011"
+    title: Registrations that shouldn't be on the rolls
+    subtitle: 'Per 1,000 registrations, from Pew (data to 2011) and state reviews'
     description: >-
-      The only direct national estimate of inaccurate or no-longer-valid voter
-      registrations, by type. Categories overlap; the first bar is the
-      de-duplicated total.
+      How often a voter registration belongs to someone who is dead, is
+      registered in more than one state, or is not a citizen. There is no
+      national estimate of people still registered after a disqualifying
+      criminal conviction: in 2024, removals for "Criminal
+      Conviction/Incarceration" were 1.5% of all removals.
     unit: count
-    valueLabel: Registration records
-    sources: [27]
+    valueLabel: Registrations per 1,000
+    sources: [27, 2, 49]
     note: >-
-      RTI International analysis of Catalist's commercial voter file for the
-      Pew Center on the States, using data from 2004 to March 2011. Pew says
-      it "likely underestimates" the problem. "Inaccurate" includes eligible
-      voters whose records have wrong details, so this is not a count of
-      ineligible people. The categories overlap and must not be added.
+      Pew counted 24 million records as inaccurate or no longer valid, "nearly 13
+      percent of the national total", so the total is taken as about 185 million
+      registrations, and the dead and multi-state counts are divided by it. Pew's
+      other categories, out-of-date records and incorrect addresses (about 12
+      million each), are mostly eligible voters with old details, so they are left
+      out. The non-citizen row is the highest of the five state reviews in this
+      topic (Louisiana, 2025: 390 suspected, preliminary, of roughly 2.9 million
+      registered); the others found fewer, down to Georgia's 20 confirmed of 8.2
+      million in 2024. Registering in two states, often after a move, is not
+      itself illegal; voting twice is.
     items:
-      - label: "Inaccurate or no longer valid"
-        detail: 'De-duplicated total, data to March 2011: "nearly 13 percent of the national total". An "inaccurate" record is "an eligible voter whose file has incorrect data"'
-        value: 24000000
-      - label: Out of date
-        value: 12700000
-      - label: Incorrect address
-        value: 12000000
       - label: Registered in more than one state
-        value: 2758578
-      - label: Deceased but still registered
-        value: 1800000
+        subtitle: 'Pew, data to March 2011'
+        detail: '2,758,578 people'
+        value: 14.9
+      - label: Dead but still registered
+        subtitle: 'Pew, data to March 2011'
+        detail: 'More than 1.8 million records'
+        value: 9.8
+      - label: Not a citizen
+        subtitle: 'At most: highest of five state reviews, 2024–25'
+        detail: 'Louisiana, 2025: 390 suspected, preliminary, of roughly 2.9 million'
+        value: 0.13
 relatedFacts:
   - non-citizens-on-voter-rolls
   - election-fraud-and-voter-exclusion-history
@@ -1352,8 +1371,8 @@ figures:
         counts: { value: 'Registrations removed through the NVRA process: 1.2 million in Los Angeles County, 918,139 in New York City and 735,000 in Kentucky', sources: [43] }
         outcome: 'Reported April 2025'
 observationMarks:
-  pew-only-direct-measure: {rows: ["Inaccurate or no longer valid"]}
-  pew-not-fraud: {rows: ["Inaccurate or no longer valid"]}
+  pew-only-direct-measure: {rows: ["Registered in more than one state", "Dead but still registered"]}
+  pew-not-fraud: {rows: ["Registered in more than one state", "Dead but still registered"]}
   lists-contain-ineligible: {lines: ["Records removed"]}
   eric-cross-state-movers: {lines: ["Cross-state movers"], from: "2013", to: "2026"}
   eric-reports-fell: {lines: ["Cross-state movers"], from: "2013", to: "2026"}
@@ -1470,7 +1489,7 @@ Iowa objected to ERIC's bylaws, including its requirement that members contact e
 
 ### The only direct national estimate, from data to March 2011, put nearly 13 percent of records as inaccurate or no longer valid {#voter-roll-maintenance--pew-only-direct-measure}
 
-Pew's study, using data from 2004 to March 2011 and published in February 2012, put inaccurate or no-longer-valid records at nearly 13 percent of the national total; the chart breaks that down by type. Pew said the analysis "likely underestimates" the problem. [27](#source-voter-roll-maintenance-27)
+Pew's study, using data from 2004 to March 2011 and published in February 2012, put inaccurate or no-longer-valid records at nearly 13 percent of the national total. Most of those are eligible voters with old details; the chart shows the two kinds that should not be on the rolls at all, dead people and people registered in more than one state. Pew said the analysis "likely underestimates" the problem. [27](#source-voter-roll-maintenance-27)
 
 The Supreme Court's majority in *Husted* (2018) opened with this estimate, [18](#source-voter-roll-maintenance-18) and ERIC's website still cites the same 2012 study for the scale of the problem. [24](#source-voter-roll-maintenance-24) No later national estimate of the same kind was found.
 
