@@ -301,7 +301,7 @@ export function PanelSheet({ title, observation, highlight = NONE, leave, loaded
           </button>
         </div>
         <div className="sv-modal__scroll">
-          <article className="sv-factpage sv-factpanel">
+          <article className="sv-factpanel">
             <ShownObservation.Provider value={observation}>
               <SheetFocus.Provider value={observation}>
                 <HighlightedQuotes.Provider value={highlight}>{children}</HighlightedQuotes.Provider>

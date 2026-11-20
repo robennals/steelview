@@ -32,13 +32,17 @@ sources:
     publisher: U.S. Election Assistance Commission
     date: '2025-06-30'
   - stance: supports
-    quote: >-
-      Page 153: Death and Other percentages updated in Figure 7. Three Removal
-      Reasons Accounted for the Majority of the Voter Registration Removals …
-      No Response to Notices and Missed Two Federal General Elections 33.5% …
-      Moved Out of Jurisdiction 30.8% … Death 21.6% … Duplicate Voter
-      Registration Record 8.1% … Other 3.4% … Voter's Request 2.6% … Criminal
-      Conviction/Incarceration 1.5%
+    quote: |-
+      Page 153: Death and Other percentages updated in Figure 7.
+
+      Three Removal Reasons Accounted for the Majority of the Voter Registration Removals
+      No Response to Notices and Missed Two Federal General Elections 33.5%
+      Moved Out of Jurisdiction 30.8%
+      Death 21.6%
+      Duplicate Voter Registration Record 8.1%
+      Other 3.4%
+      Voter's Request 2.6%
+      Criminal Conviction/Incarceration 1.5%
     title: 'Errata Note: 2024 EAVS Comprehensive Report and Accompanying Dataset'
     url: https://www.eac.gov/sites/default/files/2026-02/Errata_Note_2024_EAVS_v2.pdf
     publisher: U.S. Election Assistance Commission
@@ -94,35 +98,19 @@ sources:
     publisher: U.S. Election Assistance Commission
     date: '2023-06-29'
   - stance: supports
-    quote: >-
-      Between the close of registration for the 2018 general election and the
-      close of registration for the 2020 general election, states reported
-      removing 18,781,054 records from their voter registration rolls. This was
-      equal to 8.2% of the total number of voters who were registered in the
-      United States as of the close of registration for the 2020 general
-      election. … The most common reason was failure to both respond to a
-      confirmation notice and to vote in two consecutive federal general
-      elections, which accounted for 32.1% of removals. Cross-jurisdiction
-      change of address and death of the registrant were the other two major
-      reasons for states’ removal of registrants from their rolls (28.5% and
-      21.4%, respectively).
+    quote: |-
+      Between the close of registration for the 2018 general election and the close of registration for the 2020 general election, states reported removing 18,781,054 records from their voter registration rolls. This was equal to 8.2% of the total number of voters who were registered in the United States as of the close of registration for the 2020 general election.
+
+      … States also reported the reasons for removing records from their voter registration rolls. These reasons for removal are shown in Figure 6. The most common reason was failure to both respond to a confirmation notice and to vote in two consecutive federal general elections, which accounted for 32.1% of removals. Cross-jurisdiction change of address and death of the registrant were the other two major reasons for states’ removal of registrants from their rolls (28.5% and 21.4%, respectively).
     title: 'Election Administration and Voting Survey 2020 Comprehensive Report'
     url: https://www.eac.gov/sites/default/files/document_library/files/2020_EAVS_Report_Final_508c.pdf
     publisher: U.S. Election Assistance Commission
     date: '2021'
   - stance: supports
-    quote: >-
-      Between the close of registration for the 2016 general elections and the
-      close of registration for the 2018 general elections, states reported
-      removing 17,300,470 records from their registration rolls. The number of
-      removed registrants comprised up to 8.2 percent of the total registered
-      voters in the reported election period. … The most common was failure to
-      both respond to a confirmation notice and vote in two consecutive federal
-      general elections, which accounted for 35.3 percent of the total
-      removals. Cross-jurisdiction change of address and death of the
-      registrant were the other two major reasons for states to remove
-      registrants from their rolls (24.7 percent and 21.6 percent,
-      respectively).
+    quote: |-
+      Between the close of registration for the 2016 general elections and the close of registration for the 2018 general elections, states reported removing 17,300,470 records from their registration rolls. The number of removed registrants comprised up to 8.2 percent of the total registered voters in the reported election period.
+
+      … States also reported the reasons for removing records from their registration rolls. These reasons for removal are shown in Figure 6. The most common was failure to both respond to a confirmation notice and vote in two consecutive federal general elections, which accounted for 35.3 percent of the total removals. Cross-jurisdiction change of address and death of the registrant were the other two major reasons for states to remove registrants from their rolls (24.7 percent and 21.6 percent, respectively).
     title: 'Election Administration and Voting Survey 2018 Comprehensive Report'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/6/2018_EAVS_Report.pdf
     publisher: U.S. Election Assistance Commission
@@ -149,147 +137,102 @@ sources:
     publisher: U.S. Election Assistance Commission
     date: '2023-12-18'
   - stance: supports
-    quote: >-
-      Over 14.8 million voters were removed from registration rolls in the 2
-      years leading up to the 2014 midterm election (see Table 4b), including
-      those who moved to a different jurisdiction. … Overall, States removed
-      7.8% of registered voters in 2014. Of the over 14.8 million voters
-      removed from the rolls, over 4.6 million, or 31.5%, were removed because
-      they moved to other jurisdictions … Overall, over 2.7 million voters, or
-      18.6% of all voters removed, were removed because they had died. The
-      leading cause of removal of inactive voters was a failure to respond to a
-      confirmation notice and subsequent failure to vote in the two most recent
-      Federal elections, accounting for 5.2 million voters, or 35.5% of the
-      total removals.
+    quote: |-
+      Over 14.8 million voters were removed from registration rolls in the 2 years leading up to the 2014 midterm election (see Table 4b), including those who moved to a different jurisdiction.
+
+      … Overall, States removed 7.8% of registered voters in 2014. Of the over 14.8 million voters removed from the rolls, over 4.6 million, or 31.5%, were removed because they moved to other jurisdictions
+
+      … Overall, over 2.7 million voters, or 18.6% of all voters removed, were removed because they had died. The leading cause of removal of inactive voters was a failure to respond to a confirmation notice and subsequent failure to vote in the two most recent Federal elections, accounting for 5.2 million voters, or 35.5% of the total removals.
     title: 'The 2014 EAC Election Administration and Voting Survey Comprehensive Report'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/1/2014_EAC_EAVS_Comprehensive_Report_508_Compliant.pdf
     publisher: U.S. Election Assistance Commission
     date: '2015-06-30'
   - stance: supports
-    quote: >-
-      Nearly 13.7 million voters were removed from registration rolls in the
-      two years leading up to the 2012 presidential election (see Table 4b). …
-      Overall, States removed 7.1% of registered voters in 2012. Of the nearly
-      13.7 million voters removed from the rolls, over 3.7 million, or 27.1%,
-      were removed because they moved to other jurisdictions … nearly 3.0
-      million voters, or 21.6% of all voters removed, were removed because they
-      had died. The leading cause of removal of inactive voters was a failure to
-      respond to a confirmation notice and subsequent failure to vote in the two
-      most recent Federal elections, accounting for 4.1 million voters, or
-      30.1% of the total removals.
+    quote: |-
+      Nearly 13.7 million voters were removed from registration rolls in the two years leading up to the 2012 presidential election (see Table 4b).
+
+      … Overall, States removed 7.1% of registered voters in 2012. Of the nearly 13.7 million voters removed from the rolls, over 3.7 million, or 27.1%, were removed because they moved to other jurisdictions
+
+      … nearly 3.0 million voters, or 21.6% of all voters removed, were removed because they had died. The leading cause of removal of inactive voters was a failure to respond to a confirmation notice and subsequent failure to vote in the two most recent Federal elections, accounting for 4.1 million voters, or 30.1% of the total removals.
     title: 'The Impact of the National Voter Registration Act of 1993 on the Administration of Elections for Federal Office, 2011–2012'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/28/EAC_NVRA%20Report_lowres.pdf
     publisher: U.S. Election Assistance Commission
     date: '2013-06-30'
   - stance: supports
-    quote: >-
-      Over 15 million voters were removed from registration rolls in the two
-      years leading up to the 2010 Federal elections (see Table 4b). … Overall,
-      States removed 8.0% of the number of registered voters in 2010. Of the 15
-      million voters removed from the rolls, nearly 3.8 million, or 25.2%, were
-      removed because they moved to other jurisdictions … nearly 3.0 million
-      voters, or 19.8% of all voters removed, were removed because they had
-      died. The leading cause of removal, however, was a failure to respond to a
-      confirmation notice and failure to vote in the two most recent Federal
-      elections, accounting for 6.1 million voters, or 40.7% of the total
-      removals.
+    quote: |-
+      Over 15 million voters were removed from registration rolls in the two years leading up to the 2010 Federal elections (see Table 4b).
+
+      … Overall, States removed 8.0% of the number of registered voters in 2010. Of the 15 million voters removed from the rolls, nearly 3.8 million, or 25.2%, were removed because they moved to other jurisdictions
+
+      … nearly 3.0 million voters, or 19.8% of all voters removed, were removed because they had died. The leading cause of removal, however, was a failure to respond to a confirmation notice and failure to vote in the two most recent Federal elections, accounting for 6.1 million voters, or 40.7% of the total removals.
     title: 'The Impact of the National Voter Registration Act of 1993 on the Administration of Elections for Federal Office, 2009–2010'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/28/2010%20NVRA%20FINAL%20REPORT.pdf
     publisher: U.S. Election Assistance Commission
     date: '2011-06-30'
   - stance: supports
-    quote: >-
-      caused the removal of nearly 12.7 million voters from registration rolls
-      in the two years leading up to the 2008 Presidential election (see Table
-      4b). … On average, States removed 6.6% of their reported 2008 registered
-      voters. Of voters removed from the rolls, 2.7 million, or 21.7%, were
-      removed because they moved to other jurisdictions, and nearly as many,
-      2.4 million, were removed because they had died. … 3.9 million voters, or
-      30.9% of the total removals, were removed due to this reason
+    quote: |-
+      caused the removal of nearly 12.7 million voters from registration rolls in the two years leading up to the 2008 Presidential election (see Table 4b).
+
+      … On average, States removed 6.6% of their reported 2008 registered voters. Of voters removed from the rolls, 2.7 million, or 21.7%, were removed because they moved to other jurisdictions, and nearly as many, 2.4 million, were removed because they had died.
+
+      … 3.9 million voters, or 30.9% of the total removals, were removed due to this reason
     title: 'The Impact of the National Voter Registration Act of 1993 on the Administration of Elections for Federal Office, 2007–2008'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/6/The%20Impact%20of%20the%20National%20Voter%20Registration%20Act%20on%20Federal%20Elections%202007-2008.pdf
     publisher: U.S. Election Assistance Commission
     date: '2009-06-30'
   - stance: supports
-    quote: >-
-      Of the 42 States that responded to this portion of the survey some 13
-      million registrants were removed from the voter lists during the
-      2004–2006 survey period. This number accounted for about 7.6 percent of
-      the registration rolls nationwide. … Some 3.5 million registrants were
-      removed from the voter rolls for failure to vote in two consecutive
-      Federal elections, which amounts to 27.1 percent of all removals among the
-      34 States providing this information. … The number removed due to a move
-      out of the jurisdiction was 3.0 million, or 23.1 percent of all removals.
-      Removals were due to death in 2.0 million cases, or 15.7 percent of all
-      removals.
+    quote: |-
+      Of the 42 States that responded to this portion of the survey some 13 million registrants were removed from the voter lists during the 2004–2006 survey period. This number accounted for about 7.6 percent of the registration rolls nationwide.
+
+      … Some 3.5 million registrants were removed from the voter rolls for failure to vote in two consecutive Federal elections, which amounts to 27.1 percent of all removals among the 34 States providing this information.
+
+      … The number removed due to a move out of the jurisdiction was 3.0 million, or 23.1 percent of all removals. Removals were due to death in 2.0 million cases, or 15.7 percent of all removals.
     title: 'The Impact of the National Voter Registration Act of 1993 on the Administration of Elections for Federal Office, 2005–2006'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/1/NVRA%20Reports%20and%20Data%20Sets%202006-2005.pdf
     publisher: U.S. Election Assistance Commission
     date: '2007-06-30'
   - stance: supports
-    quote: >-
-      States that responded to the survey reported the removal of 12.5 million
-      registrants from the voter lists during the 2002-2004 reporting period,
-      or 8.3 percent of total reported registration. The12.5 million removed
-      from voter lists in the 2002-2004 compares with approximately 15 million
-      registrants in 2000-2002 and 13 million registrants in 1998-2000. In the
-      2002-2004 period, 4.6 million registrants were removed for failure to vote
-      in two consecutive federal elections, amounting to 45.3 percent of all
-      removals in the nation. … About 3.4 million registrants were removed for
-      other reasons that included moved out of the county, moved out of the
-      state, declared mentally incompetent, or the registration was determined
-      to be a duplicate registration.
+    quote: |-
+      States that responded to the survey reported the removal of 12.5 million registrants from the voter lists during the 2002-2004 reporting period, or 8.3 percent of total reported registration. The12.5 million removed from voter lists in the 2002-2004 compares with approximately 15 million registrants in 2000-2002 and 13 million registrants in 1998-2000. In the 2002-2004 period, 4.6 million registrants were removed for failure to vote in two consecutive federal elections, amounting to 45.3 percent of all removals in the nation.
+
+      … About 3.4 million registrants were removed for other reasons that included moved out of the county, moved out of the state, declared mentally incompetent, or the registration was determined to be a duplicate registration.
     title: 'The Impact of the National Voter Registration Act of 1993 on the Administration of Elections for Federal Office, 2003–2004'
     url: https://www.eac.gov/sites/default/files/eac_assets/1/1/NVRA%20Reports%20and%20Data%20Sets%202003%20-%202004.pdf
     publisher: U.S. Election Assistance Commission
     date: '2005-06-30'
   - stance: complicates
-    quote: >-
-      Nationally, 38,803,086 confirmation notices were sent between the 2022
-      general election and the month before the 2024 general election,
-      accounting for 19.1% of the active voters reported by states in 2024. This
-      percentage was higher than what was reported by states in 2022 (13.7%)
-      and in 2020 (14.3%). Table 1 shows that unreturned confirmation notices
-      accounted for 68.9% of the total confirmation notices sent. … States
-      reported that 8.5% of confirmation notices were returned as
-      undeliverable, and confirmation notices returned by voters accounted for
-      the lowest percentages of confirmation notices sent (see Table 1).
+    quote: |-
+      Nationally, 38,803,086 confirmation notices were sent between the 2022 general election and the month before the 2024 general election, accounting for 19.1% of the active voters reported by states in 2024. This percentage was higher than what was reported by states in 2022 (13.7%) and in 2020 (14.3%). Table 1 shows that unreturned confirmation notices accounted for 68.9% of the total confirmation notices sent.
+
+      … States reported that 8.5% of confirmation notices were returned as undeliverable, and confirmation notices returned by voters accounted for the lowest percentages of confirmation notices sent (see Table 1).
     title: 'Errata Note: 2024 EAVS Comprehensive Report and Accompanying Dataset'
     url: https://www.eac.gov/sites/default/files/2026-02/Errata_Note_2024_EAVS_v2.pdf
     publisher: U.S. Election Assistance Commission
     date: '2026-02-12'
   - stance: supports
-    quote: >-
-      Held: The process that Ohio uses to remove voters on change-of-residence
-      grounds does not violate the Failure-to-Vote Clause or any other part of
-      the NVRA. … It has been estimated that 24 million voter registrations in
-      the United States—about one in eight—are either invalid or significantly
-      inaccurate. … Not only are States allowed to remove registrants who satisfy these
-      requirements, but federal law makes this removal mandatory. … Alito, J.,
-      delivered the opinion of the Court, in which Roberts, C. J., and Kennedy,
-      Thomas, and Gorsuch, JJ., joined. … Breyer, J., filed a dissenting
-      opinion, in which Ginsburg, Sotomayor, and Kagan, JJ., joined.
-      Sotomayor, J., filed a dissenting opinion.
+    quote: |-
+      Held: The process that Ohio uses to remove voters on change-of-residence grounds does not violate the Failure-to-Vote Clause or any other part of the NVRA.
+
+      … It has been estimated that 24 million voter registrations in the United States—about one in eight—are either invalid or significantly inaccurate.
+
+      … Not only are States allowed to remove registrants who satisfy these requirements, but federal law makes this removal mandatory.
+
+      … Alito, J., delivered the opinion of the Court, in which Roberts, C. J., and Kennedy, Thomas, and Gorsuch, JJ., joined.
+
+      … Breyer, J., filed a dissenting opinion, in which Ginsburg, Sotomayor, and Kagan, JJ., joined. Sotomayor, J., filed a dissenting opinion.
     title: 'Husted v. A. Philip Randolph Institute, 584 U.S. ___ (2018), opinion of the Court'
     url: https://www.law.cornell.edu/supremecourt/text/16-980
     publisher: Supreme Court of the United States (via Cornell Legal Information Institute)
     date: '2018-06-11'
   - stance: complicates
-    quote: >-
-      The record shows that in 2012 Ohio identified about 1.5 million registered
-      voters—nearly 20% of its 8 million registered voters—as likely ineligible
-      to remain on the federal voter roll because they changed their
-      residences. … In response to those 1.5 million notices, Ohio only received
-      back about 60,000 return cards (or 4%) which said, in effect, “You are
-      right, Ohio. I have, in fact, moved.” Ibid. In addition, Ohio received
-      back about 235,000 return cards which said, in effect, “You are wrong,
-      Ohio, I have not moved.” In the end, however, there were more than
-      1,000,000 notices—the vast majority of notices sent—to which Ohio
-      received back no return card at all. … those 1 million or so voters
-      accounted for about 13% of Ohio’s voting population. … the failure of
-      more than 1 million Ohio voters to respond to forward-able notices (the
-      vast majority of those sent) shows nothing at all that is statutorily
-      significant.
+    quote: |-
+      The record shows that in 2012 Ohio identified about 1.5 million registered voters—nearly 20% of its 8 million registered voters—as likely ineligible to remain on the federal voter roll because they changed their residences.
+
+      … Ohio then sent those 1.5 million registered voters subsubsection (d) “last chance” confirmation notices. In response to those 1.5 million notices, Ohio only received back about 60,000 return cards (or 4%) which said, in effect, “You are right, Ohio. I have, in fact, moved.” Ibid. In addition, Ohio received back about 235,000 return cards which said, in effect, “You are wrong, Ohio, I have not moved.” In the end, however, there were more than 1,000,000 notices—the vast majority of notices sent—to which Ohio received back no return card at all.
+
+      … those 1 million or so voters accounted for about 13% of Ohio’s voting population.
+
+      … the failure of more than 1 million Ohio voters to respond to forward-able notices (the vast majority of those sent) shows nothing at all that is statutorily significant.
     title: 'Husted v. A. Philip Randolph Institute (2018), Breyer, J., dissenting'
     url: https://www.law.cornell.edu/supremecourt/text/16-980
     publisher: Supreme Court of the United States (via Cornell Legal Information Institute)
@@ -305,71 +248,100 @@ sources:
     publisher: Supreme Court of the United States (via Cornell Legal Information Institute)
     date: '2018-06-11'
   - stance: supports
-    quote: >-
-      conduct a general program that makes a reasonable effort to remove the
-      names of ineligible voters from the official lists of eligible voters by
-      reason of— (A) the death of the registrant; or (B) a change in the
-      residence of the registrant … A State shall complete, not later than 90
-      days prior to the date of a primary or general election for Federal
-      office, any program the purpose of which is to systematically remove the
-      names of ineligible voters from the official lists of eligible voters. …
-      A State shall not remove the name of a registrant from the official list
-      of eligible voters in elections for Federal office on the ground that the
-      registrant has changed residence unless the registrant— (A) confirms in
-      writing that the registrant has changed residence to a place outside the
-      registrar’s jurisdiction in which the registrant is registered; or (B)(i)
-      has failed to respond to a notice described in paragraph (2); and (ii)
-      has not voted or appeared to vote … during the period beginning on the
-      date of the notice and ending on the day after the date of the second
-      general election for Federal office that occurs after the date of the
-      notice.
+    quote: |-
+      conduct a general program that makes a reasonable effort to remove the names of ineligible voters from the official lists of eligible voters by reason of—
+      - (A) the death of the registrant; or
+      - (B) a change in the residence of the registrant
+
+      … A State shall complete, not later than 90 days prior to the date of a primary or general election for Federal office, any program the purpose of which is to systematically remove the names of ineligible voters from the official lists of eligible voters.
+
+      … A State shall not remove the name of a registrant from the official list of eligible voters in elections for Federal office on the ground that the registrant has changed residence unless the registrant—
+      - (A) confirms in writing that the registrant has changed residence to a place outside the registrar’s jurisdiction in which the registrant is registered; or
+      - (B)(i) has failed to respond to a notice described in paragraph (2); and (ii) has not voted or appeared to vote … during the period beginning on the date of the notice and ending on the day after the date of the second general election for Federal office that occurs after the date of the notice.
     title: '52 U.S. Code § 20507 — Requirements with respect to administration of voter registration'
     url: https://www.law.cornell.edu/uscode/text/52/20507
     publisher: Cornell Legal Information Institute
     date: '2026'
   - stance: complicates
-    quote: >-
-      This first effort by Secretary Detzner to identify non-citizens was far
-      from perfect. For example, Plaintiffs Karla V. Arcia and Melande Antoine
-      were identified as non-citizen voters to be removed from the voter rolls.
-      This, despite the fact that they were both United States citizens
-      eligible to vote in the 2012 elections. … Rather than use the DHSMV
-      records, this second program relied on the Department of Homeland
-      Security’s Systematic Alien Verification for Entitlements (SAVE) database.
-      … Because we conclude that Florida’s program was an attempt to
-      systematically remove names from the voter rolls in violation of the 90
-      Day Provision, we reverse and remand. … Eligible voters removed days or
-      weeks before Election Day will likely not be able to correct the State’s
-      errors in time to vote.
+    quote: |-
+      Because we conclude that Florida’s program was an attempt to systematically remove names from the voter rolls in violation of the 90 Day Provision, we reverse and remand.
+
+      … This first effort by Secretary Detzner to identify non-citizens was far from perfect. For example, Plaintiffs Karla V. Arcia and Melande Antoine were identified as non-citizen voters to be removed from the voter rolls. This, despite the fact that they were both United States citizens eligible to vote in the 2012 elections.
+
+      … Despite these shortcomings in his initial program, Secretary Detzner renewed his efforts to remove non-citizens from the voter rolls in advance of the 2012 general election. Rather than use the DHSMV records, this second program relied on the Department of Homeland Security’s Systematic Alien Verification for Entitlements (SAVE) database.
+
+      … In the final days before an election, however, the calculus changes. Eligible voters removed days or weeks before Election Day will likely not be able to correct the State’s errors in time to vote.
     title: 'Arcia v. Florida Secretary of State, No. 12-15738 (11th Cir.)'
     url: https://media.ca11.uscourts.gov/opinions/pub/files/201215738.pdf
     publisher: U.S. Court of Appeals for the Eleventh Circuit
     date: '2014-04-01'
   - stance: supports
-    quote: >-
-      Identifies voters who appear to have moved from one ERIC member to another
-      using voter registration data and MVD Data. … Once a member has a list
-      maintenance report, after validating the data, they take steps to act on
-      the report in compliance with applicable federal and state laws. … Cross-State
-      Movers … 2021 28 States + DC 3,490,162 … 2022 31 States + DC 2,433,532 …
-      2024 21 States + DC 701,420 … 2026 22 States + DC 668,803 … Total
-      14,600,683 31,170,181 1,459,110 681,231 As of September 30, 2026
+    quote: |-
+      Cross-State Movers Report
+      Identifies voters who appear to have moved from one ERIC member to another using voter registration data and MVD Data. This report is generated by comparing the requesting state’s voter registration data to all other members’ voter registration and MVD Data. Individuals included in this report appear to have more recently registered to vote in another state or obtained a driver’s license or ID card in another state.
+
+      … Once a member has a list maintenance report, after validating the data, they take steps to act on the report in compliance with applicable federal and state laws.
+
+      … The table below provides the total number of out-of-date or inaccurate records identified by report type and year since ERIC began offering list maintenance reports in 2013.
+      Year | States | Cross-State Movers | In-State Updates | In-State Duplicates | Deceased
+      2013 | Seven States | 92,322 | 534,814 | 13,857 | 21,823
+      2014 | Eight States | 186,791 | 1,235,023 | 19,996 | 50,571
+      2015 | 10 States + DC | 269,824 | 742,266 | 14,030 | 61,278
+      2016 | 12 States + DC | 476,111 | 1,363,629 | 42,882 | 37,374
+      2017 | 18 States + DC | 801,926 | 2,374,418 | 31,570 | 35,327
+      2018 | 19 States + DC | 696,501 | 1,690,113 | 177,118 | 37,219
+      2019 | 22 States + DC | 1,089,041 | 1,555,378 | 90,450 | 73,906
+      2020 | 23 States + DC | 1,524,301 | 1,249,344 | 135,387 | 72,986
+      2021 | 28 States + DC | 3,490,162 | 4,911,198 | 249,572 | 112,564
+      2022 | 31 States + DC | 2,433,532 | 7,305,675 | 203,210 | 65,437
+      2023 | 28 States + DC | 1,528,157 | 4,086,261 | 108,488 | 33,085
+      2024 | 21 States + DC | 701,420 | 1,497,187 | 203,195 | 28,905
+      2025 | 21 States + DC | 641,792 | 1,446,622 | 88,015 | 29,272
+      2026 | 22 States + DC | 668,803 | 1,178,253 | 81,340 | 21,484
+      Total | | 14,600,683 | 31,170,181 | 1,459,110 | 681,231
+      As of September 30, 2026
     title: 'Statistics'
     url: https://ericstates.org/statistics/
     publisher: Electronic Registration Information Center (ERIC)
     date: '2026-09-30'
   - stance: complicates
-    quote: >-
-      Inaccurate, Costly, and Inefficient , published in 2012, found that
-      approximately 1 out of 8 voter registrations in the U.S. were no longer
-      valid or significantly inaccurate … Illegal voting is exceedingly rare but maintaining accurate voter rolls
-      reduces the opportunity for such behavior and it helps build confidence in
-      election outcomes. … Which States Are Members Of ERIC? Alaska Arizona
-      Colorado Connecticut Delaware Georgia Hawaii Illinois Kentucky Maine
-      Maryland Massachusetts Michigan Minnesota Nevada New Jersey New Mexico
-      New York Oregon Pennsylvania Rhode Island South Carolina Utah Vermont
-      Virginia Washington and Wisconsin The District of Columbia is also a
-      member.
+    quote: |-
+      Which States Are Members Of ERIC?
+      Alaska
+      Arizona
+      Colorado
+      Connecticut
+      Delaware
+      Georgia
+      Hawaii
+      Illinois
+      Kentucky
+      Maine
+      Maryland
+      Massachusetts
+      Michigan
+      Minnesota
+      Nevada
+      New Jersey
+      New Mexico
+      New York
+      Oregon
+      Pennsylvania
+      Rhode Island
+      South Carolina
+      Utah
+      Vermont
+      Virginia
+      Washington
+      and Wisconsin
+
+      The District of Columbia is also a member.
+
+      Why did election officials create ERIC?
+
+      As the official record of all eligible voters in a state, a state’s voter registration rolls are the foundation of free, fair, and accurate elections. Most states are required by the federal National Voter Registration Act to “conduct a general program that makes a reasonable effort to remove the names of ineligible voters” from the rolls. States not subject to this federal law have state “list maintenance” laws aimed at keeping voter records up to date. Illegal voting is exceedingly rare but maintaining accurate voter rolls reduces the opportunity for such behavior and it helps build confidence in election outcomes.
+
+      … Inaccurate, Costly, and Inefficient, published in 2012, found that approximately 1 out of 8 voter registrations in the U.S. were no longer valid or significantly inaccurate, more than 1.8 million deceased individuals were listed as voters, and approximately 2.75 million people had registrations in more than one state. Additionally, the report estimated there were at least 51 million eligible U.S. citizens who were not registered – about 24 percent of the eligible population.
     title: 'About ERIC'
     url: https://ericstates.org/about/
     publisher: Electronic Registration Information Center (ERIC)
@@ -383,42 +355,52 @@ sources:
     publisher: NPR
     date: '2023-10-20'
   - stance: complicates
-    quote: >-
-      The states, in order of departure, are Louisiana, Alabama, Missouri,
-      Florida, West Virginia, Iowa, Ohio, Virginia, and Texas. … Iowa no longer
-      agreed with ERIC rules requiring all member states to abide with its
-      bylaws. One of the main complaints was how ERIC requires member states to
-      perform outreach to unregistered voters to encourage them to register. …
-      Virginia's commissioner of elections Susan Beals said concerns about data
-      security and stewardship were the basis of her decision. … In July 2024,
-      Hawaii joined ERIC. … In March 2026, Virginia's governor Abigail
-      Spanberger signed an executive order directing the Commissioner of
-      Elections to rejoin ERIC.
+    quote: |-
+      Effective June 2023, Iowa ended its membership in ERIC. Iowa Secretary of State Paul Pate's office explained the decision was based on multiple states leaving ERIC resulted in reduced data making it less effective and Iowa no longer agreed with ERIC rules requiring all member states to abide with its bylaws. One of the main complaints was how ERIC requires member states to perform outreach to unregistered voters to encourage them to register.
+
+      It was announced that Virginia was withdrawing from ERIC in August 2023. Virginia's commissioner of elections Susan Beals said concerns about data security and stewardship were the basis of her decision.
+
+      In July 2023, Texas finalized its departure from the organization, leaving only five Republican-leaning states still retaining membership. With the departure of Texas, a total of nine states had left the organization in the 18 months leading up to July 2023. The states, in order of departure, are Louisiana, Alabama, Missouri, Florida, West Virginia, Iowa, Ohio, Virginia, and Texas.
+
+      NPR has reported that far-right conspiracy theorists claimed that ERIC was not impartial, though there were at the time as many Republican as Democratic members.
+
+      … In July 2024, Hawaii joined ERIC.
+
+      … In March 2026, Virginia's governor Abigail Spanberger signed an executive order directing the Commissioner of Elections to rejoin ERIC.
     title: Electronic Registration Information Center (secondary source)
     url: https://en.wikipedia.org/wiki/Electronic_Registration_Information_Center
     publisher: Wikipedia
     date: '2026-10'
   - stance: supports
-    quote: >-
-      Approximately 24 million—one of every eight—voter registrations in the
-      United States are no longer valid or are significantly inaccurate. More
-      than 1.8 million deceased individuals are listed as voters. Approximately
-      2.75 million people have registrations in more than one state. … For this
-      report, a “no longer valid” record represents a person who is on the rolls
-      but no longer eligible to cast a vote, likely due to having moved or died.
-      An “inaccurate” record represents an eligible voter whose file has
-      incorrect data. … These were identified based on data indicating a voter
-      died, moved, or had been inactive from 2004 to March 2011. … Because not
-      all states provide complete records, an analysis of Catalist’s data likely
-      underestimates the number of inaccurate and no longer valid records. …
-      Approximately 12.7 million records nationwide that appear to be out of
-      date and no longer reflect the voter’s current information. … About 12
-      million records with incorrect addresses … Once duplicates among
-      categories are eliminated, approximately 24 million registration records,
-      or nearly 13 percent of the national total, are estimated to be
-      inaccurate or no longer valid. … total 2,758,578 … researchers estimate at
-      least 51 million eligible U.S. citizens are unregistered, or more than 24
-      percent of the eligible population.
+    quote: |-
+      Research commissioned by the Pew Center on the States highlights the extent of the challenge:
+      - Approximately 24 million—one of every eight—voter registrations in the United States are no longer valid or are significantly inaccurate.
+      - More than 1.8 million deceased individuals are listed as voters.
+      - Approximately 2.75 million people have registrations in more than one state.
+
+      Meanwhile, researchers estimate at least 51 million eligible U.S. citizens are unregistered, or more than 24 percent of the eligible population.
+
+      … For this report, a “no longer valid” record represents a person who is on the rolls but no longer eligible to cast a vote, likely due to having moved or died. An “inaccurate” record represents an eligible voter whose file has incorrect data.
+
+      … Because not all states provide complete records, an analysis of Catalist’s data likely underestimates the number of inaccurate and no longer valid records.
+
+      Inaccurate or no longer valid records
+
+      The study found millions of voter registration records nationwide that are either inaccurate or no longer valid. These were identified based on data indicating a voter died, moved, or had been inactive from 2004 to March 2011.
+
+      The study identified:
+      - Approximately 12.7 million records nationwide that appear to be out of date and no longer reflect the voter’s current information.
+      - More than 1.8 million records for people who are no longer living, but have registrations on voter rolls.
+      - About 12 million records with incorrect addresses, indicating that either the voters have moved, or that errors in the information on file make it unlikely the Postal Service can reach them.
+
+      Once duplicates among categories are eliminated, approximately 24 million registration records, or nearly 13 percent of the national total, are estimated to be inaccurate or no longer valid.
+
+      … VOTERS REGISTERED IN MORE THAN ONE STATE
+      Number of states in which a voter is registered | Number of people
+      2 | 2,688,046
+      3 | 68,725
+      more than 3 | 1,807
+      total | 2,758,578
     title: 'Inaccurate, Costly, and Inefficient: Evidence That America’s Voter Registration System Needs an Upgrade'
     url: https://www.pew.org/~/media/legacy/uploadedfiles/pcs_assets/2012/pewupgradingvoterregistrationpdf.pdf
     publisher: Pew Center on the States
@@ -432,74 +414,53 @@ sources:
     publisher: NPR
     date: '2012-02-14'
   - stance: complicates
-    quote: >-
-      An investigation by the New York state attorney general found that New
-      York City’s Board of Elections had improperly deleted more than 200,000
-      names from the voter rolls. … And in Virginia in 2013, nearly 39,000
-      voters were removed from the rolls when the state relied on a faulty
-      database to delete voters who allegedly had moved out of the
-      commonwealth. Error rates in some counties ran as high as 17 percent. …
-      We found that between 2014 and 2016, states removed almost 16 million
-      voters from the rolls … Almost 4 million more names were purged from the
-      rolls between 2014 and 2016 than between 2006 and 2008. This growth in the
-      number of removed voters represented an increase of 33 percent … When done
-      correctly, purges ensure the voter rolls are accurate and up-to-date. When
-      done incorrectly, purges disenfranchise legitimate voters … the records of
-      fewer than 5,000 of the more than 7,700 erroneously listed voters had
-      been corrected by September 2016. … According to one analysis, more than
-      68,000 of the 80,000 voters identified as possibly dead were weak
-      matches. This policy of flagging voters based on a weak match without
-      further investigation was eventually changed when Texas settled
-      litigation that had arisen on account of the bad purge.
+    quote: |-
+      An investigation by the New York state attorney general found that New York City’s Board of Elections had improperly deleted more than 200,000 names from the voter rolls.
+
+      … And in Virginia in 2013, nearly 39,000 voters were removed from the rolls when the state relied on a faulty database to delete voters who allegedly had moved out of the commonwealth. Error rates in some counties ran as high as 17 percent.
+
+      … These voters were victims of purges — the sometimes-flawed process by which election officials attempt to remove ineligible names from voter registration lists. When done correctly, purges ensure the voter rolls are accurate and up-to-date. When done incorrectly, purges disenfranchise legitimate voters (often when it is too close to an election to rectify the mistake), causing confusion and delay at the polls.
+
+      … We found that between 2014 and 2016, states removed almost 16 million voters from the rolls, and every state in the country can and should do more to protect voters from improper purges.
+
+      This study also found:
+
+      Almost 4 million more names were purged from the rolls between 2014 and 2016 than between 2006 and 2008. This growth in the number of removed voters represented an increase of 33 percent — far outstripping growth in both total registered voters (18 percent) and total population (6 percent).
+
+      … The error became public in July 2016, and despite the public outcry, the records of fewer than 5,000 of the more than 7,700 erroneously listed voters had been corrected by September 2016.
+
+      … On these grounds, a living Texas voter (and Air Force veteran) named James Harris, Jr., was flagged for removal because he shared information with an Arkansan, “James Harris,” who had died in 1996. According to one analysis, more than 68,000 of the 80,000 voters identified as possibly dead were weak matches. This policy of flagging voters based on a weak match without further investigation was eventually changed when Texas settled litigation that had arisen on account of the bad purge.
     title: 'Purges: A Growing Threat to the Right to Vote'
     url: https://www.brennancenter.org/sites/default/files/publications/Purges_Growing_Threat_2018.1.pdf
     publisher: Brennan Center for Justice
     date: '2018-07-20'
   - stance: complicates
-    quote: >-
-      Crosscheck compares the voter registration list of each participating
-      state against the voter registration lists of the other participating
-      states and flags all records that have the same first name, last name,
-      and date of birth. … A 2017 study led by Stanford professor Sharad Goel
-      found that if applied nationwide, Crosscheck would “impede 300 legal votes
-      for every double vote prevented.” … United States Announces Settlement
-      with New York City Board of Elections Resolving Improper Removal of Voters
-      from Registration Rolls,” news release, October 31, 2017
+    quote: |-
+      Crosscheck compares the voter registration list of each participating state against the voter registration lists of the other participating states and flags all records that have the same first name, last name, and date of birth. But in groups as large as statewide (or multistate) voter registration lists, the statistical odds of two registrants having the same name and birth date is sufficiently high as to be problematic. A 2017 study led by Stanford professor Sharad Goel found that if applied nationwide, Crosscheck would “impede 300 legal votes for every double vote prevented.” Moreover, the study found that “there is almost no chance that double votes could affect the outcome of a national election.”
+
+      … United States Announces Settlement with New York City Board of Elections Resolving Improper Removal of Voters from Registration Rolls,” news release, October 31, 2017
     title: 'Purges: A Growing Threat to the Right to Vote (Crosscheck section and notes)'
     url: https://www.brennancenter.org/sites/default/files/publications/Purges_Growing_Threat_2018.1.pdf
     publisher: Brennan Center for Justice
     date: '2018-07-20'
   - stance: complicates
-    quote: >-
-      The first list DBT Online provided to the Division of Elections in April
-      2000 contained the names of 181,157 possible duplicate registrants,
-      deceased persons, and felons without civil rights restoration.
-      Approximately 65,776 of those included on the first list were identified
-      as felons. In May 2000, DBT discovered that approximately 8,000 names were
-      erroneously placed on the exclusion list. … In Leon County, the
-      supervisor of elections was provided a list of nearly 700 names to purge
-      from the voting rolls. Yet the Supervisor could only confirm 34 as actual
-      felons … Professor Darryl Paulson testified that the Hillsborough County
-      supervisor of elections estimated that 15 percent of those purged were
-      purged in error and they were disproportionately African American. … in
-      Miami-Dade County, over half of the African Americans who appealed from
-      the Florida felon exclusion list were successfully reinstated to the
-      voter rolls.
+    quote: |-
+      Moreover, African Americans have a better chance of erroneously appearing on the Florida felon exclusion list. For example, in Miami-Dade County, over half of the African Americans who appealed from the Florida felon exclusion list were successfully reinstated to the voter rolls.
+
+      … The first list DBT Online provided to the Division of Elections in April 2000 contained the names of 181,157 possible duplicate registrants, deceased persons, and felons without civil rights restoration. Approximately 65,776 of those included on the first list were identified as felons. In May 2000, DBT discovered that approximately 8,000 names were erroneously placed on the exclusion list.
+
+      … In Leon County, the supervisor of elections was provided a list of nearly 700 names to purge from the voting rolls. Yet the Supervisor could only confirm 34 as actual felons (St. Pete Times, 12/6/00).
+
+      … Professor Darryl Paulson testified that the Hillsborough County supervisor of elections estimated that 15 percent of those purged were purged in error and they were disproportionately African American.
     title: 'Voting Irregularities in Florida During the 2000 Presidential Election, Chapter 5: The Reality of List Maintenance'
     url: https://www.usccr.gov/files/pubs/vote2000/report/ch5.htm
     publisher: U.S. Commission on Civil Rights
     date: '2001-06'
   - stance: complicates
-    quote: >-
-      a) the 2000 felons’ exclusion list had a considerable number of errors in
-      it, probably more than 25% of the names on the list were on there in
-      error; b) these errors were racially biased, such that more
-      African-American registered voters were on the list in error than either
-      Whites or Latinos; and c) that the decentralized process by which the
-      felons’ list was used to purge the voter rolls resulted in a sometimes
-      judicious but sometimes partisan purging process – Democratic county
-      supervisors were less likely to use the felons’ list than Republican
-      ones, but even the latter found considerable, biased errors in the list.
+    quote: |-
+      - a) the 2000 felons’ exclusion list had a considerable number of errors in it, probably more than 25% of the names on the list were on there in error;
+      - b) these errors were racially biased, such that more African-American registered voters were on the list in error than either Whites or Latinos; and
+      - c) that the decentralized process by which the felons’ list was used to purge the voter rolls resulted in a sometimes judicious but sometimes partisan purging process – Democratic county supervisors were less likely to use the felons’ list than Republican ones, but even the latter found considerable, biased errors in the list.
     title: 'Databases, Felons, and Voting: Errors and Bias in the Florida Felons Exclusion List in the 2000 Presidential Elections'
     url: https://www.hks.harvard.edu/publications/databases-felons-and-voting-errors-and-bias-florida-felons-exclusion-list-2000
     publisher: Harvard Kennedy School (Guy Stuart, RWP02-041)
@@ -515,14 +476,12 @@ sources:
     publisher: Manhattan Institute
     date: '2001-06-27'
   - stance: complicates
-    quote: >-
-      On the final day of voter registration in Georgia, a report from The
-      Associated Press found the Georgia Secretary of State’s office has more
-      than 53,000 voter registrations on hold under the state’s “exact match”
-      law. … the AP’s analysis of the applications found nearly 70 percent of
-      those on hold are black. … If you do not mail in your proper
-      identification before Nov. 6, you can verify your information using your
-      driver’s license or state photo ID at the polls.
+    quote: |-
+      On the final day of voter registration in Georgia, a report from The Associated Press found the Georgia Secretary of State’s office has more than 53,000 voter registrations on hold under the state’s “exact match” law.
+
+      … the AP’s analysis of the applications found nearly 70 percent of those on hold are black.
+
+      … If you do not mail in your proper identification before Nov. 6, you can verify your information using your driver’s license or state photo ID at the polls.
     title: Why Are 53,000 Voter Registrations On Hold In Georgia?
     url: https://www.gpb.org/news/2018/10/24/why-are-53000-voter-registrations-on-hold-in-georgia
     publisher: Georgia Public Broadcasting
@@ -575,83 +534,60 @@ sources:
     publisher: Supreme Court of the United States
     date: '2024-10-30'
   - stance: complicates
-    quote: >-
-      Critically, while Applicants failed to show that any of the 1,610 people
-      removed from the rolls from the Purge Program were in fact noncitizens,
-      the court credited Respondents’ “evidence that revealed that citizens have
-      been removed from those rolls.” … When Alabama engaged in a similar
-      system based on checkboxes on forms from the Alabama Department of Labor,
-      the error rate was astronomical. After a lawsuit was filed, the Secretary
-      cross-checked the checkbox data with documents on file with the driver’s
-      license agency and immediately confirmed the citizenship of 93.8% of
-      them. … the elections board ultimately “found that the DMV and SAVE
-      information had a high rate of inaccuracy.” Id. at 261. Indeed, it
-      “determined that 97.6% of persons identified by the DMV as noncitizens, in
-      fact were citizens, and that about 75% of individuals who later provided
-      proof of citizenship continued to be listed as noncitizens in the SAVE
-      system.”
+    quote: |-
+      Critically, while Applicants failed to show that any of the 1,610 people removed from the rolls from the Purge Program were in fact noncitizens, the court credited Respondents’ “evidence that revealed that citizens have been removed from those rolls.”
+
+      … When Alabama engaged in a similar system based on checkboxes on forms from the Alabama Department of Labor, the error rate was astronomical. After a lawsuit was filed, the Secretary cross-checked the checkbox data with documents on file with the driver’s license agency and immediately confirmed the citizenship of 93.8% of them.
+
+      … the elections board ultimately “found that the DMV and SAVE information had a high rate of inaccuracy.” Id. at 261. Indeed, it “determined that 97.6% of persons identified by the DMV as noncitizens, in fact were citizens, and that about 75% of individuals who later provided proof of citizenship continued to be listed as noncitizens in the SAVE system.”
     title: 'Private Plaintiffs-Respondents’ Response in Opposition to Emergency Application for Stay, Beals v. Virginia Coalition for Immigrant Rights, No. 24A407 (an advocacy filing)'
     url: https://www.supremecourt.gov/DocketPDF/24/24A407/330579/20241029145523924_SCOTUS%20Stay%20Opp%20FINAL%20TO%20FILE.pdf
     publisher: Campaign Legal Center and Lawyers’ Committee for Civil Rights Under Law
     date: '2024-10-29'
   - stance: supports
-    quote: >-
-      Our newly released study reveals that 353 U.S. counties had 1.8 million
-      more registered voters than eligible voting-age citizens. … This data was
-      then compared to the Census Bureau’s most recent five-year population
-      estimates, gathered by the American Community Survey (ACS) from 2014
-      through 2018. … Certain state voter registration lists may also be even
-      larger than reported, because they may have excluded “inactive voters”
-      from their data. Inactive voters, who may have moved elsewhere, are still
-      registered voters and may show up and vote on election day and/or request
-      mail-in ballots. … The study showed that 378 U.S. counties had
-      registration rates exceeding 100%.
+    quote: |-
+      Our newly released study reveals that 353 U.S. counties had 1.8 million more registered voters than eligible voting-age citizens.
+
+      … This data was then compared to the Census Bureau’s most recent five-year population estimates, gathered by the American Community Survey (ACS) from 2014 through 2018.
+
+      … Certain state voter registration lists may also be even larger than reported, because they may have excluded “inactive voters” from their data. Inactive voters, who may have moved elsewhere, are still registered voters and may show up and vote on election day and/or request mail-in ballots.
+
+      … The study showed that 378 U.S. counties had registration rates exceeding 100%.
     title: 'Judicial Watch: Voter Registration in 353 Counties in 29 States Exceeds 100% (archived copy)'
     url: https://www.democracyinaction.us/2020/interestg/judicialwatch101620pr.html
     publisher: Judicial Watch
     date: '2020-10-16'
   - stance: contests
-    quote: >-
-      "The American Community Survey is sample-based. It is not a census,"
-      statistician Philip Stark … "Using the ACS to determine the number of
-      eligible voters is problematic." … If you haven't voted, you haven't
-      voted fraudulently. … The key column in the Judicial Watch study that
-      gives the percentage difference of registered voters over CVAP (the
-      citizen voting age population from the ACS) is misleading because it
-      includes inactive voters, Stark said.
+    quote: |-
+      "The American Community Survey is sample-based. It is not a census," statistician Philip Stark
+
+      … "Using the ACS to determine the number of eligible voters is problematic."
+
+      … If you haven't voted, you haven't voted fraudulently.
+
+      … The key column in the Judicial Watch study that gives the percentage difference of registered voters over CVAP (the citizen voting age population from the ACS) is misleading because it includes inactive voters, Stark said.
     title: Do Hundreds of Counties Have 1.8 Million 'Ghost Voters' in the US?
     url: https://www.snopes.com/fact-check/ghost-voters-in-29-states/
     publisher: Snopes
     date: '2020-11-06'
   - stance: contests
-    quote: >-
-      It alleged that more than 21,000 voters registered in Pennsylvania were
-      dead and asked that the court order the state to remove them from the
-      rolls before the election. Instead, Judge John Jones III cited PILF’s
-      questionable methodology in developing its purported list of ineligible
-      voters, its decision to file the suit at the “eleventh hour,” and the
-      fact that Pennsylvania’s system for stripping deceased voters from the
-      rolls appears to work. … Jones noted that more than half of the
-      purportedly deceased voters on a list of 9,300 names PILF sent to the
-      secretary of the commonwealth in May didn’t appear on the list the
-      organization submitted in October. … Pennsylvania’s secretary of the
-      commonwealth and PILF settled this lawsuit on April 1. Nothing in the
-      settlement confirms the number of supposedly dead registered voters that
-      PILF had claimed. But the secretary of the commonwealth did agree to
-      compare Pennsylvania’s voter rolls to death data published by the
-      Electronic Registration Information Center, or ERIC
+    quote: |-
+      It alleged that more than 21,000 voters registered in Pennsylvania were dead and asked that the court order the state to remove them from the rolls before the election. Instead, Judge John Jones III cited PILF’s questionable methodology in developing its purported list of ineligible voters, its decision to file the suit at the “eleventh hour,” and the fact that Pennsylvania’s system for stripping deceased voters from the rolls appears to work.
+
+      … Jones noted that more than half of the purportedly deceased voters on a list of 9,300 names PILF sent to the secretary of the commonwealth in May didn’t appear on the list the organization submitted in October.
+
+      … Pennsylvania’s secretary of the commonwealth and PILF settled this lawsuit on April 1. Nothing in the settlement confirms the number of supposedly dead registered voters that PILF had claimed. But the secretary of the commonwealth did agree to compare Pennsylvania’s voter rolls to death data published by the Electronic Registration Information Center, or ERIC
     title: Misleading Claim of Dead Registered Voters in Pennsylvania
     url: https://www.factcheck.org/2020/11/misleading-claim-of-dead-registered-voters-in-pennsylvania/
     publisher: FactCheck.org
     date: '2020-11-10'
   - stance: supports
-    quote: >-
-      A long-term campaign by a conservative legal watchdog to clean up the
-      nation’s voter rolls has led to the erasure of over five million
-      ineligible names since 2017. … The watchdog scored its biggest victory in
-      Los Angeles County, which eliminated 1.2 million ineligible names after
-      being sued to do what the NVRA demanded. … New York City removed 918,139
-      ineligible names. Kentucky erased 735,000 ineligible voter names.
+    quote: |-
+      A long-term campaign by a conservative legal watchdog to clean up the nation’s voter rolls has led to the erasure of over five million ineligible names since 2017.
+
+      … The watchdog scored its biggest victory in Los Angeles County, which eliminated 1.2 million ineligible names after being sued to do what the NVRA demanded.
+
+      … New York City removed 918,139 ineligible names. Kentucky erased 735,000 ineligible voter names.
     title: Legal watchdog scores with elimination of 5 million ineligible voters
     url: https://www.coloradopolitics.com/2025/04/04/legal-watchdog-scores-with-elimination-of-5-million-ineligible-voters-1b42d309-448c-5abc-8025-3dddb8a5e80e/
     publisher: Washington Examiner (via Colorado Politics)
@@ -670,16 +606,10 @@ sources:
     publisher: Texas Secretary of State
     date: '2025-10-20'
   - stance: complicates
-    quote: >-
-      Election officials across the state should immediately reinstate some
-      voters who were incorrectly flagged as potential noncitizens through a
-      federal program, the Texas Secretary of State’s Office told county
-      officials Wednesday. … Adkins said the state is still working through the
-      data and that she couldn’t yet say how many of the 2,724 people had
-      provided proof of citizenship to DPS and should thus be reinstated if they
-      were already removed from the voter roll. She characterized SAVE as having
-      “some inaccurate information” but added that “most of the data that we got
-      out of SAVE was consistent with what DPS had.”
+    quote: |-
+      Election officials across the state should immediately reinstate some voters who were incorrectly flagged as potential noncitizens through a federal program, the Texas Secretary of State’s Office told county officials Wednesday.
+
+      … Adkins said the state is still working through the data and that she couldn’t yet say how many of the 2,724 people had provided proof of citizenship to DPS and should thus be reinstated if they were already removed from the voter roll. She characterized SAVE as having “some inaccurate information” but added that “most of the data that we got out of SAVE was consistent with what DPS had.”
     title: Texas confirms some flagged as potential noncitizens on voter rolls had provided DPS proof of citizenship
     url: https://www.votebeat.org/texas/2026/07/30/save-potential-noncitizens-gave-proof-of-citizenship-to-dps/
     publisher: Votebeat and The Texas Tribune

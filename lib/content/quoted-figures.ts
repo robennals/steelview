@@ -1,6 +1,7 @@
 /**
- * The figure-matching logic behind `check-figures.ts`, kept pure and separate
- * so the normalisation — which is the subtle part — has unit tests.
+ * The figure-matching logic behind `scripts/check-figures.ts`, and behind the
+ * highlighting of a source quote (`quote-highlight.ts`), kept pure and
+ * separate so the normalisation — which is the subtle part — has unit tests.
  */
 
 /**

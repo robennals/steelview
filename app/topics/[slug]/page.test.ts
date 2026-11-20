@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { bodyKey, buildBodies, orderHeadlineFacts, TopicSections } from './page';
+import { bodyKey, buildBodies, TopicSections } from './page';
 import type { Topic } from '@/lib/content/types';
 
 /**
@@ -36,9 +36,9 @@ test('a viewpoint and a principle with the same id each get their own body', asy
 });
 
 /**
- * Fact bodies are no longer rendered here: a fact is read on its own page or
- * in the panel that intercepts it, both of which load it themselves. The map
- * must not silently keep a stale fact body around for something to render.
+ * Fact bodies are not rendered here: a fact is read only through the findings
+ * and charts a viewpoint cites, which load it themselves. The map must not
+ * silently keep a stale fact body around for something to render.
  */
 test('the body map holds no fact bodies', async () => {
   const bodies = await buildBodies(
@@ -91,8 +91,8 @@ test('a section with no items renders no heading for that section', () => {
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
-  assert.match(html, />Data<\/h2>/);
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), featured: new Map() }));
+  assert.doesNotMatch(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.doesNotMatch(html, /Principles/);
   assert.doesNotMatch(html, /Cruxes/);
@@ -149,8 +149,8 @@ test('a section with items renders its heading', () => {
       },
     ],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
-  assert.match(html, />Data<\/h2>/);
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), featured: new Map() }));
+  assert.doesNotMatch(html, />Data<\/h2>/);
   assert.match(html, /Viewpoints/);
   assert.match(html, /Cruxes/);
   // Principles are read through a viewpoint's mention of them, not a section.
@@ -158,7 +158,7 @@ test('a section with items renders its heading', () => {
   assert.doesNotMatch(html, /id="principle-/);
 });
 
-test('the cruxes are not a tab: they follow the panels, always on the page', () => {
+test('the page has no tabs: the cruxes follow the viewpoints', () => {
   const viewpoint = {
     id: 'one', name: 'One view', shortName: 'One', summary: 's', order: 1,
     citesFacts: [], acknowledges: ['a'], setsAside: [], principles: [], body: '',
@@ -170,10 +170,9 @@ test('the cruxes are not a tab: they follow the panels, always on the page', () 
     principles: [],
     cruxes: [{ id: 'timing', title: 'When?', tension: 'Soon or late.', kind: 'prediction', divides: ['one', 'two'], positions: [{ viewpoint: 'one', holds: 'Soon.' }, { viewpoint: 'two', holds: 'Later.' }], body: '' }],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
-  assert.equal(html.match(/data-tab="/g)?.length, 2);
-  assert.doesNotMatch(html, /href="#cruxes"/);
-  assert.ok(html.lastIndexOf('data-tab="') < html.indexOf('>Cruxes</h2>'), html);
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), featured: new Map() }));
+  assert.doesNotMatch(html, /data-tab="/);
+  assert.ok(html.indexOf('>Viewpoints</h2>') < html.indexOf('>Cruxes</h2>'), html);
 });
 
 test('a crux is a row: its tension closed, and what each side holds under its short name', () => {
@@ -203,7 +202,7 @@ test('a crux is a row: its tension closed, and what each side holds under its sh
       },
     ],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), featured: new Map() }));
   assert.match(html, /<article id="crux-timing" class="sv-row sv-row--crux"/);
   assert.match(html, /sv-tag">Tension between principles</);
   assert.match(html, /sv-row__title">Speed and care</);
@@ -213,7 +212,7 @@ test('a crux is a row: its tension closed, and what each side holds under its sh
   assert.match(html, /<dd>Soon\.<\/dd>/);
 });
 
-test('viewpoints come before the data, and their header is the name alone', () => {
+test('the viewpoints\' header is the name alone', () => {
   const viewpoint = {
     id: 'one', name: 'One', shortName: 'One', summary: 'A one-line summary.', order: 1,
     citesFacts: [], acknowledges: ['a'], setsAside: [], principles: [], body: '',
@@ -225,80 +224,30 @@ test('viewpoints come before the data, and their header is the name alone', () =
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
-  assert.ok(html.indexOf('>Viewpoints</h2>') < html.indexOf('>Data</h2>'), html);
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), featured: new Map() }));
+  assert.match(html, />Viewpoints<\/h2>/);
   assert.doesNotMatch(html, /A one-line summary/);
 });
 
-test('topic dataOrder places an explicitly commissioned collection before the derived tail', () => {
-  const facts = [
-    { id: 'first', claim: 'First', status: 'well-supported' as const, sources: [], body: '' },
-    { id: 'second', claim: 'Second', status: 'well-supported' as const, sources: [], body: '' },
-    { id: 'third', claim: 'Third', status: 'well-supported' as const, sources: [], body: '' },
-  ];
-  const topic = {
-    slug: 'ordered', title: 'Ordered', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
-    dataOrder: ['first', 'third'], facts,
-    viewpoints: [], principles: [], cruxes: [],
-  } as Topic;
-  assert.deepEqual(orderHeadlineFacts(topic).map((fact) => fact.id), ['first', 'third', 'second']);
-});
-
 /**
- * The Facts list is headline facts only, with the facts that are evidence for
- * each named underneath it. A supporting fact must never be a top-level row —
- * it is evidence for a larger claim and reads inside it — and every row is a
- * link to that fact's own page, which is where its context and sources live.
+ * A data collection is not on the page: no row, no heading, none of its text.
+ * Only the charts a viewpoint's card is made with are, and those only open in
+ * full over the page.
  */
-test('a supporting fact is listed under its parent, not as a top-level row', () => {
-  const factOf = (id: string, supports?: string) => ({
-    id,
-    claim: `Claim ${id}`,
-    status: 'well-supported' as const,
-    sources: [],
-    body: '',
-    ...(supports === undefined ? {} : { supports }),
-  });
-  const viewpointOf = (id: string, order: number) => ({
-    id,
-    name: id,
-    shortName: 'S',
-    summary: 's',
-    order,
-    citesFacts: [],
-    acknowledges: ['parent'],
-    setsAside: [],
-    principles: [],
-    body: '',
-  });
+test('a data collection has no row on the topic page', () => {
+  const viewpoint = {
+    id: 'one', name: 'One', shortName: 'One', summary: 's', order: 1,
+    citesFacts: [], acknowledges: ['a'], setsAside: [], principles: [], body: '',
+  };
   const topic: Topic = {
-    slug: 'nested',
-    title: 'Nested',
-    subtitle: 'Sub',
-    lastUpdated: '2026-08-18',
-    firstPublished: '2026-08-18',
-    intro: '',
-    facts: [factOf('parent'), factOf('child', 'parent')],
-    viewpoints: [viewpointOf('one', 1), viewpointOf('two', 2)],
+    slug: 'bare', title: 'Bare', subtitle: 'Sub', lastUpdated: '2026-08-18', firstPublished: '2026-08-18', intro: '',
+    facts: [{ id: 'a', claim: 'Claim a', status: 'well-supported', sources: [], body: '' }],
+    viewpoints: [viewpoint, { ...viewpoint, id: 'two', name: 'Two', order: 2 }],
     principles: [],
     cruxes: [],
   };
-  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), dataWalkthroughs: new Map() }));
-
-  // Only the headline fact is a row in the list — a fact that supports
-  // another is not, whatever the reader has or hasn't clicked yet.
-  assert.equal(html.match(/class="sv-row sv-row--walk sv-row--data"/g)?.length, 1);
-  // Only a row can be opened by the way back from a report's own page, so the
-  // headline fact alone is a `#fact-<id>` anchor here.
-  assert.equal(html.match(/id="fact-/g)?.length, 1);
-  // The child's claim, its status and the fact that it supports something are
-  // all reading a reader would only get by opening the parent fact — none of
-  // it belongs in the list itself, so none of it is here.
-  assert.doesNotMatch(html, /href="\/topics\/nested\/facts\/child"/);
-  assert.doesNotMatch(html, /Claim child/);
-  assert.doesNotMatch(html, /Supporting fact/);
-  // The headline row itself still reads: its claim, nothing else — no
-  // status label.
-  assert.match(html, /Claim parent/);
-  assert.doesNotMatch(html, /Well supported/);
+  const html = renderToStaticMarkup(TopicSections({ topic, bodies: new Map(), walkthroughs: new Map(), featured: new Map() }));
+  assert.doesNotMatch(html, /sv-row--data/);
+  assert.doesNotMatch(html, /id="fact-/);
+  assert.doesNotMatch(html, /Claim a/);
 });

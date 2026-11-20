@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { compositionSumError, evidenceErrors, validateTopic } from './validate';
+import { compositionSumError, evidenceErrors, normaliseQuote, validateTopic } from './validate';
 import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { factSources } from './sources';
@@ -1342,7 +1342,8 @@ function previewedTopic(): Topic {
   const t = soundTopic();
   t.facts[0].series = undefined;
   t.facts[0].comparisons = [{ id: 'shares', title: 'Shares', description: 'd', unit: 'percent', valueLabel: 'v', sources: [1], items: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] }];
-  t.viewpoints[0].body = 'See [the shares](#fact-alpha).';
+  // A preview is a chart a viewpoint's card is made with: one cited in a card's line.
+  t.viewpoints[0].body = '### A point\n\nSee [the shares](#fact-alpha/chart-shares).';
   t.viewpoints[1].body = 'See [the shares](#fact-alpha).';
   t.previewCharts = [{ fact: 'alpha', chart: 'shares' }];
   return t;
@@ -1360,11 +1361,11 @@ test('preview charts: each must resolve to a chart on a fact in the topic', () =
   assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart or figure'), errors.join('\n'));
 });
 
-test('preview charts: each must be on a headline fact, which has a data panel on the report', () => {
+test('preview charts: each must be a chart a viewpoint\'s card is made with', () => {
   const t = previewedTopic();
-  t.facts[0].supports = t.facts[1].id;
+  t.viewpoints[0].body = 'See [the shares](#fact-alpha).';
   const errors = validateTopic(t);
-  assert.ok(errors.includes('topic: preview chart alpha/shares is on a supporting fact, which has no data panel on the report — preview a chart of the headline fact it supports'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart alpha/shares is not on any viewpoint\'s card, and only those charts are on the topic page — preview one a card is made with'), errors.join('\n'));
 });
 
 test('preview charts: the same chart may not be listed twice', () => {
@@ -1464,6 +1465,8 @@ test('a mark must name what is on its chart', () => {
 function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
   const t = figureExamplesTopic();
   for (const v of t.viewpoints) v.body = 'See [the figures](#fact-figure-examples).';
+  // Each preview is on a card of the first viewpoint, as validation requires.
+  t.viewpoints[0].body = (previewCharts ?? []).map(({ chart }) => `### On ${chart}\n\nSee [it](#fact-figure-examples/chart-${chart}).`).join('\n\n');
   t.previewCharts = previewCharts;
   return t;
 }
@@ -1495,4 +1498,8 @@ test('preview charts: a previewed figure counts its fact towards every viewpoint
   const t = previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race' }]);
   t.viewpoints[1].body = 'Cites no fact.';
   assert.deepEqual(validateTopic(t), ['topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts']);
+});
+
+test('F11 reads a source quote\'s layout as spaces: a bullet\'s dash and a table\'s bars are not its words', () => {
+  assert.equal(normaliseQuote('Routes were:\n- Iran (16%)\n- Afghanistan\n\nYear | Total'), 'routes were: iran (16%) afghanistan year total');
 });

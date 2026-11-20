@@ -31,7 +31,9 @@ sources:
       A provisionally estimated 813,000 people made a long-term move to the UK
       in year ending (YE) December 2025. Immigration dropped compared with our
       updated estimate for YE December 2024, when it was 1,012,000, continuing a
-      downward trend from the peak of 1,469,000 in March 2023. … Net migration
+      downward trend from the peak of 1,469,000 in March 2023. … The line chart
+      in Figure 2 shows there has been a drop in net migration since year ending
+      (YE) March 2023, based on our most recent early estimates. Net migration
       in YE December 2025 was 171,000. This was down from the peak of 944,000 in
       YE March 2023.
     title: 'Long-term international migration, provisional: year ending December 2025'
@@ -78,21 +80,14 @@ sources:
     publisher: Office for National Statistics
     date: '2026-05-21'
   - stance: complicates
-    quote: >-
-      Net migration was 171,000 in 2025, lower than the levels seen during the
-      2010s and a sharp decline from the unusually high levels in 2022 and 2023.
-      In 2025, 67% of non-EU immigration was for work and study purposes. … it
-      reintroduced a post-study work route – which likely made the UK more
-      attractive to international students – opened new humanitarian visa routes
-      for Ukrainians and Hong Kongers, and made care and senior care workers
-      eligible for work visas. … UK universities recruited students overseas
-      more actively as their financial situation deteriorated, and social care
-      providers hired migrant workers to fill vacancies caused by low pay and
-      poor working conditions in a sector with limited funding. … These included
-      visa restrictions on the family members of care workers and most
-      international students. … The current government introduced further
-      restrictions on work visas and refugee family reunion in the second half
-      of 2025, but these are not yet fully visible in the 2025 statistics.
+    quote: |-
+      Net migration was 171,000 in 2025, lower than the levels seen during the 2010s and a sharp decline from the unusually high levels in 2022 and 2023. In 2025, 67% of non-EU immigration was for work and study purposes.
+
+      … This followed policy liberalisations made under the Conservative government. For example, it reintroduced a post-study work route – which likely made the UK more attractive to international students – opened new humanitarian visa routes for Ukrainians and Hong Kongers, and made care and senior care workers eligible for work visas. At the same time, immigration policy also interacted with other factors unrelated to immigration. UK universities recruited students overseas more actively as their financial situation deteriorated, and social care providers hired migrant workers to fill vacancies caused by low pay and poor working conditions in a sector with limited funding.
+
+      … These included visa restrictions on the family members of care workers and most international students.
+
+      … The current government introduced further restrictions on work visas and refugee family reunion in the second half of 2025, but these are not yet fully visible in the 2025 statistics.
     title: Net migration to the UK
     url: >-
       https://migrationobservatory.ox.ac.uk/resources/briefings/long-term-international-migration-flows-to-and-from-the-uk/
@@ -223,28 +218,28 @@ sources:
     publisher: Office for National Statistics
     date: '2026-05-21'
   - stance: supports
-    quote: >-
-      At 171,000, long-term international net migration for year ending (YE)
-      December 2025 has nearly halved from YE December 2024 (updated to
-      331,000); this level was last seen when the new immigration system was
-      introduced in early 2021, and the coronavirus (COVID-19) pandemic travel
-      restrictions were still in place. … The provisional estimate for total
-      long-term emigration in the most recent period is 642,000.
+    quote: |-
+      At 171,000, long-term international net migration for year ending (YE) December 2025 has nearly halved from YE December 2024 (updated to 331,000); this level was last seen when the new immigration system was introduced in early 2021, and the coronavirus (COVID-19) pandemic travel restrictions were still in place.
+
+      The number of non-EU+ nationals arriving for work-related reasons fell by 47% in 2025, which was the main reason for the continued fall in net migration; in the same period, overall emigration fell slightly.
+
+      … The provisional estimate for total long-term emigration in the most recent period is 642,000.
     title: 'Long-term international migration, provisional: year ending December 2025'
     url: >-
       https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025
     publisher: Office for National Statistics
     date: '2026-05-21'
   - stance: supports
-    quote: >-
-      Provisional net migration was 350,000 for non-EU+ nationals in YE December
-      2025, down from 511,000 a year earlier. … The provisional net migration of
-      British nationals remained broadly stable, estimated at negative 136,000.
-      … The immigration of EU+ and British nationals in the YE December 2025 was
-      76,000 and 110,000, falling slightly from 91,000 and 140,000,
-      respectively, in the previous year. … In YE December 2025, 246,000 British
-      nationals left the UK, a slight decline of 4% from the updated YE December
-      2024 estimates of 257,000.
+    quote: |-
+      Provisional net migration was 350,000 for non-EU+ nationals in YE December 2025, down from 511,000 a year earlier.
+
+      The provisional net migration of British nationals remained broadly stable, estimated at negative 136,000.
+
+      Net migration for EU+ nationals in YE December 2025 was negative 42,000, it has been negative since YE June 2022.
+
+      … The immigration of EU+ and British nationals in the YE December 2025 was 76,000 and 110,000, falling slightly from 91,000 and 140,000, respectively, in the previous year.
+
+      … In YE December 2025, 246,000 British nationals left the UK, a slight decline of 4% from the updated YE December 2024 estimates of 257,000.
     title: 'Long-term international migration, provisional: year ending December 2025'
     url: >-
       https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/bulletins/longterminternationalmigrationprovisional/yearendingdecember2025
@@ -324,15 +319,16 @@ sources:
     publisher: The Migration Observatory, University of Oxford
     date: '2026-05-27'
   - stance: supports
-    quote: >-
-      The population of the UK continued to grow in the year to mid-2025,
-      reaching an estimated 69.5 million people. The size of the population is
-      estimated to have increased by 227,700 (0.3%) from mid-2024, the lowest
-      rate of increase since mid-2020. … net international migration to the UK
-      was 222,900 (down from 651,700 in the year to mid-2024) … natural change,
-      the difference between births and deaths, contributed an increase in
-      population of 4,900; this increase was lower than in the previous year,
-      but above the negative change in the year to mid-2023
+    quote: |-
+      The population of the UK continued to grow in the year to mid-2025, reaching an estimated 69.5 million people. The size of the population is estimated to have increased by 227,700 (0.3%) from mid-2024, the lowest rate of increase since mid-2020.
+
+      There was an increase in population for England of 0.4%, with Scotland and Northern Ireland having very small population growth (less than 0.1%).
+
+      … net international migration to the UK was 222,900 (down from 651,700 in the year to mid-2024)
+
+      …
+      - there were 647,500 deaths, an increase of 1,600 compared with mid-2024
+      - natural change, the difference between births and deaths, contributed an increase in population of 4,900; this increase was lower than in the previous year, but above the negative change in the year to mid-2023
     title: >-
       Population estimates for the UK, England, Wales, Scotland and Northern
       Ireland: mid-2025
@@ -421,25 +417,56 @@ sources:
     publisher: Office for National Statistics
     date: '2026-04-28'
   - stance: supports
-    quote: >-
-      Migration (year ending … mid-2027 onwards) … 105,000 … 230,000 … 455,000 …
-      Principal … 72.4 … High migration … 78.9 … Low migration … 68.8 … Zero net
-      migration … 65.5 … Migration assumption: zero (zero cross-border migration
-      and zero international net migration)
+    quote: |-
+      Zero net migration
+      - Fertility assumption: principal
+      - Life expectancy assumption: principal
+      - Migration assumption: zero (zero cross-border migration and zero international net migration)
+
+      …
+
+      Table 1: Long-term assumptions for the 2024-based national population projections, UK
+
+       | Low | Principal | High
+      Fertility (total fertility rate by 2049) | 1.22 | 1.42 | 1.62
+      Mortality (improvement rate by 2049) | 0.5% | 1.1% | 1.9%
+      Migration (year ending mid-2027 onwards) | 105,000 | 230,000 | 455,000
+
+      …
+
+      Table 2: Projected population change, UK, mid-2024 to mid-2049
+
+       | Mid-2049 population (millions) | Population change (millions) | Percentage change
+      Principal | 72.4 | 3.1 | 4.5
+      High fertility | 74.2 | 4.9 | 7.1
+      Low fertility | 70.6 | 1.4 | 1.9
+      High life expectancy | 72.9 | 3.6 | 5.2
+      Low life expectancy | 72.0 | 2.8 | 4.0
+      High migration | 78.9 | 9.6 | 13.9
+      Low migration | 68.8 | -0.5 | -0.7
+      High population | 81.3 | 12.0 | 17.4
+      Low population | 66.8 | -2.5 | -3.6
+      Zero net migration | 65.5 | -3.8 | -5.5
+      Young age structure | 80.5 | 11.2 | 16.2
+      Old age structure | 67.6 | -1.7 | -2.5
+      Replacement fertility | 79.9 | 10.6 | 15.4
+      No long-term mortality improvement variant | 71.7 | 2.5 | 3.6
     title: 'National population projections: variant projections, 2024-based'
     url: >-
       https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/nationalpopulationprojectionsvariantprojections2024based
     publisher: Office for National Statistics
     date: '2026-04-28'
   - stance: supports
-    quote: >-
-      In the 2010 Conservative manifesto it was stated that "we will take steps
-      to take net migration back to the levels of the 1990s—tens of thousands a
-      year, not hundreds of thousands". … "We will keep our ambition of
-      delivering annual net migration in the tens of thousands, not the hundreds
-      of thousands"—Conservative manifesto … Net migration stood at 298,000 in
-      the year to September 2014—three times the 100,000 maximum implied by the
-      'tens of thousands' claim.
+    quote: |-
+      In the 2010 Conservative manifesto it was stated that "we will take steps to take net migration back to the levels of the 1990s—tens of thousands a year, not hundreds of thousands".
+
+      … "We will keep our ambition of delivering annual net migration in the tens of thousands, not the hundreds of thousands"—Conservative manifesto
+
+      … By the second business plan the following year that became:
+
+      "set an annual limit on the number of non-EU economic migrants admitted to the UK. As a result of this and other policies we anticipate net migration will be in the tens of thousands in future".
+
+      Net migration stood at 298,000 in the year to September 2014—three times the 100,000 maximum implied by the 'tens of thousands' claim.
     title: 'Clash of the manifestos: the net migration target'
     url: https://fullfact.org/immigration/clash-manifestos-net-migration-target/
     publisher: Full Fact
@@ -470,7 +497,9 @@ sources:
   - stance: supports
     quote: >-
       The Conservative and Labour parties both say they want to reduce legal
-      migration from its historically high levels. … The Conservatives want to
+      migration from its historically high levels. Net migration – a measure of
+      the number of people arriving minus the number leaving – increased sharply
+      post-Brexit, peaking at 764,000 in 2022. … The Conservatives want to
       introduce an annual cap on work and family visa grants … At the other end,
       Reform UK has said that net migration should be zero. … it is unclear how
       the MAC’s view on an ‘optimal’ level would be reconciled with the
@@ -492,18 +521,14 @@ sources:
     publisher: Ipsos
     date: '2025-11-27'
   - stance: complicates
-    quote: >-
-      From around 2013, opposition to immigrants and immigration fell. The share
-      of the public agreeing there were ‘too many’ immigrants, wanting
-      immigration numbers reduced, or opposing migrants of a different race or
-      ethnicity fell substantially between the early 2010s and the early 2020s.
-      More recently, this trend has started to reverse, with surveys conducted
-      since 2022 showing an uptick in opposition. However, despite this
-      increase, attitudes were less negative in 2025 than they were up until the
-      early 2010s. … In 1994, the starting point of this data series, fewer than
-      5% of respondents thought of immigration as a concern … peaking at 56% in
-      September 2015. … with the share mentioning immigration reaching 51% in
-      September 2025.
+    quote: |-
+      From around 2013, opposition to immigrants and immigration fell. The share of the public agreeing there were ‘too many’ immigrants, wanting immigration numbers reduced, or opposing migrants of a different race or ethnicity fell substantially between the early 2010s and the early 2020s. More recently, this trend has started to reverse, with surveys conducted since 2022 showing an uptick in opposition. However, despite this increase, attitudes were less negative in 2025 than they were up until the early 2010s.
+
+      … In 1994, the starting point of this data series, fewer than 5% of respondents thought of immigration as a concern
+
+      … peaking at 56% in September 2015.
+
+      … with the share mentioning immigration reaching 51% in September 2025.
     title: Public opinion towards immigration in the UK
     url: >-
       https://migrationobservatory.ox.ac.uk/resources/briefings/uk-public-opinion-toward-immigration-overall-attitudes-and-level-of-concern/
@@ -978,7 +1003,8 @@ additionalSeries:
       stance: supports
       quote: >-
         Table 4b: Long-term international immigration, emigration and net
-        migration of non-EU+ nationals by reason,
+        migration of non-EU+ nationals by reason, using new approach to
+        producing migration estimates
       title: 'Long-term international migration, December 2025: Table 4b'
       url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional
       fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx
@@ -1013,7 +1039,8 @@ additionalSeries:
           stance: supports
           quote: >-
             Table 1: Long-term international migration into and out of the
-            United Kingdom by nationality,
+            United Kingdom by nationality, using new approach to producing
+            migration estimates
           title: 'Long-term international migration, December 2025: Table 1'
           url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional
           fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/internationalmigration/datasets/longterminternationalimmigrationemigrationandnetmigrationflowsprovisional/yearendingdecember2025/may2026publicationspreadsheet.xlsx

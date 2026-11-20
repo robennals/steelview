@@ -64,7 +64,7 @@ sources:
       accounting for around half of the population growth in England and Wales
       (natural change, that is the difference between births and deaths,
       accounting for the remainder). This is reflected in the increase in the
-      proportion of the usually resident population1 born abroad2 from 4.3 per
+      proportion of the usually resident population born abroad from 4.3 per
       cent (1.9 million) recorded in the 1951 Census to 13 per cent (7.5
       million) in the 2011 Census (see figure 1). While the total resident
       population of England and Wales increased by 28 per cent (from 43.7
@@ -191,16 +191,12 @@ sources:
     publisher: Department for Work and Pensions (Ethnicity facts and figures)
     date: '2023-11-28'
   - stance: supports
-    quote: >-
-      In 2021, people who identified as "Muslim" had the lowest percentage of
-      people aged 16 to 64 years in employment (51.4% compared with 70.9% of
-      the overall population); this resulted from the high percentages of
-      people who were students or looking after home or family in this group.
-      [...] For example, people who said they were "Muslim" had the youngest
-      age profile (median age 27 years) and the highest percentage of
-      overcrowding. [...] It is possible that some people on furlough may have
-      identified as economically inactive, instead of temporarily away from
-      work.
+    quote: |-
+      In 2021, people who identified as "Muslim" had the lowest percentage of people aged 16 to 64 years in employment (51.4% compared with 70.9% of the overall population); this resulted from the high percentages of people who were students or looking after home or family in this group.
+
+      [...] For example, people who said they were "Muslim" had the youngest age profile (median age 27 years) and the highest percentage of overcrowding.
+
+      [...] It is possible that some people on furlough may have identified as economically inactive, instead of temporarily away from work.
     title: 'Religion by housing, health, employment, and education, England and Wales: Census 2021'
     url: https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/religion/articles/religionbyhousinghealthemploymentandeducationenglandandwales/census2021
     publisher: Office for National Statistics
@@ -257,11 +253,18 @@ sources:
     publisher: Finansministeriet (Danish Ministry of Finance)
     date: '2023-05'
   - stance: supports
-    quote: >-
-      Tabel 2.1 Nettobidrag til de offentlige finanser efter herkomst, 2019.
-      Gennemsnitlig nettobidrag (1.000 kr. pr. person): Dansk oprindelse 22;
-      Alle indvandrere 5; - Heraf vestlige lande 52; - Heraf MENAPT-lande -79;
-      - Heraf øvrige ikke-vestlige lande 11; Alle efterkommere -102
+    quote: |-
+      Tabel 2.1 Nettobidrag til de offentlige finanser efter herkomst, 2019
+
+       | Gennemsnitlig nettobidrag (1.000 kr. pr. person) | 1.000 helårspersoner | Nettobidrag (mia. kr.)
+      Alle | 16 | 5.817 | 95
+      Dansk oprindelse | 22 | 5.020 | 112
+      Indvandrere og efterkommere | -21 | 797 | -16
+      Alle indvandrere | 5 | 608 | 3
+      Heraf vestlige lande | 52 | 253 | 13
+      Heraf MENAPT-lande | -79 | 157 | -12
+      Heraf øvrige ikke-vestlige lande | 11 | 198 | 2
+      Alle efterkommere | -102 | 189 | -19
     title: 'Økonomisk Analyse: Indvandreres nettobidrag til de offentlige finanser i 2019'
     url: https://web.archive.org/web/2024/https://fm.dk/media/27067/oekonomisk-analyse_indvandreres-nettobidrag-til-de-offentlige-finanser-i-2019.pdf
     publisher: Finansministeriet (Danish Ministry of Finance)
@@ -315,13 +318,10 @@ sources:
     publisher: Finansministeriet (Danish Ministry of Finance)
     date: '2023-05'
   - stance: complicates
-    quote: >-
-      Opgørelsen er i udgangspunktet ikke renset for konjunkturer eller andre
-      midlertidige udsving i skatteprovenu mv. [...] MENAPT-lande omfatter
-      igennem hele analysen følgende lande: Syrien, Kuwait, Libyen,
-      Saudi-Arabien, Libanon, Somalia, Irak, Qatar, Sudan, Bahrain, Djibouti,
-      Jordan, Algeriet, Forenede Arabiske Emirater, Tunesien, Egypten, Marokko,
-      Iran, Yemen, Mauretanien, Oman, Afghanistan, Pakistan og Tyrkiet.
+    quote: |-
+      Opgørelsen er i udgangspunktet ikke renset for konjunkturer eller andre midlertidige udsving i skatteprovenu mv.
+
+      [...] MENAPT-lande omfatter igennem hele analysen følgende lande: Syrien, Kuwait, Libyen, Saudi-Arabien, Libanon, Somalia, Irak, Qatar, Sudan, Bahrain, Djibouti, Jordan, Algeriet, Forenede Arabiske Emirater, Tunesien, Egypten, Marokko, Iran, Yemen, Mauretanien, Oman, Afghanistan, Pakistan og Tyrkiet.
     title: 'Økonomisk Analyse: Indvandreres nettobidrag til de offentlige finanser i 2019'
     url: https://web.archive.org/web/2024/https://fm.dk/media/27067/oekonomisk-analyse_indvandreres-nettobidrag-til-de-offentlige-finanser-i-2019.pdf
     publisher: Finansministeriet (Danish Ministry of Finance)
@@ -349,17 +349,10 @@ sources:
     publisher: 'Jan van de Beek, Hans Roodenburg, Joop Hartog and Gerrit Kreffer (demo-demo uitgever)'
     date: '2021-03'
   - stance: supports
-    quote: >-
-      There are also considerable differences by region of origin. On average,
-      Western immigrants make a positive contribution of €25,000, while
-      non-western immigrants cost nearly €275,000. Within the categories
-      Western and non-Western there is, however, much variation. [...]
-      Immigration from non-Western regions is usually unfavourable for public
-      finances. This applies especially to the areas of origin Caribbean,
-      West-Asia, Turkey and North, Central and West Africa with net costs
-      around ranging from €200,000 to €400,000 per immigrant, and Morocco, the
-      Horn of Africa and Sudan with net cost of €550,000 to €600.000 per
-      immigrant.
+    quote: |-
+      There are also considerable differences by region of origin. On average, Western immigrants make a positive contribution of €25,000, while non-western immigrants cost nearly €275,000. Within the categories Western and non-Western there is, however, much variation.
+
+      [...] Immigration from non-Western regions is usually unfavourable for public finances. This applies especially to the areas of origin Caribbean, West-Asia, Turkey and North, Central and West Africa with net costs around ranging from €200,000 to €400,000 per immigrant, and Morocco, the Horn of Africa and Sudan with net cost of €550,000 to €600.000 per immigrant.
     title: 'Borderless Welfare State: The Consequences of Immigration for Public Finances (English summary of Grenzeloze verzorgingsstaat)'
     url: https://www.wyniasweek.nl/wp-content/uploads/2021/03/Grenzeloze_Verzorgingsstaat.pdf
     publisher: 'Jan van de Beek, Hans Roodenburg, Joop Hartog and Gerrit Kreffer (demo-demo uitgever)'
@@ -646,10 +639,11 @@ sources:
     publisher: Channel 4
     date: '2016-04-11'
   - stance: supports
-    quote: >-
-      52% do not believe that homosexuality should be legal in Britain Q: To
-      what extent you agree or disagree with each one: homosexuality should be
-      legal in Britain? Net agree 18% (strongly agree 8%, tend to agree 10%)
+    quote: |-
+      52% do not believe that homosexuality should be legal in Britain
+
+      Q: To what extent you agree or disagree with each one: homosexuality should be legal in Britain?
+      Net agree 18% (strongly agree 8%, tend to agree 10%)
       Net disagree: 52% (strongly disagree: 38%, tend to disagree: 14%)
     title: 'C4 survey and documentary reveals What British Muslims Really Think'
     url: https://www.channel4.com/press/news/c4-survey-and-documentary-reveals-what-british-muslims-really-think
@@ -671,13 +665,12 @@ sources:
     publisher: Channel 4
     date: '2016-04-11'
   - stance: complicates
-    quote: >-
-      J.L. Partners polled two audiences in conjunction with Number Cruncher: a
-      nationally representative sample of British Muslims and a nationally
-      representative sample of the general public. Fieldwork dates of 14th
-      February – 12th March 2024 for British Muslims, 4th – 6th March 2024 for
-      General Public [...] Sample of 1,000 for British Muslims, 2,013 for General
-      Public [...] Sample collected using online panel
+    quote: |-
+      J.L. Partners polled two audiences in conjunction with Number Cruncher: a nationally representative sample of British Muslims and a nationally representative sample of the general public. Fieldwork dates of 14th February – 12th March 2024 for British Muslims, 4th – 6th March 2024 for General Public
+
+      [...] Sample of 1,000 for British Muslims, 2,013 for General Public
+
+      [...] Sample collected using online panel
     title: 'British Muslims poll: methodology and summary of findings (J.L. Partners for the Henry Jackson Society)'
     url: https://henryjacksonsociety.org/wp-content/uploads/2024/04/HJS-Deck-200324-Final.pdf
     publisher: Henry Jackson Society
@@ -748,7 +741,7 @@ series:
       resident population1 born abroad2 from 4.3 per cent (1.9 million)
       recorded in the 1951 Census to 13 per cent (7.5 million) in the 2011
       Census (see figure 1). [...] There was a particularly marked increase in
-      the latest inter-censal period, from 8.9 per cent (4.6 million)4 in 2001.
+      the latest inter-censal period, from 8.9 per cent (4.6 million) in 2001.
     title: '2011 Census analysis: Immigration Patterns of Non-UK Born Populations in England and Wales in 2011'
     url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/internationalmigration/articles/immigrationpatternsofnonukbornpopulationsinenglandandwalesin2011/2013-12-17
     publisher: Office for National Statistics

@@ -77,17 +77,10 @@ sources:
     date: '2013-06-17'
   # 6
   - stance: supports
-    quote: >-
-      That “Federal Form,” developed by the federal Election Assistance
-      Commission (EAC), requires only that an applicant aver, under penalty of
-      perjury, that he is a citizen. Arizona law, however, requires
-      voter-registration officials to “reject” any application for
-      registration, including a Federal Form, that is not accompanied by
-      documentary evidence of citizenship. … Scalia, J., delivered the opinion
-      of the Court, in which Roberts, C. J., and Ginsburg, Breyer, Sotomayor,
-      and Kagan, JJ., joined, and in which Kennedy, J., joined in part.
-      Kennedy, J., filed an opinion concurring in part and concurring in the
-      judgment. Thomas, J., and Alito, J., filed dissenting opinions.
+    quote: |-
+      That “Federal Form,” developed by the federal Election Assistance Commission (EAC), requires only that an applicant aver, under penalty of perjury, that he is a citizen. Arizona law, however, requires voter-registration officials to “reject” any application for registration, including a Federal Form, that is not accompanied by documentary evidence of citizenship.
+
+      … Scalia, J., delivered the opinion of the Court, in which Roberts, C. J., and Ginsburg, Breyer, Sotomayor, and Kagan, JJ., joined, and in which Kennedy, J., joined in part. Kennedy, J., filed an opinion concurring in part and concurring in the judgment. Thomas, J., and Alito, J., filed dissenting opinions.
     title: 'Arizona v. Inter Tribal Council of Arizona, Inc., 570 U.S. 1 (2013), syllabus'
     url: https://www.law.cornell.edu/supremecourt/text/12-71
     publisher: Supreme Court of the United States (via Cornell LII)
@@ -106,15 +99,12 @@ sources:
     date: '2008-04-28'
   # 8
   - stance: complicates
-    quote: >-
-      The requirement does not apply to absentee ballots submitted by mail …
-      the State offers free photo identification to qualified voters able to
-      establish their residence and identity. … The only kind of voter fraud that SEA 483 addresses is in-person voter
-      impersonation at polling places. The record contains no evidence of any
-      such fraud actually occurring in Indiana at any time in its history. …
-      It remains true, however, that flagrant examples of such fraud in other
-      parts of the country have been documented throughout this Nation’s
-      history by respected historians and journalists
+    quote: |-
+      The requirement does not apply to absentee ballots submitted by mail
+
+      … the State offers free photo identification to qualified voters able to establish their residence and identity.
+
+      … The only kind of voter fraud that SEA 483 addresses is in-person voter impersonation at polling places. The record contains no evidence of any such fraud actually occurring in Indiana at any time in its history. Moreover, petitioners argue that provisions of the Indiana Criminal Code punishing such conduct as a felony provide adequate protection against the risk that such conduct will occur in the future. It remains true, however, that flagrant examples of such fraud in other parts of the country have been documented throughout this Nation’s history by respected historians and journalists
     title: 'Crawford v. Marion County Election Board, 553 U.S. 181 (2008), opinion of Stevens, J.'
     url: https://www.law.cornell.edu/supct/html/07-21.ZO.html
     publisher: Supreme Court of the United States (via Cornell LII)
@@ -133,12 +123,14 @@ sources:
   # 10
   - stance: supports
     quote: >-
-      In sum, on the basis of the record that has been made in this
-      litigation, we cannot conclude that the statute imposes “excessively
-      burdensome requirements” on any class of voters. … The state interests
-      identified as justifications for SEA 483 are both neutral and
-      sufficiently strong to require us to reject petitioners’ facial attack on
-      the statute.
+      In sum, on the basis of the record that has been made in this litigation,
+      we cannot conclude that the statute imposes “excessively burdensome
+      requirements” on any class of voters. … But if a nondiscriminatory law is
+      supported by valid neutral justifications, those justifications should not
+      be disregarded simply because partisan interests may have provided one
+      motivation for the votes of individual legislators. The state interests
+      identified as justifications for SEA 483 are both neutral and sufficiently
+      strong to require us to reject petitioners’ facial attack on the statute.
     title: 'Crawford v. Marion County Election Board, 553 U.S. 181 (2008), opinion of Stevens, J.'
     url: https://www.law.cornell.edu/supct/html/07-21.ZO.html
     publisher: Supreme Court of the United States (via Cornell LII)
@@ -201,11 +193,13 @@ sources:
       Section 2 of the VRA is a nationwide prohibition against voting practices
       and procedures (including redistricting plans and at-large election
       systems and voter registration procedures) that discriminate on the basis
-      of race, color or membership in a language minority group. … On June 25,
-      2013, the Supreme Court held that it is unconstitutional to use the
-      coverage formula in Section 4(b) of the VRA to determine which
-      jurisdictions are subject to the preclearance requirement of Section 5 of
-      the VRA.
+      of race, color or membership in a language minority group. Section 2
+      prohibits not only election-related practices that are intended to be
+      racially discriminatory, but also those that are shown to have a racially
+      discriminatory result. … On June 25, 2013, the Supreme Court held that it
+      is unconstitutional to use the coverage formula in Section 4(b) of the VRA
+      to determine which jurisdictions are subject to the preclearance
+      requirement of Section 5 of the VRA.
     title: Statutes Enforced By The Voting Section
     url: https://www.justice.gov/crt/statutes-enforced-voting-section
     publisher: U.S. Department of Justice, Civil Rights Division
@@ -239,31 +233,22 @@ sources:
     date: '2024-08-15'
   # 19
   - stance: supports
-    quote: >-
-      An individual meets the requirements of this paragraph if the
-      individual— (i) in the case of an individual who votes in person— (I)
-      presents to the appropriate State or local election official a current
-      and valid photo identification; or (II) presents to the appropriate State
-      or local election official a copy of a current utility bill, bank
-      statement, government check, paycheck, or other government document that
-      shows the name and address of the voter … An individual who desires to
-      vote in person, but who does not meet the requirements of subparagraph
-      (A)(i), may cast a provisional ballot under section 21082(a) of this
-      title.
+    quote: |-
+      An individual meets the requirements of this paragraph if the individual— (i) in the case of an individual who votes in person—
+      - (I) presents to the appropriate State or local election official a current and valid photo identification; or
+      - (II) presents to the appropriate State or local election official a copy of a current utility bill, bank statement, government check, paycheck, or other government document that shows the name and address of the voter
+
+      … An individual who desires to vote in person, but who does not meet the requirements of subparagraph (A)(i), may cast a provisional ballot under section 21082(a) of this title.
     title: '52 U.S.C. §21083(b), Requirements for voters who register by mail (HAVA §303(b))'
     url: https://www.law.cornell.edu/uscode/text/52/21083
     publisher: Legal Information Institute, Cornell Law School
     date: '2002'
   # 20
   - stance: supports
-    quote: >-
-      an application for voter registration for an election for Federal office
-      may not be accepted or processed by a State unless the application
-      includes— (I) in the case of an applicant who has been issued a current
-      and valid driver’s license, the applicant’s driver’s license number; or
-      (II) in the case of any other applicant (other than an applicant to whom
-      clause (ii) applies), the last 4 digits of the applicant’s social
-      security number.
+    quote: |-
+      an application for voter registration for an election for Federal office may not be accepted or processed by a State unless the application includes—
+      - (I) in the case of an applicant who has been issued a current and valid driver’s license, the applicant’s driver’s license number; or
+      - (II) in the case of any other applicant (other than an applicant to whom clause (ii) applies), the last 4 digits of the applicant’s social security number.
     title: '52 U.S.C. §21083(a)(5), Verification of voter registration information (HAVA §303(a))'
     url: https://www.law.cornell.edu/uscode/text/52/21083
     publisher: Legal Information Institute, Cornell Law School
@@ -281,15 +266,11 @@ sources:
     date: '1993'
   # 22
   - stance: supports
-    quote: >-
-      On September 14, 2021, Senator Klobuchar introduced S. 2747, the Freedom
-      to Vote Act. On October 20, 2021, the Senate failed to invoke cloture on
-      the motion to proceed to the bill. … require states to offer
-      preregistration for 16- and 17-year-olds, online registration, and
-      same-day registration; … require states to offer early voting
-      and no-excuse absentee voting; … require jurisdictions with voter
-      identification requirements to accept specified information or
-      documentation to satisfy ID requirements;
+    quote: |-
+      On September 14, 2021, Senator Klobuchar introduced S. 2747, the Freedom to Vote Act. On October 20, 2021, the Senate failed to invoke cloture on the motion to proceed to the bill.
+      - … require states to offer preregistration for 16- and 17-year-olds, online registration, and same-day registration;
+      - … require states to offer early voting and no-excuse absentee voting;
+      - … require jurisdictions with voter identification requirements to accept specified information or documentation to satisfy ID requirements;
     title: 'The Freedom to Vote Act (S. 2747): Overview of Major Provisions (IN11781)'
     url: https://www.everycrsreport.com/reports/IN11781.html
     publisher: Congressional Research Service
@@ -345,12 +326,14 @@ sources:
     date: '2026-07-23'
   # 27
   - stance: supports
-    quote: >-
-      Vote Number: 231 Vote Date: August 8, 2026, 04:36 AM Required For
-      Majority: 3/5 Vote Result: Cloture on the Motion to Proceed Rejected
-      Measure Number: S. 5271 Measure Title: A bill to amend the Help America
-      Vote Act of 2002 to require voters to provide photo identification. Vote
-      Counts: YEAs 52 NAYs 46 Not Voting 2
+    quote: |-
+      Vote Number: 231
+      Vote Date: August 8, 2026, 04:36 AM
+      Required For Majority: 3/5
+      Vote Result: Cloture on the Motion to Proceed Rejected
+      Measure Number: S. 5271
+      Measure Title: A bill to amend the Help America Vote Act of 2002 to require voters to provide photo identification.
+      Vote Counts: YEAs 52 NAYs 46 Not Voting 2
     title: 'Roll Call Vote 119th Congress - 2nd Session, Vote Number 231'
     url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00231.htm
     publisher: United States Senate
@@ -487,9 +470,12 @@ sources:
     quote: >-
       In his appeal, Sauer wrote that since May 2025, the updated version of
       SAVE has verified more than 65 million voters across 26 states, and has
-      flagged 28,635 as potential noncitizens. … They wrote that even though 65
-      million voters had been verified by the revamped SAVE, the government had
-      not yet released the system’s error rate
+      flagged 28,635 as potential noncitizens. “The district court’s order,
+      however, makes it harder to detect ineligible voters, undermining the
+      integrity of federal elections and public confidence in the results of
+      those elections,” he wrote. … They wrote that even though 65 million
+      voters had been verified by the revamped SAVE, the government had not yet
+      released the system’s error rate
     title: The Supreme Court revives a controversial data system for citizenship checks
     url: https://www.opb.org/article/2026/09/25/the-supreme-court-revives-the-controversial-save-data-system/
     publisher: OPB (NPR)

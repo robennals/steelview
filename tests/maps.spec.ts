@@ -1,5 +1,6 @@
-import type { Locator } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import { test, expect } from './hydrated-test';
+import { openChart } from './topic-rows';
 
 // Depends on authored content: the us-vote-by-mail fact
 // `secret-ballot-and-postal-voting-abroad` carries a world map (preset
@@ -8,9 +9,7 @@ import { test, expect } from './hydrated-test';
 // Liechtenstein's category is — only that a microstate is readable, and
 // reads the same, in both views.
 
-const POSTAL = 'secret-ballot-and-postal-voting-abroad';
-const POSTAL_URL = `/topics/us-vote-by-mail/facts/${POSTAL}`;
-const POSTAL_MAP = `#${POSTAL}--chart-idea-postal-voting`;
+const openMap = (page: Page) => openChart(page, 'secret-ballot-and-postal-voting-abroad', 'idea-postal-voting', '/topics/us-vote-by-mail');
 
 /** The distinct areas a map's current view draws, as tiles, shapes or dots. */
 async function drawnAreas(map: Locator): Promise<number> {
@@ -19,8 +18,7 @@ async function drawnAreas(map: Locator): Promise<number> {
 }
 
 test('a map switches between its tiles, its real shapes and its table, reading each area the same way', async ({ page }) => {
-  await page.goto(POSTAL_URL);
-  const map = page.locator(POSTAL_MAP);
+  const map = await openMap(page);
   const button = (name: string) => map.locator('.sv-chart__view-controls button', { hasText: name });
   await expect(map.locator('.sv-chart__view-controls button')).toHaveCount(3);
   await expect(map.locator('.sv-chart__view-controls button[aria-pressed="true"]')).toHaveCount(1);
@@ -51,8 +49,7 @@ test('a map switches between its tiles, its real shapes and its table, reading e
 });
 
 test('a world map opening on its shapes offers one tile per sovereign state', async ({ page }) => {
-  await page.goto(POSTAL_URL);
-  const map = page.locator(POSTAL_MAP);
+  const map = await openMap(page);
   await expect(map.locator('.sv-chart__view-controls button')).toHaveText(['Map', 'Tiles', 'Table']);
   await expect(map.locator('.sv-geo-map__dot')).toHaveCount(29);
   await map.locator('.sv-chart__view-controls button', { hasText: 'Tiles' }).click();
@@ -65,8 +62,7 @@ test('a world map opening on its shapes offers one tile per sovereign state', as
 });
 
 test('clicking a country zooms to it, in both drawings, and the buttons take it back', async ({ page }) => {
-  await page.goto(POSTAL_URL);
-  const map = page.locator(POSTAL_MAP);
+  const map = await openMap(page);
   const interactive = map.locator('.sv-map__interactive');
   const zoomIn = map.getByRole('button', { name: 'Zoom in' });
   const whole = map.getByRole('button', { name: 'Whole map' });
@@ -96,15 +92,16 @@ test('clicking a country zooms to it, in both drawings, and the buttons take it 
   await zoomIn.click();
   await expect(interactive).toHaveAttribute('data-zoomed', 'detail');
   await expect(zoomIn).toBeDisabled();
-  // The disabled button has dropped focus; Escape works from any tile.
+  // The disabled button has dropped focus; Escape works from any tile, and
+  // takes the map back without closing the sheet it is in.
   await map.locator('.sv-tile-map__tile[data-region="DE"]').focus();
   await page.keyboard.press('Escape');
   await expect(interactive).not.toHaveAttribute('data-zoomed', /.+/);
+  await expect(map).toBeVisible();
 });
 
 test('the table is one list of areas that sorts and filters by column', async ({ page }) => {
-  await page.goto(POSTAL_URL);
-  const map = page.locator(POSTAL_MAP);
+  const map = await openMap(page);
   await map.locator('.sv-chart__view-controls button', { hasText: 'Table' }).click();
   // In a data panel the table's scroll box runs to the bottom of the step.
   const scroller = await map.locator('.sv-area-table .sv-chart__table-scroll').boundingBox();
@@ -124,19 +121,4 @@ test('the table is one list of areas that sorts and filters by column', async ({
   await expect(names.first()).toHaveText('Canada');
   await map.getByRole('button', { name: 'Country', exact: true }).click();
   await expect(names.first()).toHaveText('United States');
-});
-
-test.describe('with JavaScript disabled', () => {
-  test.use({ javaScriptEnabled: false });
-
-  test('a map shows its default view and every area in the table', async ({ page }) => {
-    await page.goto(POSTAL_URL);
-    const map = page.locator(POSTAL_MAP);
-    const areas = await drawnAreas(map);
-    expect(areas).toBeGreaterThan(0);
-    await map.locator('summary', { hasText: 'Show the numbers' }).click();
-    await expect(map.locator('details table tbody th[scope="row"]')).toHaveCount(areas);
-    await expect(map.locator('details table tbody th[scope="row"]', { hasText: 'Liechtenstein' })).toHaveCount(1);
-    await expect(map.getByRole('button', { name: 'Zoom in' })).toBeHidden();
-  });
 });

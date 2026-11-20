@@ -12,8 +12,6 @@ type Observation = DataStep['observations'][number];
 /** Which of a step's observations is shown, shared with the bar inside its chart. */
 const Step = createContext<{
   observations: Observation[];
-  /** Give each observation its id, for a page where a link to one works without script. */
-  addressed: boolean;
   /** The chart's further text for its More, rendered. */
   more: string;
   index: number;
@@ -42,7 +40,7 @@ function startAt(observations: Observation[], views: DataStep['views'], shown: s
   return view ? observations.findIndex(o => o.view === view.id) : -1;
 }
 
-type ObservationStepProps = { observations: Observation[]; views?: DataStep['views']; more?: string; addressed?: boolean; children?: ReactNode };
+type ObservationStepProps = { observations: Observation[]; views?: DataStep['views']; more?: string; children?: ReactNode };
 
 /**
  * The observations made about one chart, one at a time: the same data can
@@ -50,9 +48,8 @@ type ObservationStepProps = { observations: Observation[]; views?: DataStep['vie
  * arrives after its step, so this holds the reader's place while `ObservationBar`
  * is drawn first in the step and then inside the chart.
  */
-export function ObservationStep({ observations, views, more = '', addressed = false, children }: ObservationStepProps) {
-  // Opened at one of these observations, start there. A report's own page can
-  // be sent to one by a link, which is asking to read it, so it opens too.
+export function ObservationStep({ observations, views, more = '', children }: ObservationStepProps) {
+  // Opened at one of these observations, start there, open: a link to it is asking to read it.
   const shown = useContext(ShownObservation);
   const [index, setIndex] = useState(() => Math.max(0, startAt(observations, views, shown)));
   const [open, setOpen] = useState(() => observations.some(o => o.id === shown));
@@ -69,7 +66,6 @@ export function ObservationStep({ observations, views, more = '', addressed = fa
   }
   const step = useMemo(() => ({
     observations,
-    addressed,
     more,
     index,
     open,
@@ -84,7 +80,7 @@ export function ObservationStep({ observations, views, more = '', addressed = fa
       setJumps(count => count + 1);
     },
     toggle: () => setOpen(was => !was),
-  }), [observations, addressed, more, index, open, jumps]);
+  }), [observations, more, index, open, jumps]);
   return <Step.Provider value={step}>{children}</Step.Provider>;
 }
 
@@ -150,7 +146,7 @@ export function ObservationBar() {
   }, [jumps]);
 
   if (!step || alone || step.observations.length === 0) return null;
-  const { observations, addressed, index, open, go, toggle } = step;
+  const { observations, index, open, go, toggle } = step;
   const many = observations.length > 1;
 
   // Anywhere in the bubble toggles it, apart from its own controls and links, or
@@ -174,7 +170,7 @@ export function ObservationBar() {
       {observations.map((observation, i) => {
         const current = i === index;
         return (
-          <div key={observation.id} className="sv-observe__item" id={addressed ? observation.id : undefined} data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
+          <div key={observation.id} className="sv-observe__item" data-observation={observation.id} data-open={(current && open) || !enhanced || undefined} hidden={enhanced && !current}>
             <div className="sv-observe__head">
               {current && controls}
               <h4 className="sv-observe__heading">

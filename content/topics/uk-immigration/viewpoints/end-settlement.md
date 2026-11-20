@@ -8,15 +8,11 @@ Britain should stop giving migrants the right to stay for good. People who alrea
 
 ### A wave of permanent settlement is about to arrive
 
-Settlement, or indefinite leave to remain, is the right to stay in Britain for life. [The Home Office expects about 1.6 million people to settle by 2030](#fact-settlement-and-migrant-status/forecast-1-6-million). [Once settled, a person can claim most of the benefits that people on temporary visas cannot](#fact-settlement-and-migrant-status/settlement-unlocks-benefits).
-
-[The rise comes from health and care, skilled-worker and Hong Kong visas issued since 2021](#fact-settlement-and-migrant-status/forecast-drivers-in-detail). Voters should get to decide that before it happens.
+Settlement, or indefinite leave to remain, is the right to stay in Britain for life. [The Home Office expects about 1.6 million people to settle by 2030](#fact-settlement-and-migrant-status/forecast-1-6-million). [Once settled, a person can claim most of the benefits that people on temporary visas cannot](#fact-settlement-and-migrant-status/settlement-unlocks-benefits). Voters should get to decide that before it happens.
 
 ### Settling low earners turns a working stay into a lifetime cost
 
-Government advisers find that [care workers, and the adult family members of health and care workers, cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-route-net-cost). They also find that [for lower earners, a temporary stay is better for the public purse than a permanent one](#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners).
-
-[Partners arriving on the family route are modelled to cost £109,000 each](#fact-immigration-economy-and-public-finances/partner-route-lifetime-cost). [About half of adult skilled-worker dependants were not working, and so were a third of adults on family visas by their fifth year](#fact-settlement-and-migrant-status/non-working-groups). In the budget watchdog's figures, [old age reverses most of the gains](#fact-immigration-economy-and-public-finances/old-age-reverses-gains). A renewable visa keeps the workers who pay in: [a skilled worker outside health and care adds hundreds of thousands of pounds](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain). The person who does not work is not renewed.
+Government advisers find that [care workers, and the adult family members of health and care workers, cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-route-net-cost). They also find that [for lower earners, a temporary stay is better for the public purse than a permanent one](#fact-immigration-economy-and-public-finances/temporary-better-for-lower-earners): in the budget watchdog's figures, [old age reverses most of the gains](#fact-immigration-economy-and-public-finances/old-age-reverses-gains). [About half of adult skilled-worker dependants were not working, and so were a third of adults on family visas by their fifth year](#fact-settlement-and-migrant-status/non-working-groups). A renewable visa keeps the workers who pay in: [a skilled worker outside health and care adds hundreds of thousands of pounds](#fact-immigration-economy-and-public-finances/skilled-workers-large-net-gain). The person who does not work is not renewed.
 
 ### Skilled workers were never promised settlement, and the rules have changed before
 
@@ -30,9 +26,7 @@ While [people with settlement outside the EU scheme were 2.7% of those on Univer
 
 ### Fewer arrivals alone will not undo the change
 
-Lower arrivals would leave [the 2.5 million people added by net migration in 2021–24](#fact-immigration-against-the-long-run/four-years-gross-and-net) in place. Only years in which more people leave than arrive would reverse that.
-
-While [Britain's past years of net emigration came when arrivals were a fraction of today's](#fact-immigration-against-the-long-run/negative-years-came-from-emigration), [British citizens already leave on net](#fact-immigration-against-the-long-run/british-net-emigration). So arrivals need only fall below departures. While [the population ages fastest with no net migration](#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it), that is a price worth paying. A country should not have to accept for ever a change it never chose.
+Lower arrivals would leave [the 2.5 million people added by net migration in 2021–24](#fact-immigration-against-the-long-run/four-years-gross-and-net) in place. Only years in which more people leave than arrive would reverse that. While [Britain's past years of net emigration came when arrivals were a fraction of today's](#fact-immigration-against-the-long-run/negative-years-came-from-emigration), [British citizens already leave on net](#fact-immigration-against-the-long-run/british-net-emigration). So arrivals need only fall below departures. While [the population ages fastest with no net migration](#fact-immigration-against-the-long-run/migration-slows-ageing-but-does-not-stop-it), that is a price worth paying. A country should not have to accept for ever a change it never chose.
 
 ### So replace settlement with renewable visas and keep benefits for citizens
 

@@ -29,81 +29,69 @@ sources:
     date: '2026-09-03'
   # 2
   - stance: supports
-    quote: >-
-      Strict: Voters without acceptable identification must vote on a
-      provisional ballot and also take additional steps after Election Day for
-      it to be counted. … Table 1: Voter Identification Laws In Force in 2026 …
-      Strict … Arkansas Georgia Indiana Kansas Mississippi New Hampshire [6]
-      North Carolina Ohio Tennessee Wisconsin [5] … Arizona North Dakota
-      Wyoming [3] Iowa … Non-Strict … Alabama [1] Florida Idaho Kentucky
-      Louisiana Michigan Missouri Montana Nebraska Rhode Island South Carolina
-      [4] South Dakota Texas West Virginia … Alaska Colorado Connecticut
-      Delaware Oklahoma [2] Utah Virginia Washington
+    quote: |-
+      Strict: Voters without acceptable identification must vote on a provisional ballot and also take additional steps after Election Day for it to be counted. For instance, the voter may be required to return to an election office within a few days after the election and present an acceptable ID to have the provisional ballot counted.
+
+      … Table 1: Voter Identification Laws In Force in 2026
+      … Strict
+      … Arkansas Georgia Indiana Kansas Mississippi New Hampshire [6] North Carolina Ohio Tennessee Wisconsin [5]
+      … Arizona North Dakota Wyoming [3] Iowa
+      … Non-Strict
+      … Alabama [1] Florida Idaho Kentucky Louisiana Michigan Missouri Montana Nebraska Rhode Island South Carolina [4] South Dakota Texas West Virginia
+      … Alaska Colorado Connecticut Delaware Oklahoma [2] Utah Virginia Washington
     title: 'Voter ID Laws: Table 1, Voter Identification Laws In Force in 2026'
     url: https://www.ncsl.org/elections-and-campaigns/voter-id
     publisher: National Conference of State Legislatures
     date: '2026-09-03'
   # 3
   - stance: supports
-    quote: >-
-      Georgia … Free voter ID card issued by the state or county. … Then in
-      August 2016 an appeals court ruled that the law could be implemented as
-      long as the state keeps its pledge to provide temporary free IDs to those
-      in need, and to publicize the law. … "a voter who is indigent and unable
-      to obtain proof of identification without payment of a fee or who has a
-      religious objection to being photographed shall be required to execute
-      an affidavit of identity on a form provided by the county election
-      commission and then shall be allowed to vote." (Tenn. Code Ann.
-      §2-7-112(f))
+    quote: |-
+      Georgia
+
+      … Free voter ID card issued by the state or county.
+
+      … Then in August 2016 an appeals court ruled that the law could be implemented as long as the state keeps its pledge to provide temporary free IDs to those in need, and to publicize the law.
+
+      … "a voter who is indigent and unable to obtain proof of identification without payment of a fee or who has a religious objection to being photographed shall be required to execute an affidavit of identity on a form provided by the county election commission and then shall be allowed to vote." (Tenn. Code Ann. §2-7-112(f))
     title: 'Voter ID Laws: Table 2, State-by-State Details of In-Effect Voter Identification Requirements'
     url: https://www.ncsl.org/elections-and-campaigns/voter-id
     publisher: National Conference of State Legislatures
     date: '2026-09-03'
   # 4
   - stance: supports
-    quote: >-
-      2026 … Louisiana … Enacted SB 319 removes the option for a voter without
-      an acceptable form of ID to complete an affidavit of identification in
-      lieu of presenting ID, effective 2027. … 2026 … New Hampshire … Enacted
-      HB 323 , removing student ID cards as a valid form of voter ID. … 2025 …
-      West Virginia … Enacted HB 3016 requiring photo ID to vote; previously
-      required non-photo ID. … 2025 … Wisconsin … Voters approved a
-      constitutional amendment enshrining existing photo ID requirements.
+    quote: |-
+      - 2026 … Louisiana … Enacted SB 319 removes the option for a voter without an acceptable form of ID to complete an affidavit of identification in lieu of presenting ID, effective 2027.
+      - … 2026 … New Hampshire … Enacted HB 323 , removing student ID cards as a valid form of voter ID.
+      - … 2025 … West Virginia … Enacted HB 3016 requiring photo ID to vote; previously required non-photo ID.
+      - … 2025 … Wisconsin … Voters approved a constitutional amendment enshrining existing photo ID requirements.
     title: 'Voter ID Laws: Voter ID News'
     url: https://www.ncsl.org/elections-and-campaigns/voter-id
     publisher: National Conference of State Legislatures
     date: '2026-09-03'
   # 5
   - stance: supports
-    quote: >-
-      That was when South Carolina became the first state to request that
-      voters show some kind of identification document at the polls. No photo
-      was required—just a document bearing the voter’s name. In 1970, Hawaii
-      joined South Carolina with a voter ID requirement. Texas (1971), Florida
-      (1977), and Alaska (1980) rounded out the first five. … By 2000, 14
-      states did so. These states had Democratic and Republican majorities. …
-      Soon thereafter, Georgia and Indiana pioneered a new, “strict” form of
-      voter ID. … These were first implemented in 2008 (after Indiana’s law was
-      given the go-ahead by the U.S. Supreme Court, in Crawford v. Marion
-      County). In 2011, 2012 and 2013, the pace of adoption accelerated.
+    quote: |-
+      That was when South Carolina became the first state to request that voters show some kind of identification document at the polls. No photo was required—just a document bearing the voter’s name. In 1970, Hawaii joined South Carolina with a voter ID requirement. Texas (1971), Florida (1977), and Alaska (1980) rounded out the first five.
+
+      … By 2000, 14 states did so. These states had Democratic and Republican majorities.
+
+      … Soon thereafter, Georgia and Indiana pioneered a new, “strict” form of voter ID.
+
+      … These were first implemented in 2008 (after Indiana’s law was given the go-ahead by the U.S. Supreme Court, in Crawford v. Marion County). In 2011, 2012 and 2013, the pace of adoption accelerated.
     title: History of Voter ID (archived copy)
     url: https://web.archive.org/web/20200117072817/https://www.ncsl.org/research/elections-and-campaigns/voter-id-history.aspx
     publisher: National Conference of State Legislatures
     date: '2020-01-17'
   # 6
   - stance: supports
-    quote: >-
-      Back then, 13 states had voter ID requirements—by 2020, that number had
-      nearly tripled to 34. … Of the 21 states that started with non-photo,
-      non-strict requirements, nine have made their laws stricter. Just two
-      states have eased their ID requirements: Texas in 2017 and Virginia in
-      2020. The Texas change came after a 2011 voter ID bill was found to
-      intentionally discriminate against Latino and Black voters … Most
-      notably, Wyoming enacted the state’s first voter ID law after similar
-      bills failed in 2013, 2017 and 2020, bringing the total of states with
-      voter ID laws to 35. … Like virtually all bills to add voter ID requirements or make
-      existing requirements stricter, the action this year has been in
-      Republican-led states.
+    quote: |-
+      Back then, 13 states had voter ID requirements—by 2020, that number had nearly tripled to 34.
+
+      … Of the 21 states that started with non-photo, non-strict requirements, nine have made their laws stricter. Just two states have eased their ID requirements: Texas in 2017 and Virginia in 2020. The Texas change came after a 2011 voter ID bill was found to intentionally discriminate against Latino and Black voters
+
+      … Most notably, Wyoming enacted the state’s first voter ID law after similar bills failed in 2013, 2017 and 2020, bringing the total of states with voter ID laws to 35.
+
+      … Like virtually all bills to add voter ID requirements or make existing requirements stricter, the action this year has been in Republican-led states.
     title: 'The Canvass: Voter ID: Where Are We Going, Where Have We Been?'
     url: https://www.ncsl.org/news/details/the-canvass-october-2021
     publisher: National Conference of State Legislatures
@@ -149,83 +137,83 @@ sources:
     date: '2012-09-05'
   # 10
   - stance: supports
-    quote: >-
-      Introduction: A total of 34 states have passed laws requiring voters to
-      show some form of identification at the polls. As of September 12, 2014,
-      32 of these voter identification laws are in force. … Using this
-      categorization for laws that are in effect in 2014, 16 states ask for a
-      photo ID and 16 states also accept non-photo IDs. … Table One: Voter
-      Identification Laws In Force in 2014 … Strict … Arkansas* Georgia Indiana
-      Kansas Mississippi Tennessee Texas Virginia Wisconsin[1]
+    quote: |-
+      Introduction: A total of 34 states have passed laws requiring voters to show some form of identification at the polls. As of September 12, 2014, 32 of these voter identification laws are in force.
+
+      … Using this categorization for laws that are in effect in 2014, 16 states ask for a photo ID and 16 states also accept non-photo IDs.
+
+      … Table One: Voter Identification Laws In Force in 2014
+      … Strict
+      … Arkansas* Georgia Indiana Kansas Mississippi Tennessee Texas Virginia Wisconsin[1]
     title: Voter Identification Requirements (archived copy, October 2014)
     url: https://web.archive.org/web/20141002191057/http://www.ncsl.org/research/elections-and-campaigns/voter-id.aspx
     publisher: National Conference of State Legislatures
     date: '2014-10-02'
   # 11
   - stance: supports
-    quote: >-
-      Introduction: A total of 34 states have laws requesting or requiring
-      voters to show some form of identification at the polls. 32 of these
-      voter identification laws are in force in 2016. … Using this
-      categorization for laws that are in effect in 2016, 17 states ask for a
-      photo ID and 16 states also accept non-photo IDs. … Table 1: Voter
-      Identification Laws In Force in 2016** … Strict … Georgia Indiana Kansas
-      Mississippi Tennessee Virginia Wisconsin [7]
+    quote: |-
+      Introduction: A total of 34 states have laws requesting or requiring voters to show some form of identification at the polls. 32 of these voter identification laws are in force in 2016.
+
+      … Using this categorization for laws that are in effect in 2016, 17 states ask for a photo ID and 16 states also accept non-photo IDs.
+
+      … Table 1: Voter Identification Laws In Force in 2016**
+      … Strict
+      … Georgia Indiana Kansas Mississippi Tennessee Virginia Wisconsin [7]
     title: Voter Identification Requirements (archived copy, October 2016)
     url: https://web.archive.org/web/20161008094304/http://www.ncsl.org/research/elections-and-campaigns/voter-id.aspx
     publisher: National Conference of State Legislatures
     date: '2016-10-08'
   # 12
   - stance: supports
-    quote: >-
-      Introduction: A total of 34 states have laws requesting or requiring
-      voters to show some form of identification at the polls, all of which
-      are in force in 2018. … Using this categorization for laws that are in
-      effect in 2018, 17 states ask for a photo ID and 17 states also accept
-      non-photo IDs. … Table 1: Voter Identification Laws In Force in 2018** …
-      Strict … Georgia Indiana Kansas Mississippi Tennessee Virginia Wisconsin
-      [6]
+    quote: |-
+      Introduction: A total of 34 states have laws requesting or requiring voters to show some form of identification at the polls, all of which are in force in 2018.
+
+      … Using this categorization for laws that are in effect in 2018, 17 states ask for a photo ID and 17 states also accept non-photo IDs.
+
+      … Table 1: Voter Identification Laws In Force in 2018**
+      … Strict
+      … Georgia Indiana Kansas Mississippi Tennessee Virginia Wisconsin [6]
     title: Voter Identification Requirements (archived copy, October 2018)
     url: https://web.archive.org/web/20181001053326/http://www.ncsl.org/research/elections-and-campaigns/voter-id.aspx
     publisher: National Conference of State Legislatures
     date: '2018-10-01'
   # 13
   - stance: supports
-    quote: >-
-      Introduction: A total of 36 states have laws requesting or requiring
-      voters to show some form of identification at the polls, 35 of which are
-      in force in 2020. (North Carolina's law has a temporary injunction on it,
-      as of Dec. 31, 2019.) … Using this categorization for laws that are in
-      effect in 2020, 18 states ask for a photo ID (althought North Carolina's
-      is on hold based on a preliminary injunction from a federal judge) and 17
-      states also accept non-photo IDs. … Strict … Georgia Indiana Kansas
-      Mississippi Tennessee Wisconsin [6]
+    quote: |-
+      Introduction: A total of 36 states have laws requesting or requiring voters to show some form of identification at the polls, 35 of which are in force in 2020. (North Carolina's law has a temporary injunction on it, as of Dec. 31, 2019.)
+
+      … Using this categorization for laws that are in effect in 2020, 18 states ask for a photo ID (althought North Carolina's is on hold based on a preliminary injunction from a federal judge) and 17 states also accept non-photo IDs.
+
+      … Strict
+      … Georgia Indiana Kansas Mississippi Tennessee Wisconsin [6]
     title: Voter Identification Requirements (archived copy, October 2020)
     url: https://web.archive.org/web/20201001132837/https://www.ncsl.org/research/elections-and-campaigns/voter-id.aspx
     publisher: National Conference of State Legislatures
     date: '2020-10-01'
   # 14
   - stance: supports
-    quote: >-
-      A total of 35 states have laws requesting or requiring voters to show
-      some form of identification at the polls. … Using this categorization for
-      laws that are in effect as of July 2022, 18 states ask for a photo ID and
-      17 states also accept non-photo IDs. … Table 1: Voter Identification Laws
-      In Force in 2022 … Strict … Arkansas Georgia Indiana Kansas Mississippi
-      Missouri Tennessee Wisconsin [5]
+    quote: |-
+      A total of 35 states have laws requesting or requiring voters to show some form of identification at the polls.
+
+      … Using this categorization for laws that are in effect as of July 2022, 18 states ask for a photo ID and 17 states also accept non-photo IDs.
+
+      … Table 1: Voter Identification Laws In Force in 2022
+      … Strict
+      … Arkansas Georgia Indiana Kansas Mississippi Missouri Tennessee Wisconsin [5]
     title: Voter Identification Requirements (archived copy, October 2022)
     url: https://web.archive.org/web/20221001142556/https://www.ncsl.org/research/elections-and-campaigns/voter-id.aspx
     publisher: National Conference of State Legislatures
     date: '2022-10-01'
   # 15
   - stance: supports
-    quote: >-
-      Thirty-six states have laws requesting or requiring voters to show some
-      form of identification at the polls. … Using this categorization for laws
-      that are in effect as of April 2024, 21 states ask for a photo ID and 15
-      states also accept non-photo IDs. … Table 1: Voter Identification Laws In
-      Force in 2024 … Strict … Arkansas Georgia Indiana Kansas Mississippi
-      North Carolina Ohio Tennessee Wisconsin [5]
+    quote: |-
+      Thirty-six states have laws requesting or requiring voters to show some form of identification at the polls.
+
+      … Using this categorization for laws that are in effect as of April 2024, 21 states ask for a photo ID and 15 states also accept non-photo IDs.
+
+      … Table 1: Voter Identification Laws In Force in 2024
+      … Strict
+      … Arkansas Georgia Indiana Kansas Mississippi North Carolina Ohio Tennessee Wisconsin [5]
     title: Voter ID Laws (archived copy, October 2024)
     url: https://web.archive.org/web/20241001030832/https://www.ncsl.org/elections-and-campaigns/voter-id
     publisher: National Conference of State Legislatures
@@ -244,83 +232,77 @@ sources:
     date: '2014-06-25'
   # 17
   - stance: supports
-    quote: >-
-      States with Laws Requiring Documentary Proof of Citizenship to Register
-      to Vote … Alabama … Enacted in 2011. Not currently in effect. … Arizona …
-      Enacted in 2004. … Florida … Enacted 2026, effective Jan. 1, 2027 …
-      Georgia … Enacted in 2010. … Indiana … Enacted in 2024. … Kansas …
-      Enacted in 2011. Not currently in effect due to court decision. …
-      Louisiana … Enacted in 2024. … Mississippi … Enacted in 2026. … New
-      Hampshire … Enacted in 2024. On May 28, 2026, a federal judge issued an
-      injunction ruling that removal of the qualified voter affidavit is
-      unconstitutional. … South Dakota … Enacted in 2026. … Tennessee …
-      Enacted in 2011. … Utah … Enacted in 2026. … Wyoming … Enacted in 2025.
+    quote: |-
+      States with Laws Requiring Documentary Proof of Citizenship to Register to Vote
+      - … Alabama … Enacted in 2011. Not currently in effect.
+      - … Arizona … Enacted in 2004.
+      - … Florida … Enacted 2026, effective Jan. 1, 2027
+      - … Georgia … Enacted in 2010.
+      - … Indiana … Enacted in 2024.
+      - … Kansas … Enacted in 2011. Not currently in effect due to court decision.
+      - … Louisiana … Enacted in 2024.
+      - … Mississippi … Enacted in 2026.
+      - … New Hampshire … Enacted in 2024. On May 28, 2026, a federal judge issued an injunction ruling that removal of the qualified voter affidavit is unconstitutional.
+      - … South Dakota … Enacted in 2026.
+      - … Tennessee … Enacted in 2011.
+      - … Utah … Enacted in 2026.
+      - … Wyoming … Enacted in 2025.
     title: Requiring Documentary Proof of Citizenship
     url: https://www.ncsl.org/elections-and-campaigns/requiring-documentary-proof-of-citizenship
     publisher: National Conference of State Legislatures
     date: '2026-09-01'
   # 18
   - stance: supports
-    quote: >-
-      This year, four states required documentary proof of citizenship, or
-      DPOC, to register to vote, bringing the total number of states with such
-      laws to 13 (though not all are in effect due to past court decisions).
-      Laws in Utah and South Dakota establish bifurcated systems where eligible
-      voters who have not provided documentary proof of citizenship at some
-      point in the registration process are placed on a “federal only” list
-      allowing them to cast ballots in federal but not state elections. … Once
-      the law is effective, Louisiana will become the 11th state to have what
-      NCSL defines as a “strict” photo ID law.
+    quote: |-
+      This year, four states required documentary proof of citizenship, or DPOC, to register to vote, bringing the total number of states with such laws to 13 (though not all are in effect due to past court decisions). Laws in Utah and South Dakota establish bifurcated systems where eligible voters who have not provided documentary proof of citizenship at some point in the registration process are placed on a “federal only” list allowing them to cast ballots in federal but not state elections.
+
+      … Once the law is effective, Louisiana will become the 11th state to have what NCSL defines as a “strict” photo ID law.
     title: Voter Citizenship Bills Top Lawmaker To-Do Lists in 2026
     url: https://www.ncsl.org/resources/details/voter-citizenship-bills-top-lawmaker-to-do-lists-in-2026
     publisher: National Conference of State Legislatures
     date: '2026-07-24'
   # 19
   - stance: supports
-    quote: >-
-      As of April 2026, 47 states, the District of Columbia, Guam, Puerto Rico,
-      and the Virgin Islands offer early in-person voting to all voters (this
-      includes states with all-mail elections). Three states—Alabama,
-      Mississippi and New Hampshire—do not offer early in-person voting … The
-      average start date is 27 days before the election. … Arkansas | Fifteen
-      days before election … Georgia | Fourth Monday prior to a primary or
-      election … Indiana | Twenty-eight days before election (in-person
-      absentee) … Kansas | Twenty days before election or Tuesday before
-      election (varies by county) … North Carolina | Third Thursday before
-      election … Ohio | Twenty-nine days before election (the day after voter
-      registration closes). … Tennessee | Twenty days before election …
-      Wisconsin | Fourteen days preceding the election (in-person absentee).
+    quote: |-
+      As of April 2026, 47 states, the District of Columbia, Guam, Puerto Rico, and the Virgin Islands offer early in-person voting to all voters (this includes states with all-mail elections). Three states—Alabama, Mississippi and New Hampshire—do not offer early in-person voting, though they may provide options for eligible absentee voters. See Table 2: Excuses to Vote Absentee for more information.
+
+      … The average start date is 27 days before the election.
+      - … Arkansas | Fifteen days before election
+      - … Georgia | Fourth Monday prior to a primary or election
+      - … Indiana | Twenty-eight days before election (in-person absentee)
+      - … Kansas | Twenty days before election or Tuesday before election (varies by county)
+      - … North Carolina | Third Thursday before election
+      - … Ohio | Twenty-nine days before election (the day after voter registration closes).
+      - … Tennessee | Twenty days before election
+      - … Wisconsin | Fourteen days preceding the election (in-person absentee).
     title: Early In-Person Voting
     url: https://www.ncsl.org/elections-and-campaigns/early-in-person-voting
     publisher: National Conference of State Legislatures
     date: '2026-08-11'
   # 20
   - stance: supports
-    quote: >-
-      2.5.1 … States should provide an EAC-template ID with a photo to
-      non-drivers free of charge. 2.5.2 The right to vote is a vital component
-      of U.S. citizenship, and all states should use their best efforts to
-      obtain proof of citizenship before registering voters. … States should
-      play an affirmative role in reaching out to non-drivers by providing more
-      offices, including mobile ones, to register voters and provide photo IDs
-      free of charge. … There is no evidence of extensive fraud in U.S.
-      elections or of multiple voting, but both occur, and it could affect the
-      outcome of a close election. … it is worth recalling that most advanced
-      democracies have fraud-proof voting or national ID cards, and their
-      democracies remain strong.
+    quote: |-
+      To prevent the ID from being a barrier to voting, we recommend that states use the registration and ID process to enfranchise more voters than ever. States should play an affirmative role in reaching out to non-drivers by providing more offices, including mobile ones, to register voters and provide photo IDs free of charge. There is likely to be less discrimination against minorities if there is a single, uniform ID, than if poll workers can apply multiple standards.
+
+      … There is no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election.
+
+      … On that note, it is worth recalling that most advanced democracies have fraud-proof voting or national ID cards, and their democracies remain strong.
+
+      … 2.5.1 … States should provide an EAC-template ID with a photo to non-drivers free of charge.
+
+      2.5.2 The right to vote is a vital component of U.S. citizenship, and all states should use their best efforts to obtain proof of citizenship before registering voters.
     title: 'Building Confidence in U.S. Elections: Report of the Commission on Federal Election Reform'
     url: https://eac.gov/sites/default/files/eac_assets/1/6/Exhibit%20M.PDF
     publisher: Commission on Federal Election Reform (Carter–Baker Commission)
     date: '2005-09'
   # 21
   - stance: complicates
-    quote: >-
-      The call for States to use the new REAL ID driver’s license for voter
-      identification at the polls is the most troublesome recommendation in the
-      Report. … REAL ID is a driver’s license, not a citizenship or a voting
-      card. The Report notes that 12% of the voting age population lack a
-      driver’s license. … For some, the Commission’s ID proposal constitutes
-      nothing short of a modern day poll tax.
+    quote: |-
+      The call for States to use the new REAL ID driver’s license for voter identification at the polls is the most troublesome recommendation in the Report.
+
+      … REAL ID is a driver’s license, not a citizenship or a voting card. The Report notes that 12% of the voting age population lack a driver’s license.
+
+      … For some, the Commission’s ID proposal constitutes nothing short of a modern day poll tax.
     title: 'Building Confidence in U.S. Elections: statement of Tom Daschle, joined by Spencer Overton and Raul Yzaguirre'
     url: https://eac.gov/sites/default/files/eac_assets/1/6/Exhibit%20M.PDF
     publisher: Commission on Federal Election Reform (Carter–Baker Commission)
@@ -339,234 +321,161 @@ sources:
     date: '2005-09-19'
   # 23
   - stance: supports
-    quote: >-
-      Voters must show photo ID in a polling station before being issued with a
-      ballot paper. … The provisions for Great Britain were introduced by
-      Elections Act 2022. Voters in Northern Ireland have been required to show
-      ID when voting in all elections there since 1985, and photo ID since
-      2003. … These requirements to do not apply to elections to the Scottish
-      Parliament and Senedd Cymru and to council elections in Scotland and
-      Wales. … We do not believe there is a practical way to assure the
-      attestation process in the polling station, that it would undermine the
-      integrity of the check, and risk adding time and complexity to the
-      polling station process both to those running it, and to those using it.
-      … People without an existing acceptable form of voter ID can apply
-      online or by post for a free Voter Authority Certificate (VAC). … The UK
-      first elections outside of Northern Ireland to use voter ID were the
-      local elections in England in 2023. The first general election to require
-      voter ID was the July 2024 election.
+    quote: |-
+      Voters must show photo ID in a polling station before being issued with a ballot paper.
+
+      … The provisions for Great Britain were introduced by Elections Act 2022. Voters in Northern Ireland have been required to show ID when voting in all elections there since 1985, and photo ID since 2003.
+
+      … These requirements to do not apply to elections to the Scottish Parliament and Senedd Cymru and to council elections in Scotland and Wales.
+
+      … We do not believe there is a practical way to assure the attestation process in the polling station, that it would undermine the integrity of the check, and risk adding time and complexity to the polling station process both to those running it, and to those using it.
+
+      … People without an existing acceptable form of voter ID can apply online or by post for a free Voter Authority Certificate (VAC).
+
+      … The UK first elections outside of Northern Ireland to use voter ID were the local elections in England in 2023. The first general election to require voter ID was the July 2024 election.
     title: 'Voter ID (Research Briefing CBP 9187)'
     url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
     publisher: House of Commons Library
     date: '2025-08-06'
   # 24
   - stance: complicates
-    quote: >-
-      The Electoral Commission has found little evidence of widespread
-      electoral fraud in the UK. … Since 2016 there have been five convictions
-      and six cautions for polling station personation. … In 2023 there were
-      two allegations of polling station personation. Neither resulted in any
-      further action as police no offence had been committed. In 2024 there
-      were seven allegations of polling station personation, but none led to
-      prosecution.
+    quote: |-
+      The Electoral Commission has found little evidence of widespread electoral fraud in the UK.
+
+      … Since 2016 there have been five convictions and six cautions for polling station personation.
+
+      … In 2023 there were two allegations of polling station personation. Neither resulted in any further action as police no offence had been committed. In 2024 there were seven allegations of polling station personation, but none led to prosecution.
     title: 'Voter ID (Research Briefing CBP 9187): How much of a problem is personation?'
     url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
     publisher: House of Commons Library
     date: '2025-08-06'
   # 25
   - stance: supports
-    quote: >-
-      However, it recommended in 2014 that voter ID should be extended from
-      Northern Ireland to the whole of the UK, particularly as registration and
-      postal voting had been made more secure but polling station voting had
-      few checks in place to detect fraud. A report by the then government’s
-      Anti-Corruption Champion recommended in 2016 that the government should
-      consider pilot voter ID schemes in Great Britain. … Lord Pickles acknowledged the
-      number of allegations of polling station fraud were low and prosecutions
-      were rare in his 2016 review of electoral fraud. However, he cautioned
-      that: …there is a concern that the absence of evidence does not mean this
-      practice is not taking place. And even if it is not, there is a
-      precautionary principle that comes into play in terms of the potential
-      for it to happen…
+    quote: |-
+      However, it recommended in 2014 that voter ID should be extended from Northern Ireland to the whole of the UK, particularly as registration and postal voting had been made more secure but polling station voting had few checks in place to detect fraud. A report by the then government’s Anti-Corruption Champion recommended in 2016 that the government should consider pilot voter ID schemes in Great Britain.
+
+      … Lord Pickles acknowledged the number of allegations of polling station fraud were low and prosecutions were rare in his 2016 review of electoral fraud. However, he cautioned that:
+
+      …there is a concern that the absence of evidence does not mean this practice is not taking place. And even if it is not, there is a precautionary principle that comes into play in terms of the potential for it to happen…
     title: 'Voter ID (Research Briefing CBP 9187): Why was voter ID introduced?'
     url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
     publisher: House of Commons Library
     date: '2025-08-06'
   # 26
   - stance: supports
-    quote: >-
-      At the 2024 general election at least 0.25% of electors were turned away
-      from polling stations, around 50,000 people. Two-thirds (34,000) did
-      return with acceptable ID and were issued with a ballot paper. This meant
-      16,000 did not return. This is equivalent of 0.08% of all polling station
-      voters. This is an underestimate as 20 constituencies in Great Britain did
-      not provide data. At the 2023 local elections in England, at least 0.7% of
-      voters were turned away initially. Most people did come back after being
-      turned away (63%), but some did not (37%). This means at least 0.25% of
-      all people who tried to vote in person (or around 14,000 people) did not
-      get a ballot paper. … These figures are likely to be an underestimate
-      because of the way the data was collected.
+    quote: |-
+      At the 2024 general election at least 0.25% of electors were turned away from polling stations, around 50,000 people. Two-thirds (34,000) did return with acceptable ID and were issued with a ballot paper. This meant 16,000 did not return. This is equivalent of 0.08% of all polling station voters. This is an underestimate as 20 constituencies in Great Britain did not provide data.
+
+      At the 2023 local elections in England, at least 0.7% of voters were turned away initially. Most people did come back after being turned away (63%), but some did not (37%). This means at least 0.25% of all people who tried to vote in person (or around 14,000 people) did not get a ballot paper.
+
+      … These figures are likely to be an underestimate because of the way the data was collected.
     title: 'Voter ID (Research Briefing CBP 9187): Voters turned away'
     url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
     publisher: House of Commons Library
     date: '2025-08-06'
   # 27
   - stance: supports
-    quote: >-
-      The then Chief Electoral Officer of Northern Ireland reported that in the
-      early 1980s personation was taking place on a “planned and well organised
-      basis”. Concerns about the level of voter fraud in Northern Ireland
-      culminated in 1983 when 149 arrests were made for personation during the
-      June 1983 General Election. … There was no evidence to suggest a fall in
-      turnout, but there was plenty of evidence that fraud declined sharply. At
-      the 2005 UK General Election, just 55 tendered ballots were issued in
-      Northern Ireland, a 94% reduction compared to 1983. There has been just
-      one conviction for personation in Northern Ireland since 2002.
-      Meanwhile, public confidence in the integrity of elections in Northern
-      Ireland is up. In the early 2000s, 66% of Northern Irish electors
-      believed electoral fraud was commonplace in some areas. By 2017, the
-      proportion who thought at least some fraud took place was 28%, in line
-      with the rest of the UK.
+    quote: |-
+      The then Chief Electoral Officer of Northern Ireland reported that in the early 1980s personation was taking place on a “planned and well organised basis”. Concerns about the level of voter fraud in Northern Ireland culminated in 1983 when 149 arrests were made for personation during the June 1983 General Election.
+
+      … There was no evidence to suggest a fall in turnout, but there was plenty of evidence that fraud declined sharply. At the 2005 UK General Election, just 55 tendered ballots were issued in Northern Ireland, a 94% reduction compared to 1983. There has been just one conviction for personation in Northern Ireland since 2002. Meanwhile, public confidence in the integrity of elections in Northern Ireland is up. In the early 2000s, 66% of Northern Irish electors believed electoral fraud was commonplace in some areas. By 2017, the proportion who thought at least some fraud took place was 28%, in line with the rest of the UK.
     title: 'Voter ID (Research Briefing CBP 9187): Does it prevent personation?'
     url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
     publisher: House of Commons Library
     date: '2025-08-06'
   # 28
   - stance: complicates
-    quote: >-
-      It is not possible to attribute a change in turnout to one factor. … The
-      report noted 3% of non-voters said they did not vote because they did not
-      have ID, and 1% said it was because they did not agree with the
-      requirement to show ID to vote at a polling station. … It concluded there
-      is not enough evidence to determine whether this is the case and that it
-      cannot be determined whether or not the identification checks made it
-      easier to detect personation … 87% of people said that they thought
-      voting in general was safe from fraud and abuse … This is a positive
-      change from the 2019 general election when 72% said that they thought
-      voting was safe from fraud and abuse.
+    quote: |-
+      It is not possible to attribute a change in turnout to one factor.
+
+      … The report noted 3% of non-voters said they did not vote because they did not have ID, and 1% said it was because they did not agree with the requirement to show ID to vote at a polling station.
+
+      … It concluded there is not enough evidence to determine whether this is the case and that it cannot be determined whether or not the identification checks made it easier to detect personation
+
+      … 87% of people said that they thought voting in general was safe from fraud and abuse
+
+      … This is a positive change from the 2019 general election when 72% said that they thought voting was safe from fraud and abuse.
     title: 'Voter ID (Research Briefing CBP 9187): The impact of voter ID'
     url: https://researchbriefings.files.parliament.uk/documents/CBP-9187/CBP-9187.pdf
     publisher: House of Commons Library
     date: '2025-08-06'
   # 29
   - stance: supports
-    quote: >-
-      This means that one in 1,200 voters who tried to vote at a polling
-      station were not given a ballot paper at the UK general election due to
-      the ID requirement. … Our research carried out immediately following the general election
-      found that 87% of people were aware of the need to bring ID when voting
-      in person. … Awareness levels were slightly higher in Scotland and Wales
-      (90% and 89%) compared to England (87%). These are in line with the
-      awareness levels in Northern Ireland (89%), where the requirement to
-      show photo ID has been in place since 2003. However, as we have
-      previously found, awareness levels varied across the population and
-      were lower for: 18 to 24-year-olds (71%) compared to older age groups
-      (at least 91% for those aged 45 and over) people from ethnic minority
-      communities (76%) compared to white people (90%) people in social
-      grades C2DE (86%) compared to ABC1 (88%). … By the close of poll, 0.08%
-      of people who tried to vote in person were not issued with a ballot
-      paper due to the ID requirement. This means around 16,000 people who
-      tried to vote at a polling station were not issued with a ballot paper
-      because they could not show an accepted form of ID. …
-      Table 1: Polling station voters who were initially turned away and
-      percentage of those who did not return May 2023 (England) May 2024*
-      (England and Wales) July 2024 (Great Britain) Initially turned away 0.7%
-      (37,000) 0.6% 0.25% (50,000) Turned away and did not return 0.25%
-      (14,000) 0.2% 0.08% (16,000) * May 2024 figures are based on data from
-      the 278 English and Welsh local authorities that submitted figures
-      before the UK general election. Due to the timing of the UK general
-      election, only limited data quality checks were possible on the May
-      2024 data – data which could not be checked was removed. Absolute
-      numbers are not available for the May 2024 elections … greeters were used in
-      some polling stations to welcome voters, remind them about the need to
-      show photographic ID, and help speed up the voting process (they did not
-      have the power to turn people away from polling stations). Voters may
-      therefore have been made aware of the requirement by greeters before
-      they got to the ballot issuing desk where they would have been recorded
-      as unable to vote. … missing returns from polling stations, for example
-      where some stations in a local authority did not submit a data return …
-      It is not possible to quantify the level of inaccuracy in the data but,
-      overall, these types of errors would result in an underestimate of the
-      impact of the ID requirement. … We found that 4% of the people who said
-      they did not vote gave an unprompted reason that was related to the ID
-      rules. … However, we cannot use these figures to accurately quantify the
-      impact of voter ID on turnout. … The clearest evidence relates to the
-      lower, C2DE social grade. When prompted, 10% of people who did not vote
-      said that the ID requirement was the reason, with 6% saying that this
-      was because they did not have the required ID. This was higher for C2DE
-      non-voters compared to ABC1 non-voters (8% compared to 3%).
+    quote: |-
+      This means that one in 1,200 voters who tried to vote at a polling station were not given a ballot paper at the UK general election due to the ID requirement.
+
+      … Our research carried out immediately following the general election found that 87% of people were aware of the need to bring ID when voting in person.
+
+      … Awareness levels were slightly higher in Scotland and Wales (90% and 89%) compared to England (87%). These are in line with the awareness levels in Northern Ireland (89%), where the requirement to show photo ID has been in place since 2003. However, as we have previously found, awareness levels varied across the population and were lower for:
+      - 18 to 24-year-olds (71%) compared to older age groups (at least 91% for those aged 45 and over)
+      - people from ethnic minority communities (76%) compared to white people (90%)
+      - people in social grades C2DE (86%) compared to ABC1 (88%).
+
+      … By the close of poll, 0.08% of people who tried to vote in person were not issued with a ballot paper due to the ID requirement. This means around 16,000 people who tried to vote at a polling station were not issued with a ballot paper because they could not show an accepted form of ID.
+
+      … Table 1: Polling station voters who were initially turned away and percentage of those who did not return
+      | May 2023 (England) | May 2024* (England and Wales) | July 2024 (Great Britain)
+      Initially turned away | 0.7% (37,000) | 0.6% | 0.25% (50,000)
+      Turned away and did not return | 0.25% (14,000) | 0.2% | 0.08% (16,000)
+
+      * May 2024 figures are based on data from the 278 English and Welsh local authorities that submitted figures before the UK general election. Due to the timing of the UK general election, only limited data quality checks were possible on the May 2024 data – data which could not be checked was removed. Absolute numbers are not available for the May 2024 elections
+
+      … greeters were used in some polling stations to welcome voters, remind them about the need to show photographic ID, and help speed up the voting process (they did not have the power to turn people away from polling stations). Voters may therefore have been made aware of the requirement by greeters before they got to the ballot issuing desk where they would have been recorded as unable to vote.
+
+      … missing returns from polling stations, for example where some stations in a local authority did not submit a data return
+
+      … It is not possible to quantify the level of inaccuracy in the data but, overall, these types of errors would result in an underestimate of the impact of the ID requirement.
+
+      … We found that 4% of the people who said they did not vote gave an unprompted reason that was related to the ID rules.
+
+      … However, we cannot use these figures to accurately quantify the impact of voter ID on turnout.
+
+      … The clearest evidence relates to the lower, C2DE social grade. When prompted, 10% of people who did not vote said that the ID requirement was the reason, with 6% saying that this was because they did not have the required ID. This was higher for C2DE non-voters compared to ABC1 non-voters (8% compared to 3%).
     title: Voter ID at the 2024 UK general election (page last updated 19 August 2025)
     url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/voter-id-2024-uk-general-election
     publisher: Electoral Commission
     date: '2024-07-29'
   # 30
   - stance: complicates
-    quote: >-
-      In August 2002, the month prior to the first canvass under the new
-      system, a total of 1,192,136 names were on the electoral register for
-      Northern Ireland. When the December 2002 register was published the
-      number of names had reduced by 119,790 to 1,072,346. … We concluded that
-      the reduction could be explained by a number of factors, of which the
-      removal of the practice of carrying names forward from the previous
-      register for a period of one year is likely to have been the most
-      significant. … We do not agree with the assertion that 120,000 or so
-      persons were disenfranchised as a result of the new legislation being
-      introduced although there is some evidence to suggest that eligible
-      persons previously registered have not enrolled under the new system.
+    quote: |-
+      We concluded that the reduction could be explained by a number of factors, of which the removal of the practice of carrying names forward from the previous register for a period of one year is likely to have been the most significant.
+
+      … We do not agree with the assertion that 120,000 or so persons were disenfranchised as a result of the new legislation being introduced although there is some evidence to suggest that eligible persons previously registered have not enrolled under the new system.
+
+      … In August 2002, the month prior to the first canvass under the new system, a total of 1,192,136 names were on the electoral register for Northern Ireland. When the December 2002 register was published the number of names had reduced by 119,790 to 1,072,346.
     title: 'The Electoral Fraud (Northern Ireland) Act 2002: An assessment of its first year in operation'
     url: https://cain.ulster.ac.uk/issues/politics/election/electoralcommission1203.pdf
     publisher: Electoral Commission
     date: '2003-12'
   # 31
   - stance: complicates
-    quote: >-
-      Personation at polling stations has, however, been impossible to
-      quantify. No evidence has been presented and the review has been unable
-      to discover any concrete proof that it occurs at a significant level.
-      However, despite the fact that no one has come forward with evidence,
-      either to the Review, or indeed, during the last three elections, the
-      experience of RUC officers on duty at polling stations certainly suggests
-      that abuse is taking place. … the precise extent of electoral fraud in
-      Northern Ireland has never been quantified and therefore it is not
-      possible to assess accurately the impact of the measures put in place to
-      prevent it.
+    quote: |-
+      Personation at polling stations has, however, been impossible to quantify. No evidence has been presented and the review has been unable to discover any concrete proof that it occurs at a significant level. However, despite the fact that no one has come forward with evidence, either to the Review, or indeed, during the last three elections, the experience of RUC officers on duty at polling stations certainly suggests that abuse is taking place.
+
+      … the precise extent of electoral fraud in Northern Ireland has never been quantified and therefore it is not possible to assess accurately the impact of the measures put in place to prevent it.
     title: 'The Electoral Fraud (Northern Ireland) Act 2002: An assessment of its first year in operation (quoting the 1998 review, Administering Elections in Northern Ireland)'
     url: https://cain.ulster.ac.uk/issues/politics/election/electoralcommission1203.pdf
     publisher: Electoral Commission
     date: '2003-12'
   # 32
   - stance: supports
-    quote: >-
-      The changes proposed in the bill are a response by the government to a
-      series of recommendations proposed by the House of Commons Standing
-      Committee on Procedure and House Affairs in its 13th Report in June 2006,
-      entitled Improving the Integrity of the Electoral Process:
-      Recommendations for Legislative Change. … In the course of its
-      deliberations the Committee was struck by the absence of any requirement
-      for an elector to confirm his or her identity when presenting himself or
-      herself at a polling station to vote. As long as the person’s name is on
-      the list of electors, he or she is entitled to vote. … The Committee
-      considered this lack of proper identification to be a significant
-      deficiency in the voting process and one that could encourage fraudulent
-      voting practices.
+    quote: |-
+      The changes proposed in the bill are a response by the government to a series of recommendations proposed by the House of Commons Standing Committee on Procedure and House Affairs in its 13th Report in June 2006, entitled Improving the Integrity of the Electoral Process: Recommendations for Legislative Change.
+
+      … In the course of its deliberations the Committee was struck by the absence of any requirement for an elector to confirm his or her identity when presenting himself or herself at a polling station to vote. As long as the person’s name is on the list of electors, he or she is entitled to vote.
+
+      … The Committee considered this lack of proper identification to be a significant deficiency in the voting process and one that could encourage fraudulent voting practices.
     title: 'Legislative Summary of Bill C-31: An Act to amend the Canada Elections Act and the Public Service Employment Act'
     url: https://lop.parl.ca/staticfiles/PublicWebsite/Home/ResearchPublications/LegislativeSummaries/PDF/39-1/c31-e.pdf
     publisher: Library of Parliament (Canada)
     date: '2007-06-22'
   # 33
   - stance: supports
-    quote: >-
-      (a) one piece of identification issued by a Canadian government, whether
-      federal, provincial or local, or an agency of such a government, that
-      contains a photograph of the elector and his or her name and address; or
-      (b) two pieces of identification of a type authorized under subsection
-      (2.1), each of which establishes the elector’s name and at least one of
-      which establishes the elector’s address. … (3) An elector may instead
-      prove his or her identity and residence by making the solemn declaration
-      referred to in subsection 549.1(1) in writing if he or she is accompanied
-      by another elector whose name appears on the list of electors for the
-      same polling station and who … vouches for the elector by making the
-      solemn declaration referred to in subsection 549.1(2) in writing.
+    quote: |-
+      - (a) one piece of identification issued by a Canadian government, whether federal, provincial or local, or an agency of such a government, that contains a photograph of the elector and his or her name and address; or
+      - (b) two pieces of identification of a type authorized under subsection (2.1), each of which establishes the elector’s name and at least one of which establishes the elector’s address.
+
+      … (3) An elector may instead prove his or her identity and residence by making the solemn declaration referred to in subsection 549.1(1) in writing if he or she is accompanied by another elector whose name appears on the list of electors for the same polling station and who … vouches for the elector by making the solemn declaration referred to in subsection 549.1(2) in writing.
     title: Canada Elections Act, section 143
     url: https://laws-lois.justice.gc.ca/eng/acts/e-2.01/section-143.html
     publisher: Justice Laws Website, Government of Canada
@@ -607,12 +516,12 @@ sources:
     date: '2022-02-16'
   # 37
   - stance: supports
-    quote: >-
-      Pour voter, vous devez prouver votre identité. … Carte nationale
-      d'identité (valide ou périmée depuis moins de 5 ans) … Dans une commune
-      de moins de 1 000 habitants, la pièce d’identité n'est pas obligatoire.
-      Mais en cas de doute, le président du bureau de vote peut vous demander
-      de prouver votre identité par tout moyen.
+    quote: |-
+      Pour voter, vous devez prouver votre identité.
+
+      … Carte nationale d'identité (valide ou périmée depuis moins de 5 ans)
+
+      … Dans une commune de moins de 1 000 habitants, la pièce d’identité n'est pas obligatoire. Mais en cas de doute, le président du bureau de vote peut vous demander de prouver votre identité par tout moyen.
     title: "Élections : papiers d'identité à présenter pour voter"
     url: https://www.service-public.gouv.fr/particuliers/vosdroits/F1361
     publisher: Service Public (Direction de l'information légale et administrative)
@@ -651,16 +560,10 @@ sources:
     date: '1985'
   # 41
   - stance: supports
-    quote: >-
-      Essi devono esibire la carta d'identità o altro documento
-      d'identificazione rilasciato dalla pubblica Amministrazione, purché
-      munito di fotografia. … In mancanza d'idoneo documento d'identificazione,
-      uno dei membri dell'Ufficio che conosca personalmente l'elettore ne
-      attesta l'identità, apponendo la propria firma nella colonna di
-      identificazione. Se nessuno dei membri dell'Ufficio è in grado di
-      accertare sotto la sua responsabilità l'identità dell'elettore, questi
-      può presentare un altro elettore del Comune, noto all'Ufficio, che ne
-      attesti l'identità.
+    quote: |-
+      Essi devono esibire la carta d'identità o altro documento d'identificazione rilasciato dalla pubblica Amministrazione, purché munito di fotografia.
+
+      … In mancanza d'idoneo documento d'identificazione, uno dei membri dell'Ufficio che conosca personalmente l'elettore ne attesta l'identità, apponendo la propria firma nella colonna di identificazione. Se nessuno dei membri dell'Ufficio è in grado di accertare sotto la sua responsabilità l'identità dell'elettore, questi può presentare un altro elettore del Comune, noto all'Ufficio, che ne attesti l'identità.
     title: 'Testo Unico delle leggi recanti norme per la elezione della Camera dei deputati (D.P.R. 30 marzo 1957, n. 361), art. 57'
     url: https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1957-03-30;361~art57
     publisher: Normattiva (Istituto Poligrafico e Zecca dello Stato)
@@ -993,17 +896,13 @@ additionalSeries:
           the voters taking part differ between the two kinds of election.
     source:
       stance: supports
-      quote: >-
-        Table 1: Polling station voters who were initially turned away and
-        percentage of those who did not return May 2023 (England) May 2024*
-        (England and Wales) July 2024 (Great Britain) Initially turned away 0.7%
-        (37,000) 0.6% 0.25% (50,000) Turned away and did not return 0.25%
-        (14,000) 0.2% 0.08% (16,000) * May 2024 figures are based on data from
-        the 278 English and Welsh local authorities that submitted figures
-        before the UK general election. Due to the timing of the UK general
-        election, only limited data quality checks were possible on the May
-        2024 data – data which could not be checked was removed. Absolute
-        numbers are not available for the May 2024 elections
+      quote: |-
+        Table 1: Polling station voters who were initially turned away and percentage of those who did not return
+        | May 2023 (England) | May 2024* (England and Wales) | July 2024 (Great Britain)
+        Initially turned away | 0.7% (37,000) | 0.6% | 0.25% (50,000)
+        Turned away and did not return | 0.25% (14,000) | 0.2% | 0.08% (16,000)
+
+        * May 2024 figures are based on data from the 278 English and Welsh local authorities that submitted figures before the UK general election. Due to the timing of the UK general election, only limited data quality checks were possible on the May 2024 data – data which could not be checked was removed. Absolute numbers are not available for the May 2024 elections
       title: Voter ID at the 2024 UK general election (page last updated 19 August 2025)
       url: https://www.electoralcommission.org.uk/research-reports-and-data/our-reports-and-data-past-elections-and-referendums/voter-id-2024-uk-general-election
       publisher: Electoral Commission

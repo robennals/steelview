@@ -20,9 +20,7 @@ While [the Supreme Court let the 2026 order's citizenship lists go ahead](#fact-
 
 ### States choose differently, so a mistake stays in one state
 
-[States differ on whether ID must have a photo, and on what happens to a voter without it](#fact-voter-id-rules-in-the-us-and-abroad/rules-vary-widely). A bad rule in one state stays in that state. Voters elsewhere are not bound by it.
-
-[State courts can review a state's election rules](#fact-federal-and-state-power-over-voting-rules/moore-state-courts), so voters there have a check close to home.
+[States differ on whether ID must have a photo, and on what happens to a voter without it](#fact-voter-id-rules-in-the-us-and-abroad/rules-vary-widely). A bad rule in one state stays in that state, and voters elsewhere are not bound by it. [State courts can review a state's election rules](#fact-federal-and-state-power-over-voting-rules/moore-state-courts), so voters there have a check close to home.
 
 ### National bills from either party would take away the states' choice
 
@@ -32,6 +30,4 @@ While [the Supreme Court let the 2026 order's citizenship lists go ahead](#fact-
 
 ### So Congress should protect the right to vote and leave the rest to the states
 
-Some national rules were plainly needed. [Before the Voting Rights Act, Black registration in three Deep South states rose about five points or less](#fact-election-fraud-and-voter-exclusion-history/pre-vra-stagnation). Congress should keep to rules like these, which protect the right to vote. Each state's voters should decide the rest, including ID.
-
-[Congress has set national minimum rules several times since 1965](#fact-federal-and-state-power-over-voting-rules/congress-has-set-national-floors). While [the Supreme Court calls Congress's power "paramount"](#fact-federal-and-state-power-over-voting-rules/congress-power-paramount), Congress has used it for only a few such rules. [None of the three laws in force requires ID or proof of citizenship of every voter](#fact-federal-and-state-power-over-voting-rules/laws-require-no-id-for-all). [The only ID rule is a narrow one for first-time mail registrants](#fact-federal-and-state-power-over-voting-rules/hava-id-rule).
+Some national rules were plainly needed. [Before the Voting Rights Act, Black registration in three Deep South states rose about five points or less](#fact-election-fraud-and-voter-exclusion-history/pre-vra-stagnation). Congress should keep to rules like these, which protect the right to vote, and leave the rest, including ID, to each state's voters. [Congress has set national minimum rules several times since 1965](#fact-federal-and-state-power-over-voting-rules/congress-has-set-national-floors), and while [the Supreme Court calls Congress's power "paramount"](#fact-federal-and-state-power-over-voting-rules/congress-power-paramount), [none of the three laws in force requires ID or proof of citizenship of every voter](#fact-federal-and-state-power-over-voting-rules/laws-require-no-id-for-all).

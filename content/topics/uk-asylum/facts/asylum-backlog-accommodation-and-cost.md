@@ -54,12 +54,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      Financial Year Quarter Total Managed Migration Entry Clearance Family
-      Visit Visa Deport and others [note 3] Deportation Appeals [note 4]
-      Deprivation of Citizenship Asylum/Protection/Revocation of Protection
-      [note 5][note 6] Human Rights [note 5] EEA Free Movement [note 5]
-      2026/27 Q1 155,798 1 3 0 [x] 29 294 90,341 31,459 33,671
+    quote: |-
+      Financial Year | Quarter | Total | Managed Migration | Entry Clearance | Family Visit Visa | Deport and others [note 3] | Deportation Appeals [note 4] | Deprivation of Citizenship | Asylum/Protection/Revocation of Protection [note 5][note 6] | Human Rights [note 5] | EEA Free Movement [note 5]
+      2026/27 | Q1 | 155,798 | 1 | 3 | 0 | [x] | 29 | 294 | 90,341 | 31,459 | 33,671
     title: >-
       Tribunals Statistics Quarterly, April to June 2026, main tables: Table
       FIA_4, First-tier Tribunal (Immigration and Asylum Chamber) total open
@@ -287,10 +284,12 @@ sources:
     publisher: National Audit Office
     date: '2025-12-10'
   - stance: supports
-    quote: >-
-      Accommodation and support £3,406 million Unaccompanied children, £636
-      million Intake and asylum casework, £442 million Appeals, £102 million
-      Detention and removals £46 million
+    quote: |-
+      - Accommodation and support £3,406 million
+      - Unaccompanied children, £636 million
+      - Intake and asylum casework, £442 million
+      - Appeals, £102 million
+      - Detention and removals £46 million
     title: >-
       An analysis of the asylum system (HC 1517), Figure 5: Cost of key areas of
       spend in the asylum system, 2024-25
@@ -329,10 +328,13 @@ sources:
     publisher: National Audit Office
     date: '2025-07-25'
   - stance: supports
-    quote: >-
-      Asylum and Protection – 4,498,823 – – – – – – Asylum Support,
-      Resettlement and Accommodation – – 5,424,708 4,512,567 4,181,193 – – –
-      Asylum Group – – – – – 4,116,034 3,795,700 3,621,700
+    quote: |-
+      Total departmental spending 2021-22 to 2028-29
+
+      Resource DEL | 2021-22 Outturn £’000 | 2022-23 Outturn £’000 | 2023-24 Outturn £’000 | 2024-25 Outturn £’000 | 2025-26 Outturn £’000 | 2026-27 Plans £’000 | 2027-28 Plans £’000 | 2028-29 Plans £’000
+      Asylum and Protection | – | 4,498,823 | – | – | – | – | – | –
+      Asylum Support, Resettlement and Accommodation | – | – | 5,424,708 | 4,512,567 | 4,181,193 | – | – | –
+      Asylum Group | – | – | – | – | – | 4,116,034 | 3,795,700 | 3,621,700
     title: >-
       Home Office Annual Report and Accounts 2025 to 2026 (HC 440), core table:
       Resource DEL by business group, 2021-22 to 2028-29 (£’000; outturn to
@@ -342,9 +344,11 @@ sources:
     publisher: Home Office
     date: '2026-07-14'
   - stance: supports
-    quote: >-
-      Total Resource DEL 14,711,572 17,005,341 18,856,370 18,149,688 17,919,340
-      19,528,445 19,736,000 19,888,500
+    quote: |-
+      Total departmental spending 2021-22 to 2028-29
+
+      Resource DEL | 2021-22 Outturn £’000 | 2022-23 Outturn £’000 | 2023-24 Outturn £’000 | 2024-25 Outturn £’000 | 2025-26 Outturn £’000 | 2026-27 Plans £’000 | 2027-28 Plans £’000 | 2028-29 Plans £’000
+      Total Resource DEL | 14,711,572 | 17,005,341 | 18,856,370 | 18,149,688 | 17,919,340 | 19,528,445 | 19,736,000 | 19,888,500
     title: >-
       Home Office Annual Report and Accounts 2025 to 2026 (HC 440), core table:
       Resource DEL by business group, 2021-22 to 2028-29 (£’000; outturn to

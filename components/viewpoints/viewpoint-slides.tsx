@@ -1,6 +1,6 @@
 import type { Viewpoint } from '@/lib/content/types';
 import { anchorFor } from '@/lib/content/types';
-import type { CitedClaim, RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
+import type { QuotedSource, RenderedStep, RenderedWalkthrough } from '@/lib/content/walkthrough';
 import { ExplorableChart, ExploreLink } from '@/components/topic/explore-panels';
 import { Prose } from '@/components/topic/prose';
 import { rowCharts } from '@/lib/content/row-charts';
@@ -8,18 +8,17 @@ import { LazyChart, LazyCharts } from '@/components/topic/lazy-charts';
 import { RowThumb, TopicAccordion, TopicRow } from '@/components/home/topic-accordion';
 import { ChartThumb } from '@/components/topic/chart-thumb';
 import { ThumbStrip } from '@/components/topic/thumb-strip';
-import { ClaimPopups } from './claim-popups';
 import { Slideshow } from './slideshow';
+import { SourcePopups } from './source-popups';
 
 type StepCardProps = { step: RenderedStep; index: number };
 
 /**
  * One step of the argument, as one card. Its heading makes the point, and the
- * line under it, the section's first paragraph, completes the step: read card
- * after card, the two make the whole argument. The rest of the section is the
- * evidence. A card made with a graph or quotes opens it from that line, over them;
- * a card without one gives it in full.
- * Citations open in pop-ups (`ClaimPopups`).
+ * line under it completes the step: read card after card, the two make the
+ * whole argument. A card made with a graph or quotes is just those three, the
+ * line its section's only paragraph (`cardParagraphErrors`); a card without
+ * one gives the rest of its section under the line.
  */
 function StepCard({ step, index }: StepCardProps) {
   const visual = step.cardVisual;
@@ -29,20 +28,10 @@ function StepCard({ step, index }: StepCardProps) {
       <h3 className="sv-deck__heading">{step.heading}</h3>
       {visual ? (
         <>
-          <details className="sv-deck__details">
-            <summary>
-              {reasoning}
-              <span className="sv-deck__more" aria-hidden="true" />
-            </summary>
-            <div className="sv-deck__pop">
-              <Prose html={step.evidenceHtml} className="sv-deck__prose" />
-            </div>
-          </details>
+          <p className="sv-deck__details">{reasoning}</p>
           <ExplorableChart>
             <div className="sv-slide"><LazyChart index={index} /></div>
-            {visual.panel
-              ? <ExploreLink {...visual.panel} href={visual.chart.href} />
-              : <Prose html={visual.exploreHtml} className="sv-walk__explore" />}
+            <ExploreLink {...visual.panel} href={`#${visual.panel.observation}`} />
           </ExplorableChart>
         </>
       ) : (
@@ -59,20 +48,21 @@ type ViewpointSlidesProps = {
   slug: string;
   viewpoints: Viewpoint[];
   walkthroughs: Map<string, RenderedWalkthrough>;
-  /** The findings the viewpoints cite (`renderCitedClaims`). */
-  claims: Record<string, CitedClaim>;
+  /** The sources behind each cited claim (`citedSources`), opened from its footnote marker. */
+  sources: Record<string, QuotedSource[]>;
 };
 
 /**
  * The viewpoints as rows, none open at first. Closed, a row previews the graphs
  * its argument is made with, each opening the row at its card. Open, it is a
  * slideshow: one card per step of the argument, made with a graph or quotes where the
- * step has one. Tapping a cited claim opens the finding behind it in a pop-up.
+ * step has one. A card's graph opens in full over the page, and a claim's
+ * footnote marker opens its sources' own words.
  */
-export function ViewpointSlides({ slug, viewpoints, walkthroughs, claims }: ViewpointSlidesProps) {
+export function ViewpointSlides({ slug, viewpoints, walkthroughs, sources }: ViewpointSlidesProps) {
   return (
     <>
-      <ClaimPopups claims={claims} />
+      <SourcePopups sources={sources} />
       <TopicAccordion initial="">
         {viewpoints.map(viewpoint => {
           const { steps } = walkthroughs.get(viewpoint.id) ?? { steps: [] };

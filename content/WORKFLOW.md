@@ -450,8 +450,10 @@ holder of that view would find it better argued than their own version
   observation links.
 
 **Gate: the human is happy with every viewpoint**, read side by side —
-first its headings alone, then stepped through on the page with each chart.
-Check readability as for reports: look at each viewpoint rendered, and read it
+first its headings alone, then stepped through on the page with each chart,
+opening each card's chart in full to check it carries its own context
+([A Card's Chart Carries Its Own Context](AUTHORING.md#a-cards-chart-carries-its-own-context)):
+no page shows the collections' other charts. Check readability as for reports: look at each viewpoint rendered, and read it
 aloud for sentences that need a second reading.
 
 ## 7. Publish

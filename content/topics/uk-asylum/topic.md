@@ -7,15 +7,16 @@ tags: [UK, Asylum]
 # The first chart shows how big the issue is; together they represent every
 # viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
 previewCharts:
-  - fact: asylum-claims-and-decisions
-    chart: series
   - fact: channel-crossings-and-irregular-arrivals
-    chart: series
-    reading: arrivals
-  - fact: removals-and-what-stops-them
-    chart: series
+    chart: where-the-boats-leave-from
   - fact: asylum-claims-and-decisions
-    chart: grant-rate-series
+    chart: small-boat-decisions
+  - fact: removals-and-what-stops-them
+    chart: refused-cohorts
+    reading: cohort-share
+  - fact: asylum-backlog-accommodation-and-cost
+    chart: series
+    reading: queue
 dataOrder:
   - channel-crossings-and-irregular-arrivals
   - asylum-claims-and-decisions

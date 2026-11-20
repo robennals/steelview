@@ -14,7 +14,7 @@ previewCharts:
   - fact: opinion-and-confidence-in-elections
     chart: series
   - fact: voter-id-rules-in-the-us-and-abroad
-    chart: series
+    chart: us-rules-2026
 dataOrder:
   - voter-id-rules-in-the-us-and-abroad
   - election-fraud-and-voter-exclusion-history

@@ -24,13 +24,18 @@ const MIN_ADDED = 25;
 /** Fragments shorter than this are too short to place, as in F11. */
 const MIN_FRAGMENT = 4;
 
-/** Text compared as F11 compares it, and for each compared character the index it came from. */
+/**
+ * Text compared as F11 compares it, and for each compared character the index
+ * it came from. A source quote's layout marks (`QuoteText`: a bullet's `- ` at
+ * the start of a line, a table's `|`) are not its words, so they read as space.
+ */
 export function normaliseWithOffsets(text: string): { text: string; offsets: number[] } {
   let out = '';
   const offsets: number[] = [];
   for (let i = 0; i < text.length; i++) {
     let ch = text[i];
-    if (/\s/.test(ch)) {
+    const bullet = ch === '-' && text[i + 1] === ' ' && /(^|\n)[ \t]*$/.test(text.slice(0, i));
+    if (/\s/.test(ch) || ch === '|' || bullet) {
       if (out === '' || out.endsWith(' ')) continue;
       ch = ' ';
     } else if (/[‘’‚′]/.test(ch)) ch = "'";

@@ -48,10 +48,16 @@ claim: >-
 status: well-supported
 sources:
   - stance: supports
-    quote: >-
-      Year Number of boats Crew Number of people (excludes crew) 2009 60 141
-      2726 2010 134 345 6555 2011 69 168 4565 2012 278 392 17 204 2013 300 644
-      20 587 2014 1 N/A 160 2015 0 0 0 2016 0 0 0
+    quote: |-
+      Year | Number of boats | Crew | Number of people (excludes crew)
+      2009 | 60 | 141 | 2726
+      2010 | 134 | 345 | 6555
+      2011 | 69 | 168 | 4565
+      2012 | 278 | 392 | 17 204
+      2013 | 300 | 644 | 20 587
+      2014 | 1 | N/A | 160
+      2015 | 0 | 0 | 0
+      2016 | 0 | 0 | 0
     title: 'Boat arrivals and boat ‘turnbacks’ in Australia since 1976: a quick guide to the statistics'
     url: 'https://web.archive.org/web/20201213005758/https://www.aph.gov.au/About_Parliament/Parliamentary_Departments/Parliamentary_Library/pubs/rp/rp1617/Quick_Guides/BoatTurnbacks'
     publisher: 'Parliamentary Library, Parliament of Australia'
@@ -117,10 +123,17 @@ sources:
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
     date: '2021-08'
   - stance: supports
-    quote: >-
-      Table 2 Boat arrivals since September 2013 … 2013 25 1107 134 1241 2014
-      12 157 293 450 2015 9 0 217 217 2016 6 0 51 51 2017 3 0 60 60 2018 2 0
-      24 24 2019 3 0 33 33
+    quote: |-
+      Table 2 Boat arrivals since September 2013
+
+      Year | Number of boats | Number of people (excluding crew): Brought to Australia and transferred offshore | Returned | Total
+      2013 | 25 | 1107 | 134 | 1241
+      2014 | 12 | 157 | 293 | 450
+      2015 | 9 | 0 | 217 | 217
+      2016 | 6 | 0 | 51 | 51
+      2017 | 3 | 0 | 60 | 60
+      2018 | 2 | 0 | 24 | 24
+      2019 | 3 | 0 | 33 | 33
     title: 'Cruel, costly and ineffective: The failure of offshore processing in Australia (Policy Brief 11)'
     url: 'https://www.kaldorcentre.unsw.edu.au/sites/kaldorcentre.unsw.edu.au/files/Policy_Brief_11_Offshore_Processing.pdf'
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
@@ -176,12 +189,16 @@ sources:
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
     date: '2021-08'
   - stance: supports
-    quote: >-
-      Table 1 Location of people transferred offshore since 2012 (as at 31
-      January 2021) … In Australia 882 1161 2043 Offshore (Nauru and PNG) 0
-      263 263 Resettled in a third country 0 921 921 Returned to country of
-      origin (voluntarily or involuntarily) 168 767 935 Deceased 5 13 18 Total
-      1055 3125 4180
+    quote: |-
+      Table 1 Location of people transferred offshore since 2012 (as at 31 January 2021)
+
+       | Transferred 13 August 2012 to 18 July 2013 | Transferred after 19 July 2013 | Total
+      In Australia | 882 | 1161 | 2043
+      Offshore (Nauru and PNG) | 0 | 263 | 263
+      Resettled in a third country | 0 | 921 | 921
+      Returned to country of origin (voluntarily or involuntarily) | 168 | 767 | 935
+      Deceased | 5 | 13 | 18
+      Total | 1055 | 3125 | 4180
     title: 'Cruel, costly and ineffective: The failure of offshore processing in Australia (Policy Brief 11)'
     url: 'https://www.kaldorcentre.unsw.edu.au/sites/kaldorcentre.unsw.edu.au/files/Policy_Brief_11_Offshore_Processing.pdf'
     publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
@@ -265,10 +282,23 @@ sources:
     publisher: 'Refugee Council of Australia'
     date: '2026-02-13'
   - stance: supports
-    quote: >-
-      Total people transferred offshore to a regional processing country
-      (Nauru and PNG) 4,359 … Total resettled in third country 1,547 …
-      Returned or removed to country of origin 978 … Deceased 21
+    quote: |-
+      Table 1. What has happened to the people who were subject to the offshore processing policy from August 2012 until December 2025
+
+      Situation for people subject to offshore processing 2012-2025 | Number of people | Further information
+      Total people transferred offshore to a regional processing country (Nauru and PNG) | 4,359 | People transferred at different points in time are subject to different policies
+      Number sent offshore since 19 July 2013 | 3,439 | People transferred offshore after 19 July 2013 were told that they would never settle in Australia
+      Total resettled in third country | 1,547 | 
+      Resettled in US | 1,115 | US arrangement began in 2016, with no new applications available.
+      Resettled in New Zealand | 324 | New Zealand arrangement began in 2022 and was to end in 2025. The remaining departures are due to finish in 2026, with no new applications available.
+      Resettled in other countries | 101 | Including Canada via private sponsorship arrangements organised by Australian and Canadian civil societies (e.g. Operation Not Forgotten, ONF)
+      Resettled in Cambodia | 7* | *Only 1 person remaining but to be resettled to another country this year. Remaining 6 people departed Cambodia, including via ONF. In September 2014, the Australian Government agreed to pay the Cambodian government $55 million to resettle refugees from Nauru. Cambodia agreed to take only those who agreed to go, and only 7 did so, albeit temporarily.
+      Returned or removed to country of origin | 978 | Wellbeing and whereabouts of those returned unknown, as monitoring not undertaken by the Australian Government
+      “Transitory Group” brought to Australia for a temporary purpose but remaining here indefinitely without permanent visas or a durable solution | 807 | Only 63 remaining places available in closed New Zealand arrangement, so ~750 people will have no durable solution available
+      In PNG | ~27 | People transferred 2013-2014
+      In Nauru | ~105 | People transferred since September 2023
+      Deceased | 21 | Inclusive of at least 14 deaths on Nauru and PNG
+      Children born to people subject to offshore processing | 238 | Inclusive of 156 children who are now in Australia
     title: 'Submission to the Legal and Constitutional Affairs References Committee: Inquiry into offshore processing and resettlement arrangements'
     url: 'https://www.refugeecouncil.org.au/wp-content/uploads/2026/02/260213-RCOA-offshore-processing-and-arrangements-submission.pdf'
     publisher: 'Refugee Council of Australia'
@@ -358,34 +388,23 @@ sources:
     publisher: 'UK Parliament (Shabana Mahmood, Home Secretary)'
     date: '2026-03-02'
   - stance: complicates
-    quote: >-
-      freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD 2008 2009 2010 2011
-      2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE 21325 27575 41245 45685 64410 109375
-      172945 441805 722270 198255 161885 142450 102525 148175 217735 329035
-      229695 113170 A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK 2350 3720 5065 3945
-      6045 7170 14535 20825 6055 3125 3465 2605 1420 1995 4475 2355 2180 1835
-      A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 : : : : : : 530560 1216860
-      1166815 620265 564680 628930 415235 535985 873680 1049510 912425 671895
-      A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE 24275 23605 31785 29630 43835 49230
-      74980 156115 22335 22190 18635 20770 11765 9015 13180 8945 6755 5080
+    quote: |-
+      freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE | 21325 | 27575 | 41245 | 45685 | 64410 | 109375 | 172945 | 441805 | 722270 | 198255 | 161885 | 142450 | 102525 | 148175 | 217735 | 329035 | 229695 | 113170
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK | 2350 | 3720 | 5065 | 3945 | 6045 | 7170 | 14535 | 20825 | 6055 | 3125 | 3465 | 2605 | 1420 | 1995 | 4475 | 2355 | 2180 | 1835
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 | : | : | : | : | : | : | 530560 | 1216860 | 1166815 | 620265 | 564680 | 628930 | 415235 | 535985 | 873680 | 1049510 | 912425 | 671895
+      A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE | 24275 | 23605 | 31785 | 29630 | 43835 | 49230 | 74980 | 156115 | 22335 | 22190 | 18635 | 20770 | 11765 | 9015 | 13180 | 8945 | 6755 | 5080
     title: 'Asylum applicants by type, citizenship, age and sex - annual aggregated data (migr_asyappctza)'
     url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asyappctza/default/table'
     publisher: 'Eurostat'
     date: '2026-09-03'
   - stance: complicates
-    quote: >-
-      freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD 2008 2009 2010 2011
-      2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      A,PER,EXT_EU27_2020,T,TOTAL,POS,DK 730 790 1345 1310 1695 2810 5480 9995
-      7125 2365 1315 1575 420 775 515 990 715 420
-      A,PER,EXT_EU27_2020,T,TOTAL,POS,EU27_2020 : : : : 83165 99060 157265
-      293700 662955 428715 207495 206865 212840 202980 312055 358275 387610
-      325935 A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK 1240 1645 3280 3565 4680
-      6965 8055 12300 10410 6880 2625 3030 1185 1525 985 1570 1485 1170
-      A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,EU27_2020 : : : : 260310 291800 341035
-      558590 1075490 933295 556390 546440 528165 531315 639150 677625 753970
-      833380
+    quote: |-
+      freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+      A,PER,EXT_EU27_2020,T,TOTAL,POS,DK | 730 | 790 | 1345 | 1310 | 1695 | 2810 | 5480 | 9995 | 7125 | 2365 | 1315 | 1575 | 420 | 775 | 515 | 990 | 715 | 420
+      A,PER,EXT_EU27_2020,T,TOTAL,POS,EU27_2020 | : | : | : | : | 83165 | 99060 | 157265 | 293700 | 662955 | 428715 | 207495 | 206865 | 212840 | 202980 | 312055 | 358275 | 387610 | 325935
+      A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK | 1240 | 1645 | 3280 | 3565 | 4680 | 6965 | 8055 | 12300 | 10410 | 6880 | 2625 | 3030 | 1185 | 1525 | 985 | 1570 | 1485 | 1170
+      A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,EU27_2020 | : | : | : | : | 260310 | 291800 | 341035 | 558590 | 1075490 | 933295 | 556390 | 546440 | 528165 | 531315 | 639150 | 677625 | 753970 | 833380
     title: 'First instance decisions on applications by type of decision, citizenship, age and sex - annual aggregated data (migr_asydcfsta)'
     url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asydcfsta/default/table'
     publisher: 'Eurostat'
@@ -819,10 +838,17 @@ additionalSeries:
         source publishes later years in this form.
     source:
       stance: supports
-      quote: >-
-        Table 2 Boat arrivals since September 2013 … 2013 25 1107 134 1241
-        2014 12 157 293 450 2015 9 0 217 217 2016 6 0 51 51 2017 3 0 60 60
-        2018 2 0 24 24 2019 3 0 33 33
+      quote: |-
+        Table 2 Boat arrivals since September 2013
+
+        Year | Number of boats | Number of people (excluding crew): Brought to Australia and transferred offshore | Returned | Total
+        2013 | 25 | 1107 | 134 | 1241
+        2014 | 12 | 157 | 293 | 450
+        2015 | 9 | 0 | 217 | 217
+        2016 | 6 | 0 | 51 | 51
+        2017 | 3 | 0 | 60 | 60
+        2018 | 2 | 0 | 24 | 24
+        2019 | 3 | 0 | 33 | 33
       title: 'Cruel, costly and ineffective: The failure of offshore processing in Australia (Policy Brief 11)'
       url: 'https://www.kaldorcentre.unsw.edu.au/sites/kaldorcentre.unsw.edu.au/files/Policy_Brief_11_Offshore_Processing.pdf'
       publisher: 'Kaldor Centre for International Refugee Law, UNSW Sydney'
@@ -889,12 +915,26 @@ additionalSeries:
         settlements and charter flights may be excluded.
     source:
       stance: supports
-      quote: >-
-        Since Australia’s offshore detention centres were reopened by the
-        Gillard Government in 2012, successive governments have spent $13.35
-        billion on offshore detention and processing arrangements. … 2012-13
-        -- 2,106.4 2,106.4 … 2017-18 713.6 1,482.0 768.3 … 2024-25 604.4 575.2
-        - 29.2
+      quote: |-
+        Since Australia’s offshore detention centres were reopened by the Gillard Government in 2012, successive governments have spent $13.35 billion on offshore detention and processing arrangements. Below is a year-by-year breakdown of the actual spending on this disastrous policy.
+
+        OFFSHORE MANAGEMENT BUDGET ALLOCATIONS
+
+         | Budget announced before year begins ($mil) | Estimated actual cost reported as year ends ($mil) | Difference ($mil)
+        2012-13 | -- | 2,106.4 | 2,106.4
+        2013-14 | 2,867.4 | 721.0 | -2,146.4
+        2014-15 | 826.7 | 912.6 | 85.9
+        2015-16 | 810.8 | 1,078.1 | 267.3
+        2016-17 | 880.5 | 1,082.9 | 202.4
+        2017-18 | 713.6 | 1,482.0 | 768.3
+        2018-19 | 759.9 | 1,157.5 | 397.7
+        2019-20 | 525.6 | 961.7 | 436.0
+        2020-21 | 1,186.4 | 818.8 | -367.7
+        2021-22 | 811.8 | 700.7 | -111.1
+        2022-23 | 632.5 | 611.1 | -21.4
+        2023-24 | 611.1 | 563.7 | - 47.4
+        2024-25 | 604.4 | 575.2 | - 29.2
+        Total: July 2012 to June 2025 | 11,230.8 | 12,771.7 | 1,540.9
       title: 'Submission to the Legal and Constitutional Affairs References Committee: Inquiry into offshore processing and resettlement arrangements'
       url: 'https://www.refugeecouncil.org.au/wp-content/uploads/2026/02/260213-RCOA-offshore-processing-and-arrangements-submission.pdf'
       publisher: 'Refugee Council of Australia'
@@ -958,18 +998,12 @@ additionalSeries:
         claims and decisions.
     source:
       stance: complicates
-      quote: >-
-        freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD 2008 2009 2010
-        2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024
-        2025 A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE 21325 27575 41245 45685 64410
-        109375 172945 441805 722270 198255 161885 142450 102525 148175 217735
-        329035 229695 113170 A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK 2350 3720
-        5065 3945 6045 7170 14535 20825 6055 3125 3465 2605 1420 1995 4475
-        2355 2180 1835 A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 : : : : : :
-        530560 1216860 1166815 620265 564680 628930 415235 535985 873680
-        1049510 912425 671895 A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE 24275 23605
-        31785 29630 43835 49230 74980 156115 22335 22190 18635 20770 11765
-        9015 13180 8945 6755 5080
+      quote: |-
+        freq,citizen,applicant,sex,unit,age,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,DE | 21325 | 27575 | 41245 | 45685 | 64410 | 109375 | 172945 | 441805 | 722270 | 198255 | 161885 | 142450 | 102525 | 148175 | 217735 | 329035 | 229695 | 113170
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,DK | 2350 | 3720 | 5065 | 3945 | 6045 | 7170 | 14535 | 20825 | 6055 | 3125 | 3465 | 2605 | 1420 | 1995 | 4475 | 2355 | 2180 | 1835
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,EU27_2020 | : | : | : | : | : | : | 530560 | 1216860 | 1166815 | 620265 | 564680 | 628930 | 415235 | 535985 | 873680 | 1049510 | 912425 | 671895
+        A,EXT_EU27_2020,FRST,T,PER,TOTAL,SE | 24275 | 23605 | 31785 | 29630 | 43835 | 49230 | 74980 | 156115 | 22335 | 22190 | 18635 | 20770 | 11765 | 9015 | 13180 | 8945 | 6755 | 5080
       title: 'Asylum applicants by type, citizenship, age and sex - annual aggregated data (migr_asyappctza)'
       url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asyappctza/default/table'
       publisher: 'Eurostat'
@@ -981,21 +1015,12 @@ additionalSeries:
         valueLabel: First-time applicants per 10,000 residents
         source:
           stance: supports
-          quote: >-
-            freq,indic_de,geo\TIME_PERIOD 2008 2009 2010 2011 2012 2013 2014
-            2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 A,JAN,DE
-            82217837 82002356 81802257 80222065 b 80327900 80523746 80767463
-            81197537 82175684 82521653 82792351 83019213 83166711 83155031
-            83237124 83118501 b 83456045 83577140 A,JAN,DK 5475791 5511451
-            5534738 5560628 5580516 5602628 5627235 5659715 5707251 5748769
-            5781190 5806081 5822763 5840045 5873420 5932654 5961249 5992734
-            A,JAN,EU27_2020 439074280 b 440467898 441160594 b 440526112 b
-            441280191 b 441739935 b 442235565 be 442883289 e 443954935 e
-            444609939 be 445227547 e 446060538 446923963 e 445767723 b
-            446177571 be 448268023 be 450054483 ep 451284558 ep A,JAN,SE
-            9182927 9256347 9340682 9415570 9482855 9555893 9644864 9747355
-            9851017 9995153 10120242 10230185 10327589 10379295 10452326
-            10521556 10551707 10587710
+          quote: |-
+            freq,indic_de,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+            A,JAN,DE | 82217837 | 82002356 | 81802257 | 80222065 b | 80327900 | 80523746 | 80767463 | 81197537 | 82175684 | 82521653 | 82792351 | 83019213 | 83166711 | 83155031 | 83237124 | 83118501 b | 83456045 | 83577140
+            A,JAN,DK | 5475791 | 5511451 | 5534738 | 5560628 | 5580516 | 5602628 | 5627235 | 5659715 | 5707251 | 5748769 | 5781190 | 5806081 | 5822763 | 5840045 | 5873420 | 5932654 | 5961249 | 5992734
+            A,JAN,EU27_2020 | 439074280 b | 440467898 | 441160594 b | 440526112 b | 441280191 b | 441739935 b | 442235565 be | 442883289 e | 443954935 e | 444609939 be | 445227547 e | 446060538 | 446923963 e | 445767723 b | 446177571 be | 448268023 be | 450054483 ep | 451284558 ep
+            A,JAN,SE | 9182927 | 9256347 | 9340682 | 9415570 | 9482855 | 9555893 | 9644864 | 9747355 | 9851017 | 9995153 | 10120242 | 10230185 | 10327589 | 10379295 | 10452326 | 10521556 | 10551707 | 10587710
           title: 'Population change - Demographic balance and crude rates at national level (demo_gind)'
           url: 'https://ec.europa.eu/eurostat/databrowser/view/demo_gind/default/table'
           publisher: 'Eurostat'
@@ -1252,22 +1277,14 @@ additionalSeries:
         the Observations.
     source:
       stance: complicates
-      quote: >-
-        freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD 2008 2009 2010 2011
-        2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-        A,PER,EXT_EU27_2020,T,TOTAL,POS,DE 7870 9765 10445 9675 17135 20125
-        40560 140910 433905 261620 75940 70320 62470 59850 128460 135275
-        133710 87395 A,PER,EXT_EU27_2020,T,TOTAL,POS,DK 730 790 1345 1310 1695
-        2810 5480 9995 7125 2365 1315 1575 420 775 515 990 715 420
-        A,PER,EXT_EU27_2020,T,TOTAL,POS,SE 7840 7095 8510 8805 12400 24020
-        30650 32360 66585 26510 10820 6905 5450 3900 4845 5250 3320 2185
-        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DE 19245 26760 45300 40280 58605
-        76165 97275 249285 631090 524195 179115 154175 128590 132680 197540
-        217430 250255 272700 A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK 1240 1645
-        3280 3565 4680 6965 8055 12300 10410 6880 2625 3030 1185 1525 985 1570
-        1485 1170 A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,SE 29460 23920 27645 23815
-        25320 35955 39905 48570 95775 60575 34830 26330 24380 17145 16810
-        19155 9670 8615
+      quote: |-
+        freq,unit,citizen,sex,age,decision,geo\TIME_PERIOD | 2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025
+        A,PER,EXT_EU27_2020,T,TOTAL,POS,DE | 7870 | 9765 | 10445 | 9675 | 17135 | 20125 | 40560 | 140910 | 433905 | 261620 | 75940 | 70320 | 62470 | 59850 | 128460 | 135275 | 133710 | 87395
+        A,PER,EXT_EU27_2020,T,TOTAL,POS,DK | 730 | 790 | 1345 | 1310 | 1695 | 2810 | 5480 | 9995 | 7125 | 2365 | 1315 | 1575 | 420 | 775 | 515 | 990 | 715 | 420
+        A,PER,EXT_EU27_2020,T,TOTAL,POS,SE | 7840 | 7095 | 8510 | 8805 | 12400 | 24020 | 30650 | 32360 | 66585 | 26510 | 10820 | 6905 | 5450 | 3900 | 4845 | 5250 | 3320 | 2185
+        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DE | 19245 | 26760 | 45300 | 40280 | 58605 | 76165 | 97275 | 249285 | 631090 | 524195 | 179115 | 154175 | 128590 | 132680 | 197540 | 217430 | 250255 | 272700
+        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,DK | 1240 | 1645 | 3280 | 3565 | 4680 | 6965 | 8055 | 12300 | 10410 | 6880 | 2625 | 3030 | 1185 | 1525 | 985 | 1570 | 1485 | 1170
+        A,PER,EXT_EU27_2020,T,TOTAL,TOTAL,SE | 29460 | 23920 | 27645 | 23815 | 25320 | 35955 | 39905 | 48570 | 95775 | 60575 | 34830 | 26330 | 24380 | 17145 | 16810 | 19155 | 9670 | 8615
       title: 'First instance decisions on applications by type of decision, citizenship, age and sex - annual aggregated data (migr_asydcfsta)'
       url: 'https://ec.europa.eu/eurostat/databrowser/view/migr_asydcfsta/default/table'
       publisher: 'Eurostat'

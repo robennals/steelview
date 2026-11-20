@@ -233,8 +233,13 @@ sources:
     publisher: Home Office
     date: '2026-07-16'
   - stance: supports
-    quote: >-
-      granted refugee status or other leave (grant rate) 79,589 72,236 (60%)
+    quote: |-
+      Table 1: Small boat arrivals claiming asylum and initial decision outcomes on their claims, by arrival date, January 2018 to December 2025
+
+       | January 2018 to December 2025 (people) | January 2018 to December 2025 (cases)
+      Received an initial decision (% of claims) | 132,894(74%) | 119,637(74%)
+      granted refugee status or other leave (grant rate) | 79,589 | 72,236(60%)
+      refused | 53,305 | 47,401
     title: >-
       How many small boat arrivals have claimed asylum or been referred to the
       National Referral Mechanism? (Table 1)
@@ -243,8 +248,12 @@ sources:
     publisher: Home Office
     date: '2026-07-16'
   - stance: complicates
-    quote: >-
-      Withdrawn / Received an administrative outcome 33,413 31,495
+    quote: |-
+      Table 1: Small boat arrivals claiming asylum and initial decision outcomes on their claims, by arrival date, January 2018 to December 2025
+
+       | January 2018 to December 2025 (people) | January 2018 to December 2025 (cases)
+      Asylum claims | 178,845 | 162,007
+      Withdrawn / Received an administrative outcome | 33,413 | 31,495
     title: >-
       How many small boat arrivals have claimed asylum or been referred to the
       National Referral Mechanism? (Table 1)

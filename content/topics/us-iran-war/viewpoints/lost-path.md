@@ -8,33 +8,23 @@ Iran was dangerous, but talks and inspections had kept it in check before. Choos
 
 ### The war has killed thousands of Iranians who had no say in it
 
-[One group counted at least 1,701 civilians killed by early April, at least 254 of them children](#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april). [Millions more have been forced from their homes](#fact-human-and-financial-costs-of-the-war/displaced-millions). These people had no say in their government's choices.
-
-[The outside counts of deaths stop in April](#fact-human-and-financial-costs-of-the-war/no-count-after-april), so they miss any deaths since. [The people who suffer most should count the most](#principle-priority-to-the-worst-off).
+[One group counted at least 1,701 civilians killed by early April, at least 254 of them children](#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april), and [millions more have been forced from their homes](#fact-human-and-financial-costs-of-the-war/displaced-millions). [The outside counts of deaths stop in April](#fact-human-and-financial-costs-of-the-war/no-count-after-april), so they miss any deaths since. These people had no say in their government's choices, and [the people who suffer most should count the most](#principle-priority-to-the-worst-off).
 
 ### The 2015 deal kept Iran's uranium in check until the US walked away
 
-[Iran's uranium stock stayed under the 2015 deal's limit until about a year after the US left the deal, then rose far above it](#fact-iran-nuclear-programme/deal-era-compliance). So the deal held Iran back for as long as it lasted.
-
-Even then, the talking went on. [US–Iran talks were under way in Geneva two days before the strikes](#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came).
+[Iran's uranium stock stayed under the 2015 deal's limit until about a year after the US left the deal, then rose far above it](#fact-iran-nuclear-programme/deal-era-compliance). So the deal held Iran back for as long as it lasted. Even then, the talking went on: [US–Iran talks were under way in Geneva two days before the strikes](#fact-decisions-law-and-diplomacy/talks-under-way-when-strikes-came).
 
 ### Iran was not about to build a bomb
 
-[In 2025, UN nuclear inspectors found no credible sign of an active weapons programme](#fact-iran-nuclear-programme/no-ongoing-programme-2025). [US intelligence judged that Iran was not building a bomb](#fact-iran-nuclear-programme/ata-2025-not-building). So there was still time for inspections and talks.
-
-While [Iran was the only country without nuclear weapons making 60% uranium](#fact-iran-nuclear-programme/only-non-weapon-state-at-60), that was a danger to watch closely, not a reason for war.
+[In 2025, UN nuclear inspectors found no credible sign of an active weapons programme](#fact-iran-nuclear-programme/no-ongoing-programme-2025). [US intelligence judged that Iran was not building a bomb](#fact-iran-nuclear-programme/ata-2025-not-building). While [Iran was the only country without nuclear weapons making 60% uranium](#fact-iran-nuclear-programme/only-non-weapon-state-at-60), that was a danger to watch closely, not a reason for war. There was still time for inspections and talks.
 
 ### The war has blinded the inspectors, and bombs cannot do their job
 
-[Since the war began, inspectors have visited only one site in Iran, a power plant](#fact-iran-nuclear-programme/verification-stopped). [No inspector has seen Iran's 60% uranium since the first strikes, in June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for).
-
-[Bombing nuclear sites has only slowed programmes a little](#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly). [It worked best long before a country neared a bomb](#fact-outside-attempts-to-change-hostile-regimes/strikes-worked-early). [In 2011 the same researchers said Iran lacked the conditions of past successes](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran).
+[Since the war began, inspectors have visited only one site in Iran, a power plant](#fact-iran-nuclear-programme/verification-stopped), and [no inspector has seen Iran's 60% uranium since the first strikes, in June 2025](#fact-iran-nuclear-programme/stock-unaccounted-for). Bombs cannot take their place: [bombing nuclear sites has only slowed programmes a little](#fact-outside-attempts-to-change-hostile-regimes/strikes-delay-modestly), and [it worked best long before a country neared a bomb](#fact-outside-attempts-to-change-hostile-regimes/strikes-worked-early). [In 2011 the same researchers said Iran lacked the conditions of past successes](#fact-outside-attempts-to-change-hostile-regimes/past-success-conditions-absent-for-iran).
 
 ### Keeping Iran in check never needed Iran to become friendly
 
 [Earlier openings in Iran were reversed](#fact-iran-government-and-its-people/earlier-openings-reversed), and [executions rose fastest under the moderate president](#fact-iran-government-and-its-people/execution-rate-by-president). But the deal never depended on Iran becoming freer. It depended on inspectors being able to watch.
-
-There were even some signs of change. [In 2024 voters chose the one moderate candidate](#fact-iran-government-and-its-people/reformist-backed-president-2024). [A harsher headscarf law was put on hold, most likely with the Supreme Leader's consent](#fact-iran-government-and-its-people/hijab-law-shelved).
 
 ### So the US should stop bombing and go back to inspections
 
