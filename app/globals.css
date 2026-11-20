@@ -564,6 +564,15 @@
     stroke-width: 3.25;
   }
 
+  /* An axis read by one line is in that line's colour, and lights up with it. */
+  .sv-chart__axis-ticks[data-series] .sv-chart__tick {
+    fill: currentColor;
+  }
+
+  .sv-chart__axis-ticks[data-highlighted="true"] .sv-chart__tick {
+    font-weight: 700;
+  }
+
   .sv-chart__key[data-highlighted="true"] {
     background: color-mix(in srgb, currentColor 10%, transparent);
   }

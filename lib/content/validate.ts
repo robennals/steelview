@@ -267,7 +267,10 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
   // A reading drawn alongside another shares its plot: it names another reading
   // of this series, one that is not itself drawn alongside, nor drawing one.
   for (const reading of series.readings) {
-    if (reading.alongside === undefined) continue;
+    if (reading.alongside === undefined) {
+      if (reading.alongsideAxis !== undefined) errors.push(`${where} reading "${reading.id}" places the axis of a reading drawn alongside, but draws none`);
+      continue;
+    }
     const partner = series.readings.find(r => r.id === reading.alongside);
     if (!partner || partner === reading) errors.push(`${where} reading "${reading.id}" is drawn alongside "${reading.alongside}", which is not another reading of this series`);
     else if (partner.alongside !== undefined) errors.push(`${where} reading "${reading.id}" is drawn alongside "${partner.id}", which draws another reading itself`);

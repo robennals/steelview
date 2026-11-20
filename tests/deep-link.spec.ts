@@ -109,18 +109,35 @@ test('a chart with a "Show as" dropdown still fills its sheet', async ({ page })
 });
 
 test('a reading drawn alongside another shares its plot, read against a right-hand axis', async ({ page }) => {
+  await page.goto(`${TOPIC}#${WORK}--revocation-rate-not-a-record`);
+  const chart = page.locator(`dialog.sv-modal [id="${WORK}--chart-sponsor-revocations"]`);
+  // The rate is drawn on the revocations plot, so the dropdown names both, and the rate is no view of its own.
+  await expect(showAsButton(chart, 'Licences revoked and revocation rate')).toBeVisible();
+  await expect(chart.locator(`[id="${WORK}--chart-revocation-rate"]`)).toHaveCount(0);
+  await expect(chart.locator('.sv-chart__key-name:visible').filter({ hasText: /Skilled Worker revocation rate.*\(right axis\)/ })).toBeVisible();
+  const plot = chart.locator('.sv-chart__svg:visible').first();
+  await expect(plot.locator('text[data-axis="right"]').first()).toBeAttached();
+  // The rate's axis is in its line's colour, and hovering the line's key lights it up.
+  await chart.locator('.sv-chart__key:visible').filter({ hasText: 'Skilled Worker revocation rate' }).hover();
+  await expect(plot.locator('.sv-chart__axis-ticks[data-series="Skilled Worker revocation rate"]')).toHaveAttribute('data-highlighted', 'true');
+});
+
+test('a total and its per-head figure share one axis as growth, each in pounds a view of its own', async ({ page }) => {
   await page.goto(`${TOPIC}#${ECONOMY}--total-gdp-grew`);
   const sheet = page.locator('dialog.sv-modal');
   const chart = sheet.locator(`[id="${ECONOMY}--chart-series"]`);
-  // Both readings in one view, with nothing to switch.
-  await expect(chart).toBeVisible();
-  await expect(chart.getByRole('button', { name: /^Show as:/ })).toHaveCount(0);
-  await expect(chart.locator('.sv-chart__key-name').filter({ hasText: 'UK GDP (right axis)' })).toBeVisible();
-  const plot = chart.locator('.sv-chart__svg:visible').first();
-  await expect(plot.locator('text[data-axis="right"]').first()).toBeAttached();
+  // The observation opens the growth view: both lines in percent, on one axis.
+  await expect(showAsButton(chart, 'Growth since 1955')).toBeVisible();
+  const growth = chart.locator(`[id="${ECONOMY}--chart-gdp-growth"]`);
+  await expect(growth.locator('.sv-chart__key-name:visible')).toHaveText(['UK GDP per head (from 1955)', 'UK GDP (from 1955)']);
+  await expect(growth.locator('.sv-chart__svg:visible').first().locator('text[data-axis="right"]')).toHaveCount(0);
+  // Each measure in pounds is a view of its own.
+  await showAs(chart, 'Growth since 1955', 'Total GDP, £ billion');
+  await expect(chart.locator(`[id="${ECONOMY}--chart-gdp-total"]`)).toBeVisible();
+  await expect(growth).toBeHidden();
   // A short title, over the sheet, with its detail under it on the line More sits on.
   await expect(sheet.locator('.sv-modal__title')).toHaveText('UK GDP');
-  await expect(chart.locator('.sv-chart__about-text').first()).toContainText('1948–2025');
+  await expect(chart.locator('.sv-chart__about-text').first()).toContainText('Per head and for the whole economy');
 });
 
 test('the old address of a chart merged into another opens the reading it became', async ({ page }) => {
