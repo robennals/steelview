@@ -840,6 +840,8 @@ export const estimateRangeFigureSchema = z.object({
   intervalLabel: z.string().min(1).optional(),
   /** Names the dot in the key; defaults to "Central estimate". */
   pointLabel: z.string().min(1).optional(),
+  /** Names the rows' `compare` measure: "Prison". Required when any row has one. */
+  compareLabel: z.string().min(1).optional(),
   /** The "no effect" value. `null` for estimates with no natural reference, such as costs. Defaults to 0. */
   nullValue: z.number().nullable().optional(),
   nullLabel: z.string().min(1).optional(),
@@ -865,6 +867,12 @@ export const estimateRangeFigureSchema = z.object({
         group: z.string().min(1).optional(),
         note: z.string().min(1).optional(),
         asPublished,
+        /** A second measure on the same row and axis, named by the figure's `compareLabel`. */
+        compare: z.strictObject({
+          estimate: z.union([z.number().finite(), qualifiedPointSchema]).optional(),
+          low: z.number().finite().optional(),
+          high: z.number().finite().optional(),
+        }).optional(),
         ...citationFields,
       }).superRefine(citationRule({ required: true })).transform(toSources)
     )
@@ -880,11 +888,13 @@ export const estimateRangeFigureSchema = z.object({
     if (f.defaultGroup !== undefined) issue('`defaultGroup` needs `switchGroups`', ['defaultGroup']);
   }
   if (f.defaultGroup !== undefined && !groups.has(f.defaultGroup)) issue(`\`defaultGroup\` "${f.defaultGroup}" is not one of the estimates' groups`, ['defaultGroup']);
+  if (f.estimates.some(e => e.compare) && f.compareLabel === undefined) issue('rows with `compare` need the figure\'s `compareLabel` to name it', ['compareLabel']);
   if (f.axis === 'log') {
     if (f.nullValue === undefined || (f.nullValue !== null && f.nullValue <= 0)) issue('a `log` axis needs a `nullValue` above zero (1 for ratios), or `null`', ['nullValue']);
     if (f.domain && f.domain[0] <= 0) issue('a `log` axis cannot start at or below zero', ['domain']);
     f.estimates.forEach((e, i) => {
-      const values = [e.low, e.estimate === undefined ? undefined : typeof e.estimate === 'number' ? e.estimate : e.estimate.value, e.high];
+      const central = (b: { estimate?: number | { value: number } }) => (b.estimate === undefined ? undefined : typeof b.estimate === 'number' ? b.estimate : b.estimate.value);
+      const values = [e.low, central(e), e.high, e.compare?.low, e.compare && central(e.compare), e.compare?.high];
       if (values.some(v => v !== undefined && v <= 0)) issue(`"${e.label}": a \`log\` axis cannot draw a value at or below zero`, ['estimates', i]);
     });
   }

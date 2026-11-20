@@ -339,6 +339,7 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
     format: toValueFormat(f.format),
     intervalLabel: f.intervalLabel,
     pointLabel: f.pointLabel,
+    compareLabel: f.compareLabel,
     nullValue: f.nullValue,
     nullLabel: f.nullLabel,
     domain: f.domain,
@@ -355,6 +356,7 @@ export function estimateRangeProps(f: FigureOf<'estimateRange'>, c: FigureContex
       group: e.group,
       note: e.note,
       asPublished: e.asPublished,
+      compare: e.compare,
       sources: e.sources.map(c.credit),
     })),
   };

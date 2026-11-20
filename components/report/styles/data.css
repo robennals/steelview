@@ -1201,6 +1201,33 @@
     box-shadow: 0 0 0 2px var(--paper);
   }
 
+  /* A row with a second measure draws each on its own line: the first above, the comparison below. */
+  .sv-estimates__track[data-paired] > :is(.sv-estimates__dot, .sv-estimates__whisker):not([data-series]) {
+    top: 30%;
+  }
+
+  .sv-estimates__track[data-paired] > [data-series="compare"] {
+    top: 70%;
+  }
+
+  /* The comparison is a diamond in the second series colour: its shape tells it apart without colour. */
+  .sv-estimates__dot[data-series="compare"],
+  .sv-estimates__key-dot[data-series="compare"] {
+    border-radius: 1px;
+    background: var(--sv-series-2);
+    transform: rotate(45deg) scale(0.9);
+  }
+
+  .sv-estimates__whisker[data-series="compare"],
+  .sv-estimates__whisker[data-series="compare"]::before,
+  .sv-estimates__whisker[data-series="compare"]::after {
+    background: var(--sv-series-2);
+  }
+
+  .sv-estimates__value-compare {
+    color: var(--ink-2);
+  }
+
   /* An approximate value ("about 1.7"): an open ring, so it never reads as a measured point. */
   .sv-estimates__dot[data-qualification="approximate"],
   .sv-estimates__key-dot[data-qualification="approximate"] {

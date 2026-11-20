@@ -34,7 +34,16 @@ export type Estimate = {
   asPublished?: string;
   /** This estimate's own sources, shown when the row is opened and in the table. */
   sources?: SourceCredit[];
+  /**
+   * A second measure of the same thing on the same row and axis — the prison
+   * rate beside the conviction rate — drawn as a diamond in its own colour and
+   * named by the chart's `compareLabel`.
+   */
+  compare?: EstimateBounds;
 };
+
+/** A row's second measure: a central value, an interval, or both. */
+export type EstimateBounds = { estimate?: number | QualifiedPoint; low?: number; high?: number };
 
 export type EstimateRangeProps = {
   estimates: Estimate[];
@@ -47,6 +56,8 @@ export type EstimateRangeProps = {
   intervalLabel?: string;
   /** What the dot is, in the key: "Central estimate" (the default), or "Rate multiple" where there is no interval to be central in. */
   pointLabel?: string;
+  /** Names the rows' `compare` measure, in the key and the table: "Prison". */
+  compareLabel?: string;
   /**
    * The value meaning "no effect". Defaults to 0; use 1 for ratios. `null` for
    * estimates with no natural reference, such as costs: no reference line,
@@ -105,6 +116,7 @@ export function EstimateRange({
   itemLabel = 'Estimate',
   intervalLabel = 'Interval',
   pointLabel = 'Central estimate',
+  compareLabel = 'Comparison',
   nullValue = 0,
   nullLabel = 'No effect',
   domain,
@@ -123,22 +135,26 @@ export function EstimateRange({
   preview,
 }: EstimateRangeProps) {
   // Layout reads the central estimate's number; its qualifier is for the text.
-  const bounds = (e: Estimate) => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) });
+  const bounds = (e: EstimateBounds) => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) });
   // Signs say which side of "no effect" a value is on; with no such value — or on a ratio axis, where 1 is no effect and nothing is negative — they say nothing.
   const signed: ValueFormat = nullValue === null || axis === 'log' ? format : { ...format, signed: true };
   const groups = [...new Set(estimates.map(e => e.group ?? ''))];
   const show = (value: number | QualifiedPoint | undefined) => (value === undefined ? '—' : qualifiedLabel(value, signed));
-  const intervalText = (e: Estimate) =>
+  const intervalText = (e: EstimateBounds) =>
     e.low !== undefined && e.high !== undefined ? `${show(e.low)} to ${show(e.high)}`
       : e.low !== undefined ? `at least ${show(e.low)}`
         : e.high !== undefined ? `at most ${show(e.high)}`
           : undefined;
   // The figure printed on the row: the central estimate, or the range where the source gives only that.
-  const rowValue = (e: Estimate) => (e.estimate === undefined ? intervalText(e) ?? '' : show(e.estimate));
+  const rowValue = (e: EstimateBounds) => (e.estimate === undefined ? intervalText(e) ?? '' : show(e.estimate));
+  /** The row's figures as printed: its own, then its comparison's after a slash. */
+  const rowText = (e: Estimate) => (e.compare ? `${rowValue(e)} / ${rowValue(e.compare)}` : rowValue(e));
   const detailFor = (e: Estimate) => {
     const lines: Array<[string, ReactNode]> = [
       ['Year', e.year],
       ['Interval', e.estimate === undefined ? undefined : intervalText(e)],
+      [compareLabel, e.compare ? rowValue(e.compare) : undefined],
+      [`${compareLabel} interval`, e.compare?.estimate === undefined ? undefined : intervalText(e.compare)],
       ['As published', e.asPublished],
       ['Note', e.note],
       ['Source', e.sources?.length ? <SourceCredits sources={e.sources} /> : undefined],
@@ -152,14 +168,16 @@ export function EstimateRange({
 
   /** The plot of `rows`: every estimate, or with `switchGroups` one group's, on an axis fitted to them unless `domain` fixes it. */
   const drawGraph = (rows: Estimate[]) => {
-    const scale = estimateScale(rows.map(bounds), nullValue, domain, axis);
+    const scale = estimateScale([...rows.map(bounds), ...rows.flatMap(e => (e.compare ? [bounds(e.compare)] : []))], nullValue, domain, axis);
+    const compared = rows.some(e => e.compare);
     const hasDetail = !preview && rows.some(detailFor);
     // In rem, not ch: the preview sets its rows and its axis in different sizes, and the two must share this column.
-    const widths = { '--sv-estimates-value': `${(Math.max(3, ...rows.map(e => rowValue(e).length)) + 1) * 0.5}rem` };
+    const widths = { '--sv-estimates-value': `${(Math.max(3, ...rows.map(e => rowText(e).length)) + 1) * 0.5}rem` };
     const rangeOnly = rows.some(e => e.estimate === undefined);
-    const approximate = rows.some(e => e.estimate !== undefined && qualificationOf(e.estimate) === 'approximate');
+    const approximate = rows.flatMap(e => [e, ...(e.compare ? [e.compare] : [])]).some(e => e.estimate !== undefined && qualificationOf(e.estimate) === 'approximate');
     const spans = rows.map(e => whiskerSpan(bounds(e), scale));
-    const openBound = spans.some(span => span?.start === 'open' || span?.end === 'open');
+    const compareSpans = rows.map(e => (e.compare ? whiskerSpan(bounds(e.compare), scale) : undefined));
+    const openBound = [...spans, ...compareSpans].some(span => span?.start === 'open' || span?.end === 'open');
     const beyondAxis = spans.some(span => span?.start === 'clipped' || span?.end === 'clipped')
       || rows.some(e => { const central = bounds(e).estimate; return central !== undefined && scale.beyond(central) !== undefined; });
     const rowGroups = switchGroups ? [''] : [...new Set(rows.map(e => e.group ?? ''))];
@@ -167,7 +185,8 @@ export function EstimateRange({
       <div className="sv-estimates" data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined} style={widths}>
         {!preview && <p className="sv-estimates__key" aria-hidden="true">
           <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" />{pointLabel}</span>
-          {spans.some(Boolean) && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>}
+          {compared && <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" data-series="compare" />{compareLabel}</span>}
+          {[...spans, ...compareSpans].some(Boolean) && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>}
           {approximate && <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" data-qualification="approximate" />Hollow: an approximate value</span>}
           {rangeOnly && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />Range only: no dot where no central estimate was published</span>}
           {openBound && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" data-open="" />Dashed: only this bound was published</span>}
@@ -180,9 +199,9 @@ export function EstimateRange({
             {group && <h3 className="sv-estimates__group">{group}</h3>}
             <ol className="sv-estimates__rows">
               {rows
-                .map((e, i) => ({ e, whisker: spans[i] }))
+                .map((e, i) => ({ e, whisker: spans[i], compareWhisker: compareSpans[i] }))
                 .filter(({ e }) => switchGroups || (e.group ?? '') === group)
-                .map(({ e, whisker }, i) => {
+                .map(({ e, whisker, compareWhisker }, i) => {
                   const crosses = crossesNull(bounds(e), nullValue);
                   const central = bounds(e).estimate;
                   const cells = (
@@ -190,13 +209,14 @@ export function EstimateRange({
                       <span className="sv-estimates__label">{e.label}</span>
                       <span className="sv-estimates__value">
                         {rowValue(e)}
+                        {e.compare && <> / <span className="sv-estimates__value-compare">{rowValue(e.compare)}</span><span className="sv-visually-hidden"> ({compareLabel})</span></>}
                         {crosses !== undefined && (
                           <span className="sv-visually-hidden">
                             {crosses ? `; interval includes ${nullText}` : `; interval excludes ${nullText}`}
                           </span>
                         )}
                       </span>
-                      <span className="sv-estimates__track" aria-hidden="true">
+                      <span className="sv-estimates__track" aria-hidden="true" data-paired={e.compare ? '' : undefined}>
                         {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
                         {whisker && (
                           <span
@@ -212,6 +232,24 @@ export function EstimateRange({
                             data-beyond={scale.beyond(central)}
                             data-qualification={qualificationOf(e.estimate) === 'approximate' ? 'approximate' : undefined}
                             style={{ left: `${scale.x(central)}%` }}
+                          />
+                        )}
+                        {e.compare && compareWhisker && (
+                          <span
+                            className="sv-estimates__whisker"
+                            data-series="compare"
+                            data-start={compareWhisker.start}
+                            data-end={compareWhisker.end}
+                            style={{ left: `${compareWhisker.left}%`, width: `${Math.max(0, compareWhisker.right - compareWhisker.left)}%` }}
+                          />
+                        )}
+                        {e.compare?.estimate !== undefined && (
+                          <span
+                            className="sv-estimates__dot"
+                            data-series="compare"
+                            data-beyond={scale.beyond(pointValue(e.compare.estimate))}
+                            data-qualification={qualificationOf(e.compare.estimate) === 'approximate' ? 'approximate' : undefined}
+                            style={{ left: `${scale.x(pointValue(e.compare.estimate))}%` }}
                           />
                         )}
                       </span>
@@ -248,6 +286,7 @@ export function EstimateRange({
   if (preview) return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-estimate-range">{graph}</ReportFigure>;
 
   const hasNote = estimates.some(e => e.note);
+  const hasCompare = estimates.some(e => e.compare);
   const table = (
     <div className="sv-chart__table-scroll">
       <table className="sv-chart__table">
@@ -259,6 +298,7 @@ export function EstimateRange({
             <th scope="col">Value</th>
             <th scope="col">Low</th>
             <th scope="col">High</th>
+            {hasCompare && <><th scope="col">{compareLabel}</th><th scope="col">Low</th><th scope="col">High</th></>}
             {nullValue !== null && <th scope="col" className="sv-data__th-text">Includes {nullText}?</th>}
             {hasNote && <th scope="col" className="sv-data__th-text">Note</th>}
           </tr>
@@ -275,6 +315,7 @@ export function EstimateRange({
               <td>{e.asPublished ?? (e.estimate === undefined ? '—' : qualifiedText(e.estimate, signed))}</td>
               <td>{show(e.low)}</td>
               <td>{show(e.high)}</td>
+              {hasCompare && <><td>{e.compare?.estimate === undefined ? '—' : qualifiedText(e.compare.estimate, signed)}</td><td>{show(e.compare?.low)}</td><td>{show(e.compare?.high)}</td></>}
               {nullValue !== null && <td className="sv-data__td-text">{yesNo(crossesNull(bounds(e), nullValue))}</td>}
               {hasNote && <td className="sv-data__td-text sv-data__td-long">{e.note ?? '—'}</td>}
             </tr>

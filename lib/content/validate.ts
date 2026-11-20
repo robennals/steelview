@@ -771,10 +771,12 @@ function kindErrors(figure: ComponentFigure, where: string, f: Fact, topic: Topi
       const { domain } = figure;
       errors.push(...rowLabelErrors(figure.estimates, where));
       for (const e of figure.estimates) {
-        const present = [e.low, e.estimate === undefined ? undefined : pointValue(e.estimate), e.high].filter((v): v is number => v !== undefined);
-        if (present.length === 0) errors.push(`${where} "${e.label}" needs an estimate, a low or a high`);
-        if (present.some((v, i) => i > 0 && v < present[i - 1])) errors.push(`${where} "${e.label}" must have low ≤ estimate ≤ high`);
-        if (domain && present.some(v => v < domain[0] || v > domain[1])) errors.push(`${where} "${e.label}" falls outside the domain`);
+        for (const [row, name] of [[e, e.label], ...(e.compare ? [[e.compare, `${e.label} (${figure.compareLabel ?? 'comparison'})`] as const] : [])] as const) {
+          const present = [row.low, row.estimate === undefined ? undefined : pointValue(row.estimate), row.high].filter((v): v is number => v !== undefined);
+          if (present.length === 0) errors.push(`${where} "${name}" needs an estimate, a low or a high`);
+          if (present.some((v, i) => i > 0 && v < present[i - 1])) errors.push(`${where} "${name}" must have low ≤ estimate ≤ high`);
+          if (domain && present.some(v => v < domain[0] || v > domain[1])) errors.push(`${where} "${name}" falls outside the domain`);
+        }
       }
       break;
     }
