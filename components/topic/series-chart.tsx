@@ -109,6 +109,9 @@ function Plot({
   const forecastLabel = layout.forecastX !== null ? zoneLabelPlacement(layout.forecastX, right, FORECAST_LABEL, g.fontSize) : null;
   const bottom = g.top + g.plotHeight;
   const placed = markers?.groups;
+  const secondAxis = layout.secondAxis;
+  const ownAxisLine = partner ? soleLine(layout.lines, 'left') : undefined;
+  const secondAxisLine = partner ? soleLine(layout.lines, 'right') : undefined;
   const drawing = (
     <svg
       className={placed ? 'sv-chart__svg' : 'sv-chart__svg sv-chart__variant'}
@@ -296,17 +299,35 @@ function Plot({
 
       {/* With a second axis, each axis read by one line takes that line's
           colour and name, so hovering the line lights up its axis too. */}
-      {(([own, second]) => <>
-        <g className="sv-chart__axis-ticks" data-series={own?.name} style={own ? { color: `var(--sv-series-${own.slot})` } : undefined}>
-          {layout.valueTicks.map((tick) =>
+      <g className="sv-chart__axis-ticks" data-series={ownAxisLine?.name} style={ownAxisLine ? { color: `var(--sv-series-${ownAxisLine.slot})` } : undefined}>
+        {layout.valueTicks.map((tick) =>
+          tick.label === null ? null : (
+            <text
+              key={`vlabel-${tick.value}`}
+              className="sv-chart__tick"
+              x={g.left - 8}
+              y={tick.y}
+              fontSize={g.fontSize}
+              textAnchor="end"
+              dominantBaseline="middle"
+            >
+              {tick.label}
+            </text>
+          )
+        )}
+      </g>
+      {secondAxis && (
+        <g className="sv-chart__axis-ticks" data-series={secondAxisLine?.name} style={secondAxisLine ? { color: `var(--sv-series-${secondAxisLine.slot})` } : undefined}>
+          {layout.secondTicks.map((tick) =>
             tick.label === null ? null : (
               <text
-                key={`vlabel-${tick.value}`}
+                key={`rlabel-${tick.value}`}
                 className="sv-chart__tick"
-                x={g.left - 8}
+                data-axis={secondAxis.side}
+                x={secondAxis.x}
                 y={tick.y}
                 fontSize={g.fontSize}
-                textAnchor="end"
+                textAnchor={secondAxis.side === 'left' ? 'end' : 'start'}
                 dominantBaseline="middle"
               >
                 {tick.label}
@@ -314,27 +335,7 @@ function Plot({
             )
           )}
         </g>
-        {layout.secondAxis && (
-          <g className="sv-chart__axis-ticks" data-series={second?.name} style={second ? { color: `var(--sv-series-${second.slot})` } : undefined}>
-            {layout.secondTicks.map((tick) =>
-              tick.label === null ? null : (
-                <text
-                  key={`rlabel-${tick.value}`}
-                  className="sv-chart__tick"
-                  data-axis={layout.secondAxis!.side}
-                  x={layout.secondAxis!.x}
-                  y={tick.y}
-                  fontSize={g.fontSize}
-                  textAnchor={layout.secondAxis!.side === 'left' ? 'end' : 'start'}
-                  dominantBaseline="middle"
-                >
-                  {tick.label}
-                </text>
-              )
-            )}
-          </g>
-        )}
-      </>)(partner ? (['left', 'right'] as const).map(axis => soleLine(layout.lines, axis)) : [])}
+      )}
 
       {layout.timeTicks.map((tick) => (
         <text

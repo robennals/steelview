@@ -525,6 +525,13 @@ test('a reading drawn alongside another names one, of the same series, whose lin
   assert.ok(draw('share', false).some(e => e.includes('share a plot and both have a line')));
 });
 
+test('only a reading that draws another alongside places the second axis', () => {
+  const t = topicWithSeries();
+  const s = t.facts[0].series!;
+  s.readings = [{ ...s.readings[0], alongsideAxis: 'left' }];
+  assert.ok(validateTopic(t).some(e => e.includes('places the axis of a reading drawn alongside, but draws none')));
+});
+
 test('a stacked reading adds up: counts, two or more lines on the same periods, none negative, its plot its own', () => {
   const stack = (edit: (s: Series) => void = () => {}) => {
     const t = topicWithSeries();
