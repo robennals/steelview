@@ -15,7 +15,7 @@ previewCharts:
   - fact: immigration-housing-and-public-services
     chart: investment
   - fact: settlement-and-migrant-status
-    chart: series
+    chart: settlement-forecast
   - fact: integration-outcomes
     chart: series
 dataOrder:

@@ -84,17 +84,14 @@ sources:
     date: '2024-08-15'
   # 7
   - stance: contests
-    quote: >-
-      Each State shall— (1) permit absent uniformed services voters and
-      overseas voters to use absentee registration procedures and to vote by
-      absentee ballot in general, special, primary, and runoff elections for
-      Federal office; ... (8) transmit a validly requested absentee ballot
-      to an absent uniformed services voter or overseas voter— (A) except as
-      provided in subsection (g), in the case in which the request is
-      received at least 45 days before an election for Federal office, not
-      later than 45 days before the election ... 2009—Subsec. (a)(6). Pub.
-      L. 111–84, § 577(a)(1), added par. (6). ... Subsec. (a)(8). Pub. L.
-      111–84, § 579(a)(1), added par. (8).
+    quote: |-
+      Each State shall—
+      - (1) permit absent uniformed services voters and overseas voters to use absentee registration procedures and to vote by absentee ballot in general, special, primary, and runoff elections for Federal office; ...
+      - (7) in addition to any other method of transmitting blank absentee ballots in the State, establish procedures for transmitting by mail and electronically blank absentee ballots to absent uniformed services voters and overseas voters with respect to general, special, primary, and runoff elections for Federal office in accordance with subsection (f);
+      - (8) transmit a validly requested absentee ballot to an absent uniformed services voter or overseas voter— (A) except as provided in subsection (g), in the case in which the request is received at least 45 days before an election for Federal office, not later than 45 days before the election; and (B) in the case in which the request is received less than 45 days before an election for Federal office— (i) in accordance with State law; and (ii) if practicable and as determined appropriate by the State, in a manner that expedites the transmission of such absentee ballot; ...
+
+      2009—Subsec. (a)(6). Pub. L. 111–84, § 577(a)(1), added par. (6). ...
+      Subsec. (a)(8). Pub. L. 111–84, § 579(a)(1), added par. (8).
     title: '52 U.S.C. §20302, State responsibilities (UOCAVA, as amended by the MOVE Act)'
     url: https://www.law.cornell.edu/uscode/text/52/20302
     publisher: 'Legal Information Institute, Cornell Law School'
@@ -128,15 +125,13 @@ sources:
     date: '2024-08-15'
   # 10
   - stance: supports
-    quote: >-
-      On September 14, 2021, Senator Klobuchar introduced S. 2747, the
-      Freedom to Vote Act. On October 20, 2021, the Senate failed to invoke
-      cloture on the motion to proceed to the bill. … require states to
-      offer preregistration for 16- and 17-year-olds, online registration,
-      and same-day registration; … require states to offer early voting and
-      no-excuse absentee voting; … require jurisdictions with voter
-      identification requirements to accept specified information or
-      documentation to satisfy ID requirements;
+    quote: |-
+      On September 14, 2021, Senator Klobuchar introduced S. 2747, the Freedom to Vote Act. On October 20, 2021, the Senate failed to invoke cloture on the motion to proceed to the bill. …
+      - require states to offer preregistration for 16- and 17-year-olds, online registration, and same-day registration; …
+      - require states to take specified actions to facilitate accessibility of registration and voting for individuals with disabilities;
+      - require states to offer early voting and no-excuse absentee voting;
+      - amend the Uniformed and Overseas Citizens Absentee Voting Act (UOCAVA) to require expedited transmission and return of ballots for military and overseas voters, require states that accept federal postcard forms for registration to accept and process single absentee-ballot applications for all elections during a single cycle, amend enforcement authority, and establish private right of action; …
+      - require jurisdictions with voter identification requirements to accept specified information or documentation to satisfy ID requirements;
     title: 'The Freedom to Vote Act (S. 2747): Overview of Major Provisions (IN11781)'
     url: https://www.everycrsreport.com/reports/IN11781.html
     publisher: 'Congressional Research Service'
@@ -180,12 +175,17 @@ sources:
     date: '2026-07-23'
   # 14
   - stance: supports
-    quote: >-
-      Vote Number: 231 Vote Date: August 8, 2026, 04:36 AM Required For
-      Majority: 3/5 Vote Result: Cloture on the Motion to Proceed Rejected
-      Measure Number: S. 5271 Measure Title: A bill to amend the Help
-      America Vote Act of 2002 to require voters to provide photo
-      identification. Vote Counts: YEAs 52 NAYs 46 Not Voting 2
+    quote: |-
+      Vote Number: 231
+      Vote Date: August 8, 2026, 04:36 AM
+      Required For Majority: 3/5
+      Vote Result: Cloture on the Motion to Proceed Rejected
+      Measure Number: S. 5271
+      Measure Title: A bill to amend the Help America Vote Act of 2002 to require voters to provide photo identification.
+      Vote Counts:
+      YEAs 52
+      NAYs 46
+      Not Voting 2
     title: 'Roll Call Vote 119th Congress - 2nd Session, Vote Number 231'
     url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00231.htm
     publisher: 'United States Senate'
@@ -204,45 +204,26 @@ sources:
     date: '2026-08-08'
   # 16
   - stance: supports
-    quote: >-
-      President Donald Trump issued executive orders on March 25, 2025, and
-      March 31, 2026, that include provisions related to mail voting. Among
-      other topics, E.O. 14248 addresses deadlines for returning mail
-      ballots and E.O. 14399 addresses the design and transmission of mail
-      balloting materials. ... Some Members have introduced legislation in
-      the 119th Congress to codify or nullify the executive orders. Some
-      have also offered proposals to require or prohibit use of alternatives
-      to in-person voting on Election Day. For example, the Voter
-      Empowerment Act, the Universal Right to Vote by Mail Act, and the Vote
-      at Home Act would require states to offer early and no-excuse mail
-      voting, no-excuse mail voting, and all-mail elections, respectively,
-      for federal races. The Make Elections Great Again (MEGA) Act, the Mail
-      Ballot Integrity Act, a proposed amendment to the Secure America Act,
-      and a proposed amendment to the House-passed Safeguard American Voter
-      Eligibility (SAVE America) Act would prohibit states from sending
-      voters ballots for federal elections except on request, and the latter
-      three measures would limit mail voting in federal elections to voters
-      in specified categories.
+    quote: |-
+      President Donald Trump issued executive orders on March 25, 2025, and March 31, 2026, that include provisions related to mail voting. Among other topics, E.O. 14248 addresses deadlines for returning mail ballots and E.O. 14399 addresses the design and transmission of mail balloting materials. ...
+
+      Some Members have introduced legislation in the 119th Congress to codify or nullify the executive orders. Some have also offered proposals to require or prohibit use of alternatives to in-person voting on Election Day. For example, the Voter Empowerment Act, the Universal Right to Vote by Mail Act, and the Vote at Home Act would require states to offer early and no-excuse mail voting, no-excuse mail voting, and all-mail elections, respectively, for federal races.
+
+      The Make Elections Great Again (MEGA) Act, the Mail Ballot Integrity Act, a proposed amendment to the Secure America Act, and a proposed amendment to the House-passed Safeguard American Voter Eligibility (SAVE America) Act would prohibit states from sending voters ballots for federal elections except on request, and the latter three measures would limit mail voting in federal elections to voters in specified categories.
     title: 'Early Voting and Mail Voting: Overview and Issues for Congress (IF11477)'
     url: https://www.everycrsreport.com/files/2026-07-10_IF11477_6b1984f8f326df526ae5607f823fd9b0a61e64a5.pdf
     publisher: 'Congressional Research Service'
     date: '2026-07-10'
   # 17
   - stance: supports
-    quote: >-
-      United States Postal Service Rulemaking on Mail-In and Absentee
-      Ballots. ... the Postmaster General is hereby directed to initiate a
-      proposed rulemaking pursuant to 39 U.S.C. 401 and other applicable
-      authority within 60 days of the date of this order. The notice of
-      proposed rulemaking shall include, at minimum, the following: (i)
-      Proposed provisions specifying that all outbound ballot mail must be
-      mailed in an envelope that: (A) is marked as Official Election Mail
-      ... (B) is automation-compatible and bears a unique Intelligent Mail
-      barcode ... (iii) Proposed provisions specifying that the USPS shall
-      not transmit mail-in or absentee ballots from any individual unless
-      those individuals have been enrolled on a State-specific list
-      described in subsection (b)(iv) of this section with the USPS pursuant
-      to this subsection.
+    quote: |-
+      United States Postal Service Rulemaking on Mail-In and Absentee Ballots. ...
+
+      the Postmaster General is hereby directed to initiate a proposed rulemaking pursuant to 39 U.S.C. 401 and other applicable authority within 60 days of the date of this order. The notice of proposed rulemaking shall include, at minimum, the following:
+      - (i) Proposed provisions specifying that all outbound ballot mail must be mailed in an envelope that:
+      - (A) is marked as Official Election Mail ...
+      - (B) is automation-compatible and bears a unique Intelligent Mail barcode ...
+      - (iii) Proposed provisions specifying that the USPS shall not transmit mail-in or absentee ballots from any individual unless those individuals have been enrolled on a State-specific list described in subsection (b)(iv) of this section with the USPS pursuant to this subsection.
     title: 'Executive Order 14399, Ensuring Citizenship Verification and Integrity in Federal Elections, Sec. 3, 91 FR 17125'
     url: https://www.federalregister.gov/documents/2026/04/03/2026-06601/ensuring-citizenship-verification-and-integrity-in-federal-elections
     publisher: 'Federal Register'
@@ -286,90 +267,60 @@ sources:
     date: '2026-08-24'
   # 21
   - stance: supports
-    quote: >-
-      The application for stay presented to JUSTICE JACKSON and by her
-      referred to the Court is denied. The Government is unlikely to succeed
-      on the merits of its challenge to the District Court’s preliminary
-      injunction. And the equitable factors applicable for obtaining
-      emergency relief from this Court do not favor a stay. JUSTICE
-      KAVANAUGH, concurring. In my view, based on the briefing the Court has
-      received at this interim stage, there is at least a fair prospect that
-      the final rule falls within the Postal Service’s statutory authority.
-      See 39 U. S. C. §401(2). But applying the rule in the 2026 elections
-      would be arbitrary and capricious in violation of the Administrative
-      Procedure Act because state and local election officials do not have
-      sufficient time to reasonably implement the rule before the elections.
+    quote: |-
+      The application for stay presented to JUSTICE JACKSON and by her referred to the Court is denied. The Government is unlikely to succeed on the merits of its challenge to the District Court’s preliminary injunction. And the equitable factors applicable for obtaining emergency relief from this Court do not favor a stay.
+
+      JUSTICE KAVANAUGH, concurring.
+
+      In my view, based on the briefing the Court has received at this interim stage, there is at least a fair prospect that the final rule falls within the Postal Service’s statutory authority. See 39 U. S. C. §401(2). But applying the rule in the 2026 elections would be arbitrary and capricious in violation of the Administrative Procedure Act because state and local election officials do not have sufficient time to reasonably implement the rule before the elections.
     title: 'United States Postal Service v. California, No. 26A305 (order on application for stay; Kavanaugh, J., concurring)'
     url: https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf
     publisher: 'Supreme Court of the United States'
     date: '2026-09-14'
   # 22
   - stance: contests
-    quote: >-
-      JUSTICE ALITO, with whom JUSTICE THOMAS joins, dissenting from the
-      denial of application for stay. ... The rule requires federal ballot
-      mail to be sent in envelopes with three special features: an
-      election-mail logo, the ability to be scanned using high-speed
-      processing equipment, and a specialized barcode unique to each voter.
-      ... As for the plaintiff States, their claims are unlikely to succeed.
-      They claim the rule violates the Elections Clause. U. S. Const., Art.
-      I, §4, cl. 1. This claim, however, collapses into an inquiry about
-      whether the Postal Service has statutory authority to promulgate the
-      rule. Even assuming the rule here is a regulation of elections,
-      Congress may create such rules under the Elections Clause. And, by
-      statute, it may authorize the Postal Service to issue such rules.
+    quote: |-
+      JUSTICE ALITO, with whom JUSTICE THOMAS joins, dissenting from the denial of application for stay. ...
+
+      The rule requires federal ballot mail to be sent in envelopes with three special features: an election-mail logo, the ability to be scanned using high-speed processing equipment, and a specialized barcode unique to each voter. ...
+
+      As for the plaintiff States, their claims are unlikely to succeed. They claim the rule violates the Elections Clause. U. S. Const., Art. I, §4, cl. 1. This claim, however, collapses into an inquiry about whether the Postal Service has statutory authority to promulgate the rule. Even assuming the rule here is a regulation of elections, Congress may create such rules under the Elections Clause. And, by statute, it may authorize the Postal Service to issue such rules.
     title: 'United States Postal Service v. California, No. 26A305, Alito, J., with whom Thomas, J., joins, dissenting'
     url: https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf
     publisher: 'Supreme Court of the United States'
     date: '2026-09-14'
   # 23
   - stance: supports
-    quote: >-
-      On August 11, the district court granted the League Plaintiffs’
-      renewed motion for a nation-wide preliminary injunction, thereby
-      halting the implementation of Section 3 in all fifty states. ... On
-      August 21, the USPS announced, just 74 days before the November
-      midterms, publication of the Final Rule would take place on August 26
-      ... On September 4, the district court granted the preliminary
-      injunction and dissolved the TRO, meaning the Final Rule remained
-      blocked. ... On September 10, the First Circuit denied defendants’
-      motions to stay. On September 14, the Supreme Court denied defendants’
-      application for a stay. This ruling means that the Final Rule will not
-      take effect for the November 2026 midterm elections.
+    quote: |-
+      On August 11, the district court granted the League Plaintiffs’ renewed motion for a nation-wide preliminary injunction, thereby halting the implementation of Section 3 in all fifty states. ...
+
+      On August 21, the USPS announced, just 74 days before the November midterms, publication of the Final Rule would take place on August 26 ...
+
+      On September 3, defendants moved in the Supreme Court for a stay of the TRO despite the First Circuit not yet having ruled on that issue. On September 4, the district court granted the preliminary injunction and dissolved the TRO, meaning the Final Rule remained blocked. The federal and state defendants appealed the decision to the First Circuit and withdrew their application to the Supreme Court to stay the TRO. ...
+
+      On September 10, the First Circuit denied defendants’ motions to stay. On September 14, the Supreme Court denied defendants’ application for a stay. This ruling means that the Final Rule will not take effect for the November 2026 midterm elections.
     title: 'League of Women Voters of Massachusetts v. Trump (March 2026 mail voting executive order): case page'
     url: https://www.brennancenter.org/our-work/court-cases/league-women-voters-massachusetts-v-trump-march-2026-mail-voting-executive
     publisher: 'Brennan Center for Justice (co-counsel for the plaintiffs)'
     date: '2026-09-17'
   # 24
   - stance: supports
-    quote: >-
-      Mississippi is one of roughly 30 States that count at least some
-      absentee ballots mailed by election day but received afterward. ...
-      Held: The federal election-day statutes do not prevent Mississippi
-      from counting absentee ballots postmarked by election day but received
-      up to five days thereafter; nothing in the federal election-day
-      statutes requires ballots to be received by election day. ... Barrett,
-      J., delivered the opinion of the Court, in which Roberts, C. J., and
-      Sotomayor, Kagan, and Jackson, JJ., joined. Alito, J., filed a
-      dissenting opinion, in which Thomas and Gorsuch, JJ., joined, and in
-      which Kavanaugh, J., joined as to all but Parts II–C–2 and III
+    quote: |-
+      Mississippi is one of roughly 30 States that count at least some absentee ballots mailed by election day but received afterward. ...
+
+      Held: The federal election-day statutes do not prevent Mississippi from counting absentee ballots postmarked by election day but received up to five days thereafter; nothing in the federal election-day statutes requires ballots to be received by election day. ...
+
+      Barrett, J., delivered the opinion of the Court, in which Roberts, C. J., and Sotomayor, Kagan, and Jackson, JJ., joined. Alito, J., filed a dissenting opinion, in which Thomas and Gorsuch, JJ., joined, and in which Kavanaugh, J., joined as to all but Parts II–C–2 and III, post, p. 698.
     title: 'Watson v. Republican National Committee, 609 U.S. 672 (2026), syllabus'
     url: https://www.supremecourt.gov/opinions/25pdf/609us2r65_g314.pdf
     publisher: 'Supreme Court of the United States'
     date: '2026-06-29'
   # 25
   - stance: supports
-    quote: >-
-      Finally, this is not a case about the Constitution. We do not consider
-      the scope of Congress's authority to regulate federal elections. ...
-      Election fraud and its appearance are serious issues. Like other such
-      issues, however, they must be addressed through the democratic
-      process. The election-day statutes are proof of concept: When voting
-      on different days in different States sparked allegations of fraud,
-      Congress set a nationally uniform deadline for voting. If varied
-      deadlines for ballot receipt similarly call for a national solution,
-      the American people must choose it through their elected
-      representatives.
+    quote: |-
+      Finally, this is not a case about the Constitution. We do not consider the scope of Congress's authority to regulate federal elections. ...
+
+      Election fraud and its appearance are serious issues. Like other such issues, however, they must be addressed through the democratic process. The election-day statutes are proof of concept: When voting on different days in different States sparked allegations of fraud, Congress set a nationally uniform deadline for voting. If varied deadlines for ballot receipt similarly call for a national solution, the American people must choose it through their elected representatives.
     title: 'Watson v. Republican National Committee, 609 U.S. 672 (2026), opinion of the Court'
     url: https://www.supremecourt.gov/opinions/25pdf/609us2r65_g314.pdf
     publisher: 'Supreme Court of the United States'
@@ -392,7 +343,10 @@ sources:
       may have shared plaintiffs' view that an election-day deadline avoids
       the appearance of fraud from late-arriving ballots. ... Finally,
       plaintiffs' policy arguments about election integrity and voter
-      confidence are properly directed to legislatures, not courts
+      confidence are properly directed to legislatures, not courts, see, e. g.,
+      SAS Institute Inc. v. Iancu, 584 U. S. 357, 368, and regardless,
+      plaintiffs' definition of “election” would do little to address the
+      concerns they identify.
     title: 'Watson v. Republican National Committee, 609 U.S. 672 (2026), syllabus'
     url: https://www.supremecourt.gov/opinions/25pdf/609us2r65_g314.pdf
     publisher: 'Supreme Court of the United States'
@@ -425,36 +379,29 @@ sources:
     date: '2026-10-23'
   # 30
   - stance: supports
-    quote: >-
-      Thirty-five states require absentee/mail ballots returned by mail to
-      be received on or before Election Day. Fifteen states, plus Guam,
-      Puerto Rico, the Virgin Islands and Washington, D.C., will accept and
-      count a mailed ballot if it is received after Election Day but
-      postmarked on or before (sometimes only before) Election Day. ...
-      (2025) changed the receipt deadline for absentee ballots to be
-      received before the close of polls on Election Day. ... (2025) changed
-      the receipt deadline for most absentee ballots to the close of polls
-      on Election Day. Previously, ballots could be received four days after
-      the election as long as they were postmarked by Election Day. The bill
-      maintains a carve-out for military and overseas voters’ ballots, which
-      will still be accepted if received within the four-day post-election
-      period. ... (2025) required ballots to be received by the election
-      officer by 8 p.m. on Election Day. ... In July 2026, a district court
-      judge in Kansas issued a preliminary injunction on the law requiring
-      absentee ballots to be received by the close of polls on Election Day.
-      … Under the injunction, ballots can be counted if they are postmarked
-      by Election Day and received within three days of an election.
+    quote: |-
+      Thirty-five states require absentee/mail ballots returned by mail to be received on or before Election Day. Fifteen states, plus Guam, Puerto Rico, the Virgin Islands and Washington, D.C., will accept and count a mailed ballot if it is received after Election Day but postmarked on or before (sometimes only before) Election Day. ...
+
+      In July 2026, a district court judge in Kansas issued a preliminary injunction on the law requiring absentee ballots to be received by the close of polls on Election Day. The secretary of state filed an appeal that was blocked by the Kansas Supreme Court. Under the injunction, ballots can be counted if they are postmarked by Election Day and received within three days of an election. …
+
+      North Dakota HB 1165 (2025) changed the receipt deadline for absentee ballots to be received before the close of polls on Election Day. Previously mailed ballots could be received after Election Day with a postmark by Election Day, with no exact deadline specified in statute.
+
+      Ohio SB 293 (2025) changed the receipt deadline for most absentee ballots to the close of polls on Election Day. Previously, ballots could be received four days after the election as long as they were postmarked by Election Day. The bill maintains a carve-out for military and overseas voters’ ballots, which will still be accepted if received within the four-day post-election period.
+
+      Utah HB 300 (2025) required ballots to be received by the election officer by 8 p.m. on Election Day. Previously ballots could be returned by noon on the day of the canvass if postmarked by the day before Election Day.
     title: 'Table 11: Receipt and Postmark Deadlines for Absentee/Mail Ballots (entries for North Dakota, Ohio, Utah and Kansas)'
     url: https://www.ncsl.org/elections-and-campaigns/table-11-receipt-and-postmark-deadlines-for-absentee-mail-ballots
     publisher: 'National Conference of State Legislatures'
     date: '2026-09-25'
   # 31
   - stance: supports
-    quote: >-
-      Eight states and Washington, D.C., allow all elections to be conducted
-      entirely by mail: California, Colorado, Hawaii, Nevada, Oregon, Utah,
-      Vermont and Washington state. ... Oregon ... 1998 | 2000 | Citizen
-      initiative
+    quote: |-
+      Eight states and Washington, D.C., allow all elections to be conducted entirely by mail: California, Colorado, Hawaii, Nevada, Oregon, Utah, Vermont and Washington state. …
+
+      Table 18a: States That Conduct All Elections by Mail
+
+      State | Statute | Year Enacted | Year Implemented | Bill Number
+      Oregon | Or. Rev. Stat. § 254.465 | 1998 | 2000 | Citizen initiative
     title: 'Table 18: States With Mostly Mail Elections'
     url: https://www.ncsl.org/elections-and-campaigns/table-18-states-with-all-mail-elections
     publisher: 'National Conference of State Legislatures'
@@ -471,19 +418,28 @@ sources:
     date: '2025'
   # 33
   - stance: supports
-    quote: >-
-      November 2016 30 states and D.C. 20 states ... January 2020 32 states and
-      D.C. 18 states ... November 2020 38 states and D.C. 2 states 10 states
-      ... November 2022 35 states and D.C. 15 states ... November 2024 36
-      states and D.C. 14 states ... November 2026 (expected) 37 states and D.C.
-      13 states ... November 2016 37 states and D.C. 13 states … January 2020
-      35 states 15 states and D.C. … November 2020 29 states 21 states and D.C.
-      … November 2022 31 states 19 states and D.C. … November 2024 32 states 18
-      states and D.C. … November 2026 (expected) 35 states 15 states and D.C.
-      ... As a result, the count of states requiring Election Day receipt for
-      the November 2026 election is expected to be roughly the same as it was
-      in November 2016, despite a dip in that count around the peak of the
-      pandemic.
+    quote: |-
+      Table 1: Absentee/Mail Voting Eligibility and Excuses
+
+      Date/Election | No-excuse absentee or all-mail elections | Excuse required | COVID-19 excuse added for 2020 election
+      November 2016 | 30 states and D.C. | 20 states | N/A
+      January 2020 | 32 states and D.C. | 18 states | N/A
+      November 2020 | 38 states and D.C. | 2 states | 10 states
+      November 2022 | 35 states and D.C. | 15 states | N/A
+      November 2024 | 36 states and D.C. | 14 states | N/A
+      November 2026 (expected) | 37 states and D.C. | 13 states | N/A
+
+      … Table 5: Absentee/Mail Ballot Receipt Deadlines …
+
+      Many states enacted policies allowing ballots to be received after Election Day during the pandemic, but since then, states have slowly moved in the opposite direction of requiring Election Day receipt for most absentee/mail ballots. As a result, the count of states requiring Election Day receipt for the November 2026 election is expected to be roughly the same as it was in November 2016, despite a dip in that count around the peak of the pandemic.
+
+      Date/Election | Election Day receipt | Post-Election Day receipt
+      November 2016 | 37 states and D.C. | 13 states
+      January 2020 | 35 states | 15 states and D.C.
+      November 2020 | 29 states | 21 states and D.C.
+      November 2022 | 31 states | 19 states and D.C.
+      November 2024 | 32 states | 18 states and D.C.
+      November 2026 (expected) | 35 states | 15 states and D.C.
     title: 'Evolution of Absentee/Mail Voting Laws 2016–2026 (no-excuse table: no-excuse or all-mail | excuse required | COVID-19 excuse added; receipt-deadline table: Election Day receipt | post-Election Day receipt)'
     url: https://www.ncsl.org/elections-and-campaigns/evolution-of-absentee-mail-voting-laws-2016-2026
     publisher: National Conference of State Legislatures

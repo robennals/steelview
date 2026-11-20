@@ -196,7 +196,7 @@ test('a measurement change credits the series source, and has no Method Changes 
   const { PanelChart } = await import('./fact-figures');
   const fact = { id: 'oil', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: twoPanelSeries() };
   const slide = { fact, chart: 'series', reading: fact.series.readings[0].id, label: fact.series.title, href: '' };
-  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic', facts: [fact] } }));
+  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic' } }));
   assert.doesNotMatch(html, /<summary>Method Changes<\/summary>/);
   const card = html.match(/data-kind="method" data-marker="2">[\s\S]*?<\/button><\/div>/)?.[0] ?? '';
   assert.match(card, /The benchmark changed\./);

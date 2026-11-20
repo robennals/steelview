@@ -45,11 +45,13 @@ sources:
     publisher: Office for National Statistics
     date: '2025-10-28'
   - stance: supports
-    quote: >-
-      Table 430a: Household projection variants and difference between principal
-      projection and each variant, local authorities and higher administrative
-      areas, mid-2032 ... E92000001 ENGLAND 25958408 26233056 26233056 26645597
-      25744716 25559547 24670656 274648 274648 687189 -213691 -398861 -1287752
+    quote: |-
+      Table 430a: Household projection variants and difference between principal projection and each variant, local authorities and higher administrative areas, mid-2032
+
+      Units: Households
+
+      Area code | Area name | Households 2032: Migration category variant | Households 2032: 5-Year migration | Households 2032: 10-Year migration | Households 2032: High international migration | Households 2032: Low international migration | Households 2032: Projected HRR throughout | Households 2032: Zero net migration | Diff: 5-Year migration and migration category variant | Diff: 10-Year migration and migration category variant | Diff: High international migration and migration category variant | Diff: Low international migration and migration category variant | Diff: Projected HRR throughout and migration category variant | Diff: Zero net migration and migration category variant
+      E92000001 | ENGLAND | 25958408 | 26233056 | 26233056 | 26645597 | 25744716 | 25559547 | 24670656 | 274648 | 274648 | 687189 | -213691 | -398861 | -1287752
     title: '2022-based household projections: variant comparison'
     url: https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland
     fileUrl: https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/populationandmigration/populationprojections/datasets/householdprojectionsforengland/2022basedvariantcomparison/2022basedhhpsvariantcomparison.xlsx
@@ -57,8 +59,9 @@ sources:
     publisher: Office for National Statistics
     date: '2025-10-28'
   - stance: supports
-    quote: >-
-      E92000001 ENGLAND All Ages Persons 23540823.735300701
+    quote: |-
+      CODE | AREA NAME | AGE GROUP | SEX | 2022
+      E92000001 | ENGLAND | All Ages | Persons | 23540823.735300701
     title: >-
       2022-based household projections (migration category variant) - detailed
       data: Stage 1 projected households
@@ -440,11 +443,11 @@ sources:
     publisher: NHS England Digital
     date: '2026-10-22'
   - stance: supports
-    quote: >-
-      Social Rent [note 4] 25,705 57,023 48,941 52,190 56,949 42,465 35,780
-      33,579 28,794 27,087 26,810 23,955 22,661 21,674 23,633 24,683 29,643
-      31,122 33,491 39,562 37,677 17,580 10,924 9,331 6,803 5,827 7,049 6,363
-      6,766 6,051 7,661 9,458 10,325 12,267
+    quote: |-
+      Live Table 1000: Additional affordable homes provided by tenure and provider, England, Completions [note 17] [note 20]
+
+      Tenure | Notes | 1991-92 | 1992-93 | 1993-94 | 1994-95 | 1995-96 | 1996-97 | 1997-98 | 1998-99 | 1999-00 | 2000-01 | 2001-02 | 2002-03 | 2003-04 | 2004-05 | 2005-06 | 2006-07 | 2007-08 | 2008-09 | 2009-10 | 2010-11 | 2011-12 | 2012-13 | 2013-14 | 2014-15 | 2015-16 | 2016-17 | 2017-18 | 2018-19 | 2019-20 | 2020-21 | 2021-22 | 2022-23 | 2023-24 | 2024-25
+      Social Rent | [note 4] | 25,705 | 57,023 | 48,941 | 52,190 | 56,949 | 42,465 | 35,780 | 33,579 | 28,794 | 27,087 | 26,810 | 23,955 | 22,661 | 21,674 | 23,633 | 24,683 | 29,643 | 31,122 | 33,491 | 39,562 | 37,677 | 17,580 | 10,924 | 9,331 | 6,803 | 5,827 | 7,049 | 6,363 | 6,766 | 6,051 | 7,661 | 9,458 | 10,325 | 12,267
     title: >-
       Live Table 1000: Additional affordable homes provided by tenure and
       provider, England, Completions
@@ -510,14 +513,12 @@ sources:
     publisher: OECD
     date: '2026'
   - stance: supports
-    quote: >-
-      Between 2021 and 2024, average annual capital expenditure on health across
-      OECD countries remained at around 0.6% of GDP ... Of the G7 countries, Japan at 0.9% and the United States at 0.8% remained
-      above the OECD average, while France, Italy and the United Kingdom all
-      invested below the average at 0.4-0.5% of GDP. ... On the other hand,
-      after the United Kingdom experienced a clear decline in investment through
-      the mid-2010s, there has been a notable increase in recent years – even if
-      the level remains below the OECD average.
+    quote: |-
+      Between 2021 and 2024, average annual capital expenditure on health across OECD countries remained at around 0.6% of GDP
+
+      ... Of the G7 countries, Japan at 0.9% and the United States at 0.8% remained above the OECD average, while France, Italy and the United Kingdom all invested below the average at 0.4-0.5% of GDP.
+
+      ... On the other hand, after the United Kingdom experienced a clear decline in investment through the mid-2010s, there has been a notable increase in recent years – even if the level remains below the OECD average.
     title: 'Health at a Glance 2025: OECD Indicators (Capital expenditure in the health sector)'
     url: https://www.oecd.org/en/publications/health-at-a-glance-2025_8f9e3f98-en.html
     publisher: OECD
@@ -1155,9 +1156,12 @@ additionalSeries:
           common since 2023-14, following its introduction in 2011-12."
     source:
       stance: supports
-      quote: >-
-        Live Table 1000: Additional affordable homes provided by tenure and
-        provider, England, Completions
+      quote: |-
+        Live Table 1000: Additional affordable homes provided by tenure and provider, England, Completions [note 17] [note 20]
+
+        Tenure | Notes | 1991-92 | 1992-93 | 1993-94 | 1994-95 | 1995-96 | 1996-97 | 1997-98 | 1998-99 | 1999-00 | 2000-01 | 2001-02 | 2002-03 | 2003-04 | 2004-05 | 2005-06 | 2006-07 | 2007-08 | 2008-09 | 2009-10 | 2010-11 | 2011-12 | 2012-13 | 2013-14 | 2014-15 | 2015-16 | 2016-17 | 2017-18 | 2018-19 | 2019-20 | 2020-21 | 2021-22 | 2022-23 | 2023-24 | 2024-25
+        Social Rent | [note 4] | 25,705 | 57,023 | 48,941 | 52,190 | 56,949 | 42,465 | 35,780 | 33,579 | 28,794 | 27,087 | 26,810 | 23,955 | 22,661 | 21,674 | 23,633 | 24,683 | 29,643 | 31,122 | 33,491 | 39,562 | 37,677 | 17,580 | 10,924 | 9,331 | 6,803 | 5,827 | 7,049 | 6,363 | 6,766 | 6,051 | 7,661 | 9,458 | 10,325 | 12,267
+        All affordable |  | 29,674 | 65,721 | 63,736 | 70,390 | 74,530 | 56,544 | 47,464 | 42,453 | 35,091 | 33,159 | 33,015 | 32,923 | 38,069 | 37,470 | 45,995 | 44,313 | 53,176 | 55,792 | 58,297 | 61,089 | 58,346 | 43,077 | 43,124 | 65,959 | 32,614 | 42,206 | 47,388 | 57,226 | 58,964 | 52,078 | 59,031 | 63,789 | 64,346 | 64,921
       title: >-
         Live Table 1000: Additional affordable homes provided by tenure and
         provider, England

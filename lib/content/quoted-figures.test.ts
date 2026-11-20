@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere } from './figures';
+import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere } from './quoted-figures';
 
 test('extracts money, percentages and comma-grouped thousands', () => {
   assert.deepEqual(

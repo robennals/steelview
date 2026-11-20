@@ -12,15 +12,11 @@ claim: >-
 status: well-supported
 sources:
   - stance: supports
-    quote: >-
-      Illinois, N.D. - In an investigation in the City of Chicago, fifty-eight
-      individuals, including city employees and election judges, thus far have
-      been convicted of vote fraud in the November 1982, general election. The
-      investigation continues. … Texas, S.D. - A total of twenty-nine persons
-      were indicted, and twenty-one persons convicted, of buying votes with food
-      stamps and welfare benefits in Duval County, Texas. This series of cases
-      focused on the 1982 Texas primary election, and was investigated jointly
-      by the Federal Bureau of Investigation and the Texas Rangers.
+    quote: |-
+      D. ELECTION CRIMES
+
+      - … Illinois, N.D. - In an investigation in the City of Chicago, fifty-eight individuals, including city employees and election judges, thus far have been convicted of vote fraud in the November 1982, general election. The investigation continues.
+      - Texas, S.D. - A total of twenty-nine persons were indicted, and twenty-one persons convicted, of buying votes with food stamps and welfare benefits in Duval County, Texas. This series of cases focused on the 1982 Texas primary election, and was investigated jointly by the Federal Bureau of Investigation and the Texas Rangers.
     title: Report to Congress on the Activities and Operations of the Public Integrity Section for 1984
     url: https://www.justice.gov/media/1106966/dl?inline
     publisher: US Department of Justice, Public Integrity Section
@@ -37,37 +33,21 @@ sources:
     publisher: Abraham Lincoln Presidential Library
     date: '2016-12'
   - stance: supports
-    quote: >-
-      On the day of the general election, Hicks distributed ballot
-      applications, along with the names of registered voters who had moved
-      away or died, to the election judges, including the appellant. The
-      election judges completed the ballot applications with the names of the
-      phantom voters. Then, using the fraudulent ballot applications, the
-      election judges cast votes according to Hicks’ instructions. … Appellant
-      watched as Hicks solicited voters and paid them $2.00 per vote. As a
-      result of these activities, more than one-third of the 330 votes cast in
-      the 17th precinct that election day were fraudulent. … In over two hours
-      of voting, approximately 52 residents voted. Appellant and the other
-      election judges cast nearly all of those votes for the straight
-      Democratic Party ticket by punching 10. During the voting, a Democratic
-      Party election judge paid residents small amounts of money for their
-      votes as appellant watched.
+    quote: |-
+      On October 30, 1982, appellant and the other election judges, with Hicks in attendance, conducted the special election at Monroe Pavillion. In over two hours of voting, approximately 52 residents voted. Appellant and the other election judges cast nearly all of those votes for the straight Democratic Party ticket by punching 10. During the voting, a Democratic Party election judge paid residents small amounts of money for their votes as appellant watched.
+
+      On the day of the general election, Hicks distributed ballot applications, along with the names of registered voters who had moved away or died, to the election judges, including the appellant. The election judges completed the ballot applications with the names of the phantom voters. Then, using the fraudulent ballot applications, the election judges cast votes according to Hicks’ instructions. At some point on election day, appellant was seen leaving the 17th precinct polls with a shopping bag full of blank applications. Appellant later returned with the applications completed. Appellant watched as Hicks solicited voters and paid them $2.00 per vote. As a result of these activities, more than one-third of the 330 votes cast in the 17th precinct that election day were fraudulent.
     title: United States v. Olinger, 759 F.2d 1293 (7th Cir. 1985)
     url: https://static.case.law/f2d/759/html/1293-01.html
     publisher: US Court of Appeals for the Seventh Circuit (via Caselaw Access Project)
     date: '1985-04-15'
   - stance: supports
-    quote: >-
-      including the defendant Cusack, falsely registered to vote by claiming to
-      reside at addresses within the precinct when they actually resided
-      elsewhere. … Although the canvass disclosed that a number of persons who
-      were registered to vote in the precinct had died, moved away, or for some
-      other reason had become ineligible to vote, these persons were not struck
-      from the list of eligible voters. … Watson testified that on election day
-      the defendants gave her slips of paper with names on them and instructed
-      her to cast ballots for the straight Democratic ticket using these names,
-      and that over the course of the day she did fill out several ballot
-      applications and cast several ballots using these names.
+    quote: |-
+      including the defendant Cusack, falsely registered to vote by claiming to reside at addresses within the precinct when they actually resided elsewhere.
+
+      … The defendants, and several others acting under their direction, also participated in a canvass of the precinct during September and October 1982. Although the canvass disclosed that a number of persons who were registered to vote in the precinct had died, moved away, or for some other reason had become ineligible to vote, these persons were not struck from the list of eligible voters. Finally, on election day the defendants, either personally or by acting through others, caused numerous false ballots to be cast for the straight Democratic ticket.
+
+      … Watson testified that on election day the defendants gave her slips of paper with names on them and instructed her to cast ballots for the straight Democratic ticket using these names, and that over the course of the day she did fill out several ballot applications and cast several ballots using these names.
     title: United States v. Howard, 774 F.2d 838 (7th Cir. 1985)
     url: https://static.case.law/f2d/774/html/0838-01.html
     publisher: US Court of Appeals for the Seventh Circuit (via Caselaw Access Project)
@@ -105,20 +85,14 @@ sources:
     publisher: US Attorney's Office, Western District of Missouri
     date: '2015-02-26'
   - stance: supports
-    quote: >-
-      Hayde succeeded in getting upon the list about 150 “ghosts and sleepers”;
-      that late in October, 1936, Hayde asked Frances Ryan and Devoe how they
-      were going to handle the precinct with respect to the “ghosts and
-      sleepers” and whether they were going to send people to cast the “ghost
-      and sleeper” vote; that they told him that they were not sending
-      repeaters to the precinct, and that it would be easier to write in the
-      votes for the “ghosts and sleepers” … that he prepared the ballots for
-      the “ghosts and sleepers”, and, with some considerable difficulty,
-      succeeded in stuffing the ballot box with these votes; that the stuffing
-      was completed before the polls were closed; that the votes which had been
-      cast were not counted … The Republican candidate for Congress received in
-      fact 120 votes … His Democratic opponent was given 605 votes, when in fact
-      he received 515 votes. … The judgment is affirmed.
+    quote: |-
+      The ballots cast in that precinct were not counted. Republican candidates were awarded an average of 47 votes in the election returns. The Republican candidate for Congress received in fact 120 votes, while the election returns from the precinct gave him 46' votes. His Democratic opponent was given 605 votes, when in fact he received 515 votes.
+
+      … Hayde succeeded in getting upon the list about 150 “ghosts and sleepers”; that late in October, 1936, Hayde asked Frances Ryan and Devoe how they were going to handle the precinct with respect to the “ghosts and sleepers” and whether they were going to send people to cast the “ghost and sleeper” vote; that they told him that they were not sending repeaters to the precinct, and that it would be easier to write in the votes for the “ghosts and sleepers”
+
+      … that he prepared the ballots for the “ghosts and sleepers”, and, with some considerable difficulty, succeeded in stuffing the ballot box with these votes; that the stuffing was completed before the polls were closed; that the votes which had been cast were not counted
+
+      … The judgment is affirmed.
     title: Devoe v. United States, 103 F.2d 584 (8th Cir. 1939)
     url: https://static.case.law/f2d/103/html/0584-01.html
     publisher: US Court of Appeals for the Eighth Circuit (via Caselaw Access Project)
@@ -155,16 +129,14 @@ sources:
     publisher: US District Court, Western District of Missouri (via Caselaw Access Project)
     date: '1937-06-29'
   - stance: supports
-    quote: >-
-      were judges of election at different voting precincts in the city of
-      Baltimore, at the election held in that city, and in the State of
-      Maryland, on the fifth day of November, 1878, at which representatives to
-      the Forty-sixth Congress were voted for. … by then and there fraudulently
-      and clandestinely putting and placing in the ballot-box of the said
-      precinct twenty (and more) ballots … This charge, it will be observed, is
-      for the offence commonly known as “ stuffing the ballot-box. … upon which
-      indictments they were severally tried, convicted, and sentenced by said
-      court to fine and imprisonment.
+    quote: |-
+      The petitioners in this case, Albert Siebold, Walter Tucker, Martin C. Burns, Lewis Coleman, and Henry Bowers, were judges of election at different voting precincts in the city of Baltimore, at the election held in that city, and in the State of Maryland, on the fifth day of November, 1878, at which representatives to the Forty-sixth Congress were voted for.
+
+      At the November Term of the Circuit Court of the United States for the District of Maryland, an indictment against each of the petitioners- was found in said court, for offences alleged to have been committed by them respectively at their respective precincts whilst being such judges of election; upon which indictments they were severally tried, convicted, and sentenced by said court to fine and imprisonment.
+
+      … by then and there fraudulently and clandestinely putting and placing in the ballot-box of the said precinct twenty (and more) ballots
+
+      … This charge, it will be observed, is for the offence commonly known as “ stuffing the ballot-box.”
     title: Ex parte Siebold, 100 U.S. 371
     url: https://static.case.law/us/100/html/0371-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
@@ -174,26 +146,21 @@ sources:
       Infamous examples abound in the New York City elections of the late 19th
       century, conducted under the influence of the Tammany Hall political
       machine. “Big Tim” Sullivan, a New York state senator and — briefly—a
-      United States Congressman, insisted that his “repeaters” (individuals
-      paid to vote multiple times) have whiskers … M. Werner, Tammany Hall 439
-      (1928).
+      United States Congressman, insisted that his “repeaters” (individuals paid
+      to vote multiple times) have whiskers: “ ‘When you’ve voted ’em with their
+      whiskers on you take ’em to a barber and scrape off the chin-fringe. Then
+      you vote ’em again with side lilacs and a moustache. Then to a barber
+      again, off comes the sides and you vote ’em a third time with the
+      moustache. If that ain’t enough and the box can stand a few more ballots
+      clean off the moustache and vote ’em plain face. That makes every one of
+      ’em good for four votes.’ ” M. Werner, Tammany Hall 439 (1928).
     title: Crawford v. Marion County Election Board, 553 U.S. 181 (2008), lead opinion, note 11
     url: https://static.case.law/us/553/html/0181-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '2008-04-28'
   - stance: contests
-    quote: >-
-      The only kind of voter fraud that SEA 483 addresses is in-person voter
-      impersonation at polling places. The record contains no evidence of any
-      such fraud actually occurring in Indiana at any time in its history. … It
-      remains true, however, that flagrant examples of such fraud in other parts
-      of the country have been documented throughout this Nation’s history by
-      respected historians and journalists, that occasional examples have
-      surfaced in recent years, and that Indiana’s own experience with
-      fraudulent voting in the 2003 Democratic primary for East Chicago Mayor —
-      though perpetrated using absentee ballots and not in-person fraud —
-      demonstrate that not only is the risk of voter fraud real but that it
-      could affect the outcome of a close election.
+    quote: |-
+      The only kind of voter fraud that SEA 483 addresses is in-person voter impersonation at polling places. The record contains no evidence of any such fraud actually occurring in Indiana at any time in its history. Moreover, petitioners argue that provisions of the Indiana Criminal Code punishing such conduct as a felony provide adequate protection against the risk that such conduct will occur in the future. It remains true, however, that flagrant examples of such fraud in other parts of the country have been documented throughout this Nation’s history by respected historians and journalists, that occasional examples have surfaced in recent years, and that Indiana’s own experience with fraudulent voting in the 2003 Democratic primary for East Chicago Mayor — though perpetrated using absentee ballots and not in-person fraud — demonstrate that not only is the risk of voter fraud real but that it could affect the outcome of a close election.
     title: Crawford v. Marion County Election Board, 553 U.S. 181 (2008), lead opinion
     url: https://static.case.law/us/553/html/0181-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
@@ -205,60 +172,53 @@ sources:
       voter registration fraud, there remain scattered instances of in-person
       voter fraud. For example, after a hotly contested gubernatorial election
       in 2004, Washington conducted an investigation of voter fraud and
-      uncovered 19 “ghost voters.” … After a partial investigation of the ghost
-      voting, one voter was confirmed to have committed in-person voting fraud.
+      uncovered 19 “ghost voters.” Borders v. King Cty., No. 05-2-00027-3
+      (Super. Ct. Chelan Cty., Wash., June 6, 2005) (verbatim report of
+      unpublished oral decision), 4 Election L. J. 418,423 (2005). After a
+      partial investigation of the ghost voting, one voter was confirmed to have
+      committed in-person voting fraud.
     title: Crawford v. Marion County Election Board, 553 U.S. 181 (2008), lead opinion, note 12
     url: https://static.case.law/us/553/html/0181-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '2008-04-28'
   - stance: supports
-    quote: >-
-      The first charges a conspiracy of the two defendants, who were officers
-      and a majority of the county election board of Blaine County, Oklahoma, to
-      injure and oppress certain legally qualified electors … To that end, it is
-      alleged, the defendants agreed that irrespective of the precinct returns
-      being lawful and regular they would omit them from their count and from
-      their returns to the state election board. … Judgment reversed.
+    quote: |-
+      The first charges a conspiracy of the two defendants, who were officers and a majority of the county election board of Blaine County, Oklahoma, to injure and oppress certain legally qualified electors
+
+      … To that end, it is alleged, the defendants agreed that irrespective of the precinct returns being lawful and regular they would omit them from their count and from their returns to the state election board.
+
+      … Judgment reversed.
     title: United States v. Mosley, 238 U.S. 383 (1915)
     url: https://static.case.law/us/238/html/0383-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '1915-06-21'
   - stance: supports
-    quote: >-
-      The first count of the indictment alleged that a primary election was held
-      on September 10, 1940, for the purpose of nominating a candidate of … The
-      overt acts alleged were that the appellees altered eighty-three ballots
-      cast for one candidate and fourteen cast for another, marking and counting
-      .them as votes for a third candidate, and that they falsely certified the
-      number of votes cast for the respective candidates to the chairman of the
-      Second Congressional District Committee.
+    quote: |-
+      The first count of the indictment alleged that a primary election was held on September 10, 1940, for the purpose of nominating a candidate of tffe Democratic Party for the office of Representative in Congress for the Second Congressional District of Louisiana, to be chosen at an election to be held on November 10th; that in that dis-: trict nomination as a candidate of the Democratic Party is and always has been equivalent to an election; that appellees were Commissioners of Election, selected in accordance with the Louisiana law to conduct the primary in the Second Precinct of the Tenth Ward of New Orleans, in which there were five hundred and thirty-seven citizens and qualified voters.
+
+      The charge, based on these allegations, was that the appellees conspired with each other, and with others unknown, to injure and oppress citizens in the free exercise and enjoyment of rights and privileges secured to them by the Constitution and Laws of the United. States, namely, (1) the right of qualified voters who cast their ballots in the primary election to have their ballots counted as cast for the candidate of their choice, and (2) the right of the candidates to run for the office of Congressman and to have the votes in favor of their nomination counted as cast. The overt acts alleged were that the appellees altered eighty-three ballots cast for one candidate and fourteen cast for another, marking and counting .them as votes for a third candidate, and that they falsely certified the number of votes cast for the respective candidates to the chairman of the Second Congressional District Committee.
     title: United States v. Classic, 313 U.S. 299 (1941)
     url: https://static.case.law/us/313/html/0299-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '1941-05-26'
   - stance: supports
-    quote: >-
-      The indictment charged that a general election was held November 3, 1942,
-      in Harlan County, Kentucky, for the purpose of electing a Senator of the
-      United States, at which election the defendants served as the duly
-      qualified officers of election … The indictment charged that the
-      defendants, pursuant to their plan, tore from the official ballot book and
-      stub book furnished them, blank unvoted ballots and marked, forged, and
-      voted the same for the candidate of a given party … Reversed.
+    quote: |-
+      The indictment charged that a general election was held November 3, 1942, in Harlan County, Kentucky, for the purpose of electing a Senator of the United States, at which election the defendants served as the duly qualified officers of election
+
+      … The indictment charged that the defendants, pursuant to their plan, tore from the official ballot book and stub book furnished them, blank unvoted ballots and marked, forged, and voted the same for the candidate of a given party
+
+      … Reversed.
     title: United States v. Saylor, 322 U.S. 385 (1944)
     url: https://static.case.law/us/322/html/0385-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '1944-05-22'
   - stance: supports
-    quote: >-
-      The evidence at trial showed that by using the power of their office, the
-      petitioners convinced three election officials in charge of the Mount Gay
-      precinct in Logan County to cast false and fictitious votes on the voting
-      machines and then to destroy poll slips so that the number of persons who
-      had actually voted could not be determined except from the machine tally.
-      … On May 12, 1970, a primary election was held in West Virginia … Accordingly
-      we affirm the judgment of the Court of Appeals without passing on its
-      interpretation of § 241.
+    quote: |-
+      It now appears, however, that the out-of-court statements at issue were admissible under basic principles of the law of evidence and conspiracy, regardless of whether or not § 241 encompasses conspiracies to cast fraudulent votes in state and local elections. Accordingly we affirm the judgment of the Court of Appeals without passing on its interpretation of § 241.
+
+      … On May 12, 1970, a primary election was held in West Virginia for the purpose of nominating candidates for the United States Senate, United States House of Representatives, and various state and local offices.
+
+      … The evidence at trial showed that by using the power of their office, the petitioners convinced three election officials in charge of the Mount Gay precinct in Logan County to cast false and fictitious votes on the voting machines and then to destroy poll slips so that the number of persons who had actually voted could not be determined except from the machine tally.
     title: Anderson v. United States, 417 U.S. 211 (1974)
     url: https://static.case.law/us/417/html/0211-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
@@ -288,61 +248,38 @@ sources:
     publisher: JSTOR Daily
     date: '2016-12-02'
   - stance: supports
-    quote: >-
-      Alice Mae Yarborough and her daughter Vernie Mae Yarborough pled guilty to
-      one count of multiple voting in the June 8, 1982 primary election in
-      Darlington County, South Carolina … In Statesville, North Carolina, five
-      defendants were convicted and sentenced for their roles in subverting the
-      1982 general election in Alexander County, North Carolina. … The Yarboroughs were poil officials
-      who utilized their access to the poll list an voting machine to forge
-      voter's names and vote numerous ballots for "no show" voters during the
-      election. … The indictment alleged that the defendants defrauded the
-      voters of Luzerne County of their right to fair and non-corrupt elections
-      by submitting false and fraudulent absentee ballot materials. … A federal
-      jury had convicted four of the defendants of mail fraud, conspiracy, and
-      multiple-voting for their fraudulent voting of absentee ballots of nursing
-      home residents. … The lead defendants, Deputy Sheriff Mark Douglas Odom
-      and Deputy Clerk of Court Joyce Geraldine Beach … In Bryson City, North
-      Carolina, eight defendants were convicted and sentenced for their roles in
-      subverting the November 1982 election in Clay County, North Carolina. The
-      trial evidence showed a massive vote-buying scheme, with the detendants
-      purchasing votes for the Democratic Party slate at prices ranging between
-      $50 and $125 per voter. … Former Republican Sheriff Hartsell Moore, who
-      was defeated by Barnard in his 1982 reelection effort, received a prison
-      term of 15 months and a $2,000 fine on his guilty plea to two counts of
-      vote-buying. … a successful scheme to fraudulently affect the outcome of a
-      close legislative contest for Missouri State Representative in 1980.
+    quote: |-
+      E. ELECTION FRAUD CASES
+
+      - Alice Mae Yarborough and her daughter Vernie Mae Yarborough pled guilty to one count of multiple voting in the June 8, 1982 primary election in Darlington County, South Carolina, in violation of 42 U.S.C. §l973i(e). The Yarboroughs were poil officials who utilized their access to the poll list an voting machine to forge voter's names and vote numerous ballots for "no show" voters during the election.
+      - … Sorkis Webbe, Sr., his son Sorkis Webbe, Jr. and four other individuals were indicted for vote fraud and obstruction offenses arising out of a successful scheme to fraudulently affect the outcome of a close legislative contest for Missouri State Representative in 1980.
+      - … A federal jury in Scranton, Pennsylvania returned judgments of conviction in the vote-fraud trial of Bob A. Clapps and Robert T. Powell. … The indictment alleged that the defendants defrauded the voters of Luzerne County of their right to fair and non-corrupt elections by submitting false and fraudulent absentee ballot materials.
+      - … In Statesville, North Carolina, five defendants were convicted and sentenced for their roles in subverting the 1982 general election in Alexander County, North Carolina. A federal jury had convicted four of the defendants of mail fraud, conspiracy, and multiple-voting for their fraudulent voting of absentee ballots of nursing home residents. The fifth defendant had pled guilty to a charge of multiple-voting (42 U.S.C. §1973i(e)), and had testified for the Government during the trial of her co-conspirators. The lead defendants, Deputy Sheriff Mark Douglas Odom and Deputy Clerk of Court Joyce Geraldine Beach, each received a sentence of five years' imprisonment for their convictions on twenty-eight counts of mail fraud, and a concurrent five-year term on their convictions for conspiracy and multiple-voting.
+      - In Bryson City, North Carolina, eight defendants were convicted and sentenced for their roles in subverting the November 1982 election in Clay County, North Carolina.
+
+      The trial evidence showed a massive vote-buying scheme, with the detendants purchasing votes for the Democratic Party slate at prices ranging between $50 and $125 per voter.
+
+      … Former Republican Sheriff Hartsell Moore, who was defeated by Barnard in his 1982 reelection effort, received a prison term of 15 months and a $2,000 fine on his guilty plea to two counts of vote-buying.
     title: Report to Congress on the Activities and Operations of the Public Integrity Section for 1983
     url: https://www.justice.gov/media/1106971/dl?inline
     publisher: US Department of Justice, Public Integrity Section
     date: '1984-04'
   - stance: supports
-    quote: >-
-      On one occasion Wellington Hamilton Lemmer (a campaign worker for the
-      Seventh Ward Organization and a confidential government informant)
-      entered Webbe’s office at the Seventh Ward Organization. Lemmer saw Webbe,
-      Townsley (a close associate of Webbe, Jr. and an integral member of the
-      Seventh Ward Organization) and two others with opened absentee ballots and
-      observed that they were punching holes in the ballots. … For reasons to be
-      stated, we affirm in part, reverse in part, and remand for further
-      proceedings consistent with this opinion.
+    quote: |-
+      This appeal followed. For reasons to be stated, we affirm in part, reverse in part, and remand for further proceedings consistent with this opinion.
+
+      … On one occasion Wellington Hamilton Lemmer (a campaign worker for the Seventh Ward Organization and a confidential government informant) entered Webbe’s office at the Seventh Ward Organization. Lemmer saw Webbe, Townsley (a close associate of Webbe, Jr. and an integral member of the Seventh Ward Organization) and two others with opened absentee ballots and observed that they were punching holes in the ballots.
     title: United States v. Townsley, 843 F.2d 1070 (8th Cir. 1988)
     url: https://static.case.law/f2d/843/html/1070-01.html
     publisher: US Court of Appeals for the Eighth Circuit (via Caselaw Access Project)
     date: '1988-03-25'
   - stance: supports
-    quote: >-
-      Of the 8,227 votes personally cast on election day, Pabey received 199
-      more votes than Pastrick. But of the 1,950 absentee ballots, Pastrick
-      defeated Pabey by 477 votes … their unauthorized possession of completed
-      ballots [a species of vote fraud defined by Ind.Code 3-14-2-16(4) and (5)
-      ], the unauthorized possession of unmarked ballots [a species of "vote
-      fraud" per Ind.Code 3-14-2-16(6) ], their presence while voters marked and
-      completed their absentee ballots … and the direct solicitation of a vote
-      for cash all yielded absentee votes which respondent Pastrick concedes are
-      invalid. … We reverse the trial court's determination denying a special
-      election and remand to the trial court with directions to promptly order a
-      special election
+    quote: |-
+      Of the 8,227 votes personally cast on election day, Pabey received 199 more votes than Pastrick. But of the 1,950 absentee ballots, Pastrick defeated Pabey by 477 votes
+
+      … [The commission of eriminal acts by Pastrick supporters that included such activity as their unauthorized possession of completed ballots [a species of vote fraud defined by Ind.Code 3-14-2-16(4) and (5) ], the unauthorized possession of unmarked ballots [a species of "vote fraud" per Ind.Code 3-14-2-16(6) ], their presence while voters marked and completed their absentee ballots [a species of 'vote fraud' per Ind.Code 3-14-2-16(8) and a violation of Indiana Code 3-11-10-1.51, and the direct solicitation of a vote for cash all yielded absentee votes which respondent Pastrick concedes are invalid.
+
+      … We reverse the trial court's determination denying a special election and remand to the trial court with directions to promptly order a special election
     title: Pabey v. Pastrick, 816 N.E.2d 1138 (Ind. 2004)
     url: https://static.case.law/ne2d/816/html/1138-01.html
     publisher: Supreme Court of Indiana (via Caselaw Access Project)
@@ -356,19 +293,14 @@ sources:
     publisher: NBC News
     date: '2008-10-16'
   - stance: supports
-    quote: >-
-      After the 2018 General Election, districtwide, the apparent results of
-      CD-9 were as follows: Harris 139,246, McCready 138,341, and Scott 5,130.
-      Accordingly, Harris led by a margin of 905 votes, or 0.3% of the total
-      number of votes tallied. … Dowless hired workers he paid in cash to
-      collect absentee request forms, to collect absentee ballots, and to
-      falsify absentee ballot witness certifications. … such as falsely
-      witnessing ballots, filling out ballots, and tracing over signatures of
-      witnesses to match the ink color of the voter. … the 2018 General
-      Election for North Carolina’s 9th Congressional District was corrupted by
-      fraud, improprieties, and irregularities so pervasive that its results are
-      tainted as the fruit of an operation manifestly unfair to the voters and
-      corrosive to our system of representative government.
+    quote: |-
+      And yet, the substantial record before the State Board of Elections in this case lead this Board to unanimously conclude that the 2018 General Election for North Carolina’s 9th Congressional District was corrupted by fraud, improprieties, and irregularities so pervasive that its results are tainted as the fruit of an operation manifestly unfair to the voters and corrosive to our system of representative government.
+
+      … After the 2018 General Election, districtwide, the apparent results of CD-9 were as follows: Harris 139,246, McCready 138,341, and Scott 5,130. Accordingly, Harris led by a margin of 905 votes, or 0.3% of the total number of votes tallied.
+
+      … Other candidates and organizations, including but not limited to Bladen County Sheriff candidate James McVicker, paid Dowless for absentee ballot operations during the 2018 elections. Dowless hired workers he paid in cash to collect absentee request forms, to collect absentee ballots, and to falsify absentee ballot witness certifications. Initially, Dowless told workers he would pay them $150.00 per 50 absentee ballot request forms collected and $125.00 per 50 absentee ballots collected, but he also sometimes paid other amounts per ballot or a flat weekly rate.
+
+      … Dowless was careful to keep an arms’ length distance from certain actions he directed his workers to do, such as falsely witnessing ballots, filling out ballots, and tracing over signatures of witnesses to match the ink color of the voter.
     title: Order in the Matter of Investigation of Election Irregularities Affecting Counties Within the 9th Congressional District
     url: https://www.democracydocket.com/wp-content/uploads/2020/08/North-Carolina-Election-Contest-Order_03132019-1.pdf
     publisher: North Carolina State Board of Elections
@@ -415,43 +347,35 @@ sources:
     publisher: New Jersey Globe
     date: '2026-05-15'
   - stance: supports
-    quote: >-
-      A News21 analysis of 2,068 alleged election-fraud cases since 2000 shows
-      that while fraud has occurred, the rate is infinitesimal, and in-person
-      voter impersonation on Election Day, which prompted 37 state legislatures
-      to enact or consider tough voter ID laws, is virtually non-existent. …
-      Analysis of the resulting comprehensive News21 election fraud database
-      turned up 10 cases of voter impersonation. … There is more fraud in
-      absentee ballots and voter registration than any other categories. The
-      analysis shows 491 cases of absentee ballot fraud and 400 cases of
-      registration fraud. A required photo ID at the polls would not have
-      prevented these cases. … Of reported election-fraud allegations in the
-      database whose resolution could be determined, 46 percent resulted in
-      acquittals, dropped charges or decisions not to bring charges.
+    quote: |-
+      A News21 analysis of 2,068 alleged election-fraud cases since 2000 shows that while fraud has occurred, the rate is infinitesimal, and in-person voter impersonation on Election Day, which prompted 37 state legislatures to enact or consider tough voter ID laws, is virtually non-existent.
+
+      In an exhaustive public records search, News21 reporters sent thousands of requests to elections officers in all 50 states, asking for every case of fraudulent activity including registration fraud, absentee ballot fraud, vote buying, false election counts, campaign fraud, casting an ineligible vote, voting twice, voter impersonation fraud and intimidation.
+
+      … Analysis of the resulting comprehensive News21 election fraud database turned up 10 cases of voter impersonation.
+
+      … There is more fraud in absentee ballots and voter registration than any other categories. The analysis shows 491 cases of absentee ballot fraud and 400 cases of registration fraud. A required photo ID at the polls would not have prevented these cases.
+
+      … Of reported election-fraud allegations in the database whose resolution could be determined, 46 percent resulted in acquittals, dropped charges or decisions not to bring charges.
     title: Comprehensive Database of U.S. Voter Fraud Uncovers No Evidence That Photo ID Is Needed
     url: https://votingrights.news21.com/article/election-fraud/
     publisher: News21
     date: '2012-08-12'
   - stance: supports
-    quote: >-
-      requirements to show ID at the polls are designed for pretty much one
-      thing: people showing up at the polls pretending to be somebody else … I
-      track any specific, credible allegation that someone may have pretended to
-      be someone else at the polls, in any way that an ID law could fix. So far,
-      I’ve found about 31 different incidents (some of which involve multiple
-      ballots) since 2000, anywhere in the country. … In general and primary
-      elections alone, more than 1 billion ballots were cast in that period.
+    quote: |-
+      requirements to show ID at the polls are designed for pretty much one thing: people showing up at the polls pretending to be somebody else
+
+      … I track any specific, credible allegation that someone may have pretended to be someone else at the polls, in any way that an ID law could fix. So far, I’ve found about 31 different incidents (some of which involve multiple ballots) since 2000, anywhere in the country.
+
+      … In general and primary elections alone, more than 1 billion ballots were cast in that period.
     title: A comprehensive investigation of voter impersonation finds 31 credible incidents out of one billion ballots cast
     url: https://www.washingtonpost.com/news/wonk/wp/2014/08/06/a-comprehensive-investigation-of-voter-impersonation-finds-31-credible-incidents-out-of-one-billion-ballots-cast/
     publisher: The Washington Post (Justin Levitt)
     date: '2014-08-06'
   - stance: complicates
-    quote: >-
-      id,full_name,year,outcome,source,case_type,fraud_type,fraud_type_code,state
-      … Barry Morphew was charged with one count of forgery and one count of a
-      mail-in ballot offense after submitting a completed absentee ballot on
-      behalf of his missing wife during the 2020 general election in Chaffee
-      County.
+    quote: |-
+      id | full_name | year | outcome | source | case_type | fraud_type | fraud_type_code | state
+      200330 | Barry Morphew | 2022 | Barry Morphew was charged with one count of forgery and one count of a mail-in ballot offense after submitting a completed absentee ballot on behalf of his missing wife during the 2020 general election in Chaffee County. Morphew told the FBI he submitted the fraudulent ballot because he "wanted Trump to win." He pleaded guilty to one felony charge of forgery and was sentenced to one year of probation. He was also fined and assessed court costs of $600. | https://herit.ag/3dwxSnD,https://herit.ag/3A0olNf | Criminal Conviction | Fraudulent use of absentee ballots ,Impersonation at the polls | FUAB, IFAP | CO
     title: Election Fraud Map cases (data file vfdb.csv, archived 27 July 2026)
     url: https://electionfraud.heritage.org/
     fileUrl: https://web.archive.org/web/20260727163153/https://electionfraud.heritage.org/static/data/vfdb.csv
@@ -471,34 +395,27 @@ sources:
     publisher: The Heritage Foundation
     date: '2025-12-12'
   - stance: complicates
-    quote: >-
-      There is no evidence of extensive fraud in U.S. elections or of multiple
-      voting, but both occur, and it could affect the outcome of a close
-      election. … A good ID system could deter, detect, or eliminate several
-      potential avenues of fraud— such as multiple voting or voting by
-      individuals using the identities of others or those who are deceased — and
-      thus it can enhance confidence. … Absentee ballots remain the largest
-      source of potential voter fraud.
+    quote: |-
+      There is no evidence of extensive fraud in U.S. elections or of multiple voting, but both occur, and it could affect the outcome of a close election.
+
+      … The problem, however, is not the magnitude of the fraud. In close or disputed elections, and there are many, a small amount of fraud could make the margin of difference. And second, the perception of possible fraud contributes to low confidence in the system. A good ID system could deter, detect, or eliminate several potential avenues of fraud— such as multiple voting or voting by individuals using the identities of others or those who are deceased — and thus it can enhance confidence. We view the other concerns about IDs — that they could disenfranchise eligible voters, have an adverse effect on minorities, or be used to monitor behavior — as serious and legitimate, and our proposal below aims to address each concern.
+
+      … Absentee ballots remain the largest source of potential voter fraud.
     title: Building Confidence in U.S. Elections
     url: https://eac.gov/sites/default/files/eac_assets/1/6/Exhibit%20M.PDF
     publisher: Commission on Federal Election Reform (Carter–Baker)
     date: '2005-09'
   - stance: supports
-    quote: >-
-      beginning with the adoption of the Louisiana Constitution of 1898, when
-      approximately 44% of all the registered voters in the State were Negroes,
-      the State had put into effect a successful policy of denying Negro
-      citizens the right to vote because of their race. … From the adoption of
-      the 1921 interpretation test until 1944, the District Court’s opinion
-      stated, the percentage of registered voters in Louisiana who were Negroes
-      never exceeded one percent. … in the next dozen years the proportion of
-      registered voters who were Negroes rose from two-tenths of one percent to
-      approximately 15% by March 1956. … The committee and the Citizens Councils
-      also began a wholesale challenging of Negro names already on the voting
-      rolls, with the result that thousands of Negroes, but virtually no whites,
-      were purged from the rolls of voters. … The interpretation test, the court
-      found, vested in the voting registrars a virtually uncontrolled discretion
-      as to who should vote and who should not.
+    quote: |-
+      beginning with the adoption of the Louisiana Constitution of 1898, when approximately 44% of all the registered voters in the State were Negroes, the State had put into effect a successful policy of denying Negro citizens the right to vote because of their race. The 1898 constitution adopted what was known as a “grandfather clause,” which imposed burdensome requirements for registration thereafter but exempted from these future requirements any person who had been entitled to vote before January 1, 1867, or who was the son or grandson of such a person.
+
+      … From the adoption of the 1921 interpretation test until 1944, the District Court’s opinion stated, the percentage of registered voters in Louisiana who were Negroes never exceeded one percent.
+
+      … The white primary system had been so effective in barring Negroes from voting that the “interpretation test” as a disfranchising device had been ignored over the years. Many registrars continued to ignore it after 1944, and in the next dozen years the proportion of registered voters who were Negroes rose from two-tenths of one percent to approximately 15% by March 1956. This fact, coupled with this Court’s 1954 invalidation of laws requiring school segregation, prompted the State to try new devices to keep the white citizens in control.
+
+      … The committee and the Citizens Councils also began a wholesale challenging of Negro names already on the voting rolls, with the result that thousands of Negroes, but virtually no whites, were purged from the rolls of voters.
+
+      … The interpretation test, the court found, vested in the voting registrars a virtually uncontrolled discretion as to who should vote and who should not.
     title: Louisiana v. United States, 380 U.S. 145 (1965)
     url: https://static.case.law/us/380/html/0145-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
@@ -518,16 +435,18 @@ sources:
     date: '1966-03-07'
   - stance: supports
     quoteUnit: '%'
-    quote: >-
-      The following chart, compiled from the Senate and House Reports, compares
-      voter registration numbers from 1965 to those from 2004 in the six
-      originally covered States. These are the numbers that were before Congress
-      when it reauthorized the Act in 2006: 1965 2004 White Black Gap White Black
-      Gap Alabama 69.2 19.3 49.9 73.8 72.9 0.9 Georgia 62.[6] 27.4 35.2 63.5
-      64.2 -0.7 Louisiana 80.5 31.6 48.9 75.1 71.1 4.0 Mississippi 69.9 6.7 63.2
-      72.3 76.1 -3.8 South 75.7 37.3 38.4 74.4 71.1 3.3 Carolina Virginia 61.1
-      38.3 22.8 68.2 57.4 10.8 … There is no doubt that these improvements are
-      in large part because of the Voting Rights Act.
+    quote: |-
+      The following chart, compiled from the Senate and House Reports, compares voter registration numbers from 1965 to those from 2004 in the six originally covered States. These are the numbers that were before Congress when it reauthorized the Act in 2006:
+
+      | 1965 White | 1965 Black | 1965 Gap | 2004 White | 2004 Black | 2004 Gap
+      Alabama | 69.2 | 19.3 | 49.9 | 73.8 | 72.9 | 0.9
+      Georgia | 62.[6] | 27.4 | 35.2 | 63.5 | 64.2 | -0.7
+      Louisiana | 80.5 | 31.6 | 48.9 | 75.1 | 71.1 | 4.0
+      Mississippi | 69.9 | 6.7 | 63.2 | 72.3 | 76.1 | -3.8
+      South Carolina | 75.7 | 37.3 | 38.4 | 74.4 | 71.1 | 3.3
+      Virginia | 61.1 | 38.3 | 22.8 | 68.2 | 57.4 | 10.8
+
+      … There is no doubt that these improvements are in large part because of the Voting Rights Act.
     title: Shelby County v. Holder, 570 U.S. 529 (2013)
     url: https://static.case.law/us/570/html/0529-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
@@ -562,49 +481,34 @@ sources:
     publisher: US Department of Justice, Civil Rights Division
     date: '2024-08-15'
   - stance: supports
-    quote: >-
-      State attempts to standardize the ballots were easily thwarted — the vote
-      buyer could simply place a ballot in the hands of the bribed voter and
-      watch until he placed it in the polling box. … After several failed
-      attempts to adopt the Australian system in Michigan and Wisconsin, the
-      Louisville, Kentucky, municipal government, the Commonwealth of
-      Massachusetts, and the State of New York adopted the Australian system in
-      1888. … By 1896, almost 90 percent of the States had adopted the
-      Australian system. … Commentators argued that it would diminish the
-      growing evil of bribery by removing the knowledge of whether it had been
-      successful.
+    quote: |-
+      State attempts to standardize the ballots were easily thwarted — the vote buyer could simply place a ballot in the hands of the bribed voter and watch until he placed it in the polling box.
+
+      … Many articles were written praising its usefulness in preventing bribery, intimidation, disorder, and inefficiency at the polls. Commentators argued that it would diminish the growing evil of bribery by removing the knowledge of whether it had been successful.
+
+      … After several failed attempts to adopt the Australian system in Michigan and Wisconsin, the Louisville, Kentucky, municipal government, the Commonwealth of Massachusetts, and the State of New York adopted the Australian system in 1888.
+
+      … The triumphs of 1888 set off a rapid and widespread adoption of the Australian system in the United States. By 1896, almost 90 percent of the States had adopted the Australian system.
     title: Burson v. Freeman, 504 U.S. 191 (1992), plurality opinion
     url: https://static.case.law/us/504/html/0191-01.html
     publisher: Supreme Court of the United States (via Caselaw Access Project)
     date: '1992-05-26'
   - stance: supports
-    quote: >-
-      The first list DBT Online provided to the Division of Elections in April
-      2000 contained the names of 181,157 possible duplicate registrants,
-      deceased persons, and felons without civil rights restoration.
-      Approximately 65,776 of those included on the first list were identified
-      as felons. In May 2000, DBT discovered that approximately 8,000 names were
-      erroneously placed on the exclusion list. … For example, in Miami-Dade
-      County, over half of the African Americans who appealed from the Florida
-      felon exclusion list were successfully reinstated to the voter rolls. … In
-      Leon County, the supervisor of elections was provided a list of nearly
-      700 names to purge from the voting rolls. Yet the Supervisor could only
-      confirm 34 as actual felons (St. Pete Times, 12/6/00).
+    quote: |-
+      Moreover, African Americans have a better chance of erroneously appearing on the Florida felon exclusion list. For example, in Miami-Dade County, over half of the African Americans who appealed from the Florida felon exclusion list were successfully reinstated to the voter rolls.
+
+      … The first list DBT Online provided to the Division of Elections in April 2000 contained the names of 181,157 possible duplicate registrants, deceased persons, and felons without civil rights restoration. Approximately 65,776 of those included on the first list were identified as felons. In May 2000, DBT discovered that approximately 8,000 names were erroneously placed on the exclusion list.
+
+      … In Leon County, the supervisor of elections was provided a list of nearly 700 names to purge from the voting rolls. Yet the Supervisor could only confirm 34 as actual felons (St. Pete Times, 12/6/00).
     title: 'Voting Irregularities in Florida During the 2000 Presidential Election, Chapter 5: The Reality of List Maintenance'
     url: https://www.usccr.gov/files/pubs/vote2000/report/ch5.htm
     publisher: US Commission on Civil Rights
     date: '2001-06'
   - stance: supports
-    quote: >-
-      a) the 2000 felons’ exclusion list had a considerable number of errors in
-      it, probably more than 25% of the names on the list were on there in
-      error; b) these errors were racially biased, such that more
-      African-American registered voters were on the list in error than either
-      Whites or Latinos; and c) that the decentralized process by which the
-      felons’ list was used to purge the voter rolls resulted in a sometimes
-      judicious but sometimes partisan purging process – Democratic county
-      supervisors were less likely to use the felons’ list than Republican ones,
-      but even the latter found considerable, biased errors in the list.
+    quote: |-
+      - a) the 2000 felons’ exclusion list had a considerable number of errors in it, probably more than 25% of the names on the list were on there in error;
+      - b) these errors were racially biased, such that more African-American registered voters were on the list in error than either Whites or Latinos; and
+      - c) that the decentralized process by which the felons’ list was used to purge the voter rolls resulted in a sometimes judicious but sometimes partisan purging process – Democratic county supervisors were less likely to use the felons’ list than Republican ones, but even the latter found considerable, biased errors in the list.
     title: 'Databases, Felons, and Voting: Errors and Bias in the Florida Felons Exclusion List in the 2000 Presidential Elections (RWP02-041)'
     url: https://www.hks.harvard.edu/publications/databases-felons-and-voting-errors-and-bias-florida-felons-exclusion-list-2000
     publisher: Harvard Kennedy School (Guy Stuart)
@@ -619,14 +523,12 @@ sources:
     publisher: Manhattan Institute
     date: '2001-06-27'
   - stance: complicates
-    quote: >-
-      On the final day of voter registration in Georgia, a report from The
-      Associated Press found the Georgia Secretary of State’s office has more
-      than 53,000 voter registrations on hold under the state’s “exact match”
-      law. … the AP’s analysis of the applications found nearly 70 percent of
-      those on hold are black. … If you do not mail in your proper
-      identification before Nov. 6, you can verify your information using your
-      driver’s license or state photo ID at the polls.
+    quote: |-
+      On the final day of voter registration in Georgia, a report from The Associated Press found the Georgia Secretary of State’s office has more than 53,000 voter registrations on hold under the state’s “exact match” law.
+
+      … the AP’s analysis of the applications found nearly 70 percent of those on hold are black.
+
+      … If you do not mail in your proper identification before Nov. 6, you can verify your information using your driver’s license or state photo ID at the polls.
     title: Why Are 53,000 Voter Registrations On Hold In Georgia?
     url: https://www.gpb.org/news/2018/10/24/why-are-53000-voter-registrations-on-hold-in-georgia
     publisher: Georgia Public Broadcasting
@@ -644,8 +546,9 @@ sources:
     date: '2022-06-18'
   - stance: complicates
     quote: >-
-      two Republican Cochise supervisors in November 2022 to vote to delay the
-      certification of the county’s midterm election results past the legal
+      Claims that the labs that test voting systems aren’t properly accredited
+      have circulated for years. They’re part of what led two Republican Cochise
+      supervisors in November 2022 to vote to delay the certification of the county’s midterm election results past the legal
       deadline. A judge later ordered the supervisors to certify the election.
       A year after their vote to delay the certification, a state grand jury
       indicted the two supervisors, Tom Crosby and Peggy Judd, on charges of

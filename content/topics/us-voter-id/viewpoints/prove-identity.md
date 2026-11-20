@@ -8,15 +8,11 @@ An election should be decided by the people allowed to vote, each voting once. T
 
 ### Fraud at the polls has happened, and ID checks are built to stop it
 
-The record holds the fraud an ID check is aimed at: [people voted several times, or in other people's names](#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting). [Frauds in Kansas City and Chicago led to hundreds of convictions](#fact-election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted). A bipartisan commission [said good ID could deter it](#fact-election-fraud-and-voter-exclusion-history/carter-baker-id-deters).
-
-While [14 of the 20 recorded cases were done by officials or by mail](#fact-election-fraud-and-voter-exclusion-history/officials-or-mail), those routes need guarding too. That is no reason to leave the polls open. And the cases on record are only the ones that were caught.
+The record holds the fraud an ID check is aimed at: [people voted several times, or in other people's names](#fact-election-fraud-and-voter-exclusion-history/in-person-ghost-voting). [Frauds in Kansas City and Chicago led to hundreds of convictions](#fact-election-fraud-and-voter-exclusion-history/machine-fraud-real-and-prosecuted). A bipartisan commission [said good ID could deter it](#fact-election-fraud-and-voter-exclusion-history/carter-baker-id-deters). While [14 of the 20 recorded cases were done by officials or by mail](#fact-election-fraud-and-voter-exclusion-history/officials-or-mail), that is a reason to guard those routes too, not to leave the polls open.
 
 ### State reviews keep finding non-citizens on voter lists
 
-Only citizens may vote. Yet [all five state reviews charted found or suspected non-citizens on the voter list](#fact-non-citizens-on-voter-rolls/found-on-rolls). [Ohio referred apparent non-citizens for prosecution in 2019, 2021, 2022 and 2024](#fact-non-citizens-on-voter-rolls/ohio-recurs).
-
-[The federal registration form asks people only to swear that they are citizens](#fact-federal-and-state-power-over-voting-rules/federal-form-sworn-citizenship). [The reviews that give a cause trace non-citizens on the lists to mistakes](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls). Those are failures of the check at registration, so that is where to fix them.
+Only citizens may vote. Yet [all five state reviews charted found or suspected non-citizens on the voter list](#fact-non-citizens-on-voter-rolls/found-on-rolls). [Ohio referred apparent non-citizens for prosecution in 2019, 2021, 2022 and 2024](#fact-non-citizens-on-voter-rolls/ohio-recurs). [The reviews that give a cause trace non-citizens on the lists to mistakes](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls), and [the federal registration form asks people only to swear that they are citizens](#fact-federal-and-state-power-over-voting-rules/federal-form-sworn-citizenship). So the check at registration is where to fix them.
 
 ### Even a few illegal votes matter when races turn on a handful
 
@@ -26,15 +22,11 @@ Only citizens may vote. Yet [all five state reviews charted found or suspected n
 
 ### Few citizens lack photo ID, and strict ID laws show no clear effect on turnout
 
-[Very few citizens have no photo ID at all; many more just have a licence with an old address](#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id). [A national study found strict ID laws had no clear effect on registration or turnout](#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect).
-
-The same study found [no extra effect on non-white voters compared with white voters](#fact-burdens-of-id-and-citizenship-rules/no-extra-effect-non-white). [Northern Ireland brought in ID after organised voting in other people's names](#fact-voter-id-rules-in-the-us-and-abroad/northern-ireland-after-personation). [There was no evidence of a fall in turnout once it required photo ID](#fact-voter-id-rules-in-the-us-and-abroad/ni-after-photo-id).
+[Very few citizens have no photo ID at all; many more just have a licence with an old address](#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id). [A national study found strict ID laws had no clear effect on registration or turnout](#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect). It also found [no extra effect on non-white voters compared with white voters](#fact-burdens-of-id-and-citizenship-rules/no-extra-effect-non-white).
 
 ### Most Americans, in both parties, back photo ID
 
-[Large majorities in both parties support photo ID](#fact-opinion-and-confidence-in-elections/photo-id-majorities). So do [at least seven in ten people in every racial group Pew reports](#fact-opinion-and-confidence-in-elections/photo-id-across-races). A rule this widely backed is not one side's weapon.
-
-[83% of adults favour proof of citizenship when people first register](#fact-opinion-and-confidence-in-elections/proof-of-citizenship-support). The Supreme Court upheld Indiana's ID law, [accepting preventing fraud and keeping public trust as "sufficiently strong" reasons](#fact-federal-and-state-power-over-voting-rules/crawford-upheld-photo-id). While [studies disagree on whether strict ID raises trust](#fact-opinion-and-confidence-in-elections/studies-disagree), [one found it did raise trust in state elections](#fact-opinion-and-confidence-in-elections/milyo-finds-effect).
+[Large majorities in both parties support photo ID](#fact-opinion-and-confidence-in-elections/photo-id-majorities). So do [at least seven in ten people in every racial group Pew reports](#fact-opinion-and-confidence-in-elections/photo-id-across-races), and [83% of adults favour proof of citizenship when people first register](#fact-opinion-and-confidence-in-elections/proof-of-citizenship-support). A rule this widely backed is not one side's weapon.
 
 ### So states should ask for free photo ID and check citizenship against records
 

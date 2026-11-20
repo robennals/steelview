@@ -47,8 +47,8 @@ import {
   SIDE_BY_SIDE_QUOTES,
   type FigureContext,
 } from '@/lib/content/figure-props';
-import { factSlides, type PreviewSlide } from '@/lib/content/preview';
-import { factCitations, markedObservations } from '@/lib/content/walkthrough';
+import type { PreviewSlide } from '@/lib/content/preview';
+import { markedObservations, slideCitations } from '@/lib/content/walkthrough';
 import { factSources, seriesSourceOffset } from '@/lib/content/sources';
 import { componentFigure } from '@/lib/content/types';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
@@ -63,13 +63,7 @@ export type FigurePage = {
   slug: string;
   /** The topic's `lastUpdated`: where a period still in force stops. */
   asOf?: string;
-  /** The topic's facts, so a claim check's evidence link lands on the right page. */
-  facts: Pick<Fact, 'id' | 'supports'>[];
-  /**
-   * Every quote in the topic (`topicQuotes`), given to a panel: its list of
-   * quotes is the topic's whole collection, not one report's. A report's own
-   * page leaves it out and lists only its own.
-   */
+  /** Every quote in the topic (`topicQuotes`): a list of quotes is the topic's whole collection, not one report's. */
   quotes?: Quote[];
 };
 
@@ -96,20 +90,9 @@ export function PanelChart({ slide, page }: { slide: PreviewSlide; page: FigureP
   return figure ? <FactFigure figure={figure} context={figureContext(fact, page.asOf, { panel: true })} page={page} /> : null;
 }
 
-/**
- * Every chart of a data panel in full, in step order, each with its sources
- * row. `addressed`, on a report's own page, gives each source its address, on
- * the first chart to cite it, so a link to it lands without script.
- */
-export function panelCharts(fact: Fact, page: FigurePage, { addressed = false } = {}): ReactNode[] {
-  const slides = factSlides(page.slug, fact);
-  const citations = factCitations(fact, slides);
-  const placed = new Set<number>();
-  return slides.map((slide, i) => {
-    const anchored = addressed ? citations[i].filter(number => !placed.has(number)) : [];
-    anchored.forEach(number => placed.add(number));
-    return <SourcesSlot key={i} row={<ChartSources fact={fact} numbers={citations[i]} anchored={anchored} />}><PanelChart slide={slide} page={page} /></SourcesSlot>;
-  });
+/** Charts of a collection in full, in the order given, each with its sources row. */
+export function panelCharts(fact: Fact, page: FigurePage, slides: PreviewSlide[]): ReactNode[] {
+  return slides.map((slide, i) => <SourcesSlot key={i} row={<ChartSources fact={fact} numbers={slideCitations(fact, slide)} />}><PanelChart slide={slide} page={page} /></SourcesSlot>);
 }
 
 /** One library figure: the adapter's props into its component. */
@@ -167,7 +150,7 @@ export function FactFigure({ figure, context, page }: { figure: ComponentFigure;
     case 'claimCheck':
       return (
         <ReportFigure id={figureDomId(context.fact, figure.id)} panel={context.panel}>
-          <ClaimCheck {...claimCheckProps(figure, { ...context, slug: page.slug, facts: page.facts })} />
+          <ClaimCheck {...claimCheckProps(figure, { ...context, slug: page.slug })} />
         </ReportFigure>
       );
     case 'caveatList':

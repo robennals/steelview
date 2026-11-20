@@ -74,8 +74,8 @@ test('on a phone an open row leaves out its viewpoints, and its carousel is only
   const row = rows(page).first();
   await expect(row.locator('.sv-row__viewpoints')).toBeHidden();
   await expect(row.locator('.sv-row__cta')).toBeVisible();
-  // Counted as the topic page names them.
-  await expect(row.locator('.sv-row__counts')).toContainText(/\d+ (crux|cruxes) ·/);
+  // Counted as the topic page names them: its viewpoints and its cruxes.
+  await expect(row.locator('.sv-row__counts')).toHaveText(/^\d+ viewpoints? · \d+ (crux|cruxes)$/);
   const carousel = row.locator('.sv-carousel');
   const strip = carousel.locator('.sv-carousel__strip');
   const heights = new Set<number>();
@@ -98,8 +98,7 @@ test('a preview chart opens its data in a sheet over the home page, which Back c
   if (await row.getAttribute('data-open') !== 'true') await row.locator('.sv-row__toggle').click({ position: { x: 400, y: 12 } });
   await slide.locator('.sv-graph-heading a').click();
   const sheet = page.locator('dialog[open]');
-  const anchor = page.locator('[data-chart-anchor="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]');
-  await expect(sheet.locator('.sv-walk__slide', { has: anchor })).toBeInViewport();
+  await expect(sheet.locator('[id="human-and-financial-costs-of-the-war--chart-us-deaths-earlier-wars"]')).toBeInViewport();
   await expectChartAlone(sheet);
   await expect(page).toHaveURL(/\/$/);
   await page.goBack();
@@ -111,6 +110,24 @@ test('a preview chart opens its data in a sheet over the home page, which Back c
   await expect(sheet).toHaveCount(1);
   await sheet.locator('.sv-modal__close').click();
   await expect(sheet).toHaveCount(0);
+});
+
+// A preview is one of the charts its topic's viewpoint cards are made with,
+// so its link opens that same chart alone over the topic page.
+test('every preview chart links to a chart its topic page opens alone', async ({ page }) => {
+  await page.goto('/');
+  const hrefs = await page.locator('.sv-carousel__slide .sv-graph-heading a').evaluateAll(
+    links => links.map(link => link.getAttribute('href') ?? '')
+  );
+  expect(hrefs.length).toBeGreaterThanOrEqual(4 * await rows(page).count());
+  for (const href of hrefs) {
+    const [path, address] = href.split('#');
+    expect(path).toMatch(/^\/topics\/[a-z0-9-]+$/);
+    await page.goto(href);
+    const sheet = page.locator('dialog.sv-modal');
+    await expect(sheet.locator(`[data-chart-anchor="${address}"], [id="${address}"]`).first(), href).toBeAttached();
+    await expectChartAlone(sheet);
+  }
 });
 
 test('a sheet fills a phone\'s screen', async ({ page }) => {

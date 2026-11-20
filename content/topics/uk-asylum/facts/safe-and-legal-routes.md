@@ -414,9 +414,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      Refugee Family Reunion visa grants 4886 4304 3668 4121 4450 4849 6039 5199
-      5712 7456 4797 5645 4113 9320 19258 18577 4928 20643 12888
+    quote: |-
+      Year | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 (Q1 - Q2 only) | Year ending June 2025 | Year ending June 2026
+      Refugee Family Reunion visa grants | 4,886 | 4,304 | 3,668 | 4,121 | 4,450 | 4,849 | 6,039 | 5,199 | 5,712 | 7,456 | 4,797 | 5,645 | 4,113 | 9,320 | 19,258 | 18,577 | 4,928 | 20,643 | 12,888
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Hum_01 (row cells, 2010 to year ending June 2026)
@@ -426,9 +426,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      Of which out of country grants 5603 4765 4721 5088 5236 6714 11251 11411
-      11518 13068 5620 99256 273413 82102 64156 48814 15714 54139 38267
+    quote: |-
+      Year | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 (Q1 - Q2 only) | Year ending June 2025 | Year ending June 2026
+      Of which out of country grants | 5,603 | 4,765 | 4,721 | 5,088 | 5,236 | 6,714 | 11,251 | 11,411 | 11,518 | 13,068 | 5,620 | 99,256 | 273,413 | 82,102 | 64,156 | 48,814 | 15,714 | 54,139 | 38,267
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Hum_01 (row cells, 2010 to year ending June 2026)
@@ -438,9 +438,9 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: supports
-    quote: >-
-      UK Resettlement Scheme z z z z z z z z z z z 1269 1159 617 711 537 296 869
-      477
+    quote: |-
+      Year | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 (Q1 - Q2 only) | Year ending June 2025 | Year ending June 2026
+      UK Resettlement Scheme | z | z | z | z | z | z | z | z | z | z | z | 1,269 | 1,159 | 617 | 711 | 537 | 296 | 869 | 477
     title: >-
       Safe and legal (humanitarian) routes summary tables, year ending June
       2026: Res_01 (row cells, 2010 to year ending June 2026)

@@ -99,18 +99,10 @@ export function anchorFor(kind: ItemKind, id: string): string {
 }
 
 /**
- * The canonical URL path of a topic, and of a single fact within it.
- *
- * Every fact — headline and supporting alike — is addressable: facts are what
- * the rest of the site cites, so they need a real address a crawler can index,
- * an importer can quote and a reader can paste. `anchorFor('fact', …)` is now
- * only the *authoring* syntax (`[…](#fact-<id>)`); what ships to the page is
- * one of these paths.
+ * The canonical URL path of a topic. A fact has no page of its own:
+ * `anchorFor('fact', …)` is only the *authoring* syntax (`[…](#fact-<id>)`),
+ * and what ships is an address on this page (remarkMarkFactCitations).
  */
 export function topicPath(slug: string): string {
   return `/topics/${slug}`;
-}
-
-export function factPath(slug: string, factId: string): string {
-  return `/topics/${slug}/facts/${factId}`;
 }

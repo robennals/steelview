@@ -8,25 +8,15 @@ Britain has an [obligation to people in danger](#principle-obligation-to-people-
 
 ### Most people crossing the Channel are found to need protection
 
-[Most small-boat arrivals who got a decision were granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). [So were most Eritreans and Sudanese](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted). By Britain's own decisions, then, most would face danger if sent back. Britain has an [obligation to people in danger](#principle-obligation-to-people-in-danger).
-
-[Eritreans and Sudanese are the largest groups now crossing](#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups).
+[Most small-boat arrivals who got a decision were granted protection](#fact-asylum-claims-and-decisions/small-boat-claims-mostly-granted). [So were most Eritreans and Sudanese](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted), [the largest groups now crossing](#fact-safe-and-legal-routes/eritreans-and-sudanese-largest-boat-groups). By Britain's own decisions, then, most would face danger if sent back. Britain has an [obligation to people in danger](#principle-obligation-to-people-in-danger).
 
 ### Many refusals are overturned on appeal, so appeals must stay fair
 
-[Since 2007, between a quarter and a half of asylum appeals each year have succeeded](#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed). A wrong refusal can send someone back to danger. Yet [ministers plan a new appeals body whose decision-makers need not be lawyers](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal).
-
-[Counting appeals and second decisions, the share of claims finally granted rose by 20 points on average for claims made in 2007–2022](#fact-asylum-claims-and-decisions/final-outcomes-after-appeal). [The new body's chair would be appointed by the Home Secretary](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal). If [rules must mean what they say](#principle-rules-must-mean-what-they-say), the Refugee Convention's promise needs a fair hearing.
-
-While [grant rates at first decision have fallen since 2022](#fact-asylum-claims-and-decisions/grant-rate-over-time), some of that reflects real change: [after Syria's government fell, Syrians' grant rate dropped from 98% to 10% in a year](#fact-asylum-claims-and-decisions/syrian-grant-rate-fell). [A 2022 law also raised the standard of proof](#fact-asylum-claims-and-decisions/standard-of-proof), which may explain some of the rest. A higher bar makes fair appeals matter more.
+[Since 2007, between a quarter and a half of asylum appeals each year have succeeded](#fact-asylum-claims-and-decisions/two-in-five-appeals-allowed). A wrong refusal can send someone back to danger. Yet [ministers plan a new appeals body whose decision-makers need not be lawyers](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal), with [its chair appointed by the Home Secretary](#fact-asylum-law-and-the-echr/bill-replaces-the-tribunal). While [grant rates at first decision have fallen since 2022](#fact-asylum-claims-and-decisions/grant-rate-over-time), some of that reflects real change: [after Syria's government fell, Syrians' grant rate dropped from 98% to 10% in a year](#fact-asylum-claims-and-decisions/syrian-grant-rate-fell). [A 2022 law also raised the standard of proof](#fact-asylum-claims-and-decisions/standard-of-proof), which may explain some of the rest. A higher bar makes fair appeals matter more.
 
 ### Where a safe route existed, people could come without a boat
 
-[Hundreds of thousands of Ukrainians and Hong Kongers got visas, and almost none came by boat](#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat). [Some of the largest groups who cross by boat had almost no safe route](#fact-safe-and-legal-routes/some-boat-nationalities-had-no-route). A safe route gives people in danger a way in without a smuggler.
-
-[For the groups who do cross, boat arrivals far outnumbered safe-route grants in the year to June 2026](#fact-safe-and-legal-routes/after-the-pause), a year when family reunion was paused. [For Eritreans, Sudanese and Iranians, the main safe route was joining family here](#fact-safe-and-legal-routes/family-reunion-was-the-main-route-for-boat-nationalities).
-
-While [Afghans had a large route and still crossed](#fact-safe-and-legal-routes/afghans-large-route-still-crossed), [the reopened scheme and its new routes plan for only hundreds of people at first](#fact-safe-and-legal-routes/planned-scale), far fewer than cross by boat.
+[Hundreds of thousands of Ukrainians and Hong Kongers got visas, and almost none came by boat](#fact-safe-and-legal-routes/nationalities-with-safe-routes-rarely-came-by-boat). [Some of the largest groups who cross by boat had almost no safe route](#fact-safe-and-legal-routes/some-boat-nationalities-had-no-route). A safe route gives people in danger a way in without a smuggler. [For the groups who do cross, boat arrivals far outnumbered safe-route grants in the year to June 2026](#fact-safe-and-legal-routes/after-the-pause), a year when family reunion was paused. [For Eritreans, Sudanese and Iranians, the main safe route was joining family here](#fact-safe-and-legal-routes/family-reunion-was-the-main-route-for-boat-nationalities). A route does not stop every crossing: [Afghans had a large route and still crossed](#fact-safe-and-legal-routes/afghans-large-route-still-crossed). But [the reopened scheme and its new routes plan for only hundreds of people at first](#fact-safe-and-legal-routes/planned-scale), far fewer than cross by boat.
 
 ### Britain's deterrence scheme failed at great cost
 

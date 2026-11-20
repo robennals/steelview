@@ -60,12 +60,27 @@ collection:
 | **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A tension at the heart of a disagreement between viewpoints: principles in conflict, different predictions, or missing data. |
 
+**What a reader sees.** A topic page is its viewpoints, then its cruxes. The
+only charts on it are the ones the viewpoints' cards are made with, and each
+opens in full over the page. Data collections are the evidence base behind
+them, kept in the repo: a viewpoint cites their observations, and a card's
+chart is drawn from one, but a collection has no row, tab or page of its own.
+Charts a collection holds that no card uses are not shown. **No pop-up holds
+text of ours.** A cited claim shows as plain text with a small footnote marker,
+which opens the quotes from the sources behind the cited observation: each
+source's own words, its title linked to the source, its publisher and date.
+The sentences that state a figure the observation states are highlighted, or
+failing that the one sentence sharing most words with it
+(`lib/content/quote-highlight.ts`), so quote the sentence that says the thing,
+in the words the observation uses. So the argument has to be made by the card's
+words and its graph.
+
 The filename is the id. **Ids are permanent.** An id is the anchor a citation
-points at (`#fact-immigration-against-the-long-run/nationality-shift`) and the URL of the fact's own
-page (`/topics/uk-immigration/facts/immigration-against-the-long-run`, from
-`factPath` in `lib/content/types.ts`). Renaming a file breaks every inbound
-link from outside the repo, so a rename needs a redirect, not just a
-find-and-replace.
+points at (`#fact-immigration-against-the-long-run/nationality-shift`), which
+ships as an address on the topic page
+(`/topics/uk-immigration#immigration-against-the-long-run--nationality-shift`).
+Renaming a file or a section breaks every inbound link from outside the repo,
+so a rename needs a redirect, not just a find-and-replace.
 
 Reading order is not yours to set. Fact order is derived from the viewpoints'
 own rankings by `lib/content/rank-facts.ts`; viewpoint order is the explicit
@@ -77,9 +92,10 @@ own rankings by `lib/content/rank-facts.ts`; viewpoint order is the explicit
 
 ### Data Collections, Datasets and Observations
 
-The reader-facing section is **Data**, and each row in it is a **data collection**:
+A **data collection** is
 a set of datasets, graphs and other evidence breaking down one aspect of the
-topic. An individual graph or table is a dataset or artifact within that
+topic. Readers meet it only through the viewpoints: the findings they cite and
+the charts their cards are made with. An individual graph or table is a dataset or artifact within that
 collection. An **observation** explains a finding in those data. Do not equate
 the whole collection with a single factual assertion.
 
@@ -89,10 +105,11 @@ they explain. Keep methods, useful subtleties and sources in their own expandos.
 Several observations can support different viewpoints while sharing one collection.
 
 **Cite observations by default.** When a viewpoint makes a factual assertion,
-link its pill to the specific observation that supports or qualifies it. A link
-into a chart or observation opens the collection on that one visualization,
-at full size with its own controls, with tabs for the others and for the whole
-report, and expands the observation. Link to
+link its pill to the specific observation that supports or qualifies it. The
+reader sees the claim with a footnote marker, which opens the quotes from the
+sources that observation footnotes (or, if it footnotes none, those of its
+chart): footnote each observation with the sources that actually say what it
+claims. The observation's own text is never shown beside the viewpoint. Link to
 a graph or the collection’s lead finding when that is the actual evidence;
 use a whole-collection link for a broad reference or an evidence index. Do not
 create a separate collection just to make a finding clickable.
@@ -104,10 +121,22 @@ with only one level of nesting. They do not make every child a separate fact
 that the reader must accept.
 
 **Compatibility terminology.** Storage and code retain `Fact`, `facts/`,
-`citesFacts`, `relatedFacts`, `/facts/` URLs and `#fact-` citation syntax so
-existing links and content remain valid. In technical examples below, these
+`citesFacts`, `relatedFacts` and `#fact-` citation syntax so existing content
+remains valid. In technical examples below, these
 legacy names refer to data collections. In product copy, use **Data**, **data
 collection**, **dataset** and **observation** according to what is being named.
+
+### A Card's Chart Carries Its Own Context
+
+There is no Data section to set a chart beside contrasting datasets, so the
+chart a card is made with must do it itself, in its full version: the version
+that opens over the page, with every reading behind its "Show as" switch.
+Before a chart goes on a card, check that its full version shows what keeps it
+from misleading on its own — the full time range, other countries or places,
+the subgroups or rates that cut the other way — as further readings, lines or
+comparison rows. If it cannot, add them to the chart rather than leaving the
+contrast in a chart no card shows. The cruxes draw out what the contrast means
+for each side.
 
 ### Neutral Reports Must Answer All Viewpoints’ Questions
 
@@ -144,8 +173,7 @@ report alone does not establish that its coverage is complete.
 The existing status assesses the collection’s lead finding or explicitly
 assessed claim. It is not a blanket truth rating for every dataset or observation.
 
-Readers do not see it on a fact: the fact list and fact page show the claim
-and the data, not a status label. It still decides the order of facts nobody
+Readers do not see it on a fact, which shows the data, not a status label. It still decides the order of facts nobody
 has ranked, and a `claimCheck` figure still shows its own verdict.
 
 Five statuses: `well-supported`, `contested`, `not-supported`,
@@ -223,8 +251,7 @@ Specific factual conclusions belong in the cited opening finding and in
 addressable observations beneath the relevant artifacts. A neutral title does
 not require vague observations or withholding conclusions supported by data.
 
-`claim` opens the collection's row on the topic page and leads its own page, so
-it is a **one-sentence overview** saying what the report mainly finds,
+`claim` is a **one-sentence overview** saying what the report mainly finds,
 specific enough to be checkable but without a list of figures. The reader's
 attention belongs on the charts. The figures appear in
 the charts directly below it. Do not remove qualifications needed to make the
@@ -350,8 +377,8 @@ The design references are [LessWrong](https://www.lesswrong.com/),
 [Substack](https://substack.com/) and
 [Our World in Data](https://ourworldindata.org/population-growth): borrow their
 attention to reading measure, whitespace and distinct editorial/chart typography.
-Check long and short facts in both their row and their own page, on desktop and
-mobile. Hierarchy must survive without relying on bold everywhere.
+Check long and short charts both on their card and opened in full, on desktop
+and mobile. Hierarchy must survive without relying on bold everywhere.
 
 Long explanations of sourcing, collation, derivation and methodology belong in
 an expando, normally the chart's **About this data**. This includes “derived,
@@ -377,20 +404,17 @@ The factual explanation. [1](#source-example-1)
 ## Subtleties {#example--subtleties}
 ```
 
-Link a pill to `#fact-example/why-arrivals-fell`; it opens the fact, scrolls the
-section into view and highlights it. Keep IDs when rewriting headings, and
-when prose becomes a figure, list its old IDs in the figure's `replaces` (see
-[Figures](#figures)) so existing links still land. A link to
-a supporting fact opens its parent article at that finding; every fact's own
-URL remains usable. `/finding` targets the opening finding.
+Link a pill to `#fact-example/why-arrivals-fell`; the claim gets a footnote
+marker opening that finding's sources. Keep IDs when rewriting headings, and when prose becomes a figure, list
+its old IDs in the figure's `replaces` (see [Figures](#figures)) so existing
+links still land. `/finding` targets the opening finding.
 
-A fact's own URL, `/topics/<topic>/facts/<fact>`, shows its title, its claim and
-its data panel, the one its row opens on the topic page, with a link back to the
-topic and links to related reports under the panel. Add `#<fact>--chart-<id>` to open it at a chart
-(`<id>` is a series reading, comparison or figure), or `#<fact>--<observation>`
-to open that observation's chart at that observation. `#source-<fact>-<n>` and
-old anchors listed in `replaces` also work, and without JavaScript the charts
-run down the page, so every address still lands.
+A collection has no page of its own; an old `/topics/<topic>/facts/<fact>` URL
+redirects to its topic (`next.config.ts`). On the topic page,
+`#<fact>--chart-<id>` opens a card's chart in full (`<id>` is a series reading,
+comparison or figure), and `#<fact>--<observation>` opens the chart that
+observation is about. Old anchors listed in `replaces` also work. Only a chart a
+card is made with has an address: any other is not on the page.
 
 Footnote-link each sourced statement or number where it appears, rather than
 leaving readers to infer which reference supports it.
@@ -480,6 +504,23 @@ including the publisher's own wording and punctuation. Get the publisher and
 date right — a wrong date on a citation is exactly what this project is
 judged on, which is why the schema validates the date shape down to the month
 range rather than accepting any string.
+
+**Keep the source's layout.** Readers see a quote in a pop-up, and a list or a
+table run into one line, or several paragraphs run into one, is hard to read.
+Write the quote as a literal block (`quote: |-`) and keep its structure with
+these marks, which `components/topic/quote-text.tsx` lays out: a blank line
+between paragraphs, `- ` at the start of each bullet, and ` | ` between the
+cells of a table's rows, its first row the header. Each paragraph, bullet or
+row is one line; don't hard-wrap inside one. The marks are layout, not words:
+F11 and `pnpm check:figures` ignore them, and the words must still be the
+source's, in its order. A quote that is one paragraph stays one line.
+
+**Cut around a key passage, never into it.** A reader sees a claim's source
+quotes with the passage the claim rests on highlighted, so they need to see
+what it is answering. Keep the whole sentence a key passage is in, and the
+sentence before and after it, before you cut anything with `…`; an ellipsis
+that runs straight up to the passage leaves the reader guessing at its context.
+Cut whole stretches that don't bear on the claim, not the lead-in to one that does.
 
 **Every prose figure must be sourced or reproducibly derived.**
 `pnpm check:figures` checks prose numbers against source quotes and
@@ -916,8 +957,9 @@ slide is one chart: for a series with several readings, add `reading` to name
 the one the slide draws (default: the first). The full chart, a click away,
 offers every reading behind its "Show as" switch, and holds everything a slide leaves out — a slide
 is only the chart's title, its subtitle and the graph. The slide's title opens
-the topic page with that chart in a sheet, as a viewpoint's “Explore this
-data” does (`#explore=<fact>--chart-<chart>`). The
+the topic page with that chart in full over it, as a viewpoint's card does
+(`#<fact>--chart-<chart>`). **Every preview chart is one a viewpoint's card is
+made with**, since those are the only charts on the topic page. The
 carousel is the first evidence many readers see, so choosing it is choosing
 what the topic looks like — and a carousel that mostly backs one side has
 failed however good it looks. Choose by these rules:
@@ -933,9 +975,10 @@ failed however good it looks. Choose by these rules:
 4. **Keep the set small** — about four.
 
 The carousel never labels a chart as evidence for a viewpoint: a chart usually
-bears on several. The build checks the mechanical half of rule 2 — every
-viewpoint must cite, inline, the fact behind at least one preview chart — and
-leaves "strongest", magnitude and overview to you.
+bears on several. The build checks that every preview chart is on a card, and
+the mechanical half of rule 2 — every viewpoint must cite, inline, the fact
+behind at least one preview chart — and leaves "strongest", magnitude and
+overview to you.
 
 **Figures in previews.** A slide can draw these figure kinds: `barChart`
 (paired and dumbbell bars too, with their series key), `compositionBar`,
@@ -1515,18 +1558,25 @@ point of the argument with the evidence for it. A card is three things:
 
 - **The heading: the point.** One sentence of the argument, under about fifteen
   words ([Write an argument someone can follow](#write-an-argument-someone-can-follow)).
-- **The line: the section's first paragraph.** One to three sentences, about 25
-  to 55 words, that complete the step: they give the data the point rests on,
-  as pills, and say what it shows for the argument. It sits under the heading,
-  and opens the rest of the section under "More".
+- **The line: the section's only paragraph.** Usually two to four sentences,
+  about 40 to 80 words, that complete the step: they give the data the point
+  rests on, as pills, say what it shows for the argument, and make any
+  concession the point needs to be fair. It sits under the heading, and nothing
+  is hidden behind it. **The argument must hold together**: keep every premise
+  the step's conclusion needs, even if the line runs longer. "Iran had enough
+  uranium for a bomb" proves nothing without "enriching uranium is the hard
+  part of making one". Brevity gives way to a complete argument, never the
+  other way round.
 - **One visual: the graph or collection of quotes behind the line's first
   citation of one.** It fills the rest of the card.
 
-That combination is the target: a reader who reads only headings and lines,
+That combination is the whole card: a reader who reads the headings and lines,
 card after card, gets the whole argument, and sees on each card the data that
-backs it. The rest of the section, under "More", is the evidence a doubting
-reader wants: the further facts, and any concession with the answer to it, in
-one or two short paragraphs, rarely more than about 80 words.
+backs it. A card made with a graph or quotes has no further paragraphs: what a
+doubting reader needs goes in the line, briefly, and the rest goes. The source
+quotes behind each claim's footnote marker are the way on to more.
+`check:integrity` fails on a second paragraph (rule M5). A card of text, with
+no visual, may still run to a few short paragraphs.
 
 **Choose the visual first.** For each step, pick the graph that shows the
 step's claim on its face, then write the line around it. A graph is the
@@ -1590,11 +1640,11 @@ claim that holds for only part of the range says which part and what the rest
 shows ("over half up to 2013, under a third every year since 2015"). If the
 whole range does not support it, the claim goes.
 
-**Every link shows its fact on a chart.** A citation in a viewpoint, a crux or the
-topic's introduction opens its collection's data panel in a pop-up, with the cited
-observation selected and its mark picking out the data, and has a dotted
-underline. So a link passes only if a reader can read the claim off the
-highlighted part of the chart: the plotted values, a row's text, an event or a
+**Every link shows its fact on a chart.** A citation in a card's line chooses
+the graph the card is made with, and its mark picks out the data; a reader sees
+the claim, the graph and the source quotes behind its footnote marker, and
+nothing else of ours. So a link passes only if a reader can read the claim off
+the highlighted part of the chart, and the source quotes say it: the plotted values, a row's text, an event or a
 quote. Text in the observation's explanation does not count, nor does the chart's
 title. Every part of the claim must be there, for the same place, period and
 measure, and the numbers must match. Say which measure: "refused or
@@ -1846,11 +1896,12 @@ no `citesFacts`, `acknowledges`, `setsAside` or viewpoint-level `principles`
 lists. The prose itself shows what the argument builds on, concedes or sets
 aside through inline citations.
 
-`topic.md` contains `dataOrder`: the explicit order of headline Data
-collections on the page. List every headline collection once, by filename ID.
-Supporting collections belong under their parent and are not included. Data
-order is an editorial decision about reading flow, not a reward for whichever
-viewpoint happens to cite something first.
+`topic.md` contains `dataOrder`: the order of the headline data collections.
+No page shows them in a list today; the order is kept for when one does. List
+every headline collection once, by filename ID. Supporting collections belong
+under their parent and are not included. Data order is an editorial decision
+about reading flow, not a reward for whichever viewpoint happens to cite
+something first.
 
 Every empirical assertion in viewpoint prose **and summaries** should be a
 linked observation pill, including non-numeric statements and key premises that are not
@@ -2216,10 +2267,11 @@ them.
 | Every prose figure is quoted in a source the item may use (its own, or its cited facts') or has a validated derivation | `scripts/check-figures.ts`, `scripts/derived-figures.ts` |
 | No two charts in a report share a title | `lib/content/validate.ts` (`chartTitleErrors`) |
 | A topic has at least one unique tag and at least one preview chart | `lib/content/schema.ts` |
-| Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
+| Preview charts (and any named `reading`) resolve to a chart or a graph-like figure, appear once, are each on a viewpoint's card, and every viewpoint cites the fact behind one; text figures are rejected | `lib/content/validate.ts` (`previewChartErrors`) |
 | Series and comparison prose (advisory): a figure in a series' or comparison's title, description, notes or labels is quoted like a component figure's | `scripts/check-figures.ts`, `lib/content/figure-text.ts` (`chartProse`) |
 | Chart values (advisory): a qualified value by its `asPublished`, both ends of a range, against any of the item's sources | `scripts/check-figures.ts`, `lib/content/figure-text.ts` |
 | A viewpoint shows each graph or collection of quotes on one card only (M4) | `lib/content/walkthrough.ts` (`repeatedCardVisualErrors`), run by `pnpm check:integrity` |
+| A card made with a graph or quotes is one paragraph (M5) | `lib/content/walkthrough.ts` (`cardParagraphErrors`), run by `pnpm check:integrity` |
 
 **Everything else in this document is editorial judgement with no safety net.**
 Nothing checks that a status is correct under the 90% test, that a claim is

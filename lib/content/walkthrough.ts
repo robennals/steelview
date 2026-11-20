@@ -1,10 +1,10 @@
 import { citedFactTargets, renderMarkdown, type PanelTarget } from './markdown';
-import { headlineFacts } from './rank-facts';
 import { alongsideOf, plotReadingId, plottedReadings } from '@/lib/chart/series-chart';
-import { chartCitations, footnotesIn } from './sources';
-import { componentFigure, factPath, figureLabel, isComponentFigure } from './types';
-import type { Fact, ObservationMark, Topic, Viewpoint } from './types';
+import { chartCitations, factSources, footnotesIn } from './sources';
+import { componentFigure, figureLabel, isComponentFigure, topicPath } from './types';
+import type { Fact, ObservationMark, Source, Topic, Viewpoint } from './types';
 import { factSlides, isPreviewable, previewTarget, slideGroups, type PreviewSlide } from './preview';
+import { highlightQuote, type QuotePart } from './quote-highlight';
 
 /** One step of a viewpoint's walkthrough: one `###` section, beside the chart it leans on. */
 export type WalkthroughStep = {
@@ -107,14 +107,6 @@ export function slideCitations(fact: Fact, slide: Pick<PreviewSlide, 'chart' | '
   return [...new Set([...drawn, ...prose.flatMap(text => footnotesIn(text, fact.id))])];
 }
 
-/**
- * Each chart's sources (`slideCitations`), in step order. The claim sits above
- * every chart, so the first chart's row also lists what the claim cites.
- */
-export function factCitations(fact: Fact, slides: PreviewSlide[]): number[][] {
-  return slides.map((slide, i) => [...new Set([...slideCitations(fact, slide), ...(i === 0 ? fact.claimSources ?? [1] : [])])]);
-}
-
 /** An observation, as an element id, with the part of its chart it picks out. */
 export type MarkedObservation = { id: string; mark: ObservationMark };
 
@@ -136,7 +128,7 @@ export function observationGroups(fact: Fact): Map<string, string> {
  * comparison or a library figure.
  */
 function chartFor(slug: string, fact: Fact, key: string, observation: string): PreviewSlide | undefined {
-  const href = `${factPath(slug, fact.id)}#${fact.id}--${observation}`;
+  const href = `${topicPath(slug)}#${fact.id}--${observation}`;
   const reading = (series: NonNullable<Fact['series']>) => series.readings.find(r => r.id === key);
   if (fact.series && reading(fact.series)) {
     return { fact, chart: 'series', reading: key, label: fact.series.title, href };
@@ -147,6 +139,17 @@ function chartFor(slug: string, fact: Fact, key: string, observation: string): P
   if (comparison) return { fact, chart: comparison.id, label: comparison.title, href };
   const figure = componentFigure(fact, key);
   return figure && { fact, chart: figure.id, label: figureLabel(figure), href };
+}
+
+/**
+ * The chart a citation of `section` on `fact` is about: the chart beside the
+ * observation it names, or a chart it names outright, `chart-<id>`, or by an
+ * old anchor of prose a figure now stands in for (`replaces`). `groups` is the
+ * fact's `observationGroups`.
+ */
+function citedChart(slug: string, fact: Fact, groups: Map<string, string>, section: string): PreviewSlide | undefined {
+  const key = groups.get(section) ?? fact.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(section))?.id ?? section.match(/^chart-(.+)$/)?.[1];
+  return key ? chartFor(slug, fact, key, section) : undefined;
 }
 
 /**
@@ -161,10 +164,7 @@ export function viewpointWalkthrough(topic: Topic, viewpoint: Viewpoint): Walkth
   /** The charts behind a passage's citations, in order, each with the citation it was chosen for. */
   const chartsCited = (markdown: string) => citedFactTargets(markdown).flatMap(({ id, section: observation }) => {
     const fact = topic.facts.find(f => f.id === id);
-    // A citation can also name a chart outright, `#fact-<fact>/chart-<id>`, or
-    // an old anchor of prose a figure now stands in for (`replaces`).
-    const key = observation && (groups.get(id)?.get(observation) ?? fact?.figures?.filter(isComponentFigure).find(f => f.replaces?.includes(observation))?.id ?? observation.match(/^chart-(.+)$/)?.[1]);
-    const chart = fact && key && chartFor(topic.slug, fact, key, observation);
+    const chart = fact && observation && citedChart(topic.slug, fact, groups.get(id) ?? new Map(), observation);
     return chart ? [{ chart, cited: { id, section: observation } }] : [];
   });
   const steps = sections.map(section => {
@@ -194,20 +194,20 @@ function cardVisual(inReasoning: { chart: PreviewSlide; cited: { id: string; sec
 }
 
 /**
- * Finds where a citation opens in its collection's data panel: an observation of
- * one of the panel's charts, or an address of the chart itself. Anything else
- * has no such place.
+ * The charts the topic page shows: each one a viewpoint's card is made with,
+ * keyed by its collection, in the order the collection lists them. A card
+ * shows a series at one reading; its full version, opened over the page, is
+ * the whole series, with every reading it can be shown as. Every other chart a
+ * collection holds stays in the content, off the page.
  */
-function panelTargets(topic: Topic): (id: string, section: string) => PanelTarget | undefined {
-  const addresses = new Set(headlineFacts(topic.facts).flatMap(fact => {
-    const slides = factSlides(topic.slug, fact);
-    const groups = observationsByChart(fact);
-    return [...slides.flatMap(slide => slideGroups(fact, slide).flatMap(key => groups.get(key) ?? []).map(o => `${fact.id}--${o.id}`)), ...chartAnchors(fact, slides).flat()];
-  }));
-  return (id, section) => {
-    const observation = `${id}--${section}`;
-    return addresses.has(observation) ? { fact: id, observation } : undefined;
-  };
+export function featuredSlides(topic: Topic): Map<string, PreviewSlide[]> {
+  const featured = new Set(topic.viewpoints.flatMap(viewpoint => viewpointWalkthrough(topic, viewpoint).steps.flatMap(({ cardVisual }) => (cardVisual ? [`${cardVisual.chart.fact.id}:${cardVisual.chart.chart}`] : []))));
+  const slides = new Map<string, PreviewSlide[]>();
+  for (const fact of topic.facts) {
+    const shown = factSlides(topic.slug, fact).filter(slide => featured.has(`${fact.id}:${slide.chart}`));
+    if (shown.length > 0) slides.set(fact.id, shown);
+  }
+  return slides;
 }
 
 /**
@@ -248,29 +248,71 @@ export function repeatedCardVisualErrors(topic: Topic): string[] {
   });
 }
 
-/** A slideshow card's graph or quotes, with where it opens its data. */
+/**
+ * M5 — a card made with a graph or quotes is its heading, one paragraph and
+ * that visual: the argument is what the reader sees, with nothing behind a
+ * "More". Whatever else the step needs goes into the paragraph or goes.
+ */
+export function cardParagraphErrors(topic: Topic): string[] {
+  return topic.viewpoints.flatMap(viewpoint => viewpointWalkthrough(topic, viewpoint).steps.flatMap(({ heading, markdown, cardVisual }) => {
+    if (!cardVisual || !splitFirstParagraph(markdown)[1].trim()) return [];
+    return [`viewpoint ${viewpoint.id}: "${heading}" is made with a graph or quotes, so its point is one paragraph — fold what the reader needs into it and drop the rest`];
+  }));
+}
+
+/** A slideshow card's graph or quotes, with where it opens in full. */
 export type CardVisual = {
   chart: PreviewSlide;
   /** The rows the card's line picks out on it: a timeline's thumbnail gives them its cards, as the card does. */
   picked: string[];
-  /** Where the graph opens its collection's data panel, when the topic page has one. */
-  panel?: PanelTarget;
-  /** "Explore this data", rendered as a citation so it opens the collection's report, for a graph with no panel. */
-  exploreHtml: string;
+  /** Where the graph opens in full: at the finding the card's line cites, which `featuredSlides` puts on the page. */
+  panel: PanelTarget;
 };
 
-/** A step with its prose rendered, ready for a synchronous component. */
-export type RenderedStep = Omit<WalkthroughStep, 'markdown' | 'cited' | 'cardVisual'> & {
-  html: string;
-  /** "Explore this data", rendered as a citation so it opens the collection's report, for a chart with no panel. */
-  exploreHtml?: string;
-  /** Where "Explore this data" opens the chart's data panel. */
-  panel?: PanelTarget;
-  /** The graph or quotes a slideshow card is made with (`cardVisual`). */
+/**
+ * A source as a reader sees it behind a claim's footnote marker: its own words,
+ * with the passages the finding rests on picked out, and where they come from.
+ */
+export type QuotedSource = Pick<Source, 'title' | 'url' | 'publisher' | 'date'> & { quote: QuotePart[] };
+
+/**
+ * The sources behind each finding the viewpoints cite, keyed `<fact>--<section>`:
+ * those the finding's own text footnotes, or failing that those of the chart it
+ * is about. A citation with neither has no entry, and its claim no marker.
+ */
+export function citedSources(topic: Topic): Record<string, QuotedSource[]> {
+  const sources: Record<string, QuotedSource[]> = {};
+  for (const { id, section } of topic.viewpoints.flatMap(v => citedFactTargets(v.body))) {
+    const fact = topic.facts.find(f => f.id === id);
+    const key = `${id}--${section}`;
+    if (!fact || !section || key in sources) continue;
+    const observation = [...observationsByChart(fact).values()].flat().find(o => o.id === section);
+    const chart = citedChart(topic.slug, fact, observationGroups(fact), section);
+    const finding = observation ? `${observation.heading}\n${observation.markdown}` : chart?.label ?? '';
+    const footnoted = footnotesIn(finding, fact.id);
+    const numbers = footnoted.length > 0 ? footnoted : chart ? slideCitations(fact, chart) : [];
+    const all = factSources(fact);
+    // The finding's words, without its links' targets, to find the passages it rests on.
+    const said = finding.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+    const quoted = [...new Set(numbers)].flatMap(n => (all[n - 1] ? [all[n - 1]] : [])).map(({ quote, title, url, publisher, date }) => ({ quote: highlightQuote(quote, said), title, url, publisher, date }));
+    if (quoted.length > 0) sources[key] = quoted;
+  }
+  return sources;
+}
+
+/**
+ * A slideshow card with its prose rendered, ready for a synchronous component.
+ * A claim's citation renders as its text and a footnote marker, which opens the
+ * quotes from its sources (`citedSources`): the card's words and its graph make
+ * the point, and nothing of our own sits behind them.
+ */
+export type RenderedStep = {
+  heading: string;
+  /** The graph or quotes the card is made with (`cardVisual`). */
   cardVisual?: CardVisual;
-  /** For a slideshow card: the section's first paragraph, the step of reasoning that completes its heading, rendered without its paragraph. */
+  /** The section's first paragraph, the step of reasoning that completes its heading, rendered without its paragraph. */
   reasoningHtml: string;
-  /** For a slideshow card: the rest of the section, the evidence, rendered. */
+  /** The rest of the section, the evidence, rendered. */
   evidenceHtml: string;
 };
 
@@ -283,22 +325,25 @@ export type RenderedWalkthrough = { lead: string; steps: RenderedStep[] };
  */
 export async function renderWalkthroughs(topic: Topic): Promise<Map<string, RenderedWalkthrough>> {
   const rendered = new Map<string, RenderedWalkthrough>();
-  const panelFor = panelTargets(topic);
+  const sources = citedSources(topic);
   for (const viewpoint of topic.viewpoints) {
     const { lead, steps } = viewpointWalkthrough(topic, viewpoint);
     rendered.set(viewpoint.id, {
       lead,
-      steps: await Promise.all(steps.map(async ({ heading, markdown, chart, cited, cardVisual }) => {
-        const render = (md: string) => renderMarkdown(md, topic.slug, topic.facts, { panelCitation: panelFor });
-        const explore = ({ id, section }: { id: string; section: string }) => renderMarkdown(`[Explore this data](#fact-${id}/${section})`, topic.slug, topic.facts);
+      steps: await Promise.all(steps.map(async ({ heading, markdown, cardVisual }) => {
+        // A card numbers its markers from 1, a finding cited twice keeping its number.
+        const numbers = new Map<string, number>();
+        const citationMarker = (id: string, section?: string) => {
+          const key = `${id}--${section}`;
+          if (!(key in sources)) return undefined;
+          if (!numbers.has(key)) numbers.set(key, numbers.size + 1);
+          return { key, label: String(numbers.get(key)) };
+        };
+        const render = (md: string) => renderMarkdown(md, topic.slug, { citationMarker });
         const [reasoning, evidence] = splitFirstParagraph(markdown);
         return {
           heading,
-          chart,
-          panel: cited && panelFor(cited.id, cited.section),
-          html: await render(markdown),
-          exploreHtml: cited && await explore(cited),
-          cardVisual: cardVisual && { chart: cardVisual.chart, picked: cardVisual.picked, panel: panelFor(cardVisual.cited.id, cardVisual.cited.section), exploreHtml: await explore(cardVisual.cited) },
+          cardVisual: cardVisual && { chart: cardVisual.chart, picked: cardVisual.picked, panel: { fact: cardVisual.cited.id, observation: `${cardVisual.cited.id}--${cardVisual.cited.section}` } },
           // Inline, for a card's subtitle line.
           reasoningHtml: (await render(reasoning)).replace(/^<p>|<\/p>\s*$/g, ''),
           evidenceHtml: await render(evidence),
@@ -309,60 +354,11 @@ export async function renderWalkthroughs(topic: Topic): Promise<Map<string, Rend
   return rendered;
 }
 
-/** One finding a viewpoint cites, ready to read in a pop-up beside the claim that cites it. */
-export type CitedClaim = {
-  /** The finding, as its observation's heading, rendered without a paragraph. */
-  heading: string;
-  /** Its explanation. */
-  html: string;
-  /** The data collection it comes from. */
-  collection: string;
-  /** Where its collection's data panel opens at it, when the topic page has one. */
-  panel?: PanelTarget;
-  /** Its place in its collection's own page. */
-  href: string;
-};
-
-/**
- * Every observation the viewpoints cite, keyed by its element id
- * (`<fact>--<observation>`), for a slideshow to open in a pop-up rather than
- * sending the reader into the whole data collection. Like a data panel on a
- * topic page, it leaves out footnotes and fact links, which the collection
- * itself carries.
- */
-export async function renderCitedClaims(topic: Topic): Promise<Record<string, CitedClaim>> {
-  const options = { citationsAsText: true, footnotes: false };
-  const panelFor = panelTargets(topic);
-  const claims: Record<string, CitedClaim> = {};
-  for (const { id, section } of topic.viewpoints.flatMap(v => citedFactTargets(v.body))) {
-    // A citation of a whole collection names no one finding to show.
-    if (!section) continue;
-    const key = `${id}--${section}`;
-    const fact = topic.facts.find(f => f.id === id);
-    const observation = fact && [...observationsByChart(fact).values()].flat().find(o => o.id === section);
-    if (key in claims || !fact || !observation) continue;
-    claims[key] = {
-      heading: (await renderMarkdown(observation.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, ''),
-      html: await renderMarkdown(observation.markdown, topic.slug, topic.facts, options),
-      collection: fact.title ?? fact.claim,
-      panel: panelFor(id, section),
-      href: `${factPath(topic.slug, id)}#${key}`,
-    };
-  }
-  return claims;
-}
-
-/** The title of a report's last slide. */
-export const UNKNOWNS_LABEL = "What we don't know yet";
-
-/** One step of a data collection: a chart with its observations rendered, ready to step through, or its last step, what the report cannot yet say. */
+/** One featured chart with its observations rendered, ready to open over the page. */
 export type DataStep = {
-  /** The step's name, under its thumbnail and in its count. */
+  /** The chart's title, which becomes its sheet's. */
   label: string;
-  /** The chart. Only the last step has none. */
-  chart?: PreviewSlide;
-  /** On the last step, the measurements that would change the report. */
-  unknowns?: NonNullable<Fact['dataStillNeeded']>;
+  chart: PreviewSlide;
   /**
    * The observations and Subtleties of this chart, in order: what to notice in it. `heading` is rendered, without a paragraph.
    * `view` is the reading each is about, on a chart with `views`.
@@ -378,7 +374,7 @@ export type DataStep = {
   description: string;
   /** The chart's further text (`chartMore`), rendered, for its More. */
   more: string;
-  /** The element ids a citation can name this chart by, so a viewpoint's step opens on it. */
+  /** The element ids a citation can name this chart by, so it opens on it. */
   anchors: string[];
 };
 
@@ -411,58 +407,61 @@ function readingAnchors(fact: Fact, reading: string): string[] {
 }
 
 /**
- * Each data collection as a walkthrough of its charts, keyed by fact id: every
- * chart in turn, beside the observations made about it. On a topic page
- * observations are shown away from their collection, so they leave out source
- * footnotes and fact links, which the collection itself carries; a report's own
- * page, where the sources are, keeps them with `options`.
+ * Each featured chart (`featuredSlides`), keyed by its collection, with the
+ * observations made about it (`chartSteps`).
  */
-export async function renderDataWalkthroughs(topic: Topic, facts: Fact[], options = { citationsAsText: true, footnotes: false }): Promise<Map<string, DataStep[]>> {
+export async function renderFeaturedCharts(topic: Topic): Promise<Map<string, DataStep[]>> {
   const rendered = new Map<string, DataStep[]>();
-  for (const fact of facts) {
-    const groups = observationsByChart(fact);
-    const more = chartMore(fact);
-    const slides = factSlides(topic.slug, fact);
-    const anchors = chartAnchors(fact, slides);
-    const charts = await Promise.all(slides.map(async (chart, i) => {
-      const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
-      const keys = slideGroups(fact, chart);
-      const figure = componentFigure(fact, chart.chart);
-      const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
-      // A view is a reading with a plot of its own, with any reading drawn alongside it.
-      const plotted = series ? plottedReadings(series) : [];
-      const views = series && plotted.length > 1
-        ? plotted.map(r => ({ id: r.id, label: r.label, anchors: [r, alongsideOf(series, r)].flatMap(drawn => (drawn ? readingAnchors(fact, drawn.id) : [])) }))
-        : undefined;
-      // Each reading's observations, then its Subtleties, reading by reading, so
-      // stepping through them moves through the views in order.
-      const viewObservations = keys.flatMap(key => (groups.get(key) ?? []).map(o => ({ ...o, view: views && series ? plotReadingId(series, key) : undefined })));
-      return {
-        label: chart.label,
-        chart,
-        description,
-        views,
-        more: await renderMarkdown(keys.map(key => more.get(key) ?? '').filter(Boolean).join('\n\n'), topic.slug, topic.facts, options),
-        anchors: anchors[i],
-        observations: await Promise.all(viewObservations.map(async o => {
-          const heading = (await renderMarkdown(o.heading, topic.slug, topic.facts, options)).replace(/^<p>|<\/p>\s*$/g, '');
-          return ({
+  for (const [id, slides] of featuredSlides(topic)) {
+    const fact = topic.facts.find(f => f.id === id);
+    if (fact) rendered.set(id, await chartSteps(topic, fact, slides));
+  }
+  return rendered;
+}
+
+/**
+ * Charts of one collection, each with the observations made about it. They are
+ * read away from their collection, so they leave out source footnotes and fact
+ * links: the chart's own row of sources carries what they cite.
+ */
+export async function chartSteps(topic: Topic, fact: Fact, slides: PreviewSlide[]): Promise<DataStep[]> {
+  const options = { footnotes: false };
+  const groups = observationsByChart(fact);
+  const more = chartMore(fact);
+  const anchors = chartAnchors(fact, slides);
+  return Promise.all(slides.map(async (chart, i) => {
+    const series = chart.chart === 'series' ? fact.series : fact.additionalSeries?.find(s => s.id === chart.chart);
+    const keys = slideGroups(fact, chart);
+    const figure = componentFigure(fact, chart.chart);
+    const description = series?.description ?? fact.comparisons?.find(c => c.id === chart.chart)?.description ?? (figure && 'description' in figure ? figure.description : '') ?? '';
+    // A view is a reading with a plot of its own, with any reading drawn alongside it.
+    const plotted = series ? plottedReadings(series) : [];
+    const views = series && plotted.length > 1
+      ? plotted.map(r => ({ id: r.id, label: r.label, anchors: [r, alongsideOf(series, r)].flatMap(drawn => (drawn ? readingAnchors(fact, drawn.id) : [])) }))
+      : undefined;
+    // Each reading's observations, then its Subtleties, reading by reading, so
+    // stepping through them moves through the views in order.
+    const viewObservations = keys.flatMap(key => (groups.get(key) ?? []).map(o => ({ ...o, view: views && series ? plotReadingId(series, key) : undefined })));
+    return {
+      label: chart.label,
+      chart,
+      description,
+      views,
+      more: await renderMarkdown(keys.map(key => more.get(key) ?? '').filter(Boolean).join('\n\n'), topic.slug, options),
+      anchors: anchors[i],
+      observations: await Promise.all(viewObservations.map(async o => {
+        const heading = (await renderMarkdown(o.heading, topic.slug, options)).replace(/^<p>|<\/p>\s*$/g, '');
+        return {
           id: `${fact.id}--${o.id}`,
           heading,
           label: heading.replace(/<[^>]+>/g, ''),
-          html: await renderMarkdown(o.markdown, topic.slug, topic.facts, options),
+          html: await renderMarkdown(o.markdown, topic.slug, options),
           mark: fact.observationMarks?.[o.id],
           subtlety: o.subtlety,
           view: o.view,
-          href: `${factPath(topic.slug, fact.id)}#${fact.id}--${o.id}`,
-          });
-        })),
-      };
-    }));
-    const unknowns: DataStep[] = fact.dataStillNeeded?.length
-      ? [{ label: UNKNOWNS_LABEL, unknowns: fact.dataStillNeeded, observations: [], description: '', more: '', anchors: [`${fact.id}--data-still-needed`] }]
-      : [];
-    rendered.set(fact.id, [...charts, ...unknowns]);
-  }
-  return rendered;
+          href: `${topicPath(topic.slug)}#${fact.id}--${o.id}`,
+        };
+      })),
+    };
+  }));
 }

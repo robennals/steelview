@@ -8,27 +8,19 @@ Every voter should be able to vote by mail. The states that mail every voter a b
 
 ### In the all-mail states, no known fraud has overturned an election
 
-[Oregon, Washington, Utah and Colorado cast more than nine in ten ballots by mail](#fact-mail-voting-use-and-effects/all-mail-states-lead). Yet [none of the elections thrown out for fraud in the Heritage Foundation's list was in one of them](#fact-absentee-fraud-and-manipulation-of-the-count/no-voidings-in-all-mail-states).
-
-A commission that warned about absentee ballots still [found "little evidence of fraud in Oregon"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-oregon), where everyone votes by mail. And [in 2024, all-mail states fell on both sides of the national rate of rejected mail ballots](#fact-mail-ballot-rejection-and-signature-checks/all-mail-states-not-different). Mailing everyone a ballot did not mean more ballots thrown out.
+[Oregon, Washington, Utah and Colorado cast more than nine in ten ballots by mail](#fact-mail-voting-use-and-effects/all-mail-states-lead). Yet [none of the elections thrown out for fraud in the Heritage Foundation's list was in one of them](#fact-absentee-fraud-and-manipulation-of-the-count/no-voidings-in-all-mail-states). Even a commission that warned about absentee ballots [found "little evidence of fraud in Oregon"](#fact-absentee-fraud-and-manipulation-of-the-count/carter-baker-oregon), where everyone votes by mail.
 
 ### Every mail ballot is checked before it counts, and known schemes were caught
 
-[Every state checks returned envelopes before the ballot counts, though the checks differ](#fact-mail-ballot-rejection-and-signature-checks/checks-differ-by-state). [Known schemes that overturned elections were exposed, and most of those elections were rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun).
-
-While [about one returned ballot in a hundred is rejected](#fact-mail-ballot-rejection-and-signature-checks/rejection-about-one-percent), that is a reason to let voters fix mistakes, not to take mail voting away. Where voters can fix problems, [more than half the ballots set aside were corrected and counted](#fact-mail-ballot-rejection-and-signature-checks/more-than-half-cured).
+[Every state checks returned envelopes before the ballot counts, though the checks differ](#fact-mail-ballot-rejection-and-signature-checks/checks-differ-by-state). [Known schemes that overturned elections were exposed, and most of those elections were rerun](#fact-absentee-fraud-and-manipulation-of-the-count/each-case-caught-and-rerun). While [about one returned ballot in a hundred is rejected](#fact-mail-ballot-rejection-and-signature-checks/rejection-about-one-percent), that is a reason to let voters fix mistakes, not to take mail voting away: where they can, [more than half the ballots set aside were corrected and counted](#fact-mail-ballot-rejection-and-signature-checks/more-than-half-cured).
 
 ### Mail voting helps the voters who find polling places hardest to use
 
-[Voters with disabilities report far less difficulty by mail than at the polling place](#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier), and [they rely on mail more](#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more). [Older voters use it most](#fact-mail-voting-use-and-effects/older-voters-use-mail-most). [An equal voice for every citizen](#principle-an-equal-voice-for-every-citizen) means a vote people can actually use.
-
-While [sending every voter a ballot raised turnout by only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly), two points is a great many citizens. [It moved the Democratic share of turnout by only 0.1 points](#fact-mail-voting-use-and-effects/no-partisan-tilt), in a study of years before the parties split over mail voting.
+[Voters with disabilities report far less difficulty by mail than at the polling place](#fact-mail-voting-use-and-effects/disabled-voters-find-mail-easier), and [they rely on mail more](#fact-mail-voting-use-and-effects/disabled-voters-use-mail-more). [Older voters use it most](#fact-mail-voting-use-and-effects/older-voters-use-mail-most). [An equal voice for every citizen](#principle-an-equal-voice-for-every-citizen) means a vote people can actually use. While [sending every voter a ballot raised turnout by only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly), two points is a great many citizens. Nor is it a gain for one party: [it moved the Democratic share of turnout by only 0.1 points](#fact-mail-voting-use-and-effects/no-partisan-tilt), though in years before the parties split over mail voting.
 
 ### Other democracies vote heavily by post, and Britain fixed its fraud without ending it
 
-[Germany cast almost half its 2021 vote by post](#fact-secret-ballot-and-postal-voting-abroad/germany-postal-share-rose), and [Switzerland votes about 90% by post](#fact-secret-ballot-and-postal-voting-abroad/switzerland-about-90-percent). When Britain found postal fraud, [it added identity checks and banned campaigners from handling postal votes](#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks).
-
-While [a court found thousands of postal votes falsified after Britain let anyone vote by post](#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand), [in recent years Britain's Electoral Commission has found no evidence of large-scale fraud](#fact-secret-ballot-and-postal-voting-abroad/uk-no-large-scale-fraud).
+[Germany cast almost half its 2021 vote by post](#fact-secret-ballot-and-postal-voting-abroad/germany-postal-share-rose), and [Switzerland votes about 90% by post](#fact-secret-ballot-and-postal-voting-abroad/switzerland-about-90-percent). Britain did have fraud: [a court found thousands of postal votes falsified after Britain let anyone vote by post](#fact-secret-ballot-and-postal-voting-abroad/uk-fraud-under-on-demand). It kept postal voting, but [added identity checks and banned campaigners from handling postal votes](#fact-secret-ballot-and-postal-voting-abroad/uk-kept-on-demand-added-checks), and [in recent years Britain's Electoral Commission has found no evidence of large-scale fraud](#fact-secret-ballot-and-postal-voting-abroad/uk-no-large-scale-fraud).
 
 ### Voting at home rarely means voting under pressure
 
@@ -38,6 +30,4 @@ While [nearly a quarter of mail voters have someone else in the room](#fact-secr
 
 ### So every voter should get the choice, under rules both parties can trust
 
-[Democrats now use mail far more than Republicans](#fact-mail-voting-use-and-effects/democrats-use-mail-more), so the rules must earn both parties' trust. Every voter should get the choice, with ballot tracking, a chance to fix signatures and a ban on paid ballot collection.
-
-[Voters of the president's party are usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power). So low trust among one party's voters does not, by itself, show that mail voting fails.
+[Democrats now use mail far more than Republicans](#fact-mail-voting-use-and-effects/democrats-use-mail-more), so the rules must earn both parties' trust. Every voter should get the choice, with ballot tracking, a chance to fix signatures and a ban on paid ballot collection. Low trust among one party's voters does not, by itself, show that mail voting fails: [voters of the president's party are usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power).

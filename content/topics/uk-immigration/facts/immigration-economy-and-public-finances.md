@@ -21,7 +21,28 @@ claim: >-
 status: well-supported
 sources:
 - stance: supports
-  quote: "\"2007\",\"37625\" \"2008\",\"37300\" \"2009\",\"35339\" \"2010\",\"35850\" \"2011\",\"35856\" \"2012\",\"36160\" \"2013\",\"36537\" \"2014\",\"37411\" \"2015\",\"37937\" \"2016\",\"38467\" \"2017\",\"39415\" \"2018\",\"39831\" \"2019\",\"40125\" \"2020\",\"36033\" \"2021\",\"38972\" \"2022\",\"40554\" \"2023\",\"40126\" \"2024\",\"40153\" \"2025\",\"40546\""
+  quote: |-
+    Title | Gross domestic product (Average) per head, CVM market prices (reference year = 2023) £: SA
+    Unit | £
+    2007 | 37625
+    2008 | 37300
+    2009 | 35339
+    2010 | 35850
+    2011 | 35856
+    2012 | 36160
+    2013 | 36537
+    2014 | 37411
+    2015 | 37937
+    2016 | 38467
+    2017 | 39415
+    2018 | 39831
+    2019 | 40125
+    2020 | 36033
+    2021 | 38972
+    2022 | 40554
+    2023 | 40126
+    2024 | 40153
+    2025 | 40546
   title: "Gross domestic product (Average) per head, CVM market prices (reference year = 2023), series IHXW, dataset PN2 (rows 2007–2025)"
   url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
   fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
@@ -29,7 +50,17 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "\"2019\",\"2673465\" \"2020\",\"2404838\" \"2021\",\"2610286\" \"2022\",\"2744708\" \"2023\",\"2752164\" \"2024\",\"2780853\" \"2025\",\"2817414\""
+  quote: |-
+    Title | Gross Domestic Product: chained volume measures: Seasonally adjusted £m
+    PreUnit | £
+    Unit | m
+    2019 | 2673465
+    2020 | 2404838
+    2021 | 2610286
+    2022 | 2744708
+    2023 | 2752164
+    2024 | 2780853
+    2025 | 2817414
   title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2 (rows 2019–2025)"
   url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
   fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
@@ -37,7 +68,7 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
+  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … We also assume additional migrants have the same participation rate as the existing population. Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
   title: Economic and fiscal outlook – March 2024 (CP 1027), Box 2.3
   url: "https://obr.uk/docs/dlm_uploads/E03057758_OBR_EFO-March-2024_Web-AccessibleFinal.pdf"
   publisher: Office for Budget Responsibility
@@ -121,7 +152,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: supports
-  quote: "For the entire cohort of 329,200 arrivals, we estimate that they will contribute a net £47.1bn over their lifetime – or +£143,000"
+  quote: "For the entire cohort of 329,200 arrivals, we estimate that they will contribute a net £47.1bn over their lifetime – or +£143,000 per migrant. This is almost entirely driven by main applicants working outside of Health and Care."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -163,7 +194,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: supports
-  quote: "We estimate that the top 10% of earners in the SW (excl. H&C) cohort (with a minimum salary in 2022/23 of £131,000) make an average lifetime contribution of £2.7m and account for 39% of the total contribution of"
+  quote: "We estimate that the top 10% of earners in the SW (excl. H&C) cohort (with a minimum salary in 2022/23 of £131,000) make an average lifetime contribution of £2.7m and account for 39% of the total contribution of this cohort (see Figure 18). In contrast, the bottom 10% contribute 1% of the total."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -175,7 +206,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: complicates
-  quote: "a 3.0% real discount rate which is broadly in line with HMT Green Book"
+  quote: "In our baseline, we discount future net contributions using a 3.0% real discount rate which is broadly in line with HMT Green Book (this is the 𝑟 in Equation (4))."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -205,7 +236,7 @@ sources:
   publisher: Office for Budget Responsibility
   date: "2024-09-12"
 - stance: supports
-  quote: "For example, a high-wage migrant earning 30 per cent more than the UK average would still be a net benefit to the public finances even if they lived to"
+  quote: "Earnings. Due to the differences in taxes paid over the working life, a higher wage migrant worker is more fiscally beneficial than the average UK resident (black line) over their lifetime. For example, a high-wage migrant earning 30 per cent more than the UK average would still be a net benefit to the public finances even if they lived to 100."
   title: "Fiscal risks and sustainability – September 2024 (CP 1142, corrected 14 November 2024), paragraph 4.33"
   url: "https://obr.uk/docs/dlm_uploads/Fiscal-risks-and-sustainability-report-September-2024-1.pdf"
   publisher: Office for Budget Responsibility
@@ -255,7 +286,12 @@ sources:
   publisher: Home Office
   date: "2025-05-12"
 - stance: supports
-  quote: "6145 Care Workers and Home Carers 32,000 £23,100 84% 6146 Senior Care Workers 16,800 £25,800 78%"
+  quote: |-
+    Table 5: Median annual adjusted earnings and minimum proportions who had PAYE earnings, for Health and Care Worker main applicants granted entry clearance visas, financial year 2023 to 2024, by occupation
+
+    Occupation (Top 5) | Count of those found to have PAYE earnings in 2023/24 | Median annual adjusted earnings in 2023/24 | Minimum proportion who had PAYE earnings in 2023/24
+    6145 Care Workers and Home Carers | 32,000 | £23,100 | 84%
+    6146 Senior Care Workers | 16,800 | £25,800 | 78%
   title: "Sponsored work and family visa earnings, employment and Income Tax, Table 5"
   url: "https://www.gov.uk/government/publications/sponsored-work-and-family-visa-earnings-employment-and-income-tax/sponsored-work-and-family-visa-earnings-employment-and-income-tax"
   publisher: Home Office
@@ -327,13 +363,27 @@ sources:
   publisher: The Migration Observatory, University of Oxford
   date: "2026-06-23"
 - stance: supports
-  quote: "Oxford Economics (2018) FY 2016/17 (1 year) +£4.7b -£9.0b -£41.4b Migration Watch (2016) FY 2014/15 (1 year) -£1.1b -£15.6b -£87.8b £0.0 -£6.2b Dustmann and Frattini (2014) 1995-2011 (17 years) +£4.4b (+£259m pa) -£118b (-£6.9b pa) -£591b (-£34.8b pa)"
+  quote: |-
+    Static estimates of the fiscal effects of migrants in the UK (£ billions)
+
+     | All migrants and UK born: EEA | All migrants and UK born: Non-EEA | All migrants and UK born: UK born | Recent migrants only: EEA | Recent migrants only: Non-EEA
+    Oxford Economics (2018) |  |  |  |  |
+    FY 2016/17 (1 year) | +£4.7b | -£9.0b | -£41.4b |  |
+    Migration Watch (2016) |  |  |  |  |
+    FY 2014/15 (1 year) | -£1.1b | -£15.6b | -£87.8b | £0.0 | -£6.2b
+    Dustmann and Frattini (2014) |  |  |  |  |
+    1995-2011 (17 years) | +£4.4b (+£259m pa) | -£118b (-£6.9b pa) | -£591b (-£34.8b pa) |  |
   title: "The Fiscal Impact of Immigration in the UK, Table 1 (columns: EEA, non-EEA, UK born, then recent EEA and non-EEA migrants)"
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
   publisher: The Migration Observatory, University of Oxford
   date: "2026-06-23"
 - stance: supports
-  quote: "Migration Watch (2014) 1995-2011 (17 years) -£13.6b (-£0.8b pa) -£134.9b (-£7.94b pa) -£565b (-£33.2b pa)"
+  quote: |-
+    Static estimates of the fiscal effects of migrants in the UK (£ billions)
+
+     | All migrants and UK born: EEA | All migrants and UK born: Non-EEA | All migrants and UK born: UK born | Recent migrants only: EEA | Recent migrants only: Non-EEA
+    Migration Watch (2014) |  |  |  |  |
+    1995-2011 (17 years) | -£13.6b (-£0.8b pa) | -£134.9b (-£7.94b pa) | -£565b (-£33.2b pa) |  |
   title: The Fiscal Impact of Immigration in the UK, Table 1
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
   publisher: The Migration Observatory, University of Oxford
@@ -429,7 +479,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2018-09"
 - stance: supports
-  quote: "reduced the hourly wage of UK-born wage earners at the 5 th percentile (i.e. the lowest earners in the labour market) by around half of one pence per year. The gains for top earners were also small: 1.7p per year for people at the 90 th percentile of wage earners."
+  quote: "reduced the hourly wage of UK-born wage earners at the 5th percentile (i.e. the lowest earners in the labour market) by around half of one pence per year. The gains for top earners were also small: 1.7p per year for people at the 90th percentile of wage earners."
   title: The labour market effects of immigration
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-labour-market-effects-of-immigration/"
   publisher: The Migration Observatory, University of Oxford

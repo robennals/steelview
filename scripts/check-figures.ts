@@ -64,7 +64,7 @@ import { factFrontmatterSchema, topicFrontmatterSchema } from '../lib/content/sc
 import { chartProse, figureProse } from '../lib/content/figure-text';
 import { isComponentFigure } from '../lib/content/types';
 import { auditValue, chartValues, isWeakMatch, type ValueVerdict } from './chart-values';
-import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
+import { canonical, collectQuotes, figuresIn, quoteCorpus, quotedSomewhere, type QuoteCorpus } from '@/lib/content/quoted-figures';
 
 import { checkDerivedFigures, verifiedDerivedFigures } from './derived-figures';
 

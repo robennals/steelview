@@ -7,7 +7,7 @@ import { areaMapProps, figureContext, figureDomId } from '@/lib/content/figure-p
 import { loadTopic } from '@/lib/content/load';
 import { factSlides } from '@/lib/content/preview';
 import { isComponentFigure, type Fact } from '@/lib/content/types';
-import { renderDataWalkthroughs, viewpointWalkthrough } from '@/lib/content/walkthrough';
+import { featuredSlides, renderFeaturedCharts, viewpointWalkthrough } from '@/lib/content/walkthrough';
 import { ChartThumb } from './chart-thumb';
 import { PanelChart, panelCharts } from './fact-figures';
 import { ObservationStep } from './observation-bar';
@@ -171,14 +171,14 @@ test('a walkthrough slide draws a library figure only when given its page', asyn
   const topic = await loadTopic('uk-asylum');
   const fact = topic.facts.find(f => f.id === 'asylum-law-and-the-echr')!;
   const slide = { fact, chart: 'article-31', label: 'Article 31', href: '/x' };
-  const page = { slug: 'uk-asylum', asOf: topic.lastUpdated, facts: topic.facts };
+  const page = { slug: 'uk-asylum', asOf: topic.lastUpdated };
   assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, page })), /sv-slide__figure[\s\S]*sv-cards__list/);
   assert.equal(renderToStaticMarkup(createElement(SlideChart, { slide })), '');
 });
 
 test('a slide draws a graph-like figure compactly, and a text figure only when given its page', () => {
   const topic = figureExamplesTopic();
-  const page = { slug: topic.slug, asOf: topic.lastUpdated, facts: topic.facts };
+  const page = { slug: topic.slug, asOf: topic.lastUpdated };
   const slideOf = (chart: string) => ({ fact, chart, label: chart, href: '/x' });
   assert.match(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('wa-by-race'), fit: 'card', page })), /<figure[^>]*data-preview[\s\S]*sv-chart__preview/);
   assert.match(renderToStaticMarkup(createElement(SlideChart, { slide: slideOf('federal-laws'), page })), /sv-slide__figure[\s\S]*<table/);
@@ -196,7 +196,7 @@ function observedFact(): Fact {
 }
 
 const observedTopic = figureExamplesTopic(observedFact());
-const observedPage = { slug: observedTopic.slug, asOf: observedTopic.lastUpdated, facts: observedTopic.facts };
+const observedPage = { slug: observedTopic.slug, asOf: observedTopic.lastUpdated };
 const observed = observedTopic.facts[0];
 
 for (const figure of libraryFigures) {
@@ -206,7 +206,7 @@ for (const figure of libraryFigures) {
     const slide = factSlides(observedTopic.slug, observed).find(s => s.chart === id);
     assert.ok(slide, 'it has a slide');
     assert.ok(slide.label.length > 0);
-    assert.equal(slide.href, `/topics/${observedTopic.slug}/facts/${observed.id}#${figureDomId(observed, id)}`);
+    assert.equal(slide.href, `/topics/${observedTopic.slug}#${figureDomId(observed, id)}`);
     assert.match(renderToStaticMarkup(createElement(ChartThumb, { fact: observed, chart: id })), /^<svg class="sv-thumb"/);
     assert.match(renderToStaticMarkup(createElement(SlideChart, { slide, fit: 'card', page: observedPage })), /<figure/);
   });
@@ -217,8 +217,8 @@ for (const figure of libraryFigures) {
     assert.equal(steps(`chart-${id}`)[0].chart?.chart, id);
   });
 
-  test(`a ${kind} (${id}) is drawn in its fact's panel, with the id its links name`, () => {
-    const html = renderToStaticMarkup(createElement(Fragment, null, panelCharts(observed, observedPage)));
+  test(`a ${kind} (${id}) is drawn in full with the id its links name`, () => {
+    const html = renderToStaticMarkup(createElement(Fragment, null, panelCharts(observed, observedPage, factSlides(observedTopic.slug, observed))));
     assert.equal(html.split(`id="${figureDomId(observed, id)}"`).length, 2, 'its chart id appears once');
   });
 }
@@ -226,7 +226,7 @@ for (const figure of libraryFigures) {
 /** The kinds an observation can pick rows out of, each of which must draw them. */
 const ROW_KINDS = new Set(['barChart', 'compositionBar', 'estimateRange', 'smallMultiples', 'timeline', 'periodTimeline', 'quotes', 'map', 'dataTable']);
 
-test('every figure in a data panel shows the observation being stepped through', () => {
+test('every figure drawn in full shows the observation being stepped through', () => {
   const observations = [{ id: 'seen', heading: 'Seen here', html: '<p>Why.</p>', subtlety: false, href: '#seen', label: 'Seen here' }];
   for (const slide of factSlides(observedTopic.slug, observed).filter(s => libraryFigures.some(f => f.id === s.chart))) {
     const html = renderToStaticMarkup(createElement(ObservationStep, { observations }, createElement(PanelChart, { slide, page: observedPage })));
@@ -236,9 +236,26 @@ test('every figure in a data panel shows the observation being stepped through',
   }
 });
 
-test('a data row shows each figure beside its own observations', async () => {
-  const steps = (await renderDataWalkthroughs(observedTopic, [observed])).get(observed.id)!;
-  for (const { id } of libraryFigures) {
-    assert.ok(steps.find(s => s.chart?.chart === id)?.observations.some(o => o.heading === `Seen in ${id}`), id);
+/** The observed fixture with a viewpoint whose cards, one per figure, each cite that figure's observation. */
+const featuringTopic = {
+  ...observedTopic,
+  viewpoints: [{ ...observedTopic.viewpoints[0], body: libraryFigures.map(({ id }) => `### On ${id}\n\n[It](#fact-${observed.id}/seen-${id}).`).join('\n\n') }],
+};
+
+test('a featured chart is drawn in full beside its own observations', async () => {
+  const steps = (await renderFeaturedCharts(featuringTopic)).get(observed.id)!;
+  const featured = featuredSlides(featuringTopic).get(observed.id)!;
+  assert.ok(featured.length > 0);
+  for (const { chart } of featured) {
+    assert.ok(steps.find(s => s.chart.chart === chart)?.observations.some(o => o.heading === `Seen in ${chart}`), chart);
   }
+});
+
+test('only the charts a card is made with are featured', () => {
+  const featured = featuredSlides(featuringTopic).get(observed.id)!.map(slide => slide.chart);
+  // A table reads as more text, so a card is never made with one, and it is not on the page.
+  const tables = libraryFigures.filter(f => f.kind === 'dataTable').map(f => f.id);
+  assert.ok(tables.length > 0);
+  for (const id of tables) assert.ok(!featured.includes(id), id);
+  assert.equal(featuredSlides({ ...observedTopic, viewpoints: [] }).size, 0);
 });

@@ -39,5 +39,5 @@ export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
 
 /** The fixture fact with its body rendered, as a fact page receives it. */
 export async function figureExamplesPage(fact: Fact = figureExamplesFact()): Promise<{ fact: Fact; bodyHtml: string }> {
-  return { fact, bodyHtml: await renderMarkdown(fact.body, 'figure-examples', [fact]) };
+  return { fact, bodyHtml: await renderMarkdown(fact.body, 'figure-examples') };
 }
