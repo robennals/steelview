@@ -115,7 +115,9 @@ figures:
       adjusted for age and sex, or all offences, not adjusted.
     valueLabel: Conviction rate as a multiple of the British rate
     itemLabel: Group
-    pointLabel: Rate multiple
+    pointLabel: Cautions and convictions
+    compareLabel: Prison population
+    intervalLabel: Range from chance alone (95%)
     nullValue: 1
     nullLabel: British rate
     axis: log
@@ -134,7 +136,11 @@ figures:
       Economist's chart and shown as hollow dots. All offences: cautions and
       convictions in 2021 per head of residents in the 2021 Census, divided by
       the British rate per head, as published in the Migration Observatory's
-      Figure 4; not adjusted for age or sex. The same data, with every type of
+      Figure 4, with people in prison in 2021 per head on the same basis; not
+      adjusted for age or sex. Range from chance alone: the rate multiplied and
+      divided by e^(1.96/√n), where n is the number of cautions and
+      convictions, or prisoners, behind it; it leaves out people counted more
+      than once and errors in the population counts. The same data, with every type of
       offence and the 50 largest nationalities, is in the UK immigration topic.
       Nationality is the one an offender gives; naturalised citizens count as
       British.
@@ -191,26 +197,41 @@ figures:
     - label: "Iraq"
       group: "All offences, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
       estimate: 6.48
+      low: 5.96
+      high: 7.04
+      compare: { estimate: 7.71, low: 6.66, high: 8.92 }
       year: "2021"
       sources: [4]
     - label: "Afghanistan"
       group: "All offences, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
       estimate: 4.16
+      low: 3.78
+      high: 4.58
+      compare: { estimate: 4.92, low: 4.16, high: 5.83 }
       year: "2021"
       sources: [4]
     - label: "Iran"
       group: "All offences, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
       estimate: 3.97
+      low: 3.65
+      high: 4.31
+      compare: { estimate: 4.86, low: 4.21, high: 5.61 }
       year: "2021"
       sources: [4]
     - label: "Syria"
       group: "All offences, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
       estimate: 1.35
+      low: 1.1
+      high: 1.66
+      compare: { estimate: 2.41, low: 1.8, high: 3.22 }
       year: "2021"
       sources: [4]
     - label: "All foreign citizens"
       group: "All offences, Afghan, Iraqi, Iranian and Syrian citizens, 2021"
       estimate: 1.14
+      low: 1.13
+      high: 1.15
+      compare: { estimate: 1.18, low: 1.16, high: 1.2 }
       year: "2021"
       sources: [4]
 observationMarks:
