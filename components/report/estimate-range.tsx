@@ -1,9 +1,10 @@
 import { Fragment, type ReactNode } from 'react';
 import { ChartViewToggle } from '@/components/topic/chart-view-toggle';
-import { crossesNull, estimateScale, whiskerSpan } from './estimate-layout';
+import { crossesNull, estimateScale, whiskerSpan, type EstimateAxis } from './estimate-layout';
+import { EstimateGroupSwitch } from './estimate-group-switch';
 import { ReportFigure, SourceCredits } from './figure';
 import { formatValue } from './format';
-import { pointValue, qualifiedLabel, qualifiedText, type QualifiedPoint } from './qualified';
+import { pointValue, qualificationOf, qualifiedLabel, qualifiedText, type QualifiedPoint } from './qualified';
 import { COMPACT_PREVIEW_ITEMS } from './ranked-columns';
 import { DetailRow, RowDetailHint } from './row-detail';
 import type { FigurePreview, SourceCredit, ValueFormat } from './types';
@@ -25,7 +26,7 @@ export type Estimate = {
    */
   low?: number;
   high?: number;
-  /** Rows sharing a group are set under one subheading, in first-appearance order. */
+  /** Rows sharing a group are set under one subheading, in first-appearance order, or shown one group at a time with `switchGroups`. */
   group?: string;
   /** Shown when the row is opened, and in the table. */
   note?: string;
@@ -44,6 +45,8 @@ export type EstimateRangeProps = {
   itemLabel?: string;
   /** Which interval the whiskers show: "95% confidence interval". Said on the figure, because 90% and 95% intervals are not interchangeable. */
   intervalLabel?: string;
+  /** What the dot is, in the key: "Central estimate" (the default), or "Rate multiple" where there is no interval to be central in. */
+  pointLabel?: string;
   /**
    * The value meaning "no effect". Defaults to 0; use 1 for ratios. `null` for
    * estimates with no natural reference, such as costs: no reference line,
@@ -53,6 +56,18 @@ export type EstimateRangeProps = {
   nullLabel?: string;
   /** Fix the axis, e.g. to keep two figures comparable. Values outside are drawn at the edge with an arrowhead showing they continue. */
   domain?: [number, number];
+  /** `log` spaces values by ratio, for multiples: 0.5 and 2 sit the same distance either side of 1. Every value must be above zero. */
+  axis?: EstimateAxis;
+  /**
+   * Show one group at a time, picked from a dropdown named `groupLabel`
+   * ("Compare"), instead of every group under its own subheading. For groups
+   * that answer different questions on the same measure, which would be one
+   * long list otherwise. The table still lists every row of every group.
+   */
+  switchGroups?: boolean;
+  groupLabel?: string;
+  /** With `switchGroups`, the group shown first; defaults to the first. */
+  defaultGroup?: string;
   id?: string;
   title?: string;
   /** A short line under the title: the period, cases or source (see ReportFigure). */
@@ -89,9 +104,14 @@ export function EstimateRange({
   valueLabel,
   itemLabel = 'Estimate',
   intervalLabel = 'Interval',
+  pointLabel = 'Central estimate',
   nullValue = 0,
   nullLabel = 'No effect',
   domain,
+  axis = 'linear',
+  switchGroups = false,
+  groupLabel = 'Show',
+  defaultGroup,
   id,
   title,
   subtitle,
@@ -104,9 +124,8 @@ export function EstimateRange({
 }: EstimateRangeProps) {
   // Layout reads the central estimate's number; its qualifier is for the text.
   const bounds = (e: Estimate) => ({ low: e.low, high: e.high, estimate: e.estimate === undefined ? undefined : pointValue(e.estimate) });
-  const scale = estimateScale(estimates.map(bounds), nullValue, domain);
-  // Signs say which side of "no effect" a value is on; with no such value they say nothing.
-  const signed: ValueFormat = nullValue === null ? format : { ...format, signed: true };
+  // Signs say which side of "no effect" a value is on; with no such value — or on a ratio axis, where 1 is no effect and nothing is negative — they say nothing.
+  const signed: ValueFormat = nullValue === null || axis === 'log' ? format : { ...format, signed: true };
   const groups = [...new Set(estimates.map(e => e.group ?? ''))];
   const show = (value: number | QualifiedPoint | undefined) => (value === undefined ? '—' : qualifiedLabel(value, signed));
   const intervalText = (e: Estimate) =>
@@ -128,86 +147,103 @@ export function EstimateRange({
     if (present.length === 0) return undefined;
     return <dl className="sv-row-detail__facts">{present.map(([term, text]) => <Fragment key={term}><dt>{term}</dt><dd>{text}</dd></Fragment>)}</dl>;
   };
-  const hasDetail = !preview && estimates.some(detailFor);
-  // In rem, not ch: the preview sets its rows and its axis in different sizes, and the two must share this column.
-  const widths = { '--sv-estimates-value': `${(Math.max(3, ...estimates.map(e => rowValue(e).length)) + 1) * 0.5}rem` };
-  const rangeOnly = estimates.some(e => e.estimate === undefined);
-  const spans = estimates.map(e => whiskerSpan(bounds(e), scale));
-  const openBound = spans.some(span => span?.start === 'open' || span?.end === 'open');
-  const beyondAxis = spans.some(span => span?.start === 'clipped' || span?.end === 'clipped')
-    || estimates.some(e => { const central = bounds(e).estimate; return central !== undefined && scale.beyond(central) !== undefined; });
   const nullText = nullLabel.toLowerCase();
+  const shownFirst = switchGroups ? (groups.includes(defaultGroup ?? '') ? defaultGroup ?? '' : groups[0]) : undefined;
 
-  const graph = (
-    <div className="sv-estimates" data-compact={(preview && estimates.length > COMPACT_PREVIEW_ITEMS) || undefined} style={widths}>
-      {!preview && <p className="sv-estimates__key" aria-hidden="true">
-        <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" />Central estimate</span>
-        <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>
-        {rangeOnly && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />Range only: no dot where no central estimate was published</span>}
-        {openBound && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" data-open="" />Dashed: only this bound was published</span>}
-        {beyondAxis && <span className="sv-estimates__key-item"><i className="sv-estimates__key-arrow" />Arrow: continues beyond the axis</span>}
-        {nullValue !== null && <span className="sv-estimates__key-item"><i className="sv-estimates__key-null" />{nullLabel}</span>}
-      </p>}
-      {hasDetail && <RowDetailHint />}
-      {groups.map(group => (
-        <Fragment key={group || 'all'}>
-          {group && <h3 className="sv-estimates__group">{group}</h3>}
-          <ol className="sv-estimates__rows">
-            {estimates
-              .map((e, i) => ({ e, whisker: spans[i] }))
-              .filter(({ e }) => (e.group ?? '') === group)
-              .map(({ e, whisker }, i) => {
-                const crosses = crossesNull(bounds(e), nullValue);
-                const central = bounds(e).estimate;
-                const cells = (
-                  <>
-                    <span className="sv-estimates__label">{e.label}</span>
-                    <span className="sv-estimates__value">
-                      {rowValue(e)}
-                      {crosses !== undefined && (
-                        <span className="sv-visually-hidden">
-                          {crosses ? `; interval includes ${nullText}` : `; interval excludes ${nullText}`}
-                        </span>
-                      )}
-                    </span>
-                    <span className="sv-estimates__track" aria-hidden="true">
-                      {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
-                      {whisker && (
-                        <span
-                          className="sv-estimates__whisker"
-                          data-start={whisker.start}
-                          data-end={whisker.end}
-                          style={{ left: `${whisker.left}%`, width: `${Math.max(0, whisker.right - whisker.left)}%` }}
-                        />
-                      )}
-                      {central !== undefined && <span className="sv-estimates__dot" data-beyond={scale.beyond(central)} style={{ left: `${scale.x(central)}%` }} />}
-                    </span>
-                  </>
-                );
-                const detail = preview ? undefined : detailFor(e);
-                return detail
-                  ? <li key={`${e.label}-${i}`} data-row={e.label}><DetailRow rowClass="sv-estimates__row" summary={cells}>{detail}</DetailRow></li>
-                  : <li key={`${e.label}-${i}`} className="sv-estimates__row" data-row={e.label}>{cells}</li>;
-              })}
-          </ol>
-        </Fragment>
-      ))}
-      <div className="sv-estimates__axis" aria-hidden="true">
-        <span className="sv-estimates__ticks">
-          {scale.ticks.map((tick, i) => (
-            <span
-              key={tick}
-              className="sv-bars__tick"
-              data-edge={i === 0 ? 'start' : i === scale.ticks.length - 1 ? 'end' : undefined}
-              style={{ left: `${scale.x(tick)}%` }}
-            >
-              {formatValue(tick, tick === nullValue ? format : signed)}
-            </span>
-          ))}
-        </span>
+  /** The plot of `rows`: every estimate, or with `switchGroups` one group's, on an axis fitted to them unless `domain` fixes it. */
+  const drawGraph = (rows: Estimate[]) => {
+    const scale = estimateScale(rows.map(bounds), nullValue, domain, axis);
+    const hasDetail = !preview && rows.some(detailFor);
+    // In rem, not ch: the preview sets its rows and its axis in different sizes, and the two must share this column.
+    const widths = { '--sv-estimates-value': `${(Math.max(3, ...rows.map(e => rowValue(e).length)) + 1) * 0.5}rem` };
+    const rangeOnly = rows.some(e => e.estimate === undefined);
+    const approximate = rows.some(e => e.estimate !== undefined && qualificationOf(e.estimate) === 'approximate');
+    const spans = rows.map(e => whiskerSpan(bounds(e), scale));
+    const openBound = spans.some(span => span?.start === 'open' || span?.end === 'open');
+    const beyondAxis = spans.some(span => span?.start === 'clipped' || span?.end === 'clipped')
+      || rows.some(e => { const central = bounds(e).estimate; return central !== undefined && scale.beyond(central) !== undefined; });
+    const rowGroups = switchGroups ? [''] : [...new Set(rows.map(e => e.group ?? ''))];
+    return (
+      <div className="sv-estimates" data-compact={(preview && rows.length > COMPACT_PREVIEW_ITEMS) || undefined} style={widths}>
+        {!preview && <p className="sv-estimates__key" aria-hidden="true">
+          <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" />{pointLabel}</span>
+          {spans.some(Boolean) && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />{intervalLabel}</span>}
+          {approximate && <span className="sv-estimates__key-item"><i className="sv-estimates__key-dot" data-qualification="approximate" />Hollow: an approximate value</span>}
+          {rangeOnly && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" />Range only: no dot where no central estimate was published</span>}
+          {openBound && <span className="sv-estimates__key-item"><i className="sv-estimates__key-line" data-open="" />Dashed: only this bound was published</span>}
+          {beyondAxis && <span className="sv-estimates__key-item"><i className="sv-estimates__key-arrow" />Arrow: continues beyond the axis</span>}
+          {nullValue !== null && <span className="sv-estimates__key-item"><i className="sv-estimates__key-null" />{nullLabel}</span>}
+        </p>}
+        {hasDetail && <RowDetailHint />}
+        {rowGroups.map(group => (
+          <Fragment key={group || 'all'}>
+            {group && <h3 className="sv-estimates__group">{group}</h3>}
+            <ol className="sv-estimates__rows">
+              {rows
+                .map((e, i) => ({ e, whisker: spans[i] }))
+                .filter(({ e }) => switchGroups || (e.group ?? '') === group)
+                .map(({ e, whisker }, i) => {
+                  const crosses = crossesNull(bounds(e), nullValue);
+                  const central = bounds(e).estimate;
+                  const cells = (
+                    <>
+                      <span className="sv-estimates__label">{e.label}</span>
+                      <span className="sv-estimates__value">
+                        {rowValue(e)}
+                        {crosses !== undefined && (
+                          <span className="sv-visually-hidden">
+                            {crosses ? `; interval includes ${nullText}` : `; interval excludes ${nullText}`}
+                          </span>
+                        )}
+                      </span>
+                      <span className="sv-estimates__track" aria-hidden="true">
+                        {scale.zero !== undefined && <span className="sv-estimates__null" style={{ left: `${scale.zero}%` }} />}
+                        {whisker && (
+                          <span
+                            className="sv-estimates__whisker"
+                            data-start={whisker.start}
+                            data-end={whisker.end}
+                            style={{ left: `${whisker.left}%`, width: `${Math.max(0, whisker.right - whisker.left)}%` }}
+                          />
+                        )}
+                        {central !== undefined && e.estimate !== undefined && (
+                          <span
+                            className="sv-estimates__dot"
+                            data-beyond={scale.beyond(central)}
+                            data-qualification={qualificationOf(e.estimate) === 'approximate' ? 'approximate' : undefined}
+                            style={{ left: `${scale.x(central)}%` }}
+                          />
+                        )}
+                      </span>
+                    </>
+                  );
+                  const detail = preview ? undefined : detailFor(e);
+                  return detail
+                    ? <li key={`${e.label}-${i}`} data-row={e.label}><DetailRow rowClass="sv-estimates__row" summary={cells}>{detail}</DetailRow></li>
+                    : <li key={`${e.label}-${i}`} className="sv-estimates__row" data-row={e.label}>{cells}</li>;
+                })}
+            </ol>
+          </Fragment>
+        ))}
+        <div className="sv-estimates__axis" aria-hidden="true">
+          <span className="sv-estimates__ticks">
+            {scale.ticks.map((tick, i) => (
+              <span
+                key={tick}
+                className="sv-bars__tick"
+                data-edge={i === 0 ? 'start' : i === scale.ticks.length - 1 ? 'end' : undefined}
+                style={{ left: `${scale.x(tick)}%` }}
+              >
+                {formatValue(tick, tick === nullValue ? format : signed)}
+              </span>
+            ))}
+          </span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+  const inGroup = (group: string) => estimates.filter(e => (e.group ?? '') === group);
+  const graph = drawGraph(shownFirst === undefined ? estimates : inGroup(shownFirst));
 
   if (preview) return <ReportFigure id={id} title={title} subtitle={subtitle} preview={preview} className="sv-estimate-range">{graph}</ReportFigure>;
 
@@ -250,7 +286,9 @@ export function EstimateRange({
 
   return (
     <ReportFigure id={id} title={title} subtitle={subtitle} description={description} measure={valueLabel} sources={sources} note={note} footer={footer} panel={panel} className="sv-estimate-range">
-      <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
+      {shownFirst === undefined
+        ? <ChartViewToggle label={title ?? valueLabel} graph={graph} table={table} />
+        : <EstimateGroupSwitch label={title ?? valueLabel} groupLabel={groupLabel} defaultGroup={shownFirst} table={table} graphs={groups.map(group => ({ group, graph: drawGraph(inGroup(group)) }))} />}
     </ReportFigure>
   );
 }

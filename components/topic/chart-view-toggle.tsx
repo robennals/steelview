@@ -31,6 +31,7 @@ export function ChartViewToggle({
   table,
   graphLabel = 'Graph',
   alternate,
+  controls = [],
 }: {
   label: string;
   /** The view shown first, and the one rendered on the server. */
@@ -39,6 +40,8 @@ export function ChartViewToggle({
   /** The first button's name, e.g. "Map". */
   graphLabel?: string;
   alternate?: { label: string; graph: ReactNode };
+  /** The chart's own dropdowns, set on the row after the switch: an estimate chart's group picker. */
+  controls?: BarItem[];
 }) {
   const own = useState<View>('graph');
   const [view, setView] = useContext(SharedView) ?? own;
@@ -64,8 +67,8 @@ export function ChartViewToggle({
 
   return (
     <div className="sv-chart__view">
-      {/* A series with several readings adds a "Show as" dropdown beside the switch. */}
-      {showAs ? <ControlBar label={`${label} controls`} lead={switcher} items={readings} /> : switcher}
+      {/* A series with several readings adds a "Show as" dropdown beside the switch, as a chart adds its own controls. */}
+      {readings.length + controls.length > 0 ? <ControlBar label={`${label} controls`} lead={switcher} items={[...readings, ...controls]} /> : switcher}
       {view === 'graph' ? graph : view === 'alternate' ? alternate?.graph : table}
       {/* The switch needs script, but every value must stay readable without
           it, so a no-JS reader gets the table as a collapsed disclosure. */}

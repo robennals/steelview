@@ -65,3 +65,27 @@ export const OpenBoundsAndNoNull: Story = {
     ],
   },
 };
+
+/** Multiples on a log axis, one group at a time: the dropdown switches group, the table lists every row, and approximate values are hollow. Illustrative data. */
+export const SwitchedGroupsOnALogAxis: Story = {
+  args: {
+    title: 'Rates compared with a reference group',
+    description: 'Illustrative data. Each rate as a multiple of the reference group’s.',
+    valueLabel: 'Multiple of the reference rate',
+    pointLabel: 'Rate multiple',
+    format: { unit: 'number', decimals: 2 },
+    nullValue: 1,
+    nullLabel: 'Reference rate',
+    axis: 'log',
+    switchGroups: true,
+    groupLabel: 'Compare',
+    estimates: [
+      { label: 'Group A', estimate: 7, group: 'By region' },
+      { label: 'Group B', estimate: { value: 2.5, qualifier: 'about' }, group: 'By region' },
+      { label: 'Group C', estimate: { value: 0.55, qualifier: 'about' }, group: 'By region' },
+      { label: 'Type 1', estimate: 1.2, group: 'By type' },
+      { label: 'Type 2', estimate: 0.66, group: 'By type' },
+      { label: 'Type 3', estimate: 0.05, group: 'By type' },
+    ],
+  },
+};

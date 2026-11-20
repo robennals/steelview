@@ -1201,6 +1201,13 @@
     box-shadow: 0 0 0 2px var(--paper);
   }
 
+  /* An approximate value ("about 1.7"): an open ring, so it never reads as a measured point. */
+  .sv-estimates__dot[data-qualification="approximate"],
+  .sv-estimates__key-dot[data-qualification="approximate"] {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+  }
+
   /* A central estimate past a fixed axis sits on the edge, pointing on. */
   .sv-estimates__dot[data-beyond]::after {
     content: "";

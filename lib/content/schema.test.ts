@@ -6,6 +6,7 @@ import {
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
   seriesLineSchema,
+  estimateRangeFigureSchema,
 } from './schema';
 import { figureExamplesFrontmatter } from './__fixtures__/figure-examples';
 
@@ -547,4 +548,19 @@ test('a small-multiples figure needs a coverage and two panels of two points eac
     figureIssuePaths(index, f => ({ ...f, panels: (f.panels as Array<Record<string, unknown>>).map((p, i) => (i === 0 ? { ...p, points: [{ period: '2026-06', value: 1 }] } : p)) })),
     [`figures.${index}.panels.0.points`],
   );
+});
+
+test('an estimate chart on a log axis or switching groups checks its settings', () => {
+  const base = { kind: 'estimateRange', id: 'rates', title: 'Rates', description: 'Rates.', valueLabel: 'Times the British rate' };
+  const row = (label: string, estimate: number, group?: string) => ({ label, estimate, group, sources: [1] });
+  const messages = (figure: object) => {
+    const result = estimateRangeFigureSchema.safeParse({ ...base, ...figure });
+    return result.success ? [] : result.error.issues.map(issue => issue.message);
+  };
+  assert.deepEqual(messages({ axis: 'log', nullValue: 1, switchGroups: true, groupLabel: 'Compare', defaultGroup: 'B', estimates: [row('a', 2, 'A'), row('b', 0.5, 'B')] }), []);
+  assert.match(messages({ axis: 'log', nullValue: 1, estimates: [row('a', 2), row('b', 0)] }).join(), /at or below zero/);
+  assert.match(messages({ axis: 'log', estimates: [row('a', 2), row('b', 3)] }).join(), /needs a `nullValue` above zero/);
+  assert.match(messages({ switchGroups: true, estimates: [row('a', 2, 'A'), row('b', 3)] }).join(), /every estimate needs a `group`/);
+  assert.match(messages({ switchGroups: true, defaultGroup: 'C', estimates: [row('a', 2, 'A'), row('b', 3, 'B')] }).join(), /not one of the estimates' groups/);
+  assert.match(messages({ groupLabel: 'Compare', estimates: [row('a', 2, 'A'), row('b', 3, 'B')] }).join(), /needs `switchGroups`/);
 });
