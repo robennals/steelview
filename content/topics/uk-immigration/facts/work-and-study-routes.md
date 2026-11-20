@@ -237,13 +237,9 @@ sources:
   publisher: Skills for Care
   date: '2026-10-14'
 - stance: supports
-  quote: >-
-    The estimated number of internationally recruited workers in 2025/26 was 30,000
-    – a decrease from 50,000 the previous year. This in part was due to the closure
-    of the Health and Care Worker visa route to new overseas applicants from July
-    2025. ▪ An estimated 150,000 posts were filled by people employed on the Health
-    and Care Worker visa as at March 2026, working in direct care roles at establishments
-    regulated by the Care Quality Commission (CQC) in the independent sector.
+  quote: |-
+    - The estimated number of internationally recruited workers in 2025/26 was 30,000 – a decrease from 50,000 the previous year. This in part was due to the closure of the Health and Care Worker visa route to new overseas applicants from July 2025.
+    - An estimated 150,000 posts were filled by people employed on the Health and Care Worker visa as at March 2026, working in direct care roles at establishments regulated by the Care Quality Commission (CQC) in the independent sector.
   title: The state of the adult social care sector and workforce in England, 2026
   url: >-
     https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Reports/National/The-state-of-the-adult-social-care-sector-and-workforce-in-England-2026.pdf
@@ -292,18 +288,11 @@ sources:
   publisher: Skills for Care
   date: '2026-10-14'
 - stance: supports
-  quote: >-
-    The median hourly rate for care workers and support workers in March 2026 was
-    £12.60, which was 39p higher than the National Living Wage (NLW) (£12.21). ▪ The
-    median care worker and support worker hourly rate has nominally increased by 60p
-    (5.0%) since March 2025; however, taking inflation into account, it has increased
-    in real terms by 20p (1.6%). ▪ Care workers and support workers had lower hourly
-    rates (median - £12.60) compared to Band 3 NHS Healthcare Assistants (HCAs) who
-    were new in role (£12.75); however, they were paid more than those in Band 2 who
-    were new in role (£12.51). ▪ Care workers and support workers with five or more
-    years’ experience were, on average, earning around 12p more per hour than those
-    with less than one year’s experience. This is considerably lower than in March
-    2016, when the gap was 33p per hour.
+  quote: |-
+    - The median hourly rate for care workers and support workers in March 2026 was £12.60, which was 39p higher than the National Living Wage (NLW) (£12.21).
+    - The median care worker and support worker hourly rate has nominally increased by 60p (5.0%) since March 2025; however, taking inflation into account, it has increased in real terms by 20p (1.6%).
+    - Care workers and support workers had lower hourly rates (median - £12.60) compared to Band 3 NHS Healthcare Assistants (HCAs) who were new in role (£12.75); however, they were paid more than those in Band 2 who were new in role (£12.51).
+    - Care workers and support workers with five or more years’ experience were, on average, earning around 12p more per hour than those with less than one year’s experience. This is considerably lower than in March 2016, when the gap was 33p per hour.
   title: The state of the adult social care sector and workforce in England, 2026
   url: >-
     https://www.skillsforcare.org.uk/Adult-Social-Care-Workforce-Data/workforceintelligence/resources/Reports/National/The-state-of-the-adult-social-care-sector-and-workforce-in-England-2026.pdf
@@ -355,10 +344,11 @@ sources:
   publisher: Home Office
   date: '2025-09-11'
 - stance: supports
-  quote: >-
-    Licences have been revoked from companies for a wide range of rule breaking, which
-    includes: underpayment of workers facilitating the entry of individuals to circumvent
-    the immigration rules failing to provide promised work
+  quote: |-
+    Licences have been revoked from companies for a wide range of rule breaking, which includes:
+    - underpayment of workers
+    - facilitating the entry of individuals to circumvent the immigration rules
+    - failing to provide promised work
   title: Record numbers of visa sponsor licences revoked for rule breaking
   url: >-
     https://www.gov.uk/government/news/record-numbers-of-visa-sponsor-licences-revoked-for-rule-breaking

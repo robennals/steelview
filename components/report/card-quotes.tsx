@@ -17,7 +17,9 @@ export type CardQuotesProps = {
  * rests on, one under another, with a line saying how many "See all" leads
  * to. The card is a slide already, so the quotes are not a slideshow of their
  * own; every quote on the topic, which a reader can filter, is in the expanded
- * view, which a click anywhere on the card opens (ExplorableChart).
+ * view, which a click anywhere on the card opens (ExplorableChart). The
+ * expanded list puts the quotes shown here first, outlined, or just the one
+ * clicked (`data-explore-focus`, read by `focusedItems`).
  *
  * The quotes shown keep the collection's date order, undated last, as
  * QuoteBrowser does, and are set in the same type whoever is speaking. A card
@@ -34,7 +36,7 @@ export function CardQuotes({ title, quotes, picked = [], total = quotes.length }
       </figcaption>
       <ol className="sv-card-quotes__list">
         {shown.map(quote => (
-          <li key={quoteAnchor(quote)} className="sv-card-quotes__item">
+          <li key={quoteAnchor(quote)} className="sv-card-quotes__item" data-explore-focus={quoteAnchor(quote)}>
             <blockquote className="sv-card-quotes__text" lang={quote.lang}>
               <p>“{quote.text}”</p>
             </blockquote>

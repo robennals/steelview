@@ -1,12 +1,11 @@
 import { factSources, sourcesSummary } from '@/lib/content/sources';
 import type { Fact } from '@/lib/content/types';
+import { QuoteText } from './quote-text';
 
 type ChartSourcesProps = {
   fact: Fact;
   /** The fact's numbered sources this chart lists. */
   numbers: number[];
-  /** Those whose `#source-<fact>-<n>` address lands here without script: one chart's, on a report's own page. */
-  anchored?: number[];
 };
 
 /**
@@ -14,7 +13,7 @@ type ChartSourcesProps = {
  * opens to each source in full. Every source a reader can reach is on the row of
  * a chart that cites it; `data-source-id` is how a `#source-` link finds it.
  */
-export function ChartSources({ fact, numbers, anchored = [] }: ChartSourcesProps) {
+export function ChartSources({ fact, numbers }: ChartSourcesProps) {
   const sources = factSources(fact);
   const shown = numbers.flatMap(number => (sources[number - 1] ? [{ number, source: sources[number - 1] }] : []));
   if (shown.length === 0) return null;
@@ -31,10 +30,10 @@ export function ChartSources({ fact, numbers, anchored = [] }: ChartSourcesProps
         {shown.map(({ number, source }) => {
           const address = `source-${fact.id}-${number}`;
           return (
-            <li key={number} className="sv-source" value={number} id={anchored.includes(number) ? address : undefined} data-source-id={address}>
+            <li key={number} className="sv-source" value={number} data-source-id={address}>
               <a href={source.url} target="_blank" rel="noreferrer noopener">{source.title}</a>
               <p>{source.publisher}, {source.date} · {source.stance}</p>
-              <blockquote cite={source.url}>{source.quote}</blockquote>
+              <blockquote cite={source.url}><QuoteText parts={[{ text: source.quote, key: false }]} /></blockquote>
             </li>
           );
         })}

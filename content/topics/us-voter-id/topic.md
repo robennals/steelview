@@ -14,7 +14,7 @@ previewCharts:
   - fact: opinion-and-confidence-in-elections
     chart: series
   - fact: voter-id-rules-in-the-us-and-abroad
-    chart: series
+    chart: us-rules-2026
 dataOrder:
   - voter-id-rules-in-the-us-and-abroad
   - election-fraud-and-voter-exclusion-history
@@ -23,12 +23,4 @@ dataOrder:
   - voter-roll-maintenance
   - opinion-and-confidence-in-elections
   - federal-and-state-power-over-voting-rules
-principles:
-  - verifiably-honest-elections
-  - rules-must-mean-what-they-say
-  - an-equal-voice-for-every-citizen
-  - priority-to-the-worst-off
-  - results-the-losers-can-accept
-  - decisions-made-closest-to-the-people
-  - democratic-consent-over-membership
 ---

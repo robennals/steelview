@@ -248,6 +248,22 @@ function roomOnRight(geometry: ChartGeometry, labels: string[]): ChartGeometry {
   return needed <= inset ? geometry : { ...geometry, plotWidth: geometry.plotWidth - (needed - inset) };
 }
 
+/** The gap between two value axes stacked on the left, so their columns of numbers read as two. */
+const STACKED_AXIS_GAP = 16;
+
+/**
+ * The geometry with its plot moved right, and narrowed, until two columns of
+ * value labels fit left of it: the reading's own beside the plot, and the one
+ * drawn alongside further out. Also returns where that outer column ends.
+ */
+function roomForStackedTicks(geometry: ChartGeometry, own: string[], outer: string[]): { geometry: ChartGeometry; outerX: number } {
+  const widest = (labels: string[]) => Math.max(0, ...labels.map(label => tickLabelWidth(label, geometry.fontSize)));
+  const ownColumn = widest(own);
+  const needed = Math.ceil(8 + ownColumn + STACKED_AXIS_GAP + widest(outer));
+  const fitted = needed <= geometry.left ? geometry : { ...geometry, left: needed, plotWidth: geometry.plotWidth - (needed - geometry.left) };
+  return { geometry: fitted, outerX: fitted.left - 8 - ownColumn - STACKED_AXIS_GAP };
+}
+
 /**
  * Drop interior ticks too close to a neighbour to fit their labels, working
  * from the left so the kept ones stay evenly spread. The ends are always kept:
@@ -364,6 +380,8 @@ export type PlottedLine = {
   /** Estimate and provisional points, drawn as hollow circles when the reading is sparse enough to mark points. */
   hollow: PlottedPoint[];
   last: PlottedPoint;
+  /** In a stacked reading, the band the line fills: its own points along the top, and the total of the lines below along the floor. */
+  band?: { top: PlottedPoint[]; floor: PlottedPoint[] };
 };
 
 export type ValueTick = { value: number; y: number; label: string | null };
@@ -375,8 +393,13 @@ export type ReadingLayout = {
   geometry: ChartGeometry;
   lines: PlottedLine[];
   valueTicks: ValueTick[];
-  /** The right-hand axis's ticks, on the same gridlines, when a reading is drawn alongside. */
-  rightTicks: ValueTick[];
+  /** The ticks of the reading drawn alongside, on the same gridlines, when there is one. */
+  secondTicks: ValueTick[];
+  /**
+   * Where that second axis's labels sit: right of the plot, starting at `x`,
+   * or left of the reading's own axis, ending at `x`.
+   */
+  secondAxis: { side: 'left' | 'right'; x: number } | null;
   timeTicks: TimeTick[];
   breaks: BreakMark[];
   /** The y of value 0, when zero is inside the domain — the line a net series crosses. */
@@ -628,10 +651,16 @@ export function layoutReading(
   const slots = seriesSlots(series);
 
   const drawn = drawnLines(series, reading);
+  // A stacked reading is never thinned: thinning keeps each line's own
+  // extremes, which would leave the bands' periods out of step.
   const shown = drawn.map(({ line }) =>
-    window ? pointsAround(line.points, window) : thinned(line.points, base.plotWidth)
+    window ? pointsAround(line.points, window) : reading.stacked ? line.points : thinned(line.points, base.plotWidth)
   );
-  const valuesOn = (axis: DrawnLine['axis']) => shown.flatMap((points, i) => (drawn[i].axis === axis ? points.map((p) => p.value) : []));
+  // Each stacked line sits on the total of the lines before it, so its top
+  // edge is that running total and the top line's is the whole.
+  const floors = reading.stacked ? stackFloors(shown) : null;
+  const floorOf = (line: number, point: number) => floors?.[line][point] ?? 0;
+  const valuesOn = (axis: DrawnLine['axis']) => shown.flatMap((points, i) => (drawn[i].axis === axis ? points.map((p, j) => p.value + floorOf(i, j)) : []));
   const values = valuesOn('left');
   // Two axes are compared by their slopes, which only mean the same on both if
   // both start at zero, so a plot with a reading alongside always does.
@@ -641,9 +670,13 @@ export function layoutReading(
   const valueMax = ticks[ticks.length - 1];
   const tickText = (value: number, on: SeriesReading = reading) => (on.tickUnit ? `${formatTick(value, on.unit)} ${on.tickUnit}` : formatTick(value, on.unit));
   const rightValues = valuesOn('right');
-  const rightTicks = partner ? alignedTicks(...valueSpan(rightValues, true), ticks.length - 1) : [];
-  const leftFitted = roomForTicks(base, ticks.map(value => tickText(value)));
-  const geometry = partner ? roomOnRight(leftFitted, rightTicks.map(value => tickText(value, partner))) : leftFitted;
+  const secondTicks = partner ? alignedTicks(...valueSpan(rightValues, true), ticks.length - 1) : [];
+  const ownLabels = ticks.map(value => tickText(value));
+  const secondLabels = partner ? secondTicks.map(value => tickText(value, partner)) : [];
+  const stacked = partner && reading.alongsideAxis === 'left' ? roomForStackedTicks(base, ownLabels, secondLabels) : null;
+  const leftFitted = roomForTicks(base, ownLabels);
+  const geometry = stacked ? stacked.geometry : partner ? roomOnRight(leftFitted, secondLabels) : leftFitted;
+  const secondAxis = !partner ? null : stacked ? { side: 'left' as const, x: stacked.outerX } : { side: 'right' as const, x: geometry.left + geometry.plotWidth + 8 };
 
   // The declared coverage, not the data, sets the time domain: the two are
   // equal by rule 14, and saying so here means the axis is drawn from the
@@ -665,14 +698,14 @@ export function layoutReading(
     geometry.plotHeight -
     ((value - domain[0]) / (domain[domain.length - 1] - domain[0] || 1)) * geometry.plotHeight;
   const y = scale(ticks);
-  const y2 = scale(rightTicks);
+  const y2 = scale(secondTicks);
 
   const breakPeriods = series.breaks.map((b) => b.period);
   const markPoints = shown.reduce((n, points) => n + points.length, 0) <= HOLLOW_MARKER_LIMIT;
 
   const lines: PlottedLine[] = drawn.map(({ line, axis }, index) => {
     const yOf = axis === 'right' ? y2 : y;
-    const plotted = shown[index].map((point) => ({ x: x(point.period), y: yOf(point.value), point }));
+    const plotted = shown[index].map((point, j) => ({ x: x(point.period), y: yOf(point.value + floorOf(index, j)), point }));
     const { runs, bridges } = splitRuns(plotted, breakPeriods);
     return {
       name: line.name,
@@ -682,6 +715,7 @@ export function layoutReading(
       bridges,
       hollow: markPoints ? plotted.filter((p) => runKind(p.point) === 'estimate') : [],
       last: plotted[plotted.length - 1],
+      ...(floors ? { band: { top: plotted, floor: shown[index].map((point, j) => ({ x: x(point.period), y: yOf(floorOf(index, j)), point })) } } : {}),
     };
   });
 
@@ -705,13 +739,14 @@ export function layoutReading(
       label:
         index % geometry.valueLabelEvery === labelOffset ? tickText(value) : null,
     })),
-    rightTicks: partner
-      ? rightTicks.map((value, index) => ({
+    secondTicks: partner
+      ? secondTicks.map((value, index) => ({
         value,
         y: y2(value),
         label: index % geometry.valueLabelEvery === labelOffset ? tickText(value, partner) : null,
       }))
       : [],
+    secondAxis,
     timeTicks: dropCrowdedTicks(
       window || shortMonthly
         ? windowTicks(window ?? { from: series.coverage.from, to: end }, geometry, x)
@@ -732,6 +767,20 @@ export function layoutReading(
     y,
     y2,
   };
+}
+
+/**
+ * For each line of a stack, the total of the lines before it at each point.
+ * The lines give the same periods (validate.ts checks), so points line up by
+ * position.
+ */
+export function stackFloors(lines: SeriesPoint[][]): number[][] {
+  let running = lines[0]?.map(() => 0) ?? [];
+  return lines.map(points => {
+    const floor = running;
+    running = points.map((point, j) => (floor[j] ?? 0) + point.value);
+    return floor;
+  });
 }
 
 /** An observation's mark as drawn on a plot: veils over what it is not about, and dots on what it is. */
@@ -757,7 +806,9 @@ export function plotMark(layout: ReadingLayout, drawn: DrawnLine[], mark: Observ
     const source = drawn.find(d => d.line.name === line.name && d.axis === line.axis);
     const point = source?.line.points.find(p => p.period === mark.at);
     const y = line.axis === 'right' ? layout.y2 : layout.y;
-    return source && point ? [{ x: layout.x(point.period), y: y(point.value), slot: line.slot, label: formatValue(point.value, source.unit) }] : [];
+    // On a stack the dot sits on the line's band, at the running total; its label is still the line's own value.
+    const stackedY = line.band?.top.find(p => p.point.period === mark.at)?.y;
+    return source && point ? [{ x: layout.x(point.period), y: stackedY ?? y(point.value), slot: line.slot, label: formatValue(point.value, source.unit) }] : [];
   });
   return { veils, points };
 }
@@ -810,6 +861,11 @@ export function layoutContext(
     breaks: series.breaks.map((gap) => x(gap.period)),
     window: { x0: x(window.from), x1: x(window.to) },
   };
+}
+
+/** An SVG `d` for a stacked line's band: along its top, then back along its floor. */
+export function bandPath(band: { top: PlottedPoint[]; floor: PlottedPoint[] }): string {
+  return `${pathFor([...band.top, ...[...band.floor].reverse()])} Z`;
 }
 
 /** An SVG `d` for a run of points — plain line segments, never a smoothing curve. */

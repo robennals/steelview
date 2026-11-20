@@ -21,7 +21,28 @@ claim: >-
 status: well-supported
 sources:
 - stance: supports
-  quote: "\"2007\",\"37625\" \"2008\",\"37300\" \"2009\",\"35339\" \"2010\",\"35850\" \"2011\",\"35856\" \"2012\",\"36160\" \"2013\",\"36537\" \"2014\",\"37411\" \"2015\",\"37937\" \"2016\",\"38467\" \"2017\",\"39415\" \"2018\",\"39831\" \"2019\",\"40125\" \"2020\",\"36033\" \"2021\",\"38972\" \"2022\",\"40554\" \"2023\",\"40126\" \"2024\",\"40153\" \"2025\",\"40546\""
+  quote: |-
+    Title | Gross domestic product (Average) per head, CVM market prices (reference year = 2023) £: SA
+    Unit | £
+    2007 | 37625
+    2008 | 37300
+    2009 | 35339
+    2010 | 35850
+    2011 | 35856
+    2012 | 36160
+    2013 | 36537
+    2014 | 37411
+    2015 | 37937
+    2016 | 38467
+    2017 | 39415
+    2018 | 39831
+    2019 | 40125
+    2020 | 36033
+    2021 | 38972
+    2022 | 40554
+    2023 | 40126
+    2024 | 40153
+    2025 | 40546
   title: "Gross domestic product (Average) per head, CVM market prices (reference year = 2023), series IHXW, dataset PN2 (rows 2007–2025)"
   url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
   fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/ihxw/pn2
@@ -29,7 +50,17 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "\"2019\",\"2673465\" \"2020\",\"2404838\" \"2021\",\"2610286\" \"2022\",\"2744708\" \"2023\",\"2752164\" \"2024\",\"2780853\" \"2025\",\"2817414\""
+  quote: |-
+    Title | Gross Domestic Product: chained volume measures: Seasonally adjusted £m
+    PreUnit | £
+    Unit | m
+    2019 | 2673465
+    2020 | 2404838
+    2021 | 2610286
+    2022 | 2744708
+    2023 | 2752164
+    2024 | 2780853
+    2025 | 2817414
   title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2 (rows 2019–2025)"
   url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
   fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
@@ -37,7 +68,7 @@ sources:
   publisher: Office for National Statistics
   date: "2026-08-13"
 - stance: supports
-  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
+  quote: "In the high migration scenario, net migration falls by around 160,000 from its current level to settle at 515,000 a year in 2028-29. … We also assume additional migrants have the same participation rate as the existing population. Based on these assumptions, GDP is 1.5 per cent higher in 2028-29, but GDP per person is largely unchanged."
   title: Economic and fiscal outlook – March 2024 (CP 1027), Box 2.3
   url: "https://obr.uk/docs/dlm_uploads/E03057758_OBR_EFO-March-2024_Web-AccessibleFinal.pdf"
   publisher: Office for Budget Responsibility
@@ -121,7 +152,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: supports
-  quote: "For the entire cohort of 329,200 arrivals, we estimate that they will contribute a net £47.1bn over their lifetime – or +£143,000"
+  quote: "For the entire cohort of 329,200 arrivals, we estimate that they will contribute a net £47.1bn over their lifetime – or +£143,000 per migrant. This is almost entirely driven by main applicants working outside of Health and Care."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -163,7 +194,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: supports
-  quote: "We estimate that the top 10% of earners in the SW (excl. H&C) cohort (with a minimum salary in 2022/23 of £131,000) make an average lifetime contribution of £2.7m and account for 39% of the total contribution of"
+  quote: "We estimate that the top 10% of earners in the SW (excl. H&C) cohort (with a minimum salary in 2022/23 of £131,000) make an average lifetime contribution of £2.7m and account for 39% of the total contribution of this cohort (see Figure 18). In contrast, the bottom 10% contribute 1% of the total."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -175,7 +206,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2025-12-11"
 - stance: complicates
-  quote: "a 3.0% real discount rate which is broadly in line with HMT Green Book"
+  quote: "In our baseline, we discount future net contributions using a 3.0% real discount rate which is broadly in line with HMT Green Book (this is the 𝑟 in Equation (4))."
   title: "The Fiscal Impact of Immigration: Static and Dynamic Estimates for the UK"
   url: "https://assets.publishing.service.gov.uk/media/6938108633c7ace9c4a41e42/The_Fiscal_Impact_of_Immigration_Final__1_.pdf"
   publisher: Migration Advisory Committee
@@ -205,7 +236,7 @@ sources:
   publisher: Office for Budget Responsibility
   date: "2024-09-12"
 - stance: supports
-  quote: "For example, a high-wage migrant earning 30 per cent more than the UK average would still be a net benefit to the public finances even if they lived to"
+  quote: "Earnings. Due to the differences in taxes paid over the working life, a higher wage migrant worker is more fiscally beneficial than the average UK resident (black line) over their lifetime. For example, a high-wage migrant earning 30 per cent more than the UK average would still be a net benefit to the public finances even if they lived to 100."
   title: "Fiscal risks and sustainability – September 2024 (CP 1142, corrected 14 November 2024), paragraph 4.33"
   url: "https://obr.uk/docs/dlm_uploads/Fiscal-risks-and-sustainability-report-September-2024-1.pdf"
   publisher: Office for Budget Responsibility
@@ -255,7 +286,12 @@ sources:
   publisher: Home Office
   date: "2025-05-12"
 - stance: supports
-  quote: "6145 Care Workers and Home Carers 32,000 £23,100 84% 6146 Senior Care Workers 16,800 £25,800 78%"
+  quote: |-
+    Table 5: Median annual adjusted earnings and minimum proportions who had PAYE earnings, for Health and Care Worker main applicants granted entry clearance visas, financial year 2023 to 2024, by occupation
+
+    Occupation (Top 5) | Count of those found to have PAYE earnings in 2023/24 | Median annual adjusted earnings in 2023/24 | Minimum proportion who had PAYE earnings in 2023/24
+    6145 Care Workers and Home Carers | 32,000 | £23,100 | 84%
+    6146 Senior Care Workers | 16,800 | £25,800 | 78%
   title: "Sponsored work and family visa earnings, employment and Income Tax, Table 5"
   url: "https://www.gov.uk/government/publications/sponsored-work-and-family-visa-earnings-employment-and-income-tax/sponsored-work-and-family-visa-earnings-employment-and-income-tax"
   publisher: Home Office
@@ -327,13 +363,27 @@ sources:
   publisher: The Migration Observatory, University of Oxford
   date: "2026-06-23"
 - stance: supports
-  quote: "Oxford Economics (2018) FY 2016/17 (1 year) +£4.7b -£9.0b -£41.4b Migration Watch (2016) FY 2014/15 (1 year) -£1.1b -£15.6b -£87.8b £0.0 -£6.2b Dustmann and Frattini (2014) 1995-2011 (17 years) +£4.4b (+£259m pa) -£118b (-£6.9b pa) -£591b (-£34.8b pa)"
+  quote: |-
+    Static estimates of the fiscal effects of migrants in the UK (£ billions)
+
+     | All migrants and UK born: EEA | All migrants and UK born: Non-EEA | All migrants and UK born: UK born | Recent migrants only: EEA | Recent migrants only: Non-EEA
+    Oxford Economics (2018) |  |  |  |  |
+    FY 2016/17 (1 year) | +£4.7b | -£9.0b | -£41.4b |  |
+    Migration Watch (2016) |  |  |  |  |
+    FY 2014/15 (1 year) | -£1.1b | -£15.6b | -£87.8b | £0.0 | -£6.2b
+    Dustmann and Frattini (2014) |  |  |  |  |
+    1995-2011 (17 years) | +£4.4b (+£259m pa) | -£118b (-£6.9b pa) | -£591b (-£34.8b pa) |  |
   title: "The Fiscal Impact of Immigration in the UK, Table 1 (columns: EEA, non-EEA, UK born, then recent EEA and non-EEA migrants)"
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
   publisher: The Migration Observatory, University of Oxford
   date: "2026-06-23"
 - stance: supports
-  quote: "Migration Watch (2014) 1995-2011 (17 years) -£13.6b (-£0.8b pa) -£134.9b (-£7.94b pa) -£565b (-£33.2b pa)"
+  quote: |-
+    Static estimates of the fiscal effects of migrants in the UK (£ billions)
+
+     | All migrants and UK born: EEA | All migrants and UK born: Non-EEA | All migrants and UK born: UK born | Recent migrants only: EEA | Recent migrants only: Non-EEA
+    Migration Watch (2014) |  |  |  |  |
+    1995-2011 (17 years) | -£13.6b (-£0.8b pa) | -£134.9b (-£7.94b pa) | -£565b (-£33.2b pa) |  |
   title: The Fiscal Impact of Immigration in the UK, Table 1
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-fiscal-impact-of-immigration-in-the-uk/"
   publisher: The Migration Observatory, University of Oxford
@@ -429,7 +479,7 @@ sources:
   publisher: Migration Advisory Committee
   date: "2018-09"
 - stance: supports
-  quote: "reduced the hourly wage of UK-born wage earners at the 5 th percentile (i.e. the lowest earners in the labour market) by around half of one pence per year. The gains for top earners were also small: 1.7p per year for people at the 90 th percentile of wage earners."
+  quote: "reduced the hourly wage of UK-born wage earners at the 5th percentile (i.e. the lowest earners in the labour market) by around half of one pence per year. The gains for top earners were also small: 1.7p per year for people at the 90th percentile of wage earners."
   title: The labour market effects of immigration
   url: "https://migrationobservatory.ox.ac.uk/resources/briefings/the-labour-market-effects-of-immigration/"
   publisher: The Migration Observatory, University of Oxford
@@ -496,8 +546,8 @@ sources:
   date: "2025"
 series:
   title: UK GDP
-  subtitle: Per head and for the whole economy, at 2023 prices, 1948–2025
-  description: "Gross domestic product (GDP), the UK's total economic output, at 2023 prices: divided by the population, or for the whole economy. This is real GDP for every year the Office for National Statistics series publish. A larger population raises total output even when output per person does not change, so the two can tell different stories. Per head is output per person, not income per person or how that output is shared."
+  subtitle: Per head and for the whole economy, at 2023 prices
+  description: "Gross domestic product (GDP), the UK's total economic output, at 2023 prices: divided by the population, or for the whole economy. This is real GDP for every year the Office for National Statistics series publish. A larger population raises total output even when output per person does not change, so the two can tell different stories. The first view puts both on one scale, as the percentage each has grown since 1955; the others show each in pounds. Per head is output per person, not income per person or how that output is shared."
   periodLabel: Year
   coverage:
     from: "1948"
@@ -514,9 +564,319 @@ series:
     publisher: Office for National Statistics
     date: "2026-08-13"
   readings:
+  - id: gdp-growth
+    label: Growth since 1955
+    unit: percent
+    valueLabel: "% change since 1955, at 2023 prices"
+    note: "Derived from the two ONS series charted in the other views: each year's value divided by its 1955 value, minus one. The ONS does not publish these percentages."
+    lines:
+    - name: UK GDP per head
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series IHXW starts in 1955 (earlier cells are blank or zero)."
+      points:
+      - period: "1955"
+        value: 0.0
+      - period: "1956"
+        value: 1.2
+      - period: "1957"
+        value: 2.7
+      - period: "1958"
+        value: 3.7
+      - period: "1959"
+        value: 7.4
+      - period: "1960"
+        value: 13.3
+      - period: "1961"
+        value: 15.4
+      - period: "1962"
+        value: 15.6
+      - period: "1963"
+        value: 20.4
+      - period: "1964"
+        value: 26.4
+      - period: "1965"
+        value: 28.2
+      - period: "1966"
+        value: 29.5
+      - period: "1967"
+        value: 32.3
+      - period: "1968"
+        value: 38.9
+      - period: "1969"
+        value: 40.9
+      - period: "1970"
+        value: 44.3
+      - period: "1971"
+        value: 48.7
+      - period: "1972"
+        value: 54.7
+      - period: "1973"
+        value: 64.4
+      - period: "1974"
+        value: 60.3
+      - period: "1975"
+        value: 57.9
+      - period: "1976"
+        value: 62.7
+      - period: "1977"
+        value: 66.7
+      - period: "1978"
+        value: 73.7
+      - period: "1979"
+        value: 80.0
+      - period: "1980"
+        value: 76.1
+      - period: "1981"
+        value: 75.0
+      - period: "1982"
+        value: 78.7
+      - period: "1983"
+        value: 86.1
+      - period: "1984"
+        value: 89.9
+      - period: "1985"
+        value: 97.2
+      - period: "1986"
+        value: 102.9
+      - period: "1987"
+        value: 113.5
+      - period: "1988"
+        value: 124.6
+      - period: "1989"
+        value: 129.4
+      - period: "1990"
+        value: 130.1
+      - period: "1991"
+        value: 126.1
+      - period: "1992"
+        value: 126.1
+      - period: "1993"
+        value: 130.7
+      - period: "1994"
+        value: 138.0
+      - period: "1995"
+        value: 143.1
+      - period: "1996"
+        value: 148.8
+      - period: "1997"
+        value: 160.3
+      - period: "1998"
+        value: 168.0
+      - period: "1999"
+        value: 174.9
+      - period: "2000"
+        value: 186.4
+      - period: "2001"
+        value: 192.1
+      - period: "2002"
+        value: 195.8
+      - period: "2003"
+        value: 203.9
+      - period: "2004"
+        value: 209.4
+      - period: "2005"
+        value: 215.6
+      - period: "2006"
+        value: 220.3
+      - period: "2007"
+        value: 227.0
+      - period: "2008"
+        value: 224.2
+      - period: "2009"
+        value: 207.2
+      - period: "2010"
+        value: 211.6
+      - period: "2011"
+        value: 211.7
+      - period: "2012"
+        value: 214.3
+      - period: "2013"
+        value: 217.6
+      - period: "2014"
+        value: 225.2
+      - period: "2015"
+        value: 229.7
+      - period: "2016"
+        value: 234.4
+      - period: "2017"
+        value: 242.6
+      - period: "2018"
+        value: 246.2
+      - period: "2019"
+        value: 248.8
+      - period: "2020"
+        value: 213.2
+      - period: "2021"
+        value: 238.7
+      - period: "2022"
+        value: 252.5
+      - period: "2023"
+        value: 248.8
+      - period: "2024"
+        value: 249.0
+      - period: "2025"
+        value: 252.4
+    - name: UK GDP
+      coverage:
+        from: "1955"
+        to: "2025"
+        note: "The ONS annual series ABMI starts in 1948; shown here from 1955, so both lines grow from the same year."
+      source:
+        stance: supports
+        quote: "\"Title\",\"Gross Domestic Product: chained volume measures: Seasonally adjusted £m\""
+        title: "Gross Domestic Product: chained volume measures: Seasonally adjusted £m, series ABMI, dataset PN2"
+        url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+        fileUrl: https://www.ons.gov.uk/generator?format=csv&uri=/economy/grossdomesticproductgdp/timeseries/abmi/pn2
+        localFile: datasets/ons.gov.uk/timeseries-abmi-pn2.csv
+        publisher: Office for National Statistics
+        date: "2026-08-13"
+      points:
+      - period: "1955"
+        value: 0.0
+      - period: "1956"
+        value: 1.7
+      - period: "1957"
+        value: 3.7
+      - period: "1958"
+        value: 5.1
+      - period: "1959"
+        value: 9.6
+      - period: "1960"
+        value: 16.5
+      - period: "1961"
+        value: 19.6
+      - period: "1962"
+        value: 20.9
+      - period: "1963"
+        value: 26.7
+      - period: "1964"
+        value: 34.0
+      - period: "1965"
+        value: 36.8
+      - period: "1966"
+        value: 38.9
+      - period: "1967"
+        value: 42.8
+      - period: "1968"
+        value: 50.6
+      - period: "1969"
+        value: 53.4
+      - period: "1970"
+        value: 57.6
+      - period: "1971"
+        value: 63.3
+      - period: "1972"
+        value: 70.4
+      - period: "1973"
+        value: 81.5
+      - period: "1974"
+        value: 76.9
+      - period: "1975"
+        value: 74.2
+      - period: "1976"
+        value: 79.5
+      - period: "1977"
+        value: 83.9
+      - period: "1978"
+        value: 91.6
+      - period: "1979"
+        value: 98.7
+      - period: "1980"
+        value: 94.7
+      - period: "1981"
+        value: 93.6
+      - period: "1982"
+        value: 97.4
+      - period: "1983"
+        value: 105.7
+      - period: "1984"
+        value: 110.3
+      - period: "1985"
+        value: 118.9
+      - period: "1986"
+        value: 125.8
+      - period: "1987"
+        value: 138.1
+      - period: "1988"
+        value: 151.0
+      - period: "1989"
+        value: 157.1
+      - period: "1990"
+        value: 158.5
+      - period: "1991"
+        value: 154.9
+      - period: "1992"
+        value: 155.6
+      - period: "1993"
+        value: 161.4
+      - period: "1994"
+        value: 170.3
+      - period: "1995"
+        value: 176.8
+      - period: "1996"
+        value: 184.1
+      - period: "1997"
+        value: 197.9
+      - period: "1998"
+        value: 207.6
+      - period: "1999"
+        value: 216.7
+      - period: "2000"
+        value: 231.0
+      - period: "2001"
+        value: 238.9
+      - period: "2002"
+        value: 244.7
+      - period: "2003"
+        value: 255.8
+      - period: "2004"
+        value: 264.1
+      - period: "2005"
+        value: 274.2
+      - period: "2006"
+        value: 282.4
+      - period: "2007"
+        value: 293.6
+      - period: "2008"
+        value: 293.4
+      - period: "2009"
+        value: 275.4
+      - period: "2010"
+        value: 283.9
+      - period: "2011"
+        value: 287.1
+      - period: "2012"
+        value: 293.1
+      - period: "2013"
+        value: 299.8
+      - period: "2014"
+        value: 312.4
+      - period: "2015"
+        value: 321.3
+      - period: "2016"
+        value: 330.6
+      - period: "2017"
+        value: 343.6
+      - period: "2018"
+        value: 350.5
+      - period: "2019"
+        value: 356.1
+      - period: "2020"
+        value: 310.3
+      - period: "2021"
+        value: 345.3
+      - period: "2022"
+        value: 368.3
+      - period: "2023"
+        value: 369.6
+      - period: "2024"
+        value: 374.4
+      - period: "2025"
+        value: 380.7
   - id: gdp-per-head
-    label: GDP per head
-    alongside: gdp-total
+    label: GDP per head, £
     unit: count
     valueLabel: £ per person, 2023 prices
     lines:
@@ -669,7 +1029,7 @@ series:
       - period: "2025"
         value: 40546
   - id: gdp-total
-    label: Total GDP
+    label: Total GDP, £ billion
     unit: count
     valueLabel: £ billion, 2023 prices
     note: "ONS series ABMI, chained volume measure, published in £ million and shown here divided by 1,000. The annual series starts in 1948."
@@ -2170,8 +2530,10 @@ observationMarks:
 movedAnchors:
   observations-founders: earnings-by-route
   chart-gdp-total-series: gdp-total
+  observations-gdp-per-head: gdp-growth
+  observations-gdp-total: gdp-growth
 ---
-## Observations {#immigration-economy-and-public-finances--observations-gdp-per-head}
+## Observations {#immigration-economy-and-public-finances--observations-gdp-growth}
 
 ### GDP per head has barely grown since 2019 {#immigration-economy-and-public-finances--gdp-per-head-barely-grew}
 
@@ -2180,8 +2542,6 @@ In pounds per person at 2023 prices, UK GDP per head was 40,125 in 2019 and 40,5
 ### The series shows timing, not cause {#immigration-economy-and-public-finances--timing-not-cause}
 
 The 2019–2025 window contains the 2020 pandemic fall in output as well as other shocks. A series of GDP per head cannot by itself say how much of the stall, if any, is due to migration; that needs a model, and the OBR's scenarios are further down. No study attributing the stall among its causes was found. [1](#source-immigration-economy-and-public-finances-1) [8](#source-immigration-economy-and-public-finances-8)
-
-## Observations {#immigration-economy-and-public-finances--observations-gdp-total}
 
 ### Total GDP grew from 2019 to 2025 {#immigration-economy-and-public-finances--total-gdp-grew}
 

@@ -27,6 +27,8 @@ import {
   zoneLabelPlacement,
   decimate,
   layoutContext,
+  bandPath,
+  stackFloors,
 } from './series-chart';
 
 const source = {
@@ -550,12 +552,12 @@ test('a reading drawn alongside another is on its plot, against a right-hand axi
   // Room is made on the right for the second axis's labels.
   assert.ok(layout.geometry.plotWidth < alone.geometry.plotWidth);
   assert.deepEqual(layout.lines.map(l => [l.name, l.axis]), [['Immigration', 'left'], ['Net migration', 'left'], ['Immigration share', 'right']]);
-  assert.equal(layout.rightTicks.length, layout.valueTicks.length);
-  layout.rightTicks.forEach((tick, i) => assert.ok(Math.abs(tick.y - layout.valueTicks[i].y) < 1e-9));
-  assert.ok(layout.rightTicks.some(tick => tick.label?.endsWith('%')));
+  assert.equal(layout.secondTicks.length, layout.valueTicks.length);
+  layout.secondTicks.forEach((tick, i) => assert.ok(Math.abs(tick.y - layout.valueTicks[i].y) < 1e-9));
+  assert.ok(layout.secondTicks.some(tick => tick.label?.endsWith('%')));
   // Both axes start at zero when nothing goes below it, so their slopes compare.
   assert.equal(layoutReading({ ...data, readings: [{ ...people, lines: [people.lines[0]] }, share] }, { ...people, lines: [people.lines[0]] }, 'wide').valueTicks[0].value, 0);
-  assert.equal(layout.rightTicks[0].value, 0);
+  assert.equal(layout.secondTicks[0].value, 0);
   // A right-axis point is placed on the right-axis scale.
   const top = share.lines[0].points.at(-1)!;
   assert.ok(Math.abs(layout.lines[2].last.y - layout.y2(top.value)) < 1e-9);
@@ -565,6 +567,24 @@ test('a reading drawn alongside another is on its plot, against a right-hand axi
   assert.deepEqual(mark.points.map(p => p.label), ['400', formatValue(top.value, 'percent')]);
 });
 
+test('a second axis can stand left of the first, further out, keeping the plot\'s right edge', () => {
+  const data = together();
+  const people = { ...data.readings[0], alongsideAxis: 'left' as const };
+  const stacked = layoutReading({ ...data, readings: [people, data.readings[1]] }, people, 'wide');
+  const right = layoutReading(data, data.readings[0], 'wide');
+  const alone = layoutReading(series(), series().readings[0], 'wide');
+  assert.equal(right.secondAxis?.side, 'right');
+  assert.equal(stacked.secondAxis?.side, 'left');
+  // The plot moves right to fit both columns of numbers, and its right edge stays where a one-axis plot's is.
+  assert.ok(stacked.geometry.left > alone.geometry.left);
+  assert.equal(stacked.geometry.left + stacked.geometry.plotWidth, alone.geometry.left + alone.geometry.plotWidth);
+  // The outer column ends clear of the inner one, which ends 8 short of the plot.
+  const inner = Math.max(...stacked.valueTicks.flatMap(t => (t.label ? [tickLabelWidth(t.label, stacked.geometry.fontSize)] : [])));
+  assert.ok(stacked.secondAxis!.x <= stacked.geometry.left - 8 - inner);
+  // The scales are the same wherever the axis is drawn.
+  assert.deepEqual(stacked.secondTicks.map(t => t.value), right.secondTicks.map(t => t.value));
+});
+
 test('a plot with a reading alongside tables both readings\' lines', () => {
   const data = together();
   const rows = readingRows(data, data.readings[0]);
@@ -572,4 +592,37 @@ test('a plot with a reading alongside tables both readings\' lines', () => {
   assert.deepEqual(drawnLines(data, data.readings[0]).map(d => [d.line.name, d.unit, d.axis]), [
     ['Immigration', 'count', 'left'], ['Net migration', 'count', 'left'], ['Immigration share', 'percent', 'right'],
   ]);
+});
+
+test('a stacked reading draws each line on the total of the lines before it; marks keep the line\'s own value', () => {
+  const s = series();
+  const people = s.readings[0];
+  const lines = [
+    { name: 'Granted', points: [{ period: '1990', value: 10 }, { period: '1991', value: 20 }, { period: '1992', value: 30 }, { period: '1993', value: 40 }] },
+    { name: 'Refused', points: [{ period: '1990', value: 5 }, { period: '1991', value: 5 }, { period: '1992', value: 10 }, { period: '1993', value: 60 }] },
+  ];
+  s.breaks = [];
+  s.readings = [{ ...people, stacked: true, lines }];
+  const layout = layoutReading(s, s.readings[0], 'wide');
+  const [granted, refused] = layout.lines;
+  // The first band sits on zero, the second on the first; the top edge is the total.
+  assert.deepEqual(granted.band!.floor.map(p => p.y), lines[0].points.map(() => layout.y(0)));
+  assert.deepEqual(refused.band!.floor.map(p => p.y), granted.band!.top.map(p => p.y));
+  assert.deepEqual(refused.band!.top.map(p => p.y), [15, 25, 40, 100].map(layout.y));
+  // The axis reaches the largest total, not the largest single value.
+  assert.ok(layout.valueTicks[layout.valueTicks.length - 1].value >= 100);
+  assert.match(bandPath(refused.band!), /^M.* Z$/);
+  const mark = plotMark(layout, drawnLines(s, s.readings[0]), { lines: ['Refused'], at: '1993' });
+  assert.deepEqual(mark.points.map(p => [p.y, p.label]), [[layout.y(100), formatValue(60, 'count')]]);
+});
+
+test('stack floors are the running totals of the lines before each', () => {
+  const at = (values: number[]) => values.map((value, i) => ({ period: String(2000 + i), value }));
+  assert.deepEqual(stackFloors([at([1, 2]), at([3, 4]), at([5, 6])]), [[0, 0], [1, 2], [4, 6]]);
+  assert.deepEqual(stackFloors([]), []);
+});
+
+test('an unstacked reading has no bands', () => {
+  const s = series();
+  assert.ok(layoutReading(s, s.readings[0], 'wide').lines.every(line => line.band === undefined));
 });

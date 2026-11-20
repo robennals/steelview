@@ -109,7 +109,7 @@ test('a focus window renders the strip, both plots with the full range hidden, a
 test('the Brent fixture passes the series rules', () => {
   const fact = { id: 'brent', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: BRENT_FOCUS_WINDOW };
   const viewpoint = (id: string) => ({ id, name: id, shortName: id, summary: 's', order: 1, body: 'b' });
-  const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', firstPublished: '2026-08-18', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], principles: [], cruxes: [] });
+  const errors = validateTopic({ slug: 't', title: 'T', subtitle: 'S', lastUpdated: '2026-10-29', firstPublished: '2026-08-18', intro: '', facts: [fact], viewpoints: [viewpoint('a'), viewpoint('b')], cruxes: [] });
   assert.deepEqual(errors, []);
 });
 
@@ -196,7 +196,7 @@ test('a measurement change credits the series source, and has no Method Changes 
   const { PanelChart } = await import('./fact-figures');
   const fact = { id: 'oil', claim: 'Claim.', status: 'well-supported' as const, sources: [source], body: 'Body.', series: twoPanelSeries() };
   const slide = { fact, chart: 'series', reading: fact.series.readings[0].id, label: fact.series.title, href: '' };
-  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic', facts: [fact] } }));
+  const html = renderToStaticMarkup(createElement(PanelChart, { slide, page: { slug: 'topic' } }));
   assert.doesNotMatch(html, /<summary>Method Changes<\/summary>/);
   const card = html.match(/data-kind="method" data-marker="2">[\s\S]*?<\/button><\/div>/)?.[0] ?? '';
   assert.match(card, /The benchmark changed\./);

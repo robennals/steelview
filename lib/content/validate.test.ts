@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { compositionSumError, evidenceErrors, validateTopic } from './validate';
-import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
+import { compositionSumError, evidenceErrors, normaliseQuote, validateTopic } from './validate';
+import type { Topic, Fact, Viewpoint, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { factSources } from './sources';
 import { US_STATE_TILES } from '../../components/report/geo/tiles';
@@ -36,10 +36,6 @@ function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
   };
 }
 
-function principle(over: Partial<Principle> & { id: string }): Principle {
-  return { name: 'A principle', body: '', ...over };
-}
-
 function crux(over: Partial<Crux> & { id: string }): Crux {
   return {
     title: 'A question?',
@@ -66,7 +62,6 @@ function soundTopic(): Topic {
       viewpoint({ id: 'one' }),
       viewpoint({ id: 'two' }),
     ],
-    principles: [principle({ id: 'fairness' })],
     cruxes: [
       crux({
         id: 'timing',
@@ -169,7 +164,7 @@ test('rule 7: a crux may not give a position for a viewpoint it does not divide'
   t.cruxes[0].divides = ['one', 'two'];
   t.cruxes[0].positions.push({ viewpoint: 'three', holds: 'A third position.' });
   t.viewpoints.push(
-    viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'], principles: ['fairness'] })
+    viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'] })
   );
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('three') && e.includes('divides')), errors.join('\n'));
@@ -270,16 +265,10 @@ test('rule 9: a topic needs at least 2 viewpoints', () => {
   );
 });
 
-test('a viewpoint can stop using a principle without changing its shared definition', () => {
-  const t = soundTopic();
-  t.viewpoints[0].principles = [];
-  assert.deepEqual(validateTopic(t), []);
-});
-
 test('every error message names the offending item', () => {
   const t = soundTopic();
   t.viewpoints[0].citesFacts = ['nope'];
-  for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |principle |crux /);
+  for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |crux /);
 });
 
 test('rule 12: a body linking to a fact that does not exist is reported', () => {
@@ -300,8 +289,17 @@ test('rule 12: a dead citation in a fact body is reported too', () => {
 
 test('rule 12: a citation of a real fact is accepted', () => {
   const t = soundTopic();
-  t.principles[0].body = 'See [alpha](#fact-alpha).';
+  t.intro = 'See [alpha](#fact-alpha).';
   assert.deepEqual(validateTopic(t), []);
+});
+
+test('a body may not link to a principle: values are stated in prose and weighed in cruxes', () => {
+  const t = soundTopic();
+  t.viewpoints[0].body = 'Every citizen should have [an equal voice](#principle-equal-voice).';
+  assert.ok(
+    validateTopic(t).some((e) => e.includes('viewpoint one') && e.includes('#principle-equal-voice')),
+    validateTopic(t).join('\n')
+  );
 });
 
 test('a viewpoint lists every claim it marks #needed', () => {
@@ -373,7 +371,7 @@ test.skip('rule 13: citing a supporting fact whose parent is unlisted is reporte
   );
 });
 
-test('rule 13 does not apply to fact or principle bodies', () => {
+test('rule 13 does not apply to fact bodies', () => {
   const t = soundTopic();
   t.facts[0].body = 'Compare [gamma](#fact-gamma).';
   assert.deepEqual(validateTopic(t), []);
@@ -525,6 +523,31 @@ test('a reading drawn alongside another names one, of the same series, whose lin
   assert.ok(draw('nothing').some(e => e.includes('drawn alongside "nothing", which is not another reading')));
   assert.ok(draw('people').some(e => e.includes('which is not another reading')));
   assert.ok(draw('share', false).some(e => e.includes('share a plot and both have a line')));
+});
+
+test('only a reading that draws another alongside places the second axis', () => {
+  const t = topicWithSeries();
+  const s = t.facts[0].series!;
+  s.readings = [{ ...s.readings[0], alongsideAxis: 'left' }];
+  assert.ok(validateTopic(t).some(e => e.includes('places the axis of a reading drawn alongside, but draws none')));
+});
+
+test('a stacked reading adds up: counts, two or more lines on the same periods, none negative, its plot its own', () => {
+  const stack = (edit: (s: Series) => void = () => {}) => {
+    const t = topicWithSeries();
+    const s = t.facts[0].series!;
+    const first = s.readings[0].lines[0];
+    s.readings[0] = { ...s.readings[0], stacked: true, lines: [first, { ...first, name: 'Emigration' }] };
+    edit(s);
+    return validateTopic(t).filter(e => e.includes('stack'));
+  };
+  assert.deepEqual(stack(), []);
+  assert.ok(stack(s => { s.readings[0].unit = 'percent'; }).some(e => e.includes('unit must be count')));
+  assert.ok(stack(s => { s.readings[0].lines.pop(); }).some(e => e.includes('has one line')));
+  assert.ok(stack(s => { s.readings[0].lines[1] = { ...s.readings[0].lines[1], points: s.readings[0].lines[1].points.map((p, i) => (i === 1 ? { ...p, period: '1991-06' } : p)) }; }).some(e => e.includes('different periods')));
+  assert.ok(stack(s => { s.readings[0].lines[1] = { ...s.readings[0].lines[1], points: s.readings[0].lines[1].points.map((p, i) => (i === 1 ? { ...p, value: -1 } : p)) }; }).some(e => e.includes('negative value')));
+  assert.ok(stack(s => { s.readings.push({ ...s.readings[0], id: 'share', stacked: undefined, alongside: 'people', lines: [{ ...s.readings[0].lines[0], name: 'Share' }] }); }).some(e => e.includes('no reading can share its plot')));
+  assert.ok(stack(s => { s.focus = { from: '1992', label: 'Recent' }; }).some(e => e.includes('focus window')));
 });
 
 test('rule 14: two readings may not share an id', () => {
@@ -1324,7 +1347,8 @@ function previewedTopic(): Topic {
   const t = soundTopic();
   t.facts[0].series = undefined;
   t.facts[0].comparisons = [{ id: 'shares', title: 'Shares', description: 'd', unit: 'percent', valueLabel: 'v', sources: [1], items: [{ label: 'a', value: 1 }, { label: 'b', value: 2 }] }];
-  t.viewpoints[0].body = 'See [the shares](#fact-alpha).';
+  // A preview is a chart a viewpoint's card is made with: one cited in a card's line.
+  t.viewpoints[0].body = '### A point\n\nSee [the shares](#fact-alpha/chart-shares).';
   t.viewpoints[1].body = 'See [the shares](#fact-alpha).';
   t.previewCharts = [{ fact: 'alpha', chart: 'shares' }];
   return t;
@@ -1342,11 +1366,11 @@ test('preview charts: each must resolve to a chart on a fact in the topic', () =
   assert.ok(errors.includes('topic: preview chart missing/series does not resolve to a chart or figure'), errors.join('\n'));
 });
 
-test('preview charts: each must be on a headline fact, which has a data panel on the report', () => {
+test('preview charts: each must be a chart a viewpoint\'s card is made with', () => {
   const t = previewedTopic();
-  t.facts[0].supports = t.facts[1].id;
+  t.viewpoints[0].body = 'See [the shares](#fact-alpha).';
   const errors = validateTopic(t);
-  assert.ok(errors.includes('topic: preview chart alpha/shares is on a supporting fact, which has no data panel on the report — preview a chart of the headline fact it supports'), errors.join('\n'));
+  assert.ok(errors.includes('topic: preview chart alpha/shares is not on any viewpoint\'s card, and only those charts are on the topic page — preview one a card is made with'), errors.join('\n'));
 });
 
 test('preview charts: the same chart may not be listed twice', () => {
@@ -1446,6 +1470,8 @@ test('a mark must name what is on its chart', () => {
 function previewedFigures(previewCharts: Topic['previewCharts']): Topic {
   const t = figureExamplesTopic();
   for (const v of t.viewpoints) v.body = 'See [the figures](#fact-figure-examples).';
+  // Each preview is on a card of the first viewpoint, as validation requires.
+  t.viewpoints[0].body = (previewCharts ?? []).map(({ chart }) => `### On ${chart}\n\nSee [it](#fact-figure-examples/chart-${chart}).`).join('\n\n');
   t.previewCharts = previewCharts;
   return t;
 }
@@ -1477,4 +1503,8 @@ test('preview charts: a previewed figure counts its fact towards every viewpoint
   const t = previewedFigures([{ fact: 'figure-examples', chart: 'wa-by-race' }]);
   t.viewpoints[1].body = 'Cites no fact.';
   assert.deepEqual(validateTopic(t), ['topic: viewpoint two cites none of the preview charts\' facts — add a chart it relies on to previewCharts']);
+});
+
+test('F11 reads a source quote\'s layout as spaces: a bullet\'s dash and a table\'s bars are not its words', () => {
+  assert.equal(normaliseQuote('Routes were:\n- Iran (16%)\n- Afghanistan\n\nYear | Total'), 'routes were: iran (16%) afghanistan year total');
 });

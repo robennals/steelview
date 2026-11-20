@@ -32,12 +32,11 @@ export function figureExamplesTopic(fact: Fact = figureExamplesFact()): Topic {
       { id: 'one', name: 'One', shortName: 'One', summary: 'One.', order: 1, body: 'One.' },
       { id: 'two', name: 'Two', shortName: 'Two', summary: 'Two.', order: 2, body: 'Two.' },
     ],
-    principles: [],
     cruxes: [],
   };
 }
 
 /** The fixture fact with its body rendered, as a fact page receives it. */
 export async function figureExamplesPage(fact: Fact = figureExamplesFact()): Promise<{ fact: Fact; bodyHtml: string }> {
-  return { fact, bodyHtml: await renderMarkdown(fact.body, 'figure-examples', [fact]) };
+  return { fact, bodyHtml: await renderMarkdown(fact.body, 'figure-examples') };
 }

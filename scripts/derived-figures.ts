@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { collectQuotes, quoteCorpus, quotedSomewhere } from './figures';
+import { collectQuotes, quoteCorpus, quotedSomewhere } from '@/lib/content/quoted-figures';
 
 export const derivedFigureSchema = z.discriminatedUnion('method', [
   z.object({ method: z.literal('ratio-percent'), figure: z.string(), numerator: z.number(), denominator: z.number().positive(), decimals: z.number().int().min(0).max(4) }),

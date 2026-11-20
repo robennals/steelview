@@ -15,7 +15,7 @@ previewCharts:
   - fact: immigration-housing-and-public-services
     chart: investment
   - fact: settlement-and-migrant-status
-    chart: series
+    chart: settlement-forecast
   - fact: integration-outcomes
     chart: series
 dataOrder:
@@ -26,12 +26,4 @@ dataOrder:
   - settlement-and-migrant-status
   - integration-outcomes
   - crime-terrorism-and-group-exploitation
-principles:
-  - democratic-consent-over-membership
-  - first-duty-to-its-own-people
-  - continuity-of-a-shared-way-of-life
-  - contribution-earns-a-share
-  - rules-must-mean-what-they-say
-  - gains-from-open-exchange
-  - priority-to-the-worst-off
 ---

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ComponentFigure, Fact } from '@/lib/content/types';
 import { previewTarget } from '@/lib/content/preview';
-import { layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
+import { bandPath, layoutReading, pathFor, seriesStrokeDash } from '@/lib/chart/series-chart';
 import { layoutScatter } from '@/lib/chart/scatter';
 import {
   areaMapProps,
@@ -65,6 +65,7 @@ export function ChartThumb({ fact, chart, reading, preview = false, picked }: {
       const g = layout.geometry;
       return (
         <Thumb viewBox={`${g.left} ${g.top} ${g.plotWidth} ${g.plotHeight}`}>
+          {layout.lines.flatMap(line => line.band ? [<path key={`${line.name}-band`} d={bandPath(line.band)} fill={`var(--sv-series-${line.slot})`} fillOpacity="0.35" />] : [])}
           {layout.lines.flatMap(line => line.runs.map((run, i) => (
             <path key={`${line.name}-${i}`} d={pathFor(run.points)} fill="none" stroke={`var(--sv-series-${line.slot})`} strokeWidth="2" strokeDasharray={seriesStrokeDash(line.slot)} vectorEffect="non-scaling-stroke" />
           )))}
@@ -266,15 +267,17 @@ function PanelsThumb({ panels, independentScales, zeroBased }: SmallMultiplesPro
 }
 
 /** One full-width bar per row, split into its parts' shares in the chart's colours. */
-function CompositionThumb({ categories, rows, otherThreshold, otherLabel }: CompositionBarProps) {
-  const composed = compose(categories, rows, { otherThreshold, otherLabel });
+function CompositionThumb({ categories, rows, otherThreshold, otherLabel, unit }: CompositionBarProps) {
+  const composed = compose(categories, rows, { otherThreshold, otherLabel, unit });
   const row = 100 / Math.max(1, composed.rows.length);
   return (
     <Thumb>
       {composed.rows.flatMap((r, i) => {
-        const starts = r.segments.map((_, j) => r.segments.slice(0, j).reduce((sum, s) => sum + s.share, 0));
+        // As on the chart, a bar's length is its row's total against the longest row's.
+        const scale = r.length / 100;
+        const starts = r.segments.map((_, j) => r.segments.slice(0, j).reduce((sum, s) => sum + s.share, 0) * scale);
         return r.segments.map((segment, j) => segment.share > 0 && (
-          <rect key={`${i}-${segment.key}`} x={starts[j]} width={segment.share} y={i * row + row * 0.2} height={row * 0.6} fill={compositionColor(categories, segment.key)} />
+          <rect key={`${i}-${segment.key}`} x={starts[j]} width={segment.share * scale} y={i * row + row * 0.2} height={row * 0.6} fill={compositionColor(categories, segment.key)} />
         ));
       })}
     </Thumb>

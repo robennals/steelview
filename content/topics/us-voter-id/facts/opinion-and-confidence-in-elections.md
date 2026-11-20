@@ -14,33 +14,54 @@ status: well-supported
 sources:
   # 1
   - stance: supports
-    quote: >-
-      Requiring all voters to show government-issued photo identification
-      (83%) ... Making early, in-person voting available for at least two
-      weeks prior to the election (80%) ... Today, majorities in both parties (89% of
-      Democrats, 71% of Republicans) favor at least two weeks of early,
-      in-person voting. ... More than nine-in-ten Republicans (95%) and about
-      seven-in-ten Democrats (71%) favor requiring all voters to show
-      government-issued photo identification to vote. ... 77% of Democrats and
-      42% of Republicans support automatic voter registration. ... Now, 58% of
-      Americans support allowing voters to cast ballots by mail, including 32%
-      of Republicans and 83% of Democrats. ... At least seven-in-ten adults
-      across racial and ethnic groups favor requiring paper ballot backups for
-      electronic voting machines, photo identification requirements and early,
-      in-person voting periods of at least two weeks.
+    quote: |-
+      Among the most-supported proposals:
+      - Requiring electronic voting machines to print a paper backup of a voter’s ballot (84% in favor)
+      - Requiring all voters to show government-issued photo identification (83%)
+      - Making early, in-person voting available for at least two weeks prior to the election (80%)
+      - Making Election Day a federal holiday (74%)
+
+      ... As has long been the case, there is more support for each of these proposals among Democrats than Republicans. 77% of Democrats and 42% of Republicans support automatic voter registration.
+
+      ... The partisan gap over in-person early voting is narrower, and support has grown among Republicans since last year. Today, majorities in both parties (89% of Democrats, 71% of Republicans) favor at least two weeks of early, in-person voting.
+
+      ... In April 2020, during the early months of the COVID-19 pandemic, 70% of Americans favored allowing any voter who wanted to cast a ballot via mail to do so. This included nearly half of Republicans (49%) and nearly nine-in-ten Democrats (87%). Now, 58% of Americans support allowing voters to cast ballots by mail, including 32% of Republicans and 83% of Democrats.
+
+      ... Support for photo ID requirements also remains widespread in both parties. More than nine-in-ten Republicans (95%) and about seven-in-ten Democrats (71%) favor requiring all voters to show government-issued photo identification to vote.
+
+      ... Views of voting policies among racial and ethnic groups
+
+      At least seven-in-ten adults across racial and ethnic groups favor requiring paper ballot backups for electronic voting machines, photo identification requirements and early, in-person voting periods of at least two weeks.
     title: 'Majority of Americans Continue to Back Expanded Early Voting, Voting by Mail, Voter ID'
     url: https://www.pewresearch.org/politics/2025/08/22/majority-of-americans-continue-to-back-expanded-early-voting-voting-by-mail-voter-id/
     publisher: Pew Research Center
     date: '2025-08-22'
   # 2
   - stance: supports
-    quote: >-
-      ASK FORM 2 [N=1,784] GOVID Requiring all voters to show government issued
-      photo identification to vote ... ERLY Making early, in-person voting
-      available to voters for at least two weeks prior to Election Day ...
-      Note: This survey was conducted primarily online, with some interviews
-      conducted by live telephone. ... American Trends Panel surveys conducted
-      between October 2016 and June 2024 were conducted fully online
+    quote: |-
+      Note: This survey was conducted primarily online, with some interviews conducted by live telephone.
+
+      ... American Trends Panel surveys conducted between October 2016 and June 2024 were conducted fully online (with tablets and data plans provided to adults without home internet).
+
+      ... VTPRIORITY Please indicate whether you would favor or oppose the following ideas about election policy.
+      | Strongly favor | Somewhat favor | Somewhat oppose | Strongly oppose | No answer*
+      ATO Automatically registering all eligible citizens to vote | | | | |
+      Aug 4-10, 2025 | 31 | 28 | 21 | 19 | 1
+      Jan 16-21, 2024 | 33 | 24 | 18 | 24 | 1
+      Jul 10-16, 2023 | 34 | 28 | 17 | 20 | 1
+      Apr 5-11, 2021 | 36 | 25 | 18 | 19 | 2
+      Apr 7-12, 2020 | 42 | 27 | 15 | 15 | *
+      Sep 24-Oct 7, 2018 | 34 | 31 | 17 | 17 | 1
+      GOVID Requiring all voters to show government issued photo identification to vote | | | | |
+      Aug 4-10, 2025 | 60 | 23 | 11 | 5 | 1
+      Jan 16-21, 2024 | 61 | 20 | 11 | 7 | 1
+      Jul 10-16, 2023 | 53 | 23 | 14 | 9 | 1
+      Apr 5-11, 2021 | 53 | 23 | 13 | 10 | 1
+      Sep 24-Oct 7, 2018 | 54 | 22 | 13 | 11 | 1
+      ERLY Making early, in-person voting available to voters for at least two weeks prior to Election Day | | | | |
+      Aug 4-10, 2025 | 45 | 35 | 12 | 8 | 1
+      Jan 16-21, 2024 | 43 | 33 | 13 | 11 | 1
+      Apr 5-11, 2021 | 47 | 31 | 12 | 9 | 2
     title: 'American Trends Panel Wave 176, August 2025: Final Topline'
     url: https://www.pewresearch.org/wp-content/uploads/sites/20/2025/08/PP_2025.8.22_voting-policy_topline.pdf
     publisher: Pew Research Center
@@ -50,70 +71,74 @@ sources:
     quote: >-
       While there is substantial support in both parties for requiring a photo
       ID to vote, there is a sizable partisan divide in these views: Nearly all
-      Republicans (95%), compared with 69% of Democrats, favor this
-      requirement. ... The share of Democrats supporting this has risen from
-      61% to 69% since last year.
+      Republicans (95%), compared with 69% of Democrats, favor this requirement.
+      ... Majorities in both parties continue to back requiring all voters to
+      show government-issued photo ID to vote. The share of Democrats supporting
+      this has risen from 61% to 69% since last year.
     title: 'Bipartisan Support for Early In-Person Voting, Voter ID, Election Day National Holiday'
     url: https://www.pewresearch.org/politics/2024/02/07/bipartisan-support-for-early-in-person-voting-voter-id-election-day-national-holiday/
     publisher: Pew Research Center
     date: '2024-02-07'
   # 4
   - stance: supports
-    quote: >-
-      There has been little change since 2018 in views of requiring all voters
-      to show government-issued photo ID in order to vote. Republicans continue
-      to overwhelmingly support this policy (93% favor), while it draws support
-      from a smaller majority of Democrats (61%). ... a declining share of
-      Republicans support automatically registering all eligible citizens to
-      vote (38% today vs. 49% in 2018). ... At the same time, the share of
-      Democrats who support automatic voter registration has ticked up
-      slightly – from 78% in 2018 to 82% today. ... And while only a narrow majority of
-      White Democrats (54%) favor requiring voters to show government-issued
-      photo identification to vote, larger shares of Black (65%), Hispanic
-      (72%) and Asian Democrats (71%) say the same.
+    quote: |-
+      A much larger share of Republicans today say they favor removing people from registration lists if they have not recently voted or confirmed their registration than said this in October 2018 (68% today vs. 53% then). And a declining share of Republicans support automatically registering all eligible citizens to vote (38% today vs. 49% in 2018).
+
+      ... There has been little change since 2018 in views of requiring all voters to show government-issued photo ID in order to vote. Republicans continue to overwhelmingly support this policy (93% favor), while it draws support from a smaller majority of Democrats (61%).
+
+      ... At the same time, the share of Democrats who support automatic voter registration has ticked up slightly – from 78% in 2018 to 82% today.
+
+      ... And while only a narrow majority of White Democrats (54%) favor requiring voters to show government-issued photo identification to vote, larger shares of Black (65%), Hispanic (72%) and Asian Democrats (71%) say the same.
     title: 'Republicans and Democrats Move Further Apart in Views of Voting Access'
     url: https://www.pewresearch.org/politics/2021/04/22/republicans-and-democrats-move-further-apart-in-views-of-voting-access/
     publisher: Pew Research Center
     date: '2021-04-22'
   # 5
   - stance: supports
-    quote: >-
-      76% of U.S. adults favor the concept of early voting. Two other election
-      law policies are supported by even more Americans -- requiring photo
-      identification to vote (84%) and providing proof of citizenship when
-      registering to vote for the first time (83%). ... Of these three
-      policies, only early voting garners majority-level backing from
-      Republicans -- but at 57%, Republicans’ support is 38 percentage points
-      lower than Democrats’. ... Democrats are now 14 points more likely than
-      they were in 2022 to support requiring photo identification to vote, and
-      Republicans’ current 57% support for early voting -- while not
-      significantly different from 2022 -- is down from 74% in a 2016 survey.
-      ... [Table: by political party] Democrat Independent Republican ...
-      Requiring people who are registering to vote for the first time to
-      provide proof of citizenship 66% 84% 96% ... Requiring all voters to
-      provide photo identification at their voting place in order to vote 67%
-      84% 98% ... [Table: by race/ethnicity] People of color White adults ...
-      Requiring all voters to provide photo identification at their voting
-      place in order to vote 80 86 ... Requiring people who are registering to
-      vote for the first time to provide proof of citizenship 76 87
+    quote: |-
+      76% of U.S. adults favor the concept of early voting. Two other election law policies are supported by even more Americans -- requiring photo identification to vote (84%) and providing proof of citizenship when registering to vote for the first time (83%).
+
+      Smaller majorities of Americans -- 60% each -- favor automatic voter registration, whereby citizens are registered when they do business with state agencies such as the Department of Motor Vehicles, and sending absentee ballot applications to all eligible voters.
+
+      ... Democrats broadly support early voting, sending absentee ballot applications to all voters and automatic voter registration, while far fewer Republicans favor each. Of these three policies, only early voting garners majority-level backing from Republicans -- but at 57%, Republicans’ support is 38 percentage points lower than Democrats’.
+
+      ... In general, do you favor or oppose each of the following election law policies? % Favor
+      | Democrat | Independent | Republican | Dem-Rep difference
+      Sending absentee ballot applications to all eligible voters prior to an election | 87% | 63% | 36% | 50%
+      Early voting, which gives all voters the chance to cast their ballot prior to Election Day | 95% | 76% | 57% | 38%
+      Enacting automatic voter registration, whereby citizens are automatically registered to vote when they do business with the DMV/other state agencies | 79% | 60% | 43% | 37%
+      Requiring people who are registering to vote for the first time to provide proof of citizenship | 66% | 84% | 96% | -30%
+      Requiring all voters to provide photo identification at their voting place in order to vote | 67% | 84% | 98% | -30%
+      Removing people from voter registration lists if they don’t vote in any elections over a 5-year period | 16% | 36% | 51% | -35%
+      Limiting the number of drop boxes or locations for returning absentee ballots | 20% | 37% | 61% | -42%
+      Oct. 1-12, 2024
+
+      Partisans’ views of most of the election law policies are generally stable; however, Democrats’ and Republicans’ opinions have each shifted significantly on one of them. Democrats are now 14 points more likely than they were in 2022 to support requiring photo identification to vote, and Republicans’ current 57% support for early voting -- while not significantly different from 2022 -- is down from 74% in a 2016 survey.
+
+      ... | People of color | White adults | Difference (pct. pts.)
+      Sending absentee ballot applications to all eligible voters prior to an election | 71 | 55 | 16
+      Enacting automatic voter registration, whereby citizens are automatically registered to vote when they do business with the DMV/other state agencies | 69 | 55 | 14
+      Early voting, which gives all voters the chance to cast their ballot prior to Election Day | 80 | 73 | 7
+      Requiring all voters to provide photo identification at their voting place in order to vote | 80 | 86 | -6
+      Limiting the number of drop boxes or locations for returning absentee ballots | 33 | 43 | -10
+      Removing people from voter registration lists if they don’t vote in any elections over a 5-year period | 29 | 39 | -10
+      Requiring people who are registering to vote for the first time to provide proof of citizenship | 76 | 87 | -11
     title: 'Americans Endorse Both Early Voting and Voter Verification'
     url: https://news.gallup.com/poll/652523/americans-endorse-early-voting-voter-verification.aspx
     publisher: Gallup
     date: '2024-10-24'
   # 6
   - stance: supports
-    quote: >-
-      large majorities of Americans favor three measures meant to make voting
-      easier: early voting (78% in favor), automatic voter registration (65%)
-      and sending absentee ballots to all eligible voters (60%). ... One
-      restrictive policy that most Americans (79%) are on board with, however,
-      is requiring photo identification to vote. ... Republicans' support for
-      early voting has declined (falling 14 points,
-      from 74% in 2016 to 60% today), while Democrats' support has risen 10
-      points to 95%, widening the partisan gap from 11 to 35 points.
-      Meanwhile, Republicans' support for requiring photo identification has
-      remained high, now 97%, while Democrats' has declined 10 points, to 53%.
-      This expands the partisan gap from 32 to 44 points.
+    quote: |-
+      WASHINGTON, D.C. -- With the midterm elections less than a month away, large majorities of Americans favor three measures meant to make voting easier: early voting (78% in favor), automatic voter registration (65%) and sending absentee ballots to all eligible voters (60%).
+
+      Majorities of Americans also oppose two measures that could make voting harder: removing inactive voters from voter lists (60%) and limiting the number of drop boxes for absentee ballots (59%). One restrictive policy that most Americans (79%) are on board with, however, is requiring photo identification to vote.
+
+      ... This stability, however, masks a growing partisan divide on two of the policies: early voting and photo ID.
+
+      Republicans' support for early voting has declined (falling 14 points, from 74% in 2016 to 60% today), while Democrats' support has risen 10 points to 95%, widening the partisan gap from 11 to 35 points.
+
+      Meanwhile, Republicans' support for requiring photo identification has remained high, now 97%, while Democrats' has declined 10 points, to 53%. This expands the partisan gap from 32 to 44 points.
     title: 'Eight in 10 Americans Favor Early Voting, Photo ID Laws'
     url: https://news.gallup.com/poll/403052/eight-americans-favor-early-voting-photo-laws.aspx
     publisher: Gallup
@@ -130,191 +155,163 @@ sources:
     date: '2016-08-22'
   # 8
   - stance: supports
-    quote: >-
-      Fifty-seven percent of Americans say they are very or somewhat confident
-      that the votes for president this year will be accurately cast and
-      counted. ... This has led to a record-high 56-percentage-point partisan
-      gap, with 84% of Democrats versus 28% of Republicans having faith in the
-      accuracy of the vote. ... At the same time, the percentage of Americans
-      saying they are “not at all confident” in the vote has steadily climbed
-      from 6% in 2004 to 19% today. ... In 2004, when George W. Bush was in
-      office, Republicans were more confident than Democrats ... Americans are
-      far more positive about the integrity of the vote at their own polling
-      place, as 76% say they are very or somewhat confident the votes will be
-      accurately cast and counted there. ... Seventy-four percent of
-      Republicans versus just under half of independents and fewer Democrats
-      say each of these irregularities will be a major problem across the
-      country. ... Smaller percentages of all party groups -- 37% of Democrats,
-      34% of Republicans and 32% of independents -- expect eligible voters to
-      be prevented from voting. ... the percentages of Democrats and
-      independents calling this a major problem spiked in 2020, to 62% and
-      47%, respectively.
+    quote: |-
+      Fifty-seven percent of Americans say they are very or somewhat confident that the votes for president this year will be accurately cast and counted.
+
+      ... This has led to a record-high 56-percentage-point partisan gap, with 84% of Democrats versus 28% of Republicans having faith in the accuracy of the vote.
+
+      ... At the same time, the percentage of Americans saying they are “not at all confident” in the vote has steadily climbed from 6% in 2004 to 19% today.
+
+      ... More than half of independents have also consistently seen it as accurate.
+
+      In 2004, when George W. Bush was in office, Republicans were more confident than Democrats, possibly a holdover from the 2000 election when Democratic candidate Al Gore lost following a disputed vote count in Florida. Four years later, with Bush still president but the 2008 election underway between Barack Obama and John McCain, GOP confidence fell to match that of Democrats.
+
+      ... Americans are far more positive about the integrity of the vote at their own polling place, as 76% say they are very or somewhat confident the votes will be accurately cast and counted there.
+
+      ... Seventy-four percent of Republicans versus just under half of independents and fewer Democrats say each of these irregularities will be a major problem across the country.
+
+      ... Smaller percentages of all party groups -- 37% of Democrats, 34% of Republicans and 32% of independents -- expect eligible voters to be prevented from voting.
+
+      ... the percentages of Democrats and independents calling this a major problem spiked in 2020, to 62% and 47%, respectively.
+
       ... Confidence in Accuracy of Each Presidential Election, by Party
-      Republicans Independents Democrats 2004 87 69 59 2008 57 63 57 2016 55
-      59 85 2020 44 57 76 2024 28 58 84
+      | Republicans | Independents | Democrats
+      2004 | 87 | 69 | 59
+      2008 | 57 | 63 | 57
+      2016 | 55 | 59 | 85
+      2020 | 44 | 57 | 76
+      2024 | 28 | 58 | 84
     title: 'Partisan Split on Election Integrity Gets Even Wider'
     url: https://news.gallup.com/poll/651185/partisan-split-election-integrity-gets-even-wider.aspx
     publisher: Gallup
     date: '2024-09-25'
   # 9
   - stance: supports
-    quote: >-
-      More than half of Americans have consistently expressed confidence in
-      the accuracy of elections throughout Gallup's trend since 2004, but
-      confidence was highest leading up to the 2004 presidential and 2006
-      midterm elections. ... In most election years since 2004, Gallup has found that Americans who
-      self-identify with the political party of the incumbent president have
-      expressed greater confidence in election accuracy -- with two
-      exceptions, 2008 and 2020. In October 2008, during the global economic
-      crisis, Republicans' and Democrats' confidence in the accuracy of that
-      year's presidential election each fell to 57% ... In 2020, amid
-      then-President Donald Trump's public questioning of the validity of mail
-      voting in the upcoming election, Republicans' confidence in voting
-      integrity dropped to a new low of 44%, while Democrats' confidence
-      remained high, slightly higher (76%) than in the previous election year.
-      The current 45 percentage points that separate Republicans' (40%) and
-      Democrats' (85%) confidence represents the largest gap Gallup has
-      recorded on this measure since 2004.
+    quote: |-
+      More than half of Americans have consistently expressed confidence in the accuracy of elections throughout Gallup's trend since 2004, but confidence was highest leading up to the 2004 presidential and 2006 midterm elections.
+
+      ... This year, 21% say they are not too confident and 15% are not confident at all, similar to the 2020 levels.
+
+      In most election years since 2004, Gallup has found that Americans who self-identify with the political party of the incumbent president have expressed greater confidence in election accuracy -- with two exceptions, 2008 and 2020. In October 2008, during the global economic crisis, Republicans' and Democrats' confidence in the accuracy of that year's presidential election each fell to 57%
+
+      ... In 2020, amid then-President Donald Trump's public questioning of the validity of mail voting in the upcoming election, Republicans' confidence in voting integrity dropped to a new low of 44%, while Democrats' confidence remained high, slightly higher (76%) than in the previous election year. The current 45 percentage points that separate Republicans' (40%) and Democrats' (85%) confidence represents the largest gap Gallup has recorded on this measure since 2004.
     title: 'Confidence in Election Integrity Hides Deep Partisan Divide'
     url: https://news.gallup.com/poll/404675/confidence-election-integrity-hides-deep-partisan-divide.aspx
     publisher: Gallup
     date: '2022-11-04'
   # 10
   - stance: supports
-    quote: >-
-      During presidential election years, the nationwide confidence measure
-      particularly reflects the well-known winner-loser effect, where
-      supporters of the presidential winner experience a rise in confidence
-      while supporters of the loser see a decline. In 2016, 80% of Republicans
-      stated they were very or somewhat confident that votes across the
-      country were counted as intended (nationwide confidence), compared to
-      69% of Democrats. ... In 2024, 88% of Republicans and 79% of Democrats
-      expressed confidence in the nationwide vote count, compared to 22% and
-      93% in 2020, respectively. ... Since 2008, support among Republicans has
-      steadily increased to the point where it is nearly unanimously favored
-      by Republican respondents (92.4% support in 2024). Support among
-      Democrats weakened in the early years covered by the data but has
-      rebounded in recent years.
+    quote: |-
+      The partisan gap in confidence narrowed considerably.
+      - In 2024, 88% of Republicans and 79% of Democrats expressed confidence in the nationwide vote count, compared to 22% and 93% in 2020, respectively.
+
+      ... During presidential election years, the nationwide confidence measure particularly reflects the well-known winner-loser effect, where supporters of the presidential winner experience a rise in confidence while supporters of the loser see a decline. In 2016, 80% of Republicans stated they were very or somewhat confident that votes across the country were counted as intended (nationwide confidence), compared to 69% of Democrats.
+
+      ... The trend in support for voter ID is particularly noteworthy. Since 2008, support among Republicans has steadily increased to the point where it is nearly unanimously favored by Republican respondents (92.4% support in 2024). Support among Democrats weakened in the early years covered by the data but has rebounded in recent years.
     title: 'How We Voted in 2024'
     url: https://electionlab.mit.edu/sites/default/files/2025-07/HowWeVotedIn2024.pdf
     publisher: MIT Election Data and Science Lab
     date: '2025-07'
   # 11
   - stance: supports
-    quote: >-
-      Using approximately 30 national surveys over the past decade, we find a
-      consistent relationship between voting for the winner and confidence in
-      election administration. ... Across the decade, aggregate confidence in
-      the country's vote declined about 30 percentage points. However, this
-      overall decline is due almost entirely to a forty-point decline among
-      Republicans during this period. ... among those who voted for the
-      winning candidate, confidence in one's own vote increases by about 20
-      percentage points after an election. Among those who voted for the
-      loser, confidence declines slightly, by about 2 percentage points.
+    quote: |-
+      Using approximately 30 national surveys over the past decade, we find a consistent relationship between voting for the winner and confidence in election administration. This confidence varies as a function of question wording and electoral context.
+
+      ... Across the decade, aggregate confidence in the country's vote declined about 30 percentage points. However, this overall decline is due almost entirely to a forty-point decline among Republicans during this period.
+
+      ... among those who voted for the winning candidate, confidence in one's own vote increases by about 20 percentage points after an election. Among those who voted for the loser, confidence declines slightly, by about 2 percentage points.
     title: 'Partisanship and Voter Confidence, 2000–2012 (VTP Working Paper #125)'
     url: https://www.vote.caltech.edu/documents/16/WP_125.pdf
     publisher: Caltech/MIT Voting Technology Project
     date: '2014-06-01'
   # 12
   - stance: complicates
-    quote: >-
-      For the past two decades, Americans have consistently exhibited a
-      “winner’s effect” in judging whether votes were counted fairly in
-      elections. The 2018 election broke that pattern. ... Good electoral news
-      for Republicans was followed by a 14-point increase in Republican
-      confidence and a slight decrease in confidence among Democrats. In 2016,
-      the even-more-dramatic electoral results produced an even greater shift
-      in partisan confidence. One month before the election, Democrats were
-      more confident by a margin of 15 points. Right after the election,
-      Democrats were less confident, by 13 points.
+    quote: |-
+      For the past two decades, Americans have consistently exhibited a “winner’s effect” in judging whether votes were counted fairly in elections. The 2018 election broke that pattern.
+
+      ... Good electoral news for Republicans was followed by a 14-point increase in Republican confidence and a slight decrease in confidence among Democrats. In 2016, the even-more-dramatic electoral results produced an even greater shift in partisan confidence. One month before the election, Democrats were more confident by a margin of 15 points. Right after the election, Democrats were less confident, by 13 points.
     title: 'Voter Confidence in the 2018 Election: So Long to the Winner’s Effect?'
     url: https://electionupdates.caltech.edu/?p=6578
     publisher: Election Updates (Charles Stewart III, MIT)
     date: '2018-12-19'
   # 13
   - stance: supports
-    quote: >-
-      A narrow majority of Americans (55%) are confident that this November’s
-      midterm elections will be conducted fairly and accurately – down from
-      61% ahead of the 2024 elections, 64% in 2022 and 59% in 2020. ... 55% now
-      say they have confidence the upcoming midterms will be conducted fairly
-      and accurately. This is up from 47% in the summer of 2024 and 46% in the
-      summer of 2022. ... 58% now express confidence in the fairness and
-      accuracy of this year’s elections. Confidence today is substantially
-      lower than in 2024 (77%) and 2022 (81%). Confidence remains higher than
-      in April 2020, when 46% of Democrats expressed confidence ... an
-      overwhelming majority of the public (90%) says it is very or somewhat
-      important that “no eligible voters are prevented from voting” in U.S.
-      elections. Nearly as many (85%) say it is important that “no ineligible
-      voters are permitted to vote.”
+    quote: |-
+      A narrow majority of Americans (55%) are confident that this November’s midterm elections will be conducted fairly and accurately – down from 61% ahead of the 2024 elections, 64% in 2022 and 59% in 2020.
+
+      ... Among Republicans and Republican-leaning independents:
+      - 55% now say they have confidence the upcoming midterms will be conducted fairly and accurately.
+      - This is up from 47% in the summer of 2024 and 46% in the summer of 2022. Joe Biden was president in both years.
+
+      ... Among Democrats and Democratic leaners:
+      - 58% now express confidence in the fairness and accuracy of this year’s elections.
+      - Confidence today is substantially lower than in 2024 (77%) and 2022 (81%).
+      - Confidence remains higher than in April 2020, when 46% of Democrats expressed confidence the 2020 election would be conducted fairly and accurately.
+
+      ... Will all eligible voters – and no ineligible voters – be able to vote?
+
+      A separate Pew Research Center survey – conducted April 20-26, 2026, among 5,103 U.S. adults – finds that an overwhelming majority of the public (90%) says it is very or somewhat important that “no eligible voters are prevented from voting” in U.S. elections. Nearly as many (85%) say it is important that “no ineligible voters are permitted to vote.”
     title: 'How confident are Americans in the midterm elections’ fairness and accuracy?'
     url: https://www.pewresearch.org/short-reads/2026/08/05/how-confident-are-americans-in-the-midterm-elections-fairness-and-accuracy/
     publisher: Pew Research Center
     date: '2026-08-05'
   # 14
   - stance: supports
-    quote: >-
-      We surveyed 5,062 U.S. adults, including 3,917 registered voters, from
-      Sept. 28 to Oct. 4, 2026. ... 90% of those who back Democratic
-      candidates for the House of Representatives in this year’s elections are
-      confident that if noncitizens try to vote they will be stopped. A far
-      smaller share of Republican candidate backers – 45% – are confident that
-      noncitizens will be prevented from casting ballots. Still, Republican
-      voters express a higher level of confidence that noncitizens will be
-      stopped from voting than President Donald Trump’s voters did in 2024
-      (35% then). ... 90% of Republican voters are at least somewhat confident
-      in this. A narrower majority of Democratic voters (72%) express
-      confidence that all qualified voters will be able to vote if they want
-      to. ... 64% of Democratic voters say they are confident mail and absentee
-      votes will be counted as voters intend – down from 88% in the 2022
-      midterm elections and 85% among Kamala Harris’ voters in the 2024
-      presidential election. 42% of GOP voters say they are confident mail and
-      absentee votes will be counted as intended – modestly higher than in
-      past recent elections. ... 19% of Republican voters mention concerns
-      about illegitimate voters casting ballots, or fraudulent votes. In
-      contrast, Democratic voters are more likely to raise concerns about
-      legitimate voters being denied access (10%) or interference with
-      election administration by the Trump administration (11%). ... Roughly
-      three-quarters of mail and absentee voters (76%) are confident votes
-      cast this way will be counted as voters intend. By comparison, about
-      half of in-person voters (47%) are confident this will happen.
+    quote: |-
+      We surveyed 5,062 U.S. adults, including 3,917 registered voters, from Sept. 28 to Oct. 4, 2026.
+
+      ... But there is a wide partisan gap in these views:
+      - 90% of those who back Democratic candidates for the House of Representatives in this year’s elections are confident that if noncitizens try to vote they will be stopped.
+      - A far smaller share of Republican candidate backers – 45% – are confident that noncitizens will be prevented from casting ballots.
+      - Still, Republican voters express a higher level of confidence that noncitizens will be stopped from voting than President Donald Trump’s voters did in 2024 (35% then).
+
+      The partisan gap is reversed – and not as wide – when it comes to confidence that all legally qualified voters who want to vote can do so:
+      - 90% of Republican voters are at least somewhat confident in this.
+      - A narrower majority of Democratic voters (72%) express confidence that all qualified voters will be able to vote if they want to.
+
+      ... Democratic voters are more confident than Republican voters that mail-in ballots will be counted as voters intend – but Democratic voters’ confidence in an accurate count of mail ballots is considerably lower than it has been in recent elections:
+      - 64% of Democratic voters say they are confident mail and absentee votes will be counted as voters intend – down from 88% in the 2022 midterm elections and 85% among Kamala Harris’ voters in the 2024 presidential election.
+      - 42% of GOP voters say they are confident mail and absentee votes will be counted as intended – modestly higher than in past recent elections.
+
+      ... While majorities across the political spectrum say they expect the elections to be run well this year, Republican backers and Democratic backers diverge when asked in an open-ended question what – if any – concerns they have about the elections:
+      - 19% of Republican voters mention concerns about illegitimate voters casting ballots, or fraudulent votes.
+      - In contrast, Democratic voters are more likely to raise concerns about legitimate voters being denied access (10%) or interference with election administration by the Trump administration (11%).
+
+      ... Roughly three-quarters of mail and absentee voters (76%) are confident votes cast this way will be counted as voters intend. By comparison, about half of in-person voters (47%) are confident this will happen.
     title: 'Broad Public Confidence in Elections in the U.S. – but Partisans Differ Over Concerns About Access, Security'
     url: https://www.pewresearch.org/politics/2026/10/20/broad-public-confidence-in-elections-in-the-u-s-but-partisans-differ-over-concerns-about-access-security/
     publisher: Pew Research Center
     date: '2026-10-20'
   # 15
   - stance: supports
-    quote: >-
-      Forty-nine percent are confident in electoral honesty, while 51% are
-      not. Americans’ relative lack of confidence in the integrity of
-      elections is nothing new — it has averaged 45% since 2006 — but who
-      lacks confidence is. In 2026, 63% of Democrats are confident in the
-      honesty of elections, higher than either Republicans (37%) or political
-      independents (35%). The World Poll has asked about party identification
-      in the U.S. only since 2024, when there was a 55-percentage-point divide
-      in confidence between Democrats and Republicans. This divide closed to
-      just four points in 2025 but has reopened this year ... In 2026,
-      confidence in the honesty of elections is, for the first time,
-      significantly higher among Americans who disapprove (52%) of their
-      country’s leadership than approve (41%) ... Over the past two years, an
-      average of 46% of approvers have expressed confidence in the honesty of
-      elections, compared with 48% of disapprovers. ... In 2025 (with
-      final global data collection not yet complete in 2026), a median of 70%
-      of approvers of their national leadership had confidence in the honesty
-      of their elections, compared with 30% of disapprovers — a gap of 40
-      points. ... No other country in the world in the past 15 years has seen
-      this pattern, in which people disapproving of their leadership are
-      significantly more confident in the honesty of elections than those
-      approving of their leadership.
-      ... From 2006 to 2020, there was a consistent and large gap in
-      electoral confidence between Americans who approved of and those who
-      disapproved of U.S. leadership under the administrations of George W.
-      Bush (averaging 35 points), Barack Obama (averaging 30 points) and
-      Donald Trump (averaging 35 points). After Joe Biden won the presidency
-      in the 2020 election, the results of which Trump challenged, this
-      confidence gap ballooned to 51 points.
-      ... Bush: 2006-2008 71% 37% Obama: 2009-2016 63% 31% Trump I: 2017-2020
-      64% 29% Biden: 2021-2024 81% 30% Trump II: 2025-2026 47% 49%
+    quote: |-
+      Forty-nine percent are confident in electoral honesty, while 51% are not. Americans’ relative lack of confidence in the integrity of elections is nothing new — it has averaged 45% since 2006 — but who lacks confidence is.
+
+      In 2026, 63% of Democrats are confident in the honesty of elections, higher than either Republicans (37%) or political independents (35%). The World Poll has asked about party identification in the U.S. only since 2024, when there was a 55-percentage-point divide in confidence between Democrats and Republicans. This divide closed to just four points in 2025 but has reopened this year, despite Republicans controlling both the White House and Congress.
+
+      ... The remainder of this article focuses on leadership approval to allow for political subgroup analysis before 2024 and to facilitate comparisons with other countries. In 2026, confidence in the honesty of elections is, for the first time, significantly higher among Americans who disapprove (52%) of their country’s leadership than approve (41%), a pattern that has not been seen in any other country over the past 15 years.
+
+      Long-Standing Confidence Gap by Leadership Views Vanishes
+
+      From 2006 to 2020, there was a consistent and large gap in electoral confidence between Americans who approved of and those who disapproved of U.S. leadership under the administrations of George W. Bush (averaging 35 points), Barack Obama (averaging 30 points) and Donald Trump (averaging 35 points).
+
+      After Joe Biden won the presidency in the 2020 election, the results of which Trump challenged, this confidence gap ballooned to 51 points. Those disapproving of U.S. leadership under Biden (mostly Republicans) had similarly low levels of confidence (averaging 30%) as under previous administrations, but approvers (mostly Democrats) became far more confident (averaging 81%).
+
+      Since 2025 and Trump’s return to the White House, the relationship between leadership approval and confidence in elections has disappeared. Over the past two years, an average of 46% of approvers have expressed confidence in the honesty of elections, compared with 48% of disapprovers.
+
+      U.S. Confidence Gap in Honesty of Elections Ballooned Under Biden but Has Since Collapsed
+      | Approve of country's leadership | Disapprove of country's leadership
+      Bush: 2006-2008 | 71% | 37%
+      Obama: 2009-2016 | 63% | 31%
+      Trump I: 2017-2020 | 64% | 29%
+      Biden: 2021-2024 | 81% | 30%
+      Trump II: 2025-2026 | 47% | 49%
+
+      ... In the more than 100 countries where Gallup asks about election confidence and leadership approval annually, those approving of their country’s leadership nearly always have higher levels of confidence than those disapproving, a relationship that holds across all types of political systems. In 2025 (with final global data collection not yet complete in 2026), a median of 70% of approvers of their national leadership had confidence in the honesty of their elections, compared with 30% of disapprovers — a gap of 40 points.
+
+      The 2026 U.S. data highlight how unique the country is in this regard, with the gap between approvers and disapprovers now 11 points in the opposite direction. This also marks a change from 2025, the first year of Trump’s second term, when confidence was nominally higher among approvers (51%) than disapprovers (45%).
+
+      No other country in the world in the past 15 years has seen this pattern, in which people disapproving of their leadership are significantly more confident in the honesty of elections than those approving of their leadership.
     title: 'U.S. Trust in Elections Diverges From Global Pattern'
     url: https://news.gallup.com/poll/715205/trust-elections-breaks-global-pattern.aspx
     publisher: Gallup
@@ -336,43 +333,28 @@ sources:
     date: '2025-07'
   # 17
   - stance: complicates
-    quote: >-
-      In 2020 state-level voter confidence for Republicans craters at only
-      26%, but rebounds to 70% in 2022. In contrast, Democratic voters’
-      confidence shows relatively little movement and is extremely high (94%
-      in 2020 and 85% in 2022) ... Among Republicans, 59.1% indicated that SB
-      202 had increased (greatly or somewhat) their confidence in Georgia
-      elections, as compared to 36.6% of Independents and a much lower 29.1%
-      of Democrats holding this view. Conversely, a 46.8% plurality of
-      Democrats expressed a decrease (greatly or somewhat) in confidence in
-      Georgia elections because of SB 202 ... However, we cannot make any
-      definitive statements from a causal standpoint as we are unable to
-      completely rule out competing explanations. For example, it is possible
-      that Republican confidence rebounded in 2022 because of the noted
-      winner’s effect (the fact that the Georgia GOP won all statewide offices
-      with the exception of a U.S. Senate seat). ... Overall, only 1.1% of
-      survey respondents reported they encountered an issue while casting
-      their ballot.
+    quote: |-
+      There were few reports of issues with voting during the 2022 midterm and this is reflected in the results of our survey. Overall, only 1.1% of survey respondents reported they encountered an issue while casting their ballot.
+
+      ... In 2020 state-level voter confidence for Republicans craters at only 26%, but rebounds to 70% in 2022. In contrast, Democratic voters’ confidence shows relatively little movement and is extremely high (94% in 2020 and 85% in 2022)
+
+      ... As expected, there are also some notable partisan differences relating to opinions on SB 202. Among Republicans, 59.1% indicated that SB 202 had increased (greatly or somewhat) their confidence in Georgia elections, as compared to 36.6% of Independents and a much lower 29.1% of Democrats holding this view. Conversely, a 46.8% plurality of Democrats expressed a decrease (greatly or somewhat) in confidence in Georgia elections because of SB 202
+
+      ... However, we cannot make any definitive statements from a causal standpoint as we are unable to completely rule out competing explanations. For example, it is possible that Republican confidence rebounded in 2022 because of the noted winner’s effect (the fact that the Georgia GOP won all statewide offices with the exception of a U.S. Senate seat).
     title: 'Gauging the Effects of SB 202 on Voting in Georgia'
     url: https://electionlab.mit.edu/sites/default/files/2024-05/5_sb202-MEDSLReport.pdf
     publisher: MIT Election Data and Science Lab (M.V. Hood III and Seth C. McKee)
     date: '2024-05'
   # 18
   - stance: supports
-    quote: >-
-      In contrast to the findings of previous studies, strict voter ID
-      requirements are shown to have a substantively large and statistically
-      significant impact on the probability that citizens express confidence
-      (and especially high confidence) in the integrity of elections. ...
-      strict voter ID increases the probability that an individual indicates
-      high confidence by 14 percentage points, which is a 25% increase
-      relative to the mean ... Rather it appears that employing a direct
-      measure of confidence in the integrity of elections from the CES and
-      examining a longer time-period than Cantoni and Pons (2021) is what
-      matters more for the novel support for strict voter ID requirements
-      presented here. ... Finally, an important limitation of this study
-      is that the number of states that have adopted (or removed) strict voter
-      ID requirements during the study period is limited.
+    quote: |-
+      In contrast to the findings of previous studies, strict voter ID requirements are shown to have a substantively large and statistically significant impact on the probability that citizens express confidence (and especially high confidence) in the integrity of elections.
+
+      ... strict voter ID increases the probability that an individual indicates high confidence by 14 percentage points, which is a 25% increase relative to the mean
+
+      ... Rather it appears that employing a direct measure of confidence in the integrity of elections from the CES and examining a longer time-period than Cantoni and Pons (2021) is what matters more for the novel support for strict voter ID requirements presented here.
+
+      ... Finally, an important limitation of this study is that the number of states that have adopted (or removed) strict voter ID requirements during the study period is limited.
     title: 'Does Voter ID Improve Public Confidence in the Integrity of Elections? (Working Paper 2518)'
     url: https://ideas.repec.org/p/umc/wpaper/2518.html
     publisher: 'Jeffrey Milyo, Department of Economics, University of Missouri'
@@ -436,13 +418,16 @@ sources:
     date: '2018-04-21'
   # 23
   - stance: supports
-    quote: >-
-      QN107B: Favor/oppose photo identification BY Total + Gender + Race I +
-      Age + Education + Party I.D. + Household Income ... Total Male Female
-      White Non-white ... Favor ... 84% 84% 84% 86% 80% ... QN107G:
-      Favor/oppose proof of citizenship BY Total + Gender + Race I + Age +
-      Education + Party I.D. + Household Income ... Favor ... 83% 86% 80% 87%
-      76%
+    quote: |-
+      QN107B: Favor/oppose photo identification BY Total + Gender + Race I + Age + Education + Party I.D. + Household Income
+      | Total | Male | Female | White | Non-white | 18-34 | 35-54 | 55+ | College Grad | Some College | HS Grad or Less | Republican | Independent | Democrat | Less than $50,000 | $50,000-100,000 | $100,000+
+      Favor | 603 | 294 | 307 | 406 | 190 | 149 | 188 | 252 | 206 | 168 | 228 | 219 | 249 | 131 | 179 | 186 | 188
+      | 84% | 84% | 84% | 86% | 80% | 88% | 82% | 83% | 75% | 87% | 91% | 98% | 84% | 67% | 86% | 85% | 81%
+
+      ... QN107G: Favor/oppose proof of citizenship BY Total + Gender + Race I + Age + Education + Party I.D. + Household Income
+      | Total | Male | Female | White | Non-white | 18-34 | 35-54 | 55+ | College Grad | Some College | HS Grad or Less | Republican | Independent | Democrat | Less than $50,000 | $50,000-100,000 | $100,000+
+      Favor | 614 | 320 | 281 | 419 | 185 | 145 | 191 | 266 | 214 | 164 | 232 | 230 | 245 | 133 | 183 | 177 | 192
+      | 83% | 86% | 80% | 87% | 76% | 79% | 81% | 87% | 76% | 83% | 91% | 96% | 84% | 66% | 81% | 84% | 81%
     title: 'Gallup Poll Social Series, October 1–12, 2024: Election Laws Topline and Tabs'
     url: https://news.gallup.com/file/poll/652532/2024_10_23_Election%20Laws%20Topline%20and%20Tabs.pdf
     publisher: Gallup
@@ -513,11 +498,12 @@ series:
         2024 "were conducted fully online".
   source:
     stance: supports
-    quote: >-
-      Long-standing support in both parties for paper ballot backups, requiring
-      photo ID ... Majorities support several proposals to increase ballot
-      access, but partisan gaps remain ... Source: Survey of U.S. adults
-      conducted Aug. 4-10, 2025.
+    quote: |-
+      Long-standing support in both parties for paper ballot backups, requiring photo ID
+
+      ... Majorities support several proposals to increase ballot access, but partisan gaps remain
+
+      ... Source: Survey of U.S. adults conducted Aug. 4-10, 2025.
     title: 'Majority of Americans Continue to Back Expanded Early Voting, Voting by Mail, Voter ID (trend charts and topline)'
     url: https://www.pewresearch.org/wp-content/uploads/sites/20/2025/08/PP_2025.8.22_voting-policy_report.pdf
     publisher: Pew Research Center
@@ -602,12 +588,19 @@ additionalSeries:
       note: 'Gallup asked these items in August 2016, July 2022 and October 2024 (telephone polls of about 1,000 adults; margin of error ±4 points).'
     source:
       stance: supports
-      quote: >-
-        Trend in Three Election-Law Policies, by Party ID U.S.
-        adults Republicans Independents Democrats ... Jul 5-26, 2022 78 60 79 95 
-        Aug 15-16, 2016 80 74 80 85 ... Jul 5-26, 2022 79 97 84 53 Aug 15-16,
-        2016 80 95 83 63 ... Jul 5-26, 2022 65 47 65 81 Aug 15-16,
-        2016 63 51 58 80 
+      quote: |-
+        Trend in Three Election-Law Policies, by Party ID
+        | U.S. adults | Republicans | Independents | Democrats
+        | % | % | % | %
+        Early voting, which gives all voters the chance to cast their ballot prior to Election Day | | | |
+        Jul 5-26, 2022 | 78 | 60 | 79 | 95
+        Aug 15-16, 2016 | 80 | 74 | 80 | 85
+        Requiring all voters to provide photo identification at their voting place in order to vote | | | |
+        Jul 5-26, 2022 | 79 | 97 | 84 | 53
+        Aug 15-16, 2016 | 80 | 95 | 83 | 63
+        Enacting automatic voter registration, whereby citizens are automatically registered to vote when they do business with the Department of Motor Vehicles or certain other state agencies | | | |
+        Jul 5-26, 2022 | 65 | 47 | 65 | 81
+        Aug 15-16, 2016 | 63 | 51 | 58 | 80
       title: 'Eight in 10 Americans Favor Early Voting, Photo ID Laws (trend table); Americans Endorse Both Early Voting and Voter Verification (2024 party table)'
       url: https://news.gallup.com/poll/403052/eight-americans-favor-early-voting-photo-laws.aspx
       publisher: Gallup
@@ -734,13 +727,26 @@ additionalSeries:
         source: 15
     source:
       stance: supports
-      quote: >-
-        Americans' Confidence in the Accuracy of U.S. Elections % Very/Somewhat
-        confident Jan-04 72 Jan-06 75 Jan-08 59 Jan-16 66 Jan-18 70 Jan-20 59
-        Jan-22 63 Americans' Confidence in the Accuracy of U.S. Elections, by
-        Party Republicans Independents Democrats Jan-04 87 69 59 Jan-06 92 70
-        66 Jan-08 57 63 57 Jan-16 55 59 85 Jan-18 77 64 69 Jan-20 44 57 76
-        Jan-22 40 67 85
+      quote: |-
+        Americans' Confidence in the Accuracy of U.S. Elections
+        | % Very/Somewhat confident
+        Jan-04 | 72
+        Jan-06 | 75
+        Jan-08 | 59
+        Jan-16 | 66
+        Jan-18 | 70
+        Jan-20 | 59
+        Jan-22 | 63
+
+        Americans' Confidence in the Accuracy of U.S. Elections, by Party
+        | Republicans | Independents | Democrats
+        Jan-04 | 87 | 69 | 59
+        Jan-06 | 92 | 70 | 66
+        Jan-08 | 57 | 63 | 57
+        Jan-16 | 55 | 59 | 85
+        Jan-18 | 77 | 64 | 69
+        Jan-20 | 44 | 57 | 76
+        Jan-22 | 40 | 67 | 85
       title: 'Confidence in Election Integrity Hides Deep Partisan Divide'
       url: https://news.gallup.com/poll/404675/confidence-election-integrity-hides-deep-partisan-divide.aspx
       publisher: Gallup
@@ -822,12 +828,20 @@ additionalSeries:
         source: 15
     source:
       stance: supports
-      quote: >-
-        Confidence in the fairness and accuracy of elections is lower than in
-        past years, but with no partisan gap ... Apr ’20 Rep/Lean Rep 55 20 75
-        Aug ’22 Rep/Lean Rep 34 12 46 Jul ’24 Rep/Lean Rep 36 11 47 Jul ’26
-        Rep/Lean Rep 42 13 55 Apr ’20 Dem/Lean Dem 37 9 46 Aug ’22 Dem/Lean Dem
-        43 37 81 Jul ’24 Dem/Lean Dem 38 39 77 Jul ’26 Dem/Lean Dem 37 16 54
+      quote: |-
+        Confidence in the fairness and accuracy of elections is lower than in past years, but with no partisan gap
+
+        % who are ___ confident that the elections this November will be conducted fairly and accurately
+        | Group | Somewhat | Very | NET
+        Apr ’20 | Rep/Lean Rep | 55 | 20 | 75
+        Aug ’22 | Rep/Lean Rep | 34 | 12 | 46
+        Jul ’24 | Rep/Lean Rep | 36 | 11 | 47
+        Jul ’26 | Rep/Lean Rep | 42 | 13 | 55
+        Apr ’20 | Dem/Lean Dem | 37 | 9 | 46
+        Aug ’22 | Dem/Lean Dem | 43 | 37 | 81
+        Jul ’24 | Dem/Lean Dem | 38 | 39 | 77
+        Jul ’26 | Dem/Lean Dem | 37 | 16 | 54
+        Source: Survey of U.S. adults conducted July 6-12, 2026.
       title: 'How confident are Americans in the midterm elections’ fairness and accuracy? (chart data)'
       url: https://www.pewresearch.org/short-reads/2026/08/05/how-confident-are-americans-in-the-midterm-elections-fairness-and-accuracy/
       publisher: Pew Research Center
@@ -859,15 +873,20 @@ additionalSeries:
       note: 'Pew''s four October readings. "All voters" includes registered voters who back neither party''s candidates.'
     source:
       stance: supports
-      quote: >-
-        Widespread confidence that in-person ballots will be counted
-        accurately, but public confidence in count of mail ballots is lower,
-        down among Democratic voters ... 2020-10 Oct ’20 In person 91 90 92
-        2022-10 Oct ’22 In person 84 95 79 2024-10 Oct ’24 In person 85 93 77
-        2026-10 Oct ’26 In person 79 81 84 2020-10 Oct ’20 By absentee or
-        mail-in ballot 59 77 36 2022-10 Oct ’22 By absentee or mail-in ballot
-        62 88 37 2024-10 Oct ’24 By absentee or mail-in ballot 61 85 38 2026-10
-        Oct ’26 By absentee or mail-in ballot 53 64 42
+      quote: |-
+        Widespread confidence that in-person ballots will be counted accurately, but public confidence in count of mail ballots is lower, down among Democratic voters
+
+        % of registered voters who are very/somewhat confident that votes cast __ across the U.S. will be counted as voters intend in the elections this November
+        date | Date | Vote type | Total | Democratic candidate supporters | Republican candidate supporters
+        2020-10 | Oct ’20 | In person | 91 | 90 | 92
+        2022-10 | Oct ’22 | In person | 84 | 95 | 79
+        2024-10 | Oct ’24 | In person | 85 | 93 | 77
+        2026-10 | Oct ’26 | In person | 79 | 81 | 84
+        2020-10 | Oct ’20 | By absentee or mail-in ballot | 59 | 77 | 36
+        2022-10 | Oct ’22 | By absentee or mail-in ballot | 62 | 88 | 37
+        2024-10 | Oct ’24 | By absentee or mail-in ballot | 61 | 85 | 38
+        2026-10 | Oct ’26 | By absentee or mail-in ballot | 53 | 64 | 42
+        Note: Based on registered voters.
       title: 'Broad Public Confidence in Elections in the U.S. – but Partisans Differ Over Concerns About Access, Security (chart data)'
       url: https://www.pewresearch.org/politics/2026/10/20/broad-public-confidence-in-elections-in-the-u-s-but-partisans-differ-over-concerns-about-access-security/
       publisher: Pew Research Center
@@ -922,12 +941,30 @@ additionalSeries:
         source: 15
     source:
       stance: supports
-      quote: >-
-        Americans Divided on Honesty of Elections ... Time Yes No 2026 49% 51% 
-        2025 47% 53% 2024 51% 49% 2023 44% 55% 2022 49% 51% 2021 50% 50% 
-        2020 45% 54% 2019 40% 59% 2018 37% 62% 2017 47% 52% 2016 30% 69% 
-        2015 40% 59% 2014 40% 59% 2013 39% 60% 2012 42% 57% 2011 48% 49% 
-        2010 44% 55% 2009 59% 40% 2008 47% 53% 2007 50% 49% 2006 52% 47% 
+      quote: |-
+        Americans Divided on Honesty of Elections
+        ... Time | Yes | No
+        2026 | 49% | 51%
+        2025 | 47% | 53%
+        2024 | 51% | 49%
+        2023 | 44% | 55%
+        2022 | 49% | 51%
+        2021 | 50% | 50%
+        2020 | 45% | 54%
+        2019 | 40% | 59%
+        2018 | 37% | 62%
+        2017 | 47% | 52%
+        2016 | 30% | 69%
+        2015 | 40% | 59%
+        2014 | 40% | 59%
+        2013 | 39% | 60%
+        2012 | 42% | 57%
+        2011 | 48% | 49%
+        2010 | 44% | 55%
+        2009 | 59% | 40%
+        2008 | 47% | 53%
+        2007 | 50% | 49%
+        2006 | 52% | 47%
       title: 'U.S. Trust in Elections Diverges From Global Pattern (trend table)'
       url: https://news.gallup.com/poll/715205/trust-elections-breaks-global-pattern.aspx
       publisher: Gallup

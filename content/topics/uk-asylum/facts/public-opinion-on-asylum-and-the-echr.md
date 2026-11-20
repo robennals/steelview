@@ -10,10 +10,10 @@ claim: >-
 status: well-supported
 sources:
   - stance: supports
-    quote: >-
-      Do you think Britain should remain a member of the European Convention on
-      Human Rights or should we withdraw from it? Published on 6 June 2025 →
-      Survey conducted on 6 June 2025 on 5531 GB adults
+    quote: |-
+      Do you think Britain should remain a member of the European Convention on Human Rights or should we withdraw from it?
+
+      Published on 6 June 2025 → Survey conducted on 6 June 2025 on 5531 GB adults
     title: >-
       Do you think Britain should remain a member of the European Convention on
       Human Rights or should we withdraw from it?
@@ -21,8 +21,10 @@ sources:
     publisher: YouGov
     date: '2025-06-06'
   - stance: supports
-    quote: >-
-      Should remain a member 51 % Should withdraw from it 27 % Not sure 22 %
+    quote: |-
+      - Should remain a member 51 %
+      - Should withdraw from it 27 %
+      - Not sure 22 %
     title: >-
       Do you think Britain should remain a member of the European Convention on
       Human Rights or should we withdraw from it?
@@ -64,7 +66,7 @@ sources:
   - stance: complicates
     quote: >-
       Conversely, when respondents were given more nuanced options, support
-      for withdrawal fell. In a 2024 survey , outright support for leaving was
+      for withdrawal fell. In a 2024 survey, outright support for leaving was
       just 16% when respondents were offered alternatives such as “always abide
       by the ECHR even if that frustrates Parliament” or “remain committed to
       the ECHR but give Parliament the final word”. With such options, 66%
@@ -186,14 +188,14 @@ series:
       We examined more than a dozen opinion polls conducted by polling
       agencies, such as YouGov, since 2013. The first, that year, found 48% in
       favour of withdrawal and 35% in favour of remaining in the ECHR. A year
-      later, the public was evenly split (41% leave, 38% stay), and by 2016 ,
+      later, the public was evenly split (41% leave, 38% stay), and by 2016,
       following the Brexit referendum, 42% said Britain should stay in the ECHR
       while 35% wanted to leave. Since then, the balance has shifted steadily
-      towards remain. By 2023 , half of respondents said the UK should remain a
+      towards remain. By 2023, half of respondents said the UK should remain a
       member, while only around a quarter favoured leaving the ECHR. A poll
       from June 2025 produced similar results: 51% in favour of staying, 27%
       for leaving and 22% unsure. The most recent YouGov data, published
-      October 8 , found that 46% of the public are opposed to leaving the
+      October 8, found that 46% of the public are opposed to leaving the
       ECHR, and 29% say the UK should withdraw.
     title: "Do British people want to leave the ECHR? What a decade of polls reveals"
     url: >-

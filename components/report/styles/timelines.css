@@ -3,10 +3,6 @@
 @layer components {
   /* ----------------------------------------------------------- Timeline */
 
-  .sv-timeline__controls {
-    margin-bottom: 0.25rem;
-  }
-
   .sv-timeline__chip-label {
     display: inline-flex;
     align-items: center;
@@ -895,5 +891,13 @@
 
   .sv-marker-key__swatch[data-kind="method"] {
     border-radius: 0.1rem;
+  }
+}
+
+@layer components {
+  /* In a dropdown a ticked category stays on paper (control-bar.tsx), so its
+     name keeps the ink colour rather than the inverted chip's paper. */
+  .sv-bar__pop .sv-control__chip[aria-pressed="true"] .sv-timeline__chip-text {
+    color: var(--ink);
   }
 }

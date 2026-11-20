@@ -8,8 +8,7 @@ import rehypeStringify from 'rehype-stringify';
 import { SKIP, visit } from 'unist-util-visit';
 import type { Link, Nodes, Root, Text } from 'mdast';
 import type { Root as HtmlRoot, Element } from 'hast';
-import type { Fact } from './types';
-import { anchorFor, factPath } from './types';
+import { anchorFor } from './types';
 
 /**
  * Turn raw-HTML nodes into plain text before they reach rehype, so markup in
@@ -30,13 +29,11 @@ function remarkEscapeHtml() {
 
 /**
  * The href prefix that makes an ordinary markdown link a fact citation:
- * `[net migration reached 944,000](#fact-net-migration-2024)`.
+ * `[net migration reached 944,000](#fact-net-migration-2024/peak)`.
  *
  * Citations are deliberately plain markdown pointed at the anchor the fact
  * already has. No custom syntax means no second parser to keep in step with
- * remark, authors write links they already know how to write, and a citation
- * still works as a link when the JavaScript that upgrades it into a modal is
- * absent.
+ * remark, and authors write links they already know how to write.
  */
 const FACT_HREF_PREFIX = `#${anchorFor('fact', '')}`;
 const NEEDED_HREF = '#needed';
@@ -49,24 +46,28 @@ function citedFactId(href: string): string | undefined {
 }
 
 /**
- * Rewrite fact citations to the cited fact's own URL, and mark them.
- * A `#needed` link is unwrapped to its text: it records, in the source, a
- * premise queued for research, and readers see the claim as plain prose.
- *
- * The *authoring* syntax is unchanged and deliberately so: an author writes
- * `[reached 944,000](#fact-net-migration-2024)`, exactly as before, and
- * validation still reads that form. What ships to the page is a real link to
- * `/topics/<slug>/facts/<id>` — the fact's canonical address — so a citation
- * is an ordinary link that a crawler can follow, an importer can resolve and a
- * reader with no JavaScript can click. `class="sv-cite"` carries the citation
- * treatment.
+ * Unwrap fact citations to their text. A citation records, in the source, the
+ * finding a claim rests on: validation reads it, and it chooses the graph a
+ * viewpoint's card is made with. Readers see the claim, and with
+ * `citationMarker` a footnote marker after it that opens its sources' own
+ * words; never text of ours. A `#needed` link is unwrapped the same way: it
+ * records a premise queued for research.
  */
-function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes, panelCitation }: { slug: string; facts: Fact[] } & Required<Pick<RenderOptions, 'citationsAsText' | 'footnotes'>> & Pick<RenderOptions, 'panelCitation'>) {
+function remarkMarkFactCitations({ footnotes, citationMarker }: Required<Pick<RenderOptions, 'footnotes'>> & Pick<RenderOptions, 'citationMarker'>) {
   return (tree: Root) => {
+    // Each marker made here, with the key of the finding it stands for.
+    const markerKeys = new Map<Link, string>();
     visit(tree, 'link', (node: Link, index, parent) => {
-      if (node.url === NEEDED_HREF || (citationsAsText && citedFactId(node.url))) {
-        if (parent && index !== undefined) parent.children.splice(index, 1, ...node.children);
-        return index;
+      const factId = citedFactId(node.url);
+      if (node.url === NEEDED_HREF || factId) {
+        if (!parent || index === undefined) return;
+        const marker = factId ? citationMarker?.(factId, node.url.slice(FACT_HREF_PREFIX.length).split('/')[1]) : undefined;
+        const markers: Link[] = marker
+          ? [{ type: 'link', url: `#${marker.key}`, data: { hProperties: { className: ['sv-source-marker'], 'data-sources': marker.key, 'aria-label': `Source ${marker.label}` } }, children: [{ type: 'text', value: marker.label }] }]
+          : [];
+        if (marker) markerKeys.set(markers[0], marker.key);
+        parent.children.splice(index, 1, ...node.children, ...markers);
+        return index + node.children.length + markers.length;
       }
       if (!footnotes && node.url.startsWith('#source-')) {
         if (!parent || index === undefined) return;
@@ -78,44 +79,33 @@ function remarkMarkFactCitations({ slug, facts, citationsAsText, footnotes, pane
         parent.children.splice(index, 1);
         return index;
       }
-      if (node.url.startsWith('#principle-')) {
-        node.data = { ...node.data, hProperties: { className: ['sv-principle-cite'] } };
-        return;
-      }
-      const factId = citedFactId(node.url);
-      if (!factId) return;
-      const fact = facts.find((item) => item.id === factId);
-      const section = node.url.slice(FACT_HREF_PREFIX.length).split('/')[1];
-      const target = section ? `${factId}--${section}` : fact?.supports ? `evidence-${factId}` : '';
-      node.url = factPath(slug, fact?.supports ?? factId) + (target ? `#${target}` : '');
-      const data = (node.data ??= {});
-      const props = ((data as { hProperties?: Record<string, unknown> }).hProperties ??= {});
-      const panel = section ? panelCitation?.(factId, section) : undefined;
-      props.className = ['sv-cite'];
-      if (panel) {
-        props['data-panel-link'] = '';
-        props['data-panel-fact'] = panel.fact;
-        props['data-panel-observation'] = panel.observation;
-      }
+    });
+    // A finding cited several times in one paragraph keeps one marker, after its last citation.
+    visit(tree, 'paragraph', paragraph => {
+      const last = new Map<string, Link>();
+      visit(paragraph, 'link', link => {
+        const key = markerKeys.get(link);
+        if (key) last.set(key, link);
+      });
+      visit(paragraph, 'link', (link, index, parent) => {
+        const key = markerKeys.get(link);
+        if (!key || last.get(key) === link || !parent || index === undefined) return;
+        parent.children.splice(index, 1);
+        return index;
+      });
     });
   };
 }
 
-/**
- * `slug` is required rather than optional: a citation rendered without one
- * could only fall back to the old in-page anchor, which no longer exists on
- * any page — a silent dead link is exactly what the citation rules exist to
- * prevent, so the type system asks for the topic instead.
- */
-/** One processor per topic — the only thing that varies between them is the slug. */
+/** One processor per topic and footnote setting, the only things that vary between them. */
 const processors = new Map<string, ReturnType<typeof buildProcessor>>();
 
-function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, { citationsAsText = false, footnotes = true, panelCitation }: RenderOptions = {}) {
+function buildProcessor(namespace: string, { footnotes = true, citationMarker }: RenderOptions = {}) {
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkEscapeHtml)
-    .use(remarkMarkFactCitations, { slug, facts, citationsAsText, footnotes, panelCitation })
+    .use(remarkMarkFactCitations, { footnotes, citationMarker })
     .use(remarkEvidenceAnchors)
     .use(remarkRehype)
     .use(rehypeGlossary, { namespace })
@@ -125,7 +115,7 @@ function buildProcessor(slug: string, facts: Fact[] = [], namespace = slug, { ci
     .freeze();
 }
 
-/** Where a citation opens in its collection's data panel. */
+/** Where a featured chart opens in full over the page. */
 export type PanelTarget = {
   fact: string;
   /** The cited section, as an element id: `<fact>--<section>`. It is the page's address while the panel is open. */
@@ -134,28 +124,28 @@ export type PanelTarget = {
 
 type RenderOptions = {
   /**
-   * A fact citation renders as its plain text, with no link: for a fact's prose
-   * shown inside its own data panel, beside the evidence it cites.
+   * A cited claim's footnote marker, if it has one: the key its sources are
+   * read under, and the number it shows.
    */
-  citationsAsText?: boolean;
+  citationMarker?: (id: string, section: string | undefined) => { key: string; label: string } | undefined;
   /**
    * False leaves out `[n](#source-…)` footnotes: for a fact's prose shown away
    * from the fact, where the sources they point to are not on the page.
    */
   footnotes?: boolean;
-  /**
-   * Where a citation opens the data panel on this page, rather than its report.
-   */
-  panelCitation?: (id: string, section: string) => PanelTarget | undefined;
 };
 
-export async function renderMarkdown(md: string, slug: string, facts: Fact[] = [], options: RenderOptions = {}): Promise<string> {
+export async function renderMarkdown(md: string, slug: string, options: RenderOptions = {}): Promise<string> {
   if (!md.trim()) return '';
-  const plain = options.citationsAsText || options.footnotes === false || options.panelCitation;
-  let processor = md.includes("#glossary-") ? buildProcessor(slug, facts, createHash("sha256").update(slug + md).digest("hex").slice(0, 16), options) : facts.length || plain ? buildProcessor(slug, facts, slug, options) : processors.get(slug);
+  // A glossary term's pop-up needs an id unique to the text it is in.
+  if (md.includes("#glossary-")) return String(await buildProcessor(createHash("sha256").update(slug + md).digest("hex").slice(0, 16), options).process(md)).trim();
+  // Markers are numbered by the caller, render by render.
+  if (options.citationMarker) return String(await buildProcessor(slug, options).process(md)).trim();
+  const key = `${slug}:${options.footnotes !== false}`;
+  let processor = processors.get(key);
   if (!processor) {
-    processor = buildProcessor(slug);
-    processors.set(slug, processor);
+    processor = buildProcessor(slug, options);
+    processors.set(key, processor);
   }
   const file = await processor.process(md);
   return String(file).trim();

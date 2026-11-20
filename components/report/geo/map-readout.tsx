@@ -118,7 +118,14 @@ export function MapReadout({
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Escape') showWhole();
+    // Zoomed in, Escape zooms back out and goes no further: in a sheet it would
+    // otherwise close the sheet too. At the whole map it is left to close it.
+    if (event.key === 'Escape' && view.scale > 1) {
+      event.preventDefault();
+      event.stopPropagation();
+      showWhole();
+      return;
+    }
     if (event.key !== 'Enter' && event.key !== ' ') return;
     const focus = zoomableArea(event.target)?.dataset.focus;
     if (!focus) return;

@@ -2,8 +2,9 @@ import type * as R from '@/components/report';
 import { eventMarkers } from '@/components/topic/series-chart';
 import { aboutThisDataNote } from './figure-text';
 import { mapAreas } from './map-presets';
+import { quotedPhrases, sourcePassages } from './source-passage';
 import { factSources, figureCitations } from './sources';
-import { factPath } from './types';
+import { topicPath } from './types';
 import type { Fact, Figure, FigureOf, FigureValueFormat, Source } from './types';
 
 /**
@@ -149,6 +150,7 @@ export function timelineProps(f: FigureOf<'timeline'>, c: FigureContext): R.Time
       category: event.category,
       significance: event.significance,
       sources: event.sources.map(c.credit),
+      passages: sourcePassages(quotedPhrases(event.title, event.description), event.sources, c.sources, c.credit),
     })),
   };
 }
@@ -365,6 +367,7 @@ function quote(q: FigureQuote, n: number, f: { id: string }, c: FigureContext): 
     date: q.date,
     context: q.context,
     sources: q.sources.map(c.credit),
+    passages: sourcePassages([q.text], q.sources, c.sources, c.credit),
   };
 }
 
@@ -430,12 +433,8 @@ export function pullQuoteProps(f: FigureOf<'pullQuote'>, c: FigureContext): R.Pu
   return { quote: { ...quote(f.quote, 1, f, c), position: f.quote.position }, variant: f.variant };
 }
 
-/**
- * The claim alone; the renderer frames it. `facts` are the topic's, so an
- * evidence link to a supporting fact lands on its parent's page, the same
- * target rule as an inline citation (remarkMarkFactCitations).
- */
-export function claimCheckProps(f: FigureOf<'claimCheck'>, c: FigureContext & { slug: string; facts: Pick<Fact, 'id' | 'supports'>[] }): R.ClaimCheckProps {
+/** The claim alone; the renderer frames it. Its evidence link is an inline citation's (remarkMarkFactCitations). */
+export function claimCheckProps(f: FigureOf<'claimCheck'>, c: FigureContext & { slug: string }): R.ClaimCheckProps {
   return {
     claim: f.claim,
     claimant: f.claimant,
@@ -444,14 +443,8 @@ export function claimCheckProps(f: FigureOf<'claimCheck'>, c: FigureContext & { 
     status: f.status,
     finding: f.finding,
     sources: f.sources.map(c.credit),
-    evidence: f.evidence && { href: evidenceHref(f.evidence, c.slug, c.facts), label: f.evidence.label },
+    evidence: f.evidence && { href: topicPath(c.slug) + (f.evidence.section ? `#${f.evidence.fact}--${f.evidence.section}` : ''), label: f.evidence.label },
   };
-}
-
-function evidenceHref({ fact: id, section }: { fact: string; section?: string }, slug: string, facts: Pick<Fact, 'id' | 'supports'>[]): string {
-  const parent = facts.find(fact => fact.id === id)?.supports;
-  const anchor = section ? `${id}--${section}` : parent ? `evidence-${id}` : '';
-  return factPath(slug, parent ?? id) + (anchor ? `#${anchor}` : '');
 }
 
 /** The list alone; the renderer frames it. */

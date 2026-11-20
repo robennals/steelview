@@ -8,15 +8,11 @@ The weak point in American elections is the voter list, not the line at the poll
 
 ### Voter lists hold many out-of-date names, and they stay for years
 
-[A national estimate, from data to March 2011, found about one record in eight wrong or out of date](#fact-voter-roll-maintenance/pew-only-direct-measure). Old names can stay a long time, because [removing someone for a move can take through two federal general elections](#fact-voter-roll-maintenance/removal-waits-two-elections).
-
-[Some of those records belong to eligible voters with wrong details](#fact-voter-roll-maintenance/pew-not-fraud), and [a stale record is not a vote](#fact-voter-roll-maintenance/pew-not-fraud). But it is a name someone else can use. [Chicago's 1982 fraud cast ballots in the names of people who had died or moved](#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud).
+[A national estimate, from data to March 2011, found about one record in eight wrong or out of date](#fact-voter-roll-maintenance/pew-only-direct-measure). Old names can stay a long time, because [removing someone for a move can take through two federal general elections](#fact-voter-roll-maintenance/removal-waits-two-elections). Some of those records belong to eligible voters with wrong details, and a stale record is not a vote. But it is a name someone else can use: [Chicago's 1982 fraud cast ballots in the names of people who had died or moved](#fact-election-fraud-and-voter-exclusion-history/stale-rolls-enabled-fraud).
 
 ### Most fraud on record went through officials or the mail, where a poll ID check never reaches
 
-[In 14 of 20 recorded cases, a polling-place ID check would not have reached the fraud](#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach): officials changed ballots, ballots went by mail, or real voters sold their votes. A name taken off the list cannot be used by mail or in person, whoever is checking. A clean list cannot stop an official stuffing the box, but neither can an ID check.
-
-[Where people voted in others' names at the polls, the officials checking were often part of it](#fact-election-fraud-and-voter-exclusion-history/checkers-complicit). Those are the people who would check ID. And [many entries in one list of impersonation cases involve mail ballots](#fact-election-fraud-and-voter-exclusion-history/heritage-impersonation-mail).
+[In 14 of 20 recorded cases, a polling-place ID check would not have reached the fraud](#fact-election-fraud-and-voter-exclusion-history/id-would-not-reach): officials changed ballots, ballots went by mail, or real voters sold their votes. Where people voted in others' names at the polls, the officials checking were often part of it, and those are the people who would check ID. A name taken off the list cannot be used by mail or in person, whoever is checking. A clean list cannot stop an official stuffing the box, but neither can an ID check.
 
 ### Non-citizens show up in government records, not at the polls
 
@@ -32,12 +28,10 @@ The weak point in American elections is the voter list, not the line at the poll
 
 ### Finding voters who moved needs states to share data, and nine have stopped
 
-ERIC is a group of states that share voter records. [By October 2023, nine Republican-led states had left it](#fact-voter-roll-maintenance/eric-departures). A match needs both states as members, so each state that leaves takes its voters out of the match.
-
-[ERIC has sent members millions of leads on voters who moved away](#fact-voter-roll-maintenance/eric-cross-state-movers). [Those leads peaked at about 3.5 million in 2021, and have been about 0.7 million a year or fewer since 2024](#fact-voter-roll-maintenance/eric-reports-fell), though [ERIC does not say how much of that fall comes from states leaving](#fact-voter-roll-maintenance/eric-reports-fell). [Iowa objected to its rules, and Virginia cited data security](#fact-voter-roll-maintenance/eric-departures). Those are reasons to fix the rules or build another match, not to stop matching.
+ERIC is a group of states that share voter records. [By October 2023, nine Republican-led states had left it](#fact-voter-roll-maintenance/eric-departures). A match needs both states as members, so each state that leaves takes its voters out of the match. [ERIC's leads on voters who moved peaked at about 3.5 million in 2021, and have been about 0.7 million a year or fewer since 2024](#fact-voter-roll-maintenance/eric-reports-fell), though ERIC does not say how much of that fall comes from states leaving. Iowa objected to its rules, and Virginia cited data security. Those are reasons to fix the rules or build another match, not to stop matching.
 
 ### So states should clean their lists early, carefully, and together
 
 States should check their own records before writing to anyone, and publish each program's error rate. They should give flagged voters time and a simple way to answer. A state that wants clean lists should rejoin ERIC, or build an equally wide match.
 
-They should finish large clean-ups early. [Federal law bars them in the 90 days before a federal election](#fact-voter-roll-maintenance/ninety-day-limit), and [courts have stopped late ones](#fact-voter-roll-maintenance/nvra-90-day-rule). [Honest elections that can be checked](#principle-verifiably-honest-elections) depend on knowing who is on the list. And [rules should mean what they say](#principle-rules-must-mean-what-they-say) for those who keep it. Eligible citizens should not have to re-prove what the state already knows.
+They should finish large clean-ups early. [Federal law bars them in the 90 days before a federal election](#fact-voter-roll-maintenance/ninety-day-limit), and [courts have stopped late ones](#fact-voter-roll-maintenance/nvra-90-day-rule). Honest elections that can be checked depend on knowing who is on the list. And rules should mean what they say for those who keep it. Eligible citizens should not have to re-prove what the state already knows.

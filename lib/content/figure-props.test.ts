@@ -98,12 +98,17 @@ test('open periods end at the topic\'s lastUpdated; closed ones leave the axis a
   assert.equal(periodTimelineProps(periods, context).asOf, '2026-10-29');
 });
 
-test('period-timeline events are strip events crediting their citation', () => {
+test('period-timeline events are strip events crediting their citation, with the sentence their quoted words came from', () => {
+  const whiteHouse = { label: 'The White House', href: '#source-figure-examples-4', number: 4 };
   assert.deepEqual(periodTimelineProps(figureOf('periodTimeline'), context).events, [{
     date: '2026-05-01',
     label: 'Letter says hostilities "have terminated"',
     description: undefined,
-    sources: [{ label: 'The White House', href: '#source-figure-examples-4', number: 4 }],
+    sources: [whiteHouse],
+    passages: [{
+      source: whiteHouse,
+      parts: [{ text: 'The President reported that hostilities with Iran "' }, { text: 'have terminated', quoted: true }, { text: '".' }],
+    }],
   }]);
 });
 
@@ -250,13 +255,11 @@ test('estimates may omit any bound, and a null no-effect value passes through', 
   assert.deepEqual(props.estimates.map(e => [e.estimate, e.low, e.high]), [[undefined, 25, 35], [40, 34, 42], [38, undefined, undefined], [43.6, undefined, undefined]]);
 });
 
-test('claim evidence links like an inline citation: to the parent page when the fact supports another', () => {
+test('claim evidence links like an inline citation: to the finding on the topic page', () => {
   const check = figureOf('claimCheck');
-  const facts: Pick<Fact, 'id' | 'supports'>[] = [{ id: 'figure-examples' }, { id: 'mail-ballot-privacy' }];
-  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).evidence?.href, '/topics/vbm/facts/figure-examples#figure-examples--chart-detected-is-a-floor');
-  const supporting = [{ id: 'mail-ballot-privacy', supports: 'mail-voting' }];
-  assert.equal(claimCheckProps({ ...check, evidence: { fact: 'mail-ballot-privacy' } }, { ...context, slug: 'vbm', facts: supporting }).evidence?.href, '/topics/vbm/facts/mail-voting#evidence-mail-ballot-privacy');
-  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm', facts }).claimSource?.number, 22);
+  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm' }).evidence?.href, '/topics/vbm#figure-examples--chart-detected-is-a-floor');
+  assert.equal(claimCheckProps({ ...check, evidence: { fact: 'mail-ballot-privacy' } }, { ...context, slug: 'vbm' }).evidence?.href, '/topics/vbm');
+  assert.equal(claimCheckProps(check, { ...context, slug: 'vbm' }).claimSource?.number, 22);
 });
 
 test('a quote\'s stance becomes its position, by its category\'s label; language and translation pass through', () => {

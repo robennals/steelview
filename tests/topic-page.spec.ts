@@ -1,34 +1,15 @@
-import type { Locator, Page } from '@playwright/test';
+import type { Locator } from '@playwright/test';
 import { test, expect } from './hydrated-test';
-import { expectChartAlone, headCorner, openDataRow, openTab, openViewpoint } from './topic-rows';
+import { expectChartAlone, headCorner, openChart, openViewpoint } from './topic-rows';
 
-// These assertions depend on authored uk-immigration content: the topic
-// title "UK immigration", the report `immigration-against-the-long-run`, and
-// the viewpoint `open-and-build` with the link text it uses for
-// `work-and-study-routes`. Editing any of that content's wording or
-// cross-references will turn this suite red.
+// These assertions depend on authored content: the topic title "UK
+// immigration", its viewpoints `open-and-build` and `blame-underinvestment`,
+// and which charts the uk-asylum viewpoints' cards are made with. Editing any
+// of that content's wording or cards will turn this suite red.
 
 const TOPIC = '/topics/uk-immigration';
-const DATA = `${TOPIC}#data`;
 /** Its viewpoints' content has settled, so tests of how a viewpoint behaves use it. */
 const ASYLUM = '/topics/uk-asylum';
-const longRun = 'UK Migration and Population Over the Long Run';
-
-/** Put a scrolling box, at its own top, at the top of the screen, and the mouse over it. */
-async function hoverAtTop(page: Page, box: Locator) {
-  await expect(box).toBeVisible();
-  // Repeated until it holds, as a row opening keeps the page in place until it has opened.
-  await expect(async () => {
-    await box.evaluate(el => {
-      el.scrollTop = 0;
-      window.scrollTo({ top: scrollY + el.getBoundingClientRect().top - 10, behavior: 'instant' });
-    });
-    await page.waitForTimeout(200);
-    expect(Math.round((await box.boundingBox())!.y)).toBe(10);
-  }).toPass();
-  const { x, y, width } = (await box.boundingBox())!;
-  await page.mouse.move(x + width / 2, y + 40);
-}
 
 /** How far `below` starts under `above`, measured at one moment as a row still opening moves both. */
 async function gapBetween(within: Locator, above: string, below: string) {
@@ -38,76 +19,27 @@ async function gapBetween(within: Locator, above: string, below: string) {
   );
 }
 
-/** Wheel up over `table`, already at its top: the page should move instead. */
-async function expectWheelMovesPage(page: Page, table: Locator) {
-  await hoverAtTop(page, table);
-  const before = await page.evaluate(() => scrollY);
-  expect(before).toBeGreaterThan(0);
-  await page.mouse.wheel(0, -100);
-  await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThan(before);
-}
-
-test('the topic page opens on its viewpoints, and the two tabs show one panel at a time', async ({ page }) => {
+// There are no tabs: the viewpoints, then the cruxes, each under its heading.
+test('the topic page shows its viewpoints and then its cruxes, with no tabs', async ({ page }) => {
   await page.goto(TOPIC);
   await expect(page.getByRole('heading', { name: 'UK immigration', level: 1 })).toBeVisible();
-  const tabs = page.getByRole('navigation', { name: 'Sections of this topic' }).getByRole('link');
-  await expect(tabs).toHaveText(['Viewpoints', 'Data']);
-  await expect(tabs.first()).toHaveAttribute('aria-current', 'true');
+  await expect(page.locator('.sv-topic-tabs')).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Sections of this topic' })).toHaveCount(0);
+  await expect(page.locator('.sv-row--data')).toHaveCount(0);
+  const viewpoints = page.getByRole('heading', { name: 'Viewpoints', level: 2 });
+  const cruxes = page.getByRole('heading', { name: 'Cruxes', level: 2 });
+  await expect(viewpoints).toBeVisible();
+  await expect(cruxes).toBeVisible();
   await expect(page.locator('.sv-row--viewpoint').first()).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Principles', level: 2 })).toHaveCount(0);
-  await expect(page.locator('.sv-row--data').first()).toBeHidden();
-
-  await openTab(page, 'Data');
-  await expect(page).toHaveURL(new RegExp(`${DATA}$`));
-  await expect(page.locator('.sv-row--data').first()).toBeVisible();
-  await expect(page.locator('.sv-row--viewpoint').first()).toBeHidden();
-
-  await page.goBack();
-  await expect(page.locator('.sv-row--viewpoint').first()).toBeVisible();
-});
-
-test('the cruxes show below either tab', async ({ page }) => {
-  await page.goto(TOPIC);
-  const heading = page.getByRole('heading', { name: 'Cruxes', level: 2 });
-  await expect(heading).toBeVisible();
   await expect(page.locator('.sv-row--crux').first()).toBeVisible();
-  await openTab(page, 'Data');
-  await expect(heading).toBeVisible();
-  await expect(page.locator('.sv-row--crux').first()).toBeVisible();
-});
-
-// The tabs do not reach the cruxes, so their bar must not follow a reader there.
-test('the tab bar stays with the tabs, not over the cruxes', async ({ page }) => {
-  await page.goto(TOPIC);
-  await page.getByRole('heading', { name: 'Cruxes', level: 2 }).evaluate(el => el.scrollIntoView({ block: 'start' }));
-  await expect(page.locator('.sv-topic-tabs')).not.toBeInViewport();
-});
-
-test('a tab has its own address', async ({ page }) => {
-  await page.goto(DATA);
-  await expect(page.locator('.sv-row--data').first()).toBeVisible();
-  await expect(page.locator('.sv-row--viewpoint').first()).toBeHidden();
-});
-
-test('the tabs stay on screen, and a new tab starts at its top', async ({ page }) => {
-  await page.goto(TOPIC);
-  await page.evaluate(() => window.scrollTo(0, 700));
-  await openTab(page, 'Data');
-  await expect(page.locator('.sv-row--data').first()).toBeInViewport();
-  const tabs = page.locator('.sv-topic-tabs');
-  await expect.poll(() => tabs.evaluate(el => Math.abs(el.getBoundingClientRect().top))).toBeLessThan(1);
-});
-
-test('a tab keeps its open rows while another is showing', async ({ page }) => {
-  await page.goto(TOPIC);
-  const viewpoint = await openViewpoint(page, 'open-and-build');
-  await openTab(page, 'Data');
-  await openTab(page, 'Viewpoints');
-  await expect(viewpoint).toHaveAttribute('data-open', 'true');
+  // The last viewpoint, and its section's heading, come before the cruxes' heading.
+  const precedes = async (first: Locator) => cruxes.evaluate((el, other) => Boolean(other!.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING), await first.elementHandle());
+  expect(await precedes(viewpoints)).toBe(true);
+  expect(await precedes(page.locator('.sv-row--viewpoint').last())).toBe(true);
 });
 
 test('a crux is plain text: it links to nothing', async ({ page }) => {
-  await page.goto(DATA);
+  await page.goto(TOPIC);
   const crux = page.locator('.sv-row--crux').first();
   await crux.locator('.sv-row__toggle').click(headCorner);
   await expect(crux.locator('.sv-position dt').first()).toBeVisible();
@@ -130,8 +62,8 @@ test('a link to a crux loaded cold brings up the crux, opened', async ({ page })
   await expect(crux).toBeInViewport();
 });
 
-// The sheet's data panel sits on the Data tab, closed or not.
-test('a viewpoint opens a data panel without leaving its tab', async ({ page }) => {
+// The sheet opens over the viewpoint, which is still there, open, once it closes.
+test('a card\'s chart opens in a sheet over its viewpoint', async ({ page }) => {
   await page.goto(ASYLUM);
   const viewpoint = await openViewpoint(page, 'refuge');
   const card = viewpoint.locator('.sv-deck__card').first();
@@ -145,10 +77,12 @@ test('a viewpoint opens a data panel without leaving its tab', async ({ page }) 
 // A reader can arrive on an observation's own address (a shared link, or a
 // chart on the home page). Its sheet opens over the report, and Close leaves
 // it onto the report, not off the page.
-test('arriving at an observation\'s address opens its data panel, which closes onto the report', async ({ page }) => {
+test('arriving at an observation\'s address opens its chart\'s sheet, which closes onto the topic', async ({ page }) => {
   await page.goto(ASYLUM);
   const first = await openViewpoint(page, 'refuge');
   const href = await first.locator('.sv-deck__card').first().getByRole('link', { name: 'Explore this data' }).getAttribute('href');
+  // The observation's own address on the topic page, not a report page.
+  expect(href).toMatch(/^#asylum-claims-and-decisions--[a-z0-9-]+$/);
   // A new tab, as a shared link opens in: on this page it would be a jump within it.
   const arrived = await page.context().newPage();
   await arrived.goto(`${ASYLUM}${new URL(href!, 'http://x').hash}`);
@@ -164,8 +98,8 @@ test('arriving at an observation\'s address opens its data panel, which closes o
 // The whole head of a row toggles it, not just its title: a click at the
 // bottom edge, away from any text, must open it.
 test('the whole row head opens the row, not just the title', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
+  await page.goto(TOPIC);
+  const row = page.locator('.sv-row--crux').first();
   await row.scrollIntoViewIfNeeded();
   const box = await row.locator('.sv-row__head').boundingBox();
   if (!box) throw new Error('row head has no layout box');
@@ -175,70 +109,36 @@ test('the whole row head opens the row, not just the title', async ({ page }) =>
   await expect(row.locator('.sv-row__toggle')).toHaveAttribute('aria-expanded', 'true');
 });
 
-/** Where the page stands on each frame for a moment, once `act` has run. */
-async function scrollAfter(page: Page, act: () => Promise<void>): Promise<number[]> {
-  const frames = page.evaluate(() => new Promise<number[]>(resolve => {
-    const seen: number[] = [];
-    const start = performance.now();
-    const record = (now: number) => {
-      seen.push(scrollY);
-      if (now - start < 900) requestAnimationFrame(record);
-      else resolve(seen);
-    };
-    requestAnimationFrame(record);
-  }));
-  await act();
-  return frames;
-}
-
-const stops = (frames: number[]) => new Set(frames).size;
-
-test('a tab moves the page up in an animation', async ({ page }) => {
-  await page.goto(TOPIC);
-  await page.evaluate(() => window.scrollTo(0, 900));
-  expect(stops(await scrollAfter(page, () => openTab(page, 'Data')))).toBeGreaterThan(5);
-  await expect(page.locator('.sv-row--data').first()).toBeInViewport();
-});
-
-test('a reader who asked for less motion is moved at once', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto(TOPIC);
-  await page.evaluate(() => window.scrollTo(0, 900));
-  expect(stops(await scrollAfter(page, () => openTab(page, 'Data')))).toBeLessThanOrEqual(3);
-  await expect(page.locator('.sv-row--data').first()).toBeInViewport();
-});
-
 test.describe('with JavaScript disabled', () => {
   test.use({ javaScriptEnabled: false });
 
   test('every section is on the page, under its own heading', async ({ page }) => {
     await page.goto(TOPIC);
-    await expect(page.locator('.sv-topic-tabs')).toBeHidden();
-    for (const section of ['Viewpoints', 'Data', 'Cruxes']) {
+    for (const section of ['Viewpoints', 'Cruxes']) {
       await expect(page.getByRole('heading', { name: section, level: 2 })).toBeVisible();
     }
-    await expect(page.locator('.sv-row--data').first()).toBeVisible();
+    await expect(page.locator('.sv-row--viewpoint').first()).toBeVisible();
     await expect(page.locator('.sv-row--crux').first()).toBeVisible();
   });
 });
 
-// A closed row is a title and an overview: its charts load only when it opens.
-test('a data collection loads its charts only when its row opens', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
+// A closed row is a title and an overview: its cards' charts load only when it opens.
+test('a viewpoint loads its cards\' charts only when its row opens', async ({ page }) => {
+  await page.goto(ASYLUM);
+  const row = page.locator('#viewpoint-refuge');
   await expect(row.locator('.sv-row__title')).toBeVisible();
   await expect(row.locator('.sv-row__body')).toHaveAttribute('inert', '');
-  await expect(row.locator('.sv-slide .sv-chart')).toHaveCount(0);
+  await expect(row.locator('.sv-deck__card .sv-chart')).toHaveCount(0);
   await row.locator('.sv-row__toggle').click(headCorner);
   await expect(row.locator('.sv-row__body')).not.toHaveAttribute('inert', '');
-  await expect(row.locator('.sv-slide .sv-chart').first()).toBeAttached();
+  await expect(row.locator('.sv-deck__card .sv-chart').first()).toBeAttached();
 });
 
-test('a viewpoint opens the data panel, not a report, at the step it cites', async ({ page }) => {
+test('a card\'s "Explore this data" opens its chart alone, at the observation it cites', async ({ page }) => {
   await page.goto(ASYLUM);
   const viewpoint = await openViewpoint(page, 'bar-and-remove');
-  await viewpoint.locator('.sv-deck__outline-item').nth(1).click();
-  const card = viewpoint.locator('.sv-deck__card').nth(1);
+  await viewpoint.locator('.sv-deck__outline-item').nth(2).click();
+  const card = viewpoint.locator('.sv-deck__card').nth(2);
   await expect(card).toBeInViewport();
   await expect(card.locator('.sv-chart').first()).toBeVisible();
   // On a card the link shows only to the keyboard; a pointer clicks the chart.
@@ -250,7 +150,7 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   // Titled with the chart it opened, not its collection.
   await expect(sheet.locator('.sv-modal__title')).toHaveText(await card.locator('.sv-graph-heading').first().innerText());
   await expectChartAlone(sheet);
-  await expect(page).toHaveURL(new RegExp(`${ASYLUM}#removals-and-what-stops-them--`));
+  await expect(page).toHaveURL(new RegExp(`${ASYLUM}#removals-and-what-stops-them--[a-z0-9-]+$`));
 
   await page.keyboard.press('Escape');
   await expect(page.locator('dialog[open]')).toHaveCount(0);
@@ -259,26 +159,18 @@ test('a viewpoint opens the data panel, not a report, at the step it cites', asy
   await expect(explore).toBeFocused();
 });
 
-test('a claim\'s "See the data" opens the chart behind it alone', async ({ page }) => {
-  await page.goto(ASYLUM);
-  const viewpoint = await openViewpoint(page, 'bar-and-remove');
-  await viewpoint.locator('.sv-deck__outline-item').nth(1).click();
-  await viewpoint.locator('.sv-deck__card').nth(1).locator('.sv-deck__reasoning a[href$="--fewer-refused-recorded-leaving"]').first().click();
-  await page.locator('dialog[open]').getByRole('link', { name: 'See the data' }).click();
 
+// `sixty-percent-growth` is on a chart the `nuclear` viewpoint's first card
+// is made with; `sixty-is-not-ninety` is on a chart no card shows.
+test('an observation\'s address opens the chart it is about, alone, if a card shows that chart', async ({ page }) => {
+  await page.goto('/topics/us-iran-war#iran-nuclear-programme--sixty-percent-growth');
   const sheet = page.locator('dialog[open]');
   await expectChartAlone(sheet);
-  // Nothing on the chart is picked out or dimmed: no observation is shown to explain it.
-  await expect(sheet.locator('[data-mark-dimmed], [data-mark-picked], [data-mark-shown]')).toHaveCount(0);
-});
+  await expect(sheet.locator('.sv-modal__title')).toHaveText("Iran's uranium enriched to 60%");
 
-test('a subtlety\'s address opens the chart it is about, alone', async ({ page }) => {
-  await page.goto('/topics/us-iran-war/facts/iran-nuclear-programme');
-  const heading = await page.locator('.sv-walk__step:has([data-observation$="--sixty-is-not-ninety"]) .sv-graph-heading').first().innerText();
   await page.goto('/topics/us-iran-war#iran-nuclear-programme--sixty-is-not-ninety');
-  const sheet = page.locator('dialog[open]');
-  await expectChartAlone(sheet);
-  await expect(sheet.locator('.sv-modal__title')).toHaveText(heading);
+  await expect(page.getByRole('heading', { name: 'Viewpoints', level: 2 })).toBeVisible();
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
 });
 
 test('clicking a card\'s chart opens the panel too, title included', async ({ page }) => {
@@ -295,14 +187,29 @@ test('clicking a card\'s chart opens the panel too, title included', async ({ pa
   await expectChartAlone(page.locator('dialog[open]'));
 });
 
-test('scrolling up over a table at its top moves the page', async ({ page }) => {
-  await page.setViewportSize({ width: 601, height: 800 });
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click(headCorner);
-  const step = row.locator('.sv-walk__slide').first();
-  await step.getByRole('button', { name: 'Table' }).dispatchEvent('click');
-  await expectWheelMovesPage(page, step.locator('.sv-chart__table-scroll').first());
+test('a pop-up first shows at its final size, not growing as its chart arrives', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'refuge');
+  // The height of the sheet on every frame it can be seen, from the click until the chart is in it.
+  await page.evaluate(() => {
+    const heights: number[] = [];
+    const record = () => {
+      const panel = document.querySelector('dialog[open] .sv-modal__panel');
+      if (panel && getComputedStyle(panel).opacity !== '0') {
+        heights.push(Math.round(panel.getBoundingClientRect().height));
+        document.documentElement.dataset.shownHeights = heights.join(' ');
+      }
+      requestAnimationFrame(record);
+    };
+    requestAnimationFrame(record);
+  });
+  await viewpoint.locator('.sv-deck__card').first().locator('.sv-graph-heading').click();
+  await expectChartAlone(page.locator('dialog[open]'));
+  await page.waitForTimeout(300);
+  const heights = (await page.locator('html').getAttribute('data-shown-heights'))!.split(' ');
+  expect(heights.length).toBeGreaterThan(0);
+  expect(new Set(heights).size).toBe(1);
 });
 
 test('on a phone, a viewpoint fits the card showing, with no empty space', async ({ page }) => {
@@ -339,198 +246,98 @@ test('on a phone, a short bar chart takes the height it needs, neither clipped n
   }
 });
 
-test('a data panel is the data: its charts open nothing, and have their controls', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click(headCorner);
-  const step = row.locator('.sv-walk__slide').first();
-  await expect(step.locator('.sv-chart').first()).toBeVisible();
-  await expect(row.locator('.sv-walk__explore')).toHaveCount(0);
+// `immigration-against-the-long-run/series` is the `economic-cost` viewpoint's first card.
+test('a chart\'s sheet is the data: its chart opens nothing more, and has its controls', async ({ page }) => {
+  const chart = await openChart(page, 'immigration-against-the-long-run', 'series');
+  const sheet = page.locator('dialog[open]');
+  await expect(chart).toBeVisible();
+  await expect(sheet.locator('.sv-walk__explore')).toHaveCount(0);
 
-  await step.locator('.sv-graph-heading').click();
-  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await sheet.locator('.sv-modal__title').click();
+  await chart.locator('.sv-chart__svg:visible').first().click();
+  await expect(page.locator('dialog[open]')).toHaveCount(1);
 
-  await step.getByRole('button', { name: 'Table' }).click();
-  await expect(step.locator('table').first()).toBeVisible();
+  await chart.getByRole('button', { name: 'Table' }).first().click();
+  await expect(chart.locator('table').first()).toBeVisible();
 });
 
-test('a short bar chart spreads its bars a little, with its scale under them, in a tall panel', async ({ page }) => {
+// `work-and-study-routes/sponsor-revocations` has two readings, and is the
+// `blame-underinvestment` viewpoint's third card.
+test('a card\'s chart with several readings opens in full with its "Show as" switch', async ({ page }) => {
   await page.goto(TOPIC);
-  const row = await openDataRow(page, 'Immigration, the Economy and the Public Finances');
-  await row.locator('.sv-walk__tab', { hasText: 'Who pays UK universities' }).click();
-  const chart = row.locator('.sv-comparison').filter({ hasText: 'Who pays UK universities' });
-  const bars = chart.locator('.sv-comparison__rows > li');
-  await expect(bars).toHaveCount(2);
-  const first = await bars.first().boundingBox();
-  const second = await bars.last().boundingBox();
-  const scale = await chart.locator('.sv-comparison__scale').boundingBox();
-  expect(second!.y - first!.y).toBeGreaterThan(55);
-  expect(second!.y - first!.y).toBeLessThan(65);
-  expect(scale!.y - (second!.y + second!.height)).toBeLessThan(40);
+  const viewpoint = await openViewpoint(page, 'blame-underinvestment');
+  await viewpoint.locator('.sv-deck__outline-item').nth(4).click();
+  const card = viewpoint.locator('.sv-deck__card').nth(4);
+  await expect(card).toBeInViewport();
+  // A card draws the one reading its point is about, with no switch.
+  await expect(card.getByRole('button', { name: /^Show as:/ }).filter({ visible: true })).toHaveCount(0);
+  await card.locator('.sv-graph-heading').first().click();
+
+  const sheet = page.locator('dialog[open]');
+  await expectChartAlone(sheet);
+  await expect(page).toHaveURL(/#work-and-study-routes--/);
+  // Its "Show as" dropdown offers every reading.
+  await sheet.getByRole('button', { name: /^Show as:/ }).filter({ visible: true }).click();
+  const showAs = sheet.getByRole('group', { name: 'Show as' }).filter({ visible: true });
+  await expect(showAs.getByRole('button')).toHaveText(['Licences revoked and revocation rate', 'Registered sponsors']);
+  await showAs.getByRole('button', { name: 'Registered sponsors' }).click();
+  await expect(sheet.locator('[id="work-and-study-routes--chart-sponsors"]')).toBeVisible();
+  await expect(sheet.locator('[id="work-and-study-routes--chart-revocations"]')).toBeHidden();
+  // Its sources and its "About this chart" come with it.
+  await expect(sheet.locator('.sv-chart__about').filter({ visible: true }).first()).toBeVisible();
 });
 
-for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
-  test(`a data panel's observation sits between its title and its graph at ${viewport.width}px wide`, async ({ page }) => {
-    await page.setViewportSize(viewport);
-    await page.goto(TOPIC);
-    const row = await openDataRow(page, longRun);
-    const step = row.locator('.sv-walk__slide').first();
-    const title = await step.locator('.sv-graph-heading').first().boundingBox();
-    const observation = await step.locator('.sv-observe').boundingBox();
-    const graph = await step.locator('.sv-chart__svg:visible').first().boundingBox();
-    expect(title!.y + title!.height).toBeLessThanOrEqual(observation!.y);
-    expect(observation!.y + observation!.height).toBeLessThanOrEqual(graph!.y);
-    const slide = step.locator('.sv-slide');
-    await expect.poll(() => slide.evaluate(el => el.scrollHeight - el.clientHeight)).toBeLessThanOrEqual(0);
-  });
-}
+test('a pop-up closes around its chart, a graph keeping a wide shape, in the middle of the screen', async ({ page }) => {
+  await page.setViewportSize({ width: 1400, height: 900 });
+  await page.goto(`${ASYLUM}#asylum-claims-and-decisions--chart-appeals-series`);
+  const sheet = page.locator('dialog[open] .sv-modal__panel');
+  const bottom = async (locator: Locator) => { const box = (await locator.boundingBox())!; return box.y + box.height; };
+  // A sheet is shown only once its chart has arrived, and so has its final size.
+  const settled = () => expect(sheet).toHaveCSS('opacity', '1');
+  await settled();
+  // The Graph/Table switch stands apart from the legend under it.
+  const legend = (await sheet.locator('.sv-chart__legend').filter({ visible: true }).first().boundingBox())!;
+  expect(legend.y - await bottom(sheet.locator('.sv-chart__view-controls').filter({ visible: true }).first())).toBeGreaterThanOrEqual(8);
+  // The graph keeps a wide shape, as steeper lines read worse, and the sheet ends just under it.
+  const graph = (await sheet.locator('.sv-chart__svg:visible').first().boundingBox())!;
+  expect(graph.width / graph.height).toBeGreaterThan(2.3);
+  expect(graph.width).toBeGreaterThan(1000);
+  expect(await bottom(sheet) - (graph.y + graph.height)).toBeLessThan(80);
+  // A sheet shorter than the screen stays in the middle of it.
+  const box = (await sheet.boundingBox())!;
+  expect(Math.abs(box.y - (900 - (box.y + box.height)))).toBeLessThan(4);
 
-test('clicking an observation\'s text opens its reasoning', async ({ page }) => {
-  await page.goto(TOPIC);
-  const row = await openDataRow(page, longRun);
-  const step = row.locator('.sv-walk__slide').first();
-  await expect(step.locator('.sv-chart').first()).toBeVisible();
-  const observation = step.locator('.sv-observe__item:visible');
-  await expect(observation.locator('.sv-walk__prose')).toBeHidden();
-  const line = await observation.boundingBox();
-  expect(line!.height).toBeLessThan(40);
-  const claim = observation.locator('.sv-observe__claim');
-  await claim.click();
-  await expect(observation.locator('.sv-walk__prose')).toContainText('813,000 people moved to the UK');
-  await expect(observation.getByRole('button', { name: 'Gross immigration' })).toHaveAttribute('aria-expanded', 'true');
-  await claim.click();
-  await expect(observation.locator('.sv-walk__prose')).toBeHidden();
+  // Rows of bars keep their own height, and the sheet closes around them too.
+  // A fresh load each time, so the sheet measured is the one just opened.
+  await page.goto('/');
+  await page.goto(`${ASYLUM}#removals-and-what-stops-them--chart-detention-issues`);
+  await settled();
+  const bars = sheet.locator('.sv-comparison');
+  expect(await bottom(sheet) - await bottom(bars.locator('.sv-comparison__scale'))).toBeLessThan(80);
+  // The rows are not spread apart: each is only as tall as its label and bar.
+  const spare = await bars.locator('.sv-comparison__rows > li').evaluateAll(items => items.map(item =>
+    item.getBoundingClientRect().height - Math.max(...[...item.querySelectorAll('*')].map(child => child.getBoundingClientRect().height))));
+  expect(spare.length).toBeGreaterThan(1);
+  for (const extra of spare) expect(extra).toBeLessThan(2);
+
+  // Rows that open fit whole too: the last row's tap target does not reach past the chart and make it scroll.
+  await page.goto('/');
+  await page.goto('/topics/us-iran-war#human-and-financial-costs-of-the-war--deaths-in-the-thousands');
+  await settled();
+  await expect(sheet.locator('.sv-row-detail').first()).toBeVisible();
+  expect(await sheet.locator('.sv-slide').evaluate(slide => slide.scrollHeight - slide.clientHeight)).toBe(0);
 });
 
-test('the whole observation bubble opens and closes, shows it can, and leaves its arrows alone', async ({ page }) => {
-  await page.goto(TOPIC);
-  const row = await openDataRow(page, longRun);
-  const step = row.locator('.sv-walk__slide').first();
-  await expect(step.locator('.sv-chart').first()).toBeVisible();
-  const bubble = step.locator('.sv-observe');
-  const prose = step.locator('.sv-observe__item:visible .sv-walk__prose');
-  const claim = step.locator('.sv-observe__item:visible .sv-observe__claim');
-
-  await expect(bubble).toHaveCSS('cursor', 'pointer');
-  await expect(claim).toHaveCSS('cursor', 'pointer');
-  const look = () => bubble.evaluate(el => {
-    const { backgroundColor, boxShadow } = getComputedStyle(el);
-    return { backgroundColor, boxShadow };
-  });
-  const resting = await look();
-  // Hovered again if the row, still settling, moves the bubble from under the mouse.
-  await expect(async () => {
-    await bubble.hover();
-    expect((await look()).boxShadow).not.toBe(resting.boxShadow);
-  }).toPass();
-  expect((await look()).backgroundColor).toBe(resting.backgroundColor);
-
-  // The chart's scrolling clips at the slide's edges, which must leave the shadow room.
-  const clip = await step.locator('.sv-slide').boundingBox();
-  const edge = await bubble.boundingBox();
-  expect(edge!.x - clip!.x).toBeGreaterThanOrEqual(12);
-  expect(clip!.x + clip!.width - (edge!.x + edge!.width)).toBeGreaterThanOrEqual(12);
-
-  // The empty space at the end of the line opens it, and the text it opened closes it.
-  const box = await bubble.boundingBox();
-  await page.mouse.click(box!.x + box!.width - 4, box!.y + 4);
-  await expect(prose).toBeVisible();
-  await prose.click();
-  await expect(prose).toBeHidden();
-
-  await step.getByRole('button', { name: 'Next observation' }).click();
-  await expect(step.locator('.sv-observe__count')).toHaveText(/^2 of/);
-  await expect(prose).toBeHidden();
-});
-
-test('choosing an observation picks out its part of the graph', async ({ page }) => {
-  await page.goto(TOPIC);
-  const row = await openDataRow(page, longRun);
-  const step = row.locator('.sv-walk__slide').first();
-  const lines = step.locator('svg:visible [data-series]');
-  const shownMark = step.locator('.sv-chart__svg:visible [data-mark-shown]');
-  const dimmed = (name: string) => step.locator(`svg:visible [data-series="${name}"][data-mark-dimmed]`);
-
-  // Closed, an observation is only a heading: the whole graph stays in view.
-  await expect(lines.first()).toBeVisible();
-  await expect(step.locator('[data-mark-dimmed], [data-mark-shown]')).toHaveCount(0);
-
-  // Opened, a point: the 2025 value on the immigration line, with the other lines receding.
-  const toggle = step.locator('.sv-observe__item:not([hidden]) .sv-observe__toggle');
-  await toggle.click();
-  // The opened claim is set apart from its reasoning.
-  await expect(step.locator('.sv-observe__item:not([hidden]) .sv-observe__claim')).toHaveCSS('font-weight', '600');
-  await expect(shownMark.locator('.sv-chart__mark-label')).toHaveText('813,000');
-  await expect(dimmed('Net migration')).toHaveCount(1);
-  await expect(dimmed('Immigration')).toHaveCount(0);
-
-  // Stepping on from an open observation opens the next, so its mark shows at
-  // once: a region, the four years from 2021, with the plot either side veiled.
-  await step.getByRole('button', { name: 'Next observation' }).click();
-  await expect(step.locator('.sv-observe__item:not([hidden]) .sv-observe__body')).toBeVisible();
-  await expect(shownMark.locator('.sv-chart__mark-veil')).toHaveCount(2);
-  await expect(dimmed('Emigration')).toHaveCount(1);
-  await expect(dimmed('Net migration')).toHaveCount(0);
-});
-
-test('an observation on a comparison picks out its rows, and keeps them when the rows change', async ({ page }) => {
-  await page.goto(TOPIC);
-  const row = await openDataRow(page, longRun);
-  const tab = row.locator('.sv-walk__tab').filter({ hasText: 'Arrivals per head by nationality' }).first();
-  await tab.click();
-  const step = row.locator('.sv-walk__slide:has(.sv-comparison-controls):has([data-row="Malta"])').first();
-  await expect(step.locator('.sv-comparison__rows')).toBeVisible();
-  // A far chart is a long slide away, and its controls move until it lands.
-  await expect.poll(() => step.evaluate(el => Math.abs(el.getBoundingClientRect().left - el.parentElement!.getBoundingClientRect().left))).toBeLessThan(2);
-  await step.locator('.sv-observe__item:not([hidden]) .sv-observe__toggle').click();
-  await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
-  await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
-  await step.locator('.sv-comparison-controls button').first().click();
-  await expect(step.locator('[data-row="Luxembourg"]')).toHaveAttribute('data-mark-picked', '');
-  await expect(step.locator('[data-row="Germany"]')).toHaveAttribute('data-mark-dimmed', '');
-});
-
-test('a chart\'s subtitle line opens its More panel', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click(headCorner);
-  const step = row.locator('.sv-walk__slide').first();
-  const about = step.locator('.sv-chart__about').first();
+test('a chart\'s subtitle line in its sheet opens its More panel', async ({ page }) => {
+  const chart = await openChart(page, 'immigration-against-the-long-run', 'series');
+  const about = chart.locator('.sv-chart__about').first();
   await expect(about).toBeVisible();
   await expect(about).not.toHaveAttribute('open');
-  // The row is still settling as it opens, which can swallow the first click.
+  // The sheet is still settling as it opens, which can swallow the first click.
   await expect(async () => {
     await about.locator('> summary').click();
     await expect(about).toHaveAttribute('open', '', { timeout: 500 });
   }).toPass();
-});
-
-test('the arrows move the chart strip and leave the selected chart alone', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-row__toggle').click(headCorner);
-  const selected = row.locator('.sv-walk__tab[aria-current]');
-  const before = await selected.innerText();
-  await row.getByRole('button', { name: 'Show later charts' }).click();
-  await expect.poll(() => row.locator('.sv-walk__tabs').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
-  await expect(selected).toHaveText(before);
-});
-
-// A closed row's thumbnails are a way in: each opens the row at its own step.
-test('a thumbnail opens a data row at that chart', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-walk__thumb').nth(2).click();
-  await expect(row).toHaveAttribute('data-open', 'true');
-  await expect(row.locator('.sv-walk__tab').nth(2)).toHaveAttribute('aria-current', 'step');
-  await expect(row.locator('.sv-walk__slide').nth(2)).toBeInViewport({ ratio: 0.5 });
-});
-
-test('the "more" tile opens a data row at the first chart it stands for', async ({ page }) => {
-  await page.goto(DATA);
-  const row = page.locator('.sv-row--data').first();
-  await row.locator('.sv-walk__thumb', { hasText: 'more' }).click();
-  await expect(row.locator('.sv-walk__tab').nth(6)).toHaveAttribute('aria-current', 'step');
 });
 
 test('a thumbnail still moves the row after it was closed on another card', async ({ page }) => {
@@ -557,24 +364,33 @@ test('a keyboard reader keeps their place when a thumbnail opens the row', async
 const SLIDES_TOPIC = '/topics/uk-asylum';
 const SLIDES_VIEWPOINT = '#viewpoint-refuge';
 
+// A source quote can run long, so the passages the claim rests on are picked out.
+test('a source\'s quote picks out the passage the claim rests on', async ({ page }) => {
+  await page.goto(ASYLUM);
+  const viewpoint = await openViewpoint(page, 'bar-and-remove');
+  await viewpoint.locator('.sv-deck__card').nth(1).locator('.sv-deck__reasoning a.sv-source-marker').first().click();
+  const popup = page.locator('dialog[open]');
+  await expect(popup.locator('blockquote mark').filter({ hasText: 'more small boats leaving from Belgium' })).toBeVisible();
+  // The highlight ends at its words, not the space after them.
+  for (const text of await popup.locator('blockquote mark').allTextContents()) expect(text).toBe(text.trim());
+});
+
 test.describe('a slideshow viewpoint on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
-  test('each card makes its point, completes it in a line that opens the evidence, and shows the graph that line cites', async ({ page }) => {
+  test('each card makes its point, completes it in one line with nothing behind it, and shows the graph that line cites', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
     const deck = page.locator(`${SLIDES_VIEWPOINT} .sv-deck`);
     await expect(deck.locator('.sv-deck__outline')).toBeHidden();
     const card = deck.locator('.sv-deck__card').first();
-    await expect(card.locator('.sv-deck__heading')).toHaveText('Most people crossing the Channel are found to need protection');
+    await expect(card.locator('.sv-deck__heading')).toHaveText('Most people crossing the Channel have been found to need protection');
     await expect(card.locator('.sv-deck__reasoning')).toContainText('most would face danger if sent back');
     // One graph a card: a phone has room for no more.
     await expect(card.locator('.sv-chart')).toHaveCount(1);
     await expect(card.locator('.sv-chart__caption')).toContainText('Initial decisions on small-boat arrivals');
-    const evidence = card.locator('.sv-deck__pop');
-    await expect(evidence).toBeHidden();
-    await card.locator('.sv-deck__more').click();
-    await expect(evidence).toContainText('Eritreans and Sudanese are the largest groups now crossing');
+    // The line is the card's only text: nothing opens under it.
+    await expect(card.locator(':scope > details, .sv-deck__prose')).toHaveCount(0);
 
     await deck.getByRole('button', { name: /Next/ }).click();
     const line = deck.locator('.sv-deck__card').nth(1);
@@ -600,13 +416,12 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
   });
 
-  test('open, a data report or a crux also runs to the screen\'s edges', async ({ page }) => {
-    await page.goto(`${SLIDES_TOPIC}#data`);
-    for (const row of [page.locator('.sv-row--data').first(), page.locator('.sv-row--crux').first()]) {
-      await row.locator('.sv-row__toggle').click(headCorner);
-      await expect(row).toHaveAttribute('data-open', 'true');
-      await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
-    }
+  test('open, a crux also runs to the screen\'s edges', async ({ page }) => {
+    await page.goto(SLIDES_TOPIC);
+    const row = page.locator('.sv-row--crux').first();
+    await row.locator('.sv-row__toggle').click(headCorner);
+    await expect(row).toHaveAttribute('data-open', 'true');
+    await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
   });
 
   test('open, a topic on the home page also runs to the screen\'s edges, growing from its card', async ({ page }) => {
@@ -620,30 +435,32 @@ test.describe('a slideshow viewpoint on a phone', () => {
     await expect.poll(async () => (await row.boundingBox())!.width).toBe(390);
   });
 
-  test('a cited claim opens its finding in a pop-up, which leads on to the data', async ({ page }) => {
+  // The card's words and its graph make the point. A claim is plain text with a
+  // footnote marker, which opens its sources' own words, never text of ours.
+  test('a claim\'s footnote marker opens the quotes from its sources', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     await page.locator(`${SLIDES_VIEWPOINT} .sv-row__toggle`).click(headCorner);
-    const claim = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).first().locator('.sv-deck__reasoning a.sv-cite').first();
-    await claim.click();
-    const popup = page.getByRole('dialog', { name: 'Most decided small-boat claims were granted' });
-    await expect(popup).toBeVisible();
-    await expect(popup).toContainText('79,589');
+    const line = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).first().locator('.sv-deck__reasoning');
+    await expect(line.locator('a.sv-cite')).toHaveCount(0);
+    const marker = line.locator('a.sv-source-marker').first();
+    await expect(marker).toHaveText('1');
+    await marker.click();
+    const popup = page.locator('dialog[open]');
+    await expect(popup.locator('.sv-modal__eyebrow')).toHaveText(/^Sources?$/);
+    await expect(popup.locator('blockquote').first()).not.toBeEmpty();
+    await expect(popup.locator('figcaption a').first()).toHaveAttribute('href', /^https?:/);
     await page.keyboard.press('Escape');
     await expect(popup).toHaveCount(0);
-    await expect(claim).toBeFocused();
-
-    await claim.click();
-    await popup.getByRole('link', { name: 'See the data' }).click();
-    await expect(popup).toHaveCount(0);
-    await expectChartAlone(page.locator('dialog[open]'));
+    await expect(marker).toBeFocused();
   });
+
 
   test('a card\'s point about a trend is drawn as a line over every year', async ({ page }) => {
     await page.goto(SLIDES_TOPIC);
     const row = page.locator('#viewpoint-bar-and-remove');
     await row.locator('.sv-row__toggle').click(headCorner);
-    await row.getByRole('button', { name: /^Point 2:/ }).click();
-    const card = row.locator('.sv-deck__card').nth(1);
+    await row.getByRole('button', { name: /^Point 3:/ }).click();
+    const card = row.locator('.sv-deck__card').nth(2);
     await expect(card.locator('.sv-deck__heading')).toHaveText('People who claim asylum can expect to stay, even if they are refused');
     await expect(card.locator('.sv-chart__caption')).toContainText('Asylum claims and later returns');
     // The share each year, as lines, from the first year of claims to the last.
@@ -666,13 +483,13 @@ test('a slideshow viewpoint on a wide screen lists its points down the left, a p
   // With the list showing, the numbered circles would only repeat it.
   await expect(page.locator(`${SLIDES_VIEWPOINT} .sv-deck__points`)).toBeHidden();
   // One card per step of the argument, the last its conclusion.
-  await expect(outline.locator('li')).toHaveCount(6);
-  await expect(outline.locator('li').last()).toContainText('So Britain should open safe routes, decide claims fairly, and let people work');
-  const deterrence = outline.getByRole('button', { name: /deterrence scheme failed/ });
+  await expect(outline.locator('li')).toHaveCount(7);
+  await expect(outline.locator('li').last()).toContainText('So Britain should open capped safe routes, decide claims fairly, and let people work');
+  const deterrence = outline.getByRole('button', { name: /deterrent that sent no asylum seekers/ });
   await deterrence.click();
   await expect(deterrence).toHaveAttribute('aria-current', 'step');
   // Its line cites a table, which reads as more text, so the card gives its evidence in full.
-  const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(3);
+  const card = page.locator(`${SLIDES_VIEWPOINT} .sv-deck__card`).nth(4);
   await expect(card).toBeInViewport();
   await expect(card.locator('.sv-chart')).toHaveCount(0);
   await expect(card.locator('.sv-deck__reasoning')).toContainText('£715 million');
@@ -683,12 +500,12 @@ test('a closed slideshow viewpoint previews its graphs, and a graph opens the ro
   await page.setViewportSize({ width: 1400, height: 900 });
   await page.goto(SLIDES_TOPIC);
   const row = page.locator(SLIDES_VIEWPOINT);
-  // A graph on each of its first three cards; the rest are cards of text.
+  // A graph on each of its first four cards; the rest are cards of text.
   const thumbs = row.locator('.sv-walk__thumb');
-  await expect(thumbs).toHaveCount(3);
-  await expect(thumbs.nth(2)).toContainText('3. Where a safe route existed, people could come without a boat');
+  await expect(thumbs).toHaveCount(4);
+  await expect(thumbs.nth(2)).toContainText('3. A safe route lets Britain choose how many it protects; a boat does not');
   await thumbs.nth(2).click();
-  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('Where a safe route existed, people could come without a boat');
+  await expect(row.locator('.sv-deck__outline-item[aria-current]')).toContainText('A safe route lets Britain choose how many it protects; a boat does not');
   await expect(row.locator('.sv-deck__card').nth(2)).toBeInViewport();
 });
 
@@ -696,8 +513,9 @@ test('a slideshow card can be made with a map of where the boats leave from', as
   await page.goto(SLIDES_TOPIC);
   const row = page.locator('#viewpoint-bar-and-remove');
   await row.locator('.sv-row__toggle').click(headCorner);
-  const card = row.locator('.sv-deck__card').first();
-  await expect(card.locator('.sv-deck__heading')).toHaveText('People crossing the Channel have already passed through other countries, where British law expects them to claim asylum');
+  await row.locator('.sv-deck__outline-item').nth(1).click();
+  const card = row.locator('.sv-deck__card').nth(1);
+  await expect(card.locator('.sv-deck__heading')).toHaveText('People crossing the Channel have already passed through safe countries');
   await expect(card.locator('.sv-chart__caption')).toContainText('Where the small boats leave from');
   // An arrow from each coast the boats leave from, each named, to Kent.
   await expect(card.locator('.sv-geo-map__flow')).toHaveCount(2);
@@ -728,18 +546,34 @@ test('a slideshow card can be made with quotes: those its point rests on, and th
   const sheet = page.locator('dialog[open]');
   await expect(sheet).toHaveCount(1);
   await expect(sheet.locator('.sv-quote-browser .sv-control__status')).toHaveText('Showing 6 of 6 quotes');
-  await expect(sheet.locator('.sv-quote-browser input[type="search"]')).toHaveCount(1);
+  await expect(sheet.locator('.sv-quote-browser').getByRole('button', { name: 'Search quotes and speakers' })).toHaveCount(1);
+  // Opened from See all, the card's two quotes come first, outlined, in the card's order.
+  const items = sheet.locator('.sv-quote-browser__item');
+  const cardQuote = (n: number) => quotes.locator('.sv-card-quotes__text').nth(n).innerText();
+  const first = (await cardQuote(0)).replace(/^“|”$/g, '');
+  const second = (await cardQuote(1)).replace(/^“|”$/g, '');
+  await expect(sheet.getByRole('button', { name: /Order: Highlighted first/ })).toHaveCount(1);
+  await expect(items.nth(0)).toContainText(first);
+  await expect(items.nth(1)).toContainText(second);
+  await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(2);
+  // Clicking one quote on the card puts that one first, and outlines it alone.
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await quotes.locator('.sv-card-quotes__item').nth(1).click();
+  await expect(items.nth(0)).toContainText(second);
+  await expect(sheet.locator('.sv-quote-browser__item[data-highlighted]')).toHaveCount(1);
 });
 
 // us-vote-by-mail quotes in two reports: the Supreme Court in Watson v. RNC, and
-// research on whether rule changes move trust in results.
-test('a data panel lists every quote on its topic, which a reader can narrow to one question', async ({ page }) => {
-  await page.goto('/topics/us-vote-by-mail#data');
-  const row = page.locator('#fact-ballot-deadlines-and-counting-speed');
-  await row.locator('.sv-row__toggle').click(headCorner);
-  const quotes = row.locator('.sv-quote-browser');
+// research on whether rule changes move trust in results. The Watson quotes
+// are the `election-day-receipt` viewpoint's first card.
+test('a quotes chart opened in full lists every quote on its topic, which a reader can narrow to one question', async ({ page }) => {
+  await openChart(page, 'ballot-deadlines-and-counting-speed', 'watson', '/topics/us-vote-by-mail');
+  const quotes = page.locator('dialog[open] .sv-quote-browser');
   await expect(quotes.locator('.sv-graph-heading')).toHaveText('Every quote on this topic');
   await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 5 of 5 quotes');
-  await quotes.getByRole('button', { name: /Watson v\. RNC/ }).click();
+  // Each question is a line of the Question dropdown.
+  await quotes.getByRole('button', { name: 'Question: All' }).click();
+  await quotes.locator('.sv-bar__pop:popover-open').getByRole('button', { name: /Watson v\. RNC/ }).click();
   await expect(quotes.locator('.sv-control__status')).toHaveText('Showing 3 of 5 quotes');
 });

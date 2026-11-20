@@ -8,7 +8,7 @@ tags: [USA, Voting]
 # viewpoint with a strong chart it relies on. See AUTHORING.md, "Home-page preview charts".
 previewCharts:
   - fact: mail-voting-use-and-effects
-    chart: eavs-mode
+    chart: state-mail-share
   - fact: mail-ballot-rejection-and-signature-checks
     chart: series
   - fact: ballot-deadlines-and-counting-speed
@@ -23,11 +23,4 @@ dataOrder:
   - ballot-deadlines-and-counting-speed
   - confidence-and-disputed-results
   - federal-and-state-power-over-mail-voting
-principles:
-  - verifiably-honest-elections
-  - an-equal-voice-for-every-citizen
-  - rules-must-mean-what-they-say
-  - results-the-losers-can-accept
-  - decisions-made-closest-to-the-people
-  - democratic-consent-over-membership
 ---

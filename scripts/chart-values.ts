@@ -24,7 +24,7 @@ import { toValueFormat } from '../lib/content/figure-props';
 import { factSources } from '../lib/content/sources';
 import { formatValue } from '../components/report/format';
 import type { ValueFormat } from '../components/report/types';
-import { canonical, quoteCorpus, quotedSomewhere, type QuoteCorpus } from './figures';
+import { canonical, quoteCorpus, quotedSomewhere, type QuoteCorpus } from '@/lib/content/quoted-figures';
 
 /** One number a chart draws, with everything needed to trace it. */
 export type ChartValue = {

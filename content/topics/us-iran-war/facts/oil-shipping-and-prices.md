@@ -10,13 +10,18 @@ sources:
   # 1
   - stance: supports
     quoteUnit: $
-    quote: >-
-      Europe Brent Spot Price FOB (Dollars per Barrel) … 2026 Feb-23 to Feb-27
-      71.90 71.21 70.69 71.66 71.32 … 2026 Apr- 6 to Apr-10 138.21 122.11
-      119.03 119.07 … 2026 Sep-28 to Oct- 2 119.97 113.96 115.91 114.82 135.51
-      … 2026 Oct-26 to Oct-30 128.12 123.10 … 2008 Jun-30 to Jul- 4 138.40
-      140.67 141.24 143.95 … 2022 Mar- 7 to Mar-11 129.02 133.18 116.58 114.54
-      118.11 … Release Date: 10/28/2026
+    quote: |-
+      Europe Brent Spot Price FOB (Dollars per Barrel) …
+
+      Week Of | Mon | Tue | Wed | Thu | Fri
+      2008 Jun-30 to Jul- 4 | 138.40 | 140.67 | 141.24 | 143.95 |
+      2022 Mar- 7 to Mar-11 | 129.02 | 133.18 | 116.58 | 114.54 | 118.11
+      2026 Feb-23 to Feb-27 | 71.90 | 71.21 | 70.69 | 71.66 | 71.32
+      2026 Apr- 6 to Apr-10 |  | 138.21 | 122.11 | 119.03 | 119.07
+      2026 Sep-28 to Oct- 2 | 119.97 | 113.96 | 115.91 | 114.82 | 135.51
+      2026 Oct-26 to Oct-30 | 128.12 | 123.10 |  |  |
+
+      Release Date: 10/28/2026
     title: 'Europe Brent Spot Price FOB, daily (RBRTE)'
     url: https://www.eia.gov/dnav/pet/hist/RBRTEd.htm
     publisher: US Energy Information Administration
@@ -24,11 +29,16 @@ sources:
   # 2
   - stance: supports
     quoteUnit: $
-    quote: >-
-      Cushing, OK WTI Spot Price FOB (Dollars per Barrel) … 2026 Feb-23 to
-      Feb-27 66.36 65.62 65.30 65.10 66.96 … 2026 Apr- 6 to Apr-10 114.01
-      114.58 96.17 99.62 98.34 … 2026 Oct-26 to Oct-30 105.25 103.37 … 2008
-      Jun-30 to Jul- 4 139.96 141.06 143.74 145.31 … Release Date: 10/28/2026
+    quote: |-
+      Cushing, OK WTI Spot Price FOB (Dollars per Barrel) …
+
+      Week Of | Mon | Tue | Wed | Thu | Fri
+      2008 Jun-30 to Jul- 4 | 139.96 | 141.06 | 143.74 | 145.31 |
+      2026 Feb-23 to Feb-27 | 66.36 | 65.62 | 65.30 | 65.10 | 66.96
+      2026 Apr- 6 to Apr-10 | 114.01 | 114.58 | 96.17 | 99.62 | 98.34
+      2026 Oct-26 to Oct-30 | 105.25 | 103.37 |  |  |
+
+      Release Date: 10/28/2026
     title: 'Cushing, OK WTI Spot Price FOB, daily (RWTC)'
     url: https://www.eia.gov/dnav/pet/hist/RWTCd.htm
     publisher: US Energy Information Administration
@@ -36,28 +46,28 @@ sources:
   # 3
   - stance: supports
     quoteUnit: $
-    quote: >-
-      Weekly U.S. Regular All Formulations Retail Gasoline Prices (Dollars per
-      Gallon) … 2026-Feb 02/02 2.867 02/09 2.902 02/16 2.924 02/23 2.937 …
-      2026-May 05/04 4.452 05/11 4.500 05/18 4.490 05/25 4.475 … 2026-Oct
-      10/05 4.354 10/12 4.331 10/19 4.284 10/26 4.269 … 2022-Jun 06/06 4.876
-      06/13 5.006 06/20 4.962 06/27 4.872 … Release Date: 10/27/2026
+    quote: |-
+      Weekly U.S. Regular All Formulations Retail Gasoline Prices (Dollars per Gallon) …
+
+      Year-Month | Week 1 End Date | Week 1 Value | Week 2 End Date | Week 2 Value | Week 3 End Date | Week 3 Value | Week 4 End Date | Week 4 Value | Week 5 End Date | Week 5 Value
+      2022-Jun | 06/06 | 4.876 | 06/13 | 5.006 | 06/20 | 4.962 | 06/27 | 4.872 |  |
+      2026-Feb | 02/02 | 2.867 | 02/09 | 2.902 | 02/16 | 2.924 | 02/23 | 2.937 |  |
+      2026-May | 05/04 | 4.452 | 05/11 | 4.500 | 05/18 | 4.490 | 05/25 | 4.475 |  |
+      2026-Oct | 10/05 | 4.354 | 10/12 | 4.331 | 10/19 | 4.284 | 10/26 | 4.269 |  |
+
+      Release Date: 10/27/2026
     title: 'Weekly U.S. Regular All Formulations Retail Gasoline Prices'
     url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMM_EPMR_PTE_NUS_DPG&f=W
     publisher: US Energy Information Administration
     date: '2026-10-27'
   # 4
   - stance: supports
-    quote: >-
-      The all items index rose 3.7 percent for the 12 months ending September,
-      a larger increase than the 3.4-percent increase reported for the 12
-      months ending in August. The all items less food and energy index rose
-      2.6 percent over the year... The energy index increased 20.4 percent for
-      the 12 months ending September. … The index for energy increased 20.4
-      percent over the past 12 months due in large part to the index for
-      gasoline rising 34.2 percent over the same period. … The index for
-      gasoline rose 9.1 percent in September, accounting for over half of the
-      monthly all items increase.
+    quote: |-
+      The all items index rose 3.7 percent for the 12 months ending September, a larger increase than the 3.4-percent increase reported for the 12 months ending in August. The all items less food and energy index rose 2.6 percent over the year... The energy index increased 20.4 percent for the 12 months ending September. …
+
+      The index for energy increased 20.4 percent over the past 12 months due in large part to the index for gasoline rising 34.2 percent over the same period. …
+
+      The index for gasoline rose 9.1 percent in September, accounting for over half of the monthly all items increase.
     title: 'Consumer Price Index Summary - 2026 M09 Results (archived 24 October 2026)'
     url: https://www.bls.gov/news.release/cpi.nr0.htm
     publisher: US Bureau of Labor Statistics
@@ -78,7 +88,7 @@ sources:
   - stance: complicates
     quote: >-
       The Committee decided to raise the target range for the federal funds
-      rate by 1/4 percentage point to 3-3/4 to 4 percent... While uncertainty
+      rate by 1/4 percentage point to 3-3/4 to 4 percent, in support of the Federal Reserve's dual mandate. The Committee is continuing its policy of maintaining ample reserves in the banking system. Economic activity is expanding at a solid pace. While uncertainty
       remains elevated owing, in part, to geopolitical developments, domestic
       spending has been resilient.
     title: Federal Reserve issues FOMC statement
@@ -109,17 +119,10 @@ sources:
     date: '2025-06-16'
   # 9
   - stance: supports
-    quote: >-
-      The Marines rappelled onto the Iranian-flagged vessel, April 19, after
-      guided-missile destroyer USS Spruance (DDG 111) disabled Touska’s
-      propulsion when the commercial ship failed to comply with repeated
-      warnings from U.S. forces over a six-hour period. … U.S. Marines from
-      the 31st Marine Expeditionary Unit boarded M/T Celestial Sea, an
-      Iranian-flagged commercial oil tanker suspected of attempting to
-      violate the U.S. blockade by transiting toward an Iranian port, May 20,
-      in the Gulf of Oman. … U.S. forces continue to fully enforce the
-      blockade and have now redirected 91 commercial ships to ensure
-      compliance.
+    quote: |-
+      The Marines rappelled onto the Iranian-flagged vessel, April 19, after guided-missile destroyer USS Spruance (DDG 111) disabled Touska’s propulsion when the commercial ship failed to comply with repeated warnings from U.S. forces over a six-hour period. …
+
+      U.S. Marines from the 31st Marine Expeditionary Unit boarded M/T Celestial Sea, an Iranian-flagged commercial oil tanker suspected of attempting to violate the U.S. blockade by transiting toward an Iranian port, May 20, in the Gulf of Oman. American forces released the vessel after searching and directing the ship’s crew to alter course. U.S. forces continue to fully enforce the blockade and have now redirected 91 commercial ships to ensure compliance.
     title: 'U.S. Central Command Media: Official Photos and Videos (captions, April–May 2026)'
     url: https://www.centcom.mil/MEDIA/
     publisher: US Central Command
@@ -155,15 +158,14 @@ sources:
     date: '2026-10-10'
   # 12
   - stance: complicates
-    quote: >-
-      The commander of U.S. Central Command (CENTCOM) visited the Strait of
-      Hormuz, Oct. 25, as U.S. forces reach the milestone of assisting Gulf
-      partners in exporting more than 1.5 billion barrels of crude oil since
-      summer. … More than 3,000 commercial vessels have successfully
-      transited the Strait of Hormuz with support from CENTCOM forces over the
-      last six months. … In recent months, over 95% of ships navigating the
-      Strait of Hormuz have sailed through safely despite the IRGC's
-      unwarranted aggression
+    quote: |-
+      The commander of U.S. Central Command (CENTCOM) visited the Strait of Hormuz, Oct. 25, as U.S. forces reach the milestone of assisting Gulf partners in exporting more than 1.5 billion barrels of crude oil since summer.
+
+      Adm. Brad Cooper observed the current operational environment while flying in a U.S. Army CH-47 Chinook over the international waterway. More than 3,000 commercial vessels have successfully transited the Strait of Hormuz with support from CENTCOM forces over the last six months.
+
+      "We continue to stand shoulder to shoulder with our Gulf partners and the shipping industry," said Cooper. …
+
+      In recent months, over 95% of ships navigating the Strait of Hormuz have sailed through safely despite the IRGC's unwarranted aggression
     title: CENTCOM Commander Visits Strait of Hormuz during Milestone Week
     url: https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/Article/4633061/centcom-commander-visits-strait-of-hormuz-during-milestone-week/
     publisher: US Central Command
@@ -174,7 +176,7 @@ sources:
       Several shipping and maritime security officials told Bloomberg on
       October 20 that at least five of the 23 recorded attacks on vessels in
       or near the Strait of Hormuz in the first two weeks of October struck
-      commercial vessels' engine rooms. … The Washington Post, citing oil
+      commercial vessels' engine rooms. … The increase in Iranian attacks on vessels is part of the ongoing Iranian campaign to pressure the United States to meet Iranian demands, including control over the strait, by driving up global prices. The Washington Post, citing oil
       price-tracking firm Kpler, reported that the number of barrels of oil
       exported per day is approaching prewar daily averages after increasing
       from mid-August to late September.
@@ -198,17 +200,10 @@ sources:
     date: '2026-06-04'
   # 15
   - stance: complicates
-    quote: >-
-      61 percent of the ships attacked during the Tanker War were oil tankers.
-      In total, only 55 of the 239 petroleum tankers (23 percent) were
-      completely sunk or declared CTL … Initially, the Tanker War led to a 25
-      percent drop in commercial shipping and a sharp rise in the price of
-      crude oil. But the Tanker War did not significantly disrupt oil
-      shipments. In fact, Iran lowered the price of oil to offset higher
-      insurance premiums on shipments, and the real global oil price steadily
-      declined during the 1980s. Even at the its most intense point, the
-      Tanker War failed to disrupt more than two percent of ships passing
-      through the Persian Gulf.
+    quote: |-
+      61 percent of the ships attacked during the Tanker War were oil tankers. In total, only 55 of the 239 petroleum tankers (23 percent) were completely sunk or declared CTL …
+
+      Initially, the Tanker War led to a 25 percent drop in commercial shipping and a sharp rise in the price of crude oil. But the Tanker War did not significantly disrupt oil shipments. In fact, Iran lowered the price of oil to offset higher insurance premiums on shipments, and the real global oil price steadily declined during the 1980s. Even at the its most intense point, the Tanker War failed to disrupt more than two percent of ships passing through the Persian Gulf.
     title: 'Strait of Hormuz: Tanker War'
     url: https://www.strausscenter.org/strait-of-hormuz-tanker-war/
     publisher: Robert Strauss Center for International Security and Law, University of Texas at Austin
@@ -308,13 +303,16 @@ series:
       source: 19
   source:
     stance: supports
-    quote: >-
-      Europe Brent Spot Price FOB (Dollars per Barrel) … 1987 18.58 18.86
-      19.86 18.98 18.31 18.76 17.78 17.05 … 2008 92.18 94.99 103.64 109.07
-      122.80 132.32 132.72 113.24 97.23 71.58 52.45 39.95 … 2022 86.51 97.13
-      117.25 104.58 113.34 122.71 111.93 100.45 89.76 93.33 91.42 80.92 … 2026
-      66.60 70.89 103.13 117.29 107.14 85.40 83.76 91.08 114.16 … Release
-      Date: 10/28/2026
+    quote: |-
+      Europe Brent Spot Price FOB (Dollars per Barrel) …
+
+      Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec
+      1987 |  |  |  |  | 18.58 | 18.86 | 19.86 | 18.98 | 18.31 | 18.76 | 17.78 | 17.05
+      2008 | 92.18 | 94.99 | 103.64 | 109.07 | 122.80 | 132.32 | 132.72 | 113.24 | 97.23 | 71.58 | 52.45 | 39.95
+      2022 | 86.51 | 97.13 | 117.25 | 104.58 | 113.34 | 122.71 | 111.93 | 100.45 | 89.76 | 93.33 | 91.42 | 80.92
+      2026 | 66.60 | 70.89 | 103.13 | 117.29 | 107.14 | 85.40 | 83.76 | 91.08 | 114.16 |  |  |
+
+      Release Date: 10/28/2026
     title: 'Europe Brent Spot Price FOB, monthly (RBRTE)'
     url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=M
     publisher: US Energy Information Administration
@@ -333,12 +331,15 @@ series:
           coverage: { from: '1986-01', to: '2026-09' }
           source:
             stance: supports
-            quote: >-
-              Cushing, OK WTI Spot Price FOB (Dollars per Barrel) … 1986 22.93 15.46
-              12.61 12.84 15.38 13.43 11.59 15.10 14.87 14.90 15.22 16.11 … 2008
-              92.97 95.39 105.45 112.58 125.40 133.88 133.37 116.67 104.11 76.61
-              57.31 41.12 … 2026 60.04 64.51 91.38 100.32 102.13 84.81 80.46 83.90
-              97.31 … Release Date: 10/28/2026
+            quote: |-
+              Cushing, OK WTI Spot Price FOB (Dollars per Barrel) …
+
+              Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec
+              1986 | 22.93 | 15.46 | 12.61 | 12.84 | 15.38 | 13.43 | 11.59 | 15.10 | 14.87 | 14.90 | 15.22 | 16.11
+              2008 | 92.97 | 95.39 | 105.45 | 112.58 | 125.40 | 133.88 | 133.37 | 116.67 | 104.11 | 76.61 | 57.31 | 41.12
+              2026 | 60.04 | 64.51 | 91.38 | 100.32 | 102.13 | 84.81 | 80.46 | 83.90 | 97.31 |  |  |
+
+              Release Date: 10/28/2026
             title: 'Cushing, OK WTI Spot Price FOB, monthly (RWTC)'
             url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RWTC&f=M
             publisher: US Energy Information Administration
@@ -371,13 +372,23 @@ additionalSeries:
     source:
       stance: supports
       quoteUnit: $
-      quote: >-
-        EIA Short-Term Energy Outlook, … Monthly Average Imported Crude Oil
-        Price … Consumer Price Index (1982-84=1) … Imported Crude Oil Price
-        ($/barrel) … Nominal … Real … Forecast Values … May 2026 3.340
-        99.01 98.85 0 … Base CPI (10/2026) …
-        Data Source: EIA Short-Term Energy Outlook, October 2026 … Forecast /
-        estimated values shown in blue … real price (Oct 2026 $)
+      quote: |-
+        EIA Short-Term Energy Outlook, October 2026
+        Monthly Average Imported Crude Oil Price
+
+        Month | Consumer Price Index (1982-84=1) | Imported Crude Oil Price ($/barrel): Nominal | Imported Crude Oil Price ($/barrel): Real | Forecast Values
+        January 1981 | 0.872 | 38.85 | 148.55 | 0
+        July 2008 | 2.190 | 127.77 | 194.52 | 0
+        June 2022 | 2.950 | 112.06 | 126.68 | 0
+        February 2026 | 3.275 | 61.43 | 62.55 | 0
+        May 2026 | 3.340 | 99.01 | 98.85 | 0
+        September 2026 | 3.332 | 97.81 | 97.89 | 1
+        October 2026 | 3.334 | 100.00 | 100.00 | 1
+
+        Base CPI (10/2026) 3.334
+        Data Source: EIA Short-Term Energy Outlook, October 2026
+        Forecast / estimated values shown in blue
+        real price (Oct 2026 $)
       title: 'Real Prices Viewer: Monthly Average Imported Crude Oil Price (real_prices.xlsx, sheet "Crude Oil-M")'
       url: https://www.eia.gov/outlooks/steo/realprices/
       fileUrl: https://www.eia.gov/outlooks/steo/realprices/real_prices.xlsx
@@ -440,12 +451,15 @@ additionalSeries:
         source: 20
     source:
       stance: supports
-      quote: >-
-        U.S. Regular All Formulations Retail Gasoline Prices (Dollars per
-        Gallon) … 1990 NA 1.258 1.335 1.324 NA … 2022 3.315 3.517 4.222 4.109
-        4.444 4.929 4.559 3.975 3.700 3.815 3.685 3.210 … 2026 2.809 2.908
-        3.638 4.103 4.479 4.050 3.932 4.058 4.355 4.310 … Release Date:
-        10/27/2026
+      quote: |-
+        U.S. Regular All Formulations Retail Gasoline Prices (Dollars per Gallon) …
+
+        Year | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug | Sep | Oct | Nov | Dec
+        1990 |  |  |  |  |  |  |  | NA | 1.258 | 1.335 | 1.324 | NA
+        2022 | 3.315 | 3.517 | 4.222 | 4.109 | 4.444 | 4.929 | 4.559 | 3.975 | 3.700 | 3.815 | 3.685 | 3.210
+        2026 | 2.809 | 2.908 | 3.638 | 4.103 | 4.479 | 4.050 | 3.932 | 4.058 | 4.355 | 4.310 |  |
+
+        Release Date: 10/27/2026
       title: 'U.S. Regular All Formulations Retail Gasoline Prices, monthly'
       url: https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=EMM_EPMR_PTE_NUS_DPG&f=M
       publisher: US Energy Information Administration
@@ -509,15 +523,11 @@ additionalSeries:
         source: 20
     source:
       stance: supports
-      quote: >-
-        {"attributes":{"date":"2019-01-01","year":2019,"month":1,"day":1,"n_total":52,"n_tanker":33}
-        …
-        {"attributes":{"date":"2026-02-28","year":2026,"month":2,"day":28,"n_total":57,"n_tanker":36}
-        …
-        {"attributes":{"date":"2026-03-04","year":2026,"month":3,"day":4,"n_total":0,"n_tanker":0}
-        …
-        {"attributes":{"date":"2026-06-24","year":2026,"month":6,"day":24,"n_total":51,"n_tanker":20}
-        …
+      quote: |-
+        {"attributes":{"date":"2019-01-01","year":2019,"month":1,"day":1,"n_total":52,"n_tanker":33} …
+        {"attributes":{"date":"2026-02-28","year":2026,"month":2,"day":28,"n_total":57,"n_tanker":36} …
+        {"attributes":{"date":"2026-03-04","year":2026,"month":3,"day":4,"n_total":0,"n_tanker":0} …
+        {"attributes":{"date":"2026-06-24","year":2026,"month":6,"day":24,"n_total":51,"n_tanker":20} …
         {"attributes":{"date":"2026-10-25","year":2026,"month":10,"day":25,"n_total":2,"n_tanker":1}
       title: 'PortWatch Daily Chokepoints Data (Strait of Hormuz, portid chokepoint6), queried 29 October 2026'
       url: https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services/Daily_Chokepoints_Data/FeatureServer/0
@@ -557,18 +567,16 @@ additionalSeries:
         source: 16
     source:
       stance: supports
-      quote: >-
-        Table 4. Volume of crude oil, condensate, petroleum products, and
-        liquefied natural gas transported through the Strait of Hormuz,
-        1Q25–2Q26 million barrels per day 1Q25 2Q25 3Q25 4Q25 1Q26 2Q26 Total
-        oil flows through the Strait of Hormuz 20.9 21.0 21.3 21.6 14.9 4.9
-        Crude oil and condensate 14.8 14.9 15.0 15.9 10.9 3.7 Petroleum
-        products 6.2 6.2 6.3 5.7 4.0 1.1 LNG flows through the Strait of
-        Hormuz (billion cubic feet per day) 11.7 11.0 10.9 10.5 7.4 0.8 … Since
-        the end of February 2026, AIS signal data for ships transiting the
-        Strait of Hormuz have become especially unreliable. For 2026 Hormuz
-        volumes, tanker tracking data are being revised frequently based on
-        the best available information.
+      quote: |-
+        Table 4. Volume of crude oil, condensate, petroleum products, and liquefied natural gas transported through the Strait of Hormuz, 1Q25–2Q26
+
+        million barrels per day | 1Q25 | 2Q25 | 3Q25 | 4Q25 | 1Q26 | 2Q26
+        Total oil flows through the Strait of Hormuz | 20.9 | 21.0 | 21.3 | 21.6 | 14.9 | 4.9
+        Crude oil and condensate | 14.8 | 14.9 | 15.0 | 15.9 | 10.9 | 3.7
+        Petroleum products | 6.2 | 6.2 | 6.3 | 5.7 | 4.0 | 1.1
+        LNG flows through the Strait of Hormuz (billion cubic feet per day) | 11.7 | 11.0 | 10.9 | 10.5 | 7.4 | 0.8
+
+        … Waypoint entry dates for these cargos are estimated by EIA. Since the end of February 2026, AIS signal data for ships transiting the Strait of Hormuz have become especially unreliable. For 2026 Hormuz volumes, tanker tracking data are being revised frequently based on the best available information.
       title: 'Short-Term Energy Outlook: Global Energy Security Data, Table 4'
       url: https://www.eia.gov/outlooks/steo/report/energysecurity/article.php
       publisher: US Energy Information Administration

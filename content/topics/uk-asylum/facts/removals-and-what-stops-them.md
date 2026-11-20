@@ -115,13 +115,10 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-03-31'
   - stance: supports
-    quote: >-
-      Legal challenges. An increase in legal challenges to removal is likely to
-      have played a role in the decline of returns during the 2010s, though
-      limited data prevent a definitive assessment. A report from the National
-      Audit Office showed that 52% of enforced return attempts were cancelled
-      in 2019, up from 11% in 2013 – a rise the authors say is “mostly
-      explained” by last-minute asylum claims and legal challenges.
+    quote: |-
+      Legal challenges.
+
+      An increase in legal challenges to removal is likely to have played a role in the decline of returns during the 2010s, though limited data prevent a definitive assessment. A report from the National Audit Office showed that 52% of enforced return attempts were cancelled in 2019, up from 11% in 2013 – a rise the authors say is “mostly explained” by last-minute asylum claims and legal challenges.
     title: Deportation and returns of unauthorised migrants from the UK
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/returns-of-unauthorised-migrants-from-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
@@ -179,14 +176,11 @@ sources:
     publisher: 'The Migration Observatory, University of Oxford'
     date: '2026-03-31'
   - stance: supports
-    quote: >-
-      In response to Freedom of Information requests, the Home Office said it
-      did not hold data on the following: the number of people issued notices
-      of liability to remove who were subsequently granted legal status (e.g.,
-      following a human rights claim); the number of foreign national offenders
-      of different nationalities who had been removed vs. not removed after
-      finishing a prison sentence; and the number of people detained ahead of
-      removal (as opposed to detained for initial processing).
+    quote: |-
+      In response to Freedom of Information requests, the Home Office said it did not hold data on the following:
+      - the number of people issued notices of liability to remove who were subsequently granted legal status (e.g., following a human rights claim);
+      - the number of foreign national offenders of different nationalities who had been removed vs. not removed after finishing a prison sentence; and
+      - the number of people detained ahead of removal (as opposed to detained for initial processing).
     title: Deportation and returns of unauthorised migrants from the UK
     url: https://migrationobservatory.ox.ac.uk/resources/briefings/returns-of-unauthorised-migrants-from-the-uk/
     publisher: 'The Migration Observatory, University of Oxford'
@@ -227,41 +221,61 @@ sources:
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      At the same time there has been a decrease in the proportion of
-      detentions during which the person: applied on human rights or other
-      right-based grounds (from 10% to 5%) lodged an appeal (from 6% to 3%)
-      lodged a judicial review (from 20% to 9%) caused a return attempt to fail
-      due to physical disruption (from 13% to 5%).
+    quote: |-
+      At the same time there has been a decrease in the proportion of detentions during which the person:
+      - applied on human rights or other right-based grounds (from 10% to 5%)
+      - lodged an appeal (from 6% to 3%)
+      - lodged a judicial review (from 20% to 9%)
+      - caused a return attempt to fail due to physical disruption (from 13% to 5%).
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      Between 2017 and 2019, there has also been a rise in the proportion of
-      people in this group who, while in immigration detention, were: referred
-      as a potential victim of modern slavery (from 3% to 16%) the subject of a
-      MLR (from less than 1% to 19%, a rise from fewer than 50 instances in 2017
-      to over 2,000 in 2019)
+    quote: |-
+      Between 2017 and 2019, there has also been a rise in the proportion of people in this group who, while in immigration detention, were:
+      - referred as a potential victim of modern slavery (from 3% to 16%)
+      - the subject of a MLR (from less than 1% to 19%, a rise from fewer than 50 instances in 2017 to over 2,000 in 2019)
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      Table 2a: Number (and proportion) of detentions in which each issue was
-      raised, by year, for people detained within the UK following immigration
-      offences
+    quote: |-
+      Table 2a: Number (and proportion) of detentions in which each issue was raised, by year, for people detained within the UK following immigration offences
+
+      Issue raised | 2017 | 2018 | 2019
+      Asylum claim | 5,084 (32%) | 4,850 (37%) | 5,302 (47%)
+      Rights-based application | 1,520 (10%) | 1,034 (8%) | 519 (5%)
+      Further submissions | 2,072 (13%) | 1,809 (14%) | 1,435 (13%)
+      Appeal | 914 (6%) | 678 (5%) | 293 (3%)
+      Judicial review | 3,170 (20%) | 2,009 (15%) | 1,009 (9%)
+      NRM referral | 501 (3%) | 718 (5%) | 1,767 (16%)
+      Rule 35 report | 1,936 (12%) | 1,923 (15%) | 1,559 (14%)
+      Medico-legal report | 48 (0%) | 1,154 (9%) | 2,208 (19%)
+      Disrupted return | 2,000 (13%) | 1,609 (12%) | 558 (5%)
+      Any of the above | 9,849 (63%) | 8,771 (67%) | 8,351 (73%)
+      None of the above | 5,825 (37%) | 4,408 (33%) | 3,016 (27%)
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
     date: '2021-07-19'
   - stance: supports
-    quote: >-
-      Table 4a: Number (and proportion) of detentions that resulted in return
-      where each issue was raised, by year, for people detained within the UK
-      following immigration offences
+    quote: |-
+      Table 4a: Number (and proportion) of detentions that resulted in return where each issue was raised, by year, for people detained within the UK following immigration offences
+
+      Issue raised | 2017 | 2018 | 2019
+      Asylum claim | 775 (15%) | 502 (10%) | 175 (3%)
+      Rights-based application | 296 (19%) | 149 (14%) | 35 (7%)
+      Further submissions | 622 (30%) | 425 (23%) | 161 (11%)
+      Appeal | 205 (22%) | 119 (18%) | 15 (5%)
+      Judicial review | 645 (20%) | 327 (16%) | 81 (8%)
+      NRM referral | 67 (13%) | 70 (10%) | 20 (1%)
+      Rule 35 report | 423 (22%) | 286 (15%) | 128 (8%)
+      Medico-legal report | 8 (17%) | 45 (4%) | 48 (2%)
+      Disrupted return | 758 (38%) | 426 (26%) | 142 (25%)
+      Any of the above | 1,995 (20%) | 1,283 (15%) | 510 (6%)
+      None of the above | 3,898 (67%) | 2,942 (67%) | 2,014 (67%)
     title: Issues raised by people facing return in immigration detention
     url: https://www.gov.uk/government/publications/issues-raised-by-people-facing-return-in-immigration-detention/issues-raised-by-people-facing-return-in-immigration-detention
     publisher: Home Office
@@ -380,9 +394,14 @@ sources:
     publisher: National Audit Office
     date: '2020-06-17'
   - stance: supports
-    quote: >-
-      Figure 6: Outcome of planned FNO removals 2014/15 to 2016/17 [...] Total
-      24,289 16,517 (68%) 7,772 (32%)
+    quote: |-
+      Figure 6: Outcome of planned FNO removals 2014/15 to 2016/17
+
+      Year | Planned removals | Successful removals | Failed removals
+      2014/15 | 6,958 | 4,848 (70%) | 2,110 (30%)
+      2015/16 | 8,043 | 5,487 (68%) | 2,556 (32%)
+      2016/17 | 9,288 | 6,182 (67%) | 3,106 (33%)
+      Total | 24,289 | 16,517 (68%) | 7,772 (32%)
     title: An inspection of the Home Office’s management of non-detained foreign national offenders
     url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/656584/An_inspection_of_non-detained_FNOs.pdf
     publisher: Independent Chief Inspector of Borders and Immigration
@@ -402,18 +421,26 @@ sources:
     publisher: Independent Chief Inspector of Borders and Immigration
     date: '2017-11'
   - stance: supports
-    quote: >-
-      Figure 7: Jamaica charter flights – Planned FNO removals and numbers
-      successfully removed Date Planned removals FNOs removed September 2016
-      144 42 March 2017 163 32
+    quote: |-
+      Figure 7: Jamaica charter flights – Planned FNO removals and numbers successfully removed
+
+      Date | Planned removals | FNOs removed
+      September 2016 | 144 | 42
+      March 2017 | 163 | 32
     title: An inspection of the Home Office’s management of non-detained foreign national offenders
     url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/656584/An_inspection_of_non-detained_FNOs.pdf
     publisher: Independent Chief Inspector of Borders and Immigration
     date: '2017-11'
   - stance: supports
-    quote: >-
-      Figure 8: Most common reasons for failed removals on Jamaica charter
-      flights in September 2016 and March 2017
+    quote: |-
+      Figure 8: Most common reasons for failed removals on Jamaica charter flights in September 2016 and March 2017
+
+      Reason | Number
+      Fresh asylum claim made by FNO after removal directions set | 55
+      Judicial Review lodged after removal directions set | 35
+      ‘Further representations’ received – removal deferred by Operational Support and Certification Unit (OSCU) or case owner | 26
+      Non-detained FNO not encountered on enforcement visit | 20
+      No enforcement visit to collect non-detained FNO due to lack of resources | 13
     title: An inspection of the Home Office’s management of non-detained foreign national offenders
     url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/656584/An_inspection_of_non-detained_FNOs.pdf
     publisher: Independent Chief Inspector of Borders and Immigration
@@ -776,10 +803,11 @@ sources:
     publisher: Home Office
     date: '2026-08-27'
   - stance: complicates
-    quote: >-
-      Rule 39 requests listed by respondent State processed by the Court in
-      2023, 2024 and 2025 … United Kingdom 49 13 1 63 54 11 65 197 21 0 218
-      300 45 1 346
+    quote: |-
+      Rule 39 requests listed by respondent State processed by the Court in 2023, 2024 and 2025
+
+      STATE | 2023 OUTSIDE THE SCOPE | 2023 REFUSED | 2023 GRANTED | TOTAL 2023 | 2024 OUTSIDE THE SCOPE | 2024 REFUSED | 2024 GRANTED | TOTAL 2024 | 2025 OUTSIDE THE SCOPE | 2025 REFUSED | 2025 GRANTED | TOTAL 2025 | 2023-2025 OUTSIDE THE SCOPE | 2023-2025 REFUSED | 2023-2025 GRANTED | GRAND TOTAL
+      United Kingdom | 49 | 13 | 1 | 63 | 54 | 11 |  | 65 | 197 | 21 | 0 | 218 | 300 | 45 | 1 | 346
     title: 'Rule 39 requests listed by respondent State processed by the Court in 2023, 2024 and 2025'
     url: https://www.echr.coe.int/documents/d/echr/stats_art_39_02_eng
     publisher: European Court of Human Rights
@@ -1525,10 +1553,23 @@ additionalSeries:
     breaks: []
     source:
       stance: supports
-      quote: >-
-        Appeal Lodged Financial Year | Number of Appeals Lodged | of which Number
-        of Appeals Allowed | of which Number of Appeals Allowed, Human Rights
-        grounds only
+      quote: |-
+        Appeal Lodged Financial Year | Number of Appeals Lodged | of which Number of Appeals Allowed | of which Number of Appeals Allowed, Human Rights grounds only
+        2008/09 | 1,820 | 271 | 35
+        2009/10 | 1,744 | 389 | 186
+        2010/11 | 1,724 | 522 | 249
+        2011/12 | 1,613 | 549 | 323
+        2012/13 | 2,192 | 716 | 337
+        2013/14 | 2,210 | 622 | 150
+        2014/15 | 1,720 | 448 | 98
+        2015/16 | 1,280 | 368 | 92
+        2016/17 | 1,356 | 442 | 168
+        2017/18 | 2,051 | 616 | 285
+        2018/19 | 1,836 | 570 | 237
+        2019/20 | 1,326 | 399 | 187
+        2020/21 | 568 | 126 | 44
+        April to June 2021 | 81 | 4 | 1
+        Grand Total | 21,521 | 6,042 | 2,392
       title: 'Statistical note: FNO appeals lodged and allowed on human rights grounds, 2008 to 2021'
       url: https://www.gov.uk/government/publications/foreign-national-offenders-appeals-on-human-rights-grounds-2008-to-2021/statistical-note-fno-appeals-lodged-and-allowed-on-human-rights-grounds-2008-to-2021
       publisher: Home Office

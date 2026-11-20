@@ -212,6 +212,19 @@ export const seriesReadingSchema = z.object({
    * then not a view of its own, and its observations are read on this one.
    */
   alongside: z.string().min(1).optional(),
+  /**
+   * Where the axis of the reading drawn alongside goes: `right` of the plot
+   * (the default), or `left`, beside this reading's own axis and further out.
+   * Either way, an axis read by one line has its numbers in that line's colour.
+   */
+  alongsideAxis: z.enum(['left', 'right']).optional(),
+  /**
+   * The lines are parts of one whole — outcomes of each year's claims — so
+   * each is drawn as a band stacked on the ones before it, and the top edge
+   * is the total. Every line must give the same periods, as counts that are
+   * never negative.
+   */
+  stacked: z.boolean().optional(),
   lines: z.array(seriesLineSchema).min(1),
 });
 
@@ -1175,7 +1188,6 @@ export const viewpointFrontmatterSchema = z.object({
   citesFacts: z.array(z.string()).optional(),
   acknowledges: z.array(z.string()).optional(),
   setsAside: z.array(z.string()).optional(),
-  principles: z.array(z.string()).optional(),
   /**
    * Every claim this viewpoint marks `[claim](#needed)`, quoted exactly as
    * the link text reads. Readers see those claims as plain prose, so this is
@@ -1183,11 +1195,6 @@ export const viewpointFrontmatterSchema = z.object({
    * and the marks in the body in step.
    */
   researchNeeded: z.array(z.string().min(1)).optional(),
-});
-
-// Shared definitions must not carry topic-specific viewpoint relationships.
-export const principleFrontmatterSchema = z.strictObject({
-  name: z.string().min(1),
 });
 
 export const cruxPositionSchema = z.object({
@@ -1245,10 +1252,6 @@ export const topicFrontmatterSchema = z.object({
   dataOrder: z.array(z.string().min(1)).default([]).refine(
     (ids) => new Set(ids).size === ids.length,
     'dataOrder references must be unique'
-  ),
-  principles: z.array(z.string().min(1)).default([]).refine(
-    (ids) => new Set(ids).size === ids.length,
-    'principle references must be unique'
   ),
   title: z.string().min(1),
   subtitle: z.string().min(1),

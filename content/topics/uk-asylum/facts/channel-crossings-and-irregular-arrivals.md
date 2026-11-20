@@ -294,13 +294,16 @@ sources:
   publisher: UK Parliament (Home Office answer)
   date: '2026-09-10'
 - stance: complicates
-  quote: >-
-    Data on preventions are operational estimates collected and provided to the UK
-    by French authorities. The data on preventions for migrants includes: individuals
-    who are prevented from departing France, or those who return to France The data
-    on events includes: boats that are prevented from departing France or return to
-    France finds of general maritime equipment arrests of facilitators linked to small
-    boats crossings
+  quote: |-
+    Data on preventions are operational estimates collected and provided to the UK by French authorities.
+
+    The data on preventions for migrants includes:
+    - individuals who are prevented from departing France, or those who return to France
+
+    The data on events includes:
+    - boats that are prevented from departing France or return to France
+    - finds of general maritime equipment
+    - arrests of facilitators linked to small boats crossings
   title: Weekly summary of small boat arrivals and preventions
   url: >-
     https://www.gov.uk/government/publications/migrants-detected-crossing-the-english-channel-in-small-boats/weekly-summary-of-small-boat-arrivals-and-preventions

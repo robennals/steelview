@@ -7,9 +7,9 @@ import { PARTIAL_DATE, comparePeriods, datePlacement } from './period';
 import { PREVIEW_FIGURE_KINDS, factSlides, isPreviewable, previewTarget, slideGroups } from './preview';
 import { factSources, figureCitations } from './sources';
 import { componentFigure, isComponentFigure } from './types';
-import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, Topic } from './types';
-import { headlineFacts } from './rank-facts';
-import { observationGroups } from './walkthrough';
+import type { ComponentFigure, Crux, Fact, Figure, FigureOf, ObservationMark, Series, SeriesLine, Topic } from './types';
+import { featuredSlides, observationGroups } from './walkthrough';
+import { normaliseWithOffsets } from './source-passage';
 
 /**
  * Check the cross-reference graph of an already-shape-valid topic. Returns one
@@ -194,9 +194,9 @@ export function validateTopic(topic: Topic): string[] {
 }
 
 /**
- * A topic's home-page preview charts resolve, appear once each, and between
- * them represent every viewpoint: each viewpoint must cite, inline, the fact
- * behind at least one of them. Whether that chart is among the viewpoint's
+ * A topic's home-page preview charts resolve, appear once each, are each on a
+ * viewpoint's card, and between them represent every viewpoint: each viewpoint
+ * must cite, inline, the fact behind at least one of them. Whether that chart is among the viewpoint's
  * *strongest* evidence stays an editorial judgement (AUTHORING.md).
  */
 function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[] {
@@ -204,13 +204,13 @@ function previewChartErrors(topic: Topic, factById: Map<string, Fact>): string[]
   if (previews.length === 0) return [];
   const errors: string[] = [];
   const seen = new Set<string>();
-  const headline = new Set(headlineFacts(topic.facts).map(f => f.id));
+  const featured = featuredSlides(topic);
   for (const { fact, chart, reading } of previews) {
     const key = `${fact}/${chart}`;
     const owner = factById.get(fact);
     const target = owner && previewTarget(owner, chart);
-    // A slide opens its chart over the report, in its collection's data panel, which only a headline fact has.
-    if (owner && !headline.has(fact)) errors.push(`topic: preview chart ${key} is on a supporting fact, which has no data panel on the report — preview a chart of the headline fact it supports`);
+    // A slide opens its chart over the topic page, which shows only the charts the viewpoints' cards are made with.
+    if (owner && !featured.get(fact)?.some(slide => slide.chart === chart)) errors.push(`topic: preview chart ${key} is not on any viewpoint's card, and only those charts are on the topic page — preview one a card is made with`);
     if (!target) errors.push(`topic: preview chart ${key} does not resolve to a chart or figure`);
     else if (target.kind === 'figure' && !isPreviewable(target)) {
       errors.push(`topic: preview chart ${key} is a ${target.figure.kind} figure, which has no graph to preview — choose a series, a comparison or a figure of kind ${PREVIEW_FIGURE_KINDS.join(', ')}`);
@@ -267,7 +267,10 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
   // A reading drawn alongside another shares its plot: it names another reading
   // of this series, one that is not itself drawn alongside, nor drawing one.
   for (const reading of series.readings) {
-    if (reading.alongside === undefined) continue;
+    if (reading.alongside === undefined) {
+      if (reading.alongsideAxis !== undefined) errors.push(`${where} reading "${reading.id}" places the axis of a reading drawn alongside, but draws none`);
+      continue;
+    }
     const partner = series.readings.find(r => r.id === reading.alongside);
     if (!partner || partner === reading) errors.push(`${where} reading "${reading.id}" is drawn alongside "${reading.alongside}", which is not another reading of this series`);
     else if (partner.alongside !== undefined) errors.push(`${where} reading "${reading.id}" is drawn alongside "${partner.id}", which draws another reading itself`);
@@ -277,6 +280,22 @@ function seriesErrors(factId: string, series: Series, lastUpdated: string, sourc
     const shared = partner?.lines.filter(line => reading.lines.some(own => own.name === line.name)) ?? [];
     for (const line of shared) errors.push(`${where} readings "${reading.id}" and "${reading.alongside}" share a plot and both have a line "${line.name}"; give one a name of its own`);
     if (series.focus) errors.push(`${where} draws a reading alongside another and has a focus window, whose context strip draws one axis only`);
+  }
+
+  // A stacked reading's bands sit on one another, so they must line up period
+  // for period, add up (counts, none negative) and own their plot.
+  for (const reading of series.readings.filter(r => r.stacked)) {
+    if (reading.unit !== 'count') errors.push(`${where} reading "${reading.id}" is stacked, so its unit must be count: shares and rates do not add up`);
+    if (reading.lines.length < 2) errors.push(`${where} reading "${reading.id}" is stacked but has one line; a stack needs two or more parts`);
+    if (reading.alongside !== undefined || series.readings.some(r => r.alongside === reading.id)) errors.push(`${where} reading "${reading.id}" is stacked, so no reading can share its plot`);
+    if (series.focus) errors.push(`${where} has a stacked reading and a focus window, whose context strip draws lines, not a stack`);
+    const periods = (line: SeriesLine) => line.points.map(p => p.period).join(',');
+    for (const line of reading.lines.slice(1)) {
+      if (periods(line) !== periods(reading.lines[0])) errors.push(`${where} reading "${reading.id}" is stacked, but line "${line.name}" has different periods from "${reading.lines[0].name}"`);
+    }
+    for (const line of reading.lines) {
+      if (line.points.some(p => p.value < 0)) errors.push(`${where} reading "${reading.id}" is stacked, but line "${line.name}" has a negative value`);
+    }
   }
 
   const seenReadings = new Set<string>();
@@ -1039,9 +1058,13 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-/** Unicode NFC, straight quotes, collapsed whitespace, lower case: what F11 compares. */
+/**
+ * Unicode NFC, straight quotes, collapsed whitespace, lower case: what F11
+ * compares. A source quote's layout (`QuoteText`: a bullet's `- `, a table's
+ * ` | `) is not its words, so it is read as a space (`normaliseWithOffsets`).
+ */
 export function normaliseQuote(text: string): string {
-  return text.normalize('NFC').replace(/[\u2018\u2019\u201A\u2032]/g, "'").replace(/[\u201C\u201D\u201E\u2033]/g, '"').replace(/\s+/g, ' ').trim().toLowerCase();
+  return normaliseWithOffsets(text.normalize('NFC')).text;
 }
 
 /**
@@ -1089,11 +1112,15 @@ function citationErrors(topic: Topic, factById: Map<string, Fact>): string[] {
         errors.push(`${what}: body links to "#fact-${id}", which is not a fact in this topic`);
       }
     }
+    // Principles are not linked items: a viewpoint states its values in its
+    // own words, and cruxes weigh them against each other.
+    for (const match of body.matchAll(/\]\(#principle-([a-z0-9-]+)\)/g)) {
+      errors.push(`${what}: body links to "#principle-${match[1]}"; principles are not linked — state the value in plain prose, and name the tension in a crux`);
+    }
   };
 
   check('topic intro', topic.intro);
   for (const f of topic.facts) check(`fact ${f.id}`, f.body);
-  for (const p of topic.principles) check(`principle ${p.id}`, p.body);
 
   for (const v of topic.viewpoints) check(`viewpoint ${v.id}`, v.body + '\n' + v.summary);
 

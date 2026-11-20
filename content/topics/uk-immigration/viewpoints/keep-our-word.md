@@ -8,9 +8,7 @@ People who came to Britain lawfully, on a path the state set out, should be allo
 
 ### About 2.2 million people built their lives around a path the state set out
 
-Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). Many took jobs, moved their families and put their children in school.
-
-They came because the state set out the terms. Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
+Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). Many took jobs, moved their families and put their children in school, because the state set out the terms. Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
 
 ### The government now proposes to make them wait longer, part-way through
 
@@ -22,13 +20,11 @@ They came because the state set out the terms. Changing the terms halfway tells 
 
 The government once toughened the rules for skilled migrants already here. [The High Court ruled in 2008 that changing the scheme midway was "conspicuous unfairness and an abuse of power"](#fact-settlement-and-migrant-status/high-court-struck-down-mid-route-change-2008). [MPs found it "common" for the Home Office to protect people already on a route](#fact-settlement-and-migrant-status/transitional-protection-precedent).
 
-[For Hong Kong's British Nationals (Overseas), the government called the route a "historic and moral commitment"](#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment). While [the skilled-worker guidance says only that people "may be able to apply"](#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply), and [rules have sometimes been changed for people already here](#fact-settlement-and-migrant-status/transitional-protection-precedent), nobody uproots a family for "may" unless they trust the state to mean it. [Rules must mean what they say](#principle-rules-must-mean-what-they-say), in the sense people reasonably took them.
+[For Hong Kong's British Nationals (Overseas), the government called the route a "historic and moral commitment"](#fact-settlement-and-migrant-status/bno-historic-and-moral-commitment). While [the skilled-worker guidance says only that people "may be able to apply"](#fact-settlement-and-migrant-status/guidance-said-may-be-able-to-apply), and [rules have sometimes been changed for people already here](#fact-settlement-and-migrant-status/transitional-protection-precedent), nobody uproots a family for "may" unless they trust the state to mean it. Rules must mean what they say, in the sense people reasonably took them.
 
 ### Many on the path are well-paid workers, worth more to Britain if they stay
 
-[Skilled workers on the main visa earn a median of £56,600 a year](#fact-immigration-economy-and-public-finances/earnings-by-route). The government's advisers find that [skilled workers who stay are worth far more to the public purse than those who leave](#fact-immigration-economy-and-public-finances/stayers-worth-more).
-
-While [the evidence on whether longer waits drive people away is limited](#fact-settlement-and-migrant-status/behaviour-evidence-limited), Britain gains nothing by giving its best-paid newcomers a reason to go. And while [around half of adult skilled-worker dependants were not working](#fact-settlement-and-migrant-status/skilled-dependants-half-not-working), and [care workers cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-workers-net-cost), that is a case for different terms for future arrivals, not for breaking the terms given to people already here.
+[Skilled workers on the main visa earn a median of £56,600 a year](#fact-immigration-economy-and-public-finances/earnings-by-route), and the government's advisers find that [skilled workers who stay are worth far more to the public purse than those who leave](#fact-immigration-economy-and-public-finances/stayers-worth-more). While [the evidence on whether longer waits drive people away is limited](#fact-settlement-and-migrant-status/behaviour-evidence-limited), Britain gains nothing by giving its best-paid newcomers a reason to go. That [around half of adult skilled-worker dependants were not working](#fact-settlement-and-migrant-status/skilled-dependants-half-not-working) is a case for different terms for future arrivals, not for breaking the terms given to people already here.
 
 ### A longer wait would cost these families more, for years longer
 
@@ -38,6 +34,4 @@ While [the evidence on whether longer waits drive people away is limited](#fact-
 
 ### So change the terms only for people who have not yet come
 
-Parliament may set any terms it likes for people who have not yet come. But everyone who arrived on a five-year path should be able to finish it on the terms they were given. The public draws the line in the same place: [most people oppose taking settlement away from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29).
-
-[Ending settlement for new arrivals splits the country evenly](#fact-settlement-and-migrant-status/ending-for-new-arrivals-splits), and [majorities want to keep it for full-time workers and NHS staff](#fact-settlement-and-migrant-status/majorities-keep-for-workers).
+Parliament may set any terms it likes for people who have not yet come. But everyone who arrived on a five-year path should be able to finish it on the terms they were given. The public draws the line in the same place: [most people oppose taking settlement away from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29), ending it for new arrivals splits the country evenly, and [majorities want to keep it for full-time workers and NHS staff](#fact-settlement-and-migrant-status/majorities-keep-for-workers).
