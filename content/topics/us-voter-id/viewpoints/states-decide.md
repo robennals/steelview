@@ -10,7 +10,7 @@ The Constitution settles who writes election rules. Each state's voters should c
 
 [Each state's legislature decides when, where and how congressional elections are run, and Congress may change those rules](#fact-federal-and-state-power-over-voting-rules/elections-clause-text). The clause names no role for the President. [Congress's power covers how elections are held, not who may vote](#fact-federal-and-state-power-over-voting-rules/not-who-may-vote).
 
-So who may vote is for the states to decide. This keeps [decisions close to the people](#principle-decisions-made-closest-to-the-people) who live with them. If a state's voters dislike its ID rule, they can elect lawmakers who will change it. That is [democratic consent](#principle-democratic-consent-over-membership) where it counts most.
+So who may vote is for the states to decide. This keeps decisions close to the people who live with them. If a state's voters dislike its ID rule, they can elect lawmakers who will change it. That is democratic consent where it counts most.
 
 ### A president has no power to set voting rules by order
 

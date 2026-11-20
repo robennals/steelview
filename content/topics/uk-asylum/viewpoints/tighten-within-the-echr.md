@@ -4,7 +4,7 @@ shortName: "Tighten within the ECHR"
 summary: "[In 2019 what was raised against removal was mostly asylum claims, medical reports, slavery referrals and legal challenges, not human-rights applications](#fact-removals-and-what-stops-them/late-claims-not-human-rights-claims), and British law can fix those. Britain should clear its queues, narrow family-life claims by statute and tie protection to continuing danger, while keeping the Convention and [the European cooperation that depends on it](#fact-asylum-law-and-the-echr/part-three-rests-on-the-echr)."
 order: 3
 ---
-A refusal should mean leaving, or [rules do not mean what they say](#principle-rules-must-mean-what-they-say). Most of what stands in the way is Britain's own doing. British law can fix it without leaving the European Convention on Human Rights (ECHR).
+A refusal should mean leaving, or rules do not mean what they say. Most of what stands in the way is Britain's own doing. British law can fix it without leaving the European Convention on Human Rights (ECHR).
 
 ### Few challenges to removal are human-rights applications
 
@@ -28,4 +28,4 @@ If Britain left, [the EU could end police and criminal-records cooperation](#fac
 
 Britain has cut its first-decision queue, is rewriting appeals and has raised returns to Albania, all while staying in the ECHR. It should press on with each, and stay in the Convention.
 
-While [crossings fell sharply in 2026](#fact-channel-crossings-and-irregular-arrivals/arrivals-fell-sharply-in-2026), [arrivals across Europe fell too](#fact-channel-crossings-and-irregular-arrivals/the-uk-fall-is-within-the-european-range), so no single British policy can take the credit. Britain also has an [obligation to people in danger](#principle-obligation-to-people-in-danger): [most Sudanese and Eritrean claimants are granted protection](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted).
+While [crossings fell sharply in 2026](#fact-channel-crossings-and-irregular-arrivals/arrivals-fell-sharply-in-2026), [arrivals across Europe fell too](#fact-channel-crossings-and-irregular-arrivals/the-uk-fall-is-within-the-european-range), so no single British policy can take the credit. Britain also has an obligation to people in danger: [most Sudanese and Eritrean claimants are granted protection](#fact-asylum-claims-and-decisions/sudanese-and-eritreans-mostly-granted).

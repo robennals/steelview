@@ -24,6 +24,6 @@ Anyone who enters Britain illegally should not be allowed to stay. Britain shoul
 
 ### So Britain should bar these claims, remove those who come, and leave the ECHR
 
-If Britain refused these claims and removed those who come, crossing would no longer pay. Leaving the ECHR would let Parliament set those rules. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people).
+If Britain refused these claims and removed those who come, crossing would no longer pay. Leaving the ECHR would let Parliament set those rules. A government's first duty is to its own people.
 
 While [the Conservatives' pledge of 150,000 removals a year would be about 15 times today's enforced returns](#fact-removals-and-what-stops-them/150000-about-15-times-enforced-returns), [most returns are already voluntary](#fact-removals-and-what-stops-them/most-returns-are-voluntary), and [those cost far less](#fact-removals-and-what-stops-them/voluntary-returns-far-cheaper). [Supporting asylum seekers already costs around £4 billion a year](#fact-asylum-backlog-accommodation-and-cost/support-costs-about-4bn-a-year).

@@ -28,4 +28,4 @@ While [overthrowing a government from outside more than doubles the risk of civi
 
 The US can weaken the government's security forces and stop it rebuilding them. It can protect the government's critics abroad. It can help Iranians get online and organise beyond the government's reach.
 
-[We have a duty to help people in danger](#principle-obligation-to-people-in-danger), even when helping is hard. Iranians have risked their lives for a better government. [They want a government chosen by its people](#principle-democratic-consent-over-membership), and America should stand with them until they get it.
+We have a duty to help people in danger, even when helping is hard. Iranians have risked their lives for a better government. They want a government chosen by its people, and America should stand with them until they get it.

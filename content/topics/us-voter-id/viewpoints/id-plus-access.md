@@ -4,7 +4,7 @@ shortName: "ID plus access"
 summary: "[Trust in the vote count has mostly followed which party is in power](#fact-opinion-and-confidence-in-elections/confidence-follows-power), and [voters trust results less under rules they oppose](#fact-opinion-and-confidence-in-elections/procedures-they-oppose). Free photo ID plus guaranteed early voting, passed by both parties, would give each side the protection it fears losing."
 order: 4
 ---
-Democracy works only if the losing side accepts defeat and waits for the next election. It will do that only if it trusts the result. That is why [results the losers can accept](#principle-results-the-losers-can-accept) matter more than any one rule.
+Democracy works only if the losing side accepts defeat and waits for the next election. It will do that only if it trusts the result. That is why a result the losing side can accept matters more than any one rule.
 
 ### Trust in the count mostly follows which party holds power
 
@@ -28,6 +28,6 @@ In Georgia, [most Republicans said the 2021 election law raised their trust](#fa
 
 ### So both parties should pass free ID and early voting together
 
-Congress, or states one by one, should pass the two together. That means free photo ID, at least two weeks of early voting, and a sworn statement for those without ID. Passed by both parties, this gives [every citizen an equal voice](#principle-an-equal-voice-for-every-citizen).
+Congress, or states one by one, should pass the two together. That means free photo ID, at least two weeks of early voting, and a sworn statement for those without ID. Passed by both parties, this gives every citizen an equal voice.
 
 A commission led by Democrat Jimmy Carter and Republican James Baker [paired photo ID with free cards](#fact-voter-id-rules-in-the-us-and-abroad/carter-baker-bargain). Trust will still rise and fall with winning: [Georgia Republicans' trust rose from 26% after 2020 to 70% in 2022](#fact-opinion-and-confidence-in-elections/georgia-rebound). And [studies disagree on whether ID itself raises trust](#fact-opinion-and-confidence-in-elections/studies-disagree). While no rule can end distrust, this one removes the losers' complaint that the rules were unfair.

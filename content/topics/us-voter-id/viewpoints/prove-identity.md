@@ -4,7 +4,7 @@ shortName: "Prove identity"
 summary: "An election is only honest if only eligible people vote. [Reviews that give a cause trace non-citizens on voter lists to mistakes](#fact-non-citizens-on-voter-rolls/how-noncitizens-reach-rolls), and [very few citizens have no photo ID at all](#fact-burdens-of-id-and-citizenship-rules/no-id-versus-outdated-id). So states should ask for photo ID at the polls, give it free, and check citizenship before anyone is added to the list."
 order: 1
 ---
-An election should be decided by the people allowed to vote, each voting once. That needs a check before the ballot goes in, because a secret ballot cannot be taken back out. That is what [verifiably honest elections](#principle-verifiably-honest-elections) means.
+An election should be decided by the people allowed to vote, each voting once. That needs a check before the ballot goes in, because a secret ballot cannot be taken back out. That is what it means for an election to be verifiably honest.
 
 ### Fraud at the polls has happened, and ID checks are built to stop it
 
@@ -32,4 +32,4 @@ Only citizens may vote. Yet [all five state reviews charted found or suspected n
 
 States should ask for photo ID at the polls, [free to anyone without one, as in Georgia](#fact-voter-id-rules-in-the-us-and-abroad/strict-states-exceptions). They should check citizenship against government records before adding anyone to the list. They should ask for documents only when the records fail.
 
-While [Kansas blocked 31,089 applicants without papers, against 39 confirmed non-citizens on its rolls](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens), that is the model to avoid. Checking records first is now possible. [The government says it has checked more than 65 million voters in 26 states against federal records](#fact-federal-and-state-power-over-voting-rules/save-whole-rolls). [Rules should mean what they say](#principle-rules-must-mean-what-they-say): a citizenship rule never checked is a rule in name only.
+While [Kansas blocked 31,089 applicants without papers, against 39 confirmed non-citizens on its rolls](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens), that is the model to avoid. Checking records first is now possible. [The government says it has checked more than 65 million voters in 26 states against federal records](#fact-federal-and-state-power-over-voting-rules/save-whole-rolls). Rules should mean what they say: a citizenship rule never checked is a rule in name only.

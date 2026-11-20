@@ -20,7 +20,7 @@ The US is already at war with Iran. If it stops halfway, it leaves a weakened, a
 
 ### Backing down now could make Iran and its allies bolder
 
-[Researchers disagree on whether backing down makes enemies bolder](#fact-outside-attempts-to-change-hostile-regimes/credibility-split). With [the worst dangers](#principle-safety-from-catastrophic-threats) at stake, that risk is too serious to take. And America's friends are already under fire: [the Houthis in Yemen fired missiles and drones at Saudi Arabia in October](#fact-decisions-law-and-diplomacy/houthi-fire-on-saudi-arabia). America should [stand by its allies](#principle-loyalty-to-allies).
+[Researchers disagree on whether backing down makes enemies bolder](#fact-outside-attempts-to-change-hostile-regimes/credibility-split). With the worst dangers at stake, that risk is too serious to take. And America's friends are already under fire: [the Houthis in Yemen fired missiles and drones at Saudi Arabia in October](#fact-decisions-law-and-diplomacy/houthi-fire-on-saudi-arabia). America should stand by its allies.
 
 ### Finishing the job means limited goals, not overthrowing Iran's government
 

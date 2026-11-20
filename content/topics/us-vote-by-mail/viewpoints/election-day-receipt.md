@@ -8,7 +8,7 @@ An election should have a clear end. Every ballot should be in officials' hands 
 
 ### Election Day should be the last day a ballot can arrive
 
-Election Day is the day of the election, and [rules should mean what they say](#principle-rules-must-mean-what-they-say): a ballot that arrives a week later was not part of it. [The Supreme Court left the choice of deadline to lawmakers](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), and noted a reason they may choose Election Day: [it "avoids the appearance of fraud from late-arriving ballots"](#fact-ballot-deadlines-and-counting-speed/watson-appearance-of-fraud).
+Election Day is the day of the election, and rules should mean what they say: a ballot that arrives a week later was not part of it. [The Supreme Court left the choice of deadline to lawmakers](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), and noted a reason they may choose Election Day: [it "avoids the appearance of fraud from late-arriving ballots"](#fact-ballot-deadlines-and-counting-speed/watson-appearance-of-fraud).
 
 ### Most states already require ballots by Election Day, and more are returning to it
 
@@ -24,7 +24,7 @@ While [late arrival has caused 12.1% to 26.9% of rejected mail ballots since 201
 
 ### A close race should not hang on ballots that arrive after the vote
 
-While [late ballots were far fewer than the winner's margins in Nevada's two largest counties in 2024](#fact-ballot-deadlines-and-counting-speed/late-ballots-small-in-nevada), a rule must also hold in a close race. In 2020, the year the most states counted late ballots, [Republican trust in the count fell to 22%](#fact-confidence-and-disputed-results/count-length-not-separated). Republicans had also lost that year, so no one can say whether a long count lowers trust on its own. A democracy that wants [results the losers can accept](#principle-results-the-losers-can-accept) should not wait to find out.
+While [late ballots were far fewer than the winner's margins in Nevada's two largest counties in 2024](#fact-ballot-deadlines-and-counting-speed/late-ballots-small-in-nevada), a rule must also hold in a close race. In 2020, the year the most states counted late ballots, [Republican trust in the count fell to 22%](#fact-confidence-and-disputed-results/count-length-not-separated). Republicans had also lost that year, so no one can say whether a long count lowers trust on its own. A democracy that wants results the losers can accept should not wait to find out.
 
 ### So every state should require ballots by poll close, and count fast
 

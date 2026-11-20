@@ -79,9 +79,6 @@ function remarkMarkFactCitations({ footnotes, citationMarker }: Required<Pick<Re
         parent.children.splice(index, 1);
         return index;
       }
-      if (node.url.startsWith('#principle-')) {
-        node.data = { ...node.data, hProperties: { className: ['sv-principle-cite'] } };
-      }
     });
     // A finding cited several times in one paragraph keeps one marker, after its last citation.
     visit(tree, 'paragraph', paragraph => {

@@ -4,11 +4,11 @@ shortName: "The slower path"
 summary: "Iran was dangerous, but [in every check from 2017 to 2019, its uranium stock stayed under the 2015 deal's limit](#fact-iran-nuclear-programme/deal-era-compliance). The war has [killed thousands of Iranians](#fact-human-and-financial-costs-of-the-war/deaths-in-the-thousands), [all but stopped inspections](#fact-iran-nuclear-programme/verification-stopped) and thrown away the plan that had kept Iran in check."
 order: 2
 ---
-Iran was dangerous, but talks and inspections had kept it in check before. Choosing war instead was a mistake. [War should be the last resort](#principle-war-only-as-a-last-resort), and this one was not.
+Iran was dangerous, but talks and inspections had kept it in check before. Choosing war instead was a mistake. War should be the last resort, and this one was not.
 
 ### The war has killed thousands of Iranians who had no say in it
 
-[One group counted at least 1,701 civilians killed by early April, at least 254 of them children](#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april), and [millions more have been forced from their homes](#fact-human-and-financial-costs-of-the-war/displaced-millions). [The outside counts of deaths stop in April](#fact-human-and-financial-costs-of-the-war/no-count-after-april), so they miss any deaths since. These people had no say in their government's choices, and [the people who suffer most should count the most](#principle-priority-to-the-worst-off).
+[One group counted at least 1,701 civilians killed by early April, at least 254 of them children](#fact-human-and-financial-costs-of-the-war/civilian-minimum-by-april), and [millions more have been forced from their homes](#fact-human-and-financial-costs-of-the-war/displaced-millions). [The outside counts of deaths stop in April](#fact-human-and-financial-costs-of-the-war/no-count-after-april), so they miss any deaths since. These people had no say in their government's choices, and the people who suffer most should count the most.
 
 ### The 2015 deal kept Iran's uranium in check until the US walked away
 

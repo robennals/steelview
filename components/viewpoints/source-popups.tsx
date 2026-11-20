@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import type { QuotedSource } from '@/lib/content/walkthrough';
-import { InfoSheet } from '@/components/topic/principle-modals';
+import { InfoSheet } from '@/components/topic/info-sheet';
 import { QuoteText } from '@/components/topic/quote-text';
 
 type SourcePopupsProps = {

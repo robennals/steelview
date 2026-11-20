@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { compositionSumError, evidenceErrors, normaliseQuote, validateTopic } from './validate';
-import type { Topic, Fact, Viewpoint, Principle, Crux, Series, FigureKind, FigureOf } from './types';
+import type { Topic, Fact, Viewpoint, Crux, Series, FigureKind, FigureOf } from './types';
 import { figureExamplesFact, figureExamplesTopic } from './__fixtures__/figure-examples';
 import { factSources } from './sources';
 import { US_STATE_TILES } from '../../components/report/geo/tiles';
@@ -36,10 +36,6 @@ function viewpoint(over: Partial<Viewpoint> & { id: string }): Viewpoint {
   };
 }
 
-function principle(over: Partial<Principle> & { id: string }): Principle {
-  return { name: 'A principle', body: '', ...over };
-}
-
 function crux(over: Partial<Crux> & { id: string }): Crux {
   return {
     title: 'A question?',
@@ -66,7 +62,6 @@ function soundTopic(): Topic {
       viewpoint({ id: 'one' }),
       viewpoint({ id: 'two' }),
     ],
-    principles: [principle({ id: 'fairness' })],
     cruxes: [
       crux({
         id: 'timing',
@@ -169,7 +164,7 @@ test('rule 7: a crux may not give a position for a viewpoint it does not divide'
   t.cruxes[0].divides = ['one', 'two'];
   t.cruxes[0].positions.push({ viewpoint: 'three', holds: 'A third position.' });
   t.viewpoints.push(
-    viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'], principles: ['fairness'] })
+    viewpoint({ id: 'three', citesFacts: ['alpha'], acknowledges: ['gamma'] })
   );
   const errors = validateTopic(t);
   assert.ok(errors.some((e) => e.includes('three') && e.includes('divides')), errors.join('\n'));
@@ -270,16 +265,10 @@ test('rule 9: a topic needs at least 2 viewpoints', () => {
   );
 });
 
-test('a viewpoint can stop using a principle without changing its shared definition', () => {
-  const t = soundTopic();
-  t.viewpoints[0].principles = [];
-  assert.deepEqual(validateTopic(t), []);
-});
-
 test('every error message names the offending item', () => {
   const t = soundTopic();
   t.viewpoints[0].citesFacts = ['nope'];
-  for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |principle |crux /);
+  for (const error of validateTopic(t)) assert.match(error, /viewpoint |fact |crux /);
 });
 
 test('rule 12: a body linking to a fact that does not exist is reported', () => {
@@ -300,8 +289,17 @@ test('rule 12: a dead citation in a fact body is reported too', () => {
 
 test('rule 12: a citation of a real fact is accepted', () => {
   const t = soundTopic();
-  t.principles[0].body = 'See [alpha](#fact-alpha).';
+  t.intro = 'See [alpha](#fact-alpha).';
   assert.deepEqual(validateTopic(t), []);
+});
+
+test('a body may not link to a principle: values are stated in prose and weighed in cruxes', () => {
+  const t = soundTopic();
+  t.viewpoints[0].body = 'Every citizen should have [an equal voice](#principle-equal-voice).';
+  assert.ok(
+    validateTopic(t).some((e) => e.includes('viewpoint one') && e.includes('#principle-equal-voice')),
+    validateTopic(t).join('\n')
+  );
 });
 
 test('a viewpoint lists every claim it marks #needed', () => {
@@ -373,7 +371,7 @@ test.skip('rule 13: citing a supporting fact whose parent is unlisted is reporte
   );
 });
 
-test('rule 13 does not apply to fact or principle bodies', () => {
+test('rule 13 does not apply to fact bodies', () => {
   const t = soundTopic();
   t.facts[0].body = 'Compare [gamma](#fact-gamma).';
   assert.deepEqual(validateTopic(t), []);

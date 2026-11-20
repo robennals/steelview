@@ -28,6 +28,6 @@ In Denmark, [immigrants from the Middle East, North Africa, Pakistan, Afghanista
 
 ### So admit far fewer, choose for integration, and measure the results
 
-A people is entitled to [continuity in its way of life](#principle-continuity-of-a-shared-way-of-life) and to [a say over who joins it](#principle-democratic-consent-over-membership). So Britain should admit far fewer people, and favour those likely to share its language and laws. It should record the ethnicity of every suspect, and publish how each group fares by origin and generation.
+A people is entitled to continuity in its way of life and to a say over who joins it. So Britain should admit far fewer people, and favour those likely to share its language and laws. It should record the ethnicity of every suspect, and publish how each group fares by origin and generation.
 
 While [non-citizens are cautioned or convicted at about their share of adults](#fact-crime-terrorism-and-group-exploitation/non-citizens-share-matches-population), [segregation has fallen](#fact-integration-outcomes/segregation-fell) and [most minority groups outscore White British pupils](#fact-integration-outcomes/minority-pupils-outperform), national averages do not answer for Rotherham.
