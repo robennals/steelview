@@ -18,7 +18,7 @@ The Constitution lets each state's lawmakers set the rules for elections, and le
 
 ### Mail voting differs so much by region that one rule cannot fit all
 
-[Mail voting is mainly a Western practice](#fact-mail-voting-use-and-effects/west-votes-by-mail), and [in much of the South, mail ballots are a small share of the vote](#fact-mail-voting-use-and-effects/low-mail-states). The gap is not new: most Western voters used mail even before the pandemic, while in the South mail stayed under a quarter of votes even in 2020. One national rule would force one region's habits on another, where [decisions made closest to the people](#principle-decisions-made-closest-to-the-people) can fit each place's own voters.
+[Mail voting is mainly a Western practice](#fact-mail-voting-use-and-effects/west-votes-by-mail), and [in much of the South, mail ballots are a small share of the vote](#fact-mail-voting-use-and-effects/low-mail-states). The gap is not new: most Western voters used mail even before the pandemic, while in the South mail stayed under a quarter of votes even in 2020. One national rule would force one region's habits on another, where decisions made closest to the people can fit each place's own voters.
 
 ### Congress may set rules, but should do so only where states cannot
 
@@ -28,4 +28,4 @@ While [Congress has strong power over federal elections](#fact-federal-and-state
 
 ### So each state's voters, not the White House, should set their mail rules
 
-[People should have a say in the rules that govern them](#principle-democratic-consent-over-membership). Fifty states, each able to change its own rules, give voters more say than one national rule. The Supreme Court said arguments over deadlines [belong to lawmakers, not courts](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), and the Constitution names those lawmakers: each state's legislature, and Congress. It does not name the White House.
+People should have a say in the rules that govern them. Fifty states, each able to change its own rules, give voters more say than one national rule. The Supreme Court said arguments over deadlines [belong to lawmakers, not courts](#fact-ballot-deadlines-and-counting-speed/watson-left-it-to-legislatures), and the Constitution names those lawmakers: each state's legislature, and Congress. It does not name the White House.

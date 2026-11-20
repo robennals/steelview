@@ -12,7 +12,7 @@ A mail ballot should not be thrown out because an election worker thinks a signa
 
 ### The same rule gives very different results from county to county
 
-In Washington, [the county a ballot was cast in mattered more than anything else the auditor measured. For mismatches alone, two counties were 18 times as likely as another to reject a ballot](#fact-mail-ballot-rejection-and-signature-checks/county-strongest-predictor). That falls short of [an equal voice for every citizen](#principle-an-equal-voice-for-every-citizen).
+In Washington, [the county a ballot was cast in mattered more than anything else the auditor measured. For mismatches alone, two counties were 18 times as likely as another to reject a ballot](#fact-mail-ballot-rejection-and-signature-checks/county-strongest-predictor). That falls short of an equal voice for every citizen.
 
 While [the auditor found no sign of bias in individual decisions](#fact-mail-ballot-rejection-and-signature-checks/no-evidence-of-bias), honest judgement still differs. [Counties that rejected fewer ballots accepted less certain matches](#fact-mail-ballot-rejection-and-signature-checks/low-rejection-counties-accept-more). A standard that honest people apply this differently is not a standard. [Officials have tampered with counts through absentee ballots before](#fact-absentee-fraud-and-manipulation-of-the-count/officials-manipulated-count). While [no case was found of signature checks used to change a result](#fact-absentee-fraud-and-manipulation-of-the-count/no-signature-review-case-found), rules should bind officials before any abuse, not after.
 

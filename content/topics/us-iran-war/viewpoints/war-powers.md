@@ -8,7 +8,7 @@ Under the Constitution, a President cannot take the country to war alone. [Congr
 
 ### Only Congress can declare war, and it has not approved this one
 
-[The Constitution gives Congress, not the President, the power to declare war](#fact-decisions-law-and-diplomacy/congress-declares-war). [Every vote Congress has held on the war, as far as the record shows, was on ending it](#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war), and [the administration did not seek Congress's approval before the 60-day mark](#fact-decisions-law-and-diplomacy/no-authorisation-sought). The rule exists so that [the people, through their representatives, decide](#principle-democratic-consent-over-membership) whether Americans are sent to kill and die.
+[The Constitution gives Congress, not the President, the power to declare war](#fact-decisions-law-and-diplomacy/congress-declares-war). [Every vote Congress has held on the war, as far as the record shows, was on ending it](#fact-decisions-law-and-diplomacy/votes-all-to-end-the-war), and [the administration did not seek Congress's approval before the 60-day mark](#fact-decisions-law-and-diplomacy/no-authorisation-sought). The rule exists so that the people, through their representatives, decide whether Americans are sent to kill and die.
 
 ### When Congress has voted, it has voted to end the war
 
@@ -20,7 +20,7 @@ Under the Constitution, a President cannot take the country to war alone. [Congr
 
 ### Presidents have long sidestepped this rule, which is why it must be enforced now
 
-[From 1975 to 2017, presidents almost never formally started the 60-day clock](#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock). While [presidents have used force abroad hundreds of times without a declaration of war](#fact-decisions-law-and-diplomacy/declarations-and-instances), that does not make it lawful. A rule still counts when it is often broken: [rules should mean what they say](#principle-rules-must-mean-what-they-say).
+[From 1975 to 2017, presidents almost never formally started the 60-day clock](#fact-decisions-law-and-diplomacy/only-one-report-started-the-clock). While [presidents have used force abroad hundreds of times without a declaration of war](#fact-decisions-law-and-diplomacy/declarations-and-instances), that does not make it lawful. A rule still counts when it is often broken: rules should mean what they say.
 
 ### So Congress should vote either to approve this war or to end it
 

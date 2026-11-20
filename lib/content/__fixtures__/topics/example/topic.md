@@ -8,6 +8,5 @@ previewCharts:
   - fact: alpha
     chart: shares
 dataOrder: [alpha, beta, gamma]
-principles: [fairness]
 ---
 The introduction to the example topic.

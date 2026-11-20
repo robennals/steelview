@@ -10,7 +10,6 @@ import {
   factFrontmatterSchema,
   observationMarkSchema,
   viewpointFrontmatterSchema,
-  principleFrontmatterSchema,
   cruxFrontmatterSchema,
   topicFrontmatterSchema,
   previewChartSchema,
@@ -70,12 +69,11 @@ export type FigureValueFormat = z.infer<typeof valueFormatSchema>;
 export type Fact = Item<z.infer<typeof factFrontmatterSchema>>;
 export type ObservationMark = z.infer<typeof observationMarkSchema>;
 export type Viewpoint = Item<z.infer<typeof viewpointFrontmatterSchema>>;
-export type Principle = Item<z.infer<typeof principleFrontmatterSchema>>;
 export type Crux = Item<z.infer<typeof cruxFrontmatterSchema>>;
 
 export type PreviewChart = z.infer<typeof previewChartSchema>;
 
-export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'principles' | 'dataOrder' | 'tags' | 'previewCharts'> & {
+export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'dataOrder' | 'tags' | 'previewCharts'> & {
   /** Required in authored topic.md; optional here to ease in-memory test fixtures. */
   dataOrder?: string[];
   /** Required in authored topic.md; optional here to ease in-memory test fixtures. */
@@ -87,12 +85,11 @@ export type Topic = Omit<z.infer<typeof topicFrontmatterSchema>, 'principles' | 
   intro: string;
   facts: Fact[];
   viewpoints: Viewpoint[];
-  principles: Principle[];
   cruxes: Crux[];
 };
 
-/** The four kinds of item, as they appear in anchor ids: `fact-net-migration-2024`. */
-export type ItemKind = 'fact' | 'viewpoint' | 'principle' | 'crux';
+/** The kinds of item, as they appear in anchor ids: `fact-net-migration-2024`. */
+export type ItemKind = 'fact' | 'viewpoint' | 'crux';
 
 export function anchorFor(kind: ItemKind, id: string): string {
   return `${kind}-${id}`;

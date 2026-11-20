@@ -4,7 +4,7 @@ shortName: "Don't turn voters away"
 summary: "[Voting as someone else at the polls made up 10 of the 2,068 alleged fraud cases News21 collected](#fact-election-fraud-and-voter-exclusion-history/impersonation-rare-modern), and [non-citizens' votes are found at about 1 to 22 per million ballots](#fact-non-citizens-on-voter-rolls/votes-per-ballots). But [Kansas's citizenship-document rule blocked tens of thousands of applicants](#fact-burdens-of-id-and-citizenship-rules/kansas-blocked-vs-noncitizens). A sworn promise of citizenship, backed by careful records checks, protects the voter list without shutting citizens out."
 order: 2
 ---
-Every citizen should have [an equal voice](#principle-an-equal-voice-for-every-citizen). A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) rules prevent almost nothing, and their cost falls on people who can least afford it.
+Every citizen should have an equal voice. A rule that makes voting harder for some citizens must prevent enough harm to be worth it. Photo-ID and [proof-of-citizenship](#glossary-documentary-proof-of-citizenship) rules prevent almost nothing, and their cost falls on people who can least afford it.
 
 ### ID checks at the polls stop a kind of fraud that almost never happens
 
@@ -24,7 +24,7 @@ An ID check at the polls stops people voting in someone else's name. [In one cou
 
 ### The burden falls hardest on young, poor, Black and Hispanic citizens
 
-[The young and poor are most likely to lack an up-to-date licence](#fact-burdens-of-id-and-citizenship-rules/licence-by-age-income). [Black and Hispanic citizens are at least three times as likely as white citizens to have no licence](#fact-burdens-of-id-and-citizenship-rules/no-licence-by-race-party). [The worst off should be weighed first](#principle-priority-to-the-worst-off). While [a national study found no clear fall in turnout](#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect), [it cannot rule out drops like those in Kansas and Tennessee](#fact-burdens-of-id-and-citizenship-rules/burden-without-turnout-effect), which [were biggest among young, newly registered and Black voters](#fact-burdens-of-id-and-citizenship-rules/gao-larger-drops-young-new-black).
+[The young and poor are most likely to lack an up-to-date licence](#fact-burdens-of-id-and-citizenship-rules/licence-by-age-income). [Black and Hispanic citizens are at least three times as likely as white citizens to have no licence](#fact-burdens-of-id-and-citizenship-rules/no-licence-by-race-party). The worst off should be weighed first. While [a national study found no clear fall in turnout](#fact-burdens-of-id-and-citizenship-rules/national-panel-no-turnout-effect), [it cannot rule out drops like those in Kansas and Tennessee](#fact-burdens-of-id-and-citizenship-rules/burden-without-turnout-effect), which [were biggest among young, newly registered and Black voters](#fact-burdens-of-id-and-citizenship-rules/gao-larger-drops-young-new-black).
 
 ### So keep the sworn promise of citizenship, and back it with records checks
 

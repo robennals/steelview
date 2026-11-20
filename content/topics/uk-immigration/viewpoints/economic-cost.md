@@ -4,7 +4,7 @@ shortName: "Cut the numbers"
 summary: "Recent immigration came with [a bigger economy](#fact-immigration-economy-and-public-finances/total-gdp-grew) but [almost no rise in output per person](#fact-immigration-economy-and-public-finances/gdp-per-head-barely-grew), and [England's households are projected to grow faster than it is building homes](#fact-immigration-housing-and-public-services/building-below-household-growth). The fall in numbers rests on rules a future government could undo, so Parliament should set a binding cap and lengthen the wait to settle."
 order: 1
 ---
-Britain has taken in more people than it can house, and its people are no richer for it. [A government's first duty is to its own people](#principle-first-duty-to-its-own-people). Parliament should cut immigration hard and make sure it stays down.
+Britain has taken in more people than it can house, and its people are no richer for it. A government's first duty is to its own people. Parliament should cut immigration hard and make sure it stays down.
 
 ### Britain has just had the biggest wave of immigration on record
 
@@ -28,4 +28,4 @@ Output per person grew for decades. But [since 2019 it has barely moved](#fact-i
 
 ### So Parliament should set a binding cap and lengthen the wait to settle
 
-[Most people want immigration reduced](#fact-immigration-against-the-long-run/public-preferences), and a country should have [a say over who joins it](#principle-democratic-consent-over-membership). So Parliament should set a binding yearly cap on net migration, and close the low-paid routes that cost more than they bring in. It should also lengthen the wait to settle. [About 1.6 million people are expected to settle by 2030](#fact-settlement-and-migrant-status/forecast-1-6-million), and [once settled, they can claim most of the benefits that people on temporary visas cannot](#fact-settlement-and-migrant-status/settlement-unlocks-benefits).
+[Most people want immigration reduced](#fact-immigration-against-the-long-run/public-preferences), and a country should have a say over who joins it. So Parliament should set a binding yearly cap on net migration, and close the low-paid routes that cost more than they bring in. It should also lengthen the wait to settle. [About 1.6 million people are expected to settle by 2030](#fact-settlement-and-migrant-status/forecast-1-6-million), and [once settled, they can claim most of the benefits that people on temporary visas cannot](#fact-settlement-and-migrant-status/settlement-unlocks-benefits).

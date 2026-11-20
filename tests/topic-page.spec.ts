@@ -26,7 +26,6 @@ test('the topic page shows its viewpoints and then its cruxes, with no tabs', as
   await expect(page.locator('.sv-topic-tabs')).toHaveCount(0);
   await expect(page.getByRole('navigation', { name: 'Sections of this topic' })).toHaveCount(0);
   await expect(page.locator('.sv-row--data')).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Principles', level: 2 })).toHaveCount(0);
   const viewpoints = page.getByRole('heading', { name: 'Viewpoints', level: 2 });
   const cruxes = page.getByRole('heading', { name: 'Cruxes', level: 2 });
   await expect(viewpoints).toBeVisible();

@@ -20,7 +20,7 @@ Government advisers find that [care workers, and the adult family members of hea
 
 ### Taking settlement back would need a new law, passed openly by Parliament
 
-[Today's law lets settlement be revoked only on individual grounds](#fact-settlement-and-migrant-status/revocation-needs-new-law). So ending it for everyone would need a new Act of Parliament, passed in the open by the people's representatives. A country has the right to decide [who becomes a permanent member of it](#principle-democratic-consent-over-membership).
+[Today's law lets settlement be revoked only on individual grounds](#fact-settlement-and-migrant-status/revocation-needs-new-law). So ending it for everyone would need a new Act of Parliament, passed in the open by the people's representatives. A country has the right to decide who becomes a permanent member of it.
 
 While [people with settlement outside the EU scheme were 2.7% of those on Universal Credit](#fact-settlement-and-migrant-status/no-official-data-on-ilr-holders-work-or-benefits), this step rests on principle, not numbers. And while [people with EU settled status far outnumber other holders](#fact-settlement-and-migrant-status/euss-outnumber-non-eu-ilr), and [are outside the reforms under the Brexit treaty](#fact-settlement-and-migrant-status/eu-status-out-of-scope), Britain should act where Parliament can.
 
@@ -30,6 +30,6 @@ Lower arrivals would leave [the 2.5 million people added by net migration in 202
 
 ### So replace settlement with renewable visas and keep benefits for citizens
 
-[A government's first duty is to its own citizens](#principle-first-duty-to-its-own-people), and the welfare state they pay for should be theirs. Britain should replace indefinite leave with renewable five-year visas, and keep benefits for citizens. It should keep arrivals below departures until the country has absorbed the change.
+A government's first duty is to its own citizens, and the welfare state they pay for should be theirs. Britain should replace indefinite leave with renewable five-year visas, and keep benefits for citizens. It should keep arrivals below departures until the country has absorbed the change.
 
 While [most people oppose taking settlement from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29), [ending it for new arrivals already splits the country evenly](#fact-settlement-and-migrant-status/ending-for-new-arrivals-splits). And [most Reform UK voters back taking it from those who hold it](#fact-settlement-and-migrant-status/reform-voters-back-removal). The argument has to be won, and it can be.

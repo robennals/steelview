@@ -14,7 +14,7 @@ Reformers brought in the secret ballot to stop vote buying. Before it, [a vote b
 
 A kitchen table has no booth. [In the best national survey, nearly a quarter of mail voters had someone else in the room](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-often-not-alone). [Mail voters were also more likely to say their choices were not kept secret](#fact-secret-ballot-and-postal-voting-abroad/mail-voters-doubt-secrecy).
 
-While Germany's top court upheld postal voting, [it said postal voting reduces public control of how the vote is cast](#fact-secret-ballot-and-postal-voting-abroad/german-court-reduced-control). [Honest elections must also be seen to be honest](#principle-verifiably-honest-elections). A vote cast where others can watch is harder to see as free.
+While Germany's top court upheld postal voting, [it said postal voting reduces public control of how the vote is cast](#fact-secret-ballot-and-postal-voting-abroad/german-court-reduced-control). Honest elections must also be seen to be honest. A vote cast where others can watch is harder to see as free.
 
 ### Mail ballots are the biggest fraud risk, and most known overturned elections involved them
 
@@ -26,7 +26,7 @@ While Germany's top court upheld postal voting, [it said postal voting reduces p
 
 ### Mailing everyone a ballot adds little turnout, and voters trust mail counts less
 
-[Sending every voter a ballot raised turnout only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly). And [in every Pew poll since 2020, fewer voters trusted the mail count than the in-person count](#fact-confidence-and-disputed-results/mail-below-in-person). While [voters of the president's party are usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power), [results the losers can accept](#principle-results-the-losers-can-accept) are still easier to build on a way of voting that both sides trust. Mailing everyone a ballot gains little for that cost.
+[Sending every voter a ballot raised turnout only about two points](#fact-mail-voting-use-and-effects/universal-mail-raised-turnout-modestly). And [in every Pew poll since 2020, fewer voters trusted the mail count than the in-person count](#fact-confidence-and-disputed-results/mail-below-in-person). While [voters of the president's party are usually the more confident in the count](#fact-confidence-and-disputed-results/confidence-follows-power), results the losers can accept are still easier to build on a way of voting that both sides trust. Mailing everyone a ballot gains little for that cost.
 
 ### So polling booths should be the default, with mail for anyone who needs it
 

@@ -48,16 +48,14 @@ settles it proves nothing about whether this format works. The disagreement
 should be real, the sides should be talking past each other, and the reader
 should arrive already holding a position.
 
-Four kinds of item, one markdown file each. Facts, viewpoints and cruxes live
-under `content/topics/<slug>/`; principles live in the shared `content/principles/`
-collection:
+Three kinds of file, all under `content/topics/<slug>/`: data collections
+(holding observations), viewpoints and cruxes:
 
 | Kind | What it is |
 | --- | --- |
 | **Data** | A collection of datasets and artifacts exploring one aspect of the topic, with observations, context, methods and sources. |
 | **Observation** | An addressable finding about a graph or dataset, explaining what to notice and why. Usually the target of a viewpoint’s factual citation. |
 | **Viewpoint** | One side of the argument, written as well as it can be written: a short lead, then a slideshow of cards, each one point shown by at most one visual, whose points add up to its title, in plain language, citing inline the observations it rests on and concedes. |
-| **Principle** | A shared perennial value that topics reference by ID. |
 | **Crux** | A tension at the heart of a disagreement between viewpoints: principles in conflict, different predictions, or missing data. |
 
 **What a reader sees.** A topic page is its viewpoints, then its cruxes. The
@@ -526,8 +524,7 @@ Cut whole stretches that don't bear on the claim, not the lead-in to one that do
 `pnpm check:figures` checks prose numbers against source quotes and
 validated `derivedFigures` calculations. A fact's figures must be in that
 fact's own sources; a viewpoint's or the topic intro's must be in the
-sources of the facts it cites (inline `#fact-` links); a shared principle's
-may be anywhere on the topic. Money in `£`, `$` or `€` and percentages written
+sources of the facts it cites (inline `#fact-` links). Money in `£`, `$` or `€` and percentages written
 `%`, "percent" or "per cent" are all checked, and the forms match each other
 ("1.4 percent" matches a quoted "1.4%", "1.0%" matches "1%"). A range's scale
 word applies to both ends ("$2–3 billion" matches a quoted "$2 billion" and
@@ -1657,8 +1654,7 @@ If none exists, add one, or add the fact to a chart from a source the report
 already cites. Failing that, say what the data does show. Argument is not linked.
 `check:integrity` fails on a link to a report, a whole chart or a passage of text,
 and on a link whose observation picks out nothing. It cannot judge whether the
-highlighted data says what the claim says: read each link on the page. Principle
-citations stay links to the principle.
+highlighted data says what the claim says: read each link on the page.
 
 **Leave definitions to the chart.** Do not stop the argument to define a term
 the chart draws. Give the chart's line a `glossary` entry instead, and its
@@ -1853,8 +1849,8 @@ Use this sequence when asked to create or improve viewpoints on any topic:
    to six claims that together establish it: central value → factual premises
    → why those premises matter → strongest relevant cost or objection →
    response → conclusion. Each claim becomes a section heading. Read the
-   headings alone: do they add up to the title? Pick the existing shared
-   principles that actually do work. Do not force every principle into every essay.
+   headings alone: do they add up to the title? Name the values that actually
+   do work. Do not force every value into every essay.
 3. **Draft for reading.** Under each heading, write a short prose paragraph or
    two using the best available evidence, with qualitative factual phrases
    where exact numbers add little. Read it without the links: does it still
@@ -1873,10 +1869,10 @@ Use this sequence when asked to create or improve viewpoints on any topic:
    phrase or a resolving link is not proof of support. Expand the shared report,
    narrow the claim or remove it when support is missing; never invent support
    to preserve a pleasing argument.
-6. **Wire and review.** Link factual phrases to those observations and value
-   phrases to shared principles. Align frontmatter, preserving permanent IDs.
-   Check rendered reading flow and that pills open the intended observation
-   or principle modal. Run the content checks, then reread the essay as prose.
+6. **Wire and review.** Link factual phrases to those observations. Align
+   frontmatter, preserving permanent IDs. Check rendered reading flow and that
+   each link highlights the intended observation. Run the content checks, then
+   reread the essay as prose.
 
 **An explicitly requested argument-first pass may stop before the full evidence
 audit.** Keep useful existing links and mark unresolved empirical premises with
@@ -1894,8 +1890,7 @@ premise in a chart or leave it supported only by an external link.
 ### Citations and data order
 
 Viewpoint frontmatter contains only `name`, `summary` and `order`. There are
-no `citesFacts`, `acknowledges`, `setsAside` or viewpoint-level `principles`
-lists. The prose itself shows what the argument builds on, concedes or sets
+no `citesFacts`, `acknowledges` or `setsAside` lists. The prose itself shows what the argument builds on, concedes or sets
 aside through inline citations.
 
 `topic.md` contains `dataOrder`: the order of the headline data collections.
@@ -1985,22 +1980,17 @@ observation ID. The existing `#fact-` prefix remains the citation syntax:
 The build checks that the id resolves. Links render as the Data collection's
 own URL, so a citation works without JavaScript.
 
-### Principle pills
+### Values
 
-When a shared principle supplies a reason for the conclusion, link a short,
-natural phrase at the point where it is applied:
-
-```markdown
-Giving [priority to the worst off](#principle-priority-to-the-worst-off)
-means being willing to devote resources to people in grave danger.
-```
-
-List that ID in the viewpoint's `principles` and in the topic's `principles`.
-These links render as clickable pills opening a modal with the shared principle.
-Use the shared name or a faithful short phrase, not a sentence that smuggles in
-an empirical prediction. The surrounding prose must explain the application;
-the pill alone does not make the argument. Link where useful, normally once
-per principle, rather than decorating every mention of a value.
+State the value an argument rests on in the viewpoint's own words, at the
+point where it is applied: "Every citizen should have an equal voice." Do not
+link it; principles are not items of their own, and `check:integrity` fails on
+a `#principle-` link. Name a value, not a disguised prediction: "Freedom to
+cooperate and exchange" is a value; "Open exchange always makes everyone
+richer" is an empirical claim and needs an observation. The surrounding prose
+must explain how the value applies. Where two viewpoints weigh the same values
+differently, that is a crux ([Cruxes](#cruxes)), not a sentence in either
+viewpoint.
 
 ### Order
 
@@ -2009,65 +1999,6 @@ together.** Alternate across the spectrum, so a reader scrolling meets
 disagreement rather than a bloc. `uk-immigration` runs: right-kind (1),
 too-much-too-fast (2), makes-Britain-better-off (3), country-should-decide
 (4), moral-duty (5).
-
----
-
-## Principles
-
-A principle is an enduring ideal that some people hold sacred. Its **name and
-entire body** should stand alone, unchanged, on a page about another issue.
-"Democratic consent" and "Obligation to people in danger" qualify; a prescription
-for a particular immigration system does not.
-
-State the ideal plainly, then make its appeal concrete with one or two iconic
-examples where readers are likely to support it: sanctuary for Jews fleeing
-Hitler, democracy giving people the power to elect their own leaders, or feeding
-children during a famine. Explain what makes the principle worth cherishing.
-Choose recognisable, accurate examples; do not imply that an example settles the
-current debate or that everyone must accept the principle.
-
-Keep the principle focused on its positive case. Do not discuss this topic's
-policies, which viewpoints hold it, exceptions, limits, or competing values in its
-body. Name the collisions that divide viewpoints in **Cruxes**. A principle
-should express a value, not disguise a disputed prediction as a moral ideal:
-"Freedom to cooperate and exchange" expresses a value; "Open exchange always
-makes everyone richer" asserts a consequence that belongs among empirical claims.
-
-Define each principle once at `content/principles/<id>.md`:
-
-```markdown
----
-name: Democratic consent
----
-People should have the power to choose their own leaders...
-```
-
-List the shared IDs a topic employs in `content/topics/<slug>/topic.md`:
-
-```yaml
-principles: [democratic-consent-over-membership, obligation-to-people-in-danger]
-```
-
-This list determines which principles appear on the topic page, in that order.
-It defaults to empty and must contain unique IDs from the shared collection.
-Each viewpoint's `principles` list must be a subset of its topic's list. A topic
-may also list a principle no viewpoint claims. A shared
-principle can exist before any topic uses it.
-
-Do not create a topic-local `principles/` directory or add `heldBy` to a shared
-definition; both fail loading. Viewpoint relationships belong to viewpoints,
-and topic relationships belong to topics. Omission does not mean rejection of
-an ideal. Future backlinks from a principle to relevant topics can be derived
-from the topic lists, without duplicating them in the shared definition.
-
-Editing a shared principle updates every topic that references it. Read its uses
-before changing its meaning. Existing `#principle-<id>` links still open the
-principle within the topic page.
-
-A principle held by every viewpoint can be especially useful. State its shared
-appeal here and explore disagreements over its application or priority in the
-cruxes below. Keep existing filenames even when simplifying principle names,
-because those IDs are permanent links.
 
 ---
 
@@ -2246,7 +2177,7 @@ them.
 | Every crux divides ≥2 viewpoints and positions each one | `lib/content/validate.ts:169` |
 | A crux has a tension and no body; its tension is ≤45 words with no figures or links; each position is ≤25 words | `lib/content/validate.ts`, `tensionErrors` |
 | No orphan headline facts | `lib/content/validate.ts:193` |
-| Topic principles resolve to shared definitions; viewpoints use only their topic’s listed principles | `lib/content/load.ts`, `lib/content/validate.ts` |
+| No body links to `#principle-…`: values are stated in prose and weighed in cruxes | `lib/content/validate.ts`, `citationErrors` |
 | Topic has ≥1 fact and ≥2 viewpoints | `lib/content/validate.ts:183` |
 | Series lines span the declared coverage (or the line's own `coverage`) exactly, end to end; the series coverage is the union of its lines' | `lib/content/validate.ts`, `seriesErrors` |
 | Series points strictly ascending, no repeats | `lib/content/validate.ts:267` |
@@ -2399,7 +2330,7 @@ Run this before opening a pull request.
       inventory or methodological detours.
 - [ ] Exact numbers appear only where necessary to understand the reasoning.
 - [ ] The conclusion follows from the reasons, with a concrete choice or judgment.
-- [ ] Applied principles are inline pills, listed in frontmatter, opening the right modal.
+- [ ] The values it applies are stated in its own words, not linked.
 - [ ] Each empirical premise maps to a report Observation backed by credible evidence;
       otherwise it is marked `#needed` and explicitly queued for research.
 - [ ] Where it is milder than a partisan would put it, that traces to
@@ -2417,15 +2348,6 @@ Run this before opening a pull request.
 - [ ] Every empirical assertion in prose and summaries is a pill targeting the
       relevant finding, is shown by its card's own visual, or is marked
       `#needed` (shown as plain prose) until the evidence audit is complete.
-
-**Every principle**
-
-- [ ] Name and entire body make sense without the current topic.
-- [ ] Expresses an enduring value someone could hold sacred.
-- [ ] Includes recognisable examples where the principle has clear appeal.
-- [ ] Focuses on the positive case; applications, limits and collisions are in cruxes.
-- [ ] Defined once in `content/principles/`, with no topic-specific `heldBy`.
-- [ ] Referencing topics list its ID; their viewpoints use only listed principles.
 
 **Every crux**
 
@@ -2449,7 +2371,6 @@ Run this before opening a pull request.
       distribution.
 - [ ] Viewpoint `order` alternates across the spectrum and groups no side
       together.
-- [ ] Principles are perennial and statable without the topic.
 - [ ] Prose is free of all six LLM-speak patterns. Read it once looking only
       for those.
 - [ ] `topic.md` `lastUpdated` is today.

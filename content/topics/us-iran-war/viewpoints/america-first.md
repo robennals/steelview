@@ -4,7 +4,7 @@ shortName: "America First"
 summary: "Americans were [promised no new wars](#fact-decisions-law-and-diplomacy/campaign-said-stop-wars) and got one. It is [costing tens of billions of dollars](#fact-human-and-financial-costs-of-the-war/cost-38-to-47-billion) and [pushing up prices at the pump](#fact-oil-shipping-and-prices/pump-prices-up-by-half), and [most Americans oppose it](#fact-decisions-law-and-diplomacy/most-disapprove-gallup). The US should bring it to an end."
 order: 6
 ---
-[A government's first duty is to its own people](#principle-first-duty-to-its-own-people). This war is costing Americans money and lives, and it was never theirs to fight. The US should end it.
+A government's first duty is to its own people. This war is costing Americans money and lives, and it was never theirs to fight. The US should end it.
 
 ### Americans voted for a President who promised to stop wars, not start them
 
@@ -28,4 +28,4 @@ On election night in 2024, [the President said, "I'm not going to start a war. I
 
 ### So the US should end the war and bring its troops home
 
-While [groups allied with Iran attacked US and coalition forces more than 200 times before the war](#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war), that is a reason to bring the troops home, not to widen the war. [War should be the last resort](#principle-war-only-as-a-last-resort), for when Americans are in danger and nothing else will work. The US should stop new strikes, end the war, and let the region settle its own fights.
+While [groups allied with Iran attacked US and coalition forces more than 200 times before the war](#fact-iran-actions-abroad/attacks-on-us-forces-before-the-war), that is a reason to bring the troops home, not to widen the war. War should be the last resort, for when Americans are in danger and nothing else will work. The US should stop new strikes, end the war, and let the region settle its own fights.

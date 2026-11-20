@@ -28,4 +28,4 @@ While [the June memorandum broke down within three weeks](#fact-decisions-law-an
 
 ### So the US should trade its blockade for limits inspectors can check, now
 
-[Qatar is pushing a plan: Iran reopens the Strait of Hormuz and the US ends its blockade](#fact-decisions-law-and-diplomacy/qatari-plan). With nuclear limits and inspections added, the US should take that deal while it still has the upper hand. [War should be the last resort](#principle-war-only-as-a-last-resort), and [a government's first duty is to its own people](#principle-first-duty-to-its-own-people): a deal that can be checked serves Americans better than endless war.
+[Qatar is pushing a plan: Iran reopens the Strait of Hormuz and the US ends its blockade](#fact-decisions-law-and-diplomacy/qatari-plan). With nuclear limits and inspections added, the US should take that deal while it still has the upper hand. War should be the last resort, and a government's first duty is to its own people: a deal that can be checked serves Americans better than endless war.

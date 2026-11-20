@@ -24,7 +24,7 @@ Since overseas recruitment ran down, [care vacancies have not risen](#fact-work-
 
 ### Settlement should follow contribution
 
-Settlement gives a person [most of the benefits that people on temporary visas cannot claim](#fact-settlement-and-migrant-status/settlement-unlocks-benefits). [Those who contribute earn a share](#principle-contribution-earns-a-share), and [a government's first duty is to its own people](#principle-first-duty-to-its-own-people), who pay for what settlement unlocks.
+Settlement gives a person [most of the benefits that people on temporary visas cannot claim](#fact-settlement-and-migrant-status/settlement-unlocks-benefits). Those who contribute earn a share, and a government's first duty is to its own people, who pay for what settlement unlocks.
 
 [Hundreds of thousands would not yet meet the proposed rule that they be in work](#fact-settlement-and-migrant-status/hundreds-of-thousands-would-fail). A longer route gives them time to. While [a ten-year standard wait would make Britain an outlier among rich countries](#fact-settlement-and-migrant-status/ten-year-baseline-outlier), that is a fair price on the lower-paid routes. High earners would keep a short path.
 

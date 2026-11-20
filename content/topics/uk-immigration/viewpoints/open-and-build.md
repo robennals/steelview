@@ -28,4 +28,4 @@ Britain is richer with the people who come here to work. It should keep welcomin
 
 ### So keep the door open, and spend the gains on homes and services
 
-[Freedom to work and trade together](#principle-gains-from-open-exchange) is how countries grow rich. Britain should keep its doors open to people who come to work and study. It should spend the gains on homes, transport and services, so that everyone shares in the growth.
+Freedom to work and trade together is how countries grow rich. Britain should keep its doors open to people who come to work and study. It should spend the gains on homes, transport and services, so that everyone shares in the growth.

@@ -88,7 +88,8 @@ For each viewpoint, the outline gives:
   makes a report broad rather than built around one side's preferred number.
 - **What it would probably concede.** A first guess at the well-supported facts
   that cut against it.
-- **Principles** it rests on, from `content/principles/` where one fits.
+- **Values** it rests on, a phrase each. A viewpoint states them in its own
+  words; where viewpoints weigh them differently, that is a crux.
 
 **The agent critiques its own first draft before showing it**, using the
 list below, and redrafts. A separate agent pass, or a fresh session, critiques
@@ -105,8 +106,6 @@ choices. The critique covers:
 - **Factual errors in the outline itself**, with a source. A live topic's
   timeline is the usual casualty: an argument built on a wrong date or a
   superseded event has to change before data is gathered for it.
-- **Principles that do not exist** in `content/principles/`, with the
-  nearest existing one or a proposal for a new shared principle.
 
 The redrafted outline ends with a short `## Revision notes` section listing,
 by number, what the critique changed and what it raised but the agent chose not
@@ -116,11 +115,6 @@ to change, with the reason — so the human can overrule either.
 holder would make better, framings that are off. The agent redrafts again.
 **Gate: the human signs off the viewpoint set.** Adding a viewpoint later is
 allowed but means returning to stage 3 for its claims.
-
-**New principles are written at this stage**, not later, when a viewpoint
-rests on a value no shared principle captures. Follow
-[Principles](AUTHORING.md#principles): the name and body must stand alone on a
-page about another issue.
 
 ## 3. Find candidate data
 
@@ -442,9 +436,7 @@ holder of that view would find it better argued than their own version
 - **Cruxes are drafted after the viewpoints settle**, because they depend on
   where the viewpoints actually ended up disagreeing. Each names a tension and
   stops, without arguing the evidence or resolving it
-  ([Cruxes](AUTHORING.md#cruxes)). Principles were written
-  in stage 2; adjust them here only if a viewpoint's final form rests on a
-  different value.
+  ([Cruxes](AUTHORING.md#cruxes)).
 - **Order last.** Set each viewpoint's `order` so the sides alternate, and
   list the headline reports in `topic.md`'s `dataOrder` in the order a reader
   should meet them. Viewpoint frontmatter is only `name`, `summary` and
@@ -487,7 +479,7 @@ What each stage-5 agent is told, beyond the report's entry in 3c:
   examples; the topic's outline and `candidate-data.md` (its review
   decisions, the report's 3c entry, the candidates it lists, and 3d).
 - **Write one file**, `content/topics/<slug>/facts/<report-id>.md`, and
-  touch nothing else: no other report, outline, principle, viewpoint, shared
+  touch nothing else: no other report, outline, viewpoint, shared
   code (including the glossary) or commit. Glossary terms wanted are listed
   in the reply.
 - **Verbatim or not at all.** Fetch every quote with `curl`; extract PDFs to
