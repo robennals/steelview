@@ -8,9 +8,7 @@ People who came to Britain lawfully, on a path the state set out, should be allo
 
 ### About 2.2 million people built their lives around a path the state set out
 
-Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). Many took jobs, moved their families and put their children in school.
-
-They have also paid. [Over five years, a skilled worker pays thousands of pounds in fees and a yearly health charge](#fact-settlement-and-migrant-status/skilled-worker-route-costs), on top of tax. [The settlement fee alone is ten times what it costs the Home Office to process](#fact-settlement-and-migrant-status/ilr-fee-ten-times-cost). Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
+Settlement, or indefinite leave to remain, is the right to stay in Britain for good. [About 2.2 million people were on a five-year path to it at the end of 2024](#fact-settlement-and-migrant-status/path-2-2-million). Many took jobs, moved their families and put their children in school. [Over five years, a skilled worker pays thousands of pounds in fees and a yearly health charge](#fact-settlement-and-migrant-status/skilled-worker-route-costs), on top of tax. Changing the terms halfway tells them, and everyone thinking of coming, that Britain's word is worth nothing.
 
 ### Britain has usually let people already on a route finish it
 
@@ -20,9 +18,7 @@ The government once toughened the rules for skilled migrants already here. [The 
 
 ### Keeping the promise keeps well-paid workers Britain needs
 
-[Skilled workers on the main visa earn a median of £56,600 a year](#fact-immigration-economy-and-public-finances/earnings-by-route). The government's advisers find that [skilled workers who stay are worth far more to the public purse than those who leave](#fact-immigration-economy-and-public-finances/stayers-worth-more).
-
-While [around half of adult skilled-worker dependants were not working](#fact-settlement-and-migrant-status/skilled-dependants-half-not-working), and [care workers cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-workers-net-cost), that is a case for different terms for future arrivals. It is not a case for breaking the terms given to people already here.
+[Skilled workers on the main visa earn a median of £56,600 a year](#fact-immigration-economy-and-public-finances/earnings-by-route). The government's advisers find that [skilled workers who stay are worth far more to the public purse than those who leave](#fact-immigration-economy-and-public-finances/stayers-worth-more). While [around half of adult skilled-worker dependants were not working](#fact-settlement-and-migrant-status/skilled-dependants-half-not-working), and [care workers cost more than they pay over a lifetime](#fact-immigration-economy-and-public-finances/care-workers-net-cost), that is a case for different terms for future arrivals. It is not a case for breaking the terms given to people already here.
 
 ### Treating lawful status as doubtful does real harm
 
@@ -32,6 +28,4 @@ Britain has seen what happens when lawful status is treated as doubtful. In the 
 
 ### So change the terms only for people who have not yet come
 
-Parliament may set any terms it likes for people who have not yet come. But everyone who arrived on a five-year path should be able to finish it on the terms they were given. The public draws the line in the same place: [most people oppose taking settlement away from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29).
-
-[Ending settlement for new arrivals splits the country evenly](#fact-settlement-and-migrant-status/ending-for-new-arrivals-splits), and [majorities want to keep it for full-time workers and NHS staff](#fact-settlement-and-migrant-status/majorities-keep-for-workers).
+Parliament may set any terms it likes for people who have not yet come. But everyone who arrived on a five-year path should be able to finish it on the terms they were given. The public draws the line in the same place: [most people oppose taking settlement away from those who hold it](#fact-settlement-and-migrant-status/revoking-opposed-58-29), and [majorities want to keep it for full-time workers and NHS staff](#fact-settlement-and-migrant-status/majorities-keep-for-workers).
