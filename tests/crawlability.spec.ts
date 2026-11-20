@@ -14,6 +14,7 @@ test('the sitemap lists the site’s own pages and every topic, and no data coll
   expect(paths).toContain('/about');
   expect(paths).toContain('/how-its-made');
   expect(paths).toContain('/privacy');
+  expect(paths).toContain('/feedback');
   for (const slug of ['uk-asylum', 'uk-immigration', 'us-iran-war', 'us-vote-by-mail', 'us-voter-id']) {
     expect(paths).toContain(`/topics/${slug}`);
   }

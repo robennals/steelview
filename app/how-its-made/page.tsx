@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CONTACT_EMAIL, SOURCE_URL } from '@/lib/site';
+import { SOURCE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'How Steelview is made',
@@ -94,8 +94,8 @@ export default function HowItsMadePage() {
         <h2>Where it can still go wrong</h2>
         <p>
           AI makes mistakes, and so do people. The checks above exist so that mistakes are caught, and the
-          sources are shown so that you can catch the ones that slip through. If you find one, please tell us at{' '}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. The full writing guide, the source of every
+          sources are shown so that you can catch the ones that slip through. If you find one, please tell us on the{' '}
+          <Link href="/feedback">feedback page</Link>. The full writing guide, the source of every
           report and the history of every change are <a href={SOURCE_URL}>public on GitHub</a>.
         </p>
         <p>

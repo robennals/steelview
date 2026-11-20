@@ -295,6 +295,80 @@
     object-fit: cover;
   }
 
+  /* The feedback form: plain labelled fields in the page's own type, and one
+     solid button, so it reads as part of the page rather than a widget. */
+  .sv-form {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    font-family: var(--font-sans);
+  }
+
+  .sv-form__field {
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .sv-form__hint {
+    font-weight: 400;
+    color: var(--ink-3);
+  }
+
+  .sv-form__field :is(input, textarea) {
+    font: inherit;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+    border-radius: 4px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .sv-form__field :is(input, textarea):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .sv-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .sv-form__error {
+    margin: 0;
+    color: var(--accent);
+  }
+
+  .sv-form__submit {
+    font: inherit;
+    font-weight: 600;
+    color: var(--paper);
+    background: var(--ink);
+    border: 0;
+    border-radius: 4px;
+    padding: 0.7rem 1.5rem;
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  .sv-form__submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  .sv-form__sent {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--paper-raised);
+    border-left: 3px solid var(--accent);
+  }
+
   /* ------------------------------------------------------------ page head */
 
   /* With the intro gone the head is a title and a date, so it needs far

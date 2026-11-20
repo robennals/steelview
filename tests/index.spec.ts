@@ -31,19 +31,54 @@ test('the tagline links to the About page', async ({ page }) => {
   await expect(page).toHaveURL(/\/about$/);
 });
 
-test('each footer page opens, and the feedback link writes to the contact address', async ({ page }) => {
+test('each footer page opens', async ({ page }) => {
   await page.goto('/');
   const footer = page.getByRole('navigation', { name: 'Footer' });
   for (const [name, path, heading] of [
     ['About', '/about', 'About Steelview'],
     ['How it’s made', '/how-its-made', 'How Steelview is made'],
     ['Privacy', '/privacy', 'Privacy'],
+    ['Feedback', '/feedback', 'Feedback'],
   ] as const) {
     await footer.getByRole('link', { name, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`${path}$`));
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(heading);
   }
-  await expect(footer.getByRole('link', { name: 'Feedback' })).toHaveAttribute('href', 'mailto:feedback@steelview.org');
+});
+
+test('the feedback form sends the message, and shows the reason when sending fails', async ({ page }) => {
+  // Stand in for /api/feedback so the test sends no email.
+  let sent: unknown;
+  let fail = false;
+  await page.route('**/api/feedback', async (route) => {
+    sent = route.request().postDataJSON();
+    await route.fulfill(fail
+      ? { status: 502, json: { error: 'Couldn’t send your message. Please try again.' } }
+      : { status: 200, json: { ok: true } });
+  });
+  await page.goto('/feedback');
+  await page.getByLabel(/Your name/).fill('Playwright');
+  await page.getByLabel(/Your email/).fill('test@example.com');
+  await page.getByLabel('Message').fill('automated test, please ignore');
+
+  fail = true;
+  await page.getByRole('button', { name: 'Send' }).click();
+  await expect(page.locator('form').getByRole('alert')).toHaveText('Couldn’t send your message. Please try again.');
+
+  fail = false;
+  await page.getByRole('button', { name: 'Send' }).click();
+  await expect(page.getByRole('status')).toContainText('your message is on its way');
+  expect(sent).toMatchObject({ name: 'Playwright', email: 'test@example.com', message: 'automated test, please ignore', hp_referrer: '' });
+});
+
+test('the feedback route rejects a bad submission and quietly drops spam', async ({ request }) => {
+  const bad = await request.post('/api/feedback', { data: { email: 'nope', message: 'hi' } });
+  expect(bad.status()).toBe(400);
+  expect(await bad.json()).toEqual({ error: 'Please give a valid email, so we can reply.' });
+
+  // A filled honeypot is answered as a success, so a bot learns nothing.
+  const spam = await request.post('/api/feedback', { data: { email: 'a@b.co', message: 'hi', hp_referrer: 'x' } });
+  expect(await spam.json()).toEqual({ ok: true });
 });
 
 test('the About page names its author, with a photo that loads', async ({ page }) => {

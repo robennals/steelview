@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { CONTACT_EMAIL } from '@/lib/site';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Privacy',
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     <main className="sv-wrap">
       <header className="sv-pagehead">
         <h1 className="sv-title">Privacy</h1>
-        <p className="sv-meta sv-pagehead__meta">Last updated 13 November 2026</p>
+        <p className="sv-meta sv-pagehead__meta">Last updated 20 November 2026</p>
       </header>
       <div className="prose-body">
         <p>
@@ -34,21 +34,27 @@ export default function PrivacyPage() {
 
         <h2>When you send feedback</h2>
         <p>
-          If you send feedback, by email or through the site, Steelview keeps your message and any contact
-          details you include, and uses them only to read and reply to it and to improve the site.
+          When you use the <Link href="/feedback">feedback form</Link>, your message, your email address, your
+          name if you give it, and the page you came from are sent by email to Rob, with a copy to you. The
+          email is delivered by an email delivery service acting for Steelview; nothing you send is stored on
+          the website itself. Steelview uses these details only to read and reply to your message and to
+          improve the site.
         </p>
 
         <h2>What Steelview does not do</h2>
         <ul>
           <li>It does not sell or rent information about you to anyone.</li>
           <li>It does not use advertising or tracking cookies.</li>
-          <li>It does not share information about you, except where the law requires it.</li>
+          <li>
+            It does not share information about you, except with the services that host the site and deliver
+            its email, or where the law requires it.
+          </li>
         </ul>
 
         <h2>Your choices</h2>
         <p>
           You can ask what information Steelview holds about you, ask for it to be corrected, or ask for it to
-          be deleted, by writing to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Steelview is not
+          be deleted, through the <Link href="/feedback">feedback form</Link>. Steelview is not
           directed at children under 13.
         </p>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CONTACT_EMAIL, SOURCE_URL } from '@/lib/site';
+import { SOURCE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -86,7 +86,7 @@ export default function AboutPage() {
         <h2>Feedback and corrections</h2>
         <p>
           If you think a report gets something wrong, leaves out a viewpoint, or states one unfairly, please
-          say so at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Corrections are made in the open,
+          say so on the <Link href="/feedback">feedback page</Link>. Corrections are made in the open,
           and every one can be seen in the site’s public history on GitHub.
         </p>
         <p>

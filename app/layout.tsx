@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { fontVariables } from "./fonts";
 import { HydrationMarker } from "@/components/hydration-marker";
-import { CONTACT_EMAIL, SITE_URL, SOURCE_URL } from "@/lib/site";
+import { SITE_URL, SOURCE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/about">About</Link>
               <Link href="/how-its-made">How it’s made</Link>
               <Link href="/privacy">Privacy</Link>
-              <a href={`mailto:${CONTACT_EMAIL}`}>Feedback</a>
+              <Link href="/feedback">Feedback</Link>
               <a href={SOURCE_URL}>Source</a>
             </nav>
           </div>

@@ -14,8 +14,5 @@ export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path}`;
 }
 
-/** Where readers send feedback and corrections; shown on About, Privacy and in the footer. */
-export const CONTACT_EMAIL = 'feedback@steelview.org';
-
 /** The public repository holding the site's code and every word of its content. */
 export const SOURCE_URL = 'https://github.com/robennals/steelview';
