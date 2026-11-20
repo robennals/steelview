@@ -5,9 +5,9 @@ kind: prediction
 divides: [bar-and-remove, refuge, tighten-within-the-echr]
 positions:
   - viewpoint: bar-and-remove
-    holds: "Once no illegal entrant can claim asylum or stay, the smugglers' trade collapses, as it did in Australia."
+    holds: "Once crossing reliably ends in removal, the smugglers' trade collapses, as Australia's did once its boats were turned back."
   - viewpoint: refuge
-    holds: "People with a visa route do not get in boats, and deterrence has cost a fortune without sending anyone."
+    holds: "Deterrence has cost a fortune without sending anyone, so Britain should give people a safe, capped way in instead."
   - viewpoint: tighten-within-the-echr
     holds: "No single measure works alone: fast decisions, returns deals and small, controlled routes work together."
 ---

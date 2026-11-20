@@ -432,6 +432,43 @@ sources:
     url: https://news.gallup.com/file/poll/652532/2024_10_23_Election%20Laws%20Topline%20and%20Tabs.pdf
     publisher: Gallup
     date: '2024-10-23'
+  # 24
+  - stance: supports
+    quote: >-
+      The Brennan Center Research Department administered the survey between
+      January 27 and February 26, 2026, and 834 local election officials
+      responded to the survey. … 32 percent report experiencing threats,
+      harassment, or abuse because of their job. … 52 percent are concerned
+      about the safety of their colleagues, and 23 percent are concerned about
+      being assaulted at home or at work. … 74 percent are concerned about the
+      spread of false information online about elections making it more
+      difficult or dangerous to do their job.
+    title: 'Local Election Officials Survey 2026'
+    url: https://www.brennancenter.org/media/15483/download/2026_local_election_officials_final_0.pdf
+    publisher: Brennan Center for Justice
+    date: '2026-04'
+  # 25
+  - stance: supports
+    quote: >-
+      The Brennan Center Research Department administered the survey between
+      April 15 and May 17, 2025, and 858 local election officials responded to
+      the survey. … 38 percent report experiencing threats, harassment, or
+      abuse because of their job.
+    title: 'Local Election Officials Survey 2025'
+    url: https://www.brennancenter.org/media/14129/download/2025localelectionofficialsurvey.pdf
+    publisher: Brennan Center for Justice
+    date: '2025-06'
+  # 26
+  - stance: supports
+    quote: >-
+      The Brennan Center Research Department administered the survey between
+      February 23 and March 28, 2024, and 928 local election officials
+      responded to the survey. … 36 percent of local election officials report
+      experiencing threats, harassment, or abuse.
+    title: 'Local Election Officials Survey, May 2024'
+    url: https://www.brennancenter.org/media/14120/download/leo_spring-2024_deck_updated-7.8.25.pdf
+    publisher: Brennan Center for Justice
+    date: '2024-05'
 series:
   title: 'Support for photo ID and automatic registration'
   subtitle: 'By party, Pew surveys, 2018–2025'
@@ -1213,6 +1250,22 @@ figures:
     items:
       - { label: '2004', value: 6 }
       - { label: '2024', value: 19 }
+  - kind: barChart
+    id: election-officials-2026
+    title: What local election officials report
+    subtitle: 'US local election officials, Brennan Center survey, January–February 2026'
+    description: 'Shares of 834 local election officials, surveyed in early 2026, who report threats, harassment or abuse because of their job, and who are concerned about each risk.'
+    valueLabel: '% of local election officials'
+    categoryLabel: Answer
+    format: { unit: percent }
+    domainMax: 100
+    sort: none
+    sources: [24]
+    items:
+      - { label: 'Worried about false information online', detail: 'Concerned that false information online about elections makes the job more difficult or dangerous', value: 74 }
+      - { label: 'Worried about colleagues’ safety', value: 52 }
+      - { label: 'Threatened, harassed or abused', detail: 'Have experienced threats, harassment or abuse because of their job', value: 32 }
+      - { label: 'Worried about being assaulted', detail: 'Concerned about being assaulted at home or at work', value: 23 }
   - kind: series
     id: spae-nationwide
   - kind: series
@@ -1290,6 +1343,8 @@ observationMarks:
   photo-id-83-percent: {lines: ["All adults"], at: "2025-08"}
   gallup-gap-record-2024: {lines: ["Republicans", "Democrats"], at: "2024"}
   no-confidence-tripled: {rows: ["2004", "2024"]}
+  officials-threatened: {rows: ["Threatened, harassed or abused", "Worried about being assaulted"]}
+  officials-blame-false-information: {rows: ["Worried about false information online"]}
   studies-disagree: {rows: ["Stewart, Ansolabehere and Persily (2016)", "Cantoni and Pons (2019; QJE 2021)", "Milyo (2025, working paper)"]}
 ---
 ## Observations {#opinion-and-confidence-in-elections--observations-pew-photo-id}
@@ -1399,6 +1454,16 @@ Confidence in one's own polling place is higher: 76% in 2024. [8](#source-opinio
 ### The share not at all confident has roughly tripled, from 6% in 2004 to 19% in 2024 {#opinion-and-confidence-in-elections--no-confidence-tripled}
 
 Gallup says the share "has steadily climbed" over the period. [8](#source-opinion-and-confidence-in-elections-8) Most Americans are still very or somewhat confident (previous chart).
+
+## Observations {#opinion-and-confidence-in-elections--observations-election-officials-2026}
+
+### About a third of local election officials report threats, harassment or abuse because of their job {#opinion-and-confidence-in-elections--officials-threatened}
+
+In the Brennan Center's 2026 survey, 32% said they had experienced threats, harassment or abuse because of their job, and 23% were concerned about being assaulted at home or at work. [24](#source-opinion-and-confidence-in-elections-24) The share was 36% in 2024 and 38% in 2025, in the same organisation's surveys. [26](#source-opinion-and-confidence-in-elections-26) [25](#source-opinion-and-confidence-in-elections-25)
+
+### Three in four are concerned that false information about elections makes the job harder or more dangerous {#opinion-and-confidence-in-elections--officials-blame-false-information}
+
+74% of officials said they were concerned about the spread of false information online about elections making their job more difficult or dangerous. [24](#source-opinion-and-confidence-in-elections-24) This is officials' own concern, not a measure of what caused any threat.
 
 ## Observations {#opinion-and-confidence-in-elections--observations-spae-nationwide-party}
 

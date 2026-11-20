@@ -788,6 +788,8 @@ observationMarks:
   congress-power-paramount: {rows: ["Arizona v. Inter Tribal Council"]}
   watson-leaves-it-to-legislatures: {rows: ["Watson v. RNC (5–4)"]}
   bills-on-both-sides: {rows: ["Universal Right to Vote by Mail Act", "Vote at Home Act", "Make Elections Great Again (MEGA) Act", "Mail Ballot Integrity Act"]}
+  federal-moves-to-narrow-mail: {rows: ["Make Elections Great Again (MEGA) Act", "Mail Ballot Integrity Act", "Executive Order 14399, Section 3"]}
+  president-ordered-mail-rules: {rows: ["Executive Order 14248", "Executive Order 14399, Section 3"]}
   national-bills-stalled: {rows: ["Freedom to Vote: John R. Lewis Act", "S. 5271", "Needed to end debate"]}
   save-america-mail-unclear: {rows: ["SAVE America Act (Republican)"]}
   save-america-status: {rows: ["SAVE America Act (Republican)"]}
@@ -836,6 +838,14 @@ The Congressional Research Service, writing on 10 July, listed a ban on sending 
 ### Bills now in Congress would push mail voting in opposite directions {#federal-and-state-power-over-mail-voting--bills-on-both-sides}
 
 The Universal Right to Vote by Mail Act and the Vote at Home Act would require no-excuse mail voting and all-mail elections. The MEGA Act and the Mail Ballot Integrity Act would ban sending ballots except on request and limit mail voting to specified voters. [16](#source-federal-and-state-power-over-mail-voting-16) None has passed.
+
+### The President has signed two orders setting rules for mail ballots {#federal-and-state-power-over-mail-voting--president-ordered-mail-rules}
+
+Executive Order 14248, in March 2025, addresses deadlines for returning mail ballots. [16](#source-federal-and-state-power-over-mail-voting-16) Executive Order 14399, in March 2026, orders a Postal Service rule on ballot envelopes, barcodes and a list of enrolled mail voters. [17](#source-federal-and-state-power-over-mail-voting-17) A court has permanently blocked the first order's deadline rules, under appeal, and the rule written under the second is blocked for November 2026. [29](#source-federal-and-state-power-over-mail-voting-29) [21](#source-federal-and-state-power-over-mail-voting-21)
+
+### Two bills and a presidential order would narrow mail voting nationally {#federal-and-state-power-over-mail-voting--federal-moves-to-narrow-mail}
+
+The MEGA Act and the Mail Ballot Integrity Act would stop states sending ballots for federal elections except on request, and the second would limit mail voting to voters in specified groups. [16](#source-federal-and-state-power-over-mail-voting-16) Executive Order 14399 orders a Postal Service rule for ballot envelopes and a list of enrolled mail voters; under it, the Postal Service would carry ballots only for voters on a state's list. [17](#source-federal-and-state-power-over-mail-voting-17) Neither bill has passed, and the rule is blocked for November 2026. [21](#source-federal-and-state-power-over-mail-voting-21)
 
 ### No Senate vote on the SAVE America Act had been held by the time of the sources read {#federal-and-state-power-over-mail-voting--save-america-status}
 
