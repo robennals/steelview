@@ -563,6 +563,4 @@ test('an estimate chart on a log axis or switching groups checks its settings', 
   assert.match(messages({ switchGroups: true, estimates: [row('a', 2, 'A'), row('b', 3)] }).join(), /every estimate needs a `group`/);
   assert.match(messages({ switchGroups: true, defaultGroup: 'C', estimates: [row('a', 2, 'A'), row('b', 3, 'B')] }).join(), /not one of the estimates' groups/);
   assert.match(messages({ groupLabel: 'Compare', estimates: [row('a', 2, 'A'), row('b', 3, 'B')] }).join(), /needs `switchGroups`/);
-  assert.match(messages({ estimates: [{ ...row('a', 2), compare: { estimate: 1 } }, row('b', 3)] }).join(), /need the figure's `compareLabel`/);
-  assert.match(messages({ axis: 'log', nullValue: 1, compareLabel: 'Prison', estimates: [{ ...row('a', 2), compare: { estimate: 0 } }, row('b', 3)] }).join(), /at or below zero/);
 });

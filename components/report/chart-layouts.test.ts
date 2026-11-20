@@ -363,24 +363,3 @@ test('on a log axis a lone bound still gets room for its open tail', () => {
   assert.ok(scale.ticks[scale.ticks.length - 1] > 2);
   assert.ok(whiskerSpan({ low: 2 }, scale)!.right <= 100);
 });
-
-test('a row with a comparison draws it as a second marker on the same axis, keyed and tabled', () => {
-  const html = renderToStaticMarkup(createElement(EstimateRange, {
-    valueLabel: 'Times the British rate',
-    pointLabel: 'Convictions',
-    compareLabel: 'Prison',
-    nullValue: 1,
-    axis: 'log',
-    estimates: [
-      { label: 'Latvia', estimate: 2.06, low: 1.93, high: 2.2, compare: { estimate: 1.03, low: 0.86, high: 1.22 } },
-      { label: 'Albania', estimate: 13.2, compare: { estimate: 30.9 } },
-    ],
-  }));
-  assert.match(html, /sv-estimates__dot" data-series="compare"/);
-  assert.match(html, /sv-estimates__whisker" data-series="compare"/);
-  assert.match(html, /data-paired=""/);
-  assert.match(html, /<\/i>Prison<\/span>/);
-  assert.match(html, /<th scope="col">Prison<\/th>/);
-  // The axis reaches the comparison, which lies beyond every first measure.
-  assert.match(html, />50</);
-});

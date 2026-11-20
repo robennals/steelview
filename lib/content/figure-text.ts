@@ -293,11 +293,7 @@ export function figureValues(figure: Figure): FigureValue[] {
           const value = e[bound];
           if (value === undefined) return [];
           return numberValues(`estimate "${e.label}" ${bound}`, value, { format: figure.format, citations: e.sources, asPublished: e.asPublished, valuesFrom: figure.valuesFrom });
-        }).concat((['estimate', 'low', 'high'] as const).flatMap(bound => {
-          const value = e.compare?.[bound];
-          if (value === undefined) return [];
-          return numberValues(`estimate "${e.label}" ${figure.compareLabel ?? 'comparison'} ${bound}`, value, { format: figure.format, citations: e.sources, valuesFrom: figure.valuesFrom });
-        })),
+        }),
       );
   }
 }

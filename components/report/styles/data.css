@@ -1091,7 +1091,10 @@
     align-items: baseline;
     column-gap: 0.85rem;
     row-gap: 0.25rem;
-    margin-bottom: 0.75rem;
+    /* Each row on its own band, ruled off from the next, with the gridlines
+       running unbroken behind it, so a name is easy to follow to its mark. */
+    padding-block: 0.5rem;
+    border-bottom: 1px solid var(--rule);
     font-family: var(--font-sans);
     font-size: 0.8125rem;
     line-height: 1.35;
@@ -1117,6 +1120,37 @@
     position: relative;
     display: block;
     height: 1rem;
+  }
+
+  .sv-estimates__plot {
+    position: relative;
+  }
+
+  /* The gridlines sit behind the rows, filling their height. */
+  .sv-estimates__gridlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .sv-estimates__gridlines .sv-estimates__ticks {
+    height: 100%;
+  }
+
+  .sv-estimates__grid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid var(--rule);
+  }
+
+  /* The last line sits just inside the track, so it never widens the figure. */
+  .sv-estimates__grid[data-edge="end"] {
+    margin-left: -1px;
+  }
+
+  .sv-estimates__rows {
+    position: relative;
   }
 
   .sv-estimates__null {
@@ -1201,33 +1235,6 @@
     box-shadow: 0 0 0 2px var(--paper);
   }
 
-  /* A row with a second measure draws each on its own line: the first above, the comparison below. */
-  .sv-estimates__track[data-paired] > :is(.sv-estimates__dot, .sv-estimates__whisker):not([data-series]) {
-    top: 30%;
-  }
-
-  .sv-estimates__track[data-paired] > [data-series="compare"] {
-    top: 70%;
-  }
-
-  /* The comparison is a diamond in the second series colour: its shape tells it apart without colour. */
-  .sv-estimates__dot[data-series="compare"],
-  .sv-estimates__key-dot[data-series="compare"] {
-    border-radius: 1px;
-    background: var(--sv-series-2);
-    transform: rotate(45deg) scale(0.9);
-  }
-
-  .sv-estimates__whisker[data-series="compare"],
-  .sv-estimates__whisker[data-series="compare"]::before,
-  .sv-estimates__whisker[data-series="compare"]::after {
-    background: var(--sv-series-2);
-  }
-
-  .sv-estimates__value-compare {
-    color: var(--ink-2);
-  }
-
   /* An approximate value ("about 1.7"): an open ring, so it never reads as a measured point. */
   .sv-estimates__dot[data-qualification="approximate"],
   .sv-estimates__key-dot[data-qualification="approximate"] {
@@ -1277,9 +1284,7 @@
       grid-template-areas: ". track .";
     }
 
-    .sv-estimates__row {
-      margin-bottom: 0.55rem;
-    }
+
 
     .sv-estimates__label {
       text-align: right;
